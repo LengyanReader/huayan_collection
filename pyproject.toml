@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "huayan-collection"
+version = "0.1.0"
+description = "华严宗部文献与修行资料数字化梳理平台"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "yunan"}
+]
+keywords = ["huayan", "avatamsaka", "buddhism", "digital-humanities", "knowledge-graph"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Topic :: Religion",
+    "Topic :: Digital Humanities",
+]
+
+dependencies = [
+    "click>=8.1",
+    "rich>=13.0",
+    "sqlite-utils>=3.35",
+    "pyyaml>=6.0",
+    "lxml>=5.0",
+    "pandas>=2.0",
+    "neo4j>=5.14",
+    "sentence-transformers>=2.2",
+    "httpx>=0.25",
+    "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.1",
+    "mypy>=1.5",
+]
+web = [
+    "fastapi>=0.104",
+    "uvicorn>=0.24",
+]
+ner = [
+    "spacy>=3.7",
+    "transformers>=4.35",
+]
+
+[project.scripts]
+huayan = "src.cli.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]

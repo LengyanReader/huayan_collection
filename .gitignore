@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project data (runtime generated)
+data/catalog/huayan.db
+data/catalog/*.db-shm
+data/catalog/*.db-wal
+
+# Neo4j
+data/knowledge_graph/neo4j_import/*.dump

@@ -1,0 +1,278 @@
+# ============================================================
+# 华严宗部四语术语库 (梵-藏-汉-英)
+# 版本: 0.1.0
+# 数据来源:
+#   - 84000 项目三语术语库 (梵/藏/英)
+#   - CBETA 华严部汉文术语
+#   - 《翻译名义大集》(Mahāvyutpatti)
+# ============================================================
+
+meta:
+  version: "0.1.0"
+  last_updated: "2024-07-24"
+  categories:
+    - doctrine      # 教理名相
+    - practice      # 修行法门
+    - cosmology     # 宇宙观/世界体系
+    - name          # 佛菩萨名号
+    - place         # 地点/世界名
+    - scripture     # 经名
+    - lineage       # 传承/宗派
+    - ritual        # 仪轨
+    - virtue        # 功德/果位
+    - state         # 修行阶位/三昧
+
+terms:
+  # --- 核心教理名相 ---
+
+  - id: term_001
+    category: doctrine
+    sa: dharmadhātu
+    sa_iast: dharmadhātu
+    bo_wylie: chos kyi dbyings
+    bo_unicode: "ཆོས་ཀྱི་དབྱིངས།"
+    zh: 法界
+    en: Dharma realm
+    definition_zh: "一切诸法所依之体，即是真如。华严宗以'事事无碍法界'为究竟，显一多相容、重重无尽之义。"
+    definition_en: "The fundamental ground of all phenomena, synonymous with suchness (tathatā). In Huayan thought, the 'dharma realm of unobstructed interpenetration of all phenomena' is the ultimate."
+    alt_translations:
+      zh: ["法性", "实相", "真如法界"]
+      en: ["realm of reality", "dharma element", "sphere of truth"]
+
+  - id: term_002
+    category: doctrine
+    sa: tathatā
+    sa_iast: tathatā
+    bo_wylie: de bzhin nyid
+    bo_unicode: "དེ་བཞིན་ཉིད།"
+    zh: 真如
+    en: suchness / thusness
+    definition_zh: "诸法真实如是之性，离一切分别妄想。华严宗以真如为法界之体。"
+    definition_en: "The true nature of all things as they actually are, beyond conceptual differentiation."
+
+  - id: term_003
+    category: doctrine
+    sa: śūnyatā
+    sa_iast: śūnyatā
+    bo_wylie: stong pa nyid
+    bo_unicode: "སྟོང་པ་ཉིད།"
+    zh: 空性
+    en: emptiness
+    definition_zh: "一切法无自性，缘起而生。华严宗以真空不碍妙有，空有不二为宗。"
+    definition_en: "The absence of inherent existence in all phenomena. Huayan emphasizes the non-duality of emptiness and phenomenal existence."
+
+  - id: term_004
+    category: doctrine
+    sa: pratītyasamutpāda
+    sa_iast: pratītyasamutpāda
+    bo_wylie: rten cing 'brel bar 'byung ba
+    bo_unicode: "རྟེན་ཅིང་འབྲེལ་བར་འབྱུང་བ།"
+    zh: 缘起
+    en: dependent origination
+    definition_zh: "一切法依因缘和合而生。华严宗以'法界缘起'为究竟，一即一切，一切即一。"
+    definition_en: "All phenomena arise through the interdependent coming together of causes and conditions. Huayan's 'dharma realm dependent origination' is the ultimate expression: one is all, all is one."
+
+  - id: term_005
+    category: doctrine
+    sa: tathāgatagarbha
+    sa_iast: tathāgatagarbha
+    bo_wylie: de bzhin gshegs pa'i snying po
+    bo_unicode: "དེ་བཞིན་གཤེགས་པའི་སྙིང་པོ།"
+    zh: 如来藏
+    en: Buddha-nature / Tathāgata embryo
+    definition_zh: "一切众生本具的成佛潜能。华严宗以如来藏为一切众生皆具毗卢遮那佛性海之依据。"
+    definition_en: "The innate potential for Buddhahood present in all sentient beings."
+
+  # --- 华严宗特有教理 ---
+
+  - id: term_006
+    category: doctrine
+    sa: āvaraṇa-vimokṣa
+    sa_iast: āvaraṇa-vimokṣa
+    bo_wylie: sgrib pa rnam par grol ba  # 待确认
+    zh: 事事无碍
+    en: unobstructed interpenetration of all phenomena
+    definition_zh: "华严宗究竟教义。一切事法之间相互融通，无一法能障碍他法，一尘中含法界，一念摄无尽。"
+    definition_en: "The ultimate Huayan doctrine: all phenomena interpenetrate without obstruction; a single dust mote contains the entire Dharma realm."
+    alt_translations:
+      zh: ["事事无碍法界", "圆融无碍"]
+      en: ["non-obstruction among events", "perfect interpenetration"]
+
+  - id: term_007
+    category: doctrine
+    zh: 理事无碍
+    en: unobstructed interpenetration of principle and phenomena
+    definition_zh: "理（真如、空性）与事（差别万象）之间圆融无碍。理遍于事，事揽理成。"
+    definition_en: "The non-obstruction between universal principle (li) and particular phenomena (shi)."
+
+  - id: term_008
+    category: doctrine
+    sa: daśa-bhūmayaḥ
+    sa_iast: daśa-bhūmayaḥ
+    bo_wylie: sa bcu
+    bo_unicode: "ས་བཅུ།"
+    zh: 十地
+    en: ten grounds / ten bhūmis
+    definition_zh: "菩萨修行的十个阶位: 欢喜地、离垢地、发光地、焰慧地、难胜地、现前地、远行地、不动地、善慧地、法云地。"
+    definition_en: "The ten stages of bodhisattva practice."
+
+  - id: term_009
+    category: state
+    sa: samādhi
+    sa_iast: samādhi
+    bo_wylie: ting nge 'dzin
+    bo_unicode: "ཏིང་ངེ་འཛིན།"
+    zh: 三昧 / 定
+    en: meditative absorption / concentration
+    definition_zh: "心一境性，专注不散。华严经中有'海印三昧'、'华严三昧'等殊胜禅定。"
+    definition_en: "One-pointed concentration. The Avatamsaka Sūtra describes the 'Ocean-Seal Samādhi' and 'Huayan Samādhi'."
+
+  - id: term_010
+    category: state
+    zh: 海印三昧
+    en: Ocean-Seal Samādhi (sāgara-mudrā-samādhi)
+    definition_zh: "佛说华严经时入于海印三昧。譬如大海，能映现一切万象；佛心如海，一时普现十方法界无尽缘起。"
+    definition_en: "The samādhi in which the Buddha taught the Avatamsaka Sūtra. Like the ocean reflecting all images, the Buddha's mind simultaneously manifests the infinite interdependent arising of all realms."
+
+  # --- 佛菩萨名号 ---
+
+  - id: term_011
+    category: name
+    sa: Vairocana
+    sa_iast: Vairocana
+    bo_wylie: rnam par snang mdzad
+    bo_unicode: "རྣམ་པར་སྣང་མཛད།"
+    zh: 毗卢遮那佛
+    en: Vairocana Buddha
+    definition_zh: "华严经的本尊佛，光明遍照之意。为华藏世界的教主，是法身佛，一切诸佛之法身。"
+    definition_en: "The central Buddha of the Avatamsaka Sūtra, whose name means 'The Illuminator'. He is the Dharmakāya Buddha presiding over the Lotus Treasury World."
+
+  - id: term_012
+    category: name
+    sa: Samantabhadra
+    sa_iast: Samantabhadra
+    bo_wylie: kun tu bzang po
+    bo_unicode: "ཀུན་ཏུ་བཟང་པོ།"
+    zh: 普贤菩萨
+    en: Samantabhadra Bodhisattva
+    definition_zh: "华严经中代表大行大愿的菩萨，与文殊菩萨同为毗卢遮那佛之胁侍。普贤十大愿王出自《四十华严·普贤行愿品》。"
+    definition_en: "The bodhisattva representing great practice and vows, appearing as Vairocana's attendant alongside Mañjuśrī."
+
+  - id: term_013
+    category: name
+    sa: Mañjuśrī
+    sa_iast: Mañjuśrī
+    bo_wylie: "jam dpal dbyangs"
+    bo_unicode: "འཇམ་དཔལ་དབྱངས།"
+    zh: 文殊菩萨
+    en: Mañjuśrī Bodhisattva
+    definition_zh: "华严经中代表智慧第一的菩萨，与普贤菩萨共为毗卢遮那佛之胁侍。"
+    definition_en: "The bodhisattva representing supreme wisdom."
+
+  # --- 华严世界结构 ---
+
+  - id: term_014
+    category: cosmology
+    zh: 华藏世界
+    en: Lotus Treasury World (Padmagarbha-lokadhātu)
+    definition_zh: "毗卢遮那佛所教化之世界，由无量香水海、世界种层层环绕而成。二十重世界，重重无尽。"
+    definition_en: "The universe system presided over by Vairocana Buddha, consisting of incalculable worlds within worlds in infinite interpenetration."
+
+  - id: term_015
+    category: cosmology
+    zh: 七处九会
+    en: Seven Locations and Nine Assemblies
+    definition_zh: "八十华严的说法结构。佛于七个地点召开九次法会，依次升进，展转深入华严教义。"
+    definition_en: "The structural framework of the 80-fascicle Avatamsaka: nine assemblies held at seven locations, progressively revealing deeper teachings."
+
+  # --- 修行阶位 ---
+
+  - id: term_016
+    category: state
+    sa: bodhicitta
+    sa_iast: bodhicitta
+    bo_wylie: byang chub kyi sems
+    bo_unicode: "བྱང་ཆུབ་ཀྱི་སེམས།"
+    zh: 菩提心
+    en: mind of awakening / bodhicitta
+    definition_zh: "发愿成佛、利益众生的心。华严经以'初发心时便成正觉'彰显发心之殊胜。"
+    definition_en: "The aspiration to attain Buddhahood for the benefit of all beings."
+
+  - id: term_017
+    category: state
+    zh: 十信
+    en: ten stages of faith
+    definition_zh: "华严修行五十二位之最初十位: 信心、念心、精进心、慧心、定心、不退心、护法心、回向心、戒心、愿心。"
+    definition_en: "The first ten of the 52 stages of Huayan practice, establishing the foundation of faith."
+
+  - id: term_018
+    category: state
+    zh: 十住
+    en: ten abodes
+    definition_zh: "十信之后，安住于佛法正理，不再退转: 发心住、治地住、修行住、生贵住、方便具足住、正心住、不退住、童真住、法王子住、灌顶住。"
+    definition_en: "The ten abodes following the ten faiths, where the practitioner stabilizes in authentic understanding."
+
+  - id: term_019
+    category: state
+    zh: 十行
+    en: ten practices
+    definition_zh: "十住之后，广行利他: 欢喜行、饶益行、无瞋恨行、无尽行、离痴乱行、善现行、无著行、尊重行、善法行、真实行。"
+    definition_en: "The ten practices of engaged beneficence following the ten abodes."
+
+  - id: term_020
+    category: state
+    zh: 十回向
+    en: ten dedications / ten transfers of merit
+    definition_zh: "十行之后，将一切功德回向法界: 救护一切众生离众生相回向、不坏回向、等一切佛回向、至一切处回向、无尽功德藏回向、随顺平等善根回向、随顺等观一切众生回向、真如相回向、无缚解脱回向、法界无量回向。"
+    definition_en: "The ten dedications of all merit to the Dharma realm."
+
+  # --- 华严宗祖师简称 ---
+
+  - id: term_021
+    category: lineage
+    zh: 五教十宗
+    en: Five Teachings and Ten Schools (Huayan doctrinal classification)
+    definition_zh: "法藏（贤首国师）建立的判教体系。五教: 小乘教、大乘始教、大乘终教、顿教、圆教（华严）。十宗进一步细分。"
+    definition_en: "Fazang's system of doctrinal classification placing Huayan at the apex as the 'Perfect Teaching'."
+
+  - id: term_022
+    category: lineage
+    zh: 华严五祖
+    en: Five Huayan Patriarchs
+    definition_zh: "杜顺、智俨、法藏、澄观、宗密。华严宗从初创到完成的五位核心祖师。"
+    definition_en: "Dushun, Zhiyan, Fazang, Chengguan, and Zongmi — the five foundational masters of the Huayan school."
+
+  # --- 品目相关 ---
+
+  - id: term_023
+    category: scripture
+    sa: Gaṇḍavyūha
+    sa_iast: Gaṇḍavyūha
+    bo_wylie: sdong po bkod pa
+    bo_unicode: "སྡོང་པོ་བཀོད་པ།"
+    zh: 入法界品
+    en: The Stem Array / Entry into the Dharma Realm
+    definition_zh: "华严经最后一品，也是最宏大的一品。善财童子五十三参，遍历一百一十城，参访五十三位善知识，终入法界。"
+    definition_en: "The final and most extensive chapter, recounting Sudhana's pilgrimage to 53 spiritual teachers."
+
+  - id: term_024
+    category: scripture
+    sa: Bhadracarī-praṇidhāna
+    sa_iast: Bhadracarī-praṇidhāna
+    bo_wylie: bzang po spyod pa'i smon lam
+    bo_unicode: "བཟང་པོ་སྤྱོད་པའི་སྨོན་ལམ།"
+    zh: 普贤行愿品 / 普贤菩萨行愿赞
+    en: The King of Aspiration Prayers / Samantabhadra's Aspiration
+    definition_zh: "四十华严末品。普贤菩萨开示十大行愿。藏汉佛教共同尊奉为修行日课。"
+    definition_en: "The aspirational prayer of Samantabhadra's ten great vows, revered in both Chinese and Tibetan Buddhism."
+
+  - id: term_025
+    category: scripture
+    sa: Tathāgatāvataṃsaka
+    sa_iast: Tathāgatāvataṃsaka
+    zh: 如来华严品
+    en: The Tathāgata Avatamsaka Chapter
+    definition_zh: "藏文《华严经》特有品目（第11品）。位于毗卢遮那品后、如来名号品前。汉文诸译本均无此品。"
+    definition_en: "A chapter unique to the Tibetan Avatamsaka (Ch.11), absent from all Chinese translations. A key translation target of this project."
+    alt_translations:
+      en: ["The Tathāgata's Ornament", "The Buddha's Garland Chapter"]

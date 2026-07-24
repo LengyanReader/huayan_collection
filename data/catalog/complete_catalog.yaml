@@ -1,0 +1,584 @@
+# ============================================================
+# 华严宗部文献完整目录
+# 版本: 0.2.0
+# 覆盖: 大正藏 T09-T10 华严部 + 论藏相关 + 近现代著作
+# 每部文献附语境关联标注，避免望文生义
+# ============================================================
+
+meta:
+  version: "0.2.0"
+  last_updated: "2024-07-24"
+  scope: >
+    覆盖范围:
+    (1) 主体华严经三大汉译本 (六十/八十/四十)
+    (2) 支流别译经 (各品异译本，需逐品对校语境)
+    (3) 眷属经 (与华严义理相关但非正部)
+    (4) 论释 (十地经论、十住毗婆沙论等)
+    (5) 华严祖师章疏论著
+    (6) 藏文华严 (Toh 44) 及相关文献
+    (7) 近现代华严研究著作
+  principle: >
+    【语境关联原则】:
+    别译本、眷属经与大经正文的关联必须基于整体内容和义理语境判断，
+    不可仅凭经名或品名望文生义。例如:
+    - 《最胜问菩萨十住除垢断结经》(T0309): 虽以十住为名，法藏明确判为
+      "非十住品亦非十地品"，不可简单归入十住品别译
+    - 《十住毗婆沙论》: 虽以十住为名，实为十地品注释（仅至第二地）
+    - 藏译华严与汉译的品目差异需逐品对勘内容，不可机械映射序号
+  sources:
+    - "大正新修大藏经 第9-10册 华严部 (T0278-T0309)"
+    - "CBETA 目录整理"
+    - "法藏《华严经传记》"
+    - "义天《新编诸宗教藏总录》(义天录)"
+    - "法经《众经目录》"
+    - "德格版甘珠尔目录 (Toh 44)"
+
+# ═══════════════════════════════════════════════════════
+# 一、主体华严经 — 三大汉译本
+# ═══════════════════════════════════════════════════════
+
+main_sutras:
+  - id: text_main_001
+    title_zh: "大方广佛华严经（六十华严）"
+    title_sa: "Buddhāvataṃsaka-nāma-mahāvaipulya-sūtra"
+    title_en: "The Avatamsaka Sutra (60-fascicle)"
+    taisho_no: "T09n0278"
+    cbeta_id: "T09n0278"
+    type: sutra
+    dynasty: "东晋"
+    translator: "佛驮跋陀罗 (Buddhabhadra)"
+    date_text: "约418-420年"
+    volumn_count: 60
+    chapter_count: 34
+    structure: "七处八会"
+    context_note: >
+      最早汉译全本华严。译自支法领从于阗带回的梵本。
+      三十四品中，《宝王如来性起品》为八十华严之《如来出现品》所替代，
+      结构亦有调整。六十华严保留了部分更接近早期梵本的表述。
+    related_to: ["text_main_002", "text_main_003"]
+    relation_type: "earlier_translation"
+
+  - id: text_main_002
+    title_zh: "大方广佛华严经（八十华严）"
+    title_sa: "Buddhāvataṃsaka-nāma-mahāvaipulya-sūtra"
+    title_en: "The Avatamsaka Sutra (80-fascicle)"
+    taisho_no: "T10n0279"
+    cbeta_id: "T10n0279"
+    type: sutra
+    dynasty: "唐"
+    translator: "实叉难陀 (Śikṣānanda)"
+    date_text: "约695-699年"
+    volumn_count: 80
+    chapter_count: 39
+    structure: "七处九会"
+    context_note: >
+      目前汉传佛教最通用的华严经版本。武则天从于阗请来梵本，
+      诏实叉难陀等于洛阳佛授记寺翻译。法藏参与证义。
+      三十九品，七处九会结构较六十华严完整。
+      缺藏译本中的《如来华严品》和《普贤宣说品》。
+    related_to: ["text_main_001", "text_main_003", "text_bo_001"]
+    relation_type: "standard_version"
+
+  - id: text_main_003
+    title_zh: "大方广佛华严经（四十华严）"
+    title_sa: "Gaṇḍavyūha-sūtra"
+    title_en: "The Avatamsaka Sutra (40-fascicle) / The Stem Array"
+    taisho_no: "T10n0293"
+    cbeta_id: "T10n0293"
+    type: sutra
+    dynasty: "唐"
+    translator: "般若 (Prajñā)"
+    date_text: "约796-798年"
+    volumn_count: 40
+    chapter_count: 1
+    structure: "单品（入法界品全本）"
+    context_note: >
+      即《入法界品》的单行全本翻译。内容比六十华严和八十华严中的
+      《入法界品》更完整。文末附《普贤菩萨行愿赞》，为藏汉佛教
+      共同尊奉的重要修行文献。善财童子五十三参的故事全本在此。
+    related_to: ["text_main_002", "text_bo_001"]
+    relation_type: "expanded_chapter"
+
+# ═══════════════════════════════════════════════════════
+# 二、支流别译经 — 对应《华严经》各品的异译本
+# ═══════════════════════════════════════════════════════
+
+branch_translations:
+  - id: text_branch_001
+    title_zh: "佛说兜沙经"
+    taisho_no: "T10n0280"
+    volumn_count: 1
+    dynasty: "后汉"
+    translator: "支娄迦谶"
+    date_text: "约167年"
+    corresponds_to: "如来名号品 (八十华严第7品)"
+    context_note: >
+      《华严经》中最早被翻译为汉文的单行经。
+      内容对应于八十华严《如来名号品》的一部分。
+      是最早传入中国的华严系统经典。
+
+  - id: text_branch_002
+    title_zh: "佛说菩萨本业经"
+    taisho_no: "T10n0281"
+    volumn_count: 1
+    dynasty: "吴"
+    translator: "支谦"
+    corresponds_to: "净行品 (八十华严第11品)"
+    context_note: "净行品别译，无偈颂部分"
+
+  - id: text_branch_003
+    title_zh: "诸菩萨求佛本业经"
+    taisho_no: "T10n0282"
+    volumn_count: 1
+    dynasty: "西晋"
+    translator: "聂道真"
+    corresponds_to: "净行品 (八十华严第11品)"
+    context_note: "净行品别译"
+
+  - id: text_branch_004
+    title_zh: "菩萨十住行道品"
+    taisho_no: "T10n0283"
+    volumn_count: 1
+    dynasty: "西晋"
+    translator: "竺法护"
+    corresponds_to: "十住品 (八十华严第15品)"
+    context_note: "菩萨十住品别译"
+
+  - id: text_branch_005
+    title_zh: "佛说菩萨十住经"
+    taisho_no: "T10n0284"
+    volumn_count: 1
+    dynasty: "东晋"
+    translator: "祇多蜜"
+    corresponds_to: "十住品 (八十华严第15品)"
+    context_note: "菩萨十住品另一别译"
+
+  - id: text_branch_006
+    title_zh: "渐备一切智德经"
+    taisho_no: "T10n0285"
+    volumn_count: 5
+    dynasty: "西晋"
+    translator: "竺法护"
+    date_text: "约297年"
+    corresponds_to: "十地品 (八十华严第26品)"
+    context_note: "十地品早期大本别译。竺法护翻译风格古朴"
+
+  - id: text_branch_007
+    title_zh: "十住经"
+    taisho_no: "T10n0286"
+    volumn_count: 4
+    dynasty: "姚秦"
+    translator: "鸠摩罗什"
+    date_text: "约402-412年"
+    corresponds_to: "十地品 (八十华严第26品)"
+    context_note: >
+      十地品的重要别译。鸠摩罗什译本流畅易读。
+      与《十地经论》（世亲造，菩提流支译）注解对象高度对应。
+      是研究华严经在印度流传形态的重要依据。
+
+  - id: text_branch_008
+    title_zh: "佛说十地经"
+    taisho_no: "T10n0287"
+    volumn_count: 9
+    dynasty: "唐"
+    translator: "尸罗达摩"
+    date_text: "约785-805年"
+    corresponds_to: "十地品 (八十华严第26品)"
+    context_note: "十地品晚唐别译。篇幅较大（9卷），与鸠摩罗什的4卷本和内典有出入"
+
+  - id: text_branch_009
+    title_zh: "等目菩萨所问三昧经"
+    taisho_no: "T10n0288"
+    volumn_count: 3
+    dynasty: "西晋"
+    translator: "竺法护"
+    corresponds_to: "十定品 (八十华严第27品)"
+    context_note: "十定品别译"
+
+  - id: text_branch_010
+    title_zh: "显无边佛土功德经"
+    taisho_no: "T10n0289"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "玄奘"
+    corresponds_to: "寿量品 (八十华严第31品)"
+    context_note: "寿量品别译。玄奘译，文体精严"
+
+  - id: text_branch_011
+    title_zh: "佛说较量一切佛刹功德经"
+    taisho_no: "T10n0290"
+    volumn_count: 1
+    dynasty: "宋"
+    translator: "法贤"
+    corresponds_to: "寿量品相关"
+    context_note: "与寿量品教义相关但不完全对应，属同类题材"
+
+  - id: text_branch_012
+    title_zh: "佛说如来兴显经"
+    taisho_no: "T10n0291"
+    volumn_count: 4
+    dynasty: "西晋"
+    translator: "竺法护"
+    corresponds_to: "宝王如来性起品 (六十华严第33品) / 如来出现品 (八十华严第37品)"
+    context_note: "如来性起/出现品的早期大本别译"
+
+  - id: text_branch_013
+    title_zh: "度世品经"
+    taisho_no: "T10n0292"
+    volumn_count: 6
+    dynasty: "西晋"
+    translator: "竺法护"
+    corresponds_to: "离世间品 (八十华严第38品)"
+    context_note: "离世间品别译。注意：藏文《离世间品》有独特异译段落，对勘时应三方比较"
+
+  - id: text_branch_014
+    title_zh: "佛说罗摩伽经"
+    taisho_no: "T10n0294"
+    volumn_count: 3
+    dynasty: "西秦"
+    translator: "圣坚"
+    corresponds_to: "入法界品 (八十华严第39品)"
+    context_note: "入法界品部分段落别译"
+
+  - id: text_branch_015
+    title_zh: "大方广佛华严经入法界品"
+    taisho_no: "T10n0295"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "地婆诃罗"
+    corresponds_to: "入法界品 (续译)"
+    context_note: "续译八十华严入法界品的缺失部分"
+
+# ═══════════════════════════════════════════════════════
+# 三、眷属经 — 与华严义理相关，属眷属摄而非正部
+# ═══════════════════════════════════════════════════════
+
+related_sutras:
+  - id: text_rel_001
+    title_zh: "文殊师利发愿经"
+    taisho_no: "T10n0296"
+    volumn_count: 1
+    dynasty: "东晋"
+    translator: "佛陀跋陀罗"
+    context_note: "文殊菩萨发愿文，与华严之文殊智慧教义相关"
+
+  - id: text_rel_002
+    title_zh: "普贤菩萨行愿赞"
+    taisho_no: "T10n0297"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "不空"
+    context_note: "即《普贤行愿品》之独立赞颂形式。藏汉佛教共同尊奉"
+
+  - id: text_rel_003
+    title_zh: "大方广普贤所说经"
+    taisho_no: "T0847"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "实叉难陀"
+    context_note: >
+      【高优先级对勘目标】与藏文华严《普贤宣说品》(Toh44.28) 内容高度对应。
+      汉文大藏经有此别译本但未纳入八十华严正文。
+      藏汉对译项目核心对比文本。
+
+  - id: text_rel_004
+    title_zh: "大方广总持宝光明经"
+    taisho_no: "T10n0299"
+    volumn_count: 5
+    dynasty: "宋"
+    translator: "法天"
+    context_note: "与华严宝光明教义相关"
+
+  - id: text_rel_005
+    title_zh: "大方广佛华严经不思议佛境界分"
+    taisho_no: "T10n0300"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "提云般若"
+    context_note: "华严不思议境界之专论"
+
+  - id: text_rel_006
+    title_zh: "大方广如来不思议境界经"
+    taisho_no: "T10n0301"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "实叉难陀"
+    context_note: "如来不思议境界，与前一经为同本异译"
+
+  - id: text_rel_007
+    title_zh: "度诸佛境界智光严经"
+    taisho_no: "T10n0302"
+    volumn_count: 1
+    dynasty: null
+    translator: "失译"
+    context_note: "佛境界智光庄严之专题经典"
+
+  - id: text_rel_008
+    title_zh: "佛华严入如来德智不思议境界经"
+    taisho_no: "T10n0303"
+    volumn_count: 2
+    dynasty: "隋"
+    translator: "阇那崛多"
+    context_note: "与T0300-T0302同一题材"
+
+  - id: text_rel_009
+    title_zh: "大方广入如来智德不思议经"
+    taisho_no: "T10n0304"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "实叉难陀"
+    context_note: "如来智德相关，实叉难陀译"
+
+  - id: text_rel_010
+    title_zh: "信力入印法门经"
+    taisho_no: "T10n0305"
+    volumn_count: 5
+    dynasty: "元魏"
+    translator: "昙摩流支"
+    context_note: "信力法门之详细展开，与华严十信教义相关"
+
+  - id: text_rel_011
+    title_zh: "大方广佛花严经修慈分"
+    taisho_no: "T10n0306"
+    volumn_count: 1
+    dynasty: "唐"
+    translator: "提云般若等"
+    context_note: "【修行实践重要文献】华严系统慈心观之专修经典。收录于修行板块"
+
+  - id: text_rel_012
+    title_zh: "佛说庄严菩提心经"
+    taisho_no: "T10n0307"
+    volumn_count: 1
+    dynasty: "姚秦"
+    translator: "鸠摩罗什"
+    context_note: "菩提心之庄严，与华严发菩提心教义相关"
+
+  - id: text_rel_013
+    title_zh: "佛说大方广菩萨十地经"
+    taisho_no: "T10n0308"
+    volumn_count: 1
+    dynasty: "元魏"
+    translator: "吉迦夜"
+    context_note: >
+      【语境注意】以菩萨十地为主题，但与华严《十地品》内容不同。
+      法藏《华严经传记》判为眷属经。
+
+  - id: text_rel_014
+    title_zh: "最胜问菩萨十住除垢断结经"
+    taisho_no: "T10n0309"
+    volumn_count: 10
+    dynasty: "姚秦"
+    translator: "竺佛念"
+    alt_title: "十住断结经 / 十千日光三昧定"
+    context_note: >
+      【重要语境警示】虽以十住为名，但并非华严《十住品》之别译。
+      法藏《华严经传记》明确判为"非十住品亦非十地品"，属眷属经。
+
+# ═══════════════════════════════════════════════════════
+# 四、论释 — 对华严经各品的系统性注释
+# ═══════════════════════════════════════════════════════
+
+treatises:
+  - id: text_treat_001
+    title_zh: "十住毗婆沙论"
+    title_sa: "Daśabhūmika-vibhāṣā"
+    taisho_no: "T26n1521"
+    volumn_count: 17
+    dynasty: "姚秦"
+    translator: "鸠摩罗什（据佛陀耶舍口述）"
+    author: "龙树 (Nāgārjuna)"
+    context_note: >
+      【语境注意】经名虽含"十住"，实际是对《华严经·十地品》的注释。
+      现存仅十七卷（仅注释至第二地），全本已佚。
+      据传译自《大不思议论》十万颂。
+      这是现存最早的《十地品》系统注释，被华严宗奉为法统源头之一。
+
+  - id: text_treat_002
+    title_zh: "十地经论"
+    title_sa: "Daśabhūmika-sūtra-śāstra"
+    taisho_no: "T26n1522"
+    volumn_count: 12
+    dynasty: "后魏"
+    translator: "菩提流支等"
+    author: "世亲 (Vasubandhu)"
+    context_note: >
+      世亲菩萨对《十地品》的系统注释。创新"六相"等名相范畴，
+      汉译本催生了南北朝地论师学派。澄观《华严经疏钞》全面吸收
+      其思想。是连接印度唯识学与汉传华严学的关键论典。
+
+  - id: text_treat_003
+    title_zh: "大乘起信论"
+    title_sa: "Mahāyāna-śraddhotpāda-śāstra"
+    taisho_no: "T32n1666"
+    volumn_count: 1
+    dynasty: "梁"
+    translator: "真谛（另一说马鸣造·实叉难陀译）"
+    author: "马鸣 (Aśvaghoṣa) [传统著录]"
+    context_note: >
+      虽非直接注释华严经，但"一心开二门""真如缘起"等核心思想
+      与华严宗"法界缘起"理论深度关联。法藏著《大乘起信论义记》
+      为最权威注释之一。
+
+# ═══════════════════════════════════════════════════════
+# 五、华严祖师核心章疏论著
+# ═══════════════════════════════════════════════════════
+
+patriarch_works:
+  # --- 法藏（贤首国师）---
+  - id: text_pat_001
+    title_zh: "华严一乘教义分齐章（五教章）"
+    author: "法藏"
+    cbeta_id: "T45n1866"
+    type: commentary
+    context_note: "法藏最具代表性的判教著作。建立五教十宗判教体系，华严宗教学纲领"
+
+  - id: text_pat_002
+    title_zh: "华严经探玄记"
+    author: "法藏"
+    cbeta_id: "T35n1733"
+    volumn_count: 20
+    type: commentary
+    context_note: "法藏对六十华严的系统注释"
+
+  - id: text_pat_003
+    title_zh: "华严金师子章"
+    author: "法藏"
+    type: commentary
+    context_note: "法藏为武则天讲说华严的记录，以金师子为喻阐述事事无碍法界观"
+
+  - id: text_pat_004
+    title_zh: "大乘起信论义记"
+    author: "法藏"
+    cbeta_id: "T44n1846"
+    type: commentary
+    context_note: "法藏对《大乘起信论》的注释，是理解华严宗'真如缘起'思想的关键"
+
+  # --- 澄观（清凉国师）---
+  - id: text_pat_005
+    title_zh: "大方广佛华严经疏"
+    author: "澄观"
+    cbeta_id: "T35n1735"
+    volumn_count: 60
+    type: commentary
+    context_note: "澄观对八十华严的系统注释。华严教学集大成之作"
+
+  - id: text_pat_006
+    title_zh: "华严经随疏演义钞"
+    author: "澄观"
+    cbeta_id: "T36n1736"
+    volumn_count: 90
+    type: commentary
+    context_note: "对《华严经疏》的进一步展开注释"
+
+  # --- 宗密（圭峰大师）---
+  - id: text_pat_007
+    title_zh: "华严原人论"
+    author: "宗密"
+    cbeta_id: "T45n1886"
+    type: commentary
+    context_note: "宗密以华严圆教统摄儒释道诸家之说的人类本源论"
+
+  - id: text_pat_008
+    title_zh: "禅源诸诠集都序"
+    author: "宗密"
+    cbeta_id: "T48n2015"
+    type: commentary
+    context_note: "宗密融合禅宗与华严教学的纲领性著作"
+
+  # --- 李通玄---
+  - id: text_pat_009
+    title_zh: "新华严经论"
+    author: "李通玄"
+    cbeta_id: "T36n1739"
+    volumn_count: 40
+    type: commentary
+    context_note: "李通玄以《易经》融会华严的独特注释。在家学者视角"
+
+  # --- 智俨---
+  - id: text_pat_010
+    title_zh: "华严经搜玄记"
+    author: "智俨"
+    cbeta_id: "T35n1732"
+    volumn_count: 5
+    type: commentary
+    context_note: "华严二祖智俨对六十华严的注释，奠定了华严宗教学基础"
+
+  # --- 义天---
+  - id: text_pat_011
+    title_zh: "新编诸宗教藏总录（义天录）"
+    author: "义天"
+    type: catalog
+    context_note: "【基准目录】收录东亚佛教章疏数千部的总目录，是华严文献存伪鉴定和编目基准"
+
+# ═══════════════════════════════════════════════════════
+# 六、藏文华严 (Toh 44) 及相关文献
+# ═══════════════════════════════════════════════════════
+
+tibetan_sources:
+  - id: text_bo_001
+    title_zh: "藏译华严经"
+    title_bo: "Sangs rgyas phal po che zhes bya ba shin tu rgyas pa chen po'i mdo"
+    tohk_no: "Toh 44"
+    type: sutra
+    volumn_count: 4
+    chapter_count: 45
+    translators: "胜友 (Jinamitra)、智军 (Ye shes sde)、遍照护 (Vairocana)"
+    date_text: "约9世纪初"
+    source_language: "于阗本（非梵本直译）"
+    context_note: >
+      【本项目核心文献】藏文华严共45品，比汉文八十华严多2品:
+      - 第11品 《如来华严品》(Tathāgatāvataṃsaka): 汉文全缺
+      - 第28品 《普贤宣说品》: 汉文有实叉难陀别译单行本(T0847)
+      此外《离世间品》有部分独特异译段落。
+      译自中亚于阗原本，而非印度梵本，具有独立的版本传承体系。
+
+  - id: text_bo_002
+    title_zh: "84000 项目 — 藏文华严英译 (持续出版中)"
+    url: "https://84000.co"
+    type: translation
+    status: "进行中"
+    published_parts: ["入法界品 (Toh 44-45, Peter Alan Roberts译, 2021)"]
+    context_note: "国际学术标准的藏译英项目。附带梵-藏-英三语术语库，为本项目核心参考资源"
+
+# ═══════════════════════════════════════════════════════
+# 七、近现代华严研究著作（精选）
+# ═══════════════════════════════════════════════════════
+
+modern_works:
+  - id: text_mod_001
+    title_zh: "华严经讲记（全本）"
+    author: "梦参"
+    type: lecture
+    context_note: "梦参老和尚晚年讲说全本《八十华严》的记录，当代最重要的华严讲记之一"
+
+  - id: text_mod_002
+    title_zh: "成一和尚著作集"
+    author: "成一"
+    type: study
+    context_note: "华严莲社第三任住持成一法师的全集，含多部华严学专著"
+
+  - id: text_mod_003
+    title_zh: "华严学讲义"
+    author: "贤度"
+    type: study
+    context_note: "贤度法师的华严学教学大纲"
+
+  - id: text_mod_004
+    title_zh: "大海的印迹：贤度法师传"
+    author: "贤度法师、郑栗儿"
+    date: 2022
+    type: biography
+    context_note: "当代华严女性法嗣传承者的传记"
+
+  - id: text_mod_005
+    title_zh: "The Flower Adornment Sutra (英译全本)"
+    translator: "Bhikshu Dharmamitra"
+    date: 2022
+    type: translation
+    context_note: "基于汉文八十华严的完整英译（3册），附带详尽学术注释与科判"
+
+  - id: text_mod_006
+    title_zh: "Entry Into the Inconceivable (英译入法界品)"
+    translator: "Thomas Cleary"
+    type: translation
+    context_note: "Cleary译《入法界品》单行本，文学性强"

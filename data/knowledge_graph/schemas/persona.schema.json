@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://huayan-collection.org/schemas/persona.schema.json",
+  "title": "华严宗人物数据模型",
+  "description": "华严宗祖师/行者/译师/学者的结构化数据 Schema",
+  "type": "object",
+  "required": ["version", "persons"],
+  "properties": {
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "last_updated": { "type": "string", "format": "date" },
+    "persons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name_zh", "type", "dynasty"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^person_\\d{3}$" },
+          "name_zh": { "type": "string", "minLength": 1 },
+          "name_bo": { "type": "string" },
+          "name_sa": { "type": "string" },
+          "name_en": { "type": "string" },
+          "alt_names": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "type": {
+            "type": "string",
+            "enum": ["patriarch", "translator", "practitioner", "scholar", "patron", "monarch"]
+          },
+          "birth_year": { "type": "integer" },
+          "death_year": { "type": "integer" },
+          "dynasty": { "type": "string" },
+          "lineage_branch": { "type": "string" },
+          "lineage_order": { "type": "integer" },
+          "title": { "type": "string" },
+          "biography": { "type": "string" },
+          "key_works": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "source": { "type": "string" },
+          "verified": {
+            "type": "integer",
+            "enum": [0, 1],
+            "description": "0=传统记载 1=学术确认"
+          }
+        }
+      }
+    }
+  }
+}

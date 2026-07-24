@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://huayan-collection.org/schemas/lineage.schema.json",
+  "title": "华严宗传承谱系数据模型",
+  "type": "object",
+  "required": ["version", "lineages"],
+  "properties": {
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "last_updated": { "type": "string", "format": "date" },
+    "lineages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "edges"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "period": { "type": "string" },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["from", "to", "relation"],
+              "properties": {
+                "from": { "type": "string", "pattern": "^person_\\d{3}$" },
+                "to": { "type": "string", "pattern": "^person_\\d{3}$" },
+                "relation": {
+                  "type": "string",
+                  "enum": ["MASTER_OF", "INFLUENCED", "CONTEMPORARY", "STUDIED_UNDER"]
+                },
+                "note": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
