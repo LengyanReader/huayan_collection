@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Test v2</title></head>
+<body>
+<div id="info-box" style="padding:20px">If you see this, HTML loaded. JS should add a green badge.</div>
+<div id="tl-panel"><canvas id="tl-canvas"></canvas></div>
+<script>
+// Self-test first
+(function(){var d=document.createElement('div');d.id='_js_test';d.textContent='JS OK';d.style.cssText='position:fixed;top:0;right:0;z-index:99999;background:#7d9a6e;color:#fff;padding:2px 8px;font-size:14px;border-radius:0 0 0 6px';document.body.appendChild(d);})();
+
+// Minimal data
+var DATA = {nodes:[],edges:[],locations:[],lineage_colors:{}};
+var GAP = {overview:{},diff_summary:{},chapters:[],cross_refs:[],warnings:[]};
+
+// Minimal init
+document.getElementById('info-box').textContent = 'JS executed! DATA=' + typeof DATA;
+</script>
+</body></html>
