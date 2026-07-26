@@ -20,6 +20,12 @@ with open(HTML_PATH, encoding='utf-8') as f:
 
 print(f'Verifying {HTML_PATH} ({len(html):,} bytes)\n')
 
+# 0. Must start with <!DOCTYPE
+if not html.lstrip().startswith('<!DOCTYPE html>'):
+    errors += fail('Must start with <!DOCTYPE html>')
+else:
+    errors += ok('Starts with <!DOCTYPE html>')
+
 # 1. Structure
 if not html.strip().endswith('</html>'):
     errors += fail('Must end with </html>')
@@ -35,11 +41,13 @@ else:
     errors += ok('Script before </html>')
 
 # 3. No </script> inside JS content
-inline_start = html.find('<script>', html.find('tab-gap'))
-diag_end = html.find('</script>', inline_start) + 9
-main_start = html.find('<script>', diag_end)
-inline_end = html.rfind('</script>')
-js_content = html[main_start+8:inline_end]
+# Find all script boundaries
+scripts_starts = [m.start() for m in __import__('re').finditer(r'<script>', html)]
+scripts_ends = [m.start() for m in __import__('re').finditer(r'</script>', html)]
+# Main script is the last inline <script> (before the Leaflet CDN <script src>)
+main_start = scripts_starts[-1] + 8
+main_end = scripts_ends[-2]  # second-to-last </script> is the main script close
+js_content = html[main_start:main_end]
 if '</script>' in js_content.lower():
     errors += fail('Found </script> inside JS content')
 else:
