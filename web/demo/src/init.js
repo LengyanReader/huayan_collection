@@ -1,3 +1,6 @@
+// ═══ ERROR CATCH ═══
+window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace;white-space:pre-wrap";d.textContent="JS ERROR: "+m+" at line "+l;document.body.appendChild(d);};
+
 // ═══ INIT ═══
 resizeTL();
 drawTL(null);
