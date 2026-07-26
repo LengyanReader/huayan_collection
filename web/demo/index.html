@@ -14,22 +14,22 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #header h1{font-size:1.1em;color:var(--gold);font-weight:600}
 #header .sub{font-size:0.7em;color:var(--text2)}
 #tabs{display:flex;background:var(--panel);border-bottom:1px solid var(--line);padding:0 14px}
-#tabs button{padding:10px 24px;border:none;background:none;color:var(--text2);cursor:pointer;font-size:0.85em;border-bottom:3px solid transparent;transition:all 0.25s;font-weight:500}
+#tabs button{padding:10px 20px;border:none;background:none;color:var(--text2);cursor:pointer;font-size:0.85em;border-bottom:3px solid transparent;transition:all 0.25s;font-weight:500}
 #tabs button:hover{color:var(--text)}
 #tabs button.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600}
 .tab-content{display:none;flex:1;overflow:hidden}
 .tab-content.active{display:flex;flex-direction:column}
 #search-bar{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}
 #search-bar input{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}
-#search-bar input:focus{border-color:var(--gold)}
 #main-row{display:flex;flex:1;min-height:0}
-#tl-panel{flex:1;position:relative;background:var(--panel);overflow:hidden;min-width:0}
+#tl-panel{flex:1;position:relative;background:var(--panel);overflow:hidden;min-width:0;cursor:grab}
 #tl-panel canvas{display:block;position:absolute;top:0;left:0}
 #side{width:380px;display:flex;flex-direction:column;min-width:240px;border-left:1px solid var(--line)}
 #map-wrap{flex:1;min-height:200px;position:relative}
 #map{width:100%;height:100%}
 #info-box{background:var(--panel);border-top:1px solid var(--line);padding:14px 16px;font-size:0.82em;min-height:150px;overflow-y:auto;color:var(--text)}
 #info-box .empty{text-align:center;color:var(--text2);padding-top:20px}
+#info-box h3{color:var(--gold);font-size:1.1em;margin-bottom:4px}
 #controls{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}
 #controls button{padding:4px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em;transition:all 0.2s}
 #controls button:hover{background:#f0ebe0;color:var(--text);border-color:var(--gold)}
@@ -38,16 +38,19 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #tl-tooltip h3{color:var(--gold);margin-bottom:3px}
 .leaflet-popup-content{font-size:0.85em;color:var(--text)}
 .leaflet-popup-content b{color:var(--gold)}
-.leaflet-popup-content-wrapper{background:var(--card);border-radius:8px}
 #gap-view,#practice-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px}
 .section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px;width:100%}
+.section h2{color:var(--gold);font-size:1.05em;margin-bottom:6px}
 .v-table{width:100%;border-collapse:collapse;font-size:0.82em}
 .v-table th{background:linear-gradient(180deg,#f5efe4,#efe6d8);color:var(--text);padding:8px 10px;text-align:left;font-weight:600}
 .v-table td{padding:7px 10px;border-bottom:1px solid var(--line)}
 .badge{padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:600}
 .bA{color:var(--red)} .bB{color:#c8893e} .bC{color:#a08020} .bD{color:var(--blue)} .bE{color:var(--green)}
 .miss{color:var(--red);font-weight:600}
-@media(max-width:768px){body{overflow:auto}#header h1{font-size:0.95em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{width:100%!important;flex-direction:row}#map-wrap{height:30vh}#controls button{font-size:0.68em}}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.78em;font-weight:600;margin:2px 4px}
+.stage-box{border-left:4px solid var(--gold);padding:8px 14px;margin:8px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.85em;line-height:1.7}
+.stage-box b{color:var(--gold)}
+@media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{width:100%!important;flex-direction:row}#map-wrap{height:30vh}#controls button{font-size:0.65em}}
 </style>
 </head>
 <body>
@@ -55,18 +58,20 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 <div id="header"><div><h1>华严宗部文献与修行资料</h1><span class="sub">贤首宗法脉传承 (557–2024) &nbsp;|&nbsp; 藏汉华严经差异总览</span></div></div>
 
 <div id="tabs">
-  <button class="active" data-tab="lineage">🌊 法脉传承 · 时空长河</button>
-  <button data-tab="gap">📜 汉藏华严差异对比</button>
   <button data-tab="practice">🧘 华严行法</button>
+  <button class="active" data-tab="lineage">🌊 法脉传承</button>
+  <button data-tab="gap">📜 汉藏差异</button>
 </div>
 
+<div id="tab-practice" class="tab-content"><div id="practice-view"></div></div>
+
 <div id="tab-lineage" class="tab-content active">
-  <div id="search-bar"><input type="text" id="search-input" placeholder="🔍 检索人物、地点…"><span style="font-size:0.7em;color:var(--text2)">点击人物寿命条查看详情 | 滚轮缩放 | 拖拽平移</span></div>
+  <div id="search-bar"><input type="text" id="search-input" placeholder="🔍 检索人物、地点…"><span style="font-size:0.7em;color:var(--text2)">点击人物寿命条 | 滚轮缩放 | 拖拽平移</span></div>
   <div id="main-row">
     <div id="tl-panel"><canvas id="tl-canvas"></canvas><div id="tl-tooltip"></div></div>
     <div id="side">
       <div id="map-wrap"><div id="map"></div></div>
-      <div id="info-box"><div class="empty">👆 点击时间轴上的人物</div></div>
+      <div id="info-box"><div class="empty">👆 点击时间轴上的人物寿命条</div></div>
     </div>
   </div>
   <div id="controls">
@@ -81,86 +86,62 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 </div>
 
 <div id="tab-gap" class="tab-content"><div id="gap-view"></div></div>
-<div id="tab-practice" class="tab-content"><div id="practice-view"></div></div>
 
 <script>
-// ═══ Script1: no-op debug (production mode) ═══
-function D(m){}
-</script>
-
-<script>
-// ═══ Script3: Main application ═══
-D("Script3 start");
-
-// --- DATA ---
-var GRAPH={"nodes": [{"id": "person_000a", "name": "龙树", "dynasty": "古印度", "title": "华严宗远祖（八宗共祖）", "lineage": "华严宗远祖", "type": "patriarch", "birth": null, "death": null, "bio": "大乘中观学派创始人。据传入龙宫取回《华严经》下本十万偈流传人间。造《十住毗婆沙论》（《十地品》注释，又称《大不思议论》），被华严宗奉为法统源头。", "works": ["十住毗婆沙论", "中论"]}, {"id": "person_000b", "name": "世亲", "dynasty": "古印度", "title": "唯识宗祖师", "lineage": null, "type": "scholar", "birth": null, "death": null, "bio": "古印度唯识学派大师。造《十地经论》十二卷，系统注释《华严经·十地品》，其「六相」等名相创新深刻影响华严宗教学。汉译催生了南北朝地论师学派。", "works": ["十地经论", "唯识三十颂"]}, {"id": "person_006", "name": "佛驮跋陀罗", "dynasty": "东晋", "title": "六十华严译者", "lineage": null, "type": "translator", "birth": 359, "death": 429, "bio": "北天竺迦毗罗卫国人。来华译经大师，于建康道场寺译出《六十华严》（旧华严），共七处八会三十四品。还译《大般泥洹经》等。", "works": ["大方广佛华严经（六十华严，T09n0278）"]}, {"id": "person_007", "name": "实叉难陀", "dynasty": "唐", "title": "八十华严译者", "lineage": null, "type": "translator", "birth": 652, "death": 710, "bio": "于阗国（今新疆和田）人。奉武则天命来华，主译八十卷《华严经》（T10n0279），法藏曾参与其译场证义。还译《大乘入楞伽经》《大方广普贤所说经》（T0847）等。", "works": ["大方广佛华严经（八十华严，T10n0279）", "大方广普贤所说经（T0847）"]}, {"id": "person_008", "name": "般若", "dynasty": "唐", "title": "四十华严译者", "lineage": null, "type": "translator", "birth": null, "death": null, "bio": "罽宾国（今克什米尔）人。唐贞元年间来华，译出《四十华严》（T10n0293），即全本《入法界品》。文末《普贤菩萨行愿赞》为藏汉佛教共同尊奉。", "works": ["大方广佛华严经（四十华严，T10n0293）"]}, {"id": "person_007b", "name": "支娄迦谶", "dynasty": "后汉", "title": "最早汉译华严经文者", "lineage": null, "type": "translator", "birth": null, "death": null, "bio": "月氏国人。后汉桓帝时来华。译出《佛说兜沙经》（T10n0280），为《华严经》中最早被翻译过来的单行经（对应《如来名号品》）。", "works": ["佛说兜沙经（T10n0280）"]}, {"id": "person_001", "name": "杜顺", "dynasty": "唐", "title": "华严初祖", "lineage": "华严五祖", "type": "patriarch", "birth": 557, "death": 640, "bio": "华严宗初祖。雍州万年人。年十八出家于因圣寺。以《华严法界观门》开创华严宗观法体系。唐太宗赐号'帝心'。", "works": ["华严法界观门", "华严五教止观"]}, {"id": "person_002", "name": "智俨", "dynasty": "唐", "title": "华严二祖", "lineage": "华严五祖", "type": "patriarch", "birth": 602, "death": 668, "bio": "华严宗二祖。天水人。从杜顺出家，后于至相寺从慧光学华严。著《华严经搜玄记》开华严宗经疏之先河，为法藏之师。", "works": ["华严经搜玄记", "华严一乘十玄门"]}, {"id": "person_003", "name": "法藏", "dynasty": "唐", "title": "华严三祖·实际创立者", "lineage": "华严五祖", "type": "patriarch", "birth": 643, "death": 712, "bio": "华严宗实际创立者。祖籍康居，生于长安。从智俨学《华严》。参与实叉难陀译场。武则天赐号'贤首'。系统化'五教十宗'判教与'法界观门'观法。讲说《华严经》三十余遍。", "works": ["华严一乘教义分齐章（五教章）", "华严经探玄记"]}, {"id": "person_004", "name": "澄观", "dynasty": "唐", "title": "华严四祖·集大成者", "lineage": "华严五祖", "type": "patriarch", "birth": 738, "death": 839, "bio": "华严宗四祖。越州山阴人。历学律、禅、三论、天台、华严诸宗。著《华严经疏》六十卷、《演义钞》九十卷，为华严教学集大成者。历七帝之师。德宗赐号'清凉'。", "works": ["华严经疏（华严大疏）", "华严经随疏演义钞"]}, {"id": "person_005", "name": "宗密", "dynasty": "唐", "title": "华严五祖·禅教融合者", "lineage": "华严五祖", "type": "patriarch", "birth": 780, "death": 841, "bio": "华严宗五祖。果州西充人。初习儒学，后从遂州道圆禅师出家（禅宗荷泽系）。后遇澄观受学华严。融合禅教，著《禅源诸诠集都序》《华严原人论》。", "works": ["注华严法界观门", "禅源诸诠集都序"]}, {"id": "person_009", "name": "李通玄", "dynasty": "唐", "title": "华严居士学者", "lineage": "李通玄系", "type": "scholar", "birth": 635, "death": 730, "bio": "唐代华严学重要在家学者。深通儒释，专精《华严》，于方山著《新华严经论》四十卷。以《易经》融会华严，方法独树一帜。", "works": ["新华严经论", "华严经决疑论"]}, {"id": "person_011", "name": "净源", "dynasty": "宋", "title": "宋代华严中兴之祖", "lineage": "华严五祖", "type": "patriarch", "birth": 1011, "death": 1088, "bio": "宋代华严宗重要复兴者。住杭州慧因寺。传法于高丽义天，义天归国后送金书《华严经》三种译本供养慧因寺。慧因寺世称'华严第一道场'。", "works": ["华严经疏注", "华严妄尽还源观疏"]}, {"id": "person_010", "name": "义天", "dynasty": "宋", "title": "高丽华严初祖", "lineage": "高丽华严", "type": "scholar", "birth": 1055, "death": 1101, "bio": "高丽文宗第四子。入宋求法于杭州慧因寺，从净源法师受华严教法。回国后编《新编诸宗教藏总录》（义天录），为华严文献学的奠基性著作。", "works": ["新编诸宗教藏总录（义天录）", "圆宗文类"]}, {"id": "person_021", "name": "高原明昱", "dynasty": "明", "title": "华严宗第二十五世", "lineage": "华严五祖", "type": "patriarch", "birth": null, "death": null, "bio": "明代华严宗祖师，华严宗第二十五世传人。自他起华严法脉兼传慈恩宗（唯识/法相宗），开创'贤首兼慈恩'传承体系。钦因长老等现代传人皆属此高原法系。", "works": []}, {"id": "person_012", "name": "月霞", "dynasty": "清", "title": "近现代华严复兴先驱", "lineage": "月霞系", "type": "patriarch", "birth": 1858, "death": 1917, "bio": "清末民初华严宗复兴的关键人物。于常熟兴福寺创立华严大学（1914年），为中国近代第一所华严专宗教育机构，培养了一批现代华严学僧。", "works": []}, {"id": "person_031", "name": "应慈", "dynasty": "近现代", "title": "近代华严座主", "lineage": "月霞系", "type": "patriarch", "birth": 1873, "death": 1965, "bio": "月霞长老师弟。继承月霞遗志，长期在上海等地弘传华严，被尊为'华严座主'。真禅法师之师。平生讲《华严经》多遍。", "works": []}, {"id": "person_013", "name": "常惺", "dynasty": "近现代", "title": null, "lineage": "月霞系", "type": "patriarch", "birth": 1896, "death": 1939, "bio": "月霞长老弟子。继月霞之后主持华严大学，于北京、上海等地弘传华严。曾任闽南佛学院院长。", "works": []}, {"id": "person_018", "name": "智光", "dynasty": "近现代", "title": "华严莲社首任住持", "lineage": "智光系", "type": "patriarch", "birth": 1889, "death": 1963, "bio": "近代华严学者。台北华严莲社第一任住持（1952年创社），开启台湾华严宗弘传事业。", "works": []}, {"id": "person_015", "name": "南亭", "dynasty": "近现代", "title": "华严莲社第二任住持", "lineage": "华严莲社", "type": "patriarch", "birth": 1900, "death": 1982, "bio": "智光法师弟子。1952年与师智光共创台北华严莲社，任第二任住持。长期弘传华严教观，为台湾华严宗发展奠基人。", "works": []}, {"id": "person_016", "name": "成一", "dynasty": "当代", "title": "华严莲社第三任住持·华严专宗学院创办人", "lineage": "华严莲社", "type": "patriarch", "birth": 1914, "death": 2011, "bio": "江苏泰县人。15岁出家。1949年赴台，协助师祖南亭和尚创办华严莲社，1972年继任住持。1975年创办华严专宗学院，以'专修、专研、专弘华严'为宗旨。1985年创立美国华严莲社。著有多部华严学著作。1988年后恢复泰州光孝寺等大陆祖庭。", "works": ["成一和尚著作集"]}, {"id": "person_032", "name": "了中", "dynasty": "当代", "title": "华严莲社第四任住持", "lineage": "华严莲社", "type": "patriarch", "birth": 1932, "death": 2022, "bio": "华严莲社第四任住持。延续'专研、专修、专弘'华严的莲社传统。", "works": []}, {"id": "person_033", "name": "净海", "dynasty": "当代", "title": "华严莲社第五任住持", "lineage": "华严莲社", "type": "patriarch", "birth": null, "death": null, "bio": "华严莲社第五任住持。", "works": []}, {"id": "person_017", "name": "贤度", "dynasty": "当代", "title": "华严莲社第六任住持·华严专宗学院院长", "lineage": "华严莲社", "type": "patriarch", "birth": 1960, "death": null, "bio": "当代华严宗女性法嗣传承者。成一法师弟子。2005年获印度德里大学哲学博士。推动华严现代化转型：发行《华严乐坛》专辑、AI多媒体文创演绎五十三参。著有《华严学讲义》《华严净土思想与念佛法门》等。", "works": ["华严学讲义", "华严净土思想与念佛法门"]}, {"id": "person_034", "name": "明度", "dynasty": "当代", "title": "华严莲社第七任住持", "lineage": "华严莲社", "type": "patriarch", "birth": null, "death": null, "bio": "贤度法师之后，续掌华严莲社。贤首宗'明众生本际，悟诸佛果源'演字辈之一。", "works": []}, {"id": "person_041", "name": "钦因", "dynasty": "当代", "title": "贤首宗第四十一世·高原法系第十七世", "lineage": "贤首宗高原法系", "type": "patriarch", "birth": null, "death": null, "bio": "台湾树林福慧寺住持。贤首宗高原法系第四十一世传人（高原明昱为第25世）。2008年8月30日将华严宗衣钵传予海云继梦。另传法嗣予大慧法师、果峻法师、净严法师、宏慧法师等。演字：'明众生本际，悟诸佛果源'。", "works": []}, {"id": "person_042", "name": "海云继梦", "dynasty": "当代", "title": "三脉汇一的当代华严传承者·大华严寺导师", "lineage": "普贤乘华严宗", "type": "patriarch", "birth": 1950, "death": null, "bio": "俗名陈鹤山，台湾宜兰人。中兴大学经济系毕业。1991年于梦参长老座下出家（临济宗第四十七代，法名昌一，号继梦）。2008年受钦因长老传华严宗衣钵（贤首宗第四十二世）。同年得印度胜师子王菩萨传大乘瑜伽行法。汇三脉归一，开创'普贤乘华严宗'，复兴失传八百余年的'东山法门'。现为南投大华严寺导师。建立'无", "works": []}, {"id": "person_043", "name": "体佛", "dynasty": "当代", "title": "贤首禅苑", "lineage": "贤首宗高原法系", "type": "patriarch", "birth": null, "death": null, "bio": "钦因长老法嗣之一。创立贤首禅苑，弘扬华严禅法。", "works": []}, {"id": "person_019", "name": "梦参", "dynasty": "当代", "title": "当代华严弘扬巨擘", "lineage": "临济宗", "type": "practitioner", "birth": 1915, "death": 2017, "bio": "当代高僧，临济宗第四十六代。曾于五台山闭关修行多年。晚年大力弘扬《华严经》，讲说全本《八十华严》影响深远。1991年破例为海云继梦剃度（梦中得地藏菩萨示现），赐法名昌一。", "works": ["华严经讲记（全本）"]}, {"id": "person_014", "name": "慈舟", "dynasty": "近现代", "title": null, "lineage": "慈舟系", "type": "scholar", "birth": 1877, "death": 1958, "bio": "近代华严学者。长期于北京广济寺、济南等地讲说华严。著《华严经普贤行愿品亲闻记》，对《普贤行愿品》在现代的弘扬有重要推动。", "works": ["华严经普贤行愿品亲闻记"]}, {"id": "person_044", "name": "真禅", "dynasty": "当代", "title": "大陆当代华严禅实践者", "lineage": "临济宗", "type": "patriarch", "birth": 1916, "death": 1995, "bio": "当代大陆弘扬华严的代表性高僧。'禅宗临济、教在华严、行归地藏普贤'。师承应慈法师。1980年代后在玉佛寺多次主持华严佛七法会，宣讲《普贤行愿品》《十地品》。著有《玉佛丈室集》十集。", "works": ["玉佛丈室集"]}, {"id": "person_045", "name": "如孝", "dynasty": "当代", "title": "华严宗第四十一世法脉传人", "lineage": "华严宗", "type": "scholar", "birth": null, "death": null, "bio": "当代华严思想学者。师承星云长老、传印长老、法映长老。十余年研究华严思想当代实践。提出'别教一乘三类体系''法界十门体系''八纲体系'等。著有《生命的艺术》《修行的艺术》等丛书。2024年在《三秦宗教》刊发论文。", "works": ["生命的艺术", "修行的艺术"]}, {"id": "person_046", "name": "雪窦", "dynasty": "当代", "title": "美国华严莲社", "lineage": null, "type": "scholar", "birth": null, "death": null, "bio": "美国华严莲社相关人员，推动华严教法在海外英语世界的传播。", "works": []}, {"id": "person_020", "name": "胜友", "dynasty": "唐", "title": "藏译华严经主译之一", "lineage": null, "type": "translator", "birth": null, "death": null, "bio": "印度译师。与智军（Ye shes sde）、遍照护（Vairocana）约9世纪初将《华严经》译为藏文（德格版Toh 44）。译自中亚于阗原本。", "works": ["藏译华严经（Toh 44）"]}, {"id": "person_020b", "name": "智军", "dynasty": "唐", "title": "藏译华严经主译之一", "lineage": null, "type": "translator", "birth": null, "death": null, "bio": "吐蕃著名译师。与印度胜友合作将《华严经》从于阗本译为藏文。为吐蕃王朝佛教翻译事业的核心人物。", "works": ["藏译华严经（Toh 44）"]}, {"id": "person_050", "name": "审祥", "dynasty": "唐/日本", "title": "日本华严宗初传", "lineage": "日本华严", "type": "patriarch", "birth": null, "death": 742, "bio": "新罗僧。来华从法藏学华严。后赴日本，于东大寺宣讲《华严经》，为日本华严宗之初传。", "works": []}], "edges": [{"s": "person_001", "t": "person_002", "r": "MASTER_OF", "lineage": "华严五祖"}, {"s": "person_002", "t": "person_003", "r": "MASTER_OF", "lineage": "华严五祖"}, {"s": "person_003", "t": "person_004", "r": "INFLUENCED", "lineage": "华严五祖"}, {"s": "person_004", "t": "person_005", "r": "MASTER_OF", "lineage": "华严五祖"}, {"s": "person_003", "t": "person_050", "r": "MASTER_OF", "lineage": "华严五祖"}, {"s": "person_021", "t": "person_041", "r": "INFLUENCED", "lineage": "华严五祖"}, {"s": "person_011", "t": "person_010", "r": "MASTER_OF", "lineage": "高丽华严"}, {"s": "person_003", "t": "person_011", "r": "INFLUENCED", "lineage": "高丽华严"}, {"s": "person_003", "t": "person_050", "r": "MASTER_OF", "lineage": "日本华严"}, {"s": "person_012", "t": "person_013", "r": "MASTER_OF", "lineage": "月霞系（华严大学→应慈→真禅）"}, {"s": "person_012", "t": "person_031", "r": "MASTER_OF", "lineage": "月霞系（华严大学→应慈→真禅）"}, {"s": "person_031", "t": "person_044", "r": "MASTER_OF", "lineage": "月霞系（华严大学→应慈→真禅）"}, {"s": "person_018", "t": "person_015", "r": "MASTER_OF", "lineage": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_015", "t": "person_016", "r": "MASTER_OF", "lineage": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_016", "t": "person_032", "r": "MASTER_OF", "lineage": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_032", "t": "person_033", "r": "MASTER_OF", "lineage": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_033", "t": "person_017", "r": "MASTER_OF", "lineage": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_017", "t": "person_034", "r": "MASTER_OF", "lineage": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_021", "t": "person_041", "r": "INFLUENCED", "lineage": "贤首宗高原法系（钦因→海云继梦）"}, {"s": "person_041", "t": "person_042", "r": "MASTER_OF", "lineage": "贤首宗高原法系（钦因→海云继梦）"}, {"s": "person_041", "t": "person_043", "r": "MASTER_OF", "lineage": "贤首宗高原法系（钦因→海云继梦）"}, {"s": "person_019", "t": "person_042", "r": "MASTER_OF", "lineage": "临济宗·梦参—海云继梦"}, {"s": "person_017", "t": "person_045", "r": "CONTEMPORARY", "lineage": "当代华严学者网络"}, {"s": "person_007b", "t": "person_006", "r": "INFLUENCED", "lineage": "华严译师谱系"}, {"s": "person_006", "t": "person_007", "r": "INFLUENCED", "lineage": "华严译师谱系"}, {"s": "person_007", "t": "person_008", "r": "INFLUENCED", "lineage": "华严译师谱系"}, {"s": "person_003", "t": "person_007", "r": "INFLUENCED", "lineage": "华严译师谱系"}], "locations": [{"id": "loc_001", "name": "大慈恩寺", "lat": 34.2198, "lng": 108.9598, "type": "temple", "dynasty": "唐", "desc": "唐代皇家寺院。法藏曾于此参与译场并讲说华严。", "persons": ["person_003"]}, {"id": "loc_002", "name": "终南山", "lat": 33.93, "lng": 108.97, "type": "mountain", "dynasty": "唐", "desc": "华严宗重要修行圣地。杜顺、智俨、法藏等均曾于此修行或讲法。至相寺位于此山。", "persons": ["person_001", "person_002", "person_003"]}, {"id": "loc_003", "name": "清凉山（五台山）", "lat": 39.0306, "lng": 113.5648, "type": "mountain", "dynasty": "唐", "desc": "文殊菩萨道场，华严经中明指为清凉山。澄观（清凉国师）曾于此著《华严经疏》，'清凉'之号由此而来。华严宗与五台山渊源极深。唐代大华严寺为山中核心华严道场。", "persons": ["person_004"]}, {"id": "loc_004", "name": "圭峰", "lat": 34.03, "lng": 108.68, "type": "mountain", "dynasty": "唐", "desc": "宗密晚年住此，世称圭峰大师。", "persons": ["person_005"]}, {"id": "loc_005", "name": "方山", "lat": 38.04, "lng": 113.21, "type": "mountain", "dynasty": "唐", "desc": "李通玄于此处著《新华严经论》。", "persons": ["person_009"]}, {"id": "loc_006", "name": "杭州慧因寺", "lat": 30.23, "lng": 120.13, "type": "temple", "dynasty": "宋", "desc": "宋代华严中兴道场。净源法师住此弘传华严，高丽义天入宋求法于此。义天归国后送金书《华严经》三种译本供养此寺。世称'华严第一道场'。", "persons": ["person_010", "person_011"]}, {"id": "loc_007", "name": "洛阳佛授记寺", "lat": 34.68, "lng": 112.44, "type": "temple", "dynasty": "唐", "desc": "实叉难陀于此处主持《八十华严》译场。法藏参与证义。", "persons": ["person_003", "person_007"]}, {"id": "loc_008", "name": "台北华严莲社", "lat": 25.033, "lng": 121.565, "type": "temple", "dynasty": "当代", "desc": "现代华严宗弘传中心。南亭法师创立，成一法师、贤度法师相继住持。出版华严典籍、主办国际华严学术研讨。", "persons": ["person_015", "person_016", "person_017"]}, {"id": "loc_009", "name": "北京广济寺", "lat": 39.923, "lng": 116.365, "type": "temple", "dynasty": "近现代", "desc": "近代华严弘扬重要道场。慈舟法师曾长期于此讲说华严。", "persons": ["person_014"]}, {"id": "loc_010", "name": "常熟兴福寺", "lat": 31.65, "lng": 120.74, "type": "temple", "dynasty": "清", "desc": "月霞长老于此处创立华严大学（1914年），开启近现代华严教育之先河。", "persons": ["person_012"]}, {"id": "loc_011", "name": "印度那烂陀寺", "lat": 25.1355, "lng": 85.4432, "type": "temple", "dynasty": null, "desc": "古印度佛教最高学府。《华严经》中善财童子参访的南方诸城中，多参考此地的学术格局。", "persons": []}, {"id": "loc_012", "name": "于阗", "lat": 37.11, "lng": 79.91, "type": "region", "dynasty": "唐", "desc": "古于阗国。藏译《华严经》译自于阗原本。实叉难陀故乡。中亚佛教枢纽，华严经流布关键节点。", "persons": ["person_007"]}, {"id": "loc_013", "name": "敦煌", "lat": 40.04, "lng": 94.8, "type": "region", "dynasty": "唐", "desc": "敦煌藏经洞出土华严经写本数百件，包括汉文写本与藏文残片，为版本对勘提供重要实物文献。", "persons": []}, {"id": "loc_014", "name": "尼泊尔加德满都谷地", "lat": 27.71, "lng": 85.32, "type": "region", "dynasty": null, "desc": "现存华严经梵文写本的主要发现地。尼泊尔梵文残卷为华严经源流研究提供了第一手文献。", "persons": []}, {"id": "loc_015", "name": "匡山（庐山）", "lat": 29.57, "lng": 115.98, "type": "mountain", "dynasty": "唐", "desc": "历代华严行者修行道场之一。", "persons": []}, {"id": "l_h", "name": "南投大华严寺", "lat": 23.92, "lng": 120.88, "type": "temple", "dynasty": "当代", "desc": "海云继梦导师。普贤乘根本道场。", "persons": ["person_042"]}, {"id": "l_f", "name": "台北福慧寺", "lat": 24.98, "lng": 121.42, "type": "temple", "dynasty": "当代", "desc": "钦因长老住持。", "persons": ["person_041", "person_043"]}], "lineage_colors": {"华严五祖": "#b8863c", "华严莲社": "#5e8b9e", "月霞系": "#7a9ec0", "李通玄系": "#c8893e", "高丽华严": "#6d9a6e", "日本华严": "#8b7a9e", "贤首宗高原法系": "#c46b5d", "临济宗": "#d48476", "慈舟系": "#8b7a9e", "译师": "#a09080", "印度源流": "#9e8b6e", "当代学者": "#b0a898", "null": "#b0a898"}};var GAP={"versions": [{"n": "藏文德格版 (Toh 44)", "c": 45, "v": "4册", "t": "胜友、智军", "p": "9世纪初"}, {"n": "汉文八十华严 (T10n0279)", "c": 39, "v": "80卷", "t": "实叉难陀", "p": "699年"}, {"n": "汉文六十华严 (T09n0278)", "c": 34, "v": "60卷", "t": "佛驮跋陀罗", "p": "420年"}, {"n": "汉文四十华严 (T10n0293)", "c": 1, "v": "40卷", "t": "般若", "p": "798年"}], "summary": {"A": 2, "B": 3, "C": 3, "D": 1, "E": 32}, "chapters": [{"bo": 7, "z80": 7, "title": "如来名号品", "sa": "", "type": "C", "summary": "藏文此品位于《如来华严品》之后，故品目序号从汉文第7品变为藏文第12品。内容基本对应但结构位置不同。"}, {"bo": 11, "z80": null, "title": "如来华严品", "sa": "Tathāgatāvataṃsaka", "type": "A", "summary": "藏文独有品目。汉文六十华严、八十华严、四十华严均无此品。"}, {"bo": 27, "z80": 26, "title": "十地品", "sa": "", "type": "B", "summary": "藏文十地品可能源自更完整的梵本，结构接近独立《十地经》(Daśabhūmika)。与汉文十地品在细节上有参差。"}, {"bo": 28, "z80": null, "title": "普贤宣说品", "sa": "Samantabhadraparivarta", "type": "A", "summary": "藏文独有品目。汉文六十华严、八十华严、四十华严均无此品。"}, {"bo": 33, "z80": 31, "title": "寿量品", "sa": "", "type": "B", "summary": "藏文可能有更详尽的诸佛寿量描述。"}, {"bo": 39, "z80": 37, "title": "如来出现品", "sa": "", "type": "C", "summary": "六十华严无此品（仅34品）。八十华严对应《如来出现品》，六十华严对应第33品《宝王如来性起品》，名称和结构均有不同。"}, {"bo": 40, "z80": 38, "title": "离世间品", "sa": "", "type": "B", "summary": "藏文此品有部分独特异译段落，与汉文同名品内容有实质性参差。"}, {"bo": 41, "z80": 39, "title": "入法界品", "sa": "Gaṇḍavyūha", "type": "C", "summary": "四十华严即此品全本。藏文《入法界品》为全本。六十华严缺此品（仅有34品）。汉文有多个别译本。"}], "warnings": ["⚠ T0309 法藏判为非十住品亦非十地品"]};
-
-D("DATA loaded: "+GRAPH.nodes.length+" nodes, "+GRAPH.edges.length+" edges, "+GRAPH.locations.length+" locations");
-
-// --- GLOBALS ---
-var DATA=GRAPH, map=null, selectedId=null, searchQuery="", pulseMarkers=[];
+// ═══ DATA ═══
+var GRAPH = {"nodes": [{"id": "person_000a", "n": "龙树", "dy": "古印度", "ti": "华严宗远祖（八宗共祖）", "li": "华严宗远祖", "tp": "patriarch", "b": null, "d": null, "bio": "大乘中观学派创始人。据传入龙宫取回《华严经》下本十万偈流传人间。造《十住毗婆沙论》（《十地品》注释，又称《大不思议论》），被华严宗奉为法统源头。", "wk": ["十住毗婆沙论", "中论"]}, {"id": "person_000b", "n": "世亲", "dy": "古印度", "ti": "唯识宗祖师", "li": null, "tp": "scholar", "b": null, "d": null, "bio": "古印度唯识学派大师。造《十地经论》十二卷，系统注释《华严经·十地品》，其「六相」等名相创新深刻影响华严宗教学。汉译催生了南北朝地论师学派。", "wk": ["十地经论", "唯识三十颂"]}, {"id": "person_006", "n": "佛驮跋陀罗", "dy": "东晋", "ti": "六十华严译者", "li": null, "tp": "translator", "b": 359, "d": 429, "bio": "北天竺迦毗罗卫国人。来华译经大师，于建康道场寺译出《六十华严》（旧华严），共七处八会三十四品。还译《大般泥洹经》等。", "wk": ["大方广佛华严经（六十华严，T09n0278）"]}, {"id": "person_007", "n": "实叉难陀", "dy": "唐", "ti": "八十华严译者", "li": null, "tp": "translator", "b": 652, "d": 710, "bio": "于阗国（今新疆和田）人。奉武则天命来华，主译八十卷《华严经》（T10n0279），法藏曾参与其译场证义。还译《大乘入楞伽经》《大方广普贤所说经》（T0847）等。", "wk": ["大方广佛华严经（八十华严，T10n0279）", "大方广普贤所说经（T0847）"]}, {"id": "person_008", "n": "般若", "dy": "唐", "ti": "四十华严译者", "li": null, "tp": "translator", "b": null, "d": null, "bio": "罽宾国（今克什米尔）人。唐贞元年间来华，译出《四十华严》（T10n0293），即全本《入法界品》。文末《普贤菩萨行愿赞》为藏汉佛教共同尊奉。", "wk": ["大方广佛华严经（四十华严，T10n0293）"]}, {"id": "person_007b", "n": "支娄迦谶", "dy": "后汉", "ti": "最早汉译华严经文者", "li": null, "tp": "translator", "b": null, "d": null, "bio": "月氏国人。后汉桓帝时来华。译出《佛说兜沙经》（T10n0280），为《华严经》中最早被翻译过来的单行经（对应《如来名号品》）。", "wk": ["佛说兜沙经（T10n0280）"]}, {"id": "person_001", "n": "杜顺", "dy": "唐", "ti": "华严初祖", "li": "华严五祖", "tp": "patriarch", "b": 557, "d": 640, "bio": "华严宗初祖。雍州万年人。年十八出家于因圣寺。以《华严法界观门》开创华严宗观法体系。唐太宗赐号'帝心'。", "wk": ["华严法界观门", "华严五教止观"]}, {"id": "person_002", "n": "智俨", "dy": "唐", "ti": "华严二祖", "li": "华严五祖", "tp": "patriarch", "b": 602, "d": 668, "bio": "华严宗二祖。天水人。从杜顺出家，后于至相寺从慧光学华严。著《华严经搜玄记》开华严宗经疏之先河，为法藏之师。", "wk": ["华严经搜玄记", "华严一乘十玄门"]}, {"id": "person_003", "n": "法藏", "dy": "唐", "ti": "华严三祖·实际创立者", "li": "华严五祖", "tp": "patriarch", "b": 643, "d": 712, "bio": "华严宗实际创立者。祖籍康居，生于长安。从智俨学《华严》。参与实叉难陀译场。武则天赐号'贤首'。系统化'五教十宗'判教与'法界观门'观法。讲说《华严经》三十余遍。", "wk": ["华严一乘教义分齐章（五教章）", "华严经探玄记"]}, {"id": "person_004", "n": "澄观", "dy": "唐", "ti": "华严四祖·集大成者", "li": "华严五祖", "tp": "patriarch", "b": 738, "d": 839, "bio": "华严宗四祖。越州山阴人。历学律、禅、三论、天台、华严诸宗。著《华严经疏》六十卷、《演义钞》九十卷，为华严教学集大成者。历七帝之师。德宗赐号'清凉'。", "wk": ["华严经疏（华严大疏）", "华严经随疏演义钞"]}, {"id": "person_005", "n": "宗密", "dy": "唐", "ti": "华严五祖·禅教融合者", "li": "华严五祖", "tp": "patriarch", "b": 780, "d": 841, "bio": "华严宗五祖。果州西充人。初习儒学，后从遂州道圆禅师出家（禅宗荷泽系）。后遇澄观受学华严。融合禅教，著《禅源诸诠集都序》《华严原人论》。", "wk": ["注华严法界观门", "禅源诸诠集都序"]}, {"id": "person_009", "n": "李通玄", "dy": "唐", "ti": "华严居士学者", "li": "李通玄系", "tp": "scholar", "b": 635, "d": 730, "bio": "唐代华严学重要在家学者。深通儒释，专精《华严》，于方山著《新华严经论》四十卷。以《易经》融会华严，方法独树一帜。", "wk": ["新华严经论", "华严经决疑论"]}, {"id": "person_011", "n": "净源", "dy": "宋", "ti": "宋代华严中兴之祖", "li": "华严五祖", "tp": "patriarch", "b": 1011, "d": 1088, "bio": "宋代华严宗重要复兴者。住杭州慧因寺。传法于高丽义天，义天归国后送金书《华严经》三种译本供养慧因寺。慧因寺世称'华严第一道场'。", "wk": ["华严经疏注", "华严妄尽还源观疏"]}, {"id": "person_010", "n": "义天", "dy": "宋", "ti": "高丽华严初祖", "li": "高丽华严", "tp": "scholar", "b": 1055, "d": 1101, "bio": "高丽文宗第四子。入宋求法于杭州慧因寺，从净源法师受华严教法。回国后编《新编诸宗教藏总录》（义天录），为华严文献学的奠基性著作。", "wk": ["新编诸宗教藏总录（义天录）", "圆宗文类"]}, {"id": "person_021", "n": "高原明昱", "dy": "明", "ti": "华严宗第二十五世", "li": "华严五祖", "tp": "patriarch", "b": null, "d": null, "bio": "明代华严宗祖师，华严宗第二十五世传人。自他起华严法脉兼传慈恩宗（唯识/法相宗），开创'贤首兼慈恩'传承体系。钦因长老等现代传人皆属此高原法系。", "wk": []}, {"id": "person_012", "n": "月霞", "dy": "清", "ti": "近现代华严复兴先驱", "li": "月霞系", "tp": "patriarch", "b": 1858, "d": 1917, "bio": "清末民初华严宗复兴的关键人物。于常熟兴福寺创立华严大学（1914年），为中国近代第一所华严专宗教育机构，培养了一批现代华严学僧。", "wk": []}, {"id": "person_031", "n": "应慈", "dy": "近现代", "ti": "近代华严座主", "li": "月霞系", "tp": "patriarch", "b": 1873, "d": 1965, "bio": "月霞长老师弟。继承月霞遗志，长期在上海等地弘传华严，被尊为'华严座主'。真禅法师之师。平生讲《华严经》多遍。", "wk": []}, {"id": "person_013", "n": "常惺", "dy": "近现代", "ti": "", "li": "月霞系", "tp": "patriarch", "b": 1896, "d": 1939, "bio": "月霞长老弟子。继月霞之后主持华严大学，于北京、上海等地弘传华严。曾任闽南佛学院院长。", "wk": []}, {"id": "person_018", "n": "智光", "dy": "近现代", "ti": "华严莲社首任住持", "li": "智光系", "tp": "patriarch", "b": 1889, "d": 1963, "bio": "近代华严学者。台北华严莲社第一任住持（1952年创社），开启台湾华严宗弘传事业。", "wk": []}, {"id": "person_015", "n": "南亭", "dy": "近现代", "ti": "华严莲社第二任住持", "li": "华严莲社", "tp": "patriarch", "b": 1900, "d": 1982, "bio": "智光法师弟子。1952年与师智光共创台北华严莲社，任第二任住持。长期弘传华严教观，为台湾华严宗发展奠基人。", "wk": []}, {"id": "person_016", "n": "成一", "dy": "当代", "ti": "华严莲社第三任住持·华严专宗学院创办人", "li": "华严莲社", "tp": "patriarch", "b": 1914, "d": 2011, "bio": "江苏泰县人。15岁出家。1949年赴台，协助师祖南亭和尚创办华严莲社，1972年继任住持。1975年创办华严专宗学院，以'专修、专研、专弘华严'为宗旨。1985年创立美国华严莲社。著有多部华严学著作。1988年后恢复泰州光孝寺等大陆祖庭。", "wk": ["成一和尚著作集"]}, {"id": "person_032", "n": "了中", "dy": "当代", "ti": "华严莲社第四任住持", "li": "华严莲社", "tp": "patriarch", "b": 1932, "d": 2022, "bio": "华严莲社第四任住持。延续'专研、专修、专弘'华严的莲社传统。", "wk": []}, {"id": "person_033", "n": "净海", "dy": "当代", "ti": "华严莲社第五任住持", "li": "华严莲社", "tp": "patriarch", "b": null, "d": null, "bio": "华严莲社第五任住持。", "wk": []}, {"id": "person_017", "n": "贤度", "dy": "当代", "ti": "华严莲社第六任住持·华严专宗学院院长", "li": "华严莲社", "tp": "patriarch", "b": 1960, "d": null, "bio": "当代华严宗女性法嗣传承者。成一法师弟子。2005年获印度德里大学哲学博士。推动华严现代化转型：发行《华严乐坛》专辑、AI多媒体文创演绎五十三参。著有《华严学讲义》《华严净土思想与念佛法门》等。", "wk": ["华严学讲义", "华严净土思想与念佛法门"]}, {"id": "person_034", "n": "明度", "dy": "当代", "ti": "华严莲社第七任住持", "li": "华严莲社", "tp": "patriarch", "b": null, "d": null, "bio": "贤度法师之后，续掌华严莲社。贤首宗'明众生本际，悟诸佛果源'演字辈之一。", "wk": []}, {"id": "person_041", "n": "钦因", "dy": "当代", "ti": "贤首宗第四十一世·高原法系第十七世", "li": "贤首宗高原法系", "tp": "patriarch", "b": null, "d": null, "bio": "台湾树林福慧寺住持。贤首宗高原法系第四十一世传人（高原明昱为第25世）。2008年8月30日将华严宗衣钵传予海云继梦。另传法嗣予大慧法师、果峻法师、净严法师、宏慧法师等。演字：'明众生本际，悟诸佛果源'。", "wk": []}, {"id": "person_042", "n": "海云继梦", "dy": "当代", "ti": "三脉汇一的当代华严传承者·大华严寺导师", "li": "普贤乘华严宗", "tp": "patriarch", "b": 1950, "d": null, "bio": "俗名陈鹤山，台湾宜兰人。中兴大学经济系毕业。1991年于梦参长老座下出家（临济宗第四十七代，法名昌一，号继梦）。2008年受钦因长老传华严宗衣钵（贤首宗第四十二世）。同年得印度胜师子王菩萨传大乘瑜伽行法。汇三脉归一，开创'普贤乘华严宗'，复兴失传八百余年的'东山法门'。现为南投大华严寺导师。建立'无", "wk": []}, {"id": "person_043", "n": "体佛", "dy": "当代", "ti": "贤首禅苑", "li": "贤首宗高原法系", "tp": "patriarch", "b": null, "d": null, "bio": "钦因长老法嗣之一。创立贤首禅苑，弘扬华严禅法。", "wk": []}, {"id": "person_019", "n": "梦参", "dy": "当代", "ti": "当代华严弘扬巨擘", "li": "临济宗", "tp": "practitioner", "b": 1915, "d": 2017, "bio": "当代高僧，临济宗第四十六代。曾于五台山闭关修行多年。晚年大力弘扬《华严经》，讲说全本《八十华严》影响深远。1991年破例为海云继梦剃度（梦中得地藏菩萨示现），赐法名昌一。", "wk": ["华严经讲记（全本）"]}, {"id": "person_014", "n": "慈舟", "dy": "近现代", "ti": "", "li": "慈舟系", "tp": "scholar", "b": 1877, "d": 1958, "bio": "近代华严学者。长期于北京广济寺、济南等地讲说华严。著《华严经普贤行愿品亲闻记》，对《普贤行愿品》在现代的弘扬有重要推动。", "wk": ["华严经普贤行愿品亲闻记"]}, {"id": "person_044", "n": "真禅", "dy": "当代", "ti": "大陆当代华严禅实践者", "li": "临济宗", "tp": "patriarch", "b": 1916, "d": 1995, "bio": "当代大陆弘扬华严的代表性高僧。'禅宗临济、教在华严、行归地藏普贤'。师承应慈法师。1980年代后在玉佛寺多次主持华严佛七法会，宣讲《普贤行愿品》《十地品》。著有《玉佛丈室集》十集。", "wk": ["玉佛丈室集"]}, {"id": "person_045", "n": "如孝", "dy": "当代", "ti": "华严宗第四十一世法脉传人", "li": "华严宗", "tp": "scholar", "b": null, "d": null, "bio": "当代华严思想学者。师承星云长老、传印长老、法映长老。十余年研究华严思想当代实践。提出'别教一乘三类体系''法界十门体系''八纲体系'等。著有《生命的艺术》《修行的艺术》等丛书。2024年在《三秦宗教》刊发论文。", "wk": ["生命的艺术", "修行的艺术"]}, {"id": "person_046", "n": "雪窦", "dy": "当代", "ti": "美国华严莲社", "li": null, "tp": "scholar", "b": null, "d": null, "bio": "美国华严莲社相关人员，推动华严教法在海外英语世界的传播。", "wk": []}, {"id": "person_020", "n": "胜友", "dy": "唐", "ti": "藏译华严经主译之一", "li": null, "tp": "translator", "b": null, "d": null, "bio": "印度译师。与智军（Ye shes sde）、遍照护（Vairocana）约9世纪初将《华严经》译为藏文（德格版Toh 44）。译自中亚于阗原本。", "wk": ["藏译华严经（Toh 44）"]}, {"id": "person_020b", "n": "智军", "dy": "唐", "ti": "藏译华严经主译之一", "li": null, "tp": "translator", "b": null, "d": null, "bio": "吐蕃著名译师。与印度胜友合作将《华严经》从于阗本译为藏文。为吐蕃王朝佛教翻译事业的核心人物。", "wk": ["藏译华严经（Toh 44）"]}, {"id": "person_050", "n": "审祥", "dy": "唐/日本", "ti": "日本华严宗初传", "li": "日本华严", "tp": "patriarch", "b": null, "d": 742, "bio": "新罗僧。来华从法藏学华严。后赴日本，于东大寺宣讲《华严经》，为日本华严宗之初传。", "wk": []}], "edges": [{"s": "person_001", "t": "person_002", "r": "MASTER_OF", "li": "华严五祖"}, {"s": "person_002", "t": "person_003", "r": "MASTER_OF", "li": "华严五祖"}, {"s": "person_003", "t": "person_004", "r": "INFLUENCED", "li": "华严五祖"}, {"s": "person_004", "t": "person_005", "r": "MASTER_OF", "li": "华严五祖"}, {"s": "person_003", "t": "person_050", "r": "MASTER_OF", "li": "华严五祖"}, {"s": "person_021", "t": "person_041", "r": "INFLUENCED", "li": "华严五祖"}, {"s": "person_011", "t": "person_010", "r": "MASTER_OF", "li": "高丽华严"}, {"s": "person_003", "t": "person_011", "r": "INFLUENCED", "li": "高丽华严"}, {"s": "person_003", "t": "person_050", "r": "MASTER_OF", "li": "日本华严"}, {"s": "person_012", "t": "person_013", "r": "MASTER_OF", "li": "月霞系（华严大学→应慈→真禅）"}, {"s": "person_012", "t": "person_031", "r": "MASTER_OF", "li": "月霞系（华严大学→应慈→真禅）"}, {"s": "person_031", "t": "person_044", "r": "MASTER_OF", "li": "月霞系（华严大学→应慈→真禅）"}, {"s": "person_018", "t": "person_015", "r": "MASTER_OF", "li": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_015", "t": "person_016", "r": "MASTER_OF", "li": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_016", "t": "person_032", "r": "MASTER_OF", "li": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_032", "t": "person_033", "r": "MASTER_OF", "li": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_033", "t": "person_017", "r": "MASTER_OF", "li": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_017", "t": "person_034", "r": "MASTER_OF", "li": "华严莲社（智光→南亭→成一→贤度）"}, {"s": "person_021", "t": "person_041", "r": "INFLUENCED", "li": "贤首宗高原法系（钦因→海云继梦）"}, {"s": "person_041", "t": "person_042", "r": "MASTER_OF", "li": "贤首宗高原法系（钦因→海云继梦）"}, {"s": "person_041", "t": "person_043", "r": "MASTER_OF", "li": "贤首宗高原法系（钦因→海云继梦）"}, {"s": "person_019", "t": "person_042", "r": "MASTER_OF", "li": "临济宗·梦参—海云继梦"}, {"s": "person_017", "t": "person_045", "r": "CONTEMPORARY", "li": "当代华严学者网络"}, {"s": "person_007b", "t": "person_006", "r": "INFLUENCED", "li": "华严译师谱系"}, {"s": "person_006", "t": "person_007", "r": "INFLUENCED", "li": "华严译师谱系"}, {"s": "person_007", "t": "person_008", "r": "INFLUENCED", "li": "华严译师谱系"}, {"s": "person_003", "t": "person_007", "r": "INFLUENCED", "li": "华严译师谱系"}], "locations": [{"id": "loc_001", "n": "大慈恩寺", "lat": 34.2198, "lng": 108.9598, "tp": "temple", "dy": "唐", "ds": "唐代皇家寺院。法藏曾于此参与译场并讲说华严。", "ps": ["person_003"]}, {"id": "loc_002", "n": "终南山", "lat": 33.93, "lng": 108.97, "tp": "mountain", "dy": "唐", "ds": "华严宗重要修行圣地。杜顺、智俨、法藏等均曾于此修行或讲法。至相寺位于此山。", "ps": ["person_001", "person_002", "person_003"]}, {"id": "loc_003", "n": "清凉山（五台山）", "lat": 39.0306, "lng": 113.5648, "tp": "mountain", "dy": "唐", "ds": "文殊菩萨道场，华严经中明指为清凉山。澄观（清凉国师）曾于此著《华严经疏》，'清凉'之号由此而来。华严宗与五台山渊源极深。唐代大华严寺为山中核心华严道场。", "ps": ["person_004"]}, {"id": "loc_004", "n": "圭峰", "lat": 34.03, "lng": 108.68, "tp": "mountain", "dy": "唐", "ds": "宗密晚年住此，世称圭峰大师。", "ps": ["person_005"]}, {"id": "loc_005", "n": "方山", "lat": 38.04, "lng": 113.21, "tp": "mountain", "dy": "唐", "ds": "李通玄于此处著《新华严经论》。", "ps": ["person_009"]}, {"id": "loc_006", "n": "杭州慧因寺", "lat": 30.23, "lng": 120.13, "tp": "temple", "dy": "宋", "ds": "宋代华严中兴道场。净源法师住此弘传华严，高丽义天入宋求法于此。义天归国后送金书《华严经》三种译本供养此寺。世称'华严第一道场'。", "ps": ["person_010", "person_011"]}, {"id": "loc_007", "n": "洛阳佛授记寺", "lat": 34.68, "lng": 112.44, "tp": "temple", "dy": "唐", "ds": "实叉难陀于此处主持《八十华严》译场。法藏参与证义。", "ps": ["person_003", "person_007"]}, {"id": "loc_008", "n": "台北华严莲社", "lat": 25.033, "lng": 121.565, "tp": "temple", "dy": "当代", "ds": "现代华严宗弘传中心。南亭法师创立，成一法师、贤度法师相继住持。出版华严典籍、主办国际华严学术研讨。", "ps": ["person_015", "person_016", "person_017"]}, {"id": "loc_009", "n": "北京广济寺", "lat": 39.923, "lng": 116.365, "tp": "temple", "dy": "近现代", "ds": "近代华严弘扬重要道场。慈舟法师曾长期于此讲说华严。", "ps": ["person_014"]}, {"id": "loc_010", "n": "常熟兴福寺", "lat": 31.65, "lng": 120.74, "tp": "temple", "dy": "清", "ds": "月霞长老于此处创立华严大学（1914年），开启近现代华严教育之先河。", "ps": ["person_012"]}, {"id": "loc_011", "n": "印度那烂陀寺", "lat": 25.1355, "lng": 85.4432, "tp": "temple", "dy": null, "ds": "古印度佛教最高学府。《华严经》中善财童子参访的南方诸城中，多参考此地的学术格局。", "ps": []}, {"id": "loc_012", "n": "于阗", "lat": 37.11, "lng": 79.91, "tp": "region", "dy": "唐", "ds": "古于阗国。藏译《华严经》译自于阗原本。实叉难陀故乡。中亚佛教枢纽，华严经流布关键节点。", "ps": ["person_007"]}, {"id": "loc_013", "n": "敦煌", "lat": 40.04, "lng": 94.8, "tp": "region", "dy": "唐", "ds": "敦煌藏经洞出土华严经写本数百件，包括汉文写本与藏文残片，为版本对勘提供重要实物文献。", "ps": []}, {"id": "loc_014", "n": "尼泊尔加德满都谷地", "lat": 27.71, "lng": 85.32, "tp": "region", "dy": null, "ds": "现存华严经梵文写本的主要发现地。尼泊尔梵文残卷为华严经源流研究提供了第一手文献。", "ps": []}, {"id": "loc_015", "n": "匡山（庐山）", "lat": 29.57, "lng": 115.98, "tp": "mountain", "dy": "唐", "ds": "历代华严行者修行道场之一。", "ps": []}, {"id": "l_h", "n": "南投大华严寺", "lat": 23.92, "lng": 120.88, "tp": "temple", "dy": "当代", "ds": "海云继梦导师。普贤乘根本道场。", "ps": ["person_042"]}, {"id": "l_f", "n": "台北福慧寺", "lat": 24.98, "lng": 121.42, "tp": "temple", "dy": "当代", "ds": "钦因长老住持。", "ps": ["person_041", "person_043"]}], "lineage_colors": {"华严五祖": "#b8863c", "华严莲社": "#5e8b9e", "月霞系": "#7a9ec0", "李通玄系": "#c8893e", "高丽华严": "#6d9a6e", "日本华严": "#8b7a9e", "贤首宗高原法系": "#c46b5d", "临济宗": "#d48476", "慈舟系": "#8b7a9e", "译师": "#a09080", "印度源流": "#9e8b6e", "当代学者": "#b0a898", "null": "#b0a898"}};
+var GAP = {"vs": [{"n": "藏文德格版 (Toh 44)", "c": 45, "v": "4册", "t": "胜友、智军", "p": "9世纪初"}, {"n": "汉文八十华严 (T10n0279)", "c": 39, "v": "80卷", "t": "实叉难陀", "p": "699年"}, {"n": "汉文六十华严 (T09n0278)", "c": 34, "v": "60卷", "t": "佛驮跋陀罗", "p": "420年"}, {"n": "汉文四十华严 (T10n0293)", "c": 1, "v": "40卷", "t": "般若", "p": "798年"}], "sm": {"A": 2, "B": 3, "C": 3, "D": 1, "E": 32}, "cs": [{"bo": 7, "z80": 7, "ti": "如来名号品", "sa": "", "tp": "C", "sm": "藏文此品位于《如来华严品》之后，故品目序号从汉文第7品变为藏文第12品。内容基本对应但结构位置不同。"}, {"bo": 11, "z80": null, "ti": "如来华严品", "sa": "Tathāgatāvataṃsaka", "tp": "A", "sm": "藏文独有品目。汉文六十华严、八十华严、四十华严均无此品。"}, {"bo": 27, "z80": 26, "ti": "十地品", "sa": "", "tp": "B", "sm": "藏文十地品可能源自更完整的梵本，结构接近独立《十地经》(Daśabhūmika)。与汉文十地品在细节上有参差。"}, {"bo": 28, "z80": null, "ti": "普贤宣说品", "sa": "Samantabhadraparivarta", "tp": "A", "sm": "藏文独有品目。汉文六十华严、八十华严、四十华严均无此品。"}, {"bo": 33, "z80": 31, "ti": "寿量品", "sa": "", "tp": "B", "sm": "藏文可能有更详尽的诸佛寿量描述。"}, {"bo": 39, "z80": 37, "ti": "如来出现品", "sa": "", "tp": "C", "sm": "六十华严无此品（仅34品）。八十华严对应《如来出现品》，六十华严对应第33品《宝王如来性起品》，名称和结构均有不同。"}, {"bo": 40, "z80": 38, "ti": "离世间品", "sa": "", "tp": "B", "sm": "藏文此品有部分独特异译段落，与汉文同名品内容有实质性参差。"}, {"bo": 41, "z80": 39, "ti": "入法界品", "sa": "Gaṇḍavyūha", "tp": "C", "sm": "四十华严即此品全本。藏文《入法界品》为全本。六十华严缺此品（仅有34品）。汉文有多个别译本。"}], "wn": ["⚠ 《最胜问菩萨十住除垢断结经》(T0309): 法藏明确判为非十住品亦非十地品"]};
+var DATA=GRAPH, map=null, selectedId=null, searchQuery="";
 var tl={canvas:null,ctx:null,W:0,H:0,ox:0,oy:0,scale:1,minX:100,maxX:2060,rows:[],hitRects:[],drag:false,lastX:0};
 var nodeMap={}; DATA.nodes.forEach(function(n){nodeMap[n.id]=n;});
 
-// --- HELPERS ---
-function getPersonLocs(pid){return DATA.locations.filter(function(l){return (l.persons||[]).indexOf(pid)>=0;});}
-
-// --- BUILD ROWS ---
+// ═══ HELPERS ═══
+function getPersonLocs(pid){return DATA.locations.filter(function(l){return (l.ps||[]).indexOf(pid)>=0;});}
 function buildTimelineRows(){
-  var order=["华严五祖","李通玄系","日本华严","高丽华严","贤首宗高原法系","月霞系","华严莲社","慈舟系","临济宗","译师"];
+  var order=["华严五祖","李通玄系","日本华严","高丽华严","贤首宗高原法系","月霞系","华严莲社","慈舟系","临济宗","译师","印度源流","当代学者"];
   var rows={}; order.forEach(function(l,i){rows[l]=i;});
-  var rd=order.map(function(l){return {lineage:l,persons:[],y:0,color:DATA.lineage_colors[l]||"#b0a898"};});
+  var rd=order.map(function(l){return {lineage:l,ps:[],y:0,color:DATA.lineage_colors[l]||"#b0a898"};});
   DATA.nodes.forEach(function(n){
-    var ri=rows[n.lineage]!==undefined?rows[n.lineage]:order.length;
-    if(!rd[ri])rd[ri]={lineage:n.lineage||"other",persons:[],y:0,color:DATA.lineage_colors[n.lineage]||"#b0a898"};
-    rd[ri].persons.push(n);
+    var ri=rows[n.li]!==undefined?rows[n.li]:order.length;
+    if(!rd[ri])rd[ri]={lineage:n.li||"other",ps:[],y:0,color:DATA.lineage_colors[n.li]||"#b0a898"};
+    rd[ri].ps.push(n);
   });
-  tl.rows=rd.filter(function(r){return r.persons.length>0;});
+  tl.rows=rd.filter(function(r){return r.ps.length>0;});
 }
-
 buildTimelineRows();
-D("Rows built: "+tl.rows.length);
 
-// --- CANVAS DRAWING ---
+// ═══ CANVAS ═══
 function resizeTL(){var p=document.getElementById("tl-panel");tl.W=p.clientWidth;tl.H=p.clientHeight;tl.canvas=document.getElementById("tl-canvas");tl.canvas.width=tl.W;tl.canvas.height=tl.H;tl.canvas.style.width=tl.W+"px";tl.canvas.style.height=tl.H+"px";tl.ctx=tl.canvas.getContext("2d");}
 function tX(y){return (y-tl.minX)*tl.scale+tl.ox;}
 
 function drawTL(hlId){
-  var ctx=tl.ctx,W=tl.W,H=tl.H;ctx.clearRect(0,0,W,H);var rh=H/Math.max(tl.rows.length,1);
-  // Dynasty bands
+  var ctx=tl.ctx,W=tl.W,H=tl.H;if(!ctx)return;ctx.clearRect(0,0,W,H);var rh=H/Math.max(tl.rows.length,1);
   [{n:"唐",s:618,e:907,c:"rgba(200,160,80,0.08)"},{n:"宋",s:960,e:1279,c:"rgba(150,170,190,0.08)"},{n:"明",s:1368,e:1644,c:"rgba(160,150,140,0.06)"},{n:"清",s:1644,e:1912,c:"rgba(150,140,130,0.06)"},{n:"近现代",s:1912,e:1949,c:"rgba(200,150,140,0.1)"},{n:"当代",s:1949,e:2026,c:"rgba(150,190,190,0.1)"}].forEach(function(d){var x=tX(d.s),x2=tX(d.e);if(x2>0&&x<W){ctx.fillStyle=d.c;ctx.fillRect(Math.max(0,x),0,Math.min(W,x2-x),H);}});
-  // Grid
   ctx.strokeStyle="#e8e0d0";ctx.lineWidth=0.5;
   for(var y=200;y<=2050;y+=100){var x=tX(y);if(x>=0&&x<=W){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}}
-  // Row labels
   tl.rows.forEach(function(r,i){r.y=(i*rh+rh*0.5);var y2=r.y;if(i%2===0){ctx.fillStyle="rgba(255,255,255,0.3)";ctx.fillRect(0,y2-rh/2,W,rh);}ctx.fillStyle=r.color;ctx.font="bold 11px Microsoft YaHei";ctx.fillText(r.lineage,6,y2-rh/2+14);});
-  // Person bars
-  tl.hitRects=[];
-  tl.rows.forEach(function(r,ri){var y2=r.y;r.persons.forEach(function(p){
-    var b=p.birth||(p.death?p.death-25:null),d=p.death||(p.birth?p.birth+25:null);if(!b&&!d)return;
+  tl.hitRects=[];var ds=25,isSearch=searchQuery.length>0;
+  tl.rows.forEach(function(r,ri){var y2=r.y;r.ps.forEach(function(p){
+    var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);if(!b&&!d)return;
     var bx=tX(b||d-10),dx=tX(d||b+10),bh=Math.min(rh*0.5,20),by=y2-bh/2;
-    var isHL=p.id===hlId,matches=!searchQuery||p.name.indexOf(searchQuery)>=0;
-    if(searchQuery&&!matches)ctx.globalAlpha=0.12;else if(hlId&&!isHL)ctx.globalAlpha=0.2;else ctx.globalAlpha=1;
+    var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0;
+    if(isSearch&&!matches)ctx.globalAlpha=0.12;else if(hlId&&!isHL)ctx.globalAlpha=0.2;else ctx.globalAlpha=1;
     if(isHL){ctx.shadowColor="#b8863c";ctx.shadowBlur=14;}
     ctx.fillStyle=isHL?"#c46b5d":(r.color+"DD");var rx=Math.max(0,bx),rw=Math.max(6,dx-rx);
-    // rounded rect
     ctx.beginPath();ctx.moveTo(rx+4,by);ctx.lineTo(rx+rw-4,by);ctx.quadraticCurveTo(rx+rw,by,rx+rw,by+4);ctx.lineTo(rx+rw,by+bh-4);ctx.quadraticCurveTo(rx+rw,by+bh,rx+rw-4,by+bh);ctx.lineTo(rx+4,by+bh);ctx.quadraticCurveTo(rx,by+bh,rx,by+bh-4);ctx.lineTo(rx,by+4);ctx.quadraticCurveTo(rx,by,rx+4,by);ctx.closePath();ctx.fill();
     ctx.shadowColor="transparent";ctx.shadowBlur=0;ctx.globalAlpha=1;
-    if(!searchQuery||matches){ctx.fillStyle=isHL?"#c46b5d":"#5c5040";ctx.font=(isHL?"bold ":"")+(isHL?12:10)+"px Microsoft YaHei";ctx.fillText(p.name,rx+rw+4,by+bh*0.72);}
+    if(!isSearch||matches){ctx.fillStyle=isHL?"#c46b5d":"#5c5040";ctx.font=(isHL?"bold ":"")+(isHL?12:10)+"px Microsoft YaHei";ctx.fillText(p.n,rx+rw+4,by+bh*0.72);}
     tl.hitRects.push({x:rx,y:by,w:rw,h:bh,person:p});
   });});
-  // Edges
   tl.hitRects.forEach(function(hr){var p=hr.person;
     DATA.edges.filter(function(e){return e.s===p.id&&(e.r==="MASTER"||e.r==="LINEAGE");}).forEach(function(e){var tHR=tl.hitRects.find(function(h){return h.person.id===e.t;});if(!tHR)return;var isHL=p.id===hlId||e.t===hlId;ctx.strokeStyle=isHL?"#b8863c":"#d5cdc0";ctx.lineWidth=isHL?2:1;ctx.globalAlpha=isHL?1:0.45;ctx.setLineDash(e.r==="LINEAGE"?[5,4]:[]);ctx.beginPath();var sx=hr.x+hr.w,sy=hr.y+hr.h/2,ex=tHR.x,ey=tHR.y+tHR.h/2;ctx.moveTo(sx,sy);ctx.bezierCurveTo(sx+(ex-sx)*0.4,sy,ex-(ex-sx)*0.4,ey,ex,ey);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;});
   });
-  // Century labels
   ctx.fillStyle="#a09080";ctx.font="10px Microsoft YaHei";
   for(var y=200;y<=2000;y+=100){var x=tX(y);if(x>=0&&x<=W)ctx.fillText(y,x-12,H-8);}
-  // Events
-  [{y:420,l:"六十华严",c:"#b8863c"},{y:699,l:"八十华严",c:"#b8863c"},{y:845,l:"武宗灭佛",c:"#c46b5d"},{y:1914,l:"华严大学",c:"#5e8b9e"},{y:2008,l:"传衣钵",c:"#c46b5d"}].forEach(function(ev){var x=tX(ev.y);if(x<0||x>W)return;ctx.fillStyle=ev.c;ctx.font="bold 9px Microsoft YaHei";ctx.fillText("▸ "+ev.l,x,18);});
+  [{y:420,l:"六十华严译出",c:"#b8863c"},{y:699,l:"八十华严译出",c:"#b8863c"},{y:845,l:"唐武宗灭佛",c:"#c46b5d"},{y:1085,l:"义天入宋求法",c:"#6d9a6e"},{y:1914,l:"华严大学创立",c:"#5e8b9e"},{y:1952,l:"华严莲社创社",c:"#5e8b9e"},{y:2008,l:"钦因传衣钵",c:"#c46b5d"}].forEach(function(ev){var x=tX(ev.y);if(x<0||x>W)return;ctx.fillStyle=ev.c;ctx.font="bold 9px Microsoft YaHei";ctx.fillText("▸ "+ev.l,x,18);});
 }
 
-// --- MAP ---
+// ═══ MAP ═══
 function initMap(){
   if(map){map.invalidateSize();return;}
   if(typeof L==="undefined"){document.getElementById("map").innerHTML="<div style=display:flex;align-items:center;justify-content:center;height:100%;color:var(--text2)>🗺 地图未加载</div>";return;}
@@ -169,44 +150,45 @@ function initMap(){
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:19,opacity:0.5}).addTo(map);
   var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};
   DATA.locations.forEach(function(loc){
-    var names=(loc.persons||[]).map(function(pid){var n=nodeMap[pid];return n?n.name:"";}).filter(Boolean).join("、");
-    var m=L.circleMarker([loc.lat,loc.lng],{radius:9,fillColor:mc[loc.type]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});
-    m.addTo(map).bindPopup("<b>"+loc.name+"</b><br>"+(loc.dynasty||"")+"<br>"+(loc.desc||"")+(names?"<br>👤 "+names:""));
-    m._ld=loc;m.on("click",function(){if(loc.persons&&loc.persons.length>0)selectPerson(loc.persons[0]);});
+    var names=(loc.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:"";}).filter(Boolean).join("、");
+    var m=L.circleMarker([loc.lat,loc.lng],{radius:9,fillColor:mc[loc.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});
+    m.addTo(map).bindPopup("<b>"+loc.n+"</b><br>"+(loc.dy||"")+"<br>"+(loc.ds||"")+(names?"<br>👤 "+names:""));
+    m._ld=loc;m.on("click",function(){if(loc.ps&&loc.ps.length>0)selectPerson(loc.ps[0]);});
   });
 }
 
-// --- SELECTION ---
+// ═══ SELECTION ═══
 function selectPerson(id){
   selectedId=id;drawTL(id);
   var p=nodeMap[id];if(!p)return;
-  var lc=DATA.lineage_colors[p.lineage]||"#b0a898";
+  var lc=DATA.lineage_colors[p.li]||"#b0a898";
   var locs=getPersonLocs(id),locHTML="";
-  locs.forEach(function(l){locHTML+="📍 "+l.name+"<br>";});
+  locs.forEach(function(l){locHTML+="📍 "+l.n+"<br>";});
   var teachers=DATA.edges.filter(function(e){return e.t===id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
   var students=DATA.edges.filter(function(e){return e.s===id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.t];}).filter(Boolean);
-  document.getElementById("info-box").innerHTML="<h3 style=color:var(--gold)>"+p.name+"</h3>"
-    +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+p.lineage+"</span> "
-    +"📅 "+p.dynasty+" · "+(p.birth||"?")+"–"+(p.death||"?")+"<br>"
-    +"🏛 "+ (p.title||"")+"<br>"
-    +locHTML
-    +(teachers.length?"⬆ 师承: "+teachers.map(function(t){return t.name;}).join("、")+"<br>":"")
-    +(students.length?"⬇ 传法: "+students.map(function(t){return t.name;}).join("、")+"<br>":"")
-    +(p.bio||"");
-  // Map fly
+  var tch=teachers.length?"⬆ 师承: "+teachers.map(function(t){return t.n;}).join("、")+"<br>":"";
+  var std=students.length?"⬇ 传法: "+students.map(function(t){return t.n;}).join("、")+"<br>":"";
+  document.getElementById("info-box").innerHTML="<h3>"+p.n+"</h3>"
+    +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span> "
+    +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp||"—")+"</span><br>"
+    +"📅 "+(p.dy||"?")+" · "+(p.b||"?")+"–"+(p.d||"?")+"<br>"
+    +"🏛 "+(p.ti||"")+"<br>"
+    +locHTML+tch+std
+    +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px>"+p.bio+"</div>":"")
+    +(p.wk&&p.wk.length?"📖 "+p.wk.join(" · "):"");
   if(map&&locs.length>0){var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});}
 }
-function clearSelection(){selectedId=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击时间轴上的人物</div>";}
+function clearSelection(){selectedId=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击时间轴上的人物寿命条</div>";}
 
-// --- INTERACTION ---
-function onWheel(e){e.preventDefault();var panel=document.getElementById("tl-panel");var rect=panel.getBoundingClientRect();var mx=e.clientX-rect.left;var before=(mx-tl.ox)/tl.scale;tl.scale*=e.deltaY<0?1.12:0.89;tl.scale=Math.max(0.12,Math.min(6,tl.scale));tl.ox=mx-before*tl.scale;drawTL(selectedId);}
+// ═══ INTERACTION ═══
+function onWheel(e){e.preventDefault();var p=document.getElementById("tl-panel");var r=p.getBoundingClientRect();var mx=e.clientX-r.left;var before=(mx-tl.ox)/tl.scale;tl.scale*=e.deltaY<0?1.12:0.89;tl.scale=Math.max(0.12,Math.min(6,tl.scale));tl.ox=mx-before*tl.scale;drawTL(selectedId);}
 function onMD(e){if(e.target.tagName==="CANVAS"){tl.drag=true;tl.lastX=e.clientX;}}
 function onMM(e){
   if(!tl.drag){
-    var panel=document.getElementById("tl-panel"),rect=panel.getBoundingClientRect(),mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    var p=document.getElementById("tl-panel"),r=p.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
     var hit=tl.hitRects.find(function(h){return mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h;});
     var tip=document.getElementById("tl-tooltip");
-    if(hit){var p=hit.person;tip.style.opacity="1";tip.innerHTML="<h3>"+p.name+"</h3>"+(p.title||"")+" · "+p.dynasty+" · "+(p.birth||"?")+"–"+(p.death||"?");tip.style.left=(e.pageX+14)+"px";tip.style.top=(e.pageY-20)+"px";}
+    if(hit){var pp=hit.person;tip.style.opacity="1";tip.innerHTML="<h3>"+pp.n+"</h3>"+(pp.ti||"")+" · "+pp.dy+" · "+(pp.b||"?")+"–"+(pp.d||"?");tip.style.left=(e.pageX+14)+"px";tip.style.top=(e.pageY-20)+"px";}
     else{tip.style.opacity="0";}
     return;
   }
@@ -215,12 +197,12 @@ function onMM(e){
 function onMU(){tl.drag=false;}
 function onClick(e){
   if(tl.drag||Math.abs(e.clientX-tl.lastX)>3)return;
-  var panel=document.getElementById("tl-panel"),rect=panel.getBoundingClientRect(),mx=e.clientX-rect.left,my=e.clientY-rect.top;
+  var p=document.getElementById("tl-panel"),r=p.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
   var hit=tl.hitRects.find(function(h){return mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h;});
   if(hit){selectPerson(hit.person.id);}else{clearSelection();}
 }
 
-// --- TABS ---
+// ═══ TABS ═══
 document.getElementById("tabs").addEventListener("click",function(e){
   if(e.target.tagName!=="BUTTON")return;
   document.querySelectorAll("#tabs button").forEach(function(b){b.classList.remove("active");});
@@ -230,56 +212,62 @@ document.getElementById("tabs").addEventListener("click",function(e){
   if(e.target.dataset.tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(map)map.invalidateSize();},200);}
 });
 
-// --- GAP TAB ---
+// ═══ GAP TAB ═══
 function renderGap(){
   var gv=document.getElementById("gap-view");if(!gv)return;
-  var ds=GAP.diff_summary, h="<h2 style=color:var(--gold)>📜 版本对照</h2><div class=section><table class=v-table><tr><th>版本</th><th>品目</th><th>卷/册</th><th>译者</th><th>年代</th></tr>";
-  GAP.overview.versions.forEach(function(v){h+="<tr><td>"+v.name+"</td><td style=font-weight:700;color:var(--gold)>"+v.chapters+"</td><td>"+v.volumes+"</td><td>"+v.translator+"</td><td>"+v.period+"</td></tr>";});
-  h+="</table></div><h2 style=color:var(--gold)>📊 差异分布</h2><div class=section>";
-  ["A","B","C","D","E"].forEach(function(t){var d=ds[t];h+="<span style=display:inline-block;padding:10px 16px;margin:4px;border-radius:8px;border-left:3px solid "+d.color+";background:var(--card)>"+d.icon+" <b style=color:"+d.color+">"+d.count+"</b> "+d.label+"</span>";});
-  h+="</div><h2 style=color:var(--gold)>📋 逐品差异</h2><div class=section><table class=v-table><tr><th>藏#</th><th>品名</th><th>类型</th><th>说明</th></tr>";
-  GAP.chapters.forEach(function(ch){h+="<tr><td>"+(ch.order_bo||"—")+"</td><td>"+ch.title_zh+"</td><td><span class='badge b"+ch.diff_type+"'>"+ch.diff_type+"</span></td><td>"+(ch.diff_summary||"")+"</td></tr>";});
+  var h="<h2 style=color:var(--gold)>📜 版本对照</h2><div class=section><table class=v-table><tr><th>版本</th><th>品目</th><th>卷/册</th><th>译者</th><th>年代</th></tr>";
+  GAP.vs.forEach(function(v){h+="<tr><td>"+v.n+"</td><td style=font-weight:700;color:var(--gold)>"+v.c+"</td><td>"+v.v+"</td><td>"+v.t+"</td><td>"+v.p+"</td></tr>";});
   h+="</table></div>";
-  h+="<div class=section><h2 style=color:var(--gold)>🗺 对译优先级</h2>P0: Ch.11 如来华严品 · Ch.28 普贤宣说品 — 汉文全缺<br>P1: Ch.27 十地品 · Ch.40 离世间品</div>";
-  GAP.warnings.forEach(function(w){h+="<div style=background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.2);border-radius:8px;padding:8px 12px;margin:4px 0;font-size:0.8em;color:var(--red)>"+w+"</div>";});
+  var ds={A:{i:"🔴",l:"藏文独有品目",c:"#c46b5d",d:"汉文三译完全缺失"},B:{i:"🟠",l:"内容实质性参差",c:"#c8893e",d:"同名品内容有显著差异"},C:{i:"🟡",l:"结构/开合不同",c:"#a08020",d:"品目序号名称开合不同"},D:{i:"🔵",l:"品目级微小差异",c:"#5e8b9e",d:"个别段落不同"},E:{i:"🟢",l:"汉藏基本对应",c:"#7d9a6e",d:"32品大致一致"}};
+  h+="<h2 style=color:var(--gold)>📊 差异分布 (藏文45品 vs 汉文39品)</h2><div class=section style=display:flex;gap:10px;flex-wrap:wrap>";
+  ["A","B","C","D","E"].forEach(function(t){var d=ds[t];h+="<span style=flex:1;min-width:130px;background:var(--card);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--line);border-left:3px solid "+d.c+"><div style=font-size:1.3em>"+d.i+"</div><div style=font-size:2em;font-weight:700;color:"+d.c+">"+(GAP.sm[t]||0)+"</div><div style=font-weight:600>"+d.l+"</div><div style=font-size:0.8em;color:var(--text2)>"+d.d+"</div></span>";});
+  h+="</div>";
+  h+="<h2 style=color:var(--gold)>📋 逐品差异详情</h2><div class=section><table class=v-table><tr><th>藏文#</th><th>八十华严#</th><th>品名</th><th>类型</th><th>差异说明</th></tr>";
+  GAP.cs.forEach(function(ch){var b="badge b"+ch.tp;h+="<tr><td>"+(ch.bo||"—")+"</td><td>"+(ch.z80||"<span class=miss>✗</span>")+"</td><td>"+ch.ti+(ch.sa?" <span style=font-size:0.8em;color:var(--text2)>"+ch.sa+"</span>":"")+"</td><td><span class='"+b+"'>"+ch.tp+"</span></td><td style=font-size:0.8em>"+(ch.sm||"")+"</td></tr>";});
+  h+="</table></div>";
+  h+="<h2 style=color:var(--gold)>🗺 对译优先级</h2><div class=section><p><b style=color:#c46b5d>P0</b> Ch.11 如来华严品 · Ch.28 普贤宣说品 — 汉文全缺</p><p><b style=color:#c8893e>P1</b> Ch.27 十地品 · Ch.40 离世间品 — 内容参差</p></div>";
+  GAP.wn.forEach(function(w){h+="<div style=background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.2);border-radius:8px;padding:8px 12px;margin:4px 0;font-size:0.8em;color:var(--red)>"+w+"</div>";});
   gv.innerHTML=h;
 }
 
-// --- PRACTICE TAB ---
+// ═══ PRACTICE TAB ═══
 function renderPractice(){
-  document.getElementById("practice-view").innerHTML="<div class=section><h2 style=color:var(--gold)>🧘 华严行法</h2><p>参考大华严寺海云继梦和上修行体系。<br>核心: 安那般那数息观 · 置心一处 · 法界三观。</p></div>"
-  +"<div class=section><h2 style=color:var(--gold)>📐 修行三阶段</h2><p><b>资粮道</b> — 发心工程: 人格健康+出离心+菩提心</p><p><b>前行</b> — 内摄工程: 安般守意·数随止观还净</p><p><b>正行</b> — 等持工程: 定慧等持·海印三昧</p></div>"
-  +"<div class=section><h2 style=color:var(--gold)>📖 讲法资源</h2><p>🎙 Apple Podcast: 普贤乘华严宗 | 🌐 大华严寺: huayenworld.org</p></div>";
+  var pv=document.getElementById("practice-view");if(!pv)return;
+  pv.innerHTML="<div class=section><h2>🧘 华严行法 — 修行蓝图</h2><p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。</p></div>"
+  +"<div class=section><h2>📐 修行三阶段</h2>"
+  +"<div class=stage-box><b>一、资粮道 — 发心工程</b><br>三门必修: 人格健康、出离心、菩提心。技术面: 纯化禅(动→静)→象限转移→瞬间定。工程面: 心性培养+戒律基础。</div>"
+  +"<div class=stage-box><b>二、前行 — 内摄工程（界内定）</b><br>核心: 安那般那数息观(数·随·止·观·还·净)。四种观法: 唯心识观→真如实现→毗婆舍那→奢摩他。禅定次第: 四天王定(初信)→忉利定(二信)→欲界定→色界定→无色界定。</div>"
+  +"<div class=stage-box><b>三、正行 — 等持工程（界外定）</b><br>前半程: 三摩呬多(Samāhita)。后半程: 三摩钵底(Samāpatti)。究竟: 三摩地(Samādhi)。依杜顺法界三观，透过海印三昧呈现华严境界。</div>"
+  +"</div>"
+  +"<div class=section><h2>📊 十信法门·前行对应</h2><table class=v-table><tr><th>信位</th><th>禅定</th><th>法位</th><th>观法</th><th>关键检验</th></tr>"
+  +"<tr><td>初信</td><td>四天王定</td><td>煖法</td><td>唯心识观·自省三业</td><td>觉醒生命意义</td></tr>"
+  +"<tr><td>二信</td><td>忉利定</td><td>顶法</td><td>观妄念所由生</td><td>确认菩提心·收心工程</td></tr>"
+  +"<tr><td>三信</td><td>欲界定</td><td>忍法</td><td>轻安三相</td><td>菩提心稳定·摄众共修</td></tr>"
+  +"<tr><td>四信</td><td>未到定</td><td>世第一法</td><td>安般守意</td><td>置心风门·心不散乱</td></tr>"
+  +"<tr><td>五~十信</td><td>色界·无色界定</td><td>—</td><td>奢摩他·毗婆舍那</td><td>舍妄念→入界外定</td></tr>"
+  +"</table></div>"
+  +"<div class=section><h2>🎯 核心禅法</h2><p style=line-height:1.8><b>根本行法:</b> 安那般那(Ānāpāna)数息观—六妙门(数·随·止·观·还·净)。<b>置心一处:</b> 端身正坐，置心风门；使心不乱，若心他缘，摄心令返。<b>参禅金三角:</b> 置心一处·放下着·吸闭吐。<b>法界三观:</b> 真空绝相观→理事无碍观→周遍含融观。<b>东山法门:</b> 海云继梦复兴失传八百余年的身—息—心观行次第。</p><p style=color:var(--gold);margin-top:8px><b>海云法语:</b> 「听经就是要你去实践！知道不算，做到才算。」— 禅是自在的境界。</p></div>"
+  +"<div class=section><h2>📖 讲法资源</h2><p style=line-height:1.8>🎙 Apple Podcast/Spotify: 普贤乘华严宗 | 🌐 大华严寺: huayenworld.org</p><p style=font-size:0.82em;color:var(--text2)><b>系列讲法(23个系列):</b> S3 华严禅行法 · S8 禅与入定 · S9 东山法门与禅宗的特色 · S2 华严经教与行法</p><p style=font-size:0.82em;color:var(--text2)><b>核心著作:</b> 《迈向佛陀的境界》《禅，怎么参？》《煖身：华严禅修入门》《禅修正行》</p></div>"
+  +"<div class=section><h2>🏛 相关道场</h2><p style=line-height:1.8>📍 南投大华严寺 — 海云继梦导师·普贤乘根本道场<br>📍 台北福慧寺 — 钦因长老·高原法系在台道场<br>📍 台北华严莲社 — 贤度法师·华严专宗学院</p></div>";
 }
 
-// --- INIT ---
-D("INIT starting...");
+// ═══ INIT ═══
 resizeTL();
-D("Canvas: "+tl.W+"x"+tl.H);
 drawTL(null);
-D("drawTL done");
 initMap();
-D("map init done");
 renderGap();
-D("renderGap done");
 renderPractice();
-D("renderPractice done");
 
-// Search
+// Events
 document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value.trim();drawTL(selectedId);});
-
-// Scroll
-document.getElementById("tl-panel").addEventListener("wheel",onWheel,{passive:false});
-document.getElementById("tl-panel").addEventListener("mousedown",onMD);
-document.getElementById("tl-panel").addEventListener("mousemove",onMM);
-document.getElementById("tl-panel").addEventListener("mouseup",onMU);
-document.getElementById("tl-panel").addEventListener("mouseleave",onMU);
-document.getElementById("tl-panel").addEventListener("click",onClick);
-
-// Touch
-document.getElementById("tl-panel").addEventListener("touchstart",function(e){if(e.touches.length===1){tl.drag=true;tl.lastX=e.touches[0].clientX;}e.preventDefault();},{passive:false});
-document.getElementById("tl-panel").addEventListener("touchmove",function(e){if(tl.drag){var dx=e.touches[0].clientX-tl.lastX;tl.ox+=dx;tl.lastX=e.touches[0].clientX;drawTL(selectedId);}e.preventDefault();},{passive:false});
-document.getElementById("tl-panel").addEventListener("touchend",function(){tl.drag=false;});
+var panel=document.getElementById("tl-panel");
+panel.addEventListener("wheel",onWheel,{passive:false});
+panel.addEventListener("mousedown",onMD); panel.addEventListener("mousemove",onMM);
+panel.addEventListener("mouseup",onMU); panel.addEventListener("mouseleave",onMU);
+panel.addEventListener("click",onClick);
+panel.addEventListener("touchstart",function(e){if(e.touches.length===1){tl.drag=true;tl.lastX=e.touches[0].clientX;}e.preventDefault();},{passive:false});
+panel.addEventListener("touchmove",function(e){if(tl.drag){var dx=e.touches[0].clientX-tl.lastX;tl.ox+=dx;tl.lastX=e.touches[0].clientX;drawTL(selectedId);}e.preventDefault();},{passive:false});
+panel.addEventListener("touchend",function(){tl.drag=false;});
 
 // Controls
 document.getElementById("reset-btn").addEventListener("click",function(){clearSelection();searchQuery="";document.getElementById("search-input").value="";tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);if(map)map.setView([33,110],4);});
@@ -288,13 +276,12 @@ document.querySelectorAll("#controls button[data-filter]").forEach(function(btn)
   btn.classList.add("active");
   var lin=btn.dataset.filter;
   if(lin==="all"){clearSelection();return;}
-  var ids=DATA.nodes.filter(function(n){return n.lineage===lin;}).map(function(n){return n.id;});
+  var ids=DATA.nodes.filter(function(n){return n.li===lin;}).map(function(n){return n.id;});
   if(ids.length>0)selectPerson(ids[0]);
 });});
 
-// Final setup
-tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-D("INIT complete — all systems ready");
+// Final: set viewport & draw
+tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);
 </script>
 </body>
 </html>
