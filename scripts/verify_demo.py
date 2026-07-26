@@ -91,7 +91,22 @@ if '"id": "person_003"' not in html and 'person_003' not in html:
 else:
     errors += ok('Key persons present (法藏, 海云继梦)')
 
-# 9. Three tabs
+# 9. Check for unescaped quotes in strings: pattern is "text" inside another "string"
+# Find lines like: h+="... "..."; which indicates an unescaped inner quote
+lines = js_content.split('\n')
+quote_issues = 0
+for i, line in enumerate(lines):
+    stripped = line.strip()
+    if stripped.startswith('h+=') or stripped.startswith('pv.innerHTML'):
+        # Count double quotes - should be even (opening + closing pairs)
+        dq = stripped.count('\"')
+        if dq % 2 != 0:
+            errors += fail(f'Unescaped quotes at line ~{i}: {stripped[:80]}')
+            quote_issues += 1
+if quote_issues == 0:
+    errors += ok('No unescaped quotes in string literals')
+
+# 10. Three tabs
 tab_count = html.count('data-tab=')
 if tab_count == 3:
     errors += ok(f'3 tabs present')
