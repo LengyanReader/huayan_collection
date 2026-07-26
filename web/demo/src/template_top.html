@@ -19,8 +19,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #tabs button{padding:10px 20px;border:none;background:none;color:var(--text2);cursor:pointer;font-size:0.85em;border-bottom:3px solid transparent;transition:all 0.25s;font-weight:500}
 #tabs button:hover{color:var(--text)}
 #tabs button.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600}
-.tab-content{display:none;flex:1;overflow:hidden}
+.tab-content{display:none;flex:1;overflow:hidden;animation:fadein 0.3s ease}
 .tab-content.active{display:flex;flex-direction:column}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
 #search-bar{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}
 #search-bar input{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}
 #main-row{display:flex;flex:1;min-height:0}
