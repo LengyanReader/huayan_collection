@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Test</title></head>
+<body>
+<h1>GitHub Pages JS Test</h1>
+<p id="result" style="color:red">JS NOT running</p>
+<div id="dynamic"></div>
+<script>
+document.getElementById('result').textContent = 'JS IS running!';
+document.getElementById('result').style.color = 'green';
+var d = document.createElement('div');
+d.textContent = 'Dynamic content created. Count: ' + (1+2+3);
+d.style.background = '#efe';
+document.getElementById('dynamic').appendChild(d);
+</script>
+</body></html>
