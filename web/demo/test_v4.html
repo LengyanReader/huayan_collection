@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>华严宗 · 法脉全景</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{--bg:#f6f2e8;--panel:#fdfaf3;--card:#fefdf9;--gold:#b8863c;--gold-l:#d4a852;--blue:#5e8b9e;--green:#7d9a6e;--red:#c46b5d;--orange:#c8893e;--text:#3d3427;--text2:#7a7262;--line:#e5ddd0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;display:flex;flex-direction:column}
+#header{background:linear-gradient(135deg,#e8e0d2,#efe6d8);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+#header h1{font-size:1.1em;color:var(--gold);font-weight:600}
+#header .sub{font-size:0.7em;color:var(--text2)}
+#tabs{display:flex;background:var(--panel);border-bottom:1px solid var(--line);padding:0 14px}
+#tabs button{padding:10px 24px;border:none;background:none;color:var(--text2);cursor:pointer;font-size:0.85em;border-bottom:3px solid transparent;transition:all 0.25s;font-weight:500}
+#tabs button:hover{color:var(--text)}
+#tabs button.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600}
+.tab-content{display:none;flex:1;overflow:hidden}
+.tab-content.active{display:flex;flex-direction:column}
+
+#search-bar{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}
+#search-bar input{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}
+#search-bar input:focus{border-color:var(--gold)}
+#search-bar .hint{font-size:0.7em;color:var(--text2)}
+
+#main-row{display:flex;flex:1;min-height:0}
+#tl-panel{flex:1;position:relative;background:var(--panel);overflow:hidden;cursor:grab;min-width:0}
+#tl-panel:active{cursor:grabbing}
+#tl-panel canvas{display:block;position:absolute;top:0;left:0}
+#tl-tooltip{position:absolute;background:var(--card);color:var(--text);padding:10px 14px;border-radius:8px;font-size:0.82em;pointer-events:none;opacity:0;transition:opacity 0.15s;max-width:300px;z-index:100;box-shadow:0 4px 14px rgba(60,40,20,0.14);border:1px solid var(--line)}
+#tl-tooltip h3{color:var(--gold);margin-bottom:3px}
+#tl-tooltip .d{color:var(--text2);font-size:0.85em;margin:2px 0}
+
+#divider{width:6px;background:var(--line);cursor:col-resize;flex-shrink:0;transition:background 0.2s}
+#divider:hover,#divider.active{background:var(--gold)}
+#side{width:390px;display:flex;flex-direction:column;min-width:240px;border-left:none}
+
+/* ═══ Mobile ═══ */
+@media(max-width:768px){
+  body{overflow:auto}
+  #header{padding:6px 10px}
+  #header h1{font-size:0.95em}
+  #header .sub{display:none}
+  #tabs{padding:0 8px}
+  #tabs button{padding:8px 14px;font-size:0.78em}
+  #search-bar input{width:140px;font-size:0.75em}
+  #search-bar .hint{display:none}
+  #main-row{flex-direction:column}
+  #tl-panel{flex:none;height:50vh;min-height:300px}
+  #divider{width:100%;height:6px;cursor:row-resize}
+  #side{width:100%!important;flex:none;height:auto;min-width:0;flex-direction:row}
+  #map-wrap{flex:1;min-height:200px;height:30vh}
+  #info-box{flex:none;min-height:auto;max-height:40vh;font-size:0.75em}
+  #controls{gap:4px;padding:4px 8px}
+  #controls button{padding:3px 8px;font-size:0.68em}
+  #controls .sep{font-size:0.65em}
+}
+#map-wrap{flex:1;min-height:230px;position:relative}
+#map{width:100%;height:100%}
+#info-box{background:var(--panel);border-top:1px solid var(--line);padding:14px 16px;font-size:0.82em;min-height:170px;display:flex;align-items:flex-start;color:var(--text);overflow-y:auto}
+#info-box .inner{width:100%}
+#info-box h3{color:var(--gold);margin-bottom:4px;font-size:1.15em}
+#info-box .row{margin:3px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}
+#info-box .tag{padding:2px 8px;border-radius:10px;font-size:0.78em;font-weight:600;white-space:nowrap}
+#info-box .loc-item{margin:2px 0;font-size:0.9em}
+#info-box .loc-item .yr{color:var(--text2);font-size:0.85em}
+#info-box .empty{text-align:center;color:var(--text2);width:100%;padding-top:24px}
+
+#controls{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);z-index:5}
+#controls .sep{color:var(--text2);font-size:0.7em;margin:0 3px}
+#controls button{padding:4px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em;transition:all 0.2s;font-weight:500}
+#controls button:hover{background:#f0ebe0;color:var(--text);border-color:var(--gold-l)}
+#controls button.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+#controls .layer-btn{font-size:0.7em;padding:3px 10px}
+#controls .layer-btn.on{background:var(--green);color:#fff;border-color:var(--green)}
+
+.leaflet-popup-content{font-size:0.85em;color:var(--text)}
+.leaflet-popup-content b{color:var(--gold)}
+.leaflet-popup-content-wrapper{background:var(--card);border-radius:8px}
+
+
+/* ═══ GAP TAB ═══ */
+#gap-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px;display:flex;flex-direction:column;gap:18px;max-width:100%}
+#gap-view h2{color:var(--gold);font-size:1.05em}
+.section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;width:100%}
+.v-table{width:100%;border-collapse:collapse;font-size:0.82em}
+.v-table th{background:linear-gradient(180deg,#f5efe4,#efe6d8);color:var(--text);padding:8px 10px;text-align:left;font-weight:600}
+.v-table td{padding:7px 10px;border-bottom:1px solid var(--line)}
+.diff-cards{display:flex;gap:10px;flex-wrap:wrap}
+.d-card{flex:1;min-width:125px;background:var(--card);border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:all 0.2s;border:2px solid var(--line)}
+.d-card:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(60,40,20,0.1)}
+.d-card .count{font-size:2em;font-weight:700;margin:5px 0}
+.d-card.sel{border-color:var(--gold-l)}
+.c-table{width:100%;border-collapse:collapse;font-size:0.79em}
+.c-table th{background:linear-gradient(180deg,#f5efe4,#efe6d8);color:var(--text2);padding:6px 8px;text-align:left;font-size:0.8em;position:sticky;top:0;font-weight:600}
+.c-table td{padding:5px 8px;border-bottom:1px solid var(--line)}
+.badge{padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:600}
+.bA{background:rgba(196,107,93,0.15);color:var(--red)} .bB{background:rgba(200,137,62,0.15);color:var(--orange)}
+.bC{background:rgba(200,170,40,0.15);color:#a08020} .bD{background:rgba(94,139,158,0.15);color:var(--blue)}
+.bE{background:rgba(125,154,110,0.15);color:var(--green)}
+.miss{color:var(--red);font-weight:600}
+.xref{border-left:3px solid var(--gold);padding:6px 12px;margin:6px 0;background:rgba(200,150,60,0.04);font-size:0.8em}
+.xref .cl{color:var(--gold);font-weight:600} .xref ul{margin:4px 0 0 16px;color:var(--text2)}
+.prow{display:flex;align-items:center;gap:10px;padding:8px 12px;margin:3px 0;background:var(--card);border-radius:8px;font-size:0.82em;border:1px solid var(--line)}
+.pbadge{padding:3px 10px;border-radius:12px;font-size:0.73em;font-weight:700}
+.p0{background:rgba(196,107,93,0.2);color:var(--red)} .p1{background:rgba(200,137,62,0.2);color:var(--orange)}
+.wbox{background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.18);border-radius:8px;padding:9px 12px;font-size:0.76em;color:var(--red)}
+#gap-view::-webkit-scrollbar{width:5px}
+#gap-view::-webkit-scrollbar-track{background:var(--bg)}
+#gap-view::-webkit-scrollbar-thumb{background:#d5cdc0;border-radius:3px}
+
+/* ═══ Practice Tab ═══ */
+#practice-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px;display:flex;flex-direction:column;gap:18px;max-width:100%}
+#practice-view h2{color:var(--gold);font-size:1.05em}
+#practice-view h3{color:var(--text);font-size:0.92em;margin:8px 0 4px}
+#practice-view .stage-box{border-left:4px solid var(--gold);padding:10px 14px;margin:6px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.83em;line-height:1.7}
+#practice-view .stage-box .st{color:var(--gold);font-weight:700;font-size:0.9em}
+#practice-view .resource-link{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-size:0.78em;color:var(--blue);text-decoration:none;margin:3px 4px}
+#practice-view .resource-link:hover{background:#f0ebe0;border-color:var(--gold-l)}
+#practice-view::-webkit-scrollbar{width:5px}
+#practice-view::-webkit-scrollbar-track{background:var(--bg)}
+#practice-view::-webkit-scrollbar-thumb{background:#d5cdc0;border-radius:3px}
+</style>
+</head>
+<body>
+
+<div id="header"><div><h1>华严宗部文献与修行资料</h1><span class="sub">贤首宗法脉传承 (557–2024) &nbsp;|&nbsp; 藏汉华严经差异总览</span></div></div>
+<div id="tabs">
+  <button class="active" data-tab="lineage">🌊 法脉传承 · 时空长河</button>
+  <button data-tab="gap">📜 汉藏华严差异对比</button>
+  <button data-tab="practice">🧘 华严行法</button>
+</div>
+
+<div id="tab-lineage" class="tab-content active">
+  <div id="search-bar">
+    <input type="text" id="search-input" placeholder="🔍 检索人物、地点、事件…" oninput="onSearch(this.value)">
+    <span class="hint">点击人物寿命条 → 地图高亮全部关联地点 | 滚轮缩放 | 拖拽平移</span>
+  </div>
+  <div id="main-row">
+    <div id="tl-panel"><canvas id="tl-canvas"></canvas><div id="tl-tooltip"></div></div>
+    <div id="divider"></div>
+    <div id="side">
+      <div id="map-wrap"><div id="map"></div></div>
+      <div id="info-box"><div class="empty">👆 点击时间轴上的人物寿命条<br><span style="font-size:0.85em">地图将高亮全部关联地点 · 下方显示时空详情</span></div></div>
+    </div>
+  </div>
+  <div id="controls">
+    <span class="sep">法系:</span>
+    <button class="active" data-filter="all">全部</button>
+    <button data-filter="华严五祖">五祖</button>
+    <button data-filter="贤首宗高原法系">高原法系</button>
+    <button data-filter="华严莲社">华严莲社</button>
+    <button data-filter="月霞系">月霞系</button>
+    <button data-filter="高丽华严">高丽</button>
+    <button data-filter="临济宗">临济</button>
+    <span class="sep" style="margin-left:8px">图层:</span>
+    <button class="layer-btn on" data-layer="theory">理论</button>
+    <button class="layer-btn on" data-layer="practice">修行</button>
+    <button class="layer-btn on" data-layer="geography">地理</button>
+    <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
+  </div>
+</div>
+
+<div id="tab-gap" class="tab-content"><div id="gap-view"></div></div>
+<div id="tab-practice" class="tab-content" style="overflow-y:auto"><div id="practice-view"></div></div>
+<script>
+(function(){var d=document.createElement('div');d.id='_js_test';d.textContent='JS OK v4';d.style.cssText='position:fixed;top:0;right:0;z-index:99999;background:#7d9a6e;color:#fff;padding:2px 8px;font-size:14px';document.body.appendChild(d);})();
+console.log('v4 JS executed');
+</script>
+</body>
+</html>
