@@ -110,6 +110,18 @@ body{font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;backgroun
 #gap-view::-webkit-scrollbar{width:5px}
 #gap-view::-webkit-scrollbar-track{background:var(--bg)}
 #gap-view::-webkit-scrollbar-thumb{background:#d5cdc0;border-radius:3px}
+
+/* ═══ Practice Tab ═══ */
+#practice-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px;display:flex;flex-direction:column;gap:18px;max-width:100%}
+#practice-view h2{color:var(--gold);font-size:1.05em}
+#practice-view h3{color:var(--text);font-size:0.92em;margin:8px 0 4px}
+#practice-view .stage-box{border-left:4px solid var(--gold);padding:10px 14px;margin:6px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.83em;line-height:1.7}
+#practice-view .stage-box .st{color:var(--gold);font-weight:700;font-size:0.9em}
+#practice-view .resource-link{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-size:0.78em;color:var(--blue);text-decoration:none;margin:3px 4px}
+#practice-view .resource-link:hover{background:#f0ebe0;border-color:var(--gold-l)}
+#practice-view::-webkit-scrollbar{width:5px}
+#practice-view::-webkit-scrollbar-track{background:var(--bg)}
+#practice-view::-webkit-scrollbar-thumb{background:#d5cdc0;border-radius:3px}
 </style>
 </head>
 <body>
@@ -118,6 +130,7 @@ body{font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;backgroun
 <div id="tabs">
   <button class="active" data-tab="lineage">🌊 法脉传承 · 时空长河</button>
   <button data-tab="gap">📜 汉藏华严差异对比</button>
+  <button data-tab="practice">🧘 华严行法</button>
 </div>
 
 <div id="tab-lineage" class="tab-content active">
@@ -151,6 +164,7 @@ body{font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;backgroun
 </div>
 
 <div id="tab-gap" class="tab-content"><div id="gap-view"></div></div>
+<div id="tab-practice" class="tab-content" style="overflow-y:auto"><div id="practice-view"></div></div>
 
 <script>
 // ═══ DATA (locations with time-aware person entries) ═══
@@ -253,7 +267,7 @@ const nodeMap={};
   panel.addEventListener('touchmove',onTouchMove,{passive:false});
   panel.addEventListener('touchend',onTouchEnd);
   window.addEventListener('resize',()=>{resizeTL();drawTL();if(map)map.invalidateSize();});
-  initControls(); renderGap();
+  initControls(); renderGap(); renderPractice();
   initDivider();
   setTimeout(()=>{tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL();},100);
 })();
@@ -530,6 +544,87 @@ GAP.warnings.forEach(w=>{h+=`<div class="wbox">${w}</div>`;});
 h+='</div>';
 gv.innerHTML=h;}
 function filterCT(type){const rows=document.querySelectorAll('#ct .cr'),cards=document.querySelectorAll('.d-card');let active=null;cards.forEach(c=>{if(c.dataset.type===type){if(c.classList.contains('sel')){c.classList.remove('sel');active=null}else{c.classList.add('sel');active=type}}else c.classList.remove('sel');});rows.forEach(r=>{r.style.display=(!active||r.dataset.type===type)?'':'none';});}
-</script>
+
+// ═══ PRACTICE TAB ═══
+function renderPractice(){
+  const pv=document.getElementById('practice-view');if(!pv)return;
+  pv.innerHTML=`
+<div class="section"><h2>🧘 华严行法 — 修行蓝图</h2>
+<p style="font-size:0.82em;color:var(--text2);line-height:1.7;margin-top:6px">
+参考<a href="https://www.huayenworld.org/" target="_blank">大华严寺</a>海云继梦和上所立 <b>「普贤乘华严宗」</b>修行体系。
+以华严禅法为核心，将佛陀心法定为实践行法，透过<b>「心法工程」</b>止住安心、令真心起作用。
+</p></div>
+
+<div class="section"><h2>📐 修行三阶段</h2>
+
+<div class="stage-box"><div class="st">一、资粮道 — 发心工程</div>
+<b>三门必修:</b> ① 人格心理健康（五大人格性≥70分）② 发出离心、发菩提心 ③ 摸索真理，向未知领域探索<br>
+<b>技术面:</b> 纯化禅（动→静），停止大脑作用→象限转移→瞬间定。此阶段不论定的功夫。<br>
+<b>工程面:</b> 心性培养+戒律基础。建立对三宝的正信和生命取向的确认。
+</div>
+
+<div class="stage-box"><div class="st">二、前行 — 内摄工程（界内定）</div>
+<b>核心方法:</b> 安那般那（安般守意）——数、随、止、观、还、净六阶段<br>
+<b>四种观法:</b> 唯心识观（自省三业）→ 真如实现（观五蕴流转）→ 毗婆舍那观（六识流动）→ 奢摩他观（照见五蕴空）<br>
+<b>禅定次第:</b> 妙高定（四天王定·初信）→ 忉利定（二信）→ 欲界定 → 色界定 → 无色界定<br>
+<b>核心工程:</b> 清理欲界、色界、无色界三界生命杂质。十信位各配煖·顶·忍·世第一法。
+</div>
+
+<div class="stage-box"><div class="st">三、正行 — 等持工程（界外定）</div>
+<b>前半程:</b> 三摩呬多（Samāhita）——建立禅定基础<br>
+<b>后半程:</b> 三摩钵底（Samāpatti）——定慧等持，止观双运<br>
+<b>究竟目标:</b> 三摩地（Samādhi）——依杜顺和尚法界三观，透过海印三昧呈现华严境界<br>
+<b>灌顶次第:</b> 忍可灌顶 → 行者灌顶 → 进阶灌顶 → 高阶保衽灌顶
+</div>
+</div>
+
+<div class="section"><h2>📊 十信法门·前行对应</h2>
+<table class="v-table"><tr><th>信位</th><th>禅定</th><th>法位</th><th>观法</th><th>关键检验</th></tr>
+<tr><td>初信</td><td>四天王定</td><td>煖法</td><td>唯心识观</td><td>自省三业·觉醒生命意义·开始疑情</td></tr>
+<tr><td>二信</td><td>忉利定</td><td>顶法</td><td>观妄念所由生</td><td>确认菩提心·纯化禅·六根安顿·收心工程完成</td></tr>
+<tr><td>三信</td><td>欲界定</td><td>忍法</td><td>轻安三相</td><td>菩提心稳定·天王三德·摄众共修</td></tr>
+<tr><td>四信</td><td>未到定</td><td>世第一法</td><td>安般守意</td><td>端坐·置心风门·息调·心不散乱</td></tr>
+<tr><td>五~十信</td><td>色界·无色界定</td><td>—</td><td>奢摩他·毗婆舍那</td><td>渐舍妄念·五识·意识→入界外定</td></tr>
+</table>
+</div>
+
+<div class="section"><h2>🎯 核心禅法</h2>
+<div style="font-size:0.83em;line-height:1.8">
+<p><b>根本行法:</b> 安那般那（Ānāpāna）数息观 — 六妙门（数·随·止·观·还·净）</p>
+<p><b>置心一处:</b> 「置心一处，使心不乱；若心他缘，摄心令返。」——心所安住的「处」越小，成就越快。</p>
+<p><b>参禅金三角:</b> 置心一处 · 放下着 · 参禅金钥匙（吸·闭·吐）— 激发元气（般那）。</p>
+<p><b>法界三观:</b> 真空绝相观 → 理事无碍观 → 周遍含融观 —— 依杜顺《法界观门》呈现华严境界。</p>
+<p><b>东山法门:</b> 海云继梦复兴失传八百余年的禅宗心法行为教学系统，强调身—息—心观行次第。</p>
+<p style="margin-top:6px;color:var(--gold)"><b>海云法语:</b> 「听经就是要你去实践！知道不算，做到才算。」——禅是自在的境界。</p>
+</div></div>
+
+<div class="section"><h2>📖 海云继梦讲法资源</h2>
+<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
+<a class="resource-link" href="https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889" target="_blank">🎙 Apple Podcast</a>
+<a class="resource-link" href="https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc" target="_blank">🎧 Spotify</a>
+<a class="resource-link" href="https://www.huayenworld.org/" target="_blank">🌐 大华严寺官网</a>
+</div>
+
+<div style="font-size:0.81em;line-height:1.9;color:var(--text2)">
+<p><b>🎬 系列讲法 (23个系列):</b></p>
+<p>📂 S3 华严禅行法 · S8 禅与入定 · S9 东山法门与禅宗的特色 · S2 华严经教与行法 · S7 学佛与修行</p>
+<p style="margin-top:8px"><b>📚 核心著作:</b></p>
+<p>《迈向佛陀的境界——华严禅前行概论》 · 《禅，怎么参？》 · 《煖身：华严禅修入门》</p>
+<p>《禅修正行——安那般那数息观》 · 《禅观概论》 · 《禅，就要这么拿！》</p>
+<p style="margin-top:8px"><b>📝 讲法文稿:</b></p>
+<p><a href="http://wuming.xuefo.com/nr/7/69543.html" target="_blank">华严六科·华严禅行法</a> ·
+<a href="http://wuming.xuefo.net/nr/7/70408.html" target="_blank">禅修正行</a> ·
+<a href="https://www.fjdh.cn/wumin/2013/11/190837302819.html" target="_blank">禅修前行</a> ·
+<a href="https://www.huayenworld.org/%e8%8f%af%e5%9a%b4%e7%a6%aa%e7%b0%a1%e4%bb%8b%e7%89%b9%e8%89%b2/" target="_blank">华严禅观特色</a></p>
+</div></div>
+
+<div class="section"><h2>🏛 相关道场</h2>
+<div style="font-size:0.82em;line-height:1.8">
+<p>📍 <b>南投大华严寺</b> — 海云继梦导师·普贤乘华严宗根本道场</p>
+<p>📍 <b>台北树林福慧寺</b> — 钦因长老·贤首宗高原法系在台根本道场</p>
+<p>📍 <b>台北华严莲社</b> — 贤度法师·华严专宗学院</p>
+<p style="color:var(--text2)">三处道场共同构成当代华严宗修行弘化的核心网络。</p>
+</div></div>`;
+}
 </body>
 </html>
