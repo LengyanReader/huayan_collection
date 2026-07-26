@@ -423,7 +423,8 @@ function selectPerson(id){selectedId=id;drawTL(id);showInfo(nodeMap[id]);highlig
 function clearSelection(){selectedId=null;drawTL(null);clearMapHighlights();document.getElementById('info-box').innerHTML='<div class="empty">👆 点击时间轴上的人物寿命条<br><span style="font-size:0.85em">地图将高亮全部关联地点 · 下方显示时空详情</span></div>';}
 
 function highlightAllLocs(pid){
-  clearMapHighlights();if(!map)return;
+  if(!map||typeof L==='undefined')return;
+  clearMapHighlights();
   const locs=getPersonLocs(pid);if(locs.length===0)return;
   const lats=locs.map(l=>l.lat),lngs=locs.map(l=>l.lng);
   const cLat=lats.reduce((a,b)=>a+b,0)/lats.length,cLng=lngs.reduce((a,b)=>a+b,0)/lngs.length;
@@ -446,6 +447,7 @@ function highlightAllLocs(pid){
   },900);
 }
 function clearMapHighlights(){
+  if(!map||typeof L==='undefined')return;
   pulseMarkers.forEach(m=>{m.setRadius(9);const mc={temple:'#b8863c',mountain:'#7d9a6e',region:'#c46b5d',city:'#5e8b9e'};const t=m._ld?.type||'temple';m.setStyle({fillColor:mc[t]||'#b0a898',color:'#fff',weight:2,fillOpacity:0.9});});
   pulseMarkers=[];
 }
@@ -469,6 +471,8 @@ function showInfo(p){
 
 // ═══ MAP ═══
 function initMap(){
+  if(typeof L==='undefined'){document.getElementById('map').innerHTML='<div style=\"display:flex;align-items:center;justify-content:center;height:100%;color:var(--text2);font-size:0.85em\">🗺 地图组件未加载<br><span style=\"font-size:0.7em\">Leaflet CDN 不可用</span></div>';return;}
+  if(map){map.invalidateSize();return;}
   map=L.map('map',{zoomControl:true}).setView([33,110],4);
   // 双层地图: 高德中文底图(清晰) + OSM当地语言标注(50%可见)
   L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}',{subdomains:['1','2','3','4'],maxZoom:18}).addTo(map);
