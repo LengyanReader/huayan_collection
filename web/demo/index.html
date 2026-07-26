@@ -259,9 +259,11 @@ const nodeMap={};
 (function init(){
   try{
   DATA=GRAPH; DATA.nodes.forEach(n=>{nodeMap[n.id]=n;});
+  // Diagnostic: show loading then clear
+  var ib=document.getElementById('info-box');if(ib)ib.innerHTML='<div class=empty>✅ 数据已加载 · 渲染中…</div>';
   buildTimelineRows(); initTabs(); initMap(); initSearch();
   resizeTL(); drawTL();
-  const panel=document.getElementById('tl-panel');
+  var panel=document.getElementById('tl-panel');
   panel.addEventListener('wheel',onWheel,{passive:false});
   panel.addEventListener('mousedown',onMD); panel.addEventListener('mousemove',onMM);
   panel.addEventListener('mouseup',onMU); panel.addEventListener('mouseleave',onMU);
