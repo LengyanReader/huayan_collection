@@ -86,7 +86,13 @@ GAP = json.dumps({
 
 # ── Assemble ──
 data_js = data_js.replace('__GRAPH__', GRAPH).replace('__GAP__', GAP)
-html = template_top + data_js + lineage_js + gap_js + practice_js + init_js + template_bot
+# Strip any stray leading characters from source files
+def clean(s):
+    while s and s[0] not in '<':
+        s = s[1:]
+    return s
+
+html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + init_js + clean(template_bot)
 
 out = os.path.join(ROOT, 'web', 'demo', 'index.html')
 with open(out, 'w', encoding='utf-8') as f:
