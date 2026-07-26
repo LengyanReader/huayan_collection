@@ -145,7 +145,30 @@ function selectPerson(id){
     +locHTML+tch+std+cont
     +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
     +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.join("</b> · <b>")+"</b></div>":"");
-  if(map&&locs.length>0){var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});}
+  if(map&&locs.length>0){
+    var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});
+    // Highlight all related markers
+    setTimeout(function(){
+      map.eachLayer(function(layer){
+        if(!layer._ld)return;
+        var isRelated=locs.some(function(l){return l.id===layer._ld.id;});
+        if(isRelated){
+          layer.setRadius(13);layer.setStyle({fillColor:"#c46b5d",color:"#fff",weight:3,fillOpacity:1});
+          if(!layer._popupOpen){layer.openPopup();layer._popupOpen=true;setTimeout(function(){layer.closePopup();layer._popupOpen=false;},3000);}
+        }else{
+          layer.setRadius(7);layer.setStyle({fillOpacity:0.5});
+        }
+      });
+    },900);
+    // Reset after 4 seconds
+    setTimeout(function(){
+      map.eachLayer(function(layer){
+        if(!layer._ld)return;
+        var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};
+        layer.setRadius(9);layer.setStyle({fillColor:mc[layer._ld.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});
+      });
+    },4000);
+  }
 }
 function clearSelection(){selectedId=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击时间轴上的人物寿命条</div>";}
 
