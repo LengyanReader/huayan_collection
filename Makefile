@@ -10,7 +10,7 @@ PYTHON = $(CONDA_PYTHON)
 NEO4J_HOME = $(HOME)/neo4j-community-5.26.4
 JAVA_HOME = "C:/Program Files/Java/jdk-20"
 
-.PHONY: install install-dev db-init db-reset neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test clean env-info verify-sources verify-data
+.PHONY: install install-dev db-init db-reset neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test clean env-info verify-sources verify-data demo demo-build demo-verify demo-serve demo-deploy
 
 ## 环境信息
 env-info:
@@ -72,6 +72,26 @@ verify-sources-json:
 
 verify-data: verify-sources
 	@echo "Data validation complete."
+
+## Demo (web/demo/index.html)
+demo-build:
+	cd web/demo && $(PYTHON) scripts/build.py
+
+demo-verify:
+	$(PYTHON) scripts/verify_demo.py
+
+demo-serve:
+	@echo "Starting local server at http://localhost:8080"
+	cd web/demo && $(PYTHON) -m http.server 8080
+
+demo: demo-build demo-verify
+	@echo "Demo built and verified. Run 'make demo-serve' for local testing."
+
+demo-deploy: demo
+	git add web/demo/index.html
+	git commit -m "deploy: demo update" || true
+	git push origin main
+	@echo "Deployed. Wait ~2min for GitHub Pages CDN."
 
 ## 清理
 clean:
