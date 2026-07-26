@@ -36,8 +36,10 @@ else:
 
 # 3. No </script> inside JS content
 inline_start = html.find('<script>', html.find('tab-gap'))
+diag_end = html.find('</script>', inline_start) + 9
+main_start = html.find('<script>', diag_end)
 inline_end = html.rfind('</script>')
-js_content = html[inline_start+8:inline_end]
+js_content = html[main_start+8:inline_end]
 if '</script>' in js_content.lower():
     errors += fail('Found </script> inside JS content')
 else:
