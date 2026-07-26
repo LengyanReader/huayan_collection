@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>华严宗 · 法脉全景</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -254,6 +257,7 @@ let tl={canvas:null,ctx:null,W:0,H:0,ox:0,oy:0,scale:1,minX:100,maxX:2060,rows:[
 const nodeMap={};
 
 (function init(){
+  try{
   DATA=GRAPH; DATA.nodes.forEach(n=>{nodeMap[n.id]=n;});
   buildTimelineRows(); initTabs(); initMap(); initSearch();
   resizeTL(); drawTL();
@@ -270,6 +274,7 @@ const nodeMap={};
   initControls(); renderGap(); renderPractice();
   initDivider();
   setTimeout(()=>{tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL();},100);
+  }catch(e){console.error(e);document.getElementById('info-box').innerHTML=\"<span style='color:#c46b5d'>⚠ \"+e.message+\"</span>\";}
 })();
 
 function initDivider(){
