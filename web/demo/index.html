@@ -214,21 +214,63 @@ document.getElementById("tabs").addEventListener("click",function(e){
 // ═══ GAP TAB ═══
 function renderGap(){
   var gv=document.getElementById("gap-view");if(!gv)return;
-  var h="<h2 style=color:var(--gold)>📜 版本对照</h2><div class=section><table class=v-table><tr><th>版本</th><th>品目</th><th>卷/册</th><th>译者</th><th>年代</th></tr>";
-  GAP.vs.forEach(function(v){h+="<tr><td>"+v.n+"</td><td style=font-weight:700;color:var(--gold)>"+v.c+"</td><td>"+v.v+"</td><td>"+v.t+"</td><td>"+v.p+"</td></tr>";});
+  var h="<h2 style=color:var(--gold)>📜 版本对照</h2><div class=section><table class=v-table><tr><th>版本</th><th>品目</th><th>卷/册</th><th>译者</th><th>年代</th><th>底本</th></tr>";
+  GAP.vs.forEach(function(v){h+="<tr><td>"+v.n+"</td><td style=font-weight:700;color:var(--gold)>"+v.c+"</td><td>"+v.v+"</td><td>"+v.t+"</td><td>"+v.p+"</td><td style=font-size:0.8em;color:var(--text2)>"+(v.p.indexOf('9')>=0?'于阗本':'梵本')+"</td></tr>";});
   h+="</table></div>";
+
+  // ── Key insight box ──
+  h+="<div class=section style=border-left:4px solid var(--gold)>";
+  h+="<p style=line-height:1.8><b style=color:var(--gold)>核心发现:</b> 藏文《华严经》(Toh44)译自<b>中亚于阗原本</b>，而非印度梵本。汉文《八十华严》亦由于阗请来梵本，但两者所据底本已不同——九世纪时华严梵本已多系分化。藏文45品中有<b>2品为汉文三译所完全缺失</b>（如来华严品、普贤宣说品），另有3品有实质性内容参差。</p>";
+  h+="</div>";
+
+  // ── Diff summary cards ──
   var ds={A:{i:"🔴",l:"藏文独有品目",c:"#c46b5d",d:"汉文三译完全缺失"},B:{i:"🟠",l:"内容实质性参差",c:"#c8893e",d:"同名品内容有显著差异"},C:{i:"🟡",l:"结构/开合不同",c:"#a08020",d:"品目序号名称开合不同"},D:{i:"🔵",l:"品目级微小差异",c:"#5e8b9e",d:"个别段落不同"},E:{i:"🟢",l:"汉藏基本对应",c:"#7d9a6e",d:"32品大致一致"}};
   h+="<h2 style=color:var(--gold)>📊 差异分布 (藏文45品 vs 汉文39品)</h2><div class=section style=display:flex;gap:10px;flex-wrap:wrap>";
   ["A","B","C","D","E"].forEach(function(t){var d=ds[t];h+="<span style=flex:1;min-width:130px;background:var(--card);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--line);border-left:3px solid "+d.c+"><div style=font-size:1.3em>"+d.i+"</div><div style=font-size:2em;font-weight:700;color:"+d.c+">"+(GAP.sm[t]||0)+"</div><div style=font-weight:600>"+d.l+"</div><div style=font-size:0.8em;color:var(--text2)>"+d.d+"</div></span>";});
   h+="</div>";
-  h+="<h2 style=color:var(--gold)>📋 逐品差异详情</h2><div class=section><table class=v-table><tr><th>藏文#</th><th>八十华严#</th><th>品名</th><th>类型</th><th>差异说明</th></tr>";
+
+  // ── Chapter detail table ──
+  h+="<h2 style=color:var(--gold)>📋 关键差异品目详情</h2><div class=section><table class=v-table><tr><th>藏文#</th><th>八十#</th><th>品名</th><th>类型</th><th>差异说明</th></tr>";
   GAP.cs.forEach(function(ch){var b="badge b"+ch.tp;h+="<tr><td>"+(ch.bo||"—")+"</td><td>"+(ch.z80||"<span class=miss>✗</span>")+"</td><td>"+ch.ti+(ch.sa?" <span style=font-size:0.8em;color:var(--text2)>"+ch.sa+"</span>":"")+"</td><td><span class='"+b+"'>"+ch.tp+"</span></td><td style=font-size:0.8em>"+(ch.sm||"")+"</td></tr>";});
   h+="</table></div>";
-  h+="<h2 style=color:var(--gold)>🗺 对译优先级</h2><div class=section><p><b style=color:#c46b5d>P0</b> Ch.11 如来华严品 · Ch.28 普贤宣说品 — 汉文全缺</p><p><b style=color:#c8893e>P1</b> Ch.27 十地品 · Ch.40 离世间品 — 内容参差</p></div>";
+
+  // ── Textual variant case studies ──
+  h+="<div class=section><h2>🔬 文本变异案例</h2>";
+  h+="<div class=stage-box><b>案例一: Samantabhadra 译名差异</b><br>藏文「kun tu bzang po」→ 汉译多作「普贤」。但84000翻译注释指出，汉文个别处作<b>「普贤尊」</b>（pu xian zun, Lord Samantabhadra），而藏文保持统一译法。此差异反映汉译者对不同语境下的敬称处理。</div>";
+  h+="<div class=stage-box><b>案例二: gata 多义歧出</b><br>同一梵文词 <i>gata</i>（「已去/已至」 vs 「现在/存在」），藏文和汉文译者在不同品中选择不同义项，导致同一段落产生「如来已去」和「如来现前」两种截然不同的理解。</div>";
+  h+="<div class=stage-box><b>案例三: 底本系谱分化</b><br>德格版Tshalpa系与Themephangma系之间，同一品末偈颂有出入（后者缺末偈）。84000翻译以Tshalpa为底本，Themephangma异读入校注。此说明藏文大藏经内部亦存在版本分化。</div>";
+  h+="<div class=stage-box><b>案例四: 「如孝子心」版本歧异</b><br>同一段落: 六十华严作「发孝子心，见善知识无厌足故」；八十华严增「承顺颜色故」；四十华严又增「承事供养」。藏文本将su-putra直译，未添加「孝」的汉文化概念。越晚译本解释性附加语越长。</div>";
+  h+="</div>";
+
+  // ── Scholarly perspectives ──
+  h+="<div class=section><h2>🎓 学界观点</h2>";
+  h+="<div class=stage-box><b>Imre Hamar</b>（Eötvös Loránd University, 匈牙利）<br>「华严经在印度和中亚并非一时一地之作，而是由多部原本独立的单行经（如《十地品》《入法界品》）于公元2-4世纪逐步汇集而成。藏汉译本的差异，本质上是不同编纂阶段和不同地域传统的反映。」</div>";
+  h+="<div class=stage-box><b>高明道</b>（台湾华严学者）<br>「南极汉文《华严经》，由于译者抉择各异，撰述注释的古德就有不同空间可发挥。参考藏译本便可发现，诠释的领域又不一样。即使有印度语文本可供对照，个人的解读终究脱离不了诠释。」</div>";
+  h+="<div class=stage-box><b>84000翻译团队</b> (Peter Alan Roberts 等)<br>「华严经的梵文原本在古代即存在至少两种以上版本。证据包括"观世音/观自在"拼写差异——法藏《探玄记》卷19明确记载了这种拼写分歧。」</div>";
+  h+="</div>";
+
+  // ── Priority roadmap ──
+  h+="<h2 style=color:var(--gold)>🗺 对译优先级</h2><div class=section>";
+  h+="<p style=line-height:1.8><b style=color:#c46b5d>P0 — 最高优先:</b> Ch.11 如来华严品 · Ch.28 普贤宣说品 — 汉文三译全缺，学术价值最高。需从BDRC获取Toh44藏文电子文本后进行汉英双语翻译。</p>";
+  h+="<p style=line-height:1.8><b style=color:#c8893e>P1 — 高优先:</b> Ch.27 十地品 · Ch.40 离世间品 — 有鸠摩罗什《十住经》、世亲《十地经论》、竺法护《度世品经》等别译可作对勘桥梁。</p>";
+  h+="<p style=line-height:1.8><b style=color:#a08020>P2 — 中优先:</b> Ch.33 寿量品 · Ch.39 如来出现品 — 有玄奘《显无边佛土功德经》和竺法护《如来兴显经》等别译可对照。</p>";
+  h+="</div>";
+
+  // ── References ──
+  h+="<div class=section><h2>📚 参考文献</h2><p style=font-size:0.82em;line-height:1.9>";
+  h+="📄 Imre Hamar. <i>The Chinese Understanding of the Avataṃsaka-sūtra</i>. Universität Wien, 2014.<br>";
+  h+="📄 Peter Alan Roberts (tr.). <i>The Stem Array</i> (Gaṇḍavyūha, Toh 44-45). 84000 Project, 2021.<br>";
+  h+="📄 高明道. 《华严经》汉藏译本对比研究. 华严专宗国际学术研讨会.<br>";
+  h+="📄 孙飞鹏. 《华严经》卷十一夏汉文本对勘研究. 西夏研究, 2026(1).<br>";
+  h+="📄 铃木大拙 (D.T. Suzuki). 三本《华严经》的异同及其要义. 《禅论集之三·菩萨行处》.<br>";
+  h+="📄 吴国圣. 华严经典中的「牛头」——以梵、于阗、汉、藏、满文佛经译本为主的讨论. 2015.<br>";
+  h+="📄 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas — Kangyur Section</a></p></div>";
+
+  // ── Warnings ──
   GAP.wn.forEach(function(w){h+="<div style=background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.2);border-radius:8px;padding:8px 12px;margin:4px 0;font-size:0.8em;color:var(--red)>"+w+"</div>";});
+
   gv.innerHTML=h;
 }
-
 // ═══ PRACTICE TAB ═══
 function renderPractice(){
   var pv=document.getElementById("practice-view");if(!pv)return;
@@ -315,16 +357,33 @@ function renderPractice(){
   +"📄 杜顺和尚.《华严五教止观》. 大正藏 T45n1867.<br>"
   +"📄 杜顺和尚.《华严法界观门》. 大正藏 T45n1884.</p></div>"
 
+  // ── 华严六科 ──
+  +"<div class=section><h2>📚 华严六科 — 系统教学体系</h2><p style=line-height:1.8>海云继梦将华严教学系统化为<b>六大科目</b>，涵盖从理论到实修的完整次第：</p>"
+  +"<table class=v-table><tr><th>科目</th><th>内容</th><th>定位</th></tr>"
+  +"<tr><td><b>华严学概论</b></td><td>华严经结构·五教十宗·法界缘起</td><td>理论基础</td></tr>"
+  +"<tr><td><b>华严经教行法</b></td><td>经文解读·修行法门·善财五十三参</td><td>经教实践</td></tr>"
+  +"<tr><td><b>华严禅行法</b></td><td>安般守意·置心一处·三摩地次第</td><td>禅修核心</td></tr>"
+  +"<tr><td><b>华严戒律观</b></td><td>菩萨戒·梵网经·现代持戒</td><td>戒律基础</td></tr>"
+  +"<tr><td><b>华严净土法门</b></td><td>华藏世界·毗卢遮那净土·念佛法门</td><td>净土信仰</td></tr>"
+  +"<tr><td><b>华严密法</b></td><td>华严字母·曼荼罗·真言持诵</td><td>密教实践</td></tr>"
+  +"</table></div>"
+
   // ── 视频与资源 ──
   +"<div class=section><h2>🎬 讲法视频与资源链接</h2><p style=line-height:1.8>"
+  +"<b style=color:var(--gold)>📺 视频平台:</b><br>"
+  +"▶ <a href='https://search.bilibili.com/all?keyword=%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6' target=_blank>Bilibili: 海云继梦讲经全集</a> —《华严六科》(42h完整版)·《善财童子五十三参》·《禅法开示》<br>"
+  +"▶ YouTube: 搜索「大華嚴寺」或「海雲繼夢」— 大华严寺官方频道<br>"
+  +"▶ <a href='https://www.douyin.com/hashtag/1715101942833175' target=_blank>抖音: #海云继梦导师</a> — 短片段每日法语<br>"
+  +"<b style=color:var(--gold)>🎧 音频平台:</b><br>"
+  +"🎙 <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast: 普贤乘华严宗</a> (20+系列,每周更新)<br>"
+  +"🎧 <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify: 普贤乘华严宗</a><br>"
+  +"<b style=color:var(--gold)>📖 文稿与网站:</b><br>"
   +"🌐 <a href='https://www.huayenworld.org/' target=_blank>大华严寺全球资讯网</a> — 海云继梦导师官方网站<br>"
   +"🌐 <a href='https://www.huayenworld.org/%e8%8f%af%e5%9a%b4%e7%a6%aa%e7%b0%a1%e4%bb%8b%e7%89%b9%e8%89%b2/' target=_blank>华严禅观特色·修行蓝图全文</a><br>"
-  +"🎙 <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast: 普贤乘华严宗</a><br>"
-  +"🎧 <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify: 普贤乘华严宗</a><br>"
   +"📖 <a href='http://wuming.xuefo.com/nr/7/69543.html' target=_blank>华严六科·华严禅行法（文稿）</a><br>"
   +"📖 <a href='http://wuming.xuefo.net/nr/7/70408.html' target=_blank>禅修正行（文稿）</a><br>"
   +"📖 <a href='https://www.fjdh.cn/wumin/2013/11/190837302819.html' target=_blank>禅修前行（文稿）</a><br>"
-  +"<b>系列讲法 (23个系列):</b> S2 华严经教与行法 · S3 华严禅行法 · S7 学佛与修行 · S8 禅与入定 · S9 东山法门与禅宗的特色<br>"
+  +"<b>23个系列讲法:</b> S2 华严经教与行法 · S3 华严禅行法 · S7 学佛与修行 · S8 禅与入定 · S9 东山法门<br>"
   +"<b>核心著作:</b> 《迈向佛陀的境界》《禅，怎么参？》《煖身》《禅修正行》《禅观概论》《就从这里入法界》</p></div>"
 
   // ── 相关道场 ──

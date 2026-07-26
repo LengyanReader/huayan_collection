@@ -84,16 +84,33 @@ function renderPractice(){
   +"📄 杜顺和尚.《华严五教止观》. 大正藏 T45n1867.<br>"
   +"📄 杜顺和尚.《华严法界观门》. 大正藏 T45n1884.</p></div>"
 
+  // ── 华严六科 ──
+  +"<div class=section><h2>📚 华严六科 — 系统教学体系</h2><p style=line-height:1.8>海云继梦将华严教学系统化为<b>六大科目</b>，涵盖从理论到实修的完整次第：</p>"
+  +"<table class=v-table><tr><th>科目</th><th>内容</th><th>定位</th></tr>"
+  +"<tr><td><b>华严学概论</b></td><td>华严经结构·五教十宗·法界缘起</td><td>理论基础</td></tr>"
+  +"<tr><td><b>华严经教行法</b></td><td>经文解读·修行法门·善财五十三参</td><td>经教实践</td></tr>"
+  +"<tr><td><b>华严禅行法</b></td><td>安般守意·置心一处·三摩地次第</td><td>禅修核心</td></tr>"
+  +"<tr><td><b>华严戒律观</b></td><td>菩萨戒·梵网经·现代持戒</td><td>戒律基础</td></tr>"
+  +"<tr><td><b>华严净土法门</b></td><td>华藏世界·毗卢遮那净土·念佛法门</td><td>净土信仰</td></tr>"
+  +"<tr><td><b>华严密法</b></td><td>华严字母·曼荼罗·真言持诵</td><td>密教实践</td></tr>"
+  +"</table></div>"
+
   // ── 视频与资源 ──
   +"<div class=section><h2>🎬 讲法视频与资源链接</h2><p style=line-height:1.8>"
+  +"<b style=color:var(--gold)>📺 视频平台:</b><br>"
+  +"▶ <a href='https://search.bilibili.com/all?keyword=%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6' target=_blank>Bilibili: 海云继梦讲经全集</a> —《华严六科》(42h完整版)·《善财童子五十三参》·《禅法开示》<br>"
+  +"▶ YouTube: 搜索「大華嚴寺」或「海雲繼夢」— 大华严寺官方频道<br>"
+  +"▶ <a href='https://www.douyin.com/hashtag/1715101942833175' target=_blank>抖音: #海云继梦导师</a> — 短片段每日法语<br>"
+  +"<b style=color:var(--gold)>🎧 音频平台:</b><br>"
+  +"🎙 <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast: 普贤乘华严宗</a> (20+系列,每周更新)<br>"
+  +"🎧 <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify: 普贤乘华严宗</a><br>"
+  +"<b style=color:var(--gold)>📖 文稿与网站:</b><br>"
   +"🌐 <a href='https://www.huayenworld.org/' target=_blank>大华严寺全球资讯网</a> — 海云继梦导师官方网站<br>"
   +"🌐 <a href='https://www.huayenworld.org/%e8%8f%af%e5%9a%b4%e7%a6%aa%e7%b0%a1%e4%bb%8b%e7%89%b9%e8%89%b2/' target=_blank>华严禅观特色·修行蓝图全文</a><br>"
-  +"🎙 <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast: 普贤乘华严宗</a><br>"
-  +"🎧 <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify: 普贤乘华严宗</a><br>"
   +"📖 <a href='http://wuming.xuefo.com/nr/7/69543.html' target=_blank>华严六科·华严禅行法（文稿）</a><br>"
   +"📖 <a href='http://wuming.xuefo.net/nr/7/70408.html' target=_blank>禅修正行（文稿）</a><br>"
   +"📖 <a href='https://www.fjdh.cn/wumin/2013/11/190837302819.html' target=_blank>禅修前行（文稿）</a><br>"
-  +"<b>系列讲法 (23个系列):</b> S2 华严经教与行法 · S3 华严禅行法 · S7 学佛与修行 · S8 禅与入定 · S9 东山法门与禅宗的特色<br>"
+  +"<b>23个系列讲法:</b> S2 华严经教与行法 · S3 华严禅行法 · S7 学佛与修行 · S8 禅与入定 · S9 东山法门<br>"
   +"<b>核心著作:</b> 《迈向佛陀的境界》《禅，怎么参？》《煖身》《禅修正行》《禅观概论》《就从这里入法界》</p></div>"
 
   // ── 相关道场 ──
