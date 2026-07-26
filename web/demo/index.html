@@ -91,12 +91,12 @@ document.body.insertAdjacentHTML("afterbegin","<div id=_ok style=position:fixed;
 <script>
 // ═══ Script2: Debug panel + L() definition ═══
 document.body.insertAdjacentHTML("beforeend","<div id=_dbg style=position:fixed;bottom:0;left:0;right:0;z-index:99998;background:rgba(0,0,0,0.9);color:#0f0;font:11px monospace;padding:6px 10px;max-height:30vh;overflow-y:auto>READY</div>");
-function L(m){var e=document.getElementById("_dbg");if(e){e.textContent+=String(m)+"\\n";e.scrollTop=e.scrollHeight;}}
+function D(m){var e=document.getElementById("_dbg");if(e){e.textContent+=String(m)+"\\n";e.scrollTop=e.scrollHeight;}}
 </script>
 
 <script>
 // ═══ Script3: Main application ═══
-L("Script3 start");
+D("Script3 start");
 
 // --- DATA ---
 var GRAPH={"nodes":[
@@ -155,7 +155,7 @@ var GRAPH={"nodes":[
 
 var GAP={"overview":{"bo_chapters":45,"zh_80_chapters":39,"zh_60_chapters":34,"zh_40_chapters":1,"versions":[{"name":"藏文德格版 (Toh 44)","chapters":45,"volumes":"4册","translator":"胜友、智军","period":"9世纪初"},{"name":"汉文八十华严 (T10n0279)","chapters":39,"volumes":"80卷","translator":"实叉难陀","period":"699年"},{"name":"汉文六十华严 (T09n0278)","chapters":34,"volumes":"60卷","translator":"佛驮跋陀罗","period":"420年"},{"name":"汉文四十华严 (T10n0293)","chapters":1,"volumes":"40卷","translator":"般若","period":"798年"}]},"diff_summary":{"A":{"count":2,"icon":"🔴","label":"藏文独有品目","color":"#c46b5d"},"B":{"count":3,"icon":"🟠","label":"内容参差","color":"#c8893e"},"C":{"count":3,"icon":"🟡","label":"结构不同","color":"#a08020"},"D":{"count":1,"icon":"🔵","label":"微小差异","color":"#5e8b9e"},"E":{"count":32,"icon":"🟢","label":"基本对应","color":"#7d9a6e"}},"chapters":[{"order_bo":11,"order_zh_80":null,"title_zh":"★ 如来华严品","is_unique_bo":true,"diff_type":"A","diff_summary":"藏文独有品目。汉文三译全缺。"},{"order_bo":28,"order_zh_80":null,"title_zh":"★ 普贤宣说品","is_unique_bo":true,"diff_type":"A","diff_summary":"藏文独有。与T0847高度对应。"},{"order_bo":27,"order_zh_80":26,"title_zh":"十地品","diff_type":"B","diff_summary":"藏文源自更完整梵本。"},{"order_bo":40,"order_zh_80":38,"title_zh":"离世间品","diff_type":"B","diff_summary":"藏文有独特异译段落。"},{"order_bo":7,"order_zh_80":7,"title_zh":"如来名号品","diff_type":"C"}],"warnings":["⚠ 眷属经关联需逐条人工核实"]};
 
-L("DATA loaded: "+GRAPH.nodes.length+" nodes, "+GRAPH.edges.length+" edges, "+GRAPH.locations.length+" locations");
+D("DATA loaded: "+GRAPH.nodes.length+" nodes, "+GRAPH.edges.length+" edges, "+GRAPH.locations.length+" locations");
 
 // --- GLOBALS ---
 var DATA=GRAPH, map=null, selectedId=null, searchQuery="", pulseMarkers=[];
@@ -179,7 +179,7 @@ function buildTimelineRows(){
 }
 
 buildTimelineRows();
-L("Rows built: "+tl.rows.length);
+D("Rows built: "+tl.rows.length);
 
 // --- CANVAS DRAWING ---
 function resizeTL(){var p=document.getElementById("tl-panel");tl.W=p.clientWidth;tl.H=p.clientHeight;tl.canvas=document.getElementById("tl-canvas");tl.canvas.width=tl.W;tl.canvas.height=tl.H;tl.canvas.style.width=tl.W+"px";tl.canvas.style.height=tl.H+"px";tl.ctx=tl.canvas.getContext("2d");}
@@ -313,17 +313,17 @@ function renderPractice(){
 }
 
 // --- INIT ---
-L("INIT starting...");
+D("INIT starting...");
 resizeTL();
-L("Canvas: "+tl.W+"x"+tl.H);
+D("Canvas: "+tl.W+"x"+tl.H);
 drawTL(null);
-L("drawTL done");
+D("drawTL done");
 initMap();
-L("map init done");
+D("map init done");
 renderGap();
-L("renderGap done");
+D("renderGap done");
 renderPractice();
-L("renderPractice done");
+D("renderPractice done");
 
 // Search
 document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value.trim();drawTL(selectedId);});
@@ -354,7 +354,7 @@ document.querySelectorAll("#controls button[data-filter]").forEach(function(btn)
 
 // Final setup
 tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-L("INIT complete — all systems ready");
+D("INIT complete — all systems ready");
 </script>
 </body>
 </html>
