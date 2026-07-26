@@ -55,6 +55,29 @@ for loc in locations['locations']:
         'tp': loc.get('type', 'temple'), 'dy': loc.get('dynasty', ''),
         'ds': (loc.get('description', '') or '')[:120], 'ps': loc.get('related_persons', [])
     })
+# ── Additional persons: Japan lineage ──
+nodes.append({'id':'person_j01','n':'良弁','dy':'唐/日本','ti':'东大寺初代别当','li':'日本华严','tp':'patriarch','b':689,'d':773,'bio':'审祥弟子。东大寺开山。主持《华严经》讲说。','wk':[]})
+nodes.append({'id':'person_j02','n':'实忠','dy':'日本','ti':'东大寺二代','li':'日本华严','tp':'patriarch','b':726,'d':800,'bio':'良弁弟子。继承东大寺华严教学。','wk':[]})
+nodes.append({'id':'person_j03','n':'等定','dy':'日本','ti':'东大寺华严','li':'日本华严','tp':'patriarch','b':800,'d':870,'bio':'日本华严宗传承者。','wk':[]})
+nodes.append({'id':'person_j04','n':'圣宝','dy':'日本','ti':'醍醐寺开山','li':'日本华严','tp':'patriarch','b':832,'d':909,'bio':'理源大师。兼传真言与华严。','wk':[]})
+nodes.append({'id':'person_j05','n':'观贤','dy':'日本','ti':'东大寺别当','li':'日本华严','tp':'patriarch','b':853,'d':925,'bio':'东大寺华严教学之中兴。','wk':[]})
+
+# ── Additional persons: contemporary scholars ──
+nodes.append({'id':'person_s01','n':'魏道儒','dy':'当代','ti':'中国社科院学部委员','li':'当代学者','tp':'scholar','b':1955,'d':None,'bio':'中国社会科学院学部委员。著有《中国华严宗通史》。','wk':['中国华严宗通史']})
+nodes.append({'id':'person_s02','n':'王颂','dy':'当代','ti':'北京大学教授','li':'当代学者','tp':'scholar','b':1965,'d':None,'bio':'北京大学哲学系教授。华严思想与佛教史研究。','wk':[]})
+nodes.append({'id':'person_s03','n':'邱高兴','dy':'当代','ti':'中国人民大学教授','li':'当代学者','tp':'scholar','b':1966,'d':None,'bio':'中国人民大学哲学院教授。华严宗与佛教中国化研究。','wk':['华严宗与佛教中国化']})
+nodes.append({'id':'person_s04','n':'张文良','dy':'当代','ti':'中国人民大学教授','li':'当代学者','tp':'scholar','b':1966,'d':None,'bio':'中国人民大学佛教与宗教学理论研究所教授。华严思想研究。','wk':[]})
+
+# Edge: Japan lineage chain
+edges.append({'s':'person_050','t':'person_j01','r':'MASTER','li':'日本华严'})
+edges.append({'s':'person_j01','t':'person_j02','r':'MASTER','li':'日本华严'})
+edges.append({'s':'person_j02','t':'person_j03','r':'MASTER','li':'日本华严'})
+edges.append({'s':'person_j03','t':'person_j04','r':'INFLUENCE','li':'日本华严'})
+edges.append({'s':'person_j03','t':'person_j05','r':'MASTER','li':'日本华严'})
+
+# Location: 东大寺
+locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})
+
 locs.append({'id': 'l_h', 'n': '南投大华严寺', 'lat': 23.92, 'lng': 120.88, 'tp': 'temple', 'dy': '当代',
              'ds': '海云继梦导师。普贤乘根本道场。', 'ps': ['person_042']})
 locs.append({'id': 'l_f', 'n': '台北福慧寺', 'lat': 24.98, 'lng': 121.42, 'tp': 'temple', 'dy': '当代',

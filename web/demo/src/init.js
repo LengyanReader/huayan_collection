@@ -19,8 +19,16 @@ panel.addEventListener("touchstart",function(e){if(e.touches.length===1){tl.drag
 panel.addEventListener("touchmove",function(e){if(tl.drag){var dx=e.touches[0].clientX-tl.lastX;tl.ox+=dx;tl.lastX=e.touches[0].clientX;drawTL(selectedId);}e.preventDefault();},{passive:false});
 panel.addEventListener("touchend",function(){tl.drag=false;});
 
+// Bookmarks
+document.querySelectorAll("#controls button[data-bookmark]").forEach(function(btn){btn.addEventListener("click",function(){
+  var range=btn.dataset.bookmark.split(",");
+  var from=parseInt(range[0]),to=parseInt(range[1]);
+  tl.ox=40;tl.scale=(tl.W-80)/(to-from);tl.minX=from-50;tl.maxX=to+50;
+  tl.ox=40-(from-50-tl.minX)*tl.scale;drawTL(selectedId);
+});});
+
 // Controls
-document.getElementById("reset-btn").addEventListener("click",function(){clearSelection();searchQuery="";document.getElementById("search-input").value="";tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);if(map)map.setView([33,110],4);});
+document.getElementById("reset-btn").addEventListener("click",function(){clearSelection();searchQuery="";document.getElementById("search-input").value="";tl.minX=100;tl.maxX=2060;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);if(map)map.setView([33,110],4);});
 document.querySelectorAll("#controls button[data-filter]").forEach(function(btn){btn.addEventListener("click",function(){
   document.querySelectorAll("#controls button[data-filter]").forEach(function(b){b.classList.remove("active");});
   btn.classList.add("active");

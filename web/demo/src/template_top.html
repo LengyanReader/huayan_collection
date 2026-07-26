@@ -24,7 +24,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #search-bar{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}
 #search-bar input{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}
 #main-row{display:flex;flex:1;min-height:0}
-#tl-panel{flex:1;position:relative;background:var(--panel);overflow:hidden;min-width:0;cursor:grab}
+#tl-panel{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:0;cursor:grab}
 #tl-panel canvas{display:block;position:absolute;top:0;left:0}
 #side{width:380px;display:flex;flex-direction:column;min-width:240px;border-left:1px solid var(--line)}
 #map-wrap{flex:1;min-height:200px;position:relative}
@@ -82,6 +82,10 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button data-filter="贤首宗高原法系">高原法系</button>
     <button data-filter="华严莲社">华严莲社</button>
     <button data-filter="月霞系">月霞系</button>
+    <span style="font-size:0.7em;color:var(--text2);margin-left:8px">书签:</span>
+    <button data-bookmark="557,841">五祖时代</button>
+    <button data-bookmark="1000,1120">高丽传入</button>
+    <button data-bookmark="1850,2026">近现代</button>
     <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
   </div>
 </div>
