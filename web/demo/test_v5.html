@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>华严宗 · 法脉全景</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{--bg:#f6f2e8;--panel:#fdfaf3;--card:#fefdf9;--gold:#b8863c;--gold-l:#d4a852;--blue:#5e8b9e;--green:#7d9a6e;--red:#c46b5d;--orange:#c8893e;--text:#3d3427;--text2:#7a7262;--line:#e5ddd0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;display:flex;flex-direction:column}
+#header{background:linear-gradient(135deg,#e8e0d2,#efe6d8);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+#header h1{font-size:1.1em;color:var(--gold);font-weight:600}
+#header .sub{font-size:0.7em;color:var(--text2)}
+#tabs{display:flex;background:var(--panel);border-bottom:1px solid var(--line);padding:0 14px}
+#tabs button{padding:10px 24px;border:none;background:none;color:var(--text2);cursor:pointer;font-size:0.85em;border-bottom:3px solid transparent;transition:all 0.25s;font-weight:500}
+#tabs button:hover{color:var(--text)}
+#tabs button.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600}
+.tab-content{display:none;flex:1;overflow:hidden}
+.tab-content.active{display:flex;flex-direction:column}
+
+#search-bar{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}
+#search-bar input{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}
+#search-bar input:focus{border-color:var(--gold)}
+#search-bar .hint{font-size:0.7em;color:var(--text2)}
+
+#main-row{display:flex;flex:1;min-height:0}
+#tl-panel{flex:1;position:relative;background:var(--panel);overflow:hidden;cursor:grab;min-width:0}
+#tl-panel:active{cursor:grabbing}
+#tl-panel canvas{display:block;position:absolute;top:0;left:0}
+#tl-tooltip{position:absolute;background:var(--card);color:var(--text);padding:10px 14px;border-radius:8px;font-size:0.82em;pointer-events:none;opacity:0;transition:opacity 0.15s;max-width:300px;z-index:100;box-shadow:0 4px 14px rgba(60,40,20,0.14);border:1px solid var(--line)}
+#tl-tooltip h3{color:var(--gold);margin-bottom:3px}
+#tl-tooltip .d{color:var(--text2);font-size:0.85em;margin:2px 0}
+
+#divider{width:6px;background:var(--line);cursor:col-resize;flex-shrink:0;transition:background 0.2s}
+#divider:hover,#divider.active{background:var(--gold)}
+#side{width:390px;display:flex;flex-direction:column;min-width:240px;border-left:none}
+
+/* ═══ Mobile ═══ */
+@media(max-width:768px){
+  body{overflow:auto}
+  #header{padding:6px 10px}
+  #header h1{font-size:0.95em}
+  #header .sub{display:none}
+  #tabs{padding:0 8px}
+  #tabs button{padding:8px 14px;font-size:0.78em}
+  #search-bar input{width:140px;font-size:0.75em}
+  #search-bar .hint{display:none}
+  #main-row{flex-direction:column}
+  #tl-panel{flex:none;height:50vh;min-height:300px}
+  #divider{width:100%;height:6px;cursor:row-resize}
+  #side{width:100%!important;flex:none;height:auto;min-width:0;flex-direction:row}
+  #map-wrap{flex:1;min-height:200px;height:30vh}
+  #info-box{flex:none;min-height:auto;max-height:40vh;font-size:0.75em}
+  #controls{gap:4px;padding:4px 8px}
+  #controls button{padding:3px 8px;font-size:0.68em}
+  #controls .sep{font-size:0.65em}
+}
+#map-wrap{flex:1;min-height:230px;position:relative}
+#map{width:100%;height:100%}
+#info-box{background:var(--panel);border-top:1px solid var(--line);padding:14px 16px;font-size:0.82em;min-height:170px;display:flex;align-items:flex-start;color:var(--text);overflow-y:auto}
+#info-box .inner{width:100%}
+#info-box h3{color:var(--gold);margin-bottom:4px;font-size:1.15em}
+#info-box .row{margin:3px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}
+#info-box .tag{padding:2px 8px;border-radius:10px;font-size:0.78em;font-weight:600;white-space:nowrap}
+#info-box .loc-item{margin:2px 0;font-size:0.9em}
+#info-box .loc-item .yr{color:var(--text2);font-size:0.85em}
+#info-box .empty{text-align:center;color:var(--text2);width:100%;padding-top:24px}
+
+#controls{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);z-index:5}
+#controls .sep{color:var(--text2);font-size:0.7em;margin:0 3px}
+#controls button{padding:4px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em;transition:all 0.2s;font-weight:500}
+#controls button:hover{background:#f0ebe0;color:var(--text);border-color:var(--gold-l)}
+#controls button.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+#controls .layer-btn{font-size:0.7em;padding:3px 10px}
+#controls .layer-btn.on{background:var(--green);color:#fff;border-color:var(--green)}
+
+.leaflet-popup-content{font-size:0.85em;color:var(--text)}
+.leaflet-popup-content b{color:var(--gold)}
+.leaflet-popup-content-wrapper{background:var(--card);border-radius:8px}
+
+
+/* ═══ GAP TAB ═══ */
+#gap-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px;display:flex;flex-direction:column;gap:18px;max-width:100%}
+#gap-view h2{color:var(--gold);font-size:1.05em}
+.section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;width:100%}
+.v-table{width:100%;border-collapse:collapse;font-size:0.82em}
+.v-table th{background:linear-gradient(180deg,#f5efe4,#efe6d8);color:var(--text);padding:8px 10px;text-align:left;font-weight:600}
+.v-table td{padding:7px 10px;border-bottom:1px solid var(--line)}
+.diff-cards{display:flex;gap:10px;flex-wrap:wrap}
+.d-card{flex:1;min-width:125px;background:var(--card);border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:all 0.2s;border:2px solid var(--line)}
+.d-card:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(60,40,20,0.1)}
+.d-card .count{font-size:2em;font-weight:700;margin:5px 0}
+.d-card.sel{border-color:var(--gold-l)}
+.c-table{width:100%;border-collapse:collapse;font-size:0.79em}
+.c-table th{background:linear-gradient(180deg,#f5efe4,#efe6d8);color:var(--text2);padding:6px 8px;text-align:left;font-size:0.8em;position:sticky;top:0;font-weight:600}
+.c-table td{padding:5px 8px;border-bottom:1px solid var(--line)}
+.badge{padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:600}
+.bA{background:rgba(196,107,93,0.15);color:var(--red)} .bB{background:rgba(200,137,62,0.15);color:var(--orange)}
+.bC{background:rgba(200,170,40,0.15);color:#a08020} .bD{background:rgba(94,139,158,0.15);color:var(--blue)}
+.bE{background:rgba(125,154,110,0.15);color:var(--green)}
+.miss{color:var(--red);font-weight:600}
+.xref{border-left:3px solid var(--gold);padding:6px 12px;margin:6px 0;background:rgba(200,150,60,0.04);font-size:0.8em}
+.xref .cl{color:var(--gold);font-weight:600} .xref ul{margin:4px 0 0 16px;color:var(--text2)}
+.prow{display:flex;align-items:center;gap:10px;padding:8px 12px;margin:3px 0;background:var(--card);border-radius:8px;font-size:0.82em;border:1px solid var(--line)}
+.pbadge{padding:3px 10px;border-radius:12px;font-size:0.73em;font-weight:700}
+.p0{background:rgba(196,107,93,0.2);color:var(--red)} .p1{background:rgba(200,137,62,0.2);color:var(--orange)}
+.wbox{background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.18);border-radius:8px;padding:9px 12px;font-size:0.76em;color:var(--red)}
+#gap-view::-webkit-scrollbar{width:5px}
+#gap-view::-webkit-scrollbar-track{background:var(--bg)}
+#gap-view::-webkit-scrollbar-thumb{background:#d5cdc0;border-radius:3px}
+
+/* ═══ Practice Tab ═══ */
+#practice-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px;display:flex;flex-direction:column;gap:18px;max-width:100%}
+#practice-view h2{color:var(--gold);font-size:1.05em}
+#practice-view h3{color:var(--text);font-size:0.92em;margin:8px 0 4px}
+#practice-view .stage-box{border-left:4px solid var(--gold);padding:10px 14px;margin:6px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.83em;line-height:1.7}
+#practice-view .stage-box .st{color:var(--gold);font-weight:700;font-size:0.9em}
+#practice-view .resource-link{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-size:0.78em;color:var(--blue);text-decoration:none;margin:3px 4px}
+#practice-view .resource-link:hover{background:#f0ebe0;border-color:var(--gold-l)}
+#practice-view::-webkit-scrollbar{width:5px}
+#practice-view::-webkit-scrollbar-track{background:var(--bg)}
+#practice-view::-webkit-scrollbar-thumb{background:#d5cdc0;border-radius:3px}
+</style>
+</head>
+<body>
+
+<div id="header"><div><h1>华严宗部文献与修行资料</h1><span class="sub">贤首宗法脉传承 (557–2024) &nbsp;|&nbsp; 藏汉华严经差异总览</span></div></div>
+<div id="tabs">
+  <button class="active" data-tab="lineage">🌊 法脉传承 · 时空长河</button>
+  <button data-tab="gap">📜 汉藏华严差异对比</button>
+  <button data-tab="practice">🧘 华严行法</button>
+</div>
+
+<div id="tab-lineage" class="tab-content active">
+  <div id="search-bar">
+    <input type="text" id="search-input" placeholder="🔍 检索人物、地点、事件…" oninput="onSearch(this.value)">
+    <span class="hint">点击人物寿命条 → 地图高亮全部关联地点 | 滚轮缩放 | 拖拽平移</span>
+  </div>
+  <div id="main-row">
+    <div id="tl-panel"><canvas id="tl-canvas"></canvas><div id="tl-tooltip"></div></div>
+    <div id="divider"></div>
+    <div id="side">
+      <div id="map-wrap"><div id="map"></div></div>
+      <div id="info-box"><div class="empty">👆 点击时间轴上的人物寿命条<br><span style="font-size:0.85em">地图将高亮全部关联地点 · 下方显示时空详情</span></div></div>
+    </div>
+  </div>
+  <div id="controls">
+    <span class="sep">法系:</span>
+    <button class="active" data-filter="all">全部</button>
+    <button data-filter="华严五祖">五祖</button>
+    <button data-filter="贤首宗高原法系">高原法系</button>
+    <button data-filter="华严莲社">华严莲社</button>
+    <button data-filter="月霞系">月霞系</button>
+    <button data-filter="高丽华严">高丽</button>
+    <button data-filter="临济宗">临济</button>
+    <span class="sep" style="margin-left:8px">图层:</span>
+    <button class="layer-btn on" data-layer="theory">理论</button>
+    <button class="layer-btn on" data-layer="practice">修行</button>
+    <button class="layer-btn on" data-layer="geography">地理</button>
+    <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
+  </div>
+</div>
+
+<div id="tab-gap" class="tab-content"><div id="gap-view"></div></div>
+<div id="tab-practice" class="tab-content" style="overflow-y:auto"><div id="practice-view"></div></div>
+<script>
+// Self-test
+(function(){var d=document.createElement("div");d.id="_js_test";d.textContent="JS OK v5";d.style.cssText="position:fixed;top:0;right:0;z-index:99999;background:#7d9a6e;color:#fff;padding:2px 8px;font-size:14px";document.body.appendChild(d);})();
+// DATA
+const GRAPH={"nodes":[
+{"id":"p_000a","name":"龙树","dynasty":"古印度","title":"八宗共祖","lineage":"印度源流","type":"patriarch","birth":200,"death":300,"bio":"入龙宫取华严下本流通人间。"},
+{"id":"p_000b","name":"世亲","dynasty":"古印度","title":"唯识祖师","lineage":"印度源流","type":"scholar","birth":350,"death":430,"bio":"造《十地经论》。六相名相影响华严。"},
+{"id":"p_006","name":"佛驮跋陀罗","dynasty":"东晋","title":"六十华严译者","lineage":"译师","type":"translator","birth":359,"death":429,"bio":"译六十华严(418-420)。建康道场寺。"},
+{"id":"p_007b","name":"支娄迦谶","dynasty":"后汉","title":"最早华严译家","lineage":"译师","type":"translator","birth":140,"death":180,"bio":"首译《兜沙经》(167)。"},
+{"id":"p_007","name":"实叉难陀","dynasty":"唐","title":"八十华严译者","lineage":"译师","type":"translator","birth":652,"death":710,"bio":"于阗人。695-699年于洛阳译八十华严。法藏证义。"},
+{"id":"p_008","name":"般若","dynasty":"唐","title":"四十华严译者","lineage":"译师","type":"translator","birth":740,"death":810,"bio":"克什米尔人。796-798年译四十华严。"},
+{"id":"p_020","name":"胜友","dynasty":"唐","title":"藏译华严主译","lineage":"译师","type":"translator","birth":780,"death":850,"bio":"印度译师。9世纪初译藏文华严(Toh44)。"},
+{"id":"p_020b","name":"智军","dynasty":"唐","title":"藏译华严主译","lineage":"译师","type":"translator","birth":790,"death":860,"bio":"吐蕃译师。与胜友合译藏文华严。"},
+{"id":"p_001","name":"杜顺","dynasty":"唐","title":"华严初祖","lineage":"华严五祖","type":"patriarch","birth":557,"death":640,"bio":"雍州万年人。年十八出家于因圣寺。著《法界观门》开华严观法。","works":["法界观门","五教止观"]},
+{"id":"p_002","name":"智俨","dynasty":"唐","title":"华严二祖","lineage":"华严五祖","type":"patriarch","birth":602,"death":668,"bio":"天水人。从杜顺出家。于至相寺著《搜玄记》。","works":["华严经搜玄记"]},
+{"id":"p_003","name":"法藏","dynasty":"唐","title":"贤首国师","lineage":"华严五祖","type":"patriarch","birth":643,"death":712,"bio":"华严宗实际创立者。祖籍康居。参与实叉难陀译场证义。系统化五教十宗判教。讲经三十余遍。","works":["华严五教章","探玄记","金师子章"]},
+{"id":"p_004","name":"澄观","dynasty":"唐","title":"清凉国师","lineage":"华严五祖","type":"patriarch","birth":738,"death":839,"bio":"越州山阴人。历学律禅诸宗。于五台山大华严寺著《华严经疏》六十卷。历七帝之师。","works":["华严经疏","演义钞"]},
+{"id":"p_005","name":"宗密","dynasty":"唐","title":"圭峰禅师","lineage":"华严五祖","type":"patriarch","birth":780,"death":841,"bio":"果州人。初习儒学后从澄观学华严。晚年住圭峰著书。融合禅教。","works":["禅源诸诠集","原人论"]},
+{"id":"p_009","name":"李通玄","dynasty":"唐","title":"枣柏大师","lineage":"李通玄系","type":"scholar","birth":635,"death":730,"bio":"于方山著《新华严经论》四十卷。融易入华严。"},
+{"id":"p_011","name":"净源","dynasty":"宋","title":"宋代华严中兴","lineage":"华严五祖","type":"patriarch","birth":1011,"death":1088,"bio":"住杭州慧因寺。传法高丽义天。"},
+{"id":"p_010","name":"义天","dynasty":"宋","title":"大觉国师","lineage":"高丽华严","type":"scholar","birth":1055,"death":1101,"bio":"高丽文宗第四子。1085年入宋求法于净源。编《义天录》。"},
+{"id":"p_050","name":"审祥","dynasty":"唐","title":"日本华严初传","lineage":"日本华严","type":"patriarch","birth":690,"death":742,"bio":"新罗僧。从法藏学华严。740年赴日于东大寺宣讲。"},
+{"id":"p_021","name":"高原明昱","dynasty":"明","title":"高原法系之祖","lineage":"贤首宗高原法系","type":"patriarch","birth":1550,"death":1620,"bio":"华严25世。始兼传慈恩宗。"},
+{"id":"p_012","name":"月霞","dynasty":"清","title":"近代华严复兴","lineage":"月霞系","type":"patriarch","birth":1858,"death":1917,"bio":"1914年于常熟兴福寺创立华严大学。"},
+{"id":"p_031","name":"应慈","dynasty":"近现代","title":"华严座主","lineage":"月霞系","type":"patriarch","birth":1873,"death":1965,"bio":"月霞师弟。真禅之师。于上海弘传华严。"},
+{"id":"p_013","name":"常惺","dynasty":"近现代","title":"续办华严大学","lineage":"月霞系","type":"patriarch","birth":1896,"death":1939,"bio":"月霞弟子。续办华严大学。"},
+{"id":"p_044","name":"真禅","dynasty":"当代","title":"华严禅实践者","lineage":"月霞系","type":"patriarch","birth":1916,"death":1995,"bio":"师承应慈。1980年代后于上海玉佛寺主持华严佛七。"},
+{"id":"p_018","name":"智光","dynasty":"近现代","title":"华严莲社首任","lineage":"华严莲社","type":"patriarch","birth":1889,"death":1963,"bio":"1952年于台北创立华严莲社。首任住持。"},
+{"id":"p_015","name":"南亭","dynasty":"近现代","title":"华严莲社第二任","lineage":"华严莲社","type":"patriarch","birth":1900,"death":1982,"bio":"智光弟子。1952年共创华严莲社。"},
+{"id":"p_016","name":"成一","dynasty":"当代","title":"华严专宗学院创办人","lineage":"华严莲社","type":"patriarch","birth":1914,"death":2011,"bio":"1975年创华严专宗学院。1985年创美国华严莲社。1988年后恢复泰州光孝寺。"},
+{"id":"p_032","name":"了中","dynasty":"当代","title":"华严莲社第四任","lineage":"华严莲社","type":"patriarch","birth":1932,"death":2022,"bio":"华严莲社第四任住持。"},
+{"id":"p_033","name":"净海","dynasty":"当代","title":"华严莲社第五任","lineage":"华严莲社","type":"patriarch","birth":1940,"death":null,"bio":"华严莲社第五任住持。"},
+{"id":"p_017","name":"贤度","dynasty":"当代","title":"华严莲社第六任","lineage":"华严莲社","type":"patriarch","birth":1960,"death":null,"bio":"成一弟子。2005年印度德里大学博士。推动华严现代化。"},
+{"id":"p_034","name":"明度","dynasty":"当代","title":"华严莲社第七任","lineage":"华严莲社","type":"patriarch","birth":1975,"death":null,"bio":"贤度之后续掌华严莲社。"},
+{"id":"p_041","name":"钦因","dynasty":"当代","title":"贤首宗41世","lineage":"贤首宗高原法系","type":"patriarch","birth":1930,"death":null,"bio":"台北树林福慧寺住持。贤首宗高原法系41世。2008年传衣钵予海云继梦。"},
+{"id":"p_042","name":"海云继梦","dynasty":"当代","title":"三脉汇一","lineage":"贤首宗高原法系","type":"patriarch","birth":1950,"death":null,"bio":"1991年梦参剃度(临济47代)。2008年钦因传衣(贤首42世)。南投大华严寺导师。汇三脉创普贤乘华严宗。"},
+{"id":"p_043","name":"体佛","dynasty":"当代","title":"贤首禅苑","lineage":"贤首宗高原法系","type":"patriarch","birth":1955,"death":null,"bio":"钦因法嗣。创贤首禅苑弘华严禅法。"},
+{"id":"p_019","name":"梦参","dynasty":"当代","title":"临济46代","lineage":"临济宗","type":"practitioner","birth":1915,"death":2017,"bio":"临济宗46代。五台山闭关修行多年。晚年讲全本八十华严。1991年剃度海云继梦。"},
+{"id":"p_014","name":"慈舟","dynasty":"近现代","title":"慈舟系","lineage":"慈舟系","type":"scholar","birth":1877,"death":1958,"bio":"于北京广济寺长期讲华严。著《普贤行愿品亲闻记》。"},
+{"id":"p_045","name":"如孝","dynasty":"当代","title":"华严宗41世","lineage":"当代学者","type":"scholar","birth":1970,"death":null,"bio":"华严宗41世法脉传人。十余年研究华严当代实践。"}
+],"edges":[
+{"s":"p_001","t":"p_002","r":"MASTER","lineage":"华严五祖"},{"s":"p_002","t":"p_003","r":"MASTER","lineage":"华严五祖"},
+{"s":"p_003","t":"p_004","r":"INFLUENCE","lineage":"华严五祖","note":"私淑"},{"s":"p_004","t":"p_005","r":"MASTER","lineage":"华严五祖"},
+{"s":"p_003","t":"p_050","r":"MASTER","lineage":"日本华严"},{"s":"p_011","t":"p_010","r":"MASTER","lineage":"高丽华严"},
+{"s":"p_003","t":"p_011","r":"INFLUENCE","lineage":"华严五祖"},
+{"s":"p_012","t":"p_013","r":"MASTER","lineage":"月霞系"},{"s":"p_012","t":"p_031","r":"MASTER","lineage":"月霞系"},
+{"s":"p_031","t":"p_044","r":"MASTER","lineage":"月霞系"},
+{"s":"p_018","t":"p_015","r":"MASTER","lineage":"华严莲社"},{"s":"p_015","t":"p_016","r":"MASTER","lineage":"华严莲社"},
+{"s":"p_016","t":"p_032","r":"MASTER","lineage":"华严莲社"},{"s":"p_032","t":"p_033","r":"MASTER","lineage":"华严莲社"},
+{"s":"p_033","t":"p_017","r":"MASTER","lineage":"华严莲社"},{"s":"p_017","t":"p_034","r":"MASTER","lineage":"华严莲社"},
+{"s":"p_021","t":"p_041","r":"LINEAGE","lineage":"贤首宗高原法系"},
+{"s":"p_041","t":"p_042","r":"MASTER","lineage":"贤首宗高原法系","note":"2008传衣钵"},
+{"s":"p_041","t":"p_043","r":"MASTER","lineage":"贤首宗高原法系"},
+{"s":"p_019","t":"p_042","r":"MASTER","lineage":"临济宗","note":"1991剃度"},
+{"s":"p_003","t":"p_007","r":"WORKED_WITH","lineage":"华严五祖"},{"s":"p_003","t":"p_009","r":"CONTEMPORARY","lineage":"李通玄系"},
+{"s":"p_006","t":"p_007","r":"INFLUENCE","lineage":"译师"}
+],
+// locations with time-aware person entries: {id, years}
+"locations":[
+{"id":"l_nalanda","name":"那烂陀寺","lat":25.13,"lng":85.44,"type":"temple","desc":"古印度最高佛教学府。","persons":[{"id":"p_000a","years":"约2-3世纪"},{"id":"p_000b","years":"约4-5世纪"}]},
+{"id":"l_jiankang","name":"建康道场寺","lat":32.06,"lng":118.79,"type":"temple","dynasty":"东晋","desc":"佛驮跋陀罗译六十华严处。","persons":[{"id":"p_006","years":"418-420"}]},
+{"id":"l_002","name":"终南山","lat":33.93,"lng":108.97,"type":"mountain","dynasty":"唐","desc":"杜顺、智俨、法藏均曾于此修行。至相寺所在。","persons":[{"id":"p_001","years":"约580-640"},{"id":"p_002","years":"约620-668"},{"id":"p_003","years":"约660-680"}]},
+{"id":"l_001","name":"大慈恩寺","lat":34.22,"lng":108.96,"type":"temple","dynasty":"唐","desc":"法藏参与译场证义并讲说华严。","persons":[{"id":"p_003","years":"约695-710"}]},
+{"id":"l_007","name":"洛阳佛授记寺","lat":34.68,"lng":112.44,"type":"temple","dynasty":"唐","desc":"实叉难陀主译八十华严处(695-699)。法藏证义。","persons":[{"id":"p_003","years":"695-699"},{"id":"p_007","years":"695-699"}]},
+{"id":"l_003","name":"五台山","lat":39.03,"lng":113.56,"type":"mountain","dynasty":"唐","desc":"文殊道场。《华严经》授记之清凉山。澄观于此著疏。梦参于此闭关。","persons":[{"id":"p_004","years":"约780-810著疏"},{"id":"p_019","years":"约1940-2017"}]},
+{"id":"l_004","name":"圭峰","lat":34.03,"lng":108.68,"type":"mountain","dynasty":"唐","desc":"宗密晚年住此著书，世称圭峰大师。","persons":[{"id":"p_005","years":"约820-841"}]},
+{"id":"l_005","name":"方山","lat":38.04,"lng":113.21,"type":"mountain","dynasty":"唐","desc":"李通玄著《新华严经论》处。","persons":[{"id":"p_009","years":"约690-720"}]},
+{"id":"l_012","name":"于阗","lat":37.11,"lng":79.91,"type":"region","dynasty":"唐","desc":"实叉难陀故乡。藏译华严底本来源地。中亚佛教枢纽。","persons":[{"id":"p_007","years":"652前"},{"id":"p_020","years":"约800-830"},{"id":"p_020b","years":"约800-830"}]},
+{"id":"l_006","name":"杭州慧因寺","lat":30.23,"lng":120.13,"type":"temple","dynasty":"宋","desc":"净源弘法道场。义天1085年入宋求法于此。","persons":[{"id":"p_011","years":"约1050-1088"},{"id":"p_010","years":"1085-1086求法"}]},
+{"id":"l_nara","name":"奈良东大寺","lat":34.69,"lng":135.84,"type":"temple","dynasty":"唐","desc":"审祥740年赴日弘传华严之本山。","persons":[{"id":"p_050","years":"740-742"}]},
+{"id":"l_010","name":"常熟兴福寺","lat":31.65,"lng":120.74,"type":"temple","dynasty":"清","desc":"月霞长老1914年创华严大学处。","persons":[{"id":"p_012","years":"1914-1917"}]},
+{"id":"l_shanghai","name":"上海玉佛寺","lat":31.24,"lng":121.44,"type":"temple","dynasty":"当代","desc":"真禅法师于此弘华严禅法。","persons":[{"id":"p_031","years":"约1930-1965"},{"id":"p_044","years":"约1980-1995"}]},
+{"id":"l_009","name":"北京广济寺","lat":39.92,"lng":116.36,"type":"temple","dynasty":"近现代","desc":"慈舟法师长期讲说华严处。","persons":[{"id":"p_014","years":"约1920-1958"}]},
+{"id":"l_008","name":"台北华严莲社","lat":25.033,"lng":121.565,"type":"temple","dynasty":"当代","desc":"1952年至今七代传承。智光·南亭·成一·了中·净海·贤度·明度。","persons":[{"id":"p_018","years":"1952-1963"},{"id":"p_015","years":"1952-1982"},{"id":"p_016","years":"1972-2011"},{"id":"p_032","years":"约1990-2022"},{"id":"p_033","years":"约2000-"},{"id":"p_017","years":"约2000-"},{"id":"p_034","years":"约2020-"}]},
+{"id":"l_fuhui","name":"台北福慧寺","lat":24.98,"lng":121.42,"type":"temple","dynasty":"当代","desc":"钦因长老住持。贤首宗高原法系在台根本道场。","persons":[{"id":"p_041","years":"约1960-"},{"id":"p_043","years":"约2000-"}]},
+{"id":"l_huayan","name":"南投大华严寺","lat":23.92,"lng":120.88,"type":"temple","dynasty":"当代","desc":"海云继梦导师。普贤乘华严宗根本道场。","persons":[{"id":"p_042","years":"2008-"}]}
+],"lineage_colors":{"华严五祖":"#b8863c","华严莲社":"#5e8b9e","月霞系":"#7a9ec0","李通玄系":"#c8893e","高丽华严":"#6d9a6e","日本华严":"#8b7a9e","贤首宗高原法系":"#c46b5d","临济宗":"#d48476","慈舟系":"#8b7a9e","译师":"#a09080","印度源流":"#9e8b6e","当代学者":"#b0a898","null":"#b0a898"}};
+
+const GAP={"overview":{"bo_chapters":45,"zh_80_chapters":39,"zh_60_chapters":34,"zh_40_chapters":1,"versions":[{"name":"藏文德格版 (Toh 44)","chapters":45,"volumes":"4册","translator":"胜友、智军","period":"9世纪初"},{"name":"汉文八十华严 (T10n0279)","chapters":39,"volumes":"80卷","translator":"实叉难陀","period":"699年"},{"name":"汉文六十华严 (T09n0278)","chapters":34,"volumes":"60卷","translator":"佛驮跋陀罗","period":"420年"},{"name":"汉文四十华严 (T10n0293)","chapters":1,"volumes":"40卷","translator":"般若","period":"798年"}]},"diff_summary":{"A":{"count":2,"icon":"🔴","label":"藏文独有品目","desc":"汉文三译完全缺失","color":"#c46b5d"},"B":{"count":3,"icon":"🟠","label":"内容实质性参差","desc":"同名品内容有显著差异","color":"#c8893e"},"C":{"count":3,"icon":"🟡","label":"结构/开合不同","desc":"序号名称开合有差异","color":"#a08020"},"D":{"count":1,"icon":"🔵","label":"品目级微小差异","desc":"个别段落有不同","color":"#5e8b9e"},"E":{"count":32,"icon":"🟢","label":"汉藏基本对应","desc":"品名序号内容大致一致","color":"#7d9a6e"}},"chapters":[{"order_bo":1,"order_zh_80":1,"title_zh":"世主妙严品","diff_type":"D"},{"order_bo":11,"order_zh_80":null,"title_zh":"★ 如来华严品","title_sa":"Tathāgatāvataṃsaka","in_80":false,"in_tibetan":true,"is_unique_bo":true,"diff_type":"A","diff_summary":"【核心发现】藏文独有品目。汉文三译全缺。位于毗卢遮那品后、如来名号品前。"},{"order_bo":28,"order_zh_80":null,"title_zh":"★ 普贤宣说品","title_sa":"Samantabhadraparivarta","in_80":false,"in_tibetan":true,"is_unique_bo":true,"diff_type":"A","diff_summary":"【核心发现】藏文独有。与T0847高度对应。十地品后、十定品前。"},{"order_bo":27,"order_zh_80":26,"title_zh":"十地品","diff_type":"B","diff_summary":"藏文源自更完整梵本。鸠摩罗什别译《十住经》、世亲《十地经论》可对勘。"},{"order_bo":33,"order_zh_80":31,"title_zh":"寿量品","diff_type":"B","diff_summary":"藏文有更详尽诸佛寿量描述。"},{"order_bo":40,"order_zh_80":38,"title_zh":"离世间品","diff_type":"B","diff_summary":"藏文有独特异译段落。三方对勘:藏↔八十华严↔度世品经。"},{"order_bo":7,"order_zh_80":7,"title_zh":"如来名号品","diff_type":"C","diff_summary":"藏文位于如来华严品后，序号变12品。"},{"order_bo":39,"order_zh_80":37,"title_zh":"如来出现品","diff_type":"C","diff_summary":"六十华严作《宝王如来性起品》，名称结构不同。"},{"order_bo":41,"order_zh_80":39,"title_zh":"入法界品","title_sa":"Gaṇḍavyūha","diff_type":"C","diff_summary":"四十华严即此品全本。84000已发布英译(Peter Alan Roberts,2021)。"}],"cross_refs":[{"chapter":"Ch.11 如来华严品","related_texts":["T10n0300 大方广佛华严经不思议佛境界分","T10n0301 大方广如来不思议境界经"]},{"chapter":"Ch.28 普贤宣说品","related_texts":["⭐ T0847 大方广普贤所说经 — 高度对应"]},{"chapter":"Ch.27 十地品","related_texts":["T10n0286 十住经 (鸠摩罗什)","T26n1522 十地经论 (世亲造)"]}],"warnings":["⚠ 《最胜问菩萨十住除垢断结经》(T0309): 法藏明确判为\"非十住品亦非十地品\"","⚠ 眷属经关联需逐条人工核实"]};
+
+// ═══ HELPERS ═══
+function getPersonLocs(pid){return DATA.locations.filter(l=>(l.persons||[]).some(p=>(typeof p==='string'?p:p.id)===pid));}
+function getLocPersonEntry(loc,pid){return (loc.persons||[]).find(p=>(typeof p==='string'?p:p.id)===pid);}
+
+
+// Init stub
+document.getElementById("info-box").textContent = "v5 loaded! GRAPH has " + GRAPH.nodes.length + " nodes";
+</script>
+</body>
+</html>
