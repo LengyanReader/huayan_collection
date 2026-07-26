@@ -171,12 +171,9 @@ body{font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;backgroun
 <script>
 document.body.insertAdjacentHTML("afterbegin","<div id=_js_test style=position:fixed;top:0;right:0;z-index:99999;background:#7d9a6e;color:#fff;padding:2px 8px;font-size:14px>JS OK</div>");
 </script>
-</body>
-</html><script>
-var _deb=document.createElement("div");_deb.id="_debug";_deb.style.cssText="position:fixed;bottom:0;left:0;right:0;z-index:99998;background:rgba(0,0,0,0.9);color:#0f0;font:11px monospace;padding:8px;max-height:40vh;overflow-y:auto;white-space:pre-wrap";document.body.appendChild(_deb);
-function L(m){var e=document.getElementById("_debug");if(e){e.textContent+="
-"+m;e.scrollTop=e.scrollHeight;}}
-L("DEBUG v3: script loaded at "+new Date().toISOString());
+
+<script>
+document.body.insertAdjacentHTML("beforeend","<div id=_debug style=position:fixed;bottom:0;left:0;right:0;z-index:99998;background:rgba(0,0,0,0.9);color:#0f0;font:11px monospace;padding:8px;max-height:40vh;overflow-y:auto;white-space:pre-wrap>DEBUG v4 loaded</div>");
 </script>
 <script>
 
@@ -651,3 +648,5 @@ function renderPractice(){
 }
 
 </script>
+</body>
+</html>
