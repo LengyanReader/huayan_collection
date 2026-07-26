@@ -1,3 +1,8 @@
+// ═══ DIAGNOSTIC ═══
+document.title="JS RUNNING";
+document.body.style.background="#7d9a6e";
+setTimeout(function(){document.body.style.background="";},500);
+
 // ═══ DATA ═══
 var GRAPH = __GRAPH__;
 var GAP = __GAP__;
