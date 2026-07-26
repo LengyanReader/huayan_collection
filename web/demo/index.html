@@ -88,7 +88,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 
 <div id="tab-gap" class="tab-content"><div id="gap-view"></div></div>
 
-<script>document.body.insertAdjacentHTML("afterbegin","<div id=_diag style=position:fixed;top:30px;right:0;z-index:99999;background:#7d9a6e;color:#fff;padding:2px 8px;font-size:12px>DIAG OK</div>");</script>
+<script>var _d=document.createElement("div");_d.textContent="DIAG OK";_d.style.cssText="position:fixed;top:30px;right:0;z-index:99999;background:#7d9a6e;color:#fff;padding:2px 8px;font-size:12px";document.documentElement.appendChild(_d);</script>
 <script>// ═══ DIAGNOSTIC ═══
 document.title="JS RUNNING";
 document.body.style.background="#7d9a6e";
