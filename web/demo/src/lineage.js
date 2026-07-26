@@ -135,13 +135,16 @@ function selectPerson(id){
   var students=DATA.edges.filter(function(e){return e.s===id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.t];}).filter(Boolean);
   var tch=teachers.length?"⬆ 师承: "+teachers.map(function(t){return t.n;}).join("、")+"<br>":"";
   var std=students.length?"⬇ 传法: "+students.map(function(t){return t.n;}).join("、")+"<br>":"";
-  document.getElementById("info-box").innerHTML="<h3>"+p.n+"</h3>"
-    +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span> "
-    +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp||"—")+"</span><br>"
-    +"📅 "+(p.dy||"?")+" · "+(p.b||"?")+"–"+(p.d||"?")+"<br>"
-    +"🏛 "+(p.ti||"")+"<br>"+locHTML+tch+std
-    +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px>"+p.bio+"</div>":"")
-    +(p.wk&&p.wk.length?"📖 "+p.wk.join(" · "):"");
+  // Contemporary figures
+  var contemp=DATA.nodes.filter(function(n){return n.dy===p.dy&&n.id!==p.id&&n.li===p.li;}).slice(0,3);
+  var cont=contemp.length?"👥 同代: "+contemp.map(function(n){return n.n;}).join("、")+"<br>":"";
+  document.getElementById("info-box").innerHTML="<h3>"+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
+    +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
+    +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span><br>"
+    +"📅 <b>"+(p.dy||"?")+"</b> · "+(p.b||"?")+"–"+(p.d||"?")+"<br>"
+    +locHTML+tch+std+cont
+    +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
+    +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.join("</b> · <b>")+"</b></div>":"");
   if(map&&locs.length>0){var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});}
 }
 function clearSelection(){selectedId=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击时间轴上的人物寿命条</div>";}
