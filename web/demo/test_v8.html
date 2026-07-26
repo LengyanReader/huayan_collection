@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Test v8</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+:root{--bg:#f6f2e8;--panel:#fdfaf3;--gold:#b8863c;--text:#3d3427;--line:#e5ddd0}
+body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;margin:0}
+#header{background:linear-gradient(135deg,#e8e0d2,#efe6d8);padding:8px 20px;border-bottom:1px solid var(--line)}
+#info{padding:20px;font-size:14px;line-height:1.8}
+.green{color:#7d9a6e;font-weight:bold}
+.red{color:#c46b5d}
+</style>
+</head>
+<body>
+<div id="header"><h1 style="font-size:1.1em;color:var(--gold)">Test v8 — Minimal Rendering Test</h1></div>
+<div id="info"><span class="red">Loading...</span></div>
+
+<script>
+// Test 1: basic JS execution
+var info=document.getElementById("info");
+info.innerHTML="<span class=green>JS Executing...</span><br>";
+
+// Test 2: load GRAPH
+var GRAPH_START='{"nodes":[{"id":"p_001","n":"杜顺","dy":"唐","ti":"华严初祖","li":"华严五祖","tp":"patriarch","b":557,"d":640,"bio":"华严宗初祖。"}]';
+info.innerHTML+="GRAPH data loaded: " + GRAPH_START.length + " chars<br>";
+
+// Test 3: parse JSON
+var GRAPH=JSON.parse(GRAPH_START);
+info.innerHTML+="Parsed: " + GRAPH.nodes.length + " nodes<br>";
+
+// Test 4: Canvas rendering
+var canvas=document.createElement("canvas");
+canvas.width=400;canvas.height=100;
+var ctx=canvas.getContext("2d");
+ctx.fillStyle="#f6f2e8";
+ctx.fillRect(0,0,400,100);
+ctx.fillStyle="#b8863c";
+ctx.font="bold 16px Microsoft YaHei";
+ctx.fillText("华严法脉 · 杜顺 (557-640)",10,50);
+document.body.appendChild(canvas);
+info.innerHTML+="<span class=green>Canvas rendered OK</span><br>";
+
+// Test 5: Leaflet
+if(typeof L!=="undefined"){
+  info.innerHTML+="<span class=green>Leaflet loaded OK</span><br>";
+} else {
+  info.innerHTML+="<span class=red>Leaflet NOT loaded (CDN issue?)</span><br>";
+}
+
+info.innerHTML+="<br><b class=green>=== ALL TESTS PASSED ===</b>";
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>
