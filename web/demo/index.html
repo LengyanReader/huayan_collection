@@ -173,6 +173,12 @@ document.body.insertAdjacentHTML("afterbegin","<div id=_js_test style=position:f
 </script>
 </body>
 </html><script>
+var _deb=document.createElement("div");_deb.id="_debug";_deb.style.cssText="position:fixed;bottom:0;left:0;right:0;z-index:99998;background:rgba(0,0,0,0.9);color:#0f0;font:11px monospace;padding:8px;max-height:40vh;overflow-y:auto;white-space:pre-wrap";document.body.appendChild(_deb);
+function L(m){var e=document.getElementById("_debug");if(e){e.textContent+="
+"+m;e.scrollTop=e.scrollHeight;}}
+L("DEBUG v3: script loaded at "+new Date().toISOString());
+</script>
+<script>
 
 // ═══ Self-test: visible marker ═══
 (function(){var d=document.createElement('div');d.id='_js_test';d.textContent='JS OK';d.style.cssText='position:fixed;top:0;right:0;z-index:99999;background:#7d9a6e;color:#fff;padding:2px 8px;font-size:11px;border-radius:0 0 0 6px';document.body.appendChild(d);})();
@@ -264,17 +270,6 @@ const nodeMap={};
 
 (function init(){
   try{
-  var _log=function(m){var el=document.getElementById("info-box");if(el)el.innerHTML+="<br>"+m;};
-  _log("init start");
-  DATA=GRAPH; _log("DATA loaded: "+DATA.nodes.length+" nodes");
-  DATA.nodes.forEach(function(n){nodeMap[n.id]=n;});
-  buildTimelineRows(); _log("rows built: "+tl.rows.length);
-  initTabs(); _log("tabs init");
-  initMap(); _log("map init");
-  initSearch(); _log("search init");
-  resizeTL(); _log("resize: "+tl.W+"x"+tl.H);
-  drawTL(); _log("drawTL done");
-
   DATA=GRAPH; DATA.nodes.forEach(n=>{nodeMap[n.id]=n;});
   // Diagnostic: show loading then clear
   var ib=document.getElementById('info-box');if(ib)ib.innerHTML='<div class=empty>✅ 数据已加载 · 渲染中…</div>';
@@ -290,8 +285,8 @@ const nodeMap={};
   panel.addEventListener('touchmove',onTouchMove,{passive:false});
   panel.addEventListener('touchend',onTouchEnd);
   window.addEventListener('resize',()=>{resizeTL();drawTL();if(map)map.invalidateSize();});
-  initControls();_log("controls init"); renderGap();_log("renderGap done"); renderPractice();_log("renderPractice done");
-  initDivider();_log("divider init");
+  initControls(); renderGap(); renderPractice();
+  initDivider();
   setTimeout(()=>{tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL();},100);
   }catch(e){console.error(e);document.getElementById('info-box').innerHTML=\"<span style='color:#c46b5d'>⚠ \"+e.message+\"</span>\";}
 })();
