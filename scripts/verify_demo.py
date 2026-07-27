@@ -107,7 +107,9 @@ if quote_issues == 0:
     errors += ok('No unescaped quotes in string literals')
 
 # 10. Three tabs
-tab_count = html.count('data-tab=')
+# Count only in HTML part (before first <script>)
+html_part = html[:html.find('<script>')]
+tab_count = html_part.count('data-tab=')
 if tab_count == 3:
     errors += ok(f'3 tabs present')
 else:

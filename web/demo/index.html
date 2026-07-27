@@ -301,12 +301,18 @@ function onClick(e){
 // ═══ TABS ═══
 document.getElementById("tabs").addEventListener("click",function(e){
   if(e.target.tagName!=="BUTTON")return;
-  document.querySelectorAll("#tabs button").forEach(function(b){b.classList.remove("active");});
-  e.target.classList.add("active");
-  document.querySelectorAll(".tab-content").forEach(function(t){t.classList.remove("active");});
-  document.getElementById("tab-"+e.target.dataset.tab).classList.add("active");
-  if(e.target.dataset.tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(map)map.invalidateSize();},200);}
+  switchTab(e.target.dataset.tab);
 });
+function switchTab(tab){
+  document.querySelectorAll("#tabs button").forEach(function(b){b.classList.remove("active");});
+  document.querySelector("#tabs button[data-tab="+tab+"]").classList.add("active");
+  document.querySelectorAll(".tab-content").forEach(function(t){t.classList.remove("active");});
+  document.getElementById("tab-"+tab).classList.add("active");
+  location.hash=tab;
+  if(tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(map)map.invalidateSize();},200);}
+}
+// Restore tab from URL hash on load
+if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"+h))switchTab(h);}
 // ═══ GAP TAB ═══
 function renderGap(){
   var gv=document.getElementById("gap-view");if(!gv)return;
@@ -393,7 +399,7 @@ function renderGap(){
 function renderPractice(){
   var pv=document.getElementById("practice-view");if(!pv)return;
   pv.innerHTML="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}</style>"
-  "<div class=section><h2>🧘 华严行法 — 修行蓝图</h2><p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。</p>"
+  +"<div class=section><h2>🧘 华严行法 — 修行蓝图</h2><p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。</p>"
 
   // SVG diagram: practice path
   +"<svg viewBox='0 0 720 110' style='max-width:100%;height:auto;margin:10px 0'><rect x=0 y=0 width=720 height=110 rx=8 fill='#fefdf9'/>"

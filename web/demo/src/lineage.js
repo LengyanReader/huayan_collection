@@ -197,9 +197,15 @@ function onClick(e){
 // ═══ TABS ═══
 document.getElementById("tabs").addEventListener("click",function(e){
   if(e.target.tagName!=="BUTTON")return;
-  document.querySelectorAll("#tabs button").forEach(function(b){b.classList.remove("active");});
-  e.target.classList.add("active");
-  document.querySelectorAll(".tab-content").forEach(function(t){t.classList.remove("active");});
-  document.getElementById("tab-"+e.target.dataset.tab).classList.add("active");
-  if(e.target.dataset.tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(map)map.invalidateSize();},200);}
+  switchTab(e.target.dataset.tab);
 });
+function switchTab(tab){
+  document.querySelectorAll("#tabs button").forEach(function(b){b.classList.remove("active");});
+  document.querySelector("#tabs button[data-tab="+tab+"]").classList.add("active");
+  document.querySelectorAll(".tab-content").forEach(function(t){t.classList.remove("active");});
+  document.getElementById("tab-"+tab).classList.add("active");
+  location.hash=tab;
+  if(tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(map)map.invalidateSize();},200);}
+}
+// Restore tab from URL hash on load
+if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"+h))switchTab(h);}
