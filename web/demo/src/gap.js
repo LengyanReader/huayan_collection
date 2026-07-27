@@ -173,10 +173,35 @@ function loadParallelChapter(chId){
   sg.innerHTML="";
 
   if(chId==="ch31"){
-    bo.innerHTML="<b>第一地·欢喜地</b><br>sangs rgyas kyi byang chub sems dpa' bye ba khrag khrig brgya stong du ma...<br><br><span style=color:var(--text2)>（完整对读数据待B阶段Step2导入）</span>";
-    en.innerHTML="<b>Stage One: The Joyful</b><br>The bodhisattvas who had gathered, in numbers of many hundreds of thousands of billions...<br><br><span style=color:var(--text2)>（84000: The Ten Bhūmis, Peter Alan Roberts译）</span>";
-    zh.innerHTML="<b>欢喜地</b><br>尔时，金刚藏菩萨摩诃萨，承佛神力，入菩萨大智慧光明三昧…<br><br><span style=color:var(--text2)>（八十华严·十地品第二十六之一）</span>";
-    sg.innerHTML="<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em'>§1 🟢</span> <span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em'>§2 🟡</span> <span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em'>§3 🟢</span>";
+    // 十地品·第一地 — multi-paragraph comparison
+    var boText="<b>第一地·欢喜地 (rab tu dga' ba)</b><br><br>";
+    boText+="<span style=color:var(--gold);font-size:0.75em>§1</span> <span style=font-size:0.78em>'di skad bdag gis thos pa dus gcig na | bcom ldan 'das 'dod pa dang | gzugs su yang dag par 'phags pa'i lha'i dbang phyug gi gnas na bzhugs so ||</span><br>";
+    boText+="<span style=color:var(--gold);font-size:0.75em>§2</span> <span style=font-size:0.78em>de nas byang chub sems dpa' bye ba khrag khrig brgya stong du ma 'dus pa de dag thams cad kyang | sngon gyi smon lam gyi dbang gis 'phags pa'i sa chen por zhugs pa | chos kyi dbyings rnam par dag pa la spyod pa ||</span><br>";
+    boText+="<span style=color:var(--gold);font-size:0.75em>§3</span> <span style=font-size:0.78em>de nas rdo rje snying po zhes bya ba byang chub sems dpa' sems dpa' chen po de dag gi nang na 'dug pa las | sangs rgyas kyi byin gyi rlabs kyis | byang chub sems dpa'i ye shes chen po'i snang ba'i ting nge 'dzin la snyoms par zhugs so ||</span><br>";
+    bo.innerHTML=boText+"<br><span style=color:var(--text2);font-size:0.75em>来源: Toh44-31 (德格版甘珠尔) · Wylie转写</span>";
+
+    var enText="<b>Chapter 31: The Ten Bhūmis — Stage One, The Joyful</b><br><br>";
+    enText+="<span style=color:var(--gold);font-size:0.75em>§1 🟢</span> <span style=font-size:0.78em>Thus did I hear at one time. The Blessed One was dwelling in the realm of the Devas, Paranirmitavaśavartin, those who have mastered the emanations of others...</span><br>";
+    enText+="<span style=color:var(--gold);font-size:0.75em>§2 🟡</span> <span style=font-size:0.78em>Now all those bodhisattvas, assembled there in numbers of many hundreds of thousands of billions, had, by the power of their previous aspirations, entered the great sublime stages. They moved within the completely pure dharmadhātu...</span><br>";
+    enText+="<span style=color:var(--gold);font-size:0.75em>§3 🟢</span> <span style=font-size:0.78em>Then a bodhisattva great being named Vajragarbha (Essence of Vajra), who was among that assembly, through the blessing of the Buddha, settled into the samādhi called 'The Illumination of the Great Wisdom of Bodhisattvas'...</span><br>";
+    en.innerHTML=enText+"<br><span style=color:var(--text2);font-size:0.75em>来源: 84000 Project · Peter Alan Roberts译 · CC BY-NC</span>";
+
+    var zhText="<b>十地品第二十六之一 · 欢喜地</b><br><br>";
+    zhText+="<span style=color:var(--gold);font-size:0.75em>§1 🟢</span> <span style=font-size:0.78em>如是我闻：一时，佛在他化自在天王宫摩尼宝藏殿，与大菩萨众俱…</span><br>";
+    zhText+="<span style=color:var(--gold);font-size:0.75em>§2 🟡</span> <span style=font-size:0.78em>其诸菩萨，皆于阿耨多罗三藐三菩提得不退转，悉从他方世界来集，住一切菩萨智所住境，入一切如来智所入处…</span><br>";
+    zhText+="<span style=color:var(--gold);font-size:0.75em>§3 🟢</span> <span style=font-size:0.78em>尔时，金刚藏菩萨摩诃萨，承佛神力，入菩萨大智慧光明三昧…</span><br>";
+    zh.innerHTML=zhText+"<br><span style=color:var(--text2);font-size:0.75em>来源: CBETA T10n0279 · 实叉难陀译 (699年)</span>";
+
+    // Segment navigation
+    sg.innerHTML="<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(1)' title=汉藏一致>§1 🟢</span> "
+      +"<span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(2)' title=表述有异>§2 🟡</span> "
+      +"<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(3)' title=汉藏一致>§3 🟢</span>";
+
+  }else if(chId==="ch45"){
+    bo.innerHTML="<b>入法界品·善财童子第一参</b><br><span style=font-size:0.78em>de nas khye'u nor bzang yid kyi dga' ba dang | dgyes pa dang | yid bde ba dang | ...</span><br><br><span style=color:var(--text2);font-size:0.75em>来源: Toh44-45 · 84000已发布(Peter Alan Roberts,2021)</span>";
+    en.innerHTML="<b>The Stem Array — Sudhana's First Teacher</b><br><span style=font-size:0.78em>Then the youth Sudhana, with a mind of joy, delight, and happiness...<br>He approached the bhikṣu Meghaśrī, bowed his head to his feet, and circumambulated him hundreds of thousands of times...</span><br><br><span style=color:var(--text2);font-size:0.75em>84000: The Stem Array, 2021</span>";
+    zh.innerHTML="<b>入法界品第三十九之一</b><br><span style=font-size:0.78em>尔时，善财童子，从文殊师利菩萨所，闻如是等种种法门…渐次南行，至可乐国，参访德云比丘…</span><br><br><span style=color:var(--text2);font-size:0.75em>CBETA T10n0279 · 实叉难陀译</span><br><span style=color:var(--text2);font-size:0.7em>另: 四十华严(T10n0293)为全本</span>";
+    sg.innerHTML="<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em;cursor:pointer'>§1 🟢</span> <span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em;cursor:pointer'>§2 🟡</span>";
   }else if(chId==="ch11"||chId==="ch32"){
     bo.innerHTML="<span style=color:var(--text2)>⏳ 待从BDRC获取藏文原文</span>";
     en.innerHTML="<span style=color:var(--text2)>⏳ 84000尚未发布此品英译</span>";

@@ -127,11 +127,29 @@ function renderPractice(){
   h+="<tr><td><b>2024-2026</b></td><td>第四期佛教·AI时代</td><td>九九华严五年讲座(TICC)·支提山大华严寺动土(2026.7)·台北大学合作</td></tr>";
   h+="</table></div>";
 
-  h+="<div class=section><h2>🎬 讲法资源</h2><p style=line-height:1.8>";
-  h+="▶ <a href='https://search.bilibili.com/all?keyword=%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6' target=_blank>Bilibili: 海云继梦讲经全集</a> —《华严六科》(42h完整版)<br>";
-  h+="▶ YouTube: 搜索「大華嚴寺」— 大华严寺官方频道<br>";
-  h+="🎙 <a href='https://podcasts.apple.com/au/podcast/普贤乘华严宗/id1523368889' target=_blank>Apple Podcast</a> · <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify</a><br>";
-  h+="🌐 <a href='https://www.huayenworld.org/' target=_blank>大华严寺官网</a></p></div>";
+  h+="<div class=section><h2>🎬 讲法资源</h2>";
+
+  // YouTube card
+  h+="<div style='display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px'>";
+  h+="<div style='flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px'>";
+  h+="<div style='font-weight:600;color:#c46b5d;margin-bottom:6px'>▶ YouTube · 大華嚴寺官方頻道</div>";
+  h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>海云继梦导师讲经全集。华严经/禅修/密法/药师经/地藏经等系列讲法。<br>";
+  h+="🔗 <a href='https://www.youtube.com/results?search_query=%E5%A4%A7%E8%8F%AF%E5%9A%B4%E5%AF%BA+%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2' target=_blank>在YouTube中搜索</a></p></div>";
+
+  // Bilibili card
+  h+="<div style='flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px'>";
+  h+="<div style='font-weight:600;color:#5e8b9e;margin-bottom:6px'>📺 Bilibili · 海雲繼夢講經全集</div>";
+  h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>《华严六科》42小时完整版·善财童子五十三参·禅法开示等。<br>";
+  h+="🔗 <a href='https://search.bilibili.com/all?keyword=%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6' target=_blank>在Bilibili中搜索</a></p></div>";
+  h+="</div>";
+
+  // Audio/Web
+  h+="<p style=line-height:1.8;margin-top:8px>";
+  h+="🎙 <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast</a> · ";
+  h+="<a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify</a> (20+系列·每周更新) | ";
+  h+="🌐 <a href='https://www.huayenworld.org/' target=_blank>大华严寺官网</a> · ";
+  h+="<a href='https://www.huayenworld.org/%e8%8f%af%e5%9a%b4%e7%a6%aa%e7%b0%a1%e4%bb%8b%e7%89%b9%e8%89%b2/' target=_blank>修行蓝图全文</a>";
+  h+="</p></div>";
 
   h+="<div class=section><h2>🏛 相关道场</h2><p style=line-height:1.8>";
   h+="📍 <b>南投大华严寺</b> — 海云继梦导师·普贤乘根本道场<br>";
