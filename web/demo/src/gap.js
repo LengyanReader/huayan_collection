@@ -36,6 +36,23 @@ function renderGap(){
   h+="<div class=stage-box><b>84000翻译团队</b> (Peter Alan Roberts 等)<br>「华严经的梵文原本在古代即存在至少两种以上版本。证据包括「观世音/观自在」拼写差异——法藏《探玄记》卷19明确记载了这种拼写分歧。」</div>";
   h+="</div>";
 
+  // ── 84000 methodology ──
+  h+="<h2 style=color:var(--gold)>🔬 84000翻译方法论与文本校勘</h2><div class=section>";
+  h+="<p style=line-height:1.8>84000项目（Peter Alan Roberts团队）在翻译Toh44时采用<b>多底本对校</b>方法，其翻译注释体系为汉藏对勘提供了重要参考框架：</p>";
+  h+="<div class=stage-box><b>六类文本变异类型</b><br>";
+  h+="① <b>梵-藏歧异</b>: 藏译本与现存梵文写本的出入（藏译者是否据另本或误读）；<br>";
+  h+="② <b>甘珠尔版本间异读</b>: 德格/斯托克/永乐/理塘/康熙/那塘/拉萨/Choné 八种版本的异文记录；<br>";
+  h+="③ <b>抄写错误</b>: 藏文抄本中的明显笔误（如 rgyu 误作 sgyu ma「幻」）；<br>";
+  h+="④ <b>注释书佐证</b>: 据世亲《十地经论》及 Sūryasiddha 注释判定疑误字；<br>";
+  h+="⑤ <b>汉译旁证</b>: 当梵藏歧异无法判定时，以汉译本（实叉难陀/佛驮跋陀罗）作为第三参照系；<br>";
+  h+="⑥ <b>数字出入</b>: 如《十地品》梵本作「百千俱胝」，德格版甘珠尔改为极大数，而世亲注释支持梵本简数。</div>";
+  h+="</div>";
+
+  // ── Structural differences ──
+  h+="<h2 style=color:var(--gold)>🏗 结构组织差异</h2><div class=section>";
+  h+="<div class=stage-box><b>汉译「会」制度 vs 藏译连续品目</b><br>汉文八十华严按<b>七处九会</b>（七个地点·九次法会）组织经文；六十华严为<b>七处八会</b>。此为汉地祖师（智俨/法藏/澄观）判释所立。<br><br>藏文 Toh44 <b>不采用</b>「会」的分组体系——45品为连续编号，无中间层的法会分组。这一结构差异意味着：<b>汉文读者透过「会」的框架理解华严经的教义递进，而藏文读者直接面对45品的内容序列</b>。两种组织方式各代表不同的解经传统，不能简单互译。</div>";
+  h+="</div>";
+
   // ── Scholarly debate tracking ──
   h+="<h2 style=color:var(--gold)>🔬 学界共识度</h2><div class=section><table class=v-table><tr><th>论题</th><th>观点</th><th>共识度</th></tr>";
   h+="<tr><td>藏译本底本是否为于阗本</td><td>BDRC目录标注为于阗译出。部分学者认为有印度梵本中介</td><td><b style=color:#7d9a6e>85% consensus</b></td></tr>";
@@ -73,7 +90,9 @@ function renderGap(){
   h+="📄 孙飞鹏. 《华严经》卷十一夏汉文本对勘研究. 西夏研究, 2026(1).<br>";
   h+="📄 铃木大拙 (D.T. Suzuki). 三本《华严经》的异同及其要义. 《禅论集之三·菩萨行处》.<br>";
   h+="📄 吴国圣. 华严经典中的「牛头」——以梵、于阗、汉、藏、满文佛经译本为主的讨论. 2015.<br>";
-  h+="📄 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas — Kangyur Section</a></p></div>";
+  h+="📄 84000: <a href='https://84000.co/translation/toh44-31' target=_blank>The Ten Bhūmis (Toh44-31)</a> — 已发布·含详细校勘注<br>";
+  h+="📄 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas — Kangyur Section</a><br>";
+  h+="📄 <a href='https://read.84000.co/translation/toh44-45.html' target=_blank>The Stem Array (Toh44-45·入法界品)</a> — Peter Alan Roberts译·2021</p></div>";
 
   // ── Warnings ──
   GAP.wn.forEach(function(w){h+="<div style=background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.2);border-radius:8px;padding:8px 12px;margin:4px 0;font-size:0.8em;color:var(--red)>"+w+"</div>";});
