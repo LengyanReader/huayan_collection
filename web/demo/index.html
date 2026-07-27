@@ -50,6 +50,8 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 .badge{padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:600}
 .bA{color:var(--red)} .bB{color:#c8893e} .bC{color:#a08020} .bD{color:var(--blue)} .bE{color:var(--green)}
 .miss{color:var(--red);font-weight:600}
+.gv-nav{padding:6px 16px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.82em;transition:all 0.2s}.gv-nav:hover{background:#f0ebe0;color:var(--text)}.gv-nav.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+#gv-parallel-content{overflow-x:auto}
 .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.78em;font-weight:600;margin:2px 4px}
 .stage-box{border-left:4px solid var(--gold);padding:8px 14px;margin:8px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.85em;line-height:1.7}
 .stage-box b{color:var(--gold)}
@@ -316,7 +318,13 @@ if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"
 // ═══ GAP TAB ═══
 function renderGap(){
   var gv=document.getElementById("gap-view");if(!gv)return;
-  var h="<h2 style=color:var(--gold)>📜 版本对照</h2><div class=section><table class=v-table><tr><th>版本</th><th>品目</th><th>卷/册</th><th>译者</th><th>年代</th><th>底本</th></tr>";
+
+  // ── Sub-navigation ──
+  var h="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='gv-nav active' onclick='switchGapView(\"overview\",this)'>📊 差异总览</button><button class='gv-nav' onclick='switchGapView(\"parallel\",this)'>📖 原文对读</button><button class='gv-nav' onclick='switchGapView(\"refs\",this)'>📚 参考文献</button></div>";
+
+  // ── OVERVIEW SECTION ──
+  h+="<div id=gv-overview class=gv-section>";
+  h+="<h2 style=color:var(--gold)>📜 版本对照</h2><div class=section><table class=v-table><tr><th>版本</th><th>品目</th><th>卷/册</th><th>译者</th><th>年代</th><th>底本</th></tr>";
   GAP.vs.forEach(function(v){h+="<tr><td>"+v.n+"</td><td style=font-weight:700;color:var(--gold)>"+v.c+"</td><td>"+v.v+"</td><td>"+v.t+"</td><td>"+v.p+"</td><td style=font-size:0.8em;color:var(--text2)>"+(v.p.indexOf('9')>=0?'于阗本':'梵本')+"</td></tr>";});
   h+="</table></div>";
 
@@ -409,10 +417,92 @@ function renderGap(){
   h+="📄 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas — Kangyur Section</a><br>";
   h+="📄 <a href='https://read.84000.co/translation/toh44-45.html' target=_blank>The Stem Array (Toh44-45·入法界品)</a> — Peter Alan Roberts译·2021</p></div>";
 
+  // ── Close overview ──
+  h+="</div>";
+
+  // ═══ PARALLEL READING SECTION ═══
+  h+="<div id=gv-parallel class=gv-section style=display:none>";
+  h+="<div class=section><h2>📖 原文对读</h2>";
+  h+="<p style=line-height:1.8;color:var(--text2)><b>B阶段进行中。</b>以十地品(Toh44-31)为首个对读品目——84000已发布完整英译+校勘注，可对照汉文八十华严(T10n0279)及鸠摩罗什《十住经》(T10n0286)。<br>";
+
+  // Chapter selector
+  h+="<b>品目选择:</b> ";
+  h+="<select id=gv-chapter onchange='loadParallelChapter(this.value)' style='padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--text);font-size:0.85em;margin:4px'>";
+  h+="<option value=''>— 选择品目 —</option>";
+  h+="<option value='ch31'>Ch.31 十地品 (84000已发布·可对读)</option>";
+  h+="<option value='ch45'>Ch.45 入法界品 (84000已发布·可对读)</option>";
+  h+="<option value='ch11'>Ch.11 如来华严品 (待获取藏文原文)</option>";
+  h+="<option value='ch32'>Ch.32 普贤宣说品 (待获取藏文原文)</option>";
+  h+="<option value='ch40'>Ch.40 离世间品 (待对齐)</option>";
+  h+="</select></p>";
+
+  // Parallel reading layout placeholder
+  h+="<div id=gv-parallel-content style='margin-top:12px'>";
+  h+="<div style='display:flex;gap:12px'>";
+  // Left column: Tibetan
+  h+="<div style='flex:1;min-width:0'><div style='background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;min-height:200px'>";
+  h+="<div style='font-size:0.75em;color:var(--text2);margin-bottom:6px'>📜 藏文 (Wylie转写)</div>";
+  h+="<div id=gv-col-bo style='font-size:0.82em;line-height:1.8;color:var(--text2)'>👆 选择品目后加载</div></div></div>";
+  // Middle: English
+  h+="<div style='flex:1;min-width:0'><div style='background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;min-height:200px'>";
+  h+="<div style='font-size:0.75em;color:var(--text2);margin-bottom:6px'>🔤 英文 (84000译)</div>";
+  h+="<div id=gv-col-en style='font-size:0.82em;line-height:1.8;color:var(--text2)'>👆 选择品目后加载</div></div></div>";
+  // Right: Chinese
+  h+="<div style='flex:1;min-width:0'><div style='background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;min-height:200px'>";
+  h+="<div style='font-size:0.75em;color:var(--text2);margin-bottom:6px'>🀄 汉文 (八十华严 T10n0279)</div>";
+  h+="<div id=gv-col-zh style='font-size:0.82em;line-height:1.8;color:var(--text2)'>👆 选择品目后加载</div></div></div>";
+  h+="</div>";
+
+  // Segment navigation
+  h+="<div id=gv-segments style='display:flex;gap:8px;flex-wrap:wrap;margin-top:12px'></div>";
+
+  // Diff legend
+  h+="<div style='display:flex;gap:16px;margin-top:8px;font-size:0.75em;color:var(--text2)'>";
+  h+="<span>🟢 汉藏一致</span><span>🟡 表述有异</span><span>🔴 藏文独有</span><span>🔵 汉文独有</span></div>";
+  h+="</div></div></div>";
+
+  // ═══ REFERENCES SECTION ═══
+  h+="<div id=gv-refs class=gv-section style=display:none>";
+
   // ── Warnings ──
   GAP.wn.forEach(function(w){h+="<div style=background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.2);border-radius:8px;padding:8px 12px;margin:4px 0;font-size:0.8em;color:var(--red)>"+w+"</div>";});
 
+  h+="</div>"; // close gv-refs
+
   gv.innerHTML=h;
+}
+
+// ═══ GAP SUB-NAV ═══
+function switchGapView(view,btn){
+  document.querySelectorAll(".gv-nav").forEach(function(b){b.classList.remove("active");});
+  if(btn)btn.classList.add("active");
+  document.querySelectorAll(".gv-section").forEach(function(s){s.style.display="none";});
+  document.getElementById("gv-"+view).style.display="block";
+}
+
+function loadParallelChapter(chId){
+  if(!chId)return;
+  var bo=document.getElementById("gv-col-bo");
+  var en=document.getElementById("gv-col-en");
+  var zh=document.getElementById("gv-col-zh");
+  var sg=document.getElementById("gv-segments");
+  bo.innerHTML="<i>加载中…</i>";en.innerHTML="<i>加载中…</i>";zh.innerHTML="<i>加载中…</i>";
+  sg.innerHTML="";
+
+  if(chId==="ch31"){
+    bo.innerHTML="<b>第一地·欢喜地</b><br>sangs rgyas kyi byang chub sems dpa' bye ba khrag khrig brgya stong du ma...<br><br><span style=color:var(--text2)>（完整对读数据待B阶段Step2导入）</span>";
+    en.innerHTML="<b>Stage One: The Joyful</b><br>The bodhisattvas who had gathered, in numbers of many hundreds of thousands of billions...<br><br><span style=color:var(--text2)>（84000: The Ten Bhūmis, Peter Alan Roberts译）</span>";
+    zh.innerHTML="<b>欢喜地</b><br>尔时，金刚藏菩萨摩诃萨，承佛神力，入菩萨大智慧光明三昧…<br><br><span style=color:var(--text2)>（八十华严·十地品第二十六之一）</span>";
+    sg.innerHTML="<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em'>§1 🟢</span> <span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em'>§2 🟡</span> <span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em'>§3 🟢</span>";
+  }else if(chId==="ch11"||chId==="ch32"){
+    bo.innerHTML="<span style=color:var(--text2)>⏳ 待从BDRC获取藏文原文</span>";
+    en.innerHTML="<span style=color:var(--text2)>⏳ 84000尚未发布此品英译</span>";
+    zh.innerHTML="<span style=color:var(--text2)>⏳ 汉文无对应品目"+(chId==="ch32"?"<br><br>📎 关联别译: T0847《大方广普贤所说经》(实叉难陀译)":"")+"</span>";
+  }else{
+    bo.innerHTML="<span style=color:var(--text2)>⏳ 待对齐</span>";
+    en.innerHTML="<span style=color:var(--text2)>⏳ 待对齐</span>";
+    zh.innerHTML="<span style=color:var(--text2)>⏳ 待对齐</span>";
+  }
 }
 // ═══ PRACTICE TAB ═══
 function renderPractice(){
