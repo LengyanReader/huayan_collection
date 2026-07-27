@@ -574,13 +574,13 @@ function renderGap(){
 
   // ── Main Sutras (top row) ──
   h+="<div style='display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:16px'>";
-  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#b8863c'>六十华严</div><div style='font-size:0.72em;color:var(--text2)'>T09n0278 · 60卷34品</div><div style='font-size:0.68em;color:var(--text2)'>佛驮跋陀罗·420年</div></div>";
+  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#b8863c'>六十华严</div><div style='font-size:0.72em;color:var(--text2)'>T09n0278 · 60卷34品</div><div style='font-size:0.68em;color:var(--text2)'>佛驮跋陀罗·420年</div><a href='https://cbetaonline.dila.edu.tw/zh/T09n0278' target=_blank style='font-size:0.65em'>📖 CBETA阅读</a></div>";
   h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
-  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 24px;text-align:center;min-width:180px;box-shadow:0 2px 12px rgba(184,134,60,0.15)'><div style='font-weight:700;color:#b8863c;font-size:1.1em'>⭐ 八十华严</div><div style='font-size:0.72em;color:var(--text2)'>T10n0279 · 80卷39品</div><div style='font-size:0.68em;color:var(--text2)'>实叉难陀·699年</div></div>";
+  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 24px;text-align:center;min-width:180px;box-shadow:0 2px 12px rgba(184,134,60,0.15)'><div style='font-weight:700;color:#b8863c;font-size:1.1em'>⭐ 八十华严</div><div style='font-size:0.72em;color:var(--text2)'>T10n0279 · 80卷39品</div><div style='font-size:0.68em;color:var(--text2)'>实叉难陀·699年</div><a href='https://cbetaonline.dila.edu.tw/zh/T10n0279' target=_blank style='font-size:0.65em'>📖 CBETA阅读</a></div>";
   h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
-  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#b8863c'>四十华严</div><div style='font-size:0.72em;color:var(--text2)'>T10n0293 · 40卷1品</div><div style='font-size:0.68em;color:var(--text2)'>般若·798年</div></div>";
+  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#b8863c'>四十华严</div><div style='font-size:0.72em;color:var(--text2)'>T10n0293 · 40卷1品</div><div style='font-size:0.68em;color:var(--text2)'>般若·798年</div><a href='https://cbetaonline.dila.edu.tw/zh/T10n0293' target=_blank style='font-size:0.65em'>📖 CBETA阅读</a></div>";
   h+="<div style='display:flex;align-items:center;color:#c46b5d;font-size:1.2em'>⇢</div>";
-  h+="<div style='background:var(--card);border:3px solid #c46b5d;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#c46b5d'>藏译华严</div><div style='font-size:0.72em;color:var(--text2)'>Toh44 · 4册45品</div><div style='font-size:0.68em;color:var(--text2)'>胜友/智军·9世纪</div></div>";
+  h+="<div style='background:var(--card);border:3px solid #c46b5d;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#c46b5d'>藏译华严</div><div style='font-size:0.72em;color:var(--text2)'>Toh44 · 4册45品</div><div style='font-size:0.68em;color:var(--text2)'>胜友/智军·9世纪</div><a href='https://84000.co/translation/toh44-31' target=_blank style='font-size:0.65em'>📖 84000(部分)</a></div>";
   h+="</div>";
 
   // ── Branch translations ──
@@ -594,7 +594,7 @@ function renderGap(){
    {t:'显无边佛土功德经',n:'T0289·玄奘',p:'寿量品'},{t:'较量一切佛刹功德经',n:'T0290·法贤',p:'寿量品'},
    {t:'如来兴显经',n:'T0291·竺法护',p:'如来出现品'},{t:'度世品经',n:'T0292·竺法护',p:'离世间品'},
    {t:'罗摩伽经',n:'T0294·圣坚',p:'入法界品'},{t:'入法界品(续)',n:'T0295·地婆诃罗',p:'入法界品'}]
-  .forEach(function(b){h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.08);border:1px solid rgba(94,139,158,0.3);border-radius:14px;font-size:0.73em'><b>"+b.t+"</b> <span style=color:var(--text2)>"+b.n+"</span><br><span style=font-size:0.85em;color:#5e8b9e>→ "+b.p+"</span></span>";});
+  .forEach(function(b){h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.08);border:1px solid rgba(94,139,158,0.3);border-radius:14px;font-size:0.73em'><b>"+b.t+"</b> <span style=color:var(--text2)>"+b.n+"</span><br><span style=font-size:0.85em;color:#5e8b9e>→ "+b.p+"</span><br><a href='https://cbetaonline.dila.edu.tw/zh/T10"+b.n.match(/T\d+/)[0].slice(1)+"' target=_blank style=font-size:0.6em>📖 CBETA</a></span>";});
   h+="</div></div>";
 
   // ── Related Sutras ──
@@ -614,9 +614,9 @@ function renderGap(){
   // ── Treatises ──
   h+="<div class=section><h2>📖 论释（3部）</h2>";
   h+="<div style='display:flex;gap:10px;flex-wrap:wrap'>";
-  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十住毗婆沙论</b> <span style=color:var(--text2)>T26n1521·龙树造·鸠摩罗什译</span><br><span style=font-size:0.85em;color:var(--text2)>⚠ 虽名十住实释十地品·仅至第二地(17卷)</span></span>";
-  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十地经论</b> <span style=color:var(--text2)>T26n1522·世亲造·菩提流支译(12卷)</span><br><span style=font-size:0.85em;color:var(--text2)>创新六相名相·催生南北朝地论师学派</span></span>";
-  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>大乘起信论</b> <span style=color:var(--text2)>T32n1666·马鸣造[传统著录]</span><br><span style=font-size:0.85em;color:var(--text2)>法藏《大乘起信论义记》为最权威注释之一</span></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十住毗婆沙论</b> <span style=color:var(--text2)>T26n1521·龙树造·鸠摩罗什译</span><br><span style=font-size:0.85em;color:var(--text2)>⚠ 虽名十住实释十地品·仅至第二地(17卷)</span><br><a href='https://cbetaonline.dila.edu.tw/zh/T26n1521' target=_blank style=font-size:0.65em>📖 CBETA</a></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十地经论</b> <span style=color:var(--text2)>T26n1522·世亲造·菩提流支译(12卷)</span><br><span style=font-size:0.85em;color:var(--text2)>创新六相名相·催生南北朝地论师学派</span><br><a href='https://cbetaonline.dila.edu.tw/zh/T26n1522' target=_blank style=font-size:0.65em>📖 CBETA</a></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>大乘起信论</b> <span style=color:var(--text2)>T32n1666·马鸣造[传统著录]</span><br><span style=font-size:0.85em;color:var(--text2)>法藏《大乘起信论义记》为最权威注释之一</span><br><a href='https://cbetaonline.dila.edu.tw/zh/T32n1666' target=_blank style=font-size:0.65em>📖 CBETA</a></span>";
   h+="</div></div>";
 
   // ── Patriarch Commentaries ──
