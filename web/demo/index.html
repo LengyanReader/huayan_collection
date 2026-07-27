@@ -477,6 +477,52 @@ function renderGap(){
   h+="📄 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas — Kangyur Section</a><br>";
   h+="📄 <a href='https://read.84000.co/translation/toh44-45.html' target=_blank>The Stem Array (Toh44-45·入法界品)</a> — Peter Alan Roberts译·2021</p></div>";
 
+  // ── Version Evolution Visual Timeline ──
+  h+="<h2 style=color:var(--gold)>🌏 版本时空演进（2世纪—2026）</h2><div class=section>";
+  h+="<div style='overflow-x:auto;padding:8px 0'>";
+  h+="<div style='display:flex;gap:0;min-width:1400px;align-items:flex-start;position:relative'>";
+
+  // 13 version nodes
+  var versions=[
+    {t:'龙宫原本',s:'约2世纪',l:'印度',lang:'梵',c:'#9e8b6e',n:'上中下三本·下本十万偈',w:120},
+    {t:'兜沙经',s:'167',l:'洛阳',lang:'汉',c:'#a09080',n:'支娄迦谶·1卷',w:110},
+    {t:'六十华严',s:'420',l:'建康',lang:'汉',c:'#b8863c',n:'佛驮跋陀罗·60卷34品',w:130},
+    {t:'八十华严',s:'699',l:'洛阳',lang:'汉',c:'#b8863c',n:'实叉难陀·80卷39品',w:130},
+    {t:'四十华严',s:'798',l:'长安',lang:'汉',c:'#b8863c',n:'般若·40卷入法界品',w:130},
+    {t:'藏译华严',s:'~830',l:'吐蕃',lang:'藏',c:'#c46b5d',n:'胜友/智军·4册45品',w:130},
+    {t:'尼泊尔写本',s:'11-12c',l:'加德满都',lang:'梵',c:'#9e8b6e',n:'梵文残卷',w:100},
+    {t:'西夏译本',s:'11-13c',l:'西夏',lang:'西夏',c:'#8b7a9e',n:'据八十华严译',w:110},
+    {t:'回鹘译本',s:'13-14c',l:'高昌',lang:'回鹘',c:'#8b7a9e',n:'安藏译',w:90},
+    {t:'满文译本',s:'18c',l:'北京',lang:'满',c:'#8b7a9e',n:'四体合璧',w:100},
+    {t:'Cleary英译',s:'1984-87',l:'美国',lang:'英',c:'#5e8b9e',n:'据八十华严',w:110},
+    {t:'Dharmamitra',s:'2022',l:'美国',lang:'英',c:'#5e8b9e',n:'据八十华严·3册',w:120},
+    {t:'84000英译',s:'2021-',l:'国际',lang:'英',c:'#c46b5d',n:'据藏文Toh44',w:110}
+  ];
+
+  versions.forEach(function(v,i){
+    var ml=i>0?6:0;
+    h+="<div style='flex-shrink:0;width:"+v.w+"px;margin-left:"+ml+"px;position:relative'>";
+    // Arrow connector from previous
+    if(i>0){
+      h+="<div style='position:absolute;left:-12px;top:18px;font-size:10px;color:#c0b098'>→</div>";
+    }
+    // Node card
+    h+="<div style='background:var(--card);border:2px solid "+v.c+";border-radius:8px;padding:8px 10px;text-align:center;min-height:90px'>";
+    h+="<div style='font-weight:700;font-size:0.85em;color:"+v.c+"'>"+v.t+"</div>";
+    h+="<div style='font-size:0.7em;color:var(--text2);margin:2px 0'>"+v.s+" · "+v.l+"</div>";
+    h+="<div style='font-size:0.7em;color:var(--text2)'>"+v.n+"</div>";
+    h+="<span class=tag style=font-size:0.65em;background:"+v.c+"20;color:"+v.c+">"+v.lang+"</span>";
+    h+="</div></div>";
+  });
+
+  h+="</div></div>";
+
+  // Legend
+  h+="<div style='display:flex;gap:16px;margin-top:10px;font-size:0.72em;color:var(--text2)'>";
+  h+="<span>🟡 汉文</span><span style=color:#c46b5d>🔴 藏文</span><span style=color:#5e8b9e>🔵 英文</span><span style=color:#9e8b6e>🟤 梵文</span><span style=color:#8b7a9e>🟣 其他语言</span>";
+  h+="<span style=margin-left:8px>→ 继承/重译/补全</span></div>";
+  h+="</div>";
+
   // ── Close overview ──
   h+="</div>";
 
