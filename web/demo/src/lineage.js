@@ -125,9 +125,10 @@ function initMap(){
 }
 
 // ═══ SELECTION ═══
-function selectPerson(id){
-  selectedId=id;drawTL(id);
-  var p=nodeMap[id];if(!p)return;
+function selectPerson(id,isShift){
+  if(isShift&&selectedId&&id!==selectedId){selectedId2=id;}else{selectedId=id;selectedId2=null;}
+  drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
+  showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null);
   var lc=DATA.lineage_colors[p.li]||"#b0a898";
   var locs=getPersonLocs(id),locHTML="";
   locs.forEach(function(l){locHTML+="📍 "+l.n+"<br>";});
@@ -170,7 +171,8 @@ function selectPerson(id){
     },4000);
   }
 }
-function clearSelection(){selectedId=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击时间轴上的人物寿命条</div>";}
+function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击人物寿命条查看详情<br><span style=font-size:0.8em>Shift+点击第二人可并排对比</span></div>";}
+function drawTL2(id){/* placeholder for second highlight */}
 
 // ═══ INTERACTION ═══
 function onWheel(e){e.preventDefault();var p=document.getElementById("tl-panel");var r=p.getBoundingClientRect();var mx=e.clientX-r.left;var before=(mx-tl.ox)/tl.scale;tl.scale*=e.deltaY<0?1.12:0.89;tl.scale=Math.max(0.12,Math.min(6,tl.scale));tl.ox=mx-before*tl.scale;drawTL(selectedId);}
@@ -191,7 +193,19 @@ function onClick(e){
   if(tl.drag||Math.abs(e.clientX-tl.lastX)>3)return;
   var p=document.getElementById("tl-panel"),r=p.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
   var hit=tl.hitRects.find(function(h){return mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h;});
-  if(hit){selectPerson(hit.person.id);}else{clearSelection();}
+  if(hit){selectPerson(hit.person.id,e.shiftKey);}else{clearSelection();}
+}
+
+// ═══ ANIMATION ═══
+var animTimer=null,animYear=500,animPlaying=false;
+function toggleAnim(){
+  if(animPlaying){clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";return;}
+  animPlaying=true;document.getElementById("anim-btn").textContent="⏸ 暂停";
+  animYear=500;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  animTimer=setInterval(function(){
+    animYear+=15;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";}
+    tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  },200);
 }
 
 // ═══ TABS ═══

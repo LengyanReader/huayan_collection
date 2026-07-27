@@ -79,6 +79,25 @@ function renderGap(){
   h+="<tr><td>Samantabhadra</td><td>kun tu bzang po</td><td>普贤</td><td>Samantabhadra</td></tr>";
   h+="<tr><td>Vairocana</td><td>rnam par snang mdzad</td><td>毗卢遮那</td><td>Vairocana</td></tr>";
   h+="<tr><td>Gaṇḍavyūha</td><td>sdong po bkod pa</td><td>入法界品</td><td>Stem Array</td></tr>";
+  h+="<tr><td>buddhāvataṃsaka</td><td>sangs rgyas phal po che</td><td>华严</td><td>Buddha-ornament</td></tr>";
+  h+="<tr><td>bhūmi</td><td>sa</td><td>地/阶位</td><td>stage/ground</td></tr>";
+  h+="<tr><td>daśabhūmika</td><td>sa bcu pa</td><td>十地</td><td>ten stages</td></tr>";
+  h+="<tr><td>bhadracaryā</td><td>bzang po spyod pa</td><td>普贤行</td><td>good conduct</td></tr>";
+  h+="<tr><td>praṇidhāna</td><td>smon lam</td><td>愿/誓愿</td><td>aspiration prayer</td></tr>";
+  h+="<tr><td>vihāra</td><td>gnas</td><td>住处/法会</td><td>abode/assembly</td></tr>";
+  h+="<tr><td>sāgara-mudrā-samādhi</td><td>rgya mtsho'i phyag rgya'i ting nge 'dzin</td><td>海印三昧</td><td>ocean-seal samādhi</td></tr>";
+  h+="<tr><td>dharmadhātu-pratītya-samutpāda</td><td>chos kyi dbyings rten 'brel</td><td>法界缘起</td><td>dharma-realm dependent origination</td></tr>";
+  h+="<tr><td>ekayāna</td><td>theg pa gcig pa</td><td>一乘</td><td>single vehicle</td></tr>";
+  h+="<tr><td>avaivartika</td><td>phyir mi ldog pa</td><td>不退转</td><td>non-retrogressing</td></tr>";
+  h+="<tr><td>anuttarā-samyak-saṃbodhi</td><td>bla na med pa yang dag par rdzogs pa'i byang chub</td><td>阿耨多罗三藐三菩提</td><td>unsurpassed perfect enlightenment</td></tr>";
+  h+="<tr><td>kuśala-mūla</td><td>dge ba'i rtsa ba</td><td>善根</td><td>roots of virtue</td></tr>";
+  h+="<tr><td>pāramitā</td><td>pha rol tu phyin pa</td><td>波罗蜜/到彼岸</td><td>perfection</td></tr>";
+  h+="<tr><td>dāna-pāramitā</td><td>sbyin pa'i pha rol tu phyin pa</td><td>布施波罗蜜</td><td>perfection of giving</td></tr>";
+  h+="<tr><td>śīla-pāramitā</td><td>tshul khrims kyi pha rol tu phyin pa</td><td>持戒波罗蜜</td><td>perfection of ethical conduct</td></tr>";
+  h+="<tr><td>kṣānti-pāramitā</td><td>bzod pa'i pha rol tu phyin pa</td><td>忍辱波罗蜜</td><td>perfection of patience</td></tr>";
+  h+="<tr><td>vīrya-pāramitā</td><td>brtson 'grus kyi pha rol tu phyin pa</td><td>精进波罗蜜</td><td>perfection of diligence</td></tr>";
+  h+="<tr><td>dhyāna-pāramitā</td><td>bsam gtan gyi pha rol tu phyin pa</td><td>禅定波罗蜜</td><td>perfection of meditation</td></tr>";
+  h+="<tr><td>prajñā-pāramitā</td><td>shes rab kyi pha rol tu phyin pa</td><td>般若波罗蜜</td><td>perfection of wisdom</td></tr>";
   h+="</table></div>";
 
   // ── Priority roadmap ──
@@ -206,6 +225,16 @@ function loadParallelChapter(chId){
     bo.innerHTML="<span style=color:var(--text2)>⏳ 待从BDRC获取藏文原文</span>";
     en.innerHTML="<span style=color:var(--text2)>⏳ 84000尚未发布此品英译</span>";
     zh.innerHTML="<span style=color:var(--text2)>⏳ 汉文无对应品目"+(chId==="ch32"?"<br><br>📎 关联别译: T0847《大方广普贤所说经》(实叉难陀译)":"")+"</span>";
+  }else if(chId==="ch40"){
+    bo.innerHTML="<b>离世间品</b><br><span style=font-size:0.78em>de nas 'jig rten las 'das pa'i le'u ste |...<br><br></span><span style=color:var(--text2);font-size:0.75em>藏文此品有独特异译段落。Toh44-40 (德格版)</span>";
+    en.innerHTML="<b>Transcending the World</b><br><span style=font-size:0.78em>The chapter on transcending the world contains unique passages in the Tibetan version not found in the Chinese translations...<br><br></span><span style=color:var(--text2);font-size:0.75em>待84000发布此品英译后进行逐段对勘</span>";
+    zh.innerHTML="<b>离世间品第三十八</b><br><span style=font-size:0.78em>尔时，世尊在摩竭提国阿兰若法菩提场中...<br><br></span><span style=color:var(--text2);font-size:0.75em>CBETA T10n0279 · 实叉难陀译<br>📎 别译: 竺法护《度世品经》(T10n0292, 6卷)</span>";
+    sg.innerHTML="<span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em'>藏文有独特段落</span>";
+  }else if(chId==="ch33"){
+    bo.innerHTML="<b>寿量品</b><br><span style=font-size:0.78em>de nas 'jig rten gyi khams kyi tshe'i tshad bstan pa...<br><br></span><span style=color:var(--text2);font-size:0.75em>藏文有更详尽的诸佛寿量描述。Toh44-33 (德格版)</span>";
+    en.innerHTML="<b>Lifespan</b><br><span style=font-size:0.78em>The Tibetan version contains more elaborate descriptions of the lifespans of Buddhas...<br><br></span><span style=color:var(--text2);font-size:0.75em>有玄奘别译《显无边佛土功德经》(T10n0289)可对照</span>";
+    zh.innerHTML="<b>寿量品第三十一</b><br><span style=font-size:0.78em>尔时，心王菩萨摩诃萨于众会中...<br><br></span><span style=color:var(--text2);font-size:0.75em>CBETA T10n0279 · 实叉难陀译<br>📎 别译: 玄奘《显无边佛土功德经》(T10n0289)</span>";
+    sg.innerHTML="<span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em'>藏文有扩展内容</span>";
   }else{
     bo.innerHTML="<span style=color:var(--text2)>⏳ 待对齐</span>";
     en.innerHTML="<span style=color:var(--text2)>⏳ 待对齐</span>";
