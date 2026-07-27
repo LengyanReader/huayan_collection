@@ -64,7 +64,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 <div id="tabs">
   <button data-tab="practice">🧘 华严行法</button>
   <button class="active" data-tab="lineage">🌊 法脉传承</button>
-  <button data-tab="gap">📜 汉藏差异</button>
+  <button data-tab="gap">📜 华严文献</button>
   <button data-tab="frontier">🔬 前沿对话</button>
 </div>
 
@@ -361,7 +361,7 @@ function renderGap(){
   var gv=document.getElementById("gap-view");if(!gv)return;
 
   // ── Sub-navigation ──
-  var h="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='gv-nav active' onclick='switchGapView(\"overview\",this)'>📊 差异总览</button><button class='gv-nav' onclick='switchGapView(\"parallel\",this)'>📖 原文对读</button><button class='gv-nav' onclick='switchGapView(\"refs\",this)'>📚 参考文献</button></div>";
+  var h="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='gv-nav active' onclick='switchGapView(\"overview\",this)'>📊 差异总览</button><button class='gv-nav' onclick='switchGapView(\"parallel\",this)'>📖 原文对读</button><button class='gv-nav' onclick='switchGapView(\"genealogy\",this)'>🕸 文本系谱</button><button class='gv-nav' onclick='switchGapView(\"refs\",this)'>📚 参考文献</button></div>";
 
   // ── OVERVIEW SECTION ──
   h+="<div id=gv-overview class=gv-section>";
@@ -566,6 +566,71 @@ function renderGap(){
   h+="<div style='display:flex;gap:16px;margin-top:8px;font-size:0.75em;color:var(--text2)'>";
   h+="<span>🟢 汉藏一致</span><span>🟡 表述有异</span><span>🔴 藏文独有</span><span>🔵 汉文独有</span></div>";
   h+="</div></div></div>";
+
+  // ═══ GENEALOGY SECTION ═══
+  h+="<div id=gv-genealogy class=gv-section style=display:none>";
+  h+="<div class=section><h2>🕸 华严部文本系谱</h2>";
+  h+="<p style=font-size:0.82em;color:var(--text2);margin-bottom:12px>主体经·别译本·眷属经·论释·藏文源——共60+部经典的关联网络。节点大小表示影响力，连线表示继承/注释/别译/关联关系。⚠ 关联标注基于大正藏目录及学术研究，部分需逐条人工核实。</p>";
+
+  // ── Main Sutras (top row) ──
+  h+="<div style='display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:16px'>";
+  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#b8863c'>六十华严</div><div style='font-size:0.72em;color:var(--text2)'>T09n0278 · 60卷34品</div><div style='font-size:0.68em;color:var(--text2)'>佛驮跋陀罗·420年</div></div>";
+  h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
+  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 24px;text-align:center;min-width:180px;box-shadow:0 2px 12px rgba(184,134,60,0.15)'><div style='font-weight:700;color:#b8863c;font-size:1.1em'>⭐ 八十华严</div><div style='font-size:0.72em;color:var(--text2)'>T10n0279 · 80卷39品</div><div style='font-size:0.68em;color:var(--text2)'>实叉难陀·699年</div></div>";
+  h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
+  h+="<div style='background:var(--card);border:3px solid #b8863c;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#b8863c'>四十华严</div><div style='font-size:0.72em;color:var(--text2)'>T10n0293 · 40卷1品</div><div style='font-size:0.68em;color:var(--text2)'>般若·798年</div></div>";
+  h+="<div style='display:flex;align-items:center;color:#c46b5d;font-size:1.2em'>⇢</div>";
+  h+="<div style='background:var(--card);border:3px solid #c46b5d;border-radius:12px;padding:14px 20px;text-align:center;min-width:160px'><div style='font-weight:700;color:#c46b5d'>藏译华严</div><div style='font-size:0.72em;color:var(--text2)'>Toh44 · 4册45品</div><div style='font-size:0.68em;color:var(--text2)'>胜友/智军·9世纪</div></div>";
+  h+="</div>";
+
+  // ── Branch translations ──
+  h+="<div class=section><h2>📋 支流别译经（对应各品异译）</h2>";
+  h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
+  [{t:'兜沙经',n:'T0280·支娄迦谶·167',p:'如来名号品'},
+   {t:'菩萨本业经',n:'T0281·支谦',p:'净行品'},{t:'诸菩萨求佛本业经',n:'T0282·聂道真',p:'净行品'},
+   {t:'菩萨十住行道品',n:'T0283·竺法护',p:'十住品'},{t:'菩萨十住经',n:'T0284·祇多蜜',p:'十住品'},
+   {t:'渐备一切智德经',n:'T0285·竺法护',p:'十地品'},{t:'十住经',n:'T0286·鸠摩罗什',p:'十地品'},
+   {t:'佛说十地经',n:'T0287·尸罗达摩',p:'十地品'},{t:'等目菩萨三昧经',n:'T0288·竺法护',p:'十定品'},
+   {t:'显无边佛土功德经',n:'T0289·玄奘',p:'寿量品'},{t:'较量一切佛刹功德经',n:'T0290·法贤',p:'寿量品'},
+   {t:'如来兴显经',n:'T0291·竺法护',p:'如来出现品'},{t:'度世品经',n:'T0292·竺法护',p:'离世间品'},
+   {t:'罗摩伽经',n:'T0294·圣坚',p:'入法界品'},{t:'入法界品(续)',n:'T0295·地婆诃罗',p:'入法界品'}]
+  .forEach(function(b){h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.08);border:1px solid rgba(94,139,158,0.3);border-radius:14px;font-size:0.73em'><b>"+b.t+"</b> <span style=color:var(--text2)>"+b.n+"</span><br><span style=font-size:0.85em;color:#5e8b9e>→ "+b.p+"</span></span>";});
+  h+="</div></div>";
+
+  // ── Related Sutras ──
+  h+="<div class=section><h2>📎 眷属经（义理相关·非正部）</h2>";
+  h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
+  [{t:'文殊师利发愿经',n:'T0296'},{t:'普贤菩萨行愿赞',n:'T0297·不空'},
+   {t:'⭐ 大方广普贤所说经',n:'T0847·实叉难陀',note:'↔藏文普贤宣说品'},
+   {t:'总持宝光明经',n:'T0299·法天'},{t:'不思议佛境界分',n:'T0300·提云般若'},
+   {t:'如来不思议境界经',n:'T0301·实叉难陀'},{t:'度诸佛境界智光严经',n:'T0302·失译'},
+   {t:'入如来德智不思议经',n:'T0303·阇那崛多'},{t:'大方广入如来智德',n:'T0304·实叉难陀'},
+   {t:'信力入印法门经',n:'T0305·昙摩流支'},{t:'花严经修慈分',n:'T0306·提云般若'},
+   {t:'庄严菩提心经',n:'T0307·鸠摩罗什'},{t:'大方广菩萨十地经',n:'T0308·吉迦夜'},
+   {t:'最胜问十住除垢断结经',n:'T0309·竺佛念',note:'⚠法藏判非十住品'}]
+  .forEach(function(r){h+="<span style='padding:4px 10px;background:rgba(125,154,110,0.08);border:1px solid rgba(125,154,110,0.3);border-radius:14px;font-size:0.73em'><b>"+r.t+"</b> <span style=color:var(--text2)>"+r.n+"</span>"+(r.note?"<br><span style=font-size:0.8em;color:#c46b5d>"+r.note+"</span>":"")+"</span>";});
+  h+="</div></div>";
+
+  // ── Treatises ──
+  h+="<div class=section><h2>📖 论释</h2>";
+  h+="<div style='display:flex;gap:10px;flex-wrap:wrap'>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十住毗婆沙论</b> <span style=color:var(--text2)>T1521·龙树造·鸠摩罗什译</span><br><span style=font-size:0.85em;color:var(--text2)>⚠ 虽名十住实释十地品·仅至二地</span></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十地经论</b> <span style=color:var(--text2)>T1522·世亲造·菩提流支译</span><br><span style=font-size:0.85em;color:var(--text2)>创新六相名相·催生地论师学派</span></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>大乘起信论</b> <span style=color:var(--text2)>T1666·马鸣造[传统]</span><br><span style=font-size:0.85em;color:var(--text2)>法藏著义记为最权威注释之一</span></span>";
+  h+="</div></div>";
+
+  // ── Patriarch Commentaries ──
+  h+="<div class=section><h2>📜 祖师核心章疏</h2>";
+  h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
+  [{a:'杜顺',w:'华严法界观门·五教止观'},{a:'智俨',w:'华严经搜玄记·一乘十玄门'},
+   {a:'法藏',w:'华严五教章·探玄记·金师子章·大乘起信论义记'},
+   {a:'澄观',w:'华严经疏(60卷)·演义钞(90卷)·法界玄镜'},
+   {a:'宗密',w:'禅源诸诠集都序·原人论·圆觉经大疏'},
+   {a:'李通玄',w:'新华严经论(40卷)'},{a:'义天',w:'新编诸宗教藏总录(义天录)'}]
+  .forEach(function(x){h+="<span style='padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px;font-size:0.73em'><b style=color:#b8863c>"+x.a+"</b> <span style=color:var(--text2)>"+x.w+"</span></span>";});
+  h+="</div></div>";
+
+  h+="</div>"; // close gv-genealogy
 
   // ═══ REFERENCES SECTION ═══
   h+="<div id=gv-refs class=gv-section style=display:none>";
