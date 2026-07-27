@@ -612,22 +612,35 @@ function renderGap(){
   h+="</div></div>";
 
   // ── Treatises ──
-  h+="<div class=section><h2>📖 论释</h2>";
+  h+="<div class=section><h2>📖 论释（3部）</h2>";
   h+="<div style='display:flex;gap:10px;flex-wrap:wrap'>";
-  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十住毗婆沙论</b> <span style=color:var(--text2)>T1521·龙树造·鸠摩罗什译</span><br><span style=font-size:0.85em;color:var(--text2)>⚠ 虽名十住实释十地品·仅至二地</span></span>";
-  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十地经论</b> <span style=color:var(--text2)>T1522·世亲造·菩提流支译</span><br><span style=font-size:0.85em;color:var(--text2)>创新六相名相·催生地论师学派</span></span>";
-  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>大乘起信论</b> <span style=color:var(--text2)>T1666·马鸣造[传统]</span><br><span style=font-size:0.85em;color:var(--text2)>法藏著义记为最权威注释之一</span></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十住毗婆沙论</b> <span style=color:var(--text2)>T26n1521·龙树造·鸠摩罗什译</span><br><span style=font-size:0.85em;color:var(--text2)>⚠ 虽名十住实释十地品·仅至第二地(17卷)</span></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>十地经论</b> <span style=color:var(--text2)>T26n1522·世亲造·菩提流支译(12卷)</span><br><span style=font-size:0.85em;color:var(--text2)>创新六相名相·催生南北朝地论师学派</span></span>";
+  h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>大乘起信论</b> <span style=color:var(--text2)>T32n1666·马鸣造[传统著录]</span><br><span style=font-size:0.85em;color:var(--text2)>法藏《大乘起信论义记》为最权威注释之一</span></span>";
   h+="</div></div>";
 
   // ── Patriarch Commentaries ──
-  h+="<div class=section><h2>📜 祖师核心章疏</h2>";
+  h+="<div class=section><h2>📜 祖师核心章疏（11部）</h2>";
   h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
-  [{a:'杜顺',w:'华严法界观门·五教止观'},{a:'智俨',w:'华严经搜玄记·一乘十玄门'},
-   {a:'法藏',w:'华严五教章·探玄记·金师子章·大乘起信论义记'},
-   {a:'澄观',w:'华严经疏(60卷)·演义钞(90卷)·法界玄镜'},
-   {a:'宗密',w:'禅源诸诠集都序·原人论·圆觉经大疏'},
-   {a:'李通玄',w:'新华严经论(40卷)'},{a:'义天',w:'新编诸宗教藏总录(义天录)'}]
+  [{a:'杜顺',w:'法界观门·五教止观'},
+   {a:'智俨',w:'搜玄记(5卷)·一乘十玄门·五十要问答'},
+   {a:'法藏',w:'五教章(T45n1866)·探玄记(20卷)·金师子章·起信论义记(T44n1846)·义海百门'},
+   {a:'澄观',w:'华严经疏(60卷·T35n1735)·演义钞(90卷·T36n1736)·法界玄镜'},
+   {a:'宗密',w:'禅源诸诠集(T48n2015)·原人论(T45n1886)·圆觉经大疏·行愿品疏钞'},
+   {a:'李通玄',w:'新华严经论(40卷·T36n1739)·决疑论'},
+   {a:'义天',w:'新编诸宗教藏总录(义天录·基准目录)'}]
   .forEach(function(x){h+="<span style='padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px;font-size:0.73em'><b style=color:#b8863c>"+x.a+"</b> <span style=color:var(--text2)>"+x.w+"</span></span>";});
+  h+="</div></div>";
+
+  // ── Modern & Tibetan sources ──
+  h+="<div class=section><h2>📚 近现代著作 & 藏文源</h2>";
+  h+="<div style='display:flex;gap:8px;flex-wrap:wrap;font-size:0.75em'>";
+  h+="<span style=padding:4px 10px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.25);border-radius:14px><b style=color:#5e8b9e>藏译华严经</b> Toh44·4册45品·胜友/智军译·9世纪初</span>";
+  h+="<span style=padding:4px 10px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.25);border-radius:14px><b style=color:#5e8b9e>84000英译</b> 入法界品(2021)+十地品·进行中</span>";
+  h+="<span style=padding:4px 10px;background:rgba(125,154,110,0.06);border:1px solid rgba(125,154,110,0.25);border-radius:14px><b style=color:#7d9a6e>Cleary英译</b> The Flower Adornment Sutra·单册·据八十华严</span>";
+  h+="<span style=padding:4px 10px;background:rgba(125,154,110,0.06);border:1px solid rgba(125,154,110,0.25);border-radius:14px><b style=color:#7d9a6e>Dharmamitra英译</b> 3册·2022·Kalavinka Press·据八十华严</span>";
+  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>梦参</b> 华严经讲记(全本)</span>";
+  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>成一</b> 成一和尚著作集</span>";
   h+="</div></div>";
 
   h+="</div>"; // close gv-genealogy
