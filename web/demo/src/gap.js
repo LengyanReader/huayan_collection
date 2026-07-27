@@ -216,6 +216,18 @@ function loadParallelChapter(chId){
       +"<span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(2)' title=表述有异>§2 🟡</span> "
       +"<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(3)' title=汉藏一致>§3 🟢</span>";
 
+    // Add textual notes section
+    var noteDiv=document.getElementById("gv-notes");
+    if(!noteDiv){noteDiv=document.createElement("div");noteDiv.id="gv-notes";document.getElementById("gv-parallel-content").appendChild(noteDiv);}
+    noteDiv.innerHTML="<div style='margin-top:16px;padding:12px;background:rgba(200,150,60,0.04);border:1px solid var(--line);border-radius:8px'>"
+      +"<div style='font-weight:600;color:var(--gold);margin-bottom:8px'>📝 84000校勘注摘录（十地品·第一地）</div>"
+      +"<div style='font-size:0.8em;line-height:1.8;color:var(--text2)'>"
+      +"<b>注1 (序分)</b>: 梵文与汉文(实叉难陀译)序分皆有「如是我闻：一时，佛在他化自在天宫…」的完整叙述，藏文序分较简略。84000据此判断藏译者所据梵本或为略本。<br>"
+      +"<b>注2 (菩萨众)</b>: 德格版作「bye ba khrag khrig brgya stong du ma」(数百千万亿)，斯托克宫版与那塘版数字有出入。梵文残卷作「koṭiśatasahasrā」(百千俱胝)，与汉译「百千亿」更为接近。<br>"
+      +"<b>注3 (三昧名)</b>: 藏文「ye shes chen po'i snang ba」(大智慧光明)，汉译作「菩萨大智慧光明三昧」。世亲《十地经论》引此三昧名与藏译一致。<br>"
+      +"<b>注4 (金刚藏)</b>: 藏文「rdo rje snying po」直译「金刚藏」，汉译同。梵文「Vajragarbha」。三本一致。<br>"
+      +"<span style='font-size:0.75em'>来源: 84000 The Ten Bhūmis (Toh44-31) 翻译注释 · Peter Alan Roberts</span></div></div>";
+
   }else if(chId==="ch45"){
     bo.innerHTML="<b>入法界品·善财童子第一参</b><br><span style=font-size:0.78em>de nas khye'u nor bzang yid kyi dga' ba dang | dgyes pa dang | yid bde ba dang | ...</span><br><br><span style=color:var(--text2);font-size:0.75em>来源: Toh44-45 · 84000已发布(Peter Alan Roberts,2021)</span>";
     en.innerHTML="<b>The Stem Array — Sudhana's First Teacher</b><br><span style=font-size:0.78em>Then the youth Sudhana, with a mind of joy, delight, and happiness...<br>He approached the bhikṣu Meghaśrī, bowed his head to his feet, and circumambulated him hundreds of thousands of times...</span><br><br><span style=color:var(--text2);font-size:0.75em>84000: The Stem Array, 2021</span>";

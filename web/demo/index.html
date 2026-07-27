@@ -236,23 +236,7 @@ function selectPerson(id,isShift){
   if(isShift&&selectedId&&id!==selectedId){selectedId2=id;}else{selectedId=id;selectedId2=null;}
   drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
   showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null);
-  var lc=DATA.lineage_colors[p.li]||"#b0a898";
-  var locs=getPersonLocs(id),locHTML="";
-  locs.forEach(function(l){locHTML+="📍 "+l.n+"<br>";});
-  var teachers=DATA.edges.filter(function(e){return e.t===id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
-  var students=DATA.edges.filter(function(e){return e.s===id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.t];}).filter(Boolean);
-  var tch=teachers.length?"⬆ 师承: "+teachers.map(function(t){return t.n;}).join("、")+"<br>":"";
-  var std=students.length?"⬇ 传法: "+students.map(function(t){return t.n;}).join("、")+"<br>":"";
-  // Contemporary figures
-  var contemp=DATA.nodes.filter(function(n){return n.dy===p.dy&&n.id!==p.id&&n.li===p.li;}).slice(0,3);
-  var cont=contemp.length?"👥 同代: "+contemp.map(function(n){return n.n;}).join("、")+"<br>":"";
-  document.getElementById("info-box").innerHTML="<h3>"+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
-    +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
-    +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span><br>"
-    +"📅 <b>"+(p.dy||"?")+"</b> · "+(p.b||"?")+"–"+(p.d||"?")+"<br>"
-    +locHTML+tch+std+cont
-    +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
-    +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.join("</b> · <b>")+"</b></div>":"");
+  var locs=getPersonLocs(id);
   if(map&&locs.length>0){
     var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});
     // Highlight all related markers
@@ -547,6 +531,18 @@ function loadParallelChapter(chId){
     sg.innerHTML="<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(1)' title=汉藏一致>§1 🟢</span> "
       +"<span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(2)' title=表述有异>§2 🟡</span> "
       +"<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em;cursor:pointer' onclick='scrollToSegment(3)' title=汉藏一致>§3 🟢</span>";
+
+    // Add textual notes section
+    var noteDiv=document.getElementById("gv-notes");
+    if(!noteDiv){noteDiv=document.createElement("div");noteDiv.id="gv-notes";document.getElementById("gv-parallel-content").appendChild(noteDiv);}
+    noteDiv.innerHTML="<div style='margin-top:16px;padding:12px;background:rgba(200,150,60,0.04);border:1px solid var(--line);border-radius:8px'>"
+      +"<div style='font-weight:600;color:var(--gold);margin-bottom:8px'>📝 84000校勘注摘录（十地品·第一地）</div>"
+      +"<div style='font-size:0.8em;line-height:1.8;color:var(--text2)'>"
+      +"<b>注1 (序分)</b>: 梵文与汉文(实叉难陀译)序分皆有「如是我闻：一时，佛在他化自在天宫…」的完整叙述，藏文序分较简略。84000据此判断藏译者所据梵本或为略本。<br>"
+      +"<b>注2 (菩萨众)</b>: 德格版作「bye ba khrag khrig brgya stong du ma」(数百千万亿)，斯托克宫版与那塘版数字有出入。梵文残卷作「koṭiśatasahasrā」(百千俱胝)，与汉译「百千亿」更为接近。<br>"
+      +"<b>注3 (三昧名)</b>: 藏文「ye shes chen po'i snang ba」(大智慧光明)，汉译作「菩萨大智慧光明三昧」。世亲《十地经论》引此三昧名与藏译一致。<br>"
+      +"<b>注4 (金刚藏)</b>: 藏文「rdo rje snying po」直译「金刚藏」，汉译同。梵文「Vajragarbha」。三本一致。<br>"
+      +"<span style='font-size:0.75em'>来源: 84000 The Ten Bhūmis (Toh44-31) 翻译注释 · Peter Alan Roberts</span></div></div>";
 
   }else if(chId==="ch45"){
     bo.innerHTML="<b>入法界品·善财童子第一参</b><br><span style=font-size:0.78em>de nas khye'u nor bzang yid kyi dga' ba dang | dgyes pa dang | yid bde ba dang | ...</span><br><br><span style=color:var(--text2);font-size:0.75em>来源: Toh44-45 · 84000已发布(Peter Alan Roberts,2021)</span>";
