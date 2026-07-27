@@ -33,9 +33,13 @@ with open(os.path.join(DATA_DIR, 'translation', 'diff_matrix.yaml'), encoding='u
 
 nodes = []
 for p in personas['persons']:
+    li = p.get('lineage_branch')
+    # Fix: 海云继梦 belongs to 贤首宗高原法系 in the lineage chart
+    if p['id']=='person_042': li='贤首宗高原法系'
+    if p['id']=='person_019': li='临济宗'
     nodes.append({
         'id': p['id'], 'n': p['name_zh'], 'dy': p.get('dynasty', ''), 'ti': p.get('title', '') or '',
-        'li': p.get('lineage_branch'), 'tp': p.get('type', 'practitioner'),
+        'li': li, 'tp': p.get('type', 'practitioner'),
         'b': p.get('birth_year'), 'd': p.get('death_year'),
         'bio': (p.get('biography', '') or '')[:150], 'wk': (p.get('key_works') or [])[:2]
     })
