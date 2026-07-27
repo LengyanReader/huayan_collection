@@ -392,18 +392,11 @@ function renderGap(){
 // ═══ PRACTICE TAB ═══
 function renderPractice(){
   var pv=document.getElementById("practice-view");if(!pv)return;
-  // Add collapsible CSS via a style tag injected once
-  if(!document.getElementById("_ps")){
-    var s=document.createElement("style");s.id="_ps";
-    s.textContent=".wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}";
-    document.head.appendChild(s);
-  }
-
-  pv.innerHTML=
+  pv.innerHTML="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}</style>"
   "<div class=section><h2>🧘 华严行法 — 修行蓝图</h2><p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。</p>"
 
   // SVG diagram: practice path
-  +"<svg viewBox='0 0 720 110' style='max-width:100%;height:auto;margin:10px 0;background:var(--card);border-radius:8px'><rect x=0 y=0 width=720 height=110 rx=8 fill='var(--card)'/>"
+  +"<svg viewBox='0 0 720 110' style='max-width:100%;height:auto;margin:10px 0'><rect x=0 y=0 width=720 height=110 rx=8 fill='#fefdf9'/>"
   +"<rect x=10 y=15 width=200 height=42 rx=8 fill='rgba(184,134,60,0.1)' stroke='#b8863c' stroke-width=1.2/>"
   +"<text x=110 y=35 text-anchor=middle font-size=12 font-weight=600 fill='#b8863c'>资粮道</text><text x=110 y=50 text-anchor=middle font-size=9 fill='#8a7060'>发心工程</text>"
   +"<text x=265 y=40 font-size=18 fill='#c0b098'>→</text>"
