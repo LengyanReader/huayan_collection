@@ -111,7 +111,7 @@ function drawTL(hlId){
 // ═══ MAP ═══
 function initMap(){
   if(map){map.invalidateSize();return;}
-  if(typeof L==="undefined"){document.getElementById("map").innerHTML="<div style=display:flex;align-items:center;justify-content:center;height:100%;color:var(--text2)>🗺 地图组件未加载</div>";return;}
+  if(typeof L==="undefined"){document.getElementById("map").innerHTML="<div style=display:flex;align-items:center;justify-content:center;height:100%;color:var(--text2);flex-direction:column;gap:8px'><div>🗺 地图组件未加载</div><div style=font-size:0.7em>Leaflet CDN 不可用，请检查网络</div></div>";return;}
   map=L.map("map",{zoomControl:true}).setView([33,110],4);
   L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{subdomains:["1","2","3","4"],maxZoom:18}).addTo(map);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:19,opacity:0.5}).addTo(map);
@@ -157,6 +157,34 @@ function selectPerson(id,isShift){
 }
 function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击人物寿命条查看详情<br><span style=font-size:0.8em>Shift+点击第二人可并排对比</span></div>";}
 function drawTL2(id){/* placeholder for second highlight */}
+
+function showInfo(p,p2){
+  if(!p)return;var box=document.getElementById("info-box");if(!box)return;
+  var lc=DATA.lineage_colors[p.li]||"#b0a898";
+  var locs=getPersonLocs(p.id),locHTML="";
+  locs.forEach(function(l){locHTML+="📍 "+l.n+"<br>";});
+  var teachers=DATA.edges.filter(function(e){return e.t===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
+  var students=DATA.edges.filter(function(e){return e.s===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.t];}).filter(Boolean);
+  var tch=teachers.length?"⬆ 师承: "+teachers.map(function(t){return t.n;}).join("、")+"<br>":"";
+  var std=students.length?"⬇ 传法: "+students.map(function(t){return t.n;}).join("、")+"<br>":"";
+  var contemp=DATA.nodes.filter(function(n){return n.dy===p.dy&&n.id!==p.id&&n.li===p.li;}).slice(0,3);
+  var cont=contemp.length?"👥 同代: "+contemp.map(function(n){return n.n;}).join("、")+"<br>":"";
+  var h="<h3>"+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
+    +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
+    +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span><br>"
+    +"📅 <b>"+(p.dy||"?")+"</b> · "+(p.b||"?")+"–"+(p.d||"?")+"<br>"
+    +locHTML+tch+std+cont
+    +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
+    +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.join("</b> · <b>")+"</b></div>":"");
+  if(p2){
+    var lc2=DATA.lineage_colors[p2.li]||"#b0a898";
+    h+="<div style='margin-top:10px;padding-top:8px;border-top:2px solid var(--gold)'><h3 style=color:#5e8b9e>"+p2.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p2.ti||"")+"</span></h3>"
+      +"<span class=tag style=background:"+lc2+"20;color:"+lc2+">"+(p2.li||"—")+"</span>"
+      +"📅 <b>"+(p2.dy||"?")+"</b> · "+(p2.b||"?")+"–"+(p2.d||"?")+"<br>"
+      +(p2.bio?"<div style=color:var(--text2)>"+p2.bio+"</div>":"")+"</div>";
+  }
+  box.innerHTML=h;
+}
 
 // ═══ INTERACTION ═══
 function onWheel(e){e.preventDefault();var p=document.getElementById("tl-panel");var r=p.getBoundingClientRect();var mx=e.clientX-r.left;var before=(mx-tl.ox)/tl.scale;tl.scale*=e.deltaY<0?1.12:0.89;tl.scale=Math.max(0.12,Math.min(6,tl.scale));tl.ox=mx-before*tl.scale;drawTL(selectedId);}
