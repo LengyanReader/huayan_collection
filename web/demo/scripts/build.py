@@ -34,12 +34,15 @@ with open(os.path.join(DATA_DIR, 'translation', 'diff_matrix.yaml'), encoding='u
 nodes = []
 for p in personas['persons']:
     li = p.get('lineage_branch')
-    # Fix: 海云继梦 belongs to 贤首宗高原法系 in the lineage chart
-    if p['id']=='person_042': li='贤首宗高原法系'
+    # Multi-lineage persons: primary in 贤首宗高原法系, secondary shown as ghost
+    multi=[]
+    if p['id']=='person_042': li='贤首宗高原法系'; multi=['临济宗']
     if p['id']=='person_019': li='临济宗'
+    if p['id']=='person_044': li='月霞系'; multi=['临济宗']  # 真禅: 月霞系+临济
+    if p['id']=='person_003': li='华严五祖'; multi=['译师']  # 法藏: 五祖+参与译场
     nodes.append({
         'id': p['id'], 'n': p['name_zh'], 'dy': p.get('dynasty', ''), 'ti': p.get('title', '') or '',
-        'li': li, 'tp': p.get('type', 'practitioner'),
+        'li': li, 'multi': multi, 'tp': p.get('type', 'practitioner'),
         'b': p.get('birth_year'), 'd': p.get('death_year'),
         'bio': (p.get('biography', '') or '')[:150], 'wk': (p.get('key_works') or [])[:2]
     })
