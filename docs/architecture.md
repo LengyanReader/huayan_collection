@@ -1,112 +1,88 @@
-# 华严宗部数字化梳理平台 — 架构设计 (v0.2)
+# 华严宗部数字化梳理平台 — 架构设计
 
-> **更新**: 2024-07-24 — 新增轻量技术栈方案、Loop/Graph Engineering 工作流、完备资源清单
->
-> 配套文档:
-> - [技术栈设计](tech-stack.md) — 组件选型与渐进增强
-> - [工程工作流](engineering-workflow.md) — 闭环开发验证方法论
-> - [翻译规范](translation-guide.md) — 藏汉对译标准
-
----
+> 更新: 2026-07-27 | Demo v0.7
 
 ## 一、系统全景
 
 ```
                         用户界面层
         ┌─────────────────────────────────────┐
-        │  CLI (huayan)  │  Observable (Web)   │
-        │  文献查询/图谱   │  数据叙事/可视化     │
-        └──────────┬──────────────────┬────────┘
-                   │                  │
-        ┌──────────▼──────────────────▼────────┐
-        │          应用服务层 (Python)           │
-        │  ┌─────────┐ ┌──────┐ ┌───────────┐ │
-        │  │ Catalog │ │Graph │ │Translation│ │
-        │  │ Service │ │Service│ │  Service  │ │
-        │  └────┬────┘ └──┬───┘ └─────┬─────┘ │
-        └───────┼─────────┼───────────┼───────┘
-                │         │           │
-        ┌───────▼─────────▼───────────▼───────┐
-        │           数据存储层                  │
-        │  ┌──────┐ ┌───────┐ ┌────────────┐  │
-        │  │SQLite│ │ Neo4j │ │  LanceDB   │  │
-        │  │目录   │ │ 图谱  │ │  向量检索   │  │
-        │  └──────┘ └───────┘ └────────────┘  │
-        └─────────────────────────────────────┘
-                │
-        ┌───────▼─────────────────────────────┐
-        │        AI 辅助层 (Ollama 本地)        │
-        │  ┌─────────────────┐  ┌───────────┐ │
-        │  │ qwen2.5:7b      │  │ dmeta-emb │ │
-        │  │ 实体提取/翻译/QA │  │ 文本向量化 │ │
-        │  └─────────────────┘  └───────────┘ │
+        │  web/demo/index.html (78KB 单文件)   │
+        │  Tab1: 法脉传承 │ Tab2: 汉藏差异      │
+        │  Tab3: 华严行法                       │
+        └──────────┬──────────────────────────┘
+                   │
+        ┌──────────▼──────────────────────────┐
+        │          数据层 (内嵌JSON)           │
+        │  GRAPH: 47人/34边/18地点             │
+        │  GAP:   版本对照/差异矩阵/术语库       │
+        └──────────┬──────────────────────────┘
+                   │
+        ┌──────────▼──────────────────────────┐
+        │        数据文件层 (data/)            │
+        │  knowledge_graph/ + translation/     │
+        │  + catalog/ + references/            │
         └─────────────────────────────────────┘
 ```
 
-## 二、数据模型
+## 二、核心数据模型
 
-详见 [architecture.md (原始版本)](architecture.md) 中的数据模型部分，核心表结构不变。
+### Person (人物)
+```
+id, n(name), dy(dynasty), ti(title), li(lineage), multi[secondary lineages]
+tp(type: patriarch|translator|scholar|practitioner)
+b(birth), d(death), bio, wk(works[])
+_isGhost: 多法脉副条目标记
+```
 
-新增:
-- `data/catalog/complete_catalog.yaml` — 60+ 部文献的完整目录，含语境关联标注
-- `data/references/resource-inventory.md` — 所有资源清单与完备性追踪
+### Edge (传承边)
+```
+s(source), t(target), r(relation: MASTER|INFLUENCE|LINEAGE|CONTEMPORARY), li(lineage)
+```
 
-## 三、工程方法论
+### Location (地点)
+```
+id, n(name), lat, lng, tp(type: temple|mountain|region), dy(dynasty), ds(description), ps(persons[])
+```
 
-本项目采用 **Loop Engineering + Graph Engineering** 双轨方法：
+### 法系颜色映射
+```
+华严五祖=#b8863c 华严莲社=#5e8b9e 月霞系=#7a9ec0 贤首宗高原法系=#c46b5d
+临济宗=#d48476 高丽华严=#6d9a6e 日本华严=#8b7a9e 李通玄系=#c8893e
+慈舟系=#8b7a9e 译师=#a09080 印度源流=#9e8b6e 当代学者=#b0a898
+```
 
-- **Loop Engineering**: 数据→图谱→验证→修复→演示 的闭环迭代
-- **Graph Engineering**: 以图谱连通性、一致性、完备性为质量度量标准
+## 三、源码模块（web/demo/src/）
 
-详见 [engineering-workflow.md](engineering-workflow.md)。
+| 文件 | 职责 | 行数 |
+|------|------|------|
+| `template_top.html` | HTML骨架 + CSS + 控件 | 110 |
+| `template_bottom.html` | 闭合标签 | 3 |
+| `data.js` | GRAPH+GAP数据占位 + 全局变量 | 10 |
+| `lineage.js` | buildTimelineRows/drawTL/initMap/selectPerson/showInfo/onWheel等 | 270 |
+| `gap.js` | renderGap/switchGapView/loadParallelChapter | 250 |
+| `practice.js` | renderPractice | 130 |
+| `init.js` | 初始化 + 事件绑定 + 书签 + 动画 | 50 |
 
-## 四、当前数据资产
-
-| 资产 | 数量 | 完备度 |
-|------|------|--------|
-| 人物 | 43 人 | ~85% |
-| 传承系谱 | 11 条 | ~90% |
-| 道场 | 15 处 | ~80% |
-| 文献目录 | 60+ 部 | ~95% (目录级) |
-| 品目差异 | 45 品 × 39 品 | ~80% (待段落级) |
-| 术语库 | 25 条 | ~25% (目标 100+) |
-| JSON Schema | 3 个 | 100% |
-
-## 五、目录结构（简表）
+## 四、构建与验证
 
 ```
-huayan_collection/
-├── README.md
-├── CLAUDE.md
-├── pyproject.toml
-├── Makefile
-├── .gitignore
-├── data/
-│   ├── catalog/
-│   │   ├── schema.sql
-│   │   └── complete_catalog.yaml          ← 新增: 完整文献目录
-│   ├── knowledge_graph/
-│   │   ├── personas.json                  ← 扩充: 43人
-│   │   ├── lineages.json                  ← 扩充: 11条
-│   │   ├── locations.json
-│   │   ├── neo4j_import/init.cypher
-│   │   └── schemas/
-│   ├── translation/
-│   │   ├── diff_matrix.yaml
-│   │   └── glossary.yaml
-│   ├── texts/
-│   │   ├── sutras/ commentaries/ rituals/ modern/
-│   └── references/
-│       ├── ref.md
-│       └── resource-inventory.md           ← 新增: 资源清单
-├── src/                                    (待实现)
-├── web/                                    (待实现)
-├── docs/
-│   ├── architecture.md
-│   ├── tech-stack.md                       ← 新增: 轻量技术栈
-│   ├── engineering-workflow.md             ← 新增: 工程工作流
-│   └── translation-guide.md
-└── scripts/
-    ├── neo4j-start.bat
-    └── neo4j-setup.sh
-```
+data/knowledge_graph/*.json ──┐
+data/translation/*.yaml ─────┤
+                              ├── build.py ──→ index.html (78KB)
+web/demo/src/*.js ────────────┤
+web/demo/src/*.html ──────────┘
+
+verify_demo.py: 18项自动检查
+  1. <!DOCTYPE html> 开头
+  2. </html> 结尾
+  3. <script> 在 </html> 之前
+  4. 无 </script> 出现在JS内容中
+  5. 无 fetch() 调用
+  6. 括号平衡
+  7. 文件大小 (25-80KB)
+  8-12. 关键函数存在
+  13. 关键人物数据存在
+  14-15. 事件监听器存在
+  16. 无未转义引号
+  17-18. 3个Tab存在
