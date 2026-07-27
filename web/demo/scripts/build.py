@@ -55,6 +55,18 @@ for loc in locations['locations']:
         'tp': loc.get('type', 'temple'), 'dy': loc.get('dynasty', ''),
         'ds': (loc.get('description', '') or '')[:120], 'ps': loc.get('related_persons', [])
     })
+# ── Additional persons: 福慧寺 体化性果 ──
+nodes.append({'id':'person_f01','n':'思元慧三','dy':'近现代','ti':'高原法系40世·福慧寺开山','li':'贤首宗高原法系','tp':'patriarch','b':1901,'d':1986,'bio':'宛平人，俗姓霍。北京广善寺第11代住持。1948年赴台，创树林福慧寺。民国37年来台时已47岁，随身仅带一尊华严三圣像。为高原法系在台根本道场开创者。','wk':[]})
+nodes.append({'id':'person_f02','n':'体化性果','dy':'当代','ti':'福慧寺第三代住持','li':'贤首宗高原法系','tp':'patriarch','b':1950,'d':None,'bio':'钦因长老法嗣。福慧寺第三代住持。继承贤首宗高原法系在台弘法事业。','wk':[]})
+edges.append({'s':'person_f01','t':'person_041','r':'MASTER','li':'贤首宗高原法系'})
+edges.append({'s':'person_041','t':'person_f02','r':'MASTER','li':'贤首宗高原法系'})
+
+# Update 钦因 birth year and bio
+for n in nodes:
+    if n['id']=='person_041':
+        n['b']=1928
+        n['bio']='北京人，俗名阎凤麟。贤首宗高原法系第41世。2008年9月21日于台北大华严寺举行传法大典，将法脉衣钵传予海云继梦(42世)。'
+
 # ── Additional persons: Japan lineage ──
 nodes.append({'id':'person_j01','n':'良弁','dy':'唐/日本','ti':'东大寺初代别当','li':'日本华严','tp':'patriarch','b':689,'d':773,'bio':'审祥弟子。东大寺开山。主持《华严经》讲说。','wk':[]})
 nodes.append({'id':'person_j02','n':'实忠','dy':'日本','ti':'东大寺二代','li':'日本华严','tp':'patriarch','b':726,'d':800,'bio':'良弁弟子。继承东大寺华严教学。','wk':[]})

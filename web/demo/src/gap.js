@@ -60,7 +60,7 @@ function renderGap(){
 
   // ── Priority roadmap ──
   h+="<h2 style=color:var(--gold)>🗺 对译优先级</h2><div class=section>";
-  h+="<p style=line-height:1.8><b style=color:#c46b5d>P0 — 最高优先:</b> Ch.11 如来华严品 · Ch.28 普贤宣说品 — 汉文三译全缺，学术价值最高。需从BDRC获取Toh44藏文电子文本后进行汉英双语翻译。</p>";
+  h+="<p style=line-height:1.8><b style=color:#c46b5d>P0 — 最高优先:</b> Ch.11 如来华严品 · Ch.28 普贤宣说品 — 汉文三译全缺，学术价值最高。<br>获取路径: ① BDRC/BUDA API (buda.bdrc.io, 需注册) → Toh44 Unicode电子文本 ② 84000项目: 已发布入法界品(2021), Ch.11+Ch.28尚未发布 ③ 兜底: 学术论文中对藏文独有品目的研究摘要。目前P0阶段可先整理已知内容结构大纲。</p>";
   h+="<p style=line-height:1.8><b style=color:#c8893e>P1 — 高优先:</b> Ch.27 十地品 · Ch.40 离世间品 — 有鸠摩罗什《十住经》、世亲《十地经论》、竺法护《度世品经》等别译可作对勘桥梁。</p>";
   h+="<p style=line-height:1.8><b style=color:#a08020>P2 — 中优先:</b> Ch.33 寿量品 · Ch.39 如来出现品 — 有玄奘《显无边佛土功德经》和竺法护《如来兴显经》等别译可对照。</p>";
   h+="</div>";
