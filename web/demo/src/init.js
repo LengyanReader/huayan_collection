@@ -7,6 +7,7 @@ drawTL(null);
 initMap();
 renderGap();
 renderPractice();
+renderFrontier();
 
 // Events
 document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value.trim();drawTL(selectedId);});

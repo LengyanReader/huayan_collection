@@ -69,14 +69,14 @@ else:
 
 # 6. Size check
 size = len(html)
-if 25000 <= size <= 80000:
+if 25000 <= size <= 90000:
     errors += ok(f'Size: {size:,} bytes')
 else:
     errors += fail(f'Size {size:,} bytes out of range (25-80KB)')
 
 # 7. Key content
 for key in ['var GRAPH', 'var GAP', 'function drawTL', 'function initMap',
-            'function renderGap', 'function renderPractice',
+            'function renderGap', 'function renderPractice', 'function renderFrontier',
             'addEventListener("click",function(e)',
             'addEventListener("wheel"',
             'addEventListener("click",onClick']:
@@ -110,10 +110,10 @@ if quote_issues == 0:
 # Count only in HTML part (before first <script>)
 html_part = html[:html.find('<script>')]
 tab_count = html_part.count('data-tab=')
-if tab_count == 3:
-    errors += ok(f'3 tabs present')
+if tab_count == 4:
+    errors += ok(f'4 tabs present')
 else:
-    errors += fail(f'{tab_count} tabs (expected 3)')
+    errors += fail(f'{tab_count} tabs (expected 4)')
 
 print(f'\n{"="*40}')
 if errors == 0:
