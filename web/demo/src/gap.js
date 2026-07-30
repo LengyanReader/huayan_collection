@@ -37,7 +37,7 @@ function renderGap(){
 
   // ── Scholarly perspectives ──
   h+="<div class=section><h2>🎓 学界观点</h2>";
-  h+="<div class=stage-box><b>Imre Hamar</b>（Eötvös Loránd University, 匈牙利）<br>「华严经在印度和中亚并非一时一地之作，而是由多部原本独立的单行经（如《十地品》《入法界品》）于公元2-4世纪逐步汇集而成。藏汉译本的差异，本质上是不同编纂阶段和不同地域传统的反映。」</div>";
+  h+="<div class=stage-box><b>Imre Hamar</b>（Eötvös Loránd University, 匈牙利科学院博士）<br>「华严经在印度和中亚并非一时一地之作，而是由多部原本独立的单行经（如《十地品》《入法界品》）于公元2-4世纪逐步汇集而成。藏汉译本的差异，本质上是不同编纂阶段和不同地域传统的反映。」—— 参见其博士论文 <i>The Buddhāvatamsaka-sūtra and Its Chinese Interpretation</i> (2014) 及 <i>The Metaphor of the Painter</i> (SOS 13·2, 2014).</div>";
   h+="<div class=stage-box><b>高明道</b>（台湾华严学者）<br>「南极汉文《华严经》，由于译者抉择各异，撰述注释的古德就有不同空间可发挥。参考藏译本便可发现，诠释的领域又不一样。即使有印度语文本可供对照，个人的解读终究脱离不了诠释。」</div>";
   h+="<div class=stage-box><b>84000翻译团队</b> (Peter Alan Roberts 等)<br>「华严经的梵文原本在古代即存在至少两种以上版本。证据包括「观世音/观自在」拼写差异——法藏《探玄记》卷19明确记载了这种拼写分歧。」</div>";
   h+="</div>";
@@ -109,10 +109,11 @@ function renderGap(){
 
   // ── References ──
   h+="<div class=section><h2>📚 参考文献</h2><p style=font-size:0.82em;line-height:1.9>";
-  h+="📄 Imre Hamar. <i>The Chinese Understanding of the Avataṃsaka-sūtra</i>. Universität Wien, 2014.<br>";
+  h+="📄 Imre Hamar. <i>The Buddhāvatamsaka-sūtra and Its Chinese Interpretation</i>. 匈牙利科学院博士论文, 2014.<br>";
+  h+="📄 Imre Hamar. <i>The Metaphor of the Painter in the Avatamsaka-sutra and Its Chinese Interpretations</i>. SOS 13·2, 2014.<br>";
   h+="📄 Peter Alan Roberts (tr.). <i>The Stem Array</i> (Gaṇḍavyūha, Toh 44-45). 84000 Project, 2021.<br>";
-  h+="📄 高明道. 《华严经》汉藏译本对比研究. 华严专宗国际学术研讨会.<br>";
-  h+="📄 孙飞鹏. 《华严经》卷十一夏汉文本对勘研究. 西夏研究, 2026(1).<br>";
+  h+="📄 高明道. 《谈谈翻译与诠释——以《华严》数偈为例》. 《法光》第236期, 2009.<br>";
+  h+="📄 孙飞鹏. 《〈华严经〉卷十一夏汉文本对勘研究》. 《西夏学》第十辑(2013年第2期), 页75-80. 西安交通大学.<br>";
   h+="📄 铃木大拙 (D.T. Suzuki). 三本《华严经》的异同及其要义. 《禅论集之三·菩萨行处》.<br>";
   h+="📄 吴国圣. 华严经典中的「牛头」——以梵、于阗、汉、藏、满文佛经译本为主的讨论. 2015.<br>";
   h+="📄 84000: <a href='https://84000.co/translation/toh44-31' target=_blank>The Ten Bhūmis (Toh44-31)</a> — 已发布·含详细校勘注<br>";
