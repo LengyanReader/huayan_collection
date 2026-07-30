@@ -27,12 +27,13 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #main-row{display:flex;flex:1;min-height:0}
 #tl-panel{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:0;cursor:grab}
 #tl-panel canvas{display:block;position:absolute;top:0;left:0}
-#side{width:380px;display:flex;flex-direction:column;min-width:180px;border-left:1px solid var(--line)}
-#map-wrap{flex:1;min-height:200px;position:relative}
+#side{flex:1;display:flex;flex-direction:column;min-width:200px;border-left:1px solid var(--line)}
+#map-wrap{flex:1;position:relative}
 #map{width:100%;height:100%}
-#info-box{background:var(--panel);border-top:1px solid var(--line);padding:14px 16px;font-size:0.82em;min-height:150px;overflow-y:auto;color:var(--text)}
-#info-box .empty{text-align:center;color:var(--text2);padding-top:20px}
-#info-box h3{color:var(--gold);font-size:1.1em;margin-bottom:4px}
+#info-popup{position:fixed;z-index:999;background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;font-size:0.82em;max-width:360px;max-height:70vh;overflow-y:auto;color:var(--text);box-shadow:0 8px 30px rgba(60,40,20,0.18);display:none}
+#info-popup h3{color:var(--gold);font-size:1.05em;margin-bottom:4px}
+#info-popup .close-btn{position:absolute;top:4px;right:8px;cursor:pointer;color:var(--text2);font-size:1.1em}
+#info-popup .empty{text-align:center;color:var(--text2);padding-top:10px}
 #controls{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}
 #controls button{padding:4px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em;transition:all 0.2s}
 #controls button:hover{background:#f0ebe0;color:var(--text);border-color:var(--gold)}
@@ -69,7 +70,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #resize-handle{width:5px;cursor:col-resize;background:var(--line);transition:background 0.2s;flex-shrink:0}#resize-handle:hover,#resize-handle.active{background:var(--gold)}
 .map-ancient .leaflet-tile-pane{filter:sepia(0.7) hue-rotate(-15deg) saturate(0.4) brightness(0.85) contrast(1.1)}.map-ancient .leaflet-overlay-pane{opacity:0.6}
 #speed-row{display:flex;gap:3px;align-items:center}#speed-row input[type=range]{width:70px;accent-color:var(--gold)}
-@media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{width:100%!important;flex-direction:row}#map-wrap{height:30vh}#controls button{font-size:0.65em}#resize-handle{display:none}}
+@media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{flex:none!important;width:100%!important;height:35vh}#map-wrap{height:100%}#controls button{font-size:0.65em}#resize-handle{display:none}#info-popup{max-width:90vw}}
 </style>
 </head>
 <body>
@@ -93,8 +94,8 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <div id="resize-handle" title="拖拽调节地图宽度"></div>
     <div id="side">
       <div id="map-wrap"><div id="map"></div></div>
-      <div id="info-box"><div class="empty">👆 点击时间轴上的人物寿命条</div></div>
     </div>
+    <div id="info-popup"><span class=close-btn onclick="document.getElementById('info-popup').style.display='none'">&times;</span><div id=info-popup-content></div></div>
   </div>
   <div id="controls">
     <span style="font-size:0.7em;color:var(--text2)">法系:</span>

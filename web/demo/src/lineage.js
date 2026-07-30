@@ -427,14 +427,14 @@ function initMap(){
 }
 
 // ═══ SELECTION ═══
-function selectPerson(id,isShift){
+function selectPerson(id,isShift,ev){
   if(isShift&&selectedId&&id!==selectedId){selectedId2=id;}else{selectedId=id;selectedId2=null;}
   var p=nodeMap[id];if(p&&p.b){
     var rng=(p.d||p.b+50)-p.b;tl.minX=p.b-rng*0.3;tl.maxX=(p.d||p.b+50)+rng*0.7;
     tl.scale=(tl.W-40)/(tl.maxX-tl.minX);tl.ox=20;
   }
   drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
-  showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null);
+  showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null,ev);
   var locs=getPersonLocs(id);
   if(map&&locs.length>0){
     var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});
@@ -452,7 +452,7 @@ function selectPerson(id,isShift){
   }
   var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 }
-function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击人物寿命条查看详情<br><span style=font-size:0.8em>Shift+点击第二人可并排对比</span></div>";var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();}
+function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById('info-popup').style.display='none';var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();}
 function drawTL2(id){}
 
 // ═══ ANCIENT/MODERN MAP TOGGLE (with terrain) ═══
@@ -505,7 +505,9 @@ function toggleAncient(){
       var ld=layer._ld,an=LOC_ANCIENT[ld.n]||ld.n;
       var names=(ld.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:'';}).filter(Boolean).join('、');
       layer.setPopupContent('<b>'+an+'</b><br><span style=font-size:0.75em;color:var(--text2)>今: '+ld.n+'</span><br>'+(ld.dy||'')+'<br>'+(ld.ds||'')+(names?'<br>👤 '+names:''));
-      var al=L.marker([ld.lat+0.0005,ld.lng],{icon:L.divIcon({html:'<div style=font-size:8px;color:#a08000;font-weight:600;white-space:nowrap>'+an+'</div>',className:'ancient-name-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-10}).addTo(map);
+      var off=ancientLabels.length%3;
+      var loff=[0.003,0.008,0.014][off];
+      var al=L.marker([ld.lat+loff,ld.lng],{icon:L.divIcon({html:'<div style=font-size:7px;color:#8b6b2a;font-weight:500;white-space:nowrap;text-shadow:0 0 3px rgba(255,248,235,0.8)>'+an+'</div>',className:'ancient-name-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-10}).addTo(map);
       ancientLabels.push(al);
     });
   }else{
@@ -530,11 +532,14 @@ function toggleAncient(){
 }
 
 // ═══ ENHANCED INFO PANEL ═══
-function showInfo(p,p2){
-  if(!p)return;var box=document.getElementById("info-box");if(!box)return;
+function showInfo(p,p2,e){
+  if(!p)return;
+  var popup=document.getElementById('info-popup');
+  var content=document.getElementById('info-popup-content');
+  if(!popup||!content)return;
   var lc=DATA.lineage_colors[p.li]||"#b0a898";
   var locs=getPersonLocs(p.id),locHTML="";
-  locs.forEach(function(l){locHTML+="📍 "+l.n+"<br>";});
+  locs.forEach(function(l){var an=ancientMode?(LOC_ANCIENT[l.n]||l.n):l.n;locHTML+='📍 '+an+'<br>';});
   var teachers=DATA.edges.filter(function(e){return e.t===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
   var students=DATA.edges.filter(function(e){return e.s===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.t];}).filter(Boolean);
   var allConns={};DATA.edges.forEach(function(e){if(e.s===p.id)allConns[e.t]=e.r;if(e.t===p.id)allConns[e.s]=e.r;});
@@ -562,7 +567,17 @@ function showInfo(p,p2){
       +"📅 <b>"+(p2.dy||"?")+"</b> · "+(p2.b||"?")+"–"+(p2.d||"?")+"<br>"
       +(p2.bio?"<div style=color:var(--text2)>"+p2.bio+"</div>":"")+"</div>";
   }
-  box.innerHTML=h;
+  content.innerHTML=h;
+  popup.style.display='block';
+  // Position near click or center-right
+  if(e){
+    var px=e.pageX+20,py=e.pageY-20;
+    if(px+380>window.innerWidth)px=e.pageX-400;
+    if(py+300>window.innerHeight)py=window.innerHeight-320;
+    popup.style.left=px+'px';popup.style.top=py+'px';
+  }else{
+    popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';
+  }
 }
 
 // ═══ LAYER TOGGLE ═══
@@ -621,7 +636,7 @@ function onClick(e){
     if(mx>=rl.x&&mx<=rl.x+rl.w&&my>=rl.y&&my<=rl.y+rl.h){zoomToLineage(rl.lineage);return;}
   }
   var hit=tl.hitRects.find(function(h){return mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h;});
-  if(hit){selectPerson(hit.person.id,e.shiftKey);}else{clearSelection();}
+  if(hit){selectPerson(hit.person.id,e.shiftKey,e);}else{clearSelection();}
 }
 
 // ═══ ANIMATION (with map sync + speed control + route line) ═══
