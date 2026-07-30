@@ -20,8 +20,9 @@ panel.addEventListener("wheel",onWheel,{passive:false});
 panel.addEventListener("mousedown",onMD); panel.addEventListener("mousemove",onMM);
 panel.addEventListener("mouseup",onMU); panel.addEventListener("mouseleave",onMU);
 panel.addEventListener("click",onClick);
-panel.addEventListener("touchstart",function(e){if(e.touches.length===1){tl.drag=true;tl.lastX=e.touches[0].clientX;}e.preventDefault();},{passive:false});
-panel.addEventListener("touchmove",function(e){if(tl.drag){var dx=e.touches[0].clientX-tl.lastX;tl.ox+=dx;tl.lastX=e.touches[0].clientX;drawTL(selectedId);}e.preventDefault();},{passive:false});
+var touchStartX=0,touchStartY=0,touchMoved=false;
+panel.addEventListener("touchstart",function(e){if(e.touches.length===1){tl.drag=true;tl.lastX=e.touches[0].clientX;touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;touchMoved=false;}},{passive:true});
+panel.addEventListener("touchmove",function(e){if(!tl.drag)return;var dx=e.touches[0].clientX-touchStartX;var dy=e.touches[0].clientY-touchStartY;touchMoved=true;if(Math.abs(dx)>Math.abs(dy)){e.preventDefault();tl.ox+=e.touches[0].clientX-tl.lastX;tl.lastX=e.touches[0].clientX;drawTL(selectedId);}},{passive:false});
 panel.addEventListener("touchend",function(){tl.drag=false;});
 
 // Bookmarks
