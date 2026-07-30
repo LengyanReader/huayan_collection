@@ -593,6 +593,9 @@ function toggleAncient(){
     // Remove ancient labels
     ancientLabels.forEach(function(l){map.removeLayer(l);});
     ancientLabels=[];
+    // Remove other schools
+    otherSchoolsMarkers.forEach(function(m){map.removeLayer(m);});
+    otherSchoolsMarkers=[];
     // Restore popups with modern names
     map.eachLayer(function(layer){
       if(!layer._ld)return;
@@ -661,6 +664,68 @@ function toggleLayer(layer){
   var btn=document.querySelector('#controls button[data-layer="'+layer+'"]');
   if(btn){if(layerVis[layer]){btn.classList.add('active');}else{btn.classList.remove('active');}}
   drawTL(selectedId);
+}
+
+// ═══ TRANSMISSION ROUTES (Buddhism India→China) ═══
+var TRANSMISSION_ROUTES=[
+  {id:'north',name:'北丝路(西域道)',color:'#c46b5d',dash:[6,3],
+   path:[[24.7,84.99],[27.5,77.7],[33.7,72.8],[34.8,67.8],[39.5,76.0],[41.7,82.9],[40.1,94.8],[34.3,108.9]],
+   desc:'印度→犍陀罗→阿富汗→喀什→龟兹→敦煌→长安。鸠摩罗什(龟兹)、佛驮跋陀罗(北天竺)经此路来华。'},
+  {id:'khotan',name:'于阗道(南线)',color:'#c8893e',dash:[4,4],
+   path:[[27.5,77.7],[32.0,74.0],[37.1,79.9],[40.1,94.8],[34.3,108.9]],
+   desc:'印度→克什米尔→于阗→敦煌→长安。实叉难陀(于阗)来华路径。藏译华严底本亦源于阗。'},
+  {id:'nepal',name:'吐蕃道(西南线)',color:'#8b7a9e',dash:[5,3],
+   path:[[24.7,84.99],[27.7,85.3],[29.6,91.1],[36.6,101.8],[34.3,108.9]],
+   desc:'印度→尼泊尔→拉萨→西宁→长安。胜友/智军藏译华严(Toh44)经此道传入吐蕃。'},
+  {id:'burma',name:'滇缅道(西南线)',color:'#7d9a6e',dash:[4,5],
+   path:[[24.7,84.99],[22.0,96.0],[25.6,100.2],[30.6,104.0],[34.3,108.9]],
+   desc:'印度→缅甸→大理→成都→长安。较早的佛教南传路线，蜀地早期佛教来源。'},
+  {id:'sea',name:'海上丝路',color:'#5e8b9e',dash:[2,6],
+   path:[[24.7,84.99],[22.5,88.3],[6.9,79.8],[2.2,104.0],[23.1,113.2],[30.2,120.2]],
+   desc:'印度→斯里兰卡→爪哇→广州→杭州。南北朝至唐宋时期海上佛教传播路线。'}
+];
+var routeLines=[];
+var otherSchoolsMarkers=[];
+
+function initRoutes(){
+  if(!map)return;
+  // Clear existing
+  routeLines.forEach(function(l){map.removeLayer(l);});
+  routeLines=[];
+  TRANSMISSION_ROUTES.forEach(function(rt){
+    var l=L.polyline(rt.path,{color:rt.color,weight:2,opacity:0.5,dashArray:rt.dash.join(',')}).addTo(map);
+    l.bindTooltip(rt.name+'<br><span style=font-size:0.7em>'+rt.desc+'</span>',{permanent:false});
+    routeLines.push(l);
+  });
+}
+
+var OTHER_SCHOOLS=[
+  {n:'天台宗',y:597,lat:29.2,lng:121.0,c:'#7d9a6e',founder:'智𫖮',loc:'天台山',
+   desc:'中国最早成立的佛教宗派。以《法华经》为根本经典。华严宗判教体系中「同教一乘」即针对天台而设。澄观曾参学天台。',src:'《续高僧传》卷十七·智𫖮传 /《宋高僧传》卷五·澄观传'},
+  {n:'三论宗',y:597,lat:34.3,lng:108.9,c:'#a09080',founder:'吉藏',loc:'长安',
+   desc:'以《中论》《百论》《十二门论》立宗。华严宗继承三论空性论证方法，法藏判教将三论归入大乘始教。',src:'《续高僧传》卷十一·吉藏传'},
+  {n:'唯识宗',y:645,lat:34.3,lng:108.9,c:'#8b7a9e',founder:'玄奘',loc:'长安',
+   desc:'以《成唯识论》立宗。与华严宗同源瑜伽行派但取径不同。玄奘译《显无边佛土功德经》(T0289)即华严寿量品别译。',src:'《大唐大慈恩寺三藏法师传》'},
+  {n:'净土宗',y:402,lat:29.6,lng:116.0,c:'#b8863c',founder:'慧远',loc:'庐山',
+   desc:'以念佛往生为宗旨。华严经普贤行愿品为净土行者重视，华严「华藏世界」与净土「极乐世界」之间有深层义学互动。',src:'《高僧传》卷六·慧远传'},
+  {n:'禅宗',y:520,lat:34.5,lng:112.5,c:'#d48476',founder:'达摩→慧能',loc:'少林寺→曹溪',
+   desc:'以教外别传为宗。华严五祖宗密同时是禅宗荷泽系传人，著《禅源诸诠集都序》系统融合禅教。澄观亦参谒禅门牛头宗。',src:'《宋高僧传》卷六·宗密传 / 宗密《禅源诸诠集都序》'},
+  {n:'律宗',y:626,lat:33.9,lng:109.0,c:'#9e8b6e',founder:'道宣',loc:'终南山',
+   desc:'以四分律为根本。与华严宗同以终南山为根本道场。慧光(地论师·华严义学前身)同时被尊为四分律宗初祖。',src:'《宋高僧传》卷十四·道宣传 / 《续高僧传》卷二十一·慧光传'},
+  {n:'密宗',y:716,lat:34.3,lng:108.9,c:'#c8893e',founder:'善无畏·金刚智·不空',loc:'长安',
+   desc:'唐代开元三大士传入。华严宗内贤首密法(秽迹金刚)自成体系。海云继梦所得印度瑜伽行传承亦与此有历史关联。',src:'《宋高僧传》卷二·善无畏传 / 大华严寺官方资料'}
+];
+function initOtherSchools(){
+  if(!map)return;
+  otherSchoolsMarkers.forEach(function(m){map.removeLayer(m);});
+  otherSchoolsMarkers=[];
+  OTHER_SCHOOLS.forEach(function(s){
+    var icon=L.divIcon({html:'<div style=background:'+s.c+';color:#fff;border-radius:50%;width:22px;height:22px;text-align:center;line-height:22px;font-size:10px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2)>'+s.n[0]+'</div>',iconSize:[22,22],iconAnchor:[11,11]});
+    var m=L.marker([s.lat,s.lng],{icon:icon}).addTo(map);
+    m.bindPopup('<b>'+s.n+'</b> ('+s.y+'年·'+s.loc+')<br>创始人: '+s.founder+'<br><span style=font-size:0.8em>'+s.desc+'</span>');
+    m._school=s;
+    otherSchoolsMarkers.push(m);
+  });
 }
 
 // ═══ ROUTE INFO ═══
@@ -790,6 +855,12 @@ function toggleAnim(){
       if(animRouteLine){map.removeLayer(animRouteLine);animRouteLine=null;}
       if(animRouteMarker){map.removeLayer(animRouteMarker);animRouteMarker=null;}
       if(speedLabel)speedLabel.textContent='1×';
+      // Clean up route highlights
+      routeLines.forEach(function(l){l.setStyle({opacity:0.5,weight:2});});
+    }
+    // Highlight active routes based on current year
+    if(animYear>-400&&animYear<900){
+      routeLines.forEach(function(l){l.setStyle({opacity:Math.min(0.8,0.3+animYear/1500),weight:Math.min(3,2+animYear/800)});});
     }
     tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
     // Map sync + route progress

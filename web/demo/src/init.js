@@ -5,8 +5,8 @@ window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.c
 resizeTL();
 drawTL(null);
 initMap();
-// Default: 50/50 split + ancient map mode
-setTimeout(function(){toggleAncient();},500);
+// Default: ancient map + routes + other schools
+setTimeout(function(){toggleAncient();initRoutes();initOtherSchools();},500);
 // Stats bar
 var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
