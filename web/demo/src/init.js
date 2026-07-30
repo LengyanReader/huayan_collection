@@ -5,6 +5,8 @@ window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.c
 resizeTL();
 drawTL(null);
 initMap();
+// Stats bar
+var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
 renderPractice();
 renderFrontier();
