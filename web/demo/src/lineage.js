@@ -891,6 +891,8 @@ var ANIM_WAYPOINTS=[
   {y:-1500,lat:29,lng:76,z:3,label:'吠陀文明·梨俱吠陀',info:'雅利安人入印,吠陀宗教体系形成。轮回、业力、禅定概念萌芽。'},
   {y:-800,lat:26.5,lng:82,z:3,label:'奥义书哲人·梵我哲学',info:'梵(Brahman)与阿特曼(ātman)概念提出。佛教「无我」说在此对话中形成。'},
   {y:-551,lat:35.6,lng:116.9,z:5,label:'孔子诞生·鲁国',info:'孔子(前551-前479),儒家学派创始人。其仁礼之学后与佛教在中国形成深层对话,宋明理学即儒佛融合之产物。',src:'《史记·孔子世家》'},
+  {y:-469,lat:37.9,lng:23.7,z:4,label:'苏格拉底·雅典',info:'苏格拉底(前469-前399),古希腊哲学奠基人。与孔子大致同时代,东西方哲学两大源头并行发展。',bg:1,src:'西洋哲学史'},
+  {y:-334,lat:33.0,lng:44.0,z:3,label:'亚历山大大帝东征',info:'亚历山大东征至印度河流域,希腊文化与印度文明首次大规模接触。为后来犍陀罗佛教艺术的出现埋下伏笔。',bg:1,src:'世界史'},
   {y:-479,lat:35.6,lng:116.9,z:5,label:'孔子逝世·儒学历程开始',info:'孔子逝世后,弟子编《论语》。儒学逐渐成为中华文明主流思想,后与佛教形成长达两千年的融突关系。'},
   // 释迦生平
   {y:-563,lat:27.5,lng:83.3,z:5,label:'释迦诞生·蓝毗尼园',info:'悉达多太子生于迦毗罗卫。幼受婆罗门教育,后出家求道。'},
@@ -904,6 +906,7 @@ var ANIM_WAYPOINTS=[
   {y:65,lat:33.7,lng:72.8,z:4,label:'迦腻色迦王·犍陀罗结集',info:'贵霜帝国第四次结集。佛法深入中亚,犍陀罗成东传枢纽。大乘经论在此大量结集。'},
   {y:80,lat:27.5,lng:77.7,z:4,label:'马鸣·大乘起信论',info:'造《大乘起信论》。一心二门之说后为华严心性论与判教体系的重要理论基础。'},
   {y:-136,lat:34.3,lng:108.9,z:5,label:'汉武帝·独尊儒术',info:'董仲舒建议罢黜百家独尊儒术。儒学成为汉朝官方意识形态,后来佛教入华时与儒家伦理产生深刻碰撞与融合。',src:'《汉书·董仲舒传》'},
+  {y:0,lat:31.7,lng:35.2,z:4,label:'耶稣诞生·伯利恒',info:'耶稣基督诞生于犹太伯利恒。基督教此后逐渐发展为世界性宗教,与佛教在欧亚大陆两端并行发展。',bg:1,src:'《新约圣经》'},
   {y:142,lat:34.0,lng:109.0,z:5,label:'张道陵·道教创立',info:'张道陵于蜀中创天师道(五斗米道),奉老子为教祖。道教作为中国本土宗教,后与佛教形成长期的竞争与互鉴关系。',src:'《后汉书》《神仙传》'},
   {y:167,lat:34.7,lng:112.4,z:5,label:'支谶译兜沙经·华严首入汉地',info:'月氏僧支娄迦谶至洛阳,译《佛说兜沙经》。虽仅1卷,却是华严经文首次汉译。'},
   {y:320,lat:25.1,lng:85.4,z:4,label:'无著·世亲·那烂陀寺',info:'瑜伽行派于那烂陀弘传。世亲造《十地经论》,后经汉译催生地论学派。'},
@@ -914,6 +917,7 @@ var ANIM_WAYPOINTS=[
   // 汉地·华严宗形成
   {y:420,lat:32.1,lng:118.8,z:5,label:'六十华严·建康道场寺',info:'佛驮跋陀罗译六十华严34品。华严经首次以全貌呈现汉地。'},
   {y:468,lat:34.7,lng:112.4,z:5,label:'慧光·地论南道派',info:'从勒那摩提学十地经论,开地论南道。其学数代传至智俨法藏,为华严义学前身。'},
+  {y:313,lat:41.0,lng:28.9,z:4,label:'米兰敕令·基督教合法化',info:'罗马皇帝君士坦丁颁布米兰敕令,基督教在罗马帝国合法化。从此基督教与佛教在欧亚大陆两端各自传播发展。',bg:1,src:'罗马帝国史'},
   {y:508,lat:34.7,lng:112.4,z:5,label:'十地经论·洛阳译出',info:'菩提流支译世亲十地经论。催生南北朝最重要的义学流派:地论学派。'},
   {y:557,lat:33.9,lng:109,z:6,label:'杜顺·终南山·华严创宗',info:'著法界观门/五教止观。以法界三观和五教止观为华严宗奠定修行理论基础。'},
   {y:597,lat:29.2,lng:121,z:5,label:'智𫖮·天台宗成立',info:'天台宗于天台山成立(中国最早宗派)。华严判教中「同教一乘」即针对天台而设。'},
@@ -928,6 +932,7 @@ var ANIM_WAYPOINTS=[
   {y:798,lat:34.3,lng:108.9,z:6,label:'四十华严·长安',info:'般若三藏译四十华严(入法界品全本)。善财五十三参完整故事得以汉译。'},
   {y:800,lat:29.7,lng:91.1,z:4,label:'藏译华严·吐蕃',info:'胜友/智军将于阗本华严译为藏文Toh44(45品)。华严经中亚于阗传入西藏。'},
   {y:839,lat:39,lng:113.6,z:6,label:'澄观圆寂·五台山',info:'华严四祖圆寂。著华严经疏60卷/演义钞90卷。集大成者,历七帝之师。'},
+  {y:610,lat:21.4,lng:39.8,z:4,label:'穆罕默德·伊斯兰教创立',info:'穆罕默德在麦加开始传播伊斯兰教。世界三大宗教格局(佛教/基督教/伊斯兰教)至此确立。',bg:1,src:'《古兰经》/伊斯兰教史'},
   {y:841,lat:34,lng:108.7,z:5,label:'宗密圆寂·华严盛极而衰',info:'五祖宗密圆寂。次年武宗灭佛,华严典籍大量焚毁,此后转入隐传阶段。'},
   {y:845,lat:34.3,lng:108.9,z:5,label:'会昌法难·华严典籍焚毁',info:'唐武宗灭佛。华严传承几近断绝。此后义学隐传,直至宋代复兴。'},
   {y:868,lat:40.0,lng:94.8,z:5,label:'金刚经雕版·敦煌',info:'敦煌出土咸通九年(868年)雕版印刷金刚经,世界现存最早有纪年的印刷品。佛教经典的传播方式从此革命性变化。',src:'大英图书馆藏敦煌文献'},
@@ -945,6 +950,8 @@ var ANIM_WAYPOINTS=[
   {y:1368,lat:32.0,lng:118.8,z:5,label:'明朝建立·洪武',info:'朱元璋建都南京,早年曾出家为僧。明初设立僧官制度,整顿佛教,天下寺院分禅讲教三类管理。',src:'《明史》'},
   {y:1409,lat:29.6,lng:91.1,z:5,label:'宗喀巴·格鲁派创立',info:'宗喀巴大师在拉萨创大昭寺传召法会,格鲁派(黄教)正式确立。藏传佛教进入新的发展阶段。',src:'藏传佛教史'},
   {y:1508,lat:26.5,lng:106.7,z:5,label:'王阳明·龙场悟道',info:'王守仁(1472-1529)在贵州龙场悟道,提出知行合一。阳明心学与禅宗明心见性有深度亲缘性,其「致良知」近于佛教本觉思想。后传入日本,影响明治维新。',src:'《明儒学案》'},
+  {y:1517,lat:51.0,lng:11.0,z:4,label:'马丁·路德·宗教改革',info:'马丁·路德在维滕堡贴出九十五条论纲,欧洲宗教改革开始。此后基督教世界分裂,西方进入宗教多元化时代。',bg:1,src:'世界史'},
+  {y:1687,lat:52.0,lng:-0.1,z:4,label:'牛顿·自然哲学原理',info:'牛顿发表《自然哲学的数学原理》,科学革命达到高峰。此后科学与宗教的关系成为西方思想核心议题,与佛教对宇宙的解释形成遥远对照。',bg:1,src:'科学史'},
   {y:1578,lat:38.0,lng:110.0,z:5,label:'俺答汗·达赖喇嘛封号',info:'蒙古俺答汗迎请三世达赖索南嘉措,赠予达赖喇嘛称号。藏传佛教与蒙古政治力量结合。',src:'蒙藏佛教史'},
   // 近现代
   {y:1600,lat:30.2,lng:120.1,z:5,label:'明末四大师·佛教复兴',info:'紫柏/憨山/莲池/澫益四大师推动晚明佛教全面复兴。华严学亦受此波影响。'},
@@ -1004,12 +1011,14 @@ function animTick(){
     var wp=ANIM_WAYPOINTS[i];
     if(animYear>=wp.y&&lastAnimLoc<i){
       if(mapMain){
-        mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1.5});
+        if(!wp.bg){
+          mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1.5});
+          mapMain.closePopup();
+          var pc='<div style=max-width:240px><b style=color:#c46b5d>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
+          L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
+            .setLatLng([wp.lat+0.5,wp.lng]).setContent(pc).openOn(mapMain);
+        }
         if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
-        mapMain.closePopup();
-        var pc='<div style=max-width:240px><b style=color:#c46b5d>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
-        L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
-          .setLatLng([wp.lat+0.5,wp.lng]).setContent(pc).openOn(mapMain);
       }
       if(mapMini&&wp.y>=167)mapMini.panTo([wp.lat,wp.lng]);
       if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
