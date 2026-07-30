@@ -155,6 +155,24 @@ edges.append({'s':'person_102','t':'person_000b','r':'MASTER','li':'印度源流
 edges.append({'s':'person_000a','t':'person_102','r':'INFLUENCE','li':'印度源流'})
 edges.append({'s':'person_101','t':'person_102','r':'INFLUENCE','li':'印度源流'})
 
+# ── Additional persons: 求法僧(法显·玄奘·义净) ──
+nodes.append({'id':'person_110','n':'法显','dy':'东晋','ti':'西行求法先驱','li':'求法僧','tp':'practitioner','b':337,'d':422,'bio':'东晋高僧。399年以65岁高龄从长安出发,经河西走廊、西域、中亚至印度,历时14年游历30余国。412年海路归国。著《佛国记》记录印度佛教圣迹。为中国首位完成印度求法之旅的僧人。','wk':['佛国记(高僧法显传)'],'v':1})
+nodes.append({'id':'person_111','n':'玄奘','dy':'唐','ti':'大翻译家·法相宗创始人','li':'求法僧','tp':'translator','b':602,'d':664,'bio':'唐代高僧。629年从长安西行,经西域中亚至印度那烂陀寺,师从戒贤法师。645年归国携657部梵本。主持译场译经75部1335卷。著《大唐西域记》为研究中亚印度历史地理之第一手文献。创中国法相唯识宗。','wk':['大唐西域记','大般若经','成唯识论'],'v':1})
+nodes.append({'id':'person_112','n':'义净','dy':'唐','ti':'海上求法僧·译经家','li':'求法僧','tp':'translator','b':635,'d':713,'bio':'唐代高僧。671年从广州乘波斯船经海路至印度,游历那烂陀寺等30余国。695年归国携梵本400余部。译经56部230卷,偏重律藏。著《南海寄归内法传》《大唐西域求法高僧传》。与法显、玄奘并称中国三大求法僧。','wk':['南海寄归内法传','大唐西域求法高僧传','根本说一切有部律'],'v':1})
+
+# Edges: 求法僧关系
+edges.append({'s':'person_111','t':'person_102','r':'MASTER','li':'求法·唯识传承'})
+edges.append({'s':'person_111','t':'person_112','r':'INFLUENCE','li':'求法僧传承'})
+edges.append({'s':'person_110','t':'person_006','r':'INFLUENCE','li':'求法僧·译经联系'})
+edges.append({'s':'person_103','t':'person_110','r':'INFLUENCE','li':'译经师·法显'})
+
+# Link 鸠摩罗什 to locations + add more edges
+edges.append({'s':'person_103','t':'person_007','r':'INFLUENCE','li':'译经传统'})
+edges.append({'s':'person_111','t':'person_001','r':'CONTEMPORARY','li':'唐代高僧网络'})
+edges.append({'s':'person_111','t':'person_003','r':'CONTEMPORARY','li':'唐代高僧网络'})
+edges.append({'s':'person_112','t':'person_003','r':'CONTEMPORARY','li':'唐代高僧网络'})
+edges.append({'s':'person_008','t':'person_112','r':'CONTEMPORARY','li':'唐代译师网络'})
+
 # Edges: 法身源头
 edges.append({'s':'person_105','t':'person_100','r':'INFLUENCED','li':'印度源流'})
 edges.append({'s':'person_106','t':'person_100','r':'INFLUENCED','li':'印度源流'})
@@ -167,9 +185,26 @@ locs.append({'id': 'l_h', 'n': '南投大华严寺', 'lat': 23.92, 'lng': 120.88
 locs.append({'id': 'l_f', 'n': '台北福慧寺', 'lat': 24.98, 'lng': 121.42, 'tp': 'temple', 'dy': '当代',
              'ds': '钦因长老住持。', 'ps': ['person_041', 'person_043']})
 
+# Locations for 鸠摩罗什 + 求法僧
+locs.append({'id': 'l_kucha', 'n': '龟兹', 'lat': 41.7, 'lng': 82.9, 'tp': 'region', 'dy': '古西域',
+             'ds': '鸠摩罗什故乡。西域佛教重镇,丝绸之路北道枢纽。', 'ps': ['person_103']})
+locs.append({'id': 'l_changan_t', 'n': '长安逍遥园', 'lat': 34.26, 'lng': 108.92, 'tp': 'temple', 'dy': '后秦',
+             'ds': '鸠摩罗什译场所在。后秦姚兴为罗什建,八百沙门参与译经。', 'ps': ['person_103']})
+locs.append({'id': 'l_nalanda', 'n': '那烂陀寺', 'lat': 25.14, 'lng': 85.44, 'tp': 'temple', 'dy': '古印度',
+             'ds': '古印度佛教最高学府。玄奘、义净等求法僧曾于此留学。无著、世亲于此弘传瑜伽行派。', 'ps': ['person_110', 'person_111', 'person_112', 'person_102', 'person_000b']})
+locs.append({'id': 'l_changan_x', 'n': '长安大慈恩寺·弘福寺', 'lat': 34.22, 'lng': 108.96, 'tp': 'temple', 'dy': '唐',
+             'ds': '玄奘归国后译场所在。大慈恩寺大雁塔为贮藏梵本所建。', 'ps': ['person_111']})
+locs.append({'id': 'l_guangzhou', 'n': '广州', 'lat': 23.13, 'lng': 113.26, 'tp': 'region', 'dy': '历代',
+             'ds': '海上丝绸之路起点。义净671年从此出发赴印度。', 'ps': ['person_112']})
+
+# Link existing locations to 鸠摩罗什
+for loc2 in locs:
+    if loc2['id']=='loc_002': loc2['ps'].append('person_103')  # 终南山→罗什曾驻锡
+    if loc2['id']=='loc_007': loc2['ps'].append('person_103')  # 洛阳→罗什曾译经
+
 colors = {'华严五祖': '#b8863c', '华严莲社': '#5e8b9e', '月霞系': '#7a9ec0', '李通玄系': '#c8893e',
           '高丽华严': '#6d9a6e', '日本华严': '#8b7a9e', '贤首宗高原法系': '#c46b5d', '临济宗': '#d48476',
-          '慈舟系': '#8b7a9e', '译师': '#a09080', '印度源流': '#9e8b6e', '当代学者': '#b0a898', 'null': '#b0a898'}
+          '慈舟系': '#8b7a9e', '译师': '#a09080', '印度源流': '#9e8b6e', '求法僧': '#d48476', '当代学者': '#b0a898', 'null': '#b0a898'}
 
 GRAPH = json.dumps({'nodes': nodes, 'edges': edges, 'locations': locs, 'lineage_colors': colors}, ensure_ascii=False)
 
