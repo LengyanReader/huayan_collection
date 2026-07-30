@@ -1157,23 +1157,29 @@ function animTick(){
   var speedLabel=document.getElementById('speed-label');
   var delay=getAnimSpeed();
   if(speedLabel){var x=(225/delay).toFixed(1);speedLabel.textContent=(x==='1.0'?'1':x)+'x';}
-  animYear+=10;
+  animYear+=5; // smaller step = won't skip waypoints
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
-  // Stop at 2030
-  if(animYear>=2030){
-    animYear=2030;animPlaying=false;animPaused=false;lastAnimLoc=-1;
+  // Stop AFTER processing year 2030
+  if(animYear>2030){
+    animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     if(speedLabel)speedLabel.textContent='1x';if(sb)sb.style.opacity='0';
     return;
   }
-  // Find matching waypoint
+  // Find matching waypoint + show popup
   for(var i=0;i<ANIM_WAYPOINTS.length;i++){
     var wp=ANIM_WAYPOINTS[i];
     if(animYear>=wp.y&&lastAnimLoc<i){
-      if(mapMain)mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1.5});
+      if(mapMain){
+        mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1.5});
+        if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
+        mapMain.closePopup();
+        var pc='<div style=max-width:240px><b style=color:#c46b5d>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
+        L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
+          .setLatLng([wp.lat+0.5,wp.lng]).setContent(pc).openOn(mapMain);
+      }
       if(mapMini&&wp.y>=167)mapMini.panTo([wp.lat,wp.lng]);
-      if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
       if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
       if(sb)sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label+' — '+wp.info;
       lastAnimLoc=i;break;
