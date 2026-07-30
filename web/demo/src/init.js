@@ -12,7 +12,6 @@ var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
 renderPractice();
 renderFrontier();
-try{renderCosmology();}catch(e){var d=document.createElement("div");d.style.cssText="position:fixed;top:50px;left:10px;z-index:99999;background:#c46b5d;color:#fff;padding:8px;font:11px monospace";d.textContent="COSMO: "+e.message;document.body.appendChild(d);}
 
 // Events
 document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value.trim();drawTL(selectedId);});
@@ -61,7 +60,7 @@ window.renderComments=function(tab){
   h+='<button onclick=submitComment(\"'+tab+'\")>提交</button>';
   box.innerHTML=h;
 };
-['lineage','gap','practice','frontier','cosmology'].forEach(function(tab){renderComments(tab);});
+['lineage','gap','practice','frontier'].forEach(function(tab){renderComments(tab);});
 
 // ═══ RESIZE HANDLE ═══
 var resizeHandle=document.getElementById('resize-handle');
