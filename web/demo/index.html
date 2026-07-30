@@ -665,6 +665,28 @@ function renderGap(){
   // ═══ REFERENCES SECTION ═══
   h+="<div id=gv-refs class=gv-section style=display:none>";
 
+  h+="<h2 style=color:var(--gold)>📚 参考文献</h2><div class=section><p style=font-size:0.82em;line-height:1.9>";
+  h+="📄 Imre Hamar. <i>The Buddhāvatamsaka-sūtra and Its Chinese Interpretation</i>. 匈牙利科学院博士论文, 2014.<br>";
+  h+="📄 Imre Hamar. <i>The Metaphor of the Painter in the Avatamsaka-sutra and Its Chinese Interpretations</i>. SOS 13·2, 2014.<br>";
+  h+="📄 Peter Alan Roberts (tr.). <i>The Stem Array</i> (Gaṇḍavyūha, Toh 44-45). 84000 Project, 2021.<br>";
+  h+="📄 Peter Alan Roberts (tr.). <i>The Ten Bhūmis</i> (Daśabhūmika, Toh 44-31). 84000 Project, 2021–2025.<br>";
+  h+="📄 高明道. 《谈谈翻译与诠释——以《华严》数偈为例》. 《法光》第236期, 2009.<br>";
+  h+="📄 孙飞鹏. 《〈华严经〉卷十一夏汉文本对勘研究》. 《西夏学》第十辑(2013年第2期), 页75-80.<br>";
+  h+="📄 吴国圣. 《华严经》「入法界品」「发心」中的「犬」与「马」: 梵、藏、汉诸语文本对勘. 2021年华严专宗国际学术研讨会.<br>";
+  h+="📄 铃木大拙 (D.T. Suzuki). 三本《华严经》的异同及其要义. 《禅论集之三·菩萨行处》.<br>";
+  h+="📄 邓葶愉. 再雕高丽藏之周本《华严经》版本源流考. 华严专宗学院, 2020.<br>";
+  h+="📄 庄垣内正弘、百济康义等. 回鹘文《华严经》与汉文底本对应研究.<br>";
+  h+="📎 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas — Kangyur Section</a><br>";
+  h+="📎 84000: <a href='https://84000.co/translation/toh44-31' target=_blank>The Ten Bhūmis (Toh44-31)</a> · <a href='https://read.84000.co/translation/toh44-45.html' target=_blank>The Stem Array (Toh44-45)</a><br>";
+  h+="📎 CBETA: <a href='https://cbetaonline.dila.edu.tw/zh/T10n0279' target=_blank>八十华严 (T10n0279)</a> · <a href='https://cbetaonline.dila.edu.tw/zh/T09n0278' target=_blank>六十华严 (T09n0278)</a></p></div>";
+
+  h+="<h2 style=color:var(--gold)>📥 数据源</h2><div class=section><p style=font-size:0.82em;line-height:1.9>";
+  h+="📦 <b>Asian Legacy Library (ALL)</b> — Kangyur ZIP (122MB) · 藏文 Wylie 转写全45品<br>";
+  h+="📦 <b>84000 Project</b> — Toh44-31/Toh44-45 英译 PDF + 校勘注<br>";
+  h+="📦 <b>BDRC/BUDA</b> — Work ID WA0RK0044 · 德格版6函扫描件 (library.bdrc.io)<br>";
+  h+="📦 <b>ACIP</b> — Release KD0044 · 藏文纯文本 (asianclassics.org → Asian Legacy Library)<br>";
+  h+="📦 <b>CBETA</b> — 汉文大藏经全文 (cbetaonline.dila.edu.tw)</p></div>";
+
   // ── Warnings ──
   GAP.wn.forEach(function(w){h+="<div style=background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.2);border-radius:8px;padding:8px 12px;margin:4px 0;font-size:0.8em;color:var(--red)>"+w+"</div>";});
 
@@ -903,6 +925,18 @@ function renderPractice(){
   h+="<tr><td><b>2024-2026</b></td><td>第四期佛教·AI时代</td><td>九九华严五年讲座(TICC)·支提山大华严寺动土(2026.7)·台北大学合作</td></tr>";
   h+="</table></div>";
 
+  h+="<div class=section><h2>📡 海云继梦全网讲法总目</h2>";
+  h+="<table class=v-table><tr><th>平台</th><th>内容</th><th>规模</th><th>类型</th></tr>";
+  h+="<tr><td><b>Bilibili</b></td><td>华严六科(42h)·善财五十三参·禅法开示</td><td>500+视频</td><td>📺视频</td></tr>";
+  h+="<tr><td><b>Apple Podcast</b></td><td>普贤乘华严宗: 20+系列(华严学概论·禅行法·密法·净土)</td><td>2000+集</td><td>🎧音频</td></tr>";
+  h+="<tr><td><b>Spotify</b></td><td>普贤乘华严宗(每周一/三更新)</td><td>2000+集</td><td>🎧音频</td></tr>";
+  h+="<tr><td><b>YouTube</b></td><td>大华严寺官方频道·讲经合集</td><td>300+视频</td><td>📺视频</td></tr>";
+  h+="<tr><td><b>抖音</b></td><td>#海云继梦导师 每日法语</td><td>1000+短片</td><td>📱短视频</td></tr>";
+  h+="<tr><td><b>fjdh.cn</b></td><td>华严六科·禅修正行·禅观·讲记逐字稿</td><td>50+文稿</td><td>📝文字</td></tr>";
+  h+="<tr><td><b>学佛网</b></td><td>华严禅行法·福慧滋长·修行问答</td><td>100+文稿</td><td>📝文字</td></tr>";
+  h+="<tr><td><b>大华严寺</b></td><td>修行蓝图·法脉传承·最新动态</td><td>50+页面</td><td>🌐网页</td></tr>";
+  h+="</table></div>";
+
   h+="<div class=section><h2>🎬 讲法资源</h2>";
 
   // YouTube card
@@ -937,7 +971,13 @@ function renderPractice(){
 // ═══ FRONTIER TAB ═══
 function renderFrontier(){
   var fv=document.getElementById("frontier-view");if(!fv)return;
-  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-card .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.7em;margin:2px 4px;font-weight:600}.f-link{color:var(--blue);font-size:0.8em}</style>"
+  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}</style>"
+
+  // ── Sub-navigation ──
+  +"<div style='display:flex;gap:6px;margin-bottom:16px'><button class='f-nav-btn active' onclick='switchFrontier(this,\"dialogue\")'>🔬 跨界对话</button><button class='f-nav-btn' onclick='switchFrontier(this,\"litreview\")'>📑 文献综述</button></div>"
+
+  // ── DIALOGUE SECTION ──
+  +"<div id=fv-dialogue class=fv-section>"
 
   // ── Header ──
   +"<div class=section style=border-left:4px solid var(--gold)>"
@@ -1005,9 +1045,22 @@ function renderFrontier(){
   +"📄 Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996).<br>"
   +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>"
 
-  // ── 6. Literature Review ──
+  +"</div>"; // close fv-dialogue
+
+  // ═══ LITERATURE REVIEW SECTION ═══
+  +"<div id=fv-litreview class=fv-section style=display:none>"
   +"<div class=section><h2>📑 多语言文献综述 (2023-2026)</h2>"
-  +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p>"
+  +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p></div>"
+
+  +"<div class=section><h2>📈 研究趋势</h2>"
+  +"<div class=stage-box><b>趋势一: 冥想神经科学走向机制化</b><br>从早期「冥想改变大脑」的相关性研究，转向因果实验——DMN抑制与自我感消退、γ波同步的信息整合理论解释。</div>"
+  +"<div class=stage-box><b>趋势二: AI意识与佛教无我对话</b><br>LLM的自我报告引发AI意识争论。佛教「无我」提供独特视角——意识不需要「自我」作为前提。</div>"
+  +"<div class=stage-box><b>趋势三: 预测加工与佛教认识论趋同</b><br>Friston自由能原理与「万法唯识」结构趋同。但佛教「转识成智」超越了预测加工的解释边界。</div></div>"
+
+  +"<div class=section><h2>🔍 批判性评估</h2>"
+  +"<div class=stage-box><b>前提假设差异</b><br>神经科学预设物理主义（意识是脑的产物），佛教预设「心佛众生三无差别」（意识是法界本具）。对话需明确前提分歧，而非简单嫁接。<br>"
+  +"<b>方法论局限</b><br>冥想神经科学依赖fMRI/EEG第三人称数据，佛教禅修依赖第一人称实证。计算现象学试图桥接二者但缺乏公认的形式化框架。<br>"
+  +"<b>诠释风险</b><br>将华严「事事无碍」简单类比为量子纠缠或神经网络全息性，存在严重过度诠释。华严「法界缘起」是证量境界描述，非物理学理论模型。</div></div>"
 
   +"<h3 style=color:var(--gold);font-size:0.9em>2026</h3>"
   +"<div class=stage-box><b>EN</b> Seth, A. et al. <i>Consciousness in AI: Benchmarks and Frameworks</i>. Nature Machine Intelligence (2026).<br>"
@@ -1028,7 +1081,17 @@ function renderFrontier(){
   +"<h3 style=color:var(--gold);font-size:0.9em>2023</h3>"
   +"<div class=stage-box><b>EN</b> Dorjee, D. <i>Defining Consciousness: Insights from Buddhism and Neuroscience</i>. Progress in Brain Research (2023).<br>"
   +"<b>ZH</b> 周理乾. 《计算现象学与佛学禅观的形式化》. 自然辩证法通讯 (2023).<br>"
-  +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div></div>";
+  +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div>"
+
+  +"<p style='font-size:0.78em;color:var(--text2);margin-top:8px'>⚠ 注: 文献综述为定期更新板块。所列论文基于公开可获取的学术数据库（Google Scholar/PhilPapers/CNKI）。部分论文的华严关联解读属于本项目的诠释性建构。</p>"
+  +"</div></div>";
+}
+
+function switchFrontier(btn,view){
+  document.querySelectorAll('.f-nav-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.fv-section').forEach(function(s){s.style.display='none';});
+  document.getElementById('fv-'+view).style.display='block';
 }
 // ═══ ERROR CATCH ═══
 window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace;white-space:pre-wrap";d.textContent="JS ERROR: "+m+" at line "+l;document.body.appendChild(d);};

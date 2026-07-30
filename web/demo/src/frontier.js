@@ -1,7 +1,13 @@
 // ═══ FRONTIER TAB ═══
 function renderFrontier(){
   var fv=document.getElementById("frontier-view");if(!fv)return;
-  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-card .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.7em;margin:2px 4px;font-weight:600}.f-link{color:var(--blue);font-size:0.8em}</style>"
+  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}</style>"
+
+  // ── Sub-navigation ──
+  +"<div style='display:flex;gap:6px;margin-bottom:16px'><button class='f-nav-btn active' onclick='switchFrontier(this,\"dialogue\")'>🔬 跨界对话</button><button class='f-nav-btn' onclick='switchFrontier(this,\"litreview\")'>📑 文献综述</button></div>"
+
+  // ── DIALOGUE SECTION ──
+  +"<div id=fv-dialogue class=fv-section>"
 
   // ── Header ──
   +"<div class=section style=border-left:4px solid var(--gold)>"
@@ -69,9 +75,22 @@ function renderFrontier(){
   +"📄 Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996).<br>"
   +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>"
 
-  // ── 6. Literature Review ──
+  +"</div>"; // close fv-dialogue
+
+  // ═══ LITERATURE REVIEW SECTION ═══
+  +"<div id=fv-litreview class=fv-section style=display:none>"
   +"<div class=section><h2>📑 多语言文献综述 (2023-2026)</h2>"
-  +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p>"
+  +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p></div>"
+
+  +"<div class=section><h2>📈 研究趋势</h2>"
+  +"<div class=stage-box><b>趋势一: 冥想神经科学走向机制化</b><br>从早期「冥想改变大脑」的相关性研究，转向因果实验——DMN抑制与自我感消退、γ波同步的信息整合理论解释。</div>"
+  +"<div class=stage-box><b>趋势二: AI意识与佛教无我对话</b><br>LLM的自我报告引发AI意识争论。佛教「无我」提供独特视角——意识不需要「自我」作为前提。</div>"
+  +"<div class=stage-box><b>趋势三: 预测加工与佛教认识论趋同</b><br>Friston自由能原理与「万法唯识」结构趋同。但佛教「转识成智」超越了预测加工的解释边界。</div></div>"
+
+  +"<div class=section><h2>🔍 批判性评估</h2>"
+  +"<div class=stage-box><b>前提假设差异</b><br>神经科学预设物理主义（意识是脑的产物），佛教预设「心佛众生三无差别」（意识是法界本具）。对话需明确前提分歧，而非简单嫁接。<br>"
+  +"<b>方法论局限</b><br>冥想神经科学依赖fMRI/EEG第三人称数据，佛教禅修依赖第一人称实证。计算现象学试图桥接二者但缺乏公认的形式化框架。<br>"
+  +"<b>诠释风险</b><br>将华严「事事无碍」简单类比为量子纠缠或神经网络全息性，存在严重过度诠释。华严「法界缘起」是证量境界描述，非物理学理论模型。</div></div>"
 
   +"<h3 style=color:var(--gold);font-size:0.9em>2026</h3>"
   +"<div class=stage-box><b>EN</b> Seth, A. et al. <i>Consciousness in AI: Benchmarks and Frameworks</i>. Nature Machine Intelligence (2026).<br>"
@@ -92,5 +111,15 @@ function renderFrontier(){
   +"<h3 style=color:var(--gold);font-size:0.9em>2023</h3>"
   +"<div class=stage-box><b>EN</b> Dorjee, D. <i>Defining Consciousness: Insights from Buddhism and Neuroscience</i>. Progress in Brain Research (2023).<br>"
   +"<b>ZH</b> 周理乾. 《计算现象学与佛学禅观的形式化》. 自然辩证法通讯 (2023).<br>"
-  +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div></div>";
+  +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div>"
+
+  +"<p style='font-size:0.78em;color:var(--text2);margin-top:8px'>⚠ 注: 文献综述为定期更新板块。所列论文基于公开可获取的学术数据库（Google Scholar/PhilPapers/CNKI）。部分论文的华严关联解读属于本项目的诠释性建构。</p>"
+  +"</div></div>";
+}
+
+function switchFrontier(btn,view){
+  document.querySelectorAll('.f-nav-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.fv-section').forEach(function(s){s.style.display='none';});
+  document.getElementById('fv-'+view).style.display='block';
 }

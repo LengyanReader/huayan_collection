@@ -297,6 +297,28 @@ function renderGap(){
   // ═══ REFERENCES SECTION ═══
   h+="<div id=gv-refs class=gv-section style=display:none>";
 
+  h+="<h2 style=color:var(--gold)>📚 参考文献</h2><div class=section><p style=font-size:0.82em;line-height:1.9>";
+  h+="📄 Imre Hamar. <i>The Buddhāvatamsaka-sūtra and Its Chinese Interpretation</i>. 匈牙利科学院博士论文, 2014.<br>";
+  h+="📄 Imre Hamar. <i>The Metaphor of the Painter in the Avatamsaka-sutra and Its Chinese Interpretations</i>. SOS 13·2, 2014.<br>";
+  h+="📄 Peter Alan Roberts (tr.). <i>The Stem Array</i> (Gaṇḍavyūha, Toh 44-45). 84000 Project, 2021.<br>";
+  h+="📄 Peter Alan Roberts (tr.). <i>The Ten Bhūmis</i> (Daśabhūmika, Toh 44-31). 84000 Project, 2021–2025.<br>";
+  h+="📄 高明道. 《谈谈翻译与诠释——以《华严》数偈为例》. 《法光》第236期, 2009.<br>";
+  h+="📄 孙飞鹏. 《〈华严经〉卷十一夏汉文本对勘研究》. 《西夏学》第十辑(2013年第2期), 页75-80.<br>";
+  h+="📄 吴国圣. 《华严经》「入法界品」「发心」中的「犬」与「马」: 梵、藏、汉诸语文本对勘. 2021年华严专宗国际学术研讨会.<br>";
+  h+="📄 铃木大拙 (D.T. Suzuki). 三本《华严经》的异同及其要义. 《禅论集之三·菩萨行处》.<br>";
+  h+="📄 邓葶愉. 再雕高丽藏之周本《华严经》版本源流考. 华严专宗学院, 2020.<br>";
+  h+="📄 庄垣内正弘、百济康义等. 回鹘文《华严经》与汉文底本对应研究.<br>";
+  h+="📎 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas — Kangyur Section</a><br>";
+  h+="📎 84000: <a href='https://84000.co/translation/toh44-31' target=_blank>The Ten Bhūmis (Toh44-31)</a> · <a href='https://read.84000.co/translation/toh44-45.html' target=_blank>The Stem Array (Toh44-45)</a><br>";
+  h+="📎 CBETA: <a href='https://cbetaonline.dila.edu.tw/zh/T10n0279' target=_blank>八十华严 (T10n0279)</a> · <a href='https://cbetaonline.dila.edu.tw/zh/T09n0278' target=_blank>六十华严 (T09n0278)</a></p></div>";
+
+  h+="<h2 style=color:var(--gold)>📥 数据源</h2><div class=section><p style=font-size:0.82em;line-height:1.9>";
+  h+="📦 <b>Asian Legacy Library (ALL)</b> — Kangyur ZIP (122MB) · 藏文 Wylie 转写全45品<br>";
+  h+="📦 <b>84000 Project</b> — Toh44-31/Toh44-45 英译 PDF + 校勘注<br>";
+  h+="📦 <b>BDRC/BUDA</b> — Work ID WA0RK0044 · 德格版6函扫描件 (library.bdrc.io)<br>";
+  h+="📦 <b>ACIP</b> — Release KD0044 · 藏文纯文本 (asianclassics.org → Asian Legacy Library)<br>";
+  h+="📦 <b>CBETA</b> — 汉文大藏经全文 (cbetaonline.dila.edu.tw)</p></div>";
+
   // ── Warnings ──
   GAP.wn.forEach(function(w){h+="<div style=background:rgba(196,107,93,0.05);border:1px solid rgba(196,107,93,0.2);border-radius:8px;padding:8px 12px;margin:4px 0;font-size:0.8em;color:var(--red)>"+w+"</div>";});
 
