@@ -87,12 +87,23 @@ nodes.append({'id':'person_s02','n':'王颂','dy':'当代','ti':'北京大学教
 nodes.append({'id':'person_s03','n':'邱高兴','dy':'当代','ti':'中国人民大学教授','li':'当代学者','tp':'scholar','b':1966,'d':None,'bio':'中国人民大学哲学院教授。华严宗与佛教中国化研究。','wk':['华严宗与佛教中国化']})
 nodes.append({'id':'person_s04','n':'张文良','dy':'当代','ti':'中国人民大学教授','li':'当代学者','tp':'scholar','b':1966,'d':None,'bio':'中国人民大学佛教与宗教学理论研究所教授。华严思想研究。','wk':[]})
 
+# ── Additional persons: 元晓(新罗) + 慧苑(唐) + 续法(清) ──
+nodes.append({'id':'person_060','n':'元晓','dy':'唐/新罗','ti':'新罗华严学僧','li':'高丽华严','tp':'scholar','b':617,'d':686,'bio':'新罗学僧。与义湘同代，二人曾结伴入唐但中途折返。后自悟大乘起信论奥义。著华严经疏、起信论疏，与法藏、慧远并称东亚起信论三大疏。对朝鲜半岛华严思想影响深远。','wk':['华严经疏','大乘起信论疏','十门和诤论']})
+nodes.append({'id':'person_070','n':'慧苑','dy':'唐','ti':'法藏弟子·华严异解者','li':'华严五祖','tp':'scholar','b':673,'d':743,'bio':'法藏上首弟子。著续华严经略疏刊定记，改五教为四教、以十门代十玄。澄观在华严经疏中系统批判其说。慧苑异解是推动澄观集大成的关键思想动力。','wk':['续华严经略疏刊定记','华严旋澓章']})
+nodes.append({'id':'person_080','n':'续法','dy':'清','ti':'清代华严集大成者','li':'华严五祖','tp':'patriarch','b':1641,'d':1728,'bio':'清代华严宗最重要弘传者。字柏亭，号灌顶，仁和人。著贤首五教仪系统整理法藏判教；编华严宗佛祖传梳理传承谱系。讲华严经二十余遍，为清代华严学集大成者。','wk':['贤首五教仪','华严宗佛祖传','法界宗莲花章']})
+
 # Edge: Japan lineage chain
 edges.append({'s':'person_050','t':'person_j01','r':'MASTER','li':'日本华严'})
 edges.append({'s':'person_j01','t':'person_j02','r':'MASTER','li':'日本华严'})
 edges.append({'s':'person_j02','t':'person_j03','r':'MASTER','li':'日本华严'})
 edges.append({'s':'person_j03','t':'person_j04','r':'INFLUENCE','li':'日本华严'})
 edges.append({'s':'person_j03','t':'person_j05','r':'MASTER','li':'日本华严'})
+
+# Edges: 元晓 慧苑 续法
+edges.append({'s':'person_003','t':'person_070','r':'MASTER','li':'华严五祖'})
+edges.append({'s':'person_070','t':'person_004','r':'INFLUENCED','li':'华严五祖'})
+edges.append({'s':'person_001','t':'person_060','r':'INFLUENCED','li':'华严五祖'})
+edges.append({'s':'person_021','t':'person_080','r':'INFLUENCED','li':'华严五祖'})
 
 # Location: 东大寺
 locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})

@@ -549,15 +549,49 @@ function onClick(e){
   if(hit){selectPerson(hit.person.id,e.shiftKey);}else{clearSelection();}
 }
 
-// ═══ ANIMATION ═══
+// ═══ ANIMATION (with map sync) ═══
 var animTimer=null,animYear=500,animPlaying=false;
+var ANIM_WAYPOINTS=[
+  {y:420,lat:32.06,lng:118.79,z:6,label:'六十华严译出·建康'},
+  {y:590,lat:33.93,lng:108.97,z:7,label:'杜顺·终南山·华严宗创立'},
+  {y:699,lat:34.68,lng:112.44,z:7,label:'八十华严译出·洛阳'},
+  {y:712,lat:34.26,lng:108.94,z:7,label:'法藏圆寂·长安'},
+  {y:798,lat:34.26,lng:108.94,z:7,label:'四十华严译出·长安'},
+  {y:839,lat:39.03,lng:113.56,z:7,label:'澄观圆寂·五台山'},
+  {y:845,lat:34.26,lng:108.94,z:5,label:'唐武宗灭佛·法难'},
+  {y:1085,lat:30.23,lng:120.13,z:7,label:'义天入宋求法·杭州慧因寺'},
+  {y:1101,lat:37.57,lng:126.98,z:6,label:'义天圆寂·高丽开京'},
+  {y:1641,lat:30.23,lng:120.13,z:6,label:'续法出生·杭州·清代华严复兴'},
+  {y:1914,lat:31.65,lng:120.74,z:7,label:'华严大学创立·常熟兴福寺'},
+  {y:1952,lat:25.03,lng:121.56,z:8,label:'华严莲社创社·台北'},
+  {y:2008,lat:23.92,lng:120.88,z:9,label:'三脉汇流·南投大华严寺'},
+  {y:2026,lat:24.53,lng:120.68,z:9,label:'支提山动土·九九华严·苗栗'}
+];
+var lastAnimLoc=-1;
 function toggleAnim(){
-  if(animPlaying){clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";return;}
+  if(animPlaying){clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;return;}
   animPlaying=true;document.getElementById("anim-btn").textContent="⏸ 暂停";
-  animYear=500;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  animYear=500;lastAnimLoc=-1;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  if(map)map.setView([33,110],4);
   animTimer=setInterval(function(){
-    animYear+=15;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";}
+    animYear+=15;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;}
     tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+    // Map sync: fly to nearest waypoint when year crosses threshold
+    if(map){
+      for(var i=0;i<ANIM_WAYPOINTS.length;i++){
+        var wp=ANIM_WAYPOINTS[i];
+        if(animYear>=wp.y&&lastAnimLoc<i){
+          map.flyTo([wp.lat,wp.lng],wp.z,{duration:1.5});
+          // Show brief popup at map center
+          var popup=L.popup({closeButton:false,autoClose:false,className:'anim-popup'})
+            .setLatLng([wp.lat,wp.lng])
+            .setContent('<b>'+wp.y+'年</b><br>'+wp.label)
+            .openOn(map);
+          setTimeout(function(){if(popup)map.closePopup(popup);},2500);
+          lastAnimLoc=i;break;
+        }
+      }
+    }
   },200);
 }
 
