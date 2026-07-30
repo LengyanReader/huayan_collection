@@ -257,9 +257,10 @@ function drawTL(hlId){
   tl.hitRects=[];var ds=25,isSearch=searchQuery.length>0;
   tl.rows.forEach(function(r,ri){
     var sorted=r.ps.slice().sort(function(a,b){return (a.b||a.d||0)-(b.b||b.d||0);});
-    var slots=[];
+    var slots=[],noDateCount=0;
     sorted.forEach(function(p){
-      var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);if(!b&&!d)return;
+      var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);
+      if(!b&&!d){p._yOff=noDateCount*14;noDateCount++;return;} // staggered diamond markers
       var bx=tX(b||d-10),dx=tX(d||b+10),bw=Math.max(6,dx-bx);
       var level=0,placed=false;
       while(!placed&&level<4){
@@ -286,10 +287,31 @@ function drawTL(hlId){
 
   tl.rows.forEach(function(r,ri){var y2=r.y;
     r.ps.forEach(function(p){
-      var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);if(!b&&!d)return;
-      var bx=tX(b||d-10),dx=tX(d||b+10),bh=Math.min(22,rh*0.35),by=y2-bh/2+(p._yOff||0);
+      var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);
+      var noDates=!b&&!d;
       var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0;
       var hoverDim=hoverSet&&!hoverSet[p.id];
+
+      // Special: persons without dates → diamond marker at left edge
+      if(noDates){
+        var mx=10+Math.abs(p._yOff||0)*0.5;
+        var my=y2+(p._yOff||0);
+        ctx.globalAlpha=hoverDim?0.2:(isHL?1:0.7);
+        ctx.fillStyle=r.color+'AA';ctx.strokeStyle=r.color;ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(mx,my-5);ctx.lineTo(mx+6,my);ctx.lineTo(mx,my+5);ctx.lineTo(mx-6,my);ctx.closePath();
+        ctx.fill();ctx.stroke();
+        ctx.globalAlpha=1;
+        var ti=TYPE_ICONS[p.tp]||'';
+        var prefix=ti?'['+ti+'] ':'';
+        ctx.font=(isHL?'bold ':'')+'11px Microsoft YaHei';
+        var fullText='◇ '+prefix+p.n+((p.v||0)<1?' °':'');
+        ctx.fillStyle=isHL?'#c46b5d':'#5c5040';
+        ctx.fillText(fullText,mx+10,my+4);
+        labelRects.push({x:mx+10,y:my-6,w:ctx.measureText(fullText).width,h:12});
+        return;
+      }
+      // Normal dated persons
+      var bx=tX(b||d-10),dx=tX(d||b+10),bh=Math.min(22,rh*0.35),by=y2-bh/2+(p._yOff||0);
       if(isSearch&&!matches)ctx.globalAlpha=0.12;
       else if(hlId&&!isHL)ctx.globalAlpha=hoverDim?0.12:0.18;
       else ctx.globalAlpha=hoverDim?0.2:1;
