@@ -74,7 +74,7 @@ function renderFrontier(){
   +"📄 John Vervaeke. Awakening from the Meaning Crisis (YouTube系列, 2019-).<br>"
   +"📄 Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996).<br>"
   +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>"
-  +"</div>"; // close fv-dialogue
+  +"</div>" // close fv-dialogue
   +"<div id=fv-litreview style=display:none>"
   +"<div class=section><h2>📑 多语言文献综述 (2023-2026)</h2>"
   +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p></div>"

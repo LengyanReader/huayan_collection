@@ -304,7 +304,7 @@ function renderGap(){
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>梦参</b> 华严经讲记(全本)</span>";
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>成一</b> 成一和尚著作集</span>";
   h+="</div></div>";
-
+  h+="</div>"; // close 文本系谱 section div
   h+="</div>"; // close gv-genealogy
 
   // ═══ REFERENCES SECTION ═══
