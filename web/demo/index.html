@@ -849,22 +849,22 @@ function showInfo(p,p2,e){
   var lc=DATA.lineage_colors[p.li]||"#b0a898";
   var locs=getPersonLocs(p.id),locHTML="";
   locs.forEach(function(l){var an=ancientMode?(LOC_ANCIENT[l.n]||l.n):l.n;locHTML+='📍 '+an+'<br>';});
-  // Gather ALL relationships by type
-  var rels={MASTER_OF:[],LINEAGE:[],INFLUENCED:[],CONTEMPORARY:[],MASTER:[],INFLUENCE:[]};
+  // Gather ALL relationships by type (simplified)
+  var rels={};
   DATA.edges.forEach(function(e){
-    if(e.s===p.id){
-      var t=nodeMap[e.t];if(!t)return;
-      var r=e.r==='MASTER_OF'?'MASTER_OF':(e.r==='INFLUENCE'?'INFLUENCE':e.r);
-      if(!rels[r])rels[r]=[];
-      if(rels[r].indexOf(t.n)<0)rels[r].push(t.n);
-    }
-    if(e.t===p.id){
-      var s=nodeMap[e.s];if(!s)return;
-      var r2=e.r==='MASTER_OF'?'MASTER_OF':(e.r==='INFLUENCE'?'INFLUENCE':e.r);
-      var key=(e.r==='MASTER_OF'||e.r==='MASTER')?'⬆师':(e.r==='LINEAGE'?'⬆法脉':(e.r==='INFLUENCED'?'⬆影响':(e.r==='CONTEMPORARY'?'↔同代':'⬆'+e.r)));
-      if(!rels[key])rels[key]=[];
-      if(rels[key].indexOf(s.n)<0)rels[key].push(s.n);
-    }
+    var t=null,dir='';
+    if(e.s===p.id){t=nodeMap[e.t];dir='out';}
+    if(e.t===p.id){t=nodeMap[e.s];dir='in';}
+    if(!t)return;
+    var label='';
+    if(e.r==='MASTER'||e.r==='MASTER_OF')label=(dir==='out'?'⬇ 传法':'⬆ 师承');
+    else if(e.r==='LINEAGE')label='🔗 法脉';
+    else if(e.r==='INFLUENCED')label=(dir==='out'?'⬇ 影响':'⬆ 受影响');
+    else if(e.r==='INFLUENCE')label=(dir==='out'?'⬇ 影响':'⬆ 受影响');
+    else if(e.r==='CONTEMPORARY')label='👥 同代';
+    else label=e.r;
+    if(!rels[label])rels[label]=[];
+    if(rels[label].indexOf(t.n)<0)rels[label].push(t.n);
   });
   var gen=0,tmp=p;
   var teachers=DATA.edges.filter(function(e){return e.t===p.id&&(e.r==='MASTER'||e.r==='MASTER_OF');}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
@@ -872,11 +872,9 @@ function showInfo(p,p2,e){
   var lifeSpan=(p.b&&p.d)?('享年'+(p.d-p.b)+'岁 · '):'';
   // Build relationship HTML
   var relHTML='';
-  var relLabels={'⬆师':'⬆ 师承','⬆法脉':'🔗 法脉','⬆影响':'💡 影响','↔同代':'👥 同代','MASTER_OF':'⬇ 传法','LINEAGE':'🔗 法脉','INFLUENCED':'💡 受影响','INFLUENCE':'💡 影响','CONTEMPORARY':'👥 同代'};
   Object.keys(rels).forEach(function(k){
     var arr=rels[k];if(!arr||!arr.length)return;
-    var label=relLabels[k]||k;
-    relHTML+='<div style=margin:2px 0><b style=color:#b8863c>'+label+'</b>: '+arr.join(' · ')+'</div>';
+    relHTML+='<div style=margin:2px 0><b style=color:#b8863c>'+k+'</b>: '+arr.join(' · ')+'</div>';
   });
   var ti=TYPE_ICONS[p.tp]||'';
   var connCount=Object.keys(rels).reduce(function(s,k){return s+(rels[k]?rels[k].length:0);},0);
@@ -1183,17 +1181,17 @@ function doAnimStep(){
   for(var i=0;i<ANIM_WAYPOINTS.length;i++){if(animYear>=ANIM_WAYPOINTS[i].y){activeWp=ANIM_WAYPOINTS[i];activeIdx=i;}}
   if(!activeWp){animTimer=setTimeout(doAnimStep,delay);return;}
   if(mapMain&&activeIdx>lastAnimLoc){
-    mapMain.flyTo([activeWp.lat,activeWp.lng],Math.max(3,activeWp.z-2),{duration:1.8});
+    try{mapMain.flyTo([activeWp.lat,activeWp.lng],Math.max(3,activeWp.z-2),{duration:1.8});}catch(e){}
     if(animRouteMarkerM)animRouteMarkerM.setLatLng([activeWp.lat,activeWp.lng]);
-    mapMain.closePopup();
+    try{mapMain.closePopup();}catch(e){}
     var popContent='<div style=max-width:240px><b style=color:#c46b5d>'+activeWp.y+'年</b><br><b>'+activeWp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+activeWp.info+'</span></div>';
-    var pM=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
+    try{var pM=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
       .setLatLng([activeWp.lat+0.5,activeWp.lng]).setContent(popContent).openOn(mapMain);
-    setTimeout(function(){if(pM)mapMain.closePopup(pM);},4000);
+    setTimeout(function(){try{if(pM)mapMain.closePopup(pM);}catch(e){}},4000);}catch(e){}
   }
   if(mapMini&&activeIdx>lastAnimLoc){
     if(animRouteMarkerU)animRouteMarkerU.setLatLng([activeWp.lat,activeWp.lng]);
-    if(activeWp.y>=167){mapMini.flyTo([activeWp.lat,activeWp.lng],Math.min(9,activeWp.z+1),{duration:1.8});}
+    if(activeWp.y>=167){try{mapMini.flyTo([activeWp.lat,activeWp.lng],Math.min(9,activeWp.z+1),{duration:1.8});}catch(e){}}
   }
   var sb=document.getElementById('anim-status');
   if(sb&&activeWp){sb.innerHTML='<b>'+activeWp.y+'年</b> '+activeWp.label;sb.style.opacity='1';}
