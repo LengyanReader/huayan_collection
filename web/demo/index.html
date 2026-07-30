@@ -170,32 +170,31 @@ var TYPE_ICONS={patriarch:'祖',translator:'译',scholar:'学',practitioner:'修
 function getPersonLocs(pid){return DATA.locations.filter(function(l){return (l.ps||[]).indexOf(pid)>=0;});}
 function getPersonById(id){return nodeMap[id]||null;}
 function getRelatedIds(id){
-  // Find all persons connected to id via any edge type
   var related={};related[id]=true;
   DATA.edges.forEach(function(e){
     if(e.s===id){related[e.t]=true;related[e.s]=true;}
     if(e.t===id){related[e.s]=true;related[e.t]=true;}
   });
-  // Also add persons at same location
   var locs=getPersonLocs(id);
-  locs.forEach(function(loc){
-    (loc.ps||[]).forEach(function(pid){related[pid]=true;});
-  });
+  locs.forEach(function(loc){(loc.ps||[]).forEach(function(pid){related[pid]=true;});});
   return related;
 }
 function calcStats(){
   var persons=DATA.nodes.filter(function(n){return n.b&&n.d;});
   if(!persons.length)return '';
-  var ages=persons.map(function(n){return n.d-n.b;}).filter(function(a){return a>0&&a<120;});
-  var avgAge=Math.round(ages.reduce(function(s,a){return s+a;},0)/ages.length);
   var span=Math.max.apply(null,persons.map(function(n){return n.d;}))-Math.min.apply(null,persons.map(function(n){return n.b;}));
-  // Find longest gap between master death and student birth
   var maxGap=0;
   DATA.edges.filter(function(e){return e.r==='MASTER';}).forEach(function(e){
     var s=nodeMap[e.s],t=nodeMap[e.t];if(!s||!t||!s.d||!t.b)return;
     var gap=t.b-s.d;if(gap>maxGap)maxGap=gap;
   });
   return '👤47人 · 📅跨度'+span+'年 · ⏳最长传承间隙'+maxGap+'年';
+}
+// Text truncation helper
+function truncText(ctx,text,maxW){
+  if(ctx.measureText(text).width<=maxW)return text;
+  for(var i=text.length-1;i>0;i--){if(ctx.measureText(text.substring(0,i)+'…').width<=maxW)return text.substring(0,i)+'…';}
+  return '';
 }
 function buildTimelineRows(){
   var order=["华严五祖","李通玄系","日本华严","高丽华严","贤首宗高原法系","月霞系","华严莲社","慈舟系","临济宗","译师","印度源流","当代学者"];
@@ -217,10 +216,30 @@ function buildTimelineRows(){
 }
 buildTimelineRows();
 
-// ═══ CANVAS ═══
-var MIN_ROW_H=64;
-function resizeTL(){var p=document.getElementById("tl-panel");tl.W=p.clientWidth;tl.canvas=document.getElementById("tl-canvas");var rows=tl.rows.length||1;tl.H=Math.max(p.clientHeight,rows*MIN_ROW_H+20);tl.canvas.width=tl.W;tl.canvas.height=tl.H;tl.canvas.style.width=tl.W+"px";tl.canvas.style.height=tl.H+"px";tl.ctx=tl.canvas.getContext("2d");}
+// ═══ CANVAS (HiDPI-aware) ═══
+var MIN_ROW_H=64, dps=1; // devicePixelRatio scale
+function resizeTL(){
+  var p=document.getElementById("tl-panel");
+  tl.W=p.clientWidth; var rows=tl.rows.length||1;
+  tl.H=Math.max(p.clientHeight,rows*MIN_ROW_H+20);
+  dps=window.devicePixelRatio||1;
+  tl.canvas=document.getElementById("tl-canvas");
+  tl.canvas.width=tl.W*dps; tl.canvas.height=tl.H*dps;
+  tl.canvas.style.width=tl.W+"px"; tl.canvas.style.height=tl.H+"px";
+  tl.ctx=tl.canvas.getContext("2d");
+  tl.ctx.scale(dps,dps);
+}
 function tX(y){return (y-tl.minX)*tl.scale+tl.ox;}
+
+// ═══ FONT HELPERS (minimum 10px for legibility) ═══
+function f10b(){return 'bold 10px Microsoft YaHei';}
+function f11b(){return 'bold 11px Microsoft YaHei';}
+function f12b(){return 'bold 12px Microsoft YaHei';}
+function f13b(){return 'bold 13px Microsoft YaHei';}
+function f9(){return '9px Microsoft YaHei';}
+function f10(){return '10px Microsoft YaHei';}
+function f11(){return '11px Microsoft YaHei';}
+function f12(){return '12px Microsoft YaHei';}
 
 function drawTL(hlId){
   var ctx=tl.ctx,W=tl.W,H=tl.H;if(!ctx)return;ctx.clearRect(0,0,W,H);
@@ -230,31 +249,33 @@ function drawTL(hlId){
 
   // 0. THEORY EVOLUTION BAND
   if(layerVis.theory&&!isOverview){
-    var thY=0,thH=26;
+    var thY=0,thH=28;
     THEORY_STAGES.forEach(function(ts){
       var x1=tX(ts.s),x2=tX(ts.e);
-      if(x2>0&&x1<W){
+      if(x2>0&&x1<W&&x2-x1>4){
         ctx.fillStyle=ts.c;ctx.fillRect(Math.max(0,x1),thY,Math.min(W,x2-x1),thH);
-        ctx.fillStyle=ts.tc;ctx.font='11px Microsoft YaHei';
-        var tw=ctx.measureText(ts.label).width;
-        if(x2-x1>tw+10)ctx.fillText(ts.label,(x1+x2)/2-tw/2,thY+17);
+        ctx.fillStyle=ts.tc;ctx.font=f11();
+        var txt=truncText(ctx,ts.label,x2-x1-6);
+        if(txt)ctx.fillText(txt,(x1+x2)/2-ctx.measureText(txt).width/2,thY+19);
       }
     });
     ctx.strokeStyle='#e0d8c8';ctx.lineWidth=0.5;
     ctx.beginPath();ctx.moveTo(0,thH);ctx.lineTo(W,thH);ctx.stroke();
-    ctx.fillStyle='#a09080';ctx.font='9px Microsoft YaHei';ctx.fillText('理论演化',4,thH-4);
+    ctx.fillStyle='#a09080';ctx.font=f10();ctx.fillText('理论演化',4,thH-6);
   }
   var topOff=layerVis.theory&&!isOverview?thH:0;
 
-  // 1. DYNASTY BANDS + LABELS
+  // 1. DYNASTY BANDS + LABELS (collision-aware)
   var dynasties=[{n:"唐",s:618,e:907,c:"rgba(200,160,80,0.06)"},{n:"宋",s:960,e:1279,c:"rgba(150,170,190,0.06)"},{n:"明",s:1368,e:1644,c:"rgba(160,150,140,0.04)"},{n:"清",s:1644,e:1912,c:"rgba(150,140,130,0.04)"},{n:"近现代",s:1912,e:1949,c:"rgba(200,150,140,0.08)"},{n:"当代",s:1949,e:2026,c:"rgba(150,190,190,0.08)"}];
   dynasties.forEach(function(d){var x=tX(d.s),x2=tX(d.e);if(x2>0&&x<W){ctx.fillStyle=d.c;ctx.fillRect(Math.max(0,x),topOff,Math.min(W,x2-x),H-topOff);}});
   if(!isOverview){
+    var lastLabelX=-999;
     dynasties.forEach(function(d){
       var x=tX(d.s),x2=tX(d.e),cx=(x+x2)/2;
-      if(x2-x>60&&cx>0&&cx<W){
-        ctx.fillStyle='rgba(160,144,128,0.35)';ctx.font='bold 13px Microsoft YaHei';
+      if(x2-x>50&&cx>0&&cx<W&&cx-lastLabelX>40){
+        ctx.fillStyle='rgba(160,144,128,0.35)';ctx.font=f13b();
         ctx.fillText(d.n,cx-13,topOff+16);
+        lastLabelX=cx;
       }
     });
   }
@@ -267,54 +288,65 @@ function drawTL(hlId){
   // 3. PRACTICE LINEAGE BAND
   var pracOff=0;
   if(layerVis.practice&&!isOverview){
-    pracOff=22;
+    pracOff=24;
     var py=topOff+4;
     PRACTICE_STAGES.forEach(function(ps){
       var x1=tX(ps.s),x2=tX(ps.e);
-      if(x2>0&&x1<W){
+      if(x2>0&&x1<W&&x2-x1>4){
         ctx.fillStyle=ps.c;ctx.fillRect(Math.max(0,x1),py,Math.min(W,x2-x1),pracOff-6);
-        ctx.fillStyle=ps.tc;ctx.font='10px Microsoft YaHei';
-        var tw2=ctx.measureText(ps.label).width;
-        if(x2-x1>tw2+10)ctx.fillText(ps.label,(x1+x2)/2-tw2/2,py+13);
+        ctx.fillStyle=ps.tc;ctx.font=f10();
+        var txt2=truncText(ctx,ps.label,x2-x1-6);
+        if(txt2)ctx.fillText(txt2,(x1+x2)/2-ctx.measureText(txt2).width/2,py+14);
       }
     });
     ctx.strokeStyle='#e0d8c8';ctx.lineWidth=0.5;
     ctx.beginPath();ctx.moveTo(0,py+pracOff-4);ctx.lineTo(W,py+pracOff-4);ctx.stroke();
-    ctx.fillStyle='#a09080';ctx.font='9px Microsoft YaHei';ctx.fillText('修行谱系',4,py-2);
+    ctx.fillStyle='#a09080';ctx.font=f10();ctx.fillText('修行谱系',4,py-2);
   }
 
-  // 4. ROW BACKGROUNDS AND LABELS (with clickable era brackets)
+  // 4. ROW BACKGROUNDS (era brackets only on relevant rows)
   var personTop=topOff+pracOff;
   tl.rowLabels=[];
+  // Pre-compute which rows are relevant for each era bracket
+  var eraRowMap={};
+  ERA_BRACKETS.forEach(function(eb,ei){
+    var bestRow=-1,bestCount=0;
+    tl.rows.forEach(function(r,ri){
+      var cnt=0;r.ps.forEach(function(p){if(p.b&&p.b>=eb.s&&p.b<=eb.e)cnt++;});
+      if(cnt>bestCount){bestCount=cnt;bestRow=ri;}
+    });
+    eraRowMap[ei]=bestRow>=0?bestRow:0;
+  });
+
   tl.rows.forEach(function(r,i){
     r.y=i*rh+rh/2+personTop;
     var y0=i*rh+personTop, y2=r.y;
     if(i%2===0){ctx.fillStyle="rgba(255,255,255,0.25)";ctx.fillRect(0,y0,W,rh);}
-    // Row label - track for click detection
-    var lw=ctx.measureText(r.lineage).width;
+    // Row label
     ctx.fillStyle=r.color;ctx.font="600 12px Microsoft YaHei";ctx.fillText(r.lineage,10,y0+18);
     ctx.strokeStyle="#e8e0d0";ctx.lineWidth=0.5;ctx.beginPath();ctx.moveTo(0,y0+rh);ctx.lineTo(W,y0+rh);ctx.stroke();
-    // Clickable row label area
-    tl.rowLabels.push({x:0,y:y0,w:Math.max(lw+20,100),h:rh,lineage:r.lineage,persons:r.ps});
-    // Era bracket on selected lineage row
+    tl.rowLabels.push({x:0,y:y0,w:Math.max(ctx.measureText(r.lineage).width+20,100),h:rh,lineage:r.lineage,persons:r.ps});
+    // Era brackets ONLY on the most relevant row
     if(!isOverview){
-      ERA_BRACKETS.forEach(function(eb){
+      ERA_BRACKETS.forEach(function(eb,ei){
+        if(eraRowMap[ei]!==i)return;
         var bx=tX(eb.s),bx2=tX(eb.e);
-        if(bx2>0&&bx<W){
+        if(bx2>0&&bx<W&&bx2-bx>30){
           var byc=y0+rh/2;
-          ctx.strokeStyle=r.color+'60';ctx.lineWidth=2;
-          ctx.beginPath();ctx.moveTo(bx,byc-6);ctx.lineTo(bx,byc+6);ctx.stroke();
-          ctx.beginPath();ctx.moveTo(bx2,byc-6);ctx.lineTo(bx2,byc+6);ctx.stroke();
-          if(bx2-bx>80){
-            ctx.fillStyle=r.color+'50';ctx.font='9px Microsoft YaHei';
-            ctx.fillText(eb.label,(bx+bx2)/2-ctx.measureText(eb.label).width/2,byc-3);
+          ctx.strokeStyle=r.color+'50';ctx.lineWidth=1.5;
+          ctx.beginPath();ctx.moveTo(bx,byc-5);ctx.lineTo(bx,byc+5);ctx.stroke();
+          ctx.beginPath();ctx.moveTo(bx2,byc-5);ctx.lineTo(bx2,byc+5);ctx.stroke();
+          if(bx2-bx>90){
+            ctx.fillStyle=r.color+'55';ctx.font=f10();
+            var tw=ctx.measureText(eb.label).width;
+            ctx.fillText(eb.label,(bx+bx2)/2-tw/2,byc-3);
           }
         }
       });
     }
   });
 
-  // 5. PERSON LIFESPAN BARS
+  // 5. PERSON LIFESPAN BARS (improved collision: ±28px range, left-side labels)
   tl.hitRects=[];var ds=25,isSearch=searchQuery.length>0;
   tl.rows.forEach(function(r,ri){
     var sorted=r.ps.slice().sort(function(a,b){return (a.b||a.d||0)-(b.b||b.d||0);});
@@ -323,24 +355,33 @@ function drawTL(hlId){
       var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);if(!b&&!d)return;
       var bx=tX(b||d-10),dx=tX(d||b+10),bw=Math.max(6,dx-bx);
       var level=0,placed=false;
-      while(!placed&&level<3){
+      while(!placed&&level<4){
         var overlap=false;
         if(!slots[level])slots[level]=[];
         for(var s=0;s<slots[level].length;s++){
-          if(!(bx+bw+20<slots[level][s].x || bx>slots[level][s].x+slots[level][s].w+20)){overlap=true;break;}
+          if(!(bx+bw+24<slots[level][s].x || bx>slots[level][s].x+slots[level][s].w+24)){overlap=true;break;}
         }
         if(!overlap){slots[level].push({x:bx,w:bw});placed=true;}
         else level++;
       }
-      p._yOff=(level-1)*14;
+      p._yOff=(level-1.5)*18; // wider range for collision avoidance
     });
   });
+  // Track used label areas to avoid cross-row overlap
+  var labelRects=[];
+  function labelOverlaps(x,y,w,h){
+    for(var i=0;i<labelRects.length;i++){
+      var lr=labelRects[i];
+      if(!(x+w+2<lr.x||x>lr.x+lr.w+2||y+h<lr.y||y>lr.y+lr.h))return true;
+    }
+    return false;
+  }
+
   tl.rows.forEach(function(r,ri){var y2=r.y;
     r.ps.forEach(function(p){
       var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);if(!b&&!d)return;
       var bx=tX(b||d-10),dx=tX(d||b+10),bh=Math.min(22,rh*0.35),by=y2-bh/2+(p._yOff||0);
       var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0;
-      // Hover dimming
       var hoverDim=hoverSet&&!hoverSet[p.id];
       if(isSearch&&!matches)ctx.globalAlpha=0.12;
       else if(hlId&&!isHL)ctx.globalAlpha=hoverDim?0.12:0.18;
@@ -354,21 +395,31 @@ function drawTL(hlId){
       if(p._isGhost){ctx.stroke();}else{ctx.fill();}
       ctx.setLineDash([]);ctx.shadowColor="transparent";ctx.shadowBlur=0;ctx.globalAlpha=1;
 
-      // Type icon + name label
+      // Type icon + name label with collision avoidance
       if(!isSearch||matches){
-        var labelAbove=(p._yOff||0)<=0;
-        var labelY=labelAbove?by-5:by+bh+13;
         var ti=TYPE_ICONS[p.tp]||'';
-        ctx.fillStyle=isHL?"#c46b5d":(p._isGhost?r.color:"#5c5040");
-        ctx.font=(isHL?"bold ":"")+(p._isGhost?8:(isHL?12:10))+"px Microsoft YaHei";
         var prefix=p._isGhost?'↳ ':ti?'['+ti+'] ':'';
-        ctx.fillText(prefix+p.n,rx+rw+6,labelY);
+        ctx.font=(isHL?"bold ":"")+(p._isGhost?'10':(isHL?'12':'11'))+"px Microsoft YaHei";
+        var fullText=prefix+p.n;
+        var tw=ctx.measureText(fullText).width;
+        // Try right side first, then left side if overlap
+        var rightX=rx+rw+5, rightY=(p._yOff||0)<=0?by-3:by+bh+13;
+        var leftX=rx-tw-5, leftY=by+bh/2+4;
+        var useRight=rightX>0&&!labelOverlaps(rightX,rightY-10,tw,12);
+        var useLeft=leftX>0&&!labelOverlaps(leftX,leftY-10,tw,12);
+        var lx,ly;
+        if(useRight||(!useLeft&&rightX<W-tw)){lx=rightX;ly=rightY;}
+        else{lx=leftX;ly=leftY;}
+        ctx.fillStyle=isHL?"#c46b5d":(p._isGhost?r.color:"#5c5040");
+        ctx.fillText(fullText,lx,ly);
+        // Track this label
+        labelRects.push({x:lx,y:ly-10,w:tw,h:12});
       }
       if(!p._isGhost)tl.hitRects.push({x:rx,y:by,w:rw,h:bh,person:p});
     });
   });
 
-  // 6. EDGES (death→birth bezier, color-coded)
+  // 6. EDGES
   if(layerVis.edges){
     var relColors={MASTER:'#b8863c',LINEAGE:'#7d9a6e',INFLUENCED:'#5e8b9e',CONTEMPORARY:'#c0b098'};
     var relDash={MASTER:[],LINEAGE:[5,4],INFLUENCED:[3,5],CONTEMPORARY:[2,4]};
@@ -387,7 +438,7 @@ function drawTL(hlId){
       var sy=sHR.y+sHR.h/2;
       var ex=tp.b?tX(tp.b):tHR.x;
       var ey=tHR.y+tHR.h/2;
-      if(sp.d){ctx.beginPath();ctx.arc(sx,sy,isHL?3.5:2.5,0,Math.PI*2);ctx.fillStyle=isHL?'#c46b5d':rc;ctx.fill();}
+      if(sp.d){ctx.beginPath();ctx.arc(sx,sy,isHL?3:2,0,Math.PI*2);ctx.fillStyle=isHL?'#c46b5d':rc;ctx.fill();}
       ctx.beginPath();ctx.moveTo(sx,sy);
       ctx.bezierCurveTo(sx+(ex-sx)*0.4,sy,ex-(ex-sx)*0.4,ey,ex,ey);
       ctx.stroke();
@@ -398,50 +449,74 @@ function drawTL(hlId){
     });
   }
 
-  // 7. GEOGRAPHIC MARKERS
+  // 7. GEOGRAPHIC MARKERS (staggered + collision-aware)
   if(layerVis.geo&&!isOverview){
+    var geoY0=tl.rows.length*rh+personTop+4;
+    // Flow waypoints
+    var lastGX=-999;
     GEO_FLOW.forEach(function(gf,i){
       var x=tX(gf.y);if(x<0||x>W)return;
-      ctx.fillStyle='#c46b5d';ctx.font='bold 10px Microsoft YaHei';
-      var ly=tl.rows.length*rh+personTop+4;
-      ctx.fillText('📍',x-7,ly+10);
+      if(x-lastGX<30)return; // skip if too close
+      lastGX=x;
+      ctx.fillStyle='#c46b5d';ctx.font=f11b();
+      ctx.fillText('📍',x-6,geoY0+9);
       if(i<GEO_FLOW.length-1){
         var nx=tX(GEO_FLOW[i+1].y);
-        if(nx<W){
-          ctx.strokeStyle='rgba(196,107,93,0.2)';ctx.lineWidth=1;ctx.setLineDash([4,6]);
-          ctx.beginPath();ctx.moveTo(x,ly+8);ctx.lineTo(nx,ly+8);ctx.stroke();
+        if(nx<W&&nx-x>10){
+          ctx.strokeStyle='rgba(196,107,93,0.15)';ctx.lineWidth=1;ctx.setLineDash([3,5]);
+          ctx.beginPath();ctx.moveTo(x+4,geoY0+6);ctx.lineTo(nx-4,geoY0+6);ctx.stroke();
           ctx.setLineDash([]);
         }
       }
     });
-    var locY=tl.rows.length*rh+personTop+24;var seen={};
+    // Location markers with staggered y
+    var locY=geoY0+20,locLevel=0;var seen={};
     DATA.locations.forEach(function(loc){
       if(!loc.ps||!loc.ps.length)return;
       var p=nodeMap[loc.ps[0]];if(!p||!p.b)return;
       var lx=tX(p.b);if(lx<0||lx>W||seen[loc.id])return;seen[loc.id]=true;
-      ctx.fillStyle='#8b6b4a';ctx.font='8px Microsoft YaHei';
-      ctx.fillText('▾ '+loc.n,lx-10,locY);locY+=13;
+      ctx.fillStyle='#8b6b4a';ctx.font=f10();
+      var txt='▾ '+loc.n;
+      if(locLevel%2===0){ctx.fillText(txt,lx-10,locY);}else{ctx.fillText(txt,lx-10,locY+26);}
+      locLevel++;
     });
   }
 
-  // 8. EVENT MARKERS
+  // 8. EVENT MARKERS (staggered y for nearby events)
   if(layerVis.events&&!isOverview){
-    var evY=H-24;
+    var evY0=H-26;
+    // Sort events, stagger y for close ones
+    var evPositions=[];
     KEY_EVENTS.forEach(function(ev){
       var x=tX(ev.y);if(x<0||x>W)return;
+      evPositions.push({x:x,ev:ev});
+    });
+    // Assign y levels
+    evPositions.forEach(function(ep,i){
+      ep.level=0;
+      for(var j=0;j<i;j++){
+        if(Math.abs(ep.x-evPositions[j].x)<80)ep.level++;
+      }
+      ep.level=Math.min(ep.level,2);
+    });
+    evPositions.forEach(function(ep){
+      var x=ep.x,ev=ep.ev,ey=evY0-ep.level*14;
       if(ev.p&&layerVis.edges){
         var pHR=tl.hitRects.find(function(h){return h.person.n===ev.p||h.person.id===ev.p;});
         if(pHR){
-          ctx.strokeStyle='rgba(180,134,60,0.25)';ctx.lineWidth=1;ctx.setLineDash([2,5]);
-          ctx.beginPath();ctx.moveTo(x,evY);ctx.lineTo(pHR.x+pHR.w/2,pHR.y+pHR.h);ctx.stroke();
+          ctx.strokeStyle='rgba(180,134,60,0.2)';ctx.lineWidth=0.8;ctx.setLineDash([2,4]);
+          ctx.beginPath();ctx.moveTo(x,ey);ctx.lineTo(pHR.x+pHR.w/2,pHR.y+pHR.h);ctx.stroke();
           ctx.setLineDash([]);
         }
       }
-      ctx.fillStyle=ev.c;ctx.font='bold 9px Microsoft YaHei';
-      ctx.fillText('▸ '+ev.l,x,evY);
+      ctx.fillStyle=ev.c;ctx.font='bold 10px Microsoft YaHei';
+      var evTxt=truncText(ctx,ev.l,W-x-4);
+      ctx.fillText('▸ '+evTxt,x,ey);
     });
-    ctx.fillStyle='#a09080';ctx.font='10px Microsoft YaHei';
-    for(var yy=200;yy<=2000;yy+=100){var x2=tX(yy);if(x2>=0&&x2<=W)ctx.fillText(yy,x2-12,H-8);}
+    // Year labels
+    ctx.fillStyle='#a09080';ctx.font=f10();
+    var lastYL=-999;
+    for(var yy=200;yy<=2000;yy+=100){var x2=tX(yy);if(x2>=0&&x2<=W&&x2-lastYL>30){ctx.fillText(yy,x2-12,H-8);lastYL=x2;}}
   }
 
   // 9. SEMANTIC ZOOM
@@ -456,7 +531,8 @@ function drawTL(hlId){
       var bh=(ct.count/maxC)*heatH;
       var alpha=0.15+(ct.count/maxC)*0.5;
       ctx.fillStyle='rgba(184,134,60,'+alpha+')';ctx.fillRect(cx-bw/2,heatY+heatH-bh,bw,bh);
-      ctx.fillStyle='#8a7060';ctx.font='9px Microsoft YaHei';ctx.fillText(ct.count+'人',cx-8,heatY+heatH-bh-4);
+      ctx.fillStyle='#8a7060';ctx.font='10px Microsoft YaHei';
+      ctx.fillText(ct.count+'人',cx-8,heatY+heatH-bh-4);
     });
   }
 }
@@ -480,14 +556,12 @@ function initMap(){
 // ═══ SELECTION ═══
 function selectPerson(id,isShift){
   if(isShift&&selectedId&&id!==selectedId){selectedId2=id;}else{selectedId=id;selectedId2=null;}
-  // Zoom to person's era
   var p=nodeMap[id];if(p&&p.b){
     var rng=(p.d||p.b+50)-p.b;tl.minX=p.b-rng*0.3;tl.maxX=(p.d||p.b+50)+rng*0.7;
     tl.scale=(tl.W-40)/(tl.maxX-tl.minX);tl.ox=20;
   }
   drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
   showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null);
-  // Map sync
   var locs=getPersonLocs(id);
   if(map&&locs.length>0){
     var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});
@@ -503,7 +577,6 @@ function selectPerson(id,isShift){
       map.eachLayer(function(layer){if(!layer._ld)return;var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};layer.setRadius(9);layer.setStyle({fillColor:mc[layer._ld.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});});
     },4000);
   }
-  // Update stats bar
   var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 }
 function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击人物寿命条查看详情<br><span style=font-size:0.8em>Shift+点击第二人可并排对比</span></div>";var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();}
@@ -517,9 +590,7 @@ function showInfo(p,p2){
   locs.forEach(function(l){locHTML+="📍 "+l.n+"<br>";});
   var teachers=DATA.edges.filter(function(e){return e.t===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
   var students=DATA.edges.filter(function(e){return e.s===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.t];}).filter(Boolean);
-  // Also find all connected persons (any edge type)
   var allConns={};DATA.edges.forEach(function(e){if(e.s===p.id)allConns[e.t]=e.r;if(e.t===p.id)allConns[e.s]=e.r;});
-  // Generation number approximation
   var gen=0,tmp=p;while(tmp){var next=teachers.find(function(t){return t.id!==tmp.id;});if(!next){var prev=DATA.edges.filter(function(e){return e.t===tmp.id&&e.r==="MASTER";});next=prev.length?nodeMap[prev[0].s]:null;}if(!next)break;tmp=next;gen++;}
   var lifeSpan=(p.b&&p.d)?('享年'+(p.d-p.b)+'岁 · '):'';
   var tch=teachers.length?"⬆ 师承("+teachers.length+"): "+teachers.map(function(t){return t.n;}).join("、")+"<br>":"";
@@ -575,9 +646,7 @@ function onMM(e){
     var hit=tl.hitRects.find(function(h){return mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h;});
     var tip=document.getElementById("tl-tooltip");
     if(hit){var pp=hit.person;
-      // Set hover state
       if(hoveredId!==pp.id){hoveredId=pp.id;drawTL(selectedId);}
-      // Enhanced tooltip
       var ti=TYPE_ICONS[pp.tp]||'';var lc=DATA.lineage_colors[pp.li]||"#b0a898";
       var locs=getPersonLocs(pp.id);var locTxt=locs.length?'📍 '+locs[0].n:'';
       var ageTxt=(pp.b&&pp.d)?' ('+(pp.d-pp.b)+'岁)':'';
@@ -599,14 +668,10 @@ function onMU(){tl.drag=false;}
 function onClick(e){
   if(tl.drag||Math.abs(e.clientX-tl.lastX)>3)return;
   var p=document.getElementById("tl-panel"),r=p.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
-  // Check row label clicks first
   for(var i=0;i<tl.rowLabels.length;i++){
     var rl=tl.rowLabels[i];
-    if(mx>=rl.x&&mx<=rl.x+rl.w&&my>=rl.y&&my<=rl.y+rl.h){
-      zoomToLineage(rl.lineage);return;
-    }
+    if(mx>=rl.x&&mx<=rl.x+rl.w&&my>=rl.y&&my<=rl.y+rl.h){zoomToLineage(rl.lineage);return;}
   }
-  // Check person hit rects
   var hit=tl.hitRects.find(function(h){return mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h;});
   if(hit){selectPerson(hit.person.id,e.shiftKey);}else{clearSelection();}
 }
