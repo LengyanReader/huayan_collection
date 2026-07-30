@@ -661,24 +661,45 @@ function showInfo(p,p2,e){
   var lc=DATA.lineage_colors[p.li]||"#b0a898";
   var locs=getPersonLocs(p.id),locHTML="";
   locs.forEach(function(l){var an=ancientMode?(LOC_ANCIENT[l.n]||l.n):l.n;locHTML+='📍 '+an+'<br>';});
-  var teachers=DATA.edges.filter(function(e){return e.t===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
-  var students=DATA.edges.filter(function(e){return e.s===p.id&&e.r==="MASTER";}).map(function(e){return nodeMap[e.t];}).filter(Boolean);
-  var allConns={};DATA.edges.forEach(function(e){if(e.s===p.id)allConns[e.t]=e.r;if(e.t===p.id)allConns[e.s]=e.r;});
-  var gen=0,tmp=p;while(tmp){var next=teachers.find(function(t){return t.id!==tmp.id;});if(!next){var prev=DATA.edges.filter(function(e){return e.t===tmp.id&&e.r==="MASTER";});next=prev.length?nodeMap[prev[0].s]:null;}if(!next)break;tmp=next;gen++;}
+  // Gather ALL relationships by type
+  var rels={MASTER_OF:[],LINEAGE:[],INFLUENCED:[],CONTEMPORARY:[],MASTER:[],INFLUENCE:[]};
+  DATA.edges.forEach(function(e){
+    if(e.s===p.id){
+      var t=nodeMap[e.t];if(!t)return;
+      var r=e.r==='MASTER_OF'?'MASTER_OF':(e.r==='INFLUENCE'?'INFLUENCE':e.r);
+      if(!rels[r])rels[r]=[];
+      if(rels[r].indexOf(t.n)<0)rels[r].push(t.n);
+    }
+    if(e.t===p.id){
+      var s=nodeMap[e.s];if(!s)return;
+      var r2=e.r==='MASTER_OF'?'MASTER_OF':(e.r==='INFLUENCE'?'INFLUENCE':e.r);
+      var key=(e.r==='MASTER_OF'||e.r==='MASTER')?'⬆师':(e.r==='LINEAGE'?'⬆法脉':(e.r==='INFLUENCED'?'⬆影响':(e.r==='CONTEMPORARY'?'↔同代':'⬆'+e.r)));
+      if(!rels[key])rels[key]=[];
+      if(rels[key].indexOf(s.n)<0)rels[key].push(s.n);
+    }
+  });
+  var gen=0,tmp=p;
+  var teachers=DATA.edges.filter(function(e){return e.t===p.id&&(e.r==='MASTER'||e.r==='MASTER_OF');}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
+  while(tmp){var next=teachers.find(function(t){return t.id!==tmp.id;});if(!next)break;tmp=next;gen++;}
   var lifeSpan=(p.b&&p.d)?('享年'+(p.d-p.b)+'岁 · '):'';
-  var tch=teachers.length?"⬆ 师承("+teachers.length+"): "+teachers.map(function(t){return t.n;}).join("、")+"<br>":"";
-  var std=students.length?"⬇ 传法("+students.length+"): "+students.map(function(t){return t.n;}).join("、")+"<br>":"";
-  var allC=Object.keys(allConns).length?'🔗 关联('+Object.keys(allConns).length+'): 师徒/影响/同代<br>':'';
-  var contemp=DATA.nodes.filter(function(n){return n.dy===p.dy&&n.id!==p.id&&n.li===p.li;}).slice(0,3);
-  var cont=contemp.length?"👥 同代: "+contemp.map(function(n){return n.n;}).join("、")+"<br>":"";
+  // Build relationship HTML
+  var relHTML='';
+  var relLabels={'⬆师':'⬆ 师承','⬆法脉':'🔗 法脉','⬆影响':'💡 影响','↔同代':'👥 同代','MASTER_OF':'⬇ 传法','LINEAGE':'🔗 法脉','INFLUENCED':'💡 受影响','INFLUENCE':'💡 影响','CONTEMPORARY':'👥 同代'};
+  Object.keys(rels).forEach(function(k){
+    var arr=rels[k];if(!arr||!arr.length)return;
+    var label=relLabels[k]||k;
+    relHTML+='<div style=margin:2px 0><b style=color:#b8863c>'+label+'</b>: '+arr.join(' · ')+'</div>';
+  });
   var ti=TYPE_ICONS[p.tp]||'';
+  var connCount=Object.keys(rels).reduce(function(s,k){return s+(rels[k]?rels[k].length:0);},0);
   var h="<h3>"+(ti?'['+ti+'] ':'')+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
     +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
     +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span>"
     +((p.v||0)>0?'<span class=tag style=background:rgba(125,154,110,0.1);color:#7d9a6e>✓</span>':'<span class=tag style=background:rgba(200,160,80,0.1);color:#a08020>°</span>')
-    +(gen?'<span class=tag style=background:rgba(184,134,60,0.06)>第'+gen+'代传人</span>':'')+"<br>"
+    +(gen?'<span class=tag style=background:rgba(184,134,60,0.06)>第'+gen+'代传人</span>':'')
+    +(connCount?'<span class=tag style=background:rgba(184,134,60,0.08)>'+connCount+'个关联</span>':'')+"<br>"
     +"📅 <b>"+(p.dy||"?")+"</b> · "+(p.b||"?")+"–"+(p.d||"?")+" "+lifeSpan+"<br>"
-    +locHTML+tch+std+allC+cont
+    +locHTML+relHTML
     +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
     +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.join("</b> · <b>")+"</b></div>":"");
   if(p2){

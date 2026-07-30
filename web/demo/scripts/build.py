@@ -144,6 +144,17 @@ edges.append({'s':'person_102','t':'person_000b','r':'MASTER','li':'印度源流
 edges.append({'s':'person_104','t':'person_090','r':'MASTER','li':'华严五祖'})
 edges.append({'s':'person_103','t':'person_006','r':'INFLUENCED','li':'华严译师谱系'})
 
+# Edges: 跨宗派/历史关系
+edges.append({'s':'person_005','t':'person_004','r':'MASTER','li':'华严五祖'})
+edges.append({'s':'person_005','t':'person_044','r':'INFLUENCE','li':'华严·禅宗互动'})
+edges.append({'s':'person_004','t':'person_005','r':'MASTER','li':'华严五祖'})
+edges.append({'s':'person_003','t':'person_007','r':'CONTEMPORARY','li':'华严·译场合作'})
+edges.append({'s':'person_090','t':'person_001','r':'INFLUENCE','li':'地论→华严'})
+edges.append({'s':'person_104','t':'person_090','r':'MASTER','li':'地论学派'})
+edges.append({'s':'person_102','t':'person_000b','r':'MASTER','li':'印度源流'})
+edges.append({'s':'person_000a','t':'person_102','r':'INFLUENCE','li':'印度源流'})
+edges.append({'s':'person_101','t':'person_102','r':'INFLUENCE','li':'印度源流'})
+
 # Edges: 法身源头
 edges.append({'s':'person_105','t':'person_100','r':'INFLUENCED','li':'印度源流'})
 edges.append({'s':'person_106','t':'person_100','r':'INFLUENCED','li':'印度源流'})
