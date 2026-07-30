@@ -209,7 +209,7 @@ function renderPractice(){
   h+="<tr><td><b>Bilibili</b></td><td>华严六科(42h)·善财五十三参·禅法开示</td><td>500+视频</td><td>📺视频</td></tr>";
   h+="<tr><td><b>Apple Podcast</b></td><td>普贤乘华严宗: 20+系列(华严学概论·禅行法·密法·净土)</td><td>2000+集</td><td>🎧音频</td></tr>";
   h+="<tr><td><b>Spotify</b></td><td>普贤乘华严宗(每周一/三更新)</td><td>2000+集</td><td>🎧音频</td></tr>";
-  h+="<tr><td><b>YouTube</b></td><td>大华严寺官方频道·讲经合集</td><td>300+视频</td><td>📺视频</td></tr>";
+  h+="<tr><td><b>YouTube</b></td><td><a href='https://www.youtube.com/@huayen-world' target=_blank>@huayen-world</a> · 大华严寺官方频道·讲经合集</td><td>300+视频</td><td>📺视频</td></tr>";
   h+="<tr><td><b>抖音</b></td><td>#海云继梦导师 每日法语</td><td>1000+短片</td><td>📱短视频</td></tr>";
   h+="<tr><td><b>fjdh.cn</b></td><td>华严六科·禅修正行·禅观·讲记逐字稿</td><td>50+文稿</td><td>📝文字</td></tr>";
   h+="<tr><td><b>学佛网</b></td><td>华严禅行法·福慧滋长·修行问答</td><td>100+文稿</td><td>📝文字</td></tr>";
@@ -259,8 +259,10 @@ function renderPractice(){
   h+="<div style='display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px'>";
   h+="<div style='flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px'>";
   h+="<div style='font-weight:600;color:#c46b5d;margin-bottom:6px'>▶ YouTube · 大華嚴寺官方頻道</div>";
-  h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>海云继梦导师讲经全集。华严经/禅修/密法/药师经/地藏经等系列讲法。<br>";
-  h+="🔗 <a href='https://www.youtube.com/results?search_query=%E5%A4%A7%E8%8F%AF%E5%9A%B4%E5%AF%BA+%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2' target=_blank>在YouTube中搜索</a></p></div>";
+  h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>海云继梦导师讲经全集。华严经/禅修/密法/药师经/地藏经等系列讲法。每周持续更新。<br>";
+  h+="🔗 <a href='https://www.youtube.com/@huayen-world' target=_blank>youtube.com/@huayen-world</a> (直达频道)<br>";
+  h+="📺 <a href='https://www.youtube.com/@huayen-world/videos' target=_blank>全部视频</a> · ";
+  h+="📋 <a href='https://www.youtube.com/@huayen-world/playlists' target=_blank>播放清单</a></p></div>";
   h+="<div style='flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px'>";
   h+="<div style='font-weight:600;color:#5e8b9e;margin-bottom:6px'>📺 Bilibili · 海雲繼夢講經全集</div>";
   h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>《华严六科》42小时完整版·善财童子五十三参·禅法开示等。<br>";
@@ -272,6 +274,17 @@ function renderPractice(){
   h+="🌐 <a href='https://www.huayenworld.org/' target=_blank>大华严寺官网</a> · ";
   h+="<a href='https://www.huayenworld.org/%e8%8f%af%e5%9a%b4%e7%a6%aa%e7%b0%a1%e4%bb%8b%e7%89%b9%e8%89%b2/' target=_blank>修行蓝图全文</a>";
   h+="</p></div>";
+
+  // ── YouTube 频道最新内容 ──
+  h+="<div class=section><h2>📺 YouTube 频道 · 最新系列</h2>";
+  h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>数据来源: <a href='https://www.youtube.com/@huayen-world' target=_blank>@huayen-world</a> RSS Feed (最后同步: 2026-07-30)。频道持续更新中。</p>";
+  h+="<table class=v-table><tr><th>系列</th><th>内容</th><th>最近更新</th><th>直达</th></tr>";
+  h+="<tr><td><b>🔴 海雲法語</b></td><td>和上法语开示短片: 转凡成圣、发愿行法、佛菩萨加持、如何泯除瞋心、净土关键等</td><td>2026-07-29</td><td><a href='https://www.youtube.com/@huayen-world/videos' target=_blank>📺 观看</a></td></tr>";
+  h+="<tr><td><b>🟠 華嚴教海</b></td><td>经典讲解系列: 《佛法玄谈》(连载至第6集)、《九九華嚴》TICC讲座录影(第6集已上线)</td><td>2026-07-27</td><td><a href='https://www.youtube.com/@huayen-world/playlists' target=_blank>📋 清单</a></td></tr>";
+  h+="<tr><td><b>🟡 Shorts 短影片</b></td><td>修行要点精选: 戒律与修行、佛菩萨示现、念佛持咒、佛法成佛等（节录自2008北美药师经开示等）</td><td>2026-07-26</td><td><a href='https://www.youtube.com/@huayen-world/shorts' target=_blank>📱 Shorts</a></td></tr>";
+  h+="<tr><td><b>🟢 藥師經北美講座</b></td><td>2008年北美药师经系列开示（近期多支海雲法語的母体讲座来源）</td><td>节录连载中</td><td><a href='https://www.youtube.com/results?search_query=%E8%97%A5%E5%B8%AB%E7%B6%93+%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2+%E5%8C%97%E7%BE%8E' target=_blank>🔍 搜索</a></td></tr>";
+  h+="</table>";
+  h+="<p style='font-size:0.72em;color:var(--text2);margin-top:6px'>📌 YouTube频道RSS: <code>https://www.youtube.com/feeds/videos.xml?channel_id=UCJr3ifkvTs76XnR6SuyIfFQ</code> — 可用于自动同步最新视频标题和描述。</p></div>";
 
   // ── 学术活动轨迹 ──
   h+="<div class=section><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
