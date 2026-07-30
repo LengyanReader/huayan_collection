@@ -955,64 +955,43 @@ function getAnimSpeed(){
 var animPaused=false;
 function pauseAnim(){
   if(!animPlaying||animPaused)return;
-  clearTimeout(animTimer);animPaused=true;
+  animPaused=true;clearTimeout(animTimer);
   document.getElementById("anim-btn").textContent="▶ 继续";
 }
 function resumeAnim(){
   if(!animPaused)return;
   animPaused=false;
   document.getElementById("anim-btn").textContent="⏸ 暂停";
-  doAnimStep();
+  animTimer=setTimeout(animTick,getAnimSpeed());
 }
-function doAnimStep(){
-  try{
-  if(animPaused||!animPlaying)return;
-  var speedLabel=document.getElementById('speed-label');
-  var delay=getAnimSpeed();
-  if(speedLabel){var x=(225/delay).toFixed(1);speedLabel.textContent=(x==='1.0'?'1':x)+'x';}
+function animTick(){
+  if(!animPlaying||animPaused)return;
   animYear+=10;
+  // Update timeline
+  tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  // Update status bar
+  var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
+  // Stop at 2030
   if(animYear>=2030){
-    animYear=2030;
-    tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-    if(mapMain){var lw=ANIM_WAYPOINTS[ANIM_WAYPOINTS.length-1];mapMain.flyTo([lw.lat,lw.lng],8,{duration:2});}
-    setTimeout(function(){
-      clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
-      document.getElementById("anim-btn").textContent="▶ 播放";
-      [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
-      animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
-      if(mapMain)mapMain.off('click');
-      var miniC3=document.getElementById('map-mini-wrap');if(miniC3)miniC3.style.filter='';
-      if(speedLabel)speedLabel.textContent='1x';
-      transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
-      var sb3=document.getElementById('anim-status');if(sb3)sb3.style.opacity='0';
-    },2000);
+    animYear=2030;animPlaying=false;animPaused=false;lastAnimLoc=-1;
+    document.getElementById("anim-btn").textContent="▶ 播放";
+    var sl=document.getElementById('speed-label');if(sl)sl.textContent='1x';
+    if(sb)sb.style.opacity='0';
     return;
   }
-  tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-  if(animYear>-400&&animYear<900&&transLines.length){
-    transLines.forEach(function(l){l.setStyle({opacity:Math.min(0.7,0.2+animYear/1500),weight:Math.min(3,1.5+animYear/800)});});
+  // Update maps at waypoints
+  for(var i=0;i<ANIM_WAYPOINTS.length;i++){
+    var wp=ANIM_WAYPOINTS[i];
+    if(animYear>=wp.y&&lastAnimLoc<i){
+      if(mapMain){mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1.5});}
+      if(mapMini&&wp.y>=167){mapMini.panTo([wp.lat,wp.lng]);}
+      if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
+      if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
+      if(sb){sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label;}
+      lastAnimLoc=i;break;
+    }
   }
-  var activeWp=null,activeIdx=-1;
-  for(var i=0;i<ANIM_WAYPOINTS.length;i++){if(animYear>=ANIM_WAYPOINTS[i].y){activeWp=ANIM_WAYPOINTS[i];activeIdx=i;}}
-  if(!activeWp){animTimer=setTimeout(doAnimStep,delay);return;}
-  if(mapMain&&activeIdx>lastAnimLoc){
-    try{mapMain.flyTo([activeWp.lat,activeWp.lng],Math.max(3,activeWp.z-2),{duration:1.8});}catch(e){}
-    if(animRouteMarkerM)animRouteMarkerM.setLatLng([activeWp.lat,activeWp.lng]);
-    try{mapMain.closePopup();}catch(e){}
-    var popContent='<div style=max-width:240px><b style=color:#c46b5d>'+activeWp.y+'年</b><br><b>'+activeWp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+activeWp.info+'</span></div>';
-    try{var pM=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
-      .setLatLng([activeWp.lat+0.5,activeWp.lng]).setContent(popContent).openOn(mapMain);
-    setTimeout(function(){try{if(pM)mapMain.closePopup(pM);}catch(e){}},4000);}catch(e){}
-  }
-  if(mapMini&&activeIdx>lastAnimLoc){
-    if(animRouteMarkerU)animRouteMarkerU.setLatLng([activeWp.lat,activeWp.lng]);
-    if(activeWp.y>=167){try{mapMini.flyTo([activeWp.lat,activeWp.lng],Math.min(9,activeWp.z+1),{duration:1.8});}catch(e){}}
-  }
-  var sb=document.getElementById('anim-status');
-  if(sb&&activeWp){sb.innerHTML='<b>'+activeWp.y+'年</b> '+activeWp.label;sb.style.opacity='1';}
-  lastAnimLoc=activeIdx;
-  animTimer=setTimeout(doAnimStep,delay);
-  }catch(e){animTimer=setTimeout(doAnimStep,delay);}
+  animTimer=setTimeout(animTick,getAnimSpeed());
 }
 function toggleAnim(){
   var speedLabel=document.getElementById('speed-label');
@@ -1054,7 +1033,7 @@ function toggleAnim(){
     if(miniContainer&&document.getElementById('tab-lineage').classList.contains('map-ancient'))miniContainer.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
   }
 
-  animTimer=setTimeout(doAnimStep,getAnimSpeed());
+  animTimer=setTimeout(animTick,getAnimSpeed());
 }
 
 // ═══ TABS ═══
