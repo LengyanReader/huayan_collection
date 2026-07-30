@@ -114,7 +114,31 @@
         {"from": "person_007b", "to": "person_006", "relation": "INFLUENCED", "note": "支娄迦谶首译《兜沙经》（167 CE）→佛驮跋陀罗译六十华严（420 CE）"},
         {"from": "person_006", "to": "person_007", "relation": "INFLUENCED", "note": "六十华严（420）→八十华严（699）是重译与扩充关系"},
         {"from": "person_007", "to": "person_008", "relation": "INFLUENCED", "note": "八十华严（699）→四十华严（798）补全《入法界品》"},
-        {"from": "person_003", "to": "person_007", "relation": "INFLUENCED", "note": "法藏参与实叉难陀译场并证义"}
+        {"from": "person_003", "to": "person_007", "relation": "INFLUENCED", "note": "法藏参与实叉难陀译场并证义"},
+        {"from": "person_103", "to": "person_007", "relation": "INFLUENCED", "note": "鸠摩罗什译经传统影响后世译师"},
+        {"from": "person_103", "to": "person_006", "relation": "INFLUENCED", "note": "罗什先译十住经,佛驮继译六十华严"},
+        {"from": "person_103", "to": "person_110", "relation": "INFLUENCED", "note": "罗什在中亚的声望间接促使法显西行"}
+      ]
+    },
+    {
+      "name": "求法僧与译师网络",
+      "edges": [
+        {"from": "person_111", "to": "person_102", "relation": "MASTER_OF", "note": "玄奘在那烂陀师从戒贤,戒贤属无著世亲瑜伽行派传承"},
+        {"from": "person_111", "to": "person_112", "relation": "INFLUENCED", "note": "玄奘开创的求法传统直接影响义净"},
+        {"from": "person_110", "to": "person_006", "relation": "INFLUENCED", "note": "法显《佛国记》记录了佛驮跋陀罗故乡迦毗罗卫"},
+        {"from": "person_110", "to": "person_111", "relation": "INFLUENCED", "note": "法显的求法经历鼓舞了玄奘"},
+        {"from": "person_111", "to": "person_001", "relation": "CONTEMPORARY", "note": "玄奘与杜顺同代,唯识与华严初创期有义学对话"},
+        {"from": "person_111", "to": "person_003", "relation": "CONTEMPORARY", "note": "玄奘与法藏父亲相识,法藏曾参访玄奘译场"},
+        {"from": "person_112", "to": "person_003", "relation": "CONTEMPORARY", "note": "义净与法藏同时代,同为译场主持者"},
+        {"from": "person_008", "to": "person_112", "relation": "CONTEMPORARY", "note": "般若(四十华严译者)与义净同为唐代译师"},
+        {"from": "person_113", "to": "person_104", "relation": "INFLUENCED", "note": "真谛译摄大乘论→菩提流支译十地经论,唯识学两条入华路径"},
+        {"from": "person_113", "to": "person_114", "relation": "INFLUENCED", "note": "真谛与求那跋陀罗同为南朝四大译师"},
+        {"from": "person_115", "to": "person_003", "relation": "CONTEMPORARY", "note": "不空与法藏同代,密宗与华严密法有历史关联"},
+        {"from": "person_116", "to": "person_006", "relation": "INFLUENCED", "note": "竺法护译十地品别译→佛驮跋陀罗译六十华严,补全华严品目"},
+        {"from": "person_116", "to": "person_007b", "relation": "INFLUENCED", "note": "竺法护继支谶后继续翻译华严单行经"},
+        {"from": "person_117", "to": "person_111", "relation": "INFLUENCED", "note": "慧超《往五天竺国传》补充了玄奘《大唐西域记》之后的印度信息"},
+        {"from": "person_117", "to": "person_112", "relation": "INFLUENCED", "note": "慧超继义净之后的新罗求法僧,延续海路求法传统"},
+        {"from": "person_007b", "to": "person_116", "relation": "INFLUENCED", "note": "支谶开华严汉译先河→竺法护系统翻译多部华严单行经"}
       ]
     }
   ]
