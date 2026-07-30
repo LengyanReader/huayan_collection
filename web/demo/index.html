@@ -128,7 +128,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   <button class="active" data-tab="lineage">🌊 法脉传承</button>
   <button data-tab="gap">📜 华严文献</button>
   <button data-tab="frontier">🔬 前沿对话</button>
-  <button data-tab="cosmology">🪷 华藏世界</button>
+  <button data-tab="cosmology">🪷 华严其观</button>
 </div>
 
 <div id="tab-practice" class="tab-content"><div id="practice-view"></div><div class=comment-box id=cmt-practice></div></div>
@@ -2170,7 +2170,7 @@ var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
 renderPractice();
 renderFrontier();
-renderCosmology();
+try{renderCosmology();}catch(e){var d=document.createElement("div");d.style.cssText="position:fixed;top:50px;left:10px;z-index:99999;background:#c46b5d;color:#fff;padding:8px;font:11px monospace";d.textContent="COSMO: "+e.message;document.body.appendChild(d);}
 
 // Events
 document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value.trim();drawTL(selectedId);});
