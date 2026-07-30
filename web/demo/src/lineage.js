@@ -658,7 +658,7 @@ function showInfo(p,p2,e){
   var popup=document.getElementById('info-popup');
   var content=document.getElementById('info-popup-content');
   if(!popup||!content)return;
-  var lc=DATA.lineage_colors[p.li]||"#b0a898";
+  var lc=(p.li&&DATA.lineage_colors[p.li])?DATA.lineage_colors[p.li]:"#b0a898";
   var locs=getPersonLocs(p.id),locHTML="";
   locs.forEach(function(l){var an=ancientMode?(LOC_ANCIENT[l.n]||l.n):l.n;locHTML+='📍 '+an+'<br>';});
   // Gather ALL relationships by type (simplified)
@@ -963,6 +963,7 @@ function resumeAnim(){
   doAnimStep();
 }
 function doAnimStep(){
+  try{
   if(animPaused||!animPlaying)return;
   var speedLabel=document.getElementById('speed-label');
   var delay=getAnimSpeed();
@@ -1009,6 +1010,7 @@ function doAnimStep(){
   if(sb&&activeWp){sb.innerHTML='<b>'+activeWp.y+'年</b> '+activeWp.label;sb.style.opacity='1';}
   lastAnimLoc=activeIdx;
   animTimer=setTimeout(doAnimStep,delay);
+  }catch(e){animTimer=setTimeout(doAnimStep,delay);}
 }
 function toggleAnim(){
   var speedLabel=document.getElementById('speed-label');
