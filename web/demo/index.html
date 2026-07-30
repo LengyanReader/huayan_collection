@@ -2275,8 +2275,8 @@ function handleCosmoClick(e){
       drawCosmo();return;
     }
   }
-  // Click center = select Vairocana
-  if(dist<minR*2){
+  // Click center = select Vairocana (use smallest layer radius)
+  if(cosmoLayerRects.length>0&&dist<cosmoLayerRects[0].r1){
     cosmoSel=COSMO_LAYERS[12];
     var info2=document.getElementById("cosmo-info");
     if(info2){info2.style.display='block';info2.innerHTML='<h3 style=color:var(--gold)>卍 毗卢遮那佛</h3><p>华严经根本教主。梵名Vairocana,意译<b>光明遍照</b>、大日如来。法身遍一切处,为华藏世界海之本体。二十重世界海中,一一佛刹皆毗卢遮那佛法身之显现。</p><p style=font-size:0.72em;color:var(--text2)>「佛身充满于法界,普现一切众生前;随缘赴感靡不周,而恒处此菩提座。」</p>';}
