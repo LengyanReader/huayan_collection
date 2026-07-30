@@ -328,14 +328,19 @@ function loadParallelChapter(chId){
   if(chId==="ch11"||chId==="ch32"){
     fetch('toh44-chapters.json').then(function(r){return r.json();}).then(function(data){
       var ch=data[chId];if(!ch)return;
-      var wylieHTML='';ch.paragraphs.forEach(function(p,i){
-        wylieHTML+='<div class=ppara id=pp-'+chId+'-'+i+'><span class=pn>§'+(i+1)+'</span> '+p+'</div>';
-      });
-      bo.innerHTML='<div class=ch-title>📜 '+ch.name_zh+'<br><span style=font-size:0.7em;color:var(--text2)>'+ch.name_en+'</span></div>'+wylieHTML;
-      bo.innerHTML+='<div style=margin-top:12px;font-size:0.7em;color:var(--text2)>共 '+ch.total_paras+' 段 · 显示前 8 段 · Wylie转写</div>';
-      // Build segment nav
-      var sn='';for(var i=0;i<ch.paragraphs.length;i++){sn+='<span class=seg-btn onclick=\"scrollToP(pp-'+chId+'-'+i+')\">§'+(i+1)+'</span> ';}
-      sg.innerHTML=sn;
+      var pageSize=50, page=0; var totalPages=Math.ceil(ch.paragraphs.length/pageSize);
+      function renderPage(pn){
+        var start=pn*pageSize, end=Math.min(start+pageSize,ch.paragraphs.length);
+        var html='<div class=ch-title>📜 '+ch.name_zh+'<br><span style=font-size:0.7em;color:var(--text2)>'+ch.name_en+' · 共 '+ch.paragraphs.length+' 段 · Wylie转写</span></div>';
+        for(var i=start;i<end;i++){html+='<div class=ppara id=pp-'+chId+'-'+i+'><span class=pn>§'+(i+1)+'</span> '+ch.paragraphs[i]+'</div>';}
+        html+='<div style=display:flex;gap:8px;justify-content:center;margin:12px 0;flex-wrap:wrap>';
+        for(var j=0;j<totalPages;j++){html+='<button onclick=loadPage('+j+') style=padding:4px 10px;border:1px solid var(--line);border-radius:12px;background:'+(j===pn?'var(--gold)':'var(--card)')+';color:'+(j===pn?'#fff':'var(--text2)')+';cursor:pointer;font-size:0.75em>'+(j+1)+'</button>';}
+        html+='</div>';bo.innerHTML=html;
+        // Segment nav for current page
+        var sn='';for(var i=start;i<end;i+=5){sn+='<span class=seg-btn onclick=scrollToP(\"pp-'+chId+'-'+i+'\")>§'+(i+1)+'-'+Math.min(i+5,end)+'</span> ';}
+        sg.innerHTML=sn;
+      }
+      window.loadPage=renderPage; renderPage(0);
     }).catch(function(e){bo.innerHTML='<span style=color:var(--red)>加载失败: '+e.message+'</span>';});
   }
 
