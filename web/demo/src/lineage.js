@@ -915,7 +915,7 @@ function toggleAnim(){
   var speedLabel=document.getElementById('speed-label');
   // ── STOP ──
   if(animPlaying){
-    clearInterval(animTimer);animPlaying=false;lastAnimLoc=-1;
+    clearTimeout(animTimer);animPlaying=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
@@ -951,7 +951,7 @@ function toggleAnim(){
       tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
       if(mapMain){var lw=ANIM_WAYPOINTS[ANIM_WAYPOINTS.length-1];mapMain.flyTo([lw.lat,lw.lng],8,{duration:2});}
       setTimeout(function(){
-        clearInterval(animTimer);animPlaying=false;lastAnimLoc=-1;
+        clearTimeout(animTimer);animPlaying=false;lastAnimLoc=-1;
         document.getElementById("anim-btn").textContent="▶ 播放";
         [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
         animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
@@ -994,8 +994,9 @@ function toggleAnim(){
     var sb=document.getElementById('anim-status');
     if(sb&&activeWp){sb.innerHTML='<b>'+activeWp.y+'年</b> '+activeWp.label+' — '+activeWp.info;sb.style.opacity='1';}
     lastAnimLoc=activeIdx;
+    animTimer=setTimeout(animStep,delay);
   }
-  animTimer=setTimeout(animStep,delay);
+  animTimer=setTimeout(animStep,getAnimSpeed());
 }
 
 // ═══ TABS ═══
