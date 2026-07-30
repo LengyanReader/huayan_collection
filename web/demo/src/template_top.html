@@ -28,8 +28,8 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #tl-panel{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:0;cursor:grab}
 #tl-panel canvas{display:block;position:absolute;top:0;left:0}
 #side{flex:1;display:flex;flex-direction:column;min-width:200px;border-left:1px solid var(--line)}
-#map-macro-wrap,#map-micro-wrap{position:relative;overflow:hidden}
-#map-macro,#map-micro{width:100%;height:100%}
+#map-main-wrap{position:relative;overflow:hidden}
+#map-main,#map-mini{width:100%;height:100%}
 #info-popup{position:fixed;z-index:999;background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;font-size:0.82em;max-width:360px;max-height:70vh;overflow-y:auto;color:var(--text);box-shadow:0 8px 30px rgba(60,40,20,0.18);display:none}
 #info-popup h3{color:var(--gold);font-size:1.05em;margin-bottom:4px}
 #info-popup .close-btn{position:absolute;top:4px;right:8px;cursor:pointer;color:var(--text2);font-size:1.1em}
@@ -89,9 +89,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   #stats-bar{display:none}
   #main-row{flex:none;flex-direction:column}
   #tl-panel{height:300px;flex:none;min-height:0;touch-action:pan-x}
-  #side{width:100%!important;height:380px;flex:none;min-width:0!important}
-  #map-macro-wrap,#map-micro-wrap{touch-action:manipulation}
-  #map-macro-wrap{flex:3!important}#map-micro-wrap{flex:2!important}
+  #side{width:100%!important;height:350px;flex:none;min-width:0!important}
+  #map-main-wrap,#map-mini-wrap{touch-action:manipulation}
+  #map-mini-wrap{width:130px!important;height:90px!important;bottom:6px!important;right:6px!important}
   #resize-handle{display:none}
   /* Controls: normal flow, compact */
   #controls{flex-wrap:wrap;gap:2px;padding:4px 5px;position:static}
@@ -140,8 +140,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <div id="tl-panel"><canvas id="tl-canvas"></canvas><div id="tl-tooltip"></div></div>
     <div id="resize-handle" title="拖拽调节地图宽度"></div>
     <div id="side">
-      <div id="map-macro-wrap" style="flex:3;position:relative;border-bottom:2px solid var(--line)"><div id="map-macro"></div><div style=position:absolute;top:4px;left:6px;z-index:500;background:rgba(254,253,249,0.85);padding:2px 7px;border-radius:8px;font-size:0.65em;color:var(--text2)>🌏 宏观·传播流布</div></div>
-      <div id="map-micro-wrap" style="flex:2;position:relative"><div id="map-micro"></div><div style=position:absolute;top:4px;left:6px;z-index:500;background:rgba(254,253,249,0.85);padding:2px 7px;border-radius:8px;font-size:0.65em;color:var(--text2)>🔬 微观·华严宗发展</div></div>
+      <div id="map-main-wrap" style="flex:1;position:relative"><div id="map-main"></div>
+        <div id="map-mini-wrap" style="position:absolute;bottom:10px;right:10px;width:180px;height:130px;border:2px solid var(--gold);border-radius:6px;overflow:hidden;z-index:600;box-shadow:0 4px 16px rgba(60,40,20,0.25);background:#fdfaf3"><div id="map-mini"></div><div style=position:absolute;top:2px;left:4px;font-size:8px;color:var(--gold);z-index:700;pointer-events:none>🗺 全景</div></div>
+      </div>
     </div>
     <div id="info-popup"><span class=close-btn onclick="document.getElementById('info-popup').style.display='none'">&times;</span><div id=info-popup-content></div></div>
     <div id="route-info" style="display:none;position:fixed;top:60px;right:10px;z-index:998;background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:14px 18px;max-width:420px;max-height:80vh;overflow-y:auto;font-size:0.8em;line-height:1.7;color:var(--text);box-shadow:0 8px 30px rgba(60,40,20,0.18)"><span style=position:absolute;top:4px;right:8px;cursor:pointer;color:var(--text2);font-size:1.1em onclick="document.getElementById('route-info').style.display='none'">&times;</span><b style=color:var(--gold)>🗺 华严经·法脉传播路线</b><br><span style=font-size:0.72em;color:var(--text2)>来源: 佛教史通行论述 + 高僧传 + 大正藏经录</span><hr style=border-color:var(--line);margin:6px 0><b>🇮🇳 印度起源 (前5世纪)</b><br>菩提伽耶(佛陀成道·华严经教说处) → 中印度(马鸣·起信论) → 那烂陀寺(无著/世亲·瑜伽行派·十地经论)<br><br><b>🐫 西域·中亚走廊 (4-7世纪)</b><br>龟兹(鸠摩罗什·十住经) → 北天竺·罽宾(佛驮跋陀罗·般若) → 于阗(实叉难陀·藏译华严底本来源)<br><br><b>🇨🇳 汉地翻译·宗派建立 (4-9世纪)</b><br>长安(鸠摩罗什译场·法藏·澄观·宗密) → 洛阳(十地经论·八十华严译场) → 建康(六十华严首译) → 终南山(杜顺·华严宗创立) → 五台山(澄观·清凉国师)<br><br><b>📜 吐蕃分支 (9世纪)</b><br>于阗原本 → 吐蕃(胜友/智军·藏译Toh44·45品)<br><br><b>🌏 东亚传播 (11-13世纪)</b><br>杭州(净源·义天入宋) → 高丽开京(义天·均如) → 日本奈良(审祥·东大寺) → 京都(明惠·高山寺中兴)<br><br><b>🏛 近现代复兴 (17-21世纪)</b><br>杭州(续法·清代集大成) → 常熟(月霞·华严大学1914) → 台北(华严莲社1952·华严专宗学院1975) → 南投大华严寺(海云继梦·三脉汇流2008) → 苗栗(支提山动土2026)<br><br><span style=font-size:0.7em;color:var(--text2)>📌 点击「▶ 播放」可在地图上观看完整传播动画。路线上每一点均可查看详细说明。</span></div>
