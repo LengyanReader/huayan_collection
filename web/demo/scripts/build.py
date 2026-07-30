@@ -229,30 +229,6 @@ frontier_js = read_src('frontier.js')
 cosmology_js = read_src('cosmology.js')
 html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + frontier_js + cosmology_js + init_js + clean(template_bot)
 
-# Simple minification: collapse whitespace in JS sections
-import re
-def minify_js(s):
-    # Remove // comments (but NOT URLs with https://)
-    s=re.sub(r'(?<!https:)//[^\n]*','',s)
-    # Collapse multiple spaces/newlines (but keep single spaces)
-    s=re.sub(r'[ \t]+',' ',s)
-    s=re.sub(r'\n\s*\n','\n',s)
-    # Restore newlines after ; and }
-    s=re.sub(r';',';\n',s)
-    s=re.sub(r'}','}\n',s)
-    return s
-
-# Only minify the embedded JS (not HTML CSS)
-parts=html.split('<script>')
-out_parts=[parts[0]]
-for i in range(1,len(parts)):
-    sub=parts[i].split('</script>')
-    if len(sub)>1:
-        out_parts.append('<script>'+minify_js(sub[0])+'</script>'+sub[1])
-    else:
-        out_parts.append('<script>'+parts[i])
-html=''.join(out_parts)
-
 out = os.path.join(ROOT, 'web', 'demo', 'index.html')
 with open(out, 'w', encoding='utf-8') as f:
     f.write(html)
