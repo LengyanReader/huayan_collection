@@ -896,7 +896,9 @@ function showInfo(p,p2,e){
       +(p2.bio?"<div style=color:var(--text2)>"+p2.bio+"</div>":"")+"</div>";
   }
   content.innerHTML=h;
-  popup.style.display='block';
+  popup.style.display='block';popup.style.visibility='visible';popup.style.opacity='1';
+  // Ensure popup has sensible default position
+  if(!popup.style.left||popup.style.left==='0px'){popup.style.left='60vw';popup.style.top='10vh';}
   // Auto-hide timer: close after 5s unless mouse is over it
   if(popup._autoTimer)clearTimeout(popup._autoTimer);
   popup.onmouseenter=function(){if(popup._autoTimer)clearTimeout(popup._autoTimer);};
