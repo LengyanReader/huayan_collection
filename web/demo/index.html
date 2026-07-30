@@ -27,7 +27,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #main-row{display:flex;flex:1;min-height:0}
 #tl-panel{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:0;cursor:grab}
 #tl-panel canvas{display:block;position:absolute;top:0;left:0}
-#side{width:380px;display:flex;flex-direction:column;min-width:240px;border-left:1px solid var(--line)}
+#side{width:380px;display:flex;flex-direction:column;min-width:180px;border-left:1px solid var(--line)}
 #map-wrap{flex:1;min-height:200px;position:relative}
 #map{width:100%;height:100%}
 #info-box{background:var(--panel);border-top:1px solid var(--line);padding:14px 16px;font-size:0.82em;min-height:150px;overflow-y:auto;color:var(--text)}
@@ -66,7 +66,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.78em;font-weight:600;margin:2px 4px}
 .stage-box{border-left:4px solid var(--gold);padding:8px 14px;margin:8px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.85em;line-height:1.7}
 .stage-box b{color:var(--gold)}
-@media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{width:100%!important;flex-direction:row}#map-wrap{height:30vh}#controls button{font-size:0.65em}}
+#resize-handle{width:5px;cursor:col-resize;background:var(--line);transition:background 0.2s;flex-shrink:0}#resize-handle:hover,#resize-handle.active{background:var(--gold)}
+#speed-row{display:flex;gap:3px;align-items:center}#speed-row input[type=range]{width:70px;accent-color:var(--gold)}
+@media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{width:100%!important;flex-direction:row}#map-wrap{height:30vh}#controls button{font-size:0.65em}#resize-handle{display:none}}
 </style>
 </head>
 <body>
@@ -87,6 +89,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   <div id="search-bar"><input type="text" id="search-input" placeholder="🔍 检索人物、地点…"><span id="stats-bar" style="font-size:0.68em;color:var(--text2);margin-left:auto"></span><span style="font-size:0.7em;color:var(--text2)">点击人物寿命条 | 滚轮缩放 | 拖拽平移</span></div>
   <div id="main-row">
     <div id="tl-panel"><canvas id="tl-canvas"></canvas><div id="tl-tooltip"></div></div>
+    <div id="resize-handle" title="拖拽调节地图宽度"></div>
     <div id="side">
       <div id="map-wrap"><div id="map"></div></div>
       <div id="info-box"><div class="empty">👆 点击时间轴上的人物寿命条</div></div>
@@ -109,6 +112,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button class="active" data-layer="geo" onclick="toggleLayer('geo')" title="地理标记">地</button>
     <button class="active" data-layer="edges" onclick="toggleLayer('edges')" title="传承连线">传</button>
     <button class="active" data-layer="events" onclick="toggleLayer('events')" title="事件标记">事</button>
+    <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type=range id=anim-speed min=5 max=40 value=15 step=1 title=播放速度(越小越快)><span id=speed-label>1×</span></span>
     <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
     <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
   </div>
@@ -677,8 +681,9 @@ function onClick(e){
   if(hit){selectPerson(hit.person.id,e.shiftKey);}else{clearSelection();}
 }
 
-// ═══ ANIMATION (with map sync) ═══
+// ═══ ANIMATION (with map sync + speed control + route line) ═══
 var animTimer=null,animYear=500,animPlaying=false;
+var animRouteLine=null,animRouteMarker=null;
 var ANIM_WAYPOINTS=[
   {y:420,lat:32.06,lng:118.79,z:6,label:'六十华严译出·建康'},
   {y:590,lat:33.93,lng:108.97,z:7,label:'杜顺·终南山·华严宗创立'},
@@ -696,31 +701,69 @@ var ANIM_WAYPOINTS=[
   {y:2026,lat:24.53,lng:120.68,z:9,label:'支提山动土·九九华严·苗栗'}
 ];
 var lastAnimLoc=-1;
+function getAnimSpeed(){
+  var s=document.getElementById('anim-speed');
+  return s?parseInt(s.value):15;
+}
 function toggleAnim(){
-  if(animPlaying){clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;return;}
+  if(animPlaying){
+    clearInterval(animTimer);animPlaying=false;
+    document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
+    // Clean up map route
+    if(animRouteLine){if(map)map.removeLayer(animRouteLine);animRouteLine=null;}
+    if(animRouteMarker){if(map)map.removeLayer(animRouteMarker);animRouteMarker=null;}
+    return;
+  }
   animPlaying=true;document.getElementById("anim-btn").textContent="⏸ 暂停";
   animYear=500;lastAnimLoc=-1;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-  if(map)map.setView([33,110],4);
-  animTimer=setInterval(function(){
-    animYear+=15;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;}
+  if(map){
+    map.setView([33,110],4);
+    // Init route line
+    var routeCoords=ANIM_WAYPOINTS.map(function(w){return [w.lat,w.lng];});
+    if(animRouteLine)map.removeLayer(animRouteLine);
+    animRouteLine=L.polyline(routeCoords,{color:'#c46b5d',weight:3,opacity:0.5,dashArray:'8,6'}).addTo(map);
+    // Route marker (pulsing circle)
+    if(animRouteMarker)map.removeLayer(animRouteMarker);
+    animRouteMarker=L.circleMarker([33,110],{radius:0,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9}).addTo(map);
+  }
+  var speedLabel=document.getElementById('speed-label');
+  function animStep(){
+    var sp=getAnimSpeed();
+    if(speedLabel){var x=(15/sp).toFixed(1);speedLabel.textContent=(x===1.0?'1':x)+'×';}
+    animYear+=sp;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
+      if(animRouteLine){map.removeLayer(animRouteLine);animRouteLine=null;}
+      if(animRouteMarker){map.removeLayer(animRouteMarker);animRouteMarker=null;}
+      if(speedLabel)speedLabel.textContent='1×';
+    }
     tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-    // Map sync: fly to nearest waypoint when year crosses threshold
+    // Map sync + route progress
     if(map){
+      // Update route marker position
       for(var i=0;i<ANIM_WAYPOINTS.length;i++){
         var wp=ANIM_WAYPOINTS[i];
         if(animYear>=wp.y&&lastAnimLoc<i){
           map.flyTo([wp.lat,wp.lng],wp.z,{duration:1.5});
-          // Show brief popup at map center
           var popup=L.popup({closeButton:false,autoClose:false,className:'anim-popup'})
             .setLatLng([wp.lat,wp.lng])
             .setContent('<b>'+wp.y+'年</b><br>'+wp.label)
             .openOn(map);
-          setTimeout(function(){if(popup)map.closePopup(popup);},2500);
+          setTimeout(function(){if(popup&&map)map.closePopup(popup);},2500);
           lastAnimLoc=i;break;
         }
       }
+      // Move route marker to interpolated position
+      var prev=ANIM_WAYPOINTS[0];
+      for(var j=1;j<ANIM_WAYPOINTS.length;j++){
+        if(animYear<ANIM_WAYPOINTS[j].y){prev=ANIM_WAYPOINTS[j-1];break;}
+        prev=ANIM_WAYPOINTS[j];
+      }
+      if(animRouteMarker){
+        animRouteMarker.setLatLng([prev.lat,prev.lng]);
+        animRouteMarker.setRadius(Math.max(6,(animYear%20)*0.3));
+      }
     }
-  },200);
+  }
+  animTimer=setInterval(animStep,200);
 }
 
 // ═══ TABS ═══
@@ -1690,6 +1733,25 @@ window.renderComments=function(tab){
   box.innerHTML=h;
 };
 ['lineage','gap','practice','frontier'].forEach(function(tab){renderComments(tab);});
+
+// ═══ RESIZE HANDLE ═══
+var resizeHandle=document.getElementById('resize-handle');
+var sidePanel=document.getElementById('side');
+if(resizeHandle&&sidePanel){
+  var resizing=false,startX=0,startW=0;
+  resizeHandle.addEventListener('mousedown',function(e){
+    resizing=true;startX=e.clientX;startW=sidePanel.offsetWidth;
+    resizeHandle.classList.add('active');e.preventDefault();
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!resizing)return;
+    var newW=startW+(startX-e.clientX);
+    newW=Math.max(180,Math.min(600,newW));
+    sidePanel.style.width=newW+'px';
+    resizeTL();drawTL(selectedId);if(map)map.invalidateSize();
+  });
+  document.addEventListener('mouseup',function(){if(resizing){resizing=false;resizeHandle.classList.remove('active');}});
+}
 
 // Final: set viewport & draw
 tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);

@@ -550,8 +550,9 @@ function onClick(e){
   if(hit){selectPerson(hit.person.id,e.shiftKey);}else{clearSelection();}
 }
 
-// ═══ ANIMATION (with map sync) ═══
+// ═══ ANIMATION (with map sync + speed control + route line) ═══
 var animTimer=null,animYear=500,animPlaying=false;
+var animRouteLine=null,animRouteMarker=null;
 var ANIM_WAYPOINTS=[
   {y:420,lat:32.06,lng:118.79,z:6,label:'六十华严译出·建康'},
   {y:590,lat:33.93,lng:108.97,z:7,label:'杜顺·终南山·华严宗创立'},
@@ -569,31 +570,69 @@ var ANIM_WAYPOINTS=[
   {y:2026,lat:24.53,lng:120.68,z:9,label:'支提山动土·九九华严·苗栗'}
 ];
 var lastAnimLoc=-1;
+function getAnimSpeed(){
+  var s=document.getElementById('anim-speed');
+  return s?parseInt(s.value):15;
+}
 function toggleAnim(){
-  if(animPlaying){clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;return;}
+  if(animPlaying){
+    clearInterval(animTimer);animPlaying=false;
+    document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
+    // Clean up map route
+    if(animRouteLine){if(map)map.removeLayer(animRouteLine);animRouteLine=null;}
+    if(animRouteMarker){if(map)map.removeLayer(animRouteMarker);animRouteMarker=null;}
+    return;
+  }
   animPlaying=true;document.getElementById("anim-btn").textContent="⏸ 暂停";
   animYear=500;lastAnimLoc=-1;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-  if(map)map.setView([33,110],4);
-  animTimer=setInterval(function(){
-    animYear+=15;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;}
+  if(map){
+    map.setView([33,110],4);
+    // Init route line
+    var routeCoords=ANIM_WAYPOINTS.map(function(w){return [w.lat,w.lng];});
+    if(animRouteLine)map.removeLayer(animRouteLine);
+    animRouteLine=L.polyline(routeCoords,{color:'#c46b5d',weight:3,opacity:0.5,dashArray:'8,6'}).addTo(map);
+    // Route marker (pulsing circle)
+    if(animRouteMarker)map.removeLayer(animRouteMarker);
+    animRouteMarker=L.circleMarker([33,110],{radius:0,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9}).addTo(map);
+  }
+  var speedLabel=document.getElementById('speed-label');
+  function animStep(){
+    var sp=getAnimSpeed();
+    if(speedLabel){var x=(15/sp).toFixed(1);speedLabel.textContent=(x===1.0?'1':x)+'×';}
+    animYear+=sp;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
+      if(animRouteLine){map.removeLayer(animRouteLine);animRouteLine=null;}
+      if(animRouteMarker){map.removeLayer(animRouteMarker);animRouteMarker=null;}
+      if(speedLabel)speedLabel.textContent='1×';
+    }
     tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-    // Map sync: fly to nearest waypoint when year crosses threshold
+    // Map sync + route progress
     if(map){
+      // Update route marker position
       for(var i=0;i<ANIM_WAYPOINTS.length;i++){
         var wp=ANIM_WAYPOINTS[i];
         if(animYear>=wp.y&&lastAnimLoc<i){
           map.flyTo([wp.lat,wp.lng],wp.z,{duration:1.5});
-          // Show brief popup at map center
           var popup=L.popup({closeButton:false,autoClose:false,className:'anim-popup'})
             .setLatLng([wp.lat,wp.lng])
             .setContent('<b>'+wp.y+'年</b><br>'+wp.label)
             .openOn(map);
-          setTimeout(function(){if(popup)map.closePopup(popup);},2500);
+          setTimeout(function(){if(popup&&map)map.closePopup(popup);},2500);
           lastAnimLoc=i;break;
         }
       }
+      // Move route marker to interpolated position
+      var prev=ANIM_WAYPOINTS[0];
+      for(var j=1;j<ANIM_WAYPOINTS.length;j++){
+        if(animYear<ANIM_WAYPOINTS[j].y){prev=ANIM_WAYPOINTS[j-1];break;}
+        prev=ANIM_WAYPOINTS[j];
+      }
+      if(animRouteMarker){
+        animRouteMarker.setLatLng([prev.lat,prev.lng]);
+        animRouteMarker.setRadius(Math.max(6,(animYear%20)*0.3));
+      }
     }
-  },200);
+  }
+  animTimer=setInterval(animStep,200);
 }
 
 // ═══ TABS ═══

@@ -59,5 +59,24 @@ window.renderComments=function(tab){
 };
 ['lineage','gap','practice','frontier'].forEach(function(tab){renderComments(tab);});
 
+// ═══ RESIZE HANDLE ═══
+var resizeHandle=document.getElementById('resize-handle');
+var sidePanel=document.getElementById('side');
+if(resizeHandle&&sidePanel){
+  var resizing=false,startX=0,startW=0;
+  resizeHandle.addEventListener('mousedown',function(e){
+    resizing=true;startX=e.clientX;startW=sidePanel.offsetWidth;
+    resizeHandle.classList.add('active');e.preventDefault();
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!resizing)return;
+    var newW=startW+(startX-e.clientX);
+    newW=Math.max(180,Math.min(600,newW));
+    sidePanel.style.width=newW+'px';
+    resizeTL();drawTL(selectedId);if(map)map.invalidateSize();
+  });
+  document.addEventListener('mouseup',function(){if(resizing){resizing=false;resizeHandle.classList.remove('active');}});
+}
+
 // Final: set viewport & draw
 tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);
