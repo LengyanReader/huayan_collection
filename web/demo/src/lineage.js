@@ -21,14 +21,44 @@ var GEO_FLOW=[
   {l:'五台山',y:790},{l:'杭州',y:1060},{l:'常熟/上海',y:1914},{l:'台北',y:1952}
 ];
 var KEY_EVENTS=[
-  {y:420,l:'六十华严译出(建康)',c:'#b8863c',p:'佛驮跋陀罗'},
-  {y:699,l:'八十华严译出(洛阳)',c:'#b8863c',p:'实叉难陀'},
-  {y:798,l:'四十华严译出(长安)',c:'#b8863c',p:'般若'},
-  {y:845,l:'唐武宗灭佛·法难',c:'#c46b5d'},
-  {y:1085,l:'义天入宋求法',c:'#6d9a6e',p:'义天'},
-  {y:1914,l:'华严大学创立(上海)',c:'#5e8b9e',p:'月霞'},
-  {y:1952,l:'华严莲社创社(台北)',c:'#5e8b9e',p:'成一'},
-  {y:2008,l:'钦因传衣钵·三脉汇流',c:'#c46b5d',p:'海云继梦'}
+  // 印度源流
+  {y:-483,l:'释迦入灭·佛教创立',c:'#9e8b6e',p:'释迦牟尼',tp:'宗教'},
+  {y:80,l:'马鸣造大乘起信论',c:'#9e8b6e',p:'马鸣',tp:'义学'},
+  // 汉译·文本传来
+  {y:167,l:'支谶译兜沙经(最早华严)',c:'#a09080',p:'支娄迦谶',tp:'翻译'},
+  {y:401,l:'鸠摩罗什至长安·译十住经',c:'#a09080',p:'鸠摩罗什',tp:'翻译'},
+  {y:420,l:'六十华严译出(建康)',c:'#b8863c',p:'佛驮跋陀罗',tp:'翻译'},
+  {y:508,l:'十地经论译出·地论学派兴起',c:'#5e8b9e',p:'菩提流支',tp:'义学'},
+  {y:550,l:'地论师南北分派·相州南道/北道',c:'#5e8b9e',tp:'义学'},
+  {y:557,l:'杜顺创华严宗·法界观门',c:'#b8863c',p:'杜顺',tp:'禅观'},
+  {y:699,l:'八十华严译出·法藏证义',c:'#b8863c',p:'法藏',tp:'翻译'},
+  {y:712,l:'法藏圆寂·贤首教学确立',c:'#b8863c',p:'法藏',tp:'义学'},
+  {y:798,l:'四十华严译出(入法界品全)',c:'#b8863c',p:'般若',tp:'翻译'},
+  {y:800,l:'胜友/智军藏译华严(于阗本)',c:'#c46b5d',tp:'翻译'},
+  // 宗派互动·思想交锋
+  {y:645,l:'玄奘归国·唯识宗兴起',c:'#8b7a9e',tp:'宗派'},
+  {y:713,l:'慧能入灭·南宗禅兴起',c:'#8b7a9e',tp:'宗派'},
+  {y:738,l:'澄观出生·历学八宗',c:'#b8863c',p:'澄观',tp:'义学'},
+  {y:780,l:'宗密融合禅教·禅源诸诠',c:'#7d9a6e',p:'宗密',tp:'禅观'},
+  {y:841,l:'宗密圆寂·华严宗盛极而衰',c:'#b8863c',p:'宗密',tp:'义学'},
+  {y:845,l:'唐武宗灭佛·华严典籍大量焚毁',c:'#c46b5d',tp:'法难'},
+  // 宋·海外传播
+  {y:960,l:'宋统一·佛教义学复兴',c:'#c8893e',tp:'文化'},
+  {y:973,l:'均如统一高丽华严南北宗',c:'#6d9a6e',p:'均如',tp:'义学'},
+  {y:1011,l:'净源中兴·慧因寺华严道场',c:'#b8863c',p:'净源',tp:'义学'},
+  {y:1038,l:'子璿兼弘贤首天台·起信论疏',c:'#c8893e',p:'子璿',tp:'宗派'},
+  {y:1085,l:'义天入宋求法·华严东传高丽',c:'#6d9a6e',p:'义天',tp:'文化'},
+  // 元明清
+  {y:1271,l:'元朝建立·藏传佛教入汉·八思巴帝师',c:'#8b7a9e',tp:'文化'},
+  {y:1600,l:'明末四大师·佛教复兴运动',c:'#c8893e',tp:'文化'},
+  {y:1641,l:'续法著贤首五教仪·清代华严中兴',c:'#b8863c',p:'续法',tp:'义学'},
+  // 近现代
+  {y:1914,l:'华严大学创立(常熟)',c:'#5e8b9e',p:'月霞',tp:'教育'},
+  {y:1952,l:'华严莲社创社(台北)',c:'#5e8b9e',p:'南亭',tp:'文化'},
+  {y:1975,l:'华严专宗学院成立(台北)',c:'#5e8b9e',p:'成一',tp:'教育'},
+  {y:2008,l:'钦因传衣钵·三脉汇流',c:'#c46b5d',p:'海云继梦',tp:'传承'},
+  {y:2021,l:'84000英译入法界品出版',c:'#5e8b9e',tp:'翻译'},
+  {y:2026,l:'九九华严·支提山动土·AI时代',c:'#6d9a6e',tp:'当代'}
 ];
 var ERA_BRACKETS=[
   {label:'华严五祖时代',s:557,e:841},
@@ -355,41 +385,53 @@ function drawTL(hlId){
     });
   }
 
-  // 8. EVENT MARKERS (staggered y for nearby events)
+  // 8. EVENT MARKERS (4-level staggered + type icons + legend)
   if(layerVis.events&&!isOverview){
-    var evY0=H-26;
-    // Sort events, stagger y for close ones
+    var evY0=H-30;
     var evPositions=[];
+    var tpColors={义学:'#b8863c',翻译:'#a09080',禅观:'#7d9a6e',宗派:'#8b7a9e',文化:'#c8893e',法难:'#c46b5d',教育:'#5e8b9e',传承:'#6d9a6e',宗教:'#9e8b6e',当代:'#5e8b9e'};
+    var tpIcons={义学:'📜',翻译:'📖',禅观:'🧘',宗派:'⚡',文化:'🏛',法难:'🔥',教育:'🎓',传承:'🔗',宗教:'☸',当代:'🆕'};
     KEY_EVENTS.forEach(function(ev){
       var x=tX(ev.y);if(x<0||x>W)return;
       evPositions.push({x:x,ev:ev});
     });
-    // Assign y levels
     evPositions.forEach(function(ep,i){
       ep.level=0;
       for(var j=0;j<i;j++){
-        if(Math.abs(ep.x-evPositions[j].x)<80)ep.level++;
+        if(Math.abs(ep.x-evPositions[j].x)<60)ep.level++;
       }
-      ep.level=Math.min(ep.level,2);
+      ep.level=Math.min(ep.level,3);
     });
     evPositions.forEach(function(ep){
-      var x=ep.x,ev=ep.ev,ey=evY0-ep.level*14;
+      var x=ep.x,ev=ep.ev,ey=evY0-ep.level*13;
+      // Connector line
       if(ev.p&&layerVis.edges){
         var pHR=tl.hitRects.find(function(h){return h.person.n===ev.p||h.person.id===ev.p;});
         if(pHR){
-          ctx.strokeStyle='rgba(180,134,60,0.2)';ctx.lineWidth=0.8;ctx.setLineDash([2,4]);
+          ctx.strokeStyle='rgba(180,134,60,0.15)';ctx.lineWidth=0.6;ctx.setLineDash([1,4]);
           ctx.beginPath();ctx.moveTo(x,ey);ctx.lineTo(pHR.x+pHR.w/2,pHR.y+pHR.h);ctx.stroke();
           ctx.setLineDash([]);
         }
       }
-      ctx.fillStyle=ev.c;ctx.font='bold 10px Microsoft YaHei';
-      var evTxt=truncText(ctx,ev.l,W-x-4);
-      ctx.fillText('▸ '+evTxt,x,ey);
+      // Type dot
+      var tc=tpColors[ev.tp]||'#b0a898';
+      ctx.fillStyle=tc;ctx.beginPath();ctx.arc(x,ey-2,3.5,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle='#fff';ctx.lineWidth=0.8;ctx.beginPath();ctx.arc(x,ey-2,3.5,0,Math.PI*2);ctx.stroke();
+      // Event text
+      ctx.fillStyle='#5c5040';ctx.font='bold 9px Microsoft YaHei';
+      var evTxt=truncText(ctx,ev.l,W-x-8);
+      ctx.fillText(evTxt,x+6,ey+3);
     });
-    // Year labels
-    ctx.fillStyle='#a09080';ctx.font=f10();
-    var lastYL=-999;
-    for(var yy=200;yy<=2000;yy+=100){var x2=tX(yy);if(x2>=0&&x2<=W&&x2-lastYL>30){ctx.fillText(yy,x2-12,H-8);lastYL=x2;}}
+    // Legend row (compact)
+    var lgX=4,lgY=H-8;
+    ctx.fillStyle='#a09080';ctx.font='8px Microsoft YaHei';
+    var types=['义学','翻译','禅观','宗派','文化','法难','教育','传承'];
+    types.forEach(function(t){
+      var tc2=tpColors[t]||'#b0a898';
+      ctx.fillStyle=tc2;ctx.beginPath();ctx.arc(lgX+4,lgY-2,3,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='#8a7a6a';ctx.fillText(t,lgX+9,lgY+1);
+      lgX+=ctx.measureText(t).width+18;
+    });
   }
 
   // 9. SEMANTIC ZOOM

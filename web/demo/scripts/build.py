@@ -102,6 +102,13 @@ nodes.append({'id':'person_j06','n':'明惠','dy':'日本','ti':'日本华严中
 nodes.append({'id':'person_j07','n':'凝然','dy':'日本','ti':'东大寺学僧','li':'日本华严','tp':'scholar','b':1240,'d':1321,'bio':'日本镰仓时代东大寺学僧。著八宗纲要系统介绍中国八宗要义；著华严法界义镜等。为日本华严教学之集大成者。','wk':['八宗纲要','华严法界义镜','华严经疏会本'],'v':0})
 nodes.append({'id':'person_092','n':'持松','dy':'近现代','ti':'月霞系法嗣·华严大学校长','li':'月霞系','tp':'patriarch','b':1894,'d':1972,'bio':'月霞长老弟子。继常惺之后任华严大学校长。兼弘密法，为近代华严与密教兼通的代表人物。著有贤密教衡等。','wk':['贤密教衡','华严宗教义始末记'],'v':0})
 
+# ── Additional persons: 法脉源头(印度→西域→汉地) ──
+nodes.append({'id':'person_100','n':'释迦牟尼','dy':'古印度','ti':'佛教创始人·华严经教说者','li':'印度源流','tp':'patriarch','b':-563,'d':-483,'bio':'佛教创始人。据华严宗传统，华严经为释迦成道后最初三七日于菩提树下为法身大士所说。为一切法脉之根源。','wk':[],'v':1})
+nodes.append({'id':'person_101','n':'马鸣','dy':'古印度','ti':'大乘论师·起信论造者','li':'印度源流','tp':'scholar','b':80,'d':150,'bio':'古印度大乘佛教论师。传统著录为大乘起信论作者。该论一心二门三大四信五门之说，为华严宗判教与心性论提供了重要理论资源。','wk':['大乘起信论'],'v':1})
+nodes.append({'id':'person_102','n':'无著','dy':'古印度','ti':'瑜伽行派创始人','li':'印度源流','tp':'scholar','b':310,'d':390,'bio':'古印度瑜伽行派(Yogācāra)创始人。世亲之兄。其唯识学说经世亲十地经论传入汉地，深刻影响地论学派及华严宗法界缘起思想的形成。','wk':['瑜伽师地论','摄大乘论'],'v':1})
+nodes.append({'id':'person_103','n':'鸠摩罗什','dy':'后秦','ti':'四大译经师之首','li':'译师','tp':'translator','b':344,'d':413,'bio':'龟兹人。后秦弘始三年(401)至长安，主持中国历史上规模最大的译场。译十住经(T0286,即十地品别译)、十住毗婆沙论、法华经等。其译经为华严学在中国的传播提供了关键文本基础。','wk':['十住经','十住毗婆沙论','中论','法华经'],'v':1})
+nodes.append({'id':'person_104','n':'菩提流支','dy':'北魏','ti':'十地经论主译','li':'译师','tp':'translator','b':None,'d':527,'bio':'北印度人。北魏永平元年(508)至洛阳，与勒那摩提等译世亲十地经论十二卷。此论译出直接催生了南北朝地论学派，被视为华严宗义学之远源。','wk':['十地经论'],'v':1})
+
 # Edge: Japan lineage chain
 edges.append({'s':'person_050','t':'person_j01','r':'MASTER','li':'日本华严'})
 edges.append({'s':'person_j01','t':'person_j02','r':'MASTER','li':'日本华严'})
@@ -125,6 +132,12 @@ edges.append({'s':'person_062','t':'person_010','r':'INFLUENCED','li':'高丽华
 edges.append({'s':'person_j05','t':'person_j06','r':'INFLUENCED','li':'日本华严'})
 edges.append({'s':'person_j06','t':'person_j07','r':'INFLUENCED','li':'日本华严'})
 edges.append({'s':'person_012','t':'person_092','r':'MASTER','li':'月霞系'})
+
+# Edges: 法脉源头
+edges.append({'s':'person_101','t':'person_000a','r':'INFLUENCED','li':'印度源流'})
+edges.append({'s':'person_102','t':'person_000b','r':'MASTER','li':'印度源流'})
+edges.append({'s':'person_104','t':'person_090','r':'MASTER','li':'华严五祖'})
+edges.append({'s':'person_103','t':'person_006','r':'INFLUENCED','li':'华严译师谱系'})
 
 # Location: 东大寺
 locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})
