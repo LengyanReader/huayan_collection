@@ -128,8 +128,12 @@ var MIN_ROW_H=64, dps=1; // devicePixelRatio scale
 function resizeTL(){
   var p=document.getElementById("tl-panel");
   tl.W=p.clientWidth; var rows=tl.rows.length||1;
-  tl.H=Math.max(p.clientHeight,rows*MIN_ROW_H+20);
+  // Mobile: ensure enough height for all rows
+  var minH=window.innerWidth<768?rows*50+20:rows*MIN_ROW_H+20;
+  tl.H=Math.max(p.clientHeight,minH);
   dps=window.devicePixelRatio||1;
+  // Cap DPR on mobile for performance
+  if(window.innerWidth<768&&dps>2)dps=2;
   tl.canvas=document.getElementById("tl-canvas");
   tl.canvas.width=tl.W*dps; tl.canvas.height=tl.H*dps;
   tl.canvas.style.width=tl.W+"px"; tl.canvas.style.height=tl.H+"px";
@@ -637,14 +641,17 @@ function showInfo(p,p2,e){
   }
   content.innerHTML=h;
   popup.style.display='block';
-  // Position near click or center-right
-  if(e){
+  // Position: mobile=centered, desktop=near click
+  var isMobile=window.innerWidth<768;
+  if(isMobile){
+    popup.style.left='4vw';popup.style.top='10vh';popup.style.width='92vw';
+  }else if(e){
     var px=e.pageX+20,py=e.pageY-20;
     if(px+380>window.innerWidth)px=e.pageX-400;
     if(py+300>window.innerHeight)py=window.innerHeight-320;
-    popup.style.left=px+'px';popup.style.top=py+'px';
+    popup.style.left=px+'px';popup.style.top=py+'px';popup.style.width='';
   }else{
-    popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';
+    popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';popup.style.width='';
   }
 }
 

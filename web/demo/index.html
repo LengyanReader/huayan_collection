@@ -70,7 +70,35 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #resize-handle{width:5px;cursor:col-resize;background:var(--line);transition:background 0.2s;flex-shrink:0}#resize-handle:hover,#resize-handle.active{background:var(--gold)}
 .map-ancient .leaflet-tile-pane{filter:sepia(0.7) hue-rotate(-15deg) saturate(0.4) brightness(0.85) contrast(1.1)}.map-ancient .leaflet-overlay-pane{opacity:0.6}
 #speed-row{display:flex;gap:3px;align-items:center}#speed-row input[type=range]{width:70px;accent-color:var(--gold)}
-@media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{flex:none!important;width:100%!important;height:35vh}#map-wrap{height:100%}#controls button{font-size:0.65em}#resize-handle{display:none}#info-popup{max-width:90vw}}
+@media(max-width:768px){
+  body{overflow:auto}
+  #header h1{font-size:0.85em}#header .sub{display:none}
+  #tabs button{padding:8px 10px;font-size:0.72em}
+  .tab-content{padding:0!important}
+  #main-row{flex-direction:column}
+  #tl-panel{height:45vh;min-height:250px;flex:none!important}
+  #side{flex:none!important;width:100%!important;height:40vh;min-width:0!important}
+  #map-wrap{height:100%}
+  #search-bar{flex-wrap:wrap;gap:4px;padding:4px 8px}
+  #search-bar input{width:140px!important;font-size:0.75em}
+  #stats-bar{display:none}
+  #controls{gap:3px;padding:4px 6px}
+  #controls button{padding:3px 7px;font-size:0.6em;border-radius:8px}
+  #controls span{font-size:0.6em!important}
+  #speed-row input[type=range]{width:40px}
+  #resize-handle{display:none}
+  #info-popup{max-width:92vw;max-height:55vh;font-size:0.75em;left:4vw!important}
+  #route-info{max-width:94vw!important;max-height:70vh;font-size:0.72em;right:3vw!important;left:3vw!important;top:50px!important}
+  .gv-nav,.pv-nav{padding:4px 9px;font-size:0.7em;border-radius:12px}
+  #gap-view,#practice-view,#frontier-view{padding:10px 8px}
+  .section{padding:10px;margin-bottom:8px}
+  .v-table{font-size:0.7em}
+  .v-table th,.v-table td{padding:4px 6px}
+  .stage-box{font-size:0.78em;padding:6px 10px;margin:4px 0}
+  .topic-card{padding:8px 10px;margin-bottom:6px}
+  .topic-card h4{font-size:0.8em}
+  .topic-card p{font-size:0.7em}
+}
 </style>
 </head>
 <body>
@@ -264,8 +292,12 @@ var MIN_ROW_H=64, dps=1; // devicePixelRatio scale
 function resizeTL(){
   var p=document.getElementById("tl-panel");
   tl.W=p.clientWidth; var rows=tl.rows.length||1;
-  tl.H=Math.max(p.clientHeight,rows*MIN_ROW_H+20);
+  // Mobile: ensure enough height for all rows
+  var minH=window.innerWidth<768?rows*50+20:rows*MIN_ROW_H+20;
+  tl.H=Math.max(p.clientHeight,minH);
   dps=window.devicePixelRatio||1;
+  // Cap DPR on mobile for performance
+  if(window.innerWidth<768&&dps>2)dps=2;
   tl.canvas=document.getElementById("tl-canvas");
   tl.canvas.width=tl.W*dps; tl.canvas.height=tl.H*dps;
   tl.canvas.style.width=tl.W+"px"; tl.canvas.style.height=tl.H+"px";
@@ -773,14 +805,17 @@ function showInfo(p,p2,e){
   }
   content.innerHTML=h;
   popup.style.display='block';
-  // Position near click or center-right
-  if(e){
+  // Position: mobile=centered, desktop=near click
+  var isMobile=window.innerWidth<768;
+  if(isMobile){
+    popup.style.left='4vw';popup.style.top='10vh';popup.style.width='92vw';
+  }else if(e){
     var px=e.pageX+20,py=e.pageY-20;
     if(px+380>window.innerWidth)px=e.pageX-400;
     if(py+300>window.innerHeight)py=window.innerHeight-320;
-    popup.style.left=px+'px';popup.style.top=py+'px';
+    popup.style.left=px+'px';popup.style.top=py+'px';popup.style.width='';
   }else{
-    popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';
+    popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';popup.style.width='';
   }
 }
 
