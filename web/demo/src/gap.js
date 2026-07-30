@@ -334,7 +334,7 @@ function loadParallelChapter(chId){
       bo.innerHTML='<div class=ch-title>📜 '+ch.name_zh+'<br><span style=font-size:0.7em;color:var(--text2)>'+ch.name_en+'</span></div>'+wylieHTML;
       bo.innerHTML+='<div style=margin-top:12px;font-size:0.7em;color:var(--text2)>共 '+ch.total_paras+' 段 · 显示前 8 段 · Wylie转写</div>';
       // Build segment nav
-      var sn='';for(var i=0;i<ch.paragraphs.length;i++){sn+='<span class=seg-btn onclick=\"scrollToP(\\'pp-'+chId+'-'+i+'\\')\">§'+(i+1)+'</span> ';}
+      var sn='';for(var i=0;i<ch.paragraphs.length;i++){sn+='<span class=seg-btn onclick=\"scrollToP(pp-'+chId+'-'+i+')\">§'+(i+1)+'</span> ';}
       sg.innerHTML=sn;
     }).catch(function(e){bo.innerHTML='<span style=color:var(--red)>加载失败: '+e.message+'</span>';});
   }
