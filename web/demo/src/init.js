@@ -6,7 +6,7 @@ resizeTL();
 drawTL(null);
 initMap();
 // Default: ancient map + routes + other schools
-setTimeout(function(){toggleAncient();initRoutes();initOtherSchools();},500);
+setTimeout(function(){toggleAncient();initTransStory();initOtherSchools();},500);
 // Stats bar
 var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
@@ -80,6 +80,14 @@ if(resizeHandle&&sidePanel){
   });
   document.addEventListener('mouseup',function(){if(resizing){resizing=false;resizeHandle.classList.remove('active');}});
 }
+
+// Click-outside-to-close popups
+document.addEventListener('click',function(e){
+  var ip=document.getElementById('info-popup');
+  var ri=document.getElementById('route-info');
+  if(ip&&ip.style.display==='block'&&!ip.contains(e.target))ip.style.display='none';
+  if(ri&&ri.style.display==='block'&&!ri.contains(e.target)&&e.target.id!=='route-info-btn')ri.style.display='none';
+});
 
 // Final: set viewport & draw
 tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);

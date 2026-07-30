@@ -564,6 +564,8 @@ function toggleAncient(){
       var gl=L.marker([gf.lat,gf.lng],{icon:L.divIcon({html:'<div style=font-size:10px;color:#6b4e2a;font-weight:600;text-shadow:0 0 4px rgba(255,255,255,0.8)>'+gf.n+'</div>',className:'geo-feature-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-5}).addTo(map);
       ancientLabels.push(gl);
     });
+    // Re-init transmission story and schools
+    initTransStory();initOtherSchools();
     // Show dynasty boundaries
     DYNASTY_BOUNDARIES.forEach(function(db){
       var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.05,className:'dynasty-boundary'}).addTo(map);
@@ -593,9 +595,10 @@ function toggleAncient(){
     // Remove ancient labels
     ancientLabels.forEach(function(l){map.removeLayer(l);});
     ancientLabels=[];
-    // Remove other schools
-    otherSchoolsMarkers.forEach(function(m){map.removeLayer(m);});
-    otherSchoolsMarkers=[];
+    // Remove transmission story + other schools
+    transMarkers.forEach(function(m){map.removeLayer(m);});transMarkers=[];
+    transLines.forEach(function(l){map.removeLayer(l);});transLines=[];
+    otherSchoolsMarkers.forEach(function(m){map.removeLayer(m);});otherSchoolsMarkers=[];
     // Restore popups with modern names
     map.eachLayer(function(layer){
       if(!layer._ld)return;
@@ -671,36 +674,50 @@ function toggleLayer(layer){
   drawTL(selectedId);
 }
 
-// ═══ TRANSMISSION ROUTES (Buddhism India→China) ═══
-var TRANSMISSION_ROUTES=[
-  {id:'north',name:'北丝路(西域道)',color:'#c46b5d',dash:[6,3],
-   path:[[24.7,84.99],[27.5,77.7],[33.7,72.8],[34.8,67.8],[39.5,76.0],[41.7,82.9],[40.1,94.8],[34.3,108.9]],
-   desc:'印度→犍陀罗→阿富汗→喀什→龟兹→敦煌→长安。鸠摩罗什(龟兹)、佛驮跋陀罗(北天竺)经此路来华。'},
-  {id:'khotan',name:'于阗道(南线)',color:'#c8893e',dash:[4,4],
-   path:[[27.5,77.7],[32.0,74.0],[37.1,79.9],[40.1,94.8],[34.3,108.9]],
-   desc:'印度→克什米尔→于阗→敦煌→长安。实叉难陀(于阗)来华路径。藏译华严底本亦源于阗。'},
-  {id:'nepal',name:'吐蕃道(西南线)',color:'#8b7a9e',dash:[5,3],
-   path:[[24.7,84.99],[27.7,85.3],[29.6,91.1],[36.6,101.8],[34.3,108.9]],
-   desc:'印度→尼泊尔→拉萨→西宁→长安。胜友/智军藏译华严(Toh44)经此道传入吐蕃。'},
-  {id:'burma',name:'滇缅道(西南线)',color:'#7d9a6e',dash:[4,5],
-   path:[[24.7,84.99],[22.0,96.0],[25.6,100.2],[30.6,104.0],[34.3,108.9]],
-   desc:'印度→缅甸→大理→成都→长安。较早的佛教南传路线，蜀地早期佛教来源。'},
-  {id:'sea',name:'海上丝路',color:'#5e8b9e',dash:[2,6],
-   path:[[24.7,84.99],[22.5,88.3],[6.9,79.8],[2.2,104.0],[23.1,113.2],[30.2,120.2]],
-   desc:'印度→斯里兰卡→爪哇→广州→杭州。南北朝至唐宋时期海上佛教传播路线。'}
+// ═══ TRANSMISSION STORY (人物+事件串讲·取代粗糙线段) ═══
+var TRANS_STORY=[
+  {y:-483,p:'释迦牟尼',lat:24.7,lng:84.99,ev:'释迦入灭于菩提伽耶。据华严宗传统,《华严经》为成道后最初三七日于菩提树下为法身大士所说。',src:'佛教通说'},
+  {y:-260,p:'阿育王',lat:25.3,lng:83.0,ev:'阿育王皈依佛教,派传教师向四方传播佛法。第三次结集后佛教开始向中亚、东南亚扩散。',src:'阿育王石刻诏书'},
+  {y:65,p:'迦腻色迦王',lat:33.7,lng:72.8,ev:'贵霜帝国迦腻色迦王于犍陀罗举行第四次结集。佛法由印度深入中亚,犍陀罗成为佛教东传的枢纽站。',src:'佛教史·贵霜时期'},
+  {y:80,p:'马鸣',lat:27.5,lng:77.7,ev:'马鸣菩萨造《大乘起信论》。该论「一心二门」之说后成为华严宗心性论与判教体系的重要理论基础。',src:'传统著录'},
+  {y:167,p:'支娄迦谶',lat:34.7,lng:112.4,ev:'月氏僧支谶来华至洛阳,译《佛说兜沙经》。此为华严经文最早汉译,仅1卷,对应《如来名号品》。',src:'《高僧传》卷一'},
+  {y:320,p:'无著·世亲',lat:25.1,lng:85.4,ev:'无著、世亲兄弟于那烂陀弘传瑜伽行派。世亲造《十地经论》,后经菩提流支汉译催生地论学派。',src:'《大唐西域记》卷九'},
+  {y:344,p:'鸠摩罗什',lat:41.7,lng:82.9,ev:'罗什生于龟兹。401年至长安,主持史上最大译场。译《十住经》(十地品别译)、《十住毗婆沙论》等,为华严学提供关键文本基础。',src:'《高僧传》卷二'},
+  {y:359,p:'佛驮跋陀罗',lat:34.0,lng:72.0,ev:'觉贤生于北天竺迦毗罗卫。后至建康译出《六十华严》34品。此为《华严经》首次汉译全本。',src:'《高僧传》卷二'},
+  {y:401,p:'鸠摩罗什',lat:34.3,lng:108.9,ev:'罗什至长安逍遥园。主持中国史上最大译场,八百沙门参与。译出《十住经》《中论》《法华经》等,深刻影响华严义学。',src:'《出三藏记集》卷十四'},
+  {y:420,p:'佛驮跋陀罗',lat:32.1,lng:118.8,ev:'六十华严译出于建康道场寺。七处八会三十四品。法业等百余人参与笔受。华严经首次以全貌呈现于汉地。',src:'《出三藏记集》卷九'},
+  {y:468,p:'慧光',lat:34.7,lng:112.4,ev:'慧光生于北魏。从勒那摩提学《十地经论》,开地论南道派。后被尊为四分律宗初祖。其学经数代传至智俨、法藏,是为华严宗义学之前身。',src:'《续高僧传》卷二十一'},
+  {y:508,p:'菩提流支',lat:34.7,lng:112.4,ev:'北印度僧菩提流支至洛阳,与勒那摩提译世亲《十地经论》十二卷。此论催生了南北朝最重要的义学流派——地论学派。',src:'《续高僧传》卷一'},
+  {y:557,p:'杜顺',lat:33.9,lng:109.0,ev:'杜顺于终南山开创华严宗。著《华严法界观门》《五教止观》。以「法界三观」和「五教止观」为华严宗奠定修行理论基础。',src:'《续高僧传》卷二十五'},
+  {y:643,p:'法藏',lat:34.3,lng:108.9,ev:'法藏生于长安。从智俨学华严。后系统化「五教十宗」判教,著《华严五教章》等。武则天赐号「贤首」。参与八十华严译场证义。华严宗至此正式确立。',src:'《宋高僧传》卷五'},
+  {y:652,p:'实叉难陀',lat:37.1,lng:79.9,ev:'实叉难陀生于于阗。后奉武则天诏来华译经。于阗在中亚佛教网络中地位关键——既是实叉难陀故乡,又是藏译华严底本来源。',src:'《宋高僧传》卷二'},
+  {y:699,p:'实叉难陀·法藏',lat:34.7,lng:112.4,ev:'八十华严译出于洛阳佛授记寺。法藏参与证义。七处九会三十九品,为后世流传最广的汉译本。',src:'《宋高僧传》卷二'},
+  {y:780,p:'宗密',lat:34.0,lng:108.7,ev:'宗密住终南山圭峰。融合禅宗(荷泽系)与华严,著《禅源诸诠集都序》。华严与禅宗的深度融合,奠定了「教禅一致」的思想基础。',src:'《宋高僧传》卷六'},
+  {y:800,p:'胜友·智军',lat:29.7,lng:91.1,ev:'胜友、智军等于吐蕃将《华严经》由于阗本译为藏文(Toh44)。华严传入西藏,形成独立于汉译的藏传华严传承。',src:'德格版甘珠尔目录'},
+  {y:1085,p:'义天',lat:30.2,lng:120.1,ev:'高丽王子义天入宋,于杭州慧因寺从净源受华严。华严经由杭州传入朝鲜半岛。义天归国后编《义天录》,为华严文献学奠基。',src:'《高丽史》卷九十'},
+  {y:1173,p:'明惠',lat:35.0,lng:135.8,ev:'日本华严中兴之祖明惠于京都高山寺复兴华严。兼弘戒律与真言。日本华严经历镰仓时代再兴,形成东亚华严网络最终一环。',src:'日本佛教史'}
 ];
-var routeLines=[];
-var otherSchoolsMarkers=[];
 
-function initRoutes(){
+var transMarkers=[],transLines=[],otherSchoolsMarkers=[];
+
+function initTransStory(){
   if(!map)return;
-  // Clear existing
-  routeLines.forEach(function(l){map.removeLayer(l);});
-  routeLines=[];
-  TRANSMISSION_ROUTES.forEach(function(rt){
-    var l=L.polyline(rt.path,{color:rt.color,weight:2,opacity:0.5,dashArray:rt.dash.join(',')}).addTo(map);
-    l.bindTooltip(rt.name+'<br><span style=font-size:0.7em>'+rt.desc+'</span>',{permanent:false});
-    routeLines.push(l);
+  transMarkers.forEach(function(m){map.removeLayer(m);});
+  transLines.forEach(function(l){map.removeLayer(l);});
+  transMarkers=[];transLines=[];
+  // Draw connecting lines between consecutive story points
+  for(var i=1;i<TRANS_STORY.length;i++){
+    var prev=TRANS_STORY[i-1],cur=TRANS_STORY[i];
+    var l=L.polyline([[prev.lat,prev.lng],[cur.lat,cur.lng]],{color:'#b8863c',weight:1.5,opacity:0.35,dashArray:'5,8'}).addTo(map);
+    transLines.push(l);
+  }
+  // Draw story markers (small numbered circles)
+  TRANS_STORY.forEach(function(ts,i){
+    var sz=ts.p==='杜顺'||ts.p==='法藏'||ts.p.indexOf('华严')>=0?20:14;
+    var icon=L.divIcon({html:'<div style=background:#b8863c;color:#fff;border-radius:50%;width:'+sz+'px;height:'+sz+'px;text-align:center;line-height:'+sz+'px;font-size:'+(sz>14?'9':'7')+'px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.2)>'+(i+1)+'</div>',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]});
+    var m=L.marker([ts.lat,ts.lng],{icon:icon}).addTo(map);
+    m.bindPopup('<b>['+(i+1)+'] '+ts.y+'年</b> · '+ts.p+'<br>'+ts.ev+'<br><span style=font-size:0.68em;color:var(--text2)>源: '+ts.src+'</span>');
+    transMarkers.push(m);
   });
 }
 
@@ -865,11 +882,11 @@ function toggleAnim(){
       if(animRouteMarker){map.removeLayer(animRouteMarker);animRouteMarker=null;}
       if(speedLabel)speedLabel.textContent='1×';
       // Clean up route highlights
-      routeLines.forEach(function(l){l.setStyle({opacity:0.5,weight:2});});
+      transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
     }
     // Highlight active routes based on current year
-    if(animYear>-400&&animYear<900){
-      routeLines.forEach(function(l){l.setStyle({opacity:Math.min(0.8,0.3+animYear/1500),weight:Math.min(3,2+animYear/800)});});
+    if(animYear>-400&&animYear<900&&transLines.length){
+      transLines.forEach(function(l){l.setStyle({opacity:Math.min(0.7,0.2+animYear/1500),weight:Math.min(3,1.5+animYear/800)});});
     }
     tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
     // Map sync + route progress
