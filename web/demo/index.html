@@ -600,15 +600,21 @@ function renderGap(){
   // ── Related Sutras ──
   h+="<div class=section><h2>📎 眷属经（义理相关·非正部）</h2>";
   h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
-  [{t:'文殊师利发愿经',n:'T0296'},{t:'普贤菩萨行愿赞',n:'T0297·不空'},
-   {t:'⭐ 大方广普贤所说经',n:'T0847·实叉难陀',note:'↔藏文普贤宣说品'},
-   {t:'总持宝光明经',n:'T0299·法天'},{t:'不思议佛境界分',n:'T0300·提云般若'},
-   {t:'如来不思议境界经',n:'T0301·实叉难陀'},{t:'度诸佛境界智光严经',n:'T0302·失译'},
-   {t:'入如来德智不思议经',n:'T0303·阇那崛多'},{t:'大方广入如来智德',n:'T0304·实叉难陀'},
-   {t:'信力入印法门经',n:'T0305·昙摩流支'},{t:'花严经修慈分',n:'T0306·提云般若'},
-   {t:'庄严菩提心经',n:'T0307·鸠摩罗什'},{t:'大方广菩萨十地经',n:'T0308·吉迦夜'},
-   {t:'最胜问十住除垢断结经',n:'T0309·竺佛念',note:'⚠法藏判非十住品'}]
-  .forEach(function(r){h+="<span style='padding:4px 10px;background:rgba(125,154,110,0.08);border:1px solid rgba(125,154,110,0.3);border-radius:14px;font-size:0.73em'><b>"+r.t+"</b> <span style=color:var(--text2)>"+r.n+"</span>"+(r.note?"<br><span style=font-size:0.8em;color:#c46b5d>"+r.note+"</span>":"")+"</span>";});
+  [{t:'文殊师利发愿经',n:'T0296',u:'T10n0296'},
+   {t:'普贤菩萨行愿赞',n:'T0297·不空',u:'T10n0297'},
+   {t:'⭐ 大方广普贤所说经',n:'T0847·实叉难陀',note:'↔藏文普贤宣说品',u:'T10n0847'},
+   {t:'总持宝光明经',n:'T0299·法天',u:'T10n0299'},
+   {t:'不思议佛境界分',n:'T0300·提云般若',u:'T10n0300'},
+   {t:'如来不思议境界经',n:'T0301·实叉难陀',u:'T10n0301'},
+   {t:'度诸佛境界智光严经',n:'T0302·失译',u:'T10n0302'},
+   {t:'入如来德智不思议经',n:'T0303·阇那崛多',u:'T10n0303'},
+   {t:'大方广入如来智德',n:'T0304·实叉难陀',u:'T10n0304'},
+   {t:'信力入印法门经',n:'T0305·昙摩流支',u:'T10n0305'},
+   {t:'花严经修慈分',n:'T0306·提云般若',u:'T10n0306'},
+   {t:'庄严菩提心经',n:'T0307·鸠摩罗什',u:'T10n0307'},
+   {t:'大方广菩萨十地经',n:'T0308·吉迦夜',u:'T10n0308'},
+   {t:'最胜问十住除垢断结经',n:'T0309·竺佛念',note:'⚠法藏判非十住品',u:'T10n0309'}]
+  .forEach(function(r){h+="<span style='padding:4px 10px;background:rgba(125,154,110,0.08);border:1px solid rgba(125,154,110,0.3);border-radius:14px;font-size:0.73em'><b>"+r.t+"</b> <span style=color:var(--text2)>"+r.n+"</span>"+(r.note?"<br><span style=font-size:0.8em;color:#c46b5d>"+r.note+"</span>":"")+"<br><a href='https://cbetaonline.dila.edu.tw/zh/"+r.u+"' target=_blank style=font-size:0.6em>📖 CBETA</a></span>";});
   h+="</div></div>";
 
   // ── Treatises ──
