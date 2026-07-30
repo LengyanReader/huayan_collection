@@ -71,46 +71,41 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 .map-ancient .leaflet-tile-pane{filter:sepia(0.7) hue-rotate(-15deg) saturate(0.4) brightness(0.85) contrast(1.1)}.map-ancient .leaflet-overlay-pane{opacity:0.6}
 #speed-row{display:flex;gap:3px;align-items:center}#speed-row input[type=range]{width:70px;accent-color:var(--gold)}
 @media(max-width:768px){
-  body{overflow:auto}
+  /* ── Root: remove 100vh lock, enable scroll ── */
+  body{overflow:auto;height:auto;display:block}
+  #header{position:sticky;top:0;z-index:100;padding:6px 10px}
   #header h1{font-size:0.85em}#header .sub{display:none}
-  /* Tabs - compact */
-  #tabs{padding:0 4px}
-  #tabs button{padding:6px 8px;font-size:0.7em}
-  /* Main layout: stack */
-  #main-row{flex-direction:column}
-  #tl-panel{height:40vh;min-height:220px;flex:none!important}
-  #side{flex:none!important;width:100%!important;height:35vh;min-width:0!important}
+  /* Tabs: sticky below header */
+  #tabs{position:sticky;top:32px;z-index:99;padding:0 4px;overflow-x:auto;white-space:nowrap}
+  #tabs button{padding:6px 10px;font-size:0.7em;display:inline-block}
+  /* Unlock tab-content from flex */
+  .tab-content{flex:none;overflow:visible}
+  .tab-content.active{display:block}
+  /* Lineage tab: natural flow */
+  #tab-lineage.active{display:block}
+  #search-bar{flex-wrap:wrap;gap:3px;padding:4px 6px;position:static}
+  #search-bar input{width:120px;font-size:0.7em;padding:3px 8px}
+  #search-bar span{font-size:0.6em}
+  #stats-bar{display:none}
+  #main-row{flex:none;flex-direction:column}
+  #tl-panel{height:300px;flex:none;min-height:0}
+  #side{width:100%!important;height:280px;flex:none;min-width:0!important}
   #map-wrap{height:100%}
   #resize-handle{display:none}
-  /* Search bar */
-  #search-bar{flex-wrap:wrap;gap:3px;padding:4px 6px}
-  #search-bar input{width:120px!important;font-size:0.7em;padding:3px 8px}
-  #search-bar span{font-size:0.6em!important}
-  #stats-bar{display:none}
-  /* Controls - two-row layout */
-  #controls{flex-wrap:wrap;gap:2px;padding:4px 5px}
+  /* Controls: normal flow, compact */
+  #controls{flex-wrap:wrap;gap:2px;padding:4px 5px;position:static}
   #controls button{padding:3px 6px;font-size:0.6em;border-radius:8px;margin:0}
   #controls span{font-size:0.55em!important;margin-left:2px!important}
-  #controls span[style*=margin-left]{margin-left:4px!important}
-  /* Play row: speed + play + ancient + route + reset always visible */
-  #speed-row{order:1}#anim-btn{order:2}#ancient-btn{order:3}#route-info-btn{order:4}#reset-btn{order:5;margin-left:2px!important}
-  /* Layer toggles */
-  button[data-layer]{order:6}
-  /* Filter labels + buttons wrap below */
-  #controls span:first-of-type{width:100%;margin-top:3px}
-  button[data-filter]{order:10;font-size:0.55em!important;padding:2px 5px!important}
-  button[data-bookmark]{order:11;font-size:0.55em!important;padding:2px 5px!important}
-  /* Speed slider */
   #speed-row input[type=range]{width:35px}
-  /* Popups */
-  #info-popup{max-width:94vw!important;max-height:50vh!important;font-size:0.72em!important;left:3vw!important;right:3vw!important;top:8vh!important}
-  #route-info{max-width:96vw!important;max-height:65vh!important;font-size:0.68em!important;left:2vw!important;right:2vw!important;top:45px!important;padding:10px 12px!important}
-  /* Sub-nav */
+  /* Info popup: centered overlay */
+  #info-popup{position:fixed;max-width:94vw;max-height:50vh;font-size:0.72em;left:3vw!important;top:10vh!important}
+  #route-info{max-width:96vw!important;max-height:60vh!important;font-size:0.68em!important;left:2vw!important;right:2vw!important;top:45px!important;padding:10px 12px!important}
+  /* Sub-nav: compact */
   .gv-nav,.pv-nav{padding:3px 8px;font-size:0.68em;border-radius:10px}
-  /* Content views */
-  #gap-view,#practice-view,#frontier-view{padding:8px 6px}
+  /* Content tabs: compact */
+  #gap-view,#practice-view,#frontier-view{padding:8px 6px;overflow:visible}
   .section{padding:8px;margin-bottom:6px}
-  .section h2{font-size:0.9em}
+  .section h2{font-size:0.88em}
   .v-table{font-size:0.66em}
   .v-table th,.v-table td{padding:3px 5px}
   .stage-box{font-size:0.72em;padding:5px 8px;margin:3px 0}
@@ -119,8 +114,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   .topic-card{padding:6px 8px;margin-bottom:5px}
   .topic-card h4{font-size:0.75em}
   .topic-card p{font-size:0.68em}
-  /* Comment box */
-  .comment-box{padding:8px 10px}
+  .comment-box{padding:8px 10px;position:static}
   .comment-box textarea{font-size:0.7em;min-height:40px}
 }
 </style>
