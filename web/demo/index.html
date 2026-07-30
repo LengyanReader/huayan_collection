@@ -763,6 +763,7 @@ function toggleAncient(){
   var btn=document.getElementById('ancient-btn');
   if(ancientMode){
     if(cm)cm.classList.add('map-ancient');
+    var miniC=document.getElementById('map-mini-wrap');if(miniC)miniC.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
     if(btn){btn.style.background='#b8863c';btn.style.color='#fff';btn.style.borderColor='#b8863c';btn.textContent='🏯 今';}
     // Add terrain overlay (shows mountains/rivers/valleys clearly)
     if(!terrainLayer){terrainLayer=L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{subdomains:['a','b','c'],maxZoom:17,opacity:0.55}).addTo(mapMain);}
@@ -799,6 +800,7 @@ function toggleAncient(){
     });
   }else{
     if(cm)cm.classList.remove('map-ancient');
+    var miniD=document.getElementById('map-mini-wrap');if(miniD)miniD.style.filter='';
     if(btn){btn.style.background='';btn.style.color='';btn.style.borderColor='';btn.textContent='🏯 古今';}
     // Remove terrain
     if(terrainLayer){mapMain.removeLayer(terrainLayer);}
@@ -1020,6 +1022,8 @@ function onMM(e){
 function onMU(){tl.drag=false;}
 function onClick(e){
   if(tl.drag||Math.abs(e.clientX-tl.lastX)>3)return;
+  // Click during animation → pause/resume
+  if(animPlaying){if(animPaused){resumeAnim();}else{pauseAnim();}return;}
   var p=document.getElementById("tl-panel"),r=p.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
   for(var i=0;i<tl.rowLabels.length;i++){
     var rl=tl.rowLabels[i];
@@ -1099,35 +1103,56 @@ function getAnimSpeed(){
   // slider 5-40 → delay 75ms-600ms (lower slider = faster = less delay)
   return s?Math.max(60,parseInt(s.value)*15):225;
 }
+var animPaused=false;
+function pauseAnim(){
+  if(!animPlaying||animPaused)return;
+  clearTimeout(animTimer);animPaused=true;
+  document.getElementById("anim-btn").textContent="▶ 继续";
+}
+function resumeAnim(){
+  if(!animPaused)return;
+  animPaused=false;
+  document.getElementById("anim-btn").textContent="⏸ 暂停";
+  animStep();
+}
 function toggleAnim(){
   var speedLabel=document.getElementById('speed-label');
+  // ── Resume from pause ──
+  if(animPaused){resumeAnim();return;}
   // ── STOP ──
   if(animPlaying){
-    clearTimeout(animTimer);animPlaying=false;lastAnimLoc=-1;
+    clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
+    if(mapMain)mapMain.off('click');
+    var miniC2=document.getElementById('map-mini-wrap');if(miniC2)miniC2.style.filter='';
     if(speedLabel)speedLabel.textContent='1x';
     transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
     return;
   }
   // ── START ──
-  animPlaying=true;document.getElementById("anim-btn").textContent="⏸ 暂停";
+  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";
   animYear=-600;lastAnimLoc=-1;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
 
-  // Init both maps
+  // Init both maps with global view
   var routeCoords=ANIM_WAYPOINTS.map(function(w){return [w.lat,w.lng];});
   if(mapMain){
     mapMain.setView([28,78],3);
     animRouteLineM=L.polyline(routeCoords,{color:'#c46b5d',weight:3,opacity:0.5,dashArray:'8,6'}).addTo(mapMain);
     animRouteMarkerM=L.circleMarker([28,78],{radius:8,fillColor:'#c46b5d',color:'#ff6',weight:2,fillOpacity:0.9}).addTo(mapMain);
+    // Click map to pause/resume
+    mapMain.off('click');mapMain.on('click',function(){if(animPlaying){if(animPaused)resumeAnim();else pauseAnim();}});
   }
   if(mapMini){
-    mapMini.setView([34,110],5);
-    animRouteLineU=L.polyline(routeCoords,{color:'#b8863c',weight:2,opacity:0.35,dashArray:'6,8'}).addTo(mapMini);
-    animRouteMarkerU=L.circleMarker([34,110],{radius:6,fillColor:'#b8863c',color:'#ff6',weight:2,fillOpacity:0.9}).addTo(mapMini);
+    mapMini.setView([28,78],3);
+    animRouteLineU=L.polyline(routeCoords,{color:'#c46b5d',weight:2,opacity:0.6,dashArray:'4,6'}).addTo(mapMini);
+    animRouteMarkerU=L.circleMarker([28,78],{radius:10,fillColor:'#c46b5d',color:'#ff6',weight:2,fillOpacity:0.9}).addTo(mapMini);
+    // Apply ancient mode to minimap tiles too
+    var miniContainer=document.getElementById('map-mini-wrap');
+    if(miniContainer&&document.getElementById('tab-lineage').classList.contains('map-ancient'))miniContainer.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
   }
 
   function animStep(){
@@ -1139,10 +1164,12 @@ function toggleAnim(){
       tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
       if(mapMain){var lw=ANIM_WAYPOINTS[ANIM_WAYPOINTS.length-1];mapMain.flyTo([lw.lat,lw.lng],8,{duration:2});}
       setTimeout(function(){
-        clearTimeout(animTimer);animPlaying=false;lastAnimLoc=-1;
+        clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
         document.getElementById("anim-btn").textContent="▶ 播放";
         [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
         animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
+        if(mapMain)mapMain.off('click');
+        var miniC3=document.getElementById('map-mini-wrap');if(miniC3)miniC3.style.filter='';
         if(speedLabel)speedLabel.textContent='1x';
         transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
         var sb3=document.getElementById('anim-status');if(sb3)sb3.style.opacity='0';
