@@ -96,6 +96,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
       <div id="map-wrap"><div id="map"></div></div>
     </div>
     <div id="info-popup"><span class=close-btn onclick="document.getElementById('info-popup').style.display='none'">&times;</span><div id=info-popup-content></div></div>
+    <div id="route-info" style="display:none;position:fixed;top:60px;right:10px;z-index:998;background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:14px 18px;max-width:420px;max-height:80vh;overflow-y:auto;font-size:0.8em;line-height:1.7;color:var(--text);box-shadow:0 8px 30px rgba(60,40,20,0.18)"><span style=position:absolute;top:4px;right:8px;cursor:pointer;color:var(--text2);font-size:1.1em onclick="document.getElementById('route-info').style.display='none'">&times;</span><b style=color:var(--gold)>🗺 华严经·法脉传播路线</b><br><span style=font-size:0.72em;color:var(--text2)>来源: 佛教史通行论述 + 高僧传 + 大正藏经录</span><hr style=border-color:var(--line);margin:6px 0><b>🇮🇳 印度起源 (前5世纪)</b><br>菩提伽耶(佛陀成道·华严经教说处) → 中印度(马鸣·起信论) → 那烂陀寺(无著/世亲·瑜伽行派·十地经论)<br><br><b>🐫 西域·中亚走廊 (4-7世纪)</b><br>龟兹(鸠摩罗什·十住经) → 北天竺·罽宾(佛驮跋陀罗·般若) → 于阗(实叉难陀·藏译华严底本来源)<br><br><b>🇨🇳 汉地翻译·宗派建立 (4-9世纪)</b><br>长安(鸠摩罗什译场·法藏·澄观·宗密) → 洛阳(十地经论·八十华严译场) → 建康(六十华严首译) → 终南山(杜顺·华严宗创立) → 五台山(澄观·清凉国师)<br><br><b>📜 吐蕃分支 (9世纪)</b><br>于阗原本 → 吐蕃(胜友/智军·藏译Toh44·45品)<br><br><b>🌏 东亚传播 (11-13世纪)</b><br>杭州(净源·义天入宋) → 高丽开京(义天·均如) → 日本奈良(审祥·东大寺) → 京都(明惠·高山寺中兴)<br><br><b>🏛 近现代复兴 (17-21世纪)</b><br>杭州(续法·清代集大成) → 常熟(月霞·华严大学1914) → 台北(华严莲社1952·华严专宗学院1975) → 南投大华严寺(海云继梦·三脉汇流2008) → 苗栗(支提山动土2026)<br><br><span style=font-size:0.7em;color:var(--text2)>📌 点击「▶ 播放」可在地图上观看完整传播动画。路线上每一点均可查看详细说明。</span></div>
   </div>
   <div id="controls">
     <span style="font-size:0.7em;color:var(--text2)">法系:</span>
@@ -116,6 +117,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button class="active" data-layer="events" onclick="toggleLayer('events')" title="事件标记">事</button>
     <button id="ancient-btn" style="border:1px solid var(--line)" onclick="toggleAncient()" title="古今地图对照">🏯 古今</button>
     <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type=range id=anim-speed min=5 max=40 value=15 step=1 title=播放速度(越小越快)><span id=speed-label>1×</span></span>
+    <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()" title="华严传播路线说明">ℹ️ 路线</button>
     <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
     <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
   </div>

@@ -656,6 +656,12 @@ function toggleLayer(layer){
   drawTL(selectedId);
 }
 
+// ═══ ROUTE INFO ═══
+function toggleRouteInfo(){
+  var ri=document.getElementById('route-info');
+  if(ri){ri.style.display=ri.style.display==='none'?'block':'none';}
+}
+
 // ═══ LINEAGE ZOOM ═══
 function zoomToLineage(lineage){
   var row=tl.rows.find(function(r){return r.lineage===lineage;});
@@ -708,23 +714,40 @@ function onClick(e){
 }
 
 // ═══ ANIMATION (with map sync + speed control + route line) ═══
-var animTimer=null,animYear=500,animPlaying=false;
+var animTimer=null,animYear=-600,animPlaying=false;
 var animRouteLine=null,animRouteMarker=null;
 var ANIM_WAYPOINTS=[
-  {y:420,lat:32.06,lng:118.79,z:6,label:'六十华严译出·建康'},
-  {y:590,lat:33.93,lng:108.97,z:7,label:'杜顺·终南山·华严宗创立'},
-  {y:699,lat:34.68,lng:112.44,z:7,label:'八十华严译出·洛阳'},
-  {y:712,lat:34.26,lng:108.94,z:7,label:'法藏圆寂·长安'},
-  {y:798,lat:34.26,lng:108.94,z:7,label:'四十华严译出·长安'},
-  {y:839,lat:39.03,lng:113.56,z:7,label:'澄观圆寂·五台山'},
-  {y:845,lat:34.26,lng:108.94,z:5,label:'唐武宗灭佛·法难'},
-  {y:1085,lat:30.23,lng:120.13,z:7,label:'义天入宋求法·杭州慧因寺'},
-  {y:1101,lat:37.57,lng:126.98,z:6,label:'义天圆寂·高丽开京'},
-  {y:1641,lat:30.23,lng:120.13,z:6,label:'续法出生·杭州·清代华严复兴'},
-  {y:1914,lat:31.65,lng:120.74,z:7,label:'华严大学创立·常熟兴福寺'},
-  {y:1952,lat:25.03,lng:121.56,z:8,label:'华严莲社创社·台北'},
-  {y:2008,lat:23.92,lng:120.88,z:9,label:'三脉汇流·南投大华严寺'},
-  {y:2026,lat:24.53,lng:120.68,z:9,label:'支提山动土·九九华严·苗栗'}
+  // 印度起源
+  {y:-483,lat:24.7,lng:84.99,z:5,label:'释迦入灭·菩提伽耶',info:'佛陀成道处。华严宗传统认为《华严经》为释迦成道后最初三七日于菩提树下为法身大士所说。'},
+  {y:80,lat:27.5,lng:77.7,z:5,label:'马鸣造起信论·中印度',info:'马鸣菩萨约公元1-2世纪生于中印度。所造《大乘起信论》「一心二门」之说为华严宗心性论提供了重要理论基础。'},
+  {y:320,lat:25.14,lng:85.44,z:6,label:'那烂陀寺兴盛·瑜伽行派',info:'古印度佛教最高学府。无著、世亲在此弘传瑜伽行派。世亲《十地经论》后经菩提流支汉译，成为华严宗义学之源。'},
+  // 中亚·西域传播走廊
+  {y:344,lat:41.7,lng:82.9,z:5,label:'鸠摩罗什出生·龟兹国',info:'龟兹(今新疆库车)。罗什后至长安译《十住经》《十住毗婆沙论》等，为华严学在中国的传播提供了关键文本基础。'},
+  {y:359,lat:34.0,lng:72.0,z:5,label:'佛驮跋陀罗出生·北天竺',info:'北天竺迦毗罗卫(今尼泊尔/印度边境)。后至建康译出《六十华严》，为华严经汉译之始。'},
+  {y:401,lat:34.26,lng:108.94,z:6,label:'鸠摩罗什至长安·译经运动',info:'后秦弘始三年(401)至长安，主持中国史上最大译场。所译中观论典深刻影响华严宗的空性论证与判教框架。'},
+  // 汉地翻译·教义建立
+  {y:420,lat:32.06,lng:118.79,z:6,label:'六十华严译出·建康',info:'佛驮跋陀罗于建康(今南京)道场寺译出《六十华严》，共七处八会三十四品。此为《华严经》首次汉译全本。'},
+  {y:508,lat:34.68,lng:112.44,z:6,label:'十地经论译出·洛阳',info:'菩提流支与勒那摩提于洛阳译出世亲《十地经论》。此论催生了南北朝地论学派，是为华严宗义学之远源。'},
+  {y:590,lat:33.93,lng:108.97,z:7,label:'杜顺·终南山·华严宗创立',info:'杜顺(557-640)于终南山至相寺开创华严宗观法体系。著《法界观门》《五教止观》，奠定华严宗修行理论基础。'},
+  {y:652,lat:37.11,lng:79.91,z:5,label:'实叉难陀出生·于阗国',info:'于阗(今新疆和田)为中亚佛教枢纽。实叉难陀后来华译八十华严。藏文Toh44亦译自于阗原本，足见于阗在华严传播中的枢纽地位。'},
+  {y:699,lat:34.68,lng:112.44,z:7,label:'八十华严译出·洛阳',info:'实叉难陀于洛阳佛授记寺译八十卷《华严经》。法藏参与译场证义。八十华严为后世流传最广的汉译本。'},
+  {y:712,lat:34.26,lng:108.94,z:7,label:'法藏圆寂·长安',info:'华严三祖法藏(643-712)于长安圆寂。系统化「五教十宗」判教体系，为华严宗实际创立者。讲说《华严经》三十余遍。'},
+  {y:798,lat:34.26,lng:108.94,z:7,label:'四十华严译出·长安',info:'般若三藏译出《四十华严》，即全本《入法界品》。善财童子五十三参的完整故事得以汉译。文末《普贤行愿赞》为汉藏共同尊奉。'},
+  {y:800,lat:29.65,lng:91.1,z:5,label:'藏译华严完成·吐蕃',info:'胜友、智军等于吐蕃将《华严经》从于阗本译为藏文(Toh44·45品)。此为华严传播史上的重要分支——经中亚于阗传入西藏。'},
+  {y:839,lat:39.03,lng:113.56,z:7,label:'澄观圆寂·五台山',info:'华严四祖澄观(738-839)于五台山圆寂。著《华严经疏》六十卷、《演义钞》九十卷，为华严教学集大成者。历七帝之师。'},
+  {y:845,lat:34.26,lng:108.94,z:5,label:'唐武宗灭佛·法难',info:'会昌法难。华严典籍大量焚毁，义学传承几近断绝。此后华严转入隐传阶段，直至宋代净源、子璿等复兴。'},
+  // 东亚传播
+  {y:1085,lat:30.23,lng:120.13,z:7,label:'义天入宋求法·杭州慧因寺',info:'高丽王子义天入宋，于杭州慧因寺从净源受华严教法。归国后编《义天录》，为华严东传朝鲜半岛的关键人物。'},
+  {y:1101,lat:37.57,lng:126.98,z:6,label:'义天圆寂·高丽开京',info:'义天圆寂于高丽开京(今开城)。其后均如、体元等高丽学僧继续弘扬华严，使朝鲜半岛成为东亚华严学重镇。'},
+  {y:1173,lat:35.01,lng:135.77,z:6,label:'明惠中兴·日本高山寺',info:'日本华严宗中兴之祖明惠(1173-1232)于京都高山寺复兴华严教学，兼弘戒律与真言。日本华严宗经历镰仓时代之再兴。'},
+  // 近现代复兴
+  {y:1641,lat:30.23,lng:120.13,z:6,label:'续法·清代华严集大成',info:'续法(1641-1728)于杭州著《贤首五教仪》，系统整理华严判教。讲《华严经》二十余遍，为清代华严学之集大成。'},
+  {y:1914,lat:31.65,lng:120.74,z:7,label:'华严大学创立·常熟兴福寺',info:'月霞长老于常熟兴福寺创立华严大学，为中国近代第一所华严专宗教育机构。培养常惺、持松等一批现代华严学僧。'},
+  {y:1952,lat:25.03,lng:121.56,z:8,label:'华严莲社创社·台北',info:'智光、南亭于台北创立华严莲社，开启台湾华严宗弘传事业。成一、贤度等相继住持，发展为现代华严学术与教育中心。'},
+  {y:1975,lat:25.04,lng:121.51,z:8,label:'华严专宗学院·台北',info:'成一法师创办华严专宗学院，以「专修、专研、专弘华严」为宗旨，为当代最重要的华严教育机构之一。'},
+  {y:2008,lat:23.92,lng:120.88,z:9,label:'三脉汇流·南投大华严寺',info:'海云继梦受钦因传华严衣钵(贤首42世)，同年得印度胜师子王菩萨传瑜伽行法。华严·临济·瑜伽行三脉汇一，开创「普贤乘华严宗」。'},
+  {y:2021,lat:27.7,lng:85.32,z:5,label:'84000英译·华严回归国际',info:'84000项目发布Peter Alan Roberts英译《入法界品》(Toh44-45)。藏文华严首次系统英译，华严学研究进入多语对读新时代。'},
+  {y:2026,lat:24.53,lng:120.68,z:9,label:'九九华严·支提山动土·苗栗',info:'海云继梦于台北TICC启动五年讲座「九九华严」。支提山大华严寺动土，面向台湾海峡与福建支提华严祖庭隔海相望。'}
 ];
 var lastAnimLoc=-1;
 function getAnimSpeed(){
@@ -741,9 +764,9 @@ function toggleAnim(){
     return;
   }
   animPlaying=true;document.getElementById("anim-btn").textContent="⏸ 暂停";
-  animYear=500;lastAnimLoc=-1;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  animYear=-600;lastAnimLoc=-1;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   if(map){
-    map.setView([33,110],4);
+    map.setView([28,78],3);
     // Init route line
     var routeCoords=ANIM_WAYPOINTS.map(function(w){return [w.lat,w.lng];});
     if(animRouteLine)map.removeLayer(animRouteLine);
@@ -756,7 +779,7 @@ function toggleAnim(){
   function animStep(){
     var sp=getAnimSpeed();
     if(speedLabel){var x=(15/sp).toFixed(1);speedLabel.textContent=(x===1.0?'1':x)+'×';}
-    animYear+=sp;if(animYear>2030){animYear=500;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
+    animYear+=sp;if(animYear>2030){animYear=-600;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
       if(animRouteLine){map.removeLayer(animRouteLine);animRouteLine=null;}
       if(animRouteMarker){map.removeLayer(animRouteMarker);animRouteMarker=null;}
       if(speedLabel)speedLabel.textContent='1×';
