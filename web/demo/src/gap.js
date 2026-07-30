@@ -313,14 +313,31 @@ function switchGapView(view,btn){
   document.getElementById("gv-"+view).style.display="block";
 }
 
+function scrollToP(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='rgba(184,134,60,0.15)';setTimeout(function(){el.style.background='';},1500);}}
 function loadParallelChapter(chId){
   if(!chId)return;
   var bo=document.getElementById("gv-col-bo");
   var en=document.getElementById("gv-col-en");
   var zh=document.getElementById("gv-col-zh");
   var sg=document.getElementById("gv-segments");
+  var nt=document.getElementById("gv-notes");
   bo.innerHTML="<i>加载中…</i>";en.innerHTML="<i>加载中…</i>";zh.innerHTML="<i>加载中…</i>";
-  sg.innerHTML="";
+  sg.innerHTML="";if(nt)nt.innerHTML="";
+
+  // Try to load Tibetan data from external JSON
+  if(chId==="ch11"||chId==="ch32"){
+    fetch('toh44-chapters.json').then(function(r){return r.json();}).then(function(data){
+      var ch=data[chId];if(!ch)return;
+      var wylieHTML='';ch.paragraphs.forEach(function(p,i){
+        wylieHTML+='<div class=ppara id=pp-'+chId+'-'+i+'><span class=pn>§'+(i+1)+'</span> '+p+'</div>';
+      });
+      bo.innerHTML='<div class=ch-title>📜 '+ch.name_zh+'<br><span style=font-size:0.7em;color:var(--text2)>'+ch.name_en+'</span></div>'+wylieHTML;
+      bo.innerHTML+='<div style=margin-top:12px;font-size:0.7em;color:var(--text2)>共 '+ch.total_paras+' 段 · 显示前 8 段 · Wylie转写</div>';
+      // Build segment nav
+      var sn='';for(var i=0;i<ch.paragraphs.length;i++){sn+='<span class=seg-btn onclick=\"scrollToP(\\'pp-'+chId+'-'+i+'\\')\">§'+(i+1)+'</span> ';}
+      sg.innerHTML=sn;
+    }).catch(function(e){bo.innerHTML='<span style=color:var(--red)>加载失败: '+e.message+'</span>';});
+  }
 
   if(chId==="ch31"){
     // 十地品·第一地 — multi-paragraph comparison
@@ -365,9 +382,9 @@ function loadParallelChapter(chId){
     zh.innerHTML="<b>入法界品第三十九之一</b><br><span style=font-size:0.78em>尔时，善财童子，从文殊师利菩萨所，闻如是等种种法门…渐次南行，至可乐国，参访德云比丘…</span><br><br><span style=color:var(--text2);font-size:0.75em>CBETA T10n0279 · 实叉难陀译</span><br><span style=color:var(--text2);font-size:0.7em>另: 四十华严(T10n0293)为全本</span>";
     sg.innerHTML="<span style='padding:4px 10px;background:rgba(125,154,110,0.15);border-radius:12px;font-size:0.78em;cursor:pointer'>§1 🟢</span> <span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em;cursor:pointer'>§2 🟡</span>";
   }else if(chId==="ch11"||chId==="ch32"){
-    bo.innerHTML="<span style=color:var(--text2)>⏳ 待从BDRC获取藏文原文</span>";
-    en.innerHTML="<span style=color:var(--text2)>⏳ 84000尚未发布此品英译</span>";
-    zh.innerHTML="<span style=color:var(--text2)>⏳ 汉文无对应品目"+(chId==="ch32"?"<br><br>📎 关联别译: T0847《大方广普贤所说经》(实叉难陀译)":"")+"</span>";
+    // Loaded via fetch() above
+    en.innerHTML="<span style=color:var(--text2)>⏳ 84000尚未发布此品英译<br><br>📎 已从Kangyur ZIP提取藏文Wylie原文</span>";
+    zh.innerHTML="<span style=color:var(--text2)>⏳ 汉文无对应品目——此品为藏文独有"+(chId==="ch32"?"<br><br>📎 关联别译: T0847《大方广普贤所说经》(实叉难陀译·1卷)":"<br><br>📎 关联: T0300-T0304等如来不思议境界经典")+"</span>";
   }else if(chId==="ch40"){
     bo.innerHTML="<b>离世间品</b><br><span style=font-size:0.78em>de nas 'jig rten las 'das pa'i le'u ste |...<br><br></span><span style=color:var(--text2);font-size:0.75em>藏文此品有独特异译段落。Toh44-40 (德格版)</span>";
     en.innerHTML="<b>Transcending the World</b><br><span style=font-size:0.78em>The chapter on transcending the world contains unique passages in the Tibetan version not found in the Chinese translations...<br><br></span><span style=color:var(--text2);font-size:0.75em>待84000发布此品英译后进行逐段对勘</span>";
