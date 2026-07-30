@@ -273,7 +273,7 @@ function drawTL(hlId){
         var ti=TYPE_ICONS[p.tp]||'';
         var prefix=p._isGhost?'↳ ':ti?'['+ti+'] ':'';
         ctx.font=(isHL?"bold ":"")+(p._isGhost?'10':(isHL?'12':'11'))+"px Microsoft YaHei";
-        var fullText=prefix+p.n;
+        var fullText=prefix+p.n+((p.v||0)<1?' °':'')
         var tw=ctx.measureText(fullText).width;
         // Try right side first, then left side if overlap
         var rightX=rx+rw+5, rightY=(p._yOff||0)<=0?by-3:by+bh+13;
@@ -475,6 +475,7 @@ function showInfo(p,p2){
   var h="<h3>"+(ti?'['+ti+'] ':'')+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
     +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
     +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span>"
+    +((p.v||0)>0?'<span class=tag style=background:rgba(125,154,110,0.1);color:#7d9a6e>✓</span>':'<span class=tag style=background:rgba(200,160,80,0.1);color:#a08020>°</span>')
     +(gen?'<span class=tag style=background:rgba(184,134,60,0.06)>第'+gen+'代传人</span>':'')+"<br>"
     +"📅 <b>"+(p.dy||"?")+"</b> · "+(p.b||"?")+"–"+(p.d||"?")+" "+lifeSpan+"<br>"
     +locHTML+tch+std+allC+cont

@@ -44,7 +44,8 @@ for p in personas['persons']:
         'id': p['id'], 'n': p['name_zh'], 'dy': p.get('dynasty', ''), 'ti': p.get('title', '') or '',
         'li': li, 'multi': multi, 'tp': p.get('type', 'practitioner'),
         'b': p.get('birth_year'), 'd': p.get('death_year'),
-        'bio': (p.get('biography', '') or '')[:150], 'wk': (p.get('key_works') or [])[:2]
+        'bio': (p.get('biography', '') or '')[:150], 'wk': (p.get('key_works') or [])[:2],
+        'v': p.get('verified', 0) if isinstance(p.get('verified'), int) else 0
     })
 
 edges = []
@@ -90,7 +91,16 @@ nodes.append({'id':'person_s04','n':'张文良','dy':'当代','ti':'中国人民
 # ── Additional persons: 元晓(新罗) + 慧苑(唐) + 续法(清) ──
 nodes.append({'id':'person_060','n':'元晓','dy':'唐/新罗','ti':'新罗华严学僧','li':'高丽华严','tp':'scholar','b':617,'d':686,'bio':'新罗学僧。与义湘同代，二人曾结伴入唐但中途折返。后自悟大乘起信论奥义。著华严经疏、起信论疏，与法藏、慧远并称东亚起信论三大疏。对朝鲜半岛华严思想影响深远。','wk':['华严经疏','大乘起信论疏','十门和诤论']})
 nodes.append({'id':'person_070','n':'慧苑','dy':'唐','ti':'法藏弟子·华严异解者','li':'华严五祖','tp':'scholar','b':673,'d':743,'bio':'法藏上首弟子。著续华严经略疏刊定记，改五教为四教、以十门代十玄。澄观在华严经疏中系统批判其说。慧苑异解是推动澄观集大成的关键思想动力。','wk':['续华严经略疏刊定记','华严旋澓章']})
-nodes.append({'id':'person_080','n':'续法','dy':'清','ti':'清代华严集大成者','li':'华严五祖','tp':'patriarch','b':1641,'d':1728,'bio':'清代华严宗最重要弘传者。字柏亭，号灌顶，仁和人。著贤首五教仪系统整理法藏判教；编华严宗佛祖传梳理传承谱系。讲华严经二十余遍，为清代华严学集大成者。','wk':['贤首五教仪','华严宗佛祖传','法界宗莲花章']})
+nodes.append({'id':'person_080','n':'续法','dy':'清','ti':'清代华严集大成者','li':'华严五祖','tp':'patriarch','b':1641,'d':1728,'bio':'清代华严宗最重要弘传者。字柏亭，号灌顶，仁和人。著贤首五教仪系统整理法藏判教；编华严宗佛祖传梳理传承谱系。讲华严经二十余遍，为清代华严学集大成者。','wk':['贤首五教仪','华严宗佛祖传','法界宗莲花章'],'v':1})
+
+# ── Additional persons: 义湘 慧光 子璿 均如 明惠 凝然 持松 ──
+nodes.append({'id':'person_061','n':'义湘','dy':'唐/新罗','ti':'海东华严初祖','li':'高丽华严','tp':'patriarch','b':625,'d':702,'bio':'新罗僧。与元晓结伴入唐求法，元晓中途折返，义湘独至长安从智俨学华严。归国后创浮石寺，被尊为海东华严初祖。','wk':['华严一乘法界图','白花道场发愿文'],'v':1})
+nodes.append({'id':'person_090','n':'慧光','dy':'北魏','ti':'地论师南道派始祖','li':'华严五祖','tp':'scholar','b':468,'d':537,'bio':'北魏地论师。从勒那摩提学十地经论，开创地论南道派。世称光统律师。其学说经数代传承至智俨、法藏，是为华严宗义学前身。','wk':['十地经论疏','四分律疏'],'v':1})
+nodes.append({'id':'person_091','n':'子璿','dy':'宋','ti':'宋代华严学者','li':'华严五祖','tp':'scholar','b':965,'d':1038,'bio':'宋代华严重要学者。长水子璿，秀州人。从洪敏学楞严，后谒慧觉禅师悟入。著起信论疏笔削记，兼弘贤首与天台。','wk':['起信论疏笔削记','楞严经义疏注经'],'v':0})
+nodes.append({'id':'person_062','n':'均如','dy':'高丽','ti':'高丽华严学僧','li':'高丽华严','tp':'scholar','b':923,'d':973,'bio':'高丽初期华严学僧。统一高丽华严南北二宗之分歧。著华严经三宝章圆通钞等。早于义天，为高丽华严之前驱。','wk':['华严经三宝章圆通钞','十句章圆通记'],'v':0})
+nodes.append({'id':'person_j06','n':'明惠','dy':'日本','ti':'日本华严中兴之祖','li':'日本华严','tp':'patriarch','b':1173,'d':1232,'bio':'日本镰仓时代华严宗中兴之祖。高山寺开山。复兴东大寺华严教学，兼弘戒律与真言。对日本华严宗有再造之功。','wk':['摧邪轮','华严缘起'],'v':0})
+nodes.append({'id':'person_j07','n':'凝然','dy':'日本','ti':'东大寺学僧','li':'日本华严','tp':'scholar','b':1240,'d':1321,'bio':'日本镰仓时代东大寺学僧。著八宗纲要系统介绍中国八宗要义；著华严法界义镜等。为日本华严教学之集大成者。','wk':['八宗纲要','华严法界义镜','华严经疏会本'],'v':0})
+nodes.append({'id':'person_092','n':'持松','dy':'近现代','ti':'月霞系法嗣·华严大学校长','li':'月霞系','tp':'patriarch','b':1894,'d':1972,'bio':'月霞长老弟子。继常惺之后任华严大学校长。兼弘密法，为近代华严与密教兼通的代表人物。著有贤密教衡等。','wk':['贤密教衡','华严宗教义始末记'],'v':0})
 
 # Edge: Japan lineage chain
 edges.append({'s':'person_050','t':'person_j01','r':'MASTER','li':'日本华严'})
@@ -104,6 +114,17 @@ edges.append({'s':'person_003','t':'person_070','r':'MASTER','li':'华严五祖'
 edges.append({'s':'person_070','t':'person_004','r':'INFLUENCED','li':'华严五祖'})
 edges.append({'s':'person_001','t':'person_060','r':'INFLUENCED','li':'华严五祖'})
 edges.append({'s':'person_021','t':'person_080','r':'INFLUENCED','li':'华严五祖'})
+
+# Edges: 义湘 慧光 子璿 均如 明惠 凝然 持松
+edges.append({'s':'person_002','t':'person_061','r':'MASTER','li':'华严五祖'})
+edges.append({'s':'person_090','t':'person_001','r':'INFLUENCED','li':'华严五祖'})
+edges.append({'s':'person_011','t':'person_091','r':'INFLUENCED','li':'华严五祖'})
+edges.append({'s':'person_091','t':'person_010','r':'INFLUENCED','li':'华严五祖'})
+edges.append({'s':'person_011','t':'person_062','r':'INFLUENCED','li':'高丽华严'})
+edges.append({'s':'person_062','t':'person_010','r':'INFLUENCED','li':'高丽华严'})
+edges.append({'s':'person_j05','t':'person_j06','r':'INFLUENCED','li':'日本华严'})
+edges.append({'s':'person_j06','t':'person_j07','r':'INFLUENCED','li':'日本华严'})
+edges.append({'s':'person_012','t':'person_092','r':'MASTER','li':'月霞系'})
 
 # Location: 东大寺
 locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})
