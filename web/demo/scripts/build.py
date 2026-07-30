@@ -126,7 +126,13 @@ GAP = json.dumps({
     'wn': ['⚠ T0309 法藏判为非十住品亦非十地品']
 }, ensure_ascii=False)
 
-# ── Assemble ──
+# ── Save external JSON (for future fetch-based loading) ──
+with open(os.path.join(ROOT, 'web', 'demo', 'graph.json'), 'w', encoding='utf-8') as f:
+    f.write(GRAPH)
+with open(os.path.join(ROOT, 'web', 'demo', 'gap.json'), 'w', encoding='utf-8') as f:
+    f.write(GAP)
+
+# ── Assemble (inline embed for backward compat) ──
 data_js = data_js.replace('__GRAPH__', GRAPH).replace('__GAP__', GAP)
 # Strip any stray leading characters from source files
 def clean(s):
