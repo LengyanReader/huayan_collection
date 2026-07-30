@@ -482,21 +482,44 @@ function drawTL(hlId){
   }
 }
 
-// ═══ MAP ═══
+// ═══ DUAL MAP SYSTEM ═══
+var mapMacro=null,mapMicro=null;
+var macroTileGaode=null,microTileGaode=null;
+var macroMarkers=[],microMarkers=[];
+function tileLayer(opts){return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",Object.assign({subdomains:["1","2","3","4"],maxZoom:18},opts));}
+
 function initMap(){
-  if(map){map.invalidateSize();return;}
-  if(typeof L==="undefined"){document.getElementById("map").innerHTML="<div style=display:flex;align-items:center;justify-content:center;height:100%;color:var(--text2);flex-direction:column;gap:8px'><div>🗺 地图组件未加载</div><div style=font-size:0.7em>Leaflet CDN 不可用，请检查网络</div></div>";return;}
-  map=L.map("map",{zoomControl:true}).setView([33,110],4);
-  L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{subdomains:["1","2","3","4"],maxZoom:18}).addTo(map);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:19,opacity:0.5}).addTo(map);
-  var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};
-  DATA.locations.forEach(function(loc){
-    var names=(loc.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:"";}).filter(Boolean).join("、");
-    var m=L.circleMarker([loc.lat,loc.lng],{radius:9,fillColor:mc[loc.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});
-    m.addTo(map).bindPopup("<b>"+loc.n+"</b><br>"+(loc.dy||"")+"<br>"+(loc.ds||"")+(names?"<br>👤 "+names:""));
-    m._ld=loc;m.on("click",function(){if(loc.ps&&loc.ps.length>0)selectPerson(loc.ps[0]);});
-  });
+  if(typeof L==="undefined"){
+    var d1=document.getElementById("map-macro");if(d1)d1.innerHTML="<div style=display:flex;align-items:center;justify-content:center;height:100%;color:var(--text2);font-size:0.7em>🗺 Leaflet未加载</div>";
+    var d2=document.getElementById("map-micro");if(d2)d2.innerHTML="<div style=display:flex;align-items:center;justify-content:center;height:100%;color:var(--text2);font-size:0.7em>🗺 Leaflet未加载</div>";
+    return;
+  }
+  // Macro map: India→China→East Asia (zoom 4)
+  if(!mapMacro){
+    mapMacro=L.map("map-macro",{zoomControl:false}).setView([30,85],3);
+    macroTileGaode=tileLayer().addTo(mapMacro);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:19,opacity:0.4}).addTo(mapMacro);
+  }
+  // Micro map: China focus, Huayan locations (zoom 5)
+  if(!mapMicro){
+    mapMicro=L.map("map-micro",{zoomControl:false}).setView([34,110],5);
+    microTileGaode=tileLayer().addTo(mapMicro);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:19,opacity:0.4}).addTo(mapMicro);
+    // Huayan-specific locations
+    var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};
+    DATA.locations.forEach(function(loc){
+      var names=(loc.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:"";}).filter(Boolean).join("、");
+      var m=L.circleMarker([loc.lat,loc.lng],{radius:8,fillColor:mc[loc.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});
+      m.addTo(mapMicro).bindPopup("<b>"+loc.n+"</b><br>"+(loc.dy||"")+"<br>"+(loc.ds||"")+(names?"<br>👤 "+names:""));
+      m._ld=loc;m.on("click",function(){if(loc.ps&&loc.ps.length>0)selectPerson(loc.ps[0]);});
+      microMarkers.push(m);
+    });
+  }else{
+    mapMacro.invalidateSize();mapMicro.invalidateSize();
+  }
 }
+function getMacroMap(){return mapMacro;}
+function getMicroMap(){return mapMicro;}
 
 // ═══ SELECTION ═══
 function selectPerson(id,isShift,ev){
@@ -508,10 +531,10 @@ function selectPerson(id,isShift,ev){
   drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
   showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null,ev);
   var locs=getPersonLocs(id);
-  if(map&&locs.length>0){
-    var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});
+  if(mapMicro&&locs.length>0){
+    var loc=locs[0];mapMicro.flyTo([loc.lat,loc.lng],locs.length===1?12:10,{duration:0.8});
     setTimeout(function(){
-      map.eachLayer(function(layer){
+      mapMicro.eachLayer(function(layer){
         if(!layer._ld)return;
         var isRelated=locs.some(function(l){return l.id===layer._ld.id;});
         if(isRelated){layer.setRadius(13);layer.setStyle({fillColor:"#c46b5d",color:"#fff",weight:3,fillOpacity:1});if(!layer._popupOpen){layer.openPopup();layer._popupOpen=true;setTimeout(function(){layer.closePopup();layer._popupOpen=false;},3000);}}
@@ -519,7 +542,7 @@ function selectPerson(id,isShift,ev){
       });
     },900);
     setTimeout(function(){
-      map.eachLayer(function(layer){if(!layer._ld)return;var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};layer.setRadius(9);layer.setStyle({fillColor:mc[layer._ld.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});});
+      mapMicro.eachLayer(function(layer){if(!layer._ld)return;var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};layer.setRadius(8);layer.setStyle({fillColor:mc[layer._ld.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});});
     },4000);
   }
   var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
@@ -552,8 +575,8 @@ function toggleAncient(){
     if(cm)cm.classList.add('map-ancient');
     if(btn){btn.style.background='#b8863c';btn.style.color='#fff';btn.style.borderColor='#b8863c';btn.textContent='🏯 今';}
     // Add terrain overlay (shows mountains/rivers/valleys clearly)
-    if(!terrainLayer){terrainLayer=L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{subdomains:['a','b','c'],maxZoom:17,opacity:0.55}).addTo(map);}
-    else{terrainLayer.addTo(map);}
+    if(!terrainLayer){terrainLayer=L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{subdomains:['a','b','c'],maxZoom:17,opacity:0.55}).addTo(mapMacro);}
+    else{terrainLayer.addTo(mapMacro);}
     // Major geographic feature labels
     var geoFeatures=[
       {n:'秦岭山脉',lat:34.0,lng:108.5},{n:'黄河',lat:34.8,lng:110.5},{n:'长江',lat:30.5,lng:114.0},
@@ -561,46 +584,46 @@ function toggleAncient(){
       {n:'长安盆地',lat:34.2,lng:108.9},{n:'太湖',lat:31.2,lng:120.2}
     ];
     geoFeatures.forEach(function(gf){
-      var gl=L.marker([gf.lat,gf.lng],{icon:L.divIcon({html:'<div style=font-size:10px;color:#6b4e2a;font-weight:600;text-shadow:0 0 4px rgba(255,255,255,0.8)>'+gf.n+'</div>',className:'geo-feature-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-5}).addTo(map);
+      var gl=L.marker([gf.lat,gf.lng],{icon:L.divIcon({html:'<div style=font-size:10px;color:#6b4e2a;font-weight:600;text-shadow:0 0 4px rgba(255,255,255,0.8)>'+gf.n+'</div>',className:'geo-feature-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-5}).addTo(mapMacro);
       ancientLabels.push(gl);
     });
     // Re-init transmission story and schools
     initTransStory();initOtherSchools();
     // Show dynasty boundaries
     DYNASTY_BOUNDARIES.forEach(function(db){
-      var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.05,className:'dynasty-boundary'}).addTo(map);
+      var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.05,className:'dynasty-boundary'}).addTo(mapMacro);
       var cx=(db.bounds[0][1]+db.bounds[1][1])/2,cy=(db.bounds[0][0]+db.bounds[1][0])/2;
-      var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:11px;color:'+db.c+';font-weight:700;text-shadow:0 0 6px #fff>'+db.n+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(map);
+      var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:11px;color:'+db.c+';font-weight:700;text-shadow:0 0 6px #fff>'+db.n+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(mapMacro);
       dynastyLayers.push(r);dynastyLayers.push(lbl);
     });
     // Update all location popups to show ancient names
-    map.eachLayer(function(layer){
+    mapMicro.eachLayer(function(layer){
       if(!layer._ld)return;
       var ld=layer._ld,an=LOC_ANCIENT[ld.n]||ld.n;
       var names=(ld.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:'';}).filter(Boolean).join('、');
       layer.setPopupContent('<b>'+an+'</b><br><span style=font-size:0.75em;color:var(--text2)>今: '+ld.n+'</span><br>'+(ld.dy||'')+'<br>'+(ld.ds||'')+(names?'<br>👤 '+names:''));
       var off=ancientLabels.length%3;
       var loff=[0.003,0.008,0.014][off];
-      var al=L.marker([ld.lat+loff,ld.lng],{icon:L.divIcon({html:'<div style=font-size:7px;color:#8b6b2a;font-weight:500;white-space:nowrap;text-shadow:0 0 3px rgba(255,248,235,0.8)>'+an+'</div>',className:'ancient-name-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-10}).addTo(map);
+      var al=L.marker([ld.lat+loff,ld.lng],{icon:L.divIcon({html:'<div style=font-size:7px;color:#8b6b2a;font-weight:500;white-space:nowrap;text-shadow:0 0 3px rgba(255,248,235,0.8)>'+an+'</div>',className:'ancient-name-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-10}).addTo(mapMacro);
       ancientLabels.push(al);
     });
   }else{
     if(cm)cm.classList.remove('map-ancient');
     if(btn){btn.style.background='';btn.style.color='';btn.style.borderColor='';btn.textContent='🏯 古今';}
     // Remove terrain
-    if(terrainLayer){map.removeLayer(terrainLayer);}
+    if(terrainLayer){mapMacro.removeLayer(terrainLayer);}
     // Remove dynasty boundaries
-    dynastyLayers.forEach(function(l){map.removeLayer(l);});
+    dynastyLayers.forEach(function(l){mapMacro.removeLayer(l);});
     dynastyLayers=[];
     // Remove ancient labels
-    ancientLabels.forEach(function(l){map.removeLayer(l);});
+    ancientLabels.forEach(function(l){mapMacro.removeLayer(l);});
     ancientLabels=[];
     // Remove transmission story + other schools
-    transMarkers.forEach(function(m){map.removeLayer(m);});transMarkers=[];
-    transLines.forEach(function(l){map.removeLayer(l);});transLines=[];
-    otherSchoolsMarkers.forEach(function(m){map.removeLayer(m);});otherSchoolsMarkers=[];
+    transMarkers.forEach(function(m){mapMacro.removeLayer(m);});transMarkers=[];
+    transLines.forEach(function(l){mapMacro.removeLayer(l);});transLines=[];
+    otherSchoolsMarkers.forEach(function(m){mapMacro.removeLayer(m);});otherSchoolsMarkers=[];
     // Restore popups with modern names
-    map.eachLayer(function(layer){
+    mapMicro.eachLayer(function(layer){
       if(!layer._ld)return;
       var ld=layer._ld;
       var names=(ld.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:'';}).filter(Boolean).join('、');
@@ -702,20 +725,20 @@ var transMarkers=[],transLines=[],otherSchoolsMarkers=[];
 
 function initTransStory(){
   if(!map)return;
-  transMarkers.forEach(function(m){map.removeLayer(m);});
-  transLines.forEach(function(l){map.removeLayer(l);});
+  transMarkers.forEach(function(m){mapMacro.removeLayer(m);});
+  transLines.forEach(function(l){mapMacro.removeLayer(l);});
   transMarkers=[];transLines=[];
   // Draw connecting lines between consecutive story points
   for(var i=1;i<TRANS_STORY.length;i++){
     var prev=TRANS_STORY[i-1],cur=TRANS_STORY[i];
-    var l=L.polyline([[prev.lat,prev.lng],[cur.lat,cur.lng]],{color:'#b8863c',weight:1.5,opacity:0.35,dashArray:'5,8'}).addTo(map);
+    var l=L.polyline([[prev.lat,prev.lng],[cur.lat,cur.lng]],{color:'#b8863c',weight:1.5,opacity:0.35,dashArray:'5,8'}).addTo(mapMacro);
     transLines.push(l);
   }
   // Draw story markers (small numbered circles)
   TRANS_STORY.forEach(function(ts,i){
     var sz=ts.p==='杜顺'||ts.p==='法藏'||ts.p.indexOf('华严')>=0?20:14;
     var icon=L.divIcon({html:'<div style=background:#b8863c;color:#fff;border-radius:50%;width:'+sz+'px;height:'+sz+'px;text-align:center;line-height:'+sz+'px;font-size:'+(sz>14?'9':'7')+'px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.2)>'+(i+1)+'</div>',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]});
-    var m=L.marker([ts.lat,ts.lng],{icon:icon}).addTo(map);
+    var m=L.marker([ts.lat,ts.lng],{icon:icon}).addTo(mapMacro);
     m.bindPopup('<b>['+(i+1)+'] '+ts.y+'年</b> · '+ts.p+'<br>'+ts.ev+'<br><span style=font-size:0.68em;color:var(--text2)>源: '+ts.src+'</span>');
     transMarkers.push(m);
   });
@@ -739,11 +762,11 @@ var OTHER_SCHOOLS=[
 ];
 function initOtherSchools(){
   if(!map)return;
-  otherSchoolsMarkers.forEach(function(m){map.removeLayer(m);});
+  otherSchoolsMarkers.forEach(function(m){mapMacro.removeLayer(m);});
   otherSchoolsMarkers=[];
   OTHER_SCHOOLS.forEach(function(s){
     var icon=L.divIcon({html:'<div style=background:'+s.c+';color:#fff;border-radius:50%;width:22px;height:22px;text-align:center;line-height:22px;font-size:10px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2)>'+s.n[0]+'</div>',iconSize:[22,22],iconAnchor:[11,11]});
-    var m=L.marker([s.lat,s.lng],{icon:icon}).addTo(map);
+    var m=L.marker([s.lat,s.lng],{icon:icon}).addTo(mapMacro);
     m.bindPopup('<b>'+s.n+'</b> ('+s.y+'年·'+s.loc+')<br>创始人: '+s.founder+'<br><span style=font-size:0.8em>'+s.desc+'</span>');
     m._school=s;
     otherSchoolsMarkers.push(m);
@@ -857,29 +880,29 @@ function toggleAnim(){
     clearInterval(animTimer);animPlaying=false;
     document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
     // Clean up map route
-    if(animRouteLine){if(map)map.removeLayer(animRouteLine);animRouteLine=null;}
-    if(animRouteMarker){if(map)map.removeLayer(animRouteMarker);animRouteMarker=null;}
+    if(animRouteLine){if(mapMacro)mapMacro.removeLayer(animRouteLine);animRouteLine=null;}
+    if(animRouteMarker){if(mapMacro)mapMacro.removeLayer(animRouteMarker);animRouteMarker=null;}
     return;
   }
   animPlaying=true;document.getElementById("anim-btn").textContent="⏸ 暂停";
   animYear=-600;lastAnimLoc=-1;tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
-  if(map){
-    map.setView([28,78],3);
+  if(mapMacro){
+    mapMacro.setView([28,78],3);
     // Init route line
     var routeCoords=ANIM_WAYPOINTS.map(function(w){return [w.lat,w.lng];});
-    if(animRouteLine)map.removeLayer(animRouteLine);
-    animRouteLine=L.polyline(routeCoords,{color:'#c46b5d',weight:3,opacity:0.5,dashArray:'8,6'}).addTo(map);
+    if(animRouteLine)mapMacro.removeLayer(animRouteLine);
+    animRouteLine=L.polyline(routeCoords,{color:'#c46b5d',weight:3,opacity:0.5,dashArray:'8,6'}).addTo(mapMacro);
     // Route marker (pulsing circle)
-    if(animRouteMarker)map.removeLayer(animRouteMarker);
-    animRouteMarker=L.circleMarker([33,110],{radius:0,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9}).addTo(map);
+    if(animRouteMarker)mapMacro.removeLayer(animRouteMarker);
+    animRouteMarker=L.circleMarker([33,110],{radius:0,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9}).addTo(mapMacro);
   }
   var speedLabel=document.getElementById('speed-label');
   function animStep(){
     var sp=getAnimSpeed();
     if(speedLabel){var x=(15/sp).toFixed(1);speedLabel.textContent=(x===1.0?'1':x)+'×';}
     animYear+=sp;if(animYear>2030){animYear=-600;clearInterval(animTimer);animPlaying=false;document.getElementById("anim-btn").textContent="▶ 播放";lastAnimLoc=-1;
-      if(animRouteLine){map.removeLayer(animRouteLine);animRouteLine=null;}
-      if(animRouteMarker){map.removeLayer(animRouteMarker);animRouteMarker=null;}
+      if(animRouteLine){mapMacro.removeLayer(animRouteLine);animRouteLine=null;}
+      if(animRouteMarker){mapMacro.removeLayer(animRouteMarker);animRouteMarker=null;}
       if(speedLabel)speedLabel.textContent='1×';
       // Clean up route highlights
       transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
@@ -890,17 +913,17 @@ function toggleAnim(){
     }
     tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
     // Map sync + route progress
-    if(map){
+    if(mapMacro){
       // Update route marker position
       for(var i=0;i<ANIM_WAYPOINTS.length;i++){
         var wp=ANIM_WAYPOINTS[i];
         if(animYear>=wp.y&&lastAnimLoc<i){
-          map.flyTo([wp.lat,wp.lng],wp.z,{duration:1.5});
+          mapMacro.flyTo([wp.lat,wp.lng],wp.z,{duration:1.5});
           var popup=L.popup({closeButton:false,autoClose:false,className:'anim-popup'})
             .setLatLng([wp.lat,wp.lng])
             .setContent('<b>'+wp.y+'年</b><br>'+wp.label)
             .openOn(map);
-          setTimeout(function(){if(popup&&map)map.closePopup(popup);},2500);
+          setTimeout(function(){if(popup&&map)mapMacro.closePopup(popup);},2500);
           lastAnimLoc=i;break;
         }
       }
@@ -930,6 +953,6 @@ function switchTab(tab){
   document.querySelectorAll(".tab-content").forEach(function(t){t.classList.remove("active");});
   document.getElementById("tab-"+tab).classList.add("active");
   location.hash=tab;
-  if(tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(map)map.invalidateSize();},200);}
+  if(tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(mapMacro)mapMacro.invalidateSize();if(mapMicro)mapMicro.invalidateSize();},200);}
 }
 if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"+h))switchTab(h);}
