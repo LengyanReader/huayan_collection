@@ -49,16 +49,6 @@ function renderPractice(){
   h+="<tr><td><b>禅观</b></td><td>粗→细→微妙</td><td>粗禅观: 数随止中感受法身。细禅观: 置心一处后。微妙禅观: 十信位圆满后·法身大士境界</td></tr>";
   h+="</table></div>";
 
-  h+="<div class=section><h2>📈 工程面·技术面 演进脉络</h2>";
-  h+="<table class=v-table><tr><th>时期</th><th>讲法阶段</th><th>工程面/技术面表述</th></tr>";
-  h+="<tr><td><b>1981-1991</b></td><td>探索期·在家讲经</td><td>尚未系统化。以「现代语言诠释华严」为雏形，重在「如何让现代人听懂」</td></tr>";
-  h+="<tr><td><b>2004-2008</b></td><td>北京广化寺《四十华严》</td><td>开始使用「技术面/工程面」二分框架。善财童子五十三参被解读为实修阶位对应图</td></tr>";
-  h+="<tr><td><b>2008-2011</b></td><td>三脉汇流后</td><td>工程面/技术面双轨正式定型为教学核心框架。提出「等持工程」「内摄工程」「发心工程」三级命名</td></tr>";
-  h+="<tr><td><b>2011-2013</b></td><td>密集出版期</td><td>《禅修正行》《禅观概论》《华严禅行法》系统化出版。数法A/B/C三阶段心法完整阐述</td></tr>";
-  h+="<tr><td><b>2014-2020</b></td><td>制度细化期</td><td>引入「忍可灌顶」制度。工程面增加「轻安三相」「天王三德」检验标准。200余种测验体系建立</td></tr>";
-  h+="<tr><td><b>2020-2026</b></td><td>数位化·AI时代</td><td>「九九华严」系列将工程面重新表述为回应「AI时代焦虑」的心灵工程。技术面融入「身心频率调整」现代语汇</td></tr>";
-  h+="</table></div>";
-
   h+="<div class=section><h2>📜 五教止观（杜顺和尚·点击展开）</h2>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>一、法有我无门（小乘教）</span><div class=body>破除「我执」，体悟我空，但法执犹存。一切法因缘和合，因果历然。对应四禅八定中的初、二、三、四禅。</div></div>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>二、生即无生门（大乘始教）</span><div class=body>体悟「法空」——外境皆由阿赖耶识变现，生而无生。达我法二空之境。此门始破「法执」，识心无体，境不自境。</div></div>";
@@ -115,7 +105,7 @@ function renderPractice(){
   h+="<b>英文著作:</b> <i>Huayen World: Teachings and Meditation Methods in Mahayana Buddhism</i> (Kongting Shuyuan, 2005) — 据查证为目前唯一确认出版的英文著作。「The Dawn of Enlightenment」是否存在独立英译本，尚待进一步查证。<br>";
   h+="<b>出版方:</b> 繁体版由空庭书苑/光潽文创出版(博客来·FindBook·乐天KOBO可购)；简体版曾由九州出版社(2011)、宗教文化出版社(2005)、海南出版社(2016)等在中国大陆发行。</p></div>";
 
-  h+="<div class=section><h2>📅 修行体系演进时间线</h2>";
+  h+="<div class=section><h2>📅 工程面·技术面 演进脉络 & 时间线</h2>";
   h+="<table class=v-table><tr><th>时期</th><th>关键节点</th><th>体系特征</th></tr>";
   h+="<tr><td><b>1981-1991</b></td><td>在家讲经探索期</td><td>以现代语言诠释华严·业余讲经·无僧团建制</td></tr>";
   h+="<tr><td><b>1991</b></td><td>梦参老和尚剃度</td><td>临济宗第47代·确立僧团身份·正式出家弘法</td></tr>";
