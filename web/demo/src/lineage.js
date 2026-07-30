@@ -966,9 +966,13 @@ function toggleAnim(){
     if(mapMain&&activeIdx>lastAnimLoc){
       mapMain.flyTo([activeWp.lat,activeWp.lng],Math.max(3,activeWp.z-2),{duration:1.8});
       if(animRouteMarkerM)animRouteMarkerM.setLatLng([activeWp.lat,activeWp.lng]);
-      var popContent='<div style=max-width:260px><b style=color:#c46b5d>'+activeWp.y+'年</b><br><b>'+activeWp.label+'</b><br><span style=font-size:0.78em;line-height:1.5>'+activeWp.info+'</span></div>';
-      var pM=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:280})
-        .setLatLng([activeWp.lat,activeWp.lng]).setContent(popContent).openOn(mapMain);
+      // Close previous popup first
+      mapMain.closePopup();
+      // Stagger popup position to avoid minimap overlap
+      var popLat=activeWp.lat+0.5,popLng=activeWp.lng;
+      var popContent='<div style=max-width:240px><b style=color:#c46b5d>'+activeWp.y+'年</b><br><b>'+activeWp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+activeWp.info+'</span></div>';
+      var pM=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
+        .setLatLng([popLat,popLng]).setContent(popContent).openOn(mapMain);
       setTimeout(function(){if(pM)mapMain.closePopup(pM);},4000);
     }
     if(mapMini&&activeIdx>lastAnimLoc){
