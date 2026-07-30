@@ -67,6 +67,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 .stage-box{border-left:4px solid var(--gold);padding:8px 14px;margin:8px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.85em;line-height:1.7}
 .stage-box b{color:var(--gold)}
 #resize-handle{width:5px;cursor:col-resize;background:var(--line);transition:background 0.2s;flex-shrink:0}#resize-handle:hover,#resize-handle.active{background:var(--gold)}
+.map-ancient .leaflet-tile-pane{filter:sepia(0.7) hue-rotate(-15deg) saturate(0.4) brightness(0.85) contrast(1.1)}.map-ancient .leaflet-overlay-pane{opacity:0.6}
 #speed-row{display:flex;gap:3px;align-items:center}#speed-row input[type=range]{width:70px;accent-color:var(--gold)}
 @media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{width:100%!important;flex-direction:row}#map-wrap{height:30vh}#controls button{font-size:0.65em}#resize-handle{display:none}}
 </style>
@@ -112,6 +113,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button class="active" data-layer="geo" onclick="toggleLayer('geo')" title="地理标记">地</button>
     <button class="active" data-layer="edges" onclick="toggleLayer('edges')" title="传承连线">传</button>
     <button class="active" data-layer="events" onclick="toggleLayer('events')" title="事件标记">事</button>
+    <button id="ancient-btn" style="border:1px solid var(--line)" onclick="toggleAncient()" title="古今地图对照">🏯 古今</button>
     <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type=range id=anim-speed min=5 max=40 value=15 step=1 title=播放速度(越小越快)><span id=speed-label>1×</span></span>
     <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
     <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>

@@ -67,6 +67,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 .stage-box{border-left:4px solid var(--gold);padding:8px 14px;margin:8px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.85em;line-height:1.7}
 .stage-box b{color:var(--gold)}
 #resize-handle{width:5px;cursor:col-resize;background:var(--line);transition:background 0.2s;flex-shrink:0}#resize-handle:hover,#resize-handle.active{background:var(--gold)}
+.map-ancient .leaflet-tile-pane{filter:sepia(0.7) hue-rotate(-15deg) saturate(0.4) brightness(0.85) contrast(1.1)}.map-ancient .leaflet-overlay-pane{opacity:0.6}
 #speed-row{display:flex;gap:3px;align-items:center}#speed-row input[type=range]{width:70px;accent-color:var(--gold)}
 @media(max-width:768px){body{overflow:auto}#header h1{font-size:0.9em}#header .sub{display:none}#main-row{flex-direction:column}#tl-panel{height:50vh;min-height:300px}#side{width:100%!important;flex-direction:row}#map-wrap{height:30vh}#controls button{font-size:0.65em}#resize-handle{display:none}}
 </style>
@@ -112,6 +113,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button class="active" data-layer="geo" onclick="toggleLayer('geo')" title="地理标记">地</button>
     <button class="active" data-layer="edges" onclick="toggleLayer('edges')" title="传承连线">传</button>
     <button class="active" data-layer="events" onclick="toggleLayer('events')" title="事件标记">事</button>
+    <button id="ancient-btn" style="border:1px solid var(--line)" onclick="toggleAncient()" title="古今地图对照">🏯 古今</button>
     <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type=range id=anim-speed min=5 max=40 value=15 step=1 title=播放速度(越小越快)><span id=speed-label>1×</span></span>
     <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
     <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
@@ -585,6 +587,80 @@ function selectPerson(id,isShift){
 }
 function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击人物寿命条查看详情<br><span style=font-size:0.8em>Shift+点击第二人可并排对比</span></div>";var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();}
 function drawTL2(id){}
+
+// ═══ ANCIENT/MODERN MAP TOGGLE (with terrain) ═══
+var ancientMode=false,dynastyLayers=[],ancientLabels=[],terrainLayer=null;
+var LOC_ANCIENT={
+  '大慈恩寺':'唐长安·大慈恩寺', '终南山':'唐终南山·至相寺', '清凉山（五台山）':'唐清凉山·大华严寺',
+  '圭峰':'唐终南山·圭峰草堂', '方山':'唐方山·李通玄著论处', '杭州慧因寺':'宋杭州·慧因高丽寺',
+  '洛阳佛授记寺':'唐东都·佛授记寺', '台北华严莲社':'今台北·华严莲社', '北京广济寺':'今北京·广济寺',
+  '常熟兴福寺':'清常熟·兴福寺(华严大学)', '于阗':'唐于阗·瞿萨旦那国', '敦煌':'唐沙州·敦煌',
+  '尼泊尔加德满都谷地':'尼波罗国·加德满都谷地', '匡山（庐山）':'唐匡山·庐山',
+  '奈良东大寺':'日本平城京·东大寺', '南投大华严寺':'今南投·云鹤山大华严寺', '台北福慧寺':'今台北·树林福慧寺',
+  '印度那烂陀寺':'古印度·那烂陀寺'
+};
+var DYNASTY_BOUNDARIES=[
+  {n:'唐',s:618,e:907,c:'#b8863c',bounds:[[18,73],[42,130]]},
+  {n:'宋',s:960,e:1279,c:'#5e8b9e',bounds:[[20,98],[40,125]]},
+  {n:'明',s:1368,e:1644,c:'#c8893e',bounds:[[18,98],[43,125]]},
+  {n:'清',s:1644,e:1912,c:'#8b7a9e',bounds:[[18,97],[44,132]]}
+];
+function toggleAncient(){
+  ancientMode=!ancientMode;
+  var cm=document.getElementById('tab-lineage');
+  var btn=document.getElementById('ancient-btn');
+  if(ancientMode){
+    if(cm)cm.classList.add('map-ancient');
+    if(btn){btn.style.background='#b8863c';btn.style.color='#fff';btn.style.borderColor='#b8863c';btn.textContent='🏯 今';}
+    // Add terrain overlay (shows mountains/rivers/valleys clearly)
+    if(!terrainLayer){terrainLayer=L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{subdomains:['a','b','c'],maxZoom:17,opacity:0.55}).addTo(map);}
+    else{terrainLayer.addTo(map);}
+    // Major geographic feature labels
+    var geoFeatures=[
+      {n:'秦岭山脉',lat:34.0,lng:108.5},{n:'黄河',lat:34.8,lng:110.5},{n:'长江',lat:30.5,lng:114.0},
+      {n:'五台山',lat:39.0,lng:113.6},{n:'东海',lat:28.0,lng:123.0},{n:'台湾海峡',lat:23.5,lng:119.5},
+      {n:'长安盆地',lat:34.2,lng:108.9},{n:'太湖',lat:31.2,lng:120.2}
+    ];
+    geoFeatures.forEach(function(gf){
+      var gl=L.marker([gf.lat,gf.lng],{icon:L.divIcon({html:'<div style=font-size:10px;color:#6b4e2a;font-weight:600;text-shadow:0 0 4px rgba(255,255,255,0.8)>'+gf.n+'</div>',className:'geo-feature-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-5}).addTo(map);
+      ancientLabels.push(gl);
+    });
+    // Show dynasty boundaries
+    DYNASTY_BOUNDARIES.forEach(function(db){
+      var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.05,className:'dynasty-boundary'}).addTo(map);
+      var cx=(db.bounds[0][1]+db.bounds[1][1])/2,cy=(db.bounds[0][0]+db.bounds[1][0])/2;
+      var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:11px;color:'+db.c+';font-weight:700;text-shadow:0 0 6px #fff>'+db.n+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(map);
+      dynastyLayers.push(r);dynastyLayers.push(lbl);
+    });
+    // Update all location popups to show ancient names
+    map.eachLayer(function(layer){
+      if(!layer._ld)return;
+      var ld=layer._ld,an=LOC_ANCIENT[ld.n]||ld.n;
+      var names=(ld.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:'';}).filter(Boolean).join('、');
+      layer.setPopupContent('<b>'+an+'</b><br><span style=font-size:0.75em;color:var(--text2)>今: '+ld.n+'</span><br>'+(ld.dy||'')+'<br>'+(ld.ds||'')+(names?'<br>👤 '+names:''));
+      var al=L.marker([ld.lat+0.0005,ld.lng],{icon:L.divIcon({html:'<div style=font-size:8px;color:#a08000;font-weight:600;white-space:nowrap>'+an+'</div>',className:'ancient-name-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-10}).addTo(map);
+      ancientLabels.push(al);
+    });
+  }else{
+    if(cm)cm.classList.remove('map-ancient');
+    if(btn){btn.style.background='';btn.style.color='';btn.style.borderColor='';btn.textContent='🏯 古今';}
+    // Remove terrain
+    if(terrainLayer){map.removeLayer(terrainLayer);}
+    // Remove dynasty boundaries
+    dynastyLayers.forEach(function(l){map.removeLayer(l);});
+    dynastyLayers=[];
+    // Remove ancient labels
+    ancientLabels.forEach(function(l){map.removeLayer(l);});
+    ancientLabels=[];
+    // Restore popups with modern names
+    map.eachLayer(function(layer){
+      if(!layer._ld)return;
+      var ld=layer._ld;
+      var names=(ld.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:'';}).filter(Boolean).join('、');
+      layer.setPopupContent('<b>'+ld.n+'</b><br>'+(ld.dy||'')+'<br>'+(ld.ds||'')+(names?'<br>👤 '+names:''));
+    });
+  }
+}
 
 // ═══ ENHANCED INFO PANEL ═══
 function showInfo(p,p2){
