@@ -534,6 +534,19 @@ function renderGap(){
   h+="<span style=margin-left:8px>→ 继承/重译/补全</span></div>";
   h+="</div>";
 
+  // ── References (moved to overview for reliability) ──
+  h+="<h2 style=color:var(--gold)>📚 参考文献 & 数据源</h2><div class=section><p style=font-size:0.82em;line-height:1.9>";
+  h+="📄 Imre Hamar. <i>The Buddhāvatamsaka-sūtra and Its Chinese Interpretation</i>. 匈牙利科学院博士论文, 2014.<br>";
+  h+="📄 Imre Hamar. <i>The Metaphor of the Painter in the Avatamsaka-sutra and Its Chinese Interpretations</i>. SOS 13·2, 2014.<br>";
+  h+="📄 Peter Alan Roberts (tr.). <i>The Stem Array</i> (Gaṇḍavyūha, Toh 44-45). 84000 Project, 2021.<br>";
+  h+="📄 高明道. 《谈谈翻译与诠释——以《华严》数偈为例》. 《法光》第236期, 2009.<br>";
+  h+="📄 孙飞鹏. 《〈华严经〉卷十一夏汉文本对勘研究》. 《西夏学》第十辑(2013年第2期), 页75-80.<br>";
+  h+="📄 铃木大拙. 三本《华严经》的异同及其要义. 《禅论集之三·菩萨行处》.<br>";
+  h+="📎 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas</a><br>";
+  h+="📎 84000: <a href='https://84000.co/translation/toh44-31' target=_blank>The Ten Bhūmis</a> · <a href='https://read.84000.co/translation/toh44-45.html' target=_blank>The Stem Array</a><br>";
+  h+="📎 CBETA: <a href='https://cbetaonline.dila.edu.tw/zh/T10n0279' target=_blank>八十华严</a> · <a href='https://cbetaonline.dila.edu.tw/zh/T09n0278' target=_blank>六十华严</a><br>";
+  h+="📦 数据源: Asian Legacy Library (Kangyur ZIP) · 84000 PDF · BDRC WA0RK0044 · ACIP KD0044</p></div>";
+
   // ── Close overview ──
   h+="</div>";
 
@@ -964,10 +977,8 @@ function renderFrontier(){
   fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}</style>"
 
   // ── Sub-navigation ──
-  +"<div style='display:flex;gap:6px;margin-bottom:16px'><button class='f-nav-btn active' onclick='switchFrontier(this,\"dialogue\")'>🔬 跨界对话</button><button class='f-nav-btn' onclick='switchFrontier(this,\"litreview\")'>📑 文献综述</button></div>"
+  +"<div style='display:flex;gap:6px;margin-bottom:16px'><button class='f-nav-btn active'>🔬 跨界对话</button></div>"
 
-  // ── DIALOGUE SECTION ──
-  +"<div id=fv-dialogue class=fv-section>"
 
   // ── Header ──
   +"<div class=section style=border-left:4px solid var(--gold)>"
@@ -1035,10 +1046,6 @@ function renderFrontier(){
   +"📄 Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996).<br>"
   +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>"
 
-  +"</div>"; // close fv-dialogue
-
-  // ═══ LITERATURE REVIEW SECTION ═══
-  +"<div id=fv-litreview class=fv-section style=display:none>"
   +"<div class=section><h2>📑 多语言文献综述 (2023-2026)</h2>"
   +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p></div>"
 
@@ -1074,14 +1081,6 @@ function renderFrontier(){
   +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div>"
 
   +"<p style='font-size:0.78em;color:var(--text2);margin-top:8px'>⚠ 注: 文献综述为定期更新板块。所列论文基于公开可获取的学术数据库（Google Scholar/PhilPapers/CNKI）。部分论文的华严关联解读属于本项目的诠释性建构。</p>"
-  +"</div>"; // close fv-litreview
-}
-
-function switchFrontier(btn,view){
-  document.querySelectorAll('.f-nav-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  document.querySelectorAll('.fv-section').forEach(function(s){s.style.display='none';});
-  var el=document.getElementById('fv-'+view);if(el)el.style.display='block';
 }
 // ═══ ERROR CATCH ═══
 window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace;white-space:pre-wrap";d.textContent="JS ERROR: "+m+" at line "+l;document.body.appendChild(d);};

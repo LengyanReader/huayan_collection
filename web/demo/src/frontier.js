@@ -4,10 +4,8 @@ function renderFrontier(){
   fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}</style>"
 
   // ── Sub-navigation ──
-  +"<div style='display:flex;gap:6px;margin-bottom:16px'><button class='f-nav-btn active' onclick='switchFrontier(this,\"dialogue\")'>🔬 跨界对话</button><button class='f-nav-btn' onclick='switchFrontier(this,\"litreview\")'>📑 文献综述</button></div>"
+  +"<div style='display:flex;gap:6px;margin-bottom:16px'><button class='f-nav-btn active'>🔬 跨界对话</button></div>"
 
-  // ── DIALOGUE SECTION ──
-  +"<div id=fv-dialogue class=fv-section>"
 
   // ── Header ──
   +"<div class=section style=border-left:4px solid var(--gold)>"
@@ -75,10 +73,6 @@ function renderFrontier(){
   +"📄 Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996).<br>"
   +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>"
 
-  +"</div>"; // close fv-dialogue
-
-  // ═══ LITERATURE REVIEW SECTION ═══
-  +"<div id=fv-litreview class=fv-section style=display:none>"
   +"<div class=section><h2>📑 多语言文献综述 (2023-2026)</h2>"
   +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p></div>"
 
@@ -114,12 +108,4 @@ function renderFrontier(){
   +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div>"
 
   +"<p style='font-size:0.78em;color:var(--text2);margin-top:8px'>⚠ 注: 文献综述为定期更新板块。所列论文基于公开可获取的学术数据库（Google Scholar/PhilPapers/CNKI）。部分论文的华严关联解读属于本项目的诠释性建构。</p>"
-  +"</div>"; // close fv-litreview
-}
-
-function switchFrontier(btn,view){
-  document.querySelectorAll('.f-nav-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  document.querySelectorAll('.fv-section').forEach(function(s){s.style.display='none';});
-  var el=document.getElementById('fv-'+view);if(el)el.style.display='block';
 }

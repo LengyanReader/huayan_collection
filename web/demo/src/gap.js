@@ -166,6 +166,19 @@ function renderGap(){
   h+="<span style=margin-left:8px>→ 继承/重译/补全</span></div>";
   h+="</div>";
 
+  // ── References (moved to overview for reliability) ──
+  h+="<h2 style=color:var(--gold)>📚 参考文献 & 数据源</h2><div class=section><p style=font-size:0.82em;line-height:1.9>";
+  h+="📄 Imre Hamar. <i>The Buddhāvatamsaka-sūtra and Its Chinese Interpretation</i>. 匈牙利科学院博士论文, 2014.<br>";
+  h+="📄 Imre Hamar. <i>The Metaphor of the Painter in the Avatamsaka-sutra and Its Chinese Interpretations</i>. SOS 13·2, 2014.<br>";
+  h+="📄 Peter Alan Roberts (tr.). <i>The Stem Array</i> (Gaṇḍavyūha, Toh 44-45). 84000 Project, 2021.<br>";
+  h+="📄 高明道. 《谈谈翻译与诠释——以《华严》数偈为例》. 《法光》第236期, 2009.<br>";
+  h+="📄 孙飞鹏. 《〈华严经〉卷十一夏汉文本对勘研究》. 《西夏学》第十辑(2013年第2期), 页75-80.<br>";
+  h+="📄 铃木大拙. 三本《华严经》的异同及其要义. 《禅论集之三·菩萨行处》.<br>";
+  h+="📎 84000 Scholar's Room: <a href='https://scholar.84000.co/article/a-multitude-of-buddhas-kangyur-section' target=_blank>A Multitude of Buddhas</a><br>";
+  h+="📎 84000: <a href='https://84000.co/translation/toh44-31' target=_blank>The Ten Bhūmis</a> · <a href='https://read.84000.co/translation/toh44-45.html' target=_blank>The Stem Array</a><br>";
+  h+="📎 CBETA: <a href='https://cbetaonline.dila.edu.tw/zh/T10n0279' target=_blank>八十华严</a> · <a href='https://cbetaonline.dila.edu.tw/zh/T09n0278' target=_blank>六十华严</a><br>";
+  h+="📦 数据源: Asian Legacy Library (Kangyur ZIP) · 84000 PDF · BDRC WA0RK0044 · ACIP KD0044</p></div>";
+
   // ── Close overview ──
   h+="</div>";
 
