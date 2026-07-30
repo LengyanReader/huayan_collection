@@ -283,7 +283,7 @@ function calcStats(){
     var s=nodeMap[e.s],t=nodeMap[e.t];if(!s||!t||!s.d||!t.b)return;
     var gap=t.b-s.d;if(gap>maxGap)maxGap=gap;
   });
-  return '👤'+DATA.nodes.length+'人 · 📅跨度'+span+'年 · ⏳最长传承间隙'+maxGap+'年';
+  return '👤'+DATA.nodes.length+'人 · 🔗'+DATA.edges.length+'边 · 📅跨度'+span+'年 · ⏳最长间隙'+maxGap+'年';
 }
 // Text truncation helper
 function truncText(ctx,text,maxW){
