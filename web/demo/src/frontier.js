@@ -121,5 +121,5 @@ function switchFrontier(btn,view){
   document.querySelectorAll('.f-nav-btn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
   document.querySelectorAll('.fv-section').forEach(function(s){s.style.display='none';});
-  document.getElementById('fv-'+view).style.display='block';
+  var el=document.getElementById('fv-'+view);if(el)el.style.display='block';
 }

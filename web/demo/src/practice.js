@@ -4,7 +4,7 @@ function renderPractice(){
   var h="";
   h+="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}</style>";
 
-  h+="<div class=section><h2>🧘 华严行法 — 修行蓝图</h2><p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。</p>";
+  h+="<div class=section><h2 id=p-overview>🧘 华严行法 — 修行蓝图</h2><p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。</p>";
 
   h+="<div style='display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0'>";
   h+="<div style='flex:1;min-width:180px;background:rgba(184,134,60,0.08);border:1px solid #b8863c;border-radius:10px;padding:16px;text-align:center'>";
@@ -20,12 +20,12 @@ function renderPractice(){
   h+="<div style='font-size:0.8em;color:#8a6060'>海印三昧</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩地 samādhi</div></div>";
   h+="</div></div>";
 
-  h+="<div class=section><h2>📐 修行三阶段</h2>";
+  h+="<div class=section><h2 id=p-stages>📐 修行三阶段</h2>";
   h+="<div class=stage-box><b>一、资粮道 — 发心工程</b><br>三门必修: 人格健康+出离心+菩提心。技术面: 纯化禅(动→静)→象限转移→瞬间定。工程面: 心性培养+戒律基础。</div>";
   h+="<div class=stage-box><b>二、前行 — 内摄工程（界内定）</b><br>核心: 安那般那数息观(数·随·止·观·还·净)。四种观法: 唯心识观→真如实现→毗婆舍那→奢摩他。</div>";
   h+="<div class=stage-box><b>三、正行 — 等持工程（界外定）</b><br>前半程三摩呬多→后半程三摩钵底→究竟三摩地。依杜顺法界三观，透过海印三昧呈现华严境界。</div></div>";
 
-  h+="<div class=section><h2>⚙️ 技术面·工程面 — 双轨详解</h2>";
+  h+="<div class=section><h2 id=p-method>⚙️ 技术面·工程面 — 双轨详解</h2>";
   h+="<p style=line-height:1.8;margin-bottom:8px>海云法师将华严禅法分为<b>技术面</b>（修定·身法）与<b>工程面</b>（修慧·心法），比喻为「建设部门与工程师」——「没有技术面，工程面推不动；没有工程面，技术面只是空壳」。据《华严禅行法》讲记系列（wuming.xuefo.com / fjdh.cn收录）。</p>";
 
   h+="<h3 style=color:var(--gold)>🔧 技术面：数·随·止 三法</h3>";
@@ -49,7 +49,7 @@ function renderPractice(){
   h+="<tr><td><b>禅观</b></td><td>粗→细→微妙</td><td>粗禅观: 数随止中感受法身。细禅观: 置心一处后。微妙禅观: 十信位圆满后·法身大士境界</td></tr>";
   h+="</table></div>";
 
-  h+="<div class=section><h2>📜 五教止观（杜顺和尚·点击展开）</h2>";
+  h+="<div class=section><h2 id=p-wujiao>📜 五教止观（杜顺和尚·点击展开）</h2>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>一、法有我无门（小乘教）</span><div class=body>破除「我执」，体悟我空，但法执犹存。一切法因缘和合，因果历然。对应四禅八定中的初、二、三、四禅。</div></div>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>二、生即无生门（大乘始教）</span><div class=body>体悟「法空」——外境皆由阿赖耶识变现，生而无生。达我法二空之境。此门始破「法执」，识心无体，境不自境。</div></div>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>三、事理圆融门（大乘终教）</span><div class=body>空有不二，悲智双运。实现「空有双亡」之境——理（真如）不碍事（万象），事不碍理，理事圆融无碍。</div></div>";
@@ -57,7 +57,7 @@ function renderPractice(){
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>五、华严三昧门（一乘圆教·究竟）</span><div class=body>见法界缘起之相——万象影现，一即一切、圆融无碍。若能当下认证万法从缘，便可顿入法界缘起。此即海印三昧——如大海映现万象，佛心如海，一时普现十方法界无尽缘起。</div></div>";
   h+="</div>";
 
-  h+="<div class=section><h2>📊 十信法门</h2><table class=v-table><tr><th>信位</th><th>禅定</th><th>法位</th><th>观法</th><th>关键检验</th></tr>";
+  h+="<div class=section><h2 id=p-bhumis>📊 十信法门</h2><table class=v-table><tr><th>信位</th><th>禅定</th><th>法位</th><th>观法</th><th>关键检验</th></tr>";
   h+="<tr><td>初信</td><td>四天王定</td><td>煖法</td><td>唯心识观</td><td>自省三业·觉醒生命意义</td></tr>";
   h+="<tr><td>二信</td><td>忉利定</td><td>顶法</td><td>观妄念所由生</td><td>确认菩提心·收心工程完成</td></tr>";
   h+="<tr><td>三信</td><td>欲界定</td><td>忍法</td><td>轻安三相</td><td>菩提心稳定·摄众共修</td></tr>";
@@ -80,7 +80,7 @@ function renderPractice(){
   h+="<tr><td>华严密法</td><td>华严字母·曼荼罗·真言持诵</td></tr>";
   h+="</table></div>";
 
-  h+="<div class=section><h2>🪜 四阶段修行蓝图（海云法师判摄）</h2>";
+  h+="<div class=section><h2 id=p-fourstage>🪜 四阶段修行蓝图（海云法师判摄）</h2>";
   h+="<div class=stage-box><b>一、出离乘</b>（出离心→出离道→出离行）<br>以脱离轮回、了生死为基础动机，建立「出三界、入法界」之志。</div>";
   h+="<div class=stage-box><b>二、菩提乘</b>（菩提心→菩提道→菩提行）<br>发心求觉悟。法师称此「只是起步」。</div>";
   h+="<div class=stage-box><b>三、菩萨乘</b>（菩萨心→菩萨道→菩萨行）<br>法师称此「还没有究竟」——仍属因地修行。</div>";
@@ -93,7 +93,7 @@ function renderPractice(){
   h+="<b>③ 缘念法门</b> — 缘念自己实际修学的具体法门，不杂修不盲从。<br>";
   h+="<span style=font-size:0.8em;color:var(--text2)>注: 「忍可灌顶→行者灌顶→进阶灌顶→高阶保衽灌顶」四次第灌顶制度及「两百余种具体测验」的验证机制，据法师《四十华严讲记》所述，属其体系内部的制度性安排。</span></p></div>";
 
-  h+="<div class=section><h2>📖 海云继梦著作（空庭书苑/光潽文创出版·2002-2026）</h2><p style=font-size:0.8em;line-height:1.9>";
+  h+="<div class=section><h2 id=p-works>📖 海云继梦著作（空庭书苑/光潽文创出版·2002-2026）</h2><p style=font-size:0.8em;line-height:1.9>";
   h+="<b>华严经讲记系列:</b> 《华严经导读》(三册) · 《探玄记悬谈讲记》(四册) · 《华严学导论》(ⅠⅡ) · 《世主妙严品》《光明觉品》《净行品》《贤首品》《明法品》《普贤三昧品》《普贤行品》《四圣谛品》讲记 · 《四十华严》全本讲记(2006-2010北京广化寺)<br>";
   h+="<b>三部曲:</b> 《非常坛经》(4册·2004) · 《非常金刚经》 · 《非常心经》——主张「要懂《心经》先懂《金刚经》，要懂《金刚经》先懂《坛经》」<br>";
   h+="<b>禅修系列:</b> 《禅修入门》(2020) · 《禅修正行——安那般那数息观》(2017) · 《禅修前行》 · 《禅观概论》(2011) · 《禅，怎么参？》(2011) · 《禅，就要这么参！》(2011)<br>";
@@ -105,7 +105,7 @@ function renderPractice(){
   h+="<b>英文著作:</b> <i>Huayen World: Teachings and Meditation Methods in Mahayana Buddhism</i> (Kongting Shuyuan, 2005) — 据查证为目前唯一确认出版的英文著作。「The Dawn of Enlightenment」是否存在独立英译本，尚待进一步查证。<br>";
   h+="<b>出版方:</b> 繁体版由空庭书苑/光潽文创出版(博客来·FindBook·乐天KOBO可购)；简体版曾由九州出版社(2011)、宗教文化出版社(2005)、海南出版社(2016)等在中国大陆发行。</p></div>";
 
-  h+="<div class=section><h2>📅 工程面·技术面 演进脉络 & 时间线</h2>";
+  h+="<div class=section><h2 id=p-timeline>📅 工程面·技术面 演进脉络 & 时间线</h2>";
   h+="<table class=v-table><tr><th>时期</th><th>关键节点</th><th>体系特征</th></tr>";
   h+="<tr><td><b>1981-1991</b></td><td>在家讲经探索期</td><td>以现代语言诠释华严·业余讲经·无僧团建制</td></tr>";
   h+="<tr><td><b>1991</b></td><td>梦参老和尚剃度</td><td>临济宗第47代·确立僧团身份·正式出家弘法</td></tr>";
@@ -129,7 +129,7 @@ function renderPractice(){
   h+="<tr><td><b>大华严寺</b></td><td>修行蓝图·法脉传承·最新动态</td><td>50+页面</td><td>🌐网页</td></tr>";
   h+="</table></div>";
 
-  h+="<div class=section><h2>🎬 讲法资源</h2>";
+  h+="<div class=section><h2 id=p-resources>🎬 讲法资源</h2>";
 
   // YouTube card
   h+="<div style='display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px'>";
