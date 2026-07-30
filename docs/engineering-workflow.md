@@ -279,7 +279,54 @@ diff:
 
 ---
 
-## 六、技术实现要点
+## 六、知识管理规则 (Knowledge Management Rules)
+
+### 6.0 核心原则：先入库，后显示
+
+**所有页面显示的内容必须来源于结构化源文件。严禁在 build.py 或 JS 中硬编码数据。**
+
+任何新增内容（人物/关系/事件/术语/论文）的工作流：
+
+```
+① 确定内容类型 → 找到对应源文件 (JSON/YAML)
+② 按现有格式追加记录
+③ python web/demo/scripts/build.py 构建
+④ 验证构建输出 (人数/边数/事件数一致)
+⑤ git commit + push
+```
+
+违反此规则的典型错误：
+- ❌ 在 build.py 中写 `nodes.append({...})` 追加人物
+- ❌ 在 lineage.js 中直接修改 ANIM_WAYPOINTS 数组
+- ✅ 写入 `personas.json`，由 build.py 自动读取
+- ✅ 写入 `events/anim_waypoints.yaml`，由 build.py 注入
+
+### 6.1 全 Tab 数据源映射
+
+| Tab | 内容 | 源文件 | 格式 |
+|-----|------|--------|------|
+| 法脉传承 | 人物 | `data/knowledge_graph/personas.json` | JSON |
+| 法脉传承 | 传承边 | `data/knowledge_graph/lineages.json` | JSON |
+| 法脉传承 | 地点 | `data/knowledge_graph/locations.json` | JSON |
+| 法脉传承 | 历史事件 | `data/events/key_events.yaml` (待建) | YAML |
+| 法脉传承 | 动画节点 | `data/events/anim_waypoints.yaml` (待建) | YAML |
+| 法脉传承 | 传播故事 | `data/events/transmission_story.yaml` (待建) | YAML |
+| 汉藏文献 | 差异矩阵 | `data/translation/diff_matrix.yaml` | YAML |
+| 汉藏文献 | 术语库 | `data/translation/glossary.yaml` | YAML |
+| 华严行法 | 修行体系 | `data/practice/` (待建) | YAML |
+| 前沿对话 | 文献综述 | `data/frontier/` (待建) | YAML |
+| 华严其观 | 宇宙观 | `data/cosmology/` (待建) | YAML |
+
+### 6.2 构建验证输出
+
+每次构建打印验证信息：
+```
+OK  index.html
+    192,497 bytes | 73 persons | 81 edges | 23 locations
+```
+人数/边数/地点数的变化是数据正确性的第一道防线。
+
+## 七、技术实现要点
 
 ### 6.1 不使用 CI 服务器
 

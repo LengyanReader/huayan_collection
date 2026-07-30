@@ -31,25 +31,39 @@
 
 ## 技术栈
 
-- **前端 Demo**: 纯 HTML/CSS/JS + Canvas + Leaflet (CDN), 单文件 ~78KB
-- **数据**: 内嵌 JSON, 零构建步骤, 零 fetch 请求
+- **前端 Demo**: 纯 HTML/CSS/JS + Canvas + Leaflet (CDN), 单文件 ~192KB
+- **数据**: 结构化 JSON/YAML 源文件 → build.py 构建内嵌
 - **ETL**: Python 3.12 (conda env: hy_py312)
 - **部署**: 本地双击 → GitHub Pages
+
+## ⚠️ 知识管理核心规则
+
+**所有内容必须来源于结构化源文件，严禁硬编码在 build.py 或 JS 中。**
+
+| Tab | 内容类型 | 源文件 |
+|-----|---------|--------|
+| 法脉传承 | 人物/边/地点 | `data/knowledge_graph/*.json` |
+| 法脉传承 | 事件/动画/传播 | `data/events/*.yaml` (待建) |
+| 汉藏文献 | 差异矩阵/术语 | `data/translation/*.yaml` |
+| 华严行法 | 修行体系 | `data/practice/` (待建) |
+| 前沿对话 | 文献/论文 | `data/frontier/` (待建) |
+| 华严其观 | 宇宙观 | `data/cosmology/` (待建) |
+
+**新增内容流程**: ①写入源文件 → ②`build.py`构建 → ③验证人数/边数 → ④提交
+
+详见 [docs/knowledge-management.md](docs/knowledge-management.md)
 
 ## 开发流程
 
 ```bash
-# 编辑源码 (web/demo/src/ 下7个文件)
+# 编辑源数据 (JSON/YAML) 或源码 (web/demo/src/)
+code data/knowledge_graph/personas.json
 code web/demo/src/lineage.js
 
-# 构建 + 18项验证
-make demo
+# 构建
+C:/Users/data/miniconda3/envs/hy_py312/python.exe web/demo/scripts/build.py
 
-# 本地预览 (localhost:8080)
-make demo-serve
-
-# 一键部署
-make demo-deploy
+# 本地预览 (打开 web/demo/index.html)
 ```
 
 ## 目录约定
