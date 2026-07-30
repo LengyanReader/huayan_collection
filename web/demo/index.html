@@ -56,6 +56,12 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 .ppara .pn{display:inline-block;padding:1px 6px;background:var(--gold);color:#fff;border-radius:8px;font-size:0.75em;margin-right:6px;font-weight:600}
 .ch-title{font-weight:700;color:var(--gold);font-size:0.9em;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .seg-btn{display:inline-block;padding:3px 8px;margin:2px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:0.72em;cursor:pointer;transition:all 0.15s}.seg-btn:hover{background:var(--gold);color:#fff}
+.comment-box{padding:12px 16px;border-top:1px solid var(--line);background:var(--panel);margin-top:auto}
+.comment-box h4{font-size:0.8em;color:var(--gold);margin-bottom:6px}
+.comment-box textarea{width:100%;border:1px solid var(--line);border-radius:6px;padding:8px;font-size:0.78em;background:var(--card);color:var(--text);resize:vertical;min-height:50px}
+.comment-box button{padding:4px 12px;border:1px solid var(--gold);border-radius:12px;background:var(--gold);color:#fff;cursor:pointer;font-size:0.73em;margin-top:4px}
+.comment-box .c-list{font-size:0.75em;color:var(--text2);margin-top:8px;max-height:120px;overflow-y:auto}
+.comment-box .c-item{padding:4px 0;border-bottom:1px dotted var(--line)}
 .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.78em;font-weight:600;margin:2px 4px}
 .stage-box{border-left:4px solid var(--gold);padding:8px 14px;margin:8px 0;background:rgba(200,150,60,0.04);border-radius:0 8px 8px 0;font-size:0.85em;line-height:1.7}
 .stage-box b{color:var(--gold)}
@@ -72,9 +78,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   <button data-tab="frontier">🔬 前沿对话</button>
 </div>
 
-<div id="tab-practice" class="tab-content"><div id="practice-view"></div></div>
+<div id="tab-practice" class="tab-content"><div id="practice-view"></div><div class=comment-box id=cmt-practice></div></div>
 
-<div id="tab-frontier" class="tab-content" style="overflow-y:auto"><div id="frontier-view"></div></div>
+<div id="tab-frontier" class="tab-content" style="overflow-y:auto"><div id="frontier-view"></div><div class=comment-box id=cmt-frontier></div></div>
 
 <div id="tab-lineage" class="tab-content active">
   <div id="search-bar"><input type="text" id="search-input" placeholder="🔍 检索人物、地点…"><span style="font-size:0.7em;color:var(--text2)">点击人物寿命条 | 滚轮缩放 | 拖拽平移</span></div>
@@ -99,9 +105,10 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
     <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
   </div>
+  <div class=comment-box id=cmt-lineage></div>
 </div>
 
-<div id="tab-gap" class="tab-content"><div id="gap-view"></div></div>
+<div id="tab-gap" class="tab-content"><div id="gap-view"></div><div class=comment-box id=cmt-gap></div></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>function D(m){}</script>
@@ -996,7 +1003,32 @@ function renderFrontier(){
   +"📄 Richard Davidson & Daniel Goleman. <i>Altered Traits</i> (2017). Avery.<br>"
   +"📄 John Vervaeke. Awakening from the Meaning Crisis (YouTube系列, 2019-).<br>"
   +"📄 Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996).<br>"
-  +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>";
+  +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>"
+
+  // ── 6. Literature Review ──
+  +"<div class=section><h2>📑 多语言文献综述 (2023-2026)</h2>"
+  +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2026</h3>"
+  +"<div class=stage-box><b>EN</b> Seth, A. et al. <i>Consciousness in AI: Benchmarks and Frameworks</i>. Nature Machine Intelligence (2026).<br>"
+  +"<b>ZH</b> 李恒威等. 《意识科学与人工智能——从困难问题到组合问题》. 中国社会科学 (2026).<br>"
+  +"<b>EN</b> 84000 Project. <i>The Ten Bhumis</i> (Toh44-31) Translation & Textual Notes. 84000.co (2021-2026).</div>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2025</h3>"
+  +"<div class=stage-box><b>EN</b> Vervaeke, J. & Ferraro, C. <i>Relevance Realization and the Buddhist Path</i>. Journal of Consciousness Studies (2025).<br>"
+  +"<b>EN</b> Metzinger, T. <i>The Elephant and the Blind: The Experience of Pure Consciousness</i>. MIT Press (2025).<br>"
+  +"<b>ZH</b> 何欢欢. 《佛教因明学与当代逻辑学对话》. 哲学研究 (2025).</div>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2024</h3>"
+  +"<div class=stage-box><b>EN</b> Laukkonen, R. et al. <i>Cessation Events During Meditation: Phenomenology and Neural Correlates</i>. NeuroImage (2024).<br>"
+  +"<b>EN</b> Millière, R. et al. <i>Deep Meditation and the Predictive Brain</i>. Trends in Cognitive Sciences (2024).<br>"
+  +"<b>DE</b> Brückner, H. <i>Hua-yan Buddhismus und Systemtheorie</i>. Verlag Karl Alber (2024).<br>"
+  +"<b>ZH</b> 王颂. 《华严宗「法界缘起」的现代诠释》. 世界宗教研究 (2024).</div>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2023</h3>"
+  +"<div class=stage-box><b>EN</b> Dorjee, D. <i>Defining Consciousness: Insights from Buddhism and Neuroscience</i>. Progress in Brain Research (2023).<br>"
+  +"<b>ZH</b> 周理乾. 《计算现象学与佛学禅观的形式化》. 自然辩证法通讯 (2023).<br>"
+  +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div></div>";
 }
 // ═══ ERROR CATCH ═══
 window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace;white-space:pre-wrap";d.textContent="JS ERROR: "+m+" at line "+l;document.body.appendChild(d);};
@@ -1038,6 +1070,24 @@ document.querySelectorAll("#controls button[data-filter]").forEach(function(btn)
   var ids=DATA.nodes.filter(function(n){return n.li===lin;}).map(function(n){return n.id;});
   if(ids.length>0)selectPerson(ids[0]);
 });});
+
+// ═══ COMMENT SYSTEM ═══
+window.submitComment=function(tab){
+  var t=document.getElementById('cmt-input-'+tab);if(!t||!t.value.trim())return;
+  var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
+  cs.push({d:new Date().toISOString().slice(0,10),t:t.value.trim()});
+  localStorage.setItem('huayan_cmt_'+tab,JSON.stringify(cs));t.value='';renderComments(tab);
+};
+window.renderComments=function(tab){
+  var box=document.getElementById('cmt-'+tab);if(!box)return;
+  var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
+  var h='<h4>💬 评论与建议 ('+cs.length+')</h4>';
+  h+='<div class=c-list>';cs.slice(-8).forEach(function(c){h+='<div class=c-item><b>'+c.d+'</b>: '+c.t+'</div>';});
+  h+='</div><textarea id=cmt-input-'+tab+' placeholder=输入修改建议或评论… rows=2></textarea>';
+  h+='<button onclick=submitComment(\"'+tab+'\")>提交</button>';
+  box.innerHTML=h;
+};
+['lineage','gap','practice','frontier'].forEach(function(tab){renderComments(tab);});
 
 // Final: set viewport & draw
 tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);

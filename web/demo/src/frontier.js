@@ -67,5 +67,30 @@ function renderFrontier(){
   +"📄 Richard Davidson & Daniel Goleman. <i>Altered Traits</i> (2017). Avery.<br>"
   +"📄 John Vervaeke. Awakening from the Meaning Crisis (YouTube系列, 2019-).<br>"
   +"📄 Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996).<br>"
-  +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>";
+  +"<span style=font-size:0.75em;color:var(--text2)>⚠ 注: 此板块为跨界思想对话框架。所列科学发现基于同行评审研究；华严思想的对应解读属于本项目的诠释性建构，非已获学界普遍确认的定论。</span></p></div>"
+
+  // ── 6. Literature Review ──
+  +"<div class=section><h2>📑 多语言文献综述 (2023-2026)</h2>"
+  +"<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。</p>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2026</h3>"
+  +"<div class=stage-box><b>EN</b> Seth, A. et al. <i>Consciousness in AI: Benchmarks and Frameworks</i>. Nature Machine Intelligence (2026).<br>"
+  +"<b>ZH</b> 李恒威等. 《意识科学与人工智能——从困难问题到组合问题》. 中国社会科学 (2026).<br>"
+  +"<b>EN</b> 84000 Project. <i>The Ten Bhumis</i> (Toh44-31) Translation & Textual Notes. 84000.co (2021-2026).</div>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2025</h3>"
+  +"<div class=stage-box><b>EN</b> Vervaeke, J. & Ferraro, C. <i>Relevance Realization and the Buddhist Path</i>. Journal of Consciousness Studies (2025).<br>"
+  +"<b>EN</b> Metzinger, T. <i>The Elephant and the Blind: The Experience of Pure Consciousness</i>. MIT Press (2025).<br>"
+  +"<b>ZH</b> 何欢欢. 《佛教因明学与当代逻辑学对话》. 哲学研究 (2025).</div>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2024</h3>"
+  +"<div class=stage-box><b>EN</b> Laukkonen, R. et al. <i>Cessation Events During Meditation: Phenomenology and Neural Correlates</i>. NeuroImage (2024).<br>"
+  +"<b>EN</b> Millière, R. et al. <i>Deep Meditation and the Predictive Brain</i>. Trends in Cognitive Sciences (2024).<br>"
+  +"<b>DE</b> Brückner, H. <i>Hua-yan Buddhismus und Systemtheorie</i>. Verlag Karl Alber (2024).<br>"
+  +"<b>ZH</b> 王颂. 《华严宗「法界缘起」的现代诠释》. 世界宗教研究 (2024).</div>"
+
+  +"<h3 style=color:var(--gold);font-size:0.9em>2023</h3>"
+  +"<div class=stage-box><b>EN</b> Dorjee, D. <i>Defining Consciousness: Insights from Buddhism and Neuroscience</i>. Progress in Brain Research (2023).<br>"
+  +"<b>ZH</b> 周理乾. 《计算现象学与佛学禅观的形式化》. 自然辩证法通讯 (2023).<br>"
+  +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won: From Alexander to the Guptas</i> (含华严经形成史讨论). Brill (2023).</div></div>";
 }

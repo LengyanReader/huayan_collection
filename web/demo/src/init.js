@@ -39,5 +39,23 @@ document.querySelectorAll("#controls button[data-filter]").forEach(function(btn)
   if(ids.length>0)selectPerson(ids[0]);
 });});
 
+// ═══ COMMENT SYSTEM ═══
+window.submitComment=function(tab){
+  var t=document.getElementById('cmt-input-'+tab);if(!t||!t.value.trim())return;
+  var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
+  cs.push({d:new Date().toISOString().slice(0,10),t:t.value.trim()});
+  localStorage.setItem('huayan_cmt_'+tab,JSON.stringify(cs));t.value='';renderComments(tab);
+};
+window.renderComments=function(tab){
+  var box=document.getElementById('cmt-'+tab);if(!box)return;
+  var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
+  var h='<h4>💬 评论与建议 ('+cs.length+')</h4>';
+  h+='<div class=c-list>';cs.slice(-8).forEach(function(c){h+='<div class=c-item><b>'+c.d+'</b>: '+c.t+'</div>';});
+  h+='</div><textarea id=cmt-input-'+tab+' placeholder=输入修改建议或评论… rows=2></textarea>';
+  h+='<button onclick=submitComment(\"'+tab+'\")>提交</button>';
+  box.innerHTML=h;
+};
+['lineage','gap','practice','frontier'].forEach(function(tab){renderComments(tab);});
+
 // Final: set viewport & draw
 tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);

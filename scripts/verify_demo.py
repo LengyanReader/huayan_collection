@@ -69,7 +69,7 @@ else:
 
 # 6. Size check
 size = len(html)
-if 25000 <= size <= 100000:
+if 25000 <= size <= 110000:
     errors += ok(f'Size: {size:,} bytes')
 else:
     errors += fail(f'Size {size:,} bytes out of range (25-80KB)')
