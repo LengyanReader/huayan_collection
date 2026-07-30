@@ -827,6 +827,11 @@ function showInfo(p,p2,e){
   }
   content.innerHTML=h;
   popup.style.display='block';
+  // Auto-hide timer: close after 5s unless mouse is over it
+  if(popup._autoTimer)clearTimeout(popup._autoTimer);
+  popup.onmouseenter=function(){if(popup._autoTimer)clearTimeout(popup._autoTimer);};
+  popup.onmouseleave=function(){popup._autoTimer=setTimeout(function(){popup.style.display='none';},3000);};
+  popup._autoTimer=setTimeout(function(){popup.style.display='none';},5000);
   // Position: mobile=centered, desktop=near click
   var isMobile=window.innerWidth<768;
   if(isMobile){
@@ -914,7 +919,11 @@ function initOtherSchools(){
 // ═══ ROUTE INFO ═══
 function toggleRouteInfo(){
   var ri=document.getElementById('route-info');
-  if(ri){ri.style.display=ri.style.display==='none'?'block':'none';}
+  if(!ri)return;
+  if(ri.style.display==='none'){ri.style.display='block';ri._autoTimer=setTimeout(function(){ri.style.display='none';},8000);}
+  else{ri.style.display='none';if(ri._autoTimer)clearTimeout(ri._autoTimer);}
+  ri.onmouseenter=function(){if(ri._autoTimer)clearTimeout(ri._autoTimer);};
+  ri.onmouseleave=function(){ri._autoTimer=setTimeout(function(){ri.style.display='none';},3000);};
 }
 
 // ═══ LINEAGE ZOOM ═══
