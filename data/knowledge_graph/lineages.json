@@ -140,6 +140,19 @@
         {"from": "person_117", "to": "person_112", "relation": "INFLUENCED", "note": "慧超继义净之后的新罗求法僧,延续海路求法传统"},
         {"from": "person_007b", "to": "person_116", "relation": "INFLUENCED", "note": "支谶开华严汉译先河→竺法护系统翻译多部华严单行经"}
       ]
+    },
+    {
+      "name": "密宗传承(开元三大士→空海)",
+      "edges": [
+        {"from": "person_120", "to": "person_122", "relation": "MASTER_OF", "note": "善无畏传胎藏界密法予一行"},
+        {"from": "person_121", "to": "person_115", "relation": "MASTER_OF", "note": "金刚智传金刚界密法予不空"},
+        {"from": "person_120", "to": "person_121", "relation": "CONTEMPORARY", "note": "善无畏与金刚智同在长安开元间传密法,合称开元三大士"},
+        {"from": "person_115", "to": "person_123", "relation": "MASTER_OF", "note": "不空传两部密法予慧果"},
+        {"from": "person_123", "to": "person_124", "relation": "MASTER_OF", "note": "慧果于青龙寺传法予空海,空海归日本创真言宗"},
+        {"from": "person_124", "to": "person_003", "relation": "INFLUENCED", "note": "空海《十住心论》以华严判教框架判摄显密,体现密教与华严之对话"},
+        {"from": "person_115", "to": "person_005", "relation": "CONTEMPORARY", "note": "不空与宗密同代,密宗与华严宗有义学互动"},
+        {"from": "person_122", "to": "person_005", "relation": "CONTEMPORARY", "note": "一行与澄观同时代,天文学与华严宇宙观可比较"}
+      ]
     }
   ]
 }
