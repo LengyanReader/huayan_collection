@@ -68,7 +68,7 @@ function calcStats(){
     var s=nodeMap[e.s],t=nodeMap[e.t];if(!s||!t||!s.d||!t.b)return;
     var gap=t.b-s.d;if(gap>maxGap)maxGap=gap;
   });
-  return '👤47人 · 📅跨度'+span+'年 · ⌛均寿'+avgAge+'岁 · ⏳最长传承间隙'+maxGap+'年';
+  return '👤47人 · 📅跨度'+span+'年 · ⏳最长传承间隙'+maxGap+'年';
 }
 function buildTimelineRows(){
   var order=["华严五祖","李通玄系","日本华严","高丽华严","贤首宗高原法系","月霞系","华严莲社","慈舟系","临济宗","译师","印度源流","当代学者"];
