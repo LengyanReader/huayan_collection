@@ -12,6 +12,7 @@ var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
 renderPractice();
 renderFrontier();
+try{renderCosmology();}catch(e){}
 
 // Events
 document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value.trim();drawTL(selectedId);});
@@ -60,7 +61,7 @@ window.renderComments=function(tab){
   h+='<button onclick=submitComment(\"'+tab+'\")>提交</button>';
   box.innerHTML=h;
 };
-['lineage','gap','practice','frontier'].forEach(function(tab){renderComments(tab);});
+['lineage','gap','practice','frontier','cosmology'].forEach(function(tab){renderComments(tab);});
 
 // ═══ RESIZE HANDLE ═══
 var resizeHandle=document.getElementById('resize-handle');

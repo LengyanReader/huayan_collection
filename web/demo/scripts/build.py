@@ -196,7 +196,8 @@ def clean(s):
 
 frontier_js = read_src('frontier.js')
 frontier_js = read_src('frontier.js')
-html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + frontier_js + init_js + clean(template_bot)
+cosmology_js = read_src('cosmology.js')
+html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + frontier_js + cosmology_js + init_js + clean(template_bot)
 
 out = os.path.join(ROOT, 'web', 'demo', 'index.html')
 with open(out, 'w', encoding='utf-8') as f:
