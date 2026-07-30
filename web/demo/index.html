@@ -283,7 +283,7 @@ function calcStats(){
     var s=nodeMap[e.s],t=nodeMap[e.t];if(!s||!t||!s.d||!t.b)return;
     var gap=t.b-s.d;if(gap>maxGap)maxGap=gap;
   });
-  return '👤47人 · 📅跨度'+span+'年 · ⏳最长传承间隙'+maxGap+'年';
+  return '👤'+DATA.nodes.length+'人 · 📅跨度'+span+'年 · ⏳最长传承间隙'+maxGap+'年';
 }
 // Text truncation helper
 function truncText(ctx,text,maxW){
@@ -1096,7 +1096,8 @@ var ANIM_WAYPOINTS=[
 var lastAnimLoc=-1;
 function getAnimSpeed(){
   var s=document.getElementById('anim-speed');
-  return s?parseInt(s.value):15;
+  // slider 5-40 → delay 75ms-600ms (lower slider = faster = less delay)
+  return s?Math.max(60,parseInt(s.value)*15):225;
 }
 function toggleAnim(){
   var speedLabel=document.getElementById('speed-label');
@@ -1107,7 +1108,7 @@ function toggleAnim(){
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
-    if(speedLabel)speedLabel.textContent='1×';
+    if(speedLabel)speedLabel.textContent='1x';
     transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
     return;
   }
@@ -1130,16 +1131,22 @@ function toggleAnim(){
   }
 
   function animStep(){
-    var sp=getAnimSpeed();
-    if(speedLabel){var x=(15/sp).toFixed(1);speedLabel.textContent=(x===1.0?'1':x)+'×';}
-    animYear+=sp;
-    if(animYear>2030){
-      animYear=-600;clearInterval(animTimer);animPlaying=false;lastAnimLoc=-1;
-      document.getElementById("anim-btn").textContent="▶ 播放";
-      [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
-      animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
-      if(speedLabel)speedLabel.textContent='1×';
-      transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
+    var delay=getAnimSpeed();
+    if(speedLabel){var x=(225/delay).toFixed(1);speedLabel.textContent=(x==='1.0'?'1':x)+'x';}
+    animYear+=10; // fixed increment per tick, speed controls delay
+    if(animYear>=2030){
+      animYear=2030;
+      tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+      if(mapMain){var lw=ANIM_WAYPOINTS[ANIM_WAYPOINTS.length-1];mapMain.flyTo([lw.lat,lw.lng],8,{duration:2});}
+      setTimeout(function(){
+        clearInterval(animTimer);animPlaying=false;lastAnimLoc=-1;
+        document.getElementById("anim-btn").textContent="▶ 播放";
+        [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
+        animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
+        if(speedLabel)speedLabel.textContent='1x';
+        transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
+        var sb3=document.getElementById('anim-status');if(sb3)sb3.style.opacity='0';
+      },2000);
       return;
     }
     // Time axis
@@ -1176,7 +1183,7 @@ function toggleAnim(){
     if(sb&&activeWp){sb.innerHTML='<b>'+activeWp.y+'年</b> '+activeWp.label+' — '+activeWp.info;sb.style.opacity='1';}
     lastAnimLoc=activeIdx;
   }
-  animTimer=setInterval(animStep,200);
+  animTimer=setTimeout(animStep,delay);
 }
 
 // ═══ TABS ═══

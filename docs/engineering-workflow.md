@@ -1,3 +1,4 @@
+
 # Loop Engineering & Graph Engineering 开发验证工作流
 
 ## 一、核心理念
@@ -51,11 +52,11 @@
 
 ### 循环退出条件
 
-| 层 | 通过标准 |
-|----|---------|
-| 连通性 | Neo4j 中 `MATCH (p:Person) WHERE NOT (p)-[]-() RETURN p` 返回 0 行 |
-| 完备性 | 每条传承链 `MATCH path = (a:Person)-[:MASTER_OF*]->(b:Person)` 中无缺失标注节点 |
-| 一致性 | 同一 `name_zh + birth_year` 下无重复 Person 节点 |
+| 层     | 通过标准                                                                         |
+| ------ | -------------------------------------------------------------------------------- |
+| 连通性 | Neo4j 中`MATCH (p:Person) WHERE NOT (p)-[]-() RETURN p` 返回 0 行              |
+| 完备性 | 每条传承链`MATCH path = (a:Person)-[:MASTER_OF*]->(b:Person)` 中无缺失标注节点 |
+| 一致性 | 同一`name_zh + birth_year` 下无重复 Person 节点                                |
 
 ---
 
@@ -67,6 +68,7 @@
 **输出**: Markdown + YAML frontmatter → SQLite texts/persons/chapters 表
 
 **验证脚本** (每个数据文件入库后自动运行):
+
 ```python
 # verify_catalog.py
 def check_persons():
@@ -92,6 +94,7 @@ def check_glossary():
 **输出**: Neo4j 节点与关系
 
 **加载脚本**:
+
 ```python
 # graph_loader.py
 def load_persons_to_neo4j(driver, persons):
@@ -162,6 +165,7 @@ RETURN p.name_zh, p.dynasty, d.name as dynasty_node
 ### 3.4 Fix & Iterate — 修正循环
 
 发现问题的处理流程:
+
 ```
 连通性断裂 ──▶ 查找断裂位置 ──▶ 补充人物或关系边 ──▶ 重新加载 ──▶ 再验证
 完备性不足 ──▶ 标注 missing 字段 ──▶ 补充数据源 ──▶ 更新 JSON ──▶ 再验证
@@ -173,6 +177,7 @@ RETURN p.name_zh, p.dynasty, d.name as dynasty_node
 每次迭代后用以下方式展示进展:
 
 #### 图谱快照
+
 ```cypher
 // 生成传承谱系总览
 MATCH path = (a:Person)-[:MASTER_OF|INFLUENCED*1..8]->(b:Person)
@@ -183,6 +188,7 @@ LIMIT 100
 ```
 
 #### 完备性仪表盘
+
 ```python
 def completeness_dashboard():
     """生成 Markdown 格式的完备性报告"""
@@ -200,6 +206,7 @@ def completeness_dashboard():
 ```
 
 #### 版本差异热力图
+
 ```yaml
 # 每次数据更新后，生成差异热力图
 diff:
@@ -240,11 +247,11 @@ diff:
 
 ### 翻译质量度量
 
-| 度量 | 方法 | 目标 |
-|------|------|------|
-| 术语一致性 | 遍历译文中所有术语，查 glossary.yaml 确认译法统一 | 100% |
-| 风格符合度 | 抽样检查是否遵循玄奘四言体规范 (docs/translation-guide.md) | > 80% |
-| 可回译性 | 将汉译回译为藏文 (LLM辅助)，检查语义是否偏离 | 核心段落达标 |
+| 度量       | 方法                                                       | 目标         |
+| ---------- | ---------------------------------------------------------- | ------------ |
+| 术语一致性 | 遍历译文中所有术语，查 glossary.yaml 确认译法统一          | 100%         |
+| 风格符合度 | 抽样检查是否遵循玄奘四言体规范 (docs/translation-guide.md) | > 80%        |
+| 可回译性   | 将汉译回译为藏文 (LLM辅助)，检查语义是否偏离               | 核心段落达标 |
 
 ---
 
