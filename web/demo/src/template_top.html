@@ -42,7 +42,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
 #tl-tooltip h3{color:var(--gold);margin-bottom:3px}
 .leaflet-popup-content{font-size:0.85em;color:var(--text)}
 .leaflet-popup-content b{color:var(--gold)}
-#gap-view,#practice-view,#frontier-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px}
+#gap-view,#practice-view,#frontier-view,#cosmology-view{flex:1;background:var(--bg);overflow-y:auto;padding:22px 26px}
 .section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px;width:100%}
 .section h2{color:var(--gold);font-size:1.05em;margin-bottom:6px}
 .v-table{width:100%;border-collapse:collapse;font-size:0.82em}
@@ -104,7 +104,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   /* Sub-nav: compact */
   .gv-nav,.pv-nav{padding:3px 8px;font-size:0.68em;border-radius:10px}
   /* Content tabs: compact */
-  #gap-view,#practice-view,#frontier-view{padding:8px 6px;overflow:visible}
+  #gap-view,#practice-view,#frontier-view,#cosmology-view{padding:8px 6px;overflow:visible}
   .section{padding:8px;margin-bottom:6px}
   .section h2{font-size:0.88em}
   .v-table{font-size:0.66em}
@@ -128,11 +128,14 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   <button class="active" data-tab="lineage">🌊 法脉传承</button>
   <button data-tab="gap">📜 华严文献</button>
   <button data-tab="frontier">🔬 前沿对话</button>
+  <button data-tab="cosmology">🪷 华藏世界</button>
 </div>
 
 <div id="tab-practice" class="tab-content"><div id="practice-view"></div><div class=comment-box id=cmt-practice></div></div>
 
 <div id="tab-frontier" class="tab-content" style="overflow-y:auto"><div id="frontier-view"></div><div class=comment-box id=cmt-frontier></div></div>
+
+<div id="tab-cosmology" class="tab-content" style="overflow-y:auto"><div id="cosmology-view"></div><div class=comment-box id=cmt-cosmology></div></div>
 
 <div id="tab-lineage" class="tab-content active">
   <div id="search-bar"><input type="text" id="search-input" placeholder="🔍 检索人物、地点…"><span id="anim-status" style="flex:1;font-size:0.7em;color:var(--gold);margin:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transition:opacity 0.3s"></span><span id="stats-bar" style="font-size:0.68em;color:var(--text2);margin-left:auto"></span><span style="font-size:0.7em;color:var(--text2)">滚轮缩放 | 拖拽平移</span></div>
