@@ -109,6 +109,11 @@ nodes.append({'id':'person_102','n':'无著','dy':'古印度','ti':'瑜伽行派
 nodes.append({'id':'person_103','n':'鸠摩罗什','dy':'后秦','ti':'四大译经师之首','li':'译师','tp':'translator','b':344,'d':413,'bio':'龟兹人。后秦弘始三年(401)至长安，主持中国历史上规模最大的译场。译十住经(T0286,即十地品别译)、十住毗婆沙论、法华经等。其译经为华严学在中国的传播提供了关键文本基础。','wk':['十住经','十住毗婆沙论','中论','法华经'],'v':1})
 nodes.append({'id':'person_104','n':'菩提流支','dy':'北魏','ti':'十地经论主译','li':'译师','tp':'translator','b':None,'d':527,'bio':'北印度人。北魏永平元年(508)至洛阳，与勒那摩提等译世亲十地经论十二卷。此论译出直接催生了南北朝地论学派，被视为华严宗义学之远源。','wk':['十地经论'],'v':1})
 
+# ── Additional persons: 华严经教内法身源头(燃灯·迦叶·毗卢遮那) ──
+nodes.append({'id':'person_105','n':'燃灯佛','dy':'远古印度','ti':'授记释迦成佛之过去佛','li':'印度源流','tp':'patriarch','b':None,'d':None,'bio':'梵名Dīpaṃkara。过去无量劫前之佛。据华严经如来名号品及本生经典，燃灯佛曾为释迦牟尼前身授记: 汝于来世当得作佛号释迦牟尼。此为华严经中佛佛相续无尽法界缘起之始。','wk':[],'v':1})
+nodes.append({'id':'person_106','n':'迦叶佛','dy':'远古印度','ti':'贤劫第三佛·释迦前身之师','li':'印度源流','tp':'patriarch','b':None,'d':None,'bio':'梵名Kāśyapa。贤劫千佛之第三尊，释迦牟尼佛之前一佛。据华严经，释迦成道时十方诸佛各遣菩萨来集，其中包括过去诸佛之法身显现。华严宗以十方三世无尽诸佛构成法界缘起之佛佛相望网络。','wk':[],'v':1})
+nodes.append({'id':'person_107','n':'毗卢遮那佛','dy':'法身常住','ti':'华严教主·法身本源','li':'印度源流','tp':'patriarch','b':None,'d':None,'bio':'梵名Vairocana，华严经之根本教主。意译光明遍照、大日如来。华严经以毗卢遮那佛法身为宇宙本体，十方三世一切诸佛皆为其化现。华严宗法界缘起、一即一切等核心教义皆围绕毗卢遮那佛法身展开。非历史人物，为华严教义之法身源头。','wk':[],'v':1})
+
 # Edge: Japan lineage chain
 edges.append({'s':'person_050','t':'person_j01','r':'MASTER','li':'日本华严'})
 edges.append({'s':'person_j01','t':'person_j02','r':'MASTER','li':'日本华严'})
@@ -138,6 +143,10 @@ edges.append({'s':'person_101','t':'person_000a','r':'INFLUENCED','li':'印度�
 edges.append({'s':'person_102','t':'person_000b','r':'MASTER','li':'印度源流'})
 edges.append({'s':'person_104','t':'person_090','r':'MASTER','li':'华严五祖'})
 edges.append({'s':'person_103','t':'person_006','r':'INFLUENCED','li':'华严译师谱系'})
+
+# Edges: 法身源头
+edges.append({'s':'person_105','t':'person_100','r':'INFLUENCED','li':'印度源流'})
+edges.append({'s':'person_106','t':'person_100','r':'INFLUENCED','li':'印度源流'})
 
 # Location: 东大寺
 locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})

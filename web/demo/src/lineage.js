@@ -21,7 +21,11 @@ var GEO_FLOW=[
   {l:'五台山',y:790},{l:'杭州',y:1060},{l:'常熟/上海',y:1914},{l:'台北',y:1952}
 ];
 var KEY_EVENTS=[
-  // 印度源流
+  // 古印度文明背景
+  {y:-1500,l:'吠陀文明兴起·梨俱吠陀结集',c:'#b0a898',tp:'远源'},
+  {y:-800,l:'奥义书时代·梵我哲学形成',c:'#b0a898',tp:'远源'},
+  {y:-500,l:'沙门思潮·六师外道·思想百花齐放',c:'#b0a898',tp:'远源'},
+  // 印度源流·法身本源
   {y:-483,l:'释迦入灭·佛教创立',c:'#9e8b6e',p:'释迦牟尼',tp:'宗教'},
   {y:80,l:'马鸣造大乘起信论',c:'#9e8b6e',p:'马鸣',tp:'义学'},
   // 汉译·文本传来
@@ -389,7 +393,7 @@ function drawTL(hlId){
   if(layerVis.events&&!isOverview){
     var evY0=H-30;
     var evPositions=[];
-    var tpColors={义学:'#b8863c',翻译:'#a09080',禅观:'#7d9a6e',宗派:'#8b7a9e',文化:'#c8893e',法难:'#c46b5d',教育:'#5e8b9e',传承:'#6d9a6e',宗教:'#9e8b6e',当代:'#5e8b9e'};
+    var tpColors={远源:'#b0a898',义学:'#b8863c',翻译:'#a09080',禅观:'#7d9a6e',宗派:'#8b7a9e',文化:'#c8893e',法难:'#c46b5d',教育:'#5e8b9e',传承:'#6d9a6e',宗教:'#9e8b6e',当代:'#5e8b9e'};
     var tpIcons={义学:'📜',翻译:'📖',禅观:'🧘',宗派:'⚡',文化:'🏛',法难:'🔥',教育:'🎓',传承:'🔗',宗教:'☸',当代:'🆕'};
     KEY_EVENTS.forEach(function(ev){
       var x=tX(ev.y);if(x<0||x>W)return;
@@ -425,7 +429,7 @@ function drawTL(hlId){
     // Legend row (compact)
     var lgX=4,lgY=H-8;
     ctx.fillStyle='#a09080';ctx.font='8px Microsoft YaHei';
-    var types=['义学','翻译','禅观','宗派','文化','法难','教育','传承'];
+    var types=['远源','宗教','义学','翻译','禅观','宗派','文化','教育','传承'];
     types.forEach(function(t){
       var tc2=tpColors[t]||'#b0a898';
       ctx.fillStyle=tc2;ctx.beginPath();ctx.arc(lgX+4,lgY-2,3,0,Math.PI*2);ctx.fill();
