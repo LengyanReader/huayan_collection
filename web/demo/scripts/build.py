@@ -232,10 +232,11 @@ html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + front
 # Simple minification: collapse whitespace in JS sections
 import re
 def minify_js(s):
-    # Remove // comments
-    s=re.sub(r'//[^\n]*','',s)
-    # Collapse multiple spaces/newlines
-    s=re.sub(r'\s+',' ',s)
+    # Remove // comments (but NOT URLs with https://)
+    s=re.sub(r'(?<!https:)//[^\n]*','',s)
+    # Collapse multiple spaces/newlines (but keep single spaces)
+    s=re.sub(r'[ \t]+',' ',s)
+    s=re.sub(r'\n\s*\n','\n',s)
     # Restore newlines after ; and }
     s=re.sub(r';',';\n',s)
     s=re.sub(r'}','}\n',s)
