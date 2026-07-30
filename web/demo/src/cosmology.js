@@ -22,11 +22,15 @@ function renderCosmology(){
   h+='<button class="cm-btn" onclick="COSMO.all=!COSMO.all;this.classList.toggle(\'on\',COSMO.all);drawCosmo()">📋 全部层名</button> ';
   h+='<span style=font-size:0.7em;color:var(--text2)>滚轮缩放 | 点击世界层查看详情 | 金色=娑婆世界</span>';
   h+='<div style=display:flex;gap:16px;flex-wrap:wrap><div style=flex:1.5;min-width:380px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-canvas style=max-width:100%></canvas></div><div style=flex:1;min-width:200px><div id=cosmo-info></div><div class=section style=margin-top:8px><h3 style=color:var(--gold)>📐 结构(从下至上)</h3><p style=font-size:0.78em;line-height:1.9>⑩~① 十重风轮<br>无边妙华光香水海<br>一切香摩尼宝庄严大莲华<br>第1~20重世界<br>★第13重: 娑婆世界(我们所在)<br>一一世界有微尘数佛刹围绕</p></div></div></div>';
+  // ── 三界诸天图 ──
+  h+='<div class=section style=margin-top:16px><h2>📐 三界诸天图 · 欲界·色界·无色界</h2><p style=font-size:0.78em;color:var(--text2)>据《华严经》及阿毗达磨诸论。华严七处九会横跨欲界(人间+天上)与色界诸天。此图以层叠塔式展示二十八天。</p>';
+  h+='<div style=text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-tower style=max-width:100%></canvas></div></div>';
   cv.innerHTML=h;
   var c=document.getElementById("cosmo-canvas");if(!c)return;
   c.addEventListener('wheel',function(e){e.preventDefault();COSMO.scale*=e.deltaY<0?1.12:0.89;COSMO.scale=Math.max(0.4,Math.min(3,COSMO.scale));drawCosmo();});
   c.addEventListener('click',clickCosmo);
   drawCosmo();
+  drawTower();
 }
 
 var _size=550,_minR=0,_layerH=0;
@@ -84,6 +88,69 @@ function clickCosmo(e){
   }
   if(d<_minR*2){COSMO.sel=null;var inf=document.getElementById('cosmo-info');if(inf){inf.style.display='block';inf.innerHTML='<h3 style=color:var(--gold)>卍 毗卢遮那佛</h3><p>华严经根本教主。梵名Vairocana,意译<b>光明遍照</b>。法身遍一切处,为华藏世界海之本体。</p><p style=font-size:0.72em;color:var(--text2)>「佛身充满于法界,普现一切众生前;随缘赴感靡不周,而恒处此菩提座。」</p>';}drawCosmo();}
 }
+// ═══ 三界诸天图 ═══
+function drawTower(){
+  var c2=document.getElementById("cosmo-tower");if(!c2)return;
+  var W=Math.min(700,c2.parentElement.clientWidth-30);var H=Math.max(500,W*1.2);
+  c2.width=W;c2.height=H;c2.style.width=W+'px';c2.style.height=H+'px';
+  var ctx=c2.getContext("2d"),cx=W/2;
+  ctx.fillStyle='#fdfaf3';ctx.fillRect(0,0,W,H);
+
+  var data=[
+    {n:'非想非非想处天',d:'有顶天·三界之顶',c:'rgba(180,170,210,0.12)',tc:'#8b7a9e',tp:'无色界'},
+    {n:'无所有处天',d:'',c:'rgba(180,170,210,0.08)',tc:'#8b7a9e',tp:'无色界'},
+    {n:'识无边处天',d:'',c:'rgba(180,170,210,0.08)',tc:'#8b7a9e',tp:'无色界'},
+    {n:'空无边处天',d:'无色的禅定境界',c:'rgba(180,170,210,0.08)',tc:'#8b7a9e',tp:'无色界'},
+    {n:'色究竟天',d:'色界之顶·五净居天',c:'rgba(150,180,200,0.12)',tc:'#5e8b9e',tp:'色界'},
+    {n:'善现天·善见天·无热天·无烦天',d:'五净居(四禅)',c:'rgba(150,180,200,0.10)',tc:'#5e8b9e',tp:'色界'},
+    {n:'无云天·福生天·广果天',d:'四禅三天',c:'rgba(150,180,200,0.09)',tc:'#5e8b9e',tp:'色界'},
+    {n:'少净天·无量净天·遍净天',d:'三禅三天',c:'rgba(160,190,210,0.09)',tc:'#5e8b9e',tp:'色界'},
+    {n:'少光天·无量光天·光音天',d:'二禅三天',c:'rgba(170,200,220,0.09)',tc:'#5e8b9e',tp:'色界'},
+    {n:'梵众天·梵辅天·大梵天',d:'初禅三天',c:'rgba(180,210,230,0.09)',tc:'#5e8b9e',tp:'色界'},
+    {n:'他化自在天',d:'魔王波旬所居',c:'rgba(210,160,140,0.12)',tc:'#c46b5d',tp:'欲界'},
+    {n:'化乐天',d:'',c:'rgba(210,160,140,0.10)',tc:'#c46b5d',tp:'欲界'},
+    {n:'兜率天',d:'弥勒菩萨内院',c:'rgba(210,160,140,0.10)',tc:'#c46b5d',tp:'欲界'},
+    {n:'夜摩天',d:'',c:'rgba(210,160,140,0.10)',tc:'#c46b5d',tp:'欲界'},
+    {n:'忉利天(三十三天)',d:'帝释天所居·须弥山顶',c:'rgba(200,155,135,0.12)',tc:'#c46b5d',tp:'欲界'},
+    {n:'四天王天',d:'须弥山腰·四大天王',c:'rgba(200,155,135,0.10)',tc:'#c46b5d',tp:'欲界'},
+    {n:'人间(南赡部洲等四大洲)',d:'我们所在·释迦成道处',c:'rgba(184,134,60,0.18)',tc:'#b8863c',tp:'人间',hl:true},
+    {n:'畜生·饿鬼·地狱(三恶道)',d:'',c:'rgba(140,120,100,0.10)',tc:'#8a7060',tp:'恶道'}
+  ];
+
+  var margin=16,top=30,bot=40;
+  var avail=H-top-bot;
+  var barH=(avail/data.length)*0.7, gap=(avail/data.length)*0.3;
+  var minW=80,maxW=Math.min(500,W-80);
+
+  // Header
+  ctx.fillStyle='#b8863c';ctx.font='bold 13px Microsoft YaHei';
+  ctx.fillText('二十八天 · 三界诸天图',cx-90,top-6);
+
+  // Bars
+  for(var i=0;i<data.length;i++){
+    var d=data[i];
+    var y=top+i*(avail/data.length);
+    var isWide=d.hl||(d.n.length>10);
+    var bw=isWide?maxW:minW+(maxW-minW)*0.3;
+    // Bar
+    ctx.fillStyle=d.c;ctx.fillRect(cx-bw/2,y,bw,barH);
+    ctx.strokeStyle=d.tc;ctx.lineWidth=1;ctx.strokeRect(cx-bw/2,y,bw,barH);
+    // Label
+    ctx.fillStyle=d.tc;ctx.font=(d.hl?'bold 11':'9')+'px Microsoft YaHei';
+    ctx.fillText(d.n,cx-ctx.measureText(d.n).width/2,y+barH/2+3);
+    // Description
+    if(d.d){ctx.fillStyle='#a09080';ctx.font='8px Microsoft YaHei';ctx.fillText(d.d,cx+bw/2+6,y+barH/2+3);}
+  }
+
+  // Legend
+  var lx=8,ly=H-20;
+  [{n:'无色界(4天)',c:'#8b7a9e'},{n:'色界(18天)',c:'#5e8b9e'},{n:'欲界(6天)',c:'#c46b5d'},{n:'人间·恶道',c:'#b8863c'}].forEach(function(lg){
+    ctx.fillStyle=lg.c;ctx.fillRect(lx,ly-8,10,10);
+    ctx.fillStyle='#5c5040';ctx.font='9px Microsoft YaHei';ctx.fillText(lg.n,lx+13,ly+1);
+    lx+=ctx.measureText(lg.n).width+24;
+  });
+}
+
 function showCosmoInfo(ly,i){
   var inf=document.getElementById('cosmo-info');if(!inf)return;
   inf.style.display='block';
