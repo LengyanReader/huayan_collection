@@ -254,20 +254,27 @@ function renderPractice(){
   h+="<b>英文著作:</b> <i>Huayen World: Teachings and Meditation Methods in Mahayana Buddhism</i> (Kongting Shuyuan, 2005) — 据查证为目前唯一确认出版的英文著作<br>";
   h+="<b>出版方:</b> 繁体版由空庭书苑/光潽文创出版(博客来·FindBook·乐天KOBO可购)；简体版曾由九州出版社(2011)、宗教文化出版社(2005)、海南出版社(2016)等在中国大陆发行。</p></div>";
 
-  // ── 资源卡片 ──
-  h+="<div class=section><h2>🎬 讲法资源</h2>";
+  // ── YouTube 频道卡片 ──
+  var ytChannels=[
+    {handle:'@huayen-world',id:'UCJr3ifkvTs76XnR6SuyIfFQ',name:'大華嚴寺官方頻道',color:'#c46b5d',desc:'海云继梦导师讲经全集。华严经/禅修/密法/药师经/地藏经等系列讲法。每周持续更新。',series:'海雲法語·華嚴教海·Shorts·藥師經講座'}
+    // 更多频道在此追加，格式: {handle, id, name, color, desc, series}
+  ];
+  h+="<div class=section><h2>🎬 YouTube 频道</h2>";
   h+="<div style='display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px'>";
-  h+="<div style='flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px'>";
-  h+="<div style='font-weight:600;color:#c46b5d;margin-bottom:6px'>▶ YouTube · 大華嚴寺官方頻道</div>";
-  h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>海云继梦导师讲经全集。华严经/禅修/密法/药师经/地藏经等系列讲法。每周持续更新。<br>";
-  h+="🔗 <a href='https://www.youtube.com/@huayen-world' target=_blank>youtube.com/@huayen-world</a> (直达频道)<br>";
-  h+="📺 <a href='https://www.youtube.com/@huayen-world/videos' target=_blank>全部视频</a> · ";
-  h+="📋 <a href='https://www.youtube.com/@huayen-world/playlists' target=_blank>播放清单</a></p></div>";
+  ytChannels.forEach(function(ch){
+    h+="<div style='flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px'>";
+    h+="<div style='font-weight:600;color:"+ch.color+";margin-bottom:6px'>▶ "+ch.name+"</div>";
+    h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>"+ch.desc+"<br>";
+    h+="🔗 <a href='https://www.youtube.com/"+ch.handle+"' target=_blank>youtube.com/"+ch.handle+"</a> (直达频道)<br>";
+    h+="📺 <a href='https://www.youtube.com/"+ch.handle+"/videos' target=_blank>全部视频</a> · ";
+    h+="📋 <a href='https://www.youtube.com/"+ch.handle+"/playlists' target=_blank>播放清单</a><br>";
+    h+="<span style=font-size:0.7em;color:var(--text2)>系列: "+ch.series+"</span></p></div>";
+  });
   h+="<div style='flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px'>";
   h+="<div style='font-weight:600;color:#5e8b9e;margin-bottom:6px'>📺 Bilibili · 海雲繼夢講經全集</div>";
   h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>《华严六科》42小时完整版·善财童子五十三参·禅法开示等。<br>";
   h+="🔗 <a href='https://search.bilibili.com/all?keyword=%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6' target=_blank>在Bilibili中搜索</a></p></div>";
-  h+="</div>";
+  h+="</div></div>";
   h+="<p style=line-height:1.8;margin-top:8px>";
   h+="🎙 <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast</a> · ";
   h+="<a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify</a> (20+系列·每周更新) | ";
@@ -277,14 +284,15 @@ function renderPractice(){
 
   // ── YouTube 频道最新内容 ──
   h+="<div class=section><h2>📺 YouTube 频道 · 最新系列</h2>";
-  h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>数据来源: <a href='https://www.youtube.com/@huayen-world' target=_blank>@huayen-world</a> RSS Feed (最后同步: 2026-07-30)。频道持续更新中。</p>";
-  h+="<table class=v-table><tr><th>系列</th><th>内容</th><th>最近更新</th><th>直达</th></tr>";
-  h+="<tr><td><b>🔴 海雲法語</b></td><td>和上法语开示短片: 转凡成圣、发愿行法、佛菩萨加持、如何泯除瞋心、净土关键等</td><td>2026-07-29</td><td><a href='https://www.youtube.com/@huayen-world/videos' target=_blank>📺 观看</a></td></tr>";
-  h+="<tr><td><b>🟠 華嚴教海</b></td><td>经典讲解系列: 《佛法玄谈》(连载至第6集)、《九九華嚴》TICC讲座录影(第6集已上线)</td><td>2026-07-27</td><td><a href='https://www.youtube.com/@huayen-world/playlists' target=_blank>📋 清单</a></td></tr>";
-  h+="<tr><td><b>🟡 Shorts 短影片</b></td><td>修行要点精选: 戒律与修行、佛菩萨示现、念佛持咒、佛法成佛等（节录自2008北美药师经开示等）</td><td>2026-07-26</td><td><a href='https://www.youtube.com/@huayen-world/shorts' target=_blank>📱 Shorts</a></td></tr>";
-  h+="<tr><td><b>🟢 藥師經北美講座</b></td><td>2008年北美药师经系列开示（近期多支海雲法語的母体讲座来源）</td><td>节录连载中</td><td><a href='https://www.youtube.com/results?search_query=%E8%97%A5%E5%B8%AB%E7%B6%93+%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2+%E5%8C%97%E7%BE%8E' target=_blank>🔍 搜索</a></td></tr>";
+  h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>数据来源: RSS Feed (最后同步: 2026-07-30)。频道持续更新中。</p>";
+  h+="<table class=v-table><tr><th>频道</th><th>系列</th><th>内容</th><th>最近更新</th><th>直达</th></tr>";
+  h+="<tr><td rowspan=4 style=font-size:0.78em><b><a href='https://www.youtube.com/@huayen-world' target=_blank>@huayen-world</a></b><br><span style=font-size:0.7em;color:var(--text2)>主频道</span></td>";
+  h+="<td><b>🔴 海雲法語</b></td><td>和上法语开示短片: 转凡成圣、发愿行法、佛菩萨加持、泯除瞋心、净土关键等</td><td>2026-07-29</td><td><a href='https://www.youtube.com/@huayen-world/videos' target=_blank>📺</a></td></tr>";
+  h+="<tr><td><b>🟠 華嚴教海</b></td><td>经典讲解: 《佛法玄谈》(至第6集)、《九九華嚴》TICC录影(第6集上线)</td><td>2026-07-27</td><td><a href='https://www.youtube.com/@huayen-world/playlists' target=_blank>📋</a></td></tr>";
+  h+="<tr><td><b>🟡 Shorts</b></td><td>修行要点精选: 戒律/佛菩萨示现/念佛持咒（节录自2008北美药师经开示等）</td><td>2026-07-26</td><td><a href='https://www.youtube.com/@huayen-world/shorts' target=_blank>📱</a></td></tr>";
+  h+="<tr><td><b>🟢 藥師經北美講座</b></td><td>2008年北美药师经系列开示（近期海雲法語的母体讲座来源）</td><td>节录连载中</td><td><a href='https://www.youtube.com/results?search_query=%E8%97%A5%E5%B8%AB%E7%B6%93+%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2+%E5%8C%97%E7%BE%8E' target=_blank>🔍</a></td></tr>";
   h+="</table>";
-  h+="<p style='font-size:0.72em;color:var(--text2);margin-top:6px'>📌 YouTube频道RSS: <code>https://www.youtube.com/feeds/videos.xml?channel_id=UCJr3ifkvTs76XnR6SuyIfFQ</code> — 可用于自动同步最新视频标题和描述。</p></div>";
+  h+="<p style='font-size:0.72em;color:var(--text2);margin-top:6px'>📌 RSS同步源 (待扩展多频道): <code>https://www.youtube.com/feeds/videos.xml?channel_id=UCJr3ifkvTs76XnR6SuyIfFQ</code></p></div>";
 
   // ── 学术活动轨迹 ──
   h+="<div class=section><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
