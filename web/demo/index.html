@@ -2085,10 +2085,6 @@ function switchFrontier(view){
   document.getElementById('fv-dialogue').style.display=(view==='dialogue'?'block':'none');
   var el=document.getElementById('fv-litreview');if(el)el.style.display=(view==='litreview'?'block':'none');
 }
-function renderCosmology(){
-  var cv=document.getElementById("cosmology-view");if(!cv)return;
-  cv.innerHTML='<div class=section><h2>华严其观</h2><p>华严宗宇宙观可视化 (待完善)。据《华严经·华藏世界品》(T10n0279)。</p><p>十重风轮持香水海,海中出大莲华,二十重世界层层叠绕。毗卢遮那佛法身遍满。</p></div>';
-}
 // ═══ ERROR CATCH ═══
 window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace;white-space:pre-wrap";d.textContent="JS ERROR: "+m+" at line "+l;document.body.appendChild(d);};
 
