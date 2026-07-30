@@ -30,3 +30,4 @@ data/catalog/*.db-wal
 
 # Neo4j
 data/knowledge_graph/neo4j_import/*.dump
+data/dld/
