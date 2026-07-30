@@ -846,42 +846,60 @@ var animTimer=null,animYear=-600,animPlaying=false;
 var animRouteLineM=null,animRouteMarkerM=null; // macro
 var animRouteLineU=null,animRouteMarkerU=null; // micro
 var ANIM_WAYPOINTS=[
-  // 印度背景·释迦生平
-  {y:-1500,lat:29.0,lng:76.0,z:4,label:'吠陀文明·梨俱吠陀结集',info:'雅利安人进入印度,吠陀宗教体系形成。梨俱吠陀为印度最古老宗教文献。轮回、业力、禅定等概念开始萌芽,为后来佛教思想的土壤。',src:'印度上古史'},
-  {y:-800,lat:26.5,lng:82.0,z:4,label:'奥义书哲人·梵我合一',info:'奥义书时代的思想家提出梵(Brahman)与阿特曼(ātman)的哲学概念。佛教「无我」说正是在与这一传统的对话中形成。',src:'奥义书文献'},
-  {y:-563,lat:27.47,lng:83.28,z:6,label:'释迦诞生·蓝毗尼园',info:'公元前563年,悉达多太子诞生于迦毗罗卫城蓝毗尼园(今尼泊尔境内)。父为净饭王,母摩耶夫人。',src:'佛教通说·巴利文献'},
-  {y:-528,lat:24.7,lng:84.99,z:6,label:'释迦成道·菩提伽耶',info:'35岁时于菩提伽耶菩提树下觉悟成佛。华严宗传统认为《华严经》为成道后最初三七日于定中为法身大士所说,揭示法界缘起之宇宙实相。',src:'华严宗传统·《华严经》序品'},
-  {y:-528,lat:25.38,lng:83.02,z:6,label:'初转法轮·鹿野苑',info:'成道后至鹿野苑(今萨尔纳特)为五比丘初转法轮,讲四圣谛八正道。佛教僧团由此成立。此后45年游化恒河流域,讲经三百余会。',src:'《杂阿含经》'},
-  {y:-483,lat:26.74,lng:83.89,z:6,label:'释迦入灭·拘尸那罗',info:'80岁时于拘尸那罗入灭。佛教由此向四方传播。华严宗法身思想将释迦之入灭理解为「化身隐而法身常」,毗卢遮那佛永恒说法。',src:'《大般涅槃经》'},
-  {y:80,lat:27.5,lng:77.7,z:5,label:'马鸣造起信论·中印度',info:'马鸣菩萨约公元1-2世纪生于中印度。所造《大乘起信论》「一心二门」之说为华严宗心性论提供了重要理论基础。'},
-  {y:320,lat:25.14,lng:85.44,z:6,label:'那烂陀寺兴盛·瑜伽行派',info:'古印度佛教最高学府。无著、世亲在此弘传瑜伽行派。世亲《十地经论》后经菩提流支汉译，成为华严宗义学之源。'},
-  // 中亚·西域传播走廊
-  {y:344,lat:41.7,lng:82.9,z:5,label:'鸠摩罗什出生·龟兹国',info:'龟兹(今新疆库车)。罗什后至长安译《十住经》《十住毗婆沙论》等，为华严学在中国的传播提供了关键文本基础。'},
-  {y:359,lat:34.0,lng:72.0,z:5,label:'佛驮跋陀罗出生·北天竺',info:'北天竺迦毗罗卫(今尼泊尔/印度边境)。后至建康译出《六十华严》，为华严经汉译之始。'},
-  {y:401,lat:34.26,lng:108.94,z:6,label:'鸠摩罗什至长安·译经运动',info:'后秦弘始三年(401)至长安，主持中国史上最大译场。所译中观论典深刻影响华严宗的空性论证与判教框架。'},
-  // 汉地翻译·教义建立
-  {y:420,lat:32.06,lng:118.79,z:6,label:'六十华严译出·建康',info:'佛驮跋陀罗于建康(今南京)道场寺译出《六十华严》，共七处八会三十四品。此为《华严经》首次汉译全本。'},
-  {y:508,lat:34.68,lng:112.44,z:6,label:'十地经论译出·洛阳',info:'菩提流支与勒那摩提于洛阳译出世亲《十地经论》。此论催生了南北朝地论学派，是为华严宗义学之远源。'},
-  {y:590,lat:33.93,lng:108.97,z:7,label:'杜顺·终南山·华严宗创立',info:'杜顺(557-640)于终南山至相寺开创华严宗观法体系。著《法界观门》《五教止观》，奠定华严宗修行理论基础。'},
-  {y:652,lat:37.11,lng:79.91,z:5,label:'实叉难陀出生·于阗国',info:'于阗(今新疆和田)为中亚佛教枢纽。实叉难陀后来华译八十华严。藏文Toh44亦译自于阗原本，足见于阗在华严传播中的枢纽地位。'},
-  {y:699,lat:34.68,lng:112.44,z:7,label:'八十华严译出·洛阳',info:'实叉难陀于洛阳佛授记寺译八十卷《华严经》。法藏参与译场证义。八十华严为后世流传最广的汉译本。'},
-  {y:712,lat:34.26,lng:108.94,z:7,label:'法藏圆寂·长安',info:'华严三祖法藏(643-712)于长安圆寂。系统化「五教十宗」判教体系，为华严宗实际创立者。讲说《华严经》三十余遍。'},
-  {y:798,lat:34.26,lng:108.94,z:7,label:'四十华严译出·长安',info:'般若三藏译出《四十华严》，即全本《入法界品》。善财童子五十三参的完整故事得以汉译。文末《普贤行愿赞》为汉藏共同尊奉。'},
-  {y:800,lat:29.65,lng:91.1,z:5,label:'藏译华严完成·吐蕃',info:'胜友、智军等于吐蕃将《华严经》从于阗本译为藏文(Toh44·45品)。此为华严传播史上的重要分支——经中亚于阗传入西藏。'},
-  {y:839,lat:39.03,lng:113.56,z:7,label:'澄观圆寂·五台山',info:'华严四祖澄观(738-839)于五台山圆寂。著《华严经疏》六十卷、《演义钞》九十卷，为华严教学集大成者。历七帝之师。'},
-  {y:845,lat:34.26,lng:108.94,z:5,label:'唐武宗灭佛·法难',info:'会昌法难。华严典籍大量焚毁，义学传承几近断绝。此后华严转入隐传阶段，直至宋代净源、子璿等复兴。'},
-  // 东亚传播
-  {y:1085,lat:30.23,lng:120.13,z:7,label:'义天入宋求法·杭州慧因寺',info:'高丽王子义天入宋，于杭州慧因寺从净源受华严教法。归国后编《义天录》，为华严东传朝鲜半岛的关键人物。'},
-  {y:1101,lat:37.57,lng:126.98,z:6,label:'义天圆寂·高丽开京',info:'义天圆寂于高丽开京(今开城)。其后均如、体元等高丽学僧继续弘扬华严，使朝鲜半岛成为东亚华严学重镇。'},
-  {y:1173,lat:35.01,lng:135.77,z:6,label:'明惠中兴·日本高山寺',info:'日本华严宗中兴之祖明惠(1173-1232)于京都高山寺复兴华严教学，兼弘戒律与真言。日本华严宗经历镰仓时代之再兴。'},
-  // 近现代复兴
-  {y:1641,lat:30.23,lng:120.13,z:6,label:'续法·清代华严集大成',info:'续法(1641-1728)于杭州著《贤首五教仪》，系统整理华严判教。讲《华严经》二十余遍，为清代华严学之集大成。'},
-  {y:1914,lat:31.65,lng:120.74,z:7,label:'华严大学创立·常熟兴福寺',info:'月霞长老于常熟兴福寺创立华严大学，为中国近代第一所华严专宗教育机构。培养常惺、持松等一批现代华严学僧。'},
-  {y:1952,lat:25.03,lng:121.56,z:8,label:'华严莲社创社·台北',info:'智光、南亭于台北创立华严莲社，开启台湾华严宗弘传事业。成一、贤度等相继住持，发展为现代华严学术与教育中心。'},
-  {y:1975,lat:25.04,lng:121.51,z:8,label:'华严专宗学院·台北',info:'成一法师创办华严专宗学院，以「专修、专研、专弘华严」为宗旨，为当代最重要的华严教育机构之一。'},
-  {y:2008,lat:23.92,lng:120.88,z:9,label:'三脉汇流·南投大华严寺',info:'海云继梦受钦因传华严衣钵(贤首42世)，同年得印度胜师子王菩萨传瑜伽行法。华严·临济·瑜伽行三脉汇一，开创「普贤乘华严宗」。'},
-  {y:2021,lat:27.7,lng:85.32,z:5,label:'84000英译·华严回归国际',info:'84000项目发布Peter Alan Roberts英译《入法界品》(Toh44-45)。藏文华严首次系统英译，华严学研究进入多语对读新时代。'},
-  {y:2026,lat:24.53,lng:120.68,z:9,label:'九九华严·支提山动土·苗栗',info:'海云继梦于台北TICC启动五年讲座「九九华严」。支提山大华严寺动土，面向台湾海峡与福建支提华严祖庭隔海相望。'}
+  // 古印度文明
+  {y:-1500,lat:29,lng:76,z:3,label:'吠陀文明·梨俱吠陀',info:'雅利安人入印,吠陀宗教体系形成。轮回、业力、禅定概念萌芽。'},
+  {y:-800,lat:26.5,lng:82,z:3,label:'奥义书哲人·梵我哲学',info:'梵(Brahman)与阿特曼(ātman)概念提出。佛教「无我」说在此对话中形成。'},
+  // 释迦生平
+  {y:-563,lat:27.5,lng:83.3,z:5,label:'释迦诞生·蓝毗尼园',info:'悉达多太子生于迦毗罗卫。幼受婆罗门教育,后出家求道。'},
+  {y:-528,lat:24.7,lng:85,z:5,label:'释迦成道·菩提伽耶',info:'35岁菩提树下觉悟。华严宗传统:此后三七日于定中说《华严经》,揭示法界缘起。'},
+  {y:-528,lat:25.4,lng:83,z:5,label:'初转法轮·鹿野苑',info:'为五比丘说四圣谛八正道。僧团成立,佛教诞生。此后45年游化讲经。'},
+  {y:-483,lat:26.7,lng:83.9,z:5,label:'释迦入灭·拘尸那罗',info:'80岁入灭。佛灭后弟子结集经律,佛教向四方传播。'},
+  // 佛教东传
+  {y:-260,lat:25.3,lng:83,z:4,label:'阿育王·佛教走出印度',info:'阿育王皈依,派传教师向中亚、东南亚传播。第三次结集。佛教从区域宗教变为世界宗教。'},
+  {y:65,lat:33.7,lng:72.8,z:4,label:'迦腻色迦王·犍陀罗结集',info:'贵霜帝国第四次结集。佛法深入中亚,犍陀罗成东传枢纽。大乘经论在此大量结集。'},
+  {y:80,lat:27.5,lng:77.7,z:4,label:'马鸣·大乘起信论',info:'造《大乘起信论》。一心二门之说后为华严心性论与判教体系的重要理论基础。'},
+  {y:167,lat:34.7,lng:112.4,z:5,label:'支谶译兜沙经·华严首入汉地',info:'月氏僧支娄迦谶至洛阳,译《佛说兜沙经》。虽仅1卷,却是华严经文首次汉译。'},
+  {y:320,lat:25.1,lng:85.4,z:4,label:'无著·世亲·那烂陀寺',info:'瑜伽行派于那烂陀弘传。世亲造《十地经论》,后经汉译催生地论学派。'},
+  // 西域走廊
+  {y:344,lat:41.7,lng:82.9,z:4,label:'鸠摩罗什出生·龟兹',info:'罗什生于西域龟兹。后至长安成四大译师之首,译十住经等为华严学奠基。'},
+  {y:359,lat:34,lng:72,z:4,label:'佛驮跋陀罗·北天竺',info:'觉贤生于北天竺。后至建康首译六十华严全本。'},
+  {y:401,lat:34.3,lng:108.9,z:5,label:'罗什至长安·译经运动',info:'弘始三年至长安,八百沙门参与译场。译中论/十住经/法华经等。'},
+  // 汉地·华严宗形成
+  {y:420,lat:32.1,lng:118.8,z:5,label:'六十华严·建康道场寺',info:'佛驮跋陀罗译六十华严34品。华严经首次以全貌呈现汉地。'},
+  {y:468,lat:34.7,lng:112.4,z:5,label:'慧光·地论南道派',info:'从勒那摩提学十地经论,开地论南道。其学数代传至智俨法藏,为华严义学前身。'},
+  {y:508,lat:34.7,lng:112.4,z:5,label:'十地经论·洛阳译出',info:'菩提流支译世亲十地经论。催生南北朝最重要的义学流派:地论学派。'},
+  {y:557,lat:33.9,lng:109,z:6,label:'杜顺·终南山·华严创宗',info:'著法界观门/五教止观。以法界三观和五教止观为华严宗奠定修行理论基础。'},
+  {y:597,lat:29.2,lng:121,z:5,label:'智𫖮·天台宗成立',info:'天台宗于天台山成立(中国最早宗派)。华严判教中「同教一乘」即针对天台而设。'},
+  {y:602,lat:33.9,lng:109,z:6,label:'智俨·华严二祖',info:'从杜顺出家,著搜玄记/一乘十玄门。开创华严宗经疏传统,为法藏之师。'},
+  {y:643,lat:34.3,lng:108.9,z:6,label:'法藏·华严三祖·宗派确立',info:'系统化五教十宗判教。武则天赐号贤首。参与八十华严译场证义。华严宗至此正式确立。'},
+  {y:645,lat:34.3,lng:108.9,z:5,label:'玄奘归国·唯识宗兴起',info:'玄奘携657部梵本归国,创唯识宗。华严性宗与唯识相宗形成教内深度对话。'},
+  {y:652,lat:37.1,lng:79.9,z:4,label:'实叉难陀·于阗',info:'生于于阗。于阗为中亚佛教枢纽:既是实叉难陀故乡,又是藏译华严底本来源。'},
+  {y:699,lat:34.7,lng:112.4,z:6,label:'八十华严·洛阳佛授记寺',info:'实叉难陀译八十华严39品。法藏证义。后世流传最广汉译本。'},
+  {y:712,lat:34.3,lng:108.9,z:6,label:'法藏圆寂·长安',info:'华严三祖圆寂。讲华严经三十余遍,著五教章/探玄记。实际创立者功业圆满。'},
+  {y:713,lat:24.8,lng:113.6,z:5,label:'慧能入灭·南宗禅兴起',info:'六祖慧能入灭。南宗禅此后大盛。华严五祖宗密兼为禅宗荷泽传人,开启禅教融合。'},
+  {y:780,lat:34,lng:108.7,z:6,label:'宗密·圭峰·禅教融合',info:'华严五祖宗密住圭峰。著禅源诸诠集都序,融合华严与禅宗。教禅一致思想基础确立。'},
+  {y:798,lat:34.3,lng:108.9,z:6,label:'四十华严·长安',info:'般若三藏译四十华严(入法界品全本)。善财五十三参完整故事得以汉译。'},
+  {y:800,lat:29.7,lng:91.1,z:4,label:'藏译华严·吐蕃',info:'胜友/智军将于阗本华严译为藏文Toh44(45品)。华严经中亚于阗传入西藏。'},
+  {y:839,lat:39,lng:113.6,z:6,label:'澄观圆寂·五台山',info:'华严四祖圆寂。著华严经疏60卷/演义钞90卷。集大成者,历七帝之师。'},
+  {y:841,lat:34,lng:108.7,z:5,label:'宗密圆寂·华严盛极而衰',info:'五祖宗密圆寂。次年武宗灭佛,华严典籍大量焚毁,此后转入隐传阶段。'},
+  {y:845,lat:34.3,lng:108.9,z:5,label:'会昌法难·华严典籍焚毁',info:'唐武宗灭佛。华严传承几近断绝。此后义学隐传,直至宋代复兴。'},
+  // 东亚传播·宗派互动
+  {y:973,lat:37.6,lng:127,z:5,label:'均如·统一高丽华严',info:'高丽学僧均如统一华严南北二宗。著三宝章圆通钞。早于义天,为高丽华严前驱。'},
+  {y:1011,lat:30.2,lng:120.1,z:6,label:'净源中兴·杭州慧因寺',info:'宋代华严复兴。慧因寺世称华严第一道场。后义天入宋求法于此。'},
+  {y:1038,lat:30.2,lng:120.1,z:6,label:'子璿·兼弘贤首天台',info:'长水子璿著起信论疏笔削记。兼弘贤首与天台,体现宋代宗派融合趋势。'},
+  {y:1085,lat:30.2,lng:120.1,z:6,label:'义天入宋·杭州慧因寺',info:'高丽王子义天从净源受华严。归国编义天录。华严经杭州传入朝鲜半岛。'},
+  {y:1101,lat:37.6,lng:127,z:5,label:'义天圆寂·高丽开京',info:'义天圆寂。此后高丽学僧继续弘扬,朝鲜半岛成东亚华严重镇。'},
+  {y:1173,lat:35,lng:135.8,z:5,label:'明惠中兴·日本高山寺',info:'明惠复兴日本华严。高山寺开山,兼弘戒律真言。东亚华严网络最终一环形成。'},
+  {y:1271,lat:39.9,lng:116.4,z:5,label:'元朝·八思巴帝师',info:'元朝建立,藏传佛教入汉。八思巴为国师。海云继梦认为此后禅宗正法心法失传七~八百年。'},
+  // 近现代
+  {y:1600,lat:30.2,lng:120.1,z:5,label:'明末四大师·佛教复兴',info:'紫柏/憨山/莲池/澫益四大师推动晚明佛教全面复兴。华严学亦受此波影响。'},
+  {y:1641,lat:30.2,lng:120.1,z:6,label:'续法·清代华严集大成',info:'著贤首五教仪整理判教,编华严宗佛祖传梳理谱系。讲经二十余遍。'},
+  {y:1914,lat:31.7,lng:120.7,z:7,label:'华严大学·常熟兴福寺',info:'月霞创立近代第一所华严专宗教育机构。培养常惺/持松等现代学僧。'},
+  {y:1952,lat:25,lng:121.6,z:7,label:'华严莲社·台北',info:'智光/南亭创社,开启台湾华严弘传。成一/贤度相继,发展为现代学术教育中心。'},
+  {y:1975,lat:25,lng:121.5,z:7,label:'华严专宗学院·台北',info:'成一法师创办,以专修/专研/专弘华严为宗旨。当代最重要华严教育机构。'},
+  {y:2008,lat:23.9,lng:120.9,z:8,label:'三脉汇流·南投大华严寺',info:'海云继梦受钦因传华严衣钵(贤首42世)+印度胜师子王菩萨传瑜伽行。华严·临济·瑜伽行三脉归一,开创普贤乘华严宗。'},
+  {y:2021,lat:27.7,lng:85.3,z:5,label:'84000英译·华严回归国际',info:'Peter Alan Roberts英译入法界品出版。藏文华严首次系统英译。'},
+  {y:2026,lat:24.5,lng:120.7,z:8,label:'九九华严·支提山动土',info:'海云继梦于TICC启动五年讲座。支提山大华严寺动土,隔海与福建支提祖庭相望。'}
 ];
 var lastAnimLoc=-1;
 function getAnimSpeed(){
@@ -894,6 +912,7 @@ function toggleAnim(){
   if(animPlaying){
     clearInterval(animTimer);animPlaying=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
+    var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
     if(speedLabel)speedLabel.textContent='1×';
@@ -943,23 +962,22 @@ function toggleAnim(){
       if(animYear>=ANIM_WAYPOINTS[i].y){activeWp=ANIM_WAYPOINTS[i];activeIdx=i;}
     }
     if(!activeWp)return;
-    // ── Macro map: wide view, fly to each waypoint ──
+    // ── Both maps: fly to active waypoint ──
     if(mapMain&&activeIdx>lastAnimLoc){
-      mapMain.flyTo([activeWp.lat,activeWp.lng],Math.max(3,activeWp.z-2),{duration:1.5});
+      mapMain.flyTo([activeWp.lat,activeWp.lng],Math.max(3,activeWp.z-2),{duration:1.8});
       if(animRouteMarkerM)animRouteMarkerM.setLatLng([activeWp.lat,activeWp.lng]);
-      var pM=L.popup({closeButton:false,autoClose:false,className:'anim-popup'})
-        .setLatLng([activeWp.lat,activeWp.lng]).setContent('<b>'+activeWp.y+'年</b><br>'+activeWp.label).openOn(mapMain);
-      setTimeout(function(){if(pM)mapMain.closePopup(pM);},2500);
+      var popContent='<div style=max-width:260px><b style=color:#c46b5d>'+activeWp.y+'年</b><br><b>'+activeWp.label+'</b><br><span style=font-size:0.78em;line-height:1.5>'+activeWp.info+'</span></div>';
+      var pM=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:280})
+        .setLatLng([activeWp.lat,activeWp.lng]).setContent(popContent).openOn(mapMain);
+      setTimeout(function(){if(pM)mapMain.closePopup(pM);},4000);
     }
-    // ── Micro map: only China/East Asia, tighter zoom ──
     if(mapMini&&activeIdx>lastAnimLoc){
-      var mz=Math.min(9,activeWp.z+1);
-      // Only fly micro for events after Buddhism enters China
-      if(activeWp.y>=167){
-        mapMini.flyTo([activeWp.lat,activeWp.lng],mz,{duration:1.5});
-      }
+      if(activeWp.y>=167){mapMini.flyTo([activeWp.lat,activeWp.lng],Math.min(9,activeWp.z+1),{duration:1.8});}
       if(animRouteMarkerU)animRouteMarkerU.setLatLng([activeWp.lat,activeWp.lng]);
     }
+    // Update status bar with current event
+    var sb=document.getElementById('anim-status');
+    if(sb&&activeWp){sb.innerHTML='<b>'+activeWp.y+'年</b> '+activeWp.label+' — '+activeWp.info;sb.style.opacity='1';}
     lastAnimLoc=activeIdx;
   }
   animTimer=setInterval(animStep,200);
