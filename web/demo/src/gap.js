@@ -271,14 +271,14 @@ function renderGap(){
   // ── Patriarch Commentaries ──
   h+="<div class=section><h2>📜 祖师核心章疏（11部）</h2>";
   h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
-  [{a:'杜顺',w:'法界观门·五教止观'},
-   {a:'智俨',w:'搜玄记(5卷)·一乘十玄门·五十要问答'},
-   {a:'法藏',w:'五教章(T45n1866)·探玄记(20卷)·金师子章·起信论义记(T44n1846)·义海百门'},
-   {a:'澄观',w:'华严经疏(60卷·T35n1735)·演义钞(90卷·T36n1736)·法界玄镜'},
-   {a:'宗密',w:'禅源诸诠集(T48n2015)·原人论(T45n1886)·圆觉经大疏·行愿品疏钞'},
-   {a:'李通玄',w:'新华严经论(40卷·T36n1739)·决疑论'},
-   {a:'义天',w:'新编诸宗教藏总录(义天录·基准目录)'}]
-  .forEach(function(x){h+="<span style='padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px;font-size:0.73em'><b style=color:#b8863c>"+x.a+"</b> <span style=color:var(--text2)>"+x.w+"</span></span>";});
+  [{a:'杜顺',w:'法界观门(T45n1884)·五教止观(T45n1867)',u:'T45n1884'},
+   {a:'智俨',w:'搜玄记(T35n1732)·一乘十玄门(T45n1868)·五十要问答',u:'T35n1732'},
+   {a:'法藏',w:'五教章(T45n1866)·探玄记(T35n1733)·金师子章(T45n1880)·起信论义记(T44n1846)·义海百门',u:'T45n1866'},
+   {a:'澄观',w:'华严经疏(T35n1735)·演义钞(T36n1736)·法界玄镜',u:'T35n1735'},
+   {a:'宗密',w:'禅源诸诠集(T48n2015)·原人论(T45n1886)·圆觉经大疏',u:'T48n2015'},
+   {a:'李通玄',w:'新华严经论(T36n1739)·决疑论',u:'T36n1739'},
+   {a:'义天',w:'新编诸宗教藏总录(义天录·基准目录)',u:null}]
+  .forEach(function(x){h+="<span style='padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px;font-size:0.73em'><b style=color:#b8863c>"+x.a+"</b> <span style=color:var(--text2)>"+x.w+"</span>"+(x.u?"<br><a href='https://cbetaonline.dila.edu.tw/zh/"+x.u+"' target=_blank style=font-size:0.6em>📖 CBETA</a>":"")+"</span>";});
   h+="</div></div>";
 
   // ── Modern & Tibetan sources ──
