@@ -977,6 +977,7 @@ function animTick(){
     animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     if(speedLabel)speedLabel.textContent='1x';if(sb)sb.style.opacity='0';
+    var mo=document.getElementById('map-overlay');if(mo)mo.style.display='none';
     return;
   }
   // Find matching waypoint + show popup
@@ -994,6 +995,7 @@ function animTick(){
       if(mapMini&&wp.y>=167)mapMini.panTo([wp.lat,wp.lng]);
       if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
       if(sb)sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label+' — '+wp.info;
+      var mo=document.getElementById('map-overlay');if(mo){mo.style.display='block';mo.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label+'<br><span style=font-size:0.85em;color:var(--text2)>'+wp.info+'</span>';}
       lastAnimLoc=i;break;
     }
   }
@@ -1008,6 +1010,7 @@ function toggleAnim(){
     clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
+    var mo2=document.getElementById('map-overlay');if(mo2)mo2.style.display='none';
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
     if(mapMain)mapMain.off('click');
