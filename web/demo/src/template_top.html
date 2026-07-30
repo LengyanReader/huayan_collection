@@ -103,6 +103,12 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button data-bookmark="557,841">五祖时代</button>
     <button data-bookmark="1000,1120">高丽传入</button>
     <button data-bookmark="1850,2026">近现代</button>
+    <span style="font-size:0.7em;color:var(--text2);margin-left:8px">图层:</span>
+    <button class="active" data-layer="theory" onclick="toggleLayer('theory')" title="理论演化带">理</button>
+    <button class="active" data-layer="practice" onclick="toggleLayer('practice')" title="修行谱系带">修</button>
+    <button class="active" data-layer="geo" onclick="toggleLayer('geo')" title="地理标记">地</button>
+    <button class="active" data-layer="edges" onclick="toggleLayer('edges')" title="传承连线">传</button>
+    <button class="active" data-layer="events" onclick="toggleLayer('events')" title="事件标记">事</button>
     <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
     <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
   </div>

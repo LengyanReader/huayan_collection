@@ -1,5 +1,39 @@
+// ═══ DATA LAYERS ═══
+var layerVis={theory:true,geo:true,practice:true,edges:true,events:true};
+var THEORY_STAGES=[
+  {label:'法界观门/五教止观',s:557,e:700,c:'rgba(184,134,60,0.10)',tc:'#b8863c'},
+  {label:'五教十宗/法界缘起',s:643,e:820,c:'rgba(94,139,158,0.10)',tc:'#5e8b9e'},
+  {label:'禅教融合',s:780,e:850,c:'rgba(125,154,110,0.10)',tc:'#7d9a6e'},
+  {label:'义学沉寂·法脉隐传',s:850,e:1850,c:'rgba(160,144,128,0.06)',tc:'#a09080'},
+  {label:'华严大学/现代复兴',s:1850,e:1981,c:'rgba(196,107,93,0.10)',tc:'#c46b5d'},
+  {label:'普贤乘华严/东山法门',s:1981,e:2026,c:'rgba(109,154,110,0.10)',tc:'#6d9a6e'}
+];
+var PRACTICE_STAGES=[
+  {label:'法界三昧观',s:557,e:640,c:'rgba(184,134,60,0.06)',tc:'#b8863c'},
+  {label:'华严三昧观',s:643,e:820,c:'rgba(125,154,110,0.06)',tc:'#7d9a6e'},
+  {label:'禅教融合观',s:780,e:850,c:'rgba(94,139,158,0.06)',tc:'#5e8b9e'},
+  {label:'修行法脉隐传',s:850,e:1914,c:'rgba(160,144,128,0.03)',tc:'#a09080'},
+  {label:'华严大学禅观',s:1914,e:1981,c:'rgba(196,107,93,0.06)',tc:'#c46b5d'},
+  {label:'东山法门等持工程',s:1981,e:2026,c:'rgba(109,154,110,0.06)',tc:'#6d9a6e'}
+];
+var GEO_FLOW=[
+  {l:'终南山',y:590},{l:'洛阳',y:695},{l:'长安',y:700},
+  {l:'五台山',y:790},{l:'杭州',y:1060},{l:'常熟/上海',y:1914},{l:'台北',y:1952}
+];
+var KEY_EVENTS=[
+  {y:420,l:'六十华严译出(建康)',c:'#b8863c',p:'佛驮跋陀罗'},
+  {y:699,l:'八十华严译出(洛阳)',c:'#b8863c',p:'实叉难陀'},
+  {y:798,l:'四十华严译出(长安)',c:'#b8863c',p:'般若'},
+  {y:845,l:'唐武宗灭佛·法难',c:'#c46b5d'},
+  {y:1085,l:'义天入宋求法',c:'#6d9a6e',p:'义天'},
+  {y:1914,l:'华严大学创立(上海)',c:'#5e8b9e',p:'月霞'},
+  {y:1952,l:'华严莲社创社(台北)',c:'#5e8b9e',p:'成一'},
+  {y:2008,l:'钦因传衣钵·三脉汇流',c:'#c46b5d',p:'海云继梦'}
+];
+
 // ═══ HELPERS ═══
 function getPersonLocs(pid){return DATA.locations.filter(function(l){return (l.ps||[]).indexOf(pid)>=0;});}
+function getPersonById(id){return nodeMap[id]||null;}
 function buildTimelineRows(){
   var order=["华严五祖","李通玄系","日本华严","高丽华严","贤首宗高原法系","月霞系","华严莲社","慈舟系","临济宗","译师","印度源流","当代学者"];
   var rows={}; order.forEach(function(l,i){rows[l]=i;});
@@ -8,7 +42,6 @@ function buildTimelineRows(){
     var ri=rows[n.li]!==undefined?rows[n.li]:order.length;
     if(!rd[ri])rd[ri]={lineage:n.li||"other",ps:[],y:0,color:DATA.lineage_colors[n.li]||"#b0a898"};
     n._isGhost=false; rd[ri].ps.push(n);
-    // Secondary lineages: add as ghost entries
     if(n.multi&&n.multi.length){
       n.multi.forEach(function(ml){
         var mri=rows[ml]!==undefined?rows[ml]:order.length;
@@ -29,66 +62,109 @@ function tX(y){return (y-tl.minX)*tl.scale+tl.ox;}
 function drawTL(hlId){
   var ctx=tl.ctx,W=tl.W,H=tl.H;if(!ctx)return;ctx.clearRect(0,0,W,H);
   var rh=Math.max(MIN_ROW_H,H/Math.max(tl.rows.length,1));
+  var isOverview=tl.scale<0.3; // semantic zoom threshold
 
-  // 1. Dynasty bands
-  [{n:"唐",s:618,e:907,c:"rgba(200,160,80,0.06)"},{n:"宋",s:960,e:1279,c:"rgba(150,170,190,0.06)"},{n:"明",s:1368,e:1644,c:"rgba(160,150,140,0.04)"},{n:"清",s:1644,e:1912,c:"rgba(150,140,130,0.04)"},{n:"近现代",s:1912,e:1949,c:"rgba(200,150,140,0.08)"},{n:"当代",s:1949,e:2026,c:"rgba(150,190,190,0.08)"}].forEach(function(d){var x=tX(d.s),x2=tX(d.e);if(x2>0&&x<W){ctx.fillStyle=d.c;ctx.fillRect(Math.max(0,x),0,Math.min(W,x2-x),H);}});
+  // 0. THEORY EVOLUTION BAND (top)
+  if(layerVis.theory&&!isOverview){
+    var thY=0,thH=26;
+    THEORY_STAGES.forEach(function(ts){
+      var x1=tX(ts.s),x2=tX(ts.e);
+      if(x2>0&&x1<W){
+        ctx.fillStyle=ts.c;ctx.fillRect(Math.max(0,x1),thY,Math.min(W,x2-x1),thH);
+        ctx.fillStyle=ts.tc;ctx.font='11px Microsoft YaHei';
+        var tw=ctx.measureText(ts.label).width;
+        if(x2-x1>tw+10)ctx.fillText(ts.label,(x1+x2)/2-tw/2,thY+17);
+      }
+    });
+    ctx.strokeStyle='#e0d8c8';ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(0,thH);ctx.lineTo(W,thH);ctx.stroke();
+    // label
+    ctx.fillStyle='#a09080';ctx.font='9px Microsoft YaHei';ctx.fillText('理论演化',4,thH-4);
+  }
+  var topOff=layerVis.theory&&!isOverview?thH:0;
 
-  // 2. Vertical century grid
+  // 1. DYNASTY BANDS + LABELS
+  var dynasties=[{n:"唐",s:618,e:907,c:"rgba(200,160,80,0.06)"},{n:"宋",s:960,e:1279,c:"rgba(150,170,190,0.06)"},{n:"明",s:1368,e:1644,c:"rgba(160,150,140,0.04)"},{n:"清",s:1644,e:1912,c:"rgba(150,140,130,0.04)"},{n:"近现代",s:1912,e:1949,c:"rgba(200,150,140,0.08)"},{n:"当代",s:1949,e:2026,c:"rgba(150,190,190,0.08)"}];
+  dynasties.forEach(function(d){var x=tX(d.s),x2=tX(d.e);if(x2>0&&x<W){ctx.fillStyle=d.c;ctx.fillRect(Math.max(0,x),topOff,Math.min(W,x2-x),H-topOff);}});
+  // Dynasty labels
+  if(!isOverview){
+    dynasties.forEach(function(d){
+      var x=tX(d.s),x2=tX(d.e),cx=(x+x2)/2;
+      if(x2-x>60&&cx>0&&cx<W){
+        ctx.fillStyle='rgba(160,144,128,0.35)';ctx.font='bold 13px Microsoft YaHei';
+        ctx.fillText(d.n,cx-13,topOff+16);
+      }
+    });
+  }
+
+  // 2. CENTURY GRID
   ctx.strokeStyle="#e8e0d0";ctx.lineWidth=0.5;ctx.setLineDash([3,6]);
-  for(var y=200;y<=2050;y+=100){var x=tX(y);if(x>=0&&x<=W){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}}
+  for(var y=200;y<=2050;y+=100){var x=tX(y);if(x>=0&&x<=W){ctx.beginPath();ctx.moveTo(x,topOff);ctx.lineTo(x,H);ctx.stroke();}}
   ctx.setLineDash([]);
 
-  // 3. Row backgrounds and labels
+  // 3. PRACTICE LINEAGE BAND (between grid and person rows)
+  var pracOff=0;
+  if(layerVis.practice&&!isOverview){
+    pracOff=22;
+    var py=topOff+4;
+    PRACTICE_STAGES.forEach(function(ps){
+      var x1=tX(ps.s),x2=tX(ps.e);
+      if(x2>0&&x1<W){
+        ctx.fillStyle=ps.c;ctx.fillRect(Math.max(0,x1),py,Math.min(W,x2-x1),pracOff-6);
+        ctx.fillStyle=ps.tc;ctx.font='10px Microsoft YaHei';
+        var tw2=ctx.measureText(ps.label).width;
+        if(x2-x1>tw2+10)ctx.fillText(ps.label,(x1+x2)/2-tw2/2,py+13);
+      }
+    });
+    ctx.strokeStyle='#e0d8c8';ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(0,py+pracOff-4);ctx.lineTo(W,py+pracOff-4);ctx.stroke();
+    ctx.fillStyle='#a09080';ctx.font='9px Microsoft YaHei';ctx.fillText('修行谱系',4,py-2);
+  }
+
+  // 4. ROW BACKGROUNDS AND LABELS
+  var personTop=topOff+pracOff;
   tl.rows.forEach(function(r,i){
-    r.y=i*rh+rh/2;
-    var y0=i*rh, y2=r.y;
+    r.y=i*rh+rh/2+personTop;
+    var y0=i*rh+personTop, y2=r.y;
     if(i%2===0){ctx.fillStyle="rgba(255,255,255,0.25)";ctx.fillRect(0,y0,W,rh);}
-    // Row label
     ctx.fillStyle=r.color;ctx.font="600 12px Microsoft YaHei";ctx.fillText(r.lineage,10,y0+18);
-    // Subtle row separator
     ctx.strokeStyle="#e8e0d0";ctx.lineWidth=0.5;ctx.beginPath();ctx.moveTo(0,y0+rh);ctx.lineTo(W,y0+rh);ctx.stroke();
   });
 
-  // 4. Person lifespan bars
+  // 5. PERSON LIFESPAN BARS
   tl.hitRects=[];var ds=25,isSearch=searchQuery.length>0;
 
-  // First pass: assign y-offsets within each row to avoid overlap
-  var rowOffsets={};
+  // First pass: assign y-offsets to avoid overlap
   tl.rows.forEach(function(r,ri){
     var sorted=r.ps.slice().sort(function(a,b){return (a.b||a.d||0)-(b.b||b.d||0);});
-    var slots=[]; // occupied x-ranges per y-level
+    var slots=[];
     sorted.forEach(function(p){
       var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);if(!b&&!d)return;
       var bx=tX(b||d-10),dx=tX(d||b+10),bw=Math.max(6,dx-bx);
-      // Find a y-level where this bar doesn't overlap
-      var level=0; var placed=false;
+      var level=0,placed=false;
       while(!placed&&level<3){
         var overlap=false;
         if(!slots[level])slots[level]=[];
         for(var s=0;s<slots[level].length;s++){
-          if(!(bx+bw+20<slots[level][s].x || bx>slots[level][s].x+slots[level][s].w+20)){
-            overlap=true;break;
-          }
+          if(!(bx+bw+20<slots[level][s].x || bx>slots[level][s].x+slots[level][s].w+20)){overlap=true;break;}
         }
         if(!overlap){slots[level].push({x:bx,w:bw});placed=true;}
         else level++;
       }
-      p._yOff=(level-1)*14; // -14, 0, or +14 offset from center
+      p._yOff=(level-1)*14;
     });
   });
 
-  // Second pass: draw
+  // Second pass: draw bars
   tl.rows.forEach(function(r,ri){var y2=r.y;
     r.ps.forEach(function(p){
       var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);if(!b&&!d)return;
       var bx=tX(b||d-10),dx=tX(d||b+10),bh=Math.min(22,rh*0.35),by=y2-bh/2+(p._yOff||0);
       var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0;
       if(isSearch&&!matches)ctx.globalAlpha=0.12;else if(hlId&&!isHL)ctx.globalAlpha=0.18;else ctx.globalAlpha=1;
-
-      // Shadow for highlighted
       if(isHL){ctx.shadowColor="#b8863c";ctx.shadowBlur=16;}
 
-// Ghost entry for multi-lineage (dashed outline)
+      // Ghost entry for multi-lineage
       if(p._isGhost){bh=Math.max(4,bh*0.4);by=y2-bh/2;ctx.globalAlpha=0.5;ctx.setLineDash([3,3]);ctx.fillStyle=r.color+"40";ctx.strokeStyle=r.color;ctx.lineWidth=1;}
       else{ctx.fillStyle=isHL?"#c46b5d":(r.color+"DD");}
       var rx=Math.max(0,bx),rw=Math.max(6,dx-rx);
@@ -108,15 +184,121 @@ function drawTL(hlId){
     });
   });
 
-  // 5. Edges (master→disciple connections)
-  tl.hitRects.forEach(function(hr){var p=hr.person;
-    DATA.edges.filter(function(e){return e.s===p.id&&(e.r==="MASTER"||e.r==="LINEAGE");}).forEach(function(e){var tHR=tl.hitRects.find(function(h){return h.person.id===e.t;});if(!tHR)return;var isHL=p.id===hlId||e.t===hlId;ctx.strokeStyle=isHL?"#b8863c":"#d5cdc0";ctx.lineWidth=isHL?2.2:1;ctx.globalAlpha=isHL?1:0.4;ctx.setLineDash(e.r==="LINEAGE"?[5,4]:[]);ctx.beginPath();var sx=hr.x+hr.w,sy=hr.y+hr.h/2,ex=tHR.x,ey=tHR.y+tHR.h/2;ctx.moveTo(sx,sy);ctx.bezierCurveTo(sx+(ex-sx)*0.4,sy,ex-(ex-sx)*0.4,ey,ex,ey);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;});
-  });
+  // 6. EDGES (death→birth bezier, color-coded by relation type)
+  if(layerVis.edges){
+    var relColors={MASTER:'#b8863c',LINEAGE:'#7d9a6e',INFLUENCED:'#5e8b9e',CONTEMPORARY:'#c0b098'};
+    var relDash={MASTER:[],LINEAGE:[5,4],INFLUENCED:[3,5],CONTEMPORARY:[2,4]};
+    var allHitRects=tl.hitRects;
+    DATA.edges.forEach(function(e){
+      var sHR=allHitRects.find(function(h){return h.person.id===e.s;});
+      var tHR=allHitRects.find(function(h){return h.person.id===e.t;});
+      if(!sHR||!tHR)return;
+      var isHL=e.s===hlId||e.t===hlId;
+      var rc=relColors[e.r]||'#d5cdc0';
+      ctx.strokeStyle=isHL?'#c46b5d':rc;
+      ctx.lineWidth=isHL?2.4:(e.r==='MASTER'?1.8:1.0);
+      ctx.globalAlpha=isHL?1:(e.r==='MASTER'?0.55:0.3);
+      ctx.setLineDash(relDash[e.r]||[]);
 
-  // 6. Event markers
-  ctx.fillStyle="#a09080";ctx.font="10px Microsoft YaHei";
-  for(var y=200;y<=2000;y+=100){var x=tX(y);if(x>=0&&x<=W)ctx.fillText(y,x-12,H-8);}
-  [{y:420,l:"六十华严译出",c:"#b8863c"},{y:699,l:"八十华严译出",c:"#b8863c"},{y:845,l:"唐武宗灭佛·法难",c:"#c46b5d"},{y:1085,l:"义天入宋求法",c:"#6d9a6e"},{y:1914,l:"华严大学创立",c:"#5e8b9e"},{y:1952,l:"华严莲社创社",c:"#5e8b9e"},{y:2008,l:"钦因传衣钵",c:"#c46b5d"}].forEach(function(ev){var x=tX(ev.y);if(x<0||x>W)return;ctx.fillStyle=ev.c;ctx.font="bold 9px Microsoft YaHei";ctx.fillText("▸ "+ev.l,x,H-22);});
+      // Death→birth bezier: start from teacher's death (or bar right edge), end at student's birth (or bar left edge)
+      var sp=sHR.person, tp=tHR.person;
+      var sx=sp.d?tX(sp.d):(sHR.x+sHR.w);
+      var sy=sHR.y+sHR.h/2;
+      var ex=tp.b?tX(tp.b):tHR.x;
+      var ey=tHR.y+tHR.h/2;
+      // draw small marker dot at source (death year)
+      if(sp.d){
+        ctx.beginPath();ctx.arc(sx,sy,3,0,Math.PI*2);ctx.fillStyle=rc;ctx.fill();
+      }
+      ctx.beginPath();ctx.moveTo(sx,sy);
+      ctx.bezierCurveTo(sx+(ex-sx)*0.4,sy,ex-(ex-sx)*0.4,ey,ex,ey);
+      ctx.stroke();
+      // small arrow at target
+      if(tp.b&&ex>sx+10){
+        ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-6,ey-4);ctx.lineTo(ex-6,ey+4);ctx.closePath();ctx.fillStyle=rc;ctx.fill();
+      }
+      ctx.setLineDash([]);ctx.globalAlpha=1;
+    });
+  }
+
+  // 7. GEOGRAPHIC LOCATION MARKERS ON TIMELINE
+  if(layerVis.geo&&!isOverview){
+    // static geo flow waypoints
+    GEO_FLOW.forEach(function(gf,i){
+      var x=tX(gf.y);if(x<0||x>W)return;
+      ctx.fillStyle='#c46b5d';ctx.font='bold 10px Microsoft YaHei';
+      var ly=tl.rows.length*rh+personTop+4;
+      ctx.fillText('📍',x-7,ly+10);
+      if(i<GEO_FLOW.length-1){
+        var nx=tX(GEO_FLOW[i+1].y);
+        if(nx<W){
+          ctx.strokeStyle='rgba(196,107,93,0.2)';ctx.lineWidth=1;ctx.setLineDash([4,6]);
+          ctx.beginPath();ctx.moveTo(x,ly+8);ctx.lineTo(nx,ly+8);ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      }
+    });
+
+    // location markers from DATA.locations
+    var locY=tl.rows.length*rh+personTop+24;
+    var seen={};
+    DATA.locations.forEach(function(loc){
+      if(!loc.ps||!loc.ps.length)return;
+      // use first associated person's birth as approximate year
+      var p=nodeMap[loc.ps[0]];if(!p||!p.b)return;
+      var lx=tX(p.b);if(lx<0||lx>W||seen[loc.id])return;seen[loc.id]=true;
+      ctx.fillStyle='#8b6b4a';ctx.font='8px Microsoft YaHei';
+      ctx.fillText('▾ '+loc.n,lx-10,locY);
+      locY+=13;
+    });
+  }
+
+  // 8. EVENT MARKERS + PERSON CONNECTORS
+  if(layerVis.events&&!isOverview){
+    var evY=H-24;
+    KEY_EVENTS.forEach(function(ev){
+      var x=tX(ev.y);if(x<0||x>W)return;
+      // connector to associated person
+      if(ev.p&&layerVis.edges){
+        var pHR=tl.hitRects.find(function(h){return h.person.n===ev.p||h.person.id===ev.p;});
+        if(pHR){
+          ctx.strokeStyle='rgba(180,134,60,0.25)';ctx.lineWidth=1;ctx.setLineDash([2,5]);
+          ctx.beginPath();ctx.moveTo(x,evY);ctx.lineTo(pHR.x+pHR.w/2,pHR.y+pHR.h);ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      }
+      // event marker
+      ctx.fillStyle=ev.c;ctx.font='bold 9px Microsoft YaHei';
+      ctx.fillText('▸ '+ev.l,x,evY);
+    });
+    // year labels
+    ctx.fillStyle='#a09080';ctx.font='10px Microsoft YaHei';
+    for(var yy=200;yy<=2000;yy+=100){var x2=tX(yy);if(x2>=0&&x2<=W)ctx.fillText(yy,x2-12,H-8);}
+  }
+
+  // 9. SEMANTIC ZOOM: overview mode
+  if(isOverview){
+    ctx.fillStyle='rgba(45,35,25,0.7)';ctx.font='bold 16px Microsoft YaHei';
+    ctx.fillText('🔍 千年全景 — 滚轮放大查看人物细节',W/2-160,personTop+40);
+    // Density heatmap: count persons per century and draw vertical bars
+    var centuries=[];
+    for(var c=500;c<=2000;c+=100){
+      var count=0;
+      DATA.nodes.forEach(function(n){if(n.b&&n.b>=c&&n.b<c+100)count++;});
+      if(count>0)centuries.push({c:c,count:count});
+    }
+    var maxC=Math.max.apply(null,centuries.map(function(c){return c.count;}));
+    var heatY=personTop+80,heatH=60;
+    centuries.forEach(function(ct){
+      var cx=tX(ct.c+50),bw=Math.max(8,(ct.c+100-ct.c)*tl.scale*0.6);
+      var bh=(ct.count/maxC)*heatH;
+      var alpha=0.15+(ct.count/maxC)*0.5;
+      ctx.fillStyle='rgba(184,134,60,'+alpha+')';
+      ctx.fillRect(cx-bw/2,heatY+heatH-bh,bw,bh);
+      ctx.fillStyle='#8a7060';ctx.font='9px Microsoft YaHei';
+      ctx.fillText(ct.count+'人',cx-8,heatY+heatH-bh-4);
+    });
+  }
 }
 
 // ═══ MAP ═══
@@ -143,7 +325,6 @@ function selectPerson(id,isShift){
   var locs=getPersonLocs(id);
   if(map&&locs.length>0){
     var loc=locs[0];map.flyTo([loc.lat,loc.lng],locs.length===1?10:8,{duration:0.8});
-    // Highlight all related markers
     setTimeout(function(){
       map.eachLayer(function(layer){
         if(!layer._ld)return;
@@ -151,12 +332,9 @@ function selectPerson(id,isShift){
         if(isRelated){
           layer.setRadius(13);layer.setStyle({fillColor:"#c46b5d",color:"#fff",weight:3,fillOpacity:1});
           if(!layer._popupOpen){layer.openPopup();layer._popupOpen=true;setTimeout(function(){layer.closePopup();layer._popupOpen=false;},3000);}
-        }else{
-          layer.setRadius(7);layer.setStyle({fillOpacity:0.5});
-        }
+        }else{layer.setRadius(7);layer.setStyle({fillOpacity:0.5});}
       });
     },900);
-    // Reset after 4 seconds
     setTimeout(function(){
       map.eachLayer(function(layer){
         if(!layer._ld)return;
@@ -167,7 +345,7 @@ function selectPerson(id,isShift){
   }
 }
 function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById("info-box").innerHTML="<div class=empty>👆 点击人物寿命条查看详情<br><span style=font-size:0.8em>Shift+点击第二人可并排对比</span></div>";}
-function drawTL2(id){/* placeholder for second highlight */}
+function drawTL2(id){}
 
 function showInfo(p,p2){
   if(!p)return;var box=document.getElementById("info-box");if(!box)return;
@@ -195,6 +373,14 @@ function showInfo(p,p2){
       +(p2.bio?"<div style=color:var(--text2)>"+p2.bio+"</div>":"")+"</div>";
   }
   box.innerHTML=h;
+}
+
+// ═══ LAYER TOGGLE ═══
+function toggleLayer(layer){
+  layerVis[layer]=!layerVis[layer];
+  var btn=document.querySelector('#controls button[data-layer="'+layer+'"]');
+  if(btn){if(layerVis[layer]){btn.classList.add('active');}else{btn.classList.remove('active');}}
+  drawTL(selectedId);
 }
 
 // ═══ INTERACTION ═══
@@ -244,5 +430,4 @@ function switchTab(tab){
   location.hash=tab;
   if(tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(map)map.invalidateSize();},200);}
 }
-// Restore tab from URL hash on load
 if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"+h))switchTab(h);}
