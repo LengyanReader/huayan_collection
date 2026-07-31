@@ -154,7 +154,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
   <div id="progress-bar" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2px 12px;display:flex;align-items:center;gap:6px">
     <button onclick="animJump(-1)" style="padding:0 4px;font-size:0.7em;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer" title=上一步>◀</button>
     <span id=prog-year style="font-size:0.65em;color:var(--gold);min-width:45px;text-align:center">-600年</span>
-    <input type=range id=anim-progress min=-1500 max=2030 value=-600 step=1 style="flex:1;accent-color:var(--gold);height:8px" title=拖拽跳转 oninput="animSeek(this.value);document.getElementById('prog-year').textContent=this.value+'年'">
+    <input type=range id=anim-progress min=-1500 max=2030 value=-600 step=5 style="flex:1;accent-color:var(--gold);height:8px" title=拖拽跳转 oninput="var v=parseInt(this.value);if(!isNaN(v))animSeek(v)">
     <button onclick="animJump(1)" style="padding:0 4px;font-size:0.7em;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer" title=下一步>▶</button>
   </div>
   <div id="controls">
