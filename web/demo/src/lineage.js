@@ -1015,6 +1015,8 @@ function getAnimSpeed(){
 var animPaused=false;
 function animSeek(yr){
   animYear=parseInt(yr);lastAnimLoc=-1;
+  var pg=document.getElementById('anim-progress');if(pg)pg.value=animYear;
+  var py=document.getElementById('prog-year');if(py)py.textContent=animYear+'年';
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   var mo=document.getElementById('map-overlay');
@@ -1038,12 +1040,11 @@ function animSeek(yr){
   }
 }
 function animJump(dir){
-  animPaused=true;animPlaying=true;
-  animYear+=dir*5;
-  if(animYear<-1500)animYear=-1500;
-  if(animYear>2030)animYear=2030;
-  animSeek(animYear);
-  // Don't auto-resume after manual jump
+  animPlaying=true;animPaused=true;
+  var pg=document.getElementById('anim-progress');
+  var cur=(pg?parseInt(pg.value):animYear)+dir*5;
+  if(cur<-1500)cur=-1500;if(cur>2030)cur=2030;
+  animSeek(cur);
 }
 function pauseAnim(){
   if(!animPlaying||animPaused)return;
