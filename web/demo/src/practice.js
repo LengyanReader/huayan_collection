@@ -395,7 +395,7 @@ function renderPractice(){
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📐 华严三品行法 — 净行品·梵行品·普贤行愿品</span><div class=body>";
   h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>据《华藏妙海》听经笔记整理,海云和上将华严三品对应修行三阶段: <b>净行品</b>——前行阶段的修行法门,信位菩萨所修,在日常生活中即可修; <b>梵行品</b>——正行阶段的修行法门; <b>普贤行愿品</b>——成佛以后的修学法门,「众生有尽,我愿无穷」。三品都是行门,构成从初学到究竟的完整行法链条。</p>";
   h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>结界工程</b>(据同来源): 结界是针对自己弱点,在自己能力范围内做最妥善的调整与安排,是个人修行资粮道的基础。从结界中可以学到如何肯定自己、认识自己——「结界工程是个人资粮道的基础」。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《华藏妙海》听经笔记整理版(docs/notes4it目录) . 海云和上关于弥勒内院的专门讲记目前公开可查资料极少,暂未纳入</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《华藏妙海》听经笔记整理版(docs/notes4it目录)。<br>🔗 弥勒菩萨章: 海云和上于善财五十三参第51参详讲弥勒菩萨——毗卢遮那庄严藏楼阁,共<b>12集</b>视频(B站 BV1X142147EN)+播客(Podwise)。此为法师关于弥勒的最主要讲记,目前文字整理尚不完整,建议直接观看视频。</p>";
   h+="</div></div>";
   h+="</div>";
 
