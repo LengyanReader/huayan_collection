@@ -19,23 +19,23 @@ function renderPractice(){
   // ── 三阶段卡片 ──
   h+="<div style='display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0'>";
   h+="<div style='flex:1;min-width:180px;background:rgba(184,134,60,0.08);border:1px solid #b8863c;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#b8863c;margin-bottom:4px'>资粮道</div>";
-  h+="<div style='font-size:0.8em;color:#8a7060'>发心工程</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>五科·瞬定境</div></div>";
+  h+="<div style='font-size:1.05em;font-weight:700;color:#b8863c;margin-bottom:4px'>禅修入门</div>";
+  h+="<div style='font-size:0.8em;color:#8a7060'>发心工程（资粮道）</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>五科：戒·律·调身·调息·调心</div></div>";
   h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
   h+="<div style='flex:1;min-width:180px;background:rgba(94,139,158,0.08);border:1px solid #5e8b9e;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#5e8b9e;margin-bottom:4px'>前行</div>";
-  h+="<div style='font-size:0.8em;color:#6a7060'>内摄工程·界内定</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>四种观法·安那般那</div></div>";
+  h+="<div style='font-size:1.05em;font-weight:700;color:#5e8b9e;margin-bottom:4px'>禅修前行</div>";
+  h+="<div style='font-size:0.8em;color:#6a7060'>内摄工程</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>安般守意·四种观法</div></div>";
   h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
   h+="<div style='flex:1;min-width:180px;background:rgba(196,107,93,0.08);border:1px solid #c46b5d;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#c46b5d;margin-bottom:4px'>正行</div>";
-  h+="<div style='font-size:0.8em;color:#8a6060'>等持工程·界外定</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩呬多→三摩钵底→三摩地</div></div>";
+  h+="<div style='font-size:1.05em;font-weight:700;color:#c46b5d;margin-bottom:4px'>禅修正行</div>";
+  h+="<div style='font-size:0.8em;color:#8a6060'>等持工程（内观）</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩呬多→三摩钵底→三摩地</div></div>";
   h+="</div>";
 
   // ── 修行三阶段 ──
-  h+="<div class=section><h2>📐 修行三阶段</h2>";
-  h+="<div class=stage-box><b>一、资粮道 — 发心工程</b><br>三门必修: 人格健康+出离心+菩提心。含<b>五科</b>（戒·律·调身·调息·调心）。技术面: 纯化禅(动→静)→象限转移→瞬间定。工程面: 心性培养+戒律基础。</div>";
-  h+="<div class=stage-box><b>二、前行 — 内摄工程（界内定）</b><br>核心: 安那般那数息观(数.随.止.观.还.净)。观法次第: <b>驻佇心观</b>(停心前行)-><b>唯心识观</b>(钝根先修.毗钵舍那)-><b>真如实观</b>(利根直修.奢摩他)-><b>毗婆舍那</b>-><b>奢摩他</b>。训练重点: 调息安稳.气息有序.令心不外驰。详见「📐 禅观法要」子页。</div>";
-  h+="<div class=stage-box><b>三、正行 — 等持工程（界外定）</b><br>前半程三摩呬多→后半程三摩钵底→究竟三摩地。依杜顺法界三观，透过海印三昧呈现华严境界。课程配比: <b>70%修行面 + 30%健康面</b>。</div></div>";
+  h+="<div class=section><h2>📐 修行三阶段（据大华严寺官网「修行蓝图」2025.11）</h2>";
+  h+="<div class=stage-box><b>一、禅修入门 — 发心工程（资粮道）</b><br>三门必修: 人格健康+出离心+菩提心。含<b>五科</b>（戒·律·调身·调息·调心）。技术面: 纯化禅(动→静)→象限转移→瞬间定。工程面: 心性培养+戒律基础。官网: 「发心——出三界、入法界之志,建立信根与定位。」</div>";
+  h+="<div class=stage-box><b>二、禅修前行 — 内摄工程</b><br>核心: 安那般那数息观(数.随.止)。官网: 「调息安稳,气息有序;守意——令心不外驰,身息心三者逐步协同。」观法次第: <b>驻佇心观</b>(停心前行)-><b>唯心识观</b>(钝根先修.毗钵舍那)-><b>真如实观</b>(利根直修.奢摩他)-><b>毗婆舍那</b>-><b>奢摩他</b>。详见「📐 禅观法要」子页。</div>";
+  h+="<div class=stage-box><b>三、禅修正行 — 等持工程（内观）</b><br>前半程三摩呬多→后半程三摩钵底→究竟三摩地。官网: 「以观导定、以定成观,当下验果,不逐境界名相而重身心之柔和、稳定、清明。」课程配比: <b>70%修行面 + 30%健康面</b>。延伸: 一日禅·二日禅·忍可禅七。</div></div>";
 
   // ── 四阶段修行蓝图 ──
   h+="<div class=section><h2>🪜 四阶段修行蓝图（海云法师判摄）</h2>";
@@ -124,7 +124,7 @@ function renderPractice(){
   h+="<tr><td>止法+四种观法<br>(1)唯心识(初-二信)<br>(2)真如实(二信+)<br>(3)毗婆舍那(中信)<br>(4)奢摩他(后信)</td><td>四天王定->忉利定<br>->空居天定->色界定<br>->无色界定->出界定</td><td>初信~十信位<br><span style=font-size:.65em;color:var(--text2)>初果(初信)->四果(七信)->十信满心</span></td></tr>";
   h+="<tr><td rowspan=2><b>正行</b></td><td rowspan=2>等持工程<br><b>界外定</b></td><td rowspan=2>三摩呬多->三摩钵底<br>->三摩地(海印三昧)</td><td>杜顺法界三观<br>(真空绝相.理事无碍.周遍含容)</td><td>初禅定关口:<br>左转->四禅八定(外道)<br>右转->四果成就(解脱)</td><td>十信满心<br>->初住至七地(37位)</td></tr>";
   h+="<tr><td>四次灌顶<br>(1)忍可(破无明)<br>(2)行者(证初果)<br>(3)进阶(能所合一)<br>(4)高阶(能所双泯)</td><td>界外定.无功用行</td><td>八地至妙觉(5位)<br><b>共42位圆满</b></td></tr></table>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 出处: 海云继梦《四十华严讲记》第67讲(2009年2月26日开示, fjdh.cn 2013年10月发布逐字稿) . 大华严寺官网「修行蓝图: 华严禅观全程」(最后更新 2025年11月) . 《海云继梦禅观概论》(空庭书苑 2015年1月, ISBN 9789867484888) . 《迈向佛陀的境界——华严禅前行概论》(空庭书苑 2011年, ISBN 9789867484512)</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 三阶段架构名称据大华严寺官网「修行蓝图: 华严禅观全程」(2025年11月访问)。观法细节(四种观法/界内定界外定/果位对应等)据海云继梦《四十华严讲记》第67讲(2009.2.26)+《海云继梦禅观概论》(2015)+《迈向佛陀的境界》(2011)。凡官网与讲记表述有异处,以官网为框架、讲记为展开。</p>";
   h+="</div>";
 
   // ── 次第道与圆融道 ──
@@ -160,7 +160,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 第一阶段: 资粮道 ──
-  h+="<div class=section><h2>🔰 第一阶段: 资粮道</h2>";
+  h+="<div class=section><h2>🔰 第一阶段: 禅修入门 — 发心工程（资粮道）</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>资粮道是一切禅观的<b>基础准备</b>，约需1-3年。核心任务是<b>发心工程</b>——使行者从散乱中「静下来」。通过<b>「驻佇心观」(停心)</b>将心初步收摄，成为「堪受法器」后方可进入前行。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📋 制度性入门 — 修行不是DIY</span><div class=body>";
@@ -220,7 +220,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 第二阶段: 前行 ──
-  h+="<div class=section><h2>⚙️ 第二阶段: 前行 — 界内定.四种观法</h2>";
+  h+="<div class=section><h2>⚙️ 第二阶段: 禅修前行 — 内摄工程</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>前行是禅观体系的<b>核心训练阶段</b>，在<b>界内定</b>中进行。四种观法构成工程面主干，贯穿初信至十信位。前二种出自《占察善恶业报经》(T17n0839)，后二种是标准大乘止观。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🔧📐 技术面.工程面双轨详解</span><div class=body>";
@@ -304,8 +304,8 @@ function renderPractice(){
   h+="</div>";
 
   // ── 第三阶段: 正行 ──
-  h+="<div class=section><h2>🎯 第三阶段: 正行 — 界外定.等持工程</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>十信满心(能所双泯.照见五蕴皆空)之后,行者正式<b>「入法界」</b>,转入正行——<b>界外定</b>中的等持工程。依杜顺和尚「法界三观」,透过海印三昧契入华严性海。海云和上在《迈向佛陀的境界——华严禅前行概论》(空庭书苑 2011)中明确将法界三观作为华严禅正行的核心指导框架。</p>";
+  h+="<div class=section><h2>🎯 第三阶段: 禅修正行 — 等持工程（内观）</h2>";
+  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>十信满心之后,转入正行。<b>等持工程</b>为官网正式名称。前半程三摩呬多(samahita),后半程定慧等持(三摩钵底 samapatti),究竟等至(三摩地 samadhi)。官网: 「以观导定、以定成观,当下验果,端身正坐,置心风门,依次第而进,步步可检核。」海云和上在讲记中进一步以「界内定/界外定」区分前行与正行的禅定层次,并以杜顺法界三观为究竟指导。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🌐 杜顺法界三观 — 正行核心指导框架</span><div class=body>";
   h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>杜顺和尚(华严初祖)所立三重观法,是华严禅观正行的<b>究竟指导</b>。海云和上指出: 龙树将三法印汇归<b>一法印——空性</b>(真空绝相观);杜顺进一步推进为<b>理事无碍观</b>;最终倡<b>事事无碍观(周遍含容观)</b>——举事即能通事,无需再透过理的转辙,<b>此唯法身大士之行径</b>。</p>";
