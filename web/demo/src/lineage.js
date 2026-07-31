@@ -1058,6 +1058,7 @@ function animTick(){
   var step=Math.max(1,Math.min(20,Math.round(10-density*2)));
   animYear+=step;
   var pg=document.getElementById('anim-progress');if(pg)pg.value=animYear;
+  var py=document.getElementById('prog-year');if(py)py.textContent=animYear+'年';
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   // Stop AFTER processing year 2030
