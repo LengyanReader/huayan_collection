@@ -250,7 +250,7 @@ function renderGap(){
    {t:'显无边佛土功德经',n:'T0289·玄奘',p:'寿量品'},{t:'较量一切佛刹功德经',n:'T0290·法贤',p:'寿量品'},
    {t:'如来兴显经',n:'T0291·竺法护',p:'如来出现品'},{t:'度世品经',n:'T0292·竺法护',p:'离世间品'},
    {t:'罗摩伽经',n:'T0294·圣坚',p:'入法界品'},{t:'入法界品(续)',n:'T0295·地婆诃罗',p:'入法界品'}]
-  .forEach(function(b){var tn=b.n.match(/T\d+/)[0];var cbUrl='https://cbetaonline.dila.edu.tw/zh/'+tn.slice(0,2)+'n'+tn.slice(1);h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.08);border:1px solid rgba(94,139,158,0.3);border-radius:14px;font-size:0.73em'><b>"+b.t+"</b> <span style=color:var(--text2)>"+b.n+"</span><br><span style=font-size:0.85em;color:#5e8b9e>→ "+b.p+"</span><br><a href='"+cbUrl+"' target=_blank style=font-size:0.6em>📖 CBETA</a></span>";});
+  .forEach(function(b){var num=b.n.match(/T(\d+)/)[1];var cbUrl='https://cbetaonline.dila.edu.tw/zh/T10n'+num;h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.08);border:1px solid rgba(94,139,158,0.3);border-radius:14px;font-size:0.73em'><b>"+b.t+"</b> <span style=color:var(--text2)>"+b.n+"</span><br><span style=font-size:0.85em;color:#5e8b9e>→ "+b.p+"</span><br><a href='"+cbUrl+"' target=_blank style=font-size:0.6em>📖 CBETA</a></span>";});
   h+="</div></div>";
 
   // ── Related Sutras ──
