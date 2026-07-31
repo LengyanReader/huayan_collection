@@ -175,16 +175,18 @@ function renderPractice(){
   h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>五科(戒.律.调身.调息.调心)是资粮道的实操基础。海云和上指出: <b>身.息.心三者一体不二</b>——调息可及于调身,调身效果又可及于调心。实际行法中三者同时并行,非先后次第。核心著作: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984)。</p>";
 
   h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调身 — 毗卢遮那七支坐相</b></p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-bottom:4px>据海云和上《迈向佛陀的境界——华严禅前行概论》第六章「毗卢遮那七支坐法」(fjdh.cn收录全文)。和上强调:「七支坐相的目的,旨在调身……若人以此来摄心,即能顿证佛性海。」</p>";
   h+="<table class=v-table style=font-size:.7em;margin-bottom:6px><tr><th style=width:18%>支分</th><th>要点</th></tr>";
-  h+="<tr><td><b>(1)跏趺坐</b></td><td>双盘为佳,亦可单盘或金刚坐。臀部与两膝三点鼎立呈正三角形,久坐不倾</td></tr>";
-  h+="<tr><td><b>(2)手结定印</b></td><td>掌心向上,拇指轻拄。含「五心向上」(两掌心/两足心/顶门),令气流畅</td></tr>";
-  h+="<tr><td><b>(3)头正颈正</b></td><td>头不偏,收下颚。百会穴与海底穴重迭</td></tr>";
+  h+="<tr><td><b>(1)跏趺坐</b></td><td>双盘为佳,单盘或金刚坐亦可。臀与两膝三点鼎立成正三角形,稳固久坐不倾</td></tr>";
+  h+="<tr><td><b>(2)手结定印</b></td><td>两掌相迭掌心向上,拇指轻拄(指甲碰指甲即可)。「五心向上」(两掌心/两足心/顶门)令气流畅</td></tr>";
+  h+="<tr><td><b>(3)头正颈正</b></td><td>头不左右偏。「头正、颈正」与「脊直、肩平」构成十字形</td></tr>";
   h+="<tr><td><b>(4)脊直肩平</b></td><td>脊椎挺直,两肩平正放松,神经/血液/内分泌系统自然运作</td></tr>";
-  h+="<tr><td><b>(5)眼平视</b></td><td>眼帘自然下垂,取「三分慈眼」,外尘不侵</td></tr>";
-  h+="<tr><td><b>(6)舌抵腭</b></td><td>舌尖轻顶上颚齿龈处,口水自然从舌根两旁下流入咽喉</td></tr>";
-  h+="<tr><td><b>(7)三角点</b></td><td>双腿与臀部三点均匀着地,身体重量均匀分布</td></tr></table>";
+  h+="<tr><td><b>(5)眼平视</b></td><td>眼帘自然下垂以遮光为度,取「三分慈眼」。「此三相摄三千威仪」(头正/脊直/眼平视)</td></tr>";
+  h+="<tr><td><b>(6)舌抵颚</b></td><td>舌尖轻顶上颚齿龈(上门牙牙龈处),口水自然由舌根两旁下流入咽喉</td></tr>";
+  h+="<tr><td><b>(7)收下颚</b></td><td>头不前后偏,百会穴与海底穴重迭。如此方能「经劫不替」,久坐不倾</td></tr></table>";
 
   h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调息 — 息之四相与数息法</b></p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-bottom:4px>息之四相出自智者大师《释禅波罗蜜次第法门》,海云和上在《禅修前行》第六集(fjdh.cn 2013.11)中引用并详加解说: 「守风则散,守喘则结,守气则劳,守息即定。」</p>";
   h+="<table class=v-table style=font-size:.7em;margin-bottom:4px><tr><th>息相</th><th>特征</th><th>含义/对治</th></tr>";
   h+="<tr><td><b>风相</b></td><td>鼻息粗重,出入有声</td><td>身心不安宁->先安心,放下身心世界</td></tr>";
   h+="<tr><td><b>喘相</b></td><td>息无声但出入结滞不通</td><td>身体多病->宽放身体,放松情绪</td></tr>";
@@ -202,7 +204,7 @@ function renderPractice(){
 
   h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 入相.住相.出相 — 一座禅修的三阶段</b></p>";
   h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px><b>入相(由粗到细):</b> 调身(七支坐相)->调息(觉息相.数息)->调心(治沉浮宽急)。<b>住相(住于细中):</b> 摄心于息,同时觉知身.息.心三相是否调和,随觉随治。<b>出相(由细到粗):</b> 先放心异缘(调心)->开口放气,息从百脉散(调息)->微动身躯.肩臂.头颈.双足,揉毛孔.摩掌熨眼(调身),待身热后方可出入,站定后拍打全身。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984) . 《禅修正行》第12集(fjdh.cn 2013.11).《禅修前行》第6集(fjdh.cn 2013.11) . <a href='https://play.google.com/store/books/details?id=QREREAAAQBAJ' target=_blank>Google Play预览</a></p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984) . 七支坐相原文: 海云和上《迈向佛陀的境界——华严禅前行概论》第六章(fjdh.cn 2013.11) <a href='https://www.fjdh.cn/wumin/2013/11/183343302811.html' target=_blank>全文</a> . 《禅修正行》第12集 . 《禅修前行》第6集 . <a href='https://play.google.com/store/books/details?id=QREREAAAQBAJ' target=_blank>Google Play</a></p>";
   h+="</div></div>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🧱 驻佇心观(停心工程) — 一切禅观的根本前行</span><div class=body>";
