@@ -23,7 +23,7 @@ function renderCosmology(){
   h+='<span style=font-size:0.7em;color:var(--text2)>滚轮缩放 | 点击世界层查看详情 | 金色=娑婆世界</span>';
   h+='<div style=display:flex;gap:16px;flex-wrap:wrap><div style=flex:1.5;min-width:380px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-canvas style=max-width:100%></canvas></div><div style=flex:1;min-width:200px><div id=cosmo-info></div><div class=section style=margin-top:8px><h3 style=color:var(--gold)>📐 结构(从下至上)</h3><p style=font-size:0.78em;line-height:1.9>⑩~① 十重风轮<br>无边妙华光香水海<br>一切香摩尼宝庄严大莲华<br>第1~20重世界<br>★第13重: 娑婆世界(我们所在)<br>一一世界有微尘数佛刹围绕</p></div></div></div>';
   // ── 三界诸天图 ──
-  h+='<div class=section style=margin-top:16px><h2>📐 三界诸天图 · 欲界·色界·无色界</h2><p style=font-size:0.78em;color:var(--text2)>据《华严经》及阿毗达磨诸论。华严七处九会横跨欲界(人间+天上)与色界诸天。此图以层叠塔式展示二十八天。</p>';
+  h+='<div class=section style=margin-top:16px><h2>📐 三界诸天·修行对应图 — 海云继梦法师修行体系</h2><p style=font-size:0.78em;color:var(--text2)>据大华严寺官网「华严禅观全程一览表」及海云法师《四十华严讲记》《华严禅行法》系列。二十八天对应<b>三阶修行次第</b>(前行/正行/妙行) + <b>十信位果位</b>(初信~入法界) + <b>禅定进路</b>(四天王定→狮子频申三昧)。源: 大华严寺官网 + fjdh.cn讲记逐字稿</p>';
   h+='<div style=text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-tower style=max-width:100%></canvas></div></div>';
   cv.innerHTML=h;
   var c=document.getElementById("cosmo-canvas");if(!c)return;
@@ -88,67 +88,78 @@ function clickCosmo(e){
   }
   if(d<_minR*2){COSMO.sel=null;var inf=document.getElementById('cosmo-info');if(inf){inf.style.display='block';inf.innerHTML='<h3 style=color:var(--gold)>卍 毗卢遮那佛</h3><p>华严经根本教主。梵名Vairocana,意译<b>光明遍照</b>。法身遍一切处,为华藏世界海之本体。</p><p style=font-size:0.72em;color:var(--text2)>「佛身充满于法界,普现一切众生前;随缘赴感靡不周,而恒处此菩提座。」</p>';}drawCosmo();}
 }
-// ═══ 三界诸天图 ═══
+// ═══ 三界诸天·修行对应图(海云法师体系) ═══
 function drawTower(){
   var c2=document.getElementById("cosmo-tower");if(!c2)return;
-  var W=Math.min(700,c2.parentElement.clientWidth-30);var H=Math.max(500,W*1.2);
+  var W=Math.min(900,c2.parentElement.clientWidth-30);var H=Math.max(560,W*0.9);
   c2.width=W;c2.height=H;c2.style.width=W+'px';c2.style.height=H+'px';
-  var ctx=c2.getContext("2d"),cx=W/2;
+  var ctx=c2.getContext("2d");
   ctx.fillStyle='#fdfaf3';ctx.fillRect(0,0,W,H);
 
+  // ── Layout columns ──
+  var colX={practice:10,heaven:140,bar:280,stage:560,method:680};
+  var colW={practice:120,heaven:40,bar:260,stage:120,method:180};
+  var top=40,bot=30,avail=H-top-bot;
+
   var data=[
-    {n:'非想非非想处天',d:'有顶天·三界之顶',c:'rgba(180,170,210,0.12)',tc:'#8b7a9e',tp:'无色界'},
-    {n:'无所有处天',d:'',c:'rgba(180,170,210,0.08)',tc:'#8b7a9e',tp:'无色界'},
-    {n:'识无边处天',d:'',c:'rgba(180,170,210,0.08)',tc:'#8b7a9e',tp:'无色界'},
-    {n:'空无边处天',d:'无色的禅定境界',c:'rgba(180,170,210,0.08)',tc:'#8b7a9e',tp:'无色界'},
-    {n:'色究竟天',d:'色界之顶·五净居天',c:'rgba(150,180,200,0.12)',tc:'#5e8b9e',tp:'色界'},
-    {n:'善现天·善见天·无热天·无烦天',d:'五净居(四禅)',c:'rgba(150,180,200,0.10)',tc:'#5e8b9e',tp:'色界'},
-    {n:'无云天·福生天·广果天',d:'四禅三天',c:'rgba(150,180,200,0.09)',tc:'#5e8b9e',tp:'色界'},
-    {n:'少净天·无量净天·遍净天',d:'三禅三天',c:'rgba(160,190,210,0.09)',tc:'#5e8b9e',tp:'色界'},
-    {n:'少光天·无量光天·光音天',d:'二禅三天',c:'rgba(170,200,220,0.09)',tc:'#5e8b9e',tp:'色界'},
-    {n:'梵众天·梵辅天·大梵天',d:'初禅三天',c:'rgba(180,210,230,0.09)',tc:'#5e8b9e',tp:'色界'},
-    {n:'他化自在天',d:'魔王波旬所居',c:'rgba(210,160,140,0.12)',tc:'#c46b5d',tp:'欲界'},
-    {n:'化乐天',d:'',c:'rgba(210,160,140,0.10)',tc:'#c46b5d',tp:'欲界'},
-    {n:'兜率天',d:'弥勒菩萨内院',c:'rgba(210,160,140,0.10)',tc:'#c46b5d',tp:'欲界'},
-    {n:'夜摩天',d:'',c:'rgba(210,160,140,0.10)',tc:'#c46b5d',tp:'欲界'},
-    {n:'忉利天(三十三天)',d:'帝释天所居·须弥山顶',c:'rgba(200,155,135,0.12)',tc:'#c46b5d',tp:'欲界'},
-    {n:'四天王天',d:'须弥山腰·四大天王',c:'rgba(200,155,135,0.10)',tc:'#c46b5d',tp:'欲界'},
-    {n:'人间(南赡部洲等四大洲)',d:'我们所在·释迦成道处',c:'rgba(184,134,60,0.18)',tc:'#b8863c',tp:'人间',hl:true},
-    {n:'畜生·饿鬼·地狱(三恶道)',d:'',c:'rgba(140,120,100,0.10)',tc:'#8a7060',tp:'恶道'}
+    {n:'非想非非想处天',tp:'无色界',tc:'#8b7a9e',c:'rgba(180,170,210,0.12)',
+     prac:'妙行·圆融道',xin:'入法界',ding:'狮子频申三昧(华严大定)'},
+    {n:'无所有处天',tp:'无色界',tc:'#8b7a9e',c:'rgba(180,170,210,0.08)',ding:'狮子奋迅三昧'},
+    {n:'识无边处天',tp:'无色界',tc:'#8b7a9e',c:'rgba(180,170,210,0.08)',xin:'照见·能所双泯',ding:'超越三昧'},
+    {n:'空无边处天',tp:'无色界',tc:'#8b7a9e',c:'rgba(180,170,210,0.08)',xin:'十信圆满(照见五蕴空)',ding:'九次第定(灭尽定)'},
+    {n:'色究竟天',tp:'色界',tc:'#5e8b9e',c:'rgba(150,180,200,0.12)',
+     prac:'正行·等持工程(界外定)',xin:'九信·我执法执双破',ding:'四禅(舍念清净)'},
+    {n:'善现·善见·无热·无烦天',tp:'色界',tc:'#5e8b9e',c:'rgba(150,180,200,0.10)',xin:'八信·发心破法执'},
+    {n:'无云·福生·广果天',tp:'色界',tc:'#5e8b9e',c:'rgba(150,180,200,0.09)',xin:'七信·四果(破我执)',ding:'四禅'},
+    {n:'少净·无量净·遍净天',tp:'色界',tc:'#5e8b9e',c:'rgba(160,190,210,0.09)',xin:'六信·四果向',ding:'三禅'},
+    {n:'少光·无量光·光音天',tp:'色界',tc:'#5e8b9e',c:'rgba(170,200,220,0.09)',xin:'五信·三果',ding:'二禅'},
+    {n:'梵众·梵辅·大梵天',tp:'色界',tc:'#5e8b9e',c:'rgba(180,210,230,0.09)',xin:'三信·运用观照技术',ding:'初禅'},
+    {n:'他化自在天',tp:'欲界',tc:'#c46b5d',c:'rgba(210,160,140,0.12)',
+     prac:'正授行法·第3~5次灌顶',xin:'二信·确认菩提心',ding:'未到定'},
+    {n:'化乐天',tp:'欲界',tc:'#c46b5d',c:'rgba(210,160,140,0.10)'},
+    {n:'兜率天',tp:'欲界',tc:'#c46b5d',c:'rgba(210,160,140,0.10)',ding:'弥勒菩萨内院'},
+    {n:'夜摩天',tp:'欲界',tc:'#c46b5d',c:'rgba(210,160,140,0.10)'},
+    {n:'忉利天(三十三天)',tp:'欲界',tc:'#c46b5d',c:'rgba(200,155,135,0.12)',
+     prac:'第一次灌顶·忍可灌顶',xin:'初信·舍识用根',ding:'忉利定/妙高定'},
+    {n:'四天王天',tp:'欲界',tc:'#c46b5d',c:'rgba(200,155,135,0.10)',xin:'煖法·顶法·忍法',ding:'四天王定'},
+    {n:'人间(南赡部洲)',tp:'人间',tc:'#b8863c',c:'rgba(184,134,60,0.18)',
+     prac:'前行·内摄工程(界内定)',xin:'资粮道·发心工程',ding:'欲界定·安般守意'},
+    {n:'畜生·饿鬼·地狱',tp:'恶道',tc:'#8a7060',c:'rgba(140,120,100,0.10)',prac:'五科·人格养成(70分以上)',ding:'起点·凡夫位'}
   ];
 
-  var margin=16,top=30,bot=40;
-  var avail=H-top-bot;
-  var barH=(avail/data.length)*0.7, gap=(avail/data.length)*0.3;
-  var minW=80,maxW=Math.min(500,W-80);
+  // ── Column headers ──
+  ctx.fillStyle='#b8863c';ctx.font='bold 12px Microsoft YaHei';
+  ctx.fillText('修行次第(海云法师体系)',colX.practice,top-12);
+  ctx.fillText('二十八天',colX.heaven,top-12);
+  ctx.fillText('十信位·果位',colX.stage,top-12);
+  ctx.fillText('禅定进路',colX.method,top-12);
 
-  // Header
-  ctx.fillStyle='#b8863c';ctx.font='bold 13px Microsoft YaHei';
-  ctx.fillText('二十八天 · 三界诸天图',cx-90,top-6);
-
-  // Bars
+  // ── Bars ──
+  var barH=(avail/data.length)*0.72,gap=(avail/data.length)*0.28;
   for(var i=0;i<data.length;i++){
-    var d=data[i];
-    var y=top+i*(avail/data.length);
-    var isWide=d.hl||(d.n.length>10);
-    var bw=isWide?maxW:minW+(maxW-minW)*0.3;
-    // Bar
-    ctx.fillStyle=d.c;ctx.fillRect(cx-bw/2,y,bw,barH);
-    ctx.strokeStyle=d.tc;ctx.lineWidth=1;ctx.strokeRect(cx-bw/2,y,bw,barH);
-    // Label
-    ctx.fillStyle=d.tc;ctx.font=(d.hl?'bold 11':'9')+'px Microsoft YaHei';
-    ctx.fillText(d.n,cx-ctx.measureText(d.n).width/2,y+barH/2+3);
-    // Description
-    if(d.d){ctx.fillStyle='#a09080';ctx.font='8px Microsoft YaHei';ctx.fillText(d.d,cx+bw/2+6,y+barH/2+3);}
+    var d=data[i],y=top+i*(avail/data.length);
+    // Practice column
+    if(d.prac){ctx.fillStyle=d.tc;ctx.font='bold 9px Microsoft YaHei';ctx.fillText(d.prac,colX.practice,y+barH/2+3);ctx.strokeStyle=d.tc+'40';ctx.lineWidth=0.5;ctx.setLineDash([2,4]);ctx.beginPath();ctx.moveTo(colX.practice+colW.practice,y+barH/2);ctx.lineTo(colX.heaven,y+barH/2);ctx.stroke();ctx.setLineDash([]);}
+    // Heaven bar
+    ctx.fillStyle=d.c;ctx.fillRect(colX.bar-60,y,60,barH);
+    ctx.strokeStyle=d.tc;ctx.lineWidth=1;ctx.strokeRect(colX.bar-60,y,60,barH);
+    ctx.fillStyle=d.tc;ctx.font='9px Microsoft YaHei';ctx.fillText(d.n,colX.bar-56,y+barH/2+3);
+    // // Heaven type label
+    ctx.fillStyle=d.tc+'80';ctx.font='8px Microsoft YaHei';ctx.fillText(d.tp,colX.heaven,y+barH/2+3);
+    // Stage (xin)
+    if(d.xin){ctx.fillStyle='#5c5040';ctx.font='8px Microsoft YaHei';ctx.fillText(d.xin,colX.stage,y+barH/2+3);}
+    // Method (ding)
+    if(d.ding){ctx.fillStyle='#8a7a6a';ctx.font='8px Microsoft YaHei';ctx.fillText(d.ding,colX.method,y+barH/2+3);}
   }
 
-  // Legend
-  var lx=8,ly=H-20;
-  [{n:'无色界(4天)',c:'#8b7a9e'},{n:'色界(18天)',c:'#5e8b9e'},{n:'欲界(6天)',c:'#c46b5d'},{n:'人间·恶道',c:'#b8863c'}].forEach(function(lg){
+  // ── Legend at bottom ──
+  var lx=8,ly=H-18;
+  [{n:'无色界(妙行)',c:'#8b7a9e'},{n:'色界(正行)',c:'#5e8b9e'},{n:'欲界(前行)',c:'#c46b5d'},{n:'人间·恶道',c:'#b8863c'}].forEach(function(lg){
     ctx.fillStyle=lg.c;ctx.fillRect(lx,ly-8,10,10);
-    ctx.fillStyle='#5c5040';ctx.font='9px Microsoft YaHei';ctx.fillText(lg.n,lx+13,ly+1);
-    lx+=ctx.measureText(lg.n).width+24;
+    ctx.fillStyle='#5c5040';ctx.font='9px Microsoft YaHei';ctx.fillText(lg.n,lx+12,ly+1);
+    lx+=ctx.measureText(lg.n).width+20;
   });
+  ctx.fillStyle='#a09080';ctx.font='8px Microsoft YaHei';ctx.fillText('源: 大华严寺官网·华严禅观全程一览表 + 海云继梦《四十华严讲记》',lx+10,ly+1);
 }
 
 function showCosmoInfo(ly,i){
