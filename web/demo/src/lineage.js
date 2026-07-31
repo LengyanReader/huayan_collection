@@ -1029,7 +1029,9 @@ function animTick(){
   var speedLabel=document.getElementById('speed-label');
   var delay=getAnimSpeed();
   if(speedLabel){var x=(225/delay).toFixed(1);speedLabel.textContent=(x==='1.0'?'1':x)+'x';}
-  animYear+=5; // smaller step = won't skip waypoints
+  // Variable step: faster ancient, normal historical, slow modern
+  var step=animYear<-300?20:animYear<1700?5:3;
+  animYear+=step;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   // Stop AFTER processing year 2030
