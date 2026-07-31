@@ -218,16 +218,62 @@ function renderPractice(){
   h+="<p style=font-size:0.78em;color:var(--gold);margin-bottom:2px><b>📜 经典出处</b></p>";
   h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>《占察善恶业报经》卷下：「若欲依一实境界修信解者，应当学习二种观道。何等为二？一者唯心识观，二者真如实观。」「其利根者……即应学习真如实观。其钝根者……应当先学唯心识观。」海云法师称此经为<b>「小本华严」</b>——「禅观下手处的工程面就在《占察善恶业报经》里面。」<br>📎 <a href='https://cbeta.buddhism.org.hk/xml/T17/T17n0839_002.xml' target=_blank>CBETA 大正藏 T17n0839 原文</a></p>";
 
+  // ── 利钝分判 ──
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>📌 利钝分判 — 入道次第的选择依据</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:6px>《占察经》明确指出二种观道的适用根器：<b>利根者</b>——「先已能知一切外诸境界，唯心所作，虚诳不实，如梦如幻等，决定无有疑虑。阴盖轻微，散乱心少」→ 直修真如实观。<b>钝根者</b>——「未能知一切外诸境界悉唯是心，虚诳不实故，染著情厚，盖障数起，心难调伏」→ 先修唯心识观。海云法师补充：钝根者先以<b>唯心识观「守记内心」摄心</b>，令妄想初步降伏、心能初步调伏后，方可转入真如实观。此即<b>「由相入性」</b>的修行路径——从照见诸法唯心的「相」入手，渐达心性无生无灭的「性」体。</p>";
+
   // 唯心识观详情
-  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>🔹 ① 唯心识观（初-二信位·四天王定/忉利定·自省三业）</b></p>";
-  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>「学唯心识观者，所谓于一切时一切处，随身口意所有作业，悉当观察，<b>知唯是心</b>。……常应如是守记内心，知唯妄念，无实境界，勿令休废。」</p>";
-  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px><b>两大修行重点：</b>（正面）<b>守记内心</b>——对身·语·意三业念念清楚、事事明白；（反面）<b>避免无记攀缘</b>——口头禅（「嗯…」「这个…」）、无意识撩头发、摸鼻子等惯性动作。</p>";
-  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px><b>具体训练（「让妄想摄心」）：</b>海云法师2013年高雄《占察经》开示中给出：①<b>闭眼抬手训练：</b>「坐着，眼睛闭起来，手慢慢抬起来——手在哪里？你知道吗？手在做什么？你知道吗？要很清楚地感知到。」②<b>行禅：</b>脚步慢慢抬起→停→慢慢放下，对每个动作细节都清清楚楚了知。③<b>心法口诀：</b>「唯心识观就是不用大脑——停止五官、五尘、五识的识性运作，让灵性生命浮现出来。」</p>";
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>🔹 ① 唯心识观 — 毗钵舍那（观）·法相宗所依·钝根先修</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>定位：初信~二信位（四天王定/忉利定）。工程内容：<b>自省三业</b>（身·语·意），在定中境中唯观自身一切三业「唯心生、唯心灭」。<b>四天王定</b>（Cāturmahārājika-samādhi）是行者从「定外境」转入「定内境」、正式在界内定中正用心的起点，属坚信位的「煖法」；<b>忉利定</b>（Trayastrimśa-samādhi）属「顶法」，善用心中之疑惑晃动已除，不仅唯见三业之既成，更能见到「三业中心之所由起」。</p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>「学唯心识观者，所谓于一切时一切处，随身口意所有作业，悉当观察，<b>知唯是心</b>。乃至一切境界，若心住念，皆当察知，勿令使心无记攀缘，不自觉知。于念念间，悉应观察。」<br>「当知一切境界自无分别想故……一切法唯心想生。若使离心，则无一法一相而能自见有差别也。」</p>";
+
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>两大修行重点</b></p>";
+  h+="<table class=v-table style=font-size:0.78em;margin-bottom:6px><tr><th style=width:18%>要点</th><th style=width:37%>说明</th><th style=width:45%>海云法师开示</th></tr>";
+  h+="<tr><td><b>守记内心</b><br>（正面训练）</td><td>对身·语·意三业念念清楚、事事明白，每一个动作细节都清清楚楚了知。核心口诀：「知唯妄念，无实境界，勿令休废」</td><td>「你对你所讲的话跟你的行为，你都要很清楚明白。假如不清楚，那就叫作无记攀缘。」</td></tr>";
+  h+="<tr><td><b>避免无记攀缘</b><br>（反面警惕）</td><td>心不知自己在做什么的惯性行为——口头禅（「嗯…」「这个…」）、无意识撩头发、摸鼻子等。当处于无记攀缘时，「心就用不上」</td><td>「当你处于无记攀缘时，心就用不上——你对自己的身语意业观得不清楚，因为全是惯性。」</td></tr>";
+  h+="</table>";
+
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>具体训练方法（「让妄想摄心」）</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>海云法师在2013年高雄《占察经》开示中给出具体操作——原理是<b>「让妄想摄心」</b>：因为专注感知身体动作时，没有办法想别的东西，一想别的，动作去了哪里就不知道了：<br>① <b>闭眼抬手训练：</b>「坐着，眼睛闭起来，手慢慢抬起来——手在哪里？你知道吗？手在做什么？你知道吗？要很清楚地感知到，清清楚楚地知道。」<br>② <b>行禅：</b>走路走得很慢，脚步慢慢抬起→停→慢慢放下，对每一个动作细节都清清楚楚了知——「这个就是唯心识观。」<br>③ <b>心法口诀：</b>「唯心识观就是不用大脑——停止五官、五尘、五识的识性运作，让灵性生命浮现出来。」法师强调：修行第一步就是<b>区别生命跟身体的分离性</b>，这样才能用灵性而不用大脑。</p>";
+
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>修行成就</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>得<b>「色寂三昧」</b>——「当知如是唯心识观，名为最上智慧之门。所谓能令其心猛利，长信解力，疾入空义，得发无上大菩提心故。」（入圆五品观行即佛位）</p>";
 
   // 真如实观详情
-  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>🔹 ② 真如实观（二信位+·忉利定+·观五蕴流转）</b></p>";
-  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>「若学习真如实观者，思惟心性<b>无生无灭</b>，不住见闻觉知，永离一切分别之想，渐渐能过空处、识处、无少处、非想非非想处等定境界相，得<b>相似空三昧</b>。」「展转能入<b>心寂三昧</b>……即复能入<b>一行三昧</b>。入是一行三昧已，见佛无数，发深广行心，住<b>坚信位</b>。」</p>";
-  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px><b>修行要义：</b>①不缘外境、反观自性——类似观音菩萨「反闻闻自性」；②超越四空定——不走四禅八定之路；③照见五蕴皆空——「识想受行粗分别相不现在前」。海云判摄：「唯心识观是让你了解这个心的存在跟作用——它像流水一样，前念接后念，一直过来。真如实观就是直接去看那个源头——心性的本源，无生无灭的那个。」</p>";
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>🔹 ② 真如实观 — 奢摩他（止）·法性宗所依·利根直修</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>定位：二信位及以上（忉利定及以上）。工程内容：<b>观五蕴流转</b>——进一步观察五蕴（色·受·想·行·识）的生灭流转。与唯心识观的差别：唯心识观看「身语意三业（表层活动）」，真如实观深入看「五蕴（身心基本元素）」的微观生灭。法理依据：大乘起信论「一心开二门」——唯心识观对「心生灭门」，真如实观对「心真如门」。</p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>「若学习真如实观者，思惟心性<b>无生无灭</b>，不住见闻觉知，永离一切分别之想，渐渐能过空处、识处、无少处、非想非非想处等定境界相，得<b>相似空三昧</b>。」<br>「得相似空三昧时，识想受行粗分别相不现在前……展转能入<b>心寂三昧</b>。得是三昧已，即复能入<b>一行三昧</b>。入是一行三昧已，见佛无数，发深广行心，住<b>坚信位</b>。」</p>";
+
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>修行要义（四点）</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>① <b>不缘外境、反观自性：</b>类似观音菩萨「反闻闻自性」——「永离一切分别之想」，不缘一切外境，直接体证心性本自不生不灭。<br>② <b>超越四空定：</b>渐渐能过空无边处、识无边处、无所有处、非想非非想处——不走四禅八定之路，直接以心性观照穿透诸定境界。<br>③ <b>照见五蕴皆空：</b>「识想受行粗分别相不现在前」——即《心经》「照见五蕴皆空」的境界，超越三界六道。<br>④ <b>海云判摄 — 二观之心体差异：</b>「唯心识观是让你了解这个心的存在跟作用——它像<b>流水</b>一样，前念接后念，一直过来。真如实观就是直接去看那个<b>源头</b>——心性的本源，无生无灭的那个。」唯心识观看「心之用」（生灭门），真如实观看「心之体」（真如门）。</p>";
+
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>修证次第</b></p>";
+  h+="<table class=v-table style=font-size:0.78em;margin-bottom:6px><tr><th style=width:22%>证量</th><th>说明</th></tr>";
+  h+="<tr><td><b>相似空三昧</b></td><td>初步证入，识想受行粗分别相不现前。超越四空定等境界相。对应二信位以上（忉利定·顶法）</td></tr>";
+  h+="<tr><td><b>心寂三昧</b></td><td>「从是修学，为善知识大慈悲者守护长养，是故离诸障碍，勤修不废」——须善知识勘定护持的深化阶段</td></tr>";
+  h+="<tr><td><b>一行三昧</b></td><td>见佛无数，发深广行心，住坚信位——于奢摩他、毗婆舍那二种观道决定信解，能决定向</td></tr>";
+  h+="</table>";
+
+  // 毗婆舍那观详情
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>🔹 ③ 毗婆舍那观（Vipaśyanā） — 深化观照·中信位·六根六尘六识</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>定位：中信位（约五~六信位），禅定层次为欲界空居天定→色界定。此观法系标准大乘止观中的「观」（毗钵舍那），在海云法师《普贤乘禅观行法初探》中有系统论述。包含<b>两个递进层面</b>：</p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px">① <b>观照六根、六尘相接时的六识流动:</b>不仅观看三业(身语意),更进一步观看六根(眼耳鼻舌身意)与六尘(色声香味触法)接触时,六识(眼识-意识)如何生起、流动、灭去。这比唯心识观的「守记内心」更为精微——从行为的觉知深入到<b>感知通道本身的运作机制</b>。</p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px">② <b>照住色与受之间的动态止观:</b>「色」(物质性感受-身触)与「受」(心理性感受-苦乐舍)之间的细微边界。照住此处的「动」(受的生起)与「止」(受的灭去),是五蕴观照的深化。成就:<b>渐舍五识</b>(眼耳鼻舌身五识的粗分别作用逐渐止息),进入色界定。</p>";
+
+  // 奢摩他观详情
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>🔹 ④ 奢摩他观（Śamatha） — 究竟止观·后信位·能所双泯</b></p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px>定位：后信位（七~十信位），禅定层次为无色界定→出界定。这是四种观法的<b>最高层次</b>，也是前行阶段的终点——十信满心·入法界的最后关隘：</p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px">① <b>舍意识:</b>三界定功总纲——欲界定舍妄念(唯心识观/真如实观已完成)-色界定舍五识(毗婆舍那观已完成)-<b>无色界定舍意识(奢摩他观的核心任务)</b>。此时连最微细的意识分别也须放下。</p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px">② <b>能所双泯:</b>观照-照住-照见的最高阶段——完全泯除观察者(能)与被观察对象(所)的二元对立。此即《心经》「照见五蕴皆空」——注意是「照见」而非「观想」或「思维」。「照见」意味着无需通过概念中介,直观证知。</p>";
+  h+="<p style=font-size:0.78em;line-height:1.8;margin-bottom:4px">③ <b>入正真位·十信满心:</b>成就奢摩他观究竟后,得「能所双泯」,十信位圆满,正式「入法界」,成<b>圆教初住位</b>。从此转入正行——界外定中的等持工程。</p>";
+
+  h+="<p style=font-size:0.8em;color:var(--gold);margin-bottom:2px><b>📐 三界定功总纲（海云法师判摄）</b></p>";
+  h+="<table class=v-table style=font-size:0.78em;margin-bottom:6px><tr><th>界定层次</th><th>核心工程</th><th>对应观法</th><th>对应信位</th></tr>";
+  h+="<tr><td><b>欲界定</b></td><td>捨妄念</td><td>唯心识观 + 真如实观</td><td>初信~四信位</td></tr>";
+  h+="<tr><td><b>色界定</b></td><td>捨五识</td><td>毗婆舍那观</td><td>五信~六信位</td></tr>";
+  h+="<tr><td><b>无色界定</b></td><td>捨意识</td><td>奢摩他观</td><td>七信~九信位</td></tr>";
+  h+="<tr><td><b>出界定</b></td><td>能所双泯·入法界</td><td>奢摩他观究竟</td><td>十信满心</td></tr>";
+  h+="</table>";
 
   h+="<p style=font-size:0.72em;color:var(--text2);margin-top:6px>📎 出处：《非常占察经》讲记三册(空庭书苑 2015-2017, ISBN 9789867484918/4932/4949) · 播客「普賢乘華嚴宗」S18(46集) · <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>🎙 Apple Podcast</a> · <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>🎧 Spotify</a> · <a href='https://www.youtube.com/results?search_query=%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2+%E5%8D%A0%E5%AF%9F%E7%B6%93' target=_blank>▶ YouTube</a> · <a href='https://search.bilibili.com/all?keyword=%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6+%E5%8D%A0%E5%AF%9F%E5%96%84%E6%81%B6%E4%B8%9A%E6%8A%A5%E7%BB%8F' target=_blank>📺 Bilibili</a> · <a href='https://www.fjdh.cn/wumin/2013/09/155711285715.html' target=_blank>fjdh.cn: 让妄想摄心的训练(全文)</a></p>";
   h+="</div></div>";
