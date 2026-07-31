@@ -228,7 +228,16 @@ function renderPractice(){
 
   // ── 第三阶段: 正行 ──
   h+="<div class=section><h2>🎯 第三阶段: 正行 — 界外定.等持工程</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>十信满心(能所双泯.照见五蕴皆空)之后,行者正式<b>「入法界」</b>,转入正行——<b>界外定</b>中的等持工程。依杜顺和尚「法界三观」,透过海印三昧契入华严性海。</p>";
+  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>十信满心(能所双泯.照见五蕴皆空)之后,行者正式<b>「入法界」</b>,转入正行——<b>界外定</b>中的等持工程。依杜顺和尚「法界三观」,透过海印三昧契入华严性海。海云和上在《迈向佛陀的境界——华严禅前行概论》(空庭书苑 2011)中明确将法界三观作为华严禅正行的核心指导框架。</p>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🌐 杜顺法界三观 — 正行核心指导框架</span><div class=body>";
+  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>杜顺和尚(华严初祖)所立三重观法,是华严禅观正行的<b>究竟指导</b>。海云和上指出: 龙树将三法印汇归<b>一法印——空性</b>(真空绝相观);杜顺进一步推进为<b>理事无碍观</b>;最终倡<b>事事无碍观(周遍含容观)</b>——举事即能通事,无需再透过理的转辙,<b>此唯法身大士之行径</b>。</p>";
+  h+="<table class=v-table style=font-size:.72em;margin-bottom:6px><tr><th>观法</th><th>对应法界</th><th>核心义理</th><th>海云法师判摄</th></tr>";
+  h+="<tr><td><b>(1)真空绝相观</b></td><td>理法界</td><td>会色归空,明空即色,空色无碍。一切法当体即空</td><td>龙树空性一法印之极致——理无碍即阿罗汉空性观</td></tr>";
+  h+="<tr><td><b>(2)理事无碍观</b></td><td>理事无碍法界</td><td>理遍于事,事遍于理。理(真如)不碍事(万象),事不碍理</td><td>事无碍即生活中的一切事物——「吾辈行者,亦当力行乎此」</td></tr>";
+  h+="<tr><td><b>(3)周遍含容观</b></td><td>事事无碍法界</td><td>事如理融,遍摄无碍。如因陀罗网,一即一切,重重无尽</td><td>举事即通事,不经理之转辙——唯法身大士境界。即海印三昧现前</td></tr></table>";
+  h+="<p style=font-size:.7em;color:var(--text2)>📎 出处: 杜顺《法界观门》 . 海云继梦《迈向佛陀的境界》(空庭书苑 2011) . <a href='http://wuming.xuefo.net/nr/6/59482.html' target=_blank>事事无碍周遍含融(fjdh.cn)</a></p>";
+  h+="</div></div>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>💠 正授行法 — 四次灌顶制度</span><div class=body>";
   h+="<table class=v-table style=font-size:.78em><tr><th>灌顶</th><th>目标</th><th>关键</th></tr>";
@@ -256,6 +265,40 @@ function renderPractice(){
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>三.事理圆融门(大乘终教)</span><div class=body>空有不二,理事圆融无碍。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 真如实观——理(真如)与事(五蕴流转)融合的义理背景。</span></div></div>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>四.语观双绝门(大乘顿教)</span><div class=body>言语道断,心行处灭。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 奢摩他观——「舍意识」「能所双泯」的义理背景。</span></div></div>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>五.华严三昧门(一乘圆教.究竟)</span><div class=body>见法界缘起之相——万象影现,一即一切、圆融无碍。此即海印三昧。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 正行究竟——三摩地.海印三昧.法界三观现前.42位圆满。</span></div></div>";
+  h+="</div>";
+
+  // ── 贤首五教仪: 华严判教体系 ──
+  h+="<div class=section><h2>📐 贤首五教仪 — 华严判教: 小.始.终.顿.圆</h2>";
+  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>贤首五教仪由华严三祖法藏(贤首国师)创立,清续法大师集大成,是华严宗<b>判教理论的核心框架</b>。海云继梦和上称判教为<b>「文化解剖学」</b>——将印度佛教文明基因与中国文明基因进行重组的方式。五教与杜顺五教止观一一对应: 小教(法有我无门).始教(生即无生门).终教(事理圆融门).顿教(语观双绝门).圆教(华严三昧门)。法师于2008年在台北讲授《贤首五教仪—法界观》<b>53集以上</b>。</p>";
+
+  h+="<table class=v-table style=font-size:.72em;margin-bottom:10px><tr><th>五教</th><th>核心义理</th><th>海云法师判摄</th><th>修证品数</th></tr>";
+  h+="<tr><td><b>小教</b></td><td>只说人空,不明法空。依六识三毒建立染净根本。<br>「如木作灰,如色归空,断烦恼障,灭分段死」</td><td>封闭型心态,只执一法门。总相念=始教十回向</td><td>—</td></tr>";
+  h+="<tr><td><b>始教</b></td><td>分空始教(般若)与相始教(唯识)。说一切皆空或分别诸法性相。定性二乘不成佛</td><td>「如镜离垢,如月出云,断二障,灭二死,显二空,证二果」</td><td>十二品</td></tr>";
+  h+="<tr><td><b>终教</b></td><td>说如来藏随缘成阿赖耶识。定性二乘.无性阐提悉当成佛。少说法相,广说真性</td><td>「如器成金,如冰即水」——将事相会归于理体,大乘至极之说</td><td>四十二品</td></tr>";
+  h+="<tr><td><b>顿教</b></td><td><b>一念不生,即名为佛。</b>唯是一念,无时可说。无明不起时即无时空;无明起时便有三大阿僧祇劫</td><td>「如狂迷歇,如睡梦觉」——一切烦恼本来自离,不是烦恼缠你,是你招揽烦恼。关键: <b>置心一处</b></td><td>五十二品</td></tr>";
+  h+="<tr><td><b>圆教</b></td><td><b>一切即一,一即一切。</b>念劫圆融,自在无碍。一位即一切位,十信满心即摄五位成正觉。依普贤法界,性相圆融,主伴无尽</td><td>「如拆棉花,如融金狮」——不破而圆融,一切时分同时具足。初住至妙觉,三地超顿教妙觉</td><td>六十二品</td></tr></table>";
+
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 出处: 海云继梦 2008年台北《贤首五教仪—法界观》53集+ . <a href='https://www.listennotes.com/podcasts/%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6%E6%B3%95%E5%B8%88%E8%AE%B2%E7%BB%8F-%E6%92%AD%E5%AE%A2/' target=_blank>ListenNotes播客</a> . <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify</a> . 续法《贤首五教仪》原著</p>";
+  h+="</div>";
+
+  // ── 重要华严典籍的现代阐释 ──
+  h+="<div class=section><h2>📖 重要华严典籍的现代阐释</h2>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🦁 法藏《华严金师子章》 — 十门妙诠华严法界玄奥</span><div class=body>";
+  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>《金师子章》是华严三祖法藏为武则天讲解华严奥义之作——以殿中金狮子为喻,从明缘起.辨色空.约三性.显无相.说无生.论五教.勒十玄.括六相.成菩提.入涅槃<b>十门</b>,仅约一千五百字,妙诠华严法界玄奥。海云继梦和上于<b>2006年台北开示14集</b>,空庭书苑出版《华严金师子章讲记》(265页,2010年)。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>核心判摄:</b> 十段分三——(1~3)缘起/色空/三性=基础理论 (4~5)无相/无生=般若空性 (6)五教=判教入华严 (7)十玄=事事无碍最高境界 (8)六相=综合圆融(初地) (9)成菩提=二次圆融 (10)入涅槃=三次圆融,重重无尽。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>十玄门要义:</b> 同时具足相应门(金体与师子相同时成立).因陀罗网境界门(一一毛处各有金师子,重重无尽,一即一切).十世隔法异成门(九世融于一念)。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px><b>修行三区块:</b> 凡夫区(变异念->善恶念->净识念).行者区(初果向到破我法二执).法身区(根本智->后得智->自受用->他受用)。法师强调:「知道不算,做到才算。」</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《华严金师子章讲记》(空庭书苑 2010) . <a href='http://wuming.xuefo.net/nr/7/70462.html' target=_blank>fjdh.cn逐字稿(14集)</a> . <a href='https://www.got1shop.com/mobile/index.php?m=default&c=goods&a=index&id=3459706' target=_blank>购买</a></p>";
+  h+="</div></div>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>💎 澄观《心要法门》 — 「至道本乎其心,心法本乎无住」</span><div class=body>";
+  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>《心要法门》是华严四祖清凉澄观大师(738-839)所撰,全文仅数百字,阐述<b>「至道本乎其心,心法本乎无住」</b>的华严心法核心要义——无住心体是华严禅观的终极归趣。海云继梦和上以现代语言逐段译解,出版为<b>《解心: 心要法门讲记》</b>(空庭书苑 2001, ISBN 9573067129; 宗教文化出版社 2005, 简体版)。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>核心思想:</b> 「无住心体」——真心不执著于任何一处,灵知不昧,性相寂然,包含德用,该摄内外。能证此者,即入法界。「心法本乎无住」——一切心法的根本在于无住,无住即不执取,不执取即解脱。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>海云法师判摄:</b> 此即华严禅观的终极指向——四种观法(唯心识->真如实->毗婆舍那->奢摩他)层层深入,最终所证即是此「无住心体」。<b>「无心于万物,而万物未尝无」</b>——不是消灭万物,而是于万物中不执取,此即事事无碍法界的日常体现。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px>法师后续出版《是心,非心,还是心!——从心要法门谈心》(空庭书苑 2013, ISBN 9789867484710),进一步深化「无住心体」与华严禅观修行次第的内在关联。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《解心: 心要法门讲记》(空庭书苑 2001/宗教文化出版社 2005) . <a href='https://www.buybook.tw/book-0010164666.htm' target=_blank>购买</a> . <a href='https://webpac.taichung.gov.tw/bookDetail/730070' target=_blank>图书馆</a></p>";
+  h+="</div></div>";
   h+="</div>";
 
   // ── 验证机制 & 关键原则 ──
