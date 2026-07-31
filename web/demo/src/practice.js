@@ -20,15 +20,15 @@ function renderPractice(){
   h+="<div style='display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0'>";
   h+="<div style='flex:1;min-width:180px;background:rgba(184,134,60,0.08);border:1px solid #b8863c;border-radius:10px;padding:16px;text-align:center'>";
   h+="<div style='font-size:1.05em;font-weight:700;color:#b8863c;margin-bottom:4px'>资粮道</div>";
-  h+="<div style='font-size:0.8em;color:#8a7060'>发心工程</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩呬多 samāhita</div></div>";
+  h+="<div style='font-size:0.8em;color:#8a7060'>发心工程</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>五科·瞬定境</div></div>";
   h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
   h+="<div style='flex:1;min-width:180px;background:rgba(94,139,158,0.08);border:1px solid #5e8b9e;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#5e8b9e;margin-bottom:4px'>前行·正行</div>";
-  h+="<div style='font-size:0.8em;color:#6a7060'>内摄·等持</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩钵底 samāpatti</div></div>";
+  h+="<div style='font-size:1.05em;font-weight:700;color:#5e8b9e;margin-bottom:4px'>前行</div>";
+  h+="<div style='font-size:0.8em;color:#6a7060'>内摄工程·界内定</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>四种观法·安那般那</div></div>";
   h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
   h+="<div style='flex:1;min-width:180px;background:rgba(196,107,93,0.08);border:1px solid #c46b5d;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#c46b5d;margin-bottom:4px'>三摩地</div>";
-  h+="<div style='font-size:0.8em;color:#8a6060'>海印三昧</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩地 samādhi</div></div>";
+  h+="<div style='font-size:1.05em;font-weight:700;color:#c46b5d;margin-bottom:4px'>正行</div>";
+  h+="<div style='font-size:0.8em;color:#8a6060'>等持工程·界外定</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩呬多→三摩钵底→三摩地</div></div>";
   h+="</div>";
 
   // ── 修行三阶段 ──
