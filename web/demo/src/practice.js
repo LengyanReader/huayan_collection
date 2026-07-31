@@ -127,6 +127,38 @@ function renderPractice(){
   h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 出处: 海云继梦《四十华严讲记》第67讲(2009年2月26日开示, fjdh.cn 2013年10月发布逐字稿) . 大华严寺官网「修行蓝图: 华严禅观全程」(最后更新 2025年11月) . 《海云继梦禅观概论》(空庭书苑 2015年1月, ISBN 9789867484888) . 《迈向佛陀的境界——华严禅前行概论》(空庭书苑 2011年, ISBN 9789867484512)</p>";
   h+="</div>";
 
+  // ── 次第道与圆融道 ──
+  h+="<div class=section><h2>🛤 次第道与圆融道 — 两条修行路径</h2>";
+  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>海云和上将修行路径分为两条: <b>次第道</b>(圣解脱道/智德门,入法界之前)与<b>圆融道</b>(普贤道/福德门,已入法界之后)。前者须证空性、即身成就;后者以信根具足替代空性,即生成就。华严禅观的三段教学法(前行->正授行法->妙行)中,前两区块属入法界次第道,第三区块「妙行」属法界圆融道。</p>";
+
+  h+="<table class=v-table style=font-size:.7em;margin-bottom:10px><tr><th style=width:12%>维度</th><th style=width:44%>次第道(入法界次第道)</th><th style=width:44%>圆融道(法界圆融道)</th></tr>";
+  h+="<tr><td><b>空性条件</b></td><td>必须证得空性</td><td>不必证空性,以<b>信根具足</b>替代</td></tr>";
+  h+="<tr><td><b>生死方式</b></td><td>变易生死,<b>即身成就</b>(依色身)</td><td>分段生死,<b>即生成就</b>(依法身),经他方净土证无生</td></tr>";
+  h+="<tr><td><b>实践目标</b></td><td>目的论明显,止观双运.定慧等持</td><td>无明显目的性,重行法过程,以<b>信愿行</b>为归</td></tr>";
+  h+="<tr><td><b>核心技术</b></td><td>以「定」为范围,<b>置心一处</b>为归</td><td>以歌咏赞叹诸佛为归,<b>理事合一地置心一处</b></td></tr>";
+  h+="<tr><td><b>工程面</b></td><td>以《大经》(华严经)为归</td><td>以<b>十大愿王</b>为依归</td></tr>";
+  h+="<tr><td><b>性质</b></td><td>由凡入圣——清除人性杂质恶质,由粗糙转入精微</td><td>由圣入圣——法身本具但迷不晓,藉佛号唱颂内引法身</td></tr></table>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📐 圆融道三条件(金三角) + 凡夫行圆融道避讳</span><div class=body>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>三大核心条件(金三角):</b> (1)对三宝的具足信——信心绝对,毫无折扣,100分 (2)尽形寿奋进于菩萨道——定位明确,一辈子做一件事(事修),从生命尊重与人性关怀出发服务众生 (3)一再的归零功课——每日反复检视自身,遇到挫折压力则拜忏(一百零八拜),将业力寄放在法界。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>凡夫行圆融道的避讳:</b> 必须避讳「聚财」与「聚众」,否则在缺乏空性的前提下易入歧途——善者落人天善道,恶者成魔成精。若避此忌,报尽必生净土。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px>法师以<b>德雷莎修女</b>为例: 具足对上帝的绝对信心(信根),一辈子只做「服务最穷的人」这一件事(事修),尽形寿不改——「行一法即行一切法」。<b>梦参老和尚</b>被关33年仍坚守信仰,亦属圆融道行者的典范。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《华严禅观的入法界次第道》(fjdh.cn 2013.9) . 《四十华严讲记》第14讲.第68讲 . <a href='https://www.fjdh.cn/wumin/2013/09/175337285861.html' target=_blank>入法界次第道全文</a></p>";
+  h+="</div></div>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🙏 十大愿王 — 圆融道的工程面核心</span><div class=body>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>普贤十大愿王是善财童子五十三参的总结与精要——「《入不思议解脱境界普贤行愿品》中,不思议解脱境界即是法界,而普贤行愿是<b>直接入法界的行法</b>。」海云和上先后<b>五次</b>重要讲解: 1992年台北.2001年加拿大湛山精舍(三册).2006年台北(《普贤十大愿王行法精要》).2007年槟城.2008年新加坡(后两场合并出版《十大愿王修行法要》)。</p>";
+  h+="<p style=font-size:.75em;color:var(--gold);margin-bottom:2px><b>十大愿王三层次结构</b></p>";
+  h+="<table class=v-table style=font-size:.7em;margin-bottom:6px><tr><th>层次</th><th>愿目</th><th>修行定位</th></tr>";
+  h+="<tr><td><b>根本</b>(第1-3愿)</td><td>礼敬诸佛.称赞如来.广修供养</td><td>真正要实修的根本,可各选一门主修</td></tr>";
+  h+="<tr><td><b>补充</b>(第4愿)</td><td>忏悔业障</td><td>修前三愿遇挫折时以此补救,<b>具关键性地位</b></td></tr>";
+  h+="<tr><td><b>圆融扩大</b>(第5-7愿)</td><td>随喜功德.请转法轮.请佛住世</td><td>使基础修行圆满</td></tr>";
+  h+="<tr><td><b>无限扩大</b>(第8-10愿)</td><td>常随佛学(百).恒顺众生(千/重重无尽).普皆迴向(万/无有止境)</td><td>代表无限的扩大——「虚空界尽.众生界尽.众生业尽.众生烦恼尽,我此愿力无有穷尽」</td></tr></table>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>核心要领:</b> (1)<b>普贤行愿力</b>——普贤菩萨是法界第一尊佛,自性海中所修的法都叫普贤行愿,所产生的威神力叫普贤行愿力,「我以普贤行愿力故,深心信解,如对目前」(亲自体验证得,非推测想象) (2)<b>四无尽观</b>——每一大愿皆以虚空界尽.众生界尽.众生业尽.众生烦恼尽为所依,四者无有尽故修行无有穷尽,心量无限放大 (3)<b>念念相续无有疲厌</b>——倾向于圆融道行法,不可一曝十寒。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《普贤十大愿王行法精要》(空庭书苑, 2006年台北讲记, ISBN 9789867484734) . 《十大愿王修行法要》(空庭书苑, 2007槟城+2008新加坡) . 2011年昆明开示系列(fjdh.cn收录) . <a href='https://findbook.com.tw/9789867484734' target=_blank>购买</a></p>";
+  h+="</div></div>";
+  h+="</div>";
+
   // ── 第一阶段: 资粮道 ──
   h+="<div class=section><h2>🔰 第一阶段: 资粮道</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>资粮道是一切禅观的<b>基础准备</b>，约需1-3年。核心任务是<b>发心工程</b>——使行者从散乱中「静下来」。通过<b>「驻佇心观」(停心)</b>将心初步收摄，成为「堪受法器」后方可进入前行。</p>";
@@ -137,6 +169,40 @@ function renderPractice(){
   h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px><b>五科训练:</b> 戒.律.调身.调息.调心。课程配比: 70%修行面(戒/律/调心)+30%健康面(调身/调息)。</p>";
   h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px><b>三要件各有三:</b> (1)心性要件-行者先决条件 (2)内摄要件-调身+调息=暖身二法 (3)内观要件-等持工程三昧基础，属一乘不共别圆。</p>";
   h+="<p style=font-size:.7em;color:var(--text2)>📎 出处: 大华严寺官网「资粮道」页面 . 海云继梦《四十华严讲记》第67讲(2009年2月26日开示, fjdh.cn收录逐字稿)</p>";
+  h+="</div></div>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🪑 调身.调息.调心 — 五科训练详解</span><div class=body>";
+  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>五科(戒.律.调身.调息.调心)是资粮道的实操基础。海云和上指出: <b>身.息.心三者一体不二</b>——调息可及于调身,调身效果又可及于调心。实际行法中三者同时并行,非先后次第。核心著作: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984)。</p>";
+
+  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调身 — 毗卢遮那七支坐相</b></p>";
+  h+="<table class=v-table style=font-size:.7em;margin-bottom:6px><tr><th style=width:18%>支分</th><th>要点</th></tr>";
+  h+="<tr><td><b>(1)跏趺坐</b></td><td>双盘为佳,亦可单盘或金刚坐。臀部与两膝三点鼎立呈正三角形,久坐不倾</td></tr>";
+  h+="<tr><td><b>(2)手结定印</b></td><td>掌心向上,拇指轻拄。含「五心向上」(两掌心/两足心/顶门),令气流畅</td></tr>";
+  h+="<tr><td><b>(3)头正颈正</b></td><td>头不偏,收下颚。百会穴与海底穴重迭</td></tr>";
+  h+="<tr><td><b>(4)脊直肩平</b></td><td>脊椎挺直,两肩平正放松,神经/血液/内分泌系统自然运作</td></tr>";
+  h+="<tr><td><b>(5)眼平视</b></td><td>眼帘自然下垂,取「三分慈眼」,外尘不侵</td></tr>";
+  h+="<tr><td><b>(6)舌抵腭</b></td><td>舌尖轻顶上颚齿龈处,口水自然从舌根两旁下流入咽喉</td></tr>";
+  h+="<tr><td><b>(7)三角点</b></td><td>双腿与臀部三点均匀着地,身体重量均匀分布</td></tr></table>";
+
+  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调息 — 息之四相与数息法</b></p>";
+  h+="<table class=v-table style=font-size:.7em;margin-bottom:4px><tr><th>息相</th><th>特征</th><th>含义/对治</th></tr>";
+  h+="<tr><td><b>风相</b></td><td>鼻息粗重,出入有声</td><td>身心不安宁->先安心,放下身心世界</td></tr>";
+  h+="<tr><td><b>喘相</b></td><td>息无声但出入结滞不通</td><td>身体多病->宽放身体,放松情绪</td></tr>";
+  h+="<tr><td><b>气相</b></td><td>息不结滞但不细</td><td>初修状态->观想气行遍毛孔肢节,愈微愈妙</td></tr>";
+  h+="<tr><td><b>息相</b></td><td>无声.不结.不粗,出入绵密若存若亡</td><td><b>调相</b>——可入定</td></tr></table>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>数息要领:</b> 注意力集中于「风门」(鼻中膈底部,两鼻孔间接近上唇处),觉知息入息出。在「息入尽」及「息出尽」的换气处数息(一入一出为一圈)。初学者从数「一至三」起,稳定后增至「一至五」->「一至七」->「一至十」。</p>";
+
+  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调心 — 治沉.浮.宽.急四相</b></p>";
+  h+="<table class=v-table style=font-size:.7em;margin-bottom:4px><tr><th>心相</th><th>表现</th><th>对治方法</th></tr>";
+  h+="<tr><td><b>沉相</b></td><td>昏沉欲睡.精神涣散.低头垂颈</td><td>补充营养(综合维他命);意守<b>风门</b>,守息入息出</td></tr>";
+  h+="<tr><td><b>浮相</b></td><td>精神亢奋.心念多缘.身躁动</td><td>少食五辛.补品.牛羊肉等;系念<b>丹田</b></td></tr>";
+  h+="<tr><td><b>宽相</b></td><td>心意不举.身好躺卧.口中多水</td><td>饮食多温热少寒凉;摄身挺腰,心安住息中</td></tr>";
+  h+="<tr><td><b>急相</b></td><td>胸中疼痛.气上举不调</td><td>多食寒凉少食燥热;放宽身心,意不卑不亢</td></tr></table>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>若风门举意仍无效,可提意至<b>眉间</b>(风门至眉间称「金刚宝剑」,道家称「小周天」)。</p>";
+
+  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 入相.住相.出相 — 一座禅修的三阶段</b></p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px><b>入相(由粗到细):</b> 调身(七支坐相)->调息(觉息相.数息)->调心(治沉浮宽急)。<b>住相(住于细中):</b> 摄心于息,同时觉知身.息.心三相是否调和,随觉随治。<b>出相(由细到粗):</b> 先放心异缘(调心)->开口放气,息从百脉散(调息)->微动身躯.肩臂.头颈.双足,揉毛孔.摩掌熨眼(调身),待身热后方可出入,站定后拍打全身。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984) . 《禅修正行》第12集(fjdh.cn 2013.11).《禅修前行》第6集(fjdh.cn 2013.11) . <a href='https://play.google.com/store/books/details?id=QREREAAAQBAJ' target=_blank>Google Play预览</a></p>";
   h+="</div></div>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🧱 驻佇心观(停心工程) — 一切禅观的根本前行</span><div class=body>";
@@ -156,6 +222,15 @@ function renderPractice(){
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>前行是禅观体系的<b>核心训练阶段</b>，在<b>界内定</b>中进行。四种观法构成工程面主干，贯穿初信至十信位。前二种出自《占察善恶业报经》(T17n0839)，后二种是标准大乘止观。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🔧📐 技术面.工程面双轨详解</span><div class=body>";
+  h+="<h3 style=color:var(--gold)>🔺 参禅金三角 — 置心一处 . 放轻松 . 息入息出</h3>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:6px>参禅金三角是海云和上禅修教学中<b>最核心的入门架构</b>,三个条件缺一不可。法师强调:「这三点若能做到及格,触功德就会发起,身心得到调整,人格性可达七十五分以上。完成参禅金三角即进入<b>心一境性</b>。」</p>";
+  h+="<table class=v-table style=font-size:.72em;margin-bottom:6px><tr><th style=width:18%>要素</th><th style=width:38%>说明</th><th style=width:44%>操作要点</th></tr>";
+  h+="<tr><td><b>(1)置心一处</b></td><td>将心念安住「风门」(鼻孔气息出入处)</td><td>用数息法从一到十循环计数。莫用大脑推理思考,只用<b>感受</b></td></tr>";
+  h+="<tr><td><b>(2)放轻松</b></td><td>身体肌肉.神经系统都要放下;心理上也完全放松,不起执着</td><td>不能为了专注而肩膀紧绷。「呼吸归呼吸,妄想归妄想」——不跟妄想纠缠</td></tr>";
+  h+="<tr><td><b>(3)息入息出清楚</b></td><td>对呼吸的出入看得清清楚楚,不能昏沉睡着</td><td>「六根门头全开放」——心在宁静中保持鲜活。守住风门,身心放松,妄念停止</td></tr></table>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>整体流程:</b> 调身(七支坐相)->调息(自然呼吸,数息1-10)->置心一处于风门->同时放松身心->息入息出清清楚楚->达成金三角(心一境性)->触功德发起(轻安舒服感)->继续觉照根性->象限转移->破无明->入菩提道。<b>⚠ 警示:</b> 修得轻安感后不可耽于禅味,否则会掉入四禅八定而失去对根性的觉照。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 出处: 海云继梦《何谓参禅金三角》(fjdh.cn 2013.12) . <a href='https://www.fjdh.cn/fjask/2013/12/133616318955.html' target=_blank>全文</a> . <a href='http://read.goodweb.top/news/news_view.asp?newsid=82958' target=_blank>禅修释疑</a></p>";
+
   h+="<h3 style=color:var(--gold)>技术面: 安那般那 — 数.随.止三法</h3>";
   h+="<table class=v-table style=font-size:.75em><tr><th>法位</th><th>境界</th><th>关键操作</th><th>易犯误区</th></tr>";
   h+="<tr><td><b>数法</b></td><td>粗住->细住->欲界定</td><td>置心风门,1数到10循环。克服四种妄想: 心理/物理/生理/社会制度</td><td>⚠ 掉入「舒服禅」——枯木禅非真修</td></tr>";
@@ -279,6 +354,21 @@ function renderPractice(){
   h+="<tr><td><b>圆教</b></td><td><b>一切即一,一即一切。</b>念劫圆融,自在无碍。一位即一切位,十信满心即摄五位成正觉。依普贤法界,性相圆融,主伴无尽</td><td>「如拆棉花,如融金狮」——不破而圆融,一切时分同时具足。初住至妙觉,三地超顿教妙觉</td><td>六十二品</td></tr></table>";
 
   h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 出处: 海云继梦 2008年台北《贤首五教仪—法界观》53集+ . <a href='https://www.listennotes.com/podcasts/%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6%E6%B3%95%E5%B8%88%E8%AE%B2%E7%BB%8F-%E6%92%AD%E5%AE%A2/' target=_blank>ListenNotes播客</a> . <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify</a> . 续法《贤首五教仪》原著</p>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🔀 渐教.顿教的实践义 — 从判教到操作</span><div class=body>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>海云和上将判教转化为实际操作: <b>渐教</b>(始教+终教)——次第修证路线,对应四种观法中的唯心识观->真如实观->毗婆舍那观,一级一级深入。<b>顿教</b>——「一念不生,即名为佛」「唯是一念,无时可说」。关键操作: <b>置心一处</b>——守住风门(或佛号.咒语.数息),其他六尘境界一概不理,「能置心一处,一切烦恼自然离开」。顿教与始教.终教的根本区别: 小教与始教都在「无明的前提下」讲时间与次第;顿教直接告诉你<b>无明不起时,即无时间可得</b>——这是大脑想象不到.言语道断的境界。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2)>📎 出处: 海云继梦《贤首五教仪—法界观》第40-45集(2008.7.8-7.10)</p>";
+  h+="</div></div>";
+  h+="</div>";
+
+  // ── 一乘不共别圆 ──
+  h+="<div class=section><h2>📐 一乘不共别圆 — 普贤乘的判教定位</h2>";
+  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>「一乘不共别圆」是华严宗对自身教义的最高定位——「别人所没有的,所以叫做『别』」。「不共」谓不与三乘共,独为圆顿大根菩萨所说;「别圆」指有别于天台宗以《法华》为圆教的立场,华严自许为最圆满的别教一乘。海云和上特别强调: 这种不共别圆的特质不在理论层面,而在<b>行法的内在蕴藏</b>——「他在经文里头表达得很清楚,但是因为你不懂这种语言模式跟思维模式,所以你以为经文好像讲故事一样讲过去。」</p>";
+  h+="<table class=v-table style=font-size:.72em;margin-bottom:8px><tr><th>概念</th><th>定位</th><th>特点</th></tr>";
+  h+="<tr><td><b>别教一乘</b>(华严)</td><td>别于三乘,纯圆至实</td><td>世尊初时于菩提场直对法身大士转无上根本法轮。分「性海果分」(佛自证,不可说)与「缘起因分」(普贤境界,可说)</td></tr>";
+  h+="<tr><td><b>同教一乘</b>(法华)</td><td>会三归一,摄末归本</td><td>开三乘方便显一乘真实,三乘与一乘交融互通</td></tr>";
+  h+="<tr><td><b>普贤乘</b>(海云立名)</td><td>直接兑现,一乘不共别圆</td><td>能观心即生成报身(文殊),所观心则生成法身(普贤)。置心一处可滋长法身慧命。非如三乘出离需次第渐修</td></tr></table>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 出处: 智俨《华严经孔目章》.法藏《五教章》.海云继梦《四十华严讲记》第68讲 . 《华严学报》第3期(2012)</p>";
   h+="</div>";
 
   // ── 重要华严典籍的现代阐释 ──
@@ -298,6 +388,12 @@ function renderPractice(){
   h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>海云法师判摄:</b> 此即华严禅观的终极指向——四种观法(唯心识->真如实->毗婆舍那->奢摩他)层层深入,最终所证即是此「无住心体」。<b>「无心于万物,而万物未尝无」</b>——不是消灭万物,而是于万物中不执取,此即事事无碍法界的日常体现。</p>";
   h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px>法师后续出版《是心,非心,还是心!——从心要法门谈心》(空庭书苑 2013, ISBN 9789867484710),进一步深化「无住心体」与华严禅观修行次第的内在关联。</p>";
   h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《解心: 心要法门讲记》(空庭书苑 2001/宗教文化出版社 2005) . <a href='https://www.buybook.tw/book-0010164666.htm' target=_blank>购买</a> . <a href='https://webpac.taichung.gov.tw/bookDetail/730070' target=_blank>图书馆</a></p>";
+  h+="</div></div>";
+
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🏛 弥勒内院与华严净土 — 兜率净土与华藏世界的会通</span><div class=body>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>弥勒菩萨现居<b>兜率天</b>,兜率天分外院与<b>内院</b>(弥勒菩萨说法之处,有四十九重摩尼宝殿,昼夜演说不退转法轮)。往生修法依《观弥勒菩萨上生兜率天经》包括: (1)六事法(精勤修功德.威仪不缺.扫塔涂地.香花供养.行众三昧.读诵经典) (2)称名念佛——称念「南无当来下生弥勒尊佛」 (3)持戒行善——持五戒.八戒.十善法,不需一心不乱即可往生 (4)发愿回向。特点: <b>近</b>(同一欲界).<b>易</b>(不需一心不乱).<b>普及</b>(三根普被)。历代往生典范: 无著.世亲.道安.玄奘.窥基.太虚.虚云老和尚等。</p>";
+  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>与华严净土的关系:</b> 华严六科中「华严净土法门」涵盖三重净土——毗卢遮那净土(华藏世界海).弥勒净土(兜率内院).极乐净土(阿弥陀佛)。海云和上强调华严行法不主张「死后去净土」,而是在当下生活中进行<b>「象限转移」</b>——从娑婆象限转移到法界象限,让生命在现实中就活得灿烂芬芳。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《观弥勒菩萨上生兜率天经》 . 海云继梦《华严学报》第3期(2012)弥勒相关论文参考</p>";
   h+="</div></div>";
   h+="</div>";
 
