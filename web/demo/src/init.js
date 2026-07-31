@@ -82,6 +82,14 @@ if(resizeHandle&&sidePanel){
   document.addEventListener('mouseup',function(){if(resizing){resizing=false;resizeHandle.classList.remove('active');}});
 }
 
+// Progress bar seek
+var progBar=document.getElementById('anim-progress');
+if(progBar){
+  progBar.addEventListener('input',function(){
+    var v=parseInt(this.value);if(!isNaN(v)&&v>=-1500&&v<=2030)animSeek(v);
+  });
+}
+
 // Click-outside-to-close popups
 document.addEventListener('click',function(e){
   var ip=document.getElementById('info-popup');

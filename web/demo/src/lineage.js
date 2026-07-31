@@ -1013,9 +1013,11 @@ function getAnimSpeed(){
   return s?Math.max(60,parseInt(s.value)*15):225;
 }
 var animPaused=false;
+var _seekBusy=false;
 function animSeek(yr){
+  if(_seekBusy)return;_seekBusy=true;
+  animPaused=true;clearTimeout(animTimer);
   animYear=parseInt(yr);lastAnimLoc=-1;
-  var pg=document.getElementById('anim-progress');if(pg)pg.value=animYear;
   var py=document.getElementById('prog-year');if(py)py.textContent=animYear+'年';
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
@@ -1038,6 +1040,7 @@ function animSeek(yr){
     if(sb)sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label+' — '+wp.info;
     if(mo){mo.style.display='block';mo.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label+'<br><span style=font-size:0.85em;color:var(--text2)>'+wp.info+'</span>';}
   }
+  _seekBusy=false;
 }
 function animJump(dir){
   animPlaying=true;animPaused=true;
