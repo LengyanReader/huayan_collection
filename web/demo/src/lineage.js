@@ -1013,6 +1013,29 @@ function getAnimSpeed(){
   return s?Math.max(60,parseInt(s.value)*15):225;
 }
 var animPaused=false;
+function animSeek(yr){
+  animYear=parseInt(yr);lastAnimLoc=-1;
+  tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
+  for(var i=0;i<ANIM_WAYPOINTS.length;i++){
+    var wp=ANIM_WAYPOINTS[i];
+    if(animYear>=wp.y&&lastAnimLoc<i){
+      if(mapMain&&!wp.bg){mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1});}
+      if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
+      if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
+      if(sb)sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label;
+      lastAnimLoc=i;break;
+    }
+  }
+}
+function animJump(dir){
+  animPaused=true;animPlaying=true;
+  animYear+=dir*5;
+  if(animYear<-1500)animYear=-1500;
+  if(animYear>2030)animYear=2030;
+  animSeek(animYear);
+  // Don't auto-resume after manual jump
+}
 function pauseAnim(){
   if(!animPlaying||animPaused)return;
   animPaused=true;clearTimeout(animTimer);
@@ -1029,9 +1052,12 @@ function animTick(){
   var speedLabel=document.getElementById('speed-label');
   var delay=getAnimSpeed();
   if(speedLabel){var x=(225/delay).toFixed(1);speedLabel.textContent=(x==='1.0'?'1':x)+'x';}
-  // Variable step: faster ancient, normal historical, slow modern
-  var step=animYear<-300?20:animYear<1700?5:3;
+  // Adaptive step: count waypoints in next 50 years → adjust speed
+  var density=0;
+  for(var d=0;d<ANIM_WAYPOINTS.length;d++){if(ANIM_WAYPOINTS[d].y>animYear&&ANIM_WAYPOINTS[d].y<=animYear+50)density++;}
+  var step=Math.max(1,Math.min(20,Math.round(10-density*2)));
   animYear+=step;
+  var pg=document.getElementById('anim-progress');if(pg)pg.value=animYear;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   // Stop AFTER processing year 2030

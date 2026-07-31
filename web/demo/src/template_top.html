@@ -169,6 +169,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);co
     <button class="active" data-layer="edges" onclick="toggleLayer('edges')" title="传承连线">传</button>
     <button class="active" data-layer="events" onclick="toggleLayer('events')" title="事件标记">事</button>
     <button id="ancient-btn" style="border:1px solid var(--line)" onclick="toggleAncient()" title="古今地图对照">🏯 古今</button>
+    <span style="font-size:0.65em;color:var(--text2)"><button onclick="animJump(-1)" style="padding:0 3px;font-size:0.65em" title=上一步>◀</button><input type=range id=anim-progress min=-1500 max=2030 value=-600 step=1 style="width:80px;accent-color:var(--gold);vertical-align:middle" title=拖拽跳转 oninput="animSeek(this.value)"><button onclick="animJump(1)" style="padding:0 3px;font-size:0.65em" title=下一步>▶</button></span>
     <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type=range id=anim-speed min=5 max=40 value=15 step=1 title=播放速度(越小越快)><span id=speed-label>1×</span></span>
     <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()" title="华严传播路线说明">ℹ️ 路线</button>
     <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
