@@ -31,3 +31,4 @@ data/catalog/*.db-wal
 # Neo4j
 data/knowledge_graph/neo4j_import/*.dump
 data/dld/
+docs/notes4it/华藏妙海 部分听经笔记整理版.pdf
