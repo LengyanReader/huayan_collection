@@ -858,7 +858,9 @@ function onMM(e){
       var tchCount=DATA.edges.filter(function(e){return e.t===pp.id&&e.r==="MASTER";}).length;
       var relTxt='';if(tchCount||stuCount)relTxt='⬆'+tchCount+' ⬇'+stuCount+' · ';
       tip.style.opacity="1";
-      tip.innerHTML="<h3>"+(ti?'['+ti+'] ':'')+pp.n+"</h3><span style=color:"+lc+">"+pp.li+"</span> · "+pp.dy+" · "+(pp.b||"?")+"–"+(pp.d||"?")+ageTxt+"<br>"+locTxt+" · "+relTxt+(pp.ti||"")+(pp.wk&&pp.wk.length?"<br>📖 "+pp.wk.slice(0,2).join(" · "):"");
+      tip.innerHTML="<div style=font-size:0.85em><b style=color:"+lc+">"+(ti||"?")+"</b> <b>"+pp.n+"</b> <span style=color:var(--text2)>"+pp.dy+"</span></div>"
+	        +"<div style=font-size:0.7em;color:var(--text2);line-height:1.3>"+(pp.ti||"")+"</div>"
+	        +(pp.b?"<div style=font-size:0.65em;color:#a09080>"+pp.b+"–"+(pp.d||"—")+ageTxt+" "+locTxt+"</div>":"");
       tip.style.left=(e.pageX+14)+"px";tip.style.top=(e.pageY-20)+"px";
     }else{
       if(hoveredId){hoveredId=null;drawTL(selectedId);}
@@ -1098,8 +1100,27 @@ function animTick(){
       }
       if(mapMini&&wp.y>=167)mapMini.panTo([wp.lat,wp.lng]);
       if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
-      if(sb)sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label+' — '+wp.info;
-      var mo=document.getElementById('map-overlay');if(mo){mo.style.display='block';mo.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label+'<br><span style=font-size:0.85em;color:var(--text2)>'+wp.info+'</span>';}
+      // ── Stage card: 寻找此年代前后活跃的人物, 制造「聚光灯」效果 ──
+      var eraPersons=DATA.nodes.filter(function(nd){
+        return nd.b&&nd.b>=wp.y-80&&nd.b<=wp.y+20&&nd.dy&&nd.tp&&nd.tp!=="scholar";
+      }).slice(0,3);
+      var eraHTML='';
+      eraPersons.forEach(function(ep,ei){
+        var elc=DATA.lineage_colors[ep.li]||"#b0a898";
+        var etype=(ep.tp==="patriarch"?"祖":ep.tp==="translator"?"译":"修");
+        eraHTML+='<span style=display:inline-block;margin:2px 4px;padding:2px 6px;border-radius:4px;font-size:0.7em;'
+          +'background:'+elc+'18;border:1px solid '+elc+'40;'
+          +(ei===0?'opacity:1':'opacity:0.55;filter:brightness(0.8)')
+          +'>'+etype+' <b>'+ep.n+'</b> '+(ep.b||"")+'–'+(ep.d||"")+'</span>';
+      });
+      if(sb){sb.style.opacity='1';sb.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label
+        +(eraHTML?'<br><span style=font-size:0.8em>🎭 '+eraHTML+'</span>':'')
+        +'<br><span style=font-size:0.78em;color:var(--text2)>'+wp.info+'</span>';}
+      var mo=document.getElementById('map-overlay');
+      if(mo){mo.style.display='block';
+        mo.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label
+          +(eraHTML?'<br><span style=font-size:0.72em>'+eraHTML+'</span>':'')
+          +'<br><span style=font-size:0.85em;color:var(--text2)>'+wp.info+'</span>';}
       lastAnimLoc=i;break;
     }
   }
