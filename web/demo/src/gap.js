@@ -281,17 +281,20 @@ function renderGap(){
   h+="<span style='padding:6px 14px;background:rgba(196,107,93,0.08);border:1px solid rgba(196,107,93,0.3);border-radius:14px;font-size:0.78em'><b>大乘起信论</b> <span style=color:var(--text2)>T32n1666·马鸣造[传统著录]</span><br><span style=font-size:0.85em;color:var(--text2)>法藏《大乘起信论义记》为最权威注释之一</span><br><a href='https://cbetaonline.dila.edu.tw/zh/T32n1666' target=_blank style=font-size:0.65em>📖 CBETA</a></span>";
   h+="</div></div>";
 
-  // ── Patriarch Commentaries ──
-  h+="<div class=section><h2>📜 祖师核心章疏（11部）</h2>";
-  h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
-  [{a:'杜顺',w:'法界观门(T45n1884)·五教止观(T45n1867)',u:'T45n1884'},
-   {a:'智俨',w:'搜玄记(T35n1732)·一乘十玄门(T45n1868)·五十要问答',u:'T35n1732'},
-   {a:'法藏',w:'五教章(T45n1866)·探玄记(T35n1733)·金师子章(T45n1880)·起信论义记(T44n1846)·义海百门',u:'T45n1866'},
-   {a:'澄观',w:'华严经疏(T35n1735)·演义钞(T36n1736)·法界玄镜',u:'T35n1735'},
-   {a:'宗密',w:'禅源诸诠集(T48n2015)·原人论(T45n1886)·圆觉经大疏',u:'T48n2015'},
-   {a:'李通玄',w:'新华严经论(T36n1739)·决疑论',u:'T36n1739'},
-   {a:'义天',w:'新编诸宗教藏总录(义天录·基准目录)',u:null}]
-  .forEach(function(x){h+="<span style='padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px;font-size:0.73em'><b style=color:#b8863c>"+x.a+"</b> <span style=color:var(--text2)>"+x.w+"</span>"+(x.u?"<br><a href='https://cbetaonline.dila.edu.tw/zh/"+x.u+"' target=_blank style=font-size:0.6em>📖 CBETA</a>":"")+"</span>";});
+  // ── Patriarch Commentaries (complete with per-work CBETA links) ──
+  h+="<div class=section><h2>📜 祖师核心章疏（26部·点击可读原文）</h2>";
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;font-size:0.72em'>";
+  [{a:'杜顺',ws:[{t:'法界观门',u:'T45n1884'},{t:'五教止观',u:'T45n1867'}]},
+   {a:'智俨',ws:[{t:'搜玄记',u:'T35n1732'},{t:'一乘十玄门',u:'T45n1868'},{t:'五十要问答',u:'T45n1869'}]},
+   {a:'法藏',ws:[{t:'五教章',u:'T45n1866'},{t:'探玄记',u:'T35n1733'},{t:'金师子章',u:'T45n1880'},{t:'起信论义记',u:'T44n1846'},{t:'义海百门',u:'T45n1875'},{t:'十二门论宗致义记',u:'T42n1826'}]},
+   {a:'澄观',ws:[{t:'华严经疏',u:'T35n1735'},{t:'演义钞',u:'T36n1736'},{t:'法界玄镜',u:'T45n1883'},{t:'三圣圆融观门',u:'T45n1882'}]},
+   {a:'宗密',ws:[{t:'禅源诸诠集',u:'T48n2015'},{t:'原人论',u:'T45n1886'},{t:'圆觉经大疏释义钞',u:'X09n0245'},{t:'注法界观门',u:'T45n1884'},{t:'行愿品疏钞',u:'X05n0229'}]},
+   {a:'李通玄',ws:[{t:'新华严经论',u:'T36n1739'},{t:'决疑论',u:'T36n1741'}]},
+   {a:'续法',ws:[{t:'贤首五教仪',u:'X58n1024'},{t:'华严宗佛祖传',u:'X77n1530'}]},
+   {a:'义天',ws:[{t:'新编诸宗教藏总录',u:null,note:'义天录·基准目录'}]}]
+  .forEach(function(x){x.ws.forEach(function(w){
+    h+="<span style='padding:3px 8px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.2);border-radius:10px'><b style=color:#b8863c>"+x.a+"</b><br><span style=color:var(--text2)>"+w.t+"</span>"+(w.u?"<br><a href='https://cbetaonline.dila.edu.tw/zh/"+w.u+"' target=_blank style=font-size:0.65em>📖 CBETA</a> · <a href='https://cbeta.buddhism.org.hk/xml/"+w.u+"_001.xml' target=_blank style=font-size:0.65em>📄 XML</a>":"")+(w.note?"<br><span style=font-size:0.75em;color:#5e8b9e>"+w.note+"</span>":"")+"</span>";
+  });});
   h+="</div></div>";
 
   // ── Modern & Tibetan sources ──
