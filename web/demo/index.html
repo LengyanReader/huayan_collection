@@ -1696,10 +1696,24 @@ function renderGap(){
     h+="</div></div>";
   });
 
-  // Post-Tang: 义天/续法
-  h+="<div style=font-size:0.78em;color:var(--gold);margin:10px 0 4px>▸ <b>宋元明清·传承与整理</b></div>";
-  [{a:'义天',dy:'1055–1101',ti:'高丽僧统·海东华严',ws:[{t:'新编诸宗教藏总录',u:null,note:'（义天录·基准目录）'}]},
-   {a:'续法',dy:'1641–1728',ti:'清代华严集大成者·柏亭',ws:[{t:'贤首五教仪',u:'X58n1024'},{t:'华严宗佛祖传',u:'X77n1530'}]}]
+  // Song dynasty: 子璿/净源/本嵩 + 华严四大家
+  h+="<div style=font-size:0.78em;color:var(--gold);margin:10px 0 4px>▸ <b>宋代·华严中兴</b></div>";
+  [{a:'子璿',dy:'965–1038',ti:'长水法师·宋代华严复兴先驱',ws:[{t:'楞严经义疏',u:'T39n1001'},{t:'起信论疏笔削记',u:'T44n1848'},{t:'金刚经纂要刊定记',u:'T33n1702'}]},
+   {a:'净源',dy:'1011–1088',ti:'晋水法师·华严中兴教主·立七祖谱系',ws:[{t:'金师子章云间类解',u:'T45n1881'},{t:'原人论发微录',u:'X58n1006'},{t:'仁王经疏',u:'T33n1707'},{t:'华严普贤行愿修证仪',u:'X74n1472'}]},
+   {a:'本嵩',dy:'北宋',ti:'通玄记',ws:[{t:'华严七字经题法界观三十颂',u:'T45n1885'}]},
+   {a:'华严四大家',dy:'南宋',ti:'道亭·观复·师会·希迪',ws:[{t:'五教章注疏系列',u:null,note:'道亭《义苑疏》/观复《析薪记》/师会《焚薪》《复古记》/希迪《集成记》《注同教策》'}]}]
+  .forEach(function(x){
+    h+="<div class=pat-block><span class=pat-name>"+x.a+"</span> <span class=pat-info>"+x.dy+" · "+x.ti+"</span><div class=pat-works>";
+    x.ws.forEach(function(w){h+="<span class=pat-wk>"+w.t+(w.u?" <a href='https://cbetaonline.dila.edu.tw/zh/"+w.u+"' target=_blank>📖</a> <a href='https://cbeta.buddhism.org.hk/xml/"+w.u+"_001.xml' target=_blank>📄</a>":"")+(w.note?"<br><span style=font-size:0.75em;color:#5e8b9e>"+w.note+"</span>":"")+"</span>";});
+    h+="</div></div>";
+  });
+
+  // Yuan/Ming/Qing
+  h+="<div style=font-size:0.78em;color:var(--gold);margin:10px 0 4px>▸ <b>元明清·传承与整理</b></div>";
+  [{a:'义天',dy:'1055–1101',ti:'高丽僧统·海东华严(入宋师净源)',ws:[{t:'新编诸宗教藏总录',u:null,note:'（义天录·华严章疏基准目录）'}]},
+   {a:'普瑞',dy:'元代',ti:'华严经疏注',ws:[{t:'华严经疏注',u:'X07n0234'}]},
+   {a:'续法',dy:'1641–1728',ti:'清·华严集大成者·柏亭',ws:[{t:'贤首五教仪',u:'X58n1024'},{t:'华严宗佛祖传',u:'X77n1530'}]},
+   {a:'通理',dy:'清代',ti:'北京宝通寺·北方华严代表',ws:[{t:'华严经疏钞',u:null,note:'清代北方华严中兴者'}]}]
   .forEach(function(x){
     h+="<div class=pat-block><span class=pat-name>"+x.a+"</span> <span class=pat-info>"+x.dy+" · "+x.ti+"</span><div class=pat-works>";
     x.ws.forEach(function(w){h+="<span class=pat-wk>"+w.t+(w.u?" <a href='https://cbetaonline.dila.edu.tw/zh/"+w.u+"' target=_blank>📖</a> <a href='https://cbeta.buddhism.org.hk/xml/"+w.u+"_001.xml' target=_blank>📄</a>":"")+(w.note?"<br><span style=font-size:0.75em;color:#5e8b9e>"+w.note+"</span>":"")+"</span>";});
@@ -2279,17 +2293,17 @@ function renderPractice(){
   h+="<div class=section><h2>📰 实修心要 — 永远的犍陀罗·禅修实操系列</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);margin-bottom:6px>以下10篇文章来自微信公众号「<b>永远的犍陀罗</b>」· <b>实修心要</b>专辑。内容为海云继梦和上关于禅修实操的开示,由仁悦整理。原文链接为微信公众号文章,全文已保存至 <code>docs/hy_refs/wechat/</code> 目录。</p>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;font-size:0.73em'>";
-  [{n:1,t:'别用大脑修行',d:'暖身二法·调身调息·内脏内动'},
-   {n:2,t:'四段呼吸的奥秘',d:'呼吸四阶段的辨识与运用'},
-   {n:3,t:'闭气不是憋气',d:'闭气与憋气的关键区别'},
-   {n:4,t:'摸着那个"转折点"',d:'呼吸中阻力的转折与突破'},
-   {n:5,t:'呼吸里的一股"力"',d:'息之力的感知与运用'},
-   {n:6,t:'置心一处的三大工程',d:'置心一处的技术面三大要素'},
-   {n:7,t:'心跑了，抓回来！',d:'摄心——若心他缘摄之令返'},
-   {n:8,t:'别躲清静，去"防震"',d:'动中修行的防震训练'},
-   {n:9,t:'内动来了，用"金钥匙"',d:'参禅金钥匙的触发与运用'},
-   {n:10,t:'入禅九阶：从暖身到金钥匙',d:'系统总结——禅修九阶次第'}]
-  .forEach(function(a){h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.2);border-radius:10px;min-width:160px'><b style=color:#5e8b9e>第"+a.n+"篇</b> <b>"+a.t+"</b><br><span style=font-size:0.85em;color:var(--text2)>"+a.d+"</span><br><span style=font-size:0.65em;color:var(--text2)>📁 docs/hy_refs/wechat/"+("0"+a.n).slice(-2)+"_*</span></span>";});
+  [{n:1,t:'别用大脑修行',d:'暖身二法·调身调息·内脏内动',u:'https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g'},
+   {n:2,t:'四段呼吸的奥秘',d:'呼吸四阶段的辨识与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497426&idx=1&sn=7fa8a139ce472314116bbe138e50db10&chksm=c1e7e107f6906811acd86cfb3a27c4bfa0d19b60bb896feb46af3ae1010838b36e9f2c668c1b#wechat_redirect'},
+   {n:3,t:'闭气不是憋气',d:'闭气与憋气的关键区别',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497428&idx=1&sn=04845b578927e6631786c3cc725bf763&chksm=c1e7e101f69068177af7b3cda755545cf3835e01bfe05feca8321e1cc77169421a7fb4856812#wechat_redirect'},
+   {n:4,t:'摸着那个"转折点"',d:'呼吸中阻力的转折与突破',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497449&idx=1&sn=a8e12d77fca6019f4981a30d5beb8a65&chksm=c1e7e13cf690682af9445df95091817ab56d68c9192ddd5f71e0e464ef0533dd3b9b9842624b#wechat_redirect'},
+   {n:5,t:'呼吸里的一股"力"',d:'息之力的感知与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497472&idx=1&sn=3b28886bf8e854a0958bba7354beef9f&chksm=c1e7e0d5f69069c3e18903d286c2740854421f8757c83402ed71ebe4880346dbf757dc1366c7#wechat_redirect'},
+   {n:6,t:'置心一处的三大工程',d:'置心一处的技术面三大要素',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497479&idx=1&sn=c4784e020ce863182a89632d52d56664&chksm=c1e7e0d2f69069c4fa173212ce7490d78b05d7ab06deb6731e1dbc9bd3707dcf0fd744571a4a#wechat_redirect'},
+   {n:7,t:'心跑了，抓回来！',d:'摄心——若心他缘摄之令返',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497491&idx=1&sn=f568ae4dfdafb48b16a268156cabc90e&chksm=c1e7e0c6f69069d0a64c9ae7e9a47d0c1731bd0d7de9dd5f31105d1092682a790dda21dd7f43#wechat_redirect'},
+   {n:8,t:'别躲清静，去"防震"',d:'动中修行的防震训练',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497501&idx=1&sn=ed9c44ca78f777c38e46b78fb3bc1450&chksm=c1e7e0c8f69069de0275257c938825b419168b3f2bd7e3be7efa9f5ae9aa239d1f9ffade304f#wechat_redirect'},
+   {n:9,t:'内动来了，用"金钥匙"',d:'参禅金钥匙的触发与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497540&idx=1&sn=a44a18d9d5867cf254ed387fe524a062&chksm=c1e7e091f6906987832b9af27aba864456f1cb9d1337752fba024d7969943fb657d8435411b8#wechat_redirect'},
+   {n:10,t:'入禅九阶：从暖身到金钥匙',d:'系统总结——禅修九阶次第',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497558&idx=1&sn=670085792928af68ec9ef60b3574febe&chksm=c1e7e083f69069951f0e0bf69f96e9810a1a0df9109fa4e3be7cfea1ef4579286d4540decf03#wechat_redirect'}]
+  .forEach(function(a){h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.2);border-radius:10px;min-width:160px'><b style=color:#5e8b9e>第"+a.n+"篇</b> <a href='"+a.u+"' target=_blank style=font-weight:600>"+a.t+"</a><br><span style=font-size:0.85em;color:var(--text2)>"+a.d+"</span></span>";});
   h+="</div>";
   h+="<p style=font-size:.68em;color:var(--text2);margin-top:6px>📌 <b>来源:</b> 微信公众号「永远的犍陀罗」· 实修心要专辑 · 海云继梦和上开示 · 仁悦整理 · 2026-08-02批量提取</p>";
   h+="</div>";
