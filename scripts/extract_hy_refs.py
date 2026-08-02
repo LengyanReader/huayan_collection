@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Extract text from Huayan reference PDFs in docs/hy_refs/ → docs/hy_refs/text/
+"""Extract text from Huayan reference PDFs in docs/hy_refs/ -> docs/hy_refs/text/
 Builds a catalog knowledge graph JSON for downstream content updates.
 
 Usage: python scripts/extract_hy_refs.py
 """
-import os, sys, json, re
+import os, sys, json, re, io
+
+# Fix Windows console encoding for Chinese output
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REFS_DIR = os.path.join(ROOT, "docs", "hy_refs")

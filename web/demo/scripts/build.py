@@ -45,6 +45,7 @@ for p in personas['persons']:
         'li': li, 'multi': multi, 'tp': p.get('type', 'practitioner'),
         'b': p.get('birth_year'), 'd': p.get('death_year'),
         'bio': (p.get('biography', '') or '')[:150], 'wk': (p.get('key_works') or [])[:2],
+        'wl': p.get('works_links', {}) if p.get('works_links') else {},
         'v': p.get('verified', 0) if isinstance(p.get('verified'), int) else 0
     })
 

@@ -699,7 +699,7 @@ function showInfo(p,p2,e){
     +"📅 <b>"+(p.dy||"?")+"</b> · "+(p.b||"?")+"–"+(p.d||"?")+" "+lifeSpan+"<br>"
     +locHTML+relHTML
     +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
-    +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.join("</b> · <b>")+"</b></div>":"");
+    +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.map(function(w){var lk=p.wl&&p.wl[w];return lk?'<a href='+lk+' target=_blank style=color:var(--blue)>'+w+'</a>':w;}).join("</b> · <b>")+"</b></div>":"");
   if(p2){
     var lc2=DATA.lineage_colors[p2.li]||"#b0a898";var ti2=TYPE_ICONS[p2.tp]||'';
     h+="<div style='margin-top:10px;padding-top:8px;border-top:2px solid var(--gold)'><h3 style=color:#5e8b9e>"+(ti2?'['+ti2+'] ':'')+p2.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p2.ti||"")+"</span></h3>"
