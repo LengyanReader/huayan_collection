@@ -77,7 +77,8 @@
       "edges": [
         {"from": "person_021", "to": "person_041", "relation": "INFLUENCED", "note": "高原明昱(25世)法脉传至钦因(41世)"},
         {"from": "person_041", "to": "person_042", "relation": "MASTER_OF", "note": "钦因(41世)2008年传衣钵予海云继梦(42世)"},
-        {"from": "person_041", "to": "person_043", "relation": "MASTER_OF", "note": "钦因另传体佛法师等法嗣"}
+        {"from": "person_041", "to": "person_043", "relation": "MASTER_OF", "note": "钦因另传体佛法师等法嗣"},
+        {"from": "person_041", "to": "person_126", "relation": "MASTER_OF", "note": "钦因(41世)2010年4月24日传华严兼慈恩法脉予成观法师(42世)"}
       ]
     },
     {
