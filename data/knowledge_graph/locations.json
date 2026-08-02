@@ -212,6 +212,20 @@
       "description": "历代华严行者修行道场之一。",
       "related_persons": [],
       "source": "佛教史料"
+    },
+    {
+      "id": "loc_016",
+      "name_zh": "台北大毘卢寺",
+      "current_name": "大毘卢寺",
+      "lat": 24.988,
+      "lng": 121.571,
+      "type": "temple",
+      "dynasty": "当代",
+      "city": "台北市",
+      "province": "文山区",
+      "description": "成观法师1991年创立之道场。以禅密为主体兼修他宗,定期举办楞严法会。附设毘卢出版社及新逍遥园译经院(桃园杨梅)。",
+      "related_persons": ["person_126"],
+      "source": "大毘卢寺官网"
     }
   ]
 }

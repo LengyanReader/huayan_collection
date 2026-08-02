@@ -167,7 +167,7 @@ locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'
 locs.append({'id': 'l_h', 'n': '南投大华严寺', 'lat': 23.92, 'lng': 120.88, 'tp': 'temple', 'dy': '当代',
              'ds': '海云继梦导师。普贤乘根本道场。', 'ps': ['person_042']})
 locs.append({'id': 'l_f', 'n': '台北福慧寺', 'lat': 24.98, 'lng': 121.42, 'tp': 'temple', 'dy': '当代',
-             'ds': '钦因长老住持。', 'ps': ['person_041', 'person_043']})
+             'ds': '钦因长老住持。2010年成观法师于此受华严兼慈恩法脉。', 'ps': ['person_041', 'person_043', 'person_126']})
 
 # Locations for 鸠摩罗什 + 求法僧
 locs.append({'id': 'l_kucha', 'n': '龟兹', 'lat': 41.7, 'lng': 82.9, 'tp': 'region', 'dy': '古西域',
