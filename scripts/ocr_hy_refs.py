@@ -2,6 +2,11 @@
 """OCR scanned Huayan reference PDFs using PaddleOCR.
 
 Requirements: pip install paddlepaddle paddleocr PyPDF2 pdf2image
+  ALSO requires poppler (system-level PDF renderer):
+    Windows: download from https://github.com/oschwartz10612/poppler-windows/releases/
+             extract to e.g. C:\poppler\bin, add to PATH
+    Linux:   apt-get install poppler-utils
+    Mac:     brew install poppler
 Usage: python scripts/ocr_hy_refs.py [--file FILENAME] [--pages N]
 
 For large scanned PDFs, extracts text page-by-page via:
