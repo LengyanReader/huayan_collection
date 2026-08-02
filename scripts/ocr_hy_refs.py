@@ -58,7 +58,10 @@ def ocr_pdf(filepath, max_pages=10):
 
     print(f"  Converting PDF to images...")
     try:
-        images = convert_from_path(filepath, dpi=200, first_page=1, last_page=max_pages)
+        # Use local poppler installation
+        poppler_path = r"c:\poppler\poppler-24.08.0\Library\bin"
+        images = convert_from_path(filepath, dpi=200, first_page=1, last_page=max_pages,
+                                   poppler_path=poppler_path)
     except Exception as e:
         return {"error": f"PDF to image conversion failed: {e}. Install poppler: https://github.com/oschwartz10612/poppler-windows/releases/"}
 
