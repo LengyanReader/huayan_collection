@@ -1,4 +1,4 @@
-// ═══ 华严其观 COSMOLOGY TAB ═══
+// ═══ 世主妙严 COSMOLOGY TAB ═══
 var COSMO={scale:1,sel:null,net:true,all:false};
 var COSMO_WINDS=['平等住','出生宝庄严','清净光','光明轮','普持','不动','普照','法界云','大光明','法界光明云'];
 var COSMO_LAYERS=[
@@ -17,7 +17,7 @@ var COSMO_LAYERS=[
 function renderCosmology(){
   var cv=document.getElementById("cosmology-view");if(!cv)return;
   var h='<style>.cm-btn{padding:3px 10px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em}.cm-btn.on{background:var(--gold);color:#fff}#cosmo-info{display:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:8px;font-size:0.82em;line-height:1.7}</style>';
-  h+='<div class=section style=border-left:4px solid var(--gold)><h2>🪷 华严其观 · 华藏世界海</h2><p style=font-size:0.82em;color:var(--text2)>据《华严经·华藏世界品》(T10n0279卷八~十)。十重风轮持香水海,海中出大莲华,二十重世界层层叠绕。毗卢遮那佛法身遍满。源: CBETA T10n0279</p></div>';
+  h+='<div class=section style=border-left:4px solid var(--gold)><h2>🪷 世主妙严 · 华藏世界海</h2><p style=font-size:0.82em;color:var(--text2)>据《华严经·华藏世界品》(T10n0279卷八~十)。十重风轮持香水海,海中出大莲华,二十重世界层层叠绕。毗卢遮那佛法身遍满。源: CBETA T10n0279</p></div>';
   h+='<button class="cm-btn on" onclick="COSMO.net=!COSMO.net;this.classList.toggle(\'on\',COSMO.net);drawCosmo()">🕸 因陀罗网</button> ';
   h+='<button class="cm-btn" onclick="COSMO.all=!COSMO.all;this.classList.toggle(\'on\',COSMO.all);drawCosmo()">📋 全部层名</button> ';
   h+='<span style=font-size:0.7em;color:var(--text2)>滚轮缩放 | 点击世界层查看详情 | 金色=娑婆世界</span>';
