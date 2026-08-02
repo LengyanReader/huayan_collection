@@ -419,6 +419,25 @@ function renderPractice(){
   h+="</div></div>";
   h+="</div>";
 
+  // ── 实修心要文章链接 ──
+  h+="<div class=section><h2>📰 实修心要 — 永远的犍陀罗·禅修实操系列</h2>";
+  h+="<p style=font-size:.78em;color:var(--text2);margin-bottom:6px>以下10篇文章来自微信公众号「<b>永远的犍陀罗</b>」· <b>实修心要</b>专辑。内容为海云继梦和上关于禅修实操的开示,由仁悦整理。原文链接为微信公众号文章,全文已保存至 <code>docs/hy_refs/wechat/</code> 目录。</p>";
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;font-size:0.73em'>";
+  [{n:1,t:'别用大脑修行',d:'暖身二法·调身调息·内脏内动'},
+   {n:2,t:'四段呼吸的奥秘',d:'呼吸四阶段的辨识与运用'},
+   {n:3,t:'闭气不是憋气',d:'闭气与憋气的关键区别'},
+   {n:4,t:'摸着那个"转折点"',d:'呼吸中阻力的转折与突破'},
+   {n:5,t:'呼吸里的一股"力"',d:'息之力的感知与运用'},
+   {n:6,t:'置心一处的三大工程',d:'置心一处的技术面三大要素'},
+   {n:7,t:'心跑了，抓回来！',d:'摄心——若心他缘摄之令返'},
+   {n:8,t:'别躲清静，去"防震"',d:'动中修行的防震训练'},
+   {n:9,t:'内动来了，用"金钥匙"',d:'参禅金钥匙的触发与运用'},
+   {n:10,t:'入禅九阶：从暖身到金钥匙',d:'系统总结——禅修九阶次第'}]
+  .forEach(function(a){h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.2);border-radius:10px;min-width:160px'><b style=color:#5e8b9e>第"+a.n+"篇</b> <b>"+a.t+"</b><br><span style=font-size:0.85em;color:var(--text2)>"+a.d+"</span><br><span style=font-size:0.65em;color:var(--text2)>📁 docs/hy_refs/wechat/"+("0"+a.n).slice(-2)+"_*</span></span>";});
+  h+="</div>";
+  h+="<p style=font-size:.68em;color:var(--text2);margin-top:6px>📌 <b>来源:</b> 微信公众号「永远的犍陀罗」· 实修心要专辑 · 海云继梦和上开示 · 仁悦整理 · 2026-08-02批量提取</p>";
+  h+="</div>";
+
   // ── 完整出处 ──
   h+="<div class=section><h2>📚 信实可靠的出处与参考资源</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>以下为本文所依据的全部第一手来源。内容以<b>大华严寺官方资料.海云继梦和上讲经逐字稿.正式出版物</b>为主,凡涉及诠释性跨度之处均已随文标注。</p>";
