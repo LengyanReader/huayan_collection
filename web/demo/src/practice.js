@@ -12,6 +12,13 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   h+="<div id=pv-system class=pv-section>";
 
+  // ── WIP Notice ──
+  h+="<div style='background:rgba(184,134,60,0.06);border:1px solid #b8863c40;border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:0.75em;color:var(--text2);line-height:1.6'>"
+    +"⚠ <b>内容声明：</b>本页面内容基于大华严寺官网(2025.11版)和海云继梦和上已公开的讲经视频/音频/逐字稿/出版物整理。"
+    +"法师讲法内容不断更新演化，当前整理仍不完整，需要大量结构化梳理和补充核实，<b>仅供参考</b>，持续更新中。"
+    +"最新修行体系请以大华严寺官网为准。<br>"
+    +"📅 最近更新：2026-08-02</div>";
+
   // ── Header ──
   h+="<div class=section style=border-left:4px solid var(--gold)><h2>🧘 华严行法 — 普贤乘修行体系</h2>";
   h+="<p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。体系涵盖从资粮道到正行、从初信到法身大士的完整修行次第。</p></div>";
