@@ -1895,7 +1895,7 @@ function renderPractice(){
   h+="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}.topic-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}.topic-card h4{color:var(--gold);font-size:0.88em;margin-bottom:4px}.topic-card p{font-size:0.78em;line-height:1.7;color:var(--text2)}.topic-card a{color:var(--blue);font-size:0.75em}</style>";
 
   // ── Sub-navigation ──
-  h+="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='pv-nav active' onclick='switchPracticeView(\"system\",this)'>🧘 修行体系</button><button class='pv-nav' onclick='switchPracticeView(\"meditation\",this)'>📐 禅观法要</button><button class='pv-nav' onclick='switchPracticeView(\"resources\",this)'>📡 讲法资源</button></div>";
+  h+="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='pv-nav active' onclick='switchPracticeView(\"system\",this)'>🧘 修行体系</button><button class='pv-nav' onclick='switchPracticeView(\"meditation\",this)'>📐 禅观法要</button><button class='pv-nav active' onclick='switchPracticeView(\"system\",this)'>🧘 修行体系</button><button class='pv-nav' onclick='switchPracticeView(\"meditation\",this)'>📐 禅观法要</button><button class='pv-nav' onclick='switchPracticeView(\"heart\",this)'>❤️ 实修心要</button><button class='pv-nav' onclick='switchPracticeView(\"resources\",this)'>📡 讲法资源</button></div>";
 
   // ═══════════════════════════════════════════
   // SUB-PAGE 1: 修行体系 (default visible)
@@ -2349,7 +2349,43 @@ function renderPractice(){
   h+="</div>"; // close pv-meditation
 
   // ═══════════════════════════════════════════
-  // SUB-PAGE 3: 讲法资源 (hidden)
+  // SUB-PAGE 3: 实修心要 (hidden)
+  // ═══════════════════════════════════════════
+  h+="<div id=pv-heart class=pv-section style=display:none>";
+  h+="<div class=section style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦法师禅修入门十讲</h2>";
+  h+="<p style=font-size:.8em;color:var(--text2);line-height:1.8>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>以「身」入手而非「脑」——暖身二法·调身调息·置心一处·内动金钥匙·入禅九阶。</b>每篇附行法体系对读链接,可对照禅观法要中的相应板块。</p>";
+  h+="<p style=font-size:.7em;color:var(--text2)>📎 <a href='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g' target=_blank>第一篇原文</a> · 后续各篇通过末尾「下一篇」链接可依次访问 · 全文已提取至 docs/hy_refs/wechat/ 目录</p></div>";
+
+  // Define the 10 articles with their key points and cross-references
+  var heartArticles=[
+    {n:1,t:'别用大脑修行',s:'下手处，是身体，不是念头',p:'暖身二法:生命载体调整术+生命导引术(内视呼吸法)。调身调息调心——内脏内动而非肌肉运动。',x:'「修行入口处就是下手处。下手处很简单,不能用大脑,用大脑没有入口处。」',ref:[{l:'调身·调息·调心(五科训练详解)',h:'#pv-meditation'},{l:'驻佇心观(停心工程)',h:'#pv-meditation'},{l:'参禅金三角',h:'#pv-meditation'}]},
+    {n:2,t:'四段呼吸的奥秘',s:'息入、息住、息出、息停',p:'呼吸的四个阶段:吸入→停留→呼出→停顿。每个阶段有其独特的身心作用。',x:'「呼吸是连接身体与心灵的桥梁。」',ref:[{l:'安那般那数息观(数·随·止)',h:'#pv-meditation'},{l:'调息——息之四相',h:'#pv-meditation'}]},
+    {n:3,t:'闭气不是憋气',s:'自然闭气vs强制憋气',p:'闭气是自然的呼吸停顿,不是用力的憋气。正确闭气能激活内热,推动生命能量。',x:'「闭气是呼吸的自然结果,不是用力的对抗。」',ref:[{l:'技术面:数随止三法',h:'#pv-meditation'},{l:'调息——息相·数息要领',h:'#pv-meditation'}]},
+    {n:4,t:'摸着那个"转折点"',s:'息入尽与息出尽的O点',p:'在呼吸转折处——息入尽的点与息出尽的点——感受细微的能量转换。数于尽处,不数于过程。',x:'「数息不是数呼吸的过程,而是数那个转折。」',ref:[{l:'工程面:A阶段(感受息之长短动静)',h:'#pv-meditation'},{l:'参禅金三角(息入息出清楚)',h:'#pv-meditation'}]},
+    {n:5,t:'呼吸里的一股"力"',s:'息之力的感知与运用',p:'呼吸中蕴含一股力——不是肌肉的力量,而是生命能量(般那)的流动。感知这股力是修行的关键。',x:'「呼吸不只是空气的进出,里面有股力量。」',ref:[{l:'工程面:B阶段(洞悉呼吸因果轨迹)',h:'#pv-meditation'},{l:'参禅金三角(置心一处)',h:'#pv-meditation'}]},
+    {n:6,t:'置心一处的三大工程',s:'置心一处=调身+调息+调心三合一',p:'置心一处不是一个孤立动作,而是调身、调息、调心三者的协同运作。三者一体不二。',x:'「置心一处不是用力集中,而是身息心自然统一。」',ref:[{l:'置心一处(四种停心方法)',h:'#pv-meditation'},{l:'内摄→内观→禅观三层功夫',h:'#pv-meditation'}]},
+    {n:7,t:'心跑了，抓回来！',s:'若心他缘,摄之令返',p:'修行中最常见的经验:心不断跑掉。关键是觉察到跑掉后,温和地把心带回来——不评判,不懊恼。',x:'「妄想一起,记得把心抓回来放在风门。」',ref:[{l:'内摄——技术面核心(摄心)',h:'#pv-meditation'},{l:'四种妄想(心理/物理/生理/社会)',h:'#pv-meditation'}]},
+    {n:8,t:'别躲清静，去"防震"',s:'动中修定·环境训练的智慧',p:'不是在安静环境中才能修行。真正的功夫要在动乱中验证——法师称之为防震训练。',x:'「你躲到山里去修,回来一碰境界,全垮了。」',ref:[{l:'依禅堂规矩(四种停心方法)',h:'#pv-meditation'},{l:'大脑临界点(关键原则)',h:'#pv-meditation'}]},
+    {n:9,t:'内动来了，用"金钥匙"',s:'参禅金钥匙——吸·闭·吐',p:'当内在能量(内动)被激活时,需要用金钥匙来引导:吸气→闭气→吐气。此为参禅核心技术。',x:'「金钥匙就是吸、闭、吐——三个动作自然连贯。」',ref:[{l:'参禅金三角',h:'#pv-meditation'},{l:'技术面:数随止三法',h:'#pv-meditation'}]},
+    {n:10,t:'入禅九阶：从暖身到金钥匙',s:'九阶次第=暖身·调身·调息·调心·内动·置心·闭气·金钥匙·入禅',p:'系统总结暖身二法到金钥匙的完整九阶修行次第。从身体入手,经由调身调息调心,激活内动,运用金钥匙,最终入禅。',x:'「修行不是知识的学习,而是生命的改造。」',ref:[{l:'体系总览——华严禅观修行全程蓝图',h:'#pv-meditation'},{l:'调身·调息·调心(五科训练详解)',h:'#pv-meditation'},{l:'参禅金三角',h:'#pv-meditation'}]}
+  ];
+
+  h+="<div style=display:flex;gap:10px;flex-wrap:wrap>";
+  heartArticles.forEach(function(a){
+    h+="<div style='flex:1;min-width:300px;max-width:500px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:6px'>";
+    h+="<div style=font-weight:700;color:var(--gold);margin-bottom:4px>第"+a.n+"篇 · "+a.t+"</div>";
+    h+="<p style=font-size:.78em;color:var(--text2);margin-bottom:4px><b>"+a.s+"</b></p>";
+    h+="<p style=font-size:.73em;line-height:1.7;margin-bottom:6px>"+a.p+"</p>";
+    h+="<blockquote style=font-size:.72em;color:var(--gold);border-left:3px solid var(--gold);padding-left:8px;margin:6px 0;font-style:italic>"+a.x+"</blockquote>";
+    h+="<p style=font-size:.68em;color:var(--blue);margin-top:6px><b>📐 行法对读:</b> ";
+    a.ref.forEach(function(r,i){h+=(i>0?' · ':'')+"<a href='#' onclick='switchPracticeView(\"meditation\");return false' style=font-size:.68em>"+r.l+"</a>";});
+    h+="<br>📎 <a href='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g' target=_blank style=font-size:.6em>原文(第1篇为入口,后续依次通过末尾「下一篇」访问)</a></p></div>";
+  });
+  h+="</div>";
+  h+="</div>"; // close pv-heart
+
+  // ═══════════════════════════════════════════
+  // SUB-PAGE 4: 讲法资源 (hidden, was #3 before 实修心要 added)
   // ═══════════════════════════════════════════
   h+="<div id=pv-resources class=pv-section style=display:none>";
 
