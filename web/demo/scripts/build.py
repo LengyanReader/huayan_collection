@@ -162,6 +162,22 @@ edges.append({'s':'person_101','t':'person_102','r':'INFLUENCE','li':'印度源�
 edges.append({'s':'person_105','t':'person_100','r':'INFLUENCED','li':'印度源流'})
 edges.append({'s':'person_106','t':'person_100','r':'INFLUENCED','li':'印度源流'})
 
+# ── Additional persons: 印度大乘瑜伽行法传承 (Lakulish→胜师子王菩萨) ──
+nodes.append({'id':'person_130','n':'拉克鲁希','dy':'远古印度','ti':'湿婆神第28代化身·Lord Lakulish','li':'大乘瑜伽行法','tp':'patriarch','b':None,'d':None,'bio':'Lord Lakulish。相传为4500年前湿婆神第28代化身,为印度古典瑜伽行法之原始指导者。其传承历经千年,于现代示现指导巴布基大瑜伽士。','wk':[],'v':0})
+nodes.append({'id':'person_131','n':'巴布基','dy':'近现代','ti':'大瑜伽士·Babuji','li':'大乘瑜伽行法','tp':'practitioner','b':None,'d':None,'bio':'Babuji(巴布基大瑜伽士)。Lord Lakulish示现指导的大成就者,传承古典瑜伽行法。','wk':[],'v':0})
+nodes.append({'id':'person_132','n':'普拉梵纳德','dy':'近现代','ti':'Swami Pranavanad','li':'大乘瑜伽行法','tp':'practitioner','b':1884,'d':1959,'bio':'Swami Pranavanad。1913年普贤菩萨于印度再度示现,为其传法。开创现代大乘瑜伽行法传承。','wk':[],'v':0})
+nodes.append({'id':'person_133','n':'克利普梵纳德','dy':'近现代','ti':'Swami Kripalavanand','li':'大乘瑜伽行法','tp':'practitioner','b':1913,'d':1981,'bio':'Swami Kripalavanand。1932年从普拉梵纳德接法,继续弘扬大乘瑜伽行法。','wk':[],'v':0})
+nodes.append({'id':'person_134','n':'胜师子王菩萨','dy':'当代','ti':'Swami Rajarshi Muni·印度国师','li':'大乘瑜伽行法','tp':'practitioner','b':1931,'d':None,'bio':'Swami Rajarshi Muni(惹查西牟尼)。1971年从克利普梵纳德接法。1993年Lakulish以灵性形象示现,遂创立LIFE Mission。被尊为印度国师,2019年获印度总理奖。2008年12月于阿弥塔巴市传大乘瑜伽行法灌顶予海云继梦:准许以大乘佛法弘扬Maha Yogachar。','wk':[],'v':0})
+
+edges.append({'s':'person_130','t':'person_131','r':'MASTER','li':'大乘瑜伽行法'})
+edges.append({'s':'person_131','t':'person_132','r':'MASTER','li':'大乘瑜伽行法'})
+edges.append({'s':'person_132','t':'person_133','r':'MASTER','li':'大乘瑜伽行法'})
+edges.append({'s':'person_133','t':'person_134','r':'MASTER','li':'大乘瑜伽行法'})
+edges.append({'s':'person_134','t':'person_042','r':'MASTER','li':'大乘瑜伽行法(2008.12传法灌顶)'})
+
+locs.append({'id': 'l_yoga', 'n': '印度阿弥塔巴·LIFE Mission道场', 'lat': 23.02, 'lng': 72.57, 'tp': 'temple', 'dy': '当代',
+             'ds': '胜师子王菩萨道场。海云继梦2008年12月于此接受大乘瑜伽行法灌顶传法。', 'ps': ['person_134', 'person_042']})
+
 # Location: 东大寺
 locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})
 
@@ -189,7 +205,7 @@ for loc2 in locs:
 
 colors = {'华严五祖': '#b8863c', '华严莲社': '#5e8b9e', '月霞系': '#7a9ec0', '李通玄系': '#c8893e',
           '高丽华严': '#6d9a6e', '日本华严': '#8b7a9e', '贤首宗高原法系': '#c46b5d', '临济宗': '#d48476',
-          '慈舟系': '#8b7a9e', '译师': '#a09080', '印度源流': '#9e8b6e', '求法僧': '#d48476', '当代学者': '#b0a898', 'null': '#b0a898'}
+          '慈舟系': '#8b7a9e', '译师': '#a09080', '印度源流': '#9e8b6e', '求法僧': '#d48476', '当代学者': '#b0a898', '大乘瑜伽行法': '#d4a574', 'null': '#b0a898'}
 
 GRAPH = json.dumps({'nodes': nodes, 'edges': edges, 'locations': locs, 'lineage_colors': colors}, ensure_ascii=False)
 
