@@ -2623,8 +2623,71 @@ function renderCosmology(){
   h+='<span style=font-size:0.7em;color:var(--text2)>滚轮缩放 | 点击世界层查看详情 | 金色=娑婆世界</span>';
   h+='<div style=display:flex;gap:16px;flex-wrap:wrap><div style=flex:1.5;min-width:380px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-canvas style=max-width:100%></canvas></div><div style=flex:1;min-width:200px><div id=cosmo-info></div><div class=section style=margin-top:8px><h3 style=color:var(--gold)>📐 结构(从下至上)</h3><p style=font-size:0.78em;line-height:1.9>⑩~① 十重风轮<br>无边妙华光香水海<br>一切香摩尼宝庄严大莲华<br>第1~20重世界<br>★第13重: 娑婆世界(我们所在)<br>一一世界有微尘数佛刹围绕</p></div></div></div>';
   // ── 三界诸天图 ──
-  h+='<div class=section style=margin-top:16px><h2>📐 三界诸天·修行对应图 — 海云继梦法师修行体系</h2><p style=font-size:0.78em;color:var(--text2)>据大华严寺官网「华严禅观全程一览表」及海云法师《四十华严讲记》《华严禅行法》系列。二十八天对应<b>三阶修行次第</b>(前行/正行/妙行) + <b>十信位果位</b>(初信~入法界) + <b>禅定进路</b>(四天王定→狮子频申三昧)。源: 大华严寺官网 + fjdh.cn讲记逐字稿</p>';
+  h+="<div class=section style=margin-top:16px><h2>📐 三界诸天·修行对应图 — 海云继梦法师修行体系</h2><p style=font-size:0.78em;color:var(--text2)>据大华严寺官网「华严禅观全程一览表」及海云法师《四十华严讲记》《华严禅行法》系列。二十八天对应<b>三阶修行次第</b>(前行/正行/妙行) + <b>十信位果位</b>(初信~入法界) + <b>禅定进路</b>(四天王定→狮子频申三昧)。源: 大华严寺官网 + fjdh.cn讲记逐字稿</p>"
   h+='<div style=text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-tower style=max-width:100%></canvas></div></div>';
+
+  // ═══ 华严艺术珍品 ═══
+  h+='<div class=section><h2>🎨 华严艺术珍品</h2>';
+
+  // ── 敦煌七处九会绢画 ──
+  h+='<div style=display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px><div style=flex:1;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>';
+  h+='<h4 style=color:var(--gold);margin-bottom:4px>🏛 敦煌·华严经七处九会绢画（唐）</h4>';
+  h+="<p style=font-size:0.73em;color:var(--text2);line-height:1.7>敦煌藏经洞出土,近2米大幅绢本。九铺说法图对应七处九会:菩提场、普光明殿(三次)、忉利天宫、夜摩天宫、兜率天宫、他化天宫、逝多林。底部绘莲华藏世界海。据实叉难陀译八十华严绘制。</p>"
+  h+="<p style=font-size:0.68em;color:var(--text2)>📍 <b>法国吉美国立亚洲艺术博物馆</b>(Musée Guimet, Paris)</p>"
+  h+='<p style=font-size:0.65em;margin-top:4px>🔗 <a href=https://www.guimet.fr target=_blank>吉美博物馆官网</a> · <a href=http://idp.bl.uk target=_blank>国际敦煌项目 IDP</a> · <a href=https://www.e-dunhuang.com target=_blank>数字敦煌</a></p></div>';
+
+  // ── 十地品变相图 ──
+  h+='<div style=flex:1;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>';
+  h+='<h4 style=color:var(--gold);margin-bottom:4px>🏛 敦煌·十地品变相图（唐）</h4>';
+  h+="<p style=font-size:0.73em;color:var(--text2);line-height:1.7>绢本设色,62.5×20cm,藏经洞出土。毗卢遮那佛于他化自在天宣说十地法门,以十幅画面逐层展现从欢喜地到法云地的修行次第。两侧胁侍解脱月菩萨与金刚藏菩萨。</p>"
+  h+="<p style=font-size:0.68em;color:var(--text2)>📍 <b>法国吉美国立东方美术馆</b></p>"
+  h+='<p style=font-size:0.65em;margin-top:4px>🔗 <a href=https://www.guimet.fr target=_blank>吉美博物馆</a> · <a href=https://www.sohu.com/a/406251191_467442 target=_blank>图说华严经</a></p></div></div>';
+
+  // ── 莫高窟壁画 + 东大寺 ──
+  h+='<div style=display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px><div style=flex:1;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>';
+  h+='<h4 style=color:var(--gold);margin-bottom:4px>🖼 莫高窟·华严经变壁画群</h4>';
+  h+="<p style=font-size:0.73em;color:var(--text2);line-height:1.7>敦煌莫高窟现存华严经变洞窟"+"<b>28个</b>(盛唐44窟至宋454窟)。中唐后成熟:九宫格七处九会+底部莲华藏世界+善财五十三参屏风画。代表:第12窟(北壁)/第237窟(双头瑞像)/第146窟(伯希和图录)。</p>";
+  h+='<p style=font-size:0.65em;margin-top:4px>🔗 <a href=https://www.dha.ac.cn target=_blank>敦煌研究院 dha.ac.cn</a> · <a href=https://www.e-dunhuang.com target=_blank>数字敦煌</a> · <a href=https://dsr.nii.ac.jp/reference/pelliot/entry/1-022.html.zh target=_blank>伯希和图录</a></p></div>';
+
+  h+='<div style=flex:1;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>';
+  h+='<h4 style=color:var(--gold);margin-bottom:4px>🗿 奈良东大寺·卢舍那大佛</h4>';
+  h+="<p style=font-size:0.73em;color:var(--text2);line-height:1.7>日本华严宗总本山。金铜卢舍那大佛高约15m,743年圣武天皇发愿铸造,752年开眼。大佛殿为世界现存最大木构建筑(宽57m×高49m)。正仓院藏唐代华严相关文物300+件(含全球唯一存世唐五弦琵琶)。1998年世界文化遗产。</p>";
+  h+='<p style=font-size:0.65em;margin-top:4px>🔗 <a href=https://www.todaiji.or.jp target=_blank>东大寺官网</a> · <a href=https://shosoin.kunaicho.go.jp target=_blank>正仓院(宫内厅)</a> · 🎬 <a href=https://www.youtube.com/results?search_query=%E6%9D%B1%E5%A4%A7%E5%AF%BA+%E5%A4%A7%E4%BD%9B+4K target=_blank>YouTube 4K</a></p></div></div>';
+
+  // ── 犍陀罗 + 双头瑞像 ──
+  h+='<div style=display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px><div style=flex:1;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>';
+  h+='<h4 style=color:var(--gold);margin-bottom:4px>🏺 犍陀罗·华严佛传造像</h4>';
+  h+="<p style=font-size:0.73em;color:var(--text2);line-height:1.7>犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变图像学上有渊源。栗田功《大美之佛像:犍陀罗艺术》(文物出版社2017)为权威参考。</p>"
+  h+='<p style=font-size:0.65em;margin-top:4px>🔗 <a href=https://www.britishmuseum.org/collection/search?keyword=gandhara target=_blank>大英博物馆·犍陀罗</a> · <a href=https://www.metmuseum.org/search?q=gandhara target=_blank>大都会博物馆</a> · 🎬 <a href=https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F target=_blank>B站:犍陀罗佛像</a></p></div>';
+
+  h+='<div style=flex:1;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>';
+  h+='<h4 style=color:var(--gold);margin-bottom:4px>🖼 莫高窟第237窟·双头瑞像</h4>';
+  h+="<p style=font-size:0.73em;color:var(--text2);line-height:1.7>中唐代表窟。西壁佛龛顶部绘双头瑞像——故事发生在犍陀罗国:两位贫士各请画师绘释迦像,画师收两份钱绘一尊,佛像显灵现双头一身神变。身着吐蕃服装的俗人仰礼,见证汉蕃丝路文化交流。</p>"
+  h+='<p style=font-size:0.65em;margin-top:4px>🔗 <a href=https://www.dha.ac.cn/info/1425/3641.htm target=_blank>敦煌研究院·237窟</a></p></div></div>';
+  h+='</div>';
+
+  // ═══ 华严古迹巡礼 ═══
+  h+='<div class=section><h2>🗺 华严古迹巡礼</h2>';
+  h+='<table class=v-table style=font-size:0.72em><tr><th>古迹</th><th>地点</th><th>朝代</th><th>说明</th><th>链接</th></tr>';
+  h+='<tr><td><b>终南山·至相寺</b></td><td>陕西西安</td><td>隋唐</td><td>华严宗发源地。杜顺、智俨于此创宗立教</td><td><a href=https://www.e-dunhuang.com target=_blank>参考</a></td></tr>';
+  h+='<tr><td><b>洛阳龙门·奉先寺</b></td><td>河南洛阳</td><td>唐</td><td>卢舍那大佛(17m),武则天赞助。华严教主毗卢遮那的盛唐造像巅峰</td><td>🎬 <a href=https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA+%E5%8D%A2%E8%88%8E%E9%82%A3 target=_blank>B站龙门</a></td></tr>';
+  h+='<tr><td><b>长安·大慈恩寺</b></td><td>陕西西安</td><td>唐</td><td>玄奘译场。华严经别译本《十地品》于此译出</td><td>—</td></tr>';
+  h+='<tr><td><b>五台山·大华严寺</b></td><td>山西</td><td>唐~今</td><td>澄观著《华严经疏》处。华严宗四大圣地之一</td><td>—</td></tr>';
+  h+='<tr><td><b>奈良·东大寺</b></td><td>日本奈良</td><td>8世纪</td><td>日本华严宗总本山。审祥于此首讲华严经</td><td><a href=https://www.todaiji.or.jp target=_blank>官网</a></td></tr>';
+  h+='<tr><td><b>支提山·大华严寺</b></td><td>苗栗通霄</td><td>2026动土</td><td>海云继梦。面向台湾海峡,与福建宁德支提华严祖庭隔海相望</td><td><a href=https://www.huayenworld.org target=_blank>官网</a></td></tr></table></div>';
+
+  // ═══ 视频与多媒体 ═══
+  h+='<div class=section><h2>🎬 视频与多媒体资源</h2>';
+  h+='<table class=v-table style=font-size:0.72em><tr><th>主题</th><th>平台</th><th>内容</th><th>链接</th></tr>';
+  h+='<tr><td>🌊 华藏世界海·3D动画</td><td>B站</td><td>华严宇宙观精美三维可视化</td><td><a href=https://www.bilibili.com/search?keyword=%E5%8D%8E%E4%B8%A5%E7%BB%8F+%E5%8D%8E%E8%97%8F%E4%B8%96%E7%95%8C+3D target=_blank>搜索</a></td></tr>';
+  h+='<tr><td>🏛 東大寺大佛·4K</td><td>YouTube</td><td>奈良东大寺卢舍那大佛高清纪录片</td><td><a href=https://www.youtube.com/results?search_query=%E6%9D%B1%E5%A4%A7%E5%AF%BA+%E5%A4%A7%E4%BD%9B+4K target=_blank>搜索</a></td></tr>';
+  h+='<tr><td>🏺 犍陀罗佛像艺术</td><td>B站</td><td>犍陀罗佛教造像专题纪录片</td><td><a href=https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F+%E8%AE%B0%E5%BD%95%E7%89%87 target=_blank>搜索</a></td></tr>';
+  h+='<tr><td>🖼 敦煌·华严经变</td><td>B站</td><td>敦煌莫高窟华严经变壁画详解</td><td><a href=https://www.bilibili.com/search?keyword=%E6%95%A6%E7%85%8C+%E5%8D%8E%E4%B8%A5%E7%BB%8F%E5%8F%98 target=_blank>搜索</a></td></tr>';
+  h+='<tr><td>🎨 正仓院·唐代宝物</td><td>YouTube</td><td>正仓院展·1300年前的丝绸之路至宝</td><td><a href=https://www.youtube.com/results?search_query=%E6%AD%A3%E5%80%89%E9%99%A2+%E5%AE%9D%E7%89%A9 target=_blank>搜索</a></td></tr></table></div>';
+
+  // ═══ 参考资料 ═══
+  h+='<div class=section><h2>📚 专题参考书目</h2>';
+  h+='<p style=font-size:0.72em;color:var(--text2);line-height:1.8>📖 《大美之佛像:犍陀罗艺术》(栗田功·文物出版社 2017)<br>📖 《敦煌石窟全集 第22册·石窟建筑卷》<br>📖 《伯希和敦煌图录》(法·伯希和 1908)<br>📖 《伟大的博物馆:新德里国家博物馆中的敦煌艺术》(罗凯什·钱德拉 2024)<br>📖 《敦煌画研究》(法·吉埃 著)<br>📖 《图解华严经:读懂经中之王》(龙树菩萨释著·Z-Library)<br>🌐 国际敦煌项目 IDP: <a href=http://idp.bl.uk target=_blank>idp.bl.uk</a>（吉美/大英/新德里所有敦煌藏品在线数据库）</p></div>';
   cv.innerHTML=h;
   var c=document.getElementById("cosmo-canvas");if(!c)return;
   c.addEventListener('wheel',function(e){e.preventDefault();COSMO.scale*=e.deltaY<0?1.12:0.89;COSMO.scale=Math.max(0.4,Math.min(3,COSMO.scale));drawCosmo();});
@@ -2768,7 +2831,7 @@ function showCosmoInfo(ly,i){
   inf.innerHTML='<h3 style=color:var(--gold)>🪷 '+ly.n+' <span style=font-size:0.65em>第'+(i+1)+'重</span></h3>'
     +'<p>🙏 <b>住佛</b>: '+ly.b+'</p>'
     +(ly.saha?'<p style=color:#c46b5d>★ <b>娑婆世界</b>——我们所居之三千大千世界。释迦牟尼佛于此示现成道,毗卢遮那佛为此世界之法身本源。</p>':'')
-    +'<p style=font-size:0.72em;color:var(--text2)>「一一世界海中,各有不可说佛刹微尘数世界围绕;一一微尘中,悉见一切世界;重重无尽,如因陀罗网。」—— 《华严经·华藏世界品》</p>';
+    +"<p style=font-size:0.72em;color:var(--text2)>「一一世界海中,各有不可说佛刹微尘数世界围绕;一一微尘中,悉见一切世界;重重无尽,如因陀罗网。」—— 《华严经·华藏世界品》</p>"
 }
 // ═══ ERROR CATCH ═══
 window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace;white-space:pre-wrap";d.textContent="JS ERROR: "+m+" at line "+l;document.body.appendChild(d);};
