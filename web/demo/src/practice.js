@@ -523,7 +523,7 @@ function renderPractice(){
         +"<button onclick=\"heartEdit('"+cid+"-l')\" title=编辑左栏>✏️</button>"
         +"<button onclick=\"heartAddNote('"+cid+"-l')\" title=添加批注>➕</button>"
         +"</div><h3 style=color:var(--gold)>"+a.title+"</h3>"
-        +"<div id="+cid+"-l style=white-space:pre-line>"+a.body.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;')+"</div>"
+        +"<div id="+cid+"-l style=white-space:pre-line>"+a.body.replace(/&/g,'&amp;').replace(/<img\b[^>]*>/gi,function(m){return m;}).replace(/<br\s*\/?>/gi,'<br>').replace(/<(?!img\b|\/img\b|br\b|\/br\b)[^>]+>/g,'').replace(/"/g,'&quot;')+"</div>"
         +"<p class=src>📎 <a href='"+wxEntry+"' target=_blank>第1篇原文入口</a> · 永远的犍陀罗·实修心要</p></div>"
         +"<div class=h3col-r1><div class=h3col-tbar>"
         +"<button onclick=\"heartCopy('"+cid+"-r1')\" title=复制对照>📋</button>"

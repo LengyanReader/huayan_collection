@@ -58,7 +58,13 @@ def parse_article(content, url):
         body = re.sub(r'<br\s*/?>', '\n', body)
         body = re.sub(r'<p[^>]*>', '\n', body)
         body = re.sub(r'</p>', '\n', body)
-        body = re.sub(r'<img[^>]*>', '[图片]', body)
+        # Preserve image URLs: extract data-src → markdown image format
+        def replace_img(m):
+            src = re.search(r'data-src="([^"]+)"', m.group(0))
+            if src:
+                return '\n![](' + src.group(1) + ')\n'
+            return '\n[图片]\n'
+        body = re.sub(r'<img[^>]*>', replace_img, body)
         # Preserve links
         body = re.sub(r'<a[^>]*href="([^"]*)"[^>]*>(.*?)</a>', r'\2 (\1)', body)
         body = re.sub(r'<[^>]+>', '', body)

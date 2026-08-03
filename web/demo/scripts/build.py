@@ -276,6 +276,8 @@ for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(o
     # Clean markdown markers for plain text display
     body = _re.sub(r'\*\*(.+?)\*\*', r'\1', body)  # bold
     body = _re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', body)  # links
+    # Convert image markdown to HTML img tags (preserve WeChat images)
+    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src=\"\2\" alt=\"\1\" style=\"max-width:100%;border-radius:6px;margin:4px 0\">', body)
     body = _re.sub(r'\[图片\]', '', body)
     body = _re.sub(r'\n{3,}', '\n\n', body)
     heart_articles.append({'title': title, 'body': body.strip()})
