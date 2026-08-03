@@ -2702,91 +2702,66 @@ function heartFlash(el,msg){
   setTimeout(function(){f.style.opacity='0';setTimeout(function(){document.body.removeChild(f);},300);},1500);
 }
 
-// ═══ GitHub OAuth Device Flow 登录 + Push ═══
+// ═══ GitHub Fine-grained Token 登录 + Push ═══
 (function(){
 var O='LengyanReader',R='huayan_collection',B='main',P='data/user/heart_annotations.json';
-var CLIENT_ID='Ov23liNtjPf7lk73dvnh'; // GitHub OAuth App client_id
-var ghToken=localStorage.getItem('gh_oauth_token');
-var ghUser=localStorage.getItem('gh_oauth_user');
+var STORAGE_KEY='gh_pat_v3';
+var ghToken=localStorage.getItem(STORAGE_KEY);
 
-// Check if already logged in as LengyanReader
-function _isAuthorized(){return ghToken&&ghUser==='LengyanReader';}
+function _isAuthorized(){return !!ghToken;}
 
-// ── Device Flow Login ──
+// ── Simple Token Input Login ──
 window.heartLogin=function(){
-  var toast=typeof heartToast==='function'?heartToast:function(m){alert(m);};
-  // Check: must be served via http/https, not file://
-  if(window.location.protocol==='file:'){
-    toast('❌ 本地文件不支持GitHub登录。请通过 http://localhost 或 GitHub Pages 访问。');
-    return;
+  var existing=localStorage.getItem(STORAGE_KEY);
+  var msg='输入GitHub Fine-grained Token:\n\n'
+    +'Repo: '+O+'/'+R+'\n'
+    +'Permission: Contents = Read and Write\n\n'
+    +'生成: GitHub → Settings → Developer settings → Fine-grained tokens\n'
+    +'(Token仅保存在你的浏览器中)';
+  if(existing)msg='当前已有Token。\n输入新Token替换,或点取消保留。\n\n'+msg;
+  var t=prompt(msg,existing||'');
+  if(t===null)return; // cancelled
+  if(t.trim()){
+    localStorage.setItem(STORAGE_KEY,t.trim());
+    ghToken=t.trim();
+    // Verify it works
+    fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json'}})
+    .then(function(r){return r.json();})
+    .then(function(u){
+      _updateLoginUI();
+      if(u.login==='LengyanReader'){
+        heartToast('✅ 已登录: '+u.login+' · Push权限已启用');
+      }else if(u.login){
+        heartToast('⚠ 当前Token属于: '+u.login+' · Push可能失败(仓库仅限LengyanReader)');
+        _updateLoginUI();
+      }else if(u.message){
+        heartToast('❌ Token无效: '+u.message);
+        localStorage.removeItem(STORAGE_KEY);
+        ghToken=null;_updateLoginUI();
+      }
+    }).catch(function(){heartToast('✅ Token已保存(离线验证)');_updateLoginUI();});
   }
-  toast('⏳ 正在请求GitHub登录...');
-  fetch('https://github.com/login/device/code',{
-    method:'POST',
-    headers:{'Accept':'application/json','Content-Type':'application/json'},
-    body:JSON.stringify({client_id:CLIENT_ID,scope:''})
-  }).then(function(r){
-    if(!r.ok)throw new Error('HTTP '+r.status);
-    return r.json();
-  })
-  .then(function(d){
-    if(d.error){toast('❌ '+d.error_description);return;}
-    // Show code to user
-    var msg='📋 请在浏览器中打开:\n\n    '+d.verification_uri+'\n\n📝 输入验证码: '+d.user_code+'\n\n⏳ 等待授权...';
-    if(confirm(msg+'\n\n点击"确定"后等待授权完成')){
-      toast('⏳ 请在打开的页面中输入码: '+d.user_code);
-      window.open(d.verification_uri,'_blank');
-      _pollToken(d.device_code,d.interval||5);
-    }
-  }).catch(function(e){
-    if(e.message.indexOf('Failed to fetch')>=0){
-      toast('❌ 可能是网络问题或GitHub被限制访问。请尝试: 1)使用VPN 2)通过GitHub Pages访问而非本地文件');
-    }else{
-      toast('❌ 错误: '+e.message);
-    }
-  });
 };
 
-function _pollToken(deviceCode,interval){
-  var toast=typeof heartToast==='function'?heartToast:function(m){alert(m);};
-  var maxTries=60, tries=0;
-  var timer=setInterval(function(){
-    tries++;
-    fetch('https://github.com/login/oauth/access_token',{
-      method:'POST',
-      headers:{'Accept':'application/json','Content-Type':'application/json'},
-      body:JSON.stringify({client_id:CLIENT_ID,device_code:deviceCode,grant_type:'urn:ietf:params:oauth:grant-type:device_code',scope:''})
-    }).then(function(r){return r.json();})
-    .then(function(d){
-      if(d.access_token){
-        clearInterval(timer);
-        // Verify user identity
-        fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+d.access_token,'Accept':'application/vnd.github+json'}})
-        .then(function(r){return r.json();})
-        .then(function(u){
-          localStorage.setItem('gh_oauth_token',d.access_token);
-          localStorage.setItem('gh_oauth_user',u.login);
-          ghToken=d.access_token;ghUser=u.login;
-          if(u.login==='LengyanReader'){
-            toast('✅ 已登录: '+u.login+' · Push权限已启用');
-            _updateLoginUI();
-          }else{
-            toast('❌ 当前账号: '+u.login+' · 仅限LengyanReader账号push');
-            localStorage.removeItem('gh_oauth_token');
-            localStorage.removeItem('gh_oauth_user');
-            ghToken=null;ghUser=null;
-          }
-        });
-      }else if(d.error!=='authorization_pending'){
-        clearInterval(timer);
-        toast('❌ '+d.error_description);
-      }else if(tries>=maxTries){
-        clearInterval(timer);
-        toast('⏰ 登录超时,请重试');
-      }
-    });
-  },interval*1000);
-};
+// ── Update UI ──
+function _updateLoginUI(){
+  var st=document.getElementById('git-bar-status');
+  var pu=document.getElementById('git-bar-push');
+  var us=document.getElementById('git-bar-user');
+  var hst=document.getElementById('heart-git-status');
+  if(ghToken){
+    if(st)st.innerHTML='✅ 已配置Token · 编辑后可直接 <b>🚀 Push到GitHub</b>';
+    if(pu)pu.style.display='inline';
+    if(us){us.style.display='inline';us.innerHTML='<a href=\"#\" onclick=\"heartLogout();return false\" style=color:var(--text2)>更换Token</a>';}
+    if(hst)hst.innerHTML='✅ 已配置Token';
+  }else{
+    var link='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 配置Token</a>(仅限LengyanReader)';
+    if(st)st.innerHTML=link+' · 编辑后可Push保存';
+    if(pu)pu.style.display='none';
+    if(us)us.style.display='none';
+    if(hst)hst.innerHTML=link;
+  }
+}
 
 // ── Update UI based on login state (global header bar) ──
 function _updateLoginUI(){
@@ -2820,7 +2795,7 @@ setTimeout(function(){
 // ── Push ──
 window.heartPushToGitHub=function(){
   var toast=typeof heartToast==='function'?heartToast:function(m){alert(m);};
-  if(!_isAuthorized()){toast('❌ 请先以LengyanReader账号登录GitHub');return;}
+  if(!_isAuthorized()){toast('❌ 请先配置Token');return;}
   var edits={},notes={};
   document.querySelectorAll('[id$="-l"],[id$="-r1"],[id$="-r2"]').forEach(function(el){
     var id=el.id,orig=el.getAttribute('data-orig');
@@ -2846,11 +2821,10 @@ window.heartPushToGitHub=function(){
 
 // Logout
 window.heartLogout=function(){
-  localStorage.removeItem('gh_oauth_token');localStorage.removeItem('gh_oauth_user');
-  ghToken=null;ghUser=null;
+  localStorage.removeItem(STORAGE_KEY);
+  ghToken=null;
   _updateLoginUI();
-  var toast=typeof heartToast==='function'?heartToast:function(m){alert(m);};
-  toast('🔓 已退出');
+  if(typeof heartToast==='function')heartToast('🔓 Token已清除');
 };
 
 // Init UI on page load
