@@ -288,8 +288,8 @@ for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(o
     body = _re.sub(r'\n{3,}', '\n\n', body)
     # Extract WeChat article URL from body (stored as markdown link)
     wx_url = ''
-    url_m = _re.search(r'\*\*原文[:：]\s*(https?://[^\s\n]+)', text)
-    if url_m: wx_url = url_m.group(1).rstrip('*').strip()
+    url_m = _re.search(r'原文[:：]\*{0,2}\s*(https?://[^\s\n]+)', text)
+    if url_m: wx_url = url_m.group(1)
     heart_articles.append({'title': title, 'body': body.strip(), 'url': wx_url})
 HEART = json.dumps(heart_articles, ensure_ascii=False)
 
