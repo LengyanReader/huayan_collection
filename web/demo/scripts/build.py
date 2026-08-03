@@ -273,11 +273,17 @@ for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(o
     body = _re.sub(r'^---$.*?^---$', '', text, flags=_re.MULTILINE|_re.DOTALL)
     # Remove the title heading
     body = _re.sub(r'^# .+$', '', body, flags=_re.MULTILINE).strip()
-    # Clean markdown markers for plain text display
-    body = _re.sub(r'\*\*(.+?)\*\*', r'\1', body)  # bold
-    body = _re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', body)  # links
-    # Convert image markdown to HTML img tags (preserve WeChat images)
+    # Remove metadata lines (来源, 摘要, 原文, 下一篇, 提取日期)
+    body = _re.sub(r'^\*\*来源[:：].*$', '', body, flags=_re.MULTILINE)
+    body = _re.sub(r'^\*\*摘要[:：].*$', '', body, flags=_re.MULTILINE)
+    body = _re.sub(r'^\*\*原文[:：].*$', '', body, flags=_re.MULTILINE)
+    body = _re.sub(r'^\*\*下一篇[:：].*$', '', body, flags=_re.MULTILINE)
+    body = _re.sub(r'^\*\*提取日期[:：].*$', '', body, flags=_re.MULTILINE)
+    # Convert markdown image to HTML (WeChat images)
     body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src=\"\2\" alt=\"\1\" style=\"max-width:100%;border-radius:6px;margin:4px 0\">', body)
+    # Clean remaining markdown
+    body = _re.sub(r'\*\*(.+?)\*\*', r'\1', body)  # bold
+    body = _re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', body)  # links (keep text, drop URL)
     body = _re.sub(r'\[图片\]', '', body)
     body = _re.sub(r'\n{3,}', '\n\n', body)
     heart_articles.append({'title': title, 'body': body.strip()})
