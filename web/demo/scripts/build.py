@@ -271,21 +271,30 @@ for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(o
     title = title_m.group(1).strip() if title_m else os.path.basename(fpath)
     # Remove frontmatter (lines between --- markers)
     body = _re.sub(r'^---$.*?^---$', '', text, flags=_re.MULTILINE|_re.DOTALL)
-    # Remove the title heading
-    body = _re.sub(r'^# .+$', '', body, flags=_re.MULTILINE).strip()
-    # Remove metadata lines (来源, 摘要, 原文, 下一篇, 提取日期)
-    body = _re.sub(r'^\*\*来源[:：].*$', '', body, flags=_re.MULTILINE)
-    body = _re.sub(r'^\*\*摘要[:：].*$', '', body, flags=_re.MULTILINE)
-    body = _re.sub(r'^\*\*原文[:：].*$', '', body, flags=_re.MULTILINE)
-    body = _re.sub(r'^\*\*下一篇[:：].*$', '', body, flags=_re.MULTILINE)
-    body = _re.sub(r'^\*\*提取日期[:：].*$', '', body, flags=_re.MULTILINE)
-    # Convert markdown image to HTML (WeChat images)
-    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<img src='\2' alt='\1' style='max-width:100%;border-radius:6px;margin:4px 0'>''', body)
-    # Clean remaining markdown
-    body = _re.sub(r'\*\*(.+?)\*\*', r'\1', body)  # bold
-    body = _re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', body)  # links (keep text, drop URL)
+    # Remove metadata lines
+    for meta in ['来源','摘要','原文','下一篇','提取日期']:
+        body = _re.sub(r'^\*\*'+meta+r'[:：].*$', '', body, flags=_re.MULTILINE)
+    # Remove title heading (first # heading)
+    body = _re.sub(r'^# .+$', '', body, 1, flags=_re.MULTILINE).strip()
+    # Convert images first (before text formatting)
+    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1'></div>''', body)
     body = _re.sub(r'\[图片\]', '', body)
-    body = _re.sub(r'\n{3,}', '\n\n', body)
+    # Convert markdown bold to HTML
+    body = _re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', body)
+    # Convert markdown links to HTML
+    body = _re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', body)
+    # Wrap paragraphs: blank line separated text -> <p> tags
+    paras = body.strip().split('\n\n')
+    body = ''
+    for p in paras:
+        p = p.strip()
+        if not p: continue
+        if p.startswith('<div class=') or p.startswith('<img') or p.startswith('<p'):
+            body += p + '\n'
+        elif p.startswith('<b>') and len(p)<100:
+            body += '<h4>' + p + '</h4>\n'
+        else:
+            body += '<p>' + p.replace('\n','<br>') + '</p>\n'
     # Extract WeChat article URL from body (stored as markdown link)
     wx_url = ''
     url_m = _re.search(r'原文[:：]\*{0,2}\s*(https?://[^\s\n]+)', text)
