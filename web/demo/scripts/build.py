@@ -259,8 +259,30 @@ with open(os.path.join(ROOT, 'web', 'demo', 'graph.json'), 'w', encoding='utf-8'
 with open(os.path.join(ROOT, 'web', 'demo', 'gap.json'), 'w', encoding='utf-8') as f:
     f.write(GAP)
 
+# ── Build HEART_ARTICLES from wechat markdown files ──
+import glob, re as _re
+heart_articles = []
+wechat_dir = os.path.join(ROOT, 'docs', 'hy_refs', 'wechat')
+for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(os.path.join(wechat_dir, '10_*.md'))):
+    with open(fpath, 'r', encoding='utf-8') as f:
+        text = f.read()
+    # Extract title from first heading
+    title_m = _re.search(r'^# (.+)$', text, _re.MULTILINE)
+    title = title_m.group(1).strip() if title_m else os.path.basename(fpath)
+    # Remove frontmatter (lines between --- markers)
+    body = _re.sub(r'^---$.*?^---$', '', text, flags=_re.MULTILINE|_re.DOTALL)
+    # Remove the title heading
+    body = _re.sub(r'^# .+$', '', body, flags=_re.MULTILINE).strip()
+    # Clean markdown markers for plain text display
+    body = _re.sub(r'\*\*(.+?)\*\*', r'\1', body)  # bold
+    body = _re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', body)  # links
+    body = _re.sub(r'\[图片\]', '', body)
+    body = _re.sub(r'\n{3,}', '\n\n', body)
+    heart_articles.append({'title': title, 'body': body.strip()})
+HEART = json.dumps(heart_articles, ensure_ascii=False)
+
 # ── Assemble (inline embed for backward compat) ──
-data_js = data_js.replace('__GRAPH__', GRAPH).replace('__GAP__', GAP)
+data_js = data_js.replace('__GRAPH__', GRAPH).replace('__GAP__', GAP).replace('__HEART__', HEART)
 # Strip any stray leading characters from source files
 def clean(s):
     while s and s[0] not in '<':
