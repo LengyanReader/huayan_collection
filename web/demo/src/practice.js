@@ -426,12 +426,12 @@ function renderPractice(){
   [{n:1,t:'别用大脑修行',d:'暖身二法·调身调息·内脏内动',u:'https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g'},
    {n:2,t:'四段呼吸的奥秘',d:'呼吸四阶段的辨识与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497426&idx=1&sn=7fa8a139ce472314116bbe138e50db10&chksm=c1e7e107f6906811acd86cfb3a27c4bfa0d19b60bb896feb46af3ae1010838b36e9f2c668c1b#wechat_redirect'},
    {n:3,t:'闭气不是憋气',d:'闭气与憋气的关键区别',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497428&idx=1&sn=04845b578927e6631786c3cc725bf763&chksm=c1e7e101f69068177af7b3cda755545cf3835e01bfe05feca8321e1cc77169421a7fb4856812#wechat_redirect'},
-   {n:4,t:'摸着那个"转折点"',d:'呼吸中阻力的转折与突破',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497449&idx=1&sn=a8e12d77fca6019f4981a30d5beb8a65&chksm=c1e7e13cf690682af9445df95091817ab56d68c9192ddd5f71e0e464ef0533dd3b9b9842624b#wechat_redirect'},
-   {n:5,t:'呼吸里的一股"力"',d:'息之力的感知与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497472&idx=1&sn=3b28886bf8e854a0958bba7354beef9f&chksm=c1e7e0d5f69069c3e18903d286c2740854421f8757c83402ed71ebe4880346dbf757dc1366c7#wechat_redirect'},
+   {n:4,t:'摸着那个「转折点」',d:'呼吸中阻力的转折与突破',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497449&idx=1&sn=a8e12d77fca6019f4981a30d5beb8a65&chksm=c1e7e13cf690682af9445df95091817ab56d68c9192ddd5f71e0e464ef0533dd3b9b9842624b#wechat_redirect'},
+   {n:5,t:'呼吸里的一股「力」',d:'息之力的感知与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497472&idx=1&sn=3b28886bf8e854a0958bba7354beef9f&chksm=c1e7e0d5f69069c3e18903d286c2740854421f8757c83402ed71ebe4880346dbf757dc1366c7#wechat_redirect'},
    {n:6,t:'置心一处的三大工程',d:'置心一处的技术面三大要素',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497479&idx=1&sn=c4784e020ce863182a89632d52d56664&chksm=c1e7e0d2f69069c4fa173212ce7490d78b05d7ab06deb6731e1dbc9bd3707dcf0fd744571a4a#wechat_redirect'},
    {n:7,t:'心跑了，抓回来！',d:'摄心——若心他缘摄之令返',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497491&idx=1&sn=f568ae4dfdafb48b16a268156cabc90e&chksm=c1e7e0c6f69069d0a64c9ae7e9a47d0c1731bd0d7de9dd5f31105d1092682a790dda21dd7f43#wechat_redirect'},
-   {n:8,t:'别躲清静，去"防震"',d:'动中修行的防震训练',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497501&idx=1&sn=ed9c44ca78f777c38e46b78fb3bc1450&chksm=c1e7e0c8f69069de0275257c938825b419168b3f2bd7e3be7efa9f5ae9aa239d1f9ffade304f#wechat_redirect'},
-   {n:9,t:'内动来了，用"金钥匙"',d:'参禅金钥匙的触发与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497540&idx=1&sn=a44a18d9d5867cf254ed387fe524a062&chksm=c1e7e091f6906987832b9af27aba864456f1cb9d1337752fba024d7969943fb657d8435411b8#wechat_redirect'},
+   {n:8,t:'别躲清静，去「防震」',d:'动中修行的防震训练',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497501&idx=1&sn=ed9c44ca78f777c38e46b78fb3bc1450&chksm=c1e7e0c8f69069de0275257c938825b419168b3f2bd7e3be7efa9f5ae9aa239d1f9ffade304f#wechat_redirect'},
+   {n:9,t:'内动来了，用「金钥匙」',d:'参禅金钥匙的触发与运用',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497540&idx=1&sn=a44a18d9d5867cf254ed387fe524a062&chksm=c1e7e091f6906987832b9af27aba864456f1cb9d1337752fba024d7969943fb657d8435411b8#wechat_redirect'},
    {n:10,t:'入禅九阶：从暖身到金钥匙',d:'系统总结——禅修九阶次第',u:'http://mp.weixin.qq.com/s?__biz=MzkyMzQxOTMyMg==&mid=2247497558&idx=1&sn=670085792928af68ec9ef60b3574febe&chksm=c1e7e083f69069951f0e0bf69f96e9810a1a0df9109fa4e3be7cfea1ef4579286d4540decf03#wechat_redirect'}]
   .forEach(function(a){h+="<span style='padding:4px 10px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.2);border-radius:10px;min-width:160px'><b style=color:#5e8b9e>第"+a.n+"篇</b> <a href='"+a.u+"' target=_blank style=font-weight:600>"+a.t+"</a><br><span style=font-size:0.85em;color:var(--text2)>"+a.d+"</span></span>";});
   h+="</div>";
@@ -462,36 +462,150 @@ function renderPractice(){
   // SUB-PAGE 3: 实修心要 (hidden)
   // ═══════════════════════════════════════════
   h+="<div id=pv-heart class=pv-section style=display:none>";
-  h+="<div class=section style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦法师禅修入门十讲</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);line-height:1.8>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>以「身」入手而非「脑」——暖身二法·调身调息·置心一处·内动金钥匙·入禅九阶。</b>每篇附行法体系对读链接,可对照禅观法要中的相应板块。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2)>📎 <a href='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g' target=_blank>第一篇原文</a> · 后续各篇通过末尾「下一篇」链接可依次访问 · 全文已提取至 docs/hy_refs/wechat/ 目录</p></div>";
+  h+="<style>"
+    +".h3col{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}"
+    +".h3col-l{flex:1.2;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.75em;line-height:1.8;max-height:420px;overflow-y:auto}"
+    +".h3col-r1{flex:1;min-width:230px;background:rgba(184,134,60,0.05);border:1px solid rgba(184,134,60,0.2);border-radius:10px;padding:10px 12px;font-size:.72em;line-height:1.7;max-height:420px;overflow-y:auto}"
+    +".h3col-r2{flex:1;min-width:230px;background:rgba(94,139,158,0.05);border:1px solid rgba(94,139,158,0.2);border-radius:10px;padding:10px 12px;font-size:.72em;line-height:1.7;max-height:420px;overflow-y:auto}"
+    +".h3col h3{font-size:.95em;margin-bottom:4px}"
+    +".h3col .src{font-size:.85em;color:var(--text2);margin-top:4px}"
+    +"</style>";
+  h+="<div class=section style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦和上禅修入门十讲</h2>";
+  h+="<p style=font-size:.78em;color:var(--text2);line-height:1.7>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>左栏:原文摘录 · 右一:海云华严行法对照 · 右二:其他宗派/道家相互印证。</b>全部内容可回溯至原文或经典出处。</p></div>";
 
-  // Define the 10 articles with their key points and cross-references
-  var heartArticles=[
-    {n:1,t:'别用大脑修行',s:'下手处，是身体，不是念头',p:'暖身二法:生命载体调整术+生命导引术(内视呼吸法)。调身调息调心——内脏内动而非肌肉运动。',x:'「修行入口处就是下手处。下手处很简单,不能用大脑,用大脑没有入口处。」',ref:[{l:'调身·调息·调心(五科训练详解)',h:'#pv-meditation'},{l:'驻佇心观(停心工程)',h:'#pv-meditation'},{l:'参禅金三角',h:'#pv-meditation'}]},
-    {n:2,t:'四段呼吸的奥秘',s:'息入、息住、息出、息停',p:'呼吸的四个阶段:吸入→停留→呼出→停顿。每个阶段有其独特的身心作用。',x:'「呼吸是连接身体与心灵的桥梁。」',ref:[{l:'安那般那数息观(数·随·止)',h:'#pv-meditation'},{l:'调息——息之四相',h:'#pv-meditation'}]},
-    {n:3,t:'闭气不是憋气',s:'自然闭气vs强制憋气',p:'闭气是自然的呼吸停顿,不是用力的憋气。正确闭气能激活内热,推动生命能量。',x:'「闭气是呼吸的自然结果,不是用力的对抗。」',ref:[{l:'技术面:数随止三法',h:'#pv-meditation'},{l:'调息——息相·数息要领',h:'#pv-meditation'}]},
-    {n:4,t:'摸着那个"转折点"',s:'息入尽与息出尽的O点',p:'在呼吸转折处——息入尽的点与息出尽的点——感受细微的能量转换。数于尽处,不数于过程。',x:'「数息不是数呼吸的过程,而是数那个转折。」',ref:[{l:'工程面:A阶段(感受息之长短动静)',h:'#pv-meditation'},{l:'参禅金三角(息入息出清楚)',h:'#pv-meditation'}]},
-    {n:5,t:'呼吸里的一股"力"',s:'息之力的感知与运用',p:'呼吸中蕴含一股力——不是肌肉的力量,而是生命能量(般那)的流动。感知这股力是修行的关键。',x:'「呼吸不只是空气的进出,里面有股力量。」',ref:[{l:'工程面:B阶段(洞悉呼吸因果轨迹)',h:'#pv-meditation'},{l:'参禅金三角(置心一处)',h:'#pv-meditation'}]},
-    {n:6,t:'置心一处的三大工程',s:'置心一处=调身+调息+调心三合一',p:'置心一处不是一个孤立动作,而是调身、调息、调心三者的协同运作。三者一体不二。',x:'「置心一处不是用力集中,而是身息心自然统一。」',ref:[{l:'置心一处(四种停心方法)',h:'#pv-meditation'},{l:'内摄→内观→禅观三层功夫',h:'#pv-meditation'}]},
-    {n:7,t:'心跑了，抓回来！',s:'若心他缘,摄之令返',p:'修行中最常见的经验:心不断跑掉。关键是觉察到跑掉后,温和地把心带回来——不评判,不懊恼。',x:'「妄想一起,记得把心抓回来放在风门。」',ref:[{l:'内摄——技术面核心(摄心)',h:'#pv-meditation'},{l:'四种妄想(心理/物理/生理/社会)',h:'#pv-meditation'}]},
-    {n:8,t:'别躲清静，去"防震"',s:'动中修定·环境训练的智慧',p:'不是在安静环境中才能修行。真正的功夫要在动乱中验证——法师称之为防震训练。',x:'「你躲到山里去修,回来一碰境界,全垮了。」',ref:[{l:'依禅堂规矩(四种停心方法)',h:'#pv-meditation'},{l:'大脑临界点(关键原则)',h:'#pv-meditation'}]},
-    {n:9,t:'内动来了，用"金钥匙"',s:'参禅金钥匙——吸·闭·吐',p:'当内在能量(内动)被激活时,需要用金钥匙来引导:吸气→闭气→吐气。此为参禅核心技术。',x:'「金钥匙就是吸、闭、吐——三个动作自然连贯。」',ref:[{l:'参禅金三角',h:'#pv-meditation'},{l:'技术面:数随止三法',h:'#pv-meditation'}]},
-    {n:10,t:'入禅九阶：从暖身到金钥匙',s:'九阶次第=暖身·调身·调息·调心·内动·置心·闭气·金钥匙·入禅',p:'系统总结暖身二法到金钥匙的完整九阶修行次第。从身体入手,经由调身调息调心,激活内动,运用金钥匙,最终入禅。',x:'「修行不是知识的学习,而是生命的改造。」',ref:[{l:'体系总览——华严禅观修行全程蓝图',h:'#pv-meditation'},{l:'调身·调息·调心(五科训练详解)',h:'#pv-meditation'},{l:'参禅金三角',h:'#pv-meditation'}]}
-  ];
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第一篇 · 别用大脑修行</h3>"
+    +"<p><b>核心:</b> 下手处,是身体,不是念头。修行入口处就是下手处。不能用大脑,用大脑没有入口处——「用大脑只是剪不断,理还乱。」</p>"
+    +"<p>怎么不用大脑?有两个动作:暖身二法——<b>生命载体调整术</b>(调身)和<b>生命导引术</b>(内视呼吸法·调息)。要领:动作要产生内热——内脏运动而非肌肉运动。调身调息调心——调身是调身语意,调息是调心性,调心是调灵性(真心/菩提心)。</p>"
+    +"<p class=src>📎 <a href='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g' target=_blank>原文链接</a> · 永远的犍陀罗·实修心要 第1篇 · 全文提取: docs/hy_refs/wechat/</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>调身·调息·调心(五科训练)</b>: 海云和上《煖身:华严禅修入门》(布克文化2021)系统阐述调身七支坐相、调息息之四相、调心四相诊治。强调「身息心三者一体不二」——与本文「内脏内动」「调身调息是调心性调灵性」完全对应。</p>"
+    +"<p>◆ <b>驻佇心观(停心工程)</b>: 《华严禅行法—禅观》第四集:「你要能够停下心来,然后我们要观心!停心是一个前行。」本文「不能用大脑」即停心的基本操作——停思维、归身体。</p>"
+    +"<p>◆ <b>参禅金三角</b>: fjdh.cn(2013.12):「置心一处、放轻松、息入息出很清楚。」本文暖身二法的内脏内动正是金三角中「放轻松」的身体基础。</p>"
+    +"<p class=src>📎 见禅观法要→调身调息调心·驻佇心观·参禅金三角</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>天台止观·调五事</b>: 智者大师《释禅波罗蜜次第法门》(T46n1916)调身调息调心为禅修三根本。智者:「调身者,令身体不宽不急;调息者,令息不涩不滑;调心者,令心不沉不浮。」与本文三种调法异曲同工。</p>"
+    +"<p>◆ <b>道家·庄子心斋</b>: 《庄子·人间世》:「若一志,无听之以耳而听之以心,无听之以心而听之以气。听止于耳,心止于符。气也者,虚而待物者也。」「听之以气」即从思维(大脑)转向身体感知(气息)——与本文「不能用大脑,用身体」思路一致。</p>"
+    +"<p>◆ <b>瑜伽·Pratyahara(制感)</b>: Patanjali《瑜伽经》2.54-55: 感官从外境收摄向内,「制感是感官仿佛遵循心的本性,不再与对象接触。」对应暖身二法将注意力从外境转向身体内部。</p>"
+    +"<p class=src>📎 CBETA T46n1916 · 《庄子·人间世》 · 《瑜伽经》2.54-55</p></div></div>";
 
-  h+="<div style=display:flex;gap:10px;flex-wrap:wrap>";
-  heartArticles.forEach(function(a){
-    h+="<div style='flex:1;min-width:300px;max-width:500px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:6px'>";
-    h+="<div style=font-weight:700;color:var(--gold);margin-bottom:4px>第"+a.n+"篇 · "+a.t+"</div>";
-    h+="<p style=font-size:.78em;color:var(--text2);margin-bottom:4px><b>"+a.s+"</b></p>";
-    h+="<p style=font-size:.73em;line-height:1.7;margin-bottom:6px>"+a.p+"</p>";
-    h+="<blockquote style=font-size:.72em;color:var(--gold);border-left:3px solid var(--gold);padding-left:8px;margin:6px 0;font-style:italic>"+a.x+"</blockquote>";
-    h+="<p style=font-size:.68em;color:var(--blue);margin-top:6px><b>📐 行法对读:</b> ";
-    a.ref.forEach(function(r,i){h+=(i>0?' · ':'')+"<a href='#' onclick='switchPracticeView(\"meditation\");return false' style=font-size:.68em>"+r.l+"</a>";});
-    h+="<br>📎 <a href='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g' target=_blank style=font-size:.6em>原文(第1篇为入口,后续依次通过末尾「下一篇」访问)</a></p></div>";
-  });
-  h+="</div>";
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第二篇 · 四段呼吸的奥秘</h3>"
+    +"<p><b>核心:</b> 息入、息住、息出、息停。呼吸不是简单的出与入——每次呼吸有四个阶段:吸入→自然停顿(息住)→呼出→自然停顿(息停)。每个阶段有其独特的身心作用。</p>"
+    +"<p>认识到四段呼吸的存在,是调息的第一步。普通人只感知「出入」两段,行者则能清晰觉知四段的转换点。</p>"
+    +"<p class=src>📎 原文链接通过第1篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>安那般那数息观(数·随·止)</b>: 禅观法要·技术面详解: 数法置心风门1数到10循环,随法注意「息入尽」与「息出尽」每一细节。本文四段呼吸对应随法中对呼吸全过程的精细觉知。</p>"
+    +"<p>◆ <b>息之四相</b>: 风·喘·气·息四相中,「息相」为无声不结不粗、出入绵密若存若亡的调相。四段呼吸的清晰觉知正是从「气相」趋入「息相」的关键。</p>"
+    +"<p class=src>📎 见禅观法要→安那般那数息观·调息息之四相</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>南传·安那般那念</b>: 《中部·安那般那念经》(MN 118): 「念入息、念出息。入息长知入息长,出息长知出息长…入息短知入息短,出息短知出息短。」十六阶段的安般念从简单的长息短息开始,隐含着对呼吸各阶段的全面觉知。</p>"
+    +"<p>◆ <b>道家·胎息</b>: 《抱朴子·内篇》:「得胎息者,能不以鼻口嘘吸,如在胞胎之中。」胎息追求的就是息住息停的极致——呼吸极细微似有似无,与息相「出入绵密若存若亡」相通。</p>"
+    +"<p class=src>📎 MN 118 (中部) · 《抱朴子·释滞》</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第三篇 · 闭气不是憋气</h3>"
+    +"<p><b>核心:</b> 自然闭气≠强制憋气。闭气是呼吸的自然停顿,不是用力的憋气。正确闭气能激活内热,推动生命能量——憋气则造成紧张和压迫,适得其反。关键在于「自然」——不加强迫。</p>"
+    +"<p class=src>📎 原文链接通过第2篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>参禅金钥匙·吸闭吐</b>: 第九讲中详述金钥匙三字诀——吸(自然吸气)→闭(自然停住,不憋气)→吐(自然呼气)。本文「闭气不是憋气」是金钥匙「闭」字的准确诠释。</p>"
+    +"<p>◆ <b>数于尽处</b>: 调息要领: 在「息入尽」及「息出尽」的O点换气处数息。此O点即是自然闭气之处——非刻意造作,而是呼吸转折的自然停顿。</p>"
+    +"<p class=src>📎 见禅观法要→参禅金三角·技术面数随止</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>瑜伽·Kumbhaka(住气)</b>: 《哈达瑜伽之光》2.44-47: Kumbhaka(住气/屏息)为瑜伽调息核心——Sahita Kumbhaka(有作住气)和Kevala Kumbhaka(无作住气)。后者为自然的呼吸停止,非刻意憋气。与本文「自然闭气」一致。</p>"
+    +"<p>◆ <b>道家·踵息</b>: 《庄子·大宗师》:「真人之息以踵,众人之息以喉。」真人呼吸深长至脚跟,闭气是深息的自然结果而非强制。</p>"
+    +"<p class=src>📎 《哈达瑜伽之光》Ch.2 · 《庄子·大宗师》</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第四篇 · 摸着那个「转折点」</h3>"
+    +"<p><b>核心:</b> 息入尽与息出尽的O点。在呼吸转折处——息入尽的点与息出尽的点——感受细微的能量转换。数息不是数呼吸的过程,而是数那个转折。O点是呼吸中最珍贵的时刻——「数于尽处,不数于过程。」</p>"
+    +"<p class=src>📎 原文链接通过第3篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>工程面A阶段·感受息之长短动静</b>: 双轨详解中A阶段要求「在坐禅与行禅中,对比感受呼吸长短的差异性,对呼吸的存在产生真切感受。」本文O点的感知即是A阶段的具体操作。</p>"
+    +"<p>◆ <b>参禅金三角·息入息出清楚</b>: 「息入息出看得清清楚楚」——看清O点即是看得最清楚的时刻。</p>"
+    +"<p class=src>📎 见禅观法要→工程面A阶段·参禅金三角</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>天台·六妙门之「止」</b>: 智者大师《六妙门》: 「息诸缘虑,不念数随,凝寂其心,是名修止。」止的入口即在息之转折——O点是最自然的「止」处。</p>"
+    +"<p>◆ <b>道家·玄牝之门</b>: 《老子》第6章: 「谷神不死,是谓玄牝。玄牝之门,是谓天地根。绵绵若存,用之不勤。」呼吸转折处如玄牝之门——似无实有,天地之根。与O点体悟相通。</p>"
+    +"<p class=src>📎 《六妙门》(T46n1917) · 《老子》第6章</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第五篇 · 呼吸里的一股「力」</h3>"
+    +"<p><b>核心:</b> 息之力的感知与运用。呼吸中蕴含一股力——不是肌肉的力量,而是生命能量(般那)的流动。感知这股力是修行的关键。呼吸不只是空气的进出,里面有股力量——「那股力才是真正的呼吸。」</p>"
+    +"<p class=src>📎 原文链接通过第4篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>工程面B阶段·洞悉呼吸因果轨迹</b>: 「明了呼吸的轨迹——清楚呼吸的因与果。掌握此即长寿法基础,能自主生死。法师称此为生命的秘笈。」本文「息之力」即B阶段所述呼吸因果轨迹的内在动力。</p>"
+    +"<p>◆ <b>般那不外漏(参禅金三角)</b>: 留住呼吸中的生命能量(般那 Prana)不外泄——即感知并保存息之「力」。</p>"
+    +"<p class=src>📎 见禅观法要→工程面B阶段·参禅金三角(<a href='https://www.fjdh.cn/fjask/2013/12/133616318955.html' target=_blank>fjdh.cn全文</a>)</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>瑜伽·Prana(生命能量)</b>: 《泰迪黎亚奥义书》2.3: Prana为五种生命气息(命根气·下行气·上行气·等住气·通行气)之首。瑜伽调息即对Prana的调控。本文「息之力」=Prana的直观感知。</p>"
+    +"<p>◆ <b>道家·「炁」</b>: 《云笈七签》卷五十六:「炁者,天地之元,万物之始。」道家内丹的「炁」非呼吸之气(Air),而是生命能量——与般那/息之力为同类概念。</p>"
+    +"<p class=src>📎 《泰迪黎亚奥义书》· 《云笈七签》· 《哈达瑜伽之光》</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第六篇 · 置心一处的三大工程</h3>"
+    +"<p><b>核心:</b> 置心一处=调身+调息+调心三合一。不是一个孤立动作,而是三者的协同运作。三者一体不二——「置心一处不是用力集中,而是身息心自然统一。」</p>"
+    +"<p class=src>📎 原文链接通过第5篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>置心一处·四种停心方法</b>: 《华严禅行法—禅观》: (1)参话头(2)置心风门(3)数息随息(4)依禅堂规矩。本文将此概括为三大工程(调身/调息/调心),即:<b>调身</b>(七支坐相)→<b>调息</b>(数息1-10)→<b>调心</b>(摄心于风门)。</p>"
+    +"<p>◆ <b>内摄·内观·禅观三层功夫</b>: 内摄=技术面·摄心于息;内观=工程面·在数随止中感受法身;禅观=粗→细→微妙。置心一处是内摄核心。</p>"
+    +"<p class=src>📎 见禅观法要→驻佇心观·四种停心方法·三层功夫</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>天台止观·系缘守境</b>: 《释禅波罗蜜》:「系心一处,无令散乱。」智者大师以五种系缘法(系心顶上/发际/鼻柱/脐间/地轮)与本文置心风门同为系缘一处的具体方法。</p>"
+    +"<p>◆ <b>禅宗·守一不移</b>: 《六祖坛经》:「一行三昧者,于一切处行住坐卧,常行一直心是也。」僧璨《信心铭》:「系念乖真,昏沉不好。不好劳神,何用疏亲。」置心一处与现代正念(Mindfulness)的单点专注训练原理相通。</p>"
+    +"<p class=src>📎 《释禅波罗蜜》(T46n1916) · 《六祖坛经》(T48n2008) · 《信心铭》(T48n2010)</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第七篇 · 心跑了，抓回来!</h3>"
+    +"<p><b>核心:</b> 若心他缘,摄之令返。修行中最常见的经验:心不断跑掉。关键是觉察到跑掉后,温和地把心带回来——不评判,不懊恼。「妄想一起,记得把心抓回来放在风门。心跑掉抓回来是一项大工程。」</p>"
+    +"<p class=src>📎 原文链接通过第6篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>内摄·技术面核心</b>: 《华严禅行法》:「妄想一起,把心抓回来放在风门。」心跑掉抓回来——法师称此为「一项大工程」。克服四种妄想(心理/物理/生理/社会制度)。</p>"
+    +"<p>◆ <b>参禅金三角</b>: 「放轻松」中包含不跟妄想纠缠的态度——「呼吸归呼吸,妄想归妄想。」不评判地摄心,即为放轻松。</p>"
+    +"<p class=src>📎 见禅观法要→内摄·四种妄想·参禅金三角</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>南传·正念标记法</b>: Mahasi Sayadaw(马哈希禅师)内观法: 心散乱时标记「妄想、妄想」,然后回到腹部起伏。温和地标记而不排斥——与本文「不评判不懊恼」一致。</p>"
+    +"<p>◆ <b>道家·庄子坐忘</b>: 《庄子·大宗师》:「堕肢体,黜聪明,离形去知,同于大通,此谓坐忘。」坐忘即放下意识攀缘——心跑了忘了它,自然同于大通,与摄心同理。</p>"
+    +"<p class=src>📎 Mahasi Sayadaw《实用内观禅修》 · 《庄子·大宗师》</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第八篇 · 别躲清静,去「防震」</h3>"
+    +"<p><b>核心:</b> 动中修定·环境训练的智慧。不是在安静环境中才能修行。真正的功夫要在动乱中验证——法师称之为防震训练。「你躲到山里去修,回来一碰境界,全垮了。」真正的定力要在日常生活中检验。</p>"
+    +"<p class=src>📎 原文链接通过第7篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>依禅堂规矩</b>: 四种停心方法之四——「该动则动、该静则静、该跑则跑、该坐则坐,身心放下。」禅堂本身即有动有静,非一味枯坐。</p>"
+    +"<p>◆ <b>大脑临界点</b>: 关键原则——置心一处之前仍可运用理性思维;但跨过初果门槛后须弃用概念。日常防震训练即跨越临界点前的必要准备。</p>"
+    +"<p class=src>📎 见禅观法要→四种停心方法·三大关键原则</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>禅宗·赵州茶·平常心是道</b>: 南泉普愿:「平常心是道。」赵州从谂:「吃茶去。」日用平常中修,不躲清静——正是本文「别躲清静」的精神源头。</p>"
+    +"<p>◆ <b>大乘·维摩诘经·淫怒痴是道</b>: 《维摩诘所说经》:「不入烦恼大海,则不能得一切智宝。」在烦恼中修行,不避世间——与本文「防震」训练异曲同工。</p>"
+    +"<p class=src>📎 《临济录》 · 《赵州录》 · 《维摩诘经》(T14n0475)</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第九篇 · 内动来了,用「金钥匙」</h3>"
+    +"<p><b>核心:</b> 参禅金钥匙——吸·闭·吐。当内在能量(内动)被激活时,需要用金钥匙来引导:吸气→闭气→吐气。三个动作自然连贯——「金钥匙就是吸、闭、吐——不是三个分开的动作,而是一个流畅的循环。」此为参禅核心技术。</p>"
+    +"<p class=src>📎 原文链接通过第8篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>参禅金三角</b>: fjdh.cn全文: 整体流程为「调身→调息(数息1-10)→置心一处于风门→放松身心→息入息出清清楚楚→达成金三角(心一境性)→触功德发起→内动→金钥匙引导→继续觉照根性→象限转移→破无明→入菩提道。」本文「内动来了用金钥匙」在此流程中处于触功德发起之后。</p>"
+    +"<p class=src>📎 见禅观法要→参禅金三角(<a href='https://www.fjdh.cn/fjask/2013/12/133616318955.html' target=_blank>fjdh.cn全文</a>)</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>瑜伽·Bandha(收束法)</b>: 《哈达瑜伽之光》3.55-60: 收束法(Jalandhara/Uddiyana/Mula Bandha)在Kumbhaka(住气)时配合运用,引导Prana向上流动。与金钥匙的「闭→吐」在能量引导功能上类似。</p>"
+    +"<p>◆ <b>道家·火候·进火退符</b>: 内丹术语——「进阳火,退阴符」。以呼吸配合意念引导内气运行。金钥匙的「吸(进)→闭(炼)→吐(退)」与内丹火候的进-炼-退结构相似。</p>"
+    +"<p class=src>📎 《哈达瑜伽之光》Ch.3 · 《周易参同契》火候说</p></div></div>";
+
+  h+="<div class=h3col>"
+    +"<div class=h3col-l><h3 style=color:var(--gold)>第十篇 · 入禅九阶:从暖身到金钥匙</h3>"
+    +"<p><b>核心:</b> 系统总结: 暖身→调身→调息→调心→内动→置心→闭气→金钥匙→入禅。从身体入手,经由调身调息调心,激活内动,运用金钥匙,最终入禅。九阶是一条从身体出发、逐步深入的完整修行次第——「修行不是知识的学习,而是生命的改造。」</p>"
+    +"<p class=src>📎 原文链接通过第9篇末尾「下一篇」访问</p></div>"
+    +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+    +"<p>◆ <b>体系总览·三阶段</b>: 海云和上华严禅观: 资粮道(发心工程·驻佇心观)→前行(界内定·四种观法)→正行(界外定·等持工程)。入禅九阶涵盖资粮道及前行初期——暖身至置心属资粮道,内动至入禅属前行。</p>"
+    +"<p>◆ <b>三界定功总纲</b>: 欲界定(舍妄念)→色界定(舍五识)→无色界定(舍意识)→出界定。入禅九阶从暖身到入禅,对应欲界定的粗住→细住→欲界定全过程。</p>"
+    +"<p class=src>📎 见禅观法要→体系总览·三界定功总纲</p></div>"
+    +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+    +"<p>◆ <b>天台·六即佛·修行阶次</b>: 智者大师六即佛(理即→名字即→观行即→相似即→分证即→究竟即)为佛教修行阶次的经典框架。入禅九阶属「观行即」的实操展开——从暖身到入禅是观行即中由粗到细的禅定训练。</p>"
+    +"<p>◆ <b>道家·内丹九转</b>: 《周易参同契》及内丹传统: 筑基→炼精化气→炼气化神→炼神还虚→炼虚合道。从身体入手(筑基),经气·神·虚·道层层升进——与九阶「身→息→心→禅」的进路有对应的结构逻辑。</p>"
+    +"<p class=src>📎 CBETA T46n1912(六即) · 《周易参同契》· 《钟吕传道集》</p></div></div>";
+
   h+="</div>"; // close pv-heart
 
   // ═══════════════════════════════════════════
