@@ -2715,12 +2715,20 @@ function _isAuthorized(){return ghToken&&ghUser==='LengyanReader';}
 // ── Device Flow Login ──
 window.heartLogin=function(){
   var toast=typeof heartToast==='function'?heartToast:function(m){alert(m);};
+  // Check: must be served via http/https, not file://
+  if(window.location.protocol==='file:'){
+    toast('❌ 本地文件不支持GitHub登录。请通过 http://localhost 或 GitHub Pages 访问。');
+    return;
+  }
   toast('⏳ 正在请求GitHub登录...');
   fetch('https://github.com/login/device/code',{
     method:'POST',
     headers:{'Accept':'application/json','Content-Type':'application/json'},
-    body:JSON.stringify({client_id:CLIENT_ID,scope:'public_repo'})
-  }).then(function(r){return r.json();})
+    body:JSON.stringify({client_id:CLIENT_ID,scope:''})
+  }).then(function(r){
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    return r.json();
+  })
   .then(function(d){
     if(d.error){toast('❌ '+d.error_description);return;}
     // Show code to user
@@ -2730,7 +2738,13 @@ window.heartLogin=function(){
       window.open(d.verification_uri,'_blank');
       _pollToken(d.device_code,d.interval||5);
     }
-  }).catch(function(e){toast('❌ 网络错误: '+e.message);});
+  }).catch(function(e){
+    if(e.message.indexOf('Failed to fetch')>=0){
+      toast('❌ 可能是网络问题或GitHub被限制访问。请尝试: 1)使用VPN 2)通过GitHub Pages访问而非本地文件');
+    }else{
+      toast('❌ 错误: '+e.message);
+    }
+  });
 };
 
 function _pollToken(deviceCode,interval){
@@ -2741,7 +2755,7 @@ function _pollToken(deviceCode,interval){
     fetch('https://github.com/login/oauth/access_token',{
       method:'POST',
       headers:{'Accept':'application/json','Content-Type':'application/json'},
-      body:JSON.stringify({client_id:CLIENT_ID,device_code:deviceCode,grant_type:'urn:ietf:params:oauth:grant-type:device_code'})
+      body:JSON.stringify({client_id:CLIENT_ID,device_code:deviceCode,grant_type:'urn:ietf:params:oauth:grant-type:device_code',scope:''})
     }).then(function(r){return r.json();})
     .then(function(d){
       if(d.access_token){
