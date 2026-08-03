@@ -507,10 +507,10 @@ function renderPractice(){
   };
 
   // Generate cards from HEART_ARTICLES data with cross-references
-  var wxEntry='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g';
   if(typeof HEART_ARTICLES!=='undefined' && HEART_ARTICLES.length>0){
     for(var hi=0; hi<HEART_ARTICLES.length; hi++){
       var a=HEART_ARTICLES[hi], cid='hcard'+hi;
+      var wxUrl=a.url||('https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g');
       // Find matching cross-ref by scanning title for keywords
       var xr=null;
       var keys=Object.keys(heartXRef);
@@ -524,7 +524,7 @@ function renderPractice(){
         +"<button onclick=\"heartAddNote('"+cid+"-l')\" title=添加批注>➕</button>"
         +"</div><h3 style=color:var(--gold)>"+a.title+"</h3>"
         +"<div id="+cid+"-l style=line-height:1.9>"+a.body.replace(/\n/g,'<br>')+"</div>"
-        +"<p class=src>📎 <a href='"+wxEntry+"' target=_blank>第1篇原文入口</a> · 永远的犍陀罗·实修心要</p></div>"
+        +"<p class=src>📎 <a href='"+wxUrl+"' target=_blank>原文链接</a> · 永远的犍陀罗·实修心要</p></div>"
         +"<div class=h3col-r1><div class=h3col-tbar>"
         +"<button onclick=\"heartCopy('"+cid+"-r1')\" title=复制对照>📋</button>"
         +"<button onclick=\"heartEdit('"+cid+"-r1')\" title=编辑对照>✏️</button>"

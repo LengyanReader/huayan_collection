@@ -280,13 +280,17 @@ for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(o
     body = _re.sub(r'^\*\*下一篇[:：].*$', '', body, flags=_re.MULTILINE)
     body = _re.sub(r'^\*\*提取日期[:：].*$', '', body, flags=_re.MULTILINE)
     # Convert markdown image to HTML (WeChat images)
-    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src=\"\2\" alt=\"\1\" style=\"max-width:100%;border-radius:6px;margin:4px 0\">', body)
+    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<img src='\2' alt='\1' style='max-width:100%;border-radius:6px;margin:4px 0'>''', body)
     # Clean remaining markdown
     body = _re.sub(r'\*\*(.+?)\*\*', r'\1', body)  # bold
     body = _re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', body)  # links (keep text, drop URL)
     body = _re.sub(r'\[图片\]', '', body)
     body = _re.sub(r'\n{3,}', '\n\n', body)
-    heart_articles.append({'title': title, 'body': body.strip()})
+    # Extract WeChat article URL from body (stored as markdown link)
+    wx_url = ''
+    url_m = _re.search(r'\*\*原文[:：]\s*(https?://[^\s]+)', text)
+    if url_m: wx_url = url_m.group(1)
+    heart_articles.append({'title': title, 'body': body.strip(), 'url': wx_url})
 HEART = json.dumps(heart_articles, ensure_ascii=False)
 
 # ── Assemble (inline embed for backward compat) ──
