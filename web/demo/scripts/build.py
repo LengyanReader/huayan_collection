@@ -269,29 +269,30 @@ for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(o
     # Extract title from first heading
     title_m = _re.search(r'^# (.+)$', text, _re.MULTILINE)
     title = title_m.group(1).strip() if title_m else os.path.basename(fpath)
-    # Remove frontmatter (lines between --- markers)
-    body = _re.sub(r'^---$.*?^---$', '', text, flags=_re.MULTILINE|_re.DOTALL)
+    # Remove all lines between first --- and second --- (frontmatter)
+    body = _re.sub(r'^---\s*\n.*?\n---\s*\n', '', text, flags=_re.MULTILINE|_re.DOTALL, count=1)
     # Remove metadata lines
     for meta in ['来源','摘要','原文','下一篇','提取日期']:
         body = _re.sub(r'^\*\*'+meta+r'[:：].*$', '', body, flags=_re.MULTILINE)
-    # Remove title heading (first # heading)
-    body = _re.sub(r'^# .+$', '', body, 1, flags=_re.MULTILINE).strip()
-    # Convert images first (before text formatting)
-    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1'></div>''', body)
+    # Remove title heading
+    body = _re.sub(r'^# .+$', '', body, 1, flags=_re.MULTILINE)
+    # Remove leftover standalone --- lines
+    body = _re.sub(r'^\s*---\s*$', '', body, flags=_re.MULTILINE)
+    body = body.strip()
+    # Convert images: ![alt](url) -> HTML
+    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1' loading='lazy'></div>''', body)
     body = _re.sub(r'\[图片\]', '', body)
-    # Convert markdown bold to HTML
+    # Bold
     body = _re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', body)
-    # Convert markdown links to HTML
-    body = _re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', body)
-    # Wrap paragraphs: blank line separated text -> <p> tags
-    paras = body.strip().split('\n\n')
+    # Links
+    body = _re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank">\1</a>', body)
+    # Split into paragraphs by blank lines, wrap in <p>
+    paras = [p.strip() for p in body.split('\n\n') if p.strip()]
     body = ''
     for p in paras:
-        p = p.strip()
-        if not p: continue
-        if p.startswith('<div class=') or p.startswith('<img') or p.startswith('<p'):
+        if p.startswith('<div class=') or p.startswith('<img'):
             body += p + '\n'
-        elif p.startswith('<b>') and len(p)<100:
+        elif len(p)<80 and not p.startswith('<') and p.count('\n')==0:
             body += '<h4>' + p + '</h4>\n'
         else:
             body += '<p>' + p.replace('\n','<br>') + '</p>\n'
