@@ -468,7 +468,7 @@ function renderPractice(){
     +".h3col-l p{margin:0 0 16px 0;text-align:justify}"
     +".h3col-l h4{color:var(--gold);font-size:1em;margin:20px 0 10px;text-align:center;font-weight:600}"
     +".h3col-l .himg{text-align:center;margin:12px 0}"
-    +".h3col-l .himg img{max-width:65%;max-height:260px;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.1);cursor:pointer;transition:transform .2s}"
+    +".h3col-l .himg img{max-width:38%;max-height:160px;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.1);cursor:pointer;transition:transform .2s}"
     +".h3col-l .himg img:hover{transform:scale(1.02)}"
     +".h3col-l b{color:#8b6914}"
     +".h3col-r1{flex:1;min-width:240px;background:rgba(184,134,60,0.05);border:1px solid rgba(184,134,60,0.2);border-radius:10px;padding:10px 12px;font-size:.72em;line-height:1.7;max-height:520px;overflow-y:auto}"

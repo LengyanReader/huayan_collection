@@ -2382,7 +2382,7 @@ function renderPractice(){
     +".h3col-l p{margin:0 0 16px 0;text-align:justify}"
     +".h3col-l h4{color:var(--gold);font-size:1em;margin:20px 0 10px;text-align:center;font-weight:600}"
     +".h3col-l .himg{text-align:center;margin:12px 0}"
-    +".h3col-l .himg img{max-width:65%;max-height:260px;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.1);cursor:pointer;transition:transform .2s}"
+    +".h3col-l .himg img{max-width:38%;max-height:160px;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.1);cursor:pointer;transition:transform .2s}"
     +".h3col-l .himg img:hover{transform:scale(1.02)}"
     +".h3col-l b{color:#8b6914}"
     +".h3col-r1{flex:1;min-width:240px;background:rgba(184,134,60,0.05);border:1px solid rgba(184,134,60,0.2);border-radius:10px;padding:10px 12px;font-size:.72em;line-height:1.7;max-height:520px;overflow-y:auto}"
@@ -3083,6 +3083,43 @@ function renderCosmology(){
   h+='<p style=font-size:0.7em;color:var(--text2);line-height:1.8>📖 《大美之佛像:犍陀罗艺术》(栗田功·文物出版社 2017)<br>📖 《敦煌石窟全集 第22册·石窟建筑卷》<br>📖 《伯希和敦煌图录》(法·伯希和 1908)<br>📖 《伟大的博物馆:新德里国家博物馆中的敦煌艺术》(罗凯什·钱德拉 2024)<br>📖 《敦煌画研究》(法·吉埃 著)<br>📖 《图解华严经:读懂经中之王》(龙树菩萨释著)<br>🌐 国际敦煌项目 IDP: <a href=http://idp.bl.uk target=_blank>idp.bl.uk</a>（吉美/大英/新德里所有敦煌藏品在线数据库）</p>';
   h+="</div></div>";
   h+='</div>';
+  // ═══ 梵呗·华严字母 ═══
+  h+='<div class=section><h2>🎵 梵呗·华严四十二字母</h2>';
+  h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>华严四十二字母出自《华严经·入法界品》(T10n0279),善财童子参访第四十四位善知识——<b>众艺童子</b>所传授的「字智法门」。依音节分<b>一合</b>(单字33个)·<b>二合</b>(双字拼合8个)·<b>三合</b>(三字拼合1个)。因字有语、因语有名、因名有义,唱诵可获殊胜功德。佛光山梵呗团版为最完整权威版本。</p>";
+
+  // B站嵌入
+  h+="<div style=display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px>";
+  h+="<div style=flex:1;min-width:300px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>";
+  h+="<h4 style=color:var(--gold);margin-bottom:4px>📺 佛光山梵呗团·华严字母(完整版)</h4>";
+  h+="<iframe src='https://player.bilibili.com/player.html?bvid=BV1Jr421s7yH&page=1' style='width:100%;height:240px;border:none;border-radius:8px' allowfullscreen></iframe>";
+  h+="<p style=font-size:0.65em;color:var(--text2);margin-top:4px>🎬 <a href='https://search.bilibili.com/all?keyword=%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D' target=_blank>B站:华严字母(多版本)</a></p></div>";
+
+  h+="<div style=flex:1;min-width:300px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>";
+  h+="<h4 style=color:var(--gold);margin-bottom:4px>🎧 普陀山梵呗·华严字母(官方音频)</h4>";
+  h+="<p style=font-size:0.72em;line-height:1.8>一合·二合·三合及字母赞完整音频,普陀山佛教协会官方发布。</p>";
+  h+="<p style=font-size:0.65em;margin-top:4px>🔗 <a href='https://www.putuo.org.cn/fyxlptfb/' target=_blank>普陀梵呗官网</a> · 🎬 <a href='https://www.youtube.com/results?search_query=%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D+%E6%A2%B5%E5%94%B1' target=_blank>YouTube</a> · <a href='https://www.bilibili.com/search?keyword=%E5%8D%8E%E4%B8%A5%E5%9B%9B%E5%8D%81%E4%BA%8C%E5%AD%97%E6%AF%8D' target=_blank>B站四十二字母</a></p></div></div>";
+
+  // 字母表
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📜 华严四十二字母表(一合·二合·三合)</span><div class=body>";
+  h+="<table class=v-table style=font-size:0.7em><tr><th>类别</th><th>数量</th><th>字母</th></tr>";
+  h+="<tr><td><b>一合</b>(单字)</td><td>33个</td><td>阿·多·波·左·那·逻·拖·婆·茶·沙·嚩·哆·也·瑟吒·迦·娑·么·伽·他·社·鏁·拖·奢·佉·叉·娑多·壤·曷攞多·婆·车·娑么·诃婆·縒·伽·吒·拏·娑颇·娑迦·也娑·室左·侘·陀</td></tr>";
+  h+="<tr><td><b>二合</b>(双字拼合)</td><td>8个</td><td>娑多·曷攞多·婆·车·娑么·诃婆·縒·伽</td></tr>";
+  h+="<tr><td><b>三合</b>(三字拼合)</td><td>1个</td><td><b>曷攞多</b></td></tr></table>";
+  h+="<p style=font-size:0.65em;color:var(--text2);margin-top:4px>📎 出处: 《大方广佛华严经·入法界品》(CBETA T10n0279卷八十) · 众艺童子传授善财童子「善知众艺菩萨字智法门」</p>";
+  h+="</div></div>";
+
+  // 更多梵呗资源
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎶 更多华严梵呗资源</span><div class=body>";
+  h+="<table class=v-table style=font-size:0.7em><tr><th>资源</th><th>来源</th><th>链接</th></tr>";
+  h+="<tr><td>🏛 灵隐寺众僧·合唱《华严字母》</td><td>B站</td><td><a href='https://www.bilibili.com/video/BV1HisMemEr6' target=_blank>观看</a></td></tr>";
+  h+="<tr><td>📿 印能法师·华严字母系列</td><td>B站/QQ音乐</td><td><a href='https://search.bilibili.com/all?keyword=%E5%8D%B0%E8%83%BD%E6%B3%95%E5%B8%88+%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D' target=_blank>B站搜索</a></td></tr>";
+  h+="<tr><td>🌄 佛光山梵呗团·官方字幕MV</td><td>YouTube</td><td><a href='https://www.youtube.com/results?search_query=%E4%BD%9B%E5%85%89%E5%B1%B1+%E8%8F%AF%E5%9A%B4%E5%AD%97%E6%AF%8D' target=_blank>YT搜索</a></td></tr>";
+  h+="<tr><td>🏯 天宁寺法师·梵呗唱诵</td><td>YouTube</td><td><a href='https://www.youtube.com/watch?v=KcQ2yZ-lB8Y' target=_blank>观看</a></td></tr>";
+  h+="<tr><td>📚 南怀瑾·宏忍法师教授华严字母</td><td>B站</td><td><a href='https://search.bilibili.com/all?keyword=%E5%8D%97%E6%80%80%E7%91%BE+%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D' target=_blank>搜索</a></td></tr>";
+  h+="<tr><td>🎵 普陀精舍·华严大法会起梵腔白</td><td>YouTube</td><td><a href='https://www.youtube.com/watch?v=e_RmoPT7gv0' target=_blank>观看</a></td></tr></table>";
+  h+="</div></div>";
+  h+='</div>';
+
   cv.innerHTML=h;
   var c=document.getElementById("cosmo-canvas");if(!c)return;
   c.addEventListener('wheel',function(e){e.preventDefault();COSMO.scale*=e.deltaY<0?1.12:0.89;COSMO.scale=Math.max(0.4,Math.min(3,COSMO.scale));drawCosmo();});
