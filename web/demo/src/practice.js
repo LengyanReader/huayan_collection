@@ -479,11 +479,7 @@ function renderPractice(){
   h+="<div class=section style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦和上禅修入门十讲</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);line-height:1.7>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>左栏:全部原文 · 中栏:海云华严行法对照 · 右栏:其他宗派/道家相互印证。</b></p>";
   h+="<p style=font-size:.72em;color:var(--text2);margin-bottom:8px>"
-    +"💾 <a href='#' onclick='heartExport();return false'>导出JSON</a> · "
-    +"📥 <a href='#' onclick='heartImport();return false'>导入JSON</a> · "
-    +"<a id=heart-git-btn href='#' onclick='heartPushToGitHub();return false'>🔒 请先登录</a> · "
-    +"<a href='#' onclick='heartSaveAll();heartToast(\"💾 已保存\");return false'>保存本地</a> · "
-    +"<span id=heart-git-status style=font-size:.68em;color:var(--text2)><a href='#' onclick='heartLogin();return false'>🔑 登录GitHub</a>(仅限LengyanReader)</span>"
+    +"<span id=heart-git-status style=font-size:.68em;color:var(--text2)></span>"
     +"</p></div>";
 
   // Cross-reference data indexed by article title keyword
@@ -880,21 +876,34 @@ function _pollToken(deviceCode,interval){
   },interval*1000);
 };
 
-// ── Update UI based on login state ──
+// ── Update UI based on login state (global header bar) ──
 function _updateLoginUI(){
-  var btn=document.getElementById('heart-git-btn');
-  var st=document.getElementById('heart-git-status');
-  if(!btn||!st)return;
+  var st=document.getElementById('git-bar-status');
+  var pu=document.getElementById('git-bar-push');
+  var us=document.getElementById('git-bar-user');
+  // Also update heart sub-page elements if they exist
+  var hbtn=document.getElementById('heart-git-btn');
+  var hst=document.getElementById('heart-git-status');
   if(_isAuthorized()){
-    btn.style.color='#c46b5d';btn.style.fontWeight='700';
-    btn.textContent='🚀 Push到GitHub';
-    st.innerHTML='✅ 已登录: LengyanReader';
+    if(st)st.innerHTML='✅ 已登录: <b>LengyanReader</b> · 编辑后可直接Push';
+    if(pu)pu.style.display='inline';
+    if(us){us.style.display='inline';us.innerHTML='<a href=\"#\" onclick=\"heartLogout();return false\" style=color:var(--text2)>登出</a>';}
+    if(hbtn){hbtn.style.color='#c46b5d';hbtn.style.fontWeight='700';hbtn.textContent='🚀 Push到GitHub';}
+    if(hst)hst.innerHTML='✅ 已登录';
   }else{
-    btn.style.color='';btn.style.fontWeight='';
-    btn.textContent='🔒 请先登录';
-    st.innerHTML='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 登录GitHub</a> (仅限LengyanReader)';
+    var loginLink='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 登录GitHub</a>(仅限LengyanReader)';
+    if(st)st.innerHTML=loginLink+' 后可编辑并Push保存';
+    if(pu)pu.style.display='none';
+    if(us)us.style.display='none';
+    if(hbtn){hbtn.style.color='';hbtn.style.fontWeight='';hbtn.textContent='🔒 请先登录';}
+    if(hst)hst.innerHTML=loginLink;
   }
 }
+
+// Auto-check login on load
+setTimeout(function(){
+  if(ghToken&&ghUser==='LengyanReader')_updateLoginUI();
+},500);
 
 // ── Push ──
 window.heartPushToGitHub=function(){
