@@ -675,15 +675,16 @@ function switchPracticeView(view,btn){
   if(btn)btn.classList.add("active");
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
   document.getElementById("pv-"+view).style.display="block";
-  // Persist sub-page via URL hash
-  if(window.location.hash!=='#'+view){history.replaceState(null,'','#'+view);}
+  localStorage.setItem('practice_sub',view);
 }
 // Restore sub-page on load
 (function(){
-  var hash=window.location.hash.replace('#','');
-  if(hash&&['system','meditation','heart','resources'].indexOf(hash)>=0){
-    setTimeout(function(){switchPracticeView(hash);},100);
-  }
+  setTimeout(function(){
+    var sub=localStorage.getItem('practice_sub')||'system';
+    if(sub&&['system','meditation','heart','resources'].indexOf(sub)>=0){
+      switchPracticeView(sub);
+    }
+  },150);
 })();
 
 // ═══ 实修心要持久化 (localStorage + 导出/导入) ═══

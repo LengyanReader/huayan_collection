@@ -1211,5 +1211,20 @@ function switchTab(tab){
   document.getElementById("tab-"+tab).classList.add("active");
   location.hash=tab;
   if(tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();if(mapMini)mapMini.invalidateSize();},200);}
+  if(tab==="practice"){setTimeout(function(){renderPractice();},100);}
 }
+// Restore main tab from hash on load
+(function(){
+  var hash=window.location.hash.replace('#','');
+  if(hash&&['lineage','practice','gap','cosmology','frontier'].indexOf(hash)>=0){
+    document.querySelector('#tabs button.active').classList.remove('active');
+    var btn=document.querySelector('#tabs button[data-tab='+hash+']');
+    if(btn)btn.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});
+    var tc=document.getElementById('tab-'+hash);
+    if(tc)tc.classList.add('active');
+    if(hash==='lineage'){setTimeout(function(){resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();if(mapMini)mapMini.invalidateSize();},300);}
+    if(hash==='practice'){setTimeout(function(){renderPractice();},150);}
+  }
+})();
 if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"+h))switchTab(h);}
