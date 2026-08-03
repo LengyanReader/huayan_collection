@@ -2455,8 +2455,10 @@ function renderPractice(){
         +"<button onclick=\"heartCopy('"+cid+"-r2')\" title=复制印证>📋</button>"
         +"<button onclick=\"heartEdit('"+cid+"-r2')\" title=编辑印证>✏️</button>"
         +"<button onclick=\"heartAddNote('"+cid+"-r2')\" title=添加批注>➕</button>"
-        +"</div><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
-        +"<div id="+cid+"-r2>"+(xr?xr.r2:'(印证内容待补)')+"</div></div></div>";
+        +"</div><h3 style=color:#5e8b9e>🔍 佛门诸宗·道门·儒门·诸行者印证</h3>"
+        +"<div id="+cid+"-r2>"+(xr?xr.r2:'(印证内容待补)')+"</div>"
+        +"<textarea id="+cid+"-cmt placeholder='💬 批注...' style='width:100%;margin-top:8px;font-size:.7em;padding:4px;border:1px dashed var(--line);border-radius:4px;background:var(--card);color:var(--text);resize:vertical;min-height:36px' onchange='heartSaveComment(\""+cid+"\")'></textarea>"
+        +"</div></div>";
     }
   }else{
     h+="<p style=color:var(--text2)>⚠ 实修心要文章数据未加载(HEART_ARTICLES为空)。请检查build.py是否正确读取docs/hy_refs/wechat/目录。</p>";
@@ -2731,6 +2733,21 @@ function heartToast(msg,quiet){
   requestAnimationFrame(function(){f.style.opacity='1';});
   setTimeout(function(){f.style.opacity='0';setTimeout(function(){document.body.removeChild(f);},300);},1500);
 }
+// ── Comment save/restore ──
+function heartSaveComment(cid){
+  var el=document.getElementById(cid+'-cmt');if(!el)return;
+  var all={};try{all=JSON.parse(localStorage.getItem('huayan_comments_v1')||'{}');}catch(e){}
+  all[cid]=el.value;localStorage.setItem('huayan_comments_v1',JSON.stringify(all));
+}
+function heartLoadComments(){
+  var all={};try{all=JSON.parse(localStorage.getItem('huayan_comments_v1')||'{}');}catch(e){}
+  Object.keys(all).forEach(function(cid){
+    var el=document.getElementById(cid+'-cmt');if(el)el.value=all[cid]||'';
+  });
+}
+// Load comments on render
+setTimeout(heartLoadComments,600);
+
 function heartAddNote(elId){
   var el=document.getElementById(elId);
   if(!el)return;
@@ -2775,10 +2792,11 @@ window.heartLogin=function(){
 // Push
 window.heartPushToGitHub=function(){
   if(!_isOkay()){_toast('❌ 请先🔑配置Token');heartLogin();return;}
-  var edits={},notes={};
+  var edits={},notes={},comments={};
+  try{comments=JSON.parse(localStorage.getItem('huayan_comments_v1')||'{}');}catch(e){}
   document.querySelectorAll('[id$="-l"],[id$="-r1"],[id$="-r2"]').forEach(function(e){var o=e.getAttribute('data-orig');if(o!==null&&e.innerHTML!==o)edits[e.id]=e.innerHTML;});
   document.querySelectorAll('.heart-note').forEach(function(n){var p=n.parentElement.id;if(!notes[p])notes[p]=[];notes[p].push(n.innerHTML);});
-  var c=JSON.stringify({ts:new Date().toISOString(),edits:edits,notes:notes},null,2);
+  var c=JSON.stringify({ts:new Date().toISOString(),edits:edits,notes:notes,comments:comments},null,2);
   _toast('⏳ Push...');
   var api='https://api.github.com/repos/'+O+'/'+R+'/contents/'+P+'?ref='+B;
   var hd={'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json'};
