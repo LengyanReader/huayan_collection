@@ -479,11 +479,11 @@ function renderPractice(){
   h+="<div class=section style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦和上禅修入门十讲</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);line-height:1.7>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>左栏:全部原文 · 中栏:海云华严行法对照 · 右栏:其他宗派/道家相互印证。</b></p>";
   h+="<p style=font-size:.72em;color:var(--text2);margin-bottom:8px>"
-    +"💾 <a href='#' onclick='heartExport();return false'>导出批注JSON</a> · "
-    +"📥 <a href='#' onclick='heartImport();return false'>导入批注JSON</a> · "
-    +"🔄 编辑后失焦自动保存至浏览器 · "
-    +"<a href='#' onclick='heartSaveAll();heartToast(\"💾 已手动保存\");return false'>手动保存</a> · "
-    +"⚠ 导出JSON后可 git add+commit+push 提交至仓库永久保存"
+    +"💾 <a href='#' onclick='heartExport();return false'>导出JSON</a> · "
+    +"📥 <a href='#' onclick='heartImport();return false'>导入JSON</a> · "
+    +"🚀 <a href='#' onclick='heartPushToGitHub();return false' style=color:#c46b5d;font-weight:700>Push到GitHub</a> · "
+    +"<a href='#' onclick='heartSaveAll();heartToast(\"💾 已保存\");return false'>保存本地</a> · "
+    +"<a href='#' onclick='heartClearToken();return false' style=font-size:.65em>清除Token</a>"
     +"</p></div>";
 
   // Cross-reference data indexed by article title keyword
@@ -807,3 +807,38 @@ function heartFlash(el,msg){
   requestAnimationFrame(function(){f.style.opacity='1';});
   setTimeout(function(){f.style.opacity='0';setTimeout(function(){document.body.removeChild(f);},300);},1500);
 }
+
+// ═══ GitHub Push — 网页直存仓库 (Token仅存本地) ═══
+(function(){var O='LengyanReader',R='huayan_collection',B='main',P='data/user/heart_annotations.json';
+function _gitAuth(){
+  var t=localStorage.getItem('gh_token_v2');
+  if(!t){t=prompt('GitHub Fine-grained Token (仅存浏览器本地):\n\n1. GitHub→Settings→Developer settings→Fine-grained tokens\n2. Only: '+O+'/'+R+'\n3. Permissions: Contents=Read+Write\n\nToken仅存于你的localStorage,不上传任何服务器。','');
+  if(t&&t.trim()){localStorage.setItem('gh_token_v2',t.trim());heartToast('🔑 Token已保存(仅本地)');}else{heartToast('❌ 需要Token');return null;}}
+  return localStorage.getItem('gh_token_v2');
+}
+window.heartPushToGitHub=function(){
+  var token=_gitAuth();if(!token)return;
+  var edits={},notes={};
+  document.querySelectorAll('[id$="-l"],[id$="-r1"],[id$="-r2"]').forEach(function(el){
+    var id=el.id,orig=el.getAttribute('data-orig');
+    if(orig!==null&&el.innerHTML!==orig)edits[id]=el.innerHTML;
+  });
+  document.querySelectorAll('.heart-note').forEach(function(n){
+    var pid=n.parentElement.id;if(!notes[pid])notes[pid]=[];notes[pid].push(n.innerHTML);
+  });
+  var c=JSON.stringify({ts:new Date().toISOString(),edits:edits,notes:notes},null,2);
+  heartToast('⏳ Push中...');
+  var api='https://api.github.com/repos/'+O+'/'+R+'/contents/'+P+'?ref='+B;
+  var hd={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'};
+  fetch(api,{headers:hd}).then(function(r){return r.ok?r.json():null;})
+  .then(function(ex){var b={message:'feat: 实修心要网页直存 ['+new Date().toISOString().slice(0,19).replace('T',' ')+']',content:btoa(unescape(encodeURIComponent(c))),branch:B};
+    if(ex&&ex.sha)b.sha=ex.sha;
+    return fetch('https://api.github.com/repos/'+O+'/'+R+'/contents/'+P,{method:'PUT',headers:Object.assign({'Content-Type':'application/json'},hd),body:JSON.stringify(b)});
+  }).then(function(r){return r.json();})
+  .then(function(d){
+    if(d.content||d.commit){heartToast('✅ Push: '+d.commit.sha.substring(0,7)+' Pages自动更新');heartSaveAll();}
+    else{heartToast('❌ '+d.message);if(d.message.indexOf('Bad credentials')>=0){localStorage.removeItem('gh_token_v2');heartToast('🔓 Token已清除');}}
+  }).catch(function(e){heartToast('❌ 网络: '+e.message);});
+};
+window.heartClearToken=function(){if(confirm('清除GitHub Token?')){localStorage.removeItem('gh_token_v2');heartToast('🔓 已清除');}};
+})();
