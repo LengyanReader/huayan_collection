@@ -804,131 +804,61 @@ function heartFlash(el,msg){
   setTimeout(function(){f.style.opacity='0';setTimeout(function(){document.body.removeChild(f);},300);},1500);
 }
 
-// ═══ GitHub Fine-grained Token 登录 + Push ═══
+// ═══ GitHub Token 登录 + Push (静态站点唯一可靠方案) ═══
 (function(){
 var O='LengyanReader',R='huayan_collection',B='main',P='data/user/heart_annotations.json';
-var STORAGE_KEY='gh_pat_v3';
+var STORAGE_KEY='gh_pat_v4';
 var ghToken=localStorage.getItem(STORAGE_KEY);
+var _toast=function(m){var e=document.getElementById('git-bar-status');if(e){e.textContent=m;setTimeout(function(){_update();},2500);}};
 
-function _isAuthorized(){return !!ghToken;}
+function _isOkay(){return !!ghToken;}
 
-// ── Simple Token Input Login ──
+// Token 输入
 window.heartLogin=function(){
-  var existing=localStorage.getItem(STORAGE_KEY);
-  var msg='输入GitHub Fine-grained Token:\n\n'
-    +'Repo: '+O+'/'+R+'\n'
-    +'Permission: Contents = Read and Write\n\n'
-    +'生成: GitHub → Settings → Developer settings → Fine-grained tokens\n'
-    +'(Token仅保存在你的浏览器中)';
-  if(existing)msg='当前已有Token。\n输入新Token替换,或点取消保留。\n\n'+msg;
-  var t=prompt(msg,existing||'');
-  if(t===null)return; // cancelled
-  if(t.trim()){
-    localStorage.setItem(STORAGE_KEY,t.trim());
-    ghToken=t.trim();
-    // Verify it works
-    fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json'}})
-    .then(function(r){return r.json();})
-    .then(function(u){
-      _updateLoginUI();
-      if(u.login==='LengyanReader'){
-        heartToast('✅ 已登录: '+u.login+' · Push权限已启用');
-      }else if(u.login){
-        heartToast('⚠ 当前Token属于: '+u.login+' · Push可能失败(仓库仅限LengyanReader)');
-        _updateLoginUI();
-      }else if(u.message){
-        heartToast('❌ Token无效: '+u.message);
-        localStorage.removeItem(STORAGE_KEY);
-        ghToken=null;_updateLoginUI();
-      }
-    }).catch(function(){heartToast('✅ Token已保存(离线验证)');_updateLoginUI();});
-  }
+  var msg='GitHub Fine-grained Token(仅存浏览器):\n\n生成: GitHub→Settings→Developer settings→Fine-grained tokens→Generate new token\n→Only select: '+O+'/'+R+'\n→Permissions: Contents→Read and Write\n\n粘贴Token:';
+  var t=prompt(msg,localStorage.getItem(STORAGE_KEY)||'');
+  if(!t||!t.trim())return;
+  localStorage.setItem(STORAGE_KEY,t.trim());ghToken=t.trim();
+  fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json'}})
+  .then(function(r){return r.json();})
+  .then(function(u){
+    _update();_toast(u.login==='LengyanReader'?'✅ '+u.login+' · Push已启用':'⚠ Token属于'+u.login);
+  }).catch(function(){_update();_toast('✅ Token已保存');});
 };
-
-// ── Update UI ──
-function _updateLoginUI(){
-  var st=document.getElementById('git-bar-status');
-  var pu=document.getElementById('git-bar-push');
-  var us=document.getElementById('git-bar-user');
-  var hst=document.getElementById('heart-git-status');
-  if(ghToken){
-    if(st)st.innerHTML='✅ 已配置Token · 编辑后可直接 <b>🚀 Push到GitHub</b>';
-    if(pu)pu.style.display='inline';
-    if(us){us.style.display='inline';us.innerHTML='<a href=\"#\" onclick=\"heartLogout();return false\" style=color:var(--text2)>更换Token</a>';}
-    if(hst)hst.innerHTML='✅ 已配置Token';
-  }else{
-    var link='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 配置Token</a>(仅限LengyanReader)';
-    if(st)st.innerHTML=link+' · 编辑后可Push保存';
-    if(pu)pu.style.display='none';
-    if(us)us.style.display='none';
-    if(hst)hst.innerHTML=link;
-  }
-}
-
-// ── Update UI based on login state (global header bar) ──
-function _updateLoginUI(){
-  var st=document.getElementById('git-bar-status');
-  var pu=document.getElementById('git-bar-push');
-  var us=document.getElementById('git-bar-user');
-  // Also update heart sub-page elements if they exist
-  var hbtn=document.getElementById('heart-git-btn');
-  var hst=document.getElementById('heart-git-status');
-  if(_isAuthorized()){
-    if(st)st.innerHTML='✅ 已登录: <b>LengyanReader</b> · 编辑后可直接Push';
-    if(pu)pu.style.display='inline';
-    if(us){us.style.display='inline';us.innerHTML='<a href=\"#\" onclick=\"heartLogout();return false\" style=color:var(--text2)>登出</a>';}
-    if(hbtn){hbtn.style.color='#c46b5d';hbtn.style.fontWeight='700';hbtn.textContent='🚀 Push到GitHub';}
-    if(hst)hst.innerHTML='✅ 已登录';
-  }else{
-    var loginLink='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 登录GitHub</a>(仅限LengyanReader)';
-    if(st)st.innerHTML=loginLink+' 后可编辑并Push保存';
-    if(pu)pu.style.display='none';
-    if(us)us.style.display='none';
-    if(hbtn){hbtn.style.color='';hbtn.style.fontWeight='';hbtn.textContent='🔒 请先登录';}
-    if(hst)hst.innerHTML=loginLink;
-  }
-}
-
-// Auto-check login on load
-setTimeout(function(){
-  if(ghToken&&ghUser==='LengyanReader')_updateLoginUI();
-},500);
-
-// ── Push ──
+// Push
 window.heartPushToGitHub=function(){
-  var toast=typeof heartToast==='function'?heartToast:function(m){alert(m);};
-  if(!_isAuthorized()){toast('❌ 请先配置Token');return;}
+  if(!_isOkay()){_toast('❌ 请先🔑配置Token');heartLogin();return;}
   var edits={},notes={};
-  document.querySelectorAll('[id$="-l"],[id$="-r1"],[id$="-r2"]').forEach(function(el){
-    var id=el.id,orig=el.getAttribute('data-orig');
-    if(orig!==null&&el.innerHTML!==orig)edits[id]=el.innerHTML;
-  });
-  document.querySelectorAll('.heart-note').forEach(function(n){
-    var pid=n.parentElement.id;if(!notes[pid])notes[pid]=[];notes[pid].push(n.innerHTML);
-  });
+  document.querySelectorAll('[id$="-l"],[id$="-r1"],[id$="-r2"]').forEach(function(e){var o=e.getAttribute('data-orig');if(o!==null&&e.innerHTML!==o)edits[e.id]=e.innerHTML;});
+  document.querySelectorAll('.heart-note').forEach(function(n){var p=n.parentElement.id;if(!notes[p])notes[p]=[];notes[p].push(n.innerHTML);});
   var c=JSON.stringify({ts:new Date().toISOString(),edits:edits,notes:notes},null,2);
-  toast('⏳ Push中...');
+  _toast('⏳ Push...');
   var api='https://api.github.com/repos/'+O+'/'+R+'/contents/'+P+'?ref='+B;
   var hd={'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json'};
   fetch(api,{headers:hd}).then(function(r){return r.ok?r.json():null;})
-  .then(function(ex){var b={message:'feat: 实修心要网页直存 ['+new Date().toISOString().slice(0,19).replace('T',' ')+']',content:btoa(unescape(encodeURIComponent(c))),branch:B};
+  .then(function(ex){var b={message:'feat: 网页直存 ['+new Date().toISOString().slice(0,19).replace('T',' ')+']',content:btoa(unescape(encodeURIComponent(c))),branch:B};
     if(ex&&ex.sha)b.sha=ex.sha;
     return fetch('https://api.github.com/repos/'+O+'/'+R+'/contents/'+P,{method:'PUT',headers:Object.assign({'Content-Type':'application/json'},hd),body:JSON.stringify(b)});
   }).then(function(r){return r.json();})
   .then(function(d){
-    if(d.content||d.commit){toast('✅ Push: '+d.commit.sha.substring(0,7)+' Pages自动更新');if(typeof heartSaveAll==='function')heartSaveAll();}
-    else{toast('❌ '+d.message);if(d.message.indexOf('401')>=0){localStorage.removeItem('gh_oauth_token');localStorage.removeItem('gh_oauth_user');ghToken=null;ghUser=null;_updateLoginUI();}}
-  }).catch(function(e){toast('❌ 网络: '+e.message);});
+    if(d.content||d.commit){_toast('✅ Push: '+d.commit.sha.substring(0,7)+' · Pages自动更新');if(typeof heartSaveAll==='function')heartSaveAll();}
+    else{_toast('❌ '+d.message);if(d.message.indexOf('401')>=0){localStorage.removeItem(STORAGE_KEY);ghToken=null;_update();}}
+  }).catch(function(e){_toast('❌ '+e.message);});
 };
-
 // Logout
-window.heartLogout=function(){
-  localStorage.removeItem(STORAGE_KEY);
-  ghToken=null;
-  _updateLoginUI();
-  if(typeof heartToast==='function')heartToast('🔓 Token已清除');
-};
-
-// Init UI on page load
-setTimeout(function(){_updateLoginUI();},1000);
+window.heartLogout=function(){localStorage.removeItem(STORAGE_KEY);ghToken=null;_update();_toast('🔓 已清除');};
+// UI update
+function _update(){
+  var st=document.getElementById('git-bar-status'),pu=document.getElementById('git-bar-push'),us=document.getElementById('git-bar-user');
+  if(ghToken){
+    if(st)st.innerHTML='✅ Token已配置 · <b>🚀 Push到GitHub</b> 可用';
+    if(pu)pu.style.display='inline';
+    if(us){us.style.display='inline';us.innerHTML='<a href=\"#\" onclick=\"heartLogout();return false\" style=color:var(--text2)>清除Token</a>';}
+  }else{
+    var l='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 配置Token</a>(仅限LengyanReader)';
+    if(st)st.innerHTML=l+' · 编辑后可Push';
+    if(pu)pu.style.display='none';if(us)us.style.display='none';
+  }
+}
+setTimeout(function(){_update();},600);
 })();
