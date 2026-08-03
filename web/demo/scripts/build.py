@@ -178,6 +178,32 @@ edges.append({'s':'person_134','t':'person_042','r':'MASTER','li':'大乘瑜伽�
 locs.append({'id': 'l_yoga', 'n': '印度阿弥塔巴·LIFE Mission道场', 'lat': 23.02, 'lng': 72.57, 'tp': 'temple', 'dy': '当代',
              'ds': '胜师子王菩萨道场。海云继梦2008年12月于此接受大乘瑜伽行法灌顶传法。', 'ps': ['person_134', 'person_042']})
 
+# ── Reference: Indian spiritual figures (近代印度精神导师, 参考线) ──
+nodes.append({'id':'person_140','n':'罗摩克里希纳','dy':'1836–1886','ti':'Ramakrishna·近代印度灵性复兴之源','li':'参考线','tp':'practitioner','b':1836,'d':1886,'bio':'Ramakrishna Paramahamsa。19世纪印度神秘主义者,加尔各答达克希涅斯瓦尔 Kali 神庙祭司。主张各宗教皆为通向同一真理的路径。其弟子辨喜将吠檀多传向西方。','wk':[],'v':1})
+nodes.append({'id':'person_141','n':'辨喜','dy':'1863–1902','ti':'Swami Vivekananda·吠檀多西传第一人','li':'参考线','tp':'practitioner','b':1863,'d':1902,'bio':'Swami Vivekananda。罗摩克里希纳弟子。1893年芝加哥世界宗教议会演讲轰动西方,创立罗摩克里希纳传道会。将瑜伽与吠檀多哲学系统介绍给西方世界。','wk':[],'v':1})
+nodes.append({'id':'person_142','n':'奥罗宾多','dy':'1872–1950','ti':'Sri Aurobindo·整体瑜伽创立者','li':'参考线','tp':'practitioner','b':1872,'d':1950,'bio':'Sri Aurobindo。早年留学剑桥,后投身印度独立运动。1910年起隐居本地治里,创立整体瑜伽(Integral Yoga)。其「超心智」演化哲学与华严事事无碍有深层对话空间。','wk':['The Life Divine','Savitri'],'v':1})
+nodes.append({'id':'person_143','n':'拉玛那·马哈希','dy':'1879–1950','ti':'Ramana Maharshi·参问Who am I','li':'参考线','tp':'practitioner','b':1879,'d':1950,'bio':'Ramana Maharshi。16岁自发证悟自性,后隐居于圣山 Arunachala 终生。以「我是谁」(Who am I?)参问法门教导学人直证自性。其不二论与禅宗「念佛是谁」话头有可比拟处。','wk':[],'v':1})
+
+# ── Reference: Tibetan Buddhist masters (藏传佛教重要人物, 参考线) ──
+nodes.append({'id':'person_150','n':'寂天','dy':'8世纪','ti':'Śāntideva·入菩萨行论造者','li':'参考线','tp':'scholar','b':685,'d':763,'bio':'Śāntideva(寂天)。那烂陀寺学僧,中观学派大师。著《入菩萨行论》(Bodhicaryāvatāra)为印度大乘修行纲领。《华严经·普贤行愿品》与寂天菩萨行思想可互相参照。','wk':['入菩萨行论','学处集要'],'v':1})
+nodes.append({'id':'person_151','n':'阿底峡','dy':'982–1054','ti':'Atiśa·菩提道灯论造者','li':'参考线','tp':'patriarch','b':982,'d':1054,'bio':'Atiśa(阿底峡)。孟加拉人,超戒寺学僧,后应请入藏弘法。著《菩提道灯论》建立三士道次第。噶当派始祖,宗喀巴格鲁派之前身。圆寂于拉萨附近聂塘。','wk':['菩提道灯论'],'v':1})
+nodes.append({'id':'person_152','n':'宗喀巴','dy':'1357–1419','ti':'Tsongkhapa·格鲁派创始人','li':'参考线','tp':'patriarch','b':1357,'d':1419,'bio':'Tsongkhapa(宗喀巴)。青海人,藏传佛教格鲁派(黄教)创始人。著《菩提道次第广论》系统化阿底峡三士道思想。与华严判教体系(小始终顿圆)有修行阶次上的对比研究价值。','wk':['菩提道次第广论','密宗道次第广论'],'v':1})
+
+# Edges: Indian reference line
+edges.append({'s':'person_140','t':'person_141','r':'MASTER','li':'参考线'})
+
+# Locations for reference figures
+locs.append({'id': 'l_ramana', 'n': '印度圣山 Arunachala (Tiruvannamalai)', 'lat': 12.23, 'lng': 79.07, 'tp': 'mountain', 'dy': '当代',
+             'ds': '拉玛那·马哈希终生隐修之处。每年吸引全球数千求道者朝圣。', 'ps': ['person_143']})
+locs.append({'id': 'l_pondi', 'n': '印度本地治里·Aurobindo Ashram', 'lat': 11.94, 'lng': 79.83, 'tp': 'temple', 'dy': '当代',
+             'ds': '奥罗宾多与The Mother创立道场。整体瑜伽发源地。', 'ps': ['person_142']})
+locs.append({'id': 'l_kolkata', 'n': '加尔各答·罗摩克里希纳传道会', 'lat': 22.57, 'lng': 88.36, 'tp': 'temple', 'dy': '近现代',
+             'ds': '辨喜于1897年创立。全球吠檀多传播中心。', 'ps': ['person_140','person_141']})
+locs.append({'id': 'l_ganden', 'n': '拉萨·甘丹寺', 'lat': 29.75, 'lng': 91.47, 'tp': 'temple', 'dy': '明',
+             'ds': '宗喀巴1409年创建。格鲁派根本道场。', 'ps': ['person_152']})
+locs.append({'id': 'l_nalanda2', 'n': '那烂陀寺(参考)', 'lat': 25.14, 'lng': 85.44, 'tp': 'temple', 'dy': '古印度',
+             'ds': '寂天与阿底峡曾驻锡于此。7-12世纪印度佛教最高学府。', 'ps': ['person_150','person_151']})
+
 # Location: 东大寺
 locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})
 
@@ -205,7 +231,7 @@ for loc2 in locs:
 
 colors = {'华严五祖': '#b8863c', '华严莲社': '#5e8b9e', '月霞系': '#7a9ec0', '李通玄系': '#c8893e',
           '高丽华严': '#6d9a6e', '日本华严': '#8b7a9e', '贤首宗高原法系': '#c46b5d', '临济宗': '#d48476',
-          '慈舟系': '#8b7a9e', '译师': '#a09080', '印度源流': '#9e8b6e', '求法僧': '#d48476', '当代学者': '#b0a898', '大乘瑜伽行法': '#d4a574', 'null': '#b0a898'}
+          '慈舟系': '#8b7a9e', '译师': '#a09080', '印度源流': '#9e8b6e', '求法僧': '#d48476', '当代学者': '#b0a898', '大乘瑜伽行法': '#d4a574', '参考线': '#a0a0a0', 'null': '#b0a898'}
 
 GRAPH = json.dumps({'nodes': nodes, 'edges': edges, 'locations': locs, 'lineage_colors': colors}, ensure_ascii=False)
 
