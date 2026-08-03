@@ -682,6 +682,12 @@ function switchPracticeView(view,btn){
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
   document.getElementById("pv-"+view).style.display="block";
   localStorage.setItem('practice_sub',view);
+  // Force-reload lazy images when switching to a sub-page
+  if(view==='heart'){setTimeout(function(){
+    document.querySelectorAll('#pv-heart img').forEach(function(img){
+      var s=img.src;img.src='';img.src=s;
+    });
+  },200);}
 }
 // Restore sub-page on load
 (function(){
