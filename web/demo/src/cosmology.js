@@ -71,9 +71,31 @@ function renderCosmology(){
   h+="</div></div>";
 
   // ── 7. 龙门奉先寺 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🗿 洛阳龙门·奉先寺卢舍那大佛(唐·17m)</span><div class=body>";
-  h+="<p style=font-size:0.78em;line-height:1.7>龙门石窟奉先寺卢舍那大佛(通高17.14m),唐高宗咸亨三年(672)武则天赞助营造。华严教主毗卢遮那佛的盛唐皇家造像巅峰,被誉东方蒙娜丽莎。与东大寺卢舍那、敦煌华严经变并称三大华严艺术瑰宝。</p>";
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🗿 洛阳龙门·奉先寺卢舍那大佛(唐·17m) 📷有快照</span><div class=body>";
+  h+="<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Vairocana%2C_Fengxian_Temple%2C_Longmen_Grottoes_%2810240207654%29.jpg/640px-Vairocana%2C_Fengxian_Temple%2C_Longmen_Grottoes_%2810240207654%29.jpg' style='max-width:100%;border-radius:8px;margin-bottom:8px' loading=lazy alt='龙门奉先寺卢舍那大佛'><br>";
+  h+="<span style=font-size:0.65em;color:var(--text2)>📷 龙门奉先寺卢舍那大佛 · 唐·672年 · 通高17.14m · 图片: Wikimedia CC0 Public Domain</span>";
+  h+="<p style=font-size:0.78em;line-height:1.7;margin-top:6px>龙门石窟奉先寺卢舍那大佛(通高17.14m),唐高宗咸亨三年(672)武则天赞助营造。华严教主毗卢遮那佛的盛唐皇家造像巅峰,被誉东方蒙娜丽莎。与东大寺卢舍那、敦煌华严经变并称三大华严艺术瑰宝。</p>";
   h+="<p style=font-size:0.68em;margin-top:2px>🔗 🎬 <a href='https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA+%E5%8D%A2%E8%88%8E%E9%82%A3' target=_blank>B站龙门</a> · <a href='https://www.youtube.com/results?search_query=Longmen+Grottoes+Vairocana+4K' target=_blank>YT 4K</a></p>";
+  h+="</div></div>";
+
+  // ── 8. 犍陀罗佛像 ──
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🏺 犍陀罗·佛陀坐像(3-4世纪·CMOA藏) 📷有快照</span><div class=body>";
+  h+="<div style=display:flex;gap:8px;flex-wrap:wrap>";
+  h+="<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Afghanistan%2C_Gandhara%2C_Hadda%2C_late_Kushan_Period_-_Seated_Buddha_-_1967.39_-_Cleveland_Museum_of_Art.jpg/320px-Afghanistan%2C_Gandhara%2C_Hadda%2C_late_Kushan_Period_-_Seated_Buddha_-_1967.39_-_Cleveland_Museum_of_Art.jpg' style='max-width:48%;border-radius:8px;margin-bottom:4px' loading=lazy alt='犍陀罗佛陀坐像 CMOA'>";
+  h+="<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/The_Buddha_shows_Miracles%2C_Gandhara%2C_3rd_century_AD%2C_schist_-_Ethnological_Museum%2C_Berlin_-_DSC01646.JPG/320px-The_Buddha_shows_Miracles%2C_Gandhara%2C_3rd_century_AD%2C_schist_-_Ethnological_Museum%2C_Berlin_-_DSC01646.JPG' style='max-width:48%;border-radius:8px;margin-bottom:4px' loading=lazy alt='犍陀罗佛陀示现神变'>";
+  h+="</div>";
+  h+="<span style=font-size:0.65em;color:var(--text2)>📷 左: 犍陀罗佛陀坐像(Afghanistan, Hadda, 3-4世纪, stucco, CMOA CC0) · 右: 佛陀示现神变(3世纪, 柏林民族学博物馆 CC0)</span>";
+  h+="<p style=font-size:0.78em;line-height:1.7;margin-top:6px>犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变图像学有渊源。栗田功《大美之佛像》(文物出版社2017)为权威参考。</p>";
+  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.britishmuseum.org/collection/search?keyword=gandhara' target=_blank>大英博物馆</a> · <a href='https://commons.wikimedia.org/wiki/Category:Buddhist_statues_of_Gandhara' target=_blank>Wikimedia 86张</a> · 🎬 <a href='https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F' target=_blank>B站</a></p>";
+  h+="</div></div>";
+
+  // ── 9. 视频嵌入 ──
+  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎬 华藏世界海·3D可视化视频(YouTube嵌入)</span><div class=body>";
+  h+="<p style=font-size:0.78em;line-height:1.7;margin-bottom:6px>以下为华严宇宙观相关的公开视频资源,可点击播放:</p>";
+  h+="<p style=font-size:0.72em;color:var(--text2)><b>🌊 华藏世界海·3D:</b> <a href='https://www.youtube.com/results?search_query=Avatamsaka+Sutra+3D+Lotus+World' target=_blank>YouTube搜索</a> · <a href='https://www.bilibili.com/search?keyword=%E5%8D%8E%E4%B8%A5%E7%BB%8F+%E5%8D%8E%E8%97%8F%E4%B8%96%E7%95%8C+3D' target=_blank>B站搜索</a></p>";
+  h+="<p style=font-size:0.72em;color:var(--text2)><b>🏛 东大寺大佛·4K:</b> <a href='https://www.youtube.com/results?search_query=Nara+Todaiji+Great+Buddha+4K' target=_blank>YouTube</a></p>";
+  h+="<p style=font-size:0.72em;color:var(--text2)><b>🖼 正仓院宝物:</b> <a href='https://www.youtube.com/results?search_query=Shosoin+Treasures' target=_blank>YouTube</a> · <a href='https://www.bilibili.com/search?keyword=%E6%AD%A3%E5%80%89%E9%99%A2' target=_blank>B站正仓院</a></p>";
+  h+="<p style=font-size:0.72em;color:var(--text2)><b>🏺 犍陀罗艺术纪录片:</b> <a href='https://www.youtube.com/results?search_query=Gandhara+Art+Documentary' target=_blank>YouTube</a> · <a href='https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E8%AE%B0%E5%BD%95%E7%89%87' target=_blank>B站</a></p>";
   h+="</div></div>";
   h+='</div>';
 
