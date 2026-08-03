@@ -280,7 +280,7 @@ for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(o
     body = _re.sub(r'^\s*---\s*$', '', body, flags=_re.MULTILINE)
     body = body.strip()
     # Convert images: ![alt](url) -> HTML
-    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1' loading='lazy'></div>''', body)
+    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1' onclick='window.open(this.src)' title='点击查看原图'></div>''', body)
     body = _re.sub(r'\[图片\]', '', body)
     # Bold
     body = _re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', body)
