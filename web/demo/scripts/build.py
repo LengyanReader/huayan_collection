@@ -167,7 +167,7 @@ nodes.append({'id':'person_130','n':'拉克鲁希','dy':'远古印度','ti':'湿
 nodes.append({'id':'person_131','n':'巴布基','dy':'近现代','ti':'大瑜伽士·Babuji','li':'大乘瑜伽行法','tp':'practitioner','b':None,'d':None,'bio':'Babuji(巴布基大瑜伽士)。Lord Lakulish示现指导的大成就者,传承古典瑜伽行法。','wk':[],'v':0})
 nodes.append({'id':'person_132','n':'普拉梵纳德','dy':'近现代','ti':'Swami Pranavanad','li':'大乘瑜伽行法','tp':'practitioner','b':1884,'d':1959,'bio':'Swami Pranavanad。1913年普贤菩萨于印度再度示现,为其传法。开创现代大乘瑜伽行法传承。','wk':[],'v':0})
 nodes.append({'id':'person_133','n':'克利普梵纳德','dy':'近现代','ti':'Swami Kripalavanand','li':'大乘瑜伽行法','tp':'practitioner','b':1913,'d':1981,'bio':'Swami Kripalavanand。1932年从普拉梵纳德接法,继续弘扬大乘瑜伽行法。','wk':[],'v':0})
-nodes.append({'id':'person_134','n':'胜师子王菩萨','dy':'当代','ti':'Swami Rajarshi Muni·印度国师','li':'大乘瑜伽行法','tp':'practitioner','b':1931,'d':None,'bio':'Swami Rajarshi Muni(惹查西牟尼)。1971年从克利普梵纳德接法。1993年Lakulish以灵性形象示现,遂创立LIFE Mission。被尊为印度国师,2019年获印度总理奖。2008年12月于阿弥塔巴市传大乘瑜伽行法灌顶予海云继梦:准许以大乘佛法弘扬Maha Yogachar。','wk':[],'v':0})
+nodes.append({'id':'person_134','n':'胜师子王菩萨','dy':'当代','ti':'Swami Rajarshi Muni·印度国师','li':'大乘瑜伽行法','tp':'practitioner','b':1931,'d':2023,'bio':'Swami Rajarshi Muni(惹查西牟尼)。1971年从克利普梵纳德接法。1993年Lakulish以灵性形象示现,遂创立LIFE Mission。被尊为印度国师,2019年获印度总理奖。2008年12月于阿弥塔巴市传大乘瑜伽行法灌顶予海云继梦。已圆寂(约2023年)。','wk':[],'v':0})
 
 edges.append({'s':'person_130','t':'person_131','r':'MASTER','li':'大乘瑜伽行法'})
 edges.append({'s':'person_131','t':'person_132','r':'MASTER','li':'大乘瑜伽行法'})
