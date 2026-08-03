@@ -2360,6 +2360,12 @@ function renderPractice(){
     +".h3col-r2{flex:1;min-width:240px;background:rgba(94,139,158,0.05);border:1px solid rgba(94,139,158,0.2);border-radius:10px;padding:10px 12px;font-size:.72em;line-height:1.7;max-height:520px;overflow-y:auto}"
     +".h3col h3{font-size:.95em;margin-bottom:4px}"
     +".h3col .src{font-size:.82em;color:var(--text2);margin-top:6px;border-top:1px dotted var(--line);padding-top:4px}"
+    +".h3col-tbar{position:absolute;top:4px;right:4px;display:flex;gap:2px;opacity:0;transition:opacity .2s}"
+    +".h3col-l:hover .h3col-tbar,.h3col-r1:hover .h3col-tbar,.h3col-r2:hover .h3col-tbar{opacity:1}"
+    +".h3col-tbar button{font-size:11px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer}"
+    +".h3col-tbar button:hover{background:var(--gold);color:#fff}"
+    +".h3col-l,.h3col-r1,.h3col-r2{position:relative}"
+    +".heart-note{background:rgba(184,134,60,0.12);border-left:3px solid var(--gold);padding:4px 8px;margin:4px 0;font-size:.9em;border-radius:0 4px 4px 0}"
     +"</style>";
   h+="<div class=section style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦和上禅修入门十讲</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);line-height:1.7>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>左栏:全部原文 · 中栏:海云华严行法对照 · 右栏:其他宗派/道家相互印证。</b>全部内容可回溯至原文或经典出处。</p></div>";
@@ -2389,21 +2395,36 @@ function renderPractice(){
   };
 
   // Generate cards from HEART_ARTICLES data with cross-references
+  var wxEntry='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g';
   if(typeof HEART_ARTICLES!=='undefined' && HEART_ARTICLES.length>0){
     for(var hi=0; hi<HEART_ARTICLES.length; hi++){
-      var a=HEART_ARTICLES[hi];
+      var a=HEART_ARTICLES[hi], cid='hcard'+hi;
       // Find matching cross-ref by scanning title for keywords
       var xr=null;
       var keys=Object.keys(heartXRef);
       for(var ki=0; ki<keys.length; ki++){
         if(a.title.indexOf(keys[ki])>=0){xr=heartXRef[keys[ki]];break;}
       }
-      h+="<div class=h3col>"
-        +"<div class=h3col-l><h3 style=color:var(--gold)>"+a.title+"</h3>"
-        +"<p style=white-space:pre-line>"+a.body.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;')+"</p>"
-        +"<p class=src>📎 <a href='https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g' target=_blank>第1篇原文入口</a>(后续通过末尾「下一篇」依次访问) · 永远的犍陀罗·实修心要</p></div>"
-        +"<div class=h3col-r1><h3 style=color:var(--gold)>📐 海云华严行法对照</h3><p>"+(xr?xr.r1:'(对照内容待补)')+"</p></div>"
-        +"<div class=h3col-r2><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3><p>"+(xr?xr.r2:'(印证内容待补)')+"</p></div></div>";
+      h+="<div class=h3col id="+cid+">"
+        +"<div class=h3col-l><div class=h3col-tbar>"
+        +"<button onclick=\"heartCopy('"+cid+"-l')\" title=复制左栏原文>📋</button>"
+        +"<button onclick=\"heartEdit('"+cid+"-l')\" title=编辑左栏>✏️</button>"
+        +"<button onclick=\"heartAddNote('"+cid+"-l')\" title=添加批注>➕</button>"
+        +"</div><h3 style=color:var(--gold)>"+a.title+"</h3>"
+        +"<div id="+cid+"-l style=white-space:pre-line>"+a.body.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;')+"</div>"
+        +"<p class=src>📎 <a href='"+wxEntry+"' target=_blank>第1篇原文入口</a> · 永远的犍陀罗·实修心要</p></div>"
+        +"<div class=h3col-r1><div class=h3col-tbar>"
+        +"<button onclick=\"heartCopy('"+cid+"-r1')\" title=复制对照>📋</button>"
+        +"<button onclick=\"heartEdit('"+cid+"-r1')\" title=编辑对照>✏️</button>"
+        +"<button onclick=\"heartAddNote('"+cid+"-r1')\" title=添加批注>➕</button>"
+        +"</div><h3 style=color:var(--gold)>📐 海云华严行法对照</h3>"
+        +"<div id="+cid+"-r1>"+(xr?xr.r1:'(对照内容待补)')+"</div></div>"
+        +"<div class=h3col-r2><div class=h3col-tbar>"
+        +"<button onclick=\"heartCopy('"+cid+"-r2')\" title=复制印证>📋</button>"
+        +"<button onclick=\"heartEdit('"+cid+"-r2')\" title=编辑印证>✏️</button>"
+        +"<button onclick=\"heartAddNote('"+cid+"-r2')\" title=添加批注>➕</button>"
+        +"</div><h3 style=color:#5e8b9e>🔍 其他宗派/道家印证</h3>"
+        +"<div id="+cid+"-r2>"+(xr?xr.r2:'(印证内容待补)')+"</div></div></div>";
     }
   }else{
     h+="<p style=color:var(--text2)>⚠ 实修心要文章数据未加载(HEART_ARTICLES为空)。请检查build.py是否正确读取docs/hy_refs/wechat/目录。</p>";
@@ -2539,6 +2560,56 @@ function switchPracticeView(view,btn){
   if(btn)btn.classList.add("active");
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
   document.getElementById("pv-"+view).style.display="block";
+}
+
+// ═══ 实修心要工具栏函数 ═══
+function heartCopy(elId){
+  var el=document.getElementById(elId);
+  if(!el)return;
+  var txt=el.innerText||el.textContent||'';
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){heartFlash(el,'✅ 已复制');});
+  }else{
+    // Fallback for older browsers
+    var ta=document.createElement('textarea');
+    ta.value=txt;ta.style.position='fixed';ta.style.left='-9999px';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');heartFlash(el,'✅ 已复制');}catch(e){heartFlash(el,'❌ 复制失败');}
+    document.body.removeChild(ta);
+  }
+}
+function heartEdit(elId){
+  var el=document.getElementById(elId);
+  if(!el)return;
+  if(el.contentEditable==='true'){
+    el.contentEditable='false';
+    el.style.outline='';
+    heartFlash(el,'🔒 已锁定');
+  }else{
+    el.contentEditable='true';
+    el.style.outline='2px dashed var(--gold)';
+    el.focus();
+    heartFlash(el,'✏️ 可编辑(Ctrl+Enter保存)');
+    el.onkeydown=function(e){if(e.ctrlKey&&e.key==='Enter'){e.preventDefault();heartEdit(elId);}};
+  }
+}
+function heartAddNote(elId){
+  var el=document.getElementById(elId);
+  if(!el)return;
+  var note=prompt('输入批注内容:','');
+  if(!note||!note.trim())return;
+  var noteDiv=document.createElement('div');
+  noteDiv.className='heart-note';
+  noteDiv.innerHTML='💬 '+note.replace(/</g,'&lt;').replace(/>/g,'&gt;')+' <span style=font-size:.75em;color:var(--text2)>('+new Date().toLocaleString('zh-CN')+')</span>';
+  el.appendChild(noteDiv);
+  heartFlash(el,'➕ 批注已添加');
+}
+function heartFlash(el,msg){
+  var f=document.createElement('div');
+  f.style.cssText='position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);background:var(--gold);color:#fff;padding:6px 16px;border-radius:20px;font-size:.85em;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s';
+  f.textContent=msg;document.body.appendChild(f);
+  requestAnimationFrame(function(){f.style.opacity='1';});
+  setTimeout(function(){f.style.opacity='0';setTimeout(function(){document.body.removeChild(f);},300);},1500);
 }
 // ═══ FRONTIER TAB ═══
 function renderFrontier(){
