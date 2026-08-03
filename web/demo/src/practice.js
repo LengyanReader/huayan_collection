@@ -906,12 +906,12 @@ window.heartLogout=function(){localStorage.removeItem(STORAGE_KEY);ghToken=null;
 function _update(){
   var st=document.getElementById('git-bar-status'),pu=document.getElementById('git-bar-push'),us=document.getElementById('git-bar-user');
   if(ghToken){
-    if(st)st.innerHTML='✅ Token已配置 · <b>🚀 Push到GitHub</b> 可用';
+    if(st)st.innerHTML='✅ 已授权 · <b>Ctrl+Shift+S</b> 保存至GitHub';
     if(pu)pu.style.display='inline';
-    if(us){us.style.display='inline';us.innerHTML='<a href=\"#\" onclick=\"heartLogout();return false\" style=color:var(--text2)>清除Token</a>';}
+    if(us){us.style.display='inline';us.innerHTML='<a href=\"#\" onclick=\"heartLogout();return false\" style=color:var(--text2)>清除</a>';}
   }else{
-    var l='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 配置Token</a>(仅限LengyanReader)';
-    if(st)st.innerHTML=l+' · 编辑后可Push';
+    if(st)st.innerHTML='<a href=\"#\" onclick=\"heartLogin();return false\">🔑 配置授权</a> · 编辑后可保存至GitHub'
+      +' · <a href=\"https://github.com/LengyanReader/huayan_collection/issues/new?title=%E5%BB%BA%E8%AE%AE:&body=%E6%9D%A5%E8%87%AA%E7%BD%91%E9%A1%B5%E7%9A%84%E5%8F%8D%E9%A6%88%0A%0A---%0A%E8%AF%B7%E6%8F%8F%E8%BF%B0%E4%BD%A0%E7%9A%84%E5%BB%BA%E8%AE%AE%E6%88%96%E9%97%AE%E9%A2%98:\" target=_blank style=color:#5e8b9e;font-size:0.9em>💬 提交建议</a>';
     if(pu)pu.style.display='none';if(us)us.style.display='none';
   }
 }
