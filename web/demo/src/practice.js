@@ -811,7 +811,7 @@ function heartFlash(el,msg){
 // ═══ GitHub OAuth Device Flow 登录 + Push ═══
 (function(){
 var O='LengyanReader',R='huayan_collection',B='main',P='data/user/heart_annotations.json';
-var CLIENT_ID='Iv23liJQnPfOc2X1G5bB'; // GitHub OAuth App client_id (public)
+var CLIENT_ID='Ov23liNtjPf7lk73dvnh'; // GitHub OAuth App client_id
 var ghToken=localStorage.getItem('gh_oauth_token');
 var ghUser=localStorage.getItem('gh_oauth_user');
 
