@@ -485,7 +485,9 @@ function drawTL(hlId){
 // ═══ MAP SYSTEM (main view + minimap like StarCraft) ═══
 var mapMain=null,mapMini=null;
 var mainMarkers=[];
+var miniTerrainLayer=null, miniTerrainOn=false;
 function tileLayer(){return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{subdomains:["1","2","3","4"],maxZoom:18});}
+function terrainTileLayer(){return L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:17,opacity:0.7});}
 
 function initMap(){
   if(typeof L==="undefined"){
@@ -507,7 +509,7 @@ function initMap(){
       mainMarkers.push(m);
     });
   }
-  // ── Mini map: Asia overview (pan-Asia, zoom 3) ──
+  // ── Mini map: Asia overview (pan-Asia, zoom 3) with terrain toggle ──
   if(!mapMini){
     mapMini=L.map("map-mini",{zoomControl:false,attributionControl:false,zoomSnap:0.5,zoomDelta:0.5}).setView([30,80],3);
     tileLayer().addTo(mapMini);
@@ -520,6 +522,8 @@ function initMap(){
   }else{
     mapMain.invalidateSize();mapMini.invalidateSize();
   }
+  // Update terrain layer state after invalidateSize
+  if(miniTerrainOn && miniTerrainLayer){if(!mapMini.hasLayer(miniTerrainLayer))miniTerrainLayer.addTo(mapMini);}
 }
 function getMainMap(){return mapMain;}
 
@@ -570,6 +574,23 @@ function drawTL2(id){}
 
 // ═══ ANCIENT/MODERN MAP TOGGLE (with terrain) ═══
 var ancientMode=false,dynastyLayers=[],ancientLabels=[],terrainLayer=null;
+
+// ── Mini-map terrain toggle ──
+function toggleMiniTerrain(){
+  miniTerrainOn=!miniTerrainOn;
+  var btn=document.getElementById('mini-terrain-btn');
+  if(!mapMini)return;
+  if(miniTerrainOn){
+    if(!miniTerrainLayer){miniTerrainLayer=terrainTileLayer();}
+    miniTerrainLayer.addTo(mapMini);
+    if(btn){btn.style.background='#5e8b9e';btn.style.color='#fff';btn.textContent='🗻 地形ON';}
+  }else{
+    if(miniTerrainLayer){mapMini.removeLayer(miniTerrainLayer);}
+    if(btn){btn.style.background='';btn.style.color='';btn.textContent='🗻 地形';}
+  }
+}
+
+// ── Ancient/Modern Map Toggle ──
 var LOC_ANCIENT={
   '大慈恩寺':'唐长安·大慈恩寺', '终南山':'唐终南山·至相寺', '清凉山（五台山）':'唐清凉山·大华严寺',
   '圭峰':'唐终南山·圭峰草堂', '方山':'唐方山·李通玄著论处', '杭州慧因寺':'宋杭州·慧因高丽寺',
@@ -593,9 +614,9 @@ function toggleAncient(){
     if(cm)cm.classList.add('map-ancient');
     var miniC=document.getElementById('map-mini-wrap');if(miniC)miniC.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
     if(btn){btn.style.background='#b8863c';btn.style.color='#fff';btn.style.borderColor='#b8863c';btn.textContent='🏯 今';}
-    // Add terrain overlay (shows mountains/rivers/valleys clearly)
-    if(!terrainLayer){terrainLayer=L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{subdomains:['a','b','c'],maxZoom:17,opacity:0.55}).addTo(mapMain);}
-    else{terrainLayer.addTo(mapMain);}
+    // Add terrain overlay to BOTH main + mini maps
+    if(!terrainLayer){terrainLayer=terrainTileLayer();terrainLayer.addTo(mapMain);}else{terrainLayer.addTo(mapMain);}
+    if(!miniTerrainLayer){miniTerrainLayer=terrainTileLayer();miniTerrainLayer.addTo(mapMini);}else if(!mapMini.hasLayer(miniTerrainLayer)){miniTerrainLayer.addTo(mapMini);}
     // Major geographic feature labels
     var geoFeatures=[
       {n:'秦岭山脉',lat:34.0,lng:108.5},{n:'黄河',lat:34.8,lng:110.5},{n:'长江',lat:30.5,lng:114.0},
@@ -630,8 +651,9 @@ function toggleAncient(){
     if(cm)cm.classList.remove('map-ancient');
     var miniD=document.getElementById('map-mini-wrap');if(miniD)miniD.style.filter='';
     if(btn){btn.style.background='';btn.style.color='';btn.style.borderColor='';btn.textContent='🏯 古今';}
-    // Remove terrain
+    // Remove terrain from both maps (unless mini terrain is independently on)
     if(terrainLayer){mapMain.removeLayer(terrainLayer);}
+    if(miniTerrainLayer&&!miniTerrainOn){mapMini.removeLayer(miniTerrainLayer);}
     // Remove dynasty boundaries
     dynastyLayers.forEach(function(l){mapMain.removeLayer(l);});
     dynastyLayers=[];
