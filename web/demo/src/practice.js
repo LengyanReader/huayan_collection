@@ -550,8 +550,20 @@ function renderPractice(){
 
   h+="</div>"; // close pv-heart
 
-  // Auto-restore saved data
-  setTimeout(function(){if(heartLoadAll())heartToast('📥 已恢复上次保存的编辑/批注',true);},500);
+  // Auto-restore saved data (only right columns, not left article text)
+  setTimeout(function(){
+    var raw=localStorage.getItem('huayan_heart_data_v2');
+    if(!raw)return;
+    try{var data=JSON.parse(raw);
+    if(data.edits){Object.keys(data.edits).forEach(function(id){
+      if(id.indexOf('-l')>=0)return; // skip left column (article text)
+      var el=document.getElementById(id);if(el){el.innerHTML=data.edits[id];}
+    });}
+    if(data.notes){Object.keys(data.notes).forEach(function(id){
+      var el=document.getElementById(id);if(el){(data.notes[id]||[]).forEach(function(n){var d=document.createElement('div');d.className='heart-note';d.innerHTML=n;el.appendChild(d);});}
+    });}
+    }catch(e){}
+  },500);
 
   // ═══════════════════════════════════════════
   // SUB-PAGE 4: 讲法资源 (hidden, was #3 before 实修心要 added)
@@ -703,9 +715,8 @@ function switchPracticeView(view,btn){
 var HEART_STORE_KEY='huayan_heart_data_v2';
 function heartSaveAll(){
   var data={edits:{},notes:{},ts:new Date().toISOString()};
-  document.querySelectorAll('[id$="-l"],[id$="-r1"],[id$="-r2"]').forEach(function(el){
+  document.querySelectorAll('[id$="-r1"],[id$="-r2"]').forEach(function(el){
     var id=el.id, html=el.innerHTML;
-    // Check if content has been edited (different from original state stored in data-orig)
     var orig=el.getAttribute('data-orig');
     if(orig!==null && html!==orig) data.edits[id]=html;
     // Collect notes
