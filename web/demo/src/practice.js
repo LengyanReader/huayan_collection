@@ -860,5 +860,9 @@ function _update(){
     if(pu)pu.style.display='none';if(us)us.style.display='none';
   }
 }
+// Hotkey: Ctrl+Shift+S = Push to GitHub
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&e.shiftKey&&e.key==='S'){e.preventDefault();heartPushToGitHub();}
+});
 setTimeout(function(){_update();},600);
 })();
