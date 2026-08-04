@@ -3395,14 +3395,18 @@ window.renderComments=function(tab){
   h+='<div class=c-list>';cs.slice(-8).forEach(function(c,i){var idx=cs.length-8+i;if(idx<0)idx=0;
     var who=c.u&&c.u!=='访客'?('<b style=color:#5e8b9e>@'+c.u+'</b> '):'';var ts=c.d||'';var ip=c.ip?' · '+c.ip:'';
     var ct=c.t;
-    // Render embedded base64 images
-    var parts=ct.split(/(!\[[^\]]*\]\(data:image\/[^;]+;base64,[A-Za-z0-9+\/=]+\))/g);
-    ct='';
-    for(var pi=0;pi<parts.length;pi++){
-      var p=parts[pi];
-      var im=p.match(/!\[([^\]]*)\]\((data:image\/[^;]+;base64,[A-Za-z0-9+\/=]+)\)/);
-      if(im){ct+='<div style=text-align:center;margin:6px 0><img src="'+im[2]+'" alt="'+im[1]+'" style=max-width:200px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.1)></div>';}
-      else{ct+=p;}
+    // Direct image detection: if text contains data:image link, render as img
+    var di=ct.indexOf('](data:image/');
+    if(di>=0){
+      var fi=ct.lastIndexOf('![',di);
+      if(fi>=0){
+        var alt=ct.substring(fi+2,ct.indexOf(']',fi));
+        var uriStart=di+2;
+        var uriEnd=ct.indexOf(')',uriStart);
+        if(uriEnd<0)uriEnd=ct.length;
+        var uri=ct.substring(uriStart,uriEnd);
+        ct=ct.substring(0,fi)+'<div style=text-align:center;margin:6px 0><img src="'+uri+'" alt="'+alt+'" style=max-width:200px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.1)></div>'+ct.substring(uriEnd+1);
+      }
     }
     h+='<div class=c-item>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+ct
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
