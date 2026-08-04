@@ -919,5 +919,16 @@ function _update(){
 document.addEventListener('keydown',function(e){
   if(e.ctrlKey&&e.shiftKey&&e.key==='S'){e.preventDefault();heartPushToGitHub();}
 });
+// Fetch recent GitHub Issues for display
+(function loadIssues(){
+  fetch('https://api.github.com/repos/LengyanReader/huayan_collection/issues?state=all&per_page=5&sort=updated')
+  .then(function(r){return r.json();})
+  .then(function(issues){
+    if(!issues||!issues.length)return;
+    var el=document.getElementById('git-bar-issues');if(!el)return;
+    var html='';issues.forEach(function(i){html+=' · <a href='+i.html_url+' target=_blank style=font-size:0.85em title=\"'+i.title.replace(/\"/g,'&quot;')+'\">#'+i.number+'</a>';});
+    el.innerHTML=html;
+  }).catch(function(){});
+})();
 setTimeout(function(){_update();},600);
 })();
