@@ -104,8 +104,9 @@ window.renderComments=function(tab){
     var who=c.u&&c.u!=='访客'?('<b style=color:#5e8b9e>@'+c.u+'</b> '):'';var ts=c.d||'';var ip=c.ip?' · '+c.ip:'';
     var ct=c.t;
     // Render data:image URIs as actual img tags (handle very long URIs)
-    ct=ct.replace(/!\[([^\]]*)\]\((data:image\/[^\)]{10,})\)/g,function(m,alt,uri){
-      return '<br><img src=\"'+uri+'\" alt=\"'+alt+'\" style=\"max-width:200px;border-radius:6px;margin:4px 0\" onerror=\"this.outerHTML=this.alt\"><br>';
+    var imgRe=/!\[([^\]]*)\]\((data:image\/(?:png|jpe?g|gif|webp);base64,[A-Za-z0-9+\/=]+?)\)/gi;
+    ct=ct.replace(imgRe,function(m,alt,uri){
+      return '<div style=text-align:center;margin:6px 0><img src="'+uri+'" alt="'+alt+'" style=max-width:200px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.1)></div>';
     });
     h+='<div class=c-item>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+ct
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
