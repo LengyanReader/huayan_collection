@@ -49,19 +49,50 @@ document.querySelectorAll("#controls button[data-filter]").forEach(function(btn)
 window.submitComment=function(tab){
   var t=document.getElementById('cmt-input-'+tab);if(!t||!t.value.trim())return;
   var text=t.value.trim();
-  var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
-  cs.push({d:new Date().toISOString().slice(0,10),t:text});
-  localStorage.setItem('huayan_cmt_'+tab,JSON.stringify(cs));t.value='';renderComments(tab);
-  // Also try to create a GitHub Issue if token configured
+  var now=new Date();
+  var ts=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0')
+    +' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+':'+String(now.getSeconds()).padStart(2,'0');
+  // Get username from token if available
   var token=localStorage.getItem('gh_pat_v4');
+  var user='访客';
+
+  function saveComment(ip){
+    var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
+    var entry={d:ts,t:text,u:user,ip:ip||''};
+    cs.push(entry);
+    localStorage.setItem('huayan_cmt_'+tab,JSON.stringify(cs));t.value='';renderComments(tab);
+    // Try to create GitHub Issue
+    if(token){
+      var labels=tab==='practice'?['行法']:tab==='lineage'?['法脉']:tab==='gap'?['文献']:tab==='cosmology'?['世主妙严']:['前沿'];
+      var body='**'+user+'** · '+ts+(ip?' · IP:'+ip:'')+'\n\n---\n\n标签: '+tab+'\n\n'+text;
+      fetch('https://api.github.com/repos/LengyanReader/huayan_collection/issues',{
+        method:'POST',headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
+        body:JSON.stringify({title:'💬 ['+labels[0]+'] '+text.substring(0,60),body:body,labels:labels})
+      }).then(function(r){return r.json();}).then(function(d){
+        if(d.html_url){var st=document.getElementById('cmt-'+tab);if(st){var note=st.querySelector('h4');if(note)note.innerHTML+=' ✅<a href='+d.html_url+' target=_blank style=font-size:0.8em>#'+d.number+'</a>';}}
+      }).catch(function(){});
+    }else{
+      // Fallback: open GitHub Issue form for anyone with GitHub account
+      var title='💬 ['+tab+'] '+text.substring(0,60);
+      var body='**'+user+'** · '+ts+'\n\n---\n\n'+text;
+      var url='https://github.com/LengyanReader/huayan_collection/issues/new?title='+encodeURIComponent(title)+'&body='+encodeURIComponent(body);
+      window.open(url,'_blank');
+    }
+  }
+
+  // Get username and IP
   if(token){
-    var labels=tab==='practice'?['行法']:tab==='lineage'?['法脉']:tab==='gap'?['文献']:tab==='cosmology'?['世主妙严']:['前沿'];
-    fetch('https://api.github.com/repos/LengyanReader/huayan_collection/issues',{
-      method:'POST',headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
-      body:JSON.stringify({title:'💬 ['+labels[0]+'] '+text.substring(0,80),body:'**来自网页评论**\n\n标签: '+tab+'\n\n'+text,labels:labels})
-    }).then(function(r){return r.json();}).then(function(d){
-      if(d.html_url){var st=document.getElementById('cmt-'+tab);if(st){var note=st.querySelector('h4');if(note)note.innerHTML+=' ✅<a href='+d.html_url+' target=_blank style=font-size:0.8em>#'+d.number+'</a>';}}
-    }).catch(function(){});
+    // Try to get GitHub username from cached data or fetch
+    var cachedUser=localStorage.getItem('gh_username');
+    if(cachedUser){user=cachedUser;tryGetIP(saveComment);}
+    else{fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+token}}).then(function(r){return r.json();}).then(function(u){
+      if(u.login){user=u.login;localStorage.setItem('gh_username',u.login);}
+      tryGetIP(saveComment);
+    }).catch(function(){tryGetIP(saveComment);});}
+  }else{tryGetIP(saveComment);}
+
+  function tryGetIP(cb){
+    fetch('https://api.ipify.org?format=json').then(function(r){return r.json();}).then(function(d){cb(d.ip||'');}).catch(function(){cb('');});
   }
 };
 window.renderComments=function(tab){
@@ -70,7 +101,8 @@ window.renderComments=function(tab){
   var token=!!localStorage.getItem('gh_pat_v4');
   var h='<h4>💬 评论与建议 ('+cs.length+')</h4>';
   h+='<div class=c-list>';cs.slice(-8).forEach(function(c,i){var idx=cs.length-8+i;if(idx<0)idx=0;
-    h+='<div class=c-item style=display:flex;justify-content:space-between;align-items:center><span><b>'+c.d+'</b>: '+c.t+'</span>'
+    var who=c.u&&c.u!=='访客'?('<b style=color:#5e8b9e>@'+c.u+'</b> '):'';var ts=c.d||'';var ip=c.ip?' · '+c.ip:'';
+    h+='<div class=c-item style=display:flex;justify-content:space-between;align-items:center><span>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+c.t+'</span>'
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
       +'</div>';
   });
