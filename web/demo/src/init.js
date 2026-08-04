@@ -120,10 +120,26 @@ window.renderComments=function(tab){
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
       +'</div>';
   });
-  h+='</div><textarea id=cmt-input-'+tab+' placeholder=输入修改建议或评论… rows=2></textarea>';
-  h+='<button onclick=submitComment(\"'+tab+'\")>提交</button>';
+  h+='</div><textarea id=cmt-input-'+tab+' placeholder=\"输入文本或直接Ctrl+V贴图…\" rows=2></textarea>';
+  h+='<button onclick=submitComment(\"'+tab+'\")>提交</button> ';
+  h+='<label style=font-size:0.7em;color:var(--text2);cursor:pointer;border:1px solid var(--line);border-radius:4px;padding:2px 6px>🖼 选图<input type=file accept=image/* style=display:none onchange=\"pickImage(this,\\\''+tab+'\\\')\"></label>';
   h+=(token?'':'<p style=font-size:0.65em;color:var(--text2);margin-top:2px>💡 配置Token后可同步评论至GitHub Issue并可删除</p>');
   box.innerHTML=h;
+};
+window.pickImage=function(input,tab){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    var img=new Image();
+    img.onload=function(){
+      var dataUri=ev.target.result;
+      if(img.width>600){var r=600/img.width;var c=document.createElement('canvas');c.width=600;c.height=Math.round(img.height*r);c.getContext('2d').drawImage(img,0,0,600,Math.round(img.height*r));dataUri=c.toDataURL('image/jpeg',0.65);}
+      var ta=document.getElementById('cmt-input-'+tab);if(!ta)return;
+      ta.value+='\n![图片]('+dataUri+')\n';
+    };
+    img.src=ev.target.result;
+  };
+  reader.readAsDataURL(file);
 };
 window.deleteComment=function(tab,idx){
   var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
@@ -143,14 +159,22 @@ document.addEventListener('paste',function(e){
       var blob=items[i].getAsFile();
       var reader=new FileReader();
       reader.onload=function(ev){
-        var dataUri=ev.target.result;
-        var sizeKB=Math.round(dataUri.length/1024);
-        if(dataUri.length>500000){alert('⚠ 图片过大('+sizeKB+'KB),可能导致保存/加载缓慢。建议压缩后再贴。');}
-        var img='![图片]('+dataUri+')';
-        var start=ta.selectionStart,end=ta.selectionEnd;
-        ta.value=ta.value.substring(0,start)+'\n'+img+'\n'+ta.value.substring(end);
-        ta.selectionStart=ta.selectionEnd=start+img.length+2;
-        ta.focus();
+        // Compress large images via canvas before storing
+        var img=new Image();
+        img.onload=function(){
+          var dataUri=ev.target.result;
+          if(img.width>600){
+            var r=600/img.width,w=600,h=Math.round(img.height*r);
+            var c=document.createElement('canvas');c.width=w;c.height=h;
+            c.getContext('2d').drawImage(img,0,0,w,h);
+            dataUri=c.toDataURL('image/jpeg',0.65);
+          }
+          var tag='![图片]('+dataUri+')';
+          var s=ta.selectionStart,e=ta.selectionEnd;
+          ta.value=ta.value.substring(0,s)+'\n'+tag+'\n'+ta.value.substring(e);
+          ta.focus();
+        };
+        img.src=ev.target.result;
       };
       reader.readAsDataURL(blob);
       break;
