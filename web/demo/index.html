@@ -3345,11 +3345,21 @@ window.submitComment=function(tab){
 window.renderComments=function(tab){
   var box=document.getElementById('cmt-'+tab);if(!box)return;
   var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
+  var token=!!localStorage.getItem('gh_pat_v4');
   var h='<h4>💬 评论与建议 ('+cs.length+')</h4>';
-  h+='<div class=c-list>';cs.slice(-8).forEach(function(c){h+='<div class=c-item><b>'+c.d+'</b>: '+c.t+'</div>';});
+  h+='<div class=c-list>';cs.slice(-8).forEach(function(c,i){var idx=cs.length-8+i;if(idx<0)idx=0;
+    h+='<div class=c-item style=display:flex;justify-content:space-between;align-items:center><span><b>'+c.d+'</b>: '+c.t+'</span>'
+      +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
+      +'</div>';
+  });
   h+='</div><textarea id=cmt-input-'+tab+' placeholder=输入修改建议或评论… rows=2></textarea>';
   h+='<button onclick=submitComment(\"'+tab+'\")>提交</button>';
+  h+=(token?'':'<p style=font-size:0.65em;color:var(--text2);margin-top:2px>💡 配置Token后可同步评论至GitHub Issue并可删除</p>');
   box.innerHTML=h;
+};
+window.deleteComment=function(tab,idx){
+  var cs=[];try{cs=JSON.parse(localStorage.getItem('huayan_cmt_'+tab)||'[]');}catch(e){}
+  if(idx>=0&&idx<cs.length){cs.splice(idx,1);localStorage.setItem('huayan_cmt_'+tab,JSON.stringify(cs));renderComments(tab);}
 };
 ['lineage','gap','practice','frontier','cosmology'].forEach(function(tab){renderComments(tab);});
 
