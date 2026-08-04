@@ -105,7 +105,7 @@ window.renderComments=function(tab){
     var ct=c.t;
     // Render data URIs as img tags
     var R=/!\[([^\]]*)\]\((data:image\/[^)]+)\)/g;
-    ct=ct.replace(R,'<div style=text-align:center;margin:6px 0><img src="" alt="" style=max-width:200px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.1)></div>');
+    ct=ct.replace(R,'<div style=text-align:center;margin:6px 0><img src="$2" alt="$1" style=max-width:200px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.1)></div>');
     h+='<div class=c-item>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+ct
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
       +'</div>';
