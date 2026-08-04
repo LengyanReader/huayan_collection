@@ -134,10 +134,13 @@ document.addEventListener('paste',function(e){
       var blob=items[i].getAsFile();
       var reader=new FileReader();
       reader.onload=function(ev){
-        var img='\n![粘贴图片]('+ev.target.result+')\n';
+        var dataUri=ev.target.result;
+        var sizeKB=Math.round(dataUri.length/1024);
+        if(dataUri.length>500000){alert('⚠ 图片过大('+sizeKB+'KB),可能导致保存/加载缓慢。建议压缩后再贴。');}
+        var img='![图片]('+dataUri+')';
         var start=ta.selectionStart,end=ta.selectionEnd;
-        ta.value=ta.value.substring(0,start)+img+ta.value.substring(end);
-        ta.selectionStart=ta.selectionEnd=start+img.length;
+        ta.value=ta.value.substring(0,start)+'\n'+img+'\n'+ta.value.substring(end);
+        ta.selectionStart=ta.selectionEnd=start+img.length+2;
         ta.focus();
       };
       reader.readAsDataURL(blob);

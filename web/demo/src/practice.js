@@ -924,7 +924,7 @@ document.addEventListener('paste',function(e){
     if(items[i].type.indexOf('image')===0){
       e.preventDefault();
       var blob=items[i].getAsFile(),reader=new FileReader();
-      reader.onload=function(ev){var img='\n![贴图]('+ev.target.result+')\n';var s=ta.selectionStart;ta.value=ta.value.substring(0,s)+img+ta.value.substring(ta.selectionEnd);ta.selectionStart=ta.selectionEnd=s+img.length;ta.focus();};
+      reader.onload=function(ev){var uri=ev.target.result;if(uri.length>500000){alert('⚠ 图片过大('+Math.round(uri.length/1024)+'KB),建议压缩后贴。');}var img='![图片]('+uri+')';var s=ta.selectionStart;ta.value=ta.value.substring(0,s)+'\n'+img+'\n'+ta.value.substring(ta.selectionEnd);ta.selectionStart=ta.selectionEnd=s+img.length+2;ta.focus();};
       reader.readAsDataURL(blob);break;
     }
   }
