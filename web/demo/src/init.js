@@ -102,7 +102,11 @@ window.renderComments=function(tab){
   var h='<h4>💬 评论与建议 ('+cs.length+')</h4>';
   h+='<div class=c-list>';cs.slice(-8).forEach(function(c,i){var idx=cs.length-8+i;if(idx<0)idx=0;
     var who=c.u&&c.u!=='访客'?('<b style=color:#5e8b9e>@'+c.u+'</b> '):'';var ts=c.d||'';var ip=c.ip?' · '+c.ip:'';
-    var ct=c.t.replace(/!\[([^\]]*)\]\((data:image\/[^)]+)\)/g,'<br><img src=\"$2\" alt=\"$1\" style=\"max-width:200px;border-radius:6px;margin:4px 0\"><br>');
+    var ct=c.t;
+    // Render data:image URIs as actual img tags (handle very long URIs)
+    ct=ct.replace(/!\[([^\]]*)\]\((data:image\/[^\)]{10,})\)/g,function(m,alt,uri){
+      return '<br><img src=\"'+uri+'\" alt=\"'+alt+'\" style=\"max-width:200px;border-radius:6px;margin:4px 0\" onerror=\"this.outerHTML=this.alt\"><br>';
+    });
     h+='<div class=c-item>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+ct
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
       +'</div>';
