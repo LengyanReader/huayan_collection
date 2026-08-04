@@ -2829,6 +2829,20 @@ function _update(){
     if(pu)pu.style.display='none';if(us)us.style.display='none';
   }
 }
+// ── Image paste support for comment textareas in 实修心要 ──
+document.addEventListener('paste',function(e){
+  var ta=e.target.closest('textarea[id$="-cmt"]')||e.target.closest('textarea[id$="-lcmt"]')||e.target.closest('textarea[id$="-r1cmt"]');
+  if(!ta)return;
+  var items=e.clipboardData&&e.clipboardData.items;if(!items)return;
+  for(var i=0;i<items.length;i++){
+    if(items[i].type.indexOf('image')===0){
+      e.preventDefault();
+      var blob=items[i].getAsFile(),reader=new FileReader();
+      reader.onload=function(ev){var img='\n![贴图]('+ev.target.result+')\n';var s=ta.selectionStart;ta.value=ta.value.substring(0,s)+img+ta.value.substring(ta.selectionEnd);ta.selectionStart=ta.selectionEnd=s+img.length;ta.focus();};
+      reader.readAsDataURL(blob);break;
+    }
+  }
+});
 // Hotkey: Ctrl+Shift+S = Push to GitHub
 document.addEventListener('keydown',function(e){
   if(e.ctrlKey&&e.shiftKey&&e.key==='S'){e.preventDefault();heartPushToGitHub();}
@@ -3380,7 +3394,8 @@ window.renderComments=function(tab){
   var h='<h4>💬 评论与建议 ('+cs.length+')</h4>';
   h+='<div class=c-list>';cs.slice(-8).forEach(function(c,i){var idx=cs.length-8+i;if(idx<0)idx=0;
     var who=c.u&&c.u!=='访客'?('<b style=color:#5e8b9e>@'+c.u+'</b> '):'';var ts=c.d||'';var ip=c.ip?' · '+c.ip:'';
-    h+='<div class=c-item style=display:flex;justify-content:space-between;align-items:center><span>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+c.t+'</span>'
+    var ct=c.t.replace(/!\[([^\]]*)\]\((data:image\/[^)]+)\)/g,'<br><img src=\"$2\" alt=\"$1\" style=\"max-width:200px;border-radius:6px;margin:4px 0\"><br>');
+    h+='<div class=c-item>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+ct
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
       +'</div>';
   });
@@ -3394,6 +3409,30 @@ window.deleteComment=function(tab,idx){
   if(idx>=0&&idx<cs.length){cs.splice(idx,1);localStorage.setItem('huayan_cmt_'+tab,JSON.stringify(cs));renderComments(tab);}
 };
 ['lineage','gap','practice','frontier','cosmology'].forEach(function(tab){renderComments(tab);});
+
+// ── Image paste support for comment textareas ──
+document.addEventListener('paste',function(e){
+  var ta=e.target.closest('textarea[id^="cmt-input-"]');
+  if(!ta)return;
+  var items=e.clipboardData&&e.clipboardData.items;
+  if(!items)return;
+  for(var i=0;i<items.length;i++){
+    if(items[i].type.indexOf('image')===0){
+      e.preventDefault();
+      var blob=items[i].getAsFile();
+      var reader=new FileReader();
+      reader.onload=function(ev){
+        var img='\n![粘贴图片]('+ev.target.result+')\n';
+        var start=ta.selectionStart,end=ta.selectionEnd;
+        ta.value=ta.value.substring(0,start)+img+ta.value.substring(end);
+        ta.selectionStart=ta.selectionEnd=start+img.length;
+        ta.focus();
+      };
+      reader.readAsDataURL(blob);
+      break;
+    }
+  }
+});
 
 // ═══ RESIZE HANDLE ═══
 var resizeHandle=document.getElementById('resize-handle');

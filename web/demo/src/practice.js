@@ -915,6 +915,20 @@ function _update(){
     if(pu)pu.style.display='none';if(us)us.style.display='none';
   }
 }
+// ── Image paste support for comment textareas in 实修心要 ──
+document.addEventListener('paste',function(e){
+  var ta=e.target.closest('textarea[id$="-cmt"]')||e.target.closest('textarea[id$="-lcmt"]')||e.target.closest('textarea[id$="-r1cmt"]');
+  if(!ta)return;
+  var items=e.clipboardData&&e.clipboardData.items;if(!items)return;
+  for(var i=0;i<items.length;i++){
+    if(items[i].type.indexOf('image')===0){
+      e.preventDefault();
+      var blob=items[i].getAsFile(),reader=new FileReader();
+      reader.onload=function(ev){var img='\n![贴图]('+ev.target.result+')\n';var s=ta.selectionStart;ta.value=ta.value.substring(0,s)+img+ta.value.substring(ta.selectionEnd);ta.selectionStart=ta.selectionEnd=s+img.length;ta.focus();};
+      reader.readAsDataURL(blob);break;
+    }
+  }
+});
 // Hotkey: Ctrl+Shift+S = Push to GitHub
 document.addEventListener('keydown',function(e){
   if(e.ctrlKey&&e.shiftKey&&e.key==='S'){e.preventDefault();heartPushToGitHub();}
