@@ -441,8 +441,11 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
             if url_m: wx_url = url_m.group(1)
             heart_articles.append({'title': ht_title, 'body': body.strip(), 'url': wx_url})
 
+    haiyun_res = read_yaml('practice/haiyun_resources.yaml') or {}
+
     # Build inline data script
     data_script = f'''
+var HAIYUN_RESOURCES = {json.dumps(haiyun_res, ensure_ascii=False)};
 var GRAPH = {json.dumps(graph, ensure_ascii=False)};
 var GAP = {json.dumps(gap, ensure_ascii=False)};
 var EVENTS = {json.dumps(events, ensure_ascii=False)};

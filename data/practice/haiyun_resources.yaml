@@ -1,0 +1,82 @@
+# ═══════════════════════════════════════════
+# 海云继梦法师 — 资源总目录 (检索整理 2026-08)
+# 来源: 网络公开检索, 供讲法资源子页补充
+# ═══════════════════════════════════════════
+
+youtube:
+  channel:
+    name: 大華嚴寺影音频道
+    url: https://www.youtube.com/@huayen-world
+    id: UCJr3ifkvTs76XnR6SuyIfFQ
+    description: 完整真实记录海云继梦法师讲经弘法内容
+  series:
+    - {name: 華嚴教海系列, example: 大方廣佛華嚴經初發心功德品第12集}
+    - {name: 海雲法語, example: 植福田必知的核心觀念}
+    - {name: 九九華嚴講座, note: 2026年台北国际会议中心·AI时代与人类价值}
+    - {name: 精进佛七海云法语, note: 2024年11月}
+
+bilibili:
+  series:
+    - {name: 華嚴六科系列, url: https://www.bilibili.com/video/BV1iS421X7S8/, note: 2024-07上传·48集·含华严学概论/经教行法/禅行法/戒律观/净土法门/密法}
+    - {name: 善财童子五十三参, note: 2024-08上传·视频及音频版}
+    - {name: 心经讲记, note: 40集}
+    - {name: 药师经讲记, note: 10集}
+    - {name: 地藏菩萨本愿经讲记, note: 10集}
+    - {name: 占察善恶业报经讲记}
+    - {name: 普贤行品讲记}
+    - {name: 禅法开示系列}
+  search: https://search.bilibili.com/all?keyword=海云继梦
+
+publications:
+  note: 主要由空庭書苑出版·飛鴻國際總經銷·大陆宗教文化出版社
+  series_haiyun_jiehua:
+    - {title: 梵行清境：華嚴經梵行品講記, year: 2002, vol: 2}
+    - {title: 菩提心，感受力！(世主妙严品讲记), year: 2003, vol: 9}
+    - {title: 菩薩問明：華嚴經菩薩問明品講記, year: 2006, vol: 10}
+    - {title: 賢首五教儀講記, year: 2006, vol: 8}
+    - {title: 探玄記懸談講記(法藏原著), year: 2006, vol: 7}
+    - {title: 華嚴經導讀(一至三冊), year: 2006-2007, note: 八十华严}
+    - {title: 十大願王：普賢行願品講記, year: 2004/2009, vol: 15, note: 1992台北初讲}
+    - {title: 普賢行願：普賢行願品講記, year: 2002/2009, vol: 16, note: 2001加拿大二讲之一}
+    - {title: 不思議解脫：普賢行願品講記, year: 2003/2009, vol: 17, note: 加拿大二讲之二}
+    - {title: 大方廣境界：普賢行願品講記, year: 2003/2009, vol: 18, note: 加拿大二讲之三}
+    - {title: 普賢三昧：普賢三昧品講記, year: 2018}
+    - {title: 淨行品與賢首品講記：進入修定的階段, year: 2017, vol: 31, note: 2015鹿谷道场讲记}
+  other:
+    - {title: 智慧，一切搞定！(净行品·生命教育), year: 2001, note: 大陆版《智慧行》2005宗教文化出版社}
+    - {title: 勘玄記：華嚴經樞紐, year: 2011, note: 净行品第二阶段正法实习讲记}
+    - {title: 海雲繼夢解心：心要法門講記, year: 2003}
+    - {title: 華嚴經導讀西安講記三冊(电子书), year: 2014, note: 灵性生命的叩动/灿烂的生命模式/圆满普贤生命}
+    - {title: 三十七道品講記, note: 另有修持法要}
+    - {title: 安居講談(一)(二)}
+    - {title: 華嚴三論, publisher: 財團法人佛教大華嚴寺}
+    - {title: 觀照其心, year: 2017, publisher: 光潽文創}
+    - {title: 幸福，就這樣}
+    - {title: 十大願王修行法要(新加坡檳城講記)}
+    - {title: 藥師行法：芝加哥弘法講記}
+    - {title: 我們只有一個選擇}
+    - {title: 普賢行願(新版)}
+  newest:
+    - {title: 華嚴經在說什麼：九九華嚴玄談(五冊), year: 2026-04, publisher: 空庭書苑, note: 配合九九华严讲座·八十华严前59卷+四十华严后40卷=99卷结构·ISBN 9786269997893}
+
+activities:
+  - {year: 2025, title: 第一屆新世紀永續發展國際學術研討會, note: 台北大学三峽校区·环境人文智慧·与简又新对谈全球治理, url: https://www.huayenworld.org/academic_news_251105/}
+  - {year: 2024, title: 新世紀永續發展高峰論壇, note: 5月24日·灵性经济学演讲·与陈俊强/林安梧/吴有能/陈家富教授, url: https://www.huayenworld.org/2024年新世纪永续发展高峰论坛/}
+  - {year: 2026, title: 九九華嚴講座, note: 台北国际会议中心TICC·每月举办·AI时代与人类价值}
+  - {year: 2023, title: 国立台北大学杰出校友}
+  - {note: 世界華嚴總會導師·中華民國佛教華嚴學會協辦·陝西師範大學華嚴研究所所長·中國社科院特邀研究員}
+
+text_teachings:
+  - {title: 置心一處的心法, url: https://www.fjdh.cn/wumin/2013/09/172418286290.html, note: 置心一处为华严禅密共同要诀}
+  - {title: 端詳置心一處, url: https://www.fjdh.cn/wumin/2013/09/093209285974.html}
+  - {title: 置心「一處」不能兩處, url: https://www.fjdh.cn/wumin/2013/09/171242286280.html}
+  - {title: 置心一處之「心」與「處」, url: http://wuming.xuefo.net/nr/6/59565.html}
+  - {title: 心法·置心一處(华严宗), url: http://wuming.xuefo.net/nr/6/59566.html}
+  - {title: 再把心抓回來, url: http://wuming.xuefo.com/nr/6/59341.html}
+  - {title: 置心一處才做得到, url: http://www.360doc.com/content/17/0123/08/2594998_624281449.shtml}
+  - {title: 如是降伏其心, url: https://tianzhenstudyroom.blogspot.com/2024/08/blog-post_145.html}
+  - {title: 杂念多时以心要法门熬过, url: https://www.suchaoshi.com/content-35861.html}
+
+official:
+  - {name: 大华严寺官网, url: https://www.huayenworld.org}
+  - {name: 国际华严学会, note: 制作华严经导读系列}

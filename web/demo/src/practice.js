@@ -688,6 +688,76 @@ function renderPractice(){
   h+="📍 <b>台北华严莲社</b> — 贤度法师·华严专宗学院<br>";
   h+="📍 <b>陕西师范大学华严研究所</b> — 海云法师曾任荣誉所长及客座教授</p></div>";
 
+  // ── 检索整理资源总目录 (2026-08, 从 data/practice/haiyun_resources.yaml 注入) ──
+  try{
+    var hyRes=(typeof HAIYUN_RESOURCES!=='undefined')?HAIYUN_RESOURCES:null;
+    if(hyRes){
+      h+="<div class=section style='border-left:4px solid var(--gold)'><h2>🔍 海云法师资源总目录（检索整理 2026-08）</h2><p style=font-size:0.75em;color:var(--text2)>以下为网络公开检索结果，供查阅参考，以官网为准。</p></div>";
+      // YouTube
+      if(hyRes.youtube){
+        h+="<div class=section><h2>📺 YouTube频道与系列</h2><div class=stage-box><b>"+(hyRes.youtube.channel.name||'')+"</b> — <a href='"+hyRes.youtube.channel.url+"' target=_blank style=color:var(--blue)>访问频道</a><br><span style=font-size:0.78em>"+(hyRes.youtube.channel.description||'')+"</span></div>";
+        if(hyRes.youtube.series)hyRes.youtube.series.forEach(function(s){
+          h+="<span class=tag style='background:rgba(196,107,93,0.1);color:#c46b5d'>"+s.name+(s.note?' · '+s.note:'')+"</span>";
+        });
+        h+="</div>";
+      }
+      // Bilibili
+      if(hyRes.bilibili){
+        h+="<div class=section><h2>📺 B站系列</h2>";
+        if(hyRes.bilibili.series)hyRes.bilibili.series.forEach(function(s){
+          h+="<span class=tag style='background:rgba(125,154,110,0.1);color:#7d9a6e'>"+s.name+(s.note?' · '+s.note:'')+(s.url?' · <a href='+s.url+' target=_blank style=color:var(--blue)>观看</a>':'')+"</span>";
+        });
+        h+="<br><a href='"+(hyRes.bilibili.search||'')+"' target=_blank style=font-size:0.75em;color:var(--blue)>🔍 B站搜索更多</a></div>";
+      }
+      // Publications
+      if(hyRes.publications){
+        h+="<div class=section><h2>📚 出版著作</h2><p style=font-size:0.72em;color:var(--text2)>"+(hyRes.publications.note||'')+"</p>";
+        if(hyRes.publications.series_haiyun_jiehua){
+          h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>海雲繼夢解華嚴系列</span><div class=body>";
+          hyRes.publications.series_haiyun_jiehua.forEach(function(p){
+            h+="📖 "+p.title+(p.year?' ('+p.year+')':'')+(p.vol?' v.'+p.vol:'')+(p.note?' — '+p.note:'')+"<br>";
+          });
+          h+="</div></div>";
+        }
+        if(hyRes.publications.other){
+          h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>其他著作</span><div class=body>";
+          hyRes.publications.other.forEach(function(p){
+            h+="📖 "+p.title+(p.year?' ('+p.year+')':'')+(p.note?' — '+p.note:'')+"<br>";
+          });
+          h+="</div></div>";
+        }
+        if(hyRes.publications.newest)hyRes.publications.newest.forEach(function(p){
+          h+="<div class=stage-box><b>🆕 "+p.title+"</b> ("+p.year+")<br>"+(p.note||'')+"</div>";
+        });
+        h+="</div>";
+      }
+      // Activities
+      if(hyRes.activities){
+        h+="<div class=section><h2>🎤 社会活动与学术演讲</h2>";
+        hyRes.activities.forEach(function(a){
+          h+="<div class=topic-card><h4>"+(a.year?a.year+' — ':'')+a.title+"</h4><p>"+(a.note||'')+(a.url?' <a href='+a.url+' target=_blank>详情</a>':'')+"</p></div>";
+        });
+        h+="</div>";
+      }
+      // Text teachings
+      if(hyRes.text_teachings){
+        h+="<div class=section><h2>📝 文字开示（置心一处等实修心要）</h2>";
+        hyRes.text_teachings.forEach(function(t){
+          h+="<p style=font-size:0.75em;margin:3px 0>🔗 <a href='"+t.url+"' target=_blank style=color:var(--blue)>"+t.title+"</a>"+(t.note?' — <span style=color:var(--text2)>'+t.note+'</span>':'')+"</p>";
+        });
+        h+="</div>";
+      }
+      // Official
+      if(hyRes.official){
+        h+="<div class=section><h2>🏛 官方资源</h2>";
+        hyRes.official.forEach(function(o){
+          h+="<p style=font-size:0.78em>🌐 <a href='"+(o.url||'#')+"' target=_blank style=color:var(--blue)>"+(o.name||'')+"</a>"+(o.note?' — '+o.note:'')+"</p>";
+        });
+        h+="</div>";
+      }
+    }
+  }catch(e){console.error('haiyun_resources error:',e);}
+
   h+="</div>"; // close pv-resources
 
   pv.innerHTML=h;
