@@ -65,7 +65,9 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){nodeMap[n.id]=n;});
 <script>
 // ═══ PRACTICE TAB ═══
 function renderPractice(){
+  console.log('RENDERP: start');
   var pv=document.getElementById("practice-view");if(!pv)return;
+  console.log('RENDERP: practice-view found');
   var h="";
   h+="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}.topic-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}.topic-card h4{color:var(--gold);font-size:0.88em;margin-bottom:4px}.topic-card p{font-size:0.78em;line-height:1.7;color:var(--text2)}.topic-card a{color:var(--blue);font-size:0.75em}</style>";
 
@@ -623,6 +625,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE: 最新动态 (动态类内容集中)
   // ═══════════════════════════════════════════
+  console.log("RENDERP: before pv-news");
   h+="<div id=pv-news class=pv-section style='display:block;border:4px solid red;padding:20px;margin:10px;background:#fff'>";
   h+="<div class=section style='border-left:4px solid var(--gold)'><h2>📰 最新动态（2023-2026）TEST</h2><p>测试——如果能看到这行文字，说明pv-news渲染正常。</p><p>2023: 国立台北大学杰出校友、2026: 九九华严TICC讲座、2026.7: 支提山动土、第四期佛教。</p></div>";
 
@@ -640,6 +643,7 @@ function renderPractice(){
 
   h+="</div>"; // close pv-news
 
+  console.log("RENDERP: before pv-resources");
   h+="<div id=pv-resources class=pv-section style=display:block>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
 
@@ -817,7 +821,8 @@ function renderPractice(){
   h+="</div>";
   h+="</div>"; // close pv-resources
 
-  pv.innerHTML=h;
+  console.log("RENDERP: setting innerHTML, length="+h.length);
+pv.innerHTML=h;
 }
 
 // ═══ PRACTICE SUB-NAV ═══
