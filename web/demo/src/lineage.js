@@ -1,5 +1,8 @@
 // ═══ DATA LAYERS ═══
 var layerVis={theory:true,geo:true,practice:true,edges:true,events:true};
+// Multi-layer religion colors for animation routes & popups
+var REL_COLORS={buddhist:'#c46b5d',confucian:'#b8863c',daoist:'#7d9a6e',western:'#5e8b9e',islamic:'#8b7a9e'};
+var REL_LABELS={buddhist:'佛教/华严主线',confucian:'儒家',daoist:'道家',western:'西方哲学',islamic:'其他传统'};
 var THEORY_STAGES=[
   {label:'法界观门/五教止观',s:557,e:700,c:'rgba(184,134,60,0.10)',tc:'#b8863c'},
   {label:'五教十宗/法界缘起',s:643,e:820,c:'rgba(94,139,158,0.10)',tc:'#5e8b9e'},
@@ -1114,9 +1117,13 @@ function animTick(){
         if(!wp.bg){
           mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1.5});
           mapMain.closePopup();
-          var pc='<div style=max-width:240px><b style=color:#c46b5d>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
-          L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
-            .setLatLng([wp.lat+0.5,wp.lng]).setContent(pc).openOn(mapMain);
+          var relColor=REL_COLORS[wp.rel||'buddhist']||'#c46b5d';
+          // Stagger popup by religion: buddhist=center, confucian=right, daoist=left, western=top-right
+          var popupOffset={buddhist:[0,-12],confucian:[30,-20],daoist:[-30,-8],western:[20,-30],islamic:[-20,-25]};
+          var off=popupOffset[wp.rel||'buddhist']||[0,-10];
+          var pc='<div style=max-width:240px><b style=color:'+relColor+'>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
+          L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:L.point(off[0],off[1])})
+            .setLatLng([wp.lat+0.3,wp.lng+0.2]).setContent(pc).openOn(mapMain);
         }
         if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
       }
@@ -1171,26 +1178,35 @@ function toggleAnim(){
   animYear=-600;lastAnimLoc=-1;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
 
+  // Per-religion colors (global REL_COLORS) + weight/dash per layer
+  var rcWeight={buddhist:4,confucian:2.5,daoist:2.5,western:2,islamic:2};
+  var rcDash={buddhist:null,confucian:'6,4',daoist:'4,6',western:'3,5',islamic:'8,4'};
   // Init both maps with global view
-  var routeCoords=ANIM_WAYPOINTS.map(function(w){return [w.lat,w.lng];});
   if(mapMain){
     mapMain.setView([28,78],3);
-    animRouteLineM=L.polyline(routeCoords,{color:'#c46b5d',weight:3,opacity:0.5,dashArray:'8,6'}).addTo(mapMain);
-    animRouteMarkerM=L.circleMarker([28,78],{radius:8,fillColor:'#c46b5d',color:'#ff6',weight:2,fillOpacity:0.9}).addTo(mapMain);
+    // Per-religion colored routes on MAIN map (multi-layer visualization)
+    animRelLines.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});animRelLines=[];
+    Object.keys(REL_COLORS).forEach(function(k){
+      var pts=ANIM_WAYPOINTS.filter(function(w){return (w.rel||'buddhist')===k;}).map(function(w){return [w.lat,w.lng];});
+      if(pts.length>1){
+        var rl=L.polyline(pts,{color:REL_COLORS[k],weight:rcWeight[k]||2,opacity:k==='buddhist'?0.75:0.45,
+          dashArray:rcDash[k]||null}).addTo(mapMain);
+        animRelLines.push(rl);
+      }
+    });
+    animRouteMarkerM=L.circleMarker([28,78],{radius:9,fillColor:'#b8863c',color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
     // Click map to pause/resume
     mapMain.off('click');mapMain.on('click',function(){if(animPlaying){if(animPaused)resumeAnim();else pauseAnim();}});
   }
   if(mapMini){
     mapMini.setView([28,78],3);
-    animRouteLineU=L.polyline(routeCoords,{color:'#c46b5d',weight:2,opacity:0.3,dashArray:'4,6'}).addTo(mapMini);
     // Per-religion colored routes on minimap
     animRelLines.forEach(function(l){if(mapMini)mapMini.removeLayer(l);});animRelLines=[];
-    var rc={buddhist:'#c46b5d',confucian:'#b8863c',daoist:'#7d9a6e',western:'#5e8b9e',islamic:'#8b7a9e'};
-    Object.keys(rc).forEach(function(k){
+    Object.keys(REL_COLORS).forEach(function(k){
       var pts=ANIM_WAYPOINTS.filter(function(w){return (w.rel||'buddhist')===k;}).map(function(w){return [w.lat,w.lng];});
-      if(pts.length>1){var rl=L.polyline(pts,{color:rc[k],weight:2.5,opacity:0.7}).addTo(mapMini);animRelLines.push(rl);}
+      if(pts.length>1){var rl=L.polyline(pts,{color:REL_COLORS[k],weight:2.5,opacity:0.7}).addTo(mapMini);animRelLines.push(rl);}
     });
-    animRouteMarkerU=L.circleMarker([28,78],{radius:10,fillColor:'#c46b5d',color:'#ff6',weight:2,fillOpacity:0.9}).addTo(mapMini);
+    animRouteMarkerU=L.circleMarker([28,78],{radius:10,fillColor:'#b8863c',color:'#ffe066',weight:2,fillOpacity:0.9}).addTo(mapMini);
     // Apply ancient mode to minimap tiles too
     var miniContainer=document.getElementById('map-mini-wrap');
     var tlTab=document.getElementById('tab-lineage');

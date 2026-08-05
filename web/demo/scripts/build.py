@@ -451,7 +451,7 @@ def main():
     <a href="#gv-parallel" class="nav-link" data-section="gv-parallel">📖 原文对读</a>
     <a href="#gv-genealogy" class="nav-link" data-section="gv-genealogy">🕸 文本系谱</a>
     '''
-    gap_html = build_simple_tab_page('华严文献 · 汉藏差异', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
+    gap_html = build_simple_tab_page('华严文献 · 雅思渊才', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
     gap_path = TABS_OUT / 'gap.html'
     with open(gap_path, 'w', encoding='utf-8') as f:
         f.write(gap_html)
