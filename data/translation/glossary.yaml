@@ -8,8 +8,9 @@
 # ============================================================
 
 meta:
-  version: "0.1.0"
-  last_updated: "2024-07-24"
+  version: "0.2.0"
+  last_updated: "2026-08-05"
+  note: "扩充至50条术语。新增25条（波罗蜜系列/海云体系术语/法界缘起等）。"
   categories:
     - doctrine      # 教理名相
     - practice      # 修行法门
@@ -276,3 +277,220 @@ terms:
     definition_en: "A chapter unique to the Tibetan Avatamsaka (Ch.11), absent from all Chinese translations. A key translation target of this project."
     alt_translations:
       en: ["The Tathāgata's Ornament", "The Buddha's Garland Chapter"]
+
+  # --- 补充术语 (从gap.js提取·共25条新词) ---
+
+  - id: term_026
+    category: state
+    sa: bhūmi
+    sa_iast: bhūmi
+    bo_wylie: sa
+    zh: 地 / 阶位
+    en: stage / ground
+    definition_zh: "菩萨修行的阶位。华严经立十地为根本修行框架。"
+    definition_en: "A stage or level of bodhisattva practice. The Avatamsaka establishes ten bhūmis as the fundamental framework."
+
+  - id: term_027
+    category: scripture
+    sa: Daśabhūmika
+    sa_iast: Daśabhūmika
+    bo_wylie: sa bcu pa
+    zh: 十地品
+    en: The Ten Bhūmis Sūtra
+    definition_zh: "华严经核心品目。独立流通时有《十地经》《十住经》等别译本。世亲造《十地经论》注释。"
+    definition_en: "A core chapter of the Avatamsaka, also circulating independently."
+
+  - id: term_028
+    category: practice
+    sa: bhadracaryā
+    sa_iast: bhadracaryā
+    bo_wylie: bzang po spyod pa
+    zh: 普贤行
+    en: good conduct / Samantabhadra's practice
+    definition_zh: "普贤菩萨所行之广大行愿。以十大愿王为纲领。"
+    definition_en: "The vast practice and conduct of Samantabhadra Bodhisattva."
+
+  - id: term_029
+    category: practice
+    sa: praṇidhāna
+    sa_iast: praṇidhāna
+    bo_wylie: smon lam
+    zh: 愿 / 誓愿
+    en: aspiration prayer / vow
+    definition_zh: "菩萨发自内心深处的誓愿。普贤十大愿为此中最殊胜者。"
+    definition_en: "A solemn vow or aspiration arising from the depths of a bodhisattva's heart."
+
+  - id: term_030
+    category: cosmology
+    sa: vihāra
+    sa_iast: vihāra
+    bo_wylie: gnas
+    zh: 住处 / 法会
+    en: abode / assembly location
+    definition_zh: "华严经七处九会中佛说法的各个地点。"
+    definition_en: "The locations where the Buddha taught in the Avatamsaka's seven locations and nine assemblies."
+
+  - id: term_031
+    category: doctrine
+    zh: 法界缘起
+    en: dharma-realm dependent origination (dharmadhātu-pratītya-samutpāda)
+    definition_zh: "华严宗核心教义。一切法在法界中互为因果、相即相入、重重无尽的缘起关系。超越业感缘起与阿赖耶缘起，为最究竟的缘起义。"
+    definition_en: "The Huayan school's core teaching: all dharmas arise interdependently within the Dharma realm in mutual identity and interpenetration."
+
+  - id: term_032
+    category: doctrine
+    sa: ekayāna
+    sa_iast: ekayāna
+    bo_wylie: theg pa gcig pa
+    zh: 一乘
+    en: single vehicle / one vehicle
+    definition_zh: "唯一佛乘。华严宗以'别教一乘'判摄华严，谓华严教义超越三乘，直显佛之本怀。"
+    definition_en: "The single Buddha vehicle. Huayan classifies itself as the 'distinct teaching of the One Vehicle' transcending the three vehicles."
+
+  - id: term_033
+    category: state
+    sa: avaivartika / avinivartanīya
+    sa_iast: avaivartika
+    bo_wylie: phyir mi ldog pa
+    zh: 不退转
+    en: non-retrogressing / irreversible
+    definition_zh: "修行达到不再退转的阶位。华严十信满心即入不退转位。"
+    definition_en: "The stage at which spiritual progress becomes irreversible."
+
+  - id: term_034
+    category: state
+    sa: anuttarā-samyak-saṃbodhi
+    sa_iast: anuttarā-samyak-saṃbodhi
+    bo_wylie: bla na med pa yang dag par rdzogs pa'i byang chub
+    zh: 阿耨多罗三藐三菩提
+    en: unsurpassed perfect enlightenment
+    definition_zh: "无上正等正觉。佛之究竟觉悟。"
+    definition_en: "The supreme, perfect enlightenment of a Buddha."
+
+  - id: term_035
+    category: doctrine
+    sa: kuśala-mūla
+    sa_iast: kuśala-mūla
+    bo_wylie: dge ba'i rtsa ba
+    zh: 善根
+    en: roots of virtue
+    definition_zh: "能生一切善法之根本。包括无贪、无瞋、无痴三善根。"
+    definition_en: "The fundamental roots that give rise to all virtuous qualities."
+
+  - id: term_036
+    category: practice
+    sa: pāramitā
+    sa_iast: pāramitā
+    bo_wylie: pha rol tu phyin pa
+    zh: 波罗蜜 / 到彼岸
+    en: perfection / transcendent virtue
+    definition_zh: "菩萨修行之六种或十种究竟行法，从生死此岸度至涅槃彼岸。"
+    definition_en: "The six or ten perfections by which the bodhisattva crosses from saṃsāra to nirvāṇa."
+
+  - id: term_037
+    category: practice
+    sa: dāna-pāramitā
+    sa_iast: dāna-pāramitā
+    bo_wylie: sbyin pa'i pha rol tu phyin pa
+    zh: 布施波罗蜜
+    en: perfection of giving
+    definition_zh: "六波罗蜜之首。财施、法施、无畏施三轮体空之行。"
+
+  - id: term_038
+    category: practice
+    sa: śīla-pāramitā
+    sa_iast: śīla-pāramitā
+    bo_wylie: tshul khrims kyi pha rol tu phyin pa
+    zh: 持戒波罗蜜
+    en: perfection of ethical conduct
+
+  - id: term_039
+    category: practice
+    sa: kṣānti-pāramitā
+    sa_iast: kṣānti-pāramitā
+    bo_wylie: bzod pa'i pha rol tu phyin pa
+    zh: 忍辱波罗蜜
+    en: perfection of patience
+
+  - id: term_040
+    category: practice
+    sa: vīrya-pāramitā
+    sa_iast: vīrya-pāramitā
+    bo_wylie: brtson 'grus kyi pha rol tu phyin pa
+    zh: 精进波罗蜜
+    en: perfection of diligence
+
+  - id: term_041
+    category: practice
+    sa: dhyāna-pāramitā
+    sa_iast: dhyāna-pāramitā
+    bo_wylie: bsam gtan gyi pha rol tu phyin pa
+    zh: 禅定波罗蜜
+    en: perfection of meditation
+
+  - id: term_042
+    category: practice
+    sa: prajñā-pāramitā
+    sa_iast: prajñā-pāramitā
+    bo_wylie: shes rab kyi pha rol tu phyin pa
+    zh: 般若波罗蜜
+    en: perfection of wisdom
+    definition_zh: "六波罗蜜之核心。照见诸法实相之无分别智。"
+
+  - id: term_043
+    category: scripture
+    sa: Buddhāvataṃsaka
+    sa_iast: Buddhāvataṃsaka
+    bo_wylie: sangs rgyas phal po che
+    zh: 华严 / 佛华严
+    en: Buddha-ornament / Flower Ornament
+    definition_zh: "华严经之梵文经题。具称《大方广佛华严经》。'华'喻菩萨万行，'严'喻庄严果德。"
+    definition_en: "The Sanskrit title of the Avatamsaka Sūtra, meaning 'Buddha's Flower Ornament'."
+
+  - id: term_044
+    category: state
+    zh: 十信位
+    en: ten stages of faith
+    definition_zh: "海云法师体系中的十信位果位对应：初信(舍识用根)→二信(确认菩提心)→三信(运用观照技术)→五信(三果)→六信(四果向)→七信(四果·破我执)→八信(发心破法执)→九信(我执法执双破)→十信圆满(照见五蕴空)→入法界。"
+
+  - id: term_045
+    category: doctrine
+    zh: 能所双泯
+    en: dissolution of subject-object duality
+    definition_zh: "海云继梦禅观体系核心概念。认识心(能)与所观境(所)的二元对立完全消融，为真如实观的究竟境界。"
+    definition_en: "The complete dissolution of the duality between the cognizing subject and the cognized object."
+
+  - id: term_046
+    category: practice
+    zh: 象限转移
+    en: quadrant shift
+    definition_zh: "海云法师禅修术语。从凡夫认知象限转移到行者觉知象限的质变过程，为净化禅到安般守意的关键转折。"
+    definition_en: "A qualitative shift from ordinary cognitive mode to practitioner's awareness mode."
+
+  - id: term_047
+    category: lineage
+    zh: 普贤乘华严宗
+    en: Samantabhadra Vehicle Huayan School
+    definition_zh: "海云继梦法师提出的华严宗新定位。以普贤菩萨行愿为修行总纲，融合华严教观与瑜伽行法。"
+    definition_en: "A contemporary re-envisioning of Huayan by Ven. Haiyun Jimeng, centered on Samantabhadra's practice."
+
+  - id: term_048
+    category: practice
+    zh: 工程面 / 技术面
+    en: engineering dimension / technical dimension
+    definition_zh: "海云法师禅观教学双轨。技术面(修定·身法)：可操作的禅修步骤序列；工程面(修慧·心法)：意识状态的质的转变。"
+    definition_en: "A dual-track teaching approach: technical dimension (operational meditation steps) and engineering dimension (qualitative transformation of consciousness)."
+
+  - id: term_049
+    category: practice
+    zh: 安般守意
+    en: ānāpāna-smṛti / mindfulness of breathing
+    definition_zh: "数息观。海云法师禅观前行核心法门：数、随、止三法次第。"
+    definition_en: "Mindfulness of breathing, the core preliminary meditation method in Haiyun's system."
+
+  - id: term_050
+    category: practice
+    zh: 驻佇心观
+    en: abiding-mind contemplation
+    definition_zh: "海云法师资粮道根本前行观法。停心于一处，为四种观法之基础。"
+    definition_en: "The foundational preliminary contemplation in Haiyun's system, settling the mind at one point."

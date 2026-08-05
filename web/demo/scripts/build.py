@@ -191,47 +191,162 @@ def build_page(title, tab_id, sidebar_links, tab_js_name, init_call):
 
 
 def build_lineage_page():
-    """Build Tab1: 法脉传承 (layout preserved, single-page structure)."""
-    # Tab1 is special - it uses Canvas + Leaflet and needs its original layout
-    template_top = read_src('template_top.html')
-    data_js = read_src('data.js')
+    """Build Tab1: 法脉传承 (standalone, Canvas+Leaflet, layout preserved)."""
+    graph = load_graph()
+    events = load_events()
+    graph_json = json.dumps(graph, ensure_ascii=False)
+
+    # Build data.js content
+    data_js_content = f'''
+var GRAPH = {graph_json};
+var DATA = GRAPH;
+var nodeMap = {{}};
+if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
+var GAP = {{}};
+var HEART_ARTICLES = [];
+var selectedId = null, selectedId2 = null, hoveredId = null, searchQuery = "";
+var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
+         minX:100, maxX:2060, rows:[], hitRects:[],
+         drag:false, lastX:0}};
+'''
+
     lineage_js = read_src('lineage.js')
     init_js = read_src('init.js')
-    template_bot = read_src('template_bottom.html')
+    # Protect other-tab render calls -- they don't exist in standalone lineage page
+    init_js = init_js.replace('renderGap();', 'try{renderGap();}catch(e){}')
+    init_js = init_js.replace('renderPractice();', 'try{renderPractice();}catch(e){}')
+    init_js = init_js.replace('renderFrontier();', 'try{renderFrontier();}catch(e){}')
 
-    # Build GRAPH data (same as old build.py but without hardcoded data)
-    graph = load_graph()
-    gap = load_gap()
-    events = load_events()
-    heart_articles = read_json('web/demo/gap.json')  # placeholder
+    # Inject events data as JS globals inside lineage.js replacement
+    events_js = ''
+    for name, data in events.items():
+        events_js += f'var {name.upper()} = {json.dumps(data, ensure_ascii=False)};\n'
 
-    graph_json = json.dumps(graph, ensure_ascii=False)
-    gap_json = json.dumps(gap, ensure_ascii=False)
-    heart_json = json.dumps(heart_articles, ensure_ascii=False)
+    # Build clean standalone page
+    html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>华严宗 · 法脉传承</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="../css/common.css">
+<style>
+#search-bar{{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}}
+#search-bar input{{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}}
+#main-row{{display:flex;flex:1;min-height:0}}
+#tl-panel{{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:0;cursor:grab}}
+#tl-panel canvas{{display:block;position:absolute;top:0;left:0}}
+#side{{flex:1;display:flex;flex-direction:column;min-width:200px;border-left:1px solid var(--line)}}
+#map-main-wrap{{position:relative;overflow:hidden;flex:1}}
+#map-main,#map-mini{{width:100%;height:100%}}
+#info-popup{{position:fixed;z-index:999;background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;font-size:0.82em;max-width:360px;max-height:70vh;overflow-y:auto;color:var(--text);box-shadow:0 8px 30px rgba(60,40,20,0.18);display:none}}
+#info-popup h3{{color:var(--gold);font-size:1.05em;margin-bottom:4px}}
+#info-popup .close-btn{{position:absolute;top:4px;right:8px;cursor:pointer;color:var(--text2);font-size:1.1em}}
+#controls{{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}}
+#controls button{{padding:4px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em;transition:all 0.2s}}
+#controls button:hover{{background:#f0ebe0;color:var(--text);border-color:var(--gold)}}
+#controls button.active{{background:var(--gold);color:#fff;border-color:var(--gold)}}
+#tl-tooltip{{position:absolute;background:var(--card);color:var(--text);padding:10px 14px;border-radius:8px;font-size:0.82em;pointer-events:none;opacity:0;transition:opacity 0.15s;max-width:300px;z-index:100;box-shadow:0 4px 14px rgba(60,40,20,0.14);border:1px solid var(--line)}}
+#tl-tooltip h3{{color:var(--gold);margin-bottom:3px}}
+#resize-handle{{width:5px;cursor:col-resize;background:var(--line);transition:background 0.2s;flex-shrink:0}}#resize-handle:hover,#resize-handle.active{{background:var(--gold)}}
+.map-ancient .leaflet-tile-pane{{filter:sepia(0.7) hue-rotate(-15deg) saturate(0.4) brightness(0.85) contrast(1.1)}}
+@media(max-width:768px){{
+  body{{overflow:auto;height:auto}}
+  #header{{position:sticky;padding:6px 10px}}
+  #header h1{{font-size:0.85em}}
+  #search-bar{{flex-wrap:wrap;gap:3px;padding:4px 6px}}
+  #search-bar input{{width:120px;font-size:0.7em;padding:3px 8px}}
+  #main-row{{flex:none;flex-direction:column}}
+  #tl-panel{{height:300px;flex:none;touch-action:pan-x}}
+  #side{{width:100%!important;height:350px;flex:none;min-width:0!important}}
+  #resize-handle{{display:none}}
+  #controls{{flex-wrap:wrap;gap:2px;padding:4px 5px}}
+  #controls button{{padding:3px 6px;font-size:0.6em;border-radius:8px}}
+  #info-popup{{position:fixed;max-width:94vw;max-height:50vh;font-size:0.72em;left:3vw!important;top:10vh!important}}
+}}
+</style>
+</head>
+<body>
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <h1>🌊 法脉传承 · 时空长河</h1>
+  <div style="font-size:0.68em;color:var(--text2);margin-left:auto">滚轮缩放 | 拖拽平移 | Shift+点击双人对比</div>
+</header>
 
-    data_js = data_js.replace('__GRAPH__', graph_json)
-    data_js = data_js.replace('__GAP__', gap_json)
-    data_js = data_js.replace('__HEART__', heart_json)
+<div id="search-bar">
+  <input type="text" id="search-input" placeholder="🔍 检索人物、地点…">
+  <span id="anim-status" style="flex:1;font-size:0.7em;color:var(--gold);margin:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transition:opacity 0.3s"></span>
+  <span id="stats-bar" style="font-size:0.68em;color:var(--text2);margin-left:auto"></span>
+</div>
 
-    # Strip stray leading chars
-    def clean(s):
-        while s and s[0] not in '<':
-            s = s[1:]
-        return s
+<div id="main-row">
+  <div id="tl-panel"><canvas id="tl-canvas"></canvas><div id="tl-tooltip"></div></div>
+  <div id="resize-handle" title="拖拽调节地图宽度"></div>
+  <div id="side">
+    <div id="map-main-wrap">
+      <div id="map-main"></div>
+      <div id="map-overlay" style="position:absolute;bottom:50px;left:10px;right:10px;z-index:500;background:rgba(254,253,249,0.94);border:2px solid var(--gold);border-radius:10px;padding:10px 14px;font-size:0.78em;line-height:1.5;display:none;pointer-events:none;box-shadow:0 4px 16px rgba(60,40,20,0.18)"></div>
+      <div id="map-mini-wrap" style="position:absolute;bottom:10px;right:10px;width:180px;height:130px;border:2px solid var(--gold);border-radius:6px;overflow:hidden;z-index:600;box-shadow:0 4px 16px rgba(60,40,20,0.25);background:#fdfaf3">
+        <div id="map-mini"></div>
+        <button id="mini-terrain-btn" onclick="toggleMiniTerrain()" style="position:absolute;bottom:2px;right:2px;z-index:700;font-size:7px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer">🗻 地形</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    gap_js = read_src('gap.js')
-    practice_js = read_src('practice.js')
-    frontier_js = read_src('frontier.js')
-    cosmology_js = read_src('cosmology.js')
+<div id="info-popup"><span class="close-btn" onclick="document.getElementById('info-popup').style.display='none'">&times;</span><div id="info-popup-content"></div></div>
 
-    # Only Tab1 content, other tabs removed
-    # Keep the HTML structure but modify tab buttons to only show lineage
-    # For now, keep full structure (single HTML still works for lineage tab)
-    html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + frontier_js + cosmology_js + init_js + clean(template_bot)
+<div id="progress-bar" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2px 12px;display:flex;align-items:center;gap:6px">
+  <button onclick="animJump(-1)" style="padding:0 4px;font-size:0.7em;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer">◀</button>
+  <span id="prog-year" style="font-size:0.65em;color:var(--gold);min-width:45px;text-align:center">-600年</span>
+  <input type="range" id="anim-progress" min="-1500" max="2030" value="-600" step="5" style="flex:1;accent-color:var(--gold);height:8px">
+  <button onclick="animJump(1)" style="padding:0 4px;font-size:0.7em;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer">▶</button>
+</div>
 
-    # Rename 华严行法 -> 华严教行 in the HTML
+<div id="controls">
+  <span style="font-size:0.7em;color:var(--text2)">法系:</span>
+  <button class="active" data-filter="all">全部</button>
+  <button data-filter="华严五祖">五祖</button>
+  <button data-filter="贤首宗高原法系">高原法系</button>
+  <button data-filter="华严莲社">华严莲社</button>
+  <button data-filter="月霞系">月霞系</button>
+  <span style="font-size:0.7em;color:var(--text2);margin-left:8px">书签:</span>
+  <button data-bookmark="557,841">五祖时代</button>
+  <button data-bookmark="1000,1120">高丽传入</button>
+  <button data-bookmark="1850,2026">近现代</button>
+  <span style="font-size:0.7em;color:var(--text2);margin-left:8px">图层:</span>
+  <button class="active" data-layer="theory" onclick="toggleLayer('theory')">理</button>
+  <button class="active" data-layer="practice" onclick="toggleLayer('practice')">修</button>
+  <button class="active" data-layer="geo" onclick="toggleLayer('geo')">地</button>
+  <button class="active" data-layer="edges" onclick="toggleLayer('edges')">传</button>
+  <button class="active" data-layer="events" onclick="toggleLayer('events')">事</button>
+  <button id="ancient-btn" onclick="toggleAncient()">🏯 古今</button>
+  <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type="range" id="anim-speed" min="5" max="40" value="15" step="1"><span id="speed-label">1×</span></span>
+  <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
+  <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
+  <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
+</div>
+
+<div class="comment-box" id="cmt-lineage"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../js/common.js"></script>
+<script>
+{data_js_content}
+{events_js}
+</script>
+<script>
+{wrap_script(lineage_js)}
+</script>
+<script>
+{wrap_script(init_js)}
+</script>
+</body>
+</html>'''
+
     html = html.replace('华严行法', '华严教行')
-
     return html
 
 
