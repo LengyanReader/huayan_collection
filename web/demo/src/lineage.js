@@ -863,10 +863,9 @@ function showInfo(p,p2,e){
   // Auto-hide: 12s initial, stays while hovering, 5s after mouse leaves
   // Click to pin: click the popup to toggle fixed mode
   if(popup._autoTimer)clearTimeout(popup._autoTimer);
-  popup._pinned=false;
   popup.onmouseenter=function(){if(popup._autoTimer)clearTimeout(popup._autoTimer);};
-  popup.onmouseleave=function(){if(!popup._pinned)popup._autoTimer=setTimeout(function(){popup.style.display='none';},5000);};
-  popup.onclick=function(e){if(e.target.tagName==='BUTTON'||e.target.tagName==='A')return;popup._pinned=!popup._pinned;popup.style.borderColor=popup._pinned?'#c46b5d':'rgba(184,134,60,0.5)';if(!popup._pinned)popup.style.display='none';};
+  popup.onmouseleave=function(){popup._autoTimer=setTimeout(function(){popup.style.display='none';},5000);};
+  popup.onclick=function(e){if(e.target.tagName==='BUTTON'||e.target.tagName==='A')return;popup.style.display='none';};
   popup._autoTimer=setTimeout(function(){popup.style.display='none';},12000);
   // Position: mobile=centered, desktop=near click
   var isMobile=window.innerWidth<768;
