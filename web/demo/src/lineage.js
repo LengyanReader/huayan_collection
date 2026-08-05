@@ -1191,7 +1191,6 @@ function animSeek(yr){
   var py=document.getElementById('prog-year');if(py)py.textContent=animYear+'年';
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
-  var mo=document.getElementById('map-overlay');
   // Find the closest waypoint at or before animYear
   var bestWp=null;
   for(var i=0;i<ANIM_WAYPOINTS.length;i++){if(ANIM_WAYPOINTS[i].y<=animYear)bestWp=ANIM_WAYPOINTS[i];}
@@ -1200,15 +1199,10 @@ function animSeek(yr){
     if(mapMain&&!wp.bg){
       mapMain.flyTo([wp.lat,wp.lng],Math.max(3,wp.z-2),{duration:1});
       if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
-      mapMain.closePopup();
-      var pc='<div style=max-width:240px><b style=color:#c46b5d>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em>'+wp.info+'</span></div>';
-      L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:200,autoPan:false,offset:[0,-6]})
-        .setLatLng([wp.lat+0.5,wp.lng]).setContent(pc).openOn(mapMain);
     }
     if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
     if(mapMini&&wp.y>=167)mapMini.panTo([wp.lat,wp.lng]);
-    if(sb)sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label+' — '+wp.info;
-    if(mo){mo.style.display='block';mo.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label+'<br><span style=font-size:0.85em;color:var(--text2)>'+wp.info+'</span>';}
+    if(sb)sb.innerHTML='<b>'+wp.y+'年</b> '+wp.label;
   }
   _seekBusy=false;
 }
@@ -1249,7 +1243,6 @@ function animTick(){
     animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     if(speedLabel)speedLabel.textContent='1x';if(sb)sb.style.opacity='0';
-    var mo=document.getElementById('map-overlay');if(mo)mo.style.display='none';
     return;
   }
   // Find matching waypoint + show popup
@@ -1285,14 +1278,8 @@ function animTick(){
           +(ei===0?'opacity:1':'opacity:0.55;filter:brightness(0.8)')
           +'>'+etype+' <b>'+ep.n+'</b> '+(ep.b||"")+'–'+(ep.d||"")+'</span>';
       });
-      if(sb){sb.style.opacity='1';sb.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label
-        +(eraHTML?'<br><span style=font-size:0.8em>🎭 '+eraHTML+'</span>':'')
-        +'<br><span style=font-size:0.78em;color:var(--text2)>'+wp.info+'</span>';}
-      var mo=document.getElementById('map-overlay');
-      if(mo){mo.style.display='block';
-        mo.innerHTML='<b style=color:#c46b5d>'+wp.y+'年</b> '+wp.label
-          +(eraHTML?'<br><span style=font-size:0.72em>'+eraHTML+'</span>':'')
-          +'<br><span style=font-size:0.85em;color:var(--text2)>'+wp.info+'</span>';}
+      if(sb){sb.style.opacity='1';sb.innerHTML='<b style=color:'+relColor+'>'+wp.y+'年</b> '+wp.label
+        +(eraHTML?' <span style=font-size:0.75em>🎭 '+eraHTML+'</span>':'');}
       lastAnimLoc=i;break;
     }
   }
@@ -1307,7 +1294,6 @@ function toggleAnim(){
     clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
-    var mo2=document.getElementById('map-overlay');if(mo2)mo2.style.display='none';
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
     if(mapMain)mapMain.off('click');
