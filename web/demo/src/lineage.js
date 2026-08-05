@@ -977,6 +977,49 @@ function drawRelationGraph(pid){
   ctx.textAlign='start';
 }
 
+// ═══ PERSON ROSTER (名录) ═══
+function toggleRoster(){
+  var modal=document.getElementById('roster-modal');
+  if(!modal)return;
+  if(modal.style.display==='flex'){modal.style.display='none';return;}
+  renderRoster();modal.style.display='flex';
+  modal.onclick=function(e){if(e.target===modal)modal.style.display='none';};
+}
+function renderRoster(){
+  var ct=document.getElementById('roster-content');
+  var cnt=document.getElementById('roster-count');
+  if(!ct||!cnt)return;
+  // Group persons by lineage
+  var groups={},order=['华严五祖','李通玄系','贤首宗高原法系','月霞系','华严莲社','慈舟系','高丽华严','日本华严','临济宗','译师','求法僧','印度源流','大乘瑜伽行法','参考线','当代学者'];
+  DATA.nodes.forEach(function(p){
+    var li=p.li||'其他';
+    if(!groups[li])groups[li]=[];
+    groups[li].push(p);
+  });
+  var total=DATA.nodes.filter(function(p){return p.b&&p.d;}).length;
+  cnt.textContent=total;
+  var h='';
+  order.concat(Object.keys(groups).filter(function(k){return order.indexOf(k)<0;})).forEach(function(li){
+    if(!groups[li]||groups[li].length===0)return;
+    var lc=DATA.lineage_colors[li]||'#b0a898';
+    h+='<div style="margin-bottom:10px"><b style=color:'+lc+';font-size:0.85em>'+li+'</b> ('+groups[li].length+'人)</div>';
+    h+='<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">';
+    groups[li].forEach(function(p){
+      if(!p.b&&!p.d)return;
+      var yrs=(p.b||'?')+'-'+(p.d||'?');
+      h+='<span onclick="document.getElementById(\'roster-modal\').style.display=\'none\';selectPerson(\''+p.id+'\');" '
+        +'style="cursor:pointer;padding:2px 8px;border-radius:10px;font-size:0.7em;background:'+lc+'10;border:1px solid '+lc+'30;white-space:nowrap;transition:all 0.15s"'
+        +' onmouseover="this.style.background=\''+lc+'30\'" onmouseout="this.style.background=\''+lc+'10\'">'
+        +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'[修]')
+        +' <b>'+p.n+'</b>'
+        +(p.ti?' <span style=font-size:0.85em;color:var(--text2)>'+p.ti.substring(0,12)+'</span>':'')
+        +' <span style=color:var(--text2)>'+yrs+'</span></span>';
+    });
+    h+='</div>';
+  });
+  ct.innerHTML=h;
+}
+
 // ═══ LAYER TOGGLE ═══
 function toggleLayer(layer){
   layerVis[layer]=!layerVis[layer];

@@ -327,6 +327,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <button class="active" data-layer="events" onclick="toggleLayer('events')">事</button>
   <button id="ancient-btn" onclick="toggleAncient()">🏯 古今</button>
   <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type="range" id="anim-speed" min="5" max="40" value="35" step="1"><span id="speed-label">1×</span></span>
+  <button id="roster-btn" style="border:1px solid var(--green);color:var(--green);font-size:0.75em" onclick="toggleRoster()">📋 名录</button>
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
   <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
   <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);display:none" onclick="stopAnim()">⏹ 停止</button>
@@ -335,6 +336,14 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   </span>
   <button id="reset-btn" style="border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
 </div>
+
+<div id="roster-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,0.3);justify-content:center;align-items:center">
+<div style="background:var(--card);border-radius:12px;padding:16px;max-width:700px;max-height:75vh;overflow-y:auto;width:90vw;box-shadow:0 8px 40px rgba(0,0,0,0.2)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+<h3 style="color:var(--gold);font-size:1em">📋 人物名录 (共<span id=roster-count></span>位)</h3>
+<button onclick="document.getElementById('roster-modal').style.display='none'" style="border:none;background:none;font-size:1.2em;cursor:pointer;color:var(--text2)">&times;</button>
+</div>
+<div id="roster-content"></div></div></div>
 
 <div class="comment-box" id="cmt-lineage"></div>
 
