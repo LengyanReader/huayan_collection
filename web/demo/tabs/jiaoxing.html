@@ -22,7 +22,7 @@
     
   </nav>
   <main class="content" id="content">
-    <div id="jiaoxing-view"></div>
+    <div id="practice-view"></div>
   </main>
 </div>
 <div class="comment-box" id="cmt-jiaoxing"></div>
@@ -45,13 +45,13 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){nodeMap[n.id]=n;});
 </script>
 <script>
 // ═══ PRACTICE TAB ═══
-function renderJiaoxing(){
+function renderPractice(){
   var pv=document.getElementById("practice-view");if(!pv)return;
   var h="";
   h+="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}.topic-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}.topic-card h4{color:var(--gold);font-size:0.88em;margin-bottom:4px}.topic-card p{font-size:0.78em;line-height:1.7;color:var(--text2)}.topic-card a{color:var(--blue);font-size:0.75em}</style>";
 
   // ── Sub-navigation ──
-  h+="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='jv-nav active' onclick='switchJiaoxingView(\"system\",this)'>🧘 修行体系</button><button class='jv-nav' onclick='switchJiaoxingView(\"meditation\",this)'>📐 禅观法要</button><button class='jv-nav' onclick='switchJiaoxingView(\"heart\",this)'>❤️ 实修心要</button><button class='jv-nav' onclick='switchJiaoxingView(\"resources\",this)'>📡 讲法资源</button></div>";
+  h+="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='pv-nav active' onclick='switchPracticeView(\"system\",this)'>🧘 修行体系</button><button class='pv-nav' onclick='switchPracticeView(\"meditation\",this)'>📐 禅观法要</button><button class='pv-nav' onclick='switchPracticeView(\"heart\",this)'>❤️ 实修心要</button><button class='pv-nav' onclick='switchPracticeView(\"resources\",this)'>📡 讲法资源</button></div>";
 
   // ═══════════════════════════════════════════
   // SUB-PAGE 1: 修行体系 (default visible)
@@ -740,11 +740,12 @@ function renderJiaoxing(){
 }
 
 // ═══ PRACTICE SUB-NAV ═══
-function switchJiaoxingView(view,btn){
-  document.querySelectorAll(".jv-nav").forEach(function(b){b.classList.remove("active");});
+function switchPracticeView(view,btn){
+  document.querySelectorAll(".pv-nav").forEach(function(b){b.classList.remove("active");});
   if(btn)btn.classList.add("active");
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
-  document.getElementById("pv-"+view).style.display="block";
+  var pvEl=document.getElementById("pv-"+view);
+  if(pvEl)pvEl.style.display="block";
   localStorage.setItem('practice_sub',view);
   // Force-reload lazy images when switching to a sub-page
   if(view==='heart'){setTimeout(function(){
@@ -758,7 +759,7 @@ function switchJiaoxingView(view,btn){
   setTimeout(function(){
     var sub=localStorage.getItem('practice_sub')||'system';
     if(sub&&['system','meditation','heart','resources'].indexOf(sub)>=0){
-      switchJiaoxingView(sub);
+      switchPracticeView(sub);
     }
   },150);
 })();
@@ -996,7 +997,7 @@ setTimeout(function(){_update();},600);
 </script>
 <script>
 (function(){
-  if(typeof renderPractice==="function")renderJiaoxing();
+  renderPractice();
   renderComments('jiaoxing');
 })();
 </script>

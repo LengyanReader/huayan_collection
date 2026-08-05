@@ -205,6 +205,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 var GAP = {{}};
 var HEART_ARTICLES = [];
 var selectedId = null, selectedId2 = null, hoveredId = null, searchQuery = "";
+var map = null, mapMain = null, mapMini = null;
 var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
          minX:100, maxX:2060, rows:[], hitRects:[],
          drag:false, lastX:0}};
@@ -350,8 +351,10 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
     return html
 
 
-def build_simple_tab_page(title, tab_id, sidebar_html, render_call):
+def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None):
     """Build a tab page with sidebar layout using existing JS rendering."""
+    if view_id is None:
+        view_id = f'{tab_id}-view'
     graph = load_graph()
     gap = load_gap()
     events = load_events()
@@ -391,7 +394,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
     {sidebar_html}
   </nav>
   <main class="content" id="content">
-    <div id="{tab_id}-view"></div>
+    <div id="{view_id}"></div>
   </main>
 </div>
 <div class="comment-box" id="cmt-{tab_id}"></div>
@@ -413,11 +416,10 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 </body>
 </html>'''
 
-    # Rename practice->jiaoxing in content
+    # Rename practice->jiaoxing in display text only (NOT function names)
     html = html.replace('华严行法', '华严教行')
-    html = html.replace('renderPractice()', 'renderJiaoxing()')
-    html = html.replace('switchPracticeView', 'switchJiaoxingView')
-    html = html.replace('pv-nav', 'jv-nav')
+    # Keep renderPractice/switchPracticeView/pv-nav function names intact
+    # since practice.js defines them
 
     return html
 
@@ -467,7 +469,7 @@ def main():
     <a href="#heart" class="nav-link" data-section="heart">❤️ 实修心要</a>
     <a href="#resources" class="nav-link" data-section="resources">📡 讲法资源</a>
     '''
-    jx_html = build_simple_tab_page('华严教行 · 修行体系', 'jiaoxing', sidebar_jx, 'if(typeof renderPractice==="function")renderPractice();')
+    jx_html = build_simple_tab_page('华严教行 · 修行体系', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
     jx_path = TABS_OUT / 'jiaoxing.html'
     with open(jx_path, 'w', encoding='utf-8') as f:
         f.write(jx_html)

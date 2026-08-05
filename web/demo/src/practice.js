@@ -698,7 +698,8 @@ function switchPracticeView(view,btn){
   document.querySelectorAll(".pv-nav").forEach(function(b){b.classList.remove("active");});
   if(btn)btn.classList.add("active");
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
-  document.getElementById("pv-"+view).style.display="block";
+  var pvEl=document.getElementById("pv-"+view);
+  if(pvEl)pvEl.style.display="block";
   localStorage.setItem('practice_sub',view);
   // Force-reload lazy images when switching to a sub-page
   if(view==='heart'){setTimeout(function(){
