@@ -120,8 +120,8 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 2: 禅观法要 (hidden)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-meditation class=pv-section style=display:none>
-  <div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>🗺 禅观法要:</b><a href='#med-overview' style=color:var(--blue)>体系总览</a>·<a href='#med-paths' style=color:var(--blue)>次第道与圆融道</a>·<a href='#med-stage1' style=color:var(--blue)>第一阶段:</a>·<a href='#med-stage2' style=color:var(--blue)>第二阶段:</a>·<a href='#med-stage3' style=color:var(--blue)>第三阶段:</a>·<a href='#med-classical' style=color:var(--blue)>古典义理地基</a>·<a href='#med-wujiao' style=color:var(--blue)>贤首五教仪</a>·<a href='#med-yicheng' style=color:var(--blue)>一乘不共别圆</a>·<a href='#med-texts' style=color:var(--blue)>重要华严典籍的现代阐释</a>·<a href='#med-verify' style=color:var(--blue)>贯穿全程</a><a href='#med-heart' style=color:var(--blue)>实修心要</a></div>";
+  h+="<div id=pv-meditation class=pv-section style=display:none>";
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>🗺 禅观法要:</b><a href='#med-overview' style=color:var(--blue)>体系总览</a>·<a href='#med-paths' style=color:var(--blue)>次第道与圆融道</a>·<a href='#med-stage1' style=color:var(--blue)>资粮道</a>·<a href='#med-stage2' style=color:var(--blue)>前行</a>·<a href='#med-stage3' style=color:var(--blue)>正行</a>·<a href='#med-classical' style=color:var(--blue)>古典义理地基</a>·<a href='#med-wujiao' style=color:var(--blue)>贤首五教仪</a>·<a href='#med-yicheng' style=color:var(--blue)>一乘不共别圆</a>·<a href='#med-texts' style=color:var(--blue)>典籍阐释</a>·<a href='#med-verify' style=color:var(--blue)>验证机制</a>·<a href='#med-heart' style=color:var(--blue)>实修心要</a></div>";
 
     // ── 体系总览 ──
   h+="<div class=section id=med-overview style=border-left:4px solid var(--gold)><h2>🗺 华严禅观体系总览</h2>";
@@ -445,8 +445,8 @@ function renderPractice(){
     +".h3col-tbar button:hover{background:var(--gold);color:#fff}"
     +".h3col-l,.h3col-r1,.h3col-r2{position:relative}"
     +".heart-note{background:rgba(184,134,60,0.12);border-left:3px solid var(--gold);padding:4px 8px;margin:4px 0;font-size:.9em;border-radius:0 4px 4px 0}"
-    +"</style>
-  <a href='#heart-intro' style=color:var(--blue)>十讲总览</a>·<a href='#heart-articles' style=color:var(--blue)>十篇文章对照</a>·<a href='#heart-gandhara' style=color:var(--blue)>犍陀罗导航</a></div>";
+    +"</style>";
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>❤️ 实修心要:</b><a href='#heart-intro' style=color:var(--blue)>十讲总览</a>·<a href='#heart-articles' style=color:var(--blue)>十篇文章对照</a>·<a href='#heart-gandhara' style=color:var(--blue)>犍陀罗导航</a></div>";
   h+="<div class=section id=heart-intro style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦和上禅修入门十讲</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);line-height:1.7>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>左栏:全部原文 · 中栏:海云华严行法对照 · 右栏:其他宗派/道家相互印证。</b></p>";
   h+="<p style=font-size:.72em;color:var(--text2);margin-bottom:8px>"
@@ -560,9 +560,8 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 4: 讲法资源 (hidden, was #3 before 实修心要 added)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-resources class=pv-section style=display:none>
-  <div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b>
-  <a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-academic' style=color:var(--blue)>学术活动</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
+  h+="<div id=pv-resources class=pv-section style=display:none>";
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-academic' style=color:var(--blue)>学术活动</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
   h+="<div class=section id=res-sources><h2>📚 信实可靠的出处与参考资源</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>以下为本文所依据的全部第一手来源。内容以<b>大华严寺官方资料.海云继梦和上讲经逐字稿.正式出版物</b>为主,凡涉及诠释性跨度之处均已随文标注。</p>";
 
