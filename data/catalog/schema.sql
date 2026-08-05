@@ -140,6 +140,26 @@ CREATE TABLE locations (
 CREATE INDEX idx_locations_type ON locations(type);
 
 -- -----------------------------------------------------------
+-- 传承边表 — 法脉传承关系
+-- -----------------------------------------------------------
+DROP TABLE IF EXISTS lineage_edges;
+CREATE TABLE lineage_edges (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    from_person_id  TEXT    NOT NULL,             -- 源人物ID (如 person_003)
+    to_person_id    TEXT    NOT NULL,             -- 目标人物ID
+    relation        TEXT    NOT NULL DEFAULT 'MASTER',
+                    -- MASTER | INFLUENCED | LINEAGE | CONTEMPORARY
+    lineage_name    TEXT,                         -- 所属法系 (如 华严五祖)
+    note            TEXT,                         -- 出处说明
+    source          TEXT,                         -- 文献依据
+    created_at      TEXT    DEFAULT (datetime('now'))
+);
+
+CREATE INDEX idx_edges_from ON lineage_edges(from_person_id);
+CREATE INDEX idx_edges_to ON lineage_edges(to_person_id);
+CREATE INDEX idx_edges_lineage ON lineage_edges(lineage_name);
+
+-- -----------------------------------------------------------
 -- 人物-地点关联 (多对多)
 -- -----------------------------------------------------------
 DROP TABLE IF EXISTS person_locations;

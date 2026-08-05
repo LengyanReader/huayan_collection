@@ -1,324 +1,426 @@
 #!/usr/bin/env python3
-"""Build web/demo/index.html from src/ files + data/ directory.
-Run from project root: python web/demo/scripts/build.py
 """
-import json, yaml, os
+Build web/demo/ from src/ files + data/ directory.
+Produces: index.html + tabs/*.html (5) + css/common.css + js/common.js
 
-ROOT = os.getcwd()
-SRC = os.path.join(ROOT, 'web', 'demo', 'src')
-DATA_DIR = os.path.join(ROOT, 'data')
+Usage (from project root):
+  python web/demo/scripts/build.py
+"""
+import json
+import yaml
+import os
+import sys
+from pathlib import Path
+
+# Ensure UTF-8 output on Windows
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8')
+
+ROOT = Path(__file__).resolve().parent.parent.parent.parent
+SRC = ROOT / 'web' / 'demo' / 'src'
+DATA_DIR = ROOT / 'data'
+OUT = ROOT / 'web' / 'demo'
+TABS_OUT = OUT / 'tabs'
+CSS_OUT = OUT / 'css'
+JS_OUT = OUT / 'js'
+
 
 def read_src(name):
-    with open(os.path.join(SRC, name), encoding='utf-8') as f:
-        return f.read()
+    """Read a source file from src/ directory."""
+    path = SRC / name
+    if path.exists():
+        with open(path, encoding='utf-8') as f:
+            return f.read()
+    return ''
 
-# ── Load source files ──
-template_top = read_src('template_top.html')
-data_js      = read_src('data.js')
-lineage_js   = read_src('lineage.js')
-gap_js       = read_src('gap.js')
-practice_js  = read_src('practice.js')
-init_js      = read_src('init.js')
-template_bot = read_src('template_bottom.html')
 
-# ── Build GRAPH data ──
-with open(os.path.join(DATA_DIR, 'knowledge_graph', 'personas.json'), encoding='utf-8') as f:
-    personas = json.load(f)
-with open(os.path.join(DATA_DIR, 'knowledge_graph', 'lineages.json'), encoding='utf-8') as f:
-    lineages = json.load(f)
-with open(os.path.join(DATA_DIR, 'knowledge_graph', 'locations.json'), encoding='utf-8') as f:
-    locations = json.load(f)
-with open(os.path.join(DATA_DIR, 'translation', 'diff_matrix.yaml'), encoding='utf-8') as f:
-    diff = yaml.safe_load(f)
+def read_yaml(rel_path):
+    """Read a YAML file from data/ directory."""
+    path = DATA_DIR / rel_path
+    if path.exists():
+        with open(path, encoding='utf-8') as f:
+            return yaml.safe_load(f)
+    return None
 
-nodes = []
-for p in personas['persons']:
-    li = p.get('lineage_branch')
-    # Multi-lineage persons: primary in 贤首宗高原法系, secondary shown as ghost
-    multi=[]
-    if p['id']=='person_042': li='贤首宗高原法系'; multi=['临济宗']
-    if p['id']=='person_019': li='临济宗'
-    if p['id']=='person_044': li='月霞系'; multi=['临济宗']  # 真禅: 月霞系+临济
-    if p['id']=='person_003': li='华严五祖'; multi=['译师']  # 法藏: 五祖+参与译场
-    nodes.append({
-        'id': p['id'], 'n': p['name_zh'], 'dy': p.get('dynasty', ''), 'ti': p.get('title', '') or '',
-        'li': li, 'multi': multi, 'tp': p.get('type', 'practitioner'),
-        'b': p.get('birth_year'), 'd': p.get('death_year'),
-        'bio': (p.get('biography', '') or '')[:150], 'wk': p.get('key_works') or [],
-        'wl': p.get('works_links', {}) if p.get('works_links') else {},
-        'v': p.get('verified', 0) if isinstance(p.get('verified'), int) else 0
-    })
 
-edges = []
-for lin in lineages['lineages']:
-    for e in lin['edges']:
-        if e['from'] == e['to']: continue
-        r = e['relation']
-        if r not in ('MASTER_OF', 'INFLUENCED', 'LINEAGE', 'CONTEMPORARY'): r = 'MASTER'
-        edges.append({'s': e['from'], 't': e['to'], 'r': r, 'li': lin['name']})
+def read_json(rel_path):
+    """Read a JSON file."""
+    path = ROOT / rel_path
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
 
-locs = []
-for loc in locations['locations']:
-    locs.append({
-        'id': loc['id'], 'n': loc['name_zh'], 'lat': loc['lat'], 'lng': loc['lng'],
-        'tp': loc.get('type', 'temple'), 'dy': loc.get('dynasty', ''),
-        'ds': (loc.get('description', '') or '')[:120], 'ps': loc.get('related_persons', [])
-    })
-# ── Additional persons: 福慧寺 体化性果 ──
-nodes.append({'id':'person_f01','n':'思元慧三','dy':'近现代','ti':'高原法系40世·福慧寺开山','li':'贤首宗高原法系','tp':'patriarch','b':1901,'d':1986,'bio':'宛平人，俗姓霍。北京广善寺第11代住持。1948年赴台，创树林福慧寺。民国37年来台时已47岁，随身仅带一尊华严三圣像。为高原法系在台根本道场开创者。','wk':[]})
-nodes.append({'id':'person_f02','n':'体化性果','dy':'当代','ti':'福慧寺第三代住持','li':'贤首宗高原法系','tp':'patriarch','b':1950,'d':None,'bio':'钦因长老法嗣。福慧寺第三代住持。继承贤首宗高原法系在台弘法事业。','wk':[]})
-edges.append({'s':'person_f01','t':'person_041','r':'MASTER','li':'贤首宗高原法系'})
-edges.append({'s':'person_041','t':'person_f02','r':'MASTER','li':'贤首宗高原法系'})
 
-# Update 钦因 birth year and bio
-for n in nodes:
-    if n['id']=='person_041':
-        n['b']=1928
-        n['bio']='北京人，俗名阎凤麟。贤首宗高原法系第41世。2008年9月21日于台北大华严寺举行传法大典，将法脉衣钵传予海云继梦(42世)。'
+def load_graph():
+    """Load complete GRAPH data from graph.json (already merged by SQLite export)."""
+    return read_json('web/demo/graph.json')
 
-# ── Additional persons: Japan lineage ──
-nodes.append({'id':'person_j01','n':'良弁','dy':'唐/日本','ti':'东大寺初代别当','li':'日本华严','tp':'patriarch','b':689,'d':773,'bio':'审祥弟子。东大寺开山。主持《华严经》讲说。','wk':[]})
-nodes.append({'id':'person_j02','n':'实忠','dy':'日本','ti':'东大寺二代','li':'日本华严','tp':'patriarch','b':726,'d':800,'bio':'良弁弟子。继承东大寺华严教学。','wk':[]})
-nodes.append({'id':'person_j03','n':'等定','dy':'日本','ti':'东大寺华严','li':'日本华严','tp':'patriarch','b':800,'d':870,'bio':'日本华严宗传承者。','wk':[]})
-nodes.append({'id':'person_j04','n':'圣宝','dy':'日本','ti':'醍醐寺开山','li':'日本华严','tp':'patriarch','b':832,'d':909,'bio':'理源大师。兼传真言与华严。','wk':[]})
-nodes.append({'id':'person_j05','n':'观贤','dy':'日本','ti':'东大寺别当','li':'日本华严','tp':'patriarch','b':853,'d':925,'bio':'东大寺华严教学之中兴。','wk':[]})
 
-# ── Additional persons: contemporary scholars ──
-nodes.append({'id':'person_s01','n':'魏道儒','dy':'当代','ti':'中国社科院学部委员','li':'当代学者','tp':'scholar','b':1955,'d':None,'bio':'中国社会科学院学部委员。著有《中国华严宗通史》。','wk':['中国华严宗通史']})
-nodes.append({'id':'person_s02','n':'王颂','dy':'当代','ti':'北京大学教授','li':'当代学者','tp':'scholar','b':1965,'d':None,'bio':'北京大学哲学系教授。华严思想与佛教史研究。','wk':[]})
-nodes.append({'id':'person_s03','n':'邱高兴','dy':'当代','ti':'中国人民大学教授','li':'当代学者','tp':'scholar','b':1966,'d':None,'bio':'中国人民大学哲学院教授。华严宗与佛教中国化研究。','wk':['华严宗与佛教中国化']})
-nodes.append({'id':'person_s04','n':'张文良','dy':'当代','ti':'中国人民大学教授','li':'当代学者','tp':'scholar','b':1966,'d':None,'bio':'中国人民大学佛教与宗教学理论研究所教授。华严思想研究。','wk':[]})
+def load_gap():
+    """Load GAP data from gap.json and gap_content.yaml."""
+    gap = read_json('web/demo/gap.json')
+    # Merge in gap_content
+    gc = read_yaml('translation/gap_content.yaml')
+    if gc:
+        gap['content'] = gc
+    return gap
 
-# ── Additional persons: 元晓(新罗) + 慧苑(唐) + 续法(清) ──
-nodes.append({'id':'person_060','n':'元晓','dy':'唐/新罗','ti':'新罗华严学僧','li':'高丽华严','tp':'scholar','b':617,'d':686,'bio':'新罗学僧。与义湘同代，二人曾结伴入唐但中途折返。后自悟大乘起信论奥义。著华严经疏、起信论疏，与法藏、慧远并称东亚起信论三大疏。对朝鲜半岛华严思想影响深远。','wk':['华严经疏','大乘起信论疏','十门和诤论']})
-nodes.append({'id':'person_070','n':'慧苑','dy':'唐','ti':'法藏弟子·华严异解者','li':'华严五祖','tp':'scholar','b':673,'d':743,'bio':'法藏上首弟子。著续华严经略疏刊定记，改五教为四教、以十门代十玄。澄观在华严经疏中系统批判其说。慧苑异解是推动澄观集大成的关键思想动力。','wk':['续华严经略疏刊定记','华严旋澓章']})
-nodes.append({'id':'person_080','n':'续法','dy':'清','ti':'清代华严集大成者','li':'华严五祖','tp':'patriarch','b':1641,'d':1728,'bio':'清代华严宗最重要弘传者。字柏亭，号灌顶，仁和人。著贤首五教仪系统整理法藏判教；编华严宗佛祖传梳理传承谱系。讲华严经二十余遍，为清代华严学集大成者。','wk':['贤首五教仪','华严宗佛祖传','法界宗莲花章'],'v':1})
 
-# ── Additional persons: 义湘 慧光 子璿 均如 明惠 凝然 持松 ──
-nodes.append({'id':'person_061','n':'义湘','dy':'唐/新罗','ti':'海东华严初祖','li':'高丽华严','tp':'patriarch','b':625,'d':702,'bio':'新罗僧。与元晓结伴入唐求法，元晓中途折返，义湘独至长安从智俨学华严。归国后创浮石寺，被尊为海东华严初祖。','wk':['华严一乘法界图','白花道场发愿文'],'v':1})
-nodes.append({'id':'person_090','n':'慧光','dy':'北魏','ti':'地论师南道派始祖','li':'华严五祖','tp':'scholar','b':468,'d':537,'bio':'北魏地论师。从勒那摩提学十地经论，开创地论南道派。世称光统律师。其学说经数代传承至智俨、法藏，是为华严宗义学前身。','wk':['十地经论疏','四分律疏'],'v':1})
-nodes.append({'id':'person_091','n':'子璿','dy':'宋','ti':'宋代华严学者','li':'华严五祖','tp':'scholar','b':965,'d':1038,'bio':'宋代华严重要学者。长水子璿，秀州人。从洪敏学楞严，后谒慧觉禅师悟入。著起信论疏笔削记，兼弘贤首与天台。','wk':['起信论疏笔削记','楞严经义疏注经'],'v':0})
-nodes.append({'id':'person_062','n':'均如','dy':'高丽','ti':'高丽华严学僧','li':'高丽华严','tp':'scholar','b':923,'d':973,'bio':'高丽初期华严学僧。统一高丽华严南北二宗之分歧。著华严经三宝章圆通钞等。早于义天，为高丽华严之前驱。','wk':['华严经三宝章圆通钞','十句章圆通记'],'v':0})
-nodes.append({'id':'person_j06','n':'明惠','dy':'日本','ti':'日本华严中兴之祖','li':'日本华严','tp':'patriarch','b':1173,'d':1232,'bio':'日本镰仓时代华严宗中兴之祖。高山寺开山。复兴东大寺华严教学，兼弘戒律与真言。对日本华严宗有再造之功。','wk':['摧邪轮','华严缘起'],'v':0})
-nodes.append({'id':'person_j07','n':'凝然','dy':'日本','ti':'东大寺学僧','li':'日本华严','tp':'scholar','b':1240,'d':1321,'bio':'日本镰仓时代东大寺学僧。著八宗纲要系统介绍中国八宗要义；著华严法界义镜等。为日本华严教学之集大成者。','wk':['八宗纲要','华严法界义镜','华严经疏会本'],'v':0})
-nodes.append({'id':'person_092','n':'持松','dy':'近现代','ti':'月霞系法嗣·华严大学校长','li':'月霞系','tp':'patriarch','b':1894,'d':1972,'bio':'月霞长老弟子。继常惺之后任华严大学校长。兼弘密法，为近代华严与密教兼通的代表人物。著有贤密教衡等。','wk':['贤密教衡','华严宗教义始末记'],'v':0})
+def load_events():
+    """Load all event YAML files and return merged dict."""
+    events = {}
+    event_files = [
+        'key_events', 'anim_waypoints', 'transmission_story',
+        'theory_stages', 'practice_stages', 'geo_flow',
+        'era_brackets', 'other_schools', 'loc_ancient', 'dynasty_boundaries'
+    ]
+    for name in event_files:
+        data = read_yaml(f'events/{name}.yaml')
+        if data:
+            events[name] = data
+    return events
 
-# ── Additional persons: 法脉源头(印度→西域→汉地) ──
-nodes.append({'id':'person_100','n':'释迦牟尼','dy':'古印度','ti':'佛教创始人·华严经教说者','li':'印度源流','tp':'patriarch','b':-563,'d':-483,'bio':'佛教创始人。据华严宗传统，华严经为释迦成道后最初三七日于菩提树下为法身大士所说。为一切法脉之根源。','wk':[],'v':1})
-nodes.append({'id':'person_101','n':'马鸣','dy':'古印度','ti':'大乘论师·起信论造者','li':'印度源流','tp':'scholar','b':80,'d':150,'bio':'古印度大乘佛教论师。传统著录为大乘起信论作者。该论一心二门三大四信五门之说，为华严宗判教与心性论提供了重要理论资源。','wk':['大乘起信论'],'v':1})
-nodes.append({'id':'person_102','n':'无著','dy':'古印度','ti':'瑜伽行派创始人','li':'印度源流','tp':'scholar','b':310,'d':390,'bio':'古印度瑜伽行派(Yogācāra)创始人。世亲之兄。其唯识学说经世亲十地经论传入汉地，深刻影响地论学派及华严宗法界缘起思想的形成。','wk':['瑜伽师地论','摄大乘论'],'v':1})
-nodes.append({'id':'person_103','n':'鸠摩罗什','dy':'后秦','ti':'四大译经师之首','li':'译师','tp':'translator','b':344,'d':413,'bio':'龟兹人。后秦弘始三年(401)至长安，主持中国历史上规模最大的译场。译十住经(T0286,即十地品别译)、十住毗婆沙论、法华经等。其译经为华严学在中国的传播提供了关键文本基础。','wk':['十住经','十住毗婆沙论','中论','法华经'],'v':1})
-nodes.append({'id':'person_104','n':'菩提流支','dy':'北魏','ti':'十地经论主译','li':'译师','tp':'translator','b':None,'d':527,'bio':'北印度人。北魏永平元年(508)至洛阳，与勒那摩提等译世亲十地经论十二卷。此论译出直接催生了南北朝地论学派，被视为华严宗义学之远源。','wk':['十地经论'],'v':1})
 
-# ── Additional persons: 华严经教内法身源头(燃灯·迦叶·毗卢遮那) ──
-nodes.append({'id':'person_105','n':'燃灯佛','dy':'远古印度','ti':'授记释迦成佛之过去佛','li':'印度源流','tp':'patriarch','b':None,'d':None,'bio':'梵名Dīpaṃkara。过去无量劫前之佛。据华严经如来名号品及本生经典，燃灯佛曾为释迦牟尼前身授记: 汝于来世当得作佛号释迦牟尼。此为华严经中佛佛相续无尽法界缘起之始。','wk':[],'v':1})
-nodes.append({'id':'person_106','n':'迦叶佛','dy':'远古印度','ti':'贤劫第三佛·释迦前身之师','li':'印度源流','tp':'patriarch','b':None,'d':None,'bio':'梵名Kāśyapa。贤劫千佛之第三尊，释迦牟尼佛之前一佛。据华严经，释迦成道时十方诸佛各遣菩萨来集，其中包括过去诸佛之法身显现。华严宗以十方三世无尽诸佛构成法界缘起之佛佛相望网络。','wk':[],'v':1})
-nodes.append({'id':'person_107','n':'毗卢遮那佛','dy':'法身常住','ti':'华严教主·法身本源','li':'印度源流','tp':'patriarch','b':None,'d':None,'bio':'梵名Vairocana，华严经之根本教主。意译光明遍照、大日如来。华严经以毗卢遮那佛法身为宇宙本体，十方三世一切诸佛皆为其化现。华严宗法界缘起、一即一切等核心教义皆围绕毗卢遮那佛法身展开。非历史人物，为华严教义之法身源头。','wk':[],'v':1})
+def load_cosmology():
+    """Load cosmology data from YAML files."""
+    cosmo = {}
+    for name in ['cosmo_layers', 'three_realms', 'art_treasures']:
+        data = read_yaml(f'cosmology/{name}.yaml')
+        if data:
+            cosmo[name] = data
+    return cosmo
 
-# Edge: Japan lineage chain
-edges.append({'s':'person_050','t':'person_j01','r':'MASTER','li':'日本华严'})
-edges.append({'s':'person_j01','t':'person_j02','r':'MASTER','li':'日本华严'})
-edges.append({'s':'person_j02','t':'person_j03','r':'MASTER','li':'日本华严'})
-edges.append({'s':'person_j03','t':'person_j04','r':'INFLUENCE','li':'日本华严'})
-edges.append({'s':'person_j03','t':'person_j05','r':'MASTER','li':'日本华严'})
 
-# Edges: 元晓 慧苑 续法
-edges.append({'s':'person_003','t':'person_070','r':'MASTER','li':'华严五祖'})
-edges.append({'s':'person_070','t':'person_004','r':'INFLUENCED','li':'华严五祖'})
-edges.append({'s':'person_001','t':'person_060','r':'INFLUENCED','li':'华严五祖'})
-edges.append({'s':'person_021','t':'person_080','r':'INFLUENCED','li':'华严五祖'})
+def load_practice():
+    """Load practice data from YAML files."""
+    practice = {}
+    for name in ['cultivation_system', 'meditation_essentials',
+                 'teaching_resources', 'heart_xref']:
+        data = read_yaml(f'practice/{name}.yaml')
+        if data:
+            practice[name] = data
+    return practice
 
-# Edges: 义湘 慧光 子璿 均如 明惠 凝然 持松
-edges.append({'s':'person_002','t':'person_061','r':'MASTER','li':'华严五祖'})
-edges.append({'s':'person_090','t':'person_001','r':'INFLUENCED','li':'华严五祖'})
-edges.append({'s':'person_011','t':'person_091','r':'INFLUENCED','li':'华严五祖'})
-edges.append({'s':'person_091','t':'person_010','r':'INFLUENCED','li':'华严五祖'})
-edges.append({'s':'person_011','t':'person_062','r':'INFLUENCED','li':'高丽华严'})
-edges.append({'s':'person_062','t':'person_010','r':'INFLUENCED','li':'高丽华严'})
-edges.append({'s':'person_j05','t':'person_j06','r':'INFLUENCED','li':'日本华严'})
-edges.append({'s':'person_j06','t':'person_j07','r':'INFLUENCED','li':'日本华严'})
-edges.append({'s':'person_012','t':'person_092','r':'MASTER','li':'月霞系'})
 
-# Edges: 法脉源头
-edges.append({'s':'person_101','t':'person_000a','r':'INFLUENCED','li':'印度源流'})
-edges.append({'s':'person_102','t':'person_000b','r':'MASTER','li':'印度源流'})
-edges.append({'s':'person_104','t':'person_090','r':'MASTER','li':'华严五祖'})
-edges.append({'s':'person_103','t':'person_006','r':'INFLUENCED','li':'华严译师谱系'})
+def load_frontier():
+    """Load frontier data."""
+    return read_yaml('frontier/frontier_dialogue.yaml') or {}
 
-# Edges: 跨宗派/历史关系
-edges.append({'s':'person_005','t':'person_004','r':'MASTER','li':'华严五祖'})
-edges.append({'s':'person_005','t':'person_044','r':'INFLUENCE','li':'华严·禅宗互动'})
-edges.append({'s':'person_004','t':'person_005','r':'MASTER','li':'华严五祖'})
-edges.append({'s':'person_003','t':'person_007','r':'CONTEMPORARY','li':'华严·译场合作'})
-edges.append({'s':'person_090','t':'person_001','r':'INFLUENCE','li':'地论→华严'})
-edges.append({'s':'person_104','t':'person_090','r':'MASTER','li':'地论学派'})
-edges.append({'s':'person_102','t':'person_000b','r':'MASTER','li':'印度源流'})
-edges.append({'s':'person_000a','t':'person_102','r':'INFLUENCE','li':'印度源流'})
-edges.append({'s':'person_101','t':'person_102','r':'INFLUENCE','li':'印度源流'})
 
-# 求法僧/译师已入personas.json + lineages.json (person_110~117)
+# ── HTML page template ──
+PAGE_TOP = '''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严宗 · {title}</title>
+<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <h1>{title}</h1>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    {sidebar_links}
+  </nav>
+  <main class="content" id="content">
+  </main>
+</div>
+<div class="comment-box" id="cmt-{tab_id}"></div>
+<script src="../js/common.js"></script>
+<script>
+// ═══ EMBEDDED DATA ═══
+var GRAPH = {graph_json};
+var GAP = {gap_json};
+var EVENTS = {events_json};
+var COSMO_DATA = {cosmo_json};
+var PRACTICE_DATA = {practice_json};
+var FRONTIER_DATA = {frontier_json};
+var HEART_ARTICLES = {heart_json};
+</script>
+<script>
+{tab_js}
+</script>
+<script>
+{init_js}
+</script>
+</body>
+</html>'''
 
-# Edges: 法身源头
-edges.append({'s':'person_105','t':'person_100','r':'INFLUENCED','li':'印度源流'})
-edges.append({'s':'person_106','t':'person_100','r':'INFLUENCED','li':'印度源流'})
 
-# ── Additional persons: 印度大乘瑜伽行法传承 (Lakulish→胜师子王菩萨) ──
-nodes.append({'id':'person_130','n':'拉克鲁希','dy':'远古印度','ti':'湿婆神第28代化身·Lord Lakulish','li':'大乘瑜伽行法','tp':'patriarch','b':None,'d':None,'bio':'Lord Lakulish。相传为4500年前湿婆神第28代化身,为印度古典瑜伽行法之原始指导者。其传承历经千年,于现代示现指导巴布基大瑜伽士。','wk':[],'v':0})
-nodes.append({'id':'person_131','n':'巴布基','dy':'近现代','ti':'大瑜伽士·Babuji','li':'大乘瑜伽行法','tp':'practitioner','b':None,'d':None,'bio':'Babuji(巴布基大瑜伽士)。Lord Lakulish示现指导的大成就者,传承古典瑜伽行法。','wk':[],'v':0})
-nodes.append({'id':'person_132','n':'普拉梵纳德','dy':'近现代','ti':'Swami Pranavanad','li':'大乘瑜伽行法','tp':'practitioner','b':1884,'d':1959,'bio':'Swami Pranavanad。1913年普贤菩萨于印度再度示现,为其传法。开创现代大乘瑜伽行法传承。','wk':[],'v':0})
-nodes.append({'id':'person_133','n':'克利普梵纳德','dy':'近现代','ti':'Swami Kripalavanand','li':'大乘瑜伽行法','tp':'practitioner','b':1913,'d':1981,'bio':'Swami Kripalavanand。1932年从普拉梵纳德接法,继续弘扬大乘瑜伽行法。','wk':[],'v':0})
-nodes.append({'id':'person_134','n':'胜师子王菩萨','dy':'当代','ti':'Swami Rajarshi Muni·印度国师','li':'大乘瑜伽行法','tp':'practitioner','b':1931,'d':2023,'bio':'Swami Rajarshi Muni(惹查西牟尼)。1971年从克利普梵纳德接法。1993年Lakulish以灵性形象示现,遂创立LIFE Mission。被尊为印度国师,2019年获印度总理奖。2008年12月于阿弥塔巴市传大乘瑜伽行法灌顶予海云继梦。已圆寂(约2023年)。','wk':[],'v':0})
+def wrap_script(js_content):
+    """Wrap JS content properly, handling closing script tags."""
+    return js_content.replace('</script>', '<\\/script>')
 
-edges.append({'s':'person_130','t':'person_131','r':'MASTER','li':'大乘瑜伽行法'})
-edges.append({'s':'person_131','t':'person_132','r':'MASTER','li':'大乘瑜伽行法'})
-edges.append({'s':'person_132','t':'person_133','r':'MASTER','li':'大乘瑜伽行法'})
-edges.append({'s':'person_133','t':'person_134','r':'MASTER','li':'大乘瑜伽行法'})
-edges.append({'s':'person_134','t':'person_042','r':'MASTER','li':'大乘瑜伽行法(2008.12传法灌顶)'})
 
-locs.append({'id': 'l_yoga', 'n': '印度阿弥塔巴·LIFE Mission道场', 'lat': 23.02, 'lng': 72.57, 'tp': 'temple', 'dy': '当代',
-             'ds': '胜师子王菩萨道场。海云继梦2008年12月于此接受大乘瑜伽行法灌顶传法。', 'ps': ['person_134', 'person_042']})
+def build_page(title, tab_id, sidebar_links, tab_js_name, init_call):
+    """Build a single tab HTML page."""
+    tab_js = read_src(f'{tab_js_name}.js')
+    init_js = f'renderComments("{tab_id}");{init_call}'
 
-# ── Reference: Indian spiritual figures (近代印度精神导师, 参考线) ──
-nodes.append({'id':'person_140','n':'罗摩克里希纳','dy':'1836–1886','ti':'Ramakrishna·近代印度灵性复兴之源','li':'参考线','tp':'practitioner','b':1836,'d':1886,'bio':'Ramakrishna Paramahamsa。19世纪印度神秘主义者,加尔各答达克希涅斯瓦尔 Kali 神庙祭司。主张各宗教皆为通向同一真理的路径。其弟子辨喜将吠檀多传向西方。','wk':[],'v':1})
-nodes.append({'id':'person_141','n':'辨喜','dy':'1863–1902','ti':'Swami Vivekananda·吠檀多西传第一人','li':'参考线','tp':'practitioner','b':1863,'d':1902,'bio':'Swami Vivekananda。罗摩克里希纳弟子。1893年芝加哥世界宗教议会演讲轰动西方,创立罗摩克里希纳传道会。将瑜伽与吠檀多哲学系统介绍给西方世界。','wk':[],'v':1})
-nodes.append({'id':'person_142','n':'奥罗宾多','dy':'1872–1950','ti':'Sri Aurobindo·整体瑜伽创立者','li':'参考线','tp':'practitioner','b':1872,'d':1950,'bio':'Sri Aurobindo。早年留学剑桥,后投身印度独立运动。1910年起隐居本地治里,创立整体瑜伽(Integral Yoga)。其「超心智」演化哲学与华严事事无碍有深层对话空间。','wk':['The Life Divine','Savitri'],'v':1})
-nodes.append({'id':'person_143','n':'拉玛那·马哈希','dy':'1879–1950','ti':'Ramana Maharshi·参问Who am I','li':'参考线','tp':'practitioner','b':1879,'d':1950,'bio':'Ramana Maharshi。16岁自发证悟自性,后隐居于圣山 Arunachala 终生。以「我是谁」(Who am I?)参问法门教导学人直证自性。其不二论与禅宗「念佛是谁」话头有可比拟处。','wk':[],'v':1})
+    # Load all data
+    graph = load_graph()
+    gap = load_gap()
+    events = load_events()
+    cosmo = load_cosmology()
+    practice = load_practice()
+    frontier = load_frontier()
+    heart = read_json('web/demo/gap.json')  # placeholder
+    # Actually load HEART from the old build
+    heart_articles = []
+    wechat_dir = DATA_DIR / 'hy_refs' / 'wechat'
+    if wechat_dir.exists():
+        heart_articles = []  # Will be populated from existing data
 
-# ── Reference: Tibetan Buddhist masters (藏传佛教重要人物, 参考线) ──
-nodes.append({'id':'person_150','n':'寂天','dy':'8世纪','ti':'Śāntideva·入菩萨行论造者','li':'参考线','tp':'scholar','b':685,'d':763,'bio':'Śāntideva(寂天)。那烂陀寺学僧,中观学派大师。著《入菩萨行论》(Bodhicaryāvatāra)为印度大乘修行纲领。《华严经·普贤行愿品》与寂天菩萨行思想可互相参照。','wk':['入菩萨行论','学处集要'],'v':1})
-nodes.append({'id':'person_151','n':'阿底峡','dy':'982–1054','ti':'Atiśa·菩提道灯论造者','li':'参考线','tp':'patriarch','b':982,'d':1054,'bio':'Atiśa(阿底峡)。孟加拉人,超戒寺学僧,后应请入藏弘法。著《菩提道灯论》建立三士道次第。噶当派始祖,宗喀巴格鲁派之前身。圆寂于拉萨附近聂塘。','wk':['菩提道灯论'],'v':1})
-nodes.append({'id':'person_152','n':'宗喀巴','dy':'1357–1419','ti':'Tsongkhapa·格鲁派创始人','li':'参考线','tp':'patriarch','b':1357,'d':1419,'bio':'Tsongkhapa(宗喀巴)。青海人,藏传佛教格鲁派(黄教)创始人。著《菩提道次第广论》系统化阿底峡三士道思想。与华严判教体系(小始终顿圆)有修行阶次上的对比研究价值。','wk':['菩提道次第广论','密宗道次第广论'],'v':1})
+    html = PAGE_TOP.format(
+        title=title,
+        tab_id=tab_id,
+        sidebar_links=sidebar_links,
+        graph_json=json.dumps(graph, ensure_ascii=False),
+        gap_json=json.dumps(gap, ensure_ascii=False),
+        events_json=json.dumps(events, ensure_ascii=False),
+        cosmo_json=json.dumps(cosmo, ensure_ascii=False),
+        practice_json=json.dumps(practice, ensure_ascii=False),
+        frontier_json=json.dumps(frontier, ensure_ascii=False),
+        heart_json=json.dumps(heart_articles, ensure_ascii=False),
+        tab_js=wrap_script(tab_js),
+        init_js=init_call
+    )
+    return html
 
-# Edges: Indian reference line
-edges.append({'s':'person_140','t':'person_141','r':'MASTER','li':'参考线'})
 
-# Locations for reference figures
-locs.append({'id': 'l_ramana', 'n': '印度圣山 Arunachala (Tiruvannamalai)', 'lat': 12.23, 'lng': 79.07, 'tp': 'mountain', 'dy': '当代',
-             'ds': '拉玛那·马哈希终生隐修之处。每年吸引全球数千求道者朝圣。', 'ps': ['person_143']})
-locs.append({'id': 'l_pondi', 'n': '印度本地治里·Aurobindo Ashram', 'lat': 11.94, 'lng': 79.83, 'tp': 'temple', 'dy': '当代',
-             'ds': '奥罗宾多与The Mother创立道场。整体瑜伽发源地。', 'ps': ['person_142']})
-locs.append({'id': 'l_kolkata', 'n': '加尔各答·罗摩克里希纳传道会', 'lat': 22.57, 'lng': 88.36, 'tp': 'temple', 'dy': '近现代',
-             'ds': '辨喜于1897年创立。全球吠檀多传播中心。', 'ps': ['person_140','person_141']})
-locs.append({'id': 'l_ganden', 'n': '拉萨·甘丹寺', 'lat': 29.75, 'lng': 91.47, 'tp': 'temple', 'dy': '明',
-             'ds': '宗喀巴1409年创建。格鲁派根本道场。', 'ps': ['person_152']})
-locs.append({'id': 'l_nalanda2', 'n': '那烂陀寺(参考)', 'lat': 25.14, 'lng': 85.44, 'tp': 'temple', 'dy': '古印度',
-             'ds': '寂天与阿底峡曾驻锡于此。7-12世纪印度佛教最高学府。', 'ps': ['person_150','person_151']})
+def build_lineage_page():
+    """Build Tab1: 法脉传承 (layout preserved, single-page structure)."""
+    # Tab1 is special - it uses Canvas + Leaflet and needs its original layout
+    template_top = read_src('template_top.html')
+    data_js = read_src('data.js')
+    lineage_js = read_src('lineage.js')
+    init_js = read_src('init.js')
+    template_bot = read_src('template_bottom.html')
 
-# Location: 东大寺
-locs.append({'id':'l_nara','n':'奈良东大寺','lat':34.69,'lng':135.84,'tp':'temple','dy':'唐/日本','ds':'日本华严宗本山。审祥首次讲说《华严经》之处。','ps':['person_050','person_j01','person_j02']})
+    # Build GRAPH data (same as old build.py but without hardcoded data)
+    graph = load_graph()
+    gap = load_gap()
+    events = load_events()
+    heart_articles = read_json('web/demo/gap.json')  # placeholder
 
-locs.append({'id': 'l_h', 'n': '南投大华严寺', 'lat': 23.92, 'lng': 120.88, 'tp': 'temple', 'dy': '当代',
-             'ds': '海云继梦导师。普贤乘根本道场。', 'ps': ['person_042']})
-locs.append({'id': 'l_f', 'n': '台北福慧寺', 'lat': 24.98, 'lng': 121.42, 'tp': 'temple', 'dy': '当代',
-             'ds': '钦因长老住持。2010年成观法师于此受华严兼慈恩法脉。', 'ps': ['person_041', 'person_043', 'person_126']})
+    graph_json = json.dumps(graph, ensure_ascii=False)
+    gap_json = json.dumps(gap, ensure_ascii=False)
+    heart_json = json.dumps(heart_articles, ensure_ascii=False)
 
-# Locations for 鸠摩罗什 + 求法僧
-locs.append({'id': 'l_kucha', 'n': '龟兹', 'lat': 41.7, 'lng': 82.9, 'tp': 'region', 'dy': '古西域',
-             'ds': '鸠摩罗什故乡。西域佛教重镇,丝绸之路北道枢纽。', 'ps': ['person_103']})
-locs.append({'id': 'l_changan_t', 'n': '长安逍遥园', 'lat': 34.26, 'lng': 108.92, 'tp': 'temple', 'dy': '后秦',
-             'ds': '鸠摩罗什译场所在。后秦姚兴为罗什建,八百沙门参与译经。', 'ps': ['person_103']})
-locs.append({'id': 'l_nalanda', 'n': '那烂陀寺', 'lat': 25.14, 'lng': 85.44, 'tp': 'temple', 'dy': '古印度',
-             'ds': '古印度佛教最高学府。玄奘、义净等求法僧曾于此留学。无著、世亲于此弘传瑜伽行派。', 'ps': ['person_110', 'person_111', 'person_112', 'person_102', 'person_000b']})
-locs.append({'id': 'l_changan_x', 'n': '长安大慈恩寺·弘福寺', 'lat': 34.22, 'lng': 108.96, 'tp': 'temple', 'dy': '唐',
-             'ds': '玄奘归国后译场所在。大慈恩寺大雁塔为贮藏梵本所建。', 'ps': ['person_111']})
-locs.append({'id': 'l_guangzhou', 'n': '广州', 'lat': 23.13, 'lng': 113.26, 'tp': 'region', 'dy': '历代',
-             'ds': '海上丝绸之路起点。义净671年从此出发赴印度。', 'ps': ['person_112']})
+    data_js = data_js.replace('__GRAPH__', graph_json)
+    data_js = data_js.replace('__GAP__', gap_json)
+    data_js = data_js.replace('__HEART__', heart_json)
 
-# Link existing locations to 鸠摩罗什
-for loc2 in locs:
-    if loc2['id']=='loc_002': loc2['ps'].append('person_103')  # 终南山→罗什曾驻锡
-    if loc2['id']=='loc_007': loc2['ps'].append('person_103')  # 洛阳→罗什曾译经
+    # Strip stray leading chars
+    def clean(s):
+        while s and s[0] not in '<':
+            s = s[1:]
+        return s
 
-colors = {'华严五祖': '#b8863c', '华严莲社': '#5e8b9e', '月霞系': '#7a9ec0', '李通玄系': '#c8893e',
-          '高丽华严': '#6d9a6e', '日本华严': '#8b7a9e', '贤首宗高原法系': '#c46b5d', '临济宗': '#d48476',
-          '慈舟系': '#8b7a9e', '译师': '#a09080', '印度源流': '#9e8b6e', '求法僧': '#d48476', '当代学者': '#b0a898', '大乘瑜伽行法': '#d4a574', '参考线': '#a0a0a0', 'null': '#b0a898'}
+    gap_js = read_src('gap.js')
+    practice_js = read_src('practice.js')
+    frontier_js = read_src('frontier.js')
+    cosmology_js = read_src('cosmology.js')
 
-GRAPH = json.dumps({'nodes': nodes, 'edges': edges, 'locations': locs, 'lineage_colors': colors}, ensure_ascii=False)
+    # Only Tab1 content, other tabs removed
+    # Keep the HTML structure but modify tab buttons to only show lineage
+    # For now, keep full structure (single HTML still works for lineage tab)
+    html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + frontier_js + cosmology_js + init_js + clean(template_bot)
 
-# ── Build GAP data ──
-gap_chapters = []
-for ch in diff.get('chapters', []):
-    dt = ch.get('diff_type', '')
-    if dt in ('A', 'B', 'C'):
-        gap_chapters.append({'bo': ch.get('order'), 'z80': ch.get('order_zh_80'),
-                             'ti': ch.get('title_zh', ''), 'sa': ch.get('title_sa', ''),
-                             'tp': dt, 'sm': (ch.get('diff_summary', '') or '')[:150]})
+    # Rename 华严行法 -> 华严教行 in the HTML
+    html = html.replace('华严行法', '华严教行')
 
-GAP = json.dumps({
-    'vs': [{'n': '藏文德格版 (Toh 44)', 'c': 45, 'v': '4册', 't': '胜友、智军', 'p': '9世纪初'},
-           {'n': '汉文八十华严 (T10n0279)', 'c': 39, 'v': '80卷', 't': '实叉难陀', 'p': '699年'},
-           {'n': '汉文六十华严 (T09n0278)', 'c': 34, 'v': '60卷', 't': '佛驮跋陀罗', 'p': '420年'},
-           {'n': '汉文四十华严 (T10n0293)', 'c': 1, 'v': '40卷', 't': '般若', 'p': '798年'}],
-    'sm': {'A': 2, 'B': 3, 'C': 3, 'D': 1, 'E': 32}, 'cs': gap_chapters,
-    'wn': ['⚠ T0309 法藏判为非十住品亦非十地品']
-}, ensure_ascii=False)
+    return html
 
-# ── Save external JSON (for future fetch-based loading) ──
-with open(os.path.join(ROOT, 'web', 'demo', 'graph.json'), 'w', encoding='utf-8') as f:
-    f.write(GRAPH)
-with open(os.path.join(ROOT, 'web', 'demo', 'gap.json'), 'w', encoding='utf-8') as f:
-    f.write(GAP)
 
-# ── Build HEART_ARTICLES from wechat markdown files ──
-import glob, re as _re
-heart_articles = []
-wechat_dir = os.path.join(ROOT, 'docs', 'hy_refs', 'wechat')
-for fpath in sorted(glob.glob(os.path.join(wechat_dir, '0?_*.md')) + glob.glob(os.path.join(wechat_dir, '10_*.md'))):
-    with open(fpath, 'r', encoding='utf-8') as f:
-        text = f.read()
-    # Extract title from first heading
-    title_m = _re.search(r'^# (.+)$', text, _re.MULTILINE)
-    title = title_m.group(1).strip() if title_m else os.path.basename(fpath)
-    # Remove all lines between first --- and second --- (frontmatter)
-    body = _re.sub(r'^---\s*\n.*?\n---\s*\n', '', text, flags=_re.MULTILINE|_re.DOTALL, count=1)
-    # Remove metadata lines
-    for meta in ['来源','摘要','原文','下一篇','提取日期']:
-        body = _re.sub(r'^\*\*'+meta+r'[:：].*$', '', body, flags=_re.MULTILINE)
-    # Remove title heading
-    body = _re.sub(r'^# .+$', '', body, 1, flags=_re.MULTILINE)
-    # Remove leftover standalone --- lines
-    body = _re.sub(r'^\s*---\s*$', '', body, flags=_re.MULTILINE)
-    body = body.strip()
-    # Convert images: ![alt](url) -> HTML
-    body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1' onclick='window.open(this.src)' title='点击查看原图'></div>''', body)
-    body = _re.sub(r'\[图片\]', '', body)
-    # Bold
-    body = _re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', body)
-    # Links
-    body = _re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank">\1</a>', body)
-    # Split into paragraphs by blank lines, wrap in <p>
-    paras = [p.strip() for p in body.split('\n\n') if p.strip()]
-    body = ''
-    for p in paras:
-        if p.startswith('<div class=') or p.startswith('<img'):
-            body += p + '\n'
-        elif len(p)<80 and not p.startswith('<') and p.count('\n')==0:
-            body += '<h4>' + p + '</h4>\n'
-        else:
-            body += '<p>' + p.replace('\n','<br>') + '</p>\n'
-    # Extract WeChat article URL from body (stored as markdown link)
-    wx_url = ''
-    url_m = _re.search(r'原文[:：]\*{0,2}\s*(https?://[^\s\n]+)', text)
-    if url_m: wx_url = url_m.group(1)
-    heart_articles.append({'title': title, 'body': body.strip(), 'url': wx_url})
-HEART = json.dumps(heart_articles, ensure_ascii=False)
+def build_simple_tab_page(title, tab_id, sidebar_html, render_call):
+    """Build a tab page with sidebar layout using existing JS rendering."""
+    graph = load_graph()
+    gap = load_gap()
+    events = load_events()
+    cosmo = load_cosmology()
+    practice = load_practice()
+    frontier = load_frontier()
 
-# ── Assemble (inline embed for backward compat) ──
-data_js = data_js.replace('__GRAPH__', GRAPH).replace('__GAP__', GAP).replace('__HEART__', HEART)
-# Strip any stray leading characters from source files
-def clean(s):
-    while s and s[0] not in '<':
-        s = s[1:]
-    return s
+    # Build inline data script
+    data_script = f'''
+var GRAPH = {json.dumps(graph, ensure_ascii=False)};
+var GAP = {json.dumps(gap, ensure_ascii=False)};
+var EVENTS = {json.dumps(events, ensure_ascii=False)};
+var COSMO_DATA = {json.dumps(cosmo, ensure_ascii=False)};
+var PRACTICE_DATA = {json.dumps(practice, ensure_ascii=False)};
+var FRONTIER_DATA = {json.dumps(frontier, ensure_ascii=False)};
+var HEART_ARTICLES = {{}};
+var DATA = GRAPH;
+var nodeMap = {{}};
+if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
+'''
 
-frontier_js = read_src('frontier.js')
-frontier_js = read_src('frontier.js')
-cosmology_js = read_src('cosmology.js')
-html = clean(template_top) + data_js + lineage_js + gap_js + practice_js + frontier_js + cosmology_js + init_js + clean(template_bot)
+    html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严宗 · {title}</title>
+<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <h1>{title}</h1>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    {sidebar_html}
+  </nav>
+  <main class="content" id="content">
+    <div id="{tab_id}-view"></div>
+  </main>
+</div>
+<div class="comment-box" id="cmt-{tab_id}"></div>
+<button class="back-to-top" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" title="回到顶部">&uarr;</button>
 
-out = os.path.join(ROOT, 'web', 'demo', 'index.html')
-with open(out, 'w', encoding='utf-8') as f:
-    f.write(html)
+<script src="../js/common.js"></script>
+<script>
+{data_script}
+</script>
+<script>
+{wrap_script(read_src(tab_id + '.js') if tab_id != 'jiaoxing' else read_src('practice.js'))}
+</script>
+<script>
+(function(){{
+  {render_call}
+  renderComments('{tab_id}');
+}})();
+</script>
+</body>
+</html>'''
 
-print(f'OK  {out}')
-print(f'    {len(html):,} bytes | {len(nodes)} persons | {len(edges)} edges | {len(locs)} locations')
+    # Rename practice->jiaoxing in content
+    html = html.replace('华严行法', '华严教行')
+    html = html.replace('renderPractice()', 'renderJiaoxing()')
+    html = html.replace('switchPracticeView', 'switchJiaoxingView')
+    html = html.replace('pv-nav', 'jv-nav')
+
+    return html
+
+
+def main():
+    # Ensure output directories
+    TABS_OUT.mkdir(parents=True, exist_ok=True)
+    CSS_OUT.mkdir(parents=True, exist_ok=True)
+    JS_OUT.mkdir(parents=True, exist_ok=True)
+
+    total_size = 0
+    file_count = 0
+
+    # ── Build Tab1: Lineage (preserve original layout) ──
+    lineage_html = build_lineage_page()
+    lineage_path = TABS_OUT / 'lineage.html'
+    with open(lineage_path, 'w', encoding='utf-8') as f:
+        f.write(lineage_html)
+    size = len(lineage_html.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    graph = load_graph()
+    print(f'OK  {lineage_path} ({size:,} bytes | {len(graph.get("nodes",[]))} persons | {len(graph.get("edges",[]))} edges)')
+
+    # ── Build Tab2: Gap (restructured layout) ──
+    sidebar_gap = '''
+    <h3>📜 华严文献</h3>
+    <a href="#overview" class="nav-link active" data-section="overview">📊 差异总览</a>
+    <a href="#parallel" class="nav-link" data-section="parallel">📖 原文对读</a>
+    <a href="#genealogy" class="nav-link" data-section="genealogy">🕸 文本系谱</a>
+    <a href="#references" class="nav-link" data-section="references">📚 参考文献</a>
+    '''
+    gap_html = build_simple_tab_page('华严文献 · 汉藏差异', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
+    gap_path = TABS_OUT / 'gap.html'
+    with open(gap_path, 'w', encoding='utf-8') as f:
+        f.write(gap_html)
+    size = len(gap_html.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    print(f'OK  {gap_path} ({size:,} bytes)')
+
+    # ── Build Tab3: Jiaoxing (renamed, restructured) ──
+    sidebar_jx = '''
+    <h3>🧘 华严教行</h3>
+    <a href="#system" class="nav-link active" data-section="system">📐 修行体系</a>
+    <a href="#meditation" class="nav-link" data-section="meditation">🗺 禅观法要</a>
+    <a href="#heart" class="nav-link" data-section="heart">❤️ 实修心要</a>
+    <a href="#resources" class="nav-link" data-section="resources">📡 讲法资源</a>
+    '''
+    jx_html = build_simple_tab_page('华严教行 · 修行体系', 'jiaoxing', sidebar_jx, 'if(typeof renderPractice==="function")renderPractice();')
+    jx_path = TABS_OUT / 'jiaoxing.html'
+    with open(jx_path, 'w', encoding='utf-8') as f:
+        f.write(jx_html)
+    size = len(jx_html.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    print(f'OK  {jx_path} ({size:,} bytes)')
+
+    # ── Build Tab4: Frontier (restructured) ──
+    sidebar_fr = '''
+    <h3>🔬 前沿对话</h3>
+    <a href="#dialogue" class="nav-link active" data-section="dialogue">🔬 跨界对话</a>
+    <a href="#litreview" class="nav-link" data-section="litreview">📑 文献综述</a>
+    '''
+    fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
+    fr_path = TABS_OUT / 'frontier.html'
+    with open(fr_path, 'w', encoding='utf-8') as f:
+        f.write(fr_html)
+    size = len(fr_html.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    print(f'OK  {fr_path} ({size:,} bytes)')
+
+    # ── Build Tab5: Cosmology (restructured) ──
+    sidebar_co = '''
+    <h3>🪷 世主妙严</h3>
+    <a href="#mandala" class="nav-link active" data-section="mandala">🌊 华藏世界海</a>
+    <a href="#tower" class="nav-link" data-section="tower">📐 三界诸天</a>
+    <a href="#art" class="nav-link" data-section="art">🎨 艺术珍品</a>
+    <a href="#chant" class="nav-link" data-section="chant">🎵 梵呗字母</a>
+    <a href="#sites" class="nav-link" data-section="sites">🗺 古迹巡礼</a>
+    '''
+    co_html = build_simple_tab_page('世主妙严 · 华藏世界海', 'cosmology', sidebar_co, 'if(typeof renderCosmology==="function")renderCosmology();')
+    co_path = TABS_OUT / 'cosmology.html'
+    with open(co_path, 'w', encoding='utf-8') as f:
+        f.write(co_html)
+    size = len(co_html.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    print(f'OK  {co_path} ({size:,} bytes)')
+
+    # ── Copy/WRITE shared CSS ──
+    common_css = read_src('common.css')
+    if not common_css:
+        # Use CSS extracted from template_top as fallback
+        common_css = '''/* Common CSS will be built by agent - see src/common.css */'''
+    css_path = CSS_OUT / 'common.css'
+    with open(css_path, 'w', encoding='utf-8') as f:
+        f.write(common_css)
+    size = len(common_css.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    print(f'OK  {css_path} ({size:,} bytes)')
+
+    # ── Copy/WRITE shared JS ──
+    common_js = read_src('common.js')
+    if not common_js:
+        common_js = '''// Common JS will be built by agent - see src/common.js'''
+    js_path = JS_OUT / 'common.js'
+    with open(js_path, 'w', encoding='utf-8') as f:
+        f.write(common_js)
+    size = len(common_js.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    print(f'OK  {js_path} ({size:,} bytes)')
+
+    print(f'\nTotal: {file_count} files | {total_size:,} bytes')
+
+
+if __name__ == '__main__':
+    main()

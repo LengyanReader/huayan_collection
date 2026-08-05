@@ -1,0 +1,141 @@
+# 华严与前沿科技·学术对话 (从frontier.js提取)
+# 四个对话领域 + 文献综述
+
+dialogue:
+  # ── 1. AI ──
+  - domain: "人工智能 & 华严因陀罗网"
+    icon: "🤖"
+    core_issues:
+      - "神经网络与因陀罗网的全息映射"
+      - "AI意识的可能性"
+      - "大语言模型与「一切唯心造」"
+    huayan_perspective: |
+      华严视角:
+      《华严经》帝网喻: 忉利天宫因陀罗网，一一珠中现一切珠影，重重无尽——这与当代全息原理（holonomic principle）和神经网络分布式表征有惊人的结构相似性。
+      法藏《金师子章》: 「一一毛中，便摄尽无边师子」，毛端即网络节点，师子即全息表征。
+    related:
+      - name: "Francisco Varela"
+        description: "神经现象学开创者: 将佛教「缘起」思想引入认知科学，提出enactivism（生成认知）理论——认知不是大脑内部表征，而是身-心-世界的互动生成。"
+      - name: "Joscha Bach"
+        description: "AI研究者: 「意识是宇宙自我建模的副产品」——与华严「一心造万法」的哲学意涵相映成趣。"
+      - name: "2024-2026趋势"
+        description: "LLM意识争论(Claude/GPT-4的自我报告)、World Model研究、AI对齐与佛教慈悲伦理"
+
+  # ── 2. 计算现象学 ──
+  - domain: "计算现象学 & 禅观形式化"
+    icon: "🧮"
+    core_issues:
+      - "能否用数学模型描述「置心一处」「能所双泯」？"
+      - "禅定状态的神经动力学建模"
+    huayan_perspective: |
+      华严视角:
+      海云继梦「工程面/技术面」双轨——本质上是将禅修操作形式化的尝试: 技术面(数随止三法)= 可操作的步骤序列，工程面(A/B/C心法)= 意识状态的质的转变。
+      杜顺「五教止观」= 一套渐进的意识状态分类学，与当代意识状态图谱（如Tart的离散意识状态理论、Carhart-Harris的REBUS模型）有可比较的结构。
+    related:
+      - name: "Thomas Metzinger"
+        affiliation: "德国美因茨大学"
+        description: "《Being No One》——自我是虚拟的现象模型，与佛教「无我」高度一致。提出「自我模型理论」（Self-Model Theory）。"
+      - name: "Anil Seth"
+        affiliation: "萨塞克斯大学"
+        description: "「意识是受控的幻觉」——大脑不断预测并更新世界模型。与华严「妄尽心明」的修行逻辑有对话空间。"
+      - name: "Computational Phenomenology"
+        description: "计算现象学: 使用动力系统理论/贝叶斯推断/自由能原理来形式化第一人称体验"
+
+  # ── 3. 神经科学 ──
+  - domain: "神经科学 & 禅修脑科学"
+    icon: "🧠"
+    core_issues:
+      - "长期禅修对大脑结构与功能的影响"
+      - "默认模式网络(DMN)与「我执」的神经基础"
+    key_findings:
+      - "默认模式网络(DMN)抑制: 长期禅修者在冥想中DMN活动显著降低——DMN与自我叙事、心智游移有关，其抑制对应「我执」的暂时止息。"
+      - "前额叶-边缘系统耦合: 禅修增强前额叶对杏仁核的调控，对应「定慧等持」的神经机制——不被情绪绑架而能如实观照。"
+      - "γ波同步: 资深禅修者(>10,000h)在慈悲冥想中出现高振幅γ波(25-42Hz)全脑同步——可能是「法界一心」的神经关联。"
+      - "神经可塑性: 长期禅修使岛叶、前扣带皮层灰质增厚——对应「身念处」的神经基础。"
+    related:
+      - name: "Richard Davidson"
+        affiliation: "威斯康辛大学"
+        description: "与Dalai Lama合作研究禅修脑科学30年"
+      - name: "Sara Lazar"
+        affiliation: "哈佛"
+        description: "发现8周正念训练即可改变脑结构"
+      - name: "Judson Brewer"
+        affiliation: "布朗大学"
+        description: "DMN与「自我」的神经科学研究"
+      - name: "Antoine Lutz"
+        affiliation: "里昂"
+        description: "禅修神经现象学研究"
+
+  # ── 4. 心灵哲学 ──
+  - domain: "心灵哲学 & 华严法界观"
+    icon: "💭"
+    core_issues:
+      - "「困难问题」与华严「心佛众生三无差别」"
+      - "泛心论与法界缘起"
+      - "非二元意识"
+    huayan_perspective: |
+      华严-心灵哲学对话点:
+      困难问题 (Hard Problem): David Chalmers提出「为什么物理过程会产生主观体验？」华严的回答: 不是「产生」，而是法界本具——「心、佛、众生，三无差别」。意识不是涌现的产物，而是法界的根本面向。
+      组合问题 (Combination Problem): 泛心论者需解释微观意识如何组合为宏观意识。华严的「事事无碍」提供了另类思路——不是「组合」，而是互摄互入: 一尘中见法界，不待组合。
+      非二元觉知: 宗密「禅教融合」的核心——超越主客二元，与当代「非二元意识」研究(如Loch Kelly, John Vervaeke)形成跨文化对话。
+    related:
+      - name: "David Chalmers"
+        description: "《The Conscious Mind》(1996)——提出困难问题"
+      - name: "Evan Thompson"
+        description: "《Waking, Dreaming, Being》(2015)——从佛教角度审视意识"
+      - name: "John Vervaeke"
+        description: "「Awakening from the Meaning Crisis」系列——认知科学与佛教对话"
+      - name: "Michel Bitbol"
+        description: "法国现象学家，从佛教「空性」视角重读量子力学"
+
+references:
+  - "Varela, Thompson, Rosch. The Embodied Mind: Cognitive Science and Human Experience (1991/2016再版). MIT Press."
+  - "Thomas Metzinger. Being No One: The Self-Model Theory of Subjectivity (2003). MIT Press."
+  - "Anil Seth. Being You: A New Science of Consciousness (2021). Faber."
+  - "Evan Thompson. Waking, Dreaming, Being (2015). Columbia University Press."
+  - "David Chalmers. The Conscious Mind (1996). Oxford University Press."
+  - "Richard Davidson & Daniel Goleman. Altered Traits (2017). Avery."
+  - "John Vervaeke. Awakening from the Meaning Crisis (YouTube系列, 2019-)."
+  - "Francisco Varela. Neurophenomenology: A Methodological Remedy for the Hard Problem (1996)."
+
+literature_review:
+  note: "多语言文献综述 (2023-2026)。定期更新相关领域的前沿论文与综述。涵盖 AI意识/神经现象学/佛教与认知科学/心灵哲学等交叉领域。"
+
+  trends:
+    - title: "冥想神经科学走向机制化"
+      description: "从早期「冥想改变大脑」的相关性研究，转向因果实验——DMN抑制与自我感消退、γ波同步的信息整合理论解释。"
+    - title: "AI意识与佛教无我对话"
+      description: "LLM的自我报告引发AI意识争论。佛教「无我」提供独特视角——意识不需要「自我」作为前提。"
+    - title: "预测加工与佛教认识论趋同"
+      description: "Friston自由能原理与「万法唯识」结构趋同。但佛教「转识成智」超越了预测加工的解释边界。"
+
+  critical_assessment:
+    - title: "前提假设差异"
+      description: "神经科学预设物理主义（意识是脑的产物），佛教预设「心佛众生三无差别」（意识是法界本具）。对话需明确前提分歧，而非简单嫁接。"
+    - title: "方法论局限"
+      description: "冥想神经科学依赖fMRI/EEG第三人称数据，佛教禅修依赖第一人称实证。计算现象学试图桥接二者但缺乏公认的形式化框架。"
+    - title: "诠释风险"
+      description: "将华严「事事无碍」简单类比为量子纠缠或神经网络全息性，存在严重过度诠释。华严「法界缘起」是证量境界描述，非物理学理论模型。"
+
+  papers_2026:
+    - "EN: Seth, A. et al. Consciousness in AI: Benchmarks and Frameworks. Nature Machine Intelligence (2026)."
+    - "ZH: 李恒威等. 《意识科学与人工智能——从困难问题到组合问题》. 中国社会科学 (2026)."
+    - "EN: 84000 Project. The Ten Bhumis (Toh44-31) Translation & Textual Notes. 84000.co (2021-2026)."
+
+  papers_2025:
+    - "EN: Vervaeke, J. & Ferraro, C. Relevance Realization and the Buddhist Path. Journal of Consciousness Studies (2025)."
+    - "EN: Metzinger, T. The Elephant and the Blind: The Experience of Pure Consciousness. MIT Press (2025)."
+    - "ZH: 何欢欢. 《佛教因明学与当代逻辑学对话》. 哲学研究 (2025)."
+
+  papers_2024:
+    - "EN: Laukkonen, R. et al. Cessation Events During Meditation: Phenomenology and Neural Correlates. NeuroImage (2024)."
+    - "EN: Millière, R. et al. Deep Meditation and the Predictive Brain. Trends in Cognitive Sciences (2024)."
+    - "DE: Brückner, H. Hua-yan Buddhismus und Systemtheorie. Verlag Karl Alber (2024)."
+    - "ZH: 王颂. 《华严宗「法界缘起」的现代诠释》. 世界宗教研究 (2024)."
+
+  papers_2023:
+    - "EN: Dorjee, D. Defining Consciousness: Insights from Buddhism and Neuroscience. Progress in Brain Research (2023)."
+    - "ZH: 周理乾. 《计算现象学与佛学禅观的形式化》. 自然辩证法通讯 (2023)."
+    - "EN: Bronkhorst, J. How the Brahmins Won: From Alexander to the Guptas (含华严经形成史讨论). Brill (2023)."
+
+  disclaimer: "⚠ 注: 文献综述为定期更新板块。所列论文基于公开可获取的学术数据库（Google Scholar/PhilPapers/CNKI）。部分论文的华严关联解读属于本项目的诠释性建构。"

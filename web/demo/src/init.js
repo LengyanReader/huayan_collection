@@ -103,16 +103,23 @@ window.renderComments=function(tab){
   h+='<div class=c-list>';cs.slice(-8).forEach(function(c,i){var idx=cs.length-8+i;if(idx<0)idx=0;
     var who=c.u&&c.u!=='访客'?('<b style=color:#5e8b9e>@'+c.u+'</b> '):'';var ts=c.d||'';var ip=c.ip?' · '+c.ip:'';
     var ct=c.t;
-    // Render embedded images: split approach, DOM-safe
-    var imgs=c.t.split(/(!\[[^\]]*\]\(data:image\/[^)]+\))/g);
-    ct='';
-    for(var ji=0;ji<imgs.length;ji++){
-      var pp=imgs[ji];
-      var mm=pp.match(/!\[([^\]]*)\]\((data:image\/[^)]+)\)/);
-      if(mm){
-        ct+='<div style="text-align:center;margin:6px 0"><img src="'+mm[2]+'" alt="'+mm[1]+'" style="max-width:200px;max-height:200px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.1);display:inline-block" onerror="this.outerHTML=this.alt"></div>';
-      }else{ct+=pp;}
+    // Process: replace ![alt](data:image/xxx) with <img> using pure JS
+    var buf='',i=0;
+    while(i<ct.length){
+      var s=ct.indexOf('](data:image/',i);
+      if(s<0){buf+=ct.substring(i);break;}
+      var start=ct.lastIndexOf('![',s);
+      if(start<0||start<i){buf+=ct.substring(i,s+2);i=s+2;continue;}
+      var alt=ct.substring(start+2,s);
+      var uriEnd=s+2;var d=1;
+      while(uriEnd<ct.length&&d>0){if(ct[uriEnd]==='(')d++;else if(ct[uriEnd]===')')d--;uriEnd++;}
+      uriEnd--;
+      var uri=ct.substring(s+2,uriEnd);
+      buf+=ct.substring(i,start);
+      buf+='<div style="text-align:center;margin:6px 0"><img src="'+uri+'" alt="'+alt+'" style="max-width:200px;max-height:200px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.1)"></div>';
+      i=uriEnd+1;
     }
+    ct=buf;
     h+='<div class=c-item>'+who+'<span style=font-size:0.7em;color:var(--text2)>'+ts+ip+'</span><br>'+ct
       +(token?'<button onclick=deleteComment(\"'+tab+'\",'+idx+') style=background:none;border:none;color:#c46b5d;cursor:pointer;font-size:0.9em title=删除>×</button>':'')
       +'</div>';
