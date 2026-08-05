@@ -558,7 +558,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE: 最新动态 (动态类内容集中)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-news class=pv-section style=display:block>";
+  h+="<div id=pv-news class=pv-section style='display:block;border:4px solid red;padding:20px;margin:10px;background:#fff'>";
   h+="<div class=section style='border-left:4px solid var(--gold)'><h2>📰 最新动态（2023-2026）TEST</h2><p>测试——如果能看到这行文字，说明pv-news渲染正常。</p><p>2023: 国立台北大学杰出校友、2026: 九九华严TICC讲座、2026.7: 支提山动土、第四期佛教。</p></div>";
 
   h+="<div class=section id=news-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
