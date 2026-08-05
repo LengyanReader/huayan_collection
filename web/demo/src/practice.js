@@ -18,7 +18,7 @@ function renderPractice(){
 
   // ── 子目录导航 ──
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📐 修行体系:</b>"
-    +"<a href='#sys-stages' style=color:var(--blue)>三阶段</a>·<a href='#sys-blueprint' style=color:var(--blue)>四阶段蓝图</a>·<a href='#sys-six' style=color:var(--blue)>六科五大行法</a>·<a href='#sys-lineages' style=color:var(--blue)>法脉分工</a>·<a href='#sys-projects' style=color:var(--blue)>四大工程</a>·<a href='#sys-cognition' style=color:var(--blue)>识根智</a>·<a href='#sys-refuge' style=color:var(--blue)>三缘念</a>·<a href='#sys-news' style=color:var(--blue)>最新动态</a>·<a href='#sys-evolution' style=color:var(--blue)>演进脉络</a></div>";
+    +"<a href='#sys-stages' style=color:var(--blue)>三阶段</a>·<a href='#sys-blueprint' style=color:var(--blue)>四阶段蓝图</a>·<a href='#sys-six' style=color:var(--blue)>六科五大行法</a>·<a href='#sys-lineages' style=color:var(--blue)>法脉分工</a>·<a href='#sys-projects' style=color:var(--blue)>四大工程</a>·<a href='#sys-cognition' style=color:var(--blue)>识根智</a>·<a href='#sys-refuge' style=color:var(--blue)>三缘念</a>·<a href='#sys-evolution' style=color:var(--blue)>演进脉络</a></div>";
 
   // ── Header ──
   h+="<div class=section style=border-left:4px solid var(--gold)><h2>🧘 华严行法 — 普贤乘修行体系</h2>";
@@ -96,11 +96,6 @@ function renderPractice(){
   h+="<span style=font-size:0.78em;color:var(--text2)>修行态度: 法师强调「自顾灵山，不顾名山」「知道不算，做到才算」——真正的修行来自扎实的日常践行。</span></p></div>";
 
   // ── 最新动态 ──
-  h+="<div class=section id=sys-news><h2>📡 最新动态（2023-2026）</h2>";
-  h+="<div class=stage-box><b>2023 — 国立台北大学杰出校友</b><br>获遴选为母校杰出校友(2023年)。2024年1月促成华严学会与台北大学签署学术合作协议(一期两年.合计三期共六年),合办「新世纪永续发展」高峰论坛(2024-2025年)。</div>";
-  h+="<div class=stage-box><b>2026 — 「九九华严」五年讲座（TICC）</b><br>于台北国际会议中心举行，每月举办。将华严哲理「转化为通俗易懂的现代心理学与生命科学」语言，回应「AI科技与永续新时代」的挑战——「AI给得了答案，但给得了心安吗？」</div>";
-  h+="<div class=stage-box><b>2026.7.9 — 支提山大华严寺动土</b><br>苗栗县通霄镇。面向台湾海峡，与福建宁德支提华严祖庭隔海相望——「山海相应、法脉相承」。四百余位护法善信参与，五十三位嘉宾共同执铲（呼应善财五十三参）。</div>";
-  h+="<div class=stage-box><b>第四期佛教</b><br>大华严寺官网对海云法师使命的表述——「以中兴汉传佛教，开展<b>第四期佛教思想发展</b>为使命」。目前尚未见对第一至第三期的系统性论述。</div></div>";
 
   // ── 演进脉络 ──
   h+="<div class=section id=sys-evolution><h2>📅 工程面·技术面 演进脉络 & 时间线</h2>";
@@ -560,6 +555,31 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 4: 讲法资源 (hidden, was #3 before 实修心要 added)
   // ═══════════════════════════════════════════
+  // ═══════════════════════════════════════════
+  // SUB-PAGE: 最新动态 (动态类内容集中)
+  // ═══════════════════════════════════════════
+  h+="<div id=pv-news class=pv-section style=display:none>";
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📰 最新动态:</b><a href='#news-updates' style=color:var(--blue)>近期动态</a>·<a href='#news-academic' style=color:var(--blue)>学术活动</a></div>";
+  h+="<div class=section id=sys-news><h2>📡 最新动态（2023-2026）</h2>";
+  h+="<div class=stage-box><b>2023 — 国立台北大学杰出校友</b><br>获遴选为母校杰出校友(2023年)。2024年1月促成华严学会与台北大学签署学术合作协议(一期两年.合计三期共六年),合办「新世纪永续发展」高峰论坛(2024-2025年)。</div>";
+  h+="<div class=stage-box><b>2026 — 「九九华严」五年讲座（TICC）</b><br>于台北国际会议中心举行，每月举办。将华严哲理「转化为通俗易懂的现代心理学与生命科学」语言，回应「AI科技与永续新时代」的挑战——「AI给得了答案，但给得了心安吗？」</div>";
+  h+="<div class=stage-box><b>2026.7.9 — 支提山大华严寺动土</b><br>苗栗县通霄镇。面向台湾海峡，与福建宁德支提华严祖庭隔海相望——「山海相应、法脉相承」。四百余位护法善信参与，五十三位嘉宾共同执铲（呼应善财五十三参）。</div>";
+  h+="<div class=stage-box><b>第四期佛教</b><br>大华严寺官网对海云法师使命的表述——「以中兴汉传佛教，开展<b>第四期佛教思想发展</b>为使命」。目前尚未见对第一至第三期的系统性论述。</div></div>";
+
+  h+="<div class=section id=res-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
+  h+="<table class=v-table><tr><th>年份</th><th>会议/事件</th><th>主题</th></tr>";
+  h+="<tr><td>2010</td><td>第一届华严学术研讨会</td><td>华严学</td></tr>";
+  h+="<tr><td>2011</td><td>第二届华严学术研讨会</td><td>华严与科学</td></tr>";
+  h+="<tr><td>2011</td><td>首届中国华严国际学术研讨会（西安）</td><td>《华严经》的文献、思想以及修持</td></tr>";
+  h+="<tr><td>2013</td><td>海云华严研究所成立（熊琬教授任所长）</td><td>依传统国学研读古德判教注疏</td></tr>";
+  h+="<tr><td>2017</td><td>华严学国际论坛</td><td>新时代的华严判教探讨</td></tr>";
+  h+="<tr><td>2019</td><td>华严学国际论坛</td><td>华严义学与华严宗史</td></tr>";
+  h+="<tr><td>2024-2025</td><td>第一届新世纪永续发展国际学术研讨会</td><td>环境・人文・智慧（与国立台北大学合办）</td></tr>";
+  h+="<tr><td>2011-至今</td><td>《华严学报》（已出版14期）</td><td>汇集研讨会及学界最新研究成果</td></tr>";
+  h+="</table></div>";
+
+  h+="</div>"; // close pv-news
+
   h+="<div id=pv-resources class=pv-section style=display:none>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-academic' style=color:var(--blue)>学术活动</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
 
@@ -634,7 +654,7 @@ function renderPractice(){
   h+="<div style='font-weight:600;color:#5e8b9e;margin-bottom:6px'>📺 Bilibili · 海雲繼夢講經全集</div>";
   h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.6>《华严六科》42小时完整版·善财童子五十三参·禅法开示等。<br>";
   h+="🔗 <a href='https://search.bilibili.com/all?keyword=%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6' target=_blank>在Bilibili中搜索</a></p></div>";
-  h+="</div></div>";
+  h+="</div>";
   h+="<p style=line-height:1.8;margin-top:8px>";
   h+="🎙 <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast</a> · ";
   h+="<a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify</a> (20+系列·每周更新) | ";
@@ -655,18 +675,6 @@ function renderPractice(){
   h+="<p style='font-size:0.72em;color:var(--text2);margin-top:6px'>📌 RSS同步源 (待扩展多频道): <code>https://www.youtube.com/feeds/videos.xml?channel_id=UCJr3ifkvTs76XnR6SuyIfFQ</code></p></div>";
 
   // ── 学术活动轨迹 ──
-  h+="<div class=section id=res-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
-  h+="<table class=v-table><tr><th>年份</th><th>会议/事件</th><th>主题</th></tr>";
-  h+="<tr><td>2010</td><td>第一届华严学术研讨会</td><td>华严学</td></tr>";
-  h+="<tr><td>2011</td><td>第二届华严学术研讨会</td><td>华严与科学</td></tr>";
-  h+="<tr><td>2011</td><td>首届中国华严国际学术研讨会（西安）</td><td>《华严经》的文献、思想以及修持</td></tr>";
-  h+="<tr><td>2013</td><td>海云华严研究所成立（熊琬教授任所长）</td><td>依传统国学研读古德判教注疏</td></tr>";
-  h+="<tr><td>2017</td><td>华严学国际论坛</td><td>新时代的华严判教探讨</td></tr>";
-  h+="<tr><td>2019</td><td>华严学国际论坛</td><td>华严义学与华严宗史</td></tr>";
-  h+="<tr><td>2024-2025</td><td>第一届新世纪永续发展国际学术研讨会</td><td>环境・人文・智慧（与国立台北大学合办）</td></tr>";
-  h+="<tr><td>2011-至今</td><td>《华严学报》（已出版14期）</td><td>汇集研讨会及学界最新研究成果</td></tr>";
-  h+="</table></div>";
-
   // ── 相关道场 ──
   h+="<div class=section id=res-temples><h2>🏛 相关道场</h2><p style=line-height:1.8>";
   h+="📍 <b>南投大华严寺</b> — 海云继梦导师·普贤乘根本道场<br>";
@@ -784,7 +792,7 @@ function jxSubNav(view,anchor){
   setTimeout(function(){
     var sub=localStorage.getItem('practice_sub')||'system';
     if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','resources'].indexOf(sub)>=0){
+    if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);

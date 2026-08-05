@@ -558,6 +558,9 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">　· 前行</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　· 正行</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">　· 实修心要</a>
+    <a href="#" class="nav-link" onclick="switchPracticeView('news',this);return false">📰 最新动态</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('news','news-updates');return false">　· 近期动态</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('news','news-academic');return false">　· 学术活动</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('resources',this);return false">📡 讲法资源</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-total');return false">　· 全网总目</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-books');return false">　· 著作</a>
