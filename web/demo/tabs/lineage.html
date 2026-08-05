@@ -994,7 +994,11 @@ function showInfo(p,p2,e){
     });
     h+='</div>';
   }
+  // ── Relationship graph canvas ──
+  h+='<canvas id=rel-graph width=240 height=150 style="display:block;margin:6px auto 0;border-radius:6px;background:rgba(246,242,232,0.5)"></canvas>';
   content.innerHTML=h;
+  // Draw relationship graph after DOM update
+  setTimeout(function(){drawRelationGraph(p.id);},50);
   popup.style.display='block';popup.style.visibility='visible';popup.style.opacity='1';
   // Ensure popup has sensible default position
   if(!popup.style.left||popup.style.left==='0px'){popup.style.left='60vw';popup.style.top='10vh';}
@@ -1063,6 +1067,68 @@ function showTrajectoryOnMap(pid){
     });
     mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
   }
+}
+
+// ═══ RELATIONSHIP GRAPH ═══
+var _huayanCore=['person_001','person_002','person_003','person_004','person_005','person_042'];
+function drawRelationGraph(pid){
+  var c=document.getElementById('rel-graph');if(!c)return;
+  var W=240,H=150,cx=W/2,cy=H/2;
+  c.width=W;c.height=H;
+  var ctx=c.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  // Background
+  ctx.fillStyle='rgba(246,242,232,0.3)';ctx.fillRect(0,0,W,H);
+  var p=nodeMap[pid];if(!p)return;
+  // Collect connected Huayan persons and events
+  var connections=[];
+  DATA.edges.forEach(function(e){
+    if(e.s===pid||e.t===pid){
+      var otherId=e.s===pid?e.t:e.s;
+      var other=nodeMap[otherId];if(!other)return;
+      var ann=null;
+      try{ann=(EVENTS&&EVENTS.huayan_annotations&&EVENTS.huayan_annotations.persons)?EVENTS.huayan_annotations.persons[otherId]:null;}catch(e){}
+      if(ann||_huayanCore.indexOf(otherId)>=0||(other.li||'').indexOf('华严')>=0){
+        connections.push({id:otherId,n:other.n,li:other.li,r:e.r,level:ann?ann.level:'unknown',color:DATA.lineage_colors[other.li]||'#b0a898'});
+      }
+    }
+  });
+  // Add this person's own annotation level
+  var selfAnn=null;
+  try{selfAnn=(EVENTS&&EVENTS.huayan_annotations&&EVENTS.huayan_annotations.persons)?EVENTS.huayan_annotations.persons[pid]:null;}catch(e){}
+  var selfLevel=selfAnn?selfAnn.level:'unknown';
+  var lvlColors={direct:'#b8863c',indirect:'#5e8b9e',dialogue:'#7d9a6e',parallel:'#c8893e',influence:'#8b7a9e',unknown:'#b0a898'};
+  // Center node
+  var centerR=14;
+  ctx.beginPath();ctx.arc(cx,cy,centerR,0,Math.PI*2);
+  ctx.fillStyle=lvlColors[selfLevel]||'#b0a898';ctx.fill();
+  ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+  ctx.fillStyle='#fff';ctx.font='bold 9px Microsoft YaHei';ctx.textAlign='center';
+  var ct=p.n.length>3?p.n.substring(0,3):p.n;ctx.fillText(ct,cx,cy+3);
+  // Title
+  ctx.fillStyle='#5c5040';ctx.font='9px Microsoft YaHei';
+  ctx.fillText('🪷 华严关系',cx,H-4);
+  // Limit to 8 connections
+  var conns=connections.slice(0,8);if(conns.length===0)return;
+  var ringR=Math.min(90,Math.max(50,cy-20));
+  conns.forEach(function(conn,i){
+    var angle=(i/conns.length)*Math.PI*2-Math.PI/2;
+    var nx=cx+Math.cos(angle)*ringR,ny=cy+Math.sin(angle)*ringR;
+    // Line
+    ctx.beginPath();ctx.moveTo(cx+Math.cos(angle)*centerR,cy+Math.sin(angle)*centerR);
+    ctx.lineTo(nx-Math.cos(angle)*8,ny-Math.sin(angle)*8);
+    var rc=conn.r==='MASTER'||conn.r==='MASTER_OF'?'#b8863c':conn.r==='INFLUENCED'?'#c8893e':conn.r==='LINEAGE'?'#7d9a6e':'#c0b098';
+    ctx.strokeStyle=rc;ctx.lineWidth=conn.r==='MASTER'?2:0.8;ctx.setLineDash(conn.r==='MASTER'?[]:[2,3]);ctx.stroke();ctx.setLineDash([]);
+    // Node
+    ctx.beginPath();ctx.arc(nx,ny,7,0,Math.PI*2);
+    ctx.fillStyle=conn.color;ctx.fill();
+    ctx.strokeStyle='#fff';ctx.lineWidth=1;ctx.stroke();
+    // Label
+    var lbl=conn.n.length>2?conn.n.substring(0,2):conn.n;
+    ctx.fillStyle='#fff';ctx.font='7px Microsoft YaHei';ctx.textAlign='center';
+    ctx.fillText(lbl,nx,ny+3);
+  });
+  ctx.textAlign='start';
 }
 
 // ═══ LAYER TOGGLE ═══
