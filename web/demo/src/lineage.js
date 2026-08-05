@@ -1142,10 +1142,12 @@ function renderTempleDir(){
   ct.innerHTML=h;
 }
 function showTempleInfo(tid){
-  document.getElementById('roster-modal').style.display='none';
-  var temples=[];try{if(typeof TEMPLE_DIRECTORY!=='undefined'&&TEMPLE_DIRECTORY)temples=TEMPLE_DIRECTORY.temples||[];}catch(e){}
-  var t=temples.find(function(x){return x.id===tid;});if(!t)return;
-  var popup=document.getElementById('info-popup');if(!popup)return;
+  var modal=document.getElementById('roster-modal');if(modal)modal.style.display='none';
+  var temples=[];try{if(typeof TEMPLE_DIRECTORY!=='undefined'&&TEMPLE_DIRECTORY)temples=TEMPLE_DIRECTORY.temples||[];}catch(e){console.error('TEMPLE_DIRECTORY error:',e);}
+  if(temples.length===0){console.error('TEMPLE_DIRECTORY empty');return;}
+  var t=temples.find(function(x){return x.id===tid;});
+  if(!t){console.error('Temple not found:',tid);return;}
+  var popup=document.getElementById('info-popup');if(!popup){console.error('popup not found');return;}
   var h='<span class=close-btn onclick="document.getElementById(\'info-popup\').style.display=\'none\'">&times;</span>'
     +'<h3 style=color:#b8863c>🏛 '+t.name+'</h3>'
     +'<span class=tag style=background:rgba(184,134,60,0.1)><b>'+t.school+'</b></span> '
