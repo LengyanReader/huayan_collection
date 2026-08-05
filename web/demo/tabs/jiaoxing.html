@@ -16,8 +16,25 @@
     
     <h3>🧘 教海行云</h3>
     <a href="#" class="nav-link active" onclick="switchPracticeView('system',this);return false">📐 修行体系</a>
+    <a href="#sys-stages" class="sub-link">　· 三阶段</a>
+    <a href="#sys-blueprint" class="sub-link">　· 四阶段蓝图</a>
+    <a href="#sys-six" class="sub-link">　· 六科五大行法</a>
+    <a href="#sys-projects" class="sub-link">　· 四大工程</a>
+    <a href="#sys-evolution" class="sub-link">　· 演进脉络</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('meditation',this);return false">🗺 禅观法要</a>
+    <a href="#med-overview" class="sub-link">　· 体系总览</a>
+    <a href="#med-paths" class="sub-link">　· 次第道与圆融道</a>
+    <a href="#med-stage1" class="sub-link">　· 资粮道</a>
+    <a href="#med-stage2" class="sub-link">　· 前行</a>
+    <a href="#med-stage3" class="sub-link">　· 正行</a>
+    <a href="#med-heart" class="sub-link">　· 实修心要</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('resources',this);return false">📡 讲法资源</a>
+    <a href="#res-total" class="sub-link">　· 全网总目</a>
+    <a href="#res-books" class="sub-link">　· 著作</a>
+    <a href="#res-yt" class="sub-link">　· YouTube</a>
+    <a href="#res-academic" class="sub-link">　· 学术活动</a>
+    <a href="#res-temples" class="sub-link">　· 道场</a>
+    <a href="#res-more" class="sub-link">　· 检索补遗</a>
     
   </nav>
   <main class="content" id="content">
@@ -806,18 +823,19 @@ function switchPracticeView(view,btn){
   var pvEl=document.getElementById("pv-"+view);
   if(pvEl)pvEl.style.display="block";
   localStorage.setItem('practice_sub',view);
-  // Force-reload lazy images when switching to a sub-page
-  if(view==='heart'){setTimeout(function(){
-    document.querySelectorAll('#pv-heart img').forEach(function(img){
+  // Force-reload lazy images when switching to heart (now med-heart)
+  if(view==='meditation'){setTimeout(function(){
+    document.querySelectorAll('#med-heart img').forEach(function(img){
       var s=img.src;img.src='';img.src=s;
     });
   },200);}
 }
-// Restore sub-page on load
+// Restore sub-page on load (heart 已并入 meditation)
 (function(){
   setTimeout(function(){
     var sub=localStorage.getItem('practice_sub')||'system';
-    if(sub&&['system','meditation','heart','resources'].indexOf(sub)>=0){
+    if(sub==='heart')sub='meditation';
+    if(sub&&['system','meditation','resources'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);

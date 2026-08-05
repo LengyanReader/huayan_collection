@@ -760,18 +760,19 @@ function switchPracticeView(view,btn){
   var pvEl=document.getElementById("pv-"+view);
   if(pvEl)pvEl.style.display="block";
   localStorage.setItem('practice_sub',view);
-  // Force-reload lazy images when switching to a sub-page
-  if(view==='heart'){setTimeout(function(){
-    document.querySelectorAll('#pv-heart img').forEach(function(img){
+  // Force-reload lazy images when switching to heart (now med-heart)
+  if(view==='meditation'){setTimeout(function(){
+    document.querySelectorAll('#med-heart img').forEach(function(img){
       var s=img.src;img.src='';img.src=s;
     });
   },200);}
 }
-// Restore sub-page on load
+// Restore sub-page on load (heart 已并入 meditation)
 (function(){
   setTimeout(function(){
     var sub=localStorage.getItem('practice_sub')||'system';
-    if(sub&&['system','meditation','heart','resources'].indexOf(sub)>=0){
+    if(sub==='heart')sub='meditation';
+    if(sub&&['system','meditation','resources'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);
