@@ -233,7 +233,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="../css/common.css">
 <style>
-#search-bar{{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}}
+#search-bar{{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center;position:relative}}
 #search-bar input{{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}}
 #main-row{{display:flex;flex:1;min-height:0}}
 #tl-panel{{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:0;cursor:grab}}
@@ -279,7 +279,8 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 </header>
 
 <div id="search-bar">
-  <input type="text" id="search-input" placeholder="🔍 检索人物、地点…">
+  <input type="text" id="search-input" placeholder="🔍 检索人物、地点…" autocomplete="off">
+<div id="search-suggest" style="position:absolute;top:100%;left:0;z-index:1000;background:rgba(254,253,249,0.95);border:1px solid var(--line);border-radius:0 0 8px 8px;max-height:180px;overflow-y:auto;display:none;width:260px;box-shadow:0 4px 12px rgba(0,0,0,0.1)"></div>
   <span id="anim-status" style="flex:1;font-size:0.7em;color:var(--gold);margin:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transition:opacity 0.3s"></span>
   <span id="stats-bar" style="font-size:0.68em;color:var(--text2);margin-left:auto"></span>
 </div>
@@ -329,7 +330,10 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
   <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
   <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);display:none" onclick="stopAnim()">⏹ 停止</button>
-  <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
+  <span id="route-legend" style="margin-left:auto;font-size:0.62em;color:var(--text2);line-height:1.4;opacity:0.75">
+    🪷 <span style=color:#c46b5d>佛教</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span>
+  </span>
+  <button id="reset-btn" style="border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
 </div>
 
 <div class="comment-box" id="cmt-lineage"></div>

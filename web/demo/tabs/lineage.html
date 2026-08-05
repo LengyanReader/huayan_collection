@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="../css/common.css">
 <style>
-#search-bar{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center}
+#search-bar{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center;position:relative}
 #search-bar input{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}
 #main-row{display:flex;flex:1;min-height:0}
 #tl-panel{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:0;cursor:grab}
@@ -54,7 +54,8 @@
 </header>
 
 <div id="search-bar">
-  <input type="text" id="search-input" placeholder="🔍 检索人物、地点…">
+  <input type="text" id="search-input" placeholder="🔍 检索人物、地点…" autocomplete="off">
+<div id="search-suggest" style="position:absolute;top:100%;left:0;z-index:1000;background:rgba(254,253,249,0.95);border:1px solid var(--line);border-radius:0 0 8px 8px;max-height:180px;overflow-y:auto;display:none;width:260px;box-shadow:0 4px 12px rgba(0,0,0,0.1)"></div>
   <span id="anim-status" style="flex:1;font-size:0.7em;color:var(--gold);margin:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transition:opacity 0.3s"></span>
   <span id="stats-bar" style="font-size:0.68em;color:var(--text2);margin-left:auto"></span>
 </div>
@@ -104,7 +105,10 @@
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
   <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
   <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);display:none" onclick="stopAnim()">⏹ 停止</button>
-  <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
+  <span id="route-legend" style="margin-left:auto;font-size:0.62em;color:var(--text2);line-height:1.4;opacity:0.75">
+    🪷 <span style=color:#c46b5d>佛教</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span>
+  </span>
+  <button id="reset-btn" style="border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
 </div>
 
 <div class="comment-box" id="cmt-lineage"></div>
@@ -676,20 +680,6 @@ function initMap(){
   }
   // Update terrain layer state after invalidateSize
   if(miniTerrainOn && miniTerrainLayer){if(!mapMini.hasLayer(miniTerrainLayer))miniTerrainLayer.addTo(mapMini);}
-  // ── Map legend control (bottom-right) ──
-  var legend=L.control({position:'bottomleft'});
-  legend.onAdd=function(){
-    var div=L.DomUtil.create('div','info-legend');
-    div.style.cssText='background:rgba(254,253,249,0.85);padding:6px 10px;border-radius:6px;font-size:0.65em;line-height:1.6;box-shadow:0 2px 6px rgba(0,0,0,0.1)';
-    div.innerHTML='<b style=color:#b8863c>🪷 路线图例</b><br>'
-      +'<span style=color:#c46b5d>━━</span> 佛教/华严主线<br>'
-      +'<span style=color:#b8863c>┅┅</span> 儒家<br>'
-      +'<span style=color:#7d9a6e>┅┅</span> 道家<br>'
-      +'<span style=color:#5e8b9e>┅┅</span> 西方<br>'
-      +'<span style=color:#8b7a9e>┅┅</span> 其他传统';
-    return div;
-  };
-  legend.addTo(mapMain);
 }
 function getMainMap(){return mapMain;}
 
@@ -1652,14 +1642,90 @@ try{renderFrontier();}catch(e){}
 try{renderCosmology();}catch(e){}
 
 // Events
+var _searchSuggest=document.getElementById('search-suggest');
+// Known aliases for fuzzy search (name -> alt names)
+var _aliases={'王阳明':'王守仁','王守仁':'王阳明','慧能':'惠能','惠能':'慧能','卢舍那':'毗卢遮那','清凉国师':'澄观','贤首国师':'法藏','圭峰':'宗密','帝心':'杜顺','至相':'智俨'};
+function _matchSearch(n,q){
+  if(!q)return true;
+  if(n.n&&n.n.indexOf(q)>=0)return true;
+  if(n.ti&&n.ti.indexOf(q)>=0)return true;
+  if(n.bio&&n.bio.indexOf(q)>=0)return true;
+  // Check known aliases
+  var aliases=_aliases[n.n]||'';
+  if(aliases.indexOf(q)>=0)return true;
+  // Check if query is an alias for this person
+  for(var k in _aliases){if(_aliases[k]===n.n&&k.indexOf(q)>=0)return true;}
+  // Check trajectory names
+  if(PERSON_TRAJECTORIES)for(var tid in PERSON_TRAJECTORIES){
+    if(tid===n.id&&PERSON_TRAJECTORIES[tid].name.indexOf(q)>=0)return true;
+  }
+  return false;
+}
 document.getElementById("search-input").addEventListener("input",function(){
   searchQuery=this.value.trim();
-  // Auto-select first matching person when searching
-  if(searchQuery.length>0){
-    var found=DATA.nodes.filter(function(n){return n.n&&n.n.indexOf(searchQuery)>=0;}).filter(function(n){return n.b&&n.d;});
-    if(found.length>0&&found[0].id!==selectedId){selectedId=found[0].id;clearSelection=function(){};selectPerson(found[0].id);}
-  }else{selectedId=null;}
-  drawTL(selectedId);
+  // Show autocomplete suggestions
+  if(_searchSuggest){
+    if(searchQuery.length>0){
+      var matches=DATA.nodes.filter(function(n){return _matchSearch(n,searchQuery);}).slice(0,8);
+      // Also add trajectory-only persons
+      if(PERSON_TRAJECTORIES)for(var tid in PERSON_TRAJECTORIES){
+        var t=PERSON_TRAJECTORIES[tid];if(!t||!t.name)continue;
+        if(t.name.indexOf(searchQuery)>=0&&!matches.some(function(m){return m.id===tid;})){
+          var found=DATA.nodes.filter(function(n){return n.id===tid;});
+          if(found.length===0)matches.push({id:tid,n:t.name.split('·')[0],ti:t.name,b:null,d:null,_trajOnly:true});
+        }
+      }
+      matches=matches.slice(0,8);
+      if(matches.length>0){
+        var html='';
+        matches.forEach(function(m,i){
+          var yrs=(m.b||'?')+'-'+(m.d||'?');
+          html+='<div data-idx='+i+' data-id='+m.id+' style="padding:4px 10px;cursor:pointer;font-size:0.75em;border-bottom:1px solid var(--line);transition:background 0.1s"'
+            +' onmouseover="this.style.background=\'rgba(184,134,60,0.1)\'" onmouseout="this.style.background=\'\'"'
+            +' onclick="selectSuggestion(\''+m.id+'\')">'
+            +'<b style=color:#b8863c>'+m.n+'</b>'
+            +(m.ti?' <span style=color:var(--text2);font-size:0.85em>'+m.ti+'</span>':'')
+            +' <span style=color:var(--text2)>'+yrs+'</span>'
+            +'</div>';
+        });
+        _searchSuggest.innerHTML=html;_searchSuggest.style.display='block';
+      }else{_searchSuggest.style.display='none';}
+    }else{_searchSuggest.style.display='none';}
+  }
+  // Highlight matches on timeline without auto-selecting
+  drawTL(null);
+});
+// Hide suggestions when clicking outside
+document.addEventListener('click',function(e){if(_searchSuggest&&!e.target.closest('#search-input')&&!e.target.closest('#search-suggest'))_searchSuggest.style.display='none';});
+// Select suggestion
+window.selectSuggestion=function(id){
+  if(_searchSuggest)_searchSuggest.style.display='none';
+  var p=nodeMap[id];
+  if(p){
+    selectedId=id;searchQuery=p.n;
+    document.getElementById('search-input').value=searchQuery;
+    selectPerson(id);
+  }else if(PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[id]){
+    // Trajectory-only person: show on map directly
+    document.getElementById('search-input').value=PERSON_TRAJECTORIES[id].name.split('·')[0];
+    showTrajectoryOnMap(id);
+    // Show a minimal popup
+    var popup=document.getElementById('info-popup');
+    if(popup){popup.style.display='block';popup.style.left='60vw';popup.style.top='10vh';
+      popup.innerHTML='<span class=close-btn onclick="document.getElementById(\'info-popup\').style.display=\'none\'">&times;</span>'
+        +'<h3 style=color:#b8863c>'+PERSON_TRAJECTORIES[id].name+'</h3>'
+        +'<p style=font-size:0.78em;color:var(--text2)>📍 已在地图上显示一生轨迹 ('+PERSON_TRAJECTORIES[id].route.length+'个节点)</p>'
+        +'<button onclick="playTrajectory(\''+id+'\')" style="padding:3px 10px;border:1px solid #b8863c;border-radius:12px;background:var(--card);color:#b8863c;cursor:pointer;font-size:0.72em">🎬 播放足迹</button>';
+      popup.onclick=function(e){if(e.target.tagName!=='BUTTON')popup.style.display='none';};
+    }
+  }
+};
+// Re-show on Enter key (after popup closed)
+document.getElementById("search-input").addEventListener("keydown",function(e){
+  if(e.key==='Enter'&&searchQuery&&!selectedId){
+    var matches=DATA.nodes.filter(function(n){return n.n&&n.n.indexOf(searchQuery)>=0;});
+    if(matches.length===1){selectSuggestion(matches[0].id);}
+  }
 });
 var panel=document.getElementById("tl-panel");
 panel.addEventListener("wheel",onWheel,{passive:false});

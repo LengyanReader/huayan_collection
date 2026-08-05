@@ -534,20 +534,6 @@ function initMap(){
   }
   // Update terrain layer state after invalidateSize
   if(miniTerrainOn && miniTerrainLayer){if(!mapMini.hasLayer(miniTerrainLayer))miniTerrainLayer.addTo(mapMini);}
-  // ── Map legend control (bottom-right) ──
-  var legend=L.control({position:'bottomleft'});
-  legend.onAdd=function(){
-    var div=L.DomUtil.create('div','info-legend');
-    div.style.cssText='background:rgba(254,253,249,0.85);padding:6px 10px;border-radius:6px;font-size:0.65em;line-height:1.6;box-shadow:0 2px 6px rgba(0,0,0,0.1)';
-    div.innerHTML='<b style=color:#b8863c>🪷 路线图例</b><br>'
-      +'<span style=color:#c46b5d>━━</span> 佛教/华严主线<br>'
-      +'<span style=color:#b8863c>┅┅</span> 儒家<br>'
-      +'<span style=color:#7d9a6e>┅┅</span> 道家<br>'
-      +'<span style=color:#5e8b9e>┅┅</span> 西方<br>'
-      +'<span style=color:#8b7a9e>┅┅</span> 其他传统';
-    return div;
-  };
-  legend.addTo(mapMain);
 }
 function getMainMap(){return mapMain;}
 

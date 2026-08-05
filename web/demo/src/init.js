@@ -15,14 +15,90 @@ renderFrontier();
 try{renderCosmology();}catch(e){}
 
 // Events
+var _searchSuggest=document.getElementById('search-suggest');
+// Known aliases for fuzzy search (name -> alt names)
+var _aliases={'王阳明':'王守仁','王守仁':'王阳明','慧能':'惠能','惠能':'慧能','卢舍那':'毗卢遮那','清凉国师':'澄观','贤首国师':'法藏','圭峰':'宗密','帝心':'杜顺','至相':'智俨'};
+function _matchSearch(n,q){
+  if(!q)return true;
+  if(n.n&&n.n.indexOf(q)>=0)return true;
+  if(n.ti&&n.ti.indexOf(q)>=0)return true;
+  if(n.bio&&n.bio.indexOf(q)>=0)return true;
+  // Check known aliases
+  var aliases=_aliases[n.n]||'';
+  if(aliases.indexOf(q)>=0)return true;
+  // Check if query is an alias for this person
+  for(var k in _aliases){if(_aliases[k]===n.n&&k.indexOf(q)>=0)return true;}
+  // Check trajectory names
+  if(PERSON_TRAJECTORIES)for(var tid in PERSON_TRAJECTORIES){
+    if(tid===n.id&&PERSON_TRAJECTORIES[tid].name.indexOf(q)>=0)return true;
+  }
+  return false;
+}
 document.getElementById("search-input").addEventListener("input",function(){
   searchQuery=this.value.trim();
-  // Auto-select first matching person when searching
-  if(searchQuery.length>0){
-    var found=DATA.nodes.filter(function(n){return n.n&&n.n.indexOf(searchQuery)>=0;}).filter(function(n){return n.b&&n.d;});
-    if(found.length>0&&found[0].id!==selectedId){selectedId=found[0].id;clearSelection=function(){};selectPerson(found[0].id);}
-  }else{selectedId=null;}
-  drawTL(selectedId);
+  // Show autocomplete suggestions
+  if(_searchSuggest){
+    if(searchQuery.length>0){
+      var matches=DATA.nodes.filter(function(n){return _matchSearch(n,searchQuery);}).slice(0,8);
+      // Also add trajectory-only persons
+      if(PERSON_TRAJECTORIES)for(var tid in PERSON_TRAJECTORIES){
+        var t=PERSON_TRAJECTORIES[tid];if(!t||!t.name)continue;
+        if(t.name.indexOf(searchQuery)>=0&&!matches.some(function(m){return m.id===tid;})){
+          var found=DATA.nodes.filter(function(n){return n.id===tid;});
+          if(found.length===0)matches.push({id:tid,n:t.name.split('·')[0],ti:t.name,b:null,d:null,_trajOnly:true});
+        }
+      }
+      matches=matches.slice(0,8);
+      if(matches.length>0){
+        var html='';
+        matches.forEach(function(m,i){
+          var yrs=(m.b||'?')+'-'+(m.d||'?');
+          html+='<div data-idx='+i+' data-id='+m.id+' style="padding:4px 10px;cursor:pointer;font-size:0.75em;border-bottom:1px solid var(--line);transition:background 0.1s"'
+            +' onmouseover="this.style.background=\'rgba(184,134,60,0.1)\'" onmouseout="this.style.background=\'\'"'
+            +' onclick="selectSuggestion(\''+m.id+'\')">'
+            +'<b style=color:#b8863c>'+m.n+'</b>'
+            +(m.ti?' <span style=color:var(--text2);font-size:0.85em>'+m.ti+'</span>':'')
+            +' <span style=color:var(--text2)>'+yrs+'</span>'
+            +'</div>';
+        });
+        _searchSuggest.innerHTML=html;_searchSuggest.style.display='block';
+      }else{_searchSuggest.style.display='none';}
+    }else{_searchSuggest.style.display='none';}
+  }
+  // Highlight matches on timeline without auto-selecting
+  drawTL(null);
+});
+// Hide suggestions when clicking outside
+document.addEventListener('click',function(e){if(_searchSuggest&&!e.target.closest('#search-input')&&!e.target.closest('#search-suggest'))_searchSuggest.style.display='none';});
+// Select suggestion
+window.selectSuggestion=function(id){
+  if(_searchSuggest)_searchSuggest.style.display='none';
+  var p=nodeMap[id];
+  if(p){
+    selectedId=id;searchQuery=p.n;
+    document.getElementById('search-input').value=searchQuery;
+    selectPerson(id);
+  }else if(PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[id]){
+    // Trajectory-only person: show on map directly
+    document.getElementById('search-input').value=PERSON_TRAJECTORIES[id].name.split('·')[0];
+    showTrajectoryOnMap(id);
+    // Show a minimal popup
+    var popup=document.getElementById('info-popup');
+    if(popup){popup.style.display='block';popup.style.left='60vw';popup.style.top='10vh';
+      popup.innerHTML='<span class=close-btn onclick="document.getElementById(\'info-popup\').style.display=\'none\'">&times;</span>'
+        +'<h3 style=color:#b8863c>'+PERSON_TRAJECTORIES[id].name+'</h3>'
+        +'<p style=font-size:0.78em;color:var(--text2)>📍 已在地图上显示一生轨迹 ('+PERSON_TRAJECTORIES[id].route.length+'个节点)</p>'
+        +'<button onclick="playTrajectory(\''+id+'\')" style="padding:3px 10px;border:1px solid #b8863c;border-radius:12px;background:var(--card);color:#b8863c;cursor:pointer;font-size:0.72em">🎬 播放足迹</button>';
+      popup.onclick=function(e){if(e.target.tagName!=='BUTTON')popup.style.display='none';};
+    }
+  }
+};
+// Re-show on Enter key (after popup closed)
+document.getElementById("search-input").addEventListener("keydown",function(e){
+  if(e.key==='Enter'&&searchQuery&&!selectedId){
+    var matches=DATA.nodes.filter(function(n){return n.n&&n.n.indexOf(searchQuery)>=0;});
+    if(matches.length===1){selectSuggestion(matches[0].id);}
+  }
 });
 var panel=document.getElementById("tl-panel");
 panel.addEventListener("wheel",onWheel,{passive:false});
