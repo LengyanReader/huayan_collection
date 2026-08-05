@@ -997,3 +997,396 @@ person_wangfuzhi:  # 王夫之
     - {y: 1660, lat: 27.0, lng: 113.0, label: 石船山下著书·「六经责我开生面」}
     - {y: 1680, lat: 27.0, lng: 113.0, label: 著《读通鉴论》《周易外传》等百余种}
     - {y: 1692, lat: 27.0, lng: 113.0, label: 逝于石船山·「七尺从天乞活埋」}
+
+# ═══════════════════════════════════════════
+# 华严宗核心缺失人物
+# ═══════════════════════════════════════════
+person_000a:
+  name: 龙树·华严宗远祖·八宗共祖
+  color: "#9e8b6e"
+  source: "《龙树菩萨传》/《华严经传记》"
+  verified: 0
+  route:
+    - {y: 150, lat: 20.0, lng: 79.0, label: 诞于南印度毗达婆国}
+    - {y: 180, lat: 25.14, lng: 85.44, label: 那烂陀寺学经}
+    - {y: 200, lat: 10.0, lng: 79.0, label: 龙宫取经·传出《华严经》下本}
+    - {y: 220, lat: 20.0, lng: 79.0, label: 著《中论》《大智度论》《十住毗婆沙论》}
+    - {y: 250, lat: 18.0, lng: 80.0, label: 逝于南印度}
+
+person_000b:
+  name: 世亲·唯识宗祖师·十地经论造者
+  color: "#9e8b6e"
+  source: "真谛《婆薮盘豆法师传》/ 吕澂《印度佛学源流略讲》"
+  verified: 1
+  route:
+    - {y: 320, lat: 34.0, lng: 72.0, label: 诞于北印度犍陀罗·无著之弟}
+    - {y: 350, lat: 34.0, lng: 75.0, label: 迦湿弥罗·学小乘毗婆沙}
+    - {y: 380, lat: 25.14, lng: 85.44, label: 从无著转学大乘}
+    - {y: 400, lat: 25.14, lng: 85.44, label: 那烂陀寺·造《十地经论》《唯识三十颂》}
+    - {y: 420, lat: 26.8, lng: 82.2, label: 逝于阿逾陀}
+
+person_007:
+  name: 实叉难陀·八十华严译者
+  color: "#a09080"
+  source: "《宋高僧传》卷二 /《高僧传》"
+  verified: 1
+  route:
+    - {y: 652, lat: 37.1, lng: 79.9, label: 诞于于阗国}
+    - {y: 695, lat: 34.7, lng: 112.4, label: 应武则天之请抵洛阳}
+    - {y: 699, lat: 34.7, lng: 112.4, label: 洛阳佛授记寺·译出八十华严}
+    - {y: 704, lat: 37.1, lng: 79.9, label: 归于阗}
+    - {y: 710, lat: 34.3, lng: 108.9, label: 圆寂于长安}
+
+person_008:
+  name: 般若·四十华严译者
+  color: "#a09080"
+  source: "《宋高僧传》卷三"
+  verified: 1
+  route:
+    - {y: 730, lat: 35.0, lng: 72.0, label: 诞于罽宾国(克什米尔)}
+    - {y: 782, lat: 23.13, lng: 113.26, label: 经海路抵广州}
+    - {y: 786, lat: 34.26, lng: 108.92, label: 长安·译《四十华严》}
+    - {y: 798, lat: 34.26, lng: 108.92, label: 译毕·献上朝廷}
+    - {y: 810, lat: 34.26, lng: 108.92, label: 圆寂于长安}
+
+person_009:
+  name: 李通玄·华严居士学者·枣柏大师
+  color: "#c8893e"
+  source: "《宋高僧传》卷二十二 / 方立天《中国佛教哲学要义》"
+  verified: 1
+  route:
+    - {y: 635, lat: 38.3, lng: 116.8, label: 诞于沧州}
+    - {y: 670, lat: 34.3, lng: 108.9, label: 长安·始研华严}
+    - {y: 690, lat: 37.5, lng: 111.0, label: 方山·著《新华严经论》四十卷(以易解华严)}
+    - {y: 720, lat: 37.5, lng: 111.0, label: 著《华严经决疑论》}
+    - {y: 730, lat: 37.5, lng: 111.0, label: 逝于方山}
+
+person_010:
+  name: 义天·高丽华严初祖·大觉国师
+  color: "#6d9a6e"
+  source: "《高丽史》卷九十"
+  verified: 1
+  route:
+    - {y: 1055, lat: 37.97, lng: 126.55, label: 诞于高丽开京·文宗第四子}
+    - {y: 1085, lat: 30.25, lng: 120.17, label: 入宋·杭州慧因寺从净源学华严}
+    - {y: 1086, lat: 37.97, lng: 126.55, label: 归国·编《义天录》}
+    - {y: 1090, lat: 37.97, lng: 126.55, label: 高丽兴王寺·创高丽华严宗}
+    - {y: 1101, lat: 37.97, lng: 126.55, label: 逝于开京·谥大觉国师}
+
+person_011:
+  name: 净源·宋代华严中兴之祖
+  color: "#b8863c"
+  source: "《佛祖统纪》卷二十九"
+  verified: 1
+  route:
+    - {y: 1011, lat: 24.9, lng: 118.6, label: 诞于泉州晋江}
+    - {y: 1040, lat: 30.25, lng: 120.17, label: 杭州慧因寺住持}
+    - {y: 1085, lat: 30.25, lng: 120.17, label: 传法高丽王子义天}
+    - {y: 1086, lat: 30.25, lng: 120.17, label: 义天归国后送金书华严经供养}
+    - {y: 1088, lat: 30.25, lng: 120.17, label: 逝于慧因寺·寺世称华严第一道场}
+
+person_012:
+  name: 月霞·近现代华严复兴先驱
+  color: "#7a9ec0"
+  source: "近现代佛教史料 / 于凌波《中国近现代佛教人物志》"
+  verified: 0
+  route:
+    - {y: 1858, lat: 30.5, lng: 114.9, label: 诞于湖北黄冈}
+    - {y: 1880, lat: 30.5, lng: 114.9, label: 出家·参学各地}
+    - {y: 1914, lat: 31.65, lng: 120.75, label: 常熟兴福寺·创华严大学(中国近代第一所华严专宗)}
+    - {y: 1917, lat: 31.65, lng: 120.75, label: 逝于常熟}
+
+person_042:
+  name: 海云继梦·当代华严传承者·三脉汇一
+  color: "#c46b5d"
+  source: "大华严寺官网 / 海云继梦《四十华严讲记》"
+  verified: 1
+  route:
+    - {y: 1950, lat: 24.75, lng: 121.75, label: 诞于台湾宜兰}
+    - {y: 1972, lat: 24.12, lng: 120.68, label: 中兴大学经济系毕业}
+    - {y: 1991, lat: 24.75, lng: 121.75, label: 梦参老和尚座下出家(临济宗47代)}
+    - {y: 2008, lat: 25.03, lng: 121.5, label: 钦因传华严衣钵(贤首42世)+胜师子王菩萨传瑜伽行法}
+    - {y: 2010, lat: 23.9, lng: 120.7, label: 南投大华严寺·提出普贤乘华严宗}
+    - {y: 2026, lat: 25.03, lng: 121.56, label: TICC九九华严讲座+支提山动土}
+
+# ═══════════════════════════════════════════
+# 华严莲社传承
+# ═══════════════════════════════════════════
+person_015:
+  name: 南亭·华严莲社第二任住持
+  color: "#5e8b9e"
+  source: "华严莲社资料"
+  verified: 0
+  route:
+    - {y: 1900, lat: 32.5, lng: 120.0, label: 诞于江苏泰县}
+    - {y: 1920, lat: 32.5, lng: 120.0, label: 出家·从智光学}
+    - {y: 1949, lat: 25.03, lng: 121.5, label: 赴台}
+    - {y: 1952, lat: 25.03, lng: 121.5, label: 与师智光共创台北华严莲社}
+    - {y: 1972, lat: 25.03, lng: 121.5, label: 传法于成一}
+    - {y: 1982, lat: 25.03, lng: 121.5, label: 逝于台北}
+
+person_016:
+  name: 成一·华严莲社第三任住持·华严专宗学院创办人
+  color: "#5e8b9e"
+  source: "华严莲社资料"
+  verified: 0
+  route:
+    - {y: 1914, lat: 32.5, lng: 120.0, label: 诞于江苏泰县}
+    - {y: 1929, lat: 32.5, lng: 120.0, label: 出家}
+    - {y: 1949, lat: 25.03, lng: 121.5, label: 赴台}
+    - {y: 1972, lat: 25.03, lng: 121.5, label: 继任华严莲社住持}
+    - {y: 1975, lat: 25.03, lng: 121.5, label: 创办华严专宗学院}
+    - {y: 1985, lat: 37.5, lng: -122.0, label: 创立美国华严莲社(旧金山湾区)}
+    - {y: 1988, lat: 32.5, lng: 119.9, label: 恢复泰州光孝寺等大陆祖庭}
+    - {y: 2011, lat: 25.03, lng: 121.5, label: 逝于台北}
+
+person_017:
+  name: 贤度·华严莲社第六任住持·女性法嗣
+  color: "#5e8b9e"
+  source: "华严莲社资料(2024年)"
+  verified: 0
+  route:
+    - {y: 1960, lat: 25.03, lng: 121.5, label: 诞于台湾}
+    - {y: 1980, lat: 25.03, lng: 121.5, label: 成一法师弟子}
+    - {y: 2005, lat: 28.7, lng: 77.2, label: 印度德里大学哲学博士}
+    - {y: 2010, lat: 25.03, lng: 121.5, label: 推动华严现代化·AI多媒体文创}
+    - {y: 2020, lat: 25.03, lng: 121.5, label: 著《华严学讲义》《华严净土思想与念佛法门》}
+
+person_018:
+  name: 智光·华严莲社首任住持
+  color: "#5e8b9e"
+  source: "华严莲社资料"
+  verified: 0
+  route:
+    - {y: 1889, lat: 32.5, lng: 119.5, label: 诞于江苏}
+    - {y: 1910, lat: 32.5, lng: 119.5, label: 出家}
+    - {y: 1949, lat: 25.03, lng: 121.5, label: 赴台}
+    - {y: 1952, lat: 25.03, lng: 121.5, label: 创台北华严莲社(首任住持)}
+    - {y: 1963, lat: 25.03, lng: 121.5, label: 逝于台北}
+
+person_031:
+  name: 应慈·近代华严座主
+  color: "#7a9ec0"
+  source: "近现代佛教史料"
+  verified: 0
+  route:
+    - {y: 1873, lat: 32.0, lng: 119.0, label: 诞于江苏}
+    - {y: 1900, lat: 32.0, lng: 119.0, label: 出家·月霞师弟}
+    - {y: 1915, lat: 31.65, lng: 120.75, label: 随月霞创华严大学}
+    - {y: 1940, lat: 31.23, lng: 121.47, label: 上海弘法·被尊华严座主}
+    - {y: 1965, lat: 31.23, lng: 121.47, label: 逝于上海}
+
+person_013:
+  name: 常惺·月霞系·华严大学校长
+  color: "#7a9ec0"
+  source: "近现代佛教史料"
+  verified: 0
+  route:
+    - {y: 1896, lat: 32.0, lng: 119.0, label: 诞于江苏}
+    - {y: 1915, lat: 31.65, lng: 120.75, label: 月霞弟子}
+    - {y: 1920, lat: 31.65, lng: 120.75, label: 继月霞主持华严大学}
+    - {y: 1930, lat: 24.5, lng: 118.1, label: 任闽南佛学院院长}
+    - {y: 1939, lat: 39.9, lng: 116.4, label: 逝于北京}
+
+# ═══════════════════════════════════════════
+# 译师·求法僧补充
+# ═══════════════════════════════════════════
+person_007b:
+  name: 支娄迦谶·最早汉译华严经文者
+  color: "#a09080"
+  source: "《高僧传》卷一"
+  verified: 1
+  route:
+    - {y: 140, lat: 37.0, lng: 67.0, label: 诞于月氏国(大夏/巴克特里亚)}
+    - {y: 167, lat: 34.7, lng: 112.4, label: 抵洛阳}
+    - {y: 170, lat: 34.7, lng: 112.4, label: 译《佛说兜沙经》(华严经首部汉译单品)}
+    - {y: 186, lat: 34.7, lng: 112.4, label: 逝于洛阳}
+
+person_020:
+  name: 胜友·藏译华严经主译
+  color: "#a09080"
+  source: "德格版甘珠尔目录 / 学术研究"
+  verified: 0
+  route:
+    - {y: 750, lat: 23.0, lng: 78.0, label: 诞于中印度}
+    - {y: 800, lat: 29.65, lng: 91.1, label: 应吐蕃王赤德松赞之请入藏}
+    - {y: 815, lat: 29.65, lng: 91.1, label: 与智军合作译华严经为藏文(Toh44)}
+    - {y: 830, lat: 29.65, lng: 91.1, label: 逝于吐蕃}
+
+person_020b:
+  name: 智军·藏译华严经主译
+  color: "#a09080"
+  source: "学术研究 / BDRC"
+  verified: 1
+  route:
+    - {y: 760, lat: 29.65, lng: 91.1, label: 诞于吐蕃}
+    - {y: 800, lat: 29.65, lng: 91.1, label: 吐蕃译场·与胜友合作}
+    - {y: 815, lat: 29.65, lng: 91.1, label: 译华严经(Toh44)从于阗本}
+    - {y: 830, lat: 29.65, lng: 91.1, label: 逝于吐蕃}
+
+person_113:
+  name: 真谛·四大译经师之一
+  color: "#a09080"
+  source: "《续高僧传》卷一"
+  verified: 1
+  route:
+    - {y: 499, lat: 23.18, lng: 75.78, label: 诞于西印度优禅尼国}
+    - {y: 546, lat: 32.0, lng: 118.8, label: 经海路抵建康}
+    - {y: 550, lat: 32.0, lng: 118.8, label: 侯景之乱·辗转各地译经}
+    - {y: 563, lat: 23.13, lng: 113.26, label: 广州·译《摄大乘论》《俱舍论》}
+    - {y: 569, lat: 23.13, lng: 113.26, label: 逝于广州}
+
+person_050:
+  name: 审祥·日本华严宗初传
+  color: "#8b7a9e"
+  source: "日本佛教史"
+  verified: 0
+  route:
+    - {y: 700, lat: 35.85, lng: 129.22, label: 诞于新罗(今庆州)}
+    - {y: 720, lat: 34.3, lng: 108.9, label: 入唐从法藏学华严}
+    - {y: 740, lat: 34.68, lng: 135.84, label: 赴日本奈良}
+    - {y: 745, lat: 34.68, lng: 135.84, label: 东大寺·开讲华严经}
+    - {y: 742, lat: 34.68, lng: 135.84, label: 逝于东大寺}
+
+# ═══════════════════════════════════════════
+# 其他重要图谱人物
+# ═══════════════════════════════════════════
+person_041:
+  name: 钦因·贤首宗41世·福慧寺住持
+  color: "#c46b5d"
+  source: "大华严寺法脉资料"
+  verified: 0
+  route:
+    - {y: 1928, lat: 39.9, lng: 116.4, label: 诞于北京·俗名阎凤麟}
+    - {y: 1949, lat: 25.03, lng: 121.5, label: 赴台}
+    - {y: 1970, lat: 25.03, lng: 121.5, label: 台北福慧寺住持}
+    - {y: 2008, lat: 25.03, lng: 121.5, label: 传华严衣钵予海云继梦}
+
+person_014:
+  name: 慈舟·近代华严学者
+  color: "#8b7a9e"
+  source: "近现代佛教史料"
+  verified: 0
+  route:
+    - {y: 1877, lat: 30.5, lng: 114.0, label: 诞于湖北}
+    - {y: 1900, lat: 30.5, lng: 114.0, label: 出家}
+    - {y: 1920, lat: 39.9, lng: 116.4, label: 北京广济寺讲华严}
+    - {y: 1940, lat: 36.67, lng: 117.0, label: 济南弘法}
+    - {y: 1958, lat: 36.67, lng: 117.0, label: 著《华严经普贤行愿品亲闻记》后逝}
+
+person_019:
+  name: 梦参·临济宗46代·华严弘扬巨擘
+  color: "#d48476"
+  source: "当代佛教资料"
+  verified: 0
+  route:
+    - {y: 1915, lat: 46.0, lng: 127.0, label: 诞于黑龙江}
+    - {y: 1937, lat: 39.9, lng: 116.4, label: 北京拈花寺出家}
+    - {y: 1950, lat: 39.0, lng: 113.5, label: 五台山闭关}
+    - {y: 1982, lat: 39.0, lng: 113.5, label: 出关弘法·讲全本华严经}
+    - {y: 1991, lat: 39.0, lng: 113.5, label: 为海云继梦剃度}
+    - {y: 2017, lat: 39.0, lng: 113.5, label: 圆寂于五台山}
+
+person_044:
+  name: 真禅·华严禅实践者
+  color: "#d48476"
+  source: "当代佛教资料"
+  verified: 0
+  route:
+    - {y: 1916, lat: 32.0, lng: 119.0, label: 诞于江苏}
+    - {y: 1930, lat: 31.23, lng: 121.47, label: 出家·师承应慈}
+    - {y: 1950, lat: 31.23, lng: 121.47, label: 上海玉佛寺}
+    - {y: 1980, lat: 31.23, lng: 121.47, label: 主持华严佛七法会·讲《普贤行愿品》}
+    - {y: 1995, lat: 31.23, lng: 121.47, label: 逝于上海}
+
+person_125:
+  name: 六师外道·集体条目·佛陀时代印度思想生态
+  color: "#9e8b6e"
+  source: "《长阿含经·沙门果经》/ 学界通识"
+  verified: 0
+  note: 集体条目·代表佛陀时代印度思想生态(富兰那迦叶/末伽梨拘舍梨/删阇夜毗罗胝子/阿耆多翅舍钦婆罗/迦罗鸠驮迦旃延/尼乾陀若提子)，无个人轨迹
+
+# ═══════════════════════════════════════════
+# 参考线人物 (已有人物·补来源)
+# ═══════════════════════════════════════════
+person_140:
+  name: 罗摩克里希纳·近代印度灵性复兴之源
+  color: "#a0a0a0"
+  source: "Romain Rolland《The Life of Ramakrishna》"
+  verified: 1
+  route:
+    - {y: 1836, lat: 22.5, lng: 88.0, label: 诞于孟加拉Kamarpukur}
+    - {y: 1855, lat: 22.65, lng: 88.36, label: 加尔各答达克希涅斯瓦尔Kali神庙祭司}
+    - {y: 1870, lat: 22.65, lng: 88.36, label: 实践伊斯兰教/基督教·各宗教皆通向同一真理}
+    - {y: 1886, lat: 22.57, lng: 88.36, label: 逝于加尔各答}
+
+person_141:
+  name: 辨喜·吠檀多西传第一人
+  color: "#a0a0a0"
+  source: "《Swami Vivekananda: A Biography》"
+  verified: 1
+  route:
+    - {y: 1863, lat: 22.57, lng: 88.36, label: 诞于加尔各答}
+    - {y: 1881, lat: 22.65, lng: 88.36, label: 遇罗摩克里希纳}
+    - {y: 1893, lat: 41.88, lng: -87.63, label: 芝加哥世界宗教议会演讲轰动西方}
+    - {y: 1897, lat: 22.57, lng: 88.36, label: 创罗摩克里希纳传道会}
+    - {y: 1902, lat: 22.57, lng: 88.36, label: 逝于加尔各答}
+
+person_142:
+  name: 奥罗宾多·整体瑜伽创立者
+  color: "#a0a0a0"
+  source: "Peter Heehs《The Lives of Sri Aurobindo》"
+  verified: 1
+  route:
+    - {y: 1872, lat: 22.57, lng: 88.36, label: 诞于加尔各答·留学剑桥}
+    - {y: 1893, lat: 22.57, lng: 88.36, label: 归印度·投身独立运动}
+    - {y: 1910, lat: 11.93, lng: 79.83, label: 本地治里创立整体瑜伽}
+    - {y: 1926, lat: 11.93, lng: 79.83, label: The Mother接管道场}
+    - {y: 1950, lat: 11.93, lng: 79.83, label: 逝于本地治里}
+
+person_143:
+  name: 拉玛那·马哈希·参问Who am I
+  color: "#a0a0a0"
+  source: "Arthur Osborne《Ramana Maharshi and the Path of Self-Knowledge》"
+  verified: 1
+  route:
+    - {y: 1879, lat: 9.5, lng: 78.0, label: 诞于南印度Tiruchuli}
+    - {y: 1896, lat: 9.5, lng: 78.0, label: 16岁自发证悟}
+    - {y: 1899, lat: 12.23, lng: 79.07, label: 圣山Arunachala终生隐修}
+    - {y: 1920, lat: 12.23, lng: 79.07, label: 以Who am I参问法门教导学人}
+    - {y: 1950, lat: 12.23, lng: 79.07, label: 逝于Arunachala}
+
+person_150:
+  name: 寂天·入菩萨行论造者
+  color: "#a0a0a0"
+  source: "多罗那他《印度佛教史》"
+  verified: 1
+  route:
+    - {y: 685, lat: 16.0, lng: 78.0, label: 诞于南印度}
+    - {y: 700, lat: 25.14, lng: 85.44, label: 那烂陀寺·著《入菩萨行论》}
+    - {y: 740, lat: 25.14, lng: 85.44, label: 著《学处集要》}
+    - {y: 763, lat: 16.0, lng: 78.0, label: 逝于南印度}
+
+person_151:
+  name: 阿底峡·菩提道灯论造者
+  color: "#a0a0a0"
+  source: "王森《西藏佛教发展史略》"
+  verified: 1
+  route:
+    - {y: 982, lat: 23.8, lng: 89.0, label: 诞于孟加拉}
+    - {y: 1000, lat: 25.2, lng: 87.0, label: 超戒寺学僧}
+    - {y: 1025, lat: 29.65, lng: 91.1, label: 应请赴西藏}
+    - {y: 1042, lat: 29.65, lng: 91.1, label: 著《菩提道灯论》立三士道次第}
+    - {y: 1054, lat: 29.5, lng: 90.9, label: 圆寂于拉萨聂塘}
+
+person_152:
+  name: 宗喀巴·格鲁派创始人
+  color: "#a0a0a0"
+  source: "王森《西藏佛教发展史略》/ 法尊《宗喀巴大师传》"
+  verified: 1
+  route:
+    - {y: 1357, lat: 36.5, lng: 102.0, label: 诞于青海宗喀}
+    - {y: 1372, lat: 29.65, lng: 91.1, label: 赴藏求学}
+    - {y: 1390, lat: 29.65, lng: 91.1, label: 创格鲁派·重戒律}
+    - {y: 1409, lat: 29.75, lng: 91.5, label: 建甘丹寺·创传召大法会}
+    - {y: 1419, lat: 29.75, lng: 91.5, label: 圆寂于甘丹寺}

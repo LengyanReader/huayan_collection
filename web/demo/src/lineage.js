@@ -803,6 +803,11 @@ function showInfo(p,p2,e){
     +locHTML+relHTML
     +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
     +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.map(function(w){var lk=p.wl&&p.wl[w];return lk?'<a href='+lk+' target=_blank style=color:var(--blue)>'+w+'</a>':w;}).join("</b> · <b>")+"</b></div>":"");
+  // ── Source/literature citation ──
+  var srcNote='';
+  if(PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id]&&PERSON_TRAJECTORIES[p.id].source)srcNote=PERSON_TRAJECTORIES[p.id].source;
+  if(!srcNote&&p.src)srcNote=p.src;
+  if(srcNote)h+='<div style="margin-top:3px;font-size:0.65em;color:var(--text2);opacity:0.7">📚 '+srcNote+'</div>';
   // ── Huayan connection annotation ──
   var ha=null;
   try{ha=(EVENTS&&EVENTS.huayan_annotations&&EVENTS.huayan_annotations.persons)?EVENTS.huayan_annotations.persons[p.id]:null;}catch(e){}
@@ -1078,12 +1083,15 @@ function renderRoster(){
     groups[g].forEach(function(p){
       var yrs=(p.b||'?')+'-'+(p.d||'?');
       var c=p.color||'#b0a898';
+      var _tr=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id];
       h+='<span onclick="document.getElementById(\'roster-modal\').style.display=\'none\';'
         +(nodeMap[p.id]?'selectPerson(\''+p.id+'\');':"selectSuggestion('"+p.id+"');")
         +'" style="cursor:pointer;padding:2px 7px;border-radius:10px;font-size:0.68em;background:'+c+'0d;border:1px solid '+c+'28;white-space:nowrap"'
         +' onmouseover="this.style.background=\''+c+'25\'" onmouseout="this.style.background=\''+c+'0d\'">'
         +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'')
-        +'<b>'+p.n+'</b> '
+        +'<b>'+p.n+'</b>'
+        +(_tr&&_tr.verified?' <span style=color:#7d9a6e title='+(_tr.source||'')+'>✓</span>':'')
+        +' '
         +'<span style=color:var(--text2);font-size:0.9em>'+yrs+'</span></span>';
     });
     h+='</div>';
