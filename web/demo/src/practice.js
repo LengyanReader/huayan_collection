@@ -1,8 +1,6 @@
 // ═══ PRACTICE TAB ═══
 function renderPractice(){
-  console.log('RENDERP: start');
   var pv=document.getElementById("practice-view");if(!pv)return;
-  console.log('RENDERP: practice-view found');
   var h="";
   h+="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}.topic-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}.topic-card h4{color:var(--gold);font-size:0.88em;margin-bottom:4px}.topic-card p{font-size:0.78em;line-height:1.7;color:var(--text2)}.topic-card a{color:var(--blue);font-size:0.75em}</style>";
 
@@ -16,7 +14,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 1: 修行体系 (default visible)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-system class=pv-section style=display:block>";
+  h+="<div id=pv-system class=pv-section>";
 
   // ── 子目录导航 ──
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📐 修行体系:</b>"
@@ -117,7 +115,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 2: 禅观法要 (hidden)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-meditation class=pv-section style=display:block>";
+  h+="<div id=pv-meditation class=pv-section style=display:none>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>🗺 禅观法要:</b><a href='#med-overview' style=color:var(--blue)>体系总览</a>·<a href='#med-paths' style=color:var(--blue)>次第道与圆融道</a>·<a href='#med-stage1' style=color:var(--blue)>资粮道</a>·<a href='#med-stage2' style=color:var(--blue)>前行</a>·<a href='#med-stage3' style=color:var(--blue)>正行</a>·<a href='#med-classical' style=color:var(--blue)>古典义理地基</a>·<a href='#med-wujiao' style=color:var(--blue)>贤首五教仪</a>·<a href='#med-yicheng' style=color:var(--blue)>一乘不共别圆</a>·<a href='#med-texts' style=color:var(--blue)>典籍阐释</a>·<a href='#med-verify' style=color:var(--blue)>验证机制</a>·<a href='#med-heart' style=color:var(--blue)>实修心要</a></div>";
 
     // ── 体系总览 ──
@@ -448,6 +446,7 @@ function renderPractice(){
   h+="<p style=font-size:.78em;color:var(--text2);line-height:1.7>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>左栏:全部原文 · 中栏:海云华严行法对照 · 右栏:其他宗派/道家相互印证。</b></p>";
   h+="<p style=font-size:.72em;color:var(--text2);margin-bottom:8px>"
     +"<span id=heart-git-status style=font-size:.68em;color:var(--text2)></span>"
+    +"</p></div>";
 
   h+="<div class=section id=heart-gandhara><h2>📰 实修心要 — 永远的犍陀罗·禅修实操系列</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);margin-bottom:6px>以下10篇文章来自微信公众号「<b>永远的犍陀罗</b>」· <b>实修心要</b>专辑。内容为海云继梦和上关于禅修实操的开示,由仁悦整理。原文链接为微信公众号文章,全文已保存至 <code>docs/hy_refs/wechat/</code> 目录。</p>";
@@ -560,7 +559,6 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE: 最新动态 (动态类内容集中)
   // ═══════════════════════════════════════════
-  console.log("RENDERP: before pv-news");
   h+="<div id=pv-news class=pv-section style='display:block;border:4px solid red;padding:20px;margin:10px;background:#fff'>";
   h+="<div class=section style='border-left:4px solid var(--gold)'><h2>📰 最新动态（2023-2026）TEST</h2><p>测试——如果能看到这行文字，说明pv-news渲染正常。</p><p>2023: 国立台北大学杰出校友、2026: 九九华严TICC讲座、2026.7: 支提山动土、第四期佛教。</p></div>";
 
@@ -578,8 +576,7 @@ function renderPractice(){
 
   h+="</div>"; // close pv-news
 
-  console.log("RENDERP: before pv-resources");
-  h+="<div id=pv-resources class=pv-section style=display:block>";
+  h+="<div id=pv-resources class=pv-section style=display:none>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
 
   // ── 全网讲法总目 ──
@@ -756,8 +753,7 @@ function renderPractice(){
   h+="</div>";
   h+="</div>"; // close pv-resources
 
-  console.log("RENDERP: setting innerHTML, length="+h.length);
-pv.innerHTML=h;
+  pv.innerHTML=h;
 }
 
 // ═══ PRACTICE SUB-NAV ═══
@@ -790,12 +786,11 @@ function jxSubNav(view,anchor){
 // Restore sub-page on load (heart 已并入 meditation)
 (function(){
   setTimeout(function(){
-    // SUB-PAGE RESTORE DISABLED FOR DEBUG
-    // var sub=localStorage.getItem('practice_sub')||'system';
-    // if(sub==='heart')sub='meditation';
-    // if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
-    //   switchPracticeView(sub);
-    // }
+    var sub=localStorage.getItem('practice_sub')||'system';
+    if(sub==='heart')sub='meditation';
+    if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
+      switchPracticeView(sub);
+    }
   },150);
 })();
 
