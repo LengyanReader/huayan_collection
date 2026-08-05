@@ -565,7 +565,6 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-total');return false">　· 全网总目</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-books');return false">　· 著作</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-yt');return false">　· YouTube</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-academic');return false">　· 学术活动</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-temples');return false">　· 道场</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-more');return false">　· 检索补遗</a>
     '''

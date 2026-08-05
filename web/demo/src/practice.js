@@ -566,7 +566,7 @@ function renderPractice(){
   h+="<div class=stage-box><b>2026.7.9 — 支提山大华严寺动土</b><br>苗栗县通霄镇。面向台湾海峡，与福建宁德支提华严祖庭隔海相望——「山海相应、法脉相承」。四百余位护法善信参与，五十三位嘉宾共同执铲（呼应善财五十三参）。</div>";
   h+="<div class=stage-box><b>第四期佛教</b><br>大华严寺官网对海云法师使命的表述——「以中兴汉传佛教，开展<b>第四期佛教思想发展</b>为使命」。目前尚未见对第一至第三期的系统性论述。</div></div>";
 
-  h+="<div class=section id=res-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
+  h+="<div class=section id=news-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
   h+="<table class=v-table><tr><th>年份</th><th>会议/事件</th><th>主题</th></tr>";
   h+="<tr><td>2010</td><td>第一届华严学术研讨会</td><td>华严学</td></tr>";
   h+="<tr><td>2011</td><td>第二届华严学术研讨会</td><td>华严与科学</td></tr>";
@@ -581,7 +581,7 @@ function renderPractice(){
   h+="</div>"; // close pv-news
 
   h+="<div id=pv-resources class=pv-section style=display:none>";
-  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-academic' style=color:var(--blue)>学术活动</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
 
   // ── 全网讲法总目 ──
   h+="<div class=section id=res-total><h2>📡 海云继梦全网讲法总目</h2>";
