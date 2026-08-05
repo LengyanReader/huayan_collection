@@ -1029,8 +1029,8 @@ function _classifyPerson(p,traj){
   if(/藏|宗喀巴|阿底峡|寂天/.test(trajName))return '🔴 藏传佛教';
   // Modern monks
   if(li==='参考线'||/虚云|太虚|弘一|印顺/.test(n))return '🏛 近现代高僧';
-  // Daoist
-  if(/道|老子|庄子|列子|张道陵|王重阳/.test(n+trajName))return '☯ 道家';
+  // Daoist (specific names only, not just 道 character)
+  if(/老子|庄子|列子|张道陵|王重阳|关尹子|葛洪|抱朴子|寇谦之|吕洞宾|陈抟|希夷|丘处机|长春真人|张三丰/.test(n+trajName))return '☯ 道家';
   // Confucian
   if(/儒|孔子|孟子|荀子|董仲舒|朱熹|王阳明|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|陆象山/.test(n+trajName))return '📜 儒家';
   // Western
