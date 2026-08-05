@@ -541,13 +541,13 @@ def main():
 
     # ── Build Tab3: Jiaoxing (renamed, restructured) ──
     sidebar_jx = '''
-    <h3>🧘 华严教行</h3>
+    <h3>🧘 教海行云</h3>
     <a href="#pv-system" class="nav-link active" data-section="pv-system">📐 修行体系</a>
     <a href="#pv-meditation" class="nav-link" data-section="pv-meditation">🗺 禅观法要</a>
     <a href="#pv-heart" class="nav-link" data-section="pv-heart">❤️ 实修心要</a>
     <a href="#pv-resources" class="nav-link" data-section="pv-resources">📡 讲法资源</a>
     '''
-    jx_html = build_simple_tab_page('华严教行 · 修行体系', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
+    jx_html = build_simple_tab_page('教海行云 · 信解行证', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
     jx_path = TABS_OUT / 'jiaoxing.html'
     with open(jx_path, 'w', encoding='utf-8') as f:
         f.write(jx_html)
