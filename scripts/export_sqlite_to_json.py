@@ -39,10 +39,11 @@ def import_graph_to_sqlite():
     conn.execute("DELETE FROM persons")
     for n in graph['nodes']:
         conn.execute("""
-            INSERT INTO persons (name_zh, type, birth_year, death_year, dynasty,
+            INSERT INTO persons (source_id, name_zh, type, birth_year, death_year, dynasty,
                                  biography, lineage_branch, verified, source)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, '从graph.json导入')
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, '从graph.json导入')
         """, (
+            n['id'],
             n['n'],
             n.get('tp', 'practitioner'),
             n.get('b'),
@@ -304,11 +305,11 @@ def verify_data():
     g_total = conn.execute("SELECT COUNT(*) FROM glossary").fetchone()[0]
     print(f"Glossary: {g_total} terms")
 
-    # Isolated persons (no edges)
+    # Isolated persons (no edges) - match on source_id
     isolated = conn.execute("""
         SELECT COUNT(*) FROM persons p
-        WHERE NOT EXISTS (SELECT 1 FROM lineage_edges e WHERE e.from_person_id LIKE '%' || p.id || '%'
-                          OR e.to_person_id LIKE '%' || p.id || '%')
+        WHERE NOT EXISTS (SELECT 1 FROM lineage_edges e WHERE e.from_person_id = p.source_id
+                          OR e.to_person_id = p.source_id)
     """).fetchone()[0]
     print(f"Connectivity: {isolated} isolated persons (no edges)")
 

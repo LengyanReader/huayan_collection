@@ -13,6 +13,7 @@ PRAGMA foreign_keys = ON;
 DROP TABLE IF EXISTS persons;
 CREATE TABLE persons (
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id       TEXT,                             -- 原始ID (如 person_042)
     name_zh         TEXT    NOT NULL,
     name_bo         TEXT,                            -- 藏文名 (Wylie)
     name_sa         TEXT,                            -- 梵文名 (IAST)
@@ -35,6 +36,7 @@ CREATE TABLE persons (
 CREATE INDEX idx_persons_dynasty ON persons(dynasty);
 CREATE INDEX idx_persons_type ON persons(type);
 CREATE INDEX idx_persons_lineage ON persons(lineage_branch);
+CREATE INDEX idx_persons_source_id ON persons(source_id);
 
 -- -----------------------------------------------------------
 -- 文献表 — 经典、章疏、仪轨、讲记
