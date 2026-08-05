@@ -702,9 +702,12 @@ function selectPerson(id,isShift,ev){
   drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
   showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null,ev);
   var locs=getPersonLocs(id);
-  // Clear previous footprints
+  // Clear previous footprints + trajectory markers
   if(window._personFootprints){window._personFootprints.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});}
-  window._personFootprints=[];
+  if(window._trajMarkers){window._trajMarkers.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});}
+  window._personFootprints=[];window._trajMarkers=[];
+  if(_trajLine&&mapMain){mapMain.removeLayer(_trajLine);_trajLine=null;}
+  if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
   if(mapMain&&locs.length>0){
     var loc=locs[0];mapMain.flyTo([loc.lat,loc.lng],locs.length===1?12:10,{duration:0.8});
     // Draw footprint line + numbered markers
@@ -1056,17 +1059,40 @@ function _stepTrajectory(route,color,sb){
 }
 function showTrajectoryOnMap(pid){
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
+  // Clear previous
   if(_trajLine&&mapMain)mapMain.removeLayer(_trajLine);
   if(_trajMarker&&mapMain)mapMain.removeLayer(_trajMarker);
+  // Also clear any numbered markers from previous show
+  if(window._trajMarkers){window._trajMarkers.forEach(function(m){if(mapMain)mapMain.removeLayer(m);});}
+  window._trajMarkers=[];
   var coords=traj.route.map(function(p){return [p.lat,p.lng];});
+  var color=traj.color||'#c46b5d';
   if(mapMain){
-    _trajLine=L.polyline(coords,{color:traj.color||'#b8863c',weight:3,opacity:0.6}).addTo(mapMain);
-    // Add numbered markers for each stop
-    traj.route.forEach(function(pt,i){
-      L.circleMarker([pt.lat,pt.lng],{radius:4,fillColor:traj.color||'#b8863c',color:'#fff',weight:1,fillOpacity:0.8})
-        .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')',{permanent:false}).addTo(mapMain);
-    });
-    mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
+    // Thick semi-transparent glow + thin solid core
+    _trajLine=L.polyline(coords,{color:color,weight:5,opacity:0.25}).addTo(mapMain);
+    window._trajMarkers.push(_trajLine);
+    var core=L.polyline(coords,{color:color,weight:2.5,opacity:0.85,dashArray:'8,3'}).addTo(mapMain);
+    window._trajMarkers.push(core);
+    // Start marker (green dot)
+    var start=traj.route[0];
+    var startM=L.circleMarker([start.lat,start.lng],{radius:8,fillColor:'#7d9a6e',color:'#fff',weight:2.5,fillOpacity:1})
+      .bindTooltip('▶ '+start.label+' ('+start.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+    window._trajMarkers.push(startM);
+    // End marker (red dot)
+    var end=traj.route[traj.route.length-1];
+    var endM=L.circleMarker([end.lat,end.lng],{radius:8,fillColor:'#c46b5d',color:'#fff',weight:2.5,fillOpacity:1})
+      .bindTooltip('⏹ '+end.label+' ('+end.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+    window._trajMarkers.push(endM);
+    // Numbered intermediate markers
+    for(var i=1;i<traj.route.length-1;i++){
+      var pt=traj.route[i];
+      var m=L.circleMarker([pt.lat,pt.lng],{radius:5,fillColor:color,color:'#fff',weight:1.5,fillOpacity:0.85})
+        .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')').addTo(mapMain);
+      window._trajMarkers.push(m);
+    }
+    // Zoom to fit with generous padding
+    var bounds=L.latLngBounds(coords);
+    mapMain.fitBounds(bounds,{padding:[50,50],maxZoom:8});
   }
 }
 
@@ -1132,7 +1158,36 @@ function drawRelationGraph(pid){
   ctx.textAlign='start';
 }
 
-// ═══ PERSON ROSTER (名录) ═══
+// ═══ PERSON ROSTER (名录·全人物) ═══
+function _classifyPerson(p,traj){
+  var li=p.li||'',tp=p.tp||'',n=p.n||'',id=p.id||'';
+  // Huayan direct
+  if(/华严/.test(li)||li==='李通玄系'||li==='慈舟系')return '🪷 华严宗';
+  // Other Chinese Buddhist schools
+  if(li==='临济宗'||/禅/.test(n))return '☸ 汉传·禅宗';
+  var trajName=traj?traj.name:'';
+  if(/天台|智顗/.test(trajName))return '☸ 汉传·天台宗';
+  if(/净土|善导|印光/.test(trajName))return '☸ 汉传·净土宗';
+  if(/法相|窥基/.test(trajName))return '☸ 汉传·法相宗';
+  if(/三论|吉藏/.test(trajName))return '☸ 汉传·三论宗';
+  // Translators & pilgrims
+  if(tp==='translator'||li==='译师'||/鸠摩罗什|玄奘|义净|法显/.test(n+trajName))return '📖 译师·求法僧';
+  // India
+  if(li==='印度源流'||li==='大乘瑜伽行法'||/印度|瑜伽/.test(trajName))return '🕉 印度·瑜伽';
+  // Tibetan
+  if(/藏|宗喀巴|阿底峡|寂天/.test(trajName))return '🔴 藏传佛教';
+  // Modern monks
+  if(li==='参考线'||/虚云|太虚|弘一|印顺/.test(n))return '🏛 近现代高僧';
+  // Daoist
+  if(/道|老子|庄子|列子|张道陵|王重阳/.test(n+trajName))return '☯ 道家';
+  // Confucian
+  if(/儒|孔子|孟子|荀子|董仲舒|朱熹|王阳明|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|陆象山/.test(n+trajName))return '📜 儒家';
+  // Western
+  if(/耶稣|穆罕默德|柏拉图|亚里士多德|奥古斯丁|阿奎那|罗摩克里希纳|辨喜|奥罗宾多|拉玛那/.test(n+trajName))return '🔮 西方·印度近代';
+  // Scholars
+  if(tp==='scholar'||li==='当代学者')return '🎓 学者';
+  return '📌 其他';
+}
 function toggleRoster(){
   var modal=document.getElementById('roster-modal');
   if(!modal)return;
@@ -1144,31 +1199,47 @@ function renderRoster(){
   var ct=document.getElementById('roster-content');
   var cnt=document.getElementById('roster-count');
   if(!ct||!cnt)return;
-  // Group persons by lineage
-  var groups={},order=['华严五祖','李通玄系','贤首宗高原法系','月霞系','华严莲社','慈舟系','高丽华严','日本华严','临济宗','译师','求法僧','印度源流','大乘瑜伽行法','参考线','当代学者'];
+  // Collect ALL persons: graph nodes + trajectory-only figures
+  var all=[];
+  var seen={};
   DATA.nodes.forEach(function(p){
-    var li=p.li||'其他';
-    if(!groups[li])groups[li]=[];
-    groups[li].push(p);
+    if(!p.b&&!p.d)return;
+    var traj=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id];
+    all.push({id:p.id,n:p.n,ti:p.ti||'',tp:p.tp||'',li:p.li||'',b:p.b,d:p.d,color:DATA.lineage_colors[p.li]||'#b0a898',group:_classifyPerson(p,traj)});
+    seen[p.id]=true;
   });
-  var total=DATA.nodes.filter(function(p){return p.b&&p.d;}).length;
-  cnt.textContent=total;
+  // Add trajectory-only persons
+  if(PERSON_TRAJECTORIES)for(var tid in PERSON_TRAJECTORIES){
+    if(seen[tid])continue;
+    var t=PERSON_TRAJECTORIES[tid];if(!t||!t.name||!t.route)continue;
+    var yr=t.route[0]?t.route[0].y:null;
+    var yr2=t.route[t.route.length-1]?t.route[t.route.length-1].y:null;
+    all.push({id:tid,n:t.name.split('·')[0],ti:t.name,li:'',b:yr,d:yr2,color:t.color||'#b0a898',group:_classifyPerson({n:t.name.split('·')[0],li:''},t)});
+    seen[tid]=true;
+  }
+  cnt.textContent=all.length;
+  // Group order
+  var grpOrder=['🪷 华严宗','☸ 汉传·禅宗','☸ 汉传·天台宗','☸ 汉传·净土宗','☸ 汉传·法相宗','☸ 汉传·三论宗','📖 译师·求法僧','🔴 藏传佛教','🕉 印度·瑜伽','🏛 近现代高僧','☯ 道家','📜 儒家','🔮 西方·印度近代','🎓 学者','📌 其他'];
+  var groups={};
+  all.forEach(function(p){
+    if(!groups[p.group])groups[p.group]=[];
+    groups[p.group].push(p);
+  });
   var h='';
-  order.concat(Object.keys(groups).filter(function(k){return order.indexOf(k)<0;})).forEach(function(li){
-    if(!groups[li]||groups[li].length===0)return;
-    var lc=DATA.lineage_colors[li]||'#b0a898';
-    h+='<div style="margin-bottom:10px"><b style=color:'+lc+';font-size:0.85em>'+li+'</b> ('+groups[li].length+'人)</div>';
-    h+='<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">';
-    groups[li].forEach(function(p){
-      if(!p.b&&!p.d)return;
+  grpOrder.forEach(function(g){
+    if(!groups[g]||groups[g].length===0)return;
+    h+='<div style="margin-bottom:6px"><b style=color:#b8863c;font-size:0.82em">'+g+'</b> <span style=font-size:0.7em;color:var(--text2)>'+groups[g].length+'人</span></div>';
+    h+='<div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:10px">';
+    groups[g].forEach(function(p){
       var yrs=(p.b||'?')+'-'+(p.d||'?');
-      h+='<span onclick="document.getElementById(\'roster-modal\').style.display=\'none\';selectPerson(\''+p.id+'\');" '
-        +'style="cursor:pointer;padding:2px 8px;border-radius:10px;font-size:0.7em;background:'+lc+'10;border:1px solid '+lc+'30;white-space:nowrap;transition:all 0.15s"'
-        +' onmouseover="this.style.background=\''+lc+'30\'" onmouseout="this.style.background=\''+lc+'10\'">'
-        +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'[修]')
-        +' <b>'+p.n+'</b>'
-        +(p.ti?' <span style=font-size:0.85em;color:var(--text2)>'+p.ti.substring(0,12)+'</span>':'')
-        +' <span style=color:var(--text2)>'+yrs+'</span></span>';
+      var c=p.color||'#b0a898';
+      h+='<span onclick="document.getElementById(\'roster-modal\').style.display=\'none\';'
+        +(nodeMap[p.id]?'selectPerson(\''+p.id+'\');':"selectSuggestion('"+p.id+"');")
+        +'" style="cursor:pointer;padding:2px 7px;border-radius:10px;font-size:0.68em;background:'+c+'0d;border:1px solid '+c+'28;white-space:nowrap"'
+        +' onmouseover="this.style.background=\''+c+'25\'" onmouseout="this.style.background=\''+c+'0d\'">'
+        +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'')
+        +'<b>'+p.n+'</b> '
+        +'<span style=color:var(--text2);font-size:0.9em>'+yrs+'</span></span>';
     });
     h+='</div>';
   });
