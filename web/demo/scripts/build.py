@@ -547,7 +547,6 @@ def main():
     <h3>🧘 教海行云</h3>
     <a href="#" class="nav-link active" onclick="switchPracticeView('system',this);return false">📐 修行体系</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('meditation',this);return false">🗺 禅观法要</a>
-    <a href="#" class="nav-link" onclick="switchPracticeView('heart',this);return false">❤️ 实修心要</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('resources',this);return false">📡 讲法资源</a>
     '''
     jx_html = build_simple_tab_page('教海行云 · 信解行证', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
