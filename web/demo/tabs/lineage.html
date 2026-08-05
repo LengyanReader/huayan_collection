@@ -1241,9 +1241,7 @@ function renderRoster(){
       var yrs=(p.b||'?')+'-'+(p.d||'?');
       var c=p.color||'#b0a898';
       var _tr=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id];
-      h+='<span onclick="document.getElementById(\'roster-modal\').style.display=\'none\';'
-        +(nodeMap[p.id]?'selectPerson(\''+p.id+'\');':"selectSuggestion('"+p.id+"');")
-        +'" style="cursor:pointer;padding:2px 7px;border-radius:10px;font-size:0.68em;background:'+c+'0d;border:1px solid '+c+'28;white-space:nowrap"'
+      h+='<span onclick="_rosterClick(\''+p.id+'\')" style="cursor:pointer;padding:2px 7px;border-radius:10px;font-size:0.68em;background:'+c+'0d;border:1px solid '+c+'28;white-space:nowrap"'
         +' onmouseover="this.style.background=\''+c+'25\'" onmouseout="this.style.background=\''+c+'0d\'">'
         +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'')
         +'<b>'+p.n+'</b>'
@@ -1255,6 +1253,20 @@ function renderRoster(){
   });
   ct.innerHTML=h;
 }
+
+// ═══ ROSTER CLICK WRAPPERS (ensure popup shows after modal close) ═══
+window._rosterClick=function(pid){
+  var m=document.getElementById('roster-modal');if(m)m.style.display='none';
+  setTimeout(function(){
+    if(nodeMap&&nodeMap[pid])selectPerson(pid);
+    else if(typeof selectSuggestion==='function')selectSuggestion(pid);
+    else console.error('Cannot select:',pid);
+  },80);
+};
+window._templeClick=function(tid){
+  var m=document.getElementById('roster-modal');if(m)m.style.display='none';
+  setTimeout(function(){showTempleInfo(tid);},80);
+};
 
 // ═══ TEMPLE DIRECTORY (道场名录) ═══
 var TEMPLE_DATA=null;
@@ -1288,7 +1300,7 @@ function renderTempleDir(){
     h+='<div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:8px">';
     groups[s].forEach(function(t){
       var v=t.verified?' ✓':'';
-      h+='<span onclick="showTempleInfo(\''+t.id+'\')" style="cursor:pointer;padding:3px 8px;border-radius:10px;font-size:0.68em;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.2);white-space:nowrap"'
+      h+='<span onclick="_templeClick(\''+t.id+'\')" style="cursor:pointer;padding:3px 8px;border-radius:10px;font-size:0.68em;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.2);white-space:nowrap"'
         +' onmouseover="this.style.background=\'rgba(184,134,60,0.2)\'" onmouseout="this.style.background=\'rgba(184,134,60,0.06)\'">'
         +'<b>'+t.name+'</b>'
         +(v?'<span style=color:#7d9a6e title=已核实>'+v+'</span>':'')
