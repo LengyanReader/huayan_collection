@@ -348,6 +348,13 @@ function drawTL(hlId){
         else{lx=leftX;ly=leftY;}
         ctx.fillStyle=isHL?"#c46b5d":(p._isGhost?r.color:"#5c5040");
         ctx.fillText(fullText,lx,ly);
+        // 🎬 indicator for persons with trajectory data
+        var hasTraj=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id];
+        if(hasTraj&&!p._isGhost){
+          ctx.font='10px Microsoft YaHei';
+          ctx.fillText('🎬',lx+tw+2,ly);
+          tw+=14;
+        }
         // Track this label
         labelRects.push({x:lx,y:ly-10,w:tw,h:12});
       }
@@ -516,9 +523,9 @@ function initMap(){
   if(!mapMini){
     mapMini=L.map("map-mini",{zoomControl:false,attributionControl:false,zoomSnap:0.5,zoomDelta:0.5}).setView([30,80],3);
     tileLayer().addTo(mapMini);
-    // Route overview line on minimap
-    var routeCoords=ANIM_WAYPOINTS.map(function(w){return [w.lat,w.lng];});
-    L.polyline(routeCoords,{color:'#c46b5d',weight:2,opacity:0.6,dashArray:'4,4'}).addTo(mapMini);
+    // Route overview line on minimap — Huayan/buddhist ONLY
+    var huayanCoords=ANIM_WAYPOINTS.filter(function(w){return (w.rel||'buddhist')==='buddhist';}).map(function(w){return [w.lat,w.lng];});
+    L.polyline(huayanCoords,{color:'#b8863c',weight:3,opacity:0.8}).addTo(mapMini);
     // A viewport rectangle showing main map's view (updated on move)
     var vr=L.rectangle([[20,70],[45,130]],{color:'#b8863c',weight:1.5,fillOpacity:0,dashArray:'3,3'}).addTo(mapMini);
     mapMain.on('moveend',function(){var b=mapMain.getBounds();vr.setBounds(b);});
@@ -527,6 +534,20 @@ function initMap(){
   }
   // Update terrain layer state after invalidateSize
   if(miniTerrainOn && miniTerrainLayer){if(!mapMini.hasLayer(miniTerrainLayer))miniTerrainLayer.addTo(mapMini);}
+  // ── Map legend control (bottom-right) ──
+  var legend=L.control({position:'bottomright'});
+  legend.onAdd=function(){
+    var div=L.DomUtil.create('div','info-legend');
+    div.style.cssText='background:rgba(254,253,249,0.85);padding:6px 10px;border-radius:6px;font-size:0.65em;line-height:1.6;box-shadow:0 2px 6px rgba(0,0,0,0.1)';
+    div.innerHTML='<b style=color:#b8863c>🪷 路线图例</b><br>'
+      +'<span style=color:#c46b5d>━━</span> 佛教/华严主线<br>'
+      +'<span style=color:#b8863c>┅┅</span> 儒家<br>'
+      +'<span style=color:#7d9a6e>┅┅</span> 道家<br>'
+      +'<span style=color:#5e8b9e>┅┅</span> 西方<br>'
+      +'<span style=color:#8b7a9e>┅┅</span> 其他传统';
+    return div;
+  };
+  legend.addTo(mapMain);
 }
 function getMainMap(){return mapMain;}
 
@@ -558,17 +579,21 @@ function selectPerson(id,isShift,ev){
         window._personFootprints.push(m);
       });
     }
-    setTimeout(function(){
-      mapMain.eachLayer(function(layer){
-        if(!layer._ld)return;
-        var isRelated=locs.some(function(l){return l.id===layer._ld.id;});
-        if(isRelated){layer.setRadius(13);layer.setStyle({fillColor:"#c46b5d",color:"#fff",weight:3,fillOpacity:1});if(!layer._popupOpen){layer.openPopup();layer._popupOpen=true;setTimeout(function(){layer.closePopup();layer._popupOpen=false;},3000);}}
-        else{layer.setRadius(7);layer.setStyle({fillOpacity:0.5});}
-      });
-    },900);
-    setTimeout(function(){
-      mapMain.eachLayer(function(layer){if(!layer._ld)return;var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};layer.setRadius(8);layer.setStyle({fillColor:mc[layer._ld.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});});
-    },5000);
+  // ── Auto-show person trajectory on map ──
+  if(PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[id]&&mapMain){
+    showTrajectoryOnMap(id);
+  }
+  setTimeout(function(){
+    mapMain.eachLayer(function(layer){
+      if(!layer._ld)return;
+      var isRelated=locs.some(function(l){return l.id===layer._ld.id;});
+      if(isRelated){layer.setRadius(13);layer.setStyle({fillColor:"#c46b5d",color:"#fff",weight:3,fillOpacity:1});if(!layer._popupOpen){layer.openPopup();layer._popupOpen=true;setTimeout(function(){layer.closePopup();layer._popupOpen=false;},3000);}}
+      else{layer.setRadius(7);layer.setStyle({fillOpacity:0.5});}
+    });
+  },900);
+  setTimeout(function(){
+    mapMain.eachLayer(function(layer){if(!layer._ld)return;var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};layer.setRadius(8);layer.setStyle({fillColor:mc[layer._ld.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});});
+  },5000);
   }
   var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 }
