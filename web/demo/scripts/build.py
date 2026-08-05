@@ -420,8 +420,8 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
         for fpath in sorted(_g2.glob(str(wechat_dir2 / '*.md'))):
             with open(fpath, 'r', encoding='utf-8') as f:
                 text = f.read()
-            title_m = _re2.search(r'^# (.+)$', text, _re2.MULTILINE)
-            title = title_m.group(1).strip() if title_m else os.path.basename(fpath)
+            ht_m = _re2.search(r'^# (.+)$', text, _re2.MULTILINE)
+            ht_title = ht_m.group(1).strip() if ht_m else os.path.basename(fpath)
             body = _re2.sub(r'^---\s*\n.*?\n---\s*\n', '', text, flags=_re2.MULTILINE|_re2.DOTALL, count=1)
             for meta in ['来源','摘要','原文','下一篇','提取日期']:
                 body = _re2.sub(r'^\*\*'+meta+r'[:：].*$', '', body, flags=_re2.MULTILINE)
@@ -439,7 +439,7 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
             wx_url = ''
             url_m = _re2.search(r'原文[:：]\*{0,2}\s*(https?://[^\s\n]+)', text)
             if url_m: wx_url = url_m.group(1)
-            heart_articles.append({'title': title, 'body': body.strip(), 'url': wx_url})
+            heart_articles.append({'title': ht_title, 'body': body.strip(), 'url': wx_url})
 
     # Build inline data script
     data_script = f'''
