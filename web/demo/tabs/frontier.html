@@ -167,8 +167,8 @@ function switchFrontier(view){
 </script>
 <script>
 (function(){
-  if(typeof renderFrontier==="function")renderFrontier();
-  renderComments('frontier');
+  try{ if(typeof renderFrontier==="function")renderFrontier(); }catch(e){console.error(e);}
+  try{ renderComments('frontier'); }catch(e){console.error(e);}
 })();
 </script>
 </body>

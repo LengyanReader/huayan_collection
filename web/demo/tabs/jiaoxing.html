@@ -997,8 +997,8 @@ setTimeout(function(){_update();},600);
 </script>
 <script>
 (function(){
-  renderPractice();
-  renderComments('jiaoxing');
+  try{ renderPractice(); }catch(e){console.error(e);}
+  try{ renderComments('jiaoxing'); }catch(e){console.error(e);}
 })();
 </script>
 </body>

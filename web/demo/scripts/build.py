@@ -409,8 +409,8 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 </script>
 <script>
 (function(){{
-  {render_call}
-  renderComments('{tab_id}');
+  try{{ {render_call} }}catch(e){{console.error(e);}}
+  try{{ renderComments('{tab_id}'); }}catch(e){{console.error(e);}}
 }})();
 </script>
 </body>

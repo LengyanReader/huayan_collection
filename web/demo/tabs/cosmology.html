@@ -358,8 +358,8 @@ function showCosmoInfo(ly,i){
 </script>
 <script>
 (function(){
-  if(typeof renderCosmology==="function")renderCosmology();
-  renderComments('cosmology');
+  try{ if(typeof renderCosmology==="function")renderCosmology(); }catch(e){console.error(e);}
+  try{ renderComments('cosmology'); }catch(e){console.error(e);}
 })();
 </script>
 </body>

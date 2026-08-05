@@ -527,8 +527,8 @@ function loadParallelChapter(chId){
 </script>
 <script>
 (function(){
-  if(typeof renderGap==="function")renderGap();
-  renderComments('gap');
+  try{ if(typeof renderGap==="function")renderGap(); }catch(e){console.error(e);}
+  try{ renderComments('gap'); }catch(e){console.error(e);}
 })();
 </script>
 </body>

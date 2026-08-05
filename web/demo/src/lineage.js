@@ -1199,32 +1199,38 @@ function toggleAnim(){
   animTimer=setTimeout(animTick,getAnimSpeed());
 }
 
-// ═══ TABS ═══
-document.getElementById("tabs").addEventListener("click",function(e){
-  if(e.target.tagName!=="BUTTON")return;
-  switchTab(e.target.dataset.tab);
-});
+// ═══ TABS (safe: skip if standalone page has no #tabs) ═══
+var _tabs=document.getElementById("tabs");
+if(_tabs){
+  _tabs.addEventListener("click",function(e){
+    if(e.target.tagName!=="BUTTON")return;
+    switchTab(e.target.dataset.tab);
+  });
+}
 function switchTab(tab){
+  var tb=document.getElementById("tabs");if(!tb)return;
   document.querySelectorAll("#tabs button").forEach(function(b){b.classList.remove("active");});
-  document.querySelector("#tabs button[data-tab="+tab+"]").classList.add("active");
+  var btn=document.querySelector("#tabs button[data-tab="+tab+"]");
+  if(btn)btn.classList.add("active");
   document.querySelectorAll(".tab-content").forEach(function(t){t.classList.remove("active");});
-  document.getElementById("tab-"+tab).classList.add("active");
+  var tc=document.getElementById("tab-"+tab);
+  if(tc)tc.classList.add("active");
   location.hash=tab;
   if(tab==="lineage"){setTimeout(function(){resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();if(mapMini)mapMini.invalidateSize();},200);}
-  if(tab==="practice"){setTimeout(function(){renderPractice();},100);}
+  if(tab==="practice"){setTimeout(function(){if(typeof renderPractice==="function")renderPractice();},100);}
 }
-// Restore main tab from hash on load
+// Restore hash (safe)
 (function(){
   var hash=window.location.hash.replace('#','');
-  if(hash&&['lineage','practice','gap','cosmology','frontier'].indexOf(hash)>=0){
-    document.querySelector('#tabs button.active').classList.remove('active');
-    var btn=document.querySelector('#tabs button[data-tab='+hash+']');
-    if(btn)btn.classList.add('active');
-    document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});
-    var tc=document.getElementById('tab-'+hash);
-    if(tc)tc.classList.add('active');
-    if(hash==='lineage'){setTimeout(function(){resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();if(mapMini)mapMini.invalidateSize();},300);}
-    if(hash==='practice'){setTimeout(function(){renderPractice();},150);}
-  }
+  if(!hash||['lineage','practice','gap','cosmology','frontier'].indexOf(hash)<0)return;
+  var tb=document.getElementById("tabs");if(!tb)return;
+  var ab=document.querySelector('#tabs button.active');
+  if(ab)ab.classList.remove('active');
+  var btn=document.querySelector('#tabs button[data-tab='+hash+']');
+  if(btn)btn.classList.add('active');
+  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});
+  var tc=document.getElementById('tab-'+hash);
+  if(tc)tc.classList.add('active');
+  if(hash==='lineage'){setTimeout(function(){resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();if(mapMini)mapMini.invalidateSize();},300);}
 })();
 if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"+h))switchTab(h);}
