@@ -242,6 +242,9 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 #map-main-wrap{{position:relative;overflow:hidden;flex:1}}
 #map-main,#map-mini{{width:100%;height:100%}}
 #info-popup{{position:fixed;z-index:999;background:rgba(254,253,249,0.88);backdrop-filter:blur(4px);border:1px solid rgba(184,134,60,0.5);border-radius:10px;padding:8px 12px;font-size:0.72em;max-width:280px;max-height:45vh;overflow-y:auto;color:var(--text);box-shadow:0 4px 16px rgba(60,40,20,0.12);display:none}}
+.anim-popup .leaflet-popup-content-wrapper{{background:rgba(254,253,249,0.85)!important;backdrop-filter:blur(3px);border-radius:8px;box-shadow:0 2px 8px rgba(60,40,20,0.1);padding:6px 10px}}
+.anim-popup .leaflet-popup-content{{margin:0;font-size:0.7em;line-height:1.4;max-width:200px}}
+.anim-popup .leaflet-popup-tip{{background:rgba(254,253,249,0.85)!important}}
 #info-popup h3{{color:var(--gold);font-size:0.92em;margin-bottom:3px}}
 #info-popup .close-btn{{position:absolute;top:2px;right:6px;cursor:pointer;color:var(--text2);font-size:0.95em}}
 #controls{{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}}

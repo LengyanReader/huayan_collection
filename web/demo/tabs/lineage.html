@@ -17,6 +17,9 @@
 #map-main-wrap{position:relative;overflow:hidden;flex:1}
 #map-main,#map-mini{width:100%;height:100%}
 #info-popup{position:fixed;z-index:999;background:rgba(254,253,249,0.88);backdrop-filter:blur(4px);border:1px solid rgba(184,134,60,0.5);border-radius:10px;padding:8px 12px;font-size:0.72em;max-width:280px;max-height:45vh;overflow-y:auto;color:var(--text);box-shadow:0 4px 16px rgba(60,40,20,0.12);display:none}
+.anim-popup .leaflet-popup-content-wrapper{background:rgba(254,253,249,0.85)!important;backdrop-filter:blur(3px);border-radius:8px;box-shadow:0 2px 8px rgba(60,40,20,0.1);padding:6px 10px}
+.anim-popup .leaflet-popup-content{margin:0;font-size:0.7em;line-height:1.4;max-width:200px}
+.anim-popup .leaflet-popup-tip{background:rgba(254,253,249,0.85)!important}
 #info-popup h3{color:var(--gold);font-size:0.92em;margin-bottom:3px}
 #info-popup .close-btn{position:absolute;top:2px;right:6px;cursor:pointer;color:var(--text2);font-size:0.95em}
 #controls{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}
@@ -435,7 +438,7 @@ function drawTL(hlId){
     r.ps.forEach(function(p){
       var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);
       var noDates=!b&&!d;
-      var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0;
+      var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0||(p.ti||'').indexOf(searchQuery)>=0||(p.bio||'').indexOf(searchQuery)>=0;
       var hoverDim=hoverSet&&!hoverSet[p.id];
 
       // Special: persons without dates → diamond marker at left edge
@@ -1341,7 +1344,7 @@ function animSeek(yr){
       if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
       mapMain.closePopup();
       var pc='<div style=max-width:240px><b style=color:#c46b5d>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em>'+wp.info+'</span></div>';
-      L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
+      L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:200,autoPan:false,offset:[0,-6]})
         .setLatLng([wp.lat+0.5,wp.lng]).setContent(pc).openOn(mapMain);
     }
     if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
@@ -1404,7 +1407,7 @@ function animTick(){
           var popupOffset={buddhist:[0,-12],confucian:[30,-20],daoist:[-30,-8],western:[20,-30],islamic:[-20,-25]};
           var off=popupOffset[wp.rel||'buddhist']||[0,-10];
           var pc='<div style=max-width:240px><b style=color:'+relColor+'>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
-          L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:L.point(off[0],off[1])})
+          L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:200,autoPan:false,offset:L.point(off[0],off[1])})
             .setLatLng([wp.lat+0.3,wp.lng+0.2]).setContent(pc).openOn(mapMain);
         }
         if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);

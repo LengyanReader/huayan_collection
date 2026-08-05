@@ -296,7 +296,7 @@ function drawTL(hlId){
     r.ps.forEach(function(p){
       var b=p.b||(p.d?p.d-ds:null),d=p.d||(p.b?p.b+ds:null);
       var noDates=!b&&!d;
-      var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0;
+      var isHL=p.id===hlId,matches=!isSearch||p.n.indexOf(searchQuery)>=0||(p.ti||'').indexOf(searchQuery)>=0||(p.bio||'').indexOf(searchQuery)>=0;
       var hoverDim=hoverSet&&!hoverSet[p.id];
 
       // Special: persons without dates → diamond marker at left edge
@@ -1202,7 +1202,7 @@ function animSeek(yr){
       if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
       mapMain.closePopup();
       var pc='<div style=max-width:240px><b style=color:#c46b5d>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em>'+wp.info+'</span></div>';
-      L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:[0,-10]})
+      L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:200,autoPan:false,offset:[0,-6]})
         .setLatLng([wp.lat+0.5,wp.lng]).setContent(pc).openOn(mapMain);
     }
     if(animRouteMarkerU)animRouteMarkerU.setLatLng([wp.lat,wp.lng]);
@@ -1265,7 +1265,7 @@ function animTick(){
           var popupOffset={buddhist:[0,-12],confucian:[30,-20],daoist:[-30,-8],western:[20,-30],islamic:[-20,-25]};
           var off=popupOffset[wp.rel||'buddhist']||[0,-10];
           var pc='<div style=max-width:240px><b style=color:'+relColor+'>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
-          L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:260,autoPan:false,offset:L.point(off[0],off[1])})
+          L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:200,autoPan:false,offset:L.point(off[0],off[1])})
             .setLatLng([wp.lat+0.3,wp.lng+0.2]).setContent(pc).openOn(mapMain);
         }
         if(animRouteMarkerM)animRouteMarkerM.setLatLng([wp.lat,wp.lng]);
