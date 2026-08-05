@@ -614,6 +614,33 @@ def main():
     file_count += 1
     print(f'OK  {js_path} ({size:,} bytes)')
 
+    # ── Build index.html with dynamic stats ──
+    graph = load_graph()
+    temple_data = read_yaml('locations/temple_directory.yaml')
+    traj_data = read_yaml('events/person_trajectories.yaml')
+    traj_count = sum(1 for k, v in traj_data.items() if k.startswith('person_') and isinstance(v, dict) and 'route' in v) if traj_data else 0
+    temple_count = len(temple_data.get('temples', [])) if temple_data else 0
+    glossary_data = read_yaml('translation/glossary.yaml')
+    glossary_count = len(glossary_data.get('terms', [])) if glossary_data else 0
+
+    with open(OUT / 'index.html', 'r', encoding='utf-8') as f:
+        index_html = f.read()
+    index_html = index_html.replace('__STAT_PERSONS__', str(len(graph.get('nodes', []))))
+    index_html = index_html.replace('__STAT_EDGES__', str(len(graph.get('edges', []))))
+    index_html = index_html.replace('__STAT_TEMPLES__', str(temple_count))
+    index_html = index_html.replace('__STAT_TABS__', '5')
+    index_html = index_html.replace('__STAT_GLOSSARY__', str(glossary_count))
+
+    index_path = OUT / 'index.html'
+    with open(index_path, 'w', encoding='utf-8') as f:
+        f.write(index_html)
+    size = len(index_html.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    node_count = len(graph.get('nodes', []))
+    edge_count = len(graph.get('edges', []))
+    print(f'OK  {index_path} ({size:,} bytes | {node_count} persons | {temple_count} temples | {glossary_count} glossary)')
+
     print(f'\nTotal: {file_count} files | {total_size:,} bytes')
 
 
