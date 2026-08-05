@@ -1,0 +1,278 @@
+# 华严艺术珍品与多媒体资源 (从cosmology.js renderCosmology()提取)
+
+art_treasures:
+  - id: 1
+    title: "敦煌·华严经七处九会绢画(五代·吉美博物馆藏)"
+    icon: "🏛"
+    description: |
+      唯一存世的敦煌藏经洞华严经全经绢画 · MG.26462 · 194×179cm · 10世纪
+
+      敦煌藏经洞出土,近2米大幅绢本。九铺说法图对应七处九会:菩提场、普光明殿(3次)、忉利天宫、夜摩天宫、兜率天宫、他化天宫、逝多林。底部绘莲华藏世界海。据实叉难陀译八十华严绘制。《伯希和敦煌图录》第一卷图22即为莫高窟146窟同类题材。
+    location: "法国吉美国立亚洲艺术博物馆 (Musée Guimet, Paris) · 伯希和收集品"
+    links:
+      - text: "吉美博物馆官网"
+        url: "https://www.guimet.fr"
+      - text: "IDP 高清大图"
+        url: "http://idp.bl.uk/database/oo_scroll_h.a4d?uid=59205289518;bst=1;recnum=13528"
+      - text: "数字敦煌"
+        url: "https://www.e-dunhuang.com"
+      - text: "图说华严经"
+        url: "https://www.sohu.com/a/406251191_467442"
+
+  - id: 2
+    title: "敦煌·十地品变相图(唐·绢本设色)"
+    icon: "🏛"
+    description: |
+      绢本设色,62.5×20cm,藏经洞出土。毗卢遮那佛于他化自在天宣说十地法门,十幅画面逐层展现欢喜地至法云地的修行次第。两侧胁侍解脱月菩萨与金刚藏菩萨。
+    location: "法国吉美国立东方美术馆"
+    links:
+      - text: "吉美博物馆"
+        url: "https://www.guimet.fr"
+      - text: "图说华严经"
+        url: "https://www.sohu.com/a/406251191_467442"
+
+  - id: 3
+    title: "莫高窟·华严经变壁画群(28个洞窟·盛唐~宋)"
+    icon: "🖼"
+    description: |
+      敦煌莫高窟现存华严经变洞窟28个(盛唐44窟至宋454窟)。中唐后成熟:九宫格七处九会+底部莲华藏世界+善财五十三参屏风画。代表:第12窟(北壁·数字敦煌有收录)/第237窟(双头瑞像)/第146窟(伯希和图录)。
+    links:
+      - text: "敦煌研究院"
+        url: "https://www.dha.ac.cn"
+      - text: "数字敦煌"
+        url: "https://www.e-dunhuang.com"
+      - text: "伯希和图录 146窟"
+        url: "https://dsr.nii.ac.jp/reference/pelliot/entry/1-022.html.zh"
+
+  - id: 4
+    title: "奈良东大寺·卢舍那大佛(8世纪·世界遗产)"
+    icon: "🗿"
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/NaraTodaijiDaibutsu0212.jpg?width=640"
+    image_caption: "东大寺卢舍那大佛 · 金铜铸造 · 高约15m · 752年开眼 · 图片: Wikipedia Public Domain (Fg2, 2005)"
+    description: |
+      日本华严宗总本山。金铜卢舍那大佛高约15m,743年圣武天皇发愿铸造,752年开眼。大佛殿为世界现存最大木构建筑(宽57m×高49m)。正仓院藏唐代华严相关文物300+件(含全球唯一存世唐五弦琵琶)。1998年世界文化遗产。
+    links:
+      - text: "东大寺官网"
+        url: "https://www.todaiji.or.jp"
+      - text: "正仓院(宫内厅)"
+        url: "https://shosoin.kunaicho.go.jp"
+      - text: "YT 4K"
+        url: "https://www.youtube.com/results?search_query=%E6%9D%B1%E5%A4%A7%E5%AF%BA+%E5%A4%A7%E4%BD%9B+4K"
+      - text: "Wikimedia更多"
+        url: "https://commons.wikimedia.org/wiki/Category:Todaiji_Daibutsu_in_art"
+
+  - id: 5
+    title: "犍陀罗·华严佛传造像(贵霜时期·1-3世纪)"
+    icon: "🏺"
+    description: |
+      犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变在图像学上有渊源。栗田功《大美之佛像:犍陀罗艺术》(文物出版社2017)为权威参考。
+    links:
+      - text: "大英博物馆·犍陀罗"
+        url: "https://www.britishmuseum.org/collection/search?keyword=gandhara"
+      - text: "大都会博物馆"
+        url: "https://www.metmuseum.org/search?q=gandhara"
+      - text: "B站犍陀罗"
+        url: "https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F"
+
+  - id: 6
+    title: "莫高窟第237窟·双头瑞像(中唐·吐蕃时期)"
+    icon: "🖼"
+    description: |
+      中唐代表窟。西壁佛龛顶部绘双头瑞像——故事发生在犍陀罗国:两位贫士各请画师绘释迦像,画师收两份钱绘一尊,佛像显灵现双头一身神变。身着吐蕃服装的俗人仰礼,见证汉蕃丝路文化交流。
+    links:
+      - text: "敦煌研究院·237窟"
+        url: "https://www.dha.ac.cn/info/1425/3641.htm"
+
+  - id: 7
+    title: "洛阳龙门·奉先寺卢舍那大佛(唐·17m)"
+    icon: "🗿"
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vairocana%2C_Fengxian_Temple%2C_Longmen_Grottoes_%2810240207654%29.jpg?width=800"
+    image_caption: "龙门奉先寺卢舍那大佛 · 唐·672年 · 通高17.14m · 图片: Wikimedia CC0 Public Domain"
+    description: |
+      龙门石窟奉先寺卢舍那大佛(通高17.14m),唐高宗咸亨三年(672)武则天赞助营造。华严教主毗卢遮那佛的盛唐皇家造像巅峰,被誉东方蒙娜丽莎。与东大寺卢舍那、敦煌华严经变并称三大华严艺术瑰宝。
+    links:
+      - text: "B站龙门"
+        url: "https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA+%E5%8D%A2%E8%88%8D%E9%82%A3"
+      - text: "YT 4K"
+        url: "https://www.youtube.com/results?search_query=Longmen+Grottoes+Vairocana+4K"
+
+  - id: 8
+    title: "犍陀罗·佛陀坐像(3-4世纪·CMOA藏)"
+    icon: "🏺"
+    image_left: "https://commons.wikimedia.org/wiki/Special:FilePath/Afghanistan%2C_Gandhara%2C_Hadda%2C_late_Kushan_Period_-_Seated_Buddha_-_1967.39_-_Cleveland_Museum_of_Art.jpg?width=800"
+    image_right: "https://commons.wikimedia.org/wiki/Special:FilePath/The_Buddha_shows_Miracles%2C_Gandhara%2C_3rd_century_AD%2C_schist_-_Ethnological_Museum%2C_Berlin_-_DSC01646.JPG?width=800"
+    image_caption: "左: 犍陀罗佛陀坐像(Afghanistan, Hadda, 3-4世纪, stucco, CMOA CC0) · 右: 佛陀示现神变(3世纪, 柏林民族学博物馆 CC0)"
+    description: |
+      犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变图像学有渊源。栗田功《大美之佛像》(文物出版社2017)为权威参考。
+    links:
+      - text: "大英博物馆"
+        url: "https://www.britishmuseum.org/collection/search?keyword=gandhara"
+      - text: "Wikimedia 86张"
+        url: "https://commons.wikimedia.org/wiki/Category:Buddhist_statues_of_Gandhara"
+      - text: "B站"
+        url: "https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F"
+
+  - id: 9
+    title: "华藏世界海·3D可视化视频"
+    icon: "🎬"
+    description: "以下为华严宇宙观相关的公开视频资源,可点击播放:"
+    videos:
+      - topic: "华藏世界海·3D"
+        links:
+          - text: "YouTube搜索"
+            url: "https://www.youtube.com/results?search_query=Avatamsaka+Sutra+3D+Lotus+World"
+          - text: "B站搜索"
+            url: "https://www.bilibili.com/search?keyword=%E5%8D%8E%E4%B8%A5%E7%BB%8F+%E5%8D%8E%E8%97%8F%E4%B8%96%E7%95%8C+3D"
+      - topic: "东大寺大佛·4K"
+        links:
+          - text: "YouTube"
+            url: "https://www.youtube.com/results?search_query=Nara+Todaiji+Great+Buddha+4K"
+      - topic: "正仓院宝物"
+        links:
+          - text: "YouTube"
+            url: "https://www.youtube.com/results?search_query=Shosoin+Treasures"
+          - text: "B站正仓院"
+            url: "https://www.bilibili.com/search?keyword=%E6%AD%A3%E5%80%89%E9%99%A2"
+      - topic: "犍陀罗艺术纪录片"
+        links:
+          - text: "YouTube"
+            url: "https://www.youtube.com/results?search_query=Gandhara+Art+Documentary"
+          - text: "B站"
+            url: "https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E8%AE%B0%E5%BD%95%E7%89%87"
+
+# ── 华严古迹巡礼 ──
+pilgrimage_sites:
+  - name: "终南山·至相寺"
+    location: "陕西西安"
+    dynasty: "隋唐"
+    description: "华严宗发源地。杜顺、智俨于此创宗立教"
+    links: []
+
+  - name: "洛阳龙门·奉先寺"
+    location: "河南洛阳"
+    dynasty: "唐"
+    description: "卢舍那大佛(17m),武则天赞助。华严教主盛唐造像巅峰"
+    links:
+      - text: "B站"
+        url: "https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA"
+
+  - name: "长安·大慈恩寺"
+    location: "陕西西安"
+    dynasty: "唐"
+    description: "玄奘译场。华严经别译本于此译出"
+    links: []
+
+  - name: "五台山·大华严寺"
+    location: "山西"
+    dynasty: "唐~今"
+    description: "澄观著《华严经疏》处。华严宗圣地"
+    links: []
+
+  - name: "奈良·东大寺"
+    location: "日本奈良"
+    dynasty: "8世纪"
+    description: "日本华严宗总本山。审祥首讲华严经"
+    links:
+      - text: "官网"
+        url: "https://www.todaiji.or.jp"
+
+  - name: "支提山·大华严寺"
+    location: "苗栗通霄"
+    dynasty: "2026动土"
+    description: "海云继梦。与福建宁德支提华严祖庭隔海相望"
+    links:
+      - text: "官网"
+        url: "https://www.huayenworld.org"
+
+# ── 视频与多媒体资源 ──
+media_resources:
+  - topic: "华藏世界海·3D动画"
+    platform: "B站"
+    url: "https://www.bilibili.com/search?keyword=%E5%8D%8E%E4%B8%A5%E7%BB%8F+%E5%8D%8E%E8%97%8F%E4%B8%96%E7%95%8C+3D"
+
+  - topic: "東大寺大佛·4K"
+    platform: "YouTube"
+    url: "https://www.youtube.com/results?search_query=%E6%9D%B1%E5%A4%A7%E5%AF%BA+%E5%A4%A7%E4%BD%9B+4K"
+
+  - topic: "犍陀罗佛像艺术"
+    platform: "B站"
+    url: "https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F+%E8%AE%B0%E5%BD%95%E7%89%87"
+
+  - topic: "敦煌·华严经变"
+    platform: "B站"
+    url: "https://www.bilibili.com/search?keyword=%E6%95%A6%E7%85%8C+%E5%8D%8E%E4%B8%A5%E7%BB%8F%E5%8F%98"
+
+  - topic: "正仓院·唐代宝物"
+    platform: "YouTube"
+    url: "https://www.youtube.com/results?search_query=%E6%AD%A3%E5%80%89%E9%99%A2+%E5%AE%9D%E7%89%A9"
+
+# ── 专题参考书目 ──
+bibliography:
+  - "《大美之佛像:犍陀罗艺术》(栗田功·文物出版社 2017)"
+  - "《敦煌石窟全集 第22册·石窟建筑卷》"
+  - "《伯希和敦煌图录》(法·伯希和 1908)"
+  - "《伟大的博物馆:新德里国家博物馆中的敦煌艺术》(罗凯什·钱德拉 2024)"
+  - "《敦煌画研究》(法·吉埃 著)"
+  - "《图解华严经:读懂经中之王》(龙树菩萨释著)"
+  - "国际敦煌项目 IDP: idp.bl.uk（吉美/大英/新德里所有敦煌藏品在线数据库）"
+
+# ── 华严四十二字母 ──
+alphabet_intro: |
+  华严四十二字母出自《华严经·入法界品》(T10n0279),善财童子参访第四十四位善知识——众艺童子所传授的「字智法门」。依音节分一合(单字33个)·二合(双字拼合8个)·三合(三字拼合1个)。因字有语、因语有名、因名有义,唱诵可获殊胜功德。佛光山梵呗团版为最完整权威版本。
+
+alphabet_table:
+  - category: "一合(单字)"
+    count: 33
+    characters: "阿·多·波·左·那·逻·拖·婆·茶·沙·嚩·哆·也·瑟吒·迦·娑·么·伽·他·社·鏁·拖·奢·佉·叉·娑多·壤·曷攞多·婆·车·娑么·诃婆·縒·伽·吒·拏·娑颇·娑迦·也娑·室左·侘·陀"
+
+  - category: "二合(双字拼合)"
+    count: 8
+    characters: "娑多·曷攞多·婆·车·娑么·诃婆·縒·伽"
+
+  - category: "三合(三字拼合)"
+    count: 1
+    characters: "曷攞多"
+
+alphabet_source: "《大方广佛华严经·入法界品》(CBETA T10n0279卷八十) · 众艺童子传授善财童子「善知众艺菩萨字智法门」"
+
+# ── 梵呗资源 ──
+chant_resources:
+  - title: "佛光山梵呗团·华严字母(完整版)"
+    platform: "B站"
+    bvid: "BV1Jr421s7yH"
+    description: "佛光山梵呗团版为最完整权威版本"
+    search_url: "https://search.bilibili.com/all?keyword=%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D"
+
+  - title: "YouTube·华严字母梵呗"
+    platform: "YouTube"
+    youtube_id: "PdUVb9PM2qU"
+    search_url: "https://www.youtube.com/results?search_query=%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D+%E6%A2%B5%E5%94%B1"
+    extra_link:
+      text: "普陀梵呗官网"
+      url: "https://www.putuo.org.cn/fyxlptfb/"
+
+# ── 更多梵呗资源表 ──
+more_chant_resources:
+  - resource: "灵隐寺众僧·合唱《华严字母》"
+    source: "B站"
+    link: "https://www.bilibili.com/video/BV1HisMemEr6"
+
+  - resource: "印能法师·华严字母系列"
+    source: "B站/QQ音乐"
+    link: "https://search.bilibili.com/all?keyword=%E5%8D%B0%E8%83%BD%E6%B3%95%E5%B8%88+%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D"
+
+  - resource: "佛光山梵呗团·官方字幕MV"
+    source: "YouTube"
+    link: "https://www.youtube.com/results?search_query=%E4%BD%9B%E5%85%89%E5%B1%B1+%E8%8F%AF%E5%9A%B4%E5%AD%97%E6%AF%8D"
+
+  - resource: "天宁寺法师·梵呗唱诵"
+    source: "YouTube"
+    link: "https://www.youtube.com/watch?v=KcQ2yZ-lB8Y"
+
+  - resource: "南怀瑾·宏忍法师教授华严字母"
+    source: "B站"
+    link: "https://search.bilibili.com/all?keyword=%E5%8D%97%E6%80%80%E7%91%BE+%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D"
+
+  - resource: "普陀精舍·华严大法会起梵腔白"
+    source: "YouTube"
+    link: "https://www.youtube.com/watch?v=e_RmoPT7gv0"
