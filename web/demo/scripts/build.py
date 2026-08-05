@@ -117,7 +117,7 @@ PAGE_TOP = '''<!DOCTYPE html>
 <body>
 <header id="header">
   <a href="../index.html" class="back-link">&larr; 总览</a>
-  <h1>{title}</h1>
+  <h1>{title} <span style=font-size:0.6em;color:var(--text2)>v20260806</span></h1>
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar">
@@ -469,7 +469,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 <body>
 <header id="header">
   <a href="../index.html" class="back-link">&larr; 总览</a>
-  <h1>{title}</h1>
+  <h1>{title} <span style=font-size:0.6em;color:var(--text2)>v20260806</span></h1>
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar">
