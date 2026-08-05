@@ -1033,8 +1033,8 @@ var ANIM_WAYPOINTS=[
 var lastAnimLoc=-1;
 function getAnimSpeed(){
   var s=document.getElementById('anim-speed');
-  // slider 5-40 → delay 75ms-600ms (lower slider = faster = less delay)
-  return s?Math.max(60,parseInt(s.value)*15):225;
+  // slider 5-40: left=slow(600ms), right=fast(75ms)
+  return s?Math.max(60,(45-parseInt(s.value))*15):225;
 }
 var animPaused=false;
 var _seekBusy=false;
@@ -1193,7 +1193,8 @@ function toggleAnim(){
     animRouteMarkerU=L.circleMarker([28,78],{radius:10,fillColor:'#c46b5d',color:'#ff6',weight:2,fillOpacity:0.9}).addTo(mapMini);
     // Apply ancient mode to minimap tiles too
     var miniContainer=document.getElementById('map-mini-wrap');
-    if(miniContainer&&document.getElementById('tab-lineage').classList.contains('map-ancient'))miniContainer.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
+    var tlTab=document.getElementById('tab-lineage');
+    if(miniContainer&&tlTab&&tlTab.classList.contains('map-ancient'))miniContainer.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
   }
 
   animTimer=setTimeout(animTick,getAnimSpeed());

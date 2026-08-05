@@ -447,10 +447,9 @@ def main():
     # ── Build Tab2: Gap (restructured layout) ──
     sidebar_gap = '''
     <h3>📜 华严文献</h3>
-    <a href="#overview" class="nav-link active" data-section="overview">📊 差异总览</a>
-    <a href="#parallel" class="nav-link" data-section="parallel">📖 原文对读</a>
-    <a href="#genealogy" class="nav-link" data-section="genealogy">🕸 文本系谱</a>
-    <a href="#references" class="nav-link" data-section="references">📚 参考文献</a>
+    <a href="#gv-overview" class="nav-link active" data-section="gv-overview">📊 差异总览</a>
+    <a href="#gv-parallel" class="nav-link" data-section="gv-parallel">📖 原文对读</a>
+    <a href="#gv-genealogy" class="nav-link" data-section="gv-genealogy">🕸 文本系谱</a>
     '''
     gap_html = build_simple_tab_page('华严文献 · 汉藏差异', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
     gap_path = TABS_OUT / 'gap.html'
@@ -464,10 +463,10 @@ def main():
     # ── Build Tab3: Jiaoxing (renamed, restructured) ──
     sidebar_jx = '''
     <h3>🧘 华严教行</h3>
-    <a href="#system" class="nav-link active" data-section="system">📐 修行体系</a>
-    <a href="#meditation" class="nav-link" data-section="meditation">🗺 禅观法要</a>
-    <a href="#heart" class="nav-link" data-section="heart">❤️ 实修心要</a>
-    <a href="#resources" class="nav-link" data-section="resources">📡 讲法资源</a>
+    <a href="#pv-system" class="nav-link active" data-section="pv-system">📐 修行体系</a>
+    <a href="#pv-meditation" class="nav-link" data-section="pv-meditation">🗺 禅观法要</a>
+    <a href="#pv-heart" class="nav-link" data-section="pv-heart">❤️ 实修心要</a>
+    <a href="#pv-resources" class="nav-link" data-section="pv-resources">📡 讲法资源</a>
     '''
     jx_html = build_simple_tab_page('华严教行 · 修行体系', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
     jx_path = TABS_OUT / 'jiaoxing.html'
@@ -481,8 +480,8 @@ def main():
     # ── Build Tab4: Frontier (restructured) ──
     sidebar_fr = '''
     <h3>🔬 前沿对话</h3>
-    <a href="#dialogue" class="nav-link active" data-section="dialogue">🔬 跨界对话</a>
-    <a href="#litreview" class="nav-link" data-section="litreview">📑 文献综述</a>
+    <a href="#fv-dialogue" class="nav-link active" data-section="fv-dialogue">🔬 跨界对话</a>
+    <a href="#fv-litreview" class="nav-link" data-section="fv-litreview">📑 文献综述</a>
     '''
     fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
     fr_path = TABS_OUT / 'frontier.html'
@@ -496,11 +495,11 @@ def main():
     # ── Build Tab5: Cosmology (restructured) ──
     sidebar_co = '''
     <h3>🪷 世主妙严</h3>
-    <a href="#mandala" class="nav-link active" data-section="mandala">🌊 华藏世界海</a>
-    <a href="#tower" class="nav-link" data-section="tower">📐 三界诸天</a>
-    <a href="#art" class="nav-link" data-section="art">🎨 艺术珍品</a>
-    <a href="#chant" class="nav-link" data-section="chant">🎵 梵呗字母</a>
-    <a href="#sites" class="nav-link" data-section="sites">🗺 古迹巡礼</a>
+    <a href="#" class="nav-link active" onclick="document.getElementById('cosmo-canvas').scrollIntoView({behavior:'smooth'});return false">🌊 华藏世界海</a>
+    <a href="#" class="nav-link" onclick="document.getElementById('cosmo-tower').scrollIntoView({behavior:'smooth'});return false">📐 三界诸天</a>
+    <a href="#" class="nav-link">🎨 艺术珍品</a>
+    <a href="#" class="nav-link">🎵 梵呗字母</a>
+    <a href="#" class="nav-link">🗺 古迹巡礼</a>
     '''
     co_html = build_simple_tab_page('世主妙严 · 华藏世界海', 'cosmology', sidebar_co, 'if(typeof renderCosmology==="function")renderCosmology();')
     co_path = TABS_OUT / 'cosmology.html'
