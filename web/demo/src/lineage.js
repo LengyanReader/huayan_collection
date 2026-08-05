@@ -660,7 +660,8 @@ function toggleAncient(){
     allCivs.forEach(function(db){
       var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.04,className:'dynasty-boundary'}).addTo(mapMain);
       var cx=(db.bounds[0][1]+db.bounds[1][1])/2,cy=(db.bounds[0][0]+db.bounds[1][0])/2;
-      var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:8px;color:'+db.c+';font-weight:600;text-shadow:0 0 4px #fff;white-space:nowrap>'+db.n+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(mapMain);
+      var lblName=db.n||db.name||'?'; // support both DYNASTY_BOUNDARIES(n) and world_civilizations(name)
+      var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:8px;color:'+db.c+';font-weight:600;text-shadow:0 0 4px #fff;white-space:nowrap>'+lblName+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(mapMain);
       dynastyLayers.push({rect:r,label:lbl,db:db});
     });
     updateDynastyVisibility(-600);
@@ -1530,11 +1531,13 @@ function pauseAnim(){
   if(!animPlaying||animPaused)return;
   animPaused=true;clearTimeout(animTimer);
   document.getElementById("anim-btn").textContent="▶ 继续";
+  document.getElementById("map-play-btn").textContent="▶ 继续";
 }
 function resumeAnim(){
   if(!animPaused)return;
   animPaused=false;
   document.getElementById("anim-btn").textContent="⏸ 暂停";
+  document.getElementById("map-play-btn").textContent="⏸ 暂停";
   animTimer=setTimeout(animTick,getAnimSpeed());
 }
 function stopAnim(){
@@ -1542,6 +1545,8 @@ function stopAnim(){
   animYear=-600;
   document.getElementById("anim-btn").textContent="▶ 播放";
   document.getElementById("anim-stop-btn").style.display="none";
+  document.getElementById("map-play-btn").textContent="▶ 播放";
+  document.getElementById("map-stop-btn").style.display="none";
   var sb=document.getElementById('anim-status');if(sb){sb.style.opacity='0';sb.innerHTML='';}
   var py=document.getElementById('prog-year');if(py)py.textContent='-600年';
   var pg=document.getElementById('anim-progress');if(pg)pg.value=-600;
@@ -1572,6 +1577,8 @@ function animTick(){
     animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     document.getElementById("anim-stop-btn").style.display="none";
+    document.getElementById("map-play-btn").textContent="▶ 播放";
+    document.getElementById("map-stop-btn").style.display="none";
     if(speedLabel)speedLabel.textContent='1x';if(sb)sb.style.opacity='0';
     return;
   }
@@ -1623,6 +1630,8 @@ function toggleAnim(){
   if(animPlaying){
     clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
+    document.getElementById("map-play-btn").textContent="▶ 播放";
+    document.getElementById("map-stop-btn").style.display="none";
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
@@ -1633,7 +1642,7 @@ function toggleAnim(){
     return;
   }
   // ── START ──
-  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";document.getElementById("anim-stop-btn").style.display="inline";
+  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";document.getElementById("anim-stop-btn").style.display="inline";document.getElementById("map-play-btn").textContent="⏸ 暂停";document.getElementById("map-stop-btn").style.display="inline";
   animYear=-600;lastAnimLoc=-1;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
 
