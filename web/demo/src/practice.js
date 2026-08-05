@@ -559,12 +559,7 @@ function renderPractice(){
   // SUB-PAGE: 最新动态 (动态类内容集中)
   // ═══════════════════════════════════════════
   h+="<div id=pv-news class=pv-section style=display:block>";
-  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📰 最新动态:</b><a href='#news-updates' style=color:var(--blue)>近期动态</a>·<a href='#news-academic' style=color:var(--blue)>学术活动</a></div>";
-  h+="<div class=section id=news-updates><h2>📡 最新动态（2023-2026）</h2>";
-  h+="<div class=stage-box><b>2023 — 国立台北大学杰出校友</b><br>获遴选为母校杰出校友(2023年)。2024年1月促成华严学会与台北大学签署学术合作协议(一期两年.合计三期共六年),合办「新世纪永续发展」高峰论坛(2024-2025年)。</div>";
-  h+="<div class=stage-box><b>2026 — 「九九华严」五年讲座（TICC）</b><br>于台北国际会议中心举行，每月举办。将华严哲理「转化为通俗易懂的现代心理学与生命科学」语言，回应「AI科技与永续新时代」的挑战——「AI给得了答案，但给得了心安吗？」</div>";
-  h+="<div class=stage-box><b>2026.7.9 — 支提山大华严寺动土</b><br>苗栗县通霄镇。面向台湾海峡，与福建宁德支提华严祖庭隔海相望——「山海相应、法脉相承」。四百余位护法善信参与，五十三位嘉宾共同执铲（呼应善财五十三参）。</div>";
-  h+="<div class=stage-box><b>第四期佛教</b><br>大华严寺官网对海云法师使命的表述——「以中兴汉传佛教，开展<b>第四期佛教思想发展</b>为使命」。目前尚未见对第一至第三期的系统性论述。</div></div>";
+  h+="<div class=section style='border-left:4px solid var(--gold)'><h2>📰 最新动态（2023-2026）TEST</h2><p>测试——如果能看到这行文字，说明pv-news渲染正常。</p><p>2023: 国立台北大学杰出校友、2026: 九九华严TICC讲座、2026.7: 支提山动土、第四期佛教。</p></div>";
 
   h+="<div class=section id=news-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
   h+="<table class=v-table><tr><th>年份</th><th>会议/事件</th><th>主题</th></tr>";
