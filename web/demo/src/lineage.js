@@ -759,8 +759,8 @@ function toggleAncient(){
 function showInfo(p,p2,e){
   if(!p)return;
   var popup=document.getElementById('info-popup');
-  var content=document.getElementById('info-popup-content');
-  if(!popup||!content)return;
+  if(!popup)return;
+  // Use popup directly (compatible with showTempleInfo which sets innerHTML)
   var lc=(p.li&&DATA.lineage_colors[p.li])?DATA.lineage_colors[p.li]:"#b0a898";
   var locs=getPersonLocs(p.id),locHTML="";
   locs.forEach(function(l){var an=ancientMode?(LOC_ANCIENT[l.n]||l.n):l.n;locHTML+='📍 '+an+'<br>';});
@@ -793,7 +793,8 @@ function showInfo(p,p2,e){
   });
   var ti=TYPE_ICONS[p.tp]||'';
   var connCount=Object.keys(rels).reduce(function(s,k){return s+(rels[k]?rels[k].length:0);},0);
-  var h="<h3>"+(ti?'['+ti+'] ':'')+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
+  var h="<span class=close-btn onclick=\"document.getElementById('info-popup').style.display='none'\">&times;</span>"
+    +"<h3>"+(ti?'['+ti+'] ':'')+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
     +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
     +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span>"
     +((p.v||0)>0?'<span class=tag style=background:rgba(125,154,110,0.1);color:#7d9a6e>✓</span>':'<span class=tag style=background:rgba(200,160,80,0.1);color:#a08020>°</span>')
@@ -848,7 +849,7 @@ function showInfo(p,p2,e){
   }
   // ── Relationship graph canvas ──
   h+='<canvas id=rel-graph width=240 height=150 style="display:block;margin:6px auto 0;border-radius:6px;background:rgba(246,242,232,0.5)"></canvas>';
-  content.innerHTML=h;
+  popup.innerHTML=h;
   // Draw relationship graph after DOM update
   setTimeout(function(){drawRelationGraph(p.id);},50);
   popup.style.display='block';popup.style.visibility='visible';popup.style.opacity='1';
