@@ -860,11 +860,14 @@ function showInfo(p,p2,e){
   popup.style.display='block';popup.style.visibility='visible';popup.style.opacity='1';
   // Ensure popup has sensible default position
   if(!popup.style.left||popup.style.left==='0px'){popup.style.left='60vw';popup.style.top='10vh';}
-  // Auto-hide timer: close after 5s unless mouse is over it
+  // Auto-hide: 12s initial, stays while hovering, 5s after mouse leaves
+  // Click to pin: click the popup to toggle fixed mode
   if(popup._autoTimer)clearTimeout(popup._autoTimer);
+  popup._pinned=false;
   popup.onmouseenter=function(){if(popup._autoTimer)clearTimeout(popup._autoTimer);};
-  popup.onmouseleave=function(){popup._autoTimer=setTimeout(function(){popup.style.display='none';},3000);};
-  popup._autoTimer=setTimeout(function(){popup.style.display='none';},5000);
+  popup.onmouseleave=function(){if(!popup._pinned)popup._autoTimer=setTimeout(function(){popup.style.display='none';},5000);};
+  popup.onclick=function(e){if(e.target.tagName==='BUTTON'||e.target.tagName==='A')return;popup._pinned=!popup._pinned;popup.style.borderColor=popup._pinned?'#c46b5d':'rgba(184,134,60,0.5)';if(!popup._pinned)popup.style.display='none';};
+  popup._autoTimer=setTimeout(function(){popup.style.display='none';},12000);
   // Position: mobile=centered, desktop=near click
   var isMobile=window.innerWidth<768;
   if(isMobile){
