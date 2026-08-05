@@ -654,14 +654,16 @@ function toggleAncient(){
     });
     // Re-init transmission story and schools
     initTransStory();initOtherSchools();
-    // Show dynasty boundaries (only current dynasty based on year)
-    DYNASTY_BOUNDARIES.forEach(function(db){
-      var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.05,className:'dynasty-boundary'}).addTo(mapMain);
+    // Show dynasty boundaries (Chinese + world civilizations)
+    var allCivs = (typeof WORLD_CIVILIZATIONS !== 'undefined' && WORLD_CIVILIZATIONS.civilizations)
+      ? DYNASTY_BOUNDARIES.concat(WORLD_CIVILIZATIONS.civilizations) : DYNASTY_BOUNDARIES;
+    allCivs.forEach(function(db){
+      var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.04,className:'dynasty-boundary'}).addTo(mapMain);
       var cx=(db.bounds[0][1]+db.bounds[1][1])/2,cy=(db.bounds[0][0]+db.bounds[1][0])/2;
-      var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:11px;color:'+db.c+';font-weight:700;text-shadow:0 0 6px #fff>'+db.n+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(mapMain);
+      var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:8px;color:'+db.c+';font-weight:600;text-shadow:0 0 4px #fff;white-space:nowrap>'+db.n+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(mapMain);
       dynastyLayers.push({rect:r,label:lbl,db:db});
     });
-    updateDynastyVisibility(-600); // Start year
+    updateDynastyVisibility(-600);
     // Update all location popups to show ancient names
     mapMini.eachLayer(function(layer){
       if(!layer._ld)return;
