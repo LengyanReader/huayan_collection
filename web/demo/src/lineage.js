@@ -1162,6 +1162,7 @@ function showTempleInfo(tid){
     +(t.events&&t.events.length?'<br>📜 重大事件: '+t.events.join(' · '):'')
     +(t.source?'<div style="margin-top:3px;font-size:0.65em;color:var(--text2);opacity:0.7">📚 '+t.source+'</div>':'')
     +(t.links&&t.links.length?'<div style=margin-top:4px>🔗 '+t.links.map(function(l){return '<a href='+l.url+' target=_blank style=color:var(--blue);font-size:0.7em>'+l.name+'</a>';}).join(' · ')+'</div>':'');
+  popup.style.zIndex='2001'; // Above roster-modal (2000)
   popup.innerHTML=h;popup.style.display='block';popup.style.visibility='visible';popup.style.opacity='1';
   popup.style.left='55vw';popup.style.top='8vh';popup.style.width='320px';
   popup.onclick=function(e){if(e.target.tagName!=='BUTTON'&&e.target.tagName!=='A')popup.style.display='none';};
@@ -1170,7 +1171,7 @@ function showTempleInfo(tid){
   popup.onmouseleave=function(){popup._autoTimer=setTimeout(function(){popup.style.display='none';},5000);};
   popup._autoTimer=setTimeout(function(){popup.style.display='none';},15000);
   // Fly map to temple location
-  if(mapMain&&t.lat&&t.lng){mapMain.flyTo([t.lat,t.lng],12,{duration:1});}
+  if(mapMain&&t.lat&&t.lng){setTimeout(function(){mapMain.flyTo([t.lat,t.lng],12,{duration:1});},100);}
 }
 
 // ═══ LAYER TOGGLE ═══
