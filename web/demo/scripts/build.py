@@ -67,16 +67,15 @@ def load_gap():
 
 def load_events():
     """Load all event YAML files and return merged dict."""
+    import glob as _glob
     events = {}
-    event_files = [
-        'key_events', 'anim_waypoints', 'transmission_story',
-        'theory_stages', 'practice_stages', 'geo_flow',
-        'era_brackets', 'other_schools', 'loc_ancient', 'dynasty_boundaries'
-    ]
-    for name in event_files:
-        data = read_yaml(f'events/{name}.yaml')
-        if data:
-            events[name] = data
+    events_dir = DATA_DIR / 'events'
+    if events_dir.exists():
+        for fpath in _glob.glob(str(events_dir / '*.yaml')):
+            name = os.path.splitext(os.path.basename(fpath))[0]
+            data = read_yaml(f'events/{name}.yaml')
+            if data:
+                events[name] = data
     return events
 
 
