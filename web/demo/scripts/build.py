@@ -166,11 +166,41 @@ def build_page(title, tab_id, sidebar_links, tab_js_name, init_call):
     practice = load_practice()
     frontier = load_frontier()
     heart = read_json('web/demo/gap.json')  # placeholder
-    # Actually load HEART from the old build
+    # Load HEART_ARTICLES from wechat markdown files
+    import glob as _g, re as _re
     heart_articles = []
-    wechat_dir = DATA_DIR / 'hy_refs' / 'wechat'
+    wechat_dir = ROOT / 'docs' / 'hy_refs' / 'wechat'
     if wechat_dir.exists():
-        heart_articles = []  # Will be populated from existing data
+        for fpath in sorted(_g.glob(str(wechat_dir / '*.md'))):
+            with open(fpath, 'r', encoding='utf-8') as f:
+                text = f.read()
+            title_m = _re.search(r'^# (.+)$', text, _re.MULTILINE)
+            title = title_m.group(1).strip() if title_m else os.path.basename(fpath)
+            # Remove frontmatter
+            body = _re.sub(r'^---\s*\n.*?\n---\s*\n', '', text, flags=_re.MULTILINE|_re.DOTALL, count=1)
+            for meta in ['来源','摘要','原文','下一篇','提取日期']:
+                body = _re.sub(r'^\*\*'+meta+r'[:：].*$', '', body, flags=_re.MULTILINE)
+            body = _re.sub(r'^# .+$', '', body, 1, flags=_re.MULTILINE)
+            body = _re.sub(r'^\s*---\s*$', '', body, flags=_re.MULTILINE)
+            body = body.strip()
+            # Convert images
+            body = _re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1' onclick='window.open(this.src)' title='点击查看原图'></div>''', body)
+            body = _re.sub(r'\[图片\]', '', body)
+            body = _re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', body)
+            body = _re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank">\1</a>', body)
+            paras = [p.strip() for p in body.split('\n\n') if p.strip()]
+            body = ''
+            for p in paras:
+                if p.startswith('<div class=') or p.startswith('<img'):
+                    body += p + '\n'
+                elif len(p)<80 and not p.startswith('<') and p.count('\n')==0:
+                    body += '<h4>' + p + '</h4>\n'
+                else:
+                    body += '<p>' + p.replace('\n','<br>') + '</p>\n'
+            wx_url = ''
+            url_m = _re.search(r'原文[:：]\*{0,2}\s*(https?://[^\s\n]+)', text)
+            if url_m: wx_url = url_m.group(1)
+            heart_articles.append({'title': title, 'body': body.strip(), 'url': wx_url})
 
     html = PAGE_TOP.format(
         title=title,
@@ -382,6 +412,35 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
     practice = load_practice()
     frontier = load_frontier()
 
+    # Load heart articles
+    import glob as _g2, re as _re2
+    heart_articles = []
+    wechat_dir2 = ROOT / 'docs' / 'hy_refs' / 'wechat'
+    if wechat_dir2.exists():
+        for fpath in sorted(_g2.glob(str(wechat_dir2 / '*.md'))):
+            with open(fpath, 'r', encoding='utf-8') as f:
+                text = f.read()
+            title_m = _re2.search(r'^# (.+)$', text, _re2.MULTILINE)
+            title = title_m.group(1).strip() if title_m else os.path.basename(fpath)
+            body = _re2.sub(r'^---\s*\n.*?\n---\s*\n', '', text, flags=_re2.MULTILINE|_re2.DOTALL, count=1)
+            for meta in ['来源','摘要','原文','下一篇','提取日期']:
+                body = _re2.sub(r'^\*\*'+meta+r'[:：].*$', '', body, flags=_re2.MULTILINE)
+            body = _re2.sub(r'^# .+$', '', body, 1, flags=_re2.MULTILINE)
+            body = _re2.sub(r'^\s*---\s*$', '', body, flags=_re2.MULTILINE).strip()
+            body = _re2.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'''<div class='himg'><img src='\2' alt='\1' onclick='window.open(this.src)'></div>''', body)
+            body = _re2.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', body)
+            body = _re2.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank">\1</a>', body)
+            paras = [p.strip() for p in body.split('\n\n') if p.strip()]
+            body = ''
+            for p in paras:
+                if p.startswith('<div class='): body += p + '\n'
+                elif len(p)<80 and not p.startswith('<') and p.count('\n')==0: body += '<h4>'+p+'</h4>\n'
+                else: body += '<p>'+p.replace('\n','<br>')+'</p>\n'
+            wx_url = ''
+            url_m = _re2.search(r'原文[:：]\*{0,2}\s*(https?://[^\s\n]+)', text)
+            if url_m: wx_url = url_m.group(1)
+            heart_articles.append({'title': title, 'body': body.strip(), 'url': wx_url})
+
     # Build inline data script
     data_script = f'''
 var GRAPH = {json.dumps(graph, ensure_ascii=False)};
@@ -390,7 +449,7 @@ var EVENTS = {json.dumps(events, ensure_ascii=False)};
 var COSMO_DATA = {json.dumps(cosmo, ensure_ascii=False)};
 var PRACTICE_DATA = {json.dumps(practice, ensure_ascii=False)};
 var FRONTIER_DATA = {json.dumps(frontier, ensure_ascii=False)};
-var HEART_ARTICLES = {{}};
+var HEART_ARTICLES = {json.dumps(heart_articles, ensure_ascii=False)};
 var DATA = GRAPH;
 var nodeMap = {{}};
 if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});

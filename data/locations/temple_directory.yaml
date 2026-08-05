@@ -700,3 +700,154 @@ temples:
     persons: [person_zhuxi]
     source: 《宋史·朱熹传》
     verified: 1
+
+  # ═══════════════════════════════════════
+  # 藏传佛教 补充
+  # ═══════════════════════════════════════
+  - id: t_tibetan_003
+    name: 桑耶寺
+    school: 藏传佛教
+    type: temple
+    location: 西藏山南扎囊
+    lat: 29.3
+    lng: 91.5
+    dynasty: 唐
+    founded: 775
+    founder: 莲花生
+    description: 西藏第一座佛法僧三宝俱全的寺院。莲花生大师主持修建，赤松德赞倡导。仿印度飞行寺形制，三层分别以藏汉印风格建造。
+    significance: 西藏第一座佛教寺院·印藏汉三地风格融合
+    persons: [person_padmasambhava]
+    source: 王森《西藏佛教发展史略》
+    verified: 1
+
+  - id: t_tibetan_004
+    name: 布达拉宫
+    school: 藏传佛教·格鲁派
+    type: temple
+    location: 西藏拉萨
+    lat: 29.65
+    lng: 91.12
+    dynasty: 唐/清
+    founded: 641
+    founder: 松赞干布
+    description: 松赞干布为文成公主始建，五世达赖重建为政教合一中心。世界文化遗产。红宫白宫面积13万平方米。
+    significance: 西藏政教合一象征·世界文化遗产
+    source: 王森《西藏佛教发展史略》
+    verified: 1
+
+  - id: t_tibetan_005
+    name: 萨迦寺
+    school: 藏传佛教·萨迦派
+    type: temple
+    location: 西藏日喀则萨迦
+    lat: 28.9
+    lng: 88.0
+    dynasty: 宋/元
+    founded: 1073
+    founder: 昆·贡却杰布
+    description: 萨迦派祖庭。八思巴驻锡于此，创蒙古新字、为元朝帝师。萨迦派的政教合一由此始。以灰色墙壁得名。
+    significance: 萨迦派祖庭·八思巴驻锡处
+    persons: [person_badang]
+    source: 王森《西藏佛教发展史略》/ 《萨迦世系史》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 禅宗 补充
+  # ═══════════════════════════════════════
+  - id: t_chan_006
+    name: 洪州开元寺(佑民寺)
+    school: 禅宗·洪州宗
+    type: temple
+    location: 江西南昌
+    lat: 28.6
+    lng: 115.9
+    dynasty: 唐
+    founded: 740
+    founder: 马祖道一
+    description: 马祖道一于此创洪州宗。「平常心是道」「即心即佛」出此。马祖建丛林、百丈立清规——中国禅宗寺院制度由此成型。
+    significance: 洪州宗发源地·马祖道场
+    persons: [person_mazu, person_baizhang]
+    source: 《景德传灯录》
+    verified: 1
+
+  - id: t_chan_007
+    name: 百丈山百丈寺
+    school: 禅宗·洪州宗
+    type: temple
+    location: 江西奉新
+    lat: 28.5
+    lng: 115.0
+    dynasty: 唐
+    founded: 780
+    founder: 百丈怀海
+    description: 百丈怀海于此创《百丈清规》，为天下禅林共守。「一日不作一日不食」出此。禅宗从此有了独立的寺院经济与管理制度。
+    significance: 百丈清规诞生地·禅宗独立制度发源地
+    persons: [person_baizhang]
+    source: 《景德传灯录》《百丈清规》
+    verified: 1
+
+  - id: t_chan_008
+    name: 福州雪峰崇圣寺
+    school: 禅宗
+    type: temple
+    location: 福建闽侯
+    lat: 26.2
+    lng: 119.0
+    dynasty: 唐
+    founded: 870
+    founder: 雪峰义存
+    description: 雪峰义存于此开法。门下出云门文偃、法眼文益——云门宗法眼宗皆源于此。有「南方第一丛林」之称。
+    significance: 云门宗法眼宗根源·南方第一丛林
+    persons: [person_xuefeng]
+    source: 《景德传灯录》
+    verified: 1
+
+  - id: t_chan_009
+    name: 雪窦山资圣寺
+    school: 禅宗
+    type: temple
+    location: 浙江奉化
+    lat: 29.7
+    lng: 121.2
+    dynasty: 唐/宋
+    founded: 840
+    founder: 常通禅师
+    description: 宋代雪窦重显于此著《雪窦颂古》开文字禅先河。弥勒道场·佛教五大名山之一。
+    significance: 文字禅发源地·弥勒道场
+    source: 《五灯会元》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 道家 补充
+  # ═══════════════════════════════════════
+  - id: t_daoist_005
+    name: 茅山道院
+    school: 道家·上清派
+    type: mountain
+    location: 江苏句容茅山
+    lat: 31.8
+    lng: 119.3
+    dynasty: 汉/历代
+    founded: -100
+    founder: 茅盈(传说)
+    description: 道教上清派祖庭。陶弘景于此创茅山宗。「茅山道士」闻名天下。与终南山(楼观台·全真)并称道教两大祖山。
+    significance: 上清派祖庭·茅山宗发源地
+    persons: [person_taohongjing]
+    source: 《梁书·陶弘景传》/ 《茅山志》
+    verified: 1
+
+  - id: t_daoist_006
+    name: 王屋山阳台宫
+    school: 道家·上清派
+    type: mountain
+    location: 河南济源王屋山
+    lat: 35.1
+    lng: 112.3
+    dynasty: 唐
+    founded: 725
+    founder: 司马承祯
+    description: 司马承祯于此著《坐忘论》。唐玄宗召见于此授篆。王屋山为道教十大洞天之第一「小有清虚之天」。
+    significance: 道教第一洞天·司马承祯道场
+    persons: [person_simachengzhen]
+    source: 《旧唐书·司马承祯传》
+    verified: 1
