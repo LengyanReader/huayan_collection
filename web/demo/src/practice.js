@@ -4,20 +4,21 @@ function renderPractice(){
   var h="";
   h+="<style>.wu-door{cursor:pointer;padding:10px 14px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;transition:all 0.2s}.wu-door:hover{border-color:var(--gold-l)}.wu-door .arrow{display:inline-block;transition:transform 0.2s;margin-right:6px}.wu-door.open .arrow{transform:rotate(90deg)}.wu-door .body{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:0.9em;line-height:1.8;color:var(--text2)}.wu-door.open .body{display:block}.wu-door .ttl{font-weight:600;color:var(--gold);font-size:1em}.topic-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}.topic-card h4{color:var(--gold);font-size:0.88em;margin-bottom:4px}.topic-card p{font-size:0.78em;line-height:1.7;color:var(--text2)}.topic-card a{color:var(--blue);font-size:0.75em}</style>";
 
-  // ── Sub-navigation ──
-  h+="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='pv-nav active' onclick='switchPracticeView(\"system\",this)'>🧘 修行体系</button><button class='pv-nav' onclick='switchPracticeView(\"meditation\",this)'>📐 禅观法要</button><button class='pv-nav' onclick='switchPracticeView(\"heart\",this)'>❤️ 实修心要</button><button class='pv-nav' onclick='switchPracticeView(\"resources\",this)'>📡 讲法资源</button></div>";
+  // ── WIP Notice (页面最顶部) ──
+  h+="<div style='background:rgba(184,134,60,0.06);border:1px solid #b8863c40;border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:0.75em;color:var(--text2);line-height:1.6'>"
+    +"⚠ <b>内容声明：</b>本页面内容基于大华严寺官网(2025.11版)和海云继梦和上已公开的讲经视频/音频/逐字稿/出版物整理。"
+    +"法师讲法内容不断更新演化，当前整理仍不完整，需要大量结构化梳理和补充核实，<b>仅供参考</b>，持续更新中。"
+    +"最新修行体系请以大华严寺官网为准。<br>"
+    +"📅 最近更新：2026-08-02</div>";
 
   // ═══════════════════════════════════════════
   // SUB-PAGE 1: 修行体系 (default visible)
   // ═══════════════════════════════════════════
   h+="<div id=pv-system class=pv-section>";
 
-  // ── WIP Notice ──
-  h+="<div style='background:rgba(184,134,60,0.06);border:1px solid #b8863c40;border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:0.75em;color:var(--text2);line-height:1.6'>"
-    +"⚠ <b>内容声明：</b>本页面内容基于大华严寺官网(2025.11版)和海云继梦和上已公开的讲经视频/音频/逐字稿/出版物整理。"
-    +"法师讲法内容不断更新演化，当前整理仍不完整，需要大量结构化梳理和补充核实，<b>仅供参考</b>，持续更新中。"
-    +"最新修行体系请以大华严寺官网为准。<br>"
-    +"📅 最近更新：2026-08-02</div>";
+  // ── 子目录导航 ──
+  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📐 修行体系:</b>"
+    +"<a href='#sys-stages' style=color:var(--blue)>三阶段</a>·<a href='#sys-blueprint' style=color:var(--blue)>四阶段蓝图</a>·<a href='#sys-six' style=color:var(--blue)>六科五大行法</a>·<a href='#sys-lineages' style=color:var(--blue)>法脉分工</a>·<a href='#sys-projects' style=color:var(--blue)>四大工程</a>·<a href='#sys-cognition' style=color:var(--blue)>识根智</a>·<a href='#sys-refuge' style=color:var(--blue)>三缘念</a>·<a href='#sys-news' style=color:var(--blue)>最新动态</a>·<a href='#sys-evolution' style=color:var(--blue)>演进脉络</a></div>";
 
   // ── Header ──
   h+="<div class=section style=border-left:4px solid var(--gold)><h2>🧘 华严行法 — 普贤乘修行体系</h2>";
@@ -39,13 +40,13 @@ function renderPractice(){
   h+="</div>";
 
   // ── 修行三阶段 ──
-  h+="<div class=section><h2>📐 修行三阶段（据大华严寺官网「修行蓝图」2025.11）</h2>";
+  h+="<div class=section id=sys-stages><h2>📐 修行三阶段（据大华严寺官网「修行蓝图」2025.11）</h2>";
   h+="<div class=stage-box><b>一、禅修入门 — 发心工程（资粮道）</b><br>三门必修: 人格健康+出离心+菩提心。含<b>五科</b>（戒·律·调身·调息·调心）。技术面: 纯化禅(动→静)→象限转移→瞬间定。工程面: 心性培养+戒律基础。官网: 「发心——出三界、入法界之志,建立信根与定位。」</div>";
   h+="<div class=stage-box><b>二、禅修前行 — 内摄工程</b><br>核心: 安那般那数息观(数.随.止)。官网: 「调息安稳,气息有序;守意——令心不外驰,身息心三者逐步协同。」观法次第: <b>驻佇心观</b>(停心前行)-><b>唯心识观</b>(钝根先修.毗钵舍那)-><b>真如实观</b>(利根直修.奢摩他)-><b>毗婆舍那</b>-><b>奢摩他</b>。详见「📐 禅观法要」子页。</div>";
   h+="<div class=stage-box><b>三、禅修正行 — 等持工程（内观）</b><br>前半程三摩呬多→后半程三摩钵底→究竟三摩地。官网: 「以观导定、以定成观,当下验果,不逐境界名相而重身心之柔和、稳定、清明。」课程配比: <b>70%修行面 + 30%健康面</b>。延伸: 一日禅·二日禅·忍可禅七。</div></div>";
 
   // ── 四阶段修行蓝图 ──
-  h+="<div class=section><h2>🪜 四阶段修行蓝图（海云法师判摄）</h2>";
+  h+="<div class=section id=sys-blueprint><h2>🪜 四阶段修行蓝图（海云法师判摄）</h2>";
   h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:8px>据海云法师《四十华严讲记》第四卷第67讲及大华严寺官网「修行蓝图」页面。整套蓝图涵盖从信众到证量的完整阶次。</p>";
   h+="<div class=stage-box><b>一、出离乘</b>（出离心→出离道→出离行）<br>以脱离轮回、了生死为基础动机，建立「出三界、入法界」之志。</div>";
   h+="<div class=stage-box><b>二、菩提乘</b>（菩提心→菩提道→菩提行）<br>发心求觉悟。法师称此「只是起步」。</div>";
@@ -53,7 +54,7 @@ function renderPractice(){
   h+="<div class=stage-box><b>四、普贤乘</b>（普贤心→普贤行→普贤道）<br><b style=color:var(--gold)>究竟归趣。</b>法师称「究竟要到普贤乘来」——此即「普贤乘华严宗」名称的义理出处。</div></div>";
 
   // ── 华严六科 + 五大行法 ──
-  h+="<div class=section><h2>🎯 华严六科 & 五大行法</h2>";
+  h+="<div class=section id=sys-six><h2>🎯 华严六科 & 五大行法</h2>";
   h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:8px>海云法师将传统华严义学重组为可依次修学的课程架构。「五大行法」即六科中除总论外的五项——禅、净、律、密、经教——主张华严宗并非纯粹「解门」而有完整「行门」。</p>";
   h+="<table class=v-table><tr><th>科目</th><th>内容</th></tr>";
   h+="<tr><td>华严学概论</td><td>华严经结构·五教十宗·法界缘起（总纲性导论）</td></tr>";
@@ -65,14 +66,14 @@ function renderPractice(){
   h+="</table></div>";
 
   // ── 三大法脉行法分工 ──
-  h+="<div class=section><h2>⚡ 三大法脉行法分工</h2>";
+  h+="<div class=section id=sys-lineages><h2>⚡ 三大法脉行法分工</h2>";
   h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:4px>海云法师对三条汇流法脉在体系中各自的功能分工（据大华严寺官网及讲记）：</p>";
   h+="<div class=stage-box><b>中观论派 →「解」</b><br>义理/空性论证——负责「理解」层面的理论基础。</div>";
   h+="<div class=stage-box><b>华严思想 →「架构」</b><br>提供整体的世界观与义理框架——「事事无碍法界」「法界缘起」等核心世界观。</div>";
   h+="<div class=stage-box><b>瑜伽行派 →「行」</b><br>禅观正行/实修技术来源。源自印度 Maha Yoga 传承（胜师子王菩萨），法师将其等同于「禅宗的禅观正行」。<br><span style=font-size:0.75em;color:var(--text2)>注: 官网将这支传承直接注解为「大乘瑜伽行派／Yogācāra 之行门精义」，读者可留意其中的诠释性跨度。</span></div></div>";
 
   // ── 四大工程 ──
-  h+="<div class=section><h2>🏗 四大工程</h2><table class=v-table><tr><th>工程</th><th>性质</th></tr>";
+  h+="<div class=section id=sys-projects><h2>🏗 四大工程</h2><table class=v-table><tr><th>工程</th><th>性质</th></tr>";
   h+="<tr><td><b>结界工程</b></td><td>短期共修——调整身心频率的具体操作</td></tr>";
   h+="<tr><td><b>华藏工程</b></td><td>双重意涵: ①个人前行阶段必修课程（建立语言/思维模式）②跨世代文明教育志业——法师称「华藏工程五百年」</td></tr>";
   h+="<tr><td><b>华严大学</b></td><td>体制化培育弘法与研究人才的当代项目（非月霞法师等创办的历史性华严大学）</td></tr>";
@@ -80,14 +81,14 @@ function renderPractice(){
   h+="</table></div>";
 
   // ── 识·根·智 ──
-  h+="<div class=section><h2>🔬 识·根·智 — 三层认知转换</h2>";
+  h+="<div class=section id=sys-cognition><h2>🔬 识·根·智 — 三层认知转换</h2>";
   h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:4px>法师自创的认知层次术语，用以区分凡夫、行者、法身大士三个阶段所依靠的不同认知机制：</p>";
   h+="<div class=stage-box><b>识性（凡夫阶段）</b><br>「能」——妄想心。「识性的能绑虚妄的身」——凡夫是「身心混杂」状态。</div>";
   h+="<div class=stage-box><b>根性（初果至四果阶段）</b><br>「所」。此阶段关键操作是<b>「舍识用根」</b>。</div>";
   h+="<div class=stage-box><b>智（十信位圆满之后）</b><br>此后「以智为先导」，不再「以所为先导」。<br><span style=font-size:0.75em;color:var(--text2)>注: 法师坦承这套区分是借助现代汉语语法结构对古典义理的诠释性翻译，非声称唯一表述。</span></div></div>";
 
   // ── 三缘念 ──
-  h+="<div class=section><h2>🙏 三缘念 — 修行归依</h2>";
+  h+="<div class=section id=sys-refuge><h2>🙏 三缘念 — 修行归依</h2>";
   h+="<p style=line-height:1.8>海云法师在传统「皈依三宝」之外，提出更具操作性的归依框架：<br>";
   h+="<b>① 缘念道场</b> — 缘念僧团，以道场为修行依止处；<br>";
   h+="<b>② 缘念善知识</b> — 缘念具体指导的师长，接受僧团制度性指导；<br>";
@@ -95,14 +96,14 @@ function renderPractice(){
   h+="<span style=font-size:0.78em;color:var(--text2)>修行态度: 法师强调「自顾灵山，不顾名山」「知道不算，做到才算」——真正的修行来自扎实的日常践行。</span></p></div>";
 
   // ── 最新动态 ──
-  h+="<div class=section><h2>📡 最新动态（2023-2026）</h2>";
+  h+="<div class=section id=sys-news><h2>📡 最新动态（2023-2026）</h2>";
   h+="<div class=stage-box><b>2023 — 国立台北大学杰出校友</b><br>获遴选为母校杰出校友(2023年)。2024年1月促成华严学会与台北大学签署学术合作协议(一期两年.合计三期共六年),合办「新世纪永续发展」高峰论坛(2024-2025年)。</div>";
   h+="<div class=stage-box><b>2026 — 「九九华严」五年讲座（TICC）</b><br>于台北国际会议中心举行，每月举办。将华严哲理「转化为通俗易懂的现代心理学与生命科学」语言，回应「AI科技与永续新时代」的挑战——「AI给得了答案，但给得了心安吗？」</div>";
   h+="<div class=stage-box><b>2026.7.9 — 支提山大华严寺动土</b><br>苗栗县通霄镇。面向台湾海峡，与福建宁德支提华严祖庭隔海相望——「山海相应、法脉相承」。四百余位护法善信参与，五十三位嘉宾共同执铲（呼应善财五十三参）。</div>";
   h+="<div class=stage-box><b>第四期佛教</b><br>大华严寺官网对海云法师使命的表述——「以中兴汉传佛教，开展<b>第四期佛教思想发展</b>为使命」。目前尚未见对第一至第三期的系统性论述。</div></div>";
 
   // ── 演进脉络 ──
-  h+="<div class=section><h2>📅 工程面·技术面 演进脉络 & 时间线</h2>";
+  h+="<div class=section id=sys-evolution><h2>📅 工程面·技术面 演进脉络 & 时间线</h2>";
   h+="<table class=v-table><tr><th>时期</th><th>关键节点</th><th>体系特征</th></tr>";
   h+="<tr><td><b>1981-1991</b></td><td>在家讲经探索期</td><td>以现代语言诠释华严·业余讲经·无僧团建制</td></tr>";
   h+="<tr><td><b>1991.12.22</b></td><td>梦参老和尚剃度(弥陀诞日)</td><td>临济宗第47代·确立僧团身份·正式出家弘法</td></tr>";
@@ -119,10 +120,11 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 2: 禅观法要 (hidden)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-meditation class=pv-section style=display:none>";
+  h+="<div id=pv-meditation class=pv-section style=display:none>
+  <div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>🗺 禅观法要:</b><a href='#med-overview' style=color:var(--blue)>体系总览</a>·<a href='#med-paths' style=color:var(--blue)>次第道与圆融道</a>·<a href='#med-stage1' style=color:var(--blue)>第一阶段:</a>·<a href='#med-stage2' style=color:var(--blue)>第二阶段:</a>·<a href='#med-stage3' style=color:var(--blue)>第三阶段:</a>·<a href='#med-classical' style=color:var(--blue)>古典义理地基</a>·<a href='#med-wujiao' style=color:var(--blue)>贤首五教仪</a>·<a href='#med-yicheng' style=color:var(--blue)>一乘不共别圆</a>·<a href='#med-texts' style=color:var(--blue)>重要华严典籍的现代阐释</a>·<a href='#med-verify' style=color:var(--blue)>贯穿全程</a></div>";
 
     // ── 体系总览 ──
-  h+="<div class=section style=border-left:4px solid var(--gold)><h2>🗺 华严禅观体系总览</h2>";
+  h+="<div class=section id=med-overview style=border-left:4px solid var(--gold)><h2>🗺 华严禅观体系总览</h2>";
   h+="<p style=font-size:.8em;line-height:1.8;margin-bottom:10px>海云继梦和上华严禅观<b>三阶段</b>: <b>资粮道</b>(发心工程.驻佇心观) → <b>前行</b>(界内定.四种观法) → <b>正行</b>(界外定.法界三观)。<b>技术面</b>(修定.身法)与<b>工程面</b>(修慧.心法)始终双轨并行。</p>";
   h+="<table class=v-table style=font-size:.72em;margin-bottom:12px><tr><th>阶段</th><th>定位</th><th>核心工程</th><th>观法</th><th>禅定</th><th>果位</th></tr>";
   h+="<tr><td rowspan=2><b>资粮道</b></td><td>发心工程<br>界外准备</td><td>五科(戒.律.调身.调息.调心)<br>驻佇心观(停心)<br>净化禅->象限转移</td><td>驻佇心观<br>(根本前行)</td><td>瞬定境(妙高定)<br>粗住->细住->欲界定</td><td>三信位前<br>(发心位)</td></tr>";
@@ -135,7 +137,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 次第道与圆融道 ──
-  h+="<div class=section><h2>🛤 次第道与圆融道 — 两条修行路径</h2>";
+  h+="<div class=section id=med-paths><h2>🛤 次第道与圆融道 — 两条修行路径</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>海云和上将修行路径分为两条: <b>次第道</b>(圣解脱道/智德门)与<b>圆融道</b>(普贤道/福德门)。核心差异: 次第道必须证得空性、即身成就; 圆融道<b>不必证空性,凡夫亦可修</b>,具足信根即可,经分段生死至他方净土证无生。法师明确开示:「凡夫行圆融道,就是没有那个充分条件,你没有证得空性。你行圆融道就那么一个条件,要尽形寿行菩萨道,对三宝具足信心。」但凡夫行圆融道须避讳「聚财」与「聚众」,否则在缺乏空性的前提下易入歧途。若避此忌,报尽必生净土。华严禅观三段教学法(前行->正授行法->妙行)中,前两区块属入法界次第道,第三区块「妙行」属已入法界后的圆融道。</p>";
 
   h+="<table class=v-table style=font-size:.7em;margin-bottom:10px><tr><th style=width:12%>维度</th><th style=width:44%>次第道(入法界次第道)</th><th style=width:44%>圆融道(法界圆融道)</th></tr>";
@@ -167,7 +169,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 第一阶段: 资粮道 ──
-  h+="<div class=section><h2>🔰 第一阶段: 禅修入门 — 发心工程（资粮道）</h2>";
+  h+="<div class=section id=med-stage1><h2>🔰 第一阶段: 禅修入门 — 发心工程（资粮道）</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>资粮道是一切禅观的<b>基础准备</b>，约需1-3年。核心任务是<b>发心工程</b>——使行者从散乱中「静下来」。通过<b>「驻佇心观」(停心)</b>将心初步收摄，成为「堪受法器」后方可进入前行。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📋 制度性入门 — 修行不是DIY</span><div class=body>";
@@ -227,7 +229,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 第二阶段: 前行 ──
-  h+="<div class=section><h2>⚙️ 第二阶段: 禅修前行 — 内摄工程</h2>";
+  h+="<div class=section id=med-stage2><h2>⚙️ 第二阶段: 禅修前行 — 内摄工程</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>前行是禅观体系的<b>核心训练阶段</b>，在<b>界内定</b>中进行。四种观法构成工程面主干，贯穿初信至十信位。前二种出自《占察善恶业报经》(T17n0839)，后二种是标准大乘止观。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🔧📐 技术面.工程面双轨详解</span><div class=body>";
@@ -311,7 +313,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 第三阶段: 正行 ──
-  h+="<div class=section><h2>🎯 第三阶段: 禅修正行 — 等持工程（内观）</h2>";
+  h+="<div class=section id=med-stage3><h2>🎯 第三阶段: 禅修正行 — 等持工程（内观）</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>十信满心之后,转入正行。<b>等持工程</b>为官网正式名称。前半程三摩呬多(samahita),后半程定慧等持(三摩钵底 samapatti),究竟等至(三摩地 samadhi)。官网: 「以观导定、以定成观,当下验果,端身正坐,置心风门,依次第而进,步步可检核。」海云和上在讲记中进一步以「界内定/界外定」区分前行与正行的禅定层次,并以杜顺法界三观为究竟指导。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🌐 杜顺法界三观 — 正行核心指导框架</span><div class=body>";
@@ -341,7 +343,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 古典义理地基: 五教止观 ──
-  h+="<div class=section><h2>📜 古典义理地基 — 杜顺和尚五教止观</h2>";
+  h+="<div class=section id=med-classical><h2>📜 古典义理地基 — 杜顺和尚五教止观</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>华严初祖杜顺大师所立五教止观,是华严宗禅观的<b>古典义理框架</b>。海云和上的四种观法是<b>实际操作体系</b>,五教止观则是其<b>背后的意识状态分类学</b>——二者构成「行」与「解」的互补关系。</p>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>一.法有我无门(小乘教)</span><div class=body>破除「我执」,体悟我空,但法执犹存。对应四禅八定。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 资粮道阶段的基本停心功夫。</span></div></div>";
@@ -352,7 +354,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 贤首五教仪: 华严判教体系 ──
-  h+="<div class=section><h2>📐 贤首五教仪 — 华严判教: 小.始.终.顿.圆</h2>";
+  h+="<div class=section id=med-wujiao><h2>📐 贤首五教仪 — 华严判教: 小.始.终.顿.圆</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>贤首五教仪由华严三祖法藏(贤首国师)创立,清续法大师集大成,是华严宗<b>判教理论的核心框架</b>。海云继梦和上称判教为<b>「文化解剖学」</b>——将印度佛教文明基因与中国文明基因进行重组的方式。五教与杜顺五教止观一一对应: 小教(法有我无门).始教(生即无生门).终教(事理圆融门).顿教(语观双绝门).圆教(华严三昧门)。法师于<b>2008年5月19日至7月17日</b>在台北讲授《贤首五教仪—法界观》,可确认至少<b>53集</b>。播客音频于2020年3月9日前后由「海云继梦法师讲经」频道集中上传至Spotify/Apple Podcast等平台。</p>";
 
   h+="<table class=v-table style=font-size:.72em;margin-bottom:10px><tr><th>五教</th><th>核心义理</th><th>海云法师判摄</th><th>修证品数</th></tr>";
@@ -371,7 +373,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 一乘不共别圆 ──
-  h+="<div class=section><h2>📐 一乘不共别圆 — 普贤乘的判教定位</h2>";
+  h+="<div class=section id=med-yicheng><h2>📐 一乘不共别圆 — 普贤乘的判教定位</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>「一乘不共别圆」是华严宗对自身教义的最高定位——「别人所没有的,所以叫做『别』」。「不共」谓不与三乘共,独为圆顿大根菩萨所说;「别圆」指有别于天台宗以《法华》为圆教的立场,华严自许为最圆满的别教一乘。海云和上特别强调: 这种不共别圆的特质不在理论层面,而在<b>行法的内在蕴藏</b>——「他在经文里头表达得很清楚,但是因为你不懂这种语言模式跟思维模式,所以你以为经文好像讲故事一样讲过去。」</p>";
   h+="<table class=v-table style=font-size:.72em;margin-bottom:8px><tr><th>概念</th><th>定位</th><th>特点</th></tr>";
   h+="<tr><td><b>别教一乘</b></td><td>《华严经》——纯圆至实,别于三乘</td><td>智俨《孔目章》:「别教者,别于三乘故。」法藏《五教章》: 分「性海果分」(佛自证,不可说)与「缘起因分」(普贤境界,可说)</td></tr>";
@@ -381,7 +383,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 重要华严典籍的现代阐释 ──
-  h+="<div class=section><h2>📖 重要华严典籍的现代阐释</h2>";
+  h+="<div class=section id=med-texts><h2>📖 重要华严典籍的现代阐释</h2>";
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🦁 法藏《华严金师子章》 — 十门妙诠华严法界玄奥</span><div class=body>";
   h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>《金师子章》是华严三祖法藏为武则天讲解华严奥义之作——以殿中金狮子为喻,从明缘起.辨色空.约三性.显无相.说无生.论五教.勒十玄.括六相.成菩提.入涅槃<b>十门</b>,仅约一千五百字,妙诠华严法界玄奥。海云继梦和上于<b>2006年在台北开示,共14集</b>。后由空庭书苑整理出版为《华严金师子章讲记》(265页,2010年出版)。讲记逐字稿于2013年11月由fjdh.cn(佛教导航)集中发布。</p>";
@@ -407,7 +409,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 验证机制 & 关键原则 ──
-  h+="<div class=section><h2>⚠ 贯穿全程 — 验证机制.关键原则</h2>";
+  h+="<div class=section id=med-verify><h2>⚠ 贯穿全程 — 验证机制.关键原则</h2>";
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>✅ 验证机制 — 200+测验 & 归零重修</span><div class=body>";
   h+="<p style=font-size:.78em;line-height:1.8>法师强调修行进程「绝对理性」「不能讲人情」: 全程设有<b>两百余种具体测验</b>——制造顺境诱发贪着反应、制造逆境激发嗔心反应。<br><br><b>失败重修的规则极为严格</b>: 并非退回上一级,而是<b>打回初信(初果)从头开始</b>——「四果再重修,就从这个地方开始,再从初果开始。」</p>";
   h+="</div></div>";
@@ -448,14 +450,16 @@ function renderPractice(){
     +".h3col-tbar button:hover{background:var(--gold);color:#fff}"
     +".h3col-l,.h3col-r1,.h3col-r2{position:relative}"
     +".heart-note{background:rgba(184,134,60,0.12);border-left:3px solid var(--gold);padding:4px 8px;margin:4px 0;font-size:.9em;border-radius:0 4px 4px 0}"
-    +"</style>";
-  h+="<div class=section style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦和上禅修入门十讲</h2>";
+    +"</style>
+  <div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>❤️ 实修心要:</b>
+  <a href='#heart-intro' style=color:var(--blue)>十讲总览</a>·<a href='#heart-articles' style=color:var(--blue)>十篇文章对照</a>·<a href='#heart-gandhara' style=color:var(--blue)>犍陀罗导航</a></div>";
+  h+="<div class=section id=heart-intro style=border-left:4px solid var(--gold)><h2>❤️ 实修心要 — 海云继梦和上禅修入门十讲</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);line-height:1.7>来源: 微信公众号「永远的犍陀罗」· 实修心要专辑(共10篇)。海云继梦和上开示,仁悦整理。<b>左栏:全部原文 · 中栏:海云华严行法对照 · 右栏:其他宗派/道家相互印证。</b></p>";
   h+="<p style=font-size:.72em;color:var(--text2);margin-bottom:8px>"
     +"<span id=heart-git-status style=font-size:.68em;color:var(--text2)></span>"
     +"</p></div>";
 
-  h+="<div class=section><h2>📰 实修心要 — 永远的犍陀罗·禅修实操系列</h2>";
+  h+="<div class=section id=heart-gandhara><h2>📰 实修心要 — 永远的犍陀罗·禅修实操系列</h2>";
   h+="<p style=font-size:.78em;color:var(--text2);margin-bottom:6px>以下10篇文章来自微信公众号「<b>永远的犍陀罗</b>」· <b>实修心要</b>专辑。内容为海云继梦和上关于禅修实操的开示,由仁悦整理。原文链接为微信公众号文章,全文已保存至 <code>docs/hy_refs/wechat/</code> 目录。</p>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;font-size:0.73em'>";
   [{n:1,t:'别用大脑修行',d:'暖身二法·调身调息·内脏内动',u:'https://mp.weixin.qq.com/s/S2D9BOc3jFwDRQr2tbzG6g'},
@@ -558,8 +562,10 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 4: 讲法资源 (hidden, was #3 before 实修心要 added)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-resources class=pv-section style=display:none>";
-  h+="<div class=section><h2>📚 信实可靠的出处与参考资源</h2>";
+  h+="<div id=pv-resources class=pv-section style=display:none>
+  <div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b>
+  <a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-academic' style=color:var(--blue)>学术活动</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
+  h+="<div class=section id=res-sources><h2>📚 信实可靠的出处与参考资源</h2>";
   h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>以下为本文所依据的全部第一手来源。内容以<b>大华严寺官方资料.海云继梦和上讲经逐字稿.正式出版物</b>为主,凡涉及诠释性跨度之处均已随文标注。</p>";
 
   h+="<table class=v-table style=font-size:.7em><tr><th>类别</th><th>资源名称</th><th>详情</th><th>获取方式</th></tr>";
@@ -577,7 +583,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 全网讲法总目 ──
-  h+="<div class=section><h2>📡 海云继梦全网讲法总目</h2>";
+  h+="<div class=section id=res-total><h2>📡 海云继梦全网讲法总目</h2>";
   h+="<table class=v-table><tr><th>平台</th><th>内容</th><th>规模</th><th>类型</th></tr>";
   h+="<tr><td><b>Bilibili</b></td><td>华严六科(42h)·善财五十三参·禅法开示</td><td>500+视频</td><td>📺视频</td></tr>";
   h+="<tr><td><b>Apple Podcast</b></td><td>普贤乘华严宗: 20+系列(华严学概论·禅行法·密法·净土)</td><td>2000+集</td><td>🎧音频</td></tr>";
@@ -590,7 +596,7 @@ function renderPractice(){
   h+="</table></div>";
 
   // ── 按主题分类讲法资源 ──
-  h+="<div class=section><h2>📚 按主题分类讲法资源</h2>";
+  h+="<div class=section id=res-topics><h2>📚 按主题分类讲法资源</h2>";
   h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:10px>以下按海云法师的讲法主题分类。每类附 YouTube/Bilibili 搜索链接，可直接跳转。</p>";
 
   // Topic cards
@@ -615,7 +621,7 @@ function renderPractice(){
   h+="</div>";
 
   // ── 著作清单 ──
-  h+="<div class=section><h2>📖 海云继梦著作（空庭书苑/光潽文创出版·2002-2026）</h2><p style=font-size:0.8em;line-height:1.9>";
+  h+="<div class=section id=res-books><h2>📖 海云继梦著作（空庭书苑/光潽文创出版·2002-2026）</h2><p style=font-size:0.8em;line-height:1.9>";
   h+="<b>华严经讲记系列:</b> 《华严经导读》(三册) · 《探玄记悬谈讲记》(四册) · 《华严学导论》(ⅠⅡ) · 《世主妙严品》《光明觉品》《净行品》《贤首品》《明法品》《普贤三昧品》《普贤行品》《四圣谛品》讲记 · 《四十华严》全本讲记(2006-2010北京广化寺)<br>";
   h+="<b>三部曲:</b> 《非常坛经》(4册·2004) · 《非常金刚经》 · 《非常心经》——主张「要懂《心经》先懂《金刚经》，要懂《金刚经》先懂《坛经》」<br>";
   h+="<b>禅修系列:</b> 《禅修入门》(2020) · 《禅修正行——安那般那数息观》(2017) · 《禅修前行》 · 《禅观概论》(2011) · 《禅，怎么参？》(2011) · 《禅，就要这么参！》(2011)<br>";
@@ -656,7 +662,7 @@ function renderPractice(){
   h+="</p></div>";
 
   // ── YouTube 频道最新内容 ──
-  h+="<div class=section><h2>📺 YouTube 频道 · 最新系列</h2>";
+  h+="<div class=section id=res-yt><h2>📺 YouTube 频道 · 最新系列</h2>";
   h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>数据来源: RSS Feed (最后同步: 2026-07-30)。频道持续更新中。</p>";
   h+="<table class=v-table><tr><th>频道</th><th>系列</th><th>内容</th><th>最近更新</th><th>直达</th></tr>";
   h+="<tr><td rowspan=4 style=font-size:0.78em><b><a href='https://www.youtube.com/@huayen-world' target=_blank>@huayen-world</a></b><br><span style=font-size:0.7em;color:var(--text2)>主频道</span></td>";
@@ -668,7 +674,7 @@ function renderPractice(){
   h+="<p style='font-size:0.72em;color:var(--text2);margin-top:6px'>📌 RSS同步源 (待扩展多频道): <code>https://www.youtube.com/feeds/videos.xml?channel_id=UCJr3ifkvTs76XnR6SuyIfFQ</code></p></div>";
 
   // ── 学术活动轨迹 ──
-  h+="<div class=section><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
+  h+="<div class=section id=res-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
   h+="<table class=v-table><tr><th>年份</th><th>会议/事件</th><th>主题</th></tr>";
   h+="<tr><td>2010</td><td>第一届华严学术研讨会</td><td>华严学</td></tr>";
   h+="<tr><td>2011</td><td>第二届华严学术研讨会</td><td>华严与科学</td></tr>";
@@ -681,7 +687,7 @@ function renderPractice(){
   h+="</table></div>";
 
   // ── 相关道场 ──
-  h+="<div class=section><h2>🏛 相关道场</h2><p style=line-height:1.8>";
+  h+="<div class=section id=res-temples><h2>🏛 相关道场</h2><p style=line-height:1.8>";
   h+="📍 <b>南投大华严寺</b> — 海云继梦导师·普贤乘根本道场<br>";
   h+="📍 <b>苗栗支提山大华严寺</b> — 2026.7.9动土·面向台湾海峡·与福建支提华严祖庭隔海相望<br>";
   h+="📍 <b>台北福慧寺</b> — 钦因长老·高原法系<br>";
