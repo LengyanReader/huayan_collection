@@ -619,68 +619,7 @@ var LOC_ANCIENT={
 };
 
 // ═══ PERSON TRAJECTORIES (global injected from YAML, fallback if missing) ═══
-if (typeof PERSON_TRAJECTORIES === 'undefined') var PERSON_TRAJECTORIES = {
-  'person_111':{name:'玄奘西行求法·丝绸之路',color:'#b8863c',
-    route:[
-      {y:602,lat:34.5,lng:109.5,label:'诞于洛州缑氏'},
-      {y:618,lat:34.26,lng:108.92,label:'长安出家'},
-      {y:629,lat:34.26,lng:108.92,label:'长安出发·偷渡西行'},
-      {y:630,lat:40.0,lng:94.0,label:'出玉门关·过五烽'},
-      {y:630,lat:42.8,lng:89.5,label:'高昌国·麴文泰结拜'},
-      {y:631,lat:41.5,lng:73.0,label:'凌山·翻越天山'},
-      {y:631,lat:39.0,lng:67.0,label:'飒秣建国(撒马尔罕)'},
-      {y:632,lat:34.0,lng:72.0,label:'犍陀罗·白沙瓦'},
-      {y:632,lat:25.14,lng:85.44,label:'抵那烂陀寺·师从戒贤'},
-      {y:643,lat:25.14,lng:85.44,label:'曲女城辩论·大乘天'},
-      {y:645,lat:34.22,lng:108.96,label:'归长安·携657部梵本'},
-      {y:648,lat:34.22,lng:108.96,label:'译《瑜伽师地论》百卷'},
-      {y:664,lat:34.2,lng:108.9,label:'圆寂于玉华寺'}
-    ]},
-  'person_110':{name:'法显西行·海上归国',color:'#5e8b9e',
-    route:[
-      {y:337,lat:37.0,lng:112.0,label:'诞于平阳'},
-      {y:399,lat:34.26,lng:108.92,label:'长安出发·65岁'},
-      {y:400,lat:40.0,lng:94.0,label:'出敦煌·渡沙河'},
-      {y:401,lat:39.5,lng:76.0,label:'逾葱岭·入北天竺'},
-      {y:403,lat:25.14,lng:85.44,label:'那烂陀寺·学梵书'},
-      {y:409,lat:6.9,lng:79.9,label:'师子国(斯里兰卡)·得经'},
-      {y:412,lat:32.0,lng:121.0,label:'海路归国·建康译经'},
-      {y:422,lat:30.0,lng:118.0,label:'圆寂于荆州辛寺'}
-    ]},
-  'person_103':{name:'鸠摩罗什·译经巨匠',color:'#c46b5d',
-    route:[
-      {y:344,lat:41.7,lng:82.9,label:'诞于龟兹'},
-      {y:352,lat:41.7,lng:82.9,label:'7岁随母出家'},
-      {y:365,lat:37.0,lng:70.0,label:'游学罽宾·学小乘'},
-      {y:380,lat:39.0,lng:72.0,label:'莎车国·转学大乘'},
-      {y:384,lat:41.7,lng:82.9,label:'归龟兹·升座讲法'},
-      {y:385,lat:40.0,lng:94.0,label:'吕光破龟兹·被掳东行'},
-      {y:401,lat:34.26,lng:108.92,label:'抵长安·姚兴迎入'},
-      {y:402,lat:34.26,lng:108.92,label:'逍遥园译场·八百沙门'},
-      {y:413,lat:34.26,lng:108.92,label:'圆寂于长安'}
-    ]},
-  'person_112':{name:'义净·海上丝绸之路',color:'#7d9a6e',
-    route:[
-      {y:635,lat:37.0,lng:116.0,label:'诞于齐州'},
-      {y:671,lat:23.13,lng:113.26,label:'广州乘波斯船出发'},
-      {y:672,lat:1.0,lng:104.0,label:'室利佛逝(苏门答腊)'},
-      {y:673,lat:22.0,lng:88.0,label:'经恒河口的耽摩栗底'},
-      {y:674,lat:25.14,lng:85.44,label:'抵那烂陀寺·学律藏'},
-      {y:685,lat:25.14,lng:85.44,label:'那烂陀寺·整理梵本'},
-      {y:695,lat:34.26,lng:108.92,label:'归洛阳·携400余部梵本'},
-      {y:713,lat:34.26,lng:108.92,label:'圆寂于长安荐福寺'}
-    ]},
-  'person_006':{name:'佛驮跋陀罗·天竺来华',color:'#c8893e',
-    route:[
-      {y:359,lat:27.5,lng:83.3,label:'诞于迦毗罗卫'},
-      {y:380,lat:25.14,lng:85.44,label:'那烂陀寺修学'},
-      {y:400,lat:41.7,lng:82.9,label:'经龟兹·丝绸之路'},
-      {y:406,lat:34.26,lng:108.92,label:'抵长安·弘始八年'},
-      {y:410,lat:30.0,lng:114.0,label:'南下庐山·慧远迎请'},
-      {y:416,lat:32.0,lng:118.8,label:'建康道场寺·译六十华严'},
-      {y:429,lat:32.0,lng:118.8,label:'圆寂于建康'}
-    ]}
-};
+if (typeof PERSON_TRAJECTORIES === 'undefined') { console.warn("PERSON_TRAJECTORIES not loaded from YAML"); var PERSON_TRAJECTORIES = {}; }
 var DYNASTY_BOUNDARIES=[
   {n:'唐',s:618,e:907,c:'#b8863c',bounds:[[18,73],[42,130]]},
   {n:'宋',s:960,e:1279,c:'#5e8b9e',bounds:[[20,98],[40,125]]},
@@ -1011,32 +950,51 @@ function drawRelationGraph(pid){
 
 // ═══ PERSON ROSTER (名录·全人物) ═══
 function _classifyPerson(p,traj){
-  var li=p.li||'',tp=p.tp||'',n=p.n||'',id=p.id||'';
-  // Huayan direct
-  if(/华严/.test(li)||li==='李通玄系'||li==='慈舟系')return '🪷 华严宗';
-  // Other Chinese Buddhist schools
-  if(li==='临济宗'||/禅/.test(n))return '☸ 汉传·禅宗';
-  var trajName=traj?traj.name:'';
-  if(/天台|智顗/.test(trajName))return '☸ 汉传·天台宗';
-  if(/净土|善导|印光/.test(trajName))return '☸ 汉传·净土宗';
-  if(/法相|窥基/.test(trajName))return '☸ 汉传·法相宗';
-  if(/三论|吉藏/.test(trajName))return '☸ 汉传·三论宗';
-  // Translators & pilgrims
-  if(tp==='translator'||li==='译师'||/鸠摩罗什|玄奘|义净|法显/.test(n+trajName))return '📖 译师·求法僧';
-  // India
-  if(li==='印度源流'||li==='大乘瑜伽行法'||/印度|瑜伽/.test(trajName))return '🕉 印度·瑜伽';
-  // Tibetan
-  if(/藏|宗喀巴|阿底峡|寂天/.test(trajName))return '🔴 藏传佛教';
-  // Modern monks
-  if(li==='参考线'||/虚云|太虚|弘一|印顺/.test(n))return '🏛 近现代高僧';
-  // Daoist (specific names only, not just 道 character)
-  if(/老子|庄子|列子|张道陵|王重阳|关尹子|葛洪|抱朴子|寇谦之|吕洞宾|陈抟|希夷|丘处机|长春真人|张三丰/.test(n+trajName))return '☯ 道家';
-  // Confucian
-  if(/儒|孔子|孟子|荀子|董仲舒|朱熹|王阳明|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|陆象山/.test(n+trajName))return '📜 儒家';
-  // Western
-  if(/耶稣|穆罕默德|柏拉图|亚里士多德|奥古斯丁|阿奎那|罗摩克里希纳|辨喜|奥罗宾多|拉玛那/.test(n+trajName))return '🔮 西方·印度近代';
-  // Scholars
-  if(tp==='scholar'||li==='当代学者')return '🎓 学者';
+  var li=p.li||'',tp=p.tp||'',n=p.n||'';
+  var tname=traj?traj.name||'':'';
+  // Check explicit group field in trajectory data first
+  if(traj&&traj.group)return traj.group;
+
+  // Data-driven: use lineage/type from knowledge graph
+  // 华严宗各支系
+  if(/华严/.test(li)||li==='李通玄系'||li==='华严宗'||li==='华严宗远祖')return '🪷 华严宗';
+  if(li==='贤首宗高原法系'||li==='智光系')return '🪷 华严宗·近现代传承';
+  if(li==='华严莲社')return '🪷 华严宗·华严莲社';
+  if(li==='月霞系'||li==='慈舟系')return '🪷 华严宗·月霞慈舟系';
+  if(li==='日本华严')return '🪷 华严宗·日本';
+  if(li==='高丽华严')return '🪷 华严宗·朝鲜半岛';
+
+  // 汉传佛教宗派
+  if(li==='临济宗')return '☸ 禅宗';
+  if(tp==='practitioner'&&/禅|慧能|弘忍|神秀/.test(n+tname))return '☸ 禅宗';
+
+  // 译师与求法僧
+  if(tp==='translator'||li==='译师'||li==='求法僧')return '📖 译师·求法僧';
+
+  // 印度源流
+  if(li==='印度源流'||li==='大乘瑜伽行法')return '🕉 印度佛教·瑜伽';
+
+  // 学者
+  if(tp==='scholar'||li==='当代学者')return '🎓 近现代学者';
+
+  // 参考线
+  if(li==='参考线'||li==='临济宗'&&tp==='practitioner')return '🏛 近现代高僧';
+
+  // Fallback: classify trajectory-only persons by name patterns
+  var full=n+tname;
+  if(/天台|智顗|知礼/.test(full))return '☸ 天台宗';
+  if(/净土|善导|印光|慧远|莲池/.test(full))return '☸ 净土宗';
+  if(/法相|窥基/.test(full))return '☸ 法相宗';
+  if(/三论|吉藏/.test(full))return '☸ 三论宗';
+  if(/律宗|道宣|弘一/.test(full))return '☸ 律宗';
+  if(/藏|宗喀巴|阿底峡|寂天/.test(full))return '🔴 藏传佛教';
+  if(/印度|瑜伽|拉克鲁希|巴布基|普拉梵|克利普|胜师子/.test(full))return '🕉 印度佛教·瑜伽';
+  if(/虚云|太虚|印光|弘一|印顺|梦参/.test(full))return '🏛 近现代高僧';
+  if(/安世高|道安|僧肇|道生|僧祐|永明|大慧|憨山|蕅益/.test(full))return '☸ 汉传高僧';
+  if(/老子|庄子|列子|张道陵|王重阳|关尹子|葛洪|寇谦之|吕洞宾|陈抟|丘处机|张三丰/.test(full))return '☯ 道家';
+  if(/孔子|孟子|荀子|董仲舒|朱熹|王阳明|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|颜回|子思|司马迁|班昭|郑玄|顾炎武|黄宗羲|王夫之/.test(full))return '📜 儒家';
+  if(/耶稣|穆罕默德|柏拉图|亚里士多德|奥古斯丁|阿奎那|罗摩克里希纳|辨喜|奥罗宾多|拉玛那/.test(full))return '🔮 西方·印度近代';
+
   return '📌 其他';
 }
 function toggleRoster(){
