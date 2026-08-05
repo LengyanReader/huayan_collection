@@ -789,6 +789,17 @@ function showInfo(p,p2,e){
     +locHTML+relHTML
     +(p.bio?"<div style=color:var(--text2);line-height:1.5;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)>"+p.bio+"</div>":"")
     +(p.wk&&p.wk.length?"<div style=margin-top:4px>📖 <b>"+p.wk.map(function(w){var lk=p.wl&&p.wl[w];return lk?'<a href='+lk+' target=_blank style=color:var(--blue)>'+w+'</a>':w;}).join("</b> · <b>")+"</b></div>":"");
+  // ── Huayan connection annotation ──
+  var ha=null;
+  try{ha=(EVENTS&&EVENTS.huayan_annotations&&EVENTS.huayan_annotations.persons)?EVENTS.huayan_annotations.persons[p.id]:null;}catch(e){}
+  if(ha&&ha.note){
+    var lvlColors={direct:'#b8863c',indirect:'#5e8b9e',dialogue:'#7d9a6e',parallel:'#c8893e',influence:'#8b7a9e'};
+    var lvlLabels={direct:'直接关联',indirect:'间接渊源',dialogue:'跨传统对话',parallel:'修行印证',influence:'思想影响'};
+    var lc2=lvlColors[ha.level]||'#b8863c';
+    h+='<div style="margin-top:4px;padding:6px 8px;background:'+lc2+'0a;border-left:3px solid '+lc2+';border-radius:0 6px 6px 0;font-size:0.78em;line-height:1.6;color:var(--text2)">'
+      +'<b style=color:'+lc2+'>🪷 华严关联</b> <span style=font-size:0.85em;color:'+lc2+'>['+(lvlLabels[ha.level]||ha.level)+']</span><br>'
+      +ha.note+'</div>';
+  }
   if(p2){
     var lc2=DATA.lineage_colors[p2.li]||"#b0a898";var ti2=TYPE_ICONS[p2.tp]||'';
     h+="<div style='margin-top:10px;padding-top:8px;border-top:2px solid var(--gold)'><h3 style=color:#5e8b9e>"+(ti2?'['+ti2+'] ':'')+p2.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p2.ti||"")+"</span></h3>"
