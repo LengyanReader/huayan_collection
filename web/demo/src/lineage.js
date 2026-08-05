@@ -1068,6 +1068,7 @@ function renderRoster(){
     all.push({id:tid,n:t.name.split('·')[0],ti:t.name,li:'',b:yr,d:yr2,color:t.color||'#b0a898',group:_classifyPerson({n:t.name.split('·')[0],li:''},t)});
     seen[tid]=true;
   }
+  console.log('Roster: graph='+DATA.nodes.filter(function(p){return p.b&&p.d;}).length+' traj='+(typeof PERSON_TRAJECTORIES!=='undefined'?Object.keys(PERSON_TRAJECTORIES).filter(function(k){return k.indexOf('person_')===0&&PERSON_TRAJECTORIES[k].route;}).length:0)+' total='+all.length);
   cnt.textContent=all.length;
   // Group order
   var grpOrder=['🪷 华严宗','☸ 汉传·禅宗','☸ 汉传·天台宗','☸ 汉传·净土宗','☸ 汉传·法相宗','☸ 汉传·三论宗','📖 译师·求法僧','🔴 藏传佛教','🕉 印度·瑜伽','🏛 近现代高僧','☯ 道家','📜 儒家','🔮 西方·印度近代','🎓 学者','📌 其他'];
