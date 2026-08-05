@@ -654,13 +654,14 @@ function toggleAncient(){
     });
     // Re-init transmission story and schools
     initTransStory();initOtherSchools();
-    // Show dynasty boundaries
+    // Show dynasty boundaries (only current dynasty based on year)
     DYNASTY_BOUNDARIES.forEach(function(db){
       var r=L.rectangle(db.bounds,{color:db.c,weight:1.5,fillColor:db.c,fillOpacity:0.05,className:'dynasty-boundary'}).addTo(mapMain);
       var cx=(db.bounds[0][1]+db.bounds[1][1])/2,cy=(db.bounds[0][0]+db.bounds[1][0])/2;
       var lbl=L.marker([cy,cx],{icon:L.divIcon({html:'<div style=font-size:11px;color:'+db.c+';font-weight:700;text-shadow:0 0 6px #fff>'+db.n+'</div>',className:'dynasty-label',iconSize:[0,0]}),interactive:false}).addTo(mapMain);
-      dynastyLayers.push(r);dynastyLayers.push(lbl);
+      dynastyLayers.push({rect:r,label:lbl,db:db});
     });
+    updateDynastyVisibility(-600); // Start year
     // Update all location popups to show ancient names
     mapMini.eachLayer(function(layer){
       if(!layer._ld)return;
@@ -680,7 +681,7 @@ function toggleAncient(){
     if(terrainLayer){mapMain.removeLayer(terrainLayer);}
     if(miniTerrainLayer&&!miniTerrainOn){mapMini.removeLayer(miniTerrainLayer);}
     // Remove dynasty boundaries
-    dynastyLayers.forEach(function(l){mapMain.removeLayer(l);});
+    dynastyLayers.forEach(function(d){mapMain.removeLayer(d.rect);mapMain.removeLayer(d.label);});
     dynastyLayers=[];
     // Remove ancient labels
     ancientLabels.forEach(function(l){mapMain.removeLayer(l);});
@@ -1195,6 +1196,19 @@ function showTempleInfo(tid){
   if(mapMain&&t.lat&&t.lng){setTimeout(function(){mapMain.flyTo([t.lat,t.lng],12,{duration:1});},100);}
 }
 
+// ═══ DYNASTY VISIBILITY (古地图随年份变化) ═══
+function updateDynastyVisibility(year){
+  dynastyLayers.forEach(function(d){
+    var visible = year >= d.db.s && year <= d.db.e;
+    if(d.rect._map !== mapMain && visible) { d.rect.addTo(mapMain); d.label.addTo(mapMain); }
+    else if(d.rect._map === mapMain && !visible) { mapMain.removeLayer(d.rect); mapMain.removeLayer(d.label); }
+    if(visible && d.rect._map === mapMain) {
+      d.rect.setStyle({fillOpacity: 0.08, weight: 2});
+      d.label.setOpacity(1);
+    }
+  });
+}
+
 // ═══ LAYER TOGGLE ═══
 function toggleLayer(layer){
   layerVis[layer]=!layerVis[layer];
@@ -1549,6 +1563,7 @@ function animTick(){
   var pg=document.getElementById('anim-progress');if(pg)pg.value=animYear;
   var py=document.getElementById('prog-year');if(py)py.textContent=animYear+'年';
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  if(ancientMode)updateDynastyVisibility(animYear);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   // Stop AFTER processing year 2030
   if(animYear>2030){

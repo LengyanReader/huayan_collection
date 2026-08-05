@@ -6,8 +6,7 @@ resizeTL();
 drawTL(null);
 initMap();
 // Default: ancient map + routes + other schools
-// Ancient mode off by default — user can toggle with 🏯古今 button
-setTimeout(function(){initTransStory();initOtherSchools();},500);
+setTimeout(function(){toggleAncient();initTransStory();initOtherSchools();},500);
 // Stats bar
 var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
