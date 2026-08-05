@@ -16,9 +16,9 @@
 #side{flex:1;display:flex;flex-direction:column;min-width:200px;border-left:1px solid var(--line)}
 #map-main-wrap{position:relative;overflow:hidden;flex:1}
 #map-main,#map-mini{width:100%;height:100%}
-#info-popup{position:fixed;z-index:999;background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;font-size:0.82em;max-width:360px;max-height:70vh;overflow-y:auto;color:var(--text);box-shadow:0 8px 30px rgba(60,40,20,0.18);display:none}
-#info-popup h3{color:var(--gold);font-size:1.05em;margin-bottom:4px}
-#info-popup .close-btn{position:absolute;top:4px;right:8px;cursor:pointer;color:var(--text2);font-size:1.1em}
+#info-popup{position:fixed;z-index:999;background:rgba(254,253,249,0.88);backdrop-filter:blur(4px);border:1px solid rgba(184,134,60,0.5);border-radius:10px;padding:8px 12px;font-size:0.72em;max-width:280px;max-height:45vh;overflow-y:auto;color:var(--text);box-shadow:0 4px 16px rgba(60,40,20,0.12);display:none}
+#info-popup h3{color:var(--gold);font-size:0.92em;margin-bottom:3px}
+#info-popup .close-btn{position:absolute;top:2px;right:6px;cursor:pointer;color:var(--text2);font-size:0.95em}
 #controls{background:var(--panel);padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}
 #controls button{padding:4px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em;transition:all 0.2s}
 #controls button:hover{background:#f0ebe0;color:var(--text);border-color:var(--gold)}
@@ -39,7 +39,7 @@
   #resize-handle{display:none}
   #controls{flex-wrap:wrap;gap:2px;padding:4px 5px}
   #controls button{padding:3px 6px;font-size:0.6em;border-radius:8px}
-  #info-popup{position:fixed;max-width:94vw;max-height:50vh;font-size:0.72em;left:3vw!important;top:10vh!important}
+  #info-popup{position:fixed;max-width:90vw;max-height:35vh;font-size:0.68em;left:5vw!important;top:8vh!important;background:rgba(254,253,249,0.85)}
 }
 </style>
 </head>
@@ -980,12 +980,12 @@ function showInfo(p,p2,e){
   if(isMobile){
     popup.style.left='4vw';popup.style.top='10vh';popup.style.width='92vw';
   }else if(e){
-    var px=e.pageX+20,py=e.pageY-20;
-    if(px+380>window.innerWidth)px=e.pageX-400;
-    if(py+300>window.innerHeight)py=window.innerHeight-320;
+    var px=e.pageX+14,py=e.pageY-14;
+    if(px+290>window.innerWidth)px=e.pageX-300;
+    if(py+280>window.innerHeight)py=window.innerHeight-290;
     popup.style.left=px+'px';popup.style.top=py+'px';popup.style.width='';
   }else{
-    popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';popup.style.width='';
+    popup.style.left=(window.innerWidth-310)+'px';popup.style.top='60px';popup.style.width='';
   }
 }
 

@@ -841,12 +841,12 @@ function showInfo(p,p2,e){
   if(isMobile){
     popup.style.left='4vw';popup.style.top='10vh';popup.style.width='92vw';
   }else if(e){
-    var px=e.pageX+20,py=e.pageY-20;
-    if(px+380>window.innerWidth)px=e.pageX-400;
-    if(py+300>window.innerHeight)py=window.innerHeight-320;
+    var px=e.pageX+14,py=e.pageY-14;
+    if(px+290>window.innerWidth)px=e.pageX-300;
+    if(py+280>window.innerHeight)py=window.innerHeight-290;
     popup.style.left=px+'px';popup.style.top=py+'px';popup.style.width='';
   }else{
-    popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';popup.style.width='';
+    popup.style.left=(window.innerWidth-310)+'px';popup.style.top='60px';popup.style.width='';
   }
 }
 
