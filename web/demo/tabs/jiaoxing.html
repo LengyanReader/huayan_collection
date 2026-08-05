@@ -79,7 +79,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 1: 修行体系 (default visible)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-system class=pv-section>";
+  h+="<div id=pv-system class=pv-section style=display:block>";
 
   // ── 子目录导航 ──
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📐 修行体系:</b>"
@@ -180,7 +180,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE 2: 禅观法要 (hidden)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-meditation class=pv-section style=display:none>";
+  h+="<div id=pv-meditation class=pv-section style=display:block>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>🗺 禅观法要:</b><a href='#med-overview' style=color:var(--blue)>体系总览</a>·<a href='#med-paths' style=color:var(--blue)>次第道与圆融道</a>·<a href='#med-stage1' style=color:var(--blue)>资粮道</a>·<a href='#med-stage2' style=color:var(--blue)>前行</a>·<a href='#med-stage3' style=color:var(--blue)>正行</a>·<a href='#med-classical' style=color:var(--blue)>古典义理地基</a>·<a href='#med-wujiao' style=color:var(--blue)>贤首五教仪</a>·<a href='#med-yicheng' style=color:var(--blue)>一乘不共别圆</a>·<a href='#med-texts' style=color:var(--blue)>典籍阐释</a>·<a href='#med-verify' style=color:var(--blue)>验证机制</a>·<a href='#med-heart' style=color:var(--blue)>实修心要</a></div>";
 
     // ── 体系总览 ──
@@ -623,7 +623,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   // SUB-PAGE: 最新动态 (动态类内容集中)
   // ═══════════════════════════════════════════
-  h+="<div id=pv-news class=pv-section style=display:none>";
+  h+="<div id=pv-news class=pv-section style=display:block>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📰 最新动态:</b><a href='#news-updates' style=color:var(--blue)>近期动态</a>·<a href='#news-academic' style=color:var(--blue)>学术活动</a></div>";
   h+="<div class=section id=news-updates><h2>📡 最新动态（2023-2026）</h2>";
   h+="<div class=stage-box><b>2023 — 国立台北大学杰出校友</b><br>获遴选为母校杰出校友(2023年)。2024年1月促成华严学会与台北大学签署学术合作协议(一期两年.合计三期共六年),合办「新世纪永续发展」高峰论坛(2024-2025年)。</div>";
@@ -645,7 +645,7 @@ function renderPractice(){
 
   h+="</div>"; // close pv-news
 
-  h+="<div id=pv-resources class=pv-section style=display:none>";
+  h+="<div id=pv-resources class=pv-section style=display:block>";
   h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
 
   // ── 全网讲法总目 ──
@@ -855,11 +855,12 @@ function jxSubNav(view,anchor){
 // Restore sub-page on load (heart 已并入 meditation)
 (function(){
   setTimeout(function(){
-    var sub=localStorage.getItem('practice_sub')||'system';
-    if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
-      switchPracticeView(sub);
-    }
+    // SUB-PAGE RESTORE DISABLED FOR DEBUG
+    // var sub=localStorage.getItem('practice_sub')||'system';
+    // if(sub==='heart')sub='meditation';
+    // if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
+    //   switchPracticeView(sub);
+    // }
   },150);
 })();
 
