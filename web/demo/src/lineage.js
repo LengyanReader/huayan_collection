@@ -535,7 +535,7 @@ function initMap(){
   // Update terrain layer state after invalidateSize
   if(miniTerrainOn && miniTerrainLayer){if(!mapMini.hasLayer(miniTerrainLayer))miniTerrainLayer.addTo(mapMini);}
   // ── Map legend control (bottom-right) ──
-  var legend=L.control({position:'bottomright'});
+  var legend=L.control({position:'bottomleft'});
   legend.onAdd=function(){
     var div=L.DomUtil.create('div','info-legend');
     div.style.cssText='background:rgba(254,253,249,0.85);padding:6px 10px;border-radius:6px;font-size:0.65em;line-height:1.6;box-shadow:0 2px 6px rgba(0,0,0,0.1)';
@@ -1249,11 +1249,26 @@ function resumeAnim(){
   document.getElementById("anim-btn").textContent="⏸ 暂停";
   animTimer=setTimeout(animTick,getAnimSpeed());
 }
+function stopAnim(){
+  clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
+  animYear=-600;
+  document.getElementById("anim-btn").textContent="▶ 播放";
+  document.getElementById("anim-stop-btn").style.display="none";
+  var sb=document.getElementById('anim-status');if(sb){sb.style.opacity='0';sb.innerHTML='';}
+  var py=document.getElementById('prog-year');if(py)py.textContent='-600年';
+  var pg=document.getElementById('anim-progress');if(pg)pg.value=-600;
+  var sl=document.getElementById('speed-label');if(sl)sl.textContent='1x';
+  [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
+  animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
+  if(mapMain)mapMain.off('click');
+  var miniC=document.getElementById('map-mini-wrap');if(miniC)miniC.style.filter='';
+  tl.minX=100;tl.maxX=2060;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+}
 function animTick(){
   if(!animPlaying||animPaused)return;
   var speedLabel=document.getElementById('speed-label');
   var delay=getAnimSpeed();
-  if(speedLabel){var x=(225/delay).toFixed(1);speedLabel.textContent=(x==='1.0'?'1':x)+'x';}
+  if(speedLabel){var x=(150/delay).toFixed(1);speedLabel.textContent=(x==='1.0'?'1':x)+'x';}
   // Adaptive step: count waypoints in next 50 years → adjust speed
   var density=0;
   for(var d=0;d<ANIM_WAYPOINTS.length;d++){if(ANIM_WAYPOINTS[d].y>animYear&&ANIM_WAYPOINTS[d].y<=animYear+50)density++;}
@@ -1267,6 +1282,7 @@ function animTick(){
   if(animYear>2030){
     animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
+    document.getElementById("anim-stop-btn").style.display="none";
     if(speedLabel)speedLabel.textContent='1x';if(sb)sb.style.opacity='0';
     return;
   }
@@ -1328,7 +1344,7 @@ function toggleAnim(){
     return;
   }
   // ── START ──
-  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";
+  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";document.getElementById("anim-stop-btn").style.display="inline";
   animYear=-600;lastAnimLoc=-1;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
 

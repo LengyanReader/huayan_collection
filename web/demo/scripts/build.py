@@ -325,9 +325,10 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <button class="active" data-layer="edges" onclick="toggleLayer('edges')">传</button>
   <button class="active" data-layer="events" onclick="toggleLayer('events')">事</button>
   <button id="ancient-btn" onclick="toggleAncient()">🏯 古今</button>
-  <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type="range" id="anim-speed" min="5" max="40" value="15" step="1"><span id="speed-label">1×</span></span>
+  <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type="range" id="anim-speed" min="5" max="40" value="35" step="1"><span id="speed-label">1×</span></span>
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
   <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
+  <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);display:none" onclick="stopAnim()">⏹ 停止</button>
   <button id="reset-btn" style="margin-left:auto;border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
 </div>
 

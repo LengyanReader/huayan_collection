@@ -15,7 +15,15 @@ renderFrontier();
 try{renderCosmology();}catch(e){}
 
 // Events
-document.getElementById("search-input").addEventListener("input",function(){searchQuery=this.value.trim();drawTL(selectedId);});
+document.getElementById("search-input").addEventListener("input",function(){
+  searchQuery=this.value.trim();
+  // Auto-select first matching person when searching
+  if(searchQuery.length>0){
+    var found=DATA.nodes.filter(function(n){return n.n&&n.n.indexOf(searchQuery)>=0;}).filter(function(n){return n.b&&n.d;});
+    if(found.length>0&&found[0].id!==selectedId){selectedId=found[0].id;clearSelection=function(){};selectPerson(found[0].id);}
+  }else{selectedId=null;}
+  drawTL(selectedId);
+});
 var panel=document.getElementById("tl-panel");
 panel.addEventListener("wheel",onWheel,{passive:false});
 panel.addEventListener("mousedown",onMD); panel.addEventListener("mousemove",onMM);
