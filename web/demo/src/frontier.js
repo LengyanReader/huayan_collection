@@ -119,3 +119,8 @@ function switchFrontier(view){
   document.getElementById('fv-dialogue').style.display=(view==='dialogue'?'block':'none');
   var el=document.getElementById('fv-litreview');if(el)el.style.display=(view==='litreview'?'block':'none');
 }
+function switchFrontierNav(view,link){
+  switchFrontier(view);
+  document.querySelectorAll('#sidebar .nav-link').forEach(function(l){l.classList.remove('active');});
+  if(link)link.classList.add('active');
+}

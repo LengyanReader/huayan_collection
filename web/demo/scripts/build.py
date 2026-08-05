@@ -526,9 +526,9 @@ def main():
     # ── Build Tab2: Gap (restructured layout) ──
     sidebar_gap = '''
     <h3>📜 华严文献</h3>
-    <a href="#gv-overview" class="nav-link active" data-section="gv-overview">📊 差异总览</a>
-    <a href="#gv-parallel" class="nav-link" data-section="gv-parallel">📖 原文对读</a>
-    <a href="#gv-genealogy" class="nav-link" data-section="gv-genealogy">🕸 文本系谱</a>
+    <a href="#" class="nav-link active" onclick="switchGapView('overview',this);return false">📊 差异总览</a>
+    <a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a>
+    <a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a>
     '''
     gap_html = build_simple_tab_page('华严文献 · 雅思渊才', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
     gap_path = TABS_OUT / 'gap.html'
@@ -542,10 +542,10 @@ def main():
     # ── Build Tab3: Jiaoxing (renamed, restructured) ──
     sidebar_jx = '''
     <h3>🧘 教海行云</h3>
-    <a href="#pv-system" class="nav-link active" data-section="pv-system">📐 修行体系</a>
-    <a href="#pv-meditation" class="nav-link" data-section="pv-meditation">🗺 禅观法要</a>
-    <a href="#pv-heart" class="nav-link" data-section="pv-heart">❤️ 实修心要</a>
-    <a href="#pv-resources" class="nav-link" data-section="pv-resources">📡 讲法资源</a>
+    <a href="#" class="nav-link active" onclick="switchPracticeView('system',this);return false">📐 修行体系</a>
+    <a href="#" class="nav-link" onclick="switchPracticeView('meditation',this);return false">🗺 禅观法要</a>
+    <a href="#" class="nav-link" onclick="switchPracticeView('heart',this);return false">❤️ 实修心要</a>
+    <a href="#" class="nav-link" onclick="switchPracticeView('resources',this);return false">📡 讲法资源</a>
     '''
     jx_html = build_simple_tab_page('教海行云 · 信解行证', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
     jx_path = TABS_OUT / 'jiaoxing.html'
@@ -559,8 +559,8 @@ def main():
     # ── Build Tab4: Frontier (restructured) ──
     sidebar_fr = '''
     <h3>🔬 前沿对话</h3>
-    <a href="#fv-dialogue" class="nav-link active" data-section="fv-dialogue">🔬 跨界对话</a>
-    <a href="#fv-litreview" class="nav-link" data-section="fv-litreview">📑 文献综述</a>
+    <a href="#" class="nav-link active" onclick="switchFrontierNav('dialogue',this);return false">🔬 跨界对话</a>
+    <a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述</a>
     '''
     fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
     fr_path = TABS_OUT / 'frontier.html'

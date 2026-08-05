@@ -15,8 +15,8 @@
   <nav class="sidebar" id="sidebar">
     
     <h3>🔬 前沿对话</h3>
-    <a href="#fv-dialogue" class="nav-link active" data-section="fv-dialogue">🔬 跨界对话</a>
-    <a href="#fv-litreview" class="nav-link" data-section="fv-litreview">📑 文献综述</a>
+    <a href="#" class="nav-link active" onclick="switchFrontierNav('dialogue',this);return false">🔬 跨界对话</a>
+    <a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述</a>
     
   </nav>
   <main class="content" id="content">
@@ -162,6 +162,11 @@ function switchFrontier(view){
   var btn=document.querySelector('.f-nav-btn[onclick*="'+view+'"]');if(btn)btn.classList.add('active');
   document.getElementById('fv-dialogue').style.display=(view==='dialogue'?'block':'none');
   var el=document.getElementById('fv-litreview');if(el)el.style.display=(view==='litreview'?'block':'none');
+}
+function switchFrontierNav(view,link){
+  switchFrontier(view);
+  document.querySelectorAll('#sidebar .nav-link').forEach(function(l){l.classList.remove('active');});
+  if(link)link.classList.add('active');
 }
 
 </script>
