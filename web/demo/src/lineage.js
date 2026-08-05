@@ -603,6 +603,70 @@ var LOC_ANCIENT={
   '奈良东大寺':'日本平城京·东大寺', '南投大华严寺':'今南投·云鹤山大华严寺', '台北福慧寺':'今台北·树林福慧寺',
   '印度那烂陀寺':'古印度·那烂陀寺'
 };
+
+// ═══ PERSON TRAJECTORIES (from data/events/person_trajectories.yaml via EVENTS) ═══
+var PERSON_TRAJECTORIES = (typeof EVENTS !== 'undefined' && EVENTS.person_trajectories) ? EVENTS.person_trajectories : {
+  'person_111':{name:'玄奘西行求法·丝绸之路',color:'#b8863c',
+    route:[
+      {y:602,lat:34.5,lng:109.5,label:'诞于洛州缑氏'},
+      {y:618,lat:34.26,lng:108.92,label:'长安出家'},
+      {y:629,lat:34.26,lng:108.92,label:'长安出发·偷渡西行'},
+      {y:630,lat:40.0,lng:94.0,label:'出玉门关·过五烽'},
+      {y:630,lat:42.8,lng:89.5,label:'高昌国·麴文泰结拜'},
+      {y:631,lat:41.5,lng:73.0,label:'凌山·翻越天山'},
+      {y:631,lat:39.0,lng:67.0,label:'飒秣建国(撒马尔罕)'},
+      {y:632,lat:34.0,lng:72.0,label:'犍陀罗·白沙瓦'},
+      {y:632,lat:25.14,lng:85.44,label:'抵那烂陀寺·师从戒贤'},
+      {y:643,lat:25.14,lng:85.44,label:'曲女城辩论·大乘天'},
+      {y:645,lat:34.22,lng:108.96,label:'归长安·携657部梵本'},
+      {y:648,lat:34.22,lng:108.96,label:'译《瑜伽师地论》百卷'},
+      {y:664,lat:34.2,lng:108.9,label:'圆寂于玉华寺'}
+    ]},
+  'person_110':{name:'法显西行·海上归国',color:'#5e8b9e',
+    route:[
+      {y:337,lat:37.0,lng:112.0,label:'诞于平阳'},
+      {y:399,lat:34.26,lng:108.92,label:'长安出发·65岁'},
+      {y:400,lat:40.0,lng:94.0,label:'出敦煌·渡沙河'},
+      {y:401,lat:39.5,lng:76.0,label:'逾葱岭·入北天竺'},
+      {y:403,lat:25.14,lng:85.44,label:'那烂陀寺·学梵书'},
+      {y:409,lat:6.9,lng:79.9,label:'师子国(斯里兰卡)·得经'},
+      {y:412,lat:32.0,lng:121.0,label:'海路归国·建康译经'},
+      {y:422,lat:30.0,lng:118.0,label:'圆寂于荆州辛寺'}
+    ]},
+  'person_103':{name:'鸠摩罗什·译经巨匠',color:'#c46b5d',
+    route:[
+      {y:344,lat:41.7,lng:82.9,label:'诞于龟兹'},
+      {y:352,lat:41.7,lng:82.9,label:'7岁随母出家'},
+      {y:365,lat:37.0,lng:70.0,label:'游学罽宾·学小乘'},
+      {y:380,lat:39.0,lng:72.0,label:'莎车国·转学大乘'},
+      {y:384,lat:41.7,lng:82.9,label:'归龟兹·升座讲法'},
+      {y:385,lat:40.0,lng:94.0,label:'吕光破龟兹·被掳东行'},
+      {y:401,lat:34.26,lng:108.92,label:'抵长安·姚兴迎入'},
+      {y:402,lat:34.26,lng:108.92,label:'逍遥园译场·八百沙门'},
+      {y:413,lat:34.26,lng:108.92,label:'圆寂于长安'}
+    ]},
+  'person_112':{name:'义净·海上丝绸之路',color:'#7d9a6e',
+    route:[
+      {y:635,lat:37.0,lng:116.0,label:'诞于齐州'},
+      {y:671,lat:23.13,lng:113.26,label:'广州乘波斯船出发'},
+      {y:672,lat:1.0,lng:104.0,label:'室利佛逝(苏门答腊)'},
+      {y:673,lat:22.0,lng:88.0,label:'经恒河口的耽摩栗底'},
+      {y:674,lat:25.14,lng:85.44,label:'抵那烂陀寺·学律藏'},
+      {y:685,lat:25.14,lng:85.44,label:'那烂陀寺·整理梵本'},
+      {y:695,lat:34.26,lng:108.92,label:'归洛阳·携400余部梵本'},
+      {y:713,lat:34.26,lng:108.92,label:'圆寂于长安荐福寺'}
+    ]},
+  'person_006':{name:'佛驮跋陀罗·天竺来华',color:'#c8893e',
+    route:[
+      {y:359,lat:27.5,lng:83.3,label:'诞于迦毗罗卫'},
+      {y:380,lat:25.14,lng:85.44,label:'那烂陀寺修学'},
+      {y:400,lat:41.7,lng:82.9,label:'经龟兹·丝绸之路'},
+      {y:406,lat:34.26,lng:108.92,label:'抵长安·弘始八年'},
+      {y:410,lat:30.0,lng:114.0,label:'南下庐山·慧远迎请'},
+      {y:416,lat:32.0,lng:118.8,label:'建康道场寺·译六十华严'},
+      {y:429,lat:32.0,lng:118.8,label:'圆寂于建康'}
+    ]}
+};
 var DYNASTY_BOUNDARIES=[
   {n:'唐',s:618,e:907,c:'#b8863c',bounds:[[18,73],[42,130]]},
   {n:'宋',s:960,e:1279,c:'#5e8b9e',bounds:[[20,98],[40,125]]},
@@ -732,6 +796,26 @@ function showInfo(p,p2,e){
       +"📅 <b>"+(p2.dy||"?")+"</b> · "+(p2.b||"?")+"–"+(p2.d||"?")+"<br>"
       +(p2.bio?"<div style=color:var(--text2)>"+p2.bio+"</div>":"")+"</div>";
   }
+  // ── Person trajectory (micro: person journey) ──
+  var traj=PERSON_TRAJECTORIES[p.id];
+  if(traj&&traj.route&&traj.route.length){
+    h+='<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--line)">';
+    h+='<b style=color:'+(traj.color||'#b8863c')+'>🗺 '+traj.name+'</b> ';
+    h+='<span style=font-size:0.7em;color:var(--text2)>('+traj.route.length+'个节点)</span><br>';
+    h+='<button onclick="playTrajectory(\''+p.id+'\')" style="padding:3px 10px;border:1px solid '+(traj.color||'#b8863c')+';border-radius:12px;background:var(--card);color:'+(traj.color||'#b8863c')+';cursor:pointer;font-size:0.72em;margin-top:4px">🎬 播放足迹</button> ';
+    h+='<button onclick="showTrajectoryOnMap(\''+p.id+'\')" style="padding:3px 10px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.72em;margin-top:4px">📍 查看路线</button>';
+    h+='</div>';
+  }
+  // ── Civilization exchange context (macro) ──
+  var eraEvents=KEY_EVENTS.filter(function(ev){return p.b&&ev.y>=p.b-50&&ev.y<=p.d+50;}).slice(0,3);
+  if(eraEvents.length){
+    h+='<div style="margin-top:4px;padding-top:4px;border-top:1px dotted var(--line)">';
+    h+='<span style=font-size:0.7em;color:var(--blue)>🌏 同时代事件:</span> ';
+    eraEvents.forEach(function(ev,ei){
+      h+='<span style=font-size:0.68em;color:var(--text2)'+(ei===0?'':'')+'>'+ev.y+' '+ev.l.substring(0,30)+'</span> ';
+    });
+    h+='</div>';
+  }
   content.innerHTML=h;
   popup.style.display='block';popup.style.visibility='visible';popup.style.opacity='1';
   // Ensure popup has sensible default position
@@ -752,6 +836,54 @@ function showInfo(p,p2,e){
     popup.style.left=px+'px';popup.style.top=py+'px';popup.style.width='';
   }else{
     popup.style.left=(window.innerWidth-400)+'px';popup.style.top='80px';popup.style.width='';
+  }
+}
+
+// ═══ PERSON TRAJECTORY PLAYBACK ═══
+var _trajTimer=null,_trajMarker=null,_trajLine=null,_trajIndex=0;
+function playTrajectory(pid){
+  var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
+  // Stop any existing trajectory playback
+  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
+  if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
+  if(_trajLine&&mapMain){mapMain.removeLayer(_trajLine);_trajLine=null;}
+  _trajIndex=0;
+  var route=traj.route,color=traj.color||'#b8863c';
+  // Draw full route line
+  var coords=route.map(function(p){return [p.lat,p.lng];});
+  if(mapMain){
+    _trajLine=L.polyline(coords,{color:color,weight:3,opacity:0.6,dashArray:'6,4'}).addTo(mapMain);
+    mapMain.fitBounds(_trajLine.getBounds().pad(0.2));
+    _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:color,color:'#fff',weight:2,fillOpacity:0.9}).addTo(mapMain);
+  }
+  document.getElementById('info-popup').style.display='none';
+  var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
+  _stepTrajectory(route,color,sb);
+}
+function _stepTrajectory(route,color,sb){
+  if(_trajIndex>=route.length){if(sb)sb.style.opacity='0';return;}
+  var pt=route[_trajIndex];
+  if(sb)sb.innerHTML='<b style=color:'+color+'>'+pt.y+'年</b> '+pt.label;
+  if(_trajMarker&&mapMain){
+    _trajMarker.setLatLng([pt.lat,pt.lng]);
+    mapMain.panTo([pt.lat,pt.lng],{animate:true,duration:0.8});
+  }
+  _trajIndex++;
+  _trajTimer=setTimeout(function(){_stepTrajectory(route,color,sb);},1200);
+}
+function showTrajectoryOnMap(pid){
+  var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
+  if(_trajLine&&mapMain)mapMain.removeLayer(_trajLine);
+  if(_trajMarker&&mapMain)mapMain.removeLayer(_trajMarker);
+  var coords=traj.route.map(function(p){return [p.lat,p.lng];});
+  if(mapMain){
+    _trajLine=L.polyline(coords,{color:traj.color||'#b8863c',weight:3,opacity:0.6}).addTo(mapMain);
+    // Add numbered markers for each stop
+    traj.route.forEach(function(pt,i){
+      L.circleMarker([pt.lat,pt.lng],{radius:4,fillColor:traj.color||'#b8863c',color:'#fff',weight:1,fillOpacity:0.8})
+        .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')',{permanent:false}).addTo(mapMain);
+    });
+    mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
   }
 }
 
@@ -1200,12 +1332,13 @@ function toggleAnim(){
   }
   if(mapMini){
     mapMini.setView([28,78],3);
-    // Per-religion colored routes on minimap
+    // Mini map: Huayan-only route (focused view)
     animRelLines.forEach(function(l){if(mapMini)mapMini.removeLayer(l);});animRelLines=[];
-    Object.keys(REL_COLORS).forEach(function(k){
-      var pts=ANIM_WAYPOINTS.filter(function(w){return (w.rel||'buddhist')===k;}).map(function(w){return [w.lat,w.lng];});
-      if(pts.length>1){var rl=L.polyline(pts,{color:REL_COLORS[k],weight:2.5,opacity:0.7}).addTo(mapMini);animRelLines.push(rl);}
-    });
+    var huayanPts=ANIM_WAYPOINTS.filter(function(w){return (w.rel||'buddhist')==='buddhist';}).map(function(w){return [w.lat,w.lng];});
+    if(huayanPts.length>1){
+      var hrl=L.polyline(huayanPts,{color:'#b8863c',weight:3,opacity:0.85}).addTo(mapMini);
+      animRelLines.push(hrl);
+    }
     animRouteMarkerU=L.circleMarker([28,78],{radius:10,fillColor:'#b8863c',color:'#ffe066',weight:2,fillOpacity:0.9}).addTo(mapMini);
     // Apply ancient mode to minimap tiles too
     var miniContainer=document.getElementById('map-mini-wrap');
