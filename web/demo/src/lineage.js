@@ -553,6 +553,11 @@ function selectPerson(id,isShift,ev){
   window._personFootprints=[];window._trajMarkers=[];
   if(_trajLine&&mapMain){mapMain.removeLayer(_trajLine);_trajLine=null;}
   if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
+  if(_trajHighlight&&mapMain){mapMain.removeLayer(_trajHighlight);_trajHighlight=null;}
+  if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}
+  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
+  // Close all Leaflet popups on map
+  if(mapMain)mapMain.closePopup();
   if(mapMain&&locs.length>0){
     var loc=locs[0];mapMain.flyTo([loc.lat,loc.lng],locs.length===1?12:10,{duration:0.8});
     // Draw footprint line + numbered markers
@@ -586,7 +591,7 @@ function selectPerson(id,isShift,ev){
   }
   var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 }
-function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById('info-popup').style.display='none';var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();}
+function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document.getElementById('info-popup').style.display='none';if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}if(mapMain)mapMain.closePopup();var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();}
 function drawTL2(id){}
 
 // ═══ ANCIENT/MODERN MAP TOGGLE (with terrain) ═══
