@@ -325,10 +325,6 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <div id="side">
     <div id="map-main-wrap">
       <div id="map-main"></div>
-<div id="map-play-controls" style="position:absolute;bottom:50px;right:12px;z-index:700;display:flex;gap:4px">
-          <button id="map-play-btn" onclick="toggleAnim()" style="padding:5px 14px;border:1px solid var(--green);border-radius:16px;background:rgba(254,253,249,0.88);color:var(--green);cursor:pointer;font-size:0.8em;box-shadow:0 2px 8px rgba(0,0,0,0.1)">▶ 播放</button>
-          <button id="map-stop-btn" onclick="stopAnim()" style="padding:5px 14px;border:1px solid var(--red);border-radius:16px;background:rgba(254,253,249,0.88);color:var(--red);cursor:pointer;font-size:0.8em;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:none">⏹ 停止</button>
-        </div>
 <div id="map-mini-wrap" style="position:absolute;bottom:10px;right:10px;width:180px;height:130px;border:2px solid var(--gold);border-radius:6px;overflow:hidden;z-index:600;box-shadow:0 4px 16px rgba(60,40,20,0.25);background:#fdfaf3">
         <div id="map-mini"></div>
         <button id="mini-terrain-btn" onclick="toggleMiniTerrain()" style="position:absolute;bottom:2px;right:2px;z-index:700;font-size:7px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer">🗻 地形</button>
@@ -368,8 +364,8 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <button id="roster-btn" style="border:1px solid var(--green);color:var(--green);font-size:0.75em" onclick="toggleRoster()">📋 名录</button>
   <button id="temple-btn" style="border:1px solid var(--gold);color:var(--gold);font-size:0.75em" onclick="toggleTempleDir()">🏛 道场</button>
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
-  <button id="anim-btn" style="border:1px solid var(--green);color:var(--green);display:none" onclick="toggleAnim()">▶ 播放</button>
-  <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);display:none" onclick="stopAnim()">⏹ 停止</button>
+  <button id="anim-btn" style="border:1px solid var(--green);color:var(--green);font-weight:600;font-size:0.8em;padding:4px 16px" onclick="toggleAnim()">▶ 播放</button>
+  <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);font-weight:600;font-size:0.8em;padding:4px 12px;display:none" onclick="stopAnim()">⏹</button>
   <span id="route-legend" style="margin-left:auto;font-size:0.62em;color:var(--text2);line-height:1.4;opacity:0.75">
     🪷 <span style=color:#c46b5d>佛教</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span>
   </span>

@@ -1531,13 +1531,13 @@ function pauseAnim(){
   if(!animPlaying||animPaused)return;
   animPaused=true;clearTimeout(animTimer);
   document.getElementById("anim-btn").textContent="▶ 继续";
-  document.getElementById("map-play-btn").textContent="▶ 继续";
+  
 }
 function resumeAnim(){
   if(!animPaused)return;
   animPaused=false;
   document.getElementById("anim-btn").textContent="⏸ 暂停";
-  document.getElementById("map-play-btn").textContent="⏸ 暂停";
+  
   animTimer=setTimeout(animTick,getAnimSpeed());
 }
 function stopAnim(){
@@ -1545,8 +1545,8 @@ function stopAnim(){
   animYear=-600;
   document.getElementById("anim-btn").textContent="▶ 播放";
   document.getElementById("anim-stop-btn").style.display="none";
-  document.getElementById("map-play-btn").textContent="▶ 播放";
-  document.getElementById("map-stop-btn").style.display="none";
+  
+  
   var sb=document.getElementById('anim-status');if(sb){sb.style.opacity='0';sb.innerHTML='';}
   var py=document.getElementById('prog-year');if(py)py.textContent='-600年';
   var pg=document.getElementById('anim-progress');if(pg)pg.value=-600;
@@ -1577,8 +1577,8 @@ function animTick(){
     animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     document.getElementById("anim-stop-btn").style.display="none";
-    document.getElementById("map-play-btn").textContent="▶ 播放";
-    document.getElementById("map-stop-btn").style.display="none";
+    
+    
     if(speedLabel)speedLabel.textContent='1x';if(sb)sb.style.opacity='0';
     return;
   }
@@ -1630,8 +1630,8 @@ function toggleAnim(){
   if(animPlaying){
     clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
-    document.getElementById("map-play-btn").textContent="▶ 播放";
-    document.getElementById("map-stop-btn").style.display="none";
+    
+    
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
@@ -1642,8 +1642,8 @@ function toggleAnim(){
     return;
   }
   // ── START ──
-  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";document.getElementById("anim-stop-btn").style.display="inline";document.getElementById("map-play-btn").textContent="⏸ 暂停";document.getElementById("map-stop-btn").style.display="inline";
-  animYear=-600;lastAnimLoc=-1;
+  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";document.getElementById("anim-stop-btn").style.display="inline";
+  animYear=-1500;lastAnimLoc=-1;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
 
   // Per-religion colors (global REL_COLORS) + weight/dash per layer

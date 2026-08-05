@@ -66,10 +66,6 @@
   <div id="side">
     <div id="map-main-wrap">
       <div id="map-main"></div>
-<div id="map-play-controls" style="position:absolute;bottom:50px;right:12px;z-index:700;display:flex;gap:4px">
-          <button id="map-play-btn" onclick="toggleAnim()" style="padding:5px 14px;border:1px solid var(--green);border-radius:16px;background:rgba(254,253,249,0.88);color:var(--green);cursor:pointer;font-size:0.8em;box-shadow:0 2px 8px rgba(0,0,0,0.1)">▶ 播放</button>
-          <button id="map-stop-btn" onclick="stopAnim()" style="padding:5px 14px;border:1px solid var(--red);border-radius:16px;background:rgba(254,253,249,0.88);color:var(--red);cursor:pointer;font-size:0.8em;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:none">⏹ 停止</button>
-        </div>
 <div id="map-mini-wrap" style="position:absolute;bottom:10px;right:10px;width:180px;height:130px;border:2px solid var(--gold);border-radius:6px;overflow:hidden;z-index:600;box-shadow:0 4px 16px rgba(60,40,20,0.25);background:#fdfaf3">
         <div id="map-mini"></div>
         <button id="mini-terrain-btn" onclick="toggleMiniTerrain()" style="position:absolute;bottom:2px;right:2px;z-index:700;font-size:7px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer">🗻 地形</button>
@@ -109,8 +105,8 @@
   <button id="roster-btn" style="border:1px solid var(--green);color:var(--green);font-size:0.75em" onclick="toggleRoster()">📋 名录</button>
   <button id="temple-btn" style="border:1px solid var(--gold);color:var(--gold);font-size:0.75em" onclick="toggleTempleDir()">🏛 道场</button>
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
-  <button id="anim-btn" style="border:1px solid var(--green);color:var(--green);display:none" onclick="toggleAnim()">▶ 播放</button>
-  <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);display:none" onclick="stopAnim()">⏹ 停止</button>
+  <button id="anim-btn" style="border:1px solid var(--green);color:var(--green);font-weight:600;font-size:0.8em;padding:4px 16px" onclick="toggleAnim()">▶ 播放</button>
+  <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);font-weight:600;font-size:0.8em;padding:4px 12px;display:none" onclick="stopAnim()">⏹</button>
   <span id="route-legend" style="margin-left:auto;font-size:0.62em;color:var(--text2);line-height:1.4;opacity:0.75">
     🪷 <span style=color:#c46b5d>佛教</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span>
   </span>
@@ -1693,13 +1689,13 @@ function pauseAnim(){
   if(!animPlaying||animPaused)return;
   animPaused=true;clearTimeout(animTimer);
   document.getElementById("anim-btn").textContent="▶ 继续";
-  document.getElementById("map-play-btn").textContent="▶ 继续";
+  
 }
 function resumeAnim(){
   if(!animPaused)return;
   animPaused=false;
   document.getElementById("anim-btn").textContent="⏸ 暂停";
-  document.getElementById("map-play-btn").textContent="⏸ 暂停";
+  
   animTimer=setTimeout(animTick,getAnimSpeed());
 }
 function stopAnim(){
@@ -1707,8 +1703,8 @@ function stopAnim(){
   animYear=-600;
   document.getElementById("anim-btn").textContent="▶ 播放";
   document.getElementById("anim-stop-btn").style.display="none";
-  document.getElementById("map-play-btn").textContent="▶ 播放";
-  document.getElementById("map-stop-btn").style.display="none";
+  
+  
   var sb=document.getElementById('anim-status');if(sb){sb.style.opacity='0';sb.innerHTML='';}
   var py=document.getElementById('prog-year');if(py)py.textContent='-600年';
   var pg=document.getElementById('anim-progress');if(pg)pg.value=-600;
@@ -1739,8 +1735,8 @@ function animTick(){
     animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
     document.getElementById("anim-stop-btn").style.display="none";
-    document.getElementById("map-play-btn").textContent="▶ 播放";
-    document.getElementById("map-stop-btn").style.display="none";
+    
+    
     if(speedLabel)speedLabel.textContent='1x';if(sb)sb.style.opacity='0';
     return;
   }
@@ -1792,8 +1788,8 @@ function toggleAnim(){
   if(animPlaying){
     clearTimeout(animTimer);animPlaying=false;animPaused=false;lastAnimLoc=-1;
     document.getElementById("anim-btn").textContent="▶ 播放";
-    document.getElementById("map-play-btn").textContent="▶ 播放";
-    document.getElementById("map-stop-btn").style.display="none";
+    
+    
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
     animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
@@ -1804,8 +1800,8 @@ function toggleAnim(){
     return;
   }
   // ── START ──
-  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";document.getElementById("anim-stop-btn").style.display="inline";document.getElementById("map-play-btn").textContent="⏸ 暂停";document.getElementById("map-stop-btn").style.display="inline";
-  animYear=-600;lastAnimLoc=-1;
+  animPlaying=true;animPaused=false;document.getElementById("anim-btn").textContent="⏸ 暂停";document.getElementById("anim-stop-btn").style.display="inline";
+  animYear=-1500;lastAnimLoc=-1;
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
 
   // Per-religion colors (global REL_COLORS) + weight/dash per layer
