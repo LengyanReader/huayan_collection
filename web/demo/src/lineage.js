@@ -1099,6 +1099,75 @@ function renderRoster(){
   ct.innerHTML=h;
 }
 
+// ═══ TEMPLE DIRECTORY (道场名录) ═══
+var TEMPLE_DATA=null;
+function toggleTempleDir(){
+  var modal=document.getElementById('roster-modal'); // reuse same modal
+  if(!modal)return;
+  if(modal.style.display==='flex'&&modal._mode==='temple'){modal.style.display='none';return;}
+  renderTempleDir();modal.style.display='flex';modal._mode='temple';
+  modal.onclick=function(e){if(e.target===modal)modal.style.display='none';};
+}
+function renderTempleDir(){
+  var ct=document.getElementById('roster-content');
+  var cnt=document.getElementById('roster-count');
+  if(!ct||!cnt)return;
+  // Load temple data from EVENTS (auto-loaded by build)
+  var temples=[];
+  try{if(typeof TEMPLE_DIRECTORY!=='undefined'&&TEMPLE_DIRECTORY&&TEMPLE_DIRECTORY.temples)temples=TEMPLE_DIRECTORY.temples;}catch(e){}
+  if(temples.length===0){ct.innerHTML='<p style=color:var(--text2)>道场数据未加载</p>';return;}
+  cnt.textContent=temples.length;
+  // Group by school
+  var groups={},order=['华严宗','华严宗·普贤乘','贤首宗高原法系','禅宗','禅宗·临济宗','天台宗','净土宗','律宗·南山律','法相宗','三论宗','密宗','藏传·格鲁派','藏传佛教','日本华严宗','日本真言宗','高丽华严宗','印度佛教','道家','道家·天师道','道家·全真','道家·丹鼎派','儒家','儒家·理学'];
+  temples.forEach(function(t){
+    var s=t.school||'其他';
+    if(!groups[s])groups[s]=[];
+    groups[s].push(t);
+  });
+  var h='<div id=roster-title style="font-size:0.8em;color:var(--gold);margin-bottom:8px">🏛 道场名录 — 按宗派分组 · 点击查看详情</div>';
+  order.concat(Object.keys(groups).filter(function(k){return order.indexOf(k)<0;})).forEach(function(s){
+    if(!groups[s]||groups[s].length===0)return;
+    h+='<div style="margin-bottom:6px"><b style=color:#b8863c;font-size:0.8em>'+s+'</b> <span style=font-size:0.68em;color:var(--text2)>'+groups[s].length+'座</span></div>';
+    h+='<div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:8px">';
+    groups[s].forEach(function(t){
+      var v=t.verified?' ✓':'';
+      h+='<span onclick="showTempleInfo(\''+t.id+'\')" style="cursor:pointer;padding:3px 8px;border-radius:10px;font-size:0.68em;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.2);white-space:nowrap"'
+        +' onmouseover="this.style.background=\'rgba(184,134,60,0.2)\'" onmouseout="this.style.background=\'rgba(184,134,60,0.06)\'">'
+        +'<b>'+t.name+'</b>'
+        +(v?'<span style=color:#7d9a6e title=已核实>'+v+'</span>':'')
+        +' <span style=font-size:0.85em;color:var(--text2)>'+t.location+'</span></span>';
+    });
+    h+='</div>';
+  });
+  ct.innerHTML=h;
+}
+function showTempleInfo(tid){
+  document.getElementById('roster-modal').style.display='none';
+  var temples=[];try{if(typeof TEMPLE_DIRECTORY!=='undefined'&&TEMPLE_DIRECTORY)temples=TEMPLE_DIRECTORY.temples||[];}catch(e){}
+  var t=temples.find(function(x){return x.id===tid;});if(!t)return;
+  var popup=document.getElementById('info-popup');if(!popup)return;
+  var h='<span class=close-btn onclick="document.getElementById(\'info-popup\').style.display=\'none\'">&times;</span>'
+    +'<h3 style=color:#b8863c>🏛 '+t.name+'</h3>'
+    +'<span class=tag style=background:rgba(184,134,60,0.1)><b>'+t.school+'</b></span> '
+    +'<span class=tag>'+t.type+'</span> '
+    +'<span class=tag>'+t.dynasty+'</span>'
+    +(t.verified?'<span class=tag style=background:rgba(125,154,110,0.1);color:#7d9a6e>✓ 已核实</span>':'')
+    +'<br>📍 <b>'+t.location+'</b>'+(t.ancient_name?' <span style=font-size:0.65em;color:var(--text2)>('+t.ancient_name+')</span>':'')
+    +' · 📅 '+t.founded
+    +(t.founder?' · 👤 '+t.founder:'')
+    +'<br>📝 <span style=font-size:0.78em;line-height:1.6>'+t.description+'</span>'
+    +(t.significance?'<br>⭐ <b style=color:#b8863c>'+t.significance+'</b>':'')
+    +(t.events&&t.events.length?'<br>📜 重大事件: '+t.events.join(' · '):'')
+    +(t.source?'<div style="margin-top:3px;font-size:0.65em;color:var(--text2);opacity:0.7">📚 '+t.source+'</div>':'')
+    +(t.links&&t.links.length?'<div style=margin-top:4px>🔗 '+t.links.map(function(l){return '<a href='+l.url+' target=_blank style=color:var(--blue);font-size:0.7em>'+l.name+'</a>';}).join(' · ')+'</div>':'');
+  popup.innerHTML=h;popup.style.display='block';popup.style.left='60vw';popup.style.top='10vh';
+  popup.onclick=function(e){if(e.target.tagName!=='BUTTON'&&e.target.tagName!=='A')popup.style.display='none';};
+  if(popup._autoTimer)clearTimeout(popup._autoTimer);
+  popup._autoTimer=setTimeout(function(){popup.style.display='none';},15000);
+  // Fly map to temple location
+  if(mapMain&&t.lat&&t.lng){mapMain.flyTo([t.lat,t.lng],12,{duration:1});}
+}
+
 // ═══ LAYER TOGGLE ═══
 function toggleLayer(layer){
   layerVis[layer]=!layerVis[layer];

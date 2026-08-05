@@ -217,10 +217,14 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
     init_js = init_js.replace('renderPractice();', 'try{renderPractice();}catch(e){}')
     init_js = init_js.replace('renderFrontier();', 'try{renderFrontier();}catch(e){}')
 
-    # Inject events data as JS globals inside lineage.js replacement
+    # Inject events data as JS globals
     events_js = ''
     for name, data in events.items():
         events_js += f'var {name.upper()} = {json.dumps(data, ensure_ascii=False)};\n'
+    # Also inject temple directory
+    temple_data = read_yaml('locations/temple_directory.yaml')
+    if temple_data:
+        events_js += f'var TEMPLE_DIRECTORY = {json.dumps(temple_data, ensure_ascii=False)};\n'
 
     # Build clean standalone page
     html = f'''<!DOCTYPE html>
@@ -328,6 +332,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <button id="ancient-btn" onclick="toggleAncient()">🏯 古今</button>
   <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type="range" id="anim-speed" min="5" max="40" value="35" step="1"><span id="speed-label">1×</span></span>
   <button id="roster-btn" style="border:1px solid var(--green);color:var(--green);font-size:0.75em" onclick="toggleRoster()">📋 名录</button>
+  <button id="temple-btn" style="border:1px solid var(--gold);color:var(--gold);font-size:0.75em" onclick="toggleTempleDir()">🏛 道场</button>
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
   <button id="anim-btn" style="border:1px solid var(--green);color:var(--green)" onclick="toggleAnim()">▶ 播放</button>
   <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);display:none" onclick="stopAnim()">⏹ 停止</button>

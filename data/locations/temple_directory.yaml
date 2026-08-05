@@ -1,0 +1,702 @@
+# ═══════════════════════════════════════════
+# 道场名录 — 各宗派代表道场 (古今·中外)
+# 维护: 新增道场先入此YAML → 构建自动加载
+# ═══════════════════════════════════════════
+# 字段说明:
+#   name: 道场名称(古名优先,现代名随后)
+#   school: 所属宗派/学派
+#   type: temple/mountain/academy/cave
+#   location: 现代地理位置
+#   ancient_name: 古地名
+#   lat/lng: WGS84坐标
+#   dynasty: 创建/鼎盛朝代
+#   founded: 创建年份(约)
+#   founder: 创建者
+#   description: 简介
+#   significance: 历史地位
+#   persons: 关联人物(person_id列表)
+#   events: 重大事件
+#   source: 文献依据
+#   verified: 可靠性(1=确认/0=传统记载)
+#   links: 参考链接
+
+temples:
+  # ═══════════════════════════════════════
+  # 华严宗祖庭·道场
+  # ═══════════════════════════════════════
+  - id: t_huayan_001
+    name: 终南山至相寺
+    school: 华严宗
+    type: temple
+    location: 陕西西安
+    ancient_name: 唐终南山至相寺
+    lat: 34.1
+    lng: 108.6
+    dynasty: 隋唐
+    founded: 580
+    founder: 杜顺
+    description: 华严宗发源地。杜顺于此始创华严观法体系，智俨于此著《搜玄记》开华严经疏先河。法藏亦曾于此从智俨受学。至相寺为华严宗最初的根本道场。
+    significance: 华严宗祖庭·发源地
+    persons: [person_001, person_002, person_003]
+    events: [杜顺创法界观门, 智俨著搜玄记, 法藏从智俨学]
+    source: 《续高僧传》卷二十五 / 《华严经传记》
+    verified: 1
+    links:
+      - name: 百度百科
+        url: https://baike.baidu.com/item/至相寺
+
+  - id: t_huayan_002
+    name: 太原寺(大荐福寺)
+    school: 华严宗
+    type: temple
+    location: 陕西西安
+    ancient_name: 唐长安大荐福寺
+    lat: 34.24
+    lng: 108.93
+    dynasty: 唐
+    founded: 684
+    founder: 武则天
+    description: 法藏于此寺出家并长期住持弘法。武则天时期华严宗的实际中心。法藏于此创「金师子章」之喻为武后说法。
+    significance: 法藏弘法根本道场·华严宗实际中心
+    persons: [person_003]
+    events: [法藏金师子章说华严, 八十华严译场证义]
+    source: 《宋高僧传》卷五·法藏传 / 《华严经传记》
+    verified: 1
+
+  - id: t_huayan_003
+    name: 五台山清凉寺
+    school: 华严宗
+    type: temple
+    location: 山西五台山
+    ancient_name: 唐五台山清凉寺
+    lat: 39.0
+    lng: 113.5
+    dynasty: 唐
+    founded: 780
+    founder: 澄观
+    description: 澄观著《华严经疏》六十卷于此。五台山为文殊菩萨道场，华严经中多次出现「清凉山」即为五台山。澄观于此历七帝之师，德宗赐号「清凉国师」。华严宗由此与五台山结为不可分之缘。
+    significance: 澄观著疏处·华严宗与文殊道场的圣地
+    persons: [person_004]
+    events: [澄观著华严经疏六十卷, 澄观著演义钞九十卷]
+    source: 《宋高僧传》卷五·澄观传
+    verified: 1
+
+  - id: t_huayan_004
+    name: 圭峰草堂寺
+    school: 华严宗
+    type: temple
+    location: 陕西西安鄠邑区
+    ancient_name: 唐圭峰草堂寺
+    lat: 34.1
+    lng: 108.5
+    dynasty: 唐
+    founded: 820
+    founder: 宗密
+    description: 宗密于此著《禅源诸诠集都序》《华严原人论》，融会禅教、判摄儒道释三家。为华严宗「禅教融合」思想的诞生地。
+    significance: 宗密禅教融合之地·华严五祖宗密道场
+    persons: [person_005]
+    events: [著禅源诸诠集, 著华严原人论判摄儒道释]
+    source: 《宋高僧传》卷六·宗密传
+    verified: 1
+
+  - id: t_huayan_005
+    name: 杭州慧因寺
+    school: 华严宗
+    type: temple
+    location: 浙江杭州
+    ancient_name: 宋杭州慧因寺
+    lat: 30.25
+    lng: 120.15
+    dynasty: 宋
+    founded: 1040
+    founder: 净源
+    description: 净源住持于此，传法高丽王子义天。义天归国后送金书《华严经》三种译本供养，寺世称「华严第一道场」。华严宗经此传入朝鲜半岛。
+    significance: 宋代华严中兴道场·义天求法处·华严第一道场
+    persons: [person_011, person_010]
+    events: [义天入宋求法, 金书华严经供养]
+    source: 《佛祖统纪》卷二十九
+    verified: 1
+
+  - id: t_huayan_006
+    name: 常熟兴福寺(华严大学)
+    school: 华严宗
+    type: temple
+    location: 江苏常熟
+    ancient_name: 清常熟兴福寺
+    lat: 31.65
+    lng: 120.75
+    dynasty: 清/近现代
+    founded: 1914
+    founder: 月霞
+    description: 月霞长老于此创立华严大学(1914年)，中国近代第一所华严专宗教育机构。培养了一批现代华严学僧，标志着华严宗从「宗学」传统向现代「学术」的转型。
+    significance: 近代华严复兴策源地·中国第一所华严专宗学院
+    persons: [person_012, person_031, person_013]
+    events: [月霞创华严大学1914]
+    source: 近现代佛教史料 / 于凌波《中国近现代佛教人物志》
+    verified: 1
+    links:
+      - name: 兴福寺
+        url: https://baike.baidu.com/item/兴福寺
+
+  - id: t_huayan_007
+    name: 台北华严莲社
+    school: 华严宗
+    type: temple
+    location: 台湾台北
+    lat: 25.04
+    lng: 121.51
+    dynasty: 当代
+    founded: 1952
+    founder: 智光·南亭
+    description: 智光法师与南亭法师于1952年共创。1975年成一法师创办华严专宗学院于此，以「专修、专研、专弘华严」为宗旨。当代华严宗在台湾最重要的弘法中心之一。
+    significance: 台湾华严宗根本道场·华严专宗学院所在地
+    persons: [person_018, person_015, person_016, person_017]
+    events: [华严莲社创立1952, 华严专宗学院创办1975]
+    source: 华严莲社资料
+    verified: 1
+    links:
+      - name: 华严莲社官网
+        url: https://www.huayen.org.tw
+
+  - id: t_huayan_008
+    name: 南投大华严寺
+    school: 华严宗·普贤乘
+    type: temple
+    location: 台湾南投
+    lat: 23.92
+    lng: 120.88
+    dynasty: 当代
+    founded: 2010
+    founder: 海云继梦
+    description: 海云继梦导师道场。普贤乘华严宗根本道场。2008年海云继梦于此三脉汇流后建立新道场，推动「第四期佛教」理念，将华严修行重构为「工程面/技术面」双轨体系。
+    significance: 当代华严宗创新中心·普贤乘华严宗根本道场
+    persons: [person_042]
+    events: [三脉汇流2008, 普贤乘华严宗创立]
+    source: 大华严寺官网
+    verified: 1
+    links:
+      - name: 大华严寺官网
+        url: https://www.huayenworld.org
+
+  - id: t_huayan_009
+    name: 台北福慧寺
+    school: 贤首宗高原法系
+    type: temple
+    location: 台湾新北树林
+    lat: 24.98
+    lng: 121.42
+    dynasty: 当代
+    founded: 1948
+    founder: 思元慧三
+    description: 贤首宗高原法系在台根本道场。钦因长老(41世)于此住持，2008年将华严衣钵传予海云继梦(42世)。2010年成观法师于此受华严兼慈恩法脉。
+    significance: 贤首宗高原法系在台根本道场·华严衣钵传承地
+    persons: [person_f01, person_041, person_042, person_126]
+    events: [钦因传法海云继梦2008, 成观受法2010]
+    source: 福慧寺法脉资料
+    verified: 1
+
+  - id: t_huayan_010
+    name: 支提山大华严寺
+    school: 华严宗·普贤乘
+    type: temple
+    location: 台湾苗栗通霄
+    lat: 24.5
+    lng: 120.7
+    dynasty: 当代
+    founded: 2026
+    founder: 海云继梦
+    description: 2026年7月9日动土。面向台湾海峡与福建宁德支提华严祖庭隔海相望——「山海相应、法脉相承」。四百余位护法善信参与，五十三位嘉宾执铲（呼应善财五十三参）。
+    significance: 华严宗最新道场·山海法脉相承
+    persons: [person_042]
+    events: [支提山动土2026]
+    source: 大华严寺官网
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 禅宗祖庭
+  # ═══════════════════════════════════════
+  - id: t_chan_001
+    name: 嵩山少林寺
+    school: 禅宗
+    type: temple
+    location: 河南登封
+    lat: 34.5
+    lng: 112.9
+    dynasty: 北魏
+    founded: 495
+    founder: 跋陀
+    description: 禅宗祖庭。达摩于此面壁九年传二祖慧可。少林武术发源地。禅宗「不立文字教外别传」自此始。
+    significance: 禅宗祖庭·达摩面壁处
+    persons: []
+    events: [达摩面壁九年]
+    source: 《景德传灯录》
+    verified: 1
+    links:
+      - name: 少林寺官网
+        url: https://www.shaolin.org.cn
+
+  - id: t_chan_002
+    name: 黄梅四祖寺(双峰山)
+    school: 禅宗
+    type: temple
+    location: 湖北黄梅
+    lat: 30.2
+    lng: 115.9
+    dynasty: 唐
+    founded: 624
+    founder: 道信
+    description: 禅宗四祖道信道场。创「坐作并重」的农禅制度，奠定禅宗寺院经济基础。
+    significance: 禅宗四祖道场·农禅制度发源地
+    persons: [person_hongren]
+    source: 《景德传灯录》
+    verified: 1
+
+  - id: t_chan_003
+    name: 黄梅五祖寺(凭茂山)
+    school: 禅宗
+    type: temple
+    location: 湖北黄梅
+    lat: 30.0
+    lng: 115.0
+    dynasty: 唐
+    founded: 651
+    founder: 弘忍
+    description: 禅宗五祖弘忍道场。创「东山法门」，门徒逾千。慧能于此得法——「菩提本无树，明镜亦非台」。海云继梦复兴「东山法门」之名，将华严禅观溯源至此。
+    significance: 五祖道场·慧能得法处·东山法门发源地
+    persons: [person_hongren]
+    events: [慧能得法]
+    source: 《六祖坛经》《景德传灯录》
+    verified: 1
+
+  - id: t_chan_004
+    name: 韶关南华寺(宝林寺)
+    school: 禅宗
+    type: temple
+    location: 广东韶关曹溪
+    lat: 24.0
+    lng: 113.0
+    dynasty: 唐
+    founded: 677
+    founder: 慧能
+    description: 禅宗六祖慧能道场。肉身菩萨供奉于此。明代憨山德清于此中兴。南宗禅的根本道场。
+    significance: 六祖道场·南宗禅根本道场·肉身菩萨供奉处
+    persons: [person_chan_huineng, person_hanshan]
+    events: [慧能开法曹溪, 憨山中兴南华寺]
+    source: 《六祖坛经》
+    verified: 1
+
+  - id: t_chan_005
+    name: 赵州柏林禅寺(观音院)
+    school: 禅宗·临济宗
+    type: temple
+    location: 河北赵县
+    lat: 37.5
+    lng: 115.0
+    dynasty: 唐
+    founded: 820
+    founder: 赵州从谂
+    description: 赵州从谂住持四十年之处。「吃茶去」「庭前柏树子」「狗子无佛性」等千古公案出此。
+    significance: 赵州禅发源地
+    persons: [person_zhaozhou]
+    source: 《景德传灯录》·赵州从谂
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 天台宗
+  # ═══════════════════════════════════════
+  - id: t_tiantai_001
+    name: 天台山国清寺
+    school: 天台宗
+    type: temple
+    location: 浙江天台
+    lat: 29.2
+    lng: 121.0
+    dynasty: 隋
+    founded: 598
+    founder: 智顗
+    description: 天台宗祖庭。智顗于此创天台宗，著天台三大部(《法华玄义》《法华文句》《摩诃止观》)。智者大师肉身塔供奉于此。
+    significance: 天台宗祖庭
+    persons: [person_tiantai_zhiyi]
+    source: 《续高僧传》·智顗传
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 净土宗
+  # ═══════════════════════════════════════
+  - id: t_pureland_001
+    name: 庐山东林寺
+    school: 净土宗
+    type: temple
+    location: 江西九江庐山
+    lat: 29.5
+    lng: 116.0
+    dynasty: 东晋
+    founded: 386
+    founder: 慧远
+    description: 净土宗祖庭。慧远于此三十余年不下山，402年结白莲社123人共修念佛——中国净土宗由此开端。慧远著《沙门不敬王者论》维护佛教独立性。
+    significance: 净土宗祖庭·白莲社发源地
+    persons: [person_huiyuan]
+    events: [白莲社成立402, 虎溪三笑]
+    source: 《高僧传》卷六·慧远传
+    verified: 1
+    links:
+      - name: 东林寺官网
+        url: https://www.donglin.org
+
+  - id: t_pureland_002
+    name: 苏州灵岩山寺
+    school: 净土宗
+    type: temple
+    location: 江苏苏州
+    lat: 31.0
+    lng: 120.0
+    dynasty: 近现代
+    founded: 1937
+    founder: 印光
+    description: 印光法师晚年道场，近代净土宗中心。
+    significance: 近代净土宗根本道场
+    persons: [person_yinguang]
+    source: 近现代佛教史料
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 律宗
+  # ═══════════════════════════════════════
+  - id: t_vinaya_001
+    name: 终南山净业寺
+    school: 律宗·南山律
+    type: temple
+    location: 陕西西安终南山
+    lat: 34.1
+    lng: 108.6
+    dynasty: 唐
+    founded: 624
+    founder: 道宣
+    description: 南山律宗祖庭。道宣于此著《四分律删繁补阙行事钞》，创南山律宗。
+    significance: 南山律宗祖庭
+    persons: [person_daoxuan]
+    source: 《宋高僧传》·道宣传
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 法相宗
+  # ═══════════════════════════════════════
+  - id: t_faxiang_001
+    name: 长安大慈恩寺
+    school: 法相宗
+    type: temple
+    location: 陕西西安
+    lat: 34.22
+    lng: 108.96
+    dynasty: 唐
+    founded: 648
+    founder: 玄奘
+    description: 玄奘译场所在。大雁塔为贮藏657部梵本所建。法相宗祖庭。
+    significance: 法相宗祖庭·玄奘译场·大雁塔
+    persons: [person_111]
+    events: [玄奘译经]
+    source: 《大唐大慈恩寺三藏法师传》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 三论宗
+  # ═══════════════════════════════════════
+  - id: t_sanlun_001
+    name: 南京栖霞寺
+    school: 三论宗
+    type: temple
+    location: 江苏南京栖霞山
+    lat: 32.0
+    lng: 118.8
+    dynasty: 梁/陈
+    founded: 484
+    founder: 明僧绍
+    description: 三论宗祖庭。吉藏于此弘传三论，三论宗江南中心。
+    significance: 三论宗祖庭
+    persons: [person_sanlun_jizang]
+    source: 《续高僧传》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 密宗
+  # ═══════════════════════════════════════
+  - id: t_mizong_001
+    name: 长安大兴善寺
+    school: 密宗
+    type: temple
+    location: 陕西西安
+    lat: 34.24
+    lng: 108.94
+    dynasty: 隋唐
+    founded: 582
+    founder: 善无畏·金刚智
+    description: 密宗祖庭。善无畏、金刚智、不空「开元三大士」先后于此译经弘密。中国密宗发源地。
+    significance: 密宗祖庭
+    persons: [person_120, person_121, person_115]
+    source: 《宋高僧传》
+    verified: 1
+
+  - id: t_mizong_002
+    name: 长安青龙寺
+    school: 密宗
+    type: temple
+    location: 陕西西安
+    lat: 34.23
+    lng: 108.98
+    dynasty: 唐
+    founded: 780
+    founder: 慧果
+    description: 慧果于此兼承胎藏界金刚界两部密法。804年空海入唐于此从慧果受法，归国后创立日本真言宗。青龙寺为中日佛教交流最重要遗址之一。
+    significance: 空海受法处·日本真言宗根源
+    persons: [person_123, person_124]
+    events: [空海受法804]
+    source: 空海《御请来目录》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 藏传佛教
+  # ═══════════════════════════════════════
+  - id: t_tibetan_001
+    name: 拉萨甘丹寺
+    school: 藏传·格鲁派
+    type: temple
+    location: 西藏拉萨
+    lat: 29.75
+    lng: 91.47
+    dynasty: 明
+    founded: 1409
+    founder: 宗喀巴
+    description: 格鲁派根本道场。宗喀巴创建的第一座格鲁派寺院。甘丹寺为格鲁派三大寺之首。
+    significance: 格鲁派根本道场
+    persons: [person_152]
+    source: 王森《西藏佛教发展史略》
+    verified: 1
+
+  - id: t_tibetan_002
+    name: 拉萨大昭寺
+    school: 藏传佛教
+    type: temple
+    location: 西藏拉萨
+    lat: 29.65
+    lng: 91.13
+    dynasty: 唐
+    founded: 647
+    founder: 松赞干布
+    description: 供奉释迦牟尼十二岁等身像。藏传佛教最神圣的寺院。历史上汉藏佛教交流的重要见证。
+    significance: 藏传佛教最神圣寺院
+    source: 王森《西藏佛教发展史略》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 日本佛教
+  # ═══════════════════════════════════════
+  - id: t_japan_001
+    name: 奈良东大寺
+    school: 日本华严宗
+    type: temple
+    location: 日本奈良
+    lat: 34.69
+    lng: 135.84
+    dynasty: 唐/日本
+    founded: 745
+    founder: 圣武天皇
+    description: 日本华严宗总本山。卢舍那大佛高约15m，世界现存最大木构建筑之一。审祥于此首次于日本讲说《华严经》。正仓院藏唐代华严相关文物300+件。1998年世界文化遗产。
+    significance: 日本华严宗总本山·卢舍那大佛·世界遗产
+    persons: [person_050, person_j01]
+    events: [审祥首讲华严经]
+    source: 日本佛教史 / 东大寺官网
+    verified: 1
+    links:
+      - name: 东大寺官网
+        url: https://www.todaiji.or.jp
+
+  - id: t_japan_002
+    name: 高野山金刚峰寺
+    school: 日本真言宗
+    type: temple
+    location: 日本和歌山
+    lat: 34.21
+    lng: 135.58
+    dynasty: 唐/日本
+    founded: 816
+    founder: 空海
+    description: 日本真言宗总本山。空海归国后于此开创真言宗。空海《十住心论》以华严判教框架判摄显密诸宗——体现密教与华严义学之深层对话。
+    significance: 日本真言宗总本山
+    persons: [person_124]
+    source: 空海《御请来目录》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 韩国佛教
+  # ═══════════════════════════════════════
+  - id: t_korea_001
+    name: 浮石寺
+    school: 高丽华严宗
+    type: temple
+    location: 韩国庆尚北道荣州
+    lat: 36.0
+    lng: 129.0
+    dynasty: 唐/新罗
+    founded: 676
+    founder: 义湘
+    description: 海东华严宗祖庭。义湘从唐归国后创建，为华严宗传入朝鲜半岛之始。
+    significance: 海东华严宗祖庭
+    persons: [person_061]
+    source: 《宋高僧传》·义湘传
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 印度佛教圣地
+  # ═══════════════════════════════════════
+  - id: t_india_001
+    name: 那烂陀寺
+    school: 印度佛教
+    type: temple
+    location: 印度比哈尔邦
+    ancient_name: 古印度那烂陀寺
+    lat: 25.14
+    lng: 85.44
+    dynasty: 古印度(5-12世纪)
+    founded: 450
+    description: 古印度佛教最高学府。玄奘、义净等求法僧于此留学。无著、世亲于此弘传瑜伽行派。7-12世纪为世界最大佛教大学，僧众万余。华严宗远祖龙树、世亲、无著均与此寺有深厚渊源。
+    significance: 世界佛教最高学府·华严义学远源
+    persons: [person_111, person_112, person_102, person_000b, person_000a]
+    events: [玄奘留学, 义净留学]
+    source: 《大唐西域记》《南海寄归内法传》
+    verified: 1
+
+  - id: t_india_002
+    name: 菩提伽耶
+    school: 印度佛教
+    type: temple
+    location: 印度比哈尔邦
+    lat: 24.7
+    lng: 85.0
+    dynasty: 古印度
+    founded: -528
+    description: 释迦牟尼成道处。据华严宗传统，佛陀成道后最初三七日于菩提树下说《华严经》。金刚座为世界佛教徒朝圣中心。
+    significance: 佛陀成道处·华严经教说圣地
+    persons: [person_100]
+    events: [佛陀成道·华严经最初教说(华严宗传统)]
+    source: 《华严经传记》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 道家·洞天福地
+  # ═══════════════════════════════════════
+  - id: t_daoist_001
+    name: 终南山楼观台
+    school: 道家
+    type: temple
+    location: 陕西西安周至
+    lat: 34.0
+    lng: 108.5
+    dynasty: 周/历代
+    founded: -500
+    founder: 老子(传说)
+    description: 道教祖庭·老子说经台。传说老子于此著《道德经》并授关尹子。楼观派发源地。终南山自古为佛道交融之地，华严宗至相寺、律宗净业寺均在附近——「佛道终南」的地理交汇。
+    significance: 道教祖庭·老子说经处·佛道地理交汇
+    persons: [person_laozi, person_guanyinzi]
+    source: 《史记·老子韩非列传》
+    verified: 1
+
+  - id: t_daoist_002
+    name: 青城山
+    school: 道家·天师道
+    type: mountain
+    location: 四川都江堰
+    lat: 30.0
+    lng: 103.0
+    dynasty: 汉/历代
+    founded: 142
+    founder: 张道陵
+    description: 天师道发源地。张道陵于此创教设二十四治。与峨眉山(普贤道场)隔成都平原相望——道教发源地与佛教圣地的地理呼应。
+    significance: 天师道发源地
+    persons: [person_zhangdaoling]
+    source: 《后汉书·刘焉传》
+    verified: 1
+
+  - id: t_daoist_003
+    name: 武当山
+    school: 道家·全真
+    type: mountain
+    location: 湖北十堰
+    lat: 32.0
+    lng: 111.0
+    dynasty: 元/明
+    founded: 1310
+    founder: 张三丰
+    description: 道教名山。张三丰于此创内家拳太极拳。明代皇家道场，真武大帝道场。与禅宗少林并称「北崇少林南尊武当」。
+    significance: 武当派·太极拳发源地
+    persons: [person_zhangsanfeng]
+    source: 《明史·方伎传》
+    verified: 1
+
+  - id: t_daoist_004
+    name: 广东罗浮山
+    school: 道家·丹鼎派
+    type: mountain
+    location: 广东惠州
+    lat: 23.0
+    lng: 113.0
+    dynasty: 晋/历代
+    founded: 320
+    founder: 葛洪
+    description: 葛洪于此著《抱朴子》《肘后备急方》，医道合一。岭南道教圣地。与曹溪南华寺(六祖道场)同在岭南——道教丹鼎与禅宗顿悟的地理并存。
+    significance: 丹鼎派圣地·葛洪道场
+    persons: [person_gehong]
+    source: 《晋书·葛洪传》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 儒家·书院
+  # ═══════════════════════════════════════
+  - id: t_confucian_001
+    name: 曲阜孔庙
+    school: 儒家
+    type: temple
+    location: 山东曲阜
+    lat: 35.6
+    lng: 116.99
+    dynasty: 周/历代
+    founded: -478
+    description: 儒家祖庭。孔子故宅改建，历代帝王祭祀孔子之处。与佛教祖庭(白马寺)同在河南山东一带——儒佛两大文明传统的空间并置。世界文化遗产。
+    significance: 儒家祖庭·世界文化遗产
+    persons: [person_kongzi, person_yanhui]
+    source: 《史记·孔子世家》
+    verified: 1
+    links:
+      - name: 曲阜孔庙
+        url: https://baike.baidu.com/item/孔庙
+
+  - id: t_confucian_002
+    name: 岳麓书院
+    school: 儒家·理学
+    type: academy
+    location: 湖南长沙
+    lat: 28.18
+    lng: 112.93
+    dynasty: 宋/历代
+    founded: 976
+    description: 宋代四大书院之首。朱熹、张栻等理学大师在此讲学，「朱张会讲」影响深远。千年学府，今为湖南大学前身。与佛教寺院在学术空间上的对比——书院vs寺院·理学vs佛学。
+    significance: 千年学府·理学重镇
+    persons: [person_zhuxi]
+    events: [朱张会讲]
+    source: 《宋史·朱熹传》
+    verified: 1
+
+  - id: t_confucian_003
+    name: 白鹿洞书院
+    school: 儒家·理学
+    type: academy
+    location: 江西九江庐山
+    lat: 29.5
+    lng: 116.0
+    dynasty: 宋
+    founded: 1179
+    founder: 朱熹
+    description: 朱熹知南康军时复建，制定《白鹿洞书院揭示》为中国书院教育纲领。与东林寺(净土宗祖庭)同在庐山——儒家书院与佛教寺院「山中对望」的文化景观。
+    significance: 朱熹复建·书院教育纲领制定地
+    persons: [person_zhuxi]
+    source: 《宋史·朱熹传》
+    verified: 1
