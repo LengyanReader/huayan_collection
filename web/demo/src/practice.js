@@ -767,6 +767,18 @@ function switchPracticeView(view,btn){
     });
   },200);}
 }
+// ═══ 侧边子目录导航 (先切子页再滚动到锚点) ═══
+function jxSubNav(view,anchor){
+  // Switch to the sub-page first
+  var navBtn=document.querySelector('#sidebar .nav-link[onclick*="'+view+'"]');
+  switchPracticeView(view,navBtn);
+  // Then scroll to anchor after render
+  setTimeout(function(){
+    var el=document.getElementById(anchor);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  },100);
+}
+
 // Restore sub-page on load (heart 已并入 meditation)
 (function(){
   setTimeout(function(){

@@ -546,25 +546,25 @@ def main():
     sidebar_jx = '''
     <h3>🧘 教海行云</h3>
     <a href="#" class="nav-link active" onclick="switchPracticeView('system',this);return false">📐 修行体系</a>
-    <a href="#sys-stages" class="sub-link">　· 三阶段</a>
-    <a href="#sys-blueprint" class="sub-link">　· 四阶段蓝图</a>
-    <a href="#sys-six" class="sub-link">　· 六科五大行法</a>
-    <a href="#sys-projects" class="sub-link">　· 四大工程</a>
-    <a href="#sys-evolution" class="sub-link">　· 演进脉络</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-stages');return false">　· 三阶段</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-blueprint');return false">　· 四阶段蓝图</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-six');return false">　· 六科五大行法</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-projects');return false">　· 四大工程</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-evolution');return false">　· 演进脉络</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('meditation',this);return false">🗺 禅观法要</a>
-    <a href="#med-overview" class="sub-link">　· 体系总览</a>
-    <a href="#med-paths" class="sub-link">　· 次第道与圆融道</a>
-    <a href="#med-stage1" class="sub-link">　· 资粮道</a>
-    <a href="#med-stage2" class="sub-link">　· 前行</a>
-    <a href="#med-stage3" class="sub-link">　· 正行</a>
-    <a href="#med-heart" class="sub-link">　· 实修心要</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-overview');return false">　· 体系总览</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-paths');return false">　· 次第道与圆融道</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage1');return false">　· 资粮道</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">　· 前行</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　· 正行</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">　· 实修心要</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('resources',this);return false">📡 讲法资源</a>
-    <a href="#res-total" class="sub-link">　· 全网总目</a>
-    <a href="#res-books" class="sub-link">　· 著作</a>
-    <a href="#res-yt" class="sub-link">　· YouTube</a>
-    <a href="#res-academic" class="sub-link">　· 学术活动</a>
-    <a href="#res-temples" class="sub-link">　· 道场</a>
-    <a href="#res-more" class="sub-link">　· 检索补遗</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-total');return false">　· 全网总目</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-books');return false">　· 著作</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-yt');return false">　· YouTube</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-academic');return false">　· 学术活动</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-temples');return false">　· 道场</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-more');return false">　· 检索补遗</a>
     '''
     jx_html = build_simple_tab_page('教海行云 · 信解行证', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
     jx_path = TABS_OUT / 'jiaoxing.html'
