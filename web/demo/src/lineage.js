@@ -521,6 +521,8 @@ function initMap(){
     mapMain.invalidateSize();
   }
   initMiniMaps();
+  // Auto-enable ancient map mode (called here to survive stale deploys)
+  setTimeout(function(){toggleAncient();},600);
 }
 function getMainMap(){return mapMain;}
 
@@ -1488,8 +1490,15 @@ function initOtherSchools(){
 // ═══ ROUTE INFO ═══
 function toggleRouteInfo(){
   var ri=document.getElementById('route-info');
+  // Create route-info div dynamically if missing (GitHub Pages stale deploy workaround)
+  if(!ri){
+    ri=document.createElement('div');ri.id='route-info';
+    ri.style.cssText='display:none;position:absolute;bottom:8px;left:8px;right:8px;background:rgba(254,253,249,0.9);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:0.68em;color:var(--text2);z-index:500;line-height:1.5';
+    ri.innerHTML='🪷 <span style=color:#c46b5d>佛教/华严主线</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span> — 彩色路线代表不同文明传统的传播与交融';
+    var mw=document.getElementById('map-main-wrap');if(mw)mw.appendChild(ri);
+  }
   if(!ri)return;
-  if(ri.style.display==='none'){ri.style.display='block';ri._autoTimer=setTimeout(function(){ri.style.display='none';},8000);}
+  if(ri.style.display==='none'||!ri.style.display){ri.style.display='block';ri._autoTimer=setTimeout(function(){ri.style.display='none';},8000);}
   else{ri.style.display='none';if(ri._autoTimer)clearTimeout(ri._autoTimer);}
   ri.onmouseenter=function(){if(ri._autoTimer)clearTimeout(ri._autoTimer);};
   ri.onmouseleave=function(){ri._autoTimer=setTimeout(function(){ri.style.display='none';},3000);};
