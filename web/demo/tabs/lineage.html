@@ -931,7 +931,7 @@ function showInfo(p,p2,e){
   if(popup._autoTimer)clearTimeout(popup._autoTimer);
   popup.onmouseenter=function(){if(popup._autoTimer)clearTimeout(popup._autoTimer);};
   popup.onmouseleave=function(){popup._autoTimer=setTimeout(function(){popup.style.display='none';},5000);};
-  popup.onclick=function(e){if(e.target.tagName==='BUTTON'||e.target.tagName==='A')return;popup.style.display='none';};
+  popup.onclick=function(e){if(e.target.closest('button')||e.target.closest('a'))return;popup.style.display='none';};
   popup._autoTimer=setTimeout(function(){popup.style.display='none';},12000);
   // Position: mobile=centered, desktop=near click
   var isMobile=window.innerWidth<768;
@@ -1019,11 +1019,11 @@ function _stepTrajectory(route,color,sb,name){
   _trajTimer=setTimeout(function(){_stepTrajectory(route,color,sb,name);},1200);
 }
 function _clearTrajMarkers(){
-  // Remove entire trajectory layer group atomically
-  if(_trajGroup&&mapMain){mapMain.removeLayer(_trajGroup);}
-  // Remove animation moving marker (not in group)
-  if(_trajMarker&&mapMain)try{mapMain.removeLayer(_trajMarker);}catch(e){}
-  if(mapMain){mapMain.closePopup();mapMain.closeTooltip();}
+  try{
+    if(_trajGroup&&mapMain){mapMain.removeLayer(_trajGroup);}
+    if(_trajMarker&&mapMain)try{mapMain.removeLayer(_trajMarker);}catch(e){}
+    if(mapMain){mapMain.closePopup();mapMain.closeTooltip();}
+  }catch(e){console.error('_clearTrajMarkers:',e);}
   _trajGroup=null;_trajLine=null;_trajMarker=null;_trajHighlight=null;_trajPopup=null;
   if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
 }
