@@ -1004,9 +1004,9 @@ function _classifyPerson(p,traj){
   if(li==='密宗'||li==='唐密')return '☸ 密宗·唐密';
   if(/密宗|善无畏|金刚智|不空|一行|慧果/.test(n+tname))return '☸ 密宗·唐密';
 
-  // ── 译师·求法僧 ──
-  if(tp==='translator'||li==='译师')return '📖 译师';
-  if(li==='求法僧'||/法显|义净|玄奘/.test(n+tname))return '🚶 求法僧';
+  // ── 译师·求法僧 (from li field) ──
+  if(li==='译师')return '📖 译师';
+  if(li==='求法僧')return '🚶 求法僧';
 
   // ── 藏传佛教·内部支系 ──
   if(li==='藏传佛教·格鲁派'||li==='格鲁派')return '🔴 藏传·格鲁派';
@@ -1023,13 +1023,11 @@ function _classifyPerson(p,traj){
   // ── 南传佛教 ──
   if(li==='上座部'||li==='南传佛教')return '🟡 南传佛教';
 
-  // ── 学者·近现代 ──
-  if(tp==='scholar'||li==='当代学者')return '🎓 近现代学者';
+  // ── 近现代学者 ──
+  if(li==='当代学者')return '🎓 近现代学者';
 
-  // ── 汉传其他宗派·近现代高僧 ──
+  // ── 参考线 ──
   if(li==='参考线')return '🏛 近现代高僧大德';
-  if(/虚云|太虚|印光|弘一|印顺|梦参|圆瑛|谛闲|倓虚/.test(n+tname))return '🏛 近现代高僧大德';
-  if(/安世高|道安|僧肇|道生|僧祐|永明|大慧|憨山|蕅益/.test(n+tname))return '☸ 汉传高僧';
 
   // ── 儒家 ──
   if(li==='儒家'||/儒家/.test(li))return '📜 儒家';
@@ -1063,6 +1061,51 @@ function _classifyPerson(p,traj){
   if(li==='朝鲜佛教'||li==='韩国佛教')return '☸ 朝鲜佛教';
   if(/义天|均如|义湘/.test(n+tname))return '☸ 朝鲜佛教';
 
+  // ── 名相模式匹配(仅对li为空或None的trajectory-only人员生效) ──
+  var full=n+tname;
+  // 汉传高僧·古代
+  if(/安世高|道安|僧肇|道生|僧祐|永明|大慧|憨山|蕅益|雪窦|佛驮跋陀罗|实叉难陀|支娄迦谶|般若/.test(full))return '☸ 汉传高僧';
+  // 近现代高僧大德
+  if(/虚云|太虚|印光|弘一|印顺|梦参|圆瑛|谛闲|倓虚/.test(full))return '🏛 近现代高僧大德';
+  // 译师(从名相推断)
+  if(/译|胜友|智军/.test(full))return '📖 译师';
+  // 求法僧
+  if(/法显|义净|玄奘|西行|求法/.test(full))return '🚶 求法僧';
+  // 天台宗
+  if(/天台|智顗|湛然|知礼/.test(full))return '☸ 天台宗';
+  // 禅宗各派
+  if(/禅|慧能|弘忍|神秀|达摩|马祖|临济|曹洞|云门|法眼|沩仰|黄檗|石头|赵州|百丈|雪峰/.test(full))return '☸ 禅宗';
+  // 净土宗
+  if(/净土|善导|慧远|莲池|昙鸾|道绰|省庵/.test(full))return '☸ 净土宗';
+  // 法相唯识
+  if(/法相|唯识|窥基|圆测|世亲/.test(full))return '☸ 法相宗·唯识';
+  // 三论宗
+  if(/三论|吉藏|僧肇/.test(full))return '☸ 三论宗';
+  // 律宗
+  if(/律宗|道宣|鉴真|弘一|元照|僧祐/.test(full))return '☸ 律宗';
+  // 密宗
+  if(/密宗|善无畏|金刚智|不空|一行|慧果/.test(full))return '☸ 密宗·唐密';
+  // 藏传
+  if(/宗喀巴|达赖|班禅|阿底峡|莲花生|米拉日巴|八思巴|寂天/.test(full))return '🔴 藏传佛教';
+  // 印度佛教/瑜伽
+  if(/印度|瑜伽|拉克鲁希|巴布基|普拉梵|克利普|胜师子|马鸣|龙树|无著/.test(full))return '🕉 印度佛教';
+  // 日本佛教
+  if(/空海|最澄|道元|荣西|日莲|亲鸾|法然|良弁|明惠|凝然/.test(full))return '☸ 日本佛教';
+  // 印度教
+  if(/罗摩克里希纳|辨喜|奥罗宾多|拉玛那/.test(full))return '🕉 印度教·近代';
+  // 儒家
+  if(/孔子|孟子|荀子|董仲舒|朱熹|王阳明|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|颜回|子思|司马迁|班昭|郑玄|顾炎武|黄宗羲|王夫之|胡适|梁启超/.test(full))return '📜 儒家';
+  // 道家
+  if(/老子|庄子|列子|张道陵|王重阳|关尹子|葛洪|寇谦之|吕洞宾|陈抟|丘处机|张三丰|陶弘景|司马承祯|白玉蟾|张伯端/.test(full))return '☯ 道家·道教';
+  // 西方
+  if(/耶稣|穆罕默德|柏拉图|亚里士多德|奥古斯丁|阿奎那|康德|黑格尔/.test(full))return '🔮 西方哲学·宗教';
+  // 伊斯兰
+  if(/鲁米|伊本|安萨里|花拉子密/.test(full))return '☪ 伊斯兰教';
+
+  // ── 最后防线: 类型推断(仅对li和名相都无法匹配的人员) ──
+  if(tp==='translator')return '📖 译师';
+  if(tp==='scholar')return '🎓 近现代学者';
+
   return '📌 其他';
 }
 function toggleRoster(){
@@ -1095,33 +1138,60 @@ function renderRoster(){
     seen[tid]=true;
   }
   cnt.textContent=all.length;
-  // Group order
-  var grpOrder=['🪷 华严宗','☸ 汉传·禅宗','☸ 汉传·天台宗','☸ 汉传·净土宗','☸ 汉传·法相宗','☸ 汉传·三论宗','📖 译师·求法僧','🔴 藏传佛教','🕉 印度·瑜伽','🏛 近现代高僧','☯ 道家','📜 儒家','🔮 西方·印度近代','🎓 学者','📌 其他'];
-  var groups={};
+  // Group order — must match _classifyPerson return values exactly
+  var grpOrder=[
+    '🪷 华严宗·五祖时代','🪷 华严宗·李通玄系','🪷 华严宗·高原法系','🪷 华严宗·华严莲社',
+    '🪷 华严宗·月霞系','🪷 华严宗·慈舟系','🪷 华严宗·日本','🪷 华严宗·朝鲜半岛','🪷 华严宗',
+    '☸ 禅宗·临济宗','☸ 禅宗·曹洞宗','☸ 禅宗·云门宗','☸ 禅宗·法眼宗','☸ 禅宗·沩仰宗',
+    '☸ 禅宗·黄龙派','☸ 禅宗·杨岐派','☸ 禅宗',
+    '☸ 天台宗','☸ 净土宗','☸ 法相宗·唯识','☸ 三论宗','☸ 律宗','☸ 密宗·唐密',
+    '📖 译师','🚶 求法僧',
+    '🔴 藏传·格鲁派','🔴 藏传·萨迦派','🔴 藏传·宁玛派','🔴 藏传·噶举派','🔴 藏传佛教',
+    '🕉 印度佛教·瑜伽行','🕉 印度佛教',
+    '🟡 南传佛教',
+    '☸ 汉传高僧','🏛 近现代高僧大德','🎓 近现代学者',
+    '☸ 日本·天台宗','☸ 日本·真言宗','☸ 日本·禅宗','☸ 日本·净土宗','☸ 日本·日莲宗','☸ 日本佛教',
+    '☸ 朝鲜佛教',
+    '📜 儒家','☯ 道家·道教',
+    '🔮 西方哲学·宗教','☪ 伊斯兰教','🕉 印度教·近代','🕉 印度教·耆那教',
+    '📌 其他'
+  ];
+  var groups={}, usedGroups={};
   all.forEach(function(p){
     if(!groups[p.group])groups[p.group]=[];
     groups[p.group].push(p);
   });
   var h='';
+  // Render groups in defined order
   grpOrder.forEach(function(g){
     if(!groups[g]||groups[g].length===0)return;
-    h+='<div style="margin-bottom:6px"><b style=color:#b8863c;font-size:0.82em">'+g+'</b> <span style=font-size:0.7em;color:var(--text2)>'+groups[g].length+'人</span></div>';
-    h+='<div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:10px">';
-    groups[g].forEach(function(p){
+    usedGroups[g]=true;
+    h+=_rosterGroupHTML(g,groups[g]);
+  });
+  // Render any remaining groups not in grpOrder (safety net)
+  Object.keys(groups).sort().forEach(function(g){
+    if(usedGroups[g]||!groups[g]||!groups[g].length)return;
+    h+=_rosterGroupHTML(g,groups[g]);
+  });
+  ct.innerHTML=h;
+}
+function _rosterGroupHTML(g,persons){
+  var html='<div style="margin-bottom:6px"><b style=color:#b8863c;font-size:0.82em">'+g+'</b> <span style=font-size:0.7em;color:var(--text2)>'+persons.length+'人</span></div>';
+  html+='<div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:10px">';
+  persons.forEach(function(p){
       var yrs=(p.b||'?')+'-'+(p.d||'?');
       var c=p.color||'#b0a898';
       var _tr=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id];
-      h+='<span onclick="_rosterClick(\''+p.id+'\')" style="cursor:pointer;padding:2px 7px;border-radius:10px;font-size:0.68em;background:'+c+'0d;border:1px solid '+c+'28;white-space:nowrap"'
+      html+='<span onclick="_rosterClick(\''+p.id+'\')" style="cursor:pointer;padding:2px 7px;border-radius:10px;font-size:0.68em;background:'+c+'0d;border:1px solid '+c+'28;white-space:nowrap"'
         +' onmouseover="this.style.background=\''+c+'25\'" onmouseout="this.style.background=\''+c+'0d\'">'
         +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'')
         +'<b>'+p.n+'</b>'
         +(_tr&&_tr.verified?' <span style=color:#7d9a6e title='+(_tr.source||'')+'>✓</span>':'')
         +' '
         +'<span style=color:var(--text2);font-size:0.9em>'+yrs+'</span></span>';
-    });
-    h+='</div>';
   });
-  ct.innerHTML=h;
+  html+='</div>';
+  return html;
 }
 
 // ═══ ROSTER CLICK WRAPPERS (ensure popup shows after modal close) ═══
