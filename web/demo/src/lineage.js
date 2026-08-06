@@ -816,7 +816,7 @@ function _showTrajNav(route,color,name,idx){
     +(next?'<br>➡ <span style=color:var(--text2)>下一站: '+next.y+'年 '+next.label+'</span>':'')
     +'<br><span style=font-size:0.7em;color:var(--text2)>进度: '+idx+'/'+route.length+' ('+progress+'%)</span>'
     +'<br><span style=font-size:0.65em;color:var(--text2)>点击地图暂停/继续</span>'
-    +'<br><a href=\"#\" onclick=\"_clearTrajMarkers();mapMain.off(\\\"click\\\");document.getElementById(\\\"anim-status\\\").style.opacity=\\\"0\\\";return false\" style=font-size:0.6em;color:var(--red)>✕ 关闭</a>'
+    +'<br><a href=\"#\" onclick=\"_clearTrajMarkers();mapMain.off(&quot;click&quot;);document.getElementById(&quot;anim-status&quot;).style.opacity=&quot;0&quot;;return false\" style=font-size:0.6em;color:var(--red)>关闭</a>'
     +'</div>';
   if(_trajPopup&&mapMain)mapMain.closePopup(_trajPopup);
   _trajPopup=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:280,autoPan:false,offset:[0,-15]})
