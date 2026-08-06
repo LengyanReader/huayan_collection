@@ -1,3 +1,5 @@
+try{
+
 // ═══ DATA LAYERS ═══
 var layerVis={theory:true,geo:true,practice:true,edges:true,events:true};
 // Multi-layer religion colors for animation routes & popups
@@ -493,7 +495,7 @@ function drawTL(hlId){
 }
 
 // ═══ MAP SYSTEM (main view + minimap like StarCraft) ═══
-var mapMain=null,_miniMaps={},_trajGroup=null;
+var mapMain=null,_miniMaps={};
 var mainMarkers=[];
 function tileLayer(){return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{subdomains:["1","2","3","4"],maxZoom:18});}
 function terrainTileLayer(){return L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:17,opacity:0.7});}
@@ -534,10 +536,17 @@ function selectPerson(id,isShift,ev){
   drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
   showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null,ev);
   var locs=getPersonLocs(id);
-  // Clear previous: footprints + ALL trajectory layers + popups
-  if(window._personFootprints){for(var fi=0;fi<window._personFootprints.length;fi++){try{mapMain.removeLayer(window._personFootprints[fi]);}catch(e){}}}
-  window._personFootprints=[];
-  _clearTrajMarkers();
+  // Clear previous footprints + trajectory markers
+  if(window._personFootprints){window._personFootprints.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});}
+  if(window._trajMarkers){window._trajMarkers.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});}
+  window._personFootprints=[];window._trajMarkers=[];
+  if(_trajLine&&mapMain){mapMain.removeLayer(_trajLine);_trajLine=null;}
+  if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
+  if(_trajHighlight&&mapMain){mapMain.removeLayer(_trajHighlight);_trajHighlight=null;}
+  if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}
+  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
+  // Close all Leaflet popups on map
+  if(mapMain)mapMain.closePopup();
   if(mapMain&&locs.length>0){
     var loc=locs[0];mapMain.flyTo([loc.lat,loc.lng],locs.length===1?12:10,{duration:0.8});
     // Draw footprint line + numbered markers
@@ -676,17 +685,9 @@ function showInfo(p,p2,e){
     if(!rels[label])rels[label]=[];
     if(rels[label].indexOf(t.n)<0)rels[label].push(t.n);
   });
-  var gen=0,tmp=p, visitedGen={};
-  visitedGen[p.id]=true;
+  var gen=0,tmp=p;
   var teachers=DATA.edges.filter(function(e){return e.t===p.id&&(e.r==='MASTER'||e.r==='MASTER_OF');}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
-  while(tmp){
-    var next=null;
-    for(var ti=0;ti<teachers.length;ti++){
-      if(!visitedGen[teachers[ti].id]){next=teachers[ti];break;}
-    }
-    if(!next)break;
-    visitedGen[next.id]=true;tmp=next;gen++;
-  }
+  while(tmp){var next=teachers.find(function(t){return t.id!==tmp.id;});if(!next)break;tmp=next;gen++;}
   var lifeSpan=(p.b&&p.d)?('享年'+(p.d-p.b)+'岁 · '):'';
   // Build relationship HTML
   var relHTML='';
@@ -783,26 +784,32 @@ function showInfo(p,p2,e){
 var _trajTimer=null,_trajMarker=null,_trajLine=null,_trajIndex=0,_trajHighlight=null,_trajPopup=null;
 function playTrajectory(pid){
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
-  _clearTrajMarkers();
-  if(!mapMain)return;
-  _trajGroup=L.layerGroup().addTo(mapMain);
+  // Stop any existing playback
+  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
+  if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
+  if(_trajLine&&mapMain){mapMain.removeLayer(_trajLine);_trajLine=null;}
+  if(_trajHighlight&&mapMain){mapMain.removeLayer(_trajHighlight);_trajHighlight=null;}
+  if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}
   _trajIndex=0;
   var route=traj.route,color=traj.color||'#c46b5d',name=traj.name||'';
-  var coords=route.map(function(p){return [p.lat,p.lng];});
   // Draw base route line
-  _trajLine=L.polyline(coords,{color:color,weight:2,opacity:0.35,dashArray:'6,4'}).addTo(_trajGroup);
-  mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
-  // Start marker
-  L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
-    .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{direction:'right'}).addTo(_trajGroup);
-  // End marker
-  var last=route[route.length-1];
-  L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
-    .bindTooltip('⏹ '+last.label+' ('+last.y+')',{direction:'right'}).addTo(_trajGroup);
-  // Moving marker (not in group — animated separately)
-  _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
+  var coords=route.map(function(p){return [p.lat,p.lng];});
+  if(mapMain){
+    _trajLine=L.polyline(coords,{color:color,weight:2,opacity:0.35,dashArray:'6,4'}).addTo(mapMain);
+    mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
+    // Start marker
+    L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
+      .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+    // End marker
+    var last=route[route.length-1];
+    L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
+      .bindTooltip('⏹ '+last.label+' ('+last.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+    // Moving marker
+    _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
+  }
   document.getElementById('info-popup').style.display='none';
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
+  // Show nav popup on map
   _showTrajNav(route,color,name,0);
   _stepTrajectory(route,color,sb,name);
 }
@@ -815,25 +822,21 @@ function _showTrajNav(route,color,name,idx){
     +'<br>📍 <b>'+pt.y+'年</b> '+pt.label
     +(next?'<br>➡ <span style=color:var(--text2)>下一站: '+next.y+'年 '+next.label+'</span>':'')
     +'<br><span style=font-size:0.7em;color:var(--text2)>进度: '+idx+'/'+route.length+' ('+progress+'%)</span>'
-    +'<br><span style=font-size:0.65em;color:var(--text2)>点击地图暂停/继续 · 播放完毕自动关闭</span>'
+    +'<br><span style=font-size:0.65em;color:var(--text2)>点击地图暂停/继续</span>'
     +'</div>';
   if(_trajPopup&&mapMain)mapMain.closePopup(_trajPopup);
   _trajPopup=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:280,autoPan:false,offset:[0,-15]})
     .setLatLng([pt.lat,pt.lng]).setContent(html).openOn(mapMain);
-  // Click map to pause/resume (only if trajectory still active)
+  // Click map to pause/resume
   mapMain.off('click');mapMain.on('click',function(){
-    if(_trajIndex>=route.length)return; // trajectory already done
-    if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;document.getElementById('anim-status').style.opacity='0';}
+    if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;if(sb)document.getElementById('anim-status').style.opacity='0';}
     else{_trajTimer=setTimeout(function(){_stepTrajectory(route,color,document.getElementById('anim-status'),name);},1200);}
   });
 }
 function _stepTrajectory(route,color,sb,name){
   if(_trajIndex>=route.length){
-    // Cleanup: close popups, clear timer, clear click handler
     if(sb)sb.style.opacity='0';
-    if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
-    if(mapMain){mapMain.off('click');mapMain.closePopup();}
-    if(_trajPopup){_trajPopup=null;}
+    if(_trajPopup&&mapMain)mapMain.closePopup(_trajPopup);
     // Flash end marker
     if(_trajMarker){_trajMarker.setStyle({fillColor:'#7d9a6e',radius:12});setTimeout(function(){if(_trajMarker)_trajMarker.setStyle({fillColor:color,radius:10});},500);}
     return;
@@ -845,51 +848,52 @@ function _stepTrajectory(route,color,sb,name){
     mapMain.panTo([pt.lat,pt.lng],{animate:true,duration:0.6});
   }
   // Highlight current segment
-  if(_trajHighlight&&_trajGroup)_trajGroup.removeLayer(_trajHighlight);
-  if(prev&&_trajGroup){
-    _trajHighlight=L.polyline([[prev.lat,prev.lng],[pt.lat,pt.lng]],{color:color,weight:5,opacity:0.8}).addTo(_trajGroup);
+  if(_trajHighlight&&mapMain)mapMain.removeLayer(_trajHighlight);
+  if(prev&&mapMain){
+    _trajHighlight=L.polyline([[prev.lat,prev.lng],[pt.lat,pt.lng]],{color:color,weight:5,opacity:0.8}).addTo(mapMain);
   }
   // Update nav popup
   _showTrajNav(route,color,name,_trajIndex);
   _trajIndex++;
   _trajTimer=setTimeout(function(){_stepTrajectory(route,color,sb,name);},1200);
 }
-function _clearTrajMarkers(){
-  // Remove entire trajectory layer group atomically
-  if(_trajGroup&&mapMain){mapMain.removeLayer(_trajGroup);}
-  // Remove animation moving marker (not in group)
-  if(_trajMarker&&mapMain)try{mapMain.removeLayer(_trajMarker);}catch(e){}
-  if(mapMain){mapMain.closePopup();mapMain.closeTooltip();}
-  _trajGroup=null;_trajLine=null;_trajMarker=null;_trajHighlight=null;_trajPopup=null;
-  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
-}
 function showTrajectoryOnMap(pid){
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
-  _clearTrajMarkers();
-  if(!mapMain)return;
-  _trajGroup=L.layerGroup().addTo(mapMain);
+  // Clear previous
+  if(_trajLine&&mapMain)mapMain.removeLayer(_trajLine);
+  if(_trajMarker&&mapMain)mapMain.removeLayer(_trajMarker);
+  // Also clear any numbered markers from previous show
+  if(window._trajMarkers){window._trajMarkers.forEach(function(m){if(mapMain)mapMain.removeLayer(m);});}
+  window._trajMarkers=[];
   var coords=traj.route.map(function(p){return [p.lat,p.lng];});
   var color=traj.color||'#c46b5d';
-  // Glow + core lines
-  _trajLine=L.polyline(coords,{color:color,weight:5,opacity:0.25}).addTo(_trajGroup);
-  L.polyline(coords,{color:color,weight:2.5,opacity:0.85,dashArray:'8,3'}).addTo(_trajGroup);
-  // Start marker (green)
-  var start=traj.route[0];
-  L.circleMarker([start.lat,start.lng],{radius:8,fillColor:'#7d9a6e',color:'#fff',weight:2.5,fillOpacity:1})
-    .bindTooltip('▶ '+start.label+' ('+start.y+')',{direction:'right'}).addTo(_trajGroup);
-  // End marker (red)
-  var end=traj.route[traj.route.length-1];
-  L.circleMarker([end.lat,end.lng],{radius:8,fillColor:'#c46b5d',color:'#fff',weight:2.5,fillOpacity:1})
-    .bindTooltip('⏹ '+end.label+' ('+end.y+')',{direction:'right'}).addTo(_trajGroup);
-  // Numbered intermediate markers
-  for(var i=1;i<traj.route.length-1;i++){
-    var pt=traj.route[i];
-    L.circleMarker([pt.lat,pt.lng],{radius:5,fillColor:color,color:'#fff',weight:1.5,fillOpacity:0.85})
-      .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')').addTo(_trajGroup);
+  if(mapMain){
+    // Thick semi-transparent glow + thin solid core
+    _trajLine=L.polyline(coords,{color:color,weight:5,opacity:0.25}).addTo(mapMain);
+    window._trajMarkers.push(_trajLine);
+    var core=L.polyline(coords,{color:color,weight:2.5,opacity:0.85,dashArray:'8,3'}).addTo(mapMain);
+    window._trajMarkers.push(core);
+    // Start marker (green dot)
+    var start=traj.route[0];
+    var startM=L.circleMarker([start.lat,start.lng],{radius:8,fillColor:'#7d9a6e',color:'#fff',weight:2.5,fillOpacity:1})
+      .bindTooltip('▶ '+start.label+' ('+start.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+    window._trajMarkers.push(startM);
+    // End marker (red dot)
+    var end=traj.route[traj.route.length-1];
+    var endM=L.circleMarker([end.lat,end.lng],{radius:8,fillColor:'#c46b5d',color:'#fff',weight:2.5,fillOpacity:1})
+      .bindTooltip('⏹ '+end.label+' ('+end.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+    window._trajMarkers.push(endM);
+    // Numbered intermediate markers
+    for(var i=1;i<traj.route.length-1;i++){
+      var pt=traj.route[i];
+      var m=L.circleMarker([pt.lat,pt.lng],{radius:5,fillColor:color,color:'#fff',weight:1.5,fillOpacity:0.85})
+        .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')').addTo(mapMain);
+      window._trajMarkers.push(m);
+    }
+    // Zoom to fit with generous padding
+    var bounds=L.latLngBounds(coords);
+    mapMain.fitBounds(bounds,{padding:[50,50],maxZoom:8});
   }
-  // Zoom to fit
-  var bounds=L.latLngBounds(coords);
-  mapMain.fitBounds(bounds,{padding:[50,50],maxZoom:8});
 }
 
 // ═══ RELATIONSHIP GRAPH ═══
@@ -1065,49 +1069,49 @@ function _classifyPerson(p,traj){
 
   // ── 名相模式匹配(仅对li为空或None的trajectory-only人员生效) ──
   var full=n+tname;
-  // ⚠ 顺序关键: 先精确后模糊, 学者/研究者必须在宗派名相之前
-  // 近现代学人(胡适等非宗派人物)
-  if(/胡适|梁启超|欧阳竟无|吕澂|汤用彤|魏道儒|王颂|邱高兴|张文良/.test(full))return '🎓 近现代学者';
+  // 汉传高僧·古代
+  if(/安世高|道安|僧肇|道生|僧祐|永明|大慧|憨山|蕅益|雪窦|佛驮跋陀罗|实叉难陀|支娄迦谶|般若/.test(full))return '☸ 汉传高僧';
   // 近现代高僧大德
   if(/虚云|太虚|印光|弘一|印顺|梦参|圆瑛|谛闲|倓虚/.test(full))return '🏛 近现代高僧大德';
-  // 汉传高僧·古代(具体人名)
-  if(/安世高|道安|僧肇|道生|僧祐|永明延寿|大慧宗杲|憨山德清|蕅益智旭|雪窦重显/.test(full))return '☸ 汉传高僧';
-  // 译师(具体人名,非泛/译/)
-  if(/佛驮跋陀罗|实叉难陀|支娄迦谶|般若|鸠摩罗什|真谛|求那跋陀罗|竺法护|胜友|智军/.test(full))return '📖 译师';
+  // 译师(从名相推断)
+  if(/译|胜友|智军/.test(full))return '📖 译师';
   // 求法僧
-  if(/法显|义净|玄奘|慧超/.test(full))return '🚶 求法僧';
-  // 天台宗(具体人名)
-  if(/智顗|湛然|知礼/.test(full))return '☸ 天台宗';
-  // 净土宗(具体人名)
-  if(/善导|慧远|莲池|昙鸾|道绰|省庵/.test(full))return '☸ 净土宗';
-  // 禅宗各派(具体人名,不用/禅/避免误伤学者)
-  if(/慧能|弘忍|神秀|达摩|马祖道一|百丈怀海|黄檗希运|沩山灵祐|石头希迁|赵州从谂|雪峰义存|洞山良价|临济义玄|云门文偃|法眼文益|曹山本寂/.test(full))return '☸ 禅宗';
-  // 法相唯识(具体人名)
-  if(/窥基|圆测|世亲/.test(full))return '☸ 法相宗·唯识';
-  // 三论宗(具体人名)
-  if(/吉藏/.test(full))return '☸ 三论宗';
-  // 律宗(具体人名)
-  if(/道宣|鉴真|元照/.test(full))return '☸ 律宗';
-  // 密宗(具体人名)
-  if(/善无畏|金刚智|不空|一行|慧果/.test(full))return '☸ 密宗·唐密';
-  // 藏传(具体人名)
-  if(/宗喀巴|阿底峡|莲花生|米拉日巴|八思巴|寂天/.test(full))return '🔴 藏传佛教';
-  // 印度佛教(具体人名)
-  if(/马鸣|龙树|无著|拉克鲁希|巴布基|普拉梵|克利普|胜师子/.test(full))return '🕉 印度佛教';
-  // 日本佛教(具体人名)
+  if(/法显|义净|玄奘|西行|求法/.test(full))return '🚶 求法僧';
+  // 天台宗
+  if(/天台|智顗|湛然|知礼/.test(full))return '☸ 天台宗';
+  // 禅宗各派
+  if(/禅|慧能|弘忍|神秀|达摩|马祖|临济|曹洞|云门|法眼|沩仰|黄檗|石头|赵州|百丈|雪峰|洞山/.test(full))return '☸ 禅宗';
+  // 净土宗
+  if(/净土|善导|慧远|莲池|昙鸾|道绰|省庵/.test(full))return '☸ 净土宗';
+  // 法相唯识
+  if(/法相|唯识|窥基|圆测|世亲/.test(full))return '☸ 法相宗·唯识';
+  // 三论宗
+  if(/三论|吉藏|僧肇/.test(full))return '☸ 三论宗';
+  // 律宗
+  if(/律宗|道宣|鉴真|弘一|元照|僧祐/.test(full))return '☸ 律宗';
+  // 密宗
+  if(/密宗|善无畏|金刚智|不空|一行|慧果/.test(full))return '☸ 密宗·唐密';
+  // 藏传
+  if(/宗喀巴|达赖|班禅|阿底峡|莲花生|米拉日巴|八思巴|寂天/.test(full))return '🔴 藏传佛教';
+  // 印度佛教/瑜伽
+  if(/印度|瑜伽|拉克鲁希|巴布基|普拉梵|克利普|胜师子|马鸣|龙树|无著/.test(full))return '🕉 印度佛教';
+  // 日本佛教
   if(/空海|最澄|道元|荣西|日莲|亲鸾|法然|良弁|明惠|凝然/.test(full))return '☸ 日本佛教';
   // 印度教
   if(/罗摩克里希纳|辨喜|奥罗宾多|拉玛那/.test(full))return '🕉 印度教·近代';
-  // 儒家(具体人名)
-  if(/孔子|孟子|荀子|董仲舒|朱熹|王守仁|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|颜回|子思|司马迁|班昭|郑玄|顾炎武|黄宗羲|王夫之/.test(full))return '📜 儒家';
-  // 道家(具体人名)
+  // 儒家
+  if(/孔子|孟子|荀子|董仲舒|朱熹|王阳明|王守仁|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|颜回|子思|司马迁|班昭|郑玄|顾炎武|黄宗羲|王夫之/.test(full))return '📜 儒家';
+  // 道家
   if(/老子|庄子|列子|张道陵|王重阳|关尹子|葛洪|寇谦之|吕洞宾|陈抟|丘处机|张三丰|陶弘景|司马承祯|白玉蟾|张伯端/.test(full))return '☯ 道家·道教';
-  // 西方(具体人名)
-  if(/耶稣|柏拉图|亚里士多德|奥古斯丁|阿奎那|康德|黑格尔|穆罕默德/.test(full))return '🔮 西方哲学·宗教';
-  // 伊斯兰(具体人名)
+  // 西方
+  if(/耶稣|穆罕默德|柏拉图|亚里士多德|奥古斯丁|阿奎那|康德|黑格尔/.test(full))return '🔮 西方哲学·宗教';
+  // 伊斯兰
   if(/鲁米|伊本|安萨里|花拉子密/.test(full))return '☪ 伊斯兰教';
 
-  // ── 最后防线: 类型推断 ──
+  // ── 近现代学人(名相) ──
+  if(/胡适|梁启超|欧阳竟无|吕澂|汤用彤|魏道儒|王颂|邱高兴|张文良/.test(full))return '🎓 近现代学者';
+
+  // ── 最后防线: 类型推断(仅对li和名相都无法匹配的人员) ──
   if(tp==='translator')return '📖 译师';
   if(tp==='scholar')return '🎓 近现代学者';
 
@@ -1222,28 +1226,9 @@ function _rosterGroupHTML(g,persons){
 window._rosterClick=function(pid){
   var m=document.getElementById('roster-modal');if(m)m.style.display='none';
   setTimeout(function(){
-    if(nodeMap&&nodeMap[pid]){
-      selectPerson(pid);
-    }else{
-      // Trajectory-only person: clear old markers, show trajectory + brief info
-      _clearTrajMarkers();
-      var traj=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[pid];
-      if(traj&&traj.route&&traj.route.length&&mapMain){
-        showTrajectoryOnMap(pid);
-        var popup=document.getElementById('info-popup');
-        if(popup){
-          var h='<span class=close-btn onclick="var p=document.getElementById(&quot;info-popup&quot;);if(p)p.style.display=&quot;none&quot;">&times;</span>'
-            +'<h3>'+traj.name+'</h3>'
-            +'<p style=font-size:0.78em;color:var(--text2)>共'+traj.route.length+'个足迹节点</p>'
-            +'<button onclick="playTrajectory(&quot;'+pid+'&quot;)" style="padding:3px 10px;border:1px solid '+(traj.color||'#b8863c')+';border-radius:12px;background:var(--card);color:'+(traj.color||'#b8863c')+';cursor:pointer;font-size:0.72em">播放足迹</button>';
-          if(traj.source)h+='<div style=margin-top:4px;font-size:0.65em;color:var(--text2)>'+traj.source+'</div>';
-          popup.innerHTML=h;popup.style.display='block';
-          popup.style.left='60vw';popup.style.top='10vh';
-          if(popup._autoTimer)clearTimeout(popup._autoTimer);
-          popup._autoTimer=setTimeout(function(){popup.style.display='none';},15000);
-        }
-      }
-    }
+    if(nodeMap&&nodeMap[pid])selectPerson(pid);
+    else if(typeof selectSuggestion==='function')selectSuggestion(pid);
+    else console.error('Cannot select:',pid);
   },80);
 };
 window._templeClick=function(tid){
@@ -1893,3 +1878,6 @@ function switchTab(tab){
   if(hash==='lineage'){setTimeout(function(){resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();},300);}
 })();
 if(location.hash){var h=location.hash.slice(1);if(document.getElementById("tab-"+h))switchTab(h);}
+
+
+}catch(e){}
