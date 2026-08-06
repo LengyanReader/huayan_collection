@@ -951,24 +951,28 @@ function showInfo(p,p2,e){
 var _trajTimer=null,_trajMarker=null,_trajLine=null,_trajIndex=0,_trajHighlight=null,_trajPopup=null;
 function playTrajectory(pid){
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
-  _clearTrajMarkers();
-  if(!mapMain)return;
-  _trajGroup=L.layerGroup().addTo(mapMain);
+  // Stop any existing playback
+  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
+  if(_trajGroup&&mapMain){mapMain.removeLayer(_trajGroup);_trajGroup=null;}
+  if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
+  if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}
   _trajIndex=0;
   var route=traj.route,color=traj.color||'#c46b5d',name=traj.name||'';
+  // Draw base route line directly on map (animation uses separate layers)
   var coords=route.map(function(p){return [p.lat,p.lng];});
-  // Draw base route line
-  _trajLine=L.polyline(coords,{color:color,weight:2,opacity:0.35,dashArray:'6,4'}).addTo(_trajGroup);
-  mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
-  // Start marker
-  L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
-    .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{direction:'right'}).addTo(_trajGroup);
-  // End marker
-  var last=route[route.length-1];
-  L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
-    .bindTooltip('⏹ '+last.label+' ('+last.y+')',{direction:'right'}).addTo(_trajGroup);
-  // Moving marker (not in group — animated separately)
-  _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
+  if(mapMain){
+    _trajLine=L.polyline(coords,{color:color,weight:2,opacity:0.35,dashArray:'6,4'}).addTo(mapMain);
+    mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
+    // Start marker
+    L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
+      .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{direction:'right'}).addTo(mapMain);
+    // End marker
+    var last=route[route.length-1];
+    L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
+      .bindTooltip('⏹ '+last.label+' ('+last.y+')',{direction:'right'}).addTo(mapMain);
+    // Moving marker
+    _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
+  }
   document.getElementById('info-popup').style.display='none';
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   _showTrajNav(route,color,name,0);
@@ -997,12 +1001,10 @@ function _showTrajNav(route,color,name,idx){
 }
 function _stepTrajectory(route,color,sb,name){
   if(_trajIndex>=route.length){
-    // Cleanup: close popups, clear timer, clear click handler
     if(sb)sb.style.opacity='0';
     if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
-    if(mapMain){mapMain.off('click');mapMain.closePopup();}
-    if(_trajPopup){_trajPopup=null;}
-    // Flash end marker
+    if(mapMain){mapMain.off('click');}
+    if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}
     if(_trajMarker){_trajMarker.setStyle({fillColor:'#7d9a6e',radius:12});setTimeout(function(){if(_trajMarker)_trajMarker.setStyle({fillColor:color,radius:10});},500);}
     return;
   }
