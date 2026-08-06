@@ -307,5 +307,3 @@ document.addEventListener('click',function(e){
 
 // Final: set viewport & draw
 tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);
-// Diagnostic: if we got here, JS loaded successfully
-if(window._ok)window._ok('resizeTL+drawTL+initMap all OK');
