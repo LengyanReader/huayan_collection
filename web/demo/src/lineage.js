@@ -1226,20 +1226,18 @@ window._rosterClick=function(pid){
     if(nodeMap&&nodeMap[pid]){
       selectPerson(pid);
     }else{
-      // Trajectory-only person: clear old markers, fly to first waypoint
+      // Trajectory-only person: clear old markers, show trajectory + brief info
       _clearTrajMarkers();
       var traj=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[pid];
       if(traj&&traj.route&&traj.route.length&&mapMain){
-        var r0=traj.route[0];
         showTrajectoryOnMap(pid);
-        // Show simple info in popup
         var popup=document.getElementById('info-popup');
         if(popup){
-          var h='<span class=close-btn onclick=\"document.getElementById(\\'info-popup\\').style.display=\\'none\\'\">&times;</span>'
+          var h='<span class=close-btn onclick="var p=document.getElementById(&quot;info-popup&quot;);if(p)p.style.display=&quot;none&quot;">&times;</span>'
             +'<h3>'+traj.name+'</h3>'
-            +'<p style=font-size:0.78em;color:var(--text2)>📍 共'+traj.route.length+'个足迹节点</p>'
-            +'<button onclick=\"playTrajectory(\\''+pid+'\\')\" style=\"padding:3px 10px;border:1px solid '+(traj.color||'#b8863c')+';border-radius:12px;background:var(--card);color:'+(traj.color||'#b8863c')+';cursor:pointer;font-size:0.72em\">🎬 播放足迹</button>';
-          if(traj.source)h+='<div style=margin-top:4px;font-size:0.65em;color:var(--text2)>📚 '+traj.source+'</div>';
+            +'<p style=font-size:0.78em;color:var(--text2)>共'+traj.route.length+'个足迹节点</p>'
+            +'<button onclick="playTrajectory(&quot;'+pid+'&quot;)" style="padding:3px 10px;border:1px solid '+(traj.color||'#b8863c')+';border-radius:12px;background:var(--card);color:'+(traj.color||'#b8863c')+';cursor:pointer;font-size:0.72em">播放足迹</button>';
+          if(traj.source)h+='<div style=margin-top:4px;font-size:0.65em;color:var(--text2)>'+traj.source+'</div>';
           popup.innerHTML=h;popup.style.display='block';
           popup.style.left='60vw';popup.style.top='10vh';
           if(popup._autoTimer)clearTimeout(popup._autoTimer);
