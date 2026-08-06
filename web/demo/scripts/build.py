@@ -327,16 +327,6 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
     <div id="map-main-wrap">
       <div id="map-main"></div>
     </div>
-    <div id="mini-maps-row" style="display:flex;gap:8px;margin-top:4px;min-height:140px">
-      <div style="flex:1;position:relative;border:2px solid #5e8b9e;border-radius:6px;overflow:hidden;background:#fdfaf3;min-height:130px">
-        <div id="map-west"></div>
-        <div style="position:absolute;top:2px;left:4px;font-size:8px;color:#5e8b9e;z-index:700;pointer-events:none;font-weight:600">🌍 西方文明</div>
-      </div>
-      <div style="flex:1;position:relative;border:2px solid var(--gold);border-radius:6px;overflow:hidden;background:#fdfaf3;min-height:130px">
-        <div id="map-mini"></div>
-        <button id="mini-terrain-btn" onclick="toggleMiniTerrain()" style="position:absolute;bottom:2px;right:2px;z-index:700;font-size:7px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer">🗻 地形</button>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -386,6 +376,19 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <button onclick="document.getElementById('roster-modal').style.display='none'" style="border:none;background:none;font-size:1.2em;cursor:pointer;color:var(--text2)">&times;</button>
 </div>
 <div id="roster-content"></div></div></div>
+
+</div>
+
+<div id="mini-maps-row" style="display:flex;gap:8px;margin:6px 0;height:150px;padding:0 14px;flex-shrink:0">
+  <div style="flex:1;position:relative;border:2px solid #5e8b9e;border-radius:6px;overflow:hidden;background:#fdfaf3">
+    <div id="map-west"></div>
+    <div style="position:absolute;top:2px;left:4px;font-size:8px;color:#5e8b9e;z-index:700;pointer-events:none;font-weight:600">🌍 西方文明</div>
+  </div>
+  <div style="flex:1;position:relative;border:2px solid var(--gold);border-radius:6px;overflow:hidden;background:#fdfaf3">
+    <div id="map-mini"></div>
+    <button id="mini-terrain-btn" onclick="toggleMiniTerrain()" style="position:absolute;bottom:2px;right:2px;z-index:700;font-size:7px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer">🗻 地形</button>
+  </div>
+</div>
 
 <div class="comment-box" id="cmt-lineage"></div>
 
