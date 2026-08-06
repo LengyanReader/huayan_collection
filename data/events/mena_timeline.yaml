@@ -1,0 +1,289 @@
+events:
+- y: -3500
+  lat: 32.0
+  lng: 45.0
+  z: 5
+  label: 苏美尔文明·乌鲁克城邦
+  info: 两河流域最早文明城市·楔形文字发明·轮子与灌溉系统
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: -3000
+  lat: 30.0
+  lng: 31.2
+  z: 5
+  label: 古埃及统一·那尔迈调色板
+  info: 上埃及与下埃及统一·孟菲斯为都·早王朝时期开始·金字塔时代序章
+  region: mena
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: -1750
+  lat: 32.5
+  lng: 44.4
+  z: 5
+  label: 汉谟拉比法典
+  info: 巴比伦国王汉谟拉比颁布最早成文法典·以眼还眼·美索不达米亚文明高峰
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: -1200
+  lat: 33.9
+  lng: 35.5
+  z: 5
+  label: 腓尼基城邦·字母传播
+  info: 推罗·西顿·比布鲁斯航海贸易网络·腓尼基字母为希腊拉丁字母之祖
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: -1070
+  lat: 19.0
+  lng: 33.0
+  z: 5
+  label: 库施王国·黑法老时代
+  info: 努比亚库施王国脱离埃及独立·纳帕塔为都·后征服埃及建立第25王朝
+  region: mena
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: -814
+  lat: 36.8
+  lng: 10.2
+  z: 5
+  label: 迦太基建城
+  info: 腓尼基公主狄多建迦太基·西地中海贸易霸主·后与罗马争雄
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: -550
+  lat: 30.0
+  lng: 52.0
+  z: 4
+  label: 居鲁士·阿契美尼德波斯帝国
+  info: 居鲁士大帝建立波斯帝国·人类最早人权宣言"居鲁士圆柱"·释放巴比伦之囚
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: -332
+  lat: 31.2
+  lng: 29.9
+  z: 5
+  label: 亚历山大征服埃及·建亚历山大城
+  info: 亚历山大大帝入埃及·建亚历山大城·托勒密王朝·希腊化时代开启
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: -146
+  lat: 36.8
+  lng: 10.2
+  z: 5
+  label: 罗马灭迦太基
+  info: 第三次布匿战争·迦太基城被夷平·北非纳入罗马版图
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 224
+  lat: 30.0
+  lng: 52.0
+  z: 4
+  label: 萨珊波斯帝国
+  info: 阿尔达希尔推翻帕提亚·萨珊王朝建立·祆教为国教·与罗马/拜占庭争霸
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 570
+  lat: 21.4
+  lng: 39.8
+  z: 5
+  label: 穆罕默德诞生·麦加
+  info: 先知穆罕默德生于麦加古来氏部落·伊斯兰教创始人·《古兰经》领受者
+  region: mena
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 622
+  lat: 24.5
+  lng: 39.6
+  z: 5
+  label: 希吉拉·伊斯兰历元年
+  info: 穆罕默德从麦加迁徙麦地那·伊斯兰共同体(乌玛)成立·伊斯兰历纪元开始
+  region: mena
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 632
+  lat: 24.5
+  lng: 39.6
+  z: 4
+  label: 四大哈里发时期·阿拉伯扩张
+  info: 阿布·伯克尔为首任哈里发·欧麦尔征服叙利亚埃及波斯·伊斯兰"黄金三十年"
+  region: mena
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 661
+  lat: 33.5
+  lng: 36.3
+  z: 4
+  label: 倭马亚王朝·大马士革
+  info: 穆阿维叶建立倭马亚王朝·定都大马士革·阿拉伯帝国版图从西班牙至中亚
+  region: mena
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 750
+  lat: 33.3
+  lng: 44.4
+  z: 4
+  label: 阿拔斯王朝·巴格达建都
+  info: 阿拔斯革命推翻倭马亚·曼苏尔建巴格达"和平之城"·百年翻译运动
+  region: mena
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 813
+  lat: 33.3
+  lng: 44.4
+  z: 5
+  label: 花拉子密·代数学奠基
+  info: 花拉子密(Al-Khwārizmī)著《代数学》·"代数"(Algebra)一词源于此·印度数字传入伊斯兰世界
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 980
+  lat: 40.0
+  lng: 65.0
+  z: 5
+  label: 伊本·西那(阿维森纳)
+  info: 伊本·西那(Ibn Sīnā/Avicenna)诞生于布哈拉·《医典》为欧洲医学教科书六百年·"哲学王子"
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 973
+  lat: 42.0
+  lng: 60.0
+  z: 5
+  label: 比鲁尼·中亚学术高峰
+  info: 比鲁尼(Al-Bīrūnī)诞生于花剌子模·精确计算地球周长·比较宗教学先驱·《印度志》
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1058
+  lat: 37.0
+  lng: 59.0
+  z: 5
+  label: 安萨里·伊斯兰神学集大成
+  info: 安萨里(Al-Ghazālī)著《哲学家的矛盾》《圣学复苏》·调和苏菲与正统·"伊斯兰权威"
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1096
+  lat: 31.8
+  lng: 35.2
+  z: 5
+  label: 第一次十字军东征·耶路撒冷陷落
+  info: 十字军攻占耶路撒冷·建立拉丁王国·此后两百年东西方血腥对峙
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1126
+  lat: 32.0
+  lng: 65.0
+  z: 5
+  label: 伊本·鲁世德(阿威罗伊)
+  info: 伊本·鲁世德(Ibn Rushd/Averroes)诞生于科尔多瓦·亚里士多德注释者·双重真理论先驱·影响欧洲经院哲学
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1187
+  lat: 31.8
+  lng: 35.2
+  z: 5
+  label: 萨拉丁收复耶路撒冷
+  info: 萨拉丁(Salāh ad-Dīn)于哈丁战役大胜·收复耶路撒冷·骑士精神典范·阿尤布王朝建立
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1207
+  lat: 37.9
+  lng: 40.2
+  z: 5
+  label: 鲁米·苏菲诗歌巅峰
+  info: 贾拉勒丁·鲁米(Rūmī)诞生于巴尔赫·《玛斯纳维》为"波斯语古兰经"·旋转舞·苏菲主义文学高峰
+  region: mena
+  source: UNESCO《人类文明史》
+- y: 1258
+  lat: 33.3
+  lng: 44.4
+  z: 5
+  label: 蒙古陷巴格达·阿拔斯终结
+  info: 旭烈兀攻陷巴格达·哈里发被杀·"智慧宫"图书馆被毁·伊斯兰黄金时代终结
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1332
+  lat: 36.8
+  lng: 10.2
+  z: 5
+  label: 伊本·赫勒敦·历史哲学先驱
+  info: 伊本·赫勒敦(Ibn Khaldūn)诞生于突尼斯·《历史绪论》首创社会学循环理论·"社会学之父"
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1370
+  lat: 39.7
+  lng: 66.9
+  z: 5
+  label: 帖木儿帝国·撒马尔罕
+  info: 帖木儿建都撒马尔罕·中亚文艺复兴·兀鲁伯天文台·中亚伊斯兰建筑巅峰
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1453
+  lat: 41.0
+  lng: 28.9
+  z: 5
+  label: 奥斯曼征服君士坦丁堡
+  info: 穆罕默德二世(法提赫)攻陷君士坦丁堡·改名伊斯坦布尔·拜占庭千年帝国终结
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1520
+  lat: 41.0
+  lng: 28.9
+  z: 5
+  label: 苏莱曼大帝·奥斯曼黄金时代
+  info: 苏莱曼一世登基·奥斯曼版图横跨三洲·法律编纂·建筑(锡南)·"立法者"
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1501
+  lat: 35.7
+  lng: 51.4
+  z: 5
+  label: 萨法维波斯·什叶派确立
+  info: 伊斯玛仪一世建萨法维王朝·定都伊斯法罕·什叶派十二伊玛目派为国教·波斯文化复兴
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1798
+  lat: 30.0
+  lng: 31.2
+  z: 5
+  label: 拿破仑远征埃及·中东近代开端
+  info: 拿破仑占领埃及·罗塞塔石碑发现·奥斯曼帝国衰落·欧洲殖民中东序幕
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1869
+  lat: 30.0
+  lng: 32.5
+  z: 5
+  label: 苏伊士运河通航
+  info: 苏伊士运河开通·连接地中海与红海·改变全球航运格局·埃及债务危机引英国干预
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1908
+  lat: 31.0
+  lng: 35.0
+  z: 5
+  label: 中东石油发现·阿拉伯觉醒
+  info: 波斯(伊朗)首次发现商业石油·阿拉伯民族主义兴起·青年土耳其党革命
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1923
+  lat: 39.9
+  lng: 32.8
+  z: 5
+  label: 土耳其共和国成立·凯末尔改革
+  info: 凯末尔废除哈里发制度·建立世俗土耳其共和国·文字改革·政教分离
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1948
+  lat: 32.0
+  lng: 34.8
+  z: 5
+  label: 以色列建国·阿以冲突
+  info: 以色列宣布建国·第一次中东战争·巴勒斯坦问题成为中东核心矛盾
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 1979
+  lat: 35.7
+  lng: 51.4
+  z: 5
+  label: 伊朗伊斯兰革命
+  info: 霍梅尼领导推翻巴列维王朝·建立伊斯兰共和国·什叶派神权政体
+  region: mena
+  source: Bernard Lewis《中东史》/ UNESCO《人类文明史》
+- y: 2011
+  lat: 36.8
+  lng: 10.2
+  z: 4
+  label: 阿拉伯之春
+  info: 突尼斯小贩自焚引发中东民主浪潮·茉莉花革命·多国政权更迭
+  region: mena
+  source: Encyclopaedia Britannica

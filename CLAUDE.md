@@ -48,7 +48,7 @@ L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JS
 - **前端 Demo**: 纯 HTML/CSS/JS + Canvas + Leaflet (CDN), 6个独立HTML页面
 - **数据库**: SQLite 3 (权威数据源) + Neo4j (图验证)
 - **数据交换**: YAML/JSON → build.py 构建内嵌
-- **ETL**: Python 3.12 (conda env: `causality-nd`)
+- **ETL**: Python 3.12 (conda env: `hy_py312`)
 - **部署**: 本地双击 → GitHub Pages
 
 ## ⚠️ 知识管理核心规则
@@ -109,7 +109,7 @@ huayan_collection/
 ## 快速命令
 
 ```bash
-conda activate causality-nd
+conda activate hy_py312
 
 # 数据导出: SQLite → JSON/YAML
 python scripts/export_sqlite_to_json.py

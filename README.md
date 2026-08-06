@@ -18,7 +18,7 @@
 
 | Tab | 名称 | 说明 |
 |-----|------|------|
-| 🌊 | **法脉传承**·时空长河 | Canvas时间轴 + 大地图 + 6区域迷你地图 + 85节点动画 + 古地图模式 |
+| 🌊 | **法脉传承**·时空长河 | Canvas时间轴 + 大地图 + 7区域迷你地图 + 85节点动画 + 古地图模式 |
 | 📜 | **华严文献**·雅思渊才 | 版本对照 · 差异矩阵 · 术语库 · 三语对读 · 文本系谱 |
 | 🧘 | **教海行云**·信解行证 | 修行体系 · 禅观法要(含实修心要) · 讲法资源 |
 | 🔬 | **前沿对话**·跨界研究 | 与华严/汉传/佛教/其他宗教行门的对话 + 文献综述 |
@@ -32,7 +32,7 @@
 L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JSON → HTML
 ```
 
-所有展示内容来源于结构化数据文件，零硬编码。详见 [docs/knowledge-management.md](docs/knowledge-management.md)
+**⚠️ 知识管理核心纪律：所有展示内容必须来源于 `data/` 目录下的结构化数据文件（SQLite / YAML / JSON），严禁在任何构建脚本或前端代码中硬编码数据。** 新增内容必须先写入权威数据源 → 导出 → 构建 → 验证，详见 [docs/knowledge-management.md](docs/knowledge-management.md) 与 [CLAUDE.md](CLAUDE.md)
 
 ---
 
@@ -48,7 +48,7 @@ L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JS
 | 华严批注 | 57人物+18事件 | data/events/huayan_annotations.yaml |
 | 历史事件 | 44条 | data/events/key_events.yaml |
 | 文明疆域 | 73处(中国23+世界50) | data/events/world_civilizations.yaml |
-| 区域时间线 | 45条西方+非洲/美洲/大洋洲/儒道各16+ | data/events/*_timeline.yaml |
+| 区域时间线 | 45条西方+中东中亚北非35+撒哈拉以南非洲10+/美洲/大洋洲/儒道各15+ | data/events/*_timeline.yaml |
 | 实修心要文章 | 11篇 | docs/hy_refs/wechat/ |
 
 ---
@@ -58,7 +58,7 @@ L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JS
 | 层级 | 技术 |
 |------|------|
 | 前端 | 纯 HTML/CSS/JS + Canvas + Leaflet (CDN), 6个独立页面 |
-| 构建 | Python 3.12 (conda env: `causality-nd`) + build.py |
+| 构建 | Python 3.12 (conda env: `hy_py312`) + build.py |
 | 数据库 | SQLite 3 (权威数据源) + Neo4j (图验证) |
 | 数据交换 | YAML/JSON → build.py 构建内嵌 |
 | 部署 | 本地双击 → GitHub Pages |
@@ -68,7 +68,7 @@ L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JS
 ## 快速命令
 
 ```bash
-conda activate causality-nd
+conda activate hy_py312
 
 # 数据导出: SQLite → JSON/YAML
 python scripts/export_sqlite_to_json.py

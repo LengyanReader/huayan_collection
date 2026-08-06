@@ -1163,9 +1163,10 @@ function updateDynastyVisibility(year){
 }
 var _MINI_REGIONS=[
   {id:'huayan',label:'🪷 华严主线',key:'anim_waypoints',color:'#c46b5d',center:[30,80],zoom:2},
-  {id:'chinese',label:'📜 儒道传承',key:'east_asian_thought',color:'#b8863c',center:[35,115],zoom:4},
+  {id:'chinese',label:'📜 儒道·诸宗',key:'east_asian_thought',color:'#b8863c',center:[35,115],zoom:4},
+  {id:'mena',label:'🌙 中东·中亚·北非',key:'mena_timeline',color:'#d4784c',center:[30,40],zoom:3},
   {id:'west',label:'🌍 西方文明',key:'western_timeline',color:'#5e8b9e',center:[45,5],zoom:3},
-  {id:'africa',label:'🌴 非洲大陆',key:'africa_timeline',color:'#7d9a6e',center:[0,20],zoom:3},
+  {id:'africa',label:'🌴 撒哈拉以南非洲',key:'africa_timeline',color:'#7d9a6e',center:[0,25],zoom:3},
   {id:'americas',label:'🦅 美洲大陆',key:'americas_timeline',color:'#c8893e',center:[10,-80],zoom:3},
   {id:'oceania',label:'🏝 大洋洲',key:'oceania_timeline',color:'#8b7a9e',center:[-20,160],zoom:3}
 ];
