@@ -493,7 +493,7 @@ function drawTL(hlId){
 }
 
 // ═══ MAP SYSTEM (main view + minimap like StarCraft) ═══
-var mapMain=null,_miniMaps={};
+var mapMain=null,_miniMaps={},_trajGroup=null;
 var mainMarkers=[];
 function tileLayer(){return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{subdomains:["1","2","3","4"],maxZoom:18});}
 function terrainTileLayer(){return L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:17,opacity:0.7});}
@@ -783,32 +783,26 @@ function showInfo(p,p2,e){
 var _trajTimer=null,_trajMarker=null,_trajLine=null,_trajIndex=0,_trajHighlight=null,_trajPopup=null;
 function playTrajectory(pid){
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
-  // Stop any existing playback
-  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
-  if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
-  if(_trajLine&&mapMain){mapMain.removeLayer(_trajLine);_trajLine=null;}
-  if(_trajHighlight&&mapMain){mapMain.removeLayer(_trajHighlight);_trajHighlight=null;}
-  if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}
+  _clearTrajMarkers();
+  if(!mapMain)return;
+  _trajGroup=L.layerGroup().addTo(mapMain);
   _trajIndex=0;
   var route=traj.route,color=traj.color||'#c46b5d',name=traj.name||'';
-  // Draw base route line
   var coords=route.map(function(p){return [p.lat,p.lng];});
-  if(mapMain){
-    _trajLine=L.polyline(coords,{color:color,weight:2,opacity:0.35,dashArray:'6,4'}).addTo(mapMain);
-    mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
-    // Start marker
-    L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
-      .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{direction:'right'}).addTo(mapMain);
-    // End marker
-    var last=route[route.length-1];
-    L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
-      .bindTooltip('⏹ '+last.label+' ('+last.y+')',{direction:'right'}).addTo(mapMain);
-    // Moving marker
-    _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
-  }
+  // Draw base route line
+  _trajLine=L.polyline(coords,{color:color,weight:2,opacity:0.35,dashArray:'6,4'}).addTo(_trajGroup);
+  mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
+  // Start marker
+  L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
+    .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{direction:'right'}).addTo(_trajGroup);
+  // End marker
+  var last=route[route.length-1];
+  L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
+    .bindTooltip('⏹ '+last.label+' ('+last.y+')',{direction:'right'}).addTo(_trajGroup);
+  // Moving marker (not in group — animated separately)
+  _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
   document.getElementById('info-popup').style.display='none';
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
-  // Show nav popup on map
   _showTrajNav(route,color,name,0);
   _stepTrajectory(route,color,sb,name);
 }
@@ -822,7 +816,7 @@ function _showTrajNav(route,color,name,idx){
     +(next?'<br>➡ <span style=color:var(--text2)>下一站: '+next.y+'年 '+next.label+'</span>':'')
     +'<br><span style=font-size:0.7em;color:var(--text2)>进度: '+idx+'/'+route.length+' ('+progress+'%)</span>'
     +'<br><span style=font-size:0.65em;color:var(--text2)>点击地图暂停/继续</span>'
-    +'<br><a href=\"#\" onclick=\"if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}mapMain.off(\"click\");mapMain.closePopup();document.getElementById(\"anim-status\").style.opacity=\"0\";return false\" style=font-size:0.6em;color:var(--red)>✕ 关闭</a>'
+    +'<br><a href=\"#\" onclick=\"_clearTrajMarkers();mapMain.off(\\\"click\\\");document.getElementById(\\\"anim-status\\\").style.opacity=\\\"0\\\";return false\" style=font-size:0.6em;color:var(--red)>✕ 关闭</a>'
     +'</div>';
   if(_trajPopup&&mapMain)mapMain.closePopup(_trajPopup);
   _trajPopup=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:280,autoPan:false,offset:[0,-15]})
@@ -852,9 +846,9 @@ function _stepTrajectory(route,color,sb,name){
     mapMain.panTo([pt.lat,pt.lng],{animate:true,duration:0.6});
   }
   // Highlight current segment
-  if(_trajHighlight&&mapMain)mapMain.removeLayer(_trajHighlight);
-  if(prev&&mapMain){
-    _trajHighlight=L.polyline([[prev.lat,prev.lng],[pt.lat,pt.lng]],{color:color,weight:5,opacity:0.8}).addTo(mapMain);
+  if(_trajHighlight&&_trajGroup)_trajGroup.removeLayer(_trajHighlight);
+  if(prev&&_trajGroup){
+    _trajHighlight=L.polyline([[prev.lat,prev.lng],[pt.lat,pt.lng]],{color:color,weight:5,opacity:0.8}).addTo(_trajGroup);
   }
   // Update nav popup
   _showTrajNav(route,color,name,_trajIndex);
@@ -862,55 +856,41 @@ function _stepTrajectory(route,color,sb,name){
   _trajTimer=setTimeout(function(){_stepTrajectory(route,color,sb,name);},1200);
 }
 function _clearTrajMarkers(){
-  // Aggressively clear ALL trajectory-related map layers
-  if(window._trajMarkers&&mapMain){
-    for(var i=0;i<window._trajMarkers.length;i++){
-      try{mapMain.removeLayer(window._trajMarkers[i]);}catch(e){}
-    }
-  }
-  window._trajMarkers=[];
-  if(_trajLine&&mapMain)try{mapMain.removeLayer(_trajLine);}catch(e){}
-  _trajLine=null;
+  // Remove entire trajectory layer group atomically
+  if(_trajGroup&&mapMain){mapMain.removeLayer(_trajGroup);}
+  // Remove animation moving marker (not in group)
   if(_trajMarker&&mapMain)try{mapMain.removeLayer(_trajMarker);}catch(e){}
-  _trajMarker=null;
-  if(_trajHighlight&&mapMain)try{mapMain.removeLayer(_trajHighlight);}catch(e){}
-  _trajHighlight=null;
-  if(_trajPopup&&mapMain)try{mapMain.closePopup(_trajPopup);}catch(e){}
-  _trajPopup=null;
-  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
   if(mapMain){mapMain.closePopup();mapMain.closeTooltip();}
+  _trajGroup=null;_trajLine=null;_trajMarker=null;_trajHighlight=null;_trajPopup=null;
+  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
 }
 function showTrajectoryOnMap(pid){
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
   _clearTrajMarkers();
+  if(!mapMain)return;
+  _trajGroup=L.layerGroup().addTo(mapMain);
   var coords=traj.route.map(function(p){return [p.lat,p.lng];});
   var color=traj.color||'#c46b5d';
-  if(mapMain){
-    _trajLine=L.polyline(coords,{color:color,weight:5,opacity:0.25}).addTo(mapMain);
-    window._trajMarkers.push(_trajLine);
-    var core=L.polyline(coords,{color:color,weight:2.5,opacity:0.85,dashArray:'8,3'}).addTo(mapMain);
-    window._trajMarkers.push(core);
-    // Start marker (green) — tooltip NOT permanent, shows on hover
-    var start=traj.route[0];
-    var startM=L.circleMarker([start.lat,start.lng],{radius:8,fillColor:'#7d9a6e',color:'#fff',weight:2.5,fillOpacity:1})
-      .bindTooltip('▶ '+start.label+' ('+start.y+')',{direction:'right'}).addTo(mapMain);
-    window._trajMarkers.push(startM);
-    // End marker (red) — tooltip NOT permanent, shows on hover
-    var end=traj.route[traj.route.length-1];
-    var endM=L.circleMarker([end.lat,end.lng],{radius:8,fillColor:'#c46b5d',color:'#fff',weight:2.5,fillOpacity:1})
-      .bindTooltip('⏹ '+end.label+' ('+end.y+')',{direction:'right'}).addTo(mapMain);
-    window._trajMarkers.push(endM);
-    // Numbered intermediate markers
-    for(var i=1;i<traj.route.length-1;i++){
-      var pt=traj.route[i];
-      var m=L.circleMarker([pt.lat,pt.lng],{radius:5,fillColor:color,color:'#fff',weight:1.5,fillOpacity:0.85})
-        .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')').addTo(mapMain);
-      window._trajMarkers.push(m);
-    }
-    // Zoom to fit
-    var bounds=L.latLngBounds(coords);
-    mapMain.fitBounds(bounds,{padding:[50,50],maxZoom:8});
+  // Glow + core lines
+  _trajLine=L.polyline(coords,{color:color,weight:5,opacity:0.25}).addTo(_trajGroup);
+  L.polyline(coords,{color:color,weight:2.5,opacity:0.85,dashArray:'8,3'}).addTo(_trajGroup);
+  // Start marker (green)
+  var start=traj.route[0];
+  L.circleMarker([start.lat,start.lng],{radius:8,fillColor:'#7d9a6e',color:'#fff',weight:2.5,fillOpacity:1})
+    .bindTooltip('▶ '+start.label+' ('+start.y+')',{direction:'right'}).addTo(_trajGroup);
+  // End marker (red)
+  var end=traj.route[traj.route.length-1];
+  L.circleMarker([end.lat,end.lng],{radius:8,fillColor:'#c46b5d',color:'#fff',weight:2.5,fillOpacity:1})
+    .bindTooltip('⏹ '+end.label+' ('+end.y+')',{direction:'right'}).addTo(_trajGroup);
+  // Numbered intermediate markers
+  for(var i=1;i<traj.route.length-1;i++){
+    var pt=traj.route[i];
+    L.circleMarker([pt.lat,pt.lng],{radius:5,fillColor:color,color:'#fff',weight:1.5,fillOpacity:0.85})
+      .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')').addTo(_trajGroup);
   }
+  // Zoom to fit
+  var bounds=L.latLngBounds(coords);
+  mapMain.fitBounds(bounds,{padding:[50,50],maxZoom:8});
 }
 
 // ═══ RELATIONSHIP GRAPH ═══
