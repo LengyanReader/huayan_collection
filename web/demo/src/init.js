@@ -5,8 +5,8 @@ window.onerror=function(m,s,l,c,e){var d=document.createElement("div");d.style.c
 resizeTL();
 drawTL(null);
 initMap();
-// Default: ancient map + routes + other schools
-setTimeout(function(){toggleAncient();initTransStory();initOtherSchools();},500);
+// Init routes + other schools (ancient mode off by default, toggle manually)
+setTimeout(function(){initTransStory();initOtherSchools();},500);
 // Stats bar
 var sb=document.getElementById("stats-bar");if(sb)sb.textContent=calcStats();
 renderGap();
