@@ -47,10 +47,13 @@
 </style>
 </head>
 <body>
+<script>
+(function(){var d=document.createElement('div');d.id='js-diag';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:999999;padding:4px 12px;font:11px monospace;text-align:center';d.textContent='JS LOADING... v10.4-fix';d.style.background='#f0e68c';d.style.color='#333';document.body.appendChild(d);window._ok=function(m){d.textContent='JS OK: '+m;d.style.background='#7d9a6e';d.style.color='#fff';setTimeout(function(){d.style.display="none"},3000)};window._err=function(m){d.textContent='JS ERROR: '+m;d.style.background='#c46b5d';d.style.color='#fff'};})();
+</script>
 <header id="header">
   <a href="../index.html" class="back-link">&larr; 总览</a>
   <h1>🌊 法脉传承 · 时空长河</h1>
-  <div style="font-size:0.68em;color:var(--text2);margin-left:auto">v10.1 · 10区63道场175人 · 20260806-3</div>
+  <div style="font-size:0.68em;color:var(--text2);margin-left:auto">v10.4-fix · 10区63道场 · 20260806-final</div>
 </header>
 
 <div id="search-bar">
@@ -2373,6 +2376,8 @@ document.addEventListener('click',function(e){
 
 // Final: set viewport & draw
 tl.ox=20; tl.scale=(tl.W-40)/(tl.maxX-tl.minX); drawTL(null);
+// Diagnostic: if we got here, JS loaded successfully
+if(window._ok)window._ok('resizeTL+drawTL+initMap all OK');
 
 </script>
 </body>
