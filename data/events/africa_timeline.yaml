@@ -1,0 +1,129 @@
+events:
+- y: -3000
+  lat: 30.0
+  lng: 31.2
+  z: 5
+  label: 古埃及统一
+  info: 上埃及与下埃及统一·那尔迈调色板·早王朝时期开始
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: -1070
+  lat: 19.0
+  lng: 33.0
+  z: 5
+  label: 库施王国崛起
+  info: 努比亚库施王国脱离埃及独立·纳帕塔为都·黑法老时代
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: -500
+  lat: 10.0
+  lng: 8.0
+  z: 5
+  label: 诺克文化·西非铁器
+  info: 尼日利亚高原诺克文化·赤陶雕塑·撒哈拉以南最早铁器文明
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 300
+  lat: 14.0
+  lng: 38.0
+  z: 5
+  label: 阿克苏姆帝国
+  info: 埃塞俄比亚高原阿克苏姆崛起·红海贸易枢纽·铸造金币
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 700
+  lat: 17.0
+  lng: -5.0
+  z: 4
+  label: 加纳帝国
+  info: 西非首个大帝国·跨撒哈拉黄金贸易·"黄金之国"
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1000
+  lat: -20.0
+  lng: 30.0
+  z: 5
+  label: 大津巴布韦
+  info: 绍纳人石构建筑群·印度洋贸易内陆枢纽·黄金象牙出口
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1230
+  lat: 14.0
+  lng: -8.0
+  z: 4
+  label: 马里帝国·桑迪亚塔
+  info: 桑迪亚塔·凯塔建立马里帝国·尼亚尼为都·曼德宪章
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1324
+  lat: 14.0
+  lng: -8.0
+  z: 4
+  label: 曼萨·穆萨朝圣
+  info: 马里皇帝曼萨·穆萨赴麦加朝圣·携带巨量黄金震撼开罗·廷巴克图学术兴起
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1464
+  lat: 16.0
+  lng: 0.0
+  z: 4
+  label: 桑海帝国
+  info: 桑尼·阿里建立桑海帝国·取代马里·廷巴克图与杰内学术商贸中心
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1500
+  lat: 6.0
+  lng: 5.0
+  z: 5
+  label: 贝宁王国
+  info: 埃多人贝宁王国全盛·青铜浮雕艺术巅峰·奥巴王权
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1650
+  lat: 5.0
+  lng: 2.0
+  z: 4
+  label: 大西洋奴隶贸易高峰
+  info: 跨大西洋奴隶贸易加剧·西非人口锐减·非洲社会结构巨变
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1804
+  lat: 13.0
+  lng: 5.0
+  z: 5
+  label: 索科托哈里发国
+  info: 奥斯曼·丹·福迪奥发动圣战·建立索科托哈里发·豪萨兰伊斯兰化
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1884
+  lat: 52.5
+  lng: 13.4
+  z: 3
+  label: 柏林会议瓜分非洲
+  info: 欧洲列强柏林西非会议·瓜分非洲·划定殖民边界·刚果自由邦暴行
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1957
+  lat: 5.5
+  lng: -0.2
+  z: 5
+  label: 加纳独立
+  info: 加纳率先独立·恩克鲁玛领导·撒哈拉以南非洲非殖民化开端
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1960
+  lat: 0.0
+  lng: 25.0
+  z: 3
+  label: 非洲独立年
+  info: 十七个非洲国家同年独立·法属非洲解体·泛非主义高涨
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》
+- y: 1994
+  lat: -26.0
+  lng: 28.0
+  z: 5
+  label: 南非结束种族隔离
+  info: 曼德拉当选总统·种族隔离制度废除·真相与和解委员会
+  region: africa
+  source: UNESCO《非洲通史》/ J.D.Fage《非洲史》

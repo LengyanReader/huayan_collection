@@ -1,0 +1,105 @@
+events:
+- y: -40000
+  lat: -25.0
+  lng: 133.0
+  z: 4
+  label: 土著到达澳大利亚
+  info: 澳大利亚原住民祖先经东南亚岛屿抵达·世界最古老连续文化
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: -1500
+  lat: -18.0
+  lng: 178.0
+  z: 4
+  label: 拉皮塔文化·波利尼西亚起源
+  info: 拉皮塔陶器文化·俾斯麦群岛→所罗门→斐济→汤加·南岛语族东扩
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 500
+  lat: 20.0
+  lng: -155.0
+  z: 4
+  label: 波利尼西亚人到达夏威夷
+  info: 波利尼西亚远航者从马克萨斯群岛抵达夏威夷·双体独木舟远洋
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1000
+  lat: -40.0
+  lng: 175.0
+  z: 5
+  label: 毛利人到达新西兰
+  info: 波利尼西亚人抵达奥特亚罗瓦·毛利文化形成·恐鸟狩猎
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1200
+  lat: -27.0
+  lng: -109.0
+  z: 5
+  label: 复活节岛摩艾石像
+  info: 拉帕努伊人雕刻摩艾巨像·巨石文化·生态崩溃警示
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1606
+  lat: -12.0
+  lng: 141.0
+  z: 4
+  label: 欧洲人首次到达澳大利亚
+  info: 荷兰航海家威廉·扬松抵约克角半岛·欧洲人首次确认澳洲大陆
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1770
+  lat: -34.0
+  lng: 151.0
+  z: 5
+  label: 库克船长到达澳大利亚
+  info: 詹姆斯·库克抵植物学湾·宣布新南威尔士为英国领土
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1788
+  lat: -33.8
+  lng: 151.2
+  z: 6
+  label: 英国首个流放地·悉尼
+  info: 第一舰队抵悉尼湾·菲利普总督建立流放殖民地·澳大利亚殖民开端
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1840
+  lat: -36.0
+  lng: 174.0
+  z: 5
+  label: 怀唐伊条约·新西兰
+  info: 毛利酋长与英国王室签署怀唐伊条约·新西兰成为英国殖民地·主权争议延续至今
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1851
+  lat: -37.0
+  lng: 144.0
+  z: 5
+  label: 澳大利亚淘金热
+  info: 新南威尔士·维多利亚发现金矿·全球移民涌入·人口暴增
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1901
+  lat: -35.0
+  lng: 149.0
+  z: 5
+  label: 澳大利亚联邦成立
+  info: 六个殖民地组成澳大利亚联邦·白澳政策·堪培拉定都
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 1942
+  lat: -15.0
+  lng: 155.0
+  z: 4
+  label: 珊瑚海战役·太平洋战场
+  info: 美日航母珊瑚海海战·阻止日军入侵澳大利亚·太平洋战争转折
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》
+- y: 2000
+  lat: -33.8
+  lng: 151.2
+  z: 6
+  label: 悉尼奥运会
+  info: 悉尼举办千禧年奥运会·澳大利亚百年联邦庆典·原住民和解进程
+  region: oceania
+  source: Geoffrey Blainey《澳大利亚史》/ K.R.Howe《太平洋群岛史》

@@ -1,0 +1,129 @@
+events:
+- y: -551
+  lat: 35.6
+  lng: 116.9
+  z: 5
+  label: 孔子诞生
+  info: 孔丘诞生于鲁国陬邑·儒家学派创始人·"至圣先师"
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: -479
+  lat: 35.6
+  lng: 116.9
+  z: 5
+  label: 孔子逝世·《论语》编成
+  info: 孔子卒·弟子门人辑录《论语》·儒家核心经典成型
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: -369
+  lat: 33.5
+  lng: 115.0
+  z: 5
+  label: 庄子诞生
+  info: 庄周诞生于宋国蒙地·道家集大成者·"南华真人"
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: -286
+  lat: 33.5
+  lng: 115.0
+  z: 5
+  label: 庄子著《南华真经》
+  info: 《庄子》内七篇·逍遥游·齐物论·道法自然·文学与哲学双重高峰
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: -136
+  lat: 34.3
+  lng: 108.9
+  z: 5
+  label: 汉武帝独尊儒术
+  info: 董仲舒对策·罢黜百家独尊儒术·五经博士设立·儒学成为官方意识形态
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 79
+  lat: 34.3
+  lng: 108.9
+  z: 5
+  label: 白虎观会议·儒学神学化
+  info: 汉章帝召集白虎观会议·《白虎通义》成书·谶纬与儒学合流
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 260
+  lat: 34.0
+  lng: 112.0
+  z: 5
+  label: 王弼注《老子》开玄学
+  info: 王弼《老子注》《周易注》·"以无为本"·魏晋玄学奠基
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 500
+  lat: 34.0
+  lng: 108.0
+  z: 5
+  label: 道教形成教团
+  info: 天师道·上清派·灵宝派成型·《真诰》《度人经》·道教制度化
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 620
+  lat: 34.7
+  lng: 135.8
+  z: 5
+  label: 儒学传入日本
+  info: 圣德太子派遣遣隋使·儒学经典传入日本·十七条宪法融合儒佛
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 1017
+  lat: 27.0
+  lng: 112.0
+  z: 5
+  label: 周敦颐诞生·理学开山
+  info: 周敦颐诞生·《太极图说》《通书》·"无极而太极"·宋明理学开山
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 1130
+  lat: 26.5
+  lng: 118.0
+  z: 5
+  label: 朱熹诞生
+  info: 朱熹诞生于尤溪·集理学大成·"致知在格物"·四书集注
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 1175
+  lat: 28.0
+  lng: 117.0
+  z: 5
+  label: 鹅湖之会·朱陆之辩
+  info: 朱熹与陆九渊鹅湖论辩·"道问学"vs"尊德性"·理学与心学分野
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 1472
+  lat: 30.0
+  lng: 120.5
+  z: 5
+  label: 王阳明诞生
+  info: 王守仁诞生于余姚·心学集大成者·"致良知"·"知行合一"
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 1508
+  lat: 26.5
+  lng: 106.5
+  z: 5
+  label: 王阳明龙场悟道
+  info: 贬谪贵州龙场驿·"圣人之道吾性自足"·心学体系确立
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 1600
+  lat: 37.5
+  lng: 127.0
+  z: 5
+  label: 朱子学传入朝鲜·日本
+  info: 朝鲜性理学·李退溪·李栗谷·日本朱子学·林罗山·东亚儒教圈
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+- y: 1919
+  lat: 39.9
+  lng: 116.4
+  z: 5
+  label: 五四运动·儒学批判
+  info: 五四新文化运动·"打倒孔家店"·传统文化反思·现代新儒家萌发
+  region: east_asia
+  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》

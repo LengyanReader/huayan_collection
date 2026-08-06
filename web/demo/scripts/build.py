@@ -275,7 +275,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 #tl-panel canvas{{display:block;position:absolute;top:0;left:0}}
 #side{{flex:3;display:flex;flex-direction:column;min-width:300px;border-left:1px solid var(--line)}}
 #map-main-wrap{{position:relative;overflow:hidden;flex:1;min-height:50vh}}
-#map-main,#map-mini,#map-west{{width:100%;height:100%}}
+#map-main{{width:100%;height:100%}}
 #info-popup{{position:fixed;z-index:999;background:rgba(254,253,249,0.88);backdrop-filter:blur(4px);border:1px solid rgba(184,134,60,0.5);border-radius:10px;padding:8px 12px;font-size:0.72em;max-width:280px;max-height:45vh;overflow-y:auto;color:var(--text);box-shadow:0 4px 16px rgba(60,40,20,0.12);display:none}}
 .anim-popup .leaflet-popup-content-wrapper{{background:rgba(254,253,249,0.85)!important;backdrop-filter:blur(3px);border-radius:8px;box-shadow:0 2px 8px rgba(60,40,20,0.1);padding:6px 10px}}
 .anim-popup .leaflet-popup-content{{margin:0;font-size:0.7em;line-height:1.4;max-width:200px}}
@@ -379,16 +379,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 
 </div>
 
-<div id="mini-maps-row" style="display:flex;gap:8px;margin:6px 0;height:130px;margin-top:8px;flex-shrink:0;justify-content:center">
-  <div style="flex:1;position:relative;border:2px solid #5e8b9e;border-radius:6px;overflow:hidden;background:#fdfaf3">
-    <div id="map-west"></div>
-    <div style="position:absolute;top:2px;left:4px;font-size:8px;color:#5e8b9e;z-index:700;pointer-events:none;font-weight:600">🌍 西方文明</div>
-  </div>
-  <div style="flex:1;position:relative;border:2px solid var(--gold);border-radius:6px;overflow:hidden;background:#fdfaf3">
-    <div id="map-mini"></div>
-    <button id="mini-terrain-btn" onclick="toggleMiniTerrain()" style="position:absolute;bottom:2px;right:2px;z-index:700;font-size:7px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer">🗻 地形</button>
-  </div>
-</div>
+<div id="mini-maps-grid" style="display:flex;gap:6px;margin:6px 14px;height:110px;flex-shrink:0;overflow-x:auto"></div>
 
 <div class="comment-box" id="cmt-lineage"></div>
 

@@ -1,88 +1,55 @@
 # 华严宗部文献与修行资料数字化梳理
 
-[![Status](https://img.shields.io/badge/status-phase%201%20%E2%80%94%20architecture-brightgreen)](#)
-[![Version](https://img.shields.io/badge/version-0.1.0-blue)](#)
+构建以华严宗为核心的佛法文献与修行资料数字化系统。
 
-构建以华严宗为核心的佛法文献与修行资料数字化系统，包含两大核心目标：
+- **多维知识图谱** — 92位祖师/行者传承谱系 · 96条传承边 · 46处道场 · 175条人物轨迹 · 73处文明疆域
+- **藏汉华严对译** — 藏文《华严经》(Toh 44, 45品) vs 汉文 (39品) 差异对比 · 50条四语术语
+- **教海行云** — 修行体系·禅观法要·实修心要·讲法资源
+- **前沿对话** — 华严与AI/神经科学/心灵哲学/儒家/道家/基督教等跨传统对话
+- **世主妙严** — 华藏世界海曼荼罗 · 三界诸天图 · 艺术珍品 · 梵呗
 
-1. **多维知识图谱** — 华严宗祖师/行者传承谱系、地理道场、经典关联的可视化知识网络
-2. **藏汉华严对译** — 定位藏文《华严经》(Toh 44) 与汉文版本的差异，进行汉英翻译与对比
-
-> 📖 **架构设计文档**: [docs/architecture.md](docs/architecture.md)
->
-> 📋 **可行性分析与实施计划**: [C:\Users\data\.claude\plans\fizzy-toasting-steele.md](C:\Users\data\.claude\plans\fizzy-toasting-steele.md)
+> 📖 详见 [CLAUDE.md](CLAUDE.md) · [docs/next-phase-plan.md](docs/next-phase-plan.md) · [docs/architecture.md](docs/architecture.md)
 
 ---
 
-## 项目结构
+## Demo
+
+**[web/demo/index.html](web/demo/index.html)** — 导航主页，5个独立Tab页面：
+
+| Tab | 名称 | 说明 |
+|-----|------|------|
+| 🌊 | **法脉传承**·时空长河 | Canvas时间轴 + 大地图 + 6区域迷你地图 + 85节点动画 + 古地图模式 |
+| 📜 | **华严文献**·雅思渊才 | 版本对照 · 差异矩阵 · 术语库 · 三语对读 · 文本系谱 |
+| 🧘 | **教海行云**·信解行证 | 修行体系 · 禅观法要(含实修心要) · 讲法资源 |
+| 🔬 | **前沿对话**·跨界研究 | 与华严/汉传/佛教/其他宗教行门的对话 + 文献综述 |
+| 🪷 | **世主妙严**·华藏世界海 | 二十重世界曼荼罗 · 三界诸天 · 艺术珍品 · 梵呗 |
+
+---
+
+## 知识管理架构
 
 ```
-huayan_collection/
-├── data/                         # 📦 数据中心
-│   ├── catalog/                  #   SQLite 文献目录库
-│   │   └── schema.sql           #     数据库结构定义
-│   ├── texts/                    #   经典全文 (Markdown + YAML)
-│   │   ├── sutras/              #     经文
-│   │   ├── commentaries/        #     章疏论著
-│   │   ├── rituals/             #     仪轨忏法
-│   │   └── modern/              #     近现代讲记
-│   ├── knowledge_graph/          #   图谱数据
-│   │   ├── personas.json        #     📌 核心人物 (20人)
-│   │   ├── lineages.json        #     📌 传承谱系 (6支)
-│   │   ├── locations.json       #     📌 道场地点 (15处)
-│   │   └── neo4j_import/        #     Neo4j 初始化
-│   │       └── init.cypher      #       Schema + 索引 + 朝代节点
-│   ├── translation/              #   藏汉对译项目
-│   │   ├── diff_matrix.yaml     #     📌 45品 vs 39品差异矩阵
-│   │   └── glossary.yaml        #     📌 四语术语库 (25词条)
-│   └── references/               #   学术参考
-├── src/                          # 🐍 Python 源码 (待实现)
-│   ├── cli/                      #   CLI 命令入口
-│   ├── catalog/                  #   文献目录服务
-│   ├── graph/                    #   图谱服务
-│   └── translation/              #   对译服务
-├── web/                          # 🌐 前端 (待实现)
-├── docs/                         # 📖 文档
-│   ├── architecture.md           #   架构设计文档
-│   └── translation-guide.md     #   翻译规范指南
-├── pyproject.toml                # Python 项目配置
-├── Makefile                      # 常用命令
-├── CLAUDE.md                     # AI 助手指令
-└── README.md
+L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JSON → HTML
 ```
 
-📌 = 当前阶段已完成的核心数据文件
+所有展示内容来源于结构化数据文件，零硬编码。详见 [docs/knowledge-management.md](docs/knowledge-management.md)
 
 ---
 
-## 核心数据资产 (Phase 1 产出)
+## 数据规模
 
-### 文献目录
-
-- **SQLite Schema**: 7 张核心表 (persons, texts, chapters, locations, cross_refs, glossary, translation_units)
-- 含全文检索 (FTS5) 和完整索引
-
-### 知识图谱
-
-- **20 位核心人物**: 从华严初祖杜顺 (557 CE) 到当代贤度法师，覆盖 1400+ 年传承链
-- **6 支传承系谱**: 华严五祖、李通玄系、高丽华严、月霞系、慈舟系、智光系
-- **15 处核心道场**: 从五台山到台北华严莲社，含 GIS 坐标
-
-### 藏汉对译基础设施
-
-- **45 品 vs 39 品差异矩阵**: 逐品标注藏文独有品目（《如来华严品》《普贤宣说品》）和内容参差
-- **25 条四语术语**: 梵 (IAST) — 藏 (Wylie + Unicode) — 汉 — 英，含释义和别译
-
----
-
-## 四大阶段路线图
-
-| 阶段 | 时间 | 核心交付 |
-|------|------|---------|
-| **Phase 1** 基础构建 | 1-8 月 | 华严宗部文献总目录 + 数据管道 |
-| **Phase 2** 知识图谱 | 6-18 月 | 交互式人物关系/时空可视化 |
-| **Phase 3** 藏汉对译 | 12-36 月 | 藏译华严特有品目汉英双译本 |
-| **Phase 4** 整合发布 | 30-48 月 | 华严云端修学平台 v1.0 |
+| 类别 | 数量 | 存储 |
+|------|------|------|
+| 图谱人物 | 92人 | SQLite persons表 + graph.json |
+| 人物轨迹 | 175条 | data/events/person_trajectories.yaml |
+| 传承关系边 | 96条 | graph.json |
+| 代表道场 | 46座 | data/locations/temple_directory.yaml |
+| 四语术语 | 50条 | glossary.yaml + SQLite glossary表 |
+| 华严批注 | 57人物+18事件 | data/events/huayan_annotations.yaml |
+| 历史事件 | 44条 | data/events/key_events.yaml |
+| 文明疆域 | 73处(中国23+世界50) | data/events/world_civilizations.yaml |
+| 区域时间线 | 45条西方+非洲/美洲/大洋洲/儒道各16+ | data/events/*_timeline.yaml |
+| 实修心要文章 | 11篇 | docs/hy_refs/wechat/ |
 
 ---
 
@@ -90,44 +57,74 @@ huayan_collection/
 
 | 层级 | 技术 |
 |------|------|
-| 版本控制 | Git + Git LFS |
-| 数据管道 | Python 3.11+ (Click, lxml, pandas, spaCy) |
-| 关系数据库 | SQLite (含 FTS5 全文检索) |
-| 图数据库 | Neo4j Community |
-| 前端可视化 | Next.js / Observable Framework + D3.js + Leaflet |
-| 部署 | Cloudflare Pages / Vercel |
+| 前端 | 纯 HTML/CSS/JS + Canvas + Leaflet (CDN), 6个独立页面 |
+| 构建 | Python 3.12 (conda env: `causality-nd`) + build.py |
+| 数据库 | SQLite 3 (权威数据源) + Neo4j (图验证) |
+| 数据交换 | YAML/JSON → build.py 构建内嵌 |
+| 部署 | 本地双击 → GitHub Pages |
 
 ---
 
-## 快速开始
+## 快速命令
 
 ```bash
-# 安装 Python 依赖
-pip install -e .
+conda activate causality-nd
 
-# 初始化文献目录数据库
-huayan catalog init
+# 数据导出: SQLite → JSON/YAML
+python scripts/export_sqlite_to_json.py
 
-# 启动 Neo4j 图谱 (需要 Docker)
-make graph-start
+# 图验证: SQLite → Neo4j + Cypher检查
+python scripts/load_neo4j.py --verify
 
-# 初始化图谱 Schema
-huayan graph init
+# 来源可靠性验证
+python scripts/verify_sources.py
 
-# 加载图谱数据
-huayan graph load
+# 构建Demo (6个HTML + CSS + JS)
+python web/demo/scripts/build.py
+
+# 构建产物验证
+python scripts/verify_demo.py
 ```
 
 ---
 
+## 项目结构
+
+```
+huayan_collection/
+├── web/demo/
+│   ├── index.html              # 导航主页
+│   ├── css/common.css          # 共享样式
+│   ├── js/common.js            # 共享脚本(评论系统/GitHub认证)
+│   ├── tabs/
+│   │   ├── lineage.html        # 法脉传承
+│   │   ├── gap.html            # 华严文献
+│   │   ├── jiaoxing.html       # 教海行云
+│   │   ├── frontier.html       # 前沿对话
+│   │   └── cosmology.html      # 世主妙严
+│   ├── src/                    # 源文件(供build.py组装)
+│   └── scripts/build.py        # 构建脚本
+├── data/
+│   ├── catalog/                # SQLite Schema + huayan.db
+│   ├── knowledge_graph/        # 人物·关系·地点 JSON
+│   ├── translation/            # 差异矩阵·术语库 YAML
+│   ├── practice/               # 修行体系 YAML
+│   ├── frontier/               # 跨界对话 YAML
+│   ├── cosmology/              # 宇宙观 YAML
+│   ├── events/                 # 事件·动画·时间线 YAML
+│   └── locations/              # 道场名录 YAML
+├── docs/                       # 项目文档
+├── scripts/                    # 导出/验证/Neo4j脚本
+└── CLAUDE.md                   # AI助手指令
+```
+
 ## 数据源
 
-- **CBETA** (cbeta.org) — 汉文大藏经数字化全文
-- **BDRC/BUDA** (bdrc.io) — 藏文甘珠尔 IIIF API
-- **84000** (84000.co) — 藏文华严英译 + 三语术语库
-- **义天录** — 新编诸宗教藏总录（文献真伪鉴定基准）
-
----
+- **CBETA** (cbetaonline.dila.edu.tw) — 汉文大藏经
+- **BDRC** (bdrc.io) — 藏文甘珠尔
+- **84000 Project** (84000.co) — 藏文华严英译+术语库
+- **大华严寺官网** (huayenworld.org) — 修行体系·法脉资料
+- **高僧传·灯录·正史** — 人物传记文献依据
 
 ## 许可
 
