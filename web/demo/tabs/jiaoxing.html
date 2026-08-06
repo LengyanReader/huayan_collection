@@ -1015,16 +1015,25 @@ window.heartLogin=function(){
   var msg='GitHub Fine-grained Token(仅存浏览器):\n\n生成: GitHub→Settings→Developer settings→Fine-grained tokens→Generate new token\n→Only select: '+O+'/'+R+'\n→Permissions: Contents→Read and Write\n\n粘贴Token:';
   var t=prompt(msg,localStorage.getItem(STORAGE_KEY)||'');
   if(!t||!t.trim())return;
-  localStorage.setItem(STORAGE_KEY,t.trim());ghToken=t.trim();
-  fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json'}})
+  var token=t.trim();
+  fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}})
   .then(function(r){return r.json();})
   .then(function(u){
-    _update();_toast(u.login==='LengyanReader'?'✅ '+u.login+' · Push已启用':'⚠ Token属于'+u.login);
-  }).catch(function(){_update();_toast('✅ Token已保存');});
+    if(u.login==='LengyanReader'){
+      localStorage.setItem(STORAGE_KEY,token);ghToken=token;
+      localStorage.setItem('gh_username','LengyanReader');
+      _update();_toast('✅ LengyanReader · Push已启用');
+    }else{
+      _toast('⛔ 仅限LengyanReader账号 · 当前Token属于'+u.login);
+      localStorage.removeItem(STORAGE_KEY);ghToken=null;
+    }
+  }).catch(function(){_toast('❌ Token验证失败');});
 };
 // Push
 window.heartPushToGitHub=function(){
   if(!_isOkay()){_toast('❌ 请先🔑配置Token');heartLogin();return;}
+  var ghu=localStorage.getItem('gh_username');
+  if(ghu!=='LengyanReader'){_toast('⛔ Push仅限LengyanReader');return;}
   var edits={},notes={},comments={};
   try{comments=JSON.parse(localStorage.getItem('huayan_comments_v1')||'{}');}catch(e){}
   document.querySelectorAll('[id$="-l"],[id$="-r1"],[id$="-r2"]').forEach(function(e){var o=e.getAttribute('data-orig');if(o!==null&&e.innerHTML!==o)edits[e.id]=e.innerHTML;});
