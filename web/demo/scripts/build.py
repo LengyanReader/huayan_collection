@@ -580,8 +580,16 @@ def main():
     # ── Build Tab4: Frontier (restructured) ──
     sidebar_fr = '''
     <h3>🔬 前沿对话</h3>
-    <a href="#" class="nav-link active" onclick="switchFrontierNav('dialogue',this);return false">🔬 跨界对话</a>
+    <a href="#" class="nav-link active" onclick="switchFrontierNav('huayan',this);return false">🪷 与华严的对话</a>
+    <a href="#" class="sub-link" onclick="switchFrontierNav('huayan');return false">　· AI·计算现象学·神经科学·心灵哲学</a>
+    <a href="#" class="nav-link" onclick="switchFrontierNav('chinese',this);return false">☸ 与汉传佛教的对话</a>
+    <a href="#" class="sub-link" onclick="switchFrontierNav('chinese');return false">　· 天台·禅宗·净土·唯识</a>
+    <a href="#" class="nav-link" onclick="switchFrontierNav('buddhist',this);return false">🕉 与佛教的对话</a>
+    <a href="#" class="sub-link" onclick="switchFrontierNav('buddhist');return false">　· 中观·藏传·南传·瑜伽行派</a>
+    <a href="#" class="nav-link" onclick="switchFrontierNav('others',this);return false">🌏 其他宗教行门的对话</a>
+    <a href="#" class="sub-link" onclick="switchFrontierNav('others');return false">　· 道家·儒家·瑜伽·基督教·苏菲</a>
     <a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述</a>
+    <a href="#" class="sub-link" onclick="switchFrontierNav('litreview');return false">　· 2023-2026 多语论文</a>
     '''
     fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
     fr_path = TABS_OUT / 'frontier.html'
