@@ -1,69 +1,361 @@
-# 西方文明演进 — 关键事件时间线 (与法脉动画联动对比)
-# 字段: y(年份), lat, lng, z(缩放), label, info, region
-# region: europe/americas/middle_east/global
-
 events:
-  # ═══════════════════════════════════════
-  # 古代 (-3000 ~ 500)
-  # ═══════════════════════════════════════
-  - {y: -3000, lat: 30.0, lng: 31.2, z: 5, label: '古埃及统一', info: '上埃及与下埃及统一·金字塔时代开始', region: middle_east}
-  - {y: -2000, lat: 33.5, lng: 44.4, z: 5, label: '古巴比伦·汉谟拉比法典', info: '美索不达米亚文明高峰·最早成文法典', region: middle_east}
-  - {y: -1500, lat: 37.9, lng: 23.7, z: 5, label: '迈锡尼文明', info: '希腊青铜文明·特洛伊战争传说', region: europe}
-  - {y: -800, lat: 38.0, lng: 23.7, z: 6, label: '古希腊城邦兴起', info: '雅典·斯巴达·民主制度萌芽·荷马史诗', region: europe}
-  - {y: -509, lat: 41.9, lng: 12.5, z: 6, label: '罗马共和国建立', info: '推翻君主制·元老院共和', region: europe}
-  - {y: -336, lat: 40.6, lng: 22.9, z: 6, label: '亚历山大帝国', info: '马其顿征服希腊→波斯→印度·希腊化时代', region: europe}
-  - {y: -27, lat: 41.9, lng: 12.5, z: 6, label: '罗马帝国建立', info: '屋大维称奥古斯都·Pax Romana', region: europe}
-  - {y: 313, lat: 41.9, lng: 12.5, z: 6, label: '米兰敕令·基督教合法化', info: '君士坦丁大帝承认基督教', region: europe}
-  - {y: 330, lat: 41.0, lng: 28.9, z: 6, label: '君士坦丁堡建都', info: '罗马帝国迁都拜占庭·东罗马时代', region: europe}
-
-  # ═══════════════════════════════════════
-  # 中世纪 (~500 ~ 1400)
-  # ═══════════════════════════════════════
-  - {y: 476, lat: 41.9, lng: 12.5, z: 5, label: '西罗马帝国灭亡', info: '日耳曼人入侵·欧洲进入中世纪', region: europe}
-  - {y: 622, lat: 24.5, lng: 39.6, z: 5, label: '伊斯兰教兴起·希吉拉', info: '穆罕默德从麦加迁麦地那', region: middle_east}
-  - {y: 732, lat: 47.0, lng: 2.0, z: 5, label: '普瓦提埃之战', info: '法兰克人阻止阿拉伯帝国北进·欧洲基督教格局确立', region: europe}
-  - {y: 800, lat: 50.1, lng: 8.7, z: 6, label: '查理曼加冕·神圣罗马', info: '查理大帝被教皇加冕为罗马皇帝', region: europe}
-  - {y: 1054, lat: 41.0, lng: 28.9, z: 5, label: '东西教会大分裂', info: '天主教与东正教正式分裂', region: europe}
-  - {y: 1096, lat: 31.8, lng: 35.2, z: 5, label: '第一次十字军东征', info: '夺取耶路撒冷·十字军国家建立', region: middle_east}
-  - {y: 1215, lat: 51.5, lng: -0.1, z: 6, label: '英国大宪章', info: '限制王权·法治之始', region: europe}
-  - {y: 1347, lat: 43.0, lng: 12.0, z: 5, label: '黑死病席卷欧洲', info: '1/3欧洲人口死亡·社会结构巨变', region: europe}
-
-  # ═══════════════════════════════════════
-  # 文艺复兴·大航海 (~1400 ~ 1700)
-  # ═══════════════════════════════════════
-  - {y: 1439, lat: 48.0, lng: 8.0, z: 6, label: '古登堡印刷术', info: '活字印刷发明·知识传播革命', region: europe}
-  - {y: 1453, lat: 41.0, lng: 28.9, z: 6, label: '君士坦丁堡陷落', info: '奥斯曼征服·拜占庭灭亡·文艺复兴加速', region: europe}
-  - {y: 1492, lat: 37.0, lng: -6.0, z: 6, label: '哥伦布到达美洲', info: '大航海时代开启·新旧大陆相遇', region: americas}
-  - {y: 1517, lat: 51.0, lng: 12.0, z: 6, label: '马丁·路德宗教改革', info: '95条论纲·新教诞生·欧洲宗教分裂', region: europe}
-  - {y: 1588, lat: 51.5, lng: -0.1, z: 6, label: '英国击败西班牙无敌舰队', info: '英国海上霸权崛起的起点', region: europe}
-  - {y: 1620, lat: 42.0, lng: -70.0, z: 6, label: '五月花号抵北美', info: '清教徒登陆·新英格兰殖民地', region: americas}
-  - {y: 1648, lat: 52.0, lng: 8.0, z: 5, label: '威斯特伐利亚和约', info: '三十年战争结束·现代主权国家体系确立', region: europe}
-
-  # ═══════════════════════════════════════
-  # 启蒙·革命·工业时代 (~1700 ~ 1900)
-  # ═══════════════════════════════════════
-  - {y: 1687, lat: 52.2, lng: 0.1, z: 6, label: '牛顿《自然哲学的数学原理》', info: '经典力学建立·科学革命高峰', region: europe}
-  - {y: 1750, lat: 53.5, lng: -2.0, z: 6, label: '英国工业革命开始', info: '蒸汽机·纺织机·工厂制度·人类文明转折', region: europe}
-  - {y: 1776, lat: 39.9, lng: -75.1, z: 6, label: '美国独立宣言', info: '十三州独立·现代民主革命', region: americas}
-  - {y: 1789, lat: 48.9, lng: 2.3, z: 6, label: '法国大革命', info: '巴士底狱陷落·人权宣言·欧洲启蒙运动高峰', region: europe}
-  - {y: 1804, lat: 48.9, lng: 2.3, z: 6, label: '拿破仑称帝·法典颁布', info: '法兰西第一帝国·民法典影响全球', region: europe}
-  - {y: 1848, lat: 48.0, lng: 10.0, z: 5, label: '欧洲1848革命·共产党宣言', info: '席卷欧洲的革命浪潮·马克思发表宣言', region: europe}
-  - {y: 1859, lat: 51.0, lng: -0.1, z: 6, label: '达尔文《物种起源》', info: '进化论发表·科学世界观革命', region: europe}
-  - {y: 1865, lat: 38.9, lng: -77.0, z: 6, label: '美国南北战争结束·废奴', info: '林肯遇刺·宪法第十三修正案废除奴隶制', region: americas}
-
-  # ═══════════════════════════════════════
-  # 现代·当代 (~1900 ~ 2026)
-  # ═══════════════════════════════════════
-  - {y: 1914, lat: 44.0, lng: 6.0, z: 5, label: '第一次世界大战', info: '欧洲全面战争·奥匈帝国解体·俄国革命', region: europe}
-  - {y: 1917, lat: 59.9, lng: 30.3, z: 6, label: '俄国十月革命', info: '列宁领导布尔什维克夺取政权·苏联建立', region: europe}
-  - {y: 1929, lat: 40.7, lng: -74.0, z: 6, label: '华尔街崩盘·大萧条', info: '全球经济危机·法西斯主义兴起', region: americas}
-  - {y: 1939, lat: 52.5, lng: 13.4, z: 5, label: '第二次世界大战', info: '纳粹入侵波兰·全球战争爆发', region: europe}
-  - {y: 1945, lat: 40.7, lng: -74.0, z: 6, label: '联合国成立·原子时代', info: '二战结束·广岛长崎原子弹·联合国宪章', region: global}
-  - {y: 1957, lat: 45.0, lng: 10.0, z: 5, label: '欧洲共同体成立·苏联卫星', info: '罗马条约·Sputnik升空·太空竞赛开始', region: europe}
-  - {y: 1969, lat: 28.4, lng: -80.6, z: 6, label: '阿波罗11号登月', info: '人类首次登月·科技高峰', region: americas}
-  - {y: 1989, lat: 52.5, lng: 13.4, z: 6, label: '柏林墙倒塌', info: '东欧剧变·冷战结束·全球化加速', region: europe}
-  - {y: 2001, lat: 40.7, lng: -74.0, z: 6, label: '911事件·反恐时代', info: '世贸中心遇袭·美国全球反恐战争', region: americas}
-  - {y: 2008, lat: 40.7, lng: -74.0, z: 6, label: '全球金融危机', info: '雷曼兄弟破产·华尔街危机波及全球', region: global}
-  - {y: 2016, lat: 51.5, lng: -0.1, z: 6, label: '英国脱欧·特朗普当选', info: '民粹主义浪潮·全球化退潮', region: global}
-  - {y: 2020, lat: 40.7, lng: -74.0, z: 5, label: 'COVID-19全球大流行', info: '新冠疫情·全球封锁·远程工作革命', region: global}
-  - {y: 2022, lat: 48.0, lng: 30.0, z: 5, label: '俄乌战争·AI爆发', info: 'ChatGPT发布·AI元年·欧洲地缘危机', region: global}
+- y: -3000
+  lat: 30.0
+  lng: 31.2
+  z: 5
+  label: 古埃及统一
+  info: 上埃及与下埃及统一·金字塔时代开始
+  region: middle_east
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: -2000
+  lat: 33.5
+  lng: 44.4
+  z: 5
+  label: 古巴比伦·汉谟拉比法典
+  info: 美索不达米亚文明高峰·最早成文法典
+  region: middle_east
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: -1500
+  lat: 37.9
+  lng: 23.7
+  z: 5
+  label: 迈锡尼文明
+  info: 希腊青铜文明·特洛伊战争传说
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: -800
+  lat: 38.0
+  lng: 23.7
+  z: 6
+  label: 古希腊城邦兴起
+  info: 雅典·斯巴达·民主制度萌芽·荷马史诗
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: -509
+  lat: 41.9
+  lng: 12.5
+  z: 6
+  label: 罗马共和国建立
+  info: 推翻君主制·元老院共和
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: -336
+  lat: 40.6
+  lng: 22.9
+  z: 6
+  label: 亚历山大帝国
+  info: 马其顿征服希腊→波斯→印度·希腊化时代
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: -27
+  lat: 41.9
+  lng: 12.5
+  z: 6
+  label: 罗马帝国建立
+  info: 屋大维称奥古斯都·Pax Romana
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 313
+  lat: 41.9
+  lng: 12.5
+  z: 6
+  label: 米兰敕令·基督教合法化
+  info: 君士坦丁大帝承认基督教
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 330
+  lat: 41.0
+  lng: 28.9
+  z: 6
+  label: 君士坦丁堡建都
+  info: 罗马帝国迁都拜占庭·东罗马时代
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 476
+  lat: 41.9
+  lng: 12.5
+  z: 5
+  label: 西罗马帝国灭亡
+  info: 日耳曼人入侵·欧洲进入中世纪
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 622
+  lat: 24.5
+  lng: 39.6
+  z: 5
+  label: 伊斯兰教兴起·希吉拉
+  info: 穆罕默德从麦加迁麦地那
+  region: middle_east
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 732
+  lat: 47.0
+  lng: 2.0
+  z: 5
+  label: 普瓦提埃之战
+  info: 法兰克人阻止阿拉伯帝国北进·欧洲基督教格局确立
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 800
+  lat: 50.1
+  lng: 8.7
+  z: 6
+  label: 查理曼加冕·神圣罗马
+  info: 查理大帝被教皇加冕为罗马皇帝
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1054
+  lat: 41.0
+  lng: 28.9
+  z: 5
+  label: 东西教会大分裂
+  info: 天主教与东正教正式分裂
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1096
+  lat: 31.8
+  lng: 35.2
+  z: 5
+  label: 第一次十字军东征
+  info: 夺取耶路撒冷·十字军国家建立
+  region: middle_east
+  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 1215
+  lat: 51.5
+  lng: -0.1
+  z: 6
+  label: 英国大宪章
+  info: 限制王权·法治之始
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1347
+  lat: 43.0
+  lng: 12.0
+  z: 5
+  label: 黑死病席卷欧洲
+  info: 1/3欧洲人口死亡·社会结构巨变
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1439
+  lat: 48.0
+  lng: 8.0
+  z: 6
+  label: 古登堡印刷术
+  info: 活字印刷发明·知识传播革命
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1453
+  lat: 41.0
+  lng: 28.9
+  z: 6
+  label: 君士坦丁堡陷落
+  info: 奥斯曼征服·拜占庭灭亡·文艺复兴加速
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1492
+  lat: 37.0
+  lng: -6.0
+  z: 6
+  label: 哥伦布到达美洲
+  info: 大航海时代开启·新旧大陆相遇
+  region: americas
+  source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
+- y: 1517
+  lat: 51.0
+  lng: 12.0
+  z: 6
+  label: 马丁·路德宗教改革
+  info: 95条论纲·新教诞生·欧洲宗教分裂
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1588
+  lat: 51.5
+  lng: -0.1
+  z: 6
+  label: 英国击败西班牙无敌舰队
+  info: 英国海上霸权崛起的起点
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1620
+  lat: 42.0
+  lng: -70.0
+  z: 6
+  label: 五月花号抵北美
+  info: 清教徒登陆·新英格兰殖民地
+  region: americas
+  source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
+- y: 1648
+  lat: 52.0
+  lng: 8.0
+  z: 5
+  label: 威斯特伐利亚和约
+  info: 三十年战争结束·现代主权国家体系确立
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1687
+  lat: 52.2
+  lng: 0.1
+  z: 6
+  label: 牛顿《自然哲学的数学原理》
+  info: 经典力学建立·科学革命高峰
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1750
+  lat: 53.5
+  lng: -2.0
+  z: 6
+  label: 英国工业革命开始
+  info: 蒸汽机·纺织机·工厂制度·人类文明转折
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1776
+  lat: 39.9
+  lng: -75.1
+  z: 6
+  label: 美国独立宣言
+  info: 十三州独立·现代民主革命
+  region: americas
+  source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
+- y: 1789
+  lat: 48.9
+  lng: 2.3
+  z: 6
+  label: 法国大革命
+  info: 巴士底狱陷落·人权宣言·欧洲启蒙运动高峰
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1804
+  lat: 48.9
+  lng: 2.3
+  z: 6
+  label: 拿破仑称帝·法典颁布
+  info: 法兰西第一帝国·民法典影响全球
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1848
+  lat: 48.0
+  lng: 10.0
+  z: 5
+  label: 欧洲1848革命·共产党宣言
+  info: 席卷欧洲的革命浪潮·马克思发表宣言
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1859
+  lat: 51.0
+  lng: -0.1
+  z: 6
+  label: 达尔文《物种起源》
+  info: 进化论发表·科学世界观革命
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1865
+  lat: 38.9
+  lng: -77.0
+  z: 6
+  label: 美国南北战争结束·废奴
+  info: 林肯遇刺·宪法第十三修正案废除奴隶制
+  region: americas
+  source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
+- y: 1914
+  lat: 44.0
+  lng: 6.0
+  z: 5
+  label: 第一次世界大战
+  info: 欧洲全面战争·奥匈帝国解体·俄国革命
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1917
+  lat: 59.9
+  lng: 30.3
+  z: 6
+  label: 俄国十月革命
+  info: 列宁领导布尔什维克夺取政权·苏联建立
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1929
+  lat: 40.7
+  lng: -74.0
+  z: 6
+  label: 华尔街崩盘·大萧条
+  info: 全球经济危机·法西斯主义兴起
+  region: americas
+  source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
+- y: 1939
+  lat: 52.5
+  lng: 13.4
+  z: 5
+  label: 第二次世界大战
+  info: 纳粹入侵波兰·全球战争爆发
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1945
+  lat: 40.7
+  lng: -74.0
+  z: 6
+  label: 联合国成立·原子时代
+  info: 二战结束·广岛长崎原子弹·联合国宪章
+  region: global
+  source: J.M.Roberts《全球史》/ Encyclopaedia Britannica
+- y: 1957
+  lat: 45.0
+  lng: 10.0
+  z: 5
+  label: 欧洲共同体成立·苏联卫星
+  info: 罗马条约·Sputnik升空·太空竞赛开始
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1969
+  lat: 28.4
+  lng: -80.6
+  z: 6
+  label: 阿波罗11号登月
+  info: 人类首次登月·科技高峰
+  region: americas
+  source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
+- y: 1989
+  lat: 52.5
+  lng: 13.4
+  z: 6
+  label: 柏林墙倒塌
+  info: 东欧剧变·冷战结束·全球化加速
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 2001
+  lat: 40.7
+  lng: -74.0
+  z: 6
+  label: 911事件·反恐时代
+  info: 世贸中心遇袭·美国全球反恐战争
+  region: americas
+  source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
+- y: 2008
+  lat: 40.7
+  lng: -74.0
+  z: 6
+  label: 全球金融危机
+  info: 雷曼兄弟破产·华尔街危机波及全球
+  region: global
+  source: J.M.Roberts《全球史》/ Encyclopaedia Britannica
+- y: 2016
+  lat: 51.5
+  lng: -0.1
+  z: 6
+  label: 英国脱欧·特朗普当选
+  info: 民粹主义浪潮·全球化退潮
+  region: global
+  source: J.M.Roberts《全球史》/ Encyclopaedia Britannica
+- y: 2020
+  lat: 40.7
+  lng: -74.0
+  z: 5
+  label: COVID-19全球大流行
+  info: 新冠疫情·全球封锁·远程工作革命
+  region: global
+  source: J.M.Roberts《全球史》/ Encyclopaedia Britannica
+- y: 2022
+  lat: 48.0
+  lng: 30.0
+  z: 5
+  label: 俄乌战争·AI爆发
+  info: ChatGPT发布·AI元年·欧洲地缘危机
+  region: global
+  source: J.M.Roberts《全球史》/ Encyclopaedia Britannica

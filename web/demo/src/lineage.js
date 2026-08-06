@@ -1230,23 +1230,31 @@ function updateDynastyVisibility(year){
   });
 }
 // ═══ WESTERN MINI-MAP SYNC ═══
-var _westMarker=null;
+var _westMarker=null,_westEraLabel=null;
 function updateWesternMap(year){
   if(!mapWest||typeof WESTERN_TIMELINE==='undefined')return;
-  // Find the closest Western event at or before current year
   var best=null;
   WESTERN_TIMELINE.events.forEach(function(w){
     if(w.y<=year&&(!best||w.y>best.y))best=w;
   });
   if(!best||!best.lat)return;
-  // Pan to event location
-  mapWest.panTo([best.lat,best.lng],{animate:false});
-  // Show marker at current position
+  // Determine zoom based on era: Mediterranean for ancient, Europe for medieval, global for modern
+  var z=4;
+  if(year>-500){z=4.5;}  // Classical Greece/Rome
+  if(year>400){z=4.5;}   // Medieval Europe
+  if(year>1400){z=4;}    // Renaissance/Exploration
+  if(year>1800){z=3.5;}  // Modern global
+  if(year>1950){z=3;}    // Contemporary global
+  mapWest.setView([best.lat,best.lng],Math.max(2,z-1),{animate:true,duration:0.3});
+  // Show marker
   if(!_westMarker){
-    _westMarker=L.circleMarker([best.lat,best.lng],{radius:6,fillColor:'#5e8b9e',color:'#fff',weight:2,fillOpacity:0.9}).addTo(mapWest);
+    _westMarker=L.circleMarker([best.lat,best.lng],{radius:6,fillColor:'#5e8b9e',color:'#ffe066',weight:2,fillOpacity:0.9}).addTo(mapWest);
   }else{
     _westMarker.setLatLng([best.lat,best.lng]);
   }
+  // Show era label in the map corner
+  var lblDiv=document.querySelector('#map-west-wrap div[style*=\"pointer-events:none\"]');
+  if(lblDiv)lblDiv.innerHTML='🌍 '+best.label+' · '+best.y+'年';
 }
 
 // ═══ LAYER TOGGLE ═══

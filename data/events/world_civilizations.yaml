@@ -9,7 +9,8 @@ civilizations:
   - {name: 夏, color: '#9e8b6e', s: -2070, e: -1600, bounds: [[30,105],[38,118]], region: 中国}
   - {name: 商, color: '#9e8b6e', s: -1600, e: -1046, bounds: [[28,105],[42,122]], region: 中国}
   - {name: 西周, color: '#b8863c', s: -1046, e: -771, bounds: [[28,104],[40,120]], region: 中国}
-  - {name: 春秋战国, color: '#c8893e', s: -770, e: -221, bounds: [[22,104],[43,125]], region: 中国}
+  - {name: 东周·春秋, color: '#c8893e', s: -770, e: -476, bounds: [[28,104],[40,123]], region: 中国}
+  - {name: 东周·战国, color: '#c46b5d', s: -475, e: -221, bounds: [[22,104],[43,125]], region: 中国}
   - {name: 秦, color: '#c46b5d', s: -221, e: -206, bounds: [[20,102],[42,122]], region: 中国}
   - {name: 西汉, color: '#b8863c', s: -206, e: 9, bounds: [[10,98],[44,127]], region: 中国}
   - {name: 东汉, color: '#b8863c', s: 25, e: 220, bounds: [[10,98],[43,125]], region: 中国}
