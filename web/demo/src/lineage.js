@@ -782,7 +782,6 @@ function showInfo(p,p2,e){
 // ═══ PERSON TRAJECTORY PLAYBACK ═══
 var _trajTimer=null,_trajMarker=null,_trajLine=null,_trajIndex=0,_trajHighlight=null,_trajPopup=null;
 function playTrajectory(pid){
-  try{
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
   _clearTrajMarkers();
   if(!mapMain)return;
@@ -802,10 +801,6 @@ function playTrajectory(pid){
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   _showTrajNav(route,color,name,0);
   _stepTrajectory(route,color,sb,name);
-  }catch(e){
-    var d=document.createElement('div');d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace';
-    d.textContent='playTrajectory ERROR: '+e.message;document.body.appendChild(d);
-  }
 }
 function _showTrajNav(route,color,name,idx){
   if(!mapMain)return;
