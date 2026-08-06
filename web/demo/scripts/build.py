@@ -390,6 +390,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   </div>
 </div>
 
+<div style="height:12px"></div>
 <div class="comment-box" id="cmt-lineage"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
