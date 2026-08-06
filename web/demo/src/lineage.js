@@ -1552,6 +1552,8 @@ function animSeek(yr){
   animYear=parseInt(yr);lastAnimLoc=-1;
   var py=document.getElementById('prog-year');if(py)py.textContent=animYear+'年';
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
+  if(ancientMode)updateDynastyVisibility(animYear);
+  if(mapWest)updateWesternMap(animYear);
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   // Find the closest waypoint at or before animYear
   var bestWp=null;
