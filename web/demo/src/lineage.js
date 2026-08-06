@@ -798,11 +798,11 @@ function playTrajectory(pid){
     mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
     // Start marker
     L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
-      .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+      .bindTooltip('▶ '+route[0].label+' ('+route[0].y+')',{direction:'right'}).addTo(mapMain);
     // End marker
     var last=route[route.length-1];
     L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
-      .bindTooltip('⏹ '+last.label+' ('+last.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+      .bindTooltip('⏹ '+last.label+' ('+last.y+')',{direction:'right'}).addTo(mapMain);
     // Moving marker
     _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
   }
