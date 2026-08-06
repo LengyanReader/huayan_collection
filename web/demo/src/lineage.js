@@ -493,7 +493,7 @@ function drawTL(hlId){
 }
 
 // ═══ MAP SYSTEM (main view + minimap like StarCraft) ═══
-var mapMain=null,mapMini=null;
+var mapMain=null,mapMini=null,mapWest=null;
 var mainMarkers=[];
 var miniTerrainLayer=null, miniTerrainOn=false;
 function tileLayer(){return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{subdomains:["1","2","3","4"],maxZoom:18});}
@@ -534,6 +534,24 @@ function initMap(){
   }
   // Update terrain layer state after invalidateSize
   if(miniTerrainOn && miniTerrainLayer){if(!mapMini.hasLayer(miniTerrainLayer))miniTerrainLayer.addTo(mapMini);}
+  // ── Western civilization mini-map (Europe/Americas) ──
+  if(!mapWest){
+    mapWest=L.map("map-west",{zoomControl:false,attributionControl:false,zoomSnap:0.5,zoomDelta:0.5}).setView([45,5],3);
+    tileLayer().addTo(mapWest);
+    // Draw Western timeline route if data available
+    if(typeof WESTERN_TIMELINE!=='undefined'&&WESTERN_TIMELINE.events){
+      var wpts=WESTERN_TIMELINE.events.filter(function(w){return w.lat&&w.lng;}).map(function(w){return [w.lat,w.lng];});
+      if(wpts.length>1){
+        L.polyline(wpts,{color:'#5e8b9e',weight:2.5,opacity:0.7,dashArray:'6,3'}).addTo(mapWest);
+        // Mark key events with circles
+        WESTERN_TIMELINE.events.forEach(function(w){
+          if(!w.lat||!w.lng)return;
+          L.circleMarker([w.lat,w.lng],{radius:4,fillColor:'#5e8b9e',color:'#fff',weight:1,fillOpacity:0.8})
+            .bindTooltip('<b>'+w.y+'</b> '+w.label,{permanent:false}).addTo(mapWest);
+        });
+      }
+    }
+  }
 }
 function getMainMap(){return mapMain;}
 
@@ -1211,6 +1229,25 @@ function updateDynastyVisibility(year){
     }
   });
 }
+// ═══ WESTERN MINI-MAP SYNC ═══
+var _westMarker=null;
+function updateWesternMap(year){
+  if(!mapWest||typeof WESTERN_TIMELINE==='undefined')return;
+  // Find the closest Western event at or before current year
+  var best=null;
+  WESTERN_TIMELINE.events.forEach(function(w){
+    if(w.y<=year&&(!best||w.y>best.y))best=w;
+  });
+  if(!best||!best.lat)return;
+  // Pan to event location
+  mapWest.panTo([best.lat,best.lng],{animate:false});
+  // Show marker at current position
+  if(!_westMarker){
+    _westMarker=L.circleMarker([best.lat,best.lng],{radius:6,fillColor:'#5e8b9e',color:'#fff',weight:2,fillOpacity:0.9}).addTo(mapWest);
+  }else{
+    _westMarker.setLatLng([best.lat,best.lng]);
+  }
+}
 
 // ═══ LAYER TOGGLE ═══
 function toggleLayer(layer){
@@ -1552,7 +1589,7 @@ function stopAnim(){
   var pg=document.getElementById('anim-progress');if(pg)pg.value=-600;
   var sl=document.getElementById('speed-label');if(sl)sl.textContent='1x';
   [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
-  animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
+  animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null; var mw2=document.getElementById("map-west-wrap");if(mw2)mw2.style.display="none";
   if(mapMain)mapMain.off('click');
   var miniC=document.getElementById('map-mini-wrap');if(miniC)miniC.style.filter='';
   tl.minX=100;tl.maxX=2060;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
@@ -1571,6 +1608,8 @@ function animTick(){
   var py=document.getElementById('prog-year');if(py)py.textContent=animYear+'年';
   tl.minX=animYear-100;tl.maxX=animYear+300;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
   if(ancientMode)updateDynastyVisibility(animYear);
+  // Sync Western mini-map
+  if(mapWest){updateWesternMap(animYear);}
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   // Stop AFTER processing year 2030
   if(animYear>2030){
@@ -1634,7 +1673,7 @@ function toggleAnim(){
     
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
-    animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
+    animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null; var mw2=document.getElementById("map-west-wrap");if(mw2)mw2.style.display="none";
     if(mapMain)mapMain.off('click');
     var miniC2=document.getElementById('map-mini-wrap');if(miniC2)miniC2.style.filter='';
     if(speedLabel)speedLabel.textContent='1x';

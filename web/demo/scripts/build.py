@@ -326,6 +326,10 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <div id="side">
     <div id="map-main-wrap">
       <div id="map-main"></div>
+        <div id="map-west-wrap" style="position:absolute;bottom:10px;left:10px;width:220px;height:150px;border:2px solid #5e8b9e;border-radius:6px;overflow:hidden;z-index:600;box-shadow:0 4px 16px rgba(60,40,20,0.25);background:#fdfaf3">
+          <div id="map-west"></div>
+          <div style="position:absolute;top:2px;left:4px;font-size:7px;color:#5e8b9e;z-index:700;pointer-events:none;font-weight:600">🌍 西方文明</div>
+        </div>
 <div id="map-mini-wrap" style="position:absolute;bottom:10px;right:10px;width:180px;height:130px;border:2px solid var(--gold);border-radius:6px;overflow:hidden;z-index:600;box-shadow:0 4px 16px rgba(60,40,20,0.25);background:#fdfaf3">
         <div id="map-mini"></div>
         <button id="mini-terrain-btn" onclick="toggleMiniTerrain()" style="position:absolute;bottom:2px;right:2px;z-index:700;font-size:7px;padding:1px 4px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--text2);cursor:pointer">🗻 地形</button>
