@@ -782,6 +782,7 @@ function showInfo(p,p2,e){
 // ═══ PERSON TRAJECTORY PLAYBACK ═══
 var _trajTimer=null,_trajMarker=null,_trajLine=null,_trajIndex=0,_trajHighlight=null,_trajPopup=null;
 function playTrajectory(pid){
+  try{
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
   _clearTrajMarkers();
   if(!mapMain)return;
@@ -789,7 +790,6 @@ function playTrajectory(pid){
   _trajIndex=0;
   var route=traj.route,color=traj.color||'#c46b5d',name=traj.name||'';
   var coords=route.map(function(p){return [p.lat,p.lng];});
-  // Route line + start/end markers in group (cleaned by _clearTrajMarkers)
   _trajLine=L.polyline(coords,{color:color,weight:2,opacity:0.35,dashArray:'6,4'}).addTo(_trajGroup);
   mapMain.fitBounds(_trajLine.getBounds().pad(0.15));
   L.circleMarker([route[0].lat,route[0].lng],{radius:7,fillColor:'#7d9a6e',color:'#fff',weight:2,fillOpacity:0.9})
@@ -797,12 +797,15 @@ function playTrajectory(pid){
   var last=route[route.length-1];
   L.circleMarker([last.lat,last.lng],{radius:7,fillColor:'#c46b5d',color:'#fff',weight:2,fillOpacity:0.9})
     .bindTooltip('⏹ '+last.label+' ('+last.y+')',{direction:'right'}).addTo(_trajGroup);
-  // Moving marker — NOT in group (animated, cleaned separately)
   _trajMarker=L.circleMarker([route[0].lat,route[0].lng],{radius:10,fillColor:color,color:'#ffe066',weight:3,fillOpacity:0.95}).addTo(mapMain);
   document.getElementById('info-popup').style.display='none';
   var sb=document.getElementById('anim-status');if(sb)sb.style.opacity='1';
   _showTrajNav(route,color,name,0);
   _stepTrajectory(route,color,sb,name);
+  }catch(e){
+    var d=document.createElement('div');d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#c46b5d;color:#fff;padding:10px;font:12px monospace';
+    d.textContent='playTrajectory ERROR: '+e.message;document.body.appendChild(d);
+  }
 }
 function _showTrajNav(route,color,name,idx){
   if(!mapMain)return;
@@ -860,6 +863,7 @@ function _clearTrajMarkers(){
   if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
 }
 function showTrajectoryOnMap(pid){
+  
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
   _clearTrajMarkers();
   if(!mapMain)return;
