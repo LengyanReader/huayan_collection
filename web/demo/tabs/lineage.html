@@ -702,17 +702,10 @@ function selectPerson(id,isShift,ev){
   drawTL(selectedId);if(selectedId2)drawTL2(selectedId2);
   showInfo(nodeMap[selectedId],selectedId2?nodeMap[selectedId2]:null,ev);
   var locs=getPersonLocs(id);
-  // Clear previous footprints + trajectory markers
-  if(window._personFootprints){window._personFootprints.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});}
-  if(window._trajMarkers){window._trajMarkers.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});}
-  window._personFootprints=[];window._trajMarkers=[];
-  if(_trajLine&&mapMain){mapMain.removeLayer(_trajLine);_trajLine=null;}
-  if(_trajMarker&&mapMain){mapMain.removeLayer(_trajMarker);_trajMarker=null;}
-  if(_trajHighlight&&mapMain){mapMain.removeLayer(_trajHighlight);_trajHighlight=null;}
-  if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}
-  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
-  // Close all Leaflet popups on map
-  if(mapMain)mapMain.closePopup();
+  // Clear previous: footprints + ALL trajectory layers + popups
+  if(window._personFootprints){for(var fi=0;fi<window._personFootprints.length;fi++){try{mapMain.removeLayer(window._personFootprints[fi]);}catch(e){}}}
+  window._personFootprints=[];
+  _clearTrajMarkers();
   if(mapMain&&locs.length>0){
     var loc=locs[0];mapMain.flyTo([loc.lat,loc.lng],locs.length===1?12:10,{duration:0.8});
     // Draw footprint line + numbered markers
@@ -1036,31 +1029,44 @@ function _stepTrajectory(route,color,sb,name){
   _trajIndex++;
   _trajTimer=setTimeout(function(){_stepTrajectory(route,color,sb,name);},1200);
 }
+function _clearTrajMarkers(){
+  // Aggressively clear ALL trajectory-related map layers
+  if(window._trajMarkers&&mapMain){
+    for(var i=0;i<window._trajMarkers.length;i++){
+      try{mapMain.removeLayer(window._trajMarkers[i]);}catch(e){}
+    }
+  }
+  window._trajMarkers=[];
+  if(_trajLine&&mapMain)try{mapMain.removeLayer(_trajLine);}catch(e){}
+  _trajLine=null;
+  if(_trajMarker&&mapMain)try{mapMain.removeLayer(_trajMarker);}catch(e){}
+  _trajMarker=null;
+  if(_trajHighlight&&mapMain)try{mapMain.removeLayer(_trajHighlight);}catch(e){}
+  _trajHighlight=null;
+  if(_trajPopup&&mapMain)try{mapMain.closePopup(_trajPopup);}catch(e){}
+  _trajPopup=null;
+  if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
+  if(mapMain){mapMain.closePopup();mapMain.closeTooltip();}
+}
 function showTrajectoryOnMap(pid){
   var traj=PERSON_TRAJECTORIES[pid];if(!traj||!traj.route)return;
-  // Clear previous
-  if(_trajLine&&mapMain)mapMain.removeLayer(_trajLine);
-  if(_trajMarker&&mapMain)mapMain.removeLayer(_trajMarker);
-  // Also clear any numbered markers from previous show
-  if(window._trajMarkers){window._trajMarkers.forEach(function(m){if(mapMain)mapMain.removeLayer(m);});}
-  window._trajMarkers=[];
+  _clearTrajMarkers();
   var coords=traj.route.map(function(p){return [p.lat,p.lng];});
   var color=traj.color||'#c46b5d';
   if(mapMain){
-    // Thick semi-transparent glow + thin solid core
     _trajLine=L.polyline(coords,{color:color,weight:5,opacity:0.25}).addTo(mapMain);
     window._trajMarkers.push(_trajLine);
     var core=L.polyline(coords,{color:color,weight:2.5,opacity:0.85,dashArray:'8,3'}).addTo(mapMain);
     window._trajMarkers.push(core);
-    // Start marker (green dot)
+    // Start marker (green) — tooltip NOT permanent, shows on hover
     var start=traj.route[0];
     var startM=L.circleMarker([start.lat,start.lng],{radius:8,fillColor:'#7d9a6e',color:'#fff',weight:2.5,fillOpacity:1})
-      .bindTooltip('▶ '+start.label+' ('+start.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+      .bindTooltip('▶ '+start.label+' ('+start.y+')',{direction:'right'}).addTo(mapMain);
     window._trajMarkers.push(startM);
-    // End marker (red dot)
+    // End marker (red) — tooltip NOT permanent, shows on hover
     var end=traj.route[traj.route.length-1];
     var endM=L.circleMarker([end.lat,end.lng],{radius:8,fillColor:'#c46b5d',color:'#fff',weight:2.5,fillOpacity:1})
-      .bindTooltip('⏹ '+end.label+' ('+end.y+')',{permanent:true,direction:'right'}).addTo(mapMain);
+      .bindTooltip('⏹ '+end.label+' ('+end.y+')',{direction:'right'}).addTo(mapMain);
     window._trajMarkers.push(endM);
     // Numbered intermediate markers
     for(var i=1;i<traj.route.length-1;i++){
@@ -1069,7 +1075,7 @@ function showTrajectoryOnMap(pid){
         .bindTooltip((i+1)+'. '+pt.label+' ('+pt.y+')').addTo(mapMain);
       window._trajMarkers.push(m);
     }
-    // Zoom to fit with generous padding
+    // Zoom to fit
     var bounds=L.latLngBounds(coords);
     mapMain.fitBounds(bounds,{padding:[50,50],maxZoom:8});
   }
@@ -1405,9 +1411,30 @@ function _rosterGroupHTML(g,persons){
 window._rosterClick=function(pid){
   var m=document.getElementById('roster-modal');if(m)m.style.display='none';
   setTimeout(function(){
-    if(nodeMap&&nodeMap[pid])selectPerson(pid);
-    else if(typeof selectSuggestion==='function')selectSuggestion(pid);
-    else console.error('Cannot select:',pid);
+    if(nodeMap&&nodeMap[pid]){
+      selectPerson(pid);
+    }else{
+      // Trajectory-only person: clear old markers, fly to first waypoint
+      _clearTrajMarkers();
+      var traj=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[pid];
+      if(traj&&traj.route&&traj.route.length&&mapMain){
+        var r0=traj.route[0];
+        showTrajectoryOnMap(pid);
+        // Show simple info in popup
+        var popup=document.getElementById('info-popup');
+        if(popup){
+          var h='<span class=close-btn onclick=\"document.getElementById(\\'info-popup\\').style.display=\\'none\\'\">&times;</span>'
+            +'<h3>'+traj.name+'</h3>'
+            +'<p style=font-size:0.78em;color:var(--text2)>📍 共'+traj.route.length+'个足迹节点</p>'
+            +'<button onclick=\"playTrajectory(\\''+pid+'\\')\" style=\"padding:3px 10px;border:1px solid '+(traj.color||'#b8863c')+';border-radius:12px;background:var(--card);color:'+(traj.color||'#b8863c')+';cursor:pointer;font-size:0.72em\">🎬 播放足迹</button>';
+          if(traj.source)h+='<div style=margin-top:4px;font-size:0.65em;color:var(--text2)>📚 '+traj.source+'</div>';
+          popup.innerHTML=h;popup.style.display='block';
+          popup.style.left='60vw';popup.style.top='10vh';
+          if(popup._autoTimer)clearTimeout(popup._autoTimer);
+          popup._autoTimer=setTimeout(function(){popup.style.display='none';},15000);
+        }
+      }
+    }
   },80);
 };
 window._templeClick=function(tid){
