@@ -270,7 +270,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <style>
 #search-bar{{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center;position:relative}}
 #search-bar input{{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}}
-#main-row{{display:flex;flex:1;min-height:0}}
+#main-row{{display:flex;flex:1;min-height:65vh}}
 #tl-panel{{flex:1;position:relative;background:var(--panel);overflow-y:auto;overflow-x:hidden;min-width:220px;cursor:grab}}
 #tl-panel canvas{{display:block;position:absolute;top:0;left:0}}
 #side{{flex:3;display:flex;flex-direction:column;min-width:300px;border-left:1px solid var(--line)}}
