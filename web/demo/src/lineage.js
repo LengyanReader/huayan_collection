@@ -683,9 +683,17 @@ function showInfo(p,p2,e){
     if(!rels[label])rels[label]=[];
     if(rels[label].indexOf(t.n)<0)rels[label].push(t.n);
   });
-  var gen=0,tmp=p;
+  var gen=0,tmp=p, visitedGen={};
+  visitedGen[p.id]=true;
   var teachers=DATA.edges.filter(function(e){return e.t===p.id&&(e.r==='MASTER'||e.r==='MASTER_OF');}).map(function(e){return nodeMap[e.s];}).filter(Boolean);
-  while(tmp){var next=teachers.find(function(t){return t.id!==tmp.id;});if(!next)break;tmp=next;gen++;}
+  while(tmp){
+    var next=null;
+    for(var ti=0;ti<teachers.length;ti++){
+      if(!visitedGen[teachers[ti].id]){next=teachers[ti];break;}
+    }
+    if(!next)break;
+    visitedGen[next.id]=true;tmp=next;gen++;
+  }
   var lifeSpan=(p.b&&p.d)?('享年'+(p.d-p.b)+'岁 · '):'';
   // Build relationship HTML
   var relHTML='';
@@ -821,20 +829,25 @@ function _showTrajNav(route,color,name,idx){
     +(next?'<br>➡ <span style=color:var(--text2)>下一站: '+next.y+'年 '+next.label+'</span>':'')
     +'<br><span style=font-size:0.7em;color:var(--text2)>进度: '+idx+'/'+route.length+' ('+progress+'%)</span>'
     +'<br><span style=font-size:0.65em;color:var(--text2)>点击地图暂停/继续</span>'
+    +'<br><a href=\"#\" onclick=\"if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}if(_trajPopup&&mapMain){mapMain.closePopup(_trajPopup);_trajPopup=null;}mapMain.off(\"click\");mapMain.closePopup();document.getElementById(\"anim-status\").style.opacity=\"0\";return false\" style=font-size:0.6em;color:var(--red)>✕ 关闭</a>'
     +'</div>';
   if(_trajPopup&&mapMain)mapMain.closePopup(_trajPopup);
   _trajPopup=L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:280,autoPan:false,offset:[0,-15]})
     .setLatLng([pt.lat,pt.lng]).setContent(html).openOn(mapMain);
-  // Click map to pause/resume
+  // Click map to pause/resume (only if trajectory still active)
   mapMain.off('click');mapMain.on('click',function(){
-    if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;if(sb)document.getElementById('anim-status').style.opacity='0';}
+    if(_trajIndex>=route.length)return; // trajectory already done
+    if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;document.getElementById('anim-status').style.opacity='0';}
     else{_trajTimer=setTimeout(function(){_stepTrajectory(route,color,document.getElementById('anim-status'),name);},1200);}
   });
 }
 function _stepTrajectory(route,color,sb,name){
   if(_trajIndex>=route.length){
+    // Cleanup: close popups, clear timer, clear click handler
     if(sb)sb.style.opacity='0';
-    if(_trajPopup&&mapMain)mapMain.closePopup(_trajPopup);
+    if(_trajTimer){clearTimeout(_trajTimer);_trajTimer=null;}
+    if(mapMain){mapMain.off('click');mapMain.closePopup();}
+    if(_trajPopup){_trajPopup=null;}
     // Flash end marker
     if(_trajMarker){_trajMarker.setStyle({fillColor:'#7d9a6e',radius:12});setTimeout(function(){if(_trajMarker)_trajMarker.setStyle({fillColor:color,radius:10});},500);}
     return;
