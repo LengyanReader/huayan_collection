@@ -823,9 +823,13 @@ function toggleAncient(){
 
 // ═══ ENHANCED INFO PANEL ═══
 function showInfo(p,p2,e){
-  if(!p)return;
   var popup=document.getElementById('info-popup');
   if(!popup)return;
+  // Always clear previous state first
+  if(popup._autoTimer)clearTimeout(popup._autoTimer);
+  popup._autoTimer=null;
+  popup.onmouseenter=popup.onmouseleave=popup.onclick=null;
+  if(!p){popup.style.display='none';return;}
   // Use popup directly (compatible with showTempleInfo which sets innerHTML)
   var lc=(p.li&&DATA.lineage_colors[p.li])?DATA.lineage_colors[p.li]:"#b0a898";
   var locs=getPersonLocs(p.id),locHTML="";
@@ -1296,7 +1300,15 @@ function renderRoster(){
   DATA.nodes.forEach(function(p){
     if(!p.b&&!p.d)return;
     var traj=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id];
-    all.push({id:p.id,n:p.n,ti:p.ti||'',tp:p.tp||'',li:p.li||'',b:p.b,d:p.d,color:DATA.lineage_colors[p.li]||'#b0a898',group:_classifyPerson(p,traj)});
+    var primary=_classifyPerson(p,traj);
+    // Multi-group support: trajectory group field can use ; separator
+    var groups=[primary];
+    if(traj&&traj.group&&traj.group.indexOf(';')>=0){
+      groups=traj.group.split(';').map(function(s){return s.trim();});
+    }else if(traj&&traj.group){
+      groups=[traj.group];  // explicit single group overrides auto-classification
+    }
+    all.push({id:p.id,n:p.n,ti:p.ti||'',tp:p.tp||'',li:p.li||'',b:p.b,d:p.d,color:DATA.lineage_colors[p.li]||'#b0a898',groups:groups});
     seen[p.id]=true;
   });
   // Add trajectory-only persons
@@ -1305,10 +1317,25 @@ function renderRoster(){
     var t=PERSON_TRAJECTORIES[tid];if(!t||!t.name||!t.route)continue;
     var yr=t.route[0]?t.route[0].y:null;
     var yr2=t.route[t.route.length-1]?t.route[t.route.length-1].y:null;
-    all.push({id:tid,n:t.name.split('·')[0],ti:t.name,li:'',b:yr,d:yr2,color:t.color||'#b0a898',group:_classifyPerson({n:t.name.split('·')[0],li:''},t)});
+    var primary2=_classifyPerson({n:t.name.split('·')[0],li:''},t);
+    var groups2=[primary2];
+    if(t.group&&t.group.indexOf(';')>=0){
+      groups2=t.group.split(';').map(function(s){return s.trim();});
+    }else if(t.group){
+      groups2=[t.group];
+    }
+    all.push({id:tid,n:t.name.split('·')[0],ti:t.name,li:'',b:yr,d:yr2,color:t.color||'#b0a898',groups:groups2});
     seen[tid]=true;
   }
   cnt.textContent=all.length;
+  // Build group index — one person can appear in multiple groups
+  var groups={};
+  all.forEach(function(p){
+    p.groups.forEach(function(g){
+      if(!groups[g])groups[g]=[];
+      groups[g].push(p);
+    });
+  });
   // Group order — must match _classifyPerson return values exactly
   var grpOrder=[
     '🪷 华严宗·五祖时代','🪷 华严宗·李通玄系','🪷 华严宗·高原法系','🪷 华严宗·华严莲社',
@@ -1327,11 +1354,7 @@ function renderRoster(){
     '🔮 西方哲学·宗教','☪ 伊斯兰教','🕉 印度教·近代','🕉 印度教·耆那教',
     '📌 其他'
   ];
-  var groups={}, usedGroups={};
-  all.forEach(function(p){
-    if(!groups[p.group])groups[p.group]=[];
-    groups[p.group].push(p);
-  });
+  var usedGroups={};
   var h='';
   // Render groups in defined order
   grpOrder.forEach(function(g){
