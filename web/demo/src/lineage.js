@@ -1162,14 +1162,20 @@ function updateDynastyVisibility(year){
   });
 }
 var _MINI_REGIONS=[
-  {id:'huayan',label:'🪷 华严主线',key:'anim_waypoints',color:'#c46b5d',center:[30,80],zoom:2},
-  {id:'chinese',label:'📜 儒道·诸宗',key:'east_asian_thought',color:'#b8863c',center:[35,115],zoom:4},
+  {id:'huayan',label:'☸ 汉传诸宗',key:'han_buddhist_schools',color:'#c46b5d',center:[32,110],zoom:4},
+  {id:'chinese',label:'📜 儒道传承',key:'east_asian_thought',color:'#b8863c',center:[35,115],zoom:4},
   {id:'mena',label:'🌙 中东·中亚·北非',key:'mena_timeline',color:'#d4784c',center:[30,40],zoom:3},
   {id:'west',label:'🌍 西方文明',key:'western_timeline',color:'#5e8b9e',center:[45,5],zoom:3},
   {id:'africa',label:'🌴 撒哈拉以南非洲',key:'africa_timeline',color:'#7d9a6e',center:[0,25],zoom:3},
   {id:'americas',label:'🦅 美洲大陆',key:'americas_timeline',color:'#c8893e',center:[10,-80],zoom:3},
   {id:'oceania',label:'🏝 大洋洲',key:'oceania_timeline',color:'#8b7a9e',center:[-20,160],zoom:3}
 ];
+function _getEvents(data){
+  if(!data)return null;
+  if(data.events)return data.events;
+  if(Array.isArray(data))return data.filter(function(w){return w.lat&&w.lng;});
+  return null;
+}
 function initMiniMaps(){
   var grid=document.getElementById('mini-maps-grid');if(!grid)return;
   _MINI_REGIONS.forEach(function(r){
@@ -1179,18 +1185,22 @@ function initMiniMaps(){
     wrap.appendChild(mapDiv);
     var lbl=document.createElement('div');
     lbl.style.cssText='position:absolute;top:2px;left:4px;font-size:7px;color:'+r.color+';z-index:700;pointer-events:none;font-weight:600;line-height:1.2';
-    lbl.textContent=r.label;wrap.appendChild(lbl);grid.appendChild(wrap);
+    lbl.textContent=r.label;wrap.appendChild(lbl);
+    var evLbl=document.createElement('div');
+    evLbl.style.cssText='position:absolute;bottom:2px;left:2px;right:2px;font-size:6.5px;color:#fff;background:rgba(0,0,0,0.55);padding:1px 3px;border-radius:2px;pointer-events:none;line-height:1.2;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:700;display:none';
+    evLbl.id='mm-ev-'+r.id;wrap.appendChild(evLbl);grid.appendChild(wrap);
     setTimeout(function(){
       var m=L.map(mapDiv,{zoomControl:false,attributionControl:false,zoomSnap:0.5,zoomDelta:0.5}).setView(r.center,r.zoom);
       tileLayer().addTo(m);
       var data=null;
       try{var vn=r.key.toUpperCase();if(window[vn])data=window[vn];else if(typeof EVENTS!=='undefined'&&EVENTS[r.key])data=EVENTS[r.key];}catch(e){}
-      if(data&&data.events){
-        var pts=data.events.filter(function(w){return w.lat&&w.lng;}).map(function(w){return [w.lat,w.lng];});
-        if(pts.length>1)L.polyline(pts,{color:r.color,weight:1.5,opacity:0.5}).addTo(m);
+      var evts=_getEvents(data);
+      if(evts&&evts.length>1){
+        var pts=evts.map(function(w){return [w.lat,w.lng];});
+        L.polyline(pts,{color:r.color,weight:1.5,opacity:0.5}).addTo(m);
       }
       var mk=L.circleMarker(r.center,{radius:5,fillColor:r.color,color:'#ffe066',weight:2,fillOpacity:0.9}).addTo(m);
-      _miniMaps[r.id]={map:m,marker:mk,dataKey:r.key,color:r.color};
+      _miniMaps[r.id]={map:m,marker:mk,dataKey:r.key,color:r.color,evLbl:evLbl};
     },r.id==='huayan'?50:200);
   });
 }
@@ -1199,10 +1209,16 @@ function updateMiniMaps(year){
     var mm=_miniMaps[id];if(!mm||!mm.map)return;
     var data=null;
     try{var vn=mm.dataKey.toUpperCase();if(window[vn])data=window[vn];else if(typeof EVENTS!=='undefined'&&EVENTS[mm.dataKey])data=EVENTS[mm.dataKey];}catch(e){}
-    if(!data||!data.events)return;var best=null;
-    data.events.forEach(function(w){if(w.y<=year&&(!best||w.y>best.y))best=w;});
+    var evts=_getEvents(data);if(!evts||!evts.length)return;
+    var best=null;
+    evts.forEach(function(w){if(w.y<=year&&(!best||w.y>best.y))best=w;});
     if(!best||!best.lat)return;
     mm.marker.setLatLng([best.lat,best.lng]);mm.map.panTo([best.lat,best.lng],{animate:false});
+    // Update event label
+    if(mm.evLbl){
+      mm.evLbl.style.display='block';
+      mm.evLbl.textContent=best.y+'年 '+best.label;
+    }
   });
 }
 // ═══ LAYER TOGGLE ═══
