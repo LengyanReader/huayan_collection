@@ -1019,14 +1019,11 @@ window.heartLogin=function(){
   fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}})
   .then(function(r){return r.json();})
   .then(function(u){
-    if(u.login==='LengyanReader'){
-      localStorage.setItem(STORAGE_KEY,token);ghToken=token;
-      localStorage.setItem('gh_username','LengyanReader');
-      _update();_toast('✅ LengyanReader · Push已启用');
-    }else{
-      _toast('⛔ 仅限LengyanReader账号 · 当前Token属于'+u.login);
-      localStorage.removeItem(STORAGE_KEY);ghToken=null;
-    }
+    // 任何账号均可登录评论; 仅LengyanReader可Push
+    localStorage.setItem(STORAGE_KEY,token);ghToken=token;
+    localStorage.setItem('gh_username',u.login);
+    _update();
+    _toast(u.login==='LengyanReader'?'✅ LengyanReader · 评论+Push已启用':'✅ '+u.login+' · 评论已启用 (仅LengyanReader可Push)');
   }).catch(function(){_toast('❌ Token验证失败');});
 };
 // Push
