@@ -310,7 +310,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <header id="header">
   <a href="../index.html" class="back-link">&larr; 总览</a>
   <h1>🌊 法脉传承 · 时空长河</h1>
-  <div style="font-size:0.68em;color:var(--text2);margin-left:auto">滚轮缩放 | 拖拽平移 | Shift+点击双人对比</div>
+  <div style="font-size:0.68em;color:var(--text2);margin-left:auto">v10 · 10区 · 63道场 · 滚轮缩放 | 拖拽平移 | Shift+点击双人对比</div>
 </header>
 
 <div id="search-bar">
