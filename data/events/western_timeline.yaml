@@ -1,20 +1,4 @@
 events:
-- y: -3000
-  lat: 30.0
-  lng: 31.2
-  z: 5
-  label: 古埃及统一
-  info: 上埃及与下埃及统一·金字塔时代开始
-  region: middle_east
-  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
-- y: -2000
-  lat: 33.5
-  lng: 44.4
-  z: 5
-  label: 古巴比伦·汉谟拉比法典
-  info: 美索不达米亚文明高峰·最早成文法典
-  region: middle_east
-  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
 - y: -1500
   lat: 37.9
   lng: 23.7
@@ -79,14 +63,14 @@ events:
   info: 日耳曼人入侵·欧洲进入中世纪
   region: europe
   source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
-- y: 622
-  lat: 24.5
-  lng: 39.6
-  z: 5
-  label: 伊斯兰教兴起·希吉拉
-  info: 穆罕默德从麦加迁麦地那
-  region: middle_east
-  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 529
+  lat: 41.9
+  lng: 12.5
+  z: 6
+  label: 查士丁尼法典
+  info: 东罗马皇帝查士丁尼编纂罗马法典·欧洲大陆法系根基
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
 - y: 732
   lat: 47.0
   lng: 2.0
@@ -111,14 +95,14 @@ events:
   info: 天主教与东正教正式分裂
   region: europe
   source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
-- y: 1096
-  lat: 31.8
-  lng: 35.2
-  z: 5
-  label: 第一次十字军东征
-  info: 夺取耶路撒冷·十字军国家建立
-  region: middle_east
-  source: Bernard Lewis《中东史》/ Albert Hourani《阿拉伯通史》
+- y: 1088
+  lat: 44.5
+  lng: 11.3
+  z: 6
+  label: 博洛尼亚大学建立·世界首所大学
+  info: 欧洲最早的大学·罗马法复兴中心·"大学之母"
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
 - y: 1215
   lat: 51.5
   lng: -0.1
@@ -157,7 +141,16 @@ events:
   z: 6
   label: 哥伦布到达美洲
   info: 大航海时代开启·新旧大陆相遇
-  region: americas
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1543
+  lat: 53.5
+  lng: 18.0
+  z: 6
+  label: 哥白尼《天体运行论》·科学革命开端
+  info: 哥白尼发表日心说·推翻了千年地心说·科学革命的开端
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
   source: Alan Brinkley《美国史》/ Howard Zinn《美国人民史》
 - y: 1517
   lat: 51.0
@@ -247,6 +240,30 @@ events:
   info: 进化论发表·科学世界观革命
   region: europe
   source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1861
+  lat: 45.0
+  lng: 9.0
+  z: 6
+  label: 意大利统一·复兴运动
+  info: 加里波第千人远征·意大利王国宣告成立·分裂千年的亚平宁统一
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1871
+  lat: 48.9
+  lng: 2.3
+  z: 6
+  label: 巴黎公社·德意志帝国建立
+  info: 巴黎公社起义·普法战争后德国统一·欧洲格局重塑
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1905
+  lat: 47.4
+  lng: 8.5
+  z: 6
+  label: 爱因斯坦·狭义相对论
+  info: 爱因斯坦于瑞士伯尔尼发表·E=mc²·物理学革命
+  region: europe
+  source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
 - y: 1865
   lat: 38.9
   lng: -77.0
@@ -319,6 +336,22 @@ events:
   info: 东欧剧变·冷战结束·全球化加速
   region: europe
   source: Will Durant《世界文明史》/ J.M.Roberts《全球史》
+- y: 1993
+  lat: 50.8
+  lng: 4.3
+  z: 5
+  label: 欧盟成立·马斯特里赫特条约
+  info: 欧洲联盟正式诞生·单一市场·统一货币欧元·战后欧洲一体化高峰
+  region: europe
+  source: J.M.Roberts《全球史》
+- y: 2002
+  lat: 48.9
+  lng: 2.3
+  z: 5
+  label: 欧元正式流通
+  info: 欧元纸币硬币在12国同时流通·欧洲货币统一的历史里程碑
+  region: europe
+  source: J.M.Roberts《全球史》
 - y: 2001
   lat: 40.7
   lng: -74.0

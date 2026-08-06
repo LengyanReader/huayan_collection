@@ -851,3 +851,286 @@ temples:
     persons: [person_simachengzhen]
     source: 《旧唐书·司马承祯传》
     verified: 1
+
+  # ═══════════════════════════════════════
+  # 天台宗 补充
+  # ═══════════════════════════════════════
+  - id: t_tiantai_002
+    name: 天台山高明寺
+    school: 天台宗
+    type: temple
+    location: 浙江天台
+    lat: 29.2
+    lng: 121.0
+    dynasty: 唐
+    founded: 900
+    founder: 智者大师(传说)
+    description: 天台宗幽溪道场。传灯大师于此著《天台山方外志》，天台宗明代中兴重地。
+    significance: 天台宗幽溪道场
+    source: 传灯《天台山方外志》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 法相宗 补充
+  # ═══════════════════════════════════════
+  - id: t_faxiang_002
+    name: 长安兴教寺
+    school: 法相宗
+    type: temple
+    location: 陕西西安长安区
+    lat: 34.1
+    lng: 109.0
+    dynasty: 唐
+    founded: 669
+    founder: 高宗(敕建)
+    description: 玄奘法师灵骨塔所在地。窥基、圆测塔亦在寺内——法相宗三祖同葬一处。世界文化遗产(丝绸之路组成部分)。
+    significance: 玄奘灵塔·法相宗三祖安葬处·世界遗产
+    persons: [person_111]
+    source: 《大唐大慈恩寺三藏法师传》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 三论宗 补充
+  # ═══════════════════════════════════════
+  - id: t_sanlun_002
+    name: 长安草堂寺
+    school: 三论宗
+    type: temple
+    location: 陕西西安鄠邑区
+    lat: 34.0
+    lng: 108.7
+    dynasty: 后秦
+    founded: 401
+    founder: 鸠摩罗什
+    description: 鸠摩罗什译场所在·中国四大译场之一。三论宗祖庭之一。罗什舍利塔在此——中国最古佛塔之一。
+    significance: 罗什译场·三论宗祖庭
+    persons: [person_104]
+    source: 《出三藏记集》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 禅宗 补充 (五家七宗)
+  # ═══════════════════════════════════════
+  - id: t_chan_010
+    name: 正定临济寺
+    school: 禅宗·临济宗
+    type: temple
+    location: 河北正定
+    lat: 38.1
+    lng: 114.5
+    dynasty: 唐
+    founded: 850
+    founder: 临济义玄
+    description: 临济宗祖庭。义玄于此创临济宗——禅宗五家中最大宗派。临济喝·四料简·四照用出此。后传至日本为临济宗。
+    significance: 临济宗祖庭·禅宗最大宗派发源地
+    source: 《临济录》《景德传灯录》
+    verified: 1
+
+  - id: t_chan_011
+    name: 韶关云门寺
+    school: 禅宗·云门宗
+    type: temple
+    location: 广东韶关乳源
+    lat: 24.8
+    lng: 113.3
+    dynasty: 五代
+    founded: 923
+    founder: 云门文偃
+    description: 云门宗祖庭。文偃于此创云门宗——"云门三句""云门饼"出此。禅宗五家之一。
+    significance: 云门宗祖庭
+    source: 《景德传灯录》
+    verified: 1
+
+  - id: t_chan_012
+    name: 南京清凉寺
+    school: 禅宗·法眼宗
+    type: temple
+    location: 江苏南京
+    lat: 32.0
+    lng: 118.7
+    dynasty: 五代
+    founded: 940
+    founder: 法眼文益
+    description: 法眼宗祖庭。文益于此创法眼宗——"禅教合一"思想。法眼宗为禅宗五家中最后建立、最早消亡的宗派。
+    significance: 法眼宗祖庭
+    source: 《景德传灯录》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 藏传佛教 补充
+  # ═══════════════════════════════════════
+  - id: t_tibetan_006
+    name: 拉萨哲蚌寺
+    school: 藏传佛教·格鲁派
+    type: temple
+    location: 西藏拉萨
+    lat: 29.67
+    lng: 91.05
+    dynasty: 明
+    founded: 1416
+    founder: 绛央却杰
+    description: 格鲁派三大寺之一。历史上僧众逾万，为世界最大寺院。达赖喇嘛母寺(一世至五世驻锡)。
+    significance: 格鲁派最大寺院·达赖喇嘛母寺
+    source: 王森《西藏佛教发展史略》
+    verified: 1
+
+  - id: t_tibetan_007
+    name: 日喀则扎什伦布寺
+    school: 藏传佛教·格鲁派
+    type: temple
+    location: 西藏日喀则
+    lat: 29.27
+    lng: 88.88
+    dynasty: 明
+    founded: 1447
+    founder: 一世达赖根敦朱巴
+    description: 格鲁派六大寺之一。班禅喇嘛驻锡地。世界最大鎏金铜佛(强巴佛高26.2m)在此。
+    significance: 班禅喇嘛驻锡地·格鲁派六大寺
+    source: 王森《西藏佛教发展史略》
+    verified: 1
+
+  - id: t_tibetan_008
+    name: 西宁塔尔寺
+    school: 藏传佛教·格鲁派
+    type: temple
+    location: 青海西宁湟中
+    lat: 36.5
+    lng: 101.6
+    dynasty: 明
+    founded: 1560
+    description: 宗喀巴大师诞生地。格鲁派六大寺之一。酥油花、壁画、堆绣并称塔尔寺三绝。
+    significance: 宗喀巴诞生地·格鲁派六大寺
+    source: 王森《西藏佛教发展史略》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 道教 补充
+  # ═══════════════════════════════════════
+  - id: t_daoist_007
+    name: 龙虎山天师府
+    school: 道家·天师道
+    type: temple
+    location: 江西鹰潭贵溪
+    lat: 28.0
+    lng: 117.0
+    dynasty: 汉/历代
+    founded: 200
+    founder: 张道陵(四代孙迁此)
+    description: 天师道祖庭。张天师世家世代居住于此逾1800年——与曲阜孔府并称"南张北孔"两大世家。正一派道教核心。
+    significance: 天师道祖庭·千年世家·南张北孔
+    source: 《龙虎山志》
+    verified: 1
+
+  - id: t_daoist_008
+    name: 崂山太清宫
+    school: 道家·全真
+    type: temple
+    location: 山东青岛崂山
+    lat: 36.1
+    lng: 120.7
+    dynasty: 西汉/历代
+    founded: -140
+    founder: 张廉夫(传说)
+    description: 道教全真派第二丛林(仅次于白云观)。崂山道士闻名天下，丘处机、张三丰均曾至此。依山面海——道教"海上仙山"。
+    significance: 全真第二丛林·海上仙山
+    source: 《崂山志》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 伊斯兰教
+  # ═══════════════════════════════════════
+  - id: t_islam_001
+    name: 西安化觉巷清真大寺
+    school: 伊斯兰教
+    type: temple
+    location: 陕西西安
+    lat: 34.26
+    lng: 108.94
+    dynasty: 唐
+    founded: 742
+    description: 中国现存规模最大的清真寺之一。中式建筑风格与伊斯兰教功能完美融合——体现伊斯兰教中国化的历史成就。西安回坊中心。
+    significance: 中国最大清真寺之一·伊斯兰教中国化典范
+    source: 白寿彝《中国伊斯兰教史》
+    verified: 1
+
+  - id: t_islam_002
+    name: 北京牛街礼拜寺
+    school: 伊斯兰教
+    type: temple
+    location: 北京西城
+    lat: 39.88
+    lng: 116.36
+    dynasty: 辽
+    founded: 996
+    founder: 筛海·那速鲁丁
+    description: 北京历史最悠久的清真寺。宋辽时期筛海(伊斯兰学者)来华建立，为伊斯兰教传入中国的重要见证。
+    significance: 北京最古清真寺·伊斯兰教入华见证
+    source: 白寿彝《中国伊斯兰教史》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 基督教(中国)
+  # ═══════════════════════════════════════
+  - id: t_christian_001
+    name: 上海徐家汇天主堂
+    school: 基督教·天主教
+    type: temple
+    location: 上海徐汇
+    lat: 31.19
+    lng: 121.43
+    dynasty: 清/近现代
+    founded: 1910
+    founder: 耶稣会
+    description: 远东最大的哥特式教堂。徐光启故里。徐光启(1562-1633)为明末天主教"三柱石"之首，与利玛窦合译欧几里得《几何原本》。
+    significance: 远东最大哥特式教堂·徐光启故里
+    source: 方豪《中国天主教史人物传》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 印度教
+  # ═══════════════════════════════════════
+  - id: t_hindu_001
+    name: 瓦拉纳西·喀什黄金庙
+    school: 印度教
+    type: temple
+    location: 印度北方邦瓦拉纳西
+    lat: 25.3
+    lng: 83.0
+    dynasty: 古印度/历代
+    founded: -500
+    description: 印度教七圣城之首。恒河岸边最神圣的湿婆神庙。佛陀初转法轮之鹿野苑距此仅数里——印度教与佛教圣地毗邻，体现两教渊源关系。
+    significance: 印度教七圣城之首·湿婆圣地
+    source: A.L.Basham《印度文化史》
+    verified: 1
+
+  # ═══════════════════════════════════════
+  # 东南亚佛教
+  # ═══════════════════════════════════════
+  - id: t_seasia_001
+    name: 仰光大金塔(瑞光大金塔)
+    school: 上座部佛教
+    type: temple
+    location: 缅甸仰光
+    lat: 16.8
+    lng: 96.15
+    dynasty: 古/历代
+    founded: -588
+    description: 世界最著名的佛塔之一。塔身贴金箔逾60吨。据传藏有过去佛迦叶佛之发。与印度尼西亚婆罗浮屠、柬埔寨吴哥窟并称东南亚三大佛教圣迹。
+    significance: 东南亚佛教圣地·世界最著名佛塔之一
+    source: D.G.E.Hall《东南亚史》
+    verified: 1
+
+  - id: t_seasia_002
+    name: 吴哥窟
+    school: 印度教/佛教
+    type: temple
+    location: 柬埔寨暹粒
+    lat: 13.4
+    lng: 103.9
+    dynasty: 吴哥王朝
+    founded: 1113
+    founder: 苏利耶跋摩二世
+    description: 世界最大宗教建筑。原为印度教毗湿奴神庙，后转为佛教寺院。高棉建筑艺术巅峰。世界文化遗产。
+    significance: 世界最大宗教建筑·高棉艺术巅峰
+    source: D.G.E.Hall《东南亚史》
+    verified: 1

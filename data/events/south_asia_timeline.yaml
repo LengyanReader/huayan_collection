@@ -1,0 +1,177 @@
+events:
+- y: -2500
+  lat: 27.0
+  lng: 68.0
+  z: 5
+  label: 印度河文明·摩亨佐达罗
+  info: 印度河流域哈拉帕文明全盛·城市规划·排水系统·最早南亚文明
+  region: south_asia
+  source: Romila Thapar《印度史》/ A.L.Basham《印度文化史》
+- y: -1500
+  lat: 29.0
+  lng: 76.0
+  z: 5
+  label: 雅利安人·吠陀时代
+  info: 雅利安人进入印度·《梨俱吠陀》结集·种姓制度萌芽·梵语文明奠基
+  region: south_asia
+  source: Romila Thapar《印度史》/ A.L.Basham《印度文化史》
+- y: -800
+  lat: 26.5
+  lng: 82.0
+  z: 5
+  label: 奥义书时代
+  info: 梵我哲学形成·轮回业力说确立·为佛教耆那教提供思想土壤
+  region: south_asia
+  source: Romila Thapar《印度史》/ A.L.Basham《印度文化史》
+- y: -528
+  lat: 24.7
+  lng: 85.0
+  z: 6
+  label: 释迦牟尼成道·佛教诞生
+  info: 佛陀于菩提伽耶觉悟·四圣谛八正道·世界三大宗教之一诞生
+  region: south_asia
+  source: Romila Thapar《印度史》/ 《巴利三藏》
+- y: -483
+  lat: 26.7
+  lng: 83.9
+  z: 6
+  label: 佛陀入灭·第一次结集
+  info: 释迦于拘尸那罗入灭·摩诃迦叶主持王舍城结集·佛教经律确立
+  region: south_asia
+  source: Romila Thapar《印度史》/ 《巴利三藏》
+- y: -322
+  lat: 27.0
+  lng: 78.0
+  z: 5
+  label: 旃陀罗笈多·孔雀帝国
+  info: 月护王逐希腊势力建孔雀王朝·考底利耶《政事论》·印度首个大帝国
+  region: south_asia
+  source: Romila Thapar《印度史》/ A.L.Basham《印度文化史》
+- y: -260
+  lat: 25.3
+  lng: 83.0
+  z: 5
+  label: 阿育王·佛教世界传播
+  info: 阿育王皈依佛教·第三次结集·派传教师至中亚东南亚地中海·佛教从区域宗教走向世界
+  region: south_asia
+  source: Romila Thapar《印度史》/ 阿育王石刻诏书
+- y: 320
+  lat: 27.0
+  lng: 80.0
+  z: 5
+  label: 笈多帝国·印度黄金时代
+  info: 笈多王朝古典文化全盛·迦梨陀娑史诗·阿旃陀石窟·数学(零/十进制)·那烂陀大学建立
+  region: south_asia
+  source: Romila Thapar《印度史》/ A.L.Basham《印度文化史》
+- y: 450
+  lat: 25.1
+  lng: 85.4
+  z: 5
+  label: 那烂陀寺·世界佛教最高学府
+  info: 无著世亲弘瑜伽行派·玄奘义净留学·僧众万余·课程含因明医方天文
+  region: south_asia
+  source: 《大唐西域记》
+- y: 712
+  lat: 25.0
+  lng: 68.0
+  z: 5
+  label: 伊斯兰势力进入印度
+  info: 穆罕默德·本·卡西姆征服信德·伊斯兰教传入南亚次大陆
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1000
+  lat: 10.0
+  lng: 79.0
+  z: 5
+  label: 朱罗王朝·印度洋贸易帝国
+  info: 朱罗王朝征服斯里兰卡·海军远征东南亚·南印度艺术与青铜铸造巅峰
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1206
+  lat: 28.6
+  lng: 77.2
+  z: 5
+  label: 德里苏丹国建立
+  info: 库特布丁·艾伯克建奴隶王朝·伊斯兰统治北印度·库特布塔·印伊文化融合
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1336
+  lat: 15.3
+  lng: 76.5
+  z: 5
+  label: 毗舍耶那伽罗帝国
+  info: 印度教复兴帝国·汉皮古城·南印度文化堡垒·抵抗伊斯兰扩张
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1469
+  lat: 31.5
+  lng: 75.0
+  z: 5
+  label: 那纳克·锡克教创立
+  info: 古鲁那纳克诞生于旁遮普·融合印度教与伊斯兰苏菲·锡克教形成
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1526
+  lat: 28.6
+  lng: 77.2
+  z: 5
+  label: 巴布尔·莫卧儿帝国建立
+  info: 巴布尔帕尼帕特战役建莫卧儿帝国·阿克巴宗教宽容·泰姬陵·印度伊斯兰文化巅峰
+  region: south_asia
+  source: Romila Thapar《印度史》/ A.L.Basham《印度文化史》
+- y: 1658
+  lat: 28.6
+  lng: 77.2
+  z: 6
+  label: 奥朗则布·莫卧儿极盛转衰
+  info: 莫卧儿版图最大·宗教高压政策·马拉塔起义·帝国开始瓦解
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1757
+  lat: 23.0
+  lng: 88.0
+  z: 6
+  label: 普拉西战役·英国东印度公司
+  info: 克莱武击败孟加拉纳瓦布·东印度公司控制孟加拉·英国殖民印度之始
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1858
+  lat: 28.6
+  lng: 77.2
+  z: 5
+  label: 印度民族大起义·英王直辖
+  info: 印度雇佣军反英起义·莫卧儿帝国终结·英国政府直接统治·维多利亚女皇称印度皇帝
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1885
+  lat: 28.6
+  lng: 77.2
+  z: 5
+  label: 印度国民大会党成立
+  info: 国大党成立·印度独立运动组织化·后经提拉克→甘地→尼赫鲁三代领导
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1947
+  lat: 28.6
+  lng: 77.2
+  z: 5
+  label: 印巴分治·印度独立
+  info: 印度巴基斯坦分治独立·甘地非暴力运动·尼赫鲁首任总理·世界最大民主国家诞生
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1971
+  lat: 23.7
+  lng: 90.4
+  z: 5
+  label: 孟加拉国独立
+  info: 东巴基斯坦经血战独立为孟加拉国·南亚格局重塑
+  region: south_asia
+  source: Romila Thapar《印度史》
+- y: 1991
+  lat: 28.6
+  lng: 77.2
+  z: 5
+  label: 印度经济改革
+  info: 拉奥政府开放经济·印度融入全球化·IT产业崛起·南亚大国兴起
+  region: south_asia
+  source: Romila Thapar《印度史》

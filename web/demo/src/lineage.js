@@ -956,48 +956,112 @@ function drawRelationGraph(pid){
 function _classifyPerson(p,traj){
   var li=p.li||'',tp=p.tp||'',n=p.n||'';
   var tname=traj?traj.name||'':'';
-  // Check explicit group field in trajectory data first
+  // Explicit group field in trajectory data overrides everything
   if(traj&&traj.group)return traj.group;
 
-  // Data-driven: use lineage/type from knowledge graph
-  // 华严宗各支系
-  if(/华严/.test(li)||li==='李通玄系'||li==='华严宗'||li==='华严宗远祖')return '🪷 华严宗';
-  if(li==='贤首宗高原法系'||li==='智光系')return '🪷 华严宗·近现代传承';
+  // ── 华严宗·内部支系 ──
+  if(li==='华严宗'||li==='华严五祖'||li==='华严宗远祖')return '🪷 华严宗·五祖时代';
+  if(li==='李通玄系')return '🪷 华严宗·李通玄系';
+  if(li==='贤首宗高原法系'||li==='智光系')return '🪷 华严宗·高原法系';
   if(li==='华严莲社')return '🪷 华严宗·华严莲社';
-  if(li==='月霞系'||li==='慈舟系')return '🪷 华严宗·月霞慈舟系';
+  if(li==='月霞系')return '🪷 华严宗·月霞系';
+  if(li==='慈舟系')return '🪷 华严宗·慈舟系';
   if(li==='日本华严')return '🪷 华严宗·日本';
   if(li==='高丽华严')return '🪷 华严宗·朝鲜半岛';
+  if(/华严/.test(li))return '🪷 华严宗';
 
-  // 汉传佛教宗派
-  if(li==='临济宗')return '☸ 禅宗';
-  if(tp==='practitioner'&&/禅|慧能|弘忍|神秀/.test(n+tname))return '☸ 禅宗';
+  // ── 禅宗·内部支系 ──
+  if(li==='临济宗')return '☸ 禅宗·临济宗';
+  if(li==='曹洞宗')return '☸ 禅宗·曹洞宗';
+  if(li==='云门宗')return '☸ 禅宗·云门宗';
+  if(li==='法眼宗')return '☸ 禅宗·法眼宗';
+  if(li==='沩仰宗')return '☸ 禅宗·沩仰宗';
+  if(li==='黄龙派')return '☸ 禅宗·黄龙派';
+  if(li==='杨岐派')return '☸ 禅宗·杨岐派';
+  if(tp==='practitioner'&&/禅|慧能|弘忍|神秀|达摩|马祖/.test(n+tname))return '☸ 禅宗';
 
-  // 译师与求法僧
-  if(tp==='translator'||li==='译师'||li==='求法僧')return '📖 译师·求法僧';
+  // ── 天台宗 ──
+  if(li==='天台宗')return '☸ 天台宗';
+  if(/天台|智顗|湛然|知礼/.test(n+tname))return '☸ 天台宗';
 
-  // 印度源流
-  if(li==='印度源流'||li==='大乘瑜伽行法')return '🕉 印度佛教·瑜伽';
+  // ── 净土宗 ──
+  if(li==='净土宗')return '☸ 净土宗';
+  if(/净土|善导|印光|慧远|莲池|昙鸾|道绰|省庵/.test(n+tname))return '☸ 净土宗';
 
-  // 学者
+  // ── 法相宗/唯识宗 ──
+  if(li==='法相宗'||li==='唯识宗')return '☸ 法相宗·唯识';
+  if(/法相|唯识|窥基|圆测/.test(n+tname))return '☸ 法相宗·唯识';
+
+  // ── 三论宗 ──
+  if(li==='三论宗')return '☸ 三论宗';
+  if(/三论|吉藏|僧肇/.test(n+tname))return '☸ 三论宗';
+
+  // ── 律宗 ──
+  if(li==='律宗'||li==='南山律宗')return '☸ 律宗';
+  if(/律宗|道宣|鉴真|弘一|元照/.test(n+tname))return '☸ 律宗';
+
+  // ── 密宗/唐密 ──
+  if(li==='密宗'||li==='唐密')return '☸ 密宗·唐密';
+  if(/密宗|善无畏|金刚智|不空|一行|慧果/.test(n+tname))return '☸ 密宗·唐密';
+
+  // ── 译师·求法僧 ──
+  if(tp==='translator'||li==='译师')return '📖 译师';
+  if(li==='求法僧'||/法显|义净|玄奘/.test(n+tname))return '🚶 求法僧';
+
+  // ── 藏传佛教·内部支系 ──
+  if(li==='藏传佛教·格鲁派'||li==='格鲁派')return '🔴 藏传·格鲁派';
+  if(li==='藏传佛教·萨迦派'||li==='萨迦派')return '🔴 藏传·萨迦派';
+  if(li==='藏传佛教·宁玛派'||li==='宁玛派')return '🔴 藏传·宁玛派';
+  if(li==='藏传佛教·噶举派'||li==='噶举派')return '🔴 藏传·噶举派';
+  if(/宗喀巴|达赖|班禅|阿底峡|莲花生/.test(n+tname))return '🔴 藏传佛教';
+  if(li==='藏传佛教'||/藏传/.test(li))return '🔴 藏传佛教';
+
+  // ── 印度源流 ──
+  if(li==='印度源流'||li==='大乘瑜伽行法')return '🕉 印度佛教·瑜伽行';
+  if(/印度|瑜伽|拉克鲁希|巴布基|普拉梵|克利普|胜师子|马鸣|龙树/.test(n+tname))return '🕉 印度佛教';
+
+  // ── 南传佛教 ──
+  if(li==='上座部'||li==='南传佛教')return '🟡 南传佛教';
+
+  // ── 学者·近现代 ──
   if(tp==='scholar'||li==='当代学者')return '🎓 近现代学者';
 
-  // 参考线
-  if(li==='参考线'||li==='临济宗'&&tp==='practitioner')return '🏛 近现代高僧';
+  // ── 汉传其他宗派·近现代高僧 ──
+  if(li==='参考线')return '🏛 近现代高僧大德';
+  if(/虚云|太虚|印光|弘一|印顺|梦参|圆瑛|谛闲|倓虚/.test(n+tname))return '🏛 近现代高僧大德';
+  if(/安世高|道安|僧肇|道生|僧祐|永明|大慧|憨山|蕅益/.test(n+tname))return '☸ 汉传高僧';
 
-  // Fallback: classify trajectory-only persons by name patterns
-  var full=n+tname;
-  if(/天台|智顗|知礼/.test(full))return '☸ 天台宗';
-  if(/净土|善导|印光|慧远|莲池/.test(full))return '☸ 净土宗';
-  if(/法相|窥基/.test(full))return '☸ 法相宗';
-  if(/三论|吉藏/.test(full))return '☸ 三论宗';
-  if(/律宗|道宣|弘一/.test(full))return '☸ 律宗';
-  if(/藏|宗喀巴|阿底峡|寂天/.test(full))return '🔴 藏传佛教';
-  if(/印度|瑜伽|拉克鲁希|巴布基|普拉梵|克利普|胜师子/.test(full))return '🕉 印度佛教·瑜伽';
-  if(/虚云|太虚|印光|弘一|印顺|梦参/.test(full))return '🏛 近现代高僧';
-  if(/安世高|道安|僧肇|道生|僧祐|永明|大慧|憨山|蕅益/.test(full))return '☸ 汉传高僧';
-  if(/老子|庄子|列子|张道陵|王重阳|关尹子|葛洪|寇谦之|吕洞宾|陈抟|丘处机|张三丰/.test(full))return '☯ 道家';
-  if(/孔子|孟子|荀子|董仲舒|朱熹|王阳明|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|颜回|子思|司马迁|班昭|郑玄|顾炎武|黄宗羲|王夫之/.test(full))return '📜 儒家';
-  if(/耶稣|穆罕默德|柏拉图|亚里士多德|奥古斯丁|阿奎那|罗摩克里希纳|辨喜|奥罗宾多|拉玛那/.test(full))return '🔮 西方·印度近代';
+  // ── 儒家 ──
+  if(li==='儒家'||/儒家/.test(li))return '📜 儒家';
+  if(/孔子|孟子|荀子|董仲舒|朱熹|王阳明|陆九渊|程颢|程颐|周敦颐|张载|邵雍|韩愈|柳宗元|欧阳修|苏轼|王安石|苏洵|苏辙|曾巩|颜回|子思|司马迁|班昭|郑玄|顾炎武|黄宗羲|王夫之/.test(n+tname))return '📜 儒家';
+
+  // ── 道家·道教 ──
+  if(li==='道家'||li==='道教'||/道家/.test(li))return '☯ 道家·道教';
+  if(/老子|庄子|列子|张道陵|王重阳|关尹子|葛洪|寇谦之|吕洞宾|陈抟|丘处机|张三丰|陶弘景/.test(n+tname))return '☯ 道家·道教';
+
+  // ── 西方哲学·宗教 ──
+  if(li==='西方哲学'||li==='西方')return '🔮 西方哲学·宗教';
+  if(/耶稣|穆罕默德|柏拉图|亚里士多德|奥古斯丁|阿奎那|康德|黑格尔/.test(n+tname))return '🔮 西方哲学·宗教';
+
+  // ── 伊斯兰教 ──
+  if(li==='伊斯兰教'||/伊斯兰/.test(li))return '☪ 伊斯兰教';
+  if(/鲁米|伊本|安萨里|花拉子密/.test(n+tname))return '☪ 伊斯兰教';
+
+  // ── 印度教·耆那教 ──
+  if(li==='印度教'||li==='耆那教')return '🕉 印度教·耆那教';
+  if(/罗摩克里希纳|辨喜|奥罗宾多|拉玛那/.test(n+tname))return '🕉 印度教·近代';
+
+  // ── 日本佛教(非华严) ──
+  if(li==='日本天台宗')return '☸ 日本·天台宗';
+  if(li==='日本真言宗')return '☸ 日本·真言宗';
+  if(li==='日本禅宗'||li==='日本临济宗'||li==='日本曹洞宗')return '☸ 日本·禅宗';
+  if(li==='日本净土宗'||li==='日本净土真宗')return '☸ 日本·净土宗';
+  if(li==='日本日莲宗')return '☸ 日本·日莲宗';
+  if(/空海|最澄|道元|荣西|日莲|亲鸾|法然/.test(n+tname))return '☸ 日本佛教';
+
+  // ── 朝鲜佛教(非华严) ──
+  if(li==='朝鲜佛教'||li==='韩国佛教')return '☸ 朝鲜佛教';
+  if(/义天|均如|义湘/.test(n+tname))return '☸ 朝鲜佛教';
 
   return '📌 其他';
 }
@@ -1163,11 +1227,14 @@ function updateDynastyVisibility(year){
 }
 var _MINI_REGIONS=[
   {id:'huayan',label:'☸ 汉传诸宗',key:'han_buddhist_schools',color:'#c46b5d',center:[32,110],zoom:4},
-  {id:'chinese',label:'📜 儒道传承',key:'east_asian_thought',color:'#b8863c',center:[35,115],zoom:4},
+  {id:'chinese',label:'📜 东亚儒道',key:'east_asian_thought',color:'#b8863c',center:[37,120],zoom:4},
+  {id:'south_asia',label:'🕉 南亚次大陆',key:'south_asia_timeline',color:'#e08040',center:[22,80],zoom:4},
+  {id:'southeast_asia',label:'🛕 东南亚',key:'southeast_asia_timeline',color:'#4a9e8e',center:[12,106],zoom:4},
   {id:'mena',label:'🌙 中东·中亚·北非',key:'mena_timeline',color:'#d4784c',center:[30,40],zoom:3},
-  {id:'west',label:'🌍 西方文明',key:'western_timeline',color:'#5e8b9e',center:[45,5],zoom:3},
+  {id:'west',label:'🏛 欧洲',key:'western_timeline',color:'#5e8b9e',center:[48,10],zoom:3},
   {id:'africa',label:'🌴 撒哈拉以南非洲',key:'africa_timeline',color:'#7d9a6e',center:[0,25],zoom:3},
-  {id:'americas',label:'🦅 美洲大陆',key:'americas_timeline',color:'#c8893e',center:[10,-80],zoom:3},
+  {id:'north_america',label:'🦅 北美·中美',key:'north_america_timeline',color:'#d48476',center:[35,-100],zoom:3},
+  {id:'south_america',label:'🦜 南美洲',key:'south_america_timeline',color:'#c8893e',center:[-12,-65],zoom:3},
   {id:'oceania',label:'🏝 大洋洲',key:'oceania_timeline',color:'#8b7a9e',center:[-20,160],zoom:3}
 ];
 function _getEvents(data){

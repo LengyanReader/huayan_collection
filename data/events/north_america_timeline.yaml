@@ -1,0 +1,161 @@
+events:
+- y: -1500
+  lat: 18.0
+  lng: -95.0
+  z: 5
+  label: 奥尔梅克文明·中美洲母文明
+  info: 墨西哥湾沿岸奥尔梅克文明·巨石头像·中美洲文字历法宗教之源
+  region: north_america
+  source: Alan Brinkley《美国史》/ Bethell《剑桥拉丁美洲史》
+- y: 250
+  lat: 17.0
+  lng: -90.0
+  z: 5
+  label: 玛雅古典期开始
+  info: 蒂卡尔·帕伦克·科潘城邦兴起·玛雅文字历法天文学·中美洲最辉煌文明
+  region: north_america
+  source: Alan Brinkley《美国史》/ Bethell《剑桥拉丁美洲史》
+- y: 900
+  lat: 20.7
+  lng: -88.5
+  z: 5
+  label: 奇琴伊察·托尔特克影响
+  info: 尤卡坦奇琴伊察兴起·库库尔坎金字塔·玛雅托尔特克文化融合
+  region: north_america
+  source: Alan Brinkley《美国史》/ Bethell《剑桥拉丁美洲史》
+- y: 1100
+  lat: 38.6
+  lng: -90.1
+  z: 5
+  label: 卡霍基亚土墩·密西西比文明
+  info: 密西西比河畔卡霍基亚·僧侣墩·北美最大前哥伦布城市·人口逾万
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1325
+  lat: 19.4
+  lng: -99.1
+  z: 6
+  label: 阿兹特克·特诺奇蒂特兰建城
+  info: 墨西加人建特诺奇蒂特兰城·湖上都市·阿兹特克帝国形成·人口逾20万
+  region: north_america
+  source: Alan Brinkley《美国史》/ Bethell《剑桥拉丁美洲史》
+- y: 1492
+  lat: 24.0
+  lng: -74.0
+  z: 5
+  label: 哥伦布到达巴哈马·新旧大陆相遇
+  info: 哥伦布首航抵巴哈马·加勒比殖民开始·大航海时代新旧大陆相会
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1519
+  lat: 19.4
+  lng: -99.1
+  z: 6
+  label: 科尔特斯征服阿兹特克帝国
+  info: 埃尔南·科尔特斯登陆·蒙特祖马二世遇害·西班牙殖民墨西哥
+  region: north_america
+  source: Alan Brinkley《美国史》/ Bethell《剑桥拉丁美洲史》
+- y: 1607
+  lat: 37.0
+  lng: -76.0
+  z: 5
+  label: 詹姆斯敦·英国首个美洲殖民地
+  info: 弗吉尼亚詹姆斯敦建立·英国在北美首个永久殖民地·烟草种植经济
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1620
+  lat: 42.0
+  lng: -70.0
+  z: 6
+  label: 五月花号·清教徒抵达新英格兰
+  info: 五月花号抵普利茅斯·《五月花公约》·清教徒移民·北美自治传统开端
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1776
+  lat: 39.9
+  lng: -75.1
+  z: 6
+  label: 美国独立宣言
+  info: 费城独立宣言·十三州脱离英国·杰斐逊·富兰克林·现代民主革命
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1787
+  lat: 39.9
+  lng: -75.1
+  z: 6
+  label: 美国宪法·三权分立
+  info: 费城制宪会议·世界首部成文宪法·联邦制·麦迪逊·汉密尔顿
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1789
+  lat: 38.9
+  lng: -77.0
+  z: 6
+  label: 华盛顿就任首任总统
+  info: 乔治·华盛顿就任美国首任总统·联邦政府成立·"合众为一"
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1804
+  lat: 19.0
+  lng: -72.0
+  z: 5
+  label: 海地独立·首个黑人共和国
+  info: 杜桑·卢维杜尔领导奴隶革命·海地成为拉美首个独立国家·首个黑人共和国
+  region: north_america
+  source: Bethell《剑桥拉丁美洲史》
+- y: 1810
+  lat: 19.4
+  lng: -99.1
+  z: 5
+  label: 墨西哥独立运动
+  info: 伊达尔戈神父敲响独立钟声·墨西哥脱离西班牙·拉丁美洲独立浪潮
+  region: north_america
+  source: Bethell《剑桥拉丁美洲史》
+- y: 1865
+  lat: 38.9
+  lng: -77.0
+  z: 5
+  label: 美国南北战争结束·废奴
+  info: 南方邦联投降·林肯遇刺·第十三修正案废除奴隶制·林肯葛底斯堡演说
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1867
+  lat: 45.4
+  lng: -75.7
+  z: 5
+  label: 加拿大自治领成立
+  info: 英属北美法案·安大略魁北克新斯科舍新不伦瑞克组成联邦·加拿大建国
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1914
+  lat: 9.0
+  lng: -79.0
+  z: 5
+  label: 巴拿马运河开通
+  info: 连接大西洋与太平洋·全球航运革命·美国工程实力的象征
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1959
+  lat: 23.0
+  lng: -82.0
+  z: 5
+  label: 古巴革命·卡斯特罗
+  info: 菲德尔·卡斯特罗推翻巴蒂斯塔·社会主义政权建立·冷战拉丁美洲转折
+  region: north_america
+  source: Bethell《剑桥拉丁美洲史》
+- y: 1964
+  lat: 38.9
+  lng: -77.0
+  z: 5
+  label: 美国民权法案·马丁·路德·金
+  info: 约翰逊签署民权法案·种族隔离制度终结·"我有一个梦想"·美国社会巨变
+  region: north_america
+  source: Alan Brinkley《美国史》
+- y: 1994
+  lat: 19.4
+  lng: -99.1
+  z: 5
+  label: 北美自由贸易协定(NAFTA)
+  info: 美加墨签署NAFTA·北美经济一体化·全球最大自由贸易区之一
+  region: north_america
+  source: Alan Brinkley《美国史》

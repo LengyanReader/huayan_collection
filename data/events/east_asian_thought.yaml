@@ -67,10 +67,66 @@ events:
   lat: 34.7
   lng: 135.8
   z: 5
-  label: 儒学传入日本
-  info: 圣德太子派遣遣隋使·儒学经典传入日本·十七条宪法融合儒佛
+  label: 圣德太子·儒学佛教传入日本
+  info: 圣德太子遣隋使·儒学经典正式传入日本·十七条宪法融合儒佛思想
   region: east_asia
-  source: 冯友兰《中国哲学史》/ 陈来《宋明理学》
+  source: 冯友兰《中国哲学史》
+- y: 710
+  lat: 34.7
+  lng: 135.8
+  z: 5
+  label: 奈良时代·唐文化大规模移植
+  info: 平城京仿长安而建·《古事记》《日本书纪》编纂·律令制国家确立
+  region: east_asia
+  source: 日本史
+- y: 794
+  lat: 35.0
+  lng: 135.8
+  z: 5
+  label: 平安时代·日本国风文化
+  info: 迁都平安京(京都)·假名文字创立·《源氏物语》·日本文化独立发展
+  region: east_asia
+  source: 日本史
+- y: 918
+  lat: 37.0
+  lng: 127.0
+  z: 5
+  label: 高丽王朝统一朝鲜半岛
+  info: 王建建立高丽·佛教为国教·高丽大藏经雕版·科举制度引入
+  region: east_asia
+  source: 韩国史
+- y: 1392
+  lat: 37.5
+  lng: 127.0
+  z: 5
+  label: 朝鲜王朝建立·理学立国
+  info: 李成桂建朝鲜王朝·以朱子学为国家统治理念·抑佛崇儒·训民正音(1443)
+  region: east_asia
+  source: 韩国史
+- y: 1443
+  lat: 37.5
+  lng: 127.0
+  z: 6
+  label: 世宗大王创制训民正音(韩文)
+  info: 朝鲜世宗创制韩文·世界最科学的文字之一·打破汉字垄断文化
+  region: east_asia
+  source: 《朝鲜王朝实录》
+- y: 1868
+  lat: 35.7
+  lng: 139.7
+  z: 6
+  label: 明治维新·日本现代化
+  info: 德川幕府终结·明治天皇迁都东京·"富国强兵""文明开化"·日本急速现代化
+  region: east_asia
+  source: 日本史
+- y: 1910
+  lat: 37.5
+  lng: 127.0
+  z: 5
+  label: 日本吞并朝鲜·殖民时代
+  info: 日韩合并条约·朝鲜亡国·殖民统治35年·韩国独立运动兴起
+  region: east_asia
+  source: 韩国史
 - y: 1017
   lat: 27.0
   lng: 112.0
