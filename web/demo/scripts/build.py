@@ -235,7 +235,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 var GAP = {{}};
 var HEART_ARTICLES = [];
 var selectedId = null, selectedId2 = null, hoveredId = null, searchQuery = "";
-var map = null, mapMain = null, mapMini = null;
+var map = null, mapMain = null;
 var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
          minX:100, maxX:2060, rows:[], hitRects:[],
          drag:false, lastX:0}};

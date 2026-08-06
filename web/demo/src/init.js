@@ -284,7 +284,7 @@ if(resizeHandle&&sidePanel){
     var newW=startW+(startX-e.clientX);
     newW=Math.max(180,Math.min(600,newW));
     sidePanel.style.width=newW+'px';
-    resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();if(mapMini)mapMini.invalidateSize();
+    resizeTL();drawTL(selectedId);if(mapMain)mapMain.invalidateSize();
   });
   document.addEventListener('mouseup',function(){if(resizing){resizing=false;resizeHandle.classList.remove('active');}});
 }
