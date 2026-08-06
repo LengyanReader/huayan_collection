@@ -603,11 +603,16 @@ def main():
     # ── Build Tab5: Cosmology (restructured) ──
     sidebar_co = '''
     <h3>🪷 世主妙严</h3>
-    <a href="#" class="nav-link active" onclick="document.getElementById('cosmo-canvas').scrollIntoView({behavior:'smooth'});return false">🌊 华藏世界海</a>
-    <a href="#" class="nav-link" onclick="document.getElementById('cosmo-tower').scrollIntoView({behavior:'smooth'});return false">📐 三界诸天</a>
-    <a href="#" class="nav-link">🎨 艺术珍品</a>
-    <a href="#" class="nav-link">🎵 梵呗字母</a>
-    <a href="#" class="nav-link">🗺 古迹巡礼</a>
+    <a href="#co-mandala" class="nav-link active">🌊 华藏世界海</a>
+    <a href="#" class="sub-link" onclick="document.getElementById('co-mandala').scrollIntoView({behavior:'smooth'});return false">　· 二十重世界曼荼罗</a>
+    <a href="#co-tower" class="nav-link">📐 三界诸天</a>
+    <a href="#" class="sub-link" onclick="document.getElementById('co-tower').scrollIntoView({behavior:'smooth'});return false">　· 二十八天修行对应图</a>
+    <a href="#co-art" class="nav-link">🎨 华严艺术珍品</a>
+    <a href="#" class="sub-link" onclick="document.getElementById('co-art').scrollIntoView({behavior:'smooth'});return false">　· 敦煌·造像·壁画</a>
+    <a href="#co-chant" class="nav-link">🎵 梵呗·华严字母</a>
+    <a href="#" class="sub-link" onclick="document.getElementById('co-chant').scrollIntoView({behavior:'smooth'});return false">　· 四十二字母·视频</a>
+    <a href="#co-sites" class="nav-link">🗺 华严古迹巡礼</a>
+    <a href="#" class="sub-link" onclick="document.getElementById('co-sites').scrollIntoView({behavior:'smooth'});return false">　· 六大圣地·参考书目</a>
     '''
     co_html = build_simple_tab_page('世主妙严 · 华藏世界海', 'cosmology', sidebar_co, 'if(typeof renderCosmology==="function")renderCosmology();')
     co_path = TABS_OUT / 'cosmology.html'

@@ -17,17 +17,17 @@ var COSMO_LAYERS=[
 function renderCosmology(){
   var cv=document.getElementById("cosmology-view");if(!cv)return;
   var h='<style>.cm-btn{padding:3px 10px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em}.cm-btn.on{background:var(--gold);color:#fff}#cosmo-info{display:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:8px;font-size:0.82em;line-height:1.7}</style>';
-  h+='<div class=section style=border-left:4px solid var(--gold)><h2>🪷 世主妙严 · 华藏世界海</h2><p style=font-size:0.82em;color:var(--text2)>据《华严经·华藏世界品》(T10n0279卷八~十)。十重风轮持香水海,海中出大莲华,二十重世界层层叠绕。毗卢遮那佛法身遍满。源: CBETA T10n0279</p></div>';
+  h+='<div class=section id=co-mandala style=border-left:4px solid var(--gold)><h2>🪷 世主妙严 · 华藏世界海</h2><p style=font-size:0.82em;color:var(--text2)>据《华严经·华藏世界品》(T10n0279卷八~十)。十重风轮持香水海,海中出大莲华,二十重世界层层叠绕。毗卢遮那佛法身遍满。源: CBETA T10n0279</p></div>';
   h+='<button class="cm-btn on" onclick="COSMO.net=!COSMO.net;this.classList.toggle(\'on\',COSMO.net);drawCosmo()">🕸 因陀罗网</button> ';
   h+='<button class="cm-btn" onclick="COSMO.all=!COSMO.all;this.classList.toggle(\'on\',COSMO.all);drawCosmo()">📋 全部层名</button> ';
   h+='<span style=font-size:0.7em;color:var(--text2)>滚轮缩放 | 点击世界层查看详情 | 金色=娑婆世界</span>';
   h+='<div style=display:flex;gap:16px;flex-wrap:wrap><div style=flex:1.5;min-width:380px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-canvas style=max-width:100%></canvas></div><div style=flex:1;min-width:200px><div id=cosmo-info></div><div class=section style=margin-top:8px><h3 style=color:var(--gold)>📐 结构(从下至上)</h3><p style=font-size:0.78em;line-height:1.9>⑩~① 十重风轮<br>无边妙华光香水海<br>一切香摩尼宝庄严大莲华<br>第1~20重世界<br>★第13重: 娑婆世界(我们所在)<br>一一世界有微尘数佛刹围绕</p></div></div></div>';
   // ── 三界诸天图 ──
-  h+="<div class=section style=margin-top:16px><h2>📐 三界诸天·修行对应图 — 海云继梦法师修行体系</h2><p style=font-size:0.78em;color:var(--text2)>据大华严寺官网「华严禅观全程一览表」及海云法师《四十华严讲记》《华严禅行法》系列。二十八天对应<b>三阶修行次第</b>(前行/正行/妙行) + <b>十信位果位</b>(初信~入法界) + <b>禅定进路</b>(四天王定→狮子频申三昧)。源: 大华严寺官网 + fjdh.cn讲记逐字稿</p>"
+  h+="<div class=section id=co-tower style=margin-top:16px><h2>📐 三界诸天·修行对应图 — 海云继梦法师修行体系</h2><p style=font-size:0.78em;color:var(--text2)>据大华严寺官网「华严禅观全程一览表」及海云法师《四十华严讲记》《华严禅行法》系列。二十八天对应<b>三阶修行次第</b>(前行/正行/妙行) + <b>十信位果位</b>(初信~入法界) + <b>禅定进路</b>(四天王定→狮子频申三昧)。源: 大华严寺官网 + fjdh.cn讲记逐字稿</p>"
   h+='<div style=text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-tower style=max-width:100%></canvas></div></div>';
 
   // ═══ 华严艺术珍品（折叠目录+缩略图） ═══
-  h+='<div class=section><h2>🎨 华严艺术珍品（点击展开·含缩略图快照）</h2>';
+  h+='<div class=section id=co-art><h2>🎨 华严艺术珍品（点击展开·含缩略图快照）</h2>';
 
   // ── 1. 七处九会 ──
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🏛 敦煌·华严经七处九会绢画(五代·吉美博物馆藏)</span><div class=body>";
@@ -100,7 +100,7 @@ function renderCosmology(){
   h+='</div>';
 
   // ═══ 华严古迹巡礼 + 视频 + 参考（折叠） ═══
-  h+='<div class=section><h2>🗺 华严古迹巡礼 · 🎬 多媒体 · 📚 参考（折叠目录）</h2>';
+  h+='<div class=section id=co-sites><h2>🗺 华严古迹巡礼 · 🎬 多媒体 · 📚 参考（折叠目录）</h2>';
 
   h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🗺 华严古迹巡礼(6处)</span><div class=body>";
   h+='<table class=v-table style=font-size:0.7em><tr><th>古迹</th><th>地点</th><th>朝代</th><th>说明</th><th>链接</th></tr>';
@@ -126,7 +126,7 @@ function renderCosmology(){
   h+="</div></div>";
   h+='</div>';
   // ═══ 梵呗·华严字母 ═══
-  h+='<div class=section><h2>🎵 梵呗·华严四十二字母</h2>';
+  h+='<div class=section id=co-chant><h2>🎵 梵呗·华严四十二字母</h2>';
   h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>华严四十二字母出自《华严经·入法界品》(T10n0279),善财童子参访第四十四位善知识——<b>众艺童子</b>所传授的「字智法门」。依音节分<b>一合</b>(单字33个)·<b>二合</b>(双字拼合8个)·<b>三合</b>(三字拼合1个)。因字有语、因语有名、因名有义,唱诵可获殊胜功德。佛光山梵呗团版为最完整权威版本。</p>";
 
   // B站嵌入
