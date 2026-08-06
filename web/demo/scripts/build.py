@@ -117,7 +117,8 @@ PAGE_TOP = '''<!DOCTYPE html>
 <body>
 <header id="header">
   <a href="../index.html" class="back-link">&larr; 总览</a>
-  <h1>{title} <span style=font-size:0.6em;color:var(--text2)>v20260806</span></h1>
+  <h1>{title}</h1>
+  <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar">
@@ -469,7 +470,8 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 <body>
 <header id="header">
   <a href="../index.html" class="back-link">&larr; 总览</a>
-  <h1>{title} <span style=font-size:0.6em;color:var(--text2)>v20260806</span></h1>
+  <h1>{title}</h1>
+  <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar">

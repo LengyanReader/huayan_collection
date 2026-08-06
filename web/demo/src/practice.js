@@ -420,7 +420,7 @@ function renderPractice(){
 
   // ── 完整出处 ──
 
-  h+="<div id=med-heart class=pv-section style=display:none>";
+  h+="<div id=med-heart class=section>";
   h+="<style>"
     +".h3col{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}"
     +".h3col-l{flex:1.4;min-width:300px;background:#fefdf9;border:1px solid var(--line);border-radius:10px;padding:16px 20px;font-size:.84em;line-height:2;max-height:560px;overflow-y:auto;color:#3d3427;font-family:'Noto Serif SC','Songti SC','SimSun',serif}"
@@ -531,7 +531,7 @@ function renderPractice(){
     h+="<p style=color:var(--text2)>⚠ 实修心要文章数据未加载(HEART_ARTICLES为空)。请检查build.py是否正确读取docs/hy_refs/wechat/目录。</p>";
   }
 
-  h+="</div>"; // close pv-heart
+  h+="</div>"; // close med-heart
   h+="</div>"; // close pv-meditation
 
   // ═══════════════════════════════════════════
