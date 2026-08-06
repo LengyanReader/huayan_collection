@@ -530,7 +530,7 @@ function initMap(){
     var vr=L.rectangle([[20,70],[45,130]],{color:'#b8863c',weight:1.5,fillOpacity:0,dashArray:'3,3'}).addTo(mapMini);
     mapMain.on('moveend',function(){var b=mapMain.getBounds();vr.setBounds(b);});
   }else{
-    mapMain.invalidateSize();mapMini.invalidateSize();
+    mapMain.invalidateSize();mapMini.invalidateSize();if(mapWest)mapWest.invalidateSize();
   }
   // Update terrain layer state after invalidateSize
   if(miniTerrainOn && miniTerrainLayer){if(!mapMini.hasLayer(miniTerrainLayer))miniTerrainLayer.addTo(mapMini);}
@@ -551,6 +551,7 @@ function initMap(){
         });
       }
     }
+    setTimeout(function(){if(mapWest)mapWest.invalidateSize();},150);
   }
 }
 function getMainMap(){return mapMain;}
@@ -655,7 +656,7 @@ function toggleAncient(){
   var btn=document.getElementById('ancient-btn');
   if(ancientMode){
     if(cm)cm.classList.add('map-ancient');
-    var miniC=document.getElementById('map-mini-wrap');if(miniC)miniC.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
+    var miniC=document.querySelector('#map-mini').parentElement;if(miniC)miniC.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
     if(btn){btn.style.background='#b8863c';btn.style.color='#fff';btn.style.borderColor='#b8863c';btn.textContent='🏯 今';}
     // Add terrain overlay to BOTH main + mini maps
     if(!terrainLayer){terrainLayer=terrainTileLayer();terrainLayer.addTo(mapMain);}else{terrainLayer.addTo(mapMain);}
@@ -696,7 +697,7 @@ function toggleAncient(){
     });
   }else{
     if(cm)cm.classList.remove('map-ancient');
-    var miniD=document.getElementById('map-mini-wrap');if(miniD)miniD.style.filter='';
+    var miniD=document.querySelector('#map-mini').parentElement;if(miniD)miniD.style.filter='';
     if(btn){btn.style.background='';btn.style.color='';btn.style.borderColor='';btn.textContent='🏯 古今';}
     // Remove terrain from both maps (unless mini terrain is independently on)
     if(terrainLayer){mapMain.removeLayer(terrainLayer);}
@@ -1253,8 +1254,10 @@ function updateWesternMap(year){
     _westMarker.setLatLng([best.lat,best.lng]);
   }
   // Show era label in the map corner
-  var lblDiv=document.querySelector('#map-west-wrap div[style*=\"pointer-events:none\"]');
+  var lblDivParent=(document.querySelector('#map-west')||{}).parentElement;
+  var lblDiv=lblDivParent?lblDivParent.querySelector('div[style*=\"pointer-events:none\"]'):null;
   if(lblDiv)lblDiv.innerHTML='🌍 '+best.label+' · '+best.y+'年';
+  mapWest.invalidateSize();
 }
 
 // ═══ LAYER TOGGLE ═══
@@ -1597,9 +1600,9 @@ function stopAnim(){
   var pg=document.getElementById('anim-progress');if(pg)pg.value=-600;
   var sl=document.getElementById('speed-label');if(sl)sl.textContent='1x';
   [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
-  animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null; var mw2=document.getElementById("map-west-wrap");if(mw2)mw2.style.display="none";
+  animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
   if(mapMain)mapMain.off('click');
-  var miniC=document.getElementById('map-mini-wrap');if(miniC)miniC.style.filter='';
+  var miniC=document.querySelector('#map-mini').parentElement;if(miniC)miniC.style.filter='';
   tl.minX=100;tl.maxX=2060;tl.ox=20;tl.scale=(tl.W-40)/(tl.maxX-tl.minX);drawTL(null);
 }
 function animTick(){
@@ -1681,9 +1684,9 @@ function toggleAnim(){
     
     var sb2=document.getElementById('anim-status');if(sb2){sb2.style.opacity='0';sb2.innerHTML='';}
     [animRouteLineM,animRouteMarkerM,animRouteLineU,animRouteMarkerU].forEach(function(l){if(l&&mapMain)mapMain.removeLayer(l);if(l&&mapMini)mapMini.removeLayer(l);});
-    animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null; var mw2=document.getElementById("map-west-wrap");if(mw2)mw2.style.display="none";
+    animRouteLineM=animRouteMarkerM=animRouteLineU=animRouteMarkerU=null;
     if(mapMain)mapMain.off('click');
-    var miniC2=document.getElementById('map-mini-wrap');if(miniC2)miniC2.style.filter='';
+    var miniC2=document.querySelector('#map-mini').parentElement;if(miniC2)miniC2.style.filter='';
     if(speedLabel)speedLabel.textContent='1x';
     transLines.forEach(function(l){l.setStyle({opacity:0.35,weight:1.5});});
     return;
@@ -1724,7 +1727,7 @@ function toggleAnim(){
     }
     animRouteMarkerU=L.circleMarker([28,78],{radius:10,fillColor:'#b8863c',color:'#ffe066',weight:2,fillOpacity:0.9}).addTo(mapMini);
     // Apply ancient mode to minimap tiles too
-    var miniContainer=document.getElementById('map-mini-wrap');
+    var miniContainer=document.querySelector('#map-mini').parentElement;
     var tlTab=document.getElementById('tab-lineage');
     if(miniContainer&&tlTab&&tlTab.classList.contains('map-ancient'))miniContainer.style.filter='sepia(0.6) hue-rotate(-15deg) saturate(0.4) brightness(0.85)';
   }
