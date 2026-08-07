@@ -1,0 +1,619 @@
+# ═══ 华严宗部数字化梳理项目 — 参考文献知识库 ═══
+# Bibliography & Reference Knowledge Base
+#
+# 维护说明:
+#   - 每条文献有唯一 id (kebab-case), 其他 YAML 通过 id 引用
+#   - 新增文献: 按 type 分组, 遵循已有字段结构
+#   - 原语优先: quote_original 保留源语言, 附加 zh/en 翻译
+#   - 链接: 至少填 official; goodreads/douban/scholar 有则填入
+#   - tags: [spirit, frontier, lineage, gap, jiaoxing, cosmology]
+#   - 最后更新: 2026-08-08
+
+# ── 经典与佛典 (Sutras & Classics) ──
+sutras:
+  - id: avatamsaka-80
+    title_zh: 大方广佛华严经（八十华严）
+    title_sa: Buddhāvataṃsaka Sūtra (महावैपुल्यबुद्धावतंसकसूत्र)
+    title_en: The Flower Ornament Scripture (80 fascicles)
+    translator: 唐·实叉难陀 (Śikṣānanda)
+    year: "695–699 CE"
+    dynasty: 唐 (Tang)
+    canon_ref: 大正藏 T10n0279
+    quote_original: |
+      「心如工画师，能画诸世间。五蕴悉从生，无法而不造。」
+      ——《华严经·夜摩天宫偈赞品》(T10n0279, 卷十九)
+    quote_en: |
+      "The mind is like a painter, able to paint all the worlds.
+      The five aggregates are born from it; there is nothing it does not create."
+      — Avataṃsaka Sūtra, Ch. on Verses in the Suyāma Heaven Palace (Ch.19, tr. Thomas Cleary)
+    links:
+      cbeta_online: https://cbetaonline.dila.edu.tw/zh/T10n0279
+      cbeta_tripitaka: https://tripitaka.cbeta.org/T10n0279
+      cbeta_pdf: http://buddhism.lib.ntu.edu.tw/FULLTEXT/sutra/chi_pdf/sutra5/T10n0279.pdf
+    tags: [lineage, gap, cosmology, frontier, spirit]
+
+  - id: fazang-wujiaozhang
+    title_zh: 华严一乘教义分齐章（华严五教章）
+    title_en: Treatise on the Doctrinal Distinctions of the Huayan One Vehicle
+    author_zh: 唐·法藏 (贤首国师, 643–712)
+    year: "c. 680–700 CE"
+    dynasty: 唐 (Tang)
+    canon_ref: 大正藏 T45n1866
+    quote_original: |
+      「一即一切，一切即一。」
+      ——法藏《华严一乘教义分齐章》/《金师子章》
+    quote_en: |
+      "One is all; all is one."
+      — Fazang, Treatise on the Golden Lion / Huayan Wujiao Zhang
+    links:
+      cbeta_online: https://cbetaonline.dila.edu.tw/zh/T45n1866
+    tags: [lineage, gap, frontier]
+
+  - id: toh44-ten-bhumis
+    title_bo: ཕགས་པ་ས་བཅུ་པའི་མདོ། ('phags pa sa bcu pa'i mdo)
+    title_sa: Daśabhūmika-sūtra (दशभूमिकसूत्र)
+    title_zh: 十地经（藏文《华严经》第31品）
+    title_en: The Ten Bhūmis (Toh 44-31)
+    translator_en: Peter Alan Roberts (from Tibetan, with Sanskrit reference)
+    year: "2021–2026"
+    publisher: "84000: Translating the Words of the Buddha"
+    canon_ref: 德格版甘珠尔 Toh 44-31
+    quote_original: |
+      The bodhisattva progresses through ten stages (bhūmis), beginning with
+      the Joyous (Pramuditā) and culminating in the Cloud of Dharma (Dharmameghā).
+    quote_zh: |
+      菩萨次第经历十地，从欢喜地（Pramuditā）至于法云地（Dharmameghā）。
+    links:
+      official: https://read.84000.co/translation/toh44-31.html
+      chinese: https://84000.co/translation/toh44-31?lang=zh
+      pdf: https://direct-read.84000.co/data/toh44-31_84000-the-ten-bhumis.pdf
+    tags: [gap, frontier]
+
+  - id: laozi-daodejing
+    title_zh: 老子道德经
+    title_en: Tao Te Ching (The Classic of the Way and Virtue)
+    author_zh: 老子 (Lǎozǐ)
+    year: "c. 6th–4th century BCE"
+    dynasty: 春秋/战国
+    quote_original: |
+      人法地，地法天，天法道，道法自然。
+      ——《老子》第二十五章
+    quote_en: |
+      "Man models himself on Earth, Earth on Heaven, Heaven on the Way,
+      and the Way on that which is naturally so." (tr. D.C. Lau)
+    links:
+      ctext: https://ctext.org/dao-de-jing
+    tags: [spirit]
+
+  - id: zhuangzi-qiwulun
+    title_zh: 庄子·齐物论
+    title_en: Zhuangzi — Discussion on Making All Things Equal
+    author_zh: 庄子 (Zhuāngzǐ)
+    year: "c. 4th–3rd century BCE"
+    dynasty: 战国
+    quote_original: |
+      天地与我并生，万物与我为一。
+      ——《庄子·齐物论》
+    quote_en: |
+      "Heaven and earth were born together with me,
+      and the ten thousand things and I are one." (tr. Burton Watson)
+    links:
+      ctext: https://ctext.org/zhuangzi
+    tags: [spirit, frontier]
+
+# ── 专著 (Books) ──
+books:
+  # ── 灵性经济学 / 人本经济学 ──
+  - id: schumacher-small-is-beautiful
+    title_en: "Small Is Beautiful: Economics As If People Mattered"
+    title_zh: 小的是美好的
+    author_en: E.F. Schumacher
+    author_zh: E.F. 舒马赫
+    year: 1973
+    publisher: "Harper & Row (US); Blond & Briggs (UK)"
+    isbn: 978-0060803520
+    quote_original: |
+      "The system of nature, of which man is a part, tends to be self-balancing,
+      self-adjusting, self-cleansing. Not so with technology." (Part II, Ch.5)
+
+      "The Buddhist economist would consider this approach excessively irrational:
+      since consumption is merely a means to human well-being, the aim should be
+      to obtain the maximum of well-being with the minimum of consumption."
+      — "Buddhist Economics" (Ch.4)
+    quote_zh: |
+      「自然系统——人类是其一部分——趋向于自我平衡、自我调节、自我净化。
+      技术则不然。」（第二部分·第五章）
+
+      「佛教经济学家会认为这种进路极不合理：消费只是达致人类福祉的手段，
+      目标应以最少的消费获得最大的福祉。」——第四章「佛教经济学」
+    links:
+      official: https://centerforneweconomics.org
+      buddhist_economics_full: https://centerforneweconomics.org/publications/buddhist-economics/
+      translations: https://centerforneweconomics.org/publications/buddhist-economics-translations/
+      goodreads: https://www.goodreads.com/book/show/1117634.Small_Is_Beautiful
+      douban_2010: https://book.douban.com/subject/5410025/
+      douban_2007: https://book.douban.com/subject/2004425/
+      douban_2022: https://book.douban.com/subject/35918478/
+    goodreads_rating: {score: 4.09, ratings: 7178, reviews: 765}
+    douban_rating: {score: 8.1, note: "2022四川人民版; 2007译林版8.2 (578人); 1984商务版8.6 (257人)"}
+    acclaim: "《泰晤士报文学增刊》评为二战后最具影响力的100本书之一"
+    tags: [spirit]
+    pages_tag: [humanistic_economics]
+
+  - id: jackson-prosperity-without-growth
+    title_en: "Prosperity Without Growth: Foundations for the Economy of Tomorrow"
+    title_zh: 无增长的繁荣
+    author_en: Tim Jackson
+    author_zh: 蒂姆·杰克逊
+    year: 2009
+    year_edition_2: 2017
+    publisher: Routledge
+    isbn: 978-1138935419
+    quote_original: |
+      "Prosperity is not synonymous with material wealth. ...
+      Prosperity consists in our ability to flourish as human beings —
+      within the ecological limits of a finite planet." (Ch.1, 2nd ed.)
+    quote_zh: |
+      「繁荣不等于物质财富。……繁荣在于我们作为人类在这个有限星球的
+      生态边界内蓬勃发展的能力。」（第一章·第二版）
+    links:
+      official: https://timjackson.org.uk/ecological-economics/pwg/
+      routledge: https://www.routledge.com/Prosperity-without-Growth-Foundations-forthe-Economy-of-Tomorrow-2nd/Jackson/p/book/9781138935419
+      goodreads: https://www.goodreads.com/book/show/34928259-prosperity-without-growth
+      guardian_review: https://www.theguardian.com/books/2010/jan/23/properity-without-growth-tim-jackson
+    goodreads_rating: {score: 3.59, ratings: 41, reviews: 5}
+    translations: "18+ 语种"
+    tags: [spirit]
+    pages_tag: [humanistic_economics]
+
+  - id: raworth-doughnut-economics
+    title_en: "Doughnut Economics: Seven Ways to Think Like a 21st-Century Economist"
+    title_zh: 甜甜圈经济学
+    author_en: Kate Raworth
+    author_zh: 凯特·拉沃斯
+    year: 2017
+    publisher: "Chelsea Green Publishing (US); Random House Business (UK)"
+    isbn: 978-1603586740
+    quote_original: |
+      "Humanity's 21st century challenge is to meet the needs of all
+      within the means of the planet. ... The Doughnut of social and
+      planetary boundaries is a playfully serious approach." (Introduction)
+    quote_zh: |
+      「人类在二十一世纪的挑战是：在地球的承载边界之内满足所有人的需求。……
+      社会底线与行星边界的『甜甜圈』正是以严肃而有趣的方式框架这一挑战。」（导言）
+    links:
+      deal: https://doughnuteconomics.org
+      official: https://www.kateraworth.com
+      goodreads: https://www.goodreads.com/book/show/29214420-doughnut-economics
+    goodreads_rating: {score: 4.16, ratings: 16183, reviews: 1784}
+    tags: [spirit]
+    pages_tag: [humanistic_economics]
+
+  - id: eisenstein-sacred-economics
+    title_en: "Sacred Economics: Money, Gift, and Society in the Age of Transition"
+    title_zh: 神圣经济学
+    author_en: Charles Eisenstein
+    author_zh: 查尔斯·爱森斯坦
+    year: 2011
+    publisher: Evolver Editions
+    isbn: 978-1583943977
+    quote_original: |
+      "Money today is an instrument of the great forgetting. It embodies the story
+      of separation. ... A sacred economy would embody a new story — the story of
+      interbeing." (Ch.1)
+    quote_zh: |
+      「今日的金钱是『大遗忘』的工具。它体现的是分离的故事。……
+      神圣经济将体现一个新的故事——互即互入的故事。」（第一章）
+    links:
+      official: http://sacred-economics.com
+      goodreads: https://www.goodreads.com/book/show/15712639-sacred-economics
+    goodreads_rating: {score: 3.96, ratings: 421, reviews: 24}
+    tags: [spirit]
+    pages_tag: [humanistic_economics]
+
+  - id: kallis-degrowth
+    title_en: Degrowth
+    title_zh: 去增长
+    author_en: Giorgos Kallis
+    author_zh: 乔尔戈斯·卡利斯
+    year: 2018
+    publisher: Agenda Publishing
+    isbn: 978-1911116790
+    quote_original: |
+      "Degrowth is not the same as negative GDP growth in a growth economy. ...
+      Degrowth signifies a desirable and democratic transition to a smaller economy
+      with less production and consumption." (Ch.1)
+    quote_zh: |
+      「去增长不等于增长经济中的GDP负增长。……去增长意味着一个令人向往的、
+      民主的向更小规模经济——减少生产与消费——的转型。」（第一章）
+    links:
+      columbia: https://cup.columbia.edu/book/degrowth/9781911116790/
+      essays_free: http://www.indefenseofdegrowth.com
+      goodreads: https://www.goodreads.com/book/show/35963725-degrowth
+    tags: [spirit]
+    pages_tag: [humanistic_economics]
+
+  # ── 修行传统 / 生态智慧 ──
+  - id: nhat-hanh-being-peace
+    title_en: Being Peace
+    title_zh: 活得安详
+    author_en: Thích Nhất Hạnh
+    author_zh: 一行禅师 (釋一行)
+    year: 1987
+    year_revised: 2005
+    year_latest: 2024
+    publisher: Parallax Press
+    isbn: 978-1952692765
+    quote_original: |
+      "If we are peaceful, if we are happy, we can smile,
+      and everyone in our family, our entire society,
+      will benefit from our peace."
+    quote_zh: |
+      「如果我们自身平和、快乐、能微笑，我们的家人、整个社会
+      都会从我们的平和中获益。」
+    links:
+      official: https://www.parallax.org/product/being-peace/
+      goodreads: https://www.goodreads.com/book/show/11082229-being-peace
+    goodreads_rating: {score: 3.93, ratings: 1976, reviews: 166}
+    translations: "30+ 语种"
+    tags: [spirit]
+    pages_tag: [contemplative_traditions]
+
+  - id: nhat-hanh-zen-saving-planet
+    title_en: "Zen and the Art of Saving the Planet"
+    title_zh: 禅与拯救地球的艺术
+    author_en: Thích Nhất Hạnh
+    author_zh: 一行禅师
+    year: 2021
+    publisher: HarperOne
+    isbn: 978-0062954794
+    quote_original: |
+      "The one thing we all have the power to change is our own mind —
+      our way of looking, seeing, and thinking determines our choices,
+      our actions, and our relationships." (Part I)
+    quote_zh: |
+      「我们每个人都有力量改变的唯一一件事就是自己的心——
+      我们看待、观察和思考的方式，决定了我们的选择、行动和关系。」（第一部分）
+    links:
+      harpercollins: https://www.harpercollins.ca/9780062954831/zen-and-the-art-of-saving-the-planet/
+    tags: [spirit]
+    pages_tag: [contemplative_traditions]
+
+  - id: naess-ecology-community-lifestyle
+    title_en: "Ecology, Community and Lifestyle: Outline of an Ecosophy"
+    title_zh: 生态学、共同体与生活方式——一种生态智慧纲要
+    author_en: Arne Næss
+    author_zh: 阿恩·奈斯
+    year: 1989
+    publisher: Cambridge University Press
+    isbn: 978-0521348737
+    doi: 10.1017/CBO9780511525599
+    quote_original: |
+      "The right of all forms [of life] to live is a universal right which cannot
+      be quantified. No single species of living being has more of this particular
+      right to live and unfold than any other species." (Ecosophy T, Principle 2)
+    quote_zh: |
+      「一切生命形态的生存权利是一不可量化的普遍权利。没有任何一个物种
+      比其他物种拥有更多生存与发展的权利。」（生态智慧T·原则二）
+    links:
+      cambridge: https://www.cambridge.org/pk/universitypress/subjects/life-sciences/ecology-and-conservation/ecology-community-and-lifestyle-outline-ecosophy
+      goodreads: https://www.goodreads.com/book/show/702150.Ecology_Community_and_Lifestyle
+    goodreads_rating: {score: 3.22, ratings: 9, reviews: 1}
+    tags: [spirit]
+    pages_tag: [contemplative_traditions]
+
+  - id: capra-luisi-systems-view-of-life
+    title_en: "The Systems View of Life: A Unifying Vision"
+    title_zh: 生命的系统观——一种统一的视野
+    author_en: "Fritjof Capra & Pier Luigi Luisi"
+    author_zh: 弗里乔夫·卡普拉 & 皮尔·路易吉·路易西
+    year: 2014
+    publisher: Cambridge University Press
+    isbn: 978-1107011366
+    doi: 10.1017/CBO9780511895555
+    quote_original: |
+      "The new vision of reality ... is a spiritual vision in its very essence. ...
+      The systems view of life is a comprehensive, unified vision that integrates
+      life's biological, cognitive, social, and ecological dimensions." (Preface & Ch.18)
+    quote_zh: |
+      「对实在的新洞见……在其本质上是灵性的洞见。……生命的系统观是一种整全的、
+      统一的视野，整合了生命的生物、认知、社会和生态维度。」（序言 & 第十八章）
+    links:
+      cambridge: https://www.cambridge.org/us/universitypress/subjects/life-sciences/genomics-bioinformatics-and-systems-biology/systems-view-life-unifying-vision
+      goodreads: https://www.goodreads.com/book/show/30231828-the-systems-view-of-life
+    goodreads_rating: {score: 5.00, ratings: 1, reviews: 0, note: "仅1人评分，数据不足"}
+    tags: [spirit]
+    pages_tag: [contemplative_traditions]
+
+  # ── 意识科学 / 心灵哲学 ──
+  - id: varela-embodied-mind
+    title_en: "The Embodied Mind: Cognitive Science and Human Experience"
+    title_zh: 具身心智——认知科学与人类经验
+    author_en: "Francisco J. Varela, Evan Thompson & Eleanor Rosch"
+    author_zh: 弗朗西斯科·瓦雷拉、埃文·汤普森、埃莉诺·罗施
+    year: 1991
+    year_revised: 2017
+    publisher: MIT Press
+    isbn: 978-0262529365
+    quote_original: |
+      "We propose a fundamental circularity: the world is enacted through our
+      embodied action, and our embodied action is shaped by the world."
+      (Part IV, Ch.8 — Enaction: Embodied Cognition)
+    quote_zh: |
+      「我们提出一个根本的循环性：世界通过我们具身的行动而被生成(enacted)，
+      而我们的具身行动又被世界所塑造。」
+      （第四部分·第八章——生成：具身认知）
+    links:
+      mitpress: https://mitpress.mit.edu/9780262720212/the-embodied-mind/
+      goodreads: https://www.goodreads.com/book/show/251117.The_Embodied_Mind
+    goodreads_rating: {score: 3.61, ratings: 287, reviews: 24}
+    scholar_citations: "~6,000"
+    tags: [frontier]
+    pages_tag: [计算现象学, 心灵哲学, 意识科学]
+
+  - id: metzinger-being-no-one
+    title_en: "Being No One: The Self-Model Theory of Subjectivity"
+    title_zh: 无人——自我的现象模型理论
+    author_en: Thomas Metzinger
+    author_zh: 托马斯·梅青格
+    year: 2003
+    publisher: MIT Press (Bradford Books)
+    isbn: 978-0262633086
+    quote_original: |
+      "Nobody ever was or had a self. All that ever existed were conscious
+      self-models that could not be recognized as models." (Ch.1)
+    quote_zh: |
+      「从未有人拥有过『自我』。所有存在过的只是一些无法被辨识为模型的
+      意识自我模型。」（第一章）
+    links:
+      mitpress: https://mitpress.mit.edu/9780262633086/being-no-one/
+      goodreads: https://www.goodreads.com/book/show/123905.Being_No_One
+    goodreads_rating: {score: 4.25, ratings: 103, reviews: 2}
+    scholar_citations_total: "~4,822 (作者总计79篇出版物)"
+    tags: [frontier]
+    pages_tag: [计算现象学, 心灵哲学]
+
+  - id: chalmers-conscious-mind
+    title_en: "The Conscious Mind: In Search of a Fundamental Theory"
+    title_zh: 有意识的心——探寻根本理论
+    author_en: David J. Chalmers
+    author_zh: 大卫·查尔默斯
+    year: 1996
+    publisher: Oxford University Press
+    isbn: 978-0195117899
+    quote_original: |
+      "Why should physical processing give rise to a rich inner life at all? ...
+      The really hard problem of consciousness is the problem of experience." (Ch.1)
+    quote_zh: |
+      「物理过程为何会产生丰富的内在体验？……
+      意识真正的困难问题（Hard Problem）是体验的问题。」（第一章）
+    links:
+      goodreads: https://www.goodreads.com/book/show/18828.The_Conscious_Mind
+    goodreads_rating: {score: 3.57, ratings: 11559, reviews: 704}
+    scholar_citations: "~16,100 (Google Scholar)"
+    acclaim: "二战后心灵哲学领域被引最高的英文专著之一 (Leiter Reports, 2026)"
+    tags: [frontier]
+    pages_tag: [心灵哲学]
+
+  - id: seth-being-you
+    title_en: "Being You: A New Science of Consciousness"
+    title_zh: 成为你——意识的新科学
+    author_en: Anil Seth
+    author_zh: 阿尼尔·赛斯
+    year: 2021
+    publisher: "Faber & Faber (UK); Dutton (US)"
+    isbn: 978-0571337705
+    quote_original: |
+      "Consciousness is not about being intelligent; it's about being alive. ...
+      Perception is a controlled hallucination — a fantasy that coincides
+      with reality." (Ch.1 & Ch.7)
+    quote_zh: |
+      「意识关键不在于智能，而在于活着。……感知是一种受控的幻觉——
+      一种碰巧与实在相吻合的幻想。」（第一章 & 第七章）
+    links:
+      official: https://www.anilseth.com
+      cambridge_alumni: https://www.alumni.cam.ac.uk/benefits/book-shelf/being-you-a-new-science-of-consciousness
+      goodreads: https://www.goodreads.com/book/show/55976678-being-you
+    goodreads_rating: {score: 4.33, ratings: 15, reviews: 4}
+    acclaim: "Sunday Times Top 10 Bestseller; Guardian/Economist/New Statesman/FT 2021年度选书"
+    tags: [frontier]
+    pages_tag: [神经科学, 心灵哲学]
+
+  - id: davidson-goleman-altered-traits
+    title_en: "Altered Traits: Science Reveals How Meditation Changes Your Mind, Brain, and Body"
+    title_zh: 转化之性——科学揭示禅修如何改变心智、大脑与身体
+    author_en: "Daniel Goleman & Richard J. Davidson"
+    author_zh: 丹尼尔·戈尔曼 & 理查德·戴维森
+    year: 2017
+    publisher: Avery (Penguin Random House)
+    isbn: 978-0399184383
+    quote_original: |
+      "The after is the before for the next during."
+      (on the cumulative nature of meditative transformation)
+    quote_zh: |
+      「前一次禅修的『之后』正是下一次『之中』的『之前』。」
+      （论禅修转化的累积性本质）
+    links:
+      goodreads: https://www.goodreads.com/book/show/34807334-altered-traits
+    tags: [frontier]
+    pages_tag: [神经科学]
+
+  - id: vervaeke-meaning-crisis
+    title_en: "Awakening from the Meaning Crisis"
+    title_zh: 从意义危机中觉醒
+    author_en: John Vervaeke
+    author_zh: 约翰·维瓦克
+    year: "2019–"
+    type: online_lecture_series
+    quote_original: |
+      "We are in the midst of a meaning crisis — a crisis of wisdom,
+      of relevance realization. The solution requires recovering the
+      lost dialogue between cognitive science and the great wisdom traditions."
+      (Episode 1)
+    quote_zh: |
+      「我们正处于一场意义危机——智慧与相关性实现的危机。解决方案需要
+      恢复认知科学与伟大智慧传统之间失去的对话。」（第一集）
+    links:
+      youtube_playlist: https://youtube.com/playlist?list=PLND1JCRq8Vuh3f0P5qjrSdb5eC1ZfZwWJ
+      episode_1: https://www.youtube.com/watch?v=54l8_ewcOlY
+      channel: https://www.youtube.com/user/johnvervaeke
+    tags: [frontier]
+    pages_tag: [心灵哲学, 计算现象学]
+
+# ── 机构报告与政策文件 (Reports & Policy Documents) ──
+reports:
+  - id: unesco-links
+    title_en: "Local and Indigenous Knowledge Systems (LINKS) Programme"
+    title_zh: 联合国教科文组织「本土与地方知识体系」项目
+    organization: UNESCO
+    year: "2002–"
+    quote_original: |
+      "Indigenous knowledge is not 'primitive' or 'outdated.' It is the refined
+      wisdom accumulated over millennia of human co-evolution with specific ecosystems."
+    quote_zh: |
+      「本土知识不是『原始的』或『过时的』。它是数千年人类与特定生态系统
+      共同演化所积累的精炼智慧。」
+    links:
+      official: https://www.unesco.org/en/links
+      biodiversity: https://www.unesco.org/en/links/biodiversity
+      courier_2026: https://www.unesco.org/en/articles/how-indigenous-knowledge-drives-scientific-discovery
+    tags: [spirit]
+    pages_tag: [indigenous_knowledge]
+
+  - id: ipbes-global-assessment
+    title_en: "Global Assessment Report on Biodiversity and Ecosystem Services"
+    title_zh: 生物多样性与生态系统服务全球评估报告
+    organization: IPBES
+    year: 2019
+    doi: 10.5281/zenodo.3831673
+    quote_original: |
+      "Nature and its contributions to people are deteriorating worldwide. ...
+      Indigenous and local knowledge has been systematically incorporated into
+      this assessment for the first time at a global scale."
+      (Summary for Policymakers)
+    quote_zh: |
+      「自然及其对人类的贡献正在全球范围内退化。……本土与地方知识在此次评估中
+      首次在全球尺度上被系统地纳入。」（决策者摘要）
+    links:
+      official: https://www.ipbes.net
+      report: https://www.ipbes.net/global-assessment-report-biodiversity-ecosystem-services
+      summary_doi: "10.5281/zenodo.3553458"
+    tags: [spirit]
+    pages_tag: [indigenous_knowledge]
+
+  - id: canada-trc-final-report
+    title_en: "Honouring the Truth, Reconciling for the Future — Final Report of the Truth and Reconciliation Commission of Canada"
+    title_zh: 尊重真相·走向和解——加拿大真相与和解委员会最终报告
+    organization: "Truth and Reconciliation Commission of Canada"
+    year: 2015
+    isbn: 978-0660020785
+    quote_original: |
+      "Reconciliation is not an Aboriginal problem; it is a Canadian problem. ...
+      Together, Canadians must do more than just talk about reconciliation;
+      we must learn how to practise reconciliation in our everyday lives."
+      (Summary, p.183)
+    quote_zh: |
+      「和解不是原住民的问题，是加拿大全体的问题。……加拿大人必须不只谈论和解，
+      更必须在日常生活中实践和解。」（执行摘要，第183页）
+    links:
+      nctr: https://nctr.ca/records/reports/#trc-reports
+      publications_canada: https://publications.gc.ca/site/eng/9.800288/publication.html
+    volumes: 6卷 · 94项行动呼吁
+    tags: [spirit]
+    pages_tag: [indigenous_knowledge]
+
+  - id: bhutan-gnh
+    title_en: Gross National Happiness (GNH) Framework
+    title_zh: 国民幸福总值框架
+    organization: "Centre for Bhutan Studies & GNH Research"
+    year: "1972–"
+    quote_original: |
+      "Gross National Happiness is more important than Gross National Product."
+      — His Majesty Jigme Singye Wangchuck, Fourth King of Bhutan (1972)
+    quote_zh: |
+      「国民幸福总值比国民生产总值更为重要。」
+      ——不丹第四代国王吉格梅·辛格·旺楚克（1972年）
+    links:
+      gnnhc: https://www.gnhcentrebhutan.org
+      gnch_gov: https://www.gnhc.gov.bt
+    tags: [spirit]
+    pages_tag: [humanistic_economics, indigenous_knowledge]
+
+  - id: gen-ecovillage-network
+    title_en: Global Ecovillage Network (GEN)
+    title_zh: 全球生态村网络
+    organization: GEN International
+    year: "1995–"
+    quote_original: |
+      "A world of empowered citizens and communities,
+      designing their own pathways to a sustainable future." (GEN Vision)
+    quote_zh: |
+      「一个由被赋权的公民与社区自主设计通往永续未来之道路的世界。」（GEN 愿景）
+    links:
+      official: https://ecovillage.org
+    coverage: "114+ 国家 · 1,250+ 生态村 · 联合国经社理事会咨商地位"
+    tags: [spirit]
+    pages_tag: [practice]
+
+# ── 海云继梦法师体系 (Ven. Haiyun Jimeng System) ──
+haiyun:
+  - id: haiyun-spiritual-economics
+    title_zh: 灵性经济学（海云继梦法师系列演讲与著作）
+    title_en: "Spiritual Economics — Lectures & Writings of Ven. Haiyun Jimeng"
+    author_zh: 海云继梦法师 (賢首宗高原法系第四十二世傳人)
+    author_en: "Ven. Haiyun Jimeng (42nd Patriarch, Xianshou Gaoyuan Lineage, Huayan School)"
+    year: "2000–"
+    quote_original: |
+      海雲法語：「靈性經濟學不是關於『靈性』的附加學問，而是以靈性為文明之根本
+      的經濟學範式轉換。真正的稀缺不是物質資源，而是覺醒的心靈。」
+    quote_en: |
+      "Spiritual Economics is not an add-on about spirituality. It is a paradigm shift
+      that places spiritual awakening as the foundation of civilization.
+      What is truly scarce is not material resources — it is awakened minds."
+    links:
+      huayenworld: https://www.huayenworld.org
+      youtube: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
+      forum_2024: https://www.huayenworld.org/2024年新世纪永续发展高峰论坛/
+      facebook: https://www.facebook.com/huayenlugu.org
+      podcast_53: https://podwise.ai/episodes/1270459
+      book_we_only_have_one_choice: "《我们只有一个选择》——海云继梦法师灵性经济学专著"
+    tags: [spirit]
+    pages_tag: [spiritual_economics]
+
+# ── YouTube 系列 / 在线资源 ──
+online:
+  - id: haiyun-youtube
+    title_zh: 大华严寺 YouTube 官方频道
+    title_en: "Da Huayen Temple Official YouTube Channel"
+    links:
+      channel: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
+    tags: [jiaoxing, spirit, lineage]
+
+  - id: vervaeke-youtube
+    title_en: "John Vervaeke — Awakening from the Meaning Crisis (YouTube Series)"
+    links:
+      playlist: https://youtube.com/playlist?list=PLND1JCRq8Vuh3f0P5qjrSdb5eC1ZfZwWJ
+      channel: https://www.youtube.com/user/johnvervaeke
+    tags: [frontier]
+
+# ═══ 元数据 ═══
+meta:
+  last_updated: "2026-08-08"
+  total_entries: 27
+  coverage:
+    sutras: 5
+    books: 14
+    reports: 5
+    haiyun: 1
+    online: 2
+  data_sources:
+    - "Goodreads (ratings/reviews)"
+    - "豆瓣读书 (ratings/reviews)"
+    - "Google Scholar (citation counts)"
+    - "出版社官方网站 (ISBN/DOI)"
+    - "CBETA 中华电子佛典协会"
+    - "84000 Project"
+    - "UNESCO / IPBES / 加拿大政府出版"
+  convention: |
+    原语优先 (Skt/Bo/Zh/En/Fr); 中英双语批注;
+    链接: official + goodreads + douban + scholar 四方验证

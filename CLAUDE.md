@@ -9,12 +9,13 @@
 
 ## Demo
 
-**[web/demo/index.html](web/demo/index.html)** — 导航主页，链接到5个独立Tab页面
-- Tab 1: **法脉传承**·时空长河 (Canvas时间轴 + 理论/修行图层 + 主地图 + 西方文明+华严路线双迷你地图 + 92节点动画 + 古地图模式 + 174条人物行迹)
+**[web/demo/index.html](web/demo/index.html)** — 导航主页，链接到6个独立Tab页面
+- Tab 1: **法脉传承**·时空长河 (Canvas时间轴 + 理论/修行图层 + 主地图 + 全球文明迷你地图 + 92节点动画 + 古地图模式 + 174条人物行迹)
 - Tab 2: **华严文献**·汉藏差异 (子导航四页 + 三语对读 + 50条术语 + 文本系谱)
 - Tab 3: **华严教行** (子导航四页·修行体系/禅观法要/实修心要/讲法资源 + YouTube集成)
 - Tab 4: **前沿对话** (AI/计算现象学/神经科学/心灵哲学 + 文献综述)
 - Tab 5: **世主妙严** (华藏世界海曼荼罗 + 三界诸天图 + 艺术珍品 + 梵呗)
+- Tab 6: **灵性仁本**·澄明永续 (灵性经济学/人本经济学/修行传统与永续/本土知识体系)
 
 ## 知识管理架构（三层数据栈）
 
@@ -36,6 +37,7 @@ L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JS
 | 后续计划 | [docs/next-phase-plan.md](docs/next-phase-plan.md) | v2.0重构 P0-P4 路线图 |
 | 架构设计 | [docs/architecture.md](docs/architecture.md) | 三层数据栈、数据模型、模块职责 |
 | 知识管理 | [docs/knowledge-management.md](docs/knowledge-management.md) | SQLite/Neo4j/YAML三层规范 |
+| **参考文献管理** | [docs/reference-management.md](docs/reference-management.md) | 文献知识库维护规范 (新增) |
 | 工程工作流 | [docs/engineering-workflow.md](docs/engineering-workflow.md) | Loop/Graph Engineering |
 | 翻译规范 | [docs/translation-guide.md](docs/translation-guide.md) | 藏汉对译玄奘体规范 |
 | 多语对读 | [docs/multilingual-alignment.md](docs/multilingual-alignment.md) | 梵-于阗-藏-汉-满-英对读架构 |

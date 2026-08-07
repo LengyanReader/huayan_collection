@@ -252,7 +252,15 @@ function renderFrontier(){
   +"<b>EN</b> Bronkhorst, J. <i>How the Brahmins Won</i> (含华严经形成史讨论). Brill (2023).</div>"
 
   +"<p style='font-size:0.78em;color:var(--text2);margin-top:8px'>⚠ 注: 文献综述为定期更新板块。所列论文基于公开可获取的学术数据库。部分论文的华严关联解读属于本项目的诠释性建构。</p>"
-  +"</div>"; // close fv-litreview
+  +"</div>" // close fv-litreview
+  +"<div id=fv-bibliography></div>";
+  // Render BIBLIOGRAPHY at bottom
+  setTimeout(function(){
+    var bibDiv = document.getElementById('fv-bibliography');
+    if (bibDiv && typeof renderBibForPage === 'function') {
+      bibDiv.innerHTML = renderBibForPage('frontier');
+    }
+  }, 100);
 }
 function switchFrontier(view){
   document.querySelectorAll('.f-nav-btn').forEach(function(b){b.classList.remove('active');});

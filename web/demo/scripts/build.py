@@ -105,6 +105,31 @@ def load_frontier():
     return read_yaml('frontier/frontier_dialogue.yaml') or {}
 
 
+def load_spirit():
+    """Load spirit data."""
+    return read_yaml('spirit/spirit_content.yaml') or {}
+
+
+def load_bibliography():
+    """Load master bibliography from data/references/bibliography.yaml.
+    Returns dict with keys: sutras, books, reports, haiyun, online, meta.
+    """
+    return read_yaml('references/bibliography.yaml') or {}
+
+
+def get_bib_for_tags(bib, tags):
+    """Filter bibliography entries matching any of the given tags.
+    Returns a flat list of matching entries across all categories.
+    """
+    matches = []
+    for category in ['sutras', 'books', 'reports', 'haiyun', 'online']:
+        for entry in bib.get(category, []):
+            entry_tags = set(entry.get('tags', []))
+            if entry_tags & set(tags):
+                matches.append(dict(entry, _category=category))
+    return matches
+
+
 # ── HTML page template ──
 PAGE_TOP = '''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -224,12 +249,14 @@ def build_lineage_page():
     """Build Tab1: 法脉传承 (standalone, Canvas+Leaflet, layout preserved)."""
     graph = load_graph()
     events = load_events()
+    bib = load_bibliography()
     graph_json = json.dumps(graph, ensure_ascii=False)
 
     # Build data.js content
     data_js_content = f'''
 var GRAPH = {graph_json};
 var DATA = GRAPH;
+var BIBLIOGRAPHY = {json.dumps(bib, ensure_ascii=False)};
 var nodeMap = {{}};
 if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 var GAP = {{}};
@@ -457,6 +484,8 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
             heart_articles.append({'title': ht_title, 'body': body.strip(), 'url': wx_url})
 
     haiyun_res = read_yaml('practice/haiyun_resources.yaml') or {}
+    spirit = load_spirit()
+    bib = load_bibliography()
 
     # Build inline data script
     data_script = f'''
@@ -467,6 +496,8 @@ var EVENTS = {json.dumps(events, ensure_ascii=False)};
 var COSMO_DATA = {json.dumps(cosmo, ensure_ascii=False)};
 var PRACTICE_DATA = {json.dumps(practice, ensure_ascii=False)};
 var FRONTIER_DATA = {json.dumps(frontier, ensure_ascii=False)};
+var SPIRIT_DATA = {json.dumps(spirit, ensure_ascii=False)};
+var BIBLIOGRAPHY = {json.dumps(bib, ensure_ascii=False)};
 var HEART_ARTICLES = {json.dumps(heart_articles, ensure_ascii=False)};
 var DATA = GRAPH;
 var nodeMap = {{}};
@@ -562,27 +593,9 @@ def main():
     sidebar_jx = '''
     <h3>🧘 教海行云</h3>
     <a href="#" class="nav-link active" onclick="switchPracticeView('system',this);return false">📐 修行体系</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-stages');return false">　· 三阶段</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-blueprint');return false">　· 四阶段蓝图</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-six');return false">　· 六科五大行法</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-projects');return false">　· 四大工程</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-evolution');return false">　· 演进脉络</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('meditation',this);return false">🗺 禅观法要</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-overview');return false">　· 体系总览</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-paths');return false">　· 次第道与圆融道</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage1');return false">　· 资粮道</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">　· 前行</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　· 正行</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">　· 实修心要</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('news',this);return false">📰 最新动态</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('news','news-updates');return false">　· 近期动态</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('news','news-academic');return false">　· 学术活动</a>
     <a href="#" class="nav-link" onclick="switchPracticeView('resources',this);return false">📡 讲法资源</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-total');return false">　· 全网总目</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-books');return false">　· 著作</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-yt');return false">　· YouTube</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-temples');return false">　· 道场</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-more');return false">　· 检索补遗</a>
     '''
     jx_html = build_simple_tab_page('教海行云 · 信解行证', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
     jx_path = TABS_OUT / 'jiaoxing.html'
@@ -597,15 +610,10 @@ def main():
     sidebar_fr = '''
     <h3>🔬 前沿对话</h3>
     <a href="#" class="nav-link active" onclick="switchFrontierNav('huayan',this);return false">🪷 与华严的对话</a>
-    <a href="#" class="sub-link" onclick="switchFrontierNav('huayan');return false">　· AI·计算现象学·神经科学·心灵哲学</a>
     <a href="#" class="nav-link" onclick="switchFrontierNav('chinese',this);return false">☸ 与汉传佛教的对话</a>
-    <a href="#" class="sub-link" onclick="switchFrontierNav('chinese');return false">　· 天台·禅宗·净土·唯识</a>
     <a href="#" class="nav-link" onclick="switchFrontierNav('buddhist',this);return false">🕉 与佛教的对话</a>
-    <a href="#" class="sub-link" onclick="switchFrontierNav('buddhist');return false">　· 中观·藏传·南传·瑜伽行派</a>
     <a href="#" class="nav-link" onclick="switchFrontierNav('others',this);return false">🌏 其他宗教行门的对话</a>
-    <a href="#" class="sub-link" onclick="switchFrontierNav('others');return false">　· 道家·儒家·瑜伽·基督教·苏菲</a>
     <a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述</a>
-    <a href="#" class="sub-link" onclick="switchFrontierNav('litreview');return false">　· 2023-2026 多语论文</a>
     '''
     fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
     fr_path = TABS_OUT / 'frontier.html'
@@ -620,15 +628,10 @@ def main():
     sidebar_co = '''
     <h3>🪷 世主妙严</h3>
     <a href="#co-mandala" class="nav-link active">🌊 华藏世界海</a>
-    <a href="#" class="sub-link" onclick="document.getElementById('co-mandala').scrollIntoView({behavior:'smooth'});return false">　· 二十重世界曼荼罗</a>
     <a href="#co-tower" class="nav-link">📐 三界诸天</a>
-    <a href="#" class="sub-link" onclick="document.getElementById('co-tower').scrollIntoView({behavior:'smooth'});return false">　· 二十八天修行对应图</a>
     <a href="#co-art" class="nav-link">🎨 华严艺术珍品</a>
-    <a href="#" class="sub-link" onclick="document.getElementById('co-art').scrollIntoView({behavior:'smooth'});return false">　· 敦煌·造像·壁画</a>
     <a href="#co-chant" class="nav-link">🎵 梵呗·华严字母</a>
-    <a href="#" class="sub-link" onclick="document.getElementById('co-chant').scrollIntoView({behavior:'smooth'});return false">　· 四十二字母·视频</a>
     <a href="#co-sites" class="nav-link">🗺 华严古迹巡礼</a>
-    <a href="#" class="sub-link" onclick="document.getElementById('co-sites').scrollIntoView({behavior:'smooth'});return false">　· 六大圣地·参考书目</a>
     '''
     co_html = build_simple_tab_page('世主妙严 · 华藏世界海', 'cosmology', sidebar_co, 'if(typeof renderCosmology==="function")renderCosmology();')
     co_path = TABS_OUT / 'cosmology.html'
@@ -638,6 +641,25 @@ def main():
     total_size += size
     file_count += 1
     print(f'OK  {co_path} ({size:,} bytes)')
+
+    # ── Build Tab6: Spirit (new) ──
+    sidebar_sp = '''
+    <h3>🌱 灵性仁本</h3>
+    <a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览</a>
+    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学</a>
+    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 人本经济学</a>
+    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续</a>
+    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识体系</a>
+    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践</a>
+    '''
+    sp_html = build_simple_tab_page('灵性仁本 · 澄明永续', 'spirit', sidebar_sp, 'if(typeof renderSpirit==="function")renderSpirit();', view_id='spirit-view')
+    sp_path = TABS_OUT / 'spirit.html'
+    with open(sp_path, 'w', encoding='utf-8') as f:
+        f.write(sp_html)
+    size = len(sp_html.encode('utf-8'))
+    total_size += size
+    file_count += 1
+    print(f'OK  {sp_path} ({size:,} bytes)')
 
     # ── Copy/WRITE shared CSS ──
     common_css = read_src('common.css')
@@ -678,7 +700,7 @@ def main():
     index_html = index_html.replace('__STAT_PERSONS__', str(len(graph.get('nodes', []))))
     index_html = index_html.replace('__STAT_EDGES__', str(len(graph.get('edges', []))))
     index_html = index_html.replace('__STAT_TEMPLES__', str(temple_count))
-    index_html = index_html.replace('__STAT_TABS__', '5')
+    index_html = index_html.replace('__STAT_TABS__', '6')
     index_html = index_html.replace('__STAT_GLOSSARY__', str(glossary_count))
 
     index_path = OUT / 'index.html'
