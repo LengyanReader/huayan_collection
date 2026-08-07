@@ -1,8 +1,28 @@
 // ═══ DATA LAYERS ═══
 var layerVis={theory:true,geo:true,practice:true,edges:true,events:true};
-// Multi-layer religion colors for animation routes & popups
-var REL_COLORS={buddhist:'#c46b5d',confucian:'#b8863c',daoist:'#7d9a6e',western:'#5e8b9e',islamic:'#8b7a9e'};
-var REL_LABELS={buddhist:'佛教/华严主线',confucian:'儒家',daoist:'道家',western:'西方哲学',islamic:'其他传统'};
+// Multi-layer civilization colors for animation routes & popups
+var REL_COLORS={
+  buddhist:'#c46b5d',      // 佛教·华严
+  indic:'#e08040',          // 南亚·印度
+  confucian:'#b8863c',      // 儒家
+  daoist:'#7d9a6e',         // 道家
+  western:'#5e8b9e',        // 西方
+  islamic:'#4a9e8e',        // 伊斯兰
+  african:'#c8893e',        // 非洲
+  american:'#d48476',       // 美洲
+  oceanic:'#8b7a9e'         // 大洋洲
+};
+var REL_LABELS={
+  buddhist:'佛教·华严',
+  indic:'南亚·印度',
+  confucian:'儒家',
+  daoist:'道家',
+  western:'西方',
+  islamic:'伊斯兰',
+  african:'非洲',
+  american:'美洲',
+  oceanic:'大洋洲'
+};
 var THEORY_STAGES=[
   {label:'法界观门/五教止观',s:557,e:700,c:'rgba(184,134,60,0.10)',tc:'#b8863c'},
   {label:'五教十宗/法界缘起',s:643,e:820,c:'rgba(94,139,158,0.10)',tc:'#5e8b9e'},
@@ -495,8 +515,46 @@ function drawTL(hlId){
 // ═══ MAP SYSTEM (main view + minimap like StarCraft) ═══
 var mapMain=null,_miniMaps={},_trajGroup=null;
 var mainMarkers=[];
-function tileLayer(){return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{subdomains:["1","2","3","4"],maxZoom:18});}
-function terrainTileLayer(){return L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:17,opacity:0.7});}
+// Free tile URL constants (no API key required)
+var OSM_URL='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var ESRI_IMAGERY='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+var ESRI_TERRAIN='https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}';
+var AMAP_URL='https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}';
+var OPENTOPO_URL='https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
+
+function tileLayer(){return L.tileLayer(AMAP_URL,{subdomains:['1','2','3','4'],maxZoom:18});}
+function terrainTileLayer(){return L.tileLayer(OPENTOPO_URL,{subdomains:['a','b','c'],maxZoom:17,opacity:0.7});}
+
+// ═══ BASEMAP SWITCHER (all free, no API key) ═══
+var _basemapLayers=[],currentBasemapIdx=0;
+function _osmOverlay(){return L.tileLayer(OSM_URL,{subdomains:['a','b','c'],maxZoom:19,opacity:0.4});}
+
+var BASEMAPS=[
+  {name:'现代',icon:'🗺',desc:'高德+OSM',
+   create:function(){return [tileLayer(),_osmOverlay()];}},
+  {name:'卫星',icon:'🛰',desc:'Esri卫星影像',
+   create:function(){return [L.tileLayer(ESRI_IMAGERY,{maxZoom:18,attribution:'Esri,Maxar,Earthstar'})];}},
+  {name:'地形',icon:'⛰',desc:'Esri地形渲染',
+   create:function(){return [L.tileLayer(ESRI_TERRAIN,{maxZoom:18,attribution:'Esri,USGS'})];}}
+];
+
+function _applyBasemap(idx){
+  currentBasemapIdx=idx;
+  var bm=BASEMAPS[idx];
+  _basemapLayers.forEach(function(l){if(mapMain)mapMain.removeLayer(l);});
+  _basemapLayers=[];
+  if(mapMain){
+    var layers=bm.create();
+    layers.forEach(function(l){l.addTo(mapMain);_basemapLayers.push(l);});
+  }
+  var bb=document.getElementById('basemap-btn');
+  if(bb){bb.textContent=bm.icon+' '+bm.name;}
+}
+
+function cycleBasemap(){
+  var next=(currentBasemapIdx+1)%BASEMAPS.length;
+  _applyBasemap(next);
+}
 
 function initMap(){
   if(typeof L==="undefined"){
@@ -506,8 +564,7 @@ function initMap(){
   // ── Main map: China/East Asia detail ──
   if(!mapMain){
     mapMain=L.map("map-main",{zoomControl:true,zoomControlPosition:'bottomleft'}).setView([34,108],5);
-    tileLayer().addTo(mapMain);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:["a","b","c"],maxZoom:19,opacity:0.4}).addTo(mapMain);
+    _applyBasemap(0); // Default: 现代 (高德+OSM)
     // Huayan locations
     var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};
     DATA.locations.forEach(function(loc){
@@ -521,8 +578,7 @@ function initMap(){
     mapMain.invalidateSize();
   }
   initMiniMaps();
-  // Auto-enable ancient map mode (called here to survive stale deploys)
-  setTimeout(function(){toggleAncient();},600);
+  // Ancient map mode enabled by default via init.js (single toggle call)
 }
 function getMainMap(){return mapMain;}
 
@@ -577,7 +633,37 @@ function clearSelection(){selectedId=null;selectedId2=null;drawTL(null);document
 function drawTL2(id){}
 
 // ═══ ANCIENT/MODERN MAP TOGGLE (with terrain) ═══
-var ancientMode=false,dynastyLayers=[],ancientLabels=[],terrainLayer=null;
+var ancientMode=false,dynastyLayers=[],ancientLabels=[],terrainLayer=null,_miniTerrainLayers=[];
+
+// ═══ FILTER PRESET SYSTEM ═══
+var FILTER_PRESETS=[
+  {name:'无', cls:'', desc:'原始色彩'},
+  {name:'羊皮纸', cls:'filter-parchment', desc:'Parchment·暖黄怀旧'},
+  {name:'银盐', cls:'filter-silver', desc:'Monochrome·黑白摄影'},
+  {name:'靛蓝', cls:'filter-indigo', desc:'Indigo·古地图'},
+  {name:'琥珀', cls:'filter-amber', desc:'Amber·旧胶片'},
+  {name:'暮色', cls:'filter-twilight', desc:'Twilight·沉静暗调'}
+];
+var currentFilterIdx=0;
+
+function applyFilter(idx){
+  currentFilterIdx=idx;
+  var preset=FILTER_PRESETS[idx];
+  var side=document.getElementById('side');
+  var mm=document.getElementById('mini-maps-grid');
+  // Remove all filter classes
+  FILTER_PRESETS.forEach(function(p){if(p.cls){if(side)side.classList.remove(p.cls);if(mm)mm.classList.remove(p.cls);}});
+  // Add new filter class
+  if(preset.cls){if(side)side.classList.add(preset.cls);if(mm)mm.classList.add(preset.cls);}
+  // Update button
+  var fb=document.getElementById('filter-btn');
+  if(fb){fb.textContent='🎨 '+preset.name;if(idx>0){fb.classList.add('filter-btn-active');}else{fb.classList.remove('filter-btn-active');}}
+}
+
+function cycleFilter(){
+  var next=(currentFilterIdx+1)%FILTER_PRESETS.length;
+  applyFilter(next);
+}
 
 // ── Ancient/Modern Map Toggle ──
 var LOC_ANCIENT={
@@ -605,6 +691,7 @@ function toggleAncient(){
   if(ancientMode){
     if(cm)cm.classList.add('map-ancient');
     if(btn){btn.style.background='#b8863c';btn.style.color='#fff';btn.style.borderColor='#b8863c';btn.textContent='🏯 今';}
+    applyFilter(1); // Default ancient filter: 古卷
     // Add terrain overlay to main map
     if(!terrainLayer){terrainLayer=terrainTileLayer();terrainLayer.addTo(mapMain);}else{terrainLayer.addTo(mapMain);}
     // Major geographic feature labels
@@ -630,9 +717,18 @@ function toggleAncient(){
       dynastyLayers.push({rect:r,label:lbl,db:db});
     });
     updateDynastyVisibility(-600);
+    // Add terrain to mini maps
+    var mmGrid=document.getElementById('mini-maps-grid');
+    if(mmGrid)mmGrid.classList.add('map-ancient');
+    Object.keys(_miniMaps).forEach(function(k){
+      var mm=_miniMaps[k];if(!mm||!mm.map)return;
+      var t=terrainTileLayer();t.addTo(mm.map);
+      _miniTerrainLayers.push({map:mm.map,layer:t});
+    });
   }else{
     if(cm)cm.classList.remove('map-ancient');
     if(btn){btn.style.background='';btn.style.color='';btn.style.borderColor='';btn.textContent='🏯 古今';}
+    applyFilter(0); // Back to no filter
     // Remove terrain from main map
     if(terrainLayer){mapMain.removeLayer(terrainLayer);}
     // Remove dynasty boundaries
@@ -645,6 +741,11 @@ function toggleAncient(){
     transMarkers.forEach(function(m){mapMain.removeLayer(m);});transMarkers=[];
     transLines.forEach(function(l){mapMain.removeLayer(l);});transLines=[];
     otherSchoolsMarkers.forEach(function(m){mapMain.removeLayer(m);});otherSchoolsMarkers=[];
+    // Remove terrain from mini maps
+    var mmGrid2=document.getElementById('mini-maps-grid');
+    if(mmGrid2)mmGrid2.classList.remove('map-ancient');
+    _miniTerrainLayers.forEach(function(tl){tl.map.removeLayer(tl.layer);});
+    _miniTerrainLayers=[];
   }
 }
 
@@ -1494,7 +1595,7 @@ function toggleRouteInfo(){
   if(!ri){
     ri=document.createElement('div');ri.id='route-info';
     ri.style.cssText='display:none;position:absolute;bottom:8px;left:8px;right:8px;background:rgba(254,253,249,0.9);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:0.68em;color:var(--text2);z-index:500;line-height:1.5';
-    ri.innerHTML='🪷 <span style=color:#c46b5d>佛教/华严主线</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span> — 彩色路线代表不同文明传统的传播与交融';
+    ri.innerHTML='🪷 <span style=color:#c46b5d>佛教·华严</span> <span style=color:#e08040>南亚</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#4a9e8e>伊斯兰</span> <span style=color:#c8893e>非洲</span> <span style=color:#d48476>美洲</span> <span style=color:#8b7a9e>大洋洲</span> — 彩色路线代表全球文明传统的传播与交融';
     var mw=document.getElementById('map-main-wrap');if(mw)mw.appendChild(ri);
   }
   if(!ri)return;
@@ -1787,7 +1888,7 @@ function animTick(){
           mapMain.closePopup();
           var relColor=REL_COLORS[wp.rel||'buddhist']||'#c46b5d';
           // Stagger popup by religion: buddhist=center, confucian=right, daoist=left, western=top-right
-          var popupOffset={buddhist:[0,-12],confucian:[30,-20],daoist:[-30,-8],western:[20,-30],islamic:[-20,-25]};
+          var popupOffset={buddhist:[0,-12],indic:[15,-18],confucian:[30,-20],daoist:[-30,-8],western:[20,-30],islamic:[-20,-25],african:[-15,10],american:[25,10],oceanic:[30,20]};
           var off=popupOffset[wp.rel||'buddhist']||[0,-10];
           var pc='<div style=max-width:240px><b style=color:'+relColor+'>'+wp.y+'年</b><br><b>'+wp.label+'</b><br><span style=font-size:0.75em;line-height:1.4>'+wp.info+'</span></div>';
           L.popup({closeButton:false,autoClose:false,className:'anim-popup',maxWidth:200,autoPan:false,offset:L.point(off[0],off[1])})

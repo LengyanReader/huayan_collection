@@ -290,6 +290,13 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 #tl-tooltip h3{{color:var(--gold);margin-bottom:3px}}
 #resize-handle{{width:5px;cursor:col-resize;background:var(--line);transition:background 0.2s;flex-shrink:0}}#resize-handle:hover,#resize-handle.active{{background:var(--gold)}}
 .map-ancient .leaflet-tile-pane{{filter:sepia(0.7) hue-rotate(-15deg) saturate(0.4) brightness(0.85) contrast(1.1)}}
+.filter-parchment .leaflet-tile-pane{{filter:sepia(0.7) saturate(0.45) brightness(0.9) contrast(1.05)}}
+.filter-silver .leaflet-tile-pane{{filter:grayscale(0.9) contrast(1.15) brightness(0.95)}}
+.filter-indigo .leaflet-tile-pane{{filter:hue-rotate(-30deg) saturate(0.55) brightness(0.95) contrast(1.05)}}
+.filter-amber .leaflet-tile-pane{{filter:sepia(0.5) saturate(0.9) contrast(1.1) brightness(1.0) hue-rotate(-5deg)}}
+.filter-twilight .leaflet-tile-pane{{filter:grayscale(0.15) brightness(0.72) contrast(1.12) saturate(0.45)}}
+#map-vignette{{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:600;background:radial-gradient(ellipse at center,transparent 62%,rgba(40,24,10,0.22) 100%);border-radius:inherit}}
+.filter-btn-active{{background:var(--gold)!important;color:#fff!important;border-color:var(--gold)!important}}
 @media(max-width:768px){{
   body{{overflow:auto;height:auto}}
   #header{{position:sticky;padding:6px 10px}}
@@ -326,8 +333,9 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <div id="side">
     <div id="map-main-wrap">
       <div id="map-main"></div>
+	      <div id="map-vignette"></div>
       <div id="route-info" style="display:none;position:absolute;bottom:8px;left:8px;right:8px;background:rgba(254,253,249,0.9);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:0.68em;color:var(--text2);z-index:500;line-height:1.5">
-        🪷 <span style=color:#c46b5d>佛教/华严主线</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span> — 大地图上的彩色路线代表不同文明传统的传播与交融
+        🪷 <span style=color:#c46b5d>佛教·华严</span> <span style=color:#e08040>南亚</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#4a9e8e>伊斯兰</span> <span style=color:#c8893e>非洲</span> <span style=color:#d48476>美洲</span> <span style=color:#8b7a9e>大洋洲</span> — 彩色路线代表全球文明传统的传播与交融
       </div>
     </div>
   </div>
@@ -359,15 +367,18 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <button class="active" data-layer="geo" onclick="toggleLayer('geo')">地</button>
   <button class="active" data-layer="edges" onclick="toggleLayer('edges')">传</button>
   <button class="active" data-layer="events" onclick="toggleLayer('events')">事</button>
+  <span style="font-size:0.7em;color:var(--text2);margin-left:8px">底图:</span>
+  <button id="basemap-btn" onclick="cycleBasemap()" title="切换底图: 现代/卫星/地形">🗺 现代</button>
   <button id="ancient-btn" onclick="toggleAncient()">🏯 古今</button>
+  <button id="filter-btn" onclick="cycleFilter()" style="border:1px solid var(--blue);color:var(--blue);font-size:0.73em" title="循环切换地图滤镜预设">🎨 无</button>
   <span id="speed-row" style="font-size:0.7em;color:var(--text2)">⏱<input type="range" id="anim-speed" min="5" max="40" value="35" step="1"><span id="speed-label">1×</span></span>
   <button id="roster-btn" style="border:1px solid var(--green);color:var(--green);font-size:0.75em" onclick="toggleRoster()">📋 名录</button>
   <button id="temple-btn" style="border:1px solid var(--gold);color:var(--gold);font-size:0.75em" onclick="toggleTempleDir()">🏛 道场</button>
   <button id="route-info-btn" style="border:1px solid var(--blue);color:var(--blue);font-size:0.75em" onclick="toggleRouteInfo()">ℹ️ 路线</button>
   <button id="anim-btn" style="border:1px solid var(--green);color:var(--green);font-weight:600;font-size:0.8em;padding:4px 16px" onclick="toggleAnim()">▶ 播放</button>
   <button id="anim-stop-btn" style="border:1px solid var(--red);color:var(--red);font-weight:600;font-size:0.8em;padding:4px 12px;display:none" onclick="stopAnim()">⏹</button>
-  <span id="route-legend" style="margin-left:auto;font-size:0.62em;color:var(--text2);line-height:1.4;opacity:0.75">
-    🪷 <span style=color:#c46b5d>佛教</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#8b7a9e>其他</span>
+  <span id="route-legend" style="margin-left:auto;font-size:0.60em;color:var(--text2);line-height:1.4;opacity:0.75">
+    🪷 <span style=color:#c46b5d>佛教</span> <span style=color:#e08040>南亚</span> <span style=color:#b8863c>儒家</span> <span style=color:#7d9a6e>道家</span> <span style=color:#5e8b9e>西方</span> <span style=color:#4a9e8e>伊斯兰</span> <span style=color:#c8893e>非洲</span> <span style=color:#d48476>美洲</span> <span style=color:#8b7a9e>大洋洲</span>
   </span>
   <button id="reset-btn" style="border:1px solid var(--gold);color:var(--gold)">↺ 重置</button>
 </div>
