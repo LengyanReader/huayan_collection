@@ -2,8 +2,8 @@
 function renderGap(){
   var gv=document.getElementById("gap-view");if(!gv)return;
 
-  // ── Sub-navigation ──
-  var h="<div style='display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap'><button class='gv-nav active' onclick='switchGapView(\"overview\",this)'>📊 差异总览</button><button class='gv-nav' onclick='switchGapView(\"parallel\",this)'>📖 原文对读</button><button class='gv-nav' onclick='switchGapView(\"genealogy\",this)'>🕸 文本系谱</button><button class='gv-nav' onclick='switchGapView(\"refs\",this)'>📚 参考文献</button></div>";
+  // ── Sub-navigation moved to left sidebar ──
+  var h="";
 
   // ── OVERVIEW SECTION ──
   h+="<div id=gv-overview class=gv-section>";

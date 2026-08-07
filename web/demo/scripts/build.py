@@ -576,9 +576,9 @@ def main():
     # ── Build Tab2: Gap (restructured layout) ──
     sidebar_gap = '''
     <h3>📜 华严文献</h3>
-    <a href="#" class="nav-link active" onclick="switchGapView('overview',this);return false">📊 差异总览</a>
-    <a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a>
-    <a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a>
+    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchGapView('overview',this);return false">📊 差异总览</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a></div>
     '''
     gap_html = build_simple_tab_page('华严文献 · 雅思渊才', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
     gap_path = TABS_OUT / 'gap.html'
@@ -592,13 +592,18 @@ def main():
     # ── Build Tab3: Jiaoxing (renamed, restructured) ──
     sidebar_jx = '''
     <h3>🧘 教海行云</h3>
-    <a href="#" class="nav-link active" onclick="switchPracticeView('system',this);return false">📐 修行体系</a>
+    <div class="sidebar-group has-subs open">
+    <a href="#" class="nav-link active has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('system',this);return false">📐 修行体系 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-stages');return false">三阶段</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-blueprint');return false">四阶段蓝图</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-six');return false">六科五大行法</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-projects');return false">四大工程</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-evolution');return false">演进脉络</a>
-    <a href="#" class="nav-link" onclick="switchPracticeView('meditation',this);return false">🗺 禅观法要</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">🗺 禅观法要 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-overview');return false">体系总览</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-paths');return false">次第道与圆融道</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage1');return false">资粮道</a>
@@ -610,15 +615,17 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-texts');return false">典籍阐释</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-verify');return false">验证机制</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">实修心要</a>
-    <a href="#" class="nav-link" onclick="switchPracticeView('news',this);return false">📰 最新动态</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('news','news-updates');return false">近期动态</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('news','news-academic');return false">学术活动</a>
-    <a href="#" class="nav-link" onclick="switchPracticeView('resources',this);return false">📡 讲法资源</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-total');return false">全网总目</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-books');return false">著作</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-yt');return false">YouTube</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-temples');return false">道场</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-more');return false">检索补遗</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-news');return false">最新动态</a>
+    </div></div>
     '''
     jx_html = build_simple_tab_page('教海行云 · 信解行证', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
     jx_path = TABS_OUT / 'jiaoxing.html'
@@ -632,11 +639,11 @@ def main():
     # ── Build Tab4: Frontier (restructured) ──
     sidebar_fr = '''
     <h3>🔬 前沿对话</h3>
-    <a href="#" class="nav-link active" onclick="switchFrontierNav('huayan',this);return false">🪷 与华严的对话</a>
-    <a href="#" class="nav-link" onclick="switchFrontierNav('chinese',this);return false">☸ 与汉传佛教的对话</a>
-    <a href="#" class="nav-link" onclick="switchFrontierNav('buddhist',this);return false">🕉 与佛教的对话</a>
-    <a href="#" class="nav-link" onclick="switchFrontierNav('others',this);return false">🌏 其他宗教行门的对话</a>
-    <a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述</a>
+    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchFrontierNav('huayan',this);return false">🪷 与华严的对话</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('chinese',this);return false">☸ 与汉传佛教的对话</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('buddhist',this);return false">🕉 与佛教的对话</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('others',this);return false">🌏 其他宗教行门的对话</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述</a></div>
     '''
     fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
     fr_path = TABS_OUT / 'frontier.html'
@@ -650,11 +657,11 @@ def main():
     # ── Build Tab5: Cosmology (restructured) ──
     sidebar_co = '''
     <h3>🪷 世主妙严</h3>
-    <a href="#co-mandala" class="nav-link active">🌊 华藏世界海</a>
-    <a href="#co-tower" class="nav-link">📐 三界诸天</a>
-    <a href="#co-art" class="nav-link">🎨 华严艺术珍品</a>
-    <a href="#co-chant" class="nav-link">🎵 梵呗·华严字母</a>
-    <a href="#co-sites" class="nav-link">🗺 华严古迹巡礼</a>
+    <div class="sidebar-group"><a href="#co-mandala" class="nav-link active">🌊 华藏世界海</a></div>
+    <div class="sidebar-group"><a href="#co-tower" class="nav-link">📐 三界诸天</a></div>
+    <div class="sidebar-group"><a href="#co-art" class="nav-link">🎨 华严艺术珍品</a></div>
+    <div class="sidebar-group"><a href="#co-chant" class="nav-link">🎵 梵呗·华严字母</a></div>
+    <div class="sidebar-group"><a href="#co-sites" class="nav-link">🗺 华严古迹巡礼</a></div>
     '''
     co_html = build_simple_tab_page('世主妙严 · 华藏世界海', 'cosmology', sidebar_co, 'if(typeof renderCosmology==="function")renderCosmology();')
     co_path = TABS_OUT / 'cosmology.html'
@@ -668,12 +675,12 @@ def main():
     # ── Build Tab6: Spirit (new) ──
     sidebar_sp = '''
     <h3>🌱 灵性仁本</h3>
-    <a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览</a>
-    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学</a>
-    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 人本经济学</a>
-    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续</a>
-    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识体系</a>
-    <a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践</a>
+    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 人本经济学</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识体系</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践</a></div>
     '''
     sp_html = build_simple_tab_page('灵性仁本 · 澄明永续', 'spirit', sidebar_sp, 'if(typeof renderSpirit==="function")renderSpirit();', view_id='spirit-view')
     sp_path = TABS_OUT / 'spirit.html'

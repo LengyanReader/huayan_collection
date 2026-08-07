@@ -25,13 +25,7 @@ function renderSpirit() {
     '.sp-ref li{line-height:1.8}' +
     '</style>';
 
-  // Navigation pills
-  h += '<div class="sp-nav">';
-  data.forEach(function(s) {
-    var on = (SPIRIT_ACTIVE === s.id) ? ' on' : '';
-    h += '<button class="sp-nav-btn' + on + '" onclick="SPIRIT_ACTIVE=\'' + s.id + '\';renderSpirit();">' + (s.icon||'📌') + ' ' + s.title.split('·')[0] + '</button>';
-  });
-  h += '</div>';
+  // ── Navigation moved to left sidebar ──
 
   // Active section
   var active = sec(SPIRIT_ACTIVE) || data[0];
