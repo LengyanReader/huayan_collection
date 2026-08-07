@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严宗部文献与修行资料</title>
+<style>
+:root{--bg:#f6f2e8;--panel:#fdfaf3;--card:#fefdf9;--gold:#b8863c;--blue:#5e8b9e;--green:#7d9a6e;--red:#c46b5d;--text:#3d3427;--text2:#7a7262;--line:#e5ddd0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+header{width:100%;background:linear-gradient(135deg,#e8e0d2,#efe6d8);padding:28px 20px 18px;text-align:center;border-bottom:1px solid var(--line)}
+header h1{font-size:1.8em;color:var(--gold);font-weight:600;letter-spacing:2px}
+header .sub{font-size:0.85em;color:var(--text2);margin-top:6px;line-height:1.6}
+main{max-width:1000px;width:100%;padding:32px 20px 48px}
+.stats-bar{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.stats-bar .stat{text-align:center;padding:10px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;min-width:100px}
+.stats-bar .stat .num{font-size:1.6em;font-weight:700;color:var(--gold)}
+.stats-bar .stat .lbl{font-size:0.72em;color:var(--text2);margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;text-decoration:none;color:var(--text);transition:all 0.3s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(60,40,20,0.12);border-color:var(--gold)}
+.card .icon{font-size:2.2em;margin-bottom:10px;display:block}
+.card h3{color:var(--gold);font-size:1.15em;margin-bottom:6px}
+.card p{font-size:0.82em;line-height:1.7;color:var(--text2)}
+.card .tag-row{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.card .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:600;background:rgba(184,134,60,0.1);color:var(--gold)}
+footer{text-align:center;padding:20px;color:var(--text2);font-size:0.72em;border-top:1px solid var(--line);width:100%}
+footer a{color:var(--blue)}
+</style>
+</head>
+<body>
+<header>
+  <h1>🪷 华严宗部文献与修行资料</h1>
+  <p class="sub">Avataṃsaka Sūtra Collection · 华严法脉传承谱系 · 藏汉对译 · 修行体系 · 华藏世界海</p>
+</header>
+<main>
+  <div class="stats-bar">
+    <div class="stat"><div class="num">92</div><div class="lbl">人物轨迹</div></div>
+    <div class="stat"><div class="num">96</div><div class="lbl">传承关系边</div></div>
+    <div class="stat"><div class="num">46</div><div class="lbl">代表道场</div></div>
+    <div class="stat"><div class="num">5</div><div class="lbl">知识板块</div></div>
+    <div class="stat"><div class="num">50</div><div class="lbl">四语术语</div></div>
+  </div>
+  <div class="grid">
+    <a href="tabs/lineage.html" class="card">
+      <span class="icon">🌊</span>
+      <h3>法脉传承 · 时空长河</h3>
+      <p>交互式时间轴探索华严宗从印度源流到当代普贤乘的完整法脉传承谱系。含85节点动画播放、古地图模式、双人对比、Canvas语义缩放。</p>
+      <div class="tag-row"><span class="tag">知识图谱</span><span class="tag">Canvas时间轴</span><span class="tag">GIS地图</span><span class="tag">动画</span></div>
+    </a>
+    <a href="tabs/gap.html" class="card">
+      <span class="icon">📜</span>
+      <h3>华严文献 · 雅思渊才</h3>
+      <p>藏文Toh44(45品)与汉文八十华严(39品)的品目级差异矩阵。术语梵藏汉英四语对照、文本系谱60+部经典网络、原文三语对读。</p>
+      <div class="tag-row"><span class="tag">版本对照</span><span class="tag">术语库</span><span class="tag">文本系谱</span><span class="tag">对读</span></div>
+    </a>
+    <a href="tabs/jiaoxing.html" class="card">
+      <span class="icon">🧘</span>
+      <h3>教海行云 · 信解行证</h3>
+      <p>海云继梦和上普贤乘华严宗修行体系。从资粮道到正行、从初信到法身大士的完整修行次第。禅观法要、实修心要、讲法资源。</p>
+      <div class="tag-row"><span class="tag">修行蓝图</span><span class="tag">禅观法要</span><span class="tag">讲法资源</span></div>
+    </a>
+    <a href="tabs/frontier.html" class="card">
+      <span class="icon">🔬</span>
+      <h3>前沿对话 · 跨界研究</h3>
+      <p>华严思想与AI、计算现象学、神经科学、心灵哲学的深度对话。2023-2026多语文献综述与批判性评估。</p>
+      <div class="tag-row"><span class="tag">AI</span><span class="tag">现象学</span><span class="tag">神经科学</span><span class="tag">心灵哲学</span></div>
+    </a>
+    <a href="tabs/cosmology.html" class="card">
+      <span class="icon">🪷</span>
+      <h3>世主妙严 · 华藏世界海</h3>
+      <p>华藏世界海同心曼荼罗（二十重世界+十重风轮+毗卢遮那）。三界诸天二十八天层叠塔。华严艺术珍品与梵呗四十二字母。</p>
+      <div class="tag-row"><span class="tag">曼荼罗</span><span class="tag">三界诸天</span><span class="tag">艺术珍品</span><span class="tag">梵呗</span></div>
+    </a>
+  </div>
+</main>
+<footer>
+  <p>📖 华严宗部文献与修行资料数字化梳理项目 · <a href="https://github.com/LengyanReader/huayan_collection" target="_blank">GitHub</a></p>
+  <p style="margin-top:4px">数据来源: CBETA · 大正藏 · 德格版甘珠尔 · 84000 Project · BDRC · 大华严寺官网</p>
+</footer>
+</body>
+</html>
