@@ -93,7 +93,8 @@ def load_practice():
     """Load practice data from YAML files."""
     practice = {}
     for name in ['cultivation_system', 'meditation_essentials',
-                 'teaching_resources', 'heart_xref']:
+                 'teaching_resources', 'heart_xref',
+                 'youtube_playlists', 'huayan_panjiao']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data

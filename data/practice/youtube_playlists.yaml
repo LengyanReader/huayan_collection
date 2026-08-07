@@ -1,0 +1,118 @@
+# 大华严寺 YouTube 频道 — 播放清单知识库
+# YouTube Channel: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
+# Handle: @huayen-world
+# 最后更新: 2026-08-08
+
+channel:
+  name: 大華嚴寺
+  handle: "@huayen-world"
+  channel_id: UCJr3ifkvTs76XnR6SuyIfFQ
+  url: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
+  videos_url: https://www.youtube.com/@huayen-world/videos
+  playlists_url: https://www.youtube.com/@huayen-world/playlists
+  shorts_url: https://www.youtube.com/@huayen-world/shorts
+  rss_feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCJr3ifkvTs76XnR6SuyIfFQ
+  description: |
+    大華嚴寺官方YouTube頻道。完整記錄海雲繼夢法師（海雲和上）講經弘法影音內容，
+    涵蓋《華嚴經》講解、禪修指導、瑜伽活動、「海雲法語」系列等。
+    宗旨：好好生活、慢慢修行。
+
+playlists:
+  - id: huayan-jiaohai
+    name_zh: 華嚴教海
+    name_en: Huayan Teaching Ocean
+    type: 长篇讲经
+    description: |
+      《大方廣佛華嚴經》逐品深入講解。海雲繼夢法師核心講經系列。
+      目前連載《初發心功德品》（第8-12集持續更新）。
+      含完整《華嚴經》各品講記，為頻道最核心的長篇系列。
+    url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEpNKHjUj7BmmDNuQ5QJ7PxM
+    icon: 🔴
+
+  - id: haiyun-fayu
+    name_zh: 海雲法語
+    name_en: Haiyun Dharma Words
+    type: 短篇开示
+    description: |
+      海雲和上法語開示短片（約4-14分鐘）。
+      主題涵蓋：轉凡成聖、發願行法、佛菩薩加持、泯除瞋心、淨土關鍵、
+      福報累積、因果觀、口業修行、真假我辨識、末法時期修行要領等。
+      節錄自各大型講座精華片段。
+    url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEpemEeKtW5mnWpQcYhMJBjZ
+    icon: 🟠
+
+  - id: jiujiu-huayan
+    name_zh: 九九華嚴講座
+    name_en: 99 Huayan Lectures
+    type: 讲座精华
+    description: |
+      2026年最新系列。包含修行條件、頓教修行條件、明心見性、
+      AI時代修行心態等深度問答與精華剪輯。
+      TICC（台北國際會議中心）錄影系列。
+    url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEphZqLqkPJcEHWvqMqK8D2h
+    icon: 🟡
+
+  - id: yaoshi-north-america
+    name_zh: 藥師經北美講座
+    name_en: Medicine Buddha Sutra — North America Lectures
+    type: 经典讲座
+    description: |
+      2008年北美《藥師經》系列開示。近期「海雲法語」的母體講座來源之一。
+      完整講解藥師琉璃光如來本願功德經。
+    url_search: https://www.youtube.com/results?search_query=藥師經+海雲繼夢+北美
+    icon: 🟢
+
+  - id: shorts
+    name_zh: Shorts 修行精選
+    name_en: Practice Shorts
+    type: 短视频
+    description: |
+      修行要點精選短視頻。主題：戒律、佛菩薩示現、念佛持咒等。
+      節錄自2008北美藥師經開示及其他講座。
+    url_shorts: https://www.youtube.com/@huayen-world/shorts
+    icon: 📱
+
+  - id: dabeizhou-fahui
+    name_zh: 大悲咒齊心息災法會
+    name_en: Great Compassion Mantra — Calamity Relief Dharma Assembly
+    type: 法会记录
+    description: |
+      2020年大悲咒齊心息災法會系列（共4場完整開示）。
+    url_search: https://www.youtube.com/results?search_query=大悲咒+大華嚴寺+海雲繼夢+法會
+    icon: 🙏
+
+  - id: fohua-jingzuo
+    name_zh: 佛法講座系列
+    name_en: Dharma Lecture Series
+    type: 综合讲座
+    description: |
+      《佛法玄談》系列（至第6集）。含各類佛學專題講座。
+    url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEpjXJkYzuGNK8VqCqLShnWG
+    icon: 📚
+
+related_platforms:
+  - name: 大華嚴寺全球資訊網
+    url: https://www.huayenworld.org
+    sections:
+      - 聽·華嚴天籟 (音聲法門: 有聲書/梵唄/華嚴字母)
+      - 讀·華嚴燈藏 (閱藏修學: 直播/電子書/著作導讀)
+      - 修·華嚴靈思 (禪修實踐: 禪修啟蒙/禪觀論述/法脈源流)
+      - 境·華嚴萬象 (文化推廣: 中式瑜伽/至善獎/文物)
+      - 觀·華嚴脈湧 (相關連結: 鹿谷論禪/萬神博覽會/社群)
+      - 護·華嚴妙心 (護持管道: 線上捐款/志工)
+      - 願·華嚴花開 (年度計畫)
+  - name: Facebook 粉絲團
+    url: https://www.facebook.com/huayenlugu.org
+  - name: LINE 官方帳號
+    id: "@huayenworld"
+  - name: 語音弘法頻道 (MP3)
+    url: https://newtemple.idataiwan.com/info/232789
+  - name: Podcast (海雲繼夢法師講經)
+    url: https://podwise.ai/episodes/1270459
+
+meta:
+  last_updated: "2026-08-08"
+  note: |
+    YouTube播放清單URL為近似值，部分清單ID可能需在YouTube頻道頁面
+    直接確認。建議定期到 https://www.youtube.com/@huayen-world/playlists
+    核對更新。
