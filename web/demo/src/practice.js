@@ -16,9 +16,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   h+="<div id=pv-system class=pv-section>";
 
-  // ── 子目录导航 ──
-  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📐 修行体系:</b>"
-    +"<a href='#sys-stages' style=color:var(--blue)>三阶段</a>·<a href='#sys-blueprint' style=color:var(--blue)>四阶段蓝图</a>·<a href='#sys-six' style=color:var(--blue)>六科五大行法</a>·<a href='#sys-lineages' style=color:var(--blue)>法脉分工</a>·<a href='#sys-projects' style=color:var(--blue)>四大工程</a>·<a href='#sys-cognition' style=color:var(--blue)>识根智</a>·<a href='#sys-refuge' style=color:var(--blue)>三缘念</a>·<a href='#sys-evolution' style=color:var(--blue)>演进脉络</a></div>";
+  // ── Sub-navigation moved to left sidebar ──
 
   // ── Header ──
   h+="<div class=section style=border-left:4px solid var(--gold)><h2>🧘 华严行法 — 普贤乘修行体系</h2>";
@@ -116,7 +114,6 @@ function renderPractice(){
   // SUB-PAGE 2: 禅观法要 (hidden)
   // ═══════════════════════════════════════════
   h+="<div id=pv-meditation class=pv-section style=display:none>";
-  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>🗺 禅观法要:</b><a href='#med-overview' style=color:var(--blue)>体系总览</a>·<a href='#med-paths' style=color:var(--blue)>次第道与圆融道</a>·<a href='#med-stage1' style=color:var(--blue)>资粮道</a>·<a href='#med-stage2' style=color:var(--blue)>前行</a>·<a href='#med-stage3' style=color:var(--blue)>正行</a>·<a href='#med-classical' style=color:var(--blue)>古典义理地基</a>·<a href='#med-wujiao' style=color:var(--blue)>贤首五教仪</a>·<a href='#med-yicheng' style=color:var(--blue)>一乘不共别圆</a>·<a href='#med-texts' style=color:var(--blue)>典籍阐释</a>·<a href='#med-verify' style=color:var(--blue)>验证机制</a>·<a href='#med-heart' style=color:var(--blue)>实修心要</a></div>";
 
     // ── 体系总览 ──
   h+="<div class=section id=med-overview style=border-left:4px solid var(--gold)><h2>🗺 华严禅观体系总览</h2>";
@@ -577,7 +574,6 @@ function renderPractice(){
   h+="</div>"; // close pv-news
 
   h+="<div id=pv-resources class=pv-section style=display:none>";
-  h+="<div style='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:0.75em'><b style=color:var(--gold)>📡 讲法资源:</b><a href='#res-total' style=color:var(--blue)>全网总目</a>·<a href='#res-topics' style=color:var(--blue)>主题分类</a>·<a href='#res-books' style=color:var(--blue)>著作</a>·<a href='#res-yt' style=color:var(--blue)>YouTube</a>·<a href='#res-temples' style=color:var(--blue)>道场</a>·<a href='#res-sources' style=color:var(--blue)>出处参考</a>·<a href='#res-more' style=color:var(--blue)>检索补遗</a></div>";
 
   // ── 全网讲法总目 ──
   h+="<div class=section id=res-total><h2>📡 海云继梦全网讲法总目</h2>";
