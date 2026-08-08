@@ -334,16 +334,8 @@ function renderPractice(){
   h+="</div></div>";
   h+="</div>";
 
-  // ── 古典义理地基: 五教止观 ──
-  h+="<div class=section id=med-classical><h2>📜 古典义理地基 — 杜顺和尚五教止观</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>华严初祖杜顺大师所立五教止观,是华严宗禅观的<b>古典义理框架</b>。海云和上的四种观法是<b>实际操作体系</b>,五教止观则是其<b>背后的意识状态分类学</b>——二者构成「行」与「解」的互补关系。</p>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>一.法有我无门(小乘教)</span><div class=body>破除「我执」,体悟我空,但法执犹存。对应四禅八定。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 资粮道阶段的基本停心功夫。</span></div></div>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>二.生即无生门(大乘始教)</span><div class=body>体悟「法空」——外境皆由阿赖耶识变现。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 唯心识观——「知唯是心」的义理背景。</span></div></div>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>三.事理圆融门(大乘终教)</span><div class=body>空有不二,理事圆融无碍。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 真如实观——理(真如)与事(五蕴流转)融合的义理背景。</span></div></div>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>四.语观双绝门(大乘顿教)</span><div class=body>言语道断,心行处灭。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 奢摩他观——「舍意识」「能所双泯」的义理背景。</span></div></div>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>五.华严三昧门(一乘圆教.究竟)</span><div class=body>见法界缘起之相——万象影现,一即一切、圆融无碍。此即海印三昧。<br><span style=font-size:.7em;color:var(--text2)>在海云体系中对应: 正行究竟——三摩地.海印三昧.法界三观现前.42位圆满。</span></div></div>";
-  h+="</div>";
+  // ── 古典义理地基: 杜顺五教止观 (数据驱动) ──
+  h+=renderDushunSection();
 
   // ── 华严判教 (从 PRACTICE_DATA.huayan_panjiao 数据驱动) ──
   h+=renderPanjiaoSection();
@@ -784,7 +776,7 @@ function renderPanjiaoSection() {
       h += '</table></div>';
     } else if (sec.id === 'shizong') {
       // ── 十宗 ──
-      h += '<div class=wu-door onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>📋 ' + sec.title + '</span><div class=body>';
+      h += '<div class=wu-door id=med-shizong onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>📋 ' + sec.title + '</span><div class=body>';
       h += '<p style=font-size:.78em;color:var(--text2)>' + sec.description.replace(/\n/g,'<br>') + '</p>';
       h += '<table class=v-table style=font-size:.7em><tr><th>#</th><th>宗名</th><th>所属</th><th>核心教义</th></tr>';
       (sec.schools||[]).forEach(function(s) {
@@ -802,7 +794,7 @@ function renderPanjiaoSection() {
       h += '</div>';
     } else if (sec.id === 'futian') {
       // ── 与其他宗派比较 ──
-      h += '<div class=wu-door onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>🔀 ' + sec.title + '</span><div class=body>';
+      h += '<div class=wu-door id=med-futian onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>🔀 ' + sec.title + '</span><div class=body>';
       h += '<p style=font-size:.78em;color:var(--text2)>' + sec.description.replace(/\n/g,'<br>') + '</p>';
       (sec.comparisons||[]).forEach(function(c) {
         h += '<div class=topic-card><h4>' + c.school + ' (' + c.founder + ')</h4>';
@@ -818,6 +810,66 @@ function renderPanjiaoSection() {
     pj.references.forEach(function(r, i) { h += (i>0?' · ':'') + r; });
     h += '</p></div>';
   }
+  return h;
+}
+
+// ═══ 杜顺五教止观渲染 (从 PRACTICE_DATA.dushun_wujiao_zhiguan) ═══
+function renderDushunSection() {
+  var dz = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.dushun_wujiao_zhiguan) ? PRACTICE_DATA.dushun_wujiao_zhiguan : null;
+  if (!dz || !dz.gates) return '';
+  var info = dz.text_info || {};
+  var h = '<div class=section id=med-classical><h2>📜 ' + info.title + ' — ' + (info.author||'') + '</h2>';
+  h += '<p style=font-size:.78em;color:var(--text2);margin-bottom:6px>'
+    + (info.canon_ref||'') + ' · <a href="' + (info.cbeta_url||'#') + '" target=_blank>CBETA</a>'
+    + ' · <a href="' + (info.wikisource_url||'#') + '" target=_blank>维基文库</a></p>';
+  if (dz.overview) {
+    h += '<div class=stage-box style=font-size:0.82em><b>' + (dz.overview.opening_line||'').replace(/\n/g,'<br>') + '</b></div>';
+  }
+  // ── Five Gates ──
+  (dz.gates||[]).forEach(function(g, gi) {
+    h += '<div class=wu-door onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span>';
+    h += '<span class=ttl>' + (gi+1) + '. ' + g.name + ' <span style=font-size:0.75em;color:var(--text2)>(' + g.panjiao + ')</span></span>';
+    h += '<div class=body>';
+    // Original text
+    h += '<div class=stage-box><b>📜 原文 (T45n1867)</b><p style=font-size:0.78em;line-height:1.9;white-space:pre-line>'
+      + (g.original_text||'') + '</p></div>';
+    // Practice
+    if (g.practice) h += '<p style=font-size:0.75em;color:var(--gold)>⚡ 修行法要: ' + g.practice + '</p>';
+    // Commentaries (collapsible)
+    if (g.commentaries && g.commentaries.length) {
+      h += '<details style=font-size:0.78em;margin:4px 0><summary><b>📝 各家注解 (' + g.commentaries.length + '家)</b></summary>';
+      g.commentaries.forEach(function(c) {
+        h += '<div class=topic-card><h4>' + c.source + '</h4><p>' + (c.text||'').replace(/\n/g,'<br>') + '</p></div>';
+      });
+      h += '</details>';
+    }
+    // Critical notes (collapsible)
+    if (g.critical_notes && g.critical_notes.length) {
+      h += '<details style=font-size:0.78em;margin:4px 0><summary><b>🔍 学术评注 (' + g.critical_notes.length + '篇)</b></summary>';
+      g.critical_notes.forEach(function(n) {
+        h += '<div class=topic-card><h4>' + n.author + '</h4><p>' + (n.text||'').replace(/\n/g,'<br>') + '</p></div>';
+      });
+      h += '</details>';
+    }
+    h += '</div></div>'; // close wu-door
+  });
+  // ── Lineage development table ──
+  if (dz.lineage_development) {
+    var ld = dz.lineage_development;
+    h += '<details style=font-size:0.78em;margin-top:8px><summary><b>📅 ' + (ld.title||'') + '</b></summary>';
+    h += '<table class=v-table style=font-size:0.75em><tr><th>时代</th><th>人物</th><th>贡献</th><th>关键著作</th></tr>';
+    (ld.stages||[]).forEach(function(s) {
+      h += '<tr><td>' + s.period + '</td><td><b>' + s.figure + '</b></td><td>' + s.contribution + '</td><td>' + s.key_text + '</td></tr>';
+    });
+    h += '</table></details>';
+  }
+  // References
+  if (dz.references) {
+    h += '<details style=font-size:0.7em;margin-top:4px><summary>📚 参考文献 (' + dz.references.length + '条)</summary>';
+    dz.references.forEach(function(r) { h += '<p style=margin:1px 0>' + r + '</p>'; });
+    h += '</details>';
+  }
+  h += '</div>';
   return h;
 }
 

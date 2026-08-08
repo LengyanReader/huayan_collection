@@ -94,7 +94,8 @@ def load_practice():
     practice = {}
     for name in ['cultivation_system', 'meditation_essentials',
                  'teaching_resources', 'heart_xref',
-                 'youtube_playlists', 'huayan_panjiao']:
+                 'youtube_playlists', 'huayan_panjiao',
+                 'dushun_wujiao_zhiguan']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -611,11 +612,17 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">前行</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">正行</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-classical');return false">古典义理地基</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-wujiao');return false">贤首五教仪</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yicheng');return false">一乘不共别圆</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-texts');return false">典籍阐释</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-verify');return false">验证机制</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">实修心要</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">📐 华严判教 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-wujiao');return false">贤首五教仪</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yicheng');return false">一乘不共别圆</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-shizong');return false">十宗</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-futian');return false">与其他宗派比较</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
