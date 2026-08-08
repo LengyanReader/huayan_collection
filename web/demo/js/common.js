@@ -616,4 +616,24 @@
     }
   });
 
+  /* ═══════════════════════════════════════════════════════
+     8. Sidebar Collapsible Groups (accordion)
+     ═══════════════════════════════════════════════════════ */
+  window.toggleSidebarGroup = function (link) {
+    var group = link.closest('.sidebar-group');
+    if (!group || !group.classList.contains('has-subs')) return true; // proceed normally
+    var wasOpen = group.classList.contains('open');
+    // Close all siblings
+    document.querySelectorAll('.sidebar-group.open').forEach(function (g) {
+      if (g !== group) g.classList.remove('open');
+    });
+    if (wasOpen) {
+      group.classList.remove('open');
+      return false; // suppress original onclick
+    } else {
+      group.classList.add('open');
+      return true; // allow original onclick to fire
+    }
+  };
+
 })();
