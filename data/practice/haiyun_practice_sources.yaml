@@ -1,7 +1,7 @@
 # 海云继梦法师 华严禅法·修行体系 关键著作与讲记出处
 # Key Practice Sources — Books, Lecture Series, Videos
 # 原则: 可溯源·可验证·出处精确
-# 最后更新: 2026-08-08
+# 最后更新: 2026-08-08 (穷尽搜索: YouTube·Bilibili·Spotify·Apple·fjdh·wmxf·putixia)
 
 # ── 技术面·工程面核心体系 ──
 core_framework:
@@ -152,4 +152,136 @@ three_stages_quick_ref:
     technical: 三摩呬多→三摩钵底→三摩地·法界三观·界外定
     engineering: 观照(能所分离)→照住(能所合一)→照见(能所双泯)
     xuanmen: 意中玄→体中玄
-    source: 《禅修正行》系列 (至少12集) + 《华严金师子章讲记》(2010)
+    source: 《禅修正行》系列 (至少16集) + 《华严金师子章讲记》(2010)
+
+# ═══ 穷尽搜索: 全平台禅修相关资源清单 ═══
+exhaustive_platform_index:
+  search_date: "2026-08-08"
+  principle: "以下为截至搜索日期的穷尽搜索结果。部分平台受搜索限制(如YouTube未返回播放清单)，已标注。"
+
+  # ── YouTube ──
+  youtube:
+    channel: "@huayen-world (大華嚴寺)"
+    channel_url: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
+    playlists_url: https://www.youtube.com/@huayen-world/playlists
+    note: "YouTube网页未返回播放清单列表(需直接访问)。已知内容: 華嚴教海(华严经逐品讲解)·海雲法語(法语短片)·九九華嚴講座(2026)·藥師經北美講座(2008)·法会纪实·Shorts"
+    key_series:
+      - name: "華嚴教海"
+        type: 长片播放清单
+        content: 华严经逐品讲解·佛法玄谈(至少6集)·九九華嚴TICC录影(至少6集)
+      - name: "海雲法語"
+        type: 短片系列
+        content: 法语开示·转凡成圣·发愿行法·佛菩萨加持·泯除瞋心·净土关键
+      - name: "九九華嚴講座"
+        type: 讲座精华
+        year: 2026
+        content: 修行条件·顿教修行条件·明心见性·AI时代修行心态
+      - name: "藥師經北美講座"
+        type: 节录系列
+        year: 2008
+        content: 北美药师经系列开示(近期海雲法語的母体讲座来源)
+      - name: "大悲咒齊心息災法會"
+        type: 法会纪实
+        year: 2020
+        episodes: 4场
+    search_note: "YouTube搜索限制, 未能获取完整播放清单。建议直接访问频道Playlists页面获取完整列表。"
+
+  # ── Bilibili ──
+  bilibili:
+    search_url: https://search.bilibili.com/all?keyword=海云继梦
+    uploaders:
+      - name: 小叮当365
+        content: 華嚴六科系列(8集)·善财童子五十三参(约43小时)
+      - name: 迪拉酱
+        content: 心经40集·地藏菩萨本愿经10集·药师经10集
+      - name: 静心止观
+        content: 改变你生命的九堂课·普贤行品·普门品
+      - name: 空华觉海
+        content: 法语短片·拜佛行法教学
+      - name: 一切唯心造心空一切空 (UID:496444081)
+        content: 心经开示持续更新
+      - name: 正经教主
+        content: 阿弥陀经2007北美福慧寺
+      - name: 能殊
+        content: 生命教育/禅修(2023起)
+    key_series:
+      - name: "華嚴六科系列 — 華嚴禪行法"
+        episodes: 8集
+        duration: 每集约52-57分钟
+        year: 2024-07
+        url: https://www.bilibili.com/video/BV1iS421X7S8/
+        note: "華嚴六科之三, 直接对应禅修正行技术面教学"
+      - name: "善财童子五十三参"
+        duration: 约43小时
+        year: 2024-08
+      - name: "心经"
+        episodes: 40集
+        year: 2025-03
+      - name: "地藏菩萨本愿经"
+        episodes: 10集
+        year: 2025-03
+      - name: "药师经"
+        episodes: 10集
+        year: 2025-04
+      - name: "改变你生命的九堂课"
+        year: 2025-04
+        content: 烦恼·习气·无常·出离·慈爱·安忍·物质化陷阱
+      - name: "圆融道修法"
+        episodes: 4讲
+        year: 2025
+      - name: "认真生活就是一部华严经"
+        episodes: 4讲
+        year: 2025
+      - name: "占察善恶业报经"
+        year: 2025-05
+
+  # ── Spotify / Apple Podcast ──
+  podcast:
+    show_name: "普賢乘華嚴宗"
+    spotify_url: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
+    apple_url: https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889
+    update_freq: 每周一、周三更新
+    series_count: S1至S23系列
+    key_series:
+      - name: "S3 華嚴禪行法"
+        content: 禅修正行相关音频(最接近禅修正行讲记的播客版本)
+    note: "禅修正行未作为独立播客系列上线, 但S3華嚴禪行法为其对应音频内容"
+
+  # ── 文字讲记 (fjdh.cn / wmxf.net / putixia.org) ──
+  text_transcripts:
+    platform: "佛教导航 fjdh.cn + 五明学佛网 wmxf.net + 菩提下 putixia.org"
+    year_published: 2013年11月集中发布
+    key_series:
+      - name: "华严禅行法 — 《禅修正行》"
+        episodes: 至少16集
+        url_example: https://www.fjdh.cn/wumin/2013/11/145705302872.html
+        note: "第1-16集有文字逐字稿, 第13-15集未在搜索中直接体现但第16集存在"
+      - name: "华严禅行法 — 《禅修前行》"
+        episodes: 至少8集
+        url_example: https://www.fjdh.cn/wumin/2013/11/190837302819.html
+      - name: "华严禅行法 — 《禅观》"
+        episodes: 10集
+        platform: cnbuddha.com
+    other_text_series:
+      - "耳根圆通章 (至少20集, putixia.org)"
+      - "四十华严讲记 (68+讲, fjdh.cn)"
+      - "华严金师子章讲记 (14集, fjdh.cn)"
+      - "贤首五教仪—法界观 (53集+, listennotes)"
+
+  # ── 其他平台 ──
+  other_platforms:
+    - name: "ListenNotes 播客目录"
+      url: https://www.listennotes.com/podcasts/海云继梦法师讲经-播客/
+    - name: "Google Play 电子书"
+      url: https://play.google.com/store/books/details?id=QREREAAAQBAJ
+      content: "《煖身: 华严禅修入门》(2021)"
+    - name: "空庭书苑 (出版社)"
+      note: 海云继梦著作主要出版方, 含《解心》《迈向佛陀的境界》《普贤十大愿王》《非常占察经》等
+
+  # ── 搜索局限说明 ──
+  search_limitations:
+    - "YouTube 网页搜索不返回播放清单内容, 需手动访问频道"
+    - "Bilibili 内容分散在多个UP主, 无官方统一频道"
+    - "fjdh.cn/wmxf.net 讲记为2013年集中发布, 此后未更新"
+    - "Apple Podcast S1-S23系列中仅S3明确标注華嚴禪行法"
+    - "以下可能存在但未在本次搜索中确认: 华严六科之二(華嚴淨化禪)·之四(華嚴密法)·之五(華嚴行法)·之六(華嚴密行)"
