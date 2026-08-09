@@ -343,6 +343,9 @@ function renderGap(){
   h+="</div>"; // close 文本系谱 section div
   h+="</div>"; // close gv-genealogy
 
+  // ═══ 华严经学 (从 GAP.avatamsaka_studies 数据驱动) ═══
+  h+=renderAvatamsakaStudies();
+
   // ═══ REFERENCES SECTION ═══
   h+="<div id=gv-refs class=gv-section style=display:none>";
 
@@ -377,6 +380,43 @@ function renderGap(){
 }
 
 // ═══ GAP SUB-NAV ═══
+// ═══ 华严经学渲染 (从 GAP.avatamsaka_studies) ═══
+function renderAvatamsakaStudies() {
+  var avs = (typeof GAP !== 'undefined' && GAP.avatamsaka_studies) ? GAP.avatamsaka_studies : null;
+  if (!avs || !avs.sections) return '';
+  var h = '<div id=gv-avatamsaka_studies class=gv-section style=display:none>';
+  avs.sections.forEach(function(sec) {
+    h += '<div class=section>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t) {
+        h += '<div class=stage-box><b>' + t.title + '</b>';
+        h += '<p style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + t.body + '</p>';
+        if (t.sources) {
+          h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📎 ';
+          t.sources.forEach(function(s,i) { h += (i>0?'<br>':'') + s; });
+          h += '</p>';
+        }
+        if (t.links) {
+          h += '<p style="font-size:0.7em;margin-top:2px">';
+          Object.keys(t.links).forEach(function(k) { h += '<a href="' + t.links[k] + '" target=_blank style="color:var(--blue)">📖 ' + k + '</a> '; });
+          h += '</p>';
+        }
+        h += '</div>';
+      });
+    }
+    h += '</div>';
+  });
+  if (avs.references) {
+    h += '<div class=section><h2>📚 参考文献</h2><ul style="font-size:0.78em;line-height:1.9">';
+    avs.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
+    h += '</ul></div>';
+  }
+  h += '</div>'; // close gv-avatamsaka_studies
+  return h;
+}
+
 function switchGapView(view,btn){
   document.querySelectorAll(".gv-nav").forEach(function(b){b.classList.remove("active");});
   if(btn)btn.classList.add("active");

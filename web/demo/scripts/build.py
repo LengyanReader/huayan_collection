@@ -62,6 +62,10 @@ def load_gap():
     gc = read_yaml('translation/gap_content.yaml')
     if gc:
         gap['content'] = gc
+    # Merge avatamsaka studies
+    avs = read_yaml('translation/avatamsaka_studies.yaml')
+    if avs:
+        gap['avatamsaka_studies'] = avs
     return gap
 
 
@@ -361,7 +365,6 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>🌊 法脉传承 · 时空长河</h1>
-  <div style="font-size:0.68em;color:var(--text2);margin-left:auto">v10.4 · 10区63道场 · 20260806</div>
 </header>
 
 <div id="search-bar">
@@ -598,6 +601,14 @@ def main():
     <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchGapView('overview',this);return false">📊 差异总览</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('avatamsaka_studies',this);return false">🌏 华严经学 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">起源与形成</a>
+    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">翻译与流传</a>
+    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">结构关系与表法</a>
+    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">义学阐释</a>
+    </div></div>
     '''
     gap_html = build_simple_tab_page('华严文献 · 雅思渊才', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
     gap_path = TABS_OUT / 'gap.html'
