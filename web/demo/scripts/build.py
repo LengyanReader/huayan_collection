@@ -604,10 +604,10 @@ def main():
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('avatamsaka_studies',this);return false">🌏 华严经学 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
-    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">起源与形成</a>
-    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">翻译与流传</a>
-    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">结构关系与表法</a>
-    <a href="#" class="sub-link" onclick="switchGapView('avatamsaka_studies');return false">义学阐释</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-origins');return false">起源与形成</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-transmission');return false">翻译与流传</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-structure');return false">结构关系与表法</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-doctrinal');return false">义学阐释</a>
     </div></div>
     '''
     gap_html = build_simple_tab_page('华严文献 · 雅思渊才', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')

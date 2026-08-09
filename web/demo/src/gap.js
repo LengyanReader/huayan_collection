@@ -386,7 +386,7 @@ function renderAvatamsakaStudies() {
   if (!avs || !avs.sections) return '';
   var h = '<div id=gv-avatamsaka_studies class=gv-section style=display:none>';
   avs.sections.forEach(function(sec) {
-    h += '<div class=section>';
+    h += '<div class=section id=avs-' + sec.id + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
     if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
     if (sec.topics) {
@@ -421,7 +421,15 @@ function switchGapView(view,btn){
   document.querySelectorAll(".gv-nav").forEach(function(b){b.classList.remove("active");});
   if(btn)btn.classList.add("active");
   document.querySelectorAll(".gv-section").forEach(function(s){s.style.display="none";});
-  document.getElementById("gv-"+view).style.display="block";
+  var el=document.getElementById("gv-"+view); if(el)el.style.display="block";
+}
+
+function gapSubNav(view,anchor){
+  switchGapView(view);
+  setTimeout(function(){
+    var el=document.getElementById(anchor);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  },150);
 }
 
 function scrollToP(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='rgba(184,134,60,0.15)';setTimeout(function(){el.style.background='';},1500);}}
