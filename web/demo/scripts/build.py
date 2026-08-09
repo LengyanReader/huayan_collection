@@ -155,7 +155,7 @@ PAGE_TOP = '''<!DOCTYPE html>
 </head>
 <body>
 <header id="header">
-  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
@@ -358,7 +358,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 </head>
 <body>
 <header id="header">
-  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>🌊 法脉传承 · 时空长河</h1>
   <div style="font-size:0.68em;color:var(--text2);margin-left:auto">v10.4 · 10区63道场 · 20260806</div>
 </header>
@@ -532,7 +532,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 </head>
 <body>
 <header id="header">
-  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
@@ -610,9 +610,9 @@ def main():
     # ── Build Tab3: Jiaoxing (renamed, restructured) ──
     sidebar_jx = '''
     <h3>🧘 教海行云</h3>
-    <div class="sidebar-group has-subs open">
-    <a href="#" class="nav-link active has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('system',this);return false">📐 修行体系 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs active" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('system',this);return false">📐 修行体系 <span class="toggle-arrow">▾</span></a>
+    <div class="sub-links" style=display:block>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-stages');return false">三阶段</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-blueprint');return false">四阶段蓝图</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-six');return false">六科五大行法</a>
@@ -638,7 +638,7 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-wujiao');return false">贤首五教仪</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yicheng');return false">一乘不共别圆</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-shizong');return false">十宗</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-futian');return false">与其他宗派比较</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-futian');return false">宗派比较</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
@@ -700,13 +700,26 @@ def main():
     sidebar_sp = '''
     <h3>🌱 灵性仁本</h3>
     <div class="sidebar-group"><a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学</a></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">海云法师体系</a>
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">灵性GDP·三世间框架</a>
+    </div></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 仁本·人本经济学</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识体系</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境史·人类世</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='critical_humanities';renderSpirit();return false">🌐 批判人文·多元世界</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='heritage_practice';renderSpirit();return false">🏛 遗产实践·活态传承</a></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">二十四节气·IPBES</a>
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='heritage_practice';renderSpirit();return false">遗产实践·活态传承</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境人文 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='env_history';renderSpirit();return false">人类世·环境史</a>
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='critical_humanities';renderSpirit();return false">批判人文·多元世界</a>
+    </div></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践</a></div>
     '''
     sp_html = build_simple_tab_page('灵性仁本 · 澄明永续', 'spirit', sidebar_sp, 'if(typeof renderSpirit==="function")renderSpirit();', view_id='spirit-view')

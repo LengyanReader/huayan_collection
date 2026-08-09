@@ -8,7 +8,7 @@
 </head>
 <body>
 <header id="header">
-  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>灵性仁本 · 澄明永续</h1>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
@@ -17,13 +17,26 @@
     
     <h3>🌱 灵性仁本</h3>
     <div class="sidebar-group"><a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学</a></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">海云法师体系</a>
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">灵性GDP·三世间框架</a>
+    </div></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 仁本·人本经济学</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识体系</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境史·人类世</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='critical_humanities';renderSpirit();return false">🌐 批判人文·多元世界</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='heritage_practice';renderSpirit();return false">🏛 遗产实践·活态传承</a></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">二十四节气·IPBES</a>
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='heritage_practice';renderSpirit();return false">遗产实践·活态传承</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境人文 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='env_history';renderSpirit();return false">人类世·环境史</a>
+    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='critical_humanities';renderSpirit();return false">批判人文·多元世界</a>
+    </div></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践</a></div>
     
   </nav>

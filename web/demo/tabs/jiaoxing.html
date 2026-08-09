@@ -8,7 +8,7 @@
 </head>
 <body>
 <header id="header">
-  <a href="../index.html" class="back-link">&larr; 总览</a>
+  <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>教海行云 · 信解行证</h1>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
@@ -16,9 +16,9 @@
   <nav class="sidebar" id="sidebar">
     
     <h3>🧘 教海行云</h3>
-    <div class="sidebar-group has-subs open">
-    <a href="#" class="nav-link active has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('system',this);return false">📐 修行体系 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs active" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('system',this);return false">📐 修行体系 <span class="toggle-arrow">▾</span></a>
+    <div class="sub-links" style=display:block>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-stages');return false">三阶段</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-blueprint');return false">四阶段蓝图</a>
     <a href="#" class="sub-link" onclick="jxSubNav('system','sys-six');return false">六科五大行法</a>
@@ -44,7 +44,7 @@
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-wujiao');return false">贤首五教仪</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yicheng');return false">一乘不共别圆</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-shizong');return false">十宗</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-futian');return false">与其他宗派比较</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-futian');return false">宗派比较</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
