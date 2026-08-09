@@ -126,6 +126,11 @@ def load_bibliography():
     return read_yaml('references/bibliography.yaml') or {}
 
 
+def load_glossary():
+    """Load bilingual glossary from data/references/bilingual_glossary.yaml."""
+    return read_yaml('references/bilingual_glossary.yaml') or {}
+
+
 def get_bib_for_tags(bib, tags):
     """Filter bibliography entries matching any of the given tags.
     Returns a flat list of matching entries across all categories.
@@ -259,6 +264,7 @@ def build_lineage_page():
     graph = load_graph()
     events = load_events()
     bib = load_bibliography()
+    glossary = load_glossary()
     graph_json = json.dumps(graph, ensure_ascii=False)
 
     # Build data.js content
@@ -266,6 +272,7 @@ def build_lineage_page():
 var GRAPH = {graph_json};
 var DATA = GRAPH;
 var BIBLIOGRAPHY = {json.dumps(bib, ensure_ascii=False)};
+var BILINGUAL_GLOSSARY = {json.dumps(glossary, ensure_ascii=False)};
 var nodeMap = {{}};
 if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 var GAP = {{}};
@@ -495,6 +502,7 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
     haiyun_res = read_yaml('practice/haiyun_resources.yaml') or {}
     spirit = load_spirit()
     bib = load_bibliography()
+    glossary = load_glossary()
 
     # Build inline data script
     data_script = f'''
@@ -507,6 +515,7 @@ var PRACTICE_DATA = {json.dumps(practice, ensure_ascii=False)};
 var FRONTIER_DATA = {json.dumps(frontier, ensure_ascii=False)};
 var SPIRIT_DATA = {json.dumps(spirit, ensure_ascii=False)};
 var BIBLIOGRAPHY = {json.dumps(bib, ensure_ascii=False)};
+var BILINGUAL_GLOSSARY = {json.dumps(glossary, ensure_ascii=False)};
 var HEART_ARTICLES = {json.dumps(heart_articles, ensure_ascii=False)};
 var DATA = GRAPH;
 var nodeMap = {{}};

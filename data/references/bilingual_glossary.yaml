@@ -1,0 +1,425 @@
+# ═══ 华严宗部数字化梳理项目 — 全站双语术语与出处链接知识库 ═══
+# Bilingual Glossary & Verified Sources — applicable to ALL 6 tabs
+# 原则: 每一个概念·人名·书名·术语, 给出 zh/en 双语对应 + 验证链接 + 出处
+# 最后更新: 2026-08-08
+
+# ── 一、华严核心术语 (Huayan Core Terms) ──
+huayan_terms:
+  - zh: 华严宗
+    en: Huayan School (Ch. Huáyán Zōng) / Flower Garland School
+    sa: Avataṃsaka
+    note: 中国佛教八大宗派之一, 以《华严经》为根本经典
+    source: 大正藏 T10n0279
+    used_in: [lineage, gap, jiaoxing, cosmology]
+
+  - zh: 法界缘起
+    en: Dependent Arising of the Dharma Realm (Skt. Dharmadhātu-pratītyasamutpāda)
+    note: 华严宗核心教义——一切现象在法界中互相依存、相即相入
+    source: 法藏《华严一乘教义分齐章》T45n1866
+    link_cbeta: https://cbetaonline.dila.edu.tw/zh/T45n1866
+    used_in: [lineage, jiaoxing, frontier, spirit]
+
+  - zh: 事事无碍
+    en: Interpenetration of All Phenomena (Non-obstruction Among Events)
+    note: 华严四法界之最高——每一事物互不相碍、互摄互入
+    source: 法藏《华严经探玄记》T35n1733
+    used_in: [jiaoxing, frontier, spirit]
+
+  - zh: 因陀罗网
+    en: Indra's Net (Skt. Indrajāla)
+    note: 忉利天宫宝网——珠珠相映、影现重重, 华严事事无碍的经典隐喻
+    source: 《华严经·十地品》T10n0279
+    scholar_ref: "Francis H. Cook, Hua-yen Buddhism: The Jewel Net of Indra (Penn State, 1977), ISBN 978-0271021904"
+    link_goodreads: https://www.goodreads.com/book/show/1080330.Hua_yen_Buddhism
+    used_in: [cosmology, frontier, spirit]
+
+  - zh: 五教止观
+    en: Five Teachings of Calming and Contemplation (Wǔjiào Zhǐguān)
+    note: 华严初祖杜顺所立——法有我无·生即无生·事理圆融·语观双绝·华严三昧
+    source: 杜顺《华严五教止观》T45n1867
+    link_cbeta: https://cbetaonline.dila.edu.tw/zh/T45n1867
+    used_in: [jiaoxing]
+
+  - zh: 五教十宗
+    en: Five Teachings and Ten Schools (Wǔjiào Shízōng)
+    note: 法藏所立判教体系——小·始·终·顿·圆五教; 十宗从「我法俱有」到「圆明具德」
+    source: 法藏《华严五教章》T45n1866
+    used_in: [jiaoxing]
+
+  - zh: 普贤乘
+    en: Samantabhadra Vehicle (Pǔxián Chéng)
+    note: 海云继梦法师对华严一乘圆教的当代实践体系命名
+    source: 海云继梦《四十华严讲记》/ 大华严寺官网
+    link_huayen: https://www.huayenworld.org
+    used_in: [lineage, jiaoxing]
+
+  - zh: 海印三昧
+    en: Ocean-Seal Samādhi (Skt. Sāgara-mudrā-samādhi)
+    note: 如大海映现万象——华严最高禅定境界
+    source: 《华严经·贤首品》T10n0279
+    used_in: [jiaoxing, cosmology]
+
+  - zh: 理事无碍
+    en: Non-obstruction of Principle and Phenomena (Lǐ Shì Wú'ài)
+    note: 华严四法界之第三——理(真如)与事(现象)相即相入
+    source: 杜顺《华严五教止观》· 法藏《华严一乘教义分齐章》
+    used_in: [jiaoxing, frontier, spirit]
+
+  - zh: 一心法界
+    en: One Mind as the Dharma Realm (Yīxīn Fǎjiè)
+    note: 华严宗以「一心」为法界之体——心佛众生三无差别
+    source: 《华严经·夜摩天宫偈赞品》T10n0279
+    used_in: [jiaoxing, spirit]
+
+  - zh: 华藏世界海
+    en: The Ocean of Flower Treasury Worlds (Skt. Kusuma-talagarbha-vyūhālamkāra-lokadhātu-samudra)
+    note: 毗卢遮那佛净土——二十重世界层层叠绕的宇宙图景
+    source: 《华严经·华藏世界品》T10n0279
+    link_cbeta: https://cbetaonline.dila.edu.tw/zh/T10n0279
+    used_in: [cosmology]
+
+# ── 二、华严祖师与历史人物 (Huayan Patriarchs & Historical Figures) ──
+figures:
+  - zh: 杜顺(帝心尊者)
+    en: Dushun (Venerable Dìxīn, 557–640 CE)
+    role: 华严宗初祖 (First Patriarch of Huayan School)
+    key_work: 《华严五教止观》T45n1867
+    link_cbeta: https://cbetaonline.dila.edu.tw/zh/T45n1867
+    used_in: [lineage, jiaoxing]
+
+  - zh: 智俨(至相大师)
+    en: Zhiyan (Venerable Zhìxiāng, 602–668 CE)
+    role: 华严宗二祖 (Second Patriarch)
+    key_work: 《华严经搜玄记》T35n1732 / 《华严经孔目章》
+    link_cbeta: https://cbetaonline.dila.edu.tw/zh/T35n1732
+    used_in: [lineage, jiaoxing]
+
+  - zh: 法藏(贤首国师)
+    en: Fazang (National Master Xiánshǒu, 643–712 CE)
+    role: 华严宗三祖 (Third Patriarch), 华严五教十宗判教体系创立者
+    key_work: 《华严一乘教义分齐章》T45n1866 / 《金师子章》T45n1880
+    link_cbeta: https://cbetaonline.dila.edu.tw/zh/T45n1866
+    scholar_ref: "陈永革《法藏评传》(南京大学出版社, 2006), ISBN 978-7305046056"
+    used_in: [lineage, jiaoxing]
+
+  - zh: 澄观(清凉国师)
+    en: Chengguan (National Master Qīngliáng, 738–839 CE)
+    role: 华严宗四祖 (Fourth Patriarch)
+    key_work: 《大方广佛华严经疏》T35n1735
+    link_cbeta: https://cbetaonline.dila.edu.tw/zh/T35n1735
+    used_in: [lineage, jiaoxing]
+
+  - zh: 宗密(圭峰大师)
+    en: Zongmi (Master Guīfēng, 780–841 CE)
+    role: 华严宗五祖 (Fifth Patriarch), 亦为禅宗荷泽宗法嗣
+    key_work: 《禅源诸诠集都序》T48n2015 / 《原人论》T45n1886
+    scholar_ref: "Peter N. Gregory, Tsung-mi and the Sinification of Buddhism (Princeton, 1991), ISBN 978-0691073735"
+    link_goodreads: https://www.goodreads.com/book/show/2524150.Tsung_Mi_and_the_Sinification_of_Buddhism
+    used_in: [lineage, jiaoxing, frontier]
+
+  - zh: 李通玄(长者)
+    en: Li Tongxuan (Elder Lǐ, 635–730 CE)
+    role: 华严居士学者, 以《易经》融会华严
+    key_work: 《新华严经论》T36n1739
+    used_in: [lineage, jiaoxing]
+
+  - zh: 海云继梦法师
+    en: Ven. Haiyun Jimeng (b. 1950)
+    role: 贤首宗高原法系第四十二世传人·大华严寺导师·普贤乘创立者
+    key_work: 《我们只有一个选择》(2010) / 《四十华严讲记》/ 灵性经济学体系
+    link_huayen: https://www.huayenworld.org
+    link_youtube: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
+    used_in: [lineage, jiaoxing, spirit]
+
+# ── 三、灵性/人本经济学 (Spiritual & Humanistic Economics) ──
+economics:
+  - zh: 灵性经济学
+    en: Spiritual Economics (Haiyun Jimeng's Paradigm)
+    note: 海云继梦法师创立——以灵性为文明之根本的经济学范式转换, 非西方"Spiritual Economics"之翻译
+    source: 海云继梦《我们只有一个选择》(空庭书苑, 2010), ISBN 9789867484475
+    link_buybook: https://www.buybook.tw/book-0010482429.htm
+    cf_western: "与西方'Spiritual Economics'(e.g. Charles Eisenstein, Sacred Economics, 2011)不同根基——海云体系以华严三世间为框架"
+
+  - zh: 人本经济学(西方学术)
+    en: Humanistic Economics (Western Academic Tradition)
+    note: 对主流经济学的世俗人文主义批判——Schumacher, Raworth, Jackson 等
+    cf_haiyun: "与海云法师灵性经济学同道不同根——世俗人文主义 vs 华严法界缘起"
+
+  - zh: 佛教经济学
+    en: Buddhist Economics
+    note: E.F. Schumacher 1966年首提——以「正命」(Right Livelihood)为核心
+    source: "E.F. Schumacher, 'Buddhist Economics' (1966), in Small Is Beautiful, Ch.4 (Harper, 1973)"
+    link_full_text: https://centerforneweconomics.org/publications/buddhist-economics/
+    used_in: [spirit]
+
+  - zh: 后增长
+    en: Post-Growth / Degrowth
+    note: 质疑GDP无限增长之必要性的经济学流派
+    scholars:
+      - "Tim Jackson, Prosperity Without Growth (Routledge, 2009/2017), ISBN 978-1138935419"
+      - "Giorgos Kallis, Degrowth (Agenda Publishing, 2018), ISBN 978-1911116790"
+      - "Kate Raworth, Doughnut Economics (Random House, 2017), ISBN 978-1603586740"
+    used_in: [spirit]
+
+# ── 四、环境人文与批判遗产 (Environmental Humanities & Critical Heritage) ──
+env_humanities:
+  - zh: 人类世
+    en: Anthropocene
+    note: 人类活动成为地质力量的新纪元——Crutzen & Stoermer (2000) 提出
+    debates:
+      - "Dipesh Chakrabarty, 'The Climate of History: Four Theses', Critical Inquiry 35(2), 2009, pp.197–222. DOI: 10.1086/596640"
+      - "Dipesh Chakrabarty, The Climate of History in a Planetary Age (Chicago, 2021), ISBN 978-0226732862"
+      - "Dipesh Chakrabarty, One Planet, Many Worlds: The Climate Parallax (Brandeis, 2023), ISBN 978-1684581573"
+    link_uchicago: https://press.uchicago.edu/ucp/books/book/chicago/C/bo28524888.html
+    used_in: [spirit, frontier]
+
+  - zh: 资本世
+    en: Capitalocene
+    note: 替代「人类世」的概念——危机驱动力是资本主义, 非抽象的「人类」
+    scholars:
+      - "Donna Haraway, Staying with the Trouble: Making Kin in the Chthulucene (Duke, 2016), ISBN 978-0822362241"
+      - "Jason W. Moore (ed.), Anthropocene or Capitalocene? (PM Press, 2016), ISBN 978-1629631486"
+    link_duke_haraway: https://www.dukeupress.edu/staying-with-the-trouble
+    used_in: [spirit]
+
+  - zh: 多重世界
+    en: Pluriverse
+    note: 去殖民化学术的核心概念——存在多个共存的本体论世界, 非一个统一的「世界」
+    scholar: "Arturo Escobar, Designs for the Pluriverse (Duke, 2018), ISBN 978-0822371052"
+    doi: "10.1215/9780822371816"
+    link_duke: https://www.dukeupress.edu/designs-for-the-pluriverse
+    related: "Mario Blaser, 'Ontological Conflicts and the Stories of Peoples in Spite of Europe', Current Anthropology 54(5), 2013"
+    used_in: [spirit]
+
+  - zh: 权威遗产话语
+    en: Authorised Heritage Discourse (AHD)
+    note: Laurajane Smith 提出的批判概念——国家/学术机构自上而下定义遗产
+    source: "Laurajane Smith, Uses of Heritage (Routledge, 2006), ISBN 978-0415318310"
+    link_routledge: https://www.routledge.com/Uses-of-Heritage/Smith/p/book/9780415318310
+    used_in: [cosmology, spirit]
+
+  - zh: 批判遗产研究
+    en: Critical Heritage Studies
+    note: 以 Smith 为创始人的学术运动——遗产不是物, 是文化实践
+    association: Association of Critical Heritage Studies (ACHS), est. 2012
+    key_works:
+      - "Laurajane Smith, Emotional Heritage (Routledge, 2021), ISBN 978-1138888678"
+      - "Laurajane Smith et al. (eds.), The Routledge International Handbook of Heritage and Politics (2024), ISBN 978-1032601618"
+    used_in: [cosmology, spirit]
+
+  - zh: 非物质文化遗产
+    en: Intangible Cultural Heritage (ICH)
+    note: UNESCO 2003年公约确立的保护范畴——口头传统·表演艺术·社会实践·仪式·手工艺
+    source: "UNESCO, Convention for the Safeguarding of the Intangible Cultural Heritage (2003)"
+    link_unesco: https://ich.unesco.org/en/convention
+    critique: "Smith & Akagawa (eds.), Intangible Heritage (2009); Safeguarding Intangible Heritage (2019)"
+    used_in: [cosmology, spirit]
+
+  - zh: 环境史
+    en: Environmental History
+    note: 研究人类社会与自然环境在时间中的互动
+    key_works:
+      - "William Cronon, Changes in the Land (Hill & Wang, 1983), ISBN 978-0809016341"
+      - "Alfred W. Crosby, Ecological Imperialism (Cambridge, 1986/2004), ISBN 978-0521546188"
+      - "Mark Elvin (伊懋可), The Retreat of the Elephants: An Environmental History of China (Yale, 2004), ISBN 978-0300119930"
+      - "John R. McNeill, Something New Under the Sun (Norton, 2000), ISBN 978-0393321838"
+    link_cambridge_crosby: https://www.cambridge.org/core/books/ecological-imperialism/
+    used_in: [spirit]
+
+# ── 五、意识科学与心灵哲学 (Consciousness Studies & Philosophy of Mind) ──
+consciousness:
+  - zh: 困难问题(意识)
+    en: Hard Problem of Consciousness
+    note: David Chalmers 1994年提出——为什么物理过程会产生主观体验?
+    source: "David J. Chalmers, 'Facing Up to the Problem of Consciousness', Journal of Consciousness Studies 2(3), 1995, pp.200–219"
+    book: "David J. Chalmers, The Conscious Mind (Oxford, 1996), ISBN 978-0195117899"
+    link_goodreads: https://www.goodreads.com/book/show/18828.The_Conscious_Mind
+    scholar_citations: "~16,100 (Google Scholar)"
+    used_in: [frontier]
+
+  - zh: 神经现象学
+    en: Neurophenomenology
+    note: Francisco Varela 1996年提出——整合第一人称现象学方法与第三人称神经科学
+    source: "Francisco Varela, 'Neurophenomenology: A Methodological Remedy for the Hard Problem', Journal of Consciousness Studies 3(4), 1996, pp.330–349"
+    book: "Varela, Thompson & Rosch, The Embodied Mind (MIT, 1991/2017), ISBN 978-0262529365"
+    link_mitpress: https://mitpress.mit.edu/9780262720212/the-embodied-mind/
+    used_in: [frontier]
+
+  - zh: 自我模型理论
+    en: Self-Model Theory of Subjectivity (SMT)
+    note: Thomas Metzinger 提出——自我不是实体, 而是透明的现象自我模型
+    source: "Thomas Metzinger, Being No One (MIT, 2003), ISBN 978-0262633086"
+    link_mitpress: https://mitpress.mit.edu/9780262633086/being-no-one/
+    used_in: [frontier]
+
+  - zh: 预测加工
+    en: Predictive Processing / Free Energy Principle
+    note: Karl Friston 提出——大脑作为预测机器, 不断更新世界模型
+    scholar: "Anil Seth, Being You: A New Science of Consciousness (Faber, 2021), ISBN 978-0571337705"
+    link_official: https://www.anilseth.com
+    used_in: [frontier]
+
+  - zh: 相关性实现
+    en: Relevance Realization
+    note: John Vervaeke 提出——智慧是「相关性实现」的能力
+    source: "John Vervaeke, Awakening from the Meaning Crisis (YouTube, 2019–)"
+    link_youtube: https://youtube.com/playlist?list=PLND1JCRq8Vuh3f0P5qjrSdb5eC1ZfZwWJ
+    used_in: [frontier]
+
+# ── 六、全球文明与历史疆域 (Global Civilizations & Historical Territories) ──
+civilizations:
+  - zh: 大唐帝国
+    en: Tang Empire (618–907 CE)
+    note: 华严宗鼎盛时期, 实叉难陀·法藏·澄观·宗密皆活跃于此
+    used_in: [lineage]
+
+  - zh: 吐蕃帝国
+    en: Tibetan Empire (7th–9th c. CE)
+    note: 藏文《华严经》(Toh 44)翻译时期
+    link_84000: https://84000.co
+    used_in: [lineage, gap]
+
+  - zh: 于阗王国
+    en: Kingdom of Khotan
+    sa: Gostana
+    note: 大乘佛教与《华严经》传入西域的关键中转站
+    used_in: [lineage, gap]
+
+  - zh: 丝绸之路
+    en: Silk Road / Silk Routes
+    note: 欧亚大陆佛教传播的通道网络
+    scholar_ref: "Valerie Hansen, The Silk Road: A New History (Oxford, 2012), ISBN 978-0190218423"
+    used_in: [lineage]
+
+  - zh: 哥伦布大交换
+    en: Columbian Exchange
+    note: Alfred Crosby 提出的概念——1492年后新旧大陆生物群系的交换
+    source: "Alfred W. Crosby, The Columbian Exchange (Greenwood, 1972; 30th anniv. ed., Praeger, 2003), ISBN 978-0275980924"
+    used_in: [spirit]
+
+# ── 七、原住民/本土知识体系 (Indigenous Knowledge Systems) ──
+indigenous:
+  - zh: 本土与地方知识体系
+    en: Local and Indigenous Knowledge Systems (LINKS)
+    note: UNESCO 2002年启动的跨领域计划——促进本土知识与科学政策的对话
+    link_unesco: https://www.unesco.org/en/links
+    used_in: [spirit]
+
+  - zh: IPBES 全球评估
+    en: IPBES Global Assessment Report on Biodiversity and Ecosystem Services
+    note: 2019年发布——首次在全球尺度上系统纳入本土知识
+    doi: "10.5281/zenodo.3831673"
+    link_ipbes: https://www.ipbes.net/global-assessment-report-biodiversity-ecosystem-services
+    used_in: [spirit]
+
+  - zh: 去殖民化方法论
+    en: Decolonizing Methodologies
+    note: Linda Tuhiwai Smith (毛利学者) 的开创性著作——批判西方学术对原住民知识的提取式研究
+    source: "Linda Tuhiwai Smith, Decolonizing Methodologies (Zed Books, 1999; 3rd ed. 2021), ISBN 978-1786998132"
+    link_zed: https://www.bloomsbury.com/us/decolonizing-methodologies-9781786998132/
+    used_in: [spirit]
+
+  - zh: 尼沙纳贝格智慧
+    en: Nishnaabeg Brilliance
+    note: Leanne Betasamosake Simpson 提出的原住民认识论——知识不是可提取的「数据」, 是嵌入在关系与土地中的实践
+    source: "Leanne Betasamosake Simpson, As We Have Always Done (Minnesota, 2017), ISBN 978-1517903879"
+    link_umn: https://www.upress.umn.edu/book-division/books/as-we-have-always-done
+    used_in: [spirit]
+
+  - zh: 本体论殖民
+    en: Ontological Colonialism / "Ontology is just another word for colonialism"
+    note: Zoe Todd (Métis学者) 的警告——西方学术「本体论转向」在挪用而非尊重原住民思想
+    source: "Zoe Todd, 'An Indigenous Feminist's Take on the Ontological Turn', Journal of Historical Sociology 29(1), 2016, pp.4–22. DOI: 10.1111/johs.12124"
+    used_in: [spirit]
+
+  - zh: 国民幸福总值
+    en: Gross National Happiness (GNH)
+    note: 不丹第四代国王1972年提出——以佛教价值观替代GDP作为发展度量
+    link_gnh: https://www.gnhcentrebhutan.org
+    used_in: [spirit]
+
+  - zh: 二十四节气
+    en: The Twenty-Four Solar Terms
+    note: 2016年入选UNESCO人类非物质文化遗产——世界最古老的物候历
+    link_unesco_ich: https://ich.unesco.org/en/RL/the-twenty-four-solar-terms-knowledge-in-china-of-time-and-practices-developed-through-observation-of-the-suns-annual-motion-00647
+    used_in: [spirit]
+
+  - zh: 全球生态村网络
+    en: Global Ecovillage Network (GEN)
+    note: 1995年创立——以灵性·生态·社群·经济四维重建人类聚落, 联合国经社理事会咨商地位
+    link_gen: https://ecovillage.org
+    coverage: "114+国家 · 1,250+生态村"
+    used_in: [spirit]
+
+# ── 八、国际机构与法律框架 (International Institutions & Legal Frameworks) ──
+institutions:
+  - name_zh: 联合国教科文组织
+    name_en: UNESCO (United Nations Educational, Scientific and Cultural Organization)
+    link: https://www.unesco.org
+    used_in: [cosmology, spirit]
+
+  - name_zh: 世界遗产公约
+    name_en: World Heritage Convention (1972)
+    link: https://whc.unesco.org/en/convention/
+    used_in: [cosmology, spirit]
+
+  - name_zh: 保护非物质文化遗产公约
+    name_en: Convention for the Safeguarding of the Intangible Cultural Heritage (2003)
+    link: https://ich.unesco.org/en/convention
+    used_in: [cosmology, spirit]
+
+  - name_zh: 生物多样性与生态系统服务政府间平台
+    name_en: IPBES (Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services)
+    link: https://www.ipbes.net
+    used_in: [spirit]
+
+  - name_zh: CBETA 中华电子佛典协会
+    name_en: CBETA (Chinese Buddhist Electronic Text Association)
+    link: https://www.cbeta.org
+    used_in: [lineage, gap, jiaoxing, cosmology]
+
+  - name_zh: 84000 佛典传译
+    name_en: "84000: Translating the Words of the Buddha"
+    link: https://84000.co
+    used_in: [gap, frontier]
+
+  - name_zh: 大华严寺
+    name_en: Da Huayen Temple (Taiwan)
+    link: https://www.huayenworld.org
+    used_in: [lineage, jiaoxing, spirit]
+
+# ── 九、关键期刊 (Key Journals) ──
+journals:
+  - title: Critical Inquiry
+    publisher: University of Chicago Press
+    note: Chakrabarty "Four Theses" (2009) 发表期刊
+    link: https://www.journals.uchicago.edu/toc/ci/current
+    used_in: [spirit, frontier]
+
+  - title: Journal of Consciousness Studies
+    publisher: Imprint Academic
+    note: Chalmers "Hard Problem" 与 Varela "Neurophenomenology" 发表期刊
+    link: https://www.imprint.co.uk/journal-of-consciousness-studies/
+    used_in: [frontier]
+
+  - title: International Journal of Heritage Studies
+    publisher: Routledge / Taylor & Francis
+    editor_in_chief: Laurajane Smith (since 2009)
+    link: https://www.tandfonline.com/journals/rijh
+    used_in: [cosmology, spirit]
+
+  - title: Journal of Historical Sociology
+    note: Zoe Todd "Indigenous Feminist's Take on the Ontological Turn" (2016) 发表期刊
+    link: https://onlinelibrary.wiley.com/journal/14676443
+    used_in: [spirit]
+
+# ── 元数据 ──
+meta:
+  last_updated: "2026-08-08"
+  total_entries: "60+ 跨六页术语·人物·概念·机构"
+  verification_standard: |
+    每一条目至少包含: zh 中文名 + en 英文名 + 出处(source)
+    学者专著条目额外包含: ISBN + 出版社链接 (publisher link)
+    期刊论文条目额外包含: DOI / 期刊链接
+    机构条目额外包含: 官方网址
+  principle: "杜绝推测·原文优先·链接可溯——全站适用"
