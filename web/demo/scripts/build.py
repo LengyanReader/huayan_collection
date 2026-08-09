@@ -655,6 +655,7 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-sichenbading');return false">四禅八定</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yoga');return false">瑜伽行法</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-three-paths');return false">三条路径总判摄</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-sanskrit-terms');return false">梵汉术语比对</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">⚙️ 技术面·工程面 <span class="toggle-arrow">▸</span></a>
