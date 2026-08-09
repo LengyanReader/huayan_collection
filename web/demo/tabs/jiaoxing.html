@@ -720,6 +720,7 @@ function renderPractice(){
 
   // ── YouTube 频道 (从 PRACTICE_DATA.youtube_playlists 数据驱动) ──
   h+=renderYoutubeSection();
+  h+=renderPracticeSources();
 
   // ── 学术活动轨迹 ──
   // ── 相关道场 ──
@@ -968,6 +969,131 @@ function renderDushunSection() {
     h += '</details>';
   }
   h += '</div>';
+  return h;
+}
+
+// ═══ 全平台修行资源渲染 (从 PRACTICE_DATA.haiyun_practice_sources) ═══
+function renderPracticeSources() {
+  var ps = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_practice_sources) ? PRACTICE_DATA.haiyun_practice_sources : null;
+  if (!ps) return '';
+  var h = '';
+
+  // ── 三阶段快速参考 ──
+  if (ps.three_stages_quick_ref) {
+    var ts = ps.three_stages_quick_ref;
+    h += '<div class=section id=res-stages><h2>📐 三阶段修行速查 <span style=font-size:0.7em;color:var(--text2)>技术面·工程面·出处</span></h2>';
+    h += '<table class=v-table style=font-size:0.72em><tr><th>阶段</th><th>技术面</th><th>工程面</th><th>玄门</th><th>来源</th></tr>';
+    ['stage1','stage2','stage3'].forEach(function(sk) {
+      var s = ts[sk]; if (!s) return;
+      h += '<tr><td><b>' + s.name + '</b></td><td>' + s.technical + '</td><td>' + s.engineering + '</td><td style=font-size:0.85em>' + s.xuanmen + '</td><td style=font-size:0.75em>' + s.source + '</td></tr>';
+    });
+    h += '</table></div>';
+  }
+
+  // ── 著作 ──
+  if (ps.books) {
+    h += '<div class=section id=res-sources-books><h2>📚 关键著作 (' + ps.books.length + '本)</h2>';
+    ps.books.forEach(function(b) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + b.title + '</b> (' + b.year + ') — ' + b.publisher;
+      if (b.isbn) h += ' · ISBN ' + b.isbn;
+      h += '<br><span style=color:var(--text2)>' + b.content + '</span>';
+      h += '<br>';
+      if (b.link_google_play) h += '<a href="' + b.link_google_play + '" target=_blank>Google Play</a> · ';
+      if (b.link_buy) h += '<a href="' + b.link_buy + '" target=_blank>购买</a> · ';
+      if (b.link_fjdh) h += '<a href="' + b.link_fjdh + '" target=_blank>逐字稿</a>';
+      if (b.lectures) h += ' <span style=color:var(--text2)>(' + b.lectures + ')</span>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 讲记系列 ──
+  if (ps.lecture_series) {
+    h += '<div class=section id=res-sources-lectures><h2>🎙 讲记系列 (' + ps.lecture_series.length + '部)</h2>';
+    ps.lecture_series.forEach(function(l) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + l.title + '</b> — ' + l.episodes + ' · ' + (l.year||'') + ' · ' + l.platform;
+      h += '<br><span style=color:var(--text2)>' + l.content + '</span><br>';
+      if (l.link_example_fjdh) h += '<a href="' + l.link_example_fjdh + '" target=_blank>📝 讲记</a> · ';
+      if (l.spotify) h += '<a href="' + l.spotify + '" target=_blank>🎧 Spotify</a> · ';
+      if (l.apple_podcast) h += '<a href="' + l.apple_podcast + '" target=_blank>🎙 Apple</a> · ';
+      if (l.listennotes) h += '<a href="' + l.listennotes + '" target=_blank>📋 目录</a>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 禅三/禅七 ──
+  if (ps.exhaustive_platform_index && ps.exhaustive_platform_index.retreats) {
+    var rt = ps.exhaustive_platform_index.retreats;
+    h += '<div class=section id=res-sources-retreats><h2>🧘 禅修营·禅七 (' + (rt.confirmed||[]).length + '梯次确认)</h2>';
+    h += '<p style=font-size:0.75em;color:var(--text2)><b>⚠ 检索局限:</b> 编号梯次(第X梯)禅三录音搜索引擎索引不完整，需联系大华严寺或逐季检查播客。</p>';
+    (rt.confirmed||[]).forEach(function(r) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + r.type + '</b> — ' + r.year + ' · ' + (r.venue||'');
+      h += '<br><span style=color:var(--text2)>' + r.content + '</span>';
+      if (r.known_batches) {
+        h += '<br>📅 已知梯次: ' + r.known_batches.join('; ');
+      }
+      if (r.link_book) h += '<br><a href="' + r.link_book + '" target=_blank>📖 出版书籍</a>';
+      if (r.link_podwise) h += ' · <a href="' + r.link_podwise + '" target=_blank>🎧 播客</a>';
+      h += '</div>';
+    });
+    if (rt.search_advice) {
+      h += '<details style=font-size:0.72em;margin-top:4px><summary>🔍 穷尽搜索建议</summary><p style=color:var(--text2);white-space:pre-line>' + rt.search_advice + '</p></details>';
+    }
+    h += '</div>';
+  }
+
+  // ── 全平台索引摘要 ──
+  if (ps.exhaustive_platform_index) {
+    var ep = ps.exhaustive_platform_index;
+    h += '<div class=section id=res-sources-platforms><h2>🌐 全平台资源索引</h2>';
+    // Bilibili
+    if (ep.bilibili) {
+      var bl = ep.bilibili;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>📺 Bilibili — ' + (bl.key_series||[]).length + '个系列 · ' + (bl.uploaders||[]).length + '个UP主</b></summary>';
+      (bl.key_series||[]).forEach(function(s) {
+        h += '<div style=margin:2px 0>🔹 <b>' + s.name + '</b> (' + (s.episodes||s.duration||'') + ') ' + (s.year||'');
+        if (s.url) h += ' <a href="' + s.url + '" target=_blank>直达</a>';
+        if (s.note) h += '<br><span style=color:var(--text2);font-size:0.9em>' + s.note + '</span>';
+        h += '</div>';
+      });
+      h += '</details>';
+    }
+    // Podcast
+    if (ep.podcast) {
+      var pd = ep.podcast;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>🎧 Spotify/Apple — ' + pd.show_name + ' (' + (pd.series_count||'') + ')</b></summary>';
+      h += '<p>' + (pd.update_freq||'') + ' · <a href="' + pd.spotify_url + '" target=_blank>Spotify</a> · <a href="' + pd.apple_url + '" target=_blank>Apple</a></p>';
+      (pd.key_series||[]).forEach(function(s) {
+        h += '<div>🔹 <b>' + s.name + '</b>: ' + (s.content||'') + (s.episodes?' ('+s.episodes+')':'') + '</div>';
+      });
+      h += '</details>';
+    }
+    // Text transcripts
+    if (ep.text_transcripts) {
+      var tt = ep.text_transcripts;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>📝 文字讲记 — ' + tt.platform + '</b></summary>';
+      (tt.key_series||[]).forEach(function(s) {
+        h += '<div>🔹 <b>' + s.name + '</b>: ' + s.episodes + (s.url_example?' · <a href="'+s.url_example+'" target=_blank>示例</a>':'') + '</div>';
+      });
+      h += '</details>';
+    }
+    // YouTube
+    if (ep.youtube) {
+      var yt = ep.youtube;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>📺 YouTube — ' + yt.channel + '</b></summary>';
+      h += '<p><a href="' + yt.channel_url + '" target=_blank>频道</a> · <a href="' + yt.playlists_url + '" target=_blank>播放清单</a></p>';
+      (yt.key_series||[]).forEach(function(s) {
+        h += '<div>🔹 <b>' + s.name + '</b> (' + (s.type||'') + '): ' + (s.content||'') + '</div>';
+      });
+      h += '</details>';
+    }
+    h += '</div>';
+  }
+
   return h;
 }
 
