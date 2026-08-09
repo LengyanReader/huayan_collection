@@ -334,6 +334,9 @@ function renderPractice(){
   h+="</div></div>";
   h+="</div>";
 
+  // ── 心法·四禅八定·瑜伽行 原文辑录 (从 PRACTICE_DATA.haiyun_xinfa_primary 数据驱动) ──
+  h+=renderXinfaSection();
+
   // ── 古典义理地基: 杜顺五教止观 (数据驱动) ──
   h+=renderDushunSection();
 
@@ -810,6 +813,39 @@ function renderPanjiaoSection() {
     h += '<div class=section style=margin-top:10px><p style=font-size:0.7em;color:var(--text2)>📚 参考文献: ';
     pj.references.forEach(function(r, i) { h += (i>0?' · ':'') + r; });
     h += '</p></div>';
+  }
+  return h;
+}
+
+// ═══ 心法·四禅八定·瑜伽行 原文辑录渲染 ═══
+function renderXinfaSection() {
+  var xf = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_xinfa_primary) ? PRACTICE_DATA.haiyun_xinfa_primary : null;
+  if (!xf || !xf.sections) return '';
+  var h = '';
+  xf.sections.forEach(function(sec) {
+    h += '<div class=section id=med-' + sec.id + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.8em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
+    if (sec.quotes) {
+      sec.quotes.forEach(function(q) {
+        h += '<div class=stage-box style="margin:10px 0">';
+        h += '<blockquote style="font-size:0.82em;line-height:1.9;margin:0;white-space:pre-line">' + q.text + '</blockquote>';
+        h += '<p style="font-size:0.7em;color:var(--text2);margin-top:6px">📎 ' + q.source + '</p>';
+        if (q.context) h += '<p style="font-size:0.68em;color:var(--gold)">' + q.context + '</p>';
+        h += '</div>';
+      });
+    }
+    h += '</div>';
+  });
+  // References
+  if (xf.references) {
+    h += '<details style="font-size:0.72em;margin-top:8px"><summary><b>📚 参考文献与搜索局限</b></summary>';
+    xf.references.forEach(function(g) {
+      h += '<p style=margin:4px 0><b>' + g.fmt + '</b></p><ul style=margin:0>';
+      g.items.forEach(function(i) { h += '<li>' + i + '</li>'; });
+      h += '</ul>';
+    });
+    h += '</details>';
   }
   return h;
 }

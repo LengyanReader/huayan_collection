@@ -100,7 +100,8 @@ def load_practice():
                  'teaching_resources', 'heart_xref',
                  'youtube_playlists', 'huayan_panjiao',
                  'dushun_wujiao_zhiguan',
-                 'haiyun_practice_sources']:
+                 'haiyun_practice_sources',
+                 'haiyun_xinfa_primary']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -646,6 +647,14 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-texts');return false">典籍阐释</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-verify');return false">验证机制</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">实修心要</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">❤️ 心法·禅定·瑜伽 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-xinfa');return false">心法模式</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-sichenbading');return false">四禅八定</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yoga');return false">瑜伽行法</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-three-paths');return false">三条路径总判摄</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">⚙️ 技术面·工程面 <span class="toggle-arrow">▸</span></a>
