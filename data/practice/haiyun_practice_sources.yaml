@@ -1,0 +1,155 @@
+# 海云继梦法师 华严禅法·修行体系 关键著作与讲记出处
+# Key Practice Sources — Books, Lecture Series, Videos
+# 原则: 可溯源·可验证·出处精确
+# 最后更新: 2026-08-08
+
+# ── 技术面·工程面核心体系 ──
+core_framework:
+  description: |
+    海云继梦法师将华严禅法分为「技术面」与「工程面」双轨——
+    技术面 = 具体修行方法 (数息·提疑情·参话头·守风门)
+    工程面 = 生命改造工程 (心灵转化·破无明·法身成长)
+    三阶次第: 初阶(资粮道·发心工程) → 二阶(前行·内摄工程) → 三阶(正行·等持工程)
+    正行三步骤: 观照(能所分离)→照住(能所合一)→照见(能所双泯)
+  source_lecture: "海云继梦《禅修正行》系列 (共至少12集, 2007-2008)"
+  source_web: "华严禅观全程·修行蓝图 (大华严寺官网, 2025年11月访问)"
+
+books:
+  - title: "煖身: 华严禅修入门"
+    year: 2021
+    publisher: 布克文化
+    isbn: "9789865405984"
+    content: 七支坐相·调身调息·入相住相出相·初阶技术面基础
+    link_google_play: https://play.google.com/store/books/details?id=QREREAAAQBAJ
+    link_buy: https://www.books.com.tw/products/0010891234
+
+  - title: "迈向佛陀的境界——华严禅前行概论"
+    year: 2011
+    publisher: 空庭书苑
+    content: 前行阶段完整体系·四种观法·工程面心法
+    link_fjdh: https://www.fjdh.cn/wumin/2013/11/183343302811.html
+
+  - title: "华严金师子章讲记"
+    year: 2010
+    publisher: 空庭书苑
+    pages: 265页
+    content: 法藏《金师子章》现代阐释·十门·十玄门·修行三区块
+    isbn: "9789867484680"
+    link_fjdh: http://wuming.xuefo.net/nr/7/70462.html
+    link_buy: https://www.got1shop.com/mobile/index.php?m=default&c=goods&a=index&id=3459706
+    lectures: "2006年台北开示, 共14集"
+
+  - title: "我们只有一个选择"
+    year: 2010
+    publisher: 空庭书苑
+    isbn: "9789867484475"
+    content: 灵性经济学核心著作·三世间框架·中英对照
+    link_buy: https://www.buybook.tw/book-0010482429.htm
+
+  - title: "解心: 心要法门讲记"
+    year: 2001
+    publisher: 空庭书苑
+    isbn: "9573067129"
+    pages: 326页
+    content: 澄观《心要法门》现代阐释·「至道本乎其心,心法本乎无住」
+    edition_cn: "宗教文化出版社 2005年9月简体版, 187页"
+
+  - title: "普贤十大愿王行法精要"
+    year: 2006
+    publisher: 空庭书苑
+    isbn: "9789867484734"
+    content: 圆融道工程面核心——十大愿王
+    link_buy: https://findbook.com.tw/9789867484734
+
+  - title: "非常占察经(讲记三册)"
+    year: "2015-2017"
+    publisher: 空庭书苑
+    isbn: "9789867484918 / 4932 / 4949"
+    content: 次第道·占察善恶业报经·四种观法前二种经典出处
+
+lecture_series:
+  - title: "禅修正行"
+    episodes: "至少12集"
+    year: "2007-2008"
+    platform: 大华严寺 / 播客
+    content: 正行阶段技术面·数息法·疑情·守风门
+    link_example_fjdh: https://www.fjdh.cn/wumin/2013/11/145705302872.html
+    spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
+    apple_podcast: https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889
+
+  - title: "四十华严讲记"
+    episodes: "68+讲"
+    year: "2009"
+    platform: 大华严寺 / fjdh.cn
+    content: 华严禅观体系·普贤乘·次第道与圆融道
+    link_fjdh_example: https://www.fjdh.cn/wumin/2013/10/001658293204.html
+
+  - title: "贤首五教仪—法界观"
+    episodes: "53集+"
+    year: 2008
+    platform: 台北 / 播客
+    content: 华严判教体系·五教止观·渐教顿教实践义
+    spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
+    listennotes: https://www.listennotes.com/podcasts/%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6%E6%B3%95%E5%B8%88%E8%AE%B2%E7%BB%8F-%E6%92%AD%E5%AE%A2/
+
+videos:
+  - title: "华严教海 (YouTube播放清单)"
+    platform: YouTube @huayen-world
+    content: 华严经逐品讲解·佛法玄谈·九九华严讲座
+    link_playlists: https://www.youtube.com/@huayen-world/playlists
+
+  - title: "海雲法語 (YouTube Shorts)"
+    platform: YouTube @huayen-world
+    content: 法语开示短片·转凡成圣·发愿行法·念佛持咒
+    link_shorts: https://www.youtube.com/@huayen-world/shorts
+
+  - title: "九九華嚴講座"
+    platform: YouTube
+    content: 2026年最新系列·TICC录影·修行条件·AI时代佛法
+    link_search: https://www.youtube.com/results?search_query=九九華嚴+海雲繼夢
+
+official_platforms:
+  - name: 大华严寺官网
+    url: https://www.huayenworld.org
+    sections: [修行蓝图, 华严禅观, 法会活动]
+
+  - name: YouTube 主频道
+    url: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
+    subsections: [华严教海, 海雲法語, Shorts, 法会纪实]
+
+  - name: Spotify 播客
+    url: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
+    content: 海云继梦法师讲经
+
+  - name: Apple Podcast
+    url: https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889
+    content: 普贤乘华严宗
+
+  - name: Facebook
+    url: https://www.facebook.com/huayenlugu.org
+    content: 大华严寺鹿谷本寺官方
+
+academic:
+  - "海云继梦曾任陕西师范大学华严研究所荣誉所长及客座教授"
+  - "海云继梦曾任中国社会科学院特邀研究员"
+  - "《华严学报》刊载海云法师华严禅观研究论文"
+
+three_stages_quick_ref:
+  stage1:
+    name: 初阶·资粮道 (发心工程)
+    technical: 数息法入门·注意息入息出长短·静中与动中观照
+    engineering: 破根本无明·勤忏悔·建立信根与定位
+    xuanmen: 句中玄
+    source: 《禅修入门》系列 + 《煖身》(2021)
+  stage2:
+    name: 二阶·前行 (内摄工程)
+    technical: 四种观法 (唯心识观→真如实观→毗婆舍那观→奢摩他观)·界内定
+    engineering: 内摄·象限转移·瞬间定
+    xuanmen: 句中玄→意中玄过渡
+    source: 《禅修前行》系列 + 《迈向佛陀的境界》(2011)
+  stage3:
+    name: 三阶·正行 (等持工程)
+    technical: 三摩呬多→三摩钵底→三摩地·法界三观·界外定
+    engineering: 观照(能所分离)→照住(能所合一)→照见(能所双泯)
+    xuanmen: 意中玄→体中玄
+    source: 《禅修正行》系列 (至少12集) + 《华严金师子章讲记》(2010)

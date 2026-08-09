@@ -95,7 +95,8 @@ def load_practice():
     for name in ['cultivation_system', 'meditation_essentials',
                  'teaching_resources', 'heart_xref',
                  'youtube_playlists', 'huayan_panjiao',
-                 'dushun_wujiao_zhiguan']:
+                 'dushun_wujiao_zhiguan',
+                 'haiyun_practice_sources']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -627,10 +628,21 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage1');return false">资粮道</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">前行</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">正行</a>
+    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 观照·能所分离</a>
+    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 照住·能所合一</a>
+    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 照见·能所双泯</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-classical');return false">古典义理地基</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-texts');return false">典籍阐释</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-verify');return false">验证机制</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">实修心要</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">⚙️ 技术面·工程面 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage1');return false">初阶·资粮道(发心)</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">二阶·前行(内摄)</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">三阶·正行(等持)</a>
+    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 观照·能所分离→照住→照见</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">📐 华严判教 <span class="toggle-arrow">▸</span></a>
