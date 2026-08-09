@@ -13,12 +13,14 @@ sections:
       而是入世转化文明的根本力量。
 
   - id: spiritual_economics
-    title: 灵性经济学·海云体系
+    title: 灵性经济学·仁本经济学
     icon: 💎
     intro: |
       海云继梦法师（贤首宗高原法系第四十二世传人）提出「灵性经济学」——
       不是关于「灵性」的附加学问，而是以灵性为文明之根本的经济学范式转换。
       从「以物质为基础」转向「以生命（灵性）为基础」的文明重构。
+      法师又常以<b>「仁本经济学」</b>名之——以儒家「仁」学（仁者爱人、推己及人）
+      为世间表达，以华严「一心法界」为出世间根基，灵性与仁本一体不二。
     topics:
       - title: 灵性经济学的核心命题
         body: |
@@ -48,11 +50,19 @@ sections:
           正如不丹的「国民幸福总值」(GNH)，灵性GDP将「生命品质」重新确立为发展的终极目标。
 
   - id: humanistic_economics
-    title: 人本经济学·佛经经济学
+    title: 仁本经济学·人本经济学
     icon: 📐
     intro: |
-      从E.F. Schumacher的「佛教经济学」到当代的后增长(Post-Growth)运动，
-      人本经济学传统为灵性仁本提供了丰富的思想资源与实践案例。
+      ⚠ 概念辨析：海云继梦和上提出的<b>「仁本经济学」</b>，与其灵性经济学一脉相承——「仁」
+      取自儒家仁学（仁者爱人）、「本」即以生命/灵性为文明根本。这不是西方学术界
+      「Humanistic Economics」的翻译，而是华严宗原创的经济学范式——从物质欲望驱动
+      转向灵性觉醒驱动，以「灵性GDP」替代GDP作为文明度量。<br><br>
+      西方<b>「人本经济学」</b>传统（E.F. Schumacher, Tim Jackson, Kate Raworth 等）
+      是对主流经济学的世俗人文主义批判——「economics as if people mattered」、
+      「prosperity without growth」、「doughnut economics」——虽与佛教经济学有交集，
+      但不建立在灵性修行与华严宇宙观之上。<br><br>
+      二者在批判物质主义增长方面同道，但根基不同：一者以华严法界缘起为体，
+      一者以世俗人文主义与生态科学为体。本节并列介绍，以供互鉴。
     topics:
       - title: Schumacher《小即是美》与佛教经济学
         body: |
