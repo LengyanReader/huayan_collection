@@ -245,7 +245,18 @@ exhaustive_platform_index:
     key_series:
       - name: "S3 華嚴禪行法"
         content: 禅修正行相关音频(最接近禅修正行讲记的播客版本)
-    note: "禅修正行未作为独立播客系列上线, 但S3華嚴禪行法为其对应音频内容"
+      - name: "S8 禪與入定"
+        content: 禅法与入定关系专题讲座
+      - name: "S9 東山法門與禪宗的特色"
+        content: 东山法门·禅宗特色
+      - name: "S22 華嚴海會開示"
+        year: 2022
+        episodes: 14集
+        content: 华严海会期间开示
+      - name: "S23 十行品"
+        year: "2023-2024"
+        content: 十行品之四無屈撓行(8集)
+    note: "禅修正行未作为独立播客系列上线, 但S3華嚴禪行法为其对应音频内容。梯次禅三/禅七开示可能散见于各季单集中。"
 
   # ── 文字讲记 (fjdh.cn / wmxf.net / putixia.org) ──
   text_transcripts:
@@ -279,6 +290,38 @@ exhaustive_platform_index:
       note: 海云继梦著作主要出版方, 含《解心》《迈向佛陀的境界》《普贤十大愿王》《非常占察经》等
 
   # ── 搜索局限说明 ──
+  # ── 禅三/禅七/禅修营 (Retreat Recordings) ──
+  retreats:
+    note: |
+      「華嚴禪法 | 第X梯禪三開示」等编号梯次禅修录音——
+      这一类内容是大华严寺内部禅修营的现场开示录音，
+      按梯次编号(第一梯·第二梯……第七梯……)。搜索引擎对此类内容
+      索引不完整。以下为已确认的公开信息。
+    confirmed:
+      - type: 忍可禪七 (瑜伽禪淨課程)
+        venue: 雲鶴山大華嚴寺 (南投)
+        known_batches:
+          - "2026年1/4-1/10 (春季·七日六夜)"
+          - "2026年4/30-5/6 (4月號·七日六夜)"
+        content: 瑜伽禪修·呼吸清理法·脊椎優化功 + 海雲繼夢導師《華嚴行法總綱》
+        source: 大華嚴寺官网 huayenworld.org
+      - type: 精進佛七
+        year: 2023
+        content: 海雲法語系列开示「如何覺悟·修行工程面」
+        link_podwise: https://podwise.ai/episodes/2550329
+      - type: 台北禪七
+        year: 2005
+        venue: 大華嚴寺三峽金華園禪修中心
+        content: 以《楞嚴經·耳根圓通章》為架構的禪法心要
+        published_as: "《禪，怎麼參？》(書, ISBN可查)"
+        link_book: https://got1dev.got1shop.com/goods.php?id=144055
+    search_advice: |
+      如需穷尽获取所有梯次禅三/禅七录音——
+      1. 直接联系大华严寺 (LINE @huayenworld) 询问内部录音资料库
+      2. YouTube频道 @huayen-world 搜索「禅三」「禅七」「梯」(受限于网页搜索不返回完整结果)
+      3. Spotify播客「普賢乘華嚴宗」逐季检查 S1-S23
+      4. 大华严寺官网 huayenworld.org 活动公告存档
+
   search_limitations:
     - "YouTube 网页搜索不返回播放清单内容, 需手动访问频道"
     - "Bilibili 内容分散在多个UP主, 无官方统一频道"
