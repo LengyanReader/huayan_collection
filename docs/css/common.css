@@ -164,6 +164,25 @@ body {
   background: rgba(184, 134, 60, 0.08);
   color: var(--text);
 }
+/* ── Collapsible sidebar groups ── */
+.sidebar-group .sub-links {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+.sidebar-group.open .sub-links {
+  max-height: 800px;
+}
+.sidebar-group .nav-link .toggle-arrow {
+  float: right;
+  font-size: 0.65em;
+  opacity: 0.45;
+  transition: transform 0.2s;
+  line-height: inherit;
+}
+.sidebar-group.open .nav-link .toggle-arrow {
+  transform: rotate(90deg);
+}
 .content {
   flex: 1;
   overflow-y: auto;
