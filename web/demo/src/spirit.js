@@ -52,10 +52,72 @@ function renderSpirit() {
     });
   }
 
+  // ── 海云法师原文辑录 (spiritual_economics 节专属) ──
+  if (SPIRIT_ACTIVE === 'spiritual_economics' && SPIRIT_DATA && SPIRIT_DATA.haiyun_primary) {
+    h += renderHaiyunPrimary(SPIRIT_DATA.haiyun_primary);
+  }
+
+  // ── 环境人文 (env_history / critical_humanities / heritage_practice) ──
+  if (['env_history','critical_humanities','heritage_practice'].indexOf(SPIRIT_ACTIVE) >= 0) {
+    h += renderEnvHumanities(SPIRIT_ACTIVE);
+  }
+
   // ── Bibliography-powered references ──
   h += renderBibForPage('spirit');
 
   cv.innerHTML = h;
+}
+
+// ═══ 海云法师灵性经济学原文辑录 ═══
+function renderHaiyunPrimary(data) {
+  if (!data || !data.quotes) return '';
+  var h = '<div class=section style="margin-top:16px;border-left:4px solid var(--gold);padding-left:14px">';
+  h += '<h2>📜 ' + (data.meta ? data.meta.title : '原文辑录') + '</h2>';
+  h += '<p style="font-size:0.75em;color:var(--text2);margin-bottom:8px">' + (data.meta ? data.meta.principle : '') + '</p>';
+  (data.quotes||[]).forEach(function(q) {
+    h += '<div class=topic-card style="background:var(--panel)">';
+    h += '<blockquote style="font-size:0.85em;line-height:1.9;color:var(--text);margin:0 0 6px;padding-left:10px;border-left:3px solid var(--gold)">' + q.text_zh.replace(/\n/g,'<br>') + '</blockquote>';
+    h += '<p style="font-size:0.72em;color:var(--text2)">📎 ' + q.source + '</p>';
+    if (q.context) h += '<p style="font-size:0.68em;color:var(--text2)">语境: ' + q.context + '</p>';
+    if (q.note) h += '<p style="font-size:0.68em;color:var(--red)">⚠ 注: ' + q.note + '</p>';
+    h += '</div>';
+  });
+  if (data.about_renben) {
+    h += '<details style="font-size:0.75em;margin-top:6px"><summary><b>📝 关于「仁本经济学」</b></summary>';
+    h += '<p style=color:var(--text2)>' + data.about_renben.note.replace(/\n/g,'<br>') + '</p>';
+    if (data.about_renben.action_items) {
+      h += '<p style=color:var(--text2)><b>待查:</b><br>' + data.about_renben.action_items.join('<br>') + '</p>';
+    }
+    h += '</details>';
+  }
+  h += '</div>';
+  return h;
+}
+
+// ═══ 环境人文 + 批判遗产 渲染 ═══
+function renderEnvHumanities(sectionId) {
+  var eh = (SPIRIT_DATA && SPIRIT_DATA.environmental_humanities) ? SPIRIT_DATA.environmental_humanities.environmental_humanities : null;
+  if (!eh) return '';
+  var sec = null;
+  (eh.sections||[]).forEach(function(s) { if (s.id === sectionId) sec = s; });
+  if (!sec) return '';
+  var h = '<div class=section style="border-left:4px solid var(--gold);padding-left:14px">';
+  h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+  if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8">' + sec.intro.replace(/\n/g,'<br>') + '</p>';
+  if (sec.topics) {
+    sec.topics.forEach(function(t) {
+      h += '<div class=sp-topic><h4>' + t.title + '</h4>';
+      h += '<p>' + t.body.replace(/\n/g,'<br>') + '</p>';
+      if (t.sources) {
+        h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📚 ';
+        t.sources.forEach(function(s,i) { h += (i>0?'<br>':'') + s; });
+        h += '</p>';
+      }
+      h += '</div>';
+    });
+  }
+  h += '</div>';
+  return h;
 }
 
 // ═══ Shared: render BIBLIOGRAPHY cards filtered by page tag ═══

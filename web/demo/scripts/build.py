@@ -82,7 +82,7 @@ def load_events():
 def load_cosmology():
     """Load cosmology data from YAML files."""
     cosmo = {}
-    for name in ['cosmo_layers', 'three_realms', 'art_treasures']:
+    for name in ['cosmo_layers', 'three_realms', 'art_treasures', 'heritage_critical']:
         data = read_yaml(f'cosmology/{name}.yaml')
         if data:
             cosmo[name] = data
@@ -108,8 +108,15 @@ def load_frontier():
 
 
 def load_spirit():
-    """Load spirit data."""
-    return read_yaml('spirit/spirit_content.yaml') or {}
+    """Load spirit data from multiple YAML files."""
+    data = read_yaml('spirit/spirit_content.yaml') or {}
+    # Merge environmental humanities
+    eh = read_yaml('spirit/environmental_humanities.yaml')
+    if eh: data['environmental_humanities'] = eh
+    # Merge haiyun primary source quotes
+    hp = read_yaml('spirit/haiyun_spiritual_economics_primary.yaml')
+    if hp: data['haiyun_primary'] = hp
+    return data
 
 
 def load_bibliography():
@@ -688,6 +695,9 @@ def main():
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 仁本·人本经济学</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识体系</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境史·人类世</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='critical_humanities';renderSpirit();return false">🌐 批判人文·多元世界</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='heritage_practice';renderSpirit();return false">🏛 遗产实践·活态传承</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践</a></div>
     '''
     sp_html = build_simple_tab_page('灵性仁本 · 澄明永续', 'spirit', sidebar_sp, 'if(typeof renderSpirit==="function")renderSpirit();', view_id='spirit-view')

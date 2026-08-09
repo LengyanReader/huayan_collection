@@ -1,0 +1,170 @@
+# 环境人文 · 批判遗产 — 灵性仁本扩展内容
+# Environmental Humanities & Critical Heritage for Spirit Tab
+# 最后更新: 2026-08-08
+
+environmental_humanities:
+  title: 环境人文与批判遗产
+  sections:
+    - id: env_history
+      title: 环境史·人类世的灵性回应
+      icon: 🌿
+      intro: |
+        环境史(Environmental History)揭示了一个被现代性所遮蔽的事实——
+        人类文明从未脱离生态系统而存在。从华严寺院在终南山的水源管理，
+        到禅宗农禅并重的「一日不作、一日不食」，佛教修行传统积累了
+        丰富的生态智慧。在「人类世」(Anthropocene)的当代讨论中，
+        这些传统不是过去的故事，而是面向未来的资源。
+      topics:
+        - title: 人类世辩论——一个还是多个世界？
+          body: |
+            Dipesh Chakrabarty 在「The Climate of History: Four Theses」(2009)
+            中提出：气候变化使「人类」首次成为地质力量——人类的历史
+            与地球的历史不再可分。但他随即面临的批评是：并没有
+            一个统一的「人类」——工业革命以来的碳排放主要由欧美造成，
+            但气候灾难却首先冲击全球南方(Global South)和原住民社区。
+            Chakrabarty 将此困境称为「行星(planetary)与全球(global)的视差」——
+            行星尺度要求超越人类中心，全球尺度要求追问历史责任。
+            华严「理事无碍」为此提供了独特的整合框架：
+            理 = 法界缘起的宇宙法则（行星尺度），
+            事 = 具体众生的苦乐与正义（全球尺度）。
+            二者不相碍而能相资为用——这正是华严面对气候危机的独特生态智慧。
+          sources:
+            - "Dipesh Chakrabarty, 'The Climate of History: Four Theses', Critical Inquiry 35(2), 2009"
+            - "Dipesh Chakrabarty, The Climate of History in a Planetary Age (Chicago, 2021)"
+            - "Dipesh Chakrabarty, One Planet, Many Worlds: The Climate Parallax (Brandeis, 2023)"
+
+        - title: "Anthropocene 还是 Capitalocene？——谁的危机？"
+          body: |
+            Donna Haraway、Jason Moore 等学者提出「资本世」(Capitalocene)
+            来替代「人类世」——问题不在于抽象的「人类」，而在于
+            资本主义的增长逻辑——无限扩张的资本积累与有限的地球资源
+            之间的根本矛盾。海云继梦法师的灵性经济学直接回应了这一问题：
+            不是技术不够先进，不是科学不够发达，而是「以物质欲望为驱动」
+            的经济模式本身就是病根。从 Capitalocene 到「灵性文明」——
+            不是退回前现代，而是跃过现代性的物质迷思。
+          sources:
+            - "Donna Haraway, Staying with the Trouble: Making Kin in the Chthulucene (Duke, 2016)"
+            - "Jason W. Moore (ed.), Anthropocene or Capitalocene? (PM Press, 2016)"
+
+        - title: 佛教环境史——寺院作为生态节点
+          body: |
+            伊懋可(Mark Elvin)在《大象的退却：中国环境史》(2004)中
+            追踪了中国四千年来人与自然关系的变化。山中寺院（终南山·五台山·
+            峨眉山·普陀山）是理解中国环境史的独特窗口：寺院不仅是宗教场所，
+            更是生态节点——森林保护（寺院山林神圣不可侵犯）、
+            水资源管理（引泉灌溉、水库蓄水）、生物多样性保护
+            （寺院周边的古树名木）、可持续农业（寺院田产的轮作制度）。
+            海云继梦法师重建苗栗支提山大华严寺的当代实践，
+            续接了这一千五百年的寺院生态传统。
+          sources:
+            - "Mark Elvin, The Retreat of the Elephants (Yale, 2004)"
+            - "William Cronon, Changes in the Land (Hill and Wang, 1983)"
+
+    - id: critical_humanities
+      title: 批判人文·多元世界
+      icon: 🌐
+      intro: |
+        「批判人文」(Critical Humanities)追问一个根本问题：
+        谁的知识被认为是「知识」？谁的「世界」算作「世界」？
+        后殖民理论、去殖民化学术和原住民方法论揭示——西方现代性
+        的「普遍知识」其实是一种特定文化传统的地方知识，
+        只是它拥有将其自身「普遍化」的权力。
+        灵性仁本必须面对这一追问：灵性经济学、仁本经济学
+        不是另一种「放之四海而皆准」的普遍真理——它是
+        华严法界缘起这一特定知识传统的当代展开。
+      topics:
+        - title: 去殖民化与「多重世界」(Pluriverse)
+          body: |
+            去殖民化学者提出「多重世界」(pluriverse)的概念——
+            不存在一个统一的「世界」，而存在多个共存的本体论世界
+            (ontological worlds)。安第斯原住民的 Pachamama（大地母亲）
+            不是「地球」的另一个名字——它是一种完全不同的
+            人与土地的关系方式，它将土地视为活的生命体而非资源。
+            华严的「事事无碍法界」与 pluriverse 形成了深层对话：
+            在华严看来，每一个「世界」都是一颗因陀罗网中的宝珠，
+            互相映照而不互相取代。去殖民化不是要消灭西方科学，
+            而是要结束其「普遍真理」的霸权地位——
+            一如法藏六相圆融所示：总别同异成坏——
+            科学知识与本土知识互为「总/别」，在不同的脉络中各为「总」。
+          sources:
+            - "Arturo Escobar, Designs for the Pluriverse (Duke, 2018)"
+            - "Mario Blaser, 'Ontological Conflicts and the Stories of Peoples in Spite of Europe', Current Anthropology 54(5), 2013"
+
+        - title: "Zoe Todd 的警告——「本体论不过是殖民主义的另一个名字」"
+          body: |
+            加拿大 Métis 学者 Zoe Todd 发出了尖锐的警告：当西方学术界
+            热切地讨论「本体论转向」(ontological turn)时，
+            他们恰恰在以新的方式挪用原住民的思想——原住民长期以来
+            一直在说的东西，被学院哲学家重新包装为「理论创新」。
+            灵性仁本在汲取全球本土知识时必须保持清醒：
+            • 引用原住民思想不是「采摘智慧樱桃」
+            • 华严「无情有性」与现代「万物有灵」的对话不等于混淆二者
+            • 真正的「事事无碍」要求每一种知识传统保持其完整性，
+              在相互辉映中各自成为「别相」——不被溶解为同质化的
+              「灵性一体论」
+          sources:
+            - "Zoe Todd, 'An Indigenous Feminist's Take on the Ontological Turn', Journal of Historical Sociology 29(1), 2016"
+
+        - title: 原住民方法论——不是「数据」，是「关系」
+          body: |
+            Leanne Betasamosake Simpson (Nishnaabeg 学者) 在《As We Have Always
+            Done》(2017)中提出「Nishnaabeg 智慧」作为认识论和方法论——
+            原住民的知识不是可以被提取的「数据」，而是嵌入在特定关系、
+            特定土地、特定礼仪中的活生生的实践。
+            灵性仁本对此的回应：
+            • 二十四节气不是一套可被剥离中国农业传统的「时间管理技术」
+            • 佛教的缘起观不是可以翻译为「万物互联」的生态学口号
+            • 每一种本土知识都需要在它自己的「法界」中被尊重——
+              被翻译和借用时，关系的完整性不能被破坏
+            华严「善财五十三参」是最早的跨文化方法论隐喻——
+            善财参访五十三位善知识，不是去「采集数据」，
+            而是在每一次参访中全身心地进入对方的生命世界。
+          sources:
+            - "Leanne Betasamosake Simpson, As We Have Always Done: Indigenous Freedom Through Radical Resistance (Minnesota, 2017)"
+            - "Linda Tuhiwai Smith, Decolonizing Methodologies: Research and Indigenous Peoples (Zed Books, 1999/3rd ed. 2021)"
+
+    - id: heritage_practice
+      title: 遗产实践·活态传承
+      icon: 🏛
+      intro: |
+        批判遗产研究(Critical Heritage Studies)由 Laurajane Smith 等学者开创，
+        其核心洞见：「遗产不是物，而是一种文化实践」。
+        这对华严修行传统的传承有直接的启示意义。
+      topics:
+        - title: "Authorised Heritage Discourse — 谁定义「什么是华严遗产」？"
+          body: |
+            Laurajane Smith 的「权威遗产话语」(AHD)概念揭示：
+            国家、UNESCO、学术机构自上而下地定义「遗产」——
+            敦煌=壁画艺术遗产，大雁塔=唐代建筑遗产——
+            但这种定义抹去了遗产的情感实践维度：
+            朝圣者在莫高窟前的顶礼、写经者的虔敬抄写、
+            僧人在终南山至相寺残垣前的静坐——
+            这些才是华严遗产「活着」的方式。
+            海云继梦法师的「普贤乘」体系——将华严修行从「博物馆里的
+            古典学问」转化为「当代人的生命实践」——本质上就是对
+            AHD 的超越：遗产不是被保护的过去，而是被创造的未来。
+          sources:
+            - "Laurajane Smith, Uses of Heritage (Routledge, 2006)"
+            - "Laurajane Smith, Emotional Heritage (Routledge, 2021)"
+
+  references:
+    # 环境史
+    - "William Cronon, Changes in the Land: Indians, Colonists, and the Ecology of New England (Hill and Wang, 1983)"
+    - "Alfred W. Crosby, Ecological Imperialism (Cambridge, 1986; 2nd ed. 2004)"
+    - "伊懋可(Mark Elvin), The Retreat of the Elephants: An Environmental History of China (Yale, 2004)"
+    - "John R. McNeill, Something New Under the Sun (Norton, 2000)"
+    # 人类世/批判人文
+    - "Dipesh Chakrabarty, 'The Climate of History: Four Theses', Critical Inquiry 35(2), 2009"
+    - "Dipesh Chakrabarty, The Climate of History in a Planetary Age (Chicago, 2021)"
+    - "Dipesh Chakrabarty, One Planet, Many Worlds: The Climate Parallax (Brandeis, 2023)"
+    - "Donna Haraway, Staying with the Trouble: Making Kin in the Chthulucene (Duke, 2016)"
+    - "Jason W. Moore (ed.), Anthropocene or Capitalocene? (PM Press, 2016)"
+    # 去殖民化/多重世界
+    - "Arturo Escobar, Designs for the Pluriverse: Radical Interdependence, Autonomy, and the Making of Worlds (Duke, 2018)"
+    - "Zoe Todd, 'An Indigenous Feminist's Take on the Ontological Turn', Journal of Historical Sociology 29(1), 2016"
+    - "Leanne Betasamosake Simpson, As We Have Always Done (Minnesota, 2017)"
+    - "Linda Tuhiwai Smith, Decolonizing Methodologies (Zed Books, 1999/2021)"
+    # 批判遗产
+    - "Laurajane Smith, Uses of Heritage (Routledge, 2006)"
+    - "Laurajane Smith, Emotional Heritage (Routledge, 2021)"
+    - "Laurajane Smith et al. (eds.), The Routledge International Handbook of Heritage and Politics (2024)"

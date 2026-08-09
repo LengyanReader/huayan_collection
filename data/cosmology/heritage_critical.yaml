@@ -1,0 +1,124 @@
+# 批判遗产研究 · 环境史 — 世主妙严扩展内容
+# Critical Heritage Studies & Environmental History for Cosmology Tab
+# 最后更新: 2026-08-08
+
+heritage_critical:
+  title: 批判遗产研究·华严古迹再审视
+  intro: |
+    华严宗的寺院、石窟、写经、造像——这些「华严古迹」不仅是佛教艺术遗产，
+    更是批判遗产研究(Critical Heritage Studies)的丰富案例。
+    批判遗产研究由 Laurajane Smith 等学者开创，其核心洞见是：
+    「遗产不是物，而是一种文化实践和意义建构的过程」。
+    华严古迹的「意义」并非固定不变——它在不同时代、不同群体中被
+    不断地重新生产、挪用和争辩。
+
+  topics:
+    - title: "Authorised Heritage Discourse (AHD) — 谁的遗产？"
+      body: |
+        Laurajane Smith 在《Uses of Heritage》(2006)中提出「权威遗产话语」(AHD)的概念——
+        国家、学术机构和国际组织（如UNESCO）自上而下地定义什么是「遗产」、
+        谁有资格解读遗产，从而边缘化了社区、原住民和普通人的遗产实践。
+        华严古迹（如敦煌莫高窟·龙门石窟·大慈恩寺）的「世界遗产」认定过程，
+        即是AHD运作的典型案例——
+        UNESCO的普世价值叙事与本地社区日常的礼佛实践的差异，
+        在华严圣地同样存在。
+      sources:
+        - "Laurajane Smith, Uses of Heritage (Routledge, 2006)"
+        - "Laurajane Smith & Natsuko Akagawa (eds.), Intangible Heritage (Routledge, 2009)"
+
+    - title: 遗产作为「情感实践」— 参拜·朝圣·共情
+      body: |
+        Smith 近年（2021-2024）将遗产研究引向「情感转向」(Affective Turn)——
+        遗产不只是被「认知」的，更是被「感受」的。在华严古迹的脉络中：
+        朝圣者的三步一拜、写经者的虔诚抄写、禅修者的石窟静坐——
+        这些情感实践(affective practices)才是华严遗产「活着」的方式，
+        远非UNESCO的「突出的普遍价值」(OUV)所能穷尽。
+        华严「事事无碍」的宇宙观暗示：物（遗址）与心（朝圣者的情感）
+        不是分离的——一尘中含法界，一拜中即现华藏。
+      sources:
+        - "Laurajane Smith, Emotional Heritage (Routledge, 2021)"
+        - "Laurajane Smith, 'Affective Heritage Revisited' (Musée du quai Branly, 2024)"
+
+    - title: 非物质文化遗产(ICH)与华严修行传统
+      body: |
+        UNESCO 2003年《保护非物质文化遗产公约》将「口头传统、表演艺术、
+        社会实践、仪式节庆、传统手工艺」纳入保护范围——
+        但批判遗产学者指出：ICH的「清单化」本身即是对活态传统的固化。
+        华严修行传统——禅观法门的师徒口传、梵呗四十二字母的唱诵、
+        华严法会的仪轨——本质上是活态的「非物质文化遗产」，
+        但它不应被「博物馆化」为一份UNESCO清单上的条目。
+        海云继梦法师「工程面/技术面」的双轨教学，正是对这一活态传承
+        的当代实践——它不是「保护过去的遗产」，而是「创造未来的传统」。
+      sources:
+        - "UNESCO, Convention for the Safeguarding of the Intangible Cultural Heritage (2003)"
+        - "Laurajane Smith & Natsuko Akagawa (eds.), Safeguarding Intangible Heritage (Routledge, 2019)"
+
+    - title: 原住民遗产与去殖民化——华严古迹的批判视角
+      body: |
+        批判遗产研究近年聚焦「去殖民化博物馆与遗产」(Decolonizing Museums and Heritage)：
+        从原住民祖灵遗骸的归还(repatriation)，到「困难遗产」(difficult heritage)的
+        面对，再到社区主导的遗产认定。华严古迹在此视角下产生新的问题意识：
+        • 敦煌藏经洞文献被斯坦因、伯希和带往西方——这是「文化遗产的保护」
+          还是「文化掠夺」？
+        • 龙门石窟宾阳中洞《帝后礼佛图》被凿碎运往美国——谁有权利拥有
+          和展示这些遗物？
+        • 华严寺院的当代重建（如苗栗支提山大华严寺）如何在地化地
+          承载原住民/在地社区的历史与记忆？
+        去殖民化不是抹去华严遗产的佛教属性，而是承认遗产的所有权、
+        解读权和受益权应归还给与这些遗产血脉相连的社区。
+      sources:
+        - "Laurajane Smith et al., 'Heritage, Reconciliation and Peacebuilding in Australia and New Zealand' (2023)"
+        - "C. Fforde, L. Smith et al., 'Emotion, Affective Practice, and the Taking of Indigenous Ancestral Remains'"
+
+  references:
+    - "Laurajane Smith, Uses of Heritage (Routledge, 2006). ISBN 978-0415318310"
+    - "Laurajane Smith, Emotional Heritage: Visitor Engagement at Museums and Heritage Sites (Routledge, 2021). ISBN 978-1138888678"
+    - "Laurajane Smith & Natsuko Akagawa (eds.), Intangible Heritage (Routledge, 2009)"
+    - "Laurajane Smith & Natsuko Akagawa (eds.), Safeguarding Intangible Heritage (Routledge, 2019)"
+    - "Laurajane Smith et al. (eds.), The Routledge International Handbook of Heritage and Politics (2024). ISBN 978-1032601618"
+    - "UNESCO, Convention for the Safeguarding of the Intangible Cultural Heritage (2003)"
+    - "UNESCO, Convention Concerning the Protection of the World Cultural and Natural Heritage (1972)"
+
+environmental_history:
+  title: 环境史视角·华严与自然
+  intro: |
+    环境史(Environmental History)研究人类社会与自然环境之间
+    在时间中的互动关系。从 Alfred Crosby 的「哥伦布大交换」
+    到 William Cronon 的「土地变迁」，环境史揭示了一个核心事实：
+    人类文明不是在「自然」之外创造出来的——每一座寺院、每一卷写经、
+    每一条朝圣之路，都与特定的生态系统、气候、资源流动息息相关。
+
+  topics:
+    - title: 华严寺院的环境足迹——生态史视角
+      body: |
+        终南山至相寺（华严宗发祥地）——唐代「终南隐逸」文化
+        以山中寺院为核心形成了完整的人-自然共生系统：泉水利用、
+        森林管理、药材采集、野生动物保护。寺院不是「侵入」山林，
+        而是嵌入山林生态系统的人类灵性节点。
+        这与 William Cronon 在《Changes in the Land》(1983)中的核心论点
+        一致：不同文化对同一片土地的使用方式（新英格兰殖民者 vs
+        原住民），反映了根本不同的「人与自然」世界观。
+      sources:
+        - "William Cronon, Changes in the Land: Indians, Colonists, and the Ecology of New England (Hill and Wang, 1983). ISBN 978-0809016341"
+        - "伊懋可(Mark Elvin), The Retreat of the Elephants: An Environmental History of China (Yale, 2004). ISBN 978-0300119930"
+
+    - title: 丝绸之路上的寺院——生态殖民还是生态互惠？
+      body: |
+        Alfred Crosby 在《Ecological Imperialism》(1986)中论证：
+        欧洲殖民扩张的成功，不仅靠枪炮，更靠随殖民者带入新大陆的
+        生物群系（小麦、牛马、病菌）。佛教沿丝绸之路的东传是否也有
+        「生态维度」？——伴随译经僧侣而来的，不仅是梵文贝叶经，
+        还有印度医学、波斯天文学、中亚植物品种。但佛教的传播模式
+        不同于殖民征服——它更接近「共生」(symbiosis)而非「取代」。
+        华严「事事无碍」的宇宙观恰恰为此提供了一种非竞争性的
+        生态智慧——不同文化如同因陀罗网中的宝珠，互照互入而非谁消灭谁。
+      sources:
+        - "Alfred W. Crosby, Ecological Imperialism: The Biological Expansion of Europe, 900–1900 (Cambridge, 1986/2nd ed. 2004). ISBN 978-0521546188"
+        - "John R. McNeill, Something New Under the Sun: An Environmental History of the Twentieth-Century World (Norton, 2000). ISBN 978-0393321838"
+
+  references:
+    - "William Cronon, Changes in the Land (Hill and Wang, 1983)"
+    - "Alfred W. Crosby, Ecological Imperialism (Cambridge, 1986/2004)"
+    - "伊懋可(Mark Elvin), The Retreat of the Elephants: An Environmental History of China (Yale, 2004)"
+    - "John R. McNeill, Something New Under the Sun (Norton, 2000)"
+    - "J. Donald Hughes, What Is Environmental History? (Polity, 2006/2nd ed. 2016)"
