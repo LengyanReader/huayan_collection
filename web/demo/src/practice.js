@@ -542,6 +542,10 @@ function renderPractice(){
 
   h+="</div>"; // close pv-news
 
+  h+="<div id=pv-chan_traces class=pv-section style=display:none>";
+  h+=renderChanTraces();
+  h+="</div>";
+
   h+="<div id=pv-resources class=pv-section style=display:none>";
 
   // ── 全网讲法总目 ──
@@ -997,6 +1001,44 @@ function renderDushunSection() {
     h += '</details>';
   }
   h += '</div>';
+  return h;
+}
+
+// ═══ 禅门实迹渲染 (从 PRACTICE_DATA.chan_authentic_traces) ═══
+function renderChanTraces() {
+  var ct = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chan_authentic_traces) ? PRACTICE_DATA.chan_authentic_traces : null;
+  if (!ct || !ct.sections) return '';
+  var h = '';
+  ct.sections.forEach(function(sec) {
+    h += '<div class=section id=chan-' + sec.id.replace('chan_','') + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t) {
+        h += '<div class=topic-card>';
+        h += '<h4>' + t.title + '</h4>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + t.body + '</p>';
+        if (t.links) {
+          Object.keys(t.links).forEach(function(k) {
+            h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
+          });
+        }
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px>📎 ' + t.source + '</p>';
+        h += '</div>';
+      });
+    }
+    h += '</div>';
+  });
+  // References
+  if (ct.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (学术·门内·近现代·海云)</summary>';
+    Object.keys(ct.references).forEach(function(k) {
+      h += '<p style=margin:4px 0><b>' + k + '</b></p><ul style=margin:0>';
+      ct.references[k].forEach(function(r) { h += '<li>' + r + '</li>'; });
+      h += '</ul>';
+    });
+    h += '</details>';
+  }
   return h;
 }
 

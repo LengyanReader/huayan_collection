@@ -103,7 +103,8 @@ def load_practice():
                  'haiyun_practice_sources',
                  'haiyun_xinfa_primary',
                  'haiyun_avatamsaka_lectures',
-                 'mengcan_lectures']:
+                 'mengcan_lectures',
+                 'chan_authentic_traces']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -674,6 +675,14 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yicheng');return false">一乘不共别圆</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-shizong');return false">十宗</a>
     <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-futian');return false">宗派比较</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('chan_traces',this);return false">🌿 禅门实迹 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-academic');return false">全球学界视角</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-practice');return false">门内实修视角</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-modern');return false">近现代禅门</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-haiyun');return false">海云法师·禅法</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
