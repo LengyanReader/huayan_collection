@@ -695,12 +695,12 @@ def main():
 
     # ── Build Tab4: Frontier (restructured) ──
     sidebar_fr = '''
-    <h3>🔬 前沿对话</h3>
-    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchFrontierNav('huayan',this);return false">🪷 与华严的对话</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('chinese',this);return false">☸ 与汉传佛教的对话</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('buddhist',this);return false">🕉 与佛教的对话</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('others',this);return false">🌏 其他宗教行门的对话</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述</a></div>
+    <h3>🔬 前沿对话 <small style=font-size:0.65em;color:var(--text2)>Frontier Dialogues</small></h3>
+    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchFrontierNav('huayan',this);return false">🪷 与华严的对话 <small style=font-size:0.7em;color:var(--text2)>with Huayan</small></a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('chinese',this);return false">☸ 与汉传佛教的对话 <small style=font-size:0.7em;color:var(--text2)>Chinese Buddhism</small></a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('buddhist',this);return false">🕉 与佛教的对话 <small style=font-size:0.7em;color:var(--text2)>Buddhist Traditions</small></a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('others',this);return false">🌏 跨宗教对话 <small style=font-size:0.7em;color:var(--text2)>Interreligious</small></a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述 <small style=font-size:0.7em;color:var(--text2)>Lit. Review</small></a></div>
     '''
     fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
     fr_path = TABS_OUT / 'frontier.html'
@@ -713,12 +713,12 @@ def main():
 
     # ── Build Tab5: Cosmology (restructured) ──
     sidebar_co = '''
-    <h3>🪷 世主妙严</h3>
-    <div class="sidebar-group"><a href="#co-mandala" class="nav-link active">🌊 华藏世界海</a></div>
-    <div class="sidebar-group"><a href="#co-tower" class="nav-link">📐 三界诸天</a></div>
-    <div class="sidebar-group"><a href="#co-art" class="nav-link">🎨 华严艺术珍品</a></div>
-    <div class="sidebar-group"><a href="#co-chant" class="nav-link">🎵 梵呗·华严字母</a></div>
-    <div class="sidebar-group"><a href="#co-sites" class="nav-link">🗺 华严古迹巡礼</a></div>
+    <h3>🪷 世主妙严 <small style=font-size:0.65em;color:var(--text2)>Flower Treasury Cosmos</small></h3>
+    <div class="sidebar-group"><a href="#co-mandala" class="nav-link active">🌊 华藏世界海 <small style=font-size:0.7em;color:var(--text2)>Ocean of Worlds</small></a></div>
+    <div class="sidebar-group"><a href="#co-tower" class="nav-link">📐 三界诸天 <small style=font-size:0.7em;color:var(--text2)>Three Realms</small></a></div>
+    <div class="sidebar-group"><a href="#co-art" class="nav-link">🎨 华严艺术珍品 <small style=font-size:0.7em;color:var(--text2)>Sacred Arts</small></a></div>
+    <div class="sidebar-group"><a href="#co-chant" class="nav-link">🎵 梵呗·华严字母 <small style=font-size:0.7em;color:var(--text2)>Arapacana Chant</small></a></div>
+    <div class="sidebar-group"><a href="#co-sites" class="nav-link">🗺 华严古迹巡礼 <small style=font-size:0.7em;color:var(--text2)>Heritage Sites</small></a></div>
     '''
     co_html = build_simple_tab_page('世主妙严 · 华藏世界海', 'cosmology', sidebar_co, 'if(typeof renderCosmology==="function")renderCosmology();')
     co_path = TABS_OUT / 'cosmology.html'
@@ -731,29 +731,29 @@ def main():
 
     # ── Build Tab6: Spirit (new) ──
     sidebar_sp = '''
-    <h3>🌱 灵性仁本</h3>
-    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览</a></div>
+    <h3>🌱 灵性仁本 <small style=font-size:0.65em;color:var(--text2)>Spiritual Humanism</small></h3>
+    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览 <small style=font-size:0.7em;color:var(--text2)>Overview</small></a></div>
     <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学 <span class="toggle-arrow">▸</span></a>
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学 <small style=font-size:0.7em;color:var(--text2)>Spiritual Economics</small> <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">海云法师体系</a>
     <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">灵性GDP·三世间框架</a>
     </div></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 仁本·人本经济学</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 仁本·人本经济学 <small style=font-size:0.7em;color:var(--text2)>Humanistic Econ</small></a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续 <small style=font-size:0.7em;color:var(--text2)>Traditions & Sustainability</small></a></div>
     <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识 <span class="toggle-arrow">▸</span></a>
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识 <small style=font-size:0.7em;color:var(--text2)>Indigenous Knowledge</small> <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">二十四节气·IPBES</a>
     <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='heritage_practice';renderSpirit();return false">遗产实践·活态传承</a>
     </div></div>
     <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境人文 <span class="toggle-arrow">▸</span></a>
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境人文 <small style=font-size:0.7em;color:var(--text2)>Env. Humanities</small> <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='env_history';renderSpirit();return false">人类世·环境史</a>
     <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='critical_humanities';renderSpirit();return false">批判人文·多元世界</a>
     </div></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践 <small style=font-size:0.7em;color:var(--text2)>Luminous Practice</small></a></div>
     '''
     sp_html = build_simple_tab_page('灵性仁本 · 澄明永续', 'spirit', sidebar_sp, 'if(typeof renderSpirit==="function")renderSpirit();', view_id='spirit-view')
     sp_path = TABS_OUT / 'spirit.html'
