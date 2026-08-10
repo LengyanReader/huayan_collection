@@ -626,6 +626,7 @@ function renderPractice(){
   // ── YouTube 频道 (从 PRACTICE_DATA.youtube_playlists 数据驱动) ──
   h+=renderYoutubeSection();
   h+=renderAvatamsakaLectures();
+  h+=renderMengcanSection();
   h+=renderPracticeSources();
 
   // ── 学术活动轨迹 ──
@@ -995,6 +996,45 @@ function renderDushunSection() {
     dz.references.forEach(function(r) { h += '<p style=margin:1px 0>' + r + '</p>'; });
     h += '</details>';
   }
+  h += '</div>';
+  return h;
+}
+
+// ═══ 梦参老和尚讲法全目 (从 PRACTICE_DATA.mengcan_lectures) ═══
+function renderMengcanSection() {
+  var mc = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.mengcan_lectures) ? PRACTICE_DATA.mengcan_lectures : null;
+  if (!mc) return '';
+  var h = '<div class=section id=res-mengcan><h2>👴 梦参老和尚 (1915-2017) — 一生讲法全目</h2>';
+  if (mc.biography) {
+    var b = mc.biography;
+    h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.8">'
+      + b.name_en + ' · 俗名' + b.secular_name + ' · 世寿' + b.birth + '-' + b.death
+      + ' · ' + b.lineage + '</p>';
+    h += '<div class=stage-box style=font-size:0.75em>' + (b.key_locations||[]).join('<br>') + '</div>';
+    if (b.relation_to_huayan) h += '<p style="font-size:0.75em;color:var(--gold);margin-top:4px">🪷 ' + b.relation_to_huayan + '</p>';
+  }
+  // Lectures table
+  if (mc.lectures) {
+    h += '<table class=v-table style=font-size:0.75em;margin-top:8px><tr><th>经典</th><th>讲题</th><th>地点/年份</th><th>体量</th></tr>';
+    mc.lectures.forEach(function(l) {
+      h += '<tr><td><b>' + l.sutra + '</b></td><td>' + l.title + '</td>';
+      h += '<td>' + (l.venue||'') + (l.year?' · '+l.year:'') + '</td>';
+      h += '<td>' + (l.length||'') + '</td></tr>';
+      if (l.significance || l.note) {
+        h += '<tr><td></td><td colspan=3 style="font-size:0.85em;color:var(--text2)">' + (l.significance||'') + (l.note?'<br>'+l.note:'') + '</td></tr>';
+      }
+    });
+    h += '</table>';
+  }
+  // Resources
+  if (mc.other_resources) {
+    h += '<p style="font-size:0.72em;margin-top:6px">📡 ';
+    mc.other_resources.forEach(function(r) {
+      h += '<a href="' + r.link + '" target=_blank style="color:var(--blue)">' + r.name + '</a> (' + r.platform + ') · ';
+    });
+    h += '</p>';
+  }
+  if (mc.life_motto) h += '<blockquote style="font-size:0.75em;border-left:3px solid var(--gold);padding-left:10px;margin-top:6px;line-height:1.8">' + mc.life_motto.replace(/\n/g,'<br>') + '</blockquote>';
   h += '</div>';
   return h;
 }

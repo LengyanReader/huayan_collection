@@ -1,0 +1,130 @@
+# 梦参老和尚 (1915-2017) — 一生讲法全目
+# Ven. Mengcan — Complete Lecture Catalog
+# 最后更新: 2026-08-08
+
+biography:
+  name: 梦参老和尚
+  name_en: Ven. Mengcan (Mèngcān)
+  secular_name: 刘瑞庭
+  birth: 1915
+  death: 2017 (世寿103岁·僧腊87载)
+  birthplace: 黑龙江开通县(今吉林白城)
+  lineage: 临济宗
+  key_locations:
+    - "1931: 北京上方山兜率寺出家·法名觉醒"
+    - "1937: 青岛湛山寺·依倓虚老法师学天台教观"
+    - "1940: 入藏求学密法·拉萨色拉寺十年·依止赤江仁波切"
+    - "1950-1982: 入狱33年(含劳改)·以「假使热铁轮,于汝顶上旋,终不以此苦,退失菩提心」自励"
+    - "1982: 平反出狱·任教于北京中国佛学院"
+    - "1988: 应请至美国纽约弘法·旅美十余年"
+    - "2000: 于五台山修建万佛洞真容寺·晚年住持"
+    - "2003-2007: 九旬高龄于五台山普寿寺开讲《八十华严》五百余座"
+    - "2017年11月27日: 于五台山真容寺安详示寂"
+  relation_to_huayan: |
+    海云继梦法师于1991年依梦参老和尚祝发出家，
+    成为梦老法嗣之一。梦参老和尚以百岁高龄讲完《八十华严》五百余座，
+    是近代佛教史上最完整的华严经讲解之一。
+
+lectures:
+  # ═══ 华严部 ═══
+  - sutra: 华严经 (八十卷)
+    title_full: 大方广佛华严经八十卷
+    venue: 五台山普寿寺
+    year: "2003-2007"
+    length: 五百余座(讲)
+    significance: 九旬高龄开讲·近代佛教史上最完整的八十华严讲解之一
+    publication: "《八十华严讲述》方广文化(分册出版) 第1-12册+"
+    note: |
+      历时五年余。涵盖从世主妙严品到入法界品全部39品。
+      网络流传版本多不完整(仅到贤首品)，
+      完整版可联系五台山普寿寺华严部。
+    link_wechat_draft: https://mp.weixin.qq.com/s?__biz=MzU1OTk1MzgzNw==&mid=2247510054&idx=7&sn=14eadd95e5af42a1afd32b2f7b4baa4b
+
+  - sutra: 华严经·普贤行愿品
+    title: 普贤行愿品讲记
+    venue: 五台山普寿寺 / 美国纽约
+    content: 十大愿王·导归极乐·华严修行总持
+
+  - sutra: 华严经·梵行品
+    title: 華嚴經梵行品新講
+    publisher: 方广文化
+    year: 2018
+    isbn: "9789869301836"
+    link: https://www.cosmosbooks.com.hk/index.php?route=product/product&path=10300&product_id=986707803
+
+  - sutra: 华严大意
+    title: 浅说华严大意
+    content: 华严经导论·八十华严整体框架·七处九会·五周因果
+
+  # ═══ 地藏部 ═══
+  - sutra: 地藏菩萨本愿经
+    title: 地藏菩萨本愿经讲记
+    length: 多讲
+    significance: 梦老毕生弘扬的核心经典之一·地藏三经之首
+
+  - sutra: 大乘大集地藏十轮经
+    title: 大乘大集地藏十轮经讲记
+    venue: "1995年加拿大首讲 / 2006年五台山普寿寺再讲"
+    length: 历时一年圆满
+    note: |
+      梦老所讲「地藏三经」中最详尽的一部。
+      另有《地藏止观导引：大乘大集地藏十轮经序品十轮品新讲》。
+    dvd: "方广文化DVD, 37片"
+
+  - sutra: 占察善恶业报经
+    title: 占察善恶业报经讲记
+    content: 地藏三经之第三·占察轮法·四种观法前二种经典来源
+
+  # ═══ 般若·净土部 ═══
+  - sutra: 金刚般若波罗蜜经
+    title: 浅说金刚经大意 / 金刚经十四堂课
+    publication: "《应无所住: 金刚经十四堂课》"
+
+  - sutra: 般若波罗蜜多心经
+    title: 般若波罗蜜多心经讲记
+
+  - sutra: 佛说阿弥陀经
+    title: 佛说阿弥陀经讲记
+    content: 净土法门要义
+
+  # ═══ 法华·楞严部 ═══
+  - sutra: 妙法莲华经
+    title: 妙法莲华经讲述
+    year: 2007
+    publication: "方广文化, 上下两册"
+
+  - sutra: 大佛顶首楞严经
+    title: 楞严经讲记
+    venue: 五台山普寿寺
+
+  # ═══ 论典部 ═══
+  - sutra: 大乘起信论
+    title: 大乘起信论讲记
+    significance: 华严宗核心论典·马鸣菩萨造·梦老以「一心二门」为框架讲解
+
+  # ═══ 系列开示 ═══
+  - sutra: 修行次第
+    title: 修行次第系列开示
+    content: 从三皈五戒到菩萨戒的完整修行次第
+    link: https://www.foyin.tv/down/3108.htm
+
+other_resources:
+  - name: 梦参老和尚视频讲座全集
+    link: https://www.fysp.org/6-7.htm
+    platform: fysp.org (佛音视频)
+  - name: 梦参法师讲记(弘善佛教网)
+    link: https://www.hrfjw.com/fjrw/hcrw/mcfs/jiangjie.html
+    platform: hrfjw.com
+  - name: 梦参老和尚-喜马拉雅
+    platform: ximalaya.com
+    note: 音频全集
+
+life_motto: |
+  「假使热铁轮，于汝顶上旋，
+   终不以此苦，退失菩提心。」
+   ——梦参老和尚以33年牢狱之身而道心不退的自我激励
+
+relation_to_project: |
+  海云继梦法师于1991年依梦参老和尚出家。
+  梦老九十高龄于五台山普寿寺开讲《八十华严》五百余座的壮举，
+  与本项目所承载的华严法脉传承一脉相承。
