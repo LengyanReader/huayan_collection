@@ -546,6 +546,10 @@ function renderPractice(){
   h+=renderChanTraces();
   h+="</div>";
 
+  h+="<div id=pv-chengguan class=pv-section style=display:none>";
+  h+=renderChengguanSection();
+  h+="</div>";
+
   h+="<div id=pv-resources class=pv-section style=display:none>";
 
   // ── 全网讲法总目 ──
@@ -1038,6 +1042,76 @@ function renderChanTraces() {
       h += '</ul>';
     });
     h += '</details>';
+  }
+  return h;
+}
+
+// ═══ 成其大观渲染 (从 PRACTICE_DATA.chengguan_master) ═══
+function renderChengguanSection() {
+  var cg = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chengguan_master) ? PRACTICE_DATA.chengguan_master : null;
+  if (!cg) return '';
+  var h = '';
+  // Bio
+  if (cg.biography) {
+    var b = cg.biography;
+    h += '<div class=section id=cg-bio><h2>🌄 成其大观 — 成观法师</h2>';
+    h += '<p style=font-size:0.8em;color:var(--text2)>' + b.name_en + ' · ' + b.birth + '- · ' + (b.birthplace||'') + '</p>';
+    h += '<div class=stage-box style=font-size:0.78em>';
+    (b.education||[]).forEach(function(e) { h += '🎓 ' + e + '<br>'; });
+    h += '✂️ ' + b.ordination + '<br>';
+    (b.lineage||[]).forEach(function(l) { h += '📜 ' + l + '<br>'; });
+    h += '🏛 ' + b.current_position;
+    h += '</div>';
+  }
+  // Institutions
+  if (cg.institutions) {
+    h += '<div class=section id=cg-institutions><h3>🏛 译经院</h3>';
+    cg.institutions.forEach(function(i) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + i.name + '</b> (' + i.founded + ') — ' + i.location + '<br>';
+      h += i.practice + '<br><span style=color:var(--text2)>' + i.note + '</span>';
+      h += '<br><a href="' + i.website + '" target=_blank>官网</a>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+  // Works
+  if (cg.works_chinese || cg.works_english) {
+    h += '<div class=section id=cg-works><h3>📚 著作全目</h3>';
+    if (cg.works_chinese) {
+      h += '<p style=font-size:0.78em><b>中文著述 (' + cg.works_chinese.intro + ')</b></p>';
+      h += '<table class=v-table style=font-size:0.72em><tr><th>书名</th><th>备注</th></tr>';
+      cg.works_chinese.items.forEach(function(w) {
+        h += '<tr><td>' + w.title + '</td><td style=color:var(--text2)>' + (w.note||'') + '</td></tr>';
+      });
+      h += '</table>';
+    }
+    if (cg.works_english) {
+      h += '<p style=font-size:0.78em;margin-top:8px><b>英文译著 (' + cg.works_english.intro + ')</b></p><ul style=font-size:0.75em>';
+      cg.works_english.items.forEach(function(w) { h += '<li>' + w + '</li>'; });
+      h += '</ul>';
+    }
+    h += '</div>';
+  }
+  // Lectures
+  if (cg.lecture_highlights) {
+    h += '<div class=section id=cg-lectures><h3>🎙 讲法特色</h3>';
+    cg.lecture_highlights.forEach(function(l) {
+      h += '<div class=topic-card><h4>' + l.topic + '</h4>';
+      h += '<p style=font-size:0.78em>' + (l.note||l.significance||'') + '</p>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+  // Comparison
+  if (cg.comparison_with_haiyun) {
+    h += '<div class=stage-box style=font-size:0.75em;margin-top:10px"><b>🔀 与海云继梦法师的比较</b><br>' + cg.comparison_with_haiyun.note + '</div>';
+  }
+  // Links
+  if (cg.links) {
+    h += '<p style=font-size:0.72em;margin-top:6px">🔗 ';
+    cg.links.forEach(function(l) { h += '<a href="' + l.url + '" target=_blank>' + l.name + '</a> · '; });
+    h += '</p>';
   }
   return h;
 }

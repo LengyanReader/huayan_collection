@@ -104,7 +104,8 @@ def load_practice():
                  'haiyun_xinfa_primary',
                  'haiyun_avatamsaka_lectures',
                  'mengcan_lectures',
-                 'chan_authentic_traces']:
+                 'chan_authentic_traces',
+                 'chengguan_master']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -683,6 +684,13 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-practice');return false">门内实修视角</a>
     <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-modern');return false">近现代禅门</a>
     <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-haiyun');return false">海云法师·禅法</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('chengguan',this);return false">🌄 成其大观 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('chengguan','cg-bio');return false">生平·法脉</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('chengguan','cg-works');return false">著作全目</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('chengguan','cg-lectures');return false">讲法·译经</a>
     </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>

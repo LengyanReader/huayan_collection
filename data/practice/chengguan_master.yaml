@@ -1,0 +1,84 @@
+# 成观法师 (1947-) — 成其大观
+# 台湾新逍遥园译经院·楞严座主·贤首宗42世
+# 最后更新: 2026-08-08
+
+biography:
+  name: 成观法师
+  name_en: Ven. Chengguan (Chéngguān)
+  secular_name: "(未查)"
+  birth: 1947
+  birthplace: 台湾台北
+  education:
+    - "台湾师范大学英语系毕业"
+    - "美国德州TCU英研所(全额奖学金)"
+  ordination: "1988年于纽约庄严寺依天台宗第45代传人显明老和尚座下披剃"
+  lineage:
+    - "天台宗第46世(显明老和尚传)"
+    - "日本高野山真言宗第53世传法灌顶阿阇梨(1996)"
+    - "贤首宗(华严宗)兼慈恩宗(唯识宗)第42世法脉传人(2010)"
+  current_position: "台湾新逍遥园译经院(原大毘卢寺)创办人·住持; 美国密西根遍照寺住持"
+  title: 楞严座主·译经大师·真言宗传法阿阇梨
+
+institutions:
+  - name: 新逍遥园译经院 (原大毘卢寺)
+    founded: 1991
+    location: 台北市文山区景美
+    practice: 禅密双修·推行汉传东密
+    website: https://abtemple.org
+    note: "定期举办楞严法会。法师发起筹建译经院，旨在系统翻译《华严经》《法华经》等经典为英文。"
+
+works_chinese:
+  intro: "中文著述已出版17种"
+  items:
+    - title: "大佛顶首楞严经义贯 (上·下)"
+      note: "核心代表作。慧律法师采用为讲经教材。成观法师因此被誉为「楞严座主」。"
+    - title: "楞伽经义贯"
+    - title: "心经系列"
+    - title: "大乘百法明门论今注"
+    - title: "唯识三十论颂义贯"
+    - title: "八识规矩颂义贯"
+    - title: "观所缘缘论义贯"
+    - title: "因明入正理论义贯"
+    - title: "六离合释法式义贯"
+    - title: "禅之甘露"
+    - title: "地藏法门系列"
+    - title: "北美开示录 (上·下)"
+    - title: "我的学密历程"
+
+works_english:
+  intro: "英文译著已出版11种"
+  items:
+    - "英译法华经 (The Lotus Sutra)"
+    - "英译金刚经 (The Diamond Sutra)"
+    - "英译心经 (The Heart Sutra)"
+    - "英译六祖坛经 (The Platform Sutra)"
+    - "英译圆觉经 (The Sutra of Perfect Enlightenment)"
+    - "英译地藏经 (The Earth Store Sutra)"
+    - "英译四十二章经 (The Sutra of Forty-Two Chapters)"
+    - "英译传心法要 (The Essentials of the Transmittance of the Mind)"
+
+lecture_highlights:
+  - topic: 楞严法会
+    significance: 成观法师最具代表性的讲法，定期在台北和美国两地举办，深入《大佛顶首楞严经》。
+  - topic: "唯识三十论颂 / 八识规矩颂 / 百法明门论"
+    note: 系统地跨经论讲说，常引《大乘起信论》阐述「性相圆融」——指出《起信论》为马鸣菩萨所著，「小本的《楞伽经》」，性相融合。
+  - topic: 真言宗密法
+    note: 以高野山传法阿阇梨身份，在日本系统学习后在台湾推行汉传东密。
+  - topic: 英汉对照经典系列
+    note: 独创性事业——以一人之力将十余部汉传大乘经典译为英文，每部均有详细注释(义贯)。
+
+comparison_with_haiyun:
+  note: |
+    成观法师与海云继梦法师皆承接贤首宗(华严宗)第42世法脉 ——
+    成观法师2010年承接，海云继梦2008年承接，二人几乎同时代。
+    成观以「楞严+唯识+真言」为三柱，以译经为弘法主轴；
+    海云以「华严禅观+灵性经济学」为旗帜，以讲经和寺院建设为主轴。
+    二人共同构成当代台湾华严系统两位风格迥异、互为补充的重要弘法者。
+
+links:
+  - name: 新逍遥园译经院官网
+    url: https://abtemple.org
+  - name: 百度百科·成观法师
+    url: https://baike.baidu.com/item/%E6%88%90%E8%A7%82%E6%B3%95%E5%B8%88/3815718
+  - name: 部分唯识讲记(能力仓)
+    url: http://nengliangcan.cn/xuefo/54783.html
