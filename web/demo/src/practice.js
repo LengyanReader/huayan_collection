@@ -625,6 +625,7 @@ function renderPractice(){
 
   // ── YouTube 频道 (从 PRACTICE_DATA.youtube_playlists 数据驱动) ──
   h+=renderYoutubeSection();
+  h+=renderAvatamsakaLectures();
   h+=renderPracticeSources();
 
   // ── 学术活动轨迹 ──
@@ -728,6 +729,94 @@ function switchPracticeView(view,btn){
     });
   },200);}
 }
+// ═══ 华严经讲法全目渲染 (从 PRACTICE_DATA.haiyun_avatamsaka_lectures) ═══
+function renderAvatamsakaLectures() {
+  var al = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_avatamsaka_lectures) ? PRACTICE_DATA.haiyun_avatamsaka_lectures : null;
+  if (!al) return '';
+  var h = '<div class=section id=res-avatamsaka><h2>📜 华严经讲法全目 — 整体·玄谈·品目</h2>';
+  if (al.overview) h += '<p style="font-size:0.75em;color:var(--text2)">' + al.overview.note + '</p>';
+
+  // ── 整体讲法 ──
+  h += '<h3 style="color:var(--gold);margin-top:10px">📚 一、整体讲法</h3>';
+  (al.overall||[]).forEach(function(o) {
+    h += '<div class=topic-card style=font-size:0.78em>';
+    h += '<b>' + o.title + '</b> — ' + (o.publisher||'') + ' · ' + (o.year||'') + ' · ' + (o.length||o.format||'');
+    h += '<br><span style=color:var(--text2)>' + (o.content||'').replace(/\n/g,'<br>') + '</span>';
+    if (o.isbn_start) h += '<br>ISBN: ' + o.isbn_start;
+    if (o.links) {
+      h += '<br>';
+      Object.keys(o.links).forEach(function(k) {
+        h += '<a href="' + o.links[k] + '" target=_blank style="font-size:0.85em;color:var(--blue)">' + k + '</a> ';
+      });
+    }
+    h += '</div>';
+  });
+
+  // ── 玄谈系列 ──
+  h += '<h3 style="color:var(--gold);margin-top:10px">🔮 二、玄谈系列</h3>';
+  (al.xuantan||[]).forEach(function(x) {
+    h += '<div class=topic-card style=font-size:0.78em>';
+    h += '<b>' + x.title + '</b> — ' + (x.platform||x.format||'') + ' · ' + (x.publisher||'');
+    h += '<br><span style=color:var(--text2)>' + (x.content||'').replace(/\n/g,'<br>') + '</span>';
+    if (x.links) {
+      h += '<br>';
+      Object.keys(x.links).forEach(function(k) {
+        h += '<a href="' + x.links[k] + '" target=_blank style="font-size:0.85em;color:var(--blue)">' + k + '</a> ';
+      });
+    }
+    h += '</div>';
+  });
+
+  // ── 品目解说 ──
+  h += '<h3 style="color:var(--gold);margin-top:10px">📖 三、品目解说</h3>';
+  h += '<table class=v-table style=font-size:0.75em><tr><th>品目</th><th>讲题</th><th>平台/载体</th><th>直达</th></tr>';
+  (al.chapters||[]).forEach(function(ch) {
+    h += '<tr><td><b>' + ch.chapter + '</b></td><td>' + ch.title + '</td><td>' + (ch.platform||ch.publisher||'') + '</td>';
+    h += '<td>';
+    if (ch.links) Object.keys(ch.links).forEach(function(k) { h += '<a href="' + ch.links[k] + '" target=_blank>' + k + '</a> '; });
+    h += '</td></tr>';
+  });
+  h += '</table>';
+
+  // ── Podcast ──
+  if (al.podcast_huayan) {
+    var ph = al.podcast_huayan;
+    h += '<h3 style="color:var(--gold);margin-top:10px">🎧 四、播客全季</h3>';
+    h += '<p style=font-size:0.78em><b>' + ph.name + '</b> — ' + ph.platforms + '</p>';
+    h += '<p style=font-size:0.75em;color:var(--text2)>华严相关季: ' + (ph.huayan_seasons||[]).join(' · ') + '</p>';
+    h += '<p style=font-size:0.72em>';
+    Object.keys(ph.links||{}).forEach(function(k) { h += '<a href="' + ph.links[k] + '" target=_blank>' + k + '</a> '; });
+    h += '</p>';
+  }
+
+  // ── 视频 ──
+  if (al.video) {
+    h += '<h3 style="color:var(--gold);margin-top:10px">📺 五、视频资源</h3>';
+    al.video.forEach(function(v) {
+      h += '<div class=topic-card style=font-size:0.75em><b>' + v.title + '</b> — ' + v.platform + '<br>';
+      (v.subjects||[]).forEach(function(s) { h += '🔹 ' + s + '<br>'; });
+      h += '<a href="' + v.link + '" target=_blank>直达</a></div>';
+    });
+  }
+
+  // ── 快速索引 ──
+  if (al.quick_index) {
+    var qi = al.quick_index;
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>🔍 快速索引</summary>';
+    Object.keys(qi).forEach(function(k) {
+      h += '<p><b>' + k + '</b>: ';
+      Object.keys(qi[k]).forEach(function(sk) {
+        h += '<br>  ' + sk + ': ' + qi[k][sk];
+      });
+      h += '</p>';
+    });
+    h += '</details>';
+  }
+
+  h += '</div>';
+  return h;
+}
+
 // ═══ YouTube 渲染 (从 PRACTICE_DATA.youtube_playlists) ═══
 function renderYoutubeSection() {
   var yt = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.youtube_playlists) ? PRACTICE_DATA.youtube_playlists : null;

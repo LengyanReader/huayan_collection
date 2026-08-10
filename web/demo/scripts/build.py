@@ -101,7 +101,8 @@ def load_practice():
                  'youtube_playlists', 'huayan_panjiao',
                  'dushun_wujiao_zhiguan',
                  'haiyun_practice_sources',
-                 'haiyun_xinfa_primary']:
+                 'haiyun_xinfa_primary',
+                 'haiyun_avatamsaka_lectures']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -676,6 +677,7 @@ def main():
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-avatamsaka');return false">华严经讲法全目</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-total');return false">全网总目</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-books');return false">著作</a>
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-yt');return false">YouTube</a>

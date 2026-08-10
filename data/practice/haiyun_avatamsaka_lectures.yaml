@@ -1,0 +1,182 @@
+# 海云继梦法师《华严经》讲法全目 — 整体·玄谈·品目
+# 书籍·音频·视频 三载体
+# 最后更新: 2026-08-08
+
+overview:
+  title: 华严经讲法全目
+  note: |
+    海云继梦法师以「新古典华严」复兴华严宗，
+    讲法覆盖八十华严·四十华严·六十华严的
+    整体玄谈与逐品解说。
+
+# ── 一、整体讲法 ──
+overall:
+  - title: "九九華嚴玄談 (5册)"
+    publisher: 空庭书苑
+    year: "2026.04起"
+    format: 纸本书+电子书(Kobo)
+    isbn_start: "9786269997893 (01)"
+    content: |
+      以《八十华严》前59卷+《四十华严》后40卷=「九九華嚴」为框架。
+      01册: 八十华严整体架构·七处九会·修行入门定位
+      02册: 深入八十华严思想视野
+      03册: 十住·十行·十回向修行内涵
+      04册: 转入四十华严·法界缘起·五周因果·因果同时
+      05册: (待出版)
+    links:
+      findbook_01: https://findbook.com.tw/9786269997893
+      cosmos_03: https://www.cosmosbooks.com.hk/index.php?route=product/product&product_id=626930183
+      kobo_series: https://www.kobo.com/us/en/series/whNkbT0KB1qj8LfR_A3HwQ
+
+  - title: "探玄記懸談講記 (4册)"
+    publisher: 空庭书苑
+    series: 海雲繼夢解華嚴 第6-9册
+    content: |
+      唐代华严三祖法藏《探玄记》之「悬谈」部分的现代讲解。
+      「悬谈」= 进入经文前的导论——说明解读经典的方法论。
+    links:
+      pickbooks: https://pickbooks.com.tw/book/3_000475624
+
+  - title: "華嚴哲學懸談"
+    publisher: 空庭书苑
+    isbn: "9789867484611"
+    series: "大方廣佛華嚴經思想重勘覓玄紀要"
+
+  - title: "四十華嚴講記"
+    year: 2009
+    venue: 台北
+    length: 73+讲
+    content: |
+      以《四十华严》(全本入法界品)为核心的逐品讲解。
+      第68讲为关键讲次——法师在此讲中阐明「普贤乘」的「直接兑现」特质。
+    links:
+      fjdh_example_1: http://wuming.xuefo.com/nr/7/65148.html
+      fjdh_example_2: http://wuming.xuefo.net/nr/7/65136.html
+      fjdh_earlier: http://wuming.xuefo.com/nr/6/64861.html
+
+# ── 二、玄谈系列 ──
+xuantan:
+  - title: "華嚴經經首 (S10)"
+    platform: Spotify / Apple Podcast
+    series: 普賢乘華嚴宗 第10季
+    content: |
+      华严经「经首」品——全经的序分与玄谈。
+      海云法师在此系列中展开华严的语言模式/思惟模式/行为模式三框架。
+
+  - title: "非常華嚴經——四十華嚴玄談"
+    publisher: 空庭书苑
+    format: 纸本/电子书
+    content: 聚焦《四十华严》的玄义——从八十华严到四十华严的义理过渡
+
+  - title: "非常華嚴經——華嚴經經首"
+    content: 八十华严经首品玄谈——开经前的义理地基
+
+  - title: "九九華嚴玄談 (YouTube系列)"
+    year: "2024-2026"
+    content: |
+      2024-2026年最新讲座系列, 与纸本书同步推出。
+      YouTube频道「華嚴教海」播放清单。
+    links:
+      youtube_channel: https://www.youtube.com/@huayen-world
+      youtube_playlists: https://www.youtube.com/@huayen-world/playlists
+
+  - title: "華嚴思想的承先與啟後"
+    content: |
+      海云法师关于华严经起源、形成、流传和现代意义的专题讲座。
+      核心观点: 《华严经》的故乡在西域(于阗)——五大古文明的交汇地。
+      三龙传说(大龙菩萨·龙宫·龙树)的自性表法诠释。
+
+# ── 三、品目解说 ──
+chapters:
+  - chapter: 净行品
+    title: "華嚴經淨行品 (S20)"
+    platform: Spotify/Apple Podcast
+    content: |
+      《净行品》——华严经修行实践的核心品目之一。
+      141愿「当愿众生」——日常行住坐卧中修菩萨行。
+
+  - chapter: 十行品
+    title: "十行品 (S23)"
+    platform: Spotify/Apple Podcast
+    year: "2023-2024"
+    episodes: 8集
+    content: |
+      十行品之四「無屈撓行」——十行位的修行内容。
+
+  - chapter: 普贤行愿品
+    title: "普賢行願品 (S17)"
+    platform: Spotify/Apple Podcast
+    content: |
+      十大愿王——圆融道的工程面核心。
+      海云法师以此品衔接华严教理与日常实践。
+
+  - chapter: 耳根圆通章
+    title: "楞嚴經·耳根圓通章"
+    platform: fjdh.cn
+    lessons: 9+集
+    content: |
+      《楞严经》观世音菩萨耳根圆通章——与华严观音法门的交叉讲解。
+    links:
+      fjdh_example: http://wuming.xuefo.com/nr/7/70164.html
+
+  - chapter: 十地品 ↔ 占察经
+    title: "非常占察經 (3册)"
+    publisher: 空庭书苑
+    isbn: "9789867484918/4932/4949"
+    year: "2015-2017"
+    content: |
+      《占察善恶业报经》讲记——四种观法中前二种(唯心识观·真如实观)的经典来源，
+      与《华严经·十地品》有深层义理关联。
+
+  - chapter: 其它
+    title: 散见品目
+    content: |
+      • 十住品·十回向品·十定品·十通品: 散见于《九九華嚴玄談》各册
+      • 如来出现品: 《探玄記懸談講記》涉及
+      • 入法界品(善财五十三参): 《四十華嚴講記》完整覆盖
+
+# ── 四、Podcast 全季华严相关 ──
+podcast_huayan:
+  name: 普賢乘華嚴宗
+  platforms: "Spotify · Apple Podcast · 每周一三更新"
+  huayan_seasons:
+    - "S1: 華嚴學概論"
+    - "S2: 華嚴經教與行法"
+    - "S3: 華嚴禪行法"
+    - "S10: 華嚴經經首"
+    - "S17: 普賢行願品"
+    - "S20: 華嚴經淨行品"
+    - "S22: 華嚴海會"
+    - "S23: 十行品"
+  links:
+    spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
+    apple: https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889
+
+# ── 五、视频/Bilibili ──
+video:
+  - title: "華嚴六科系列 (Bilibili)"
+    platform: Bilibili
+    link: https://www.bilibili.com/video/BV1iS421X7S8/
+    subjects:
+      - "華嚴學概論 (8集)"
+      - "華嚴經教行法 (8集)"
+      - "華嚴禪行法 (8集)"
+      - "華嚴戒律觀 (7集)"
+      - "華嚴淨土法門 (7集)"
+      - "華嚴密法 (7集)"
+  - title: "四十華嚴講記 (逐字稿)"
+    platform: fjdh.cn / wuming.xuefo.net
+    content: 完整逐字稿——学佛网五明频道集中发布
+
+# ── 六、快速索引 ──
+quick_index:
+  by_format:
+    纸本书: "九九華嚴玄談5册·探玄記懸談4册·華嚴哲學懸談·非常華嚴經系列"
+    电子书: "海雲繼夢解華嚴 (Kobo系列)"
+    音频: "普賢乘華嚴宗 S1-S23 (Spotify/Apple)"
+    视频: "華嚴六科 (Bilibili)·九九華嚴講座 (YouTube)"
+  by_content:
+    整体: "九九華嚴玄談·四十華嚴講記·探玄記懸談"
+    玄谈: "華嚴經經首·華嚴哲學懸談·非常華嚴經玄談"
+    品目: "净行品·十行品·普贤行愿品·耳根圆通章·十地品(占察经)"
+    修行: "S2经教行法·S3禅行法·S8禅与入定"
