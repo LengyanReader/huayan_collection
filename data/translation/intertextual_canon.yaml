@@ -79,13 +79,19 @@ schools:
      {t: "大乘起信论义记", n:  "T44n1846·法藏", d:  "法藏注。华严义学融合起信论。", l:  "https://cbetaonline.dila.edu.tw/zh/T44n1846"}]}
 
   - {id: other_sutras, name: "重要通经 / Major Sutras", texts:
-    [{t: "大宝积经", n:  "T11n0310·菩提流志编译·120卷", d:  "四十九会。大乘菩萨藏集成。与华严同为最大部头。", l:  "https://cbetaonline.dila.edu.tw/zh/T11n0310"},
-     {t: "大集经", n:  "T13n0397·昙无谶等译·60卷", d:  "大乘菩萨藏。护世护法。", l:  "https://cbetaonline.dila.edu.tw/zh/T13n0397"},
-     {t: "金光明最胜王经", n:  "T16n0665·义净译·10卷", d:  "护国三经之一。三身论。", l:  "https://cbetaonline.dila.edu.tw/zh/T16n0665"},
-     {t: "大佛顶首楞严经", n:  "T19n0945·般剌蜜帝译·10卷", d:  "楞严大定。二十五圆通。五十阴魔。", l:  "https://cbetaonline.dila.edu.tw/zh/T19n0945"},
-     {t: "思益梵天所问经", n:  "T15n0586·鸠摩罗什译·4卷", d:  "诸法实相。般若系。", l:  "https://cbetaonline.dila.edu.tw/zh/T15n0586"},
-     {t: "药师琉璃光七佛本愿功德经", n:  "T14n0451·义净译·2卷", d:  "药师法门。东方净琉璃世界。", l:  "https://cbetaonline.dila.edu.tw/zh/T14n0451"},
-     {t: "地藏菩萨本愿经", n:  "T13n0412·实叉难陀译·2卷", d:  "地藏大愿。地狱不空誓不成佛。", l:  "https://cbetaonline.dila.edu.tw/zh/T13n0412"}]}
+    [{t: "大宝积经", n: "T11n0310·菩提流志编译·120卷", d: "四十九会。大乘菩萨藏集成。与华严同为最大部头。", l: "https://cbetaonline.dila.edu.tw/zh/T11n0310"},
+     {t: "大集经", n: "T13n0397·昙无谶等译·60卷", d: "大乘菩萨藏。护世护法。", l: "https://cbetaonline.dila.edu.tw/zh/T13n0397"},
+     {t: "金光明最胜王经", n: "T16n0665·义净译·10卷", d: "护国三经之一。三身论。", l: "https://cbetaonline.dila.edu.tw/zh/T16n0665"},
+     {t: "大佛顶首楞严经", n: "T19n0945·般剌蜜帝译·10卷", d: "楞严大定。二十五圆通。五十阴魔。", l: "https://cbetaonline.dila.edu.tw/zh/T19n0945"},
+     {t: "大乘密严经", n: "T16n0681·不空译·3卷", d: "如来藏系。五法三自性八识。与楞伽并称唯识/如来藏双璧。", l: "https://cbetaonline.dila.edu.tw/zh/T16n0681"},
+     {t: "大乘本生心地观经", n: "T03n0159·般若译·8卷", d: "报四恩(父母·众生·国王·三宝)。大乘慈悲心之总纲。", l: "https://cbetaonline.dila.edu.tw/zh/T03n0159"},
+     {t: "仁王护国般若波罗蜜经", n: "T08n0246·不空译·2卷", d: "护国三经之一。般若与治国。", l: "https://cbetaonline.dila.edu.tw/zh/T08n0246"},
+     {t: "思益梵天所问经", n: "T15n0586·鸠摩罗什译·4卷", d: "诸法实相。般若系。", l: "https://cbetaonline.dila.edu.tw/zh/T15n0586"},
+     {t: "药师琉璃光七佛本愿功德经", n: "T14n0451·义净译·2卷", d: "药师法门。东方净琉璃世界。", l: "https://cbetaonline.dila.edu.tw/zh/T14n0451"}]}
+  - {id: dizang, name: "地藏法门 / Kṣitigarbha", texts:
+    [{t: "地藏菩萨本愿经", n: "T13n0412·实叉难陀译·2卷", d: "地藏大愿。地狱不空誓不成佛。", l: "https://cbetaonline.dila.edu.tw/zh/T13n0412"},
+     {t: "大乘大集地藏十轮经", n: "T13n0411·玄奘译·10卷", d: "地藏三经之二。十善十恶业道。", l: "https://cbetaonline.dila.edu.tw/zh/T13n0411"},
+     {t: "占察善恶业报经", n: "T17n0839·菩提灯译·2卷", d: "地藏三经之三。唯心识观·真如实观。四种观法前二种之经典来源。", l: "https://cbetaonline.dila.edu.tw/zh/T17n0839"}]}
 
   - {id: tibetan, name: "藏传佛教 / Tibetan Buddhism", texts:
     [{t: "菩提道次第广论", n:  "宗喀巴(1357-1419)", d:  "格鲁派根本。三士道体系。可与华严五教判比较。", l:  "https://en.wikipedia.org/wiki/Lamrim"},

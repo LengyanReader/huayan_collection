@@ -636,6 +636,7 @@ def main():
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-shelun');return false">摄论宗</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tathagatagarbha');return false">如来藏系</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-other_sutras');return false">重要通经</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-dizang');return false">地藏法门</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tibetan');return false">藏传佛教</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-theravada');return false">南传·上座部</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-hetuvidya');return false">因明</a>
