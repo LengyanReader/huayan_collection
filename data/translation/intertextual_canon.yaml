@@ -1,0 +1,99 @@
+# 以经证经 — 大小宗派经典汇证
+# Intertextual Canon: Classics from All Buddhist Schools
+# 最后更新: 2026-08-08
+
+schools:
+  - name: 华严宗
+    en: Huayan / Avataṃsaka
+    texts:
+      - {t: "大方广佛华严经(八十)", n: "T10n0279·实叉难陀译·80卷39品", desc: "华严宗根本经典。七处九会，法界缘起，事事无碍。", link: "https://cbetaonline.dila.edu.tw/zh/T10n0279"}
+      - {t: "华严一乘教义分齐章", n: "T45n1866·法藏", desc: "华严判教纲领。五教十宗之总纲。", link: "https://cbetaonline.dila.edu.tw/zh/T45n1866"}
+      - {t: "华严经探玄记", n: "T35n1733·法藏", desc: "六十华严最权威注疏。", link: "https://cbetaonline.dila.edu.tw/zh/T35n1733"}
+
+  - name: "天台宗 / Tiantai / 法华"
+    en: Tiantai / Lotus
+    texts:
+      - {t: "妙法莲华经", n: "T09n0262·鸠摩罗什译·7卷28品", desc: "天台宗根本经典。会三归一，开权显实。", link: "https://cbetaonline.dila.edu.tw/zh/T09n0262"}
+      - {t: "摩诃止观", n: "T46n1911·智顗", desc: "天台三大部之一。圆顿止观实践体系。", link: "https://cbetaonline.dila.edu.tw/zh/T46n1911"}
+      - {t: "法华玄义", n: "T33n1716·智顗", desc: "天台三大部之二。五重玄义释法华经。", link: "https://cbetaonline.dila.edu.tw/zh/T33n1716"}
+      - {t: "法华文句", n: "T34n1718·智顗", desc: "天台三大部之三。逐句解释法华经。", link: "https://cbetaonline.dila.edu.tw/zh/T34n1718"}
+      - {t: "金刚錍", n: "T46n1932·湛然", desc: "天台无情有性说。回应华严宗批评之关键论著。", link: "https://cbetaonline.dila.edu.tw/zh/T46n1932"}
+
+  - name: "中观 / Madhyamaka / 空宗"
+    en: Madhyamaka
+    texts:
+      - {t: "中论", n: "T30n1564·龙树造·鸠摩罗什译·4卷", desc: "中观根本论典。八不中道，缘起性空。龙树《中论》+青目释。", link: "https://cbetaonline.dila.edu.tw/zh/T30n1564"}
+      - {t: "十二门论", n: "T30n1568·龙树造·鸠摩罗什译", desc: "十二门观空。三论宗所依之一。", link: "https://cbetaonline.dila.edu.tw/zh/T30n1568"}
+      - {t: "百论", n: "T30n1569·提婆造·鸠摩罗什译", desc: "破斥外道邪见。三论宗所依之一。", link: "https://cbetaonline.dila.edu.tw/zh/T30n1569"}
+      - {t: "大智度论", n: "T25n1509·龙树造·鸠摩罗什译·100卷", desc: "大品般若经注释。大乘菩萨道的百科全书。", link: "https://cbetaonline.dila.edu.tw/zh/T25n1509"}
+      - {t: "肇论", n: "T45n1858·僧肇", desc: "中国中观学里程碑。物不迁·不真空·般若无知·涅槃无名四论。", link: "https://cbetaonline.dila.edu.tw/zh/T45n1858"}
+
+  - name: "唯识 / Yogācāra / 相宗"
+    en: Yogācāra
+    texts:
+      - {t: "解深密经", n: "T16n0676·玄奘译·5卷", desc: "唯识宗根本经典。三性三无性，阿陀那识。", link: "https://cbetaonline.dila.edu.tw/zh/T16n0676"}
+      - {t: "瑜伽师地论", n: "T30n1579·弥勒·无著·玄奘译·100卷", desc: "大乘瑜伽行派的百科全书。十七地。", link: "https://cbetaonline.dila.edu.tw/zh/T30n1579"}
+      - {t: "成唯识论", n: "T31n1585·玄奘糅译·10卷", desc: "护法等十大论师释《唯识三十颂》之糅译。法相宗核心论典。", link: "https://cbetaonline.dila.edu.tw/zh/T31n1585"}
+      - {t: "唯识三十论颂", n: "T31n1586·世亲造·玄奘译", desc: "唯识学纲领。三十颂涵盖唯识全部教义。", link: "https://cbetaonline.dila.edu.tw/zh/T31n1586"}
+      - {t: "摄大乘论", n: "T31n1594·无著造·玄奘译", desc: "唯识学核心论典。十殊胜语统摄大乘。", link: "https://cbetaonline.dila.edu.tw/zh/T31n1594"}
+
+  - name: "禅宗 / Chan / Zen"
+    en: Chan / Zen
+    texts:
+      - {t: "六祖大师法宝坛经", n: "T48n2008·宗宝本", desc: "禅宗根本经典。慧能生平与顿悟法门。唯一由中国祖师所造的「经」。", link: "https://cbetaonline.dila.edu.tw/zh/T48n2008"}
+      - {t: "楞伽阿跋多罗宝经", n: "T16n0670·求那跋陀罗译·4卷", desc: "达摩付嘱慧可之经。五法三自性八识二无我。", link: "https://cbetaonline.dila.edu.tw/zh/T16n0670"}
+      - {t: "金刚般若波罗蜜经", n: "T08n0235·鸠摩罗什译", desc: "禅宗印心经典。六祖因之悟入。应无所住而生其心。", link: "https://cbetaonline.dila.edu.tw/zh/T08n0235"}
+      - {t: "碧岩录", n: "T48n2003·圆悟克勤", desc: "禅宗公案评唱之巅。百则公案+垂示+著语+评唱。", link: "https://cbetaonline.dila.edu.tw/zh/T48n2003"}
+      - {t: "无门关", n: "T48n2005·无门慧开", desc: "四十八则公案。无门为法门。以赵州无字为第一则。", link: "https://cbetaonline.dila.edu.tw/zh/T48n2005"}
+
+  - name: "净土宗 / Pure Land"
+    en: Pure Land
+    texts:
+      - {t: "佛说无量寿经", n: "T12n0360·康僧铠译·2卷", desc: "净土三经之一。法藏比丘四十八愿。", link: "https://cbetaonline.dila.edu.tw/zh/T12n0360"}
+      - {t: "佛说观无量寿佛经", n: "T12n0365·畺良耶舍译", desc: "净土三经之二。十六观法。", link: "https://cbetaonline.dila.edu.tw/zh/T12n0365"}
+      - {t: "佛说阿弥陀经", n: "T12n0366·鸠摩罗什译", desc: "净土三经之三。执持名号，一心不乱。", link: "https://cbetaonline.dila.edu.tw/zh/T12n0366"}
+      - {t: "往生论注", n: "T40n1819·昙鸾", desc: "中国净土宗最早的体系性注释。难行道与易行道之判。", link: "https://cbetaonline.dila.edu.tw/zh/T40n1819"}
+
+  - name: "律宗 / Vinaya"
+    en: Vinaya
+    texts:
+      - {t: "四分律", n: "T22n1428·佛陀耶舍·竺佛念译·60卷", desc: "汉传佛教根本戒律。南山律宗所依。", link: "https://cbetaonline.dila.edu.tw/zh/T22n1428"}
+      - {t: "梵网经", n: "T24n1484·鸠摩罗什译·2卷", desc: "大乘菩萨戒。十重四十八轻戒。", link: "https://cbetaonline.dila.edu.tw/zh/T24n1484"}
+
+  - name: "密宗 / Vajrayāna / 真言"
+    en: Esoteric / Vajrayana
+    texts:
+      - {t: "大毘卢遮那成佛神变加持经(大日经)", n: "T18n0848·善无畏·一行译·7卷", desc: "真言宗根本经典。胎藏界曼荼罗。", link: "https://cbetaonline.dila.edu.tw/zh/T18n0848"}
+      - {t: "金刚顶经", n: "T18n0865·不空译·3卷", desc: "真言宗根本经典。金刚界曼荼罗。", link: "https://cbetaonline.dila.edu.tw/zh/T18n0865"}
+      - {t: "苏悉地羯罗经", n: "T18n0893·善无畏译", desc: "密教三部经之一。苏悉地法。", link: "https://cbetaonline.dila.edu.tw/zh/T18n0893"}
+
+  - name: "三论宗 / Sanlun"
+    en: Sanlun / Three Treatise
+    texts:
+      - {t: "中观论疏", n: "T42n1824·吉藏", desc: "吉藏《中论》注疏。三论宗集大成者。", link: "https://cbetaonline.dila.edu.tw/zh/T42n1824"}
+      - {t: "三论玄义", n: "T45n1852·吉藏", desc: "三论宗纲要。破邪显正之方法论。", link: "https://cbetaonline.dila.edu.tw/zh/T45n1852"}
+
+  - name: "大乘起信论 / Awakening of Faith"
+    en: Treatise on Awakening of Faith
+    texts:
+      - {t: "大乘起信论", n: "T32n1666·马鸣(传统著录)·真谛译", desc: "一心开二门(心真如门·心生灭门)。华严宗与天台宗共同引用之核心论典。法藏《大乘起信论义记》为最权威注释之一。", link: "https://cbetaonline.dila.edu.tw/zh/T32n1666"}
+      - {t: "大乘起信论义记", n: "T44n1846·法藏", desc: "法藏对起信论的权威注疏。华严义学与起信论融合的关键文本。", link: "https://cbetaonline.dila.edu.tw/zh/T44n1846"}
+
+  - name: "藏传佛教 / Tibetan Buddhism"
+    en: Tibetan Buddhism
+    texts:
+      - {t: "菩提道次第广论", n: "宗喀巴(1357-1419)", desc: "藏传格鲁派根本论典。三士道(下士道·中士道·上士道)修学体系。与华严五教判可做比较研究。", link: "https://en.wikipedia.org/wiki/Lamrim"}
+      - {t: "入菩萨行论", n: "寂天(Śāntideva, 8世纪)", desc: "大乘菩萨道实践纲要。藏传四大派共遵。", link: "https://en.wikipedia.org/wiki/Bodhisattvacaryāvatāra"}
+      - {t: "现观庄严论", n: "弥勒(传统著录)", desc: "般若经修行次第。藏传五部大论之一。", link: "https://en.wikipedia.org/wiki/Abhisamayālaṃkāra"}
+
+  - name: "上座部 / Theravāda / 南传"
+    en: Theravada
+    texts:
+      - {t: "阿含经(杂·中·长·增一)", n: "T01-T02·四阿含", desc: "原始佛教根本经典。诸宗共源。华严经「十二缘起」·「四圣谛」等皆源自此。", link: "https://cbetaonline.dila.edu.tw/zh/T01n0001"}
+      - {t: "清净道论", n: "觉音(Buddhaghosa, 5世纪)", desc: "南传上座部修行体系总纲。戒定慧三学之详尽展开。", link: "https://en.wikipedia.org/wiki/Visuddhimagga"}
+
+  - name: "因明 / Buddhist Logic"
+    en: Buddhist Logic
+    texts:
+      - {t: "因明入正理论", n: "T32n1630·商羯罗主造·玄奘译", desc: "汉传因明入门。八门二益。", link: "https://cbetaonline.dila.edu.tw/zh/T32n1630"}
+      - {t: "因明正理门论", n: "T32n1628·陈那造·玄奘译", desc: "新因明奠基之作。三支比量。", link: "https://cbetaonline.dila.edu.tw/zh/T32n1628"}

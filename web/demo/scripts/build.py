@@ -66,6 +66,10 @@ def load_gap():
     avs = read_yaml('translation/avatamsaka_studies.yaml')
     if avs:
         gap['avatamsaka_studies'] = avs
+    # Merge intertextual canon
+    ic = read_yaml('translation/intertextual_canon.yaml')
+    if ic:
+        gap['intertextual_canon'] = ic
     return gap
 
 
@@ -607,6 +611,7 @@ def main():
     <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchGapView('overview',this);return false">📊 差异总览</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a></div>
+    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('intertextual',this);return false">📖 以经证经</a></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('avatamsaka_studies',this);return false">🌏 华严经学 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">

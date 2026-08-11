@@ -343,6 +343,9 @@ function renderGap(){
   h+="</div>"; // close 文本系谱 section div
   h+="</div>"; // close gv-genealogy
 
+  // ═══ 以经证经 (从 GAP.intertextual_canon 数据驱动) ═══
+  h+=renderIntertextualCanon();
+
   // ═══ 华严经学 (从 GAP.avatamsaka_studies 数据驱动) ═══
   h+=renderAvatamsakaStudies();
 
@@ -380,6 +383,29 @@ function renderGap(){
 }
 
 // ═══ GAP SUB-NAV ═══
+// ═══ 以经证经渲染 (从 GAP.intertextual_canon) ═══
+function renderIntertextualCanon() {
+  var ic = (typeof GAP !== 'undefined' && GAP.intertextual_canon) ? GAP.intertextual_canon : null;
+  if (!ic || !ic.schools) return '';
+  var h = '<div id=gv-intertextual class=gv-section style=display:none>';
+  h += '<div class=section><h2>📖 以经证经 — 大小宗派经典汇证</h2>';
+  h += '<p style=font-size:0.82em;color:var(--text2);margin-bottom:12px>华严宗「事事无碍」「一即一切」的义理与各宗经典互相印证——汉传八宗+藏传+南传+因明共14门。</p>';
+  ic.schools.forEach(function(school) {
+    h += '<div style="margin-bottom:16px"><h3 style="color:var(--gold);font-size:0.95em;border-bottom:1px solid var(--line);padding-bottom:4px">' + school.name + ' <span style=font-size:0.7em;color:var(--text2)>' + (school.en||'') + '</span></h3>';
+    h += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
+    school.texts.forEach(function(b) {
+      h += '<span style="padding:6px 12px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.2);border-radius:14px;font-size:0.75em;max-width:280px">';
+      h += '<b>' + b.t + '</b><br><span style=font-size:0.85em;color:var(--text2)>' + b.n + '</span>';
+      h += '<br><span style=font-size:0.85em;color:var(--text)>' + b.desc + '</span>';
+      if (b.link) h += '<br><a href="' + b.link + '" target=_blank style=font-size:0.7em;color:var(--blue)">📖 CBETA / 参考</a>';
+      h += '</span>';
+    });
+    h += '</div></div>';
+  });
+  h += '</div></div>'; // close section + gv-intertextual
+  return h;
+}
+
 // ═══ 华严经学渲染 (从 GAP.avatamsaka_studies) ═══
 function renderAvatamsakaStudies() {
   var avs = (typeof GAP !== 'undefined' && GAP.avatamsaka_studies) ? GAP.avatamsaka_studies : null;
