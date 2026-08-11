@@ -855,10 +855,19 @@ function switchPracticeView(view,btn){
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
   var pvEl=document.getElementById("pv-"+view);
   if(pvEl)pvEl.style.display="block";
-  // Re-render mermaid diagrams (they fail when hidden)
-  if (typeof mermaid !== 'undefined') {
-    setTimeout(function(){ mermaid.run({querySelector:'.mermaid'}); }, 200);
-  }
+  // Re-render mermaid diagrams (hidden divs block initial render)
+  setTimeout(function(){
+    if (typeof mermaid !== 'undefined') {
+      document.querySelectorAll('.mermaid').forEach(function(el){
+        try {
+          var code = el.textContent;
+          el.removeAttribute('data-processed');
+          el.innerHTML = code;
+        } catch(e){}
+      });
+      try { mermaid.init(undefined, '.mermaid'); } catch(e){}
+    }
+  }, 400);
   localStorage.setItem('practice_sub',view);
   // Force-reload lazy images when switching to heart (now med-heart)
   if(view==='meditation'){setTimeout(function(){
@@ -1149,9 +1158,9 @@ function renderChanTraces() {
   var h = '';
   // ── Diagrams ──
   h += '<div class=section id=chan-diagrams><h2>📊 禅宗法脉传承</h2>';
-  h += '<div class=mermaid style="max-width:100%">\ngraph TD\n  BODHI[佛陀灵山拈花] --> INDIA[印度28代]\n  INDIA --> DAMO[菩提达摩?-536]\n  DAMO --> HUIKE[慧可487-593]\n  HUIKE --> SENGCAN[僧璨?-606]\n  SENGCAN --> DAOXIN[道信580-651<br/>东山法门]\n  DAOXIN --> HONGREN[弘忍601-674]\n  HONGREN --> SHENXIU[神秀606-706<br/>北宗渐悟]\n  HONGREN --> HUINENG[慧能638-713<br/>南宗顿悟]\n  HUINENG --> NANYUE[南岳怀让]\n  HUINENG --> QINGYUAN[青原行思]\n  NANYUE --> MAZU[马祖道一709-788<br/>洪州宗]\n  QINGYUAN --> SHITOU[石头希迁700-790]\n  MAZU --> LINJI[临济义玄?-867<br/>临济宗]\n  SHITOU --> CAODONG[洞山良价+曹山本寂<br/>曹洞宗五位君臣]\n  MAZU --> WEIYANG[沩仰宗圆相默契]\n  SHITOU --> YUNMEN[云门文偃864-949<br/>云门宗]\n  SHITOU --> FAYAN[法眼文益885-958<br/>法眼宗]\n  LINJI --> DAHUI[大慧宗杲1089-1163<br/>看话禅]\n  CAODONG --> HONGZHI[宏智正觉1091-1157<br/>默照禅]\n  LINJI --> CHANJING[明清禅净合流<br/>念佛是谁]\n  CHANJING --> XUYUN[虚云1840-1959<br/>兼祧五宗]\n  XUYUN --> JINGHUI[净慧1933-2013<br/>生活禅]\n  XUYUN --> BENHUAN[本焕]\n  XUYUN --> FOYUAN[佛源]\n</div>';
+  h += '<div class=mermaid style="max-width:100%">\ngraph TD\n  BODHI["佛陀灵山拈花"] --> INDIA["印度二十八代"]\n  INDIA --> DAMO["菩提达摩(?-536)"\n  DAMO --> HUIKE["慧可(487-593)"\n  HUIKE --> SENGCAN["僧璨(?-606)"\n  SENGCAN --> DAOXIN["道信(580-651) 东山法门"]\n  DAOXIN --> HONGREN["弘忍(601-674)"\n  HONGREN --> SHENXIU["神秀(606-706) 北宗渐悟"]\n  HONGREN --> HUINENG["慧能(638-713) 南宗顿悟"]\n  HUINENG --> NANYUE["南岳怀让"]\n  HUINENG --> QINGYUAN["青原行思"]\n  NANYUE --> MAZU["马祖道一(709-788) 洪州宗"]\n  QINGYUAN --> SHITOU["石头希迁(700-790)"\n  MAZU --> LINJI["临济义玄 临济宗"]\n  SHITOU --> CAODONG["洞山良价 曹洞宗"]\n  MAZU --> WEIYANG["沩仰宗"]\n  SHITOU --> YUNMEN["云门文偃 云门宗"]\n  SHITOU --> FAYAN["法眼文益 法眼宗"]\n  LINJI --> DAHUI["大慧宗杲(1089-1163) 看话禅"]\n  CAODONG --> HONGZHI["宏智正觉(1091-1157) 默照禅"]\n  LINJI --> CHANJING["明清禅净合流"]\n  CHANJING --> XUYUN["虚云(1840-1959) 兼祧五宗"]\n  XUYUN --> JINGHUI["净慧(1933-2013) 生活禅"]\n  XUYUN --> BENHUAN["本焕"]\n  XUYUN --> FOYUAN["佛源"]\n</div>';
   h += '<h3 style="margin-top:12px">📅 行法演进时间线</h3>';
-  h += '<div class=mermaid style="max-width:100%">\ntimeline\n  title 禅宗行法演进\n  6世纪 : 达摩二入四行·壁观\n  7世纪 : 道信弘忍东山法门\n  8世纪 : 慧能顿悟·无念无相无住\n  9世纪 : 马祖石头·机锋问答\n  10-11世纪 : 汾阳善昭颂古·文字禅\n  12世纪 : 大慧看话vs宏智默照\n  13-18世纪 : 明清禅净合流\n  19-20世纪 : 虚云来果传统看话禅\n  20世纪末 : 圣严四阶·净慧生活禅\n</div></div>';
+  h += '<div class=mermaid style="max-width:100%">\ntimeline\n  title 禅宗行法演进\n  section 中国\n  6世纪 : 达摩二入四行壁观\n  7世纪 : 道信弘忍东山法门\n  8世纪 : 慧能顿悟无念无相\n  9世纪 : 马祖石头机锋问答\n  10-11世纪 : 汾阳善昭颂古文字禅\n  12世纪 : 大慧看话宏智默照\n  section 东亚\n  13世纪 : 日本道元永平寺\n  14-18世纪 : 明清禅净合流\n  section 现代\n  19-20世纪 : 虚云来果传统看话\n  20世纪末 : 圣严四阶净慧生活禅\n</div></div>';
 
   ct.sections.forEach(function(sec) {
     h += '<div class=section id=chan-' + sec.id.replace('chan_','') + '>';
@@ -1193,7 +1202,7 @@ function renderChengguanSection() {
   var h = '';
   // Lineage diagram
   h += '<div class=section><h3>📊 成观法师法脉传承图</h3>';
-  h += '<div class=mermaid style="max-width:100%">\ngraph TD\n  subgraph 天台宗[Tiantai]\n    DX[谛闲大师] --> XM[显明老和尚\\n天台45世]\n    XM --> CG1[成观法师\\n天台46世\\n1988年纽约出家]\n  end\n  subgraph 真言宗[Shingon]\n    KYS[高野山金刚峰寺] --> CG2[成观法师\\n真言宗53世\\n传法灌顶阿阇梨\\n1996年]\n  end\n  subgraph 华严宗[Huayan]\n    DS[杜顺至宗密五祖] --> LJ[历代祖师]\n    LJ --> CG3[成观法师\\n贤首宗42世\\n慈恩宗42世\\n2010年承接]\n  end\n  CG1 --> JY[新逍遥园译经院\\n1991年\\n台北]\n  CG1 --> BZS[遍照寺\\n美国密西根]\n  CG1 --> LY[楞严座主\\n楞严经义贯上下]\n  CG1 --> WS[唯识系列\\n百法/三十论/八识]\n  CG1 --> ZY[译经11种\\n英译法华/楞严/金刚/坛经]\n  CG1 --> ZM[真言密法\\n汉传东密]\n</div></div>';
+  h += '<div class=mermaid style="max-width:100%">\ngraph TD\n  subgraph A["天台宗 Tiantai"]\n    DX["谛闲大师"] --> XM["显明老和尚 天台45世"]\n    XM --> CG1["成观法师 天台46世 1988年纽约出家"]\n  end\n  subgraph B["真言宗 Shingon"]\n    KYS["高野山金刚峰寺"] --> CG2["成观法师 真言宗53世 传法灌顶阿阇梨 1996年"]\n  end\n  subgraph C["华严宗 Huayan"]\n    DS["杜顺至宗密五祖"] --> LJ["历代祖师"]\n    LJ --> CG3["成观法师 贤首宗42世 慈恩宗42世 2010年承接"]\n  end\n  CG1 --> JY["新逍遥园译经院 (1991 台北)"]\n  CG1 --> BZS["遍照寺 (美国密西根)"]\n  CG1 --> LY["楞严座主: 楞严经义贯上下"]\n  CG1 --> WS["唯识系列: 百法/三十论/八识"]\n  CG1 --> ZY["英译11种: 法华/楞严/金刚/坛经"]\n  CG1 --> ZM["真言密法: 汉传东密"]\n</div></div>';
 
   // Bio
   if (cg.biography) {
