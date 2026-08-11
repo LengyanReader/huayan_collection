@@ -1031,19 +1031,14 @@ function renderChanTraces() {
   var ct = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chan_authentic_traces) ? PRACTICE_DATA.chan_authentic_traces : null;
   if (!ct || !ct.sections) return '';
   var h = '';
-  // ── Diagrams (set via textContent to avoid innerHTML issues) ──
+  // ── Diagrams ──
   h += '<div class=section id=chan-diagrams><h2>📊 禅宗法脉传承</h2>';
-  h += '<div id=mermaid-lineage class=mermaid style="max-width:100%"></div>';
+  h += '<pre class=mermaid id=mermaid-lineage style="max-width:100%">graph TD\n  BODHI["佛陀灵山拈花"] --> INDIA["印度二十八代"]\n  INDIA --> DAMO["菩提达摩"]\n  DAMO --> HUIKE["慧可"]\n  HUIKE --> SENGCAN["僧璨"]\n  SENGCAN --> DAOXIN["道信 东山法门"]\n  DAOXIN --> HONGREN["弘忍"]\n  HONGREN --> SHENXIU["神秀 北宗"]\n  HONGREN --> HUINENG["慧能 南宗顿悟"]\n  HUINENG --> NANYUE["南岳怀让"]\n  HUINENG --> QINGYUAN["青原行思"]\n  NANYUE --> MAZU["马祖道一"]\n  QINGYUAN --> SHITOU["石头希迁"]\n  MAZU --> LINJI["临济义玄"]\n  SHITOU --> CAODONG["洞山良价 曹洞"]\n  LINJI --> DAHUI["大慧宗杲 看话禅"]\n  CAODONG --> HONGZHI["宏智正觉 默照禅"]\n  LINJI --> CHANJING["明清禅净合流"]\n  CHANJING --> XUYUN["虚云 1840-1959"]\n  XUYUN --> JINGHUI["净慧 生活禅"]\n  XUYUN --> BENHUAN["本焕"]\n  XUYUN --> FOYUAN["佛源"]\n</pre>';
   h += '<h3 style="margin-top:12px">📅 行法演进时间线</h3>';
-  h += '<div id=mermaid-timeline class=mermaid style="max-width:100%"></div></div>';
-  // Set content after DOM ready
+  h += '<pre class=mermaid id=mermaid-timeline style="max-width:100%">timeline\n  title 禅宗行法演进\n  section 中国\n  6世纪 : 达摩二入四行\n  7世纪 : 东山法门\n  8世纪 : 慧能顿悟\n  9世纪 : 机锋问答\n  12世纪 : 看话与默照\n  section 东亚\n  13世纪 : 日本道元\n  14-18世纪 : 禅净合流\n  section 现代\n  19-20世纪 : 虚云传统禅\n  20世纪末 : 圣严净慧\n</pre>';
   setTimeout(function(){
-    var el1 = document.getElementById('mermaid-lineage');
-    var el2 = document.getElementById('mermaid-timeline');
-    if (el1) el1.textContent = 'graph TD\n  BODHI["佛陀灵山拈花"] --> INDIA["印度二十八代"]\n  INDIA --> DAMO["菩提达摩"]\n  DAMO --> HUIKE["慧可"]\n  HUIKE --> SENGCAN["僧璨"]\n  SENGCAN --> DAOXIN["道信 东山法门"]\n  DAOXIN --> HONGREN["弘忍"]\n  HONGREN --> SHENXIU["神秀 北宗"]\n  HONGREN --> HUINENG["慧能 南宗"]\n  HUINENG --> NANYUE["南岳怀让"]\n  HUINENG --> QINGYUAN["青原行思"]\n  NANYUE --> MAZU["马祖道一"]\n  QINGYUAN --> SHITOU["石头希迁"]\n  MAZU --> LINJI["临济义玄"]\n  SHITOU --> CAODONG["洞山良价 曹洞"]\n  LINJI --> DAHUI["大慧宗杲 看话禅"]\n  CAODONG --> HONGZHI["宏智正觉 默照禅"]\n  LINJI --> CHANJING["明清禅净合流"]\n  CHANJING --> XUYUN["虚云"]\n  XUYUN --> JINGHUI["净慧"]\n  XUYUN --> BENHUAN["本焕"]\n  XUYUN --> FOYUAN["佛源"]';
-    if (el2) el2.textContent = 'timeline\n  title 禅宗行法演进\n  section 中国\n  6世纪 : 达摩二入四行\n  7世纪 : 东山法门\n  8世纪 : 慧能顿悟\n  9世纪 : 机锋问答\n  12世纪 : 看话与默照\n  section 东亚\n  13世纪 : 日本道元\n  14-18世纪 : 禅净合流\n  section 现代\n  19-20世纪 : 虚云传统禅\n  20世纪末 : 圣严净慧';
     if (typeof mermaid !== 'undefined') {
-      try { mermaid.init(undefined, '.mermaid'); } catch(e){}
+      try { mermaid.init(undefined, '.mermaid'); } catch(e){ console.warn('mermaid init failed', e); }
     }
   }, 500);
 
@@ -1087,14 +1082,10 @@ function renderChengguanSection() {
   var h = '';
   // Lineage diagram
   h += '<div class=section><h3>📊 成观法师法脉传承图</h3>';
-  h += '<div id=mermaid-chengguan class=mermaid style="max-width:100%"></div>';
+  h += '<pre class=mermaid id=mermaid-chengguan style="max-width:100%">graph TD\n  subgraph A["天台宗"]\n    DX["谛闲大师"] --> XM["显明老和尚 天台45世"]\n    XM --> CG1["成观法师 天台46世"]\n  end\n  subgraph B["真言宗"]\n    KYS["高野山金刚峰寺"] --> CG2["成观法师 真言宗53世"]\n  end\n  subgraph C["华严宗"]\n    DS["杜顺至宗密五祖"] --> LJ["历代祖师"]\n    LJ --> CG3["成观法师 贤首宗42世"]\n  end\n  CG1 --> JY["新逍遥园译经院"]\n  CG1 --> BZS["遍照寺 美国"]\n  CG1 --> LY["楞严座主"]\n  CG1 --> WS["唯识系列"]\n  CG1 --> ZY["英译经典11种"]\n  CG1 --> ZM["真言密法"]\n</pre>';
   setTimeout(function(){
-    var el = document.getElementById('mermaid-chengguan');
-    if (el) el.textContent = 'graph TD\n  subgraph A["天台宗"]\n    DX["谛闲大师"] --> XM["显明老和尚 天台45世"]\n    XM --> CG1["成观法师 天台46世"]\n  end\n  subgraph B["真言宗"]\n    KYS["高野山金刚峰寺"] --> CG2["成观法师 真言宗53世"]\n  end\n  subgraph C["华严宗"]\n    DS["杜顺至宗密五祖"] --> LJ["历代祖师"]\n    LJ --> CG3["成观法师 贤首宗42世"]\n  end\n  CG1 --> JY["新逍遥园译经院"]\n  CG1 --> BZS["遍照寺 美国"]\n  CG1 --> LY["楞严座主 楞严经义贯"]\n  CG1 --> WS["唯识系列 百法三十论八识"]\n  CG1 --> ZY["英译11种 法华金刚坛经"]\n  CG1 --> ZM["真言密法"]';
-    if (typeof mermaid !== 'undefined') {
-      try { mermaid.init(undefined, '#mermaid-chengguan'); } catch(e){}
-    }
-  }, 600);
+    if(typeof mermaid!=='undefined'){try{mermaid.init(undefined,'#mermaid-chengguan');}catch(e){}}
+  },600);
 
   // Bio
   if (cg.biography) {
