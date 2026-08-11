@@ -4,98 +4,98 @@
 
 schools:
   - {id: tiantai, name: "天台宗 / Tiantai / 法华", texts:
-    [{t:"妙法莲华经",n:"T09n0262·鸠摩罗什译·7卷28品",d:"天台根本经。会三归一，开权显实。",l:"https://cbetaonline.dila.edu.tw/zh/T09n0262"},
-     {t:"摩诃止观",n:"T46n1911·智顗",d:"天台三大部①。圆顿止观。",l:"https://cbetaonline.dila.edu.tw/zh/T46n1911"},
-     {t:"法华玄义",n:"T33n1716·智顗",d:"天台三大部②。五重玄义。",l:"https://cbetaonline.dila.edu.tw/zh/T33n1716"},
-     {t:"法华文句",n:"T34n1718·智顗",d:"天台三大部③。逐句释经。",l:"https://cbetaonline.dila.edu.tw/zh/T34n1718"},
-     {t:"金刚錍",n:"T46n1932·湛然",d:"无情有性。回应华严。",l:"https://cbetaonline.dila.edu.tw/zh/T46n1932"}]}
+    [{t: "妙法莲华经", n:  "T09n0262·鸠摩罗什译·7卷28品", d:  "天台根本经。会三归一，开权显实。", l:  "https://cbetaonline.dila.edu.tw/zh/T09n0262"},
+     {t: "摩诃止观", n:  "T46n1911·智顗", d:  "天台三大部①。圆顿止观。", l:  "https://cbetaonline.dila.edu.tw/zh/T46n1911"},
+     {t: "法华玄义", n:  "T33n1716·智顗", d:  "天台三大部②。五重玄义。", l:  "https://cbetaonline.dila.edu.tw/zh/T33n1716"},
+     {t: "法华文句", n:  "T34n1718·智顗", d:  "天台三大部③。逐句释经。", l:  "https://cbetaonline.dila.edu.tw/zh/T34n1718"},
+     {t: "金刚錍", n:  "T46n1932·湛然", d:  "无情有性。回应华严。", l:  "https://cbetaonline.dila.edu.tw/zh/T46n1932"}]}
 
   - {id: madhyamaka, name: "中观·三论 / Madhyamaka", texts:
-    [{t:"中论",n:"T30n1564·龙树·鸠摩罗什译·4卷",d:"中观根本。八不中道，缘起性空。",l:"https://cbetaonline.dila.edu.tw/zh/T30n1564"},
-     {t:"十二门论",n:"T30n1568·龙树·鸠摩罗什译",d:"十二门观空。三论宗所依。",l:"https://cbetaonline.dila.edu.tw/zh/T30n1568"},
-     {t:"百论",n:"T30n1569·提婆·鸠摩罗什译",d:"破斥外道。三论宗所依。",l:"https://cbetaonline.dila.edu.tw/zh/T30n1569"},
-     {t:"大智度论",n:"T25n1509·龙树·鸠摩罗什译·100卷",d:"大品般若释论。大乘百科全书。",l:"https://cbetaonline.dila.edu.tw/zh/T25n1509"},
-     {t:"中观论疏",n:"T42n1824·吉藏",d:"三论宗集大成。",l:"https://cbetaonline.dila.edu.tw/zh/T42n1824"},
-     {t:"三论玄义",n:"T45n1852·吉藏",d:"三论宗纲要。破邪显正。",l:"https://cbetaonline.dila.edu.tw/zh/T45n1852"},
-     {t:"肇论",n:"T45n1858·僧肇",d:"中国中观里程碑。物不迁·不真空四论。",l:"https://cbetaonline.dila.edu.tw/zh/T45n1858"},
-     {t:"大乘掌珍论",n:"T30n1578·清辨·玄奘译",d:"清辨自立量派。瑜伽中观之辩。",l:"https://cbetaonline.dila.edu.tw/zh/T30n1578"}]}
+    [{t: "中论", n:  "T30n1564·龙树·鸠摩罗什译·4卷", d:  "中观根本。八不中道，缘起性空。", l:  "https://cbetaonline.dila.edu.tw/zh/T30n1564"},
+     {t: "十二门论", n:  "T30n1568·龙树·鸠摩罗什译", d:  "十二门观空。三论宗所依。", l:  "https://cbetaonline.dila.edu.tw/zh/T30n1568"},
+     {t: "百论", n:  "T30n1569·提婆·鸠摩罗什译", d:  "破斥外道。三论宗所依。", l:  "https://cbetaonline.dila.edu.tw/zh/T30n1569"},
+     {t: "大智度论", n:  "T25n1509·龙树·鸠摩罗什译·100卷", d:  "大品般若释论。大乘百科全书。", l:  "https://cbetaonline.dila.edu.tw/zh/T25n1509"},
+     {t: "中观论疏", n:  "T42n1824·吉藏", d:  "三论宗集大成。", l:  "https://cbetaonline.dila.edu.tw/zh/T42n1824"},
+     {t: "三论玄义", n:  "T45n1852·吉藏", d:  "三论宗纲要。破邪显正。", l:  "https://cbetaonline.dila.edu.tw/zh/T45n1852"},
+     {t: "肇论", n:  "T45n1858·僧肇", d:  "中国中观里程碑。物不迁·不真空四论。", l:  "https://cbetaonline.dila.edu.tw/zh/T45n1858"},
+     {t: "大乘掌珍论", n:  "T30n1578·清辨·玄奘译", d:  "清辨自立量派。瑜伽中观之辩。", l:  "https://cbetaonline.dila.edu.tw/zh/T30n1578"}]}
 
   - {id: yogacara, name: "唯识·法相 / Yogācāra", texts:
-    [{t:"解深密经",n:"T16n0676·玄奘译·5卷",d:"唯识根本经。三性三无性。",l:"https://cbetaonline.dila.edu.tw/zh/T16n0676"},
-     {t:"瑜伽师地论",n:"T30n1579·弥勒·玄奘译·100卷",d:"大乘瑜伽百科。十七地。",l:"https://cbetaonline.dila.edu.tw/zh/T30n1579"},
-     {t:"成唯识论",n:"T31n1585·玄奘糅译·10卷",d:"十大论师释三十颂。法相核心。",l:"https://cbetaonline.dila.edu.tw/zh/T31n1585"},
-     {t:"唯识三十论颂",n:"T31n1586·世亲·玄奘译",d:"唯识纲领。三十颂括尽全宗。",l:"https://cbetaonline.dila.edu.tw/zh/T31n1586"},
-     {t:"摄大乘论",n:"T31n1594·无著·玄奘译",d:"十殊胜语统摄大乘。摄论宗根本。",l:"https://cbetaonline.dila.edu.tw/zh/T31n1594"},
-     {t:"唯识二十论",n:"T31n1590·世亲·玄奘译",d:"破外境实有。唯识无境。",l:"https://cbetaonline.dila.edu.tw/zh/T31n1590"},
-     {t:"大乘百法明门论",n:"T31n1614·世亲·玄奘译",d:"唯识入门。五位百法。",l:"https://cbetaonline.dila.edu.tw/zh/T31n1614"},
-     {t:"八识规矩颂",n:"X55n0896·玄奘",d:"八识概要。唯识背诵口诀。",l:"https://cbetaonline.dila.edu.tw/zh/X55n0896"}]}
+    [{t: "解深密经", n:  "T16n0676·玄奘译·5卷", d:  "唯识根本经。三性三无性。", l:  "https://cbetaonline.dila.edu.tw/zh/T16n0676"},
+     {t: "瑜伽师地论", n:  "T30n1579·弥勒·玄奘译·100卷", d:  "大乘瑜伽百科。十七地。", l:  "https://cbetaonline.dila.edu.tw/zh/T30n1579"},
+     {t: "成唯识论", n:  "T31n1585·玄奘糅译·10卷", d:  "十大论师释三十颂。法相核心。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1585"},
+     {t: "唯识三十论颂", n:  "T31n1586·世亲·玄奘译", d:  "唯识纲领。三十颂括尽全宗。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1586"},
+     {t: "摄大乘论", n:  "T31n1594·无著·玄奘译", d:  "十殊胜语统摄大乘。摄论宗根本。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1594"},
+     {t: "唯识二十论", n:  "T31n1590·世亲·玄奘译", d:  "破外境实有。唯识无境。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1590"},
+     {t: "大乘百法明门论", n:  "T31n1614·世亲·玄奘译", d:  "唯识入门。五位百法。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1614"},
+     {t: "八识规矩颂", n:  "X55n0896·玄奘", d:  "八识概要。唯识背诵口诀。", l:  "https://cbetaonline.dila.edu.tw/zh/X55n0896"}]}
 
   - {id: chan, name: "禅宗 / Chan / Zen", texts:
-    [{t:"六祖大师法宝坛经",n:"T48n2008·宗宝本",d:"唯一中国祖师所造之经。顿悟法门。",l:"https://cbetaonline.dila.edu.tw/zh/T48n2008"},
-     {t:"楞伽阿跋多罗宝经",n:"T16n0670·求那跋陀罗译",d:"达摩付慧可之经。五法三自性八识。",l:"https://cbetaonline.dila.edu.tw/zh/T16n0670"},
-     {t:"金刚般若波罗蜜经",n:"T08n0235·鸠摩罗什译",d:"禅宗印心。六祖因之悟入。",l:"https://cbetaonline.dila.edu.tw/zh/T08n0235"},
-     {t:"维摩诘所说经",n:"T14n0475·鸠摩罗什译·3卷",d:"居士禅典范。不二法门。华严事事无碍之先声。",l:"https://cbetaonline.dila.edu.tw/zh/T14n0475"},
-     {t:"圆觉经",n:"T17n0842·佛陀多罗译",d:"禅宗与华严共尊。宗密《圆觉经大疏》。",l:"https://cbetaonline.dila.edu.tw/zh/T17n0842"},
-     {t:"碧岩录",n:"T48n2003·圆悟克勤",d:"公案评唱之巅。百则。",l:"https://cbetaonline.dila.edu.tw/zh/T48n2003"},
-     {t:"无门关",n:"T48n2005·无门慧开",d:"四十八则公案。",l:"https://cbetaonline.dila.edu.tw/zh/T48n2005"}]}
+    [{t: "六祖大师法宝坛经", n:  "T48n2008·宗宝本", d:  "唯一中国祖师所造之经。顿悟法门。", l:  "https://cbetaonline.dila.edu.tw/zh/T48n2008"},
+     {t: "楞伽阿跋多罗宝经", n:  "T16n0670·求那跋陀罗译", d:  "达摩付慧可之经。五法三自性八识。", l:  "https://cbetaonline.dila.edu.tw/zh/T16n0670"},
+     {t: "金刚般若波罗蜜经", n:  "T08n0235·鸠摩罗什译", d:  "禅宗印心。六祖因之悟入。", l:  "https://cbetaonline.dila.edu.tw/zh/T08n0235"},
+     {t: "维摩诘所说经", n:  "T14n0475·鸠摩罗什译·3卷", d:  "居士禅典范。不二法门。华严事事无碍之先声。", l:  "https://cbetaonline.dila.edu.tw/zh/T14n0475"},
+     {t: "圆觉经", n:  "T17n0842·佛陀多罗译", d:  "禅宗与华严共尊。宗密《圆觉经大疏》。", l:  "https://cbetaonline.dila.edu.tw/zh/T17n0842"},
+     {t: "碧岩录", n:  "T48n2003·圆悟克勤", d:  "公案评唱之巅。百则。", l:  "https://cbetaonline.dila.edu.tw/zh/T48n2003"},
+     {t: "无门关", n:  "T48n2005·无门慧开", d:  "四十八则公案。", l:  "https://cbetaonline.dila.edu.tw/zh/T48n2005"}]}
 
   - {id: pureland, name: "净土宗 / Pure Land", texts:
-    [{t:"佛说无量寿经",n:"T12n0360·康僧铠译·2卷",d:"净土三经①。四十八愿。",l:"https://cbetaonline.dila.edu.tw/zh/T12n0360"},
-     {t:"佛说观无量寿佛经",n:"T12n0365·畺良耶舍译",d:"净土三经②。十六观。",l:"https://cbetaonline.dila.edu.tw/zh/T12n0365"},
-     {t:"佛说阿弥陀经",n:"T12n0366·鸠摩罗什译",d:"净土三经③。执持名号。",l:"https://cbetaonline.dila.edu.tw/zh/T12n0366"},
-     {t:"往生论注",n:"T40n1819·昙鸾",d:"难行道·易行道之判。中国净土体系起点。",l:"https://cbetaonline.dila.edu.tw/zh/T40n1819"}]}
+    [{t: "佛说无量寿经", n:  "T12n0360·康僧铠译·2卷", d:  "净土三经①。四十八愿。", l:  "https://cbetaonline.dila.edu.tw/zh/T12n0360"},
+     {t: "佛说观无量寿佛经", n:  "T12n0365·畺良耶舍译", d:  "净土三经②。十六观。", l:  "https://cbetaonline.dila.edu.tw/zh/T12n0365"},
+     {t: "佛说阿弥陀经", n:  "T12n0366·鸠摩罗什译", d:  "净土三经③。执持名号。", l:  "https://cbetaonline.dila.edu.tw/zh/T12n0366"},
+     {t: "往生论注", n:  "T40n1819·昙鸾", d:  "难行道·易行道之判。中国净土体系起点。", l:  "https://cbetaonline.dila.edu.tw/zh/T40n1819"}]}
 
   - {id: vinaya, name: "律宗 / Vinaya", texts:
-    [{t:"四分律",n:"T22n1428·佛陀耶舍译·60卷",d:"汉传根本戒律。南山律宗所依。",l:"https://cbetaonline.dila.edu.tw/zh/T22n1428"},
-     {t:"梵网经",n:"T24n1484·鸠摩罗什译·2卷",d:"大乘菩萨戒。十重四十八轻。",l:"https://cbetaonline.dila.edu.tw/zh/T24n1484"},
-     {t:"四分律删繁补阙行事钞",n:"T40n1804·道宣",d:"南山律宗根本著作。",l:"https://cbetaonline.dila.edu.tw/zh/T40n1804"}]}
+    [{t: "四分律", n:  "T22n1428·佛陀耶舍译·60卷", d:  "汉传根本戒律。南山律宗所依。", l:  "https://cbetaonline.dila.edu.tw/zh/T22n1428"},
+     {t: "梵网经", n:  "T24n1484·鸠摩罗什译·2卷", d:  "大乘菩萨戒。十重四十八轻。", l:  "https://cbetaonline.dila.edu.tw/zh/T24n1484"},
+     {t: "四分律删繁补阙行事钞", n:  "T40n1804·道宣", d:  "南山律宗根本著作。", l:  "https://cbetaonline.dila.edu.tw/zh/T40n1804"}]}
 
   - {id: esoteric, name: "密宗·真言 / Vajrayāna", texts:
-    [{t:"大毗卢遮那成佛神变加持经",n:"T18n0848·善无畏译·7卷",d:"真言根本经。胎藏界曼荼罗。",l:"https://cbetaonline.dila.edu.tw/zh/T18n0848"},
-     {t:"金刚顶经",n:"T18n0865·不空译·3卷",d:"金刚界曼荼罗。",l:"https://cbetaonline.dila.edu.tw/zh/T18n0865"},
-     {t:"苏悉地羯罗经",n:"T18n0893·善无畏译",d:"密教三部经。苏悉地法。",l:"https://cbetaonline.dila.edu.tw/zh/T18n0893"}]}
+    [{t: "大毗卢遮那成佛神变加持经", n:  "T18n0848·善无畏译·7卷", d:  "真言根本经。胎藏界曼荼罗。", l:  "https://cbetaonline.dila.edu.tw/zh/T18n0848"},
+     {t: "金刚顶经", n:  "T18n0865·不空译·3卷", d:  "金刚界曼荼罗。", l:  "https://cbetaonline.dila.edu.tw/zh/T18n0865"},
+     {t: "苏悉地羯罗经", n:  "T18n0893·善无畏译", d:  "密教三部经。苏悉地法。", l:  "https://cbetaonline.dila.edu.tw/zh/T18n0893"}]}
 
   - {id: kusha, name: "俱舍宗 / Kośa", texts:
-    [{t:"阿毗达磨俱舍论",n:"T29n1558·世亲·玄奘译·30卷",d:"说一切有部纲要。五位七十五法。大小乘之桥梁。",l:"https://cbetaonline.dila.edu.tw/zh/T29n1558"},
-     {t:"阿毗达磨大毗婆沙论",n:"T27n1545·玄奘译·200卷",d:"有部百科全书。俱舍论之前身。",l:"https://cbetaonline.dila.edu.tw/zh/T27n1545"}]}
+    [{t: "阿毗达磨俱舍论", n:  "T29n1558·世亲·玄奘译·30卷", d:  "说一切有部纲要。五位七十五法。大小乘之桥梁。", l:  "https://cbetaonline.dila.edu.tw/zh/T29n1558"},
+     {t: "阿毗达磨大毗婆沙论", n:  "T27n1545·玄奘译·200卷", d:  "有部百科全书。俱舍论之前身。", l:  "https://cbetaonline.dila.edu.tw/zh/T27n1545"}]}
 
   - {id: chengshi, name: "成实宗 / Satyasiddhi", texts:
-    [{t:"成实论",n:"T32n1646·诃梨跋摩·鸠摩罗什译·16卷",d:"从小乘向大乘过渡之论。空义进路。",l:"https://cbetaonline.dila.edu.tw/zh/T32n1646"}]}
+    [{t: "成实论", n:  "T32n1646·诃梨跋摩·鸠摩罗什译·16卷", d:  "从小乘向大乘过渡之论。空义进路。", l:  "https://cbetaonline.dila.edu.tw/zh/T32n1646"}]}
 
   - {id: niepan, name: "涅槃宗 / Nirvāṇa", texts:
-    [{t:"大般涅槃经(北本)",n:"T12n0374·昙无谶译·40卷",d:"一切众生悉有佛性。涅槃四德(常乐我净)。",l:"https://cbetaonline.dila.edu.tw/zh/T12n0374"},
-     {t:"大般涅槃经(南本)",n:"T12n0375·慧严等重修·36卷",d:"南北本会编。",l:"https://cbetaonline.dila.edu.tw/zh/T12n0375"}]}
+    [{t: "大般涅槃经(北本)", n:  "T12n0374·昙无谶译·40卷", d:  "一切众生悉有佛性。涅槃四德(常乐我净)。", l:  "https://cbetaonline.dila.edu.tw/zh/T12n0374"},
+     {t: "大般涅槃经(南本)", n:  "T12n0375·慧严等重修·36卷", d:  "南北本会编。", l:  "https://cbetaonline.dila.edu.tw/zh/T12n0375"}]}
 
   - {id: dilun, name: "地论宗 / Daśabhūmika", texts:
-    [{t:"十地经论",n:"T26n1522·世亲·菩提流支译·12卷",d:"注释华严十地品。六相名相之源头。催生地论师。",l:"https://cbetaonline.dila.edu.tw/zh/T26n1522"}]}
+    [{t: "十地经论", n:  "T26n1522·世亲·菩提流支译·12卷", d:  "注释华严十地品。六相名相之源头。催生地论师。", l:  "https://cbetaonline.dila.edu.tw/zh/T26n1522"}]}
 
   - {id: shelun, name: "摄论宗 / Mahāyānasaṃgraha", texts:
-    [{t:"摄大乘论",n:"T31n1594·无著·玄奘译",d:"摄论宗根本。十殊胜语。",l:"https://cbetaonline.dila.edu.tw/zh/T31n1594"},
-     {t:"摄大乘论释",n:"T31n1598·世亲释·玄奘译·10卷",d:"摄论最详释。",l:"https://cbetaonline.dila.edu.tw/zh/T31n1598"}]}
+    [{t: "摄大乘论", n:  "T31n1594·无著·玄奘译", d:  "摄论宗根本。十殊胜语。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1594"},
+     {t: "摄大乘论释", n:  "T31n1598·世亲释·玄奘译·10卷", d:  "摄论最详释。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1598"}]}
 
   - {id: tathagatagarbha, name: "如来藏系经典 / Tathāgatagarbha", texts:
-    [{t:"胜鬘师子吼一乘大方便方广经",n:"T12n0353·求那跋陀罗译",d:"如来藏系核心经。五种藏识说。",l:"https://cbetaonline.dila.edu.tw/zh/T12n0353"},
-     {t:"大乘起信论",n:"T32n1666·马鸣(传统)·真谛译",d:"一心开二门。华严·天台共尊。",l:"https://cbetaonline.dila.edu.tw/zh/T32n1666"},
-     {t:"大乘起信论义记",n:"T44n1846·法藏",d:"法藏注。华严义学融合起信论。",l:"https://cbetaonline.dila.edu.tw/zh/T44n1846"}]}
+    [{t: "胜鬘师子吼一乘大方便方广经", n:  "T12n0353·求那跋陀罗译", d:  "如来藏系核心经。五种藏识说。", l:  "https://cbetaonline.dila.edu.tw/zh/T12n0353"},
+     {t: "大乘起信论", n:  "T32n1666·马鸣(传统)·真谛译", d:  "一心开二门。华严·天台共尊。", l:  "https://cbetaonline.dila.edu.tw/zh/T32n1666"},
+     {t: "大乘起信论义记", n:  "T44n1846·法藏", d:  "法藏注。华严义学融合起信论。", l:  "https://cbetaonline.dila.edu.tw/zh/T44n1846"}]}
 
   - {id: other_sutras, name: "重要通经 / Major Sutras", texts:
-    [{t:"大宝积经",n:"T11n0310·菩提流志编译·120卷",d:"四十九会。大乘菩萨藏集成。与华严同为最大部头。",l:"https://cbetaonline.dila.edu.tw/zh/T11n0310"},
-     {t:"大集经",n:"T13n0397·昙无谶等译·60卷",d:"大乘菩萨藏。护世护法。",l:"https://cbetaonline.dila.edu.tw/zh/T13n0397"},
-     {t:"金光明最胜王经",n:"T16n0665·义净译·10卷",d:"护国三经之一。三身论。",l:"https://cbetaonline.dila.edu.tw/zh/T16n0665"},
-     {t:"大佛顶首楞严经",n:"T19n0945·般剌蜜帝译·10卷",d:"楞严大定。二十五圆通。五十阴魔。",l:"https://cbetaonline.dila.edu.tw/zh/T19n0945"},
-     {t:"思益梵天所问经",n:"T15n0586·鸠摩罗什译·4卷",d:"诸法实相。般若系。",l:"https://cbetaonline.dila.edu.tw/zh/T15n0586"},
-     {t:"药师琉璃光七佛本愿功德经",n:"T14n0451·义净译·2卷",d:"药师法门。东方净琉璃世界。",l:"https://cbetaonline.dila.edu.tw/zh/T14n0451"},
-     {t:"地藏菩萨本愿经",n:"T13n0412·实叉难陀译·2卷",d:"地藏大愿。地狱不空誓不成佛。",l:"https://cbetaonline.dila.edu.tw/zh/T13n0412"}]}
+    [{t: "大宝积经", n:  "T11n0310·菩提流志编译·120卷", d:  "四十九会。大乘菩萨藏集成。与华严同为最大部头。", l:  "https://cbetaonline.dila.edu.tw/zh/T11n0310"},
+     {t: "大集经", n:  "T13n0397·昙无谶等译·60卷", d:  "大乘菩萨藏。护世护法。", l:  "https://cbetaonline.dila.edu.tw/zh/T13n0397"},
+     {t: "金光明最胜王经", n:  "T16n0665·义净译·10卷", d:  "护国三经之一。三身论。", l:  "https://cbetaonline.dila.edu.tw/zh/T16n0665"},
+     {t: "大佛顶首楞严经", n:  "T19n0945·般剌蜜帝译·10卷", d:  "楞严大定。二十五圆通。五十阴魔。", l:  "https://cbetaonline.dila.edu.tw/zh/T19n0945"},
+     {t: "思益梵天所问经", n:  "T15n0586·鸠摩罗什译·4卷", d:  "诸法实相。般若系。", l:  "https://cbetaonline.dila.edu.tw/zh/T15n0586"},
+     {t: "药师琉璃光七佛本愿功德经", n:  "T14n0451·义净译·2卷", d:  "药师法门。东方净琉璃世界。", l:  "https://cbetaonline.dila.edu.tw/zh/T14n0451"},
+     {t: "地藏菩萨本愿经", n:  "T13n0412·实叉难陀译·2卷", d:  "地藏大愿。地狱不空誓不成佛。", l:  "https://cbetaonline.dila.edu.tw/zh/T13n0412"}]}
 
   - {id: tibetan, name: "藏传佛教 / Tibetan Buddhism", texts:
-    [{t:"菩提道次第广论",n:"宗喀巴(1357-1419)",d:"格鲁派根本。三士道体系。可与华严五教判比较。",l:"https://en.wikipedia.org/wiki/Lamrim"},
-     {t:"入菩萨行论",n:"寂天(Śāntideva,8c)",d:"菩萨道实践纲要。四大派共遵。",l:"https://en.wikipedia.org/wiki/Bodhisattvacaryāvatāra"},
-     {t:"现观庄严论",n:"弥勒(传统)",d:"般若经修行次第。五部大论之一。",l:"https://en.wikipedia.org/wiki/Abhisamayālaṃkāra"}]}
+    [{t: "菩提道次第广论", n:  "宗喀巴(1357-1419)", d:  "格鲁派根本。三士道体系。可与华严五教判比较。", l:  "https://en.wikipedia.org/wiki/Lamrim"},
+     {t: "入菩萨行论", n:  "寂天(Śāntideva,8c)", d:  "菩萨道实践纲要。四大派共遵。", l:  "https://en.wikipedia.org/wiki/Bodhisattvacaryāvatāra"},
+     {t: "现观庄严论", n:  "弥勒(传统)", d:  "般若经修行次第。五部大论之一。", l:  "https://en.wikipedia.org/wiki/Abhisamayālaṃkāra"}]}
 
   - {id: theravada, name: "南传·上座部 / Theravāda", texts:
-    [{t:"四阿含经",n:"T01-T02",d:"原始佛教根本。诸宗共源。",l:"https://cbetaonline.dila.edu.tw/zh/T01n0001"},
-     {t:"清净道论",n:"觉音(Buddhaghosa,5c)",d:"南传修行体系总纲。戒定慧。",l:"https://en.wikipedia.org/wiki/Visuddhimagga"}]}
+    [{t: "四阿含经", n:  "T01-T02", d:  "原始佛教根本。诸宗共源。", l:  "https://cbetaonline.dila.edu.tw/zh/T01n0001"},
+     {t: "清净道论", n:  "觉音(Buddhaghosa,5c)", d:  "南传修行体系总纲。戒定慧。", l:  "https://en.wikipedia.org/wiki/Visuddhimagga"}]}
 
   - {id: hetuvidya, name: "因明 / Buddhist Logic", texts:
-    [{t:"因明入正理论",n:"T32n1630·商羯罗主·玄奘译",d:"八门二益。因明入门。",l:"https://cbetaonline.dila.edu.tw/zh/T32n1630"},
-     {t:"因明正理门论",n:"T32n1628·陈那·玄奘译",d:"新因明奠基。三支比量。",l:"https://cbetaonline.dila.edu.tw/zh/T32n1628"}]}
+    [{t: "因明入正理论", n:  "T32n1630·商羯罗主·玄奘译", d:  "八门二益。因明入门。", l:  "https://cbetaonline.dila.edu.tw/zh/T32n1630"},
+     {t: "因明正理门论", n:  "T32n1628·陈那·玄奘译", d:  "新因明奠基。三支比量。", l:  "https://cbetaonline.dila.edu.tw/zh/T32n1628"}]}
