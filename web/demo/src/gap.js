@@ -321,7 +321,9 @@ function renderGap(){
   // Yuan/Ming/Qing
   h+="<div style=font-size:0.78em;color:var(--gold);margin:10px 0 4px>▸ <b>元明清·传承与整理</b></div>";
   [{a:'普瑞',dy:'元代',ti:'华严经疏注',ws:[{t:'华严经疏注',u:'X07n0234'}]},
+   {a:'德清(憨山)',dy:'1546–1623',ti:'明·禅宗尊宿·兼弘华严',ws:[{t:'华严纲要',u:'X08n0240',note:'80卷·澄观疏钞要义提挈'}]},
    {a:'续法',dy:'1641–1728',ti:'清·华严集大成者·柏亭',ws:[{t:'贤首五教仪',u:'X58n1024'},{t:'华严宗佛祖传',u:'X77n1530'}]},
+   {a:'道霈(为霖)',dy:'1615–1702',ti:'清·福州鼓山·纂要大家',ws:[{t:'華嚴經疏論纂要',u:null,note:'120卷·澄观疏+李通玄论合刊·弘一法师1929重印'}]},
    {a:'通理',dy:'清代',ti:'北京宝通寺·北方华严代表',ws:[{t:'华严经疏钞',u:null,note:'清代北方华严中兴者'}]}]
   .forEach(function(x){
     h+="<div class=pat-block><span class=pat-name>"+x.a+"</span> <span class=pat-info>"+x.dy+" · "+x.ti+"</span><div class=pat-works>";
@@ -341,8 +343,6 @@ function renderGap(){
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>成一</b> 成一和尚著作集(华严莲社)</span>";
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>贤度</b> 华严经讲义·华严学概论(华严专宗学院)</span>";
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>海云</b> 九九華嚴玄談5册·探玄記懸談4册</span>";
-  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>華嚴經疏論纂要</b> 清·道霈(为霖)·120卷·澄观疏+李通玄论合刊</span>";
-h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>华严纲要</b> 明·德清(憨山)提挈·80卷·澄观疏钞要义</span>";
   h+="</div></div>";
   h+="</div>"; // close 文本系谱 section div
   h+="</div>"; // close gv-genealogy
