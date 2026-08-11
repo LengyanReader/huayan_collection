@@ -31,13 +31,20 @@ schools:
      {t: "八识规矩颂", n:  "X55n0896·玄奘", d:  "八识概要。唯识背诵口诀。", l:  "https://cbetaonline.dila.edu.tw/zh/X55n0896"}]}
 
   - {id: chan, name: "禅宗 / Chan / Zen", texts:
-    [{t: "六祖大师法宝坛经", n:  "T48n2008·宗宝本", d:  "唯一中国祖师所造之经。顿悟法门。", l:  "https://cbetaonline.dila.edu.tw/zh/T48n2008"},
-     {t: "楞伽阿跋多罗宝经", n:  "T16n0670·求那跋陀罗译", d:  "达摩付慧可之经。五法三自性八识。", l:  "https://cbetaonline.dila.edu.tw/zh/T16n0670"},
-     {t: "金刚般若波罗蜜经", n:  "T08n0235·鸠摩罗什译", d:  "禅宗印心。六祖因之悟入。", l:  "https://cbetaonline.dila.edu.tw/zh/T08n0235"},
-     {t: "维摩诘所说经", n:  "T14n0475·鸠摩罗什译·3卷", d:  "居士禅典范。不二法门。华严事事无碍之先声。", l:  "https://cbetaonline.dila.edu.tw/zh/T14n0475"},
-     {t: "圆觉经", n:  "T17n0842·佛陀多罗译", d:  "禅宗与华严共尊。宗密《圆觉经大疏》。", l:  "https://cbetaonline.dila.edu.tw/zh/T17n0842"},
-     {t: "碧岩录", n:  "T48n2003·圆悟克勤", d:  "公案评唱之巅。百则。", l:  "https://cbetaonline.dila.edu.tw/zh/T48n2003"},
-     {t: "无门关", n:  "T48n2005·无门慧开", d:  "四十八则公案。", l:  "https://cbetaonline.dila.edu.tw/zh/T48n2005"}]}
+    [{t: "六祖大师法宝坛经", n: "T48n2008·宗宝本", d: "唯一中国祖师所造之经。顿悟法门。", l: "https://cbetaonline.dila.edu.tw/zh/T48n2008"},
+     {t: "楞伽阿跋多罗宝经", n: "T16n0670·求那跋陀罗译", d: "达摩付慧可之经。五法三自性八识。", l: "https://cbetaonline.dila.edu.tw/zh/T16n0670"},
+     {t: "金刚般若波罗蜜经", n: "T08n0235·鸠摩罗什译", d: "禅宗印心。六祖因之悟入。", l: "https://cbetaonline.dila.edu.tw/zh/T08n0235"},
+     {t: "维摩诘所说经", n: "T14n0475·鸠摩罗什译·3卷", d: "居士禅典范。不二法门。华严事事无碍之先声。", l: "https://cbetaonline.dila.edu.tw/zh/T14n0475"},
+     {t: "圆觉经", n: "T17n0842·佛陀多罗译", d: "禅宗与华严共尊。宗密《圆觉经大疏》。", l: "https://cbetaonline.dila.edu.tw/zh/T17n0842"},
+     {t: "黄檗山断际禅师传心法要", n: "T48n2012A·裴休集", d: "黄檗希运。即心是佛。无心是道。", l: "https://cbetaonline.dila.edu.tw/zh/T48n2012A"},
+     {t: "永嘉证道歌", n: "T48n2014·玄觉", d: "永嘉玄觉。一宿觉。绝学无为闲道人。", l: "https://cbetaonline.dila.edu.tw/zh/T48n2014"},
+     {t: "景德传灯录", n: "T51n2076·道原·30卷", d: "禅宗第一部法脉灯录。1700+禅师传记机缘。", l: "https://cbetaonline.dila.edu.tw/zh/T51n2076"},
+     {t: "碧岩录", n: "T48n2003·圆悟克勤", d: "公案评唱之巅。百则颂古+垂示+评唱。", l: "https://cbetaonline.dila.edu.tw/zh/T48n2003"},
+     {t: "无门关", n: "T48n2005·无门慧开", d: "四十八则公案。赵州无字第一。", l: "https://cbetaonline.dila.edu.tw/zh/T48n2005"},
+     {t: "从容录", n: "T48n2004·万松行秀", d: "曹洞宗公案评唱。百则颂古。", l: "https://cbetaonline.dila.edu.tw/zh/T48n2004"},
+     {t: "临济录", n: "T47n1985·慧然集", d: "临济义玄语录。四料简·三玄三要·喝。", l: "https://cbetaonline.dila.edu.tw/zh/T47n1985"},
+     {t: "古尊宿语录", n: "X68n1315·赜藏主编·48卷", d: "五家七宗祖师语录集成。", l: "https://cbetaonline.dila.edu.tw/zh/X68n1315"},
+     {t: "指月录", n: "X83n1578·瞿汝稷编·32卷", d: "明末公案大成。650+则机缘。", l: "https://cbetaonline.dila.edu.tw/zh/X83n1578"}]}
 
   - {id: pureland, name: "净土宗 / Pure Land", texts:
     [{t: "佛说无量寿经", n:  "T12n0360·康僧铠译·2卷", d:  "净土三经①。四十八愿。", l:  "https://cbetaonline.dila.edu.tw/zh/T12n0360"},
