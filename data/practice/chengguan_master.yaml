@@ -75,6 +75,74 @@ comparison_with_haiyun:
     海云以「华严禅观+灵性经济学」为旗帜，以讲经和寺院建设为主轴。
     二人共同构成当代台湾华严系统两位风格迥异、互为补充的重要弘法者。
 
+  # ── 法脉传承图 ──
+  lineage_diagram: |
+    ```mermaid
+    graph TD
+      subgraph 天台宗
+        TC[谛闲大师] --> XM[显明老和尚<br/>天台45世]
+        XM --> CG[成观法师<br/>天台46世<br/>1988年披剃·纽约]
+      end
+
+      subgraph 真言宗
+        KYS[高野山真言宗<br/>金剛峯寺] --> CG2[成观法师<br/>真言宗53世<br/>传法灌顶阿阇梨<br/>1996年]
+      end
+
+      subgraph 华严宗
+        DS[杜顺→智俨→法藏<br/>→澄观→宗密] --> LJ[历代祖师]
+        LJ --> CG3[成观法师<br/>贤首宗42世<br/>慈恩宗42世<br/>2010年承接]
+      end
+
+      subgraph Institutions
+        CG --> JY[新逍遥园译经院<br/>1991年创办·台北]
+        CG --> BZS[美国密西根遍照寺<br/>住持]
+      end
+
+      subgraph Works
+        CG --> LY[楞严座主<br/>楞严经义贯上下]
+        CG --> WS[唯识系列<br/>百法·三十论·八识]
+        CG --> ZY[译经: 英译经典11种<br/>法华·楞严·金刚·坛经...]
+        CG --> ZM[真言密法<br/>汉传东密推行]
+      end
+    ```
+
+  # ── abtemple 经书目录 ──
+  abtemple_books:
+    source: "https://abtemple.org/index.php?route=jstp/jstp&jstp_type_id=1"
+    note: "新逍遥园译经院官网经书下载区（18种），更多讲经影集/mp3/直播在站内其他分区"
+    full_list:
+      - title: "心經系列"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=33"
+      - title: "北美開示錄(一)·(二)"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=34"
+      - title: "大佛頂首楞嚴經義貫(上)·(下)"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=44"
+      - title: "楞伽阿跋多羅寶經義貫"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=46"
+      - title: "大乘百法明門論今註"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=38"
+      - title: "唯識三十論頌義貫"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=37"
+      - title: "八識規矩頌義貫·六離合釋法式義貫"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=41"
+      - title: "因明入正理論義貫"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=39"
+      - title: "觀所緣緣論義貫"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=40"
+      - title: "地藏法門系列"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=47"
+      - title: "禪之甘露(漢譯本)"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=36"
+      - title: "佛性三參(漢譯本)"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=93"
+      - title: "我的學密歷程"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=50"
+      - title: "華嚴法門集要"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=48"
+      - title: "六祖法寶壇經(中文版)"
+        link: "https://abtemple.org/index.php?route=jstp/jstp_detail&jstp_type_id=1&jstp_id=43"
+    other_resources: "另有講經影集·mp3下載·網路直播·播經機等分区在官网站内"
+
 links:
   - name: 新逍遥园译经院官网
     url: https://abtemple.org

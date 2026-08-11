@@ -233,7 +233,82 @@ references:
     - "海云继梦·禅宗系列讲记(wuming.xuefo.net/fjdh.cn)"
     - "大华严寺官网源流与传承"
     - "S3華嚴禪行法·S8禪與入定·S9東山法門與禪宗的特色 (Spotify/Apple)"
-# ═══ 补充: chanref.md 整合 (2026-08-08) ═══
+# ═══ 禅宗法脉传承 · 行法演进 — Diagram ═══
+diagrams:
+  lineage_evolution:
+    title: 禅宗法脉传承与行法演进
+    mermaid: |
+      ```mermaid
+      graph TD
+        subgraph 印度源流
+          BODHI[佛陀·灵山拈花<br/>Mahākāśyapa微笑] --> BODHI2[二十八代传至菩提达摩]
+        end
+
+        subgraph 中国禅宗奠基
+          DAMO[菩提达摩?–536<br/>二入四行论·壁观] --> HUIKE[慧可487–593<br/>二祖·立雪断臂]
+          HUIKE --> SENGCAN[僧璨?–606<br/>三祖·信心铭]
+          SENGCAN --> DAOXIN[道信580–651<br/>四祖·守一不移<br/>开创东山法门]
+          DAOXIN --> HONGREN[弘忍601–674<br/>五祖·东山法门确立]
+        end
+
+        subgraph 南宗分裂
+          HONGREN --> SHENXIU[神秀606–706<br/>北宗·渐悟<br/>两京法主·三帝门师]
+          HONGREN --> HUINENG[慧能638–713<br/>南宗·顿悟<br/>六祖·坛经]
+        end
+
+        subgraph 五家七宗_唐五代
+          HUINENG --> NANYUE[南岳怀让677–744]
+          HUINENG --> QINGYUAN[青原行思671–740]
+          NANYUE --> MAZU[马祖道一709–788<br/>洪州宗·平常心是道]
+          QINGYUAN --> SHITOU[石头希迁700–790<br/>石头宗]
+          MAZU --> LINJI[临济义玄?–867<br/>临济宗·棒喝]
+          SHITOU --> CAODONG[洞山良价＋曹山本寂<br/>曹洞宗·五位君臣]
+          MAZU --> WEIYANG[沩山灵祐＋仰山慧寂<br/>沩仰宗·圆相默契]
+          SHITOU --> YUNMEN[云门文偃864–949<br/>云门宗·一字关]
+          SHITOU --> FAYAN[法眼文益885–958<br/>法眼宗]
+        end
+
+        subgraph 宋代禅_看话与默照
+          LINJI --> DAHUI[大慧宗杲1089–1163<br/>看话禅·无字话头<br/>焚碧岩录刻板]
+          CAODONG --> HONGZHI[宏智正觉1091–1157<br/>默照禅·只管打坐]
+          DAHUI --> ZJ_DEBATE[看话vs默照<br/>大慧与宏智为好友<br/>公开论战·私人情谊]
+          HONGZHI --> ZJ_DEBATE
+        end
+
+        subgraph 明清禅净合流
+          LINJI --> ZYJM[禅净合流<br/>永明延寿→云栖袾宏<br/>→蕅益智旭→清代丛林<br/>'念佛是谁'成为主流话头]
+        end
+
+        subgraph 现代禅宗复兴_19_21世纪
+          XUYUN[虚云1840–1959<br/>兼祧五宗·坚守看话禅<br/>修复祖庭八十余处] --> BENHUAN[本焕1907–2012<br/>深圳弘法寺]
+          XUYUN --> FOYUAN[佛源1923–2009<br/>广东云门寺]
+          XUYUN --> JINGHUI[净慧1933–2013<br/>生活禅·柏林禅寺]
+          XUYUN --> CHUANYIN[传印/一诚等法嗣]
+
+          LAIGUO[来果1881–1953<br/>高旻寺·改革禅堂规矩] --> JUXU[延续看话禅传统]
+
+          SHENGYAN[圣严1931–2009<br/>法鼓宗·四阶次第<br/>整合看话+默照] --> DD[法鼓山体系]
+
+          TAOXU[太虚1890–1947<br/>人间佛教] --> JINGHUI2[净慧·生活禅<br/>承接太虚方向]
+      end
+      ```
+
+  practice_evolution:
+    title: 禅宗行法演进时间线
+    mermaid: |
+      ```mermaid
+      timeline
+        title 禅宗行法演进史
+        6世纪 达摩 : 二入四行·壁观<br/>理入＋行入
+        7世纪 道信弘忍 : 东山法门<br/>守一不移·农禅
+        8世纪 慧能神会 : 顿悟法门<br/>无念·无相·无住
+        8_9世纪 马祖石头 : 机锋问答<br/>平常心是道
+        10世纪 法眼文益 : 宗门十规论<br/>禅门流弊反省
+        11世纪 汾阳善昭 : 颂古·文字禅<br/>公案评唱开端
+        12世纪 大慧宏智 : 看话禅vs默照禅<br/>疑情vs默照·二水分流
+        13_14世纪 元明 : 禅净合流<br/>念佛是谁·话头＋佛号
+        19_20世纪 虚云来果 : 传统看话禅坚守<br/>参'念佛是谁'
+        20世纪末 圣严净慧 : 现代体系化<br/>四阶次第·生活禅
 chanref_additions:
   note: "以下内容来自 docs/hy_refs/chanref.md 的系统研究，已交叉核证多个来源。"
 

@@ -1009,10 +1009,25 @@ function renderDushunSection() {
 }
 
 // ═══ 禅门实迹渲染 (从 PRACTICE_DATA.chan_authentic_traces) ═══
+function renderMermaid(text) {
+  if (!text) return '';
+  return text.replace(/```mermaid\s*\n([\s\S]*?)```/g, '<div class=mermaid>$1</div>');
+}
+
 function renderChanTraces() {
   var ct = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chan_authentic_traces) ? PRACTICE_DATA.chan_authentic_traces : null;
   if (!ct || !ct.sections) return '';
   var h = '';
+  // Diagrams
+  if (ct.diagrams) {
+    h += '<div class=section><h2>📊 法脉传承与行法演进</h2>';
+    Object.keys(ct.diagrams).forEach(function(k) {
+      var d = ct.diagrams[k];
+      h += '<h3>' + d.title + '</h3>';
+      if (d.mermaid) h += '<div class=mermaid style="max-width:100%;overflow-x:auto">' + d.mermaid.replace(/```mermaid\n?|```/g,'') + '</div>';
+    });
+    h += '</div>';
+  }
   ct.sections.forEach(function(sec) {
     h += '<div class=section id=chan-' + sec.id.replace('chan_','') + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
@@ -1051,6 +1066,12 @@ function renderChengguanSection() {
   var cg = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chengguan_master) ? PRACTICE_DATA.chengguan_master : null;
   if (!cg) return '';
   var h = '';
+  // Lineage diagram
+  if (cg.lineage_diagram) {
+    h += '<div class=section><h3>📊 法脉传承图</h3>';
+    h += '<div class=mermaid style="max-width:100%;overflow-x:auto">' + cg.lineage_diagram.replace(/```mermaid\n?|```/g,'') + '</div>';
+    h += '</div>';
+  }
   // Bio
   if (cg.biography) {
     var b = cg.biography;
