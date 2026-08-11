@@ -447,7 +447,7 @@ function renderAvatamsakaStudies() {
   avs.sections.forEach(function(sec) {
     h += '<div class=section id=avs-' + sec.id + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
-    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _mdToHTML(sec.intro) + '</p>';
     if (sec.topics) {
       sec.topics.forEach(function(t) {
         h += '<div class=stage-box><b>' + t.title + '</b>';
