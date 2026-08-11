@@ -20,6 +20,14 @@
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a></div>
     <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('avatamsaka_studies',this);return false">🌏 华严经学 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-origins');return false">起源与形成</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-transmission');return false">翻译与流传</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-structure');return false">结构关系与表法</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-doctrinal');return false">义学阐释</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('intertextual',this);return false">📖 以经证经 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tiantai');return false">天台宗</a>
@@ -39,14 +47,6 @@
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tibetan');return false">藏传佛教</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-theravada');return false">南传·上座部</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-hetuvidya');return false">因明</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('avatamsaka_studies',this);return false">🌏 华严经学 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-origins');return false">起源与形成</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-transmission');return false">翻译与流传</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-structure');return false">结构关系与表法</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-doctrinal');return false">义学阐释</a>
     </div></div>
     
   </nav>
