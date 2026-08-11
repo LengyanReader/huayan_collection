@@ -338,7 +338,10 @@ function renderGap(){
   h+="<span style=padding:4px 10px;background:rgba(125,154,110,0.06);border:1px solid rgba(125,154,110,0.25);border-radius:14px><b style=color:#7d9a6e>Cleary英译</b> The Flower Adornment Sutra·单册·据八十华严</span>";
   h+="<span style=padding:4px 10px;background:rgba(125,154,110,0.06);border:1px solid rgba(125,154,110,0.25);border-radius:14px><b style=color:#7d9a6e>Dharmamitra英译</b> 3册·2022·Kalavinka Press·据八十华严</span>";
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>梦参</b> 华严经讲记(全本)</span>";
-  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>成一</b> 成一和尚著作集</span>";
+  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>成一</b> 成一和尚著作集(华严莲社)</span>";
+  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>贤度</b> 华严经讲义·华严学概论(华严专宗学院)</span>";
+  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>海云</b> 九九華嚴玄談5册·探玄記懸談4册</span>";
+  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>华严纂要</b> 华严纲要·华严经疏钞玄谈集成</span>";
   h+="</div></div>";
   h+="</div>"; // close 文本系谱 section div
   h+="</div>"; // close gv-genealogy
