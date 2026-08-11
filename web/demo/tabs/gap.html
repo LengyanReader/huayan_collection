@@ -475,14 +475,44 @@ function renderIntertextualCanon() {
     school.texts.forEach(function(b) {
       h += '<span style="padding:6px 12px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.2);border-radius:14px;font-size:0.75em;max-width:280px">';
       h += '<b>' + b.t + '</b><br><span style=font-size:0.85em;color:var(--text2)>' + b.n + '</span>';
-      h += '<br><span style=font-size:0.85em;color:var(--text)>' + b.desc + '</span>';
-      if (b.link) h += '<br><a href="' + b.link + '" target=_blank style=font-size:0.7em;color:var(--blue)">📖 CBETA / 参考</a>';
+      h += '<br><span style=font-size:0.85em;color:var(--text)>' + (b.d||'') + '</span>';
+      if (b.l) h += '<br><a href="' + b.l + '" target=_blank style=font-size:0.7em;color:var(--blue)">📖 CBETA / 参考</a>';
       h += '</span>';
     });
     h += '</div></div>';
   });
   h += '</div></div>'; // close section + gv-intertextual
   return h;
+}
+
+// ── Helper: convert simple markdown to HTML ──
+function _mdToHTML(text) {
+  if (!text) return '';
+  // tables
+  if (text.indexOf('|') >= 0 && text.indexOf('---') >= 0) {
+    var lines = text.split('\n'), result = [], inTable = false;
+    for (var i = 0; i < lines.length; i++) {
+      var l = lines[i].trim();
+      if (l.indexOf('|') === 0) {
+        if (!inTable) { result.push('<table class=v-table style=font-size:0.78em>'); inTable = true; }
+        var cells = l.split('|').filter(function(c){return c.trim();});
+        var isHeader = (i+1 < lines.length && (lines[i+1]||'').indexOf('---') >= 0);
+        var tag = isHeader ? 'th' : 'td';
+        result.push('<tr>' + cells.map(function(c){return '<'+tag+'>' + c.trim() + '</'+tag+'>'}).join('') + '</tr>');
+        if (isHeader) { i++; }
+      } else {
+        if (inTable) { result.push('</table>'); inTable = false; }
+        result.push(l);
+      }
+    }
+    if (inTable) result.push('</table>');
+    text = result.join('\n');
+  }
+  // bold
+  text = text.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  // bullet lists
+  text = text.replace(/^[•·]\s/gm, '🔹 ');
+  return text;
 }
 
 // ═══ 华严经学渲染 (从 GAP.avatamsaka_studies) ═══
@@ -497,7 +527,7 @@ function renderAvatamsakaStudies() {
     if (sec.topics) {
       sec.topics.forEach(function(t) {
         h += '<div class=stage-box><b>' + t.title + '</b>';
-        h += '<p style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + t.body + '</p>';
+        h += '<p style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _mdToHTML(t.body) + '</p>';
         if (t.sources) {
           h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📎 ';
           t.sources.forEach(function(s,i) { h += (i>0?'<br>':'') + s; });
