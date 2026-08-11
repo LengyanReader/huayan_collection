@@ -1,5 +1,5 @@
 // ═══ 灵性仁本·澄明永续 SPIRIT TAB ═══
-var SPIRIT_ACTIVE='overview';
+var SPIRIT_ACTIVE=localStorage.getItem('spirit_active')||'overview';
 
 function renderSpirit() {
   var cv = document.getElementById("spirit-view");
@@ -66,6 +66,7 @@ function renderSpirit() {
   h += renderBibForPage('spirit');
 
   cv.innerHTML = h;
+  try{localStorage.setItem('spirit_active',SPIRIT_ACTIVE);}catch(e){}
 }
 
 // ═══ 海云法师灵性经济学原文辑录 ═══

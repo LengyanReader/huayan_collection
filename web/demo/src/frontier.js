@@ -268,7 +268,12 @@ function switchFrontier(view){
   ['huayan','chinese','buddhist','others','litreview'].forEach(function(v){
     var el=document.getElementById('fv-'+v);if(el)el.style.display=(v===view?'block':'none');
   });
+  try{localStorage.setItem('frontier_view',view);}catch(e){}
 }
+setTimeout(function(){
+  var v=localStorage.getItem('frontier_view')||'huayan';
+  switchFrontier(v);
+},100);
 function switchFrontierNav(view,link){
   switchFrontier(view);
   document.querySelectorAll('#sidebar .nav-link').forEach(function(l){l.classList.remove('active');});

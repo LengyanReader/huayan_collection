@@ -480,7 +480,12 @@ function switchGapView(view,btn){
   if(btn)btn.classList.add("active");
   document.querySelectorAll(".gv-section").forEach(function(s){s.style.display="none";});
   var el=document.getElementById("gv-"+view); if(el)el.style.display="block";
+  try{localStorage.setItem('gap_view',view);}catch(e){}
 }
+setTimeout(function(){
+  var v=localStorage.getItem('gap_view')||'overview';
+  switchGapView(v);
+},100);
 
 function gapSubNav(view,anchor){
   switchGapView(view);
