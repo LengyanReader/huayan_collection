@@ -1009,8 +1009,6 @@ function renderDushunSection() {
 }
 
 // ═══ 禅门实迹渲染 (从 PRACTICE_DATA.chan_authentic_traces) ═══
-  try{localStorage.setItem(HEART_STORE_KEY,JSON.stringify(data));return true;}catch(e){return false;}
-}
 function heartLoadAll(){
   try{
     var raw=localStorage.getItem(HEART_STORE_KEY);
