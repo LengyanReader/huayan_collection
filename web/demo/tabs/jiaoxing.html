@@ -1158,9 +1158,51 @@ function renderChanTraces() {
   var h = '';
   // ── Diagrams ──
   h += '<div class=section id=chan-diagrams><h2>📊 禅宗法脉传承</h2>';
-  h += '<div class=mermaid style="max-width:100%">\ngraph TD\n  BODHI["佛陀灵山拈花"] --> INDIA["印度二十八代"]\n  INDIA --> DAMO["菩提达摩(?-536)"\n  DAMO --> HUIKE["慧可(487-593)"\n  HUIKE --> SENGCAN["僧璨(?-606)"\n  SENGCAN --> DAOXIN["道信(580-651) 东山法门"]\n  DAOXIN --> HONGREN["弘忍(601-674)"\n  HONGREN --> SHENXIU["神秀(606-706) 北宗渐悟"]\n  HONGREN --> HUINENG["慧能(638-713) 南宗顿悟"]\n  HUINENG --> NANYUE["南岳怀让"]\n  HUINENG --> QINGYUAN["青原行思"]\n  NANYUE --> MAZU["马祖道一(709-788) 洪州宗"]\n  QINGYUAN --> SHITOU["石头希迁(700-790)"\n  MAZU --> LINJI["临济义玄 临济宗"]\n  SHITOU --> CAODONG["洞山良价 曹洞宗"]\n  MAZU --> WEIYANG["沩仰宗"]\n  SHITOU --> YUNMEN["云门文偃 云门宗"]\n  SHITOU --> FAYAN["法眼文益 法眼宗"]\n  LINJI --> DAHUI["大慧宗杲(1089-1163) 看话禅"]\n  CAODONG --> HONGZHI["宏智正觉(1091-1157) 默照禅"]\n  LINJI --> CHANJING["明清禅净合流"]\n  CHANJING --> XUYUN["虚云(1840-1959) 兼祧五宗"]\n  XUYUN --> JINGHUI["净慧(1933-2013) 生活禅"]\n  XUYUN --> BENHUAN["本焕"]\n  XUYUN --> FOYUAN["佛源"]\n</div>';
+  h += '<div class=mermaid style="max-width:100%">\n' +
+    'graph TD\n' +
+    '  BODHI["佛陀灵山拈花"] --> INDIA["印度二十八代"]\n' +
+    '  INDIA --> DAMO["菩提达摩 535-536"]\n' +
+    '  DAMO --> HUIKE["慧可 487-593"]\n' +
+    '  HUIKE --> SENGCAN["僧璨 526-606"]\n' +
+    '  SENGCAN --> DAOXIN["道信 580-651 东山法门"]\n' +
+    '  DAOXIN --> HONGREN["弘忍 601-674"]\n' +
+    '  HONGREN --> SHENXIU["神秀 北宗渐悟"]\n' +
+    '  HONGREN --> HUINENG["慧能 638-713 南宗顿悟"]\n' +
+    '  HUINENG --> QINGYUAN["青原行思"]\n' +
+    '  HUINENG --> NANYUE["南岳怀让"]\n' +
+    '  NANYUE --> MAZU["马祖道一 洪州宗"]\n' +
+    '  QINGYUAN --> SHITOU["石头希迁"]\n' +
+    '  MAZU --> LINJI["临济义玄 临济宗"]\n' +
+    '  SHITOU --> CAODONG["洞山良价 曹洞宗"]\n' +
+    '  MAZU --> WEIYANG["沩仰宗"]\n' +
+    '  SHITOU --> YUNMEN["云门文偃 云门宗"]\n' +
+    '  SHITOU --> FAYAN["法眼文益 法眼宗"]\n' +
+    '  LINJI --> DAHUI["大慧宗杲 看话禅"]\n' +
+    '  CAODONG --> HONGZHI["宏智正觉 默照禅"]\n' +
+    '  LINJI --> CHANJING["明清禅净合流"]\n' +
+    '  CHANJING --> XUYUN["虚云 1840-1959"]\n' +
+    '  XUYUN --> JINGHUI["净慧 生活禅"]\n' +
+    '  XUYUN --> BENHUAN["本焕"]\n' +
+    '  XUYUN --> FOYUAN["佛源"]\n' +
+    '</div>';
   h += '<h3 style="margin-top:12px">📅 行法演进时间线</h3>';
-  h += '<div class=mermaid style="max-width:100%">\ntimeline\n  title 禅宗行法演进\n  section 中国\n  6世纪 : 达摩二入四行壁观\n  7世纪 : 道信弘忍东山法门\n  8世纪 : 慧能顿悟无念无相\n  9世纪 : 马祖石头机锋问答\n  10-11世纪 : 汾阳善昭颂古文字禅\n  12世纪 : 大慧看话宏智默照\n  section 东亚\n  13世纪 : 日本道元永平寺\n  14-18世纪 : 明清禅净合流\n  section 现代\n  19-20世纪 : 虚云来果传统看话\n  20世纪末 : 圣严四阶净慧生活禅\n</div></div>';
+  h += '<div class=mermaid style="max-width:100%">\n' +
+    'timeline\n' +
+    '  title 禅宗行法演进\n' +
+    '  section 中国\n' +
+    '  6世纪 : 达摩二入四行壁观\n' +
+    '  7世纪 : 道信弘忍东山法门\n' +
+    '  8世纪 : 慧能顿悟无念无相\n' +
+    '  9世纪 : 马祖石头机锋问答\n' +
+    '  10-11世纪 : 文字禅颂古\n' +
+    '  12世纪 : 看话默照二水分流\n' +
+    '  section 东亚\n' +
+    '  13世纪 : 日本道元永平寺\n' +
+    '  14-18世纪 : 明清禅净合流\n' +
+    '  section 现代\n' +
+    '  19-20世纪 : 虚云来果传统禅\n' +
+    '  20世纪末 : 圣严净慧现代化\n' +
+    '</div></div>';
 
   ct.sections.forEach(function(sec) {
     h += '<div class=section id=chan-' + sec.id.replace('chan_','') + '>';
@@ -1202,7 +1244,26 @@ function renderChengguanSection() {
   var h = '';
   // Lineage diagram
   h += '<div class=section><h3>📊 成观法师法脉传承图</h3>';
-  h += '<div class=mermaid style="max-width:100%">\ngraph TD\n  subgraph A["天台宗 Tiantai"]\n    DX["谛闲大师"] --> XM["显明老和尚 天台45世"]\n    XM --> CG1["成观法师 天台46世 1988年纽约出家"]\n  end\n  subgraph B["真言宗 Shingon"]\n    KYS["高野山金刚峰寺"] --> CG2["成观法师 真言宗53世 传法灌顶阿阇梨 1996年"]\n  end\n  subgraph C["华严宗 Huayan"]\n    DS["杜顺至宗密五祖"] --> LJ["历代祖师"]\n    LJ --> CG3["成观法师 贤首宗42世 慈恩宗42世 2010年承接"]\n  end\n  CG1 --> JY["新逍遥园译经院 (1991 台北)"]\n  CG1 --> BZS["遍照寺 (美国密西根)"]\n  CG1 --> LY["楞严座主: 楞严经义贯上下"]\n  CG1 --> WS["唯识系列: 百法/三十论/八识"]\n  CG1 --> ZY["英译11种: 法华/楞严/金刚/坛经"]\n  CG1 --> ZM["真言密法: 汉传东密"]\n</div></div>';
+  h += '<div class=mermaid style="max-width:100%">\n' +
+    'graph TD\n' +
+    '  subgraph A["天台宗 Tiantai"]\n' +
+    '    DX["谛闲大师"] --> XM["显明老和尚 天台45世"]\n' +
+    '    XM --> CG1["成观法师 天台46世 1988年出家"]\n' +
+    '  end\n' +
+    '  subgraph B["真言宗 Shingon"]\n' +
+    '    KYS["高野山金刚峰寺"] --> CG2["成观法师 真言宗53世 1996年"]\n' +
+    '  end\n' +
+    '  subgraph C["华严宗 Huayan"]\n' +
+    '    DS["杜顺至宗密五祖"] --> LJ["历代祖师"]\n' +
+    '    LJ --> CG3["成观法师 贤首宗42世 2010年"]\n' +
+    '  end\n' +
+    '  CG1 --> JY["新逍遥园译经院 1991 台北"]\n' +
+    '  CG1 --> BZS["遍照寺 美国密西根"]\n' +
+    '  CG1 --> LY["楞严座主 楞严经义贯"]\n' +
+    '  CG1 --> WS["唯识系列 百法 三十论 八识"]\n' +
+    '  CG1 --> ZY["英译11种 法华 金刚 坛经"]\n' +
+    '  CG1 --> ZM["真言密法 汉传东密"]\n' +
+    '</div></div>';
 
   // Bio
   if (cg.biography) {
@@ -1450,7 +1511,7 @@ function jxSubNav(view,anchor){
   setTimeout(function(){
     var sub=localStorage.getItem('practice_sub')||'system';
     if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
+    if(sub&&['system','meditation','news','resources','chan_traces','chengguan'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);
