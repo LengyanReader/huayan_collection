@@ -391,7 +391,7 @@ function renderIntertextualCanon() {
   h += '<div class=section><h2>📖 以经证经 — 大小宗派经典汇证</h2>';
   h += '<p style=font-size:0.82em;color:var(--text2);margin-bottom:12px>华严宗「事事无碍」「一即一切」的义理与各宗经典互相印证——汉传八宗+藏传+南传+因明共14门。</p>';
   ic.schools.forEach(function(school) {
-    h += '<div style="margin-bottom:16px"><h3 style="color:var(--gold);font-size:0.95em;border-bottom:1px solid var(--line);padding-bottom:4px">' + school.name + ' <span style=font-size:0.7em;color:var(--text2)>' + (school.en||'') + '</span></h3>';
+    h += '<div id=ic-' + (school.id||'') + ' style="margin-bottom:16px"><h3 style="color:var(--gold);font-size:0.95em;border-bottom:1px solid var(--line);padding-bottom:4px">' + school.name + ' <span style=font-size:0.7em;color:var(--text2)>' + (school.en||'') + '</span></h3>';
     h += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
     school.texts.forEach(function(b) {
       h += '<span style="padding:6px 12px;background:rgba(94,139,158,0.06);border:1px solid rgba(94,139,158,0.2);border-radius:14px;font-size:0.75em;max-width:280px">';

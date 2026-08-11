@@ -611,7 +611,27 @@ def main():
     <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchGapView('overview',this);return false">📊 差异总览</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a></div>
     <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('intertextual',this);return false">📖 以经证经</a></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('intertextual',this);return false">📖 以经证经 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tiantai');return false">天台宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-madhyamaka');return false">中观·三论</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-yogacara');return false">唯识·法相</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-chan');return false">禅宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-pureland');return false">净土宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-vinaya');return false">律宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-esoteric');return false">密宗·真言</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-kusha');return false">俱舍宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-chengshi');return false">成实宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-niepan');return false">涅槃宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-dilun');return false">地论宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-shelun');return false">摄论宗</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tathagatagarbha');return false">如来藏系</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-other_sutras');return false">重要通经</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tibetan');return false">藏传佛教</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-theravada');return false">南传·上座部</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-hetuvidya');return false">因明</a>
+    </div></div>
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('avatamsaka_studies',this);return false">🌏 华严经学 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
