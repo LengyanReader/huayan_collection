@@ -341,7 +341,8 @@ function renderGap(){
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>成一</b> 成一和尚著作集(华严莲社)</span>";
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>贤度</b> 华严经讲义·华严学概论(华严专宗学院)</span>";
   h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>海云</b> 九九華嚴玄談5册·探玄記懸談4册</span>";
-  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>華嚴經疏論纂要</b> 清·道霈编·120卷·澄观疏+李通玄论合刊</span>";
+  h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>華嚴經疏論纂要</b> 清·道霈(为霖)·120卷·澄观疏+李通玄论合刊</span>";
+h+="<span style=padding:4px 10px;background:rgba(184,134,60,0.06);border:1px solid rgba(184,134,60,0.25);border-radius:14px><b style=color:#b8863c>华严纲要</b> 明·德清(憨山)提挈·80卷·澄观疏钞要义</span>";
   h+="</div></div>";
   h+="</div>"; // close 文本系谱 section div
   h+="</div>"; // close gv-genealogy
