@@ -1009,6 +1009,346 @@ function renderDushunSection() {
 }
 
 // ═══ 禅门实迹渲染 (从 PRACTICE_DATA.chan_authentic_traces) ═══
+function renderChanTraces() {
+  var ct = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chan_authentic_traces) ? PRACTICE_DATA.chan_authentic_traces : null;
+  if (!ct || !ct.sections) return '';
+  var h = '';
+  ct.sections.forEach(function(sec) {
+    h += '<div class=section id=chan-' + sec.id.replace('chan_','') + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t) {
+        h += '<div class=topic-card>';
+        h += '<h4>' + t.title + '</h4>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + t.body + '</p>';
+        if (t.links) {
+          Object.keys(t.links).forEach(function(k) {
+            h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
+          });
+        }
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px>📎 ' + t.source + '</p>';
+        h += '</div>';
+      });
+    }
+    h += '</div>';
+  });
+  // References
+  if (ct.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (学术·门内·近现代·海云)</summary>';
+    Object.keys(ct.references).forEach(function(k) {
+      h += '<p style=margin:4px 0><b>' + k + '</b></p><ul style=margin:0>';
+      ct.references[k].forEach(function(r) { h += '<li>' + r + '</li>'; });
+      h += '</ul>';
+    });
+    h += '</details>';
+  }
+  // ── 法脉传承表 ──
+  h += '<div class=section id=chan-diagrams><h2>📊 禅宗法脉传承</h2>';
+  h += '<table class=v-table style=font-size:0.75em><tr><th>时期</th><th>人物</th><th>贡献</th></tr>';
+  h += '<tr><td>印度</td><td>佛陀二十八代→菩提达摩</td><td>灵山拈花·教外别传</td></tr>';
+  h += '<tr><td>隋</td><td>慧可→僧璨→道信→弘忍</td><td>二祖至五祖·东山法门</td></tr>';
+  h += '<tr><td>唐</td><td>神秀(北宗) 慧能(南宗)</td><td>南北分宗</td></tr>';
+  h += '<tr><td>晚唐五代</td><td>马祖·石头→临济·曹洞·沩仰·云门·法眼</td><td>五家七宗</td></tr>';
+  h += '<tr><td>宋</td><td>大慧宗杲(看话) 宏智正觉(默照)</td><td>两大法门</td></tr>';
+  h += '<tr><td>明清</td><td>永明延寿→云栖袾宏→蕅益智旭</td><td>禅净合流</td></tr>';
+  h += '<tr><td>近现代</td><td>虚云(兼祧五宗) 来果 铃木大拙</td><td>传统坚守·西传</td></tr>';
+  h += '<tr><td>当代</td><td>净慧(生活禅) 圣严 一行禅师</td><td>现代体系化</td></tr>';
+  h += '</table></div>';
+  return h;
+}
+
+// ═══ 成其大观渲染 (从 PRACTICE_DATA.chengguan_master) ═══
+function renderChengguanSection() {
+  var cg = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chengguan_master) ? PRACTICE_DATA.chengguan_master : null;
+  if (!cg) return '';
+  var h = '';
+  // Bio
+  if (cg.biography) {
+    var b = cg.biography;
+    h += '<div class=section id=cg-bio><h2>🌄 成其大观 — 成观法师</h2>';
+    h += '<p style=font-size:0.8em;color:var(--text2)>' + b.name_en + ' · ' + b.birth + '- · ' + (b.birthplace||'') + '</p>';
+    h += '<div class=stage-box style=font-size:0.78em>';
+    (b.education||[]).forEach(function(e) { h += '🎓 ' + e + '<br>'; });
+    h += '✂️ ' + b.ordination + '<br>';
+    (b.lineage||[]).forEach(function(l) { h += '📜 ' + l + '<br>'; });
+    h += '🏛 ' + b.current_position;
+    h += '</div>';
+  }
+  // Institutions
+  if (cg.institutions) {
+    h += '<div class=section id=cg-institutions><h3>🏛 译经院</h3>';
+    cg.institutions.forEach(function(i) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + i.name + '</b> (' + i.founded + ') — ' + i.location + '<br>';
+      h += i.practice + '<br><span style=color:var(--text2)>' + i.note + '</span>';
+      h += '<br><a href="' + i.website + '" target=_blank>官网</a>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+  // Works
+  if (cg.works_chinese || cg.works_english) {
+    h += '<div class=section id=cg-works><h3>📚 著作全目</h3>';
+    if (cg.works_chinese) {
+      h += '<p style=font-size:0.78em><b>中文著述 (' + cg.works_chinese.intro + ')</b></p>';
+      h += '<table class=v-table style=font-size:0.72em><tr><th>书名</th><th>备注</th></tr>';
+      cg.works_chinese.items.forEach(function(w) {
+        h += '<tr><td>' + w.title + '</td><td style=color:var(--text2)>' + (w.note||'') + '</td></tr>';
+      });
+      h += '</table>';
+    }
+    if (cg.works_english) {
+      h += '<p style=font-size:0.78em;margin-top:8px><b>英文译著 (' + cg.works_english.intro + ')</b></p><ul style=font-size:0.75em>';
+      cg.works_english.items.forEach(function(w) { h += '<li>' + w + '</li>'; });
+      h += '</ul>';
+    }
+    h += '</div>';
+  }
+  // Lectures
+  if (cg.lecture_highlights) {
+    h += '<div class=section id=cg-lectures><h3>🎙 讲法特色</h3>';
+    cg.lecture_highlights.forEach(function(l) {
+      h += '<div class=topic-card><h4>' + l.topic + '</h4>';
+      h += '<p style=font-size:0.78em>' + (l.note||l.significance||'') + '</p>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+  // Comparison
+  if (cg.comparison_with_haiyun) {
+    h += '<div class=stage-box style=font-size:0.75em;margin-top:10px"><b>🔀 与海云继梦法师的比较</b><br>' + cg.comparison_with_haiyun.note + '</div>';
+  }
+	// ── 海云vs成观 多维对照表 ──
+	var cmp = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_chengguan_compare) ? PRACTICE_DATA.haiyun_chengguan_compare : null;
+	if (cmp && cmp.compare) {
+	  h += '<div class=section id=cg-compare><h2>🔀 海云继梦 vs 成观法师 — 多维对照</h2>';
+	  cmp.compare.forEach(function(row) {
+	    h += '<table class=v-table style="font-size:0.72em;margin:8px 0"><tr><th colspan=2>' + (row.icon||'') + ' ' + row.topic + '</th></tr>';
+	    h += '<tr><td style=width:50%;background:rgba(184,134,60,0.05)><b style=color:var(--gold)>🌊 海云继梦</b><br><b>' + row.haiyun.position + '</b>';
+	    if (row.haiyun.quote) h += '<br><span style=color:var(--text2)>「' + row.haiyun.quote + '」</span>';
+	    if (row.haiyun.note) h += '<br>' + row.haiyun.note;
+	    h += '</td><td style=width:50%;background:rgba(196,107,93,0.05)><b style=color:#c46b5d>🌄 成观法师</b><br><b>' + row.chengguan.position + '</b>';
+	    if (row.chengguan.quote) h += '<br><span style=color:var(--text2)>「' + row.chengguan.quote + '」</span>';
+	    if (row.chengguan.note) h += '<br>' + row.chengguan.note;
+	    h += '</td></tr>';
+	    if (row.contrast) h += '<tr><td colspan=2>📝 ' + row.contrast + '</td></tr>';
+	    h += '</table>';
+	  });
+	  h += '</div>';
+	}
+  // Links
+  if (cg.links) {
+    h += '<p style=font-size:0.72em;margin-top:6px">🔗 ';
+    cg.links.forEach(function(l) { h += '<a href="' + l.url + '" target=_blank>' + l.name + '</a> · '; });
+    h += '</p>';
+  }
+  return h;
+}
+
+// ═══ 梦参老和尚讲法全目 (从 PRACTICE_DATA.mengcan_lectures) ═══
+function renderMengcanSection() {
+  var mc = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.mengcan_lectures) ? PRACTICE_DATA.mengcan_lectures : null;
+  if (!mc) return '';
+  var h = '<div class=section id=res-mengcan><h2>👴 梦参老和尚 (1915-2017) — 一生讲法全目</h2>';
+  if (mc.biography) {
+    var b = mc.biography;
+    h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.8">'
+      + b.name_en + ' · 俗名' + b.secular_name + ' · 世寿' + b.birth + '-' + b.death
+      + ' · ' + b.lineage + '</p>';
+    h += '<div class=stage-box style=font-size:0.75em>' + (b.key_locations||[]).join('<br>') + '</div>';
+    if (b.relation_to_huayan) h += '<p style="font-size:0.75em;color:var(--gold);margin-top:4px">🪷 ' + b.relation_to_huayan + '</p>';
+  }
+  // Lectures table
+  if (mc.lectures) {
+    h += '<table class=v-table style=font-size:0.75em;margin-top:8px><tr><th>经典</th><th>讲题</th><th>地点/年份</th><th>体量</th></tr>';
+    mc.lectures.forEach(function(l) {
+      h += '<tr><td><b>' + l.sutra + '</b></td><td>' + l.title + '</td>';
+      h += '<td>' + (l.venue||'') + (l.year?' · '+l.year:'') + '</td>';
+      h += '<td>' + (l.length||'') + '</td></tr>';
+      if (l.significance || l.note) {
+        h += '<tr><td></td><td colspan=3 style="font-size:0.85em;color:var(--text2)">' + (l.significance||'') + (l.note?'<br>'+l.note:'') + '</td></tr>';
+      }
+    });
+    h += '</table>';
+  }
+  // Resources
+  if (mc.other_resources) {
+    h += '<p style="font-size:0.72em;margin-top:6px">📡 ';
+    mc.other_resources.forEach(function(r) {
+      h += '<a href="' + r.link + '" target=_blank style="color:var(--blue)">' + r.name + '</a> (' + r.platform + ') · ';
+    });
+    h += '</p>';
+  }
+  if (mc.life_motto) h += '<blockquote style="font-size:0.75em;border-left:3px solid var(--gold);padding-left:10px;margin-top:6px;line-height:1.8">' + mc.life_motto.replace(/\n/g,'<br>') + '</blockquote>';
+  h += '</div>';
+  return h;
+}
+
+// ═══ 全平台修行资源渲染 (从 PRACTICE_DATA.haiyun_practice_sources) ═══
+function renderPracticeSources() {
+  var ps = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_practice_sources) ? PRACTICE_DATA.haiyun_practice_sources : null;
+  if (!ps) return '';
+  var h = '';
+
+  // ── 三阶段快速参考 ──
+  if (ps.three_stages_quick_ref) {
+    var ts = ps.three_stages_quick_ref;
+    h += '<div class=section id=res-stages><h2>📐 三阶段修行速查 <span style=font-size:0.7em;color:var(--text2)>技术面·工程面·出处</span></h2>';
+    h += '<table class=v-table style=font-size:0.72em><tr><th>阶段</th><th>技术面</th><th>工程面</th><th>玄门</th><th>来源</th></tr>';
+    ['stage1','stage2','stage3'].forEach(function(sk) {
+      var s = ts[sk]; if (!s) return;
+      h += '<tr><td><b>' + s.name + '</b></td><td>' + s.technical + '</td><td>' + s.engineering + '</td><td style=font-size:0.85em>' + s.xuanmen + '</td><td style=font-size:0.75em>' + s.source + '</td></tr>';
+    });
+    h += '</table></div>';
+  }
+
+  // ── 著作 ──
+  if (ps.books) {
+    h += '<div class=section id=res-sources-books><h2>📚 关键著作 (' + ps.books.length + '本)</h2>';
+    ps.books.forEach(function(b) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + b.title + '</b> (' + b.year + ') — ' + b.publisher;
+      if (b.isbn) h += ' · ISBN ' + b.isbn;
+      h += '<br><span style=color:var(--text2)>' + b.content + '</span>';
+      h += '<br>';
+      if (b.link_google_play) h += '<a href="' + b.link_google_play + '" target=_blank>Google Play</a> · ';
+      if (b.link_buy) h += '<a href="' + b.link_buy + '" target=_blank>购买</a> · ';
+      if (b.link_fjdh) h += '<a href="' + b.link_fjdh + '" target=_blank>逐字稿</a>';
+      if (b.lectures) h += ' <span style=color:var(--text2)>(' + b.lectures + ')</span>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 讲记系列 ──
+  if (ps.lecture_series) {
+    h += '<div class=section id=res-sources-lectures><h2>🎙 讲记系列 (' + ps.lecture_series.length + '部)</h2>';
+    ps.lecture_series.forEach(function(l) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + l.title + '</b> — ' + l.episodes + ' · ' + (l.year||'') + ' · ' + l.platform;
+      h += '<br><span style=color:var(--text2)>' + l.content + '</span><br>';
+      if (l.link_example_fjdh) h += '<a href="' + l.link_example_fjdh + '" target=_blank>📝 讲记</a> · ';
+      if (l.spotify) h += '<a href="' + l.spotify + '" target=_blank>🎧 Spotify</a> · ';
+      if (l.apple_podcast) h += '<a href="' + l.apple_podcast + '" target=_blank>🎙 Apple</a> · ';
+      if (l.listennotes) h += '<a href="' + l.listennotes + '" target=_blank>📋 目录</a>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 禅三/禅七 ──
+  if (ps.exhaustive_platform_index && ps.exhaustive_platform_index.retreats) {
+    var rt = ps.exhaustive_platform_index.retreats;
+    h += '<div class=section id=res-sources-retreats><h2>🧘 禅修营·禅七 (' + (rt.confirmed||[]).length + '梯次确认)</h2>';
+    h += '<p style=font-size:0.75em;color:var(--text2)><b>⚠ 检索局限:</b> 编号梯次(第X梯)禅三录音搜索引擎索引不完整，需联系大华严寺或逐季检查播客。</p>';
+    (rt.confirmed||[]).forEach(function(r) {
+      h += '<div class=topic-card style=font-size:0.78em>';
+      h += '<b>' + r.type + '</b> — ' + r.year + ' · ' + (r.venue||'');
+      h += '<br><span style=color:var(--text2)>' + r.content + '</span>';
+      if (r.known_batches) {
+        h += '<br>📅 已知梯次: ' + r.known_batches.join('; ');
+      }
+      if (r.link_book) h += '<br><a href="' + r.link_book + '" target=_blank>📖 出版书籍</a>';
+      if (r.link_podwise) h += ' · <a href="' + r.link_podwise + '" target=_blank>🎧 播客</a>';
+      h += '</div>';
+    });
+    if (rt.search_advice) {
+      h += '<details style=font-size:0.72em;margin-top:4px><summary>🔍 穷尽搜索建议</summary><p style=color:var(--text2);white-space:pre-line>' + rt.search_advice + '</p></details>';
+    }
+    h += '</div>';
+  }
+
+  // ── 全平台索引摘要 ──
+  if (ps.exhaustive_platform_index) {
+    var ep = ps.exhaustive_platform_index;
+    h += '<div class=section id=res-sources-platforms><h2>🌐 全平台资源索引</h2>';
+    // Bilibili
+    if (ep.bilibili) {
+      var bl = ep.bilibili;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>📺 Bilibili — ' + (bl.key_series||[]).length + '个系列 · ' + (bl.uploaders||[]).length + '个UP主</b></summary>';
+      (bl.key_series||[]).forEach(function(s) {
+        h += '<div style=margin:2px 0>🔹 <b>' + s.name + '</b> (' + (s.episodes||s.duration||'') + ') ' + (s.year||'');
+        if (s.url) h += ' <a href="' + s.url + '" target=_blank>直达</a>';
+        if (s.note) h += '<br><span style=color:var(--text2);font-size:0.9em>' + s.note + '</span>';
+        h += '</div>';
+      });
+      h += '</details>';
+    }
+    // Podcast
+    if (ep.podcast) {
+      var pd = ep.podcast;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>🎧 Spotify/Apple — ' + pd.show_name + ' (' + (pd.series_count||'') + ')</b></summary>';
+      h += '<p>' + (pd.update_freq||'') + ' · <a href="' + pd.spotify_url + '" target=_blank>Spotify</a> · <a href="' + pd.apple_url + '" target=_blank>Apple</a></p>';
+      (pd.key_series||[]).forEach(function(s) {
+        h += '<div>🔹 <b>' + s.name + '</b>: ' + (s.content||'') + (s.episodes?' ('+s.episodes+')':'') + '</div>';
+      });
+      h += '</details>';
+    }
+    // Text transcripts
+    if (ep.text_transcripts) {
+      var tt = ep.text_transcripts;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>📝 文字讲记 — ' + tt.platform + '</b></summary>';
+      (tt.key_series||[]).forEach(function(s) {
+        h += '<div>🔹 <b>' + s.name + '</b>: ' + s.episodes + (s.url_example?' · <a href="'+s.url_example+'" target=_blank>示例</a>':'') + '</div>';
+      });
+      h += '</details>';
+    }
+    // YouTube
+    if (ep.youtube) {
+      var yt = ep.youtube;
+      h += '<details style=font-size:0.75em;margin:4px 0><summary><b>📺 YouTube — ' + yt.channel + '</b></summary>';
+      h += '<p><a href="' + yt.channel_url + '" target=_blank>频道</a> · <a href="' + yt.playlists_url + '" target=_blank>播放清单</a></p>';
+      (yt.key_series||[]).forEach(function(s) {
+        h += '<div>🔹 <b>' + s.name + '</b> (' + (s.type||'') + '): ' + (s.content||'') + '</div>';
+      });
+      h += '</details>';
+    }
+    h += '</div>';
+  }
+
+  return h;
+}
+
+// ═══ 侧边子目录导航 (先切子页再滚动到锚点) ═══
+function jxSubNav(view,anchor){
+  // Switch to the sub-page first
+  var navBtn=document.querySelector('#sidebar .nav-link[onclick*="'+view+'"]');
+  switchPracticeView(view,navBtn);
+  // Then scroll to anchor after render
+  setTimeout(function(){
+    var el=document.getElementById(anchor);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  },100);
+}
+
+// Restore sub-page on load (heart 已并入 meditation)
+(function(){
+  setTimeout(function(){
+    var sub=localStorage.getItem('practice_sub')||'system';
+    if(sub==='heart')sub='meditation';
+    if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
+      switchPracticeView(sub);
+    }
+  },150);
+})();
+
+// ═══ 实修心要持久化 (localStorage + 导出/导入) ═══
+var HEART_STORE_KEY='huayan_heart_data_v2';
+function heartSaveAll(){
+  var data={edits:{},notes:{},ts:new Date().toISOString()};
+  document.querySelectorAll('[id$="-r1"],[id$="-r2"]').forEach(function(el){
+    var id=el.id, html=el.innerHTML;
+    var orig=el.getAttribute('data-orig');
+    if(orig!==null && html!==orig) data.edits[id]=html;
+    // Collect notes
+    el.querySelectorAll('.heart-note').forEach(function(note){
+      if(!data.notes[id]) data.notes[id]=[];
+      data.notes[id].push(note.innerHTML);
+    });
+  });
+  try{localStorage.setItem(HEART_STORE_KEY,JSON.stringify(data));return true;}catch(e){return false;}
+}
 function heartLoadAll(){
   try{
     var raw=localStorage.getItem(HEART_STORE_KEY);
