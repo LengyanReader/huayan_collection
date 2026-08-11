@@ -105,7 +105,8 @@ def load_practice():
                  'haiyun_avatamsaka_lectures',
                  'mengcan_lectures',
                  'chan_authentic_traces',
-                 'chengguan_master']:
+                 'chengguan_master',
+                 'haiyun_chengguan_compare']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data

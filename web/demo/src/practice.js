@@ -1139,7 +1139,27 @@ function renderChengguanSection() {
     });
     h += '</div>';
   }
-  // Comparison
+  // ── 海云 vs 成观 对照表 (从 PRACTICE_DATA.haiyun_chengguan_compare) ──
+  var cmp = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_chengguan_compare) ? PRACTICE_DATA.haiyun_chengguan_compare : null;
+  if (cmp && cmp.compare) {
+    h += '<div class=section id=cg-compare><h2>🔀 海云继梦 vs 成观法师 — 多维对照</h2>';
+    if (cmp.meta && cmp.meta.note) h += '<p style=font-size:0.75em;color:var(--text2);margin-bottom:10px">' + cmp.meta.note + '</p>';
+    cmp.compare.forEach(function(row) {
+      h += '<table class=v-table style="font-size:0.72em;margin:8px 0"><tr><th colspan=2>' + (row.icon||'') + ' ' + row.topic + '</th></tr>';
+      h += '<tr><td style="width:50%;background:rgba(184,134,60,0.05);vertical-align:top"><b style=color:var(--gold)>🌊 海云继梦</b><br><b>' + row.haiyun.position + '</b>';
+      if (row.haiyun.quote) h += '<br><span style=color:var(--text2)>「' + row.haiyun.quote + '」</span>';
+      if (row.haiyun.note) h += '<br><span style=font-size:0.9em;color:var(--text2)>' + row.haiyun.note + '</span>';
+      h += '</td>';
+      h += '<td style="width:50%;background:rgba(196,107,93,0.05);vertical-align:top"><b style=color:#c46b5d>🌄 成观法师</b><br><b>' + row.chengguan.position + '</b>';
+      if (row.chengguan.quote) h += '<br><span style=color:var(--text2)>「' + row.chengguan.quote + '」</span>';
+      if (row.chengguan.note) h += '<br><span style=font-size:0.9em;color:var(--text2)>' + row.chengguan.note + '</span>';
+      h += '</td></tr>';
+      if (row.contrast) h += '<tr><td colspan=2 style=font-size:0.9em;color:var(--text)>📝 ' + row.contrast + '</td></tr>';
+      h += '</table>';
+    });
+    h += '</div>';
+  }
+  // Comparison (old note)
   if (cg.comparison_with_haiyun) {
     h += '<div class=stage-box style=font-size:0.75em;margin-top:10px"><b>🔀 与海云继梦法师的比较</b><br>' + cg.comparison_with_haiyun.note + '</div>';
   }
