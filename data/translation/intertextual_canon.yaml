@@ -28,7 +28,7 @@ schools:
      {t: "摄大乘论", n:  "T31n1594·无著·玄奘译", d:  "十殊胜语统摄大乘。摄论宗根本。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1594"},
      {t: "唯识二十论", n:  "T31n1590·世亲·玄奘译", d:  "破外境实有。唯识无境。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1590"},
      {t: "大乘百法明门论", n:  "T31n1614·世亲·玄奘译", d:  "唯识入门。五位百法。", l:  "https://cbetaonline.dila.edu.tw/zh/T31n1614"},
-     {t: "八识规矩颂", n:  "X55n0896·玄奘", d:  "八识概要。唯识背诵口诀。", l:  "https://cbetaonline.dila.edu.tw/zh/X55n0896"}]}
+     {t: "八识规矩颂", n:  "X55n0896·玄奘", d:  "八识概要。唯识背诵口诀。", l:  "https://cbetaonline.dila.edu.tw/zh/X55n0896"}, {t: "成唯识论述记", n: "T43n1830·窥基·20卷", d: "成唯识论最权威注疏。慈恩大师。", l: "https://cbetaonline.dila.edu.tw/zh/T43n1830"}, {t: "大乘法苑义林章", n: "T45n1861·窥基·7卷", d: "法相宗义理纲要。五章综贯。", l: "https://cbetaonline.dila.edu.tw/zh/T45n1861"}, {t: "因明入正理论疏", n: "T44n1840·窥基·3卷", d: "因明大疏。汉传因明最高成就。", l: "https://cbetaonline.dila.edu.tw/zh/T44n1840"}, {t: "解深密经疏", n: "X21n0369·圆测·10卷", d: "新罗圆测。藏文全本幸存。", l: "https://cbetaonline.dila.edu.tw/zh/X21n0369"}, {t: "仁王经疏", n: "T33n1708·圆测·6卷", d: "玄奘门下与窥基并称。", l: "https://cbetaonline.dila.edu.tw/zh/T33n1708"}, {t: "成唯识论了义灯", n: "T43n1832·慧沼·7卷", d: "窥基弟子。驳圆测系。", l: "https://cbetaonline.dila.edu.tw/zh/T43n1832"}, {t: "成唯识论演秘", n: "T43n1833·智周·7卷", d: "慧沼弟子。唯识三疏之三。", l: "https://cbetaonline.dila.edu.tw/zh/T43n1833"}]}
 
   - {id: chan, name: "禅宗 / Chan / Zen", texts:
     [{t: "六祖大师法宝坛经", n: "T48n2008·宗宝本", d: "唯一中国祖师所造之经。顿悟法门。", l: "https://cbetaonline.dila.edu.tw/zh/T48n2008"},
