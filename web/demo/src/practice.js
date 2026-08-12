@@ -923,11 +923,11 @@ function renderXinfaSection() {
   xf.sections.forEach(function(sec) {
     h += '<div class=section id=med-' + sec.id + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
-    if (sec.intro) h += '<p style="font-size:0.8em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
+    if (sec.intro) h += '<p style="font-size:0.8em;color:var(--text2);line-height:1.8;white-space:pre-line">' + mdToHTML(sec.intro) + '</p>';
     if (sec.quotes) {
       sec.quotes.forEach(function(q) {
         h += '<div class=stage-box style="margin:10px 0">';
-        h += '<blockquote style="font-size:0.82em;line-height:1.9;margin:0;white-space:pre-line">' + q.text + '</blockquote>';
+        h += '<blockquote style="font-size:0.82em;line-height:1.9;margin:0;white-space:pre-line">' + mdToHTML(q.text) + '</blockquote>';
         h += '<p style="font-size:0.7em;color:var(--text2);margin-top:6px">📎 ' + q.source + '</p>';
         if (q.context) h += '<p style="font-size:0.68em;color:var(--gold)">' + q.context + '</p>';
         h += '</div>';
@@ -1012,23 +1012,31 @@ function renderDushunSection() {
 function renderChanTraces() {
   var ct = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chan_authentic_traces) ? PRACTICE_DATA.chan_authentic_traces : null;
   if (!ct || !ct.sections) return '';
+  // md helper: **bold** → <b>, *italic* → <i>
+  function md(s) {
+    return String(s||'')
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
+  }
   var h = '';
   ct.sections.forEach(function(sec) {
     h += '<div class=section id=chan-' + sec.id.replace('chan_','') + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
-    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + sec.intro + '</p>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + md(sec.intro) + '</p>';
     if (sec.topics) {
-      sec.topics.forEach(function(t) {
-        h += '<div class=topic-card>';
-        h += '<h4>' + t.title + '</h4>';
-        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + t.body + '</p>';
+      sec.topics.forEach(function(t, idx) {
+        // Collapsible topic
+        h += '<div class=wu-door id=ct-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        h += '<div class=body>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
         if (t.links) {
           Object.keys(t.links).forEach(function(k) {
             h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
           });
         }
-        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px>📎 ' + t.source + '</p>';
-        h += '</div>';
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px">📎 ' + md(t.source) + '</p>';
+        h += '</div></div>';
       });
     }
     h += '</div>';
@@ -1125,12 +1133,12 @@ function renderChengguanSection() {
 	  h += '<div class=section id=cg-compare><h2>🔀 海云继梦 vs 成观法师 — 多维对照</h2>';
 	  cmp.compare.forEach(function(row) {
 	    h += '<table class=v-table style="font-size:0.72em;margin:8px 0"><tr><th colspan=2>' + (row.icon||'') + ' ' + row.topic + '</th></tr>';
-	    h += '<tr><td style=width:50%;background:rgba(184,134,60,0.05)><b style=color:var(--gold)>🌊 海云继梦</b><br><b>' + row.haiyun.position + '</b>';
-	    if (row.haiyun.quote) h += '<br><span style=color:var(--text2)>「' + row.haiyun.quote + '」</span>';
-	    if (row.haiyun.note) h += '<br>' + row.haiyun.note;
-	    h += '</td><td style=width:50%;background:rgba(196,107,93,0.05)><b style=color:#c46b5d>🌄 成观法师</b><br><b>' + row.chengguan.position + '</b>';
-	    if (row.chengguan.quote) h += '<br><span style=color:var(--text2)>「' + row.chengguan.quote + '」</span>';
-	    if (row.chengguan.note) h += '<br>' + row.chengguan.note;
+	    h += '<tr><td style=width:50%;background:rgba(184,134,60,0.05)><b style=color:var(--gold)>🌊 海云继梦</b><br><b>' + mdToHTML(row.haiyun.position) + '</b>';
+	    if (row.haiyun.quote) h += '<br><span style=color:var(--text2)>「' + mdToHTML(row.haiyun.quote) + '」</span>';
+	    if (row.haiyun.note) h += '<br>' + mdToHTML(row.haiyun.note);
+	    h += '</td><td style=width:50%;background:rgba(196,107,93,0.05)><b style=color:#c46b5d>🌄 成观法师</b><br><b>' + mdToHTML(row.chengguan.position) + '</b>';
+	    if (row.chengguan.quote) h += '<br><span style=color:var(--text2)>「' + mdToHTML(row.chengguan.quote) + '」</span>';
+	    if (row.chengguan.note) h += '<br>' + mdToHTML(row.chengguan.note);
 	    h += '</td></tr>';
 	    if (row.contrast) h += '<tr><td colspan=2>📝 ' + row.contrast + '</td></tr>';
 	    h += '</table>';
