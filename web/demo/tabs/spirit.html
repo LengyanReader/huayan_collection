@@ -114,7 +114,7 @@ function renderSpirit() {
   // Topics — collapsible
   if (active.topics && active.topics.length) {
     active.topics.forEach(function(t, idx) {
-      h += '<div class=wu-door id=sp-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+      h += '<div class="wu-door open" id=sp-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
       h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
       h += '<div class=body>';
       h += '<p>' + (typeof mdToHTML==='function'?mdToHTML(t.body):t.body).replace(/\n/g, '<br>') + '</p>';
@@ -178,7 +178,7 @@ function renderEnvHumanities(sectionId) {
   if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8">' + md(sec.intro).replace(/\n/g,'<br>') + '</p>';
   if (sec.topics) {
     sec.topics.forEach(function(t, idx) {
-      h += '<div class=wu-door id=eh-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+      h += '<div class="wu-door open" id=eh-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
       h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
       h += '<div class=body>';
       h += '<p>' + md(t.body).replace(/\n/g,'<br>') + '</p>';

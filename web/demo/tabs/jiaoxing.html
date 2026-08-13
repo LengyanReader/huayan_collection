@@ -1150,7 +1150,7 @@ function renderChanTraces() {
     if (sec.topics) {
       sec.topics.forEach(function(t, idx) {
         // Collapsible topic
-        h += '<div class=wu-door id=ct-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<div class="wu-door open" id=ct-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
         h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
         h += '<div class=body>';
         h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
