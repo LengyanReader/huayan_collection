@@ -103,21 +103,22 @@ function renderSpirit() {
   h += '<div class="sp-sec">';
   h += '<h2 style="color:var(--gold);margin:0 0 4px">' + active.icon + ' ' + active.title + '</h2>';
   if (active.summary) {
-    h += '<p style="font-size:0.85em;color:var(--text2);line-height:1.8">' + active.summary + '</p>';
+    h += '<p style="font-size:0.85em;color:var(--text2);line-height:1.8">' + (typeof mdToHTML==='function'?mdToHTML(active.summary):active.summary) + '</p>';
   }
   h += '</div>';
 
   if (active.intro) {
-    h += '<div class="sp-intro"><p>' + active.intro.replace(/\n/g, '<br>') + '</p></div>';
+    h += '<div class="sp-intro"><p>' + (typeof mdToHTML==='function'?mdToHTML(active.intro):active.intro).replace(/\n/g, '<br>') + '</p></div>';
   }
 
-  // Topics
+  // Topics — collapsible
   if (active.topics && active.topics.length) {
-    active.topics.forEach(function(t) {
-      h += '<div class="sp-topic">';
-      h += '<h4>' + t.title + '</h4>';
-      h += '<p>' + t.body.replace(/\n/g, '<br>') + '</p>';
-      h += '</div>';
+    active.topics.forEach(function(t, idx) {
+      h += '<div class=wu-door id=sp-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+      h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+      h += '<div class=body>';
+      h += '<p>' + (typeof mdToHTML==='function'?mdToHTML(t.body):t.body).replace(/\n/g, '<br>') + '</p>';
+      h += '</div></div>';
     });
   }
 
@@ -173,17 +174,20 @@ function renderEnvHumanities(sectionId) {
   if (!sec) return '';
   var h = '<div class=section style="border-left:4px solid var(--gold);padding-left:14px">';
   h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
-  if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8">' + sec.intro.replace(/\n/g,'<br>') + '</p>';
+  var md = (typeof mdToHTML==='function') ? mdToHTML : function(s){return s;};
+  if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8">' + md(sec.intro).replace(/\n/g,'<br>') + '</p>';
   if (sec.topics) {
-    sec.topics.forEach(function(t) {
-      h += '<div class=sp-topic><h4>' + t.title + '</h4>';
-      h += '<p>' + t.body.replace(/\n/g,'<br>') + '</p>';
+    sec.topics.forEach(function(t, idx) {
+      h += '<div class=wu-door id=eh-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+      h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+      h += '<div class=body>';
+      h += '<p>' + md(t.body).replace(/\n/g,'<br>') + '</p>';
       if (t.sources) {
         h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📚 ';
         t.sources.forEach(function(s,i) { h += (i>0?'<br>':'') + s; });
         h += '</p>';
       }
-      h += '</div>';
+      h += '</div></div>';
     });
   }
   h += '</div>';
