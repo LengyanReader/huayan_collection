@@ -110,7 +110,8 @@ def load_practice():
                  'mengcan_lectures',
                  'chan_authentic_traces',
                  'chengguan_master',
-                 'haiyun_chengguan_compare']:
+                 'haiyun_chengguan_compare',
+                 'vinaya_school']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -720,6 +721,15 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('chengguan','cg-lectures');return false">讲法·译经</a>
     </div></div>
     <div class="sidebar-group has-subs">
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('vinaya',this);return false">📏 律己戒他 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('vinaya',y-overview');return false">律宗总览</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('vinaya',y-founders');return false">祖师谱系</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('vinaya',y-classics');return false">律典要目</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('vinaya',y-history');return false">发展史</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('vinaya',y-practice');return false">戒律实践</a>
+    </div></div>
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-avatamsaka');return false">华严经讲法全目</a>

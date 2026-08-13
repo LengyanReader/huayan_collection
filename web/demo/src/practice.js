@@ -552,6 +552,10 @@ function renderPractice(){
   h+=renderChengguanSection();
   h+="</div>";
 
+
+  h+="<div id=pv-vinaya class=pv-section style=display:none>";
+  h+=renderVinayaSection();
+  h+="</div>";
   h+="<div id=pv-resources class=pv-section style=display:none>";
 
   // ── 全网讲法总目 ──
@@ -1368,7 +1372,7 @@ function jxSubNav(view,anchor){
       sub=localStorage.getItem('practice_sub')||'system';
     }catch(e){}
     if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','news','resources','chan_traces','chengguan'].indexOf(sub)>=0){
+    if(sub&&['system','meditation','news','resources','chan_traces','chengguan','vinaya'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);
@@ -1609,3 +1613,33 @@ document.addEventListener('keydown',function(e){
 })();
 setTimeout(function(){_update();},600);
 })();
+
+// ═══ 律己戒他渲染 (从 PRACTICE_DATA.vinaya_school) ═══
+function renderVinayaSection() {
+  var vy = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.vinaya_school) ? PRACTICE_DATA.vinaya_school : null;
+  if (!vy || !vy.sections) return '';
+  var h = '';
+  vy.sections.forEach(function(sec) {
+    h += '<div class=section id=vy-' + sec.id.replace('vinaya_','') + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _m2h(sec.intro) + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t, idx) {
+        h += '<div class=wu-door id=vy-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        h += '<div class=body>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + _m2h(t.body) + '</p>';
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px">📎 ' + _m2h(t.source) + '</p>';
+        h += '</div></div>';
+      });
+    }
+    h += '</div>';
+  });
+  // References
+  if (vy.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (' + vy.references.length + '条)</summary><ul>';
+    vy.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
+    h += '</ul></details>';
+  }
+  return h;
+}
