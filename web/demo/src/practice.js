@@ -1,4 +1,6 @@
 // ═══ PRACTICE TAB ═══
+// Safe md converter with fallback (common.js may fail to load via file://)
+var _m2h = (typeof mdToHTML==='function') ? mdToHTML : function(s){return s||'';};
 function renderPractice(){
   var pv=document.getElementById("practice-view");if(!pv)return;
   var h="";
@@ -923,11 +925,11 @@ function renderXinfaSection() {
   xf.sections.forEach(function(sec) {
     h += '<div class=section id=med-' + sec.id + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
-    if (sec.intro) h += '<p style="font-size:0.8em;color:var(--text2);line-height:1.8;white-space:pre-line">' + mdToHTML(sec.intro) + '</p>';
+    if (sec.intro) h += '<p style="font-size:0.8em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _m2h(sec.intro) + '</p>';
     if (sec.quotes) {
       sec.quotes.forEach(function(q) {
         h += '<div class=stage-box style="margin:10px 0">';
-        h += '<blockquote style="font-size:0.82em;line-height:1.9;margin:0;white-space:pre-line">' + mdToHTML(q.text) + '</blockquote>';
+        h += '<blockquote style="font-size:0.82em;line-height:1.9;margin:0;white-space:pre-line">' + _m2h(q.text) + '</blockquote>';
         h += '<p style="font-size:0.7em;color:var(--text2);margin-top:6px">📎 ' + q.source + '</p>';
         if (q.context) h += '<p style="font-size:0.68em;color:var(--gold)">' + q.context + '</p>';
         h += '</div>';
@@ -1133,12 +1135,12 @@ function renderChengguanSection() {
 	  h += '<div class=section id=cg-compare><h2>🔀 海云继梦 vs 成观法师 — 多维对照</h2>';
 	  cmp.compare.forEach(function(row) {
 	    h += '<table class=v-table style="font-size:0.72em;margin:8px 0"><tr><th colspan=2>' + (row.icon||'') + ' ' + row.topic + '</th></tr>';
-	    h += '<tr><td style=width:50%;background:rgba(184,134,60,0.05)><b style=color:var(--gold)>🌊 海云继梦</b><br><b>' + mdToHTML(row.haiyun.position) + '</b>';
-	    if (row.haiyun.quote) h += '<br><span style=color:var(--text2)>「' + mdToHTML(row.haiyun.quote) + '」</span>';
-	    if (row.haiyun.note) h += '<br>' + mdToHTML(row.haiyun.note);
-	    h += '</td><td style=width:50%;background:rgba(196,107,93,0.05)><b style=color:#c46b5d>🌄 成观法师</b><br><b>' + mdToHTML(row.chengguan.position) + '</b>';
-	    if (row.chengguan.quote) h += '<br><span style=color:var(--text2)>「' + mdToHTML(row.chengguan.quote) + '」</span>';
-	    if (row.chengguan.note) h += '<br>' + mdToHTML(row.chengguan.note);
+	    h += '<tr><td style=width:50%;background:rgba(184,134,60,0.05)><b style=color:var(--gold)>🌊 海云继梦</b><br><b>' + _m2h(row.haiyun.position) + '</b>';
+	    if (row.haiyun.quote) h += '<br><span style=color:var(--text2)>「' + _m2h(row.haiyun.quote) + '」</span>';
+	    if (row.haiyun.note) h += '<br>' + _m2h(row.haiyun.note);
+	    h += '</td><td style=width:50%;background:rgba(196,107,93,0.05)><b style=color:#c46b5d>🌄 成观法师</b><br><b>' + _m2h(row.chengguan.position) + '</b>';
+	    if (row.chengguan.quote) h += '<br><span style=color:var(--text2)>「' + _m2h(row.chengguan.quote) + '」</span>';
+	    if (row.chengguan.note) h += '<br>' + _m2h(row.chengguan.note);
 	    h += '</td></tr>';
 	    if (row.contrast) h += '<tr><td colspan=2>📝 ' + row.contrast + '</td></tr>';
 	    h += '</table>';

@@ -637,3 +637,11 @@
   };
 
 })();
+
+// ═══ Global markdown-lite converter ═══
+function mdToHTML(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+    .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
+}
