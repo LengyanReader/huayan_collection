@@ -1152,7 +1152,7 @@ function renderChanTraces() {
     if (sec.topics) {
       sec.topics.forEach(function(t, idx) {
         // Collapsible topic
-        h += '<div class="wu-door open" id=ct-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<div class="wu-door" id=ct-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
         h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
         h += '<div class=body>';
         h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
@@ -1253,21 +1253,49 @@ function renderChengguanSection() {
   if (cg.comparison_with_haiyun) {
     h += '<div class=stage-box style=font-size:0.75em;margin-top:10px"><b>🔀 与海云继梦法师的比较</b><br>' + cg.comparison_with_haiyun.note + '</div>';
   }
-	// ── 海云vs成观 多维对照表 ──
+	// ── 海云vs成观 多维对照表 (优化版) ──
 	var cmp = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_chengguan_compare) ? PRACTICE_DATA.haiyun_chengguan_compare : null;
 	if (cmp && cmp.compare) {
+	  h += '<style>' +
+	    '.cmp-card{border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden;background:var(--card)}' +
+	    '.cmp-head{padding:8px 14px;background:linear-gradient(180deg,#f5efe4,#efe6d8);font-weight:700;color:var(--gold);font-size:0.85em}' +
+	    '.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}' +
+	    '.cmp-col{padding:12px 14px;font-size:0.75em;line-height:1.75}' +
+	    '.cmp-col:first-child{border-right:1px solid var(--line);background:rgba(184,134,60,0.03)}' +
+	    '.cmp-col:last-child{background:rgba(196,107,93,0.03)}' +
+	    '.cmp-name{font-weight:700;font-size:1.05em;margin-bottom:4px}' +
+	    '.cmp-pos{color:var(--gold);font-weight:600;margin-bottom:6px}' +
+	    '.cmp-quote{display:block;margin:6px 0;padding:6px 10px;border-left:3px solid var(--gold);background:rgba(184,134,60,0.05);color:var(--text);font-size:0.92em;border-radius:0 6px 6px 0}' +
+	    '.cmp-col:last-child .cmp-pos{color:#c46b5d}' +
+	    '.cmp-col:last-child .cmp-quote{border-left-color:#c46b5d;background:rgba(196,107,93,0.05)}' +
+	    '.cmp-note{color:var(--text2);font-size:0.92em}' +
+	    '.cmp-contrast{padding:8px 14px;border-top:1px dashed var(--line);background:rgba(125,154,110,0.05);font-size:0.75em;color:var(--text)}' +
+	    '.cmp-contrast b{color:#7d9a6e}' +
+	    '@media(max-width:600px){.cmp-grid{grid-template-columns:1fr}.cmp-col:first-child{border-right:none;border-bottom:1px solid var(--line)}}' +
+	    '</style>';
 	  h += '<div class=section id=cg-compare><h2>🔀 海云继梦 vs 成观法师 — 多维对照</h2>';
+	  if (cmp.meta && cmp.meta.note) h += '<p style=font-size:0.75em;color:var(--text2);margin-bottom:12px">' + _m2h(cmp.meta.note) + '</p>';
 	  cmp.compare.forEach(function(row) {
-	    h += '<table class=v-table style="font-size:0.72em;margin:8px 0"><tr><th colspan=2>' + (row.icon||'') + ' ' + row.topic + '</th></tr>';
-	    h += '<tr><td style=width:50%;background:rgba(184,134,60,0.05)><b style=color:var(--gold)>🌊 海云继梦</b><br><b>' + _m2h(row.haiyun.position) + '</b>';
-	    if (row.haiyun.quote) h += '<br><span style=color:var(--text2)>「' + _m2h(row.haiyun.quote) + '」</span>';
-	    if (row.haiyun.note) h += '<br>' + _m2h(row.haiyun.note);
-	    h += '</td><td style=width:50%;background:rgba(196,107,93,0.05)><b style=color:#c46b5d>🌄 成观法师</b><br><b>' + _m2h(row.chengguan.position) + '</b>';
-	    if (row.chengguan.quote) h += '<br><span style=color:var(--text2)>「' + _m2h(row.chengguan.quote) + '」</span>';
-	    if (row.chengguan.note) h += '<br>' + _m2h(row.chengguan.note);
-	    h += '</td></tr>';
-	    if (row.contrast) h += '<tr><td colspan=2>📝 ' + row.contrast + '</td></tr>';
-	    h += '</table>';
+	    h += '<div class=cmp-card>';
+	    h += '<div class=cmp-head>' + (row.icon||'') + ' ' + row.topic + '</div>';
+	    h += '<div class=cmp-grid>';
+	    // 海云
+	    h += '<div class=cmp-col>';
+	    h += '<div class=cmp-name style=color:var(--gold)>🌊 海云继梦</div>';
+	    h += '<div class=cmp-pos>' + _m2h(row.haiyun.position) + '</div>';
+	    if (row.haiyun.quote) h += '<span class=cmp-quote>' + _m2h(row.haiyun.quote) + '</span>';
+	    if (row.haiyun.note) h += '<div class=cmp-note>' + _m2h(row.haiyun.note) + '</div>';
+	    h += '</div>';
+	    // 成观
+	    h += '<div class=cmp-col>';
+	    h += '<div class=cmp-name style=color:#c46b5d>🌄 成观法师</div>';
+	    h += '<div class=cmp-pos>' + _m2h(row.chengguan.position) + '</div>';
+	    if (row.chengguan.quote) h += '<span class=cmp-quote>' + _m2h(row.chengguan.quote) + '</span>';
+	    if (row.chengguan.note) h += '<div class=cmp-note>' + _m2h(row.chengguan.note) + '</div>';
+	    h += '</div>';
+	    h += '</div>';
+	    if (row.contrast) h += '<div class=cmp-contrast><b>📝 对比:</b> ' + _m2h(row.contrast) + '</div>';
+	    h += '</div>';
 	  });
 	  h += '</div>';
 	}
