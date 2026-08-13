@@ -632,8 +632,8 @@ function renderPractice(){
 
   // Auto-restore saved data (only right columns, not left article text)
   setTimeout(function(){
-    var raw=localStorage.getItem('huayan_heart_data_v2');
-    if(!raw)return;
+    var raw=null;try{raw=localStorage.getItem('huayan_heart_data_v2');
+    if(!raw)return;}catch(e){return;}
     try{var data=JSON.parse(raw);
     if(data.edits){Object.keys(data.edits).forEach(function(id){
       if(id.indexOf('-l')>=0)return; // skip left column (article text)
@@ -856,7 +856,7 @@ function switchPracticeView(view,btn){
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
   var pvEl=document.getElementById("pv-"+view);
   if(pvEl)pvEl.style.display="block";
-  localStorage.setItem('practice_sub',view);
+  try{localStorage.setItem('practice_sub',view);}catch(e){};
   // Force-reload lazy images when switching to heart (now med-heart)
   if(view==='meditation'){setTimeout(function(){
     document.querySelectorAll('#med-heart img').forEach(function(img){
@@ -1459,9 +1459,12 @@ function jxSubNav(view,anchor){
 // Restore sub-page on load (heart 已并入 meditation)
 (function(){
   setTimeout(function(){
-    var sub=localStorage.getItem('practice_sub')||'system';
+    var sub='system';
+    try{
+      sub=localStorage.getItem('practice_sub')||'system';
+    }catch(e){}
     if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','news','resources'].indexOf(sub)>=0){
+    if(sub&&['system','meditation','news','resources','chan_traces','chengguan'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);
