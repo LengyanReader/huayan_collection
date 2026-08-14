@@ -1122,10 +1122,15 @@ function renderChengguanSection() {
   }
   // Lectures
   if (cg.lecture_highlights) {
-    h += '<div class=section id=cg-lectures><h3>🎙 讲法特色</h3>';
+    h += '<div class=section id=cg-lectures><h3>🎙 讲法特色 (' + cg.lecture_highlights.length + '系列)</h3>';
     cg.lecture_highlights.forEach(function(l) {
       h += '<div class=topic-card><h4>' + l.topic + '</h4>';
-      h += '<p style=font-size:0.78em>' + (l.note||l.significance||'') + '</p>';
+      h += '<p style=font-size:0.78em>' + _m2h(l.note||l.significance||'') + '</p>';
+      if (l.links && l.links.length) {
+        l.links.forEach(function(lk) {
+          h += '<a href="' + lk.url + '" target=_blank style="font-size:0.72em;color:var(--blue);margin-right:8px">🔗 ' + lk.name + '</a>';
+        });
+      }
       h += '</div>';
     });
     h += '</div>';
