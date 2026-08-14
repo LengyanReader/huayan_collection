@@ -1088,6 +1088,7 @@ function renderChengguanSection() {
     (b.lineage||[]).forEach(function(l) { h += '📜 ' + l + '<br>'; });
     h += '🏛 ' + b.current_position;
     h += '</div>';
+    h += '</div>'; // close cg-bio
   }
   // Institutions
   if (cg.institutions) {
