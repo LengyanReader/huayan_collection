@@ -456,8 +456,6 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 </div>
 <div id="roster-content"></div></div></div>
 
-</div>
-
 <div id="mini-maps-grid" style="display:flex;gap:6px;margin:6px 14px;height:110px;flex-shrink:0;overflow-x:auto"></div>
 
 <div class="comment-box" id="cmt-lineage"></div>

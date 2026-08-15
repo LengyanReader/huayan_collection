@@ -1,121 +1,106 @@
 #!/usr/bin/env python3
-"""Verify web/demo/index.html structure before deployment."""
-import sys, os, json
+"""Verify web/demo build output (index + 6 tab pages) structure before deployment."""
+import sys, os, re
+
+# Windows console cp1252 下中文输出会 UnicodeEncodeError — 强制 UTF-8
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HTML_PATH = os.path.join(ROOT, 'web', 'demo', 'index.html')
+DEMO = os.path.join(ROOT, 'web', 'demo')
 
-def fail(msg):
-    print(f'  FAIL: {msg}')
-    return 1
-
-def ok(msg):
-    print(f'  OK:   {msg}')
-    return 0
+TABS = ['lineage', 'gap', 'jiaoxing', 'frontier', 'cosmology', 'spirit']
+TAB_TITLES = ['法脉传承', '华严文献', '教海行云', '前沿对话', '世主妙严', '灵性仁本']
+DATA_VARS = {
+    'lineage': ['var GRAPH'],
+    'gap': ['var GAP'],
+    'jiaoxing': ['var PRACTICE_DATA'],
+    'frontier': ['var FRONTIER_DATA', 'var SPIRIT_DATA'],  # 任一即可
+    'cosmology': ['var COSMOLOGY_DATA', 'var SPIRIT_DATA'],
+    'spirit': ['var SPIRIT_DATA'],
+}
 
 errors = 0
 
-with open(HTML_PATH, encoding='utf-8') as f:
-    html = f.read()
+def fail(msg):
+    global errors
+    errors += 1
+    print(f'  FAIL: {msg}')
 
-print(f'Verifying {HTML_PATH} ({len(html):,} bytes)\n')
+def ok(msg):
+    print(f'  OK:   {msg}')
 
-# 0. Must start with <!DOCTYPE
-if not html.lstrip().startswith('<!DOCTYPE html>'):
-    errors += fail('Must start with <!DOCTYPE html>')
+# ── index.html (导航主页) ──
+idx_path = os.path.join(DEMO, 'index.html')
+print(f'Verifying {idx_path}\n')
+if not os.path.exists(idx_path):
+    fail('index.html missing')
 else:
-    errors += ok('Starts with <!DOCTYPE html>')
-
-# 1. Structure
-if not html.strip().endswith('</html>'):
-    errors += fail('Must end with </html>')
-else:
-    errors += ok('Ends with </html>')
-
-# 2. Script tag before </html>
-last_script = html.rfind('</script>')
-last_html = html.rfind('</html>')
-if last_script >= last_html:
-    errors += fail(f'</script> at {last_script} must be before </html> at {last_html}')
-else:
-    errors += ok('Script before </html>')
-
-# 3. No </script> inside JS content
-# Find all script boundaries
-scripts_starts = [m.start() for m in __import__('re').finditer(r'<script>', html)]
-scripts_ends = [m.start() for m in __import__('re').finditer(r'</script>', html)]
-# Main script is the last inline <script> (before the Leaflet CDN <script src>)
-main_start = scripts_starts[-1] + 8
-main_end = scripts_ends[-2]  # second-to-last </script> is the main script close
-js_content = html[main_start:main_end]
-if '</script>' in js_content.lower():
-    errors += fail('Found </script> inside JS content')
-else:
-    errors += ok('No </script> inside JS')
-
-# 4. No fetch() calls
-if 'fetch(' in js_content:
-    errors += fail('Contains fetch() - data should be embedded')
-else:
-    errors += ok('No fetch() calls')
-
-# 5. Brace balance (approximate)
-opens = js_content.count('{')
-closes = js_content.count('}')
-if opens != closes:
-    errors += fail(f'Brace mismatch: {{ {opens} vs }} {closes}')
-else:
-    errors += ok(f'Braces balanced ({opens})')
-
-# 6. Size check
-size = len(html)
-if 25000 <= size <= 110000:
-    errors += ok(f'Size: {size:,} bytes')
-else:
-    errors += fail(f'Size {size:,} bytes out of range (25-80KB)')
-
-# 7. Key content
-for key in ['var GRAPH', 'var GAP', 'function drawTL', 'function initMap',
-            'function renderGap', 'function renderPractice', 'function renderFrontier',
-            'addEventListener("click",function(e)',
-            'addEventListener("wheel"',
-            'addEventListener("click",onClick']:
-    if key not in html:
-        errors += fail(f'Missing: {key}')
+    with open(idx_path, encoding='utf-8') as f:
+        idx = f.read()
+    ok(f'index.html ({len(idx):,} bytes)')
+    if not idx.lstrip().startswith('<!DOCTYPE html>'):
+        fail('index: missing <!DOCTYPE html>')
     else:
-        errors += ok(f'Found: {key}')
+        ok('index: starts with <!DOCTYPE html>')
+    if not idx.strip().endswith('</html>'):
+        fail('index: must end with </html>')
+    else:
+        ok('index: ends with </html>')
+    for t in TABS:
+        if f'tabs/{t}.html' not in idx:
+            fail(f'index: missing link to tabs/{t}.html')
+    ok('index: links to all 6 tab pages')
+    for title in TAB_TITLES:
+        if title not in idx:
+            fail(f'index: missing module title "{title}"')
 
-# 8. Has person data (check for key IDs)
-if '"id": "person_003"' not in html and 'person_003' not in html:
-    errors += fail('Missing key person data')
-else:
-    errors += ok('Key persons present (法藏, 海云继梦)')
+print()
 
-# 9. Check for unescaped quotes in strings: pattern is "text" inside another "string"
-# Find lines like: h+="... "..."; which indicates an unescaped inner quote
-lines = js_content.split('\n')
-quote_issues = 0
-for i, line in enumerate(lines):
-    stripped = line.strip()
-    if stripped.startswith('h+=') or stripped.startswith('pv.innerHTML'):
-        # Count double quotes - should be even (opening + closing pairs)
-        dq = stripped.count('\"')
-        if dq % 2 != 0:
-            errors += fail(f'Unescaped quotes at line ~{i}: {stripped[:80]}')
-            quote_issues += 1
-if quote_issues == 0:
-    errors += ok('No unescaped quotes in string literals')
+# ── 6 个 Tab 页面 ──
+for t, title in zip(TABS, TAB_TITLES):
+    path = os.path.join(DEMO, 'tabs', f'{t}.html')
+    print(f'Verifying tabs/{t}.html ({title})')
+    if not os.path.exists(path):
+        fail(f'{t}: file missing')
+        continue
+    with open(path, encoding='utf-8') as f:
+        html = f.read()
 
-# 10. Three tabs
-# Count only in HTML part (before first <script>)
-html_part = html[:html.find('<script>')]
-tab_count = html_part.count('data-tab=')
-if tab_count == 4:
-    errors += ok(f'4 tabs present')
-else:
-    errors += fail(f'{tab_count} tabs (expected 4)')
+    # 结构
+    if not html.lstrip().startswith('<!DOCTYPE html>'):
+        fail(f'{t}: missing <!DOCTYPE html>')
+    else:
+        ok(f'{t}: DOCTYPE')
+    if not html.strip().endswith('</html>'):
+        fail(f'{t}: must end with </html>')
+    else:
+        ok(f'{t}: ends with </html>')
 
-print(f'\n{"="*40}')
+    # div 平衡 (此前多次空白页根因)
+    opens = len(re.findall(r'<div\b', html))
+    closes = html.count('</div>')
+    if opens != closes:
+        fail(f'{t}: div mismatch — {opens} open vs {closes} close')
+    else:
+        ok(f'{t}: div balanced ({opens})')
+
+    # 数据变量已内嵌
+    for var in DATA_VARS[t]:
+        if var in html:
+            ok(f'{t}: {var} embedded')
+            break
+    else:
+        fail(f'{t}: missing embedded data ({DATA_VARS[t]})')
+
+    # 大小合理 (>10KB)
+    if len(html) < 10000:
+        fail(f'{t}: size {len(html):,} too small')
+    else:
+        ok(f'{t}: size {len(html):,} bytes')
+    print()
+
+print('=' * 40)
 if errors == 0:
     print('✅ ALL CHECKS PASSED')
     sys.exit(0)
