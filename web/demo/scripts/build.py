@@ -111,7 +111,8 @@ def load_practice():
                  'chan_authentic_traces',
                  'chengguan_master',
                  'haiyun_chengguan_compare',
-                 'vinaya_school']:
+                 'vinaya_school',
+                 'faxiang_xuanji']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -739,6 +740,19 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('vinaya','vy-practice');return false">戒律实践</a>
     </div></div>
     <div class="sidebar-group has-subs">
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('faxiang',this);return false">🔬 法相玄机 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-overview');return false">名相辨析</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-india');return false">印度渊源</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-lineage');return false">汉传法脉</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-doctrine');return false">核心教义</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-decline');return false">演变式微</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-overseas');return false">域外传播</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-revival');return false">近代复兴</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-practice');return false">修行界视角</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-academic');return false">学术前沿</a>
+    </div></div>
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-avatamsaka');return false">华严经讲法全目</a>
