@@ -352,6 +352,7 @@ function renderGap(){
 
   // ═══ 华严经学 (从 GAP.avatamsaka_studies 数据驱动) ═══
   h+=renderAvatamsakaStudies();
+  h+=renderPanjiaoHupan();
 
   // ═══ REFERENCES SECTION ═══
   h+="<div id=gv-refs class=gv-section style=display:none>";
@@ -474,6 +475,36 @@ function renderAvatamsakaStudies() {
     h += '</ul></div>';
   }
   h += '</div>'; // close gv-avatamsaka_studies
+  return h;
+}
+
+// ═══ 判教互判渲染 (从 GAP.panjiao_hupan) ═══
+function renderPanjiaoHupan() {
+  var pj = (typeof GAP !== 'undefined' && GAP.panjiao_hupan) ? GAP.panjiao_hupan : null;
+  if (!pj || !pj.sections) return '';
+  var h = '<div id=gv-panjiao class=gv-section style=display:none>';
+  pj.sections.forEach(function(sec) {
+    h += '<div class=section id=pj-' + sec.id + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _mdToHTML(sec.intro) + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t) {
+        h += '<div class=stage-box><b>' + t.title + '</b>';
+        h += '<p style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _mdToHTML(t.body) + '</p>';
+        if (t.source) {
+          h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📎 出处: ' + t.source + '</p>';
+        }
+        h += '</div>';
+      });
+    }
+    h += '</div>';
+  });
+  if (pj.references) {
+    h += '<div class=section><h2>📚 参考文献</h2><ul style="font-size:0.78em;line-height:1.9">';
+    pj.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
+    h += '</ul></div>';
+  }
+  h += '</div>'; // close gv-panjiao
   return h;
 }
 

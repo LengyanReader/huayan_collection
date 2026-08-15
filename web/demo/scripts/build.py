@@ -70,6 +70,10 @@ def load_gap():
     ic = read_yaml('translation/intertextual_canon.yaml')
     if ic:
         gap['intertextual_canon'] = ic
+    # Merge panjiao hupan (判教互判 — 各宗派/宗教/学术/科技流派的判教与互判)
+    pj = read_yaml('translation/panjiao_hupan.yaml')
+    if pj:
+        gap['panjiao_hupan'] = pj
     return gap
 
 
@@ -650,6 +654,30 @@ def main():
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-theravada');return false">南传·上座部</a>
     <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-hetuvidya');return false">因明</a>
     </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('panjiao',this);return false">⚖️ 判教互判 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-overview');return false">判教互判总论</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-nanbei');return false">判教前史·南三北七</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-tiantai');return false">天台五时八教</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-madhyamaka');return false">空宗·三论二藏三轮</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-yogacara');return false">有宗·唯识三时</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-xingzong');return false">性宗·真常</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-tathagatagarbha');return false">如来藏</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-debates');return false">近现代论争</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-ekayana');return false">一佛乘</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-yuanjiao');return false">共同圆·不共别圆</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-hupan');return false">诸宗互判与合流</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-zangchuan');return false">藏传判教·九乘</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-dzogchen');return false">大圆满觉·他空</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-japan');return false">日本判教</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-rujia');return false">儒家·道统与学案</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-daojia');return false">道家道教</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-world');return false">世界宗教</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-academic');return false">学术哲学流派</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-tech');return false">科技圈·范式之争</a>
+    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-masters');return false">两位法师评述</a>
+    </div></div>
     '''
     gap_html = build_simple_tab_page('华严文献 · 雅思渊才', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
     gap_path = TABS_OUT / 'gap.html'
@@ -741,15 +769,16 @@ def main():
     <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('faxiang',this);return false">🔬 法相玄机 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-overview');return false">名相辨析</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-india');return false">印度渊源</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-lineage');return false">汉传法脉</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-doctrine');return false">核心教义</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-decline');return false">演变式微</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-overseas');return false">域外传播</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-revival');return false">近代复兴</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-practice');return false">修行界视角</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang',x-academic');return false">学术前沿</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-overview');return false">名相辨析</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-india');return false">印度渊源</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-lineage');return false">汉传法脉</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-doctrine');return false">核心教义</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-decline');return false">演变式微</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-overseas');return false">域外传播</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-revival');return false">近代复兴</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-practice');return false">修行界视角</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-academic');return false">学术前沿</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-masters');return false">海云·成观两位法师的阐释与评述</a>
     </div></div>
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
