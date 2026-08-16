@@ -183,6 +183,9 @@ PAGE_TOP = '''<!DOCTYPE html>
   <h1>{title}</h1>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+⚠️ 声明：本页面内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
 <div class="layout">
   <nav class="sidebar" id="sidebar">
     {sidebar_links}
@@ -388,6 +391,9 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>🌊 法脉传承 · 时空长河</h1>
 </header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+⚠️ 声明：本页面内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
 
 <div id="search-bar">
   <input type="text" id="search-input" placeholder="🔍 检索人物、地点…" autocomplete="off">
@@ -563,6 +569,9 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
   <h1>{title}</h1>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+⚠️ 声明：本页面内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
 <div class="layout">
   <nav class="sidebar" id="sidebar">
     {sidebar_html}
