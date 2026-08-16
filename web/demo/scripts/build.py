@@ -178,6 +178,7 @@ PAGE_TOP = '''<!DOCTYPE html>
 <link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
@@ -185,6 +186,7 @@ PAGE_TOP = '''<!DOCTYPE html>
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
 ⚠️ 声明：本页面内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
 </div>
 <div class="layout">
   <nav class="sidebar" id="sidebar">
@@ -387,12 +389,14 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 </style>
 </head>
 <body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>🌊 法脉传承 · 时空长河</h1>
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
 ⚠️ 声明：本页面内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
 </div>
 
 <div id="search-bar">
@@ -564,6 +568,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 <link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
@@ -571,6 +576,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
 ⚠️ 声明：本页面内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
 </div>
 <div class="layout">
   <nav class="sidebar" id="sidebar">

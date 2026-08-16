@@ -115,8 +115,8 @@ body {
   padding: 14px 12px;
   overflow-y: auto;
   position: sticky;
-  top: 48px;
-  height: calc(100vh - 48px);
+  top: 78px; /* 48px 页头 + 声明横幅 */
+  height: calc(100vh - 78px);
 }
 .sidebar h3 {
   font-size: 0.82em;
