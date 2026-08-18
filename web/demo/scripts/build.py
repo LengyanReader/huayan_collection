@@ -116,7 +116,9 @@ def load_practice():
                  'chengguan_master',
                  'haiyun_chengguan_compare',
                  'vinaya_school',
-                 'faxiang_xuanji']:
+                 'faxiang_xuanji',
+                 'yikong_daodi',
+                 'mimi_daodi']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -781,7 +783,6 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('vinaya','vy-practice');return false">戒律实践</a>
     </div></div>
     <div class="sidebar-group has-subs">
-    <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('faxiang',this);return false">🔬 法相玄机 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-overview');return false">名相辨析</a>
@@ -795,6 +796,38 @@ def main():
     <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-academic');return false">学术前沿</a>
     <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-masters');return false">海云·成观两位法师的阐释与评述</a>
     </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('yikong',this);return false">🕳 一空到底 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-overview');return false">名相辨析</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-india');return false">印度渊源</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-lineage');return false">汉传法脉</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-doctrine');return false">核心教义</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-decline');return false">演变式微</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-overseas');return false">域外传播</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-tibetan');return false">藏传应成见</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-revival');return false">近代复兴</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-practice');return false">修行界视角</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-academic');return false">学术前沿</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-synthesis');return false">融合与张力</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-haiyun');return false">海云法师·空性诠释</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-chengguan');return false">成观法师·空性与禅密</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
+    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('mimi',this);return false">🔐 不密而密 <span class="toggle-arrow">▸</span></a>
+    <div class="sub-links">
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-overview');return false">名相辨析</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-india');return false">印度渊源</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-lineage');return false">汉传法脉</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-doctrine');return false">核心教义</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-overseas');return false">域外传播</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-tibetan');return false">藏传金刚乘</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-revival');return false">近代复兴</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-modern');return false">当代发展</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-practice');return false">修行界视角</a>
+    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-synthesis');return false">融合与张力</a>
+    </div></div>
+    <div class="sidebar-group has-subs">
     <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
     <div class="sub-links">
     <a href="#" class="sub-link" onclick="jxSubNav('resources','res-avatamsaka');return false">华严经讲法全目</a>

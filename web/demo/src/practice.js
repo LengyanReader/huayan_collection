@@ -560,6 +560,13 @@ function renderPractice(){
   h+="<div id=pv-faxiang class=pv-section style=display:none>";
   h+=renderFaxiangSection();
   h+="</div>";
+
+  h+="<div id=pv-yikong class=pv-section style=display:none>";
+  h+=renderYikongSection();
+  h+="</div>";
+  h+="<div id=pv-mimi class=pv-section style=display:none>";
+  h+=renderMimiSection();
+  h+="</div>";
   h+="<div id=pv-resources class=pv-section style=display:none>";
 
   // ── 全网讲法总目 ──
@@ -1382,7 +1389,7 @@ function jxSubNav(view,anchor){
       sub=localStorage.getItem('practice_sub')||'system';
     }catch(e){}
     if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','news','resources','chan_traces','chengguan','vinaya','faxiang'].indexOf(sub)>=0){
+    if(sub&&['system','meditation','news','resources','chan_traces','chengguan','vinaya','faxiang','yikong','mimi'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);
@@ -1679,6 +1686,109 @@ function renderFaxiangSection() {
     h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (' + fx.references.length + '条)</summary><ul>';
     fx.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
     h += '</ul></details>';
+  }
+  return h;
+}
+
+// ═══ 一空到底渲染 (从 PRACTICE_DATA.yikong_daodi) ═══
+function renderYikongSection() {
+  var yk = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.yikong_daodi) ? PRACTICE_DATA.yikong_daodi : null;
+  if (!yk || !yk.sections) return '';
+  // md helper: **bold** → <b>, *italic* → <i>
+  function md(s) {
+    return String(s||'')
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
+  }
+  var h = '';
+  yk.sections.forEach(function(sec) {
+    h += '<div class=section id=yk-' + sec.id.replace('yk_','') + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + md(sec.intro) + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t, idx) {
+        h += '<div class=wu-door id=yk-topic-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        h += '<div class=body>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
+        if (t.links) {
+          Object.keys(t.links).forEach(function(k) {
+            h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
+          });
+        }
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px">📎 ' + md(t.source) + '</p>';
+        h += '</div></div>';
+      });
+    }
+    h += '</div>';
+  });
+  // References
+  if (yk.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (学术·门内·近现代·海云)</summary>';
+    Object.keys(yk.references).forEach(function(k) {
+      h += '<p style=margin:4px 0><b>' + k + '</b></p><ul style=margin:0>';
+      yk.references[k].forEach(function(r) { h += '<li>' + r + '</li>'; });
+      h += '</ul>';
+    });
+    h += '</details>';
+  }
+  // ── 法脉传承表 ──
+  h += '<div class=section id=yk-diagrams><h2>📊 般若·中观·三论法脉传承</h2>';
+  h += '<table class=v-table style=font-size:0.75em><tr><th>时期</th><th>人物</th><th>贡献</th></tr>';
+  h += '<tr><td>印度奠基</td><td>龙树(约150-250)→提婆(约170-270)</td><td>《中论》《大智度论》·《百论》《四百论》</td></tr>';
+  h += '<tr><td>印度分流</td><td>佛护(随应破)·清辨(自续)·月称(应成)</td><td>应成/自续分流·藏传之源头</td></tr>';
+  h += '<tr><td>印度综合</td><td>寂护·莲花戒</td><td>随瑜伽行中观·首入西藏</td></tr>';
+  h += '<tr><td>汉译开端</td><td>支娄迦谶→朱士行→竺法护</td><td>《道行般若》·《放光般若》·《光赞般若》</td></tr>';
+  h += '<tr><td>格义时代</td><td>六家七宗(道安·支遁等)</td><td>玄学类比般若</td></tr>';
+  h += '<tr><td>译场</td><td>鸠摩罗什(343-413)→僧肇(384-414)</td><td>译中论百论十二门论·《肇论》终结格义</td></tr>';
+  h += '<tr><td>三论宗</td><td>僧朗→僧诠→法朗→吉藏(549-623)</td><td>摄山重光·嘉祥集大成·《三论玄义》</td></tr>';
+  h += '<tr><td>日本</td><td>慧灌(625东渡)</td><td>南都六宗·吉藏著述长存</td></tr>';
+  h += '<tr><td>藏传</td><td>阿底峡→宗喀巴(1357-1419)</td><td>应成派入藏·格鲁派中观见·辩经学院</td></tr>';
+  h += '<tr><td>近现代</td><td>杨仁山·法尊·印顺</td><td>三论章疏重见天日·藏传应成见译回汉文</td></tr>';
+  h += '<tr><td>当代</td><td>刘峰(三论义学)·格鲁辩经传统</td><td>汉传三论薪传·藏传活传统</td></tr>';
+  h += '</table></div>';
+  return h;
+}
+
+// ═══ 不密而密渲染 (从 PRACTICE_DATA.mimi_daodi) ═══
+function renderMimiSection() {
+  var mm = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.mimi_daodi) ? PRACTICE_DATA.mimi_daodi : null;
+  if (!mm || !mm.sections) return '';
+  function md(s) {
+    return String(s||'')
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
+  }
+  var h = '';
+  mm.sections.forEach(function(sec) {
+    h += '<div class=section id=mm-' + sec.id.replace('mm_','') + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + md(sec.intro) + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t, idx) {
+        h += '<div class=wu-door id=mm-topic-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        h += '<div class=body>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
+        if (t.links) {
+          Object.keys(t.links).forEach(function(k) {
+            h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
+          });
+        }
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px">📎 ' + md(t.source) + '</p>';
+        h += '</div></div>';
+      });
+    }
+    h += '</div>';
+  });
+  if (mm.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (原典·教内·近现代·学术)</summary>';
+    Object.keys(mm.references).forEach(function(k) {
+      h += '<p style=margin:4px 0><b>' + k + '</b></p><ul style=margin:0>';
+      mm.references[k].forEach(function(r) { h += '<li>' + r + '</li>'; });
+      h += '</ul>';
+    });
+    h += '</details>';
   }
   return h;
 }
