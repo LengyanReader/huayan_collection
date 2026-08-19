@@ -110,6 +110,9 @@ function renderPractice(){
   h+="<tr><td><b>2024-2026</b></td><td>第四期佛教·AI时代</td><td>九九华严五年讲座(TICC)·支提山大华严寺动土(2026.7)·台北大学合作</td></tr>";
   h+="</table></div>";
 
+  // ── 助道资粮 (从 PRACTICE_DATA.zhuandao_ziliang) ──
+  h+=renderZhuandaoSection();
+
   h+="</div>"; // close pv-system
 
   // ═══════════════════════════════════════════
@@ -566,6 +569,9 @@ function renderPractice(){
   h+="</div>";
   h+="<div id=pv-mimi class=pv-section style=display:none>";
   h+=renderMimiSection();
+  h+="</div>";
+  h+="<div id=pv-tiantai class=pv-section style=display:none>";
+  h+=renderTiantaiSection();
   h+="</div>";
   h+="<div id=pv-resources class=pv-section style=display:none>";
 
@@ -1361,11 +1367,78 @@ function renderPracticeSources() {
       (yt.key_series||[]).forEach(function(s) {
         h += '<div>🔹 <b>' + s.name + '</b> (' + (s.type||'') + '): ' + (s.content||'') + '</div>';
       });
-      h += '</details>';
+    h += '</details>';
+  }
+  return h;
+  }
+}
+
+// ═══ 天台觉景渲染 (从 PRACTICE_DATA.tiantai_juejing) ═══
+function renderTiantaiSection() {
+  var tt = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.tiantai_juejing) ? PRACTICE_DATA.tiantai_juejing : null;
+  if (!tt || !tt.sections) return '';
+  function md(s) {
+    return String(s||'')
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
+  }
+  var h = '';
+  tt.sections.forEach(function(sec) {
+    h += '<div class=section id=tt-' + sec.id.replace('tt_','') + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + md(sec.intro) + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t, idx) {
+        h += '<div class=wu-door id=tt-topic-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        h += '<div class=body>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
+        if (t.links) {
+          Object.keys(t.links).forEach(function(k) {
+            h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
+          });
+        }
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px">📎 ' + md(t.source) + '</p>';
+        h += '</div></div>';
+      });
     }
     h += '</div>';
+  });
+  // References
+  if (tt.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (原典·学术·修行·近现代)</summary>';
+    Object.keys(tt.references).forEach(function(k) {
+      h += '<p style=margin:4px 0><b>' + k + '</b></p><ul style=margin:0>';
+      tt.references[k].forEach(function(r) { h += '<li>' + r + '</li>'; });
+      h += '</ul>';
+    });
+    h += '</details>';
   }
+  return h;
+}
 
+// ═══ 助道资粮渲染 (从 PRACTICE_DATA.zhuandao_ziliang) ═══
+function renderZhuandaoSection() {
+  var zz = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.zhuandao_ziliang) ? PRACTICE_DATA.zhuandao_ziliang : null;
+  if (!zz || !zz.topics) return '';
+  var h = '';
+  h += '<div class=section id=' + (zz.section_id || 'sys-zhuandao') + ' style=border-left:4px solid var(--gold)>';
+  h += '<h2>' + (zz.icon || '📦') + ' ' + zz.title + '</h2>';
+  if (zz.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _m2h(zz.intro) + '</p>';
+  zz.topics.forEach(function(t, idx) {
+    h += '<div class=wu-door id=zz-topic-' + (t.id || idx) + ' onclick="this.classList.toggle(\'open\')">';
+    h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+    h += '<div class=body>';
+    h += '<div style="font-size:0.8em;line-height:1.8;white-space:pre-line">' + t.body + '</div>';
+    if (t.source) h += '<p style="font-size:0.68em;color:var(--text2);margin-top:8px;border-top:1px dotted var(--line);padding-top:6px">📎 ' + _m2h(t.source) + '</p>';
+    h += '</div></div>';
+  });
+  if (zz.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (' + zz.references.length + '条)</summary><ul>';
+    zz.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
+    h += '</ul></details>';
+  }
+  h += '</div>';
   return h;
 }
 
@@ -1389,7 +1462,7 @@ function jxSubNav(view,anchor){
       sub=localStorage.getItem('practice_sub')||'system';
     }catch(e){}
     if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','news','resources','chan_traces','chengguan','vinaya','faxiang','yikong','mimi'].indexOf(sub)>=0){
+    if(sub&&['system','meditation','news','resources','chan_traces','chengguan','vinaya','faxiang','yikong','mimi','tiantai'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);

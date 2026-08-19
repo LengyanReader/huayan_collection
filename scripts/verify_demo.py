@@ -93,6 +93,14 @@ for t, title in zip(TABS, TAB_TITLES):
     else:
         fail(f'{t}: missing embedded data ({DATA_VARS[t]})')
 
+    # 侧边栏导航存在 (lineage用独立布局，无sidebar)
+    if t != 'lineage':
+        nav_count = html.count('nav-link')
+        if nav_count >= 3:
+            ok(f'{t}: sidebar nav links ({nav_count})')
+        else:
+            fail(f'{t}: sidebar nav links missing or too few ({nav_count})')
+
     # 大小合理 (>10KB)
     if len(html) < 10000:
         fail(f'{t}: size {len(html):,} too small')

@@ -3,14 +3,14 @@
 ## 项目概述
 
 构建以华严宗为核心的佛法文献与修行资料数字化系统：
-1. **多维知识图谱**：华严宗祖师/行者传承谱系、地理道场、经典关联（**92 人**，46 处地点/道场，**96 条**传承边，174 条人物行迹，73 处文明疆域）
+1. **多维知识图谱**：华严宗祖师/行者传承谱系、地理道场、经典关联（**95 人**，30 处地点/道场，**98 条**传承边，24 法系，174 条人物行迹，73 处文明疆域）
 2. **多维格义**：梵-于阗-藏-汉-满-英多语对读 + 藏汉华严品目差异比对 (Toh44 45品 vs 汉文39品)
 3. **华严宇宙观**：华藏世界海曼荼罗 + 三界诸天图
 
 ## Demo
 
 **[web/demo/index.html](web/demo/index.html)** — 导航主页，链接到6个独立Tab页面
-- Tab 1: **法脉传承**·时空长河 (Canvas时间轴 + 理论/修行图层 + 主地图 + 全球文明迷你地图 + 92节点动画 + 古地图模式 + 174条人物行迹)
+- Tab 1: **法脉传承**·时空长河 (Canvas时间轴 + 理论/修行图层 + 主地图 + 全球文明迷你地图 + 95节点动画 + 古地图模式 + 174条人物行迹)
 - Tab 2: **华严文献**·汉藏差异 (子导航四页 + 三语对读 + 50条术语 + 文本系谱)
 - Tab 3: **华严教行** (子导航四页·修行体系/禅观法要/实修心要/讲法资源 + YouTube集成)
 - Tab 4: **前沿对话** (AI/计算现象学/神经科学/心灵哲学 + 文献综述)
@@ -20,13 +20,15 @@
 ## 知识管理架构（三层数据栈）
 
 ```
-L1: SQLite (权威数据源)  →  L2: Neo4j (图验证引擎)  →  L3: YAML/JSON → HTML
+L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: build.py → HTML
 ```
 
-- **SQLite** (`data/catalog/huayan.db`): persons, texts, chapters, locations, glossary, translation_units + FTS5全文检索
-- **Neo4j**: 连通性/完备性/一致性 Cypher 验证
-- **YAML/JSON**: SQLite导出 → build.py读取 → 注入HTML
-- **策展**: 直接操作SQLite，Git跟踪schema.sql+seed_data.sql
+- **SQLite** (`data/catalog/huayan.db`): persons, texts, chapters, locations, glossary, lineages, lineage_edges + FTS5全文检索
+- **db_reader.py** (`scripts/db_reader.py`): 从SQLite读取，输出graph.json兼容格式，供build.py消费
+- **YAML/JSON**: 非图谱数据（修行体系/宇宙观/前沿对话等）仍以YAML为权威源
+- **策展**: 直接操作SQLite (`scripts/import_all_to_sqlite.py` 多源合并导入)
+
+数据流: JSON/YAML源文件 → `import_all_to_sqlite.py` → SQLite → `db_reader.py` → `build.py` → HTML
 
 详见 [docs/knowledge-management.md](docs/knowledge-management.md)
 
@@ -105,22 +107,33 @@ huayan_collection/
 │   └── references/             # 参考文档
 ├── docs/                       # 项目文档
 ├── scripts/                    # 导出/验证/Neo4j脚本
+│   ├── init_db.py              # SQLite初始化
+│   ├── import_all_to_sqlite.py # 多源JSON→SQLite合并导入
+│   ├── db_reader.py            # SQLite→JSON数据服务层
+│   ├── export_sqlite_to_json.py # 导入/导出/验证
+│   ├── test_pipeline.py        # 全链路数据一致性测试
+│   ├── verify_demo.py          # 构建产物验证
+│   ├── verify_sources.py       # 来源可靠性验证
+│   └── load_neo4j.py           # Neo4j加载+验证
 └── src/                        # Python后端（待实现）
 ```
 
 ## 快速命令
 
 ```bash
-conda activate hy_py312
-
-# 数据导出: SQLite → JSON/YAML
-python scripts/export_sqlite_to_json.py
+# 初始化/导入数据
+python scripts/init_db.py                    # 初始化空数据库
+python scripts/import_all_to_sqlite.py       # 多源JSON→SQLite导入
+python scripts/export_sqlite_to_json.py --verify  # 数据完整性验证
 
 # 图验证: SQLite → Neo4j + Cypher检查
 python scripts/load_neo4j.py --verify
 
 # 来源可靠性验证
 python scripts/verify_sources.py
+
+# 全链路测试
+python scripts/test_pipeline.py              # 数据一致性测试
 
 # 构建Demo (6个HTML + CSS + JS)
 python web/demo/scripts/build.py

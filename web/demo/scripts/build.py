@@ -24,6 +24,10 @@ TABS_OUT = OUT / 'tabs'
 CSS_OUT = OUT / 'css'
 JS_OUT = OUT / 'js'
 
+# SQLite data reader (single source of truth for graph data)
+sys.path.insert(0, str(ROOT / 'scripts'))
+import db_reader
+
 
 def read_src(name):
     """Read a source file from src/ directory."""
@@ -51,8 +55,8 @@ def read_json(rel_path):
 
 
 def load_graph():
-    """Load complete GRAPH data from graph.json (already merged by SQLite export)."""
-    return read_json('web/demo/graph.json')
+    """Load complete GRAPH data from SQLite (single source of truth)."""
+    return db_reader.load_graph()
 
 
 def load_gap():
@@ -117,8 +121,10 @@ def load_practice():
                  'haiyun_chengguan_compare',
                  'vinaya_school',
                  'faxiang_xuanji',
-                 'yikong_daodi',
-                 'mimi_daodi']:
+                  'yikong_daodi',
+                   'mimi_daodi',
+                   'tiantai_juejing',
+                   'zhuandao_ziliang']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
@@ -152,6 +158,80 @@ def load_bibliography():
 def load_glossary():
     """Load bilingual glossary from data/references/bilingual_glossary.yaml."""
     return read_yaml('references/bilingual_glossary.yaml') or {}
+
+
+def load_navigation():
+    """Load site navigation spec from data/navigation.yaml (drives all sidebars)."""
+    data = read_yaml('navigation.yaml') or {}
+    # Handle both wrapped {'navigation': {...}} and flat {gap: {...}} formats
+    if 'navigation' in data and isinstance(data['navigation'], dict):
+        return data['navigation']
+    return data
+
+
+def _action_js(action, is_sub):
+    """Render onclick JS body for a navigation action.
+
+    action: {'type':'call','fn':..,'args':[..]} | {'type':'assign','var':..,'value':..,'call':..} | {'href':..}
+    Top-level items append `,this` to call actions; sub-links do not.
+    """
+    if not action:
+        return ''
+    if action.get('type') == 'assign':
+        return f"{action['var']}='{action['value']}';{action['call']}();return false"
+    if 'href' in action:
+        return ''
+    fn = action.get('fn', '')
+    args = [f"'{a}'" for a in action.get('args', [])]
+    if not is_sub:
+        args.append('this')
+    return f"{fn}({','.join(args)});return false"
+
+
+def _nav_label(item):
+    """Compose a nav item label (emoji + text + optional <small> subtitle)."""
+    label = item.get('label', '')
+    label_sub = item.get('label_sub', '')
+    if label_sub:
+        label += f' <small style=font-size:0.7em;color:var(--text2)>{label_sub}</small>'
+    return label
+
+
+def render_sidebar(nav_spec):
+    """Render sidebar HTML from a navigation spec.
+
+    Output format matches the legacy hardcoded sidebars exactly:
+    a leading newline + 4-space indentation per line.
+    """
+    lines = []
+    heading = nav_spec.get('heading', '')
+    heading_sub = nav_spec.get('heading_sub', '')
+    if heading_sub:
+        lines.append(f'    <h3>{heading} <small style=font-size:0.65em;color:var(--text2)>{heading_sub}</small></h3>')
+    else:
+        lines.append(f'    <h3>{heading}</h3>')
+    for item in nav_spec.get('nav', []):
+        active = ' active' if item.get('active') else ''
+        label = _nav_label(item)
+        action = item.get('action', {})
+        if item.get('subs'):
+            open_ = item.get('open')
+            arrow = '▾' if open_ else '▸'
+            onclick = f"if(!toggleSidebarGroup(this))return false;{_action_js(action, False)}"
+            lines.append('    <div class="sidebar-group has-subs">')
+            lines.append(f'    <a href="#" class="nav-link has-subs{active}" onclick="{onclick}">{label} <span class="toggle-arrow">{arrow}</span></a>')
+            sub_display = ' style=display:block' if open_ else ''
+            lines.append(f'    <div class="sub-links"{sub_display}>')
+            for sub in item['subs']:
+                sub_cls = 'sub-sub-link' if sub.get('subsub') else 'sub-link'
+                lines.append(f'    <a href="#" class="{sub_cls}" onclick="{_action_js(sub.get("action"), True)}">{_nav_label(sub)}</a>')
+            lines.append('    </div></div>')
+        else:
+            if 'href' in action:
+                lines.append(f'    <div class="sidebar-group"><a href="{action["href"]}" class="nav-link{active}">{label}</a></div>')
+            else:
+                lines.append(f'    <div class="sidebar-group"><a href="#" class="nav-link{active}" onclick="{_action_js(action, False)}">{label}</a></div>')
+    return '\n' + '\n'.join(lines)
 
 
 def get_bib_for_tags(bib, tags):
@@ -621,6 +701,8 @@ def main():
     CSS_OUT.mkdir(parents=True, exist_ok=True)
     JS_OUT.mkdir(parents=True, exist_ok=True)
 
+    nav = load_navigation()
+
     total_size = 0
     file_count = 0
 
@@ -636,67 +718,13 @@ def main():
     print(f'OK  {lineage_path} ({size:,} bytes | {len(graph.get("nodes",[]))} persons | {len(graph.get("edges",[]))} edges)')
 
     # ── Build Tab2: Gap (restructured layout) ──
-    sidebar_gap = '''
-    <h3>📜 华严文献</h3>
-    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchGapView('overview',this);return false">📊 差异总览</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('parallel',this);return false">📖 原文对读</a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchGapView('genealogy',this);return false">🕸 文本系谱</a></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('avatamsaka_studies',this);return false">🌏 华严经学 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-origins');return false">起源与形成</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-transmission');return false">翻译与流传</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-structure');return false">结构关系与表法</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('avatamsaka_studies','avs-doctrinal');return false">义学阐释</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('intertextual',this);return false">📖 以经证经 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tiantai');return false">天台宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-madhyamaka');return false">中观·三论</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-yogacara');return false">唯识·法相</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-chan');return false">禅宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-pureland');return false">净土宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-vinaya');return false">律宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-esoteric');return false">密宗·真言</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-kusha');return false">俱舍宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-chengshi');return false">成实宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-niepan');return false">涅槃宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-dilun');return false">地论宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-shelun');return false">摄论宗</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tathagatagarbha');return false">如来藏系</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-other_sutras');return false">重要通经</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-dizang');return false">地藏法门</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-tibetan');return false">藏传佛教</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-theravada');return false">南传·上座部</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('intertextual','ic-hetuvidya');return false">因明</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchGapView('panjiao',this);return false">⚖️ 判教互判 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-overview');return false">判教互判总论</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-nanbei');return false">判教前史·南三北七</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-tiantai');return false">天台五时八教</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-madhyamaka');return false">空宗·三论二藏三轮</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-yogacara');return false">有宗·唯识三时</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-xingzong');return false">性宗·真常</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-tathagatagarbha');return false">如来藏</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-debates');return false">近现代论争</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-ekayana');return false">一佛乘</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-yuanjiao');return false">共同圆·不共别圆</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-hupan');return false">诸宗互判与合流</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-zangchuan');return false">藏传判教·九乘</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-dzogchen');return false">大圆满觉·他空</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-japan');return false">日本判教</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-rujia');return false">儒家·道统与学案</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-daojia');return false">道家道教</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-world');return false">世界宗教</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-academic');return false">学术哲学流派</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-tech');return false">科技圈·范式之争</a>
-    <a href="#" class="sub-link" onclick="gapSubNav('panjiao','pj-masters');return false">两位法师评述</a>
-    </div></div>
-    '''
-    gap_html = build_simple_tab_page('华严文献 · 雅思渊才', 'gap', sidebar_gap, 'if(typeof renderGap==="function")renderGap();')
+    gap_spec = nav.get('gap', {})
+    gap_html = build_simple_tab_page(
+        gap_spec.get('title', '华严文献'),
+        'gap',
+        render_sidebar(gap_spec),
+        gap_spec.get('render', 'if(typeof renderGap==="function")renderGap();'),
+        view_id=gap_spec.get('view_id', 'gap-view'))
     gap_path = TABS_OUT / 'gap.html'
     with open(gap_path, 'w', encoding='utf-8') as f:
         f.write(gap_html)
@@ -706,141 +734,13 @@ def main():
     print(f'OK  {gap_path} ({size:,} bytes)')
 
     # ── Build Tab3: Jiaoxing (renamed, restructured) ──
-    sidebar_jx = '''
-    <h3>🧘 教海行云</h3>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs active" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('system',this);return false">📐 修行体系 <span class="toggle-arrow">▾</span></a>
-    <div class="sub-links" style=display:block>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-stages');return false">三阶段</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-blueprint');return false">四阶段蓝图</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-six');return false">六科五大行法</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-projects');return false">四大工程</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('system','sys-evolution');return false">演进脉络</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">🗺 禅观法要 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-overview');return false">体系总览</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-paths');return false">次第道与圆融道</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage1');return false">资粮道</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">前行</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">正行</a>
-    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 观照·能所分离</a>
-    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 照住·能所合一</a>
-    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 照见·能所双泯</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-classical');return false">古典义理地基</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-texts');return false">典籍阐释</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-verify');return false">验证机制</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-heart');return false">实修心要</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">❤️ 心法·禅定·瑜伽 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-xinfa');return false">心法模式</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-sichenbading');return false">四禅八定</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yoga');return false">瑜伽行法</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-three-paths');return false">三条路径总判摄</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-sanskrit-terms');return false">梵汉术语比对</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">⚙️ 技术面·工程面 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage1');return false">初阶·资粮道(发心)</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage2');return false">二阶·前行(内摄)</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-stage3');return false">三阶·正行(等持)</a>
-    <a href="#" class="sub-sub-link" onclick="jxSubNav('meditation','med-stage3');return false">　⬦ 观照·能所分离→照住→照见</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('meditation',this);return false">📐 华严判教 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-wujiao');return false">贤首五教仪</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-yicheng');return false">一乘不共别圆</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-shizong');return false">十宗</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('meditation','med-futian');return false">宗派比较</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('chan_traces',this);return false">🌿 禅门实迹 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-academic');return false">全球学界视角</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-practice');return false">门内实修视角</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-modern');return false">近现代禅门</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('chan_traces','chan-haiyun');return false">海云法师·禅法</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('chengguan',this);return false">🌄 成其大观 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('chengguan','cg-bio');return false">生平·法脉</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('chengguan','cg-works');return false">著作全目</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('chengguan','cg-lectures');return false">讲法·译经</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('vinaya',this);return false">📏 戒律拓扑 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('vinaya','vy-overview');return false">律宗总览</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('vinaya','vy-founders');return false">祖师谱系</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('vinaya','vy-classics');return false">律典要目</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('vinaya','vy-history');return false">发展史</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('vinaya','vy-practice');return false">戒律实践</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('faxiang',this);return false">🔬 法相玄机 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-overview');return false">名相辨析</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-india');return false">印度渊源</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-lineage');return false">汉传法脉</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-doctrine');return false">核心教义</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-decline');return false">演变式微</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-overseas');return false">域外传播</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-revival');return false">近代复兴</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-practice');return false">修行界视角</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-academic');return false">学术前沿</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('faxiang','fx-masters');return false">海云·成观两位法师的阐释与评述</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('yikong',this);return false">🕳 一空到底 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-overview');return false">名相辨析</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-india');return false">印度渊源</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-lineage');return false">汉传法脉</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-doctrine');return false">核心教义</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-decline');return false">演变式微</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-overseas');return false">域外传播</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-tibetan');return false">藏传应成见</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-revival');return false">近代复兴</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-practice');return false">修行界视角</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-academic');return false">学术前沿</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-synthesis');return false">融合与张力</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-haiyun');return false">海云法师·空性诠释</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('yikong','yk-chengguan');return false">成观法师·空性与禅密</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('mimi',this);return false">🔐 不密而密 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-overview');return false">名相辨析</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-india');return false">印度渊源</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-lineage');return false">汉传法脉</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-doctrine');return false">核心教义</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-overseas');return false">域外传播</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-tibetan');return false">藏传金刚乘</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-revival');return false">近代复兴</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-modern');return false">当代发展</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-practice');return false">修行界视角</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('mimi','mm-synthesis');return false">融合与张力</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;switchPracticeView('resources',this);return false">📡 讲法资源 <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-avatamsaka');return false">华严经讲法全目</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-mengcan');return false">梦参老和尚讲法总目</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-total');return false">全网总目</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-books');return false">著作</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-yt');return false">YouTube</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-temples');return false">道场</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-more');return false">检索补遗</a>
-    <a href="#" class="sub-link" onclick="jxSubNav('resources','res-news');return false">最新动态</a>
-    </div></div>
-    '''
-    jx_html = build_simple_tab_page('教海行云 · 信解行证', 'jiaoxing', sidebar_jx, 'renderPractice();', view_id='practice-view')
+    jx_spec = nav.get('jiaoxing', {})
+    jx_html = build_simple_tab_page(
+        jx_spec.get('title', '教海行云'),
+        'jiaoxing',
+        render_sidebar(jx_spec),
+        jx_spec.get('render', 'renderPractice();'),
+        view_id=jx_spec.get('view_id', 'practice-view'))
     jx_path = TABS_OUT / 'jiaoxing.html'
     with open(jx_path, 'w', encoding='utf-8') as f:
         f.write(jx_html)
@@ -850,15 +750,13 @@ def main():
     print(f'OK  {jx_path} ({size:,} bytes)')
 
     # ── Build Tab4: Frontier (restructured) ──
-    sidebar_fr = '''
-    <h3>🔬 前沿对话 <small style=font-size:0.65em;color:var(--text2)>Frontier Dialogues</small></h3>
-    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="switchFrontierNav('huayan',this);return false">🪷 与华严的对话 <small style=font-size:0.7em;color:var(--text2)>with Huayan</small></a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('chinese',this);return false">☸ 与汉传佛教的对话 <small style=font-size:0.7em;color:var(--text2)>Chinese Buddhism</small></a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('buddhist',this);return false">🕉 与佛教的对话 <small style=font-size:0.7em;color:var(--text2)>Buddhist Traditions</small></a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('others',this);return false">🌏 跨宗教对话 <small style=font-size:0.7em;color:var(--text2)>Interreligious</small></a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="switchFrontierNav('litreview',this);return false">📑 文献综述 <small style=font-size:0.7em;color:var(--text2)>Lit. Review</small></a></div>
-    '''
-    fr_html = build_simple_tab_page('前沿对话 · 跨界研究', 'frontier', sidebar_fr, 'if(typeof renderFrontier==="function")renderFrontier();')
+    fr_spec = nav.get('frontier', {})
+    fr_html = build_simple_tab_page(
+        fr_spec.get('title', '前沿对话'),
+        'frontier',
+        render_sidebar(fr_spec),
+        fr_spec.get('render', 'if(typeof renderFrontier==="function")renderFrontier();'),
+        view_id=fr_spec.get('view_id', 'frontier-view'))
     fr_path = TABS_OUT / 'frontier.html'
     with open(fr_path, 'w', encoding='utf-8') as f:
         f.write(fr_html)
@@ -868,15 +766,13 @@ def main():
     print(f'OK  {fr_path} ({size:,} bytes)')
 
     # ── Build Tab5: Cosmology (restructured) ──
-    sidebar_co = '''
-    <h3>🪷 世主妙严 <small style=font-size:0.65em;color:var(--text2)>Flower Treasury Cosmos</small></h3>
-    <div class="sidebar-group"><a href="#co-mandala" class="nav-link active">🌊 华藏世界海 <small style=font-size:0.7em;color:var(--text2)>Ocean of Worlds</small></a></div>
-    <div class="sidebar-group"><a href="#co-tower" class="nav-link">📐 三界诸天 <small style=font-size:0.7em;color:var(--text2)>Three Realms</small></a></div>
-    <div class="sidebar-group"><a href="#co-art" class="nav-link">🎨 华严艺术珍品 <small style=font-size:0.7em;color:var(--text2)>Sacred Arts</small></a></div>
-    <div class="sidebar-group"><a href="#co-chant" class="nav-link">🎵 梵呗·华严字母 <small style=font-size:0.7em;color:var(--text2)>Arapacana Chant</small></a></div>
-    <div class="sidebar-group"><a href="#co-sites" class="nav-link">🗺 华严古迹巡礼 <small style=font-size:0.7em;color:var(--text2)>Heritage Sites</small></a></div>
-    '''
-    co_html = build_simple_tab_page('世主妙严 · 华藏世界海', 'cosmology', sidebar_co, 'if(typeof renderCosmology==="function")renderCosmology();')
+    co_spec = nav.get('cosmology', {})
+    co_html = build_simple_tab_page(
+        co_spec.get('title', '世主妙严'),
+        'cosmology',
+        render_sidebar(co_spec),
+        co_spec.get('render', 'if(typeof renderCosmology==="function")renderCosmology();'),
+        view_id=co_spec.get('view_id', 'cosmology-view'))
     co_path = TABS_OUT / 'cosmology.html'
     with open(co_path, 'w', encoding='utf-8') as f:
         f.write(co_html)
@@ -886,32 +782,13 @@ def main():
     print(f'OK  {co_path} ({size:,} bytes)')
 
     # ── Build Tab6: Spirit (new) ──
-    sidebar_sp = '''
-    <h3>🌱 灵性仁本 <small style=font-size:0.65em;color:var(--text2)>Spiritual Humanism</small></h3>
-    <div class="sidebar-group"><a href="#" class="nav-link active" onclick="SPIRIT_ACTIVE='overview';renderSpirit();return false">🌱 总览 <small style=font-size:0.7em;color:var(--text2)>Overview</small></a></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">💎 灵性经济学 <small style=font-size:0.7em;color:var(--text2)>Spiritual Economics</small> <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">海云法师体系</a>
-    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='spiritual_economics';renderSpirit();return false">灵性GDP·三世间框架</a>
-    </div></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='humanistic_economics';renderSpirit();return false">📐 仁本·人本经济学 <small style=font-size:0.7em;color:var(--text2)>Humanistic Econ</small></a></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='contemplative_traditions';renderSpirit();return false">🧘 修行传统与永续 <small style=font-size:0.7em;color:var(--text2)>Traditions & Sustainability</small></a></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">🌏 本土知识 <small style=font-size:0.7em;color:var(--text2)>Indigenous Knowledge</small> <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='indigenous_knowledge';renderSpirit();return false">二十四节气·IPBES</a>
-    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='heritage_practice';renderSpirit();return false">遗产实践·活态传承</a>
-    </div></div>
-    <div class="sidebar-group has-subs">
-    <a href="#" class="nav-link has-subs" onclick="if(!toggleSidebarGroup(this))return false;SPIRIT_ACTIVE='env_history';renderSpirit();return false">🌿 环境人文 <small style=font-size:0.7em;color:var(--text2)>Env. Humanities</small> <span class="toggle-arrow">▸</span></a>
-    <div class="sub-links">
-    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='env_history';renderSpirit();return false">人类世·环境史</a>
-    <a href="#" class="sub-link" onclick="SPIRIT_ACTIVE='critical_humanities';renderSpirit();return false">批判人文·多元世界</a>
-    </div></div>
-    <div class="sidebar-group"><a href="#" class="nav-link" onclick="SPIRIT_ACTIVE='practice';renderSpirit();return false">🙏 澄明永续实践 <small style=font-size:0.7em;color:var(--text2)>Luminous Practice</small></a></div>
-    '''
-    sp_html = build_simple_tab_page('灵性仁本 · 澄明永续', 'spirit', sidebar_sp, 'if(typeof renderSpirit==="function")renderSpirit();', view_id='spirit-view')
+    sp_spec = nav.get('spirit', {})
+    sp_html = build_simple_tab_page(
+        sp_spec.get('title', '灵性仁本'),
+        'spirit',
+        render_sidebar(sp_spec),
+        sp_spec.get('render', 'if(typeof renderSpirit==="function")renderSpirit();'),
+        view_id=sp_spec.get('view_id', 'spirit-view'))
     sp_path = TABS_OUT / 'spirit.html'
     with open(sp_path, 'w', encoding='utf-8') as f:
         f.write(sp_html)

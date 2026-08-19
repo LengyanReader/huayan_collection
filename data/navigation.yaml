@@ -1,0 +1,462 @@
+# ═══ 站点导航配置 ═══
+# build.py 读取本文件生成各 Tab 侧边栏（sidebar）HTML。
+# 新增知识主题时：在此登记导航项 + 在对应内容 YAML 添加 section，无需改 build.py / JS。
+#
+# 结构说明：
+#   heading    侧边栏标题（<h3>）
+#   heading_sub 标题旁小字（可选，<small>）
+#   nav        导航项数组
+#     label      显示文本（可含 emoji）
+#     label_sub  显示文本旁小字（可选，<small>）
+#     active     默认高亮（可选，仅顶层）
+#     open       默认展开子链接（可选，仅含 subs 的项）
+#     action     点击行为（顶层自动追加 ,this；子项不追加）
+#       - {type: call,  fn: switchGapView, args: [overview]}
+#       - {type: assign, var: SPIRIT_ACTIVE, value: overview, call: renderSpirit}
+#       - {href: '#co-mandala'}  纯锚点跳转（无 onclick）
+#     subs       子链接数组（action 同顶层结构，但不传 this）
+#     subsub     第三级链接（{label, action}）
+#   view_id     content 容器 id
+#   render      页面渲染调用
+#   title       <title> 与 <h1>
+
+navigation:
+  gap:
+    title: 华严文献 · 雅思渊才
+    heading: 📜 华严文献
+    render: 'if(typeof renderGap==="function")renderGap();'
+    view_id: gap-view
+    nav:
+    - label: 📊 差异总览
+      active: true
+      action: {type: call, fn: switchGapView, args: [overview]}
+    - label: 📖 原文对读
+      action: {type: call, fn: switchGapView, args: [parallel]}
+    - label: 🕸 文本系谱
+      action: {type: call, fn: switchGapView, args: [genealogy]}
+    - label: 🌏 华严经学
+      action: {type: call, fn: switchGapView, args: [avatamsaka_studies]}
+      subs:
+      - label: 起源与形成
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-origins]}
+      - label: 翻译与流传
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-transmission]}
+      - label: 结构关系与表法
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-structure]}
+      - label: 义学阐释
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-doctrinal]}
+    - label: 📖 以经证经
+      action: {type: call, fn: switchGapView, args: [intertextual]}
+      subs:
+      - label: 天台宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-tiantai]}
+      - label: 中观·三论
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-madhyamaka]}
+      - label: 唯识·法相
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-yogacara]}
+      - label: 禅宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-chan]}
+      - label: 净土宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-pureland]}
+      - label: 律宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-vinaya]}
+      - label: 密宗·真言
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-esoteric]}
+      - label: 俱舍宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-kusha]}
+      - label: 成实宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-chengshi]}
+      - label: 涅槃宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-niepan]}
+      - label: 地论宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-dilun]}
+      - label: 摄论宗
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-shelun]}
+      - label: 如来藏系
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-tathagatagarbha]}
+      - label: 重要通经
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-other_sutras]}
+      - label: 地藏法门
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-dizang]}
+      - label: 藏传佛教
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-tibetan]}
+      - label: 南传·上座部
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-theravada]}
+      - label: 因明
+        action: {type: call, fn: gapSubNav, args: [intertextual, ic-hetuvidya]}
+    - label: ⚖️ 判教互判
+      action: {type: call, fn: switchGapView, args: [panjiao]}
+      subs:
+      - label: 判教互判总论
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-overview]}
+      - label: 判教前史·南三北七
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-nanbei]}
+      - label: 天台五时八教
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-tiantai]}
+      - label: 空宗·三论二藏三轮
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-madhyamaka]}
+      - label: 有宗·唯识三时
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-yogacara]}
+      - label: 性宗·真常
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-xingzong]}
+      - label: 如来藏
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-tathagatagarbha]}
+      - label: 近现代论争
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-debates]}
+      - label: 一佛乘
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-ekayana]}
+      - label: 共同圆·不共别圆
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-yuanjiao]}
+      - label: 诸宗互判与合流
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-hupan]}
+      - label: 藏传判教·九乘
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-zangchuan]}
+      - label: 大圆满觉·他空
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-dzogchen]}
+      - label: 日本判教
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-japan]}
+      - label: 儒家·道统与学案
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-rujia]}
+      - label: 道家道教
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-daojia]}
+      - label: 世界宗教
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-world]}
+      - label: 学术哲学流派
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-academic]}
+      - label: 科技圈·范式之争
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-tech]}
+      - label: 两位法师评述
+        action: {type: call, fn: gapSubNav, args: [panjiao, pj-masters]}
+
+  jiaoxing:
+    title: 教海行云 · 信解行证
+    heading: 🧘 教海行云
+    render: renderPractice();
+    view_id: practice-view
+    nav:
+    - label: 📐 修行体系
+      active: true
+      open: true
+      action: {type: call, fn: switchPracticeView, args: [system]}
+      subs:
+      - label: 三阶段
+        action: {type: call, fn: jxSubNav, args: [system, sys-stages]}
+      - label: 四阶段蓝图
+        action: {type: call, fn: jxSubNav, args: [system, sys-blueprint]}
+      - label: 六科五大行法
+        action: {type: call, fn: jxSubNav, args: [system, sys-six]}
+      - label: 四大工程
+        action: {type: call, fn: jxSubNav, args: [system, sys-projects]}
+      - label: 演进脉络
+        action: {type: call, fn: jxSubNav, args: [system, sys-evolution]}
+    - label: 🗺 禅观法要
+      action: {type: call, fn: switchPracticeView, args: [meditation]}
+      subs:
+      - label: 体系总览
+        action: {type: call, fn: jxSubNav, args: [meditation, med-overview]}
+      - label: 次第道与圆融道
+        action: {type: call, fn: jxSubNav, args: [meditation, med-paths]}
+      - label: 资粮道
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage1]}
+      - label: 前行
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage2]}
+      - label: 正行
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage3]}
+      - label: '　⬦ 观照·能所分离'
+        subsub: true
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage3]}
+      - label: '　⬦ 照住·能所合一'
+        subsub: true
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage3]}
+      - label: '　⬦ 照见·能所双泯'
+        subsub: true
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage3]}
+      - label: 古典义理地基
+        action: {type: call, fn: jxSubNav, args: [meditation, med-classical]}
+      - label: 典籍阐释
+        action: {type: call, fn: jxSubNav, args: [meditation, med-texts]}
+      - label: 验证机制
+        action: {type: call, fn: jxSubNav, args: [meditation, med-verify]}
+      - label: 实修心要
+        action: {type: call, fn: jxSubNav, args: [meditation, med-heart]}
+    - label: ❤️ 心法·禅定·瑜伽
+      action: {type: call, fn: switchPracticeView, args: [meditation]}
+      subs:
+      - label: 心法模式
+        action: {type: call, fn: jxSubNav, args: [meditation, med-xinfa]}
+      - label: 四禅八定
+        action: {type: call, fn: jxSubNav, args: [meditation, med-sichenbading]}
+      - label: 瑜伽行法
+        action: {type: call, fn: jxSubNav, args: [meditation, med-yoga]}
+      - label: 三条路径总判摄
+        action: {type: call, fn: jxSubNav, args: [meditation, med-three-paths]}
+      - label: 梵汉术语比对
+        action: {type: call, fn: jxSubNav, args: [meditation, med-sanskrit-terms]}
+    - label: ⚙️ 技术面·工程面
+      action: {type: call, fn: switchPracticeView, args: [meditation]}
+      subs:
+      - label: 初阶·资粮道(发心)
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage1]}
+      - label: 二阶·前行(内摄)
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage2]}
+      - label: 三阶·正行(等持)
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage3]}
+      - label: '　⬦ 观照·能所分离→照住→照见'
+        subsub: true
+        action: {type: call, fn: jxSubNav, args: [meditation, med-stage3]}
+      - label: 助道资粮
+        action: {type: call, fn: jxSubNav, args: [system, sys-zhuandao]}
+    - label: 📐 华严判教
+      action: {type: call, fn: switchPracticeView, args: [meditation]}
+      subs:
+      - label: 贤首五教仪
+        action: {type: call, fn: jxSubNav, args: [meditation, med-wujiao]}
+      - label: 一乘不共别圆
+        action: {type: call, fn: jxSubNav, args: [meditation, med-yicheng]}
+      - label: 十宗
+        action: {type: call, fn: jxSubNav, args: [meditation, med-shizong]}
+      - label: 宗派比较
+        action: {type: call, fn: jxSubNav, args: [meditation, med-futian]}
+    - label: 🌿 禅门实迹
+      action: {type: call, fn: switchPracticeView, args: [chan_traces]}
+      subs:
+      - label: 全球学界视角
+        action: {type: call, fn: jxSubNav, args: [chan_traces, chan-academic]}
+      - label: 门内实修视角
+        action: {type: call, fn: jxSubNav, args: [chan_traces, chan-practice]}
+      - label: 近现代禅门
+        action: {type: call, fn: jxSubNav, args: [chan_traces, chan-modern]}
+      - label: 海云法师·禅法
+        action: {type: call, fn: jxSubNav, args: [chan_traces, chan-haiyun]}
+    - label: 🌄 成其大观
+      action: {type: call, fn: switchPracticeView, args: [chengguan]}
+      subs:
+      - label: 生平·法脉
+        action: {type: call, fn: jxSubNav, args: [chengguan, cg-bio]}
+      - label: 著作全目
+        action: {type: call, fn: jxSubNav, args: [chengguan, cg-works]}
+      - label: 讲法·译经
+        action: {type: call, fn: jxSubNav, args: [chengguan, cg-lectures]}
+    - label: 📏 戒律拓扑
+      action: {type: call, fn: switchPracticeView, args: [vinaya]}
+      subs:
+      - label: 律宗总览
+        action: {type: call, fn: jxSubNav, args: [vinaya, vy-overview]}
+      - label: 祖师谱系
+        action: {type: call, fn: jxSubNav, args: [vinaya, vy-founders]}
+      - label: 律典要目
+        action: {type: call, fn: jxSubNav, args: [vinaya, vy-classics]}
+      - label: 发展史
+        action: {type: call, fn: jxSubNav, args: [vinaya, vy-history]}
+      - label: 戒律实践
+        action: {type: call, fn: jxSubNav, args: [vinaya, vy-practice]}
+    - label: 🔬 法相玄机
+      action: {type: call, fn: switchPracticeView, args: [faxiang]}
+      subs:
+      - label: 名相辨析
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-overview]}
+      - label: 印度渊源
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-india]}
+      - label: 汉传法脉
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-lineage]}
+      - label: 核心教义
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-doctrine]}
+      - label: 演变式微
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-decline]}
+      - label: 域外传播
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-overseas]}
+      - label: 近代复兴
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-revival]}
+      - label: 修行界视角
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-practice]}
+      - label: 学术前沿
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-academic]}
+      - label: 海云·成观两位法师的阐释与评述
+        action: {type: call, fn: jxSubNav, args: [faxiang, fx-masters]}
+    - label: 🕳 一空到底
+      action: {type: call, fn: switchPracticeView, args: [yikong]}
+      subs:
+      - label: 名相辨析
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-overview]}
+      - label: 印度渊源
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-india]}
+      - label: 汉传法脉
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-lineage]}
+      - label: 核心教义
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-doctrine]}
+      - label: 演变式微
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-decline]}
+      - label: 域外传播
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-overseas]}
+      - label: 藏传应成见
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-tibetan]}
+      - label: 近代复兴
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-revival]}
+      - label: 修行界视角
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-practice]}
+      - label: 学术前沿
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-academic]}
+      - label: 融合与张力
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-synthesis]}
+      - label: 海云法师·空性诠释
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-haiyun]}
+      - label: 成观法师·空性与禅密
+        action: {type: call, fn: jxSubNav, args: [yikong, yk-chengguan]}
+    - label: 🔐 不密而密
+      action: {type: call, fn: switchPracticeView, args: [mimi]}
+      subs:
+      - label: 名相辨析
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-overview]}
+      - label: 印度渊源
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-india]}
+      - label: 汉传法脉
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-lineage]}
+      - label: 核心教义
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-doctrine]}
+      - label: 域外传播
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-overseas]}
+      - label: 藏传金刚乘
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-tibetan]}
+      - label: 近代复兴
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-revival]}
+      - label: 当代发展
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-modern]}
+      - label: 修行界视角
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-practice]}
+      - label: 融合与张力
+        action: {type: call, fn: jxSubNav, args: [mimi, mm-synthesis]}
+    - label: 🔭 天台觉景
+      action: {type: call, fn: switchPracticeView, args: [tiantai]}
+      subs:
+      - label: 名相辨析
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-overview]}
+      - label: 法脉奠基
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-lineage]}
+      - label: 核心教义
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-doctrine]}
+      - label: 法脉传承曲折
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-lineage_post]}
+      - label: 域外传播
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-overseas]}
+      - label: 近现代复兴
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-revival]}
+      - label: 学术视角
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-academic]}
+      - label: 修行界视角
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-practice]}
+      - label: 融合与张力
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-synthesis]}
+      - label: 海云法师·天台判摄
+        action: {type: call, fn: jxSubNav, args: [tiantai, tt-haiyun]}
+    - label: 📡 讲法资源
+      action: {type: call, fn: switchPracticeView, args: [resources]}
+      subs:
+      - label: 华严经讲法全目
+        action: {type: call, fn: jxSubNav, args: [resources, res-avatamsaka]}
+      - label: 梦参老和尚讲法总目
+        action: {type: call, fn: jxSubNav, args: [resources, res-mengcan]}
+      - label: 全网总目
+        action: {type: call, fn: jxSubNav, args: [resources, res-total]}
+      - label: 著作
+        action: {type: call, fn: jxSubNav, args: [resources, res-books]}
+      - label: YouTube
+        action: {type: call, fn: jxSubNav, args: [resources, res-yt]}
+      - label: 道场
+        action: {type: call, fn: jxSubNav, args: [resources, res-temples]}
+      - label: 检索补遗
+        action: {type: call, fn: jxSubNav, args: [resources, res-more]}
+      - label: 最新动态
+        action: {type: call, fn: jxSubNav, args: [resources, res-news]}
+
+  frontier:
+    title: 前沿对话 · 跨界研究
+    heading: 🔬 前沿对话
+    heading_sub: Frontier Dialogues
+    render: 'if(typeof renderFrontier==="function")renderFrontier();'
+    view_id: frontier-view
+    nav:
+    - label: 🪷 与华严的对话
+      label_sub: with Huayan
+      active: true
+      action: {type: call, fn: switchFrontierNav, args: [huayan]}
+    - label: ☸ 与汉传佛教的对话
+      label_sub: Chinese Buddhism
+      action: {type: call, fn: switchFrontierNav, args: [chinese]}
+    - label: 🕉 与佛教的对话
+      label_sub: Buddhist Traditions
+      action: {type: call, fn: switchFrontierNav, args: [buddhist]}
+    - label: 🌏 跨宗教对话
+      label_sub: Interreligious
+      action: {type: call, fn: switchFrontierNav, args: [others]}
+    - label: 📑 文献综述
+      label_sub: Lit. Review
+      action: {type: call, fn: switchFrontierNav, args: [litreview]}
+
+  cosmology:
+    title: 世主妙严 · 华藏世界海
+    heading: 🪷 世主妙严
+    heading_sub: Flower Treasury Cosmos
+    render: 'if(typeof renderCosmology==="function")renderCosmology();'
+    view_id: cosmology-view
+    nav:
+    - label: 🌊 华藏世界海
+      label_sub: Ocean of Worlds
+      active: true
+      action: {href: '#co-mandala'}
+    - label: 📐 三界诸天
+      label_sub: Three Realms
+      action: {href: '#co-tower'}
+    - label: 🎨 华严艺术珍品
+      label_sub: Sacred Arts
+      action: {href: '#co-art'}
+    - label: 🎵 梵呗·华严字母
+      label_sub: Arapacana Chant
+      action: {href: '#co-chant'}
+    - label: 🗺 华严古迹巡礼
+      label_sub: Heritage Sites
+      action: {href: '#co-sites'}
+
+  spirit:
+    title: 灵性仁本 · 澄明永续
+    heading: 🌱 灵性仁本
+    heading_sub: Spiritual Humanism
+    render: 'if(typeof renderSpirit==="function")renderSpirit();'
+    view_id: spirit-view
+    nav:
+    - label: 🌱 总览
+      label_sub: Overview
+      active: true
+      action: {type: assign, var: SPIRIT_ACTIVE, value: overview, call: renderSpirit}
+    - label: 💎 灵性经济学
+      label_sub: Spiritual Economics
+      action: {type: assign, var: SPIRIT_ACTIVE, value: spiritual_economics, call: renderSpirit}
+      subs:
+      - label: 海云法师体系
+        action: {type: assign, var: SPIRIT_ACTIVE, value: spiritual_economics, call: renderSpirit}
+      - label: 灵性GDP·三世间框架
+        action: {type: assign, var: SPIRIT_ACTIVE, value: spiritual_economics, call: renderSpirit}
+    - label: 📐 仁本·人本经济学
+      label_sub: Humanistic Econ
+      action: {type: assign, var: SPIRIT_ACTIVE, value: humanistic_economics, call: renderSpirit}
+    - label: 🧘 修行传统与永续
+      label_sub: Traditions & Sustainability
+      action: {type: assign, var: SPIRIT_ACTIVE, value: contemplative_traditions, call: renderSpirit}
+    - label: 🌏 本土知识
+      label_sub: Indigenous Knowledge
+      action: {type: assign, var: SPIRIT_ACTIVE, value: indigenous_knowledge, call: renderSpirit}
+      subs:
+      - label: 二十四节气·IPBES
+        action: {type: assign, var: SPIRIT_ACTIVE, value: indigenous_knowledge, call: renderSpirit}
+      - label: 遗产实践·活态传承
+        action: {type: assign, var: SPIRIT_ACTIVE, value: heritage_practice, call: renderSpirit}
+    - label: 🌿 环境人文
+      label_sub: Env. Humanities
+      action: {type: assign, var: SPIRIT_ACTIVE, value: env_history, call: renderSpirit}
+      subs:
+      - label: 人类世·环境史
+        action: {type: assign, var: SPIRIT_ACTIVE, value: env_history, call: renderSpirit}
+      - label: 批判人文·多元世界
+        action: {type: assign, var: SPIRIT_ACTIVE, value: critical_humanities, call: renderSpirit}
+    - label: 🙏 澄明永续实践
+      label_sub: Luminous Practice
+      action: {type: assign, var: SPIRIT_ACTIVE, value: practice, call: renderSpirit}
