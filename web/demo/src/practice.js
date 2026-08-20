@@ -113,6 +113,9 @@ function renderPractice(){
   // ── 助道资粮 (从 PRACTICE_DATA.zhuandao_ziliang) ──
   h+=renderZhuandaoSection();
 
+  // ── 三十七道品 (从 PRACTICE_DATA.sanshiqi_daopin) ──
+  h+=renderSanShiQiDaoPin();
+
   h+="</div>"; // close pv-system
 
   // ═══════════════════════════════════════════
@@ -1436,6 +1439,31 @@ function renderZhuandaoSection() {
   if (zz.references) {
     h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (' + zz.references.length + '条)</summary><ul>';
     zz.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
+    h += '</ul></details>';
+  }
+  h += '</div>';
+  return h;
+}
+
+// ═══ 三十七道品渲染 (从 PRACTICE_DATA.sanshiqi_daopin) ═══
+function renderSanShiQiDaoPin() {
+  var sq = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.sanshiqi_daopin) ? PRACTICE_DATA.sanshiqi_daopin : null;
+  if (!sq || !sq.topics) return '';
+  var h = '';
+  h += '<div class=section id=' + (sq.section_id || 'sys-sanshiqi') + ' style=border-left:4px solid var(--gold)>';
+  h += '<h2>' + (sq.icon || '☸') + ' ' + sq.title + '</h2>';
+  if (sq.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _m2h(sq.intro) + '</p>';
+  sq.topics.forEach(function(t, idx) {
+    h += '<div class=wu-door id=sq-topic-' + (t.id || idx) + ' onclick="this.classList.toggle(\'open\')">';
+    h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+    h += '<div class=body>';
+    h += '<div style="font-size:0.8em;line-height:1.8;white-space:pre-line">' + t.body + '</div>';
+    if (t.source) h += '<p style="font-size:0.68em;color:var(--text2);margin-top:8px;border-top:1px dotted var(--line);padding-top:6px">📎 ' + _m2h(t.source) + '</p>';
+    h += '</div></div>';
+  });
+  if (sq.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (' + sq.references.length + '条)</summary><ul>';
+    sq.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
     h += '</ul></details>';
   }
   h += '</div>';
