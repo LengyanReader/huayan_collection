@@ -127,6 +127,23 @@ navigation:
         action: {type: call, fn: gapSubNav, args: [panjiao, pj-tech]}
       - label: 两位法师评述
         action: {type: call, fn: gapSubNav, args: [panjiao, pj-masters]}
+    - label: 🧑 华严祖师
+      action: {type: call, fn: switchGapView, args: [masters]}
+      subs:
+      - label: 祖师总览
+        action: {type: call, fn: switchGapView, args: [masters]}
+      - label: 杜顺·初祖
+        action: {type: call, fn: switchGapView, args: [master-dushun]}
+      - label: 智俨·二祖
+        action: {type: call, fn: switchGapView, args: [master-zhiyan]}
+      - label: 贤首国师·法藏（综述全文）
+        action: {type: call, fn: switchGapView, args: [master-fazang]}
+      - label: 澄观·四祖
+        action: {type: call, fn: switchGapView, args: [master-chengguan]}
+      - label: 宗密·五祖
+        action: {type: call, fn: switchGapView, args: [master-zongmi]}
+      - label: 李通玄·枣柏大士
+        action: {type: call, fn: switchGapView, args: [master-litongxuan]}
 
   jiaoxing:
     title: 教海行云 · 信解行证

@@ -354,6 +354,9 @@ function renderGap(){
   h+=renderAvatamsakaStudies();
   h+=renderPanjiaoHupan();
 
+  // ═══ 华严祖师 (从 GAP.huayan_masters 数据驱动; 贤首国师含综述全文) ═══
+  h+=renderHuayanMasters();
+
   // ═══ REFERENCES SECTION ═══
   h+="<div id=gv-refs class=gv-section style=display:none>";
 
@@ -508,11 +511,167 @@ function renderPanjiaoHupan() {
   return h;
 }
 
+// ── Helper: convert full markdown (headings/quotes/hr/lists/tables) to HTML ──
+function _mdFullToHTML(text) {
+  if (!text) return '';
+  var lines = text.split('\n');
+  var out = [];
+  var i = 0;
+  while (i < lines.length) {
+    var l = lines[i];
+    // blank line
+    if (!l.trim()) { i++; continue; }
+    // horizontal rule
+    if (/^---+$/.test(l.trim())) { out.push('<hr style="border:none;border-top:1px solid var(--line);margin:14px 0">'); i++; continue; }
+    // headings
+    var mh = l.match(/^(#{1,4})\s+(.*)$/);
+    if (mh) {
+      var lv = mh[1].length;
+      out.push('<h' + lv + ' style="color:var(--gold);margin:' + (lv===1?'18px':'14px') + ' 0 8px;font-size:' + [0,'1.15em','1.02em','0.95em','0.88em'][lv] + ';line-height:1.5">' + _mdInline(mh[2]) + '</h' + lv + '>');
+      i++; continue;
+    }
+    // blockquote
+    if (l.trim().indexOf('>') === 0) {
+      var q = [];
+      while (i < lines.length && lines[i].trim().indexOf('>') === 0) {
+        q.push(lines[i].trim().replace(/^>\s?/, ''));
+        i++;
+      }
+      out.push('<blockquote style="border-left:3px solid var(--gold);background:rgba(184,134,60,0.06);padding:8px 12px;margin:10px 0;font-size:0.82em;line-height:1.8;color:var(--text2);white-space:pre-line">' + _mdInline(q.join('\n')) + '</blockquote>');
+      continue;
+    }
+    // table
+    if (l.trim().indexOf('|') === 0 && (i+1 < lines.length) && lines[i+1].indexOf('---') >= 0) {
+      var header = l.split('|').filter(function(c){return c.trim();});
+      out.push('<table class=v-table style="font-size:0.78em;margin:8px 0"><tr>' + header.map(function(c){return '<th>' + _mdInline(c.trim()) + '</th>';}).join('') + '</tr>');
+      i += 2;
+      while (i < lines.length && lines[i].trim().indexOf('|') === 0) {
+        var cells = lines[i].split('|').filter(function(c){return c.trim();});
+        out.push('<tr>' + cells.map(function(c){return '<td>' + _mdInline(c.trim()) + '</td>';}).join('') + '</tr>');
+        i++;
+      }
+      out.push('</table>');
+      continue;
+    }
+    // ordered list
+    var mo = l.match(/^\s*\d+\.\s+(.*)$/);
+    if (mo) {
+      out.push('<ol style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
+      while (i < lines.length && /^\s*\d+\.\s/.test(lines[i])) {
+        out.push('<li>' + _mdInline(lines[i].replace(/^\s*\d+\.\s/, '')) + '</li>');
+        i++;
+      }
+      out.push('</ol>');
+      continue;
+    }
+    // unordered list
+    var mu = l.match(/^\s*[-•·]\s+(.*)$/);
+    if (mu) {
+      out.push('<ul style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
+      while (i < lines.length && /^\s*[-•·]\s/.test(lines[i])) {
+        var item = lines[i].replace(/^\s*[-•·]\s/, '');
+        out.push('<li>' + _mdInline(item) + '</li>');
+        i++;
+      }
+      out.push('</ul>');
+      continue;
+    }
+    // paragraph (collect consecutive lines)
+    var para = [l];
+    i++;
+    while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|---+$|>\s|\||\s*\d+\.\s|\s*[-•·]\s)/.test(lines[i].trim())) {
+      para.push(lines[i]); i++;
+    }
+    out.push('<p style="font-size:0.8em;line-height:1.9;margin:6px 0">' + _mdInline(para.join('<br>')) + '</p>');
+  }
+  return out.join('');
+}
+
+// ── Helper: inline markdown (bold/italic/link) ──
+function _mdInline(t) {
+  t = t.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  t = t.replace(/\*(.+?)\*/g, '<i>$1</i>');
+  t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target=_blank style="color:var(--blue)">$1</a>');
+  return t;
+}
+
+// ═══ 华严祖师渲染 (从 GAP.huayan_masters; 贤首国师含综述全文) ═══
+function renderHuayanMasters() {
+  var hm = (typeof GAP !== 'undefined' && GAP.huayan_masters) ? GAP.huayan_masters : null;
+  if (!hm || !hm.masters) return '';
+  var h = '';
+
+  // ═══ 总览视图 (gv-masters) ═══
+  h += '<div id=gv-masters class=gv-section style=display:none>';
+  h += '<div class=section id=hm-overview><h2>' + (hm.title||'🧑 华严祖师') + '</h2>';
+  if (hm.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _mdInline(hm.intro) + '</p>';
+  h += '<table class=v-table style="font-size:0.78em;margin-top:10px"><tr>';
+  (hm.overview_header||[]).forEach(function(c){ h += '<th>' + c + '</th>'; });
+  h += '</tr>';
+  (hm.overview||[]).forEach(function(r){
+    h += '<tr>';
+    r.forEach(function(c,ci){ h += (ci===2?'<td style="color:var(--gold);font-weight:700">':'<td>') + c + '</td>'; });
+    h += '</tr>';
+  });
+  h += '</table>';
+  if (hm.overview_note) h += '<p style="font-size:0.7em;color:var(--text2);margin-top:6px">' + _mdInline(hm.overview_note) + '</p>';
+  h += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">';
+  hm.masters.forEach(function(m){
+    h += '<a href="#" onclick="switchGapView(\'master-' + m.id + '\',this);return false" class="gv-nav">' + m.name + ' →</a>';
+  });
+  h += '</div></div></div>';
+
+  // ═══ 每位祖师一个独立视图 (gv-master-<id>) ═══
+  hm.masters.forEach(function(m) {
+    h += '<div id=gv-master-' + m.id + ' class=gv-section style=display:none>';
+    // 页头横幅
+    h += '<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:14px">';
+    h += '<div style="font-size:0.75em;color:var(--text2);letter-spacing:0.5px">华严祖师 · ' + (m.role||'') + '</div>';
+    h += '<h2 style="color:var(--gold);margin:4px 0 2px">' + m.name + '</h2>';
+    h += '<div style="font-size:0.82em;color:var(--text2)">' + m.dates + (m.role?' · '+m.role:'') + '</div>';
+    h += '<a href="#" onclick="switchGapView(\'masters\',null);return false" style="font-size:0.75em;color:var(--blue);margin-top:8px;display:inline-block">← 返回祖师总览</a>';
+    h += '</div>';
+    // 生平
+    h += '<div class=section><h2>📜 生平与贡献</h2>';
+    if (m.brief) h += '<p style="font-size:0.82em;line-height:1.9;margin:4px 0">' + m.brief + '</p>';
+    if (m.works && m.works.length) {
+      h += '<h2 style="margin-top:16px">📚 著作要目</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">';
+      m.works.forEach(function(w){
+        h += '<span class=pat-wk>' + w.t;
+        if (w.u) h += ' <a href="https://cbetaonline.dila.edu.tw/zh/' + w.u + '" target=_blank style="color:var(--blue);font-size:0.85em">📖</a>';
+        h += '</span>';
+      });
+      h += '</div>';
+    }
+    h += '</div>';
+    // 综述全文（仅法藏）
+    if (m.review_doc && hm.review_md) {
+      h += '<div class=section style="border-left:4px solid var(--gold)">';
+      h += '<h2>📄 ' + m.name + ' · 全方位文献综述（全文）</h2>';
+      h += _mdFullToHTML(hm.review_md);
+      h += '</div>';
+    }
+    h += '</div>'; // close gv-master-<id>
+  });
+
+  return h;
+}
+
 function switchGapView(view,btn){
   document.querySelectorAll(".gv-nav").forEach(function(b){b.classList.remove("active");});
-  if(btn)btn.classList.add("active");
+  document.querySelectorAll("#sidebar .nav-link,#sidebar .sub-link").forEach(function(b){b.classList.remove("active");});
+  if(btn && btn.classList)btn.classList.add("active");
   document.querySelectorAll(".gv-section").forEach(function(s){s.style.display="none";});
   var el=document.getElementById("gv-"+view); if(el)el.style.display="block";
+  // 侧栏高亮：主项或子项含此 view 的链接
+  if(btn && btn.classList && btn.classList.contains('gv-nav')) {
+    var link=document.querySelector('#sidebar .sub-link[onclick*="'+view+'"]');
+    if(link)link.classList.add('active');
+  } else {
+    document.querySelectorAll("#sidebar .sub-link").forEach(function(b){b.classList.remove("active");});
+    var ml=document.querySelector('#sidebar .nav-link[onclick*="'+view+'"],#sidebar .sub-link[onclick*="'+view+'"]');
+    if(ml)ml.classList.add('active');
+  }
   try{localStorage.setItem('gap_view',view);}catch(e){}
 }
 setTimeout(function(){
