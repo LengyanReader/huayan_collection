@@ -78,19 +78,21 @@ def load_gap():
     pj = read_yaml('translation/panjiao_hupan.yaml')
     if pj:
         gap['panjiao_hupan'] = pj
-    # Merge huayan masters (华严祖师 — 五祖+李通玄; 法藏含综述全文)
+    # Merge huayan masters (华严祖师 — 五祖+李通玄; 贤首/清凉国师含综述全文)
     hm = read_yaml('translation/huayan_masters.yaml')
     if hm:
         gap['huayan_masters'] = hm
-        # 读取法藏全方位文献综述 markdown, 注入为完整内容
+        # 读取各祖师全方位文献综述 markdown, 按 master id 注入 (review_mds)
+        review_mds = {}
         for m in hm.get('masters', []):
             rd = m.get('review_doc')
             if rd:
                 doc_path = ROOT / rd
                 if doc_path.exists():
                     with open(doc_path, encoding='utf-8') as f:
-                        gap['huayan_masters']['review_md'] = f.read()
-                break
+                        review_mds[m.get('id')] = f.read()
+        if review_mds:
+            gap['huayan_masters']['review_mds'] = review_mds
     return gap
 
 

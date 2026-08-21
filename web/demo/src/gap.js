@@ -576,6 +576,15 @@ function _mdFullToHTML(text) {
       out.push('</ul>');
       continue;
     }
+    // code fence (```)
+    if (l.trim().indexOf('```') === 0) {
+      var code = [];
+      i++;
+      while (i < lines.length && lines[i].trim().indexOf('```') !== 0) { code.push(lines[i]); i++; }
+      if (i < lines.length) i++; // skip closing fence
+      out.push('<pre style="background:rgba(94,139,158,0.08);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:0.78em;line-height:1.5;overflow-x:auto;margin:8px 0;white-space:pre">' + code.join('\n').replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</pre>');
+      continue;
+    }
     // paragraph (collect consecutive lines)
     var para = [l];
     i++;
@@ -587,15 +596,16 @@ function _mdFullToHTML(text) {
   return out.join('');
 }
 
-// ── Helper: inline markdown (bold/italic/link) ──
+// ── Helper: inline markdown (code/bold/italic/link) ──
 function _mdInline(t) {
+  t = t.replace(/`([^`]+)`/g, '<code style="font-family:monospace;font-size:0.92em;background:rgba(94,139,158,0.12);padding:1px 5px;border-radius:4px">$1</code>');
   t = t.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
   t = t.replace(/\*(.+?)\*/g, '<i>$1</i>');
   t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target=_blank style="color:var(--blue)">$1</a>');
   return t;
 }
 
-// ═══ 华严祖师渲染 (从 GAP.huayan_masters; 贤首国师含综述全文) ═══
+// ═══ 华严祖师渲染 (从 GAP.huayan_masters; 贤首/清凉国师含综述全文) ═══
 function renderHuayanMasters() {
   var hm = (typeof GAP !== 'undefined' && GAP.huayan_masters) ? GAP.huayan_masters : null;
   if (!hm || !hm.masters) return '';
@@ -644,11 +654,12 @@ function renderHuayanMasters() {
       h += '</div>';
     }
     h += '</div>';
-    // 综述全文（仅法藏）
-    if (m.review_doc && hm.review_md) {
+    // 综述全文（法藏/澄观等 — 依各祖师 review_doc 取 review_mds[m.id]）
+    var reviewMd = (hm.review_mds && hm.review_mds[m.id]) || '';
+    if (m.review_doc && reviewMd) {
       h += '<div class=section style="border-left:4px solid var(--gold)">';
       h += '<h2>📄 ' + m.name + ' · 全方位文献综述（全文）</h2>';
-      h += _mdFullToHTML(hm.review_md);
+      h += _mdFullToHTML(reviewMd);
       h += '</div>';
     }
     h += '</div>'; // close gv-master-<id>

@@ -138,7 +138,7 @@ navigation:
         action: {type: call, fn: switchGapView, args: [master-zhiyan]}
       - label: 贤首国师·法藏（综述全文）
         action: {type: call, fn: switchGapView, args: [master-fazang]}
-      - label: 澄观·四祖
+      - label: 清凉国师·澄观（综述全文）
         action: {type: call, fn: switchGapView, args: [master-chengguan]}
       - label: 宗密·五祖
         action: {type: call, fn: switchGapView, args: [master-zongmi]}
