@@ -140,7 +140,7 @@ navigation:
         action: {type: call, fn: switchGapView, args: [master-fazang]}
       - label: 清凉国师·澄观（综述全文）
         action: {type: call, fn: switchGapView, args: [master-chengguan]}
-      - label: 宗密·五祖
+      - label: 圭峰大师·宗密（综述全文）
         action: {type: call, fn: switchGapView, args: [master-zongmi]}
       - label: 李通玄·枣柏大士
         action: {type: call, fn: switchGapView, args: [master-litongxuan]}

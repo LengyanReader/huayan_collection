@@ -80,6 +80,7 @@ masters:
       - {t: 注法界观门, u: T45n1884}
       - {t: 圆觉经略疏, u: T39n1795}
       - {t: 金刚经疏论纂要, u: T33n1701}
+    review_doc: docs/圭峰大师宗密全方位文献综述.md
   - id: litongxuan
     name: 李通玄（枣柏大士）
     dates: 635–730
