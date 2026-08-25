@@ -41,6 +41,7 @@ masters:
       - {t: 孔目章, u: T45n1870}
       - {t: 一乘十玄门, u: T45n1868}
       - {t: 五十要问答, u: T45n1869}
+    review_doc: docs/华严宗二祖智俨_综合深度研究.md
   - id: fazang
     name: 法藏（贤首国师）
     dates: 643–712
