@@ -46,6 +46,9 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 | 校验框架 | [docs/verification-framework.md](docs/verification-framework.md) | 三级来源分级 + 验证状态机 |
 | 可视化研究 | [docs/visualization-research.md](docs/visualization-research.md) | 系谱可视化方案分析 |
 | 海云体系 | [docs/ref海云继梦法师_佛法修行体系研究.md](docs/ref海云继梦法师_佛法修行体系研究.md) | 外部参考文档（只读） |
+| **文殊普贤信仰** | [docs/文殊普贤信仰专题研究.md](docs/文殊普贤信仰专题研究.md) | 二圣信仰专题（梵藏汉英·艺术·修行） |
+| **善财五十三参** | [docs/善财五十三参深度研究.md](docs/善财五十三参深度研究.md) | 五十三参版本考·地理考·心地境界·象征结构 |
+| 华严二祖综合 | [docs/华严宗二祖智俨_综合深度研究.md](docs/华严宗二祖智俨_综合深度研究.md) | 智俨综合研究（合并二祖研究） |
 
 ## 技术栈
 
@@ -127,7 +130,9 @@ python scripts/import_all_to_sqlite.py       # 多源JSON→SQLite导入
 python scripts/export_sqlite_to_json.py --verify  # 数据完整性验证
 
 # 图验证: SQLite → Neo4j + Cypher检查
-python scripts/load_neo4j.py --verify
+python scripts/load_neo4j.py --verify-sqlite  # SQLite直接图验证（无需Neo4j服务器）
+python scripts/load_neo4j.py --generate       # 导出Cypher脚本
+python scripts/load_neo4j.py --verify         # Neo4j在线验证（需服务器）
 
 # 来源可靠性验证
 python scripts/verify_sources.py

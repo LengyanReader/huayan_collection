@@ -289,6 +289,95 @@ def load_glossary():
     return terms
 
 
+def load_texts():
+    """Export texts, chapters, and cross_refs from SQLite.
+
+    Returns: {"texts": [...], "chapters": [...], "cross_refs": [...]}
+    """
+    conn = get_conn()
+
+    # --- Texts ---
+    rows = conn.execute("""
+        SELECT id, title_zh, title_bo, title_sa, title_en, type, sub_type,
+               taisho_no, cbeta_id, tohk_no, yitian_status, dynasty,
+               date_text, volumn_count, chapter_count, structure, abstract,
+               language, source_url, in_cbeta, has_tibetan, has_sanskrit
+        FROM texts ORDER BY id
+    """).fetchall()
+
+    texts = []
+    for r in rows:
+        texts.append({
+            "id": r['id'],
+            "title_zh": r['title_zh'] or '',
+            "title_bo": r['title_bo'] or '',
+            "title_sa": r['title_sa'] or '',
+            "title_en": r['title_en'] or '',
+            "type": r['type'] or 'sutra',
+            "sub_type": r['sub_type'] or '',
+            "taisho_no": r['taisho_no'] or '',
+            "cbeta_id": r['cbeta_id'] or '',
+            "tohk_no": r['tohk_no'] or '',
+            "yitian_status": r['yitian_status'] or 'not_listed',
+            "dynasty": r['dynasty'] or '',
+            "date_text": r['date_text'] or '',
+            "volumn_count": r['volumn_count'],
+            "chapter_count": r['chapter_count'],
+            "structure": r['structure'] or '',
+            "abstract": r['abstract'] or '',
+            "language": r['language'] or 'zh',
+            "source_url": r['source_url'] or '',
+            "in_cbeta": r['in_cbeta'] or 0,
+            "has_tibetan": r['has_tibetan'] or 0,
+            "has_sanskrit": r['has_sanskrit'] or 0,
+        })
+
+    # --- Chapters ---
+    rows = conn.execute("""
+        SELECT id, sutra_id, title_zh, title_bo, title_sa, title_en,
+               order_num, in_60huayan, in_80huayan, in_40huayan,
+               in_tibetan, is_unique_to_bo, is_unique_to_zh, content_diff
+        FROM chapters ORDER BY sutra_id, order_num
+    """).fetchall()
+
+    chapters = []
+    for r in rows:
+        chapters.append({
+            "id": r['id'],
+            "sutra_id": r['sutra_id'],
+            "title_zh": r['title_zh'] or '',
+            "title_bo": r['title_bo'] or '',
+            "title_sa": r['title_sa'] or '',
+            "title_en": r['title_en'] or '',
+            "order_num": r['order_num'],
+            "in_60huayan": r['in_60huayan'] or 0,
+            "in_80huayan": r['in_80huayan'] or 0,
+            "in_40huayan": r['in_40huayan'] or 0,
+            "in_tibetan": r['in_tibetan'] or 0,
+            "is_unique_to_bo": r['is_unique_to_bo'] or 0,
+            "is_unique_to_zh": r['is_unique_to_zh'] or 0,
+            "content_diff": r['content_diff'] or '',
+        })
+
+    # --- Cross-refs ---
+    rows = conn.execute("""
+        SELECT from_text_id, to_text_id, relation, note
+        FROM cross_refs ORDER BY id
+    """).fetchall()
+
+    cross_refs = []
+    for r in rows:
+        cross_refs.append({
+            "from": r['from_text_id'],
+            "to": r['to_text_id'],
+            "relation": r['relation'] or '',
+            "note": r['note'] or '',
+        })
+
+    conn.close()
+    return {"texts": texts, "chapters": chapters, "cross_refs": cross_refs}
+
+
 def get_person_by_id(source_id):
     """Get a single person by source_id. Returns dict or None."""
     conn = get_conn()

@@ -357,6 +357,9 @@ function renderGap(){
   // ═══ 华严祖师 (从 GAP.huayan_masters 数据驱动; 贤首国师含综述全文) ═══
   h+=renderHuayanMasters();
 
+  // ═══ 文献目录 (从 SQLite texts/chapters/cross_refs 表) ═══
+  h+=renderCatalog();
+
   // ═══ REFERENCES SECTION ═══
   h+="<div id=gv-refs class=gv-section style=display:none>";
 
@@ -790,4 +793,122 @@ function loadParallelChapter(chId){
     en.innerHTML="<span style=color:var(--text2)>⏳ 待对齐</span>";
     zh.innerHTML="<span style=color:var(--text2)>⏳ 待对齐</span>";
   }
+}
+
+// ═══ 文献目录 (从 SQLite texts/chapters/cross_refs 表) ═══
+function renderCatalog(){
+  var tc = (typeof GAP !== 'undefined' && GAP.texts_catalog) ? GAP.texts_catalog : null;
+  if(!tc || !tc.texts || !tc.texts.length) return '';
+  var h = '';
+
+  // ── 经典·论疏·翻译 ──
+  h += '<div id=gv-catalog class=gv-section style=display:none>';
+  h += '<h2 style=color:var(--gold)>📚 华严文献目录</h2>';
+  h += '<div class=section><p style=color:var(--text2);font-size:0.85em;line-height:1.7>本目录收录华严宗相关经典、论疏、翻译及研究著作，数据来源：CBETA电子佛典 · 大正藏 · 德格版甘珠尔。共 <b style=color:var(--gold)>' + tc.texts.length + '</b> 部文献。</p></div>';
+
+  // Type stats
+  var typeMap = {};
+  tc.texts.forEach(function(t){ typeMap[t.type] = (typeMap[t.type]||0) + 1; });
+  var typeLabels = {sutra:'经典',commentary:'注疏',shastra:'论典',translation:'翻译',study:'研究',biography:'传记',catalog:'目录',lecture:'讲记'};
+  h += '<div class=section style=display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">';
+  Object.keys(typeMap).forEach(function(k){
+    h += '<span style=flex:0;min-width:80px;background:var(--card);border-radius:8px;padding:8px 12px;text-align:center;border:1px solid var(--line)><div style=font-size:1.5em;font-weight:700;color:var(--gold)>' + typeMap[k] + '</div><div style=font-size:0.82em>' + (typeLabels[k]||k) + '</div></span>';
+  });
+  h += '</div>';
+
+  // Filter buttons
+  h += '<div class=section style=margin-bottom:12px>';
+  h += '<button onclick="filterCatalog(\'all\')" class="gv-nav active" style=margin:2px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;font-size:0.82em>全部</button>';
+  Object.keys(typeMap).forEach(function(k){
+    h += '<button onclick="filterCatalog(\'' + k + '\')" class="gv-nav" style=margin:2px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;font-size:0.82em>' + (typeLabels[k]||k) + ' (' + typeMap[k] + ')</button>';
+  });
+  h += '</div>';
+
+  // Main table
+  h += '<div class=section id=catalog-table-wrap><table class=v-table id=catalog-table>';
+  h += '<tr><th>类型</th><th>标题</th><th>梵文/藏文</th><th>大正藏</th><th>CBETA</th><th>朝代</th><th>卷数</th><th>品数</th><th>标注</th></tr>';
+  tc.texts.forEach(function(t){
+    var lang_badge = '';
+    if(t.has_sanskrit) lang_badge += '<span style="font-size:0.7em;color:var(--text2)">梵</span> ';
+    if(t.has_tibetan) lang_badge += '<span style="font-size:0.7em;color:var(--text2)">藏</span> ';
+    h += '<tr data-type="' + t.type + '">';
+    h += '<td><span style="font-size:0.8em;color:var(--text2)">' + (typeLabels[t.type]||t.type) + '</span></td>';
+    h += '<td style=font-weight:600>' + t.title_zh + (t.title_en ? '<br><span style="font-size:0.78em;color:var(--text2)">' + t.title_en + '</span>' : '') + '</td>';
+    h += '<td style="font-size:0.82em;color:var(--text2)">' + (t.title_sa || '') + (t.title_bo ? '<br>' + t.title_bo : '') + '</td>';
+    h += '<td style="font-size:0.82em">' + (t.taisho_no || '—') + '</td>';
+    h += '<td style="font-size:0.82em">' + (t.cbeta_id || '—') + '</td>';
+    h += '<td style="font-size:0.82em">' + (t.dynasty || '—') + '</td>';
+    h += '<td style="font-size:0.82em;text-align:center">' + (t.volumn_count || '—') + '</td>';
+    h += '<td style="font-size:0.82em;text-align:center">' + (t.chapter_count || '—') + '</td>';
+    h += '<td>' + lang_badge + (t.structure ? '<span style="font-size:0.7em;color:var(--text2)">' + t.structure + '</span>' : '') + '</td>';
+    h += '</tr>';
+  });
+  h += '</table></div>';
+
+  // Abstracts (collapsible per text)
+  var withAbstract = tc.texts.filter(function(t){ return t.abstract; });
+  if(withAbstract.length > 0){
+    h += '<div class=section style=margin-top:16px><h2>📖 内容简介</h2>';
+    withAbstract.forEach(function(t){
+      h += '<div class=wu-door onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>' + t.title_zh + '</span><div class=body>' + t.abstract + '</div></div>';
+    });
+    h += '</div>';
+  }
+
+  h += '</div>'; // close gv-catalog
+
+  // ── 品目对照 (chapters) ──
+  h += '<div id=gv-cat-chapters class=gv-section style=display:none>';
+  h += '<h2 style=color:var(--gold)>📋 品目对照 — 八十华严 39 品</h2>';
+  h += '<div class=section><table class=v-table><tr><th>#</th><th>品名</th><th>六十华严</th><th>八十华严</th><th>四十华严</th><th>藏文</th></tr>';
+  tc.chapters.forEach(function(ch){
+    h += '<tr>';
+    h += '<td style=text-align:center>' + ch.order_num + '</td>';
+    h += '<td style=font-weight:600>' + ch.title_zh + '</td>';
+    h += '<td style=text-align:center>' + (ch.in_60huayan ? '✅' : '—') + '</td>';
+    h += '<td style=text-align:center>' + (ch.in_80huayan ? '✅' : '—') + '</td>';
+    h += '<td style=text-align:center>' + (ch.in_40huayan ? '✅' : '—') + '</td>';
+    h += '<td style=text-align:center>' + (ch.in_tibetan ? '✅' : (ch.is_unique_to_zh ? '<span style=color:var(--gold)>汉独</span>' : '—')) + '</td>';
+    h += '</tr>';
+  });
+  h += '</table></div>';
+  h += '</div>';
+
+  // ── 文本关联 (cross-refs) ──
+  h += '<div id=gv-cat-crossrefs class=gv-section style=display:none>';
+  h += '<h2 style=color:var(--gold)>🔗 文本关联图谱</h2>';
+  h += '<div class=section><p style=color:var(--text2);font-size:0.85em;margin-bottom:12px>共 <b>' + tc.cross_refs.length + '</b> 条文本间关联关系。</p>';
+  var relLabels = {earlier_translation:'早期译本',standard_version:'标准版',expanded_chapter:'扩译品',alternate_trans:'异译本',related:'相关经典',commentary_on:'注释'};
+  h += '<table class=v-table><tr><th>源文献</th><th>关系</th><th>目标文献</th><th>说明</th></tr>';
+  var textMap = {};
+  tc.texts.forEach(function(t){ textMap[t.id] = t.title_zh; });
+  tc.cross_refs.forEach(function(cr){
+    var fromName = textMap[cr.from] || ('#' + cr.from);
+    var toName = textMap[cr.to] || ('#' + cr.to);
+    h += '<tr>';
+    h += '<td style=font-weight:600>' + fromName + '</td>';
+    h += '<td><span style="font-size:0.82em;color:var(--gold)">' + (relLabels[cr.relation]||cr.relation) + '</span></td>';
+    h += '<td style=font-weight:600>' + toName + '</td>';
+    h += '<td style="font-size:0.82em;color:var(--text2)">' + (cr.note || '') + '</td>';
+    h += '</tr>';
+  });
+  h += '</table></div>';
+  h += '</div>';
+
+  return h;
+}
+
+// Catalog filter
+function filterCatalog(type){
+  var rows = document.querySelectorAll('#catalog-table tr[data-type]');
+  var btns = document.querySelectorAll('#gv-catalog .gv-nav');
+  btns.forEach(function(b){ b.classList.remove('active'); });
+  event.target.classList.add('active');
+  rows.forEach(function(r){
+    if(type === 'all' || r.getAttribute('data-type') === type){
+      r.style.display = '';
+    } else {
+      r.style.display = 'none';
+    }
+  });
 }

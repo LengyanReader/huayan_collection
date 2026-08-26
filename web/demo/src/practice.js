@@ -1372,6 +1372,8 @@ function renderPracticeSources() {
       });
     h += '</details>';
   }
+  h += '</div>';  // close res-sources-platforms
+  }
   return h;
   }
 }

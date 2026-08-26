@@ -136,14 +136,23 @@ navigation:
         action: {type: call, fn: switchGapView, args: [master-dushun]}
       - label: 智俨·二祖
         action: {type: call, fn: switchGapView, args: [master-zhiyan]}
-      - label: 贤首国师·法藏（综述全文）
+      - label: 贤首国师·法藏
         action: {type: call, fn: switchGapView, args: [master-fazang]}
-      - label: 清凉国师·澄观（综述全文）
+      - label: 清凉国师·澄观
         action: {type: call, fn: switchGapView, args: [master-chengguan]}
       - label: 圭峰大师·宗密（综述全文）
         action: {type: call, fn: switchGapView, args: [master-zongmi]}
       - label: 李通玄·枣柏大士
         action: {type: call, fn: switchGapView, args: [master-litongxuan]}
+    - label: 📚 文献目录
+      action: {type: call, fn: switchGapView, args: [catalog]}
+      subs:
+      - label: 经典·论疏·翻译
+        action: {type: call, fn: gapSubNav, args: [catalog, cat-sutras]}
+      - label: 品目对照
+        action: {type: call, fn: gapSubNav, args: [catalog, cat-chapters]}
+      - label: 文本关联
+        action: {type: call, fn: gapSubNav, args: [catalog, cat-crossrefs]}
 
   jiaoxing:
     title: 教海行云 · 信解行证

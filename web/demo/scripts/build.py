@@ -93,6 +93,10 @@ def load_gap():
                         review_mds[m.get('id')] = f.read()
         if review_mds:
             gap['huayan_masters']['review_mds'] = review_mds
+    # Merge texts/chapters/cross_refs from SQLite (complete catalog)
+    texts_data = db_reader.load_texts()
+    if texts_data:
+        gap['texts_catalog'] = texts_data
     return gap
 
 

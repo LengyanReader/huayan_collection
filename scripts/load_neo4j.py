@@ -201,7 +201,7 @@ def read_sqlite_data(db_path: Path) -> tuple[list[dict], list[dict], list[dict]]
     cursor = conn.cursor()
 
     # --- Persons ---
-    columns = ["id"] + PERSON_COLUMNS
+    columns = ["id", "source_id"] + PERSON_COLUMNS
     cursor.execute(f"SELECT {', '.join(columns)} FROM persons ORDER BY id")
     persons = [dict(row) for row in cursor.fetchall()]
 
@@ -230,9 +230,12 @@ def read_sqlite_data(db_path: Path) -> tuple[list[dict], list[dict], list[dict]]
 # ---------------------------------------------------------------------------
 
 def resolve_edges(
-    edges: list[dict], person_id_to_data: dict[int, dict]
+    edges: list[dict], person_id_to_data: dict[int, dict],
+    source_id_to_data: dict[str, dict],
 ) -> tuple[list[dict], list[str]]:
-    """Map from_person_id / to_person_id TEXT refs to integer person IDs.
+    """Map from_person_id / to_person_id TEXT refs to person data.
+
+    Tries integer PK lookup first, then source_id lookup (e.g. 'person_001').
 
     Returns:
         (resolved_edges, warnings) — resolved_edges are those where both
@@ -242,28 +245,34 @@ def resolve_edges(
     warnings: list[str] = []
 
     for edge in edges:
-        from_int = _parse_person_ref(edge["from_person_id"])
-        to_int = _parse_person_ref(edge["to_person_id"])
+        from_ref = edge["from_person_id"]
+        to_ref = edge["to_person_id"]
 
-        if from_int is None or to_int is None:
+        # Resolve from
+        from_data = None
+        from_int = _parse_person_ref(from_ref)
+        if from_int is not None and from_int in person_id_to_data:
+            from_data = person_id_to_data[from_int]
+        elif from_ref in source_id_to_data:
+            from_data = source_id_to_data[from_ref]
+
+        # Resolve to
+        to_data = None
+        to_int = _parse_person_ref(to_ref)
+        if to_int is not None and to_int in person_id_to_data:
+            to_data = person_id_to_data[to_int]
+        elif to_ref in source_id_to_data:
+            to_data = source_id_to_data[to_ref]
+
+        if from_data is None:
             warnings.append(
-                f"  SKIP edge #{edge['id']}: non-numeric ref "
-                f"({edge['from_person_id']} → {edge['to_person_id']}) "
-                f"relation={edge['relation']}"
+                f"  SKIP edge #{edge['id']}: from_person_id={from_ref} not found"
             )
             continue
 
-        if from_int not in person_id_to_data:
+        if to_data is None:
             warnings.append(
-                f"  SKIP edge #{edge['id']}: from_person_id={edge['from_person_id']} "
-                f"(int={from_int}) not found in persons table"
-            )
-            continue
-
-        if to_int not in person_id_to_data:
-            warnings.append(
-                f"  SKIP edge #{edge['id']}: to_person_id={edge['to_person_id']} "
-                f"(int={to_int}) not found in persons table"
+                f"  SKIP edge #{edge['id']}: to_person_id={to_ref} not found"
             )
             continue
 
@@ -275,8 +284,8 @@ def resolve_edges(
             )
 
         resolved.append({
-            "from_ref": _format_person_ref(from_int),
-            "to_ref": _format_person_ref(to_int),
+            "from_ref": from_data["source_id"],
+            "to_ref": to_data["source_id"],
             "relation": relation,
             "lineage_name": edge.get("lineage_name"),
             "note": edge.get("note"),
@@ -624,6 +633,140 @@ def verify_neo4j(
 
 
 # ---------------------------------------------------------------------------
+# Mode: --verify-sqlite  (graph validation via SQLite, no Neo4j needed)
+# ---------------------------------------------------------------------------
+
+# Graph validation checks — equivalent to Neo4j Cypher queries but using SQL.
+SQLITE_CHECKS: list[tuple[str, str, list[tuple[str, ...]]]] = [
+    (
+        "node_counts",
+        "SELECT 'Person' AS label, COUNT(*) AS cnt FROM persons "
+        "UNION ALL SELECT 'Location', COUNT(*) FROM locations "
+        "UNION ALL SELECT 'LineageEdge', COUNT(*) FROM lineage_edges "
+        "UNION ALL SELECT 'PersonLocation', COUNT(*) FROM person_locations "
+        "UNION ALL SELECT 'Text', COUNT(*) FROM texts "
+        "UNION ALL SELECT 'Chapter', COUNT(*) FROM chapters "
+        "UNION ALL SELECT 'GlossaryTerm', COUNT(*) FROM glossary "
+        "ORDER BY cnt DESC",
+        [],
+    ),
+    (
+        "relation_counts",
+        "SELECT relation, COUNT(*) AS cnt FROM lineage_edges "
+        "GROUP BY relation ORDER BY cnt DESC",
+        [],
+    ),
+    (
+        "isolated_persons",
+        "SELECT p.source_id, p.name_zh, p.dynasty FROM persons p "
+        "WHERE p.source_id NOT IN (SELECT from_person_id FROM lineage_edges) "
+        "AND p.source_id NOT IN (SELECT to_person_id FROM lineage_edges) "
+        "ORDER BY p.dynasty, p.name_zh",
+        [],
+    ),
+    (
+        "orphan_edges",
+        "SELECT e.id, e.from_person_id, e.to_person_id, e.relation "
+        "FROM lineage_edges e "
+        "LEFT JOIN persons pf ON e.from_person_id = pf.source_id "
+        "LEFT JOIN persons pt ON e.to_person_id = pt.source_id "
+        "WHERE pf.source_id IS NULL OR pt.source_id IS NULL "
+        "ORDER BY e.id",
+        [],
+    ),
+    (
+        "huayan_five_patriarchs_chain",
+        "WITH RECURSIVE chain AS ("
+        "  SELECT from_person_id, to_person_id, 1 AS depth "
+        "  FROM lineage_edges "
+        "  WHERE from_person_id = 'person_001' "
+        "  UNION ALL "
+        "  SELECT e.from_person_id, e.to_person_id, c.depth + 1 "
+        "  FROM lineage_edges e JOIN chain c ON e.from_person_id = c.to_person_id "
+        "  WHERE c.depth < 10 "
+        ") "
+        "SELECT depth, from_person_id AS \"from\", to_person_id AS \"to\" "
+        "FROM chain WHERE to_person_id = 'person_005' ORDER BY depth",
+        [],
+    ),
+    (
+        "dynasty_distribution",
+        "SELECT dynasty, COUNT(*) AS cnt FROM persons "
+        "WHERE dynasty IS NOT NULL AND dynasty != '' "
+        "GROUP BY dynasty ORDER BY cnt DESC",
+        [],
+    ),
+    (
+        "person_locations_summary",
+        "SELECT relation, COUNT(*) AS cnt FROM person_locations "
+        "GROUP BY relation ORDER BY cnt DESC",
+        [],
+    ),
+    (
+        "orphan_person_locations",
+        "SELECT pl.person_id, pl.location_id "
+        "FROM person_locations pl "
+        "LEFT JOIN persons p ON pl.person_id = p.id "
+        "LEFT JOIN locations l ON pl.location_id = l.id "
+        "WHERE p.id IS NULL OR l.id IS NULL",
+        [],
+    ),
+]
+
+
+def verify_sqlite(db_path: Path) -> int:
+    """Run graph validation checks directly against SQLite.
+
+    Returns the number of checks that produced errors or warnings (0 = all clear).
+    """
+    if not db_path.exists():
+        print(f"[ERROR] SQLite database not found: {db_path}", file=sys.stderr)
+        return 1
+
+    sys.stdout.reconfigure(encoding="utf-8")
+    conn = sqlite3.connect(str(db_path))
+    conn.row_factory = sqlite3.Row
+
+    errors = 0
+
+    for name, sql, _params in SQLITE_CHECKS:
+        print(f"\n{'─' * 60}")
+        print(f"  Check: {name}")
+        print(f"{'─' * 60}")
+
+        try:
+            rows = conn.execute(sql).fetchall()
+            if not rows:
+                print("  (no results)")
+            else:
+                keys = list(rows[0].keys())
+                header = "  " + " | ".join(keys)
+                print(header)
+                print("  " + "─" * (len(header) - 2))
+                for row in rows:
+                    vals = "  " + " | ".join(str(row[k]) for k in keys)
+                    print(vals)
+                print(f"  — {len(rows)} row(s)")
+
+                # Specific validations
+                if name == "orphan_edges" and len(rows) > 0:
+                    print(f"  ⚠ {len(rows)} edge(s) reference non-existent persons")
+                    errors += 1
+                if name == "orphan_person_locations" and len(rows) > 0:
+                    print(f"  ⚠ {len(rows)} person_location link(s) reference missing entities")
+                    errors += 1
+                if name == "isolated_persons":
+                    # Informational only — isolated persons are expected
+                    print(f"  ℹ {len(rows)} person(s) have no edges (expected for some)")
+        except Exception as exc:
+            print(f"  [ERROR] {exc}")
+            errors += 1
+
+    conn.close()
+    return errors
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -678,6 +821,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Run validation queries against a running Neo4j instance",
     )
+    mode.add_argument(
+        "--verify-sqlite",
+        action="store_true",
+        help="Run graph validation queries directly against SQLite (no Neo4j needed)",
+    )
 
     return p
 
@@ -688,12 +836,15 @@ def main() -> None:
     # ---- Read data from SQLite ----
     persons, edges, locations = read_sqlite_data(args.db)
 
-    # Build lookup for edge resolution
+    # Build lookup for edge resolution (by integer PK and by source_id)
     person_id_to_data: dict[int, dict] = {}
+    source_id_to_data: dict[str, dict] = {}
     for p in persons:
         person_id_to_data[p["id"]] = p
+        if p.get("source_id"):
+            source_id_to_data[p["source_id"]] = p
 
-    resolved_edges, warnings = resolve_edges(edges, person_id_to_data)
+    resolved_edges, warnings = resolve_edges(edges, person_id_to_data, source_id_to_data)
 
     for w in warnings:
         print(f"[WARN] {w}", file=sys.stderr)
@@ -707,7 +858,6 @@ def main() -> None:
     # ---- Dispatch mode ----
     if args.generate:
         cypher = generate_cypher(persons, resolved_edges, locations)
-        # Encode stdout to UTF-8; on Windows this prevents cp1252 errors.
         sys.stdout.reconfigure(encoding="utf-8")
         print(cypher)
         print(
@@ -719,6 +869,11 @@ def main() -> None:
         errs = verify_neo4j(args.uri, args.user, args.password, args.database)
         if errs:
             print(f"\n[WARN] {errs} validation query(s) had errors.", file=sys.stderr)
+            sys.exit(1)
+    elif args.verify_sqlite:
+        errs = verify_sqlite(args.db)
+        if errs:
+            print(f"\n[WARN] {errs} validation check(s) failed.", file=sys.stderr)
             sys.exit(1)
     else:
         # Default: load into Neo4j

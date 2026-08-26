@@ -42,8 +42,8 @@ temples:
     source: 《续高僧传》卷二十五 / 《华严经传记》
     verified: 1
     links:
-      - name: 百度百科
-        url: https://baike.baidu.com/item/至相寺
+      - name: CBETA电子佛典·续高僧传
+        url: https://cbetaonline.dila.edu.tw/
 
   - id: t_huayan_002
     name: 太原寺(大荐福寺)
@@ -134,9 +134,7 @@ temples:
     events: [月霞创华严大学1914]
     source: 近现代佛教史料 / 于凌波《中国近现代佛教人物志》
     verified: 1
-    links:
-      - name: 兴福寺
-        url: https://baike.baidu.com/item/兴福寺
+    links: []
 
   - id: t_huayan_007
     name: 台北华严莲社
@@ -666,8 +664,8 @@ temples:
     source: 《史记·孔子世家》
     verified: 1
     links:
-      - name: 曲阜孔庙
-        url: https://baike.baidu.com/item/孔庙
+      - name: UNESCO·Temple and Cemetery of Confucius
+        url: https://whc.unesco.org/en/list/704
 
   - id: t_confucian_002
     name: 岳麓书院
