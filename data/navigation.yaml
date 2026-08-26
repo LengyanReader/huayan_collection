@@ -148,11 +148,11 @@ navigation:
       action: {type: call, fn: switchGapView, args: [catalog]}
       subs:
       - label: 经典·论疏·翻译
-        action: {type: call, fn: gapSubNav, args: [catalog, cat-sutras]}
+        action: {type: call, fn: switchGapView, args: [catalog]}
       - label: 品目对照
-        action: {type: call, fn: gapSubNav, args: [catalog, cat-chapters]}
+        action: {type: call, fn: switchGapView, args: [cat-chapters]}
       - label: 文本关联
-        action: {type: call, fn: gapSubNav, args: [catalog, cat-crossrefs]}
+        action: {type: call, fn: switchGapView, args: [cat-crossrefs]}
 
   jiaoxing:
     title: 教海行云 · 信解行证
