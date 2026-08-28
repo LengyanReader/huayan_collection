@@ -144,6 +144,8 @@ navigation:
         action: {type: call, fn: switchGapView, args: [master-zongmi]}
       - label: 李通玄·枣柏大士
         action: {type: call, fn: switchGapView, args: [master-litongxuan]}
+      - label: 梦参·近代弘传
+        action: {type: call, fn: switchGapView, args: [master-mengcan]}
     - label: 📚 文献目录
       action: {type: call, fn: switchGapView, args: [catalog]}
       subs:
