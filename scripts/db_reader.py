@@ -52,7 +52,7 @@ def load_graph():
         SELECT source_id, name_zh, name_bo, name_sa, name_en, name_ja,
                alt_names, title, type, birth_year, death_year, dynasty,
                biography, lineage_branch, lineage_order, key_works,
-               works_links, multi_lineage, verified
+               works_links, multi_lineage, verified, source
         FROM persons ORDER BY id
     """).fetchall()
 
@@ -77,6 +77,7 @@ def load_graph():
             "wk": kw if kw else [],
             "wl": wl if wl else {},
             "v": r['verified'] or 0,
+            "src": r['source'] or '',
             # Extra fields (not in legacy graph.json but available for enriched rendering)
             "name_sa": r['name_sa'],
             "name_en": r['name_en'],

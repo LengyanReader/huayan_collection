@@ -803,7 +803,7 @@ function showInfo(p,p2,e){
     +"<h3>"+(ti?'['+ti+'] ':'')+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
     +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
     +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span>"
-    +((p.v||0)>0?'<span class=tag style=background:rgba(125,154,110,0.1);color:#7d9a6e>✓</span>':'<span class=tag style=background:rgba(200,160,80,0.1);color:#a08020>°</span>')
+    +((p.v||0)>0?'<span class=tag style="background:rgba(125,154,110,0.1);color:#7d9a6e" title="来源已核实">✓</span>':'<span class=tag style="background:rgba(196,107,93,0.1);color:#c46b5d" title="来源缺失或尚未核实，需补第一手出处并标注存疑">⚠️ 存疑</span>')
     +(gen?'<span class=tag style=background:rgba(184,134,60,0.06)>第'+gen+'代传人</span>':'')
     +(connCount?'<span class=tag style=background:rgba(184,134,60,0.08)>'+connCount+'个关联</span>':'')+"<br>"
     +"📅 <b>"+(p.dy||"?")+"</b> · "+(p.b||"?")+"–"+(p.d||"?")+" "+lifeSpan+"<br>"
@@ -814,7 +814,9 @@ function showInfo(p,p2,e){
   var srcNote='';
   if(PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id]&&PERSON_TRAJECTORIES[p.id].source)srcNote=PERSON_TRAJECTORIES[p.id].source;
   if(!srcNote&&p.src)srcNote=p.src;
-  if(srcNote)h+='<div style="margin-top:3px;font-size:0.65em;color:var(--text2);opacity:0.7">📚 '+srcNote+'</div>';
+  if(srcNote)h+='<div style="margin-top:3px;font-size:0.65em;color:var(--text2);opacity:0.7">📚 '+srcNote+'</div>'
+    +'<div style="margin-top:2px;font-size:0.62em;color:var(--text2)">('+((p.v||0)>0?'来源信息为已核实状态':'来源已登记，待人工核实')+')</div>';
+  else h+='<div style="margin-top:3px;font-size:0.65em;color:#c46b5d;background:rgba(196,107,93,0.06);padding:3px 8px;border-radius:6px;display:inline-block">⚠️ 暂无来源标注 — 存疑，待补第一手出处</div>';
   // ── Huayan connection annotation ──
   var ha=null;
   try{ha=(EVENTS&&EVENTS.huayan_annotations&&EVENTS.huayan_annotations.persons)?EVENTS.huayan_annotations.persons[p.id]:null;}catch(e){}
@@ -1308,7 +1310,7 @@ function _rosterGroupHTML(g,persons){
         +' onmouseover="this.style.background=\''+c+'25\'" onmouseout="this.style.background=\''+c+'0d\'">'
         +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'')
         +'<b>'+p.n+'</b>'
-        +(_tr&&_tr.verified?' <span style=color:#7d9a6e title='+(_tr.source||'')+'>✓</span>':'')
+        +(_tr&&_tr.verified?' <span style=color:#7d9a6e title='+(_tr.source||'')+'>✓</span>':(_tr&&_tr.source?'':' <span style=color:#c46b5d title="来源缺失，存疑待核">⚠️存疑</span>'))
         +' '
         +'<span style=color:var(--text2);font-size:0.9em>'+yrs+'</span></span>';
   });
