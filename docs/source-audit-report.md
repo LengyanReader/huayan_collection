@@ -1,6 +1,6 @@
 # 信息来源可靠性审计报告
 
-> 生成时间：2026-08-30T07:23 · 数据源：SQLite `data/catalog/huayan.db` · 由 `scripts/verify_sources.py` 自动产出，
+> 生成时间：2026-08-30T07:36 · 数据源：SQLite `data/catalog/huayan.db` · 由 `scripts/verify_sources.py` 自动产出，
 > 结论仅供人工核校参考；T0/T3 项即需补充第一手来源或标注存疑。
 
 ## 总览
@@ -9,7 +9,7 @@
 |------|------|--------|------|------|
 | persons | 95 | 0 | 0.0% | 评分 68/100 |
 | lineage_edges | 92 | 0 | 0.0% | — |
-| docs   | 31 | 无存疑标注 11 篇 | — | — |
+| docs   | 20 | 无存疑标注 0 篇 | — | — |
 
 ## persons 需补来源（T0）
 
@@ -58,28 +58,6 @@
 
 ## locations 缺来源
 
-- [ ] `l_changan_t` 长安逍遥园（temple）
-- [ ] `l_changan_x` 长安大慈恩寺·弘福寺（temple）
-- [ ] `l_ganden` 拉萨·甘丹寺（temple）
-- [ ] `l_guangzhou` 广州（region）
-- [ ] `l_kolkata` 加尔各答·罗摩克里希纳传道会（temple）
-- [ ] `l_kucha` 龟兹（region）
-- [ ] `l_nalanda` 那烂陀寺（temple）
-- [ ] `l_nalanda2` 那烂陀寺(参考)（temple）
-- [ ] `l_pondi` 印度本地治里·Aurobindo Ashram（temple）
-- [ ] `l_ramana` 印度圣山 Arunachala (Tiruvannamalai)（mountain）
-- [ ] `l_yoga` 印度阿弥塔巴·LIFE Mission道场（temple）
 
 ## docs 无存疑标注
 
-- [ ] architecture.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] engineering-workflow.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] knowledge-management.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] multilingual-alignment.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] next-phase-plan.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] reference-management.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] scalable-text-architecture.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] tech-stack.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] verification-framework.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] visualization-research.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）
-- [ ] 善财五十三参深度研究.md　（全篇无「存疑/待考」标注，需复核是否存在不确定内容）

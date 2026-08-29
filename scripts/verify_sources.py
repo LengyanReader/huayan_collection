@@ -118,10 +118,21 @@ def audit_locations(cur):
             "no_source": no_source}
 
 
+# 工程/流程文档（陈述项目设计而非研究事实，不适用"存疑"标注核查）
+ENGINEERING_DOCS = frozenset({
+    "architecture.md", "engineering-workflow.md", "knowledge-management.md",
+    "multilingual-alignment.md", "next-phase-plan.md", "reference-management.md",
+    "scalable-text-architecture.md", "tech-stack.md", "translation-guide.md",
+    "verification-framework.md", "visualization-research.md",
+})
+
+
 def audit_docs():
-    """docs/*.md 的存疑/待考标注覆盖率"""
+    """docs/*.md 研究类文档的存疑/待考标注覆盖率（工程文档除外）"""
     results = []
     for p in sorted(DOCS_DIR.glob("*.md")):
+        if p.name in ENGINEERING_DOCS:
+            continue
         text = p.read_text(encoding="utf-8")
         markers = len(re.findall(r"存疑|待考|待核|疑点|存异说|一说般", text))
         citations = text.count("CBETA") + text.count("T[0-9]") + text.count("T[0-9]{1,2}n")
