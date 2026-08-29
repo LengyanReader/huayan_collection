@@ -862,6 +862,9 @@ def build_articles(articles):
   <h1>{title}</h1>
   <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
 </header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
 </div>
 <main class="content content-article" id="article-root"></main>
 
@@ -915,6 +918,9 @@ def build_articles(articles):
   <h1>📚 独立文章目录</h1>
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
+<div style="background:rgba(94,139,158,0.06);border-bottom:1px solid rgba(94,139,158,0.2);padding:5px 16px;font-size:0.7em;color:var(--blue);text-align:center">
 共 {count} 篇完整文章的独立地址 · 每篇均含整篇 doc 全文 · 由 build.py 依 data/translation/standalone_articles.yaml 生成
 </div>
 </div>
