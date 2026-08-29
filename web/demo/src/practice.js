@@ -756,6 +756,8 @@ function switchPracticeView(view,btn){
   document.querySelectorAll(".pv-section").forEach(function(s){s.style.display="none";});
   var pvEl=document.getElementById("pv-"+view);
   if(pvEl)pvEl.style.display="block";
+  // 独立文章入口条（若本子页对应某篇完整文章的独立页）
+  try{articleChip(view,'#pv-'+view);}catch(e){};
   try{localStorage.setItem('practice_sub',view);}catch(e){};
   // Force-reload lazy images when switching to heart (now med-heart)
   if(view==='meditation'){setTimeout(function(){
@@ -1376,7 +1378,6 @@ function renderPracticeSources() {
   }
   return h;
   }
-}
 
 // ═══ 天台觉景渲染 (从 PRACTICE_DATA.tiantai_juejing) ═══
 function renderTiantaiSection() {

@@ -11,7 +11,7 @@
 
 **[web/demo/index.html](web/demo/index.html)** — 导航主页，链接到6个独立Tab页面
 - Tab 1: **法脉传承**·时空长河 (Canvas时间轴 + 理论/修行图层 + 主地图 + 全球文明迷你地图 + 95节点动画 + 古地图模式 + 174条人物行迹)
-- Tab 2: **华严文献**·汉藏差异 (子导航四页 + 三语对读 + 50条术语 + 文本系谱)
+- Tab 2: **华严文献**·汉藏差异 (子导航多页: 华严经学/以经证经/判教互判/华严祖师/专题研究 + 三语对读 + 50条术语 + 文本系谱)
 - Tab 3: **华严教行** (子导航四页·修行体系/禅观法要/实修心要/讲法资源 + YouTube集成)
 - Tab 4: **前沿对话** (AI/计算现象学/神经科学/心灵哲学 + 文献综述)
 - Tab 5: **世主妙严** (华藏世界海曼荼罗 + 三界诸天图 + 艺术珍品 + 梵呗)
@@ -77,6 +77,9 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 | 法脉传承 | 事件/动画/传播 | `data/events/*.yaml` | graph.json (扩展) |
 | 华严文献 | 差异矩阵/术语 | SQLite chapters/glossary表 | gap.json |
 | 华严文献 | 案例/观点/方法论 | `data/translation/gap_content.yaml` | gap.json (扩展) |
+| 华严文献 | 经学/对读/祖师/判教 | `data/translation/avatamsaka_studies.yaml` `intertextual_canon.yaml` `huayan_masters.yaml` `panjiao_hupan.yaml` | gap.json (扩展) |
+| 华严文献 | 专题研究 (整篇docs/*.md注入) | `data/translation/topic_studies.yaml` + `docs/佛门真伪问题_综合深度研究.md` 等 | gap.json (扩展: topic_studies) |
+| 全站 | **独立文章页** (每篇完整文章独立URL) | `data/translation/standalone_articles.yaml` (sources: topic_studies+huayan_masters 自动展开; others 显式登记整篇 docs/*.md) | `articles/<id>.html` (build.py生成, 全Tab页内嵌 `var ARTICLES` 提供入口条) |
 | 华严教行 | 修行体系 | `data/practice/*.yaml` | practice.json |
 | 前沿对话 | 文献/论文 | `data/frontier/*.yaml` | frontier.json |
 | 世主妙严 | 宇宙观/艺术 | `data/cosmology/*.yaml` | cosmology.json |
@@ -97,6 +100,9 @@ huayan_collection/
 │   │   ├── jiaoxing.html       # Tab3 华严教行
 │   │   ├── frontier.html       # Tab4 前沿对话
 │   │   └── cosmology.html      # Tab5 世主妙严
+│   ├── articles/               # 独立文章页（构建产出, 每篇一个URL）
+│   │   ├── index.html          # 独立文章目录
+│   │   └── <id>.html           # 如 zhenwei / master-fazang / mimi
 │   ├── src/                    # 源文件（供build.py组装）
 │   │   ├── data.js             # 数据占位 + 全局变量
 │   │   ├── lineage.js          # Tab1 Canvas/Map/Select/Interact
@@ -104,6 +110,7 @@ huayan_collection/
 │   │   ├── jiaoxing.js         # Tab3 华严教行
 │   │   ├── frontier.js         # Tab4 前沿对话
 │   │   ├── cosmology.js        # Tab5 宇宙观
+│   │   ├── article.js          # 独立文章页渲染器
 │   │   ├── init.js             # 初始化 + 评论系统 + GitHub认证
 │   │   └── common.css/js       # 共享样式/脚本模板
 │   ├── data/                   # 构建产出的JSON（build.py写入）

@@ -23,6 +23,7 @@ OUT = ROOT / 'web' / 'demo'
 TABS_OUT = OUT / 'tabs'
 CSS_OUT = OUT / 'css'
 JS_OUT = OUT / 'js'
+ARTICLES_OUT = OUT / 'articles'
 
 # SQLite data reader (single source of truth for graph data)
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -93,6 +94,21 @@ def load_gap():
                         review_mds[m.get('id')] = f.read()
         if review_mds:
             gap['huayan_masters']['review_mds'] = review_mds
+    # Merge topic studies (专题研究 — 整篇深度研究文档全文注入)
+    ts = read_yaml('translation/topic_studies.yaml')
+    if ts:
+        gap['topic_studies'] = {k: v for k, v in ts.items() if k != 'articles'}
+        gap['topic_studies']['articles'] = []
+        for art in ts.get('articles', []):
+            a = dict(art)
+            a['doc_md'] = ''
+            dp = a.get('doc')
+            if dp:
+                doc_path = ROOT / dp
+                if doc_path.exists():
+                    with open(doc_path, encoding='utf-8') as f:
+                        a['doc_md'] = f.read()
+            gap['topic_studies']['articles'].append(a)
     # Merge texts/chapters/cross_refs from SQLite (complete catalog)
     texts_data = db_reader.load_texts()
     if texts_data:
@@ -244,7 +260,11 @@ def render_sidebar(nav_spec):
             lines.append(f'    <div class="sub-links"{sub_display}>')
             for sub in item['subs']:
                 sub_cls = 'sub-sub-link' if sub.get('subsub') else 'sub-link'
-                lines.append(f'    <a href="#" class="{sub_cls}" onclick="{_action_js(sub.get("action"), True)}">{_nav_label(sub)}</a>')
+                sub_action = sub.get('action', {})
+                if 'href' in sub_action:
+                    lines.append(f'    <a href="{sub_action["href"]}" class="{sub_cls}" style="color:var(--gold)" title="独立文章页">{_nav_label(sub)} ↗</a>')
+                else:
+                    lines.append(f'    <a href="#" class="{sub_cls}" onclick="{_action_js(sub_action, True)}">{_nav_label(sub)}</a>')
             lines.append('    </div></div>')
         else:
             if 'href' in action:
@@ -595,8 +615,10 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
     return html
 
 
-def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None):
+def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None, articles=None):
     """Build a tab page with sidebar layout using existing JS rendering."""
+    if articles is None:
+        articles = []
     if view_id is None:
         view_id = f'{tab_id}-view'
     graph = load_graph()
@@ -641,6 +663,13 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
     glossary = load_glossary()
 
     # Build inline data script
+    articles_lite = [{'id': a['id'], 'title': a.get('title', a['id']), 'file': a['file'],
+                      'icon': a.get('icon', '📄'), 'views': a.get('views', []),
+                      'full_inline': a.get('full_inline', False)} for a in articles]
+    # 本 Tab 内需支持「页内展开全文」的独立文章（结构化子视图；full_inline 者已在视图内联全文）
+    docs_map = {a['id']: a.get('doc_md', '')
+                for a in articles
+                if a.get('back', {}).get('tab') == tab_id and not a.get('full_inline') and a.get('doc_md')}
     data_script = f'''
 var HAIYUN_RESOURCES = {json.dumps(haiyun_res, ensure_ascii=False)};
 var GRAPH = {json.dumps(graph, ensure_ascii=False)};
@@ -653,6 +682,8 @@ var SPIRIT_DATA = {json.dumps(spirit, ensure_ascii=False)};
 var BIBLIOGRAPHY = {json.dumps(bib, ensure_ascii=False)};
 var BILINGUAL_GLOSSARY = {json.dumps(glossary, ensure_ascii=False)};
 var HEART_ARTICLES = {json.dumps(heart_articles, ensure_ascii=False)};
+var ARTICLES = {json.dumps(articles_lite, ensure_ascii=False)};
+var ARTICLE_DOCS = {json.dumps(docs_map, ensure_ascii=False)};
 var DATA = GRAPH;
 var nodeMap = {{}};
 if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
@@ -715,6 +746,200 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
     return html
 
 
+def load_standalone_articles():
+    """Expand the standalone-articles registry (data/translation/standalone_articles.yaml)
+    into the full article catalog. Each entry: {id, file, title, title_sub, icon, version,
+    meta, doc, doc_md, back:{tab,view,label}, views:[...]}.
+
+    Sources:
+      - topic_studies   → every 专题研究 article (id = article id)
+      - huayan_masters  → every master carrying a review_doc (id = master-<id>)
+      - others          → explicit full-document articles registered in the YAML
+    """
+    reg = read_yaml('translation/standalone_articles.yaml') or {}
+    articles = []
+
+    # ① 专题研究 (data/translation/topic_studies.yaml)
+    ts = read_yaml('translation/topic_studies.yaml') or {}
+    for art in ts.get('articles', []):
+        if not art.get('id'):
+            continue
+        articles.append({
+            'id': art['id'],
+            'file': 'articles/%s.html' % art['id'],
+            'title': art.get('title', art['id']),
+            'title_sub': art.get('title_sub', ''),
+            'icon': art.get('icon', '📌'),
+            'version': art.get('version', ''),
+            'meta': art.get('meta', ''),
+            'doc': art.get('doc', ''),
+            # gap 专题视图已内联全文 → 不提供「页内展开」开关
+            'full_inline': True,
+            'back': {'tab': 'gap', 'view': 'topic-' + art['id'], 'label': '华严文献 · 专题研究'},
+            'views': ['topic-' + art['id']],
+        })
+
+    # ② 华严祖师 (data/translation/huayan_masters.yaml — 含 review_doc 者)
+    hm = read_yaml('translation/huayan_masters.yaml') or {}
+    for m in hm.get('masters', []):
+        if not m.get('review_doc') or not m.get('id'):
+            continue
+        articles.append({
+            'id': 'master-' + m['id'],
+            'file': 'articles/master-%s.html' % m['id'],
+            'title': m.get('name', m['id']),
+            'title_sub': ('华严祖师 · ' + m['role']) if m.get('role') else '华严祖师',
+            'icon': '🧑',
+            'version': '',
+            'meta': '',
+            'doc': m['review_doc'],
+            # gap 祖师视图已内联综述全文 → 不提供「页内展开」开关
+            'full_inline': True,
+            'back': {'tab': 'gap', 'view': 'master-' + m['id'], 'label': '华严文献 · 华严祖师'},
+            'views': ['master-' + m['id']],
+        })
+
+    # ③ 其他整篇文档（各 Tab 由完整 docs/*.md 支撑的专题/子tab）
+    for o in reg.get('others', []):
+        if not o.get('id'):
+            continue
+        articles.append({
+            'id': o['id'],
+            'file': 'articles/%s.html' % o['id'],
+            'title': o.get('title', o['id']),
+            'title_sub': o.get('title_sub', ''),
+            'icon': o.get('icon', '📄'),
+            'version': o.get('version', ''),
+            'meta': o.get('meta', ''),
+            'doc': o.get('doc', ''),
+            # 结构化子视图 → 提供「页内展开全文」开关
+            'full_inline': False,
+            'back': o.get('back') or {},
+            'views': o.get('views', [o['id']]),
+        })
+
+    # Load full markdown for every article
+    for a in articles:
+        a['doc_md'] = ''
+        if a.get('doc'):
+            dp = ROOT / a['doc']
+            if dp.exists():
+                with open(dp, encoding='utf-8') as f:
+                    a['doc_md'] = f.read()
+            else:
+                print(f'  ! standalone article {a["id"]}: doc not found: {a["doc"]}')
+    return articles
+
+
+def build_articles(articles):
+    """Emit one standalone static page per full article (web/demo/articles/<id>.html)
+    plus a catalog index (web/demo/articles/index.html). Returns total bytes written."""
+    ARTICLES_OUT.mkdir(parents=True, exist_ok=True)
+    article_js = read_src('article.js')
+    common_css_rel = '../css/common.css'
+    total = 0
+    count = 0
+
+    for a in articles:
+        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'back')}
+        data_script = 'var ARTICLE = %s;' % json.dumps(payload, ensure_ascii=False)
+        title = a.get('title', a['id'])
+        html = f'''<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严宗 · {title} · 独立文章</title>
+<link rel="stylesheet" href="{common_css_rel}">
+</head>
+<body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>{title}</h1>
+  <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
+</header>
+</div>
+<main class="content content-article" id="article-root"></main>
+
+<script src="../js/common.js"></script>
+<script>
+{data_script}
+</script>
+<script>
+{wrap_script(article_js)}
+</script>
+</body>
+</html>'''
+        path = ARTICLES_OUT / (a['id'] + '.html')
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(html)
+        size = len(html.encode('utf-8'))
+        total += size
+        count += 1
+        print(f'OK  {path} ({size:,} bytes | {len(a.get("doc_md",""))} doc chars)')
+
+    # ── 目录页 (index) ──
+    cards = []
+    for a in articles:
+        back_link = ''
+        if a.get('back', {}).get('tab'):
+            back_link = ('<a href="../tabs/%s.html" style="color:var(--text2);font-size:0.78em">返回 %s</a>'
+                         % (a['back']['tab'], a['back'].get('label', a['back']['tab'])))
+        cards.append(f'''<div style="display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px">
+<div><a href="{a['id'] + '.html'}" style="color:var(--gold);font-weight:700;font-size:1.02em;text-decoration:none">{a.get('icon','📄')} {a.get('title','')} ↗</a></div>
+{"<div style='font-size:0.75em;color:var(--text2)'>" + a.get('title_sub','') + "</div>" if a.get('title_sub') else ''}
+<div style="font-size:0.72em;color:var(--text3,var(--text2))">全文 {len(a.get('doc_md','')):,} 字 · <code>{a.get('doc','')}</code></div>
+<div style="display:flex;gap:14px;font-size:0.75em"><a href="../tabs/{a['back']['tab']}.html" style="color:var(--blue);text-decoration:none">栏目: {a['back'].get('label','')}</a> {back_link}</div>
+</div>''')
+        total += 0
+
+    idx_html = f'''<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严宗 · 独立文章目录</title>
+<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>📚 独立文章目录</h1>
+</header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+共 {count} 篇完整文章的独立地址 · 每篇均含整篇 doc 全文 · 由 build.py 依 data/translation/standalone_articles.yaml 生成
+</div>
+</div>
+<main class="content" id="article-root">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-top:14px">
+{''.join(cards)}
+</div>
+<div style="margin-top:20px;text-align:center">
+<a href="../index.html" style="color:var(--blue);font-size:0.8em">← 返回导航主页</a> ·
+<a href="../tabs/gap.html" style="color:var(--blue);font-size:0.8em">华严文献</a> ·
+<a href="../tabs/jiaoxing.html" style="color:var(--blue);font-size:0.8em">华严教行</a>
+</div>
+</main>
+</body>
+</html>'''
+    idx_path = ARTICLES_OUT / 'index.html'
+    with open(idx_path, 'w', encoding='utf-8') as f:
+        f.write(idx_html)
+    size = len(idx_html.encode('utf-8'))
+    total += size
+    count += 1
+    print(f'OK  {idx_path} ({size:,} bytes | {len(articles)} articles)')
+    return total
+
+
 def main():
     # Ensure output directories
     TABS_OUT.mkdir(parents=True, exist_ok=True)
@@ -725,6 +950,11 @@ def main():
 
     total_size = 0
     file_count = 0
+
+    # ── Build standalone article pages (每一篇完整文章的独立地址) ──
+    articles = load_standalone_articles()
+    total_size += build_articles(articles)
+    file_count += len(articles) + 1
 
     # ── Build Tab1: Lineage (preserve original layout) ──
     lineage_html = build_lineage_page()
@@ -744,7 +974,8 @@ def main():
         'gap',
         render_sidebar(gap_spec),
         gap_spec.get('render', 'if(typeof renderGap==="function")renderGap();'),
-        view_id=gap_spec.get('view_id', 'gap-view'))
+        view_id=gap_spec.get('view_id', 'gap-view'),
+        articles=articles)
     gap_path = TABS_OUT / 'gap.html'
     with open(gap_path, 'w', encoding='utf-8') as f:
         f.write(gap_html)
@@ -760,7 +991,8 @@ def main():
         'jiaoxing',
         render_sidebar(jx_spec),
         jx_spec.get('render', 'renderPractice();'),
-        view_id=jx_spec.get('view_id', 'practice-view'))
+        view_id=jx_spec.get('view_id', 'practice-view'),
+        articles=articles)
     jx_path = TABS_OUT / 'jiaoxing.html'
     with open(jx_path, 'w', encoding='utf-8') as f:
         f.write(jx_html)
@@ -776,7 +1008,8 @@ def main():
         'frontier',
         render_sidebar(fr_spec),
         fr_spec.get('render', 'if(typeof renderFrontier==="function")renderFrontier();'),
-        view_id=fr_spec.get('view_id', 'frontier-view'))
+        view_id=fr_spec.get('view_id', 'frontier-view'),
+        articles=articles)
     fr_path = TABS_OUT / 'frontier.html'
     with open(fr_path, 'w', encoding='utf-8') as f:
         f.write(fr_html)
@@ -792,7 +1025,8 @@ def main():
         'cosmology',
         render_sidebar(co_spec),
         co_spec.get('render', 'if(typeof renderCosmology==="function")renderCosmology();'),
-        view_id=co_spec.get('view_id', 'cosmology-view'))
+        view_id=co_spec.get('view_id', 'cosmology-view'),
+        articles=articles)
     co_path = TABS_OUT / 'cosmology.html'
     with open(co_path, 'w', encoding='utf-8') as f:
         f.write(co_html)
@@ -808,7 +1042,8 @@ def main():
         'spirit',
         render_sidebar(sp_spec),
         sp_spec.get('render', 'if(typeof renderSpirit==="function")renderSpirit();'),
-        view_id=sp_spec.get('view_id', 'spirit-view'))
+        view_id=sp_spec.get('view_id', 'spirit-view'),
+        articles=articles)
     sp_path = TABS_OUT / 'spirit.html'
     with open(sp_path, 'w', encoding='utf-8') as f:
         f.write(sp_html)

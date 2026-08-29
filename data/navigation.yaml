@@ -133,19 +133,26 @@ navigation:
       - label: 祖师总览
         action: {type: call, fn: switchGapView, args: [masters]}
       - label: 杜顺·初祖
-        action: {type: call, fn: switchGapView, args: [master-dushun]}
+        action: {type: link, href: ../articles/master-dushun.html}
       - label: 智俨·二祖
-        action: {type: call, fn: switchGapView, args: [master-zhiyan]}
+        action: {type: link, href: ../articles/master-zhiyan.html}
       - label: 贤首国师·法藏
-        action: {type: call, fn: switchGapView, args: [master-fazang]}
+        action: {type: link, href: ../articles/master-fazang.html}
       - label: 清凉国师·澄观
-        action: {type: call, fn: switchGapView, args: [master-chengguan]}
+        action: {type: link, href: ../articles/master-chengguan.html}
       - label: 圭峰大师·宗密
-        action: {type: call, fn: switchGapView, args: [master-zongmi]}
+        action: {type: link, href: ../articles/master-zongmi.html}
       - label: 李通玄·枣柏大士
-        action: {type: call, fn: switchGapView, args: [master-litongxuan]}
+        action: {type: link, href: ../articles/master-litongxuan.html}
       - label: 梦参·近代弘传
-        action: {type: call, fn: switchGapView, args: [master-mengcan]}
+        action: {type: link, href: ../articles/master-mengcan.html}
+    - label: 🌏 专题研究
+      action: {type: call, fn: switchGapView, args: [topic_studies]}
+      subs:
+      - label: 专题总览
+        action: {type: call, fn: switchGapView, args: [topic_studies]}
+      - label: 🕵️ 佛门真伪问题
+        action: {type: link, href: ../articles/zhenwei.html}
     - label: 📚 文献目录
       action: {type: call, fn: switchGapView, args: [catalog]}
       subs:

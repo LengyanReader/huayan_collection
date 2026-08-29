@@ -645,3 +645,214 @@ function mdToHTML(s) {
     .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
     .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
 }
+
+// ═══ Full-document markdown → HTML (headings/quotes/hr/lists/tables/fences) ═══
+// Shared by gap.js (专题/祖师全文) 与 article.js (独立文章页)。
+function _mdFullToHTML(text) {
+  if (!text) return '';
+  var lines = text.split('\n');
+  var out = [];
+  var i = 0;
+  while (i < lines.length) {
+    var l = lines[i];
+    // blank line
+    if (!l.trim()) { i++; continue; }
+    // horizontal rule
+    if (/^---+$/.test(l.trim())) { out.push('<hr style="border:none;border-top:1px solid var(--line);margin:14px 0">'); i++; continue; }
+    // headings
+    var mh = l.match(/^(#{1,4})\s+(.*)$/);
+    if (mh) {
+      var lv = mh[1].length;
+      out.push('<h' + lv + ' style="color:var(--gold);margin:' + (lv===1?'18px':'14px') + ' 0 8px;font-size:' + [0,'1.15em','1.02em','0.95em','0.88em'][lv] + ';line-height:1.5">' + _mdInline(mh[2]) + '</h' + lv + '>');
+      i++; continue;
+    }
+    // blockquote
+    if (l.trim().indexOf('>') === 0) {
+      var q = [];
+      while (i < lines.length && lines[i].trim().indexOf('>') === 0) {
+        q.push(lines[i].trim().replace(/^>\s?/, ''));
+        i++;
+      }
+      out.push('<blockquote style="border-left:3px solid var(--gold);background:rgba(184,134,60,0.06);padding:8px 12px;margin:10px 0;font-size:0.82em;line-height:1.8;color:var(--text2);white-space:pre-line">' + _mdInline(q.join('\n')) + '</blockquote>');
+      continue;
+    }
+    // table
+    if (l.trim().indexOf('|') === 0 && (i+1 < lines.length) && lines[i+1].indexOf('---') >= 0) {
+      var header = l.split('|').filter(function(c){return c.trim();});
+      out.push('<table class=v-table style="font-size:0.78em;margin:8px 0"><tr>' + header.map(function(c){return '<th>' + _mdInline(c.trim()) + '</th>';}).join('') + '</tr>');
+      i += 2;
+      while (i < lines.length && lines[i].trim().indexOf('|') === 0) {
+        var cells = lines[i].split('|').filter(function(c){return c.trim();});
+        out.push('<tr>' + cells.map(function(c){return '<td>' + _mdInline(c.trim()) + '</td>';}).join('') + '</tr>');
+        i++;
+      }
+      out.push('</table>');
+      continue;
+    }
+    // ordered list
+    var mo = l.match(/^\s*\d+\.\s+(.*)$/);
+    if (mo) {
+      out.push('<ol style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
+      while (i < lines.length && /^\s*\d+\.\s/.test(lines[i])) {
+        out.push('<li>' + _mdInline(lines[i].replace(/^\s*\d+\.\s/, '')) + '</li>');
+        i++;
+      }
+      out.push('</ol>');
+      continue;
+    }
+    // unordered list
+    var mu = l.match(/^\s*[-•·]\s+(.*)$/);
+    if (mu) {
+      out.push('<ul style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
+      while (i < lines.length && /^\s*[-•·]\s/.test(lines[i])) {
+        var item = lines[i].replace(/^\s*[-•·]\s/, '');
+        out.push('<li>' + _mdInline(item) + '</li>');
+        i++;
+      }
+      out.push('</ul>');
+      continue;
+    }
+    // code fence (```)
+    if (l.trim().indexOf('```') === 0) {
+      var code = [];
+      i++;
+      while (i < lines.length && lines[i].trim().indexOf('```') !== 0) { code.push(lines[i]); i++; }
+      if (i < lines.length) i++; // skip closing fence
+      out.push('<pre style="background:rgba(94,139,158,0.08);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:0.78em;line-height:1.5;overflow-x:auto;margin:8px 0;white-space:pre">' + code.join('\n').replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</pre>');
+      continue;
+    }
+    // paragraph (collect consecutive lines)
+    var para = [l];
+    i++;
+    while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|---+$|>\s|\||\s*\d+\.\s|\s*[-•·]\s)/.test(lines[i].trim())) {
+      para.push(lines[i]); i++;
+    }
+    out.push('<p style="font-size:0.8em;line-height:1.9;margin:6px 0">' + _mdInline(para.join('<br>')) + '</p>');
+  }
+  return out.join('');
+}
+
+// ═══ Inline markdown (code/bold/italic/link) ═══
+function _mdInline(t) {
+  t = t.replace(/`([^`]+)`/g, '<code style="font-family:monospace;font-size:0.92em;background:rgba(94,139,158,0.12);padding:1px 5px;border-radius:4px">$1</code>');
+  t = t.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  t = t.replace(/\*(.+?)\*/g, '<i>$1</i>');
+  t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target=_blank style="color:var(--blue)">$1</a>');
+  return t;
+}
+
+// ═══ 整篇 markdown 文档嵌入（标题加锚点 id + 生成目录；剥离 HTML 注释）═══
+function _mdDocEmbed(md) {
+  if (!md) return {html:'', toc:[]};
+  md = md.replace(/<!--[\s\S]*?-->/g, '');
+  // 目录：源标题行（h2-h4；h1 为文档标题，不入目录）
+  var toc = [], m;
+  var reT = /^[#]{2,4}\s+(.*)$/gm;
+  while ((m = reT.exec(md)) !== null) {
+    var lv = m[0].match(/^#+/)[0].length;
+    toc.push({lv: lv, id: 'mdh-' + (toc.length + 1), text: m[1].replace(/\*\*(.+?)\*\*/g, '$1').trim()});
+  }
+  // 渲染后为每个 h2-h4 注入同名 id（顺序一致）
+  var html = _mdFullToHTML(md);
+  var counter = 0;
+  html = html.replace(/<h([234])([^>]*)>/g, function(u, lv, attrs) {
+    counter++;
+    return '<h' + lv + ' id="mdh-' + counter + '" ' + attrs + '>';
+  });
+  return {html: html, toc: toc};
+}
+
+// ═══ 独立文章入口条（ARTICLES 由 build.py 内嵌在各 Tab 页）═══
+// view 为当前子视图 id；containerSel 为本视图容器（如 '#gv-topic-zhenwei'）。
+// 命中 articles 登记中的 views 时，在容器顶部插入「独立文章页」入口（独立地址 + 可选页内展开全文）。
+
+// 由子视图 id 反查独立文章页的（相对本页面）href；无则返回空串。
+// 用于祖师/专题总览卡片、侧栏等「一点击即进入独立页面」的入口。
+function articlePageHref(view){
+  if(typeof ARTICLES==='undefined'||!ARTICLES) return '';
+  for(var i=0;i<ARTICLES.length;i++){
+    var a=ARTICLES[i];
+    if((a.views||[]).indexOf(view)>=0)
+      return (a.file.indexOf('../')===0)?a.file:'../'+a.file;
+  }
+  return '';
+}
+
+function articleChip(view, containerSel){
+  if(typeof ARTICLES==='undefined'||!ARTICLES) return;
+  var arts=ARTICLES.filter(function(x){return (x.views||[]).indexOf(view)>=0;});
+  if(!arts.length) return;
+  var el=document.querySelector(containerSel);
+  if(!el) return;
+  if(document.querySelector(containerSel+' .article-chip')) return;
+  var chip=document.createElement('div');
+  chip.className='article-chip';
+  var links=[];
+  arts.forEach(function(a){
+    var href=(a.file.indexOf('../')===0)?a.file:'../'+a.file;
+    links.push('<a href="'+href+'" title="打开完整文章独立地址">'+(a.icon?a.icon+' ':'')+a.title+' ↗</a>');
+  });
+  chip.innerHTML=links.join(' · ');
+  // 页内展开全文（仅结构化子视图：未内联全文 且 本页已内嵌 ARTICLE_DOCS）
+  var toggles=[];
+  arts.forEach(function(a){
+    if(a.full_inline) return;
+    if(typeof ARTICLE_DOCS==='undefined'||!ARTICLE_DOCS[a.id]) return;
+    toggles.push('<button class="article-toggle" id="article-toggle-'+a.id+'" onclick="toggleArticleInline(\''+a.id+'\')">📖 页内展开全文</button>');
+  });
+  if(toggles.length) chip.innerHTML+='<span style="opacity:0.6">|</span> '+toggles.join(' ');
+  el.insertBefore(chip, el.firstChild);
+  // 就绪即插入（隐藏的）内联全文块
+  arts.forEach(function(a){
+    if(a.full_inline) return;
+    if(typeof ARTICLE_DOCS==='undefined'||!ARTICLE_DOCS[a.id]) return;
+    var block=document.createElement('div');
+    block.id='article-inline-'+a.id;
+    block.className='article-inline';
+    block.style.display='none';
+    var embed=(typeof _mdDocEmbed==='function')?_mdDocEmbed(ARTICLE_DOCS[a.id]||''):{html:'',toc:[]};
+    var h='<div class="section" style="border-left:4px solid var(--blue);margin-top:10px">';
+    h+='<h2>📖 '+a.title+' · 全文（页内展开）</h2>';
+    if(embed.toc.length){
+      h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)">';
+      embed.toc.forEach(function(t){
+        var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
+        h+='<div style="'+pad+'"><a href="#'+t.id+'" style="color:'+(t.lv===2?'var(--gold)':'var(--text2)')+';text-decoration:none">'+t.text+'</a></div>';
+      });
+      h+='</div>';
+    }
+    h+=embed.html;
+    h+='<p style="font-size:0.72em;color:var(--text2);margin-top:10px"><a href="'+((a.file.indexOf("../")===0)?a.file:'../'+a.file)+'" style="color:var(--blue)">📄 独立地址打开本文 ›</a></p>';
+    h+='</div>';
+    block.innerHTML=h;
+    el.insertBefore(block, chip.nextSibling);
+  });
+}
+
+// 页内展开/收起全文
+function toggleArticleInline(id){
+  var block=document.getElementById('article-inline-'+id);
+  if(!block) return;
+  var btn=document.getElementById('article-toggle-'+id);
+  var show=(block.style.display==='none');
+  block.style.display=show?'block':'none';
+  if(btn) btn.textContent=show?'📖 页内收起全文':'📖 页内展开全文';
+  if(show) setTimeout(function(){block.scrollIntoView({behavior:'smooth',block:'start'});},60);
+}
+
+// ═══ 独立文章目录入口（sidebar 底部小链接，build.py 生成的目录）═══
+function articlesIndexLink(){
+  var nav=document.querySelector('#sidebar');
+  if(!nav) return;
+  if(nav.querySelector('.articles-index-link')) return;
+  var el=document.createElement('div');
+  el.className='articles-index-link';
+  el.style.cssText='margin-top:14px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em';
+  el.innerHTML='<a href="../articles/index.html" style="color:var(--blue);text-decoration:none">📚 独立文章目录</a>';
+  nav.appendChild(el);
+}
+
+(function(){
+  // 各 Tab 页侧栏底部自动追加「独立文章目录」入口（lineage 无侧栏则跳过）
+  try{ articlesIndexLink(); }catch(e){}
+})();

@@ -1,0 +1,76 @@
+# ═══ 独立文章页注册表 ═══
+# 每一篇「完整的文章」在此登记后，build.py 自动生成 web/demo/articles/<id>.html 独立页面（独立 URL，可直接分享/收藏）。
+# 登记方式两种（单一数据源，不重复登记）：
+#  1) sources — 自动展开的数据源：
+#       topic_studies   → 每篇专题研究文章（data/translation/topic_studies.yaml articles）
+#       huayan_masters  → 每位祖师（data/translation/huayan_masters.yaml 中含 review_doc 者）
+#  2) others — 显式登记其他 Tab 由整篇 docs/*.md 支撑的专题/子tab
+#
+# 字段说明：
+#   id         文件名（articles/<id>.html）与 URL 标识
+#   icon/title/title_sub/version  页面横幅元数据
+#   doc        整篇 markdown 源文件（相对仓库根）
+#   meta       可选：导览/摘要（markdown 内联）
+#   back       返回链接：{tab, view, label}（label 为选项卡名+栏目名）
+#   views      在哪些选项卡视图内显示「独立文章页」入口条（与各 Tab JS 的 view id 对应）
+
+sources:
+  - topic_studies
+  - huayan_masters
+
+others:
+  - id: mimi
+    icon: 🔐
+    title: 密宗全方位研究
+    title_sub: 不密而密 · 密教源流·汉藏法脉·史实辨正
+    doc: docs/密宗全方位研究.md
+    back:
+      tab: jiaoxing
+      view: mimi
+      label: 教行页 · 不密而密
+    views:
+      - mimi
+  - id: faxiang
+    icon: 🔬
+    title: 法相唯识宗全方位研究
+    title_sub: 法相玄机 · 名相·渊源·法脉·式微与复兴
+    doc: docs/法相唯识宗全方位研究.md
+    back:
+      tab: jiaoxing
+      view: faxiang
+      label: 教行页 · 法相玄机
+    views:
+      - faxiang
+  - id: yikong
+    icon: 🕳
+    title: 般若空宗·三论中观全方位研究
+    title_sub: 一空到底 · 空性义学·汉藏对勘·阐释与张力
+    doc: docs/般若空宗三论中观全方位研究.md
+    back:
+      tab: jiaoxing
+      view: yikong
+      label: 教行页 · 一空到底
+    views:
+      - yikong
+  - id: tiantai
+    icon: 🔭
+    title: 天台宗全方位研究
+    title_sub: 天台觉景 · 法脉·教观·圆融与复兴
+    doc: docs/天台宗全方位研究.md
+    back:
+      tab: jiaoxing
+      view: tiantai
+      label: 教行页 · 天台觉景
+    views:
+      - tiantai
+  - id: sanshiqi
+    icon: 🌿
+    title: 三十七道品全方位研究
+    title_sub: 助道资粮 · 三十七道品与菩提分法
+    doc: docs/三十七道品全方位研究.md
+    back:
+      tab: jiaoxing
+      view: system
+      label: 教行页 · 修行体系 · 助道资粮
+    views:
+      - system

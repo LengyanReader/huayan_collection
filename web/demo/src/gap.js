@@ -357,6 +357,9 @@ function renderGap(){
   // ═══ 华严祖师 (从 GAP.huayan_masters 数据驱动; 贤首国师含综述全文) ═══
   h+=renderHuayanMasters();
 
+  // ═══ 专题研究 (从 GAP.topic_studies 数据驱动; 整篇深度研究文档全文注入) ═══
+  h+=renderTopicStudies();
+
   // ═══ 文献目录 (从 SQLite texts/chapters/cross_refs 表) ═══
   h+=renderCatalog();
 
@@ -515,98 +518,7 @@ function renderPanjiaoHupan() {
 }
 
 // ── Helper: convert full markdown (headings/quotes/hr/lists/tables) to HTML ──
-function _mdFullToHTML(text) {
-  if (!text) return '';
-  var lines = text.split('\n');
-  var out = [];
-  var i = 0;
-  while (i < lines.length) {
-    var l = lines[i];
-    // blank line
-    if (!l.trim()) { i++; continue; }
-    // horizontal rule
-    if (/^---+$/.test(l.trim())) { out.push('<hr style="border:none;border-top:1px solid var(--line);margin:14px 0">'); i++; continue; }
-    // headings
-    var mh = l.match(/^(#{1,4})\s+(.*)$/);
-    if (mh) {
-      var lv = mh[1].length;
-      out.push('<h' + lv + ' style="color:var(--gold);margin:' + (lv===1?'18px':'14px') + ' 0 8px;font-size:' + [0,'1.15em','1.02em','0.95em','0.88em'][lv] + ';line-height:1.5">' + _mdInline(mh[2]) + '</h' + lv + '>');
-      i++; continue;
-    }
-    // blockquote
-    if (l.trim().indexOf('>') === 0) {
-      var q = [];
-      while (i < lines.length && lines[i].trim().indexOf('>') === 0) {
-        q.push(lines[i].trim().replace(/^>\s?/, ''));
-        i++;
-      }
-      out.push('<blockquote style="border-left:3px solid var(--gold);background:rgba(184,134,60,0.06);padding:8px 12px;margin:10px 0;font-size:0.82em;line-height:1.8;color:var(--text2);white-space:pre-line">' + _mdInline(q.join('\n')) + '</blockquote>');
-      continue;
-    }
-    // table
-    if (l.trim().indexOf('|') === 0 && (i+1 < lines.length) && lines[i+1].indexOf('---') >= 0) {
-      var header = l.split('|').filter(function(c){return c.trim();});
-      out.push('<table class=v-table style="font-size:0.78em;margin:8px 0"><tr>' + header.map(function(c){return '<th>' + _mdInline(c.trim()) + '</th>';}).join('') + '</tr>');
-      i += 2;
-      while (i < lines.length && lines[i].trim().indexOf('|') === 0) {
-        var cells = lines[i].split('|').filter(function(c){return c.trim();});
-        out.push('<tr>' + cells.map(function(c){return '<td>' + _mdInline(c.trim()) + '</td>';}).join('') + '</tr>');
-        i++;
-      }
-      out.push('</table>');
-      continue;
-    }
-    // ordered list
-    var mo = l.match(/^\s*\d+\.\s+(.*)$/);
-    if (mo) {
-      out.push('<ol style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
-      while (i < lines.length && /^\s*\d+\.\s/.test(lines[i])) {
-        out.push('<li>' + _mdInline(lines[i].replace(/^\s*\d+\.\s/, '')) + '</li>');
-        i++;
-      }
-      out.push('</ol>');
-      continue;
-    }
-    // unordered list
-    var mu = l.match(/^\s*[-•·]\s+(.*)$/);
-    if (mu) {
-      out.push('<ul style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
-      while (i < lines.length && /^\s*[-•·]\s/.test(lines[i])) {
-        var item = lines[i].replace(/^\s*[-•·]\s/, '');
-        out.push('<li>' + _mdInline(item) + '</li>');
-        i++;
-      }
-      out.push('</ul>');
-      continue;
-    }
-    // code fence (```)
-    if (l.trim().indexOf('```') === 0) {
-      var code = [];
-      i++;
-      while (i < lines.length && lines[i].trim().indexOf('```') !== 0) { code.push(lines[i]); i++; }
-      if (i < lines.length) i++; // skip closing fence
-      out.push('<pre style="background:rgba(94,139,158,0.08);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:0.78em;line-height:1.5;overflow-x:auto;margin:8px 0;white-space:pre">' + code.join('\n').replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</pre>');
-      continue;
-    }
-    // paragraph (collect consecutive lines)
-    var para = [l];
-    i++;
-    while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|---+$|>\s|\||\s*\d+\.\s|\s*[-•·]\s)/.test(lines[i].trim())) {
-      para.push(lines[i]); i++;
-    }
-    out.push('<p style="font-size:0.8em;line-height:1.9;margin:6px 0">' + _mdInline(para.join('<br>')) + '</p>');
-  }
-  return out.join('');
-}
-
-// ── Helper: inline markdown (code/bold/italic/link) ──
-function _mdInline(t) {
-  t = t.replace(/`([^`]+)`/g, '<code style="font-family:monospace;font-size:0.92em;background:rgba(94,139,158,0.12);padding:1px 5px;border-radius:4px">$1</code>');
-  t = t.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-  t = t.replace(/\*(.+?)\*/g, '<i>$1</i>');
-  t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target=_blank style="color:var(--blue)">$1</a>');
-  return t;
-}
+// （已移至 common.js 共享：_mdFullToHTML / _mdInline / _mdDocEmbed）
 
 // ═══ 华严祖师渲染 (从 GAP.huayan_masters; 贤首/清凉国师含综述全文) ═══
 function renderHuayanMasters() {
@@ -630,7 +542,10 @@ function renderHuayanMasters() {
   if (hm.overview_note) h += '<p style="font-size:0.7em;color:var(--text2);margin-top:6px">' + _mdInline(hm.overview_note) + '</p>';
   h += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">';
   hm.masters.forEach(function(m){
-    h += '<a href="#" onclick="switchGapView(\'master-' + m.id + '\',this);return false" class="gv-nav">' + m.name + ' →</a>';
+    var ah = articlePageHref('master-' + m.id);
+    h += ah
+      ? '<a href="' + ah + '" class="gv-nav" title="打开独立文章页">' + m.name + ' ↗</a>'
+      : '<a href="#" onclick="switchGapView(\'master-' + m.id + '\',this);return false" class="gv-nav">' + m.name + ' →</a>';
   });
   h += '</div></div></div>';
 
@@ -671,12 +586,79 @@ function renderHuayanMasters() {
   return h;
 }
 
+// ═══ 专题研究渲染 (从 GAP.topic_studies; 整篇深度研究文档全文注入+自动目录) ═══
+function renderTopicStudies() {
+  var ts = (typeof GAP !== 'undefined' && GAP.topic_studies) ? GAP.topic_studies : null;
+  if (!ts || !ts.articles) return '';
+  var h = '';
+
+  // 总览视图 (gv-topic_studies)
+  h += '<div id=gv-topic_studies class=gv-section style=display:none>';
+  h += '<div class=section id=ts-overview><h2>' + (ts.title||'🌏 专题研究') + '</h2>';
+  if (ts.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _mdInline(ts.intro) + '</p>';
+  h += '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">';
+  ts.articles.forEach(function(a){
+    h += '<div style="flex:1;min-width:250px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px">';
+    var th = articlePageHref('topic-' + a.id);
+    h += th
+      ? '<a href="' + th + '" style="font-size:1.02em;font-weight:700;color:var(--gold);text-decoration:none" title="打开独立文章页">' + (a.icon||'📌') + ' ' + a.title + ' ↗</a>'
+      : '<a href="#" onclick="switchGapView(\'topic-' + a.id + '\',this);return false" class="gv-nav" style="font-size:1.02em;font-weight:700">' + (a.icon||'📌') + ' ' + a.title + ' →</a>';
+    if (a.title_sub) h += '<div style="font-size:0.72em;color:var(--text2);margin-top:3px">' + a.title_sub + '</div>';
+    if (a.version) h += '<div style="font-size:0.7em;color:var(--text2);margin-top:6px">' + a.version + '</div>';
+    if (a.tags) {
+      h += '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:9px">';
+      a.tags.forEach(function(t){ h += '<span class=pat-wk style="font-size:0.62em">' + t + '</span>'; });
+      h += '</div>';
+    }
+    h += '</div>';
+  });
+  h += '</div></div></div>'; // close cards + section + gv-topic_studies
+
+  // 每篇专题一个独立视图 (gv-topic-<id>)
+  ts.articles.forEach(function(a){
+    var embed = _mdDocEmbed(a.doc_md);
+    h += '<div id=gv-topic-' + a.id + ' class=gv-section style=display:none>';
+    // 页头横幅
+    h += '<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:14px">';
+    h += '<div style="font-size:0.75em;color:var(--text2);letter-spacing:0.5px">专题研究 · ' + (a.title_sub||'综合深度研究') + '</div>';
+    h += '<h2 style="color:var(--gold);margin:4px 0 2px">' + (a.icon||'📌') + ' ' + a.title + '</h2>';
+    if (a.version) h += '<div style="font-size:0.78em;color:var(--text2)">' + a.version + '</div>';
+    h += '<a href="#" onclick="switchGapView(\'topic_studies\',null);return false" style="font-size:0.75em;color:var(--blue);margin-top:8px;display:inline-block">← 返回专题总览</a>';
+    h += '</div>';
+    // 导览
+    if (a.meta) {
+      h += '<div class=section style="border-left:4px solid var(--gold)"><h2>📌 导览</h2>';
+      h += '<p style="font-size:0.8em;line-height:1.9;white-space:pre-line">' + _mdInline(a.meta) + '</p></div>';
+    }
+    // 自动目录
+    if (embed.toc.length) {
+      h += '<div class=section><h2>🧭 本文目录</h2>';
+      h += '<div style="column-width:250px;column-gap:26px;font-size:0.78em;line-height:1.75">';
+      embed.toc.forEach(function(t){
+        var pad = (t.lv > 2 ? 'padding-left:' + ((t.lv - 2) * 16) + 'px;' : '');
+        h += '<div style="' + pad + '"><a href="#" onclick="document.getElementById(\'' + t.id + '\').scrollIntoView({behavior:\'smooth\',block:\'start\'});return false" style="color:' + (t.lv===2?'var(--gold)':'var(--text2)') + ';text-decoration:none">' + t.text + '</a></div>';
+      });
+      h += '</div></div>';
+    }
+    // 全文
+    h += '<div class=section style="border-left:4px solid var(--gold)">';
+    h += '<h2>📄 ' + a.title + ' · 全文</h2>';
+    h += embed.html;
+    h += '</div>';
+    h += '</div>'; // close gv-topic-<id>
+  });
+
+  return h;
+}
+
 function switchGapView(view,btn){
   document.querySelectorAll(".gv-nav").forEach(function(b){b.classList.remove("active");});
   document.querySelectorAll("#sidebar .nav-link,#sidebar .sub-link").forEach(function(b){b.classList.remove("active");});
   if(btn && btn.classList)btn.classList.add("active");
   document.querySelectorAll(".gv-section").forEach(function(s){s.style.display="none";});
   var el=document.getElementById("gv-"+view); if(el)el.style.display="block";
+  // 独立文章入口条（若本视图对应某篇完整文章的独立页）
+  try{articleChip(view,'#gv-'+view);}catch(e){};
   // 侧栏高亮：主项或子项含此 view 的链接
   if(btn && btn.classList && btn.classList.contains('gv-nav')) {
     var link=document.querySelector('#sidebar .sub-link[onclick*="'+view+'"]');

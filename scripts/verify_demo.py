@@ -8,6 +8,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEMO = os.path.join(ROOT, 'web', 'demo')
+ARTICLES = os.path.join(DEMO, 'articles')
 
 TABS = ['lineage', 'gap', 'jiaoxing', 'frontier', 'cosmology', 'spirit']
 TAB_TITLES = ['法脉传承', '华严文献', '教海行云', '前沿对话', '世主妙严', '灵性仁本']
@@ -107,6 +108,97 @@ for t, title in zip(TABS, TAB_TITLES):
     else:
         ok(f'{t}: size {len(html):,} bytes')
     print()
+
+# ── 独立文章页 (articles/<id>.html) ──
+print('Verifying articles/ (standalone article pages)\n')
+aidx = os.path.join(ARTICLES, 'index.html')
+if not os.path.exists(aidx):
+    fail('articles/index.html missing')
+else:
+    with open(aidx, encoding='utf-8') as f:
+        idx = f.read()
+    if '独立文章目录' not in idx:
+        fail('articles/index: missing title')
+    else:
+        ok('articles/index: catalog title')
+    hrefs = re.findall(r'href="([^"]+\.html)"', idx)
+    art_files = {h for h in hrefs if not h.startswith('../')}
+    ok(f'articles/index: links to {len(art_files)} article pages')
+    missing = [h for h in art_files if not os.path.exists(os.path.join(ARTICLES, h))]
+    if missing:
+        fail(f'articles/index: broken hrefs {missing}')
+    else:
+        ok('articles/index: all hrefs resolve')
+
+for obj in sorted(os.listdir(ARTICLES)):
+    if not obj.endswith('.html') or obj == 'index.html':
+        continue
+    path = os.path.join(ARTICLES, obj)
+    with open(path, encoding='utf-8') as f:
+        html = f.read()
+    checks = [
+        ('DOCTYPE', html.lstrip().startswith('<!DOCTYPE html>')),
+        ('ends </html>', html.strip().endswith('</html>')),
+        ('ARTICLE embedded', 'var ARTICLE =' in html),
+        ('doc_md embedded', '"doc_md"' in html),
+        ('renderer inlined', 'function renderArticle' in html),
+        ('common.css', '../css/common.css' in html),
+    ]
+    bad = [c[0] for c in checks if not c[1]]
+    if bad:
+        fail(f'articles/{obj}: missing {", ".join(bad)}')
+    else:
+        ok(f'articles/{obj} ({len(html):,} bytes, all checks)')
+
+# ── Tab 页内「独立文章页」入口条链接解析检查 ──
+chip_errors = 0
+for t in TABS:
+    if t == 'lineage':
+        continue
+    with open(os.path.join(DEMO, 'tabs', f'{t}.html'), encoding='utf-8') as f:
+        html = f.read()
+    for href in re.findall(r'href="../articles/([^"]+\.html)"', html):
+        if not os.path.exists(os.path.join(ARTICLES, href)):
+            fail(f'tabs/{t}.html: chip href broken -> articles/{href}')
+            chip_errors += 1
+if chip_errors == 0:
+    ok('tabs: all article-chip hrefs resolve')
+
+# ── 页内展开全文：jiaoxing 页须内嵌 5 篇结构化子视图的整篇文档 ──
+with open(os.path.join(DEMO, 'tabs', 'jiaoxing.html'), encoding='utf-8') as f:
+    jx_html = f.read()
+if 'var ARTICLE_DOCS' not in jx_html:
+    fail('jiaoxing: missing ARTICLE_DOCS (inline article expansion)')
+else:
+    need = ['"mimi"', '"faxiang"', '"yikong"', '"tiantai"', '"sanshiqi"']
+    missing = [k for k in need if k not in jx_html]
+    if missing:
+        fail(f'jiaoxing: ARTICLE_DOCS missing keys {missing}')
+    else:
+        ok('jiaoxing: ARTICLE_DOCS embeds all 5 inline docs')
+if 'toggleArticleInline' not in open(os.path.join(DEMO, 'js', 'common.js'), encoding='utf-8').read():
+    fail('common.js missing toggleArticleInline helper')
+else:
+    ok('common.js: toggleArticleInline present')
+# ── gap 侧栏「华严祖师 / 专题研究」→ 直接进入独立文章页 ──
+gap_path = os.path.join(DEMO, 'tabs', 'gap.html')
+with open(gap_path, encoding='utf-8') as f:
+    gp_html = f.read()
+gp_need = ['../articles/master-dushun.html', '../articles/master-zhiyan.html',
+           '../articles/master-fazang.html', '../articles/master-chengguan.html',
+           '../articles/master-zongmi.html', '../articles/master-litongxuan.html',
+           '../articles/master-mengcan.html', '../articles/zhenwei.html']
+gp_missing = [h for h in gp_need if h not in gp_html]
+if gp_missing:
+    fail(f'gap sidebar: missing direct article links {gp_missing}')
+else:
+    ok('gap sidebar: 8 article entries link straight to standalone pages')
+if 'articlePageHref' not in gp_html:
+    fail('gap: articlePageHref helper missing')
+else:
+    ok('gap: articlePageHref helper present')
+
+print()
 
 print('=' * 40)
 if errors == 0:

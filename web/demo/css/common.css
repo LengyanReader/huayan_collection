@@ -190,6 +190,42 @@ body {
   min-width: 0;
 }
 
+/* ── 独立文章页 (articles/<id>.html) 与文章入口条 ── */
+.content-article {
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+}
+.article-chip {
+  display: inline-block;
+  background: rgba(94, 139, 158, 0.10);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  font-size: 0.8em;
+}
+.article-chip a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+.article-toggle {
+  background: rgba(94, 139, 158, 0.12);
+  border: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 0.8em;
+  border-radius: 6px;
+  padding: 2px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.article-toggle:hover {
+  background: rgba(94, 139, 158, 0.22);
+  border-color: var(--blue);
+}
+
 /* ── Back Link (return-to-index) ── */
 .back-link {
   color: var(--blue);
