@@ -16,16 +16,29 @@ channel:
     大華嚴寺官方YouTube頻道。完整記錄海雲繼夢法師（海雲和上）講經弘法影音內容，
     涵蓋《華嚴經》講解、禪修指導、瑜伽活動、「海雲法語」系列等。
     宗旨：好好生活、慢慢修行。
+  description_en: |
+    The official YouTube channel of the Great Huayan Temple. It records in full
+    the dharma lectures of Venerable Haiyun Jihong (High Master Haiyun),
+    including sutra expositions of the Avatamsaka, meditation guidance, yoga
+    activities, and the "Haiyun Dharma Words" series. Guiding motto: "Live a
+    good life; cultivate slowly."
 
 playlists:
   - id: huayan-jiaohai
     name_zh: 華嚴教海
     name_en: Huayan Teaching Ocean
     type: 长篇讲经
+    type_en: Long-form Sutra Lectures
     description: |
       《大方廣佛華嚴經》逐品深入講解。海雲繼夢法師核心講經系列。
       目前連載《初發心功德品》（第8-12集持續更新）。
       含完整《華嚴經》各品講記，為頻道最核心的長篇系列。
+    description_en: |
+      Chapter-by-chapter in-depth lectures on the Mahāvaipulya Buddha
+      Avatamsaka Sūtra — Venerable Haiyun Jihong's core dharma lecture series.
+      Currently serializing the "Chapter on the Merits of First Resolve"
+      (episodes 8–12, updating). Includes complete lecture records of the
+      Avatamsaka chapters — the channel's most central long-form series.
     url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEpNKHjUj7BmmDNuQ5QJ7PxM
     icon: 🔴
 
@@ -33,11 +46,20 @@ playlists:
     name_zh: 海雲法語
     name_en: Haiyun Dharma Words
     type: 短篇开示
+    type_en: Short Instruction Clips
     description: |
       海雲和上法語開示短片（約4-14分鐘）。
       主題涵蓋：轉凡成聖、發願行法、佛菩薩加持、泯除瞋心、淨土關鍵、
       福報累積、因果觀、口業修行、真假我辨識、末法時期修行要領等。
       節錄自各大型講座精華片段。
+    description_en: |
+      Short dharma instruction clips from High Master Haiyun (about 4–14
+      minutes). Themes include: transforming the ordinary into the holy, making
+      vows and practicing the Dharma, the blessings of Buddhas and bodhisattvas,
+      uprooting anger, the key to the Pure Land, the accumulation of merit, the
+      view of karma, training the speech, distinguishing the true from the false
+      self, and essentials of practice in the Final Dharma age. Excerpted from
+      the essential segments of the major lectures.
     url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEpemEeKtW5mnWpQcYhMJBjZ
     icon: 🟠
 
@@ -45,10 +67,16 @@ playlists:
     name_zh: 九九華嚴講座
     name_en: 99 Huayan Lectures
     type: 讲座精华
+    type_en: Lecture Highlights
     description: |
       2026年最新系列。包含修行條件、頓教修行條件、明心見性、
       AI時代修行心態等深度問答與精華剪輯。
       TICC（台北國際會議中心）錄影系列。
+    description_en: |
+      The newest 2026 series, with in-depth Q&A and edited highlights on the
+      conditions of practice, the conditions of the sudden teaching, seeing the
+      nature and illuminating the mind, and the cultivation mindset for the AI
+      age. Recorded at the TICC (Taipei International Convention Center).
     url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEphZqLqkPJcEHWvqMqK8D2h
     icon: 🟡
 
@@ -56,9 +84,15 @@ playlists:
     name_zh: 藥師經北美講座
     name_en: Medicine Buddha Sutra — North America Lectures
     type: 经典讲座
+    type_en: Sutra Lectures
     description: |
       2008年北美《藥師經》系列開示。近期「海雲法語」的母體講座來源之一。
       完整講解藥師琉璃光如來本願功德經。
+    description_en: |
+      A 2008 North American lecture series on the Medicine Buddha Sūtra — one of
+      the source lectures for the recent "Haiyun Dharma Words." A complete
+      exposition of the Sūtra on the Original Vow and Merits of the Medicine
+      Buddha, the Master of Healing, with the color of lapis lazuli.
     url_search: https://www.youtube.com/results?search_query=藥師經+海雲繼夢+北美
     icon: 🟢
 
@@ -66,9 +100,15 @@ playlists:
     name_zh: Shorts 修行精選
     name_en: Practice Shorts
     type: 短视频
+    type_en: Short Videos
     description: |
       修行要點精選短視頻。主題：戒律、佛菩薩示現、念佛持咒等。
       節錄自2008北美藥師經開示及其他講座。
+    description_en: |
+      Selected short videos of practice essentials: the precepts, the
+      manifestations of Buddhas and bodhisattvas, Buddha-recitation and
+      mantra-chanting, and more. Excerpted from the 2008 North American
+      Medicine Buddha lectures and other talks.
     url_shorts: https://www.youtube.com/@huayen-world/shorts
     icon: 📱
 
@@ -76,8 +116,12 @@ playlists:
     name_zh: 大悲咒齊心息災法會
     name_en: Great Compassion Mantra — Calamity Relief Dharma Assembly
     type: 法会记录
+    type_en: Dharma Assembly Recordings
     description: |
       2020年大悲咒齊心息災法會系列（共4場完整開示）。
+    description_en: |
+      The 2020 Great Compassion Mantra joint calamity-relief Dharma assembly
+      series (four complete dharma talks, in full).
     url_search: https://www.youtube.com/results?search_query=大悲咒+大華嚴寺+海雲繼夢+法會
     icon: 🙏
 
@@ -85,8 +129,12 @@ playlists:
     name_zh: 佛法講座系列
     name_en: Dharma Lecture Series
     type: 综合讲座
+    type_en: General Lectures
     description: |
       《佛法玄談》系列（至第6集）。含各類佛學專題講座。
+    description_en: |
+      The "Dharma Discourses" series (up to episode 6), together with assorted
+      topical Buddhist lectures.
     url_playlist: https://www.youtube.com/playlist?list=PLhN5EgS8hCEpjXJkYzuGNK8VqCqLShnWG
     icon: 📚
 

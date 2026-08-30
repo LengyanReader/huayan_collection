@@ -4,133 +4,258 @@
 
 overview:
   title: 华严判教体系
+  title_en: The Huayan Doctrinal Classification (Panjiao) System
   subtitle: 从五教十宗到普贤乘一乘不共别圆
+  subtitle_en: From the Five Teachings and Ten Schools to the Puxian-yāna "One Vehicle, Distinct and Perfect"
   description: |
     判教（panjiao）是汉传佛教特有的方法论传统——将佛陀一代时教按义理深浅、
     说法时序、教化对象等标准进行分类和排序。华严宗的判教体系由初祖杜顺发端，
     二祖智俨推进，三祖法藏（贤首国师）集大成，最终在当代由海云继梦法师以
     「普贤乘」重新诠释，形成一套完整的从「小乘」到「一乘不共别圆」的判摄体系。
+  description_en: |
+    Panjiao ("classification of the teachings") is a methodological tradition
+    peculiar to Chinese Buddhism: the Buddha's whole career of teaching is
+    classified and ordered by criteria such as the depth of its doctrine, the
+    sequence in which it was spoken, and the capacity of its audience. The
+    Huayan system of panjiao was initiated by the first patriarch Dushun,
+    advanced by the second patriarch Zhiyan, and brought to completion by the
+    third patriarch Fazang (the National Master Xianshou); in our own time it
+    has been re-interpreted by Venerable Haiyun Jihong through the
+    "Samantabhadra-yāna," yielding a complete hierarchy running from the
+    "Lesser Vehicle" up to the "One Vehicle, distinct and perfect."
 
 sections:
   - id: wujiao
     title: 贤首五教 — 法藏判教的核心架构
+    title_en: The Five Teachings of Xianshou — The Core Architecture of Fazang's Panjiao
     classic_ref: 法藏《华严一乘教义分齐章》(《华严五教章》, T45n1866)
     description: |
       法藏（643-712）在《华严五教章》中建立「五教十宗」判教体系，为汉传佛教
       最具系统性的判教理论之一。五教以义理深浅为次第，从浅至深：
+    description_en: |
+      In the Wujiao Zhang ("Chapter on the Classification of the One Vehicle of the
+      Huayan Teaching"), Fazang (643–712) established the system of the "Five
+      Teachings and Ten Schools" — one of the most systematic panjiao theories in
+      Chinese Buddhism. The five teachings are ordered by doctrinal depth, from
+      the shallow to the profound:
     teachings:
       - name: 小乘教 (Hīnayāna)
+        name_en: The Teaching of the Lesser Vehicle (Hīnayāna)
         also_called: 愚法二乘教
+        also_called_en: the teaching for the unawakened two vehicles
         texts: 《阿含经》/ 四部阿含
         doctrine: 四谛·十二因缘·八正道。说人空，未说法空。
+        doctrine_en: The four noble truths, the twelve links of dependent origination, and the noble eightfold path. It teaches the emptiness of the person but not the emptiness of dharmas.
         position: 为声闻、缘觉二乘所说，未及大乘。
+        position_en: Spoken for the two vehicles of the śrāvakas and pratyekabuddhas; it does not reach the Mahāyāna.
 
       - name: 大乘始教 (Elementary Mahāyāna)
+        name_en: The Elementary Mahāyāna Teaching
         also_called: 权教
+        also_called_en: the provisional teaching
         sub_schools:
           - 相始教: 唯识法相宗——广说法相，少说法性。主张五种性、一分无性。
           - 空始教: 中观般若宗——多说法性，不说法相。主张一切皆空。
         texts: 《解深密经》《瑜伽师地论》(相); 《般若经》《中论》(空)
         doctrine: 说一切法空，但未及「真如缘起」。
+        doctrine_en: It teaches the emptiness of all dharmas, but does not yet reach "dependent origination of Suchness."
         position: 为大乘初入门者所说，犹带权巧方便。
+        position_en: Spoken for beginners in the Mahāyāna; it still carries expedient means.
 
       - name: 大乘终教 (Final Mahāyāna)
+        name_en: The Final Mahāyāna Teaching
         also_called: 实教
+        also_called_en: the real teaching
         texts: 《楞伽经》《大乘起信论》《胜鬘经》
         doctrine: 真如缘起——真如随缘而生万法。如来藏思想。一切众生皆有佛性。
+        doctrine_en: Dependent origination of Suchness — Suchness, following conditions, gives rise to all dharmas. The Tathāgatagarbha thought. All sentient beings possess Buddha-nature.
         key_concept: 如来藏缘起·真如随缘不变
+        key_concept_en: Tathāgatagarbha dependent origination · Suchness follows conditions while remaining unchanging
         position: 尽大乘至极之说。超越权教，直显真实义。
+        position_en: The consummate utterance of the Mahāyāna, surpassing the provisional teaching and directly revealing the real meaning.
 
       - name: 顿教 (Sudden Teaching)
+        name_en: The Sudden Teaching
         texts: 《维摩诘经》《楞伽经》(顿悟部分)
         doctrine: 不立文字，直指人心。一念不生即如如佛。不历阶位，顿超直入。
+        doctrine_en: No dependence on written words; direct pointing at the mind. When not a single thought arises, one is the Buddha as-such. Without passing through stages, sudden transcendence and direct entry.
         key_concept: 言语道断·心行处灭
+        key_concept_en: the path of words is cut off; the course of thought is extinguished
         position: 不依言教次第，直显真性。禅宗即属此类。
+        position_en: It does not rely on the graduated order of verbal teaching but directly reveals true nature; the Chan school belongs to this category.
 
       - name: 圆教 (Perfect Teaching)
+        name_en: The Perfect Teaching
         also_called: 别教一乘
+        also_called_en: the one vehicle of the distinct teaching
         texts: 《华严经》(六十/八十华严)
         doctrine: 事事无碍法界——一即一切，一切即一。主伴圆融，重重无尽。
+        doctrine_en: The dharma-realm of unobstructed interpenetration of all phenomena — one is all, all is one; lord and retinue in perfect fusion, layer upon layer without end.
         key_concept: 法界缘起·性起·事事无碍·十玄门·六相圆融
+        key_concept_en: dependent origination of the dharma-realm · nature-arising · unobstructed interpenetration of all phenomena · the ten mystery gates · the six characteristics in perfect fusion
         position: 华严为最胜圆教——超越诸教而融摄诸教。
+        position_en: Huayan is the supreme perfect teaching — transcending and yet absorbing all the other teachings.
 
   - id: shizong
     title: 十宗 — 以理开宗
+    title_en: The Ten Schools — Establishing Schools by Doctrine
     description: |
       法藏在五教之下，更立十宗，以所宗之理为判摄标准。
       从「我法俱有」到「圆明具德」，层层递进：
+    description_en: |
+      Within the five teachings Fazang further established ten schools, taking the
+      doctrine each school holds to as its classifying criterion — a progressive
+      ascent from "both self and dharmas exist" to "perfect luminosity possessed of
+      all virtues":
     schools:
-      - {no: 1, name: 我法俱有宗, doctrine: 犊子部等——执我法俱为实有, level: 小乘}
-      - {no: 2, name: 法有我无宗, doctrine: 说一切有部——法有我无, level: 小乘}
-      - {no: 3, name: 法无去来宗, doctrine: 大众部——现在有, 过未无, level: 小乘}
-      - {no: 4, name: 现通假实宗, doctrine: 说假部——现在法有假有实, level: 小乘}
-      - {no: 5, name: 俗妄真实宗, doctrine: 说出世部——世俗虚妄, 出世真实, level: 小乘}
-      - {no: 6, name: 诸法但名宗, doctrine: 一说部——一切诸法唯有假名, level: 小乘}
-      - {no: 7, name: 一切皆空宗, doctrine: 大乘始教——般若中观, 一切法空, level: 始教}
-      - {no: 8, name: 真德不空宗, doctrine: 大乘终教——真如妙有, 如来藏不空, level: 终教}
-      - {no: 9, name: 相想俱绝宗, doctrine: 顿教——言语道断, 心行处灭, level: 顿教}
-      - {no: 10, name: 圆明具德宗, doctrine: 圆教——主伴圆融, 重重无尽, level: 圆教}
+      - {no: 1, name: 我法俱有宗, doctrine: 犊子部等——执我法俱为实有, level: 小乘, name_en: School of the Existence of Both Self and Dharmas, doctrine_en: Vātsīputrīyas and others — holding both self and dharmas to be really existent, level_en: Lesser Vehicle}
+      - {no: 2, name: 法有我无宗, doctrine: 说一切有部——法有我无, level: 小乘, name_en: School of the Existence of Dharmas without a Self, doctrine_en: Sarvāstivāda — dharmas exist, the self does not, level_en: Lesser Vehicle}
+      - {no: 3, name: 法无去来宗, doctrine: 大众部——现在有, 过未无, level: 小乘, name_en: School of the Non-existence of the Past and Future of Dharmas, doctrine_en: Mahāsāṃghika — the present exists, past and future do not, level_en: Lesser Vehicle}
+      - {no: 4, name: 现通假实宗, doctrine: 说假部——现在法有假有实, level: 小乘, name_en: School of the Provisional and Real in the Present, doctrine_en: Prajñaptivāda — present dharmas are partly provisional, partly real, level_en: Lesser Vehicle}
+      - {no: 5, name: 俗妄真实宗, doctrine: 说出世部——世俗虚妄, 出世真实, level: 小乘, name_en: School of the Worldly as False and the Transcendent as Real, doctrine_en: Lokottaravāda — the mundane is illusory, the supramundane is real, level_en: Lesser Vehicle}
+      - {no: 6, name: 诸法但名宗, doctrine: 一说部——一切诸法唯有假名, level: 小乘, name_en: School of All Dharmas as Mere Names, doctrine_en: Ekavyāvahārika — all dharmas are only provisional names, level_en: Lesser Vehicle}
+      - {no: 7, name: 一切皆空宗, doctrine: 大乘始教——般若中观, 一切法空, level: 始教, name_en: School of the Emptiness of All Dharmas, doctrine_en: Elementary Mahāyāna — prajñā-Mādhyamika; all dharmas are empty, level_en: Elementary Teaching}
+      - {no: 8, name: 真德不空宗, doctrine: 大乘终教——真如妙有, 如来藏不空, level: 终教, name_en: School of the True Virtue that is Not Empty, doctrine_en: Final Mahāyāna — Suchness as subtle existence; the Tathāgatagarbha is not empty, level_en: Final Teaching}
+      - {no: 9, name: 相想俱绝宗, doctrine: 顿教——言语道断, 心行处灭, level: 顿教, name_en: School of the Extinction of Both Marks and Thought, doctrine_en: Sudden teaching — the path of words is cut off, the course of thought is extinguished, level_en: Sudden Teaching}
+      - {no: 10, name: 圆明具德宗, doctrine: 圆教——主伴圆融, 重重无尽, level: 圆教, name_en: School of Perfect Luminosity Possessed of All Virtues, doctrine_en: Perfect teaching — lord and retinue in perfect fusion, layer upon layer without end, level_en: Perfect Teaching}
 
   - id: yicheng
     title: 一乘不共别圆 — 海云法师的当代判摄
+    title_en: The One Vehicle, Distinct and Perfect — Master Haiyun's Contemporary Panjiao
     classic_ref: 海云继梦法师《华严经》讲记系列 / 大华严寺修行体系
     description: |
       海云继梦法师在继承法藏五教判的基础上，以「普贤乘」重新诠释华严判教，
       提出「一乘不共别圆」——华严不是「五教中的圆教」，而是超越并融摄一切
       教法的「不共别圆」。不是「第五教」而是「唯一乘」。
+    description_en: |
+      Building on Fazang's five-teaching panjiao, Venerable Haiyun Jihong
+      re-interprets Huayan classification through the Samantabhadra-yāna
+      (Puxian Cheng), proposing the "One Vehicle, distinct and perfect" — Huayan
+      is not "the perfect teaching within the five teachings" but a
+      "non-shared, distinct-perfect" teaching that transcends and absorbs every
+      other teaching: not the "fifth teaching" but the "sole vehicle."
     key_points:
       - title: 「同教一乘」与「别教一乘」的区分
+        title_en: The Distinction Between the "Common One Vehicle" and the "Distinct One Vehicle"
         body: |
           法藏《五教章》区分「同教一乘」（法华为代表——会三乘归一乘，开权显实）
           与「别教一乘」（华严为代表——不共三乘，直显佛果境界）。
           海云法师强调：「别教」不是排斥，而是「不共」——华严直显佛陀
           成道时的内证境界，不经过三乘的迂回。
+        en_body: |
+          In the Wujiao Zhang, Fazang distinguishes the "one vehicle of the common
+          teaching" (typified by the Lotus Sūtra — converging the three vehicles
+          into one, opening the provisional to reveal the real) from the "one
+          vehicle of the distinct teaching" (typified by the Avatamsaka — not
+          shared with the three vehicles, directly revealing the realm of the
+          Buddha's fruition). Master Haiyun stresses that "distinct" (bie) is not
+          rejection but "non-sharing": the Avatamsaka directly discloses the inner
+          realization of the Buddha's enlightenment without the detour of the
+          three vehicles.
 
       - title: 普贤乘 — 从「判教」到「行法」
+        title_en: The Samantabhadra-yāna — From Classification to Practice
         body: |
           海云法师将华严判教从「教相判释」推至「修行实践」——普贤乘。
           普贤乘不只是一个名相，而是一套完整的从初发心到成佛的修行体系：
           资粮道→前行→正行→妙行→究竟。
           智俨「搜玄」→法藏「探玄」→海云「行玄」——三阶段的历史推进。
+        en_body: |
+          Master Haiyun carries Huayan panjiao from mere doctrinal classification
+          into contemplative practice — the Samantabhadra-yāna. It is not a bare
+          name-and-form but a complete system of cultivation from the first
+          resolve to buddhahood: the stages of provision (ziliang) → approach
+          (qianxing) → main practice (zhengxing) → wondrous practice (miaoxing) →
+          final attainment (jiujing). A historical advance in three stages:
+          Zhiyan's "search of the mystery" (souxuan) → Fazang's "exploration of
+          the mystery" (tanxuan) → Haiyun's "practice of the mystery" (xingxuan).
 
       - title: 华严判教与当代文明对话
+        title_en: Huayan Panjiao and Dialogue with Contemporary Civilization
         body: |
           华严「事事无碍」不是排他的——在判教框架中，小始终顿圆不是
           互相排斥的「等级」，而是法界中互摄互入的「事事」。
           当代意义：(1) 宗教多元论——各宗教传统在法界中各有位置；
           (2) 科学与佛教——科学知识为「事法界」，华严义理为「理法界」；
           (3) 跨文化伦理——事事无碍为全球化时代的文明对话提供框架。
+        en_body: |
+          The Avatamsaka principle of "unobstructed interpenetration of all
+          phenomena" is not exclusive: within the panjiao framework the lesser,
+          elementary, final, sudden, and perfect teachings are not mutually
+          exclusive "ranks" but mutually interpenetrating "phenomena" of the
+          dharma-realm. Its contemporary relevance: (1) religious pluralism — each
+          religious tradition has its own place within the dharma-realm;
+          (2) science and Buddhism — scientific knowledge belongs to the "realm
+          of phenomena," while Huayan doctrine belongs to the "realm of
+          principle"; (3) cross-cultural ethics — unobstructed interpenetration
+          provides a framework for civilizational dialogue in an age of
+          globalization.
 
   - id: futian
     title: 华严判教与其他宗派判教的比较
+    title_en: Huayan Panjiao Compared with the Classifications of Other Schools
     description: 汉传佛教四大判教体系横向对比：
+    description_en: "A horizontal comparison of the four great panjiao systems of Chinese Buddhism:"
     comparisons:
       - school: 天台宗 (Tiantai)
+        school_en: Tiantai
         founder: 智顗 (538-597)
+        founder_en: Zhiyi (538–597)
         system: 五时八教
+        system_en: The Five Periods and Eight Teachings
         five_periods: 华严时·阿含时·方等时·般若时·法华涅槃时
         eight_teachings: 化仪四教(顿/渐/秘密/不定) + 化法四教(藏/通/别/圆)
         relation_to_huayan: |
           天台以《法华》为纯圆独妙，华严被判为「带别之圆」（犹带别教痕迹）。
           华严则以自身为「别教一乘」，高于法华的「同教一乘」。
           这场「圆教之争」持续千年，至今未有定论。
+        relation_to_huayan_en: |
+          Tiantai takes the Lotus Sūtra as the pure, perfect, and uniquely subtle
+          teaching, classifying Huayan as a "perfect teaching still bearing traces
+          of the distinct teaching." Huayan for its part regards itself as the
+          "one vehicle of the distinct teaching," superior to the Lotus's "one
+          vehicle of the common teaching." This "controversy of the perfect
+          teaching" has lasted a thousand years and remains unsettled to this day.
 
       - school: 唯识宗 (Faxiang/Yogācāra)
+        school_en: Consciousness-Only (Faxiang/Yogācāra)
         founder: 玄奘·窥基
+        founder_en: Xuanzang and Kuiji
         system: 三时教
+        system_en: The Teaching in Three Periods
         three_periods: 有教(阿含)·空教(般若)·中道教(唯识)
         relation_to_huayan: |
           法藏判唯识为「大乘始教·相始教」。华严认为唯识的「阿赖耶缘起」
           未及「法界缘起」的圆融。但唯识的「转识成智」与华严的「妄尽心明」
           在实践论上有互补空间。
+        relation_to_huayan_en: |
+          Fazang classified Consciousness-Only as "elementary Mahāyāna, the
+          sign-teaching of the elementary school." Huayan holds that the
+          Consciousness-Only doctrine of "dependent origination of the ālaya
+          (store-consciousness)" does not reach the perfect fusion of "dependent
+          origination of the dharma-realm." Yet Consciousness-Only's "turning
+          consciousness into wisdom" and Huayan's "when false thoughts are
+          exhausted the mind becomes clear" leave room for complementarity in the
+          theory and practice of cultivation.
 
       - school: 禅宗 (Chan/Zen)
+        school_en: Chan (Zen)
         founder: 菩提达摩→慧能
+        founder_en: Bodhidharma → Huineng
         system: 教外别传·不立文字
+        system_en: A separate transmission outside the teachings; no reliance on written words
         relation_to_huayan: |
           法藏判禅宗为「顿教」。华严五祖宗密同时是禅宗法嗣，
           著《禅源诸诠集都序》融会禅教。海云法师将华严禅观溯源至
           「东山法门」——禅宗实践与华严义理在当代「普贤乘」中合流。
+        relation_to_huayan_en: |
+          Fazang classified the Chan school as the "sudden teaching." Zongmi, the
+          fifth Huayan patriarch, was simultaneously a Chan successor, composing
+          the "Preface to the Collected Explanations of the Sources of Chan"
+          (Chanyuan zhuquanji duxu) to harmonize Chan and doctrinal study.
+          Master Haiyun traces Huayan meditation back to the "East Mountain
+          Dharma-gate" (Dongshan famen) — where Chan practice and Huayan doctrine
+          converge in the contemporary Samantabhadra-yāna.
 
 references:
   - 法藏《华严一乘教义分齐章》(《华严五教章》) — CBETA T45n1866

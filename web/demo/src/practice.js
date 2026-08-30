@@ -861,12 +861,15 @@ function renderYoutubeSection() {
   var ch = yt.channel, pls = yt.playlists || [];
   var h = '<div class=section id=res-yt><h2>📺 YouTube 频道 · 播放清单</h2>';
   h += '<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>' + ch.description.replace(/\n/g,'<br>') + '</p>';
+  if (ch.description_en) h += '<p class="en-line" style=font-size:0.78em;color:var(--text2);margin-bottom:8px>📖 ' + ch.description_en.replace(/\n/g,' ') + '</p>';
   h += '<table class=v-table><tr><th>图标</th><th>系列</th><th>类型</th><th>内容</th><th>直达</th></tr>';
   pls.forEach(function(p) {
     var url = p.url_playlist || p.url_shorts || p.url_search || ch.playlists_url;
     h += '<tr><td>' + (p.icon||'📌') + '</td><td><b>' + p.name_zh + '</b><br><span style=font-size:0.7em;color:var(--text2)>' + (p.name_en||'') + '</span></td>';
-    h += '<td style=font-size:0.78em>' + p.type + '</td>';
-    h += '<td style=font-size:0.75em>' + p.description.replace(/\n/g,'<br>') + '</td>';
+    h += '<td style=font-size:0.78em>' + p.type + (p.type_en ? ' <span class="en-line" style=font-size:0.88em;color:var(--text2)>(' + p.type_en + ')</span>' : '') + '</td>';
+    h += '<td style=font-size:0.75em>' + p.description.replace(/\n/g,'<br>');
+    if (p.description_en) h += '<span class="en-line" style=display:block;font-size:0.88em;color:var(--text2);margin-top:3px>📖 ' + p.description_en.replace(/\n/g,' ') + '</span>';
+    h += '</td>';
     h += '<td><a href="' + url + '" target=_blank>直达</a></td></tr>';
   });
   h += '</table>';
@@ -894,7 +897,9 @@ function renderPanjiaoSection() {
     if (sec.id === 'wujiao') {
       // ── 五教表格 ──
       h += '<div class=section id=med-wujiao><h2>📐 ' + sec.title + '</h2>';
+      if (sec.title_en) h += '<div class="en-line" style=font-size:0.72em;color:var(--text2);margin-bottom:4px>' + sec.title_en + '</div>';
       h += '<p style=font-size:.8em;color:var(--text2)>' + sec.description.replace(/\n/g,'<br>') + '</p>';
+      if (sec.description_en) h += '<p class="en-line" style=font-size:.8em;color:var(--text2)>📖 ' + sec.description_en.replace(/\n/g,' ') + '</p>';
       h += '<p style=font-size:.72em;color:var(--text2)>📎 ' + sec.classic_ref + '</p>';
       h += '<table class=v-table style=font-size:.72em><tr><th>五教</th><th>别名</th><th>核心教义</th><th>海云法师判摄</th></tr>';
       (sec.teachings||[]).forEach(function(t) {
@@ -902,34 +907,62 @@ function renderPanjiaoSection() {
         h += '<td style=font-size:0.75em>' + (t.also_called||'') + '</td>';
         h += '<td style=font-size:0.75em>' + (t.doctrine||'') + '<br><span style=color:var(--text2)>' + (t.key_concept||'') + '</span></td>';
         h += '<td style=font-size:0.75em;color:var(--text2)>' + (t.position||'') + '</td></tr>';
+        if (t.name_en || t.doctrine_en || t.position_en) {
+          var enp = [];
+          enp.push('<b>' + (t.name_en||t.name) + '</b>' + (t.also_called_en ? ' — ' + t.also_called_en : ''));
+          if (t.doctrine_en) enp.push(t.doctrine_en + (t.key_concept_en ? ' <i>(' + t.key_concept_en + ')</i>' : ''));
+          if (t.position_en) enp.push('<i>' + t.position_en + '</i>');
+          h += '<tr class="en-line"><td colspan=4 style="font-size:0.7em;color:var(--text2);line-height:1.7">' + enp.join('<br>') + '</td></tr>';
+        }
       });
       h += '</table></div>';
     } else if (sec.id === 'shizong') {
       // ── 十宗 ──
       h += '<div class=wu-door id=med-shizong onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>📋 ' + sec.title + '</span><div class=body>';
+      if (sec.title_en) h += '<div class="en-line" style=font-size:0.72em;color:var(--text2);margin-bottom:4px>' + sec.title_en + '</div>';
       h += '<p style=font-size:.78em;color:var(--text2)>' + sec.description.replace(/\n/g,'<br>') + '</p>';
+      if (sec.description_en) h += '<p class="en-line" style=font-size:.78em;color:var(--text2)>📖 ' + sec.description_en.replace(/\n/g,' ') + '</p>';
       h += '<table class=v-table style=font-size:.7em><tr><th>#</th><th>宗名</th><th>所属</th><th>核心教义</th></tr>';
       (sec.schools||[]).forEach(function(s) {
         h += '<tr><td>' + s.no + '</td><td><b>' + s.name + '</b></td><td>' + s.level + '</td><td>' + s.doctrine + '</td></tr>';
+        if (s.name_en || s.doctrine_en) {
+          var se = [];
+          se.push('<b>' + (s.name_en||s.name) + '</b>');
+          if (s.doctrine_en) se.push(s.doctrine_en);
+          if (s.level_en) se.push('<i>' + s.level_en + '</i>');
+          h += '<tr class="en-line"><td colspan=4 style="font-size:0.7em;color:var(--text2);line-height:1.7">' + se.join(' — ') + '</td></tr>';
+        }
       });
       h += '</table></div></div>';
     } else if (sec.id === 'yicheng') {
       // ── 一乘不共别圆 ──
       h += '<div class=section id=med-yicheng><h2>📐 ' + sec.title + '</h2>';
+      if (sec.title_en) h += '<div class="en-line" style=font-size:0.72em;color:var(--text2);margin-bottom:4px>' + sec.title_en + '</div>';
       h += '<p style=font-size:.8em;color:var(--text2)>' + sec.description.replace(/\n/g,'<br>') + '</p>';
+      if (sec.description_en) h += '<p class="en-line" style=font-size:.8em;color:var(--text2)>📖 ' + sec.description_en.replace(/\n/g,' ') + '</p>';
       h += '<p style=font-size:.7em;color:var(--text2)>📎 ' + sec.classic_ref + '</p>';
       (sec.key_points||[]).forEach(function(kp) {
-        h += '<div class=topic-card><h4>' + kp.title + '</h4><p>' + kp.body.replace(/\n/g,'<br>') + '</p></div>';
+        h += '<div class=topic-card><h4>' + kp.title + '</h4>';
+        if (kp.title_en) h += '<div class="en-line" style=font-size:0.7em;color:var(--gold);margin-bottom:2px>' + kp.title_en + '</div>';
+        h += '<p>' + kp.body.replace(/\n/g,'<br>') + '</p>';
+        if (kp.en_body) h += '<div class="en-line" style="font-size:0.75em;color:var(--text2);line-height:1.8;margin-top:3px">📖 ' + kp.en_body.replace(/\n/g,' ') + '</div>';
+        h += '</div>';
       });
       h += '</div>';
     } else if (sec.id === 'futian') {
       // ── 与其他宗派比较 ──
       h += '<div class=wu-door id=med-futian onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>🔀 ' + sec.title + '</span><div class=body>';
+      if (sec.title_en) h += '<div class="en-line" style=font-size:0.72em;color:var(--text2);margin-bottom:4px>' + sec.title_en + '</div>';
       h += '<p style=font-size:.78em;color:var(--text2)>' + sec.description.replace(/\n/g,'<br>') + '</p>';
+      if (sec.description_en) h += '<p class="en-line" style=font-size:.78em;color:var(--text2)>📖 ' + sec.description_en.replace(/\n/g,' ') + '</p>';
       (sec.comparisons||[]).forEach(function(c) {
         h += '<div class=topic-card><h4>' + c.school + ' (' + c.founder + ')</h4>';
+        if (c.school_en) h += '<div class="en-line" style=font-size:0.7em;color:var(--gold);margin-bottom:2px>' + c.school_en + ' — ' + (c.founder_en||'') + '</div>';
         h += '<p style=font-size:0.75em><b>判教体系:</b> ' + c.system + '</p>';
-        h += '<p style=font-size:0.75em>' + c.relation_to_huayan.replace(/\n/g,'<br>') + '</p></div>';
+        if (c.system_en) h += '<p class="en-line" style=font-size:0.72em;color:var(--text2)><b>Classification:</b> ' + c.system_en + '</p>';
+        h += '<p style=font-size:0.75em>' + c.relation_to_huayan.replace(/\n/g,'<br>') + '</p>';
+        if (c.relation_to_huayan_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2);line-height:1.8;margin-top:3px">📖 ' + c.relation_to_huayan_en.replace(/\n/g,' ') + '</div>';
+        h += '</div>';
       });
       h += '</div></div>';
     }
