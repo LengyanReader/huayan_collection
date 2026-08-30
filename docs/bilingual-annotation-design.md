@@ -120,4 +120,14 @@
 
 > **EN对应 配对基准**：中文每节内 `### ……` 小节的出现次序 ↔ 英文同节内 `### N. / I. / Footnotes` 次序（两版逐一相同，脚本核验）；特例 en_2 第 13 节中文 4 小节、英文 3 小节，经 per-section override 映射对齐（en §3 覆盖中文 §灵性绕过+§印顺警示）。
 
+## 八、前沿对话页双语（文章页机制的页级推广）
+
+**L-F 序列第 2 步（frontier 页面级）**：数据源 `data/frontier/frontier_dialogue.yaml` 结构化 `en` 字段 → build.py 内嵌 FRONTIER_DATA → `frontier.js` 渲染中英对照。
+
+- 数据约定（均写入 YAML，不硬编码 JS）：
+  - 节级：`sections.{huayan,chinese,buddhist,others,litreview}.en` — 节 intro 的英文对应（一句话式概述）。
+  - 域级：`domains[].en_domain`（英文域名）、`en_core`（核心议题逐条英文）、`en_persp`（华严视角英文对应：按中文 (1)(2)… 要点逐条覆盖，语义无损）或 `en_key_findings`（key_findings 域的逐条英文并行列表）。
+- 呈现：`frontier.js` 在域名/核心议题/华严视角各块之后渲染 `.en-line`（蓝字金边小段）；页顶固定「🌐 英文对应·显示/隐藏」开关，状态存 `localStorage['frontier_en']`；`.en-line` 由 `#frontier-view.en-hidden .en-line{display:none}` 隐藏——机制与 `article.js` 折叠一致，仅作用域不同（页级 vs 文档级）。
+- 统计（2026-08-30）：5 节 intro `en` + 18 域 `en_domain`/`en_core`/`en_persp`（17）+ `en_key_findings`（1，神经科学域）——全部为项目策展文本的英文对应，非典籍译名硬译；术语沿用统一惯译。
+
 > 全站「中文为主文 · 简明优雅英文无损对应」双语原则及全站推广序列见 `docs/next-phase-plan.md` → **L-F**。

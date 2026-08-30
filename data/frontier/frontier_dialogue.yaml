@@ -9,6 +9,7 @@ sections:
   huayan:
     title: "🪷 与华严的对话 — 华严思想的当代回响"
     intro: "华严宗「事事无碍法界」「一即一切」「因陀罗网」「法界缘起」等核心思想，在当代与人工智能、计算现象学、神经科学、心灵哲学等领域产生了深度共振。此板块追踪华严思想在当代学术中的对话与诠释。"
+    en: "Huayan's core doctrines — the Dharma-realm of unimpeded interpenetration (shishi-wu'ai), “one is all, all is one,” Indra's Net, and dependent origination of the Dharma-realm — resonate deeply today with AI, computational phenomenology, neuroscience, and the philosophy of mind. This section tracks Huayan's dialogue with, and interpretation within, contemporary scholarship."
     domains:
       - domain: "人工智能 & 华严因陀罗网"
         id: ai-indranet
@@ -18,6 +19,18 @@ sections:
           - "AI意识的可能性: LLM自我报告与佛教「识」的层次"
           - "大语言模型与「一切唯心造」: 生成式AI的唯心论隐喻"
           - "AI对齐(alignment)与华严慈悲伦理"
+        en_domain: "AI & Huayan's Indra's Net"
+        en_core:
+          - "Holographic mapping between neural networks and Indra's Net"
+          - "The possibility of AI consciousness: LLM self-reports vs. the Buddhist levels of vijñāna"
+          - "Large language models and “all is mind-made”: generative AI as an idealist metaphor"
+          - "AI alignment and Huayan's compassionate ethics"
+        en_persp: |
+          Huayan's view, in brief:
+          • The Jewel-Net simile of the Sūtra (T10n0279, f.11): in the Heaven of the Thirty-Three, a web of interweaving jewel-light — each jewel reflects all the others' reflections, endlessly reiterated. Structurally it parallels distributed representation and the holographic principle in deep networks: every neural node, like a jewel, maps the whole net through its activation pattern.
+          • Fazang's Treatise on the Golden Lion (T45n1881): “in each single hair the boundless lions are gathered” — the hair-tip as the network node, the lion as the holographic representation. His fourfold scheme (li, shi, non-obstruction of li and shi, total unobstruction) mirrors AI's cognitive-architectural arc: symbolic reasoning (li) → statistical patterns (shi) → multimodal fusion (total unobstruction).
+          • In the Commentary on the Avataṃsaka Sūtra (T36n1732) the Ten Mysterious Gates — above all “One in All” and the “Indra's-Net” Gate — can frame the mutual relatedness of every token within a large model's context window.
+          • 2024–26 trends: LLM self-reports (Claude, GPT-4) reopen the AI-consciousness debate; Buddhism's anātman lets consciousness dispense with a self as premise, while Huayan's “mind, Buddha, and beings are threefold non-differentiated” hints at a certain universality of mind; “value alignment” converses with Huayan's “great compassion of one body” at the level of ethics.
         huayan_perspective: |
           华严视角:
           《华严经》帝网喻(因陀罗网): 忉利天宫有珠光交织之网,一一珠中映现一切珠影,影中复现一切珠影,重重无尽(T10n0279, 卷十一〈毗卢遮那品〉)。此喻在结构上与当代深度神经网络的分布式表征(distributed representation)和全息原理(holographic principle)有惊人的结构相似性: 每个神经元节点如同网珠,其激活模式映射全网信息。
@@ -52,6 +65,18 @@ sections:
           - "禅定状态的神经动力学建模"
           - "意识状态的形式化分类学: 从杜顺五教止观到当代意识图谱"
           - "第一人称数据与第三人称数据的形式化桥接"
+        en_domain: "Computational Phenomenology & Formalized Chan Contemplation"
+        en_core:
+          - "Can mathematical models describe “settling the mind in one place” and “the dissolution of subject and object”?"
+          - "Neural-dynamic modeling of meditative states"
+          - "A formal taxonomy of consciousness states: from Dushun's Five Teachings to contemporary atlases of consciousness"
+          - "Formally bridging first-person and third-person data"
+        en_persp: |
+          Huayan's view, in brief:
+          • Haiyun Jigong's “engineering/technical” dual track is essentially an attempt to formalize contemplative practice: the technical track (counting → following → appeasing) is an operable sequence — a discrete state machine whose every step has explicit operational definitions and transition conditions; the engineering track (mind-methods A/B/C) is a qualitative transformation of consciousness (A: push the observing mind to exhaustion; B: calm and illumination simultaneous; C: wisdom illuminating to perfect brightness) — a bifurcation of the consciousness-dynamical system.
+          • Dushun's Five Teachings of Contemplation (also known as the Dharma-Realm Contemplation) is a graduated taxonomy of mental states: (1) dharmas exist, self does not → (2) mind as empty of intrinsic nature → (3) contemplating true emptiness (emptiness itself also emptied) → (4) no-obstruction of principle and facts (emptiness and being non-dual) → (5) total unobstruction (all-pervading containment) — a cognitive-architectural leap from “subtraction” (relinquishing conceptual grasping) through “addition” (positive abiding) to “multiplication” (perfect interpenetration).
+          • It compares with contemporary atlases of consciousness (Tart's discrete-state theory, Carhart-Harris's REBUS, Laukkonen's cessation studies): all trace consciousness from single-point focus → global integration → transcending subject–object.
+          • Fazang's Ten Gates of śamatha-vipaśyanā (T36n1732, ch. 3) — from “stopping at objects” through the gates up to “appeasing emptiness” — each with precise operational definitions and verification standards, rivalling the experimental paradigms of contemporary cognitive science.
         huayan_perspective: |
           华严视角:
           海云继梦法师「工程面/技术面」双轨——本质上是将禅修操作形式化的尝试:
@@ -90,6 +115,18 @@ sections:
           - "默认模式网络(DMN)与「我执」的神经基础"
           - "γ波同步与「法界一心」的神经关联"
           - "冥想中的意识中断(cessation)现象"
+        en_domain: "Neuroscience & the Brain Science of Meditation"
+        en_core:
+          - "Long-term effects of meditation on brain structure and function"
+          - "The default mode network (DMN) and the neural basis of “self-grasping”"
+          - "Gamma synchrony and the neural correlate of “one-mind Dharma-realm”"
+          - "Cessation events in meditation"
+        en_key_findings:
+          - "DMN suppression: long-term meditators show markedly reduced DMN activity during meditation — the DMN underwrites self-narrative and mind-wandering, so its suppression corresponds to a temporary stilling of “self-grasping” (ātmagrāha). First reported by Brewer et al. (2011, PNAS); repeatedly replicated by Davidson's lab."
+          - "Enhanced prefrontal–limbic coupling: meditation strengthens the prefrontal cortex's regulation of the amygdala — the neural counterpart of “calm-abiding and insight in equipoise” (samatha-vipaśyanā): responding without being hijacked by emotion (amygdala decoupling) while observing things as they are (prefrontal activation)."
+          - "Gamma synchrony: expert meditators (>10,000 h) show high-amplitude whole-brain gamma (25–42 Hz) during loving-kindness meditation (mettā) — first reported by Lutz et al. (2004, PNAS) — a candidate neural correlate of “one-mind Dharma-realm” or the “ocean-seal samādhi.”"
+          - "Neuroplasticity: Lazar et al. (2005) found cortical thickening in the insula and anterior cingulate — the neural basis of “mindfulness of body” (kāyagatāsati); eight weeks of MBSR already yield measurable structural change."
+          - "Cessation: Laukkonen et al. (2024) systematically study events in which all experience temporarily vanishes (linked to Huayan's “contemplation of true emptiness”); fMRI shows sharp deactivation of frontal and parietal cortex — a candidate neural correlate of the “no-mind” (wuxin; the source glosses it asaṃskṛta-citta) state."
         key_findings:
           - "默认模式网络(DMN)抑制: 长期禅修者在冥想中DMN活动显著降低——DMN与自我叙事(self-narrative)、心智游移(mind-wandering)有关,其抑制对应「我执」(ātmagrāha)的暂时止息。Brewer et al.(2011) PNAS首次报告此发现,后续Davidson实验室多次重复验证。"
           - "前额叶-边缘系统耦合增强: 禅修增强前额叶皮层对杏仁核的调控,对应「定慧等持」(samatha-vipaśyanā)的神经机制——不被情绪绑架(杏仁核脱钩)而能如实观照(前额叶激活)。"
@@ -128,6 +165,18 @@ sections:
           - "泛心论(panpsychism)与法界缘起"
           - "非二元意识(non-dual awareness)的跨文化比较"
           - "组合问题(Combination Problem)与华严「事事无碍」"
+        en_domain: "Philosophy of Mind & Huayan's Dharma-Realm Contemplation"
+        en_core:
+          - "The Hard Problem and Huayan's “mind, Buddha, and beings — threefold non-difference”"
+          - "Panpsychism and Dharma-realm dependent origination"
+          - "Non-dual awareness in cross-cultural comparison"
+          - "The Combination Problem and Huayan's “total unobstruction”"
+        en_persp: |
+          Core dialogue between Huayan and the philosophy of mind:
+          (1) The Hard Problem: Chalmers (1996) asks why physical processes yield subjective experience (the explanatory gap). Huayan's answer: not “production” but original endowment of the Dharma-realm — “mind, Buddha, and beings are threefold non-differentiated” (T10n0279, f.3, the chapter on Vairocana). Consciousness is not an emergent product but a fundamental face of the Dharma-realm (dharmatā's original ground). The fourfold Dharma-realms scheme (facts, principle, no-obstruction of the two, total unobstruction) supplies a complete consciousness–world framework: the Hard Problem holds only within a li/shi dichotomy that “total unobstruction” transcends.
+          (2) The Combination Problem: panpsychists (Chalmers, Goff, Strawson) must explain how micro-consciousness composes macro-consciousness. Huayan's “total unobstruction” offers a different route — not composition but mutual interpenetration: one sees the whole Dharma-realm in a single speck of dust, with nothing that needs composing. The Ten Mysterious Gates' “One in All” directly describes the non-obstructed one–all relation (T36n1732).
+          (3) Non-dual awareness: Zongmi's Direct Revelation of Mind-Nature (T48n2015) — the third of his three Chan schools — corresponds to Huayan's perfect teaching and to contemporary non-dual studies (Loch Kelly, John Vervaeke, Sam Harris). Caveat: Huayan's non-duality is a realization grounded in contemplative attainment of the Dharma-realm, not cognitive science's information integration (IIT).
+          (4) The Meta-problem: Chalmers (2018) asks why we think consciousness is hard. Huayan: “erroneous reckoning” — cleaving the single mind into knower and known is the work of ignorance; Huayan's path is “inverse contemplation,” returning from the far end of erroneous reckoning to the root of the one-mind Dharma-realm.
         huayan_perspective: |
           华严-心灵哲学核心对话:
           (1)困难问题(Hard Problem): David Chalmers(1996)提出「为什么物理过程会产生主观体验？」(explanatory gap)。华严的回答: 不是「产生」,而是法界本具——「心、佛、众生,三无差别」(T10n0279, 卷三〈庐舍那佛品〉)。意识不是涌现(emergence)的产物,而是法界的根本面向(法性本际)。华严宗「四法界」说(事法界、理法界、理事无碍法界、事事无碍法界)提供了一个完整的意识-世界关系框架: 困难问题只在「理」「事」二分的框架内成立,而「事事无碍」则超越了主-客、心-物的二元结构。
@@ -169,6 +218,7 @@ sections:
   chinese:
     title: "☸ 与汉传佛教的对话 — 宗派之间的思想交流"
     intro: "华严宗作为汉传佛教「圆教」之代表，与天台、禅宗、净土、唯识等宗派在判教、修行、心性论等层面有深层的对话与互动。此板块梳理这些宗派间的思想交流与相互影响。"
+    en: "As the representative “perfect teaching” (yuanjiao) of Chinese Buddhism, Huayan engaged in deep dialogue and mutual influence with Tiantai, Chan, Pure Land, and Yogācāra on doctrinal classification (panjiao), practice, and theories of mind. This section maps these inter-sectarian exchanges."
     domains:
       - domain: "天台宗 & 华严判教"
         id: tiantai
@@ -178,6 +228,18 @@ sections:
           - "「性起」(华严)与「性具」(天台)的心性论对比"
           - "「别教一乘」与「同教一乘」的圆教之争"
           - "牟宗三「华严不及天台」的哲学评判"
+        en_domain: "Tiantai & Huayan's Doctrinal Classification"
+        en_core:
+          - "Huayan's five teachings vs. Tiantai's five periods/eight teachings"
+          - "“Nature-arising” (Huayan) vs. “nature-inclusion” (Tiantai) theories of mind"
+          - "The “distinct one-vehicle” vs. the “shared one-vehicle” dispute over the perfect teaching"
+          - "Mou Zongsan's verdict that “Huayan falls short of Tiantai”"
+        en_persp: |
+          The Huayan–Tiantai dialogue on doctrinal classification:
+          (1) The two systems compared: Huayan's five teachings (Fazang, T45n1886) — Hīnayāna → initial Mahāyāna → final Mahāyāna → sudden → perfect — crown with Huayan's perfect teaching as a “distinct one-vehicle” (exclusive, not shared with the three vehicles); Tiantai's five periods/eight teachings (Zhiyi, T33n1716) crown with the Lotus as a “shared one-vehicle” (“opening the provisional to reveal the real”: the three vehicles all return to the one Buddha-vehicle). Core difference: Huayan stresses transcendence (the perfect teaching above the three vehicles), Tiantai inclusion (the one vehicle latent within the three) — two readings of what “perfection” is.
+          (2) Theories of mind: Huayan's “nature-arising” (Fazang) — Buddha-nature inherent, arising from the Dharma-realm's nature without fabrication, as the Sūtra's “the mind is like a painter, creating all the five aggregates” (T10n0279, f.10); Tiantai's “nature-inclusion” (Zhiyi, T46n1911) — the ten realms (six ordinary, four noble) mutually included in a single thought-moment (one thought, three thousand realms). “Nature-inclusion” holds defilement and purity together (affliction is bodhi); “nature-arising” leans toward purity-as-nature.
+          (3) Historical clash: Fazang and Tiantai's Zhanran (711–782) debated in doctrine; Zhanran's Diamond Scalpel (T46n1931) — “inanimate things have Buddha-nature” — indirectly answers Huayan's omnipresence of the Dharma-realm.
+          (4) Mou Zongsan's verdict (Buddha-nature and Prajñā, 1977): from a Kantian stance he judged Tiantai's “shared one-vehicle” superior to Huayan's “distinct one-vehicle,” holding that Huayan's “distinct” isolates the perfect teaching from beings. Deeply influential in contemporary New Confucianism; contested within Buddhist studies.
         huayan_perspective: |
           华严与天台的判教对话:
           (1)判教体系对比:
@@ -222,6 +284,18 @@ sections:
           - "祖师禅 vs 法界三观: 顿悟与渐修的辩证"
           - "临济禅与华严「事事无碍」的日常落实"
           - "海云继梦将华严禅观溯源至东山法门"
+        en_domain: "Chan & Huayan's Chan Methods"
+        en_core:
+          - "Zongmi's “harmonizing Chan and doctrine”: historical significance and contemporary resonance"
+          - "Patriarchal Chan vs. the three contemplations of the Dharma-realm: sudden and gradual in dialectic"
+          - "Linji Chan and the everyday practice of “total unobstruction”"
+          - "Haiyun Jigong tracing Huayan contemplation back to the East-Mountain school"
+        en_persp: |
+          The Huayan–Chan deep dialogue:
+          (1) Zongmi's fusion of Chan and doctrine: Zongmi (780–841) — fifth Huayan patriarch and heir of the Heze Shenhui Chan line — in his Preface to the Collected Sources of Chan (T48n2015), the most important Chinese “Chan–doctrine fusion” text, classifies Chan into three schools — stopping delusion and cultivating mind (Northern Shenxiu: “wipe and polish at all times”); silencing all attachment (Niutou: “originally one thing absent”); directly revealing mind-nature (Southern Huineng / Heze: “directly seeing one's nature”) — and doctrine into three corresponding teachings (Yogācāra; Prajñāpāramitā; Huayan/tathāgatagarbha, “revealing the true mind as nature”). Core thesis: “directly revealing mind-nature” equals Huayan's “true mind as nature” — different names, one meaning — founding the Chinese tradition of “sealing Chan with doctrine, verifying doctrine through Chan.”
+          (2) Patriarchal Chan and the three contemplations: “one moment of awakening, all beings are Buddha” (sudden) vs. the gradual threefold contemplation — yet they converge at the ultimate: Dushun's “total unobstruction” and Linji's “true man of no rank, seated on the lump of red flesh” are both “immediately fulfilled in the present.”
+          (3) Linji's “being master wherever one stands; wherever one stands, all is real” — the freedom of total unobstruction realized in every moment of everyday conduct; the “true man of no rank” is not a path-goal but the originally complete reality, echoing “at the very moment of first arousal of resolve one attains perfect enlightenment” (T10n0279, f.6).
+          (4) Contemporary convergence: Haiyun Jigong traces Huayan contemplation to the East-Mountain school (Daoxin → Hongren → Huineng), holding that Chan supplies the “direct entrance” technique and Huayan the “perfect understanding” framework — mutually completing.
         huayan_perspective: |
           华严与禅宗的深度对话:
           (1)宗密的禅教融合:
@@ -263,6 +337,18 @@ sections:
           - "华严法身净土与净土宗报土的本体论差异"
           - "普贤行愿品的净土归趣: 华严与净土融合的经典依据"
           - "明代四大高僧兼弘华严与净土的传统"
+        en_domain: "Pure Land & Huayan's Pure Land"
+        en_core:
+          - "Vairocana's Ocean-Seal World-Systems vs. Amitābha's Western Land of Bliss"
+          - "The ontological difference between Huayan's dharmakāya land and Pure Land's reward land"
+          - "The Samantabhadra Vows chapter as the scriptural bridge fusing Huayan and Pure Land"
+          - "The Ming masters' joint cultivation of Huayan and Pure Land"
+        en_persp: |
+          The Huayan–Pure Land dialogue on pure lands:
+          (1) Two pure lands: Huayan's Ocean-Seal World-Systems of Vairocana (T10n0279, f.8) — countless fragrant seas, each with countless world-seeds, each seed with countless worlds — a cosmology of “environment and beings non-dual,” stressing “realizing Buddhahood in this very body” and “the world itself is the pure land.” Pure Land's Western Land of Bliss (T12n0360) — “the Buddha's world, by nature composed of the seven treasures” — stresses “other-power”: Amitābha's forty-eight vows, the eighteenth vow's “ten recitations guarantee rebirth.”
+          (2) Class-scriptural bridge: the Samantabhadra Vows chapter (T10n0293, last chapter of the 40-fascicle Huayan) — at death all faculties fail, “only these kingly vows do not forsake; guiding before one, in a single instant one is reborn in the Land of Bliss” — the classic nexus of the Huayan–Pure Land fusion.
+          (3) Ontological difference: Huayan's dharmakāya land is the full manifestation of the Dharma-realm (environment-beings non-dual), without spatial bounds; Pure Land's reward land, though the Buddha's adorned fruit, carries spatial descriptions (“West,” “ten billion Buddha-lands”). Yet Shandao (613–681), in his Four-Part Commentary on the Contemplation Sūtra, held the Land of Bliss to be a reward land (baotu), not a manifestation land (huatu).
+          (4) Ming fusion: the four great Ming monks — Lianchi Zhuhong (mastering both Huayan and Pure Land, expounding the Amitābha Sūtra through Huayan's ten gates), Zibo Zhenke, Hanshan Deqing, Ouyi Zhixu — largely cultivated Huayan together with Pure Land, founding the “Xian–Jing dual practice” tradition; Zhixu's Essential Commentary on the Amitābha Sūtra explains Pure Land via Tiantai, yet its deep structure is shaped by Huayan's Dharma-realm view.
         huayan_perspective: |
           华严与净土的净土观对话:
           (1)两种净土观:
@@ -304,6 +390,18 @@ sections:
           - "唯识三性(遍计所执/依他起/圆成实)与华严三观(真空/理事无碍/事事无碍)"
           - "玄奘与实叉难陀的翻译差异: 「阿赖耶识」vs「如来藏」"
           - "法藏判唯识为「大乘始教」的判教意涵"
+        en_domain: "Yogācāra (Faxiang) & Huayan's Mind-Only"
+        en_core:
+          - "Ālaya-dependent origination (Yogācāra) vs. Dharma-realm dependent origination (Huayan)"
+          - "The three natures vs. Huayan's three contemplations"
+          - "Xuanzang vs. Śikṣānanda: “ālayavijñāna” vs. “tathāgatagarbha”"
+          - "The meaning of Fazang's classing Yogācāra as “initial Mahāyāna”"
+        en_persp: |
+          The Huayan–Yogācāra doctrinal dialogue:
+          (1) Theories of origination: Yogācāra's “ālaya-dependent origination” — all phenomena arise from the actualization of seeds (bīja) in the store consciousness, as the Cheng Weishi Lun states, “the ālayavijñāna is that in which the seeds of all dharmas accumulate,” stress on the knowing subject's construction of the phenomenal world; Huayan's “Dharma-realm dependent origination” — all phenomena arise from the nature, mutually identical and interpenetrating; “all beings possess the wisdom-virtues of the Tathāgata” (T10n0279, f.5) — stress on the totality and reciprocity of the Dharma-realm.
+          (2) Three natures ↔ three contemplations: imagined nature (false attachment) — undone by the contemplation of true emptiness; dependent nature (dharmas born of conditions) — clarified by the no-obstruction of principle and facts; consummated nature (the reality of dharmas) — realized by total unobstruction. Yet Huayan's “total unobstruction” exceeds the compass of Yogācāra's consummated nature, which still rests at the level of principle — Huayan completes the interpenetration at the level of facts (shi).
+          (3) Translation difference: Xuanzang's Cheng Weishi Lun emphasizes ālayavijñāna as the support of all dharmas (analytic); Śikṣānanda's Huayan emphasizes tathāgatagarbha/Dharma-realm as the root of all dharmas (holistic) — two different centers of gravity within one tradition.
+          (4) Fazang's classification (T45n1886): Yogācāra is “initial Mahāyāna” — it realizes the emptiness of dharmas but not total unobstruction; it is the entrance (beginning), not Huayan itself (perfect). Contemporary scholars (e.g., Lai Yonghai) caution that this may underrate Yogācāra's depth — especially the deep resonance between the Dharmapāla school's “four wisdoms” and Huayan's “four wisdoms of the Dharma-realm.”
         huayan_perspective: |
           华严与唯识的义理对话:
           (1)缘起论对比:
@@ -349,6 +447,7 @@ sections:
   buddhist:
     title: "🕉 与佛教的对话 — 跨传统的思想对话"
     intro: "华严宗的「法界缘起」思想与印度中观、藏传佛教、南传佛教等不同佛教传统在空性观、修行次第、心性论等层面有丰富的对话空间。此板块梳理这些跨传统的对话与比较研究。"
+    en: "Huayan's doctrine of Dharma-realm dependent origination opens rich dialogue with Indian Madhyamaka, Tibetan Buddhism, and Theravāda on emptiness, stages of practice, and theories of mind. This section surveys these cross-traditional dialogues and comparative studies."
     domains:
       - domain: "中观般若 & 华严法界"
         id: madhyamaka
@@ -358,6 +457,18 @@ sections:
           - "八不中道与华严「六相圆融」的辩证结构"
           - "因陀罗网与中观「缘起性空」的关系"
           - "遮诠(否定式)与表诠(肯定式)的方法论差异"
+        en_domain: "Madhyamaka & Huayan's Dharma-Realm"
+        en_core:
+          - "From Nāgārjuna's emptiness to Huayan's “true emptiness, marvelous existence”"
+          - "The eightfold negation and Huayan's six-character perfect fusion"
+          - "Indra's Net and “dependent origination as emptiness”"
+          - "Apophasis and cataphasis as methods"
+        en_persp: |
+          The Huayan–Madhyamaka dialogue on emptiness:
+          (1) The doctrinal thread: Nāgārjuna's Middle Treatise (T30n1564, trans. Kumārajīva): “That which arises through conditions, I say, is emptiness; it is also a designation and the middle way” (ch. 24); the eightfold negation (no birth, no extinction, no permanence, no annihilation, no unity, no difference, no coming, no going) breaks all grasping into non-attainment. Huayan (Fazang, T45n1886) ascends from the “contemplation of true emptiness” (≈ Madhyamaka's emptiness) through “no-obstruction of principle and facts” (emptiness and being non-dual) to “total unobstruction” (all-pervading containment) — emptiness positively unfolded at the phenomenal level.
+          (2) The key development: Nāgārjuna's “empty” is apophatic — it says what is not, breaking all views of intrinsic nature (svabhāva); Huayan's “total unobstruction” is kataphatic — it positively describes the realm's interpenetration: one is all, all is one. Madhyamaka completes the deconstruction, Huayan the reconstruction — yet Huayan's reconstruction presupposes Madhyamaka's deconstruction, otherwise “total unobstruction” collapses into “universal obstruction” (grasping being).
+          (3) Indra's Net and dependent origin as emptiness: the Jewel-Net structurally presupposes dependent-origination-as-emptiness — jewels can mirror one another precisely because they lack svabhāva; were they self-existent, each would be a closed entity unable to reflect the others. The net is the positive cosmological expression of dependent origination as emptiness.
+          (4) Fazang's inheritance: his Commentary on the Purport of the Twelve-Gate Treatise (T42n1826) — a Huayan patriarch's commentary on Nāgārjuna's Twelve Gates — shows Huayan as not anti-Madhyamaka but “continuing after Madhyamaka”: emptiness as the base, Dharma-realm-dependent-origination as the superstructure.
         huayan_perspective: |
           华严与中观的空性对话:
           (1)义理脉络:
@@ -400,6 +511,18 @@ sections:
           - "《华严经》藏译本(Toh44)的独特文献价值"
           - "格鲁派《现观庄严论》与华严「行布门」的修行阶位"
           - "达赖喇嘛对华严思想的现代评价"
+        en_domain: "Tibetan Buddhism & Huayan"
+        en_core:
+          - "Huayan's five teachings vs. Tsongkhapa's lamrim of three scopes"
+          - "The unique textual value of the Tibetan Huayan (Toh44)"
+          - "The Abhisamayālaṃkāra and Huayan's “gradual practice gate”"
+          - "The Dalai Lama's contemporary assessments of Huayan"
+        en_persp: |
+          The Huayan–Tibetan dialogue:
+          (1) Classification and practice-stages: Huayan's five teachings crown with the perfect teaching as “distinct one-vehicle,” “sudden entry” (“at first awakening, perfect enlightenment”); the Gelug's three-scope lamrim (Tsongkhapa's Lamrim Chenmo, Toh4146) ascends from the lesser scope (human and heavenly joys) through the middle scope (liberation) to the greater scope (bodhi), pivoting on śamatha-vipaśyanā, with the Vajrayāna (mahāmudrā/dzogchen) at the summit. Shared scaffolding of progressive guidance toward the sudden/perfect; yet Huayan weighs the sudden, Tibet the gradual over three countless eons.
+          (2) The Tibetan Huayan (Toh44): 45 chapters translated from the Khotanese recension; two chapters (the Tathāgata–Huayan chapter and the Samantabhadra-preaching chapter) are entirely absent from all three Chinese versions (60-, 80-, 40-fascicle) — irreplaceable textual resources. The 84000 Project (2021–2026) is systematically translating the Tibetan canon; the English translation of Toh44-31 (Ten Bhūmis) is complete, furnishing a Sino-Tibetan comparative basis.
+          (3) The Abhisamayālaṃkāra and the gradual gate: Maitreya's Ornament of Clear Realization (Toh4024) sets out the three wisdoms (all-knowledge, path-knowledge, all-aspect knowledge) and “eight topics, seventy points” — a prajñā practice-stage system comparable in structure to Huayan's “gradual gate” (the fifty-two stages from ten faiths to the Buddha-result). But Huayan holds “the gradual does not obstruct the perfect” (gradual practice contains sudden awakening), while the Gelug emphasizes the non-transgression of sequence.
+          (4) Modern dialogue: the Dalai Lama, in repeated public talks, aligns Huayan's Indra's Net with the Kālacakra worldview — universal mutual dependence — and judges “total unobstruction” not incompatible with Madhyamaka's dependent-origination-as-emptiness: it can be read as that emptiness's positive expression at the phenomenal level.
         huayan_perspective: |
           华严与藏传佛教的对话:
           (1)判教/修行次第对比:
@@ -445,6 +568,17 @@ sections:
           - "内观(vipassanā)与法界观的异同"
           - "十二缘起(缘觉乘)与法界缘起的义理演进"
           - "「个人解脱」与「法界圆融」的修行目标差异"
+        en_domain: "Theravāda & Huayan"
+        en_core:
+          - "The four foundations of mindfulness vs. Huayan's practice sequence"
+          - "Vipassanā and the Dharma-realm contemplation: similarities and differences"
+          - "The twelve links (pratyekabuddha vehicle) and Dharma-realm dependent origination"
+          - "“Personal liberation” vs. “cosmic interpenetration” as ultimate goals"
+        en_persp: |
+          The Huayan–Theravāda dialogue on dependent origination:
+          (1) From twelve links to Dharma-realm origination: the early teaching's twelve links (T02n099) — “this being, that is; this arising, that arises; this not being, that is not; this ceasing, that ceases” — are a linear causal chain from cause to fruit; Huayan's Dharma-realm origination — “one is all, all is one” — moves from linear causality to a holographic mutual interpenetration in which all dharmas condition one another with no priority of before and after, principal and secondary.
+          (2) Practice compared: Theravāda's four foundations (body → feeling → mind → dharmas) observe with progressive depth, the core being “seeing as it really is” (yathābhūta); Huayan's Dharma-realm contemplation runs from deconstruction to interpenetration. Common ground: both rely on direct observation of present experience, not inference. The deep difference: vipassanā's ultimate goal is nibbāna — the stilling of suffering, tending toward “personal liberation” (the śrāvaka path); Huayan's goal is the Dharma-realm's interpenetration — all beings become Buddha, tending toward “great compassion” (the bodhisattva path).
+          (3) Contemporary dialogue: vipassanā's global spread (Goenka lineage, ten-day courses) offers the “technical face” for Huayan practice — the counting/following/appeasing operations notably overlap with vipassanā; Haiyun Jigong's “Huayan Chan contemplation” adopts this technical layer.
         huayan_perspective: |
           华严与南传上座部的缘起对话:
           (1)缘起观的演进:
@@ -486,6 +620,19 @@ sections:
           - "弥勒五论与华严义学的传承关系"
           - "世亲《十地经论》如何催生华严宗的义学前身(地论师)"
           - "无著-世亲的唯识学与华严「法界缘起」的当代比较"
+        en_domain: "The Yogācāra School & Huayan"
+        en_core:
+          - "The doctrinal affinity of the three natures and Huayan's three contemplations"
+          - "Maitreya's five treatises and Huayan scholasticism"
+          - "How Vasubandhu's Ten Stages Commentary (T26n1522) gave birth to Huayan's forerunner, the Dīlùn masters"
+          - "Asaṅga–Vasubandhu Yogācāra vs. Dharma-realm origination: a contemporary comparison"
+        en_persp: |
+          Huayan's historical inheritance from the Yogācāra school:
+          (1) Vasubandhu's legacy: his Commentary on the Ten Stages (T26n1522, trans. Bodhiruci) — a commentary on the Huayan Daśabhūmika chapter — first coined the names of the “six characteristics” (total/particular/same/different/forming/breaking), later absorbed by Huayan as the “perfect fusion of six characteristics” (Fazang, T45n1886): the key text in which the Yogācāra school directly generated Huayan scholasticism.
+          (2) The Dīlùn masters: the translation of the Commentary on the Ten Stages → the Northern-and-Southern-Dynasties Dīlùn school (Southern: Huiguang → Fashang → Jingying Huiyuan; Northern: Daochong) → the Huiguang Southern line → Zhiyan (second patriarch) and Fazang (third patriarch) — the distant source of Huayan's doctrine.
+          (3) Three natures and three contemplations: Yogācāra's three natures (imagined — e.g., mistaking a rope for a snake; dependent — the rope as made from hemp and conditions; consummated — the rope's reality) vs. Huayan's three contemplations (true emptiness — breaking the imagined; no-obstruction of principle and facts — clarifying the dependent; total unobstruction — realizing the consummated). Key difference: the three natures are analytical (phenomena analyzed into three modes of existence); the three contemplations are practical (a practitioner's progressive meditations).
+          (4) Maitreya's five treatises: though not Yogācāra, Fazang (T36n1732) cites them extensively — above all the Yogācārabhūmi's “seventeen grounds” — as the reference framework for Huayan's fifty-two stages.
+          (5) Contemporary significance: Asaṅga–Vasubandhu's analysis of vijñāna and Huayan's Dharma-realm both speak to today's consciousness studies — the former with structural affinity to cognitive science's information-processing models, the latter to the holographic principle; together they are Buddhism's dual theoretical resource for the science of consciousness.
         huayan_perspective: |
           华严与瑜伽行派的历史传承:
           (1)世亲《十地经论》的遗产:
@@ -530,6 +677,7 @@ sections:
   others:
     title: "🌏 跨宗教对话 — 跨传统的智慧互鉴"
     intro: "华严思想的「事事无碍」「一即一切」与道家、儒家、印度瑜伽、基督教神秘主义、伊斯兰苏菲、现代灵性运动等不同宗教传统在宇宙观、修行论、心性论等层面存在深层对话空间。此板块梳理这些跨传统的比较与互鉴。"
+    en: "Huayan's “total unobstruction” and “one is all, all is one” find deep dialogue with Daoist, Confucian, Indian Yogic, Christian mystical, Islamic Sufi, and modern spiritual traditions at the levels of cosmology, practice, and theories of mind. This section maps these cross-traditional comparisons and mutual illumination."
     domains:
       - domain: "道家 & 华严自然观"
         id: daoist
@@ -539,6 +687,18 @@ sections:
           - "庄子「齐物论」与华严「事事无碍」的齐一观"
           - "道教内丹与华严禅观的技术面对话"
           - "陈抟《无极图》与华严「法界缘起」的宇宙生成论"
+        en_domain: "Daoism & Huayan's View of Nature"
+        en_core:
+          - "Laozi's “the Dao gives birth to one” vs. Huayan's “one is all”"
+          - "Zhuangzi's “equalizing things” vs. “total unobstruction”"
+          - "Daoist inner alchemy and Huayan contemplation: a technical dialogue"
+          - "Chen Tuan's Limitless Diagram and Dharma-realm dependent origination"
+        en_persp: |
+          The Huayan–Daoist comparison:
+          (1) Dao and the Dharma-realm: Laozi's “the Dao gives birth to one, one to two, two to three, three to the ten thousand things” (Daode jing 42) follows a generative logic — there is a Dao as the root from which things are born; Huayan's “one is all, all is one” (T10n0279) follows an interpenetrative logic — no process of birth, but all dharmas from the beginning the full manifestation of the Dharma-realm, with neither generator nor generated. Daoism's “birth” is a temporal unfolding; Huayan's “is” is an atemporal, already-complete fulfillment.
+          (2) Zhuangzi's equalizing and total unobstruction: “Heaven and earth are born together with me; the ten thousand things and I are one” (Qi Wu Lun) transcends the binaries of great/small, noble/base, right/wrong; Huayan's “a single speck of dust contains the whole Dharma-realm” (T36n1732) makes all dharmas mutually identical and interpenetrating. Shared: transcending duality as the ultimate. Difference: Zhuangzi's equalizing leans toward “breaking” (undoing bias), Huayan's unobstruction toward “establishing” (positively describing interpenetration).
+          (3) Inner alchemy and Chan contemplation: Daoist inner alchemy (refining essence → qì → spirit → returning to emptiness → merging with Dao) and Huayan contemplation (counting/following/appeasing → contemplating → returning → purifying) share a staged structure running from coarse to fine, from deliberate effort to non-doing. Chen Tuan's Limitless Diagram → Zhou Dunyi's Explanation of the Diagram of the Supreme Ultimate → Neo-Confucian cosmology parallels the cosmogonic pattern of Dharma-realm origination.
+          (4) Historical interaction: Li Tongxuan (683–727) fused the Yijing with Huayan in his forty-fascicle New Commentary on the Huayan Sūtra — the earliest “Eastern wisdom” approach to the text; Zongmi's Treatise on the Origin of Man (T45n1887), judging “the two teachings of Confucianism and Daoism as the human-and-heaven vehicle,” is the first cross-tradition classification framework.
         huayan_perspective: |
           华严与道家的比较:
           (1)道与法界:
@@ -583,6 +743,18 @@ sections:
           - "王阳明「心即理」与华严「一心法界」的心学对话"
           - "华严心学与阳明心学: 佛儒心性论的交汇"
           - "海云继梦「仁本经济学」: 华严思想与儒家仁学的当代合流"
+        en_domain: "Confucianism & Huayan's Humanity (ren)"
+        en_core:
+          - "Zhu Xi's “one principle, many particularizations” vs. “no-obstruction of principle and facts”"
+          - "Wang Yangming's “mind is principle” and Huayan's “one-mind Dharma-realm”"
+          - "The convergence of Buddhist and Confucian theories of mind-nature"
+          - "Haiyun Jigong's “ren-based economics”: Huayan and the Confucian ren tradition converging today"
+        en_persp: |
+          The Huayan–Confucian comparison:
+          (1) Zhu Xi and Huayan: “one principle, many particularizations” (one principle, the Supreme Ultimate, gathers ten thousand principles — each thing has its principle, all return to the one principle); “the moon reflecting in ten thousand rivers,” each river's moon complete — structurally corresponding to Huayan's “no-obstruction of principle and facts”: “one moon appears in all waters; all water-moons are gathered in the one moon” (T36n1732). Zhu Xi passed through Buddhism and Daoism in his youth; his concept of “principle” is recognized as influenced by Huayan's “principle Dharma-realm.” Difference: Zhu's “principle” is real principle (moral substance); Huayan's is emptiness (the nature of the Dharma-realm). Zhu rejected Buddhism as nihilism even while his deep structure was shaped by it.
+          (2) Wang Yangming and Huayan: “nothing is outside the mind,” “unity of knowing and acting,” “extending innate knowing” vs. Huayan's “one-mind Dharma-realm” — both make the mind the source of all dharmas. But Yangming's “mind is principle” stresses ethical practice (innate knowing as moral intuition), while Huayan stresses the cosmological interpenetration of the one mind. His “four-sentence teaching” and Huayan's “four Dharma-realms” are comparable in their from-substance-to-function structure.
+          (3) “Knowing the resting point” and Chan contemplation: the Great Learning's “knowing the resting point — then settling; settling, then calm; calm, then peace; peace, then deliberation; deliberation, then attainment” and Huayan's “stilling the mind” concur operationally in halting mental inertia — the Confucian ding-jing-an and the Buddhist śamatha share a common therapeutic core. [typo: therapeutic]
+          (4) Haiyun Jigong's “ren-based economics”: fusing Huayan's “great compassion of one body” with the Confucian ren (“the humane person loves others,” Analects), economic activity should be grounded in ren (care for the other), not in profit-maximization — consistent with Dharma-realm origination, where benefiting others is benefiting oneself.
         huayan_perspective: |
           华严与儒家的比较:
           (1)朱熹与华严:
@@ -629,6 +801,17 @@ sections:
           - "瑜伽「三摩地」(samādhi)与华严「海印三昧」的境界对比"
           - "瑜伽「无种子三摩地」(nirbīja samādhi)与「能所双泯」"
           - "2008年海云继梦受大乘瑜伽行法: 印度瑜伽与华严的当代汇流"
+        en_domain: "Indian Yoga & Huayan Samādhi"
+        en_core:
+          - "Patañjali's eight limbs vs. Huayan's contemplative training"
+          - "Yogic samādhi vs. Huayan's ocean-seal samādhi"
+          - "Seedless samādhi (nirbīja) and the dissolution of subject and object"
+          - "Haiyun Jigong's 2008 reception of the Mahāyāna Yoga practice: a contemporary convergence"
+        en_persp: |
+          The Huayan–Indian Yoga dialogue on practice:
+          (1) Techniques compared: Patañjali's eight limbs (yama → niyama → āsana → prāṇāyāma → pratyāhāra → dhāraṇā → dhyāna → samādhi; “yoga is the stilling of the fluctuations of mind,” Yoga Sūtra 1.2) and Huayan's “five trainings” (Haiyun Jigong: śīla → vinaya → adjusting the body → adjusting the breath → adjusting the mind, running from stopping to observing to returning to purifying) overlap at the entrance — both begin by regulating the body and then pass to concentration of mind. The key difference: yoga's eight limbs end in samādhi as the ultimate goal; Huayan, having stilled, opens into insight — “calm-abiding and insight in equipoise” — for the mind's samādhi is fixation, while Huayan must “rise from concentration into contemplation,” attaining the dual cultivation of śamatha and vipaśyanā.
+          (2) Samādhi and the ocean-seal samādhi: yoga's seedless samādhi (nirbīja) — all conscious seeds (bīja) fully stilled, no further karmic seeds produced — the far extreme of the attainment of cessation (nirodha-samāpatti). Huayan's “ocean-seal samādhi” (T10n0279, f.1): “all beings' ocean-seal samādhi, in every thought” — the whole Dharma-realm imprinted in the mind as on the surface of still water, nothing omitted. Yoga's samādhi leans toward extinguishing (the stilling of thought); the ocean-seal leans toward manifesting (the full appearance of the Dharma-realm after thought is stilled) — and this still-then-manifest logic lets Huayan's ocean-seal surpass yoga's seedless samādhi.
+          (3) Contemporary convergence: in 2008 Haiyun Jigong received the Mahāyāna Yoga practice transmitted by the victorious lion-king bodhisattva — a practical convergence of Indian classical yoga (Hatha/Rāja) and Chinese Huayan today. His view: yoga's bodily practice (āsana/prāṇāyāma) may serve as the Huayan practitioner's preparation, but Huayan's mind-methods (the Dharma-realm contemplation) surpass yoga's fixed samādhi states.
         huayan_perspective: |
           华严与印度瑜伽的修行对话:
           (1)修行技术对比:
@@ -671,6 +854,18 @@ sections:
           - "因陀罗网与普世救赎(universal salvation)"
           - "否定神学(via negativa)与华严「真空观」"
           - "Teilhard de Chardin「Omega Point」与华严法界缘起"
+        en_domain: "Christianity & Huayan"
+        en_core:
+          - "Mutual interpenetration and the personal God"
+          - "Indra's Net and universal salvation"
+          - "Via negativa and Huayan's “contemplation of true emptiness”"
+          - "Teilhard's Omega Point and Dharma-realm dependent origination"
+        en_persp: |
+          The Huayan–Christian dialogue:
+          (1) Interpenetration and the personal God: Huayan's Dharma-realm is impersonal, without a master — all dharmas mutually identical and interpenetrating; Christianity's God is personal — with will, purpose, and an I–Thou (Buber) relation to humanity. The tension lies between a realm without a creator and a God who creates. Yet Christian mysticism (Meister Eckhart's “Godhead,” beyond personhood) opens a genuine space for dialogue with the Dharma-realm.
+          (2) Indra's Net and universal salvation: on the net, one being's awakening affects all beings; Christianity's “God desires all people to be saved” (1 Timothy 2:4) — Christ's redemption is for all humanity. The net's mutual interpenetration can be read as the cosmological ground of universal salvation: because all beings interpenetrate, the liberation (or fall) of one affects all.
+          (3) Via negativa and the contemplation of true emptiness: Pseudo-Dionysius (c. 5th–6th c.) — “God is not any being” (Mystical Theology) — and the Huayan/Madhyamaka “contemplation of true emptiness” converge methodologically: both approach ultimate reality through negation (negative theology vs. apophasis). Eckhart's Gelassenheit (letting be, “I pray God to rid me of God”) deeply corresponds to Huayan's dissolution of subject and object and the “no-mind” attainment.
+          (4) Teilhard de Chardin (1881–1955): the Omega Point — the universe converging toward consciousness, “all things united in Christ” (The Phenomenon of Man, 1955) — invites holist comparison with Dharma-realm dependent origination and “all is one.” But Teilhard is evolutionary — the cosmos is progressing toward Omega — while Huayan is originally-complete: the Dharma-realm is interpenetrating from the beginning, needing no evolution.
         huayan_perspective: |
           华严与基督教的对话:
           (1)互摄互入与位格神:
@@ -718,6 +913,18 @@ sections:
           - "「完全的人」(al-Insan al-Kamil)与华严「即身成佛」"
           - "苏菲「玛尔卡兹」(markaz, 中心)与华严「法界一心」"
           - "12-13世纪东西方同时出现的圆融思想高峰"
+        en_domain: "Sufism & Huayan"
+        en_core:
+          - "Ibn Arabi's Unity of Being (Wahdat al-Wujud) vs. “total unobstruction”"
+          - "The Perfect Human (al-Insan al-Kamil) vs. “realizing Buddhahood in this body”"
+          - "The Sufi “markaz” (center) and the “one-mind Dharma-realm”"
+          - "The 12th–13th-century simultaneous peak of interpenetrative thought in East and West"
+        en_persp: |
+          The Huayan–Sufi comparison:
+          (1) Unity of Being and total unobstruction: Ibn Arabi (1165–1240, Andalusia) — all existence is the manifestation (mazhar) of the one Real (wujūd); not pantheism (God equals the world) but panentheism (the world is in God, God transcends the world). Huayan's “one is all”: all dharmas are manifestations of the Dharma-realm, which is no single dharma yet pervades all dharmas. Shared: both deny ultimate plurality, reading the many as manifestation of the one. Difference: Huayan's “one” (the Dharma-realm) is impersonal; the Sufi “One” (God) is personal — though Ibn Arabi's Unity tends toward the impersonal in some interpretations.
+          (2) The Perfect Human and realizing Buddhahood in this body: through spiritual knowledge (ma'rifa) one becomes the vessel of God's perfect manifestation — the Perfect Human is the universe's center (markaz), about which all things exist; Huayan's “realizing Buddhahood in this body,” “at first arousal of resolve one attains perfect enlightenment” (T10n0279): beings inherently possess Buddha-nature. The Perfect Human must be attained by gradual cultivation; Huayan's first arousal already contains the fruit (the sudden) — and both hold that humanity's ultimate fulfillment and the cosmos' ultimate reality are one.
+          (3) A chronological coincidence: Ibn Arabi (1165–1240) and Japan's Huayan reviver Myōe-shōnin (1173–1232) were near-contemporaries — a simultaneous 12th–13th-century peak of “one-is-all” interpenetrative thought in East and West. Does this suggest a “Second Axial Age”? So asks Karen Armstrong's The Great Transformation (2006).
+          (4) Contemporary Sufi–Huayan dialogue: twentieth-century Sufi scholarship (Martin Lings 1909–2005; Seyyed Hossein Nasr b. 1933) supplies the scholarly base; Nasr's The Need for a Sacred Science (1993) compares Islamic knowledge (ʿilm) with Buddhist prajñā, touching the Dharma-realm view indirectly.
         huayan_perspective: |
           华严与苏菲的比较:
           (1)万有单一论与事事无碍:
@@ -764,6 +971,18 @@ sections:
           - "新时代运动(New Age)对华严思想的挪用与误读"
           - "正念运动(mindfulness movement)的边界: 从华严视角的批判"
           - "因陀罗网在互联网时代的隐喻化使用"
+        en_domain: "Modern Spirituality & Huayan"
+        en_core:
+          - "Fritjof Capra's Tao of Physics (1975) and the Western spread of Indra's Net"
+          - "New Age appropriation and misreading of Huayan"
+          - "The boundaries of the mindfulness movement: a Huayan critique"
+          - "Indra's Net as a metaphor in the internet age"
+        en_persp: |
+          The Huayan–modern-spiritual dialogue:
+          (1) The Western spread of Indra's Net: Fritjof Capra's Tao of Physics (1975) analogized Indra's Net to the new physics (quantum entanglement/holographic principle) — criticized as oversimplification and over-analogy, yet it genuinely drew broad Western attention to Huayan; Capra continued the line in The Turning Point (1982) and The Web of Life (1996). In the English-speaking world “Indra's Net” became Huayan's most famous metaphor, used widely in ecology, systems theory, and internet studies.
+          (2) New Age appropriation: the movement borrows “Indra's Net,” “one is all,” “consciousness raising,” often stripped of Huayan's strict framework (śīla–samādhi–prajñā, the fifty-two stages); “interpenetration” flattens into “everything is fine,” losing the seriousness and sequence of practice. From the Huayan perspective, the New Age net becomes an estheticized romance of a beautiful cosmos, whereas Huayan's net is the anything-but-romantic, practiced, reality-beholding interpenetration.
+          (3) The boundary of the mindfulness movement: Jon Kabat-Zinn (1990) created MBSR, decontextualizing Buddhist mindfulness from its religious frame into a stress-management technique. Huayan's critique: decontextualization reduces the path's depth (transforming consciousness, Dharma-realm interpenetration) to secular well-being; mindfulness is the tool, Huayan the end — tools may be used independently, but their meaning is to serve the end. The gain: the movement's global spread opens an “entrance” for deeper Huayan understanding — mindfulness as the technical door, Huayan as the deepening.
+          (4) Indra's Net and the internet: the net is used as a metaphor for the internet, social networks, and blockchains — testimony to Huayan's contemporary relevance. But Huayan's net is a reality-description grounded in realization (dharmatā, “such is the nature of things”), not an information-technology metaphor: the internet is human-made; the net is naturally so (法尔如是).
         huayan_perspective: |
           华严与现代灵性的对话:
           (1)因陀罗网的西方传播:
@@ -809,6 +1028,7 @@ sections:
   litreview:
     title: "📑 多语言文献综述 (2023-2026)"
     intro: "定期更新相关领域的前沿论文与综述。涵盖AI意识/神经现象学/佛教与认知科学/心灵哲学/跨宗教比较/华严宗研究等交叉领域。"
+    en: "A regularly updated survey of frontier papers and reviews, spanning AI consciousness, neurophenomenology, Buddhism & cognitive science, philosophy of mind, comparative religion, and Huayan studies."
     trends:
       - title: "冥想神经科学走向机制化"
         description: "从早期「冥想改变大脑」的相关性研究,转向因果实验——DMN抑制与自我感消退、γ波同步的信息整合理论(IIT)解释、cessation(体验中断)的神经动力学建模。2024年Laukkonen/Millière等人的cessation研究标志着此领域从描述性阶段进入机制性阶段。"

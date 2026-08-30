@@ -7,9 +7,13 @@ function _mdFrontier(s){return _escFrontier(s).replace(/\n/g,'<br>');}
 function _renderDomain(d){
   var h='<div class=f-card>';
   h+='<h3>'+(d.icon||'')+' '+_escFrontier(d.domain)+'</h3>';
+  if(d.en_domain) h+='<div class="en-line domain-en">'+_escFrontier(d.en_domain)+'</div>';
   // core issues
   if(d.core_issues && d.core_issues.length){
     h+='<p><b>核心议题:</b> '+d.core_issues.map(function(c){return _escFrontier(c);}).join('、')+'</p>';
+    if(d.en_core && d.en_core.length){
+      h+='<div class="en-line core-en">'+d.en_core.map(function(c){return '· '+_escFrontier(c);}).join('<br>')+'</div>';
+    }
   }
   // main perspective (huayan_perspective or key_findings)
   var persp = d.huayan_perspective || d.key_findings;
@@ -17,6 +21,9 @@ function _renderDomain(d){
     var label = d.key_findings ? '⚡ 关键发现' : '⚡ 华严视角';
     h+='<div class=stage-box><b>'+label+'</b><br>'+_mdFrontier(persp)+'</div>';
   }
+  // EN correspondence of the perspective
+  if(d.en_persp) h+='<div class="en-line persp-en"><b>📖 English Correspondence</b><br>'+_mdFrontier(d.en_persp)+'</div>';
+  else if(d.en_key_findings) h+='<div class="en-line persp-en"><b>📖 English Correspondence</b><br>'+d.en_key_findings.map(function(c){return '· '+_escFrontier(c);}).join('<br>')+'</div>';
   // related people
   if(d.related && d.related.length){
     h+='<div class=stage-box><b>📎 相关研究与人物</b><br>';
@@ -42,6 +49,7 @@ function _renderSection(key, sec){
   h+='<div class=section style=border-left:4px solid var(--gold)>';
   h+='<h2>'+_escFrontier(sec.title)+'</h2>';
   if(sec.intro) h+='<p style=line-height:1.8>'+_mdFrontier(sec.intro)+'</p>';
+  if(sec.en) h+='<div class="en-line section-en">🌐 '+_mdFrontier(sec.en)+'</div>';
   h+='</div>';
   if(sec.domains){
     sec.domains.forEach(function(d){
@@ -59,6 +67,7 @@ function _renderLitReview(lr){
   h+='<div class=section style=border-left:4px solid var(--gold)>';
   h+='<h2>📑 多语言文献综述 (2023-2026)</h2>';
   if(lr.intro) h+='<p style="font-size:0.78em;color:var(--text2);margin-bottom:8px">'+_mdFrontier(lr.intro)+'</p>';
+  if(lr.en) h+='<div class="en-line section-en">🌐 '+_mdFrontier(lr.en)+'</div>';
   h+='</div>';
   // trends
   if(lr.trends && lr.trends.length){
@@ -94,10 +103,12 @@ function _renderLitReview(lr){
 
 function renderFrontier(){
   var fv=document.getElementById("frontier-view");if(!fv)return;
-  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}.f-target{position:relative;scroll-margin-top:90px}.f-target::after{content:'';position:absolute;inset:-6px;border:2px solid var(--gold);border-radius:12px;animation:fTarget 1.8s ease-out forwards;pointer-events:none}@keyframes fTarget{0%{opacity:1}100%{opacity:0}}";
+  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}.f-target{position:relative;scroll-margin-top:90px}.f-target::after{content:'';position:absolute;inset:-6px;border:2px solid var(--gold);border-radius:12px;animation:fTarget 1.8s ease-out forwards;pointer-events:none}@keyframes fTarget{0%{opacity:1}100%{opacity:0}}.en-line{color:var(--blue);font-size:0.82em;line-height:1.7;border-left:2px solid var(--gold);padding:2px 12px;margin:4px 0 10px;background:rgba(94,139,158,0.07);border-radius:0 6px 6px 0}.section-en{font-size:0.92em}.domain-en{font-size:0.75em;letter-spacing:0.05em;text-transform:uppercase;color:var(--text2)}#frontier-view.en-hidden .en-line{display:none}";
 
   var fd = (typeof FRONTIER_DATA !== 'undefined') ? FRONTIER_DATA : null;
   var sec = fd && fd.sections ? fd.sections : null;
+
+  fv.innerHTML += '<div style="text-align:right;margin:2px 0 10px"><button class="f-nav-btn" id="frontier-en-toggle" onclick="toggleFrontierEN()">🌐 英文对应·显示</button></div>';
 
   if(sec){
     // Render from YAML data
@@ -109,6 +120,8 @@ function renderFrontier(){
     // Fallback: render placeholder
     fv.innerHTML += '<div class=section style=border-left:4px solid var(--gold)><h2>前沿对话</h2><p>数据加载中...</p></div>';
   }
+
+  _applyFrontierEN();
 
   // References
   var refs = fd && fd.references ? fd.references : [];
@@ -137,6 +150,22 @@ function renderFrontier(){
       bibDiv.innerHTML = renderBibForPage('frontier');
     }
   }, 100);
+}
+
+function toggleFrontierEN(){
+  var fv=document.getElementById('frontier-view');if(!fv)return;
+  var off=fv.classList.toggle('en-hidden');
+  var btn=document.getElementById('frontier-en-toggle');
+  if(btn) btn.textContent = off ? '🌐 英文对应·显示' : '🌐 英文对应·隐藏';
+  try{localStorage.setItem('frontier_en', off?'0':'1');}catch(e){}
+}
+function _applyFrontierEN(){
+  var fv=document.getElementById('frontier-view');if(!fv)return;
+  var off=false;
+  try{ off=(localStorage.getItem('frontier_en')==='0'); }catch(e){}
+  if(off) fv.classList.add('en-hidden');
+  var btn=document.getElementById('frontier-en-toggle');
+  if(btn) btn.textContent = off ? '🌐 英文对应·显示' : '🌐 英文对应·隐藏';
 }
 
 function switchFrontier(view){
