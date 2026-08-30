@@ -113,6 +113,10 @@ def load_gap():
     texts_data = db_reader.load_texts()
     if texts_data:
         gap['texts_catalog'] = texts_data
+    # Merge bilingual glossary from SQLite (authoritative L1 source; 50 terms)
+    gloss = db_reader.load_glossary()
+    if gloss:
+        gap['glossary'] = gloss
     return gap
 
 
@@ -341,6 +345,7 @@ PAGE_TOP = '''<!DOCTYPE html>
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
@@ -552,6 +557,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>🌊 法脉传承 · 时空长河</h1>
+  <button id="lang-toggle" class="lang-btn" style="margin-left:auto" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
 ⚠️ 声明：本页面内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
@@ -742,6 +748,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
   <a href="#" onclick="heartLogin();return false" style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none" title="配置GitHub Token">🔑 登录</a>
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
@@ -897,6 +904,7 @@ def build_articles(articles):
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
   <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
 </header>
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">

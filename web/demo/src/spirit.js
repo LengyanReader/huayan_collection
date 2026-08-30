@@ -20,6 +20,9 @@ function renderSpirit() {
     '.sp-nav button:hover{border-color:var(--gold);color:var(--gold)}' +
     '.sp-nav button.on{background:var(--gold);color:#fff;border-color:var(--gold)}' +
     '.sp-intro{font-size:0.85em;line-height:1.9;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:10px 0}' +
+    '.sp-en-title{font-size:0.74em;color:var(--text2);font-style:italic;margin:0 0 6px}' +
+    '.sp-en-t{font-size:0.78em;color:var(--text2);font-style:italic;margin:2px 0 4px}' +
+    '.sp-en-b{font-size:0.78em;color:var(--text2);line-height:1.7;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}' +
     '.sp-ref{font-size:0.72em;color:var(--text2);margin-top:20px;padding:10px;background:var(--card);border:1px solid var(--line);border-radius:8px}' +
     '.sp-ref h4{color:var(--gold);margin:0 0 4px}' +
     '.sp-ref li{line-height:1.8}' +
@@ -33,13 +36,23 @@ function renderSpirit() {
 
   h += '<div class="sp-sec">';
   h += '<h2 style="color:var(--gold);margin:0 0 4px">' + active.icon + ' ' + active.title + '</h2>';
+  if (active.title_en) {
+    h += '<div class="en-line sp-en-title">📖 ' + active.title_en + '</div>';
+  }
   if (active.summary) {
     h += '<p style="font-size:0.85em;color:var(--text2);line-height:1.8">' + (typeof mdToHTML==='function'?mdToHTML(active.summary):active.summary) + '</p>';
+  }
+  if (active.summary_en) {
+    h += '<div class="en-line sp-en-b">📖 ' + (typeof mdToHTML==='function'?mdToHTML(active.summary_en):active.summary_en).replace(/\n/g, '<br>') + '</div>';
   }
   h += '</div>';
 
   if (active.intro) {
-    h += '<div class="sp-intro"><p>' + (typeof mdToHTML==='function'?mdToHTML(active.intro):active.intro).replace(/\n/g, '<br>') + '</p></div>';
+    h += '<div class="sp-intro"><p>' + (typeof mdToHTML==='function'?mdToHTML(active.intro):active.intro).replace(/\n/g, '<br>') + '</p>';
+    if (active.en) {
+      h += '<div class="en-line sp-en-b">📖 ' + (typeof mdToHTML==='function'?mdToHTML(active.en):active.en).replace(/\n/g, '<br>') + '</div>';
+    }
+    h += '</div>';
   }
 
   // Topics — collapsible
@@ -47,8 +60,12 @@ function renderSpirit() {
     active.topics.forEach(function(t, idx) {
       h += '<div class="wu-door open" id=sp-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
       h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+      if (t.en) h += '<div class="en-line sp-en-t">' + t.en + '</div>';
       h += '<div class=body>';
       h += '<p>' + (typeof mdToHTML==='function'?mdToHTML(t.body):t.body).replace(/\n/g, '<br>') + '</p>';
+      if (t.en_body) {
+        h += '<div class="en-line sp-en-b">📖 ' + (typeof mdToHTML==='function'?mdToHTML(t.en_body):t.en_body).replace(/\n/g, '<br>') + '</div>';
+      }
       h += '</div></div>';
     });
   }

@@ -56,6 +56,41 @@ body {
   color: var(--text2);
 }
 
+/* ── 全局阅读语言切换按钮（中英对照 ⇄ 仅中文）── */
+.lang-btn {
+  font-size: 0.72em;
+  color: var(--gold);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.lang-btn:hover {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #fff;
+}
+.lang-btn.zh {
+  border-color: #7d9a6e;
+  color: #7d9a6e;
+}
+.lang-btn.zh:hover {
+  background: #7d9a6e;
+  border-color: #7d9a6e;
+  color: #fff;
+}
+
+/* 仅中文阅读模式：全局隐藏英文对应块 / 外文批注 / 英文单元格 */
+body.zh-only .en-line,
+body.zh-only .en-block,
+body.zh-only .en-note,
+body.zh-only .en-cell {
+  display: none !important;
+}
+
 /* ── Tab Bar ── */
 #tabs {
   display: flex;

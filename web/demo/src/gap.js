@@ -67,38 +67,28 @@ function renderGap(){
   h+="<tr><td>藏文《离世间品》异译段落的来源</td><td>可能反映更古老的于阗传承；学界尚未系统对勘</td><td><b style=color:#c46b5d>unknown</b></td></tr>";
   h+="</table></div>";
 
-  // ── Key term cross-reference ──
-  h+="<h2 style=color:var(--gold)>📖 关键术语梵藏汉对照</h2><div class=section><table class=v-table><tr><th>梵文 (IAST)</th><th>藏文 (Wylie)</th><th>汉文</th><th>英文</th></tr>";
-  h+="<tr><td>dharmadhātu</td><td>chos kyi dbyings</td><td>法界</td><td>Dharma realm</td></tr>";
-  h+="<tr><td>tathatā</td><td>de bzhin nyid</td><td>真如</td><td>suchness</td></tr>";
-  h+="<tr><td>śūnyatā</td><td>stong pa nyid</td><td>空性</td><td>emptiness</td></tr>";
-  h+="<tr><td>tathāgatagarbha</td><td>de bzhin gshegs pa'i snying po</td><td>如来藏</td><td>Buddha-nature</td></tr>";
-  h+="<tr><td>bodhicitta</td><td>byang chub kyi sems</td><td>菩提心</td><td>mind of awakening</td></tr>";
-  h+="<tr><td>samādhi</td><td>ting nge 'dzin</td><td>三昧/定</td><td>meditative absorption</td></tr>";
-  h+="<tr><td>pratītyasamutpāda</td><td>rten cing 'brel bar 'byung ba</td><td>缘起</td><td>dependent origination</td></tr>";
-  h+="<tr><td>Samantabhadra</td><td>kun tu bzang po</td><td>普贤</td><td>Samantabhadra</td></tr>";
-  h+="<tr><td>Vairocana</td><td>rnam par snang mdzad</td><td>毗卢遮那</td><td>Vairocana</td></tr>";
-  h+="<tr><td>Gaṇḍavyūha</td><td>sdong po bkod pa</td><td>入法界品</td><td>Stem Array</td></tr>";
-  h+="<tr><td>buddhāvataṃsaka</td><td>sangs rgyas phal po che</td><td>华严</td><td>Buddha-ornament</td></tr>";
-  h+="<tr><td>bhūmi</td><td>sa</td><td>地/阶位</td><td>stage/ground</td></tr>";
-  h+="<tr><td>daśabhūmika</td><td>sa bcu pa</td><td>十地</td><td>ten stages</td></tr>";
-  h+="<tr><td>bhadracaryā</td><td>bzang po spyod pa</td><td>普贤行</td><td>good conduct</td></tr>";
-  h+="<tr><td>praṇidhāna</td><td>smon lam</td><td>愿/誓愿</td><td>aspiration prayer</td></tr>";
-  h+="<tr><td>vihāra</td><td>gnas</td><td>住处/法会</td><td>abode/assembly</td></tr>";
-  h+="<tr><td>sāgara-mudrā-samādhi</td><td>rgya mtsho'i phyag rgya'i ting nge 'dzin</td><td>海印三昧</td><td>ocean-seal samādhi</td></tr>";
-  h+="<tr><td>dharmadhātu-pratītya-samutpāda</td><td>chos kyi dbyings rten 'brel</td><td>法界缘起</td><td>dharma-realm dependent origination</td></tr>";
-  h+="<tr><td>ekayāna</td><td>theg pa gcig pa</td><td>一乘</td><td>single vehicle</td></tr>";
-  h+="<tr><td>avaivartika</td><td>phyir mi ldog pa</td><td>不退转</td><td>non-retrogressing</td></tr>";
-  h+="<tr><td>anuttarā-samyak-saṃbodhi</td><td>bla na med pa yang dag par rdzogs pa'i byang chub</td><td>阿耨多罗三藐三菩提</td><td>unsurpassed perfect enlightenment</td></tr>";
-  h+="<tr><td>kuśala-mūla</td><td>dge ba'i rtsa ba</td><td>善根</td><td>roots of virtue</td></tr>";
-  h+="<tr><td>pāramitā</td><td>pha rol tu phyin pa</td><td>波罗蜜/到彼岸</td><td>perfection</td></tr>";
-  h+="<tr><td>dāna-pāramitā</td><td>sbyin pa'i pha rol tu phyin pa</td><td>布施波罗蜜</td><td>perfection of giving</td></tr>";
-  h+="<tr><td>śīla-pāramitā</td><td>tshul khrims kyi pha rol tu phyin pa</td><td>持戒波罗蜜</td><td>perfection of ethical conduct</td></tr>";
-  h+="<tr><td>kṣānti-pāramitā</td><td>bzod pa'i pha rol tu phyin pa</td><td>忍辱波罗蜜</td><td>perfection of patience</td></tr>";
-  h+="<tr><td>vīrya-pāramitā</td><td>brtson 'grus kyi pha rol tu phyin pa</td><td>精进波罗蜜</td><td>perfection of diligence</td></tr>";
-  h+="<tr><td>dhyāna-pāramitā</td><td>bsam gtan gyi pha rol tu phyin pa</td><td>禅定波罗蜜</td><td>perfection of meditation</td></tr>";
-  h+="<tr><td>prajñā-pāramitā</td><td>shes rab kyi pha rol tu phyin pa</td><td>般若波罗蜜</td><td>perfection of wisdom</td></tr>";
+  // ── Key term cross-reference (数据驱动: SQLite glossary 表 → GAP.glossary) ──
+  var glz = (GAP.glossary && GAP.glossary.length) ? GAP.glossary : [];
+  h+="<h2 style=color:var(--gold)>📖 关键术语梵藏汉对照 (" + glz.length + "条)</h2><div class=section><table class=v-table><tr><th>梵文 (IAST)</th><th>藏文 (Wylie)</th><th>汉文</th><th>英文</th></tr>";
+  glz.forEach(function(t){
+    h+="<tr><td>" + (t.sa||'') + "</td><td style=font-size:0.8em>" + (t.bo_wylie||'') + "</td><td style=font-weight:600;color:var(--gold)>" + (t.zh||'') + "</td><td>" + (t.en||'') + "</td></tr>";
+  });
   h+="</table></div>";
+
+  // ── 术语格义 · 中英释义（definition_en 随全局「仅中文」开关显隐）──
+  var glzDef = glz.filter(function(t){ return t.definition_zh || t.definition_en; });
+  if (glzDef.length) {
+    h+="<h2 style=color:var(--gold)>📖 术语格义 · 中英释义 (" + glzDef.length + "条)</h2><div class=section>";
+    glzDef.forEach(function(t){
+      h+="<div style='margin:8px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card)'>";
+      h+="<b style=color:var(--gold)>" + (t.zh||'') + "</b>";
+      if (t.en) h+=" <span style='font-size:0.78em;color:var(--text2)'>" + t.en + "</span>";
+      if (t.definition_zh) h+="<p style='font-size:0.78em;line-height:1.8;margin:4px 0;color:var(--text)'>" + t.definition_zh + "</p>";
+      if (t.definition_en) h+="<div class='en-line' style='font-size:0.74em;color:var(--text2);line-height:1.7;margin-top:2px;padding-left:8px;border-left:2px solid var(--gold)'>" + t.definition_en + "</div>";
+      h+="</div>";
+    });
+    h+="</div>";
+  }
 
   // ── Priority roadmap ──
   h+="<h2 style=color:var(--gold)>🗺 对译优先级</h2><div class=section>";

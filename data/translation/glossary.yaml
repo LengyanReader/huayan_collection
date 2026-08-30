@@ -395,6 +395,7 @@ terms:
     zh: 布施波罗蜜
     en: perfection of giving
     definition_zh: "六波罗蜜之首。财施、法施、无畏施三轮体空之行。"
+    definition_en: "The first of the six perfections — the practice of giving in its three forms (wealth, Dharma, fearlessness) done with the three wheels (giver, receiver, gift) seen as empty of self-nature."
 
   - id: term_038
     category: practice
@@ -403,6 +404,8 @@ terms:
     bo_wylie: tshul khrims kyi pha rol tu phyin pa
     zh: 持戒波罗蜜
     en: perfection of ethical conduct
+    definition_zh: "以戒律清净身口意三业，防非止恶之行。"
+    definition_en: "The perfection of ethical conduct — discipline that purifies body, speech, and mind, preventing wrongdoing and upholding goodness."
 
   - id: term_039
     category: practice
@@ -411,6 +414,8 @@ terms:
     bo_wylie: bzod pa'i pha rol tu phyin pa
     zh: 忍辱波罗蜜
     en: perfection of patience
+    definition_zh: "安忍于顺逆之境，心无瞋恼之行。"
+    definition_en: "The perfection of patience — enduring favorable and adverse circumstances with equanimity, the mind free from anger and vexation."
 
   - id: term_040
     category: practice
@@ -419,6 +424,8 @@ terms:
     bo_wylie: brtson 'grus kyi pha rol tu phyin pa
     zh: 精进波罗蜜
     en: perfection of diligence
+    definition_zh: "勇猛无间于善法，勤修断恶修善之行。"
+    definition_en: "The perfection of diligence — vigorous, untiring effort in wholesome practice, ceaselessly abandoning evil and cultivating good."
 
   - id: term_041
     category: practice
@@ -427,6 +434,8 @@ terms:
     bo_wylie: bsam gtan gyi pha rol tu phyin pa
     zh: 禅定波罗蜜
     en: perfection of meditation
+    definition_zh: "摄心一境，止观双运，得三摩地之行。"
+    definition_en: "The perfection of meditation — gathering the mind in single-pointed concentration, uniting tranquility and insight in samadhi."
 
   - id: term_042
     category: practice
@@ -436,6 +445,7 @@ terms:
     zh: 般若波罗蜜
     en: perfection of wisdom
     definition_zh: "六波罗蜜之核心。照见诸法实相之无分别智。"
+    definition_en: "The perfection of wisdom and the heart of the six perfections — the non-discriminating wisdom that directly discerns the true nature of all dharmas."
 
   - id: term_043
     category: scripture
@@ -452,6 +462,7 @@ terms:
     zh: 十信位
     en: ten stages of faith
     definition_zh: "海云法师体系中的十信位果位对应：初信(舍识用根)→二信(确认菩提心)→三信(运用观照技术)→五信(三果)→六信(四果向)→七信(四果·破我执)→八信(发心破法执)→九信(我执法执双破)→十信圆满(照见五蕴空)→入法界。"
+    definition_en: "The ten stages of faith in Venerable Haiyun's system, each with a fruit-correspondence: initial faith (abandoning consciousness, operating from the sense-base) → second (confirming bodhicitta) → third (applying contemplative technique) → fifth (the third fruit) → sixth (toward the fourth fruit) → seventh (fourth fruit, breaking self-grasping) → eighth (resolve to break dharma-grasping) → ninth (self- and dharma-grasping both broken) → tenth perfected (seeing the five aggregates as empty) → entering the dharma-realm."
 
   - id: term_045
     category: doctrine

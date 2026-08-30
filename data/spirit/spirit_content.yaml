@@ -6,14 +6,23 @@
 sections:
   - id: overview
     title: 灵性仁本·澄明永续
+    title_en: Spirituality Rooted in Humanity · Luminous Sustainability
     icon: 🌱
     summary: |
       以华严「一心法界」为根基，融汇灵性经济学、人本经济学、修行传统与本土知识体系，
       探索人类文明在二十一世纪的永续之道。澄明自性，仁泽众生——灵性不是出世的逃避，
       而是入世转化文明的根本力量。
+    summary_en: |
+      Rooted in the Huayan "One Mind, Dharma Realm" doctrine, this page weaves together
+      spiritual economics, humanist economics, contemplative traditions, and indigenous
+      knowledge systems, exploring a sustainable path for human civilization in the
+      twenty-first century. Luminous self-clarity, benevolence toward all beings —
+      spirituality is not an escape from the world, but the fundamental power that
+      transforms civilization from within.
 
   - id: spiritual_economics
     title: 灵性经济学·仁本经济学
+    title_en: Spiritual Economics · Ren-based Economics
     icon: 💎
     intro: |
       海云继梦法师（贤首宗高原法系第四十二世传人）提出「灵性经济学」——
@@ -21,36 +30,83 @@ sections:
       从「以物质为基础」转向「以生命（灵性）为基础」的文明重构。
       法师又常以<b>「仁本经济学」</b>名之——以儒家「仁」学（仁者爱人、推己及人）
       为世间表达，以华严「一心法界」为出世间根基，灵性与仁本一体不二。
+    en: |
+      Venerable Haiyun Jihong (the forty-second-generation holder of the Gaoyuan
+      transmission, Xianshou School) proposes "spiritual economics" — not an appended
+      knowledge about "spirituality," but an economic paradigm shift that makes
+      spirituality the very root of civilization: from a "matter-based" to a
+      "life (spirit)-based" reconstruction of the world. He often names it
+      <b>"Ren-based economics"</b> — using the Confucian teaching of ren ("the humane
+      person loves others; extending oneself to others") as its worldly expression,
+      and the Huayan "One Mind, Dharma Realm" as its supramundane ground;
+      spirituality and benevolence are one, non-dual.
     topics:
       - title: 灵性经济学的核心命题
+        en: The core proposition of spiritual economics
         body: |
           海云法师指出：当代全球危机的根源在于「以物质欲望为驱动」的经济模式。
           灵性经济学的核心追问是——「经济活动的终极目的是什么？」
           不是GDP增长，不是物质积累，而是每一个生命的觉醒与圆满。
           华严「一即一切」为此提供了宇宙论基础：每一个体的经济行为都影响着法界全体。
           因此，经济活动本质上是灵性实践——「一切资生事业皆是佛法」（《华严经》）。
+        en_body: |
+          Venerable Haiyun points out that the root of today's global crisis lies in an
+          economic model driven by material desire. The core question of spiritual
+          economics is — "What is the ultimate purpose of economic activity?" Not GDP
+          growth, not material accumulation, but the awakening and fulfillment of every
+          life. The Huayan teaching "one is all, all is one" provides the cosmological
+          ground: every individual's economic act affects the entire dharma-realm.
+          Economic activity is therefore, in essence, spiritual practice — "all
+          enterprises that sustain life are the Buddha-dharma" (Avatamsaka-sūtra).
       - title: 从「竞争」到「共生」的范式转换
+        en: 'From "competition" to "conviviality": a paradigm shift'
         body: |
           传统经济学预设「资源稀缺」与「理性自利」，驱动竞争与增长。
           灵性经济学指认：真正稀缺的不是物质资源，而是觉醒的心灵。
           华严「因陀罗网」揭示——法界中每一节点都含摄全体，
           共生(conviviality)而非竞争才是存在的根本形式。
           实践层面：从「拥有更多」转向「成为更多」——生命品质的提升替代物质数量的膨胀。
+        en_body: |
+          Conventional economics presupposes "scarce resources" and "rational
+          self-interest," driving competition and growth. Spiritual economics points out:
+          what is truly scarce is not material resources but the awakened mind. The
+          Huayan "net of Indra" reveals that every node of the dharma-realm contains the
+          whole; conviviality, not competition, is the fundamental mode of existence.
+          In practice: shift from "having more" to "becoming more" — the elevation of
+          life's quality replacing the inflation of material quantity.
       - title: 第四波工业革命与灵性文明
+        en: The fourth industrial revolution and spiritual civilization
         body: |
           海云法师预判：人类文明经历「农业革命→工业革命→信息革命→灵性革命」四个阶段。
           第四波不是技术革命，而是意识革命——从「外在工具」转向「内在觉醒」。
           AI与自动化将物质生产推向极限效率，而人类的独特价值将回归灵性——
           创造力、慈悲心、觉照力、审美力——这些是AI无法替代的「灵性维度」。
+        en_body: |
+          Venerable Haiyun anticipates civilization passing through four waves:
+          agricultural → industrial → information → spiritual revolution. The fourth
+          wave is not a technological but a consciousness revolution — from "outer
+          tools" to "inner awakening." AI and automation push material production to
+          ultimate efficiency, while humanity's unique value returns to the spiritual —
+          creativity, compassion, awareness, aesthetic sensibility — the "spiritual
+          dimensions" no AI can replace.
       - title: 灵性GDP：新的文明度量
+        en: 'Spiritual GDP: a new measure of civilization'
         body: |
           海云法师提出替代GDP的度量体系：灵性GDP衡量一个社会的——
           觉醒指数（禅修普及率）、慈悲指数（志愿服务率）、
           智慧指数（教育资源投入）、和谐指数（冲突化解率）。
           正如不丹的「国民幸福总值」(GNH)，灵性GDP将「生命品质」重新确立为发展的终极目标。
+        en_body: |
+          Venerable Haiyun proposes an alternative to GDP: Spiritual GDP measures a
+          society's — awakening index (meditation prevalence), compassion index
+          (volunteer rate), wisdom index (educational investment), harmony index
+          (conflict-resolution rate). Like Bhutan's Gross National Happiness (GNH),
+          Spiritual GDP re-establishes "the quality of life" as the ultimate goal of
+          development.
 
   - id: humanistic_economics
     title: 仁本经济学·人本经济学
+    title_en: Ren-based Economics · Humanist Economics
     icon: 📐
     intro: |
       ⚠ 概念辨析：海云继梦和上提出的<b>「仁本经济学」</b>，与其灵性经济学一脉相承——「仁」
@@ -63,8 +119,25 @@ sections:
       但不建立在灵性修行与华严宇宙观之上。<br><br>
       二者在批判物质主义增长方面同道，但根基不同：一者以华严法界缘起为体，
       一者以世俗人文主义与生态科学为体。本节并列介绍，以供互鉴。
+    en: |
+      ⚠ Conceptual distinction: Venerable Haiyun Jihong's <b>"Ren-based economics"</b>
+      is of a piece with his spiritual economics — "ren" from the Confucian teaching
+      ("the humane person loves others"), "ben" meaning life/spirituality as the root of
+      civilization. It is NOT a translation of Western "Humanistic Economics" but an
+      original Huayan economic paradigm — a turn from material-desire-driven to
+      spiritual-awakening-driven development, replacing GDP with "Spiritual GDP" as the
+      measure of civilization.<br><br>The Western <b>"humanist economics"</b> tradition
+      (E.F. Schumacher, Tim Jackson, Kate Raworth, et al.) is a secular humanist
+      critique of mainstream economics — "economics as if people mattered," "prosperity
+      without growth," "doughnut economics" — which, though intersecting with Buddhist
+      economics, is not grounded in spiritual cultivation or Huayan cosmology.<br><br>
+      The two stand together in critiquing materialist growth, but their grounds differ:
+      the one takes the Huayan dependent arising of the dharma-realm as its substance,
+      the other secular humanism and ecological science. Both are presented side by
+      side, for mutual illumination.
     topics:
       - title: Schumacher《小即是美》与佛教经济学
+        en: Schumacher's Small Is Beautiful and Buddhist economics
         body: |
           E.F. Schumacher(1911-1977)在《Small Is Beautiful》(1973)中首次提出「佛教经济学」——
           以「正命」(Right Livelihood)为核心的另类经济学范式。
@@ -73,7 +146,19 @@ sections:
           Schumacher深受缅甸佛教经济学家在「第三世界发展」讨论中的影响——
           其「中间技术」(Intermediate Technology)理念与华严「事事无碍」在
           「因地制宜、因缘和合」的方法论上有深层共鸣。
+        en_body: |
+          E.F. Schumacher (1911-1977) first proposed "Buddhist economics" in
+          <i>Small Is Beautiful</i> (1973) — an alternative economic paradigm centered on
+          "Right Livelihood." Core ideas: work is not merely a means of livelihood but a
+          path of personal growth and spiritual development; the aim of consumption is
+          not maximization but "contentment" once real needs are met. Schumacher was
+          deeply influenced by Burmese Buddhist economists in the "Third World
+          development" debates — his "Intermediate Technology" resonates at a deep
+          methodological level with the Huayan "unobstructed interpenetration of all
+          phenomena": adapting to local conditions, acting in harmony with causes
+          and conditions.
       - title: 正命(Right Livelihood)：八正道中的经济学
+        en: 'Right Livelihood: the economics of the Eightfold Path'
         body: |
           佛陀在八正道中单列「正命」——谋生方式本身就是修行。
           正命的五个标准：(1)不伤害生命(不贩卖武器/肉/毒/酒/奴隶)；
@@ -81,29 +166,66 @@ sections:
           (4)利益众生(服务导向)；(5)与法和合(符合智慧与慈悲)。
           这五条标准为当代「伦理消费」「社会企业」「B-Corp」提供了
           两千五百年历史的深彻根基。
+        en_body: |
+          The Buddha set "Right Livelihood" as a distinct factor of the Noble Eightfold
+          Path — one's livelihood is itself practice. Its five criteria: (1) not harming
+          life (no dealing in weapons, meat, poison, intoxicants, or slaves);
+          (2) no deception (honest representation); (3) no overconsumption (few
+          desires, contentment); (4) benefiting beings (service orientation);
+          (5) in accord with the Dharma (aligned with wisdom and compassion).
+          These five provide a 2,500-year-deep foundation for today's "ethical
+          consumption," social enterprise, and B-Corps.
       - title: 后增长(Post-Growth)与去增长(Degrowth)
+        en: Post-growth and degrowth
         body: |
           21世纪的后增长运动（Tim Jackson《无增长的繁荣》、Kate Raworth《甜甜圈经济学》、
           Giorgos Kallis《去增长》）与佛教经济学的「知足」理念高度一致。
           华严「事事无碍」为后增长提供了超越「增长vs衰退」二元对立的宇宙观——
           真正的繁荣不依赖于物质的无限扩张，而在于法界中一切存在的相即相入与圆满互摄。
+        en_body: |
+          The twenty-first-century post-growth movement (Tim Jackson's <i>Prosperity
+          Without Growth</i>, Kate Raworth's <i>Doughnut Economics</i>, Giorgos Kallis's
+          <i>Degrowth</i>) aligns closely with the Buddhist ideal of "contentment."
+          The Huayan "unobstructed interpenetration of all phenomena" offers a cosmology
+          that transcends the binary of "growth vs. decline" — true prosperity does not
+          depend on limitless material expansion, but on the mutual interpenetration and
+          perfect fulfillment of all beings in the dharma-realm.
       - title: 人本经济学的全球实践
+        en: Global practices of humanist economics
         body: |
           • 不丹GNH(国民幸福总值)：以佛教价值观替代GDP作为发展指标
           • 日本里山(Satoyama)倡议：传统社区与自然共生的可持续模式
           • 意大利慢食(Slow Food)运动：从「效率最大化」回归「品质与关系」
           • 全球生态村网络(GEN)：以灵性/生态/社区三支柱重建人类聚落
           • 佛教Tzu Chi基金会：以「感恩经济」驱动的全球慈善循环
+        en_body: |
+          • Bhutan's GNH (Gross National Happiness): Buddhist values replacing GDP as the
+            development index
+          • Japan's Satoyama initiative: sustainable models of traditional communities
+            living with nature
+          • Italy's Slow Food movement: returning from "efficiency maximization" to
+            quality and relationship
+          • Global Ecovillage Network (GEN): rebuilding human settlements on the three
+            pillars of spirituality/ecology/community
+          • Buddhist Tzu Chi Foundation: a global philanthropic cycle driven by a
+            "gratitude economy"
 
   - id: contemplative_traditions
     title: 修行传统与永续发展
+    title_en: Contemplative Traditions and Sustainable Development
     icon: 🧘
     intro: |
       世界各大修行传统（佛教、道家、印度瑜伽、基督教隐修、苏菲、原住民灵性）
       蕴含着丰富的生态智慧与永续实践——这些传统不是「过去」的遗物，
       而是应对当代生态危机与意义危机的深层资源。
+    en: |
+      The world's great contemplative traditions — Buddhism, Daoism, Indian yoga,
+      Christian monasticism, Sufism, indigenous spirituality — harbor rich ecological
+      wisdom and sustainable practice. These traditions are not relics of "the past"
+      but deep resources for meeting today's ecological and existential crises.
     topics:
       - title: 佛教生态智慧：从缘起到共生
+        en: 'Buddhist ecological wisdom: from dependent arising to interdependence'
         body: |
           佛教缘起法——「此有故彼有，此无故彼无」——是最古老的生态哲学。
           一切事物相互依存、相互关联，没有孤立的存在。
@@ -112,14 +234,38 @@ sections:
           泰国「森林僧传统」(Forest Monks)通过「树木授戒」(Tree Ordination)
           将环保行动整合为宗教仪式——将森林保护提升至「护生」的戒律层面。
           不丹宪法规定森林覆盖率不低于60%——佛教国家将生态永续写入根本大法。
+        en_body: |
+          The Buddhist teaching of dependent arising — "when this exists, that exists;
+          when this ceases, that ceases" — is the oldest ecological philosophy: all
+          things are interdependent and interrelated; nothing exists in isolation.
+          Thích Nhất Hạnh's "Interbeing" develops its ecological dimension: "in a cloud
+          there is a cup of tea" — cloud, rain, soil, tea farmer, drinker... infinite
+          conditions jointly constitute "a cup of tea." Thailand's Forest Monk tradition
+          integrates environmental action into religious ritual through "Tree
+          Ordination," elevating forest protection to the precept-level of "protecting
+          life." Bhutan's constitution requires forest cover of no less than 60% — a
+          Buddhist nation writing ecological sustainability into its fundamental law.
       - title: 道家与深层生态学
+        en: Daoism and deep ecology
         body: |
           道家「道法自然」「无为而治」与深层生态学(Deep Ecology)的核心理念高度契合。
           Arne Næss的「生态智慧T」(Ecosophy T)明确受到老子与斯宾诺莎的启发——
           以「自我实现」(Self-realization)的扩展为核心，从小我→社会我→生态我→宇宙我。
           这与华严「从初发心到法身大士」的修行历程在扩展「自我边界」上有结构对应：
           初信=小我意识→十信=社会意识→十住=生态意识→十地=宇宙意识→等觉=法界意识。
+        en_body: |
+          The Daoist principles of "the Way follows nature" (dao fa ziran) and
+          "governing through non-action" (wu wei) accord closely with the core ideas of
+          Deep Ecology. Arne Næss's "Ecosophy T" was explicitly inspired by Laozi and
+          Spinoza — centered on the expansion of "self-realization": from the small
+          self, to the social self, the ecological self, the cosmic self. This has a
+          structural correspondence with the Huayan path "from first resolve to a
+          dharma-body bodhisattva": initial faith = small-self consciousness →
+          ten faiths = social consciousness → ten abodes = ecological consciousness →
+          ten grounds = cosmic consciousness → near-enlightenment = dharma-realm
+          consciousness.
       - title: 原住民灵性与地球伦理
+        en: Indigenous spirituality and earth ethics
         body: |
           全球原住民仅占世界人口约5%，却保护着地球80%的生物多样性（UNESCO数据）。
           这不是巧合——原住民的灵性传统以「土地为神圣」「万物有灵」「七代责任」为核心。
@@ -127,23 +273,53 @@ sections:
           北美原住民「七代原则」(Seven Generations)——每一个决策必须考虑对未来七代的影响。
           2017年新西兰赋予Whanganui河流「法律人格」——原住民法理与现代环境法的突破性融合。
           华严「无情有性」（无生命之物也有佛性）与此深度共鸣。
+        en_body: |
+          Indigenous peoples, about 5% of the world's population, protect 80% of the
+          earth's biodiversity (UNESCO data). This is no coincidence — indigenous
+          spiritual traditions are grounded in "land as sacred," "all things have
+          spirit," and "seven-generation responsibility." The Māori "Kaitiakitanga"
+          (guardianship), the Andean "Pachamama" (Mother Earth), and the North American
+          "Seven Generations" principle — every decision must consider its impact on
+          seven future generations. In 2017 New Zealand granted legal personhood to the
+          Whanganui River — a breakthrough fusion of indigenous jurisprudence and modern
+          environmental law. The Huayan "insentient beings possess Buddha-nature"
+          resonates deeply with this.
       - title: 修行传统的气候行动
+        en: Climate action by contemplative traditions
         body: |
           2015年佛教《气候变化宣言》由达赖喇嘛与一行禅师联署，呼吁全球佛教徒参与气候行动。
           伊斯兰《清洁能源宣言》、印度教《Bhumi Devi(大地女神)宣言》、
           东正教《绿色宣言》(君士坦丁堡宗主教巴多罗买被称为「绿色宗主教」)——
           全球宗教传统正在将灵性洞见转化为气候行动的伦理基础。
           华严的「理事无碍」为此提供了整合框架：理=灵性洞见，事=具体行动，二者圆融无碍。
+        en_body: |
+          The 2015 Buddhist Climate Change Statement, co-signed by the Dalai Lama and
+          Thích Nhất Hạnh, called on Buddhists worldwide to take climate action.
+          Together with Islam's Clean Energy Declaration, the Hindu "Bhumi Devi
+          Declaration," and the Orthodox "Green Declaration" (Ecumenical Patriarch
+          Bartholomew, called the "Green Patriarch") — global religious traditions are
+          converting spiritual insight into the ethical basis of climate action. The
+          Huayan "non-obstruction of principle and phenomena" offers an integrative
+          framework: principle = spiritual insight, phenomena = concrete action, the two
+          perfectly interfused.
 
   - id: indigenous_knowledge
     title: 本土知识体系·多元智慧
+    title_en: Indigenous Knowledge Systems · Multidimensional Wisdom
     icon: 🌏
     intro: |
       「本土知识」(Indigenous Knowledge)不是「原始的」或「过时的」——
       它是人类数千年与特定生态系统共生的精炼智慧。联合国IPBES(生物多样性与生态系统服务
       政府间平台)已将本土知识正式纳入全球评估框架。
+    en: |
+      "Indigenous knowledge" is neither "primitive" nor "outdated" — it is humanity's
+      distilled wisdom from millennia of cohabiting with specific ecosystems. The UN's
+      IPBES (Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem
+      Services) has formally incorporated indigenous knowledge into its global
+      assessment frameworks.
     topics:
       - title: 本土知识的认识论地位
+        en: The epistemological status of indigenous knowledge
         body: |
           现代科学以「客观」「可复现」「普遍性」为标准——本土知识则以
           「关系性」「口传」「在地性」为特征。二者不是高下之分，而是不同的认知方式(Ways of Knowing)。
@@ -151,7 +327,20 @@ sections:
           科学知识（一事）、本土知识（另一事）——在法界中各自有其合法性与界限，
           互不相碍而能相资为用。正如法藏大师「六相圆融」所示：总别同异成坏——
           科学与本土知识互为「总/别」，在不同的脉络中各为「总」。
+        en_body: |
+          Modern science is judged by the standards of "objectivity," "reproducibility,"
+          and "universality"; indigenous knowledge is characterized by "relationality,"
+          "oral transmission," and "locality." They are not superior and inferior but
+          different ways of knowing. The Huayan "unobstructed interpenetration of all
+          phenomena" provides an inclusive epistemological frame: scientific knowledge
+          (one phenomenon) and indigenous knowledge (another phenomenon) — each has
+          validity and limits within the dharma-realm, mutually non-obstructive and
+          mutually enriching. As Master Fazang's "six characteristics in perfect fusion"
+          shows — total/partial, identity/difference, completion/ruin — science and
+          indigenous knowledge serve as "total"/"partial" for each other, each being
+          "total" in its own context.
       - title: 中国传统中的生态智慧
+        en: Ecological wisdom in the Chinese tradition
         body: |
           中国二十四节气——世界上最古老、最完整的「物候历」——将天文、气候、
           农业、饮食、养生整合为一个动态的生态时间体系。
@@ -160,7 +349,20 @@ sections:
           的可持续农业实践——轮作、绿肥、天敌除虫——比现代有机农业早了一千多年。
           华严宗的「华严时」(一套以《华严经》为时间坐标的历法观)与此有深度亲和——
           「一念万年」「三世一时」的时间观超越了线性进步主义的时间观。
+        en_body: |
+          The Chinese Twenty-Four Solar Terms — the world's oldest, most complete
+          "phenological calendar" — integrate astronomy, climate, agriculture, diet,
+          and health into a dynamic ecological time system; UNESCO inscribed them on its
+          Representative List of Intangible Cultural Heritage in 2016. China's
+          classical agronomy (<i>Qimin Yaoshu</i>, <i>Nongzheng Quanshu</i>) records two
+          thousand years of sustainable farming — crop rotation, green manure, natural
+          pest control — over a millennium before modern organic agriculture. The
+          Huayan-school's "Huayan time," a calendrical view using the Avatamsaka-sūtra
+          as its time-frame, resonates deeply here — its vision of "one thought
+          encompassing ten thousand years" and "three times in a single moment"
+          transcends the linear progressivist view of time.
       - title: 全球本土知识案例
+        en: Global cases of indigenous knowledge
         body: |
           • 印度「神圣树林」(Sacred Groves)：数千片被宗教禁忌保护的原始森林——印度最早的「自然保护区」
           • 安第斯「ayllu」社区体系：以互惠(ayni)为核心的生态-社会-灵性共同体
@@ -168,7 +370,21 @@ sections:
           • 日本「镇守之森」：神社周边的原生林——日本最古老的森林保护制度
           • 蒙古「Ovoo」：游牧民族以敖包祭祀维护草原生态平衡
           • 澳大利亚原住民「歌之途」(Songlines)：以歌谣记录地形、水源、物种——活的地图与百科全书
+        en_body: |
+          • India's "Sacred Groves": thousands of primeval forests protected by
+            religious taboo — India's earliest "nature reserves"
+          • The Andean "ayllu" community system: an eco-social-spiritual commons built
+            on reciprocity (ayni)
+          • West Africa's "Sankofa" philosophy (Ghana's Akan people): looking back to
+            move forward — traditional wisdom is a resource for the future
+          • Japan's "Chinju no Mori" (shrine forests): primary forests around shrines —
+            Japan's oldest forest-protection institution
+          • Mongolia's "Ovoo": nomadic herding maintains steppe ecological balance
+            through obo rituals
+          • Aboriginal "Songlines": songs that map terrain, water sources, and species —
+            living maps and encyclopedias
       - title: 华严与本土知识的汇通之路
+        en: The path of convergence between Huayan and indigenous knowledge
         body: |
           华严「六相圆融」为本土知识与现代性的互摄提供了独特的哲学框架：
           「总」(二者皆为人类智慧遗产)、「别」(各有方法论的独立性)、
@@ -178,15 +394,34 @@ sections:
           本土知识不必被现代科学「证明」才有价值，
           正如现代科学不必被本土传统「认可」才有合法性。
           二者在「灵性仁本」的道场中平等交辉。
+        en_body: |
+          Huayan's "six characteristics in perfect fusion" provides a unique
+          philosophical frame for the interpenetration of indigenous knowledge and
+          modernity: "total" (both are part of the shared heritage of human wisdom),
+          "partial" (each retains methodological independence), "identical" (both aim
+          at the sustainability of life), "different" (their epistemological paths
+          differ), "completed" (each completes the other), "ruined" (each has its
+          limits). Master Fazang said: "All the dharma-gates of the endless ocean of
+          dharma gather in a single dharma-arena" — indigenous knowledge need not be
+          "proven" by modern science to have value, just as modern science need not be
+          "ratified" by indigenous tradition to be valid. The two shine equally in the
+          arena of "spirituality rooted in humanity."
 
   - id: practice
     title: 澄明永续·人间实践
+    title_en: Luminous Sustainability · Practice in the World
     icon: 🙏
     intro: |
       从理念到行动——灵性仁本不是书斋哲学，而是转化为具体的人间实践。
       全球已有众多以灵性/人本/生态/本土知识为驱动力的社区、组织与运动。
+    en: |
+      From ideas to action — spirituality rooted in humanity is not an armchair
+      philosophy but converts into concrete practice in the world. Globally there are
+      already many communities, organizations, and movements driven by spirituality,
+      humanism, ecology, and indigenous knowledge.
     topics:
       - title: 灵性共同体与生态村运动
+        en: Spiritual community and the ecovillage movement
         body: |
           全球生态村网络(GEN)已有超过10,000个注册社区，以「灵性·生态·社群·经济」
           四维重建人类聚落。苏格兰Findhorn生态村(始于1962)——以灵性实践
@@ -194,7 +429,18 @@ sections:
           的「整体瑜伽」为灵性根基的全球城市实验。
           华严的「事事无碍」为生态村的多维实践提供了整合哲学——
           灵性不是社区的「一项活动」，而是贯穿生态/社群/经济的底色。
+        en_body: |
+          The Global Ecovillage Network (GEN) counts over 10,000 registered communities
+          rebuilding human settlements on four dimensions — spirituality, ecology,
+          community, economy. Scotland's Findhorn ecovillage (since 1962) turned desert
+          land into an oasis through spiritual practice (communion with nature
+          spirits); India's Auroville (1968) is a global city experiment grounded in Sri
+          Aurobindo's "integral yoga." The Huayan "unobstructed interpenetration of all
+          phenomena" supplies the integrative philosophy of ecovillage practice —
+          spirituality is not "one activity" of a community but the thread running
+          through ecology, community, and economy.
       - title: 人本教育：从「培训」到「觉醒」
+        en: 'Humanist education: from "training" to "awakening"'
         body: |
           灵性仁本的教育不是「灌输知识」而是「开启觉性」。
           一行禅师创办的「Wake Up Schools」——将正念融入课堂，已在全球上千所学校推行。
@@ -202,7 +448,19 @@ sections:
           芬兰现象教学法——虽非宗教灵性但以「全人发展」为核心，暗合灵性仁本的人本精神。
           华严「善财童子五十三参」是终极的人本教育隐喻——善财参访五十三位善知识
           （各行各业、男女老少、在家出家），在真实生活中学习法界智慧。
+        en_body: |
+          Spiritual-humanist education does not "inculcate knowledge" but "opens
+          awareness." Thích Nhất Hạnh's "Wake Up Schools" — integrating mindfulness
+          into classrooms — has reached thousands of schools worldwide. Thailand's
+          Sathya Sai schools offer value-based education ("Educare") as an alternative
+          to exam-oriented schooling. Finland's phenomenon-based pedagogy, though not a
+          religious spirituality, centers "whole-person development" and quietly
+          coincides with the humanist spirit. The Huayan "Sudhana's Fifty-three
+          Pilgrimages" is the ultimate humanist-education metaphor — Sudhana visits
+          fifty-three good friends (of every trade, age, gender; lay and monastic),
+          learning the wisdom of the dharma-realm in real life.
       - title: 灵性仁本宣言
+        en: The Declaration of Spirituality Rooted in Humanity
         body: |
           综合灵性经济学、人本经济学、修行传统、本土知识体系的核心理念，
           灵性仁本的实践原则可归纳为——
@@ -214,6 +472,23 @@ sections:
           ⑥ 永续为果：在法界中，每一念澄明的增长即法界永续的增长
           此六条不构成封闭体系——正如华严「善财五十三参」所示，
           灵性仁本永远向更多的智慧传统、更多的人类经验开放。
+        en_body: |
+          Synthesizing the core ideas of spiritual economics, humanist economics,
+          contemplative traditions, and indigenous knowledge, the practice principles
+          of "spirituality rooted in humanity" can be stated as —
+          ① life is the root: economic activity serves the awakening of life, not the
+            reverse
+          ② contentment is wealth: "enough" is richer than "more"
+          ③ relationship is reality: existence is interbeing, not isolated individuals
+          ④ tradition is a source: contemplative traditions and indigenous knowledge are
+            resources for the future, not relics of the past
+          ⑤ clarity is the path: the clarity of one's own mind is the ground of every
+            external clarity
+          ⑥ sustainability is the fruit: in the dharma-realm, the growth of each clear
+            thought is the growth of the dharma-realm's sustainability
+          These six do not form a closed system — as Sudhana's Fifty-three Pilgrimages
+          show, "spirituality rooted in humanity" remains forever open to more wisdom
+          traditions and more human experience.
 
 references:
   - title: 海云继梦法师「灵性经济学」系列演讲

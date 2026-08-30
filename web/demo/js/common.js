@@ -636,6 +636,36 @@
     }
   };
 
+  /* ═══════════════════════════════════════════════════════
+     9. Global Reading-Language Toggle (中英对照 ⇄ 仅中文)
+     统一开关：localStorage 'site_lang'（'0' = 仅中文，其余 = 中英对照）。
+     作用于全站所有页面的英文对应块（.en-line / .en-block / .en-note / .en-cell）。
+     ═══════════════════════════════════════════════════════ */
+
+  /**
+   * Apply the stored reading-language preference to the current page.
+   * Acts as a global master switch: '仅中文' hides all EN correspondence blocks.
+   */
+  window._applySiteLang = function () {
+    var zh = localStorage.getItem('site_lang') === '0';
+    document.body.classList.toggle('zh-only', zh);
+    var btn = document.getElementById('lang-toggle');
+    if (btn) {
+      btn.textContent = zh ? '🌐 仅中文' : '🌐 中·EN';
+      btn.classList.toggle('zh', zh);
+      btn.setAttribute('aria-pressed', zh ? 'true' : 'false');
+    }
+  };
+
+  /**
+   * Toggle between '中英对照' (bilingual, default) and '仅中文' (Chinese only).
+   */
+  window.toggleSiteLang = function () {
+    var nowZh = localStorage.getItem('site_lang') === '0';
+    localStorage.setItem('site_lang', nowZh ? '1' : '0');
+    window._applySiteLang();
+  };
+
 })();
 
 // ═══ Global markdown-lite converter ═══
@@ -855,4 +885,6 @@ function articlesIndexLink(){
 (function(){
   // 各 Tab 页侧栏底部自动追加「独立文章目录」入口（lineage 无侧栏则跳过）
   try{ articlesIndexLink(); }catch(e){}
+  // 全局阅读语言切换：按 localStorage 恢复站点语言偏好（common.js 位于 header 之后加载）
+  try{ window._applySiteLang && window._applySiteLang(); }catch(e){}
 })();

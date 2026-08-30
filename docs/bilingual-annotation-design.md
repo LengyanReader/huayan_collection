@@ -130,4 +130,19 @@
 - 呈现：`frontier.js` 在域名/核心议题/华严视角各块之后渲染 `.en-line`（蓝字金边小段）；页顶固定「🌐 英文对应·显示/隐藏」开关，状态存 `localStorage['frontier_en']`；`.en-line` 由 `#frontier-view.en-hidden .en-line{display:none}` 隐藏——机制与 `article.js` 折叠一致，仅作用域不同（页级 vs 文档级）。
 - 统计（2026-08-30）：5 节 intro `en` + 18 域 `en_domain`/`en_core`/`en_persp`（17）+ `en_key_findings`（1，神经科学域）——全部为项目策展文本的英文对应，非典籍译名硬译；术语沿用统一惯译。
 
+## 九、全站阅读语言切换（L-F 序列第 3 步第一梯队）
+
+**机制（中英对照 ⇄ 仅中文）**：
+
+- **按钮**：build.py 四个页面模板的 `<header id="header">` 统一注入 `<button id="lang-toggle" class="lang-btn">`（lineage 页无右侧登录位，按钮自带 `margin-left:auto`）。
+- **JS**：`common.js` 第 9 节 `window.toggleSiteLang()` / `window._applySiteLang()`；偏好存 `localStorage['site_lang']`（'0' = 仅中文，缺省/其他 = 中英对照）；common.js 底部 IIFE 在页面解析后自动恢复状态（common.js 均位于 header 之后的 body 部加载，此时按钮已存在）。按钮随状态切换文案「🌐 中·EN ⇄ 🌐 仅中文」。
+- **CSS**：`body.zh-only` 全局隐藏 EN 对应块——`body.zh-only .en-line, body.zh-only .en-block, body.zh-only .en-note, body.zh-only .en-cell { display:none !important; }`。article.js 折叠（en-block）与 frontier.js 页级开关（en-line）不受影响，叠加作用于同一批元素。
+- **约定**：凡全站双语内容一律使用受管 CSS 类——`en-line`（单行/块级英文对应）、`en-block`（文章外文批注）、`en-note`、`en-cell`——使「仅中文」开关一处覆盖全站，无需逐块写显隐逻辑。
+
+**数据落地（2026-08-30）**：
+
+- **YAML 分支（Tab6 灵性仁本）**：`data/spirit/spirit_content.yaml` 增段级 `title_en` + `summary_en`（overview）/`en`（节 intro，共 5 节）、主题级 `en`（标题）+ `en_body`（正文，19 主题）；`spirit.js` 在节标题/摘要/引言/主题处渲染 `.en-line`（`.sp-en-title/.sp-en-t/.sp-en-b`）。海云法师**原文辑录**（haiyun quotes）因其为讲法逐字稿、不宜代拟英文而暂不翻译〔待核〕；`environmental_humanities.yaml` 留待后续梯队。
+- **SQLite 分支（Tab2 术语库）**：`glossary` 表 50 条 `definition_zh`/`definition_en` 全补齐（补 037-042 六波罗蜜与 044 十信位共 7 条 definition_en，038-041 同时补 definition_zh）；build.py `load_gap` 注入 `db_reader.load_glossary()` → `GAP.glossary`；gap.js 以数据驱动 50 行「梵-藏-汉-英」对照表替换原硬编码 30 行，并新增「术语格义 · 中英释义」卡（`definition_en` 以 `.en-line` 呈现，随全局开关显隐）。——顺带消除了原 gap.js 中的术语表硬编码。
+- 数据皆进 YAML/SQLite 权威源，不在 JS/HTML 写死（符合「杜绝硬编码」）。
+
 > 全站「中文为主文 · 简明优雅英文无损对应」双语原则及全站推广序列见 `docs/next-phase-plan.md` → **L-F**。
