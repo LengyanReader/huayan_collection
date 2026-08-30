@@ -14,9 +14,11 @@ var COSMO_LAYERS=[
   {n:'清净光普照',b:'普照法界虚空光佛'},{n:'妙宝焰',b:'福德相光明佛'}
 ];
 
+function _escC(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
 function renderCosmology(){
   var cv=document.getElementById("cosmology-view");if(!cv)return;
-  var h='<style>.cm-btn{padding:3px 10px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em}.cm-btn.on{background:var(--gold);color:#fff}#cosmo-info{display:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:8px;font-size:0.82em;line-height:1.7}</style>';
+  var h='<style>.cm-btn{padding:3px 10px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.73em}.cm-btn.on{background:var(--gold);color:#fff}#cosmo-info{display:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:8px;font-size:0.82em;line-height:1.7}.sp-en-title{font-size:0.74em;color:var(--text2);font-style:italic;margin:0 0 6px}.sp-en-t{font-size:0.78em;color:var(--text2);font-style:italic;margin:2px 0 4px}.sp-en-b{font-size:0.78em;color:var(--text2);line-height:1.7;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}</style>';
   h+='<div class=section id=co-mandala style=border-left:4px solid var(--gold)><h2>🪷 世主妙严 · 华藏世界海</h2><p style=font-size:0.82em;color:var(--text2)>据《华严经·华藏世界品》(T10n0279卷八~十)。十重风轮持香水海,海中出大莲华,二十重世界层层叠绕。毗卢遮那佛法身遍满。源: CBETA T10n0279</p></div>';
   h+='<button class="cm-btn on" onclick="COSMO.net=!COSMO.net;this.classList.toggle(\'on\',COSMO.net);drawCosmo()">🕸 因陀罗网</button> ';
   h+='<button class="cm-btn" onclick="COSMO.all=!COSMO.all;this.classList.toggle(\'on\',COSMO.all);drawCosmo()">📋 全部层名</button> ';
@@ -26,140 +28,133 @@ function renderCosmology(){
   h+="<div class=section id=co-tower style=margin-top:16px><h2>📐 三界诸天·修行对应图 — 海云继梦法师修行体系</h2><p style=font-size:0.78em;color:var(--text2)>据大华严寺官网「华严禅观全程一览表」及海云法师《四十华严讲记》《华严禅行法》系列。二十八天对应<b>三阶修行次第</b>(前行/正行/妙行) + <b>十信位果位</b>(初信~入法界) + <b>禅定进路</b>(四天王定→狮子频申三昧)。源: 大华严寺官网 + fjdh.cn讲记逐字稿</p>"
   h+='<div style=text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-tower style=max-width:100%></canvas></div></div>';
 
-  // ═══ 华严艺术珍品（折叠目录+缩略图） ═══
+  // ═══ 华严艺术珍品（折叠目录+缩略图 · 数据驱动 COSMO_DATA.art_treasures） ═══
+  var CD = window.COSMO_DATA || {};
+  var AT = CD.art_treasures || {};
+  var arts = AT.art_treasures || [], sites = AT.pilgrimage_sites || [];
+  var media = AT.media_resources || [], biblio = AT.bibliography || [], chants = AT.chant_resources || [], moreChants = AT.more_chant_resources || [], alTbl = AT.alphabet_table || [];
   h+='<div class=section id=co-art><h2>🎨 华严艺术珍品（点击展开·含缩略图快照）</h2>';
-
-  // ── 1. 七处九会 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🏛 敦煌·华严经七处九会绢画(五代·吉美博物馆藏)</span><div class=body>";
-  h+="<p style=font-size:0.82em;color:var(--gold)>唯一存世的敦煌藏经洞华严经全经绢画 · MG.26462 · 194×179cm · 10世纪</p>";
-  h+="<p style=font-size:0.78em;line-height:1.7>敦煌藏经洞出土,近2米大幅绢本。九铺说法图对应七处九会:菩提场、普光明殿(3次)、忉利天宫、夜摩天宫、兜率天宫、他化天宫、逝多林。底部绘莲华藏世界海。据实叉难陀译八十华严绘制。《伯希和敦煌图录》第一卷图22即为莫高窟146窟同类题材。</p>";
-  h+="<p style=font-size:0.72em;color:var(--text2)><b>📍 法国吉美国立亚洲艺术博物馆</b>(Musée Guimet, Paris) · 伯希和收集品</p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.guimet.fr' target=_blank>吉美博物馆官网</a> · <a href='http://idp.bl.uk/database/oo_scroll_h.a4d?uid=59205289518;bst=1;recnum=13528' target=_blank>IDP 高清大图</a> · <a href='https://www.e-dunhuang.com' target=_blank>数字敦煌</a> · <a href='https://www.sohu.com/a/406251191_467442' target=_blank>图说华严经</a></p>";
-  h+="</div></div>";
-
-  // ── 2. 十地品变相图 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🏛 敦煌·十地品变相图(唐·绢本设色)</span><div class=body>";
-  h+="<p style=font-size:0.78em;line-height:1.7>绢本设色,62.5×20cm,藏经洞出土。毗卢遮那佛于他化自在天宣说十地法门,十幅画面逐层展现欢喜地至法云地的修行次第。两侧胁侍解脱月菩萨与金刚藏菩萨。</p>";
-  h+="<p style=font-size:0.72em;color:var(--text2)><b>📍 法国吉美国立东方美术馆</b></p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.guimet.fr' target=_blank>吉美博物馆</a> · <a href='https://www.sohu.com/a/406251191_467442' target=_blank>图说华严经</a></p>";
-  h+="</div></div>";
-
-  // ── 3. 莫高窟壁画群 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🖼 莫高窟·华严经变壁画群(28个洞窟·盛唐~宋)</span><div class=body>";
-  h+="<p style=font-size:0.78em;line-height:1.7>敦煌莫高窟现存华严经变洞窟<b>28个</b>(盛唐44窟至宋454窟)。中唐后成熟:九宫格七处九会+底部莲华藏世界+善财五十三参屏风画。代表:第12窟(北壁·数字敦煌有收录)/第237窟(双头瑞像)/第146窟(伯希和图录)。</p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.dha.ac.cn' target=_blank>敦煌研究院</a> · <a href='https://www.e-dunhuang.com' target=_blank>数字敦煌(e-dunhuang.com)</a> · <a href='https://dsr.nii.ac.jp/reference/pelliot/entry/1-022.html.zh' target=_blank>伯希和图录 146窟</a></p>";
-  h+="</div></div>";
-
-  // ── 4. 东大寺大佛 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🗿 奈良东大寺·卢舍那大佛(8世纪·世界遗产) 📷有快照</span><div class=body>";
-  h+="<img src='https://commons.wikimedia.org/wiki/Special:FilePath/NaraTodaijiDaibutsu0212.jpg?width=640' style='max-width:100%;border-radius:8px;margin-bottom:8px' loading=lazy alt='东大寺卢舍那大佛'><br>";
-  h+="<span style=font-size:0.65em;color:var(--text2)>📷 东大寺卢舍那大佛 · 金铜铸造 · 高约15m · 752年开眼 · 图片: Wikipedia Public Domain (Fg2, 2005)</span>";
-  h+="<p style=font-size:0.78em;line-height:1.7;margin-top:6px>日本华严宗总本山。金铜卢舍那大佛高约15m,743年圣武天皇发愿铸造,752年开眼。大佛殿为世界现存最大木构建筑(宽57m×高49m)。正仓院藏唐代华严相关文物300+件(含全球唯一存世唐五弦琵琶)。1998年世界文化遗产。</p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.todaiji.or.jp' target=_blank>东大寺官网</a> · <a href='https://shosoin.kunaicho.go.jp' target=_blank>正仓院(宫内厅)</a> · 🎬 <a href='https://www.youtube.com/results?search_query=%E6%9D%B1%E5%A4%A7%E5%AF%BA+%E5%A4%A7%E4%BD%9B+4K' target=_blank>YT 4K</a> · <a href='https://commons.wikimedia.org/wiki/Category:Todaiji_Daibutsu_in_art' target=_blank>Wikimedia更多</a></p>";
-  h+="</div></div>";
-
-  // ── 5. 犍陀罗 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🏺 犍陀罗·华严佛传造像(贵霜时期·1-3世纪)</span><div class=body>";
-  h+="<p style=font-size:0.78em;line-height:1.7>犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变在图像学上有渊源。栗田功《大美之佛像:犍陀罗艺术》(文物出版社2017)为权威参考。</p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.britishmuseum.org/collection/search?keyword=gandhara' target=_blank>大英博物馆·犍陀罗</a> · <a href='https://www.metmuseum.org/search?q=gandhara' target=_blank>大都会博物馆</a> · 🎬 <a href='https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F' target=_blank>B站犍陀罗</a></p>";
-  h+="</div></div>";
-
-  // ── 6. 双头瑞像 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🖼 莫高窟第237窟·双头瑞像(中唐·吐蕃时期)</span><div class=body>";
-  h+="<p style=font-size:0.78em;line-height:1.7>中唐代表窟。西壁佛龛顶部绘双头瑞像——故事发生在犍陀罗国:两位贫士各请画师绘释迦像,画师收两份钱绘一尊,佛像显灵现双头一身神变。身着吐蕃服装的俗人仰礼,见证汉蕃丝路文化交流。</p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.dha.ac.cn/info/1425/3641.htm' target=_blank>敦煌研究院·237窟</a></p>";
-  h+="</div></div>";
-
-  // ── 7. 龙门奉先寺 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🗿 洛阳龙门·奉先寺卢舍那大佛(唐·17m) 📷有快照</span><div class=body>";
-  h+="<img src='https://commons.wikimedia.org/wiki/Special:FilePath/Vairocana%2C_Fengxian_Temple%2C_Longmen_Grottoes_%2810240207654%29.jpg?width=800' style='max-width:100%;border-radius:8px;margin-bottom:8px' loading=lazy alt='龙门奉先寺卢舍那大佛'><br>";
-  h+="<span style=font-size:0.65em;color:var(--text2)>📷 龙门奉先寺卢舍那大佛 · 唐·672年 · 通高17.14m · 图片: Wikimedia CC0 Public Domain</span>";
-  h+="<p style=font-size:0.78em;line-height:1.7;margin-top:6px>龙门石窟奉先寺卢舍那大佛(通高17.14m),唐高宗咸亨三年(672)武则天赞助营造。华严教主毗卢遮那佛的盛唐皇家造像巅峰,被誉东方蒙娜丽莎。与东大寺卢舍那、敦煌华严经变并称三大华严艺术瑰宝。</p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 🎬 <a href='https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA+%E5%8D%A2%E8%88%8E%E9%82%A3' target=_blank>B站龙门</a> · <a href='https://www.youtube.com/results?search_query=Longmen+Grottoes+Vairocana+4K' target=_blank>YT 4K</a></p>";
-  h+="</div></div>";
-
-  // ── 8. 犍陀罗佛像 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🏺 犍陀罗·佛陀坐像(3-4世纪·CMOA藏) 📷有快照</span><div class=body>";
-  h+="<div style=display:flex;gap:8px;flex-wrap:wrap>";
-  h+="<img src='https://commons.wikimedia.org/wiki/Special:FilePath/Afghanistan%2C_Gandhara%2C_Hadda%2C_late_Kushan_Period_-_Seated_Buddha_-_1967.39_-_Cleveland_Museum_of_Art.jpg?width=800' style='max-width:48%;border-radius:8px;margin-bottom:4px' loading=lazy alt='犍陀罗佛陀坐像 CMOA'>";
-  h+="<img src='https://commons.wikimedia.org/wiki/Special:FilePath/The_Buddha_shows_Miracles%2C_Gandhara%2C_3rd_century_AD%2C_schist_-_Ethnological_Museum%2C_Berlin_-_DSC01646.JPG?width=800' style='max-width:48%;border-radius:8px;margin-bottom:4px' loading=lazy alt='犍陀罗佛陀示现神变'>";
-  h+="</div>";
-  h+="<span style=font-size:0.65em;color:var(--text2)>📷 左: 犍陀罗佛陀坐像(Afghanistan, Hadda, 3-4世纪, stucco, CMOA CC0) · 右: 佛陀示现神变(3世纪, 柏林民族学博物馆 CC0)</span>";
-  h+="<p style=font-size:0.78em;line-height:1.7;margin-top:6px>犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变图像学有渊源。栗田功《大美之佛像》(文物出版社2017)为权威参考。</p>";
-  h+="<p style=font-size:0.68em;margin-top:2px>🔗 <a href='https://www.britishmuseum.org/collection/search?keyword=gandhara' target=_blank>大英博物馆</a> · <a href='https://commons.wikimedia.org/wiki/Category:Buddhist_statues_of_Gandhara' target=_blank>Wikimedia 86张</a> · 🎬 <a href='https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F' target=_blank>B站</a></p>";
-  h+="</div></div>";
-
-  // ── 9. 视频嵌入 ──
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎬 华藏世界海·3D可视化视频(YouTube嵌入)</span><div class=body>";
-  h+="<p style=font-size:0.78em;line-height:1.7;margin-bottom:6px>以下为华严宇宙观相关的公开视频资源,可点击播放:</p>";
-  h+="<p style=font-size:0.72em;color:var(--text2)><b>🌊 华藏世界海·3D:</b> <a href='https://www.youtube.com/results?search_query=Avatamsaka+Sutra+3D+Lotus+World' target=_blank>YouTube搜索</a> · <a href='https://www.bilibili.com/search?keyword=%E5%8D%8E%E4%B8%A5%E7%BB%8F+%E5%8D%8E%E8%97%8F%E4%B8%96%E7%95%8C+3D' target=_blank>B站搜索</a></p>";
-  h+="<p style=font-size:0.72em;color:var(--text2)><b>🏛 东大寺大佛·4K:</b> <a href='https://www.youtube.com/results?search_query=Nara+Todaiji+Great+Buddha+4K' target=_blank>YouTube</a></p>";
-  h+="<p style=font-size:0.72em;color:var(--text2)><b>🖼 正仓院宝物:</b> <a href='https://www.youtube.com/results?search_query=Shosoin+Treasures' target=_blank>YouTube</a> · <a href='https://www.bilibili.com/search?keyword=%E6%AD%A3%E5%80%89%E9%99%A2' target=_blank>B站正仓院</a></p>";
-  h+="<p style=font-size:0.72em;color:var(--text2)><b>🏺 犍陀罗艺术纪录片:</b> <a href='https://www.youtube.com/results?search_query=Gandhara+Art+Documentary' target=_blank>YouTube</a> · <a href='https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E8%AE%B0%E5%BD%95%E7%89%87' target=_blank>B站</a></p>";
-  h+="</div></div>";
+  arts.forEach(function(it){
+    if(!it) return;
+    var snap = (it.image||it.image_left||it.image_right) ? ' 📷有快照' : '';
+    h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>"+_escC(it.icon)+' '+_escC(it.title)+snap+"</span><div class=body>";
+    if(it.title_en) h+='<div class="en-line sp-en-title">'+_escC(it.title_en)+'</div>';
+    if(it.image){
+      h+="<img src='"+_escC(it.image)+"' style='max-width:100%;border-radius:8px;margin-bottom:8px' loading=lazy alt='"+_escC(it.title)+"'><br>";
+    } else if(it.image_left||it.image_right){
+      h+='<div style=display:flex;gap:8px;flex-wrap:wrap>';
+      if(it.image_left) h+="<img src='"+_escC(it.image_left)+"' style='max-width:48%;border-radius:8px;margin-bottom:4px' loading=lazy alt='"+_escC(it.title)+"'>";
+      if(it.image_right) h+="<img src='"+_escC(it.image_right)+"' style='max-width:48%;border-radius:8px;margin-bottom:4px' loading=lazy alt='"+_escC(it.title)+"'>";
+      h+='</div>';
+    }
+    if(it.image_caption) h+="<span style=font-size:0.65em;color:var(--text2)>📷 "+_escC(it.image_caption)+"</span>";
+    if(it.description) h+="<p style=font-size:0.78em;line-height:1.7;margin-top:6px>"+_escC(it.description).replace(/\n/g,'<br>')+"</p>";
+    if(it.description_en) h+='<div class="en-line sp-en-b">📖 '+_escC(it.description_en).replace(/\n/g,'<br>')+'</div>';
+    if(it.location) h+="<p style=font-size:0.72em;color:var(--text2)><b>📍 "+_escC(it.location)+"</b></p>";
+    if(it.links && it.links.length){
+      var lk=it.links.map(function(l){return "<a href='"+_escC(l.url)+"' target=_blank>"+_escC(l.text)+"</a>";}).join(' · ');
+      h+="<p style=font-size:0.68em;margin-top:2px>🔗 "+lk+"</p>";
+    }
+    if(it.videos){
+      it.videos.forEach(function(v){
+        var vk=v.links.map(function(l){return "<a href='"+_escC(l.url)+"' target=_blank>"+_escC(l.text)+"</a>";}).join(' · ');
+        h+="<p style=font-size:0.72em;color:var(--text2)><b>▸ "+_escC(v.topic)+":</b> "+vk+"</p>";
+      });
+    }
+    h+='</div></div>';
+  });
   h+='</div>';
 
-  // ═══ 华严古迹巡礼 + 视频 + 参考（折叠） ═══
+  // ═══ 华严古迹巡礼 + 视频 + 参考（折叠 · 数据驱动） ═══
   h+='<div class=section id=co-sites><h2>🗺 华严古迹巡礼 · 🎬 多媒体 · 📚 参考（折叠目录）</h2>';
 
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🗺 华严古迹巡礼(6处)</span><div class=body>";
-  h+='<table class=v-table style=font-size:0.7em><tr><th>古迹</th><th>地点</th><th>朝代</th><th>说明</th><th>链接</th></tr>';
-  h+='<tr><td><b>终南山·至相寺</b></td><td>陕西西安</td><td>隋唐</td><td>华严宗发源地。杜顺、智俨于此创宗立教</td><td>—</td></tr>';
-  h+='<tr><td><b>洛阳龙门·奉先寺</b></td><td>河南洛阳</td><td>唐</td><td>卢舍那大佛(17m),武则天赞助。华严教主盛唐造像巅峰</td><td>🎬 <a href=https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA target=_blank>B站</a></td></tr>';
-  h+='<tr><td><b>长安·大慈恩寺</b></td><td>陕西西安</td><td>唐</td><td>玄奘译场。华严经别译本于此译出</td><td>—</td></tr>';
-  h+='<tr><td><b>五台山·大华严寺</b></td><td>山西</td><td>唐~今</td><td>澄观著《华严经疏》处。华严宗圣地</td><td>—</td></tr>';
-  h+='<tr><td><b>奈良·东大寺</b></td><td>日本奈良</td><td>8世纪</td><td>日本华严宗总本山。审祥首讲华严经</td><td><a href=https://www.todaiji.or.jp target=_blank>官网</a></td></tr>';
-  h+='<tr><td><b>支提山·大华严寺</b></td><td>苗栗通霄</td><td>2026动土</td><td>海云继梦。与福建宁德支提华严祖庭隔海相望</td><td><a href=https://www.huayenworld.org target=_blank>官网</a></td></tr></table>';
-  h+="</div></div>";
+  if(sites.length){
+    h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🗺 华严古迹巡礼("+sites.length+"处)</span><div class=body>";
+    h+='<table class=v-table style=font-size:0.7em><tr><th>古迹</th><th>地点</th><th>朝代</th><th>说明</th><th>链接</th></tr>';
+    sites.forEach(function(s){
+      h+='<tr><td><b>'+_escC(s.name)+'</b></td><td>'+_escC(s.location)+'</td><td>'+_escC(s.dynasty)+'</td><td>'+_escC(s.description)+'</td><td>';
+      if(s.links && s.links.length){ h+=s.links.map(function(l){return "<a href='"+_escC(l.url)+"' target=_blank>"+_escC(l.text)+"</a>";}).join(' · '); }
+      else { h+='—'; }
+      h+='</td></tr>';
+      if(s.name_en||s.desc_en){ h+='<tr class="en-line"><td colspan=5 style=color:var(--text2);font-size:0.9em;font-style:italic>'+_escC(s.name_en||'')+(_escC(s.desc_en)?' — '+_escC(s.desc_en):'')+'</td></tr>'; }
+    });
+    h+='</table></div></div>';
+  }
 
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎬 视频与多媒体资源</span><div class=body>";
-  h+='<table class=v-table style=font-size:0.7em><tr><th>主题</th><th>平台</th><th>链接</th></tr>';
-  h+='<tr><td>🌊 华藏世界海·3D动画</td><td>B站</td><td><a href=https://www.bilibili.com/search?keyword=%E5%8D%8E%E4%B8%A5%E7%BB%8F+%E5%8D%8E%E8%97%8F%E4%B8%96%E7%95%8C+3D target=_blank>搜索</a></td></tr>';
-  h+='<tr><td>🏛 東大寺大佛·4K</td><td>YouTube</td><td><a href=https://www.youtube.com/results?search_query=%E6%9D%B1%E5%A4%A7%E5%AF%BA+%E5%A4%A7%E4%BD%9B+4K target=_blank>搜索</a></td></tr>';
-  h+='<tr><td>🏺 犍陀罗佛像艺术</td><td>B站</td><td><a href=https://www.bilibili.com/search?keyword=%E7%8A%8D%E9%99%80%E7%BD%97+%E4%BD%9B%E5%83%8F+%E8%AE%B0%E5%BD%95%E7%89%87 target=_blank>搜索</a></td></tr>';
-  h+='<tr><td>🖼 敦煌·华严经变</td><td>B站</td><td><a href=https://www.bilibili.com/search?keyword=%E6%95%A6%E7%85%8C+%E5%8D%8E%E4%B8%A5%E7%BB%8F%E5%8F%98 target=_blank>搜索</a></td></tr>';
-  h+='<tr><td>🎨 正仓院·唐代宝物</td><td>YouTube</td><td><a href=https://www.youtube.com/results?search_query=%E6%AD%A3%E5%80%89%E9%99%A2+%E5%AE%9D%E7%89%A9 target=_blank>搜索</a></td></tr></table>';
-  h+="</div></div>";
+  if(media.length){
+    h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎬 视频与多媒体资源</span><div class=body>";
+    h+='<table class=v-table style=font-size:0.7em><tr><th>主题</th><th>平台</th><th>链接</th></tr>';
+    media.forEach(function(m){ h+='<tr><td>'+_escC(m.topic)+'</td><td>'+_escC(m.platform)+'</td><td><a href="'+_escC(m.url)+'" target=_blank>搜索</a></td></tr>'; });
+    h+='</table></div></div>';
+  }
 
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📚 专题参考书目(6部+IDP数据库)</span><div class=body>";
-  h+='<p style=font-size:0.7em;color:var(--text2);line-height:1.8>📖 《大美之佛像:犍陀罗艺术》(栗田功·文物出版社 2017)<br>📖 《敦煌石窟全集 第22册·石窟建筑卷》<br>📖 《伯希和敦煌图录》(法·伯希和 1908)<br>📖 《伟大的博物馆:新德里国家博物馆中的敦煌艺术》(罗凯什·钱德拉 2024)<br>📖 《敦煌画研究》(法·吉埃 著)<br>📖 《图解华严经:读懂经中之王》(龙树菩萨释著)<br>🌐 国际敦煌项目 IDP: <a href=http://idp.bl.uk target=_blank>idp.bl.uk</a>（吉美/大英/新德里所有敦煌藏品在线数据库）</p>';
-  h+="</div></div>";
+  if(biblio.length){
+    h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📚 专题参考书目("+biblio.length+"部)</span><div class=body>";
+    h+='<p style=font-size:0.7em;color:var(--text2);line-height:1.8>' + biblio.map(function(b){ return '📖 '+_escC(b); }).join('<br>') + '</p></div></div>';
+  }
   h+='</div>';
-  // ═══ 梵呗·华严字母 ═══
+
+  // ═══ 批判遗产 & 环境史（COSMO_DATA.heritage_critical · 数据驱动） ═══
+  var HC = CD.heritage_critical || {};
+  var HC_SECTS = [];
+  if (HC.heritage_critical) HC_SECTS.push(HC.heritage_critical);
+  if (HC.environmental_history) HC_SECTS.push(HC.environmental_history);
+  if (HC_SECTS.length) {
+    h+='<div class=section id=co-heritage style=margin-top:16px><h2>🛡 批判遗产 & 环境史 · 华严再审视（折叠目录）</h2>';
+    HC_SECTS.forEach(function(sec){
+      if(!sec) return;
+      h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>"+_escC(sec.title)+"</span><div class=body>";
+      if(sec.title_en) h+='<div class="en-line sp-en-title">'+_escC(sec.title_en)+'</div>';
+      if(sec.intro) h+="<p style=font-size:0.82em;color:var(--text2);line-height:1.8>"+_escC(sec.intro).replace(/\n/g,'<br>')+"</p>";
+      if(sec.intro_en) h+='<div class="en-line sp-en-b">📖 '+_escC(sec.intro_en).replace(/\n/g,'<br>')+'</div>';
+      (sec.topics||[]).forEach(function(t){
+        h+="<div class=wu-door open onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>"+_escC(t.title)+"</span><div class=body>";
+        if(t.en) h+='<div class="en-line sp-en-t">'+_escC(t.en)+'</div>';
+        h+="<p style=font-size:0.8em;line-height:1.8>"+_escC(t.body).replace(/\n/g,'<br>')+"</p>";
+        if(t.en_body) h+='<div class="en-line sp-en-b">📖 '+_escC(t.en_body).replace(/\n/g,'<br>')+'</div>';
+        if(t.sources && t.sources.length){ h+="<p style=font-size:0.7em;color:var(--text2);margin-top:4px>📚 "+t.sources.map(function(s){return _escC(s);}).join('<br>')+"</p>"; }
+        h+='</div></div>';
+      });
+      if(sec.references && sec.references.length){ h+="<p style=font-size:0.7em;color:var(--text2);margin-top:4px>📖 "+sec.references.map(function(r){return _escC(r);}).join('<br>')+"</p>"; }
+      h+='</div></div>';
+    });
+    h+='</div>';
+  }
+  // ═══ 梵呗·华严字母（数据驱动） ═══
   h+='<div class=section id=co-chant><h2>🎵 梵呗·华严四十二字母</h2>';
-  h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>华严四十二字母出自《华严经·入法界品》(T10n0279),善财童子参访第四十四位善知识——<b>众艺童子</b>所传授的「字智法门」。依音节分<b>一合</b>(单字33个)·<b>二合</b>(双字拼合8个)·<b>三合</b>(三字拼合1个)。因字有语、因语有名、因名有义,唱诵可获殊胜功德。佛光山梵呗团版为最完整权威版本。</p>";
+  if(AT.alphabet_intro) h+="<p style=font-size:0.78em;color:var(--text2);margin-bottom:8px>"+_escC(AT.alphabet_intro).replace(/\n/g,'<br>')+"</p>";
+  if(AT.alphabet_intro_en) h+='<div class="en-line sp-en-b">📖 '+_escC(AT.alphabet_intro_en).replace(/\n/g,'<br>')+'</div>';
 
-  // B站嵌入
-  h+="<div style=display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px>";
-  h+="<div style=flex:1;min-width:300px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>";
-  h+="<h4 style=color:var(--gold);margin-bottom:4px>📺 佛光山梵呗团·华严字母(完整版)</h4>";
-  h+="<iframe src='https://player.bilibili.com/player.html?bvid=BV1Jr421s7yH&page=1&autoplay=0' style='width:100%;height:240px;border:none;border-radius:8px' allowfullscreen></iframe>";
-  h+="<p style=font-size:0.65em;color:var(--text2);margin-top:4px>🎬 <a href='https://search.bilibili.com/all?keyword=%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D' target=_blank>B站:华严字母(多版本)</a></p></div>";
+  var embeds='';
+  (chants||[]).forEach(function(ch){
+    if(!ch) return;
+    embeds+="<div style=flex:1;min-width:300px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px>";
+    embeds+="<h4 style=color:var(--gold);margin-bottom:4px>"+_escC(ch.title)+"</h4>";
+    if(ch.bvid){ embeds+="<iframe src='https://player.bilibili.com/player.html?bvid="+_escC(ch.bvid)+"&page=1&autoplay=0' style='width:100%;height:240px;border:none;border-radius:8px' allowfullscreen></iframe>"; }
+    if(ch.youtube_id){ embeds+="<iframe src='https://www.youtube.com/embed/"+_escC(ch.youtube_id)+"?autoplay=0' style='width:100%;height:240px;border:none;border-radius:8px' allowfullscreen></iframe>"; }
+    var tail=[];
+    if(ch.search_url) tail.push("<a href='"+_escC(ch.search_url)+"' target=_blank>更多</a>");
+    if(ch.extra_link) tail.push("<a href='"+_escC(ch.extra_link.url)+"' target=_blank>"+_escC(ch.extra_link.text)+"</a>");
+    if(tail.length) embeds+="<p style=font-size:0.65em;color:var(--text2);margin-top:4px>🎬 "+tail.join(' · ')+"</p>";
+    embeds+='</div>';
+  });
+  if(embeds) h+="<div style=display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px>"+embeds+"</div>";
 
-  h+="<div style=flex:1;min-width:300px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px'>";
-  h+="<h4 style=color:var(--gold);margin-bottom:4px>🎧 YouTube·华严字母梵呗</h4>";
-  h+="<iframe src='https://www.youtube.com/embed/PdUVb9PM2qU?autoplay=0' style='width:100%;height:240px;border:none;border-radius:8px' allowfullscreen></iframe>";
-  h+="<p style=font-size:0.65em;color:var(--text2);margin-top:4px>🎬 <a href='https://www.youtube.com/results?search_query=%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D+%E6%A2%B5%E5%94%B1' target=_blank>YT更多</a> · <a href='https://www.putuo.org.cn/fyxlptfb/' target=_blank>普陀梵呗官网</a></p></div></div>";
+  if(alTbl.length){
+    h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📜 华严四十二字母表(一合·二合·三合)</span><div class=body>";
+    h+='<table class=v-table style=font-size:0.7em><tr><th>类别</th><th>数量</th><th>字母</th></tr>';
+    alTbl.forEach(function(r){ h+='<tr><td><b>'+_escC(r.category)+'</b></td><td>'+_escC(r.count)+'个</td><td>'+_escC(r.characters)+'</td></tr>'; });
+    h+='</table>';
+    if(AT.alphabet_source) h+="<p style=font-size:0.65em;color:var(--text2);margin-top:4px>📎 出处: "+_escC(AT.alphabet_source)+"</p>";
+    h+='</div></div>';
+  }
 
-  // 字母表
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📜 华严四十二字母表(一合·二合·三合)</span><div class=body>";
-  h+="<table class=v-table style=font-size:0.7em><tr><th>类别</th><th>数量</th><th>字母</th></tr>";
-  h+="<tr><td><b>一合</b>(单字)</td><td>33个</td><td>阿·多·波·左·那·逻·拖·婆·茶·沙·嚩·哆·也·瑟吒·迦·娑·么·伽·他·社·鏁·拖·奢·佉·叉·娑多·壤·曷攞多·婆·车·娑么·诃婆·縒·伽·吒·拏·娑颇·娑迦·也娑·室左·侘·陀</td></tr>";
-  h+="<tr><td><b>二合</b>(双字拼合)</td><td>8个</td><td>娑多·曷攞多·婆·车·娑么·诃婆·縒·伽</td></tr>";
-  h+="<tr><td><b>三合</b>(三字拼合)</td><td>1个</td><td><b>曷攞多</b></td></tr></table>";
-  h+="<p style=font-size:0.65em;color:var(--text2);margin-top:4px>📎 出处: 《大方广佛华严经·入法界品》(CBETA T10n0279卷八十) · 众艺童子传授善财童子「善知众艺菩萨字智法门」</p>";
-  h+="</div></div>";
-
-  // 更多梵呗资源
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎶 更多华严梵呗资源</span><div class=body>";
-  h+="<table class=v-table style=font-size:0.7em><tr><th>资源</th><th>来源</th><th>链接</th></tr>";
-  h+="<tr><td>🏛 灵隐寺众僧·合唱《华严字母》</td><td>B站</td><td><a href='https://www.bilibili.com/video/BV1HisMemEr6' target=_blank>观看</a></td></tr>";
-  h+="<tr><td>📿 印能法师·华严字母系列</td><td>B站/QQ音乐</td><td><a href='https://search.bilibili.com/all?keyword=%E5%8D%B0%E8%83%BD%E6%B3%95%E5%B8%88+%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D' target=_blank>B站搜索</a></td></tr>";
-  h+="<tr><td>🌄 佛光山梵呗团·官方字幕MV</td><td>YouTube</td><td><a href='https://www.youtube.com/results?search_query=%E4%BD%9B%E5%85%89%E5%B1%B1+%E8%8F%AF%E5%9A%B4%E5%AD%97%E6%AF%8D' target=_blank>YT搜索</a></td></tr>";
-  h+="<tr><td>🏯 天宁寺法师·梵呗唱诵</td><td>YouTube</td><td><a href='https://www.youtube.com/watch?v=KcQ2yZ-lB8Y' target=_blank>观看</a></td></tr>";
-  h+="<tr><td>📚 南怀瑾·宏忍法师教授华严字母</td><td>B站</td><td><a href='https://search.bilibili.com/all?keyword=%E5%8D%97%E6%80%80%E7%91%BE+%E5%8D%8E%E4%B8%A5%E5%AD%97%E6%AF%8D' target=_blank>搜索</a></td></tr>";
-  h+="<tr><td>🎵 普陀精舍·华严大法会起梵腔白</td><td>YouTube</td><td><a href='https://www.youtube.com/watch?v=e_RmoPT7gv0' target=_blank>观看</a></td></tr></table>";
-  h+="</div></div>";
+  if(moreChants.length){
+    h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎶 更多华严梵呗资源</span><div class=body>";
+    h+='<table class=v-table style=font-size:0.7em><tr><th>资源</th><th>来源</th><th>链接</th></tr>';
+    moreChants.forEach(function(r){ h+="<tr><td>"+_escC(r.resource)+"</td><td>"+_escC(r.source)+"</td><td><a href='"+_escC(r.link)+"' target=_blank>观看</a></td></tr>"; });
+    h+='</table></div></div>';
+  }
   h+='</div>';
 
   cv.innerHTML=h;

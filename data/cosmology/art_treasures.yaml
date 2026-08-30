@@ -3,11 +3,21 @@
 art_treasures:
   - id: 1
     title: "敦煌·华严经七处九会绢画(五代·吉美博物馆藏)"
+    title_en: "Dunhuang · Avatamsaka Sūtra Silk Painting of the Seven Places & Nine Assemblies (Five Dynasties · Musée Guimet)"
     icon: "🏛"
     description: |
       唯一存世的敦煌藏经洞华严经全经绢画 · MG.26462 · 194×179cm · 10世纪
 
       敦煌藏经洞出土,近2米大幅绢本。九铺说法图对应七处九会:菩提场、普光明殿(3次)、忉利天宫、夜摩天宫、兜率天宫、他化天宫、逝多林。底部绘莲华藏世界海。据实叉难陀译八十华严绘制。《伯希和敦煌图录》第一卷图22即为莫高窟146窟同类题材。
+    description_en: |
+      The only surviving full-length silk painting of the Avatamsaka Sūtra from the Dunhuang
+      Library Cave · MG.26462 · 194×179 cm · 10th century.
+      Excavated from the Dunhuang Library Cave, a nearly two-meter silk work. The nine panels
+      of preaching scenes correspond to the seven places and nine assemblies: the Bodhimanda,
+      the Hall of Universal Light (thrice), Trāyastriṃśa Heaven, Yāma Heaven, Tuṣita Heaven,
+      Paranirmitavaśavartin Heaven, and the Jeta Grove. The Lotus Treasury World Sea is painted
+      at the base. Executed after Śikṣānanda's 80-fascicle translation. Plate 22 of Volume I of
+      Pelliot's Mission Archéologique en Chine album pictures the same subject in Mogao Cave 146.
     location: "法国吉美国立亚洲艺术博物馆 (Musée Guimet, Paris) · 伯希和收集品"
     links:
       - text: "吉美博物馆官网"
@@ -21,9 +31,15 @@ art_treasures:
 
   - id: 2
     title: "敦煌·十地品变相图(唐·绢本设色)"
+    title_en: "Dunhuang · Pictorial Transformation of the Ten Grounds Chapter (Tang · silk, colored)"
     icon: "🏛"
     description: |
       绢本设色,62.5×20cm,藏经洞出土。毗卢遮那佛于他化自在天宣说十地法门,十幅画面逐层展现欢喜地至法云地的修行次第。两侧胁侍解脱月菩萨与金刚藏菩萨。
+    description_en: |
+      Silk, colored, 62.5×20 cm, from the Library Cave. Vairocana Buddha expounds the ten-grounds
+      teaching in the Paranirmitavaśavartin Heaven; ten pictorial frames unfold the practice
+      progression from the Joyful Ground to the Dharma-Cloud Ground. On either side stand the
+      attendant bodhisattvas Vimukticandra (Moon of Liberation) and Vajragarbha.
     location: "法国吉美国立东方美术馆"
     links:
       - text: "吉美博物馆"
@@ -33,9 +49,17 @@ art_treasures:
 
   - id: 3
     title: "莫高窟·华严经变壁画群(28个洞窟·盛唐~宋)"
+    title_en: "Mogao Grottoes · Huayan Transformation Mural Group (28 Caves · High Tang to Song)"
     icon: "🖼"
     description: |
       敦煌莫高窟现存华严经变洞窟28个(盛唐44窟至宋454窟)。中唐后成熟:九宫格七处九会+底部莲华藏世界+善财五十三参屏风画。代表:第12窟(北壁·数字敦煌有收录)/第237窟(双头瑞像)/第146窟(伯希和图录)。
+    description_en: |
+      The Mogao Grottoes preserve 28 caves with Huayan transformation murals (from Cave 44 of
+      the High Tang to Cave 454 of the Song). Mature after the mid-Tang in the form of a
+      nine-square grid of the seven places and nine assemblies + the Lotus Treasury World Sea at
+      the base + screen paintings of Sudhana's fifty-three pilgrimages. Representative examples:
+      Cave 12 (north wall, recorded by Digital Dunhuang) / Cave 237 (twin-headed auspicious
+      image) / Cave 146 (in Pelliot's album).
     links:
       - text: "敦煌研究院"
         url: "https://www.dha.ac.cn"
@@ -46,11 +70,19 @@ art_treasures:
 
   - id: 4
     title: "奈良东大寺·卢舍那大佛(8世纪·世界遗产)"
+    title_en: "Nara Tōdaiji · the Great Vairocana Buddha (8th century · World Heritage)"
     icon: "🗿"
     image: "https://commons.wikimedia.org/wiki/Special:FilePath/NaraTodaijiDaibutsu0212.jpg?width=640"
     image_caption: "东大寺卢舍那大佛 · 金铜铸造 · 高约15m · 752年开眼 · 图片: Wikipedia Public Domain (Fg2, 2005)"
     description: |
       日本华严宗总本山。金铜卢舍那大佛高约15m,743年圣武天皇发愿铸造,752年开眼。大佛殿为世界现存最大木构建筑(宽57m×高49m)。正仓院藏唐代华严相关文物300+件(含全球唯一存世唐五弦琵琶)。1998年世界文化遗产。
+    description_en: |
+      Head temple of the Japanese Kegon (Huayan) school. The Great Bronze Vairocana is about
+      15 m tall, commissioned by Emperor Shōmu in 743 and consecrated in 752. The Great Buddha
+      Hall is the largest surviving wooden structure in the world (57 m wide × 49 m high). The
+      Shōsōin treasury preserves 300+ Tang-dynasty objects related to Huayan (including the
+      world's only surviving Tang five-stringed pipa). Designated a UNESCO World Heritage Site
+      in 1998.
     links:
       - text: "东大寺官网"
         url: "https://www.todaiji.or.jp"
@@ -63,9 +95,17 @@ art_treasures:
 
   - id: 5
     title: "犍陀罗·华严佛传造像(贵霜时期·1-3世纪)"
+    title_en: "Gandhāra · Buddha-biography Reliefs and Huayan (Kuṣāṇa period · 1st–3rd century)"
     icon: "🏺"
     description: |
       犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变在图像学上有渊源。栗田功《大美之佛像:犍陀罗艺术》(文物出版社2017)为权威参考。
+    description_en: |
+      Gandhāra (today's northern Pakistan) is one of the birthplaces of Mahāyāna Buddhism. The
+      Kuṣāṇa period produced numerous biographical reliefs of the Buddha — scenes such as the
+      miracle at Śrāvastī and the prophecy of Dīpaṃkara — which share an iconographic lineage
+      with the great-radiance miracles recounted in the Avatamsaka Sūtra. Kurita Isao's The
+      Great Beautiful Buddha Images: Gandhāran Art (Cultural Relics Press, 2017) is the
+      authoritative reference.
     links:
       - text: "大英博物馆·犍陀罗"
         url: "https://www.britishmuseum.org/collection/search?keyword=gandhara"
@@ -76,34 +116,56 @@ art_treasures:
 
   - id: 6
     title: "莫高窟第237窟·双头瑞像(中唐·吐蕃时期)"
+    title_en: "Mogao Cave 237 · the Twin-Headed Auspicious Image (Mid-Tang · Tibetan period)"
     icon: "🖼"
     description: |
       中唐代表窟。西壁佛龛顶部绘双头瑞像——故事发生在犍陀罗国:两位贫士各请画师绘释迦像,画师收两份钱绘一尊,佛像显灵现双头一身神变。身着吐蕃服装的俗人仰礼,见证汉蕃丝路文化交流。
+    description_en: |
+      A representative Mid-Tang cave. Painted above the west-wall shrine niche is the
+      twin-headed auspicious image — the story is set in Gandhāra: two poor laymen each
+      commissioned a painter to depict Śākyamuni; the painter, paid twice, painted one image,
+      whereupon the Buddha-image miraculously manifested a twin-headed, single-bodied
+      transformation. Layfolk in Tibetan dress venerate it from below, bearing witness to the
+      cultural exchange along the Sino-Tibetan Silk Road.
     links:
       - text: "敦煌研究院·237窟"
         url: "https://www.dha.ac.cn/info/1425/3641.htm"
 
   - id: 7
     title: "洛阳龙门·奉先寺卢舍那大佛(唐·17m)"
+    title_en: "Longmen, Fengxian Temple · the Great Vairocana Buddha (Tang · 17 m)"
     icon: "🗿"
     image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vairocana%2C_Fengxian_Temple%2C_Longmen_Grottoes_%2810240207654%29.jpg?width=800"
     image_caption: "龙门奉先寺卢舍那大佛 · 唐·672年 · 通高17.14m · 图片: Wikimedia CC0 Public Domain"
     description: |
       龙门石窟奉先寺卢舍那大佛(通高17.14m),唐高宗咸亨三年(672)武则天赞助营造。华严教主毗卢遮那佛的盛唐皇家造像巅峰,被誉东方蒙娜丽莎。与东大寺卢舍那、敦煌华严经变并称三大华严艺术瑰宝。
+    description_en: |
+      The Fengxian Temple Great Vairocana at the Longmen Grottoes (total height 17.14 m) was
+      sponsored by Empress Wu Zetian in the third year of Xianheng (672). It is the High-Tang
+      royal sculptural summit of Vairocana, sovereign of the Huayan teaching, hailed as the
+      "Oriental Mona Lisa." Together with the Tōdaiji Vairocana and the Dunhuang Huayan
+      transformation murals, it ranks among the three great treasures of Huayan art.
     links:
       - text: "B站龙门"
-        url: "https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA+%E5%8D%A2%E8%88%8D%E9%82%A3"
+        url: "https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA+%E5%8D%A2%E8%88%8E%E9%82%A3"
       - text: "YT 4K"
         url: "https://www.youtube.com/results?search_query=Longmen+Grottoes+Vairocana+4K"
 
   - id: 8
     title: "犍陀罗·佛陀坐像(3-4世纪·CMOA藏)"
+    title_en: "Gandhāra · Seated Buddha (3rd–4th century · at the Cleveland Museum of Art)"
     icon: "🏺"
     image_left: "https://commons.wikimedia.org/wiki/Special:FilePath/Afghanistan%2C_Gandhara%2C_Hadda%2C_late_Kushan_Period_-_Seated_Buddha_-_1967.39_-_Cleveland_Museum_of_Art.jpg?width=800"
     image_right: "https://commons.wikimedia.org/wiki/Special:FilePath/The_Buddha_shows_Miracles%2C_Gandhara%2C_3rd_century_AD%2C_schist_-_Ethnological_Museum%2C_Berlin_-_DSC01646.JPG?width=800"
     image_caption: "左: 犍陀罗佛陀坐像(Afghanistan, Hadda, 3-4世纪, stucco, CMOA CC0) · 右: 佛陀示现神变(3世纪, 柏林民族学博物馆 CC0)"
     description: |
       犍陀罗(今巴基斯坦北部)为大乘佛教发源地之一。贵霜时期大量佛传浮雕:舍卫城神变、燃灯佛授记等场景与《华严经》所述佛陀大光明神变图像学有渊源。栗田功《大美之佛像》(文物出版社2017)为权威参考。
+    description_en: |
+      Gandhāra (today's northern Pakistan) is one of the birthplaces of Mahāyāna Buddhism. The
+      Kuṣāṇa period produced numerous biographical reliefs of the Buddha — scenes such as the
+      miracle at Śrāvastī and the prophecy of Dīpaṃkara — which share an iconographic lineage
+      with the great-radiance miracles recounted in the Avatamsaka Sūtra. Kurita Isao's The
+      Great Beautiful Buddha Images (Cultural Relics Press, 2017) is the authoritative reference.
     links:
       - text: "大英博物馆"
         url: "https://www.britishmuseum.org/collection/search?keyword=gandhara"
@@ -114,8 +176,10 @@ art_treasures:
 
   - id: 9
     title: "华藏世界海·3D可视化视频"
+    title_en: "The Lotus Treasury World Sea · 3D Visualization Videos"
     icon: "🎬"
     description: "以下为华严宇宙观相关的公开视频资源,可点击播放:"
+    description_en: "Public video resources on the Huayan cosmology, click to play:"
     videos:
       - topic: "华藏世界海·3D"
         links:
@@ -143,43 +207,55 @@ art_treasures:
 # ── 华严古迹巡礼 ──
 pilgrimage_sites:
   - name: "终南山·至相寺"
+    name_en: "Zhongnan Mountain · Zhixiang Temple"
     location: "陕西西安"
     dynasty: "隋唐"
     description: "华严宗发源地。杜顺、智俨于此创宗立教"
+    desc_en: "Birthplace of the Huayan school. Dushun and Zhiyan founded and established the teaching here."
     links: []
 
   - name: "洛阳龙门·奉先寺"
+    name_en: "Longmen, Luoyang · Fengxian Temple"
     location: "河南洛阳"
     dynasty: "唐"
     description: "卢舍那大佛(17m),武则天赞助。华严教主盛唐造像巅峰"
+    desc_en: "The Great Vairocana (17 m), sponsored by Wu Zetian. The High-Tang sculptural summit of the Huayan sovereign."
     links:
       - text: "B站"
         url: "https://www.bilibili.com/search?keyword=%E9%BE%99%E9%97%A8+%E5%A5%89%E5%85%88%E5%AF%BA"
 
   - name: "长安·大慈恩寺"
+    name_en: "Chang'an · Daci'en Temple"
     location: "陕西西安"
     dynasty: "唐"
     description: "玄奘译场。华严经别译本于此译出"
+    desc_en: "Xuanzang's translation hall. An alternate recension (biejing) of the Avatamsaka Sūtra was translated here."
     links: []
 
   - name: "五台山·大华严寺"
+    name_en: "Mount Wutai · Great Huayan Temple"
     location: "山西"
     dynasty: "唐~今"
     description: "澄观著《华严经疏》处。华严宗圣地"
+    desc_en: "Where Chengguan composed his Commentary on the Avatamsaka Sūtra. A sacred site of the Huayan school."
     links: []
 
   - name: "奈良·东大寺"
+    name_en: "Nara · Tōdaiji"
     location: "日本奈良"
     dynasty: "8世纪"
     description: "日本华严宗总本山。审祥首讲华严经"
+    desc_en: "Head temple of the Japanese Kegon (Huayan) school. Shinshō first lectured on the Avatamsaka Sūtra here."
     links:
       - text: "官网"
         url: "https://www.todaiji.or.jp"
 
   - name: "支提山·大华严寺"
+    name_en: "Zhiti Mountain · Great Huayan Temple (Miaoli)"
     location: "苗栗通霄"
     dynasty: "2026动土"
     description: "海云继梦。与福建宁德支提华严祖庭隔海相望"
+    desc_en: "Venerable Haiyun. It faces Zhiti, the Huayan ancestral seat in Ningde, Fujian, across the sea."
     links:
       - text: "官网"
         url: "https://www.huayenworld.org"
@@ -219,6 +295,16 @@ bibliography:
 # ── 华严四十二字母 ──
 alphabet_intro: |
   华严四十二字母出自《华严经·入法界品》(T10n0279),善财童子参访第四十四位善知识——众艺童子所传授的「字智法门」。依音节分一合(单字33个)·二合(双字拼合8个)·三合(三字拼合1个)。因字有语、因语有名、因名有义,唱诵可获殊胜功德。佛光山梵呗团版为最完整权威版本。
+
+# english account of the forty-two letters (bilingual correspondence, not a liturgical manual)
+alphabet_intro_en: |
+  The forty-two letters ("Huayan alphabet") derive from the Avatamsaka Sūtra's chapter on
+  Entry into the Dharma-Realm (T10n0279). They are the "letter-wisdom dharma-door" transmitted
+  by Sudhana's forty-fourth good friend, the youth Zhongyi (Master of All Arts). By syllable
+  combinations they are graded into single-letter (33 characters), two-letter (8 couplings)
+  and three-letter (1 coupling) classes. Because through the letter there is speech, through
+  speech the name, and through the name the meaning, intoning them confers exceptional merit.
+  The Foguangshan Buddhist Chanting Troupe edition is the most complete and authoritative.
 
 alphabet_table:
   - category: "一合(单字)"
