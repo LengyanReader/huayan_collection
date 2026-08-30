@@ -94,7 +94,7 @@ function _initArticleENMode(){
     full.dataset.enMarked='1';
     full.querySelectorAll('blockquote').forEach(function(bq){
       var txt=(bq.textContent||'').replace(/\s+/g,' ').trim();
-      if(/^(英译对读|🔑|术语格义|主题对读注|卷末批注)/.test(txt)) bq.classList.add('en-block');
+      if(/^(英译对读|EN对应|🔑|术语格义|主题对读注|卷末批注)/.test(txt)) bq.classList.add('en-block');
     });
   }
   _applyArticleENMode();
