@@ -122,14 +122,22 @@ function renderEnvHumanities(sectionId) {
   if (!sec) return '';
   var h = '<div class=section style="border-left:4px solid var(--gold);padding-left:14px">';
   h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+  if (sec.title_en) {
+    h += '<div class="en-line sp-en-title">📖 ' + sec.title_en + '</div>';
+  }
   var md = (typeof mdToHTML==='function') ? mdToHTML : function(s){return s;};
   if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8">' + md(sec.intro).replace(/\n/g,'<br>') + '</p>';
+  if (sec.intro_en) h += '<div class="en-line sp-en-b">📖 ' + md(sec.intro_en).replace(/\n/g,'<br>') + '</div>';
   if (sec.topics) {
     sec.topics.forEach(function(t, idx) {
       h += '<div class="wu-door open" id=eh-topic-' + idx + ' onclick="this.classList.toggle(\'open\')">';
       h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+      if (t.en) h += '<div class="en-line sp-en-t">' + t.en + '</div>';
       h += '<div class=body>';
       h += '<p>' + md(t.body).replace(/\n/g,'<br>') + '</p>';
+      if (t.en_body) {
+        h += '<div class="en-line sp-en-b">📖 ' + md(t.en_body).replace(/\n/g,'<br>') + '</div>';
+      }
       if (t.sources) {
         h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📚 ';
         t.sources.forEach(function(s,i) { h += (i>0?'<br>':'') + s; });

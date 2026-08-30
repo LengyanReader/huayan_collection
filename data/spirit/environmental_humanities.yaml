@@ -7,6 +7,7 @@ environmental_humanities:
   sections:
     - id: env_history
       title: 环境史·人类世的灵性回应
+      title_en: Environmental History · A Spiritual Response to the Anthropocene
       icon: 🌿
       intro: |
         环境史(Environmental History)揭示了一个被现代性所遮蔽的事实——
@@ -14,8 +15,17 @@ environmental_humanities:
         到禅宗农禅并重的「一日不作、一日不食」，佛教修行传统积累了
         丰富的生态智慧。在「人类世」(Anthropocene)的当代讨论中，
         这些传统不是过去的故事，而是面向未来的资源。
+      intro_en: |
+        Environmental History discloses a fact obscured by modernity — human
+        civilization has never existed apart from ecosystems. From the water
+        management of Huayan monasteries in the Zhongnan Mountains to the Chan
+        tradition that pairs farming with meditation ("one day without work, one
+        day without food"), the Buddhist contemplative tradition has accumulated
+        rich ecological wisdom. In contemporary debates on the "Anthropocene,"
+        these traditions are not stories of the past but resources for the future.
       topics:
         - title: 人类世辩论——一个还是多个世界？
+          en: The Anthropocene Debate — One World or Many?
           body: |
             Dipesh Chakrabarty 在「The Climate of History: Four Theses」(2009)
             中提出：气候变化使「人类」首次成为地质力量——人类的历史
@@ -28,12 +38,31 @@ environmental_humanities:
             理 = 法界缘起的宇宙法则（行星尺度），
             事 = 具体众生的苦乐与正义（全球尺度）。
             二者不相碍而能相资为用——这正是华严面对气候危机的独特生态智慧。
+          en_body: |
+            In "The Climate of History: Four Theses" (2009), Dipesh Chakrabarty
+            argues that climate change has made "humanity" a geological force for
+            the first time — human history and the history of the Earth can no
+            longer be separated. Yet he immediately faces the criticism that there
+            is no single unified "humanity": since the industrial revolution,
+            carbon emissions have come mainly from Europe and America, while
+            climate disasters strike first at the Global South and indigenous
+            communities. Chakrabarty calls this predicament "the parallax between
+            the planetary and the global" — the planetary scale demands
+            transcending anthropocentrism, while the global scale demands
+            reckoning with historical responsibility. The Huayan
+            "non-obstruction of principle and phenomena" offers a distinctive
+            integrative frame: principle = the cosmic law of the dependent arising
+            of the dharma-realm (the planetary scale); phenomena = the suffering
+            and justice of specific sentient beings (the global scale). The two
+            are mutually non-obstructive and mutually supportive — precisely the
+            unique ecological wisdom Huayan brings to the climate crisis.
           sources:
             - "Dipesh Chakrabarty, 'The Climate of History: Four Theses', Critical Inquiry 35(2), 2009"
             - "Dipesh Chakrabarty, The Climate of History in a Planetary Age (Chicago, 2021)"
             - "Dipesh Chakrabarty, One Planet, Many Worlds: The Climate Parallax (Brandeis, 2023)"
 
         - title: "Anthropocene 还是 Capitalocene？——谁的危机？"
+          en: "Anthropocene or Capitalocene? — Whose Crisis?"
           body: |
             Donna Haraway、Jason Moore 等学者提出「资本世」(Capitalocene)
             来替代「人类世」——问题不在于抽象的「人类」，而在于
@@ -42,11 +71,24 @@ environmental_humanities:
             不是技术不够先进，不是科学不够发达，而是「以物质欲望为驱动」
             的经济模式本身就是病根。从 Capitalocene 到「灵性文明」——
             不是退回前现代，而是跃过现代性的物质迷思。
+          en_body: |
+            Scholars such as Donna Haraway and Jason Moore propose the
+            "Capitalocene" to replace the "Anthropocene" — the problem lies not
+            with abstract "humanity" but with the growth logic of capitalism: the
+            fundamental contradiction between endlessly expanding capital
+            accumulation and the Earth's finite resources. Venerable Haiyun
+            Jihong's spiritual economics responds directly to this problem: it is
+            not that technology is not advanced enough, nor that science is not
+            developed enough — the economic model "driven by material desire" is
+            itself the root disease. From the Capitalocene to a "spiritual
+            civilization" — not a retreat to the premodern, but a leap over the
+            materialist myth of modernity.
           sources:
             - "Donna Haraway, Staying with the Trouble: Making Kin in the Chthulucene (Duke, 2016)"
             - "Jason W. Moore (ed.), Anthropocene or Capitalocene? (PM Press, 2016)"
 
         - title: 佛教环境史——寺院作为生态节点
+          en: "Buddhist Environmental History — Monasteries as Ecological Nodes"
           body: |
             伊懋可(Mark Elvin)在《大象的退却：中国环境史》(2004)中
             追踪了中国四千年来人与自然关系的变化。山中寺院（终南山·五台山·
@@ -56,12 +98,26 @@ environmental_humanities:
             （寺院周边的古树名木）、可持续农业（寺院田产的轮作制度）。
             海云继梦法师重建苗栗支提山大华严寺的当代实践，
             续接了这一千五百年的寺院生态传统。
+          en_body: |
+            In The Retreat of the Elephants: An Environmental History of China
+            (2004), Mark Elvin traces the changing relationship between humans and
+            nature over four millennia of Chinese history. Mountain monasteries —
+            Zhongnan, Wutai, Emei, and Putuo — are a unique window into Chinese
+            environmental history: monasteries are not only religious sites but
+            ecological nodes — forest protection (the sacred inviolability of
+            monastic mountains), water management (spring irrigation and reservoir
+            storage), biodiversity conservation (ancient specimen trees around
+            monastery grounds), and sustainable agriculture (crop rotation on
+            monastic estates). Venerable Haiyun Jihong's contemporary rebuilding
+            of Zhiti Mountain's Great Huayan Temple in Miaoli carries on this
+            fifteen-hundred-year monastic ecological tradition.
           sources:
             - "Mark Elvin, The Retreat of the Elephants (Yale, 2004)"
             - "William Cronon, Changes in the Land (Hill and Wang, 1983)"
 
     - id: critical_humanities
       title: 批判人文·多元世界
+      title_en: Critical Humanities · A Pluriverse of Worlds
       icon: 🌐
       intro: |
         「批判人文」(Critical Humanities)追问一个根本问题：
@@ -72,8 +128,20 @@ environmental_humanities:
         灵性仁本必须面对这一追问：灵性经济学、仁本经济学
         不是另一种「放之四海而皆准」的普遍真理——它是
         华严法界缘起这一特定知识传统的当代展开。
+      intro_en: |
+        "Critical Humanities" asks a fundamental question: whose knowledge counts
+        as "knowledge"? Whose "world" counts as "a world"? Postcolonial theory,
+        decolonial scholarship, and indigenous methodologies reveal that the
+        "universal knowledge" of Western modernity is in fact the local knowledge
+        of one particular cultural tradition — one that happens to hold the power
+        to universalize itself. Spirituality rooted in humanity must face this
+        question: spiritual economics and Ren-based economics are not another
+        "universal truth" valid everywhere — they are the contemporary unfolding
+        of a particular knowledge tradition, namely the Huayan dependent arising
+        of the dharma-realm.
       topics:
         - title: 去殖民化与「多重世界」(Pluriverse)
+          en: "Decolonization and the Pluriverse"
           body: |
             去殖民化学者提出「多重世界」(pluriverse)的概念——
             不存在一个统一的「世界」，而存在多个共存的本体论世界
@@ -86,11 +154,27 @@ environmental_humanities:
             而是要结束其「普遍真理」的霸权地位——
             一如法藏六相圆融所示：总别同异成坏——
             科学知识与本土知识互为「总/别」，在不同的脉络中各为「总」。
+          en_body: |
+            Decolonial scholars propose the concept of the "pluriverse" — there is
+            no single unified "world" but multiple coexisting ontological worlds.
+            The Andean Pachamama ("Mother Earth") is not another name for "the
+            Earth" — it is a completely different way of relating to land, one
+            that treats the land as a living being rather than a resource. The
+            Huayan "dharma-realm of the unobstructed interpenetration of all
+            phenomena" enters into deep dialogue with the pluriverse: from the
+            Huayan standpoint, every "world" is a jewel in Indra's net, mirroring
+            one another without replacing one another. Decolonization does not aim
+            to abolish Western science but to end the hegemony of its claim to
+            "universal truth" — as Fazang's six characteristics in perfect fusion
+            show: total/partial, identity/difference, completion/ruin. Scientific
+            knowledge and indigenous knowledge stand as "total"/"partial" for each
+            other, each being "total" in its own context.
           sources:
             - "Arturo Escobar, Designs for the Pluriverse (Duke, 2018)"
             - "Mario Blaser, 'Ontological Conflicts and the Stories of Peoples in Spite of Europe', Current Anthropology 54(5), 2013"
 
         - title: "Zoe Todd 的警告——「本体论不过是殖民主义的另一个名字」"
+          en: "Zoe Todd's Warning — 'Ontology Is Just Another Name for Colonialism'"
           body: |
             加拿大 Métis 学者 Zoe Todd 发出了尖锐的警告：当西方学术界
             热切地讨论「本体论转向」(ontological turn)时，
@@ -102,10 +186,27 @@ environmental_humanities:
             • 真正的「事事无碍」要求每一种知识传统保持其完整性，
               在相互辉映中各自成为「别相」——不被溶解为同质化的
               「灵性一体论」
+          en_body: |
+            The Métis scholar Zoe Todd of what is now Canada issues a sharp warning
+            (in "An Indigenous Feminist's Take on the Ontological Turn," 2016):
+            when Western academia eagerly debates the "ontological turn," it is
+            precisely in a new way appropriating indigenous thought — what
+            indigenous peoples have long been saying is repackaged by academic
+            philosophers as "theoretical innovation." In drawing on global
+            indigenous knowledge, spirituality rooted in humanity must stay
+            clear-eyed: citing indigenous thought is not "cherry-picking wisdom"
+            from another's orchard; the dialogue between the Huayan "insentient
+            beings possess Buddha-nature" and modern "animism" does not mean
+            conflating the two; and genuine "unobstructed interpenetration of all
+            phenomena" requires every knowledge tradition to preserve its
+            integrity — each becoming, in mutual reflection, its own "partial
+            characteristic," never dissolved into a homogenized "spiritual
+            monism."
           sources:
             - "Zoe Todd, 'An Indigenous Feminist's Take on the Ontological Turn', Journal of Historical Sociology 29(1), 2016"
 
         - title: 原住民方法论——不是「数据」，是「关系」
+          en: "Indigenous Methodologies — Not 'Data' but 'Relationship'"
           body: |
             Leanne Betasamosake Simpson (Nishnaabeg 学者) 在《As We Have Always
             Done》(2017)中提出「Nishnaabeg 智慧」作为认识论和方法论——
@@ -119,19 +220,42 @@ environmental_humanities:
             华严「善财五十三参」是最早的跨文化方法论隐喻——
             善财参访五十三位善知识，不是去「采集数据」，
             而是在每一次参访中全身心地进入对方的生命世界。
+          en_body: |
+            In As We Have Always Done (2017), the Nishnaabeg scholar Leanne
+            Betasamosake Simpson advances "Nishnaabeg Intelligence" as
+            epistemology and methodology — indigenous knowledge is not extractable
+            "data" but living practice embedded in specific relationships, specific
+            lands, and specific ceremonies. Spirituality rooted in humanity
+            replies: the Twenty-Four Solar Terms are not a "time-management
+            technique" that can be stripped away from the Chinese agricultural
+            tradition; the Buddhist view of dependent arising is not an ecological
+            slogan translatable as "everything is connected"; every indigenous
+            knowledge must be respected within its own "dharma-realm" — when it is
+            translated and borrowed, the integrity of its relationships must not
+            be broken. The Huayan "Sudhana's Fifty-three Pilgrimages" is the
+            earliest cross-cultural methodological metaphor — Sudhana visits
+            fifty-three good friends not to "collect data," but to enter
+            wholeheartedly into the life-world of the other at each visit.
           sources:
             - "Leanne Betasamosake Simpson, As We Have Always Done: Indigenous Freedom Through Radical Resistance (Minnesota, 2017)"
             - "Linda Tuhiwai Smith, Decolonizing Methodologies: Research and Indigenous Peoples (Zed Books, 1999/3rd ed. 2021)"
 
     - id: heritage_practice
       title: 遗产实践·活态传承
+      title_en: Heritage Practice · Living Transmission
       icon: 🏛
       intro: |
         批判遗产研究(Critical Heritage Studies)由 Laurajane Smith 等学者开创，
         其核心洞见：「遗产不是物，而是一种文化实践」。
         这对华严修行传统的传承有直接的启示意义。
+      intro_en: |
+        Critical Heritage Studies, founded by scholars such as Laurajane Smith,
+        rests on a core insight: "heritage is not a thing but a process of
+        cultural practice and meaning-making." This has direct implications for
+        the transmission of the Huayan contemplative tradition.
       topics:
         - title: "Authorised Heritage Discourse — 谁定义「什么是华严遗产」？"
+          en: "Authorised Heritage Discourse — Who Defines 'What Counts as Huayan Heritage'?"
           body: |
             Laurajane Smith 的「权威遗产话语」(AHD)概念揭示：
             国家、UNESCO、学术机构自上而下地定义「遗产」——
@@ -143,6 +267,20 @@ environmental_humanities:
             海云继梦法师的「普贤乘」体系——将华严修行从「博物馆里的
             古典学问」转化为「当代人的生命实践」——本质上就是对
             AHD 的超越：遗产不是被保护的过去，而是被创造的未来。
+          en_body: |
+            Laurajane Smith's concept of the "Authorised Heritage Discourse"
+            (AHD) reveals that the state, UNESCO, and academic institutions define
+            "heritage" from the top down — Dunhuang as mural-art heritage, the
+            Giant Wild Goose Pagoda as Tang-dynasty architectural heritage. But
+            such definitions erase the affective-practice dimension of heritage:
+            pilgrims prostrating before the Mogao Grottoes, copyists' reverent
+            transcription of the sūtras, monks sitting quietly before the ruins of
+            Zhixiang Temple on Zhongnan Mountain — these are the ways Huayan
+            heritage stays "alive." Venerable Haiyun Jihong's "Samantabhadra-yāna"
+            (Puxian Cheng) system — turning Huayan practice from "a classical
+            learning for museums" into "a living practice for the people of today"
+            — is at bottom a transcendence of the AHD: heritage is not a protected
+            past but a created future.
           sources:
             - "Laurajane Smith, Uses of Heritage (Routledge, 2006)"
             - "Laurajane Smith, Emotional Heritage (Routledge, 2021)"
