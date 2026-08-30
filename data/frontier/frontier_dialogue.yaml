@@ -11,6 +11,7 @@ sections:
     intro: "华严宗「事事无碍法界」「一即一切」「因陀罗网」「法界缘起」等核心思想，在当代与人工智能、计算现象学、神经科学、心灵哲学等领域产生了深度共振。此板块追踪华严思想在当代学术中的对话与诠释。"
     domains:
       - domain: "人工智能 & 华严因陀罗网"
+        id: ai-indranet
         icon: "🤖"
         core_issues:
           - "神经网络与因陀罗网的全息映射"
@@ -44,6 +45,7 @@ sections:
           - "Bengio, Y. &Delétang, N. System 2 Attention is Realizable. arXiv:2411.10958 (2024)."
 
       - domain: "计算现象学 & 禅观形式化"
+        id: comp-chan
         icon: "🧮"
         core_issues:
           - "能否用数学模型描述「置心一处」「能所双泯」？"
@@ -81,6 +83,7 @@ sections:
           - "Millière, R. et al. Deep Meditation and the Predictive Brain. Trends in Cognitive Sciences 28(7), 2024, pp.653-667."
 
       - domain: "神经科学 & 禅修脑科学"
+        id: neuro-meditation
         icon: "🧠"
         core_issues:
           - "长期禅修对大脑结构与功能的影响"
@@ -118,6 +121,7 @@ sections:
           - "Fox, K. C. R. et al. Is meditation associated with altered brain structure? A systematic review and meta-analysis. Neuroscience & Biobehavioral Reviews 43, 2014, pp.48-73."
 
       - domain: "心灵哲学 & 华严法界观"
+        id: phil-mind
         icon: "💭"
         core_issues:
           - "困难问题(Hard Problem)与华严「心佛众生三无差别」"
@@ -167,6 +171,7 @@ sections:
     intro: "华严宗作为汉传佛教「圆教」之代表，与天台、禅宗、净土、唯识等宗派在判教、修行、心性论等层面有深层的对话与互动。此板块梳理这些宗派间的思想交流与相互影响。"
     domains:
       - domain: "天台宗 & 华严判教"
+        id: tiantai
         icon: "📐"
         core_issues:
           - "华严五教十宗与天台五时八教的判教分歧"
@@ -210,6 +215,7 @@ sections:
           - "陈寅恪《华严宗哲学》,台湾黎明文化,1983。(注:此为「陈寅恪」疑为「陈扬炯」或「魏道儒」——学界有不同归属,需核实)。"
 
       - domain: "禅宗 & 华严禅法"
+        id: chan
         icon: "🧘"
         core_issues:
           - "宗密「禅教融合」的历史意义与当代回响"
@@ -250,6 +256,7 @@ sections:
           - "海云继梦《华严禅观修行次第》,华严学会出版。"
 
       - domain: "净土宗 & 华严净土"
+        id: jingtu
         icon: "🙏"
         core_issues:
           - "毗卢遮那华藏世界海 vs 阿弥陀佛西方极乐世界"
@@ -290,6 +297,7 @@ sections:
           - "陈扬炯《中国净土宗通史》,江苏古籍出版社,2000。"
 
       - domain: "唯识宗 & 华严唯心"
+        id: weishi
         icon: "🔬"
         core_issues:
           - "阿赖耶缘起(唯识)与法界缘起(华严)的本体论对比"
@@ -343,6 +351,7 @@ sections:
     intro: "华严宗的「法界缘起」思想与印度中观、藏传佛教、南传佛教等不同佛教传统在空性观、修行次第、心性论等层面有丰富的对话空间。此板块梳理这些跨传统的对话与比较研究。"
     domains:
       - domain: "中观般若 & 华严法界"
+        id: madhyamaka
         icon: "🌐"
         core_issues:
           - "龙树《中论》空性与华严「真空妙有」的义理演进"
@@ -384,6 +393,7 @@ sections:
           - "Garfield, J. L. The Fundamental Wisdom of the Middle Way: Nāgārjuna's Mūlamadhyamakakārikā. Oxford University Press, 1995."
 
       - domain: "藏传佛教 & 华严"
+        id: vajrayana
         icon: "🔴"
         core_issues:
           - "华严五教判与宗喀巴三士道的修行次第对比"
@@ -428,6 +438,7 @@ sections:
           - "Thurman, R. A. F. (trans.) Life and Teachings of Tsongkhapa. Library of Tibetan Classics, 2013."
 
       - domain: "南传上座部 & 华严"
+        id: theravada
         icon: "🟤"
         core_issues:
           - "四念处与华严修行次第的对话"
@@ -521,6 +532,7 @@ sections:
     intro: "华严思想的「事事无碍」「一即一切」与道家、儒家、印度瑜伽、基督教神秘主义、伊斯兰苏菲、现代灵性运动等不同宗教传统在宇宙观、修行论、心性论等层面存在深层对话空间。此板块梳理这些跨传统的比较与互鉴。"
     domains:
       - domain: "道家 & 华严自然观"
+        id: daoist
         icon: "☯"
         core_issues:
           - "老子「道生一」与华严「一即一切」的生成论对比"
@@ -564,6 +576,7 @@ sections:
           - "刘笑敢《庄子哲学及其演变》,中国人民大学出版社,2010修订版。"
 
       - domain: "儒家 & 华严仁学"
+        id: confucian
         icon: "📜"
         core_issues:
           - "朱熹「理一分殊」与华严「理事无碍」的结构对比"
@@ -609,6 +622,7 @@ sections:
           - "Tu Weiming (杜维明). Centrality and Commonality: An Essay on Confucian Religiousness. SUNY Press, 1989."
 
       - domain: "印度瑜伽 & 华严禅定"
+        id: indian-yoga
         icon: "🧘"
         core_issues:
           - "帕坦伽利《瑜伽经》八支与华严止观的修行技术比较"
@@ -650,6 +664,7 @@ sections:
           - "海云继梦《大乘瑜伽行法》,华严学会,2009。"
 
       - domain: "基督教 & 华严"
+        id: christian
         icon: "✝"
         core_issues:
           - "互摄互入(mutual interpenetration)与基督教位格神(personal God)"
@@ -696,6 +711,7 @@ sections:
           - "Coward, H. Fritjof Capra and the Science of Sustainability. SUNY Press, 2023 (含华严与基督教比较章节)."
 
       - domain: "苏菲神秘主义 & 华严"
+        id: sufi
         icon: "☪"
         core_issues:
           - "Ibn Arabi「万有单一论」(Wahdat al-Wujud)与华严「事事无碍」"
@@ -741,6 +757,7 @@ sections:
           - "Nasr, S. H. The Need for a Sacred Science. SUNY Press, 1993."
 
       - domain: "现代灵性运动 & 华严"
+        id: modern-spirit
         icon: "🔮"
         core_issues:
           - "Fritjof Capra《物理学之道》(1975)与因陀罗网的西方传播"

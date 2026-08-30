@@ -76,8 +76,9 @@ function renderArticle(){
   }
 
   // ── 全文 ──
-  h+='<div class="section" style="border-left:4px solid var(--gold)">';
-  h+='<h2>📄 '+a.title+' · 全文</h2>';
+  h+='<div class="section" style="border-left:4px solid var(--gold)" id="article-full">';
+  h+='<h2 style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span>'
+    +'<button id="article-en-toggle" class="f-nav-btn" onclick="toggleArticleEN()" title="在「含英文批注」与「仅中文正文」之间切换显示">🌐 英文批注：显示</button></h2>';
   h+=embed.html;
   h+='</div>';
 
@@ -91,6 +92,9 @@ function renderArticle(){
 
   root.innerHTML=h;
 
+  // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
+  _initArticleENMode();
+
   // ── 支持 #锚点 直达（目录跳转用真实 id 锚点）──
   if(location.hash){
     setTimeout(function(){
@@ -102,6 +106,45 @@ function renderArticle(){
 
 if(document.readyState!=='loading'){renderArticle();}
 else{document.addEventListener('DOMContentLoaded',renderArticle);}
+
+// ═══ 多语对读阅读模式：折叠/展开英文批注块 ═══
+// 批注块特征：以「英译对读 / 节级英译要义 / 术语格义 / 主题对读注 / 卷末批注」开头的 blockquote 视作「外文批注」，
+// 可一键切换「仅中文正文」阅读；页头「源文本/对读体例」等研究说明块不受影响。
+function _initArticleENMode(){
+  var s=document.getElementById('article-en-style');
+  if(!s){
+    s=document.createElement('style');
+    s.id='article-en-style';
+    s.textContent='#article-full.en-hidden blockquote.en-block{display:none}';
+    document.head.appendChild(s);
+  }
+  var full=document.getElementById('article-full');
+  if(full&&!full.dataset.enMarked){
+    full.dataset.enMarked='1';
+    full.querySelectorAll('blockquote').forEach(function(bq){
+      var txt=(bq.textContent||'').replace(/\s+/g,' ').trim();
+      if(/^(英译对读|🔑|术语格义|主题对读注|卷末批注)/.test(txt)) bq.classList.add('en-block');
+    });
+  }
+  _applyArticleENMode();
+}
+function toggleArticleEN(){
+  var cur=localStorage.getItem('article_en_hide')==='1';
+  localStorage.setItem('article_en_hide', cur?'0':'1');
+  _applyArticleENMode();
+  var block=document.getElementById('article-full');
+  if(block){
+    block.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(function(){window.scrollBy(0,-140);},200);
+  }
+}
+function _applyArticleENMode(){
+  var full=document.getElementById('article-full');
+  var btn=document.getElementById('article-en-toggle');
+  var hide=localStorage.getItem('article_en_hide')==='1';
+  if(full) full.classList.toggle('en-hidden', hide);
+  if(btn) btn.textContent=hide?'🌐 英文批注：展开':'🌐 英文批注：显示';
+}
 </script>
 </body>
 </html>

@@ -94,7 +94,7 @@ function _renderLitReview(lr){
 
 function renderFrontier(){
   var fv=document.getElementById("frontier-view");if(!fv)return;
-  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}</style>";
+  fv.innerHTML="<style>.f-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}.f-card h3{color:var(--gold);margin-bottom:6px;font-size:1em}.f-card p{font-size:0.85em;line-height:1.8;color:var(--text)}.f-link{color:var(--blue);font-size:0.8em}.f-nav-btn{padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text2);cursor:pointer;font-size:0.78em;transition:all 0.2s}.f-nav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}.f-target{position:relative;scroll-margin-top:90px}.f-target::after{content:'';position:absolute;inset:-6px;border:2px solid var(--gold);border-radius:12px;animation:fTarget 1.8s ease-out forwards;pointer-events:none}@keyframes fTarget{0%{opacity:1}100%{opacity:0}}";
 
   var fd = (typeof FRONTIER_DATA !== 'undefined') ? FRONTIER_DATA : null;
   var sec = fd && fd.sections ? fd.sections : null;
@@ -155,4 +155,21 @@ function switchFrontierNav(view,link){
   switchFrontier(view);
   document.querySelectorAll('#sidebar .nav-link').forEach(function(l){l.classList.remove('active');});
   if(link)link.classList.add('active');
+}
+// 子目录跳转：切到对应对话节并滚动/高亮该域卡片（f-target 动画一次）
+function switchFrontierDomain(key,id){
+  switchFrontierNav(key,null);
+  document.querySelectorAll('#sidebar .nav-link').forEach(function(l){
+    var oc=l.getAttribute('onclick')||'';
+    if(oc.indexOf('switchFrontierNav')>=0&&oc.indexOf("'"+key+"'")>=0) l.classList.add('active');
+  });
+  setTimeout(function(){
+    var dc=document.getElementById('fv-'+key+'-'+id);
+    if(dc){
+      dc.classList.remove('f-target');
+      void dc.offsetWidth;
+      dc.classList.add('f-target');
+      dc.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  },120);
 }

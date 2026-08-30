@@ -274,6 +274,43 @@ def render_sidebar(nav_spec):
     return '\n' + '\n'.join(lines)
 
 
+def inject_frontier_subs(nav_spec, frontier_data, articles):
+    """为前沿对话侧栏注入子目录：每个对话节的域(domain)子项 + 域内独立文章子子项。
+
+    域与文章均读自数据源（frontier_dialogue.yaml / standalone_articles.yaml），
+    不在 HTML/JS 中硬编码；域子项调用 switchFrontierDomain 高亮并滚动到对应卡片。
+    """
+    if not nav_spec or not frontier_data:
+        return
+    order = ['huayan', 'chinese', 'buddhist', 'others']
+    for item in nav_spec.get('nav', []):
+        act = item.get('action', {}) or {}
+        key = (act.get('args') or [''])[0] if act.get('type') == 'call' else None
+        if key not in order:
+            continue
+        sec = (frontier_data.get('sections') or {}).get(key, {}) or {}
+        subs = []
+        for d in sec.get('domains', []):
+            did = d.get('id')
+            if not did:
+                continue
+            subs.append({
+                'label': (d.get('icon') or '') + ' ' + d.get('domain', ''),
+                'action': {'type': 'call', 'fn': 'switchFrontierDomain', 'args': [key, did]},
+            })
+            for a in articles:
+                if did in (a.get('views') or []):
+                    subs.append({
+                        'label': (a.get('icon') or '') + ' ' + a.get('title', a['id']),
+                        'subsub': True,
+                        'action': {'href': '../' + a['file']},
+                    })
+        if subs:
+            item['subs'] = subs
+            if key == 'huayan' and not item.get('open'):
+                item['open'] = True
+
+
 def get_bib_for_tags(bib, tags):
     """Filter bibliography entries matching any of the given tags.
     Returns a flat list of matching entries across all categories.
@@ -1009,6 +1046,7 @@ def main():
 
     # ── Build Tab4: Frontier (restructured) ──
     fr_spec = nav.get('frontier', {})
+    inject_frontier_subs(fr_spec, load_frontier(), articles)
     fr_html = build_simple_tab_page(
         fr_spec.get('title', '前沿对话'),
         'frontier',
