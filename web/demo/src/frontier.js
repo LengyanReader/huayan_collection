@@ -44,7 +44,11 @@ function _renderSection(key, sec){
   if(sec.intro) h+='<p style=line-height:1.8>'+_mdFrontier(sec.intro)+'</p>';
   h+='</div>';
   if(sec.domains){
-    sec.domains.forEach(function(d){ h+=_renderDomain(d); });
+    sec.domains.forEach(function(d){
+      var card=_renderDomain(d);
+      if(d.id) card='<div id=fv-'+key+'-'+d.id+'>'+card+'</div>';
+      h+=card;
+    });
   }
   h+='</div>';
   return h;
@@ -115,6 +119,17 @@ function renderFrontier(){
   }
 
   fv.innerHTML += '<div id=fv-bibliography></div>';
+  // 逐域插入「独立文章页」入口（域登记了 id 时）
+  setTimeout(function(){
+    if(!sec) return;
+    Object.keys(sec).forEach(function(key){
+      var s=sec[key];
+      if(!s||!s.domains) return;
+      s.domains.forEach(function(d){
+        if(d.id && typeof articleChip==='function') articleChip(d.id, '#fv-'+key+'-'+d.id);
+      });
+    });
+  }, 80);
   // Render BIBLIOGRAPHY at bottom
   setTimeout(function(){
     var bibDiv = document.getElementById('fv-bibliography');

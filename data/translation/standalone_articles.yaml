@@ -74,3 +74,25 @@ others:
       label: 教行页 · 修行体系 · 助道资粮
     views:
       - system
+  - id: vijnana-mind
+    icon: 🧠
+    title: 识与心灵
+    title_sub: 唯识学×意识科学·AI哲学 · 中主文·外文对读批注
+    doc: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    back:
+      tab: frontier
+      view: buddhist
+      label: 前沿对话 · 与佛教的对话 · 瑜伽行派
+    views:
+      - yogacara
+  - id: mirror-mind
+    icon: 🪞
+    title: 识与心灵之镜
+    title_sub: 唯识学×西方心理学全景比较 · 中主文·外文对读批注
+    doc: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    back:
+      tab: frontier
+      view: buddhist
+      label: 前沿对话 · 与佛教的对话 · 瑜伽行派
+    views:
+      - yogacara

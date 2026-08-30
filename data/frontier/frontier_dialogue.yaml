@@ -468,6 +468,7 @@ sections:
           - "Collins, S. Nirvana and Other Buddhist Felicities. Cambridge University Press, 1998."
 
       - domain: "瑜伽行派 & 华严"
+        id: yogacara
         icon: "📖"
         core_issues:
           - "唯识三性(遍计所执/依他起/圆成实)与华严三观的义理关联"
