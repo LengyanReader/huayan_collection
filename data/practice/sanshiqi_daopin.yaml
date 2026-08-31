@@ -5,16 +5,32 @@
 section_id: sys-sanshiqi
 icon: "☸"
 title: "三十七道品 — 三乘共法的修行地图"
+title_en: "The Thirty-Seven Aids to Awakening — A Practice Map Shared by the Three Vehicles"
 
 intro: |
   三十七道品（三十七菩提分法）是横跨南传上座部、汉传大乘诸宗、藏传金刚乘乃至当代西方正念运动的基础修行框架，
   被公认为「三乘共法」。它不是某一宗派的专属建制，而是一套诞生于阿含语境、历经两千五百年不断被重新组织与诠释的修行地图——
   从部派阿毗达磨的系统化，到龙树「应无所得」的大乘重诠，再到卡巴金的当代临床转化，始终未曾被真正取代或废弃。
   以下整理从名相辨析、七科详论到历代传承的全方位研究，所有内容均可追溯至原始文献出处。
+intro_en: |
+  The thirty-seven aids to awakening (sattatiṃsa bodhipakkhiyā dhammā /
+  saptatriṃśad bodhipakṣā dharmāḥ) are a foundational framework of practice
+  shared across the Theravāda, the various Chinese Mahāyāna schools, the
+  Tibetan Vajrayāna, and even the contemporary Western mindfulness movement —
+  the "common Dharma of the three vehicles." Far from being any one school's
+  exclusive institution, they are a practice map born in the Āgama context and
+  ceaselessly reorganised and reinterpreted over 2,500 years: from the
+  systematisation of scholastic Abhidharma, through Nāgārjuna's Mahāyāna
+  re-reading in the key of "apprehending nothing to be obtained," to
+  Kabat-Zinn's contemporary clinical transformation — never in fact replaced
+  or discarded. What follows is a comprehensive study from terminological
+  analysis and the detailed treatment of the seven groups to the traditions'
+  successive transmissions; every point is traceable to primary sources.
 
 topics:
   - id: sq-overview
     title: "一、总论：名相辨析与总体架构"
+    title_en: "1. General Survey: Terminology and Overall Structure"
     body: |
       <b>梵语释义</b>：「道品」为梵语 bodhi-pakṣika 之意译，又作菩提分、觉支，指趋向觉悟、进入涅槃境界的三十七种修行方法。
       「分」（巴利语 pakkhiyā）字根来自巴利语 pakkha 或梵语 pakṣa，<b>本义是鸟类的双翼</b>，引申为「资助、助益」之意；
@@ -41,9 +57,32 @@ topics:
       说明这一数目在部派佛教内部也并非绝对统一，体现了「名相层累」的教法体系定型模式。
     source: |
       📎 《杂阿含经》(CBETA T02n0099) · 《增一阿含经》(CBETA T02n0125) · 觉音《清净道论》(Visuddhimagga) · 《大毘婆沙论》(CBETA T27n1545) · 分别说部《舍利弗阿毘昙论》(CBETA T28n1548)
+    en_body: |
+      <b>Sanskrit semantics</b>: "aids" renders bodhi-pakṣika, also
+      translated "factors of awakening" — the thirty-seven methods leading to
+      awakening and nirvāṇa. The root "pakṣa" literally means the paired
+      wings of a bird, hence "that which assists"; Buddhaghosa glosses it
+      with the Pāli upakāra, "co-operating to bring about" — the thirty-seven
+      aids are thus the thirty-seven factors that bring awakening about.
+
+      <b>The seven groups</b>: the four establishments of mindfulness, the
+      four right strivings, the four bases of psychic power, the five
+      faculties, the five powers, the seven awakening factors, and the
+      eightfold noble path — 37 in all.
+
+      <b>Layered growth of the term</b>: modern philology shows that the
+      earliest texts used bodhi-pakkhiyā dhammā strictly for the seven
+      awakening factors; the separate groups appear individually but are not
+      yet unified under the fixed number "thirty-seven." That unification
+      comes only in the Ekottara-Āgama and subsequently is fixed in the
+      Sarvāstivāda Mahāvibhāṣā, the Milindapañha and Visuddhimagga. The
+      Vibhajyavāda school even proposed "forty-one" aids (adding the four
+      noble lineages) — the number itself was not absolute even within the
+      early schools.
 
   - id: sq-si-nianchu
     title: "二、四念处 — 身·受·心·法"
+    title_en: "2. The Four Establishments of Mindfulness — Body, Feelings, Mind, Phenomena"
     body: |
       「念」为能观之智，「处」为所观之境，以智观境即是「念处」。
 
@@ -64,9 +103,31 @@ topics:
       不要跟随息进入身体或出去身体」，体现了南传禅法「止观经验传承」的具体样态。
     source: |
       📎 《大念处经》(长部22经, DN 22) · 《杂阿含经》(CBETA T02n0099) · 觉音《清净道论》"慧地品"(Visuddhimagga ch.14-17) · 帕奥禅师《如实知见》(Pa-Auk Forest Monastery) · Bhikkhu Anālayo, <i>Satipaṭṭhāna: The Direct Path to Realization</i> (2003)
+    en_body: |
+      "Mindfulness" is the knowing faculty, "establishment" the object
+      contemplated; to contemplate objects with wisdom is satipaṭṭhāna. The
+      body is observed as impure, feelings (all felt as suffering, since
+      contact of mind and object brings suffering), the mind as arising and
+      perishing moment by moment without a permanent owner, and phenomena as
+      dependently arisen and ownerless — hence the four contemplations of
+      impurity, suffering, impermanence, and non-self.
+
+      The Great Discourse on the Establishments of Mindfulness (DN 22) is the
+      most systematic exposition: "this is the one way … for the purification
+      of beings, overcoming sorrow and lamentation, ending pain and grief,
+      attaining the true way and realising nirvāṇa." Hence the four
+      establishments are regarded as the core and most fundamental point of
+      entry of the whole path. Buddhaghosa's Visuddhimagga ("ground of
+      understanding," ch. 14–17) systematically lays out the Abhidharma
+      foundations before the actual insight practice. In modern Burma,
+      Pa-Auk Sayadaw's teaching of mindfulness-of-breathing gives famously
+      precise operational instructions — noting only whether the breath is
+      long or short while keeping attention at the nostril tip or upper lip,
+      without following the breath into or out of the body.
 
   - id: sq-si-zhengqin
     title: "三、四正勤 — 断恶修善的意志力"
+    title_en: "3. The Four Right Strivings — The Will-Power of Abandoning Evil and Cultivating Good"
     body: |
       又作四正断，是精进力在断恶修善四个方向上的具体落实：
       (1) <b>已生之恶令永断除</b>——对已发生的恶行立即止息；
@@ -79,9 +140,23 @@ topics:
       七科之中，四正勤与四如意足构成「意志-定力」的连续体：四正勤是善法生起的动力，四如意足是由此动力趋向禅定的基础。
     source: |
       📎 《杂阿含经》(CBETA T02n0099) · 《增一阿含经》(CBETA T02n0125) · 世亲《俱舍论》(CBETA T29n1558) · 《瑜伽师地论》(CBETA T30n1579) 卷二十九
+    en_body: |
+      Also rendered "the four right abandonings" (sammappadhāna): the
+      effort of abandonment and cultivation on four fronts — (1) evil
+      already arisen is cut off; (2) evil not yet arisen does not arise; (3)
+      good not yet arisen is made to arise; (4) good already arisen is
+      increased and enlarged. The four strivings insist that practice cannot
+      rest in passively observing sights but requires active, directed
+      volitional effort. This group corresponds to the pāramitā of vigour
+      (vīrya) in the Mahāyāna six perfections. Together the four strivings
+      and the four bases of psychic power form a "will–concentration"
+      continuum: the strivings are the driving force that gives rise to
+      good, the bases of psychic power the ground by which that force moves
+      toward absorption.
 
   - id: sq-si-ruyi
     title: "四、四如意足 — 禅定的四种基础"
+    title_en: "4. The Four Bases of Psychic Power — Four Grounds of Concentration"
     body: |
       又作四神足，指四种能令禅定「如愿满足」的定力基础：
       (1) <b>欲如意足</b>——以善欲、善愿摄心得定；
@@ -95,9 +170,23 @@ topics:
       以欲、精进、心、观四种要素为方便，令心安住于所缘而不散乱，从而为后续的五根、五力、七觉支、八正道奠定定力基础。
     source: |
       📎 《瑜伽师地论》卷二十九(CBETA T30n1579) · 《杂阿含经》(CBETA T02n0099) · 世亲《俱舍论》(CBETA T29n1558)
+    en_body: |
+      Also "the four roads to psychic power" (iddhipāda): four bases by
+      which concentration is "fulfilled as wished" — (1) the base of desire
+      (wholesome wish); (2) the base of vigour (unremitting striving,
+      inheriting the four right strivings); (3) the base of mind
+      (one-pointed mindfulness); (4) the base of investigation (wisdom-led
+      reflection). The Yogaśāstra (juan 29) notes that by the superior power
+      of these four one obtains four "applied samādhis" (prayoga-samādhi) —
+      here "applied" (加行) meaning exerting the factors that settle the mind
+      on its object without scattering, providing the concentration base for
+      the ensuing faculties, powers, awakening factors and path, and serving
+      as the hinge advancing from concentration toward wisdom and
+      liberation.
 
   - id: sq-wu-gen-li
     title: "五、五根与五力 — 信·进·念·定·慧"
+    title_en: "5. The Five Faculties and Five Powers — Faith, Vigour, Mindfulness, Concentration, Wisdom"
     body: |
       五根、五力内容完全相同——<b>信、精进、念、定、慧</b>——区别在于功能层次：
 
@@ -111,9 +200,26 @@ topics:
       从「根」到「力」的递进，正是行者从资粮道进入见道位的关键加行阶段。
     source: |
       📎 《杂阿含经》(CBETA T02n0099) · 世亲《俱舍论》(CBETA T29n1558) · 《瑜伽师地论》(CBETA T30n1579) · 《辩中边论》(CBETA T31n1602)
+    en_body: |
+      The five faculties (indriya) and the five powers (bala) share the same
+      content — faith, vigour, mindfulness, concentration, wisdom — and
+      differ only in function and depth: faculties are the five as first
+      arisen and still to be consolidated, like saplings not yet rooted;
+      powers are the five grown firm enough to crush their corresponding
+      hindrances, like deep-rooted, immovable trees — faith breaks doubt,
+      vigour sloth of body and mind, mindfulness false thoughts, concentration
+      scattered thoughts, wisdom the two errant views of the three realms.
+      The faith faculty/power runs through the whole three trainings, for
+      without faith none can study the Dharma, let alone accomplish the three
+      undefiled learnings. In the stage-correspondence, the five faculties
+      match the warmth and summit of the applied path, the five powers the
+      endurance and highest-worldly states — the progression from faculty to
+      power is the crucial applied stage by which a practitioner passes from
+      the provision stage to the path of seeing.
 
   - id: sq-qi-juezhi
     title: "六、七觉支 — 觉悟的七要素"
+    title_en: "6. The Seven Awakening Factors — Seven Elements of Awakening"
     body: |
       又作七菩提分、七觉分，是三十七道品中「觉」之自体所在：
       (1) <b>念觉支</b>——于境明记不忘；
@@ -135,9 +241,29 @@ topics:
       这一近乎悖论式的重新表述，正是大乘般若「应无所得」精神的典型手法。
     source: |
       📎 龙树《大智度论》卷十九(CBETA T25n1509) · 《杂阿含经》(CBETA T02n0099) · 觉音《清净道论》(Visuddhimagga) · 世亲《俱舍论》(CBETA T29n1558)
+    en_body: |
+      Also "seven factors of awakenment": (1) mindfulness — clearly
+      remembering the object; (2) investigation of phenomena — discerning
+      true from false by wisdom; (3) vigour — energetically and purely
+      cultivating the path; (4) joy — delight on realising the true Dharma;
+      (5) tranquillity — ease and comfort of body and mind; (6)
+      concentration — focus on the object without scattering; (7) equanimity
+      — letting go, dropping sloth and excitation alike.
+
+      Of the seven, "investigation" is the substance of wisdom, and
+      vigour/joy/tranquillity/equanimity its function; wisdom firms up
+      concentration, and their integration gives right mindfulness. Since the
+      name "awakening" (bojjhaṅga) has its own substance in these seven,
+      this group holds a pivotal, connecting position among the seven groups;
+      in stage-correspondence it matches the path of seeing (first attainment
+      of emptiness, uprooting the errant views). Nāgārjuna's Mahāprajñāpāramitā
+      Śāstra (juan 19) provides the classic Mahāyāna re-creation: the
+      mindfulness-factor "neither remembers nor notes" — an almost paradoxical
+      reformulation in the spirit of "apprehending nothing to be obtained."
 
   - id: sq-ba-zhengdao
     title: "七、八正道 — 戒定慧的圆满呈现"
+    title_en: "7. The Eightfold Noble Path — The Perfect Realisation of Precepts, Concentration and Wisdom"
     body: |
       又称八圣道、八圣道分，是三十七道品的最终圆满呈现：
       (1) <b>正见</b>——如实了知四谛、八正道等出世间正法；
@@ -157,9 +283,30 @@ topics:
       是从见道证悟之后，持续深入、直至无学果位的完整修行道路。
     source: |
       📎 《杂阿含经》(CBETA T02n0099) · 《大念处经》(长部22经, DN 22) · 世亲《俱舍论》(CBETA T29n1558) · 《瑜伽师地论》(CBETA T30n1579)
+    en_body: |
+      The final, perfect realisation of the thirty-seven aids: (1) right view
+      — knowing the four truths and the supramundane Dharma as they are; (2)
+      right thought — the three wholesome deliberations of renunciation,
+      non-aversion and non-harming; (3) right speech — abstaining from false,
+      harsh, divisive and frivolous speech; (4) right action — abstaining from
+      killing, stealing and sexual misconduct; (5) right livelihood — earning a
+      living righteously, avoiding the "five wrong livelihoods"
+      (self-publicised wonders, self-praise, fortune-telling, roaring for
+      prestige, gaining offerings by stirring the mind) — together with right
+      speech and right action, the most concentrated embodiment of the
+      "precepts" training; (6) right effort — the four strivings; (7) right
+      mindfulness — the four establishments; (8) right concentration — the
+      wholesome one-pointedness up to the fourth absorption.
+
+      The eightfold path is the path "already awakened" (in contrast to the
+      seven factors' "awakening from delusion") — the perfect form of the
+      whole system's accomplishment, corresponding in stage-terms to the path
+      of cultivation, the complete course from the path of seeing to the stage
+      of no-more-learning.
 
   - id: sq-india
     title: "八、印度渊源：从阿含到阿毗达磨"
+    title_en: "8. Indian Origins: From the Āgamas to the Abhidharma"
     body: |
       <b>《杂阿含经》的枢纽地位</b>：三十七道品分散见载于四部阿含（尤以《杂阿含经》最为集中），
       传统上被视为「佛法及修持的重心」「贯穿三藏十二部经论」的「学佛基础」。
@@ -183,9 +330,30 @@ topics:
       是理解三十七道品为何能贯通从凡夫发心直至无学果位全过程的关键。
     source: |
       📎 《杂阿含经》(CBETA T02n0099) · 世亲《俱舍论》(CBETA T29n1558) · 《大毘婆沙论》(CBETA T27n1545) · 《增一阿含经》(CBETA T02n0125)
+    en_body: |
+      The Saṃyukta-Āgama is the pivotal source: the thirty-seven aids appear
+      scattered through the four Āgamas (most densely in the Saṃyukta), and
+      their content forms the core of the category of "discoursed things" in
+      its seven-fold structural taxonomy. The Buddha taught, by the parable of
+      the city with a single gate, that the thirty-seven aids are the one
+      obligatory gate toward liberation.
+
+      The theoretical unification was completed in the Abhidharma. Modern
+      scholarship, drawing on the Abhidharmakośa, recovers a highly
+      explanatory correspondence: the thirty-seven are not a flat list but
+      arranged by the stages of the practice-progress — the provision stage
+      (four establishments), the applied stage's warmth/summit (five
+      faculties), its endurance/highest-worldly (five powers), the path of
+      seeing (seven awakening factors), and the path of cultivation (eightfold
+      path). The Mahāvibhāṣā debates the scheme at length, and the Kośa
+      refines the seven groups and thirty-seven items into a map with clear
+      depth-structure — the key to why the aids can run from the first
+      aspiration of the ordinary person right up to the stage of
+      no-more-learning.
 
   - id: sq-nanchuan
     title: "九、南传上座部的传承"
+    title_en: "9. The Theravāda Transmission"
     body: |
       <b>巴利藏中的相应部</b>：南传巴利藏《相应部》专设「菩提分相应」（Bojjhaṅga-saṃyutta）、「念处相应」
       （Satipaṭṭhāna-saṃyutta）、「道相应」（Magga-saṃyutta）等专经群，系统阐述七科教法；
@@ -204,9 +372,29 @@ topics:
       体现了南传禅法「经验传承」的核心特质。
     source: |
       📎 《相应部》菩提分相应/念处相应/道相应 · 《大念处经》(DN 22) · 觉音《清净道论》(Visuddhimagga) · 帕奥禅师教学文献(Pa-Auk Forest Monastery) · Bhikkhu Anālayo, <i>Satipaṭṭhāna: The Direct Path to Realization</i> (2003)
+    en_body: |
+      The Pāli Saṃyutta-Nikāya devotes dedicated saṃyuttas to the awakening
+      factors (Bojjhaṅga-saṃyutta), the establishments of mindfulness
+      (Satipaṭṭhāna-saṃyutta) and the path (Magga-saṃyutta); the Great
+      Discourse (DN 22) and the shorter one (MN 10) are the most detailed
+      primary bases of the four-establishments practice, revered in the
+      Theravāda as the root scriptures of tranquillity-and-insight.
+
+      Buddhaghosa (mid-5th c.), the greatest commentator of the Pāli
+      tradition, a North-Indian Brahmin who studied at the Mahāvihāra in Sri
+      Lanka, composed the Visuddhimagga — the most complete synthesis of
+      Theravāda doctrine, "the essence of the three piṭakas and their
+      commentaries." Its "ground of understanding" (ch. 14–17) systematically
+      expounds the Abhidharma foundations before the insight methods proper —
+      still the authoritative systematisation of the thirty-seven aids in the
+      Theravāda context. In the modern era, Burmese teachers — above all
+      Pa-Auk T Sayadaw — have turned this doctrinal inheritance into
+      eminently practicable instruction, embodying the tradition's "experiential
+      transmission."
 
   - id: sq-dacheng
     title: "十、汉传大乘的重新安立"
+    title_en: "10. The Re-establishment in the Chinese Mahāyāna"
     body: |
       <b>般若经与《大智度论》：「应无所得」的助道定位</b>：三十七道品传入汉传大乘语境后，
       最重要的诠释转向发生在般若类经典与龙树《大智度论》之中——大乘将三十七道品从「正修法门」（声闻乘视角）
@@ -230,9 +418,32 @@ topics:
       构成大乘「教观并重」「解行相应」传统中不可或缺的基础一环。
     source: |
       📎 龙树《大智度论》卷十九(CBETA T25n1509) · 《瑜伽师地论》(CBETA T30n1579) · 《辩中边论》(CBETA T31n1602) · 济群《〈辩中边论〉辩修对治品讲记》(jiqun.com)
+    en_body: |
+      In the Prajñāpāramitā sūtras and the Mahāprajñāpāramitā Śāstra the
+      crucial shift occurred: the Mahāyāna repositioned the thirty-seven aids
+      from "the method proper" (śrāvaka viewpoint) to an "aiding practice"
+      (since the Mahāyāna has the six perfections as its true path), yet
+      insisted they be cultivated "with non-acquisition as the skilful means" —
+      fully following the seven groups in operation while not clinging to "I
+      am cultivating mindfulness" or "I have realised an awakening factor."
+      Nāgārjuna: "For the bodhisattva, to neither remember nor note any
+      phenomenon is called the mindfulness-factor of awakening."
+
+      The Yogācāra Yogācārabhūmi integrates the whole scheme: from the "ground
+      of learning, thought and practice" up to the śrāvaka, pratyekabuddha and
+      bodhisattva grounds of the seventeen, the thirty-seven aids are the core
+      operational content running through the cultivation map. Venerable
+      Jiqun remarks on the Madhyāntavibhāga's "first the common, then the
+      distinct" ordering: the treatise first expounds the thirty-seven aids,
+      then the chapter on the Unsurpassed Vehicle points out what is distinct
+      to the Mahāyāna, so that in knowing the liberation path one also
+      understands the excellence of the bodhisattva path. The same aids are
+      embedded in the Tiantai śamatha-vipaśyanā sequences and the Huayan
+      fifty-two-stage system.
 
   - id: sq-zangchuan
     title: "十一、藏传佛教：现观庄严论与道次第"
+    title_en: "11. Tibetan Buddhism: The Ornament of Clear Realisation and the Stages of the Path"
     body: |
       <b>《现观庄严论》「一切智」品</b>：弥勒（慈氏）五论之一《现观庄严论》（Abhisamayālaṃkāra）
       是统摄一切《般若经》密意的纲要性论典，全论分八品、展开为七十义。
@@ -252,9 +463,34 @@ topics:
       是二十世纪汉语世界理解这套体系最重要的引介文献之一。
     source: |
       📎 弥勒《现观庄严论》(CBETA T30n1604) · 宗喀巴《菩提道次第广论》(CBETA T44n1823) · 法尊《现观庄严论》引介(《海潮音》1935年前后)
+    en_body: |
+      In Abhisamayālaṃkāra, one of Maitreya's five treatises and the
+      outline-compendium of the Prajñāpāramitā's hidden intention, the
+      thirty-seven aids are systematically placed in the third chapter on
+      "knowledge of all aspects" (here: the knowledge of all bases, "world
+      wisdom"), as "the modes of an omniscient knowledge conforming to the
+      śrāvakas" — the bodhisattva, though aiming at Buddhahood, must still
+      fully master the śrāvaka aids as a constituent of that knowledge before
+      proceeding to "knowledge of paths" and "knowledge of all aspects"
+      (Buddha wisdom). This matches the Yogācāra logic of "first the common,
+      then the distinct."
+
+      Tsongkhapa's Great Treatise on the Stages of the Path places all
+      thirty-seven in the "medium spirit" (the path of personal liberation),
+      summarising: "…the stages of the path at once operate the thirty-seven
+      aids, which gather all phenomena and are the common practice of great
+      and small vehicles — the secret teachings too cannot be excepted."
+      This explicit "not even the esoteric can be excepted" shows that in the
+      Gelug scheme the aids are the indispensable common foundation of every
+      stage of practice, not a beginning-level teaching to be bypassed. Venerable
+      Fazun (1902–1980) introduced the eight chapters and seventy topics of
+      the Ornament to the Chinese in the 1930s via the journal Shengchao
+      (Hai Chao Yin), the most important such introduction in the
+      twentieth-century Chinese world.
 
   - id: sq-haiyun
     title: "十二、海云继梦法师：解脱道作为华严修学的既定阶段"
+    title_en: "12. Master Haiyun Jihong: The Liberation Path as a Defined Stage of Huayan Study"
     body: |
       <b>修学次第中的定位</b>：海云继梦法师将声闻、缘觉二乘（即三十七道品所属的「解脱道」）
       明确安立为其整体修学体系中一个具名的<b>既定阶段</b>——
@@ -279,9 +515,36 @@ topics:
       此处仅为可查证的片段与教团官方教理架构说明。
     source: |
       📎 海云继梦"解脱道"教理架构(美国国际华严会 huayanworld.wordpress.com) · 海云继梦《四十华严讲记》第67讲 · 海云继梦《地藏经》北美开示系列
+    en_body: |
+      In Master Haiyun's overall curriculum the śrāvaka- and
+      pratyekabuddha-vehicles (the "liberation path" to which the thirty-seven
+      aids belong) are installed explicitly as a named, defined stage —
+      "Stage Two — the Liberation Path — Śrāvaka Vehicle, Pratyekabuddha
+      Vehicle" — the one bringing the four truths as its vehicle and reaching
+      "partial-nirvāṇa … with the result of an Arhat," the other riding the
+      twelve links of conditioned arising toward "a pratyekabuddha's
+      result." Both belong to the liberation path, positioned as the
+      bridge-stage within a grander four-stage blueprint whose ground is
+      renunciation and root bodhicitta, culminating in the Samantabhadra-yāna.
+
+      In his Forty-Fascicle Avataṃsaka lectures he once mapped the śrāvaka
+      "first fruit" (stream-entry) onto the Huayan "ten abidings of faith,"
+      structurally akin to the Abhisamayālaṃkāra's establishment of the
+      śrāvaka teaching as the basis of bodhisattva wisdom. The four-stage
+      blueprint runs: (1) the vehicle of departure (liberation path, śrāvaka +
+      pratyekabuddha) → (2) the vehicle of bodhi (yāna of prajñā, emptiness
+      wisdom) → (3) the bodhisattva vehicle (the six perfections) → (4) the
+      Samantabhadra-yāna (the Huayan dharma-realm, one in all).
+
+      Documentary note: no complete, standalone lecture by Master Haiyun
+      devoted specifically to the thirty-seven aids was located; his teaching
+      on this stage is dispersed in long scripture lecture series, so what is
+      quoted here are only verifiable fragments and the official doctrinal
+      structure of his community.
 
   - id: sq-xiandai
     title: "十三、现代学术与正念运动"
+    title_en: "13. Modern Scholarship and the Mindfulness Movement"
     body: |
       <b>印顺法师的阿含学研究</b>：印顺法师是近现代汉语佛学界公认对原始佛教、阿含经教用功最深的学问僧，
       著有《佛法概论》《原始佛教圣典之集成》《杂阿含经论会编》等专著。
@@ -305,9 +568,36 @@ topics:
       所余下的「正念」实践「本质上已是一种全然不同的修法」。
     source: |
       📎 印顺《佛法概论》(CBETA 图书) · 印顺《原始佛教圣典之集成》 · Jon Kabat-Zinn, <i>Full Catastrophe Living</i> (1990) · Tommi Husgafvel et al., "The 'Universal Dharma Foundation' of MBSR" (<i>Contemporary Buddhism</i>, 2018)
+    en_body: |
+      Venerable Yinshun, the scholar-monk most deeply engaged with the early
+      teachings in modern Chinese Buddhism, proposed the integrative thesis:
+      "the Āgamas are the single root of all the Dharma" — Nāgārjuna's
+      Madhyamaka and Maitreya's Yogācāra both cite Āgama instruction to
+      explain reality; tathāgatagarbha derives from the Āgama idea of a mind
+      "pure but stained by adventitious defilements"; Huayan mind-only
+      thought likewise bears the Āgama impress. On this view, the vast
+      structures of Consciousness-Only, Madhyamaka, esoteric Buddhism, Tiantai
+      and Huayan all ultimately converge, in origin, on the basic
+      liberation-theory architecture represented by the thirty-seven aids.
+
+      Jon Kabat-Zinn (b. 1944, MIT molecular biology PhD) founded
+      Mindfulness-Based Stress Reduction (MBSR) at the University of
+      Massachusetts Medical School in 1979, blending diverse meditation
+      traditions into a clinical intervention deliberately stripped of
+      religious framing and couched in scientific language — a secularising
+      strategy that let "mindfulness" enter medicine, education, business
+      and prisons. Meta-analyses show Mindfulness-Based Cognitive Therapy
+      lowers major-depression relapse by roughly 43%. Scholarship (e.g.,
+      Husgafvel et al., Contemporary Buddhism, 2018) cautions that Kabat-Zinn's
+      "universal dharma foundation" is itself a blend of Theravāda
+      tranquillity-insight and Mahāyāna non-dual insight rather than a direct
+      transplant of a single tradition; removing the precepts, dependent
+      origination and the soteriological goal, what remains is in essence an
+      entirely different practice.
 
   - id: sq-fusion
     title: "十四、融合与张力"
+    title_en: "14. Convergence and Tension"
     body: |
       <b>共与不共</b>：综观汉传瑜伽行派与藏传《现观庄严论》，
       处理三十七道品与大乘菩萨道关系的基本逻辑高度一致——
@@ -329,9 +619,42 @@ topics:
       却都涉及「脱离原有修证脉络后，这套教法是否还保有其本来效力」这一共通的方法论问题。
     source: |
       📎 《瑜伽师地论》(CBETA T30n1579) · 《辩中边论》(CBETA T31n1602) · 弥勒《现观庄严论》(CBETA T30n1604) · 海云继梦公开讲席 · Jon Kabat-Zinn相关文献
+    en_body: |
+      Common and non-common: across the Chinese Yogācāra and the Tibetan
+      Abhisamayālaṃkāra, the basic logic governing the relation of the
+      thirty-seven aids to the bodhisattva path is highly consistent — the aids
+      are the "common Dharma" (obligatory for all three vehicles), while the
+      six perfections and the ten-bhūmi stages are the "non-common Dharma"
+      (peculiar to the bodhisattva vehicle). The excellence of the bodhisattva
+      path must be built upon complete mastery of the liberation path, not by
+      skirting it. This structural consensus of "first the common, then the
+      distinct" holds across traditions more firmly than many sectarian
+      disputes.
+
+      Direct, elided and commentarial exposition: Master Haiyun offers his own
+      observation (a personal view) that the Theravāda "expounds directly,
+      unlike the sūtras' elided teaching," the Tibetan tradition "teaches the
+      śāstras but not the sūtras," while the Chinese Mahāyāna, formed through
+      team translation, has its distinctive language-and-thought patterns and
+      a tradition of "expounding the sūtras." The three traditions' treatment
+      of the thirty-seven aids — Theravāda via the Visuddhimagga's direct
+      exposition, Tibetan mainly in commented treatises, Chinese in a perpetual
+      "reinterpretation along with the sūtra" — bears this out.
+
+      The "de-Buddhised" mindfulness controversy: the modern Western
+      mindfulness movement extracts the four establishments from the entire
+      thirty-seven-aids system (and from the precepts, dependent-origination
+      view and liberation goal) into a secularised clinical and educational
+      tool — a live experiment on whether parts of a whole can be detached and
+      retain their efficacy. This is amusingly parallel to the Mahāyāna
+      "non-acquisition" style reinterpretation: utterly different starting
+      points, yet both raise the common methodological question of whether the
+      teaching retains its original efficacy outside its original practice
+      context.
 
   - id: sq-classical
     title: "十五、经典依据与文献出处"
+    title_en: "15. Canonical Basis and Sources"
     body: |
       <b>汉传经典</b>：
       ·《杂阿含经》(CBETA T02n0099) — 三十七道品最集中的原始出处，「所说事」核心内容
@@ -367,6 +690,18 @@ topics:
       ·Tommi Husgafvel et al., "The 'Universal Dharma Foundation' of MBSR" (<i>Contemporary Buddhism</i>, 2018)
     source: |
       📎 CBETA电子佛典(cbetaonline.dila.edu.tw) · 巴利三藏(SuttaCentral/Bodhi Translation) · 印顺法师著作 · 济群法师官网(jiqun.com) · Bhikkhu Anālayo著作
+    en_body: |
+      The full apparatus — Chinese canon (Saṃyukta-Āgama T02n0099, the most
+      concentrated primary source; Ekottara T02n0125, first to use the name
+      "thirty-seven factors of bodhi"; Madhyama T01n0026; Dīrgha T01n0001;
+      Nāgārjuna's Mahāprajñāpāramitā Śāstra juan 19; Vasubandhu's
+      Abhidharmakośa; the Yogācārabhūmi juan 29; the Madhyāntavibhāga; the
+      Mahāvibhāṣā; the Śāriputrābhidharma), the Pāli texts (DN 22, the
+      Bojjhaṅga/Satipaṭṭhāna/Magga saṃyuttas, the Visuddhimagga), the Tibetan
+      canon (Abhisamayālaṃkāra, Lamrim Chenmo), and the modern works
+      (Yinshun, Fazun, Shi Kairen, Zheng Shiyan, Jiqun; Jon Kabat-Zinn,
+      Anālayo; Husgafvel et al.) is listed in the Chinese text beside this
+      summary.
 
 references:
   - "《杂阿含经》(CBETA T02n0099) — 三十七道品最集中的原始出处"
