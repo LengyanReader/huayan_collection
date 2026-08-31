@@ -1137,12 +1137,21 @@ function renderChengguanSection() {
     var b = cg.biography;
     h += '<div class=section id=cg-bio><h2>🌄 成其大观 — 成观法师</h2>';
     h += '<p style=font-size:0.8em;color:var(--text2)>' + b.name_en + ' · ' + b.birth + '- · ' + (b.birthplace||'') + '</p>';
+    if (b.birthplace_en) h += '<p class="en-line" style=font-size:0.75em;color:var(--text2)><b>Born:</b> ' + b.birthplace_en + ', ' + b.birth + '</p>';
     h += '<div class=stage-box style=font-size:0.78em>';
     (b.education||[]).forEach(function(e) { h += '🎓 ' + e + '<br>'; });
     h += '✂️ ' + b.ordination + '<br>';
     (b.lineage||[]).forEach(function(l) { h += '📜 ' + l + '<br>'; });
     h += '🏛 ' + b.current_position;
     h += '</div>';
+    if (b.education_en || b.ordination_en || b.lineage_en || b.current_position_en) {
+      h += '<div class="en-line stage-box" style="font-size:0.72em;color:var(--text2);line-height:1.9;margin-top:4px">';
+      (b.education_en||[]).forEach(function(e){ h += '🎓 ' + e + '<br>'; });
+      if (b.ordination_en) h += '✂️ ' + b.ordination_en + '<br>';
+      (b.lineage_en||[]).forEach(function(l){ h += '📜 ' + l + '<br>'; });
+      if (b.current_position_en) h += '🏛 ' + b.current_position_en;
+      h += '</div>';
+    }
     h += '</div>'; // close cg-bio
   }
   // Institutions
@@ -1152,6 +1161,13 @@ function renderChengguanSection() {
       h += '<div class=topic-card style=font-size:0.78em>';
       h += '<b>' + i.name + '</b> (' + i.founded + ') — ' + i.location + '<br>';
       h += i.practice + '<br><span style=color:var(--text2)>' + i.note + '</span>';
+      if (i.name_en || i.practice_en || i.note_en) {
+        h += '<div class="en-line" style="font-size:0.92em;color:var(--text2);line-height:1.8;margin-top:4px;border-top:1px dashed var(--line);padding-top:4px">';
+        if (i.name_en) h += '<b>' + i.name_en + '</b><br>';
+        if (i.practice_en) h += i.practice_en + '<br>';
+        if (i.note_en) h += i.note_en;
+        h += '</div>';
+      }
       h += '<br><a href="' + i.website + '" target=_blank>官网</a>';
       h += '</div>';
     });
@@ -1162,14 +1178,18 @@ function renderChengguanSection() {
     h += '<div class=section id=cg-works><h3>📚 著作全目</h3>';
     if (cg.works_chinese) {
       h += '<p style=font-size:0.78em><b>中文著述 (' + cg.works_chinese.intro + ')</b></p>';
+      if (cg.works_chinese.intro_en) h += '<p class="en-line" style=font-size:0.72em;color:var(--text2)><b>In Chinese:</b> ' + cg.works_chinese.intro_en + '</p>';
       h += '<table class=v-table style=font-size:0.72em><tr><th>书名</th><th>备注</th></tr>';
       cg.works_chinese.items.forEach(function(w) {
         h += '<tr><td>' + w.title + '</td><td style=color:var(--text2)>' + (w.note||'') + '</td></tr>';
+        if (w.note_en) h += '<tr class="en-line"><td colspan=2 style="font-size:0.92em;color:var(--text2)">📖 ' + w.note_en + '</td></tr>';
       });
       h += '</table>';
     }
     if (cg.works_english) {
-      h += '<p style=font-size:0.78em;margin-top:8px><b>英文译著 (' + cg.works_english.intro + ')</b></p><ul style=font-size:0.75em>';
+      h += '<p style=font-size:0.78em;margin-top:8px><b>英文译著 (' + cg.works_english.intro + ')</b></p>';
+      if (cg.works_english.intro_en) h += '<p class="en-line" style=font-size:0.72em;color:var(--text2)><b>In English:</b> ' + cg.works_english.intro_en + '</p>';
+      h += '<ul style=font-size:0.75em>';
       cg.works_english.items.forEach(function(w) { h += '<li>' + w + '</li>'; });
       h += '</ul>';
     }
@@ -1180,7 +1200,9 @@ function renderChengguanSection() {
     h += '<div class=section id=cg-lectures><h3>🎙 讲法特色 (' + cg.lecture_highlights.length + '系列)</h3>';
     cg.lecture_highlights.forEach(function(l) {
       h += '<div class=topic-card><h4>' + l.topic + '</h4>';
+      if (l.topic_en) h += '<div class="en-line sp-en-title" style=font-size:0.7em;color:var(--gold);margin-bottom:2px>' + l.topic_en + '</div>';
       h += '<p style=font-size:0.78em>' + _m2h(l.note||l.significance||'') + '</p>';
+      if (l.significance_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);line-height:1.8;margin-top:3px">📖 ' + l.significance_en + '</div>';
       if (l.links && l.links.length) {
         l.links.forEach(function(lk) {
           h += '<a href="' + lk.url + '" target=_blank style="font-size:0.72em;color:var(--blue);margin-right:8px">🔗 ' + lk.name + '</a>';
@@ -1192,7 +1214,9 @@ function renderChengguanSection() {
   }
   // Comparison
   if (cg.comparison_with_haiyun) {
-    h += '<div class=stage-box style=font-size:0.75em;margin-top:10px"><b>🔀 与海云继梦法师的比较</b><br>' + cg.comparison_with_haiyun.note + '</div>';
+    h += '<div class=stage-box style=font-size:0.75em;margin-top:10px"><b>🔀 与海云继梦法师的比较</b><br>' + cg.comparison_with_haiyun.note +
+      (cg.comparison_with_haiyun.note_en ? '<div class="en-line" style=font-size:0.92em;color:var(--text2);margin-top:4px>📖 ' + cg.comparison_with_haiyun.note_en + '</div>' : '') +
+      '</div>';
   }
 	// ── 海云vs成观 多维对照表 (优化版) ──
 	var cmp = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_chengguan_compare) ? PRACTICE_DATA.haiyun_chengguan_compare : null;
@@ -1216,26 +1240,32 @@ function renderChengguanSection() {
 	    '</style>';
 	  h += '<div class=section id=cg-compare><h2>🔀 海云继梦 vs 成观法师 — 多维对照</h2>';
 	  if (cmp.meta && cmp.meta.note) h += '<p style=font-size:0.75em;color:var(--text2);margin-bottom:12px">' + _m2h(cmp.meta.note) + '</p>';
+	  if (cmp.meta && cmp.meta.note_en) h += '<p class="en-line" style=font-size:0.75em;color:var(--text2);margin-bottom:12px">📖 ' + cmp.meta.note_en + '</p>';
 	  cmp.compare.forEach(function(row) {
 	    h += '<div class=cmp-card>';
-	    h += '<div class=cmp-head>' + (row.icon||'') + ' ' + row.topic + '</div>';
+	    h += '<div class=cmp-head>' + (row.icon||'') + ' ' + row.topic + (row.topic_en ? '<span class="en-line" style=font-size:0.72em;display:block;color:var(--text2);font-weight:500> ' + row.topic_en + '</span>' : '') + '</div>';
 	    h += '<div class=cmp-grid>';
 	    // 海云
 	    h += '<div class=cmp-col>';
 	    h += '<div class=cmp-name style=color:var(--gold)>🌊 海云继梦</div>';
 	    h += '<div class=cmp-pos>' + _m2h(row.haiyun.position) + '</div>';
+	    if (row.haiyun.position_en) h += '<div class="en-line cmp-pos" style=color:var(--text2);font-size:0.82em>' + row.haiyun.position_en + '</div>';
 	    if (row.haiyun.quote) h += '<span class=cmp-quote>' + _m2h(row.haiyun.quote) + '</span>';
 	    if (row.haiyun.note) h += '<div class=cmp-note>' + _m2h(row.haiyun.note) + '</div>';
+	    if (row.haiyun.note_en) h += '<div class="en-line" style="font-size:0.92em;color:var(--text2);line-height:1.75;margin-top:4px">📖 ' + _m2h(row.haiyun.note_en) + '</div>';
 	    h += '</div>';
 	    // 成观
 	    h += '<div class=cmp-col>';
 	    h += '<div class=cmp-name style=color:#c46b5d>🌄 成观法师</div>';
 	    h += '<div class=cmp-pos>' + _m2h(row.chengguan.position) + '</div>';
+	    if (row.chengguan.position_en) h += '<div class="en-line cmp-pos" style=color:var(--text2);font-size:0.82em>' + row.chengguan.position_en + '</div>';
 	    if (row.chengguan.quote) h += '<span class=cmp-quote>' + _m2h(row.chengguan.quote) + '</span>';
 	    if (row.chengguan.note) h += '<div class=cmp-note>' + _m2h(row.chengguan.note) + '</div>';
+	    if (row.chengguan.note_en) h += '<div class="en-line" style="font-size:0.92em;color:var(--text2);line-height:1.75;margin-top:4px">📖 ' + _m2h(row.chengguan.note_en) + '</div>';
 	    h += '</div>';
 	    h += '</div>';
-	    if (row.contrast) h += '<div class=cmp-contrast><b>📝 对比:</b> ' + _m2h(row.contrast) + '</div>';
+	    if (row.contrast) h += '<div class=cmp-contrast><b>📝 对比:</b> ' + _m2h(row.contrast) +
+	      (row.contrast_en ? '<br><span class="en-line" style=color:var(--text2)!important>📖 ' + _m2h(row.contrast_en) + '</span>' : '') + '</div>';
 	    h += '</div>';
 	  });
 	  h += '</div>';

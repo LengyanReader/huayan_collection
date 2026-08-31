@@ -7,11 +7,21 @@ meta:
     本对照仅基于可公开检索的讲记和著作原文，未检索到公开表述处加注说明。
 
     '
+  note_en: 'Both are 42nd-generation heirs of the Xianshou (Huayan) School
+    (Haiyun in 2008, Chengguan in 2010) and both are active in contemporary
+    Taiwanese Buddhism. Yet their lineage sources, emphases in practice, and
+    styles of dissemination differ sharply, constituting two complementary
+    paradigms of the contemporary Huayan system. This comparison is based solely
+    on publicly searchable lecture transcripts and original works; wherever no
+    public statement was found, a note has been added.'
+
 compare:
 - topic: 密宗·真言宗
+  topic_en: Tantra · the Mantra/Shingon School
   icon: 🔐
   haiyun:
     position: 瑜伽行派即密教
+    position_en: The Yogācāra school IS the esoteric teaching
     quote: '「瑜伽行派以『唯行』故，有驯服生命中杂染之功能，
 
       已逾越人类大脑的理性思维，而入不可思议之境，统称为『密』。」
@@ -26,14 +36,25 @@ compare:
       著有《悠活三昧——密法修行概要》(空庭书苑)。
 
       '
+    note_en: 'Received the dharma-abhiṣeka in India in late 2008 from Svāmi
+      Rajarshi Muni, claiming to have reclaimed the "Mahā Yogācāra" tradition,
+      which he equates with the heart-method of the Chan school. Author of
+      Youhuo Sanmei — An Outline of Esoteric Practice (Kongting Shuyuan).'
   chengguan:
     position: 显密性相合一炉
+    position_en: Exoteric and esoteric, nature and marks, fused in one furnace
     quote: '「禅(显教最高境界)是舍有入空、舍染入净……密教是从空出有，更上一层楼——从空之根本生出一切法，成就无量庄严、无量方便。密教如飞机最快，但要有本钱买得起票，绝对没办法逃票。」
 
       ——《大日经疏讲解》第22集'
     note: '正修密法条件: 理上正解佛的基本教理, 事上已实修有悟, 已具厌离心。
 
       《心经系列》(1997, 美国遍照寺): 「即禅即密，即密即禅」——依《心经》修则习禅甚佳、修密亦胜, 禅密并修尤胜。'
+    note_en: 'Conditions for properly practicing the esoteric dharma: correct
+      understanding of the Buddha''s basic teaching in principle, real
+      attainment in practice, and a genuine spirit of renunciation. In the Heart
+      Sūtra series (1997, Bianzhao Temple, USA): "Chan within Tantra, Tantra
+      within Chan" — cultivating by the Heart Sūtra is excellent for Chan, even
+      better for Tantra, and best of all when both are practiced together.'
   contrast: '海云以「瑜伽行=密」的范式将密宗纳入大乘瑜伽行派框架，
 
     强调逾越理性思维的「唯行」特质。
@@ -45,10 +66,20 @@ compare:
     二人对密宗的定位不同但皆非排斥立场。
 
     '
+  contrast_en: "Haiyun incorporates Tantra into the Mahāyāna Yogācāra frame
+    ('Yogācāra = Tantra'), stressing the 'practice-only' character that
+    transcends rational thought. Chengguan, under an 'exoteric-esoteric,
+    nature-marks in full' paradigm, sets East-Asian Shingon alongside
+    Consciousness-Only, stressing the irreplaceable technique of the esoteric
+    dharma at the 'deep stratum of the seventh and eighth consciousnesses.'
+    The two differ in their placement of Tantra, yet neither adopts a
+    rejectionist stance."
 - topic: 唯识宗
+  topic_en: The Consciousness-Only (Yogācāra) School
   icon: 📖
   haiyun:
     position: 唯识须有实修心得
+    position_en: Consciousness-Only must be grounded in real practice
     quote: '「千五百年来唯识宗未曾有人提出实修心得。必须依于实修，
 
       从有为行成就无为境。」
@@ -61,8 +92,14 @@ compare:
       需通过密法实修完成。其「三性三无性」的三转破执为唯识修法核心。
 
       '
+    note_en: 'Eighteenth-generation heir of the Gaoyuan lineage of the Cien
+      school. Stresses that "turning consciousness into wisdom" cannot be
+      achieved by theory alone but must be completed through esoteric practice;
+      his triple "three natures / three non-natures" dissolution of clinging is
+      the core of his Consciousness-Only practice.'
   chengguan:
     position: 唯识是修道心理学
+    position_en: Consciousness-Only as the psychology of the path
     quote: '「唯识学是专为佛法修行人设计的修道心理学，
 
       不能把唯识当作纯粹的学术来研究。」
@@ -75,6 +112,11 @@ compare:
       以「五位百法」为修行纲领，目标是「了有为、证无为」。
 
       '
+    note_en: 'Forty-second-generation heir of the Cien school. Author of five
+      works in the Consciousness-Only series (Thirty Verses / Hundred Dharmas /
+      Eight Consciousnesses / Examining Object / Hetuvidyā). Takes the "five
+      categories, hundred dharmas" as the framework of practice, aiming to
+      "settle the conditioned and realize the unconditioned."'
   contrast: '海云批评唯识缺乏实修传统，强调须以密法补足。
 
     成观则已将唯识本身作为修行体系来运用(百法→断惑证真)。
@@ -82,10 +124,18 @@ compare:
     二人分处「批判性补充」与「体系化运用」两个不同位置。
 
     '
+  contrast_en: "Haiyun criticizes Consciousness-Only for lacking a tradition of
+    real practice and argues it must be supplemented by Tantra. Chengguan, for
+    his part, already employs Consciousness-Only itself as a system of practice
+    (hundred dharmas → severing defilements and realizing truth). The two stand
+    at the opposite poles of 'critical supplementation' and 'systematic
+    application.'"
 - topic: 华严宗
+  topic_en: The Huayan School
   icon: 🪷
   haiyun:
     position: 普贤乘·新古典华严
+    position_en: The Samantabhadra-yāna · neo-classical Huayan
     note: '2008年承接贤首宗第42世法脉。以「普贤乘」命名当代华严实践体系，
 
       主张「教属华严，观属禅宗心法」，将华严理事圆融与东山法门等持工程融合。
@@ -93,8 +143,17 @@ compare:
       著有《九九華嚴玄談》《探玄記懸談講記》等，以现代语言重新诠释华严经教。
 
       '
+    note_en: 'Received the 42nd-generation lineage of the Xianshou school in
+      2008. He names the contemporary Huayan practice system the
+      "Samantabhadra-yāna," holding that "doctrinally I belong to Huayan;
+      contemplatively I belong to the heart-method of Chan," fusing Huayan''s
+      non-obstruction of principle and phenomena with the "meditative-equipoise
+      project" of the East Mountain Dharma-gate. Author of the ninety-nine-volume
+      Huayan Discourse and the Commentary Lectures on the Search for the Mystery,
+      reinterpreting the Huayan teachings in modern language.'
   chengguan:
     position: 贤首宗·慈恩宗双传
+    position_en: Dual transmission of the Xianshou and Cien schools
     note: '2010年承接贤首宗第42世法脉(兼慈恩宗)。以译经为核心弘法方式，
 
       英译十余部汉传经典。《華嚴法門集要》为华严专书(见abtemple经书目录)。
@@ -102,6 +161,13 @@ compare:
       其华严弘传以忠实译介和经典注疏为主要形式，与海云的体系化创新形成对比。
 
       '
+    note_en: 'Received the 42nd-generation Xianshou lineage in 2010 (together
+      with the Cien school). Sutra translation is his core mode of
+      dissemination; he has rendered more than ten Chinese canonical works into
+      English. The Essentials of the Huayan Dharma-Gate is his Huayan work (see
+      the abtemple scripture catalog). His Huayan propagation takes the form
+      chiefly of faithful translation and annotated commentary — in clear
+      contrast to Haiyun''s systematic innovation.'
   contrast: '海云以「重构」为旗帜(新古典华严·普贤乘·灵性经济学)，
 
     成观以「传承」为主轴(译经·注疏·义贯)。
@@ -109,10 +175,17 @@ compare:
     二人共同成就当代台湾华严传承的「创新」与「守正」两极。
 
     '
+  contrast_en: "Haiyun's banner is 'reconstruction' (neo-classical Huayan ·
+    Samantabhadra-yāna · the economics of the spirit); Chengguan's axis is
+    'transmission' (translation · commentary · meaning interwoven). Together they
+    realize the two poles of the contemporary Taiwanese Huayan inheritance —
+    'innovation' and 'orthodox preservation.'"
 - topic: 天台宗
+  topic_en: The Tiantai School
   icon: 📐
   haiyun:
     position: 中观论派·唯性学派
+    position_en: A branch of the Madhyamaka school — the school of nature-only
     quote: '「唯性学派，又有天台宗……唯识的精微、唯智的般若、
 
       天台的性具，以及贤首的圆宗」皆属中观论派。
@@ -121,8 +194,12 @@ compare:
 
       '
     note: 以判教方式将天台定位为「中观论派下的唯性学派」，与华严同属「性宗」。
+    note_en: 'Positions Tiantai, through panjiao, as a "school of nature-only
+      within the Madhyamaka lineage," sharing with Huayan the standing of a
+      "school of nature" (xingzong).'
   chengguan:
     position: 天台宗第46世传人
+    position_en: 46th-generation heir of the Tiantai school
     note: '1988年于纽约庄严寺依天台宗第45代传人显明老和尚座下披剃出家。
 
       但此后其弘法重心转向真言宗·贤首宗·唯识宗，天台宗相关内容
@@ -132,13 +209,24 @@ compare:
       [注: 未检索到成观法师对天台教观的专门系统性评述]
 
       '
+    note_en: 'Ordained in 1988 at Zhuangyan Temple, New York, under Venerable
+      Xianming, the 45th-generation patriarch of the Tiantai School. Thereafter,
+      however, his dissemination shifted to Shingon, Xianshou (Huayan), and
+      Consciousness-Only; Tiantai-related content occupies a small share of his
+      public transcripts and works. [Note: no systematic public assessment of
+      Tiantai doctrine and contemplation by Master Chengguan was found]'
   contrast: '海云以判教框架中定位天台；成观虽得天台剃度但弘法重心不在天台。
 
     '
+  contrast_en: "Haiyun positions Tiantai within his panjiao framework; Chengguan
+    received his ordination in the Tiantai lineage, yet his dissemination focus
+    has never lain with Tiantai."
 - topic: 修行方法论
+  topic_en: Methodology of Practice
   icon: 🧘
   haiyun:
     position: 技术面+工程面双轨
+    position_en: Two tracks — the technical dimension plus the engineering dimension
     note: '核心框架: 技术面(数息·提疑情·置心一处) + 工程面(生命改造·破无明)。
 
       三阶次第: 初阶(资粮道·发心工程) → 二阶(前行·内摄工程) → 三阶(正行·等持工程)。
@@ -148,11 +236,29 @@ compare:
       著有《禅修正行》《迈向佛陀的境界》《煖身》等修行指导。
 
       '
+    note_en: 'Core framework: the technical dimension (breath-counting ·
+      raising the doubt-sensation · placing the mind in one place) plus the
+      engineering dimension (reconstruction of life · breaking through
+      ignorance). Three-stage sequence: initial (provision stage · the
+      resolve-engendering project) → second (approach · the internal-gathering
+      project) → third (main practice · the meditative-equipoise project).
+      Stresses the "live-mind self-contemplation" route that "leaves the desire
+      realm directly from the desire realm," taking huatou (critical phrase)
+      Chan as the core method. Author of Orthodox Practice of Chan, Toward the
+      Realm of the Buddha, and Warming the Body, among other practice guides.'
   chengguan:
     position: 显密性相融汇
+    position_en: Fusing the exoteric and the esoteric, nature and marks
     note: '以楞严经为修行总纲(被誉为「楞严座主」)。《天台小止观讲解》系列(24集+)是其重要的实修教学——以天台止观框架讲解实修次第。
 
       著有《楞严经义贯》等。禅密并修是其核心主张: 「即禅即密，即密即禅」。'
+    note_en: 'Takes the Śūraṅgama Sūtra as the general guiding text of practice
+      (honored as the "Śūraṅgama Seat-Master"). The Tiantai Small
+      Calming-and-Contemplation series (24+ sessions) is an important practical
+      teaching, expounding the sequence of cultivation within the Tiantai
+      śamatha-vipaśyanā frame. Author of the Śūraṅgama Commentary, among others.
+      His core assertion is the joint practice of Chan and Tantra: "Chan within
+      Tantra, Tantra within Chan."'
   contrast: '海云以「话头禅+瑜伽行」为双翼，重禅堂实修和次第推进。
 
     成观以「楞严为纲·唯识为目·真言为用」三足鼎立，重经教义贯和显密融合。
@@ -160,10 +266,18 @@ compare:
     海云的体系更具「禅宗本位」色彩，成观的体系更具「教下本位」色彩。
 
     '
+  contrast_en: "Haiyun moves on the twin wings of 'huatou Chan + Yogācāra,'
+    weighting meditation-hall practice and gradual progression. Chengguan stands
+    on the tripod 'Śūraṅgama as the guiding thread · Consciousness-Only as the
+    eye · Shingon as the function,' weighting scriptural commentary and the
+    exoteric-esoteric fusion. Haiyun's system has more of the 'Chan-school
+    character'; Chengguan's more of the 'doctrinal-school character.'"
 - topic: 道家
+  topic_en: Daoism
   icon: ☯
   haiyun:
     position: 技术面对比参照
+    position_en: Comparative reference at the technical dimension
     note: '在禅观教学中偶尔以道家「小周天」「太极」等概念做技术面对比参照。
 
       引庄子「齐物」与华严「事事无碍」、老子「道法自然」与「理事无碍」对读。
@@ -171,20 +285,35 @@ compare:
       [注: 未见海云法师对道家有系统性专论或评价]
 
       '
+    note_en: 'In his contemplative teaching he occasionally draws on Daoist
+      concepts such as the "small celestial circuit" and "taiji" as comparative
+      references at the technical dimension, reading Zhuangzi''s "equalizing
+      things" against Huayan''s "unobstructed interpenetration of all
+      phenomena" and Laozi''s "the Dao models itself on nature" against
+      "non-obstruction of principle and phenomena." [Note: no systematic
+      monograph or assessment of Daoism by Master Haiyun was found]'
   chengguan:
     position: '[未检索到公开表述]'
+    position_en: '[No public statement found]'
     note: '在可检索的公开讲记和著作中，未发现成观法师对道家思想的系统性评述。
 
       '
+    note_en: 'No systematic assessment of Daoist thought by Master Chengguan was
+      found in publicly searchable transcripts and works.'
   contrast: '海云以技术面对比的方式将道家纳入华严禅观的参照系。
 
     成观未见公开评述。
 
     '
+  contrast_en: "Haiyun brings Daoism into the reference frame of Huayan
+    meditation as a technical-dimension comparison. Chengguan has no public
+    remarks on it."
 - topic: 西方思想·哲学
+  topic_en: Western Thought · Philosophy
   icon: 🌐
   haiyun:
     position: 灵性经济学批判
+    position_en: Critique through the economics of the spirit
     note: '中兴大学经济系毕业。以「灵性经济学」批判西方资本主义的
 
       「以物质欲望为驱动」模式，提出「第四波灵性革命」替代方案。
@@ -194,11 +323,25 @@ compare:
       将华严因陀罗网与西方系统论·全息论进行对话。
 
       '
+    note_en: 'Graduate of the Economics Department of National Chung Hsing
+      University. Uses "the economics of the spirit" to critique the Western
+      capitalist model "driven by material desire," proposing a "fourth wave of
+      spiritual revolution" as an alternative. Citing Capra''s The Tao of Physics
+      and Varela''s neurophenomenology among other frontier Western scholarship,
+      he brings the Huayan Indra-net into dialogue with Western systems theory
+      and holism.'
   chengguan:
     position: 科学哲学一概放舍
+    position_en: Set science and philosophy aside altogether
     note: '成观法师对西方思想持「超越而非对话」的立场——与海云的「批判+对话」姿态形成鲜明对照。
 
       其英译经典事业非为了「与西方对话」, 而是为了让西方人接触佛法原典后自行「放舍世间学问」。'
+    note_en: 'Master Chengguan''s stance toward Western thought is
+      "transcendence rather than dialogue" — in sharp contrast to Haiyun''s
+      "critique + dialogue" posture. His enterprise of English translation is
+      not "dialogue with the West" but enabling Westerners, upon contact with
+      the original texts of the Dharma, to "set aside worldly learning" for
+      themselves.'
     quote: '「佛法是先于科学、早于科学、超越于科学。……哲学家只能说的不能做的——如苏格拉底怕悍妻, 孔子休妻, 罗素、尼采更不必说。故世间学问(科学、哲学)修行人当一概放舍。」
 
       ——《天台小止观讲解》第24集'
@@ -207,41 +350,118 @@ compare:
     成观以「翻译+传播」姿态让汉传经典走向西方。
 
     二人面向西方的策略互补而非对立。'
+  contrast_en: "Haiyun handles Western thought with a 'critique + dialogue'
+    posture (the economics of the spirit · interdisciplinary dialogue).
+    Chengguan brings Chinese classics to the West with a 'translation +
+    dissemination' posture. Their strategies toward the West are complementary
+    rather than opposed."
 - topic: 出家与师承
+  topic_en: Ordination and Lineage
   icon: ✂️
   haiyun:
     position: 半生出家·梦参剃度
+    position_en: Ordained late in life · tonsured by Mengcan
     note: 1950年生于宜兰。1973年中兴大学经济系毕业。1983年任职经济部，边工作边讲经。1982年决志十年安顿家人后出家。1991年12月22日(弥陀诞日)梦参老和尚因梦中地藏菩萨示现，破例为之剃度，法名昌一，号继梦。1994年香港妙法寺受三坛大戒。
+    note_en: 'Born in Yilan in 1950. Graduated in economics from National Chung
+      Hsing University in 1973. Worked at the Ministry of Economic Affairs from
+      1983, lecturing on the Dharma alongside his work. Resolved in 1982 to
+      ordain after ten years spent settling his family. On 22 December 1991 (the
+      anniversary of Amitābha''s birth), Venerable Mengcan — prompted by Earth
+      Store Bodhisattva''s appearance in a dream — made an exception to tonsure
+      him; dharma name Changyi, style name Jimeng (Jihong). Received the
+      triple-platform full precepts at Miu Fat Buddhist Monastery in Hong Kong
+      in 1994.'
     quote: 「继梦」——继承梦参老和尚宏愿
   chengguan:
     position: 中年出家·显明剃度
+    position_en: Ordained in middle age · tonsured by Xianming
     note: 1947年生于台北。台湾师范大学英语系毕业，美国德州TCU英研所深造(全额奖学金)。1988年于纽约庄严寺依天台宗第45代显明老和尚披剃。
+    note_en: 'Born in Taipei in 1947. Graduated in English from National Taiwan
+      Normal University; pursued graduate studies at TCU, Texas, USA, on a full
+      scholarship. Ordained in 1988 at Zhuangyan Temple, New York, under the
+      45th-generation Tiantai patriarch, Venerable Xianming.'
     quote: ''
   contrast: '海云: 经济系出身·任职经济部十年·42岁出家。成观: 英语系出身·美国留学·41岁出家。二人皆非少年出家，皆有深厚世俗教育背景——这正是他们能用现代语言诠释佛法的共同基础。'
+  contrast_en: "Haiyun: economics background · a decade in the Ministry of
+    Economic Affairs · ordained at 42. Chengguan: English background · study in
+    America · ordained at 41. Neither was ordained young, and both have deep
+    secular education — the shared foundation that allows both to interpret the
+    Dharma in modern language."
 - topic: 弘法重心与道场
+  topic_en: Focus of Dissemination and Temples
   icon: 🏛
   haiyun:
     position: 南投大华严寺·全球网络
+    position_en: The Great Huayan Temple at Nantou · a global network
     note: 创办大华严寺(南投鹿谷)为根本道场。1997年起北美弘法，1998年东南亚·澳洲·新西兰。2001年加拿大华严世界总会。2004年陕西师范大学华严研究所荣誉所长。2006年社科院特邀研究员。
+    note_en: 'Founded the Great Huayan Temple (Lugu, Nantou) as his root temple.
+      Began teaching in North America in 1997, and in Southeast Asia, Australia,
+      and New Zealand in 1998. Huayan World Association of Canada in 2001.
+      Honorary director of the Huayan Institute of Shaanxi Normal University in
+      2004; invited research fellow of the Chinese Academy of Social Sciences in
+      2006.'
   chengguan:
     position: 台北新逍遥园·北美双线
+    position_en: The New Xiaoyaoyuan Institute in Taipei · a North-America twin track
     note: 1991年创办新逍遥园译经院(原大毘卢寺, 台北景美)。美国密西根遍照寺住持。以译经院为基地，同时经营台北与美国两地。
+    note_en: 'Founded the New Xiaoyaoyuan Translation Institute in 1991 (formerly
+      the Great Vairochana Temple, Jing-Mei, Taipei). Abbot of the Bianzhao
+      Temple in Michigan, USA. With the Institute as his base, he operates in
+      both Taipei and the United States.'
   contrast: 海云以「寺院+学术机构」双轨，辐射中国大陆与北美；成观以「译经院」为特色，立足台北与美国。海云的大陆因缘(陕西·云南)尤为深厚。
+  contrast_en: "Haiyun works on the twin tracks of 'temple + academic
+    institution,' radiating to mainland China and North America; Chengguan's
+    hallmark is the 'Translation Institute,' anchored in Taipei and the United
+    States. Haiyun's mainland connections (Shaanxi · Yunnan) run especially
+    deep."
 - topic: 著作与译经事业
+  topic_en: Writings and the Enterprise of Sutra Translation
   icon: 📚
   haiyun:
     position: 中文著作+讲记整理
+    position_en: Chinese writings + compilation of lecture records
     note: '著作以中文为主: 《我们只有一个选择》(灵性经济学)·《九九華嚴玄談》·《非常坛经》等。讲记由弟子整理为数十种出版物(空庭书苑)。'
+    note_en: 'His writings are chiefly in Chinese: We Have Only One Choice (the
+      economics of the spirit), the ninety-nine-volume Huayan Discourse, the
+      Extraordinary Platform Sūtra, and others. His lecture records are compiled
+      by his disciples into dozens of publications (Kongting Shuyuan).'
   chengguan:
     position: 中文义贯+英译经典
+    position_en: Chinese interwoven commentaries + English translations
     note: 中文义贯系列17种(楞严·楞伽·百法·三十论等) + 英译经典11种(法华·金刚·心经·坛经·圆觉·地藏等)。一人之力完成十余部经典的英译注。
+    note_en: 'Seventeen Chinese commentaries (Śūraṅgama · Laṅkāvatāra · Hundred
+      Dharmas · Thirty Verses, etc.) plus eleven English translations (Lotus ·
+      Diamond · Heart · Platform · Perfect Enlightenment · Earth Store, etc.).
+      By himself he has completed the English translation of more than ten
+      canonical works.'
   contrast: '海云: 讲法为主·著作是讲记的整理。成观: 写作与翻译本身就是弘法事业的主体。成观的英译工程在当代汉传佛教界独一无二。'
+  contrast_en: "Haiyun: lecturing is the primary activity; his writings are the
+    compilation of his records. Chengguan: writing and translation are
+    themselves the body of his dissemination. Chengguan's English-translation
+    enterprise is unique in contemporary Chinese Buddhism."
 - topic: 对学佛次第的主张
+  topic_en: Positions on the Stages of Buddhist Practice
   icon: 🪜
   haiyun:
     position: 技术面→工程面三阶
+    position_en: Three stages on the 'technical → engineering' two tracks
     note: '以「技术面(操作)+工程面(转化)」双轨，三阶次第: 资粮道(发心)→前行(内摄)→正行(等持)。强调先从「置心一处」入手。'
+    note_en: 'On the twin tracks of "technical (operation) + engineering
+      (transformation)," in three stages: provision (resolve) → approach
+      (internal gathering) → main practice (meditative equipoise). Stresses
+      beginning with "placing the mind in one place."'
   chengguan:
     position: 显教为基·密教为用
+    position_en: The exoteric as foundation · the esoteric as function
     note: 强调显教基础(楞严·唯识·止观)不牢不可修密。正修密法须「理上正解教理，事上实修有悟」。以「显密性相」四科为完整修学次第。
+    note_en: 'Stresses that without a solid exoteric basis (Śūraṅgama ·
+      Consciousness-Only · calming-and-contemplation) one may not practice the
+      esoteric dharma; proper esoteric practice requires "correct understanding
+      of the teaching in principle and real attainment in practice." Takes the
+      four categories "exoteric/esoteric · nature/marks" as the complete
+      sequence of study and practice.'
   contrast: 海云以禅宗话头为主轴组织次第；成观以经教义贯+显密进阶组织次第。海云的次第更具「禅堂本位」，成观的次第更具「学院本位」。
+  contrast_en: "Haiyun organizes the sequence around the Chan huatou; Chengguan
+    organizes it around scriptural commentary plus the exoteric-esoteric
+    progression. Haiyun's sequence is more 'meditation-hall-centered';
+    Chengguan's more 'academic-centered.'"

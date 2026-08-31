@@ -4,28 +4,43 @@ biography:
   secular_name: (未查)
   birth: 1947
   birthplace: 台湾台北
+  birthplace_en: Taipei, Taiwan
   education:
   - 台湾师范大学英语系毕业
   - 美国德州TCU英研所(全额奖学金)
+  education_en:
+  - Graduated from the English Department of National Taiwan Normal University
+  - Graduate studies at Texas Christian University (TCU), USA, on a full scholarship
   ordination: 1988年于纽约庄严寺依天台宗第45代传人显明老和尚座下披剃
+  ordination_en: Ordained in 1988 at Zhuangyan (Adorned) Temple, New York, under Venerable Xianming, the 45th-generation patriarch of the Tiantai School
   lineage:
   - 天台宗第46世(显明老和尚传)
   - 日本高野山真言宗第53世传法灌顶阿阇梨(1996)
   - 贤首宗(华严宗)兼慈恩宗(唯识宗)第42世法脉传人(2010)
+  lineage_en:
+  - 46th generation of the Tiantai School (transmitted by Venerable Xianming)
+  - 53rd-generation Dharma-transmitting Abhiṣeka Ācārya of the Shingon School of Mount Kōya, Japan (1996)
+  - 42nd-generation Dharma heir of both the Xianshou (Huayan) and Cien (Consciousness-Only) Schools (2010)
   current_position: 台湾新逍遥园译经院(原大毘卢寺)创办人·住持; 美国密西根遍照寺住持
+  current_position_en: Founder and abbot of the New Xiaoyaoyuan Translation Institute in Taiwan (formerly the Great Vairochana Temple); abbot of the Bianzhao (Universal Radiance) Temple in Michigan, USA
   title: 楞严座主·译经大师·真言宗传法阿阇梨
 institutions:
 - name: 新逍遥园译经院 (原大毘卢寺)
+  name_en: New Xiaoyaoyuan Translation Institute (formerly the Great Vairochana Temple)
   founded: 1991
   location: 台北市文山区景美
   practice: 禅密双修·推行汉传东密
+  practice_en: Joint practice of Chan and esoteric Buddhism; promoting Chinese-transmitted Shingon (Higashi-mitsu)
   website: https://abtemple.org
   note: 定期举办楞严法会。法师发起筹建译经院，旨在系统翻译《华严经》《法华经》等经典为英文。
+  note_en: The Śūraṅgama dharma assembly is held on a regular basis. The Master initiated the Institute with the aim of systematically rendering such scriptures as the Avatamsaka Sūtra and the Lotus Sūtra into English.
 works_chinese:
   intro: 中文著述已出版17种
+  intro_en: Seventeen Chinese works have been published
   items:
   - title: 大佛顶首楞严经义贯 (上·下)
     note: 核心代表作。慧律法师采用为讲经教材。成观法师因此被誉为「楞严座主」。
+    note_en: His representative work, adopted as textbook material by Venerable Huilü. For this Master Chengguan is honored as the "Śūraṅgama Seat-Master."
   - title: 楞伽经义贯
   - title: 心经系列
   - title: 大乘百法明门论今注
@@ -40,6 +55,7 @@ works_chinese:
   - title: 我的学密历程
 works_english:
   intro: 英文译著已出版11种
+  intro_en: Eleven English translations have been published
   items:
   - 英译法华经 (The Lotus Sutra)
   - 英译金刚经 (The Diamond Sutra)
@@ -51,8 +67,10 @@ works_english:
   - 英译传心法要 (The Essentials of the Transmittance of the Mind)
 lecture_highlights:
 - topic: 楞严经义贯（全345讲·第三次完整讲解）
+  topic_en: The Śūraṅgama Sūtra with Its Meaning Interwoven — 345 lectures, the third, complete run
   significance: '成观法师最具代表性的讲法。以自著《大佛顶首楞严经义贯》(2006)为讲义。讲经缘起: 第一次在大毗卢寺讲一部分, 因唯识内容太多而暂停,
     回头先讲《大乘百法明门论》打基础; 第二次在佛陀教育基金会讲一部分, 因太忙中止; 第三次从头完整开讲(开讲时62岁)。'
+  significance_en: "Master Chengguan's most representative series, using his own Śūraṅgama Commentary (2006) as the text. Background: the first run, at the Great Vairochana Temple, paused because the Consciousness-Only content proved too dense; he turned to lecture the Hundred Dharmas Gate to lay the groundwork. The second run, at the Buddha Educational Foundation, stopped midway for lack of time. The third run proceeded from the very beginning in full (he was 62 when it began)."
   links:
   - name: B站全345讲
     url: https://www.bilibili.com/video/BV19MFUz3Eoz/
@@ -61,33 +79,47 @@ lecture_highlights:
   - name: 喜马拉雅读诵
     url: https://www.ximalaya.com/album/93230717
 - topic: 大日经疏讲解（东密根本经典）
+  topic_en: Lectures on the Commentaries on the Mahāvairocana Sūtra — the foundational scripture of East-Asian Shingon
   significance: '以高野山真言宗传法阿阇梨身份系统讲解《大日经》注疏。已见第11-22集文字稿(fjdh.cn/wmxf.net)。核心开示: 「禅是舍有入空,
     密教是从空出有」——密教如飞机最快, 但要有本钱买得起票。'
+  significance_en: 'Systematic exposition of the Mahāvairocana commentaries in his capacity as a Dharma-transmitting ācārya of Kōyasan Shingon; transcripts of sessions 11–22 are available (fjdh.cn/wmxf.net). Key instruction: "Chan releases existence to enter emptiness; the esoteric teaching emerges from emptiness into existence" — the esoteric teaching is like the fastest aircraft, but one must be able to afford the ticket.'
   links:
   - name: 第22集文字稿
     url: https://www.fjdh.cn/wumin/2013/11/130439305067.html
 - topic: 大乘百法明门论今注（DVD 71集·已整理字幕）
+  topic_en: Modern Commentary on the Mahāyāna Hundred Dharmas Gate — 71-session DVD, subtitled
   significance: 唯识学入门系列。成观法师以「五位百法」为修行纲领——心法·心所有法·色法·心不相应行法, 最终从「有为法」入「无为法」证真如。71集DVD已整理字幕。
+  significance_en: 'An introduction to Consciousness-Only. Master Chengguan takes the "five categories, hundred dharmas" as the framework of practice — mind-dharmas, dharmas in association with mind, form-dharmas, dharmas not concurrent with mind — and finally enters the "unconditioned dharmas" from the "conditioned dharmas" to realize Suchness. All 71 DVD sessions carry subtitles.'
   links: []
 - topic: 天台小止观讲解（24集+）
+  topic_en: Lectures on the Tiantai Small Calming-and-Contemplation (24+ sessions)
   significance: '以天台止观框架讲解实修次第。第24集有对西方科学哲学的批判: 「佛法是先于科学、超越于科学……哲学家只能说的不能做的」——修行人当一概放舍世间学问。'
+  significance_en: 'An exposition of the practical sequence of cultivation within the Tiantai śamatha-vipaśyanā framework. Session 24 contains a critique of Western science and philosophy: "The Buddha-dharma precedes, surpasses, and transcends science … the philosopher can only speak, not do" — the practitioner should set aside worldly learning altogether.'
   links:
   - name: 第24集文字稿
     url: https://www.fjdh.cn/wumin/2013/09/111813288817.html
 - topic: 唯识三十论颂义贯·八识规矩颂·观所缘缘论·因明入正理论
+  topic_en: The Consciousness-Only series — Thirty Verses, Eight Consciousnesses, Examining Object, and Hetuvidyā commentaries
   significance: 唯识学系列讲法。常引《大乘起信论》阐述「性相圆融」——「起信论是小本的楞伽经, 性相融合」。
+  significance_en: 'Lectures in the Consciousness-Only series. Frequently cites the Awakening of Faith to unfold the "fusion of nature and marks": "The Awakening of Faith is a miniature Laṅkāvatāra Sūtra — nature and marks in fusion."'
   links: []
 - topic: 心经系列（1997年美国密西根遍照寺）
+  topic_en: The Heart Sūtra Series (1997, Bianzhao Temple, Michigan, USA)
   significance: '含《心经显说》《心经奥义》《心经奥义析微》《心经与禅密修行》四文。核心: 「即禅即密, 即密即禅」——依《心经》修则习禅甚佳、修密亦胜,
     禅密并修尤胜。真言宗全轨法本每一部都要诵《心经》。'
+  significance_en: 'Comprising "An Expansive Explanation of the Heart Sūtra," "The Profound Meaning of the Heart Sūtra," "Refinements in the Profound Meaning of the Heart Sūtra," and "The Heart Sūtra and Chan-Tantric Practice." Core teaching: "Chan within Tantra, Tantra within Chan" — cultivating by the Heart Sūtra is excellent for Chan, better still for Tantra, and best of all when the two are practiced together. Every full ceremonial manual of the Shingon school recites the Heart Sūtra.'
   links:
   - name: 心经系列(一)
     url: http://wuming.xuefo.net/nr/6/61361.html
 - topic: 六祖法宝坛经·金刚经释义
+  topic_en: The Platform Sūtra of the Sixth Patriarch · Dharmic Meaning of the Diamond Sūtra
   significance: 禅宗经典讲法。与楞严、唯识系列构成「禅教双修」的教学体系。
+  significance_en: 'Lectures on the classics of the Chan school. Together with the Śūraṅgama and Consciousness-Only series they form a teaching system of "dual practice of Chan and doctrinal study."'
   links: []
 - topic: 楞严法会（例行举办）
+  topic_en: The Śūraṅgama Dharma Assembly (held regularly)
   significance: 大毗卢寺例行法会——诵楞严咒、静坐、讲经。成观法师因此被誉为「楞严座主」。
+  significance_en: 'The regular assembly of the Great Vairochana Temple — reciting the Śūraṅgama Mantra, sitting in meditation, and lecturing on the sūtra. For this Master Chengguan is honored as the "Śūraṅgama Seat-Master."'
   links: []
 comparison_with_haiyun:
   note: '成观法师与海云继梦法师皆承接贤首宗(华严宗)第42世法脉 ——
@@ -101,6 +133,7 @@ comparison_with_haiyun:
     二人共同构成当代台湾华严系统两位风格迥异、互为补充的重要弘法者。
 
     '
+  note_en: "Both Master Chengguan and Master Haiyun Jihong are heirs of the 42nd-generation lineage of the Xianshou (Huayan) School — Chengguan received it in 2010, Haiyun in 2008; the two are near-contemporaries. Chengguan's three pillars are 'Śūraṅgama + Consciousness-Only + Shingon,' with sutra translation as the main vehicle of his teaching; Haiyun's banners are 'Huayan meditation + the economics of the spirit,' with lecturing and temple construction as his main vehicles. Together they constitute the two figures of the contemporary Taiwanese Huayan tradition whose styles are distinct yet complementary."
   lineage_diagram: "```mermaid\ngraph TD\n  subgraph 天台宗\n    TC[谛闲大师] --> XM[显明老和尚<br/>天台45世]\n\
     \    XM --> CG[成观法师<br/>天台46世<br/>1988年披剃·纽约]\n  end\n\n  subgraph 真言宗\n    KYS[高野山真言宗<br/>金剛峯寺]\
     \ --> CG2[成观法师<br/>真言宗53世<br/>传法灌顶阿阇梨<br/>1996年]\n  end\n\n  subgraph 华严宗\n  \
