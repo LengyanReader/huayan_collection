@@ -1,6 +1,7 @@
 sections:
 - id: chan_academic
   title: 全球学界视角·禅宗全貌
+  title_en: The Global Scholarly View — A Full Portrait of Chan
   icon: 🔍
   intro: '禅宗学术研究一百年，经历了四个阶段的范式转移：
 
@@ -13,8 +14,23 @@ sections:
     第四阶段(2000s-)批判佛教(松本史朗)与社会史转向(Foulk·Welter)，研究重心从「禅思想」转向「禅的制度与权力」。
 
     中国学界自印顺《中国禅宗史》(1971)起形成独立脉络，葛兆光、龚隽等人持续深化。'
+  intro_en: |
+    A century of academic Zen studies has passed through four paradigm
+    shifts: (1) the 1910s-30s, D.T. Suzuki translated and introduced Zen to
+    the West, building a "philosophy of Zen" from the believer's
+    standpoint; (2) the 1930s-70s, the Hu Shih-cum-Suzuki debate opened
+    critical historical study, and the Dunhuang Chan texts reshaped early
+    Chan historiography; (3) the 1980s-2000s, Yanagida Seizan's
+    philology and McRae's deconstruction questioned the historical reality
+    of lineage narratives; (4) from the 2000s, Critical Buddhism
+    (Matsumoto Shirō) and the social-historical turn (Foulk, Welter)
+    moved the centre of gravity from "Chan thought" to "Chan institution
+    and power." Within China, Yinshun's A History of Chinese Chan (1971)
+    began an independent current, deepened by Ge Zhaoguang, Gong Jun and
+    others.
   topics:
   - title: 研究理路总览 — 四个阶段与中外脉络
+    title_en: Overview of Research Approaches — Four Stages, Chinese and Foreign Currents
     body: '**第一阶段·西传期(1910s-1930s)**: 铃木大拙《Essays in Zen Buddhism》三卷(1927-1934)将Zen译介至西方。其写作以「体验者的证言」而非「学者的考据」为基调——为西方读者构建了「禅=超越理性的纯粹体验」的图景。此阶段禅学研究尚属「信仰者的自我表达」。
 
       **第二阶段·批判转折(1930s-1970s)**: 胡适《禅宗在中国——它的历史与方法》(1953)与铃木《禅：答胡适博士》公开论战，形成「胡适禅学案」。敦煌禅籍(《楞伽师资记》《历代法宝记》等)的出土，为早期禅史提供了独立于后代灯录的原始材料。忽滑谷快天、宇井伯寿等日本学者奠定文献学基础。
@@ -27,7 +43,44 @@ sections:
 
       **中国脉络**: 印顺《中国禅宗史》(1971, 1973年获日本大正大学博士学位)部分为回应胡适「神会造坛经」说而作。此后洪修平、杜继文、魏道儒、葛兆光、龚隽等形成独立研究传统。葛兆光晚年反思:
       「现在的禅史研究仍在胡适的延长线上」。'
+    en_body: |
+      Stage 1 (Westward transmission, 1910s-30s): Suzuki's three-volume Essays
+      in Zen Buddhism (1927-34) introduced Zen to the West, written from the
+      voice of the "testifying experiencer" rather than the "verifying
+      scholar," constructing for Western readers the picture of "Zen = pure
+      experience beyond reason." This was still the believer's
+      self-expression.
+
+      Stage 2 (critical turn, 1930s-70s): Hu Shih's "Zen Buddhism in China:
+      Its History and Method" (1953) and Suzuki's reply set off the public
+      "Hu Shih Zen case"; the excavated Dunhuang Chan manuscripts
+      (Lengjia Shizi Ji, Lidai Fabao Ji, etc.) supplied material independent
+      of the later lineage records. Japanese scholars — Nukariya Kaiten and
+      Ukai Hakuju — laid the philological foundations.
+
+      Stage 3 (deconstruction, 1980s-2000s): Yanagida Seizan organised the
+      Dunhuang texts; McRae's Seeing Through Zen (2003) argued that "lineage
+      is religious identity, not genealogy" and that encounter dialogues are
+      Song-dynasty retrospective creations. Bernard Faure's Rhetoric of
+      Immediacy (1991) showed that even "no dependence on words" is a
+      rhetoric.
+
+      Stage 4 (social-historical turn, 2000s-): T. Griffith Foulk questioned
+      whether "the Chan school" existed as an institutional entity before the
+      tenth century; Albert Welter studied how Song Chan became mainstream;
+      Mario Poceski re-evaluated the Hongzhou school; Critical Buddhism
+      (Matsumoto Shirō, Hakamaya Noriaki) attacked "original-enlightenment
+      thought" on doctrinal grounds.
+
+      The Chinese line: Yinshun's History of Chinese Chan Zen (1971; he
+      received his doctorate from Japan's Taishō University in 1973) was in
+      part a rebuttal of Hu Shih's "Shenhui forged the Platform Sūtra"
+      thesis; Hong Xiuping, Du Jiwen, Wei Daoru, Ge Zhaoguang and Gong Jun
+      continued as an independent tradition — Ge, late in life, reflected
+      that "current Chan historiography still runs along Hu Shih's
+      extension."
   - title: 经典奠基期 — Heinrich Dumoulin《Zen Buddhism - A History》
+    title_en: "The Founding Period — Heinrich Dumoulin, Zen Buddhism: A History"
     body: 'Heinrich Dumoulin (1905-1995), 德国耶稣会士, 两卷本Zen Buddhism: A History
 
       (Vol.1 India and China, 1988; Vol.2 Japan, 1990, Macmillan) 英文版
@@ -41,7 +94,17 @@ sections:
       忽略韩国·越南·中国后宋禅宗。
 
       '
+    en_body: |
+      Heinrich Dumoulin (1905-1995), a German Jesuit, wrote the two-volume
+      Zen Buddhism: A History (Vol. 1 India and China, 1988; Vol. 2 Japan,
+      1990), for long the fullest general history of Zen in English. Its
+      strength: a survey of Japanese, German, French and English scholarship
+      covering the whole chain from Indian origins, through China, to Japan.
+      Its limits: a Japan-centred bias; a "church history" paradigm; the
+      assumption of a single "true Zen"; and the omission of Korean and
+      Vietnamese Zen and post-Song Chinese Chan.
   - title: 批判转向 — John McRae《Seeing Through Zen》(2003)
+    title_en: The Critical Turn — John McRae, Seeing Through Zen (2003)
     body: "John R. McRae (1947-2011), 美国学者。Seeing Through Zen: Encounter,\nTransformation,\
       \ and Genealogy in Chinese Chan Buddhism\n(University of California Press, 2003.\
       \ ISBN 978-0520237988)。\n提出「禅宗研究的四个原则」:\n① It's not true, therefore it's more\
@@ -49,9 +112,17 @@ sections:
       \ identity, not genealogy\n   (法系传承是宗教认同, 非历史血缘)\n③ Encounter dialogue is a\
       \ Song-dynasty retrospective creation\n   (机锋问答是宋代禅僧回溯性创作的宗教文学, 非历史实录)\n④ Chan\
       \ is a process, not a fixed essence\n   (禅宗是一个不断建构的过程, 没有一个不变的「禅宗本质」)\n"
+    en_body: |
+      John R. McRae (1947-2011), the American scholar, proposed "four rules
+      for studying Chan": (1) It's not true, therefore it's more important —
+      the fiction reflects the values of its creators; (2) Lineage is about
+      religious identity, not genealogy; (3) Encounter dialogue is a
+      Song-dynasty retrospective creation — religious literature, not
+      historical record; (4) Chan is a process, not a fixed essence.
     links:
       ucpress: https://www.ucpress.edu/book/9780520237988/seeing-through-zen
   - title: 文献学革命 — 柳田圣山(Yanagida Seizan)与敦煌禅籍
+    title_en: The Philological Revolution — Yanagida Seizan and the Dunhuang Chan Manuscripts
     body: '柳田圣山(1922-2006), 日本早期禅宗文献研究第一人。
 
       系统整理敦煌禅宗写本, 出版的《初期禅宗史书の研究》(1967)
@@ -67,7 +138,20 @@ sections:
       然事实上什么也还没有解决……大半材料仍未被整体通读。」
 
       '
+    en_body: |
+      Yanagida Seizan (1922-2006) was the leading scholar of early Chinese
+      Chan literature. His systematic edition of the Dunhuang Chan
+      manuscripts — above all Studies in the Historiography of Early Chan
+      (1967) — transformed the field: the Northern lineage turned out to be
+      not the conservative "gradual" school but the mainstream Chan of the
+      High Tang, and the Platform Sūtra survives in several versions, the
+      Dunhuang (earliest) and Zongbao (most common) differing enormously. In
+      1989 Yanagida himself wrote that "ninety years after the discovery of
+      the Dunhuang Chan texts, research seems exhausted, yet in truth nothing
+      has been solved … most of the material has still not been read through
+      as a whole."
   - title: 文化批判 — Bernard Faure《The Rhetoric of Immediacy》(1991)
+    title_en: Cultural Critique — Bernard Faure, The Rhetoric of Immediacy (1991)
     body: 'Bernard Faure (1948-), 法国学者, 哥伦比亚大学教授。
 
       The Rhetoric of Immediacy: A Cultural Critique of Chan/Zen Buddhism
@@ -83,22 +167,50 @@ sections:
       这种「反传统的传统主义」是禅宗最具悖论性的文化特征。
 
       '
+    en_body: |
+      Bernard Faure (b. 1948), the French scholar at Columbia University,
+      argued in The Rhetoric of Immediacy that Chan's self-images — "no
+      dependence on words," "a separate transmission outside the teachings" —
+      are themselves a carefully constructed rhetoric, and one that depends
+      precisely on a vast textual tradition to propagate the narrative of
+      wordlessness. This "anti-traditional traditionalism" is Chan's most
+      paradoxical cultural feature.
   - title: 关键通论与参考
+    title_en: Key Surveys and References
     body: "• Robert Buswell (UCLA): 韩国禅(Sŏn)研究权威, 主编The Zen Canon (Oxford, 2004)\n\
       • T. Griffith Foulk (Sarah Lawrence): 质疑「禅宗」(Ch'an Tsung)作为制度性实体在10世纪之前的存在\n\
       • Albert Welter (Arizona): 宋代禅宗的社会史研究——禅宗如何在宋代成为主流\n• Mario Poceski (Florida):\
       \ 马祖道一与洪州宗的再评估\n• 印顺(1906-2005): 《中国禅宗史》(1971)——中国学者最早的批判性禅宗史,\n  考证《坛经》非神会伪作,\
       \ 推翻胡适「神会造《坛经》」说\n• 忽滑谷快天(Nukariya Kaiten): 日本最早的系统禅学史作者\n"
+    en_body: |
+      Robert Buswell (UCLA), authority on Korean Sŏn, edited The Zen Canon
+      (Oxford, 2004); T. Griffith Foulk questioned the institutional
+      existence of "the Chan school" before the tenth century; Albert Welter
+      wrote the social history of Song Chan's rise to mainstream; Mario
+      Poceski re-evaluated Mazu Daoyi and the Hongzhou school; Yinshun's
+      History of Chinese Chan (1971) was the earliest critical Chan history
+      by a Chinese scholar, refuting Hu Shih's "Shenhui forged the Platform
+      Sūtra" thesis; Nukariya Kaiten wrote the first systematic history of
+      Zen in Japan.
 - id: chan_practice
   title: 佛门内部·实修视角
+  title_en: Inside the Buddhist Community — The Practical Cultivation View
   icon: 🧘
   intro: '佛门内部的禅宗史观与学界不同——它不追问「法脉是否虚构」，
 
     而关注「这条修行道路如何被历代祖师真实地走出来」。
 
     以下从义理演化·技术演进·制度创新三个层面，梳理禅宗作为修行传统的内在发展逻辑。'
+  intro_en: |
+    The path-insiders' view of Chan history differs from the academy's: it
+    does not ask whether a lineage is "fictitious" but how this way of
+    practice was actually walked out by successive patriarchs. What follows
+    traces the inner developmental logic of Chan as a practical tradition on
+    three planes — doctrinal evolution, technical refinement, and
+    institutional innovation.
   topics:
   - title: 义理演化 — 从楞伽到般若再到禅教融合
+    title_en: Doctrinal Evolution — From the Laṅkāvatāra to Prajñā and the Syntheses of Chan and Doctrine
     body: '**早期(达摩-弘忍)**: 依《楞伽经》「自性清净心」立宗。达摩「二入四行」以「理入」为根本。道信引入「一行三昧」(《文殊说般若经》)，弘忍「守本真心」——此期禅法以「安心」为纲。
 
       **六祖革命(慧能)**: 以《金刚经》「应无所住而生其心」为宗，开「无念·无相·无住」三无法门。从「看净」转向「见性」——禅法重心从「修」转向「悟」。
@@ -108,7 +220,39 @@ sections:
       **禅教融合(宗密)**: 华严五祖宗密以《圆觉经》通禅教，判禅三宗、教三种，倡「禅教一致」——此后的禅宗义理始终带有华严/圆觉的色彩。
 
       **宋以后**: 大慧「看话禅」以疑情为本，宏智「默照禅」以静照为门。明末四大高僧(云栖袾宏·紫柏真可·憨山德清·蕅益智旭)融合禅净教律——「禅净合流」成为明清丛林主流。'
+    en_body: |
+      Early (Bodhidharma–Hongren): founded on the Laṅkāvatāra Sūtra's
+      "naturally pure mind." Bodhidharma's "two entrances and four
+      practices" rests on "entrance by principle"; Daoxin introduced
+      "one-act samādhi" (from the Mañjuśrī Prajñā Sūtra), Hongren
+      "guarding the originally true mind" — the period's motto was
+      "settling the mind."
+
+      The Sixth Patriarch's revolution (Huineng): taking the Diamond
+      Sūtra's "give rise to a mind that abides nowhere," he opened the
+      three non-gates of non-thought, non-marks, no-abiding, shifting from
+      "contemplating purity" to "seeing one's own nature" — the centre of
+      gravity moved from cultivation toward awakening.
+
+      The Hongzhou school (Mazu Daoyi): "the ordinary mind is the Way,"
+      "the mind just as it is is Buddha" — the Dharma wholly domesticated;
+      Baizhang's "a day without work, a day without food" established
+      farm-chan.
+
+      Chan-and-doctrine synthesis (Guifeng Zongmi): the fifth Huayan
+      patriarch, using the Perfect Awakening Sūtra, judged the three Chan
+      schools against the three teachings and urged "the harmony of Chan
+      and doctrine" — after him Chan doctrine always bears a Huayan/
+      Perfect-Awakening colouring.
+
+      Post-Song: Dahui's kanhua ("questioning the huatou") is rooted in
+      doubt, Hongzhi's silent illumination in still gazing. In the late
+      Ming, four masters (Yunqi Zhuhong, Zibo Zhenke, Hanshan Deqing,
+      Ouyi Zhixu) fused Chan, Pure Land, doctrine and vinaya — the
+      "confluence of Chan and Pure Land" became the mainstream of the
+      Ming-Qing monasteries.
   - title: 技术演进 — 禅法的操作体系如何逐步精密化
+    title_en: Technical Refinement — How the Operational System of Chan Was Gradually Precision-Made
     body: '**初传期(6世纪)**: 达摩「壁观」——面壁默坐，直契真如。技术含量最低，全凭理入。
 
       **东山法门(7世纪)**: 道信「守一不移」，弘忍「守本真心」——出现明确的「所缘境」概念。此期禅法仍是「止」的一系。
@@ -124,7 +268,42 @@ sections:
       **默照禅(12世纪)**: 宏智正觉「只管打坐」——取消话头，直以静坐本身为法。
 
       **近现代**: 虚云坚持传统看话禅；来果改革高旻寺禅堂规矩；圣严将话头·默照整合为四阶次第；净慧以「生活禅」把功夫延伸到日用。'
+    en_body: |
+      Early transmission (6th c.): Bodhidharma's "wall-gazing" — silent
+      sitting facing the wall, directly realising thusness; technically the
+      leanest, wholly through entrance by principle.
+
+      The East Mountain teaching (7th c.): Daoxin's "guarding the one
+      unmoved," Hongren's "guarding the originally true mind" — a definite
+      notion of "the object of reference" appears; still the "stilling" line.
+
+      Southern sudden awakening (8th c.): Huineng's "concentration and
+      wisdom equal," dissolving the formal requirement of sitting —
+      "the Way is realised by mind, how could it be in sitting?"; Shenhui's
+      "the single word 'knowing' is the gate to all wonders."
+
+      The encounter age (9th c.): under Mazu and Shitou's heirs, the stick,
+      the shout, the circle-form, toe-raising, the held-up whisk — Chan
+      moves from self-cultivation to master-directed instruction.
+
+      Literary chan (11th c.): Fenyang Shanzhao's "versifying the cases,"
+      culminating in Yuanwu Keqin's Blue Cliff Record — the case becomes a
+      "reservoir of huatou" to be investigated again and again.
+
+      Kanhua chan (12th c.): Dahui Zonggao gathers all delusive thoughts
+      into the single huatou "wu" (no) — "a thousand doubts, ten thousand
+      doubts are just one doubt; break the doubt on the huatou and all
+      doubts break at once." The technique reaches its most precise form.
+
+      Silent illumination (12th c.): Hongzhi Zhengjue's "just sitting" —
+      dropping the huatou, taking sitting itself as the method.
+
+      Modern: Xuyun held to the traditional kanhua; Laiguo reformed the
+      meditation-hall rules at Gaomin; Sheng-yen integrated huatou and
+      silent illumination into a four-stage ladder; Jinghui extended the
+      work into everyday use through "living-chan."
   - title: 禅宗修行总纲 — 戒·定·慧三学
+    title_en: The General Outline of Chan Practice — The Three Learnings
     body: '禅宗虽云「教外别传」, 实不离戒定慧三学。
 
       • 戒: 百丈清规→丛林规矩→禅堂规约。一日不作一日不食(农禅)
@@ -136,7 +315,18 @@ sections:
       海云和尚: 「没有初禅定的功夫, 了生死出三界根本不可能。」
 
       '
+    en_body: |
+      Though Chan calls itself "a separate transmission outside the
+      teachings," it never departs from the three learnings: precepts —
+      Baizhang's pure rules → monastery regulations → meditation-hall rules,
+      "no work, no food" (farm-chan); concentration — the four dhyānas and
+      eight attainments (shared with the non-Buddhists) → the desire-realm
+      concentration, the "approaching" concentration, first dhyāna; wisdom —
+      from literary prajñā to contemplating prajñā to reality-prajñā.
+      Master Haiyun: "without attainment in the first dhyāna, it is utterly
+      impossible to end birth-and-death and leave the three realms."
   - title: 两大法门 — 话头禅(临济宗) vs 默照禅(曹洞宗)
+    title_en: The Two Great Methods — Huatou Chan (Linji) vs Silent Illumination (Caodong)
     body: '禅宗修行至宋代形成两大主流门庭:
 
       **话头禅**(看话禅)— 临济宗大慧宗杲(1089-1163)弘扬。
@@ -154,7 +344,22 @@ sections:
       默照有「默」无「疑」则枯寂。明末四大高僧多兼弘二者。
 
       '
+    en_body: |
+      By the Song, Chan practice had two great households: kanhua chan
+      (huatou chan), championed by the Linji master Dahui Zonggao
+      (1089-1163) — a single "meaningless phrase" (e.g., "Does a dog have
+      Buddha-nature?" / "Who is reciting the Buddha-name?") severs the stream
+      of consciousness, a great doubt arises, and when the doubt coagulates
+      it bursts — "great doubt, great awakening; small doubt, small
+      awakening; no doubt, no awakening." And silent illumination,
+      championed by the Caodong master Hongzhi Zhengjue (1091-1157):
+      "silently forgetting words, clearly present" — just sitting, silent
+      still-gazing, naturally entering awakening without seeking it. The two
+      are not opposed but complementary: huatou with doubt but no silence is
+      restless, silent illumination with silence but no doubt is withered. The
+      four great masters of the late Ming mostly promoted both.
   - title: 参禅进阶 — 三关·三玄三要
+    title_en: Stages of Chan — The Three Passes, the Three Wondrous Things and Three Essentials
     body: '门内传统以「三关」衡量参禅功夫:
 
       初关(破本参): 截断意识流, 亲见本来面目。话头疑情成团→疑团爆破。
@@ -168,7 +373,22 @@ sections:
       海云继梦将此三玄配修行三阶段: 句中玄=资粮道, 意中玄=正行, 体中玄=法身妙行。
 
       '
+    en_body: |
+      The insider tradition measures practice by the "three passes": the
+      first pass (breaking the primary barrier) — severing the stream of
+      consciousness, directly seeing the original face; the second pass
+      (penetrating the heavy barrier) — preserving the attainment,
+      practising again after awakening, training the mind in all situations;
+      the last pass (the final barrier) — the great matter completed, free
+      in birth and death, the final word passing neither ordinary nor
+      sacred. Linji Yixuan further set up the "three wondrous things and
+      three essentials" (in the phrase, in the meaning, in the substance) as
+      the fine work of investigation. Haiyun Jihong maps the three onto the
+      three stages of practice: the wondrous in-the-phrase = the provision
+      stage, in-the-meaning = the main practice, in-the-substance = the
+      wonderful activity of the dharma-body.
   - title: 丛林制度 — 禅宗的社会实践
+    title_en: The Monastery System — Chan's Social Practice
     body: '马祖建丛林, 百丈立清规(唐代) ——
 
       这是禅宗对中国佛教最革命性的贡献之一:
@@ -182,7 +402,18 @@ sections:
       虚云老和尚中兴多处禅堂, 恢复古规, 重振宗风。
 
       '
+    en_body: |
+      "Mazu built the monasteries, Baizhang established the pure rules"
+      (Tang) — one of Chan's most revolutionary contributions to Chinese
+      Buddhism: walking out of the vinaya monasteries to establish separate
+      Chan monasteries, creating new pure rules apart from the vinaya
+      piṭakas. Core spirit: "a day without work, a day without food"
+      (Baizhang Huaihai). Meditation-hall regulations: the seven-day retreat,
+      opening the retreat, closing it, running incense, sitting incense.
+      Master Xuyun revived many meditation halls, restoring the ancient
+      usages and re-sounding the school's wind.
   - title: 制度创新 — 丛林清规与法脉传付
+    title_en: Institutional Innovation — The Pure Rules and the Transmission of the Dharma-Vein
     body: '**丛林制度**: 马祖建丛林，百丈立清规——禅宗走出律寺、另立禅寺的制度革命。《百丈清规》确立: 不立佛殿唯树法堂·普请(集体劳动)·禅堂坐香制度。
 
       **传法制度**: 以袈裟(至六祖止)·法卷·拂子为信物。灯录(传灯录·五灯会元)记录世系。宗法式传承确保法脉延续，也使「谁是谁的弟子」成为宗教权威的核心依据。
@@ -190,7 +421,23 @@ sections:
       **清规演化**: 宋《禅苑清规》·元《敕修百丈清规》·明清丛林规约——仪轨日趋细密。禅七制度(七日密集禅修)自明末定型，成为禅堂修行最核心的形式。
 
       **近代变革**: 来果改革高旻寺——恢复古规·整肃道风。虚云中兴云门·云居等多处禅堂——「农禅并重」传统在现代的延续。'
+    en_body: |
+      Monastery institution: the pure rules established hall-conferences
+      without the Buddha-hall, collective labour (pujie), and the
+      meditation-hall incense-sitting system. Transmission institution: the
+      robe (up to the Sixth Patriarch), the dharma-roll and the whisk served
+      as tokens; the "records of the lamp" chronicled the generations; the
+      clan-style transmission secured the vein's continuity and made "whose
+      disciple is whom" the core ground of religious authority. Evolution of
+      the rules: Song Chanyuan Qinggui, the Yuan imperially revised Baizhang
+      rules, and the Ming-Qing monastic regulations grew ever more detailed;
+      the seven-day retreat settled in the late Ming as the most central form
+      of hall practice. Modern transformation: Laiguo's reformation of
+      Gaomin — restoring the old rules and purifying the community atmosphere;
+      Xuyun's revival of the Yunmen, Yunju and other halls — the
+      "farming-and-chan together" tradition continued into modernity.
   - title: 祖师禅与如来禅 — 宗门史上的著名判摄
+    title_en: Patriarch-Chan and Tathāgata-Chan — A Famous Distinction in Lineage History
     body: '**概念来源**: 「如来禅」之名出于《楞伽经》卷二——「谓入如来地, 得自觉圣智相三种乐住, 成办众生不思议事」。宗密《禅源诸诠集都序》将禅分五等(外道禅·凡夫禅·小乘禅·大乘禅·最上乘禅),
       以「最上乘禅」为如来禅——「顿悟自心本来清净, 元无烦恼; 无漏智性, 本来具足」。
 
@@ -224,7 +471,39 @@ sections:
 
       - 《坛经》「如来清净禅」宣诏之记载: 敦煌本·惠昕本无载, 契嵩本·宗宝本有载——学界疑为祖师禅概念出现后添补'
     source: 《楞伽经》T16n0670·宗密《禅源诸诠集都序》T48n2015·《景德传灯录》T51n2076(香严击竹公案)·陈继生《禅宗公案》
+    en_body: |
+      The name "tathāgata-chan" comes from the Laṅkāvatāra Sūtra, juan 2;
+      Zongmi's Prolegomenon graded the five levels of chan (outsider,
+      ordinary, Hīnayāna, Mahāyāna, and the highest-vehicle), taking the
+      highest-vehicle as tathāgata-chan — "suddenly awakening that the mind
+      is originally pure, without afflictions, the undefiled wisdom nature
+      originally complete."
+
+      "Patriarch-chan" (zushi-chan) was first named by Yangshan Huiji in the
+      famous case of Xiangyan Zhixian striking bamboo: hearing the hit, he
+      composed "one strike, forgetting all knowledge"; Yangshan allowed him
+      only "tathāgata-chan," not "patriarch-chan." Only when Xiangyan
+      produced "I have one function; a blink and it gazes" did Yangshan
+      approve. The core difference: tathāgata-chan is the chan within the
+      teachings, chiefly breaking attachment to self and dharma —
+      "mind-is-Buddha" asserts the present identity; patriarch-chan is the
+      separate transmission outside the teachings, chiefly illuminating
+      mind and seeing nature — "not-mind, not-Buddha" asserts the
+      transcendence of the present reality. Mazu's negative turn from
+      "mind is Buddha" to "not mind, not Buddha" is the crux of the
+      transition from tathāgata-chan to patriarch-chan. Commentaries
+      differ: some deny any absolute boundary, seeing only a difference in
+      thoroughness of awakening; after the mid-Tang the terms were
+      valorised — patriarch-chan as the pure single-flavoured, tathāgata-
+      chan as the mixed five-flavoured; Dōgen wrote "tathāgata-chan,
+      patriarch-chan — the old transmission is not the present false
+      transmission"; the late Ming saw a current of reconciliation. Textual
+      scholarship notes that the Platform Sūtra's passage on "the pure chan
+      of the tathāgata" appears only in the Qisong and Zongbao editions, not
+      the Dunhuang and Huixin ones — an interpolation after the term
+      "patriarch-chan" had appeared.
   - title: 禅宗与其他宗派的融合
+    title_en: Chan's Convergence with the Other Schools
     body: '**禅净合流(宋以后)**: 永明延寿(904-975)《宗镜录》百卷, 会通禅教净。其「四料简」:「有禅有净土, 犹如戴角虎」成为禅净双修纲领。明末云栖袾宏·蕅益智旭·憨山德清·紫柏真可四大高僧皆禅净兼弘。「念佛是谁」话头即禅净合流的产物。清代丛林实际主流模式即「禅堂参究+念佛」的混融状态。
 
 
@@ -242,8 +521,45 @@ sections:
       **禅与华严的互摄**: 宗密以华严五祖兼荷泽法嗣的身份, 是禅华融合的标志性人物。宋代长水子璿(华严复兴先驱)兼弘楞严; 憨山德清晚年特重华严与禅的会通;
       李通玄《新华严经论》的「东方智慧」解经路线, 长期滋养禅门义学。海云继梦「教属华严, 观属禅宗心法」即此传统的当代延续。'
     source: 永明延寿《宗镜录》T48n2016·宗密《禅源诸诠集都序》·见月读体《传戒正范》·憨山德清《华严纲要》
+    en_body: |
+      Chan and Pure Land (post-Song): Yongming Yanshou's (904-975)
+      Record of the Mirror of the Source, one hundred fascicles, unifies
+      chan, doctrine and pure land; his "four discrete judgments" — "with
+      chan and with pure land, you are a tiger with horns" — became the
+      charter of dual practice. In the late Ming the four great masters
+      promoted both; the huatou "who is reciting the Buddha-name?" is itself
+      a product of the confluence, and the actual mainstream of Qing
+      monasteries was the mixed mode of "hall investigation + Buddha
+      recitation."
+
+      Chan and doctrine (Tang, Zongmi): the fifth Huayan patriarch's
+      Prolegomenon judged three chan schools and three teachings and urged
+      harmony — chan is the Buddha's intent, doctrine his words, and intent
+      and words are not two. This is the formal proposal of "Huayan-chan."
+
+      Chan and vinaya: Baizhang's pure rules built a Chan code upon the
+      foundation of the precepts; the late-Ming vinaya revival (Guxin
+      Ruxin, Sanmei Jiguang, Jianyue Duti) supported the Chan community —
+      Duti's Regular Model for Ordination became the standard ritual for
+      Chan ordination.
+
+      Chan and esoteric: since Amoghavajra's time the two ran side by side;
+      after the Song the esoteric declined, but the halls long retained
+      dhāraṇīs (the Śūraṅgama, Great Compassion, Cundi spells). In modern
+      times Xuyun transmitted both Weiyang chan and esoteric abhiṣeka;
+      Haiyun Jihong received the Mahāyāna yogācāra methods; Venerable
+      Chengguan cultivates both — "chan within Tantra, Tantra within Chan."
+
+      Chan and Huayan interpenetration: Zongmi, Hua-yan in name and Heze
+      in descent, is the emblem of the fusion; Song Changshui Zixuan,
+      herald of Huayan's revival, also lectured Śūraṅgama; the late Hanshan
+      Deqing especially cherished the Huayan-chan confluence; Li Tongxuan's
+      "Eastern wisdom" hermeneutics long nourished Chan doctrinal study.
+      Haiyun Jihong's own "doctrine belongs to Huayan, contemplation to the
+      heart-method of Chan" is this tradition's contemporary continuation.
 - id: chan_modern
   title: 近现代禅门发展
+  title_en: The Modern Development of the Chan Lineage
   icon: 📜
   intro: '近代禅门的发展, 是一部从「衰微」到「复兴」的历史。
 
@@ -254,8 +570,17 @@ sections:
     1949年后, 禅宗在大陆·台湾·海外三地各自发展,
 
     最终在全球化时代迎来禅法的世界性传播。'
+  intro_en: |
+    The modern story of the Chan lineage runs from decline to revival. In
+    the late Qing, "temple property for schools" and warfare devastated the
+    monasteries, yet Xuyun and Laiguo kept the meditation halls' incense
+    alight; Yang Wenhui and Taixu opened the two new roads of textual
+    reconstruction and Humanistic Buddhism. After 1949 Chan developed
+    separately in mainland China, Taiwan and the diaspora, and in the age of
+    globalisation brought the dharma of Chan to the world.
   topics:
   - title: 清末民初 — 禅门的衰落与危机的双重夹击
+    title_en: The Late Qing and Early Republic — Decline under a Double Assault
     body: '晚清禅门的衰微, 有两重结构性原因:
 
       **外缘**: 1898年张之洞《劝学篇》提出「庙产兴学」——以寺产办新式学堂。此后几十年间, 各地提拨寺产、改寺为学成风。1928-1930年国民政府又两次颁布「寺庙管理条例」,
@@ -265,7 +590,23 @@ sections:
 
       **转机**: 杨文会(1837-1911)创办金陵刻经处(1866), 刊刻流通禅门典籍; 与日本佛教学者南条文雄的交流, 带回中土失传典籍(如《中论疏》等),
       为禅宗复兴奠定文献基础。杨文会门下出太虚、欧阳竟无等人。'
+    en_body: |
+      Two structural causes weakened late-Qing Chan. External: Zhang Zhidong's
+      1898 "learn by temple property" scheme, under which monastery estates
+      were seized for modern schools for decades; the Nationalist government's
+      two "temple administration regulations" (1928-1930) provoked fierce
+      opposition, led by Taixu's reform movement. Internal: ossified
+      monastery institutions — lax meditation-hall rules, the ascendancy of
+      ritual-service Buddhism, and ever fewer genuine chan practitioners;
+      Laiguo described the halls outside Gaomin as "old-age homes." The
+      turn: Yang Wenhui (1837-1911) founded the Jinling Scriptural Press
+      (1866) to print and circulate the chan canon, and through his exchange
+      with the Japanese scholar Nanjō Bun'yū brought back texts lost in
+      China (such as the commentary on the Middle Treatise), laying the
+      textual foundation for the revival; from his gate came Taixu and Ouyang
+      Jingwu.
   - title: 复兴的三大路线 — 丛林路线·学术路线·人间佛教路线
+    title_en: Three Roads of Revival — Monastery, Academic, and Humanistic Buddhism
     body: '民国禅宗复兴呈现三条并行的路线:
 
       **丛林路线(虚云·来果)**: 直接复兴传统禅堂。虚云中兴鸡足山·云门·云居等祖庭, 恢复禅七古规; 来果主持高旻寺三十年, 整顿禅堂规矩, 拒绝经忏,
@@ -276,7 +617,30 @@ sections:
       **人间佛教路线(太虚)**: 太虚(1890-1947)提出「人间佛教」——佛教不应离世而修, 而应关怀现实人生。太虚不废禅修, 但将重心从「山林禅堂」转向「人间关怀」。此路线后来由净慧的「生活禅」直接继承并落实为修行法门。
 
       三条路线在1949年后各有延续: 丛林路线由虚云弟子(本焕·佛源·一诚·传印)在大陆延续; 学术路线转为大学佛学研究; 人间佛教路线在台湾由星云·圣严·证严等人发扬光大。'
+    en_body: |
+      The Republican revival ran along three parallel roads. The monastery
+      road (Xuyun and Laiguo): directly reviving the traditional halls —
+      Xuyun restored the ancestral monasteries of Jizu, Yunmen and Yunju
+      and the ancient seven-day retreat rules; Laiguo, abbot of Gaomin for
+      thirty years, tightened the hall rules and refused ritual services,
+      preserving a "pure meditation hall," under the banner of "restoring
+      the ancients." The academic road (Jinling Press, the Sino-Indian
+      Institute): Yang Wenhui, Ouyang Jingwu and Lü Cheng worked from
+      textual reconstruction and doctrinal study; Lü Cheng's critique of
+      the Awakening of Faith and of Chan's "nature-aware" doctrine
+      (xingjue) was one of the great doctrinal debates of Republican
+      Buddhist thought. The Humanistic road (Taixu, 1890-1947): Buddhism
+      should not practise in flight from the world but attend to present
+      human life — Taixu did not renounce meditation but moved its centre
+      from the mountain hall to human care; this road was later taken up
+      directly by Jinghui's "living-chan" and enacted as a practice
+      method. After 1949 the three roads each continued: the monastery
+      road through Xuyun's disciples (Benhuan, Foyuan, Yicheng, Chuanyin)
+      on the mainland; the academic road into university Buddhist studies;
+      and the Humanistic road, carried high in Taiwan by Xingyun,
+      Sheng-yen, Zhengyan and others.
   - title: 虚云老和尚(1840-1959) — 兼祧五宗的禅宗泰斗
+    title_en: Master Xuyun (1840-1959) — The Chan Titan Who Inherited All Five Houses
     body: '虚云, 俗姓萧, 湖南湘乡人, 生于福建泉州。19岁于福州鼓山涌泉寺出家。
 
       一生兼祧临济·曹洞·沩仰·法眼·云门五宗法脉。
@@ -292,7 +656,21 @@ sections:
       ③ 留下大量禅七开示, 强调「参禅要起疑情」的临济宗本色;
 
       ④ 培养了一代法嗣——详见「祖师传承详表」之「虚云老和尚的复兴禅门与传承」。'
+    en_body: |
+      Xuyun (secular surname Xiao, a Hunan man born in Quanzhou, Fujian)
+      left home at nineteen at Yongquan Monastery, Gushan, Fuzhou. In one
+      life he inherited the close of five houses — Linji, Caodong, Weiyang,
+      Fayan and Yunmen — and restored more than eighty monasteries great and
+      small, among them Zhusheng of Jizu, Nanhua, Yunmen, and Zhenru on
+      Mount Yunju, where he passed away in 1959 at the age of 120. His core
+      contributions: reviving numerous Chan ancestral monasteries by a
+      single effort; upholding farming-and-chan so that the halls' incense
+      stayed alight amid war and on the eve of the Cultural Revolution;
+      leaving a body of seven-day-retreat talks insisting on the Linji
+      school's native emphasis on rousing the deep doubt; and raising a
+      generation of dharma heirs (detailed in the lineage tables).
   - title: 来果禅师(1881-1953) — 专门禅堂的守护者
+    title_en: Master Laiguo (1881-1953) — Guardian of the Pure Meditation Hall
     body: '来果, 俗姓刘, 湖北黄冈人。1905年出家, 1919年参学高旻寺, 1922年任住持, 主持高旻寺三十年。
 
       来果的贡献在于「守」——守住专门禅堂的纯粹性:
@@ -304,7 +682,21 @@ sections:
       • 坚持「禅七」制度——每年冬季禅七不断
 
       1949年后, 来果留在大陆。1953年圆寂。来果与虚云并称民国禅门「一守一兴」——虚云以「兴」为主(复兴祖庭), 来果以「守」为主(守护禅堂纯粹性)。'
+    en_body: |
+      Laiguo (secular surname Liu, from Huanggang, Hubei) left home in 1905,
+      went to study at Gaomin Monastery in 1919, became its abbot in 1922 and
+      presided there for thirty years. His contribution was one of
+      guarding — preserving the purity of the practice hall: refusing
+      ritual services so Gaomin kept its hall character (no canona for
+      hire); reforming the hall rules, codifying them in his Recorded
+      Sayings and the Gaomin Monastery Regulations; and upholding the
+      winter seven-day retreats year after year. He remained on the
+      mainland after 1949 and died in 1953. Laiguo and Xuyun together are
+      the Republican Chan school's "one guards, one restores": Xuyun
+      chiefly restoring ancestral monasteries, Laiguo chiefly guarding the
+      purity of the hall.
   - title: 净慧长老(1933-2013) — 生活禅的创立
+    title_en: Elder Jinghui (1933-2013) — Founder of Living-Chan
     body: '净慧, 俗姓黄, 湖北新洲人。1951年于广东云门寺虚云座下受戒,
 
       承接禅宗五家法脉。1956年入中国佛学院, 1979年恢复工作后任《法音》主编20年。
@@ -316,7 +708,20 @@ sections:
       连续举办24届「生活禅夏令营」, 影响数万青年学佛者。
 
       2003年住持湖北黄梅四祖寺·五祖寺, 2013年于四祖寺圆寂。'
+    en_body: |
+      Jinghui (secular surname Huang, from Xinzhou, Hubei) was ordained
+      under Xuyun at Yunmen Monastery, Guangdong in 1951, inheriting the five
+      houses of Chan. He entered the Chinese Buddhist Academy in 1956 and,
+      after resuming work in 1979, edited the journal Fayin for twenty years.
+      In 1988 he revived Bailin Monastery at Zhaozhou, Hebei, and in 1993
+      proposed "living-chan": "awaken to life, dedicate life," "bring faith
+      into daily life, bring practice into the present moment." Twenty-four
+      consecutive living-chan summer camps reached tens of thousands of young
+      Buddhists. In 2003 he took charge of the Fourth and Fifth Patriarch
+      monasteries in Huangmei, Hubei, and passed away at the Fourth Patriarch
+      Monastery in 2013.
   - title: 台湾禅门 — 三大体系的并行发展
+    title_en: Chan in Taiwan — Three Systems Developing in Parallel
     body: '1949年后, 台湾成为汉传佛教的重要基地。禅门发展呈现三大体系:
 
       **法鼓山(圣严法师, 1931-2009)**: 留学日本立正大学获博士学位(论文为明末佛教研究)。1975年赴美弘法, 1977年创办中华佛学研究所。1989年创建法鼓山,
@@ -328,7 +733,31 @@ sections:
       寺内设佛学院。
 
       另有慈济(证严法师)等体系, 虽以慈善为主, 但亦有禅修传统。'
+    en_body: |
+      Fagushan (Dharma Drum Mountain), led by Venerable Sheng-yen
+      (1931-2009, PhD from Risshō University, Japan, on late-Ming
+      Buddhism): he taught in America from 1975, founded the Chung-Hwa
+      Institute of Buddhist Studies in 1977, built Fagushan in 1989, and in
+      2005 established the "Chinese Chan Dharma Drum lineage," integrating
+      huatou chan and silent illumination into a four-stage sequence
+      (scattered mind → concentrated mind → unified mind → mindlessness).
+      As a "scholar-monk" he modernised and systematised chan instruction.
+
+      Fo Guang Shan, under Venerable Xingyun (1927-2023, 48th-gen Linji):
+      founded 1967 under the banner of Humanistic Buddhism; though not a
+      meditation-hall school, its "chan and pure land together" and
+      "practice chan in daily life" popularised chan across more than 300
+      temples worldwide.
+
+      Chung Tai Shan, under Venerable Weijue (1928-2016): after long
+      retreat-practice he founded Chung Tai Chan Monastery in 1987,
+      distinctive for "teachings-and-chan in one" and "monastery as
+      academy," its magnificent halls housing a seminary.
+
+      There are also systems like Tzu Chi (Venerable Zhengyan) — chiefly
+      charitable, but retaining a meditation tradition.
   - title: 禅宗全球化 — 从铃木大拙到正念革命
+    title_en: The Globalisation of Chan — From D.T. Suzuki to the Mindfulness Revolution
     body: '**日本→西方(铃木大拙)**: D.T. Suzuki(1870-1966)以《Essays in Zen Buddhism》三卷(1927-1934)将Zen引入西方。铃木的写作以「体验者的证言」为基调,
       影响了垮掉的一代(Alan Watts·Gary Snyder·Jack Kerouac)。其传播策略后来受学界批评(过度强调「非理性」「神秘体验」),
       但历史影响深远。
@@ -343,8 +772,29 @@ sections:
       movement), 使禅修走出宗教范畴, 进入医学·教育·企业领域。
 
       **中国→海外(宣化上人)**: 宣化(1918-1995)在旧金山创办万佛城, 是美国最大的汉传佛教道场之一, 主持译经事业。'
+    en_body: |
+      Japan → the West (D.T. Suzuki, 1870-1966): his three-volume Essays in
+      Zen Buddhism (1927-34) introduced Zen to the West, written from the
+      voice of the testifying experiencer, shaping the Beat Generation
+      (Alan Watts, Gary Snyder, Jack Kerouac). The strategy was later
+      criticised by scholars (undue stress on the "irrational" and "mystical
+      experience"), but historically consequential. Western centres: Philip
+      Kapleau's Three Pillars of Zen (1965); Shunryu Suzuki's San Francisco
+      Zen Center and Zen Mind, Beginner's Mind (1970) as a Western classic;
+      Western dharma-heir traditions under Robert Aitken and Bernie
+      Glassman. Korea → the West (Seung Sahn, 1927-2004): the Kwan Um School
+      of Zen, famous for the "Only Don't Know" method, built over a hundred
+      centres in Europe and America. Vietnam → the West (Thích Nhất Hạnh,
+      1926-2022): weaving mindfulness into daily life and the peace
+      movement, founding Plum Village; his "mindful breathing" fed the
+      global mindfulness movement, carrying meditation beyond religion into
+      medicine, education and business. China → overseas (Hsuan Hua,
+      1918-1995): founded the City of Ten Thousand Buddhas near San
+      Francisco — among the largest Chinese Buddhist temples in America —
+      and led its translation enterprise.
 - id: chan_haiyun
   title: 海云法师·禅法诠释
+  title_en: Venerable Haiyun's Chan Hermeneutics
   icon: 🌊
   intro: '海云继梦法师自称「教属华严, 观属禅宗心法」, 教观双举。
 
@@ -353,8 +803,16 @@ sections:
     以华严理事圆融为理论框架, 融合大乘瑜伽行派「身-息-心」观行次第。
 
     '
+  intro_en: |
+    Venerable Haiyun Jihong calls himself "Huayan in doctrine, the
+    heart-method of Chan in contemplation," raising both teaching and
+    practice. His chan takes as its banner the reconstruction of the Tang
+    East Mountain teaching, its core method the investigation of the huatou,
+    its theoretical frame the Hua-yan fusion of principle and fact, fused
+    with the Mahāyāna Yogācāra sequence of body-breath-mind.
   topics:
   - title: 东山法门的重建
+    title_en: The Reconstruction of the East Mountain Teaching
     body: '海云继梦认为中国禅宗正法心法教学自元代八思巴为国师后失传约七八百年。
 
       他发心重建唐代五祖弘忍开创的「东山法门」——
@@ -366,7 +824,19 @@ sections:
       提出上下双回向的实修结构: 「华严理事圆融」≡「东山法门等持工程」。
 
       '
+    en_body: |
+      Haiyun holds that the true teaching of the Chan heart-method in China
+      was lost for some seven or eight hundred years after the Yuan made the
+      Tibetan Paṇḍita 'Phags-pa the state preceptor. He set his resolve on
+      reconstructing the East Mountain teaching begun by the Fifth Patriarch
+      Hongren — an operable, checkable behavioural system in which "carrying
+      water and hauling firewood are all chan, walking standing sitting and
+      lying down are all practice." He fuses the Hua-yan path with the
+      Yogācāra body-breath-mind sequence, proposing an upward-and-downward
+      structure of practice: "Hua-yan interpenetration of principle and
+      fact" ≡ "the East Mountain teaching's samādhi-work."
   - title: 参禅的核心 — 话头与疑情
+    title_en: The Core of Chan Practice — Huatou and Doubt
     body: '海云禅法以「话头禅」为核心, 未见其对「默照」的专门诠释。
 
       **话头的产生**: 话头从入佛门进禅堂时即已诞生, 关键在于行者觉察。
@@ -388,8 +858,26 @@ sections:
       上要: 深入观心王·心所·尘境关系
 
       '
+    en_body: |
+      Haiyun's chan centres on the huatou; he offers no separate treatment
+      of silent illumination. The huatou is born the moment one enters the
+      gate and sits in the hall; the key is the practitioner's awareness.
+      "Who is reciting the Buddha-name?" "Who is walking?" "Who is feeling
+      the cold?" — returning the mind to its stand. Guarding the doubt:
+      "closely guarding the doubt, deeply investigating the huatou" is the
+      practitioner's true colour; the doubt can "echo" through a life for
+      thirty years and burst forth with sky-and-earth-splitting power at
+      death — he cites an Indian practitioner who for thirty years explored
+      "in the end it all returns to you." The three stages of the
+      wondrous-in-the-phrase: the initial essential, beginning from the
+      phrase "who is reciting the Buddha-name?" to discover the two layers
+      of mind-dharma and form-dharma; the middle essential, distinguishing
+      them and contemplating the rising and passing of thoughts and their
+      existence; the highest essential, penetrating the relations of
+      mind-king, mind-attendants and sense-fields.
     source: 《非常坛经》(海南出版社) + fjdh.cn海云法师·禅宗系列讲记
   - title: 心王·心所·尘境 — 海云禅法的认识论基础
+    title_en: Mind-King, Mind-Attendants, Sense-Fields — The Epistemological Basis of Haiyun's Chan
     body: '海云继梦建立了一套精细的心识分析作为禅法基础:
 
       • 心王: 心的主体——能知·能觉·能动的「真心」
@@ -407,8 +895,22 @@ sections:
       直至心能主导境界而不被境转。
 
       '
+    en_body: |
+      Haiyun builds a fine analysis of consciousness as the foundation of his
+      chan: the mind-king — the subject of mind, the "true mind" that
+      knows, feels and moves; the mind-attendants — the king's functions,
+      such as attention, emotion, thought; the sense-fields — the objects
+      born of the six faculties meeting the six dusts (form, sound, smell,
+      taste, touch, dharma). The heart of the work: "perceiving how the
+      mind-king functions and how the mind-attendants are affected." The
+      root reason anything cannot be let go is that "one does not know the
+      mind-king at work" — mind clings to realms and cannot part from them.
+      In investigating the huatou one holds to the trace of the five
+      aggregates (form, feeling, perception, formations, consciousness)
+      until the mind governs the realm and is not turned by it.
     source: '[抓住话头深参, 照住心的活动轨迹](http://wuming.xuefo.com/nr/6/59257.html)'
   - title: 身根 — 最佳切入点
+    title_en: The Body-Faculty — The Best Point of Entry
     body: '海云继梦特别强调「身根对尘境的直接感受」是参禅的最佳契入处。
 
       在寒冷中参「感受到冷的是谁?」——从身根接触触尘,
@@ -422,8 +924,18 @@ sections:
       「身根直接对我们的那一种影响力, 是你最好契入的方法」。
 
       '
+    en_body: |
+      Haiyun insists that "the body-faculty's direct felt contact with the
+      sense-fields" is the best entry into chan practice. In the cold, ask
+      "who is feeling the cold?" — from the body-faculty meeting the
+      touch-dust, without passing through conscious discrimination, directly
+      let the mind perform its seizing. Then the body no longer feels the
+      cold; "a heat streams up from the depths of the mind." This is why the
+      great chan masters loved to practise in the cold — "the body-faculty's
+      direct influence on us is your best method of entry."
     source: '[紧紧守住那个话头](http://wuming.xuefo.com/nr/6/59222.html)'
   - title: 一门深入·断绝杂思
+    title_en: Single-Minded Penetration — Severing Scattered Thought
     body: '参禅必须「一门深入, 只有一条路可走」。禅堂规矩和禅师说法是绝对依止。
 
       在话头功夫未纯熟前, 即使是布施·持戒·六度万行也「通通不要管它」——
@@ -435,8 +947,17 @@ sections:
       不是不起念, 而是「不与念相应」。
 
       '
+    en_body: |
+      Chan practice must be "single-minded penetration; there is only one
+      road." The hall's rules and the master's words are the absolute
+      refuge. Until the huatou work is mature, even giving, precepts and the
+      six perfections are "all left alone" — "the least admixture here, and
+      it is no longer pure." You investigate only that one huatou, on that
+      one road; everything else is put down. It is not that no thought
+      arises, but that one "does not respond to thoughts."
     source: '[世界的成就是这样来的](https://www.fjdh.cn/wumin/2013/09/164743285782.html)'
   - title: 海云法师论祖师禅与如来禅
+    title_en: Haiyun on Patriarch-Chan and Tathāgata-Chan
     body: '海云继梦法师有专文《祖师禅与如来禅》(fjdh.cn, 2013), 并散见于《非常坛经》《解心》等著作。其核心判摄:
 
 
@@ -462,17 +983,62 @@ sections:
 
       **对当代的警示**: 六祖慧能的祖师禅是从五祖弘忍演变下来的, 其历史背景是当时丛林延续着达摩到弘忍的根本教法, 大家已有基本训练基础。现代社会缺乏这一背景,
       若只取「明心见性」一语便是断章取义。'
+    en_body: |
+      Haiyun has a dedicated essay Patriarch-Chan and Tathāgata-Chan (2013),
+      with related material in Extraordinary Platform Sūtra and The
+      Dissolution of Mind. His core judgments: both "are gathered back into
+      the noble path of liberation." Tathāgata-chan is the practice of the
+      first period of Buddhist thought — what the Buddha taught his
+      dharma-sons directly, correcting the defects of the non-Buddhist
+      practices current in his day, with emphasis on technique.
+      Patriarch-chan is the "Mahāyāna Yogācāra practice" formed in the
+      second period, called patriarch-chan in China. Three great
+      differences: (1) the sequence differs — tathāgata-chan cultivates
+      "from cause to fruit," stilling worldly interference to do the
+      mind-settling work (breath-counting, compassion, impurity,
+      conditions, Buddha-recollection contemplations), while patriarch-chan
+      proceeds from "effect-enlightenment as the mind's seed," first
+      thinking out the sequence and goal, then settling the view, and after
+      the provision stage bursts the root fundamental ignorance — it must
+      "raise up the realm," hence the huatou; (2) the goal differs —
+      tathāgata-chan aims only at correcting the error of the world's
+      structure, at most realising arhatship, while patriarch-chan aims at
+      entering the dharmadhātu and realising the dharma-body, gaining the
+      bodhisattva lineage to enter the tathāgata lineage; (3) the fruition
+      differs — the arhat has the seven-faith stages (breaking the
+      ignorance of attachment to self) and nine-faith stages (breaking both
+      the self and dharma attachments) yet lacks the tenth; patriarch-chan
+      builds the "structure of the dharmadhātu" and the birth and presence
+      of the dharma-body with an evident engineering face — the "forty-one
+      stages of the dharma-body" in infinite extension. Key teaching —
+      tathāgata-chan is the foundation of patriarch-chan: "even the base of
+      tathāgata-chan we have not established, so what patriarch-chan do we
+      speak of? … if we wish to practise chan, the foundation of
+      tathāgata-chan must first be established, or think nothing of great
+      attainment" (Dissolution of Mind, ch. 7). A warning for the present:
+      Huineng's patriarch-chan evolved from Hongren's, against a historical
+      background in which the monasteries already carried the root teaching
+      from Bodhidharma to Hongren and everyone had a foundation of basic
+      training; today's society lacks that background, so to take up only
+      the phrase "illumine mind, see nature" is to quote out of context.
     source: 海云继梦《祖师禅与如来禅》(fjdh.cn, 2013) ·《非常坛经》(海南出版社, 2016)第一章禅门源流 ·《解心——心要法门讲记》第七章
 - id: chan_lineage_detail
   title: 祖师传承详表
+  title_en: Detailed Tables of the Patriarchal Transmission
   icon: 📊
   intro: '禅宗法脉传承的详细世系表。从初祖达摩至六祖慧能，
 
     再到五家七宗的分灯，最后汇聚于近现代虚云老和尚的兼祧五宗。
 
     '
+  intro_en: |
+    Detailed lineage tables of the Chan transmission: from the First
+    Patriarch Bodhidharma to the Sixth Patriarch Huineng, through the
+    branching of the five houses and seven schools, and finally gathering
+    in the modern Master Xuyun, sole heir of all five houses.
   topics:
   - title: 从达摩到六祖——中国禅宗正传
+    title_en: From Bodhidharma to the Sixth Patriarch — The Main Chinese Chan Line
     body: '① **初祖菩提达摩**(?-536): 南天竺香至国王子。梁普通年间来华。嵩山少林寺面壁九年。
 
       付法偈: 「吾本来兹土，传法救迷情。一花开五叶，结果自然成。」弟子: 慧可。
@@ -490,7 +1056,27 @@ sections:
       《坛经》为唯一中国祖师所造之「经」。弟子: 南岳怀让·青原行思·荷泽神会。
 
       '
+    en_body: |
+      1. First Patriarch Bodhidharma (?-536): a prince of the King of
+      Kāñcī's house in southern India; came to China during the Liang; nine
+      years facing the wall at Shaolin, Songshan. Verse of transmission:
+      "I came to this land to transmit the dharma and save the deluded — one
+      flower, five leaves; the fruit comes by itself." Disciple: Huike.
+      2. Second Patriarch Huike (487-593): cut off his arm in the snow
+      seeking the dharma; when the Northern Zhou extinguished Buddhism he
+      went south and hid on Mount Wugong. 3. Third Patriarch Sengcan
+      (?-606): author of the Faith-Mind Inscription; hid on Mount Sikong in
+      the Sui. 4. Fourth Patriarch Daoxin (580-651): inaugurated the
+      settled "farming-and-chan" mode, gathering five hundred at Twin
+      Peaks. 5. Fifth Patriarch Hongren (601-674): transmitted the dharma at
+      the East Mountain of Huangmei, establishing the "East Mountain
+      teaching" with seven hundred disciples. 6. Sixth Patriarch Huineng
+      (638-713): a man of Xinxing, Guangdong, awakened on hearing the
+      Diamond Sūtra; taught at Baolin Monastery, Caoxi. The Platform Sūtra
+      is the only "sūtra" made by a Chinese patriarch. Disciples: Nanyue
+      Huairang, Qingyuan Xingsi, Heze Shenhui.
   - title: 五家七宗分灯
+    title_en: The Five Houses and Seven Schools
     body: '**临济宗**: 义玄(?-867)创。以棒喝·三玄三要·四料简著称。→杨岐派(方会)·黄龙派(慧南)。
 
       **曹洞宗**: 洞山良价(807-869)+曹山本寂(840-901)。五位君臣·回互偏正。
@@ -504,7 +1090,23 @@ sections:
       明清以后仅临济·曹洞二宗法脉连续可考。
 
       '
+    en_body: |
+      Linji (Yixuan, ?-867): famous for blows and shouts, the three
+      wondrous things and three essentials, the four discrete judgments;
+      giving rise to the Yangqi (Fanghui) and Huanglong (Huinan) sub-schools.
+      Caodong (Dongshan Liangjie 807-869 + Caoshan Benji 840-901): the five
+      ranks of lord and vassal, the mutual interpenetration of chair and
+      verdure. Weiyang (Guishan Lingyou 771-853 + Yangshan Huiji 807-883):
+      mute communion through the circle-symbol; declined after the Five
+      Dynasties. Yunmen (Yunmen Wenyan 864-949): "one phrase, three
+      phrases," "covering heaven and earth"; flourishing in the Northern
+      Song, declining in the Southern. Fayan (Fayan Wenyi 885-958): author
+      of the Ten Admonitions of the School; Yongming Yanshou (904-975), its
+      third patriarch, was a forerunner of chan-pure-land fusion. Only the
+      Linji and Caodong lines remain continuously traceable after the Ming
+      and Qing.
   - title: 虚云老和尚的复兴禅门与传承
+    title_en: Master Xuyun's Revival of Chan and His Lineage
     body: '虚云老和尚(1840-1959)以一身之力复兴禅宗祖庭, 并透过法脉传付使五宗得续:
 
 
@@ -549,8 +1151,34 @@ sections:
       - 佛源→明向法师(云门寺)
 
       - 净慧→明杰法师等(四祖寺·生活禅体系)'
+    en_body: |
+      Master Xuyun (1840-1959), with strength of a single life, revived the
+      ancestral monasteries of Chan and, through the passing of the
+      dharma-veins, let the five houses continue. Revived sanctuaries
+      (eighty-odd monasteries restored): Jizu's Zhusheng (revived from
+      1903, twenty-six years preaching in Yunnan); Gushan's Yongquan,
+      Fuzhou (abbot 1930, restoring the ancient hall rules); Nanhua,
+      Guangdong (rebuilt from 1934, the Sixth Patriarch's sanctuary);
+      Yunmen, Guangdong (rebuilt from 1944, reviving the Yunmen house); and
+      Zhenru on Yunju, Jiangxi (revived 1953, his late residence and
+      death-place). The five veins passed on: Benhuan (1907-2012), Linji
+      44th — founder of Hongfa Temple, Shenzhen; Fayuan (1923-2009), Yunmen
+      13th — reviver of Yunmen; Jinghui (1933-2013), all five houses (Linji
+      44, Caodong 48, Weiyang 9, Fayan 9, Yunmen 13) — founder of
+      living-chan; Chuanyin (1927-2023), Weiyang 9th — president of the
+      Chinese Buddhist Association 2010-15; Yicheng (1927-2017), Weiyang
+      9th — president 2005-10; Hsuan Hua (1918-1995), Weiyang 9th — founder
+      of the City of Ten Thousand Buddhas. Overseas and later
+      transmissions: Hsuan Hua to the American Dharma Realm Buddhist
+      Association; in 2009 Jinghui transmitted the Linji-45th dharma-roll to
+      Willigis Jäger of the German Benedictine Zen Centre — Chan entering
+      Europe; Jinghui → Minghai (abbot of Bailin, vice-president of the
+      CBA); Benhuan → Yinshun (abbot of Hongfa); Fayuan → Mingxiang
+      (Yunmen); Jinghui → Mingjie and others (the Fourth Patriarch
+      Monastery's living-chan system).
     source: 综合虚云年谱·各寺院官方资料·中国佛教协会文献
   - title: 传法偈与印可制度
+    title_en: Transmission Verses and the Seal of Approval
     body: '禅宗传法的核心制度: **印可**(师对弟子悟境的印可)与**传法偈**。
 
       达摩付法偈: 「吾本来兹土，传法救迷情。一花开五叶，结果自然成。」
@@ -566,6 +1194,21 @@ sections:
       这既是宗教意义的「继绝」，也引发了学界关于「法脉真实性」的讨论。
 
       '
+    en_body: |
+      The core institutions of Chan transmission: the seal of approval
+      (yinke) — a master's confirmation of a disciple's awakening — and
+      the transmission verse. Bodhidharma's: "I came to this land to
+      transmit the dharma and save the deluded — one flower, five leaves;
+      the fruit comes by itself." Huineng's: "The mind-ground holds all
+      seeds; the universal rain brings every sprout forth. When the
+      flowering of sudden awakening is over, the bodhi fruit comes to
+      itself." Tokens of transmission: the robe (down to the Sixth
+      Patriarch), then the dharma-roll, the whisk and the staff. The
+      dharma-roll records the lineage, the verse, and the time and place of
+      confirmation. Xuyun used the dharma-roll to revive the broken veins
+      of Yunmen, Weiyang and Fayan — a religious "continuation of what was
+      severed," and yet the occasion of scholarship's debate over the
+      "authenticity" of such constructed lineages.
     source: 综合灯录·虚云年谱·McRae对法脉建构性的研究
 references:
   academic:
