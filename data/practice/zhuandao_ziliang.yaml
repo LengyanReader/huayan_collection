@@ -5,16 +5,27 @@
 section_id: sys-zhuandao
 icon: "📦"
 title: "助道资粮 — 资粮道·前行道详解"
+title_en: "Provisions for the Path — The Provision Stage and the Approach Stage Explained"
 
 intro: |
   「助道资粮」是修行正式进入正行之前的准备阶段——积累福德与智慧二种资粮，
   培养正确的心态与行为模式，为后续禅修正行奠定根基。
   以下整理海云继梦法师与成观法师对资粮道、前行道的开示，
   并参照传统唯识五位体系，标明所有内容出处。
+intro_en: |
+  "Provisions for the path" (zhudao ziliang) is the preparatory phase before
+  formal practice proper begins — accumulating the two provisions of merit and
+  wisdom, and cultivating the correct attitudes and behaviour that lay the
+  groundwork for the subsequent main practice of Chan contemplation. What
+  follows gathers the instructions of Venerable Haiyun Jihong and Venerable
+  Chengguan on the provision stage (ziliangdao) and the approach stage
+  (qianxingdao), cross-referenced with the traditional five-stage
+  Consciousness-Only system; every source is cited.
 
 topics:
   - id: ziliang-definition
     title: "一、什么是「资粮道」？"
+    title_en: "1. What Is the 'Provision (sambhāra) Stage'?"
     body: |
       <b>传统定义</b>：资粮道（sambhāramārga）是大乘菩萨道五道之首。《成唯识论》卷九云：「资粮位，即含摄有漏善以达佛果之位。指十住、十行、十回向等诸位菩萨，以福德智慧为助道资粮，故称资粮位。」此类修行称为「大乘顺解脱分」。
 
@@ -25,9 +36,33 @@ topics:
       <b>成观法师的传承</b>：成观法师依循唯识宗传统框架，在《大乘百法明门论今注》等著作中系统讲解资粮位为五位之首——「以福德智慧为助道资粮」。
     source: |
       📎 《成唯识论》卷九(CBETA T31n1585) · 于凌波《唯识名词白话新解》"唯识五位" · 海云继梦《华严禅观的入法界次第道》(xuefo.net.cn/115994) · 成观法师《大乘百法明门论今注》(新逍遥园译经院)
+    en_body: |
+      <b>Classical definition</b>: The provision stage (sambhāramārga) is the
+      first of the five paths of the Mahāyāna bodhisattva path. The Cheng Weishi
+      Lun (T31n1585, juan 9) says it covers the ten abidings, ten practices and
+      ten dedications, wherein practitioners take merits and wisdom (and the
+      defiled good) as aiding provisions on the way to Buddhahood; hence it is
+      called "the great-vehicle lot that accords with liberation."
+
+      <b>The Tibetan five paths</b>: provision → applied (prayoga) → seeing →
+      cultivation → no-more-learning. The provision stage is marked by the
+      arising of bodhicitta and has three sub-stages (small, medium, great).
+
+      <b>Master Haiyun's redefinition</b>: In his Huayan chan-systems, he frees
+      the provision stage from the classical five-path schema and redefines it
+      as "basic education + character formation + the Huazang Project" —
+      emphasising practice in everyday life rather than doctrinal stage
+      correspondence. He calls it the "resolve-engendering project."
+
+      <b>Master Chengguan's inheritance</b>: Following the classical
+      Consciousness-Only framework, he expounds in works such as the
+      Commentary on the Mahāyāna Hundred-Dharmas Gate that the provision stage
+      heads the five stages — "merits and wisdom as aiding provisions for the
+      path."
 
   - id: haiyun-ziliang
     title: "二、海云法师：资粮道 = 发心工程"
+    title_en: "2. Master Haiyun: The Provision Stage = the Resolve-Engendering Project"
     body: |
       海云法师将修行体系分为三大阶段：资粮道（发心工程）→前行（内摄工程）→正行（等持工程）。其中资粮道是一切禅观的基础准备。
 
@@ -48,9 +83,42 @@ topics:
       「第一属前行部分，此一部分有二：于理——即人格养成教育，及正常的家庭与社会生活，乃至开始摸索真理的资粮道部分。」
     source: |
       📎 海云继梦《华严禅观的入法界次第道》(xuefo.net.cn/115994) · 大华严寺官网「修行蓝图」(2025.11) · 海云继梦《四十华严讲记》第67讲(2009.2.26) · 《煖身：华严禅修入门》(布克文化2021, ISBN 9789865405984)
+    en_body: |
+      Master Haiyun divides his cultivation system into three phases —
+      provision (resolve-engendering project) → approach (inward-gathering
+      project) → main practice (samādhi-gathering project) — with the provision
+      stage as the foundation of all chan contemplation.
+
+      <b>Core task</b>: to bring the practitioner from scatteredness to
+      "quieting down" through "settling the mind-in-stay" (ting-xin), gathering
+      the mind initially, so that one becomes a "vessel fit for the Dharma"
+      before entering the approach stage.
+
+      <b>Three obligatory gates</b>: (1) a healthy personality — normal family
+      and social life; (2) renunciation — recognising the suffering of
+      saṃsāra and establishing the resolve to "leave the three realms and enter
+      the dharma-realm"; (3) bodhicitta — not only one's own liberation but the
+      free of all beings.
+
+      <b>Five-subject training</b> (precepts · vinaya · body · breath · mind):
+      body, breath and mind are one and non-dual. The curriculum ratio is 70%
+      cultivation and 30% health. Key text: Warming the Body: An Introduction
+      to Huayan Chan (Book Culture, 2021).
+
+      <b>Institutional entry</b>: "It is an institutional system" — during the
+      three-year approach stage one completes prescribed basic study materials,
+      lecture notes, weekly joint practice, and the Huazang Project; only upon
+      review by the community of chan masters does one receive the "formal
+      authorisation to practice the method."
+
+      <b>Master's instruction</b>: His spoken oracle is kept in the Chinese
+      text beside it: the approach phase pursues, in principle, character
+      education and normal family/social life, and, in fact, the provision
+      stage of beginning to probe the truth.
 
   - id: haiyun-qianxing
     title: "三、海云法师：前行道 — 从华藏工程到参禅金三角"
+    title_en: "3. Master Haiyun: The Approach Stage — from the Huazang Project to the Golden Triangle of Chan Contemplation"
     body: |
       前行是禅观体系的核心训练阶段。海云法师将其定位为修行正式开始前的系统训练。
 
@@ -71,9 +139,39 @@ topics:
       前行不足就急于正行，会掉入「香水海陷阱」（YOGA BLOCK）——享受禅悦而不思进取；「禅定窟」——能入定但不能入正定；「罗汉坑」——没有普贤乘DNA则堕二乘。
     source: |
       📎 海云继梦《迈向佛陀的境界·华严禅前行概论》(tfoyin.cn/show/57521.html) · 海云继梦《华严禅法（二）如何超越修行陷阱》(info.51.ca/articles/351822) · 海云继梦《何谓参禅金三角》(fjdh.cn 2013.12) · fjdh.cn/fjask/2013/12/133616318955.html
+    en_body: |
+      The approach stage is the core training phase of the chan-contemplation
+      system — systematic training before formal practice begins.
+
+      <b>The Huazang Project — a mind-transformative project</b>: practising the
+      Ten Great Vows (worship of all Buddhas, praise of the Tathāgatas, broad
+      offerings, etc.), training the mind through the events of daily life. The
+      master teaches that only when provisions and conditions are complete — the
+      Huazang Project, dharma-protection history, and practice history all well
+      undertaken — does one devote oneself to the actual practice of chan.
+
+      <b>Upholding the precepts</b>: "The precepts are a tool and a blueprint —
+      for the individual a norm of conduct, the guideline of study and the
+      blueprint of life … the basic equation of our mind-engineering."
+
+      <b>Harmonising</b> (outer and inner): outer — diet, sleep, daily
+      routines, thoughts, habits; inner — body, breath, mind (the five-subject
+      training).
+
+      <b>The Golden Triangle of chan contemplation</b>: place the mind in a
+      single point + relax + clearly noting the in- and out-breath. If one
+      passes these three, contact-signs arise, body and mind are regulated, and
+      one attains the mind's one-pointedness.
+
+      <b>Master's warning</b>: rushing to the main practice with an incomplete
+      approach stage leads to the "perfume-sea pitfall" (Yoga Block) — savouring
+      dhyāna joy without advancing; the "chan cave" — able to enter samādhi but
+      not right samādhi; and the "Arhat pit" — falling to the two
+      vehicles without the DNA of the Samantabhadra-yāna.
 
   - id: chengguan-ziliang
     title: "四、成观法师：唯识五位体系中的资粮位"
+    title_en: "4. Master Chengguan: The Provision Stage within the Five-Stage Consciousness-Only System"
     body: |
       成观法师（1947— ），贤首宗兼慈恩宗第42世法脉传人，日本高野山真言宗第53世传法灌顶阿阇梨。在《大乘百法明门论今注》《唯识三十论颂义贯》等著作中系统讲解唯识五位修行阶位。
 
@@ -91,9 +189,39 @@ topics:
       在《大日经疏》体系中，前行包括戒律持守、正知见建立。资粮位是修行的第一步，需要长期积累。
     source: |
       📎 成观法师《大乘百法明门论今注》(新逍遥园译经院) · 成观法师《唯识三十论颂义贯》 · 成观法师《大日经疏讲解》第28集(20240820cxxz.blogspot.com) · 于凌波《唯识名词白话新解》 · 新逍遥园译经院官网(abtemple.org)
+    en_body: |
+      Venerable Chengguan (b. 1947) is the 42nd-generation dharma heir of the
+      Xianshou school together with the Cien (Yogācāra) school, and a 53rd-
+      generation Transmission-Abhiṣeka Ācārya of Japan's Kōyasan Shingon
+      lineage. He expounds the five stages of practice in works such as the
+      Commentary on the Mahāyāna Hundred-Dharmas Gate and the Meaning
+      Interwoven of the Thirty Verses.
+
+      <b>The five-stage Consciousness-Only system</b>:
+      (1) provision stage — the ten abidings, ten practices, ten dedications
+      (three worthy stages), "the great-vehicle lot that accords with
+      liberation";
+      (2) applied stage — warmth, summit, endurance, highest-worldly, entering
+      the insight path by vigorous effort atop the merits-and-wisdom provisions;
+      (3) stage of penetration (insight path) — the first bhūmi;
+      (4) stage of cultivation (cultivation path) — second to tenth bhūmi;
+      (5) stage of culmination — supreme, utterly pure.
+
+      <b>His view of practice</b>: in the Great Sun Sūtra Commentary lectures he
+      stresses that the Buddha's teaching both demolishes and establishes —
+      first toppling one's "illegal constructions," then raising a fine
+      government residence. Breaking error and manifesting right is the core of
+      the provision stage. Taking "Śūraṅgama + Consciousness-Only + Mantra" as
+      three pillars, he advocates "Chan and Tantra mutually cultivated."
+
+      <b>Esoteric preliminaries</b>: in the Mahāvairocana Sūtra system, the
+      preliminaries include upholding precepts and establishing right view; the
+      provision stage is the first step of practice and requires long-term
+      accumulation.
 
   - id: comparison
     title: "五、对比：海云体系 vs 成观体系 vs 传统框架"
+    title_en: "5. Comparison: Haiyun's System vs Chengguan's System vs the Traditional Framework"
     body: |
       <table class=v-table style="font-size:.78em;margin:8px 0">
       <tr><th>维度</th><th>海云继梦法师</th><th>成观法师</th><th>传统唯识/藏传</th></tr>
@@ -113,9 +241,29 @@ topics:
       两位法师皆承接贤首宗（华严宗）第42世法脉（成观法师2010年承接，海云继梦2008年承接）。在资粮道的重视上高度一致——都认为正行之前必须有扎实的前行基础，不可急功近利。
     source: |
       📎 成观法师《大日经疏讲解》· 海云继梦《华严禅观的入法界次第道》· 大华严寺官网 · 新逍遥园译经院官网(abtemple.org) · chengguan_master.yaml comparison_with_haiyun
+    en_body: |
+      The table above compares five dimensions across the three frameworks:
+      definition of the provision stage; content of the approach stage; the
+      main practice; distinctive features; and the lineage. Haiyun frees the
+      provision stage from the classical schema and redefines it as character
+      training plus life practice; Chengguan keeps the classical five stages
+      within the esoteric system, teaching the sequence through the
+      Mahāvairocana Commentary, with "Śūraṅgama + Consciousness-Only + Mantra"
+      as three pillars.
+
+      <b>Key differences</b>: Haiyun's uniqueness lies in the life-centred
+      redefinition; Chengguan's, in preserving the traditional stage framework
+      within the esoteric system. Together they form two strikingly different
+      yet complementary teachers of the Huayan lineage in contemporary Taiwan.
+
+      <b>Common ground</b>: both succeeded to the 42nd generation of the
+      Xianshou (Huayan) school, and both are highly consistent in valuing the
+      provision stage — insisting that the main practice must rest on a solid
+      foundation, never rushed.
 
   - id: classical-ref
     title: "六、经典依据 · 文献出处"
+    title_en: "6. Canonical Basis and Sources"
     body: |
       <b>汉传经典</b>：
       ·《成唯识论》卷九(CBETA T31n1585) — 唯识五位定义
@@ -148,6 +296,21 @@ topics:
       · 藏传佛教五道十地概述(tibetcul.com)
     source: |
       📎 CBETA电子佛典(cbetaonline.dila.edu.tw) · 新逍遥园译经院(abtemple.org) · 大华严寺官网(huayenworld.org) · 佛学在线(xuefo.net.cn) · 听佛音网站(tfoyin.cn)
+    en_body: |
+      <b>Chinese canon</b>: Cheng Weishi Lun juan 9 (CBETA T31n1585) — the
+      definition of the five stages; Mahāyāna Path Sequence (T45n1864) — "the
+      initial provision stage has thirty minds"; Zhancha Shanye Baobao Jing
+      (T17n0839) — mind-only views; Avataṃsaka Sūtra, Daśabhūmika chapter
+      (T10n0279); Awakening of Faith (T32n1666) — the root of śamatha-vipaśyanā
+      and mind-only contemplation.
+
+      <b>By Master Haiyun</b> and <b>by Master Chengguan</b>: full titles are
+      listed in the Chinese text alongside (including the Mahāvairocana
+      Commentary YouTube series and the Śūraṅgama Meaning Interwoven).
+
+      <b>Scholarly reference</b>: Swanson, Paul L., Foundations of
+      T'ien-T'ai Philosophy; Yū Lingbo's vernacular Buddhist dictionary
+      entries on the five stages; plus the Tibetan five-path literature.
 
 references:
   - "《成唯识论》卷九 (CBETA T31n1585) — 唯识五位定义原文"

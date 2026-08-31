@@ -1,6 +1,7 @@
 sections:
 - id: vinaya_overview
   title: 律宗总览
+  title_en: Overview of the Vinaya School
   icon: 📏
   intro: '律宗，以研习与持守戒律为宗。中国律宗以《四分律》为根本，
 
@@ -11,11 +12,20 @@ sections:
     「戒为无上菩提本，应当具足持净戒」。
 
     '
+  intro_en: "The Vinaya school takes the study and observance of the precepts
+    as its very principle. Chinese vinaya is rooted in the Four-Part Vinaya
+    (Dharmaguptaka); the Vinaya Master Daoxuan (596-667) founded the
+    Nanshan lineage, which became the mainstream of precept transmission in
+    Chinese Buddhism. The school's fundamental concern: the precepts are not
+    bondage but provisions for liberation — 'The precepts are the root of
+    unsurpassed bodhi; one should fully uphold the pure precepts.'"
 - id: vinaya_founders
   title: 律宗祖师谱系
+  title_en: The Patriarchs of the Vinaya School
   icon: 👥
   topics:
   - title: 戒律传入与早期翻译
+    title_en: Introduction of the Precepts and Early Translations
     body: '• 三国曹魏嘉平年间(249-253)，昙摩迦罗译《僧祇戒心》，中国始有戒律
 
       • 东晋道安(312-385)制定《僧尼轨范》——中国僧团制度的先驱
@@ -23,7 +33,18 @@ sections:
       • 鸠摩罗什译《十诵律》(T23n1435)，佛陀耶舍译《四分律》(T22n1428)——律典传入的奠基时期
 
       '
+    en_body: "• During the Jiaping era of the Cao Wei Kingdom (249-253),
+      Dharmakāla translated the Śramana (Saṅghika) Prātimokṣa, and China first
+      had precepts.
+
+      • Daosheng's contemporary Dao'an (312-385) codified the Monastic Norms
+      for Monks and Nuns — a forerunner of the Chinese saṅgha system.
+
+      • Kumārajīva translated the Ten-Recitation Vinaya (T23n1435) and
+      Buddhayaśas the Four-Part Vinaya (T22n1428) — the foundational era of
+      vinaya transmission."
   - title: 道宣(596-667) — 南山律宗创立者
+    title_en: Daoxuan (596-667) — Founder of the Nanshan Vinaya Lineage
     body: '道宣，俗姓钱，浙江吴兴人。15岁出家，20岁依智首律师学律。
 
       居终南山丰德寺，故称南山律师。开创「南山三大部」：
@@ -41,7 +62,21 @@ sections:
       另有《续高僧传》(T50n2060)——中国佛教史最重要的传记文献之一。
 
       '
+    en_body: "Daoxuan, lay surname Qian, hailed from Wuxing, Zhejiang. He left
+      home at fifteen and studied vinaya under the Vinaya Master Zhishou from
+      age twenty. Residing at Fengde Temple on Zhongnan Mountain, he is known
+      as the Nanshan Vinaya Master. He composed the 'Three Great Nanshan
+      Works': the Mohe Zhiguan-like Procedure of the Four-Part Vinaya
+      (T40n1804, the school's general manual, 12 fascicles); the
+      Commentarial Prātimokṣa of the Four-Part Vinaya; and the Commentary on
+      the Karman of the Four-Part Vinaya. His tenet, 'the Four-Part Vinaya
+      through Mahāyāna', interrelated the precepts with Consciousness-Only and
+      Huayan ideas, elevating vinaya study from 'Hīnayāna precepts' to
+      'Mahāyāna precepts'. His Continued Biographies of Eminent Monks
+      (T50n2060) remains one of the most important biographical sources in the
+      history of Chinese Buddhism."
   - title: 三大部与律宗传承
+    title_en: The Three Great Works and the Vinaya School Transmission
     body: '律宗「三大部」即道宣的《行事钞》《戒本疏》《羯磨疏》。
 
       唐代律宗三派并立：
@@ -55,11 +90,21 @@ sections:
       中唐以后南山宗独盛，宋元明清律宗传承皆以南山为宗。
 
       '
+    en_body: "The 'Three Great Works' of the Vinaya school are Daoxuan's
+      Procedure, Hisabī, and Karman Commentary. In the Tang, three schools
+      stood side by side: the Nanshan school (Daoxuan), which later became
+      orthodox; the Xiangbu school (Fali), named after the sun-light Temple in
+      Xiangzhou; and the Dongta school (Huaiquan), named after the East Pagoda
+      Temple in Taiyuan. From the mid-Tang onward the Nanshan school alone
+      flourished, and vinaya transmission in the Song, Yuan, Ming and Qing
+      dynasties all took Nanshan as its norm."
 - id: vinaya_classics
   title: 律典要目
+  title_en: Principal Vinaya Texts
   icon: 📚
   topics:
   - title: 根本律典
+    title_en: Fundamental Vinaya Texts
     body: '• 《四分律》60卷(T22n1428)——汉传根本戒律。佛陀耶舍·竺佛念译
 
       • 《十诵律》61卷(T23n1435)——鸠摩罗什·弗若多罗译
@@ -71,7 +116,22 @@ sections:
       • 《善见律毗婆沙》18卷(T24n1462)——律论
 
       '
+    en_body: "• Four-Part Vinaya, 60 fascicles (T22n1428) — the root precepts of
+      Chinese Buddhism, tr. Buddhayaśas and Zhu Fonian.
+
+      • Ten-Recitation Vinaya, 61 fascicles (T23n1435) — tr. Kumārajīva and
+      Puṇyatrāta.
+
+      • Five-Part Vinaya, 30 fascicles (T22n1421) — tr. Buddhajīva and
+      Zhu Daosheng.
+
+      • Mahāsaṅghika Vinaya, 40 fascicles (T22n1425) — tr. Buddhabhadra and
+      Faxian.
+
+      • Samantapāsādikā (Good-Vision Vinaya Commentary), 18 fascicles
+      (T24n1462) — a vinaya treatise."
   - title: 大乘戒律
+    title_en: Mahāyāna Precepts
     body: '• 《梵网经》2卷(T24n1484)——大乘菩萨戒。十重四十八轻戒
 
       • 《菩萨璎珞本业经》——三聚净戒
@@ -79,7 +139,16 @@ sections:
       • 《优婆塞戒经》7卷(T24n1488)——在家菩萨戒
 
       '
+    en_body: "• Brahmā's Net Sūtra, 2 fascicles (T24n1484) — the Mahāyāna
+      bodhisattva precepts: ten major and forty-eight minor.
+
+      • Sūtra on the Original Deeds of the Bodhisattva's Jeweled
+      Necklace — the threefold pure precepts.
+
+      • Upāsaka Precepts Sūtra, 7 fascicles (T24n1488) — the lay
+      bodhisattva precepts."
   - title: 律宗重要注疏
+    title_en: Major Commentaries of the Vinaya School
     body: '• 道宣《行事钞》12卷(T40n1804)
 
       • 元照《四分律行事钞资持记》(T40n1805)——宋代律学复兴巨著
@@ -89,11 +158,24 @@ sections:
       • 弘一《四分律比丘戒相表记》——近代律学复兴标志
 
       '
+    en_body: "• Daoxuan's Procedure of the Four-Part Vinaya, 12 fascicles
+      (T40n1804).
+
+      • Yuanzhao's Sustaining Record of the Procedure of the Four-Part
+      Vinaya (T40n1805) — the great work of the Song vinaya revival.
+
+      • Jianyue Duti's Essentials of Daily Vinaya and the Regular Model for
+      Ordination — the transmission norms of the late Ming and early Qing.
+
+      • Hongyi's Tabulated Record of the Bhikṣu Precept Marks of the
+      Four-Part Vinaya — a landmark of the modern vinaya revival."
 - id: vinaya_history
   title: 律宗发展史
+  title_en: History of the Vinaya School
   icon: 📜
   topics:
   - title: 宋代复兴 — 元照与灵芝律学
+    title_en: The Song Revival — Yuanzhao and the Lingzhi Vinaya Learning
     body: '唐末会昌法难后律学衰微。宋代元照(1048-1116)著《四分律行事钞资持记》，
 
       复兴南山律学，世称「灵芝律师」。其会通律、禅、净三门的立场，
@@ -101,7 +183,15 @@ sections:
       对后世影响深远。宋代设「律宗五山十刹」制度，律寺制度化。
 
       '
+    en_body: "After the Huichang persecution (845) at the end of the Tang,
+      vinaya learning declined. In the Song, Yuanzhao (1048-1116), author of
+      the Sustaining Record of the Procedure of the Four-Part Vinaya, revived
+      Nanshan studies and came to be known as the 'Lingzhi Vinaya Master'. His
+      position of uniting vinaya, chan and Pure Land had a profound influence
+      on later ages. The Song established the 'five mountains and ten temples'
+      system for the Vinaya school, institutionalising vinaya monasteries."
   - title: 明清转型 — 传戒制度的成型
+    title_en: The Ming-Qing Transition — The Formation of the Ordination System
     body: '明末律宗复兴三大家：
 
       • 古心如馨(1541-1615)——重开律宗传承，称「中兴律祖」
@@ -113,7 +203,16 @@ sections:
       宝华山律宗传承至今日，成为汉传佛教传戒的核心制度。
 
       '
+    en_body: "Three masters revived the Vinaya school in the late Ming: Guxin
+      Ruxin (1541-1615), who reopened the transmission and is called the
+      'restorer of the vinaya ancestors'; Sanmei Jiguang (1580-1645), the
+      first vinaya patriarch of Mount Baohua; and Jianyue Duti (1601-1679),
+      the second generation at Baohua, whose Regular Model for Ordination
+      established the ritual of the three-platform ordination. The Baohua
+      transmission continues to this day as the core system of ordination in
+      Chinese Buddhism."
   - title: 近代复兴 — 弘一法师
+    title_en: The Modern Revival — Venerable Hongyi
     body: '弘一法师(李叔同，1880-1942)：近代律宗复兴的关键人物。
 
       • 1918年出家，专修南山律
@@ -129,11 +228,22 @@ sections:
       赵朴初评价：「无尽奇珍供世眼，一轮圆月耀天心。」
 
       '
+    en_body: "Venerable Hongyi (Li Shutong, 1880-1942) was the decisive figure
+      of the modern vinaya revival. He left home in 1918 and devoted himself
+      exclusively to Nanshan vinaya; founded the Nanshan Vinaya Institute in
+      1931; and composed works such as the Tabulated Record of the Bhikṣu
+      Precept Marks of the Four-Part Vinaya and a Nanshan Vinaya handbook for
+      lay practitioners. His 'self-discipline' spirit — 'cherish blessings,
+      accustom to toil, uphold the precepts, respect oneself' — became a model
+      of Buddhist character in modern times. His revival brought the Nanshan
+      lineage back to life in the modern era."
 - id: vinaya_practice
   title: 戒律实践体系
+  title_en: The System of Precept Practice
   icon: 🙏
   topics:
   - title: 戒律的基本结构
+    title_en: The Basic Structure of the Precepts
     body: '• 三归五戒：在家众基础——不杀生·不偷盗·不邪淫·不妄语·不饮酒
 
       • 沙弥十戒：出家众初阶
@@ -145,7 +255,21 @@ sections:
       • 三坛大戒：沙弥戒→比丘戒→菩萨戒的完整传戒仪式
 
       '
+    en_body: "• The three refuges and five precepts (no killing, stealing,
+      sexual misconduct, false speech, intoxicants) — the lay foundation.
+
+      • The ten precepts of a novice.
+
+      • The 250 precepts of a monk and 348 of a nun — the complete
+      ordination.
+
+      • The bodhisattva precepts: the ten major and forty-eight minor
+      (Brahmā's Net) or the threefold pure precepts.
+
+      • The three-platform ordination: novice → monk → bodhisattva precepts,
+      the complete transmission ritual."
   - title: 律宗修行特色
+    title_en: Distinctive Features of Vinaya Practice
     body: '律宗以「戒」为修行本位，主张「戒律即是修行」：
 
       • 持戒清净为一切禅定智慧的根基——「由戒生定，由定发慧」
@@ -159,11 +283,25 @@ sections:
       百丈怀海「一日不作一日不食」的农禅制度即戒律精神在禅宗的落实。
 
       '
+    en_body: "The Vinaya school is built around the precepts as the basis of
+      practice, holding that 'the vinaya itself is the practice': pure
+      observance is the root of all meditation and wisdom ('from the
+      precepts arises concentration, from concentration arises wisdom');
+      the school sets great store by karman (the monastic democratic
+      procedure) — posadha, pravāraṇā, and the rains retreat; and in modern
+      times Hongyi made 'uphold the precepts and chant the Buddha-name' his
+      lifelong practice. As for the Vinaya school's relation to Chan: the
+      'pure rules' (Chanyuan qinggui) of the Chan community are the Chinese
+      innovation of the precepts — Baizhang Huaihai's farming-chan system,
+      'a day without work is a day without food', is the vinaya spirit made
+      concrete within Chan."
 - id: vinaya_haiyun
   title: 海云继梦法师·戒律观
+  title_en: Venerable Haiyun Jihong — View of the Precepts
   icon: 🌊
   topics:
   - title: 海云法师论戒律
+    title_en: Master Haiyun on the Precepts
     body: '海云继梦法师的戒律观, 散见于其讲记与「华严六科」中的「华严戒律观」(S4播客季):
 
       **戒律即工程面基础**: 海云法师将戒律置于「技术面/工程面」双轨的工程面——戒律不是束缚行者的条框, 而是「生命改造工程」的安全规范。技术面(数息·置心一处)若无戒律保护,
@@ -176,11 +314,40 @@ sections:
       **对现代持戒的判摄**: 海云法师反对教条化持戒——「持戒的目的在净化生命, 而非制造恐惧」。现代社会的持戒需理解戒律的「律学精神」(防非止恶·利他),
       而非机械执行条文。'
     source: 大华严寺「华严六科」·S4华严戒律观(Spotify/Apple)·《迈向佛陀的境界》相关章节
+    en_body: "Master Haiyun Jihong's view of the precepts is scattered across his
+      talks and the 'Huayan Vinaya View' of his Six Huayan Subjects
+      (season 4 podcast).
+
+      • The precepts as the foundation of the 'engineering track': he sets the
+      precepts on the engineering side of the technical/engineering dual
+      track — not fetters hemming the practitioner in, but the safety norms of
+      a 'life-transformation project'. The technical track (breath counting,
+      one-pointed mind) easily runs into hindrances without the protection of
+      the precepts.
+
+      • The core of the 'Huayan vinaya view': the bodhisattva precepts
+      (Brahmā's Net ten major, forty-eight minor) as the root precepts of
+      Huayan practitioners — not limited to Hīnayāna precepts, but 'taking the
+      Ten Great Vows as the precept-substance': the very vow-power of
+      Samantabhadra practice is the deepest precept.
+
+      • 'The precepts are personality': in the provision stage he stresses
+      sound personality (75/100) as a precondition of practice — the essence of
+      the precepts is the health of the personality, not outward rules. This
+      echoes inwardly Hongyi's spirit of self-discipline.
+
+      • Toward modern observance: he rejects dogmatic precept-keeping — 'the
+      purpose of the precepts is to purify life, not to manufacture fear'.
+      Observance in modern society must grasp the 'spirit of vinaya'
+      (preventing wrong, stopping evil, benefiting others) rather than
+      mechanically executing the letter."
 - id: vinaya_academic
   title: 世界学术视野下的律学研究
+  title_en: Vinaya Studies in Global Scholarship
   icon: 🔍
   topics:
   - title: 国际佛学界的律学研究脉络
+    title_en: The Course of Vinaya Studies in International Buddhist Scholarship
     body: '**西方律学研究**:
 
       - Erich Frauwallner(1898-1974): 奥地利学者, 《原始律典》(The Earliest Vinaya and the Beginnings
@@ -202,24 +369,80 @@ sections:
       - 湛如《敦煌佛教律仪制度研究》(中华书局, 2003)——以敦煌文书研究唐代寺院戒律实践。
 
       - 王建光《中国律宗通史》(凤凰出版社, 2008)——中国律宗史的系统梳理。'
+    en_body: "Western vinaya studies: Erich Frauwallner, The Earliest Vinaya
+      and the Beginnings of Buddhist Literature (1956), reconstructed the
+      formation of the vinaya texts philologically and proposed that all
+      school vinayas derive from a common 'Urvinaya'. Heinz Bechert
+      (1932-2005) approached the vinayas linguistically. Gregory Schopen used
+      inscriptional and archaeological evidence to challenge the text-centred
+      historiography, arguing that the actual life of early monastic
+      communities was more diverse than the vinaya texts alone suggest.
+
+      Japanese scholarship: Hirakawa Akira (1915-2002), Studies in the
+      Vinaya Piṭaka (1960), a systematic study of the Chinese vinaya
+      translations centred on the Four-Part Vinaya. Sato Mitsuō studied the
+      institutional history of the early saṅgha.
+
+      Chinese scholarship: Zhanru's Studies of Buddhist Vinaya Institutions in
+      Dunhuang (2003) and Wang Jianguang's Comprehensive History of the
+      Chinese Vinaya School (2008)."
   - title: 律典的文献学问题
+    title_en: Philological Questions of the Vinaya Texts
     body: '**各派律藏比较**: 现存六种律藏(四分·十诵·五分·僧祇·根本说一切有部·巴利律), 学界公认源于共同的「原始律典」, 但各派律藏的分化过程仍存争议。Frauwallner认为根本说一切有部律最接近原貌;
       平川彰则认为四分律在汉传中的独尊地位有其历史偶然性(道宣的弘传与南山宗的制度化)。
 
       **「经律之争」的历史维度**: 大乘佛教兴起后, 戒律的地位成为教义争论焦点——《大般涅槃经》「扶律谈常」将戒律与如来藏思想结合, 为「四分律通大乘」提供了经典依据。道宣正是这一传统的集大成者。
 
       **敦煌律典文书**: 敦煌出土的《四分律戒本》《受戒牒》等文书, 展示了唐代戒律实践的「活的制度」层面——与文本律藏形成了「文本vs实践」的有趣对照。'
+    en_body: "Comparative study: the six extant vinayas (Four-Part, Ten-Recitation,
+      Five-Part, Mahāsaṅghika, Mūlasarvāstivāda, and the Pāli Vinaya) are
+      generally agreed to derive from a common 'Urvinaya', yet their exact
+      lines of differentiation remain debated. Frauwallner held the
+      Mūlasarvāstivāda vinaya closest to the original; Hirakawa saw the
+      pre-eminence of the Four-Part Vinaya in China as historically
+      contingent (Daoxuan's propagation and the institutionalisation of the
+      Nanshan school).
+
+      The sūtra-vinaya debate in history: with the rise of Mahāyāna, the
+      status of the precepts became a doctrinal battleground — the
+      Mahāparinirvāṇa Sūtra's 'upholding the vinaya while discoursing on
+      permanence' joined the precepts with tathāgatagarbha thought, giving
+      canonical warrant for 'the Four-Part Vinaya through Mahāyāna'. Daoxuan
+      is the culmination of this tradition.
+
+      The Dunhuang documents: exhumed materials such as the Four-Part
+      prātimokṣa texts and ordination certificates reveal the 'living
+      institution' of Tang monastic practice — a fascinating text-versus-
+      practice contrast to the codified vinayas."
 - id: vinaya_internal
   title: 佛门内部的戒律观
+  title_en: Views of the Precepts Inside the Buddhist Community
   icon: 🧘
   topics:
   - title: 「以戒为师」— 佛陀遗教与戒律的神圣性
+    title_en: "Take the Precepts as Master — The Buddha's Final Instruction and the Sacredness of the Precepts"
     body: '佛陀入灭前付嘱阿难:「我灭度后, 以戒为师。」(《佛遗教经》T12n0389) 此语成为佛门对戒律最高权威的经典依据。
 
       **戒律在修行次第中的位置**: 戒→定→慧三学, 戒为根基。《楞严经》:「因戒生定, 因定发慧, 是则名为三无漏学。」(T19n0945)
 
       **道宣「四分通大乘」的义理**: 道宣以《四分律》配大乘戒体论——「戒体」是受戒时熏习于阿赖耶识的防非止恶功能。此说以唯识学改造小乘戒律, 使南山律宗成为「大乘律宗」。'
+    en_body: "Before his parinirvāṇa the Buddha entrusted Ānanda: 'After my
+      final passing, take the precepts as your master' (Sūtra of the Buddha's
+      Final Teaching, T12n0389). This saying became the canonical ground of
+      the precepts' supreme authority. In the sequence of practice —
+      precepts, concentration, wisdom — the precepts are the root: the
+      Śūraṅgama Sūtra declares, 'From the precepts arises concentration, from
+      concentration arises wisdom; these are called the three
+      undefiled learnings' (T19n0945).
+
+      Daoxuan's doctrine of 'the Four-Part Vinaya through Mahāyāna' matched
+      the Four-Part Vinaya with the Mahāyāna theory of the precept-substance
+      (śīla-saṅgraha): the 'precept-substance' is the function, instilled in
+      the ālayavijñāna at ordination, that prevents wrong and stops evil.
+      This recast Hīnayāna vinaya through Consciousness-Only ideas, making
+      the Nanshan school a 'Mahāyāna vinaya school'."
   - title: 各宗对戒律的不同态度
+    title_en: The Different Attitudes of the Schools toward the Precepts
     body: '**禅宗**: 百丈清规——「以戒律之精神, 立禅门之规范」。禅宗不废戒律, 但以「清规」为中国化的丛林戒律。近代虚云·来果恢复禅堂古规, 亦重戒律。
 
       **净土宗**: 「持戒念佛」——以戒行为往生资粮。蕅益智旭《重治毗尼事义集要》强调持戒与念佛并重。
@@ -229,7 +452,29 @@ sections:
       **华严**: 「以十大愿王为戒体」(海云继梦)——普贤行愿的愿力本身即最深的戒。
 
       **天台**: 智者大师《菩萨戒义疏》——梵网菩萨戒的系统诠释。'
+    en_body: "Chan: Baizhang's pure rules — 'with the spirit of the precepts,
+      establish the norms of the Chan community'. Chan does not abolish the
+      precepts but refines them into the Sinified monastery code; the modern
+      masters Xuyun and Laiguo both restored the ancient hall rules and valued
+      the precepts.
+
+      Pure Land: 'uphold the precepts and chant the Buddha-name' — precept
+      conduct as provision for rebirth. Ouyi Zhixu's collection on the vinaya
+      stresses precepts and Pure Land practice as equal.
+
+      Esoteric Buddhism: the samaya vow (pledged precepts) — the covenant
+      with master, deity and dharma-protectors at abhiṣeka, the distinctive
+      esoteric precept.
+
+      Huayan: 'taking the Ten Great Vows as the precept-substance'
+      (Haiyun Jihong) — the vow-power of Samantabhadra practice is itself
+      the deepest precept.
+
+      Tiantai: Zhanran's teacher Zhiyi's Subcommentary on the Bodhisattva
+      Precepts — a systematic interpretation of the Brahmā's Net
+      bodhisattva precepts."
   - title: 现代佛门的戒律讨论
+    title_en: Modern Discussions of the Precepts within Buddhism
     body: '**「戒律现代化」的争论**: 20世纪以来, 关于「戒律是否应随时代调整」的讨论持续不断。太虚主张「僧制改革」; 印顺主张「回到律藏」的历史研究路径;
       弘一则以「严谨持守」为立场复兴南山律。
 
@@ -237,6 +482,22 @@ sections:
 
       **「佛教伦理学」的国际对话**: 20世纪末以来, 西方学界以Damien Keown《The Nature of Buddhist Ethics》(1992)为代表,
       将戒律研究纳入比较伦理学框架——戒律的「规范性」与康德的义务论、功利主义形成对话。'
+    en_body: "The debate over 'modernising the precepts' has continued since
+      the twentieth century: Taixu advocated monastic reform; Yinshun urged a
+      historical study 'back to the vinayas'; Hongyi revived Nanshan vinaya
+      with a stance of strict observance.
+
+      The restoration of the bhikṣuṇī ordination: the historical break of the
+      two-community ordination (requiring both the monastic and nun's
+      saṅghas) in Chinese Buddhism makes the nun's precept line a
+      contemporary controversy — both Taiwan (1980s-90s) and the Theravāda
+      world have held special conferences on it.
+
+      International dialogue on 'Buddhist ethics': since the late twentieth
+      century Western scholars, notably Damien Keown's The Nature of Buddhist
+      Ethics (1992), have brought vinaya studies into comparative ethics —
+      the 'normativity' of the precepts in dialogue with Kantian
+      deontology and utilitarianism."
 references:
 - 道宣《四分律删繁补阙行事钞》T40n1804
 - 元照《四分律行事钞资持记》T40n1805
