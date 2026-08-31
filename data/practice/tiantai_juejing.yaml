@@ -1,6 +1,7 @@
 sections:
 - id: tt_overview
   title: 名相辨析 · 天台·法华·止观·三谛
+  title_en: "Terms Distinguished — Tiantai, the Lotus, Calming and Insight, and the Three Truths"
   icon: 🔭
   intro: '「天台宗」「法华宗」「止观」「三谛圆融」四个名相在汉传佛教语境里常被交替使用，但严格说指向四个既重叠又不完全等同的对象：
 
@@ -13,17 +14,29 @@ sections:
     **三谛圆融**是哲学范畴——空·假·中三谛非次第而圆融相即，是天台区别于华严「四法界」、三论「八不中道」的核心哲学立场。
 
     本页循此脉络，从北齐慧文奠基，经智顗集大成、灌顶结集、湛然中兴、会昌法难后式微、宋代山家山外之争、日本最澄传入，到近现代谛闲·倓虚·宝静复兴，再落脚于当代学术与修行界的再评价——十个维度彼此交织、互相印证。'
+  intro_en: |
+    Four terms that Chinese Buddhism habitually runs together, yet each names a distinct, if overlapping, object. "Tiantai" names a school: the earliest mature indigenous lineage of Chinese Buddhism, so called from Zhiyi's long residence on Mount Tiantai, grounded in the Lotus Sutra, which classifies the whole of the Dharma by the five periods and eight teachings and practices through the three contemplations in a single mind and the three thousand realms in a single thought. The "Lotus school" names the scriptural basis, the older and wider name; only in the Tang did Zhanran formally style the tradition "Tiantai." "Calming-and-contemplation" names the practice: the school's operative core, distinguished by cultivating śamatha (calming) and vipaśyanā (insight) together, ordered by Zhiyi into complete systems such as the Great Calming and Contemplation, the Six Gates to the Sublime, and the Graduated Stages of the dhyāna pāramitā. And the "perfectly fused three truths" names the philosophy: emptiness, the provisional, and the middle, fused rather than sequential — the stance that sets Tiantai apart from Huayan's four dharma-realms and the Three Treatises school's "eight-fold negation of the middle."
+
+    This page follows that weave from the northern Qi master Huiwen's founding insight, through Zhiyi's synthesis, Guanding's redaction, Zhanran's revival, the eclipse after the Huichang persecution, the Song dispute between the Mountain-home and Mountain-foreign factions, and Saichō's transmission to Japan, down to the modern revival under Dixian, Tanxu, and Baojing — and ends with the reassessment of today's scholars and practitioners. Ten threads interwoven, each confirming the others.
 
   topics:
   - title: 「教观双美」— 天台宗的根本特色
+    title_en: "Teaching and Contemplation in Double Perfection — the hallmark of Tiantai"
     body: '在汉传大乘八宗中，华严·法相·三论偏于教义理论的发挥；禅·净·律·密偏于观行实践的进取。**天台宗的独特贡献在于将「教」与「观」发挥到极致并圆融一体**——「教」是佛陀一代时教的判释体系，「观」是行者契入实相的禅观技术，二者不是理论与实践的简单对应，而是「教观总持、解行并进」的有机整体。
 
       智顗大师一变当时「南义北禅」的分裂学风：南朝重义学讲说、北朝重禅定修持，天台宗将二者合并，形成「以教摄观、以观验教」的独特范式——这也是天台宗被认为是中国最早本土成熟佛教宗派的根本原因。
 
       著名的「天台三大部」——《法华玄义》《法华文句》《摩诃止观》——分别对应教理·经文·观行三面，正是「教观双美」的文本化身。'
+    en_body: |
+      Among the major Mahāyāna schools of Chinese Buddhism, Huayan, the Faxiang (Yogācāra), and the Sanlun (Three Treatises) excel at doctrinal elaboration, while Chan, Pure Land, Vinaya, and the Esoteric schools excel at meditative and ritual practice. Tiantai's singular contribution is carrying both to their fullest extent and fusing them into one: "the teaching" — the classifying system by which the Buddha's whole dispensation is staged and interpreted — and "the contemplation" — the meditative technique by which the practitioner enters reality-as-it-is. The two are not a simple pairing of theory and practice but an organic whole of "holding teaching and contemplation together, with understanding and practice advancing in step."
+
+      The Great Master Zhiyi overturned the age's split between "southern doctrine and northern meditation": the south prized scriptural lectures, the north prized meditative discipline. By uniting both he created the distinctive paradigm of "teaching guiding contemplation, and contemplation verifying teaching" — the fundamental reason Tiantai is honored as China's first mature, indigenous Buddhist school.
+
+      The celebrated "Three Great Works" — the Profound Meaning of the Lotus, the Words and Phrases of the Lotus, and the Great Calming and Contemplation — answer respectively to doctrine, scripture, and practice: three faces of the same double perfection, made text.
     source: 天台宗「教观总持」传统·维基百科「天台宗」词条·灵隐寺2024年谛闲纪念文
 
   - title: 一个方法论提醒 — 宗派史叙述的层累
+    title_en: "A methodological caveat — the layered construction of sectarian history"
     body: '本领域的「宗派史」叙述，相当一部分是后世（尤其日本学僧与近现代中国天台学者）系统化整理的产物，与史料本身的原始记载之间存在不小的层累距离。
 
       **「天台九祖」谱系即为一例**：龙树→慧文→慧思→智顗→灌顶→智威→慧威→玄朗→湛然，这一完整谱系的定型，本身即有后人追溯建构的色彩——龙树是印度中观祖师，与天台止观之间隔着数百年和巨大的地理文化距离，将其列为初祖更多是「以论(《大智度论》)判教」的思想溯源，而非实际的法脉传承。
@@ -31,30 +44,56 @@ sections:
       类似地，「天台宗」作为宗派名称至中唐湛然才正式提出，之前往往以「法华宗」「止观宗」「圆教」等名目流传。将这一脉络包装成自始即有明确谱系意识的「宗派」，是后世（尤其日本比叡山系统）的建构工作。
 
       **这不意味着慧文→慧思→智顗的实际师承是虚构的**（《续高僧传》等中土史料有扎实记载），而是提醒：把这条脉络追溯到龙树、包装成九祖相承的「宗派」，是后人的诠释工作。'
+    en_body: |
+      A good part of the "sectarian history" in this field is a retrospective systematization — much of it the work of Japanese scholar-monks and of modern Chinese Tiantai scholarship — overlaid, layer upon layer, at considerable remove from what the primary sources actually record.
+
+      The "lineage of the nine Tiantai patriarchs" is a case in point: Nāgārjuna, Huiwen, Huisi, Zhiyi, Guanding, Zhiwei, Huiwei, Xuanlang, Zhanran. This tidy sequence was itself shaped by retrospective construction. Nāgārjuna was an Indian Mādhyamika master separated from Tiantai's contemplation by centuries and by vast geographic and cultural distance; listing him as the first patriarch is really an intellectual genealogy — "adjudicating the teaching by the treatise" (the Great Treatise on the Perfection of Wisdom) — not the record of an actual transmission.
+
+      Likewise, the name "Tiantai school" was formally proposed only by Zhanran in the mid-Tang; earlier the tradition circulated as the "Lotus school," the "Calming-Contemplation school," the "Perfect teaching," and the like. Packaging this strand into a "school" possessed of an explicit lineage consciousness from the very beginning is a later work of construction — notably of the Mount Hiei system in Japan.
+
+      None of this means the actual teacher-disciple succession Huiwen-Huisi-Zhiyi is fictitious; it rests on solid Chinese records such as the Continued Biographies of Eminent Monks. The caveat is simply this: tracing the thread back to Nāgārjuna and framing the result as a ninefold "school" is an act of later interpretation.
     source: 凝然《八宗纲要钞》· 日本天台宗九祖定型史· 学界关于天台宗名号起源的讨论
 
 - id: tt_lineage
   title: 法脉奠基 · 慧文→智顗→灌顶
+  title_en: "Founding the Lineage — Huiwen, Zhiyi, Guanding"
   icon: 🏛
   intro: '天台宗的思想源头可追溯至北齐慧文禅师从《大智度论》与《中论》悟入的「一心三观」，经南岳慧思禅师融摄《法华经》诸法实相之说，至智顗大师集大成——中国佛教的第一个本土成熟宗派在陈隋之际诞生。灌顶（章安大师）结集智顗遗著，奠定了天台宗的文献基础。'
+  intro_en: |
+    The intellectual source of the school lies with the northern Qi Chan master Huiwen, whose awakening to the "three contemplations in a single mind" came from the Great Treatise on the Perfection of Wisdom and the Middle Treatise. The Nanyue master Huisi then drew into it the Lotus Sutra's teaching of the reality of all dharmas, and finally Zhiyi brought the whole to completion — China's first mature indigenous Buddhist school was born in the transition from Chen to Sui. Guanding (Master Zhang'an) redacted Zhiyi's bequeathed works and thereby laid the school's textual foundation.
   topics:
   - title: 慧文禅师 — 「三智一心中得」的奠基
+    title_en: "Master Huiwen — the foundation of the three wisdoms attained in a single mind"
     body: '**慧文**（约6-7世纪，北齐时期）是中国天台思想的真正启蒙者。他从《大智度论》卷二十七关于解释《大品》「道种智」「一切智」和「一切种智」之文，悟解到三智「一心中得」的道理——即三种智慧不是次第获得，而是在一念心中同时具足。
 
       又结合《中论·观四谛品》的「三是偈」：「众因缘生法，我说即是空，亦为是假名，亦是中道义」，确立了一心中观空、观假、观中的「**一心三观**」理论——此为天台止观修行的核心技术源头。
 
       慧文本人无著作传世，但其「三智一心中得」的悟入为整个天台宗奠定了哲学基调：**实相不是抽象的本体论预设，而是一念心中即可顿观的当下真实**。'
+    en_body: |
+      Huiwen (northern Qi, c. sixth-seventh centuries) is the true initiator of Tiantai thought. Reading the Great Treatise on the Perfection of Wisdom, chapter 27, on the three wisdoms discussed in the Perfection of Wisdom Sutra — knowledge of the path, universal knowledge, and knowledge of all modes — he saw that the three wisdoms are "attained in a single mind": not acquired in sequence, but fully present in one thought-moment.
+
+      Joining this to the verse "Contemplation of the Four Noble Truths" in the Middle Treatise — "Whatever arises through conditions, I declare to be emptiness; it is also a provisional designation; it is also the meaning of the middle way" — he established the doctrine of the "three contemplations in a single mind," contemplating emptiness, the provisional, and the middle within one thought. This is the core technical source of Tiantai's calming-and-contemplation practice.
+
+      Huiwen left no writings behind, yet his "three wisdoms in a single mind" set the philosophical keynote of the entire school: reality-as-it-is is not an abstract ontological postulate but the immediate, present truth that can be contemplated within a single thought.
     source: 《续高僧传》卷十七·《大智度论》卷二十七·天台宗九祖传统
 
   - title: 慧思禅师 — 「诸法实相」与止观双修
+    title_en: "Master Huisi — the reality of all dharmas and the twin cultivation of calm and insight"
     body: '**慧思**（515-577），俗姓李，武津人，继承慧文「一心三观」之说，并结合《妙法莲华经》要义阐发「诸法实相」之说，为天台宗止观双修的直接先驱。
 
       慧思的关键贡献在于将慧文偏于禅观的「一心三观」推向「定慧双修」的完整修行体系——他兼重定（奢摩他）与慧（毗钵舍那），实为以后天台宗「止观双修」「教观总持」的起缘。
 
       慧思住锡南岳衡山，对后来智顗在南方弘法产生了直接影响。其「法华三昧」的修持体验也为天台宗以《法华经》为修行指南奠定了传统。'
+    en_body: |
+      Huisi (515-577), of the common surname Li from Wujin, inherited Huiwen's "three contemplations in a single mind" and joined to it the Lotus Sutra's teaching of the "reality of all dharmas," making him the direct forerunner of Tiantai's twin cultivation of calm and insight.
+
+      His decisive step was to advance Huiwen's contemplative leaning toward a complete system of "concentration and wisdom practiced together" — honoring samādhi (calming) and wisdom (insight) alike. This is the true origin of Tiantai's "calming and contemplation in one practice" and of its "teaching and contemplation held together."
+
+      Resident on Nanyue (Mount Heng), he directly shaped Zhiyi's later career in the south. His own experience of the "Lotus samādhi" also bequeathed to the school its tradition of taking the Lotus Sutra as the practical manual of the path.
     source: 《续高僧传》卷十七·天台宗九祖传统
 
   - title: 智顗大师 — 天台宗的集大成创始人
+    title_en: "The Great Master Zhiyi — founder and synthesizer of Tiantai"
     body: '**智顗**（538-597），俗姓陈，荆州华容人，18岁出家，23岁拜慧思为师，被尊为天台宗的实际创始人。公元567年到金陵，后常住天台山，世称「天台大师」。
 
       核心贡献：（1）**五时八教**判释体系——将佛陀一代时教分为华严·阿含·方等·般若·法华涅槃五时，配合化仪四教（顿·渐·秘密·不定）与化法四教（藏·通·别·圆），判《法华经》为纯圆独妙之最究竟教法。（2）**一心三观**与**一念三千**的系统化——将慧文「三智一心中得」发展为完整的修行技术，结合《法华经》「十如是」展开为「一念心中具足三千世间法」的宇宙论框架。（3）**三大部**著述——《法华玄义》（释经题）、《法华文句》（释经文）、《摩诃止观》（明修行），奠定天台宗「教·行·证」三位一体的义学体系。
@@ -62,30 +101,56 @@ sections:
       智顗「教观总持、解行并进」的风格，一变当时「南义北禅」的学风——南朝重义学、北朝重禅定，天台宗将二者合流。
 
       弟子**灌顶**（561-632，章安大师）得其真传，结集智顗遗著，作《涅槃玄义》《涅槃经疏》，保存了天台三大部的核心文本。灌顶以降四传至湛然。'
+    en_body: |
+      Zhiyi (538-597), of the common surname Chen from Huarong, Jingzhou, left home at eighteen, took Huisi as his master at twenty-three, and is honored as the de facto founder of the Tiantai school. He came to Jinling in 567 and later lived long on Mount Tiantai, whence his title "the Great Master Tiantai."
+
+      His core achievements: (1) the classification of the five periods and eight teachings — dividing the Buddha's whole dispensation into the Huayan, Āgama, Vaipulya, Prajñā, and Lotus-Nirvāṇa periods, coordinated with the four types of method (sudden, gradual, secret, indefinite) and the four types of content (Tripitaka, common, separate, perfect), by which the Lotus is adjudged the uniquely perfect and supreme teaching; (2) the systematization of the three contemplations in a single mind and of the three thousand realms in a single thought — developing Huiwen's "three wisdoms in a single mind" into a complete contemplative technology and, grounding on the Lotus's "ten suchnesses," unfolding the cosmology of "the three thousand dharmas-worlds complete in a single thought"; (3) the Three Great Works — the Profound Meaning of the Lotus (on the meaning of the title), the Words and Phrases of the Lotus (on the wording of the text), and the Great Calming and Contemplation (on practice) — founding the school's trinity of "teaching, practice, and realization."
+
+      Zhiyi's style of "holding teaching and contemplation together" remade an age split between "southern doctrine and northern meditation" — the south prized doctrinal study, the north meditative discipline; Tiantai merged the two currents.
+
+      His disciple Guanding (561-632, Master Zhang'an) received the true transmission, redacted Zhiyi's bequeathed works, composed the Profound Meaning of the Nirvāṇa Sūtra and the Commentary on the Nirvāṇa Sūtra, and preserved the core texts of the Three Great Works. Four transmissions after Guanding reached Zhanran.
     source: 《续高僧传》卷十七·《隋天台智者大师别传》·《摩诃止观》
 
 - id: tt_doctrine
   title: 核心教义体系
+  title_en: "Core Doctrinal System"
   icon: 🔬
   intro: '天台宗的教义体系以「三谛圆融」「一念三千」「五时八教」「六即佛」为核心支柱，构成中国佛教最具系统性的判教与修行合一的理论框架。'
+  intro_en: |
+    The Tiantai doctrinal edifice rests on four pillars — the perfectly fused three truths, the three thousand realms in a single thought, the five periods and eight teachings, and the six identities — together constituting the most systematic framework in Chinese Buddhism for joining doctrinal classification with actual practice.
   topics:
   - title: 三谛圆融 — 空·假·中的即空即假即中
+    title_en: "The perfectly fused three truths — emptiness and provisionality and the middle in a single stroke"
     body: '天台宗以「三谛」为实相的三重面向：**空谛**（一切法因缘所生、无自性）、**假谛**（虽无自性而因果宛然、假名有差别）、**中谛**（空假不二、中道实相）。
 
       关键在于「圆融」二字——三谛不是次第分析（先观空、再观假、最后证中），而是**一心中同时观照三谛圆融相即**：空即是假、假即是空、空假即是中——「即空即假即中」，此为天台区别于华严「四法界」（事法界→理法界→理事无碍法界→事事无碍法界）的核心哲学立场。
 
       牟宗三论天台圆教之「圆」，即在此「三谛圆融」的存有论结构：「圆妙、圆满、圆足、圆顿、圆实」，无一法可废、无一法可偏。'
+    en_body: |
+      Tiantai treats the "three truths" as the threefold face of reality-as-it-is: the truth of emptiness (all dharmas arise from conditions and lack self-nature), the truth of the provisional (lacking self-nature, yet causes and effects are vividly real and provisional names distinguish them), and the truth of the middle (emptiness and the provisional are not two — the middle, reality-as-it-is).
+
+      The crux is "perfect fusion": the three truths are not analyzed in sequence (first empty, then provisional, finally the middle) but contemplated all at once in a single mind as fused and identical — empty is provisional, provisional is empty, and their bothness is the middle. "Empty, provisional, and middle in one stroke": this is the philosophical stance that sets Tiantai apart from Huayan's four dharma-realms (the realms of phenomena, of principle, of the unhindered interpenetration of the two, and of the unhindered interpenetration of all phenomena).
+
+      What Mou Zongsan celebrates as the "perfectness" of Tiantai's consummate teaching is precisely this ontological structure of the fused three truths — "perfectly subtle, complete, replete, sudden, and real" — in which no dharma may be discarded and none slighted.
     source: 智顗《法华玄义》·《摩诃止观》·牟宗三《佛性与般若》
 
   - title: 一念三千 — 「从无住本立一切法」
+    title_en: "Three thousand realms in a single thought — establishing all dharmas from the non-abiding source"
     body: '**一念三千**是天台宗最独特的宇宙论命题：一念心中具足三千种世间法（十法界×十如是×三世间=3000），无一法可缺。
 
       「三千」的展开逻辑：（1）**十法界**——地狱·饿鬼·畜生·修罗·人·天·声闻·缘觉·菩萨·佛，此十界互具（地狱界中有佛性、佛界中有地狱种），非截然隔断。（2）**十如是**——如是相·性·体·力·作·因·缘·果·报·本末究竟，出自《法华经》「十如是」。（3）**三世间**——五阴世间·众生世间·国土世间。
 
       核心义理：「一念无明法性心即具三千世间法」——无明与法性不二，染净同具，此为天台「不断断」（不断无明而证菩提）修行观的理论基础，也是天台批评华严「缘理断九」（舍妄归真、唯真心）的核心理据。'
+    en_body: |
+      "Three thousand realms in a single thought" is Tiantai's most distinctive cosmological thesis: a single thought-moment is replete with the three thousand dharmas-worlds (ten dharma-realms x ten suchnesses x three worlds = 3000), with not one to be lacking.
+
+      The "three thousand" unfolds as follows. (1) The ten dharma-realms — hell-beings, hungry ghosts, animals, asuras, humans, gods, śrāvakas, pratyekabuddhas, bodhisattvas, and Buddhas — each interpenetrated by all the others (in the hell-realm there is Buddha-nature, in the Buddha-realm a seed of hell), never sealed off from one another. (2) The ten suchnesses — appearance, nature, substance, power, activity, cause, condition, effect, retribution, and suchness from beginning to end — drawn from the Lotus Sutra. (3) The three worlds — the world of the five aggregates, the world of living beings, and the world of the land.
+
+      The core thesis: "the single-thought mind of ignorance and dharma-nature is replete with the three thousand dharmas-worlds" — ignorance and dharma-nature are not two, and defilement and purity are co-present. This grounds Tiantai's soteriology of "cutting off without cutting" (realizing awakening without first extinguishing ignorance) and supplies the decisive grounds on which Tiantai criticizes Huayan's "severing the nine at the principle" — discarding the conditioned to return to the true mind alone.
     source: 智顗《摩诃止观》卷二·灌顶《天台八教大意》
 
   - title: 五时八教 — 判释佛陀一代时教
+    title_en: "The five periods and eight teachings — classifying the Buddha's whole dispensation"
     body: '**五时**（别义五时）：华严时→阿含时→方等时→般若时→法华涅槃时，依《大般涅槃经》「从牛出乳」五味譬喻立——乳譬华严、酪譬阿含、生酥譬方等、熟酥譬般若、醍醐譬法华。
 
       **通义五时**：各时相互通融，非截然分界——华严义理分散在各个时教。
@@ -95,34 +160,65 @@ sections:
       **化法四教**（教理内容）：藏·通·别·圆——《阿含》为藏教（小乘），般若为通教（大乘初门），方等为别教（大乘深义），《法华》为圆教（纯圆独妙）。
 
       这一套判教体系是天台宗最具影响力的理论贡献之一，直接影响了华严宗贤首五教判的形成（华严五教=小·始·终·顿·圆，将天台之藏·通·别三教改组）。'
+    en_body: |
+      The five periods (in the proper sense): the Huayan, Āgama, Vaipulya, Prajñā, and Lotus-Nirvāṇa periods — framed on the Nirvāṇa Sutra's five flavors by which milk issues from the cow: cream images the Huayan, curd the Āgamas, fresh butter the Vaipulya, cooked butter the Prajñā, and ghee the Lotus.
+
+      In the common sense, the five periods interpenetrate rather than stand utterly apart — the meaning of the Huayan is diffused through all the periods.
+
+      The four types of method (how the teaching is given): sudden, gradual, secret, and indefinite — coordinated with the five periods to describe how the Buddha addressed listeners of differing capacities.
+
+      The four types of content (what the teaching is): Tripitaka, common, separate, and perfect — the Āgamas are the Tripitaka (Hīnayāna) teaching, the Prajñā the common teaching (the gate into Mahāyāna), the Vaipulya the separate teaching (the deep meaning of Mahāyāna), and the Lotus the perfect teaching, perfect and subtle alone.
+
+      This classificatory grid is among Tiantai's most influential theoretical legacies. It directly shaped the Huayan school's fivefold classification of the teachings (small, initial, final, sudden, and consummate — a regrouping of Tiantai's Tripitaka, common, and separate categories).
     source: 智顗《法华玄义》·《天台四教仪》·灌顶《八教大意》
 
   - title: 六即佛 — 修行的完整阶位
+    title_en: "The six identities — the complete stages of the practice"
     body: '**六即**是天台宗安立的修行证果阶位：（1）**理即**——一切众生本具佛性，与佛无二。（2）**名字即**——闻教知名、理解佛性之理。（3）**观行即**——依教起观、止观双运。（4）**相似即**——相似位，如暖·顶·忍·世第一法。（5）**分真即**——分破无明、分证法身。（6）**究竟即**——圆满成佛。
 
       「六即」的精妙在于：既肯定「理即」（一切众生本具佛性，不落增上慢），又强调「六」（修行有阶次，不落拨无因果），避免了「理即」的堕于放逸与「六」的堕于执相两端——此为天台宗「圆修」的修行立场。'
+    en_body: |
+      The "six identities" map the complete stages of the path: (1) identity in principle — all beings have always possessed Buddha-nature, no different from the Buddha; (2) identity in name — having heard the teaching, one knows and understands the principle; (3) identity in practice and contemplation — one practices accordingly, calming and insight together; (4) identity in similitude — the corresponding stages of the warm-threshold, the summit, the patience, and the foremost worldly dharmas; (5) identity in partial realization — one partly breaks ignorance and partly realizes the dharma-body; (6) identity in the ultimate — perfect Buddhahood.
+
+      The subtlety of the scheme lies in holding both ends at once: the "in principle" affirms that all beings are already endowed with Buddha-nature (so there is no self-conceit), while the "six" insists that the practice has real stages (so there is no denial of cause and effect). The scheme thus avoids both the laxness of resting in an bare identity-in-principle and the attachment to marks of a rigid graduated path — the standpoint of Tiantai's "consummate practice."
     source: 灌顶《观心论疏》·智顗《摩诃止观》
 
 - id: tt_lineage_post
   title: 法脉传承曲折
+  title_en: "The Twisted Course of the Lineage"
   icon: 📜
   intro: '智顗之后，天台宗经历了灌顶结集→湛然中兴→会昌法难后式微→宋代中兴→元明衰落→近现代复兴的曲折历程。其中宋代「山家山外之争」是中国佛教史上最重要的教理论争之一。'
+  intro_en: |
+    After Zhiyi the school ran a sinuous course: the redaction of Guanding, the revival under Zhanran, eclipse after the Huichang persecution, a Song renaissance, decline through the Yuan and Ming, and a modern restoration. The Song dispute between the Mountain-home and the Mountain-foreign factions stands among the most consequential doctrinal debates in the history of Chinese Buddhism.
   topics:
   - title: 湛然中兴 — 「无情有性」与诸宗抗衡
+    title_en: "Zhanran's Revival — insentient beings and the Buddha-nature, contending with rival schools"
     body: '**荆溪湛然**（711-782），灌顶四传弟子，以中兴天台宗为己任，对天台三大部均有翔实注解——《止观辅行传弘决》《法华玄义释签》《法华文句疏记》——发挥三谛圆融的义理。
 
       湛然的关键贡献在于提出「**无情有性**」——草木瓦石亦有佛性，此说直接针对华严宗与法相宗的佛性论立场。他著《金刚錍》《法华五百问论》《止观义例》，明确与华严宗·法相宗·禅宗展开论争——虽不免门户之见，但对天台宗以后的发展影响深远。
 
       湛然的弟子道邃、行满等下传，为日本最澄入唐求法的直接师承来源。'
+    en_body: |
+      Jingxi Zhanran (711-782), four transmissions after Guanding, took the revival of Tiantai as his calling, composing careful commentaries on all Three Great Works — the Zhiguan fuxing chuanhong jue, the Fahua xuanyi shiqian, and the Fahua wenju shuji — developing the doctrine of the fused three truths.
+
+      His signature contribution was the thesis of "even the insentient possess Buddha-nature": plants, trees, tiles, and stones equally have Buddha-nature, a position aimed directly at the Buddha-nature teachings of the Huayan and Faxiang (Yogācāra) schools. In the Diamond Scythe (Jin'gang pi), the Fahua wubai wenlun, and the Zhiguan yili he openly contended with Huayan, Faxiang, and Chan. Partisan though he could be, his influence on the school's subsequent course was profound.
+
+      His pupils Daosui and Xingman transmitted the teaching onward, and it was precisely from them that the Japanese monk Saichō received his Tiantai training during his Tang journey.
     source: 《宋高僧传》卷六·《佛祖统纪》卷七
 
   - title: 会昌法难与五代式微
+    title_en: "The Huichang Persecution and the Five Dynasties Decline"
     body: '唐武宗会昌五年（845）「会昌法难」后，加之五代战乱，天台宗教典湮没殆尽，宗派一蹶不振。这是天台宗最严重的典籍危机——智顗三大部的完整文本几乎失传。
 
       直到宋初，吴越王钱俶遣使到高丽（今朝鲜）、日本访求天台宗典籍，高丽僧谛观送来教典，天台宗学说才得以延续和发展。**这段「典籍外流→海外保存→回传中国」的历程，是中国佛教史上「法脉曲折」的典型案例**，与三论宗在日本长存、敦煌文献西传后回流形成有趣的跨文化平行。'
+    en_body: |
+      After the "Huichang persecution" ordered by Emperor Wuzong in the fifth year of Huichang (845), compounded by the wars of the Five Dynasties, the Tiantai scriptures were reduced almost to nothing and the school collapsed. This was the gravest textual crisis in Tiantai history — the complete texts of Zhiyi's Three Great Works were nearly lost.
+
+      Only in the early Song did the Wuyue king Qian Chu send envoys to Koryo (Korea) and Japan to search out the Tiantai scriptures; the Koryo monk Diguan brought the teaching texts from abroad, and only then could the school's doctrine survive and develop. This passage of "scriptures lost abroad, preserved overseas, and returned to China" is a classic case of the serpentine course of a Buddhist lineage — a striking cross-cultural parallel to the Sanlun school's long survival in Japan and to the Dunhuang manuscripts' journey westward and eventual return.
     source: 《佛祖统纪》·会昌法难史料
 
   - title: 宋代山家山外之争 — 天台宗最激烈的内部分裂
+    title_en: "The Song dispute of Mountain-home and Mountain-foreign — Tiantai's fiercest internal rift"
     body: '天台宗义寂的再传弟子**四明知礼**（960-1028），因受同学之请撰《释难扶宗记》，驳同门晤恩等以《金光明经玄义》广本为伪作，引发了一场历时七年的「**山家山外之争**」——中国佛教教理史上最重要的内部论争之一。
 
       **争论核心**：（1）**真心观 vs 妄心观**——山外主张「真心观」（观心应观真心、清净心），接近华严宗「如来藏真心」立场；山家主张「妄心观」（即阴识心起观、不离当下一念妄心）。（2）**色法具否三千**——山家主张「色心共具三千」（色法与心法同具三千世间），山外主张色法不具三千。
@@ -130,33 +226,60 @@ sections:
       **山家胜出**：山外的主张被山家斥为「不纯」（接近华严宗教观），不久即衰。知礼被尊为天台宗「中兴之祖」，山家派（知礼系）成为天台宗此后至今的正统传承。
 
       这场论争的意义超出天台宗内部：它实质上是**「妄心系」与「真心系」**（即佛性论中「染净」问题的根本分歧）在中国佛教内部的一次正面交锋，对理解天台与华严的义理分歧具有关键价值。'
+    en_body: |
+      Zhili of Siming (960-1028), a second-generation disciple of Yiji's line, at the request of a fellow student wrote the Shinan fuzong ji to refute the same-school monk Wu'en and his followers, who held the expanded recension of the Profound Meaning of the Golden Light Sutra to be a forgery. The exchange kindled a seven-year campaign — the "Mountain-home and Mountain-foreign dispute," one of the most important internal debates in the history of Chinese Buddhist doctrine.
+
+      The contested points: (1) contemplation of the true mind versus contemplation of the deluded mind — the Mountain-foreign side argued for contemplating the true, pure mind, a stance close to the Huayan school's teaching of the tathāgatagarbha true mind; the Mountain-home side argued for contemplating the deluded mind, taking up the present thought-consciousness of the five aggregates without departing from the immediate deluded thought. (2) Whether form (rūpa) too contains the three thousand — the Mountain-home side held that "form and mind together possess the three thousand," while the Mountain-foreign side denied to form the possession of the three thousand.
+
+      The Mountain-home side prevailed. Its opponents' positions were dismissed as "impure," too close to Huayan's doctrinal views, and quickly faded. Zhili came to be honored as the "restorer patriarch" of Tiantai, and his Mountain-home line has been the orthodox transmission of the school down to the present.
+
+      The significance of the dispute far outruns internal history: it was, in substance, a direct confrontation within Chinese Buddhism between the "deluded-mind" and the "true-mind" schools — the fundamental divergence on purity and defilement within Buddha-nature theory — and it remains of decisive value for anyone seeking to understand the doctrinal rift between Tiantai and Huayan.
     source: 知礼《释难扶宗记》·《四明十义书》·《佛祖统纪》卷八至十
 
 - id: tt_overseas
   title: 域外传播 · 日本天台与台密
+  title_en: "Transmission Abroad — Japanese Tiantai and Taimitsu"
   icon: 🌏
   intro: '9世纪初，日本僧人最澄入唐求法，将天台宗传至日本，创立比叡山延历寺，引入密教修法，形成「台密」传统——天台宗由此成为日本平安时代最重要的佛教宗派之一。'
+  intro_en: |
+    In the early ninth century the Japanese monk Saichō crossed to Tang China and carried Tiantai back to Japan, founding Enryaku-ji on Mount Hiei and gathering esoteric practice into the school to create the "Taimitsu" tradition — Tiantai thereby became one of the most important Buddhist schools of Japan's Heian period.
   topics:
   - title: 最澄入唐与日本天台宗创立
+    title_en: "Saichō's Tang Journey and the Founding of Japanese Tiantai"
     body: '**最澄**（767-823）延历二十三年（804）入唐，师从道邃、行满学习天台宗教义，次年返国创立日本天台宗，总本山为比叡山延历寺。
 
       最澄将天台止观与密教修法融合，形成「台密」传统——与空海创立的「东密」（真言宗）并称「平安二宗」，在日本佛教史上影响深远。
 
       比叡山延历寺成为日本佛教的「母山」——此后日本佛教的重要宗派（净土宗·净土真宗·临济宗·曹洞宗·日莲宗等）的开创者多有比叡山修行背景。13世纪由此宗分出**日莲宗**，至今兴旺。'
+    en_body: |
+      Saichō (767-823), in the twenty-third year of Enryaku (804), entered Tang China, studied Tiantai doctrine under Daosui and Xingman, and on his return the following year founded the Japanese Tiantai school, with Mount Hiei's Enryaku-ji as its head temple.
+
+      He fused Tiantai's calming-and-contemplation with the esoteric practice into the "Taimitsu" tradition — standing with Kūkai's "Tōmitsu" (Shingon) as the "two schools of the Heian period" and exerting a deep influence on the whole course of Japanese Buddhist history.
+
+      Mount Hiei became the "mother mountain" of Japanese Buddhism — the founders of most of its later great schools (the Pure Land and True Pure Land schools, Rinzai and Sōtō Zen, Nichiren's school, and others) received their training there. In the thirteenth century the Nichiren school split off from it; it flourishes to this day.
     source: 《日本书纪》·最澄《山家学生式》·比叡山延历寺传统
 
   - title: 韩国天台宗 · 义天与高丽传承
+    title_en: "Korean Tiantai — Uicheon and the Koryo Transmission"
     body: '高丽僧**义天**（1055-1101）入宋，从从谏慈辩学习天台教观，回高丽后创立韩国天台宗。宋代山家山外之争后，高丽保存的天台典籍回传中国——吴越王钱俶遣使求书，高丽谛观送来教典，为天台宗宋代中兴提供了关键文献基础。
 
       这段中韩天台交流史，是东亚佛教文化圈「典籍跨境流动」的典型案例。'
+    en_body: |
+      The Koryo monk Uicheon (1055-1101) entered Song China, studied the teaching and contemplation of Tiantai under the masters Congjian and Cibian, and on his return founded Korean Tiantai. And after the Mountain-home and Mountain-foreign dispute, the Tiantai scriptures preserved in Koryo made their way back to China — the Wuyue king Qian Chu had sent envoys seeking the books, and the Koryo monk Diguan carried the teachings to the Middle Kingdom, supplying the crucial textual basis for the school's Song revival.
+
+      This Sino-Korean exchange is a classic instance of the "cross-border circulation of scriptures" within the East Asian Buddhist cultural sphere.
     source: 《高丽史》·《佛祖统纪》·宋丽佛教交流史料
 
 - id: tt_revival
   title: 近现代复兴 · 谛闲·倓虚·宝静
+  title_en: "The Modern Revival — Dixian, Tanxu, Baojing"
   icon: 🕯
   intro: '明清两代天台宗式微，直至晚清谛闲法师（1858-1932）驻锡宁波观宗寺，创办观宗弘法研究社，广育僧才，天台宗风得以复兴光大。其弟子倓虚·宝静·觉光等分灯于大江南北及港台，天台法脉延续至今。'
+  intro_en: |
+    Tiantai languished through the Ming and Qing, until the late-Qing master Dixian (1858-1932), abiding at Ningbo's Guanzong Temple, founded the Guanzong Lecture and Research Society and raised a great crop of monks, reviving the school's spirit. His heirs Tanxu, Baojing, and Jueguang carried the light across the land and into Hong Kong and Taiwan, and the lineage continues to this day.
   topics:
   - title: 谛闲法师 — 天台宗四十三世·中兴之祖
+    title_en: "Master Dixian — forty-third patriarch and restorer of Tiantai"
     body: '**谛闲**（1858-1932），名古虚，号卓三，俗姓朱，浙江黄岩人。九岁入私塾，资赋优越。十六岁随舅父习医，后因「药能医病不能医命」感悟出家。1881年于天台山国清寺受具足戒，后从敏曦老和尚习天台教观，悟「一心三观」之旨。
 
       1886年受迹端融祖付法，传持天台教观第四十三世。1912年住持宁波观宗寺，以「三观为宗，说法为用」为宗旨，改名「观宗讲寺」，创办「观宗弘法研究社」，成为当时国内唯一培养天台宗和佛教僧才的高级佛学院，发行《弘法月刊》于国内外。
@@ -164,17 +287,33 @@ sections:
       谛闲法师「讲经四十余年，弘化足迹遍布天下」——于浙江·江苏·上海·安徽·山东·北京·辽宁·黑龙江等地弘法，皈依信徒达数十万人。1932年圆寂于观宗寺，书偈曰：「我经念佛，净土现前。真实受用，愿各勉旃！」面作金色，顶中暖气如火。
 
       著作包括《大佛顶首楞严经序指味疏》《圆觉经讲义》《金刚经新疏》《始终心要解》《大乘止观述记》等十余种，由弟子倓虚等汇编成《谛闲大师遗集》十三种。'
+    en_body: |
+      Dixian (1858-1932), dharma name Guxu, style Zhuosan, of the Zhu family from Huangyan, Zhejiang, entered a village school at nine and outshone his classmates. At sixteen he studied medicine with an uncle, until a glimpse of the truth that "medicine can cure illness but not fate" moved him to leave the home life. In 1881 he received the full precepts at Guoqing Temple on Mount Tiantai, then studied Tiantai doctrine and contemplation under the elder Minxi, awakening to the gist of the "three contemplations in a single mind."
+
+      In 1886 he received the transmission from Jiduan Rongzu, becoming the forty-third holder of Tiantai's teaching and contemplation. From 1912 he dwelt at Ningbo's Guanzong Temple, taking "the three contemplations as the school's ground, preaching as its function." He renamed it the "Guanzong Lecture Temple," founded the "Guanzong Lecture and Research Society" — then the only advanced Buddhist academy in the country training Tiantai specialists and monastic scholars — and published the Dharma Sounds Monthly at home and abroad.
+
+      He lectured the sutras for over forty years, his teaching trace running across Zhejiang, Jiangsu, Shanghai, Anhui, Shandong, Beijing, Liaoning, and Heilongjiang, with converts numbering in the hundreds of thousands. He passed away at the Guanzong Temple in 1932, leaving the verse: "Mindful of the Buddha, the Pure Land appears before me; this is a truly received benefit — may each of you press on!" His face turned golden, and a warmth rose from the crown of his head.
+
+      His works — commentaries on the Great Buddha's Surangama Sutra, lectures on the Perfect Enlightenment Sutra, a new commentary on the Diamond Sutra, an explanation of the essential mind of the beginning and the end, and the Notes on the Mahayana Calming and Contemplation, some ten titles in all — were collected by disciples including Tanxu into the thirteen volumes of the Collected Works of Master Dixian.
     source: 灵隐寺2024年谛闲纪念文·《谛闲大师遗集》·《佛祖统纪》
 
   - title: 倓虚法师 — 弘法北方·天台宗北传
+    title_en: "Master Tanxu — carrying Tiantai north"
     body: '**倓虚**（1875-1963），俗姓王，宁河人。1917年投谛闲门下，后弘法于北方，创办哈尔滨极乐寺·青岛湛山寺·北京弥勒院·长春般若寺等道场及佛学院，业绩卓著。
 
       倓虚将天台宗从东南沿海传至北方，是天台宗近现代「南学北传」的关键人物。其《金刚经讲义》《心经义疏》《楞严经妙玄要旨》《天台传佛心印记注释要》等著作，在北方佛教界影响深远。
 
       弟子**倓虚系**在东北·华北·台湾形成独立传承系统——台湾慧峰法师在台南创建湛然精舍，即属此脉。'
+    en_body: |
+      Tanxu (1875-1963), of the Wang family from Ninghe, entered Dixian's door in 1917 and thereafter carried the teaching to the north, founding the Bliss Temple in Harbin, the Zhanshan Temple in Qingdao, the Maitreya Hall in Beijing, the Prajna Temple in Changchun, and other monasteries and Buddhist academies — achievements of the first rank.
+
+      Tanxu took Tiantai from the southeastern coast to the whole of the north: the pivotal figure of the modern "northward transmission of the southern teaching." His lectures and commentaries — on the Diamond Sutra, on the Heart Sutra, on the subtle essentials of the Surangama Sutra, and annotations to the Tiantai chuanfo xinyin ji — carried great weight in the northern Buddhist world.
+
+      Tanxu's network of disciples formed independent transmission lines in the northeast, the north, and Taiwan — the Venerable Huifeng of Taiwan founded the Zhanran Hermitage at Tainan, which belongs to this descent.
     source: 倓虚《影尘回忆录》·台湾佛教史料
 
   - title: 宝静·觉光 — 天台宗香港·台湾传承
+    title_en: "Baojing and Jueguang — Tiantai in Hong Kong and Taiwan"
     body: '**宝静**（1899-1962），谛闲传法弟子，天台教观四十四世。驻锡香港后创「觉苑」「香海莲社」。1939年在香港荃湾创办「弘法精舍」佛学院，将天台宗引入香港。
 
       **觉光法师**随宝静赴港深造，后成为天台宗在香港的主要传承者，在香港粉岭建立「香港观宗寺」，至今活动。香港湛山寺亦属天台宗传承。
@@ -182,14 +321,26 @@ sections:
       **斌宗法师**为台湾籍僧人，1936年至宁波观宗讲寺进修，1940年回台湾后先后在新竹创建法源讲寺、在碧潭创建法济寺，创办「天台宗高级研究班」「南天台佛学院」，成为弘传天台宗到台湾的近代第一人。弟子**慧岳法师**著《天台教学史》，为当代天台教学研究的重要参考。
 
       此外，谛闲弟子**静修法师**在美国弘扬天台教旨——天台宗由此形成了横跨中国大陆·香港·台湾·美国·新加坡·马来西亚·日本·韩国的全球传承网络。'
+    en_body: |
+      Baojing (1899-1962), a dharma heir of Dixian, was the forty-fourth holder of Tiantai's teaching and contemplation. Based in Hong Kong he founded the "Garden of Awakening" society and the "Fragrant Sea Lotus Society," and in 1939 a Buddhist academy at the "Hongfa Hermitage" in Tsuen Wan, Hong Kong — carrying Tiantai into the territory.
+
+      Master Jueguang followed Baojing to Hong Kong for advanced study and became the school's principal transmitter there, founding Hong Kong's Guanzong Temple at Fanling, active to this day; Hong Kong's Zhanshan Temple likewise belongs to the Tiantai lineage.
+
+      Master Binsong, a monk of Taiwanese origin, studied at the Ningbo Guanzong Lecture Temple in 1936 and, on returning in 1940, founded the Fayuan Lecture Temple in Hsinchu and the Faji Temple at Bitan, and established a "Tiantai advanced research class" and the "Southern Tiantai Buddhist Academy" — the first modern figure to bring Tiantai to Taiwan. His disciple Master Huiyue wrote the History of the Tiantai Teaching, an important reference for contemporary Tiantai studies.
+
+      One should add the Venerable Jingxiu, another of Dixian's disciples, who carried the Tiantai teaching to America. In this way the school spread a global transmission network spanning mainland China, Hong Kong, Taiwan, the United States, Singapore, Malaysia, Japan, and Korea.
     source: 《延庆观宗讲寺志》·宁波市佛教协会「观宗讲寺」史料·台湾佛教史料
 
 - id: tt_academic
   title: 学术视角
+  title_en: "Scholarly Perspectives"
   icon: 📚
   intro: '20世纪以来，天台宗成为国际佛学研究的热点领域，西方学界与日本学界均有重要成果。'
+  intro_en: |
+    Since the twentieth century Tiantai has been one of the most active fields in international Buddhist scholarship, with major works produced in both the West and Japan.
   topics:
   - title: 西方学界 — Swanson/Ziporyn/Edamura
+    title_en: "Western Scholarship — Swanson, Ziporyn, Edamura"
     body: '**Paul L. Swanson**《Foundations of T''ien-t''ai Philosophy》（1989）是英语世界第一部系统研究天台宗哲学的专著，从比较哲学角度分析天台三谛圆融与一念三千的哲学结构。
 
       **Brook Ziporyn**《Being and Ambiguity: Philosophical Experiments in Tiantai Buddhism》（2004）将天台「一念三千」与「不断断」翻译为当代分析哲学语言，提出天台宗是一种「模糊性存在论」——对同一事物的空·假·中三重观照并非三种不同的判断，而是同一存在的三重面向同时呈现。
@@ -197,9 +348,18 @@ sections:
       **Daniel B. Edamura** 等学者的学位论文进一步深化了天台止观修行体系的学术研究。
 
       西方学术研究的价值在于：将天台宗从「宗派史叙事」中解放出来，置于比较哲学·现象学·存在论的框架中重新审视——这一视角为中国学者提供了重要的参照系。'
+    en_body: |
+      Paul L. Swanson's Foundations of T'ien-t'ai Philosophy (1989) is the first systematic monograph on Tiantai philosophy in the English-speaking world, analyzing the structure of the fused three truths and of the three thousand realms in a single thought from the angle of comparative philosophy.
+
+      Brook Ziporyn's Being and Ambiguity: Philosophical Experiments in Tiantai Buddhism (2004) translates the "three thousand realms in a single thought" and "cutting off without cutting" into the idiom of contemporary analytic philosophy, presenting Tiantai as an "ontology of ambiguity": the threefold contemplation of one thing as empty, provisional, and middle is not three different judgments but three faces of a single being presented simultaneously.
+
+      Doctoral work by Daniel B. Edamura and others has further deepened the academic study of Tiantai's contemplative practice.
+
+      The value of the Western research lies in liberating Tiantai from the sectarian-historical narrative and reconsidering it within the frames of comparative philosophy, phenomenology, and existential thought — an important point of reference for Chinese scholars.
     source: Swanson (1989)·Ziporyn (2004)·Edamura
 
   - title: 日本学界 — 佐藤哲英·安藤俊雄·池田鲁参
+    title_en: "Japanese Scholarship — Sato Tetsuei, Ando Toshio, Ikeda Rosan"
     body: '日本学界对天台宗的研究始于比叡山系统自身的教学传统，近现代以来发展出独立的学术研究范式。
 
       **佐藤哲英**《天台学の根本问题》是日本天台学研究的经典之作，对天台三大部的文献学分析具有开创性意义。
@@ -209,9 +369,20 @@ sections:
       **池田鲁参**等学者进一步深化了宋代天台学（山家山外之争）的研究。
 
       值得注意的是，日本天台宗（比叡山系统）自身即有「教学」传统——将天台教理作为系统化的学术研究对象——这一传统比西方学术研究早了数百年，但其方法论（教学=信仰内部的义学研究）与现代学术研究（critical scholarship）存在本质差异。'
+    en_body: |
+      Japanese study of Tiantai began within the pedagogical tradition of the Mount Hiei system itself, and developed an independent academic paradigm in the modern period.
+
+      Sato Tetsuei's Fundamental Problems in the Study of Tiantai is a classic of Japanese Tiantai scholarship, pioneering in its philological analysis of the Three Great Works.
+
+      Ando Toshio's Tiantai Studies — Its Fundamental Problems and Their Development systematically traces the growth of Tiantai learning from Zhiyi to Zhili.
+
+      Ikeda Rosan and others have carried the study of Song Tiantai yet further, that is, the period of the Mountain-home and Mountain-foreign dispute.
+
+      One point deserves notice: the Japanese Tiantai school (the Mount Hiei line) has its own "teaching" (kyogaku) tradition — treating Tiantai doctrine as a systematized object of study — antedating Western academic scholarship by centuries. Yet its methodology (kyogaku as the intra-ecclesial study of the faith's own doctrine) differs in kind from modern critical scholarship.
     source: 佐藤哲英《天台学の根本问题》·安藤俊雄《天台学》·池田鲁参《宋代天台学》
 
   - title: 牟宗三与唐君毅 — 新儒学视角的天台圆教
+    title_en: "Mou Zongsan and Tang Junyi — New Confucian readings of the Tiantai consummate teaching"
     body: '牟宗三在《佛性与般若》《圆善论》等著作中，以天台宗为「圆教」的最高典范——认为只有天台宗达致了「存有论的圆」，而华严宗的圆教只是「超越分解思路下的圆教」，不如天台「辩证圆融思路下的圆教」圆实。
 
       牟宗三的核心论点：「圆教必如轮圆辐辏，全体摄收，若切断一时一点以『唯』之，则有失法界平等义」——由此判定华严「缘理断九」（舍妄归真、唯真心）非真圆教。
@@ -219,35 +390,64 @@ sections:
       唐君毅则在《中国哲学原论》中对天台与华严的圆教之辨提出了不同于牟宗三的评价——认为华严圆教有其独立价值，不必从属于天台。
 
       这场新儒学内部的天台诠释之争，是当代华人学术界最富哲学深度的佛教思想论争之一。'
+    en_body: |
+      In Buddha-Religion and Prajna and On the Perfect Good, Mou Zongsan takes Tiantai as the supreme model of the "consummate teaching": only Tiantai attains "ontological consummation," while Huayan's consummate teaching is merely "a consummate teaching achieved along the pathway of transcendental analysis," less substantial than Tiantai's "consummate teaching along the pathway of dialectical fusion."
+
+      Mou's central claim: "A consummate teaching must draw in the whole, as the spokes of a wheel gather at the hub; if one cuts off any single moment or point and declares it 'the only one,' one violates the equal meaning of the dharma-realm." On this ground, Huayan's "severing the nine at the principle" — discarding the nine dharma-realms to keep only the Buddha-realm — is no true consummate teaching.
+
+      In his Origins of Chinese Philosophy, Tang Junyi offered a different verdict on the Tiantai-Huayan dispute, holding that Huayan's consummate teaching has an independent value and need not be subordinated to Tiantai's.
+
+      This contest over Tiantai within the New Confucian camp is among the most philosophically searching Buddhist controversies in contemporary Chinese-language academia.
     source: 牟宗三《佛性与般若》《圆善论》·唐君毅《中国哲学原论》
 
 - id: tt_practice
   title: 修行界内部视角
+  title_en: "The Practitioner's Perspective — Inside the Community"
   icon: 🧘
   intro: '天台止观的修行实践在当代佛教界仍有活的传统——从国清寺止观修行到智者大师「圆顿止观」的当代实践，修行界对天台止观的理解与学术研究之间既有重叠也有显著差异。'
+  intro_en: |
+    The contemplative practice of Tiantai remains a living tradition in the Buddhist world — from the meditative training at Guoqing Temple to the contemporary practice of the Great Master's "perfect-and-sudden contemplation." Between the practitioners' understanding of Tiantai meditation and the scholars' there is both overlap and marked divergence.
   topics:
   - title: 天台止观的当代实践
+    title_en: "Tiantai Contemplation in Contemporary Practice"
     body: '天台止观修行在当代佛教界仍有传承，主要体现在几个方面：
 
       （1）**国清寺止观修行**：天台山国清寺作为天台宗根本道场，至今保持着止观修行传统，每年举办止观禅修班。（2）**忏法仪轨**：天台宗的忏法（梁皇宝忏·大悲忏·药师忏等）广泛流行于汉传佛教界，但多数修行者未必了解其天台义学背景。（3）「**教在天台，行归净土**」：元明以后天台宗学者多兼修净土，形成「以天台教观为理解框架、以念佛求生西方为归宿」的修行模式——这在修行界被普遍接受，但也引发「天台是否被净土消融」的争议。
 
       从修行界的「内部视角」来看，天台止观（尤其「圆顿止观」）对行者的要求极高——它预设行者能在一念心中同时观照空假中三谛，这对「次第修行」的传统佛教修行范式构成了挑战。'
+    en_body: |
+      The practice of Tiantai calming-and-contemplation is still transmitted in the Buddhist world today, chiefly along several lines:
+
+      (1) Contemplative practice at Guoqing Temple: as the founding seat of the school on Mount Tiantai, the temple preserves the contemplative tradition and holds annual calming-contemplation retreats. (2) Ritual repentance: the repentance liturgies of Tiantai — the Emperor Liang's Repentance, the Great Compassion Repentance, the Medicine Buddha Repentance, and others — are widespread throughout Chinese Buddhism, though most practitioners may be unaware of their Tiantai doctrinal background. (3) "Teaching in Tiantai, practice in Pure Land": since the Yuan and Ming, Tiantai scholars have commonly also cultivated the Pure Land path, forming the pattern of "taking Tiantai's teaching and contemplation as the interpretive frame, and mindfulness of the Buddha with rebirth in the West as the final home" — a model widely accepted in the community, yet one that provokes the question whether Tiantai has been dissolved into Pure Land.
+
+      Seen from the practitioner's inner perspective, Tiantai calming-and-contemplation — above all the "perfect-and-sudden contemplation" — makes extreme demands on the practitioner: it presupposes the ability to contemplate the three truths of emptiness, the provisional, and the middle within a single thought, a requirement that challenges the "graduated practice" paradigm of traditional Buddhism.
     source: 国清寺止观修行传统·「教在天台行归净土」传统
 
   - title: 「不断断」的修行论挑战
+    title_en: "The contemplative challenge of \"cutting off without cutting\""
     body: '**「不断断」**（不断无明而证菩提）是天台宗最具修行挑战性的命题：传统佛教修行是「断惑证真」（断除烦恼、证得真理），天台宗却主张「不断无明而即无明是法性」——无明与法性不二，不需要「断除」无明，只需要「观照」无明即法性的当下实相。
 
       从修行实践的角度看，这与华严宗「四法界」的「理法界」（观一切法皆同一真如理体）看似相近，实有根本差异：华严的「理法界」是「先分解后综合」的思路（先观理·后融事），天台的「三谛圆融」是「即一念心而三谛同时呈现」——牟宗三正是据此判天台为「圆教」、华严为「别教」。
 
       这一差异在修行实践中的具体意义，至今仍是天台·华严两宗修行者讨论的焦点。'
+    en_body: |
+      "Cutting off without cutting" — awakening without first extinguishing ignorance — is Tiantai's most demanding soteriological thesis. Traditional Buddhism practices "cutting delusion to realize truth," eradicating defilements in order to attain the truth. Tiantai instead maintains that "ignorance, though not cut off, is itself dharma-nature": ignorance and dharma-nature are not two; one need not "remove" ignorance but only contemplate the immediate reality of ignorance's being dharma-nature.
+
+      From the standpoint of practice, this may seem to approach the "dharma-realm of principle" of Huayan's four dharma-realms (contemplating all dharmas as one true-suchness principle). In fact the difference is fundamental: Huayan's dharma-realm of principle proceeds by "analysis first, then synthesis" (first contemplating principle, then melting it into phenomena), while Tiantai's fused three truths are "the three truths appearing at once in the single thought." It is precisely on this basis that Mou Zongsan adjudges Tiantai the "consummate teaching" and Huayan the "separate teaching."
+
+      What this difference means concretely in practice remains a live point of discussion among practitioners of both schools to this day.
     source: 智顗《摩诃止观》·牟宗三《佛性与般若》
 
 - id: tt_synthesis
   title: 融合与张力 · 天台与诸宗的交叉
+  title_en: "Fusion and Tension — Tiantai's Crossings with the Other Schools"
   icon: ⚖
   intro: '天台宗与华严·禅·净·唯识·藏传佛教之间，既有深刻的义理交叉，又有不可调和的立场张力——这些融合与张力构成理解汉传佛教思想生态的关键维度。'
+  intro_en: |
+    Between Tiantai and Huayan, Chan, Pure Land, Yogācāra, and the Tibetan traditions there are at once deep doctrinal crossings and irreconcilable tensions — and these fusions and frictions are a key dimension for understanding the intellectual ecology of Chinese Buddhism.
   topics:
   - title: 天台与华严 — 「圆教」之辩的核心
+    title_en: "Tiantai and Huayan — the heart of the \"consummate teaching\" debate"
     body: '**核心分歧**：天台宗判《法华经》为圆教，华严宗判《华严经》为圆教——两家的「圆教」定义不同：
 
       **天台圆教**：三谛圆融→「即空即假即中」→一切法平等、无一法可废。「圆教必如轮圆辐辏，全体摄收」——不离「介尔心」的性具·理具之圆。
@@ -257,49 +457,97 @@ sections:
       **天台批评华严「缘理断九」**：华严以「唯真心」摄一切法，天台认为此说「切断一法以『唯』之」，有失法界平等义——「缘理断九」= 舍弃九法界（从地狱到菩萨）而独尊佛法界，非真圆教。
 
       牟宗三以「诡谲的圆融」判天台为真圆教，华严为别教——此判在当代华人学术界影响深远，但华严学者多不认同，认为华严「事事无碍」的圆融度不在天台之下。'
+    en_body: |
+      The core divergence: Tiantai adjudges the Lotus Sutra the consummate teaching; Huayan adjudges the Avatamsaka (Flower Ornament) Sutra the consummate teaching — and the two schools define "consummate" differently.
+
+      The Tiantai consummate teaching: the fused three truths — "empty, provisional, and middle in one stroke" — all dharmas equal, none to be discarded. "A consummate teaching must draw in the whole": a consummation of nature-possession that never departs from the "momentary thought."
+
+      The Huayan consummate teaching: the four dharma-realms, unimpeded interpenetration of all phenomena, the pure tathāgatagarbha mind as the support of all dharmas — "the consummate teaching along the path of transcendental analysis," advancing layer by layer, spoken through analysis.
+
+      Tiantai's critique of Huayan's "severing the nine at the principle": Huayan gathers all dharmas into the "true mind alone"; Tiantai maintains that this "cuts off one dharma to declare it the only one," forfeiting the equality of the dharma-realm. "Severing the nine" — discarding the nine dharma-realms (hell-beings up to the bodhisattvas) to exalt only the Buddha-realm — is no true consummate teaching.
+
+      Mou Zongsan's "dialectical fusion" thus makes Tiantai the genuine consummate teaching and Huayan a separate teaching. The verdict has been deeply influential in contemporary Chinese academia, though Huayan scholars largely dissent, holding that Huayan's unimpeded interpenetration is no less consummate than Tiantai's.
     source: 牟宗三《佛性与般若》·许朝陽《华严与天台的圆教之争》·《牟宗三与唐君毅论天台宗评华严宗「缘理断九」说之比较》
 
   - title: 天台与禅宗 — 「教观」与「不立文字」的张力
+    title_en: "Tiantai and Chan — the tension between teaching-contemplation and \"no reliance on words\""
     body: '天台宗与禅宗的张力体现在方法论层面：天台宗以「教」为修行指南——必须依经典判教体系修行；禅宗以「不立文字、教外别传」为宗旨——超越文字与经典。
 
       湛然的《止观义例》明确将禅宗纳入批判视野。但历史发展中，天台与禅宗的交融远大于对立——宋代以后天台学者多兼修禅法，禅宗祖师亦多有天台止观背景（如永嘉玄觉「遍探三藏，精天台止观法门」，著《永嘉集》，后谒慧能问道）。
 
       在当代佛教中，「天台禅」与「禅宗禅」的差异更多体现在修行技术层面：天台止观有明确的观法次第（数息·随息·止·观），禅宗参禅则强调顿悟——技术路径不同，但指向的实相境界被认为是一致的。'
+    en_body: |
+      The tension between Tiantai and Chan is methodological: Tiantai takes "the teaching" as the guide to practice — one must cultivate in accordance with the scripturally based classification of the teachings; Chan takes "no reliance on words and letters, a separate transmission outside the scriptures" as its banner, standing beyond texts and words.
+
+      Zhanran's Zhiguan yili explicitly brought Chan within the scope of his criticism. In the actual course of history, however, the two schools' mergence far outweighed their opposition — after the Song, Tiantai scholars commonly also practiced Chan, and Chan patriarchs frequently had Tiantai contemplative backgrounds (Yongjia Xuanjue "searched the Three Stores, refined the Tiantai methods of calming and contemplation," composed the Yongjia Collection, and only later called on Huineng to settle his questions).
+
+      In the contemporary Buddhist world, "Tiantai-style Chan" and "Chan-school Chan" differ above all at the level of technique: Tiantai contemplation prescribes a clear sequence of contemplative objects (counting the breath, following the breath, calming, contemplating), while Chan's meditation on a public case stresses sudden awakening. The paths differ; the reality they point to is held to be the same.
     source: 永嘉玄觉《永嘉集》·湛然《止观义例》
 
   - title: 天台与净土 — 「教在天台，行归净土」的合流
+    title_en: "Tiantai and Pure Land — the confluence of \"teaching in Tiantai, practice in Pure Land\""
     body: '元明以后，天台宗学者多兼修净土法门，形成「**教在天台，行归净土**」的独特传统——以天台教观为理解框架，以念佛求生西方为究竟归宿。
 
       这一合流的基础在于天台宗自身的净土思想：智顗在《观经疏》中即有净土修持的论述，天台忏法中亦包含大量念佛内容。但「行归净土」也引发争议——天台宗是否因此丧失了自身「止观双修」的独立修行品格，沦为净土宗的「教理解说」？
 
       从修行实践看，这一合流为天台宗提供了简便的修行法门（念佛），但也使天台止观的高阶修行（圆顿止观·一念三千的观照）在实际修行中逐渐边缘化。'
+    en_body: |
+      Since the Yuan and Ming, Tiantai scholars have commonly practiced the Pure Land path as well, giving rise to the distinctive tradition of "teaching in Tiantai, practice in Pure Land" — taking Tiantai's teaching and contemplation as the interpretive frame and mindfulness of the Buddha with rebirth in the West as the ultimate goal.
+
+      The confluence rested on Tiantai's own Pure Land thought: Zhiyi had already discussed Pure Land practice in his Commentary on the Contemplation Sutra, and the Tiantai repentance liturgies are rich in material on mindfulness of the Buddha. Yet "practice returning to Pure Land" also raised a charge: did Tiantai thereby forfeit its own independent character of "calming and contemplation in one practice" and become only a doctrinal expositor for the Pure Land school?
+
+      On the ground, the confluence gave Tiantai an accessible vehicle (the recitation of the Buddha's name), but it also gradually pushed the school's higher contemplative exercises — the perfect-and-sudden contemplation, the reflection on the three thousand realms in a single thought — to the margins of actual practice.
     source: 天台净土传统·智顗《观经疏》·「教在天台行归净土」传统
 
   - title: 天台与唯识 — 「性具」与「性起」的根本分歧
+    title_en: "Tiantai and Yogacara — the root divergence of \"nature-possession\" and \"nature-arising\""
     body: '天台宗「**性具**」（一切法本具于一念心中）与华严宗「**性起**」（一切法从如来藏清净心而起）的分歧，实质上是「妄心系」与「真心系」在中国佛教内部的根本对立——天台以「无明法性心」（染净同具）为出发点，华严以「如来藏自性清净心」（唯真心）为出发点。
 
       牟宗三在《佛性与般若》中系统梳理了这一分歧，认为天台「性具三千」比华严「性起」更圆实——因为「性具」承认一切法（包括染法·无明·地狱等）本具于心中，不须「断除」而即「法性」，此为「不断断」的修行论基础；华严「性起」则以「唯真心」摄一切法，有「缘理断九」之嫌。
 
       从唯识学的角度看，天台「一念三千」的「一念心」既非阿赖耶识（唯识学的染污种子识），亦非如来藏清净心，而是一种「法性无住·无明无住」的独特心识论立场——与唯识学的八识体系存在根本差异。'
+    en_body: |
+      Tiantai's "nature-possession" — all dharmas inherently complete within the single thought — and Huayan's "nature-arising" — all dharmas arising from the pure tathāgatagarbha mind — are, at bottom, the fundamental opposition within Chinese Buddhism of the "deluded-mind school" and the "true-mind school." Tiantai starts from the "mind of ignorance and dharma-nature" (defilement and purity co-present); Huayan starts from the "self-nature-pure mind of the tathāgatagarbha" (the true mind alone).
+
+      Mou Zongsan's Buddha-Religion and Prajna systematically surveyed this divide, concluding that Tiantai's "nature-possession of the three thousand" is more substantial than Huayan's "nature-arising": since nature-possession admits that all dharmas — the defiled, ignorance, the hell-realms included — are inherent in the mind, none has to be "cut off" to be already "dharma-nature"; this is the soteriological basis of "cutting off without cutting." Huayan's nature-arising, drawing all dharmas into the "true mind alone," incurs the suspicion of "severing the nine at the principle."
+
+      Read from the Yogācāra standpoint, the "single thought" of Tiantai's "three thousand realms in a single thought" is neither the ālayavijñāna (Yogācāra's defiled seed-consciousness) nor the pure tathāgatagarbha mind, but a distinctive theory of mind as "dharma-nature non-abiding, ignorance non-abiding" — fundamentally at odds with the Yogācāra system of eight consciousnesses.
     source: 牟宗三《佛性与般若》·天台「性具」vs华严「性起」义理比较
 
   - title: 天台与藏传 — 「显密圆融」的跨文化对话
+    title_en: "Tiantai and Tibetan Buddhism — a cross-cultural dialogue on exoteric-esoteric fusion"
     body: '天台宗与藏传佛教的对话较少被系统梳理，但存在几个重要的交叉点：
 
       （1）**天台「五时八教」与藏传「九乘次第」**：两者都是判摄一切佛法的完整体系，但方法论不同——天台以「时」（说教时间）与「仪」（说教方式）为经纬，藏传以「乘」（修行阶位）为次第。（2）**天台止观与藏传大手印/大圆满**：「不断断」（天台）与「本觉」（大圆满）在修行论上有相似之处——都主张不离当下心识而证菩提，但哲学基础不同。（3）**台密与东密**：最澄将天台止观与密教修法融合，形成「台密」——这比藏传密教更早地实现了显密圆融的尝试。
 
       当代天台学者与藏传学者之间的直接对话仍较少，这一领域有待进一步开拓。'
+    en_body: |
+      The correspondences between Tiantai and Tibetan Buddhism have rarely been systematically mapped, yet several important crossing-points exist:
+
+      (1) Tiantai's five periods and eight teachings and the Tibetan "nine vehicles": both are complete systems of classifying all the Dharma, but they differ in method — Tiantai works by "period" (when a teaching was delivered) and "method" (how it was delivered); Tibet works by "vehicle" (the stage of practice). (2) Tiantai calming-and-contemplation and the Tibetan Mahamudra / Great Perfection: "cutting off without cutting" in Tiantai and "innate awakening" in the Great Perfection resemble each other soteriologically — both hold that awakening is attained without leaving the present mind — though their philosophical bases differ. (3) Taimitsu and Tomitsu: Saicho fused Tiantai contemplation with esoteric practice to form Taimitsu — an experiment in exoteric-esoteric fusion antedating the outward form of Tibetan esoteric Buddhism.
+
+      Direct dialogue between contemporary Tiantai and Tibetan scholars remains thin; this field awaits cultivation.
     source: 天台「五时八教」与藏传「九乘次第」比较研究
 
 - id: tt_haiyun
   title: 海云法师 · 天台宗的当代诠释
+  title_en: "Master Haiyun — Reading Tiantai for Today"
   icon: 🙏
   intro: '海云继梦和上在其华严宗修行体系中，对天台宗有明确的判摄与定位——将天台宗纳入华严「五教十宗」判教框架，以华严为究竟归趣，天台为重要但非究竟的前行阶次。'
+  intro_en: |
+    Within his Huayan practice system, the master Haiyun Jimeng offers a clear adjudication of Tiantai, placing it inside the Huayan frame of the five teachings and the ten schools, with Huayan as the final refuge and Tiantai as an important but not final preparatory stage of the path.
   topics:
   - title: 海云法师对天台圆教的判摄
+    title_en: "Haiyun's Adjudication of the Tiantai \"Consummate Teaching\""
     body: '海云法师在其修行体系中，以华严宗贤首五教判为基本框架——小教→始教→终教→顿教→圆教（=华严），天台宗被归入「终教」或「顿教」层次，而非「圆教」——华严圆教以「事事无碍法界」为究竟，超越天台「三谛圆融」的「理法界」层面。
 
       这一判摄与牟宗三的判摄形成有趣对照：牟宗三以天台为真圆教、华严为别教（缘理断九）；海云法师以华严为真圆教、天台为次级——二者在「天台与华严孰为圆教」这一核心问题上立场完全相反。
 
       从修行实践的角度看，海云法师的判摄意味着：天台止观修行是华严修行体系的「前行」或「资粮」——修行者先通过天台止观打好基础，再进入华严「法界缘起」的究竟修行。'
+    en_body: |
+      Master Haiyun works within the frame of the Huayan master Xianshou's five teachings — small, initial, final, sudden, and consummate (= the Avatamsaka) — and locates Tiantai at the level of the "final" or the "sudden" teaching, not the "consummate": the consummate teaching of Huayan, whose consummation is the unimpeded interpenetration of all phenomena, stands beyond the "dharma-realm of principle" to which Tiantai's fused three truths belong.
+
+      This adjudication makes a striking pair with Mou Zongsan's: Mou takes Tiantai for the true consummate teaching and Huayan for a separate teaching (severing the nine at the principle); Haiyun takes Huayan for the true consummate teaching and Tiantai for a subordinate one. On the very question "which school is the consummate teaching," the two positions are diametrically opposed.
+
+      Translated into practice, Haiyun's adjudication means Tiantai's calming-and-contemplation serves as the "preliminary practice" or "provisions" of the Huayan path: the practitioner first lays the foundation through Tiantai's contemplation, and only then enters the ultimate Huayan practice of "dependent origination of the dharma-realm."
     source: 海云继梦法师「普贤乘华严宗」修行体系·大华严寺官网

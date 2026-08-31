@@ -1,6 +1,7 @@
 sections:
 - id: fx_overview
   title: 名相辨析与整体定位
+  title_en: "Names Clarified and Overall Position"
   icon: 🔍
   intro: '法相唯识宗（唯识宗·慈恩宗·瑜伽行派·有相宗·五性宗）是汉传佛教史上
 
@@ -8,11 +9,14 @@ sections:
 
     也是一面映照「佛教中国化」张力的镜子：一个理论上最纯粹、最忠于印度原典的宗派，
 
-    为何在中土仅两三传即告式微，又为何在千年之后成为近现代佛学复兴运动的旗帜？
+    为何在中土仅两三传即告式微，又    为何在千年之后成为近现代佛学复兴运动的旗帜？
 
     '
+  intro_en: |-
+    The Dharma-character school of Consciousness-only (also known as the Cien school, the Yogācāra school, or the school of "aspects") is one of the most rigorously systematic—and most controversial—schools in the history of Chinese Buddhism. It is at once a philosophical enterprise sustained for over a millennium and a mirror of the tensions of "the Sinicization of Buddhism": why did a school theoretically the purest and most loyal to its Indian sources fade within only two or three generations on Chinese soil, and why did it again become the banner of the modern revival movement of Buddhist learning a thousand years later?
   topics:
   - title: 「法相」与「唯识」之辨
+    title_en: "The Distinction between 'Dharma-character' and 'Consciousness-only'"
     body: '「法相唯识分宗」之辩由欧阳竟无最早提出：
 
       **法相学**阐明「是什么」——五位百法的存在论分类；
@@ -24,8 +28,11 @@ sections:
       太虚大师反对割裂二者，主张法相、唯识本是一体两面。
 
       '
+    en_body: |-
+      The debate over separating "Dharma-character" from "Consciousness-only" was first raised by Ouyang Jingwu. The study of Dharma-character (dharmalakṣaṇa) answers "what things are"—an ontological taxonomy of the hundred dharmas in five groups—while the study of consciousness-only (vijñaptimātra) answers "why"—the argument that all phenomena are constructions of consciousness. Consciousness-only can encompass Dharma-character, but not the reverse. Master Taixu, by contrast, opposed any cleavage and insisted that the two are but two sides of one reality.
     source: 欧阳竟无《唯识抉择谈》· 太虚《佛法总抉择谈》
   - title: 别称与判教位置
+    title_en: "Alternative Names and Doctrinal Placement"
     body: '因玄奘、窥基常住长安大慈恩寺，称**慈恩宗**；
 
       因源出印度瑜伽行派（Yogācāra），称**瑜伽宗**；
@@ -39,11 +46,15 @@ sections:
       日本「南都六宗」中，法相宗是唯一延续至今、仍有法脉活动的古宗之一。
 
       '
+    en_body: |-
+      Because Xuanzang and Kuiji long resided at the Great Cien Monastery in Chang'an, the school is called the Cien school; because it descends from the Indian Yogācāra, it is also the Yogācāra school; and because it holds that no object exists apart from consciousness, it is the "school of aspects" (sākāravāda), set against the Madhyamaka tradition of emptiness (the "nature" or "emptiness" school). Within the eight major schools of Chinese Buddhism, only the Consciousness-only and the Three Treatises schools escaped classification under the "nature-school" camp. Among Japan's Six Schools of Nara, the Hossō school remains the only ancient school still carrying on an active lineage.
 - id: fx_india
   title: 印度渊源
+  title_en: "The Indian Origins"
   icon: 🌏
   topics:
   - title: 弥勒—无著—世亲：学派的奠基
+    title_en: "Maitreya, Asaṅga and Vasubandhu: The Founding of the School"
     body: '瑜伽行派尊弥勒菩萨（Maitreya，或历史人物「弥勒论师」）为初祖，
 
       实际的学派奠基者是四、五世纪的**无著**（Asaṅga）与异母弟**世亲**（Vasubandhu）。
@@ -57,7 +68,10 @@ sections:
       以极精简的偈颂形式将唯识学说体系化——此后一切唯识论著共同的诠释母本。
 
       '
+    en_body: |-
+      The Yogācāra school honours the bodhisattva Maitreya (whether a celestial being or a historical "Master Maitreya") as its first patriarch, but its real founders were the fourth- and fifth-century figures Asaṅga and his half-brother Vasubandhu. Tradition has Asaṅga ascending in meditation to Tuṣita heaven to receive from Maitreya the treatises of the "five works of Maitreya," including the Yogācārabhūmi and the Madhyāntavibhāga. Vasubandhu, originally a Sarvāstivādin and author of the Abhidharmakośa, was converted to the Mahāyāna by his brother and in his later years composed the Triṃśikā ("Thirty Verses") and Viṃśatikā ("Twenty Verses"), distilling the doctrine of consciousness-only into terse verses that became the shared hermeneutical matrix for all subsequent vijñaptimātra writing.
   - title: 世亲之后的分化：陈那因明与护法—安慧两系
+    title_en: "After Vasubandhu: Dignāga's Logic and the Dharmapāla–Sthiramati Split"
     body: '世亲身后沿两条线索发展：
 
       ① **陈那**（Dignāga）开创佛教逻辑学（因明/量论），经**法称**（Dharmakīrti）发扬；
@@ -77,7 +91,10 @@ sections:
       藏传主要传承安慧一系，汉传主要传承护法一系。
 
       '
+    en_body: |-
+      After Vasubandhu the school developed along two lines: first, Dignāga founded Buddhist logic (hetuvidyā, "the science of reasons") later carried on by Dharmakīrti; second, the tradition of commentary on the Triṃśikā produced at Nālandā the celebrated circle of "ten great exegetes." The most important division was that between Dharmapāla's "consciousness-only with aspects," which grants the image-part (nimitta) its own constructive reality and sets up the fourfold structure of perception, and the Sthiramati line, "consciousness-only without aspects," closer to the austere form of early Yogācāra. Dharmapāla's celebrated "dispute on emptiness and existence" with the Svātantrika-Madhyamaka master Bhāviveka was carried on without the two ever meeting face to face, and Dharmapāla died young, aged only thirty-two. This "with/without aspects" division resurfaced dramatically in the twentieth century: the Tibetan tradition chiefly transmitted Sthiramati's line, the Chinese chiefly Dharmapāla's.
   - title: 那烂陀寺与戒贤
+    title_en: "Nālandā and Śīlabhadra"
     body: '护法思想经弟子**戒贤**（Śīlabhadra）在那烂陀寺发扬光大。
 
       戒贤晚年即是玄奘在印度求法期间的授业恩师。
@@ -89,11 +106,15 @@ sections:
       也正因如此，近代学者才需借助藏译文献回溯安慧一系的原貌。
 
       '
+    en_body: |-
+      Dharmapāla's thought was carried forward above all by his disciple Śīlabhadra at Nālandā, which had by the seventh century become the foremost centre of Buddhist learning in all of India. In his old age Śīlabhadra became the teacher of Xuanzang during his years of study there. This line of transmission directly fixed the later Chinese vijñaptimātra's stance of "revering Dharmapāla alone" — and it is precisely for this reason that modern scholars have had to turn to Tibetan translations to recover the original form of the Sthiramati tradition.
 - id: fx_lineage
   title: 汉传法脉传承
+  title_en: "The Chinese Lineage"
   icon: 📜
   topics:
   - title: 玄奘之前：真谛与「唯识古学」
+    title_en: "Before Xuanzang: Paramārtha and the 'Ancient Consciousness-only'"
     body: '玄奘之前，唯识学说已借**真谛**（Paramārtha，499-569）的翻译活动传入中国，
 
       形成「地论师」「摄论师」等学派，后世称「唯识古学」。
@@ -103,7 +124,10 @@ sections:
       与玄奘之后引入的护法系「唯识今学」在义理取向上颇有出入。
 
       '
+    en_body: |-
+      Before Xuanzang, the doctrine of consciousness-only had already reached China through the translations of Paramārtha (499–569), giving rise to schools such as the Dilun ("treatise on the grounds") and Shelun ("treatise on the Mahāyānasaṃgraha") masters — what later tradition calls the "ancient consciousness-only" (old) teaching. Paramārtha's versions carry a marked tathāgatagarbha colouring (including his distinctive interpretation of the "amala consciousness"), and their doctrinal orientation differs considerably from the Dharmapāla-based "modern consciousness-only" introduced after Xuanzang.
   - title: 玄奘西行与《成唯识论》的编译
+    title_en: "Xuanzang's Journey and the Compilation of the Cheng Weishi Lun"
     body: '**玄奘**（602-664）归国后于显庆四年（659年）主持编译《成唯识论》。
 
       原计划将十大论师注释逐一全译，采纳窥基「以护法为宗，糅译诸家」建议，
@@ -119,7 +143,10 @@ sections:
       吕澂通过梵藏文献比对对此做出尖锐揭示。
 
       '
+    en_body: |-
+      After his return, Xuanzang (602–664) directed the compilation of the Discourse on the Theory of Consciousness-only (Cheng weishi lun, T31n1585) in the fourth year of the Xianqing era (659). His original plan was to translate the commentaries of the ten great exegetes in full; following Kuiji's advice to "take Dharmapāla as the norm while combining the others," he instead wove the ten into a single ten-fascicle text around Dharmapāla's position, with Kuiji as "amanuensis." Because the ten commentaries were fused and trimmed into one, the boundaries of each master's original teaching became hard to trace, and Kuiji's own sub-commentary interpreted the whole through Dharmapāla's lens — the Cheng weishi lun was from the start a compilation with a distinctively "Dharmapāla-ized" editorial stance. Lü Cheng exposed this sharply by collating Sanskrit and Tibetan sources.
   - title: 窥基：慈恩宗的实际创立者
+    title_en: "Kuiji: The De Facto Founder of the Cien School"
     body: '**窥基**（632-682）出身鲜卑尉迟部，唐开国功臣尉迟敬德之侄。
 
       「三车和尚」传说（携金银·酒·美女三车出家）现代考辨认为历史依据薄弱——
@@ -135,7 +162,10 @@ sections:
       现代学界多视窥基（而非玄奘）为法相唯识宗名副其实的创宗者。
 
       '
+    en_body: |-
+      Kuiji (632–682), of the Xianbei Yuchi clan and a nephew of the Tang founding minister Yuchi Jingde, was a man of erudition. The legend of the "monk of the three carts" (said to have entered the monastic life carrying gold, wine, and a woman) is now judged by scholarship to rest on weak historical ground — Kuiji himself said he took ordination after losing his mother in boyhood amid family upheaval, and the Song Gaoseng zhuan only relates that Xuanzang urged him to ordain on the strength of a physiognomic reading. Dwelling at the Great Cien Monastery, Kuiji was honoured as "Great Master Cien" and "Commentator of a Hundred Works," producing dozens of sub-commentaries, including on the Cheng weishi lun, the Mahāyānasaṃgraha, the Yogācārabhūmi, and the Nyāyamukha. The old verdict ran: "Xuanzang founded the Yogācāra teaching; Kuiji was the master who set it down in writing." Modern scholarship largely regards Kuiji—not Xuanzang—as the true founder of the Dharma-character Consciousness-only school.
   - title: 圆测公案：西明系与慈恩系之争
+    title_en: "The Woncheuk Case: The Ximing–Cien Rivalry"
     body: '**圆测**（613-696）出身新罗王族，三岁出家，十五岁入唐，
 
       早年师从法常、僧辩钻研真谛旧唯识，后又拜入玄奘门下，住长安西明寺。
@@ -149,7 +179,10 @@ sections:
       这场「西明与慈恩之争」最终以贴近中土佛性论主流的一方占优而告终。
 
       '
+    en_body: |-
+      Woncheuk (Chinese: Yuance, 613–696), of Silla royal descent, left home at three and entered Tang China at fifteen. He first studied under Fachang and Sengbian the old vijñaptimātra of Paramārtha, then entered Xuanzang's circle and lived at the Ximing Monastery in Chang'an; the Empress Wu honoured him as a national preceptor, repeated Silla requests for his return were refused, and he was buried at Mount Longmen's Xiangshan Monastery after his death. The substantive doctrinal disagreement concerned the theory of the five gotras: the Ximing line that Woncheuk represented took the lenient view, close to the mainstream "all beings have Buddha-nature"; whereas his fellow student Huizhao explicitly opposed it and insisted on the "one class without [the seed of] liberation." In the end the side closer to the Sinic Buddha-nature mainstream prevailed in this "Ximing vs. Cien" contest.
   - title: 慧沼、智周与传承的式微
+    title_en: "Huizhao, Zhizhou, and the School's Decline"
     body: '**慧沼**（648-714）著《成唯识论了义灯》扶正窥基一系；
 
       **智周**（668-723）著《成唯识论演秘》。
@@ -161,11 +194,15 @@ sections:
       近八百年仅有零星著作（元代云峰《唯识开蒙问答》），直至近代复兴运动重新接续。
 
       '
+    en_body: |-
+      Huizhao (648–714) composed the Liaoyi deng ("Lamp of the Final Meaning"), vindicating Kuiji's line, and Zhizhou (668–723) wrote the Yanshi mi ("Explicating the Secrets"). The "three sub-commentaries on consciousness-only" — Kuiji's Shu ji, Huizhao's Liaoyi deng, and Zhizhou's Yanshi mi — are the indispensable reading for mastering the Cheng weishi lun. After Zhizhou the master–disciple succession in China grew obscure; the Huichang persecution of Buddhism (845) dealt a crushing blow that severed the lineage, so that for nearly eight hundred years only isolated works survived (such as the Yuan-dynasty Yunfeng's Weishi kaimeng wenda), until the modern revival resumed the thread.
 - id: fx_doctrine
   title: 核心教义体系
+  title_en: "The Core Doctrinal System"
   icon: 📖
   topics:
   - title: 八识
+    title_en: "The Eight Consciousnesses"
     body: '眼耳鼻舌身「前五识」（感官识）→ 第六**意识**（统合思虑）→
 
       第七**末那识**（manas，恒执第八识见分为「自我」，我执根源）→
@@ -175,7 +212,10 @@ sections:
       前七识依阿赖耶识而生起、又反过来向其「熏习」种子——自我维持的因果循环。
 
       '
+    en_body: |-
+      The "five sense consciousnesses" (eye, ear, nose, tongue, body) feed the sixth consciousness (mano-vijñāna) that unifies thought; the seventh, manas, constantly grasps the seed-aspect of the eighth as "self" and is thus the root of attachment to self; and the eighth, ālayavijñāna — the "storehouse consciousness" — contains all seeds and is the enduring ground of both saṃsāra and cognitive continuity. The first seven consciousnesses arise in dependence on the ālayavijñāna and in turn "perfume" seeds back into it, forming a self-sustaining causal cycle.
   - title: 三性三无性
+    title_en: "The Three Natures and Three Non-natures"
     body: '**遍计所执性**：凡夫由名言概念虚妄计度而执取的「实我实法」，纯属妄想构造；
 
       **依他起性**：依托众缘和合而生的现象本身（识之相分见分），「后得智」境界；
@@ -187,7 +227,10 @@ sections:
       这正是唯识学自称「中道」（唯识中道宗）而非单纯「有宗」的关键。
 
       '
+    en_body: |-
+      The "imagined nature" (parikalpita) is the "real self and real dharmas" grasped by the ordinary person through deluded conceptual construction — a pure figment. The "other-dependent nature" (paratantra) is the phenomenal continuum that arises through the conjunction of conditions (the image- and seeing-parts of consciousness), the sphere of "acquired wisdom" (post-equanimity knowledge). And the "perfectly accomplished nature" (pariniṣpanna) is the full, real essence of all dharmas — i.e., suchness — the object of "fundamental wisdom." To these correspond the "three non-natures" (absence of marks, of origination, and of ultimate), which echo the Madhyamaka notion of emptiness. This is precisely why consciousness-only calls itself the "Middle Way" (the vijñaptimātra-Madhyamaka school) rather than a mere "realist" school.
   - title: 种子说
+    title_en: "The Doctrine of Seeds (bīja)"
     body: '阿赖耶识中含藏无数「种子」（bīja），是一切现象生起的潜在功能。
 
       长期聚讼：「本有种子」（法尔本具）vs「新熏种子」（现行熏习形成）。
@@ -199,7 +242,10 @@ sections:
       傅新毅《识体与识变》以专章处理这一问题。
 
       '
+    en_body: |-
+      The ālayavijñāna harbours countless "seeds" (bīja), the latent dispositions out of which all phenomena arise. A long-standing controversy concerns whether seeds are "innate" (present from the outset) or "newly perfumed" (formed by present activity). The Cheng weishi lun adopts a mediating position (holding both), yet successive commentaries continue to differ over their relative weight and mode of operation. Fu Xinyi's Shiti yu shibian devotes a whole chapter to this problem.
   - title: 五位百法与转识成智
+    title_en: "The Hundred Dharmas and Transforming Consciousness into Wisdom"
     body: '窥基据《瑜伽师地论》《百法明门论》将一切法归纳为「五位百法」：
 
       心法·心所法·色法·心不相应行法·无为法——分析一切存在的坐标系。
@@ -209,7 +255,10 @@ sections:
       将染污八识转化为「四智」（大圆镜智·平等性智·妙观察智·成所作智）。
 
       '
+    en_body: |-
+      Drawing on the Yogācārabhūmi and the Mahāyānaśatadharmaprakāśamukhaśāstra, Kuiji reduced all dharmas to "the hundred dharmas in five groups": mind, mental factors, form, mind-disassociated formations, and the unconditioned — a coordinate system for analyzing all that exists. The ultimate aim of practice is "transforming consciousness into wisdom": through the "turning about of the basis" (āśraya-parāvṛtti) the defiled eight consciousnesses are converted into the four wisdoms (mirror-like wisdom, wisdom of equality, wisdom of sublime observation, and wisdom of accomplishing what is to be done).
   - title: 五种姓说及其争议
+    title_en: "The Theory of the Five Gotras and Its Controversies"
     body: '依《瑜伽师地论》《成唯识论》，众生分五类：
 
       定性声闻·定性缘觉·定性菩萨·**不定种性**（可转向大乘）·**无种性**（「无性阐提」，永无出世无漏种子）。
@@ -227,7 +276,10 @@ sections:
       任继愈：唯识宗式微的根本原因是「这一宗派不适合中国的需要」。
 
       '
+    en_body: |-
+      According to the Yogācārabhūmi and the Cheng weishi lun, sentient beings fall into five classes: the fixed śrāvaka, fixed pratyekabuddha, fixed bodhisattva, the indeterminate (who may turn toward the Mahāyāna), and the "lineage-less" (the icchantika who never possesses the seeds of supramundane liberation). This came into direct conflict with the mainstream, going back to Zhu Daosheng, that "all beings possess Buddha-nature." Kuiji's remedial move distinguished "Buddha-nature in principle" (suchness, shared equally by all) from "Buddha-nature in function" (the seeds of enlightenment, which differ by gotra), and divided the icchantika into "one who has cut off the roots of goodness" and the "great-compassion icchantika" (a bodhisattva who by vows willingly refuses nirvāṇa). Chen Yinke observed that Indian notions of caste had seeped into the soteriology, making the five-gotra theory a projection of social structure onto the theory of attainment — and precisely for that reason it was hardest for a Chinese society that stressed that "everyone can become a Buddha" to accept. Ren Jiyu held that the fundamental reason for the school's decline was that "this school did not suit China's needs."
   - title: 因明与「真唯识量」
+    title_en: "Hetuvidyā and the 'True Consciousness-only Inference'"
     body: '**因明**（Hetuvidyā）由陈那系统化，经玄奘传入并与唯识学深度结合。
 
       玄奘在戒日王主持的曲女城无遮大会上立「真故极成色不离于眼识」一量
@@ -239,7 +291,10 @@ sections:
       吕澂、熊十力等近代学者均撰文讨论玄奘所用「简别语」（「自许」）的精妙。
 
       '
+    en_body: |-
+      Hetuvidyā (Buddhist logic) was systematized by Dignāga, brought to China by Xuanzang, and deeply integrated there with consciousness-only doctrine. At the grand unimpeded assembly convened at Kanyākubja by King Harṣa, Xuanzang put forth the "true consciousness-only inference" — that "in the ultimate sense the established form is not separate from the eye-consciousness" — and for eighteen days no one could refute it. This syllogism was debated for a thousand years thereafter, pursued through both Kuiji-style hetuvidyā scholarship and the scrutiny of Western logic. Modern scholars such as Lü Cheng and Xiong Shili all wrote on the subtlety of Xuanzang's use of the delimiting qualifier "self-asserted" (svayam-prasiddha / Chinese zixu).
   - title: 五重唯识观：修行次第
+    title_en: "The Fivefold Consciousness-only Contemplation: Stages of Practice"
     body: '窥基《大乘法苑义林章》提出由浅入深的观行次第：
 
       ① 遣虚存实识——遣遍计所执虚妄，存依他起圆成实（空有相对观）
@@ -257,12 +312,16 @@ sections:
       唯识学从来不是纯粹思辨的概念游戏，而是可落实于止观禅修的操作性框架。
 
       '
+    en_body: |-
+      In the Mahāyāna Dharma-character Garden of Meaning (Da sheng fayuan yilin zhang), Kuiji set out a progressive contemplative curriculum: (1) eliminate the imaginary and retain the real; (2) reject the image-part and retain the other three; (3) trace mind-and-its-objects back to self-verification; (4) suppress the mental factors to manifest the mind-king; and (5) discard the phenomenal aspects of consciousness-only to realize suchness. The first four stages belong to the "defiled contemplative" phase (the stages of accumulation and endeavor), the fifth to the "undefiled" phase, reached after the path of vision. Consciousness-only is thus never a mere conceptual game but a workable framework realized in śamatha–vipaśyanā meditation.
     source: 窥基《大乘法苑义林章》·《摄大乘论》·《成唯识论》
 - id: fx_decline
   title: 演变与式微
+  title_en: "Decline and Transformation"
   icon: 🍂
   topics:
   - title: 式微的四大原因
+    title_en: "Four Reasons for the Decline"
     body: '法相唯识宗拥有最庞大的国家译经资源、最高的皇室礼遇（玄奘被视为「国宝」），
 
       却是汉传八大宗中传承中断最早、最彻底的一支。综合近代学者（任继愈）及教界反思（济群法师）：
@@ -280,11 +339,15 @@ sections:
       概言之：「高度印度化的义理体系」与「要求本土化、简易化的中国宗教市场」之间结构性错位。
 
       '
+    en_body: |-
+      The Dharma-character school commanded the largest state resources for translation and the highest imperial favour (Xuanzang was treated as a "national treasure"), yet it was the first and most completely severed of the eight major Chinese schools. Drawing on modern scholars (Ren Jiyu) and monastic reflection (Master Jiqun), four causes stand out: the doctrinal system was so vast and subtle that every part hung on every other, raising the threshold of entry too high; the five-gotra theory clashed at depth with the mainstream Chinese doctrine of universal Buddha-nature; the "foreignness" of the scholastic language—hetuvidyā schemata and transliterated Sanskrit terms—estranged Chinese literati; and the Huichang persecution physically destroyed its core base in Chang'an, its texts, translation halls, and clergy. Meanwhile Chan and Pure Land, being simple and direct, had firm popular foundations and suffered less, hastening Consciousness-only's marginalization. In short, there was a structural mismatch between a highly Indianized doctrinal system and a Chinese religious market demanding indigenous, simplified forms.
 - id: fx_overseas
   title: 域外传播：法脉的分流
+  title_en: "Transmission Abroad: The Branching of the Lineage"
   icon: 🌐
   topics:
   - title: 日本法相宗
+    title_en: "The Japanese Hossō School"
     body: '四次传入，形成「南寺传」与「北寺传」两支：
 
       第一传 653年 道昭 亲从玄奘 → 元兴寺（南寺传）
@@ -304,7 +367,10 @@ sections:
       京都清水寺独立为「北法相宗」，法隆寺演变为「圣德宗」。
 
       '
+    en_body: |-
+      The Dharma-character school reached Japan in four transmissions, forming the "Southern" and "Northern" lines: the first (653) by Dōshō, a direct disciple of Xuanzang, at Gangō-ji (Southern); the second (658) by Chitsū and Chidatsu, also at Gangō-ji (Southern); the third (703) by Chihō, Chiran, and Chiyū, inheriting from Zhizhou, at Kōfuku-ji (forerunner of the Northern); and the fourth (717) by Genbō, also under Zhizhou, at Kōfuku-ji (Northern). Hossō was one of Japan's Six Schools of Nara and wielded the greatest influence in the Nara and Heian periods. Zenshu of the Northern line was honoured as "the later incarnation of Great Master Cien," and together with Gomyō of the Southern line he debated Tendai's Saichō and Shingon's Kūkai. Today the school is headquartered at Kōfuku-ji and Yakushi-ji in Nara as one of the few ancient Nara sects still active. In Kyoto, Seigen-ji (Kiyomizu-dera) became the independent "Northern Hossō," while Hōryū-ji evolved into the "Shōtoku sect."
   - title: 新罗与高丽
+    title_en: "Silla and Goryeo"
     body: '圆测门下弟子**道证**归国弘传，再传弟子**太贤**在新罗系统整理法相宗义。
 
       圆测终身未能归国、塔葬洛阳龙门香山寺——这座中国寺院被尊为「韩国唯识宗祖庭」，
@@ -312,7 +378,10 @@ sections:
       圆测被誉为「**海东瑜伽之祖**」——法脉认同超越地理疆界的典型案例。
 
       '
+    en_body: |-
+      Woncheuk's disciple Daejeung (Dojeung) returned home to propagate the teaching, and the latter's disciple Taeyeon (Taihyeon) systematically organized the school's doctrines in Silla. Although Woncheuk himself could never return home and was enshrined at Mount Longmen in China, that Chinese monastery came to be honored as the "ancestral seat of Korean Consciousness-only," and Woncheuk was hailed as "the ancestor of Yogācāra beyond the sea" — a striking case of lineage identity crossing geographical borders.
   - title: 藏传「唯识见」：另一条法脉
+    title_en: "The Tibetan 'View of Consciousness-only': Another Lineage"
     body: '藏传「宗义书」（grub mtha''）体系中，唯识被置于毗婆沙、经部之上，
 
       但仍在中观（尤其应成派）之下，被视为尚未究竟了义的「权说」——
@@ -332,11 +401,15 @@ sections:
       融合唯识心识分析与中观究竟空义，成为宁玛派早期教法重要资源。
 
       '
+    en_body: |-
+      In the Tibetan doxographical literature (grub mtha'), consciousness-only is ranked above the Vaibhāṣika and Sautrāntika schools yet below the Madhyamaka (especially the Prāsaṅgika), treated as a "provisional" teaching not yet of final meaning — parallel to the Huayan school's fivefold classification that regards Consciousness-only as the "initial Mahāyāna teaching." On the question of content, the Tibetan tradition chiefly inherits the Sthiramati (aspectless, ancient) line, whose representative treatises have long been lost in China but survive intact in the Tibetan canon, whereas the Chinese tradition reveres exclusively the Dharmapāla (aspect-bearing, modern) line. "Consciousness-only" thus corresponds in the two great traditions to two different doctrinal forms. In the eighth century Śāntarakṣita inaugurated the "Yogācāra-Madhyamaka," fusing the analysis of mind with the ultimate emptiness of Madhyamaka, an important resource for the early teachings of the Nyingma school.
 - id: fx_revival
   title: 近现代复兴运动
+  title_en: "The Modern Revival Movement"
   icon: 🔥
   topics:
   - title: 杨仁山与金陵刻经处
+    title_en: "Yang Renshan and the Jinling Scriptural Press"
     body: '**杨仁山**（1837-1911，号「深柳大师」）是「近代佛教先觉者」。
 
       1866年创办**金陵刻经处**——近代中国第一家由居士创办、融雕版印刷与佛学研究于一体的机构。
@@ -350,7 +423,10 @@ sections:
       梁启超：「今代治佛学者，殆无一不与佛学有关系，而凡有真信仰者，率归依文会。」
 
       '
+    en_body: |-
+      Yang Renshan (1837–1911, "the Master of the Deep Willow," Shenliu) was the "forerunner of modern Buddhism." In 1866 he founded the Jinling Scriptural Press — the first institution in modern China founded by a layman combining block-print publishing with Buddhist scholarship. On trips to Japan he recovered and reprinted many works long lost in China (important sub-commentaries by Kuiji, Huizhao, and Zhizhou), thereby restoring the textual basis of the Dharma-character Consciousness-only learning that had been silent for a millennium. In 1908 he established the Qihuan Institute and in 1910 a Buddhist research society, training such figures as Taixu and Ouyang Jingwu. Liang Qichao wrote that virtually every serious student of Buddhism in the era was connected to him, and that all genuine believers rallied to his society.
   - title: 欧阳竟无与支那内学院
+    title_en: "Ouyang Jingwu and the Chinese Inner Studies Institute"
     body: '**欧阳竟无**（1871-1943，名渐）1922年创办**支那内学院**，
 
       吸引梁启超、梁漱溟、熊十力、汤用彤从学。
@@ -364,7 +440,10 @@ sections:
       提出「法相与唯识分宗」说，主张回归印度唯识学本来面目。
 
       '
+    en_body: |-
+      Ouyang Jingwu (1871–1943), personal name Jian, founded the Chinese Inner Studies Institute (Zhina neixue yuan) in 1922, drawing in Liang Qichao, Liang Shuming, Xiong Shili, and Tang Yongtong. His core method was "strictly distinguishing substance from function": substance (ti) is uncaused and undecaying, function (yong) is born and perishing — and the "suchness-origination" tradition of the Awakening of Faith and the Śūraṃgama Sūtra, which lets function arise from substance and even identifies the two, conflates this distinction. His Selections on Deciding the View of Consciousness-only (Weishi jueze tan) openly questioned both the doctrine and the authenticity of the Awakening of Faith, advanced the thesis that "Dharma-character and Consciousness-only are separate schools," and urged a return to the true face of Indian consciousness-only.
   - title: 韩清净与三时学会：「南欧北韩」
+    title_en: "Han Qingjing and the Society of the Three Times: 'Ouyang in the South, Han in the North'"
     body: '**韩清净**（1884-1949）1921年发起「法相研究会」，1927年改组为**三时学会**，
 
       与欧阳竟无并称「**南欧北韩**」。
@@ -378,7 +457,10 @@ sections:
       以严谨文献学方法校订唯识根本论典的文句舛误与章节错简。
 
       '
+    en_body: |-
+      Han Qingjing (1884–1949) launched a "Dharma-character research society" in 1921, reorganized in 1927 as the Society of the Three Times (Sanshi xuehui), and became paired with Ouyang Jingwu as "Ouyang in the south, Han in the north." Their temperaments differed: Ouyang "did not search word by word for sources but seized the general meaning," favouring synoptic insight; Han practised an "elite-troop" philological rigor, grounding every word and tracing every sentence to its source. In his later years he wrote the million-character Yogācārabhūmi: Structural and Explanatory Notes (Yujia shidi lun keju pijun ji), using strict textual method to correct errors of wording and misplaced chapters in the foundational treatises of consciousness-only.
   - title: 太虚与「三宗判」
+    title_en: "Taixu and the 'Classification of the Three Schools'"
     body: '**太虚**（1889-1947）反对内学院「独尊唯识」立场，1922年创办**武昌佛学院**。
 
       提出「**三宗判**」：法性空慧宗（般若中观）·法相唯识宗·法界圆觉宗（如来藏系），
@@ -390,7 +472,10 @@ sections:
       此「三宗判」后经印顺修订为「三系说」，成为二十世纪汉语佛学史上影响最深远的判教框架之一。
 
       '
+    en_body: |-
+      Taixu (1889–1947) opposed the Inner Studies Institute's "reverence for consciousness-only alone," founding the Wuchang Buddhist Academy in 1922. He advanced a "classification of the three schools": the school of the emptiness of dharma-nature (Prajñāpāramitā and Madhyamaka), the school of Dharma-character consciousness-only, and the school of the perfect awakening of the dharmadhātu (the tathāgatagarbha lineage) — holding that the three are "equal and non-dual, differing only in their paths of exposition and practice." His Overall Decision on Dharma (Fofa zong jueze tan) directly rebutted Ouyang Jingwu's rejection of the Awakening of Faith. This threefold scheme, later revised by Yinshun into his "three systems," became one of the most influential doctrinal classifications in twentieth-century Chinese Buddhist thought.
   - title: 熊十力《新唯识论》公案
+    title_en: "The Xiong Shili New Consciousness-only Case"
     body: '熊十力早年从学欧阳竟无，1932年出版《新唯识论》——
 
       提出「体用不二」本体论，以「翕辟成变」描述本体流行，实为融摄儒道的一元论哲学体系，
@@ -406,7 +491,10 @@ sections:
       这场公案是「唯识学作为严格印度佛教哲学」vs「唯识学作为中国思想家重构以回应现代性的资源」两种取向的正面碰撞。
 
       '
+    en_body: |-
+      Xiong Shili studied early under Ouyang Jingwu, and in 1932 published his New Consciousness-only Doctrine (Xin weishi lun). It advanced a "non-duality of substance and function" ontology, describing the flux of substance through the interplay of opening (xi) and closing (pi) — in effect a monistic philosophical system fusing Confucian and Daoist elements, later regarded as a founding work of "New Confucianism." The Inner Studies Institute took it as a fundamental misreading of vijñaptimātra: Ouyang wrote a preface and ordered Liu Hengru to compose the Refutation of the New Consciousness-only Doctrine; Xiong responded with his Refutation of the Refutation, declaring "I love my teacher, but I love truth more." The late correspondence between Lü Cheng and Xiong Shili, running to seventeen letters, was collected as Debates on the Fundamental Problems of Buddhism. The case is a head-on collision between two orientations: consciousness-only as a strictly Indian Buddhist philosophy versus consciousness-only as a resource that a Chinese thinker reconstructs to respond to modernity.
   - title: 世俗知识分子的挪用
+    title_en: "Appropriation by Secular Intellectuals"
     body: '龚自珍、谭嗣同援用因明三支比量与唯识概念；
 
       章太炎以唯识三性·四分·八识建构「以唯识为宗」的思想体系，
@@ -418,11 +506,15 @@ sections:
       「援佛入哲」思潮构成近代中国思想史独特插曲。
 
       '
+    en_body: |-
+      Gong Zizhen and Tan Sitong drew on the three-membered syllogism of hetuvidyā and on consciousness-only concepts; Zhang Taiyan built a philosophical system "taking consciousness-only as the norm," attempting to reconcile it with Zhuangzi's "Discussion on Making All Things Equal" and comparing hetuvidyā with Western logic and the Mo jing; Liang Qichao expounded "Buddhist psychology" through the Dharma-character school, bringing it into dialogue with Kant and Mach. This current of "displacing Buddhist thought into philosophy" formed a distinctive episode in the intellectual history of modern China.
 - id: fx_practice
   title: 修行界与内部视角
+  title_en: "The Cultivational World and the Internal Perspective"
   icon: 🧘
   topics:
   - title: 印顺法师的三系判摄
+    title_en: "Master Yinshun's Three-System Classification"
     body: '印顺（1906-2005）在太虚「三宗判」基础上修订提出「**三系判摄**」：
 
       **性空唯名论**（《般若经》·中观）·**虚妄唯识论**（《摄大乘论》·《成唯识论》）·**真常唯心论**（楞伽·胜鬘·华严·起信论）。
@@ -440,7 +532,10 @@ sections:
       占据「唯识纯粹派」与「如来藏辩护派」之间的第三重位置。
 
       '
+    en_body: |-
+      Yinshun (1906–2005) revised Taixu's threefold scheme into his "classification of the three systems": the "emptiness-only nominalism" (the Prajñāpāramitā and Madhyamaka), the "delusion-tainted consciousness-only" (the Mahāyānasaṃgraha and Cheng weishi lun), and the "true-constancy mind-only" (Laṅkāvatāra, Śrīmālā, Avataṃsaka, and the Awakening of Faith). He judged the "true-constancy mind" system as arising late in the history of Buddhist thought, a "provisional teaching" framed to draw in non-Buddhist and theist ideas, and hence not of final meaning — yet virtually all of Chinese Buddhism except the Three Treatises and Consciousness-only falls within it. Mou Zongsan criticized this as "sectarian bias," holding that the Chinese schools are the logically natural extension of Indian Buddhism and that the "true-constancy mind" of the Awakening of Faith is the necessary link that guarantees the certainty of enlightenment given a merely defiled ālayavijñāna. Yinshun in reply rejected the Inner Studies Institute's hard line that the Awakening of Faith is sheer forgery, occupying a third position between the "consciousness-only purists" and the "tathāgatagarbha defenders."
   - title: 唯识在僧伽教育中的位置
+    title_en: "The Place of Consciousness-only in Monastic Education"
     body: '尽管独立「宗派」意义上的法相唯识宗早已没有严格法脉传灯，
 
       但唯识学的**义理教育**因近代复兴重新扎根于教内建制——
@@ -452,7 +547,10 @@ sections:
       唯识学作为精密心识分析工具，已渗透进整个汉传佛教僧伽教育的知识基座。
 
       '
+    en_body: |-
+      Although the Dharma-character Consciousness-only school no longer maintains a strict living lineage in the sectarian sense, its doctrinal education was re-rooted in the monastic establishment by the modern revival. Since Taixu advocated for it, consciousness-only has become a required course in Buddhist college curricula; institutions such as the Chinese Buddhist Academy and the Southern Fujian Buddhist Academy regularly place the Cheng weishi lun, the Triṃśikā, and the Mahāyānaśatadharmaprakāśa on their core syllabi. As a precise instrument for analyzing mind, consciousness-only has permeated the very intellectual base of Chinese Buddhist monastic education.
   - title: 济群法师与「三级修学」
+    title_en: "Master Jiqun and the 'Three-Tier Program of Study'"
     body: '当代实践个案：**济群法师**（1962年生，苏州西园寺戒幢佛学研究所所长）创立「三级修学」。
 
       以「皈依、发心、戒律、正见、止观」五要素为核心，分初中高三级。
@@ -468,7 +566,10 @@ sections:
       唯有禅净因「解行简单」得以普及。
 
       '
+    en_body: |-
+      A contemporary case: Master Jiqun (b. 1962), head of the Jiedzhuang Institute at Suzhou's Xiyuan Monastery, founded the "three-tier program of study." Its core is the five essentials of taking refuge, arousing resolve, keeping precepts, gaining right view, and practising śamatha–vipaśyanā, divided into elementary, intermediate, and advanced levels. The advanced stage begins with the Triṃśikā — grasping "the distinctions of the deluded mind, the consciousness-only middle view, and the sequence of attainment" — before moving on to Prajñāpāramitā-Madhyamaka and Chan practice. Jiqun reflects that the Consciousness-only school, lacking roots in Chinese culture, vanished into oblivion after only two or three generations; that Tiantai and Huayan, though complete in doctrine, could not transmit the experiential validation and thus had "doctrine but no contemplation"; and that only Chan and Pure Land, being simple in both doctrine and practice, achieved wide dissemination.
   - title: 教界内部的张力
+    title_en: "Tensions Within the Buddhist Community"
     body: '近现代教界内部四条并行路线：
 
       **内学院式印度纯粹主义**（欧阳竟无·韩清净——回归梵文原典，批判中国化教义）
@@ -482,11 +583,15 @@ sections:
       这四条路线之间的对话与冲突，构成理解「唯识学在现代中国教界处境」的基本坐标。
 
       '
+    en_body: |-
+      Four parallel currents ran through the modern monastic world: the Inner Studies Institute's "Indian purism" (Ouyang Jingwu and Han Qingjing — returning to the Sanskrit originals and critiquing Sinicized doctrines); Taixu's "integrated egalitarianism" (all schools equal, oriented toward a Buddhism for human life); a New Confucian "philosophical reconstruction" (Xiong Shili — rebuilding Confucianism under the name of consciousness-only); and Yinshun's "historical criticism" (re-placing the Chinese schools through the developmental logic of Indian Buddhist thought). The dialogue and conflict among these four currents form the basic coordinates for understanding the situation of consciousness-only in the modern Chinese monastic world.
 - id: fx_academic
   title: 学术视角：现代研究方法论与前沿争议
+  title_en: "The Academic View: Methods and Frontiers of Debate"
   icon: 🎓
   topics:
   - title: 西方学界：现象学诠释与唯心论之争
+    title_en: "The Western Academy: Phenomenological Reading vs. Idealism"
     body: '**丹·卢斯特豪斯**（Dan Lusthaus）2002年《佛教现象学》（*Buddhist Phenomenology*）：
 
       经典瑜伽行派不应被诠释为形而上学「唯心论」（idealism），
@@ -506,7 +611,10 @@ sections:
       将阿赖耶识类比为「文化无意识」（cultural unconscious）。
 
       '
+    en_body: |-
+      Dan Lusthaus's Buddhist Phenomenology (2002) argues that classical Yogācāra should not be read as a metaphysical "idealism" but as a "phenomenological and epistemological inquiry" into classic Buddhist questions of suffering, no-self, impermanence, and liberation — methodologically closer to Husserl and Merleau-Ponty than to Berkeley and Kant. This anti-idealist reading has provoked ongoing debate in the West: Waldron praises it highly, while others maintain that consciousness-only should precisely be understood as a Buddhist form of idealism. William Waldron has opened a dialogue between consciousness-only and cognitive science — The Buddhist Unconscious (2003) and Making Sense of Mind Only (2023) — analogizing the ālayavijñāna to a "cultural unconscious."
   - title: 汉语学界复兴与五大公案
+    title_en: "The Revival in Chinese Scholarship and Five Great Debates"
     body: '近三十年汉语唯识学研究进入「大时代」。
 
       九十年代台湾·香港与国际接轨（叶阿月·陈荣灼·林镇国·释惠敏·邓伟仁·姚治华等）；
@@ -526,11 +634,15 @@ sections:
       ⑤ 真如能否为疏所缘缘（黄居素1924 vs 王恩洋·吕澂）
 
       '
+    en_body: |-
+      Over the past three decades Chinese-language consciousness-only scholarship has entered a "great era." In the 1990s Taiwan and Hong Kong connected with international scholarship (Ye Ayue, Chen Rongzhuo, Lin Zhenguo, Shi Huimin, Deng Weiren, Yao Zhihua, and others); on the mainland a generation emerged around 2000 — Cheng Gongrang (2000), Zhou Guihua (2004, 2009), Sheng Kai (2006), Fu Xinyi (2006), and Yang Weizhong (2008). Five great debates stand out: (1) the old-versus-new translation controversy (Mei Guangxi and Taixu vs. Shoupei and Yinshun, 1931–32) over Paramārtha's "ancient" and Xuanzang's "modern" learning; (2) the critique of suchness-origination (Ouyang Jingwu vs. Taixu and Wang Enyang, extending to Xiong Shili) over the relation of consciousness-only to the tathāgatagarbha of the Awakening of Faith; (3) whether the seeing- and image-parts arise from the same kind of seeds (Jing Changji 1928, Miao Fenglin, Taixu — deepened by Huo Taohui in 1963); (4) the emptiness-existence dispute (Yang Renshan, Taixu, Zhou Shujia holding "the words differ but the meaning is one" vs. Fazun and Yinshun insisting on a real polemic); and (5) whether suchness can serve as an indirect object-condition (Huang Jusu 1924 vs. Wang Enyang and Lü Cheng).
 - id: fx_masters
   title: 海云·成观两位法师的阐释与评述
+  title_en: "The Interpretations of Masters Haiyun Jihong and Chengguan"
   icon: 🌊
   topics:
   - title: 海云继梦法师论唯识
+    title_en: "Master Haiyun Jihong on Consciousness-only"
     body: '**「唯识(缘起法界)」与「唯性(性起法界)」的判摄**: 海云法师将佛法「唯心」分为两部分——唯识研究缘起法界(典型如《地藏经》: 「起心动念无不是业无不是罪」),
       华严研究唯性即性起法界(「无不是普贤境界」)。唯识偏向现象界、有为法, 修行目标寂灭涅槃; 性起法界重视常乐我净, 破无明证法身。修行须「转唯识成唯性」——此即《起信论》「一心生二门」的运用。
 
@@ -544,10 +656,13 @@ sections:
 
 
       **转三性为三无性(如来圣性观)**: 「舍识用根、转识成智的具体修法」——遍计所执性的情有性转理无性, 依他起性的假有性转性无性, 圆成实性的实有性转相无性。此为「工程浩大的生命改造工程」,
-      非名词而是行法。批评「修到大圆镜智现前即是究竟成就」的说法是患了圆成实性的宿命。引空海《十住心论》: 「大乘始自法相弥勒, 经法性文殊、观音到华严之普贤而入毗卢性海与十大愿王合。」'
+       非名词而是行法。批评「修到大圆镜智现前即是究竟成就」的说法是患了圆成实性的宿命。引空海《十住心论》: 「大乘始自法相弥勒, 经法性文殊、观音到华严之普贤而入毗卢性海与十大愿王合。」'
+    en_body: |-
+      Haiyun Jihong divides the Buddhist teaching of "mind-only" into the consciousness-only aspect, which studies the dharmadhātu of dependent origination (typically, as in the Kṣitigarbha Sūtra, that "every arising of a thought is karma and is a fault"), and the nature-only aspect, the dharmadhātu of nature-origination studied through the Huayan ("nothing is not Samantabhadra's realm"). Consciousness-only leans toward the phenomenal world and conditioned dharmas, with quiescent nirvāṇa as the goal; nature-origination values permanence and bliss and breaks ignorance to realize the dharma-body. Practice must "transform consciousness-only into nature-only"—an application of the Awakening of Faith's "one mind giving rise to two gates." He criticizes the Consciousness-only school: its "hollow theory of the shell of consciousness-only" has thrived, but it is "purely the view of scholars, lacking experiential practice," seeking to attain the unconditioned through conditioned acts—"even after eons of dust, impossible." Chinese Consciousness-only was "handicapped from birth, producing twins," the old and new schools disputing over the rectification of names for fifteen hundred years without anyone offering experiential insight into transforming consciousness into wisdom. His practical path: in the second moment of "dwelling," extinguish that second moment to complete the "first moment of arising"; the second moment divides into eight consciousnesses, the first into four or five wisdoms. Huayan-Chan excels in leading directly into the ocean of all-knowledge through the "critical phrase," where there is no transformation at all, only "watching" and "appreciating." He further spells out turning the three natures into the three non-natures as a "concrete method" — a "life-transforming project of vast scope," not a matter of names but of practice — and faults the claim that "the manifestation of mirror-like wisdom is final attainment" as falling prey to the fate of the perfected nature. He cites Kūkai's Ten Stages of the Mind: from Dharma-character Maitreya, through Dharma-nature Mañjuśrī and Avalokiteśvara, to Huayan's Samantabhadra, entering the ocean of Vairocana-nature in union with the ten great vows.
     source: 《菩萨问明品讲记》第二章(wuming.xuefo.net) ·《心法 转识成智》(fjdh.cn 2013) ·《密法 转三性为三无性》(wmxf.net)
       ·《看念头》
   - title: 成观法师论唯识
+    title_en: "Master Chengguan on Consciousness-only"
     body: '**「唯识」之义**: 「唯=唯有; 识=心识, 即八种识」——一切法皆是心识所变现, 主观之见分与客观之相分皆是八识所变, 故说「唯识无境」。与《华严经》「三界唯心、万法唯识」、《楞伽经》「自心现量」一致,
       性相二宗之理相通。
 
@@ -564,7 +679,9 @@ sections:
 
 
       **《楞伽经义贯》的转识说**: 「诸圣因于妄法不分别, 能转变八识现行习气及根本无明种子之性, 将妄想自性转变为真如自性」——「一切自性习气、藏意意识见习转变,
-      名为涅槃」, 「转变」处涅槃与真如一体异名。'
+       名为涅槃」, 「转变」处涅槃与真如一体异名。'
+    en_body: |-
+      Chengguan explains "consciousness-only": "only" means alone; "consciousness" is the mind, namely the eight consciousnesses — all dharmas are transformations of the mind, and both the subjective seeing-part and the objective image-part are projections of the eight consciousnesses, hence "only consciousness, no object." This accords with the Avataṃsaka Sūtra's "the three realms are mind-only" and the Laṅkāvatāra's "the measure of one's own mind," the doctrine and practice schools sharing a common principle. He glosses the ālayavijñāna's three aspects of "store": as able to store (holding seeds), as the stored (receiving perfumings), and as grasping-store ("the store of attachment to self") — the seventh consciousness moment by moment grasping the eighth as its inner self, making the ālayavijñāna the "warehouse" of ego-clinging. He likens it to a bank account: many good deeds, a rich balance; much evil, an overdraft. He calls the "maturation consciousness" a "harbouring of criminals and receiving of stolen goods," and "anti-organized-crime" the purification of the karmic consciousness. The backbone of the school's practice is "cultivating good and abandoning evil" (the six root afflictions and twenty secondary ones), finally aiming at the "suchness unconditioned" among the six unconditioned dharmas — the "reality of consciousness-only" of Vasubandhu's Triṃśikā, that is, the perfectly accomplished nature. His recommended reading order runs from the Mahāyānaśatadharmaprakāśa, through the Pañcaskandhaka, the Nyāyamukha, the Triṃśikā, the Verses on the Activities of the Eight Consciousnesses, the Ālambanaparīkṣā, the six-membered grammatical analysis, the Abhidharmakośa, the Saṃdhinirmocana Sūtra, the Yogācārabhūmi, and finally the Mahāyānasaṃgraha. In his commentary on the Laṅkāvatāra he sets out the teaching of transformation: the saints, through not discriminating the delusive dharmas, can transform the living habits of the eight consciousnesses and the seeds of fundamental ignorance, changing delusional self-nature into suchness — "all self-nature habits and the habit-cognitions of the store, thought, and intentions being transformed is called nirvāṇa," where in "transformation" nirvāṇa and suchness are one reality under two names.
     source: 《唯识三十论颂义贯》第一·三章(xuefo.net) ·《八识规矩颂义贯》相宗系列总序(fjdh.cn 2013) ·《楞伽阿跋多罗宝经义贯》卷二(fjdh.cn)
 references:
 - 《成唯识论》T31n1585 · 《唯识三十论颂》T31n1586 · 《唯识二十论》T31n1590
