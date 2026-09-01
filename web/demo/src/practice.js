@@ -36,272 +36,7 @@ function renderPractice(){
   // ═══════════════════════════════════════════
   h+="<div id=pv-meditation class=pv-section style=display:none>";
 
-    // ── 体系总览 ──
-  h+="<div class=section id=med-overview style=border-left:4px solid var(--gold)><h2>🗺 华严禅观体系总览</h2>";
-  h+="<p style=font-size:.8em;line-height:1.8;margin-bottom:10px>海云继梦和上华严禅观<b>三阶段</b>: <b>资粮道</b>(发心工程.驻佇心观) → <b>前行</b>(界内定.四种观法) → <b>正行</b>(界外定.法界三观)。<b>技术面</b>(修定.身法)与<b>工程面</b>(修慧.心法)始终双轨并行。</p>";
-  h+="<table class=v-table style=font-size:.72em;margin-bottom:12px><tr><th>阶段</th><th>定位</th><th>核心工程</th><th>观法</th><th>禅定</th><th>果位</th></tr>";
-  h+="<tr><td rowspan=2><b>资粮道</b></td><td>发心工程<br>界外准备</td><td>五科(戒.律.调身.调息.调心)<br>驻佇心观(停心)<br>净化禅->象限转移</td><td>驻佇心观<br>(根本前行)</td><td>瞬定境(妙高定)<br>粗住->细住->欲界定</td><td>三信位前<br>(发心位)</td></tr>";
-  h+="<tr><td colspan=2 style=font-size:.68em;color:var(--text2)>制度入门: 前行三年(教材/听经笔记/华藏工程)->禅师团审核->正授行法。三要件各有三。</td><td colspan=2 style=font-size:.68em;color:var(--text2)>课程配比70%修行面+30%健康面。一日禅.二日禅.忍可禅七。</td></tr>";
-  h+="<tr><td rowspan=2><b>前行</b></td><td rowspan=2>内摄工程<br><b>界内定</b></td><td rowspan=2>安那般那数息观<br>(数.随.止)<br>安般守意</td><td>数法/随法</td><td>粗住->细住<br>->欲界定->未到定</td><td>二信~四信位</td></tr>";
-  h+="<tr><td>止法+四种观法<br>(1)唯心识(初-二信)<br>(2)真如实(二信+)<br>(3)毗婆舍那(中信)<br>(4)奢摩他(后信)</td><td>四天王定->忉利定<br>->空居天定->色界定<br>->无色界定->出界定</td><td>初信~十信位<br><span style=font-size:.65em;color:var(--text2)>初果(初信)->四果(七信)->十信满心</span></td></tr>";
-  h+="<tr><td rowspan=2><b>正行</b></td><td rowspan=2>等持工程<br><b>界外定</b></td><td rowspan=2>三摩呬多->三摩钵底<br>->三摩地(海印三昧)</td><td>杜顺法界三观<br>(真空绝相.理事无碍.周遍含容)</td><td>初禅定关口:<br>左转->四禅八定(外道)<br>右转->四果成就(解脱)</td><td>十信满心<br>->初住至七地(37位)</td></tr>";
-  h+="<tr><td>四次灌顶<br>(1)忍可(破无明)<br>(2)行者(证初果)<br>(3)进阶(能所合一)<br>(4)高阶(能所双泯)</td><td>界外定.无功用行</td><td>八地至妙觉(5位)<br><b>共42位圆满</b></td></tr></table>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 三阶段架构名称据大华严寺官网「修行蓝图: 华严禅观全程」(2025年11月访问)。观法细节(四种观法/界内定界外定/果位对应等)据海云继梦《四十华严讲记》第67讲(2009.2.26)+《海云继梦禅观概论》(2015)+《迈向佛陀的境界》(2011)。凡官网与讲记表述有异处,以官网为框架、讲记为展开。</p>";
-  h+="</div>";
-
-  // ── 次第道与圆融道 ──
-  h+="<div class=section id=med-paths><h2>🛤 次第道与圆融道 — 两条修行路径</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:8px>海云和上将修行路径分为两条: <b>次第道</b>(圣解脱道/智德门)与<b>圆融道</b>(普贤道/福德门)。核心差异: 次第道必须证得空性、即身成就; 圆融道<b>不必证空性,凡夫亦可修</b>,具足信根即可,经分段生死至他方净土证无生。法师明确开示:「凡夫行圆融道,就是没有那个充分条件,你没有证得空性。你行圆融道就那么一个条件,要尽形寿行菩萨道,对三宝具足信心。」但凡夫行圆融道须避讳「聚财」与「聚众」,否则在缺乏空性的前提下易入歧途。若避此忌,报尽必生净土。华严禅观三段教学法(前行->正授行法->妙行)中,前两区块属入法界次第道,第三区块「妙行」属已入法界后的圆融道。</p>";
-
-  h+="<table class=v-table style=font-size:.7em;margin-bottom:10px><tr><th style=width:12%>维度</th><th style=width:44%>次第道(入法界次第道)</th><th style=width:44%>圆融道(法界圆融道)</th></tr>";
-  h+="<tr><td><b>空性条件</b></td><td>必须证得空性</td><td>不必证空性,以<b>信根具足</b>替代</td></tr>";
-  h+="<tr><td><b>生死方式</b></td><td>变易生死,<b>即身成就</b>(依色身)</td><td>分段生死,<b>即生成就</b>(依法身),经他方净土证无生</td></tr>";
-  h+="<tr><td><b>实践目标</b></td><td>目的论明显,止观双运.定慧等持</td><td>无明显目的性,重行法过程,以<b>信愿行</b>为归</td></tr>";
-  h+="<tr><td><b>核心技术</b></td><td>以「定」为范围,<b>置心一处</b>为归</td><td>以歌咏赞叹诸佛为归,<b>理事合一地置心一处</b></td></tr>";
-  h+="<tr><td><b>工程面</b></td><td>以《大经》(华严经)为归</td><td>以<b>十大愿王</b>为依归</td></tr>";
-  h+="<tr><td><b>性质</b></td><td>由凡入圣——清除人性杂质恶质,由粗糙转入精微</td><td>由圣入圣——法身本具但迷不晓,藉佛号唱颂内引法身</td></tr></table>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📐 圆融道三大条件 + 凡夫行圆融道避讳</span><div class=body>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>三大核心条件:</b> (1)对三宝的具足信——信心绝对,毫无折扣,100分 (2)尽形寿奋进于菩萨道——定位明确,一辈子做一件事(事修),从生命尊重与人性关怀出发服务众生 (3)一再的归零功课——每日反复检视自身,遇到挫折压力则拜忏(一百零八拜),将业力寄放在法界。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>凡夫行圆融道的避讳:</b> 必须避讳「聚财」与「聚众」,否则在缺乏空性的前提下易入歧途——善者落人天善道,恶者成魔成精。若避此忌,报尽必生净土。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px>法师以<b>德雷莎修女</b>为例: 具足对上帝的绝对信心(信根),一辈子只做「服务最穷的人」这一件事(事修),尽形寿不改——「行一法即行一切法」。<b>梦参老和尚</b>被关33年仍坚守信仰,亦属圆融道行者的典范。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《华严禅观的入法界次第道》(fjdh.cn 2013.9) . 《四十华严讲记》第14讲.第68讲 . <a href='https://www.fjdh.cn/wumin/2013/09/175337285861.html' target=_blank>入法界次第道全文</a></p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🙏 十大愿王 — 圆融道的工程面核心</span><div class=body>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>普贤十大愿王是善财童子五十三参的总结与精要——「《入不思议解脱境界普贤行愿品》中,不思议解脱境界即是法界,而普贤行愿是<b>直接入法界的行法</b>。」海云和上先后<b>五次</b>重要讲解: 1992年台北初讲.2001年5月加拿大湛山精舍(共52讲,分三册出版: 《普贤行愿》2002/《不思议解脱》2003/《大方广境界》2003).2006年台北(《普贤十大愿王行法精要》).2007年槟城+2008年新加坡(合并出版《十大愿王修行法要》)。另有2011年昆明开示系列(fjdh.cn收录)。</p>";
-  h+="<p style=font-size:.75em;color:var(--gold);margin-bottom:2px><b>十大愿王三层次结构</b></p>";
-  h+="<table class=v-table style=font-size:.7em;margin-bottom:6px><tr><th>层次</th><th>愿目</th><th>修行定位</th></tr>";
-  h+="<tr><td><b>根本</b>(第1-3愿)</td><td>礼敬诸佛.称赞如来.广修供养</td><td>真正要实修的根本,可各选一门主修</td></tr>";
-  h+="<tr><td><b>补充</b>(第4愿)</td><td>忏悔业障</td><td>修前三愿遇挫折时以此补救,<b>具关键性地位</b></td></tr>";
-  h+="<tr><td><b>圆融扩大</b>(第5-7愿)</td><td>随喜功德.请转法轮.请佛住世</td><td>使基础修行圆满</td></tr>";
-  h+="<tr><td><b>无限扩大</b>(第8-10愿)</td><td>常随佛学(百).恒顺众生(千/重重无尽).普皆迴向(万/无有止境)</td><td>代表无限的扩大——「虚空界尽.众生界尽.众生业尽.众生烦恼尽,我此愿力无有穷尽」</td></tr></table>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>核心要领:</b> (1)<b>普贤行愿力</b>——海云和上在2011年昆明《普贤行愿品》开示中指出: 「普贤菩萨是法界的第一尊佛,你看得到,你能够认识到佛的第一个形象,就是普贤菩萨。那么在自性海中所修行的法,都叫普贤行愿。你在自性海中所修行的法,所产生的威神力,叫做普贤行愿力。」「我以普贤行愿力故,深心信解,如对目前」(即亲自体验证得,非推测想象) (2)<b>四无尽观</b>——每一大愿皆以虚空界尽.众生界尽.众生业尽.众生烦恼尽为所依,四者无有尽故修行无有穷尽,心量无限放大 (3)<b>念念相续无有疲厌</b>——倾向于圆融道行法,不可一曝十寒。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《普贤十大愿王行法精要》(空庭书苑, 2006年台北讲记, ISBN 9789867484734) . 《十大愿王修行法要》(空庭书苑, 2007槟城+2008新加坡) . 2011年昆明开示系列(fjdh.cn收录) . <a href='https://findbook.com.tw/9789867484734' target=_blank>购买</a></p>";
-  h+="</div></div>";
-  h+="</div>";
-
-  // ── 第一阶段: 资粮道 ──
-  h+="<div class=section id=med-stage1><h2>🔰 第一阶段: 禅修入门 — 发心工程（资粮道）</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>资粮道是一切禅观的<b>基础准备</b>，约需1-3年。核心任务是<b>发心工程</b>——使行者从散乱中「静下来」。通过<b>「驻佇心观」(停心)</b>将心初步收摄，成为「堪受法器」后方可进入前行。</p>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📋 制度性入门 — 修行不是DIY</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>法师强调:「它是一套制度」——个人能走到哪一步靠「法的传承」，但能否进入这套体系靠「宗的传承」建制。</p>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px><b>前行三年:</b> 完成道场指定基础教材、听经笔记(共修时核实)、每周共修、参加「华藏工程」建立语言和思维模式。经禅师团同意、道场推荐、禅师团审核，方取得「正授行法」资格。</p>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px><b>五科训练:</b> 戒.律.调身.调息.调心。课程配比: 70%修行面(戒/律/调心)+30%健康面(调身/调息)。</p>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px><b>三要件各有三:</b> (1)心性要件-行者先决条件 (2)内摄要件-调身+调息=暖身二法 (3)内观要件-等持工程三昧基础，属一乘不共别圆。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2)>📎 出处: 大华严寺官网「资粮道」页面 . 海云继梦《四十华严讲记》第67讲(2009年2月26日开示, fjdh.cn收录逐字稿)</p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🪑 调身.调息.调心 — 五科训练详解</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>五科(戒.律.调身.调息.调心)是资粮道的实操基础。海云和上指出: <b>身.息.心三者一体不二</b>——调息可及于调身,调身效果又可及于调心。实际行法中三者同时并行,非先后次第。核心著作: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984)。</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调身 — 毗卢遮那七支坐相</b></p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-bottom:4px>据海云和上《迈向佛陀的境界——华严禅前行概论》第六章「毗卢遮那七支坐法」(fjdh.cn收录全文)。和上强调:「七支坐相的目的,旨在调身……若人以此来摄心,即能顿证佛性海。」</p>";
-  h+="<table class=v-table style=font-size:.7em;margin-bottom:6px><tr><th style=width:18%>支分</th><th>要点</th></tr>";
-  h+="<tr><td><b>(1)跏趺坐</b></td><td>双盘为佳,单盘或金刚坐亦可。臀与两膝三点鼎立成正三角形,稳固久坐不倾</td></tr>";
-  h+="<tr><td><b>(2)手结定印</b></td><td>两掌相迭掌心向上,拇指轻拄(指甲碰指甲即可)。「五心向上」(两掌心/两足心/顶门)令气流畅</td></tr>";
-  h+="<tr><td><b>(3)头正颈正</b></td><td>头不左右偏。「头正、颈正」与「脊直、肩平」构成十字形</td></tr>";
-  h+="<tr><td><b>(4)脊直肩平</b></td><td>脊椎挺直,两肩平正放松,神经/血液/内分泌系统自然运作</td></tr>";
-  h+="<tr><td><b>(5)眼平视</b></td><td>眼帘自然下垂以遮光为度,取「三分慈眼」。「此三相摄三千威仪」(头正/脊直/眼平视)</td></tr>";
-  h+="<tr><td><b>(6)舌抵颚</b></td><td>舌尖轻顶上颚齿龈(上门牙牙龈处),口水自然由舌根两旁下流入咽喉</td></tr>";
-  h+="<tr><td><b>(7)收下颚</b></td><td>头不前后偏,百会穴与海底穴重迭。如此方能「经劫不替」,久坐不倾</td></tr></table>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调息 — 息之四相与数息法</b></p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-bottom:4px>息之四相出自智者大师《释禅波罗蜜次第法门》,海云和上在《禅修前行》第六集(fjdh.cn 2013.11)中引用并详加解说: 「守风则散,守喘则结,守气则劳,守息即定。」</p>";
-  h+="<table class=v-table style=font-size:.7em;margin-bottom:4px><tr><th>息相</th><th>特征</th><th>含义/对治</th></tr>";
-  h+="<tr><td><b>风相</b></td><td>鼻息粗重,出入有声</td><td>身心不安宁->先安心,放下身心世界</td></tr>";
-  h+="<tr><td><b>喘相</b></td><td>息无声但出入结滞不通</td><td>身体多病->宽放身体,放松情绪</td></tr>";
-  h+="<tr><td><b>气相</b></td><td>息不结滞但不细</td><td>初修状态->观想气行遍毛孔肢节,愈微愈妙</td></tr>";
-  h+="<tr><td><b>息相</b></td><td>无声.不结.不粗,出入绵密若存若亡</td><td><b>调相</b>——可入定</td></tr></table>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>数息要领:</b> 注意力集中于「风门」(鼻中膈底部,两鼻孔间接近上唇处),觉知息入息出。在「息入尽」及「息出尽」的换气处数息(一入一出为一圈)。初学者从数「一至三」起,稳定后增至「一至五」->「一至七」->「一至十」。</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 调心 — 治沉.浮.宽.急四相</b></p>";
-  h+="<table class=v-table style=font-size:.7em;margin-bottom:4px><tr><th>心相</th><th>表现</th><th>对治方法</th></tr>";
-  h+="<tr><td><b>沉相</b></td><td>昏沉欲睡.精神涣散.低头垂颈</td><td>补充营养(综合维他命);意守<b>风门</b>,守息入息出</td></tr>";
-  h+="<tr><td><b>浮相</b></td><td>精神亢奋.心念多缘.身躁动</td><td>少食五辛.补品.牛羊肉等;系念<b>丹田</b></td></tr>";
-  h+="<tr><td><b>宽相</b></td><td>心意不举.身好躺卧.口中多水</td><td>饮食多温热少寒凉;摄身挺腰,心安住息中</td></tr>";
-  h+="<tr><td><b>急相</b></td><td>胸中疼痛.气上举不调</td><td>多食寒凉少食燥热;放宽身心,意不卑不亢</td></tr></table>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>若风门举意仍无效,可提意至<b>眉间</b>(风门至眉间称「金刚宝剑」,道家称「小周天」)。</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>🔹 入相.住相.出相 — 一座禅修的三阶段</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px><b>入相(由粗到细):</b> 调身(七支坐相)->调息(觉息相.数息)->调心(治沉浮宽急)。<b>住相(住于细中):</b> 摄心于息,同时觉知身.息.心三相是否调和,随觉随治。<b>出相(由细到粗):</b> 先放心异缘(调心)->开口放气,息从百脉散(调息)->微动身躯.肩臂.头颈.双足,揉毛孔.摩掌熨眼(调身),待身热后方可出入,站定后拍打全身。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984) . 七支坐相原文: 海云和上《迈向佛陀的境界——华严禅前行概论》第六章(fjdh.cn 2013.11) <a href='https://www.fjdh.cn/wumin/2013/11/183343302811.html' target=_blank>全文</a> . 《禅修正行》第12集 . 《禅修前行》第6集 . <a href='https://play.google.com/store/books/details?id=QREREAAAQBAJ' target=_blank>Google Play</a></p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🧱 驻佇心观(停心工程) — 一切禅观的根本前行</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:6px>海云法师:「你要能够停下心来，然后，我们要观心！停心是一个前行，都办不到了，怎么观心啊？」核心次第: <b>「停心」->「观心」</b>。</p>";
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>停心(体.相二门)</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>体上停心:</b> 心念不起，六根对六尘境界不会攀缘。<br><b>相上停心:</b> 不妄加猜测、攀缘分别。标准——「心是不是静止下来，像墙壁一样，动都不动！」</p>";
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>四种停心方法</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>(1)参话头: 「看话头就是把心停在那里」 (2)置心一处: 心安鼻端风门,心跑掉就拉回来 (3)数息/随息: 从呼吸入手 (4)依禅堂规矩: 该动则动.该静则静.身心放下。</p>";
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>观心与验证</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>停心之后才能<b>观心</b>——六根对六尘如何作用,看得清清楚楚,「没有任何推理、没有任何意识形态」。法师强调:「不停心你看不到！」六项自检: <b>空.明.定.智.善心.柔软</b>。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《华严禅行法—禅观》第四集 . <a href='https://www.fjdh.cn/wumin/2013/11/165329303084.html' target=_blank>fjdh.cn文字稿</a> . <a href='https://www.fjdh.cn/wumin/2013/09/155711285715.html' target=_blank>停心.观心全文</a></p>";
-  h+="</div></div>";
-  h+="</div>";
-
-  // ── 第二阶段: 前行 ──
-  h+="<div class=section id=med-stage2><h2>⚙️ 第二阶段: 禅修前行 — 内摄工程</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>前行是禅观体系的<b>核心训练阶段</b>，在<b>界内定</b>中进行。四种观法构成工程面主干，贯穿初信至十信位。前二种出自《占察善恶业报经》(T17n0839)，后二种是标准大乘止观。</p>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🔧📐 技术面.工程面双轨详解</span><div class=body>";
-  h+="<h3 style=color:var(--gold)>🔺 参禅金三角 — 置心一处 . 放轻松 . 息入息出</h3>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:6px>参禅金三角是海云和上禅修教学中<b>最核心的入门架构</b>,三个条件缺一不可。法师强调:「这三点若能做到及格,触功德就会发起,身心得到调整,人格性可达七十五分以上。完成参禅金三角即进入<b>心一境性</b>。」</p>";
-  h+="<table class=v-table style=font-size:.72em;margin-bottom:6px><tr><th style=width:18%>要素</th><th style=width:38%>说明</th><th style=width:44%>操作要点</th></tr>";
-  h+="<tr><td><b>(1)置心一处</b></td><td>将心念安住「风门」(鼻孔气息出入处)</td><td>用数息法从一到十循环计数。莫用大脑推理思考,只用<b>感受</b></td></tr>";
-  h+="<tr><td><b>(2)放轻松</b></td><td>身体肌肉.神经系统都要放下;心理上也完全放松,不起执着</td><td>不能为了专注而肩膀紧绷。「呼吸归呼吸,妄想归妄想」——不跟妄想纠缠</td></tr>";
-  h+="<tr><td><b>(3)息入息出清楚</b></td><td>对呼吸的出入看得清清楚楚,不能昏沉睡着</td><td>「六根门头全开放」——心在宁静中保持鲜活。守住风门,身心放松,妄念停止</td></tr></table>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>整体流程:</b> 调身(七支坐相)->调息(自然呼吸,数息1-10)->置心一处于风门->同时放松身心->息入息出清清楚楚->达成金三角(心一境性)->触功德发起(轻安舒服感)->继续觉照根性->象限转移->破无明->入菩提道。<b>⚠ 警示:</b> 修得轻安感后不可耽于禅味,否则会掉入四禅八定而失去对根性的觉照。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>📎 出处: 海云继梦《何谓参禅金三角》(fjdh.cn 2013.12) . <a href='https://www.fjdh.cn/fjask/2013/12/133616318955.html' target=_blank>全文</a> . <a href='http://read.goodweb.top/news/news_view.asp?newsid=82958' target=_blank>禅修释疑</a></p>";
-
-  h+="<h3 style=color:var(--gold)>技术面: 安那般那 — 数.随.止三法</h3>";
-  h+="<table class=v-table style=font-size:.75em><tr><th>法位</th><th>境界</th><th>关键操作</th><th>易犯误区</th></tr>";
-  h+="<tr><td><b>数法</b></td><td>粗住->细住->欲界定</td><td>置心风门,1数到10循环。克服四种妄想: 心理/物理/生理/社会制度</td><td>⚠ 掉入「舒服禅」——枯木禅非真修</td></tr>";
-  h+="<tr><td><b>随法</b></td><td>欲界定->未到定</td><td>注意「息入尽」与「息出尽」的每一个细节。妄想被堵住</td><td>追求境界名相,忽略身心柔和</td></tr>";
-  h+="<tr><td><b>止法</b></td><td>置心一处.心一境性</td><td>所有妄想脱落,心境合一。八触十功德</td><td>⚠ 左转入外道禅;须「右转」向四果</td></tr></table>";
-  h+="<h3 style=color:var(--gold)>工程面: 三阶段心法 + 三层功夫</h3>";
-  h+="<p style=font-size:.75em;line-height:1.8><b>A阶段:</b> 感受息之长短与动静差异 <b>B阶段:</b> 洞悉呼吸因果轨迹(法师称「生命的秘笈」) <b>C阶段:</b> 心王.心所.境界(公开资料未完全展开)</p>";
-  h+="<p style=font-size:.75em;line-height:1.8><b>内摄(技术面):</b> 「妄想一起,把心抓回来放在风门」 <b>内观(工程面):</b> 在数随止中感受法身存在,分三级: 寂而常照/照而常寂/寂照双亡 <b>禅观:</b> 粗(数随止中感受)->细(置心一处后)->微妙(十信圆满后)</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 大华严寺官网「修行蓝图」. 海云继梦《禅修正行》《禅观》系列 . 《海云继梦禅观概论》(2015)第四章</p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>👁 四种观法体系 — 前行工程面核心</span><div class=body>";
-  h+="<table class=v-table style=font-size:.72em;margin-bottom:8px><tr><th>观法</th><th>信位</th><th>禅定</th><th>工程</th><th>核心操作</th><th>成就</th></tr>";
-  h+="<tr><td><b>(1)唯心识观</b></td><td>初信~二信</td><td>四天王定(煖法)</td><td>自省三业</td><td>守记内心;避免无记攀缘;行禅/闭眼抬手训练</td><td>色寂三昧</td></tr>";
-  h+="<tr><td><b>(2)真如实观</b></td><td>二信位+</td><td>忉利定(顶法)</td><td>观五蕴流转</td><td>思惟心性无生无灭;反观自性;超越四空定</td><td>相似空三昧->心寂三昧->一行三昧</td></tr>";
-  h+="<tr><td><b>(3)毗婆舍那观</b></td><td>中信位</td><td>空居天定->色界定</td><td>观根尘识;照住色受间</td><td>观六根六尘六识流动;照住色受动态止观</td><td>渐舍五识(色界定)</td></tr>";
-  h+="<tr><td><b>(4)奢摩他观</b></td><td>后信位</td><td>无色界定->出界定</td><td>照见五蕴空;入正真位</td><td>舍意识;能所双泯;照见五蕴皆空</td><td>十信满心;入法界;圆教初住位</td></tr></table>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>📜 经典出处 & 利钝分判</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>《占察善恶业报经》:「若欲依一实境界修信解者,应当学习二种观道。何等为二?一者唯心识观,二者真如实观。」海云法师称此经为<b>「小本华严」</b>。<br>📎 <a href='https://cbeta.buddhism.org.hk/xml/T17/T17n0839_002.xml' target=_blank>CBETA 大正藏 T17n0839</a></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:6px><b>利钝分判:</b> 利根者(阴盖轻微.散乱心少)->直修真如实观; 钝根者(染着情厚.心难调伏)->先修唯心识观。海云法师补充: 钝根先以唯心识观摄心,令妄想降伏后方转入真如实观,此即<b>「由相入性」</b>。</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>(1) 唯心识观 — 毗钵舍那(观).法相宗.钝根先修</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>定位: 初信~二信位。工程: <b>自省三业</b>(身.语.意),在定中境中唯观一切三业「唯心生.唯心灭」。<b>四天王定</b>是行者从「定外境」转入「定内境」的起点,属坚信位「煖法」;<b>忉利定</b>属「顶法」,不仅唯见三业之既成,更能见到「三业中心之所由起」。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>「学唯心识观者,于一切时一切处,随身口意所有作业,悉当观察,<b>知唯是心</b>。勿令使心无记攀缘,不自觉知。」「一切法唯心想生。若使离心,则无一法一相而能自见有差别也。」</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>两大重点:</b> (正面)守记内心-念念清楚;(反面)避免无记攀缘-口头禅.摸头发等惯性动作。<b>具体训练:</b> (1)闭眼抬手-「手在哪里?你知道吗?要很清楚地感知到」 (2)行禅-脚步慢慢抬起->停->放下,清清楚楚了知 (3)口诀-「唯心识观就是不用大脑,让灵性生命浮现出来」。得<b>色寂三昧</b>。</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>(2) 真如实观 — 奢摩他(止).法性宗.利根直修</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>定位: 二信位及以上。工程: <b>观五蕴流转</b>。与唯心识观的差别: 前者看「身语意三业(表层)」,后者深入「五蕴(身心基本元素)」的微观生灭。法理: 大乘起信论「一心开二门」—唯心识观对心生灭门(心之用),真如实观对心真如门(心之体)。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>「思惟心性<b>无生无灭</b>,不住见闻觉知,永离一切分别之想,渐渐能过空处.识处.无少处.非想非非想处等定境界相,得<b>相似空三昧</b>。」「展转能入<b>心寂三昧</b>……即复能入<b>一行三昧</b>,见佛无数,发深广行心,住<b>坚信位</b>。」</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>海云判摄</b>[语境: 2013年高雄《占察善恶业报经》开示]: 「唯心识观是让你了解心的存在跟作用-它像<b>流水</b>一样,前念接后念。真如实观是直接去看那个<b>源头</b>-心性的本源,无生无灭的那个。」</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>(3) 毗婆舍那观 — 深化观照.中信位</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>定位: 中信位(约五~六信位)。含两个递进层面: (a)观照六根六尘相接时的六识流动-比唯心识观更精微,从行为觉知深入到感知通道机制 (b)照住色与受之间的动态止观-「色」(物质性感受)与「受」(心理性感受)的细微边界。成就: 渐舍五识,进入色界定。</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>(4) 奢摩他观 — 究竟止观.后信位.能所双泯</b></p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>定位: 后信位(七~十信位)。三步骤: (a)舍意识-三界定功总纲最后阶段 (b)能所双泯-完全泯除主客二元对立,即《心经》「照见五蕴皆空」 (c)入正真位.十信满心-得「能所双泯」,正式「入法界」,成<b>圆教初住位</b>,转入正行。</p>";
-
-  h+="<p style=font-size:.78em;color:var(--gold);margin-bottom:2px><b>📐 三界定功总纲(海云法师判摄)</b></p>";
-  h+="<table class=v-table style=font-size:.72em;margin-bottom:6px><tr><th>界定层次</th><th>核心工程</th><th>对应观法</th><th>对应信位</th></tr>";
-  h+="<tr><td><b>欲界定</b></td><td>捨妄念</td><td>唯心识观+真如实观</td><td>初信~四信位</td></tr>";
-  h+="<tr><td><b>色界定</b></td><td>捨五识</td><td>毗婆舍那观</td><td>五信~六信位</td></tr>";
-  h+="<tr><td><b>无色界定</b></td><td>捨意识</td><td>奢摩他观</td><td>七信~九信位</td></tr>";
-  h+="<tr><td><b>出界定</b></td><td>能所双泯.入法界</td><td>奢摩他观究竟</td><td>十信满心</td></tr></table>";
-
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《非常占察经》讲记三册(空庭书苑 2015-2017, ISBN 9789867484918/4932/4949) . 播客「普賢乘華嚴宗」S18(46集) . <a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>🎙 Apple Podcast</a> . <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>🎧 Spotify</a></p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📊 十信法门.果位对应 — 四种观法的阶位映射</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:6px>海云法师将声闻「四果」与华严「十信位」逐级对应。「破根本无明」是初果的门槛而非彻悟终点——「破根本无明才叫做悟后起修！」[语境: 2009年2月26日《四十华严讲记》第67讲, 台北]</p>";
-  h+="<table class=v-table style=font-size:.72em><tr><th>传统果位</th><th>华严信位</th><th>对应观法</th><th>禅定层次</th><th>关键标准</th></tr>";
-  h+="<tr><td>初果(预流果)</td><td><b>初信位</b></td><td>唯心识观</td><td>四天王定(煖法)</td><td>「舍识用根」</td></tr>";
-  h+="<tr><td>—</td><td><b>二信位</b></td><td>唯心识->真如实</td><td>忉利定(顶法)</td><td>确认菩提心.毗卢遮那七支坐相.收心工程</td></tr>";
-  h+="<tr><td>二果(一来果)</td><td><b>三信位</b></td><td>真如实观</td><td>欲界空居天定</td><td>开始运用「观照」.具轻安三相+天王三德</td></tr>";
-  h+="<tr><td>—</td><td><b>四信位</b></td><td>真如实观</td><td>同上</td><td>安般守意工程: 置心于风门</td></tr>";
-  h+="<tr><td>三果(不还果)</td><td><b>五信位</b></td><td>毗婆舍那观</td><td>色界定</td><td>渐舍五识</td></tr>";
-  h+="<tr><td>四果向</td><td><b>六信位</b></td><td>毗婆舍那观</td><td>色界定</td><td>照住-色受动态止观</td></tr>";
-  h+="<tr><td>四果(阿罗汉)</td><td><b>七信位</b></td><td>奢摩他观</td><td>无色界定</td><td>我法二执尚未双破</td></tr>";
-  h+="<tr><td>发心破法执</td><td><b>八信位</b></td><td>奢摩他观</td><td>无色界定</td><td>回小向大</td></tr>";
-  h+="<tr><td>我执法执双破</td><td><b>九信位</b></td><td>奢摩他观</td><td>出界定</td><td>渐舍意识</td></tr>";
-  h+="<tr><td>十信位圆满</td><td><b>十信位</b></td><td>奢摩他究竟</td><td>出界定.入法界</td><td>能所双泯=照见五蕴皆空.成<b>圆教初住位</b></td></tr></table>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>十信位之后: <b>初住位至七地</b>(37位.正行.对应金刚界曼荼罗37尊)-><b>八地至妙觉</b>(5位.无功用行)——共<b>42位</b>圆满佛果。</p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🔬 三重观照技术: 观照.照住.照见</span><div class=body>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>贯穿四种观法的操作层面技术: <b>观照</b>(二果开始,能所分离,唯心识观在此运作)-> <b>照住</b>(至四果,能所合一,毗婆舍那观在此深化)-> <b>照见</b>(十信满心,能所双泯,奢摩他观在此圆满)。</p>";
-  h+="<p style=font-size:.72em;color:var(--text2)>法师说明:《心经》《金刚经》在他的判摄里都属于<b>圆教初住位</b>的教法——证量标的其实是「十信位圆满.入法界」之后的境界。</p>";
-  h+="</div></div>";
-  h+="</div>";
-
-  // ── 第三阶段: 正行 ──
-  h+="<div class=section id=med-stage3><h2>🎯 第三阶段: 禅修正行 — 等持工程（内观）</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>十信满心之后,转入正行。<b>等持工程</b>为官网正式名称。前半程三摩呬多(samahita),后半程定慧等持(三摩钵底 samapatti),究竟等至(三摩地 samadhi)。官网: 「以观导定、以定成观,当下验果,端身正坐,置心风门,依次第而进,步步可检核。」海云和上在讲记中进一步以「界内定/界外定」区分前行与正行的禅定层次,并以杜顺法界三观为究竟指导。</p>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🌐 杜顺法界三观 — 正行核心指导框架</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>杜顺和尚(华严初祖)所立三重观法,是华严禅观正行的<b>究竟指导</b>。海云和上指出: 龙树将三法印汇归<b>一法印——空性</b>(真空绝相观);杜顺进一步推进为<b>理事无碍观</b>;最终倡<b>事事无碍观(周遍含容观)</b>——举事即能通事,无需再透过理的转辙,<b>此唯法身大士之行径</b>。</p>";
-  h+="<table class=v-table style=font-size:.72em;margin-bottom:6px><tr><th>观法</th><th>对应法界</th><th>核心义理</th><th>海云法师判摄</th></tr>";
-  h+="<tr><td><b>(1)真空绝相观</b></td><td>理法界</td><td>会色归空,明空即色,空色无碍。一切法当体即空</td><td>龙树空性一法印之极致——理无碍即阿罗汉空性观</td></tr>";
-  h+="<tr><td><b>(2)理事无碍观</b></td><td>理事无碍法界</td><td>理遍于事,事遍于理。理(真如)不碍事(万象),事不碍理</td><td>事无碍即生活中的一切事物——「吾辈行者,亦当力行乎此」</td></tr>";
-  h+="<tr><td><b>(3)周遍含容观</b></td><td>事事无碍法界</td><td>事如理融,遍摄无碍。如因陀罗网,一即一切,重重无尽</td><td>举事即通事,不经理之转辙——唯法身大士境界。即海印三昧现前</td></tr></table>";
-  h+="<p style=font-size:.7em;color:var(--text2)>📎 出处: 杜顺《法界观门》 . 海云继梦《迈向佛陀的境界》(空庭书苑 2011) . <a href='http://wuming.xuefo.net/nr/6/59482.html' target=_blank>事事无碍周遍含融(fjdh.cn)</a></p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>💠 正授行法 — 四次灌顶制度</span><div class=body>";
-  h+="<table class=v-table style=font-size:.78em><tr><th>灌顶</th><th>目标</th><th>关键</th></tr>";
-  h+="<tr><td><b>(1)忍可灌顶</b></td><td>破根本无明</td><td>约十人中八人被「踢出去」重修</td></tr>";
-  h+="<tr><td><b>(2)行者灌顶</b></td><td>证初果.寻生命原形</td><td>通过后取得正式「行者」资格</td></tr>";
-  h+="<tr><td><b>(3)进阶灌顶</b></td><td>能所合一.破我法二执</td><td>成就四智</td></tr>";
-  h+="<tr><td><b>(4)高阶灌顶</b></td><td>能所双泯.入法界</td><td>「照见根性,能所双泯」=「照见五蕴皆空」</td></tr></table>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🎯 三摩呬多.三摩钵底.三摩地</span><div class=body>";
-  h+="<table class=v-table style=font-size:.75em><tr><th>名相</th><th>梵语</th><th>定位</th><th>操作要点</th></tr>";
-  h+="<tr><td><b>三摩呬多</b></td><td>Samahita</td><td>入定前.专注调心</td><td>粗住->细住->欲界定。排除妄想执著</td></tr>";
-  h+="<tr><td><b>三摩钵底</b></td><td>Samapatti</td><td>以观导定.定慧双运</td><td>勘定三界定。须善知识勘定</td></tr>";
-  h+="<tr><td><b>三摩地</b></td><td>Samadhi</td><td>究竟.心一境性.海印三昧</td><td>出入自在。破法执我执</td></tr></table>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:4px>⚠ 术语说明: 「三摩地」(samadhi)标准译语为「等持」,「三摩钵底」(samapatti)标准译语为「等至」。大华严寺官方资料中的配对与此恰好相反——此系道场自身的术语使用习惯。</p>";
-  h+="</div></div>";
-  h+="</div>";
-
-  // ── 心法·四禅八定·瑜伽行 原文辑录 (从 PRACTICE_DATA.haiyun_xinfa_primary 数据驱动) ──
-  h+=renderXinfaSection();
-
-  // ── 古典义理地基: 杜顺五教止观 (数据驱动) ──
-  h+=renderDushunSection();
-
-  // ── 华严判教 (从 PRACTICE_DATA.huayan_panjiao 数据驱动) ──
-  h+=renderPanjiaoSection();
-
-  // ── 重要华严典籍的现代阐释 ──
-  h+="<div class=section id=med-texts><h2>📖 重要华严典籍的现代阐释</h2>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🦁 法藏《华严金师子章》 — 十门妙诠华严法界玄奥</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>《金师子章》是华严三祖法藏为武则天讲解华严奥义之作——以殿中金狮子为喻,从明缘起.辨色空.约三性.显无相.说无生.论五教.勒十玄.括六相.成菩提.入涅槃<b>十门</b>,仅约一千五百字,妙诠华严法界玄奥。海云继梦和上于<b>2006年在台北开示,共14集</b>。后由空庭书苑整理出版为《华严金师子章讲记》(265页,2010年出版)。讲记逐字稿于2013年11月由fjdh.cn(佛教导航)集中发布。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>核心判摄:</b> 十段分三——(1~3)缘起/色空/三性=基础理论 (4~5)无相/无生=般若空性 (6)五教=判教入华严 (7)十玄=事事无碍最高境界 (8)六相=综合圆融(初地) (9)成菩提=二次圆融 (10)入涅槃=三次圆融,重重无尽。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>十玄门要义:</b> 同时具足相应门(金体与师子相同时成立).因陀罗网境界门(一一毛处各有金师子,重重无尽,一即一切).十世隔法异成门(九世融于一念)。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px><b>修行三区块:</b> 凡夫区(变异念->善恶念->净识念).行者区(初果向到破我法二执).法身区(根本智->后得智->自受用->他受用)。法师强调:「知道不算,做到才算。」</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《华严金师子章讲记》(空庭书苑 2010) . <a href='http://wuming.xuefo.net/nr/7/70462.html' target=_blank>fjdh.cn逐字稿(14集)</a> . <a href='https://www.got1shop.com/mobile/index.php?m=default&c=goods&a=index&id=3459706' target=_blank>购买</a></p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>💎 澄观《心要法门》 — 「至道本乎其心,心法本乎无住」</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px>《心要法门》是华严四祖清凉澄观大师(738-839)所撰,全文仅数百字,阐述<b>「至道本乎其心,心法本乎无住」</b>的华严心法核心要义——无住心体是华严禅观的终极归趣。海云继梦和上以现代语言逐段译解,出版为<b>《解心: 心要法门讲记》</b>(空庭书苑 2001年6月30日初版, ISBN 9573067129, 326页; 宗教文化出版社 2005年9月简体版, 187页)。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>核心思想:</b> 「无住心体」——真心不执著于任何一处,灵知不昧,性相寂然,包含德用,该摄内外。能证此者,即入法界。「心法本乎无住」——一切心法的根本在于无住,无住即不执取,不执取即解脱。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>海云法师判摄:</b> 此即华严禅观的终极指向——四种观法(唯心识->真如实->毗婆舍那->奢摩他)层层深入,最终所证即是此「无住心体」。<b>「无心于万物,而万物未尝无」</b>——不是消灭万物,而是于万物中不执取,此即事事无碍法界的日常体现。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:2px>法师后续出版《是心,非心,还是心!——从心要法门谈心》(空庭书苑 2013, ISBN 9789867484710),进一步深化「无住心体」与华严禅观修行次第的内在关联。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 海云继梦《解心: 心要法门讲记》(空庭书苑 2001/宗教文化出版社 2005) . <a href='https://www.buybook.tw/book-0010164666.htm' target=_blank>购买</a> . <a href='https://webpac.taichung.gov.tw/bookDetail/730070' target=_blank>图书馆</a></p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>📐 华严三品行法 — 净行品·梵行品·普贤行愿品</span><div class=body>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px>据《华藏妙海》听经笔记整理,海云和上将华严三品对应修行三阶段: <b>净行品</b>——前行阶段的修行法门,信位菩萨所修,在日常生活中即可修; <b>梵行品</b>——正行阶段的修行法门; <b>普贤行愿品</b>——成佛以后的修学法门,「众生有尽,我愿无穷」。三品都是行门,构成从初学到究竟的完整行法链条。</p>";
-  h+="<p style=font-size:.75em;line-height:1.8;margin-bottom:4px><b>结界工程</b>(据同来源): 结界是针对自己弱点,在自己能力范围内做最妥善的调整与安排,是个人修行资粮道的基础。从结界中可以学到如何肯定自己、认识自己——「结界工程是个人资粮道的基础」。</p>";
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:6px>📎 出处: 《华藏妙海》听经笔记整理版(docs/notes4it目录)。<br>🔗 弥勒菩萨章: 海云和上于善财五十三参第51参详讲弥勒菩萨——毗卢遮那庄严藏楼阁,共<b>12集</b>视频(B站 BV1X142147EN)+播客(Podwise)。此为法师关于弥勒的最主要讲记,目前文字整理尚不完整,建议直接观看视频。</p>";
-  h+="</div></div>";
-  h+="</div>";
-
-  // ── 验证机制 & 关键原则 ──
-  h+="<div class=section id=med-verify><h2>⚠ 贯穿全程 — 验证机制.关键原则</h2>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>✅ 验证机制 — 200+测验 & 归零重修</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8>法师强调修行进程「绝对理性」「不能讲人情」: 全程设有<b>两百余种具体测验</b>——制造顺境诱发贪着反应、制造逆境激发嗔心反应。<br><br><b>失败重修的规则极为严格</b>: 并非退回上一级,而是<b>打回初信(初果)从头开始</b>——「四果再重修,就从这个地方开始,再从初果开始。」</p>";
-  h+="</div></div>";
-
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>⚠ 三大关键原则</span><div class=body>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:6px><b>(1)不走四禅八定:</b> 法师称其为「共外道法」——「我们不走那条路,我们直接走出三界。」[语境: 2009年《四十华严讲记》第67讲]</p>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:6px><b>(2)大脑临界点:</b> 置心一处之前可运用理性思维;一旦跨过初果门槛,必须弃用概念思维——「只要用大脑,初果进不去,就这么简单。」[语境: 2009年《四十华严讲记》第67讲]</p>";
-  h+="<p style=font-size:.78em;line-height:1.8;margin-bottom:4px><b>(3)两种歧路:</b> 置心一处后产生「舒服.喜悦.轻安」或「恐惧」。若被执取,<b>两种都会导向外道禅</b>——必须连这类感受也一并放下。</p>";
-  h+="</div></div>";
-  h+="</div>";
+  h += renderChanContemplation();
 
   // ── 实修心要文章链接 ──
 
@@ -1595,6 +1330,32 @@ function renderCultivationSystem() {
     });
     h += '</table></div>';
   }
+  return h;
+}
+
+// ═══ 禅观法要渲染 (从 PRACTICE_DATA.chan_contemplation) ═══
+function renderChanContemplation() {
+  var cc = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chan_contemplation) ? PRACTICE_DATA.chan_contemplation : null;
+  if (!cc || !cc.sections) return '';
+  var h = '';
+  cc.sections.forEach(function(sec) {
+    // heart 段为运行时逻辑（依赖 HEART_ARTICLES/localStorage），由 renderPractice 内联渲染，此处跳过
+    if (sec.id === 'med-heart' || sec.id === 'heart-gandhara') return;
+    // 数据驱动调用占位：展开为三个既有数据驱动渲染函数
+    if (sec.render === 'data-driven-calls') {
+      h += renderXinfaSection() + renderDushunSection() + renderPanjiaoSection();
+      return;
+    }
+    h += '<div class=section';
+    if (sec.id) h += ' id=' + sec.id;
+    h += '><h2>' + (sec.emoji || '') + (sec.title || '') + '</h2>';
+    if (sec.title_en) h += '<div class="en-line" style="font-size:.7em;color:var(--text2);margin-bottom:6px">📖 ' + sec.title_en + '</div>';
+    (sec.blocks || []).forEach(function(b) {
+      if (b.html) h += b.html;
+      if (b.html_en) h += '<div class="en-line" style="font-size:.76em;color:var(--text2);line-height:1.8;border-top:1px dashed var(--line);margin-top:4px;padding-top:4px">📖 ' + b.html_en + '</div>';
+    });
+    h += '</div>';
+  });
   return h;
 }
 

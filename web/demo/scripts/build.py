@@ -163,8 +163,9 @@ def load_practice():
                   'yikong_daodi',
                    'mimi_daodi',
                     'tiantai_juejing',
-                    'zhuandao_ziliang',
-                    'sanshiqi_daopin']:
+                     'zhuandao_ziliang',
+                     'sanshiqi_daopin',
+                     'chan_contemplation']:
         data = read_yaml(f'practice/{name}.yaml')
         if data:
             practice[name] = data
