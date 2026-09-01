@@ -191,7 +191,22 @@ function renderPractice(){
   // SUB-PAGE: 最新动态 (动态类内容集中)
   // ═══════════════════════════════════════════
   h+="<div id=pv-news class=pv-section style='display:block'>";
-  h+="<div class=section style='border-left:4px solid var(--gold)'><h2>📰 最新动态（2023-2026）</h2><p>2023: 国立台北大学杰出校友 · 2026: 九九华严TICC讲座 · 2026.7: 支提山动土 · 第四期佛教。</p></div>";
+  (function(){
+    var nw=(typeof PRACTICE_DATA!=='undefined'&&PRACTICE_DATA.teaching_resources&&PRACTICE_DATA.teaching_resources.latest_news)||null;
+    if(!nw||!nw.items||!nw.items.length)return;
+    function joinEn(){var a=[];nw.items.forEach(function(it){if(it.text_en)a.push((it.date?it.date+': ':'')+it.text_en);});return a.join(' · ');}
+    h+="<div class=section style='border-left:4px solid var(--gold)'><h2>"+(nw.title||'📰 最新动态');
+    if(nw.title_en)h+='<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">'+nw.title_en+'</span>';
+    h+='</h2><p>';
+    nw.items.forEach(function(it,i){
+      if(i>0)h+=' · ';
+      h+=(it.date?it.date+': ':'')+(it.text||'');
+    });
+    h+='。</p>';
+    var enS=joinEn();
+    if(enS)h+='<p class="en-line" style="white-space:pre-line;font-size:0.8em;color:var(--text2);line-height:1.8"><span style="color:var(--gold);font-weight:600">📖 </span>'+enS+'.</p>';
+    h+="</div>";
+  })();
 
   h+="<div class=section id=news-academic><h2>🎓 学术活动轨迹 (2010-2025)</h2>";
   (function(){
@@ -1879,20 +1894,18 @@ function renderYikongSection() {
     h += '</details>';
   }
   // ── 法脉传承表 ──
-  h += '<div class=section id=yk-diagrams><h2>📊 般若·中观·三论法脉传承</h2>';
-  h += '<table class=v-table style=font-size:0.75em><tr><th>时期</th><th>人物</th><th>贡献</th></tr>';
-  h += '<tr><td>印度奠基</td><td>龙树(约150-250)→提婆(约170-270)</td><td>《中论》《大智度论》·《百论》《四百论》</td></tr>';
-  h += '<tr><td>印度分流</td><td>佛护(随应破)·清辨(自续)·月称(应成)</td><td>应成/自续分流·藏传之源头</td></tr>';
-  h += '<tr><td>印度综合</td><td>寂护·莲花戒</td><td>随瑜伽行中观·首入西藏</td></tr>';
-  h += '<tr><td>汉译开端</td><td>支娄迦谶→朱士行→竺法护</td><td>《道行般若》·《放光般若》·《光赞般若》</td></tr>';
-  h += '<tr><td>格义时代</td><td>六家七宗(道安·支遁等)</td><td>玄学类比般若</td></tr>';
-  h += '<tr><td>译场</td><td>鸠摩罗什(343-413)→僧肇(384-414)</td><td>译中论百论十二门论·《肇论》终结格义</td></tr>';
-  h += '<tr><td>三论宗</td><td>僧朗→僧诠→法朗→吉藏(549-623)</td><td>摄山重光·嘉祥集大成·《三论玄义》</td></tr>';
-  h += '<tr><td>日本</td><td>慧灌(625东渡)</td><td>南都六宗·吉藏著述长存</td></tr>';
-  h += '<tr><td>藏传</td><td>阿底峡→宗喀巴(1357-1419)</td><td>应成派入藏·格鲁派中观见·辩经学院</td></tr>';
-  h += '<tr><td>近现代</td><td>杨仁山·法尊·印顺</td><td>三论章疏重见天日·藏传应成见译回汉文</td></tr>';
-  h += '<tr><td>当代</td><td>刘峰(三论义学)·格鲁辩经传统</td><td>汉传三论薪传·藏传活传统</td></tr>';
-  h += '</table></div>';
+  if (yk.lineage_table && yk.lineage_table.rows && yk.lineage_table.rows.length) {
+    var lt = yk.lineage_table, hd = lt.headers || ['时期','人物','贡献'], hde = lt.headers_en || [];
+    function ltEn(s){return '<span class="en-line" style="display:block;color:var(--text2);font-size:0.72em;font-weight:400">📖 ' + s + '</span>';}
+    h += '<div class=section id=yk-diagrams><h2>' + (lt.title || '📊 般若·中观·三论法脉传承');
+    if (lt.title_en) h += '<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">' + lt.title_en + '</span>';
+    h += '</h2>';
+    h += '<table class=v-table style=font-size:0.75em><tr><th>' + hd[0] + '</th><th>' + hd[1] + '</th><th>' + hd[2] + '</th></tr>';
+    lt.rows.forEach(function(r){
+      h += '<tr><td>' + r.period + (r.period_en?ltEn(r.period_en):'') + '</td><td>' + r.persons + (r.persons_en?ltEn(r.persons_en):'') + '</td><td>' + r.contribution + (r.contribution_en?ltEn(r.contribution_en):'') + '</td></tr>';
+    });
+    h += '</table></div>';
+  }
   return h;
 }
 
