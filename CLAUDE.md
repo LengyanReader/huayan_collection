@@ -34,8 +34,8 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 ## 📌 当前进度·下一步（新会话快速上手）
 
 - **进度权威源**：`docs/next-phase-plan.md`（长期待办、待续梯队、历次 L 系列批次登记都在此，**每次任务收尾必更新**）
-- **近期已收尾批次**（最近提交，倒序）：①lineage.js 死码覆盖清零·8 个 YAML 全局接入（be86e3d 后提交）；②‘内容采集与编务总则’七条固化（6d934d8）；③Tab1 主线人名 EN 接入（5c268a1）；④practice.js 硬编码清零·三孤儿数据接入（702453d）
-- **当前下一步（见计划待续梯队）**：①lineage 人名 EN 数据回填——`data/knowledge_graph/personas.json` 余 59 条目 `name_en`/`name_sa` 需**逐条考证**（考证优先，勿臆造）；②lineage.js 其余 stray 硬编码**内容回填**——`OTHER_SCHOOLS`（YAML 仅 7 校 vs 硬编码 14）/`TRANS_STORY`（25 条未注入）/`geofeatures`/时间轴朝代带 `dynasties`（非 YAML 版 dynasty_boundaries，形状不同）等需数据回填后接入，勿静默删内容
+- **近期已收尾批次**（最近提交，倒序）：①lineage.js 死码覆盖清零续扫（⑲ TRANS_STORY/OTHER_SCHOOLS/geoFeatures 3 处亦清零，共 11 处数据驱动）；②lineage.js 死码覆盖清零·8 个 YAML 全局接入（⑱，a4eff3e）；③‘内容采集与编务总则’七条固化（6d934d8）；④Tab1 主线人名 EN 接入（5c268a1）；⑤practice.js 硬编码清零·三孤儿数据接入（702453d）
+- **当前下一步（见计划待续梯队）**：①lineage 人名 EN 数据回填——`data/knowledge_graph/personas.json` 余 59 条目 `name_en`/`name_sa` 需**逐条考证**（考证优先，勿臆造）；②lineage.js 遗留 curated 数据迁移——`dynasties` 时间轴带宽带（6 段·与 dynasty_boundaries.yaml 形状不同）、`_huayanCore`（6 核心 id·勿直接改全 direct 级否则改变关联图行为）、`_MINI_REGIONS`（10 区域配置·可接受为代码常量）；另有 Tab2-6 与 article.js 的 stray 硬编码扫描
 - 所有内容/进度/原则详见下方文档索引与「内容采集与编务总则」七条，新会话按需读取即可接续
 
 ## 核心文档索引

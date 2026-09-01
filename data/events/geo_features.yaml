@@ -1,0 +1,28 @@
+# 古地图模式·主要地理要素标注 (从lineage.js toggleAncient geoFeatures提取)
+# 8处地理要素: 名+坐标 (古地图模式 toggleAncient 叠加显示)
+
+features:
+  - n: "秦岭山脉"
+    lat: 34.0
+    lng: 108.5
+  - n: "黄河"
+    lat: 34.8
+    lng: 110.5
+  - n: "长江"
+    lat: 30.5
+    lng: 114.0
+  - n: "五台山"
+    lat: 39.0
+    lng: 113.6
+  - n: "东海"
+    lat: 28.0
+    lng: 123.0
+  - n: "台湾海峡"
+    lat: 23.5
+    lng: 119.5
+  - n: "长安盆地"
+    lat: 34.2
+    lng: 108.9
+  - n: "太湖"
+    lat: 31.2
+    lng: 120.2

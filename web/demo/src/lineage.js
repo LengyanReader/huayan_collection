@@ -629,12 +629,8 @@ function toggleAncient(){
     applyFilter(1); // Default ancient filter: 古卷
     // Add terrain overlay to main map
     if(!terrainLayer){terrainLayer=terrainTileLayer();terrainLayer.addTo(mapMain);}else{terrainLayer.addTo(mapMain);}
-    // Major geographic feature labels
-    var geoFeatures=[
-      {n:'秦岭山脉',lat:34.0,lng:108.5},{n:'黄河',lat:34.8,lng:110.5},{n:'长江',lat:30.5,lng:114.0},
-      {n:'五台山',lat:39.0,lng:113.6},{n:'东海',lat:28.0,lng:123.0},{n:'台湾海峡',lat:23.5,lng:119.5},
-      {n:'长安盆地',lat:34.2,lng:108.9},{n:'太湖',lat:31.2,lng:120.2}
-    ];
+    // Major geographic feature labels (source of truth: data/events/geo_features.yaml -> GEO_FEATURES)
+    var geoFeatures=(typeof GEO_FEATURES!=='undefined'&&GEO_FEATURES&&GEO_FEATURES.features)?GEO_FEATURES.features:[];
     geoFeatures.forEach(function(gf){
       var gl=L.marker([gf.lat,gf.lng],{icon:L.divIcon({html:'<div style=font-size:10px;color:#6b4e2a;font-weight:600;text-shadow:0 0 4px rgba(255,255,255,0.8)>'+gf.n+'</div>',className:'geo-feature-label',iconSize:[0,0]}),interactive:false,zIndexOffset:-5}).addTo(mapMain);
       ancientLabels.push(gl);
@@ -1448,33 +1444,8 @@ function toggleLayer(layer){
 }
 
 // ═══ TRANSMISSION STORY (人物+事件串讲·取代粗糙线段) ═══
-var TRANS_STORY=[
-  {y:-1500,p:'吠陀仙人',lat:29.0,lng:76.0,ev:'雅利安人进入印度,吠陀宗教体系形成。梨俱吠陀为印度最古老宗教文献。轮回(karma)、禅定(dhyāna)等概念开始萌芽,为后来佛教思想提供了深厚的文化土壤。',src:'印度上古史'},
-  {y:-800,p:'奥义书哲人',lat:26.5,lng:82.0,ev:'奥义书时代思想家提出梵(Brahman)与阿特曼(ātman)的哲学概念。佛教「无我」(anātman)说正是在与这一传统的对话和批判中形成。',src:'奥义书文献'},
-  {y:-563,p:'释迦牟尼',lat:27.5,lng:83.3,ev:'悉达多太子诞生于迦毗罗卫城蓝毗尼园(今尼泊尔)。幼年受婆罗门传统教育,后出家求道,经历六年苦行。',src:'巴利文献·佛传'},
-  {y:-528,p:'释迦牟尼',lat:24.7,lng:84.99,ev:'35岁时于菩提伽耶菩提树下觉悟成佛。华严宗传统认为《华严经》即于此后三七日中,于定中为法身大士所说,揭示法界缘起之宇宙实相。此为华严经教之源头。',src:'华严宗传统'},
-  {y:-528,p:'释迦牟尼',lat:25.4,lng:83.0,ev:'成道后至鹿野苑为五比丘初转法轮,讲四圣谛八正道。佛教僧团成立。此后45年游化恒河流域,讲经三百余会。',src:'《杂阿含经》'},
-  {y:-483,p:'释迦牟尼',lat:26.7,lng:83.9,ev:'80岁时于拘尸那罗入灭。佛教由此向四方传播。华严宗法身思想将释迦入灭理解为「化身隐而法身常」,毗卢遮那佛永恒说法于华藏世界。',src:'《大般涅槃经》'},
-  {y:-260,p:'阿育王',lat:25.3,lng:83.0,ev:'阿育王皈依佛教,派传教师向四方传播佛法。第三次结集后佛教开始向中亚、东南亚扩散。',src:'阿育王石刻诏书'},
-  {y:65,p:'迦腻色迦王',lat:33.7,lng:72.8,ev:'贵霜帝国迦腻色迦王于犍陀罗举行第四次结集。佛法由印度深入中亚,犍陀罗成为佛教东传的枢纽站。',src:'佛教史·贵霜时期'},
-  {y:80,p:'马鸣',lat:27.5,lng:77.7,ev:'马鸣菩萨造《大乘起信论》。该论「一心二门」之说后成为华严宗心性论与判教体系的重要理论基础。',src:'传统著录'},
-  {y:167,p:'支娄迦谶',lat:34.7,lng:112.4,ev:'月氏僧支谶来华至洛阳,译《佛说兜沙经》。此为华严经文最早汉译,仅1卷,对应《如来名号品》。',src:'《高僧传》卷一'},
-  {y:320,p:'无著·世亲',lat:25.1,lng:85.4,ev:'无著、世亲兄弟于那烂陀弘传瑜伽行派。世亲造《十地经论》,后经菩提流支汉译催生地论学派。',src:'《大唐西域记》卷九'},
-  {y:344,p:'鸠摩罗什',lat:41.7,lng:82.9,ev:'罗什生于龟兹。401年至长安,主持史上最大译场。译《十住经》(十地品别译)、《十住毗婆沙论》等,为华严学提供关键文本基础。',src:'《高僧传》卷二'},
-  {y:359,p:'佛驮跋陀罗',lat:34.0,lng:72.0,ev:'觉贤生于北天竺迦毗罗卫。后至建康译出《六十华严》34品。此为《华严经》首次汉译全本。',src:'《高僧传》卷二'},
-  {y:401,p:'鸠摩罗什',lat:34.3,lng:108.9,ev:'罗什至长安逍遥园。主持中国史上最大译场,八百沙门参与。译出《十住经》《中论》《法华经》等,深刻影响华严义学。',src:'《出三藏记集》卷十四'},
-  {y:420,p:'佛驮跋陀罗',lat:32.1,lng:118.8,ev:'六十华严译出于建康道场寺。七处八会三十四品。法业等百余人参与笔受。华严经首次以全貌呈现于汉地。',src:'《出三藏记集》卷九'},
-  {y:468,p:'慧光',lat:34.7,lng:112.4,ev:'慧光生于北魏。从勒那摩提学《十地经论》,开地论南道派。后被尊为四分律宗初祖。其学经数代传至智俨、法藏,是为华严宗义学之前身。',src:'《续高僧传》卷二十一'},
-  {y:508,p:'菩提流支',lat:34.7,lng:112.4,ev:'北印度僧菩提流支至洛阳,与勒那摩提译世亲《十地经论》十二卷。此论催生了南北朝最重要的义学流派——地论学派。',src:'《续高僧传》卷一'},
-  {y:557,p:'杜顺',lat:33.9,lng:109.0,ev:'杜顺于终南山开创华严宗。著《华严法界观门》《五教止观》。以「法界三观」和「五教止观」为华严宗奠定修行理论基础。',src:'《续高僧传》卷二十五'},
-  {y:643,p:'法藏',lat:34.3,lng:108.9,ev:'法藏生于长安。从智俨学华严。后系统化「五教十宗」判教,著《华严五教章》等。武则天赐号「贤首」。参与八十华严译场证义。华严宗至此正式确立。',src:'《宋高僧传》卷五'},
-  {y:652,p:'实叉难陀',lat:37.1,lng:79.9,ev:'实叉难陀生于于阗。后奉武则天诏来华译经。于阗在中亚佛教网络中地位关键——既是实叉难陀故乡,又是藏译华严底本来源。',src:'《宋高僧传》卷二'},
-  {y:699,p:'实叉难陀·法藏',lat:34.7,lng:112.4,ev:'八十华严译出于洛阳佛授记寺。法藏参与证义。七处九会三十九品,为后世流传最广的汉译本。',src:'《宋高僧传》卷二'},
-  {y:780,p:'宗密',lat:34.0,lng:108.7,ev:'宗密住终南山圭峰。融合禅宗(荷泽系)与华严,著《禅源诸诠集都序》。华严与禅宗的深度融合,奠定了「教禅一致」的思想基础。',src:'《宋高僧传》卷六'},
-  {y:800,p:'胜友·智军',lat:29.7,lng:91.1,ev:'胜友、智军等于吐蕃将《华严经》由于阗本译为藏文(Toh44)。华严传入西藏,形成独立于汉译的藏传华严传承。',src:'德格版甘珠尔目录'},
-  {y:1085,p:'义天',lat:30.2,lng:120.1,ev:'高丽王子义天入宋,于杭州慧因寺从净源受华严。华严经由杭州传入朝鲜半岛。义天归国后编《义天录》,为华严文献学奠基。',src:'《高丽史》卷九十'},
-  {y:1173,p:'明惠',lat:35.0,lng:135.8,ev:'日本华严中兴之祖明惠于京都高山寺复兴华严。兼弘戒律与真言。日本华严经历镰仓时代再兴,形成东亚华严网络最终一环。',src:'日本佛教史'}
-];
+// TRANS_STORY source of truth: data/events/transmission_story.yaml (injected as TRANSMISSION_STORY, wrapped .story)
+TRANS_STORY=(typeof TRANSMISSION_STORY!=='undefined'&&TRANSMISSION_STORY&&TRANSMISSION_STORY.story)?TRANSMISSION_STORY.story:[];
 
 var transMarkers=[],transLines=[],otherSchoolsMarkers=[];
 
@@ -1499,22 +1470,8 @@ function initTransStory(){
   });
 }
 
-var OTHER_SCHOOLS=[
-  {n:'天台宗',y:597,lat:29.2,lng:121.0,c:'#7d9a6e',founder:'智𫖮',loc:'天台山',
-   desc:'中国最早成立的佛教宗派。以《法华经》为根本经典。华严宗判教体系中「同教一乘」即针对天台而设。澄观曾参学天台。',src:'《续高僧传》卷十七·智𫖮传 /《宋高僧传》卷五·澄观传'},
-  {n:'三论宗',y:597,lat:34.3,lng:108.9,c:'#a09080',founder:'吉藏',loc:'长安',
-   desc:'以《中论》《百论》《十二门论》立宗。华严宗继承三论空性论证方法，法藏判教将三论归入大乘始教。',src:'《续高僧传》卷十一·吉藏传'},
-  {n:'唯识宗',y:645,lat:34.3,lng:108.9,c:'#8b7a9e',founder:'玄奘',loc:'长安',
-   desc:'以《成唯识论》立宗。与华严宗同源瑜伽行派但取径不同。玄奘译《显无边佛土功德经》(T0289)即华严寿量品别译。',src:'《大唐大慈恩寺三藏法师传》'},
-  {n:'净土宗',y:402,lat:29.6,lng:116.0,c:'#b8863c',founder:'慧远',loc:'庐山',
-   desc:'以念佛往生为宗旨。华严经普贤行愿品为净土行者重视，华严「华藏世界」与净土「极乐世界」之间有深层义学互动。',src:'《高僧传》卷六·慧远传'},
-  {n:'禅宗',y:520,lat:34.5,lng:112.5,c:'#d48476',founder:'达摩→慧能',loc:'少林寺→曹溪',
-   desc:'以教外别传为宗。华严五祖宗密同时是禅宗荷泽系传人，著《禅源诸诠集都序》系统融合禅教。澄观亦参谒禅门牛头宗。',src:'《宋高僧传》卷六·宗密传 / 宗密《禅源诸诠集都序》'},
-  {n:'律宗',y:626,lat:33.9,lng:109.0,c:'#9e8b6e',founder:'道宣',loc:'终南山',
-   desc:'以四分律为根本。与华严宗同以终南山为根本道场。慧光(地论师·华严义学前身)同时被尊为四分律宗初祖。',src:'《宋高僧传》卷十四·道宣传 / 《续高僧传》卷二十一·慧光传'},
-  {n:'密宗',y:716,lat:34.3,lng:108.9,c:'#c8893e',founder:'善无畏·金刚智·不空',loc:'长安',
-   desc:'唐代开元三大士传入。华严宗内贤首密法(秽迹金刚)自成体系。海云继梦所得印度瑜伽行传承亦与此有历史关联。',src:'《宋高僧传》卷二·善无畏传 / 大华严寺官方资料'}
-];
+// OTHER_SCHOOLS source of truth: data/events/other_schools.yaml (injected as OTHER_SCHOOLS, wrapped .schools)
+OTHER_SCHOOLS=(typeof OTHER_SCHOOLS!=='undefined'&&OTHER_SCHOOLS&&OTHER_SCHOOLS.schools)?OTHER_SCHOOLS.schools:[];
 function initOtherSchools(){
   if(!map)return;
   otherSchoolsMarkers.forEach(function(m){mapMain.removeLayer(m);});
