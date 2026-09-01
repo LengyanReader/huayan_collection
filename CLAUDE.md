@@ -34,8 +34,8 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 ## 📌 当前进度·下一步（新会话快速上手）
 
 - **进度权威源**：`docs/next-phase-plan.md`（长期待办、待续梯队、历次 L 系列批次登记都在此，**每次任务收尾必更新**）
-- **近期已收尾批次**（最近提交，倒序）：①‘内容采集与编务总则’七条固化（commit 6d934d8）；②Tab1 主线人名 EN 接入（5c268a1）；③practice.js 硬编码清零·三孤儿数据接入（702453d）
-- **当前下一步（见计划待续梯队）**：①lineage 人名 EN 数据回填——`data/knowledge_graph/personas.json` 余 59 条目 `name_en`/`name_sa` 需**逐条考证**（考证优先，勿臆造）；②其余 stray 硬编码扫描
+- **近期已收尾批次**（最近提交，倒序）：①lineage.js 死码覆盖清零·8 个 YAML 全局接入（be86e3d 后提交）；②‘内容采集与编务总则’七条固化（6d934d8）；③Tab1 主线人名 EN 接入（5c268a1）；④practice.js 硬编码清零·三孤儿数据接入（702453d）
+- **当前下一步（见计划待续梯队）**：①lineage 人名 EN 数据回填——`data/knowledge_graph/personas.json` 余 59 条目 `name_en`/`name_sa` 需**逐条考证**（考证优先，勿臆造）；②lineage.js 其余 stray 硬编码**内容回填**——`OTHER_SCHOOLS`（YAML 仅 7 校 vs 硬编码 14）/`TRANS_STORY`（25 条未注入）/`geofeatures`/时间轴朝代带 `dynasties`（非 YAML 版 dynasty_boundaries，形状不同）等需数据回填后接入，勿静默删内容
 - 所有内容/进度/原则详见下方文档索引与「内容采集与编务总则」七条，新会话按需读取即可接续
 
 ## 核心文档索引
