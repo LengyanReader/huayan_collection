@@ -213,6 +213,14 @@ var REL_LABELS={
   american:'美洲',
   oceanic:'大洋洲'
 };
+// EN name display — SQLite persons name_en(拼音)/name_sa(梵文) 经 db_reader GRAPH 注入
+function _enName(p){if(!p)return '';p=p._primary||p;return (p.name_en||p.name_sa||'');}
+function _enNameHtml(p,inline){
+  var en=_enName(p);if(!en)return '';
+  return inline
+    ? '<span class="en-line" style="color:var(--text2);font-size:0.85em;font-weight:400"> '+en+'</span>'
+    : '<div class="en-line" style="color:var(--text2);font-size:0.82em;font-weight:400;margin:1px 0 4px">'+en+'</div>';
+}
 var THEORY_STAGES=[
   {label:'法界观门/五教止观',s:557,e:700,c:'rgba(184,134,60,0.10)',tc:'#b8863c'},
   {label:'五教十宗/法界缘起',s:643,e:820,c:'rgba(94,139,158,0.10)',tc:'#5e8b9e'},
@@ -524,6 +532,7 @@ function drawTL(hlId){
         var fullText='◇ '+prefix+p.n+((p.v||0)<1?' °':'');
         ctx.fillStyle=isHL?'#c46b5d':'#5c5040';
         ctx.fillText(fullText,mx+10,my+4);
+        var myen=_enName(p);if(myen&&isHL){ctx.font='8px Microsoft YaHei';ctx.fillStyle='#a09080';ctx.fillText(myen,mx+10,my+16);}
         labelRects.push({x:mx+10,y:my-6,w:ctx.measureText(fullText).width,h:12});
         return;
       }
@@ -558,6 +567,7 @@ function drawTL(hlId){
         else{lx=leftX;ly=leftY;}
         ctx.fillStyle=isHL?"#c46b5d":(p._isGhost?r.color:"#5c5040");
         ctx.fillText(fullText,lx,ly);
+        var lyen=_enName(p);if(lyen&&isHL){ctx.font='8px Microsoft YaHei';ctx.fillStyle='#a09080';ctx.fillText(lyen,lx,ly+12);}
         // 🎬 indicator for persons with trajectory data
         var hasTraj=PERSON_TRAJECTORIES&&PERSON_TRAJECTORIES[p.id];
         if(hasTraj&&!p._isGhost){
@@ -758,9 +768,11 @@ function initMap(){
     // Huayan locations
     var mc={temple:"#b8863c",mountain:"#7d9a6e",region:"#c46b5d"};
     DATA.locations.forEach(function(loc){
-      var names=(loc.ps||[]).map(function(pid){var n=nodeMap[pid];return n?n.n:"";}).filter(Boolean).join("、");
+      var namesArr=(loc.ps||[]).map(function(pid){var n=nodeMap[pid];return n;}).filter(Boolean);
+      var names=namesArr.map(function(n){return n.n;}).join("、");
+      var namesEn=namesArr.map(function(n){return _enName(n);}).filter(Boolean);
       var m=L.circleMarker([loc.lat,loc.lng],{radius:8,fillColor:mc[loc.tp]||"#b0a898",color:"#fff",weight:2,fillOpacity:0.9});
-      m.addTo(mapMain).bindPopup("<b>"+loc.n+"</b><br>"+(loc.dy||"")+"<br>"+(loc.ds||"")+(names?"<br>👤 "+names:""));
+      m.addTo(mapMain).bindPopup("<b>"+loc.n+"</b><br>"+(loc.dy||"")+"<br>"+(loc.ds||"")+(names?"<br>👤 "+names:"")+(namesEn.length?'<div class="en-line" style="font-size:0.8em;color:var(--text2)">'+namesEn.join(' · ')+'</div>':""));
       m._ld=loc;m.on("click",function(){if(loc.ps&&loc.ps.length>0)selectPerson(loc.ps[0]);});
       mainMarkers.push(m);
     });
@@ -991,6 +1003,7 @@ function showInfo(p,p2,e){
   var connCount=Object.keys(rels).reduce(function(s,k){return s+(rels[k]?rels[k].length:0);},0);
   var h="<span class=close-btn onclick=\"document.getElementById('info-popup').style.display='none'\">&times;</span>"
     +"<h3>"+(ti?'['+ti+'] ':'')+p.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p.ti||"")+"</span></h3>"
+    +_enNameHtml(p)
     +"<span class=tag style=background:"+lc+"20;color:"+lc+">"+(p.li||"—")+"</span>"
     +"<span class=tag style=background:rgba(0,0,0,0.04)>"+(p.tp==="patriarch"?"祖师":p.tp==="translator"?"译师":p.tp==="scholar"?"学者":"行者")+"</span>"
     +((p.v||0)>0?'<span class=tag style="background:rgba(125,154,110,0.1);color:#7d9a6e" title="来源已核实">✓</span>':'<span class=tag style="background:rgba(196,107,93,0.1);color:#c46b5d" title="来源缺失或尚未核实，需补第一手出处并标注存疑">⚠️ 存疑</span>')
@@ -1021,6 +1034,7 @@ function showInfo(p,p2,e){
   if(p2){
     var lc2=DATA.lineage_colors[p2.li]||"#b0a898";var ti2=TYPE_ICONS[p2.tp]||'';
     h+="<div style='margin-top:10px;padding-top:8px;border-top:2px solid var(--gold)'><h3 style=color:#5e8b9e>"+(ti2?'['+ti2+'] ':'')+p2.n+" <span style=font-size:0.7em;color:var(--text2)>"+(p2.ti||"")+"</span></h3>"
+      +_enNameHtml(p2)
       +"<span class=tag style=background:"+lc2+"20;color:"+lc2+">"+(p2.li||"—")+"</span>"
       +"📅 <b>"+(p2.dy||"?")+"</b> · "+(p2.b||"?")+"–"+(p2.d||"?")+"<br>"
       +(p2.bio?"<div style=color:var(--text2)>"+p2.bio+"</div>":"")+"</div>";
@@ -1428,7 +1442,7 @@ function renderRoster(){
     }else if(traj&&traj.group){
       groups=[traj.group];  // explicit single group overrides auto-classification
     }
-    all.push({id:p.id,n:p.n,ti:p.ti||'',tp:p.tp||'',li:p.li||'',b:p.b,d:p.d,color:DATA.lineage_colors[p.li]||'#b0a898',groups:groups});
+    all.push({id:p.id,n:p.n,ti:p.ti||'',tp:p.tp||'',li:p.li||'',b:p.b,d:p.d,color:DATA.lineage_colors[p.li]||'#b0a898',groups:groups,ne:_enName(p)});
     seen[p.id]=true;
   });
   // Add trajectory-only persons
@@ -1444,7 +1458,7 @@ function renderRoster(){
     }else if(t.group){
       groups2=[t.group];
     }
-    all.push({id:tid,n:t.name.split('·')[0],ti:t.name,li:'',b:yr,d:yr2,color:t.color||'#b0a898',groups:groups2});
+    all.push({id:tid,n:t.name.split('·')[0],ti:t.name,li:'',b:yr,d:yr2,color:t.color||'#b0a898',groups:groups2,ne:''});
     seen[tid]=true;
   }
   cnt.textContent=all.length;
@@ -1500,6 +1514,7 @@ function _rosterGroupHTML(g,persons){
         +' onmouseover="this.style.background=\''+c+'25\'" onmouseout="this.style.background=\''+c+'0d\'">'
         +(p.tp==='patriarch'?'[祖]':p.tp==='translator'?'[译]':p.tp==='scholar'?'[学]':'')
         +'<b>'+p.n+'</b>'
+        +(p.ne?' <span class="en-line" style=color:var(--text2);font-size:0.85em>'+p.ne+'</span>':'')
         +(_tr&&_tr.verified?' <span style=color:#7d9a6e title='+(_tr.source||'')+'>✓</span>':(_tr&&_tr.source?'':' <span style=color:#c46b5d title="来源缺失，存疑待核">⚠️存疑</span>'))
         +' '
         +'<span style=color:var(--text2);font-size:0.9em>'+yrs+'</span></span>';
@@ -1828,6 +1843,7 @@ function onMM(e){
       tip.style.opacity="1";
       tip.innerHTML="<div style=font-size:0.85em><b style=color:"+lc+">"+(ti||"?")+"</b> <b>"+pp.n+"</b> <span style=color:var(--text2)>"+pp.dy+"</span></div>"
 	        +"<div style=font-size:0.7em;color:var(--text2);line-height:1.3>"+(pp.ti||"")+"</div>"
+	        +_enNameHtml(pp)
 	        +(pp.b?"<div style=font-size:0.65em;color:#a09080>"+pp.b+"–"+(pp.d||"—")+ageTxt+" "+locTxt+"</div>":"");
       tip.style.left=(e.pageX+14)+"px";tip.style.top=(e.pageY-20)+"px";
     }else{
