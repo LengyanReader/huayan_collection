@@ -1052,11 +1052,14 @@ verification:
         (3) The two wrong turnings: after setting the mind in one place there arise "comfort, joy, ease" or else "fear." If grasped, both lead to the meditation of the non-Buddhist schools—one must let go even of these feelings.
 
 reference_table:
+  title: "📚 信实可靠的出处与参考资源"
+  title_en: "Reliable sources and reference resources"
   description: |
-    以下为本文所依据的全部第一手来源。内容以大华严寺官方资料.海云继梦和上讲经逐字稿.正式出版物为主,凡涉及诠释性跨度之处均已随文标注。
+    以下为本文所依据的全部第一手来源。内容以**大华严寺官方资料.海云继梦和上讲经逐字稿.正式出版物**为主,凡涉及诠释性跨度之处均已随文标注。
   description_en: |
-    The following are all the first-hand sources on which this article rests. The content draws chiefly on the official materials of Dahuayan Temple, the verbatim transcripts of Master Haiyun Jirong's lectures, and formally published works; wherever an interpretive span is involved it is annotated in the text.
+    The following are all the first-hand sources on which this article rests. The content draws chiefly on the official materials of Dahuayan Temple, the verbatim transcripts of Master Haiyun Jihong's lectures, and formally published works; wherever an interpretive span is involved it is annotated in the text.
   headers: [类别, 资源名称, 详情, 获取方式]
+  headers_en: [Category, Resource, Details, Access]
   rows:
     - category: "📖书籍"
       category_en: Books
@@ -1095,12 +1098,12 @@ reference_table:
       category_en: Podcast
       name: "普賢乘華嚴宗 S18《佔察善惡業報經》"
       name_en: "Samantabhadra Vehicle and Huayan School, S18: The Divination of the Wholesome and Evil Results of Karma"
-      detail: "46集(已完结). 2013年高雄/台北开示"
-      detail_en: "46 episodes (completed); 2013 lectures in Kaohsiung/Taipei"
+      detail: "**46集**(已完结). 2013年高雄/台北开示"
+      detail_en: "**46 episodes** (completed); 2013 lectures in Kaohsiung/Taipei"
       links:
         - text: Apple Podcast
           text_en: Apple Podcast
-          url: "https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889"
+          url: "https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889"
         - text: Spotify
           text_en: Spotify
           url: "https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc"
@@ -1161,6 +1164,6 @@ reference_table:
           text_en: NTU Buddhist Studies Library PDF
           url: "https://buddhism.lib.ntu.edu.tw/FT/JA/576036.pdf"
   reliability_note: |
-    来源可靠性说明: (1)大华严寺官网为第一手道场官方资料 (2)讲经逐字稿(fjdh.cn.学佛网)为法师本人第一人称陈述 (3)正式出版物(空庭书苑)为经编辑审定的公开文本。凡涉及道场自身历史叙事.术语诠释性跨度.以及第三四次灌顶的具体内容等,均已在本文中随文标注存疑或说明。建议进一步参阅《华严学报》(已出版14期)等学术出版物。
+    ⚠ **来源可靠性说明:** (1)大华严寺官网为第一手道场官方资料 (2)讲经逐字稿(fjdh.cn.学佛网)为法师本人第一人称陈述 (3)正式出版物(空庭书苑)为经编辑审定的公开文本。凡涉及道场自身历史叙事.术语诠释性跨度.以及第三四次灌顶的具体内容等,均已在本文中随文标注存疑或说明。建议进一步参阅《华严学报》(已出版14期)等学术出版物。
   reliability_note_en: |
     On the reliability of the sources: (1) the Dahuayan Temple website is first-hand official material from the tradition itself; (2) the verbatim lecture transcripts (fjdh.cn and the study-Buddhism sites) are the Master's own first-person statements; (3) the formally published works (Kōngtíng Shūyuàn) are public texts that have passed editorial review. Wherever a matter concerns the tradition's own historical narrative, an interpretive span in the terminology, or the specific content of the third and fourth initiations, doubt or explanation has been annotated in the text. It is recommended also to consult the academic publication Huayan Journal (14 issues to date) and similar works.

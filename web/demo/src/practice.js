@@ -401,22 +401,42 @@ function renderPractice(){
     }
   }catch(e){console.error('haiyun_resources error:',e);}
 
-  h+="<div class=section id=res-sources><h2>📚 信实可靠的出处与参考资源</h2>";
-  h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>以下为本文所依据的全部第一手来源。内容以<b>大华严寺官方资料.海云继梦和上讲经逐字稿.正式出版物</b>为主,凡涉及诠释性跨度之处均已随文标注。</p>";
+  // ── 信实可靠的出处与参考资源 (从 PRACTICE_DATA.meditation_essentials.reference_table 数据驱动) ──
+  (function(){
+    var rt=(typeof PRACTICE_DATA!=='undefined' && PRACTICE_DATA.meditation_essentials && PRACTICE_DATA.meditation_essentials.reference_table)||null;
+    if(!rt||!rt.rows||!rt.rows.length)return;
+    h+="<div class=section id=res-sources><h2>"+(rt.title||'📚 信实可靠的出处与参考资源');
+    if(rt.title_en)h+='<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">📖 '+rt.title_en+'</span>';
+    h+='</h2>';
+    if(rt.description)h+="<p style=font-size:.8em;color:var(--text2);margin-bottom:10px>"+_mdInline(rt.description)+"</p>";
+    if(rt.description_en)h+='<p class="en-line" style="font-size:.78em;color:var(--text2);line-height:1.7"><span style="color:var(--gold);font-weight:600">📖 </span>'+_mdInline(rt.description_en)+'</p>';
 
-  h+="<table class=v-table style=font-size:.7em><tr><th>类别</th><th>资源名称</th><th>详情</th><th>获取方式</th></tr>";
-  h+="<tr><td>📖书籍</td><td>《非常占察经》一.二.三册</td><td>海雲和上《占察善恶业报经》讲记.空庭书苑 2015-2017. ISBN: 9789867484918/4932/4949</td><td><a href='https://www.got1shop.com/goods.php?id=281160' target=_blank>购买</a> . <a href='https://webpac.taichung.gov.tw/bookDetail/670127' target=_blank>图书馆</a></td></tr>";
-  h+="<tr><td>📖书籍</td><td>《海云继梦禅观概论》</td><td>空庭书苑 2015. ISBN: 9789867484888</td><td><a href='https://got1dev.got1shop.com/goods.php?id=219111' target=_blank>购买</a></td></tr>";
-  h+="<tr><td>📖书籍</td><td>《迈向佛陀的境界——华严禅前行概论》</td><td>空庭书苑 2011. ISBN: 9789867484512</td><td><a href='https://play.google.com/store/books/details?id=Mm36CgAAQBAJ' target=_blank>Google Play</a></td></tr>";
-  h+="<tr><td>🎙播客</td><td>普賢乘華嚴宗 S18《佔察善惡業報經》</td><td><b>46集</b>(已完结). 2013年高雄/台北开示</td><td><a href='https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889' target=_blank>Apple Podcast</a> . <a href='https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc' target=_blank>Spotify</a></td></tr>";
-  h+="<tr><td>📺视频</td><td>大華嚴寺官方YouTube @huayen-world</td><td>海雲法語.華嚴教海.Shorts.藥師經講座.九九華嚴</td><td><a href='https://www.youtube.com/@huayen-world' target=_blank>YouTube频道</a></td></tr>";
-  h+="<tr><td>📝文字</td><td>fjdh.cn 佛教导航 — 海云继梦文集</td><td>《华严禅行法—禅观》逐字稿.《禅修正行》系列.《四十华严讲记》第67讲</td><td><a href='https://www.fjdh.cn/wumin/2013/11/165329303084.html' target=_blank>禅观第四集</a> . <a href='https://www.fjdh.cn/wumin/2013/09/155711285715.html' target=_blank>停心.观心</a></td></tr>";
-  h+="<tr><td>🌐官网</td><td>大华严寺全球资讯网 huayenworld.org</td><td>「华严禅」专栏: 源流与传承.修行蓝图.资粮道.占察行法</td><td><a href='https://www.huayenworld.org/' target=_blank>官网首页</a> . <a href='https://www.huayenworld.org/%e8%8f%af%e5%9a%b4%e7%a6%aa%e7%b0%a1%e4%bb%8b%e7%89%b9%e8%89%b2/' target=_blank>修行蓝图全文</a></td></tr>";
-  h+="<tr><td>🌐经典</td><td>CBETA 《占察善恶业报经》</td><td>大正藏 T17n0839.天竺三藏菩提灯译</td><td><a href='https://cbeta.buddhism.org.hk/xml/T17/T17n0839_002.xml' target=_blank>CBETA 原文</a></td></tr>";
-  h+="<tr><td>📄论文</td><td>《普贤乘禅观行法初探》</td><td>海云继梦 著.台湾佛教学术期刊</td><td><a href='https://buddhism.lib.ntu.edu.tw/FT/JA/576036.pdf' target=_blank>NTU佛学图书馆 PDF</a></td></tr></table>";
+    var hd=rt.headers||['类别','资源名称','详情','获取方式'];
+    h+="<table class=v-table style=font-size:.7em><tr>";
+    hd.forEach(function(c,i){
+      h+="<th>"+c+(rt.headers_en&&rt.headers_en[i]?'<span class="en-line" style="font-size:0.7em;display:block;font-weight:400;color:var(--text2)">'+rt.headers_en[i]+'</span>':'')+"</th>";
+    });
+    h+="</tr>";
+    rt.rows.forEach(function(r){
+      h+="<tr><td>"+r.category+(r.category_en?'<span class="en-line" style="font-size:0.72em;display:block;color:var(--text2)">📖 '+r.category_en+'</span>':'')+"</td>";
+      h+="<td>"+r.name+(r.name_en?'<span class="en-line" style="font-size:0.72em;display:block;color:var(--text2)">📖 '+r.name_en+'</span>':'')+"</td>";
+      h+="<td>"+_mdInline(r.detail||'')+(r.detail_en?'<span class="en-line" style="font-size:0.72em;display:block;color:var(--text2)">📖 '+_mdInline(r.detail_en)+'</span>':'')+"</td>";
+      h+="<td>";
+      var ln=r.links||[], enA=[];
+      ln.forEach(function(l,j){
+        if(j>0)h+=" . ";
+        h+="<a href='"+l.url+"' target=_blank>"+l.text+"</a>";
+        if(l.text_en)enA.push(l.text_en);
+      });
+      if(enA.length)h+='<span class="en-line" style="font-size:0.72em;display:block;color:var(--text2)">📖 '+enA.join(' . ')+'</span>';
+      h+="</td></tr>";
+    });
+    h+="</table>";
 
-  h+="<p style=font-size:.7em;color:var(--text2);margin-top:8px;line-height:1.6>⚠ <b>来源可靠性说明:</b> (1)大华严寺官网为第一手道场官方资料 (2)讲经逐字稿(fjdh.cn.学佛网)为法师本人第一人称陈述 (3)正式出版物(空庭书苑)为经编辑审定的公开文本。凡涉及道场自身历史叙事.术语诠释性跨度.以及第三四次灌顶的具体内容等,均已在本文中随文标注存疑或说明。建议进一步参阅《华严学报》(已出版14期)等学术出版物。</p>";
-  h+="</div>";
+    if(rt.reliability_note)h+="<p style=font-size:.7em;color:var(--text2);margin-top:8px;line-height:1.6>"+_mdInline(rt.reliability_note)+"</p>";
+    if(rt.reliability_note_en)h+='<p class="en-line" style="font-size:.72em;color:var(--text2);margin-top:4px;line-height:1.6"><span style="color:var(--gold);font-weight:600">📖 </span>'+_mdInline(rt.reliability_note_en)+'</p>';
+    h+="</div>";
+  })();
   h+="</div>"; // close pv-resources
 
   pv.innerHTML=h;
