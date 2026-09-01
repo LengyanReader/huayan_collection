@@ -9,8 +9,7 @@
 
 ## Demo
 
-**[web/demo/index.html](web/demo/index.html)** — 导航主页，链接到6个独立Tab页面
-- Tab 1: **法脉传承**·时空长河 (Canvas时间轴 + 理论/修行图层 + 主地图 + 全球文明迷你地图 + 95节点动画 + 古地图模式 + 174条人物行迹)
+**[web/demo/index.html](web/demo/index.html)** — 导航主页，链接到6个独立Tab页面- Tab 1: **法脉传承**·时空长河 (Canvas时间轴 + 理论/修行图层 + 主地图 + 全球文明迷你地图 + 95节点动画 + 古地图模式 + 174条人物行迹)
 - Tab 2: **华严文献**·汉藏差异 (子导航多页: 华严经学/以经证经/判教互判/华严祖师/专题研究 + 三语对读 + 50条术语 + 文本系谱)
 - Tab 3: **华严教行** (子导航四页·修行体系/禅观法要/实修心要/讲法资源 + YouTube集成)
 - Tab 4: **前沿对话** (AI/计算现象学/神经科学/心灵哲学 + 文献综述)
@@ -31,6 +30,13 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 数据流: JSON/YAML源文件 → `import_all_to_sqlite.py` → SQLite → `db_reader.py` → `build.py` → HTML
 
 详见 [docs/knowledge-management.md](docs/knowledge-management.md)
+
+## 📌 当前进度·下一步（新会话快速上手）
+
+- **进度权威源**：`docs/next-phase-plan.md`（长期待办、待续梯队、历次 L 系列批次登记都在此，**每次任务收尾必更新**）
+- **近期已收尾批次**（最近提交，倒序）：①‘内容采集与编务总则’七条固化（commit 6d934d8）；②Tab1 主线人名 EN 接入（5c268a1）；③practice.js 硬编码清零·三孤儿数据接入（702453d）
+- **当前下一步（见计划待续梯队）**：①lineage 人名 EN 数据回填——`data/knowledge_graph/personas.json` 余 59 条目 `name_en`/`name_sa` 需**逐条考证**（考证优先，勿臆造）；②其余 stray 硬编码扫描
+- 所有内容/进度/原则详见下方文档索引与「内容采集与编务总则」七条，新会话按需读取即可接续
 
 ## 核心文档索引
 
