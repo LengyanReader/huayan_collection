@@ -4,17 +4,26 @@
 
 overview:
   title: 华严经讲法全目
+  title_en: Complete Lecture Index on the Avataṃsaka Sūtra
   note: |
     海云继梦法师以「新古典华严」复兴华严宗，
     讲法覆盖八十华严·四十华严·六十华严的
     整体玄谈与逐品解说。
+  note_en: |
+    Master Haiyun Jimeng revivifies the Huayan school through
+    Neo-classical Huayan, delivering comprehensive lectures on the
+    Eighty-fascicle, Forty-fascicle, and Sixty-fascicle Avataṃsaka Sūtra,
+    spanning both the grand overview and chapter-by-chapter exposition.
 
 # ── 一、整体讲法 ──
 overall:
   - title: "九九華嚴玄談 (5册)"
+    title_en: "Ninety-Nine Fascicle Avataṃsaka Grand Overview (5 vols.)"
     publisher: 空庭书苑
+    publisher_en: Kuoting Books
     year: "2026.04起"
     format: 纸本书+电子书(Kobo)
+    format_en: Print + e-book (Kobo)
     isbn_start: "9786269997893 (01)"
     content: |
       以《八十华严》前59卷+《四十华严》后40卷=「九九華嚴」为框架。
@@ -23,32 +32,56 @@ overall:
       03册: 十住·十行·十回向修行内涵
       04册: 转入四十华严·法界缘起·五周因果·因果同时
       05册: (待出版)
+    content_en: |
+      Framework: the first 59 fascicles of the Eighty-fascicle Avataṃsaka
+      plus the full Forty-fascicle Avataṃsaka = the "Ninety-Nine Avataṃsaka."
+      Vol. 01: overall architecture of the Eighty-fascicle, the seven locations
+      and nine assemblies, positioning for entry into practice.
+      Vol. 02: deepening the vision of the Eighty-fascicle Avataṃsaka thought.
+      Vol. 03: the ten abidings, ten practices, and ten dedications.
+      Vol. 04: transition into the Forty-fascicle, dharmadhātu dependent arising,
+      five cycles of cause and effect, and the simultaneity of cause and effect.
+      Vol. 05: (forthcoming)
     links:
       findbook_01: https://findbook.com.tw/9786269997893
       cosmos_03: https://www.cosmosbooks.com.hk/index.php?route=product/product&product_id=626930183
       kobo_series: https://www.kobo.com/us/en/series/whNkbT0KB1qj8LfR_A3HwQ
 
   - title: "探玄記懸談講記 (4册)"
+    title_en: "Lectures on the Introductory Discourse of the Tanxuanji (4 vols.)"
     publisher: 空庭书苑
     series: 海雲繼夢解華嚴 第6-9册
     content: |
       唐代华严三祖法藏《探玄记》之「悬谈」部分的现代讲解。
       「悬谈」= 进入经文前的导论——说明解读经典的方法论。
+    content_en: |
+      Modern lectures on the introductory discourse (xuantan) of Fazang's
+      Record of Exploring the Mysteries, the third patriarch of the Huayan
+      school in the Tang dynasty. The "introductory discourse" is the prolegomenon
+      before entering the sūtra text — outlining the methodology for interpreting
+      the canon.
     links:
       pickbooks: https://pickbooks.com.tw/book/3_000475624
 
   - title: "華嚴哲學懸談"
+    title_en: "Avataṃsaka Philosophy: The Introductory Discourse"
     publisher: 空庭书苑
     isbn: "9789867484611"
     series: "大方廣佛華嚴經思想重勘覓玄紀要"
 
   - title: "四十華嚴講記"
+    title_en: "Lectures on the Forty-fascicle Avataṃsaka"
     year: 2009
     venue: 台北
     length: 73+讲
     content: |
       以《四十华严》(全本入法界品)为核心的逐品讲解。
       第68讲为关键讲次——法师在此讲中阐明「普贤乘」的「直接兑现」特质。
+    content_en: |
+      A chapter-by-chapter exposition centered on the Forty-fascicle Avataṃsaka
+      (the complete Entering the Dharma Realm chapter). Lecture 68 is pivotal —
+      where the Master clarifies the "direct fulfillment" quality of the
+      Samantabhadra vehicle.
     links:
       fjdh_example_1: http://wuming.xuefo.com/nr/7/65148.html
       fjdh_example_2: http://wuming.xuefo.net/nr/7/65136.html
@@ -57,79 +90,130 @@ overall:
 # ── 二、玄谈系列 ──
 xuantan:
   - title: "華嚴經經首 (S10)"
+    title_en: "The Opening of the Avataṃsaka Sūtra (S10)"
     platform: Spotify / Apple Podcast
     series: 普賢乘華嚴宗 第10季
     content: |
       华严经「经首」品——全经的序分与玄谈。
       海云法师在此系列中展开华严的语言模式/思惟模式/行为模式三框架。
+    content_en: |
+      The opening-head chapter of the Avataṃsaka Sūtra — the prologue and
+      grand overview of the entire text. Here the Master unfolds the three
+      frameworks of Huayan: its modes of language, of thought, and of conduct.
 
   - title: "非常華嚴經——四十華嚴玄談"
+    title_en: "The Extraordinary Avataṃsaka — A Grand Overview of the Forty-fascicle"
     publisher: 空庭书苑
     format: 纸本/电子书
+    format_en: Print / e-book
     content: 聚焦《四十华严》的玄义——从八十华严到四十华严的义理过渡
+    content_en: Delving into the profound meaning of the Forty-fascicle Avataṃsaka — the doctrinal transition from the Eighty-fascicle to the Forty-fascicle.
 
   - title: "非常華嚴經——華嚴經經首"
+    title_en: "The Extraordinary Avataṃsaka — The Opening-Head Chapter"
     content: 八十华严经首品玄谈——开经前的义理地基
+    content_en: A grand overview of the opening-head chapter of the Eighty-fascicle Avataṃsaka — the doctrinal foundation laid before entering the sūtra.
 
   - title: "九九華嚴玄談 (YouTube系列)"
+    title_en: "The Ninety-Nine Avataṃsaka Grand Overview (YouTube series)"
     year: "2024-2026"
     content: |
       2024-2026年最新讲座系列, 与纸本书同步推出。
       YouTube频道「華嚴教海」播放清单。
+    content_en: |
+      The newest lecture series (2024-2026), released in tandem with the
+      print volumes. Available as a playlist on the YouTube channel
+      "Huayan Dharma Sea."
     links:
       youtube_channel: https://www.youtube.com/@huayen-world
       youtube_playlists: https://www.youtube.com/@huayen-world/playlists
 
   - title: "華嚴思想的承先與啟後"
+    title_en: "Huayan Thought: Heritage and Continuation"
     content: |
       海云法师关于华严经起源、形成、流传和现代意义的专题讲座。
       核心观点: 《华严经》的故乡在西域(于阗)——五大古文明的交汇地。
       三龙传说(大龙菩萨·龙宫·龙树)的自性表法诠释。
+    content_en: |
+      A special lecture by Master Haiyun on the origin, formation, transmission,
+      and contemporary significance of the Avataṃsaka Sūtra. Core thesis: the
+      homeland of the Avataṃsaka Sūtra lies in the Western Regions (Khotan),
+      the meeting point of five great ancient civilizations, including a
+      symbolic reading of the "three dragons" legend — the great dragon
+      bodhisattva, the dragon palace, and Nāgārjuna.
 
 # ── 三、品目解说 ──
 chapters:
   - chapter: 净行品
     title: "華嚴經淨行品 (S20)"
+    title_en: "The Chapter on the Pure Practice (S20)"
     platform: Spotify/Apple Podcast
     content: |
       《净行品》——华严经修行实践的核心品目之一。
       141愿「当愿众生」——日常行住坐卧中修菩萨行。
+    content_en: |
+      The Pure Practice chapter — among the pivotal chapters for actual
+      practice in the Avataṃsaka Sūtra, presenting 141 vows that begin
+      "May all beings..." for cultivating the bodhisattva path amid the
+      ordinary activities of daily life.
 
   - chapter: 十行品
     title: "十行品 (S23)"
+    title_en: "The Ten Practices chapter (S23)"
     platform: Spotify/Apple Podcast
     year: "2023-2024"
     episodes: 8集
     content: |
       十行品之四「無屈撓行」——十行位的修行内容。
+    content_en: |
+      On the fourth of the Ten Practices — "the unflagging practice" —
+      addressing the cultivation of the stage of the ten practices.
 
   - chapter: 普贤行愿品
     title: "普賢行願品 (S17)"
+    title_en: "The Vows chapter (S17)"
     platform: Spotify/Apple Podcast
     content: |
       十大愿王——圆融道的工程面核心。
       海云法师以此品衔接华严教理与日常实践。
+    content_en: |
+      The ten great vows — the core of the "engineering" dimension of the
+      path of perfect fusion. The Master uses this chapter to link Huayan
+      doctrine to everyday practice.
 
   - chapter: 耳根圆通章
     title: "楞嚴經·耳根圓通章"
+    title_en: "The Śūraṅgama Sūtra · The Ear-Dhātu Perfect Penetration chapter"
     platform: fjdh.cn
     lessons: 9+集
     content: |
-      《楞严经》观世音菩萨耳根圆通章——与华严观音法门的交叉讲解。
+      《楞严经》观世音菩萨耳根圆通章——与华严观音法门交叉讲解。
+    content_en: |
+      On the Avalokiteśvara ear-organ perfect penetration chapter of the
+      Śūraṅgama Sūtra — presented in cross-reference with the Huayan
+      Guanyin practice.
     links:
       fjdh_example: http://wuming.xuefo.com/nr/7/70164.html
 
   - chapter: 十地品 ↔ 占察经
     title: "非常占察經 (3册)"
+    title_en: "The Extraordinary Zhancha Sūtra (3 vols.)"
     publisher: 空庭书苑
     isbn: "9789867484918/4932/4949"
     year: "2015-2017"
     content: |
       《占察善恶业报经》讲记——四种观法中前二种(唯心识观·真如实观)的经典来源，
       与《华严经·十地品》有深层义理关联。
+    content_en: |
+      Lectures on the Sūtra of Judgment on Good and Evil Karmic Retribution.
+      The source for the first two of the four contemplations (the
+      mind-only consciousness contemplation and the true-suchness
+      contemplation), deeply connected in doctrine with the Ten Grounds
+      (Daśabhūmika) chapter of the Avataṃsaka Sūtra.
 
   - chapter: 入法界品(第39品)
     title: "四十華嚴講記·善财五十三参"
+    title_en: "Forty-fascicle Lectures · Sudhana's Fifty-Three Visits"
     platform: fjdh.cn / 台北道场
     year: "2009"
     lessons: "73+讲"
@@ -137,6 +221,12 @@ chapters:
       八十华严第39品=四十华严全部。善财童子五十三参——
       三个循环: 文殊总说→五十一参成佛→普贤菩萨章法身境界
       「离世间入法界」核心开示。
+    content_en: |
+      Chapter 39 of the Eighty-fascicle equals the entire Forty-fascicle.
+      Sudhana's fifty-three visits in three cycles: Manjuśrī's general
+      instruction → the fifty-first visit to the awakening of a buddha →
+      the dharmakāya state in the Samantabhadra chapter. Core teaching on
+      "leaving the mundane world and entering the dharmadhātu."
     links:
       fjdh_72: https://www.fjdh.cn/wumin/2013/10/173255293558.html
       fjdh_68: http://wuming.xuefo.com/nr/7/65148.html
@@ -144,70 +234,107 @@ chapters:
 
   - chapter: 普贤行愿品(流通分)
     title: "普贤行愿品昆明开示 (S17)"
+    title_en: "Vows chapter, Kunming talk (S17)"
     platform: 昆明 / Spotify
     year: "2011元月"
     content: |
       以善财童子「各位善财童子们」称呼听众。如来功德·自性·大圆镜智。
       十大愿王为圆融道工程面核心。
+    content_en: |
+      Addressing listeners as "dear Sudhanas." The Tathāgata's merits,
+      intrinsic nature, and the great perfect-mirror wisdom. The ten great
+      vows as the core of the engineering aspect of the perfect-fusion path.
     links:
       fjdh: http://wuming.xuefo.com/show2.asp?id=70508
       spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
 
   - chapter: 世主妙严品(第1品)
     title: 九九華嚴玄談 第01册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 01
     content: 八十华严开篇——世主妙严·佛境界庄严。七处九会结构总纲。
+    content_en: The opening of the Eighty-fascicle — the wondrous adornments of the rulers and the majesty of the Buddha-realm; an outline of the seven-location, nine-assembly structure.
 
   - chapter: 如来现相品(第2品)
     title: 九九華嚴玄談 第01册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 01
     content: 如来放光现相——华严法会序幕。
+    content_en: The Tathāgata emits light and manifests appearances — the prologue of the Avataṃsaka assembly.
 
   - chapter: 普贤三昧品(第3品)
     title: 九九華嚴玄談 第01册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 01
     content: 普贤入三昧——华严三昧定中境界。
+    content_en: Samantabhadra enters samādhi — the state within the Avataṃsaka samādhi.
 
   - chapter: 世界成就品(第4品)
     title: 九九華嚴玄談 第01册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 01
     content: 世界海因缘——十方世界成就之因。
+    content_en: The causes and conditions of the ocean of worlds — the causes of the formation of the worlds in the ten directions.
 
   - chapter: 华藏世界品(第5品)
     title: 九九華嚴玄談 第01册 / 世主妙严页
+    title_en: Forty-Ninth Avataṃsaka Grand Overview Vol. 01 / the Rulers' Adornments page
     content: 华藏世界海二十重·十重风轮·Vairocana净土。全经宇宙观核心。
+    content_en: The twenty layers of the ocean of the Flower Treasury worlds, the ten wind-wheels, and Vairocana's pure land — the cosmological heart of the entire sūtra.
 
   - chapter: 毗卢遮那品(第6品)
     title: 九九華嚴玄談 第01册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 01
     content: 毗卢遮那佛宿世因缘——法身佛的本生故事。
+    content_en: The past-life causes of Vairocana Buddha — the jātaka of the dharmakāya Buddha.
 
   - chapter: 如来名号品(第7品)
     title: 九九華嚴玄談 第02册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 02
     content: 如来名号遍法界——文殊师利说十方佛名。
+    content_en: The Tathāgata's names pervading the dharmadhātu — Manjuśrī proclaiming the names of the buddhas in the ten directions.
 
   - chapter: 四圣谛品(第8品)
     title: 九九華嚴玄談 第02册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 02
     content: 十方世界四圣谛差别——文殊广说。
+    content_en: The distinctions of the four noble truths across the worlds of the ten directions — expounded at length by Manjuśrī.
 
   - chapter: 光明觉品(第9品)
     title: 九九華嚴玄談 第02册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 02
     content: 光明觉——佛光遍照十方菩萨。
+    content_en: The enlightenment of light — the Buddha's radiance illuminating the bodhisattvas throughout the ten directions.
 
   - chapter: 菩萨问明品(第10品)
     title: 九九華嚴玄談 第02册
+    title_en: Forty-Ninth Avataṃsaka Grand Overview, Vol. 02
     content: 文殊与九首菩萨问答——明法要义。
+    content_en: The dialogue of questions and answers between Manjuśrī and the nine bodhisattvas — clarifying the essential meaning of the Dharma.
 
   - chapter: 如来出现品(第37品)
     title: "探玄記懸談講記 / 九九華嚴玄談 第04册"
+    title_en: "Tanxuanji Introductory Discourses / Forty-Ninth Avataṃsaka Grand Overview, Vol. 04"
     content: |
       如来出现·示现成道。《离世间→如来出现→入法界》三品连锁——
       离世间(修行)→如来出现(证果)→入法界(起用)。
+    content_en: |
+      The Tathāgata appears, manifesting the realization of the path. A chain
+      of three chapters — Leaving the Mundane World → Appearance of the
+      Tathāgata → Entering the Dharma Realm: leaving the world (practice),
+      the Tathāgata appearing (attaining the fruit), and entering the
+      dharmadhātu (active function).
 
   - chapter: 离世间品(第38品)
     title: "离世间入法界 开示 / 九九華嚴玄談 第04册"
+    title_en: "Leaving the World, Entering the Dharma Realm talk / Forty-Ninth Avataṃsaka Grand Overview, Vol. 04"
     content: |
       普贤菩萨说二千行法——离世间而入法界的关键转捩。
+    content_en: |
+      Samantabhadra expounds the two thousand practices — the pivotal turn
+      from leaving the mundane world to entering the dharmadhātu.
     links:
       bbs_excerpt: https://bbs-mychat.com/reads.php?tid=986074
 
   - chapter: 散见品目
     title: 九九華嚴玄談 各册覆盖
+    title_en: Scattered chapters covered across the Forty-Ninth Avataṃsaka Grand Overview volumes
     content: |
       • 如来十身相海品(34)·如来随好光明功德品(35)·普贤行品(36): 第04册
       • 十定品(27)·十通品(28)·十忍品(29)·阿僧祇品(30): 第03-04册
@@ -215,11 +342,20 @@ chapters:
       • 十住品(15)·梵行品(16)·初发心功德品(17)·明法品(18): 第02-03册
       • 十无尽藏品(22)·升兜率天宫品(23-24)·十回向品(25): 第03册
       • 贤首品(12)·升须弥山顶品(13-14): 第02册
+    content_en: |
+      • The Ten Bodies of Tathāgata and the Ocean of Marks (34), the Fine Sudden Marks and Light and Merits (35), the Samantabhadra Practice (36): Vol. 04
+      • The Ten Samādhis (27), the Ten Penetrations (28), the Ten Patiences (29), the Asaṅkhya (30): Vols. 03-04
+      • The Lifespan (31), the Abodes of Bodhisattvas (32), the Inconceivable Buddha Dhamma (33): Vols. 03-04
+      • The Ten Abidings (15), the Brahmacarya (16), the Merits of the First Awakening Mind (17), the Illuminating Dharmas (18): Vols. 02-03
+      • The Ten Inexhaustible Treasury (22), Ascending to the Tuṣita Palace (23-24), the Ten Dedications (25): Vol. 03
+      • The Virtue of the Wise Leader (12), Ascending to the Summit of Mount Sumeru (13-14): Vol. 02
 
 # ── 四、Podcast 全季华严相关 ──
 podcast_huayan:
   name: 普賢乘華嚴宗
+  name_en: Samantabhadra Vehicle Huayan School
   platforms: "Spotify · Apple Podcast · 每周一三更新"
+  platforms_en: "Spotify · Apple Podcast · updated Mondays and Wednesdays"
   huayan_seasons:
     - "S1: 華嚴學概論"
     - "S2: 華嚴經教與行法"
@@ -229,6 +365,15 @@ podcast_huayan:
     - "S20: 華嚴經淨行品"
     - "S22: 華嚴海會"
     - "S23: 十行品"
+  huayan_seasons_en:
+    - "S1: Introduction to Huayan Studies"
+    - "S2: Huayan Doctrine and Practice"
+    - "S3: Huayan Chan Practice"
+    - "S10: The Opening of the Avataṃsaka Sūtra"
+    - "S17: The Vows chapter"
+    - "S20: The Pure Practice chapter"
+    - "S22: The Huayan Assembly"
+    - "S23: The Ten Practices chapter"
   links:
     spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
     apple: https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889
@@ -236,6 +381,7 @@ podcast_huayan:
 # ── 五、视频/Bilibili ──
 video:
   - title: "華嚴六科系列 (Bilibili)"
+    title_en: "The Six Subjects of Huayan series (Bilibili)"
     platform: Bilibili
     link: https://www.bilibili.com/video/BV1iS421X7S8/
     subjects:
@@ -245,9 +391,18 @@ video:
       - "華嚴戒律觀 (7集)"
       - "華嚴淨土法門 (7集)"
       - "華嚴密法 (7集)"
+    subjects_en:
+      - "Introduction to Huayan Studies (8 episodes)"
+      - "Huayan Doctrine and Practice (8 episodes)"
+      - "Huayan Chan Practice (8 episodes)"
+      - "Huayan View of the Precepts (7 episodes)"
+      - "The Huayan Pure Land Practice (7 episodes)"
+      - "Huayan Esoteric Dharma (7 episodes)"
   - title: "四十華嚴講記 (逐字稿)"
+    title_en: "Lectures on the Forty-fascicle Avataṃsaka (verbatim transcripts)"
     platform: fjdh.cn / wuming.xuefo.net
     content: 完整逐字稿——学佛网五明频道集中发布
+    content_en: Complete verbatim transcripts — published in full on the Wuming section of the xuefo.net Buddhist website
 
 # ── 六、快速索引 ──
 quick_index:
@@ -256,42 +411,84 @@ quick_index:
     description: |
       八十华严39品在海云法师讲法体系中的覆盖情况。
       ✅ = 有独立系列/播客季   📖 = 书籍(九九華嚴系列)覆盖   🔍 = 需进一步确认
+    description_en: |
+      Coverage of all 39 chapters of the Eighty-fascicle Avataṃsaka within
+      Master Haiyun's lecture system. ✅ = a dedicated series / podcast season,
+      📖 = covered in the books (the Forty-Ninth Avataṃsaka series),
+      🔍 = yet to be confirmed.
     chapters:
       - range: "第1-6品 (举果劝乐生信分)"
+        range_en: "Chapters 1-6 (raising the fruit to inspire faith)"
         items: "世主妙严·如来现相·普贤三昧·世界成就·华藏世界·毗卢遮那"
+        items_en: "Rulers' Adornments, Tathāgata's Appearance, Samantabhadra's Samādhi, the Formation of Worlds, the Flower Treasury Worlds, Vairocana"
         coverage: "📖 九九華嚴第01册"
+        coverage_en: "📖 Forty-Ninth Avataṃsaka, Vol. 01"
       - range: "第7-12品 (修因契果生解分·十信位)"
+        range_en: "Chapters 7-12 (the ten-faith stage)"
         items: "如来名号·四圣谛·光明觉·菩萨问明·净行品(S20✅)·贤首"
+        items_en: "Tathāgata's Names, the Four Noble Truths, the Enlightening Light, the Bodhisattvas' Questions, the Pure Practice (S20 ✅), the Wise Leader"
         coverage: "📖 九九華嚴第02册 + S20独立播客"
+        coverage_en: "📖 Forty-Ninth Avataṃsaka, Vol. 02 + dedicated S20 podcast"
       - range: "第13-20品 (十住位·十行位)"
+        range_en: "Chapters 13-20 (the ten abidings and ten practices stages)"
         items: "升须弥山顶·须弥偈赞·十住品·梵行品·初发心功德品·明法品·升夜摩天宫·夜摩偈赞"
+        items_en: "Ascending to the Summit of Mount Sumeru, the Sumeru Verses of Praise, the Ten Abidings, the Brahmacarya chapter, the Merits of First Awakening the Mind, the Illuminating Dharmas, Ascending to the Yāma Palace, the Yāma Verses of Praise"
         coverage: "📖 九九華嚴第02-03册"
+        coverage_en: "📖 Forty-Ninth Avataṃsaka, Vols. 02-03"
       - range: "第21品 (十行品)"
+        range_en: "Chapter 21 (the Ten Practices chapter)"
         items: "十行品"
+        items_en: "The Ten Practices chapter"
         coverage: "✅ S23独立播客(2023-2024, 8集)"
+        coverage_en: "✅ dedicated S23 podcast (2023-2024, 8 episodes)"
       - range: "第22-25品 (十回向位)"
+        range_en: "Chapters 22-25 (the ten dedications stage)"
         items: "十无尽藏品·升兜率天宫·兜率偈赞·十回向品"
+        items_en: "The Ten Inexhaustible Treasury, Ascending to the Tuṣita Palace, the Tuṣita Verses of Praise, the Ten Dedications"
         coverage: "📖 九九華嚴第03册"
+        coverage_en: "📖 Forty-Ninth Avataṃsaka, Vol. 03"
       - range: "第26品 (十地品)"
+        range_en: "Chapter 26 (the Ten Grounds chapter)"
         items: "十地品"
+        items_en: "The Ten Grounds chapter"
         coverage: "✅ 非常占察經3册(2015-2017) + 探玄記懸談"
+        coverage_en: "✅ Extraordinary Zhancha Sūtra, 3 vols. (2015-2017) + Tanxuanji introductory discourses"
       - range: "第27-37品 (等觉·妙觉)"
+        range_en: "Chapters 27-37 (the near-awakening and wondrous-awakening stages)"
         items: "十定·十通·十忍·阿僧祇·寿量·菩萨住处·佛不思议·十身相海·随好光明·普贤行·如来出现"
+        items_en: "Ten Samādhis, Ten Penetrations, Ten Patiences, Asaṅkhya, Lifespan, Abodes of Bodhisattvas, Inconceivable Buddha Dharmas, Ten Bodies and Ocean of Marks, Fine Sudden Marks and Light, Samantabhadra Practice, Appearance of the Tathāgata"
         coverage: "📖 九九華嚴第03-04册 + 探玄記懸談"
+        coverage_en: "📖 Forty-Ninth Avataṃsaka, Vols. 03-04 + Tanxuanji introductory discourses"
       - range: "第38品 (离世间品)"
+        range_en: "Chapter 38 (the Leaving the Mundane World chapter)"
         items: "离世间品"
+        items_en: "The Leaving the Mundane World chapter"
         coverage: "📖 九九華嚴第04册 + 离世间入法界开示"
+        coverage_en: "📖 Forty-Ninth Avataṃsaka, Vol. 04 + the Leaving-the-World-Entering-the-Dharma-Realm talk"
       - range: "第39品 (入法界品)"
+        range_en: "Chapter 39 (the Entering the Dharma Realm chapter)"
         items: "入法界品·善财五十三参"
+        items_en: "The Entering the Dharma Realm chapter · Sudhana's fifty-three visits"
         coverage: "✅ 四十華嚴講記(2009, 73+讲) + 九九華嚴第05册(待出)"
+        coverage_en: "✅ Forty-fascicle lectures (2009, 73+ lessons) + Forty-Ninth Avataṃsaka, Vol. 05 (forthcoming)"
 
   by_format:
     纸本书: "九九華嚴玄談5册·探玄記懸談4册·華嚴哲學懸談·非常華嚴經系列"
     电子书: "海雲繼夢解華嚴 (Kobo系列)"
     音频: "普賢乘華嚴宗 S1-S23 (Spotify/Apple)"
     视频: "華嚴六科 (Bilibili)·九九華嚴講座 (YouTube)"
+  by_format_en:
+    print: "Ninety-Nine Avataṃsaka Grand Overview, 5 vols.; Tanxuanji Introductory Discourses, 4 vols.; Avataṃsaka Philosophy: Introductory Discourse; the Extraordinary Avataṃsaka series"
+    e-book: "Haiyun Jimeng Interpreting the Avataṃsaka (Kobo series)"
+    audio: "Samantabhadra Vehicle Huayan School, S1-S23 (Spotify/Apple)"
+    video: "The Six Subjects of Huayan (Bilibili) · Ninety-Nine Avataṃsaka lectures (YouTube)"
   by_content:
     整体: "九九華嚴玄談·四十華嚴講記·探玄記懸談"
     玄谈: "華嚴經經首·華嚴哲學懸談·非常華嚴經玄談"
     品目: "净行品·十行品·普贤行愿品·耳根圆通章·十地品(占察经)"
     修行: "S2经教行法·S3禅行法·S8禅与入定"
+  by_content_en:
+    overview: "Ninety-Nine Avataṃsaka Grand Overview; Forty-fascicle lectures; Tanxuanji introductory discourses"
+    grand_overview: "The Opening-Head of the Sūtra; Avataṃsaka Philosophy: The Introductory Discourse; Extraordinary Avataṃsaka overviews"
+    chapters: "Pure Practice; Ten Practices; Vows; the Ear-Dhātu Perfect Penetration; the Ten Grounds (Zhancha Sūtra)"
+    practice: "S2 Doctrine and Practice · S3 Chan Practice · S8 Chan and Entering Samādhi"

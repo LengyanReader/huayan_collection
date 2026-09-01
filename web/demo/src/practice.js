@@ -770,15 +770,21 @@ function switchPracticeView(view,btn){
 function renderAvatamsakaLectures() {
   var al = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_avatamsaka_lectures) ? PRACTICE_DATA.haiyun_avatamsaka_lectures : null;
   if (!al) return '';
-  var h = '<div class=section id=res-avatamsaka><h2>📜 华严经讲法全目 — 整体·玄谈·品目</h2>';
-  if (al.overview) h += '<p style="font-size:0.75em;color:var(--text2)">' + al.overview.note + '</p>';
+  var h = '<div class=section id=res-avatamsaka><h2>📜 华严经讲法全目 — 整体·玄谈·品目';
+  if (al.overview && al.overview.title_en) h += '<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">' + al.overview.title_en + '</span>';
+  h += '</h2>';
+  if (al.overview) {
+    h += '<p style="font-size:0.75em;color:var(--text2)">' + al.overview.note + '</p>';
+    if (al.overview.note_en) h += '<p class="en-line" style="font-size:0.75em;color:var(--text2)">📖 ' + al.overview.note_en.replace(/\n/g,' ') + '</p>';
+  }
 
   // ── 整体讲法 ──
   h += '<h3 style="color:var(--gold);margin-top:10px">📚 一、整体讲法</h3>';
   (al.overall||[]).forEach(function(o) {
     h += '<div class=topic-card style=font-size:0.78em>';
-    h += '<b>' + o.title + '</b> — ' + (o.publisher||'') + ' · ' + (o.year||'') + ' · ' + (o.length||o.format||'');
+    h += '<b>' + o.title + '</b>' + (o.title_en?' <span class="en-line" style=color:var(--text2)>(' + o.title_en + ')</span>':'') + ' — ' + (o.publisher||'') + ' · ' + (o.year||'') + ' · ' + (o.length||o.format||'');
     h += '<br><span style=color:var(--text2)>' + (o.content||'').replace(/\n/g,'<br>') + '</span>';
+    if (o.content_en) h += '<div class="en-line" style="color:var(--text2);font-size:0.95em;line-height:1.7;margin-top:3px">📖 ' + o.content_en.replace(/\n/g,' ') + '</div>';
     if (o.isbn_start) h += '<br>ISBN: ' + o.isbn_start;
     if (o.links) {
       h += '<br>';
@@ -793,8 +799,9 @@ function renderAvatamsakaLectures() {
   h += '<h3 style="color:var(--gold);margin-top:10px">🔮 二、玄谈系列</h3>';
   (al.xuantan||[]).forEach(function(x) {
     h += '<div class=topic-card style=font-size:0.78em>';
-    h += '<b>' + x.title + '</b> — ' + (x.platform||x.format||'') + ' · ' + (x.publisher||'');
+    h += '<b>' + x.title + '</b>' + (x.title_en?' <span class="en-line" style=color:var(--text2)>(' + x.title_en + ')</span>':'') + ' — ' + (x.platform||x.format||'') + ' · ' + (x.publisher||'');
     h += '<br><span style=color:var(--text2)>' + (x.content||'').replace(/\n/g,'<br>') + '</span>';
+    if (x.content_en) h += '<div class="en-line" style="color:var(--text2);font-size:0.95em;line-height:1.7;margin-top:3px">📖 ' + x.content_en.replace(/\n/g,' ') + '</div>';
     if (x.links) {
       h += '<br>';
       Object.keys(x.links).forEach(function(k) {
@@ -812,6 +819,9 @@ function renderAvatamsakaLectures() {
     h += '<td>';
     if (ch.links) Object.keys(ch.links).forEach(function(k) { h += '<a href="' + ch.links[k] + '" target=_blank>' + k + '</a> '; });
     h += '</td></tr>';
+    if (ch.title_en || ch.content_en) {
+      h += '<tr class="en-line"><td></td><td colspan=3 style="font-size:0.72em;color:var(--text2);line-height:1.7">📖 ' + (ch.title_en||'') + (ch.title_en&&ch.content_en?' — ':'') + (ch.content_en||'').replace(/\n/g,' ') + '</td></tr>';
+    }
   });
   h += '</table>';
 
@@ -819,7 +829,7 @@ function renderAvatamsakaLectures() {
   if (al.podcast_huayan) {
     var ph = al.podcast_huayan;
     h += '<h3 style="color:var(--gold);margin-top:10px">🎧 四、播客全季</h3>';
-    h += '<p style=font-size:0.78em><b>' + ph.name + '</b> — ' + ph.platforms + '</p>';
+    h += '<p style=font-size:0.78em><b>' + ph.name + '</b>' + (ph.name_en?' <span class="en-line" style=color:var(--text2)>(' + ph.name_en + ')</span>':'') + ' — ' + ph.platforms + '</p>';
     h += '<p style=font-size:0.75em;color:var(--text2)>华严相关季: ' + (ph.huayan_seasons||[]).join(' · ') + '</p>';
     h += '<p style=font-size:0.72em>';
     Object.keys(ph.links||{}).forEach(function(k) { h += '<a href="' + ph.links[k] + '" target=_blank>' + k + '</a> '; });
@@ -830,7 +840,8 @@ function renderAvatamsakaLectures() {
   if (al.video) {
     h += '<h3 style="color:var(--gold);margin-top:10px">📺 五、视频资源</h3>';
     al.video.forEach(function(v) {
-      h += '<div class=topic-card style=font-size:0.75em><b>' + v.title + '</b> — ' + v.platform + '<br>';
+      h += '<div class=topic-card style=font-size:0.75em><b>' + v.title + '</b>' + (v.title_en?' <span class="en-line" style=color:var(--text2)>(' + v.title_en + ')</span>':'') + ' — ' + v.platform + '<br>';
+      if (v.content_en) h += '<div class="en-line" style="color:var(--text2);line-height:1.7;margin:2px 0">📖 ' + v.content_en + '</div>';
       (v.subjects||[]).forEach(function(s) { h += '🔹 ' + s + '<br>'; });
       h += '<a href="' + v.link + '" target=_blank>直达</a></div>';
     });
@@ -1014,28 +1025,42 @@ function renderDushunSection() {
   var dz = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.dushun_wujiao_zhiguan) ? PRACTICE_DATA.dushun_wujiao_zhiguan : null;
   if (!dz || !dz.gates) return '';
   var info = dz.text_info || {};
-  var h = '<div class=section id=med-classical><h2>📜 ' + info.title + ' — ' + (info.author||'') + '</h2>';
+  var h = '<div class=section id=med-classical><h2>📜 ' + info.title + ' — ' + (info.author||'');
+  if (info.title_en) h += '<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">' + info.title_en + '</span>';
+  h += '</h2>';
   h += '<p style=font-size:.78em;color:var(--text2);margin-bottom:6px>'
     + (info.canon_ref||'') + ' · <a href="' + (info.cbeta_url||'#') + '" target=_blank>CBETA</a>'
     + ' · <a href="' + (info.wikisource_url||'#') + '" target=_blank>维基文库</a></p>';
+  if (info.significance) h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.8">📌 ' + info.significance.replace(/\n/g,'<br>') + '</p>';
+  if (info.significance_en) h += '<p class="en-line" style="font-size:0.75em;color:var(--text2);line-height:1.8;margin-top:2px">📖 ' + info.significance_en.replace(/\n/g,' ') + '</p>';
   if (dz.overview) {
     h += '<div class=stage-box style=font-size:0.82em><b>' + (dz.overview.opening_line||'').replace(/\n/g,'<br>') + '</b></div>';
+    if (dz.overview.opening_line_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.7;margin-top:4px">📖 ' + dz.overview.opening_line_en.replace(/\n/g,' ') + '</div>';
+    if (dz.overview.structure_summary) h += '<p style="font-size:0.75em;color:var(--text2);margin-top:4px">' + dz.overview.structure_summary.replace(/\n/g,'<br>') + '</p>';
+    if (dz.overview.structure_summary_en) h += '<p class="en-line" style="font-size:0.75em;color:var(--text2)">📖 ' + dz.overview.structure_summary_en.replace(/\n/g,' ') + '</p>';
   }
   // ── Five Gates ──
   (dz.gates||[]).forEach(function(g, gi) {
     h += '<div class=wu-door onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span>';
-    h += '<span class=ttl>' + (gi+1) + '. ' + g.name + ' <span style=font-size:0.75em;color:var(--text2)>(' + g.panjiao + ')</span></span>';
+    h += '<span class=ttl>' + (gi+1) + '. ' + g.name + ' <span style=font-size:0.75em;color:var(--text2)>(' + g.panjiao + ')</span>';
+    if (g.name_en) h += ' <span class="en-line" style=font-size:0.62em;color:var(--text2)>( ' + g.name_en + ' )</span>';
+    h += '</span>';
     h += '<div class=body>';
     // Original text
     h += '<div class=stage-box><b>📜 原文 (T45n1867)</b><p style=font-size:0.78em;line-height:1.9;white-space:pre-line>'
-      + (g.original_text||'') + '</p></div>';
+      + (g.original_text||'') + '</p>';
+    if (g.original_text_en) h += '<p class="en-line" style="font-size:0.78em;line-height:1.8;color:var(--text2);border-top:1px dashed var(--line);margin-top:6px;padding-top:6px;white-space:pre-line">📖 ' + g.original_text_en + '</p>';
+    if (g.practice_en) h += '<p class="en-line" style="font-size:0.72em;color:var(--text2)">(' + g.practice_en + ')</p>';
+    h += '</div>';
     // Practice
     if (g.practice) h += '<p style=font-size:0.75em;color:var(--gold)>⚡ 修行法要: ' + g.practice + '</p>';
     // Commentaries (collapsible)
     if (g.commentaries && g.commentaries.length) {
       h += '<details style=font-size:0.78em;margin:4px 0><summary><b>📝 各家注解 (' + g.commentaries.length + '家)</b></summary>';
       g.commentaries.forEach(function(c) {
-        h += '<div class=topic-card><h4>' + c.source + '</h4><p>' + (c.text||'').replace(/\n/g,'<br>') + '</p></div>';
+        h += '<div class=topic-card><h4>' + c.source + '</h4><p>' + (c.text||'').replace(/\n/g,'<br>') + '</p>';
+        if (c.text_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2);line-height:1.8;margin-top:3px">📖 ' + c.text_en.replace(/\n/g,' ') + '</div>';
+        h += '</div>';
       });
       h += '</details>';
     }
@@ -1043,7 +1068,9 @@ function renderDushunSection() {
     if (g.critical_notes && g.critical_notes.length) {
       h += '<details style=font-size:0.78em;margin:4px 0><summary><b>🔍 学术评注 (' + g.critical_notes.length + '篇)</b></summary>';
       g.critical_notes.forEach(function(n) {
-        h += '<div class=topic-card><h4>' + n.author + '</h4><p>' + (n.text||'').replace(/\n/g,'<br>') + '</p></div>';
+        h += '<div class=topic-card><h4>' + n.author + '</h4><p>' + (n.text||'').replace(/\n/g,'<br>') + '</p>';
+        if (n.text_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2);line-height:1.8;margin-top:3px">📖 ' + n.text_en.replace(/\n/g,' ') + '</div>';
+        h += '</div>';
       });
       h += '</details>';
     }
@@ -1053,9 +1080,11 @@ function renderDushunSection() {
   if (dz.lineage_development) {
     var ld = dz.lineage_development;
     h += '<details style=font-size:0.78em;margin-top:8px><summary><b>📅 ' + (ld.title||'') + '</b></summary>';
+    if (ld.title_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2);margin:2px 0">📖 ' + ld.title_en + '</div>';
     h += '<table class=v-table style=font-size:0.75em><tr><th>时代</th><th>人物</th><th>贡献</th><th>关键著作</th></tr>';
     (ld.stages||[]).forEach(function(s) {
       h += '<tr><td>' + s.period + '</td><td><b>' + s.figure + '</b></td><td>' + s.contribution + '</td><td>' + s.key_text + '</td></tr>';
+      if (s.contribution_en) h += '<tr class="en-line"><td></td><td colspan=3 style="font-size:0.7em;color:var(--text2);line-height:1.7">📖 ' + s.contribution_en + (s.key_text_en?' — '+s.key_text_en:'') + '</td></tr>';
     });
     h += '</table></details>';
   }
@@ -1295,7 +1324,9 @@ function renderMengcanSection() {
       + b.name_en + ' · 俗名' + b.secular_name + ' · 世寿' + b.birth + '-' + b.death
       + ' · ' + b.lineage + '</p>';
     h += '<div class=stage-box style=font-size:0.75em>' + (b.key_locations||[]).join('<br>') + '</div>';
+    if (b.key_locations_en) h += '<div class="en-line" style="font-size:0.7em;color:var(--text2);line-height:1.8;margin-top:2px">' + b.key_locations_en.join('<br>') + '</div>';
     if (b.relation_to_huayan) h += '<p style="font-size:0.75em;color:var(--gold);margin-top:4px">🪷 ' + b.relation_to_huayan + '</p>';
+    if (b.relation_to_huayan_en) h += '<p class="en-line" style="font-size:0.75em;color:var(--text2);margin-top:2px;line-height:1.8">📖 ' + b.relation_to_huayan_en + '</p>';
   }
   // Lectures table
   if (mc.lectures) {
@@ -1304,8 +1335,14 @@ function renderMengcanSection() {
       h += '<tr><td><b>' + l.sutra + '</b></td><td>' + l.title + '</td>';
       h += '<td>' + (l.venue||'') + (l.year?' · '+l.year:'') + '</td>';
       h += '<td>' + (l.length||'') + '</td></tr>';
+      if (l.sutra_en || l.title_en) {
+        h += '<tr class="en-line"><td colspan=4 style="font-size:0.72em;color:var(--text2);line-height:1.7">📖 ' + (l.sutra_en||'') + (l.sutra_en&&l.title_en?' — ':'') + (l.title_en||'') + '</td></tr>';
+      }
       if (l.significance || l.note) {
         h += '<tr><td></td><td colspan=3 style="font-size:0.85em;color:var(--text2)">' + (l.significance||'') + (l.note?'<br>'+l.note:'') + '</td></tr>';
+        if (l.significance_en || l.note_en) {
+          h += '<tr class="en-line"><td></td><td colspan=3 style="font-size:0.78em;color:var(--text2);line-height:1.7">📖 ' + (l.significance_en||'') + (l.note_en?'<br>'+l.note_en.replace(/\n/g,'<br>'):'') + '</td></tr>';
+        }
       }
     });
     h += '</table>';
@@ -1319,6 +1356,9 @@ function renderMengcanSection() {
     h += '</p>';
   }
   if (mc.life_motto) h += '<blockquote style="font-size:0.75em;border-left:3px solid var(--gold);padding-left:10px;margin-top:6px;line-height:1.8">' + mc.life_motto.replace(/\n/g,'<br>') + '</blockquote>';
+  if (mc.life_motto_en) h += '<blockquote class="en-line" style="font-size:0.72em;border-left:3px solid var(--line);padding-left:10px;margin-top:2px;line-height:1.8;color:var(--text2)">' + mc.life_motto_en.replace(/\n/g,'<br>') + '</blockquote>';
+  if (mc.relation_to_project) h += '<p style="font-size:0.72em;color:var(--text2);margin-top:4px;line-height:1.8">🪷 ' + mc.relation_to_project.replace(/\n/g,'<br>') + '</p>';
+  if (mc.relation_to_project_en) h += '<p class="en-line" style="font-size:0.72em;color:var(--text2);line-height:1.8;margin-top:2px">📖 ' + mc.relation_to_project_en.replace(/\n/g,' ') + '</p>';
   h += '</div>';
   return h;
 }
@@ -1336,7 +1376,10 @@ function renderPracticeSources() {
     h += '<table class=v-table style=font-size:0.72em><tr><th>阶段</th><th>技术面</th><th>工程面</th><th>玄门</th><th>来源</th></tr>';
     ['stage1','stage2','stage3'].forEach(function(sk) {
       var s = ts[sk]; if (!s) return;
-      h += '<tr><td><b>' + s.name + '</b></td><td>' + s.technical + '</td><td>' + s.engineering + '</td><td style=font-size:0.85em>' + s.xuanmen + '</td><td style=font-size:0.75em>' + s.source + '</td></tr>';
+      h += '<tr><td><b>' + s.name + (s.name_en?' <span class="en-line" style=color:var(--text2);font-size:0.9em>(' + s.name_en + ')</span>':'') + '</b></td><td>' + s.technical + '</td><td>' + s.engineering + '</td><td style=font-size:0.85em>' + s.xuanmen + '</td><td style=font-size:0.75em>' + s.source + '</td></tr>';
+      if (s.technical_en || s.engineering_en) {
+        h += '<tr class="en-line"><td></td><td colspan=4 style="font-size:0.7em;color:var(--text2);line-height:1.7">📖 technical: ' + (s.technical_en||'') + ' · engineering: ' + (s.engineering_en||'') + '</td></tr>';
+      }
     });
     h += '</table></div>';
   }
@@ -1346,9 +1389,10 @@ function renderPracticeSources() {
     h += '<div class=section id=res-sources-books><h2>📚 关键著作 (' + ps.books.length + '本)</h2>';
     ps.books.forEach(function(b) {
       h += '<div class=topic-card style=font-size:0.78em>';
-      h += '<b>' + b.title + '</b> (' + b.year + ') — ' + b.publisher;
+      h += '<b>' + b.title + '</b>' + (b.title_en?' <span class="en-line" style=color:var(--text2)>(' + b.title_en + ')</span>':'') + ' (' + b.year + ') — ' + b.publisher;
       if (b.isbn) h += ' · ISBN ' + b.isbn;
       h += '<br><span style=color:var(--text2)>' + b.content + '</span>';
+      if (b.content_en) h += '<div class="en-line" style="color:var(--text2);font-size:0.95em;line-height:1.7;margin-top:3px">📖 ' + b.content_en + '</div>';
       h += '<br>';
       if (b.link_google_play) h += '<a href="' + b.link_google_play + '" target=_blank>Google Play</a> · ';
       if (b.link_buy) h += '<a href="' + b.link_buy + '" target=_blank>购买</a> · ';
@@ -1364,8 +1408,9 @@ function renderPracticeSources() {
     h += '<div class=section id=res-sources-lectures><h2>🎙 讲记系列 (' + ps.lecture_series.length + '部)</h2>';
     ps.lecture_series.forEach(function(l) {
       h += '<div class=topic-card style=font-size:0.78em>';
-      h += '<b>' + l.title + '</b> — ' + l.episodes + ' · ' + (l.year||'') + ' · ' + l.platform;
+      h += '<b>' + l.title + '</b>' + (l.title_en?' <span class="en-line" style=color:var(--text2)>(' + l.title_en + ')</span>':'') + ' — ' + l.episodes + ' · ' + (l.year||'') + ' · ' + l.platform;
       h += '<br><span style=color:var(--text2)>' + l.content + '</span><br>';
+      if (l.content_en) h += '<div class="en-line" style="color:var(--text2);font-size:0.95em;line-height:1.7;margin-top:3px">📖 ' + l.content_en + '</div><br>';
       if (l.link_example_fjdh) h += '<a href="' + l.link_example_fjdh + '" target=_blank>📝 讲记</a> · ';
       if (l.spotify) h += '<a href="' + l.spotify + '" target=_blank>🎧 Spotify</a> · ';
       if (l.apple_podcast) h += '<a href="' + l.apple_podcast + '" target=_blank>🎙 Apple</a> · ';
@@ -1382,8 +1427,9 @@ function renderPracticeSources() {
     h += '<p style=font-size:0.75em;color:var(--text2)><b>⚠ 检索局限:</b> 编号梯次(第X梯)禅三录音搜索引擎索引不完整，需联系大华严寺或逐季检查播客。</p>';
     (rt.confirmed||[]).forEach(function(r) {
       h += '<div class=topic-card style=font-size:0.78em>';
-      h += '<b>' + r.type + '</b> — ' + r.year + ' · ' + (r.venue||'');
+      h += '<b>' + r.type + '</b>' + (r.type_en?' <span class="en-line" style=color:var(--text2)>(' + r.type_en + ')</span>':'') + ' — ' + r.year + ' · ' + (r.venue||'');
       h += '<br><span style=color:var(--text2)>' + r.content + '</span>';
+      if (r.content_en) h += '<div class="en-line" style="color:var(--text2);font-size:0.95em;line-height:1.7;margin-top:3px">📖 ' + r.content_en + '</div>';
       if (r.known_batches) {
         h += '<br>📅 已知梯次: ' + r.known_batches.join('; ');
       }
@@ -1409,6 +1455,7 @@ function renderPracticeSources() {
         h += '<div style=margin:2px 0>🔹 <b>' + s.name + '</b> (' + (s.episodes||s.duration||'') + ') ' + (s.year||'');
         if (s.url) h += ' <a href="' + s.url + '" target=_blank>直达</a>';
         if (s.note) h += '<br><span style=color:var(--text2);font-size:0.9em>' + s.note + '</span>';
+        if (s.note_en) h += '<div class="en-line" style="color:var(--text2);font-size:0.9em;line-height:1.7">📖 ' + s.note_en + '</div>';
         h += '</div>';
       });
       h += '</details>';
@@ -1419,7 +1466,9 @@ function renderPracticeSources() {
       h += '<details style=font-size:0.75em;margin:4px 0><summary><b>🎧 Spotify/Apple — ' + pd.show_name + ' (' + (pd.series_count||'') + ')</b></summary>';
       h += '<p>' + (pd.update_freq||'') + ' · <a href="' + pd.spotify_url + '" target=_blank>Spotify</a> · <a href="' + pd.apple_url + '" target=_blank>Apple</a></p>';
       (pd.key_series||[]).forEach(function(s) {
-        h += '<div>🔹 <b>' + s.name + '</b>: ' + (s.content||'') + (s.episodes?' ('+s.episodes+')':'') + '</div>';
+        h += '<div>🔹 <b>' + s.name + '</b>: ' + (s.content||'') + (s.episodes?' ('+s.episodes+')':'');
+        if (s.content_en) h += ' <span class="en-line" style=color:var(--text2)>' + s.content_en + '</span>';
+        h += '</div>';
       });
       h += '</details>';
     }
@@ -1438,7 +1487,9 @@ function renderPracticeSources() {
       h += '<details style=font-size:0.75em;margin:4px 0><summary><b>📺 YouTube — ' + yt.channel + '</b></summary>';
       h += '<p><a href="' + yt.channel_url + '" target=_blank>频道</a> · <a href="' + yt.playlists_url + '" target=_blank>播放清单</a></p>';
       (yt.key_series||[]).forEach(function(s) {
-        h += '<div>🔹 <b>' + s.name + '</b> (' + (s.type||'') + '): ' + (s.content||'') + '</div>';
+        h += '<div>🔹 <b>' + s.name + '</b> (' + (s.type||'') + '): ' + (s.content||'');
+        if (s.content_en) h += ' <span class="en-line" style=color:var(--text2)>' + s.content_en + '</span>';
+        h += '</div>';
       });
     h += '</details>';
   }

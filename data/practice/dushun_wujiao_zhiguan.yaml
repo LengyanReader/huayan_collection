@@ -5,7 +5,9 @@
 
 text_info:
   title: 华严五教止观
+  title_en: "Hua-yan Wu Jiao Zhi Guan (The Five Teachings of Calming and Contemplation)"
   title_full: 华严五教止观（一卷）
+  title_full_en: "The Five Teachings of Calming and Contemplation of the Huayan (one fascicle; Taishō T45n1867)"
   author: 隋·杜顺禅师 (帝心尊者, 557–640)
   author_title: 华严宗初祖
   canon_ref: 大正藏 T45n1867
@@ -18,6 +20,17 @@ text_info:
     （法有我无→生即无生→事理圆融→语观双绝→华严三昧）层层升进，
     从破我执到入法界缘起，建立了从初入到圆顿的修行总纲。
     此五门成为后世法藏「五教十宗」判教体系的禅观根基。
+  significance_en: |
+    The Hua-yan Wu Jiao Zhi Guan is the foundational text of Huayan meditative
+    practice. Through five progressively ascending gates of calming and
+    contemplation—from "dharma exists, self does not" and "arising is
+    non-arising," through "the interpenetration of principle and phenomena"
+    and "the cutting off of both speech and observation," to "the Huayan
+    samādhi"—Dushun moves the practitioner from the dissolution of attachment
+    to self to entry into the dependent origination of the dharmadhātu. It thus
+    charts the entire path from initial entry to perfect and sudden realization,
+    and these five gates became the meditative foundation of Fazang's later
+    five-teachings-and-ten-categories doctrinal classification.
 
 overview:
   opening_line: |
@@ -27,17 +40,36 @@ overview:
     三、事理圆融门（大乘终教）
     四、语观双绝门（大乘顿教）
     五、华严三昧门（一乘圆教）
+  opening_line_en: |
+    For the practitioner cultivating the path, setting aside the wrong and
+    entering the right, there are five gates of calming and contemplation:
+    1. The gate of dharma exists, self does not (the Hīnayāna teaching)
+    2. The gate of arising is non-arising (the elementary Mahāyāna)
+    3. The gate of the interpenetration of principle and phenomena (the final Mahāyāna)
+    4. The gate of the cutting off of both speech and observation (the sudden teaching)
+    5. The gate of the Huayan samādhi (the one-vehicle perfect teaching)
   structure_summary: |
     五门由浅入深：第一门破凡夫我执（界分别观），第二门破名相入空性，
     第三门明理事圆融（如来藏缘起），第四门遣言绝观直契真如，
     第五门入华严事事无碍法界。前四为方便，第五为究竟。
+  structure_summary_en: |
+    The five gates ascend from the shallow to the profound. The first
+    dismantles the ordinary person's attachment to self through the analysis
+    of the elements; the second discards names and forms to enter emptiness;
+    the third clarifies the interpenetration of principle and phenomena
+    through the dependent origination of the tathāgatagarbha; the fourth
+    abandons both speech and observation to touch suchness directly; and the
+    fifth enters the unimpeded interpenetration of all phenomena in the
+    dharmadhātu. The first four are expedient means; the fifth is the ultimate.
 
 gates:
   - id: gate1
     name: 法有我无门
     name_en: "Gate 1: Dharma Exists, Self Does Not"
     panjiao: 小乘教 (Hīnayāna)
+    panjiao_en: "the Hīnayāna teaching"
     practice: 界分别观（五停心观之一）
+    practice_en: "the analysis of the elements (dhātu-vibhaṅga), one of the five contemplations that settle the mind"
     original_text: |
       第一法有我无门。夫对病而裁方，病尽而方息。治执我之病，故有界分别之观。
       众生执我之病有二种：一者离身执我——谓外道所计，谓身内别有神我故。
@@ -48,16 +80,46 @@ gates:
       三、五阴分别——对治执五阴为我者
       四、十二入分别——对治执十二入为我者
       如是四法，一一推求，皆无有我。人我既无，法我何有？
+    original_text_en: |
+      The first gate: dharma exists, self does not. Just as a prescription is
+      matched to an illness and set aside once the illness is cured, the
+      analysis of the elements is taught to remedy the sickness of clinging to
+      self. The malady of self-clinging is twofold: first, clinging to a self
+      separate from the body—the view of the non-Buddhists, who hold that a
+      spirit-self dwells within the body; second, clinging to a self identified
+      with the body—the view of ordinary people, who take the physical body
+      itself to be the self. To break these two attachments, four remedies are
+      applied to four afflictions: analysis of matter and mind, to counter
+      those who cling to the body as a single self; analysis of the four great
+      elements, to counter those who take the elements to be the self; analysis
+      of the five aggregates, to counter those who take the aggregates to be the
+      self; and analysis of the twelve sense-fields, to counter those who take
+      the sense-fields to be the self. Pushing through each of these four, one
+      finds that there is in fact no self. If the personal self is already
+      absent, how could a selfhood of dharmas remain?
     commentaries:
       - source: 法藏《五教章》
         text: |
           法藏以「愚法二乘教」判此门——彼但知人空，未达法空。
           然杜顺于此门中已隐示「法空」之机：「人我既无，法我何有？」
           此即从小入大之转捩点。
+        text_en: |
+          Fazang classifies this gate under the "Hīnayāna teaching of the
+          foolish two vehicles," which knows only the emptiness of persons and
+          has not yet reached the emptiness of dharmas. Yet even here Dushun
+          already hints at the opportunity for the emptiness of dharmas: "If
+          the personal self is already absent, how could a selfhood of dharmas
+          remain?" This is the turning point from the small to the great
+          vehicle.
       - source: 智俨《搜玄记》
         text: |
           智俨承杜顺衣钵，于《搜玄记》中将此界分别观摄入
           「十玄门」之因门——破执方能显性，遮诠即是表诠之基。
+        text_en: |
+          Zhiyan, inheriting Dushun's legacy, incorporates this analysis of the
+          elements into the causal gate of the ten mysterious gates in his
+          Souxuan Ji: only by breaking attachments can one reveal the nature,
+          and apophatic negation is the very foundation of positive exposition.
       - source: 海云继梦判摄
         text: |
           海云和上称此门为「封闭型心态的打开」——界分别观
@@ -65,6 +127,15 @@ gates:
           看破「在这些组合中找不到一个固定不变的『我』」。
           这四药治四病法，核心在「解析→重组」：
           把粗的拆成细的，细到发现「没有那个我以为的我」。
+        text_en: |
+          Master Haiyun calls this gate "the opening of a closed mindset." The
+          analysis of the elements does not negate phenomena—matter, mind, the
+          four elements, the five aggregates, the twelve sense-fields—but sees
+          through them to the truth that no fixed, unchanging "I" is to be found
+          within these combinations. The heart of the method of four remedies
+          against four afflictions lies in "analysis then reconfiguration":
+          break the coarse down into the fine until one discovers that there is
+          no such "I" as one had supposed.
     critical_notes:
       - author: 牟宗三《佛性与般若》
         text: |
@@ -72,12 +143,23 @@ gates:
           的「缘起无我」有方法论上的亲和，但杜顺不破「法有」，
           只破「我执」，为后续「生即无生」的空性展开保留了
           必要的阶梯。此即华严「渐次引归圆顿」之教育智慧。
+        text_en: |
+          Mou Zongsan observes that Dushun's apophatic strategy in "dharma
+          exists, self does not" is methodologically akin to Nāgārjuna's
+          dependent-origination-based non-self in the Madhyamaka, yet Dushun
+          does not negate "dharma exists"; he negates only clinging to self.
+          This preserves the necessary stepping stone for the later unfolding
+          of emptiness in "arising is non-arising." This is the pedagogical
+          wisdom of the Huayan—gradually leading all back to the perfect and
+          sudden.
 
   - id: gate2
     name: 生即无生门
     name_en: "Gate 2: Arising is Non-Arising"
     panjiao: 大乘始教 (Elementary Mahāyāna)
+    panjiao_en: "the elementary Mahāyāna teaching"
     practice: 无生观 + 无相观（二观双运）
+    practice_en: "the contemplation of non-arising and the contemplation of signlessness, practiced in twofold union"
     original_text: |
       第二生即无生门。生即无生门者，就此门中，先简名相，后入无生门。
 
@@ -100,6 +182,36 @@ gates:
       一切法皆空，无有毫末相。
 
       前门则得人无我智。……此始教菩萨则得人法二空，亦名法无我智也。
+    original_text_en: |
+      The second gate: arising is non-arising. Within this gate one first
+      sets aside names and forms (xiǎng míngxiàng), and only then enters the
+      gate of non-arising. To set aside names and forms, take any object and
+      ask after it. Take a pillow. Asked what it is called in accord with the
+      world, one answers, "a pillow." Asked again what this is, one answers,
+      "a name." Asked further what this is, one answers, "the affair of names
+      and forms." Asked again what that is, one answers, "seeds formed through
+      the perfuming of seeing and hearing give rise to the affair of names and
+      forms." The wise person sees only matter (rūpa) and does not see names
+      and forms; with this, the setting aside of names is complete. Then, to
+      enter the gate of non-arising: when the wise person contemplates matter,
+      the eye-consciousness perceives it truly without discrimination; one does
+      not fail to perceive and so lack discrimination—this is the 
+      dharma-eye-consciousness personally realizing matter just as it is. When
+      the mental consciousness fails to understand and falsely imputes a self,
+      giving rise to spurious discriminations, one sinks into inverted views.
+      Therefore, having realized the dharma, there is no one there; why?
+      because dharmas are without discrimination. Two contemplations then
+      unfold. First, the contemplation of non-arising: dharmas have no
+      self-nature; being conditioned, they arise. Arising is not truly existent,
+      and thus it is emptiness; emptiness has not a trace of anything, hence it
+      is called non-arising. The sūtra says, "Because of causes and conditions
+      it exists; lacking inherent nature, it is empty." Second, the
+      contemplation of signlessness: signs are themselves without signs—why?
+      because dharmas are free of marks. All dharmas are empty, without the
+      least mark. The preceding gate gained the wisdom of the non-self of
+      persons; here the bodhisattva of the elementary teaching gains the
+      emptiness of both persons and dharmas, also called the wisdom of the
+      non-self of dharmas.
     commentaries:
       - source: 法藏《金师子章》
         text: |
@@ -107,11 +219,26 @@ gates:
           揽金成相，即有而空；金不守自性，即空而有。
           「以金收师子尽」，名相寂灭，唯金独存——
           此即杜顺「智人唯见色法，不见名相」之深化。
+        text_en: |
+          Fazang uses the golden lion as a simile to explain "arising is
+          non-arising": the lion (phenomenon) is formed from gold (noumenon);
+          gathering gold into a form, it is present yet empty; gold does not
+          abide in any self-nature, so it is empty yet present. "Gathering the
+          lion wholly back into the gold," names and forms come to rest and
+          only the gold remains—this deepens Dushun's dictum that "the wise
+          person sees only matter and not names and forms."
       - source: 澄观《华严经疏》
         text: |
           清凉澄观（华严四祖）将杜顺「简名相」与「入无生」二段，
           融入其三圣圆融观——文殊智（简名相之分析智）与
           普贤行（入无生之实践）一体不二。
+        text_en: |
+          Qingliang Chengguan (the fourth Huayan patriarch) integrates Dushun's
+          two phases—setting aside names and forms, and entering non-arising—
+          into his contemplation of the perfect interfusion of the three holy
+          ones: the wisdom of Mañjuśrī (the analytical intelligence that sets
+          aside names and forms) and the practice of Samantabhadra (the
+          realization of non-arising) are one, not two.
       - source: 海云继梦判摄
         text: |
           海云和上特别重视「枕喻」的现代意义——
@@ -119,6 +246,14 @@ gates:
           （颜色、形状、质感），然后意识加上『枕头』的标签？」
           此即「置心一处」的认知科学基础——
           停心就是停止意识的自动贴标签程序，回到眼识的纯知觉。
+        text_en: |
+          Master Haiyun stresses the modern significance of the pillow simile:
+          "When you see a pillow, do you really see 'a pillow,' or do you only
+          see matter—color, shape, texture—into which consciousness then
+          pastes the label 'pillow'?" This is the cognitive-science basis of
+          setting the mind in one place: to still the mind is to halt the
+          automatic labeling program of consciousness and return to the pure
+          perception of the eye-consciousness.
     critical_notes:
       - author: 方立天《法藏与金师子章》
         text: |
@@ -127,18 +262,35 @@ gates:
           （悬置自然态度，回到事物本身）有方法论上的可比之处。
           但杜顺的目的不是描述意识结构，而是证入「无生」的解脱境界，
           二者的终极取向有根本差异。
+        text_en: |
+          Fang Litan points out that Dushun's argument for "arising is
+          non-arising"—an inquiry that proceeds from an ordinary object such as
+          a pillow—is methodologically comparable to the Western
+          phenomenological "reduction" (bracketing the natural attitude and
+          returning to things themselves). Yet Dushun's aim is not to describe
+          the structure of consciousness but to realize the liberative state of
+          non-arising; the ultimate orientation of the two differs radically.
       - author: Peter N. Gregory (格里高利)
         text: |
           美国华严学者 Gregory 在《Tsung-mi and the Sinification of Buddhism》
           中指出：杜顺「简名相」的认知分析为宗密的「禅教融合」
           提供了认识论基础——名相是「教」的方便施设，
           「入无生」是「禅」的亲证境界。
+        text_en: |
+          The American Huayan scholar Peter N. Gregory argues in Tsung-mi and
+          the Sinification of Buddhism that Dushun's cognitive analysis in
+          "setting aside names and forms" supplies the epistemological basis
+          for Zongmi's "integration of Chan and doctrine": names and forms are
+          the expedient constructions of doctrine, while "entering
+          non-arising" is the personally realized state of Chan.
 
   - id: gate3
     name: 事理圆融门
     name_en: "Gate 3: Phenomena and Principle Interpenetrate"
     panjiao: 大乘终教 (Final Mahāyāna)
+    panjiao_en: "the final Mahāyāna teaching"
     practice: 真如门（理）与心生灭门（事）的圆融观照
+    practice_en: "the interfused contemplation of the gate of suchness (principle) and the gate of arising-and-ceasing mind (phenomena)"
     original_text: |
       第三事理圆融门。夫事理两门圆融一际者，复有二门。
       一者心真如门，二者心生灭门。
@@ -162,24 +314,76 @@ gates:
       以空即有故，不住涅槃。
       空有一块而两存故，亦住生死亦住涅槃。
       以空有相夺两不存故，非住生死非住涅槃。
+    original_text_en: |
+      The third gate: the interpenetration of principle and phenomena. Within
+      the perfect interfusion of the two fields of principle and phenomena
+      there are, in turn, two gates: the gate of the suchness of mind and the
+      gate of the arising-and-ceasing mind. The gate of the suchness of mind
+      is principle; the arising-and-ceasing mind is phenomena. Thus the two
+      views of emptiness and existence interact freely in perfect
+      interfusion—concealed or revealed, yet never obstructing each other.
+      "Unobstructed" refers to the interpenetration of principle and
+      phenomena: principle is suchness, phenomena is arising and ceasing.
+      Emptiness and existence interfuse: emptiness is emptiness that does not
+      obstruct existence—being empty, it is ever present; existence is
+      existence that does not obstruct emptiness—being present, it is ever
+      empty. The four phrases of calming and contemplation: because emptiness
+      is not existence, it is called calming (śamatha); because emptiness is
+      existence and thus not empty, it is called insight (vipaśyanā); because
+      emptiness and existence each fully take up the other, non-dual yet two,
+      it is both calming and insight; because emptiness and existence
+      mutually wrest away (each other), two yet non-dual, it is neither
+      calming nor insight. The fourfold wonder regarding nirvāṇa and
+      saṃsāra: because existence is emptiness, one does not abide in
+      saṃsāra; because emptiness is existence, one does not abide in
+      nirvāṇa; because emptiness and existence subsist together in a single
+      block, one both abides and does not abide; because emptiness and
+      existence mutually annul and neither remains, one neither abides nor
+      does not abide.
     commentaries:
       - source: 智俨《孔目章》
         text: |
           智俨将杜顺「事理圆融」摄为「六相圆融」之总相与别相——
           理（总）= 真如平等一味，事（别）= 缘起森罗万象。
           总别相即，同异相入，成坏同时——六相齐观，即事理圆融之展开。
+        text_en: |
+          Zhiyan subsumes Dushun's "interpenetration of principle and
+          phenomena" under the general and particular characteristics of the
+          interfusion of the six characteristics: principle (the general) is
+          the single taste of the equanimity of suchness, while phenomena (the
+          particular) is the multifarious arising of conditioned things.
+          General and particular interfuse; same and different interpenetrate;
+          formation and dissolution are simultaneous—contemplating all six
+          characteristics at once is the unfolding of the interpenetration of
+          principle and phenomena.
       - source: 法藏《大乘起信论义记》
         text: |
           法藏以《起信论》「一心开二门」整合此门：
           心真如门=理=不变=性起之体
           心生灭门=事=随缘=性起之用
           「不变随缘，随缘不变」即杜顺「理事圆融」的浓缩表达。
+        text_en: |
+          Fazang integrates this gate through the Awakening of Faith's "one
+          mind opens into two gates": the gate of the suchness of mind equals
+          principle, the unchanging, the essence of nature-arising; the gate of
+          the arising-and-ceasing mind equals phenomena, the condition-following,
+          the function of nature-arising. "Unchanging yet condition-following,
+          condition-following yet unchanging" is a condensed expression of
+          Dushun's interpenetration of principle and phenomena.
       - source: 宗密《原人论》
         text: |
           宗密以「本觉真心」会通理事——
           理即本觉之体（寂），事即不觉之相（动）。
           从不觉返本觉的过程，即是杜顺五门从「法有我无」
           到「华严三昧」的完整修行路径。
+        text_en: |
+          Zongmi reconciles principle and phenomena through the "genuine mind
+          of original awakening": principle is the essence of original
+          awakening (tranquil), while phenomena is the mark of non-awakening
+          (moving). The process of returning from non-awakening to original
+          awakening is none other than the complete practice-path of Dushun's
+          five gates, from "dharma exists, self does not" to "the Huayan
+          samādhi."
     critical_notes:
       - author: 吕澂《中国佛学源流略讲》
         text: |
@@ -188,18 +392,39 @@ gates:
           「道」的形上学意涵，但杜顺以「空有圆融」保持了中观
           不落二边的般若精神，使理事说既不失空性正见，
           又能正面展开大乘菩萨行的实践基础。
+        text_en: |
+          Lü Cheng observes that the Awakening of Faith's "one mind and its
+          two gates" gives Huayan's contemplation of the interpenetration of
+          principle and phenomena a meeting point between Indian Buddhist
+          thought and Chinese modes of thinking: the concept of principle
+          assimilates the metaphysical connotation of the Daoist "Way." Yet by
+          means of the interfusion of emptiness and existence, Dushun preserves
+          the Madhyamaka spirit of prajñā that falls to neither extreme, so
+          that the doctrine of principle and phenomena neither abandons the
+          correct view of emptiness nor fails to lay a positive foundation for
+          the practice of the bodhisattva path.
       - author: 镰田茂雄 (Shigeo Kamata)『中国華厳思想史の研究』
         text: |
           日本华严学泰斗镰田茂雄认为：「事理圆融门」是华严思想史上
           最具原创性的贡献之一——它将《起信论》的形上学架构与
           《华严经》的实践体系进行了创造性整合，开辟了从「空宗」
           （中观）到「性宗」（如来藏）的义理通途。
+        text_en: |
+          Shigeo Kamata, a leading figure in Japanese Huayan studies, holds
+          that the "gate of the interpenetration of principle and phenomena" is
+          one of the most original contributions in the history of Huayan
+          thought: it creatively integrates the metaphysical framework of the
+          Awakening of Faith with the practical system of the Avataṃsaka Sūtra,
+          opening a doctrinal thoroughfare from the emptiness school
+          (Madhyamaka) to the nature school (tathāgatagarbha).
 
   - id: gate4
     name: 语观双绝门
     name_en: "Gate 4: Language and Observation Both Cease"
     panjiao: 大乘顿教 (Sudden Teaching)
+    panjiao_en: "the sudden teaching"
     practice: 离言绝虑·言语道断·心行处灭
+    practice_en: "abandoning speech and severing thought—the path of words cut off and the course of mind extinguished"
     original_text: |
       第四语观双绝门。夫语观双绝者，言语道断，心行处灭。
       经云「言语道断，心行处灭」。
@@ -211,6 +436,22 @@ gates:
       譬如有人，以指指月。智者因指见月，愚者执指为月。
       语观即指也，真如即月也。执语观者，如执指为月者也。
       故须双绝语观，方可契入真如。
+    original_text_en: |
+      The fourth gate: the cutting off of both speech and observation.
+      Speech and observation both cease: the path of words is cut off and the
+      course of the mind is extinguished. As the sūtra says, "the path of
+      words is cut off and the course of the mind is extinguished." Speech is
+      verbal expression; observation is contemplation. "Both cease" means both
+      are utterly quenched. Why must they be severed? Because the wondrous
+      principle of suchness is beyond the reach of words and beyond the
+      object of thought. Use words to set aside words, use observation to set
+      aside observation; only when both speech and observation are
+      relinquished together does one tally with suchness. It is like one who
+      points a finger at the moon: the wise see the moon by means of the
+      finger, while the foolish grasp the finger as the moon. Speech and
+      observation are the finger; suchness is the moon. To cling to speech and
+      observation is like grasping the finger as the moon. Hence both must be
+      cut off before one can enter suchness.
     commentaries:
       - source: 宗密《禅源诸诠集都序》
         text: |
@@ -219,6 +460,16 @@ gates:
           非今始无。……无佛无众生，法界亦是假名。」
           语观双绝即此宗的修行纲要——一切名相俱遣，
           连「遣除」本身亦遣。
+        text_en: |
+          Zongmi aligns this gate with the second of the three schools of
+          Chan, the "school of total obliteration with nothing on which to
+          rely": "All dharmas—common and holy alike—are like dreams and
+          phantoms, utterly without reality, originally empty and still, not
+          merely nonexistent from now on. There is no Buddha and no sentient
+          being; even the dharmadhātu is but a provisional name." The cutting
+          off of both speech and observation is the essential practice of this
+          school—all names and forms are relinquished, even the act of
+          relinquishment itself.
       - source: 海云继梦判摄
         text: |
           海云和上以「置心一处」为语观双绝的操作化——
@@ -226,6 +477,16 @@ gates:
           言语自然断绝，观照自然放下。
           「一念不生，即名为佛」——顿教的全部秘密在此一句。
           不是不起念，是「不与念相应」。
+        text_en: |
+          Master Haiyun operationalizes the cutting off of both speech and
+          observation through setting the mind in one place: "Set the mind in
+          one place and nothing is left undone." Holding steady at the gate of
+          the breath and paying no heed to any of the six sense-objects,
+          speech naturally comes to rest and contemplation naturally falls
+          away. "When not a single thought arises, that itself is called
+          Buddha"—the entire secret of the sudden teaching lies in this one
+          line. It is not that no thought arises, but that one does not
+          resonate with thoughts (bù yǔ niàn xiāngyìng).
     critical_notes:
       - author: 傅伟勋《从创造的诠释学到大乘佛学》
         text: |
@@ -234,12 +495,23 @@ gates:
           从概念思维到亲证境界的跳跃无法用任何渐进逻辑完成，
           只能「顿」。这一认识与禅宗「顿悟」和天台「一念三千」
           构成中国佛教三种不同的「顿」模式。
+        text_en: |
+          Fu Weixun analyzes the transition from Dushun's fourth to fifth gate
+          through his "creative hermeneutics": the cutting off of both speech
+          and observation (the fourth gate) amounts to an "ontological
+          rupture"—the leap from conceptual thought to directly realized
+          experience cannot be accomplished by any gradualist logic but only
+          "suddenly." Along with the Chan "sudden awakening" and the Tiantai
+          "three thousand realms in a single thought," this constitutes one of
+          three distinct Chinese Buddhist models of the "sudden."
 
   - id: gate5
     name: 华严三昧门
     name_en: "Gate 5: Huayan Samādhi"
     panjiao: 一乘圆教 (One Vehicle Perfect Teaching)
+    panjiao_en: "the one-vehicle perfect teaching"
     practice: 海印三昧·因陀罗网·事事无碍法界
+    practice_en: "the ocean-seal samādhi, the net of Indra, and the unimpeded interpenetration of all phenomena in the dharmadhātu"
     original_text: |
       第五华严三昧门。……即一切法界，无尽缘起，重重无尽。
       犹如因陀罗网，珠珠相映，影现重重。
@@ -250,6 +522,20 @@ gates:
       故见色为法界缘起时，不必更观真如。
       何以故？即此色等诸法，举体是法界缘起，
       全体是真如故。是故见色即见心，见心即见佛。
+    original_text_en: |
+      The fifth gate: the Huayan samādhi. Here the entire dharmadhātu is the
+      inexhaustible dependent origination, layer upon layer without end—like
+      the net of Indra, in which every jewel reflects every other and images
+      appear again and again. In a single mote of dust one sees the
+      dharmadhātu; in a single hair appear countless Buddha-lands. This is the
+      state of the Huayan samādhi. If one directly sees that such dharmas as
+      form arise from conditions, that itself is the dependent origination of
+      the dharmadhātu. Hence, when one sees form as the dependent origination
+      of the dharmadhātu, one need not contemplate suchness separately—why?
+      because these very dharmas, such as form, are in their entirety the
+      dependent origination of the dharmadhātu and in their entirety are
+      suchness. Therefore, to see form is to see the mind, and to see the
+      mind is to see the Buddha.
     commentaries:
       - source: 法藏《华严经探玄记》
         text: |
@@ -258,18 +544,44 @@ gates:
           一摄一切（一多相容不同门），一切摄一（诸法相即自在门）……
           此即从杜顺「一尘中见法界」的直觉洞见，到法藏
           严密哲学体系的完成。
+        text_en: |
+          Fazang unfolds this gate of Dushun into the ten mysterious gates and
+          the interfusion of the six characteristics: one is all (the gate of
+          simultaneous mutual fulfillment), all is one (the gate of the realm
+          of the net of Indra), one gathers all (the gate of the mutual
+          compatibility of one and many), all gathers one (the gate of the
+          free mutual identity of all dharmas), and so on. This marks the
+          movement from Dushun's intuitive insight that "in a single mote of
+          dust one sees the dharmadhātu" to the completion of Fazang's
+          rigorous philosophical system.
       - source: 李通玄《新华严经论》
         text: |
           李通玄以《易经》融会华严，将「华严三昧」与「太极」
           对应：一尘即太极，法界即无极而太极。
           李通玄的「东方智慧」解经路线为杜顺的禅观提供了
           中国本土哲学的诠释维度。
+        text_en: |
+          Li Tongxuan integrates the Huayan with the Book of Changes,
+          correlating the Huayan samādhi with the "Supreme Ultimate" (taiji):
+          a single mote of dust is the taiji, and the dharmadhātu is "the
+          limitless and yet the taiji." Li's hermeneutic route of "Eastern
+          wisdom" supplies Dushun's meditative outlook with an interpretive
+          dimension drawn from native Chinese philosophy.
       - source: 海云继梦「普贤乘」
         text: |
           海云和上以「普贤乘」为华严三昧的实践展开——
           「一尘中见法界」不是玄想，而是禅定中的现量境界。
           从技术面（数随止）到工程面（观照凝），
           最终入海印三昧——万象影现，如大海印。
+        text_en: |
+          Master Haiyun takes the "Samantabhadra Vehicle" as the practical
+          unfolding of the Huayan samādhi: "seeing the dharmadhātu in a single
+          mote of dust" is not a speculative notion but an immediate state of
+          meditative concentration. From the technical dimension (counting
+          and following the breath, resting) to the engineering dimension
+          (contemplation gathering it to stillness), one finally enters the
+          ocean-seal samādhi—all things appear reflected there as in the great
+          seal of the ocean.
     critical_notes:
       - author: 木村清孝 (Kiyotaka Kimura)『東アジア仏教思想史の構築』
         text: |
@@ -279,6 +591,16 @@ gates:
           在法界缘起中，每一个现象都完整地呈现着整个法界的实相。
           「色→心→佛」不是因果关系，而是华严三昧中直观到的
           一体圆融。
+        text_en: |
+          Kiyotaka Kimura holds that Dushun's triadic structure—"to see form
+          is to see the mind, and to see the mind is to see the Buddha"—is a
+          prototype of the Huayan doctrine of nature-arising (xingqi): it is
+          not that "the mind produces all dharmas," but that "each dharma just
+          is the nature." Within the dependent origination of the dharmadhātu,
+          every single phenomenon fully presents the reality of the entire
+          dharmadhātu. "Form → mind → Buddha" is not a causal relation but the
+          oneness in perfect interfusion directly intuited in the Huayan
+          samādhi.
       - author: "Francis Cook《Hua-yen Buddhism: The Jewel Net of Indra》"
         text: |
           美国学者 Francis Cook 以「因陀罗网」为核心意象，
@@ -287,34 +609,55 @@ gates:
           这不是比喻，而是华严对法界实相的直接描述。
           Cook 指出：这种「全息性」(holographic)世界观
           与当代物理学和文化生态学有深层对话空间。
+        text_en: |
+          The American scholar Francis Cook, taking the net of Indra as his
+          central image, introduces the philosophical import of the Huayan
+          samādhi to the West: every jewel reflects all other jewels. This is
+          not a metaphor but the Huayan's direct description of the reality of
+          the dharmadhātu. Cook observes that this "holographic" worldview
+          has deep space for dialogue with contemporary physics and cultural
+          ecology.
 
 lineage_development:
   title: 从杜顺五门到法藏五教——华严禅观的演进
+  title_en: "From Dushun's Five Gates to Fazang's Five Teachings: The Evolution of Huayan Meditative Practice"
   stages:
     - period: 隋 (c. 600 CE)
       figure: 杜顺 (557–640)
       contribution: 五教止观——以禅观实践为本的五门次第
+      contribution_en: "the Five Teachings of Calming and Contemplation: a five-gate graduated sequence grounded in meditative practice"
       key_text: 《华严五教止观》(T45n1867)
+      key_text_en: "Hua-yan Wu Jiao Zhi Guan (T45n1867)"
     - period: 唐初 (c. 650 CE)
       figure: 智俨 (602–668)
       contribution: 将五门禅观融入「六相」「十玄」义学框架
+      contribution_en: "folds the five gates of meditative practice into the doctrinal framework of the six characteristics and the ten mysterious gates"
       key_text: 《搜玄记》《华严经孔目章》
+      key_text_en: "Souxuan Ji; Hua-yan Jing Kong-mu Zhang"
     - period: 盛唐 (c. 690 CE)
       figure: 法藏 (643–712)
       contribution: 「五教十宗」判教体系——从实践到教相的完成
+      contribution_en: "the five-teachings-and-ten-categories classification—the completion of the movement from practice to doctrinal categories"
       key_text: 《华严五教章》《探玄记》
+      key_text_en: "Hua-yan Wu Jiao Zhang; Tanxuan Ji"
     - period: 中唐 (c. 780 CE)
       figure: 澄观 (738–839)
       contribution: 综合杜顺-智俨-法藏，著《华严经疏》
+      contribution_en: "synthesizes Dushun, Zhiyan, and Fazang and composes the Commentary on the Avataṃsaka Sūtra"
       key_text: 《大方广佛华严经疏》
+      key_text_en: "Da-fang-guang Fo Hua-yan Jing Shu"
     - period: 晚唐 (c. 830 CE)
       figure: 宗密 (780–841)
       contribution: 禅教融合——五教止观与禅宗顿渐之会通
+      contribution_en: "the integration of Chan and doctrine—the reconciliation of the five gates of calming and contemplation with the sudden and gradual of Chan"
       key_text: 《禅源诸诠集都序》
+      key_text_en: "Chan-yuan Zhu-quan-ji Du-xu"
     - period: 当代 (2000–)
       figure: 海云继梦 (1950–)
       contribution: 普贤乘——五教止观的当代修行实践体系
+      contribution_en: "the Samantabhadra Vehicle—a contemporary system of practice built upon the five gates of calming and contemplation"
       key_text: 大华严寺修行体系 / YouTube讲经系列
+      key_text_en: "the Great Huayan Monastery practice system; YouTube lecture series"
 
 references:
   - 杜顺《华严五教止观》— CBETA T45n1867

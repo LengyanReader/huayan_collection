@@ -20,103 +20,179 @@ biography:
     - "2012: 应五台山政府之请复建万佛洞真容寺·2013年起定居真容寺静修"
     - "2004-2007: 九旬高龄于五台山普寿寺开讲《八十华严》五百余座圆满"
     - "2017年11月27日: 于五台山真容寺安详示寂"
+  key_locations_en:
+    - "1931: Left home at Doushuai Monastery on Shangfang Mountain, Beijing; dharma name Juexing"
+    - "1937: At Zhanshan Monastery, Qingdao, studied Tiantai contemplation under the elder Venerable Tanxu"
+    - "1940: Went to Tibet to study esoteric dharma; ten years at Sera Monastery in Lhasa, relying on the Venerable Chijiang Rinpoche"
+    - "1950-1982: Imprisoned for thirty-three years (including labor reform); encouraged himself with 'Even if a wheel of scalding iron spins upon my head, I will never for this suffering retreat from the resolve for awakening'"
+    - "1982: Exonerated and released; taught at the Chinese Buddhist Institute in Beijing"
+    - "1988: Invited to spread the dharma in New York; over a decade traveling and teaching in America"
+    - "2012: At the request of the Wutai government, restored the Zhenrong Monastery at the Cave of Ten Thousand Buddhas; settled there to practice in quiet from 2013"
+    - "2004-2007: In his nineties, lectured on the Eighty-fascicle Avataṃsaka at Pusheshou Monastery, Wutai, completing over five hundred sessions"
+    - "November 27, 2017: Passed away peacefully at Zhenrong Monastery, Wutai"
   relation_to_huayan: |
     海云继梦法师于1991年依梦参老和尚祝发出家，
     成为梦老法嗣之一。梦参老和尚以百岁高龄讲完《八十华严》五百余座，
     是近代佛教史上最完整的华严经讲解之一。
+  relation_to_huayan_en: |
+    Ven. Haiyun Jihong left home under Ven. Mengcan in 1991, becoming one
+    of the old master's dharma heirs. Having completed, in his hundredth
+    year, over five hundred lectures on the Eighty-fascicle Avataṃsaka,
+    Venerable Mengcan's exposition stands among the most complete
+    commentaries on the Avataṃsaka Sūtra in modern Buddhist history.
+  life_motto_en: |
+    "Even if a wheel of scalding iron spins upon the crown of my head, I
+    will never on account of this suffering retreat from the resolve for
+    awakening." — Ven. Mengcan's self-encouragement, his resolve never
+    yielding through thirty-three years of imprisonment.
 
 lectures:
   # ═══ 华严部 ═══
   - sutra: 华严经 (八十卷)
+    sutra_en: Avataṃsaka Sūtra (eighty fascicles)
     title_full: 大方广佛华严经八十卷
+    title_full_en: The Flower Ornament Scripture in eighty fascicles
     venue: 五台山普寿寺
     year: "2004-2007"
     length: 五百余座(讲)
     significance: 九旬高龄开讲·近代佛教史上最完整的八十华严讲解之一
+    significance_en: opened at age ninety; one of the most complete expositions of the eighty-fascicle Avataṃsaka in modern Buddhist history
     publication: "《八十华严讲述》方广文化(分册出版) 第1-12册+"
+    publication_en: "Exposition of the Eighty-fascicle Avataṃsaka, Fangguang Culture, published in volumes, nos. 1-12 and more"
     note: |
       历时三年余（2004年农历二月初二开讲·一说2003—2007历时五年余）。
       涵盖从世主妙严品到入法界品全部39品。
       网络流传版本多不完整(仅到贤首品)，
       完整版可联系五台山普寿寺华严部。
+    note_en: |
+      It ran some three years and more (opened on the second day of the
+      second lunar month, 2004; some give 2003-2007, some five years and
+      more), covering all thirty-nine chapters from "The Wondrous Adornments
+      of the Rulers" to "Entering the Dharma Realm." Versions circulating
+      online are mostly incomplete (often only reaching the "Virtue of the
+      Wise Leader" chapter); the complete text may be obtained through the
+      Avataṃsaka department of Pusheshou Monastery, Wutai.
     link_wechat_draft: https://mp.weixin.qq.com/s?__biz=MzU1OTk1MzgzNw==&mid=2247510054&idx=7&sn=14eadd95e5af42a1afd32b2f7b4baa4b
-
   - sutra: 华严经·普贤行愿品
+    sutra_en: Avataṃsaka Sūtra · the Samantabhadra's Vows chapter
     title: 普贤行愿品讲记
+    title_en: Commentary on the Samantabhadra's Vows chapter
     venue: 五台山普寿寺 / 美国纽约
     content: 十大愿王·导归极乐·华严修行总持
+    content_en: the ten great vows of the king of vows, guiding all to rebirth in the Pure Land, the essential practice of the Avataṃsaka school
 
   - sutra: 华严经·梵行品
+    sutra_en: Avataṃsaka Sūtra · the Pure Practices chapter
     title: 華嚴經梵行品新講
+    title_en: A New Exposition of the Pure Practices Chapter of the Avataṃsaka Sūtra
     publisher: 方广文化
     year: 2018
     isbn: "9789869301836"
     link: https://www.cosmosbooks.com.hk/index.php?route=product/product&path=10300&product_id=986707803
 
   - sutra: 华严大意
+    sutra_en: The General Meaning of the Avataṃsaka
     title: 浅说华严大意
+    title_en: A Simple Account of the General Meaning of the Avataṃsaka
     content: 华严经导论·八十华严整体框架·七处九会·五周因果
+    content_en: an introduction to the Avataṃsaka Sūtra, the overall framework of the eighty-fascicle text, the seven places and nine assemblies, and the five causal cycles
 
   # ═══ 地藏部 ═══
   - sutra: 地藏菩萨本愿经
+    sutra_en: The Kṣitigarbha (Earth Treasury) Sūtra
     title: 地藏菩萨本愿经讲记
+    title_en: Commentary on the Kṣitigarbha Sūtra
     length: 多讲
     significance: 梦老毕生弘扬的核心经典之一·地藏三经之首
+    significance_en: one of the central scriptures the elder taught throughout his life; first of the three Kṣitigarbha sūtras
 
   - sutra: 大乘大集地藏十轮经
+    sutra_en: The Great Compilation · Kṣitigarbha's Ten Wheels Sūtra
     title: 大乘大集地藏十轮经讲记
+    title_en: Commentary on the Ten Wheels of Kṣitigarbha Sūtra
     venue: "1995年加拿大首讲 / 2006年五台山普寿寺再讲"
     length: 历时一年圆满
     note: |
       梦老所讲「地藏三经」中最详尽的一部。
       另有《地藏止观导引：大乘大集地藏十轮经序品十轮品新讲》。
+    note_en: |
+      The most detailed of the three Kṣitigarbha sūtras the elder taught.
+      There is also a companion work, "A Guide to Kṣitigarbha
+      Contemplation: A New Exposition of the Introductory and Ten Wheels
+      Chapters of the Ten Wheels Sūtra."
     dvd: "方广文化DVD, 37片"
+    dvd_en: "Fangguang Culture DVD, 37 discs"
 
   - sutra: 占察善恶业报经
+    sutra_en: The Zhancha Sūtra
     title: 占察善恶业报经讲记
+    title_en: Commentary on the Zhancha Sūtra
     content: 地藏三经之第三·占察轮法·四种观法前二种经典来源
+    content_en: third of the three Kṣitigarbha sūtras; the divination-wheel practice, source text of the first two of the four modes of contemplation
 
   # ═══ 般若·净土部 ═══
   - sutra: 金刚般若波罗蜜经
+    sutra_en: The Diamond Sūtra
     title: 浅说金刚经大意 / 金刚经十四堂课
+    title_en: A Simple Account of the Meaning of the Diamond Sūtra / Fourteen Lessons on the Diamond Sūtra
     publication: "《应无所住: 金刚经十四堂课》"
+    publication_en: "'Dwelling Nowhere: Fourteen Lessons on the Diamond Sūtra'"
 
   - sutra: 般若波罗蜜多心经
+    sutra_en: The Heart Sūtra
     title: 般若波罗蜜多心经讲记
+    title_en: Commentary on the Heart Sūtra
 
   - sutra: 佛说阿弥陀经
+    sutra_en: The Amitābha Sūtra
     title: 佛说阿弥陀经讲记
+    title_en: Commentary on the Amitābha Sūtra
     content: 净土法门要义
+    content_en: the essentials of the Pure Land practice
 
   # ═══ 法华·楞严部 ═══
   - sutra: 妙法莲华经
+    sutra_en: The Lotus Sūtra
     title: 妙法莲华经讲述
+    title_en: Exposition of the Lotus Sūtra
     year: 2007
     publication: "方广文化, 上下两册"
+    publication_en: "Fangguang Culture, two volumes"
 
   - sutra: 大佛顶首楞严经
+    sutra_en: The Śūraṅgama Sūtra
     title: 楞严经讲记
+    title_en: Commentary on the Śūraṅgama Sūtra
     venue: 五台山普寿寺
 
   # ═══ 论典部 ═══
   - sutra: 大乘起信论
+    sutra_en: The Awakening of Faith
     title: 大乘起信论讲记
+    title_en: Commentary on the Awakening of Faith
     significance: 华严宗核心论典·马鸣菩萨造·梦老以「一心二门」为框架讲解
+    significance_en: a core treatise of the Huayan school, ascribed to Aśvaghoṣa; the elder expounded it within the framework of "one mind and two gates"
 
   # ═══ 系列开示 ═══
   - sutra: 修行次第
+    sutra_en: Stages of Practice
     title: 修行次第系列开示
+    title_en: A Series of Talks on the Stages of Practice
     content: 从三皈五戒到菩萨戒的完整修行次第
+    content_en: the complete sequence of practice from the three refuges and five precepts to the bodhisattva precepts
     link: https://www.foyin.tv/down/3108.htm
 
 other_resources:
   - name: 梦参老和尚视频讲座全集
+    name_en: Complete video lectures of Ven. Mengcan
     link: https://www.fysp.org/6-7.htm
     platform: fysp.org (佛音视频)
   - name: 梦参法师讲记(弘善佛教网)
+    name_en: Ven. Mengcan's lecture transcripts (Hongshan Buddhist site)
     link: https://www.hrfjw.com/fjrw/hcrw/mcfs/jiangjie.html
     platform: hrfjw.com
   - name: 梦参老和尚-喜马拉雅
+    name_en: Ven. Mengcan on Ximalaya
     platform: ximalaya.com
     note: 音频全集
 
@@ -129,3 +205,9 @@ relation_to_project: |
   海云继梦法师于1991年依梦参老和尚出家。
   梦老九十高龄于五台山普寿寺开讲《八十华严》五百余座的壮举，
   与本项目所承载的华严法脉传承一脉相承。
+relation_to_project_en: |
+  Ven. Haiyun Jihong left home under Ven. Mengcan in 1991. The old
+  master's achievement of lecturing on the Eighty-fascicle Avataṃsaka for
+  over five hundred sessions at Pusheshou Monastery, Wutai, in his
+  nineties, is in direct continuity with the transmission of the Huayan
+  lineage that this project upholds.

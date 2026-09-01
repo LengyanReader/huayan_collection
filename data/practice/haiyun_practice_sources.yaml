@@ -11,146 +11,215 @@ core_framework:
     工程面 = 生命改造工程 (心灵转化·破无明·法身成长)
     三阶次第: 初阶(资粮道·发心工程) → 二阶(前行·内摄工程) → 三阶(正行·等持工程)
     正行三步骤: 观照(能所分离)→照住(能所合一)→照见(能所双泯)
+  description_en: |
+    Venerable Haiyun Jimeng frames Huayan chan practice along two tracks —
+    the technical side and the engineering side —
+    technical facet = concrete methods (counting the breath, raising the doubt-sensation,
+    investigating the phrase head / huatou, guarding the breath-portal)
+    engineering facet = a life-transformation project (transforming the mind,
+    breaking through ignorance, the growth of the dharmakāya)
+    The path proceeds in three stages: stage one (the path of accumulation, the vow-engendering
+    project) → stage two (the preliminary practice, the inward-gathering project) →
+    stage three (the actual practice, the meditative-equipoise project)
+    The actual practice unfolds in three steps: illuminating contemplation (separation
+    of perceiver and perceived) → stabilized illumination (union of perceiver and perceived) →
+    clear seeing (the mutual ceasing of perceiver and perceived)
   source_lecture: "海云继梦《禅修正行》系列 (共至少12集, 2007-2008)"
+  source_lecture_en: "Haiyun Jimeng, the \"Chan Practice Proper\" (Chan Xiu Zheng Xing) series — at least 12 sessions, 2007-2008"
   source_web: "华严禅观全程·修行蓝图 (大华严寺官网, 2025年11月访问)"
 
 books:
   - title: "煖身: 华严禅修入门"
+    title_en: "Warming Up: An Introduction to Huayan Meditation"
     year: 2021
     publisher: 布克文化
+    publisher_en: "Book Culture (Buke Wenhua)"
     isbn: "9789865405984"
     content: 七支坐相·调身调息·入相住相出相·初阶技术面基础
+    content_en: "The sevenfold posture, regulating body and breath, entering/abiding/leaving the characteristic, and the foundational technical side of stage one"
     link_google_play: https://play.google.com/store/books/details?id=QREREAAAQBAJ
     link_buy: https://www.books.com.tw/products/0010891234
 
   - title: "迈向佛陀的境界——华严禅前行概论"
+    title_en: "Toward the Realm of the Buddha: An Introduction to the Huayan Chan Preliminary Practice"
     year: 2011
     publisher: 空庭书苑
+    publisher_en: "Kong Ting Shu Yuan"
     content: 前行阶段完整体系·四种观法·工程面心法
+    content_en: "A complete system of the preliminary practice stage, the four contemplations, and the essential method of mind on the engineering side"
     link_fjdh: https://www.fjdh.cn/wumin/2013/11/183343302811.html
 
   - title: "华严金师子章讲记"
+    title_en: "Lectures on the Huayan Chapter of the Golden Lion"
     year: 2010
     publisher: 空庭书苑
+    publisher_en: "Kong Ting Shu Yuan"
     pages: 265页
     content: 法藏《金师子章》现代阐释·十门·十玄门·修行三区块
+    content_en: "A modern exposition of Fazang's Golden Lion Chapter — its ten approaches, the ten mysterious gates, and the three sections of practice"
     isbn: "9789867484680"
     link_fjdh: http://wuming.xuefo.net/nr/7/70462.html
     link_buy: https://www.got1shop.com/mobile/index.php?m=default&c=goods&a=index&id=3459706
     lectures: "2006年台北开示, 共14集"
 
   - title: "我们只有一个选择"
+    title_en: "We Have Only One Choice"
     year: 2010
     publisher: 空庭书苑
+    publisher_en: "Kong Ting Shu Yuan"
     isbn: "9789867484475"
     content: 灵性经济学核心著作·三世间框架·中英对照
+    content_en: "A core work on spiritual economics, the framework of the three realms, presented bilingually"
     link_buy: https://www.buybook.tw/book-0010482429.htm
 
   - title: "解心: 心要法门讲记"
+    title_en: "Unraveling the Mind: Lectures on the Essential Method of Mind"
     year: 2001
     publisher: 空庭书苑
+    publisher_en: "Kong Ting Shu Yuan"
     isbn: "9573067129"
     pages: 326页
     content: 澄观《心要法门》现代阐释·「至道本乎其心,心法本乎无住」
+    content_en: "A modern exposition of Chengguan's Essential Method of Mind — \"the ultimate way is rooted in the mind, and the essential method of mind is rooted in non-abiding\""
     edition_cn: "宗教文化出版社 2005年9月简体版, 187页"
 
   - title: "普贤十大愿王行法精要"
+    title_en: "The Essence of Practicing the Ten Great Vows of Samantabhadra"
     year: 2006
     publisher: 空庭书苑
+    publisher_en: "Kong Ting Shu Yuan"
     isbn: "9789867484734"
     content: 圆融道工程面核心——十大愿王
+    content_en: "The core of the engineering side of the interpenetrating path — the ten great vows"
     link_buy: https://findbook.com.tw/9789867484734
 
   - title: "非常占察经(讲记三册)"
+    title_en: "An Extraordinary Zhancha Sūtra (Lectures in Three Volumes)"
     year: "2015-2017"
     publisher: 空庭书苑
+    publisher_en: "Kong Ting Shu Yuan"
     isbn: "9789867484918 / 4932 / 4949"
     content: 次第道·占察善恶业报经·四种观法前二种经典出处
+    content_en: "The gradual path, the Zhancha Sūtra on karmic retribution, and the scriptural sources of the first two of the four contemplations"
 
 lecture_series:
   - title: "禅修正行"
+    title_en: "Chan Practice Proper"
     episodes: "至少12集"
     year: "2007-2008"
     platform: 大华严寺 / 播客
     content: 正行阶段技术面·数息法·疑情·守风门
+    content_en: "The technical side of the actual practice stage — counting the breath, the doubt-sensation, and guarding the breath-portal"
     link_example_fjdh: https://www.fjdh.cn/wumin/2013/11/145705302872.html
     spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
     apple_podcast: https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889
 
   - title: "四十华严讲记"
+    title_en: "Lectures on the Forty-fascicle Avataṃsaka"
     episodes: "68+讲"
     year: "2009"
     platform: 大华严寺 / fjdh.cn
     content: 华严禅观体系·普贤乘·次第道与圆融道
+    content_en: "The Huayan contemplative system, the Samantabhadra Vehicle, and the gradual and interpenetrating paths"
     link_fjdh_example: https://www.fjdh.cn/wumin/2013/10/001658293204.html
 
   - title: "贤首五教仪—法界观"
+    title_en: "The Five Teachings of Xianshou — Contemplation of the Dharma-realm"
     episodes: "53集+"
     year: 2008
     platform: 台北 / 播客
     content: 华严判教体系·五教止观·渐教顿教实践义
+    content_en: "The Huayan doctrinal-classification system, calming and insight across the five teachings, and the practical meaning of gradual and sudden teachings"
     spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
     listennotes: https://www.listennotes.com/podcasts/%E6%B5%B7%E4%BA%91%E7%BB%A7%E6%A2%A6%E6%B3%95%E5%B8%88%E8%AE%B2%E7%BB%8F-%E6%92%AD%E5%AE%A2/
 
 videos:
   - title: "华严教海 (YouTube播放清单)"
+    title_en: "Huayan Dharma-ocean (YouTube Playlists)"
     platform: YouTube @huayen-world
     content: 华严经逐品讲解·佛法玄谈·九九华严讲座
+    content_en: "Chapter-by-chapter exposition of the Avataṃsaka Sūtra, Buddhist dharma discourses, and the Ninety-nine Assembly Huayan lectures"
     link_playlists: https://www.youtube.com/@huayen-world/playlists
 
   - title: "海雲法語 (YouTube Shorts)"
+    title_en: "Dharma Words of Haiyun (YouTube Shorts)"
     platform: YouTube @huayen-world
     content: 法语开示短片·转凡成圣·发愿行法·念佛持咒
+    content_en: "Short dharma guidance clips — turning the ordinary into the holy, making vows and practicing, and reciting the Buddha's name and mantras"
     link_shorts: https://www.youtube.com/@huayen-world/shorts
 
   - title: "九九華嚴講座"
+    title_en: "Ninety-nine Assembly Huayan Lectures"
     platform: YouTube
     content: 2026年最新系列·TICC录影·修行条件·AI时代佛法
+    content_en: "The latest 2026 series — TICC recordings, the conditions for practice, and Buddhism in the age of AI"
     link_search: https://www.youtube.com/results?search_query=九九華嚴+海雲繼夢
 
 official_platforms:
   - name: 大华严寺官网
+    name_en: "Great Huayan Monastery Official Website"
     url: https://www.huayenworld.org
     sections: [修行蓝图, 华严禅观, 法会活动]
+    description_en: "Practice blueprint, Huayan chan contemplation, and dharma assembly events"
 
   - name: YouTube 主频道
+    name_en: "YouTube Main Channel"
     url: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
     subsections: [华严教海, 海雲法語, Shorts, 法会纪实]
+    description_en: "Huayan Dharma-ocean, Haiyun dharma words, Shorts, and dharma event recordings"
 
   - name: Spotify 播客
+    name_en: "Spotify Podcast"
     url: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
     content: 海云继梦法师讲经
+    content_en: "Dharma lectures by Venerable Haiyun Jimeng"
 
   - name: Apple Podcast
+    name_en: "Apple Podcast"
     url: https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889
     content: 普贤乘华严宗
+    content_en: "The Samantabhadra Vehicle Huayan School"
 
   - name: Facebook
+    name_en: "Facebook"
     url: https://www.facebook.com/huayenlugu.org
     content: 大华严寺鹿谷本寺官方
+    content_en: "The official page of the Lugu main monastery of the Great Huayan Monastery"
 
 academic:
-  - "海云继梦曾任陕西师范大学华严研究所荣誉所长及客座教授"
-  - "海云继梦曾任中国社会科学院特邀研究员"
-  - "《华严学报》刊载海云法师华严禅观研究论文"
+  - title: "海云继梦曾任陕西师范大学华严研究所荣誉所长及客座教授"
+    title_en: "Served as honorary director and visiting professor of the Huayan Research Institute at Shaanxi Normal University"
+  - title: "海云继梦曾任中国社会科学院特邀研究员"
+    title_en: "Served as an invited researcher at the Chinese Academy of Social Sciences"
+  - title: "《华严学报》刊载海云法师华严禅观研究论文"
+    title_en: "The Huayan Journal published a research paper by Venerable Haiyun on Huayan chan contemplation"
 
 three_stages_quick_ref:
   stage1:
     name: 初阶·资粮道 (发心工程)
+    name_en: "Stage one · the path of accumulation (the vow-engendering project)"
     technical: 数息法入门·注意息入息出长短·静中与动中观照
+    technical_en: "Entering counting-the-breath practice, noting the length of the in- and out-breath, and illuminating contemplation in both stillness and movement"
     engineering: 破根本无明·勤忏悔·建立信根与定位
+    engineering_en: "Breaking through the fundamental ignorance, diligent repentance, and establishing the root of faith and one's orientation"
     xuanmen: 句中玄
     source: 《禅修入门》系列 + 《煖身》(2021)
   stage2:
     name: 二阶·前行 (内摄工程)
+    name_en: "Stage two · the preliminary practice (the inward-gathering project)"
     technical: 四种观法 (唯心识观→真如实观→毗婆舍那观→奢摩他观)·界内定
+    technical_en: "The four contemplations (consciousness-only → suchness-reality → vipassanā → śamatha) and the concentration within the realms"
     engineering: 内摄·象限转移·瞬间定
+    engineering_en: "Inward gathering, quadrant shifts, and momentary concentration"
     xuanmen: 句中玄→意中玄过渡
     source: 《禅修前行》系列 + 《迈向佛陀的境界》(2011)
   stage3:
     name: 三阶·正行 (等持工程)
+    name_en: "Stage three · the actual practice (the meditative-equipoise project)"
     technical: 三摩呬多→三摩钵底→三摩地·法界三观·界外定
+    technical_en: "samāhita → samāpatti → samādhi, the three contemplations of the dharma-realm, and the concentration beyond the realms"
     engineering: 观照(能所分离)→照住(能所合一)→照见(能所双泯)
+    engineering_en: "illuminating contemplation (separation) → stabilized illumination (union) → clear seeing (mutual ceasing)"
     xuanmen: 意中玄→体中玄
     source: 《禅修正行》系列 (至少16集) + 《华严金师子章讲记》(2010)
 
@@ -158,6 +227,7 @@ three_stages_quick_ref:
 exhaustive_platform_index:
   search_date: "2026-08-08"
   principle: "以下为截至搜索日期的穷尽搜索结果。部分平台受搜索限制(如YouTube未返回播放清单)，已标注。"
+  principle_en: "The following are the exhaustive search results as of the search date. Some platforms are subject to search limitations (e.g., YouTube did not return playlist listings); these are noted."
 
   # ── YouTube ──
   youtube:
@@ -165,26 +235,32 @@ exhaustive_platform_index:
     channel_url: https://www.youtube.com/channel/UCJr3ifkvTs76XnR6SuyIfFQ
     playlists_url: https://www.youtube.com/@huayen-world/playlists
     note: "YouTube网页未返回播放清单列表(需直接访问)。已知内容: 華嚴教海(华严经逐品讲解)·海雲法語(法语短片)·九九華嚴講座(2026)·藥師經北美講座(2008)·法会纪实·Shorts"
+    note_en: "The YouTube web page did not return the playlist listing (direct access required). Known content: Huayan Dharma-ocean (chapter-by-chapter exposition), Haiyun Dharma Words (short dharma clips), the Ninety-nine Assembly Huayan Lectures (2026), the North American Medicine Buddha Sūtra Lectures (2008), dharma event recordings, and Shorts."
     key_series:
       - name: "華嚴教海"
         type: 长片播放清单
         content: 华严经逐品讲解·佛法玄谈(至少6集)·九九華嚴TICC录影(至少6集)
+        content_en: "Chapter-by-chapter exposition of the Avataṃsaka Sūtra, Buddhist dharma discourses (at least 6 sessions), and Ninety-nine Assembly recordings from TICC (at least 6 sessions)"
       - name: "海雲法語"
         type: 短片系列
         content: 法语开示·转凡成圣·发愿行法·佛菩萨加持·泯除瞋心·净土关键
+        content_en: "Short dharma guidance — turning the ordinary into the holy, making vows and practicing, the blessing of buddhas and bodhisattvas, dissolving anger, and the key to the Pure Land"
       - name: "九九華嚴講座"
         type: 讲座精华
         year: 2026
         content: 修行条件·顿教修行条件·明心见性·AI时代修行心态
+        content_en: "The conditions for practice, the conditions for sudden-teaching practice, seeing one's nature and realizing mind, and a practice mindset for the age of AI"
       - name: "藥師經北美講座"
         type: 节录系列
         year: 2008
         content: 北美药师经系列开示(近期海雲法語的母体讲座来源)
+        content_en: "The North American series of lectures on the Medicine Buddha Sūtra (the source lectures behind the recent Haiyun Dharma Words)"
       - name: "大悲咒齊心息災法會"
         type: 法会纪实
         year: 2020
         episodes: 4场
     search_note: "YouTube搜索限制, 未能获取完整播放清单。建议直接访问频道Playlists页面获取完整列表。"
+    search_note_en: "Due to YouTube search limitations, the complete playlist listing could not be retrieved. It is recommended to visit the channel's Playlists page directly for the full list."
 
   # ── Bilibili ──
   bilibili:
@@ -192,18 +268,25 @@ exhaustive_platform_index:
     uploaders:
       - name: 小叮当365
         content: 華嚴六科系列(8集)·善财童子五十三参(约43小时)
+        content_en: "The Huayan Six Subjects series (8 episodes) and the Boy Shancai's Fifty-three Pilgrimages (about 43 hours)"
       - name: 迪拉酱
         content: 心经40集·地藏菩萨本愿经10集·药师经10集
+        content_en: "Heart Sūtra (40 episodes), Kṣitigarbha's Fundamental Vows Sūtra (10 episodes), and Medicine Buddha Sūtra (10 episodes)"
       - name: 静心止观
         content: 改变你生命的九堂课·普贤行品·普门品
+        content_en: "Nine Lessons That Transform Your Life, the Samantabhadra Practice Chapter, and the Universal Gate Chapter"
       - name: 空华觉海
         content: 法语短片·拜佛行法教学
+        content_en: "Short dharma clips and instruction in the practice of bowing to the Buddha"
       - name: 一切唯心造心空一切空 (UID:496444081)
         content: 心经开示持续更新
+        content_en: "Ongoing updates of Heart Sūtra teachings"
       - name: 正经教主
         content: 阿弥陀经2007北美福慧寺
+        content_en: "The Amitābha Sūtra, 2007, North America Fu Hui Monastery"
       - name: 能殊
         content: 生命教育/禅修(2023起)
+        content_en: "Life education and meditation (from 2023)"
     key_series:
       - name: "華嚴六科系列 — 華嚴禪行法"
         episodes: 8集
@@ -211,6 +294,7 @@ exhaustive_platform_index:
         year: 2024-07
         url: https://www.bilibili.com/video/BV1iS421X7S8/
         note: "華嚴六科之三, 直接对应禅修正行技术面教学"
+        note_en: "The third of the Huayan Six Subjects, directly corresponding to the technical-side teaching of Chan practice proper"
       - name: "善财童子五十三参"
         duration: 约43小时
         year: 2024-08
@@ -226,6 +310,7 @@ exhaustive_platform_index:
       - name: "改变你生命的九堂课"
         year: 2025-04
         content: 烦恼·习气·无常·出离·慈爱·安忍·物质化陷阱
+        content_en: "Afflictions, habitual tendencies, impermanence, renunciation, loving-kindness, forbearance, and the trap of materialization"
       - name: "圆融道修法"
         episodes: 4讲
         year: 2025
@@ -241,32 +326,43 @@ exhaustive_platform_index:
     spotify_url: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
     apple_url: https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889
     update_freq: 每周一、周三更新
+    update_freq_en: "Updated every Monday and Wednesday"
     series_count: S1至S23系列
+    series_count_en: "Series S1 through S23"
     key_series:
       - name: "S3 華嚴禪行法"
         content: 禅修正行相关音频(最接近禅修正行讲记的播客版本)
+        content_en: "Audio related to Chan practice proper (the podcast version closest to the Chan Practice Proper lectures)"
       - name: "S8 禪與入定"
         content: 禅法与入定关系专题讲座
+        content_en: "A special lecture series on the relationship between chan methods and entering absorption"
       - name: "S9 東山法門與禪宗的特色"
         content: 东山法门·禅宗特色
+        content_en: "The East Mountain Dharma-gate and the distinctive features of the Chan School"
       - name: "S22 華嚴海會開示"
         year: 2022
         episodes: 14集
         content: 华严海会期间开示
+        content_en: "Teachings given during the Huayan grand dharma assembly"
       - name: "S23 十行品"
         year: "2023-2024"
         content: 十行品之四無屈撓行(8集)
+        content_en: "The fourth practice, the Undaunted Practice, from the Ten Practices Chapter (8 episodes)"
     note: "禅修正行未作为独立播客系列上线, 但S3華嚴禪行法为其对应音频内容。梯次禅三/禅七开示可能散见于各季单集中。"
+    note_en: "Chan Practice Proper was not released as a standalone podcast series, but S3, the Huayan Chan Practice, is its corresponding audio content. The graded chan-san/chan-qi retreat talks may be scattered across individual episodes of various seasons."
 
   # ── 文字讲记 (fjdh.cn / wmxf.net / putixia.org) ──
   text_transcripts:
     platform: "佛教导航 fjdh.cn + 五明学佛网 wmxf.net + 菩提下 putixia.org"
+    platform_en: "Fojiao Daohang (Buddhist Navigation) fjdh.cn + Wuming Buddhist Study wmxf.net + Putixia putixia.org"
     year_published: 2013年11月集中发布
+    year_published_en: "Released in bulk in November 2013"
     key_series:
       - name: "华严禅行法 — 《禅修正行》"
         episodes: 至少16集
         url_example: https://www.fjdh.cn/wumin/2013/11/145705302872.html
         note: "第1-16集有文字逐字稿, 第13-15集未在搜索中直接体现但第16集存在"
+        note_en: "Episodes 1-16 have full text transcripts; episodes 13-15 did not appear directly in the search, though episode 16 exists"
       - name: "华严禅行法 — 《禅修前行》"
         episodes: 至少8集
         url_example: https://www.fjdh.cn/wumin/2013/11/190837302819.html
@@ -274,10 +370,14 @@ exhaustive_platform_index:
         episodes: 10集
         platform: cnbuddha.com
     other_text_series:
-      - "耳根圆通章 (至少20集, putixia.org)"
-      - "四十华严讲记 (68+讲, fjdh.cn)"
-      - "华严金师子章讲记 (14集, fjdh.cn)"
-      - "贤首五教仪—法界观 (53集+, listennotes)"
+      - title: "耳根圆通章 (至少20集, putixia.org)"
+        title_en: "The Ear-root Perfect Penetration Chapter (at least 20 episodes, putixia.org)"
+      - title: "四十华严讲记 (68+讲, fjdh.cn)"
+        title_en: "Lectures on the Forty-fascicle Avataṃsaka (68+ talks, fjdh.cn)"
+      - title: "华严金师子章讲记 (14集, fjdh.cn)"
+        title_en: "Lectures on the Golden Lion Chapter (14 episodes, fjdh.cn)"
+      - title: "贤首五教仪—法界观 (53集+, listennotes)"
+        title_en: "The Five Teachings of Xianshou — Contemplation of the Dharma-realm (53+ episodes, listennotes)"
 
   # ── 其他平台 ──
   other_platforms:
@@ -286,8 +386,10 @@ exhaustive_platform_index:
     - name: "Google Play 电子书"
       url: https://play.google.com/store/books/details?id=QREREAAAQBAJ
       content: "《煖身: 华严禅修入门》(2021)"
+      content_en: "Warming Up: An Introduction to Huayan Meditation (2021)"
     - name: "空庭书苑 (出版社)"
       note: 海云继梦著作主要出版方, 含《解心》《迈向佛陀的境界》《普贤十大愿王》《非常占察经》等
+      note_en: "The principal publisher of Venerable Haiyun Jimeng's works, including Unraveling the Mind, Toward the Realm of the Buddha, The Essence of the Ten Great Vows of Samantabhadra, and An Extraordinary Zhancha Sūtra."
 
   # ── 搜索局限说明 ──
   # ── 禅三/禅七/禅修营 (Retreat Recordings) ──
@@ -297,6 +399,11 @@ exhaustive_platform_index:
       这一类内容是大华严寺内部禅修营的现场开示录音，
       按梯次编号(第一梯·第二梯……第七梯……)。搜索引擎对此类内容
       索引不完整。以下为已确认的公开信息。
+    note_en: |
+      Recordings of the numbered graded retreat talks, such as "Huayan Chan Dharma | Talk for the Xth Chan-san",
+      are live teachings from the Great Huayan Monastery's internal retreat camps,
+      numbered by batch (first batch, second batch ... seventh batch ...).
+      Search engines index this content incompletely. The confirmed public information follows.
     confirmed:
       - type: 忍可禪七 (瑜伽禪淨課程)
         venue: 雲鶴山大華嚴寺 (南投)
@@ -304,16 +411,20 @@ exhaustive_platform_index:
           - "2026年1/4-1/10 (春季·七日六夜)"
           - "2026年4/30-5/6 (4月號·七日六夜)"
         content: 瑜伽禪修·呼吸清理法·脊椎優化功 + 海雲繼夢導師《華嚴行法總綱》
+        content_en: "Yoga meditation, breath-clearing method, and spine-optimization exercises, together with Master Haiyun Jimeng's General Outline of Huayan Practice"
         source: 大華嚴寺官网 huayenworld.org
       - type: 精進佛七
         year: 2023
         content: 海雲法語系列开示「如何覺悟·修行工程面」
+        content_en: "Haiyun Dharma Words series teaching on how to awaken and the engineering side of practice"
         link_podwise: https://podwise.ai/episodes/2550329
       - type: 台北禪七
         year: 2005
         venue: 大華嚴寺三峽金華園禪修中心
         content: 以《楞嚴經·耳根圓通章》為架構的禪法心要
+        content_en: "The essence of chan practice structured on the Surangama Sūtra's Ear-root Perfect Penetration Chapter"
         published_as: "《禪，怎麼參？》(書, ISBN可查)"
+        published_as_en: "How to Investigate Chan? (a book; ISBN verifiable)"
         link_book: https://got1dev.got1shop.com/goods.php?id=144055
     search_advice: |
       如需穷尽获取所有梯次禅三/禅七录音——
@@ -321,6 +432,12 @@ exhaustive_platform_index:
       2. YouTube频道 @huayen-world 搜索「禅三」「禅七」「梯」(受限于网页搜索不返回完整结果)
       3. Spotify播客「普賢乘華嚴宗」逐季检查 S1-S23
       4. 大华严寺官网 huayenworld.org 活动公告存档
+    search_advice_en: |
+      To exhaustively obtain all graded chan-san/chan-qi recordings:
+      1. Contact the Great Huayan Monastery directly (LINE @huayenworld) to inquire about the internal recording archive
+      2. Search the YouTube channel @huayen-world for "chan-san," "chan-qi," and "batch" (web search does not return complete results)
+      3. Go through the Spotify podcast "Samantabhadra Vehicle Huayan School" season by season, checking S1-S23
+      4. Check the archived event announcements on the Great Huayan Monastery website, huayenworld.org
 
   search_limitations:
     - "YouTube 网页搜索不返回播放清单内容, 需手动访问频道"
@@ -328,3 +445,9 @@ exhaustive_platform_index:
     - "fjdh.cn/wmxf.net 讲记为2013年集中发布, 此后未更新"
     - "Apple Podcast S1-S23系列中仅S3明确标注華嚴禪行法"
     - "以下可能存在但未在本次搜索中确认: 华严六科之二(華嚴淨化禪)·之四(華嚴密法)·之五(華嚴行法)·之六(華嚴密行)"
+  search_limitations_en:
+    - "YouTube web search does not return playlist content; the channel must be visited manually"
+    - "Bilibili content is scattered across many uploaders, with no official unified channel"
+    - "The fjdh.cn/wmxf.net lecture transcripts were released in bulk in 2013 and have not been updated since"
+    - "Of the Apple Podcast S1-S23 series, only S3 is explicitly labeled the Huayan Chan Practice"
+    - "The following may exist but were not confirmed in this search: the second of the Huayan Six Subjects (Huayan Purifying Chan), the fourth (Huayan Esoteric Dharma), the fifth (Huayan Practice Method), and the sixth (Huayan Esoteric Practice)"

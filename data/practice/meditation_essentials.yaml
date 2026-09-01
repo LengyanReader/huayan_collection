@@ -1,9 +1,12 @@
 # 华严行法 — 禅观法要 (来自 practice.js renderPractice() pv-meditation 区块)
 subpage: 禅观法要
+subpage_en: Meditation Essentials
 
 system_overview:
   description: |
     海云继梦和上华严禅观三阶段: 资粮道(发心工程.驻佇心观) → 前行(界内定.四种观法) → 正行(界外定.法界三观)。技术面(修定.身法)与工程面(修慧.心法)始终双轨并行。
+  description_en: |
+    Master Haiyun Jirong's Huayan practice unfolds in three stages: the path of accumulation (the resolve-engendering project, the abiding mind-contemplation) → the preliminary practice (concentration within the realms, the four contemplations) → the actual practice (concentration beyond the realms, the threefold vision of the dharmadhātu). The technical track (cultivating concentration, the bodily methods) and the engineering track (cultivating wisdom, the mind methods) always advance in parallel.
   stages_table:
     headers: [阶段, 定位, 核心工程, 观法, 禅定, 果位]
     rows:
@@ -76,10 +79,14 @@ system_overview:
         fruition: "八地至妙觉(5位)\n共42位圆满"
   source_note: |
     三阶段架构名称据大华严寺官网「修行蓝图: 华严禅观全程」(2025年11月访问)。观法细节(四种观法/界内定界外定/果位对应等)据海云继梦《四十华严讲记》第67讲(2009.2.26)+《海云继梦禅观概论》(2015)+《迈向佛陀的境界》(2011)。凡官网与讲记表述有异处,以官网为框架、讲记为展开。
+  source_note_en: |
+    The names of the three-stage framework follow the official Dahuayan Temple website, "The Path of Practice: The Full Course of Huayan Meditation" (accessed November 2025). Details of the contemplations (the four methods, concentration within and beyond the realms, and the correspondence with fruits) follow Haiyun's Commentary on the Avatamsaka in Forty Fascicles, lecture 67 (26 Feb 2009), together with his Outline of Huayan Meditation (2015) and Toward the Realm of Buddhahood (2011). Where the website and the lecture notes differ, the website supplies the framework and the lectures the elaboration.
 
 two_paths:
   description: |
     海云和上将修行路径分为两条: 次第道(圣解脱道/智德门)与圆融道(普贤道/福德门)。核心差异: 次第道必须证得空性、即身成就; 圆融道不必证空性,凡夫亦可修,具足信根即可,经分段生死至他方净土证无生。法师明确开示:「凡夫行圆融道,就是没有那个充分条件,你没有证得空性。你行圆融道就那么一个条件,要尽形寿行菩萨道,对三宝具足信心。」但凡夫行圆融道须避讳「聚财」与「聚众」,否则在缺乏空性的前提下易入歧途。若避此忌,报尽必生净土。华严禅观三段教学法(前行->正授行法->妙行)中,前两区块属入法界次第道,第三区块「妙行」属已入法界后的圆融道。
+  description_en: |
+    Master Haiyun divides the path of practice into two: the graduated path (the noble path of liberation, the gate of wisdom) and the perfectly-integrated path (the Samantabhadra path, the gate of merit). The core difference: the graduated path must realize emptiness and attain attainment in this very life; the integrated path need not realize emptiness—even an ordinary person with complete faith can practice it, and through the delimited births and deaths reaches a pure land elsewhere and realizes non-arising. As the Master states plainly: "When an ordinary person walks the integrated path, it is because they lack the sufficient condition—they have not realized emptiness. There is only one condition: to walk the bodhisattva path for one's whole life with complete faith in the Three Jewels." Yet an ordinary person on the integrated path must guard against "hoarding wealth" and "gathering followers," lest—in the absence of emptiness—they fall into error. If these taboos are avoided, at the exhaustion of karmic reward they will surely be reborn in a pure land. In the three-part Huayan meditation pedagogy (preliminary practice → the conferral of the actual practice → the wondrous practice), the first two parts belong to the graduated path of entering the dharmadhātu, and the third, the "wondrous practice," belongs to the integrated path after one has already entered the dharmadhātu.
   comparison_table:
     headers: [维度, 次第道(入法界次第道), 圆融道(法界圆融道)]
     rows:
@@ -104,43 +111,72 @@ two_paths:
   three_conditions:
     description: |
       三大核心条件: (1)对三宝的具足信——信心绝对,毫无折扣,100分 (2)尽形寿奋进于菩萨道——定位明确,一辈子做一件事(事修),从生命尊重与人性关怀出发服务众生 (3)一再的归零功课——每日反复检视自身,遇到挫折压力则拜忏(一百零八拜),将业力寄放在法界。
+    description_en: |
+      The three core conditions: (1) complete faith in the Three Jewels—absolute, undiluted, a full hundred percent; (2) striving on the bodhisattva path for one's whole life—a clear orientation, doing one thing all one's life (the cultivation of deeds), serving beings out of respect for life and care for humanity; (3) the repeated resets—examining oneself daily, and upon encountering setbacks or pressure undertaking repentance prostrations (one hundred and eight), entrusting one's karma to the dharmadhātu.
     warning: |
       凡夫行圆融道的避讳: 必须避讳「聚财」与「聚众」,否则在缺乏空性的前提下易入歧途——善者落人天善道,恶者成魔成精。若避此忌,报尽必生净土。
+    warning_en: |
+      Taboos for an ordinary person on the integrated path: one must avoid "hoarding wealth" and "gathering followers," otherwise—in the absence of emptiness—one easily goes astray: the virtuous fall into the good destinies of humans and gods, the vicious become demons. If these taboos are avoided, at the exhaustion of karmic reward one will surely be reborn in a pure land.
     examples: |
       法师以德雷莎修女为例: 具足对上帝的绝对信心(信根),一辈子只做「服务最穷的人」这一件事(事修),尽形寿不改——「行一法即行一切法」。梦参老和尚被关33年仍坚守信仰,亦属圆融道行者的典范。
+    examples_en: |
+      The Master cites Mother Teresa: absolute faith in God (the root of faith), and for her whole life doing only the one thing of "serving the poorest" (the cultivation of deeds), unchanging throughout her life—"practicing one dharma is practicing all dharmas." Venerable Master Mengcan, who held to his faith through thirty-three years of imprisonment, is likewise a model of the integrated path.
     source: |
       出处: 海云继梦《华严禅观的入法界次第道》(fjdh.cn 2013.9) . 《四十华严讲记》第14讲.第68讲 . https://www.fjdh.cn/wumin/2013/09/175337285861.html
   ten_vows:
     description: |
       普贤十大愿王是善财童子五十三参的总结与精要——「《入不思议解脱境界普贤行愿品》中,不思议解脱境界即是法界,而普贤行愿是直接入法界的行法。」海云和上先后五次重要讲解: 1992年台北初讲.2001年5月加拿大湛山精舍(共52讲,分三册出版: 《普贤行愿》2002/《不思议解脱》2003/《大方广境界》2003).2006年台北(《普贤十大愿王行法精要》).2007年槟城+2008年新加坡(合并出版《十大愿王修行法要》)。另有2011年昆明开示系列(fjdh.cn收录)。
+    description_en: |
+      Samantabhadra's ten great vows are the summation and essence of the youth Sudhana's fifty-three visits—"In the Practice and Vows of Samantabhadra on Entering the Inconceivable Realm of Liberation, the inconceivable realm of liberation is the dharmadhātu itself, and the Samantabhadra practice and vows are the practice that enters the dharmadhātu directly." Master Haiyun has expounded them five times in important series: first Taipei in 1992; Canada's Chan Mountain Monastery in May 2001 (fifty-two lectures, published in three volumes: Samantabhadra's Practice and Vows 2002 / the Inconceivable Liberation 2003 / the Vast and Great Scope 2003); Taipei 2006 (The Essence of Practicing the Ten Great Vows); and Penang 2007 plus Singapore 2008 (combined as The Essentials of Cultivating the Ten Great Vows). There is also a 2011 Kunming lecture series (held at fjdh.cn).
     hierarchy:
       title: 十大愿王三层次结构
+      title_en: The Three Tiers of the Ten Great Vows
       levels:
         - level: 根本（第1-3愿）
+          level_en: The Foundation (vows 1-3)
           items: "礼敬诸佛.称赞如来.广修供养"
+          items_en: "venerating all buddhas, praising the Tathāgata, making extensive offerings"
           position: 真正要实修的根本,可各选一门主修
+          position_en: The true root to be actually practiced; one may choose a single vow as one's main cultivation.
         - level: 补充（第4愿）
+          level_en: The Supplement (vow 4)
           items: 忏悔业障
+          items_en: confessing karmic obstructions
           position: "修前三愿遇挫折时以此补救,具关键性地位"
+          position_en: When obstacles arise in the first three vows, this is the remedy; it holds a pivotal place.
         - level: 圆融扩大（第5-7愿）
+          level_en: The Perfect Enlargement (vows 5-7)
           items: "随喜功德.请转法轮.请佛住世"
+          items_en: "rejoicing in merits, requesting the turning of the dharma-wheel, requesting the buddhas to remain in the world"
           position: 使基础修行圆满
+          position_en: Brought to completion by these, the foundational practice is made perfect.
         - level: 无限扩大（第8-10愿）
+          level_en: The Infinite Enlargement (vows 8-10)
           items: "常随佛学(百).恒顺众生(千/重重无尽).普皆迴向(万/无有止境)"
+          items_en: "always following the Buddha's teaching, according with beings, and universal dedication"
           position: "代表无限的扩大——「虚空界尽.众生界尽.众生业尽.众生烦恼尽,我此愿力无有穷尽」"
+          position_en: Represents the infinite enlargement—"though the realms of space, of beings, of their deeds, and of their afflictions be exhausted, my power of vows knows no end."
     core_principles: |
       (1)普贤行愿力——海云和上在2011年昆明《普贤行愿品》开示中指出: 「普贤菩萨是法界的第一尊佛,你看得到,你能够认识到佛的第一个形象,就是普贤菩萨。那么在自性海中所修行的法,都叫普贤行愿。你在自性海中所修行的法,所产生的威神力,叫做普贤行愿力。」「我以普贤行愿力故,深心信解,如对目前」(即亲自体验证得,非推测想象)
       (2)四无尽观——每一大愿皆以虚空界尽.众生界尽.众生业尽.众生烦恼尽为所依,四者无有尽故修行无有穷尽,心量无限放大
       (3)念念相续无有疲厌——倾向于圆融道行法,不可一曝十寒。
+    core_principles_en: |
+      (1) The power of the Samantabhadra vows—in his 2011 Kunming explanation of the Practice and Vows chapter, Master Haiyun notes: "Samantabhadra is the first buddha of the dharmadhātu; the first form of the Buddha you can see and recognize is Samantabhadra. All the dharmas practiced within the sea of one's own nature are called the Samantabhadra vows; the awe-inspiring power they generate is the power of the Samantabhadra vows." "Through the power of the Samantabhadra vows, I believe and understand with deep resolve, as if before my very eyes" (that is, realized through direct experience, not by conjecture and imagination).
+      (2) The contemplation of the four exhaustions—each great vow rests on the exhaustion of the realms of space, of beings, of their deeds, and of their afflictions; since these four have no end, so the practice has no end and the mind expands without limit.
+      (3) Thought after thought continuing without fatigue or weariness—inclined toward the integrated path, never doing things by fits and starts.
     source: |
       出处: 《普贤十大愿王行法精要》(空庭书苑, 2006年台北讲记, ISBN 9789867484734) . 《十大愿王修行法要》(空庭书苑, 2007槟城+2008新加坡) . 2011年昆明开示系列(fjdh.cn收录) . https://findbook.com.tw/9789867484734
 
 stage1_foundation:
   title: "第一阶段: 禅修入门 — 发心工程（资粮道）"
+  title_en: "Stage One: Meditation for Beginners — the Resolve-Engendering Project (the path of accumulation)"
   description: |
     资粮道是一切禅观的基础准备，约需1-3年。核心任务是发心工程——使行者从散乱中「静下来」。通过「驻佇心观」(停心)将心初步收摄，成为「堪受法器」后方可进入前行。
+  description_en: |
+    The path of accumulation is the foundational preparation for all meditation, lasting roughly one to three years. Its core task is the resolve-engendering project—enabling the practitioner to "settle down" from distraction. Through the abiding mind-contemplation (stopping the mind) one gathers the mind initially; only after becoming a "vessel worthy of the teaching" does one proceed to the preliminary practice.
   sections:
     - title: 制度性入门 — 修行不是DIY
+      title_en: Institutional Entry — Practice Is Not Do-It-Yourself
       content: |
         法师强调:「它是一套制度」——个人能走到哪一步靠「法的传承」，但能否进入这套体系靠「宗的传承」建制。
 
@@ -151,72 +187,141 @@ stage1_foundation:
         三要件各有三: (1)心性要件-行者先决条件 (2)内摄要件-调身+调息=暖身二法 (3)内观要件-等持工程三昧基础，属一乘不共别圆。
 
         出处: 大华严寺官网「资粮道」页面 . 海云继梦《四十华严讲记》第67讲(2009年2月26日开示, fjdh.cn收录逐字稿)
+      content_en: |
+        The Master stresses: "It is an institution"—how far one advances rests on the "transmission of the teaching," but whether one may enter the system rests on the establishment of the "transmission of the school."
+
+        The three-year preliminary: complete the temple-assigned basic study materials, keep lecture notes (checked during communal practice), attend weekly communal practice, and join the "Huazang Project" to build up a shared language and way of thinking. With the consent of the meditation masters, a temple recommendation, and the masters' review, one obtains the qualification for the "conferral of the actual practice."
+
+        The five disciplines: moral precepts, monastic rules, the settling of the body, of the breath, and of the mind. Course balance: 70% practice (precepts, rules, mind) plus 30% wellbeing (body, breath).
+
+        Each of the three requirements has three aspects: (1) the character requirement—the practitioner's prerequisite; (2) the internal-gathering requirement—settling body and breath, the two warming-up methods; (3) the insight requirement—the basis of the samādhi of the equipoise project, belonging to the one-vehicle, unshared, specifically-perfect teaching.
     - title: "调身.调息.调心 — 五科训练详解"
+      title_en: Setting the Body, the Breath, and the Mind — the Five Disciplines in Detail
       content: |
         五科(戒.律.调身.调息.调心)是资粮道的实操基础。海云和上指出: 身.息.心三者一体不二——调息可及于调身,调身效果又可及于调心。实际行法中三者同时并行,非先后次第。核心著作: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984)。
+      content_en: |
+        The five disciplines (precepts, rules, and the settling of body, breath, and mind) form the practical foundation of the path of accumulation. Master Haiyun points out that body, breath, and mind are one and indivisible—settling the breath can reach the body, and the effect of settling the body can reach the mind. In actual practice the three proceed simultaneously, not in sequence. Core work: Warming Up: An Introduction to Huayan Meditation (Book Culture 2021).
       subsections:
         - title: "调身 — 毗卢遮那七支坐相"
+          title_en: Settling the Body — the Seven-Point Posture of Vairocana
           description: |
             据海云和上《迈向佛陀的境界——华严禅前行概论》第六章「毗卢遮那七支坐法」(fjdh.cn收录全文)。和上强调:「七支坐相的目的,旨在调身……若人以此来摄心,即能顿证佛性海。」
+          description_en: |
+            Drawn from chapter six, "The Seven-Point Posture of Vairocana," of Master Haiyun's Toward the Realm of Buddhahood. The Master stresses: "The purpose of the seven-point posture is to settle the body… if one gathers the mind by this means, one can directly realize the ocean of buddha-nature."
           items:
             - name: "(1)跏趺坐"
+              name_en: (1) The full lotus
               detail: "双盘为佳,单盘或金刚坐亦可。臀与两膝三点鼎立成正三角形,稳固久坐不倾"
+              detail_en: "The full lotus is best; the half lotus or vajra seat is also acceptable. Buttocks and two knees form three points of an equilateral triangle for stability in long sitting without toppling."
             - name: "(2)手结定印"
+              name_en: (2) The mudrā of concentration
               detail: "两掌相迭掌心向上,拇指轻拄(指甲碰指甲即可)。「五心向上」(两掌心/两足心/顶门)令气流畅"
+              detail_en: "The two palms are stacked with the palms up, the thumbs lightly touching (fingernail to fingernail suffices). The 'five centers turned up' (two palms, two soles, crown) allow the vital energy to flow."
             - name: "(3)头正颈正"
+              name_en: (3) Head straight, neck straight
               detail: "头不左右偏。「头正、颈正」与「脊直、肩平」构成十字形"
+              detail_en: "The head does not tilt left or right. 'Head straight, neck straight' together with 'spine straight, shoulders level' form a cross shape."
             - name: "(4)脊直肩平"
+              name_en: (4) Spine straight, shoulders level
               detail: "脊椎挺直,两肩平正放松,神经/血液/内分泌系统自然运作"
+              detail_en: "The spine is erect, the two shoulders level and relaxed, so that the nervous, circulatory, and endocrine systems operate naturally."
             - name: "(5)眼平视"
+              name_en: (5) The gaze level
               detail: "眼帘自然下垂以遮光为度,取「三分慈眼」。「此三相摄三千威仪」(头正/脊直/眼平视)"
+              detail_en: "The eyelids lower naturally just enough to shade the light, adopting the 'three-part compassionate gaze.' 'These three aspects encompass the three thousand dignified manners' (head straight, spine straight, gaze level)."
             - name: "(6)舌抵颚"
+              name_en: (6) The tongue against the palate
               detail: "舌尖轻顶上颚齿龈(上门牙牙龈处),口水自然由舌根两旁下流入咽喉"
+              detail_en: "The tip of the tongue lightly presses the gum above the upper front teeth, so that saliva naturally flows down beside the root of the tongue into the throat."
             - name: "(7)收下颚"
+              name_en: (7) The chin drawn in
               detail: "头不前后偏,百会穴与海底穴重迭。如此方能「经劫不替」,久坐不倾"
+              detail_en: "The head does not lean forward or back, the crown point and the base point overlap. Only thus can one sit 'unchanged through the eons,' long sitting without toppling."
         - title: "调息 — 息之四相与数息法"
+          title_en: Settling the Breath — the Four Phases of Breath and the Breath-Counting Method
           description: |
             息之四相出自智者大师《释禅波罗蜜次第法门》,海云和上在《禅修前行》第六集(fjdh.cn 2013.11)中引用并详加解说: 「守风则散,守喘则结,守气则劳,守息即定。」
+          description_en: |
+            The four phases of breath come from the Great Master Zhiyi's Explanation of the Graduated Methods of Chan and Pāramitā, which Master Haiyun cites and explains at length in his Preliminary Meditation Practice, episode six: "To watch the wind is to scatter, to watch the pant is to bind, to watch the coarse air is to weary, to watch the still breath is to settle."
           breath_phases:
             - name: 风相
+              name_en: the wind phase
               feature: "鼻息粗重,出入有声"
+              feature_en: "The breath from the nose is coarse and heavy, audible in and out."
               meaning: "身心不安宁->先安心,放下身心世界"
+              meaning_en: "Body and mind unsettled—first settle the mind, letting go of body, mind, and world."
             - name: 喘相
+              name_en: the panting phase
               feature: "息无声但出入结滞不通"
+              feature_en: "The breath is silent but its passage is blocked and labored."
               meaning: "身体多病->宽放身体,放松情绪"
+              meaning_en: "The body is prone to illness—loosen the body and relax the emotions."
             - name: 气相
+              name_en: the coarse-air phase
               feature: "息不结滞但不细"
+              feature_en: "The breath is not blocked, yet it is not fine."
               meaning: "初修状态->观想气行遍毛孔肢节,愈微愈妙"
+              meaning_en: "The beginner's state—visualize the energy flowing through every pore and limb, the subtler the better."
             - name: 息相
+              name_en: the still-breath phase
               feature: "无声.不结.不粗,出入绵密若存若亡"
+              feature_en: "Silent, unblocked, and fine, in and out dense and continuous as if present yet absent."
               meaning: "调相——可入定"
+              meaning_en: "The settled phase—one may enter concentration."
           counting_method: |
             数息要领: 注意力集中于「风门」(鼻中膈底部,两鼻孔间接近上唇处),觉知息入息出。在「息入尽」及「息出尽」的换气处数息(一入一出为一圈)。初学者从数「一至三」起,稳定后增至「一至五」->「一至七」->「一至十」。
+          counting_method_en: |
+            Essentials of breath-counting: focus the attention on the "wind gate" (the base of the nasal septum, between the two nostrils just above the upper lip) and be aware of each in-breath and out-breath. Count at the turning point where the in-breath ends and the out-breath ends (one in and one out makes one cycle). Beginners start counting "one to three," and once stable increase to "one to five," then "one to seven," then "one to ten."
         - title: "调心 — 治沉.浮.宽.急四相"
+          title_en: Settling the Mind — Treating the Four Phases of Sinking, Floating, Loosening, and Tension
           heart_phases:
             - name: 沉相
+              name_en: the sinking phase
               symptom: "昏沉欲睡.精神涣散.低头垂颈"
+              symptom_en: "Drowsy and dozing, scattered in spirit, head bowed and neck drooping."
               remedy: "补充营养(综合维他命);意守风门,守息入息出"
+              remedy_en: "Supplement nutrition (multivitamins); hold the mind at the wind gate, watching the in- and out-breath."
             - name: 浮相
               symptom: "精神亢奋.心念多缘.身躁动"
+            - name: 浮相
+              name_en: the floating phase
+              symptom: "精神亢奋.心念多缘.身躁动"
+              symptom_en: "Agitated in spirit, the mind grasping onto many objects, the body restless."
               remedy: "少食五辛.补品.牛羊肉等;系念丹田"
+              remedy_en: "Eat less of the five pungent roots, tonics, beef, mutton, etc.; hold the mind at the lower elixir field (dāntián)."
             - name: 宽相
+              name_en: the loosening phase
               symptom: "心意不举.身好躺卧.口中多水"
+              symptom_en: "The mind cannot rouse itself, the body loves to lie down, the mouth fills with saliva."
               remedy: "饮食多温热少寒凉;摄身挺腰,心安住息中"
+              remedy_en: "Eat more warm food and less cold; draw the body up and straighten the spine, abiding the mind in the breath."
             - name: 急相
+              name_en: the tension phase
               symptom: "胸中疼痛.气上举不调"
+              symptom_en: "Pain in the chest, the energy rising unregulated."
               remedy: "多食寒凉少食燥热;放宽身心,意不卑不亢"
+              remedy_en: "Eat more cool food and less hot-drying food; loosen body and mind, holding the attention neither too low nor too high."
           note: "若风门举意仍无效,可提意至眉间(风门至眉间称「金刚宝剑」,道家称「小周天」)。"
+          note_en: "If raising the attention at the wind gate still proves ineffective, one may raise it to between the brows (the stretch from wind gate to brows is called the 'vajra sword'; in Daoism, the 'small heavenly cycle')."
         - title: "入相.住相.出相 — 一座禅修的三阶段"
+          title_en: The Entering, Abiding, and Emergent Phases — the Three Stages of a Meditation Sit
           phases:
             - name: 入相（由粗到细）
+              name_en: the entering phase (from coarse to fine)
               detail: "调身(七支坐相)->调息(觉息相.数息)->调心(治沉浮宽急)"
+              detail_en: "Settle the body (the seven-point posture), then the breath (perceiving the breath and counting), then the mind (treating sinking, floating, loosening, and tension)."
             - name: 住相（住于细中）
+              name_en: the abiding phase (abiding in the fine)
               detail: "摄心于息,同时觉知身.息.心三相是否调和,随觉随治"
+              detail_en: "Gather the mind in the breath while sensing whether the three phases of body, breath, and mind are in harmony, correcting as one perceives."
             - name: 出相（由细到粗）
+              name_en: the emergent phase (from fine to coarse)
               detail: "先放心异缘(调心)->开口放气,息从百脉散(调息)->微动身躯.肩臂.头颈.双足,揉毛孔.摩掌熨眼(调身),待身热后方可出入,站定后拍打全身"
+              detail_en: "First release the mind to other objects (settling the mind), then open the mouth and let out the breath so it disperses through the hundred channels (settling the breath), then gently move the torso, shoulders, arms, neck, and feet, rubbing the pores and warming the eyes with cupped palms (settling the body); only after the body is warm may one rise, and once standing, pat the whole body."
       source: |
         出处: 《煖身: 华严禅修入门》(布克文化 2021, ISBN 9789865405984) . 七支坐相原文: 海云和上《迈向佛陀的境界——华严禅前行概论》第六章(fjdh.cn 2013.11) https://www.fjdh.cn/wumin/2013/11/183343302811.html . 《禅修正行》第12集 . 《禅修前行》第6集 . https://play.google.com/store/books/details?id=QREREAAAQBAJ
     - title: "驻佇心观(停心工程) — 一切禅观的根本前行"
+      title_en: The Abiding Mind-Contemplation (the Stopping Project) — the Fundamental Preliminary of All Meditation
       content: |
         海云法师:「你要能够停下心来，然后，我们要观心！停心是一个前行，都办不到了，怎么观心啊？」核心次第: 「停心」->「观心」。
 
@@ -234,95 +339,184 @@ stage1_foundation:
         停心之后才能观心——六根对六尘如何作用,看得清清楚楚,「没有任何推理、没有任何意识形态」。法师强调:「不停心你看不到！」六项自检: 空.明.定.智.善心.柔软。
 
         出处: 海云继梦《华严禅行法—禅观》第四集 . https://www.fjdh.cn/wumin/2013/11/165329303084.html . https://www.fjdh.cn/wumin/2013/09/155711285715.html
+      content_en: |
+        Master Haiyun: "You must be able to stop the mind, and then we contemplate the mind! Stopping the mind is a preliminary; if you cannot even do that, how can you contemplate the mind?" The core sequence: "stopping the mind" → "contemplating the mind."
+
+        Stopping the mind (the two gates of substance and appearance):
+        In substance: no thoughts arise and the six senses do not cling to the objects of the six sense-fields.
+        In appearance: one adds no groundless conjecture, clinging, or discrimination. The standard—"has the mind become still, like a wall, not moving at all!"
+
+        Four methods of stopping the mind:
+        (1) Investigating a huàtóu: "watching the huàtóu is stopping the mind right there"
+        (2) Setting the mind in one place: settle the mind at the wind gate of the nose, drawing it back whenever it runs off
+        (3) Counting or following the breath: working from the breath
+        (4) Following the rules of the meditation hall: move when one should move, be still when one should be still, letting body and mind go.
+
+        Contemplating and verifying the mind:
+        Only after stopping can one contemplate the mind—seeing clearly how the six senses operate upon the six sense-fields, "without any reasoning, without any ideology." The Master stresses: "If you do not stop the mind, you cannot see!" Six self-checks: emptiness, luminosity, stillness, wisdom, a wholesome mind, and gentleness.
 
 stage2_preparation:
   title: "第二阶段: 禅修前行 — 内摄工程"
+  title_en: "Stage Two: The Preliminary Practice — the Internal-Gathering Project"
   description: |
     前行是禅观体系的核心训练阶段，在界内定中进行。四种观法构成工程面主干，贯穿初信至十信位。前二种出自《占察善恶业报经》(T17n0839)，后二种是标准大乘止观。
+  description_en: |
+    The preliminary practice is the core training stage of the meditation system, carried out within concentration in the realms. The four contemplations form the backbone of the engineering track, running from the first to the tenth stage of faith. The first two come from the Sūtra of the Divination of the Wholesome and Evil Results of Karma (T17n0839); the latter two are standard Mahāyāna calming-and-insight.
   sections:
     - title: "技术面.工程面双轨详解"
+      title_en: The Technical and Engineering Tracks in Detail
       subsections:
         - title: "参禅金三角 — 置心一处 . 放轻松 . 息入息出"
+          title_en: The Golden Triangle of Meditation — Setting the Mind in One Place, Relaxing, and the Clear In- and Out-Breath
           description: |
             参禅金三角是海云和上禅修教学中 最核心的入门架构,三个条件缺一不可。法师强调:「这三点若能做到及格,触功德就会发起,身心得到调整,人格性可达七十五分以上。完成参禅金三角即进入心一境性。」
+          description_en: |
+            The golden triangle is the most central beginner's architecture in Master Haiyun's teaching; all three conditions are indispensable. The Master stresses: "If these three can be done to a passing standard, the touch-attributes will arise, body and mind are reordered, and one's personality can reach above seventy-five points. Completing the golden triangle means entering one-pointedness of mind."
           elements:
             - name: "(1)置心一处"
+              name_en: (1) Setting the mind in one place
               description: "将心念安住「风门」(鼻孔气息出入处)"
+              description_en: "Settle the mind at the 'wind gate' (where the breath enters and leaves the nostrils)."
               operation: "用数息法从一到十循环计数。莫用大脑推理思考,只用感受"
+              operation_en: "Use breath-counting, cycling from one to ten. Do not reason it out with the intellect; use only sensation."
             - name: "(2)放轻松"
+              name_en: (2) Relaxing
               description: "身体肌肉.神经系统都要放下;心理上也完全放松,不起执着"
+              description_en: "Let go in the muscles and nervous system; also relax psychologically, holding nothing."
               operation: "不能为了专注而肩膀紧绷。「呼吸归呼吸,妄想归妄想」——不跟妄想纠缠"
+              operation_en: "Do not tense the shoulders for the sake of concentration. 'Breath is breath, and wandering thoughts are wandering thoughts'—do not entangle with the delusions."
             - name: "(3)息入息出清楚"
+              name_en: (3) The in- and out-breath clearly perceived
               description: "对呼吸的出入看得清清楚楚,不能昏沉睡着"
+              description_en: "Perceive the coming and going of the breath clearly, without dozing off."
               operation: "「六根门头全开放」——心在宁静中保持鲜活。守住风门,身心放松,妄念停止"
+              operation_en: "'All the gates of the six senses wide open'—the mind stays alive within stillness. Guard the wind gate, relax body and mind, and wandering thoughts cease."
           full_process: |
             整体流程: 调身(七支坐相)->调息(自然呼吸,数息1-10)->置心一处于风门->同时放松身心->息入息出清清楚楚->达成金三角(心一境性)->触功德发起(轻安舒服感)->继续觉照根性->象限转移->破无明->入菩提道。
+          full_process_en: |
+            The whole process: settle the body (the seven-point posture) → settle the breath (natural breathing, counting one to ten) → set the mind in one place at the wind gate → at the same time relax body and mind → perceive the in- and out-breath clearly → attain the golden triangle (one-pointedness) → the touch-attributes arise (a comfortable ease) → continue illuminating the faculties → the quadrant shift → breaking through ignorance → entering the bodhi path.
           warning: |
             警示: 修得轻安感后不可耽于禅味,否则会掉入四禅八定而失去对根性的觉照。
+          warning_en: |
+            Warning: once one gains the ease, one must not linger in its flavor, or one will fall into the four dhyānas and eight concentrations and lose the illumination of the faculties.
           source: |
             出处: 海云继梦《何谓参禅金三角》(fjdh.cn 2013.12) . https://www.fjdh.cn/fjask/2013/12/133616318955.html . http://read.goodweb.top/news/news_view.asp?newsid=82958
         - title: "技术面: 安那般那 — 数.随.止三法"
+          title_en: "The Technical Track: Ānāpāna — the Three Methods of Counting, Following, and Stopping"
           methods:
             - name: 数法
+              name_en: the counting method
               state: "粗住->细住->欲界定"
+              state_en: "coarse abiding → fine abiding → the desire-realm concentration"
               operation: "置心风门,1数到10循环。克服四种妄想: 心理/物理/生理/社会制度"
+              operation_en: "Set the mind at the wind gate and count from 1 to 10 in a cycle. Overcome four kinds of wandering thoughts: psychological, physical, physiological, and social-institutional."
               pitfall: "⚠ 掉入「舒服禅」——枯木禅非真修"
+              pitfall_en: "Beware of falling into the 'comfortable meditation'—a withered-tree chan is not true practice."
             - name: 随法
+              name_en: the following method
               state: "欲界定->未到定"
+              state_en: "the desire-realm concentration → the concentration before the first dhyāna"
               operation: "注意「息入尽」与「息出尽」的每一个细节。妄想被堵住"
+              operation_en: "Attend to every detail of the end of the in-breath and the end of the out-breath. Wandering thoughts are blocked."
               pitfall: "追求境界名相,忽略身心柔和"
+              pitfall_en: "Chasing the terms and states of attainments while neglecting gentleness of body and mind."
             - name: 止法
+              name_en: the stopping method
               state: "置心一处.心一境性"
+              state_en: "setting the mind in one place, one-pointedness of mind"
               operation: "所有妄想脱落,心境合一。八触十功德"
+              operation_en: "All wandering thoughts fall away; mind and its object become one. The eight contacts and ten attributes."
               pitfall: "⚠ 左转入外道禅;须「右转」向四果"
+              pitfall_en: "Beware: turning left one enters the hermit schools' meditation; one must 'turn right' toward the four fruits."
         - title: "工程面: 三阶段心法 + 三层功夫"
+          title_en: "The Engineering Track: The Three-Stage Mind Method and the Three Layers of Effort"
           stages:
             - name: A阶段
+              name_en: Stage A
               detail: 感受息之长短与动静差异
+              detail_en: Sensing the difference in the length, movement, and stillness of the breath.
             - name: B阶段
+              name_en: Stage B
               detail: "洞悉呼吸因果轨迹(法师称「生命的秘笈」)"
+              detail_en: "Penetrating the causal course of the breath (called by the Master 'the secret key to life')."
             - name: C阶段
+              name_en: Stage C
               detail: "心王.心所.境界(公开资料未完全展开)"
+              detail_en: "The mind-king, mental factors, and objects (not fully elaborated in public materials)."
           three_layers: |
             内摄(技术面): 「妄想一起,把心抓回来放在风门」
             内观(工程面): 在数随止中感受法身存在,分三级: 寂而常照/照而常寂/寂照双亡
             禅观: 粗(数随止中感受)->细(置心一处后)->微妙(十信圆满后)
+          three_layers_en: |
+            Internal gathering (the technical track): "when a wandering thought arises, bring the mind back to the wind gate"
+            Internal contemplation (the engineering track): within counting, following, and stopping, sense the presence of the dharmakāya, in three degrees: still yet ever illuminating / illuminating yet ever still / the extinction of both stillness and illumination
+            Meditation: coarse (sensed within counting, following, stopping) → fine (after setting the mind in one place) → subtle and wondrous (after completing the ten stages of faith)
       source: |
         出处: 大华严寺官网「修行蓝图」. 海云继梦《禅修正行》《禅观》系列 . 《海云继梦禅观概论》(2015)第四章
     - title: "四种观法体系 — 前行工程面核心"
+      title_en: The System of Four Contemplations — the Core of the Preliminary Engineering Track
       table:
         headers: [观法, 信位, 禅定, 工程, 核心操作, 成就]
         rows:
           - name: "(1)唯心识观"
+            name_en: (1) The consciousness-only contemplation
             stage: 初信~二信
+            stage_en: First to second stage of faith
             meditation: "四天王定(煖法)"
+            meditation_en: "the concentration of the four heavenly kings (the warm stage)"
             engineering: 自省三业
+            engineering_en: introspecting the three deeds
             operation: "守记内心;避免无记攀缘;行禅/闭眼抬手训练"
+            operation_en: "Sustain mindful attention within; avoid idle grasping; walking meditation / eyes-closed hand-raising drills."
             achievement: 色寂三昧
+            achievement_en: the samādhi of the stilling of form
           - name: "(2)真如实观"
+            name_en: (2) The suchness reality contemplation
             stage: 二信位+
+            stage_en: Second stage of faith and beyond
             meditation: "忉利定(顶法)"
+            meditation_en: "the Trayastrimśa concentration (the summit stage)"
             engineering: 观五蕴流转
+            engineering_en: contemplating the flow of the five aggregates
             operation: "思惟心性无生无灭;反观自性;超越四空定"
+            operation_en: "Reflect that the nature of mind is unborn and unceasing; turn back to see one's own nature; go beyond the four formless concentrations."
             achievement: "相似空三昧->心寂三昧->一行三昧"
+            achievement_en: "the semblance emptiness samādhi → the mind-stilled samādhi → the single-practice samādhi"
           - name: "(3)毗婆舍那观"
+            name_en: (3) The vipaśyanā contemplation
             stage: 中信位
+            stage_en: the middle stage of faith
             meditation: "空居天定->色界定"
+            meditation_en: "the sky-dwelling heavens' concentration → the form-realm concentration"
             engineering: "观根尘识;照住色受间"
+            engineering_en: "contemplate sense-faculties, sense-objects, and consciousness; hold one's illumination between form and feeling"
             operation: "观六根六尘六识流动;照住色受动态止观"
+            operation_en: "Watch the flow of the six faculties, six objects, and six consciousnesses; hold one's illumination in the dynamic calming-and-insight between form and feeling."
             achievement: "渐舍五识(色界定)"
+            achievement_en: "gradually relinquishing the five consciousnesses (the form-realm concentration)"
           - name: "(4)奢摩他观"
+            name_en: (4) The śamatha contemplation
             stage: 后信位
+            stage_en: the later stage of faith
             meditation: "无色界定->出界定"
+            meditation_en: "the formless-realm concentration → the abandonment concentration"
             engineering: "照见五蕴空;入正真位"
+            engineering_en: "see that the five aggregates are empty; enter the true and genuine stage"
             operation: "舍意识;能所双泯;照见五蕴皆空"
+            operation_en: "Relinquish the mental consciousness; the extinction of both perceiver and perceived; see that the five aggregates are all empty."
             achievement: "十信满心;入法界;圆教初住位"
+            achievement_en: "completing the tenth stage of faith; entering the dharmadhātu; the first abiding stage of the perfect teaching"
       classical_source: |
         《占察善恶业报经》:「若欲依一实境界修信解者,应当学习二种观道。何等为二?一者唯心识观,二者真如实观。」海云法师称此经为「小本华严」。
         https://cbeta.buddhism.org.hk/xml/T17/T17n0839_002.xml
+      classical_source_en: |
+        The Sūtra of the Divination of Good and Evil Karmic Results: "If one wishes, relying on the true reality of one reality, to cultivate faith and understanding, one should study the two kinds of contemplation-paths. What are the two? The first is the consciousness-only contemplation, and the second is the suchness reality contemplation." Master Haiyun calls this sūtra "the Small Huayan."
       sharp_dull_differentiation: |
         利钝分判: 利根者(阴盖轻微.散乱心少)->直修真如实观; 钝根者(染着情厚.心难调伏)->先修唯心识观。海云法师补充: 钝根先以唯心识观摄心,令妄想降伏后方转入真如实观,此即「由相入性」。
+      sharp_dull_differentiation_en: |
+        Discriminating quick and dull faculties: those of keen faculties (with light veils and little scatteredness) directly cultivate the suchness reality contemplation; those of dull faculties (with deep attachment and an unruly mind) first cultivate the consciousness-only contemplation. Master Haiyun adds: the dull first gather the mind with the consciousness-only contemplation, and only after subduing delusions turn to the suchness reality contemplation—this is "entering the nature by way of the marks."
       detail_1_title: "(1) 唯心识观 — 毗钵舍那(观).法相宗.钝根先修"
+      detail_1_title_en: "(1) The Consciousness-Only Contemplation — vipaśyanā (insight), the dharma-character school, cultivated first by the dull"
       detail_1_content: |
         定位: 初信~二信位。工程: 自省三业(身.语.意),在定中境中唯观一切三业「唯心生.唯心灭」。四天王定是行者从「定外境」转入「定内境」的起点,属坚信位「煖法」;忉利定属「顶法」,不仅唯见三业之既成,更能见到「三业中心之所由起」。
 
@@ -330,247 +524,451 @@ stage2_preparation:
 
         两大重点: (正面)守记内心-念念清楚;(反面)避免无记攀缘-口头禅.摸头发等惯性动作。
         具体训练: (1)闭眼抬手-「手在哪里?你知道吗?要很清楚地感知到」 (2)行禅-脚步慢慢抬起->停->放下,清清楚楚了知 (3)口诀-「唯心识观就是不用大脑,让灵性生命浮现出来」。得色寂三昧。
+      detail_1_content_en: |
+        Setting: the first to second stage of faith. Engineering: introspecting the three deeds (body, speech, mind); within the stilled contemplation, seeing all three deeds as "born only from mind, ceasing only in mind." The concentration of the four heavenly kings is the point where the practitioner passes from "the stage-spheres outside concentration" to "the stage-spheres within concentration," belonging to the "warm stage" of the firmly believing stage; the Trayastrimśa concentration belongs to the "summit stage," seeing not only the already-accomplished three deeds but also "the source from which the center of the three deeds arises."
+
+        "One who studies the consciousness-only contemplation observes, at all times and in all places, all the deeds of body, speech, and mind, knowing that they are only mind. Do not let the mind grasp idly without knowing itself." "All dharmas arise from thought alone. If one leaves the mind, not a single dharma or mark can be seen as different by itself."
+
+        Two key points: (positively) sustain mindful attention within—clear in every moment; (negatively) avoid idle grasping—habitual motions such as catchphrases or touching the hair.
+        Concrete drills: (1) with eyes closed, raise the hand—"where is your hand? do you know? you must perceive it very clearly"; (2) walking meditation—slowly raise the foot, pause, put it down, aware of each clearly; (3) the gist—"the consciousness-only contemplation is not to use the brain, but to let the spiritual life emerge." One attains the samādhi of the stilling of form.
       detail_2_title: "(2) 真如实观 — 奢摩他(止).法性宗.利根直修"
+      detail_2_title_en: "(2) The Suchness Reality Contemplation — śamatha (calming), the dharma-nature school, cultivated directly by the keen"
       detail_2_content: |
         定位: 二信位及以上。工程: 观五蕴流转。与唯心识观的差别: 前者看「身语意三业(表层)」,后者深入「五蕴(身心基本元素)」的微观生灭。法理: 大乘起信论「一心开二门」—唯心识观对心生灭门(心之用),真如实观对心真如门(心之体)。
 
         「思惟心性无生无灭,不住见闻觉知,永离一切分别之想,渐渐能过空处.识处.无少处.非想非非想处等定境界相,得相似空三昧。」「展转能入心寂三昧……即复能入一行三昧,见佛无数,发深广行心,住坚信位。」
 
         海云判摄[语境: 2013年高雄《占察善恶业报经》开示]: 「唯心识观是让你了解心的存在跟作用-它像流水一样,前念接后念。真如实观是直接去看那个源头-心性的本源,无生无灭的那个。」
+      detail_2_content_en: |
+        Setting: the second stage of faith and beyond. Engineering: contemplating the flow of the five aggregates. Its difference from the consciousness-only contemplation: the former watches the three deeds of body, speech, and mind (the surface); the latter penetrates into the microscopic rising and ceasing of the five aggregates (the basic constituents of body and mind). Grounds: the Awakening of Faith's "one mind opening into two gates"—the consciousness-only contemplation corresponds to the gate of the arising-and-ceasing mind (the function of mind), and the suchness reality contemplation to the gate of the mind suchness (the substance of mind).
+
+        "Reflecting that the nature of mind is unborn and unceasing, not dwelling in seeing, hearing, sensation, or knowing, forever free of all thoughts of discrimination, gradually one can pass through the concentration states of emptiness, consciousness, nothing whatsoever, and neither perception nor non-perception, attaining the semblance emptiness samādhi." "By degrees one can enter the mind-stilled samādhi… and then the single-practice samādhi, seeing countless buddhas, arousing a vast and deep mind of practice, abiding in the firmly believing stage."
+
+        Haiyun's discernment [context: the 2013 Kaohsiung exposition of the Divination Sūtra]: "The consciousness-only contemplation lets you understand the existence and function of mind—it is like flowing water, thought following thought. The suchness reality contemplation looks directly at that source—the origin of the mind-nature, that which is unborn and unceasing."
       detail_3_title: "(3) 毗婆舍那观 — 深化观照.中信位"
+      detail_3_title_en: "(3) The Vipaśyanā Contemplation — deepening insight, the middle stage of faith"
       detail_3_content: |
         定位: 中信位(约五~六信位)。含两个递进层面: (a)观照六根六尘相接时的六识流动-比唯心识观更精微,从行为觉知深入到感知通道机制 (b)照住色与受之间的动态止观-「色」(物质性感受)与「受」(心理性感受)的细微边界。成就: 渐舍五识,进入色界定。
+      detail_3_content_en: |
+        Setting: the middle stage of faith (about the fifth to sixth). It has two advancing layers: (a) contemplating the flow of the six consciousnesses as the six faculties meet the six objects—finer than the consciousness-only contemplation, going from awareness of behavior into the mechanism of the perceptual channels; (b) holding one's illumination in the dynamic calming-and-insight between form (the material sensation) and feeling (the psychological sensation)—the subtle boundary between them. Attainment: gradually relinquishing the five consciousnesses and entering the form-realm concentration.
       detail_4_title: "(4) 奢摩他观 — 究竟止观.后信位.能所双泯"
+      detail_4_title_en: "(4) The Śamatha Contemplation — the ultimate calming-and-insight, the later stage of faith, the extinction of both perceiver and perceived"
       detail_4_content: |
         定位: 后信位(七~十信位)。三步骤: (a)舍意识-三界定功总纲最后阶段 (b)能所双泯-完全泯除主客二元对立,即《心经》「照见五蕴皆空」 (c)入正真位.十信满心-得「能所双泯」,正式「入法界」,成圆教初住位,转入正行。
+      detail_4_content_en: |
+        Setting: the later stage of faith (the seventh to tenth). Three steps: (a) relinquish the mental consciousness—the final phase of the general scheme of cultivating the abandoning of the three realms; (b) the extinction of both perceiver and perceived—completely dissolving the duality of subject and object, that is, the Heart Sūtra's "seeing that the five aggregates are all empty"; (c) entering the true and genuine stage, completing the tenth stage of faith—attaining "the extinction of both perceiver and perceived," formally "entering the dharmadhātu," becoming the first abiding stage of the perfect teaching, and turning to the actual practice.
       three_realms_discarding:
         title: "三界定功总纲(海云法师判摄)"
+        title_en: The General Scheme of Cultivating the Abandoning in the Three Realms (Master Haiyun's discernment)
         rows:
           - realm: 欲界定
+            realm_en: the desire-realm concentration
             core: 捨妄念
+            core_en: relinquish wandering thoughts
             observation: "唯心识观+真如实观"
+            observation_en: "the consciousness-only and suchness reality contemplations"
             stage: 初信~四信位
+            stage_en: first to fourth stage of faith
           - realm: 色界定
+            realm_en: the form-realm concentration
             core: 捨五识
+            core_en: relinquish the five consciousnesses
             observation: 毗婆舍那观
+            observation_en: the vipaśyanā contemplation
             stage: 五信~六信位
+            stage_en: fifth to sixth stage of faith
           - realm: 无色界定
+            realm_en: the formless-realm concentration
             core: 捨意识
+            core_en: relinquish the mental consciousness
             observation: 奢摩他观
+            observation_en: the śamatha contemplation
             stage: 七信~九信位
+            stage_en: seventh to ninth stage of faith
           - realm: 出界定
+            realm_en: the abandonment concentration
             core: "能所双泯.入法界"
+            core_en: "the extinction of both perceiver and perceived, entering the dharmadhātu"
             observation: 奢摩他观究竟
+            observation_en: the ultimate śamatha contemplation
             stage: 十信满心
+            stage_en: completing the tenth stage of faith
       source: |
         出处: 《非常占察经》讲记三册(空庭书苑 2015-2017, ISBN 9789867484918/4932/4949) . 播客「普賢乘華嚴宗」S18(46集) . https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889 . https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
     - title: "十信法门.果位对应 — 四种观法的阶位映射"
+      title_en: The Ten Stages of Faith and Their Fruits — the Stage Mapping of the Four Contemplations
       content: |
         海云法师将声闻「四果」与华严「十信位」逐级对应。「破根本无明」是初果的门槛而非彻悟终点——「破根本无明才叫做悟后起修！」[语境: 2009年2月26日《四十华严讲记》第67讲, 台北]
+      content_en: |
+        Master Haiyun maps the śrāvaka "four fruits" step by step onto the Huayan "ten stages of faith." "Breaking through fundamental ignorance" is the threshold of the first fruit, not the end of full awakening—"Only having broken through fundamental ignorance is it called practice after awakening!" [Context: Commentary on the Avatamsaka in Forty Fascicles, lecture 67, 26 February 2009, Taipei]
       mapping_table:
         headers: [传统果位, 华严信位, 对应观法, 禅定层次, 关键标准]
         rows:
           - fruition: "初果(预流果)"
+            fruition_en: First fruit (stream-enterer)
             stage: 初信位
+            stage_en: first stage of faith
             observation: 唯心识观
+            observation_en: the consciousness-only contemplation
             meditation: "四天王定(煖法)"
+            meditation_en: "the four heavenly kings' concentration (the warm stage)"
             standard: "「舍识用根」"
+            standard_en: "relinquishing consciousness and employing the faculties"
           - fruition: "—"
+            fruition_en: —
             stage: 二信位
+            stage_en: second stage of faith
             observation: "唯心识->真如实"
+            observation_en: "consciousness-only → suchness reality"
             meditation: "忉利定(顶法)"
+            meditation_en: "the Trayastrimśa concentration (the summit stage)"
             standard: "确认菩提心.毗卢遮那七支坐相.收心工程"
+            standard_en: "Confirming bodhicitta, the Vairocana seven-point posture, the mind-gathering project"
           - fruition: "二果(一来果)"
+            fruition_en: Second fruit (once-returner)
             stage: 三信位
+            stage_en: third stage of faith
             observation: 真如实观
+            observation_en: the suchness reality contemplation
             meditation: 欲界空居天定
+            meditation_en: the desire-realm sky-dwelling heaven concentration
             standard: "开始运用「观照」.具轻安三相+天王三德"
+            standard_en: "Beginning to employ 'the illumination'; endowed with the three marks of ease and the three virtues of a heavenly king"
           - fruition: "—"
+            fruition_en: —
             stage: 四信位
+            stage_en: fourth stage of faith
             observation: 真如实观
+            observation_en: the suchness reality contemplation
             meditation: 同上
+            meditation_en: as above
             standard: "安般守意工程: 置心于风门"
+            standard_en: "the ānāpāna mind-guarding project: setting the mind at the wind gate"
           - fruition: "三果(不还果)"
+            fruition_en: Third fruit (non-returner)
             stage: 五信位
+            stage_en: fifth stage of faith
             observation: 毗婆舍那观
+            observation_en: the vipaśyanā contemplation
             meditation: 色界定
+            meditation_en: the form-realm concentration
             standard: 渐舍五识
+            standard_en: gradually relinquishing the five consciousnesses
           - fruition: 四果向
+            fruition_en: approaching the fourth fruit
             stage: 六信位
+            stage_en: sixth stage of faith
             observation: 毗婆舍那观
+            observation_en: the vipaśyanā contemplation
             meditation: 色界定
+            meditation_en: the form-realm concentration
             standard: "照住-色受动态止观"
+            standard_en: "holding the illumination—the dynamic calming-and-insight between form and feeling"
           - fruition: "四果(阿罗汉)"
+            fruition_en: Fourth fruit (arhat)
             stage: 七信位
+            stage_en: seventh stage of faith
             observation: 奢摩他观
+            observation_en: the śamatha contemplation
             meditation: 无色界定
+            meditation_en: the formless-realm concentration
             standard: 我法二执尚未双破
+            standard_en: the clinging to self and to dharmas not yet both broken
           - fruition: 发心破法执
+            fruition_en: arousing the resolve to break the clinging to dharmas
             stage: 八信位
+            stage_en: eighth stage of faith
             observation: 奢摩他观
+            observation_en: the śamatha contemplation
             meditation: 无色界定
+            meditation_en: the formless-realm concentration
             standard: 回小向大
+            standard_en: turning from the lesser to the greater
           - fruition: 我执法执双破
+            fruition_en: the clinging to self and to dharmas both broken
             stage: 九信位
+            stage_en: ninth stage of faith
             observation: 奢摩他观
+            observation_en: the śamatha contemplation
             meditation: 出界定
+            meditation_en: the abandonment concentration
             standard: 渐舍意识
+            standard_en: gradually relinquishing the mental consciousness
           - fruition: 十信位圆满
+            fruition_en: the completion of the tenth stage of faith
             stage: 十信位
+            stage_en: tenth stage of faith
             observation: 奢摩他究竟
+            observation_en: the ultimate śamatha
             meditation: "出界定.入法界"
+            meditation_en: "the abandonment concentration, entering the dharmadhātu"
             standard: "能所双泯=照见五蕴皆空.成圆教初住位"
+            standard_en: "the extinction of both perceiver and perceived = seeing that the five aggregates are all empty, becoming the first abiding stage of the perfect teaching"
       post_note: |
         十信位之后: 初住位至七地(37位.正行.对应金刚界曼荼罗37尊)->八地至妙觉(5位.无功用行)——共42位圆满佛果。
+      post_note_en: |
+        After the ten stages of faith: from the first abiding stage through the seventh ground (37 stations, the actual practice, corresponding to the 37 deities of the vajra-realm maṇḍala) → from the eighth ground through the wonderful enlightenment (5 stations, the effortless practice)—forty-two stations in all completing the perfect buddhahood.
     - title: "三重观照技术: 观照.照住.照见"
+      title_en: "The Threefold Illumination Technique: Illumination, Held Illumination, and Direct Seeing"
       content: |
         贯穿四种观法的操作层面技术: 观照(二果开始,能所分离,唯心识观在此运作)-> 照住(至四果,能所合一,毗婆舍那观在此深化)-> 照见(十信满心,能所双泯,奢摩他观在此圆满)。
 
         法师说明:《心经》《金刚经》在他的判摄里都属于圆教初住位的教法——证量标的其实是「十信位圆满.入法界」之后的境界。
+      content_en: |
+        The operative techniques running through the four contemplations: illumination (from the second fruit, perceiver and perceived separated, where the consciousness-only contemplation operates) → held illumination (up to the fourth fruit, perceiver and perceived united, where the vipaśyanā contemplation deepens) → direct seeing (completing the tenth stage of faith, the extinction of both perceiver and perceived, where the śamatha contemplation comes to fulfillment).
+
+        The Master explains: in his discernment, both the Heart Sūtra and the Diamond Sūtra belong to the teaching of the first abiding stage of the perfect teaching—their standard of attainment is in fact the state after "completing the ten stages of faith and entering the dharmadhātu."
 
 stage3_main:
   title: "第三阶段: 禅修正行 — 等持工程（内观）"
+  title_en: "Stage Three: The Actual Practice — the Equipoise Project (inner contemplation)"
   description: |
     十信满心之后,转入正行。等持工程为官网正式名称。前半程三摩呬多(samahita),后半程定慧等持(三摩钵底 samapatti),究竟等至(三摩地 samadhi)。官网: 「以观导定、以定成观,当下验果,端身正坐,置心风门,依次第而进,步步可检核。」海云和上在讲记中进一步以「界内定/界外定」区分前行与正行的禅定层次,并以杜顺法界三观为究竟指导。
+  description_en: |
+    After completing the tenth stage of faith, one turns to the actual practice. "The equipoise project" is the official name on the temple website. The first half rests on samāhita, the second half on the equipoise of concentration and wisdom (samāpatti), and the final attainment is samādhi. The website: "Guided by contemplation toward concentration, and formed into contemplation by concentration, verifying the fruit on the spot, sitting upright, setting the mind at the wind gate, advancing stage by stage with every step checkable." In his lectures Master Haiyun further distinguishes the concentration levels of the preliminary and actual practice as "concentration within the realms" and "concentration beyond the realms," and takes Dushun's threefold vision of the dharmadhātu as the ultimate guide.
   sections:
     - title: "杜顺法界三观 — 正行核心指导框架"
+      title_en: Dushun's Threefold Vision of the Dharmadhātu — the Core Guiding Framework of the Actual Practice
       content: |
         杜顺和尚(华严初祖)所立三重观法,是华严禅观正行的究竟指导。海云和上指出: 龙树将三法印汇归一法印——空性(真空绝相观);杜顺进一步推进为理事无碍观;最终倡事事无碍观(周遍含容观)——举事即能通事,无需再透过理的转辙,此唯法身大士之行径。
+      content_en: |
+        The threefold contemplation established by the venerable Dushun (the first patriarch of Huayan) is the ultimate guide of the actual practice. Master Haiyun points out: Nāgārjuna gathered the three dharma-seals into one—emptiness (the contemplation of true emptiness and the cutting off of marks); Dushun advanced this further into the contemplation of the unimpeded interpenetration of principle and phenomena; and ultimately advocated the contemplation of the unimpeded interpenetration of phenomena and phenomena (the pervasive and inclusive contemplation)—taking up one phenomenon one directly penetrates all phenomena, without needing to pass through the pivot of principle; this is the conduct only of adepts of the dharmakāya.
       table:
         headers: [观法, 对应法界, 核心义理, "海云法师判摄"]
         rows:
           - name: "(1)真空绝相观"
+            name_en: (1) The contemplation of true emptiness and the cutting off of marks
             realm: 理法界
+            realm_en: the dharmadhātu of principle
             theory: "会色归空,明空即色,空色无碍。一切法当体即空"
+            theory_en: "Gathering form back into emptiness, understanding that emptiness is form, and that emptiness and form are unobstructed. All dharmas are empty in their very essence."
             interpretation: "龙树空性一法印之极致——理无碍即阿罗汉空性观"
+            interpretation_en: "The culmination of Nāgārjuna's single seal of emptiness—unimpeded principle is the arhat's emptiness contemplation"
           - name: "(2)理事无碍观"
+            name_en: (2) The contemplation of the unimpeded interpenetration of principle and phenomena
             realm: 理事无碍法界
+            realm_en: the dharmadhātu of the unobstructed interpenetration of principle and phenomena
             theory: "理遍于事,事遍于理。理(真如)不碍事(万象),事不碍理"
+            theory_en: "Principle pervades phenomena and phenomena pervade principle. Principle (suchness) does not obstruct phenomena (the myriad things), nor do phenomena obstruct principle."
             interpretation: "事无碍即生活中的一切事物——「吾辈行者,亦当力行乎此」"
+            interpretation_en: "Unimpeded phenomena are all the things of everyday life—'We practitioners, too, should strive hard in this.'"
           - name: "(3)周遍含容观"
+            name_en: (3) The pervasive and inclusive contemplation
             realm: 事事无碍法界
+            realm_en: the dharmadhātu of the unobstructed interpenetration of phenomena and phenomena
             theory: "事如理融,遍摄无碍。如因陀罗网,一即一切,重重无尽"
+            theory_en: "Phenomena, fused like principle, pervasively encompass one another without hindrance. Like Indra's net—one is all, and all inter-reflect without end."
             interpretation: "举事即通事,不经理之转辙——唯法身大士境界。即海印三昧现前"
+            interpretation_en: "Taking up one phenomenon one directly penetrates phenomena, without the pivot of principle—the exclusive state of an adept of the dharmakāya. It is the ocean-seal samādhi manifesting."
       source: |
         出处: 杜顺《法界观门》 . 海云继梦《迈向佛陀的境界》(空庭书苑 2011) . http://wuming.xuefo.net/nr/6/59482.html
     - title: "正授行法 — 四次灌顶制度"
+      title_en: The Conferral of the Actual Practice — the System of the Four Initiations
       table:
         headers: [灌顶, 目标, 关键]
         rows:
           - name: "(1)忍可灌顶"
+            name_en: (1) The acquiescence initiation
             goal: 破根本无明
+            goal_en: breaking through fundamental ignorance
             key: "约十人中八人被「踢出去」重修"
+            key_en: "of about ten people, eight are 'kicked out' to start over"
           - name: "(2)行者灌顶"
+            name_en: (2) The practitioner initiation
             goal: "证初果.寻生命原形"
+            goal_en: "realizing the first fruit, seeking the original shape of life"
             key: "通过后取得正式「行者」资格"
+            key_en: "passing it grants the formal status of a 'practitioner'"
           - name: "(3)进阶灌顶"
+            name_en: (3) The advanced initiation
             goal: "能所合一.破我法二执"
+            goal_en: "uniting perceiver and perceived, breaking the clinging to self and to dharmas"
             key: 成就四智
+            key_en: the accomplishment of the four wisdoms
           - name: "(4)高阶灌顶"
+            name_en: (4) The higher initiation
             goal: "能所双泯.入法界"
+            goal_en: "the extinction of both perceiver and perceived, entering the dharmadhātu"
             key: "「照见根性,能所双泯」=「照见五蕴皆空」"
+            key_en: "'illuminating the faculties, the extinction of both perceiver and perceived' = 'seeing that the five aggregates are all empty'"
     - title: "三摩呬多.三摩钵底.三摩地"
+      title_en: "Samāhita, Samāpatti, Samādhi"
       table:
         headers: [名相, 梵语, 定位, 操作要点]
         rows:
           - name: 三摩呬多
+            name_en: samāhita
             sanskrit: Samahita
             position: "入定前.专注调心"
+            position_en: "before entering concentration; focused settling of the mind"
             operation: "粗住->细住->欲界定。排除妄想执著"
+            operation_en: "coarse abiding → fine abiding → the desire-realm concentration. Excluding delusions and attachments."
           - name: 三摩钵底
+            name_en: samāpatti
             sanskrit: Samapatti
             position: "以观导定.定慧双运"
+            position_en: "guided by contemplation toward concentration; concentration and insight in tandem"
             operation: "勘定三界定。须善知识勘定"
+            operation_en: "certifying the concentrations of the three realms. It requires certification by a good teacher."
           - name: 三摩地
+            name_en: samādhi
             sanskrit: Samadhi
             position: "究竟.心一境性.海印三昧"
+            position_en: "ultimate; one-pointedness; the ocean-seal samādhi"
             operation: "出入自在。破法执我执"
+            operation_en: "entering and emerging at will. Breaking the clinging to dharmas and to self."
       note: |
         术语说明: 「三摩地」(samadhi)标准译语为「等持」,「三摩钵底」(samapatti)标准译语为「等至」。大华严寺官方资料中的配对与此恰好相反——此系道场自身的术语使用习惯。
+      note_en: |
+        On the terms: the standard rendering of samādhi is "equipoise" (dengchi), and of samāpatti "attainment" (dengzhi). The pairing in the Dahuayan Temple's official materials is exactly the reverse—this reflects the tradition's own usage.
 
 classical_foundations:
   title: "古典义理地基 — 杜顺和尚五教止观"
+  title_en: The Classical Doctrinal Foundation — the Venerable Dushun's Five Teachings of Calming and Contemplation
   description: |
     华严初祖杜顺大师所立五教止观,是华严宗禅观的古典义理框架。海云和上的四种观法是实际操作体系,五教止观则是其背后的意识状态分类学——二者构成「行」与「解」的互补关系。
+  description_en: |
+    The five teachings of calming and contemplation established by the great master Dushun, the first patriarch of Huayan, form the classical doctrinal framework of Huayan meditation. Master Haiyun's four contemplations are an operational system; the five teachings of calming and contemplation are the classification of the states of consciousness underlying them—the two form a complementary relation of "practice" and "understanding."
   entries:
     - name: "一.法有我无门(小乘教)"
+      name_en: "I. The gate of dharma-exists-self-does-not (the Hīnayāna teaching)"
       content: "破除「我执」,体悟我空,但法执犹存。对应四禅八定。"
+      content_en: "Breaks the clinging to self and realizes that self is empty, yet the clinging to dharmas remains. It corresponds to the four dhyānas and eight concentrations."
       hy_mapping: "在海云体系中对应: 资粮道阶段的基本停心功夫。"
+      hy_mapping_en: "In Haiyun's system this corresponds to: the basic mind-stopping work of the path of accumulation."
     - name: "二.生即无生门(大乘始教)"
+      name_en: "II. The gate of arising-is-non-arising (the initial Mahāyāna teaching)"
       content: "体悟「法空」——外境皆由阿赖耶识变现。"
+      content_en: "Realizes the emptiness of dharmas—the external world is all transformed and manifested by ālayavijñāna."
       hy_mapping: "在海云体系中对应: 唯心识观——「知唯是心」的义理背景。"
+      hy_mapping_en: "In Haiyun's system this corresponds to: the consciousness-only contemplation—the doctrinal background of 'knowing that it is only mind.'"
     - name: "三.事理圆融门(大乘终教)"
+      name_en: "III. The gate of the interpenetration of principle and phenomena (the final Mahāyāna teaching)"
       content: "空有不二,理事圆融无碍。"
+      content_en: "Emptiness and existence are non-dual; principle and phenomena interpenetrate without obstruction."
       hy_mapping: "在海云体系中对应: 真如实观——理(真如)与事(五蕴流转)融合的义理背景。"
+      hy_mapping_en: "In Haiyun's system this corresponds to: the suchness reality contemplation—the doctrinal background in which principle (suchness) and phenomena (the flow of the five aggregates) are fused."
     - name: "四.语观双绝门(大乘顿教)"
+      name_en: "IV. The gate of the cutting off of both speech and observation (the sudden Mahāyāna teaching)"
       content: "言语道断,心行处灭。"
+      content_en: "The path of speech is cut off and the place of mental activity is extinguished."
       hy_mapping: "在海云体系中对应: 奢摩他观——「舍意识」「能所双泯」的义理背景。"
+      hy_mapping_en: "In Haiyun's system this corresponds to: the śamatha contemplation—the doctrinal background of 'relinquishing the mental consciousness' and 'the extinction of both perceiver and perceived.'"
     - name: "五.华严三昧门(一乘圆教.究竟)"
+      name_en: "V. The gate of the Huayan samādhi (the one-vehicle perfect teaching, ultimate)"
       content: "见法界缘起之相——万象影现,一即一切、圆融无碍。此即海印三昧。"
+      content_en: "Sees the marks of the dependent origination of the dharmadhātu—the myriad things appear like reflections, one is all, perfectly interpenetrating without obstruction. This is the ocean-seal samādhi."
       hy_mapping: "在海云体系中对应: 正行究竟——三摩地.海印三昧.法界三观现前.42位圆满。"
+      hy_mapping_en: "In Haiyun's system this corresponds to: the ultimate actual practice—samādhi, the ocean-seal samādhi, the threefold vision of the dharmadhātu manifesting, and the completion of the forty-two stations."
 
 xianshou_wujiao:
   title: "贤首五教仪 — 华严判教: 小.始.终.顿.圆"
+  title_en: "The Xianshou Five-Teaching Liturgy — the Huayan Doctrine of Classifying Teachings: Hīnayāna, Initial, Final, Sudden, and Perfect"
   description: |
     贤首五教仪由华严三祖法藏(贤首国师)创立,清续法大师集大成,是华严宗判教理论的核心框架。海云继梦和上称判教为「文化解剖学」——将印度佛教文明基因与中国文明基因进行重组的方式。五教与杜顺五教止观一一对应: 小教(法有我无门).始教(生即无生门).终教(事理圆融门).顿教(语观双绝门).圆教(华严三昧门)。法师于2008年5月19日至7月17日在台北讲授《贤首五教仪—法界观》,可确认至少53集。播客音频于2020年3月9日前后由「海云继梦法师讲经」频道集中上传至Spotify/Apple Podcast等平台。
+  description_en: |
+    The Xianshou five-teaching liturgy was founded by Fazang (the Xianshou National Master, third patriarch of Huayan) and brought to completion by the Qing master Xufa; it is the core framework of Huayan's doctrine of classifying teachings. Master Haiyun Jirong calls doctrinal classification "cultural anatomy"—a way of recombining the civilizational gene of Indian Buddhism with that of Chinese civilization. The five teachings correspond one-to-one with Dushun's five teachings of calming and contemplation: the Hīnayāna (the gate of dharma-exists-self-does-not), the initial (arising-is-non-arising), the final (the interpenetration of principle and phenomena), the sudden (the cutting off of both speech and observation), and the perfect (the Huayan samādhi). From 19 May to 17 July 2008 the Master taught the Xianshou Five-Teaching Liturgy and the Vision of the Dharmadhātu in Taipei, in at least fifty-three confirmed lectures. Around 9 March 2020 the podcast audio was uploaded in a batch by the "Master Haiyun Jirong's Lectures" channel to Spotify, Apple Podcasts, and other platforms.
   table:
     headers: [五教, 核心义理, "海云法师判摄", 修证品数]
     rows:
       - name: 小教
+        name_en: the Hīnayāna teaching
         theory: |
           只说人空,不明法空。依六识三毒建立染净根本。
           「如木作灰,如色归空,断烦恼障,灭分段死」
+        theory_en: |
+          Speaks only of the emptiness of the person, not the emptiness of dharmas. It establishes the root of the defiled and the pure on the six consciousnesses and the three poisons.
+          "Like wood turning to ashes, like form returning to emptiness: cutting the afflictions obstruction and extinguishing the delimited births and deaths."
         interpretation: "封闭型心态,只执一法门。总相念=始教十回向"
+        interpretation_en: "A closed mentality, clinging to a single dharma-gate. The total-mark contemplation equals the initial teaching's ten dedications."
         grades: "—"
+        grades_en: —
       - name: 始教
+        name_en: the initial teaching
         theory: |
           分空始教(般若)与相始教(唯识)。说一切皆空或分别诸法性相。定性二乘不成佛
+        theory_en: |
+          Divided into the emptiness-initial (Prajñā) and the mark-initial (Yogācāra). It says all is empty, or discriminates the natures and marks of dharmas. The fixed-nature two vehicles do not attain buddhahood.
         interpretation: "「如镜离垢,如月出云,断二障,灭二死,显二空,证二果」"
+        interpretation_en: "'Like a mirror freed of grime, like the moon emerging from clouds: cutting the two obstructions, extinguishing the two deaths, revealing the two emptinesses, and realizing the two fruits.'"
         grades: 十二品
+        grades_en: twelve grades
       - name: 终教
+        name_en: the final teaching
         theory: |
           说如来藏随缘成阿赖耶识。定性二乘.无性阐提悉当成佛。少说法相,广说真性
+        theory_en: |
+          Says the tathāgatagarbha arises according to conditions into ālayavijñāna. The fixed-nature two vehicles and the icchantikas without a nature all become buddhas. It speaks little of dharma-marks and extensively of the true nature.
         interpretation: "「如器成金,如冰即水」——将事相会归于理体,大乘至极之说"
+        interpretation_en: "'Like a vessel forged into gold, like ice turning to water'—gathering the phenomenal into the substance of principle, the ultimate expression of the Greater Vehicle."
         grades: 四十二品
+        grades_en: forty-two grades
       - name: 顿教
+        name_en: the sudden teaching
         theory: |
           一念不生,即名为佛。唯是一念,无时可说。无明不起时即无时空;无明起时便有三大阿僧祇劫
+        theory_en: |
+          When not a single thought arises, that is called buddhahood. It is but a single moment, with nothing temporal to be said. When ignorance does not arise there is no time or space; when ignorance arises there are the three great incalculable eons.
         interpretation: "「如狂迷歇,如睡梦觉」——一切烦恼本来自离,不是烦恼缠你,是你招揽烦恼。关键: 置心一处"
+        interpretation_en: "'Like ceasing to be mad and deluded, like waking from sleep and dream'—all afflictions are inherently absent; it is not that afflictions entangle you, but that you summon them. The key: setting the mind in one place."
         grades: 五十二品
+        grades_en: fifty-two grades
       - name: 圆教
+        name_en: the perfect teaching
         theory: |
           一切即一,一即一切。念劫圆融,自在无碍。一位即一切位,十信满心即摄五位成正觉。依普贤法界,性相圆融,主伴无尽
+        theory_en: |
+          All is one and one is all. Moment and eon interpenetrate, free and unobstructed. One station is all stations; completing the tenth stage of faith encompasses the five stations in attaining enlightenment. Relying on the Samantabhadra dharmadhātu, nature and marks interpenetrate, principal and attendants without end.
         interpretation: "「如拆棉花,如融金狮」——不破而圆融,一切时分同时具足。初住至妙觉,三地超顿教妙觉"
+        interpretation_en: "'Like teasing apart cotton, like the molten golden lion'—perfectly fused without breaking, all times simultaneously complete. From the first abiding stage to the wonderful enlightenment; the third ground surpasses the sudden teaching's wonderful enlightenment."
         grades: 六十二品
+        grades_en: sixty-two grades
   gradual_vs_sudden:
     title: "渐教.顿教的实践义 — 从判教到操作"
+    title_en: The Practical Meaning of the Gradual and Sudden Teachings — from Classification to Operation
     content: |
       海云和上将判教转化为实际操作: 渐教(始教+终教)——次第修证路线,对应四种观法中的唯心识观->真如实观->毗婆舍那观,一级一级深入。顿教——「一念不生,即名为佛」「唯是一念,无时可说」。关键操作: 置心一处——守住风门(或佛号.咒语.数息),其他六尘境界一概不理,「能置心一处,一切烦恼自然离开」。顿教与始教.终教的根本区别: 小教与始教都在「无明的前提下」讲时间与次第;顿教直接告诉你无明不起时,即无时间可得——这是大脑想象不到.言语道断的境界。
       出处: 海云继梦《贤首五教仪—法界观》第40-45集(2008.7.8-7.10)
+    content_en: |
+      Master Haiyun turns the doctrinal classification into actual operation: the gradual teaching (the initial plus the final)—a sequential path of cultivation, corresponding to the consciousness-only → suchness reality → vipaśyanā contemplations among the four, advancing level by level. The sudden teaching—"when not a single thought arises, that is called buddhahood"; "it is but a single moment, with nothing temporal to be said." The key operation: setting the mind in one place—guard the wind gate (or the buddha-name, a mantra, or breath-counting) and pay no attention whatsoever to the other objects of the six sense-fields; "if you can set the mind in one place, all afflictions naturally leave." The fundamental difference between the sudden and the initial/final: the Hīnayāna and initial teachings both speak of time and sequence "under the premise of ignorance"; the sudden teaching tells you directly that when ignorance does not arise, there is no time to be had—a state the thinking mind cannot imagine and speech cannot convey.
+      Source: Haiyun Jirong's Xianshou Five-Teaching Liturgy and the Vision of the Dharmadhātu, lectures 40-45 (8-10 July 2008)
   source: |
     出处: 海云继梦 2008年台北《贤首五教仪—法界观》53集+ . https://www.listennotes.com/podcasts/海云继梦法师讲经-播客/ . https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc . 续法《贤首五教仪》原著
 
 yicheng_bieyuan:
   title: "一乘不共别圆 — 普贤乘的判教定位"
+  title_en: "The One-Vehicle Unshared Specifically-Perfect Teaching — the Doctrinal Position of the Samantabhadra Vehicle"
   description: |
     「一乘不共别圆」是华严宗对自身教义的最高定位——「别人所没有的,所以叫做『别』」。「不共」谓不与三乘共,独为圆顿大根菩萨所说;「别圆」指有别于天台宗以《法华》为圆教的立场,华严自许为最圆满的别教一乘。海云和上特别强调: 这种不共别圆的特质不在理论层面,而在行法的内在蕴藏——「他在经文里头表达得很清楚,但是因为你不懂这种语言模式跟思维模式,所以你以为经文好像讲故事一样讲过去。」
+  description_en: |
+    "The one-vehicle unshared specifically-perfect teaching" is Huayan's highest self-designation of its own doctrine—"what others do not have is called 'specific.'" "Unshared" means not shared with the three vehicles, spoken uniquely for bodhisattvas of perfect and sudden great faculties; "specifically-perfect" means it differs from the Tiantai school's position of taking the Lotus as the perfect teaching—Huayan regards itself as the most complete specifically-different one-vehicle teaching. Master Haiyun stresses in particular: this unshared, specifically-perfect character lies not on the level of theory but in the inner reserve of the practice—"it is all expressed very clearly in the scriptures, but because you do not understand this mode of language and this mode of thought, you take the scriptures to be merely told like a story."
   table:
     headers: [概念, 定位, 特点]
     rows:
       - name: 别教一乘
+        name_en: the specifically-different one-vehicle
         position: "《华严经》——纯圆至实,别于三乘"
+        position_en: "The Avatamsaka Sūtra—purely perfect and supremely real, differing from the three vehicles."
         features: |
           智俨《孔目章》:「别教者,别于三乘故。」法藏《五教章》: 分「性海果分」(佛自证,不可说)与「缘起因分」(普贤境界,可说)
+        features_en: |
+          Zhiyan's Kǒumù chapter: "The specifically-different is so called because it differs from the three vehicles." Fazang's Chapter on the Five Teachings divides it into "the fruit-division of the sea of nature" (the Buddha's own realization, ineffable) and "the cause-division of dependent arising" (the Samantabhadra realm, expressible).
       - name: 同教一乘
+        name_en: the common one-vehicle
         position: "《法华经》——会三归一,摄末归本"
+        position_en: "The Lotus Sūtra—gathering the three into the one, drawing the branches back to the root."
         features: "智俨: 开三乘方便显一乘真实。法藏判同教一乘较别教一乘低一位,因须「会三归一」方显一乘"
+        features_en: "Zhiyan: open the expedients of the three vehicles to reveal the reality of the one vehicle. Fazang judges the common one-vehicle one station lower than the specifically-different one-vehicle, because it must 'gather the three into the one' to reveal the one vehicle."
   puxian_interpretation: |
     海云和上以「普贤乘」名其体系——此即华严别教一乘的实践展开。法师在《四十华严讲记》第68讲中指出: 「普贤乘」的关键在直接兑现,非如三乘出离需次第渐修——「能观心即生成报身(文殊),所观心则生成法身(普贤),置心一处可滋长法身慧命。」并强调此不共别圆的特质不在理论,而在行法的内在蕴藏——「他在经文里头表达得很清楚,但是因为你不懂这种语言模式跟思维模式,所以你以为经文好像讲故事一样讲过去。」[语境: 2009年《四十华严》第68讲,台北]
+  puxian_interpretation_en: |
+    Master Haiyun names his system the "Samantabhadra Vehicle"—this is the practical unfolding of Huayan's specifically-different one-vehicle teaching. In lecture 68 of his Commentary on the Avatamsaka in Forty Fascicles the Master points out that the key of the "Samantabhadra Vehicle" lies in immediate fulfillment, not, as with the three-vehicle renunciation, in gradual step-by-step cultivation—"the observing mind generates in this very life the reward body (Mañjuśrī), while the observed mind generates the dharmakāya (Samantabhadra); setting the mind in one place can nourish the life and wisdom of the dharmakāya." He further stresses that this unshared, specifically-perfect character lies not in theory but in the inner reserve of the practice—"it is all expressed very clearly in the scriptures, but because you do not understand this mode of language and this mode of thought, you take the scriptures to be merely told like a story." [Context: 2009, Avatamsaka in Forty Fascicles, lecture 68, Taipei]
   source: |
     出处: 智俨《华严经孔目章》.法藏《五教章》.海云继梦《四十华严讲记》第68讲 . 《华严学报》第3期(2012)
 
 important_texts:
   - name: "法藏《华严金师子章》 — 十门妙诠华严法界玄奥"
+    name_en: "Fazang's Chapter on the Golden Lion — Ten Gates Wonderfully Expounding the Mysteries of the Huayan Dharmadhātu"
     content: |
       《金师子章》是华严三祖法藏为武则天讲解华严奥义之作——以殿中金狮子为喻,从明缘起.辨色空.约三性.显无相.说无生.论五教.勒十玄.括六相.成菩提.入涅槃十门,仅约一千五百字,妙诠华严法界玄奥。海云继梦和上于2006年在台北开示,共14集。后由空庭书苑整理出版为《华严金师子章讲记》(265页,2010年出版)。讲记逐字稿于2013年11月由fjdh.cn(佛教导航)集中发布。
 
@@ -581,7 +979,16 @@ important_texts:
       修行三区块: 凡夫区(变异念->善恶念->净识念).行者区(初果向到破我法二执).法身区(根本智->后得智->自受用->他受用)。法师强调:「知道不算,做到才算。」
 
       出处: 海云继梦《华严金师子章讲记》(空庭书苑 2010) . http://wuming.xuefo.net/nr/7/70462.html . https://www.got1shop.com/mobile/index.php?m=default&c=goods&a=index&id=3459706
+    content_en: |
+      The Chapter on the Golden Lion was composed by Fazang, the third patriarch of Huayan, to expound the profound meaning of Huayan for Empress Wu Zetian—taking the golden lion in the hall as its metaphor. In ten gates—clarifying dependent origination, discerning form and emptiness, approaching the three natures, revealing the signless, expounding non-arising, discussing the five teachings, setting forth the ten mysterious gates, encompassing the six characteristics, accomplishing bodhi, and entering nirvāṇa—it runs only about fifteen hundred characters, wonderfully expounding the hidden wonder of the Huayan dharmadhātu. Master Haiyun Jirong lectured on it in Taipei in 2006 in fourteen episodes; the lectures were edited and published by Kōngtíng Shūyuàn as Lectures on the Huayan Chapter on the Golden Lion (265 pages, 2010). The verbatim transcripts were released in a batch by fjdh.cn (Buddhist Navigation) in November 2013.
+
+      Core discernment: the ten sections fall into three—(1-3) dependent origination / form and emptiness / the three natures = basic theory; (4-5) the signless / non-arising = Prajñā emptiness; (6) the five teachings = doctrinal classification entering Huayan; (7) the ten mysterious gates = the supreme state of unobstructed interpenetration of phenomena; (8) the six characteristics = an integrated perfection (the first ground); (9) accomplishing bodhi = a second integration; (10) entering nirvāṇa = a third integration, layer upon layer without end.
+
+      The gist of the ten mysterious gates: the gate of simultaneous and complete correspondence (the gold substance and the lion's form are established together); the gate of the realm of Indra's net (each hair bears a golden lion, layer upon layer without end, one being all); the gate of the ten times separated and differently accomplished (the nine times fused into a single thought).
+
+      The three zones of practice: the ordinary zone (transforming thoughts → wholesome and unwholesome thoughts → pure discerning thoughts); the practitioner zone (from approaching the first fruit to breaking the clinging to self and dharmas); the dharmakāya zone (fundamental → subsequent wisdom, then self-enjoyment → enjoyment for others). The Master stresses: "Knowing does not count; doing is what counts."
   - name: "澄观《心要法门》 — 「至道本乎其心,心法本乎无住」"
+    name_en: "Chengguan's Essential Gates of the Mind — 'The supreme path is rooted in the mind, and the dharma of the mind is rooted in non-abiding'"
     content: |
       《心要法门》是华严四祖清凉澄观大师(738-839)所撰,全文仅数百字,阐述「至道本乎其心,心法本乎无住」的华严心法核心要义——无住心体是华严禅观的终极归趣。海云继梦和上以现代语言逐段译解,出版为《解心: 心要法门讲记》(空庭书苑 2001年6月30日初版, ISBN 9573067129, 326页; 宗教文化出版社 2005年9月简体版, 187页)。
 
@@ -592,7 +999,16 @@ important_texts:
       法师后续出版《是心,非心,还是心!——从心要法门谈心》(空庭书苑 2013, ISBN 9789867484710),进一步深化「无住心体」与华严禅观修行次第的内在关联。
 
       出处: 海云继梦《解心: 心要法门讲记》(空庭书苑 2001/宗教文化出版社 2005) . https://www.buybook.tw/book-0010164666.htm . https://webpac.taichung.gov.tw/bookDetail/730070
+    content_en: |
+      The Essential Gates of the Mind was composed by Chengguan (738-839), the Qingliang Great Master and fourth patriarch of Huayan. The whole text runs only a few hundred characters, expounding the core meaning of the Huayan mind-dharma—"the supreme path is rooted in the mind, and the dharma of the mind is rooted in non-abiding"—namely that the non-abiding mind-substance is the ultimate goal of Huayan meditation. Master Haiyun Jirong interpreted it section by section in modern language, published as Unraveling the Mind: Lectures on the Essential Gates (Kōngtíng Shūyuàn, first edition 30 June 2001, ISBN 9573067129, 326 pages; Religious Culture Press, mainland simplified edition September 2005, 187 pages).
+
+      Core thought: the "non-abiding mind-substance"—the true mind does not cling to any single place; its numinous knowing is never obscured, its nature and marks are serene, it contains all attributes and functions, and gathers within and without. One who realizes this enters the dharmadhātu. "The dharma of the mind is rooted in non-abiding"—the root of all mind-dharmas lies in non-abiding; non-abiding is non-grasping, and non-grasping is liberation.
+
+      Master Haiyun's discernment: this is the ultimate orientation of Huayan meditation—the four contemplations (consciousness-only → suchness reality → vipaśyanā → śamatha), each layer deepening, finally realize precisely this "non-abiding mind-substance." "With a mind free of the myriad things, yet the myriad things have never been absent"—not the destruction of things, but non-grasping within them; this is the daily embodiment of the dharmadhātu of unimpeded interpenetration of phenomena.
+
+      The Master later published Is It Mind, Not-Mind, or Still Mind?!—On the Mind from the Essential Gates (Kōngtíng Shūyuàn 2013, ISBN 9789867484710), further deepening the inner connection between the "non-abiding mind-substance" and the sequence of Huayan meditation practice.
   - name: "华严三品行法 — 净行品·梵行品·普贤行愿品"
+    name_en: "The Practice of the Three Huayan Chapters — the Pure Practice Chapter, the Brahmā Practice Chapter, and the Samantabhadra Practice and Vows Chapter"
     content: |
       据《华藏妙海》听经笔记整理,海云和上将华严三品对应修行三阶段: 净行品——前行阶段的修行法门,信位菩萨所修,在日常生活中即可修; 梵行品——正行阶段的修行法门; 普贤行愿品——成佛以后的修学法门,「众生有尽,我愿无穷」。三品都是行门,构成从初学到究竟的完整行法链条。
 
@@ -600,89 +1016,151 @@ important_texts:
 
       出处: 《华藏妙海》听经笔记整理版(docs/notes4it目录)。
       弥勒菩萨章: 海云和上于善财五十三参第51参详讲弥勒菩萨——毗卢遮那庄严藏楼阁,共12集视频(B站 BV1X142147EN)+播客(Podwise)。此为法师关于弥勒的最主要讲记,目前文字整理尚不完整,建议直接观看视频。
+    content_en: |
+      Compiled from the lecture notes of the Huazang Miaohai, Master Haiyun maps the three Huayan chapters onto the three stages of practice: the Pure Practice chapter—the practice of the preliminary stage, cultivated by bodhisattvas at the stage of faith, practicable in everyday life; the Brahmā Practice chapter—the practice of the actual stage; and the Samantabhadra Practice and Vows chapter—the study and practice after attaining buddhahood, "though beings be exhausted, my vows are endless." All three chapters are practices, forming a complete chain of practice from the beginner to the ultimate.
+
+      The bounded-practice project (from the same source): bounding one's practice is to address one's own weaknesses, making the most fitting adjustment and arrangement within one's own capacity; it is the foundation of an individual's path of accumulation. From bounding one's practice one learns how to affirm and know oneself—"the bounded-practice project is the foundation of an individual's path of accumulation."
+      The Maitreya chapter: in the fifty-first visit of Sudhana's fifty-three, Master Haiyun lectured in detail on Maitreya—the tower of the majestic treasury of Vairocana—in twelve video episodes (Bilibili BV1X142147EN) plus a podcast (Podwise). This is the Master's most substantial lecture on Maitreya; the textual transcription is still incomplete, so it is recommended to watch the videos directly.
 
 verification:
   title: "贯穿全程 — 验证机制.关键原则"
+  title_en: Throughout the Whole Path — the Verification Mechanism and Key Principles
   sections:
     - title: "验证机制 — 200+测验 & 归零重修"
+      title_en: The Verification Mechanism — 200+ Tests and Reset-and-Restart
       content: |
         法师强调修行进程「绝对理性」「不能讲人情」: 全程设有两百余种具体测验——制造顺境诱发贪着反应、制造逆境激发嗔心反应。
 
         失败重修的规则极为严格: 并非退回上一级,而是打回初信(初果)从头开始——「四果再重修,就从这个地方开始,再从初果开始。」
+      content_en: |
+        The Master stresses that the course of practice is "absolutely rational" and "shows no favoritism": throughout it there are more than two hundred specific tests—creating favorable conditions to trigger the clinging reaction, and adverse conditions to provoke the aversion reaction.
+
+        The rule for failing and restarting is extremely strict: one does not fall back a single level but is sent all the way back to the first stage of faith (the first fruit) to begin again—"if the fourth fruit is to be practiced again, one starts from this point, again from the first fruit."
     - title: 三大关键原则
+      title_en: The Three Key Principles
       content: |
         (1)不走四禅八定: 法师称其为「共外道法」——「我们不走那条路,我们直接走出三界。」[语境: 2009年《四十华严讲记》第67讲]
 
         (2)大脑临界点: 置心一处之前可运用理性思维;一旦跨过初果门槛,必须弃用概念思维——「只要用大脑,初果进不去,就这么简单。」[语境: 2009年《四十华严讲记》第67讲]
 
         (3)两种歧路: 置心一处后产生「舒服.喜悦.轻安」或「恐惧」。若被执取,两种都会导向外道禅——必须连这类感受也一并放下。
+      content_en: |
+        (1) Do not walk the path of the four dhyānas and eight concentrations: the Master calls it "a dharma shared with the non-Buddhist schools"—"we do not take that path; we go straight out of the three realms." [Context: Commentary on the Avatamsaka in Forty Fascicles, 2009, lecture 67]
+
+        (2) The brain's threshold point: before setting the mind in one place, rational thought may be used; once one crosses the threshold of the first fruit, conceptual thinking must be abandoned—"if you use the brain, you cannot enter the first fruit; it is that simple." [Context: 2009, lecture 67]
+
+        (3) The two wrong turnings: after setting the mind in one place there arise "comfort, joy, ease" or else "fear." If grasped, both lead to the meditation of the non-Buddhist schools—one must let go even of these feelings.
 
 reference_table:
   description: |
     以下为本文所依据的全部第一手来源。内容以大华严寺官方资料.海云继梦和上讲经逐字稿.正式出版物为主,凡涉及诠释性跨度之处均已随文标注。
+  description_en: |
+    The following are all the first-hand sources on which this article rests. The content draws chiefly on the official materials of Dahuayan Temple, the verbatim transcripts of Master Haiyun Jirong's lectures, and formally published works; wherever an interpretive span is involved it is annotated in the text.
   headers: [类别, 资源名称, 详情, 获取方式]
   rows:
     - category: "📖书籍"
+      category_en: Books
       name: "《非常占察经》一.二.三册"
+      name_en: The Extraordinary Divination Sūtra, vols. 1-3
       detail: "海雲和上《占察善恶业报经》讲记.空庭书苑 2015-2017. ISBN: 9789867484918/4932/4949"
+      detail_en: "Master Haiyun's lectures on the Divination of the Wholesome and Evil Results of Karma; Kōngtíng Shūyuàn 2015-2017."
       links:
         - text: 购买
+          text_en: Purchase
           url: "https://www.got1shop.com/goods.php?id=281160"
         - text: 图书馆
+          text_en: Library
           url: "https://webpac.taichung.gov.tw/bookDetail/670127"
     - category: "📖书籍"
+      category_en: Books
       name: "《海云继梦禅观概论》"
+      name_en: An Outline of Haiyun Jirong's Meditation
       detail: "空庭书苑 2015. ISBN: 9789867484888"
+      detail_en: "Kōngtíng Shūyuàn 2015."
       links:
         - text: 购买
+          text_en: Purchase
           url: "https://got1dev.got1shop.com/goods.php?id=219111"
     - category: "📖书籍"
+      category_en: Books
       name: "《迈向佛陀的境界——华严禅前行概论》"
+      name_en: Toward the Realm of Buddhahood—An Outline of the Huayan Preliminary Meditation
       detail: "空庭书苑 2011. ISBN: 9789867484512"
+      detail_en: "Kōngtíng Shūyuàn 2011."
       links:
         - text: Google Play
+          text_en: Google Play
           url: "https://play.google.com/store/books/details?id=Mm36CgAAQBAJ"
     - category: "🎙播客"
+      category_en: Podcast
       name: "普賢乘華嚴宗 S18《佔察善惡業報經》"
+      name_en: "Samantabhadra Vehicle and Huayan School, S18: The Divination of the Wholesome and Evil Results of Karma"
       detail: "46集(已完结). 2013年高雄/台北开示"
+      detail_en: "46 episodes (completed); 2013 lectures in Kaohsiung/Taipei"
       links:
         - text: Apple Podcast
+          text_en: Apple Podcast
           url: "https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889"
         - text: Spotify
+          text_en: Spotify
           url: "https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc"
     - category: "📺视频"
+      category_en: Video
       name: "大華嚴寺官方YouTube @huayen-world"
+      name_en: "Dahuayan Temple official YouTube @huayen-world"
       detail: "海雲法語.華嚴教海.Shorts.藥師經講座.九九華嚴"
+      detail_en: "Haiyun dharma words, the Huayan teaching ocean, Shorts, the Medicine Buddha Sūtra lectures, and the 99 Avatamsaka"
       links:
         - text: YouTube频道
+          text_en: YouTube channel
           url: "https://www.youtube.com/@huayen-world"
     - category: "📝文字"
+      category_en: Text
       name: "fjdh.cn 佛教导航 — 海云继梦文集"
+      name_en: "fjdh.cn Buddhist Navigation — the collected works of Haiyun Jirong"
       detail: "《华严禅行法—禅观》逐字稿.《禅修正行》系列.《四十华严讲记》第67讲"
+      detail_en: "Transcripts of Huayan Meditation Practice—Meditation, the Preliminary and Actual Practice series, and lecture 67 of the Avatamsaka in Forty Fascicles"
       links:
         - text: 禅观第四集
+          text_en: "Meditation, ep. 4"
           url: "https://www.fjdh.cn/wumin/2013/11/165329303084.html"
         - text: "停心.观心"
+          text_en: "Stopping and contemplating the mind"
           url: "https://www.fjdh.cn/wumin/2013/09/155711285715.html"
     - category: "🌐官网"
+      category_en: Official website
       name: "大华严寺全球资讯网 huayenworld.org"
+      name_en: "Dahuayan Temple Global Information Network, huayenworld.org"
       detail: "「华严禅」专栏: 源流与传承.修行蓝图.资粮道.占察行法"
+      detail_en: "The 'Huayan Meditation' column: origins and transmission, the path of practice blueprint, the path of accumulation, and the divination practice"
       links:
         - text: 官网首页
+          text_en: Homepage
           url: "https://www.huayenworld.org/"
         - text: 修行蓝图全文
+          text_en: Full text of the practice blueprint
           url: "https://www.huayenworld.org/%e8%8f%af%e5%9a%b4%e7%a6%aa%e7%b0%a1%e4%bb%8b%e7%89%b9%e8%89%b2/"
     - category: "🌐经典"
+      category_en: Canonical text
       name: "CBETA 《占察善恶业报经》"
+      name_en: "CBETA, the Divination of the Wholesome and Evil Results of Karma"
       detail: "大正藏 T17n0839.天竺三藏菩提灯译"
+      detail_en: "Taishō T17n0839; translated by the Indian Tripiṭaka Bodhilaṁ"
       links:
         - text: CBETA 原文
+          text_en: CBETA original text
           url: "https://cbeta.buddhism.org.hk/xml/T17/T17n0839_002.xml"
     - category: "📄论文"
+      category_en: Paper
       name: "《普贤乘禅观行法初探》"
+      name_en: An Initial Inquiry into the Meditation Practice of the Samantabhadra Vehicle
       detail: "海云继梦 著.台湾佛教学术期刊"
+      detail_en: "by Haiyun Jirong; a Taiwanese Buddhist academic journal"
       links:
         - text: NTU佛学图书馆 PDF
+          text_en: NTU Buddhist Studies Library PDF
           url: "https://buddhism.lib.ntu.edu.tw/FT/JA/576036.pdf"
   reliability_note: |
     来源可靠性说明: (1)大华严寺官网为第一手道场官方资料 (2)讲经逐字稿(fjdh.cn.学佛网)为法师本人第一人称陈述 (3)正式出版物(空庭书苑)为经编辑审定的公开文本。凡涉及道场自身历史叙事.术语诠释性跨度.以及第三四次灌顶的具体内容等,均已在本文中随文标注存疑或说明。建议进一步参阅《华严学报》(已出版14期)等学术出版物。
+  reliability_note_en: |
+    On the reliability of the sources: (1) the Dahuayan Temple website is first-hand official material from the tradition itself; (2) the verbatim lecture transcripts (fjdh.cn and the study-Buddhism sites) are the Master's own first-person statements; (3) the formally published works (Kōngtíng Shūyuàn) are public texts that have passed editorial review. Wherever a matter concerns the tradition's own historical narrative, an interpretive span in the terminology, or the specific content of the third and fourth initiations, doubt or explanation has been annotated in the text. It is recommended also to consult the academic publication Huayan Journal (14 issues to date) and similar works.
