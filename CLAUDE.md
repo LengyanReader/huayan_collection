@@ -34,8 +34,8 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 ## 📌 当前进度·下一步（新会话快速上手）
 
 - **进度权威源**：`docs/next-phase-plan.md`（长期待办、待续梯队、历次 L 系列批次登记都在此，**每次任务收尾必更新**）
-- **近期已收尾批次**（最近提交，倒序）：①lineage.js 死码覆盖清零续扫（⑲ TRANS_STORY/OTHER_SCHOOLS/geoFeatures 3 处亦清零，共 11 处数据驱动）；②lineage.js 死码覆盖清零·8 个 YAML 全局接入（⑱，a4eff3e）；③‘内容采集与编务总则’七条固化（6d934d8）；④Tab1 主线人名 EN 接入（5c268a1）；⑤practice.js 硬编码清零·三孤儿数据接入（702453d）
-- **当前下一步（见计划待续梯队）**：①lineage 人名 EN 数据回填——`data/knowledge_graph/personas.json` 余 59 条目 `name_en`/`name_sa` 需**逐条考证**（考证优先，勿臆造）；②lineage.js 遗留 curated 数据迁移——`dynasties` 时间轴带宽带（6 段·与 dynasty_boundaries.yaml 形状不同）、`_huayanCore`（6 核心 id·勿直接改全 direct 级否则改变关联图行为）、`_MINI_REGIONS`（10 区域配置·可接受为代码常量）；另有 Tab2-6 与 article.js 的 stray 硬编码扫描
+- **近期已收尾批次**（最近提交，倒序）：①Tab2/Tab5 死码覆盖清零（⑳ cosmology.js 华藏世界海+三界诸天、gap.js 总览/差异卡/案例/学界观点/84000方法论 全部接入 COSMO_DATA/GAP.content）；②lineage.js 死码覆盖清零续扫（⑲ TRANS_STORY/OTHER_SCHOOLS/geoFeatures 3 处亦清零，共 11 处数据驱动）；③lineage.js 死码覆盖清零·8 个 YAML 全局接入（⑱，a4eff3e）；④‘内容采集与编务总则’七条固化（6d934d8）；⑤Tab1 主线人名 EN 接入（5c268a1）
+- **当前下一步（见计划待续梯队）**：①lineage 人名 EN 数据回填——`data/knowledge_graph/personas.json` 余 59 条目 `name_en`/`name_sa` 需**逐条考证**（考证优先，勿臆造）；②lineage.js 遗留 curated 数据迁移——`dynasties` 时间轴带宽带（6 段·与 dynasty_boundaries.yaml 形状不同）、`_huayanCore`（6 核心 id·勿直接改全 direct 级否则改变关联图行为）、`_MINI_REGIONS`（10 区域配置·可接受为代码常量）；③Tab3 practice.js 遗留两块硬编码——`renderYikongSection` 法脉传承表（11 行 龙树→当代）、`最新动态` 新闻一句式（2023-2026）待迁 YAML；另有 Tab4-6/article.js 已证实数据驱动无 stray 硬编码
 - 所有内容/进度/原则详见下方文档索引与「内容采集与编务总则」七条，新会话按需读取即可接续
 
 ## 核心文档索引

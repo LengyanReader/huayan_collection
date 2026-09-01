@@ -12,14 +12,15 @@ function renderGap(){
   h+="</table></div>";
 
   // ── Key insight box ──
+  var _core=(GAP&&GAP.content&&GAP.content.core_finding)||"藏文《华严经》(Toh44)译自中亚于阗原本，而非印度梵本。";
   h+="<div class=section style=border-left:4px solid var(--gold)>";
-  h+="<p style=line-height:1.8><b style=color:var(--gold)>核心发现:</b> 藏文《华严经》(Toh44)译自<b>中亚于阗原本</b>，而非印度梵本。汉文《八十华严》亦由于阗请来梵本，但两者所据底本已不同——九世纪时华严梵本已多系分化。藏文45品中有<b>2品为汉文三译所完全缺失</b>（如来华严品、普贤宣说品），另有3品有实质性内容参差。</p>";
+  h+="<p style=line-height:1.8><b style=color:var(--gold)>核心发现:</b> "+_core+"</p>";
   h+="</div>";
 
   // ── Diff summary cards ──
-  var ds={A:{i:"🔴",l:"藏文独有品目",c:"#c46b5d",d:"汉文三译完全缺失"},B:{i:"🟠",l:"内容实质性参差",c:"#c8893e",d:"同名品内容有显著差异"},C:{i:"🟡",l:"结构/开合不同",c:"#a08020",d:"品目序号名称开合不同"},D:{i:"🔵",l:"品目级微小差异",c:"#5e8b9e",d:"个别段落不同"},E:{i:"🟢",l:"汉藏基本对应",c:"#7d9a6e",d:"32品大致一致"}};
+  var ds=(GAP&&GAP.content&&GAP.content.diff_summary&&GAP.content.diff_summary.categories)||{};
   h+="<h2 style=color:var(--gold)>📊 差异分布 (藏文45品 vs 汉文39品)</h2><div class=section style=display:flex;gap:10px;flex-wrap:wrap>";
-  ["A","B","C","D","E"].forEach(function(t){var d=ds[t];h+="<span style=flex:1;min-width:130px;background:var(--card);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--line);border-left:3px solid "+d.c+"><div style=font-size:1.3em>"+d.i+"</div><div style=font-size:2em;font-weight:700;color:"+d.c+">"+(GAP.sm[t]||0)+"</div><div style=font-weight:600>"+d.l+"</div><div style=font-size:0.8em;color:var(--text2)>"+d.d+"</div></span>";});
+  ["A","B","C","D","E"].forEach(function(t){var d=ds[t]||{};h+="<span style=flex:1;min-width:130px;background:var(--card);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--line);border-left:3px solid "+(d.color||"#666")+"><div style=font-size:1.3em>"+(d.icon||"")+"</div><div style=font-size:2em;font-weight:700;color:"+(d.color||"#666")+">"+(GAP.sm[t]||0)+"</div><div style=font-weight:600>"+(d.label||t)+"</div><div style=font-size:0.8em;color:var(--text2)>"+(d.description||"")+"</div></span>";});
   h+="</div>";
 
   // ── Chapter detail table ──
@@ -29,34 +30,31 @@ function renderGap(){
 
   // ── Textual variant case studies (collapsible) ──
   h+="<div class=section><h2>🔬 文本变异案例（点击展开）</h2>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>案例一: Samantabhadra 译名差异</span><div class=body>藏文「kun tu bzang po」→ 汉译多作「普贤」。但84000翻译注释指出，汉文个别处作<b>「普贤尊」</b>（pu xian zun, Lord Samantabhadra），而藏文保持统一译法。此差异反映汉译者对不同语境下的敬称处理。</div></div>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>案例二: gata 多义歧出</span><div class=body>同一梵文词 <i>gata</i>（「已去/已至」 vs 「现在/存在」），藏文和汉文译者在不同品中选择不同义项，导致同一段落产生「如来已去」和「如来现前」两种截然不同的理解。</div></div>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>案例三: 底本系谱分化</span><div class=body>德格版Tshalpa系与Themephangma系之间，同一品末偈颂有出入（后者缺末偈）。84000翻译以Tshalpa为底本，Themephangma异读入校注。此说明藏文大藏经内部亦存在版本分化。</div></div>";
-  h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>案例四: 「如孝子心」版本歧异</span><div class=body>同一段落: 六十华严作「发孝子心，见善知识无厌足故」；八十华严增「承顺颜色故」；四十华严又增「承事供养」。藏文本将su-putra直译，未添加「孝」的汉文化概念。越晚译本解释性附加语越长。</div></div>";
+  var _cs=(GAP&&GAP.content&&GAP.content.case_studies)||[];
+  _cs.forEach(function(c){h+="<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>"+c.title+"</span><div class=body>"+c.content+"</div></div>";});
   h+="</div>";
 
   // ── Scholarly perspectives ──
   h+="<div class=section><h2>🎓 学界观点</h2>";
-  h+="<div class=stage-box><b>Imre Hamar</b>（Eötvös Loránd University, 匈牙利科学院博士）<br>「华严经在印度和中亚并非一时一地之作，而是由多部原本独立的单行经（如《十地品》《入法界品》）于公元2-4世纪逐步汇集而成。藏汉译本的差异，本质上是不同编纂阶段和不同地域传统的反映。」—— 参见其博士论文 <i>The Buddhāvatamsaka-sūtra and Its Chinese Interpretation</i> (2014) 及 <i>The Metaphor of the Painter</i> (SOS 13·2, 2014).</div>";
-  h+="<div class=stage-box><b>高明道</b>（台湾华严学者）<br>「南极汉文《华严经》，由于译者抉择各异，撰述注释的古德就有不同空间可发挥。参考藏译本便可发现，诠释的领域又不一样。即使有印度语文本可供对照，个人的解读终究脱离不了诠释。」</div>";
-  h+="<div class=stage-box><b>84000翻译团队</b> (Peter Alan Roberts 等)<br>「华严经的梵文原本在古代即存在至少两种以上版本。证据包括「观世音/观自在」拼写差异——法藏《探玄记》卷19明确记载了这种拼写分歧。」</div>";
+  var _sp=(GAP&&GAP.content&&GAP.content.scholarly_perspectives)||[];
+  _sp.forEach(function(p){h+="<div class=stage-box><b>"+p.author+"</b>"+(p.affiliation?("（"+p.affiliation+"）"):"")+"<br>"+p.content+"</div>";});
   h+="</div>";
 
   // ── 84000 methodology ──
+  // ── 84000 methodology ──
+  var _m=(GAP&&GAP.content&&GAP.content.methodology_84000)||{};
   h+="<h2 style=color:var(--gold)>🔬 84000翻译方法论与文本校勘</h2><div class=section>";
-  h+="<p style=line-height:1.8>84000项目（Peter Alan Roberts团队）在翻译Toh44时采用<b>多底本对校</b>方法，其翻译注释体系为汉藏对勘提供了重要参考框架：</p>";
-  h+="<div class=stage-box><b>六类文本变异类型</b><br>";
-  h+="① <b>梵-藏歧异</b>: 藏译本与现存梵文写本的出入（藏译者是否据另本或误读）；<br>";
-  h+="② <b>甘珠尔版本间异读</b>: 德格/斯托克/永乐/理塘/康熙/那塘/拉萨/Choné 八种版本的异文记录；<br>";
-  h+="③ <b>抄写错误</b>: 藏文抄本中的明显笔误（如 rgyu 误作 sgyu ma「幻」）；<br>";
-  h+="④ <b>注释书佐证</b>: 据世亲《十地经论》及 Sūryasiddha 注释判定疑误字；<br>";
-  h+="⑤ <b>汉译旁证</b>: 当梵藏歧异无法判定时，以汉译本（实叉难陀/佛驮跋陀罗）作为第三参照系；<br>";
-  h+="⑥ <b>数字出入</b>: 如《十地品》梵本作「百千俱胝」，德格版甘珠尔改为极大数，而世亲注释支持梵本简数。</div>";
+  h+="<p style=line-height:1.8>"+(_m.intro||"")+"</p>";
+  var _mcat=_m.categories||[];
+  if(_mcat.length){h+="<div class=stage-box><b>六类文本变异类型</b><br>";
+  _mcat.forEach(function(c){var idx=c.indexOf(':');var ti=(idx>0?c.slice(0,idx):"");var rest=(idx>0?c.slice(idx):c);h+="<b>"+ti+"</b>"+rest+"<br>";});
+  h+="</div>";}
   h+="</div>";
 
   // ── Structural differences ──
+  var _sd=((GAP&&GAP.content&&GAP.content.structural_differences)||"").trim();
   h+="<h2 style=color:var(--gold)>🏗 结构组织差异</h2><div class=section>";
-  h+="<div class=stage-box><b>汉译「会」制度 vs 藏译连续品目</b><br>汉文八十华严按<b>七处九会</b>（七个地点·九次法会）组织经文；六十华严为<b>七处八会</b>。此为汉地祖师（智俨/法藏/澄观）判释所立。<br><br>藏文 Toh44 <b>不采用</b>「会」的分组体系——45品为连续编号，无中间层的法会分组。这一结构差异意味着：<b>汉文读者透过「会」的框架理解华严经的教义递进，而藏文读者直接面对45品的内容序列</b>。两种组织方式各代表不同的解经传统，不能简单互译。</div>";
+  if(_sd){var _sdLines=_sd.split("\n").filter(function(x){return x.trim()!=='';});var _sdDesc=_sdLines.slice(1).join("<br><br>");h+="<div class=stage-box><b>"+_sdLines[0]+"</b>"+(_sdDesc?("<br>"+_sdDesc):"")+"</div>";}
   h+="</div>";
 
   // ── Scholarly debate tracking ──
