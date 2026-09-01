@@ -6,173 +6,410 @@ wip_notice:
     本页面内容基于大华严寺官网(2025.11版)和海云继梦和上已公开的讲经视频/音频/逐字稿/出版物整理。
     法师讲法内容不断更新演化，当前整理仍不完整，需要大量结构化梳理和补充核实，仅供参考，持续更新中。
     最新修行体系请以大华严寺官网为准。
+  text_en: |
+    This page is compiled from the Great Huayan Temple website (Nov 2025 edition) and publicly available
+    lecture videos, audio, transcripts, and publications by Venerable Haiyun Jihong.
+    The Dharma Master's teachings continue to evolve; this compilation remains incomplete and requires
+    extensive structuring, supplementation, and verification. It is for reference only and will be updated
+    continuously. For the latest cultivation system, please refer to the Great Huayan Temple website.
   updated: "2026-08-02"
 
 header:
   title: 华严行法 — 普贤乘修行体系
+  title_en: Huayan Practice — The Samantabhadra Vehicle Cultivation System
   description: |
     参考大华严寺海云继梦和上所立 普贤乘华严宗 修行体系。以华严禅法为核心，透过心法工程止住安心、令真心起作用。体系涵盖从资粮道到正行、从初信到法身大士的完整修行次第。
+  description_en: |
+    The cultivation system of the Samantabhadra Vehicle Huayan school as established by
+    Venerable Haiyun Jihong of the Great Huayan Temple. Centered on the Huayan meditative method,
+    it employs the heart-mind dharma engineering to still and settle the mind, allowing the true heart
+    to function. The system spans the complete path from the path of accumulation to the actual practice,
+    and from the initial stage of faith to the great bodhisattva of the dharma-body.
 
 three_stages:
   - name: 禅修入门
+    name_en: Entering Chan Meditation
     subtitle: 发心工程（资粮道）
+    subtitle_en: "The Resolve-Engendering Project (Path of Accumulation)"
     detail: "五科：戒·律·调身·调息·调心"
+    detail_en: "Five disciplines: precepts, vinaya, body adjustment, breath adjustment, mind adjustment"
     color: gold
     description: |
       三门必修: 人格健康+出离心+菩提心。含五科（戒·律·调身·调息·调心）。技术面: 纯化禅(动→静)→象限转移→瞬间定。工程面: 心性培养+戒律基础。官网: 「发心——出三界、入法界之志,建立信根与定位。」
+    description_en: |
+      Three prerequisites: personal integrity, the resolve to transcend, and bodhicitta.
+      Encompasses five disciplines: precepts, vinaya, body adjustment, breath adjustment,
+      and mind adjustment. Technical facet: purifying meditation (movement to stillness),
+      quadrant shifting, and momentary concentration. Engineering facet: cultivating the
+      heart-nature and establishing a foundation in vinaya. As stated on the official website:
+      "The resolve to transcend the three realms and enter the dharmadhatu — establishing
+      the root of faith and one's orientation."
+
   - name: 禅修前行
+    name_en: Preliminary Chan Practice
     subtitle: 内摄工程
+    subtitle_en: "The Inward-Gathering Project"
     detail: "安般守意·四种观法"
+    detail_en: "Mindfulness of breath and mind-guarding — four methods of contemplation"
     color: blue
     description: |
-      核心: 安那般那数息观(数.随.止)。官网: 「调息安稳,气息有序;守意——令心不外驰,身息心三者逐步协同。」观法次第: 驻佇心观(停心前行)->唯心识观(钝根先修.毗钵舍那)->真如实观(利根直修.奢摩他)->毗婆舍那->奢摩他。详见「📐 禅观法要」子页。
+      核心: 安那般那数息观(数.随.止)。官网: 「调息安稳,气息有序;守意——令心不外驰,身息心三者逐步协同。」观法次第: 驻佇心观(停心前行)->唯心识观(钝根先修.毗钵舍那)->真如实观(利根直修.奢摩他)->毗婆舍那->奢摩他。详见「📐 禅观法要」子-page。
+    description_en: |
+      Core practice: the anapana breath-counting contemplation (counting, following, stopping).
+      As stated on the official website: "Adjusting the breath until it is settled and orderly;
+      guarding the mind so it does not scatter outward — body, breath, and heart gradually
+      working in concert." The sequence of contemplations: stopping-the-mind contemplation
+      (preliminary to samatha), consciousness-only contemplation (for duller faculties, beginning
+      with vipasyana), true-suchness contemplation (for keener faculties, beginning with samatha),
+      then vipasyana, then samatha. See the "Chan Contemplation Essentials" sub-page for details.
+
   - name: 禅修正行
+    name_en: The Actual Practice of Chan Meditation
     subtitle: 等持工程（内观）
+    subtitle_en: "The Equipoise Project (Insight)"
     detail: "三摩呬多→三摩钵底→三摩地"
+    detail_en: "samahita -> samapatti -> samadhi"
     color: red
     description: |
       前半程三摩呬多→后半程三摩钵底→究竟三摩地。官网: 「以观导定、以定成观,当下验果,不逐境界名相而重身心之柔和、稳定、清明。」课程配比: 70%修行面 + 30%健康面。延伸: 一日禅·二日禅·忍可禅七。
+    description_en: |
+      The first half proceeds through samahita, the second half through samapatti,
+      reaching the ultimate samadhi. As stated on the official website: "Using contemplation
+      to guide concentration, and concentration to perfect contemplation — verifying the fruit
+      in the present moment, not chasing after names and appearances of meditative states,
+      but attending to the softness, stability, and clarity of body and mind."
+      Course allocation: 70% practice, 30% wellness. Extended offerings include one-day,
+      two-day, and intensive seven-day Chan retreats.
 
 four_stages_blueprint:
   description: |
     据海云法师《四十华严讲记》第四卷第67讲及大华严寺官网「修行蓝图」页面。整套蓝图涵盖从信众到证量的完整阶次。
+  description_en: |
+    Based on Venerable Haiyun Jihong's lecture on the "Forty-Section Avatamsaka Sutra," vol. 4,
+    lecture 67, and the "Cultivation Blueprint" page of the Great Huayan Temple website.
+    The complete blueprint spans the entire progression from lay follower to realized attainment.
   stages:
     - name: 出离乘
+      name_en: The Vehicle of Transcendence
       description: |
         出离心→出离道→出离行。以脱离轮回、了生死为基础动机，建立「出三界、入法界」之志。
+      description_en: |
+        The resolve to transcend leads to the path of transcendence, which leads to the practice
+        of transcendence. The foundational motivation is to leave the cycle of rebirth and
+        resolve the question of birth and death — establishing the aspiration to transcend the
+        three realms and enter the dharmadhatu.
+
     - name: 菩提乘
+      name_en: The Bodhi Vehicle
       description: |
         菩提心→菩提道→菩提行。发心求觉悟。法师称此「只是起步」。
+      description_en: |
+        Bodhicitta leads to the bodhi path, which leads to the bodhi practice.
+        The aspiration is to attain awakening. The Dharma Master notes that this
+        "is only the beginning."
+
     - name: 菩萨乘
+      name_en: The Bodhisattva Vehicle
       description: |
         菩萨心→菩萨道→菩萨行。法师称此「还没有究竟」——仍属因地修行。
+      description_en: |
+        The bodhisattva heart leads to the bodhisattva path, which leads to
+        the bodhisattva practice. The Dharma Master states that this "has not yet
+        reached the ultimate" — it still belongs to the causal stage of practice.
+
     - name: 普贤乘
+      name_en: The Samantabhadra Vehicle
       description: |
         普贤心→普贤行→普贤道。究竟归趣。法师称「究竟要到普贤乘来」——此即「普贤乘华严宗」名称的义理出处。
+      description_en: |
+        The Samantabhadra heart leads to the Samantabhadra practice, which leads
+        to the Samantabhadra path — the ultimate destination. The Dharma Master states:
+        "Ultimately, one must arrive at the Samantabhadra Vehicle." This is the doctrinal
+        basis for the name "Samantabhadra Vehicle Huayan school."
       is_ultimate: true
 
 six_subjects:
   description: |
     海云法师将传统华严义学重组为可依次修学的课程架构。「五大行法」即六科中除总论外的五项——禅、净、律、密、经教——主张华严宗并非纯粹「解门」而有完整「行门」。
+  description_en: |
+    Venerable Haiyun Jihong reorganized the traditional Huayan doctrinal studies into a sequential
+    curriculum. The "five great practices" are the five subjects among the six disciplines
+    excluding the general introduction — chan, pure-land, vinaya, esoteric, and sūtra-teaching.
+    The claim is that the Huayan school is not merely a tradition of "intellectual understanding"
+    but possesses a complete "praxis gate."
   subjects:
     - name: 华严学概论
+      name_en: Introduction to Huayan Studies
       content: "华严经结构·五教十宗·法界缘起（总纲性导论）"
+      content_en: "Structure of the Avatamsaka Sutra, five teachings and ten schools, the dependent origination of the dharmadhatu (general survey)"
+
     - name: 华严经教行法
+      name_en: Huayan Sutra-Teaching Practice Method
       content: "经文解读·修行法门·善财五十三参（经教门）"
+      content_en: "Sutra exposition, dharma-gates for practice, Sudhana's fifty-three visits (the sūtra-teaching gate)"
+
     - name: 华严禅行法
+      name_en: Huayan Chan Practice Method
       content: "安般守意·置心一处·三摩地次第（禅门）"
+      content_en: "Mindfulness of breath, setting the mind in one place, the sequence of samadhi (the chan gate)"
+
     - name: 华严戒律观
+      name_en: Huayan Vinaya Perspective
       content: "菩萨戒·梵网经·现代持戒（律门）"
+      content_en: "Bodhisattva precepts, Brahma Net Sutra, contemporary observance of vinaya (the vinaya gate)"
+
     - name: 华严净土法门
+      name_en: Huayan Pure-Land Dharma-Gate
       content: "华藏世界·毗卢遮那净土（净门）"
+      content_en: "The Lotus Treasury world, the pure land of Vairocana (the pure-land gate)"
+
     - name: 华严密法
+      name_en: Huayan Esoteric Dharma
       content: "华严字母·曼荼罗·真言持诵·秽迹金刚法（密门）"
+      content_en: "Avatamsaka seed-syllables, mandala, mantra recitation, the Ucchusma Vajra method (the esoteric gate)"
 
 three_lineages:
   description: |
     海云法师对三条汇流法脉在体系中各自的功能分工（据大华严寺官网及讲记）：
+  description_en: |
+    The respective functional roles that Venerable Haiyun Jihong assigns to the three
+    converging dharma lineages within the system (per the Great Huayan Temple website
+    and his lecture records):
   lineages:
     - name: 中观论派
+      name_en: the Madhyamaka School
       role: 解
       description: |
         义理/空性论证——负责「理解」层面的理论基础。
+      description_en: |
+        Doctrinal and emptiness-argumentation — responsible for the theoretical foundation
+        at the level of "understanding."
+
     - name: 华严思想
+      name_en: Huayan Thought
       role: 架构
       description: |
         提供整体的世界观与义理框架——「事事无碍法界」「法界缘起」等核心世界观。
+      description_en: |
+        Provides the overall worldview and doctrinal framework — core worldviews such as
+        the unimpeded interpenetration of all phenomena and the dependent origination
+        of the dharmadhatu.
+
     - name: 瑜伽行派
+      name_en: the Yogācāra School
       role: 行
       description: |
         禅观正行/实修技术来源。源自印度 Maha Yoga 传承（胜师子王菩萨），法师将其等同于「禅宗的禅观正行」。
+      description_en: |
+        Source of the actual meditative practice and practical techniques. It derives from the
+        Indian Maha Yoga lineage (the bodhisattva Superior Lion King), which the Dharma Master
+        equates with the "actual meditative practice of the Chan school."
       note: |
         官网将这支传承直接注解为「大乘瑜伽行派／Yogācāra 之行门精义」，读者可留意其中的诠释性跨度。
+      note_en: |
+        The official website directly annotates this lineage as "the praxis essence of the
+        Mahayana Yogācāra school," and readers may wish to note the interpretive span
+        involved in this characterization.
 
 four_projects:
   projects:
     - name: 结界工程
+      name_en: the Boundary-Marking Project
       description: "短期共修——调整身心频率的具体操作"
+      description_en: "Short-term communal practice — concrete operations for adjusting one's body and mind frequency"
+
     - name: 华藏工程
+      name_en: the Huazang Project
       description: |
         双重意涵: ①个人前行阶段必修课程（建立语言/思维模式）②跨世代文明教育志业——法师称「华藏工程五百年」
+      description_en: |
+        Twofold meaning: ① a required course in the personal preliminary stage
+        (establishing one's language and thinking patterns), and ② a cross-generational
+        civilizational education enterprise — which the Dharma Master calls
+        "the five-hundred-year Huazang Project."
+
     - name: 华严大学
+      name_en: Huayan University
       description: "体制化培育弘法与研究人才的当代项目（非月霞法师等创办的历史性华严大学）"
+      description_en: "An institutionalized contemporary program for training teaching and research talent (not the historical Huayan University founded by Venerable Yuexia and others)"
+
     - name: BQ广场
+      name_en: BQ Plaza
       description: "四大工程之一，目前公开资料中未见「BQ」具体所指的清晰界定"
+      description_en: |
+        One of the four projects; no clear definition of what "BQ" specifically refers
+        to is publicly available at present.
 
 cognitive_levels:
   description: |
     法师自创的认知层次术语，用以区分凡夫、行者、法身大士三个阶段所依靠的不同认知机制：
+  description_en: |
+    Cognitive-level terms coined by the Dharma Master to distinguish the different cognitive
+    mechanisms relied upon across the three stages of the ordinary person, the practitioner,
+    and the great bodhisattva of the dharma-body:
   levels:
     - name: 识性
+      name_en: consciousness-nature
       stage: 凡夫阶段
+      stage_en: the ordinary-person stage
       description: |
         「能」——妄想心。「识性的能绑虚妄的身」——凡夫是「身心混杂」状态。
+      description_en: |
+        The "agent" — the deluded mind. "The agent of the consciousness-nature binds the
+        illusory body" — the ordinary person lives in a state in which body and mind
+        are tangled together.
+
     - name: 根性
+      name_en: root-nature
       stage: 初果至四果阶段
+      stage_en: from the first to the fourth fruit (srotaapanna to arhat)
       description: |
         「所」。此阶段关键操作是「舍识用根」。
+      description_en: |
+        The "object." The key operation at this stage is abandoning consciousness to
+        use the faculties.
+
     - name: 智
+      name_en: wisdom
       stage: 十信位圆满之后
+      stage_en: after the completion of the ten stages of faith
       description: |
         此后「以智为先导」，不再「以所为先导」。
+      description_en: |
+        From here on, wisdom serves as the guide, no longer the "object."
       note: |
         法师坦承这套区分是借助现代汉语语法结构对古典义理的诠释性翻译，非声称唯一表述。
+      note_en: |
+        The Dharma Master frankly acknowledges that this distinction is an interpretive
+        rendering of classical doctrine through the grammatical structure of modern Chinese —
+        he does not claim it is the only possible formulation.
 
 three_refuges:
   intro: |
     海云法师在传统「皈依三宝」之外，提出更具操作性的归依框架：
+  intro_en: |
+    Beyond the traditional "taking refuge in the Three Jewels," Venerable Haiyun Jihong
+    offers a more practical framework of reliance:
   practice_attitude: |
     法师强调「自顾灵山，不顾名山」「知道不算，做到才算」——真正的修行来自扎实的日常践行。
+  practice_attitude_en: |
+    The Dharma Master stresses "tend your own numinous mountain, not the famous mountains"
+    and "knowing does not count — doing is what counts." True practice comes from solid,
+    everyday application.
   items:
     - name: 缘念道场
+      name_en: embracing the monastery in mind
       description: "缘念僧团，以道场为修行依止处"
+      description_en: "Holding the sangha in mind, taking the monastery as one's place of reliance for practice"
+
     - name: 缘念善知识
+      name_en: embracing the spiritual friend in mind
       description: "缘念具体指导的师长，接受僧团制度性指导"
+      description_en: "Holding in mind the specific guiding teacher, accepting the institutional guidance of the sangha"
+
     - name: 缘念法门
+      name_en: embracing the dharma-gate in mind
       description: "缘念自己实际修学的具体法门，不杂修不盲从"
+      description_en: "Holding in mind the specific dharma-gate one actually studies, neither mixing practices nor following blindly"
 
 latest_news:
   - year: "2023"
     title: "国立台北大学杰出校友"
+    title_en: Distinguished Alumnus of the National Taipei University
     description: |
       获遴选为母校杰出校友(2023年)。2024年1月促成华严学会与台北大学签署学术合作协议(一期两年.合计三期共六年),合办「新世纪永续发展」高峰论坛(2024-2025年)。
+    description_en: |
+      Selected as a distinguished alumnus of the university (2023). In January 2024,
+      he facilitated an academic cooperation agreement between the Huayan Society and
+      the National Taipei University (one two-year phase; three phases totaling six years),
+      and jointly hosted a "New Century Sustainable Development" summit forum (2024-2025).
+
   - year: "2026"
     title: "「九九华严」五年讲座（TICC）"
+    title_en: '"Nine-Nine Huayan" Five-Year Lecture Series (TICC)'
     description: |
       于台北国际会议中心举行，每月举办。将华严哲理「转化为通俗易懂的现代心理学与生命科学」语言，回应「AI科技与永续新时代」的挑战——「AI给得了答案，但给得了心安吗？」
+    description_en: |
+      Held monthly at the Taipei International Convention Center. Translates Huayan philosophy
+      into "the language of modern psychology and life science that is accessible to all,"
+      responding to the challenges of "the new era of AI technology and sustainability" —
+      "AI can give answers, but can it give peace of mind?"
+
   - year: "2026.7.9"
     title: "支提山大华严寺动土"
+    title_en: Groundbreaking of Great Huayan Temple on Zhiti Mountain
     description: |
       苗栗县通霄镇。面向台湾海峡，与福建宁德支提华严祖庭隔海相望——「山海相应、法脉相承」。四百余位护法善信参与，五十三位嘉宾共同执铲（呼应善财五十三参）。
+    description_en: |
+      Located in Tongxiao Township, Miaoli County, facing the Taiwan Strait and the
+      ancestral Zhiti Huayan Temple in Ningde, Fujian, across the sea — "mountains and
+      sea in correspondence, the dharma lineage carried on." Over four hundred devotees
+      took part, and fifty-three honored guests jointly turned the soil (echoing
+      Sudhana's fifty-three visits).
+
   - year: "ongoing"
     title: "第四期佛教"
+    title_en: The Fourth-Period Buddhism
     description: |
       大华严寺官网对海云法师使命的表述——「以中兴汉传佛教，开展第四期佛教思想发展为使命」。目前尚未见对第一至第三期的系统性论述。
+    description_en: |
+      The Great Huayan Temple website's statement of Venerable Haiyun Jihong's mission —
+      "to revive Chinese Buddhism and develop the thought of the fourth-period Buddhism as
+      his mission." As yet, no systematic account of the first through third periods
+      has been published.
 
 evolution_timeline:
   - period: "1981-1991"
     node: 在家讲经探索期
+    node_en: Home-Based Exploration in Teaching
     feature: "以现代语言诠释华严·业余讲经·无僧团建制"
+    feature_en: "Interpreting Huayan in modern language, part-time preaching, without an organized sangha"
+
   - period: "1991.12.22"
     node: "梦参老和尚剃度(弥陀诞日)"
+    node_en: "Ordination by Venerable Mengcan (Amitabha's Birthday)"
     feature: "临济宗第47代·确立僧团身份·正式出家弘法"
+    feature_en: "47th generation of the rinzai lineage (Linji school); established monastic status, formally renounced to teach the dharma"
+
   - period: "2004-2010"
     node: "西安/北京系统弘法"
+    node_en: Systematic Teaching in Xi'an and Beijing
     feature: "陕师大华严研究所·社科院演讲(2005.1)·北京广化寺《四十华严》全本讲解(2006.11-2010.6)"
+    feature_en: "Huayan Research Institute at Shaanxi Normal University, a talk at the Academy of Social Sciences (Jan 2005), and a complete exposition of the Forty-Section Avatamsaka Sutra at Guanghua Temple, Beijing (Nov 2006 - Jun 2010)"
+
   - period: "2008"
     node: 三脉汇流
+    node_en: The Confluence of Three Lineages
     feature: |
       钦因传华严衣钵(贤首42世, 9月10日求法.9月21日传法大典)+印度胜师子王菩萨传瑜伽行法(年底)
       提出「普贤乘华严宗」·工程面/技术面双轨教学确立
+    feature_en: |
+      Qinyin transmitted the Huayan robe and bowl (42nd generation of the Xianshou
+      lineage; dharma sought Sept 10, transmission ceremony Sept 21), and the Indian
+      bodhisattva Superior Lion King transmitted the Yogacara method (end of the year).
+      The "Samantabhadra Vehicle Huayan school" was proposed, and the dual-track teaching
+      of the engineering and technical facets was established.
+
   - period: "2011-2013"
     node: "密集出版·框架定型"
+    node_en: Intensive Publication and Framework Finalization
     feature: "华严六科·五大行法·三部曲·禅观体系完整出版"
+    feature_en: "The six Huayan disciplines, five great practices, trilogy, and the Chan-contemplation system published in full"
+
   - period: "2014-2019"
     node: "讲经扩展·制度细化"
+    node_en: Expanded Teachings and Refined Institutions
     feature: "药师/地藏/各品讲记密集出版·忍可灌顶制度·华严专宗学院"
+    feature_en: "Dense publication of notes on the Medicine Buddha, Ksitigarbha, and various chapters; the Renke consecration (abhiseka) institution; the Huayan-specific academy"
+
   - period: "2020-2023"
     node: 数位化转型
+    node_en: Digital Transformation
     feature: "线上讲经·电子书出版·国立台北大学杰出校友(2023)"
+    feature_en: "Online teaching, e-book publication, distinguished alumnus of the National Taipei University (2023)"
+
   - period: "2024-2026"
     node: "第四期佛教·AI时代"
+    node_en: Fourth-Period Buddhism and the AI Era
     feature: "九九华严五年讲座(TICC)·支提山大华严寺动土(2026.7)·台北大学合作"
+    feature_en: "The Nine-Nine Huayan five-year lecture series (TICC), the groundbreaking of Great Huayan Temple on Zhiti Mountain (Jul 2026), and cooperation with the National Taipei University"

@@ -21,94 +21,7 @@ function renderPractice(){
   // ── Sub-navigation moved to left sidebar ──
 
   // ── Header ──
-  h+="<div class=section style=border-left:4px solid var(--gold)><h2>🧘 华严行法 — 普贤乘修行体系</h2>";
-  h+="<p style=line-height:1.8>参考大华严寺海云继梦和上所立 <b>普贤乘华严宗</b> 修行体系。以华严禅法为核心，透过<b>心法工程</b>止住安心、令真心起作用。体系涵盖从资粮道到正行、从初信到法身大士的完整修行次第。</p></div>";
-
-  // ── 三阶段卡片 ──
-  h+="<div style='display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0'>";
-  h+="<div style='flex:1;min-width:180px;background:rgba(184,134,60,0.08);border:1px solid #b8863c;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#b8863c;margin-bottom:4px'>禅修入门</div>";
-  h+="<div style='font-size:0.8em;color:#8a7060'>发心工程（资粮道）</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>五科：戒·律·调身·调息·调心</div></div>";
-  h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
-  h+="<div style='flex:1;min-width:180px;background:rgba(94,139,158,0.08);border:1px solid #5e8b9e;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#5e8b9e;margin-bottom:4px'>禅修前行</div>";
-  h+="<div style='font-size:0.8em;color:#6a7060'>内摄工程</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>安般守意·四种观法</div></div>";
-  h+="<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
-  h+="<div style='flex:1;min-width:180px;background:rgba(196,107,93,0.08);border:1px solid #c46b5d;border-radius:10px;padding:16px;text-align:center'>";
-  h+="<div style='font-size:1.05em;font-weight:700;color:#c46b5d;margin-bottom:4px'>禅修正行</div>";
-  h+="<div style='font-size:0.8em;color:#8a6060'>等持工程（内观）</div><div style='font-size:0.7em;color:#a09080;margin-top:4px'>三摩呬多→三摩钵底→三摩地</div></div>";
-  h+="</div>";
-
-  // ── 修行三阶段 ──
-  h+="<div class=section id=sys-stages><h2>📐 修行三阶段（据大华严寺官网「修行蓝图」2025.11）</h2>";
-  h+="<div class=stage-box><b>一、禅修入门 — 发心工程（资粮道）</b><br>三门必修: 人格健康+出离心+菩提心。含<b>五科</b>（戒·律·调身·调息·调心）。技术面: 纯化禅(动→静)→象限转移→瞬间定。工程面: 心性培养+戒律基础。官网: 「发心——出三界、入法界之志,建立信根与定位。」</div>";
-  h+="<div class=stage-box><b>二、禅修前行 — 内摄工程</b><br>核心: 安那般那数息观(数.随.止)。官网: 「调息安稳,气息有序;守意——令心不外驰,身息心三者逐步协同。」观法次第: <b>驻佇心观</b>(停心前行)-><b>唯心识观</b>(钝根先修.毗钵舍那)-><b>真如实观</b>(利根直修.奢摩他)-><b>毗婆舍那</b>-><b>奢摩他</b>。详见「📐 禅观法要」子页。</div>";
-  h+="<div class=stage-box><b>三、禅修正行 — 等持工程（内观）</b><br>前半程三摩呬多→后半程三摩钵底→究竟三摩地。官网: 「以观导定、以定成观,当下验果,不逐境界名相而重身心之柔和、稳定、清明。」课程配比: <b>70%修行面 + 30%健康面</b>。延伸: 一日禅·二日禅·忍可禅七。</div></div>";
-
-  // ── 四阶段修行蓝图 ──
-  h+="<div class=section id=sys-blueprint><h2>🪜 四阶段修行蓝图（海云法师判摄）</h2>";
-  h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:8px>据海云法师《四十华严讲记》第四卷第67讲及大华严寺官网「修行蓝图」页面。整套蓝图涵盖从信众到证量的完整阶次。</p>";
-  h+="<div class=stage-box><b>一、出离乘</b>（出离心→出离道→出离行）<br>以脱离轮回、了生死为基础动机，建立「出三界、入法界」之志。</div>";
-  h+="<div class=stage-box><b>二、菩提乘</b>（菩提心→菩提道→菩提行）<br>发心求觉悟。法师称此「只是起步」。</div>";
-  h+="<div class=stage-box><b>三、菩萨乘</b>（菩萨心→菩萨道→菩萨行）<br>法师称此「还没有究竟」——仍属因地修行。</div>";
-  h+="<div class=stage-box><b>四、普贤乘</b>（普贤心→普贤行→普贤道）<br><b style=color:var(--gold)>究竟归趣。</b>法师称「究竟要到普贤乘来」——此即「普贤乘华严宗」名称的义理出处。</div></div>";
-
-  // ── 华严六科 + 五大行法 ──
-  h+="<div class=section id=sys-six><h2>🎯 华严六科 & 五大行法</h2>";
-  h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:8px>海云法师将传统华严义学重组为可依次修学的课程架构。「五大行法」即六科中除总论外的五项——禅、净、律、密、经教——主张华严宗并非纯粹「解门」而有完整「行门」。</p>";
-  h+="<table class=v-table><tr><th>科目</th><th>内容</th></tr>";
-  h+="<tr><td>华严学概论</td><td>华严经结构·五教十宗·法界缘起（总纲性导论）</td></tr>";
-  h+="<tr><td>华严经教行法</td><td>经文解读·修行法门·善财五十三参（经教门）</td></tr>";
-  h+="<tr><td>华严禅行法</td><td>安般守意·置心一处·三摩地次第（禅门）</td></tr>";
-  h+="<tr><td>华严戒律观</td><td>菩萨戒·梵网经·现代持戒（律门）</td></tr>";
-  h+="<tr><td>华严净土法门</td><td>华藏世界·毗卢遮那净土（净门）</td></tr>";
-  h+="<tr><td>华严密法</td><td>华严字母·曼荼罗·真言持诵·秽迹金刚法（密门）</td></tr>";
-  h+="</table></div>";
-
-  // ── 三大法脉行法分工 ──
-  h+="<div class=section id=sys-lineages><h2>⚡ 三大法脉行法分工</h2>";
-  h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:4px>海云法师对三条汇流法脉在体系中各自的功能分工（据大华严寺官网及讲记）：</p>";
-  h+="<div class=stage-box><b>中观论派 →「解」</b><br>义理/空性论证——负责「理解」层面的理论基础。</div>";
-  h+="<div class=stage-box><b>华严思想 →「架构」</b><br>提供整体的世界观与义理框架——「事事无碍法界」「法界缘起」等核心世界观。</div>";
-  h+="<div class=stage-box><b>瑜伽行派 →「行」</b><br>禅观正行/实修技术来源。源自印度 Maha Yoga 传承（胜师子王菩萨），法师将其等同于「禅宗的禅观正行」。<br><span style=font-size:0.75em;color:var(--text2)>注: 官网将这支传承直接注解为「大乘瑜伽行派／Yogācāra 之行门精义」，读者可留意其中的诠释性跨度。</span></div></div>";
-
-  // ── 四大工程 ──
-  h+="<div class=section id=sys-projects><h2>🏗 四大工程</h2><table class=v-table><tr><th>工程</th><th>性质</th></tr>";
-  h+="<tr><td><b>结界工程</b></td><td>短期共修——调整身心频率的具体操作</td></tr>";
-  h+="<tr><td><b>华藏工程</b></td><td>双重意涵: ①个人前行阶段必修课程（建立语言/思维模式）②跨世代文明教育志业——法师称「华藏工程五百年」</td></tr>";
-  h+="<tr><td><b>华严大学</b></td><td>体制化培育弘法与研究人才的当代项目（非月霞法师等创办的历史性华严大学）</td></tr>";
-  h+="<tr><td><b>BQ广场</b></td><td>四大工程之一，目前公开资料中未见「BQ」具体所指的清晰界定</td></tr>";
-  h+="</table></div>";
-
-  // ── 识·根·智 ──
-  h+="<div class=section id=sys-cognition><h2>🔬 识·根·智 — 三层认知转换</h2>";
-  h+="<p style=font-size:0.8em;color:var(--text2);margin-bottom:4px>法师自创的认知层次术语，用以区分凡夫、行者、法身大士三个阶段所依靠的不同认知机制：</p>";
-  h+="<div class=stage-box><b>识性（凡夫阶段）</b><br>「能」——妄想心。「识性的能绑虚妄的身」——凡夫是「身心混杂」状态。</div>";
-  h+="<div class=stage-box><b>根性（初果至四果阶段）</b><br>「所」。此阶段关键操作是<b>「舍识用根」</b>。</div>";
-  h+="<div class=stage-box><b>智（十信位圆满之后）</b><br>此后「以智为先导」，不再「以所为先导」。<br><span style=font-size:0.75em;color:var(--text2)>注: 法师坦承这套区分是借助现代汉语语法结构对古典义理的诠释性翻译，非声称唯一表述。</span></div></div>";
-
-  // ── 三缘念 ──
-  h+="<div class=section id=sys-refuge><h2>🙏 三缘念 — 修行归依</h2>";
-  h+="<p style=line-height:1.8>海云法师在传统「皈依三宝」之外，提出更具操作性的归依框架：<br>";
-  h+="<b>① 缘念道场</b> — 缘念僧团，以道场为修行依止处；<br>";
-  h+="<b>② 缘念善知识</b> — 缘念具体指导的师长，接受僧团制度性指导；<br>";
-  h+="<b>③ 缘念法门</b> — 缘念自己实际修学的具体法门，不杂修不盲从。<br>";
-  h+="<span style=font-size:0.78em;color:var(--text2)>修行态度: 法师强调「自顾灵山，不顾名山」「知道不算，做到才算」——真正的修行来自扎实的日常践行。</span></p></div>";
-
-  // ── 最新动态 ──
-
-  // ── 演进脉络 ──
-  h+="<div class=section id=sys-evolution><h2>📅 工程面·技术面 演进脉络 & 时间线</h2>";
-  h+="<table class=v-table><tr><th>时期</th><th>关键节点</th><th>体系特征</th></tr>";
-  h+="<tr><td><b>1981-1991</b></td><td>在家讲经探索期</td><td>以现代语言诠释华严·业余讲经·无僧团建制</td></tr>";
-  h+="<tr><td><b>1991.12.22</b></td><td>梦参老和尚剃度(弥陀诞日)</td><td>临济宗第47代·确立僧团身份·正式出家弘法</td></tr>";
-  h+="<tr><td><b>2004-2010</b></td><td>西安/北京系统弘法</td><td>陕师大华严研究所·社科院演讲(2005.1)·北京广化寺《四十华严》全本讲解(2006.11-2010.6)</td></tr>";
-  h+="<tr><td><b>2008</b></td><td>三脉汇流</td><td>钦因传华严衣钵(贤首42世, 9月10日求法.9月21日传法大典)+印度胜师子王菩萨传瑜伽行法(年底)<br>提出「普贤乘华严宗」·工程面/技术面双轨教学确立</td></tr>";
-  h+="<tr><td><b>2011-2013</b></td><td>密集出版·框架定型</td><td>华严六科·五大行法·三部曲·禅观体系完整出版</td></tr>";
-  h+="<tr><td><b>2014-2019</b></td><td>讲经扩展·制度细化</td><td>药师/地藏/各品讲记密集出版·忍可灌顶制度·华严专宗学院</td></tr>";
-  h+="<tr><td><b>2020-2023</b></td><td>数位化转型</td><td>线上讲经·电子书出版·国立台北大学杰出校友(2023)</td></tr>";
-  h+="<tr><td><b>2024-2026</b></td><td>第四期佛教·AI时代</td><td>九九华严五年讲座(TICC)·支提山大华严寺动土(2026.7)·台北大学合作</td></tr>";
-  h+="</table></div>";
+  h+=renderCultivationSystem();
 
   // ── 助道资粮 (从 PRACTICE_DATA.zhuandao_ziliang) ──
   h+=renderZhuandaoSection();
@@ -1543,6 +1456,144 @@ function renderTiantaiSection() {
       h += '</ul>';
     });
     h += '</details>';
+  }
+  return h;
+}
+
+// ═══ 修行体系渲染 (从 PRACTICE_DATA.cultivation_system) ═══
+var _csColors={gold:{bd:'#b8863c',bg:'rgba(184,134,60,0.08)',t:'#8a7060',d:'#a09080'},blue:{bd:'#5e8b9e',bg:'rgba(94,139,158,0.08)',t:'#6a7060',d:'#a09080'},red:{bd:'#c46b5d',bg:'rgba(196,107,93,0.08)',t:'#8a6060',d:'#a09080'}};
+function renderCultivationSystem() {
+  var cs = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.cultivation_system) ? PRACTICE_DATA.cultivation_system : null;
+  if (!cs) return '';
+  var h = '';
+  var hd = cs.header || {};
+  h += '<div class=section style=border-left:4px solid var(--gold)><h2>🧘 ' + hd.title + '</h2>';
+  if (hd.title_en) h += '<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">' + hd.title_en + '</span>';
+  h += '<p style=line-height:1.8>' + (hd.description||'').replace(/\n/g,'<br>') + '</p>';
+  if (hd.description_en) h += '<p class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8">📖 ' + hd.description_en + '</p></div>';
+
+  // ── 三阶段卡片 ──
+  var stages = cs.three_stages || [];
+  if (stages.length) {
+    h += "<div style='display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0'>";
+    stages.forEach(function(s, i) {
+      if (i>0) h += "<div style='display:flex;align-items:center;color:#c0b098;font-size:1.2em'>→</div>";
+      var c = _csColors[s.color] || _csColors.gold;
+      h += "<div style='flex:1;min-width:180px;background:" + c.bg + ";border:1px solid " + c.bd + ";border-radius:10px;padding:16px;text-align:center'>";
+      h += "<div style='font-size:1.05em;font-weight:700;color:" + c.bd + ";margin-bottom:4px'>" + s.name + "</div>";
+      if (s.name_en) h += '<div class="en-line" style="font-size:0.6em;color:var(--text2)">' + s.name_en + '</div>';
+      h += "<div style='font-size:0.8em;color:" + c.t + "'>" + s.subtitle + "</div>";
+      if (s.subtitle_en) h += '<div class="en-line" style="font-size:0.62em;color:var(--text2)">' + s.subtitle_en + '</div>';
+      h += "<div style='font-size:0.7em;color:" + c.d + ";margin-top:4px'>" + s.detail + "</div>";
+      if (s.detail_en) h += '<div class="en-line" style="font-size:0.62em;color:var(--text2)">' + s.detail_en + '</div>';
+      h += "</div>";
+    });
+    h += "</div>";
+
+    // ── 修行三阶段 stage-box ──
+    h += '<div class=section id=sys-stages><h2>📐 修行三阶段（据大华严寺官网「修行蓝图」2025.11）</h2>';
+    if (cs.three_stages_title_en) h += '<div class="en-line" style=font-size:0.7em;color:var(--text2)>📖 ' + cs.three_stages_title_en + '</div>';
+    stages.forEach(function(s, i) {
+      h += '<div class=stage-box><b>' + (i+1) + '、' + s.name + ' — ' + s.subtitle + '</b><br>' + (s.description||'').replace(/\n/g,'<br>');
+      if (s.description_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.7;border-top:1px dashed var(--line);margin-top:4px;padding-top:4px">📖 ' + s.description_en.replace(/\n/g,' ') + '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 四阶段修行蓝图 ──
+  var fp = cs.four_stages_blueprint;
+  if (fp && fp.stages) {
+    h += '<div class=section id=sys-blueprint><h2>🪜 四阶段修行蓝图（海云法师判摄）</h2>';
+    if (fp.description_en) h += '<div class="en-line" style="font-size:0.7em;color:var(--text2);margin-bottom:4px">📖 ' + fp.description_en + '</div>';
+    if (fp.description) h += '<p style=font-size:0.8em;color:var(--text2);margin-bottom:8px>' + fp.description.replace(/\n/g,'<br>') + '</p>';
+    fp.stages.forEach(function(s, i) {
+      h += '<div class=stage-box><b>' + (i+1) + '、' + s.name + '</b>' + (s.name_en?' <span class="en-line" style=font-size:0.7em;color:var(--text2)>(' + s.name_en + ')</span>':'') + '<br>' + (s.description||'').replace(/\n/g,'<br>');
+      if (s.description_en) h += '<div class="en-line" style="font-size:0.75em;color:var(--text2);line-height:1.7">📖 ' + s.description_en.replace(/\n/g,' ') + '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 华严六科 + 五大行法 ──
+  var sx = cs.six_subjects;
+  if (sx && sx.subjects) {
+    h += '<div class=section id=sys-six><h2>🎯 华严六科 & 五大行法</h2>';
+    if (sx.description_en) h += '<div class="en-line" style="font-size:0.7em;color:var(--text2);margin-bottom:4px">📖 ' + sx.description_en + '</div>';
+    if (sx.description) h += '<p style=font-size:0.8em;color:var(--text2);margin-bottom:8px>' + sx.description.replace(/\n/g,'<br>') + '</p>';
+    h += '<table class=v-table><tr><th>科目</th><th>内容</th></tr>';
+    sx.subjects.forEach(function(s) {
+      h += '<tr><td>' + s.name + '</td><td>' + s.content + '</td></tr>';
+      if (s.name_en || s.content_en) h += '<tr class="en-line"><td colspan=2 style="font-size:0.7em;color:var(--text2);line-height:1.7">📖 ' + (s.name_en||s.name) + (s.content_en?' — '+s.content_en:'') + '</td></tr>';
+    });
+    h += '</table></div>';
+  }
+
+  // ── 三大法脉行法分工 ──
+  var tl = cs.three_lineages;
+  if (tl && tl.lineages) {
+    h += '<div class=section id=sys-lineages><h2>⚡ 三大法脉行法分工</h2>';
+    if (tl.description) h += '<p style=font-size:0.8em;color:var(--text2);margin-bottom:4px>' + tl.description.replace(/\n/g,'<br>') + '</p>';
+    if (tl.description_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2)">📖 ' + tl.description_en.replace(/\n/g,' ') + '</div>';
+    tl.lineages.forEach(function(l) {
+      h += '<div class=stage-box><b>' + l.name + ' →「' + l.role + '」</b>' + (l.name_en?' <span class="en-line" style=font-size:0.7em;color:var(--text2)>(' + l.name_en + ')</span>':'') + '<br>' + (l.description||'').replace(/\n/g,'<br>');
+      if (l.description_en) h += '<div class="en-line" style="font-size:0.75em;color:var(--text2);line-height:1.7">📖 ' + l.description_en.replace(/\n/g,' ') + '</div>';
+      if (l.note) h += '<br><span style=font-size:0.75em;color:var(--text2)>注: ' + l.note + '</span>';
+      if (l.note_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2)">📖 ' + l.note_en + '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 四大工程 ──
+  var pr = cs.four_projects;
+  if (pr && pr.projects) {
+    h += '<div class=section id=sys-projects><h2>🏗 四大工程</h2><table class=v-table><tr><th>工程</th><th>性质</th></tr>';
+    pr.projects.forEach(function(p) {
+      h += '<tr><td><b>' + p.name + '</b></td><td>' + (p.description||'').replace(/\n/g,'<br>') + '</td></tr>';
+      if (p.name_en || p.description_en) h += '<tr class="en-line"><td colspan=2 style="font-size:0.7em;color:var(--text2);line-height:1.7">📖 ' + (p.name_en||p.name) + (p.description_en?' — '+p.description_en.replace(/\n/g,' '):'') + '</td></tr>';
+    });
+    h += '</table></div>';
+  }
+
+  // ── 识·根·智 ──
+  var cg = cs.cognitive_levels;
+  if (cg && cg.levels) {
+    h += '<div class=section id=sys-cognition><h2>🔬 识·根·智 — 三层认知转换</h2>';
+    if (cg.description) h += '<p style=font-size:0.8em;color:var(--text2);margin-bottom:4px>' + cg.description.replace(/\n/g,'<br>') + '</p>';
+    if (cg.description_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2)">📖 ' + cg.description_en.replace(/\n/g,' ') + '</div>';
+    cg.levels.forEach(function(l) {
+      h += '<div class=stage-box><b>' + l.name + '（' + l.stage + '）</b>' + (l.name_en?' <span class="en-line" style=font-size:0.7em;color:var(--text2)>(' + l.name_en + ')</span>':'') + '<br>' + (l.description||'').replace(/\n/g,'<br>');
+      if (l.description_en) h += '<div class="en-line" style="font-size:0.75em;color:var(--text2);line-height:1.7">📖 ' + l.description_en.replace(/\n/g,' ') + '</div>';
+      if (l.note) h += '<br><span style=font-size:0.75em;color:var(--text2)>注: ' + l.note + '</span>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  // ── 三缘念 ──
+  var rf = cs.three_refuges;
+  if (rf && rf.items) {
+    h += '<div class=section id=sys-refuge><h2>🙏 三缘念 — 修行归依</h2>';
+    h += '<p style=line-height:1.8>' + (rf.intro||'').replace(/\n/g,'<br>') + '<br>';
+    rf.items.forEach(function(it, i) {
+      h += '<b>' + (i+1) + ' ' + it.name + '</b>' + (it.name_en?' <span class="en-line" style=font-size:0.7em;color:var(--text2)>(' + it.name_en + ')</span>':'') + ' — ' + it.description + '；<br>';
+    });
+    if (rf.practice_attitude) h += '<span style=font-size:0.78em;color:var(--text2)>修行态度: ' + rf.practice_attitude.replace(/\n/g,' ') + '</span></p>';
+    if (rf.practice_attitude_en) h += '<div class="en-line" style="font-size:0.72em;color:var(--text2)">📖 ' + rf.practice_attitude_en + '</div>';
+    h += '</div>';
+  }
+
+  // ── 演进脉络 ──
+  var ev = cs.evolution_timeline;
+  if (ev && ev.length) {
+    h += '<div class=section id=sys-evolution><h2>📅 工程面·技术面 演进脉络 & 时间线</h2>';
+    h += '<table class=v-table><tr><th>时期</th><th>关键节点</th><th>体系特征</th></tr>';
+    ev.forEach(function(e) {
+      h += '<tr><td><b>' + e.period + '</b></td><td>' + e.node + '</td><td>' + (e.feature||'').replace(/\n/g,'<br>') + '</td></tr>';
+      if (e.feature_en) h += '<tr class="en-line"><td colspan=3 style="font-size:0.7em;color:var(--text2);line-height:1.7">📖 ' + e.feature_en.replace(/\n/g,' ') + '</td></tr>';
+    });
+    h += '</table></div>';
   }
   return h;
 }
