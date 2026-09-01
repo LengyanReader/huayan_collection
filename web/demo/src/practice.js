@@ -1897,14 +1897,19 @@ function renderYikongSection() {
   var h = '';
   yk.sections.forEach(function(sec) {
     h += '<div class=section id=yk-' + sec.id.replace('yk_','') + '>';
-    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title;
+    if (sec.title_en) h += '<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">' + sec.title_en + '</span>';
+    h += '</h2>';
     if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + md(sec.intro) + '</p>';
+    if (sec.intro_en) h += '<p class="en-line" style="white-space:pre-line;font-size:0.78em;color:var(--text2);line-height:1.8"><span style="color:var(--gold);font-weight:600">📖 </span>' + sec.intro_en + '</p>';
     if (sec.topics) {
       sec.topics.forEach(function(t, idx) {
         h += '<div class=wu-door id=yk-topic-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
         h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        if (t.title_en) h += '<div class="en-line" style="font-size:0.62em;color:var(--text2);margin-left:18px;margin-bottom:4px">' + t.title_en + '</div>';
         h += '<div class=body>';
         h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
+        if (t.en_body) h += '<div class="en-line" style="white-space:pre-line;font-size:0.82em;color:var(--text2);border-top:1px dashed var(--line);margin-top:6px;padding-top:6px"><span style="color:var(--gold);font-weight:600">📖 </span>' + md(t.en_body) + '</div>';
         if (t.links) {
           Object.keys(t.links).forEach(function(k) {
             h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
@@ -1956,14 +1961,19 @@ function renderMimiSection() {
   var h = '';
   mm.sections.forEach(function(sec) {
     h += '<div class=section id=mm-' + sec.id.replace('mm_','') + '>';
-    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title;
+    if (sec.title_en) h += '<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">' + sec.title_en + '</span>';
+    h += '</h2>';
     if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + md(sec.intro) + '</p>';
+    if (sec.intro_en) h += '<p class="en-line" style="white-space:pre-line;font-size:0.78em;color:var(--text2);line-height:1.8"><span style="color:var(--gold);font-weight:600">📖 </span>' + sec.intro_en + '</p>';
     if (sec.topics) {
       sec.topics.forEach(function(t, idx) {
         h += '<div class=wu-door id=mm-topic-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
         h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        if (t.title_en) h += '<div class="en-line" style="font-size:0.62em;color:var(--text2);margin-left:18px;margin-bottom:4px">' + t.title_en + '</div>';
         h += '<div class=body>';
         h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
+        if (t.en_body) h += '<div class="en-line" style="white-space:pre-line;font-size:0.82em;color:var(--text2);border-top:1px dashed var(--line);margin-top:6px;padding-top:6px"><span style="color:var(--gold);font-weight:600">📖 </span>' + md(t.en_body) + '</div>';
         if (t.links) {
           Object.keys(t.links).forEach(function(k) {
             h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
