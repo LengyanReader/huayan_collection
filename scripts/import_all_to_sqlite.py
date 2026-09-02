@@ -603,7 +603,7 @@ def import_chapters(conn, id_to_rowid):
     imported = 0
     for order_num, ch_title, in_60, in_tib, unique_zh in chapters_80:
         conn.execute("""
-            INSERT INTO chapters
+            INSERT OR REPLACE INTO chapters
             (sutra_id, title_zh, order_num, in_80huayan, in_60huayan,
              in_tibetan, is_unique_to_zh, source)
             VALUES (?, ?, ?, 1, ?, ?, ?, 'CBETA/84000')
@@ -617,7 +617,7 @@ def import_chapters(conn, id_to_rowid):
     ]
     for bo_order, bo_title, bo_sa in unique_bo_chapters:
         conn.execute("""
-            INSERT INTO chapters
+            INSERT OR REPLACE INTO chapters
             (sutra_id, title_zh, title_sa, order_num, in_80huayan,
              in_60huayan, in_tibetan, is_unique_to_bo, source)
             VALUES (?, ?, ?, ?, 0, 0, 1, 1, 'Toh44/84000')

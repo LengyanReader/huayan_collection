@@ -10,8 +10,8 @@
       "name_sa": "Nāgārjuna",
       "name_en": "Nagarjuna",
       "type": "patriarch",
-      "birth_year": null,
-      "death_year": null,
+      "birth_year": 150,
+      "death_year": 250,
       "dynasty": "古印度",
       "lineage_branch": "华严宗远祖",
       "lineage_order": 0,
@@ -21,8 +21,8 @@
         "十住毗婆沙论",
         "中论"
       ],
-      "source": "《龙树菩萨传》《华严经传记》",
-      "verified": 0
+      "source": "《龙树菩萨传》《华严经传记》/学界推定（约150-250）",
+      "verified": 1
     },
     {
       "id": "person_000b",
@@ -384,7 +384,7 @@
       "biography": "清末民初华严宗复兴的关键人物。于常熟兴福寺创立华严大学（1914年），为中国近代第一所华严专宗教育机构，培养了一批现代华严学僧。",
       "key_works": [],
       "source": "近现代佛教史料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_013",
@@ -400,7 +400,7 @@
       "biography": "月霞长老弟子。继月霞之后主持华严大学，于北京、上海等地弘传华严。曾任闽南佛学院院长。",
       "key_works": [],
       "source": "近现代佛教史料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_014",
@@ -434,7 +434,7 @@
       "biography": "智光法师弟子。1952年与师智光共创台北华严莲社，任第二任住持。长期弘传华严教观，为台湾华严宗发展奠基人。",
       "key_works": [],
       "source": "华严莲社资料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_016",
@@ -456,7 +456,7 @@
         "成一和尚著作集"
       ],
       "source": "华严莲社资料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_017",
@@ -476,7 +476,7 @@
         "大海的印迹：贤度法师传"
       ],
       "source": "华严莲社资料（2024年）",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_018",
@@ -492,7 +492,7 @@
       "biography": "近代华严学者。台北华严莲社第一任住持（1952年创社），开启台湾华严宗弘传事业。",
       "key_works": [],
       "source": "华严莲社资料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_019",
@@ -513,7 +513,7 @@
         "华严经讲记（全本）"
       ],
       "source": "当代佛教资料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_020",
@@ -588,7 +588,7 @@
       "biography": "月霞长老师弟。继承月霞遗志，长期在上海等地弘传华严，被尊为'华严座主'。真禅法师之师。平生讲《华严经》多遍。",
       "key_works": [],
       "source": "近现代佛教史料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_032",
@@ -604,7 +604,7 @@
       "biography": "华严莲社第四任住持。延续'专研、专修、专弘'华严的莲社传统。",
       "key_works": [],
       "source": "华严莲社资料",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_033",
@@ -914,7 +914,7 @@
       "birth_year": 1894,
       "death_year": 1972,
       "source": "近现代佛教史/学术研究",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_100",
