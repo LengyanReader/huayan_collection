@@ -16,8 +16,8 @@ try{renderCosmology();}catch(e){}
 
 // Events
 var _searchSuggest=document.getElementById('search-suggest');
-// Known aliases for fuzzy search (name -> alt names)
-var _aliases={'王阳明':'王守仁','王守仁':'王阳明','慧能':'惠能','惠能':'慧能','卢舍那':'毗卢遮那','清凉国师':'澄观','贤首国师':'法藏','圭峰':'宗密','帝心':'杜顺','至相':'智俨'};
+// Known aliases for fuzzy search (name -> alt names) — data-driven from data/events/search_aliases.yaml
+var _aliases=(typeof SEARCH_ALIASES!=='undefined'&&SEARCH_ALIASES&&SEARCH_ALIASES.aliases)?SEARCH_ALIASES.aliases:{};
 function _matchSearch(n,q){
   if(!q)return true;
   if(n.n&&n.n.indexOf(q)>=0)return true;
