@@ -759,8 +759,8 @@
       "title": "日本华严宗初传",
       "biography": "新罗僧。来华从法藏学华严。后赴日本，于东大寺宣讲《华严经》，为日本华严宗之初传。",
       "key_works": [],
-      "source": "日本佛教史",
-      "verified": 0
+      "source": "日本佛教史（精選版大辞典：742没；另有「生没年不詳」说）",
+      "verified": 1
     },
     {
       "id": "person_060",
@@ -1004,8 +1004,8 @@
         "十地经论"
       ],
       "birth_year": null,
-      "death_year": 527,
-      "source": "《续高僧传》卷一·菩提流支传",
+      "death_year": null,
+      "source": "《续高僧传》卷一·菩提流支传（载译经自洛及邺至天平二十余年；卒年诸说未定，存527/530等异说，待核）",
       "verified": 0
     },
     {
@@ -1582,7 +1582,7 @@
       "key_works": [],
       "birth_year": 689,
       "death_year": 774,
-      "source": "日本佛教史（精選版大辞典：742没；另有「生没年不詳」说）",
+      "source": "日本佛教史（有773/774异说）",
       "verified": 1
     },
     {
@@ -1598,8 +1598,8 @@
       "key_works": [],
       "birth_year": null,
       "death_year": null,
-      "source": "日本佛教史（有773/774异说）",
-      "verified": 1
+      "source": "日本佛教史",
+      "verified": 0
     },
     {
       "id": "person_j03",
