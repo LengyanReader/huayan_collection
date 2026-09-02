@@ -314,9 +314,9 @@ def import_lineages(conn, graph, lineages_data):
 
         conn.execute("""
             INSERT INTO lineage_edges (from_person_id, to_person_id, relation,
-                                       lineage_name, lineage_id, note)
-            VALUES (?, ?, ?, ?, ?, ?)
-        """, (s, t, rel, ln_for_note, lineage_id, note_val))
+                                       lineage_name, lineage_id, note, source)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (s, t, rel, ln_for_note, lineage_id, note_val, 'graph.json'))
         imported += 1
 
     # Also import edges from lineages.json that aren't in graph.json
@@ -498,6 +498,16 @@ def import_texts(conn):
                 (title_zh, text_type, taisho_no or None)
             ).fetchone()
             if exists:
+                # 幂等更新：已存在行仅回填多语题名（title_sa/title_bo/title_en），
+                # 便于后续批次补充英译而不重复建行。
+                conn.execute(
+                    "UPDATE texts SET "
+                    "title_en=COALESCE(?, title_en), "
+                    "title_sa=COALESCE(?, title_sa), "
+                    "title_bo=COALESCE(?, title_bo) "
+                    "WHERE id=?",
+                    (title_en or None, title_sa or None, title_bo or None, exists[0])
+                )
                 if src_id:
                     id_to_rowid[src_id] = exists[0]
                 continue
