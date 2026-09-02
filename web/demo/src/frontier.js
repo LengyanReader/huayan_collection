@@ -31,6 +31,12 @@ function _renderDomain(d){
       h+='<b>'+_escFrontier(r.name)+'</b>';
       if(r.affiliation) h+=' ('+_escFrontier(r.affiliation)+')';
       h+=': '+_escFrontier(r.description)+'<br>';
+      if(r.description_en){
+        h+='<div class="en-line rel-en">'+_escFrontier(r.name_en||r.name);
+        if(r.affiliation_en) h+=' ('+_escFrontier(r.affiliation_en)+')';
+        else if(r.affiliation) h+=' ('+_escFrontier(r.affiliation)+')';
+        h+=': '+_escFrontier(r.description_en)+'</div>';
+      }
     });
     h+='</div>';
   }

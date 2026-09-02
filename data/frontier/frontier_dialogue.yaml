@@ -41,15 +41,23 @@ sections:
           - name: "Francisco Varela"
             affiliation: "法国国家科学研究院(CNRS)"
             description: "神经现象学(neurophenomenology)开创者: 将佛教「缘起」(pratītyasamutpāda)思想引入认知科学,提出enactivism(生成认知)理论——认知不是大脑内部表征,而是身-心-世界的互动生成。"
+            affiliation_en: CNRS, France
+            description_en: 'Pioneer of neurophenomenology: brought Buddhism’s dependent origination (pratītyasamutpāda) into cognitive science and proposed enactivism — cognition as the embodied co-emergence of mind, body, and world, not as internal brain representation.'
           - name: "Joscha Bach"
             affiliation: "哈佛大学认知科学中心"
             description: "AI研究者与认知科学家: 「意识是宇宙自我建模的副产品」——与华严「一心造万法」的哲学意涵相映成趣。其MicroPsi架构试图模拟意识的信息整合功能。"
+            affiliation_en: Center for Cognitive Science, Harvard University
+            description_en: 'AI researcher and cognitive scientist: “consciousness is a by-product of the universe modeling itself” — an idea that resonates with Huayan’s “one mind creates all dharmas.” His MicroPsi architecture models the integrative function of consciousness.'
           - name: "Ilya Sutskever"
             affiliation: "OpenAI / Safe Superintelligence Inc."
             description: "深度学习先驱,对AI意识与超级智能有持续思考。其关于神经网络「压缩即理解」的观点与华严「闻一悟无量」的全息认知论有可比较的结构。"
+            affiliation_en: OpenAI / Safe Superintelligence Inc.
+            description_en: A deep-learning pioneer with sustained reflections on AI consciousness and superintelligence. His view that compression in neural networks equals understanding parallels the holographic epistemology of Huayan’s “hearing one and awakening to the measureless.”
           - name: "Yoshua Bengio"
             affiliation: "Mila (蒙特利尔大学)"
             description: "2024-2025年转向AI安全与意识研究,提出system 2 attention机制——与华严「止观双运」(定慧等持)的认知模型有功能类比。"
+            affiliation_en: Mila (Université de Montréal)
+            description_en: Turned to AI safety and consciousness research in 2024–2025, proposing a system-2 attention mechanism — a functional analogue of the Huayan model of uniting śamatha and vipaśyanā (the equipoise of concentration and insight).
         sources:
           - "T10n0279《大方广佛华严经》八十卷,实叉难陀译,唐证圣元年(695)。〈毗卢遮那品〉〈因陀罗网品〉。CBETA电子佛典。"
           - "T45n1881《华严经金师子章》一卷,法藏。以金喻法界,师子喻事法界,阐述四法界义。"
@@ -90,15 +98,23 @@ sections:
           - name: "Thomas Metzinger"
             affiliation: "德国美因茨大学哲学研究所"
             description: "《Being No One: The Self-Model Theory of Subjectivity》(2003)——自我是虚拟的现象模型(self-model),与佛教「无我」(anātman)高度一致。提出PTM(Phenomenal Transparency Model)——意识的透明性使我们无法意识到自身认知模型的建构过程,与华严「妄尽还源」的修行逻辑形成正面对话。"
+            affiliation_en: Department of Philosophy, University of Mainz, Germany
+            description_en: 'Being No One: The Self-Model Theory of Subjectivity (2003) — the self as a virtual phenomenal model, highly consonant with Buddhism''s anātman. His PTM (Phenomenal Transparency Model) holds that transparency keeps us unaware of our own cognitive modeling, in direct dialogue with Huayan''s logic of “returning to the source once delusion is exhausted.”'
           - name: "Anil Seth"
             affiliation: "萨塞克斯大学"
             description: "「意识是受控的幻觉(controlled hallucination)」——大脑不断预测并更新世界模型(预测加工理论,predictive processing)。与华严「妄尽心明」(惑尽智生)的修行逻辑有对话空间: 预测模型的系统性「失灵」可能对应禅修中的顿悟体验。"
+            affiliation_en: University of Sussex
+            description_en: '“Consciousness is controlled hallucination” — the brain ceaselessly predicts and updates its world model (predictive processing). This converses with Huayan''s “delusion exhausted, mind illumined”: the systematic “failure” of prediction may correspond to the insight experience in meditation.'
           - name: "Evan Thompson"
             affiliation: "英属哥伦比亚大学"
             description: "《Mind in Life》(2007)与《Waking, Dreaming, Being》(2015)——从enactivism立场审视意识与佛教禅修,提出「neurophenomenology」作为连接第一人称与第三人称研究的方法论框架。"
+            affiliation_en: University of British Columbia
+            description_en: Mind in Life (2007) and Waking, Dreaming, Being (2015) — examines consciousness and Buddhist meditation from an enactivist stance and develops neurophenomenology as a method linking first- and third-person research.
           - name: "Raphaël Millière"
             affiliation: "麦吉尔大学"
             description: "冥想中的意识中断(cessation)现象研究: 2024年与Laukkonen等合作发表于Trends in Cognitive Sciences,研究深度冥想者经历的「自我感消退」的神经动力学。"
+            affiliation_en: McGill University
+            description_en: Studies the cessation experience in meditation; with Laukkonen and others published in Trends in Cognitive Sciences (2024) on the neurodynamics of the fading sense of self in advanced meditators.
         sources:
           - "杜顺《华严五教止观》(又称《法界观门》),一卷。T45n1852? ——存疑,部分学者归于杜顺或法藏。"
           - "T36n1732《华严经探玄记》卷三: 止观十门,法藏。"
@@ -137,18 +153,29 @@ sections:
           - name: "Richard Davidson"
             affiliation: "威斯康辛大学健康心智中心(Center for Healthy Minds)"
             description: "与达赖喇嘛合作研究禅修脑科学30年,开创「情感神经科学」(affective neuroscience)与冥想研究的交叉领域。核心贡献: 证实长期禅修者的大脑功能与结构确实不同于对照组。"
+            affiliation_en: Center for Healthy Minds, University of Wisconsin–Madison
+            description_en: 'Thirty years of meditation-neuroscience collaboration with the Dalai Lama; founded the intersection of affective neuroscience and meditation research. Key contribution: demonstrating that long-term meditators’ brain function and structure reliably differ from controls.'
           - name: "Sara Lazar"
             affiliation: "哈佛医学院 / 麻省总医院"
             description: "2005年首次用MRI证明8周正念训练即可改变脑结构(皮层增厚),2011年发现资深禅修者前额叶和前脑岛增厚。"
+            affiliation_en: Harvard Medical School / Massachusetts General Hospital
+            description_en: Showed for the first time (2005) by MRI that eight weeks of mindfulness training can change brain structure (cortical thickening); in 2011 found thicker prefrontal cortex and anterior insula in experienced meditators.
           - name: "Judson Brewer"
             affiliation: "布朗大学 / Mindfulness Center"
             description: "DMN与「自我」的神经科学研究: 发现长期禅修者在DMN活跃时同时激活「监控网络」,实现「觉知而不认同」——与华严「观照而不执取」的修行逻辑一致。"
+            affiliation_en: Brown University / Mindfulness Center
+            description_en: 'Neuroscience of the default mode network (DMN) and the “self”: long-term meditators, while the DMN is active, also activate a monitoring network — “awareness without identification,” matching the Huayan logic of “observing without grasping.”'
           - name: "Antoine Lutz"
             affiliation: "里昂神经科学研究中心 / 佛蒙特大学"
             description: "2004年开创性研究资深禅修者γ波同步;后与Davidson合作提出「神经现象学」实验范式。"
+            affiliation_en: Lyon Neuroscience Research Center / University of Vermont
+            description_en: Landmark 2004 study of gamma-band synchronization in long-term meditators; later co-developed, with Davidson, an experimental paradigm for neurophenomenology.
           - name: "Raphaël Millière"
             affiliation: "麦吉尔大学"
             description: "冥想中cessation(体验中断)现象的系统研究,2024年发表于Trends in Cognitive Sciences。"
+            name_en: Raphaël Millière
+            affiliation_en: McGill University
+            description_en: Systematic study of cessation (the temporary suspension of experience) in meditation, published in Trends in Cognitive Sciences (2024).
         sources:
           - "Lutz, A. et al. Long-term meditators self-induce high-amplitude gamma synchrony during mental practice. PNAS 101(46), 2004, pp.16369-16373."
           - "Brewer, J. A. et al. Meditation experience is associated with differences in default mode network activity and connectivity. PNAS 108(50), 2011, pp.20254-20259."
@@ -187,21 +214,33 @@ sections:
           - name: "David Chalmers"
             affiliation: "纽约大学 / 澳大利亚国立大学"
             description: "《The Conscious Mind》(1996)——提出困难问题(Hard Problem of Consciousness)和泛心论的组合问题(Combination Problem)。"
+            affiliation_en: New York University / Australian National University
+            description_en: The Conscious Mind (1996) — formulated the Hard Problem of Consciousness and the Combination Problem for panpsychism.
           - name: "Philip Goff"
             affiliation: "达勒姆大学"
             description: "《Galileo's Error》(2019)——当代泛心论代表人物,主张意识是宇宙的基本属性。与华严「法界本具」有哲学亲缘性。"
+            affiliation_en: Durham University
+            description_en: Galileo's Error (2019) — a leading contemporary panpsychist, holding that consciousness is a basic property of the universe; philosophically akin to Huayan's “the Dharma-realm inherently complete.”
           - name: "John Vervaeke"
             affiliation: "多伦多大学"
             description: "「Awakening from the Meaning Crisis」系列讲座——从认知科学角度探讨佛教与西方哲学的意义问题,提出relevance realization(相关性实现)理论。"
+            affiliation_en: University of Toronto
+            description_en: The “Awakening from the Meaning Crisis” lecture series — explores questions of meaning across Buddhism and Western philosophy from cognitive science, proposing the theory of relevance realization.
           - name: "Evan Thompson"
             affiliation: "英属哥伦比亚大学"
             description: "《Waking, Dreaming, Being》(2015)——从佛教角度审视意识,倡导「enactive approach」(生成进路)。"
+            affiliation_en: University of British Columbia
+            description_en: Waking, Dreaming, Being (2015) — examines consciousness from a Buddhist viewpoint, advocating the enactive approach.
           - name: "Michel Bitbol"
             affiliation: "法国国家科学研究院(CNRS)"
             description: "法国现象学家,从佛教「空性」(śūnyatā)视角重读量子力学,提出「参与性认识论」(participatory epistemology)。"
+            affiliation_en: CNRS, France
+            description_en: French phenomenologist who rereads quantum mechanics through Buddhist emptiness (śūnyatā) and proposes a participatory epistemology.
           - name: "Loch Kelly"
             affiliation: "非二元觉知导师"
             description: "《The Way of Effortless Mindfulness》(2019)——将佛教禅修中的「能所双泯」体验与当代意识研究桥接。"
+            affiliation_en: Nondual awareness teacher
+            description_en: The Way of Effortless Mindfulness (2019) — bridges the meditative experience of subject–object dissolution with contemporary consciousness research.
         sources:
           - "T10n0279,卷三〈卢舍那佛品〉: 「心、佛及众生,是三无差别。」"
           - "T45n1881《金师子章》: 「金与师子,相即重重,一毛之中,有无边师子。」"
@@ -255,18 +294,33 @@ sections:
           - name: "智顗(538-597)"
             affiliation: "天台宗创始人"
             description: "《法华玄义》《摩诃止观》《法华文句》——天台三大部。创立「五时八教」判教体系和「一念三千」心性论。"
+            name_en: Zhiyi (538–597)
+            affiliation_en: Founder of the Tiantai School
+            description_en: 'The “Three Great Works of Tiantai”: Profound Meaning of the Lotus Sutra, Great Calming and Contemplation, and Words and Phrases of the Lotus Sutra. Established the doctrinal system of the Five Periods and Eight Teachings and the mind-only theory of “one thought as three thousand realms.”'
           - name: "法藏(643-712)"
             affiliation: "华严宗三祖"
             description: "《华严五教章》《金师子章》《华严经探玄记》——系统化华严判教与义理。武则天时期国师。"
+            name_en: Fazang (643–712)
+            affiliation_en: Third Patriarch of the Huayan School
+            description_en: Systematized Huayan doctrinal classification and theory in the Treatise on the Five Teachings of Huayan, the Treatise on the Golden Lion, and the Exploration of the Mysteries of the Avataṃsaka Sūtra. National master under Empress Wu Zetian.
           - name: "湛然(711-782)"
             affiliation: "天台宗九祖"
             description: "《金刚錍》《止观辅行传弘决》——中兴天台,主张「无情有性」,与华严「法界遍在」形成义理张力。"
+            name_en: Zhanran (711–782)
+            affiliation_en: Ninth Patriarch of the Tiantai School
+            description_en: Revived Tiantai with the Diamond Scalpel-like treatises and commentaries; championed “nonsentient beings possess buddha-nature,” in doctrinal tension with Huayan’s all-pervasive Dharma-realm.
           - name: "牟宗三(1909-1995)"
             affiliation: "新儒家学派"
             description: "《佛性与般若》(1977)——从康德哲学立场评判天台优于华严,争议至今。"
+            name_en: Mou Zongsan (1909–1995)
+            affiliation_en: New Confucian school
+            description_en: Buddha-nature and Prajñā (1977) — judges Tiantai superior to Huayan from a Kantian standpoint; the debate continues to this day.
           - name: "赖永海"
             affiliation: "南京大学哲学系"
             description: "《中国佛性论》(1992)——从学术角度系统比较华严「性起」与天台「性具」。"
+            name_en: Lai Yonghai
+            affiliation_en: Department of Philosophy, Nanjing University
+            description_en: Chinese Buddhanature Theory (1992) — an academic, systematic comparison of Huayan's “arising from the nature” and Tiantai's “nature-inclusion.”
         sources:
           - "T45n1886《华严五教章》一卷,法藏。华严判教核心文献。"
           - "T33n1716《法华玄义》十卷,智顗。天台判教核心文献。"
@@ -312,15 +366,27 @@ sections:
           - name: "宗密(780-841)"
             affiliation: "华严宗第五祖 / 禅宗荷泽系法嗣"
             description: "《禅源诸诠集都序》《原人论》《华严原人论》——禅教融合之集大成者,同时横跨华严与禅宗两大传统。"
+            name_en: Zongmi (780–841)
+            affiliation_en: Fifth Patriarch of the Huayan School; heir of the Heze Chan lineage
+            description_en: Author of the Preface to the Collected Source Materials of Chan, the Inquiry into the Origins of Humanity, and other works — the great synthesizer of Chan and doctrinal Buddhism, spanning both the Huayan and Chan traditions.
           - name: "临济义玄(?-867)"
             affiliation: "临济宗创始人"
             description: "「无位真人」「随处作主,立处皆真」——以激烈的棒喝手段接引学人,体现华严「事事无碍」在日常行为中的极致落实。"
+            name_en: Linji Yixuan (? – 867)
+            affiliation_en: Founder of the Linji School
+            description_en: “The true man of no rank” and “be master wherever you stand” — guided students through fierce shouts and blows, embodying Huayan’s “total unobstruction” carried into everyday conduct.
           - name: "海云继梦法师"
             affiliation: "华严学会"
             description: "当代华严禅观的实践复兴者,将华严五教止观与禅宗修行技术系统对接,著有《华严禅观》系列。"
+            name_en: Haiyun Jimeng
+            affiliation_en: Huayan Society
+            description_en: Contemporary revivalist of Huayan contemplative practice, systematically interfacing the Five Teachings of Contemplation with Chan meditation technique; author of the Huayan Chan Contemplation series.
           - name: "印顺法师(1906-2005)"
             affiliation: "台湾印顺文教基金会"
             description: "《中国禅宗史》(1971)——从学术角度梳理禅宗从印度禅到中国禅的演变,涉及华严与禅宗的历史互动。"
+            name_en: Yin Shun (1906–2005)
+            affiliation_en: Yin Shun Culture and Education Foundation, Taiwan
+            description_en: History of Chinese Chan (1971) — an academic account of the evolution from Indian dhyāna to Chinese Chan, covering the historical interplay of Huayan and Chan.
         sources:
           - "T48n2015《禅源诸诠集都序》四卷,宗密。"
           - "T45n1887《原人论》一卷,宗密。以华严判摄儒道释三家。"
@@ -365,15 +431,27 @@ sections:
           - name: "善导(613-681)"
             affiliation: "净土宗二祖"
             description: "《观经四帖疏》——将极乐世界判为「报土」,奠定净土宗独立判教体系。"
+            name_en: Shandao (613–681)
+            affiliation_en: Second Patriarch of the Pure Land tradition
+            description_en: Commentary on the Contemplation Sutra (in four fascicles) — judged the Land of Bliss a “reward land,” founding the Pure Land tradition’s independent doctrinal classification.
           - name: "莲池祩宏(1535-1615)"
             affiliation: "明代高僧"
             description: "《弥陀疏钞》——以华严十门解释阿弥陀经,开创「贤净双修」传统。"
+            name_en: Lianchi Zhuhong (1535–1615)
+            affiliation_en: Eminent Ming dynasty monk
+            description_en: Commentary on the Amitabha Sutra — explained the Amitabha Sutra through Huayan’s Ten Mysterious Gates, inaugurating the “recumbent Huayan–Pure Land” (xianjing shuangxiu) tradition.
           - name: "蕅益智旭(1599-1655)"
             affiliation: "明代高僧"
             description: "《弥陀要解》——以天台释净,但深受华严法界观影响。"
+            name_en: Ouyi Zhixu (1599–1655)
+            affiliation_en: Eminent Ming dynasty monk
+            description_en: Essential Explanation of the Amitabha Sutra — interpreted Pure Land through Tiantai, yet deeply influenced by the Huayan vision of the dharmadhātu.
           - name: "海云继梦法师"
             affiliation: "华严学会"
             description: "当代华严宗实践中强调普贤行愿与净土归趣的关系。"
+            name_en: Haiyun Jimeng
+            affiliation_en: Huayan Society
+            description_en: In contemporary Huayan practice, stresses the relation between Samantabhadra’s vows and the aspiration for the Pure Land.
         sources:
           - "T10n0279,卷八〈华藏世界品〉: 华藏世界海的宇宙论描述。"
           - "T10n0293《大方广佛华严经普贤行愿品》四十卷,般若译。普贤十大愿王导归极乐。"
@@ -421,18 +499,33 @@ sections:
           - name: "玄奘(602-664)"
             affiliation: "唯识宗(法相宗)创始人"
             description: "译《成唯识论》《瑜伽师地论》等——将印度瑜伽行派系统引入中国,强调「阿赖耶识」作为一切法的所依。"
+            name_en: Xuanzang (602–664)
+            affiliation_en: Founder of the Yogācāra (Faxiang) School in China
+            description_en: Translated the Cheng Weishi Lun, the Yogācārabhūmi Śāstra, and others — systematically introduced Indian Yogācāra to China, emphasizing ālayavijñāna as the basis of all dharmas.
           - name: "法藏(643-712)"
             affiliation: "华严宗三祖"
             description: "判唯识为「大乘始教」,在《华严五教章》中系统比较唯识与华严的义理层次。"
+            name_en: Fazang (643–712)
+            affiliation_en: Third Patriarch of the Huayan School
+            description_en: Classified Yogācāra as the “Elementary Teaching of the Mahāyāna” and systematically compared the doctrinal levels of Yogācāra and Huayan in the Treatise on the Five Teachings.
           - name: "窥基(632-682)"
             affiliation: "唯识宗二祖"
             description: "《成唯识论述记》——注释玄奘译《成唯识论》,系统阐发阿赖耶识缘起。"
+            name_en: Kuiji (632–682)
+            affiliation_en: Second Patriarch of the Yogācāra (Faxiang) School
+            description_en: Annotation of the Cheng Weishi Lun (Chengyeishilun Shuji) — commented on Xuanzang’s translation, systematically developing the dependent origination of ālayavijñāna.
           - name: "护法(Dharmapāla, 530-561)"
             affiliation: "印度那烂陀寺"
             description: "唯识十大论师之一,主张「种子新熏」说——与难陀的「本有」说形成唯识内部的两大派系。"
+            name_en: Dharmapāla (530–561)
+            affiliation_en: Nalanda, India
+            description_en: One of the ten great Yogācāra commentators; advocated the “newly perfumed seeds” thesis, forming, with Nanda’s “innate seeds” position, the two great internal factions of Yogācāra.
           - name: "赖永海"
             affiliation: "南京大学"
             description: "《中国佛性论》——系统比较唯识与华严的心性论差异。"
+            name_en: Lai Yonghai
+            affiliation_en: Nanjing University
+            description_en: Chinese Buddhanature Theory — systematically compares the differences in theories of mind between Yogācāra and Huayan.
         sources:
           - "T31n1585《成唯识论》十卷,玄奘译。唯识核心论典。"
           - "T45n1886《华严五教章》: 判唯识为大乘始教。"
@@ -486,15 +579,27 @@ sections:
           - name: "龙树(Nāgārjuna, 约150-250)"
             affiliation: "中观学派创始人"
             description: "《中论》《十二门论》《大智度论》——建立「缘起性空」的中观哲学体系,被尊为「八宗共祖」。"
+            name_en: Nāgārjuna (c. 150–250)
+            affiliation_en: Founder of the Madhyamaka School
+            description_en: The Middle Treatise, Twelve Gates Treatise, and Great Perfection of Wisdom Treatise — established the Madhyamaka philosophy of “dependent arising and emptiness,” revered as “ancestor of the eight schools.”
           - name: "法藏(643-712)"
             affiliation: "华严宗三祖"
             description: "在继承龙树空性的基础上建立「事事无碍」法界观,完成从「破执」到「圆融」的义理跨越。"
+            name_en: Fazang (643–712)
+            affiliation_en: Third Patriarch of the Huayan School
+            description_en: Built upon Nāgārjuna’s emptiness to establish the dharmadhātu vision of “total unobstruction,” completing the doctrinal advance from “cutting off grasping” to “complete interpenetration.”
           - name: "月称(Candrakīrti, 约600-650)"
             affiliation: "印度中观应成派"
             description: "《入中论》(Madhyamakāvatāra)——应成中观的集大成者,其「缘起性空」论证与华严「法界缘起」形成有趣的张力: 月称只承认「空」,不承认「有」的积极面向。"
+            name_en: Candrakīrti (c. 600–650)
+            affiliation_en: Indian Prāsaṅgika Madhyamaka
+            description_en: 'Madhyamakāvatāra — the culmination of Prāsaṅgika Madhyamaka; his argument for dependent arising and emptiness creates an instructive tension with Huayan’s dependent origination of the Dharma-realm: Candrakīrti admits only emptiness, not the positive aspect of being.'
           - name: "印顺法师(1906-2005)"
             affiliation: "台湾"
             description: "《中观论颂讲记》——从学术角度梳理中观与华严的关系,主张华严「不离中观」。"
+            name_en: Yin Shun (1906–2005)
+            affiliation_en: Taiwan
+            description_en: Lecture Notes on the Verse Commentary to the Middle Treatise — an academic account of the relation between Madhyamaka and Huayan, arguing that Huayan “does not leave Madhyamaka.”
         sources:
           - "T30n1564《中论》四卷,龙树造,鸠摩罗什译。核心: 〈观四谛品〉二十四: 「众因缘生法,我说即是空。」"
           - "T42n1826《十二门论宗致义记》一卷,法藏。华严对中观的诠释。"
@@ -540,18 +645,33 @@ sections:
           - name: "宗喀巴(1357-1419)"
             affiliation: "格鲁派创始人"
             description: "《菩提道次第广论》《密宗道次第广论》——藏传佛教最系统的修行次第体系。"
+            name_en: Tsongkhapa (1357–1419)
+            affiliation_en: Founder of the Gelug School
+            description_en: Great Treatise on the Stages of the Path to Enlightenment and Great Exposition of the Stages of the Secret Mantra — the most systematic path-system literature in Tibetan Buddhism.
           - name: "达赖喇嘛(1935-)"
             affiliation: "藏传佛教精神领袖"
             description: "多次公开评价华严思想,推动藏汉佛教对话。"
+            name_en: The Dalai Lama (b. 1935)
+            affiliation_en: Spiritual leader of Tibetan Buddhism
+            description_en: Has publicly commented on Huayan thought on several occasions and promoted dialogue between Tibetan and Chinese Buddhism.
           - name: "84000 Project"
             affiliation: "国际藏译佛典翻译项目"
             description: "系统翻译藏文大藏经为英文,Toh44(华严经)的翻译正在进行中。"
+            name_en: 84000 Project
+            affiliation_en: International translation project of Tibetan Buddhist scriptures
+            description_en: Systematically translating the Tibetan Kangyur into English; the translation of Toh 44 (the chapter-by-chapter Avatamsaka Sūtra) is in progress.
           - name: "Tsongkhapa / 宗喀巴"
             affiliation: "格鲁派"
             description: "《现观庄严论广疏》(Toh4024的注释)——般若学修行次第。"
+            name_en: Tsongkhapa
+            affiliation_en: Gelug School
+            description_en: Commentary on the Abhisamayālaṅkāra (annotation of Toh 4024) — the prajñā-based meditative path stages.
           - name: "Robert Thurman"
             affiliation: "美国藏学研究会"
             description: "将宗喀巴著作系统英译,促进藏传佛教在西方的传播。"
+            name_en: Robert Thurman
+            affiliation_en: Tibetan studies scholar, USA
+            description_en: Systematic English translations of Tsongkhapa, promoting the spread of Tibetan Buddhism in the West.
         sources:
           - "Toh44《大方广佛华严经》藏译本,45品,84000.co (2021-2026翻译中)。"
           - "Toh4146《菩提道次第广论》(Lamrim Chenmo),宗喀巴。"
@@ -595,15 +715,27 @@ sections:
           - name: "S.N. Goenka(1924-2013)"
             affiliation: "印度/缅甸内观传承"
             description: "将南传内观(vipassanā)系统推广到全球,10日内观营模式影响深远。"
+            name_en: S. N. Goenka (1924–2013)
+            affiliation_en: Indian/Burmese vipassanā lineage
+            description_en: Systematically popularized Theravāda vipassanā worldwide; his ten-day retreat format has had far-reaching influence.
           - name: "Mahasi Sayadaw(1904-1982)"
             affiliation: "缅甸马哈希禅修中心"
             description: "「马哈希内观」——以「记名」(labeling)技术系统化内观修行。"
+            name_en: Mahasi Sayadaw (1904–1982)
+            affiliation_en: Mahasi Meditation Center, Myanmar
+            description_en: The “Mahasi vipassanā” method — systematized insight practice through the technique of labeling.
           - name: "菩提比丘(Bhikkhu Bodhi, 1944-)"
             affiliation: "美国/斯里兰卡"
             description: "南传上座部经典的权威英译者,《相应部》(Saṃyutta Nikāya)英译。"
+            name_en: Bhikkhu Bodhi (b. 1944)
+            affiliation_en: USA / Sri Lanka
+            description_en: Authoritative English translator of Theravāda classics, including the translation of the Saṁyutta Nikāya.
           - name: "海云继梦法师"
             affiliation: "华严学会"
             description: "将南传内观技术与华严修行体系进行对话,在「技术面」上承认二者的共通性。"
+            name_en: Haiyun Jimeng
+            affiliation_en: Huayan Society
+            description_en: Brings Theravāda insight technique into dialogue with the Huayan path system, acknowledging their commonality on the “technical track.”
         sources:
           - "T02n099《杂阿含经》: 十二因缘的核心经典。"
           - "T10n0279《华严经》: 法界缘起与华严修行次第。"
@@ -651,18 +783,33 @@ sections:
           - name: "无著(Asaṅga, 约300-390)"
             affiliation: "瑜伽行派创始人"
             description: "《瑜伽师地论》《大乘庄严经论》——与弥勒(或其化名)共同建立唯识学体系。"
+            name_en: Asaṅga (c. 300–390)
+            affiliation_en: Founder of the Yogācāra tradition
+            description_en: Yogācārabhūmi Śāstra and Ornament for the Mahāyāna Sūtras — with Maitreya (or his pseudonym) jointly established the Yogācāra system.
           - name: "世亲(Vasubandhu, 约320-400)"
             affiliation: "瑜伽行派集大成者"
             description: "《十地经论》《唯识三十论》《成唯识论》(注释)——通过《十地经论》直接影响华严宗的形成。"
+            name_en: Vasubandhu (c. 320–400)
+            affiliation_en: Grand master of the Yogācāra tradition
+            description_en: Commentary on the Ten Grounds (Daśabhūmika Śāstra), Trimśikā (Thirty Verses), and the Cheng Weishi Lun commentary — through the Ten Grounds commentary directly influenced the formation of the Huayan School.
           - name: "慧光(468-537)"
             affiliation: "地论师南道派"
             description: "传承《十地经论》学说,为华严宗的义学前身。"
+            name_en: Huiguang (468–537)
+            affiliation_en: Southern branch of the Dilun (Ten Grounds) masters
+            description_en: Carried forward the doctrine of the Ten Grounds commentary and formed the doctrinal antecedent of the Huayan School.
           - name: "智俨(602-668)"
             affiliation: "华严宗二祖"
             description: "《华严经搜玄记》——华严宗义学的奠基者,继承地论师传统。"
+            name_en: Zhiyan (602–668)
+            affiliation_en: Second Patriarch of the Huayan School
+            description_en: Searching the Profundities of the Avatamsaka Sūtra — foundational master of Huayan scholastic doctrine, heir to the Dilun tradition.
           - name: "周贵华"
             affiliation: "中国社会科学院"
             description: "《唯识通论》(2015)——系统梳理唯识学在中国的传承,涉及唯识与华严的关系。"
+            name_en: Zhou Guihua
+            affiliation_en: Chinese Academy of Social Sciences
+            description_en: General Treatise on Yogācāra (2015) — systematically traces the transmission of Yogācāra in China, including its relation to Huayan.
         sources:
           - "T26n1522《十地经论》十二卷,世亲造,菩提流支译。华严义学的直接催生文献。"
           - "T30n1579《瑜伽师地论》一百卷,弥勒说,无著记,玄奘译。唯识根本论典。"
@@ -718,15 +865,27 @@ sections:
           - name: "李通玄(683-727)"
             affiliation: "在家华严学者"
             description: "《新华严经论》四十卷——以《易经》和道家思想解释华严,开创「东方智慧」解经传统。与法藏的「印度化」华严形成互补。"
+            name_en: Li Tongxuan (683–727)
+            affiliation_en: Lay Huayan scholar
+            description_en: New Commentary on the Avatamsaka Sūtra (Xin Huayan Jing Lun), 40 fascicles — interpreted Huayan through the Classic of Changes and Daoist thought, inaugurating the “Eastern wisdom” style of scriptural exegesis, complementary to Fazang’s Indian-oriented Huayan.
           - name: "陈抟(871-989)"
             affiliation: "道教高道"
             description: "《无极图》——道教宇宙论图式,影响了宋明理学的宇宙观,与华严法界缘起有结构可比性。"
+            name_en: Chen Tuan (871–989)
+            affiliation_en: Eminent Daoist master
+            description_en: Diagram of the Ultimate Void (Wuji Tu) — a Daoist cosmological chart that influenced the cosmology of Song–Ming neo-Confucianism; structurally comparable to Huayan’s dependent origination of the Dharma-realm.
           - name: "海云继梦法师"
             affiliation: "华严学会"
             description: "将华严禅观与道家「小周天」进行技术面对比,承认二者的共通性和差异性。"
+            name_en: Haiyun Jimeng
+            affiliation_en: Huayan Society
+            description_en: Compares Huayan contemplative practice with the Daoist “Small Heavenly Circulation” on the technical track, acknowledging both commonality and difference.
           - name: "刘笑敢"
             affiliation: "北京大学 / 香港中文大学"
             description: "《庄子哲学及其演变》——从学术角度梳理道家哲学,为华严与道家的比较研究提供哲学基础。"
+            name_en: Liu Xiaogan
+            affiliation_en: Peking University / Chinese University of Hong Kong
+            description_en: The Philosophy of Zhuangzi and Its Evolution — an academic account of Daoist philosophy providing a philosophical basis for Huayan–Daoist comparative study.
         sources:
           - "《道德经》(《老子》): 四十二章「道生一,一生二」; 二十五章「人法地,地法天,天法道,道法自然」。"
           - "《庄子》: 〈齐物论〉「天地与我并生,万物与我为一」; 〈逍遥游〉。"
@@ -773,18 +932,33 @@ sections:
           - name: "朱熹(1130-1200)"
             affiliation: "南宋理学集大成者"
             description: "《四书章句集注》《朱子语类》——「理一分殊」思想,其深层结构受华严影响。"
+            name_en: Zhu Xi (1130–1200)
+            affiliation_en: Great synthesizer of Song neo-Confucianism
+            description_en: Collected Commentaries on the Four Books and Classified Conversations of Master Zhu — his doctrine of “one principle, many manifestations” (li yi fen shu) is deeply structured by Huayan influence.
           - name: "王阳明(1472-1529)"
             affiliation: "明代心学创始人"
             description: "《传习录》——「心外无物」「知行合一」「致良知」,与华严「一心法界」有深层对话空间。"
+            name_en: Wang Yangming (1472–1529)
+            affiliation_en: Founder of Ming-dynasty School of the Mind
+            description_en: Instructions for Practical Living — “nothing outside the mind,” “unity of knowledge and action,” and “extending innate knowing” open a deep dialogue with Huayan’s “one-mind dharmadhātu.”
           - name: "海云继梦法师"
             affiliation: "华严学会"
             description: "提出「仁本经济学」,将华严「同体大悲」与儒家「仁」学合流,应用于当代经济伦理。"
+            name_en: Haiyun Jimeng
+            affiliation_en: Huayan Society
+            description_en: Proposes a humaneness-rooted (renben) economics that merges Huayan’s “great compassion of one body” with Confucian ren, applying it to contemporary economic ethics.
           - name: "陈来"
             affiliation: "清华大学"
             description: "《仁学本体论》(2014)——从当代哲学角度重构儒家「仁」学,涉及与佛教心性论的比较。"
+            name_en: Chen Lai
+            affiliation_en: Tsinghua University
+            description_en: Ontology of Ren (2014) — reconstructs the Confucian doctrine of ren from a contemporary philosophical standpoint, engaging comparative Buddhist theories of mind.
           - name: "安乐哲(Roger T. Ames)"
             affiliation: "夏威夷大学"
             description: "Process-based comparative philosophy: 从过程哲学角度比较儒家与佛教。"
+            name_en: Roger T. Ames (An Lezhe)
+            affiliation_en: University of Hawaiʻi
+            description_en: 'Process-based comparative philosophy: compares Confucianism and Buddhism from a process-philosophy standpoint.'
         sources:
           - "T36n1732《华严经探玄记》: 「一月普现一切水」,理事无碍观。"
           - "T10n0279: 「一心法界」「心佛众生三无差别」。"
@@ -829,15 +1003,27 @@ sections:
           - name: "帕坦伽利(Patañjali, 约公元前2世纪-公元4世纪)"
             affiliation: "瑜伽学派"
             description: "《瑜伽经》(Yoga Sūtra)——瑜伽修行体系的根本经典,定义「瑜伽是心念波动的止息」。"
+            name_en: Patañjali (c. 2nd c. BCE – 4th c. CE)
+            affiliation_en: Yoga tradition
+            description_en: Yoga Sūtra — the foundational text of the yoga path, defining yoga as “the stilling of the fluctuations of the mind.”
           - name: "海云继梦法师"
             affiliation: "华严学会"
             description: "2008年接受大乘瑜伽行法传承,推动印度瑜伽与华严的当代汇流。"
+            name_en: Haiyun Jimeng
+            affiliation_en: Huayan Society
+            description_en: Received the Mahāyāna yogācāra lineage transmission in 2008, promoting a contemporary convergence of Indian yoga and Huayan.
           - name: "B.K.S. Iyengar(1918-2014)"
             affiliation: "印度瑜伽大师"
             description: "《光之瑜伽经》(Light on the Yoga Sūtras of Patañjali, 1996)——当代瑜伽经的权威注释。"
+            name_en: B. K. S. Iyengar (1918–2014)
+            affiliation_en: Indian yoga master
+            description_en: Light on the Yoga Sūtras of Patañjali (1996) — an authoritative contemporary commentary on the Yoga Sūtra.
           - name: "Georg Feuerstein(1947-2012)"
             affiliation: "瑜伽研究学者"
             description: "《The Yoga Tradition》(2008)——系统梳理瑜伽的历史与哲学,涉及瑜伽与佛教的关系。"
+            name_en: Georg Feuerstein (1947–2012)
+            affiliation_en: Scholar of yoga studies
+            description_en: The Yoga Tradition (2008) — a systematic account of the history and philosophy of yoga, covering its relation to Buddhism.
         sources:
           - "Patañjali. Yoga Sūtra (《瑜伽经》): 1.2 yogaś citta-vṛtti-nirodhaḥ; 1.3 tadā draṣṭuḥ svarūpe 'vasthānam."
           - "T10n0279,卷一〈世主妙严品〉: 海印三昧。"
@@ -885,18 +1071,33 @@ sections:
           - name: "Meister Eckhart(1260-1328)"
             affiliation: "多明我会神秘主义者"
             description: "「Gelassenheit」(放下/泰然任之)——通过彻底放空自我而与上帝合一。其思想在14世纪被教廷判为异端,但在20世纪被重新评价。"
+            name_en: Meister Eckhart (1260–1328)
+            affiliation_en: Dominican mystic
+            description_en: “Gelassenheit” (letting go / serene surrender) — union with God through radical self-emptying. Condemned as heresy in the 14th century, reassessed in the 20th.
           - name: "Pierre Teilhard de Chardin(1881-1955)"
             affiliation: "耶稣会士/古生物学家"
             description: "《人的现象》(Le Phénomène Humain, 1955)——「Omega Point」理论,将进化论与基督教神学融合。"
+            name_en: Pierre Teilhard de Chardin (1881–1955)
+            affiliation_en: Jesuit and paleontologist
+            description_en: The Phenomenon of Man (1955) — the “Omega Point” theory fusing evolution with Christian theology.
           - name: "Pseudo-Dionysius(约5-6世纪)"
             affiliation: "基督教神秘主义"
             description: "《神秘神学》(The Mystical Theology)——否定神学(via negativa)的经典文本。"
+            name_en: Pseudo-Dionysius (c. 5th–6th cent.)
+            affiliation_en: Christian mysticism
+            description_en: The Mystical Theology — the classic text of the via negativa (apophatic theology).
           - name: "Hans Urs von Balthasar(1905-1988)"
             affiliation: "瑞士天主教神学家"
             description: "《基督的逻辑》——从神学角度审视「互摄互入」(虽然是用基督教术语)。"
+            name_en: Hans Urs von Balthasar (1905–1988)
+            affiliation_en: Swiss Catholic theologian
+            description_en: On the Logic of Christ — examines “mutual interpenetration” from a theological standpoint, albeit in Christian terms.
           - name: "John Cobb Jr.(1925-2024)"
             affiliation: "过程神学家"
             description: "《Christ in a Pluralistic Age》——从过程神学角度与佛教对话,涉及华严「互摄互入」。"
+            name_en: John B. Cobb Jr. (1925–2024)
+            affiliation_en: Process theologian
+            description_en: Christ in a Pluralistic Age — dialogues with Buddhism from process theology, engaging Huayan’s “mutual interpenetration.”
         sources:
           - "T10n0279: 因陀罗网/一即一切/互摄互入。"
           - "Pseudo-Dionysius. The Mystical Theology (《神秘神学》), c.500 CE."
@@ -943,18 +1144,33 @@ sections:
           - name: "Ibn Arabi(1165-1240)"
             affiliation: "伊斯兰苏菲神秘主义者"
             description: "《智慧之光》(Fusus al-Hikam)《麦加的启示》(al-Futuhat al-Makkiyya)——「万有单一论」(Wahdat al-Wujud)的集大成者。"
+            name_en: Ibn Arabi (1165–1240)
+            affiliation_en: Islamic Sufi mystic
+            description_en: The Bezels of Wisdom (Fuṣūṣ al-Ḥikam) and the Meccan Revelations (al-Futūḥāt al-Makkiyya) — the great master of the doctrine of the unity of being (waḥdat al-wujūd).
           - name: "明惠上人(1173-1232)"
             affiliation: "日本华严宗中兴之祖"
             description: "与Ibn Arabi几乎同时代,在日本复兴华严思想,强调「妄显真」的修行路径。"
+            name_en: Myōe (1173–1232)
+            affiliation_en: Reviver of the Japanese Huayan tradition
+            description_en: Nearly contemporary with Ibn Arabi; revived Huayan thought in Japan, stressing the contemplative path of “delusion revealing the real.”
           - name: "Seyyed Hossein Nasr(1933-)"
             affiliation: "乔治·华盛顿大学"
             description: "当代伊斯兰哲学与苏菲研究的权威,其比较宗教学著作间接涉及华严与苏菲的对话。"
+            name_en: Seyyed Hossein Nasr (b. 1933)
+            affiliation_en: George Washington University
+            description_en: Authority on contemporary Islamic philosophy and Sufi studies; his comparative-religion works touch indirectly on a Huayan–Sufi dialogue.
           - name: "Sara Sviri(1943-)"
             affiliation: "以色列希伯来大学"
             description: "苏菲心理学与佛教禅修的比较研究。"
+            name_en: Sara Sviri (b. 1943)
+            affiliation_en: Hebrew University of Jerusalem
+            description_en: Comparative studies of Sufi psychology and Buddhist meditation.
           - name: "William Chittick"
             affiliation: "纽约大学石溪分校"
             description: "Ibn Arabi思想的权威英译者和研究者。"
+            name_en: William Chittick
+            affiliation_en: Stony Brook University, New York
+            description_en: Authoritative English translator and researcher of Ibn Arabi.
         sources:
           - "Ibn Arabi. Fusus al-Hikam (《智慧之光》), c.1230. Chittick, W. (trans.) The Wisdom of the Masters. Albolena Press, 2020."
           - "Ibn Arabi. al-Futuhat al-Makkiyya (《麦加的启示》), c.1203-1240."
@@ -1001,18 +1217,33 @@ sections:
           - name: "Fritjof Capra(1939-)"
             affiliation: "美国物理学家/系统思想家"
             description: "《物理学之道》(1977)——将东方思想(含华严因陀罗网)与现代物理学类比,引发广泛讨论。"
+            name_en: Fritjof Capra (b. 1939)
+            affiliation_en: American physicist and systems thinker
+            description_en: The Tao of Physics (1977) — sparked wide discussion by comparing Eastern thought (including Huayan’s Indra’s Net) with modern physics.
           - name: "Jon Kabat-Zinn(1944-)"
             affiliation: "麻省大学医学院"
             description: "MBSR(正念减压)创始人——将佛教正念从宗教框架中去脉络化,应用到医疗领域。"
+            name_en: Jon Kabat-Zinn (b. 1944)
+            affiliation_en: University of Massachusetts Medical School
+            description_en: Founder of MBSR (Mindfulness-Based Stress Reduction) — decontextualized Buddhist mindfulness from its religious framework and applied it in medicine.
           - name: "Eckhart Tolle(1948-)"
             affiliation: "灵性作家"
             description: "《当下的力量》(1997)——新时代灵性代表人物,其「当下」概念与华严「初发心时便成正觉」有表面相似但深层差异。"
+            name_en: Eckhart Tolle (b. 1948)
+            affiliation_en: Spiritual writer
+            description_en: The Power of Now (1997) — a leading new-age spiritual figure; his notion of “the present” is superficially similar to, yet deeply different from, Huayan’s “at the first arousal of bodhicitta one is already fully enlightened.”
           - name: "David Loy(1950-)"
             affiliation: "独立学者"
             description: "《The Great Awakening: A Buddhist Social Theory》(2003)——从佛教(含华严)视角批判现代性,同时对正念运动的商业化保持警惕。"
+            name_en: David Loy (b. 1950)
+            affiliation_en: Independent scholar
+            description_en: 'The Great Awakening: A Buddhist Social Theory (2003) — critiques modernity from a Buddhist (including Huayan) viewpoint while remaining wary of the commercialization of the mindfulness movement.'
           - name: "Rupert Sheldrake(1942-)"
             affiliation: "生物学家"
             description: "「形变场」(morphic field)理论——与华严「法界」的「信息场」隐喻有可比较性,但方法论完全不同。"
+            name_en: Rupert Sheldrake (b. 1942)
+            affiliation_en: Biologist
+            description_en: The theory of morphic fields — comparable to the “information-field” metaphor of the Huayan dharmadhātu, though methodologically entirely different.
         sources:
           - "Capra, F. The Tao of Physics (《物理学之道》). Shambhala, 1975 (5th ed. 2010)."
           - "Capra, F. The Web of Life (《生命的网络》). Anchor, 1996."
