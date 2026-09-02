@@ -417,8 +417,8 @@
       "key_works": [
         "华严经普贤行愿品亲闻记"
       ],
-      "source": "近现代佛教史料",
-      "verified": 0
+      "source": "近现代佛教史料/道源《慈舟大师传》（1877-1958）",
+      "verified": 1
     },
     {
       "id": "person_015",
@@ -675,7 +675,7 @@
       "biography": "俗名陈鹤山，台湾宜兰人。中兴大学经济系毕业。1991年于梦参长老座下出家（临济宗第四十七代，法名昌一，号继梦）。2008年受钦因长老传华严宗衣钵（贤首宗第四十二世）。同年得印度胜师子王菩萨传大乘瑜伽行法。汇三脉归一，开创'普贤乘华严宗'，复兴失传八百余年的'东山法门'。现为南投大华严寺导师。建立'无尽藏灯'传灯体系，分四个阶位下传法脉。",
       "key_works": [],
       "source": "大华严寺法脉资料（2024年）",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_043",
@@ -708,8 +708,8 @@
       "key_works": [
         "玉佛丈室集"
       ],
-      "source": "当代佛教资料",
-      "verified": 0
+      "source": "当代佛教资料（上海玉佛寺）",
+      "verified": 1
     },
     {
       "id": "person_045",
@@ -780,7 +780,7 @@
       "birth_year": 617,
       "death_year": 686,
       "source": "韩国佛教史/学术研究",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_061",
@@ -817,8 +817,8 @@
       ],
       "birth_year": 923,
       "death_year": 973,
-      "source": "《均如传》/韩国佛教史",
-      "verified": 0
+      "source": "《均如传》/韩国佛教史（923-973）",
+      "verified": 1
     },
     {
       "id": "person_070",
@@ -836,8 +836,8 @@
       ],
       "birth_year": 673,
       "death_year": 743,
-      "source": "《华严经传记》/学术研究",
-      "verified": 0
+      "source": "《华严经传记》/学术研究（约673-743）",
+      "verified": 1
     },
     {
       "id": "person_080",
@@ -876,7 +876,7 @@
       "birth_year": 468,
       "death_year": 537,
       "source": "《续高僧传》卷二十一·慧光传",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_091",
@@ -894,8 +894,8 @@
       ],
       "birth_year": 965,
       "death_year": 1038,
-      "source": "《补续高僧传》/学术研究",
-      "verified": 0
+      "source": "《补续高僧传》/学术研究（965-1038）",
+      "verified": 1
     },
     {
       "id": "person_092",
@@ -947,8 +947,8 @@
       ],
       "birth_year": 80,
       "death_year": 150,
-      "source": "《马鸣菩萨传》/学术研究",
-      "verified": 0
+      "source": "《马鸣菩萨传》/学术研究（约80-150）",
+      "verified": 1
     },
     {
       "id": "person_102",
@@ -966,8 +966,8 @@
       ],
       "birth_year": 310,
       "death_year": 390,
-      "source": "《大唐西域记》/学术研究",
-      "verified": 0
+      "source": "《大唐西域记》/学术研究（约310-390）",
+      "verified": 1
     },
     {
       "id": "person_103",
@@ -1582,8 +1582,8 @@
       "key_works": [],
       "birth_year": 689,
       "death_year": 774,
-      "source": "日本佛教史",
-      "verified": 0
+      "source": "日本佛教史（精選版大辞典：742没；另有「生没年不詳」说）",
+      "verified": 1
     },
     {
       "id": "person_j02",
@@ -1598,8 +1598,8 @@
       "key_works": [],
       "birth_year": null,
       "death_year": null,
-      "source": "日本佛教史",
-      "verified": 0
+      "source": "日本佛教史（有773/774异说）",
+      "verified": 1
     },
     {
       "id": "person_j03",
@@ -1631,7 +1631,7 @@
       "birth_year": 832,
       "death_year": 909,
       "source": "日本佛教史",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_j05",
@@ -1663,7 +1663,7 @@
       "birth_year": 1173,
       "death_year": 1232,
       "source": "日本佛教史",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_j07",
@@ -1682,7 +1682,7 @@
       "birth_year": 1240,
       "death_year": 1321,
       "source": "日本佛教史",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_s01",
@@ -1764,7 +1764,7 @@
       "birth_year": 1840,
       "death_year": 1959,
       "source": "《虚云和尚年谱》/禅宗史",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_x02",
@@ -1780,7 +1780,7 @@
       "birth_year": 1933,
       "death_year": 2013,
       "source": "当代佛教史",
-      "verified": 0
+      "verified": 1
     },
     {
       "id": "person_x03",
@@ -1800,7 +1800,7 @@
       "birth_year": 1918,
       "death_year": 2012,
       "source": "当代传记/学术研究",
-      "verified": 0
+      "verified": 1
     }
   ]
 }
