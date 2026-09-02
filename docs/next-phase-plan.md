@@ -280,3 +280,9 @@ python scripts/verify_demo.py
 
 - **考证**：persons 95/95 全有 source（0 缺源，T0 归零）；来源可靠性评分 76/100，T3 模糊来源 10 条（㉛ 已由 36 细化归并，余 10 均无独立一手史料——明度/体佛/如孝/雪窦/成观/拉克鲁希/巴布基/克利普梵纳德/思元慧三/体化性果，已标〔待核〕/〔待考〕）；`verified=1` 72/95（75.8%），`verified=0` 23 条均为无力考者并注明（菩提流支〔卒年诸说未定〕/大华严寺瑜伽行法脉及宗内谱系 6 人〔系派自述无独立史料〕/当代学者·法师〔无公开生卒〕）；生卒年 no_dates 双缺 17 条（古代译师与神话·集体人物本无考）、单缺 11 条；图谱 98 边/24 法系/30 地点（0 缺坐标、16 有 city、均在 import_edges 补 `source='graph.json'` 后 0 缺源）；文献 54 部（CBETA ID 12・大正藏编号 35）、41 品、50 术语、180 人地关联、15 文章页。遗留待核：source-audit T3 余 10 条（均无独立史料）、L-B 专题定值复审未二轮。
 - **中英结合**：人名 name_en 95/95（100%）・name_sa 30/95（32%，余 65 中文/日系名无梵文对应留空〔待核〕，玄奘/慧果两例考证已闭环）；术语表 50/50 条 term_en+definition_zh+definition_en 全覆盖、term_sa 32/50；经目 title_en 54/54（㉚ 补齐 3/54→54/54・title_sa 6・title_bo 1，多语仍不全后续补充）；数据层 `_en`/`en` 键：practice 1461・translation 103・cosmology 41・knowledge_graph 96・frontier 88・events 0（地理史料以拉丁文为主）；全站 6 Tab+15 文章页均带 `.en-line` 全局双语机制。遗留缺口：title_en 已全、剩 title_sa/title_bo 多语待补，person bio 级 EN 需 SQLite 增设列（考证优先暂不臆造）。
+
+## 渲染/显示修复登记（2026-09-02 · L.㉝）
+
+- **问题**：`articles/vijnana-mind.html`（及作者怀疑「其他页面」）英文对应不显示。实测该文数据完整（72 引用块 / 69 EN 块经浏览器同款渲染器正确归类为 `.en-block`）；根因是浏览器 `localStorage` 残留的全站「仅中文」开关 `site_lang='0'` 与文章页 `article_en_hide='1'`——`common.js` 载入时读该持久状态给 `body` 加 `zh-only`，common.css 以 `display:none!important` 隐藏全站所有英文块，且跨会话永久生效。
+- **修复（㉝，源头治理改 src 再重建）**：①`web/demo/src/common.js` 阅读语言开关由持久 `localStorage` 改为**会话级 `sessionStorage`**——默认恒为中英对照，`仅中文` 只影响当前标签页会话、关标签即恢复；载入不再读旧 `site_lang`，切换时 `removeItem` 清理旧值；②`web/demo/src/article.js` 文章页「英文批注」开关同改会话级；③重建 `web/demo/js/common.js` 与全站页面，确认内置 common.js/article.js 均不再读取旧隐藏键；`verify_demo.py` ✅ ALL CHECKS PASSED。
+- **效果**：用户**无需手动清缓存**，刷新即默认显示英文（旧 localStorage 残留被忽略）。此为显示层行为修复，不改变 考证/双语 内容快照数字。

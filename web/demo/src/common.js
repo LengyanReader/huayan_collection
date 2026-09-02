@@ -638,16 +638,20 @@
 
   /* ═══════════════════════════════════════════════════════
      9. Global Reading-Language Toggle (中英对照 ⇄ 仅中文)
-     统一开关：localStorage 'site_lang'（'0' = 仅中文，其余 = 中英对照）。
-     作用于全站所有页面的英文对应块（.en-line / .en-block / .en-note / .en-cell）。
+     统一开关：仅中文偏好为「会话级」（sessionStorage，'0' = 仅中文）。
+     . 默认恒为中英对照：新会话/次次打开页面时英文默认显示，避免误触后
+       英文在全站「永久消失」（不再交由 localStorage 持久状态决定）。
+     . '仅中文' 仅影响当前浏览器标签页会话，标签页关闭即恢复默认。
+     . 顺带清理历史 localStorage 'site_lang' 旧值，使旧偏好不再静默生效。
+       作用于全站所有页面的英文对应块（.en-line / .en-block / .en-note / .en-cell）。
      ═══════════════════════════════════════════════════════ */
 
   /**
-   * Apply the stored reading-language preference to the current page.
-   * Acts as a global master switch: '仅中文' hides all EN correspondence blocks.
+   * Apply the reading-language preference to the current page.
+   * 阅读语言默认中英对照（zh-only 关闭）；仅中文为会话级、绝不跨会话持久隐藏英文。
    */
   window._applySiteLang = function () {
-    var zh = localStorage.getItem('site_lang') === '0';
+    var zh = (sessionStorage.getItem('site_lang') || '') === '0';
     document.body.classList.toggle('zh-only', zh);
     var btn = document.getElementById('lang-toggle');
     if (btn) {
@@ -659,10 +663,12 @@
 
   /**
    * Toggle between '中英对照' (bilingual, default) and '仅中文' (Chinese only).
+   * 会话级切换：写入 sessionStorage，并清除历史 localStorage 旧值。
    */
   window.toggleSiteLang = function () {
-    var nowZh = localStorage.getItem('site_lang') === '0';
-    localStorage.setItem('site_lang', nowZh ? '1' : '0');
+    var nowZh = (sessionStorage.getItem('site_lang') || '') === '0';
+    sessionStorage.setItem('site_lang', nowZh ? '1' : '0');
+    localStorage.removeItem('site_lang');
     window._applySiteLang();
   };
 

@@ -130,8 +130,9 @@ function _initArticleENMode(){
   _applyArticleENMode();
 }
 function toggleArticleEN(){
-  var cur=localStorage.getItem('article_en_hide')==='1';
-  localStorage.setItem('article_en_hide', cur?'0':'1');
+  var cur=(sessionStorage.getItem('article_en_hide')||'')==='1';
+  sessionStorage.setItem('article_en_hide', cur?'0':'1');
+  localStorage.removeItem('article_en_hide');
   _applyArticleENMode();
   var block=document.getElementById('article-full');
   if(block){
@@ -142,7 +143,7 @@ function toggleArticleEN(){
 function _applyArticleENMode(){
   var full=document.getElementById('article-full');
   var btn=document.getElementById('article-en-toggle');
-  var hide=localStorage.getItem('article_en_hide')==='1';
+  var hide=(sessionStorage.getItem('article_en_hide')||'')==='1';
   if(full) full.classList.toggle('en-hidden', hide);
   if(btn) btn.textContent=hide?'🌐 英文批注：展开':'🌐 英文批注：显示';
 }
