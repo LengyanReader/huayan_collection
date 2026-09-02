@@ -105,6 +105,7 @@ main_sutras:
 
 branch_translations:
   - id: text_branch_001
+    title_en: "The Tusita Sutra"
     title_zh: "佛说兜沙经"
     taisho_no: "T10n0280"
     volumn_count: 1
@@ -118,6 +119,7 @@ branch_translations:
       是最早传入中国的华严系统经典。
 
   - id: text_branch_002
+    title_en: Sutra on the Original Works of Bodhisattvas
     title_zh: "佛说菩萨本业经"
     taisho_no: "T10n0281"
     volumn_count: 1
@@ -127,6 +129,7 @@ branch_translations:
     context_note: "净行品别译，无偈颂部分"
 
   - id: text_branch_003
+    title_en: Sutra on Bodhisattvas Seeking the Buddha's Original Works
     title_zh: "诸菩萨求佛本业经"
     taisho_no: "T10n0282"
     volumn_count: 1
@@ -136,6 +139,7 @@ branch_translations:
     context_note: "净行品别译"
 
   - id: text_branch_004
+    title_en: Chapter on the Practice Path of the Ten Stages for Bodhisattvas
     title_zh: "菩萨十住行道品"
     taisho_no: "T10n0283"
     volumn_count: 1
@@ -145,6 +149,7 @@ branch_translations:
     context_note: "菩萨十住品别译"
 
   - id: text_branch_005
+    title_en: Sutra on the Ten Stages of Bodhisattvas
     title_zh: "佛说菩萨十住经"
     taisho_no: "T10n0284"
     volumn_count: 1
@@ -154,6 +159,7 @@ branch_translations:
     context_note: "菩萨十住品另一别译"
 
   - id: text_branch_006
+    title_en: Gradual Attainment of All-Wisdom Virtue Sutra
     title_zh: "渐备一切智德经"
     taisho_no: "T10n0285"
     volumn_count: 5
@@ -164,6 +170,7 @@ branch_translations:
     context_note: "十地品早期大本别译。竺法护翻译风格古朴"
 
   - id: text_branch_007
+    title_en: "The Dashabhumika Sutra (Ten Stages Sutra)"
     title_zh: "十住经"
     taisho_no: "T10n0286"
     volumn_count: 4
@@ -177,6 +184,7 @@ branch_translations:
       是研究华严经在印度流传形态的重要依据。
 
   - id: text_branch_008
+    title_en: "The Buddha Speaks the Dashabhumika Sutra"
     title_zh: "佛说十地经"
     taisho_no: "T10n0287"
     volumn_count: 9
@@ -187,6 +195,7 @@ branch_translations:
     context_note: "十地品晚唐别译。篇幅较大（9卷），与鸠摩罗什的4卷本和内典有出入"
 
   - id: text_branch_009
+    title_en: Sutra of the Samadhi Asked by Equal-Eye Bodhisattva
     title_zh: "等目菩萨所问三昧经"
     taisho_no: "T10n0288"
     volumn_count: 3
@@ -196,6 +205,7 @@ branch_translations:
     context_note: "十定品别译"
 
   - id: text_branch_010
+    title_en: Sutra Revealing the Merits of Immeasurable Buddha Lands
     title_zh: "显无边佛土功德经"
     taisho_no: "T10n0289"
     volumn_count: 1
@@ -205,6 +215,7 @@ branch_translations:
     context_note: "寿量品别译。玄奘译，文体精严"
 
   - id: text_branch_011
+    title_en: Sutra on Comparing the Merits of All Buddha Fields
     title_zh: "佛说较量一切佛刹功德经"
     taisho_no: "T10n0290"
     volumn_count: 1
@@ -214,6 +225,7 @@ branch_translations:
     context_note: "与寿量品教义相关但不完全对应，属同类题材"
 
   - id: text_branch_012
+    title_en: Sutra on the Arising and Manifestation of the Tathagata
     title_zh: "佛说如来兴显经"
     taisho_no: "T10n0291"
     volumn_count: 4
@@ -223,6 +235,7 @@ branch_translations:
     context_note: "如来性起/出现品的早期大本别译"
 
   - id: text_branch_013
+    title_en: Sutra on Transcending the World (Lishi-jian-pin)
     title_zh: "度世品经"
     taisho_no: "T10n0292"
     volumn_count: 6
@@ -232,6 +245,7 @@ branch_translations:
     context_note: "离世间品别译。注意：藏文《离世间品》有独特异译段落，对勘时应三方比较"
 
   - id: text_branch_014
+    title_en: The Ramaka Sutra
     title_zh: "佛说罗摩伽经"
     taisho_no: "T10n0294"
     volumn_count: 3
@@ -241,6 +255,7 @@ branch_translations:
     context_note: "入法界品部分段落别译"
 
   - id: text_branch_015
+    title_en: "Avatamsaka Sutra: Chapter on Entering the Dharmadhatu (continuation)"
     title_zh: "大方广佛华严经入法界品"
     taisho_no: "T10n0295"
     volumn_count: 1
@@ -255,6 +270,7 @@ branch_translations:
 
 related_sutras:
   - id: text_rel_001
+    title_en: Sutra on Manjusri's Vows
     title_zh: "文殊师利发愿经"
     taisho_no: "T10n0296"
     volumn_count: 1
@@ -263,6 +279,7 @@ related_sutras:
     context_note: "文殊菩萨发愿文，与华严之文殊智慧教义相关"
 
   - id: text_rel_002
+    title_en: Hymn of Samantabhadra's Practice and Vows
     title_zh: "普贤菩萨行愿赞"
     taisho_no: "T10n0297"
     volumn_count: 1
@@ -271,6 +288,7 @@ related_sutras:
     context_note: "即《普贤行愿品》之独立赞颂形式。藏汉佛教共同尊奉"
 
   - id: text_rel_003
+    title_en: Mahavaipulya Sutra Spoken by Samantabhadra
     title_zh: "大方广普贤所说经"
     taisho_no: "T0847"
     volumn_count: 1
@@ -282,6 +300,7 @@ related_sutras:
       藏汉对译项目核心对比文本。
 
   - id: text_rel_004
+    title_en: Sutra of the Dharani Jewel Radiance
     title_zh: "大方广总持宝光明经"
     taisho_no: "T10n0299"
     volumn_count: 5
@@ -290,6 +309,7 @@ related_sutras:
     context_note: "与华严宝光明教义相关"
 
   - id: text_rel_005
+    title_en: The Inconceivable Buddha Realms Section of the Avatamsaka Sutra
     title_zh: "大方广佛华严经不思议佛境界分"
     taisho_no: "T10n0300"
     volumn_count: 1
@@ -298,6 +318,7 @@ related_sutras:
     context_note: "华严不思议境界之专论"
 
   - id: text_rel_006
+    title_en: Sutra on the Inconceivable Realm of the Tathagata
     title_zh: "大方广如来不思议境界经"
     taisho_no: "T10n0301"
     volumn_count: 1
@@ -306,6 +327,7 @@ related_sutras:
     context_note: "如来不思议境界，与前一经为同本异译"
 
   - id: text_rel_007
+    title_en: Sutra on Ornamenting with Wisdom-Light Across All Buddha Realms
     title_zh: "度诸佛境界智光严经"
     taisho_no: "T10n0302"
     volumn_count: 1
@@ -314,6 +336,7 @@ related_sutras:
     context_note: "佛境界智光庄严之专题经典"
 
   - id: text_rel_008
+    title_en: Sutra on Entering the Inconceivable Realm of Tathagata Virtue
     title_zh: "佛华严入如来德智不思议境界经"
     taisho_no: "T10n0303"
     volumn_count: 2
@@ -322,6 +345,7 @@ related_sutras:
     context_note: "与T0300-T0302同一题材"
 
   - id: text_rel_009
+    title_en: Mahavaipulya Sutra on Entering the Inconceivable Wisdom-Virtue of the Tathagata
     title_zh: "大方广入如来智德不思议经"
     taisho_no: "T10n0304"
     volumn_count: 1
@@ -330,6 +354,7 @@ related_sutras:
     context_note: "如来智德相关，实叉难陀译"
 
   - id: text_rel_010
+    title_en: Sutra of the Dharma-Gate Sealed by the Power of Faith
     title_zh: "信力入印法门经"
     taisho_no: "T10n0305"
     volumn_count: 5
@@ -338,6 +363,7 @@ related_sutras:
     context_note: "信力法门之详细展开，与华严十信教义相关"
 
   - id: text_rel_011
+    title_en: The Loving-Kindness Meditation Section of the Avatamsaka Sutra
     title_zh: "大方广佛花严经修慈分"
     taisho_no: "T10n0306"
     volumn_count: 1
@@ -346,6 +372,7 @@ related_sutras:
     context_note: "【修行实践重要文献】华严系统慈心观之专修经典。收录于修行板块"
 
   - id: text_rel_012
+    title_en: Sutra on Adorning the Bodhi Mind
     title_zh: "佛说庄严菩提心经"
     taisho_no: "T10n0307"
     volumn_count: 1
@@ -354,6 +381,7 @@ related_sutras:
     context_note: "菩提心之庄严，与华严发菩提心教义相关"
 
   - id: text_rel_013
+    title_en: Mahavaipulya Sutra on the Ten Stages of Bodhisattvas
     title_zh: "佛说大方广菩萨十地经"
     taisho_no: "T10n0308"
     volumn_count: 1
@@ -364,6 +392,7 @@ related_sutras:
       法藏《华严经传记》判为眷属经。
 
   - id: text_rel_014
+    title_en: Sutra on the Stages Purifying Defilements (asked by the Supreme One)
     title_zh: "最胜问菩萨十住除垢断结经"
     taisho_no: "T10n0309"
     volumn_count: 10
@@ -380,6 +409,7 @@ related_sutras:
 
 treatises:
   - id: text_treat_001
+    title_en: "Dashabhumika-vibhasa (Commentary on the Ten Stages)"
     title_zh: "十住毗婆沙论"
     title_sa: "Daśabhūmika-vibhāṣā"
     taisho_no: "T26n1521"
@@ -394,6 +424,7 @@ treatises:
       这是现存最早的《十地品》系统注释，被华严宗奉为法统源头之一。
 
   - id: text_treat_002
+    title_en: "Dashabhumika-sutra-sastra"
     title_zh: "十地经论"
     title_sa: "Daśabhūmika-sūtra-śāstra"
     taisho_no: "T26n1522"
@@ -407,6 +438,7 @@ treatises:
       其思想。是连接印度唯识学与汉传华严学的关键论典。
 
   - id: text_treat_003
+    title_en: Mahayana-sraddhotpada-sastra (The Awakening of Faith)
     title_zh: "大乘起信论"
     title_sa: "Mahāyāna-śraddhotpāda-śāstra"
     taisho_no: "T32n1666"
@@ -426,6 +458,7 @@ treatises:
 patriarch_works:
   # --- 法藏（贤首国师）---
   - id: text_pat_001
+    title_en: Chapter on the Five Teachings of Huayan (Wujiao Zhang)
     title_zh: "华严一乘教义分齐章（五教章）"
     author: "法藏"
     cbeta_id: "T45n1866"
@@ -433,6 +466,7 @@ patriarch_works:
     context_note: "法藏最具代表性的判教著作。建立五教十宗判教体系，华严宗教学纲领"
 
   - id: text_pat_002
+    title_en: Investigating the Mysteries of the Avatamsaka Sutra
     title_zh: "华严经探玄记"
     author: "法藏"
     cbeta_id: "T35n1733"
@@ -441,12 +475,14 @@ patriarch_works:
     context_note: "法藏对六十华严的系统注释"
 
   - id: text_pat_003
+    title_en: The Golden Lion Chapter
     title_zh: "华严金师子章"
     author: "法藏"
     type: commentary
     context_note: "法藏为武则天讲说华严的记录，以金师子为喻阐述事事无碍法界观"
 
   - id: text_pat_004
+    title_en: A Commentary on the Awakening of Faith
     title_zh: "大乘起信论义记"
     author: "法藏"
     cbeta_id: "T44n1846"
@@ -455,6 +491,7 @@ patriarch_works:
 
   # --- 澄观（清凉国师）---
   - id: text_pat_005
+    title_en: Commentary on the Avatamsaka Sutra
     title_zh: "大方广佛华严经疏"
     author: "澄观"
     cbeta_id: "T35n1735"
@@ -463,6 +500,7 @@ patriarch_works:
     context_note: "澄观对八十华严的系统注释。华严教学集大成之作"
 
   - id: text_pat_006
+    title_en: Expanded Commentary on the Avatamsaka Sutra Commentary
     title_zh: "华严经随疏演义钞"
     author: "澄观"
     cbeta_id: "T36n1736"
@@ -472,6 +510,7 @@ patriarch_works:
 
   # --- 宗密（圭峰大师）---
   - id: text_pat_007
+    title_en: On the Origin of Humans (Yuanren Lun)
     title_zh: "华严原人论"
     author: "宗密"
     cbeta_id: "T45n1886"
@@ -479,6 +518,7 @@ patriarch_works:
     context_note: "宗密以华严圆教统摄儒释道诸家之说的人类本源论"
 
   - id: text_pat_008
+    title_en: Preface to the Collected Commentaries on the Sources of Chan
     title_zh: "禅源诸诠集都序"
     author: "宗密"
     cbeta_id: "T48n2015"
@@ -487,6 +527,7 @@ patriarch_works:
 
   # --- 李通玄---
   - id: text_pat_009
+    title_en: New Commentary on the Avatamsaka Sutra
     title_zh: "新华严经论"
     author: "李通玄"
     cbeta_id: "T36n1739"
@@ -496,6 +537,7 @@ patriarch_works:
 
   # --- 智俨---
   - id: text_pat_010
+    title_en: Searching the Profundities of the Avatamsaka Sutra
     title_zh: "华严经搜玄记"
     author: "智俨"
     cbeta_id: "T35n1732"
@@ -505,6 +547,7 @@ patriarch_works:
 
   # --- 义天---
   - id: text_pat_011
+    title_en: New Comprehensive Catalogue of the Canonical Teachings of All Traditions
     title_zh: "新编诸宗教藏总录（义天录）"
     author: "义天"
     type: catalog
@@ -516,6 +559,7 @@ patriarch_works:
 
 tibetan_sources:
   - id: text_bo_001
+    title_en: The Stem Array (Tibetan Avatamsaka, Toh 44)
     title_zh: "藏译华严经"
     title_bo: "Sangs rgyas phal po che zhes bya ba shin tu rgyas pa chen po'i mdo"
     tohk_no: "Toh 44"
@@ -533,6 +577,7 @@ tibetan_sources:
       译自中亚于阗原本，而非印度梵本，具有独立的版本传承体系。
 
   - id: text_bo_002
+    title_en: "84000 Project: English Translation of the Tibetan Avatamsaka (ongoing)"
     title_zh: "84000 项目 — 藏文华严英译 (持续出版中)"
     url: "https://84000.co"
     type: translation
@@ -546,24 +591,28 @@ tibetan_sources:
 
 modern_works:
   - id: text_mod_001
+    title_en: Lectures on the Avatamsaka Sutra (Venerable Mengcan)
     title_zh: "华严经讲记（全本）"
     author: "梦参"
     type: lecture
     context_note: "梦参老和尚晚年讲说全本《八十华严》的记录，当代最重要的华严讲记之一"
 
   - id: text_mod_002
+    title_en: Collected Works of Venerable Chengyi
     title_zh: "成一和尚著作集"
     author: "成一"
     type: study
     context_note: "华严莲社第三任住持成一法师的全集，含多部华严学专著"
 
   - id: text_mod_003
+    title_en: Lectures on Huayan Studies (Venerable Xiandu)
     title_zh: "华严学讲义"
     author: "贤度"
     type: study
     context_note: "贤度法师的华严学教学大纲"
 
   - id: text_mod_004
+    title_en: "Traces in the Ocean: A Biography of Venerable Xiandu"
     title_zh: "大海的印迹：贤度法师传"
     author: "贤度法师、郑栗儿"
     date: 2022
@@ -571,6 +620,7 @@ modern_works:
     context_note: "当代华严女性法嗣传承者的传记"
 
   - id: text_mod_005
+    title_en: The Flower Adornment Sutra (Complete English Translation)
     title_zh: "The Flower Adornment Sutra (英译全本)"
     translator: "Bhikshu Dharmamitra"
     date: 2022
@@ -578,6 +628,7 @@ modern_works:
     context_note: "基于汉文八十华严的完整英译（3册），附带详尽学术注释与科判"
 
   - id: text_mod_006
+    title_en: Entry Into the Inconceivable (English translation of the Gandavyuha)
     title_zh: "Entry Into the Inconceivable (英译入法界品)"
     translator: "Thomas Cleary"
     type: translation
