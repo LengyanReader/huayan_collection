@@ -1,0 +1,63 @@
+# 世界文明迷你地图区域配置 (源自 lineage.js _MINI_REGIONS)
+# 用于底部 mini-maps-grid 十个迷你地图: 定位/配色/对应时间线数据 key
+regions:
+  - id: huayan
+    label: "☸ 汉传诸宗"
+    key: han_buddhist_schools
+    color: "#c46b5d"
+    center: [32, 110]
+    zoom: 4
+  - id: chinese
+    label: "📜 东亚儒道"
+    key: east_asian_thought
+    color: "#b8863c"
+    center: [37, 120]
+    zoom: 4
+  - id: south_asia
+    label: "🕉 南亚次大陆"
+    key: south_asia_timeline
+    color: "#e08040"
+    center: [22, 80]
+    zoom: 4
+  - id: southeast_asia
+    label: "🛕 东南亚"
+    key: southeast_asia_timeline
+    color: "#4a9e8e"
+    center: [12, 106]
+    zoom: 4
+  - id: mena
+    label: "🌙 中东·中亚·北非"
+    key: mena_timeline
+    color: "#d4784c"
+    center: [30, 40]
+    zoom: 3
+  - id: west
+    label: "🏛 欧洲"
+    key: western_timeline
+    color: "#5e8b9e"
+    center: [48, 10]
+    zoom: 3
+  - id: africa
+    label: "🌴 撒哈拉以南非洲"
+    key: africa_timeline
+    color: "#7d9a6e"
+    center: [0, 25]
+    zoom: 3
+  - id: north_america
+    label: "🦅 北美·中美"
+    key: north_america_timeline
+    color: "#d48476"
+    center: [35, -100]
+    zoom: 3
+  - id: south_america
+    label: "🦜 南美洲"
+    key: south_america_timeline
+    color: "#c8893e"
+    center: [-12, -65]
+    zoom: 3
+  - id: oceania
+    label: "🏝 大洋洲"
+    key: oceania_timeline
+    color: "#8b7a9e"
+    center: [-20, 160]
+    zoom: 3

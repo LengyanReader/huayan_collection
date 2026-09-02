@@ -144,7 +144,7 @@ function drawTL(hlId){
   var topOff=layerVis.theory&&!isOverview?thH:0;
 
   // 1. DYNASTY BANDS + LABELS (collision-aware)
-  var dynasties=[{n:"唐",s:618,e:907,c:"rgba(200,160,80,0.06)"},{n:"宋",s:960,e:1279,c:"rgba(150,170,190,0.06)"},{n:"明",s:1368,e:1644,c:"rgba(160,150,140,0.04)"},{n:"清",s:1644,e:1912,c:"rgba(150,140,130,0.04)"},{n:"近现代",s:1912,e:1949,c:"rgba(200,150,140,0.08)"},{n:"当代",s:1949,e:2026,c:"rgba(150,190,190,0.08)"}];
+  var dynasties=(typeof TIMELINE_DYNASTY_BANDS!=='undefined'&&TIMELINE_DYNASTY_BANDS&&TIMELINE_DYNASTY_BANDS.bands)?TIMELINE_DYNASTY_BANDS.bands:[];
   dynasties.forEach(function(d){var x=tX(d.s),x2=tX(d.e);if(x2>0&&x<W){ctx.fillStyle=d.c;ctx.fillRect(Math.max(0,x),topOff,Math.min(W,x2-x),H-topOff);}});
   if(!isOverview){
     var lastLabelX=-999;
@@ -926,7 +926,7 @@ function showTrajectoryOnMap(pid){
 }
 
 // ═══ RELATIONSHIP GRAPH ═══
-var _huayanCore=['person_001','person_002','person_003','person_004','person_005','person_042'];
+var _huayanCore=(typeof HUAYAN_CORE!=='undefined'&&HUAYAN_CORE&&HUAYAN_CORE.core_persons)?HUAYAN_CORE.core_persons:[];
 function drawRelationGraph(pid){
   var c=document.getElementById('rel-graph');if(!c)return;
   var W=240,H=150,cx=W/2,cy=H/2;
@@ -1372,18 +1372,7 @@ function updateDynastyVisibility(year){
     }
   });
 }
-var _MINI_REGIONS=[
-  {id:'huayan',label:'☸ 汉传诸宗',key:'han_buddhist_schools',color:'#c46b5d',center:[32,110],zoom:4},
-  {id:'chinese',label:'📜 东亚儒道',key:'east_asian_thought',color:'#b8863c',center:[37,120],zoom:4},
-  {id:'south_asia',label:'🕉 南亚次大陆',key:'south_asia_timeline',color:'#e08040',center:[22,80],zoom:4},
-  {id:'southeast_asia',label:'🛕 东南亚',key:'southeast_asia_timeline',color:'#4a9e8e',center:[12,106],zoom:4},
-  {id:'mena',label:'🌙 中东·中亚·北非',key:'mena_timeline',color:'#d4784c',center:[30,40],zoom:3},
-  {id:'west',label:'🏛 欧洲',key:'western_timeline',color:'#5e8b9e',center:[48,10],zoom:3},
-  {id:'africa',label:'🌴 撒哈拉以南非洲',key:'africa_timeline',color:'#7d9a6e',center:[0,25],zoom:3},
-  {id:'north_america',label:'🦅 北美·中美',key:'north_america_timeline',color:'#d48476',center:[35,-100],zoom:3},
-  {id:'south_america',label:'🦜 南美洲',key:'south_america_timeline',color:'#c8893e',center:[-12,-65],zoom:3},
-  {id:'oceania',label:'🏝 大洋洲',key:'oceania_timeline',color:'#8b7a9e',center:[-20,160],zoom:3}
-];
+var _MINI_REGIONS=(typeof MINI_MAP_REGIONS!=='undefined'&&MINI_MAP_REGIONS&&MINI_MAP_REGIONS.regions)?MINI_MAP_REGIONS.regions:[];
 function _getEvents(data){
   if(!data)return null;
   if(data.events)return data.events;

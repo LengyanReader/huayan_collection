@@ -1,0 +1,10 @@
+# 关系图核心华严人物白名单 (源自 lineage.js _huayanCore)
+# 用途: 人物关系图连线绘制时, 即使该节点无 huayan_annotations 注解, 也强制连入
+# 华严五祖 + 当代海云继梦(贤首宗高原法系/大华严寺)
+core_persons:
+  - person_001
+  - person_002
+  - person_003
+  - person_004
+  - person_005
+  - person_042
