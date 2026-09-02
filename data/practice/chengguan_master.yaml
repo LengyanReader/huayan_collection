@@ -133,7 +133,7 @@ comparison_with_haiyun:
     二人共同构成当代台湾华严系统两位风格迥异、互为补充的重要弘法者。
 
     '
-  note_en: "Both Master Chengguan and Master Haiyun Jihong are heirs of the 42nd-generation lineage of the Xianshou (Huayan) School — Chengguan received it in 2010, Haiyun in 2008; the two are near-contemporaries. Chengguan's three pillars are 'Śūraṅgama + Consciousness-Only + Shingon,' with sutra translation as the main vehicle of his teaching; Haiyun's banners are 'Huayan meditation + the economics of the spirit,' with lecturing and temple construction as his main vehicles. Together they constitute the two figures of the contemporary Taiwanese Huayan tradition whose styles are distinct yet complementary."
+  note_en: "Both Master Chengguan and Master Haiyun Jimeng are heirs of the 42nd-generation lineage of the Xianshou (Huayan) School — Chengguan received it in 2010, Haiyun in 2008; the two are near-contemporaries. Chengguan's three pillars are 'Śūraṅgama + Consciousness-Only + Shingon,' with sutra translation as the main vehicle of his teaching; Haiyun's banners are 'Huayan meditation + the economics of the spirit,' with lecturing and temple construction as his main vehicles. Together they constitute the two figures of the contemporary Taiwanese Huayan tradition whose styles are distinct yet complementary."
   lineage_diagram: "```mermaid\ngraph TD\n  subgraph 天台宗\n    TC[谛闲大师] --> XM[显明老和尚<br/>天台45世]\n\
     \    XM --> CG[成观法师<br/>天台46世<br/>1988年披剃·纽约]\n  end\n\n  subgraph 真言宗\n    KYS[高野山真言宗<br/>金剛峯寺]\
     \ --> CG2[成观法师<br/>真言宗53世<br/>传法灌顶阿阇梨<br/>1996年]\n  end\n\n  subgraph 华严宗\n  \

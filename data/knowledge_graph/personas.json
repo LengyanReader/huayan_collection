@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/persona.schema.json",
   "version": "0.2.0",
-  "last_updated": "2026-08-02",
+  "last_updated": "2026-09-02",
   "note": "扩充版 + CBETA工作链接。覆盖华严五祖→义天高丽→明清中兴→近现代→当代完整传承链，共80+人物。",
   "persons": [
     {
@@ -42,97 +42,6 @@
         "唯识三十颂"
       ],
       "source": "学术研究",
-      "verified": 1
-    },
-    {
-      "id": "person_006",
-      "name_zh": "佛驮跋陀罗",
-      "name_sa": "Buddhabhadra",
-      "name_en": "Buddhabhadra",
-      "alt_names": [
-        "觉贤",
-        "佛度跋陀罗"
-      ],
-      "type": "translator",
-      "birth_year": 359,
-      "death_year": 429,
-      "dynasty": "东晋",
-      "lineage_branch": null,
-      "lineage_order": null,
-      "title": "六十华严译者",
-      "biography": "北天竺迦毗罗卫国人。来华译经大师，于建康道场寺译出《六十华严》（旧华严），共七处八会三十四品。还译《大般泥洹经》等。",
-      "key_works": [
-        "大方广佛华严经（六十华严，T09n0278）"
-      ],
-      "source": "《高僧传》卷二",
-      "verified": 1
-    },
-    {
-      "id": "person_007",
-      "name_zh": "实叉难陀",
-      "name_sa": "Śikṣānanda",
-      "name_en": "Śikṣānanda",
-      "alt_names": [
-        "学喜",
-        "施乞叉难陀"
-      ],
-      "type": "translator",
-      "birth_year": 652,
-      "death_year": 710,
-      "dynasty": "唐",
-      "lineage_branch": null,
-      "lineage_order": null,
-      "title": "八十华严译者",
-      "biography": "于阗国（今新疆和田）人。奉武则天命来华，主译八十卷《华严经》（T10n0279），法藏曾参与其译场证义。还译《大乘入楞伽经》《大方广普贤所说经》（T0847）等。",
-      "key_works": [
-        "大方广佛华严经（八十华严，T10n0279）",
-        "大方广普贤所说经（T0847）"
-      ],
-      "source": "《宋高僧传》卷二",
-      "verified": 1
-    },
-    {
-      "id": "person_008",
-      "name_zh": "般若",
-      "name_sa": "Prajñā",
-      "name_en": "Prajñā",
-      "alt_names": [
-        "般若三藏"
-      ],
-      "type": "translator",
-      "birth_year": null,
-      "death_year": null,
-      "dynasty": "唐",
-      "lineage_branch": null,
-      "lineage_order": null,
-      "title": "四十华严译者",
-      "biography": "罽宾国（今克什米尔）人。唐贞元年间来华，译出《四十华严》（T10n0293），即全本《入法界品》。文末《普贤菩萨行愿赞》为藏汉佛教共同尊奉。",
-      "key_works": [
-        "大方广佛华严经（四十华严，T10n0293）"
-      ],
-      "source": "《宋高僧传》卷三",
-      "verified": 1
-    },
-    {
-      "id": "person_007b",
-      "name_zh": "支娄迦谶",
-      "name_sa": "Lokakṣema",
-      "name_en": "Lokaksema",
-      "alt_names": [
-        "支谶"
-      ],
-      "type": "translator",
-      "birth_year": null,
-      "death_year": null,
-      "dynasty": "后汉",
-      "lineage_branch": null,
-      "lineage_order": null,
-      "title": "最早汉译华严经文者",
-      "biography": "月氏国人。后汉桓帝时来华。译出《佛说兜沙经》（T10n0280），为《华严经》中最早被翻译过来的单行经（对应《如来名号品》）。",
-      "key_works": [
-        "佛说兜沙经（T10n0280）"
-      ],
-      "source": "《高僧传》卷一",
       "verified": 1
     },
     {
@@ -295,6 +204,97 @@
       }
     },
     {
+      "id": "person_006",
+      "name_zh": "佛驮跋陀罗",
+      "name_sa": "Buddhabhadra",
+      "name_en": "Buddhabhadra",
+      "alt_names": [
+        "觉贤",
+        "佛度跋陀罗"
+      ],
+      "type": "translator",
+      "birth_year": 359,
+      "death_year": 429,
+      "dynasty": "东晋",
+      "lineage_branch": null,
+      "lineage_order": null,
+      "title": "六十华严译者",
+      "biography": "北天竺迦毗罗卫国人。来华译经大师，于建康道场寺译出《六十华严》（旧华严），共七处八会三十四品。还译《大般泥洹经》等。",
+      "key_works": [
+        "大方广佛华严经（六十华严，T09n0278）"
+      ],
+      "source": "《高僧传》卷二",
+      "verified": 1
+    },
+    {
+      "id": "person_007",
+      "name_zh": "实叉难陀",
+      "name_sa": "Śikṣānanda",
+      "name_en": "Śikṣānanda",
+      "alt_names": [
+        "学喜",
+        "施乞叉难陀"
+      ],
+      "type": "translator",
+      "birth_year": 652,
+      "death_year": 710,
+      "dynasty": "唐",
+      "lineage_branch": null,
+      "lineage_order": null,
+      "title": "八十华严译者",
+      "biography": "于阗国（今新疆和田）人。奉武则天命来华，主译八十卷《华严经》（T10n0279），法藏曾参与其译场证义。还译《大乘入楞伽经》《大方广普贤所说经》（T0847）等。",
+      "key_works": [
+        "大方广佛华严经（八十华严，T10n0279）",
+        "大方广普贤所说经（T0847）"
+      ],
+      "source": "《宋高僧传》卷二",
+      "verified": 1
+    },
+    {
+      "id": "person_007b",
+      "name_zh": "支娄迦谶",
+      "name_sa": "Lokakṣema",
+      "name_en": "Lokaksema",
+      "alt_names": [
+        "支谶"
+      ],
+      "type": "translator",
+      "birth_year": null,
+      "death_year": null,
+      "dynasty": "后汉",
+      "lineage_branch": null,
+      "lineage_order": null,
+      "title": "最早汉译华严经文者",
+      "biography": "月氏国人。后汉桓帝时来华。译出《佛说兜沙经》（T10n0280），为《华严经》中最早被翻译过来的单行经（对应《如来名号品》）。",
+      "key_works": [
+        "佛说兜沙经（T10n0280）"
+      ],
+      "source": "《高僧传》卷一",
+      "verified": 1
+    },
+    {
+      "id": "person_008",
+      "name_zh": "般若",
+      "name_sa": "Prajñā",
+      "name_en": "Prajñā",
+      "alt_names": [
+        "般若三藏"
+      ],
+      "type": "translator",
+      "birth_year": null,
+      "death_year": null,
+      "dynasty": "唐",
+      "lineage_branch": null,
+      "lineage_order": null,
+      "title": "四十华严译者",
+      "biography": "罽宾国（今克什米尔）人。唐贞元年间来华，译出《四十华严》（T10n0293），即全本《入法界品》。文末《普贤菩萨行愿赞》为藏汉佛教共同尊奉。",
+      "key_works": [
+        "大方广佛华严经（四十华严，T10n0293）"
+      ],
+      "source": "《宋高僧传》卷三",
+      "verified": 1
+    },
+    {
       "id": "person_009",
       "name_zh": "李通玄",
       "name_en": "Li Tongxuan",
@@ -323,28 +323,6 @@
       }
     },
     {
-      "id": "person_011",
-      "name_zh": "净源",
-      "name_en": "Jingyuan",
-      "alt_names": [
-        "晋水净源"
-      ],
-      "type": "patriarch",
-      "birth_year": 1011,
-      "death_year": 1088,
-      "dynasty": "宋",
-      "lineage_branch": "华严五祖",
-      "lineage_order": null,
-      "title": "宋代华严中兴之祖",
-      "biography": "宋代华严宗重要复兴者。住杭州慧因寺。传法于高丽义天，义天归国后送金书《华严经》三种译本供养慧因寺。慧因寺世称'华严第一道场'。",
-      "key_works": [
-        "华严经疏注",
-        "华严妄尽还源观疏"
-      ],
-      "source": "《佛祖统纪》卷二十九",
-      "verified": 1
-    },
-    {
       "id": "person_010",
       "name_zh": "义天",
       "name_en": "Uicheon",
@@ -368,20 +346,26 @@
       "verified": 1
     },
     {
-      "id": "person_021",
-      "name_zh": "高原明昱",
-      "name_en": "Gaoyuan Mingyu",
+      "id": "person_011",
+      "name_zh": "净源",
+      "name_en": "Jingyuan",
+      "alt_names": [
+        "晋水净源"
+      ],
       "type": "patriarch",
-      "birth_year": null,
-      "death_year": null,
-      "dynasty": "明",
+      "birth_year": 1011,
+      "death_year": 1088,
+      "dynasty": "宋",
       "lineage_branch": "华严五祖",
-      "lineage_order": 25,
-      "title": "华严宗第二十五世",
-      "biography": "明代华严宗祖师，华严宗第二十五世传人。自他起华严法脉兼传慈恩宗（唯识/法相宗），开创'贤首兼慈恩'传承体系。钦因长老等现代传人皆属此高原法系。",
-      "key_works": [],
-      "source": "贤首宗《付法师资记》",
-      "verified": 0
+      "lineage_order": null,
+      "title": "宋代华严中兴之祖",
+      "biography": "宋代华严宗重要复兴者。住杭州慧因寺。传法于高丽义天，义天归国后送金书《华严经》三种译本供养慧因寺。慧因寺世称'华严第一道场'。",
+      "key_works": [
+        "华严经疏注",
+        "华严妄尽还源观疏"
+      ],
+      "source": "《佛祖统纪》卷二十九",
+      "verified": 1
     },
     {
       "id": "person_012",
@@ -403,26 +387,6 @@
       "verified": 0
     },
     {
-      "id": "person_031",
-      "name_zh": "应慈",
-      "name_en": "Yingci",
-      "alt_names": [
-        "应慈法师",
-        "华严座主"
-      ],
-      "type": "patriarch",
-      "birth_year": 1873,
-      "death_year": 1965,
-      "dynasty": "近现代",
-      "lineage_branch": "月霞系",
-      "lineage_order": null,
-      "title": "近代华严座主",
-      "biography": "月霞长老师弟。继承月霞遗志，长期在上海等地弘传华严，被尊为'华严座主'。真禅法师之师。平生讲《华严经》多遍。",
-      "key_works": [],
-      "source": "近现代佛教史料",
-      "verified": 0
-    },
-    {
       "id": "person_013",
       "name_zh": "常惺",
       "name_en": "Changxing",
@@ -439,19 +403,21 @@
       "verified": 0
     },
     {
-      "id": "person_018",
-      "name_zh": "智光",
-      "name_en": "Zhiguang",
-      "type": "patriarch",
-      "birth_year": 1889,
-      "death_year": 1963,
+      "id": "person_014",
+      "name_zh": "慈舟",
+      "name_en": "Cizhou",
+      "type": "scholar",
+      "birth_year": 1877,
+      "death_year": 1958,
       "dynasty": "近现代",
-      "lineage_branch": "智光系",
+      "lineage_branch": "慈舟系",
       "lineage_order": 1,
-      "title": "华严莲社首任住持",
-      "biography": "近代华严学者。台北华严莲社第一任住持（1952年创社），开启台湾华严宗弘传事业。",
-      "key_works": [],
-      "source": "华严莲社资料",
+      "title": null,
+      "biography": "近代华严学者。长期于北京广济寺、济南等地讲说华严。著《华严经普贤行愿品亲闻记》，对《普贤行愿品》在现代的弘扬有重要推动。",
+      "key_works": [
+        "华严经普贤行愿品亲闻记"
+      ],
+      "source": "近现代佛教史料",
       "verified": 0
     },
     {
@@ -493,6 +459,138 @@
       "verified": 0
     },
     {
+      "id": "person_017",
+      "name_zh": "贤度",
+      "name_en": "Xiandu",
+      "type": "patriarch",
+      "birth_year": 1960,
+      "death_year": null,
+      "dynasty": "当代",
+      "lineage_branch": "华严莲社",
+      "lineage_order": 6,
+      "title": "华严莲社第六任住持·华严专宗学院院长",
+      "biography": "当代华严宗女性法嗣传承者。成一法师弟子。2005年获印度德里大学哲学博士。推动华严现代化转型：发行《华严乐坛》专辑、AI多媒体文创演绎五十三参。著有《华严学讲义》《华严净土思想与念佛法门》等。",
+      "key_works": [
+        "华严学讲义",
+        "华严净土思想与念佛法门",
+        "大海的印迹：贤度法师传"
+      ],
+      "source": "华严莲社资料（2024年）",
+      "verified": 0
+    },
+    {
+      "id": "person_018",
+      "name_zh": "智光",
+      "name_en": "Zhiguang",
+      "type": "patriarch",
+      "birth_year": 1889,
+      "death_year": 1963,
+      "dynasty": "近现代",
+      "lineage_branch": "智光系",
+      "lineage_order": 1,
+      "title": "华严莲社首任住持",
+      "biography": "近代华严学者。台北华严莲社第一任住持（1952年创社），开启台湾华严宗弘传事业。",
+      "key_works": [],
+      "source": "华严莲社资料",
+      "verified": 0
+    },
+    {
+      "id": "person_019",
+      "name_zh": "梦参",
+      "name_en": "Mengcan",
+      "alt_names": [
+        "梦参老和尚"
+      ],
+      "type": "practitioner",
+      "birth_year": 1915,
+      "death_year": 2017,
+      "dynasty": "当代",
+      "lineage_branch": "临济宗",
+      "lineage_order": 46,
+      "title": "当代华严弘扬巨擘",
+      "biography": "当代高僧，临济宗第四十六代。曾于五台山闭关修行多年。晚年大力弘扬《华严经》，讲说全本《八十华严》影响深远。1991年破例为海云继梦剃度（梦中得地藏菩萨示现），赐法名昌一。",
+      "key_works": [
+        "华严经讲记（全本）"
+      ],
+      "source": "当代佛教资料",
+      "verified": 0
+    },
+    {
+      "id": "person_020",
+      "name_zh": "胜友",
+      "name_sa": "Jinamitra",
+      "name_en": "Jinamitra",
+      "type": "translator",
+      "birth_year": null,
+      "death_year": null,
+      "dynasty": "唐",
+      "lineage_branch": null,
+      "lineage_order": null,
+      "title": "藏译华严经主译之一",
+      "biography": "印度译师。与智军（Ye shes sde）、遍照护（Vairocana）约9世纪初将《华严经》译为藏文（德格版Toh 44）。译自中亚于阗原本。",
+      "key_works": [
+        "藏译华严经（Toh 44）"
+      ],
+      "source": "德格版甘珠尔目录",
+      "verified": 0
+    },
+    {
+      "id": "person_020b",
+      "name_zh": "智军",
+      "name_bo": "Ye shes sde",
+      "type": "translator",
+      "birth_year": null,
+      "death_year": null,
+      "dynasty": "唐",
+      "lineage_branch": null,
+      "lineage_order": null,
+      "title": "藏译华严经主译之一",
+      "biography": "吐蕃著名译师。与印度胜友合作将《华严经》从于阗本译为藏文。为吐蕃王朝佛教翻译事业的核心人物。",
+      "key_works": [
+        "藏译华严经（Toh 44）"
+      ],
+      "source": "学术研究",
+      "verified": 1,
+      "name_en": "Yeshe De",
+      "name_sa": "Jñānasena"
+    },
+    {
+      "id": "person_021",
+      "name_zh": "高原明昱",
+      "name_en": "Gaoyuan Mingyu",
+      "type": "patriarch",
+      "birth_year": null,
+      "death_year": null,
+      "dynasty": "明",
+      "lineage_branch": "华严五祖",
+      "lineage_order": 25,
+      "title": "华严宗第二十五世",
+      "biography": "明代华严宗祖师，华严宗第二十五世传人。自他起华严法脉兼传慈恩宗（唯识/法相宗），开创'贤首兼慈恩'传承体系。钦因长老等现代传人皆属此高原法系。",
+      "key_works": [],
+      "source": "贤首宗《付法师资记》",
+      "verified": 0
+    },
+    {
+      "id": "person_031",
+      "name_zh": "应慈",
+      "name_en": "Yingci",
+      "alt_names": [
+        "应慈法师",
+        "华严座主"
+      ],
+      "type": "patriarch",
+      "birth_year": 1873,
+      "death_year": 1965,
+      "dynasty": "近现代",
+      "lineage_branch": "月霞系",
+      "lineage_order": null,
+      "title": "近代华严座主",
+      "biography": "月霞长老师弟。继承月霞遗志，长期在上海等地弘传华严，被尊为'华严座主'。真禅法师之师。平生讲《华严经》多遍。",
+      "key_works": [],
+      "source": "近现代佛教史料",
+      "verified": 0
+    },
+    {
       "id": "person_032",
       "name_zh": "了中",
       "name_en": "Liaozhong",
@@ -522,26 +620,6 @@
       "biography": "华严莲社第五任住持。",
       "key_works": [],
       "source": "华严莲社资料",
-      "verified": 0
-    },
-    {
-      "id": "person_017",
-      "name_zh": "贤度",
-      "name_en": "Xiandu",
-      "type": "patriarch",
-      "birth_year": 1960,
-      "death_year": null,
-      "dynasty": "当代",
-      "lineage_branch": "华严莲社",
-      "lineage_order": 6,
-      "title": "华严莲社第六任住持·华严专宗学院院长",
-      "biography": "当代华严宗女性法嗣传承者。成一法师弟子。2005年获印度德里大学哲学博士。推动华严现代化转型：发行《华严乐坛》专辑、AI多媒体文创演绎五十三参。著有《华严学讲义》《华严净土思想与念佛法门》等。",
-      "key_works": [
-        "华严学讲义",
-        "华严净土思想与念佛法门",
-        "大海的印迹：贤度法师传"
-      ],
-      "source": "华严莲社资料（2024年）",
       "verified": 0
     },
     {
@@ -616,45 +694,6 @@
       "verified": 0
     },
     {
-      "id": "person_019",
-      "name_zh": "梦参",
-      "name_en": "Mengcan",
-      "alt_names": [
-        "梦参老和尚"
-      ],
-      "type": "practitioner",
-      "birth_year": 1915,
-      "death_year": 2017,
-      "dynasty": "当代",
-      "lineage_branch": "临济宗",
-      "lineage_order": 46,
-      "title": "当代华严弘扬巨擘",
-      "biography": "当代高僧，临济宗第四十六代。曾于五台山闭关修行多年。晚年大力弘扬《华严经》，讲说全本《八十华严》影响深远。1991年破例为海云继梦剃度（梦中得地藏菩萨示现），赐法名昌一。",
-      "key_works": [
-        "华严经讲记（全本）"
-      ],
-      "source": "当代佛教资料",
-      "verified": 0
-    },
-    {
-      "id": "person_014",
-      "name_zh": "慈舟",
-      "name_en": "Cizhou",
-      "type": "scholar",
-      "birth_year": 1877,
-      "death_year": 1958,
-      "dynasty": "近现代",
-      "lineage_branch": "慈舟系",
-      "lineage_order": 1,
-      "title": null,
-      "biography": "近代华严学者。长期于北京广济寺、济南等地讲说华严。著《华严经普贤行愿品亲闻记》，对《普贤行愿品》在现代的弘扬有重要推动。",
-      "key_works": [
-        "华严经普贤行愿品亲闻记"
-      ],
-      "source": "近现代佛教史料",
-      "verified": 0
-    },
-    {
       "id": "person_044",
       "name_zh": "真禅",
       "name_en": "Zhenchan",
@@ -708,43 +747,6 @@
       "verified": 0
     },
     {
-      "id": "person_020",
-      "name_zh": "胜友",
-      "name_sa": "Jinamitra",
-      "name_en": "Jinamitra",
-      "type": "translator",
-      "birth_year": null,
-      "death_year": null,
-      "dynasty": "唐",
-      "lineage_branch": null,
-      "lineage_order": null,
-      "title": "藏译华严经主译之一",
-      "biography": "印度译师。与智军（Ye shes sde）、遍照护（Vairocana）约9世纪初将《华严经》译为藏文（德格版Toh 44）。译自中亚于阗原本。",
-      "key_works": [
-        "藏译华严经（Toh 44）"
-      ],
-      "source": "德格版甘珠尔目录",
-      "verified": 0
-    },
-    {
-      "id": "person_020b",
-      "name_zh": "智军",
-      "name_bo": "Ye shes sde",
-      "type": "translator",
-      "birth_year": null,
-      "death_year": null,
-      "dynasty": "唐",
-      "lineage_branch": null,
-      "lineage_order": null,
-      "title": "藏译华严经主译之一",
-      "biography": "吐蕃著名译师。与印度胜友合作将《华严经》从于阗本译为藏文。为吐蕃王朝佛教翻译事业的核心人物。",
-      "key_works": [
-        "藏译华严经（Toh 44）"
-      ],
-      "source": "学术研究",
-      "verified": 1
-    },
-    {
       "id": "person_050",
       "name_zh": "审祥",
       "name_en": "Shinshō",
@@ -761,6 +763,300 @@
       "verified": 0
     },
     {
+      "id": "person_060",
+      "name_zh": "元晓",
+      "name_en": "Wonhyo",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "唐/新罗",
+      "lineage_branch": "高丽华严",
+      "title": "新罗华严学僧",
+      "biography": "新罗学僧。与义湘同代，二人曾结伴入唐但中途折返。后自悟大乘起信论奥义。著华严经疏、起信论疏，与法藏、慧远并称东亚起信论三大疏。对朝鲜半岛华严思想影响深远。",
+      "key_works": [
+        "华严经疏",
+        "大乘起信论疏",
+        "十门和诤论"
+      ],
+      "birth_year": 617,
+      "death_year": 686,
+      "source": "韩国佛教史/学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_061",
+      "name_zh": "义湘",
+      "name_en": "Uisang",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "唐/新罗",
+      "lineage_branch": "高丽华严",
+      "title": "海东华严初祖",
+      "biography": "新罗僧。与元晓结伴入唐求法，元晓中途折返，义湘独至长安从智俨学华严。归国后创浮石寺，被尊为海东华严初祖。",
+      "key_works": [
+        "华严一乘法界图",
+        "白花道场发愿文"
+      ],
+      "birth_year": 625,
+      "death_year": 702,
+      "source": "韩国佛教史/学术研究",
+      "verified": 1
+    },
+    {
+      "id": "person_062",
+      "name_zh": "均如",
+      "name_en": "Kyunyŏ",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "高丽",
+      "lineage_branch": "高丽华严",
+      "title": "高丽华严学僧",
+      "biography": "高丽初期华严学僧。统一高丽华严南北二宗之分歧。著华严经三宝章圆通钞等。早于义天，为高丽华严之前驱。",
+      "key_works": [
+        "华严经三宝章圆通钞",
+        "十句章圆通记"
+      ],
+      "birth_year": 923,
+      "death_year": 973,
+      "source": "《均如传》/韩国佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_070",
+      "name_zh": "慧苑",
+      "name_en": "Huiyuan",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "唐",
+      "lineage_branch": "华严五祖",
+      "title": "法藏弟子·华严异解者",
+      "biography": "法藏上首弟子。著续华严经略疏刊定记，改五教为四教、以十门代十玄。澄观在华严经疏中系统批判其说。慧苑异解是推动澄观集大成的关键思想动力。",
+      "key_works": [
+        "续华严经略疏刊定记",
+        "华严旋澓章"
+      ],
+      "birth_year": 673,
+      "death_year": 743,
+      "source": "《华严经传记》/学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_080",
+      "name_zh": "续法",
+      "name_en": "Xufa",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "清",
+      "lineage_branch": "华严五祖",
+      "title": "清代华严集大成者",
+      "biography": "清代华严宗最重要弘传者。字柏亭，号灌顶，仁和人。著贤首五教仪系统整理法藏判教；编华严宗佛祖传梳理传承谱系。讲华严经二十余遍，为清代华严学集大成者。",
+      "key_works": [
+        "贤首五教仪",
+        "华严宗佛祖传",
+        "法界宗莲花章"
+      ],
+      "birth_year": 1641,
+      "death_year": 1728,
+      "source": "《华严宗佛祖传》/学术研究",
+      "verified": 1
+    },
+    {
+      "id": "person_090",
+      "name_zh": "慧光",
+      "name_en": "Huiguang",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "北魏",
+      "lineage_branch": "华严五祖",
+      "title": "地论师南道派始祖",
+      "biography": "北魏地论师。从勒那摩提学十地经论，开创地论南道派。世称光统律师。其学说经数代传承至智俨、法藏，是为华严宗义学前身。",
+      "key_works": [
+        "十地经论疏",
+        "四分律疏"
+      ],
+      "birth_year": 468,
+      "death_year": 537,
+      "source": "《续高僧传》卷二十一·慧光传",
+      "verified": 0
+    },
+    {
+      "id": "person_091",
+      "name_zh": "子璿",
+      "name_en": "Zixuan",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "宋",
+      "lineage_branch": "华严五祖",
+      "title": "宋代华严学者",
+      "biography": "宋代华严重要学者。长水子璿，秀州人。从洪敏学楞严，后谒慧觉禅师悟入。著起信论疏笔削记，兼弘贤首与天台。",
+      "key_works": [
+        "起信论疏笔削记",
+        "楞严经义疏注经"
+      ],
+      "birth_year": 965,
+      "death_year": 1038,
+      "source": "《补续高僧传》/学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_092",
+      "name_zh": "持松",
+      "name_en": "Chisong",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "近现代",
+      "lineage_branch": "月霞系",
+      "title": "月霞系法嗣·华严大学校长",
+      "biography": "月霞长老弟子。继常惺之后任华严大学校长。兼弘密法，为近代华严与密教兼通的代表人物。著有贤密教衡等。",
+      "key_works": [
+        "贤密教衡",
+        "华严宗教义始末记"
+      ],
+      "birth_year": 1894,
+      "death_year": 1972,
+      "source": "近现代佛教史/学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_100",
+      "name_zh": "释迦牟尼",
+      "name_en": "Shakyamuni",
+      "name_sa": "Śākyamuni",
+      "type": "patriarch",
+      "dynasty": "古印度",
+      "lineage_branch": "印度源流",
+      "title": "佛教创始人·华严经教说者",
+      "biography": "佛教创始人。据华严宗传统，华严经为释迦成道后最初三七日于菩提树下为法身大士所说。为一切法脉之根源。",
+      "key_works": [],
+      "birth_year": -563,
+      "death_year": -483,
+      "source": "佛典/学术研究",
+      "verified": 1
+    },
+    {
+      "id": "person_101",
+      "name_zh": "马鸣",
+      "name_en": "Ashvaghosha",
+      "name_sa": "Aśvaghoṣa",
+      "type": "scholar",
+      "dynasty": "古印度",
+      "lineage_branch": "印度源流",
+      "title": "大乘论师·起信论造者",
+      "biography": "古印度大乘佛教论师。传统著录为大乘起信论作者。该论一心二门三大四信五门之说，为华严宗判教与心性论提供了重要理论资源。",
+      "key_works": [
+        "大乘起信论"
+      ],
+      "birth_year": 80,
+      "death_year": 150,
+      "source": "《马鸣菩萨传》/学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_102",
+      "name_zh": "无著",
+      "name_en": "Asanga",
+      "name_sa": "Asaṅga",
+      "type": "scholar",
+      "dynasty": "古印度",
+      "lineage_branch": "印度源流",
+      "title": "瑜伽行派创始人",
+      "biography": "古印度瑜伽行派(Yogācāra)创始人。世亲之兄。其唯识学说经世亲十地经论传入汉地，深刻影响地论学派及华严宗法界缘起思想的形成。",
+      "key_works": [
+        "瑜伽师地论",
+        "摄大乘论"
+      ],
+      "birth_year": 310,
+      "death_year": 390,
+      "source": "《大唐西域记》/学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_103",
+      "name_zh": "鸠摩罗什",
+      "name_en": "Kumarajiva",
+      "name_sa": "Kumārajīva",
+      "type": "translator",
+      "dynasty": "后秦",
+      "lineage_branch": "译师",
+      "title": "四大译经师之首",
+      "biography": "龟兹人。后秦弘始三年(401)至长安，主持中国历史上规模最大的译场。译十住经(T0286,即十地品别译)、十住毗婆沙论、法华经等。其译经为华严学在中国的传播提供了关键文本基础。",
+      "key_works": [
+        "十住经",
+        "十住毗婆沙论",
+        "中论",
+        "法华经"
+      ],
+      "birth_year": 344,
+      "death_year": 413,
+      "source": "《高僧传》卷二·鸠摩罗什传",
+      "verified": 1
+    },
+    {
+      "id": "person_104",
+      "name_zh": "菩提流支",
+      "name_en": "Bodhiruci",
+      "name_sa": "Bodhiruci",
+      "type": "translator",
+      "dynasty": "北魏",
+      "lineage_branch": "译师",
+      "title": "十地经论主译",
+      "biography": "北印度人。北魏永平元年(508)至洛阳，与勒那摩提等译世亲十地经论十二卷。此论译出直接催生了南北朝地论学派，被视为华严宗义学之远源。",
+      "key_works": [
+        "十地经论"
+      ],
+      "birth_year": null,
+      "death_year": 527,
+      "source": "《续高僧传》卷一·菩提流支传",
+      "verified": 0
+    },
+    {
+      "id": "person_105",
+      "name_zh": "燃灯佛",
+      "name_en": "Dipankara",
+      "name_sa": "Dīpaṃkara",
+      "type": "patriarch",
+      "dynasty": "远古印度",
+      "lineage_branch": "印度源流",
+      "title": "授记释迦成佛之过去佛",
+      "biography": "梵名Dīpaṃkara。过去无量劫前之佛。据华严经如来名号品及本生经典，燃灯佛曾为释迦牟尼前身授记: 汝于来世当得作佛号释迦牟尼。此为华严经中佛佛相续无尽法界缘起之始。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "《华严经》/佛典",
+      "verified": 1
+    },
+    {
+      "id": "person_106",
+      "name_zh": "迦叶佛",
+      "name_en": "Kashyapa",
+      "name_sa": "Kāśyapa",
+      "type": "patriarch",
+      "dynasty": "远古印度",
+      "lineage_branch": "印度源流",
+      "title": "贤劫第三佛·释迦前身之师",
+      "biography": "梵名Kāśyapa。贤劫千佛之第三尊，释迦牟尼佛之前一佛。据华严经，释迦成道时十方诸佛各遣菩萨来集，其中包括过去诸佛之法身显现。华严宗以十方三世无尽诸佛构成法界缘起之佛佛相望网络。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "《华严经》/佛典",
+      "verified": 1
+    },
+    {
+      "id": "person_107",
+      "name_zh": "毗卢遮那佛",
+      "name_en": "Vairocana",
+      "name_sa": "Vairocana",
+      "type": "patriarch",
+      "dynasty": "法身常住",
+      "lineage_branch": "印度源流",
+      "title": "华严教主·法身本源",
+      "biography": "梵名Vairocana，华严经之根本教主。意译光明遍照、大日如来。华严经以毗卢遮那佛法身为宇宙本体，十方三世一切诸佛皆为其化现。华严宗法界缘起、一即一切等核心教义皆围绕毗卢遮那佛法身展开。非历史人物，为华严教义之法身源头。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "《华严经》/佛典",
+      "verified": 1
+    },
+    {
       "id": "person_110",
       "name_zh": "法显",
       "type": "practitioner",
@@ -774,7 +1070,8 @@
         "佛国记(高僧法显传)"
       ],
       "source": "《高僧传》卷三·法显传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Faxian"
     },
     {
       "id": "person_111",
@@ -792,7 +1089,8 @@
         "成唯识论"
       ],
       "source": "《续高僧传》卷四·玄奘传 /《大唐大慈恩寺三藏法师传》",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Xuanzang"
     },
     {
       "id": "person_112",
@@ -809,7 +1107,8 @@
         "大唐西域求法高僧传"
       ],
       "source": "《宋高僧传》卷一·义净传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Yijing"
     },
     {
       "id": "person_113",
@@ -828,7 +1127,8 @@
         "大乘起信论(重译)"
       ],
       "source": "《续高僧传》卷一·真谛传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Paramartha"
     },
     {
       "id": "person_114",
@@ -847,7 +1147,8 @@
         "杂阿含经"
       ],
       "source": "《高僧传》卷三·求那跋陀罗传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Gunabhadra"
     },
     {
       "id": "person_115",
@@ -865,7 +1166,8 @@
         "大乘密严经"
       ],
       "source": "《宋高僧传》卷一·不空传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Amoghavajra"
     },
     {
       "id": "person_116",
@@ -884,7 +1186,8 @@
         "正法华经"
       ],
       "source": "《高僧传》卷一·竺法护传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Dharmaraksa"
     },
     {
       "id": "person_117",
@@ -900,7 +1203,9 @@
         "往五天竺国传"
       ],
       "source": "《往五天竺国传》敦煌写本 / 学术研究",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Hyecho",
+      "name_sa": "Prajñāvikrama"
     },
     {
       "id": "person_120",
@@ -918,7 +1223,8 @@
         "苏婆呼童子请问经"
       ],
       "source": "《宋高僧传》卷二·善无畏传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Subhakarasimha"
     },
     {
       "id": "person_121",
@@ -936,7 +1242,8 @@
         "七俱胝佛母准提大明陀罗尼经"
       ],
       "source": "《宋高僧传》卷一·金刚智传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Vajrabodhi"
     },
     {
       "id": "person_122",
@@ -953,7 +1260,8 @@
         "大衍历"
       ],
       "source": "《宋高僧传》卷五·一行传",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Yixing"
     },
     {
       "id": "person_123",
@@ -967,7 +1275,8 @@
       "biography": "唐代密宗高僧。师事不空,兼承善无畏胎藏界与金刚智金刚界两部密法。住长安青龙寺,为密宗集大成者。日本空海入唐即从慧果受法,归国后创立日本真言宗。",
       "key_works": [],
       "source": "《宋高僧传》·慧果传 / 空海《御请来目录》",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Huiguo"
     },
     {
       "id": "person_124",
@@ -986,7 +1295,8 @@
         "秘密曼荼罗十住心论"
       ],
       "source": "空海《御请来目录》/ 日本佛教史",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Kūkai"
     },
     {
       "id": "person_125",
@@ -1000,7 +1310,8 @@
       "biography": "与释迦牟尼同时代的六位印度思想家。据《沙门果经》记载:富兰那迦叶(道德否定论)、末伽梨拘舍罗(宿命论)、散若夷毗罗梨子(不可知论)、阿耆多翅舍钦婆罗(唯物论)、迦罗鸠驮迦旃延(原子论)、尼乾陀若提子(耆那教创始人)。佛教教义正是在与这些学派的对话与辩驳中确立的。",
       "key_works": [],
       "source": "《长阿含经·沙门果经》(DN 2)",
-      "verified": 1
+      "verified": 1,
+      "name_en": "Six heterodox teachers"
     },
     {
       "id": "person_126",
@@ -1021,6 +1332,475 @@
       ],
       "source": "大毘卢寺官网·百度百科·钦因传法记录",
       "verified": 1
+    },
+    {
+      "id": "person_130",
+      "name_zh": "拉克鲁希",
+      "name_en": "Lakulish",
+      "name_sa": "Lakulīśa",
+      "type": "patriarch",
+      "dynasty": "远古印度",
+      "lineage_branch": "大乘瑜伽行法",
+      "title": "湿婆神第28代化身·Lord Lakulish",
+      "biography": "Lord Lakulish。相传为4500年前湿婆神第28代化身,为印度古典瑜伽行法之原始指导者。其传承历经千年,于现代示现指导巴布基大瑜伽士。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "大华严寺法脉资料",
+      "verified": 0
+    },
+    {
+      "id": "person_131",
+      "name_zh": "巴布基",
+      "name_en": "Babuji",
+      "name_sa": null,
+      "type": "practitioner",
+      "dynasty": "近现代",
+      "lineage_branch": "大乘瑜伽行法",
+      "title": "大瑜伽士·Babuji",
+      "biography": "Babuji(巴布基大瑜伽士)。Lord Lakulish示现指导的大成就者,传承古典瑜伽行法。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "大华严寺法脉资料",
+      "verified": 0
+    },
+    {
+      "id": "person_132",
+      "name_zh": "普拉梵纳德",
+      "name_en": "Swami Pranavanad",
+      "name_sa": null,
+      "type": "practitioner",
+      "dynasty": "近现代",
+      "lineage_branch": "大乘瑜伽行法",
+      "title": "Swami Pranavanad",
+      "biography": "Swami Pranavanad。1913年普贤菩萨于印度再度示现,为其传法。开创现代大乘瑜伽行法传承。",
+      "key_works": [],
+      "birth_year": 1884,
+      "death_year": 1959,
+      "source": "大华严寺法脉资料",
+      "verified": 0
+    },
+    {
+      "id": "person_133",
+      "name_zh": "克利普梵纳德",
+      "name_en": "Swami Kripalavanand",
+      "name_sa": null,
+      "type": "practitioner",
+      "dynasty": "近现代",
+      "lineage_branch": "大乘瑜伽行法",
+      "title": "Swami Kripalavanand",
+      "biography": "Swami Kripalavanand。1932年从普拉梵纳德接法,继续弘扬大乘瑜伽行法。",
+      "key_works": [],
+      "birth_year": 1913,
+      "death_year": 1981,
+      "source": "大华严寺法脉资料",
+      "verified": 0
+    },
+    {
+      "id": "person_134",
+      "name_zh": "胜师子王菩萨",
+      "name_en": "Swami Rajarshi Muni",
+      "name_sa": null,
+      "type": "practitioner",
+      "dynasty": "当代",
+      "lineage_branch": "大乘瑜伽行法",
+      "title": "Swami Rajarshi Muni·印度国师",
+      "biography": "Swami Rajarshi Muni(惹查西牟尼)。1971年从克利普梵纳德接法。1993年Lakulish以灵性形象示现,遂创立LIFE Mission。被尊为印度国师,2019年获印度总理奖。2008年12月于阿弥塔巴市传大乘瑜伽行法灌顶予海云继梦。已圆寂(约2023年)。",
+      "key_works": [],
+      "birth_year": 1931,
+      "death_year": 2023,
+      "source": "大华严寺法脉资料",
+      "verified": 0
+    },
+    {
+      "id": "person_140",
+      "name_zh": "罗摩克里希纳",
+      "name_en": "Ramakrishna",
+      "name_sa": "Rāmakṛṣṇa",
+      "type": "practitioner",
+      "dynasty": "1836–1886",
+      "lineage_branch": "参考线",
+      "title": "Ramakrishna·近代印度灵性复兴之源",
+      "biography": "Ramakrishna Paramahamsa。19世纪印度神秘主义者,加尔各答达克希涅斯瓦尔 Kali 神庙祭司。主张各宗教皆为通向同一真理的路径。其弟子辨喜将吠檀多传向西方。",
+      "key_works": [],
+      "birth_year": 1836,
+      "death_year": 1886,
+      "source": "学术研究/英文传记",
+      "verified": 1
+    },
+    {
+      "id": "person_141",
+      "name_zh": "辨喜",
+      "name_en": "Swami Vivekananda",
+      "name_sa": "Vivekānanda",
+      "type": "practitioner",
+      "dynasty": "1863–1902",
+      "lineage_branch": "参考线",
+      "title": "Swami Vivekananda·吠檀多西传第一人",
+      "biography": "Swami Vivekananda。罗摩克里希纳弟子。1893年芝加哥世界宗教议会演讲轰动西方,创立罗摩克里希纳传道会。将瑜伽与吠檀多哲学系统介绍给西方世界。",
+      "key_works": [],
+      "birth_year": 1863,
+      "death_year": 1902,
+      "source": "学术研究/英文传记",
+      "verified": 1
+    },
+    {
+      "id": "person_142",
+      "name_zh": "奥罗宾多",
+      "name_en": "Sri Aurobindo",
+      "name_sa": null,
+      "type": "practitioner",
+      "dynasty": "1872–1950",
+      "lineage_branch": "参考线",
+      "title": "Sri Aurobindo·整体瑜伽创立者",
+      "biography": "Sri Aurobindo。早年留学剑桥,后投身印度独立运动。1910年起隐居本地治里,创立整体瑜伽(Integral Yoga)。其「超心智」演化哲学与华严事事无碍有深层对话空间。",
+      "key_works": [
+        "The Life Divine",
+        "Savitri"
+      ],
+      "birth_year": 1872,
+      "death_year": 1950,
+      "source": "学术研究/英文传记",
+      "verified": 1
+    },
+    {
+      "id": "person_143",
+      "name_zh": "拉玛那·马哈希",
+      "name_en": "Ramana Maharshi",
+      "name_sa": "Ramaṇa Maharṣi",
+      "type": "practitioner",
+      "dynasty": "1879–1950",
+      "lineage_branch": "参考线",
+      "title": "Ramana Maharshi·参问Who am I",
+      "biography": "Ramana Maharshi。16岁自发证悟自性,后隐居于圣山 Arunachala 终生。以「我是谁」(Who am I?)参问法门教导学人直证自性。其不二论与禅宗「念佛是谁」话头有可比拟处。",
+      "key_works": [],
+      "birth_year": 1879,
+      "death_year": 1950,
+      "source": "学术研究/英文传记",
+      "verified": 1
+    },
+    {
+      "id": "person_150",
+      "name_zh": "寂天",
+      "name_en": "Shantideva",
+      "name_sa": "Śāntideva",
+      "type": "scholar",
+      "dynasty": "8世纪",
+      "lineage_branch": "参考线",
+      "title": "Śāntideva·入菩萨行论造者",
+      "biography": "Śāntideva(寂天)。那烂陀寺学僧,中观学派大师。著《入菩萨行论》(Bodhicaryāvatāra)为印度大乘修行纲领。《华严经·普贤行愿品》与寂天菩萨行思想可互相参照。",
+      "key_works": [
+        "入菩萨行论",
+        "学处集要"
+      ],
+      "birth_year": 685,
+      "death_year": 763,
+      "source": "学术研究",
+      "verified": 1
+    },
+    {
+      "id": "person_151",
+      "name_zh": "阿底峡",
+      "name_en": "Atisha",
+      "name_sa": "Atiśa",
+      "type": "patriarch",
+      "dynasty": "982–1054",
+      "lineage_branch": "参考线",
+      "title": "Atiśa·菩提道灯论造者",
+      "biography": "Atiśa(阿底峡)。孟加拉人,超戒寺学僧,后应请入藏弘法。著《菩提道灯论》建立三士道次第。噶当派始祖,宗喀巴格鲁派之前身。圆寂于拉萨附近聂塘。",
+      "key_works": [
+        "菩提道灯论"
+      ],
+      "birth_year": 982,
+      "death_year": 1054,
+      "source": "学术研究/藏传佛教史",
+      "verified": 1
+    },
+    {
+      "id": "person_152",
+      "name_zh": "宗喀巴",
+      "name_en": "Tsongkhapa",
+      "name_bo": "tsong kha pa",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "1357–1419",
+      "lineage_branch": "参考线",
+      "title": "Tsongkhapa·格鲁派创始人",
+      "biography": "Tsongkhapa(宗喀巴)。青海人,藏传佛教格鲁派(黄教)创始人。著《菩提道次第广论》系统化阿底峡三士道思想。与华严判教体系(小始终顿圆)有修行阶次上的对比研究价值。",
+      "key_works": [
+        "菩提道次第广论",
+        "密宗道次第广论"
+      ],
+      "birth_year": 1357,
+      "death_year": 1419,
+      "source": "学术研究/藏传佛教史",
+      "verified": 1
+    },
+    {
+      "id": "person_f01",
+      "name_zh": "思元慧三",
+      "name_en": "Huisan",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "近现代",
+      "lineage_branch": "贤首宗高原法系",
+      "title": "高原法系40世·福慧寺开山",
+      "biography": "宛平人，俗姓霍。北京广善寺第11代住持。1948年赴台，创树林福慧寺。民国37年来台时已47岁，随身仅带一尊华严三圣像。为高原法系在台根本道场开创者。",
+      "key_works": [],
+      "birth_year": 1901,
+      "death_year": 1986,
+      "source": "福慧寺官网/华严宗史",
+      "verified": 0
+    },
+    {
+      "id": "person_f02",
+      "name_zh": "体化性果",
+      "name_en": "Tihua",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "当代",
+      "lineage_branch": "贤首宗高原法系",
+      "title": "福慧寺第三代住持",
+      "biography": "钦因长老法嗣。福慧寺第三代住持。继承贤首宗高原法系在台弘法事业。",
+      "key_works": [],
+      "birth_year": 1950,
+      "death_year": null,
+      "source": "福慧寺官网",
+      "verified": 0
+    },
+    {
+      "id": "person_j01",
+      "name_zh": "良弁",
+      "name_en": "Rōben",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "唐/日本",
+      "lineage_branch": "日本华严",
+      "title": "东大寺初代别当",
+      "biography": "审祥弟子。东大寺开山。主持《华严经》讲说。",
+      "key_works": [],
+      "birth_year": 689,
+      "death_year": 774,
+      "source": "日本佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_j02",
+      "name_zh": "实忠",
+      "name_en": "Jitchū",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "日本",
+      "lineage_branch": "日本华严",
+      "title": "东大寺二代",
+      "biography": "良弁弟子。继承东大寺华严教学。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "日本佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_j03",
+      "name_zh": "等定",
+      "name_en": "Tōjō",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "日本",
+      "lineage_branch": "日本华严",
+      "title": "东大寺华严",
+      "biography": "日本华严宗传承者。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "日本佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_j04",
+      "name_zh": "圣宝",
+      "name_en": "Shōbō",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "日本",
+      "lineage_branch": "日本华严",
+      "title": "醍醐寺开山",
+      "biography": "理源大师。兼传真言与华严。",
+      "key_works": [],
+      "birth_year": 832,
+      "death_year": 909,
+      "source": "日本佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_j05",
+      "name_zh": "观贤",
+      "name_en": "Kanken",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "日本",
+      "lineage_branch": "日本华严",
+      "title": "东大寺别当",
+      "biography": "东大寺华严教学之中兴。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "日本佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_j06",
+      "name_zh": "明惠",
+      "name_en": "Myōe",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "日本",
+      "lineage_branch": "日本华严",
+      "title": "日本华严中兴之祖",
+      "biography": "日本镰仓时代华严宗中兴之祖。高山寺开山。复兴东大寺华严教学，兼弘戒律与真言。对日本华严宗有再造之功。",
+      "key_works": [],
+      "birth_year": 1173,
+      "death_year": 1232,
+      "source": "日本佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_j07",
+      "name_zh": "凝然",
+      "name_en": "Gyōnen",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "日本",
+      "lineage_branch": "日本华严",
+      "title": "东大寺学僧",
+      "biography": "日本镰仓时代东大寺学僧。著八宗纲要系统介绍中国八宗要义；著华严法界义镜等。为日本华严教学之集大成者。",
+      "key_works": [
+        "八宗纲要",
+        "华严法界义镜"
+      ],
+      "birth_year": 1240,
+      "death_year": 1321,
+      "source": "日本佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_s01",
+      "name_zh": "魏道儒",
+      "name_en": "Wei Daoru",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "当代",
+      "lineage_branch": "当代学者",
+      "title": "中国社科院学部委员",
+      "biography": "中国社会科学院学部委员。著有《中国华严宗通史》。",
+      "key_works": [
+        "中国华严宗通史"
+      ],
+      "birth_year": null,
+      "death_year": null,
+      "source": "学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_s02",
+      "name_zh": "王颂",
+      "name_en": "Wang Song",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "当代",
+      "lineage_branch": "当代学者",
+      "title": "北京大学教授",
+      "biography": "北京大学哲学系教授。华严思想与佛教史研究。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_s03",
+      "name_zh": "邱高兴",
+      "name_en": "Qiu Gaoxing",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "当代",
+      "lineage_branch": "当代学者",
+      "title": "中国人民大学教授",
+      "biography": "中国人民大学哲学院教授。华严宗与佛教中国化研究。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_s04",
+      "name_zh": "张文良",
+      "name_en": "Zhang Wenliang",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "当代",
+      "lineage_branch": "当代学者",
+      "title": "中国人民大学教授",
+      "biography": "中国人民大学佛教与宗教学理论研究所教授。华严思想研究。",
+      "key_works": [],
+      "birth_year": null,
+      "death_year": null,
+      "source": "学术研究",
+      "verified": 0
+    },
+    {
+      "id": "person_x01",
+      "name_zh": "虚云",
+      "name_en": "Xuyun",
+      "name_sa": null,
+      "type": "patriarch",
+      "dynasty": "清-中华人民共和国",
+      "lineage_branch": "临济宗",
+      "title": "禅宗泰斗·兼祧五宗·近代佛教复兴先驱",
+      "biography": "虚云老和尚(1840-1959)，近代禅宗第一高僧。一生兼祧临济、曹洞、沩仰、法眼、云门五宗法脉。修复大小寺院八十余处，晚年驻锡云居山真如禅寺。对《楞严经》《华严经》用功极深，其开示中屡引华严义理。1959年圆寂，世寿120岁。",
+      "key_works": [],
+      "birth_year": 1840,
+      "death_year": 1959,
+      "source": "《虚云和尚年谱》/禅宗史",
+      "verified": 0
+    },
+    {
+      "id": "person_x02",
+      "name_zh": "净慧",
+      "name_en": "Jinghui",
+      "name_sa": null,
+      "type": "practitioner",
+      "dynasty": "中华人民共和国",
+      "lineage_branch": "临济宗",
+      "title": "生活禅创立者·虚云法嗣·承五宗法脉",
+      "biography": "净慧长老(1933-2013)，虚云老和尚法嗣，中国佛教协会副会长，河北省佛教协会创会会长。1991年提出「生活禅」理念——将修行落实于生活。任《法音》主编20年。创办柏林禅寺、四祖寺、玉泉寺等道场。2013年圆寂。",
+      "key_works": [],
+      "birth_year": 1933,
+      "death_year": 2013,
+      "source": "当代佛教史",
+      "verified": 0
+    },
+    {
+      "id": "person_x03",
+      "name_zh": "南怀瑾",
+      "name_en": "Nan Huaijin",
+      "name_sa": null,
+      "type": "scholar",
+      "dynasty": "中华人民共和国",
+      "lineage_branch": "居士",
+      "title": "国学大师·禅宗大居士·东西文化摆渡者",
+      "biography": "南怀瑾(1918-2012)，浙江温州乐清人。少年习武学文，1943年于峨眉山大坪寺闭关阅藏三年。1949年赴台，着力弘扬儒释道传统文化，讲学六十余年不辍。著作等身（《论语别裁》《老子他说》《禅海蠡测》等60余部），屡引华严经义阐释生命科学。",
+      "key_works": [
+        "论语别裁",
+        "老子他说",
+        "禅海蠡测"
+      ],
+      "birth_year": 1918,
+      "death_year": 2012,
+      "source": "当代传记/学术研究",
+      "verified": 0
     }
   ]
 }
