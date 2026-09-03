@@ -107,3 +107,14 @@ others:
       label: 教行页 · 禅门实迹
     views:
       - chan_traces
+  - id: chan-traces
+    icon: 🌱
+    title: 禅门实迹·全貌
+    title_sub: 全球学界·门内实修·近现代·海云·祖师传承 · 含六祖南宗禅深化 · 中英对读
+    data_source: chan_authentic_traces
+    back:
+      tab: jiaoxing
+      view: chan_traces
+      label: 教行页 · 禅门实迹
+    views:
+      - chan_traces

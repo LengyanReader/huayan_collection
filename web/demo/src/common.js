@@ -800,7 +800,7 @@ function _mdDocEmbed(md) {
 
 // ═══ 独立文章入口条（ARTICLES 由 build.py 内嵌在各 Tab 页）═══
 // view 为当前子视图 id；containerSel 为本视图容器（如 '#gv-topic-zhenwei'）。
-// 命中 articles 登记中的 views 时，在容器顶部插入「独立文章页」入口（独立地址 + 可选页内展开全文）。
+// 命中 articles 登记中的 views 时，在容器顶部插入「独立文章页」入口（独立地址，点击即进入）。
 
 // 由子视图 id 反查独立文章页的（相对本页面）href；无则返回空串。
 // 用于祖师/专题总览卡片、侧栏等「一点击即进入独立页面」的入口。
@@ -829,51 +829,7 @@ function articleChip(view, containerSel){
     links.push('<a href="'+href+'" title="打开完整文章独立地址">'+(a.icon?a.icon+' ':'')+a.title+' ↗</a>');
   });
   chip.innerHTML=links.join(' · ');
-  // 页内展开全文（仅结构化子视图：未内联全文 且 本页已内嵌 ARTICLE_DOCS）
-  var toggles=[];
-  arts.forEach(function(a){
-    if(a.full_inline) return;
-    if(typeof ARTICLE_DOCS==='undefined'||!ARTICLE_DOCS[a.id]) return;
-    toggles.push('<button class="article-toggle" id="article-toggle-'+a.id+'" onclick="toggleArticleInline(\''+a.id+'\')">📖 页内展开全文</button>');
-  });
-  if(toggles.length) chip.innerHTML+='<span style="opacity:0.6">|</span> '+toggles.join(' ');
   el.insertBefore(chip, el.firstChild);
-  // 就绪即插入（隐藏的）内联全文块
-  arts.forEach(function(a){
-    if(a.full_inline) return;
-    if(typeof ARTICLE_DOCS==='undefined'||!ARTICLE_DOCS[a.id]) return;
-    var block=document.createElement('div');
-    block.id='article-inline-'+a.id;
-    block.className='article-inline';
-    block.style.display='none';
-    var embed=(typeof _mdDocEmbed==='function')?_mdDocEmbed(ARTICLE_DOCS[a.id]||''):{html:'',toc:[]};
-    var h='<div class="section" style="border-left:4px solid var(--blue);margin-top:10px">';
-    h+='<h2>📖 '+a.title+' · 全文（页内展开）</h2>';
-    if(embed.toc.length){
-      h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)">';
-      embed.toc.forEach(function(t){
-        var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
-        h+='<div style="'+pad+'"><a href="#'+t.id+'" style="color:'+(t.lv===2?'var(--gold)':'var(--text2)')+';text-decoration:none">'+t.text+'</a></div>';
-      });
-      h+='</div>';
-    }
-    h+=embed.html;
-    h+='<p style="font-size:0.72em;color:var(--text2);margin-top:10px"><a href="'+((a.file.indexOf("../")===0)?a.file:'../'+a.file)+'" style="color:var(--blue)">📄 独立地址打开本文 ›</a></p>';
-    h+='</div>';
-    block.innerHTML=h;
-    el.insertBefore(block, chip.nextSibling);
-  });
-}
-
-// 页内展开/收起全文
-function toggleArticleInline(id){
-  var block=document.getElementById('article-inline-'+id);
-  if(!block) return;
-  var btn=document.getElementById('article-toggle-'+id);
-  var show=(block.style.display==='none');
-  block.style.display=show?'block':'none';
-  if(btn) btn.textContent=show?'📖 页内收起全文':'📖 页内展开全文';
-  if(show) setTimeout(function(){block.scrollIntoView({behavior:'smooth',block:'start'});},60);
 }
 
 // ═══ 独立文章目录入口（sidebar 底部小链接，build.py 生成的目录）═══

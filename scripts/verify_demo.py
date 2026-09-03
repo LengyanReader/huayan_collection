@@ -140,8 +140,10 @@ for obj in sorted(os.listdir(ARTICLES)):
         ('DOCTYPE', html.lstrip().startswith('<!DOCTYPE html>')),
         ('ends </html>', html.strip().endswith('</html>')),
         ('ARTICLE embedded', 'var ARTICLE =' in html),
-        ('doc_md embedded', '"doc_md"' in html),
-        ('renderer inlined', 'function renderArticle' in html),
+        # 独立文章页分两种形式：doc 驱动（内嵌 doc_md + renderArticle）或数据驱动
+        # （内嵌 PRACTICE_DATA 数据源 + 自包含渲染脚本，正文单存于 YAML，如 chan-traces）
+        ('doc_md embedded', '"doc_md"' in html or 'var PRACTICE_DATA' in html),
+        ('renderer inlined', 'function renderArticle' in html or 'function renderChanTraces' in html),
         ('common.css', '../css/common.css' in html),
     ]
     bad = [c[0] for c in checks if not c[1]]
@@ -164,22 +166,6 @@ for t in TABS:
 if chip_errors == 0:
     ok('tabs: all article-chip hrefs resolve')
 
-# ── 页内展开全文：jiaoxing 页须内嵌 5 篇结构化子视图的整篇文档 ──
-with open(os.path.join(DEMO, 'tabs', 'jiaoxing.html'), encoding='utf-8') as f:
-    jx_html = f.read()
-if 'var ARTICLE_DOCS' not in jx_html:
-    fail('jiaoxing: missing ARTICLE_DOCS (inline article expansion)')
-else:
-    need = ['"mimi"', '"faxiang"', '"yikong"', '"tiantai"', '"sanshiqi"']
-    missing = [k for k in need if k not in jx_html]
-    if missing:
-        fail(f'jiaoxing: ARTICLE_DOCS missing keys {missing}')
-    else:
-        ok('jiaoxing: ARTICLE_DOCS embeds all 5 inline docs')
-if 'toggleArticleInline' not in open(os.path.join(DEMO, 'js', 'common.js'), encoding='utf-8').read():
-    fail('common.js missing toggleArticleInline helper')
-else:
-    ok('common.js: toggleArticleInline present')
 # ── gap 侧栏「华严祖师 / 专题研究」→ 直接进入独立文章页 ──
 gap_path = os.path.join(DEMO, 'tabs', 'gap.html')
 with open(gap_path, encoding='utf-8') as f:

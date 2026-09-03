@@ -708,12 +708,7 @@ def build_simple_tab_page(title, tab_id, sidebar_html, render_call, view_id=None
 
     # Build inline data script
     articles_lite = [{'id': a['id'], 'title': a.get('title', a['id']), 'file': a['file'],
-                      'icon': a.get('icon', '📄'), 'views': a.get('views', []),
-                      'full_inline': a.get('full_inline', False)} for a in articles]
-    # 本 Tab 内需支持「页内展开全文」的独立文章（结构化子视图；full_inline 者已在视图内联全文）
-    docs_map = {a['id']: a.get('doc_md', '')
-                for a in articles
-                if a.get('back', {}).get('tab') == tab_id and not a.get('full_inline') and a.get('doc_md')}
+                      'icon': a.get('icon', '📄'), 'views': a.get('views', [])} for a in articles]
     data_script = f'''
 var HAIYUN_RESOURCES = {json.dumps(haiyun_res, ensure_ascii=False)};
 var GRAPH = {json.dumps(graph, ensure_ascii=False)};
@@ -727,7 +722,6 @@ var BIBLIOGRAPHY = {json.dumps(bib, ensure_ascii=False)};
 var BILINGUAL_GLOSSARY = {json.dumps(glossary, ensure_ascii=False)};
 var HEART_ARTICLES = {json.dumps(heart_articles, ensure_ascii=False)};
 var ARTICLES = {json.dumps(articles_lite, ensure_ascii=False)};
-var ARTICLE_DOCS = {json.dumps(docs_map, ensure_ascii=False)};
 var DATA = GRAPH;
 var nodeMap = {{}};
 if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
@@ -818,8 +812,6 @@ def load_standalone_articles():
             'version': art.get('version', ''),
             'meta': art.get('meta', ''),
             'doc': art.get('doc', ''),
-            # gap 专题视图已内联全文 → 不提供「页内展开」开关
-            'full_inline': True,
             'back': {'tab': 'gap', 'view': 'topic-' + art['id'], 'label': '华严文献 · 专题研究'},
             'views': ['topic-' + art['id']],
         })
@@ -838,8 +830,6 @@ def load_standalone_articles():
             'version': '',
             'meta': '',
             'doc': m['review_doc'],
-            # gap 祖师视图已内联综述全文 → 不提供「页内展开」开关
-            'full_inline': True,
             'back': {'tab': 'gap', 'view': 'master-' + m['id'], 'label': '华严文献 · 华严祖师'},
             'views': ['master-' + m['id']],
         })
@@ -857,8 +847,9 @@ def load_standalone_articles():
             'version': o.get('version', ''),
             'meta': o.get('meta', ''),
             'doc': o.get('doc', ''),
-            # 结构化子视图 → 提供「页内展开全文」开关
-            'full_inline': False,
+            # 数据驱动独立页：指向 PRACTICE_DATA 内的数据源键（如 chan_authentic_traces），
+            # 由 build_articles 内嵌完整数据 + 自包含渲染脚本生成，正文单源存于 YAML
+            'data_source': o.get('data_source', ''),
             'back': o.get('back') or {},
             'views': o.get('views', [o['id']]),
         })
@@ -876,9 +867,72 @@ def load_standalone_articles():
     return articles
 
 
+# 数据驱动独立页的渲染脚本：与 practice.js 中 renderChanTraces() 同构的演示层代码
+# （纯展示逻辑，正文一律来自 YAML 的 chan_authentic_traces，实现「单源数据」）。此处为
+# 脚本常量 + 页面内联调用；如需同步更新，仅改此处与 practice.js 两处（二者皆为生成产出源）。
+CHAN_TRACES_RENDER = r'''function renderChanTraces() {
+  var ct = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.chan_authentic_traces) ? PRACTICE_DATA.chan_authentic_traces : null;
+  if (!ct || !ct.sections) return '';
+  function md(s) {
+    return String(s||'')
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
+  }
+  var h = '';
+  ct.sections.forEach(function(sec) {
+    h += '<div class=section id=chan-' + sec.id.replace('chan_','') + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title;
+    if (sec.title_en) h += '<span class="en-line" style="font-size:0.62em;display:block;color:var(--text2);margin-top:2px">' + sec.title_en + '</span>';
+    h += '</h2>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + md(sec.intro) + '</p>';
+    if (sec.intro_en) h += '<p class="en-line" style="white-space:pre-line;font-size:0.78em;color:var(--text2);line-height:1.8"><span style="color:var(--gold);font-weight:600">📖 </span>' + sec.intro_en + '</p>';
+    if (sec.topics) {
+      sec.topics.forEach(function(t, idx) {
+        h += '<div class="wu-door" id=ct-' + sec.id + '-' + idx + ' onclick="this.classList.toggle(\'open\')">';
+        h += '<span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+        if (t.title_en) h += '<div class="en-line" style="font-size:0.62em;color:var(--text2);margin-left:18px;margin-bottom:4px">' + t.title_en + '</div>';
+        h += '<div class=body>';
+        h += '<p style=font-size:0.8em;line-height:1.8;white-space:pre-line>' + md(t.body) + '</p>';
+        if (t.en_body) h += '<div class="en-line" style="white-space:pre-line;font-size:0.82em;color:var(--text2);border-top:1px dashed var(--line);margin-top:6px;padding-top:6px"><span style="color:var(--gold);font-weight:600">📖 </span>' + md(t.en_body) + '</div>';
+        if (t.links) {
+          Object.keys(t.links).forEach(function(k) {
+            h += '<a href="' + t.links[k] + '" target=_blank style="font-size:0.72em;color:var(--blue)">🔗 ' + k + '</a> ';
+          });
+        }
+        if (t.source) h += '<p style=font-size:0.68em;color:var(--text2);margin-top:4px">📎 ' + md(t.source) + '</p>';
+        h += '</div></div>';
+      });
+    }
+    h += '</div>';
+  });
+  if (ct.references) {
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献</summary>';
+    Object.keys(ct.references).forEach(function(k) {
+      h += '<p style=margin:4px 0><b>' + k + '</b></p><ul style=margin:0>';
+      ct.references[k].forEach(function(r) { h += '<li>' + r + '</li>'; });
+      h += '</ul>';
+    });
+    h += '</details>';
+  }
+  h += '<div class=section id=chan-diagrams><h2>📊 禅宗法脉传承</h2>';
+  h += '<table class=v-table style=font-size:0.75em><tr><th>时期</th><th>人物</th><th>贡献</th></tr>';
+  h += '<tr><td>印度</td><td>佛陀二十八代→菩提达摩</td><td>灵山拈花·教外别传</td></tr>';
+  h += '<tr><td>隋</td><td>慧可→僧璨→道信→弘忍</td><td>二祖至五祖·东山法门</td></tr>';
+  h += '<tr><td>唐</td><td>神秀(北宗) 慧能(南宗)</td><td>南北分宗</td></tr>';
+  h += '<tr><td>晚唐五代</td><td>马祖·石头→临济·曹洞·沩仰·云门·法眼</td><td>五家七宗</td></tr>';
+  h += '<tr><td>宋</td><td>大慧宗杲(看话) 宏智正觉(默照)</td><td>两大法门</td></tr>';
+  h += '<tr><td>明清</td><td>永明延寿→云栖袾宏→蕅益智旭</td><td>禅净合流</td></tr>';
+  h += '<tr><td>近现代</td><td>虚云(兼祧五宗) 来果 铃木大拙</td><td>传统坚守·西传</td></tr>';
+  h += '<tr><td>当代</td><td>净慧(生活禅) 圣严 一行禅师</td><td>现代体系化</td></tr>';
+  h += '</table></div>';
+  return h;
+}
+'''
+
 def build_articles(articles):
     """Emit one standalone static page per full article (web/demo/articles/<id>.html)
     plus a catalog index (web/demo/articles/index.html). Returns total bytes written."""
+    practice = load_practice()
     ARTICLES_OUT.mkdir(parents=True, exist_ok=True)
     article_js = read_src('article.js')
     common_css_rel = '../css/common.css'
@@ -886,9 +940,34 @@ def build_articles(articles):
     count = 0
 
     for a in articles:
-        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'back')}
-        data_script = 'var ARTICLE = %s;' % json.dumps(payload, ensure_ascii=False)
+        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'back')}
         title = a.get('title', a['id'])
+        ds = a.get('data_source', '')
+        if ds:
+            # 数据驱动独立页：内嵌完整数据源（正文单存于 YAML）+ 自包含渲染脚本，
+            # 与站内 jiaoxing 的禅门实迹视图同构（演示层代码，非内容）
+            sub = {ds: practice.get(ds)}
+            data_script = ('var PRACTICE_DATA = %s;\n'
+                           'var ARTICLE = %s;'
+                           % (json.dumps(sub, ensure_ascii=False),
+                              json.dumps({'id': a['id'], 'title': title, 'data_source': ds}, ensure_ascii=False)))
+            render_script = (CHAN_TRACES_RENDER
+                             + '\nrenderChanTraces();'
+                             + '\ndocument.getElementById("article-root").innerHTML = renderChanTraces();')
+            scripts = ('<script>\n' + data_script + '\n</script>\n'
+                       '<script>\n' + wrap_script(render_script) + '\n</script>')
+            doc_chars = sum(len(t.get('body') or '')
+                            for s in (sub.get(ds) or {}).get('sections', [])
+                            for t in s.get('topics', []))
+        else:
+            data_script = 'var ARTICLE = %s;' % json.dumps(payload, ensure_ascii=False)
+            scripts = ('<script>\n' + data_script + '\n</script>\n'
+                       '<script>\n' + wrap_script(article_js) + '\n</script>')
+            doc_chars = len(a.get('doc_md', ''))
+        _b = a.get('back') or {}
+        back_tab = _b.get('tab') or 'index'
+        back_label = _b.get('label') or '导航主页'
+        back_href = ('../tabs/%s.html' % back_tab) if back_tab != 'index' else '../index.html'
         html = f'''<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -911,16 +990,17 @@ def build_articles(articles):
 <div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
 ⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
 </div>
+<div style="padding:5px 16px;border-bottom:1px solid var(--line);font-size:0.76em;display:flex;gap:16px;align-items:center;background:rgba(94,139,158,0.06);flex-wrap:wrap">
+  <a href="javascript:history.back()" style="color:var(--blue);text-decoration:none;font-weight:600">← 返回上一步</a>
+  <span style="opacity:0.45">|</span>
+  <a href="{back_href}" style="color:var(--blue);text-decoration:none">返回到：{back_label} ›</a>
+  <span style="margin-left:auto;opacity:0.75;color:var(--text2)"><a href="../index.html" style="color:var(--text2);text-decoration:none">首页 ›</a></span>
+</div>
 </div>
 <main class="content content-article" id="article-root"></main>
 
 <script src="../js/common.js"></script>
-<script>
-{data_script}
-</script>
-<script>
-{wrap_script(article_js)}
-</script>
+{scripts}
 </body>
 </html>'''
         path = ARTICLES_OUT / (a['id'] + '.html')
@@ -929,7 +1009,7 @@ def build_articles(articles):
         size = len(html.encode('utf-8'))
         total += size
         count += 1
-        print(f'OK  {path} ({size:,} bytes | {len(a.get("doc_md",""))} doc chars)')
+        print(f'OK  {path} ({size:,} bytes | {doc_chars:,} doc chars)' + (' | DATA-DRIVEN' if ds else ''))
 
     # ── 目录页 (index) ──
     cards = []
@@ -938,10 +1018,16 @@ def build_articles(articles):
         if a.get('back', {}).get('tab'):
             back_link = ('<a href="../tabs/%s.html" style="color:var(--text2);font-size:0.78em">返回 %s</a>'
                          % (a['back']['tab'], a['back'].get('label', a['back']['tab'])))
+        if a.get('data_source'):
+            meta_desc = (f'数据驱动页 · 全 YAML 渲染 · <code>{a["data_source"]}.yaml</code>'
+                         if a.get('data_source') and not a.get('doc') else
+                         f'全文 {len(a.get("doc_md","")):,} 字 · <code>{a.get("doc","")}</code>')
+        else:
+            meta_desc = f'全文 {len(a.get("doc_md","")):,} 字 · <code>{a.get("doc","")}</code>'
         cards.append(f'''<div style="display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px">
 <div><a href="{a['id'] + '.html'}" style="color:var(--gold);font-weight:700;font-size:1.02em;text-decoration:none">{a.get('icon','📄')} {a.get('title','')} ↗</a></div>
 {"<div style='font-size:0.75em;color:var(--text2)'>" + a.get('title_sub','') + "</div>" if a.get('title_sub') else ''}
-<div style="font-size:0.72em;color:var(--text3,var(--text2))">全文 {len(a.get('doc_md','')):,} 字 · <code>{a.get('doc','')}</code></div>
+<div style="font-size:0.72em;color:var(--text3,var(--text2))">{meta_desc}</div>
 <div style="display:flex;gap:14px;font-size:0.75em"><a href="../tabs/{a['back']['tab']}.html" style="color:var(--blue);text-decoration:none">栏目: {a['back'].get('label','')}</a> {back_link}</div>
 </div>''')
         total += 0

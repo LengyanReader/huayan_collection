@@ -191,7 +191,120 @@ sections:
       History of Chinese Chan (1971) was the earliest critical Chan history
       by a Chinese scholar, refuting Hu Shih's "Shenhui forged the Platform
       Sūtra" thesis; Nukariya Kaiten wrote the first systematic history of
-      Zen in Japan.
+      Zen       in Japan.
+  - title: 神会·「南宗北伐」·《坛经》版本谱系与『神会著坛经』辨
+    title_en: Shenhui, the "Northern Expedition of the South", the Platform Sutra Version Family and the "Shenhui-Authored" Question
+    body: '神会(684-758，一说卒年758，待核)于滑台、洛阳与北宗论辩(《菩提达摩南宗定是非论》为当时实录)，
+      请立慧能为六祖、自为七祖(宗密记贞元十二年[796]敕立)。胡适主「神会是《坛经》作者」，
+      印顺《中国禅宗史》(1971)据敦煌等史料反驳——今学界多认为《坛经》系慧能门下(含神会门人)数代层累编纂〔并存〕。
+      《坛经》版本谱系：敦煌本(S.5475，约830-860，最早遗存)‣惠昕本‣契嵩本‣德异本‣宗宝本(T48n2008最通行)；
+      敦煌本「佛性常清净」与宗宝本「本来无一物」等异文并存，引文须注明版本。
+      此为理解六祖南宗「顿悟」叙事何以层累成形、以及学界何以质疑其单一作者的关键史料课题〔待核〕。'
+    en_body: |
+      Shenhui (684-758; some give only 758 for the death-year, 待核)
+      debated the Northern school at Huàitái and Luoyang (the Settling
+      Right and Wrong in the Southern School of Bodhidharma is the
+      transcript), asking that Huineng be made the Sixth Patriarch and he
+      himself the Seventh (Zongmi records the edict of 796). Hu Shi argued
+      "Shenhui authored the Platform Sūtra"; Yinshun's History of Chinese
+      Chan (1971) refuted it from Dunhuang and other sources, and most
+      scholars now see the Sūtra as a multi-layered compilation by
+      Huineng's line (including Shenhui's heirs) over several generations
+      〔并存〕. The version family: Dunhuang (S.5475, ca. 830-860, the
+      earliest survival) → Huixin → Qisong → Deyi → Zongbao (T48n2008, the
+      most widespread); variant readings such as "Buddha-nature ever
+      pure" (Dunhuang) vs. "not one thing" (Zongbao) coexist, so citations
+      should name the version. This is the key textual problem for
+      understanding how the "sudden" narrative of the Southern School took
+      shape layer by layer, and why scholars question any single
+      authorship 〔待核〕.
+    source: 《菩提达摩南宗定是非论》·敦煌本/宗宝本《坛经》·印顺《中国禅宗史》
+  - title: 汉语学界的禅思想史研究 I——葛兆光(1950-)
+    title_en: Chinese Chan-Intellectual History I — Ge Zhaoguang (b. 1950)
+    body: '复旦大学文史研究院特聘资深教授（曾任院长，2007-2013；曾任北大/清华）。禅宗方向的代表作：
+      《禅宗与中国文化》(上海人民出版社，1986，获首届中国图书奖)，以「禅宗与中国士大夫」的文化心理史切入；
+      《中国禅思想史——从6世纪到9世纪》(北京大学出版社，1995)是其成熟期正史，自承为修正前作「过分情绪化、观念化」的立场；
+      《增订本中国禅思想史——从6世纪到10世纪》(北京大学出版社，2022)。
+      方法兼取历史学与文献学，综合禅门灯录史料、石刻文献、传世文集与敦煌文书，从「历史—思想—文化」三维考述，
+      主张禅思想史须循「历史阐释」循迹清理层累意义、避免以今释古；新版序称中古禅史研究「仍在胡适的延长线上」而对若干结论有所修正。'
+    en_body: |
+      Distinguished chair professor at the Fudan Institute for Advanced
+      Humanistic Studies (founding director 2007-2013; earlier at Peking
+      and Tsinghua). His Chan works: Chan and Chinese Culture (Shanghai
+      People's Publishing, 1986, first China Book Prize), a cultural-
+      psychological history centered on Chan and the scholar-official
+      class; An Intellectual History of Chinese Chan, from the 6th to the
+      9th Century (Peking University Press, 1995), his mature survey,
+      written self-confessedly to correct the "over-emotional,
+      ideologized" stance of the earlier book; and the enlarged edition,
+      An Intellectual History of Chinese Chan, from the 6th to the 10th
+      Century (Peking University Press, 2022). His method joins history
+      and philology, drawing on lamp-record sources, stone inscriptions,
+      transmitted anthologies and Dunhuang manuscripts across three
+      dimensions (history, thought, culture), arguing that Chan
+      intellectual history should trace the layered, accumulated meaning
+      "historically" without reading the present into the past; the new
+      preface holds that medieval Chan-historical studies still stand "in
+      the long shadow of Hu Shi" while revising several of his
+      conclusions.
+    source: 复旦文史研究院官网·北大古籍委学人页·《禅宗与中国文化》(上海人民1986)
+  - title: 汉语学界/跨语际的禅史书写 II——顾毓琇(1902-2002)·《禅史》
+    title_en: Cross-Lingual Chan Historiography II — Yu-Hsiu Ku (1902-2002) and His "History of Zen"
+    body: '顾毓琇（字一樵，江苏无锡人，中央研究院院士），电机工程学家、诗人剧作家，以业余五十年治禅史。
+      中文著有《禅宗师承记》《日本禅宗师承记》（台北真善美出版社）；
+      英文巨著《禅史》(History of Zen) 1979年在美国出版，震动国际佛学界；中译《禅史》2009年上海古籍出版社发行。
+      其《禅史》立足世界文化大语境，叙中国禅宗与日本禅宗源流；《中国禅宗史》(英汉对照，外语教学与研究出版社)即采《禅史》中国部分。
+      其书写以「宗师承记(承传谱系)」溯传授谱系见长，属非专业学者而以严谨史料与广博中西结合著称的一系。'
+    en_body: |
+      Yu-Hsiu Ku (zi Yiqiao; a native of Wuxi, Jiangsu; Academician of
+      Academia Sinica), an electrical-engineering scientist, poet and
+      playwright, pursued Chan history as a serious amateur over half a
+      century. He wrote the Chinese Genealogies of Chan Patriarchs and
+      Genealogies of Japanese Zen Patriarchs (Zhen Shan Mei Press,
+      Taipei); his English magnum opus, History of Zen (1979, published
+      in the United States), impressed the international Buddhist-studies
+      field; a Chinese translation (The History of Zen) appeared from
+      Shanghai Classics in 2009. The History of Zen frames the course of
+      Chinese and Japanese Chan within a world-cultural context, setting
+      the transmission into a panorama of great figures; the bilingual
+      History of Zen in China (Foreign Language Teaching and Research
+      Press) draws on its China portion. His writing excels at tracing
+      master-disciple transmission ("records of Chan lineal succession"),
+      a scholarly yet rigorous, Sino-Western-integrated line summed up by
+      a non-specialist devotion to philology.
+    source: 东南大学档案馆·顾毓琇小传·维基百科/百度百科《禅史》条目·上海古籍2009中译本
+  - title: 汉语学界禅宗史研究谱系——胡适以降诸家
+    title_en: The Panorama of Chinese-Language Chan Historiography from Hu Shi Onwards
+    body: '〔一〕胡适(1891-1962)：以敦煌《坛经》《神会录》等新史料重勘禅史，倡「神会北伐·南宗顿悟之建构」说，
+      开现代禅史研究先河（其说因敦煌本坛经研究而剧烈争议，见前条）。
+      〔二〕吕澂《中国佛学源流略讲》(中华书局1979)：以佛学源流提纲挈领禅门思想。
+      〔三〕印顺《中国禅宗史》(1971)：最早由中国人撰写的批判性禅史，反驳胡适〈神会造《坛经》〉说。
+      〔四〕90年代系统史著：洪修平《禅宗思想的形成与发展》(高雄佛光，1991)、
+      潘桂明《中国禅宗思想历程》(今日中国出版社，1992)、顾伟康《禅宗——文化交融与历史选择》(知识出版社，1990)，
+      皆以思想史/文化史路径综论禅宗。
+      此谱系与柳田圣山、忽滑谷快天诸日系及欧美McRae学派并观，可见汉语学界自文献考据向思想史文化史转进的全景〔并存：各家方法立场各异，非单一谱系〕。'
+    en_body: |
+      (1) Hu Shi (1891-1962): reopening Chan history with new Dunhuang
+      materials (the Platform Sūtra, the Shenhui record), he advanced the
+      thesis of "Shenhui's northern campaign" and the construction of the
+      Southern sudden teaching that launched modern Chan-historical
+      study; his view remains sharply contested (see the previous
+      entry). (2) Lü Cheng's A Brief Account of the Sources of Chinese
+      Buddhist Thought (Zhonghua, 1979): an intellectual-infrastructure
+      overview of Chan doctrine. (3) Yinshun's History of Chinese Chan
+      (1971): the earliest critical Chan history by a Chinese scholar,
+      refuting Hu Shi's "Shenhui authored the Platform Sūtra" (see above).
+      (4) Systematic Chinese monographs of the 1990s: Hong Xiuping, The
+      Formation and Development of Chan Thought (Gaoxiong Foguang, 1991);
+      Pan Guiming, The Course of Chinese Chan Thought (Today's China,
+      1992); and Gu Weikang, Chan: Cultural Confluence and Historical
+      Choice (Knowledge Press, 1990) — all offering intellectual- and
+      cultural-historical syntheses. Read alongside the Japanese line
+      (Yanagida, Nukariya) and the Euro-American McRae school, this
+      landscape reveals Chinese-language scholarship moving from textual
+      criticism toward intellectual and cultural history 〔并存: divergent
+      methods and stances, not a single school〕.
+    source: 葛兆光《中国禅思想史》书目·各书出版信息
 - id: chan_practice
   title: 佛门内部·实修视角
   title_en: Inside the Buddhist Community — The Practical Cultivation View
@@ -557,6 +670,47 @@ sections:
       "Eastern wisdom" hermeneutics long nourished Chan doctrinal study.
       Haiyun Jimeng's own "doctrine belongs to Huayan, contemplation to the
       heart-method of Chan" is this tradition's contemporary continuation.
+  - title: 六祖三无法门·「于念而无念」的实修要领
+    title_en: The Sixth Patriarch's Three Non-Gates — Practising "Thought within Non-Thought"
+    body: '以《金刚经》「应无所住而生其心」为纲，开「无念·无相·无住」三无法门。精义在「应用而无染」而非「断念」——
+      「于念而不念」「于相而离相」，于日用万境不著不缚、而心念仍能起用。
+      与一味「空心静坐」的枯禅判然有别：《坛经·坐禅品》明言批判「空心静坐，百物不思」为著法缚。
+      六祖一系即因此把禅法重心从「坐」移到日常当下的「心行」，与「一行三昧」的关系宗门各家异说并存〔并存/待考〕。'
+    en_body: |
+      Taking "give rise to a mind that abides nowhere" as the key, Huineng
+      opened the three gates of non-thought, non-marks, and no-abiding.
+      Their essence is "applying without defilement" rather than "cutting
+      off thought" — "thought yet non-thought," "marks yet free," unbound
+      amid daily objects yet able to function. This is plainly unlike the
+      dead-chan of "empty-mind, still-sitting": the sitting-chan chapter
+      explicitly criticizes "empty-mind, still-sitting, thinking of
+      nothing" as bondage. The Southern line thereby shifted the weight of
+      practice from "sitting" to immediate "mind-conduct" in daily life;
+      its relation to "one-act samādhi" is read variously, coexisting
+      readings, pending study 〔并存/待考〕.
+    source: 宗宝本《坛经·定慧品/坐禅品》
+  - title: 定慧等持·「道由心悟岂在坐」的坐禅观重省
+    title_en: Concentration-Wisdom Equal and the Reconsideration of "Realised by Mind, Not in Sitting"
+    body: '慧能主「定慧等持」——定即慧体、慧即定用，如灯与光，由此取消了坐禅的外在形式要求。
+      《坛经·坐禅品》以「外离相为禅，内不乱为定」把禅定从形体移到心性；
+      「道由心悟岂在坐」一系话头系后世禅门转述凝练，原文出处待核〔待核〕。
+      「一行三昧」：《坛经·定慧品》「于一切处行住坐卧，常行一直心」「但行直心，于一切法勿有执著」——
+      即日用当下无著，非取一境静坐。此南宗「心性本位」的定慧观，正是后世「即心即佛」与看话/默照转出的源头之一。'
+    en_body: |
+      Huineng taught "concentration and wisdom equal" — concentration is
+      wisdom's substance, wisdom its function, like lamp and light —
+      dissolving the outward formal requirement of sitting. The sitting
+      chapter redefines chan and samādhi as "free of marks without,
+      untroubled within," moving them from posture into the mind-nature
+      (the "realised by mind, not in sitting" phrasing is a later Chan
+      distillation; its exact locus is 〔待核〕). On "one-act samādhi" the
+      concentration-wisdom chapter says "in all places, walking, dwelling,
+      sitting, lying, ever practise the one straight mind" — the immediate
+      non-attachment of daily life, not taking one object in stillness.
+      This mind-nature-grounded view of concentration-wisdom is one source
+      from which the later "mind-itself-is-Buddha" and the Huatou/Silent
+      Illumination turnings grew.
+    source: 宗宝本《坛经·定慧品/坐禅品》
 - id: chan_modern
   title: 近现代禅门发展
   title_en: The Modern Development of the Chan Lineage
@@ -1210,6 +1364,63 @@ sections:
       severed," and yet the occasion of scholarship's debate over the
       "authenticity" of such constructed lineages.
     source: 综合灯录·虚云年谱·McRae对法脉建构性的研究
+  - title: 六祖慧能(638-713)·人物小传与「南顿北渐」再省思
+    title_en: Huineng (638-713) — A Biographical Sketch and the "Sudden-Gradual" Frame Reconsidered
+    body: '俗姓卢，唐新州(今广东新兴)人，一说范阳人而迁岭南〔并存：范阳说见于较晚的宗宝本〕。幼贫，卖柴为生。
+      据《坛经》传统记述：闻诵《金刚经》「应无所住而生其心」有省，北行黄梅参五祖弘忍(601-674)，
+      后弘法岭南曹溪宝林寺(今韶关南华寺)数十年，世称「曹溪大师」。示寂先天二年(713)，元和中追谥「大鉴禅师」。
+      传统称其「不识字」而顿悟——学界多视为「不落文字」的宗门修辞而非严格传记事实〔待核〕。
+      南北分宗：传统以「南宗慧能·顿、北宗神秀(606?-706，生年诸说待核)·渐」二分；
+      敦煌文献研究(柳田圣山等)已使此框架松动——北宗实为盛唐两京主流禅法，神秀门下「拂尘看净」非简单之「渐」，
+      南宗之「顿」亦非全无次第。故「顿/渐」更多是神会一系为确立法统所作的判摄，而非对两系实修的穷尽描述〔并存：宗门传统二分法与批判史观并行〕。'
+    en_body: |
+      Lay surname Lu; a native of Xinzhou, Tang (present-day Xinxing,
+      Guangdong), with a coexisting tradition tracing the family to
+      Fanyang before the move south (the Fanyang account appears in the
+      later Zongbao edition). Impoverished in youth, he sold firewood.
+      Per the traditional Platform Sūtra narrative: hearing the Diamond
+      Sūtra's "give rise to a mind that abides nowhere" moved him, he
+      went north to Mount Huangmei to seek the Fifth Patriarch Hongren
+      (601-674), then taught for decades at Baolin Monastery at Caoxi
+      (present-day Nanhua Temple, Shaoguan), and is known as "the Caoxi
+      master." He died in 713 and was posthumously honored as "Dajian."
+      The traditional claim that he was "illiterate" yet awakened is
+      widely read by scholars as a sectarian "beyond-words" trope rather
+      than strict biography 〔待核〕. On the North-South split: tradition
+      polarizes the Southern Huineng (sudden) against the Northern
+      Shenxiu (606?-706; the birth-year is disputed) gradual; Dunhuang
+      studies (Yanagida Seizan and others) have loosened this frame — the
+      Northern lineage was in fact the mainstream Chan of the High Tang
+      capitals, its "wiping the mirror, contemplating purity" was no
+      simple gradualism, and the Southern "sudden" was not without graded
+      structure. The sudden/gradual contrast served less as an exhaustive
+      description of two methods than as a doctrinal frame asserted by
+      the Shenhui line for legitimacy 〔并存: the traditional polarity and
+      the critical scholarly account coexist〕.
+    source: 宗宝本《坛经》·敦煌文献研究(柳田圣山等)·印顺《中国禅宗史》
+  - title: 门人分流·对后世宗门与禅净合流的辐射
+    title_en: The Parting of His Disciples and Radiations into Later Chan and the Chan-Pure Land Confluence
+    body: '传统以「南岳怀让·青原行思·荷泽神会」为慧能嗣法三支：怀让下出马祖洪州宗，
+      行思下出石头、再出曹洞/云门/法眼，神会别立荷泽一系(五代后渐隐)——此为宗门内部脉络〔并存〕。
+      「佛法在世间，不离世间觉」的反圣化、日用化取向，经马祖「平常心」、百丈农禅成汉传主流气质；
+      宋明看话/默照虽皆托南宗法统，实为南顿框架内双轨分灯；明末四大师更以「禅净合流」摄之归净。
+      可见「顿悟」名目在历史中常被后人依其需要重新定义〔并存：宗门自我理解与学术再描述并行〕。'
+    en_body: |
+      Tradition makes Nanyue Huairang, Qingyuan Xingsi, and Heze Shenhui
+      the three main heirs: from Huairang came Mazu and the Hongzhou
+      school, from Xingsi came Shitou and then the Caodong, Yunmen, and
+      Fayan houses, while Shenhui founded the Heze line (fading after the
+      Five Dynasties) — an internal-sectarian account 〔并存〕. The
+      anti-sacralising, everyday orientation ("the Buddha-dharma is in
+      the world") became the mainstream Chinese-Chan temperament through
+      Mazu's "ordinary mind" and Baizhang's farm-chan; the Song-Ming
+      kanhua and silent illumination, though both claiming the Southern
+      lineage, are a dual-track parting within the sudden frame; the four
+      late-Ming masters drew all toward Pure Land under the "Chan-Pure
+      Land confluence." The "sudden" label has thus been repeatedly
+      redefined rather than fixed 〔并存: sectarian self-understanding and
+      scholarly re-description coexist〕.
+    source: 《景德传灯录》·马祖/百丈语录·明末四大师净土著述
 references:
   academic:
   - 'Heinrich Dumoulin, Zen Buddhism: A History, Vol.1 India and China (Macmillan,
