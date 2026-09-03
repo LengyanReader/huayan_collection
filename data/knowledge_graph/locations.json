@@ -1,8 +1,241 @@
 {
-  "$schema": "../schemas/location.schema.json",
-  "version": "0.1.0",
-  "last_updated": "2024-07-24",
+  "version": "0.2.0",
   "locations": [
+    {
+      "id": "l_changan_t",
+      "name_zh": "长安逍遥园",
+      "current_name": null,
+      "lat": 34.26,
+      "lng": 108.92,
+      "type": "temple",
+      "dynasty": "后秦",
+      "city": null,
+      "province": null,
+      "description": "鸠摩罗什译场所在。后秦姚兴为罗什建,八百沙门参与译经。",
+      "related_persons": [
+        "person_103"
+      ],
+      "source": "《高僧传》卷二《鸠摩罗什传》（罗什于长安逍遥园草堂寺译经，CBETA T2059）"
+    },
+    {
+      "id": "l_changan_x",
+      "name_zh": "长安大慈恩寺·弘福寺",
+      "current_name": null,
+      "lat": 34.22,
+      "lng": 108.96,
+      "type": "temple",
+      "dynasty": "唐",
+      "city": null,
+      "province": null,
+      "description": "玄奘归国后译场所在。大慈恩寺大雁塔为贮藏梵本所建。",
+      "related_persons": [
+        "person_111"
+      ],
+      "source": "《大慈恩寺三藏法师传》（玄奘译经处：先弘福寺、后大慈恩寺，CBETA T2053）"
+    },
+    {
+      "id": "l_f",
+      "name_zh": "台北福慧寺",
+      "current_name": "新北市树林福慧寺",
+      "lat": 24.98,
+      "lng": 121.42,
+      "type": "temple",
+      "dynasty": "当代",
+      "city": "新北市",
+      "province": "台湾省",
+      "description": "钦因长老住持。2010年成观法师于此受华严兼慈恩法脉。",
+      "related_persons": [
+        "person_041",
+        "person_043",
+        "person_126"
+      ],
+      "source": "树林福慧寺（台北县树林/今新北市树林区三兴路77号）：慧三长老1955年开山创建，为贤首宗兼慈恩宗祖庭与唐密秽迹金刚法根本道场（福慧寺官网 fuhuisih.org）；现住持体化法师（2013年10月接任）。大华严寺官网 huayenworld.org〈师公-钦因老和上略传〉载：钦因长老2008年9月传贤首兼慈恩宗法脉予海云继梦，为贤首宗兼慈恩宗第四十二世祖位并创大华严寺法系；成观法师于2010年4月24日在此受贤首兼慈恩宗第四十二世法脉（见成观法师《华严法门集要》序·abtemple.org）。"
+    },
+    {
+      "id": "l_ganden",
+      "name_zh": "拉萨·甘丹寺",
+      "current_name": null,
+      "lat": 29.75,
+      "lng": 91.47,
+      "type": "temple",
+      "dynasty": "明",
+      "city": null,
+      "province": null,
+      "description": "宗喀巴1409年创建。格鲁派根本道场。",
+      "related_persons": [
+        "person_152"
+      ],
+      "source": "《宗喀巴：创建格鲁派》（谢志斌·西北大学，中国藏学研究中心/中国民族报 2022）：宗喀巴1409年建格鲁派第一寺"
+    },
+    {
+      "id": "l_guangzhou",
+      "name_zh": "广州",
+      "current_name": null,
+      "lat": 23.13,
+      "lng": 113.26,
+      "type": "region",
+      "dynasty": "历代",
+      "city": null,
+      "province": null,
+      "description": "海上丝绸之路起点。义净671年从此出发赴印度。",
+      "related_persons": [
+        "person_112"
+      ],
+      "source": "近现代佛教史料（六祖慧能·禅宗南传地域泛称）"
+    },
+    {
+      "id": "l_h",
+      "name_zh": "南投大华严寺",
+      "current_name": null,
+      "lat": 23.92,
+      "lng": 120.88,
+      "type": "temple",
+      "dynasty": "当代",
+      "city": null,
+      "province": null,
+      "description": "海云继梦导师。普贤乘根本道场。",
+      "related_persons": [
+        "person_042"
+      ],
+      "source": "大华严寺官网（南投鹿谷，海云继梦创建）huayen.world"
+    },
+    {
+      "id": "l_kolkata",
+      "name_zh": "加尔各答·罗摩克里希纳传道会",
+      "current_name": null,
+      "lat": 22.57,
+      "lng": 88.36,
+      "type": "temple",
+      "dynasty": "近现代",
+      "city": null,
+      "province": null,
+      "description": "辨喜于1897年创立。全球吠檀多传播中心。",
+      "related_persons": [
+        "person_140",
+        "person_141"
+      ],
+      "source": "罗摩克里希纳传道会/贝卢尔寺官网 belurmath.org（辨喜1897年创立）"
+    },
+    {
+      "id": "l_kucha",
+      "name_zh": "龟兹",
+      "current_name": null,
+      "lat": 41.7,
+      "lng": 82.9,
+      "type": "region",
+      "dynasty": "古西域",
+      "city": null,
+      "province": null,
+      "description": "鸠摩罗什故乡。西域佛教重镇,丝绸之路北道枢纽。",
+      "related_persons": [
+        "person_103"
+      ],
+      "source": "《大唐西域记》卷一·屈支国（龟兹，CBETA T2087）"
+    },
+    {
+      "id": "l_nalanda",
+      "name_zh": "那烂陀寺",
+      "current_name": null,
+      "lat": 25.14,
+      "lng": 85.44,
+      "type": "temple",
+      "dynasty": "古印度",
+      "city": null,
+      "province": null,
+      "description": "古印度佛教最高学府。玄奘、义净等求法僧曾于此留学。无著、世亲于此弘传瑜伽行派。",
+      "related_persons": [
+        "person_000b",
+        "person_102",
+        "person_110",
+        "person_111",
+        "person_112"
+      ],
+      "source": "《大唐西域记》卷九·摩揭陀国（那烂陀僧伽蓝，CBETA T2087）"
+    },
+    {
+      "id": "l_nalanda2",
+      "name_zh": "那烂陀寺(参考)",
+      "current_name": null,
+      "lat": 25.14,
+      "lng": 85.44,
+      "type": "temple",
+      "dynasty": "古印度",
+      "city": null,
+      "province": null,
+      "description": "寂天与阿底峡曾驻锡于此。7-12世纪印度佛教最高学府。",
+      "related_persons": [
+        "person_150",
+        "person_151"
+      ],
+      "source": "《大唐西域记》卷九·摩揭陀国（那烂陀僧伽蓝，CBETA T2087）"
+    },
+    {
+      "id": "l_nara",
+      "name_zh": "奈良东大寺",
+      "current_name": null,
+      "lat": 34.69,
+      "lng": 135.84,
+      "type": "temple",
+      "dynasty": "唐/日本",
+      "city": null,
+      "province": null,
+      "description": "日本华严宗本山。审祥首次讲说《华严经》之处。",
+      "related_persons": [
+        "person_050",
+        "person_j01",
+        "person_j02"
+      ],
+      "source": "东大寺官网 www.todaiji.or.jp（圣武天皇天平年间敕建，卢舍那大佛）"
+    },
+    {
+      "id": "l_pondi",
+      "name_zh": "印度本地治里·Aurobindo Ashram",
+      "current_name": null,
+      "lat": 11.94,
+      "lng": 79.83,
+      "type": "temple",
+      "dynasty": "当代",
+      "city": null,
+      "province": null,
+      "description": "奥罗宾多与The Mother创立道场。整体瑜伽发源地。",
+      "related_persons": [
+        "person_142"
+      ],
+      "source": "Sri Aurobindo Ashram 官网 sriaurobindoashram.org（1926年奥罗宾多与母亲创立）"
+    },
+    {
+      "id": "l_ramana",
+      "name_zh": "印度圣山 Arunachala (Tiruvannamalai)",
+      "current_name": null,
+      "lat": 12.23,
+      "lng": 79.07,
+      "type": "mountain",
+      "dynasty": "当代",
+      "city": null,
+      "province": null,
+      "description": "拉玛那·马哈希终生隐修之处。每年吸引全球数千求道者朝圣。",
+      "related_persons": [
+        "person_143"
+      ],
+      "source": "Sri Ramanasramam 官网（阿鲁那查拉圣山·真如圣山）"
+    },
+    {
+      "id": "l_yoga",
+      "name_zh": "印度阿弥塔巴·LIFE Mission道场",
+      "current_name": null,
+      "lat": 23.02,
+      "lng": 72.57,
+      "type": "temple",
+      "dynasty": "当代",
+      "city": null,
+      "province": "古吉拉特邦",
+      "description": "胜师子王菩萨道场。海云继梦2008年12月于此接受大乘瑜伽行法灌顶传法。",
+      "related_persons": [
+        "person_042",
+        "person_134"
+      ],
+      "source": "印度 LIFE Mission（The Lakulish International Fellowship's Enlightenment Mission，拉克鲁希国际联谊会·灵性成就使命团）：1993年由大瑜伽士胜师子王菩萨（Swami Rajarshi Muni，尊者惹查西牟尼）创立，注册于印度古吉拉特邦（Gujarat），总部 Rajrajeshwadham（官网 lifemission.org.in / lifemission.co.in）。属印度瑜伽/印度教拉克鲁希（Lakulish）灵性传承机构，非正统佛教僧团道场。大华严寺官网〈源流与传承〉载：胜师子王菩萨2008年力邀海云继梦亲至印度，于年底传法中领受大乘瑜伽行法灌顶与传承；YogaZen〈瑜伽与禅沿革〉载海云和上2008年远赴印度 LIFE Mission 求法、2018年再度亲赴。"
+    },
     {
       "id": "loc_001",
       "name_zh": "大慈恩寺",
@@ -14,7 +247,9 @@
       "city": "长安（今西安）",
       "province": "陕西省",
       "description": "唐代皇家寺院。法藏曾于此参与译场并讲说华严。",
-      "related_persons": ["person_003"],
+      "related_persons": [
+        "person_003"
+      ],
       "source": "《宋高僧传》"
     },
     {
@@ -28,7 +263,12 @@
       "city": "长安（今西安）南郊",
       "province": "陕西省",
       "description": "华严宗重要修行圣地。杜顺、智俨、法藏等均曾于此修行或讲法。至相寺位于此山。",
-      "related_persons": ["person_001", "person_002", "person_003"],
+      "related_persons": [
+        "person_001",
+        "person_002",
+        "person_003",
+        "person_103"
+      ],
       "source": "《续高僧传》《佛祖统纪》"
     },
     {
@@ -42,7 +282,9 @@
       "city": "忻州市五台县",
       "province": "山西省",
       "description": "文殊菩萨道场，华严经中明指为清凉山。澄观（清凉国师）曾于此著《华严经疏》，'清凉'之号由此而来。华严宗与五台山渊源极深。唐代大华严寺为山中核心华严道场。",
-      "related_persons": ["person_004"],
+      "related_persons": [
+        "person_004"
+      ],
       "source": "《华严经·诸菩萨住处品》"
     },
     {
@@ -56,7 +298,9 @@
       "city": "长安（今西安）西南",
       "province": "陕西省",
       "description": "宗密晚年住此，世称圭峰大师。",
-      "related_persons": ["person_005"],
+      "related_persons": [
+        "person_005"
+      ],
       "source": "《宋高僧传》卷六"
     },
     {
@@ -70,7 +314,9 @@
       "city": "太原市",
       "province": "山西省",
       "description": "李通玄于此处著《新华严经论》。",
-      "related_persons": ["person_009"],
+      "related_persons": [
+        "person_009"
+      ],
       "source": "《宋高僧传》卷二十二"
     },
     {
@@ -84,7 +330,10 @@
       "city": "杭州市",
       "province": "浙江省",
       "description": "宋代华严中兴道场。净源法师住此弘传华严，高丽义天入宋求法于此。义天归国后送金书《华严经》三种译本供养此寺。世称'华严第一道场'。",
-      "related_persons": ["person_010", "person_011"],
+      "related_persons": [
+        "person_010",
+        "person_011"
+      ],
       "source": "《佛祖统纪》"
     },
     {
@@ -98,7 +347,11 @@
       "city": "洛阳",
       "province": "河南省",
       "description": "实叉难陀于此处主持《八十华严》译场。法藏参与证义。",
-      "related_persons": ["person_003", "person_007"],
+      "related_persons": [
+        "person_003",
+        "person_007",
+        "person_103"
+      ],
       "source": "《宋高僧传》卷二"
     },
     {
@@ -112,7 +365,11 @@
       "city": "台北市",
       "province": "台湾省",
       "description": "现代华严宗弘传中心。南亭法师创立，成一法师、贤度法师相继住持。出版华严典籍、主办国际华严学术研讨。",
-      "related_persons": ["person_015", "person_016", "person_017"],
+      "related_persons": [
+        "person_015",
+        "person_016",
+        "person_017"
+      ],
       "source": "华严莲社资料"
     },
     {
@@ -126,7 +383,9 @@
       "city": "北京市",
       "province": "北京市",
       "description": "近代华严弘扬重要道场。慈舟法师曾长期于此讲说华严。",
-      "related_persons": ["person_014"],
+      "related_persons": [
+        "person_014"
+      ],
       "source": "近现代佛教史料"
     },
     {
@@ -140,7 +399,9 @@
       "city": "常熟市",
       "province": "江苏省",
       "description": "月霞长老于此处创立华严大学（1914年），开启近现代华严教育之先河。",
-      "related_persons": ["person_012"],
+      "related_persons": [
+        "person_012"
+      ],
       "source": "近现代佛教史料"
     },
     {
@@ -150,7 +411,7 @@
       "lat": 25.1355,
       "lng": 85.4432,
       "type": "temple",
-      "dynasty": null,
+      "dynasty": "",
       "city": "比哈尔邦",
       "province": null,
       "description": "古印度佛教最高学府。《华严经》中善财童子参访的南方诸城中，多参考此地的学术格局。",
@@ -168,7 +429,9 @@
       "city": "和田",
       "province": "新疆维吾尔自治区",
       "description": "古于阗国。藏译《华严经》译自于阗原本。实叉难陀故乡。中亚佛教枢纽，华严经流布关键节点。",
-      "related_persons": ["person_007"],
+      "related_persons": [
+        "person_007"
+      ],
       "source": "学术研究（《华严经》流传史）"
     },
     {
@@ -176,7 +439,7 @@
       "name_zh": "敦煌",
       "current_name": "敦煌莫高窟",
       "lat": 40.04,
-      "lng": 94.80,
+      "lng": 94.8,
       "type": "region",
       "dynasty": "唐",
       "city": "敦煌市",
@@ -192,7 +455,7 @@
       "lat": 27.71,
       "lng": 85.32,
       "type": "region",
-      "dynasty": null,
+      "dynasty": "",
       "city": "加德满都",
       "province": null,
       "description": "现存华严经梵文写本的主要发现地。尼泊尔梵文残卷为华严经源流研究提供了第一手文献。",
@@ -224,7 +487,9 @@
       "city": "台北市",
       "province": "文山区",
       "description": "成观法师1991年创立之道场。以禅密为主体兼修他宗,定期举办楞严法会。附设毘卢出版社及新逍遥园译经院(桃园杨梅)。",
-      "related_persons": ["person_126"],
+      "related_persons": [
+        "person_126"
+      ],
       "source": "大毘卢寺官网"
     }
   ]

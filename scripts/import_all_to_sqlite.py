@@ -197,7 +197,7 @@ def import_locations(conn, graph, locations_data):
         rp_all = sorted(set(rp_gr + rp_lo))
         related_persons = j(rp_all) if rp_all else None
 
-        source_text = lo.get('source')
+        source_text = lo.get('source') or gr.get('source')
 
         conn.execute("""
             INSERT OR REPLACE INTO locations

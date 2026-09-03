@@ -446,11 +446,15 @@ function renderAvatamsakaStudies() {
   avs.sections.forEach(function(sec) {
     h += '<div class=section id=avs-' + sec.id + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.title_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);font-style:italic;margin:-4px 0 6px">' + sec.title_en + '</div>';
     if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _mdToHTML(sec.intro) + '</p>';
+    if (sec.intro_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _mdToHTML(sec.intro_en) + '</div>';
     if (sec.topics) {
       sec.topics.forEach(function(t) {
         h += '<div class=stage-box><b>' + t.title + '</b>';
+        if (t.title_en) h += ' <span class="en-line" style=color:var(--text2);font-weight:400;font-style:italic>(' + t.title_en + ')</span>';
         h += '<p style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _mdToHTML(t.body) + '</p>';
+        if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _mdToHTML(t.en_body) + '</div>';
         if (t.sources) {
           h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📎 ';
           t.sources.forEach(function(s,i) { h += (i>0?'<br>':'') + s; });
@@ -483,11 +487,15 @@ function renderPanjiaoHupan() {
   pj.sections.forEach(function(sec) {
     h += '<div class=section id=pj-' + sec.id + '>';
     h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
+    if (sec.title_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);font-style:italic;margin:-4px 0 6px">' + sec.title_en + '</div>';
     if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _mdToHTML(sec.intro) + '</p>';
+    if (sec.intro_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _mdToHTML(sec.intro_en) + '</div>';
     if (sec.topics) {
       sec.topics.forEach(function(t) {
         h += '<div class=stage-box><b>' + t.title + '</b>';
+        if (t.title_en) h += ' <span class="en-line" style=color:var(--text2);font-weight:400;font-style:italic>(' + t.title_en + ')</span>';
         h += '<p style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _mdToHTML(t.body) + '</p>';
+        if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _mdToHTML(t.en_body) + '</div>';
         if (t.source) {
           h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📎 出处: ' + t.source + '</p>';
         }
@@ -834,7 +842,7 @@ function renderCatalog(){
   tc.chapters.forEach(function(ch){
     h += '<tr>';
     h += '<td style=text-align:center>' + ch.order_num + '</td>';
-    h += '<td style=font-weight:600>' + ch.title_zh + '</td>';
+    h += '<td style=font-weight:600>' + ch.title_zh + (ch.title_en ? '<br><span class="en-line" style="font-size:0.72em;color:var(--text2)">' + ch.title_en + '</span>' : '') + '</td>';
     h += '<td style=text-align:center>' + (ch.in_60huayan ? '✅' : '—') + '</td>';
     h += '<td style=text-align:center>' + (ch.in_80huayan ? '✅' : '—') + '</td>';
     h += '<td style=text-align:center>' + (ch.in_40huayan ? '✅' : '—') + '</td>';

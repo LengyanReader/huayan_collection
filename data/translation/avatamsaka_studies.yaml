@@ -6,15 +6,25 @@
 sections:
   - id: origins
     title: 起源与形成
+    title_en: Origin and Formation
     icon: 🌏
     intro: |
       《华严经》(Skt. Buddhāvataṃsaka)并非一次性成书。学术界公认:
       原本独立的华严类小品经典(如《十地经》《入法界品》《兜沙经》等),
       约在公元2-4世纪间, 从南印度→北印度→中亚(西域)流传过程中不断汇集增补,
       最终在**于阗(今新疆和田)**编纂集成为大本《华严经》。
+    intro_en: |
+      The Avataṃsaka Sūtra (Skt. Buddhāvataṃsaka) was not composed in a single instance.
+      Scholars generally agree that originally independent shorter scriptures of the
+      Avataṃsaka class (such as the *Daśabhūmika Sūtra*, the *Gaṇḍavyūha*, and the
+      *Tuṣa Sūtra*) were gathered and expanded over roughly the 2nd–4th centuries CE
+      as they circulated from South India to North India and then to Central Asia
+      (the Western Regions), and were finally compiled into the great *Avataṃsaka
+      Sūtra* at **Khotan (modern Hotan, Xinjiang)**.
 
     topics:
       - title: 于阗编纂说——学术共识
+        title_en: The Khotan Compilation Thesis — An Academic Consensus
         body: |
           支持于阗为最终编纂地的关键证据:
           (1) 文献证据: 印度本土只有单品流传, 龙树《大智度论》及寂天《集菩萨学论》
@@ -31,8 +41,31 @@ sections:
           - "印顺《初期大乘佛教之起源与开展》第十三章「华严法门」"
           - "平川彰《印度佛教史》(春秋社, 1979)"
           - "木村清孝《初期中国华严思想の研究》(春秋社, 1977)"
+        en_body: |
+          The key evidence in support of Khotan as the final place of compilation:
+          (1) Textual evidence: in India only individual short scriptures circulated;
+          the Avataṃsaka-type texts cited by Nāgārjuna in the *Mahāprajñāpāramitā
+          Śāstra* and by Śāntideva in the *Śikṣāsamuccaya* do not exceed a few
+          scattered fragments, showing that India itself had no large *Avataṃsaka Sūtra*.
+          (2) Linguistic evidence: in the Sanskrit manuscript of the *Ghaṇḍavyūha*
+          and in chapter 58 of the eighty-fascicle text appears the word "ysa,"
+          which belongs to the **Khotanese language rather than Sanskrit**, suggesting
+          that the final compilation took place in Khotan.
+          (3) Structure and style: the arrangement of the seven places and nine
+          assemblies (four in the heavens, three in the human realm) differs markedly
+          from the anthology-style structure of other Indian Mahāyāna sūtras, bearing
+          a foreign coloring.
+          (4) Geographic clues: the chapter on the residences of bodhisattvas
+          (*Vajradhvaja* vicinity) states that Mañjuśrī's bodhimaṇḍa lies at
+          "Mount Clear-and-Cool in the northeast" (Mount Wutai), revealing that the
+          sūtra took shape close to China.
+          (5) The early short scriptures (such as the *Tuṣa Sūtra* and the
+          *Daśabhūmika Sūtra*) arose in roughly the 1st–2nd centuries CE, earlier than
+          Nāgārjuna's time (about the 2nd century), and later circulated to Northwest
+          India and Central Asia.
 
       - title: 于阗——华严经的故乡
+        title_en: Khotan — The Homeland of the Avataṃsaka Sūtra
         body: |
           **于阗**(Khotan, 今新疆和田)是《华严经》形成与传播的最大策源地:
           (1) 遮拘迦国(于阗东南二千余里)「宫中自有摩诃般若·大集·华严三部」,
@@ -48,8 +81,30 @@ sections:
         sources:
           - "海云继梦《华严思想的承先与启后》(讲记, 大华严寺)"
           - "羽溪了谛《西域之佛教》(1923)"
+        en_body: |
+          **Khotan** (modern Hotan, Xinjiang) was the greatest center for the
+          formation and spread of the *Avataṃsaka Sūtra*:
+          (1) At Zakkuka (more than two thousand li southeast of Khotan), the royal
+          palace was said to hold "the Mahāprajñāpāramitā, the Mahāsaṃnipāta, and the
+          Avataṃsaka — three collections," each of one hundred thousand gāthās
+          (according to the biography of Jñānagupta).
+          (2) When Xuanzang returned home passing through Sokhsa (Zhejujia / Zihu),
+          he recorded that this country "possessed a great many Mahāyāna scriptures,
+          with one hundred thousand verses as a collection, over ten collections in all."
+          (3) The Sanskrit base text of the Jin (sixty-fascicle) translation
+          (thirty-six thousand gāthās) was brought **back from Khotan** by Zhi Faling.
+          (4) The base text of the Tang (eighty-fascicle) translation was obtained
+          **from Khotan** through an envoy dispatched by Empress Wu Zetian.
+          (5) The Tibetan *Avataṃsaka Sūtra* (Toh44, 45 chapters) likewise
+          **came from Khotan**.
+          (6) Venerable Haiyun Jimeng asserts: "The homeland of the *Avataṃsaka Sūtra*
+          lies in the Western Regions" — Khotan stood at the crossroads of the five
+          great centers of ancient civilization (China, India, Babylon, Egypt,
+          and Greco-Roman), and the *Avataṃsaka Sūtra* is the distilled essence of
+          these five great civilizations of humanity.
 
       - title: 三龙传说——海云继梦的表法诠释
+        title_en: The Legend of the Three Dragons — Haiyun Jimeng's Symbolic Reading
         body: |
           传统说法: 佛陀成道后宣讲华严, 大龙菩萨结集藏于龙宫。
           九百年后龙树菩萨入龙宫诵出十万偈, 流传人间。
@@ -64,12 +119,31 @@ sections:
         sources:
           - "海云继梦《华严思想的承先与启后》讲记(fjdh.cn)"
           - "海云继梦《华严经导读》系列(空庭书苑)"
+        en_body: |
+          The traditional account: after the Buddha's enlightenment he preached the
+          Avataṃsaka, and the Nagarāja (Great Dragon Bodhisattva) assembled and
+          stored it in the dragon palace. Nine hundred years later Nāgārjuna entered
+          the dragon palace and recited the one hundred thousand gāthās, which were
+          then transmitted in the human world. Venerable Haiyun Jimeng interprets this
+          "legend of the three dragons" in terms of the reality of one's own nature —
+          **the Great Dragon Bodhisattva** = a person of great good roots (not a
+          single individual); **the dragon palace** = **the ocean of one's own nature**
+          (the buddha-nature inherent in every person, not an ocean palace);
+          **Nāgārjuna** = a person of great good roots who can bring about great
+          benefit for sentient beings. In sum: "A person of great good roots gathers
+          together the Buddha's teachings, develops them from the ocean of his own
+          nature, and offers them to the multitude." The birth of the *Avataṃsaka
+          Sūtra* is in essence the truth's passage from the hidden to the manifest —
+          the great masters past and present, East and West, may all be called
+          Nāgārjuna or the Great Dragon, and are all dharmakāya bodhisattvas.
 
   - id: transmission
     title: 翻译与流传
+    title_en: Translation and Circulation
     icon: 📜
     topics:
       - title: 三大汉译本对照
+        title_en: The Three Major Chinese Translations Compared
         body: |
           | 译本 | 译者 | 年代 | 卷/品 | 底本来源 |
           |------|------|------|--------|----------|
@@ -86,8 +160,20 @@ sections:
           cbeta_80: https://cbetaonline.dila.edu.tw/zh/T10n0279
           cbeta_40: https://cbetaonline.dila.edu.tw/zh/T10n0293
           toh44: https://read.84000.co/translation/toh44-31.html
+        en_body: |
+          | Translation | Translator | Dates | Fascicles/Chapters | Base Text |
+          |------|------|------|--------|----------|
+          | **Sixty-fascicle** (Jin trans.) | Buddhabhadra (India) | 418–421 | 60 fascicles/34 chapters | brought back from Khotan by Zhi Faling, 36,000 gāthās |
+          | **Eighty-fascicle** (Tang trans.) | Śikṣānanda (Khotan) | 695–699 | 80 fascicles/39 chapters | Sanskrit text obtained from Khotan by Wu Zetian's envoy |
+          | **Forty-fascicle** | Prajñā (Kaśmīr) | 796 | 40 fascicles (Gaṇḍavyūha only) | a manuscript presented from Oḍḍiyāna in South India |
+          There were in addition some thirty-odd separate single-text translations
+          from the Eastern Han through the Tang (Zhi Qian, Dharmarakṣa,
+          Kumārajīva, etc.). The Tibetan *Avataṃsaka* (Toh44) comprises 45 chapters,
+          translated from the Khotanese text, two of which are entirely absent from
+          all three Chinese translations.
 
       - title: 华严经本分类(六种经本)
+        title_en: The Six Kinds of Texts of the Avataṃsaka Sūtra
         body: |
           依法藏《探玄记》及澄观《华严经疏钞》, 经本共有六种:
           **恒本** — 如来恒常所说, 不可结集, 非凡夫受持
@@ -100,8 +186,29 @@ sections:
         sources:
           - "法藏《华严经探玄记》T35n1733"
           - "澄观《大方广佛华严经疏》T35n1735"
+        en_body: |
+          According to Fazang's *Tanxuanji* (Explorations of the Profundities) and
+          Chengguan's *Huayan jing shu*, the sūtra has six kinds of text:
+          **The Eternal Text** (*hengben*) — the Tathāgata's constant teaching, which
+          cannot be collected and is not to be upheld by ordinary beings.
+          **The Great Text**, the *Puyan jing* (Sarvabuddhaviṣayāvatāra) — to write a
+          single chapter would require a brush of Mount Sumeru piled up and ink of the
+          four great seas.
+          **The Upper Text** (*shangben*) — seen by Nāgārjuna in the dragon palace,
+          its gāthās numbering as many as the dust-motes of thirteen thousand great
+          chiliocosms.
+          **The Middle Text** (*zhongben*) — 498,800 gāthās and 1,200 chapters, still
+          hidden in the dragon palace.
+          **The Lower Text** (*xiaben*) — one hundred thousand gāthās and 38 (or 48)
+          chapters, which Nāgārjuna brought out of the dragon palace to propagate.
+          **The Abridged Text** (*lüeben*) — the sixty- and eighty-fascicle versions
+          current in the human world.
+          Because the upper and middle texts exceed the capacity of ordinary beings to
+          uphold, Nāgārjuna did not bring them out of the dragon palace; what has been
+          transmitted in the human world is in fact the abridged text.
 
       - title: 向东亚的传播
+        title_en: Transmission to East Asia
         body: |
           **朝鲜**: 7世纪中, 新罗僧义湘入唐受学于智俨(华严二祖),
           回国后成为朝鲜华严宗初祖。
@@ -112,12 +219,25 @@ sections:
         sources:
           - "镰田茂雄《朝鲜佛教史》(东京大学出版会, 1980)"
           - "镰田茂雄《中国华严思想史の研究》(东京大学出版会, 1965)"
+        en_body: |
+          **Korea**: in the mid-7th century the Silla monk Ŭisang entered Tang China and
+          studied under Zhiyan (the second patriarch of Huayan), and after returning
+          home became the founding patriarch of Korean Hwaŏm Buddhism.
+          **Japan**: in the mid-8th century the Tang monk Dōshō (Daori) crossed to
+          Japan to propagate Huayan, becoming the founding patriarch of Japanese
+          Kegon. Tōdaiji is the head temple of the Japanese Kegon school, and its
+          Great Buddha (Vairocana) was cast in accordance with the *Avataṃsaka Sūtra*.
+          In the 12th–13th centuries, the monk Myōe Shōnin (1173–1232) revived Japanese
+          Kegon and, together with Hōnen, Shinran, Dōgen, and Nichiren, is numbered
+          among the great patriarchs of Kamakura Buddhism.
 
   - id: structure
     title: 结构关系与表法
+    title_en: Structure and Symbolic Correspondence
     icon: 🏛
     topics:
       - title: 七处九会——空间结构
+        title_en: Seven Places and Nine Assemblies — Spatial Structure
         body: |
           八十华严以**七处九会**为框架: 人间三处(菩提场·普光明殿·逝多林) +
           天上四处(忉利天·夜摩天·兜率天·他化天)。普光明殿重复三次,
@@ -126,8 +246,21 @@ sections:
           第九会(逝多林)善财童子五十三参——从理论到实践的圆满一周。
         sources:
           - "澄观《华严经疏》中对七处九会的详细科判"
+        en_body: |
+          The eighty-fascicle *Avataṃsaka Sūtra* is framed by **seven places and nine
+          assemblies**: three in the human realm (the Bodhi Tree site, the Universal
+          Radiance Hall, and the Jeta Grove) plus four in the heavens (Trāyastriṃśa,
+          Yāma, Tuṣita, and Paranirmitavaśavartin). Because the Universal Radiance
+          Hall recurs three times, the seven places yield nine assemblies. The first
+          assembly (the Bodhi Tree site) sets forth the adornments of the environment
+          of Vairocana's reward-body; the second through eighth assemblies set forth
+          the ten faiths, ten abodes, ten practices, ten transfers of merit, ten
+          grounds, equality-enlightenment, and wonderful enlightenment; the ninth
+          assembly (the Jeta Grove) presents Sudhana's fifty-three pilgrimages — the
+          perfect round from theory to practice.
 
       - title: 三十九品——内容结构
+        title_en: The Thirty-Nine Chapters — Structure of Content
         body: |
           八十华严39品可归纳为五大部分:
           (1) **举果劝乐生信分**(第1-6品): 毗卢遮那佛依正庄严
@@ -139,8 +272,26 @@ sections:
         sources:
           - "澄观科判(华严经疏)"
           - "方东美《华严宗哲学》(1980, 黎明文化)"
+        en_body: |
+          The thirty-nine chapters of the eighty-fascicle text may be summarized in
+          five major parts:
+          (1) **Presenting the fruit to inspire faith** (chapters 1–6): the
+          environment-and-body adornments of Vairocana Buddha.
+          (2) **Cultivating the cause and realizing the fruit to engender
+          understanding** (chapters 7–34): the ten faiths, ten abodes, ten practices,
+          ten transfers of merit, ten grounds, and equality-enlightenment.
+          (3) **Relying on the Dharma to advance and complete practice** (chapters
+          35–38): Samantabhadra's practice, the four vast vows, the ten
+          patient-endurances, and the length of life.
+          (4) **Relying on persons to enter and perfect virtue** (chapter 39, the
+          *Gaṇḍavyūha*): Sudhana's fifty-three pilgrimages.
+          (5) In the Jin translation there is in addition the **chapter on the
+          conduct and vows of Samantabhadra** as the section of propagation.
+          The whole sūtra forms a complete bodhisattva map of practice through the
+          four stages of faith → understanding → practice → realization.
 
       - title: 表意表法——毗卢遮那与华藏世界
+        title_en: Symbolic Expression — Vairocana and the Ocean of Flower-Treasury Worlds
         body: |
           (1) **毗卢遮那**(Vairocana) = 法身佛, 非历史佛陀, 而是法界之体——
           「光明遍照」之义, 代表法界真理的遍在性与全照性。
@@ -153,12 +304,31 @@ sections:
         sources:
           - "方立天《华严金师子章校释》(中华书局, 1983)"
           - "Francis Cook, Hua-yen Buddhism: The Jewel Net of Indra (Penn State, 1977)"
+        en_body: |
+          (1) **Vairocana** = the dharmakāya Buddha, not a historical buddha but the
+          very substance of the dharmadhātu — his name means "universal illumination,"
+          representing the pervasiveness and all-illuminating quality of the truth of
+          the dharmadhātu.
+          (2) **The Ocean of Flower-Treasury Worlds** (*gandavyūha* / *padmākaragarbha*)
+          = the pure land of Vairocana, twenty tiers of worlds stacked layer upon
+          layer, each world encircled by buddha-lands as numerous as dust-motes — this
+          is not a description of the physical cosmos but the symbolic expression of
+          the **dharmadhātu of the unimpeded interpenetration of all phenomena**:
+          within a single mote of dust is contained the dharmadhātu, and in a single
+          hair-tip appear countless buddha-lands.
+          (3) **Ten** = the core symbolic number of Huayan: the ten faiths, ten
+          abodes, ten practices, ten transfers, ten grounds, ten mysterious gates, ten
+          directions, ten times... "Ten" signifies **consummation** and **inexhaustibility**
+          — the bodhisattva path is a perfect and endless vow-practice, not a linear
+          "arrival at a destination."
 
   - id: doctrinal
     title: 义学阐释
+    title_en: Doctrinal Interpretation
     icon: 📖
     topics:
       - title: 核心教义体系
+        title_en: The Core Doctrinal System
         body: |
           (1) **法界缘起** — 一切现象在法界中互依互入, 非孤立的因果链,
           而是全息的法界整体。与「业感缘起」「阿赖耶缘起」「真如缘起」
@@ -175,8 +345,35 @@ sections:
           - "法藏《华严一乘教义分齐章》(T45n1866)"
           - "法藏《华严金师子章》(T45n1880)"
           - "方立天《华严金师子章校释》(中华书局, 1983)"
+        en_body: |
+          (1) **Dharmadhātu conditionality / dependent origination of the
+          dharmadhātu** (*fajie yuanqi*) — all phenomena in the dharmadhātu
+          interdepend and interpenetrate; it is not an isolated chain of cause and
+          effect but a holographic whole. Together with "conditioned arising through
+          karmic forces," "conditioned arising from the ālayavijñāna," and
+          "conditioned arising from suchness," it is numbered among the four great
+          theories of dependent origination in Mahāyāna, and is the most perfect.
+          (2) **The contemplation of the four dharmadhātus** — the dharmadhātu of
+          phenomena → the dharmadhātu of principle (suchness) → the dharmadhātu of
+          the unimpeded interpenetration of principle and phenomena → the dharmadhātu
+          of the unimpeded interpenetration of all phenomena. This is the core of the
+          Huayan practice of contemplation from Dushun to Fazang.
+          (3) **The Ten Mysterious Gates** (*shi xuan men*) — Fazang uses ten pairs of
+          mysterious categories (simultaneous fulfillment, the net of Indra, the
+          secret and hidden, the subtle containing the minute, the ten times separate
+          yet interpenetrating, the non-sequestering of all stores, the interpenetration
+          of one and many, the mutual identification of all dharmas, the revolution of
+          mind only, and the manifestation of the Dharma through particulars) to clarify
+          the concrete unfolding of the unimpeded interpenetration of all phenomena —
+          the most refined expression of Huayan doctrinal learning.
+          (4) **The perfect fusion of the six characteristics** (*liu xiang yuanrong*)
+          — the three pairs of total/particular, identity/difference, and
+          integration/disintegration are all simultaneously fulfilled; to know any one
+          thing is to contain all six characteristics — the epistemological foundation
+          of "one is all."
 
       - title: 历代祖师的义学贡献
+        title_en: The Doctrinal Contributions of the Successive Patriarchs
         body: |
           **杜顺(557-640)** — 五教止观·法界观门 → 禅观实践奠基
           **智俨(602-668)** — 搜玄记·孔目章 → 六相·十玄初构
@@ -186,8 +383,27 @@ sections:
           **李通玄(635-730)** — 新华严经论 → 以易经融会华严·长者系代表
         sources:
           - "CBETA 对应经号见各祖师条目"
+        en_body: |
+          **Dushun (557–640)** — *Five Teachings of Calming and Contemplation*
+          (*Wu jiao zhiguan*), *Gate of the Contemplation of the Dharmadhātu*
+          (*Fajie guan men*) → laid the foundation of contemplative practice.
+          **Zhiyan (602–668)** — *Souxuan ji*, *Kongmu zhang* → the initial
+          construction of the six characteristics and the ten mysterious gates.
+          **Fazang (643–712)** — *Tanxuan ji*, *Wujiao zhang*, *Jinshizi zhang*
+          → the completion of the doctrinal classification of the five teachings and
+          ten schools, and of the ten mysterious gates.
+          **Chengguan (738–839)** — *Huayan jing shu*, *Suishu yanyi chao* → the
+          structure (kējiàn) of the eighty-fascicle text and the perfect fusion of the
+          three holy ones.
+          **Zongmi (780–841)** — *Yuaren lun*, *Chanyuan zhuquanjii duxu* → the
+          fusion of Chan and doctrinal teaching, and the reconciliation with
+          Confucianism and Daoism.
+          **Li Tongxuan (635–730)** — *Xin Huayan jing lun* → fusing Huayan with the
+          *Book of Changes*; the representative of the "Elder" (Zhangzhe) line of
+          interpretation.
 
       - title: 近现代学术研究
+        title_en: Modern and Contemporary Academic Research
         body: |
           **中国**: 方东美《华严宗哲学》(1980)、方立天《法藏评传》(2006)、
           吕澂《中国佛学源流略讲》(1979)、魏道儒《中国华严宗通史》(1998)
@@ -201,12 +417,29 @@ sections:
         sources:
           - "以上著作均可在 Google Scholar / Goodreads / 豆瓣 检索"
           - "Cleary全译本: https://www.shambhala.com/the-flower-ornament-scripture.html"
+        en_body: |
+          **China**: Thomé H. Fang (Fang Dongmei), *The Philosophy of the Huayan
+          School* (*Huayan zong zhexue*, 1980); Fang Litian, *A Critical Biography of
+          Fazang* (*Fazang pingzhuan*, 2006); Lü Cheng, *Brief Lectures on the Origins
+          and Development of Chinese Buddhism* (*Zhongguo foxue yuanliu lüejiang*,
+          1979); Wei Daoru, *A Comprehensive History of Chinese Huayan* (*Zhongguo
+          Huayan zong tongshi*, 1998).
+          **Japan**: Kamata Shigeo, *A Study of the History of Chinese Huayan Thought*
+          (1965); Kiyotaka Kimura, *A Study of Early Chinese Huayan Thought* (1977);
+          Hirakawa Akira, *A History of Indian Buddhism* (1979).
+          **The West**: Francis Cook, *Hua-yen Buddhism: The Jewel Net of Indra*
+          (Penn State, 1977); Peter N. Gregory, *Tsung-mi and the Sinification of
+          Buddhism* (Princeton, 1991); Thomas Cleary, *The Flower Ornament Scripture*
+          (Shambhala, 1993, complete translation); Imre Hamar (ed.), *Reflecting
+          Mirrors: Perspectives on Huayan Buddhism* (Harrassowitz, 2007).
 
   - id: global_research
     title: 全球华严研究
+    title_en: Huayan Studies Worldwide
     icon: 🌐
     topics:
       - title: 华严学报 (Journal of Huayen Buddhism)
+        title_en: Journal of Huayen Buddhism
         body: |
           台湾中华民国佛教华严学会于**2011年**创办的华严佛学专业学术半年刊。
           ISSN: 2222-6885 · 出版地: 新北市中和区
@@ -219,8 +452,24 @@ sections:
           huayenworld: "https://www.huayenworld.org (华严学术中心-学报各期目录与摘要)"
           ceps: "CEPS中文电子期刊服务 (2011-2021)"
           princeton_catalog: "https://catalog.princeton.edu/catalog/99125426018406421"
+        en_body: |
+          A professional semi-annual academic journal of Huayan Buddhist studies
+          founded in **2011** by the Huayen Buddhist Society of the Republic of China
+          (Taiwan). ISSN: 2222-6885 · Place of publication: Zhonghe District,
+          New Taipei City. Editor-in-chief / driving force: Venerable Haiyun Jimeng
+          (then spiritual guide of the Huayen Buddhist Society and director of the
+          Huayan Research Institute of Shaanxi Normal University). It has published up
+          to issue 8 (December 2014); the electronic edition is available through the
+          CEPS Chinese Electronic Periodical Service (covering April 2011–June 2021).
+          Representative paper topics: the Avataṃsaka view of sentient beings and the
+          ten grounds; the buddha-realm and the visualization of the dharmadhātu;
+          the meditation philosophy of Chengguan's *Huayan Fajie Xuanjing*; the spread
+          of Huayan in Dali, Yunnan; the iconography of the three great sages in the
+          Song dynasty; innovation in Japanese Huayan iconography; and Huayan thought
+          in dialogue with modern currents of thought.
 
       - title: 国际华严研究关键著作
+        title_en: Key Works in International Huayan Studies
         body: |
           (1) **Robert M. Gimello & Peter N. Gregory (eds.), *Studies in Ch'an and Hua-yen***
           University of Hawai'i Press, 1983. ISBN 978-0824808351
@@ -237,8 +486,30 @@ sections:
           (5) **Thomas Cleary, *The Flower Ornament Scripture: A Translation of the Avatamsaka Sutra***
           Shambhala, 1993. ISBN 978-0877739401
           华严经英文全译本(据八十华严), 至今仍是英语世界最完整译本。
+        en_body: |
+          (1) **Robert M. Gimello & Peter N. Gregory (eds.), *Studies in Ch'an and Hua-yen*** —
+          University of Hawai'i Press, 1983. ISBN 978-0824808351. A pioneering
+          collection of essays, including Gimello on Li Tongxuan and Gregory on
+          Zongmi's doctrinal classification, among others.
+          (2) **Imre Hamar (ed.), *Reflecting Mirrors: Perspectives on Huayan Buddhism*** —
+          Harrassowitz Verlag, 2007. ISBN 978-3447055093. A landmark collection of
+          European Huayan studies, containing twelve English papers covering Huayan
+          doctrine, history, and East Asian transmission.
+          (3) **Francis H. Cook, *Hua-yen Buddhism: The Jewel Net of Indra*** —
+          Penn State University Press, 1977. ISBN 978-0271021904. The West's first
+          systematic English monograph on the Huayan school, taking Indra's net as its
+          central image.
+          (4) **Peter N. Gregory, *Tsung-mi and the Sinification of Buddhism*** —
+          Princeton University Press, 1991. ISBN 978-0691073735. The most authoritative
+          English study of Zongmi, the fifth patriarch of Huayan; winner of an American
+          Academy of Religion book award.
+          (5) **Thomas Cleary, *The Flower Ornament Scripture: A Translation of the
+          Avatamsaka Sutra*** — Shambhala, 1993. ISBN 978-0877739401. A complete English
+          translation of the Avataṃsaka Sūtra (from the eighty-fascicle text) — to this
+          day the most complete rendering in the English-speaking world.
 
       - title: 国际学术期刊中的华严研究
+        title_en: Huayan Studies in International Academic Journals
         body: |
           华严研究散见于以下国际期刊而非集中于单一刊物——
           **Journal of the International Association of Buddhist Studies**:
@@ -249,16 +520,46 @@ sections:
           **Journal of Global Buddhism**: Hammerstrom, "Avataṃsaka Transnationalism in Modern Sinitic Buddhism" (2016)
           **Korean Hwaŏm 研究**: 《普照思想》(Pojo sasang)·《韩国佛教学》(Han'guk Pulgyohak) 大量刊载知讷·义湘·均如等韩国华严祖师研究
           **日本华严/华厳研究**: 《印度学佛教学研究》·《东方学报》·《仏教学研究》 刊载镰田茂雄·木村清孝·伊藤瑞叡等论文
+        en_body: |
+          Huayan research is scattered across the following international journals
+          rather than concentrated in a single periodical —
+          **Journal of the International Association of Buddhist Studies**:
+          Gregory, "The Teaching of Men and Gods: The Doctrinal and Social Basis of Lay Buddhist Practice in Hua-yen"
+          **Journal of Chinese Philosophy**: Imre Hamar, "Interpretation of Yogācāra Philosophy in Huayan Buddhism" (2010)
+          **Philosophy East and West**: Nicholaos Jones, "The Architecture of Fazang's Six Characteristics" (2019)
+          **Hualin International Journal of Buddhist Studies**: multilingual papers on Huayan
+          **Journal of Global Buddhism**: Hammerstrom, "Avataṃsaka Transnationalism in Modern Sinitic Buddhism" (2016)
+          **Korean Hwaŏm studies**: journals such as *Pojo sasang* and *Han'guk
+          Pulgyohak* carry many studies of Korean Huayan patriarchs such as Chinul,
+          Ŭisang, and Kyunyŏ.
+          **Japanese Kegon studies**: journals such as *Indogaku Bukkyōgaku kenkyū*
+          (Journal of Indian and Buddhist Studies), *Tōhō gakuhō*, and *Bukkyōgaku
+          kenkyū* carry papers by Kamata Shigeo, Kiyotaka Kimura, Itō Zuiei, and others.
 
       - title: 东亚华严研究重镇
+        title_en: Major Centers of Huayan Studies in East Asia
         body: |
           **中国**: 陕西师范大学华严研究所(海云继梦曾任所长)·南京大学·复旦大学·北京大学
           **台湾**: 中华民国佛教华严学会·华严专宗学院·华严莲社(贤度法师)·法鼓文理学院
           **日本**: 大谷大学(Otani)·龙谷大学(Ryukoku)·东京大学·京都大学人文科学研究所
           **韩国**: 东国大学(Dongguk)·中央僧伽大学·普照思想研究院
           **欧美**: University of Hawai'i·Stanford·Harvard·Columbia·SOAS(London)·Eötvös Loránd(Budapest, Hamar所在)
+        en_body: |
+          **China**: Huayan Research Institute of Shaanxi Normal University (Haiyun
+          Jimeng once served as its director) · Nanjing University · Fudan University ·
+          Peking University
+          **Taiwan**: Huayen Buddhist Society of the Republic of China · Huayen
+          Monastic Institute (Huayan College) · Huayan Lotus Society (Venerable
+          Xiandu) · Dharma Drum Graduate School of Humanities
+          **Japan**: Ōtani University · Ryukoku University · University of Tokyo ·
+          Institute for Research in Humanities, Kyoto University
+          **Korea**: Dongguk University · Jung-ang Sangha University · National
+          Institute of Bojo Thought
+          **Europe and America**: University of Hawai'i · Stanford · Harvard ·
+          Columbia · SOAS (London) · Eötvös Loránd (Budapest, where Hamar is based)
 
       - title: 华严经学研究方法论
+        title_en: Research Methodologies in the Academic Study of the Avataṃsaka Sūtra
         body: |
           现代华严经学研究的三个主要进路:
           (1) **历史文献学进路**: 文本校勘·成经史重构·译本比较(印顺·木村清孝·平川彰)
@@ -266,6 +567,22 @@ sections:
           (3) **跨文化/跨学科进路**: 华严与系统论·全息论·AI神经网络的对话(Capra·Varela·环保伦理学)
           三种进路互补——历史文献学提供事实基础, 哲学义理学展释义理深度,
           跨学科进路开拓当代对话空间。
+        en_body: |
+          Three main approaches in modern academic study of the Avataṃsaka Sūtra:
+          (1) **Historical-philological approach**: textual criticism, reconstruction
+          of the history of the sūtra's formation, and comparison of translations
+          (Yinshun, Kiyotaka Kimura, Hirakawa Akira).
+          (2) **Philosophical-doctrinal approach**: the logical structure and
+          philosophical import of dharmadhātu conditionality, the four dharmadhātus,
+          and the six characteristics and ten mysterious gates (Francis Cook, Fang
+          Litian, Hamar).
+          (3) **Cross-cultural / interdisciplinary approach**: dialogue between Huayan
+          and systems theory, holographism, and AI neural networks (Capra, Varela,
+          environmental ethics).
+          The three approaches are complementary — the historical-philological
+          approach supplies the factual foundation, the philosophical-doctrinal
+          approach unfolds the depth of the doctrine, and the interdisciplinary
+          approach opens up a space for contemporary dialogue.
 
 references:
   - "印顺《初期大乘佛教之起源与开展》第十三章「华严法门」(正闻出版社, 1981)"
@@ -286,16 +603,33 @@ references:
   # ── 海云·贤度两位法师·结构研究 ──
   - id: modern_masters
     title: 海云·贤度两位法师·结构研究
+    title_en: Structure Studies by Haiyun Jimeng and Venerable Xiandu
     icon: 🎓
     topics:
       - title: 海云继梦「九九華嚴」结构诠释
+        title_en: Haiyun Jimeng's "Nine-Nine Huayan" Structural Interpretation
         body: |
           海云继梦法师将《八十华严》(前59卷) +《四十华严》(后40卷)=「九九華嚴」，
           形成「理行圆融」的整体架构——八十华严为「理」(思想基础)，四十华严为「行」(实修行愿)。
           此99卷框架超越了传统的「七处九会」单一结构观，将全经解读为「信→解→行→证」的完整菩萨道。
           相关著作: 《九九華嚴玄談》5册 (空庭书苑, 2026)。讲法: YouTube @huayen-world 九九華嚴系列。
           核心判摄: 「华严经不是一部经，而是一套完整的生命改造工程手册。」
+        en_body: |
+          Venerable Haiyun Jimeng takes the *eighty-fascicle Avataṃsaka* (the first 59
+          fascicles) plus the *forty-fascicle Avataṃsaka* (the last 40 fascicles) as the
+          "Nine-Nine Huayan" (*jiujiu huayan*), forming an integrated framework of the
+          "perfect fusion of principle and practice" — the eighty-fascicle text is the
+          "principle" (the intellectual foundation), and the forty-fascicle text is the
+          "practice" (actual practice and vows). This 99-fascicle framework goes beyond
+          the traditional single-structure view of the "seven places and nine
+          assemblies," reading the entire sūtra as the complete bodhisattva path of
+          "faith → understanding → practice → realization." Related works: *Jiujiu
+          Huayan Xuantan*, 5 volumes (Kongting College of Buddhist Studies, 2026).
+          Teachings: the Nine-Nine Huayan series on YouTube @huayen-world. Core
+          judgment: "The Avataṃsaka Sūtra is not one sūtra but a complete manual for
+          the engineering of transforming one's life."
       - title: 贤度法师·华严结构学
+        title_en: Venerable Xiandu's Huayan Structural Studies
         body: |
           贤度法师(Bhiksuni Xiandu, 1937-)，华严莲社住持，华严专宗学院院长，
           智光老和尚法孙，致力于华严义学的学院化研究与教学。
@@ -304,13 +638,42 @@ references:
           其讲记注重文献学考辨与修行实践的结合，为当代学院化的华严义学研究提供了重要范本。
           华严专宗学院官网: https://www.huayencollege.org
           华严莲社: 台北华严莲社 (1949年创社)，贤度法师为第三代住持。
+        en_body: |
+          Venerable Xiandu (Bhikṣuṇī Xiandu, 1937–), abbess of the Huayan Lotus
+          Society (Huayan Lianshe) and president of the Huayan Monastic Institute
+          (Huayan College), is a dharma-grandson of the Elder Zhiguang, devoted to
+          the academic study and teaching of Huayan doctrine. Her representative
+          works include the *Lectures on the Avataṃsaka Sūtra* (Huayan jing jiangyi)
+          series and *An Introduction to Huayan Studies* (Huayan xue gailun), which
+          give systematic modern expositions of the "seven places and nine
+          assemblies" structure, the four-part structure of "faith, understanding,
+          practice, and realization," and the Huayan doctrinal classification system.
+          Her lecture notes combine philological investigation with practice, offering
+          an important model for the contemporary academic study of Huayan doctrine.
+          Huayan College website: https://www.huayencollege.org
+          Huayan Lotus Society: the Huayan Lotus Society in Taipei (founded 1949), of
+          which Venerable Xiandu is the third-generation abbess.
       - title: "澄观《华严经疏》科判研究"
+        title_en: Studies of the Structure (Kēpàn) of Chengguan's Huayan Jing Shu
         body: |
           澄观《大方广佛华严经疏》(T35n1735) 是华严经最详尽科判。
           澄观以「十门分别」为全经分科——十门中前五门为「玄义」(总体诠释框架)，
           后五门为「文义」(逐品科判)。海云继梦在《探玄記懸談講記》中
           对澄观的科判体系做了现代梳理，强调「玄谈」(悬谈)是理解华严经的
           方法论前设——不先掌握玄谈框架，直接读经文如同「没有地图的旅行」。
+        en_body: |
+          Chengguan's *Dafangguang fo huayan jing shu* (Commentary on the Great
+          Vaipulya Sūtra of the Buddha's Flower Ornament, T35n1735) is the most
+          detailed structural analysis (kēpàn) of the Avataṃsaka Sūtra. Chengguan
+          divides the whole sūtra through his "analysis of the ten gates" — of the
+          ten gates, the first five constitute the "profundity" (xuanyi, the overall
+          hermeneutical framework) and the last five the "textual meaning" (wenyi,
+          chapter-by-chapter structure). In his *Lectures on the Xuantanji* (*Tanxuan
+          ji xuantan jiangji*), Haiyun Jimeng offers a modern reworking of Chengguan's
+          structural system, stressing that the "prolegomena" (xuantan) is the
+          methodological presupposition for understanding the sūtra — to read the text
+          directly without first mastering the prolegomenal framework is like a
+          "journey without a map."
     references:
       - "海云继梦《九九華嚴玄談》5册 (空庭书苑, 2026)"
       - "海云继梦《探玄記懸談講記》4册 (空庭书苑)"

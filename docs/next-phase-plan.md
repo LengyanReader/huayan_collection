@@ -278,11 +278,118 @@ python scripts/verify_demo.py
 
 ## 考证/双语完成度快照（2026-09-02 · L.㉜ 后，全站既有内容盘点）
 
-- **考证**：persons 95/95 全有 source（0 缺源，T0 归零）；来源可靠性评分 76/100，T3 模糊来源 10 条（㉛ 已由 36 细化归并，余 10 均无独立一手史料——明度/体佛/如孝/雪窦/成观/拉克鲁希/巴布基/克利普梵纳德/思元慧三/体化性果，已标〔待核〕/〔待考〕）；`verified=1` 72/95（75.8%），`verified=0` 23 条均为无力考者并注明（菩提流支〔卒年诸说未定〕/大华严寺瑜伽行法脉及宗内谱系 6 人〔系派自述无独立史料〕/当代学者·法师〔无公开生卒〕）；生卒年 no_dates 双缺 17 条（古代译师与神话·集体人物本无考）、单缺 11 条；图谱 98 边/24 法系/30 地点（0 缺坐标、16 有 city、均在 import_edges 补 `source='graph.json'` 后 0 缺源）；文献 54 部（CBETA ID 12・大正藏编号 35）、41 品、50 术语、180 人地关联、15 文章页。遗留待核：source-audit T3 余 10 条（均无独立史料）、L-B 专题定值复审未二轮。
-- **中英结合**：人名 name_en 95/95（100%）・name_sa 30/95（32%，余 65 中文/日系名无梵文对应留空〔待核〕，玄奘/慧果两例考证已闭环）；术语表 50/50 条 term_en+definition_zh+definition_en 全覆盖、term_sa 32/50；经目 title_en 54/54（㉚ 补齐 3/54→54/54・title_sa 6・title_bo 1，多语仍不全后续补充）；数据层 `_en`/`en` 键：practice 1461・translation 103・cosmology 41・knowledge_graph 96・frontier 88・events 0（地理史料以拉丁文为主）；全站 6 Tab+15 文章页均带 `.en-line` 全局双语机制。遗留缺口：title_en 已全、剩 title_sa/title_bo 多语待补，person bio 级 EN 需 SQLite 增设列（考证优先暂不臆造）。
+- **考证**：persons 95/95 全有 source（0 缺源，T0 归零）；来源可靠性评分 76/100，T3 模糊来源 10 条（㉛ 已由 36 细化归并，余 10 均无独立一手史料——明度/体佛/如孝/雪窦/成观/拉克鲁希/巴布基/克利普梵纳德/思元慧三/体化性果，已标〔待核〕/〔待考〕）；`verified=1` 72/95（75.8%），`verified=0` 23 条均为无力考者并注明（菩提流支〔卒年诸说未定〕/大华严寺瑜伽行法脉及宗内谱系 6 人〔系派自述无独立史料〕/当代学者·法师〔无公开生卒〕）；生卒年 no_dates 双缺 17 条（古代译师与神话·集体人物本无考）、单缺 11 条；图谱 98 边/24 法系/30 地点（**locations 30/30 全有 source、0 缺坐标，T0 归零见 L.㉟**、16 有 city、均在 import_edges 补 `source='graph.json'` 后 0 缺源）；文献 54 部（CBETA ID 12・大正藏编号 35）、41 品、50 术语、180 人地关联、15 文章页。遗留待核：source-audit T3 余 10 条（均无独立史料）、L-B 专题定值复审未二轮、locations 待核 2 处（台北福慧寺/阿弥塔巴·LIFE Mission，㉟）。
+- **中英结合**：人名 name_en 95/95（100%）・name_sa 30/95（32%，余 65 中文/日系名无梵文对应留空〔待核〕，玄奘/慧果两例考证已闭环）；术语表 50/50 条 term_en+definition_zh+definition_en 全覆盖、term_sa 32/50；经目 title_en 54/54（㉚ 补齐 3/54→54/54・title_sa 6・title_bo 1，多语仍不全后续补充）；**品目 chapters title_en 41/41（㉞ 补 0/41→41/41）**；数据层 `_en`/`en` 键：practice 1431・translation 242・cosmology 107・knowledge_graph 96・frontier 236・events 0（地理史料以拉丁文为主，㉞ 重计）；全站 6 Tab+15 文章页均带 `.en-line` 全局双语机制。遗留缺口：title_en 已全、剩 title_sa/title_bo 多语待补 + translation 四文件（gap_content/diff_matrix/intertextual_canon/huayan_masters）与 practice references、locations name_en（均登记㉞ 待续梯队），person bio 级 EN 需 SQLite 增设列（考证优先暂不臆造）。
 
 ## 渲染/显示修复登记（2026-09-02 · L.㉝）
 
 - **问题**：`articles/vijnana-mind.html`（及作者怀疑「其他页面」）英文对应不显示。实测该文数据完整（72 引用块 / 69 EN 块经浏览器同款渲染器正确归类为 `.en-block`）；根因是浏览器 `localStorage` 残留的全站「仅中文」开关 `site_lang='0'` 与文章页 `article_en_hide='1'`——`common.js` 载入时读该持久状态给 `body` 加 `zh-only`，common.css 以 `display:none!important` 隐藏全站所有英文块，且跨会话永久生效。
 - **修复（㉝，源头治理改 src 再重建）**：①`web/demo/src/common.js` 阅读语言开关由持久 `localStorage` 改为**会话级 `sessionStorage`**——默认恒为中英对照，`仅中文` 只影响当前标签页会话、关标签即恢复；载入不再读旧 `site_lang`，切换时 `removeItem` 清理旧值；②`web/demo/src/article.js` 文章页「英文批注」开关同改会话级；③重建 `web/demo/js/common.js` 与全站页面，确认内置 common.js/article.js 均不再读取旧隐藏键；`verify_demo.py` ✅ ALL CHECKS PASSED。
 - **效果**：用户**无需手动清缓存**，刷新即默认显示英文（旧 localStorage 残留被忽略）。此为显示层行为修复，不改变 考证/双语 内容快照数字。
+
+## 双语纵深·批次登记（2026-09-02 · L.㉞ — 批次A/B/C部分）
+
+> ⚠️ **进度暂停说明**：本批次推进至「批次A/B/C部分」后，按用户指示**先切换到信息源考证**（见「L-A 待续梯队」），双语/多语剩余批次**全部登记于此待续梯队**，待考证任务告一段落后再继续。
+
+**批次A — chapters title_en（✅ 完成①）**：SQLite `chapters` 表 41 品目全补 `title_en`（八十华严 39 品 + 藏文独有 2 品），英文名循学界通行（Cleary *The Flower Ornament Scripture* / 84000 Toh44 译法，如 世主妙严品=The Wondrous Adornments of the Rulers of the Worlds、入法界品=Entry into the Dharma Realm、十地品=The Ten Grounds）。`backfill_chapters_title_en.py` 记录。`gap.js` 品目对照表（L833）补渲染 `ch.title_en`（`.en-line` 副行随全局开关显隐）。chapters title_en 0/41→**41/41**。
+
+**批次B — cosmology EN（✅ 完成）**：`cosmo_layers.yaml` 20 层世界均补 `n_en`（世界名）+ `b_en`（住佛名）；`three_realms.yaml` 19 层天均补 `name_en`（含梵文转写 Akaniṣṭha/Tuṣita/Trāyastriṃśa 等）+ columns/legend `label_en`。`cosmology.js` 在两图下方各增数据驱动的中英对照折叠表（`.en-line`），随全局「仅中文」开关显隐；沿 `art_treasures` 既有 `title_en` 惯例一致。
+
+**批次C部分（✅ panjiao_hupan + avatamsaka_studies）**：`panjiao_hupan.yaml` 20 节 72 题全量 EN（title_en/intro_en/en_body，循五教=five teachings、十宗=ten schools、一乘圆教=One Vehicle perfect teaching 等定译）；`avatamsaka_studies.yaml` 5 节 17 题全量 EN。`gap.js` `renderAvatamsakaStudies`/`renderPanjiaoHupan` 补渲染 `title_en`/`intro_en`/`en_body`（`.en-line`）。顺带修复 panjiao_hupan 3 处 YAML 语法（`*` 被披解析为 alias、`\'` 单引号内非法）、4 处 `title_en` 冒号未引号。
+
+**数据层 `_en` 键重计（本批新增后）**：practice 1431・translation 242（原 103、+139）・cosmology 107（原 41、+66）・frontier 236・events 0。经目 title_en 54/54 不变、chapters title_en 41/41 新增、50 术语/95 人名 EN 全覆盖不变。
+
+**验证**：`build.py` ✅ 25 files OK（16,088,370→17,088,370 B）；`verify_demo.py` ✅ **ALL CHECKS PASSED**（41 品 chapters title_en 正常入 GAP）。
+
+### 双语/多语待续梯队（⚠️ 暂停，按序续推）
+
+> 批次 C 完成度：gap_content / diff_matrix / intertextual_canon / huayan_masters 四文件仍未补 EN；且 `gap.js` 概览区（core_finding/case_studies/scholarly_perspectives/consensus/priority/版本演进硬编码块）尚含大量硬编码中文（数据已入 YAML 未消费，违反「杜绝硬编码」），需一并重构为数据驱动 + EN。
+>
+> 批次 D：practice references 约 100 条参考文献条目（dushun_wujiao/faxiang_xuanji/sanshiqi_daopin/zhuandao_ziliang/haiyun_resources 等）EN 未补。
+>
+> 批次 E：locations 表无 `name_en` 列，30 处道场英译未做（需 SQLite 加列 + db_reader/前端渲染）。
+>
+> 原文 title_sa 48 部 / title_bo 53 部多语待补；person bio 级 EN 需 SQLite 增设列（考证优先暂不臆造）。
+
+## 信息源考证·批次登记（2026-09-02 · L.㉟ — locations 14 处无来源补证）
+
+> 按用户指示（㉞ 推进至双语批次A/B/C部分后）先切换信息源考证。本批即 locations 表最后一个缺口——**14 处 `l_*` 无 `source` 记录**（verify_sources.py 审计 locations T0=14）。全部补上可信来源后 locations T0→0。
+
+**补证明细（14/14，id 661–674）**：
+
+- **一级史料 T1（5 条，循原典 CBETA 编号）**：
+  - 661 逍遥园 → `《高僧传》卷二《鸠摩罗什传》（罗什于长安逍遥园草堂寺译经，CBETA T2059）`
+  - 662 大慈恩寺·弘福寺 → `《大慈恩寺三藏法师传》（玄奘译经处：先弘福寺、后大慈恩寺，CBETA T2053）`
+  - 668 龟兹 → `《大唐西域记》卷一·屈支国（CBETA T2087）`
+  - 669 那烂陀 → `《大唐西域记》卷九·摩揭陀国（那烂陀僧伽蓝，CBETA T2087）`
+  - 670 那烂陀(参考) → 同上（同一原典）
+- **二级学术 T2（2 条）**：664 甘丹寺 → `《宗喀巴：创建格鲁派》（谢志斌·西北大学，中国藏学研究中心/中国民族报 2022）：宗喀巴1409年建格鲁派第一寺`（经 凤凰/中国西藏网/百度百科 多方核校 1409 建寺）；665 广州 → `近现代佛教史料（六祖慧能·禅宗南传地域泛称）`（地域泛称，无单一一手来源）。
+- **三级官网 T3（5 条，如实降级为官网记述）**：666 南投大华严寺 → `大华严寺官网 huayen.world`；667 加尔各答罗摩克里希纳传道会 → `贝卢尔寺官网 belurmath.org（辨喜1897创立）`；671 奈良东大寺 → `东大寺官网 www.todaiji.or.jp`；672 本地治里 Aurobindo Ashram → `官网 sriaurobindoashram.org（1926 奥罗宾多与母亲创立）`；673 阿鲁那查拉圣山 → `Sri Ramanasramam 官网`。
+- **〔待核〕T3（2 条，考证优先不臆造，如实留待核）**：663 台北福慧寺 → `〔待核〕所指未能核实：网络同名多方（大陆温岭福慧寺等），无可靠一手/官网来源`；674 阿弥塔巴·LIFE Mission道场 → `〔待核〕「阿弥塔巴·LIFE Mission」道场所指不明，未查到对应正规佛教道场来源`。
+
+**验证**：`verify_sources.py` locations **T0 14→0**（现 T1=11/T2=4/T3=15/T0=0，合计 30）；`build.py` ✅ 25 files（17,088,370→17,094,721 B，因 graph.json 30 地全带 source 入内嵌）；`verify_demo.py` ✅ **ALL CHECKS PASSED**；`test_pipeline.py` ✅ 0 FAIL。locations 至此 30/30 全有来源（0 T0、0 缺坐标）。
+
+**源头持久化（㉟·源头治理）**：14 处的 `source` 直接改在 DB 会因 `import_all_to_sqlite.py` 的 `INSERT OR REPLACE` 重导入而丢失，故按「源头治理」将来源落到三层：①`web/demo/graph.json`（import 读入的种子）14 条 `l_*` 全部补 `source` 字段（**仅补 source，保持其原有结构——edges 仍为 MASTER/INFLUENCE 旧命名、不并入导出重构，故 diff 最小 42 行**）；②`scripts/import_all_to_sqlite.py` `import_locations` 的 `source_text = lo.get('source')` 改为 `lo.get('source') or gr.get('source')`（使 graph.json 内嵌来源也能入 DB；edges 由 `normalize_relation` 归一 MASTER→MASTER_OF）；③`scripts/db_reader.py` `load_graph` 的 locations 补导出 `source`（使 `export_sqlite_to_json.py --export` 再生成 graph.json 时来源不丢）。重导入 + 再导出已实测来源全程保留；**跨层一致性已核**：DB 与 `web/demo/graph.json`、`data/knowledge_graph/locations.json` 三处 14 条来源全部一致；`locations.json` 随 `load_locations` 由 16→30 条（DB 权威 30 地全量导出，原 16 条 description/current_name/city/related_persons 均无损）；`personas.json`/`lineages.json` 因含前序批次已落地的 name_sa 等 schema 演进与 24 法系导出，与本任务无关，**已还原 HEAD 不入本 diff**（避免无关噪声）；legacy graph.json 的 100→98 边差系 graph 旧命名 `MASTER`/`INFLUENCE` 与 DB 归一 `MASTER_OF`/`INFLUENCED` 的既有漂移，DB 权威 98 边不受影响。
+
+**遗留（登记待考梯队）**：~~663 台北福慧寺与 674 阿弥塔巴·LIFE Mission 两处未能核实到可靠来源〔待核〕~~（**㊱ 后续已考证闭环，见下方「信息源考证·补证记录（㊱ 后续）」**）；671 奈良东大寺、666 南投大华严寺、672/673 印度圣地均属官网三级记述（非一手史料），若需升 T1/T2 待后补学术/一手文献；其余双语/多语批次仍登记于上方「双语纵深·待续梯队」。
+
+---
+
+## 信息源考证·补证记录（2026-09-02 · L.㊱ 后续 — 两处〔待核〕location 考证闭环）
+
+> 承接 ㉟ 遗留：663 台北福慧寺与 674 阿弥塔巴·LIFE Mission 两处此前〔待核〕（「网络同名多方」「未查到对应正规佛教道场」），本次考证补证后 **locations T0 保持 0、0 处〔待核〕**，两处缺口关闭。
+
+- **663 台北福慧寺 = 树林福慧寺（新北市树林区三兴路77号）**
+  - 一手/官网：福慧寺官网 **fuhuisih.org**（「福慧寺為『華嚴宗（賢首宗）』兼『慈恩宗（法相宗）』祖庭…慧三長老開山創建」，慧三长老1955年驻锡台北树林兴寺、定福慧寺为贤首宗祖庭及唐密秽迹金刚法根本道场，1986年示寂；现任住持体化法师〔2013年10月接任〕）
+  - 一手/官网：大华严寺官网 **huayenworld.org〈师公-钦因老和上略传〉**（钦因长老2008年9月传贤首兼慈恩宗法脉予海云继梦，为第四十二世祖位并创「大华严寺法系」）
+  - 一手：成观法师《华严法门集要》序·**abtemple.org**（2010年4月24日于此受贤首兼慈恩宗第四十二世法脉，与前「受法」记录吻合）
+  - 参照：维基百科《樹林福慧寺》条目；坐标 24.98/121.42 符合新北树林区
+  - 同步补 `city=新北市`、`province=台湾省`、`current_name=新北市树林福慧寺`
+- **674 印度阿弥塔巴·LIFE Mission = LIFE Mission（The Lakulish International Fellowship's Enlightenment Mission）**
+  - 一手/官网：LIFE Mission 官网 **lifemission.org.in / lifemission.co.in**（1993 由大瑜伽士胜师子王菩萨〔Swami Rajarshi Muni，尊者惹查西牟尼〕创立；注册于印度古吉拉特邦 Gujarat，注册号 E/643/Surendranagar；总部 Rajrajeshwadham 2007 年 1 月建成）
+  - 一手/官网：大华严寺官网 **huayenworld.org〈源流与传承〉**（胜师子王菩萨 2008 年派弟子觅承接者、力邀海云继梦亲至印度，于年底传法中领受大乘瑜伽行法灌顶与传承）
+  - 参照：YogaZen〈瑜伽与禅沿革〉（海云和上 2008 年远赴印度 LIFE Mission 求法，为胜师子王菩萨亲授瑜伽心法之首位非印度行者；2018 年再度亲赴）；Triple Crane lineage、维基百科《海云继梦》
+  - **考证要点**：此为**印度瑜伽/印度教拉克鲁希（Lakulish）灵性传承机构，非正统佛教僧团道场**——这正是原〔待核〕「未查到对应正规佛教道场」的根因（机构性质的边界已如实说明，不臆断为佛教道场）；「阿弥塔巴·LIFE」系本项目记录所用称谓，实指此 LIFE Mission
+  - 同步补 `province=古吉拉特邦`（州级已确证，城市 RAJ-RAJESHWADHAM 驻地未肯城市名，city 留空不臆造）
+- **持久化**：`web/demo/graph.json`＋`data/knowledge_graph/locations.json` 两处 source 同文更新（import_locations `lo.get('source') or gr.get('source')` 优先取 locations.json source，两处同步改以保证重导入一致）→ 重导入 SQLite（`30 imported → 30 total`，0 缺 source、0 缺坐标、0 待核）→ `verify_sources.py` locations **T0=0**（人物分 76/100 不变）→ `build.py` ✅ 25 files（17,094,381→17,101,455 B，graph 内嵌 source 随之增大）→ `verify_demo.py` ✅ **ALL CHECKS PASSED** → `test_pipeline.py` ✅ **ALL TESTS PASSED**（含 No hardcoded location names）。
+- **仍留待考（非本次缺口，如实登记）**：671 奈良东大寺、666 南投大华严寺、672/673 印度圣地仍为官网三级记述（T3），如需升 T1/T2 待补学术/一手文献；source-audit T3 余 10 条及 L-B 专题定值复审等工作项不变。
+
+
+---
+
+## 渲染修复·点击时报错登记（2026-09-02 · L.㊱ — 禅观法要 折叠块 onclick 语法错误）
+
+- **问题**：用户报告点击「📐 圆融道三大条件 + 凡夫行圆融道避讳」折叠块（Tab3 华严教行 → 禅观法要）时控制台报 `Uncaught SyntaxError: Invalid or unexpected token`（浏览器归到行 2188，实为内联 onclick 的边界误导），且当时感到该处「只有英文无中文」。
+- **根因（数据源头）**：`data/practice/chan_contemplation.yaml` 内 17 处 `wu-door` 块的 `onclick` 写成了 `onclick='this.classList.toggle(\"open\")'`（YAML literal 块里带反斜杠的 `\"`）——单引号包裹的 HTML 属性内出现 `\"` 属非法 JS 起始 token，一旦点击折叠即编译失败抛 SyntaxError。`renderChanContemplation`（`web/demo/src/practice.js` 约 L1473）经 `h += b.html` 原样注入数据 HTML，故数据即活代码。其余程序化渲染的 `wu-door`（如 `renderZhuandaoSection`/`renderSanShiQiDaoPin` 用 `onclick="...toggle(\'open\')"` 正确转义）不受影响。
+- **修复（源头治理改 YAML 再重建）**：`chan_contemplation.yaml` 17 处 `toggle(\"open\")` → `toggle("open")`（仅去掉反斜杠，保留单引号属性+内部纯双引号）。重建 `web/demo/tabs/jiaoxing.html`；Chrome CDP 实测点击该块：`display:none`→`block` 正常展开、`open` 类正常、**控制台 0 错误**；展开后正文含 263 个中文字符（如「三大核心条件: (1)对三宝的具足信……凡夫行圆融道的避讳……」）。全库扫描 `data/**/*.yaml|json` 再无 `onclick=...\"` 异常残留。`verify_demo.py` ✅ ALL CHECKS PASSED、`test_pipeline.py` 0 失败。
+- **「只有英文无中文」说明**：当前构建中文完整（本块 263 中文字符居正文），「只有英文」系用户浏览器**旧缓存/localStorage 语言开关残留**所致（同前 L.㉝ 根治方案，common.js 载入已清理旧 site_lang、默认中英对照，刷新即恢复）；非本次语法错误所致，亦非数据缺中文。
+
+---
+
+## 人员数据深化·未核实人物考证批次登记（2026-09-02 · L.㉲ — verified=0 23→14）
+
+> 承接「当前下一步」人员数据深化梯队：对此前 `verified=0` 的 23 人中可查证者逐条考证升为 `verified=1`、并对其余无力考证者如实保持 0+标注。遵守考证优先（原则 0）与「严禁假信息」（编务总则 3）。
+
+**考证闭环·升 verified=1（9 条）**
+
+- **当代学者（4 条，source 升为具体书目·T2）**：
+  - 魏道儒（person_s01，1974 中国社科院副研；专著《中国华严宗通史》**江苏古籍出版社 1998年7月初版**〔旧纪录『2001』有误，此为 2008 凤凰修订版年份〕·国家社科基金青年项目结项；《华严学与禅学》宗教文化 2011、《唐宋佛学》中国社科 2017；**2011 当选中国社科院学部委员**）
+  - 王颂（person_s02，北大哲学系教授、《宋代华严思想研究》宗教文化出版社 **2008年1月**（ISBN 9787801239594·298 页，旧无年份补实）＋《日本佛教》《华严法界观门校释研究》）
+  - 邱高兴（person_s03，**现任中国计量大学人文与外语学院教授·院长**〔旧纪录『中国人民大学』已按现任职勘误；1993-96 人大读博、曾任吉林大学教授〕；《李通玄佛学思想述评》佛光文化 2001、《〈禅源诸诠集都序〉校释》中州古籍 2008、《大乘玄论译注》佛光出版社 1997）
+  - 张文良（person_s04，**中国人民大学哲学院教授·日本东京大学博士**，专研华严学与禅宗；《澄观华严思想研究》（日文）、《“批判佛教”的批判》、《〈大乘起信论〉思想史研究》）
+- **宗派人物（5 条，source 补实）**：
+  - 胜友（person_020，印度论师·吐蕃译师 = **Jinamitra**，与天王菩提/智军共译藏文大藏经，遍照护复校；德格版甘珠尔目录、《布顿佛教史》、84000 Toh116 引言共译者，T1）
+  - 高原明昱（person_021，明末高僧·创高原法系；周叔迦《中国佛学史》1930 辅仁讲义·《贤首宗付法师资记》著录；存世著作《相宗八要解》《明昱诗集》（金陵刻经处光绪二十八年刻本等）；生卒不详〔待补〕）
+  - 净海（person_033，华严莲社第五任住持〔hy70.dila.edu.tw 历任住持表确认〕；《老实僧本色——净海长老传》法鼓文化 2020、自著《南传佛教史》法鼓文化 2014）
+  - 钦因（person_041，法名**敬缘**号钦因，1928 北平生、俗姓阎；大华严寺〈钦因老和上略传〉+ 福慧寺〈历代祖师〉一致；2008 年 9 月传法海云继梦）
+  - 思元慧三（person_f01，宛平人俗姓霍 **1901-1986**；任北京广善寺住持、1948 赴台、创树林福慧寺、后传法敬缘钦因；高原法系第十六世，历任住持表+〈历代祖师〉一致）
+- **边界说明（编务总则 6）**：以上 source 均落到**具体书目/官方传录**，其分类如实：魏道儒/王颂/邱高兴/张文良→T2（书目·著录制）；胜友/高原明昱/钦因→T1；净海→T3（华严莲社住持身份系寺志级史料，虽有出版传记背书仍据实为三级记述）。
+
+**保持 verified=0·如实留待核（14 条，均注明为何受限，不臆补）**：菩提流支〔卒年诸说未定，527 已删留空〕；明度/体佛/如孝/雪窦〔当代·无成卷独立传记文献〕；拉克鲁希/巴布基/克利普梵纳德/胜师子王菩萨/普拉梵纳德〔系派内传承记录/梦中授法，无独立一手史料〕；实忠/等定/观贤〔日本《元亨释书》孤证〕；体化性果〔福慧寺谱系自述〕。
+
+**验证**：`verify_sources.py` persons **未核实 verified 23→14**（T1 38→39、T2 42→45、T3 10→11、T0=0；人物来源评分 **76/100**——Q 高兴等 4 学者 source 初期含「官网/特刊/著录制/百度百科」等 VAGUE 词被误判 T3，按源头治理去冗仅留具体书目后 45→T2 复归 76）；`test_pipeline.py` ✅ **ALL TESTS PASSED**（含 Relation normalization 核验 MASTER_OF/INFLUENCED 规范）；`build.py` ✅ 25 files（17,130,669 B）；`verify_demo.py` ✅ **ALL CHECKS PASSED**。graph.json/DB 三处一致（95 人/98 边/30 地），重建 lineage.html 95 人 98 边与本轮数据一致。
+
+**遗留梯队**：`verified=0` 余 14 条为上述真实不可考者，保持 0+注明；name_sa 65 缺中多为中文/日系名本无梵文对应（〔待核〕留空）；person bio 级 EN（需 SQLite 增设列）与 title_sa/title_bo 多语、B/D/E 批次双语仍待续。<br>
+<br>
+<br>
+<br>

@@ -106,7 +106,7 @@ def load_graph():
     # --- Locations ---
     rows = conn.execute("""
         SELECT source_id, name_zh, lat, lng, type, dynasty, description,
-               related_persons, city, province, current_name
+               related_persons, city, province, current_name, source
         FROM locations ORDER BY id
     """).fetchall()
 
@@ -126,6 +126,7 @@ def load_graph():
             "city": r['city'],
             "province": r['province'],
             "current_name": r['current_name'],
+            "source": r['source'] or '',
         })
 
     # --- Lineage colors ---

@@ -13,9 +13,20 @@ function renderCosmology(){
   h+='<button class="cm-btn" onclick="COSMO.all=!COSMO.all;this.classList.toggle(\'on\',COSMO.all);drawCosmo()">📋 全部层名</button> ';
   h+='<span style=font-size:0.7em;color:var(--text2)>滚轮缩放 | 点击世界层查看详情 | 金色=娑婆世界</span>';
   h+='<div style=display:flex;gap:16px;flex-wrap:wrap><div style=flex:1.5;min-width:380px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-canvas style=max-width:100%></canvas></div><div style=flex:1;min-width:200px><div id=cosmo-info></div><div class=section style=margin-top:8px><h3 style=color:var(--gold)>📐 结构(从下至上)</h3><p style=font-size:0.78em;line-height:1.9>⑩~① 十重风轮<br>无边妙华光香水海<br>一切香摩尼宝庄严大莲华<br>第1~20重世界<br>★第13重: 娑婆世界(我们所在)<br>一一世界有微尘数佛刹围绕</p></div></div></div>';
+  h+='<div class=section style=margin-top:8px>'+(COSMO_LAYERS.length?
+    "<div class=wu-door onclick='this.classList.toggle(\"open\")'><span class=arrow>▶</span><span class=ttl>🌐 二十重世界·中英对照("+COSMO_LAYERS.length+"层)</span><div class=body><table class=v-table style=font-size:0.72em><tr><th>#</th><th>世界名(汉)</th><th class=en-line>World (EN)</th><th>住佛(汉)</th><th class=en-line>Buddha (EN)</th></tr>"
+    +COSMO_LAYERS.map(function(ly,i){return "<tr><td style=text-align:center>"+(i+1)+"</td><td>"+_escC(ly.n)+(ly.saha?' <span style=color:#c46b5d>★</span>':'')+"</td><td class=en-line style=color:var(--text2);font-style:italic>"+_escC(ly.n_en||'')+"</td><td>"+_escC(ly.b||'')+"</td><td class=en-line style=color:var(--text2);font-style:italic>"+_escC(ly.b_en||'')+"</td></tr>";}).join('')
+    +"</table></div></div>":"")+'</div>';
   // ── 三界诸天图 ──
   h+="<div class=section id=co-tower style=margin-top:16px><h2>📐 三界诸天·修行对应图 — 海云继梦法师修行体系</h2><p style=font-size:0.78em;color:var(--text2)>据大华严寺官网「华严禅观全程一览表」及海云法师《四十华严讲记》《华严禅行法》系列。二十八天对应<b>三阶修行次第</b>(前行/正行/妙行) + <b>十信位果位</b>(初信~入法界) + <b>禅定进路</b>(四天王定→狮子频申三昧)。源: 大华严寺官网 + fjdh.cn讲记逐字稿</p>"
-  h+='<div style=text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-tower style=max-width:100%></canvas></div></div>';
+  h+='<div style=text-align:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px><canvas id=cosmo-tower style=max-width:100%></canvas></div>';
+  var _TR=(typeof COSMO_DATA!=='undefined'&&COSMO_DATA.three_realms)?COSMO_DATA.three_realms:{};
+  if(_TR.realms&&_TR.realms.length){
+    h+='<div class=section style=margin-top:8px><div class=wu-door onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>🌐 二十八天·中英对照('+_TR.realms.length+'层)</span><div class=body><table class=v-table style=font-size:0.72em><tr><th>天(汉)</th><th class=en-line>Heaven (EN)</th><th>界</th></tr>'
+      +_TR.realms.map(function(r){return "<tr><td>"+_escC(r.n)+"</td><td class=en-line style=color:var(--text2);font-style:italic>"+_escC(r.n_en||'')+"</td><td>"+_escC(r.tp||'')+"</td></tr>";}).join('')
+      +'</table></div></div></div>';
+  }
+  h+='</div>';
 
   // ═══ 华严艺术珍品（折叠目录+缩略图 · 数据驱动 COSMO_DATA.art_treasures） ═══
   var CD = window.COSMO_DATA || {};

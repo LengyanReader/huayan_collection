@@ -1,84 +1,36 @@
 {
-  "$schema": "../schemas/lineage.schema.json",
   "version": "0.2.0",
-  "last_updated": "2024-07-24",
   "lineages": [
     {
-      "id": "lineage_hw5",
-      "name": "华严五祖",
-      "description": "从杜顺到宗密的华严宗正统传承，奠定华严宗教学与观法体系。后经宋元明清延续至高原明昱（25世），再传至当代钦因长老（41世）。",
-      "period": "557 CE — 至今",
+      "id": "lineage_临济宗",
+      "name": "临济宗",
+      "description": "",
+      "period": "",
       "edges": [
-        {"from": "person_001", "to": "person_002", "relation": "MASTER_OF", "note": "杜顺传法于智俨"},
-        {"from": "person_002", "to": "person_003", "relation": "MASTER_OF", "note": "智俨传法于法藏"},
-        {"from": "person_003", "to": "person_004", "relation": "INFLUENCED", "note": "法藏后传。澄观私淑法藏之学"},
-        {"from": "person_004", "to": "person_005", "relation": "MASTER_OF", "note": "澄观传法于宗密"},
-        {"from": "person_003", "to": "person_050", "relation": "MASTER_OF", "note": "法藏传法于新罗僧审祥，后入日本"},
-        {"from": "person_021", "to": "person_041", "relation": "INFLUENCED", "note": "高原明昱(25世)开创的高原法系传至钦因(41世)"}
-      ]
-    },
-    {
-      "id": "lineage_litx",
-      "name": "李通玄系",
-      "description": "李通玄（枣柏大师）开创的华严学在家学者传统，以《易经》融会华严。",
-      "period": "635 CE — 至今",
-      "edges": []
-    },
-    {
-      "id": "lineage_goryeo",
-      "name": "高丽华严",
-      "description": "高丽义天传入朝鲜半岛的华严教学传统。",
-      "period": "1085 CE — 至今",
-      "edges": [
-        {"from": "person_011", "to": "person_010", "relation": "MASTER_OF", "note": "净源传法于义天"},
-        {"from": "person_003", "to": "person_011", "relation": "INFLUENCED", "note": "法藏学说是净源华严教学源头"}
-      ]
-    },
-    {
-      "id": "lineage_japan",
-      "name": "日本华严",
-      "description": "日本东大寺等华严传承。审祥为初传。",
-      "period": "740 CE — 至今",
-      "edges": [
-        {"from": "person_003", "to": "person_050", "relation": "MASTER_OF", "note": "法藏传法于审祥"},
-        {"from": "person_050", "to": "person_050", "relation": "MASTER_OF", "note": "审祥赴日，于东大寺弘传华严"}
-      ]
-    },
-    {
-      "id": "lineage_yuexia",
-      "name": "月霞系（华严大学→应慈→真禅）",
-      "description": "清末月霞长老开创的现代华严传承。经由华严大学、应慈法师，传至真禅法师。",
-      "period": "1858 CE — 1995 CE",
-      "edges": [
-        {"from": "person_012", "to": "person_013", "relation": "MASTER_OF", "note": "月霞传法于常惺"},
-        {"from": "person_012", "to": "person_031", "relation": "MASTER_OF", "note": "月霞师弟应慈，共弘华严"},
-        {"from": "person_031", "to": "person_044", "relation": "MASTER_OF", "note": "应慈传法于真禅"}
-      ]
-    },
-    {
-      "id": "lineage_huayen_lotus",
-      "name": "华严莲社（智光→南亭→成一→贤度）",
-      "description": "1952年创立于台北，七代住持延续华严宗'专修、专研、专弘'传统。成一法师1975年创华严专宗学院。",
-      "period": "1952 CE — 至今",
-      "edges": [
-        {"from": "person_018", "to": "person_015", "relation": "MASTER_OF", "note": "智光(1st)传南亭(2nd)"},
-        {"from": "person_015", "to": "person_016", "relation": "MASTER_OF", "note": "南亭(2nd)传成一(3rd)"},
-        {"from": "person_016", "to": "person_032", "relation": "MASTER_OF", "note": "成一(3rd)传了中(4th)"},
-        {"from": "person_032", "to": "person_033", "relation": "MASTER_OF", "note": "了中(4th)传净海(5th)"},
-        {"from": "person_033", "to": "person_017", "relation": "MASTER_OF", "note": "净海(5th)传贤度(6th)"},
-        {"from": "person_017", "to": "person_034", "relation": "MASTER_OF", "note": "贤度(6th)传明度(7th)"}
-      ]
-    },
-    {
-      "id": "lineage_xianshou_gaoyuan",
-      "name": "贤首宗高原法系（钦因→海云继梦）",
-      "description": "自明代高原明昱（25世）起，贤首宗兼传慈恩宗（唯识）。传至41世钦因长老，2008年传衣钵予海云继梦（42世）。",
-      "period": "明代 — 至今",
-      "edges": [
-        {"from": "person_021", "to": "person_041", "relation": "INFLUENCED", "note": "高原明昱(25世)法脉传至钦因(41世)"},
-        {"from": "person_041", "to": "person_042", "relation": "MASTER_OF", "note": "钦因(41世)2008年传衣钵予海云继梦(42世)"},
-        {"from": "person_041", "to": "person_043", "relation": "MASTER_OF", "note": "钦因另传体佛法师等法嗣"},
-        {"from": "person_041", "to": "person_126", "relation": "MASTER_OF", "note": "钦因(41世)2010年4月24日传华严兼慈恩法脉予成观法师(42世)"}
+        {
+          "from": "person_x01",
+          "to": "person_x02",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_x01",
+          "to": "person_s04",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_x01",
+          "to": "person_x03",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_x02",
+          "to": "person_x03",
+          "relation": "CONTEMPORARY",
+          "note": ""
+        }
       ]
     },
     {
@@ -87,7 +39,440 @@
       "description": "梦参长老为临济宗第46代，1991年破例剃度海云继梦，赐法名昌一（第47代）。",
       "period": "1991 CE",
       "edges": [
-        {"from": "person_019", "to": "person_042", "relation": "MASTER_OF", "note": "梦参1991年剃度海云继梦（临济第47代）"}
+        {
+          "from": "person_019",
+          "to": "person_042",
+          "relation": "MASTER_OF",
+          "note": "梦参1991年剃度海云继梦（临济第47代）"
+        }
+      ]
+    },
+    {
+      "id": "lineage_华严·禅宗互动",
+      "name": "华严·禅宗互动",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_005",
+          "to": "person_044",
+          "relation": "INFLUENCED",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_华严·译场合作",
+      "name": "华严·译场合作",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_003",
+          "to": "person_007",
+          "relation": "CONTEMPORARY",
+          "note": "法藏参与实叉难陀译场并证义"
+        }
+      ]
+    },
+    {
+      "id": "lineage_hw5",
+      "name": "华严五祖",
+      "description": "从杜顺到宗密的华严宗正统传承，奠定华严宗教学与观法体系。后经宋元明清延续至高原明昱（25世），再传至当代钦因长老（41世）。",
+      "period": "557 CE — 至今",
+      "edges": [
+        {
+          "from": "person_001",
+          "to": "person_002",
+          "relation": "MASTER_OF",
+          "note": "杜顺传法于智俨"
+        },
+        {
+          "from": "person_002",
+          "to": "person_003",
+          "relation": "MASTER_OF",
+          "note": "智俨传法于法藏"
+        },
+        {
+          "from": "person_003",
+          "to": "person_004",
+          "relation": "INFLUENCED",
+          "note": "法藏后传。澄观私淑法藏之学"
+        },
+        {
+          "from": "person_004",
+          "to": "person_005",
+          "relation": "MASTER_OF",
+          "note": "澄观传法于宗密"
+        },
+        {
+          "from": "person_003",
+          "to": "person_050",
+          "relation": "MASTER_OF",
+          "note": "法藏传法于审祥"
+        },
+        {
+          "from": "person_021",
+          "to": "person_041",
+          "relation": "INFLUENCED",
+          "note": "高原明昱(25世)法脉传至钦因(41世)"
+        },
+        {
+          "from": "person_003",
+          "to": "person_070",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_070",
+          "to": "person_004",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_001",
+          "to": "person_060",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_021",
+          "to": "person_080",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_002",
+          "to": "person_061",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_090",
+          "to": "person_001",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_011",
+          "to": "person_091",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_091",
+          "to": "person_010",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_104",
+          "to": "person_090",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_005",
+          "to": "person_004",
+          "relation": "MASTER_OF",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_huayen_lotus",
+      "name": "华严莲社（智光→南亭→成一→贤度）",
+      "description": "1952年创立于台北，七代住持延续华严宗'专修、专研、专弘'传统。成一法师1975年创华严专宗学院。",
+      "period": "1952 CE — 至今",
+      "edges": [
+        {
+          "from": "person_018",
+          "to": "person_015",
+          "relation": "MASTER_OF",
+          "note": "智光(1st)传南亭(2nd)"
+        },
+        {
+          "from": "person_015",
+          "to": "person_016",
+          "relation": "MASTER_OF",
+          "note": "南亭(2nd)传成一(3rd)"
+        },
+        {
+          "from": "person_016",
+          "to": "person_032",
+          "relation": "MASTER_OF",
+          "note": "成一(3rd)传了中(4th)"
+        },
+        {
+          "from": "person_032",
+          "to": "person_033",
+          "relation": "MASTER_OF",
+          "note": "了中(4th)传净海(5th)"
+        },
+        {
+          "from": "person_033",
+          "to": "person_017",
+          "relation": "MASTER_OF",
+          "note": "净海(5th)传贤度(6th)"
+        },
+        {
+          "from": "person_017",
+          "to": "person_034",
+          "relation": "MASTER_OF",
+          "note": "贤度(6th)传明度(7th)"
+        }
+      ]
+    },
+    {
+      "id": "lineage_translators",
+      "name": "华严译师谱系",
+      "description": "汉藏华严经主要翻译者及其文本传承关联。覆盖后汉至唐约500年。",
+      "period": "167 CE — 840 CE",
+      "edges": [
+        {
+          "from": "person_007b",
+          "to": "person_006",
+          "relation": "INFLUENCED",
+          "note": "支娄迦谶首译《兜沙经》（167 CE）→佛驮跋陀罗译六十华严（420 CE）"
+        },
+        {
+          "from": "person_006",
+          "to": "person_007",
+          "relation": "INFLUENCED",
+          "note": "六十华严（420）→八十华严（699）是重译与扩充关系"
+        },
+        {
+          "from": "person_007",
+          "to": "person_008",
+          "relation": "INFLUENCED",
+          "note": "八十华严（699）→四十华严（798）补全《入法界品》"
+        },
+        {
+          "from": "person_003",
+          "to": "person_007",
+          "relation": "INFLUENCED",
+          "note": "法藏参与实叉难陀译场并证义"
+        },
+        {
+          "from": "person_103",
+          "to": "person_007",
+          "relation": "INFLUENCED",
+          "note": "鸠摩罗什译经传统影响后世译师"
+        },
+        {
+          "from": "person_103",
+          "to": "person_006",
+          "relation": "INFLUENCED",
+          "note": "罗什先译十住经,佛驮继译六十华严"
+        },
+        {
+          "from": "person_103",
+          "to": "person_110",
+          "relation": "INFLUENCED",
+          "note": "罗什在中亚的声望间接促使法显西行"
+        }
+      ]
+    },
+    {
+      "id": "lineage_印度源流",
+      "name": "印度源流",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_101",
+          "to": "person_000a",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_102",
+          "to": "person_000b",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_000a",
+          "to": "person_102",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_101",
+          "to": "person_102",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_105",
+          "to": "person_100",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_106",
+          "to": "person_100",
+          "relation": "INFLUENCED",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_参考线",
+      "name": "参考线",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_140",
+          "to": "person_141",
+          "relation": "MASTER_OF",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_地论→华严",
+      "name": "地论→华严",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_090",
+          "to": "person_001",
+          "relation": "INFLUENCED",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_地论学派",
+      "name": "地论学派",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_104",
+          "to": "person_090",
+          "relation": "MASTER_OF",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_大乘瑜伽行法",
+      "name": "大乘瑜伽行法",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_130",
+          "to": "person_131",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_131",
+          "to": "person_132",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_132",
+          "to": "person_133",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_133",
+          "to": "person_134",
+          "relation": "MASTER_OF",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_大乘瑜伽行法(2008.12传法灌顶)",
+      "name": "大乘瑜伽行法(2008.12传法灌顶)",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_134",
+          "to": "person_042",
+          "relation": "MASTER_OF",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_密宗传承(开元三大士→空海)",
+      "name": "密宗传承(开元三大士→空海)",
+      "description": "",
+      "period": "",
+      "edges": [
+        {
+          "from": "person_120",
+          "to": "person_122",
+          "relation": "MASTER_OF",
+          "note": "善无畏传胎藏界密法予一行"
+        },
+        {
+          "from": "person_121",
+          "to": "person_115",
+          "relation": "MASTER_OF",
+          "note": "金刚智传金刚界密法予不空"
+        },
+        {
+          "from": "person_120",
+          "to": "person_121",
+          "relation": "CONTEMPORARY",
+          "note": "善无畏与金刚智同在长安开元间传密法,合称开元三大士"
+        },
+        {
+          "from": "person_115",
+          "to": "person_123",
+          "relation": "MASTER_OF",
+          "note": "不空传两部密法予慧果"
+        },
+        {
+          "from": "person_123",
+          "to": "person_124",
+          "relation": "MASTER_OF",
+          "note": "慧果于青龙寺传法予空海,空海归日本创真言宗"
+        },
+        {
+          "from": "person_124",
+          "to": "person_003",
+          "relation": "INFLUENCED",
+          "note": "空海《十住心论》以华严判教框架判摄显密,体现密教与华严之对话"
+        },
+        {
+          "from": "person_115",
+          "to": "person_005",
+          "relation": "CONTEMPORARY",
+          "note": "不空与宗密同代,密宗与华严宗有义学互动"
+        },
+        {
+          "from": "person_122",
+          "to": "person_005",
+          "relation": "CONTEMPORARY",
+          "note": "一行与澄观同时代,天文学与华严宇宙观可比较"
+        }
+      ]
+    },
+    {
+      "id": "lineage_dangdai",
+      "name": "当代华严学者网络",
+      "description": "如孝法师、贤度法师等当代华严思想研究者与实践弘传者构成的松散网络。",
+      "period": "2000 CE — 至今",
+      "edges": [
+        {
+          "from": "person_017",
+          "to": "person_045",
+          "relation": "CONTEMPORARY",
+          "note": "贤度与如孝同为当代华严弘扬者"
+        }
       ]
     },
     {
@@ -98,61 +483,300 @@
       "edges": []
     },
     {
-      "id": "lineage_dangdai",
-      "name": "当代华严学者网络",
-      "description": "如孝法师、贤度法师等当代华严思想研究者与实践弘传者构成的松散网络。",
-      "period": "2000 CE — 至今",
+      "id": "lineage_japan",
+      "name": "日本华严",
+      "description": "日本东大寺等华严传承。审祥为初传。",
+      "period": "740 CE — 至今",
       "edges": [
-        {"from": "person_017", "to": "person_045", "relation": "CONTEMPORARY", "note": "贤度与如孝同为当代华严弘扬者"}
+        {
+          "from": "person_003",
+          "to": "person_050",
+          "relation": "MASTER_OF",
+          "note": "法藏传法于审祥"
+        },
+        {
+          "from": "person_050",
+          "to": "person_j01",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_j01",
+          "to": "person_j02",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_j02",
+          "to": "person_j03",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_j03",
+          "to": "person_j04",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_j03",
+          "to": "person_j05",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_j05",
+          "to": "person_j06",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_j06",
+          "to": "person_j07",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_050",
+          "to": "person_050",
+          "relation": "MASTER_OF",
+          "note": "审祥赴日，于东大寺弘传华严"
+        }
       ]
     },
     {
-      "id": "lineage_translators",
-      "name": "华严译师谱系",
-      "description": "汉藏华严经主要翻译者及其文本传承关联。覆盖后汉至唐约500年。",
-      "period": "167 CE — 840 CE",
+      "id": "lineage_月霞系",
+      "name": "月霞系",
+      "description": "",
+      "period": "",
       "edges": [
-        {"from": "person_007b", "to": "person_006", "relation": "INFLUENCED", "note": "支娄迦谶首译《兜沙经》（167 CE）→佛驮跋陀罗译六十华严（420 CE）"},
-        {"from": "person_006", "to": "person_007", "relation": "INFLUENCED", "note": "六十华严（420）→八十华严（699）是重译与扩充关系"},
-        {"from": "person_007", "to": "person_008", "relation": "INFLUENCED", "note": "八十华严（699）→四十华严（798）补全《入法界品》"},
-        {"from": "person_003", "to": "person_007", "relation": "INFLUENCED", "note": "法藏参与实叉难陀译场并证义"},
-        {"from": "person_103", "to": "person_007", "relation": "INFLUENCED", "note": "鸠摩罗什译经传统影响后世译师"},
-        {"from": "person_103", "to": "person_006", "relation": "INFLUENCED", "note": "罗什先译十住经,佛驮继译六十华严"},
-        {"from": "person_103", "to": "person_110", "relation": "INFLUENCED", "note": "罗什在中亚的声望间接促使法显西行"}
+        {
+          "from": "person_012",
+          "to": "person_092",
+          "relation": "MASTER_OF",
+          "note": ""
+        }
       ]
     },
     {
+      "id": "lineage_yuexia",
+      "name": "月霞系（华严大学→应慈→真禅）",
+      "description": "清末月霞长老开创的现代华严传承。经由华严大学、应慈法师，传至真禅法师。",
+      "period": "1858 CE — 1995 CE",
+      "edges": [
+        {
+          "from": "person_012",
+          "to": "person_013",
+          "relation": "MASTER_OF",
+          "note": "月霞传法于常惺"
+        },
+        {
+          "from": "person_012",
+          "to": "person_031",
+          "relation": "MASTER_OF",
+          "note": "月霞师弟应慈，共弘华严"
+        },
+        {
+          "from": "person_031",
+          "to": "person_044",
+          "relation": "MASTER_OF",
+          "note": "应慈传法于真禅"
+        }
+      ]
+    },
+    {
+      "id": "lineage_litx",
+      "name": "李通玄系",
+      "description": "李通玄（枣柏大师）开创的华严学在家学者传统，以《易经》融会华严。",
+      "period": "635 CE — 至今",
+      "edges": []
+    },
+    {
+      "id": "lineage_求法僧与译师网络",
       "name": "求法僧与译师网络",
+      "description": "",
+      "period": "",
       "edges": [
-        {"from": "person_111", "to": "person_102", "relation": "MASTER_OF", "note": "玄奘在那烂陀师从戒贤,戒贤属无著世亲瑜伽行派传承"},
-        {"from": "person_111", "to": "person_112", "relation": "INFLUENCED", "note": "玄奘开创的求法传统直接影响义净"},
-        {"from": "person_110", "to": "person_006", "relation": "INFLUENCED", "note": "法显《佛国记》记录了佛驮跋陀罗故乡迦毗罗卫"},
-        {"from": "person_110", "to": "person_111", "relation": "INFLUENCED", "note": "法显的求法经历鼓舞了玄奘"},
-        {"from": "person_111", "to": "person_001", "relation": "CONTEMPORARY", "note": "玄奘与杜顺同代,唯识与华严初创期有义学对话"},
-        {"from": "person_111", "to": "person_003", "relation": "CONTEMPORARY", "note": "玄奘与法藏父亲相识,法藏曾参访玄奘译场"},
-        {"from": "person_112", "to": "person_003", "relation": "CONTEMPORARY", "note": "义净与法藏同时代,同为译场主持者"},
-        {"from": "person_008", "to": "person_112", "relation": "CONTEMPORARY", "note": "般若(四十华严译者)与义净同为唐代译师"},
-        {"from": "person_113", "to": "person_104", "relation": "INFLUENCED", "note": "真谛译摄大乘论→菩提流支译十地经论,唯识学两条入华路径"},
-        {"from": "person_113", "to": "person_114", "relation": "INFLUENCED", "note": "真谛与求那跋陀罗同为南朝四大译师"},
-        {"from": "person_115", "to": "person_003", "relation": "CONTEMPORARY", "note": "不空与法藏同代,密宗与华严密法有历史关联"},
-        {"from": "person_116", "to": "person_006", "relation": "INFLUENCED", "note": "竺法护译十地品别译→佛驮跋陀罗译六十华严,补全华严品目"},
-        {"from": "person_116", "to": "person_007b", "relation": "INFLUENCED", "note": "竺法护继支谶后继续翻译华严单行经"},
-        {"from": "person_117", "to": "person_111", "relation": "INFLUENCED", "note": "慧超《往五天竺国传》补充了玄奘《大唐西域记》之后的印度信息"},
-        {"from": "person_117", "to": "person_112", "relation": "INFLUENCED", "note": "慧超继义净之后的新罗求法僧,延续海路求法传统"},
-        {"from": "person_007b", "to": "person_116", "relation": "INFLUENCED", "note": "支谶开华严汉译先河→竺法护系统翻译多部华严单行经"}
+        {
+          "from": "person_111",
+          "to": "person_102",
+          "relation": "MASTER_OF",
+          "note": "玄奘在那烂陀师从戒贤,戒贤属无著世亲瑜伽行派传承"
+        },
+        {
+          "from": "person_111",
+          "to": "person_112",
+          "relation": "INFLUENCED",
+          "note": "玄奘开创的求法传统直接影响义净"
+        },
+        {
+          "from": "person_110",
+          "to": "person_006",
+          "relation": "INFLUENCED",
+          "note": "法显《佛国记》记录了佛驮跋陀罗故乡迦毗罗卫"
+        },
+        {
+          "from": "person_110",
+          "to": "person_111",
+          "relation": "INFLUENCED",
+          "note": "法显的求法经历鼓舞了玄奘"
+        },
+        {
+          "from": "person_111",
+          "to": "person_001",
+          "relation": "CONTEMPORARY",
+          "note": "玄奘与杜顺同代,唯识与华严初创期有义学对话"
+        },
+        {
+          "from": "person_111",
+          "to": "person_003",
+          "relation": "CONTEMPORARY",
+          "note": "玄奘与法藏父亲相识,法藏曾参访玄奘译场"
+        },
+        {
+          "from": "person_112",
+          "to": "person_003",
+          "relation": "CONTEMPORARY",
+          "note": "义净与法藏同时代,同为译场主持者"
+        },
+        {
+          "from": "person_008",
+          "to": "person_112",
+          "relation": "CONTEMPORARY",
+          "note": "般若(四十华严译者)与义净同为唐代译师"
+        },
+        {
+          "from": "person_113",
+          "to": "person_104",
+          "relation": "INFLUENCED",
+          "note": "真谛译摄大乘论→菩提流支译十地经论,唯识学两条入华路径"
+        },
+        {
+          "from": "person_113",
+          "to": "person_114",
+          "relation": "INFLUENCED",
+          "note": "真谛与求那跋陀罗同为南朝四大译师"
+        },
+        {
+          "from": "person_115",
+          "to": "person_003",
+          "relation": "CONTEMPORARY",
+          "note": "不空与法藏同代,密宗与华严密法有历史关联"
+        },
+        {
+          "from": "person_116",
+          "to": "person_006",
+          "relation": "INFLUENCED",
+          "note": "竺法护译十地品别译→佛驮跋陀罗译六十华严,补全华严品目"
+        },
+        {
+          "from": "person_116",
+          "to": "person_007b",
+          "relation": "INFLUENCED",
+          "note": "竺法护继支谶后继续翻译华严单行经"
+        },
+        {
+          "from": "person_117",
+          "to": "person_111",
+          "relation": "INFLUENCED",
+          "note": "慧超《往五天竺国传》补充了玄奘《大唐西域记》之后的印度信息"
+        },
+        {
+          "from": "person_117",
+          "to": "person_112",
+          "relation": "INFLUENCED",
+          "note": "慧超继义净之后的新罗求法僧,延续海路求法传统"
+        },
+        {
+          "from": "person_007b",
+          "to": "person_116",
+          "relation": "INFLUENCED",
+          "note": "支谶开华严汉译先河→竺法护系统翻译多部华严单行经"
+        }
       ]
     },
     {
-      "name": "密宗传承(开元三大士→空海)",
+      "id": "lineage_贤首宗高原法系",
+      "name": "贤首宗高原法系",
+      "description": "",
+      "period": "",
       "edges": [
-        {"from": "person_120", "to": "person_122", "relation": "MASTER_OF", "note": "善无畏传胎藏界密法予一行"},
-        {"from": "person_121", "to": "person_115", "relation": "MASTER_OF", "note": "金刚智传金刚界密法予不空"},
-        {"from": "person_120", "to": "person_121", "relation": "CONTEMPORARY", "note": "善无畏与金刚智同在长安开元间传密法,合称开元三大士"},
-        {"from": "person_115", "to": "person_123", "relation": "MASTER_OF", "note": "不空传两部密法予慧果"},
-        {"from": "person_123", "to": "person_124", "relation": "MASTER_OF", "note": "慧果于青龙寺传法予空海,空海归日本创真言宗"},
-        {"from": "person_124", "to": "person_003", "relation": "INFLUENCED", "note": "空海《十住心论》以华严判教框架判摄显密,体现密教与华严之对话"},
-        {"from": "person_115", "to": "person_005", "relation": "CONTEMPORARY", "note": "不空与宗密同代,密宗与华严宗有义学互动"},
-        {"from": "person_122", "to": "person_005", "relation": "CONTEMPORARY", "note": "一行与澄观同时代,天文学与华严宇宙观可比较"}
+        {
+          "from": "person_f01",
+          "to": "person_041",
+          "relation": "MASTER_OF",
+          "note": ""
+        },
+        {
+          "from": "person_041",
+          "to": "person_f02",
+          "relation": "MASTER_OF",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "lineage_xianshou_gaoyuan",
+      "name": "贤首宗高原法系（钦因→海云继梦）",
+      "description": "自明代高原明昱（25世）起，贤首宗兼传慈恩宗（唯识）。传至41世钦因长老，2008年传衣钵予海云继梦（42世）。",
+      "period": "明代 — 至今",
+      "edges": [
+        {
+          "from": "person_021",
+          "to": "person_041",
+          "relation": "INFLUENCED",
+          "note": "高原明昱(25世)法脉传至钦因(41世)"
+        },
+        {
+          "from": "person_041",
+          "to": "person_042",
+          "relation": "MASTER_OF",
+          "note": "钦因(41世)2008年传衣钵予海云继梦(42世)"
+        },
+        {
+          "from": "person_041",
+          "to": "person_043",
+          "relation": "MASTER_OF",
+          "note": "钦因另传体佛法师等法嗣"
+        },
+        {
+          "from": "person_041",
+          "to": "person_126",
+          "relation": "MASTER_OF",
+          "note": "钦因(41世)2010年4月24日传华严兼慈恩法脉予成观法师(42世)"
+        }
+      ]
+    },
+    {
+      "id": "lineage_goryeo",
+      "name": "高丽华严",
+      "description": "高丽义天传入朝鲜半岛的华严教学传统。",
+      "period": "1085 CE — 至今",
+      "edges": [
+        {
+          "from": "person_011",
+          "to": "person_010",
+          "relation": "MASTER_OF",
+          "note": "净源传法于义天"
+        },
+        {
+          "from": "person_003",
+          "to": "person_011",
+          "relation": "INFLUENCED",
+          "note": "法藏学说是净源华严教学源头"
+        },
+        {
+          "from": "person_011",
+          "to": "person_062",
+          "relation": "INFLUENCED",
+          "note": ""
+        },
+        {
+          "from": "person_062",
+          "to": "person_010",
+          "relation": "INFLUENCED",
+          "note": ""
+        }
       ]
     }
   ]

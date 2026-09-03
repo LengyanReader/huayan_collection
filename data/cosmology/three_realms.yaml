@@ -8,10 +8,12 @@ columns:
     x: 10
     w: 120
     label: "修行次第(海云法师体系)"
+    label_en: "Practice Stages (Ven. Haiyun Jimeng's system)"
   heaven:
     x: 140
     w: 40
     label: "二十八天"
+    label_en: "The Twenty-Eight Heavens"
   bar:
     x: 280
     w: 260
@@ -19,14 +21,17 @@ columns:
     x: 560
     w: 120
     label: "十信位·果位"
+    label_en: "Ten Faiths · Stages of Attainment"
   method:
     x: 680
     w: 180
     label: "禅定进路"
+    label_en: "Path of Meditative Absorption (dhyāna)"
 
 # 19 rows from highest to lowest
 realms:
   - n: "非想非非想处天"
+    n_en: "Heaven of Neither Perception nor Non-Perception (Nevasaññānāsaññāyatana)"
     tp: "无色界"
     tc: "#8b7a9e"
     c: "rgba(180,170,210,0.12)"
@@ -35,12 +40,14 @@ realms:
     ding: "狮子频申三昧(华严大定)"
 
   - n: "无所有处天"
+    n_en: "Heaven of Nothingness (Ākiñcanyāyatana)"
     tp: "无色界"
     tc: "#8b7a9e"
     c: "rgba(180,170,210,0.08)"
     ding: "狮子奋迅三昧"
 
   - n: "识无边处天"
+    n_en: "Heaven of Infinite Consciousness (Viññāṇañcāyatana)"
     tp: "无色界"
     tc: "#8b7a9e"
     c: "rgba(180,170,210,0.08)"
@@ -48,6 +55,7 @@ realms:
     ding: "超越三昧"
 
   - n: "空无边处天"
+    n_en: "Heaven of Infinite Space (Ākāsānañcāyatana)"
     tp: "无色界"
     tc: "#8b7a9e"
     c: "rgba(180,170,210,0.08)"
@@ -55,6 +63,7 @@ realms:
     ding: "九次第定(灭尽定)"
 
   - n: "色究竟天"
+    n_en: "Heaven of the End of Form (Akaniṣṭha)"
     tp: "色界"
     tc: "#5e8b9e"
     c: "rgba(150,180,200,0.12)"
@@ -63,12 +72,14 @@ realms:
     ding: "四禅(舍念清净)"
 
   - n: "善现·善见·无热·无烦天"
+    n_en: "Heavens of Sublime Presence, Good Seeing, Without Heat, Without Affliction"
     tp: "色界"
     tc: "#5e8b9e"
     c: "rgba(150,180,200,0.10)"
     xin: "八信·发心破法执"
 
   - n: "无云·福生·广果天"
+    n_en: "Heavens of No Cloud, Birth of Merit, and Vast Fruition"
     tp: "色界"
     tc: "#5e8b9e"
     c: "rgba(150,180,200,0.09)"
@@ -76,6 +87,7 @@ realms:
     ding: "四禅"
 
   - n: "少净·无量净·遍净天"
+    n_en: "Heavens of Lesser Purity, Measureless Purity, and All-Pervading Purity"
     tp: "色界"
     tc: "#5e8b9e"
     c: "rgba(160,190,210,0.09)"
@@ -83,6 +95,7 @@ realms:
     ding: "三禅"
 
   - n: "少光·无量光·光音天"
+    n_en: "Heavens of Lesser Radiance, Measureless Radiance, and Radiant Sound (Ābhāsvara)"
     tp: "色界"
     tc: "#5e8b9e"
     c: "rgba(170,200,220,0.09)"
@@ -90,6 +103,7 @@ realms:
     ding: "二禅"
 
   - n: "梵众·梵辅·大梵天"
+    n_en: "Heavens of the Retinue of Brahmā, Ministers of Brahmā, and Great Brahmā"
     tp: "色界"
     tc: "#5e8b9e"
     c: "rgba(180,210,230,0.09)"
@@ -97,6 +111,7 @@ realms:
     ding: "初禅"
 
   - n: "他化自在天"
+    n_en: "Heaven of Enjoying the Creations of Others (Paranirmitavaśavartin)"
     tp: "欲界"
     tc: "#c46b5d"
     c: "rgba(210,160,140,0.12)"
@@ -105,22 +120,26 @@ realms:
     ding: "未到定"
 
   - n: "化乐天"
+    n_en: "Heaven of Emanating Pleasures (Nirmāṇarati)"
     tp: "欲界"
     tc: "#c46b5d"
     c: "rgba(210,160,140,0.10)"
 
   - n: "兜率天"
+    n_en: "Tuṣita Heaven"
     tp: "欲界"
     tc: "#c46b5d"
     c: "rgba(210,160,140,0.10)"
     ding: "弥勒菩萨内院"
 
   - n: "夜摩天"
+    n_en: "Yāma Heaven"
     tp: "欲界"
     tc: "#c46b5d"
     c: "rgba(210,160,140,0.10)"
 
   - n: "忉利天(三十三天)"
+    n_en: "Trāyastriṃśa Heaven (Heaven of the Thirty-Three)"
     tp: "欲界"
     tc: "#c46b5d"
     c: "rgba(200,155,135,0.12)"
@@ -129,6 +148,7 @@ realms:
     ding: "忉利定/妙高定"
 
   - n: "四天王天"
+    n_en: "Heaven of the Four Great Kings (Cāturmahārājika)"
     tp: "欲界"
     tc: "#c46b5d"
     c: "rgba(200,155,135,0.10)"
@@ -136,6 +156,7 @@ realms:
     ding: "四天王定"
 
   - n: "人间(南赡部洲)"
+    n_en: "Human Realm (Jambudvīpa)"
     tp: "人间"
     tc: "#b8863c"
     c: "rgba(184,134,60,0.18)"
@@ -144,6 +165,7 @@ realms:
     ding: "欲界定·安般守意"
 
   - n: "畜生·饿鬼·地狱"
+    n_en: "Animals · Hungry Ghosts · Hells"
     tp: "恶道"
     tc: "#8a7060"
     c: "rgba(140,120,100,0.10)"
@@ -153,12 +175,16 @@ realms:
 # Legend
 legend:
   - n: "无色界(妙行)"
+    n_en: "Formless Realm (Wondrous Practice)"
     c: "#8b7a9e"
   - n: "色界(正行)"
+    n_en: "Realm of Form (Proper Practice)"
     c: "#5e8b9e"
   - n: "欲界(前行)"
+    n_en: "Realm of Desire (Preliminary Practice)"
     c: "#c46b5d"
   - n: "人间·恶道"
+    n_en: "Human Realm · Lower Destinies"
     c: "#b8863c"
 
 source: "大华严寺官网·华严禅观全程一览表 + 海云继梦《四十华严讲记》"
