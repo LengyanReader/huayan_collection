@@ -96,3 +96,14 @@ others:
       label: 前沿对话 · 与佛教的对话 · 瑜伽行派
     views:
       - yogacara
+  - id: chan-beyond
+    icon: 🧘
+    title: 六祖南宗禅以外的禅法传统
+    title_sub: 禅法全览 · 达摩系诸支与南宗以外诸禅法 · 中英对读
+    doc: docs/禅法传统_中英对读_合并.md
+    back:
+      tab: jiaoxing
+      view: chan_traces
+      label: 教行页 · 禅门实迹
+    views:
+      - chan_traces

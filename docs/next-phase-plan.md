@@ -393,3 +393,16 @@ python scripts/verify_demo.py
 <br>
 <br>
 <br>
+
+---
+
+## 独立文章·禅法传统中英对读发布（2026-09-03 · L.㊳ — 六祖南宗禅以外诸禅法）
+
+> 承接对 `docs/六祖南宗禅以外的禅法传统研究.md`（中文 96 KB）+ `docs/Chan Traditions Beyond Huineng's Southern School.md`（英文 166 KB）两篇同构文档的全面考证审查（含精确度抽查与完整性核对，质量达可发布级）后，按用户选择将其**以单文件合并、沿用全站内联双语标记机制**发布为独立文章。遵守编务总则 0（考证优先）/1（中英必配）/3（严禁假信息）/5（进度留痕）/6（边界自知）。
+
+- **合并文件**：`docs/禅法传统_中英对读_合并.md`（中英逐节对读，中文正文 + `> **EN对应 · ...**` 内联英文块）；**信息无损**（脚本逐节配对后双重校验：源 ZH 内容行 0 缺失、源 EN 内容行 + 59/59 EN 标题题词（以 `**EN对应 · <题词>**` 块标引）全数保留）。
+- **发布接线**：`data/translation/standalone_articles.yaml` `others:` 新增 `id: chan-beyond`（icon 🧘，title 六祖南宗禅以外的禅法传统，`back.view: chan_traces`[教行页·禅门实迹]，`views: [chan_traces]`）；build.py 自动生成 `web/demo/articles/chan-beyond.html`（独立 URL，312 KB，全站最大——含中英全文），并在 jiaoxing 禅门实迹子页以 `articleChip` 挂「独立文章页」入口（含页内展开全文）。
+- **考证调优（2 处弱引文补〔待核〕，中英同文）**：正文据传妙莲长老多次圆满九十日般舟三昧、京都永观堂永观律师感应传说两处，双侧补〔待核〕声明——「系依寺院口述与历代记载流传，实为传统信史而非现代学术考订，转述时存其原貌、不作实证断言」（对应英文 "Pending verification (待核)…rest on temple oral tradition…without claim of empirical proof"）。
+- **渲染验证**：`build.py` ✅ 26 files（17,748,688→17,748,714 B）；`verify_demo.py` ✅ **ALL CHECKS PASSED**（含 `articles/chan-beyond.html all checks`、`jiaoxing: ARTICLE_DOCS embeds all inline docs`、`articles/index: 16`）；`test_pipeline.py` ✅ **ALL TESTS PASSED**（95 人/98 边/30 地一致）。**真实浏览器（headless Chrome dump）运行时渲染确认**：英文块以 65 个 `<blockquote class*=en-block>` 渲染（编译器 `l.trim().indexOf('>')===0` 连续 `>` 收集→`_mdInline`），随「仅中文」折叠；可见文本含 **29,456 个中文字符**（妙莲/永观/〔待核〕/安世高/道信/天台/般舟/达摩/慧远/菩提 等全在）＋英文（Eikan/Bodhidharma/Pending verification 均在）——中英对照阅读与仅中文折叠双模式均正常。合并文内已无块内原始 `#` 残留（EN 标题题词均作 `**…**` 块标引）。
+- **发布位置选择理由**：主题为「六祖南宗禅以外的禅法传统」（北宗/牛头/蜀地禅系/天台/净土/唯识/华严/密/南传/本土），与其天然契合的 jiaoxing「禅门实迹（chan_traces）」子页最优；沿用 vijnana-mind/mirror-mind 的单文件中英合并先例，架构零改动。
+- **遗留（边界自知）**：两篇**源文档**（纯中文/纯英文各自独立）保持不变，作为研究素材留存；合并文件为发布成品（迭代调整在合并文件上进行，必要时同步回源）。正文末尾「主要参考文献（举要）」与英译 Bibliography 均为举要性质、未含页码（文中已如实自述），若后续需要可升格为全录。
