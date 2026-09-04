@@ -597,6 +597,10 @@ function renderPanjiaoSection() {
   var pj = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.huayan_panjiao) ? PRACTICE_DATA.huayan_panjiao : null;
   if (!pj || !pj.sections) return '';
   var h = '';
+  // 顶部入口：引用「判教互判」独立文章（诸家教相系统之比较与完整研究）
+  h += '<div class="article-chip" style="margin:0 0 12px">';
+  h += '<a href="../articles/panjiao.html" title="打开「判教互判」独立文章页">⚖️ 判教互判 · 佛界/道家/学界/诸宗教相系统之全方位比较（独立全文研究）↗</a>';
+  h += '</div>';
   pj.sections.forEach(function(sec) {
     if (sec.id === 'wujiao') {
       // ── 五教表格 ──

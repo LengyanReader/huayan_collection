@@ -418,3 +418,76 @@ python scripts/verify_demo.py
 - **② 独立页面（数据驱动 standalone article）**：注册 `standalone_articles.yaml` `others:` **`id: chan-traces`**（icon 🌱，title **禅门实迹·全貌**，sub 全球学界/门内实修/近现代/海云/祖师传承·含六祖南宗禅深化·中英对读，`data_source: chan_authentic_traces`，`back: jiaoxing/chan_traces`，`views:[chan_traces]`）——**由 doc 驱动改为数据驱动**。build.py 新增 `data_source` 机制：`load_standalone_articles` 的 others 条目带 `data_source`；`build_articles` 内嵌 `var PRACTICE_DATA`（仅该数据源）+ 自包含渲染脚本常量 `CHAN_TRACES_RENDER`（与 practice.js `renderChanTraces` **同构的演示层代码**，正文单存 YAML）→ `articles/chan-traces.html`（**77,684 B**，完整禅门实迹）。删除已弃用的 `docs/六祖南宗禅_禅门实迹_中英对读.md`。`verify_demo.py` 文章校验放宽为接受「doc 驱动（doc_md+renderArticle）或数据驱动（PRACTICE_DATA+renderChanTraces）」二形式。`chan-beyond`（六祖以外禅法·doc 驱动）保持不变。
 - **渲染验证**：`build.py` ✅ 0 退出；`verify_demo.py` ✅ **ALL CHECKS PASSED**（17 文章页，含 `chan-traces` data-driven）；`test_pipeline.py` ✅ **ALL TESTS PASSED**（95 人/98 边/30 地一致）。**真实浏览器（headless Chrome dump）运行时渲染**：独立页可见全文 **22,628 中文字符**、6 section、38 topic、88 en-line；融合的 5 条六祖 topic ＋ 3 条学者 topic 全在（葛兆光/顾毓琇/胡适以降/洪修平/潘桂明/禅宗师承记/中国禅思想史 均在）；法脉传承表＋参考文献齐备。`aria`——入口条运行时插入（隐藏容器内不 dump，属预期）。
 - **放置与一致性**：独立页 `back.tab=jiaoxing view=chan_traces`，与 `chan-beyond` 同子视图并列；新增数据驱动机制与原 doc 机制**并存**；内容全部单源存于 YAML（`CHAN_TRACES_RENDER` 仅为演示层代码、非内容）；verify_demo 复核无硬编码内容新增。
+
+---
+
+## 华严经学·起源深研＋三十九品深度批注＋独立页面（2026-09-04 · L.㊵ — origins 深挖 + 逐品批注 + 版本对照 + standalone）
+
+> 依用户指示对 Tab2 华严经学（avatamsaka_studies.yaml）做三线深化：①**起源段深挖**（含学界最新论著）；②**三十九品逐品详解**充入祖师大德批注/学者阐释，并补**八十/六十/四十/藏译四版本对照**；③**独立地址**（standalone article）。遵守编务总则 0（考证优先）/1（中英必配）/2（多版本并存）/3（严禁假信息）/5（进度留痕）/6（边界自知）。
+
+- **① 起源段扩充为 10 专题**（origins 段由 4 题拓为 10 题）：
+  - `华严经典的发展阶段`（重写，加入 Nattier 2005 对 T280/T281/T282/T283 的**原为一本被拆成数本的文本重建**、Proto-Avataṃsaka 中**以释迦而非毗卢遮那为中央佛**的神学转折、Bodhisattvapiṭaka「第四藏」的 Paramārtha 指认＋敦煌题记、Hamar 2026 制度支撑论证、Ōtake 印度编纂反论）；
+  - `印度根源`（新增）— Skilling & Saerji 2013（ARIRIAB 16:193-216）：印度各组成部分**从未作为华严整体被引用**，四大独立经典（十地经/入法界品/普贤行愿赞/十地经论·菩萨地），寂天 8 世纪引仍用独立经名；
+  - `于阗编纂说`（扩）— 补语言铁证「ysa」于阗语指纹、Hamar 皇家赞助制度论、Seok 五点反驳链接；
+  - `印度编纂说`（新增）— Seok 2015 五反证（西北印度地理视野/阿毗达磨背景/塔信仰）、平川彰/大竹晋印度本土编纂、Park 流通地≠编纂地；
+  - `编辑手法`（扩）— Toyobunko 2024 藏译本结构分析：第31/32/43品保留独立结尾语＝编辑未完成的物证；
+  - `断代问题`（新增）— 下限 420（佛陀跋陀罗）、上限 1-2 世纪、Khadaliq 梵文残片（Hoernle Or 15010/155 叶码 382，Early Turkestan Brāhmī，5-6 世纪＝最接近完整华严的物证）；
+  - `于阗故乡`（扩）— 藏文《于阗国授记》皇室护法（Vijaya Sambhava/Bodhi）、Devendraprajñā 传持、佛国文化身份；
+  - `四大译本·Bathang写本`（扩）— Park 2017 巴楚残本品目划分印证八十/藏译的晚期编辑；
+  - `华严宗形成`（新增）— 文本传入→杜顺直觉→智俨系统讲座→法藏哲学体系化（十镜堂）→澄观/宗密深化五阶段。
+- **② 三十九品逐品详解深度扩充**：39 品全部补齐 `【批注·阐释】` 块（每品 6-12 行，采 澄观《疏》/法藏《探玄记》/印顺/方东美/海云继梦/Cleary/Dharmamitra/木村清孝 2-3 家点睛）+ **版本对照行**（八十/六十/四十/藏译 Toh44 一一对应；标明「十定品」六十华严无此品、㊲ 六十华严作「如来兴显经」、㊴ 四十华严全经即此品、藏译另有「如来华严品/普贤宣说品」两品独有）。
+- **③ 独立地址（standalone article）**：新建 `docs/华严经学_三十九品深度研究.md`（460 行，**顶部目录**照佛门真伪体例），注册 `standalone_articles.yaml` `others:` **`id: huayan-studies`**（icon 📖，`back: gap/avatamsaka-studies`，`views:[avatamsaka-studies]`）→ build 自动生成 **`web/demo/articles/huayan-studies.html`**（41.5KB 独立 URL，38 品对照总表＋逐品摘要＋批注）。
+- **渲染验证**：`build.py` ✅ 28 files | 18,280,912 B（gap.html 3,144,799 B）；`verify_demo.py` ✅ **ALL CHECKS PASSED**（含 `articles/huayan-studies.html all checks`、18 文章页）；`test_pipeline.py` ✅ **ALL TESTS PASSED**（95 人/98 边/30 地一致）。
+- **遗留（边界自知）**：批注以中英对照呈现于 gap 页与独立页；凡引祖师语录概为主观阐释非逐字直译，教理表述言必有据、未杜撰年代/卷数；`standalone_articles.yaml` 独立文章数 16→18（新增 huayan-studies）。后续可再补 title_sa/title_bo 多语、location name_en（已登记双语待续梯队）。
+- **④ 布局优化·折叠门（同日收尾·再修订）**：依用户反馈，`gv-avatamsaka_studies` 原为「单页长墙」——9 节 44 题全展开堆叠（含 origins 10 长题＋39 品批注题，页极长）。本轮在 `gap.js` `renderAvatamsakaStudies()` 做纯渲染层优化（内容仍全量来自 `avatamsaka_studies.yaml`，未硬编码任何内容）：**①每专题改为折叠门（wu-door）**——默认全部收起（仅首节首题 `open` 作阅读入口），标题条含英文副题(`.en-line`)，点标题条展开/收起正文（含 EN 块/出处/链接）；**②章节名旁计数**（如「(N)题」）。折叠门复用既有 `.wu-door` CSS 与点击 `onclick` 模式（与既有 proven line 856 相同：双引号属性内 `\'open\'`，运行时产出 `this.classList.toggle('open')` 无反斜杠、L.㊱ 同类语法错误不复现）。**③④两轮修订（依用户反馈）**：先加后删**顶部 sticky 章节导航条**（`avs-nav`）——用户反馈「快速跳转看着太乱」，已整条移除（含其中跳转锚点与 `avsFocus()` 函数，一并删除），改为**顶部右侧一行非粘性「⤢ 展开全部 · ⤡ 收起全部」控制**（`avsDoors(true/false)`）；同时**⑤补全侧栏子目录**——`data/navigation.yaml` 华严经学组原仅 4 个子项（起源/翻译/结构/义学），现补齐 9 节全量对应：新增 全球华严研究(avs-global_research)/教内华严思想与修行(avs-dharma_teachers)/华严经文献学研究(avs-textual_studies)/2024-2026年最新动态(avs-recent_research)/出版与研究专著(avs-publications)，使左栏子目录与 9 节一一对应、不显单薄。**真实 headless Chrome CDP 运行时验证（修订后）**：44 门/1 默认展开/sticky 导航条 0 条（已删）/控制条存在/9 节齐备/首题默认可见·全流程 0 JS 异常（`errors:[]`）。验证：build ✅ 28 files | 18,281,880 B（gap.html 3,146,773 B）；verify_demo ✅ ALL CHECKS PASSED；test_pipeline ✅ ALL TESTS PASSED。待续梯队延续：title_sa/title_bo 多语、location name_en、source-audit T3 余 10 条〔待考〕等（见双语待续梯队）。
+
+
+## 华严经学＋判教互判·各自独立地址（2026-09-04 · L.㊶ — 数据驱动全量独立页，便于分享定位）
+
+> 依用户指示：给「华严经学」与「判教互判」各建一个**可分享的独立地址**，便于分享时快速定位。用户确认采用**数据驱动全量独立页**方案（参照 chan-traces 的 data_source 模式，把 avatamsaka_studies / panjiao_hupan 的 YAML 全文渲染成独立 HTML，分享即见全貌，正文单源存于 YAML、零硬编码）。
+
+- **① 独立地址（2 篇新增，18→20）**——standalone_articles.yaml others: 新增：
+  - **avatamsaka-studies**（华严经学·全卷，icon 📚）——data_source: avatamsaka_studies、data_pool: gap → articles/avatamsaka-studies.html（307,367 B / 54,803 doc 字）；
+  - **panjiao**（判教互判·全卷，icon ⚖️）——data_source: panjiao_hupan、data_pool: gap → articles/panjiao.html（150,385 B / 13,984 doc 字）。
+  - 均为**数据驱动全量页**：内嵌 GAP_DATA（对应数据源全文）＋自包含渲染脚本，正文单源存于 YAML，非另立 md 摘要（区别于既有的 doc 式 huayan-studies 三十九品页）。
+- **② 通用渲染器**——build.py 新增 data_pool 字段（others 条目）：practice（默认，沿用 CHAN_TRACES_RENDER/renderChanTraces）vs gap（新增通用 GAP_TOPICS_RENDER/renderDynTopics()，处理 sections+topics schema：节标题+计数、title_en/intro/intro_en、每专题折叠门 wu-door〔默认每节首题展开〕、body/en_body/.en-line 中英对照、sources 复数与 source 单数兼容、links、参考文献；内含 _dynMD 内联 md〔**加粗/斜体/链接〕；顶部目录锚点跳转各节）。build_articles 按 data_pool 从 load_gap() 或 load_practice() 取数内嵌为 GAP_DATA 或 PRACTICE_DATA。
+- **③ 入口**——两篇 views 分别挂 avatamsaka-studies/panjiao，文献页对应视图出现「独立文章页」入口条（articleChip）；articles/index.html 目录 18→20 篇自动收录。
+- **④ verify_demo 扩展**——数据驱动独立页判定原仅认 var PRACTICE_DATA+function renderChanTraces，现补认 var GAP_DATA+function renderDynTopics（doc_md embedded / renderer inlined 两项）。
+- **验证**：build ✅ 30 files | 18,743,234 B；verify_demo ✅ **ALL CHECKS PASSED**（20 文章页全检、articles/index 链接全解析、tabs article-chip 链接全解析）；test_pipeline ✅ ALL TESTS PASSED；**真实 headless Chrome CDP 运行时**：avatamsaka-studies.html 44 门/9 节+参考文献 10 section/EN 行/TOC 锚点齐备 0 异常；panjiao.html 72 门/21 section/EN 行 0 异常（各页首节首题展开作入口，errors:[]）。
+- **遗留（边界自知）**：两独立页为全量数据快照（build 时固化），其中中英对照与站内 gap 视图一致；后续若 YAML 更新需重跑 build 刷新快照（与站内同步机制同）。待续梯队延续：title_sa/title_bo 多语、location name_en、source-audit T3 余 10 条〔待考〕等。
+
+
+## 华严经学·独立页布局与分享 ＋ 判教互判深度化（2026-09-04 · L.㊷ — 全宽布局 + 分享链接 + meta判教）
+
+> 依用户四点指示逐项落地（呼应 L.㊶ 的两篇数据驱动独立页）：①华严经学独立页「页面使用太少」——正文只占左侧窄条，需拓宽；②给页面一个可分享的独立地址，点击即直达；③判教互判需继续深化充实（佛界/道家/学界/其他宗教 + 全维度分析 + 总结段 + 华严立场之 meta判教）；④教海行云页中华严判教顶部，要能引用/链接判教互判这篇文章。
+
+- **① 布局·全宽化（修「只占左1/3」）**——根因：`common.css` 独立文章页容器 `.content-article` 原 `max-width:1080px` 居中，宽屏时两侧大量留白，观感如「文字只靠左侧」。修复：改 `max-width:min(1500px,96vw)`；CDP 实测 1800px 视口下 content 由 1080px→**1500px**（展宽 39%、占约 89% 视口），且内容不变仍居中。顺带 `.share-btn` 新样式。
+- **② 独立分享地址**——L.㊶ 已给两页各建独立 URL（`articles/avatamsaka-studies.html`/`articles/panjiao.html`），本轮新增每页顶栏 **「🔗 分享地址」按钮**（build.py 模板 + `SHARE_JS` 常量 + `copyPageLink()`/fallback，导航分级 clipboard.writeText→execCommand 复制）：点击即复制当前页完整 URL（GitHub Pages 部署后即分享链接），并弹出 toast「本页独立地址已复制：<url>」。CDP 实测点击后 toast `display:block` 且含 URL、`errors:[]`。
+- **③ 判教互判·深度化（panjiao_hupan.yaml 20→23 节、72→95 题、doc 字 13,984→21,358）**：
+  - **其他宗教扩充实**（`world` 3→8 题）：新增 犹太教（法利赛/撒都该/艾赛尼→拉比诸派、卡拉派、改革/保守/正统、哈西德）、耆那教（白衣派/天衣派·女身能否解脱之判）、琐罗亚斯德教（善恶二元·正统 Mobed 与 Mazdakism 异端）、锡克教（上师传承与卡尔萨正统）、巴哈伊信仰（渐进启示·「超判教」诸教同源论）。
+  - **新增 `dimensions` 判教分析维度·九维方法论**（9 题）：缘起、背景、前提、目的、动机、实操、效果、流变、局限——每维一专题（中英对照、出处、并述其方法论定位），为「全方位分析」提供显式框架。
+  - **新增 `summary` 总结·横向综览**（4 题）：判教共同结构（五同构点，佛教/儒道/世界宗教/学界/科技并观）、各传统判准与后果差异、会通与区隔之双刃、判教与修行（从判摄到实践）。
+  - **新增 `metapanjiao` 华严立场之 meta判教·对诸判教之判教**（5 题）：以华严「法界缘起/理事无碍/十玄三观/别教一乘」为判准；对佛教内部（空·有·性·密·禅·净·天台）的判摄；对藏传·日本判教的判摄；对儒·道·学界·科技·世界宗教的圆教安置；以及「判教之判」的自觉——圆教不自封其高（无尽/归观行/无所得故无所判）。
+  - 遵循考证优先与中英必配：新增题逐条 `body`+`en_body` 双语、`source` 注明出处（含一手/权威文献：Cohen《From the Maccabees to the Mishnah》、Dundas《The Jains》、Boyce《Zoroastrians》、McLeod《Who Is a Sikh?》、法藏/澄观/智俨/印顺/海云继梦诸书与 CBETA 典据）；参照 `/` 依 YAML 转义纪律修两处单引号内撇号（`L''archéologie`、`The World''s Religions`）。references 14→17。
+- **④ 教海行云·华严判教顶部引用判教互判**——`practice.js renderPanjiaoSection()` 顶部注入 `.article-chip` 入口链接 → `../articles/panjiao.html`（「⚖️ 判教互判 · 佛界/道家/学界/诸宗教相系统之全方位比较（独立全文研究）↗」），复用既有 article-chip 样式；CDP 实测 jiaoxing.html 渲染出该链接、跳转目标存在。
+- **验证**：build ✅ 30 files | 19,134,477 B（panjiao.html 212,284 B）；verify_demo ✅ ALL CHECKS PASSED（20 文章页全检）；test_pipeline ✅ ALL TESTS PASSED；headless Chrome CDP 实测：panjiao.html 24 节/95 门/1500px 全宽/新增 判教分析维度·横向综览·meta判教 三节齐备/236 EN 行/0 异常；jiaoxing.html 华严判教节渲染出「判教互判」文章链接、0 异常。
+- **遗留（边界自知）**：新增各题为系统性综述/方法论，属可资考据的学术阐释，主要依据已注明；个别熔断性哲学表述（如华严与量子纠缠、AI 之对照）为启发式比附、非定论，已尽量以「相映/可置于…框架」措辞标明其探索性。待续梯队延续：title_sa/title_bo 多语、location name_en、source-audit T3 余 10 条〔待考〕、判教专题二轮可与前述维度框架互参。
+
+
+## 华严经学独立页·重构为连续全文 ＋ 判教互判·末节非法字符校勘（2026-09-04 · L.㊷续）
+
+> 依用户两项指示落地（承接 L.㊶/L.㊷）：①以 zhenwei.html 的布局方式**重构华严经学独立页**——由「折叠门」改为**连续全文·像 zhenwei（用户明确选定「连续全文·像 zhenwei（推荐）」）**；②**校勘判教互判末节非法字符**——末节（metapanjiao 导言）出现脏写入的「振《》」，须订正。
+
+- **① 华严经学独立页·重构为 zhenwei 式连续全文（avatamsaka-studies.html）**：
+  - 先经 CDP geometry 实测确认：两页 `.content-article` 容器宽（1500px）与内侧块宽（1444px）**已一致**（L.㊷④全宽化对全站生效），真正的差异是**交互/阅读形态**——zhenwei 为连续全文文章（面包屑+页头横幅+自动目录+全展开正文），华严经学为 44 个可折叠专题门（仅首题展开）。
+  - 方案（用户选定「连续全文·像 zhenwei」）：`build.py` 通用渲染器 `GAP_TOPICS_RENDER.renderDynTopics(data, mode)` 增加 **`mode='article'`** 分支（zhenwei 式连续全文）；默认 `'doors'` 分支保持既有折叠门布局不变。构建时 `build_articles` 依 `a['id']` 传参：`avataramsaka-studies` → `'article'`，其余 gap 数据驱动页（如 panjiao）→ `'doors'`。
+  - **article 连续全文布局（对齐 zhenwei/renderArticle）**：页内面包屑（主页 › 独立文章目录 › 文献页·华严经学）＋**页头横幅**（gradient、📄 独立文章页·数据驱动全文〔全量展开〕、icon+标题「📚 华严经学·全卷」＋title_sub「起源深研·逐品批注·版本对照…全量」＋顶部 intro 若有）＋**🧭 自动目录**（多栏 column-width:250px，9 节 gold 加粗 + 44 题缩进 · 逐题锚点）＋**📄 全文**（`border-left:4px gold` 屏风主区；9 节为 `h3`〔gold 下边线〕+计数，每题 `h4`-式编号「1. 题名」+`border-left:3px 蓝` 子块，body/en_body/.en-line/📎出处/🔗链接 全部**连续展开、无折叠**）＋**📚 参考文献**（改为 `_dynMD` 渲染）＋**页脚**（返回目录·返回栏目）。
+  - 相应收紧：gap 分支的 ARTICLE 对象补带 `icon`/`title_sub`/`back`，供横幅/面包屑取用；移除草稿遗留的未用 `_dynBreadcrumb` 函数；相对路径统一 `../`（articles/ 内正确指到根/tabs）。
+  - **测量**：avataramsaka-studies.html 227,149→314,954 B（连续全文内联 HTML 更丰满）；CDP 实测：横幅 ✅/自动目录 ✅/逐题锚点 88 处 ✅/**0 个 wu-door**（全展开、无折叠）✅/9 个 h3 节题 ✅/98 EN 行 ✅/参考文献 ✅/页脚 ✅/1500px 全宽 ✅/0 JS 异常。
+  - **①bis·Tab2 视图同步连续化（用户进一步确认「Tab2 视图也要连续全文」）**：`gap.js renderAvatamsakaStudies()` 由折叠门改为与独立页一致的头注+🧭自动目录+连续全文——9 节 `h3`（gold 下边线）+计数、每题「1. 题名」编号+border-left:3px 蓝子块、body/en_body/.en-line/📎/🔗 全展开、参考文献；移除 wu-door 折叠门与 `avsDoors` 展开/收起控制（已确认无他处引用，安全清理）；`keep gv-avatamsaka_studies`/`avs-<sec.id>` 锚点与 `articleChip` 独立页入口不变；`sources` 单复双兼容（`t.sources || (t.source?[t.source]:[])`）。测量：gap.html 3,146,773→3,208,703 B，CDP `switchGapView('avatamsaka_studies')` 实测 display:block/0 门/9 h3/88 逐题锚点/98 EN 行/0 异常。
+- **② 判教互判末节非法字符校勘（panjiao_hupan.yaml metapanjiao 导言）**：
+  - 问题：末节（华严立场之 meta判教）导言首句写作「末节为全篇之**『振《》』**」——含脏写入的占位符「振《》」，观感为乱码（用户原话：末节为全篇之「振《》」，请好好校勘）。
+  - 校勘：依上下文（以华严自身判教立场回头判摄一切判教、作 meta判教）与全篇结构，「全篇之〇〇」当作**「纲领」**（末节系对诸判教之判摄与归宗的统摄）。订正为「末节为全篇之**纲领**」。同时整库扫描：空《》/空「」/U+FFFD/空〔〕/**振X** 其余均 0 命中，确认仅此一处脏字符。
+  - 校勘口径：非删除、非臆改，依句意与结构填补「纲领」，忠实原文语义（meta判教·对诸判教之判教、圆教不自封其高）。
+- **验证**：build ✅ 30 files | 19,147,976 B；verify_demo ✅ ALL CHECKS PASSED（20 文章页全检）；test_pipeline ✅ ALL TESTS PASSED；headless Chrome CDP 实测：avatamsaka-studies.html 连续全文（横幅/目录/0 折叠门/9 节 44 题全展开/逐题锚点/参考文献/页脚，0 异常）；**Tab2 `switchGapView('avatamsaka_studies')` 视图同步连续化**（display:block/0 门/9 h3/88 锚点/98 EN 行/0 异常）；panjiao.html 仍为 95 折叠门/24 节（布局未受影响），由数据层确认 metapanjiao intro 现为「末节为全篇之纲领」（无「振《》」），0 异常。
+- **遗留（边界自知）**：华严经学（独立页+Tab2 视图）改为连续全文后篇幅较长（44 题全展开），自动目录已提供逐题锚点跳转以缓解；判教互判（独立页+Tab2 视图）仍为折叠门/信封布局（用户未要求改），如需亦改连续全文，仅需在 build_articles 把 a['id']=='panjiao' 也传 'article' 并对 gap.js `renderPanjiaoHupan()` 同样改法即可（渲染结构已通用）。待续梯队延续：title_sa/title_bo 多语、location name_en、source-audit T3 余 10 条〔待考〕等。

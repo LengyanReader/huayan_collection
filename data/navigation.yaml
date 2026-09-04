@@ -45,6 +45,16 @@ navigation:
         action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-structure]}
       - label: 义学阐释
         action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-doctrinal]}
+      - label: 全球华严研究
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-global_research]}
+      - label: 教内华严思想与修行
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-dharma_teachers]}
+      - label: 华严经文献学研究
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-textual_studies]}
+      - label: 2024-2026年最新动态
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-recent_research]}
+      - label: 出版与研究专著
+        action: {type: call, fn: gapSubNav, args: [avatamsaka_studies, avs-publications]}
     - label: 📖 以经证经
       action: {type: call, fn: switchGapView, args: [intertextual]}
       subs:

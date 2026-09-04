@@ -847,9 +847,11 @@ def load_standalone_articles():
             'version': o.get('version', ''),
             'meta': o.get('meta', ''),
             'doc': o.get('doc', ''),
-            # 数据驱动独立页：指向 PRACTICE_DATA 内的数据源键（如 chan_authentic_traces），
+            # 数据驱动独立页：指向 PRACTICE_DATA（默认）或 GAP（data_pool: gap）内的数据源键
+            # （如 chan_authentic_traces / avatamsaka_studies / panjiao_hupan），
             # 由 build_articles 内嵌完整数据 + 自包含渲染脚本生成，正文单源存于 YAML
             'data_source': o.get('data_source', ''),
+            'data_pool': o.get('data_pool', 'practice'),
             'back': o.get('back') or {},
             'views': o.get('views', [o['id']]),
         })
@@ -929,10 +931,166 @@ CHAN_TRACES_RENDER = r'''function renderChanTraces() {
 }
 '''
 
+# 通用数据驱动独立页渲染脚本：处理「sections + topics」schema（vatamsaka_studies / panjiao_hupan
+# 等 gap 数据源共用），生成折叠门布局 + 中英对照 + 出处/链接 + 参考文献。演示层代码，正文单存于 YAML。
+GAP_TOPICS_RENDER = r'''function _dynMD(s) {
+  return String(s||'')
+    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+    .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target=_blank style="color:var(--blue)">$1</a>');
+}
+function _dynSectionLink(sec) { return 'avs-dyn-' + sec.id; }
+function _dynTopicLink(sec, i) { return 'avs-topic-' + sec.id + '-' + i; }
+// mode: 'article' = zhenwei 式连续全文（华严经学等，全展开可读）；默认 'doors' = 折叠门（判教互判等）
+function renderDynTopics(data, mode) {
+  if (!data || !data.sections) return '';
+  var isArticle = (mode === 'article');
+  var art = (typeof ARTICLE !== 'undefined') ? ARTICLE : {};
+  var icon = data.icon || art.icon || '📌';
+  var title = data.title || art.title || '';
+  var subtitle = data.title_sub || art.title_sub || '';
+  var backTab = art.back && art.back.tab ? '../tabs/' + art.back.tab + '.html' : '';
+  var backLabel = (art.back && art.back.label) || '';
+  var h = '';
+  if (isArticle) {
+    // ── 面包屑 ──
+    h += '<div style="font-size:0.74em;color:var(--text2);margin-bottom:12px;">';
+    h += '<a href="../index.html" style="color:var(--blue);text-decoration:none">主页</a> › ';
+    h += '<a href="index.html" style="color:var(--blue);text-decoration:none">独立文章目录</a>';
+    if (backTab) h += ' › <a href="' + backTab + '" style="color:var(--blue);text-decoration:none">' + backLabel + '</a>';
+    h += '</div>';
+    // ── 页头横幅 ──
+    h += '<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
+    h += '  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页 · 数据驱动全文（全量展开）</div>';
+    h += '  <h2 style="color:var(--gold);margin:6px 0 4px">' + icon + ' ' + title + '</h2>';
+    if (subtitle) h += '  <div style="font-size:0.85em;color:var(--text2)">' + subtitle + '</div>';
+    if (data.intro) h += '  <p style="font-size:0.8em;color:var(--text2);line-height:1.8;white-space:pre-line;margin:10px 0 0">' + _dynMD(data.intro) + '</p>';
+    h += '</div>';
+    // ── 自动目录（含逐题锚点） ──
+    h += '<div class="section"><h2>🧭 本文目录</h2>';
+    h += '<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.85">';
+    data.sections.forEach(function(sec){
+      h += '<div style="padding:2px 0"><a href="#' + _dynSectionLink(sec) + '" style="color:var(--gold);text-decoration:none;font-weight:600">' + (sec.icon||'') + ' ' + sec.title + '</a> <span style="color:var(--text2);font-size:0.85em">(' + ((sec.topics||[]).length) + '题)</span></div>';
+      (sec.topics||[]).forEach(function(t,i){
+        h += '<div style="padding-left:16px"><a href="#' + _dynTopicLink(sec,i) + '" style="color:var(--text2);text-decoration:none">· ' + t.title + '</a></div>';
+      });
+    });
+    if (data.references) h += '<div style="padding:2px 0"><a href="#avs-dyn-refs" style="color:var(--gold);text-decoration:none;font-weight:600">📚 参考文献</a></div>';
+    h += '</div></div>';
+    // ── 全文（连续展开） ──
+    h += '<div class="section" style="border-left:4px solid var(--gold)" id="article-full"><h2>📄 ' + title + ' · 全文</h2>';
+    data.sections.forEach(function(sec){
+      h += '<div id="' + _dynSectionLink(sec) + '">';
+      h += '<h3 style="color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:18px">' + (sec.icon||'📌') + ' ' + sec.title + ' <span style="font-size:0.6em;color:var(--text2);font-weight:400">(' + ((sec.topics||[]).length) + '题)</span></h3>';
+      if (sec.title_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);font-style:italic">' + sec.title_en + '</div>';
+      if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _dynMD(sec.intro) + '</p>';
+      if (sec.intro_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _dynMD(sec.intro_en) + '</div>';
+      (sec.topics||[]).forEach(function(t,i){
+        h += '<div id="' + _dynTopicLink(sec,i) + '" style="margin:14px 0 4px;padding-left:14px;border-left:3px solid rgba(94,139,158,0.25);">';
+        h += '<div style="font-size:0.92em;color:var(--blue);font-weight:600">' + (i+1) + '. ' + t.title;
+        if (t.title_en) h += ' <span class="en-line" style="color:var(--text2);font-weight:400;font-style:italic;font-size:0.82em">(' + t.title_en + ')</span>';
+        h += '</div>';
+        h += '<div style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _dynMD(t.body) + '</div>';
+        if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line;margin-top:6px">📖 ' + _dynMD(t.en_body) + '</div>';
+        var srcs = t.sources || (t.source ? [t.source] : []);
+        if (srcs.length) {
+          h += '<div style="font-size:0.7em;color:var(--text2);margin-top:6px">📎 ';
+          srcs.forEach(function(s,si){ h += (si>0?'<br>':'') + _dynMD(s); });
+          h += '</div>';
+        }
+        if (t.links) {
+          h += '<div style="font-size:0.7em;margin-top:2px">';
+          Object.keys(t.links).forEach(function(k){ h += '<a href="' + t.links[k] + '" target=_blank style="color:var(--blue)">🔗 ' + k + '</a> '; });
+          h += '</div>';
+        }
+        h += '</div>';
+      });
+      h += '</div>';
+    });
+    h += '</div>';
+    if (data.references) {
+      h += '<div class="section" id="avs-dyn-refs"><h2>📚 参考文献</h2><ul style="font-size:0.8em;line-height:1.9;white-space:pre-line">';
+      data.references.forEach(function(r){ h += '<li>' + _dynMD(r) + '</li>'; });
+      h += '</ul></div>';
+    }
+    // ── 页脚 ──
+    h += '<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
+    h += '<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
+    if (backTab) h += ' · <a href="' + backTab + '" style="color:var(--blue);text-decoration:none">' + backLabel + '</a>';
+    h += '</div>';
+    return h;
+  }
+  // ── 折叠门布局（panjiao 等，默认） ──
+  h += '<div style="font-size:0.74em;margin:4px 0 10px;color:var(--text2);display:flex;flex-wrap:wrap;gap:3px 12px">';
+  data.sections.forEach(function(sec){ h += '<a href="#' + _dynSectionLink(sec) + '" style="color:var(--blue);text-decoration:none;white-space:nowrap">' + (sec.icon||'') + sec.title + '</a>'; });
+  if (data.references) h += '<a href="#avs-dyn-refs" style="color:var(--blue);text-decoration:none;white-space:nowrap">📚 参考文献</a>';
+  h += '</div>';
+  data.sections.forEach(function(sec) {
+    h += '<div class=section id=' + _dynSectionLink(sec) + '>';
+    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + ' <span style="font-size:0.62em;color:var(--text2);font-weight:400">(' + ((sec.topics||[]).length) + '题)</span></h2>';
+    if (sec.title_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);font-style:italic;margin:-4px 0 6px">' + sec.title_en + '</div>';
+    if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _dynMD(sec.intro) + '</p>';
+    if (sec.intro_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _dynMD(sec.intro_en) + '</div>';
+    (sec.topics||[]).forEach(function(t, i) {
+      var doOpen = (sec.topics[0]===t && i===0) ? ' open' : '';
+      h += '<div class="wu-door' + doOpen + '" onclick="this.classList.toggle(\'open\')"><span class=arrow>▶</span><span class=ttl>' + t.title + '</span>';
+      if (t.title_en) h += ' <span class="en-line" style="color:var(--text2);font-weight:400;font-style:italic;font-size:0.8em">(' + t.title_en + ')</span>';
+      h += '<div class=body><div style="font-size:0.8em;line-height:1.8;white-space:pre-line">' + _dynMD(t.body) + '</div>';
+      if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line;margin-top:6px">📖 ' + _dynMD(t.en_body) + '</div>';
+      var srcs = t.sources || (t.source ? [t.source] : []);
+      if (srcs.length) {
+        h += '<div style="font-size:0.7em;color:var(--text2);margin-top:6px">📎 ';
+        srcs.forEach(function(s,si){ h += (si>0?'<br>':'') + _dynMD(s); });
+        h += '</div>';
+      }
+      if (t.links) {
+        h += '<div style="font-size:0.7em;margin-top:2px">';
+        Object.keys(t.links).forEach(function(k){ h += '<a href="' + t.links[k] + '" target=_blank style="color:var(--blue)">🔗 ' + k + '</a> '; });
+        h += '</div>';
+      }
+      h += '</div></div>';
+    });
+    h += '</div>';
+  });
+  if (data.references) {
+    h += '<div class=section id=avs-dyn-refs><h2>📚 参考文献</h2><ul style="font-size:0.8em;line-height:1.9">';
+    data.references.forEach(function(r){ h += '<li>' + r + '</li>'; });
+    h += '</ul></div>';
+  }
+  return h;
+}
+'''
+
+SHARE_JS = '''<script>
+function copyPageLink(){
+  var url = window.location.href;
+  var toast = document.getElementById('share-toast');
+  function done(msg, ok){
+    if(toast){ toast.textContent = msg; toast.style.display='block'; setTimeout(function(){ toast.style.display='none'; }, 2600); }
+    return ok;
+  }
+  function fallback(u){
+    var ta = document.createElement('textarea'); ta.value = u; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done('✅ 本页独立地址已复制：' + u, true); }
+    catch(e){ done('📋 请手动复制地址：' + u, false); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(function(){ done('✅ 本页独立地址已复制：' + url, true); },
+      function(){ fallback(url); });
+  } else {
+    fallback(url);
+  }
+}
+</script>
+'''
+
 def build_articles(articles):
     """Emit one standalone static page per full article (web/demo/articles/<id>.html)
     plus a catalog index (web/demo/articles/index.html). Returns total bytes written."""
     practice = load_practice()
+    gap = load_gap()
     ARTICLES_OUT.mkdir(parents=True, exist_ok=True)
     article_js = read_src('article.js')
     common_css_rel = '../css/common.css'
@@ -940,20 +1098,37 @@ def build_articles(articles):
     count = 0
 
     for a in articles:
-        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'back')}
+        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'data_pool', 'back')}
         title = a.get('title', a['id'])
         ds = a.get('data_source', '')
+        pool = a.get('data_pool', 'practice')
         if ds:
-            # 数据驱动独立页：内嵌完整数据源（正文单存于 YAML）+ 自包含渲染脚本，
-            # 与站内 jiaoxing 的禅门实迹视图同构（演示层代码，非内容）
-            sub = {ds: practice.get(ds)}
-            data_script = ('var PRACTICE_DATA = %s;\n'
-                           'var ARTICLE = %s;'
-                           % (json.dumps(sub, ensure_ascii=False),
-                              json.dumps({'id': a['id'], 'title': title, 'data_source': ds}, ensure_ascii=False)))
-            render_script = (CHAN_TRACES_RENDER
-                             + '\nrenderChanTraces();'
-                             + '\ndocument.getElementById("article-root").innerHTML = renderChanTraces();')
+            # 数据驱动独立页：内嵌完整数据源（正文单存于 YAML）+ 自包含渲染脚本。
+            # pool=practice → PRACTICE_DATA（如 chan_authentic_traces，用 CHAN_TRACES_RENDER）；
+            # pool=gap      → GAP_DATA（如 avatamsaka_studies / panjiao_hupan，用通用 GAP_TOPICS_RENDER）。
+            if pool == 'gap':
+                sub = {ds: gap.get(ds)}
+                data_script = ('var GAP_DATA = %s;\n'
+                               'var ARTICLE = %s;'
+                               % (json.dumps(sub, ensure_ascii=False),
+                                  json.dumps({'id': a['id'], 'title': title,
+                                              'icon': a.get('icon'), 'title_sub': a.get('title_sub'),
+                                              'data_source': ds, 'back': a.get('back')},
+                                             ensure_ascii=False)))
+                # 华严经学独立页采用 zhenwei 式连续全文布局（全量展开可读）；其余 gap 数据驱动页保持折叠门
+                dyn_mode = "'article'" if a['id'] == 'avatamsaka-studies' else "'doors'"
+                render_script = (GAP_TOPICS_RENDER
+                                 + ('\nrenderDynTopics(GAP_DATA[ARTICLE.data_source], %s);' % dyn_mode)
+                                 + ('\ndocument.getElementById("article-root").innerHTML = renderDynTopics(GAP_DATA[ARTICLE.data_source], %s);' % dyn_mode))
+            else:
+                sub = {ds: practice.get(ds)}
+                data_script = ('var PRACTICE_DATA = %s;\n'
+                               'var ARTICLE = %s;'
+                               % (json.dumps(sub, ensure_ascii=False),
+                                  json.dumps({'id': a['id'], 'title': title, 'data_source': ds}, ensure_ascii=False)))
+                render_script = (CHAN_TRACES_RENDER
+                                 + '\nrenderChanTraces();'
+                                 + '\ndocument.getElementById("article-root").innerHTML = renderChanTraces();')
             scripts = ('<script>\n' + data_script + '\n</script>\n'
                        '<script>\n' + wrap_script(render_script) + '\n</script>')
             doc_chars = sum(len(t.get('body') or '')
@@ -984,6 +1159,7 @@ def build_articles(articles):
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
+  <button id="share-link" class="share-btn" onclick="copyPageLink();return false" title="复制本页独立地址，点击即可直达">🔗 分享地址</button>
   <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
   <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
 </header>
@@ -998,8 +1174,11 @@ def build_articles(articles):
 </div>
 </div>
 <main class="content content-article" id="article-root"></main>
+<div id="share-toast" style="position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(31,36,42,0.96);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82em;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.3)"></div>
 
 <script src="../js/common.js"></script>
+{SHARE_JS}
+
 {scripts}
 </body>
 </html>'''

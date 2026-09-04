@@ -118,3 +118,38 @@ others:
       label: 教行页 · 禅门实迹
     views:
       - chan_traces
+  - id: huayan-studies
+    icon: 📖
+    title: 华严经学·三十九品深度研究
+    title_sub: 品目·批注·版本对照 · 祖师大德与学者阐释
+    doc: docs/华严经学_三十九品深度研究.md
+    back:
+      tab: gap
+      view: avatamsaka-studies
+      label: 文献页 · 华严经学
+    views:
+      - avatamsaka-studies
+  - id: avatamsaka-studies
+    icon: 📚
+    title: 华严经学·全卷
+    title_sub: 起源深研·逐品批注·版本对照 · 教内思想·文献学·最新研究·专著 全量
+    data_source: avatamsaka_studies
+    data_pool: gap
+    back:
+      tab: gap
+      view: avatamsaka-studies
+      label: 文献页 · 华严经学
+    views:
+      - avatamsaka-studies
+  - id: panjiao
+    icon: ⚖️
+    title: 判教互判·全卷
+    title_sub: 佛教各宗·藏传·日本·儒道·世界宗教·学术界·科技圈 判教与互判全量
+    data_source: panjiao_hupan
+    data_pool: gap
+    back:
+      tab: gap
+      view: panjiao
+      label: 文献页 · 判教互判
+    views:
+      - panjiao

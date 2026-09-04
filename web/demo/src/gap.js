@@ -439,39 +439,64 @@ function _mdToHTML(text) {
 }
 
 // ═══ 华严经学渲染 (从 GAP.avatamsaka_studies) ═══
+// 布局：zhenwei 式连续全文（与独立页 articles/avatamsaka-studies.html 一致）——自动目录 + 全量展开可读，
+// 无折叠门。内容全部来自 YAML(avatamsaka_studies.yaml)，未硬编码任何内容。
 function renderAvatamsakaStudies() {
   var avs = (typeof GAP !== 'undefined' && GAP.avatamsaka_studies) ? GAP.avatamsaka_studies : null;
   if (!avs || !avs.sections) return '';
   var h = '<div id=gv-avatamsaka_studies class=gv-section style=display:none>';
-  avs.sections.forEach(function(sec) {
-    h += '<div class=section id=avs-' + sec.id + '>';
-    h += '<h2>' + (sec.icon||'📌') + ' ' + sec.title + '</h2>';
-    if (sec.title_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);font-style:italic;margin:-4px 0 6px">' + sec.title_en + '</div>';
+
+  // ── 头注：连续全文说明 ──
+  h += '<div style="background:linear-gradient(120deg,rgba(184,134,60,0.10),rgba(94,139,158,0.06));border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:14px;">';
+  h += '<div style="font-size:0.82em;color:var(--gold)">📄 华严经学 · 连续全文（全量展开）</div>';
+  h += '<div style="font-size:0.72em;color:var(--text2);margin-top:4px">9 节 44 题全部展开，如长文阅读；可用下方目录或逐题锚点定位。</div>';
+  h += '</div>';
+
+  // ── 自动目录（含逐题锚点） ──
+  h += '<div class=section><h2>🧭 本文目录</h2><div style="column-width:250px;column-gap:26px;font-size:0.78em;line-height:1.85">';
+  avs.sections.forEach(function(sec, si) {
+    h += '<div style="padding:1px 0"><a href="#avs-' + sec.id + '" style="color:var(--gold);text-decoration:none;font-weight:600">' + (sec.icon||'') + ' ' + sec.title + '</a> <span style="color:var(--text2);font-size:0.85em">(' + (sec.topics?sec.topics.length:0) + '题)</span></div>';
+    (sec.topics||[]).forEach(function(t, ti) {
+      h += '<div style="padding-left:16px"><a href="#avs-topic-' + sec.id + '-' + ti + '" style="color:var(--text2);text-decoration:none">· ' + t.title + '</a></div>';
+    });
+  });
+  if (avs.references) h += '<div style="padding:1px 0"><a href="#avs-refs" style="color:var(--gold);text-decoration:none;font-weight:600">📚 参考文献</a></div>';
+  h += '</div></div>';
+
+  // ── 全文（连续展开，各节朝下排布、全量可见） ──
+  h += '<div class="section" style="border-left:4px solid var(--gold)"><h2>📄 华严经学 · 全文</h2>';
+  avs.sections.forEach(function(sec, si) {
+    h += '<div id=avs-' + sec.id + '>';
+    h += '<h3 style="color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:18px">' + (sec.icon||'📌') + ' ' + sec.title + ' <span style="font-size:0.6em;color:var(--text2);font-weight:400">(' + (sec.topics?sec.topics.length:0) + '题)</span></h3>';
+    if (sec.title_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);font-style:italic">' + sec.title_en + '</div>';
     if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _mdToHTML(sec.intro) + '</p>';
     if (sec.intro_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _mdToHTML(sec.intro_en) + '</div>';
-    if (sec.topics) {
-      sec.topics.forEach(function(t) {
-        h += '<div class=stage-box><b>' + t.title + '</b>';
-        if (t.title_en) h += ' <span class="en-line" style=color:var(--text2);font-weight:400;font-style:italic>(' + t.title_en + ')</span>';
-        h += '<p style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _mdToHTML(t.body) + '</p>';
-        if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _mdToHTML(t.en_body) + '</div>';
-        if (t.sources) {
-          h += '<p style="font-size:0.7em;color:var(--text2);margin-top:4px">📎 ';
-          t.sources.forEach(function(s,i) { h += (i>0?'<br>':'') + s; });
-          h += '</p>';
-        }
-        if (t.links) {
-          h += '<p style="font-size:0.7em;margin-top:2px">';
-          Object.keys(t.links).forEach(function(k) { h += '<a href="' + t.links[k] + '" target=_blank style="color:var(--blue)">📖 ' + k + '</a> '; });
-          h += '</p>';
-        }
+    (sec.topics||[]).forEach(function(t, ti) {
+      h += '<div id="avs-topic-' + sec.id + '-' + ti + '" style="margin:14px 0 4px;padding-left:14px;border-left:3px solid rgba(94,139,158,0.25);">';
+      h += '<div style="font-size:0.92em;color:var(--blue);font-weight:600">' + (ti+1) + '. ' + t.title;
+      if (t.title_en) h += ' <span class="en-line" style="color:var(--text2);font-weight:400;font-style:italic;font-size:0.82em">(' + t.title_en + ')</span>';
+      h += '</div>';
+      h += '<div style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _mdToHTML(t.body) + '</div>';
+      if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line;margin-top:6px">📖 ' + _mdToHTML(t.en_body) + '</div>';
+      var srcs = t.sources || (t.source ? [t.source] : []);
+      if (srcs.length) {
+        h += '<div style="font-size:0.7em;color:var(--text2);margin-top:6px">📎 ';
+        srcs.forEach(function(s, i) { h += (i>0?'<br>':'') + s; });
         h += '</div>';
-      });
-    }
+      }
+      if (t.links) {
+        h += '<div style="font-size:0.7em;margin-top:2px">';
+        Object.keys(t.links).forEach(function(k) { h += '<a href="' + t.links[k] + '" target=_blank style="color:var(--blue)">🔗 ' + k + '</a> '; });
+        h += '</div>';
+      }
+      h += '</div>';
+    });
     h += '</div>';
   });
+  h += '</div>';
+
   if (avs.references) {
-    h += '<div class=section><h2>📚 参考文献</h2><ul style="font-size:0.78em;line-height:1.9">';
+    h += '<div class=section id=avs-refs><h2>📚 参考文献</h2><ul style="font-size:0.78em;line-height:1.9;white-space:pre-line">';
     avs.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
     h += '</ul></div>';
   }

@@ -83,6 +83,23 @@ body {
   color: #fff;
 }
 
+/* ── 独立页分享地址按钮 ── */
+.share-btn {
+  font-size: 0.72em;
+  color: var(--blue);
+  background: var(--card);
+  border: 1px solid var(--blue);
+  border-radius: 12px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.share-btn:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
 /* 仅中文阅读模式：全局隐藏英文对应块 / 外文批注 / 英文单元格 */
 body.zh-only .en-line,
 body.zh-only .en-block,
@@ -227,7 +244,7 @@ body.zh-only .en-cell {
 
 /* ── 独立文章页 (articles/<id>.html) 与文章入口条 ── */
 .content-article {
-  max-width: 1080px;
+  max-width: min(1500px, 96vw);
   margin: 0 auto;
   width: 100%;
 }

@@ -141,9 +141,12 @@ for obj in sorted(os.listdir(ARTICLES)):
         ('ends </html>', html.strip().endswith('</html>')),
         ('ARTICLE embedded', 'var ARTICLE =' in html),
         # 独立文章页分两种形式：doc 驱动（内嵌 doc_md + renderArticle）或数据驱动
-        # （内嵌 PRACTICE_DATA 数据源 + 自包含渲染脚本，正文单存于 YAML，如 chan-traces）
-        ('doc_md embedded', '"doc_md"' in html or 'var PRACTICE_DATA' in html),
-        ('renderer inlined', 'function renderArticle' in html or 'function renderChanTraces' in html),
+        # （内嵌 PRACTICE_DATA / GAP_DATA 数据源 + 自包含渲染脚本，正文单存于 YAML，
+        #  如 chan-traces → renderChanTraces；avatamsaka-studies / panjiao → renderDynTopics）
+        ('doc_md embedded', '"doc_md"' in html or 'var PRACTICE_DATA' in html or 'var GAP_DATA' in html),
+        ('renderer inlined', 'function renderArticle' in html
+            or 'function renderChanTraces' in html
+            or 'function renderDynTopics' in html),
         ('common.css', '../css/common.css' in html),
     ]
     bad = [c[0] for c in checks if not c[1]]
