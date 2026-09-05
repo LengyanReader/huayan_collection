@@ -491,3 +491,25 @@ python scripts/verify_demo.py
   - 校勘口径：非删除、非臆改，依句意与结构填补「纲领」，忠实原文语义（meta判教·对诸判教之判教、圆教不自封其高）。
 - **验证**：build ✅ 30 files | 19,147,976 B；verify_demo ✅ ALL CHECKS PASSED（20 文章页全检）；test_pipeline ✅ ALL TESTS PASSED；headless Chrome CDP 实测：avatamsaka-studies.html 连续全文（横幅/目录/0 折叠门/9 节 44 题全展开/逐题锚点/参考文献/页脚，0 异常）；**Tab2 `switchGapView('avatamsaka_studies')` 视图同步连续化**（display:block/0 门/9 h3/88 锚点/98 EN 行/0 异常）；panjiao.html 仍为 95 折叠门/24 节（布局未受影响），由数据层确认 metapanjiao intro 现为「末节为全篇之纲领」（无「振《》」），0 异常。
 - **遗留（边界自知）**：华严经学（独立页+Tab2 视图）改为连续全文后篇幅较长（44 题全展开），自动目录已提供逐题锚点跳转以缓解；判教互判（独立页+Tab2 视图）仍为折叠门/信封布局（用户未要求改），如需亦改连续全文，仅需在 build_articles 把 a['id']=='panjiao' 也传 'article' 并对 gap.js `renderPanjiaoHupan()` 同样改法即可（渲染结构已通用）。待续梯队延续：title_sa/title_bo 多语、location name_en、source-audit T3 余 10 条〔待考〕等。
+
+## 英文斜杠清理＋引用资源可点化＋判教反斜杠脏字符归一（2026-09-05 · L.㊸）
+
+> 依用户指示三项：①清除判教互判（panjiao_hupan.yaml）与华严经学（avatamsaka_studies.yaml）**英文部分的斜杠**；②**引用资源尽量给出可点击链接**，并将此立为原则；③~~顺带校对单引号/撇号~~（此点先前批次已覆盖），实际执行中追加发现并归一 PJ 的 `\"` 反斜杠脏字符。遵守编务总则 0（考证优先）/1（中英必配）/3（严禁假信息）/5（进度留痕）/6（边界自知）/7（引用可点·出处可溯·新增）。
+
+- **① 英文斜杠清理（两文件 EN 字段 61→0）**：
+  - **名称变体** → “A (B)” 或 “A — B”：`Gimello (2005/1987)`→`Gimello (2005; 1987)`、`Jigme Lingpa (1729/30-1798)`→`(1729 or 1730–1798)`。
+  - **成对概念** → “A vs. B”/and：如 `tenet systems/doctrines`→`tenet systems and doctrines`、`Mahāyāna/Hīnayāna`→`Mahāyāna and Hīnayāna`、`mind-only/cittamātra`→`mind-only (cittamātra)` 等。
+  - **期刊卷期** → `17/1:1-20`→`17(1):1–20`（4处）、`69/4`→`69(4)`（2处）、`8/12`→`8(12)`（1处）；表头 `Fascicles/Chapters`→`Fascicles (Chapters)`（zh/EN 两处）、`60 fas/34 ch`→`60 fas (34 ch)`。
+  - **多年代** → `(2007/2021/2026):`→`(2007; 2021; 2026):`（仅 EN；zh 保留 `/` 惯例）。
+  - **保留不动的斜杠（合法）**：中文文本中的斜杠（《十地经论》/《菩萨地》等中文惯例、化仪/化法等）、URL/DOI、藏文/经文卷号、馆藏号 **Or 15010/155**（Hoernle；AV en_body 唯一保留的英文斜杠）。
+  - **验证口径**：判定 EN 字段须同时匹配 `key.endswith('_en')` **或** `key=='en_body'`（`en_body` 不以 `_en` 结尾，粗过滤会漏检）；改动前全量 dump 斜杠行到 Temp（rawslash_av/pj.txt）核对命中数，改后剩余行只剩 zh/URL/馆藏号三类（rem_av/rem_pj.txt）确认为保留项。
+- **② EN 句误插中文词修复（约 20 处）**：`that汇集`→`that converge`、`the专题`→`the thematic sets`、`and论证`→`and argues`、`infinite展开`→`infinite unfolding`、`Avataṃsaka境界`→`the Avataṃsaka realm`、`causes感`→`causes and effects`、`in还原`→`in the reduction`、`the导引`→`the orientation`、`Huayan特色`→`Huayan characteristics`、`one消融`→`one dissolves`、`本来光明`→`the originally luminous nature`、`dialogue模式`→`such a dialogue`、`引无量`/`dual运` 等；PJ 另有多处：`effects延续`→`continuing effects`、`to避`→`to avoid`、`is决 not`→`is by no means`、`念佛samādhi`→`buddha-recitation samādhi`、`越来越少`→`grows fewer and fewer`。终检 CJK-in-EN 中token扫描：PJ=0、AV 仅 3 处**有意双语注释**保留（穿衣吃饭·行路睡觉 / 口业清净 / 方便 (skillful means)）。
+- **③ PJ `\"` 反斜杠脏字符归一（1014 处）**：panjiao_hupan.yaml 全文件中 `\"`（含两层转义的 3 反斜杠 artifact「渲染脏字符」）→ `"`，替换后 **yaml parse 23 sections 完好、结构不变**；重建后页面 JSON 中仅剩正常 JSON 转义（单反斜杠），旧反斜杠引号 artifact 清除（AV 无此问题、实测 0 处）。
+- **④ 引用资源可点化（本文档第 7 原则的首次落地）**：
+  - AV 4 处裸 URL 包成 `[label](url)`：`[华严专宗学院](https://www.huayencollege.org)`、`[Stanford Encyclopedia of Philosophy: Huayan Buddhism (2024 revision)](https://plato.stanford.edu/entries/huayan-buddhism/)`（references 2 处）、`[Cleary 全译本 (Shambhala)](https://www.shambhala.com/the-flower-ornament-scripture.html)`（sources）；
+  - **杨维中两篇补 NTU 可点链接**：2005《普门学报》26期 页85-143 → `seq=206722`；2002《闽南佛学》第一辑·岳麓书社 → `seq=207530`（`https://buddhism.lib.ntu.edu.tw/...search_detail.jsp?comefrom=authorinfo&seq=...`）；
+  - PJ 3 处 section `source:` 包链：`[fjdh.cn]`（三圣圆融观）、`[wuming.xuefo.net]`（金狮子章讲记 第十一）、`[wuming.xuefo.com]`（天台小止观讲解 第三十八集）；
+  - **build.py 修一处**：doors 模式 `references` 循环 `'<li>'+r+'</li>'` 改为 `'<li>'+_dynMD(r)+'</li>'`（原明文拼接使门页参考文献中的 markdown 链接不可点；article 模式本已走 `_dynMD`），门页（panjiao.html 等）参考文献自此可点。gap.js 侧已有同等 `[text](url)`→`<a>` 转换（common.js `_dynMD` 系），Tab2 视图同步生效。
+- **⑤ 新原则入册（编务总则 七条→八条）**：CLAUDE.md「内容采集与编务总则」新增第 **7 条「引用可点·出处可溯」**——凡引用资源尽量给可点链接，`[text](url)` 嵌入 YAML sources/references/body 由 `_dynMD` 渲染（build.py GAP_TOPICS_RENDER 与 gap.js 均已支持）；纯文本 URL 优先包链；无从可点者如实标注〔无链接〕/〔待核〕，不硬凑。
+- **验证**：yaml parse 双文件 OK；build ✅ **30 files | 19,143,690 B**（较上批 19,147,976 B 减少 8,286 B 系删除 1014 个反斜杠所致）；verify_demo ✅ **ALL CHECKS PASSED**（20 文章页全检）；test_pipeline ✅ **ALL TESTS PASSED**；`[label](url)` 8 处 token 均确认连续嵌入 built 页面（panjiao.html / avatamsaka-studies.html / gap.html）且 JS `_dynMD` 链接正则转换模拟通过（含带 `(2005)` 标签与 `?comefrom=...&seq=` URL 的样例）。
+- **遗留（边界自知）**：链接可点化的最终在浏览器可见形态（`<a>` 渲染）由运行时 `renderDynTopics`/gap.js 完成，本批已用 JS 正则模拟验证转换逻辑等价；如需 headless 实测可补 CDP 复查。判定规则「`*_en` 或 `en_body`」已成文，后续 EN 字段批量清理照此执行。待续梯队延续：title_sa/title_bo 多语、location name_en、source-audit T3 余 10 条〔待考〕、华严经学 origin summary EN 补全 等。

@@ -1054,7 +1054,7 @@ function renderDynTopics(data, mode) {
   });
   if (data.references) {
     h += '<div class=section id=avs-dyn-refs><h2>📚 参考文献</h2><ul style="font-size:0.8em;line-height:1.9">';
-    data.references.forEach(function(r){ h += '<li>' + r + '</li>'; });
+    data.references.forEach(function(r){ h += '<li>' + _dynMD(r) + '</li>'; });
     h += '</ul></div>';
   }
   return h;
