@@ -14,6 +14,16 @@
 
 ---
 
+## L.㊼ 海云讲法·fmtChars 作用域修复 ＋ 改名「公开资料」 ＋ 双栏阅读布局（2026-09-18 收尾）
+
+- **① fmtChars 作用域 bug 修复（线上/本地点篇即崩）**：`fmtChars/fmtBytes/fmtDate` 原为 `renderWizLibrary()` **函数体内**的函数声明（函数作用域），而 `wzFilter()`（检索）与 `wzOpen()`（点篇阅读，内置 jiaoxing L1188）均在**函数外部**调用 → 点开文档/输入检索报 `Uncaught ReferenceError: fmtChars is not defined`。本轮把三个格式化助手**提升为全局**（与既有全局 `esc` 并列），`build.py WIZ_LIB_RENDER` 与 `src/practice.js` 双写同步修改、公共段逐字节比对一致；Node 沙箱实测 `typeof fmtChars==='function'`、`wzFilter`/`wzOpen` 全程 0 ReferenceError（修复前构造同场景必抛 REFERENCE-ERR）。先前 headless `--dump-dom` 只做静态渲染未点开文档故漏检；本环境 Chrome 需 `--headless`（旧模式）+ 独立 `--user-data-dir`（`--headless=new` 会 0 输出、残留进程干扰），今后基线沿用。
+- **② 改名**：独立页与教行页标题 `海云法师讲法全库` → **「海云讲法 · 公开资料」**（`standalone_articles.yaml` title/title_sub/back.label 三处 + 页内 h2 双写同步）；独立分享地址不变：`https://lengyanreader.github.io/huayan_collection/web/demo/articles/haiyun-lectures.html`。
+- **③ 双栏阅读布局（目录·检索区重排并前移）**：原「目录树→阅读器」单列、目录压在 40 课题+播客两大块之后，点篇触发**长距离下滑跳转**（用户「点击后下滑到相关位置再点击」现象源头）。现：①目录·检索区移至课题/播客**之前**（总览→快捷入口→双栏阅读→课题→播客→说明）；②阅读区改**左目录·右正文**双栏（右栏 `position:sticky` 顶置、点篇即显、`max-height:78vh` 内滚、窄屏 `flex-wrap` 自动降为上下堆叠）；③阅读器新增导航「←目录 / ↑上一篇 / ↓下一篇 / ⬆顶部」（上一篇/下一篇按全库 `wzAll` 顺序数据驱动）；④点开正文后**自动展开所在文件夹链**、**当前篇高亮**（`wzn-<guid>` id + 金色背景/左描边）、检索命中同样进右侧阅读器。
+- **验证**：build 32 files｜21,556,546 B；verify_demo ✅ ALL CHECKS PASSED；test_pipeline ✅ ALL TESTS PASSED（95 人/98 边/30 地全绿）；`jiaoxing.html` 与 `haiyun-lectures.html` 内联脚本 `new Function` **0 语法错误**＋Node 沙箱 wzFilter/wzOpen **0 ReferenceError**；rename/split/wzn/mark/prevnext/sticky 标记两页齐备。
+- **遗留**：双栏上线后待用户实测体感（78vh 阅读区内滚 vs 整页滚动、上一篇/下一篇按全库顺序 vs 目录内顺序，可再迭代）；`teaching_resources.yaml`「2000+集」与 387 集不符【待订正】仍未处理。
+
+---
+
 ## 一、当前状态总览
 
 ### 整体数据

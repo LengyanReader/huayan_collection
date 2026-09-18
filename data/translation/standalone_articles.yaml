@@ -155,13 +155,13 @@ others:
       - panjiao
   - id: haiyun-lectures
     icon: 📚
-    title: 海云法师讲法全库
-    title_sub: wiz 全库 645 篇 · 目录·检索·全文阅读
+    title: 海云讲法 · 公开资料
+    title_sub: wiz 全库 645 篇全量公开 · 目录·检索·双栏全文阅读
     data_source: haiyun_wiz_catalog
     data_pool: practice
     back:
       tab: jiaoxing
       view: haiyun_lectures
-      label: 教行页 · 海云讲法·全库
+      label: 教行页 · 海云讲法 · 公开资料
     views:
       - haiyun_lectures

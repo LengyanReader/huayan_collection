@@ -940,14 +940,13 @@ CHAN_TRACES_RENDER = r'''function renderChanTraces() {
 # 数据来自 data/practice/haiyun_wiz_catalog.yaml（由 wiz 导出清单 export_manifest.json 数据驱动生成，无虚构条目）。
 # 如需同步更新，仅改此处与 practice.js 两处（二者皆为生成产出源）。
 WIZ_LIB_RENDER = r'''function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function fmtChars(n){ n = Number(n) || 0; if (n >= 1e8) return (n / 1e8).toFixed(2) + ' 亿字'; if (n >= 1e4) return (n / 1e4).toFixed(1) + ' 万字'; if (n >= 1e3) return (n / 1e3).toFixed(1) + ' 千字'; return n + ' 字'; }
+function fmtBytes(n){ n = Number(n) || 0; if (n >= 1e6) return (n / 1e6).toFixed(1) + ' MB'; if (n >= 1e3) return (n / 1e3).toFixed(0) + ' KB'; return n + ' B'; }
+function fmtDate(ms){ if (!ms) return ''; var d = new Date(ms), p = function(x){ return (x < 10 ? '0' : '') + x; }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
 function renderWizLibrary() {
   var cat = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_wiz_catalog) ? PRACTICE_DATA.haiyun_wiz_catalog : null;
   if (!cat || !cat.notes || !cat.notes.length) return '';
   var WIZ_BASE = '../../../docs/huayanhai';
-  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-  function fmtChars(n){ n = Number(n) || 0; if (n >= 1e8) return (n / 1e8).toFixed(2) + ' 亿字'; if (n >= 1e4) return (n / 1e4).toFixed(1) + ' 万字'; if (n >= 1e3) return (n / 1e3).toFixed(1) + ' 千字'; return n + ' 字'; }
-  function fmtBytes(n){ n = Number(n) || 0; if (n >= 1e6) return (n / 1e6).toFixed(1) + ' MB'; if (n >= 1e3) return (n / 1e3).toFixed(0) + ' KB'; return n + ' B'; }
-  function fmtDate(ms){ if (!ms) return ''; var d = new Date(ms), p = function(x){ return (x < 10 ? '0' : '') + x; }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
   function buildTree(notes){
     var root = {name: '', children: {}, notes: []};
     notes.forEach(function(n){
@@ -971,7 +970,7 @@ function renderWizLibrary() {
     h += '<div class="wz-sub" style="' + (dep > 0 ? 'display:none' : '') + '">';
     keys.sort().forEach(function(k){ h += wzTreeHTML(node.children[k], dep + 1); });
     (node.notes || []).forEach(function(n){
-      h += '<div class="wz-note" onclick="wzOpen(\'' + n.guid + '\')">📄 ' + esc(n.title) + '<span style="color:var(--text2);font-size:0.82em"> · ' + fmtChars(n.len) + ' · ' + fmtDate(n.modified) + '</span></div>';
+      h += '<div class="wz-note" id="wzn-' + n.guid + '" style="cursor:pointer;padding:3px 6px;border-radius:5px" onclick="wzOpen(\'' + n.guid + '\')">📄 ' + esc(n.title) + '<span style="color:var(--text2);font-size:0.82em"> · ' + fmtChars(n.len) + ' · ' + fmtDate(n.modified) + '</span></div>';
     });
     h += '</div>';
     return h;
@@ -982,7 +981,7 @@ function renderWizLibrary() {
     h += '<div class="section" id="hl-filemode" style="border-left:4px solid #d98a00;background:rgba(217,138,0,.08)"><h2>🔒 检测到 file:// 打开方式</h2><p style="font-size:0.78em;color:var(--text2);line-height:1.9">浏览器会阻止 <code>file://</code> 下按需读取正文（点击篇目将报 <b>Failed to fetch</b>），目录、检索与课题总览仍正常可用。请在<b>仓库根目录</b>运行 <code>python -m http.server</code>，然后访问 <code>http://127.0.0.1:8000/web/demo/tabs/jiaoxing.html</code>（独立文章页为 <code>.../web/demo/articles/haiyun-lectures.html</code>）；或将整仓部署到 GitHub Pages（<code>docs/huayanhai/</code> 相对路径自动解析）。</p></div>';
   }
   // ── 总览 ──
-  h += '<div class="section" id="hl-overview" style="border-left:4px solid var(--gold)"><h2>📚 海云法师讲法全库</h2>';
+  h += '<div class="section" id="hl-overview" style="border-left:4px solid var(--gold)"><h2>📚 海云讲法 · 公开资料</h2>';
   h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.9">' + esc(cat.subtitle || '') + '。全库共 <b style="color:var(--gold)">' + cat.totals.count + '</b> 篇、<b style="color:var(--gold)">' + cat.totals.folders_top + '</b> 个一级目录，文本合计 <b style="color:var(--gold)">' + fmtChars(cat.totals.chars) + '</b>（html 原件 ' + fmtBytes(cat.totals.size) + '）。正文按需加载，支持关键词检索与目录导航，点篇即读。</p>';
   h += '</div>';
   // ── 主要讲法方向 · 快捷入口 ──
@@ -995,19 +994,23 @@ function renderWizLibrary() {
     h += '<span class="topic-card" style="cursor:pointer;padding:8px 12px" onclick="wzJump(\'' + esc(t.name) + '\')">📁 ' + esc(t.name) + '<br><span style="color:var(--text2)">' + t.count + ' 篇</span></span>';
   });
   h += '</div></div>';
-  // ── 课题多源总览（经/教/行/密/生活 · 每题聚合全库/播客/视频/门户/书目）──
-  h += renderLecturesTopics();
-  // ── 播客全季目录（S1-S24 · 387 集真实 RSS）──
-  h += renderPodcastCatalog();
-  // ── 目录·检索 ──
+  // ── 目录·检索 + 阅读器（双栏：左目录 右正文；点篇即阅，无需下滑跳转）──
   h += '<div class="section" id="hl-browse" style="border-left:4px solid var(--gold)"><h2>🔍 目录 · 检索</h2>';
-  h += '<input id="wz-q" type="search" placeholder="输入关键词检索篇目（标题 / 目录）…" oninput="wzFilter(this.value)" style="width:100%;max-width:480px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-size:0.9em;background:var(--card);color:var(--text)">';
+  h += '<p style="font-size:0.74em;color:var(--text2);line-height:1.7">点击左侧篇目，正文即刻在右侧阅读（目录自动展开、当前篇高亮）；输入关键词即输即搜。窄屏时自动上下排列。</p>';
+  h += '<div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">';
+  h += '<div style="flex:1 1 320px;min-width:250px;max-width:540px">';
+  h += '<input id="wz-q" type="search" placeholder="输入关键词检索篇目（标题 / 目录）…" oninput="wzFilter(this.value)" style="width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-size:0.9em;background:var(--card);color:var(--text)">';
   h += '<div id="wz-count" style="font-size:0.74em;color:var(--text2);margin:6px 0"></div>';
   h += '<div id="wz-tree" style="font-size:0.8em">' + wzTreeHTML(window.wzTree, 0) + '</div>';
   h += '<div id="wz-results" style="display:none;font-size:0.8em"></div>';
   h += '</div>';
-  // ── 阅读器 ──
-  h += '<div class="section" id="hl-reader" style="display:none;border-left:4px solid var(--gold)"></div>';
+  h += '<div style="flex:2 1 420px;min-width:290px;position:sticky;top:8px">';
+  h += '<div id="hl-reader" style="max-height:78vh;overflow-y:auto;border-left:3px solid var(--gold);padding:2px 0 12px 14px;font-size:0.88em;line-height:1.95;min-height:120px;color:var(--text2)">📖 阅读区域 — 点击左侧目录或检索结果中的任意篇目，正文将在此显示。</div>';
+  h += '</div></div></div>';
+  // ── 课题多源总览（经/教/行/密/生活 · 每题聚合全库/播客/视频/门户/书目）──
+  h += renderLecturesTopics();
+  // ── 播客全季目录（S1-S24 · 387 集真实 RSS）──
+  h += renderPodcastCatalog();
   // ── 说明 ──
   h += '<div class="section" id="hl-hint" style="border-left:4px solid var(--line)"><h2>⚠️ 阅读与部署说明</h2>';
   h += '<p style="font-size:0.76em;color:var(--text2);line-height:1.9">📌 <b>数据来源与持久化：</b>本全库源于 wiz.cn 账号 huayanhai 全部 ' + cat.totals.count + ' 篇笔记（' + esc(cat.generated || '') + ' 全量导出），html 原件保真存档于 <code>docs/huayanhai/</code>，正文为按需加载的 txt 抽取本（LF，可由 html 确定性复现）。所有目录、计数与快捷方式均来自导出清单（数据驱动），<b>未加入任何未经验证的条目</b>。</p>';
@@ -1057,15 +1060,40 @@ function wzOpen(guid){
     var body = String(text || '').replace(/^\uFEFF/, '');
     body = body.replace(/^#[^\n]*\n?/, '');
     var paras = body.split(/\n{2,}/).map(function(p){ return esc(p).replace(/\n/g, '<br>'); }).filter(function(p){ return p.replace(/<br>/g, '').trim(); });
+    var all = window.wzAll || [], idx = -1;
+    for (var i = 0; i < all.length; i++) { if (all[i].guid === guid) { idx = i; break; } }
     var h = '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:4px"><h2 style="margin:0">📖 ' + esc(n.title) + '</h2></div>';
     h += '<p style="font-size:0.72em;color:var(--text2);margin-bottom:8px">📁 ' + esc(n.cat) + ' · ' + fmtChars(n.len) + ' · 更新 ' + fmtDate(n.modified) + '</p>';
-    h += '<div style="margin-bottom:10px"><button onclick="wzBack()" style="cursor:pointer;padding:5px 14px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--blue)">← 返回目录</button></div>';
+    h += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;font-size:0.78em">';
+    h += '<button onclick="wzBack()" style="cursor:pointer;padding:5px 14px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--blue)">← 目录</button>';
+    if (idx > 0) h += '<button onclick="wzOpen(\'' + all[idx - 1].guid + '\')" style="cursor:pointer;padding:5px 14px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--blue)">↑ 上一篇</button>';
+    if (idx >= 0 && idx < all.length - 1) h += '<button onclick="wzOpen(\'' + all[idx + 1].guid + '\')" style="cursor:pointer;padding:5px 14px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--blue)">↓ 下一篇</button>';
+    h += '<button onclick="window.scrollTo({top:0,behavior:\'smooth\'})" style="cursor:pointer;padding:5px 14px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--text2)">⬆ 顶部</button>';
+    h += '</div>';
     h += '<div style="border-left:3px solid var(--gold);padding-left:16px">' + paras.join('') + '</div>';
     h += '<p style="font-size:0.68em;color:var(--text2);margin-top:10px">📎 原文存档：<code>docs/huayanhai/' + esc(n.txt) + '</code></p>';
     rd.innerHTML = h;
+    wzMarkActive(guid);
   }).catch(function(err){
     rd.innerHTML = '<h2>⚠️ 载入失败</h2><p style="color:var(--text2);font-size:0.8em;line-height:1.8">无法按需加载正文（' + esc(String((err && err.message) || err)) + '）。若以 <code>file://</code> 打开会受浏览器安全策略限制；请在仓库根目录运行 <code>python -m http.server</code>，或访问 GitHub Pages 部署版本。</p>';
   });
+}
+function wzMarkActive(guid){
+  var notes = document.querySelectorAll('.wz-note');
+  for (var i = 0; i < notes.length; i++) { notes[i].style.background = ''; notes[i].style.borderLeft = ''; }
+  var el = document.getElementById('wzn-' + guid);
+  if (!el) return;
+  el.style.background = 'rgba(212,175,55,.12)';
+  el.style.borderLeft = '3px solid var(--gold)';
+  var p = el.parentElement;
+  while (p && p !== document.body) {
+    if (p.classList && p.classList.contains('wz-sub')) {
+      if (p.style.display === 'none') p.style.display = 'block';
+      var f = p.previousElementSibling;
+      if (f && f.querySelector) { var a = f.querySelector('.wz-arrow'); if (a && a.textContent === '▶') a.textContent = '▼'; }
+    }
+    p = p.parentElement;
+  }
 }
 function wzBack(){ var b = document.getElementById('hl-browse'); if (b) b.scrollIntoView({behavior: 'smooth', block: 'start'}); }
 
