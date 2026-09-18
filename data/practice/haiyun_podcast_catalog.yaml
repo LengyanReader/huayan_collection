@@ -1,0 +1,435 @@
+# ═══════════════════════════════════════════════════════════════════
+# 播客《海雲繼夢說華嚴》全集目录 · 来自官方 RSS（真实数据，非臆造）
+# RSS: https://anchor.fm/s/2ba2b720/podcast/rss  (zh-tw · 387集)
+# 抓取于 2026-09-18 · lastBuildDate Tue, 15 Sep 2026 02:54:32 GMT
+# 季号解析自单集标题前缀 S{季}；季名对照 Apple 官方页 S1-S24 目录（2026-09-18 核实）。
+# ═══════════════════════════════════════════════════════════════════
+meta:
+  title_zh: "海雲繼夢說華嚴"
+  title_en: "Haiyun Jimeng Speaks the Huayan Sutra"
+  alt_title_zh: "普賢乘華嚴宗"
+  alt_title_en: "Samantabhadra Vehicle Huayan School"
+  creator_zh: "海雲繼夢"
+  language: zh-tw
+  rss_url: https://anchor.fm/s/2ba2b720/podcast/rss
+  apple_url: "https://podcasts.apple.com/us/podcast/%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2%E8%AA%AA%E8%8F%AF%E5%9A%B4/id1523368889"
+  apple_url_au: "https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889"
+  spotify_url: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
+  episode_count: 387
+  fetched: "2026-09-18"
+  last_build: "Tue, 15 Sep 2026 02:54:32 GMT"
+  season_note: "季号按单集标题前缀 S{季} 解析（S1-S24）；无前缀集归入 misc。"
+seasons:
+  - {s: 1, title: "華嚴學概論", title_en: "Introduction to Huayan Studies", count: 8}
+  - {s: 2, title: "華嚴經教與行法", title_en: "Huayan Doctrine and Practice", count: 8}
+  - {s: 3, title: "華嚴禪行法", title_en: "Huayan Chan Practice", count: 8}
+  - {s: 4, title: "華嚴戒律觀", title_en: "Huayan View of the Precepts", count: 8}
+  - {s: 5, title: "華嚴淨土法門", title_en: "The Huayan Pure Land Practice", count: 6}
+  - {s: 6, title: "華嚴密法", title_en: "Huayan Esoteric Practice", count: 7}
+  - {s: 7, title: "學佛與修行", title_en: "Learning Buddhism and Practicing", count: 2}
+  - {s: 8, title: "禪與入定", title_en: "Chan and meditative absorption", count: 2}
+  - {s: 9, title: "東山法門與禪宗的特色", title_en: "The East Mountain Teachings and the Character of Chan", count: 2}
+  - {s: 10, title: "華嚴經經首", title_en: "The Opening of the Avataṃsaka Sūtra", count: 29}
+  - {s: 11, title: "四十二章經", title_en: "The Sūtra of Forty-Two Sections", count: 10}
+  - {s: 12, title: "地藏經", title_en: "The Kṣitigarbha Sūtra", count: 20}
+  - {s: 13, title: "藥師經", title_en: "The Bhaiṣajyaguru Sūtra", count: 19}
+  - {s: 14, title: "阿彌陀經", title_en: "The Amitābha Sūtra", count: 18}
+  - {s: 15, title: "心經", title_en: "The Heart Sūtra", count: 40}
+  - {s: 16, title: "觀音法門", title_en: "The Guanyin Dharma Approach", count: 4}
+  - {s: 17, title: "普賢行願品", title_en: "The Vows of Samantabhadra chapter", count: 20}
+  - {s: 18, title: "占察善惡業報經", title_en: "The Sūtra of Divining the Recompense of Good and Evil", count: 46}
+  - {s: 19, title: "普賢心經", title_en: "The Samantabhadra Heart Sūtra", count: 14}
+  - {s: 20, title: "華嚴經淨行品", title_en: "The Pure Practice chapter of the Avataṃsaka", count: 9}
+  - {s: 21, title: "心要法門", title_en: "The Essential Dharma Methods (Xinyao Famen)", count: 34}
+  - {s: 22, title: "華嚴海會", title_en: "The Huayan Assembly", count: 16}
+  - {s: 23, title: "十行品", title_en: "The Ten Practices chapter", count: 33}
+  - {s: 24, title: "九九華嚴講座", title_en: "The Ninety-nine-fascicle Huayan lecture series", count: 24}
+episodes:
+  - {s: 24, e: "06-03 九九華嚴講座【會後問答】2026年9月第3場", t: "S24-06-03 九九華嚴講座【會後問答】2026年9月第3場", d: "2026-09-15", m: 65, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-03-202693-e3os2om"}
+  - {s: 24, e: "06-03 九九華嚴講座【講經正行】2026年9月第3場", t: "S24-06-03 九九華嚴講座【講經正行】2026年9月第3場", d: "2026-09-15", m: 102, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-03-202693-e3os2mr"}
+  - {s: 24, e: "06-02 九九華嚴講座【會後問答】2026年9月第2場", t: "S24-06-02 九九華嚴講座【會後問答】2026年9月第2場", d: "2026-09-15", m: 66, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-02-202692-e3os2lb"}
+  - {s: 24, e: "06-02 九九華嚴講座【講經正行】2026年9月第2場", t: "S24-06-02 九九華嚴講座【講經正行】2026年9月第2場", d: "2026-09-15", m: 109, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-02-202692-e3os2it"}
+  - {s: 24, e: "06-01 九九華嚴講座【會後問答】2026年9月第1場", t: "S24-06-01 九九華嚴講座【會後問答】2026年9月第1場", d: "2026-09-15", m: 61, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-01-202691-e3os2h5"}
+  - {s: 24, e: "06-01 九九華嚴講座【講經正行】2026年9月第1場", t: "S24-06-01 九九華嚴講座【講經正行】2026年9月第1場", d: "2026-09-15", m: 112, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-01-202691-e3os2e0"}
+  - {s: 24, e: "05-03 九九華嚴講座【會後問答】2026年8月第3場", t: "S24-05-03 九九華嚴講座【會後問答】2026年8月第3場", d: "2026-08-17", m: 65, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-05-03-202683-e3ngia6"}
+  - {s: 24, e: "05-03 九九華嚴講座【講經正行】2026年8月第3場", t: "S24-05-03 九九華嚴講座【講經正行】2026年8月第3場", d: "2026-08-17", m: 110, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-05-03-202683-e3ngia3"}
+  - {s: 24, e: "05-02 九九華嚴講座【會後問答】2026年8月第2場", t: "S24-05-02 九九華嚴講座【會後問答】2026年8月第2場", d: "2026-08-17", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-05-02-202682-e3ngi5v"}
+  - {s: 24, e: "05-02 九九華嚴講座【講經正行】2026年8月第2場", t: "S24-05-02 九九華嚴講座【講經正行】2026年8月第2場", d: "2026-08-17", m: 112, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-05-02-202682-e3ngi5u"}
+  - {s: 24, e: "05-01 九九華嚴講座【會後問答】2026年8月第1場", t: "S24-05-01 九九華嚴講座【會後問答】2026年8月第1場", d: "2026-08-17", m: 68, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-05-01-202681-e3ngi04"}
+  - {s: 24, e: "05-01 九九華嚴講座【講經正行】2026年8月第1場", t: "S24-05-01 九九華嚴講座【講經正行】2026年8月第1場", d: "2026-08-17", m: 109, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-05-01-202681-e3nghsd"}
+  - {s: 24, e: "04-03 九九華嚴講座 2026年7月第3場", t: "S24-04-03 九九華嚴講座 2026年7月第3場", d: "2026-08-10", m: 173, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-03--202673-e3nb9g4"}
+  - {s: 24, e: "04-02 九九華嚴講座 2026年7月第2場", t: "S24-04-02 九九華嚴講座 2026年7月第2場", d: "2026-08-05", m: 175, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-02--202672-e3nb9g2"}
+  - {s: 24, e: "04-01 九九華嚴講座 2026年7月第1場", t: "S24-04-01 九九華嚴講座 2026年7月第1場", d: "2026-08-03", m: 174, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-01--202671-e3nb9fs"}
+  - {s: 24, e: "03-03 九九華嚴講座 2026年6月第3場", t: "S24-03-03 九九華嚴講座 2026年6月第3場", d: "2026-07-08", m: 180, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-03--202663-e3na85m"}
+  - {s: 24, e: "03-02 九九華嚴講座 2026年6月第2場", t: "S24-03-02 九九華嚴講座 2026年6月第2場", d: "2026-07-06", m: 172, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-02--202662-e3na806"}
+  - {s: 24, e: "03-01 九九華嚴講座 2026年6月第1場", t: "S24-03-01 九九華嚴講座 2026年6月第1場", d: "2026-07-01", m: 173, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-01--202661-e3na803"}
+  - {s: 24, e: "02-03 九九華嚴講座 2026年5月第3場", t: "S24-02-03 九九華嚴講座 2026年5月第3場", d: "2026-06-07", m: 167, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-03--202653-e3na800"}
+  - {s: 24, e: "02-02 九九華嚴講座 2026年5月第2場", t: "S24-02-02 九九華嚴講座 2026年5月第2場", d: "2026-06-03", m: 179, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-02--202652-e3na7vo"}
+  - {s: 24, e: "02-01 九九華嚴講座 2026年5月第1場", t: "S24-02-01 九九華嚴講座 2026年5月第1場", d: "2026-06-01", m: 184, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-01--202651-e3na7p2"}
+  - {s: 24, e: "01-03 九九華嚴講座 2026年4月第3場", t: "S24-01-03 九九華嚴講座 2026年4月第3場", d: "2026-04-27", m: 148, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-03--202643-e3na7ot"}
+  - {s: 24, e: "01-02 九九華嚴講座 2026年4月第2場", t: "S24-01-02 九九華嚴講座 2026年4月第2場", d: "2026-04-22", m: 137, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-02--202642-e3na7ng"}
+  - {s: 24, e: "01-01 九九華嚴講座 2026年4月第1場", t: "S24-01-01 九九華嚴講座 2026年4月第1場", d: "2026-04-20", m: 98, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-01--202641-e3na7jo"}
+  - {s: 23, e: "4 08集（完結）《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 08集（完結）《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-27", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-08-e25lodn"}
+  - {s: 23, e: "4 07集 《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 07集 《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-25", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-07-e25lodg"}
+  - {s: 23, e: "4 06集 《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 06集 《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-20", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-06-e25lod5"}
+  - {s: 23, e: "4 05集 《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 05集 《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-18", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-05-e25lod0"}
+  - {s: 23, e: "4 04集 《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 04集 《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-13", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-04-e25locp"}
+  - {s: 23, e: "4 03集 《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 03集 《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-11", m: 51, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-03-e25lock"}
+  - {s: 23, e: "4 02集 《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 02集 《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-06", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-02-e25locc"}
+  - {s: 23, e: "4 01集 《十行品之四 無屈撓行》 海雲繼夢", t: "S23-4 01集 《十行品之四 無屈撓行》 海雲繼夢", d: "2023-09-04", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-4-01-e25loaj"}
+  - {s: 23, e: "3 04集（完結）《十行品之三 無違逆行》 海雲繼夢", t: "S23-3 04集（完結）《十行品之三 無違逆行》 海雲繼夢", d: "2023-08-30", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-3-04-e25lo7o"}
+  - {s: 23, e: "3 03集《十行品之三 無違逆行》 海雲繼夢", t: "S23-3 03集《十行品之三 無違逆行》 海雲繼夢", d: "2023-08-28", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-3-03-e25lo7k"}
+  - {s: 23, e: "3 02集《十行品之三 無違逆行》 海雲繼夢", t: "S23-3 02集《十行品之三 無違逆行》 海雲繼夢", d: "2023-08-23", m: 50, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-3-02-e25lo7d"}
+  - {s: 23, e: "3 01集《十行品之三 無違逆行》 海雲繼夢", t: "S23-3 01集《十行品之三 無違逆行》 海雲繼夢", d: "2023-08-21", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-3-01-e25lo65"}
+  - {s: 23, e: "2 14集 （完結）《十行品之二 饒益行》 海雲繼夢", t: "S23-2 14集 （完結）《十行品之二 饒益行》 海雲繼夢", d: "2023-08-16", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-14-e25lo04"}
+  - {s: 23, e: "2 13集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 13集 《十行品之二 饒益行》 海雲繼夢", d: "2023-08-14", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-13-e25lnvv"}
+  - {s: 23, e: "2 12集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 12集 《十行品之二 饒益行》 海雲繼夢", d: "2023-08-09", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-12-e25lnvr"}
+  - {s: 23, e: "2 11集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 11集 《十行品之二 饒益行》 海雲繼夢", d: "2023-08-07", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-11-e25lnvn"}
+  - {s: 23, e: "2 10集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 10集 《十行品之二 饒益行》 海雲繼夢", d: "2023-08-02", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-10-e25lnvl"}
+  - {s: 23, e: "2 09集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 09集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-31", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-09-e25lnvf"}
+  - {s: 23, e: "2 08集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 08集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-26", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-08-e25lnve"}
+  - {s: 23, e: "2 07集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 07集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-24", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-07-e25lnv8"}
+  - {s: 23, e: "2 06集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 06集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-19", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-06-e25lnv4"}
+  - {s: 23, e: "2 05集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 05集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-17", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-05-e25lnv3"}
+  - {s: 23, e: "2 04集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 04集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-12", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-04-e25lnun"}
+  - {s: 23, e: "2 03集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 03集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-10", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-03-e25lnum"}
+  - {s: 23, e: "2 02集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 02集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-05", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-02-e25lnuk"}
+  - {s: 23, e: "2 01集 《十行品之二 饒益行》 海雲繼夢", t: "S23-2 01集 《十行品之二 饒益行》 海雲繼夢", d: "2023-07-03", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-2-01-e25lnpe"}
+  - {s: 23, e: "1 07集（完結） 《十行品之一 歡喜行》 海雲繼夢", t: "S23-1 07集（完結） 《十行品之一 歡喜行》 海雲繼夢", d: "2023-06-28", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-1-07-e25lnmr"}
+  - {s: 23, e: "1 06集 《十行品之一 歡喜行》 海雲繼夢", t: "S23-1 06集 《十行品之一 歡喜行》 海雲繼夢", d: "2023-06-26", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-1-06-e25lnmm"}
+  - {s: 23, e: "1 05集 《十行品之一 歡喜行》 海雲繼夢", t: "S23-1 05集 《十行品之一 歡喜行》 海雲繼夢", d: "2023-06-21", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-1-05-e25lnmh"}
+  - {s: 23, e: "1 03集 《十行品之一 歡喜行》 海雲繼夢", t: "S23-1 03集 《十行品之一 歡喜行》 海雲繼夢", d: "2023-06-21", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-1-03-e25lnma"}
+  - {s: 23, e: "1 04集 《十行品之一 歡喜行》 海雲繼夢", t: "S23-1 04集 《十行品之一 歡喜行》 海雲繼夢", d: "2023-06-19", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-1-04-e25lnmf"}
+  - {s: 23, e: "1 02集 《十行品之一 歡喜行》 海雲繼夢", t: "S23-1 02集 《十行品之一 歡喜行》 海雲繼夢", d: "2023-06-19", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-1-02-e25lnkb"}
+  - {s: 23, e: "1 01集 《十行品之一 歡喜行》 海雲繼夢", t: "S23-1 01集 《十行品之一 歡喜行》 海雲繼夢", d: "2023-06-14", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S23-1-01-e25lnjr"}
+  - {s: 22, e: "16集 完結《華嚴海會開示》 海雲繼夢", t: "S22 16集 完結《華嚴海會開示》 海雲繼夢", d: "2022-09-07", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-16-e1lbs7d"}
+  - {s: 22, e: "15集《華嚴海會開示》 海雲繼夢", t: "S22 15集《華嚴海會開示》 海雲繼夢", d: "2022-09-05", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-15-e1lbs6m"}
+  - {s: 22, e: "14集《華嚴海會開示》 海雲繼夢", t: "S22 14集《華嚴海會開示》 海雲繼夢", d: "2022-08-31", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-14-e1lbs8p"}
+  - {s: 22, e: "13集《華嚴海會開示》 海雲繼夢", t: "S22 13集《華嚴海會開示》 海雲繼夢", d: "2022-08-29", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-13-e1lbs69"}
+  - {s: 22, e: "12集《華嚴海會開示》 海雲繼夢", t: "S22 12集《華嚴海會開示》 海雲繼夢", d: "2022-08-24", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-12-e1lbs5o"}
+  - {s: 22, e: "11集《華嚴海會開示》 海雲繼夢", t: "S22 11集《華嚴海會開示》 海雲繼夢", d: "2022-08-22", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-11-e1lbs5d"}
+  - {s: 22, e: "10集《華嚴海會開示》 海雲繼夢", t: "S22 10集《華嚴海會開示》 海雲繼夢", d: "2022-08-17", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-10-e1lbse1"}
+  - {s: 22, e: "09集《華嚴海會開示》 海雲繼夢", t: "S22 09集《華嚴海會開示》 海雲繼夢", d: "2022-08-15", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-09-e1lbs4r"}
+  - {s: 22, e: "08集《華嚴海會開示》 海雲繼夢", t: "S22 08集《華嚴海會開示》 海雲繼夢", d: "2022-08-10", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-08-e1lbs42"}
+  - {s: 22, e: "07集《華嚴海會開示》 海雲繼夢", t: "S22 07集《華嚴海會開示》 海雲繼夢", d: "2022-08-08", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-07-e1lbs34"}
+  - {s: 22, e: "06集《華嚴海會開示》 海雲繼夢", t: "S22 06集《華嚴海會開示》 海雲繼夢", d: "2022-08-03", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-06-e1lbs2n"}
+  - {s: 22, e: "05集《華嚴海會開示》 海雲繼夢", t: "S22 05集《華嚴海會開示》 海雲繼夢", d: "2022-08-01", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-05-e1lbs2b"}
+  - {s: 22, e: "04集《華嚴海會開示》 海雲繼夢", t: "S22 04集《華嚴海會開示》 海雲繼夢", d: "2022-07-27", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-04-e1lbs01"}
+  - {s: 22, e: "03集《華嚴海會開示》 海雲繼夢", t: "S22 03集《華嚴海會開示》 海雲繼夢", d: "2022-07-25", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-03-e1lbrvf"}
+  - {s: 22, e: "02集《華嚴海會開示》 海雲繼夢", t: "S22 02集《華嚴海會開示》 海雲繼夢", d: "2022-07-20", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-02-e1lbrtd"}
+  - {s: 22, e: "01集《華嚴海會開示》 海雲繼夢", t: "S22 01集《華嚴海會開示》 海雲繼夢", d: "2022-07-18", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S22-01-e1lbrjs"}
+  - {s: 21, e: "34集 完結《心要法門》 海雲繼夢", t: "S21 34集 完結《心要法門》 海雲繼夢", d: "2021-07-14", m: 63, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-34-e12e91c"}
+  - {s: 21, e: "33集《心要法門》 海雲繼夢", t: "S21 33集《心要法門》 海雲繼夢", d: "2021-07-13", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-33-e12e8ja"}
+  - {s: 21, e: "32集《心要法門》 海雲繼夢", t: "S21 32集《心要法門》 海雲繼夢", d: "2021-07-12", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-32-e12e8j9"}
+  - {s: 21, e: "31集《心要法門》 海雲繼夢", t: "S21 31集《心要法門》 海雲繼夢", d: "2021-07-11", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-31-e12e915"}
+  - {s: 21, e: "30集《心要法門》 海雲繼夢", t: "S21 30集《心要法門》 海雲繼夢", d: "2021-07-10", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-30-e12e8hm"}
+  - {s: 21, e: "29集《心要法門》 海雲繼夢", t: "S21 29集《心要法門》 海雲繼夢", d: "2021-07-09", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-29-e12e8hl"}
+  - {s: 21, e: "28集《心要法門》 海雲繼夢", t: "S21 28集《心要法門》 海雲繼夢", d: "2021-07-08", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-28-e12e8hk"}
+  - {s: 21, e: "27集《心要法門》 海雲繼夢", t: "S21 27集《心要法門》 海雲繼夢", d: "2021-07-07", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-27-e12e8hc"}
+  - {s: 21, e: "26集《心要法門》 海雲繼夢", t: "S21 26集《心要法門》 海雲繼夢", d: "2021-07-06", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-26-e12e92n"}
+  - {s: 21, e: "25集《心要法門》 海雲繼夢", t: "S21 25集《心要法門》 海雲繼夢", d: "2021-07-05", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-25-e12e8gn"}
+  - {s: 21, e: "24集《心要法門》 海雲繼夢", t: "S21 24集《心要法門》 海雲繼夢", d: "2021-07-04", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-24-e12e8g2"}
+  - {s: 21, e: "23集《心要法門》 海雲繼夢", t: "S21 23集《心要法門》 海雲繼夢", d: "2021-07-03", m: 62, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-23-e12e92i"}
+  - {s: 21, e: "22集《心要法門》 海雲繼夢", t: "S21 22集《心要法門》 海雲繼夢", d: "2021-07-02", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-22-e12e8fl"}
+  - {s: 21, e: "21集《心要法門》 海雲繼夢", t: "S21 21集《心要法門》 海雲繼夢", d: "2021-07-01", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-21-e12e8fa"}
+  - {s: 21, e: "20集《心要法門》 海雲繼夢", t: "S21 20集《心要法門》 海雲繼夢", d: "2021-06-30", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-20-e12e800"}
+  - {s: 21, e: "19集《心要法門》 海雲繼夢", t: "S21 19集《心要法門》 海雲繼夢", d: "2021-06-29", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-19-e12e7un"}
+  - {s: 21, e: "18集《心要法門》 海雲繼夢", t: "S21 18集《心要法門》 海雲繼夢", d: "2021-06-28", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-18-e12e7um"}
+  - {s: 21, e: "17集《心要法門》 海雲繼夢", t: "S21 17集《心要法門》 海雲繼夢", d: "2021-06-27", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-17-e12e7ul"}
+  - {s: 21, e: "16集《心要法門》 海雲繼夢", t: "S21 16集《心要法門》 海雲繼夢", d: "2021-06-26", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-16-e12e7ug"}
+  - {s: 21, e: "15集《心要法門》 海雲繼夢", t: "S21 15集《心要法門》 海雲繼夢", d: "2021-06-25", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-15-e12e7qj"}
+  - {s: 21, e: "14集《心要法門》 海雲繼夢", t: "S21 14集《心要法門》 海雲繼夢", d: "2021-06-24", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-14-e12e7pv"}
+  - {s: 21, e: "13集《心要法門》 海雲繼夢", t: "S21 13集《心要法門》 海雲繼夢", d: "2021-06-23", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-13-e12e7p1"}
+  - {s: 21, e: "12集《心要法門》 海雲繼夢", t: "S21 12集《心要法門》 海雲繼夢", d: "2021-06-22", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-12-e12e7pd"}
+  - {s: 21, e: "11集《心要法門》 海雲繼夢", t: "S21 11集《心要法門》 海雲繼夢", d: "2021-06-21", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-11-e12e7oe"}
+  - {s: 21, e: "10集《心要法門》 海雲繼夢", t: "S21 10集《心要法門》 海雲繼夢", d: "2021-06-20", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-10-e12e7bv"}
+  - {s: 21, e: "09集《心要法門》 海雲繼夢", t: "S21 09集《心要法門》 海雲繼夢", d: "2021-06-19", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-09-e12e7bn"}
+  - {s: 21, e: "08集《心要法門》 海雲繼夢", t: "S21 08集《心要法門》 海雲繼夢", d: "2021-06-18", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-08-e12e7k9"}
+  - {s: 21, e: "07集《心要法門》 海雲繼夢", t: "S21 07集《心要法門》 海雲繼夢", d: "2021-06-17", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-07-e12e7b4"}
+  - {s: 21, e: "06集《心要法門》 海雲繼夢", t: "S21 06集《心要法門》 海雲繼夢", d: "2021-06-16", m: 64, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-06-e12e7m3"}
+  - {s: 21, e: "05集《心要法門》 海雲繼夢", t: "S21 05集《心要法門》 海雲繼夢", d: "2021-06-15", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-05-e12e7a5"}
+  - {s: 21, e: "04集《心要法門》 海雲繼夢", t: "S21 04集《心要法門》 海雲繼夢", d: "2021-06-14", m: 66, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-04-e12e7k6"}
+  - {s: 21, e: "03集《心要法門》 海雲繼夢", t: "S21 03集《心要法門》 海雲繼夢", d: "2021-06-13", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-03-e12e7k2"}
+  - {s: 21, e: "02集《心要法門》 海雲繼夢", t: "S21 02集《心要法門》 海雲繼夢", d: "2021-06-12", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-02-e12e783"}
+  - {s: 21, e: "01集《心要法門》 海雲繼夢", t: "S21 01集《心要法門》 海雲繼夢", d: "2021-06-11", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S21-01-e12e7is"}
+  - {s: 20, e: "2《華嚴經淨行品的現代解讀 》06集 （完結） 海雲繼夢", t: "S20-2《華嚴經淨行品的現代解讀 》06集 （完結） 海雲繼夢", d: "2021-05-09", m: 78, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-2-06-epooss"}
+  - {s: 20, e: "2《華嚴經淨行品的現代解讀 》05集 海雲繼夢", t: "S20-2《華嚴經淨行品的現代解讀 》05集 海雲繼夢", d: "2021-05-08", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-2-05-epoosb"}
+  - {s: 20, e: "2《華嚴經淨行品的現代解讀 》04集 海雲繼夢", t: "S20-2《華嚴經淨行品的現代解讀 》04集 海雲繼夢", d: "2021-05-07", m: 78, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-2-04-epooqh"}
+  - {s: 20, e: "2《華嚴經淨行品的現代解讀 》03集 海雲繼夢", t: "S20-2《華嚴經淨行品的現代解讀 》03集 海雲繼夢", d: "2021-05-06", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-2-03-epopji"}
+  - {s: 20, e: "2《華嚴經淨行品的現代解讀 》02集 海雲繼夢", t: "S20-2《華嚴經淨行品的現代解讀 》02集 海雲繼夢", d: "2021-05-05", m: 108, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-2-02-epopv6"}
+  - {s: 20, e: "2《華嚴經淨行品的現代解讀 》01集 海雲繼夢", t: "S20-2《華嚴經淨行品的現代解讀 》01集 海雲繼夢", d: "2021-05-04", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-2-01-epop9b"}
+  - {s: 20, e: "1《淨行品導讀：行住坐臥皆修行》 03集（完結） 海雲繼夢", t: "S20-1《淨行品導讀：行住坐臥皆修行》 03集（完結） 海雲繼夢", d: "2021-05-03", m: 72, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-1-03-epon1m"}
+  - {s: 20, e: "1《淨行品導讀：行住坐臥皆修行》 02集 海雲繼夢", t: "S20-1《淨行品導讀：行住坐臥皆修行》 02集 海雲繼夢", d: "2021-05-02", m: 69, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-1-02-epon16"}
+  - {s: 20, e: "1《淨行品導讀：行住坐臥皆修行》 01集 海雲繼夢", t: "S20-1《淨行品導讀：行住坐臥皆修行》 01集 海雲繼夢", d: "2021-05-01", m: 67, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S20-1-01-epomus"}
+  - {s: 19, e: "《普賢心經》14集 （完結） 海雲繼夢", t: "S19 《普賢心經》14集 （完結） 海雲繼夢", d: "2021-04-30", m: 115, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-14-epoqna"}
+  - {s: 19, e: "《普賢心經》13集 海雲繼夢", t: "S19 《普賢心經》13集 海雲繼夢", d: "2021-04-29", m: 113, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-13-epoqml"}
+  - {s: 19, e: "《普賢心經》12集 海雲繼夢", t: "S19 《普賢心經》12集 海雲繼夢", d: "2021-04-28", m: 102, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-12-epoqmd"}
+  - {s: 19, e: "《普賢心經》11集 海雲繼夢", t: "S19 《普賢心經》11集 海雲繼夢", d: "2021-04-27", m: 111, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-11-epoqm3"}
+  - {s: 19, e: "《普賢心經》10集 海雲繼夢", t: "S19 《普賢心經》10集 海雲繼夢", d: "2021-04-26", m: 106, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-10-epoqli"}
+  - {s: 19, e: "《普賢心經》09集 海雲繼夢", t: "S19 《普賢心經》09集 海雲繼夢", d: "2021-04-25", m: 101, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-09-epoql6"}
+  - {s: 19, e: "《普賢心經》08集 海雲繼夢", t: "S19 《普賢心經》08集 海雲繼夢", d: "2021-04-24", m: 111, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-08-epoqkt"}
+  - {s: 19, e: "《普賢心經》07集 海雲繼夢", t: "S19 《普賢心經》07集 海雲繼夢", d: "2021-04-23", m: 109, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-07-epoqkb"}
+  - {s: 19, e: "《普賢心經》06集 海雲繼夢", t: "S19 《普賢心經》06集 海雲繼夢", d: "2021-04-22", m: 111, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-06-epopdo"}
+  - {s: 19, e: "《普賢心經》05集 海雲繼夢", t: "S19 《普賢心經》05集 海雲繼夢", d: "2021-04-21", m: 114, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-05-epopd7"}
+  - {s: 19, e: "《普賢心經》04集 海雲繼夢", t: "S19 《普賢心經》04集 海雲繼夢", d: "2021-04-20", m: 112, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-04-epoqo4"}
+  - {s: 19, e: "《普賢心經》03集 海雲繼夢", t: "S19 《普賢心經》03集 海雲繼夢", d: "2021-04-19", m: 116, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-03-epopbk"}
+  - {s: 19, e: "《普賢心經》02集 海雲繼夢", t: "S19 《普賢心經》02集 海雲繼夢", d: "2021-04-18", m: 101, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-02-epopb5"}
+  - {s: 19, e: "《普賢心經》01集 海雲繼夢", t: "S19 《普賢心經》01集 海雲繼夢", d: "2021-04-17", m: 109, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S19-01-epootd"}
+  - {s: 18, e: "《占察善惡業報經》46集（完結） 海雲繼夢", t: "S18 《占察善惡業報經》46集（完結） 海雲繼夢", d: "2021-04-16", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-46-epomsc"}
+  - {s: 18, e: "《占察善惡業報經》45集 海雲繼夢", t: "S18 《占察善惡業報經》45集 海雲繼夢", d: "2021-04-15", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-45-epomrh"}
+  - {s: 18, e: "《占察善惡業報經》44集 海雲繼夢", t: "S18 《占察善惡業報經》44集 海雲繼夢", d: "2021-04-14", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-44-epomra"}
+  - {s: 18, e: "《占察善惡業報經》43集 海雲繼夢", t: "S18 《占察善惡業報經》43集 海雲繼夢", d: "2021-04-13", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-43-epomqs"}
+  - {s: 18, e: "《占察善惡業報經》42集 海雲繼夢", t: "S18 《占察善惡業報經》42集 海雲繼夢", d: "2021-04-12", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-42-epomq7"}
+  - {s: 18, e: "《占察善惡業報經》41集 海雲繼夢", t: "S18 《占察善惡業報經》41集 海雲繼夢", d: "2021-04-11", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-41-epolv1"}
+  - {s: 18, e: "《占察善惡業報經》40集 海雲繼夢", t: "S18 《占察善惡業報經》40集 海雲繼夢", d: "2021-04-10", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-40-epolub"}
+  - {s: 18, e: "《占察善惡業報經》39集 海雲繼夢", t: "S18 《占察善惡業報經》39集 海雲繼夢", d: "2021-04-09", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-39-epoltv"}
+  - {s: 18, e: "《占察善惡業報經》38集 海雲繼夢", t: "S18 《占察善惡業報經》38集 海雲繼夢", d: "2021-04-08", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-38-epoltf"}
+  - {s: 18, e: "《占察善惡業報經》37集 海雲繼夢", t: "S18 《占察善惡業報經》37集 海雲繼夢", d: "2021-04-07", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-37-epoltb"}
+  - {s: 18, e: "《占察善惡業報經》36集 海雲繼夢", t: "S18 《占察善惡業報經》36集 海雲繼夢", d: "2021-04-06", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-36-epolt1"}
+  - {s: 18, e: "《占察善惡業報經》35集 海雲繼夢", t: "S18 《占察善惡業報經》35集 海雲繼夢", d: "2021-04-05", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-35-epolr7"}
+  - {s: 18, e: "《占察善惡業報經》34集 海雲繼夢", t: "S18 《占察善惡業報經》34集 海雲繼夢", d: "2021-04-04", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-34-epompo"}
+  - {s: 18, e: "《占察善惡業報經》33集 海雲繼夢", t: "S18 《占察善惡業報經》33集 海雲繼夢", d: "2021-04-02", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-33-epolpl"}
+  - {s: 18, e: "《占察善惡業報經》32集 海雲繼夢", t: "S18 《占察善惡業報經》32集 海雲繼夢", d: "2021-04-01", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-32-epolp1"}
+  - {s: 18, e: "《占察善惡業報經》31集 海雲繼夢", t: "S18 《占察善惡業報經》31集 海雲繼夢", d: "2021-03-31", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-31-epolok"}
+  - {s: 18, e: "《占察善惡業報經》30集 海雲繼夢", t: "S18 《占察善惡業報經》30集 海雲繼夢", d: "2021-03-30", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-30-epokue"}
+  - {s: 18, e: "《占察善惡業報經》29集 海雲繼夢", t: "S18 《占察善惡業報經》29集 海雲繼夢", d: "2021-03-29", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-29-epoku1"}
+  - {s: 18, e: "《占察善惡業報經》28集 海雲繼夢", t: "S18 《占察善惡業報經》28集 海雲繼夢", d: "2021-03-28", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-28-epokti"}
+  - {s: 18, e: "《占察善惡業報經》27集 海雲繼夢", t: "S18 《占察善惡業報經》27集 海雲繼夢", d: "2021-03-27", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-27-epokt2"}
+  - {s: 18, e: "《占察善惡業報經》26集 海雲繼夢", t: "S18 《占察善惡業報經》26集 海雲繼夢", d: "2021-03-26", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-26-epokru"}
+  - {s: 18, e: "《占察善惡業報經》25集 海雲繼夢", t: "S18 《占察善惡業報經》25集 海雲繼夢", d: "2021-03-25", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-25-epokrl"}
+  - {s: 18, e: "《占察善惡業報經》24集 海雲繼夢", t: "S18 《占察善惡業報經》24集 海雲繼夢", d: "2021-03-24", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-24-epokr8"}
+  - {s: 18, e: "《占察善惡業報經》23集 海雲繼夢", t: "S18 《占察善惡業報經》23集 海雲繼夢", d: "2021-03-23", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-23-epokqn"}
+  - {s: 18, e: "《占察善惡業報經》22集 海雲繼夢", t: "S18 《占察善惡業報經》22集 海雲繼夢", d: "2021-03-22", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-22-epokq4"}
+  - {s: 18, e: "《占察善惡業報經》21集 海雲繼夢", t: "S18 《占察善惡業報經》21集 海雲繼夢", d: "2021-03-21", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-21-epokpn"}
+  - {s: 18, e: "《占察善惡業報經》20集 海雲繼夢", t: "S18 《占察善惡業報經》20集 海雲繼夢", d: "2021-03-20", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-20-epokoq"}
+  - {s: 18, e: "《占察善惡業報經》19集 海雲繼夢", t: "S18 《占察善惡業報經》19集 海雲繼夢", d: "2021-03-19", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-19-epokog"}
+  - {s: 18, e: "《占察善惡業報經》18集 海雲繼夢", t: "S18 《占察善惡業報經》18集 海雲繼夢", d: "2021-03-18", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-18-epoko6"}
+  - {s: 18, e: "《占察善惡業報經》17集 海雲繼夢", t: "S18 《占察善惡業報經》17集 海雲繼夢", d: "2021-03-17", m: 51, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-17-epoknh"}
+  - {s: 18, e: "《占察善惡業報經》16集 海雲繼夢", t: "S18 《占察善惡業報經》16集 海雲繼夢", d: "2021-03-16", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-16-epokmv"}
+  - {s: 18, e: "《占察善惡業報經》15集 海雲繼夢", t: "S18 《占察善惡業報經》15集 海雲繼夢", d: "2021-03-15", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-15-epoklr"}
+  - {s: 18, e: "《占察善惡業報經》14集 海雲繼夢", t: "S18 《占察善惡業報經》14集 海雲繼夢", d: "2021-03-14", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-14-epokla"}
+  - {s: 18, e: "《占察善惡業報經》13集 海雲繼夢", t: "S18 《占察善惡業報經》13集 海雲繼夢", d: "2021-03-13", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-13-epokkl"}
+  - {s: 18, e: "《占察善惡業報經》12集 海雲繼夢", t: "S18 《占察善惡業報經》12集 海雲繼夢", d: "2021-03-12", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-12-epokk9"}
+  - {s: 18, e: "《占察善惡業報經》11集 海雲繼夢", t: "S18 《占察善惡業報經》11集 海雲繼夢", d: "2021-03-11", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-11-epokjf"}
+  - {s: 18, e: "《占察善惡業報經》10集 海雲繼夢", t: "S18 《占察善惡業報經》10集 海雲繼夢", d: "2021-03-10", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-10-epokip"}
+  - {s: 18, e: "《占察善惡業報經》09集 海雲繼夢", t: "S18 《占察善惡業報經》09集 海雲繼夢", d: "2021-03-09", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-09-epokib"}
+  - {s: 18, e: "《占察善惡業報經》08集 海雲繼夢", t: "S18 《占察善惡業報經》08集 海雲繼夢", d: "2021-03-08", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-08-epooos"}
+  - {s: 18, e: "《占察善惡業報經》07集 海雲繼夢", t: "S18 《占察善惡業報經》07集 海雲繼夢", d: "2021-03-07", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-07-epokhq"}
+  - {s: 18, e: "《占察善惡業報經》06集 海雲繼夢", t: "S18 《占察善惡業報經》06集 海雲繼夢", d: "2021-03-06", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-06-epokhc"}
+  - {s: 18, e: "《占察善惡業報經》05集 海雲繼夢", t: "S18 《占察善惡業報經》05集 海雲繼夢", d: "2021-03-05", m: 50, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-05-epokgp"}
+  - {s: 18, e: "《占察善惡業報經》04集 海雲繼夢", t: "S18 《占察善惡業報經》04集 海雲繼夢", d: "2021-03-04", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-04-epokfm"}
+  - {s: 18, e: "《占察善惡業報經》03集 海雲繼夢", t: "S18 《占察善惡業報經》03集 海雲繼夢", d: "2021-03-03", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-03-epokf5"}
+  - {s: 18, e: "《占察善惡業報經》02集 海雲繼夢", t: "S18 《占察善惡業報經》02集 海雲繼夢", d: "2021-03-02", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-02-epokea"}
+  - {s: 18, e: "《占察善惡業報經》01集 海雲繼夢", t: "S18 《占察善惡業報經》01集 海雲繼夢", d: "2021-03-01", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S18-01-epokdb"}
+  - {s: 17, e: "《普賢行願品》 21集 （完結） 海雲繼夢", t: "S17 《普賢行願品》 21集 （完結） 海雲繼夢", d: "2021-02-21", m: 8, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--21-epokc0"}
+  - {s: 17, e: "《普賢行願品》 20集 海雲繼夢", t: "S17 《普賢行願品》 20集 海雲繼夢", d: "2021-02-20", m: 101, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--20-epokbp"}
+  - {s: 17, e: "《普賢行願品》 19集 海雲繼夢", t: "S17 《普賢行願品》 19集 海雲繼夢", d: "2021-02-19", m: 111, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--19-epokb7"}
+  - {s: 17, e: "《普賢行願品》 18集 海雲繼夢", t: "S17 《普賢行願品》 18集 海雲繼夢", d: "2021-02-18", m: 112, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--18-epokar"}
+  - {s: 17, e: "《普賢行願品》 17集 海雲繼夢", t: "S17 《普賢行願品》 17集 海雲繼夢", d: "2021-02-17", m: 106, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--17-epokaf"}
+  - {s: 17, e: "《普賢行願品》 16集 海雲繼夢", t: "S17 《普賢行願品》 16集 海雲繼夢", d: "2021-02-16", m: 107, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--16-epok8t"}
+  - {s: 17, e: "《普賢行願品》 15集 海雲繼夢", t: "S17 《普賢行願品》 15集 海雲繼夢", d: "2021-02-15", m: 112, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--15-epok8j"}
+  - {s: 17, e: "《普賢行願品》 14集 海雲繼夢", t: "S17 《普賢行願品》 14集 海雲繼夢", d: "2021-02-14", m: 120, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--14-epolnj"}
+  - {s: 17, e: "《普賢行願品》 13集 海雲繼夢", t: "S17 《普賢行願品》 13集 海雲繼夢", d: "2021-02-13", m: 112, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--13-epoi48"}
+  - {s: 17, e: "《普賢行願品》 11+12集 海雲繼夢", t: "S17 《普賢行願品》 11+12集 海雲繼夢", d: "2021-02-11", m: 106, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--1112-epoi5q"}
+  - {s: 17, e: "《普賢行願品》 10集 海雲繼夢", t: "S17 《普賢行願品》 10集 海雲繼夢", d: "2021-02-10", m: 106, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--10-epok85"}
+  - {s: 17, e: "《普賢行願品》 09集 海雲繼夢", t: "S17 《普賢行願品》 09集 海雲繼夢", d: "2021-02-09", m: 106, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--09-epok7s"}
+  - {s: 17, e: "《普賢行願品》 08集 海雲繼夢", t: "S17 《普賢行願品》 08集 海雲繼夢", d: "2021-02-08", m: 124, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--08-epok7j"}
+  - {s: 17, e: "《普賢行願品》 07集 海雲繼夢", t: "S17 《普賢行願品》 07集 海雲繼夢", d: "2021-02-07", m: 106, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--07-epok71"}
+  - {s: 17, e: "《普賢行願品》 06集 海雲繼夢", t: "S17 《普賢行願品》 06集 海雲繼夢", d: "2021-02-06", m: 106, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--06-epoi1g"}
+  - {s: 17, e: "《普賢行願品》 05集 海雲繼夢", t: "S17 《普賢行願品》 05集 海雲繼夢", d: "2021-02-05", m: 99, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--05-epoi1b"}
+  - {s: 17, e: "《普賢行願品》 04集 海雲繼夢", t: "S17 《普賢行願品》 04集 海雲繼夢", d: "2021-02-04", m: 107, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--04-epok69"}
+  - {s: 17, e: "《普賢行願品》 03集 海雲繼夢", t: "S17 《普賢行願品》 03集 海雲繼夢", d: "2021-02-03", m: 103, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--03-epoi13"}
+  - {s: 17, e: "《普賢行願品》 02集 海雲繼夢", t: "S17 《普賢行願品》 02集 海雲繼夢", d: "2021-02-02", m: 103, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--02-epoi0e"}
+  - {s: 17, e: "《普賢行願品》 01集 海雲繼夢", t: "S17 《普賢行願品》 01集 海雲繼夢", d: "2021-02-01", m: 103, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S17--01-epohu4"}
+  - {s: 16, e: "《觀音法門》 04集 （完結）海雲繼夢", t: "S16 《觀音法門》 04集 （完結）海雲繼夢", d: "2020-12-19", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S16--04-elnuig"}
+  - {s: 16, e: "《觀音法門》 03集 海雲繼夢", t: "S16 《觀音法門》 03集 海雲繼夢", d: "2020-12-18", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S16--03-elnuif"}
+  - {s: 16, e: "《觀音法門》 02集 海雲繼夢", t: "S16 《觀音法門》 02集 海雲繼夢", d: "2020-12-17", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S16--02-elnuid"}
+  - {s: 16, e: "《觀音法門》 01集 海雲繼夢", t: "S16 《觀音法門》 01集 海雲繼夢", d: "2020-12-16", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S16--01-elnui8"}
+  - {s: 15, e: "《心經》 40集 （完結）海雲繼夢", t: "S15 《心經》 40集 （完結）海雲繼夢", d: "2020-12-15", m: 63, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--40-elnugc"}
+  - {s: 15, e: "《心經》 39集 海雲繼夢", t: "S15 《心經》 39集 海雲繼夢", d: "2020-12-14", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--39-elnugb"}
+  - {s: 15, e: "《心經》 38集 海雲繼夢", t: "S15 《心經》 38集 海雲繼夢", d: "2020-12-13", m: 65, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--38-elnug8"}
+  - {s: 15, e: "《心經》 37集 海雲繼夢", t: "S15 《心經》 37集 海雲繼夢", d: "2020-12-12", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--37-elnug3"}
+  - {s: 15, e: "《心經》 36集 海雲繼夢", t: "S15 《心經》 36集 海雲繼夢", d: "2020-12-11", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--36-elnug1"}
+  - {s: 15, e: "《心經》 35集 海雲繼夢", t: "S15 《心經》 35集 海雲繼夢", d: "2020-12-10", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--35-elnufv"}
+  - {s: 15, e: "《心經》 34集 海雲繼夢", t: "S15 《心經》 34集 海雲繼夢", d: "2020-12-09", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--34-elnuft"}
+  - {s: 15, e: "《心經》 33集 海雲繼夢", t: "S15 《心經》 33集 海雲繼夢", d: "2020-12-08", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--33-elnufp"}
+  - {s: 15, e: "《心經》 32集 海雲繼夢", t: "S15 《心經》 32集 海雲繼夢", d: "2020-12-08", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--32-elnua0"}
+  - {s: 15, e: "《心經》 31集 海雲繼夢", t: "S15 《心經》 31集 海雲繼夢", d: "2020-12-07", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--31-elnu3t"}
+  - {s: 15, e: "《心經》 30集 海雲繼夢", t: "S15 《心經》 30集 海雲繼夢", d: "2020-12-06", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--30-elnu3m"}
+  - {s: 15, e: "《心經》 29集 海雲繼夢", t: "S15 《心經》 29集 海雲繼夢", d: "2020-12-05", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--29-elnu3j"}
+  - {s: 15, e: "《心經》 28集 海雲繼夢", t: "S15 《心經》 28集 海雲繼夢", d: "2020-12-04", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--28-elnu3h"}
+  - {s: 15, e: "《心經》 27集 海雲繼夢", t: "S15 《心經》 27集 海雲繼夢", d: "2020-12-03", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--27-elnu3e"}
+  - {s: 15, e: "《心經》 25集 海雲繼夢", t: "S15 《心經》 25集 海雲繼夢", d: "2020-12-01", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--25-elnu3a"}
+  - {s: 15, e: "《心經》 24集 海雲繼夢", t: "S15 《心經》 24集 海雲繼夢", d: "2020-11-30", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--24-elnu39"}
+  - {s: 15, e: "《心經》 23集 海雲繼夢", t: "S15 《心經》 23集 海雲繼夢", d: "2020-11-29", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--23-elnu33"}
+  - {s: 15, e: "《心經》 22集 海雲繼夢", t: "S15 《心經》 22集 海雲繼夢", d: "2020-11-28", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--22-elnu32"}
+  - {s: 15, e: "《心經》 21集 海雲繼夢", t: "S15 《心經》 21集 海雲繼夢", d: "2020-11-27", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--21-elnt3o"}
+  - {s: 15, e: "《心經》 20集 海雲繼夢", t: "S15 《心經》 20集 海雲繼夢", d: "2020-11-26", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--20-elnt34"}
+  - {s: 15, e: "《心經》 19集 海雲繼夢", t: "S15 《心經》 19集 海雲繼夢", d: "2020-11-25", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--19-elnt2n"}
+  - {s: 15, e: "《心經》 18集 海雲繼夢", t: "S15 《心經》 18集 海雲繼夢", d: "2020-11-24", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--18-elnt2b"}
+  - {s: 15, e: "《心經》 17集 海雲繼夢", t: "S15 《心經》 17集 海雲繼夢", d: "2020-11-23", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--17-elnt1t"}
+  - {s: 15, e: "《心經》 16集 海雲繼夢", t: "S15 《心經》 16集 海雲繼夢", d: "2020-11-22", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--16-elnt11"}
+  - {s: 15, e: "《心經》 15集 海雲繼夢", t: "S15 《心經》 15集 海雲繼夢", d: "2020-11-21", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--15-elnt0f"}
+  - {s: 15, e: "《心經》 14集 海雲繼夢", t: "S15 《心經》 14集 海雲繼夢", d: "2020-11-20", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--14-elnsvr"}
+  - {s: 15, e: "《心經》 13集 海雲繼夢", t: "S15 《心經》 13集 海雲繼夢", d: "2020-11-19", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--13-elnsvm"}
+  - {s: 15, e: "《心經》 12集 海雲繼夢", t: "S15 《心經》 12集 海雲繼夢", d: "2020-11-18", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--12-elnsvk"}
+  - {s: 15, e: "《心經》 11集 海雲繼夢", t: "S15 《心經》 11集 海雲繼夢", d: "2020-11-17", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--11-elnsvh"}
+  - {s: 15, e: "《心經》 10集 海雲繼夢", t: "S15 《心經》 10集 海雲繼夢", d: "2020-11-16", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--10-elnsvf"}
+  - {s: 15, e: "《心經》 09集 海雲繼夢", t: "S15 《心經》 09集 海雲繼夢", d: "2020-11-15", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--09-elnsv6"}
+  - {s: 15, e: "《心經》 08集 海雲繼夢", t: "S15 《心經》 08集 海雲繼夢", d: "2020-11-14", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--08-elnst1"}
+  - {s: 15, e: "《心經》 07集 海雲繼夢", t: "S15 《心經》 07集 海雲繼夢", d: "2020-11-13", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--07-elnssq"}
+  - {s: 15, e: "《心經》 06集 海雲繼夢", t: "S15 《心經》 06集 海雲繼夢", d: "2020-11-12", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--06-elnssm"}
+  - {s: 15, e: "《心經》 05集 海雲繼夢", t: "S15 《心經》 05集 海雲繼夢", d: "2020-11-11", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--05-elnssk"}
+  - {s: 15, e: "《心經》 04集 海雲繼夢", t: "S15 《心經》 04集 海雲繼夢", d: "2020-11-10", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--04-elnssh"}
+  - {s: 15, e: "《心經》 03集 海雲繼夢", t: "S15 《心經》 03集 海雲繼夢", d: "2020-11-09", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--03-elnsse"}
+  - {s: 15, e: "《心經》 02集 海雲繼夢", t: "S15 《心經》 02集 海雲繼夢", d: "2020-11-08", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--02-elnss4"}
+  - {s: 15, e: "《心經》 01集 海雲繼夢", t: "S15 《心經》 01集 海雲繼夢", d: "2020-11-07", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--01-elnsra"}
+  - {s: 14, e: "2《佛說阿彌陀經》08 集（完結） 海雲繼夢", t: "S14-2《佛說阿彌陀經》08 集（完結） 海雲繼夢", d: "2020-11-06", m: 64, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-208-eiluph"}
+  - {s: 14, e: "2《佛說阿彌陀經》07 集 海雲繼夢", t: "S14-2《佛說阿彌陀經》07 集 海雲繼夢", d: "2020-11-05", m: 73, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-207-eilup8"}
+  - {s: 14, e: "2《佛說阿彌陀經》06 集 海雲繼夢", t: "S14-2《佛說阿彌陀經》06 集 海雲繼夢", d: "2020-11-04", m: 72, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-206-eilup3"}
+  - {s: 14, e: "2《佛說阿彌陀經》05 集 海雲繼夢", t: "S14-2《佛說阿彌陀經》05 集 海雲繼夢", d: "2020-11-03", m: 72, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-205-eiluor"}
+  - {s: 15, e: "《心經》 26集 海雲繼夢", t: "S15 《心經》 26集 海雲繼夢", d: "2020-11-02", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S15--26-elnu3c"}
+  - {s: 14, e: "2《佛說阿彌陀經》04 集 海雲繼夢", t: "S14-2《佛說阿彌陀經》04 集 海雲繼夢", d: "2020-11-02", m: 71, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-204-eiluoi"}
+  - {s: 14, e: "2《佛說阿彌陀經》03 集 海雲繼夢", t: "S14-2《佛說阿彌陀經》03 集 海雲繼夢", d: "2020-11-01", m: 72, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-203-eiluoe"}
+  - {s: 14, e: "2《佛說阿彌陀經》02 集 海雲繼夢", t: "S14-2《佛說阿彌陀經》02 集 海雲繼夢", d: "2020-10-31", m: 73, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-202-eiluo9"}
+  - {s: 14, e: "2《佛說阿彌陀經》01 集 海雲繼夢", t: "S14-2《佛說阿彌陀經》01 集 海雲繼夢", d: "2020-10-30", m: 73, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-201-eilunu"}
+  - {s: 14, e: "1《佛說阿彌陀經》10集（完結） 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》10集（完結） 海雲繼夢 2008 北美弘法", d: "2020-10-29", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-110--2008-eilues"}
+  - {s: 14, e: "1《佛說阿彌陀經》09 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》09 集 海雲繼夢 2008 北美弘法", d: "2020-10-28", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-109---2008-eiluek"}
+  - {s: 14, e: "1《佛說阿彌陀經》08 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》08 集 海雲繼夢 2008 北美弘法", d: "2020-10-27", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-108---2008-eilued"}
+  - {s: 14, e: "1《佛說阿彌陀經》07 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》07 集 海雲繼夢 2008 北美弘法", d: "2020-10-26", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-107---2008-eilue5"}
+  - {s: 14, e: "1《佛說阿彌陀經》06 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》06 集 海雲繼夢 2008 北美弘法", d: "2020-10-25", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-106---2008-eiluds"}
+  - {s: 14, e: "1《佛說阿彌陀經》05 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》05 集 海雲繼夢 2008 北美弘法", d: "2020-10-24", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-105---2008-eiludo"}
+  - {s: 14, e: "1《佛說阿彌陀經》04 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》04 集 海雲繼夢 2008 北美弘法", d: "2020-10-23", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-104---2008-eiludg"}
+  - {s: 14, e: "1《佛說阿彌陀經》03 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》03 集 海雲繼夢 2008 北美弘法", d: "2020-10-22", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-103---2008-eilud1"}
+  - {s: 14, e: "1《佛說阿彌陀經》02 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》02 集 海雲繼夢 2008 北美弘法", d: "2020-10-21", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-102---2008-eiluco"}
+  - {s: 14, e: "1《佛說阿彌陀經》01 集 海雲繼夢 2008 北美弘法", t: "S14-1《佛說阿彌陀經》01 集 海雲繼夢 2008 北美弘法", d: "2020-10-20", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S14-101---2008-eilucg"}
+  - {s: 13, e: "2《藥師經》10 集（完結） 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》10 集（完結） 海雲繼夢 2009 東南亞弘法", d: "2020-10-19", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-210---2009-eilu70"}
+  - {s: 13, e: "2《藥師經》09 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》09 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-18", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-209---2009-eilu6p"}
+  - {s: 13, e: "2《藥師經》08 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》08 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-17", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-208---2009-eilu6j"}
+  - {s: 13, e: "2《藥師經》07 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》07 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-16", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-207---2009-eilu6d"}
+  - {s: 13, e: "2《藥師經》06 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》06 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-15", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-206---2009-eilu67"}
+  - {s: 13, e: "2《藥師經》05 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》05 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-14", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-205---2009-eilu5v"}
+  - {s: 13, e: "2《藥師經》04 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》04 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-13", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-204---2009-eilu5p"}
+  - {s: 13, e: "2《藥師經》03 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》03 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-12", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-203---2009-eilu5h"}
+  - {s: 13, e: "2《藥師經》02 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》02 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-12", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-202---2009-eilu5d"}
+  - {s: 13, e: "2《藥師經》01 集 海雲繼夢 2009 東南亞弘法", t: "S13-2《藥師經》01 集 海雲繼夢 2009 東南亞弘法", d: "2020-10-11", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-201---2009-eilu4t"}
+  - {s: 13, e: "1《藥師經》09 集（完結） 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》09 集（完結） 海雲繼夢 2008 北美弘法", d: "2020-10-10", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-109---2008-eilton"}
+  - {s: 13, e: "1《藥師經》08 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》08 集 海雲繼夢 2008 北美弘法", d: "2020-10-09", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-108---2008-eiltod"}
+  - {s: 13, e: "1《藥師經》07 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》07 集 海雲繼夢 2008 北美弘法", d: "2020-10-08", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-107---2008-eilto9"}
+  - {s: 13, e: "1《藥師經》06 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》06 集 海雲繼夢 2008 北美弘法", d: "2020-10-07", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-106---2008-eiltnv"}
+  - {s: 13, e: "1《藥師經》05 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》05 集 海雲繼夢 2008 北美弘法", d: "2020-10-06", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-105---2008-eiltnr"}
+  - {s: 13, e: "1《藥師經》04 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》04 集 海雲繼夢 2008 北美弘法", d: "2020-10-05", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-104---2008-eiltnm"}
+  - {s: 13, e: "1《藥師經》03 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》03 集 海雲繼夢 2008 北美弘法", d: "2020-10-04", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-103---2008-eiltni"}
+  - {s: 13, e: "1《藥師經》02 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》02 集 海雲繼夢 2008 北美弘法", d: "2020-10-03", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-102---2008-eiltna"}
+  - {s: 13, e: "1《藥師經》01 集 海雲繼夢 2008 北美弘法", t: "S13-1《藥師經》01 集 海雲繼夢 2008 北美弘法", d: "2020-10-02", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S13-101---2008-eiltn6"}
+  - {s: 12, e: "2《地藏經》10 集 （完結）海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》10 集 （完結）海雲繼夢 2008 東南亞弘法", d: "2020-09-30", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-210---2008-eilthr"}
+  - {s: 12, e: "2《地藏經》09 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》09 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-29", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-209---2008-eilthl"}
+  - {s: 12, e: "2《地藏經》08 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》08 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-28", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-208---2008-eilthd"}
+  - {s: 12, e: "2《地藏經》07 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》07 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-27", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-207---2008-eilth7"}
+  - {s: 12, e: "2《地藏經》06 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》06 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-26", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-206---2008-eilth0"}
+  - {s: 12, e: "2《地藏經》05 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》05 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-25", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-205---2008-eiltgq"}
+  - {s: 12, e: "2《地藏經》04 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》04 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-24", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-204---2008-eiltgd"}
+  - {s: 12, e: "2《地藏經》03 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》03 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-23", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-203---2008-eiltga"}
+  - {s: 12, e: "2《地藏經》02 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》02 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-22", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-202---2008-eiltfd"}
+  - {s: 12, e: "2《地藏經》01 集 海雲繼夢 2008 東南亞弘法", t: "S12-2《地藏經》01 集 海雲繼夢 2008 東南亞弘法", d: "2020-09-21", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-201---2008-eilteg"}
+  - {s: 12, e: "1《地藏經》10 集（完結） 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》10 集（完結） 海雲繼夢 2008 北美弘法", d: "2020-09-20", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-110---2008-eilt47"}
+  - {s: 12, e: "1《地藏經》09 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》09 集 海雲繼夢 2008 北美弘法", d: "2020-09-19", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-109---2008-eilt3v"}
+  - {s: 12, e: "1《地藏經》08 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》08 集 海雲繼夢 2008 北美弘法", d: "2020-09-18", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-108---2008-eilt3k"}
+  - {s: 12, e: "1《地藏經》07 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》07 集 海雲繼夢 2008 北美弘法", d: "2020-09-17", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-107---2008-eilt3a"}
+  - {s: 12, e: "1《地藏經》06 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》06 集 海雲繼夢 2008 北美弘法", d: "2020-09-16", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-106---2008-eilt34"}
+  - {s: 12, e: "1《地藏經》05 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》05 集 海雲繼夢 2008 北美弘法", d: "2020-09-15", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-105---2008-eilt2g"}
+  - {s: 12, e: "1《地藏經》04 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》04 集 海雲繼夢 2008 北美弘法", d: "2020-09-14", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-104---2008-eilt29"}
+  - {s: 12, e: "1《地藏經》03 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》03 集 海雲繼夢 2008 北美弘法", d: "2020-09-13", m: 61, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-103---2008-eiltbv"}
+  - {s: 12, e: "1《地藏經》02 集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》02 集 海雲繼夢 2008 北美弘法", d: "2020-09-13", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-102---2008-eilt1k"}
+  - {s: 12, e: "1《地藏經》01集 海雲繼夢 2008 北美弘法", t: "S12-1《地藏經》01集 海雲繼夢 2008 北美弘法", d: "2020-09-12", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S12-101--2008-eilt1a"}
+  - {s: 11, e: "《四十二章經》10 集 （完結） 海雲繼夢 - 20200107 開示", t: "S11《四十二章經》10 集 （完結） 海雲繼夢 - 20200107 開示", d: "2020-09-11", m: 90, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1110------20200107-eilrju"}
+  - {s: 11, e: "《四十二章經》09 集 海雲繼夢 - 20200106 開示", t: "S11《四十二章經》09 集 海雲繼夢 - 20200106 開示", d: "2020-09-10", m: 111, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1109-----20200106-eilrj4"}
+  - {s: 11, e: "《四十二章經》08 集 海雲繼夢 - 20200105 開示", t: "S11《四十二章經》08 集 海雲繼夢 - 20200105 開示", d: "2020-09-09", m: 93, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1108-----20200105-eilrij"}
+  - {s: 11, e: "《四十二章經》07 集 海雲繼夢 - 20200105 開示", t: "S11《四十二章經》07 集 海雲繼夢 - 20200105 開示", d: "2020-09-08", m: 112, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1107-----20200105-eilrhr"}
+  - {s: 11, e: "《四十二章經》06 集 海雲繼夢 - 20200104 開示", t: "S11《四十二章經》06 集 海雲繼夢 - 20200104 開示", d: "2020-09-07", m: 100, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1106-----20200104-eilrh9"}
+  - {s: 11, e: "《四十二章經》05 集 海雲繼夢 - 20200104 開示", t: "S11《四十二章經》05 集 海雲繼夢 - 20200104 開示", d: "2020-09-06", m: 139, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1105-----20200104-eilrgl"}
+  - {s: 11, e: "《四十二章經》04 集 海雲繼夢 - 20191226 開示", t: "S11《四十二章經》04 集 海雲繼夢 - 20191226 開示", d: "2020-09-05", m: 98, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1104-----20191226-eilrfh"}
+  - {s: 11, e: "《四十二章經》03 集 海雲繼夢 - 20191225 開示", t: "S11《四十二章經》03 集 海雲繼夢 - 20191225 開示", d: "2020-09-04", m: 98, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1103-----20191225-eilre5"}
+  - {s: 11, e: "《四十二章經》02 集 海雲繼夢 - 20191224 開示", t: "S11《四十二章經》02 集 海雲繼夢 - 20191224 開示", d: "2020-09-03", m: 113, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1102-----20191224-eilrl3"}
+  - {s: 11, e: "《四十二章經》01 集 海雲繼夢 - 20191223 開示", t: "S11《四十二章經》01 集 海雲繼夢 - 20191223 開示", d: "2020-09-02", m: 120, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1101-----20191223-eilrvq"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》29 集 完結 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》29 集 完結 - 海雲繼夢", d: "2020-09-01", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---29-----ehig55"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》28 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》28 集 - 海雲繼夢", d: "2020-08-31", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---28----ehiflg"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》27 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》27 集 - 海雲繼夢", d: "2020-08-30", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---27----ehiflc"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》26 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》26 集 - 海雲繼夢", d: "2020-08-29", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---26----ehifl4"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》25 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》25 集 - 海雲繼夢", d: "2020-08-28", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---25----ehifkv"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》24 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》24 集 - 海雲繼夢", d: "2020-08-27", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---24----ehifkq"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》23 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》23 集 - 海雲繼夢", d: "2020-08-26", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---23----ehifk3"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》22 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》22 集 - 海雲繼夢", d: "2020-08-25", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---22----ehicpq"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》21 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》21 集 - 海雲繼夢", d: "2020-08-24", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---21----ehicpo"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》20 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》20 集 - 海雲繼夢", d: "2020-08-23", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---20----ehicpk"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》19 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》19 集 - 海雲繼夢", d: "2020-08-22", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---19----ehid0l"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》18 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》18 集 - 海雲繼夢", d: "2020-08-21", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---18----ehicph"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》17 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》17 集 - 海雲繼夢", d: "2020-08-20", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---17----ehicpe"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》16 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》16 集 - 海雲繼夢", d: "2020-08-19", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---16----ehicpa"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》15 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》15 集 - 海雲繼夢", d: "2020-08-18", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---15----ehicp6"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》14 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》14 集 - 海雲繼夢", d: "2020-08-17", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---14----ehicp1"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》13 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》13 集 - 海雲繼夢", d: "2020-08-16", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---13----ehicot"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》12 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》12 集 - 海雲繼夢", d: "2020-08-15", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---12----ehia3s"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》11 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》11 集 - 海雲繼夢", d: "2020-08-14", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---11----ehi97l"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》10 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》10 集 - 海雲繼夢", d: "2020-08-13", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---10----ehi97h"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》09 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》09 集 - 海雲繼夢", d: "2020-08-12", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---09----ehi97f"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》08 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》08 集 - 海雲繼夢", d: "2020-08-11", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---08----ehi97c"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》07 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》07 集 - 海雲繼夢", d: "2020-08-10", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---07----ehi978"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》06 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》06 集 - 海雲繼夢", d: "2020-08-09", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---06----ehi973"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》05 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》05 集 - 海雲繼夢", d: "2020-08-08", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---05----ehi970"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》04 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》04 集 - 海雲繼夢", d: "2020-08-07", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---04----ehi96u"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》03 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》03 集 - 海雲繼夢", d: "2020-08-06", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---03----ehi96r"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》02 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》02 集 - 海雲繼夢", d: "2020-08-05", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---02----ehi96p"}
+  - {s: 10, e: "八十華嚴《華嚴經經首》01 集 - 海雲繼夢", t: "S10 - 八十華嚴《華嚴經經首》01 集 - 海雲繼夢", d: "2020-08-04", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S10---01----ehi96k"}
+  - {s: 9, e: "《東山法門與禪宗的特色》（下）- 海雲繼夢", t: "S9 - 《東山法門與禪宗的特色》（下）- 海雲繼夢", d: "2020-08-03", m: 63, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S9-----eha3pm"}
+  - {s: 9, e: "《東山法門與禪宗的特色》（上）- 海雲繼夢", t: "S9 - 《東山法門與禪宗的特色》（上）- 海雲繼夢", d: "2020-08-03", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S9-----eha3oe"}
+  - {s: 8, e: "《禪與入定》（下） - 海雲繼夢", t: "S8 - 《禪與入定》（下） - 海雲繼夢", d: "2020-08-02", m: 64, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S8------ehcqab"}
+  - {s: 8, e: "《禪與入定》（上） - 海雲繼夢", t: "S8 - 《禪與入定》（上） - 海雲繼夢", d: "2020-08-02", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S8------ehcq8q"}
+  - {s: 7, e: "《學佛與修行》（下）- 海雲繼夢", t: "S7 - 《學佛與修行》（下）- 海雲繼夢", d: "2020-08-01", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S7-----eha3lo"}
+  - {s: 7, e: "《學佛與修行》（上）- 海雲繼夢", t: "S7 - 《學佛與修行》（上）- 海雲繼夢", d: "2020-08-01", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S7-----eha3h7"}
+  - {s: 6, e: "華嚴六科系列（六）-《華嚴密法》07 集 完結", t: "S6 華嚴六科系列（六）-《華嚴密法》07 集 完結", d: "2020-07-31", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S6--07-egp13k"}
+  - {s: 6, e: "華嚴六科系列（六）-《華嚴密法》06 集", t: "S6 華嚴六科系列（六）-《華嚴密法》06 集", d: "2020-07-30", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S6--06-egp13i"}
+  - {s: 6, e: "華嚴六科系列（六）-《華嚴密法》05 集", t: "S6 華嚴六科系列（六）-《華嚴密法》05 集", d: "2020-07-30", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S6--05-egp13c"}
+  - {s: 6, e: "華嚴六科系列（六）-《華嚴密法》04 集", t: "S6 華嚴六科系列（六）-《華嚴密法》04 集", d: "2020-07-30", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S6--04-egp137"}
+  - {s: 6, e: "華嚴六科系列（六）-《華嚴密法》03 集", t: "S6 華嚴六科系列（六）-《華嚴密法》03 集", d: "2020-07-29", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S6--03-egp12v"}
+  - {s: 6, e: "華嚴六科系列（六）-《華嚴密法》02 集", t: "S6 華嚴六科系列（六）-《華嚴密法》02 集", d: "2020-07-29", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S6--02-egp12p"}
+  - {s: 6, e: "華嚴六科系列（六）-《華嚴密法》01 集", t: "S6 華嚴六科系列（六）-《華嚴密法》01 集", d: "2020-07-29", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S6--01-egp12k"}
+  - {s: 5, e: "華嚴六科系列（五）-《華嚴淨土法門》07 集 完結", t: "S5 華嚴六科系列（五）-《華嚴淨土法門》07 集 完結", d: "2020-07-28", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S5--07-egp0ut"}
+  - {s: 5, e: "華嚴六科系列（五）-《華嚴淨土法門》06 集", t: "S5 華嚴六科系列（五）-《華嚴淨土法門》06 集", d: "2020-07-27", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S5--06-egp0uk"}
+  - {s: 5, e: "華嚴六科系列（五）-《華嚴淨土法門》04 集", t: "S5 華嚴六科系列（五）-《華嚴淨土法門》04 集", d: "2020-07-27", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S5--04-egp0uj"}
+  - {s: 5, e: "華嚴六科系列（五）-《華嚴淨土法門》03 集", t: "S5 華嚴六科系列（五）-《華嚴淨土法門》03 集", d: "2020-07-26", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S5--03-egp0ua"}
+  - {s: 5, e: "華嚴六科系列（五）-《華嚴淨土法門》02 集", t: "S5 華嚴六科系列（五）-《華嚴淨土法門》02 集", d: "2020-07-26", m: 65, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S5--02-egp0u2"}
+  - {s: 5, e: "華嚴六科系列（五）-《華嚴淨土法門》01 集", t: "S5 華嚴六科系列（五）-《華嚴淨土法門》01 集", d: "2020-07-26", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S5--01-egp0tl"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》08 集 完結", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》08 集 完結", d: "2020-07-25", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--08-egp0l4"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》07 集", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》07 集", d: "2020-07-25", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--07-egp0ku"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》06 集", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》06 集", d: "2020-07-24", m: 50, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--06-egp0kq"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》05 集", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》05 集", d: "2020-07-24", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--05-egp0ke"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》04 集", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》04 集", d: "2020-07-24", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--04-egp0k8"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》03 集", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》03 集", d: "2020-07-23", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--03-egp0k6"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》02 集", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》02 集", d: "2020-07-23", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--02-egp0k1"}
+  - {s: 4, e: "華嚴六科系列（四）-《華嚴戒律觀》01 集", t: "S4 華嚴六科系列（四）-《華嚴戒律觀》01 集", d: "2020-07-23", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S4--01-egp0js"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》08 集 完結", t: "S3 華嚴六科系列（三）-《華嚴禪行法》08 集 完結", d: "2020-07-22", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--08-egp0fb"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》07 集", t: "S3 華嚴六科系列（三）-《華嚴禪行法》07 集", d: "2020-07-22", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--07-egp0f5"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》06 集", t: "S3 華嚴六科系列（三）-《華嚴禪行法》06 集", d: "2020-07-21", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--06-egp0eu"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》05 集", t: "S3 華嚴六科系列（三）-《華嚴禪行法》05 集", d: "2020-07-21", m: 54, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--05-egp0ek"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》04 集", t: "S3 華嚴六科系列（三）-《華嚴禪行法》04 集", d: "2020-07-21", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--04-egp0ec"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》03 集", t: "S3 華嚴六科系列（三）-《華嚴禪行法》03 集", d: "2020-07-20", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--03-egp0e7"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》02 集", t: "S3 華嚴六科系列（三）-《華嚴禪行法》02 集", d: "2020-07-20", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--02-egp0e1"}
+  - {s: 3, e: "華嚴六科系列（三）-《華嚴禪行法》01 集", t: "S3 華嚴六科系列（三）-《華嚴禪行法》01 集", d: "2020-07-20", m: 52, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S3--01-egp0du"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》08 集 完結", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》08 集 完結", d: "2020-07-19", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--08-egp02k"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》07 集", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》07 集", d: "2020-07-19", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--07-egp029"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》06 集", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》06 集", d: "2020-07-18", m: 59, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--06-egp026"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》05 集", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》05 集", d: "2020-07-18", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--05-egp023"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》04 集", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》04 集", d: "2020-07-18", m: 53, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--04-egp020"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》03 集", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》03 集", d: "2020-07-17", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--03-egp01p"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》02 集", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》02 集", d: "2020-07-17", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--02-egp01i"}
+  - {s: 2, e: "華嚴六科系列（二）-《華嚴經教與行法》01 集", t: "S2 華嚴六科系列（二）-《華嚴經教與行法》01 集", d: "2020-07-17", m: 57, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S2--01-egp02t"}
+  - {s: 1, e: "華嚴六科系列（一）-《華嚴學概論》08集 - 完結", t: "S1 華嚴六科系列（一）-《華嚴學概論》08集 - 完結", d: "2020-07-16", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1--08---egmben"}
+  - {s: 1, e: "華嚴六科系列（一）-《華嚴學概論》07集", t: "S1 華嚴六科系列（一）-《華嚴學概論》07集", d: "2020-07-16", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1--07-egmbdi"}
+  - {s: 1, e: "華嚴六科系列（一）-《華嚴學概論》06集", t: "S1 華嚴六科系列（一）-《華嚴學概論》06集", d: "2020-07-15", m: 55, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1--06-egmbc9"}
+  - {s: 1, e: "華嚴六科系列（一）-《華嚴學概論》05集", t: "S1 華嚴六科系列（一）-《華嚴學概論》05集", d: "2020-07-15", m: 58, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1--05-egmbao"}
+  - {s: 1, e: "華嚴六科系列（一）-《華嚴學概論》04集", t: "S1 華嚴六科系列（一）-《華嚴學概論》04集", d: "2020-07-15", m: 61, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1--04-egmb4o"}
+  - {s: 1, e: "華嚴六科系列（一）-《華嚴學概論》03集", t: "S1 華嚴六科系列（一）-《華嚴學概論》03集", d: "2020-07-14", m: 62, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1--03-egmb2u"}
+  - {s: 1, e: "華嚴六科系列（一) -《華嚴學概論》02集", t: "S1 華嚴六科系列（一) -《華嚴學概論》02集", d: "2020-07-14", m: 60, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1---02-egm8t3"}
+  - {s: 1, e: "華嚴六科系列（一）-《華嚴學概論》 01 集", t: "S1 華嚴六科系列（一）-《華嚴學概論》 01 集", d: "2020-07-13", m: 56, u: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S1---01-egm72h"}
+misc:

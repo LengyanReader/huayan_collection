@@ -1,0 +1,529 @@
+# ════════════════════════════════════════════════════════════════════════════
+# 海云法师讲法 · 课题多源总览（约40课题 · 经/教/行/密/生活）
+# 目标：每个讲法课题聚合多源头 —— ①全库文本(wiz 目录片段可过滤直读)
+#      ②播客季(RSS 真实集数) ③YouTube ④Bilibili ⑤门户文稿 ⑥正式出版物
+# 原则：全部来源基于已核实真实资源；wiz 片段为 data/practice/haiyun_wiz_catalog.yaml
+#      真实目录子串；播客季号对应 data/practice/haiyun_podcast_catalog.yaml；
+#      YouTube/B站目录与链接来自 youtube_playlists.yaml / teaching_resources.yaml；
+#      著作清单来自 teaching_resources.yaml / haiyun_resources.yaml 已核实书目。
+# 数据驱动渲染：web/demo/src/practice.js renderLecturesTopics()。
+# ════════════════════════════════════════════════════════════════════════════
+
+meta:
+  title_zh: 海云法师讲法 · 课题多源总览
+  title_en: Master Haiyun Jimeng's Teachings — Multi-source Topic Overview
+  note: |
+    约 40 个课题，分 经/教/行/密/生活 五类。每个课题聚合：全库文本(wiz 下载 645 篇)、
+    播客(海雲繼夢說華嚴·RSS 387 集)、YouTube(大華嚴寺官方頻道)、Bilibili、门户文稿、正式出版物。
+    来源均为已核实真实资源；个别课题如缺某类来源则如实不列。
+
+groups:
+  # ═══════════ 经 · 经典讲读 ═══════════
+  - id: jing
+    title: 📖 经 · 经典讲读
+    title_en: Sutra Expositions
+    topics:
+      - id: huayan-overview
+        title: 八十华严 · 全景导读与简介
+        title_en: The Eighty-fascicle Avataṃsaka — Overview and Introduction
+        desc: 八十华严全经导读（西安草堂寺 2010，25 篇听录）与华严经简介（温州圣寿寺 2012）。
+        desc_en: Full-course introduction to the Eighty-fascicle Avataṃsaka (Xiangcao Temple, 2010, 25 transcripts) and a general exposition of the sūtra (Shengshou Temple, 2012).
+        wiz: ["八十华严导读", "华严经简介"]
+        podcast: []
+        yt: [{name: "華嚴教海（逐品講解）", url: "https://www.youtube.com/playlist?list=PLhN5EgS8hCEpNKHjUj7BmmDNuQ5QJ7PxM"}]
+        yt_q: "海云继梦 华严经"
+        bl: [{name: "華嚴六科系列（48 集）", url: "https://www.bilibili.com/video/BV1iS421X7S8/"}]
+        bl_q: "海云继梦 华严经"
+        books: ["《华严经导读》（三册）", "《华严学导论》（ⅠⅡ）", "《探玄记悬谈讲记》（四册）"]
+        web: [{name: "大华严寺官网", url: "https://www.huayenworld.org"}]
+
+      - id: huayan-xuantan
+        title: 华严经玄谈 · 经首 · 九九华严
+        title_en: Opening Discourses on the Avataṃsaka — Xuantan, the Sūtra's Opening, and the 99-Fascicle Lecture
+        desc: 华严经玄谈（12 篇）+ 播客经首季（S10·29 集）+ 最新九九华严讲座（S24·台北 TICC 2026 起，含《八十华严》前59卷+《四十华严》后40卷=99 卷结构）。
+        desc_en: Opening discourses (12 texts), the podcast season on the sūtra's opening (S10, 29 episodes), and the newest Ninety-nine-fascicle lecture series (S24, Taipei TICC from 2026, joining the first 59 fascicles of the Eighty and the last 40 of the Forty).
+        wiz: ["华严经玄谈"]
+        podcast: [10, 24]
+        yt: [{name: "九九華嚴講座播放清单", url: "https://www.youtube.com/playlist?list=PLhN5EgS8hCEphZqLqkPJcEHWvqMqK8D2h"}]
+        yt_q: "九九华严 海云继梦"
+        bl_q: "海云继梦 九九华严"
+        books: ["《华严经在说什么——九九华严玄谈》（五册·2026）"]
+        web: []
+
+      - id: huayan-shizhumiayan
+        title: 世主妙严品（卷一含全）
+        title_en: The Wondrous Adornments of the Rulers of the Worlds chapter
+        desc: 八十华严初品详讲（5 篇原文）。
+        desc_en: Detailed teaching on the opening chapter of the Eighty-fascicle Avataṃsaka (5 source texts).
+        wiz: ["01品世主妙严品"]
+        podcast: []
+        yt_q: "海云继梦 世主妙严品"
+        bl_q: "海云继梦 世主妙严品"
+        books: ["《菩提心，感受力！》（世主妙严品讲记·2003）"]
+        web: []
+
+      - id: huayan-jingxing-xianshou
+        title: 净行品 · 贤首品
+        title_en: The Pure Practice and Xianshou chapters
+        desc: 净行品讲记（智慧行）+ 播客专季（S20·9 集）。
+        desc_en: Lectures on the Pure Practice chapter (Wisdom-in-Practice) with the dedicated podcast season (S20, 9 episodes).
+        wiz: ["11品净行品", "12品贤首品"]
+        podcast: [20]
+        yt_q: "海云继梦 净行品"
+        bl_q: "海云继梦 净行品"
+        books: ["《净行品与贤首品讲记：进入修定的阶段》（2017）", "《智慧，一切搞定！》（净行品·生命教育）", "《勘玄记：华严经枢纽》"]
+        web: []
+
+      - id: huayan-mingfa
+        title: 明法品（第十八品）
+        title_en: The practice-and-understanding chapter (chapter 18)
+        desc: 明法品详讲（47 篇，库内量大）。
+        desc_en: In-depth lectures on the Enlightenment of Practice and Understanding, the largest single-chapter corpus in the archive (47 texts).
+        wiz: ["18品明法品"]
+        podcast: []
+        yt_q: "海云继梦 明法品"
+        bl_q: "海云继梦 明法品"
+        books: []
+        web: []
+
+      - id: huayan-shizhu-shixing
+        title: 十住品 · 十行品
+        title_en: The Ten Abidings and Ten Practices chapters
+        desc: 十住品（26 篇）+ 十行品（35 篇，含欢喜行等）+ 播客十行品专季（S23·33 集）。
+        desc_en: The Ten Abidings (26 texts) and the Ten Practices (35 texts, incl. the Joyful Practice) with the podcast season on the Ten Practices (S23, 33 episodes).
+        wiz: ["15品十住品", "21品十行品"]
+        podcast: [23]
+        yt_q: "海云继梦 十住品"
+        bl_q: "海云继梦 十行品"
+        books: []
+        web: []
+
+      - id: huayan-lishijian
+        title: 离世间品（第三十八品）
+        title_en: The Detachment from the World chapter (chapter 38)
+        desc: 离世间品为库内最大单品系列（陕师大 2016 等，60+ 篇）。
+        desc_en: The most extensive single-chapter corpus in the archive (Shaanxi Normal University session 2016 etc., 60+ texts).
+        wiz: ["38品离世间品"]
+        podcast: []
+        yt_q: "海云继梦 离世间品"
+        bl_q: "海云继梦 离世间品"
+        books: []
+        web: []
+
+      - id: huayan-puxianxingyuan
+        title: 普贤行愿品
+        title_en: The Vows of Samantabhadra chapter
+        desc: 普贤行愿品（昆明/加拿大）+ 播客专季（S17·20 集，暨十大愿王行法）。
+        desc_en: The Vows of Samantabhadra (Kunming/Canada) with the podcast season (S17, 20 episodes) and the practice of the Ten Great Vows.
+        wiz: ["39品普贤行愿品"]
+        podcast: [17]
+        yt_q: "海云继梦 普贤行愿品"
+        bl_q: "海云继梦 普贤行愿品"
+        books: ["《十大愿王：普贤行愿品讲记》", "《普贤行愿》（加拿大二讲之一）", "《不思议解脱》（之二）", "《大方广境界》（之三）", "《十大愿王修行法要》（新加坡·槟城）"]
+        web: []
+
+      - id: huayan-puxianxinjing
+        title: 普贤心经
+        title_en: The Samantabhadra Heart Sūtra
+        desc: 普贤心经（听录+初校+摘录共 40 篇）+ 播客专季（S19·14 集）。
+        desc_en: "The Samantabhadra Heart Sūtra (40 texts: transcripts, proofs, excerpts) with the podcast season (S19, 14 episodes)."
+        wiz: ["普贤心经"]
+        podcast: [19]
+        yt_q: "海云继梦 普贤心经"
+        bl_q: "海云继梦 普贤心经"
+        books: ["《在妄念中觉醒——普贤心经讲记》（2025）"]
+        web: []
+
+      - id: huayan-shici
+        title: 四十华严 · 入法界品
+        title_en: The Forty-fascicle Avataṃsaka — Entry into the Dharma Realm
+        desc: 四十华严全本（北京广化寺 2006-2009 听录版 8 篇）+ 善财童子五十三参（B站专题）。
+        desc_en: The complete Forty-fascicle Avataṃsaka (Beijing Guanghua Temple, 2006–2009, transcripts) plus the Bilibili series on Sudhana's Fifty-Three Visits.
+        wiz: ["四十华严"]
+        podcast: []
+        yt_q: "海云继梦 四十华严"
+        bl_q: "海云继梦 善财童子五十三参"
+        books: ["《四十华严》全本讲记（2006-2010 北京广化寺）"]
+        web: []
+
+      - id: huayan-qixin-jinshizi
+        title: 大乘起信论 · 金狮子章（法藏义学）
+        title_en: The Awakening of Faith and the Lion's Roar (Fazang's doctrine)
+        desc: 梁译大乘起信论（45 篇，库内大宗）+ 法藏金狮子章 + 经论原典类。
+        desc_en: The Chinese (Liang) version of the Awakening of Faith (45 texts, a major corpus) with Fazang's Golden Lion chapter and sūtra–śāstra originals.
+        wiz: ["大乘起信论", "金狮子章", "经论原典"]
+        podcast: []
+        yt_q: "海云继梦 大乘起信论"
+        bl_q: "海云继梦 金狮子章"
+        books: ["《贤首五教仪讲记》（2006）"]
+        web: []
+
+      - id: huayan-xinyao
+        title: 心要法门（解心）
+        title_en: The Essential Dharma Methods (Xinyao Famen / Liberating the Mind)
+        desc: 心要法门讲记·解心 + 播客专季（S21·34 集）。
+        desc_en: The Xinyao Famen lectures (Liberating the Mind) with the podcast season (S21, 34 episodes).
+        wiz: ["心要法门"]
+        podcast: [21]
+        yt_q: "海云继梦 心要法门"
+        bl_q: "海云继梦 心要法门"
+        books: ["《海云继梦解心：心要法门讲记》（2003）"]
+        web: [{name: "置心一处的心法（佛教导航·fjdh）", url: "https://www.fjdh.cn/wumin/2013/09/172418286290.html"}, {name: "心法·置心一处（学佛网）", url: "https://wuming.xuefo.net/nr/6/59566.html"}]
+
+      - id: jing-dizang
+        title: 地藏经
+        title_en: The Kṣitigarbha Sūtra
+        desc: 地藏合集（北美/槟城/北京夕照寺）+ 播客专季（S12·20 集）+ B站讲记。
+        desc_en: The Kṣitigarbha collections (North America/Penang/Xizhao Temple Beijing) with the podcast season (S12, 20 episodes) and the Bilibili lecture series.
+        wiz: ["地藏"]
+        podcast: [12]
+        yt_q: "海云继梦 地藏经"
+        bl_q: "海云继梦 地藏"
+        books: ["《开启灵性的钥匙》（上下·2018）", "《就从这里入法界——地藏菩萨行法》（2011）", "《转吧！地藏象限》（2018）"]
+        web: []
+
+      - id: jing-yaoshi
+        title: 药师经
+        title_en: The Bhaiṣajyaguru Sūtra
+        desc: 药师经（北美福慧寺/东南亚新加坡，20 篇）+ 播客专季（S13·19 集）+ 北美讲座 YouTube。
+        desc_en: The Bhaiṣajyaguru Sūtra (Fuhui Temple North America / Singapore and SE Asia, 20 texts) with the podcast season (S13, 19 episodes) and the North America lectures on YouTube.
+        wiz: ["药师经"]
+        podcast: [13]
+        yt: [{name: "藥師經北美講座（2008）", url: "https://www.youtube.com/results?search_query=%E8%97%A5%E5%B8%AB%E7%B6%93+%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2+%E5%8C%97%E7%BE%8E"}]
+        yt_q: "海云继梦 药师经"
+        bl_q: "海云继梦 药师"
+        books: ["《叩问药师佛的法界密码》（2018）", "《成佛方程式——药师经讲记》（2018）", "《药师行法：芝加哥弘法讲记》"]
+        web: []
+
+      - id: jing-xinjing-amituo
+        title: 心经 · 阿弥陀经 · 非常三经
+        title_en: The Heart Sūtra, the Amitābha Sūtra, and the "Unusual" Trilogy
+        desc: 心经（播客 S15·40 集）+ 阿弥陀经（北美福慧寺）+ 非常三经（坛经·金刚经·心经）。
+        desc_en: The Heart Sūtra (podcast S15, 40 episodes), the Amitābha Sūtra (Fuhui Temple North America), and the "Unusual" trilogy (Platform, Diamond, and Heart Sūtras).
+        wiz: ["阿弥陀经", "非常"]
+        podcast: [14, 15]
+        yt_q: "海云继梦 心经"
+        bl_q: "海云继梦 心经"
+        books: ["《非常坛经》（四册·2004）", "《非常金刚经》", "《非常心经》", "《从极乐世界迈向永恒的生命——解弥陀经》（2011）"]
+        web: []
+
+      - id: jing-qita
+        title: 四十二章经 · 观世音普门品 · 占察 · 八大人觉经
+        title_en: Other Sūtras — Forty-Two Sections, Guanyin's Universal Gate, Divination, and the Eight Realizations
+        desc: 四十二章经（S11·10 集）+ 观世音普门品（北美）+ 占察善恶业报经（S18·46 集）+ 八大人觉经（昆明）。
+        desc_en: The Forty-Two Sections (S11, 10 eps), Guanyin's Universal Gate (North America), the Divination Sūtra (S18, 46 eps), and the Eight Realizations (Kunming).
+        wiz: ["观世音普门品", "占察", "八大人觉经"]
+        podcast: [11, 16, 18]
+        yt_q: "海云继梦 占察善恶业报经"
+        bl_q: "海云继梦 地藏 占察"
+        books: []
+        web: []
+
+  # ═══════════ 教 · 义学教理 ═══════════
+  - id: jiao
+    title: 🧠 教 · 义学教理
+    title_en: Doctrinal Instruction
+    topics:
+      - id: jiao-gailun
+        title: 华严学概论
+        title_en: Introduction to Huayan Studies
+        desc: 华严六科之华严学概论（8 集）+ 播客季（S1·8 集）。
+        desc_en: Introduction to Huayan Studies, the first of the Six Doctrines (8 episodes), with the podcast season (S1, 8 episodes).
+        wiz: ["华严六科之华严学概论"]
+        podcast: [1]
+        yt_q: "海云继梦 华严学概论"
+        bl_q: "海云继梦 华严"
+        books: ["《华严学导论》（ⅠⅡ）"]
+        web: []
+
+      - id: jiao-jingjiao-xingfa
+        title: 华严经教与行法
+        title_en: The Teaching and Practice of the Huayan School
+        desc: 华严六科之二（8 集）+ 播客季（S2·8 集）+ 库内经教行法篇（9 篇）。
+        desc_en: The second of the Six Doctrines (8 episodes) with the podcast season (S2, 8 episodes) and 9 archive texts.
+        wiz: ["华严六科之华严经教与行法"]
+        podcast: [2]
+        yt_q: "海云继梦 华严经教与行法"
+        bl_q: "海云继梦 华严六科"
+        books: []
+        web: []
+
+      - id: jiao-liuke
+        title: 华严六科总纲
+        title_en: The Six Doctrines of the Huayan School — General Framework
+        desc: 学概论/经教行法/禅行法/戒律观/净土法门/密法 六科总纲与分科（S1-S6 全季）。
+        desc_en: The general framework of the Six Doctrines — introduction, teaching-and-practice, Chan practice, precepts, pure land, and esoteric — with podcast seasons S1–S6.
+        wiz: ["华严演六科"]
+        podcast: [1, 2, 3, 4, 5, 6]
+        yt_q: "海云继梦 华严六科"
+        bl_q: "海云继梦 华严六科"
+        books: []
+        web: [{name: "大华严寺官网", url: "https://www.huayenworld.org"}]
+
+      - id: jiao-panjiao
+        title: 华严判教 · 五教止观
+        title_en: Huayan Doctrinal Classification — Five Teachings and Calming-Contemplation
+        desc: 贤首五教仪·华严判教；义学专题/经论原典类目下相关讲记（库内）。
+        desc_en: Fazang's Five Teachings and Huayan doctrinal classification, with related lectures in the doctrinal and original-text categories of the archive.
+        wiz: ["义学专题"]
+        podcast: []
+        yt_q: "海云继梦 判教 五教"
+        bl_q: "海云继梦 华严 判教"
+        books: ["《贤首五教仪讲记》（2006）"]
+        web: []
+
+      - id: jiao-fofa-xuantan
+        title: 佛法玄谈（教理专讲）
+        title_en: Discourses on the Buddha-Dharma (Dharma Discourses)
+        desc: 大华严寺频道“佛法讲座系列”（至第 6 集）。
+        desc_en: The "Dharma Discourses" series on the Great Huayan Temple channel (up to episode 6).
+        wiz: []
+        podcast: []
+        yt: [{name: "佛法講座系列（至第6集）", url: "https://www.youtube.com/playlist?list=PLhN5EgS8hCEpjXJkYzuGNK8VqCqLShnWG"}]
+        yt_q: "海云继梦 佛法玄谈"
+        bl_q: "海云继梦 佛法"
+        books: ["《华严三论》（佛教大华严寺）"]
+        web: []
+
+      - id: jiao-zhengjian
+        title: 学佛须正见 · 行者本色
+        title_en: Right View in Learning Buddhism — The Practitioner's True Character
+        desc: 学佛须正见（库内）+ 行者本色（书面/口语）+ 播客《学佛与修行》（S7）。
+        desc_en: Right view in learning Buddhism and the practitioner's true character (written and oral versions in the archive), with the podcast season on learning and practicing (S7).
+        wiz: ["学佛须正见", "行者本色"]
+        podcast: [7]
+        yt_q: "海云继梦 学佛 修行"
+        bl_q: "海云继梦 学佛须正见"
+        books: []
+        web: []
+
+  # ═══════════ 行 · 行法禅观 ═══════════
+  - id: xing
+    title: 🧘 行 · 行法禅观
+    title_en: Practice and Chan Contemplation
+    topics:
+      - id: xing-chanxiu-zhengxing
+        title: 禅修正行（安那般那数息观）
+        title_en: Formal Chan Practice — Counting Breaths (Ānāpāna) and Focused Mind
+        desc: 禅修正行（口录）+ 播客《禅与入定》（S8）。
+        desc_en: Formal Chan practice (oral transcript) with the podcast on Chan and meditative absorption (S8).
+        wiz: ["禅修正行"]
+        podcast: [8]
+        yt_q: "海云继梦 禅修正行"
+        bl_q: "海云继梦 禅修"
+        books: ["《禅修正行——安那般那数息观》（2017）", "《禅修入门》（2020）"]
+        web: []
+
+      - id: xing-chanxiu-qianxing
+        title: 禅修前行 · 禅观 · 参禅
+        title_en: Preliminary Chan Practice, Contemplation, and Meeting Chan
+        desc: 禅修前行（笔录/口录）+ 参禅要参透/心地法门（20 篇）+ 禅观（口录）+ 禅观前行·天上掉下来的礼物 + 东山法门与禅宗特色（S9）。
+        desc_en: Preliminary practice (transcribed), "Penetrating Chan" with the mind-ground teachings (20 texts), Chan contemplation, the "gift from heaven" preliminaries, and the East Mountain teachings and the character of Chan (S9).
+        wiz: ["禅修前行", "参禅要参透", "禅观"]
+        podcast: [9]
+        yt_q: "海云继梦 参禅 禅观"
+        bl_q: "海云继梦 禅观"
+        books: ["《禅修前行》", "《禅观概论》（2011）", "《禅，怎么参？》（2011）", "《禅，就要这么参！》（2011）"]
+        web: [{name: "置心一处（fjdh·3篇）", url: "https://www.fjdh.cn/wumin/2013/09/172418286290.html"}, {name: "置心一处的华严禅观（学佛网）", url: "https://wuming.xuefo.net/nr/6/59565.html"}]
+
+      - id: xing-haiyin
+        title: 华严海印三昧行法
+        title_en: The Huayan Samādhi of the Ocean Seal
+        desc: 华严海印三昧行法（温州莲塘寺 2012 口录 7 篇）。
+        desc_en: The practice of the Ocean-Seal samādhi of Huayan (Liantang Temple, Wenzhou, 2012, 7 oral transcripts).
+        wiz: ["华严海印三昧"]
+        podcast: []
+        yt_q: "海云继梦 海印三昧"
+        bl_q: "海云继梦 海印三昧"
+        books: []
+        web: []
+
+      - id: xing-huaichan
+        title: 华严禅行法（六科之三）
+        title_en: Huayan Chan Practice (the third of the Six Doctrines)
+        desc: 六科禅行法（S3·8 集）+ 库内六科禅行法篇。
+        desc_en: Huayan Chan practice, the third of the Six Doctrines (S3, 8 episodes) with the archive corpus.
+        wiz: ["华严六科之华严禅行法"]
+        podcast: [3]
+        yt_q: "海云继梦 华严禅行法"
+        bl_q: "海云继梦 华严禅行法"
+        books: ["《华严禅行法》系列（含《禅修正行》《禅观》）"]
+        web: []
+
+      - id: xing-sanshiqi
+        title: 三十七道品
+        title_en: The Thirty-Seven Aids to Enlightenment
+        desc: 三十七道品修持法要（库内）+ 对应著书。
+        desc_en: The essentials of the Thirty-Seven Aids to Enlightenment (archive text) with the related publications.
+        wiz: ["三十七道品"]
+        podcast: []
+        yt_q: "海云继梦 三十七道品"
+        bl_q: "海云继梦 三十七道品"
+        books: ["《三十七道品讲记》", "《摆脱焦虑与杂念的三十七个秘诀》（2025）"]
+        web: []
+
+      - id: xing-jielv
+        title: 戒律 · 华严大戒
+        title_en: The Precepts — The Great Huayan Precepts
+        desc: 戒律合集/华严大戒（库内 5 篇）+ 播客《华严戒律观》（S4·8 集）。
+        desc_en: The precepts collections and the Great Huayan Precepts (5 archive texts) with the podcast on the Huayan view of the precepts (S4, 8 episodes).
+        wiz: ["戒律", "华严大戒"]
+        podcast: [4]
+        yt_q: "海云继梦 戒律"
+        bl_q: "海云继梦 戒律"
+        books: []
+        web: []
+
+      - id: xing-lianghuang
+        title: 梁皇宝忏
+        title_en: The Liang Emperor Repentance Liturgy
+        desc: 梁皇宝忏开示（库内 10 篇）。
+        desc_en: Teachings on the Liang Emperor Repentance (10 archive texts).
+        wiz: ["梁皇宝忏"]
+        podcast: []
+        yt_q: "海云继梦 梁皇宝忏"
+        bl_q: "海云继梦 梁皇宝忏"
+        books: []
+        web: []
+
+      - id: xing-dizang-xingfa
+        title: 地藏行法 · 占察忏
+        title_en: Kṣitigarbha Practice — The Divination Repentance
+        desc: 地藏菩萨行法·就从这里入法界 + 占察忏行法（库内）。
+        desc_en: Entering the dharma-realm through Kṣitigarbha practice and the Divination repentance (archive texts).
+        wiz: ["地藏菩萨行法", "占察忏行法"]
+        podcast: []
+        yt_q: "海云继梦 地藏菩萨行法"
+        bl_q: "海云继梦 占察"
+        books: ["《就从这里入法界——地藏菩萨行法》（2011）"]
+        web: []
+
+  # ═══════════ 密 · 密法 ═══════════
+  - id: mi
+    title: 🔮 密 · 密法
+    title_en: Esoteric Practice
+    topics:
+      - id: mi-zhunti
+        title: 准提密法（根本佛母）
+        title_en: Cundī Esoteric Practice (the Fundamental Mother)
+        desc: 准提法（库内 4 篇）+ 对应著书。
+        desc_en: Cundī practice (4 archive texts) with the related publication.
+        wiz: ["准提"]
+        podcast: []
+        yt_q: "海云继梦 准提"
+        bl_q: "海云继梦 准提"
+        books: ["《根本佛母——准提密法》（2020 再版）"]
+        web: []
+
+      - id: mi-shiyimian
+        title: 十一面观音（本尊曾于此）
+        title_en: The Eleven-Faced Avalokiteśvara — the Deity Was Here
+        desc: 十一面观音密法（库内 15 篇）。
+        desc_en: The Eleven-Faced Avalokiteśvara esoteric practice (15 archive texts).
+        wiz: ["十一面观音"]
+        podcast: []
+        yt_q: "海云继梦 十一面观音"
+        bl_q: "海云继梦 十一面观音"
+        books: []
+        web: []
+
+      - id: mi-dagang
+        title: 密教大纲 · 密法漫谈
+        title_en: Outline of Esoteric Buddhism — Casual Talks on Esoteric Practice
+        desc: 密教大纲（11 篇）+ 密法漫谈 1990（12 篇）+ 密法修行概要 + 播客《华严密法》（S6）。
+        desc_en: The outline of esoteric Buddhism (11 texts), casual talks of 1990 (12 texts), and a summary of esoteric practice, with the podcast on Huayan esoteric practice (S6).
+        wiz: ["密教大纲", "密法漫谈", "密法修行概要"]
+        podcast: [6]
+        yt_q: "海云继梦 密教大纲"
+        bl_q: "海云继梦 密法"
+        books: []
+        web: []
+
+      - id: mi-mantala
+        title: 生命密境 · 曼荼罗的世界
+        title_en: Mystic Life Realms — The World of the Maṇḍala
+        desc: 生命密境·曼荼罗的世界（库内）。
+        desc_en: The world of the maṇḍala as a mystic life realm (archive text).
+        wiz: ["生命密境", "曼荼罗"]
+        podcast: []
+        yt_q: "海云继梦 曼荼罗"
+        bl_q: "海云继梦 曼荼罗"
+        books: ["《生命密境——曼荼罗的世界》"]
+        web: []
+
+      - id: mi-mixing
+        title: 密行指引（深深密）
+        title_en: Guidance in Esoteric Practice — Deep Secret
+        desc: 密行指引·深深密 + 密教行法指导（网络听录 12 篇/高翔听录 4 篇）。
+        desc_en: Deep Secret guidance and the esoteric practice instructions (12 online transcripts / 4 by Gao Xiang).
+        wiz: ["密行指引", "密教行法指导"]
+        podcast: []
+        yt_q: "海云继梦 密行指引"
+        bl_q: "海云继梦 密法"
+        books: ["《深深密——密行指引》"]
+        web: []
+
+      - id: mi-huayan
+        title: 华严密法（六科之六）
+        title_en: Huayan Esoteric Practice (the sixth of the Six Doctrines)
+        desc: 六科密法·待续（库内 4 篇）+ 圣游戏场/悠活三昧著书。
+        desc_en: Huayan esoteric practice, the sixth of the Six Doctrines (4 archive texts), with publications on the sacred playground and living samādhi.
+        wiz: ["华严六科之华严密法"]
+        podcast: [6]
+        yt_q: "海云继梦 华严密法"
+        bl_q: "海云继梦 华严密法"
+        books: ["《神圣的游戏场——华严密法》", "《悠活三昧》"]
+        web: []
+
+  # ═══════════ 生活 · 生命与生活应用 ═══════════
+  - id: shenghuo
+    title: 🌱 生活 · 生命与生活应用
+    title_en: Life — Ways of Living and Living Applications
+    topics:
+      - id: life-guxiang
+        title: 生命故乡的呼唤
+        title_en: The Call of Life's Homeland
+        desc: 生命故乡的呼唤系列（让心活起来等，库内 20+ 篇）。
+        desc_en: The Call of Life's Homeland series (Awaken the Heart and more, 20+ archive texts).
+        wiz: ["生命故乡的呼唤"]
+        podcast: []
+        yt_q: "海云继梦 生命故乡的呼唤"
+        bl_q: "海云继梦 生命故乡"
+        books: ["《生命故乡的呼唤01——让心活起来》（2019）"]
+        web: []
+
+      - id: life-xingfu
+        title: 幸福系列
+        title_en: The Happiness Series
+        desc: 幸福跟我来（库内 6 篇）+ 相关著书。
+        desc_en: "Happiness, Follow Me (6 archive texts) with the related publications."
+        wiz: ["幸福"]
+        podcast: []
+        yt_q: "海云继梦 幸福"
+        bl_q: "海云继梦 幸福"
+        books: ["《认真最幸福》（2005）", "《看见幸福》（2006）", "《幸福就这样》（2006）", "《幸福囧小孩》（2014）"]
+        web: []
+
+      - id: life-qingshaonian
+        title: 青少年 · 生命教育
+        title_en: Youth and Life Education
+        desc: 青少年教育（台湾/北京）+ 生命教育讲座（高雄）。
+        desc_en: Youth education (Taiwan/Beijing) and the life-education lectures (Kaohsiung).
+        wiz: ["青少年教育", "生命教育"]
+        podcast: []
+        yt_q: "海云继梦 青少年 生命教育"
+        bl_q: "海云继梦 青少年"
+        books: []
+        web: []
+
+      - id: life-zhiye
+        title: 职业精神 · 认真生活
+        title_en: Professional Spirit — Living Earnestly as One Avataṃsaka
+        desc: 职业精神（上海 2017）+ 认真生活就是一部华严经（库内）。
+        desc_en: Professional spirit (Shanghai 2017) and "living earnestly is itself an Avataṃsaka" (archive texts).
+        wiz: ["职业精神", "认真生活就是一部华严经"]
+        podcast: []
+        yt_q: "海云继梦 职业精神"
+        bl_q: "海云继梦 职业"
+        books: []
+        web: []

@@ -439,6 +439,13 @@ function renderPractice(){
   })();
   h+="</div>"; // close pv-resources
 
+  // ═══════════════════════════════════════════
+  // SUB-PAGE: 海云讲法 (wiz 全库 · 目录/检索/按需阅读)
+  // ═══════════════════════════════════════════
+  h+="<div id=pv-haiyun_lectures class=pv-section style=display:none>";
+  h+=renderWizLibrary();
+  h+="</div>"; // close pv-haiyun_lectures
+
   pv.innerHTML=h;
 }
 
@@ -523,7 +530,11 @@ function renderAvatamsakaLectures() {
     var ph = al.podcast_huayan;
     h += '<h3 style="color:var(--gold);margin-top:10px">🎧 四、播客全季</h3>';
     h += '<p style=font-size:0.78em><b>' + ph.name + '</b>' + (ph.name_en?' <span class="en-line" style=color:var(--text2)>(' + ph.name_en + ')</span>':'') + ' — ' + ph.platforms + '</p>';
+    if (ph.name_alt) h += '<p style=font-size:0.72em;color:var(--text2)><span style="color:var(--gold)">🏷</span> ' + ph.name_alt + '</p>';
+    if (ph.name_alt_en) h += '<p class="en-line" style="font-size:0.72em;color:var(--text2);line-height:1.7">📖 ' + ph.name_alt_en + '</p>';
     h += '<p style=font-size:0.75em;color:var(--text2)>华严相关季: ' + (ph.huayan_seasons||[]).join(' · ') + '</p>';
+    if (ph.note) h += '<p style="font-size:0.72em;color:var(--text2);line-height:1.8">📌 ' + ph.note.replace(/\n/g,'<br>') + '</p>';
+    if (ph.note_en) h += '<p class="en-line" style="font-size:0.72em;color:var(--text2);line-height:1.8">📖 ' + ph.note_en + '</p>';
     h += '<p style=font-size:0.72em>';
     Object.keys(ph.links||{}).forEach(function(k) { h += '<a href="' + ph.links[k] + '" target=_blank>' + k + '</a> '; });
     h += '</p>';
@@ -856,6 +867,251 @@ function renderChanTraces() {
   h += '<tr><td>当代</td><td>净慧(生活禅) 圣严 一行禅师</td><td>现代体系化</td></tr>';
   h += '</table></div>';
   return h;
+}
+
+// ═══ 海云法师讲法全库渲染 (从 PRACTICE_DATA.haiyun_wiz_catalog; 目录·检索 + 按需加载 txt 全文阅读器) ═══
+// 全局 html 转义（供 wzFilter/wzOpen 及课题/播客渲染共用；与 build.py WIZ_LIB_RENDER 同步）
+function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function renderWizLibrary() {
+  var cat = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_wiz_catalog) ? PRACTICE_DATA.haiyun_wiz_catalog : null;
+  if (!cat || !cat.notes || !cat.notes.length) return '';
+  var WIZ_BASE = '../../../docs/huayanhai';
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function fmtChars(n){ n = Number(n) || 0; if (n >= 1e8) return (n / 1e8).toFixed(2) + ' 亿字'; if (n >= 1e4) return (n / 1e4).toFixed(1) + ' 万字'; if (n >= 1e3) return (n / 1e3).toFixed(1) + ' 千字'; return n + ' 字'; }
+  function fmtBytes(n){ n = Number(n) || 0; if (n >= 1e6) return (n / 1e6).toFixed(1) + ' MB'; if (n >= 1e3) return (n / 1e3).toFixed(0) + ' KB'; return n + ' B'; }
+  function fmtDate(ms){ if (!ms) return ''; var d = new Date(ms), p = function(x){ return (x < 10 ? '0' : '') + x; }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
+  function buildTree(notes){
+    var root = {name: '', children: {}, notes: []};
+    notes.forEach(function(n){
+      var cats = String(n.cat || '未分类').split('/').filter(function(c){ return c && c.trim(); });
+      var node = root;
+      cats.forEach(function(c){ if (!node.children[c]) node.children[c] = {name: c, children: {}, notes: []}; node = node.children[c]; });
+      node.notes.push(n);
+    });
+    return root;
+  }
+  window.wzTree = buildTree(cat.notes);
+  window.wzAll = cat.notes;
+  window.wzNotes = {};
+  cat.notes.forEach(function(n){ window.wzNotes[n.guid] = n; });
+  function wzFolderCount(node){ var c = node.notes.length; Object.keys(node.children).forEach(function(k){ c += wzFolderCount(node.children[k]); }); return c; }
+  function wzTreeHTML(node, dep){
+    var keys = Object.keys(node.children), h = '';
+    if (dep > 0) {
+      h += '<div class="wz-folder" onclick="wzToggle(this)"><span class="wz-arrow">▶</span> 📁 ' + esc(node.name) + ' <span style="color:var(--text2);font-size:0.82em">(' + wzFolderCount(node) + ')</span></div>';
+    }
+    h += '<div class="wz-sub" style="' + (dep > 0 ? 'display:none' : '') + '">';
+    keys.sort().forEach(function(k){ h += wzTreeHTML(node.children[k], dep + 1); });
+    (node.notes || []).forEach(function(n){
+      h += '<div class="wz-note" onclick="wzOpen(\'' + n.guid + '\')">📄 ' + esc(n.title) + '<span style="color:var(--text2);font-size:0.82em"> · ' + fmtChars(n.len) + ' · ' + fmtDate(n.modified) + '</span></div>';
+    });
+    h += '</div>';
+    return h;
+  }
+  var h = '';
+  // ── file:// 协议检测：浏览器禁止读取本地正文 ──
+  if (location.protocol === 'file:') {
+    h += '<div class="section" id="hl-filemode" style="border-left:4px solid #d98a00;background:rgba(217,138,0,.08)"><h2>🔒 检测到 file:// 打开方式</h2><p style="font-size:0.78em;color:var(--text2);line-height:1.9">浏览器会阻止 <code>file://</code> 下按需读取正文（点击篇目将报 <b>Failed to fetch</b>），目录、检索与课题总览仍正常可用。请在<b>仓库根目录</b>运行 <code>python -m http.server</code>，然后访问 <code>http://127.0.0.1:8000/web/demo/tabs/jiaoxing.html</code>（独立文章页为 <code>.../web/demo/articles/haiyun-lectures.html</code>）；或将整仓部署到 GitHub Pages（<code>docs/huayanhai/</code> 相对路径自动解析）。</p></div>';
+  }
+  // ── 总览 ──
+  h += '<div class="section" id="hl-overview" style="border-left:4px solid var(--gold)"><h2>📚 海云法师讲法全库</h2>';
+  h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.9">' + esc(cat.subtitle || '') + '。全库共 <b style="color:var(--gold)">' + cat.totals.count + '</b> 篇、<b style="color:var(--gold)">' + cat.totals.folders_top + '</b> 个一级目录，文本合计 <b style="color:var(--gold)">' + fmtChars(cat.totals.chars) + '</b>（html 原件 ' + fmtBytes(cat.totals.size) + '）。正文按需加载，支持关键词检索与目录导航，点篇即读。</p>';
+  h += '</div>';
+  // ── 主要讲法方向 · 快捷入口 ──
+  h += '<div class="section" id="hl-focus" style="border-left:4px solid var(--blue)"><h2>🎯 主要讲法方向 · 快捷入口</h2>';
+  h += '<div style="display:flex;gap:8px;flex-wrap:wrap;font-size:0.76em">';
+  (cat.shortcuts || []).forEach(function(s){
+    h += '<span class="topic-card" style="cursor:pointer;padding:8px 12px" onclick="wzJump(\'' + esc(s.root) + '\')"><b style="color:var(--gold)">' + esc(s.label) + '</b><br><span style="color:var(--text2)">' + s.count + ' 篇 · ' + fmtChars(s.chars) + '</span></span>';
+  });
+  (cat.top_folders || []).forEach(function(t){
+    h += '<span class="topic-card" style="cursor:pointer;padding:8px 12px" onclick="wzJump(\'' + esc(t.name) + '\')">📁 ' + esc(t.name) + '<br><span style="color:var(--text2)">' + t.count + ' 篇</span></span>';
+  });
+  h += '</div></div>';
+  // ── 课题多源总览（经/教/行/密/生活 · 每题聚合全库/播客/视频/门户/书目）──
+  h += renderLecturesTopics();
+  // ── 播客全季目录（S1-S24 · 387 集真实 RSS）──
+  h += renderPodcastCatalog();
+  // ── 目录·检索 ──
+  h += '<div class="section" id="hl-browse" style="border-left:4px solid var(--gold)"><h2>🔍 目录 · 检索</h2>';
+  h += '<input id="wz-q" type="search" placeholder="输入关键词检索篇目（标题 / 目录）…" oninput="wzFilter(this.value)" style="width:100%;max-width:480px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-size:0.9em;background:var(--card);color:var(--text)">';
+  h += '<div id="wz-count" style="font-size:0.74em;color:var(--text2);margin:6px 0"></div>';
+  h += '<div id="wz-tree" style="font-size:0.8em">' + wzTreeHTML(window.wzTree, 0) + '</div>';
+  h += '<div id="wz-results" style="display:none;font-size:0.8em"></div>';
+  h += '</div>';
+  // ── 阅读器 ──
+  h += '<div class="section" id="hl-reader" style="display:none;border-left:4px solid var(--gold)"></div>';
+  // ── 说明 ──
+  h += '<div class="section" id="hl-hint" style="border-left:4px solid var(--line)"><h2>⚠️ 阅读与部署说明</h2>';
+  h += '<p style="font-size:0.76em;color:var(--text2);line-height:1.9">📌 <b>数据来源与持久化：</b>本全库源于 wiz.cn 账号 huayanhai 全部 ' + cat.totals.count + ' 篇笔记（' + esc(cat.generated || '') + ' 全量导出），html 原件保真存档于 <code>docs/huayanhai/</code>，正文为按需加载的 txt 抽取本（LF，可由 html 确定性复现）。所有目录、计数与快捷方式均来自导出清单（数据驱动），<b>未加入任何未经验证的条目</b>。</p>';
+  h += '<p style="font-size:0.76em;color:var(--text2);line-height:1.9">🌍 <b>本地浏览：</b>若以 <code>file://</code> 直接打开，浏览器安全策略会阻止按需加载正文。请在仓库根目录运行 <code>python -m http.server</code> 后访问 <code>web/demo/tabs/jiaoxing.html</code>，或将整仓部署到 GitHub Pages（<code>../../../docs/huayanhai/</code> 相对路径自动解析）。</p>';
+  h += '</div>';
+  return h;
+}
+function wzToggle(el){
+  var sub = el.nextElementSibling, arrow = el.querySelector('.wz-arrow');
+  if (!sub || sub.className !== 'wz-sub') return;
+  var open = sub.style.display !== 'none';
+  sub.style.display = open ? 'none' : 'block';
+  if (arrow) arrow.textContent = open ? '▶' : '▼';
+}
+function wzJump(root){
+  var q = document.getElementById('wz-q');
+  if (q) { q.value = root; wzFilter(root); }
+  var b = document.getElementById('hl-browse');
+  if (b) b.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+function wzFilter(q){
+  q = String(q || '').trim();
+  var tree = document.getElementById('wz-tree'), res = document.getElementById('wz-results'), cnt = document.getElementById('wz-count');
+  if (!tree || !res || !cnt) return;
+  if (!q) { res.style.display = 'none'; tree.style.display = 'block'; cnt.textContent = ''; return; }
+  var ql = q.toLowerCase();
+  var hits = (window.wzAll || []).filter(function(n){
+    return (String(n.title || '').toLowerCase().indexOf(ql) >= 0) || (String(n.cat || '').toLowerCase().indexOf(ql) >= 0);
+  });
+  tree.style.display = 'none'; res.style.display = 'block';
+  cnt.textContent = hits.length ? ('命中 ' + hits.length + ' 篇') : '未命中，请尝试其他关键词（支持目录名，如「玄谈」「离世间品」「地藏」）。';
+  var h = '';
+  hits.forEach(function(n){
+    h += '<div class="wz-note" style="padding:7px 10px;margin:4px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;cursor:pointer" onclick="wzOpen(\'' + n.guid + '\')">📄 <b>' + esc(n.title) + '</b><span style="color:var(--text2)"> <span style="color:var(--gold);font-size:0.85em">' + esc(n.cat) + '</span> · ' + fmtChars(n.len) + ' · ' + fmtDate(n.modified) + '</span></div>';
+  });
+  res.innerHTML = h;
+}
+function wzOpen(guid){
+  var n = window.wzNotes && window.wzNotes[guid];
+  var rd = document.getElementById('hl-reader');
+  if (!n || !rd) return;
+  rd.style.display = 'block';
+  rd.innerHTML = '<h2>📖 载入中…</h2><p style="color:var(--text2);font-size:0.78em">' + esc(n.title) + ' · ' + esc(n.cat) + '</p>';
+  rd.scrollIntoView({behavior: 'smooth', block: 'start'});
+  var url = '../../../docs/huayanhai/' + n.txt.split('/').map(function(seg){ return encodeURIComponent(seg); }).join('/');
+  fetch(url).then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }).then(function(text){
+    var body = String(text || '').replace(/^\uFEFF/, '');
+    body = body.replace(/^#[^\n]*\n?/, '');
+    var paras = body.split(/\n{2,}/).map(function(p){ return esc(p).replace(/\n/g, '<br>'); }).filter(function(p){ return p.replace(/<br>/g, '').trim(); });
+    var h = '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:4px"><h2 style="margin:0">📖 ' + esc(n.title) + '</h2></div>';
+    h += '<p style="font-size:0.72em;color:var(--text2);margin-bottom:8px">📁 ' + esc(n.cat) + ' · ' + fmtChars(n.len) + ' · 更新 ' + fmtDate(n.modified) + '</p>';
+    h += '<div style="margin-bottom:10px"><button onclick="wzBack()" style="cursor:pointer;padding:5px 14px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--blue)">← 返回目录</button></div>';
+    h += '<div style="border-left:3px solid var(--gold);padding-left:16px">' + paras.join('') + '</div>';
+    h += '<p style="font-size:0.68em;color:var(--text2);margin-top:10px">📎 原文存档：<code>docs/huayanhai/' + esc(n.txt) + '</code></p>';
+    rd.innerHTML = h;
+  }).catch(function(err){
+    rd.innerHTML = '<h2>⚠️ 载入失败</h2><p style="color:var(--text2);font-size:0.8em;line-height:1.8">无法按需加载正文（' + esc(String((err && err.message) || err)) + '）。若以 <code>file://</code> 打开会受浏览器安全策略限制；请在仓库根目录运行 <code>python -m http.server</code>，或访问 GitHub Pages 部署版本。</p>';
+  });
+}
+function wzBack(){ var b = document.getElementById('hl-browse'); if (b) b.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+
+// ═══ 课题多源总览（PRACTICE_DATA.haiyun_lectures_topics）：40 课题×五类，每题聚合权威多源头 ═══
+function renderLecturesTopics() {
+  var tp = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_lectures_topics) ? PRACTICE_DATA.haiyun_lectures_topics : null;
+  if (!tp || !tp.groups) return '';
+  var h = '';
+  h += '<div class="section" id="hl-topics" style="border-left:4px solid var(--blue)"><h2>🧭 课题多源总览 — 经 / 教 / 行 / 密 / 生活</h2>';
+  if (tp.meta && tp.meta.note) h += '<p style="font-size:0.74em;color:var(--text2);line-height:1.8">' + esc(tp.meta.note) + '</p>';
+  if (tp.meta && tp.meta.title_en) h += '<p class="en-line" style="font-size:0.72em;color:var(--text2);font-style:italic">📖 ' + esc(tp.meta.title_en) + '</p>';
+  tp.groups.forEach(function(g) {
+    h += '<h3 style="color:var(--gold);margin:16px 0 6px">' + esc(g.title) + (g.title_en ? ' <span class="en-line" style="font-size:0.6em;color:var(--text2);font-weight:400">(' + esc(g.title_en) + ')</span>' : '') + ' <span style="font-size:0.6em;color:var(--text2);font-weight:400">' + (g.topics || []).length + ' 题</span></h3>';
+    (g.topics || []).forEach(function(t) {
+      h += '<div class="topic-card" style="font-size:0.76em;margin:8px 0">';
+      h += '<b>' + esc(t.title) + '</b>';
+      if (t.title_en) h += ' <span class="en-line" style="color:var(--text2);font-weight:400;font-style:italic">(' + esc(t.title_en) + ')</span>';
+      if (t.desc) h += '<div style="color:var(--text2);line-height:1.7;margin:3px 0">' + esc(t.desc) + '</div>';
+      if (t.desc_en) h += '<div class="en-line" style="color:var(--text2);line-height:1.7;font-size:0.92em">📖 ' + esc(t.desc_en) + '</div>';
+      h += '<div style="margin-top:5px">';
+      (t.wiz || []).forEach(function(f) {
+        h += '<span style="display:inline-block;margin:2px 3px;padding:3px 9px;border:1px solid var(--line);border-radius:12px;font-size:0.85em;cursor:pointer;color:var(--blue);background:var(--card);white-space:nowrap" onclick="wzJump(\'' + String(f).replace(/'/g, '&#39;') + '\')">📄 全库「' + esc(f) + '」</span>';
+      });
+      (t.podcast || []).forEach(function(s) {
+        h += '<span style="display:inline-block;margin:2px 3px;padding:3px 9px;border:1px solid var(--line);border-radius:12px;font-size:0.85em;cursor:pointer;color:var(--gold);background:var(--card);white-space:nowrap" onclick="wzPodSeason(' + s + ')">🎧 播客 S' + s + '</span>';
+      });
+      (t.yt || []).forEach(function(y) {
+        h += '<a href="' + esc(y.url) + '" target="_blank" style="display:inline-block;margin:2px 3px;padding:3px 9px;border:1px solid var(--line);border-radius:12px;font-size:0.85em;color:var(--blue);background:var(--card);text-decoration:none;white-space:nowrap">▶️ ' + esc(y.name) + '</a>';
+      });
+      if (t.yt_q) h += '<a href="https://www.youtube.com/results?search_query=' + encodeURIComponent(t.yt_q) + '" target="_blank" style="display:inline-block;margin:2px 3px;padding:3px 9px;border:1px solid var(--line);border-radius:12px;font-size:0.85em;color:var(--blue);background:var(--card);text-decoration:none;white-space:nowrap">▶️ YouTube 搜索</a>';
+      (t.bl || []).forEach(function(b) {
+        h += '<a href="' + esc(b.url) + '" target="_blank" style="display:inline-block;margin:2px 3px;padding:3px 9px;border:1px solid var(--line);border-radius:12px;font-size:0.85em;color:var(--blue);background:var(--card);text-decoration:none;white-space:nowrap">📺 B站 · ' + esc(b.name) + '</a>';
+      });
+      if (t.bl_q) h += '<a href="https://search.bilibili.com/all?keyword=' + encodeURIComponent(t.bl_q) + '" target="_blank" style="display:inline-block;margin:2px 3px;padding:3px 9px;border:1px solid var(--line);border-radius:12px;font-size:0.85em;color:var(--blue);background:var(--card);text-decoration:none;white-space:nowrap">📺 B站 搜索</a>';
+      (t.web || []).forEach(function(w) {
+        h += '<a href="' + esc(w.url) + '" target="_blank" style="display:inline-block;margin:2px 3px;padding:3px 9px;border:1px solid var(--line);border-radius:12px;font-size:0.85em;color:var(--blue);background:var(--card);text-decoration:none;white-space:nowrap">🌐 ' + esc(w.name) + '</a>';
+      });
+      h += '</div>';
+      if (t.books && t.books.length) h += '<div style="margin-top:4px;font-size:0.9em;color:var(--text2)">📚 ' + t.books.map(function(b) { return esc(b); }).join(' · ') + '</div>';
+      h += '</div>';
+    });
+  });
+  h += '</div>';
+  return h;
+}
+
+// ═══ 播客全季目录（PRACTICE_DATA.haiyun_podcast_catalog）：S1-S24 · 387 集真实 RSS 目录 ═══
+function renderPodcastCatalog() {
+  var pc = (typeof PRACTICE_DATA !== 'undefined' && PRACTICE_DATA.haiyun_podcast_catalog) ? PRACTICE_DATA.haiyun_podcast_catalog : null;
+  if (!pc || !pc.seasons || !pc.episodes) return '';
+  window.wzPod = pc; window.wzPodAll = pc.episodes;
+  var h = '';
+  h += '<div class="section" id="hl-podcast" style="border-left:4px solid var(--gold)"><h2>🎧 播客全季目录 — 海雲繼夢說華嚴 · ' + (pc.meta && pc.meta.episode_count ? pc.meta.episode_count : pc.episodes.length) + ' 集</h2>';
+  if (pc.meta) {
+    h += '<p style="font-size:0.74em;color:var(--text2);line-height:1.8">📻 ' + esc(pc.meta.title_zh || '') + (pc.meta.title_en ? ' <span class="en-line">(' + esc(pc.meta.title_en) + ')</span>' : '') + ' · ' + esc(pc.meta.creator_zh || '') + ' · ' + esc(pc.meta.language || '');
+    if (pc.meta.alt_title_zh) h += '<br>🗂 同名既有条目：' + esc(pc.meta.alt_title_zh) + (pc.meta.alt_title_en ? ' <span class="en-line">(' + esc(pc.meta.alt_title_en) + ')</span>' : '');
+    h += '</p>';
+    h += '<p style="font-size:0.72em">';
+    [['Apple 播客（现名「海雲繼夢說華嚴」）', pc.meta.apple_url], ['Apple（既有条目「普賢乘華嚴宗」）', pc.meta.apple_url_au], ['Spotify', pc.meta.spotify_url], ['RSS 源', pc.meta.rss_url]].forEach(function(pair) {
+      if (pair[1]) h += '<a href="' + esc(pair[1]) + '" target="_blank" style="color:var(--blue);margin-right:12px">🔗 ' + pair[0] + '</a>';
+    });
+    h += '</p>';
+    if (pc.meta.season_note) h += '<p style="font-size:0.7em;color:var(--text2);line-height:1.7">📌 ' + esc(pc.meta.season_note) + '</p>';
+  }
+  h += '<div style="display:flex;gap:6px;flex-wrap:wrap;font-size:0.73em;margin:8px 0">';
+  h += '<span style="padding:4px 10px;border:1px solid var(--line);border-radius:14px;cursor:pointer;color:var(--blue);background:var(--card)" onclick="wzPodAll()">全部 ' + pc.episodes.length + ' 集</span>';
+  pc.seasons.forEach(function(s) {
+    h += '<span style="padding:4px 10px;border:1px solid var(--line);border-radius:14px;cursor:pointer;color:var(--blue);background:var(--card);white-space:nowrap" onclick="wzPodSeason(' + s.s + ')">S' + s.s + ' ' + esc(s.title) + ' <span style="color:var(--text2);font-size:0.85em">(' + s.count + ')</span></span>';
+  });
+  h += '</div>';
+  h += '<input id="wz-pq" type="search" placeholder="在播客目录内检索（标题关键词，如 玄谈 / 药师 / 會後問答）…" oninput="wzPodFilter(this.value)" style="width:100%;max-width:480px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;font-size:0.85em;background:var(--card);color:var(--text)">';
+  h += '<div id="wz-pcount" style="font-size:0.72em;color:var(--text2);margin:6px 0"></div>';
+  var last = pc.seasons[pc.seasons.length - 1];
+  window.wzPodCur = last ? last.s : 0;
+  h += '<div id="wz-podlist">' + wzPodListHTML(window.wzPodCur, '') + '</div>';
+  h += '<p style="font-size:0.7em;color:var(--text2);line-height:1.7;margin-top:4px">💡 列表默认展示<b>最新季 S' + window.wzPodCur + '</b>（' + esc(last ? last.title : '') + '，当前进行中的《九九华严讲座》）；点击上方季名或输入关键词即可筛选；单集标题可直达官方单集页。数据来自官方 RSS（anchor.fm），含标题、日期与时长。</p>';
+  h += '</div>';
+  return h;
+}
+function wzPodListHTML(s, q) {
+  var all = window.wzPodAll || [];
+  var ql = String(q || '').trim().toLowerCase();
+  var list = all.filter(function(e) {
+    if (s && e.s !== s) return false;
+    if (ql) { var tt = String(e.t || '').toLowerCase() + ' ' + String(e.e || '').toLowerCase(); if (tt.indexOf(ql) < 0) return false; }
+    return true;
+  });
+  if (!list.length) return '<p style="font-size:0.75em;color:var(--text2)">（无匹配单集）</p>';
+  var rows = list.map(function(e) {
+    return '<tr><td style="white-space:nowrap;font-weight:600">S' + e.s + '</td><td><a href="' + esc(e.u) + '" target="_blank" style="color:var(--blue)">' + esc(e.t) + '</a></td><td style="white-space:nowrap">' + esc(e.d) + '</td><td style="white-space:nowrap">' + e.m + ' 分</td></tr>';
+  }).join('');
+  return '<table class="v-table" style="font-size:0.72em;width:100%"><tr><th style="text-align:left">季</th><th style="text-align:left">单集标题</th><th style="text-align:left">日期</th><th style="text-align:left">时长</th></tr>' + rows + '</table>';
+}
+function wzPodSeason(s) {
+  window.wzPodCur = s;
+  var el = document.getElementById('wz-podlist');
+  if (el) el.innerHTML = wzPodListHTML(s, '');
+  var c = document.getElementById('wz-pcount');
+  if (c) c.textContent = 'S' + s + ' 季 · 共 ' + ((window.wzPodAll || []).filter(function(e) { return e.s === s; }).length) + ' 集';
+  var p = document.getElementById('hl-podcast');
+  if (p) p.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function wzPodAll() {
+  window.wzPodCur = 0;
+  var el = document.getElementById('wz-podlist');
+  if (el) el.innerHTML = wzPodListHTML(0, '');
+  var c = document.getElementById('wz-pcount');
+  if (c) c.textContent = '全部季 · 共 ' + (window.wzPodAll || []).length + ' 集';
+  var p = document.getElementById('hl-podcast');
+  if (p) p.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function wzPodFilter(q) {
+  var el = document.getElementById('wz-podlist');
+  if (el) el.innerHTML = wzPodListHTML(window.wzPodCur || 0, q);
 }
 
 // ═══ 成其大观渲染 (从 PRACTICE_DATA.chengguan_master) ═══
@@ -1560,7 +1816,7 @@ function jxSubNav(view,anchor){
       sub=localStorage.getItem('practice_sub')||'system';
     }catch(e){}
     if(sub==='heart')sub='meditation';
-    if(sub&&['system','meditation','news','resources','chan_traces','chengguan','vinaya','faxiang','yikong','mimi','tiantai'].indexOf(sub)>=0){
+    if(sub&&['system','meditation','news','resources','chan_traces','chengguan','vinaya','faxiang','yikong','mimi','tiantai','haiyun_lectures'].indexOf(sub)>=0){
       switchPracticeView(sub);
     }
   },150);

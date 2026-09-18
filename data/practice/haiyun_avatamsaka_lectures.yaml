@@ -354,6 +354,8 @@ chapters:
 podcast_huayan:
   name: 普賢乘華嚴宗
   name_en: Samantabhadra Vehicle Huayan School
+  name_alt: 海雲繼夢說華嚴（Apple Podcasts 現用標題，同一節目 id 1523368889）
+  name_alt_en: Haiyun Jimeng Speaks the Huayan Sūtra (current Apple Podcasts title; the same show, id 1523368889)
   platforms: "Spotify · Apple Podcast · 每周一三更新"
   platforms_en: "Spotify · Apple Podcast · updated Mondays and Wednesdays"
   huayan_seasons:
@@ -365,6 +367,7 @@ podcast_huayan:
     - "S20: 華嚴經淨行品"
     - "S22: 華嚴海會"
     - "S23: 十行品"
+    - "S24: 九九華嚴講座（2026-04 起，每月三场，台北 TICC）"
   huayan_seasons_en:
     - "S1: Introduction to Huayan Studies"
     - "S2: Huayan Doctrine and Practice"
@@ -374,9 +377,19 @@ podcast_huayan:
     - "S20: The Pure Practice chapter"
     - "S22: The Huayan Assembly"
     - "S23: The Ten Practices chapter"
+    - "S24: The Ninety-nine-fascicle Huayan lecture series (from Apr 2026, three sessions per month, Taipei TICC)"
+  note: |
+    2026-09 实况：Apple Podcasts 現用標題「海雲繼夢說華嚴」，387 集，2020–2026 持续更新（每周两次）。
+    S24 九九華嚴講座為 2026 年 4 月起於台北國際會議中心（TICC）每月三场的弘法講座：
+    以《八十華嚴》前五十九卷為思想與法界觀的基礎，銜接《四十華嚴》後四十卷的實修與行願，合為九十九卷。
+  note_en: |
+    Live status as of Sep 2026: Apple Podcasts titles the show "Haiyun Jimeng Speaks the Huayan Sūtra" — 387 episodes, active 2020–2026 (updated semiweekly).
+    S24, the Ninety-nine-fascicle Huayan lecture series, has run since Apr 2026 at the Taipei International Convention Center (TICC), three sessions per month:
+    it takes the first fifty-nine fascicles of the Eighty-fascicle Avataṃsaka as the basis of its thought and vision of the dharmadhātu, and connects them with the practice and vows of the last forty fascicles of the Forty-fascicle version, forming a ninety-nine-fascicle whole.
   links:
     spotify: https://open.spotify.com/show/2ZDlq4cOOiynQvlzPARkmc
-    apple: https://podcasts.apple.com/au/podcast/普賢乘華嚴宗/id1523368889
+    apple: https://podcasts.apple.com/us/podcast/%E6%B5%B7%E9%9B%B2%E7%B9%BC%E5%A4%A2%E8%AA%AA%E8%8F%AF%E5%9A%B4/id1523368889
+    apple_au: https://podcasts.apple.com/au/podcast/%E6%99%AE%E8%B3%A2%E4%B9%98%E8%8F%AF%E5%9A%B4%E5%AE%97/id1523368889
 
 # ── 五、视频/Bilibili ──
 video:

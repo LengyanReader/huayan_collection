@@ -153,3 +153,15 @@ others:
       label: 文献页 · 判教互判
     views:
       - panjiao
+  - id: haiyun-lectures
+    icon: 📚
+    title: 海云法师讲法全库
+    title_sub: wiz 全库 645 篇 · 目录·检索·全文阅读
+    data_source: haiyun_wiz_catalog
+    data_pool: practice
+    back:
+      tab: jiaoxing
+      view: haiyun_lectures
+      label: 教行页 · 海云讲法·全库
+    views:
+      - haiyun_lectures
