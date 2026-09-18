@@ -1402,7 +1402,13 @@ def build_articles(articles):
                                  + ('\nrenderDynTopics(GAP_DATA[ARTICLE.data_source], %s);' % dyn_mode)
                                  + ('\ndocument.getElementById("article-root").innerHTML = renderDynTopics(GAP_DATA[ARTICLE.data_source], %s);' % dyn_mode))
             else:
-                sub = {ds: practice.get(ds)}
+                if ds == 'haiyun_wiz_catalog':
+                    # 海云讲法·公开资料独立页：必须与教行页同源同量——文档库 + 40 课题 + 播客全季 全量内嵌
+                    sub = {'haiyun_wiz_catalog': practice.get('haiyun_wiz_catalog'),
+                           'haiyun_lectures_topics': practice.get('haiyun_lectures_topics'),
+                           'haiyun_podcast_catalog': practice.get('haiyun_podcast_catalog')}
+                else:
+                    sub = {ds: practice.get(ds)}
                 data_script = ('var PRACTICE_DATA = %s;\n'
                                'var ARTICLE = %s;'
                                % (json.dumps(sub, ensure_ascii=False),
