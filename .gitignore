@@ -33,7 +33,8 @@ data/knowledge_graph/neo4j_import/*.dump
 data/dld/
 #docs/notes4it/华藏妙海 部分听经笔记整理版.pdf
 docs/hy_refs/*
-docs/huayanhai/*
+# huayanhai：正文 *.txt + export_manifest.json + README 上线（Pages 按需加载），html 原件留本地不入库
+docs/huayanhai/**/*.html
 
 
 node_modules
