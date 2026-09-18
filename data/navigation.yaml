@@ -412,10 +412,10 @@ navigation:
         action: {type: call, fn: jxSubNav, args: [resources, res-more]}
       - label: 最新动态
         action: {type: call, fn: jxSubNav, args: [resources, res-news]}
-    - label: 📚 海云讲法·全库
+    - label: 📚 海云讲法·公开资料
       action: {type: call, fn: switchPracticeView, args: [haiyun_lectures]}
       subs:
-      - label: 全库总览
+      - label: 公开资料总览
         action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-overview]}
       - label: 主要讲法方向
         action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-focus]}

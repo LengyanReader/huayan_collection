@@ -982,6 +982,7 @@ function renderWizLibrary() {
   }
   // ── 总览 ──
   h += '<div class="section" id="hl-overview" style="border-left:4px solid var(--gold)"><h2>📚 海云讲法 · 公开资料</h2>';
+  h += '<p style="font-size:0.74em;color:var(--text2);margin:4px 0 0">🔗 本页可分享/收藏的独立地址：<a href="' + (location.href.indexOf('/articles/') >= 0 ? 'haiyun-lectures.html' : '../articles/haiyun-lectures.html') + '" style="color:var(--blue);text-decoration:underline">海云讲法 · 公开资料（独立页）</a> · 访问后可用页顶「分享地址」按钮一键复制。</p>';
   h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.9">' + esc(cat.subtitle || '') + '。全库共 <b style="color:var(--gold)">' + cat.totals.count + '</b> 篇、<b style="color:var(--gold)">' + cat.totals.folders_top + '</b> 个一级目录，文本合计 <b style="color:var(--gold)">' + fmtChars(cat.totals.chars) + '</b>（html 原件 ' + fmtBytes(cat.totals.size) + '）。正文按需加载，支持关键词检索与目录导航，点篇即读。</p>';
   h += '</div>';
   // ── 主要讲法方向 · 快捷入口 ──
