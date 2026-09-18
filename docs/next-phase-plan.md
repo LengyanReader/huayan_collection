@@ -4,6 +4,16 @@
 
 ---
 
+## ⚙️ 部署与仓库治理·既定事实（2026-09-18 固化，勿再误判）
+
+- **线上 Pages 源 = main 根目录**（根 `index.html` 105B meta-refresh → `web/demo/index.html`；`/huayan_collection/` 即根部署）。**gh-pages 分支不参与线上服务**（历史遗留部署点，已回退 3f58a72→81d12c8 并 force-push 清掉误推的 data/scripts/docs 膨胀）。
+- **海云讲法正文读取路径** `../../../docs/huayanhai/<txt>`（Tab3 jiaoxing.html 与独立页 haiyn-lectures.html 通用）解析到 `/huayan_collection/docs/huayanhai/…` = **main/docs/huayanhai** → 正文必须随 main 提交（commit 1f5db24：645 txt + export_manifest.json + README = 647 项；`.gitignore` 现仅忽略 `docs/huayanhai/**/*.html` 原件，txt/清单/README 正常跟踪）。
+- **线上验证基线**（headless Chrome `--dump-dom` 稳定，CDP 10053 不可靠）：`/web/demo/tabs/jiaoxing.html` 含 `id="hl-topics"`（新构建 3,701,999 B＝仓库 LF 对象）→ 200；正文抽样 `docs/huayanhai/海云行愿/普贤行者二十一行_1.txt` → 200/136,552 B（完整正文可读）。Pages CDN 缓存约 1-2 分钟，推送后需等待刷新。
+- **仓库换行约定**：工作区 CRLF＝提交对象 LF（Git 自动归一），比对线上字节以 `git cat-file -s`（对象）为准，勿用本地磁盘文件大小（差值为 LF↔CRLF 计数）。
+- 遗留提示：`teaching_resources.yaml`「2000+集」与实际 387 集不符【待订正】（尚未处理）。
+
+---
+
 ## 一、当前状态总览
 
 ### 整体数据
