@@ -709,7 +709,10 @@ function _mdFullToHTML(text) {
         q.push(lines[i].trim().replace(/^>\s?/, ''));
         i++;
       }
-      out.push('<blockquote style="border-left:3px solid var(--gold);background:rgba(184,134,60,0.06);padding:8px 12px;margin:10px 0;font-size:0.82em;line-height:1.8;color:var(--text2);white-space:pre-line">' + _mdInline(q.join('\n')) + '</blockquote>');
+      // 引用块内若含表格，须按块级 markdown 递归渲染（否则表格会被当作纯文本转义显示）
+      var _bq = q.join('\n');
+      var _bqBlock = /^[ \t]*\|/m.test(_bq);
+      out.push('<blockquote style="border-left:3px solid var(--gold);background:rgba(184,134,60,0.06);padding:8px 12px;margin:10px 0;font-size:0.82em;line-height:1.8;color:var(--text2);' + (_bqBlock ? '' : 'white-space:pre-line') + '">' + (_bqBlock ? _mdFullToHTML(_bq) : _mdInline(_bq)) + '</blockquote>');
       continue;
     }
     // table

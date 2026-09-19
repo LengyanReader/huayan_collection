@@ -1,12 +1,17 @@
-# 新技术与佛教（草稿）：数据科学、人工智能在佛学研究、修行与传播中的应用
+# 新技术与佛教（未完成的调研·征求意见稿）：数据科学、人工智能在佛学研究、修行与传播中的应用
 
-### ——技术现状、效能边界与治理框架之综合研究
+### ——技术现状、效能边界与治理框架之综合研究（进行中）
 
 ---
 
-> ⚠️ **草稿·征求意见（2026-09-19）**——本文尚在修订阶段，内容、判断与结论均可能变动；引用请注明版本与日期，勿视为定稿。
+> ⚠️ **草稿·征求意见（2026-09-19）——本研究尚未完成**
 >
-> **EN · Draft for Comment (19 September 2026)** — This article is still under revision; its content, judgments, and conclusions are subject to change. Please cite with version and date; it is not a final text.
+> 本文为一项**仍在进行中**的调研之中期成果，非已完结之研究。其材料收集、案例考察与实证佐证均未完成，具体而言：**语种方面**，日文、韩文、越南文之一手材料尚未系统检索，而日本 SAT 与 BDK、韩国佛教数字化均属本文应当考察而未及考察之列；**地域方面**，东南亚与欧洲各国汉传社群之分口径数据尚未采集；**实证方面**，各项目之准确率除少数模型卡自述外尚无第三方评测，佛教 AI 之用户研究与效果评估基本空白；**案例方面**，项目生态之盘点仍有未及者。以上各项，将随调研推进而陆续补入，本文亦将随之修订。故其内容、判断与结论均可能变动，**引用请注明版本与日期，勿视为定稿**。
+>
+> **EN · Draft for Comment (19 September 2026) — This study is not yet complete**
+>
+> This article is the interim result of an inquiry **still in progress**, not a completed study. Its collection of materials, examination of cases, and empirical corroboration are all unfinished. Specifically: **as to languages**, primary materials in Japanese, Korean, and Vietnamese have not been systematically searched, and Japan's SAT and BDK and Korean Buddhist digitization fall within what this study ought to examine but has not; **as to regions**, disaggregated data on Chinese Buddhist communities in Southeast Asia and Europe have not been gathered; **as to empirical work**, the accuracy of most projects rests on self-description apart from a few model cards, with no third-party evaluation, and user studies and effect evaluations of Buddhist AI are essentially absent; **as to cases**, the survey of the project landscape remains incomplete. All of these will be incorporated as the inquiry advances, and this article will be revised accordingly. Its content, judgments, and conclusions are therefore subject to change. **Please cite with version and date; it is not a final text.**
+>
 
 
 > **EN对应 · New Technology and Buddhism**
@@ -1365,6 +1370,35 @@ None of the three can be solved by "more communication." They require **structur
 2. **英译覆盖率之按页审计**。把 BDK 的「65%」变成可审计的指标。
 3. **佛教 AI 之用户研究**。僧团、学者、译师、一般信众如何使用此类工具、在哪里失去信任、在什么条件下愿意长期使用，目前几乎无数据。
 4. **各传统数字化程度之横向调查**。本文所作之三传统比较，依据为公开材料与项目自述；一次系统的、以统一口径进行的机构调查，将使这一比较获得更坚实的基础。
+
+### 六、本研究之未竟与后续方向
+
+本文为进行中之调研之中期成果。以下列出尚未完成、将于后续补入者，以明本文之边界与后续之方向。
+
+| 层面 | 未竟事项 | 后续安排 |
+|---|---|---|
+| 语种 | 日文、韩文、越南文之一手材料；法文、德文、西班牙文学界成果 | 系统检索日本 SAT／BDK、韩国佛教数字化与欧洲佛教数字人文之会议论文与项目报告 |
+| 地域 | 马来西亚、印尼、泰国、越南汉传社群之分口径数据；欧洲汉传所占比例；海外汉传僧人总数 | 依托各国普查与教团年报，建立可比口径 |
+| 实证 | 各项目准确率之第三方评测；佛教 AI 之用户研究与效果评估 | 待公共评测基准建立后逐步补入 |
+| 案例 | 项目生态之未及考察者；各项目之长期进展 | 持续跟踪，随版本更新 |
+| 方法 | 佛教 AI 评测基准、多语术语层标准、英译覆盖率指标 | 已列入第十四章路线，见附录一 |
+
+**凡后续补入者，皆循本文既有之信源分级与判断标注体例；凡一时不能确证者，仍标〔待核〕，不以推测填补。**
+
+> **EN — 6. What Remains Unfinished, and Where the Inquiry Goes Next**
+>
+> This article is an interim result of an inquiry in progress. The following lists what is not yet done and will be incorporated later, so that the boundaries of this study and its future direction are clear.
+>
+> | Level | Outstanding | Next step |
+> |---|---|---|
+> | Languages | Primary materials in Japanese, Korean, and Vietnamese; scholarship in French, German, and Spanish | Systematic search of conference papers and project reports from Japan (SAT, BDK), Korean Buddhist digitization, and European Buddhist digital humanities |
+> | Regions | Disaggregated data on Chinese Buddhist communities in Malaysia, Indonesia, Thailand, and Vietnam; the Chinese Buddhist share in Europe; the total number of overseas Chinese Buddhist monastics | Build comparable definitions from national censuses and order annual reports |
+> | Empirical | Third-party evaluation of project accuracy claims; user studies and effect evaluations of Buddhist AI | To be incorporated once a public evaluation benchmark exists |
+> | Cases | Projects not yet surveyed; the long-term progress of each | Ongoing tracking, updated by version |
+> | Method | The Buddhist AI evaluation benchmark, the multilingual terminology standard, and the English translation coverage metric | Already placed on the roadmap in Chapter Fourteen; see Appendix One |
+>
+> **Everything subsequently incorporated will follow this article's existing source grading and judgment annotation; whatever cannot yet be confirmed will remain marked 〔pending verification〕, and will not be filled in with conjecture.**
+>
 
 > **EN对应 · Appendix Two: Limitations of This Study and Items Pending Verification**
 >
