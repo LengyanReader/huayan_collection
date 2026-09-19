@@ -1279,7 +1279,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 **其六，佛教 AI 的质量瓶颈不在算法，也不在语料，而在学科接口与实践者参与的制度化程度。**（第十六章）佛教 AI 属于模式二的知识生产，其成果的正确性无法由任何单一学科判定；由工程师独立完成、再请法师试用并反馈的项目，不属超学科，而是外部的。
 
-以上六项，前两项关乎方向，中间两项关乎边界，后两项关乎方法。**概言之：新技术对佛教的意义，不在于它能替佛教说什么，而在于它能使佛教所说的内容被更准确地保存、检索、理解与传达。**（判断·总结／依据：全文 16 章之论述）
+以上六项，前两项关乎方向，中间两项关乎边界，后两项关乎方法。**概括而言，新技术对佛教的实际贡献，在于提升佛教文献与教说在保存、检索、理解与传播各环节上的准确性；至于代替佛教自身作出教义性的表述，则超出技术所能承担的范围。**（判断·总结／依据：全文 16 章之论述）
 
 尚须重申：本文为进行中调研之中期成果，上述各项判断均可能随材料与案例的补入而修订。其未竟之处与后续方向，见卷首声明与附录二第六节。
 
@@ -1299,7 +1299,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > **Sixth, the quality bottleneck in Buddhist AI lies neither in algorithms nor in corpora but in the institutionalization of disciplinary interfaces and practitioner participation.** (Chapter Sixteen) Buddhist AI is Mode 2 knowledge production, and the correctness of its outputs cannot be adjudicated by any single discipline; a project designed by engineers alone and then shown to monastics for trial and feedback is not transdisciplinary but external.
 >
-> Of the six, the first two concern direction, the two in the middle concern boundaries, and the last two concern method. **In sum: the significance of new technology for Buddhism lies not in what it can say on Buddhism's behalf, but in its capacity to let what Buddhism says be more accurately preserved, retrieved, understood, and conveyed.** (Judgment · synthesis / basis: the argument of all sixteen chapters)
+> Of the six, the first two concern direction, the two in the middle concern boundaries, and the last two concern method. **In sum, the actual contribution of new technology to Buddhism lies in raising the accuracy with which Buddhist texts and teachings are preserved, retrieved, understood, and transmitted; to make doctrinal statements in Buddhism's place lies beyond what technology can undertake.** (Judgment · synthesis / basis: the argument of all sixteen chapters)
 >
 > It should be reiterated that this article is the interim result of an inquiry in progress, and that all the judgments above may be revised as further materials and cases are incorporated. Its outstanding work and future directions are set out in the notice at the head of this article and in Section 6 of Appendix Two.
 >
