@@ -1,6 +1,13 @@
-# 新技术与佛教：数据科学、人工智能赋能佛学研究、修行与传播
+# 新技术与佛教（草稿）：数据科学、人工智能赋能佛学研究、修行与传播
 
 ### ——一份技术现状、能力边界与治理框架的综合研究
+
+---
+
+> ⚠️ **草稿·征求意见（2026-09-19）**——本文尚在修订阶段，内容、判断与结论均可能变动；引用请注明版本与日期，勿视为定稿。
+>
+> **EN · Draft for Comment (19 September 2026)** — This article is still under revision; its content, judgments, and conclusions are subject to change. Please cite with version and date; it is not a final text.
+
 
 > **EN对应 · New Technology and Buddhism**
 >
