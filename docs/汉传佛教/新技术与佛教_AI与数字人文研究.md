@@ -802,7 +802,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 >
 > Two of these require particular emphasis. On **anthropomorphization**: an AI that is always present, always answering, never tiring, and never judging constitutes a dangerous attraction precisely through those properties. On **data privacy**: a practice journal may contain physical condition, emotions, family relations, traumatic experience, sexuality and marriage, religious belief, and psychological state; such data cannot be handled by the data logic of an ordinary content platform, and **Buddhist AI should set a higher privacy standard than educational AI generally**.
 >
-The real risk of Buddhist AI is not that a machine has a soul. It is that a person hands authority to an algorithm.** (Judgment)
+> **The real risk of Buddhist AI is not that a machine has a soul. It is that a person hands authority to an algorithm.** (Judgment · assessment / basis: the five risks listed in Chapter Ten—authority illusion, anthropomorphization, dependency, doctrinal flattening, and data privacy)
 >
 > The authority of the patriarchs was built on long practice in precepts, concentration, and wisdom, and on the sanction of the monastic community. That authority cannot be transcribed into parameters, and should not be simulated as an object one can question at will. What technology can do is organize the texts clearly, mark the sources plainly, and explain the doctrine coherently—**it makes the dharma hearable; it does not speak the dharma in anyone's place.**
 >
@@ -860,7 +860,9 @@ The real risk of Buddhist AI is not that a machine has a soul. It is that a pers
 >
 > Chapter Ten examined the ethical risks Buddhism faces in using AI. Beyond risk lies a converse question: **can Buddhist philosophy contribute to AI ethics itself?** This is not rhetorical courtesy but a testable scholarly question.
 >
-> **> | Dimension | Original term | Point |
+> **Five dimensions already in the peer-reviewed literature.**
+>
+> | Dimension | Original term | Point |
 > |---|---|---|
 > | Suffering-sensitive impact assessment | suffering-sensitive impact assessment | Treats the potential impact on sentient beings' suffering as an independent metric, not merely efficiency, fairness, or privacy |
 > | Relational accountability | relational accountability | Accountability extends to the network of persons, machines, and environments, not only to individual actors |
@@ -868,9 +870,11 @@ The real risk of Buddhist AI is not that a machine has a soul. It is that a pers
 > | Interpretive humility | interpretive humility | Acknowledges the limits of AI interpretation and preserves space for human interpretation |
 > | Cultural participation | cultural participation | Involves traditional communities in AI design and governance |
 >
-A second study from the same period takes Master Hsing Yun's Humanistic Buddhism as its basis, converting the "Three Acts of Goodness" and "Four Givings" into a digital mindfulness guide and proposing a framework of "Humanistic Buddhist Intelligence"—a "digital cognitive firewall" within the user, for countering algorithmic manipulation and AI-generated illusion (Grade B, Kang Qihao, *AI and Ethics* 6(5), 2026; [original](https://doi.org/10.1007/s43681-026-01316-8)).
+> A second study from the same period takes Master Hsing Yun's Humanistic Buddhism as its basis, converting the "Three Acts of Goodness" and "Four Givings" into a digital mindfulness guide and proposing a framework of "Humanistic Buddhist Intelligence"—a "digital cognitive firewall" within the user, for countering algorithmic manipulation and AI-generated illusion (Grade B, Kang Qihao, *AI and Ethics* 6(5), 2026; [original](https://doi.org/10.1007/s43681-026-01316-8)).
 >
-> **> | Dimension | Doctrinal counterpart | Point of comparison |
+> **The Buddhist ethical resources, item by item.**
+>
+> | Dimension | Doctrinal counterpart | Point of comparison |
 > |---|---|---|
 > | Suffering-sensitive impact assessment | The truth of suffering; ahiṃsā | Most AI ethics frameworks centre on fairness, transparency, and explainability, with the individual or the group as their unit; the truth of suffering supplies a different unit—it asks who suffers from this, how the suffering arises, and whether it can cease. This is an evaluative axis grounded in feeling rather than in rights |
 > | Relational accountability | Dependent origination | No dharma exists independently; all arise in dependence. Seen thus, "who is responsible" cannot be reduced to "which engineer wrote the wrong code," but must be located in the network formed by model developers, data sources, deployers, users, and those affected |
@@ -878,7 +882,7 @@ A second study from the same period takes Master Hsing Yun's Humanistic Buddhism
 > | Interpretive humility | Prajñā; the apophatic tradition | Buddhist hermeneutics has long warned against mistaking the finger for the moon; Nāgārjuna's tetralemma in the *Mūlamadhyamakakārikā* is a systematic hermeneutics of humility. The direct technical corollary: Buddhist AI should avoid declaring that a given view is the true meaning of the dharma (see the task grading in Chapter Six) |
 > | Cultural participation | Karma-vācā; concord | The Buddhist decision-making tradition has always included collective deliberation and mutual sanction (see the companion volume, in the chapter on governance and temple economy), structurally comparable to the stakeholder participation modern AI governance advocates |
 >
-**One misuse that must be avoided: affixing Buddhist terminology to existing AI ethics frameworks and passing it off as a contribution.** This takes two forms. The **labelling** form renames "fairness" as "equality" and "transparency" as "seeing things as they are," with no change in substance. The **analogical** form likens Indra's net to the internet, "three thousand realms in a single thought" to a holographic universe, or emptiness to quantum entanglement. Such analogies are effective in popular writing and harmful in scholarship: they make Buddhism appear to supply a mystical warrant for modern science, while adding neither scientific understanding nor doctrinal understanding.
+> **One misuse that must be avoided: affixing Buddhist terminology to existing AI ethics frameworks and passing it off as a contribution.** This takes two forms. The **labelling** form renames "fairness" as "equality" and "transparency" as "seeing things as they are," with no change in substance. The **analogical** form likens Indra's net to the internet, "three thousand realms in a single thought" to a holographic universe, or emptiness to quantum entanglement. Such analogies are effective in popular writing and harmful in scholarship: they make Buddhism appear to supply a mystical warrant for modern science, while adding neither scientific understanding nor doctrinal understanding.
 >
 > **The test is clear: a Buddhist concept that brings no evaluative dimension or decision procedure absent from existing AI ethics frameworks is not a contribution; if it does bring one, that contribution should be specifiable without relying on metaphor.** By this test, **"suffering-sensitive impact assessment" and "interpretive humility" are the two that best withstand scrutiny**—the first supplying an evaluative axis grounded in suffering rather than in rights or efficiency, the second a systematic discipline of negative hermeneutics. (Judgment) The remaining three have value, but "relational accountability" and "cultural participation" have considerable counterparts in Western ethics and governance theory, while "compassion and care integrity" still requires more specific operationalization.
 >
@@ -1063,7 +1067,9 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > Even in the third stage, one baseline should hold: **AI is a tool, an assistant, a medium; human teachers, scholars, monastic communities, and real communities remain the core.**
 >
-> > | Principle | Content | Principal application |
+> > **Six principles.**
+>
+> | Principle | Content | Principal application |
 > |---|---|---|
 > | One: canon first | Every significant doctrinal conclusion should return to the canon wherever possible | Doctrinal Q&A; interpretation |
 > | Two: source first | Answers must provide, wherever possible, the title, fascicle, chapter or page, and edition | All citation |
@@ -1072,7 +1078,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 > | Five: human mentor in the loop | Where precepts, psychological crisis, intense religious experience, teacher–student relations, medical questions, or high-risk practice are involved, human intervention must be provided | High-risk consultation |
 > | Six: data minimization | Practice journals, personal histories, emotional and sensitive identity data follow a principle of minimal collection, not gathered without limit "to build a personalized AI" | Practice journals; personal data |
 >
-**Ten evaluation metrics.** Conventional AI tests only whether an answer sounds right. Buddhist AI should test ten things:
+> **Ten evaluation metrics.** Conventional AI tests only whether an answer sounds right. Buddhist AI should test ten things:
 >
 > | Metric | What it measures |
 > |---|---|
@@ -1240,7 +1246,9 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > The position of each discipline in Buddhist AI is shown in Figure 8. Of these, **Buddhist studies, philology, computational linguistics, and translation studies are irreplaceable**—absent any one of them, the correctness of the output cannot be guaranteed. The rest are important but may be introduced in stages. (Judgment)
 >
-> **> | Failure type | Manifestation | Stage of exposure | Structural remedy |
+> **Three typical interface failures.**
+>
+> | Failure type | Manifestation | Stage of exposure | Structural remedy |
 > |---|---|---|---|
 > | Terminological mismatch | Engineers understand "segmentation" in the sense of general NLP, Buddhist scholars understand "passage" in the sense of textual outline—the former cutting at the statistically optimal point, the latter at the doctrinally complete one; both say "segmentation" while meaning different things | Rarely visible at the requirements stage; surfaces at annotation, when rework is most expensive | Terminology frozen in written definitions |
 > | Objective mismatch | The technical team optimizes "accuracy," meaning an average; the Buddhist team wants "no errors," meaning a floor. These are not mathematically the same objective—raising accuracy from 95 to 97 percent may simultaneously raise the rate of a certain class of serious error | At evaluation | Objectives expressed as tiered metrics rather than a single average |
@@ -1248,7 +1256,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > **On religious texts, the mean is not the appropriate objective function.** (Judgment · argument / basis: the mathematical argument in this passage—an average and a floor are not the same objective)
 >
-None of the three can be solved by "more communication." They require **structural** mechanisms: terminology frozen in written definitions; objectives expressed as tiered metrics rather than a single average; and school adjudication vested in a named scholar-monastic.
+> None of the three can be solved by "more communication." They require **structural** mechanisms: terminology frozen in written definitions; objectives expressed as tiered metrics rather than a single average; and school adjudication vested in a named scholar-monastic.
 >
 > **The place of practitioners.** The key feature of transdisciplinarity is that **practitioners are not the object of study but co-participants in the production of knowledge.** Those involved in Buddhist AI include at least: the sangha (where authority over precepts and doctrine resides); translators (the actual users of a translation workflow); meditation instructors (those who judge risk in practice support); temple administrators (who actually handle governance and data); and Buddhist college teachers (who actually write textbooks and curricula). The implication is concrete: a translation workbench not used daily by translators will not fit their work; a terminology database without monastic participation in review will not match how the community actually renders terms; a practice-support system without meditation instructors in the risk assessment will not fit practice. **An AI designed by engineers alone, with monastics invited afterwards to "try it and give feedback," is not transdisciplinary. It is external.** (Judgment)
 >
