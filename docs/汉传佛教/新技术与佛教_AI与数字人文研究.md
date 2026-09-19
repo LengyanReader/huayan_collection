@@ -80,7 +80,7 @@
 
 近年的新进展包括：法鼓文理学院的数典专案，以六步流程（义项合并、摘要改写、义项分类、关系抽取验证、S-P-O 三元组抽取、实体链接）构建佛教知识图谱（A 级，[CBETA 活动报导](https://cbeta.org/post/30491)）；灵隐寺开发的古籍 OCR 引擎与数字化生产平台，推进《径山藏》《永乐北藏》《思溪藏》，并于二〇二六年五月揭牌「杭州云林数字佛典研究院」（A 级，[杭州佛协](https://www.hzfjxh.com)）。
 
-此一格局的特征是：**机构分散、资源分散、标准不统一、无统一战略。** 每一处都在做实事，然彼此之间缺乏协同，元数据规范各异，且没有任何一方具备统筹全局的资源与权威。
+这一格局的特征是：**机构分散、资源分散、标准不统一、无统一战略。** 每一处都在做实事，然彼此之间缺乏协同，元数据规范各异，且没有任何一方具备统筹全局的资源与权威。
 
 ### 藏传：单一强机构与明确战略
 
@@ -92,13 +92,13 @@
 
 **OpenPecha** 为藏文电子文本之开放协作平台，二〇一九年由 BDRC 与 Esukhia 共同发起，其提出的「佛教知识供应链」框架（《The Supply Chain of Buddhist Knowledge - Framework v0.3》，二〇二五年四月十八日发布）试图贯通从原始资料到终端应用的整条链条。
 
-此一格局的特征是：**有单一强机构、有稳定资助、有明确战略、且战略从「先建数据」而非「先做产品」入手。**
+这一格局的特征是：**有单一强机构、有稳定资助、有明确战略、且战略从「先建数据」而非「先做产品」入手。**
 
 ### 南传与日本
 
 南传方面，**SiPaKosa** 语料库收录僧伽罗语与巴利语佛典七十八万六千句、九百二十五万词，以 Google Document AI 做历史写本 OCR 并辅以网络抓取，评估显示领域专有模型比开源模型性能高百分之三至六倍（B 级，Gurusinghe & Jayatilleke, arXiv:2603.29221, 2026；发表于 CHiPSAL@LREC 2026）。南传另一优势是与西方内观运动的紧密结合，使其禅修传统在英语世界有现成的传播通道。
 
-日本方面，**BDK 英译大藏经**自一九八二年起推进，其二〇一七与二〇一九两版丛书前言皆称第一辑选定之七千一百八十五页已完成约百分之六十五——同一数字出现于相隔两年之两篇前言，是沿用旧文抑或进度停滞，本文未能核实，标〔待核〕。
+日本方面，**BDK 英译大藏经**自一九八二年起推进，其二〇一七与二〇一九两版丛书前言都说第一辑选定的七千一百八十五页已完成约百分之六十五——同一数字出现于相隔两年的两篇前言，是沿用旧文还是进度停滞，本文未能核实，标〔待核〕。
 
 ### 差距的成因
 
@@ -106,11 +106,15 @@
 
 其一，组织形态。 藏传有一个 BDRC 承担全局；汉传有 CBETA、SAT、DILA、法鼓、灵隐各做一段，无人统筹。这直接决定了能否形成统一的数据标准、能否对外发布统一的接口、能否与国际 AI 团队有效对接。
 
-其二，资金结构。 BDRC 获 Khyentse 基金会等稳定资助，可规划十年；汉传各机构多为项目制资助，做完一个项目须再募下一个。
+其二，资金结构。 BDRC 获 Khyentse 基金会等稳定资助，可规划十年；汉传各机构多为项目制资助，做完一个项目还要再募下一个。
 
 其三，与西方知识体系的关系。 藏传自一九五九年以后形成大规模的海外流散社群与西方信众群体，其中不乏具备技术与资金能力者，形成了「信众—学academic界—技术团队」的闭环。南传经由内观运动进入西方主流社会。汉传的海外社群以华人移民为主，其技术能力与资金多投入于道场建设与法会活动，较少进入数字人文。
 
-**结论：汉传在数字化上的落后，不是技术能力的落后，是组织形态与资源结构的落后。**（判断）此一判断的含义是明确的：若不改变组织形态，单纯增加技术投入，其效果将十分有限。
+**结论：汉传在数字化上的落后，不是技术能力的落后，是组织形态与资源结构的落后。**（判断）这一判断的含义是明确的：如果不改变组织形态，单纯增加技术投入，其效果将十分有限。
+
+<svg viewBox="0 0 780 320" style="width:100%;max-width:780px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="778" height="318" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><text x="130" y="28" font-size="13" font-weight="bold" fill="#b8863c" text-anchor="middle">汉传佛教 · 分散</text><text x="390" y="28" font-size="13" font-weight="bold" fill="#b8863c" text-anchor="middle">藏传佛教 · 单一强机构</text><text x="650" y="28" font-size="13" font-weight="bold" fill="#b8863c" text-anchor="middle">南传 / 日本 · 较集中</text><circle cx="95" cy="110" r="8" fill="#5e8b9e"/><text x="95" y="132" font-size="10.5" fill="#4a3a22" text-anchor="middle">CBETA</text><circle cx="180" cy="95" r="8" fill="#5e8b9e"/><text x="180" y="117" font-size="10.5" fill="#4a3a22" text-anchor="middle">SAT</text><circle cx="80" cy="180" r="8" fill="#5e8b9e"/><text x="80" y="202" font-size="10.5" fill="#4a3a22" text-anchor="middle">DILA</text><circle cx="185" cy="175" r="8" fill="#5e8b9e"/><text x="185" y="197" font-size="10.5" fill="#4a3a22" text-anchor="middle">法鼓数典</text><circle cx="130" cy="240" r="8" fill="#5e8b9e"/><text x="130" y="262" font-size="10.5" fill="#4a3a22" text-anchor="middle">灵隐寺</text><line x1="101" y1="115" x2="174" y2="100" stroke="#c9bda9" stroke-dasharray="3 3"/><line x1="90" y1="116" x2="83" y2="173" stroke="#c9bda9" stroke-dasharray="3 3"/><line x1="135" y1="183" x2="125" y2="233" stroke="#c9bda9" stroke-dasharray="3 3"/><line x1="177" y1="182" x2="137" y2="234" stroke="#c9bda9" stroke-dasharray="3 3"/><line x1="99" y1="116" x2="177" y2="170" stroke="#c9bda9" stroke-dasharray="3 3"/><text x="130" y="300" font-size="10.5" fill="#8a7b66" text-anchor="middle">无统筹机构 · 标准不一 · 项目制资助</text><circle cx="390" cy="150" r="26" fill="#b8863c"/><text x="390" y="155" font-size="12" font-weight="bold" fill="#faf7f1" text-anchor="middle">BDRC</text><circle cx="320" cy="82" r="9" fill="#5e8b9e"/><text x="320" y="66" font-size="10.5" fill="#4a3a22" text-anchor="middle">84000</text><circle cx="462" cy="82" r="9" fill="#5e8b9e"/><text x="462" y="66" font-size="10.5" fill="#4a3a22" text-anchor="middle">OpenPecha</text><circle cx="320" cy="222" r="9" fill="#5e8b9e"/><text x="320" y="246" font-size="10.5" fill="#4a3a22" text-anchor="middle">藏文 OCR</text><circle cx="462" cy="222" r="9" fill="#5e8b9e"/><text x="462" y="246" font-size="10.5" fill="#4a3a22" text-anchor="middle">开放数据集</text><line x1="371" y1="134" x2="330" y2="92" stroke="#b8863c"/><line x1="409" y1="134" x2="452" y2="92" stroke="#b8863c"/><line x1="371" y1="167" x2="330" y2="212" stroke="#b8863c"/><line x1="409" y1="167" x2="452" y2="212" stroke="#b8863c"/><text x="390" y="300" font-size="10.5" fill="#8a7b66" text-anchor="middle">统一战略 · 稳定资助 · 先建数据后做产品</text><circle cx="600" cy="130" r="12" fill="#5e8b9e"/><text x="600" y="112" font-size="10.5" fill="#4a3a22" text-anchor="middle">SiPaKosa</text><circle cx="700" cy="130" r="12" fill="#5e8b9e"/><text x="700" y="112" font-size="10.5" fill="#4a3a22" text-anchor="middle">SAT</text><circle cx="650" cy="215" r="12" fill="#5e8b9e"/><text x="650" y="241" font-size="10.5" fill="#4a3a22" text-anchor="middle">BDK 英译</text><line x1="612" y1="130" x2="688" y2="130" stroke="#b8863c"/><line x1="605" y1="141" x2="645" y2="204" stroke="#b8863c"/><line x1="695" y1="141" x2="656" y2="204" stroke="#b8863c"/><text x="650" y="300" font-size="10.5" fill="#8a7b66" text-anchor="middle">学术机构与出版机构主导 · 内观运动通道</text><line x1="260" y1="16" x2="260" y2="286" stroke="#e0d7c8"/><line x1="520" y1="16" x2="520" y2="286" stroke="#e0d7c8"/></svg>
+
+> 图 1｜三大传统数字化组织形态对照
 
 > **EN对应 · One: The Present State of Buddhist Digitization — A Comparison of Three Traditions**
 >
@@ -163,6 +167,10 @@
 | 7. AI 层 | RAG、LLM、翻译、分类、摘要、问答、智能体 | 大模型、视觉语言模型、Agent |
 | 8. 验证层 | 原典出处、版本、页码、证据链、专家修订记录 | 溯源、审计日志 |
 
+<svg viewBox="0 0 700 360" style="width:100%;max-width:700px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="698" height="358" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><rect x="58" y="18" width="570" height="34" rx="6" fill="#b8863c"/><circle cx="40" cy="35" r="13" fill="#b8863c"/><text x="40" y="40" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">8</text><text x="72" y="40" font-size="12.5" font-weight="bold" fill="#4a3a22">验证层</text><text x="616" y="40" font-size="10.5" fill="#6b5c45" text-anchor="end">溯源（provenance）、审计日志</text><rect x="58" y="60" width="570" height="34" rx="6" fill="#bd9250"/><circle cx="40" cy="77" r="13" fill="#b8863c"/><text x="40" y="82" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">7</text><text x="72" y="82" font-size="12.5" font-weight="bold" fill="#4a3a22">AI 层</text><text x="616" y="82" font-size="10.5" fill="#6b5c45" text-anchor="end">RAG、LLM、翻译、分类、摘要、问答、Agent</text><rect x="58" y="102" width="570" height="34" rx="6" fill="#c69e63"/><circle cx="40" cy="119" r="13" fill="#b8863c"/><text x="40" y="124" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">6</text><text x="72" y="124" font-size="12.5" font-weight="bold" fill="#4a3a22">语义层</text><text x="616" y="124" font-size="10.5" fill="#6b5c45" text-anchor="end">向量嵌入、语义检索、跨语种对应</text><rect x="58" y="144" width="570" height="34" rx="6" fill="#cfab77"/><circle cx="40" cy="161" r="13" fill="#b8863c"/><text x="40" y="166" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">5</text><text x="72" y="166" font-size="12.5" font-weight="bold" fill="#4a3a22">关系层</text><text x="616" y="166" font-size="10.5" fill="#6b5c45" text-anchor="end">知识图谱（人物·法脉·寺院·文献·概念）</text><rect x="58" y="186" width="570" height="34" rx="6" fill="#d7b78b"/><circle cx="40" cy="203" r="13" fill="#b8863c"/><text x="40" y="208" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">4</text><text x="72" y="208" font-size="12.5" font-weight="bold" fill="#4a3a22">术语层</text><text x="616" y="208" font-size="10.5" fill="#6b5c45" text-anchor="end">梵／巴利／藏／汉／英术语库、本体</text><rect x="58" y="228" width="570" height="34" rx="6" fill="#dfc39f"/><circle cx="40" cy="245" r="13" fill="#b8863c"/><text x="40" y="250" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">3</text><text x="72" y="250" font-size="12.5" font-weight="bold" fill="#4a3a22">元数据层</text><text x="616" y="250" font-size="10.5" fill="#6b5c45" text-anchor="end">Linked Data、标准元数据</text><rect x="58" y="270" width="570" height="34" rx="6" fill="#e7cfb3"/><circle cx="40" cy="287" r="13" fill="#b8863c"/><text x="40" y="292" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">2</text><text x="72" y="292" font-size="12.5" font-weight="bold" fill="#4a3a22">权威文本层</text><text x="616" y="292" font-size="10.5" fill="#6b5c45" text-anchor="end">TEI/XML、版本控制、异文与校勘</text><rect x="58" y="312" width="570" height="34" rx="6" fill="#efe0c9"/><circle cx="40" cy="329" r="13" fill="#b8863c"/><text x="40" y="334" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">1</text><text x="72" y="334" font-size="12.5" font-weight="bold" fill="#4a3a22">原始资料层</text><text x="616" y="334" font-size="10.5" fill="#6b5c45" text-anchor="end">扫描、OCR/HTR、图像识别</text><text x="350" y="352" font-size="10.5" fill="#8a7b66" text-anchor="middle">上层依赖下层：语料不权威，则 AI 层的输出亦不可信</text></svg>
+
+> 图 2｜佛教知识工程八层架构
+
 CBETA 的 TEI/XML 实践已经证明佛典完全可以成为标准化的数字人文对象；SAT 则进一步强调「数字文本必须能够回到原始页面核验」——这是未来佛教 AI 可信性的基本原则。
 
 由此可以推出一个与流行看法相反的结论：**佛教 AI 的核心竞争力，首先不在「模型有多大」，而在底层语料是否权威、版本是否清楚、出处是否可追溯、术语是否规范、不同传统是否被正确区分。**（判断）
@@ -171,7 +179,7 @@ CBETA 的 TEI/XML 实践已经证明佛典完全可以成为标准化的数字�
 
 ## 四、技术能力盘点：九项技术之成熟度与佛教语域适配
 
-讨论佛教与 AI，容易陷入两种笼统：或以为技术已无所不能，或以为技术全然不可靠。二者皆无助于判断。较为切实的做法，是把相关技术逐项拆开，就三件事分别评估——该技术本身成熟到何种程度、它在佛教语域中的适配性如何、以及它的主要瓶颈何在。
+讨论佛教与 AI，容易陷入两种笼统：或以为技术已无所不能，或以为技术全然不可靠。两种说法都无助于判断。较为切实的做法，是把相关技术逐项拆开，就三件事分别评估——该技术本身成熟到何种程度、它在佛教语域中的适配性如何、以及它的主要瓶颈何在。
 
 | 技术 | 通用成熟度 | 佛教语域适配 | 主要瓶颈 |
 |------|-----------|-------------|----------|
@@ -185,17 +193,21 @@ CBETA 的 TEI/XML 实践已经证明佛典完全可以成为标准化的数字�
 | 计算机视觉（图像、壁画） | 中高 | 中低 | 佛教图像语料稀缺、题材标注困难 |
 | 三维重建与沉浸式 | 中 | 中 | 成本高、现场采集受限、实证不足 |
 
+<svg viewBox="0 0 700 400" style="width:100%;max-width:700px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="698" height="398" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><line x1="90" y1="330" x2="650" y2="330" stroke="#efe6d6"/><line x1="90" y1="330" x2="90" y2="50" stroke="#efe6d6"/><line x1="90" y1="260" x2="650" y2="260" stroke="#efe6d6"/><line x1="230" y1="330" x2="230" y2="50" stroke="#efe6d6"/><line x1="90" y1="190" x2="650" y2="190" stroke="#efe6d6"/><line x1="370" y1="330" x2="370" y2="50" stroke="#efe6d6"/><line x1="90" y1="120" x2="650" y2="120" stroke="#efe6d6"/><line x1="510" y1="330" x2="510" y2="50" stroke="#efe6d6"/><line x1="90" y1="50" x2="650" y2="50" stroke="#efe6d6"/><line x1="650" y1="330" x2="650" y2="50" stroke="#efe6d6"/><line x1="90" y1="330" x2="650" y2="330" stroke="#b8863c"/><line x1="90" y1="330" x2="90" y2="50" stroke="#b8863c"/><text x="370" y="374" font-size="12" fill="#4a3a22" text-anchor="middle">通用成熟度 →</text><text x="24" y="190" font-size="12" fill="#4a3a22" text-anchor="middle" transform="rotate(-90 24 190)">佛教语域适配 →</text><rect x="480" y="60" width="160" height="86" rx="6" fill="#e8f0f3" opacity="0.7"/><text x="560" y="106" font-size="11" fill="#3f6b7d" text-anchor="middle">优先投入区</text><circle cx="594" cy="106" r="6" fill="#5e8b9e"/><text x="605" y="110" font-size="11" fill="#4a3a22">语义检索</text><circle cx="580" cy="134" r="6" fill="#5e8b9e"/><text x="591" y="138" font-size="11" fill="#4a3a22">RAG</text><circle cx="510" cy="190" r="6" fill="#5e8b9e"/><text x="521" y="194" font-size="11" fill="#4a3a22">OCR / HTR</text><circle cx="538" cy="183" r="6" fill="#5e8b9e"/><text x="549" y="187" font-size="11" fill="#4a3a22">语音识别与合成</text><circle cx="608" cy="197" r="6" fill="#5e8b9e"/><text x="619" y="201" font-size="11" fill="#4a3a22">大语言模型</text><circle cx="370" cy="162" r="6" fill="#5e8b9e"/><text x="381" y="166" font-size="11" fill="#4a3a22">知识图谱</text><circle cx="370" cy="204" r="6" fill="#5e8b9e"/><text x="381" y="208" font-size="11" fill="#4a3a22">三维重建与沉浸式</text><circle cx="482" cy="239" r="6" fill="#5e8b9e"/><text x="493" y="243" font-size="11" fill="#4a3a22">计算机视觉</text><circle cx="440" cy="246" r="6" fill="#5e8b9e"/><text x="451" y="250" font-size="11" fill="#4a3a22">机器翻译</text></svg>
+
+> 图 3｜九项技术：通用成熟度与佛教语域适配
+
 以下就其中数项作较详之说明。
 
 ### OCR 与写本识别
 
 印刷体汉文佛典的 OCR 已相当成熟，主流通用引擎在清晰扫描件上的字符准确率可达极高水平，配合后处理与词典约束，可满足大规模数字化之需。真正困难的是**写本**：敦煌写卷、宋元刻本、日本古写经，普遍存在异体字、俗字、避讳字、竖排夹注、页面残损等问题，通用模型的准确率显著下降。
 
-此处技术路线是领域适配而非通用替换：以人工校录的高质量样本作微调，辅以字形字典与语言模型约束。龙泉寺藏经办公室自二〇一六至二〇一七年间以深度学习处理古籍，用《高丽藏》一六八万行作训练数据，并实现了文言自动断句标点，二〇一八年开放「古籍酷」平台（C 级，[南方都市报](https://m.mp.oeeee.com/a/BAAFRD000020201220397973.html)）；BDRC 于二〇二五年发布藏文 OCR 桌面工具，免费开源、支持批量处理；灵隐寺开发古籍 OCR 引擎与数字化生产平台。三例皆说明：**此一环节的技术门槛已不再高，真正的门槛在于高质量训练数据的积累与人工校对的投入。**
+此处技术路线是领域适配而非通用替换：以人工校录的高质量样本作微调，辅以字形字典与语言模型约束。龙泉寺藏经办公室自二〇一六至二〇一七年间以深度学习处理古籍，用《高丽藏》一六八万行作训练数据，并实现了文言自动断句标点，二〇一八年开放「古籍酷」平台（C 级，[南方都市报](https://m.mp.oeeee.com/a/BAAFRD000020201220397973.html)）；BDRC 于二〇二五年发布藏文 OCR 桌面工具，免费开源、支持批量处理；灵隐寺开发古籍 OCR 引擎与数字化生产平台。三个例子都说明：**这一环节的技术门槛已不再高，真正的门槛在于高质量训练数据的积累与人工校对的投入。**
 
 ### 机器翻译
 
-机器翻译在通用语域已相当可用，但在古汉语佛典这一语域上，仍不足以单独交付成果。其困难有三：其一，术语。同一梵文词在不同译师笔下有不同汉译（详见第八章），反向亦然，机器难以判断应取何一译名。其二，命名实体。Dharmamitra 项目发布之佛教汉英翻译模型在其模型卡上明确说明，该系统在人物、地点等命名实体上存在机器翻译系统常见的问题。其三，幻觉。同一模型卡写明，该系统「有时会表现出幻觉倾向」。
+机器翻译在通用语域已相当可用，但在古汉语佛典这一语域上，仍不足以单独交付成果。困难有三点：其一，术语。同一梵文词在不同译师笔下有不同汉译（详见第八章），反向亦然，机器难以判断应取何一译名。其二，命名实体。Dharmamitra 项目发布的佛教汉英翻译模型在其模型卡上明确说明，该系统在人物、地点等命名实体上存在机器翻译系统常见的问题。其三，幻觉。同一模型卡写明，该系统「有时会表现出幻觉倾向」。
 
 二〇二四年一项研究比较了 ChatGPT-4、ERNIE Bot 4 与 Gemini Advanced 对古汉语佛教文本之翻译能力，研究使用来自 CBETA 的佛典与中国佛教文献并通过人工评价分析（B 级，Xiang Wei, *Religions* 15(12):1559, 2024）。此类研究之价值，在于把「LLM 加佛典翻译」从概念讨论推进到可比较评测阶段。
 
@@ -209,7 +221,7 @@ CBETA 的 TEI/XML 实践已经证明佛典完全可以成为标准化的数字�
 
 ### 知识图谱
 
-知识图谱之技术链条较长：实体识别、关系抽取、实体链接、本体设计、图谱存储与查询，每一环皆有准确率损失，累积后之可靠性需审慎评估。其特殊困难在于**本体设计**——佛教的宗派差异使得同一名相在天台、华严、唯识、禅、净土各有不同所指，若本体不区分传统，图谱将把不同义项混为一谈。
+知识图谱的技术链条较长：实体识别、关系抽取、实体链接、本体设计、图谱存储与查询，每一环都有准确率损失，累积之后的可靠性需要审慎评估。其特殊困难在于**本体设计**——佛教的宗派差异使得同一名相在天台、华严、唯识、禅、净土各有不同所指，如果本体不区分传统，图谱将把不同义项混为一谈。
 
 法鼓文理学院数典专案采用的六步流程（义项合并、摘要改写、义项分类、关系抽取验证、S-P-O 三元组抽取、实体链接），其中「义项分类」与「关系抽取验证」两步正是针对此项困难而设，且流程中保留人工验证环节（A 级，[CBETA 活动报导](https://cbeta.org/post/30491)）。
 
@@ -217,15 +229,15 @@ CBETA 的 TEI/XML 实践已经证明佛典完全可以成为标准化的数字�
 
 RAG 是目前佛教 AI 应用中最主流的技术路线。其原理是在生成答案前先检索相关原文，将原文作为上下文一并交给模型，从而约束生成内容使之有所依据。
 
-RAG 解决了「无据生成」的一部分问题，却未解决全部问题。原因在于：**检索到的原文是否正确、完整、来自何一版本，仍须另行校验。** 若检索库本身版本混乱，则 RAG 会把混乱带入答案，且因有"出处"而显得更为可信——这是一种比裸幻觉更危险的情形。
+RAG 解决了「无据生成」的一部分问题，却未解决全部问题。原因在于：**检索到的原文是否正确、完整、来自何一版本，仍然需要另行校验。** 如果检索库本身版本混乱，则 RAG 会把混乱带入答案，且因有"出处"而显得更为可信——这是一种比裸幻觉更危险的情形。
 
-此即第五章所述标准工作流中，为什么「原典定位」之后尚须「卷／页／段落核验」与「多版本比较」两道工序。
+此即第五章所述标准工作流中，为什么「原典定位」之后还需要「卷／页／段落核验」与「多版本比较」两道工序。
 
 ### 语音与图像
 
 语音识别在讲法录音转写上有实际价值，其困难在于诵经腔调、方言口音与大量专名。语音合成可用于有声经典，然古音与唱诵腔调之还原属另一问题，非通用 TTS 所能解决。
 
-计算机视觉在佛教领域主要用于写本图像处理、壁画与经变图之题材识别、造像风格分类等。此一方向之瓶颈不在算法，而在**标注语料稀缺**——佛教图像学之专业标注需兼具图像学与教理知识，人力成本极高。
+计算机视觉在佛教领域主要用于写本图像处理、壁画与经变图的题材识别、造像风格分类等。这一方向的瓶颈不在算法，而在**标注语料稀缺**——佛教图像学之专业标注需兼具图像学与教理知识，人力成本极高。
 
 ### 三维重建与沉浸式技术
 
@@ -308,6 +320,10 @@ AI 在佛学研究上真正有价值的地方，不是替学者思考，是把�
 | 指导高风险修行问题 | 很低 | AI 不应承担最终权威角色 |
 | 断定「某观点就是佛法真义」 | 很低 | 涉及复杂传统与诠释权 |
 
+<svg viewBox="0 0 740 310" style="width:100%;max-width:740px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="738" height="308" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><text x="16" y="24" font-size="11.5" fill="#8a7b66">适用程度</text><line x1="16" y1="32" x2="724" y2="32" stroke="#e0d7c8"/><text x="16" y="66" font-size="12.5" font-weight="bold" fill="#4a3a22">高</text><rect x="70" y="46" width="660" height="30" rx="5" fill="#7a9a6b"/><text x="84" y="66" font-size="11.5" fill="#faf7f1">文章摘要 · 关键词提取 · 初步文献综述 · 相似文寻找 · 多版本比对 · 跨语种资料发现</text><text x="16" y="108" font-size="12.5" font-weight="bold" fill="#4a3a22">中高</text><rect x="70" y="88" width="510" height="30" rx="5" fill="#9aab74"/><text x="84" y="108" font-size="11.5" fill="#faf7f1">术语候选解释 · 机器翻译初稿</text><text x="16" y="150" font-size="12.5" font-weight="bold" fill="#4a3a22">中</text><rect x="70" y="130" width="390" height="30" rx="5" fill="#c9b06a"/><text x="84" y="150" font-size="11.5" fill="#faf7f1">思想史解释</text><text x="16" y="192" font-size="12.5" font-weight="bold" fill="#4a3a22">中低</text><rect x="70" y="172" width="300" height="30" rx="5" fill="#d0a05e"/><text x="84" y="192" font-size="11.5" fill="#faf7f1"></text><text x="394" y="192" font-size="11.5" fill="#4a3a22">宗派教义判定</text><text x="16" y="234" font-size="12.5" font-weight="bold" fill="#4a3a22">低</text><rect x="70" y="214" width="210" height="30" rx="5" fill="#c98a5e"/><text x="84" y="234" font-size="11.5" fill="#faf7f1"></text><text x="304" y="234" font-size="11.5" fill="#4a3a22">经典最终翻译 · 戒律判断</text><text x="16" y="276" font-size="12.5" font-weight="bold" fill="#4a3a22">很低</text><rect x="70" y="256" width="138" height="30" rx="5" fill="#b86b5e"/><text x="84" y="276" font-size="11.5" fill="#faf7f1"></text><text x="232" y="276" font-size="11.5" fill="#4a3a22">指导高风险修行问题 · 断定「某观点即佛法真义」</text></svg>
+
+> 图 4｜AI 任务适用度分级
+
 这张表的用途很实在：**它把「要不要用 AI」这个笼统问题，换成了「这件事在哪一档」。** 摘要、检索、找相似文、比对版本——放心用。最终翻译、戒律判断、教义裁定、高风险修行指导——不能用，或者只能在人明确担责的前提下用。
 
 需要补充的是这张表之外的一个事实：幻觉并不限于佛学领域。*Nature* 上的一项研究提出用语义熵检测 LLM 幻觉的方法，并指出模型即使在语言流畅度很高时仍会产生无根据的答案（B 级，Farquhar 等，*Nature* 630:625–630, 2024）。而学术引用能力尤其不能盲信：一项跨学科评估发现，ChatGPT 生成的文献引用存在真实度与 DOI 准确性问题，自然科学场景下 DOI 准确率约百分之三十二点七，**人文学科场景下仅百分之八点五**，DOI 幻觉率达百分之八十九点四（B 级，Mugaanyi 等，*J Med Internet Res* 26:e52935, 2024）。
@@ -324,6 +340,10 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 → 生成最终答案 → 保留证据链与模型版本
 ```
 
+<svg viewBox="0 0 660 470" style="width:100%;max-width:660px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="658" height="468" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><rect x="150" y="16" width="360" height="34" rx="6" fill="#dce8ee" stroke="#d8cfc0"/><text x="330" y="38" font-size="12.5" fill="#4a3a22" text-anchor="middle">AI 生成</text><line x1="330" y1="50" x2="330" y2="66" stroke="#b8863c" stroke-width="1.6"/><path d="M326,62 L330,66 L334,62 Z" fill="#b8863c"/><rect x="150" y="66" width="360" height="34" rx="6" fill="#dce8ee" stroke="#d8cfc0"/><text x="330" y="88" font-size="12.5" fill="#4a3a22" text-anchor="middle">检索增强（RAG）</text><line x1="330" y1="100" x2="330" y2="116" stroke="#b8863c" stroke-width="1.6"/><path d="M326,112 L330,116 L334,112 Z" fill="#b8863c"/><rect x="150" y="116" width="360" height="34" rx="6" fill="#f0dfc4" stroke="#d8cfc0"/><text x="330" y="138" font-size="12.5" fill="#4a3a22" text-anchor="middle">原典定位</text><line x1="330" y1="150" x2="330" y2="166" stroke="#b8863c" stroke-width="1.6"/><path d="M326,162 L330,166 L334,162 Z" fill="#b8863c"/><rect x="150" y="166" width="360" height="34" rx="6" fill="#f0dfc4" stroke="#d8cfc0"/><text x="330" y="188" font-size="12.5" fill="#4a3a22" text-anchor="middle">卷／页／段落核验</text><line x1="330" y1="200" x2="330" y2="216" stroke="#b8863c" stroke-width="1.6"/><path d="M326,212 L330,216 L334,212 Z" fill="#b8863c"/><rect x="150" y="216" width="360" height="34" rx="6" fill="#f0dfc4" stroke="#d8cfc0"/><text x="330" y="238" font-size="12.5" fill="#4a3a22" text-anchor="middle">多版本比较</text><line x1="330" y1="250" x2="330" y2="266" stroke="#b8863c" stroke-width="1.6"/><path d="M326,262 L330,266 L334,262 Z" fill="#b8863c"/><rect x="150" y="266" width="360" height="34" rx="6" fill="#f0dfc4" stroke="#d8cfc0"/><text x="330" y="288" font-size="12.5" fill="#4a3a22" text-anchor="middle">第二来源交叉验证</text><line x1="330" y1="300" x2="330" y2="316" stroke="#b8863c" stroke-width="1.6"/><path d="M326,312 L330,316 L334,312 Z" fill="#b8863c"/><rect x="150" y="316" width="360" height="34" rx="6" fill="#e3d3ea" stroke="#d8cfc0"/><text x="330" y="338" font-size="12.5" fill="#4a3a22" text-anchor="middle">专家复核</text><line x1="330" y1="350" x2="330" y2="366" stroke="#b8863c" stroke-width="1.6"/><path d="M326,362 L330,366 L334,362 Z" fill="#b8863c"/><rect x="150" y="366" width="360" height="34" rx="6" fill="#dce8ee" stroke="#d8cfc0"/><text x="330" y="388" font-size="12.5" fill="#4a3a22" text-anchor="middle">生成最终答案</text><line x1="330" y1="400" x2="330" y2="416" stroke="#b8863c" stroke-width="1.6"/><path d="M326,412 L330,416 L334,412 Z" fill="#b8863c"/><rect x="150" y="416" width="360" height="34" rx="6" fill="#dce8ee" stroke="#d8cfc0"/><text x="330" y="438" font-size="12.5" fill="#4a3a22" text-anchor="middle">保留证据链与模型版本</text><text x="530" y="45" font-size="10.5" fill="#8a7b66">机器环节</text><text x="530" y="145" font-size="10.5" fill="#8a7b66">核验环节</text><text x="530" y="345" font-size="10.5" fill="#8a7b66">人工环节</text><text x="330" y="464" font-size="10.5" fill="#8a7b66" text-anchor="middle">AI 可以提出解释，但原典才是证据；AI 可以提出假设，但学者负责判断</text></svg>
+
+> 图 5｜「可信佛学 AI」的标准工作流
+
 关键原则只有一句：
 
 > **AI 可以提出解释，但原典才是证据；AI 可以提出假设，但学者负责判断。**
@@ -336,7 +356,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 
 84000 对 AI 辅助佛典翻译采取的也是类似思路。其公开立场文件的原文是：「these sacred texts should not be processed using machine translation alone」；「The primary actor in the translation of sacred literature must always be the human mind.」同时它也承认工具的价值：「84000 believes that the use of AI as a tool to assist translation has considerable value」。它列举的用途包括：检查译文是否有遗漏与错误；提供备选译法；在藏文、梵文、汉文原本之间寻找相关段落；识别不同译本之间的不一致；帮助定位人物、地点与术语（A 级，[84000 立场文件](https://84000.co/documents/84000s-position-on-ai-and-the-machine-translation-of-canonical-literature)）。
 
-把它读成「AI 万能论」或「AI 威胁论」，都不对。它其实是一份**职责划分说明书**：哪些交给机器，哪些必须由人负责，写得清清楚楚。汉传若有类似的公开立场，将省去大量重复争论。这些原则与 UNESCO 针对生成式 AI 教育与研究所倡导的「以人为中心」、数据保护、人类监督等方向一致（A 级，[UNESCO 指南](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=253682)，2023 年 9 月 7 日发布）。
+把它读成「AI 万能论」或「AI 威胁论」，都不对。它其实是一份**职责划分说明书**：哪些交给机器，哪些必须由人负责，写得清清楚楚。汉传如果有类似的公开立场，将省去大量重复争论。这些原则与 UNESCO 针对生成式 AI 教育与研究所倡导的「以人为中心」、数据保护、人类监督等方向一致（A 级，[UNESCO 指南](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=253682)，2023 年 9 月 7 日发布）。
 
 > **EN对应 · Chapters Two, Three, Five, Six, Seven**
 >
@@ -515,6 +535,10 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 这四个问题有一个共同点：答错了会伤人。 这一层不应让 AI 做任何判断，而必须设置人工导师介入、专业机构转介与风险升级机制。关于数字精神陪伴的研究也支持这一谨慎：研究发现用户容易向聊天机器人透露高度私密的信息，同时对隐私、错误信息、数据安全与依赖问题抱有担忧（B 级，Kneese、Vecchione、Marwick, *Communication and Change* 1(1), 2025）。
 
+<svg viewBox="0 0 760 320" style="width:100%;max-width:760px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="758" height="318" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><rect x="230" y="22" width="300" height="56" rx="7" fill="#c2685a"/><text x="380" y="46" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">第 4 层 · 高风险宗教指导</text><text x="380" y="65" font-size="10.5" fill="#faf7f1" text-anchor="middle" opacity="0.92">戒律·心理危机·异常体验·师徒关系·医疗 → 必须人工介入</text><rect x="180" y="92" width="400" height="56" rx="7" fill="#d0a05e"/><text x="380" y="116" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">第 3 层 · 反思型 AI</text><text x="380" y="135" font-size="10.5" fill="#faf7f1" text-anchor="middle" opacity="0.92">帮助用户用已学过的法义照见自己，不代其下结论</text><rect x="130" y="162" width="500" height="56" rx="7" fill="#9aab74"/><text x="380" y="186" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">第 2 层 · 陪伴型 AI</text><text x="380" y="205" font-size="10.5" fill="#faf7f1" text-anchor="middle" opacity="0.92">提醒、计时、进度管理 —— 行为支持</text><rect x="80" y="232" width="600" height="56" rx="7" fill="#7a9a6b"/><text x="380" y="256" font-size="13" font-weight="bold" fill="#faf7f1" text-anchor="middle">第 1 层 · 知识型 AI</text><text x="380" y="275" font-size="10.5" fill="#faf7f1" text-anchor="middle" opacity="0.92">经教学习、术语问答、阅读计划 —— 风险低，应大力发展</text><text x="380" y="310" font-size="10.5" fill="#8a7b66" text-anchor="middle">越往上，答错的代价越大：AI 可以辅助「学」，不能替代「修」</text></svg>
+
+> 图 6｜修行辅助的四层
+
 四层之上，有一条贯穿的界线，值得单独标出：
 
 **AI 可以辅助「学」，不能替代「修」。**
@@ -663,7 +687,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 ## 十一、佛教哲学对 AI 伦理的贡献
 
-第十章所论，是佛教使用 AI 时所面临之伦理风险。风险之外，尚有一反面之问题：**佛教哲学能否对 AI 伦理本身有所贡献？** 此问题并非修辞性的客套，而是一个可检验的学术问题。
+第十章所论，是佛教使用 AI 时面临的伦理风险。风险之外，还有一个反面问题：**佛教哲学能否对 AI 伦理本身有所贡献？** 此问题并非修辞性的客套，而是一个可检验的学术问题。
 
 ### 已进入同行评议框架的五项维度
 
@@ -687,9 +711,9 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 **苦感敏感**对应**苦谛**与**不害**（ahiṃsā）。多数 AI 伦理框架以「公平」「透明」「可解释」为核心，其单位是个体与群体；苦谛所提供的单位不同——它问的是「此举令谁受苦、苦如何生、能否止」。这是一个以感受而非以权利为起点的评估轴。
 
-**关系性问责**对应**缘起**。缘起说无一法独立自存，一切依待而生。以此观 AI，则「谁该负责」不再能还原为「哪个工程师写错了代码」，而须在模型开发者、训练数据来源者、部署者、使用者与受影响者所构成之网络中定位责任。
+**关系性问责**对应**缘起**。缘起说无一法独立自存，一切依待而生。以此观 AI，则「谁该负责」不再能还原为「哪个工程师写错了代码」，而需要在模型开发者、训练数据来源者、部署者、使用者与受影响者所构成之网络中定位责任。
 
-**慈悲与关怀的完整性**对应**慈悲**与**同体大悲**。此项直指一个具体问题：AI 可以生成慈悲的语句，而不具有慈悲。若不区分「慈悲的表达」与「慈悲」，则关怀将被表演化——而表演化的关怀在生产上更廉价、在规模上更可复制，因而具有淘汰真实关怀的市场压力。
+**慈悲与关怀的完整性**对应**慈悲**与**同体大悲**。此项直指一个具体问题：AI 可以生成慈悲的语句，而不具有慈悲。如果不区分「慈悲的表达」与「慈悲」，则关怀将被表演化——而表演化的关怀在生产上更廉价、在规模上更可复制，因而具有淘汰真实关怀的市场压力。
 
 **诠释的谦逊**对应**般若**与**遮诠**传统。佛教诠释学长期警惕「以指为月」，龙树《中论》之四句否定即是一种系统的诠释谦逊。此点在技术上有直接对应：佛学 AI 应尽量避免「断定某观点即佛法真义」之表述（见第六章任务分级表）。
 
@@ -701,15 +725,15 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 此类误用有两种形态。其一是**贴标签式**——把「公平」改称「平等性」，把「透明」改称「如实观」，实质内容不变，只是换了词。其二是**比附式**——把「因陀罗网」比作互联网，把「一念三千」比作全息宇宙，把「空性」比作量子纠缠。此类比附在传播上有效，在学理上有害：它使佛教看起来像是为现代科学提供了神秘背书，而实际上既未增加科学理解，也未增加教理理解。
 
-**判断的标准是清楚的：一项佛教概念若不能带来既有的 AI 伦理框架所没有的评估维度或决策程序，它就不是贡献；若它能带来，则该贡献应当可以被具体说明，而不必依赖比喻。**
+**判断的标准是清楚的：一项佛教概念如果不能带来既有的 AI 伦理框架所没有的评估维度或决策程序，它就不是贡献；若它能带来，则该贡献应当可以被具体说明，而不必依赖比喻。**
 
 以此标准衡量，上举五项之中，**「苦感敏感的影响评估」与「诠释的谦逊」两项最经得起检验**——前者提供了以「苦」而非以「权利」或「效率」为起点的评估轴，后者提供了一套系统的否定性诠释纪律。（判断）其余三项虽有价值，然「关系性问责」与「文化参与」在西方伦理学与治理理论中已有相当程度的对应物，「慈悲与关怀的完整性」则尚需更具体的操作化。
 
 ### 一项总体判断
 
-**佛教对 AI 伦理的贡献，不在于提供新的规则，而在于提供一种以苦为尺度、以关系为单位的评估视角。**（判断）此一视角与主流 AI 伦理的关系不是竞争，而是补充：主流框架长于处理可计量、可归责、可程序化的问题；佛教视角长于处理那些难以计量、难以归属、须从感受出发的问题。二者各有所长，不宜互相取代。
+**佛教对 AI 伦理的贡献，不在于提供新的规则，而在于提供一种以苦为尺度、以关系为单位的评估视角。**（判断）这一视角与主流 AI 伦理的关系不是竞争，而是补充：主流框架长于处理可计量、可归责、可程序化的问题；佛教视角长于处理那些难以计量、难以归属、需要从感受出发的问题。二者各有所长，不宜互相取代。
 
-尚须承认的是：这一领域目前**实证研究严重不足**。上举两项研究皆为概念性、综述性工作，尚无大规模的用户研究、效果评估或长期追踪。何种佛教伦理原则在何种 AI 设计决策中产生何种可测差异，目前基本没有数据。此为本文如实登记之局限。
+尚须承认的是：这一领域目前**实证研究严重不足**。上述两项研究都是概念性、综述性工作，还没有大规模的用户研究、效果评估或长期追踪。何种佛教伦理原则在何种 AI 设计决策中产生何种可测差异，目前基本没有数据。此为本文如实登记之局限。
 
 > **EN对应 · Eleven: What Buddhist Philosophy Contributes to AI Ethics**
 >
@@ -804,7 +828,11 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 **二〇二八至二〇三〇：知识智能化阶段。** 佛学 AI 研究助手、AI 翻译工作台、多语智能检索、学术文献 Agent、佛教知识图谱、个人佛学知识库、AI 课程助手、多语自动字幕、AI 数字博物馆、全球佛教知识门户。这一阶段最重要的变化是：**从「用户搜索佛典」转向「用户与佛教知识对话」。**
 
-**二〇三一至二〇三五：智能生态阶段。** 若前两阶段的数据与治理基础建设成功，才可能发展多模态佛教 AI、个人终身佛学导师系统、AI 与 VR 结合的佛教教育、全球多语佛教课程自动适配、跨传统比较研究 Agent、佛教历史虚拟重建、个性化学习路径、国际佛教知识网络。
+**二〇三一至二〇三五：智能生态阶段。** 如果前两阶段的数据与治理基础建设成功，才可能发展多模态佛教 AI、个人终身佛学导师系统、AI 与 VR 结合的佛教教育、全球多语佛教课程自动适配、跨传统比较研究 Agent、佛教历史虚拟重建、个性化学习路径、国际佛教知识网络。
+
+<svg viewBox="0 0 780 300" style="width:100%;max-width:780px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="778" height="298" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><line x1="40" y1="52" x2="740" y2="52" stroke="#b8863c" stroke-width="2"/><path d="M732,46 L744,52 L732,58 Z" fill="#b8863c"/><circle cx="170" cy="52" r="9" fill="#c9b06a"/><rect x="60" y="74" width="220" height="196" rx="8" fill="#ffffff" stroke="#c9b06a" stroke-width="2"/><text x="170" y="102" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2026—2027</text><text x="170" y="126" font-size="12.5" font-weight="bold" fill="#4a3a22" text-anchor="middle">数据底座阶段</text><text x="170" y="152" font-size="10.5" fill="#6b5c45" text-anchor="middle">CBETA／DILA／SAT 协同 · 权威数据标准 · 人物寺院法脉知识图谱</text><text x="170" y="182" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语术语库 · 版本与引用标准 · 高质量 OCR · 多语平行语料 · 专业 RAG</text><circle cx="416" cy="52" r="9" fill="#9aab74"/><rect x="306" y="74" width="220" height="196" rx="8" fill="#ffffff" stroke="#9aab74" stroke-width="2"/><text x="416" y="102" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2028—2030</text><text x="416" y="126" font-size="12.5" font-weight="bold" fill="#4a3a22" text-anchor="middle">知识智能化阶段</text><text x="416" y="152" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛学 AI 研究助手 · AI 翻译工作台 · 多语智能检索 · 学术文献 Agent</text><text x="416" y="182" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛教知识图谱 · 个人佛学知识库 · AI 课程助手 · 多语字幕 · 数字博物馆</text><circle cx="662" cy="52" r="9" fill="#7a9a6b"/><rect x="552" y="74" width="220" height="196" rx="8" fill="#ffffff" stroke="#7a9a6b" stroke-width="2"/><text x="662" y="102" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2031—2035</text><text x="662" y="126" font-size="12.5" font-weight="bold" fill="#4a3a22" text-anchor="middle">智能生态阶段</text><text x="662" y="152" font-size="10.5" fill="#6b5c45" text-anchor="middle">多模态佛教 AI · 终身佛学导师系统 · AI＋VR 教育 · 多语课程自动适配</text><text x="662" y="182" font-size="10.5" fill="#6b5c45" text-anchor="middle">跨传统比较研究 Agent · 历史虚拟重建 · 个性化学习路径 · 国际知识网络</text><text x="390" y="288" font-size="10.5" fill="#8a7b66" text-anchor="middle">前一阶段不成立，后一阶段无从开展：数据不可信，智能化即放大错误</text></svg>
+
+> 图 7｜五至十年三阶段路线
 
 但即使到了第三阶段，有一条底线建议始终保持：**AI 是工具、助手、媒介；人类导师、学者、僧团与真实社群仍然是核心。**
 
@@ -970,7 +998,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 ## 十六、跨学科的知识构成与合作结构
 
-佛教 AI 是一个天然跨学科的题目——它不可能是纯粹的技术问题，也不可能是纯粹的教理问题。但「跨学科」一词在中文语境中常被宽泛使用，掩盖了三种性质不同的合作形态，而三者对项目成败的影响判然有别。
+佛教 AI 是一个天然跨学科的题目——它不可能是纯粹的技术问题，也不可能是纯粹的教理问题。但「跨学科」一词在中文语境中常被宽泛使用，掩盖了三种性质不同的合作形态，而三者对项目成败的影响明显不同。
 
 ### 三种跨
 
@@ -999,6 +1027,10 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 | 教育学 | 课程设计、学习科学、评估方法 | 佛学教育产品、僧才培养 |
 | 设计学／人机交互 | 界面、可用性、可及性 | 面向僧团与学者的工具设计 |
 
+<svg viewBox="0 0 760 300" style="width:100%;max-width:760px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="758" height="298" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><text x="190" y="30" font-size="12.5" font-weight="bold" fill="#b8863c" text-anchor="middle">不可替代的四学科</text><text x="570" y="30" font-size="12.5" font-weight="bold" fill="#5e8b9e" text-anchor="middle">可阶段性引入的八学科</text><text x="190" y="50" font-size="10.5" fill="#8a7b66" text-anchor="middle">缺其一，成果的正确性即无从保证</text><text x="570" y="50" font-size="10.5" fill="#8a7b66" text-anchor="middle">重要，但可按项目阶段依次引入</text><rect x="40" y="70" width="300" height="38" rx="6" fill="#b8863c"/><text x="190" y="94" font-size="12.5" fill="#faf7f1" text-anchor="middle">佛学 / 宗教学</text><rect x="40" y="118" width="300" height="38" rx="6" fill="#b8863c"/><text x="190" y="142" font-size="12.5" fill="#faf7f1" text-anchor="middle">文献学 / 校勘学</text><rect x="40" y="166" width="300" height="38" rx="6" fill="#b8863c"/><text x="190" y="190" font-size="12.5" fill="#faf7f1" text-anchor="middle">计算语言学 / NLP</text><rect x="40" y="214" width="300" height="38" rx="6" fill="#b8863c"/><text x="190" y="238" font-size="12.5" fill="#faf7f1" text-anchor="middle">翻译学 / 术语学</text><rect x="420" y="70" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="84" font-size="10.5" fill="#3f6b7d" text-anchor="middle">图书馆学 / 信息科学</text><rect x="420" y="94" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="108" font-size="10.5" fill="#3f6b7d" text-anchor="middle">计算机科学 / AI</text><rect x="420" y="118" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="132" font-size="10.5" fill="#3f6b7d" text-anchor="middle">伦理学 / 科技哲学</text><rect x="420" y="142" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="156" font-size="10.5" fill="#3f6b7d" text-anchor="middle">认知科学 / 神经科学</text><rect x="420" y="166" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="180" font-size="10.5" fill="#3f6b7d" text-anchor="middle">人类学 / 社会学</text><rect x="420" y="190" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="204" font-size="10.5" fill="#3f6b7d" text-anchor="middle">法学 / 公共政策</text><rect x="420" y="214" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="228" font-size="10.5" fill="#3f6b7d" text-anchor="middle">教育学</text><rect x="420" y="238" width="300" height="19" rx="4" fill="#dce8ee" stroke="#b9cfd8"/><text x="570" y="252" font-size="10.5" fill="#3f6b7d" text-anchor="middle">设计学 / 人机交互</text></svg>
+
+> 图 8｜跨学科的知识构成
+
 上表之中，**佛学、文献学、计算语言学与翻译学四者为不可替代者**——缺其中任何一者，成果的正确性即无从保证。其余为重要但可阶段性引入者。（判断）
 
 ### 三种典型的接口失败
@@ -1009,9 +1041,9 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 **其二，目标失配。** 技术团队优化「准确率」，其含义是平均值；佛学团队要的是「不出错」，其含义是底线。二者在数学上不是同一目标——把准确率从百分之九十五提到九十七，可能同时把某类严重错误的出现率提高。**在宗教文本上，平均值不是恰当的目标函数。**（判断）
 
-**其三，权威失配。** 谁有权判定「这段文本属天台抑或华严」？工程师不能判定，算法不能判定，通用佛教学者亦未必能判定。此项权威只能由相应宗派之学僧持有。若项目结构中不为此项权威留位置，系统将持续产出宗派混淆之结果，而无人有权纠正。
+**其三，权威失配。** 谁有权判定「这段文本属天台还是华严」？工程师不能判定，算法不能判定，通用佛教学者也未必能判定。此项权威只能由相应宗派之学僧持有。如果项目结构中不为此项权威留位置，系统将持续产出宗派混淆之结果，而无人有权纠正。
 
-三种失配皆不能靠「多沟通」解决，须在**项目结构**上设置机制：术语以书面定义冻结、目标以分层指标（而非单一平均值）表述、宗派判定权授予具名之学僧。
+三种失配都不能靠「多沟通」解决，需要在**项目结构**上设置机制：术语以书面定义冻结、目标以分层指标（而非单一平均值）表述、宗派判定权授予具名之学僧。
 
 ### 实践者的位置
 
@@ -1019,7 +1051,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 佛教 AI 所涉之实践者，至少包括：僧团（戒律与教义之权威所在）、译师（翻译工作流之实际使用者）、禅修指导者（修行辅助之风险判断者）、寺院管理者（治理与数据之实际处置者）、佛教院校教师（教材与课程之实际编写者）。
 
-具体之含义是明确的：译经工作台若没有译师在日常使用，其设计必不合用；术语库若没有法师参与审定，其译名必不合教界习惯；修行辅助系统若没有禅修指导者参与风险评估，其分级必不合实际。**一个由工程师独立完成、再请法师「试用并反馈」的佛教 AI，不属超学科，而是外部的。**（判断）
+具体之含义是明确的：译经工作台若没有译师在日常使用，其设计必不合用；术语库如果没有法师参与审定，其译名必不合教界习惯；修行辅助系统如果没有禅修指导者参与风险评估，其分级必不合实际。**一个由工程师独立完成、再请法师「试用并反馈」的佛教 AI，不属超学科，而是外部的。**（判断）
 
 ### 一项可审计的指标
 
@@ -1070,19 +1102,19 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 本文所论，可归为几项判断。
 
-**其一，佛教数字化所面临之障碍，主要不在算法，而在数据；而数据之障碍，主要不在技术，而在组织形态。** 三个传统之比较显示：藏传有单一强机构与稳定资助，故能规划十年；汉传机构分散、资源分散、标准不一，故每一处都在做实事而彼此不通。此一格局不改变，单纯增加技术投入之效果将十分有限。
+**其一，佛教数字化所面临之障碍，主要不在算法，而在数据；而数据之障碍，主要不在技术，而在组织形态。** 三个传统之比较显示：藏传有单一强机构与稳定资助，故能规划十年；汉传机构分散、资源分散、标准不一，故每一处都在做实事而彼此不通。这一格局不改变，单纯增加技术投入的效果将十分有限。
 
-**其二，AI 在佛学研究中扮演的角色是放大，不是替代。** 语义检索、文本复用检测、知识图谱皆能极大扩展研究者的发现能力，然其所能发现者为「关联」，不能判定「意义」。宗派教义的判定、思想史的因果、文本的思想分量，仍只能由受过训练之人来做。
+**其二，AI 在佛学研究中扮演的角色是放大，不是替代。** 语义检索、文本复用检测、知识图谱都能极大扩展研究者的发现能力，但它能发现的是「关联」，不能判定「意义」。宗派教义的判定、思想史的因果、文本的思想分量，仍只能由受过训练之人来做。
 
 **其三，佛学 AI 的合格线应由可核验的准确性划定，而非由文本的感染力划定。** 本文提出之十项评测——原典准确率、出处准确率、版本识别率、宗派区分率、引文完整率、翻译准确率、幻觉率、可追溯率、专家一致率、多语一致率——其中没有一项是「回答听起来多有智慧」。此非疏忽，是立场。
 
 **其四，AI 可以辅助「学」，不能替代「修」；真正的伦理风险不在机器人有无灵魂，而在人把权威交给算法。** 历代祖师之权威建立在戒定慧的长期实践与僧团共同体的印可之上，此份权威无法被转录为参数，亦不应被模拟为一个可随时提问的对象。
 
-**其五，最值得突破的基础设施是翻译，而 AI 让初译变便宜、让审校变得更贵。** 此一判断对僧伽教育之含义是具体的：若十年后佛典翻译的瓶颈在审校，则今日开始之人才培养，方向应当是培养能审校之人。
+**其五，最值得突破的基础设施是翻译，而 AI 让初译变便宜、让审校变得更贵。** 这一判断对僧伽教育之含义是具体的：如果十年后佛典翻译的瓶颈在审校，则今日开始之人才培养，方向应当是培养能审校之人。
 
 **其六，佛教 AI 的质量瓶颈，不在算法，也不在语料，而在学科接口与实践者参与的制度化程度。** 佛教 AI 是模式二的知识生产，其成果的正确性无法由任何单一学科判定；一个由工程师独立完成、再请法师试用反馈的项目，不属超学科，而是外部的。
 
-六项之中，前两项关乎方向，中间两项关乎边界，后两项关乎方法。若要以一句话概括：**新技术对佛教的意义，不在于它能替佛教说什么，而在于它能让佛教所说的话被更准确地保存、检索、理解与传达。**（判断）
+六项之中，前两项关乎方向，中间两项关乎边界，后两项关乎方法。如果要用一句话概括：**新技术对佛教的意义，不在于它能替佛教说什么，而在于它能让佛教所说的话被更准确地保存、检索、理解与传达。**（判断）
 
 > **EN对应 · Conclusion**
 >
@@ -1150,13 +1182,13 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 此为本领域之共同状况，非本文独有。所涉研究多数仍为概念性、探索性工作：AI 与宗教之系统性综述所检视者为文献，而非实验；VR 正念干预之综述虽纳入二十二项研究，然其方法、对象与干预方式差异极大；正念神经反馈之研究则普遍缺少充分的假神经反馈对照。**至于佛教 AI 之用户研究、效果评估与长期追踪，目前基本没有。**
 
-凡本文涉及效果之陈述，皆已标明其证据强度；读者不宜将「有研究表明」理解为「已获确证」。
+本文凡涉及效果的地方，都标明了证据强度；读者不应把「有研究表明」理解为「已获确证」。
 
 ### 三、待核项登记
 
 | 项目 | 状况 |
 |------|------|
-| BDK 完成度「约百分之六十五」 | 同一数字出现于 2017 与 2019 两版丛书前言。系沿用旧文抑或进度停滞，未能核实 |
+| BDK 完成度「约百分之六十五」 | 同一数字出现于 2017 与 2019 两版丛书前言。系沿用旧文还是进度停滞，未能核实 |
 | bodhiai.cn | 站点 TLS 证书已过期，无法访问；仅见一篇 MDPI《Religions》论文提及，且易与印度同名 EdTech 公司 BodhiAI（bodhiai.co.in）混淆 |
 | Fojin 项目之各项数字 | 嵌入、实体、关系、传承链、UI 语言数、词典部数，均为项目自述，且 README 内部自相矛盾（词典 32 部与 39 部两说并存） |
 | Buddharoid 之「辅助主持告别式」 | 无据。京都大学官方仅表述为宗教仪式辅助之未来设想 |
@@ -1173,7 +1205,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 1. **全球佛教 AI 项目之公开评测基准**。目前各项目自述准确率，无从横向比较。建立一套公共评测集与评测协议，是使「可信佛学 AI」从口号变为可检查指标的前提。
 2. **英译覆盖率之按页审计**。把 BDK 的「百分之六十五」变成可审计的指标。
 3. **佛教 AI 之用户研究**。僧团、学者、译师、一般信众如何使用此类工具、在哪里失去信任、在什么条件下愿意长期使用，目前几乎无数据。
-4. **各传统数字化程度之横向调查**。本文所作之三传统比较，依据为公开材料与项目自述；一次系统的、以统一口径进行的机构调查，将使此一比较获得更坚实的基础。
+4. **各传统数字化程度之横向调查**。本文所作之三传统比较，依据为公开材料与项目自述；一次系统的、以统一口径进行的机构调查，将使这一比较获得更坚实的基础。
 
 > **EN对应 · Appendix Two: Limitations of This Study and Items Pending Verification**
 >
