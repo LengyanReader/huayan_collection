@@ -650,7 +650,23 @@
    * Apply the reading-language preference to the current page.
    * 阅读语言默认中英对照（zh-only 关闭）；仅中文为会话级、绝不跨会话持久隐藏英文。
    */
+  /**
+   * 英文对应块打标（全站通用，供「仅中文」隐藏）。
+   * 文档渲染路径（_mdDocEmbed / gap.js 专题研究视图 / article.js）产出的英文对应块
+   * 均为 <blockquote>，须先加 .en-block 类，common.css 的 body.zh-only 规则方能命中。
+   * 幂等：可反复调用，动态插入的内容亦可即时补标。
+   */
+  window._markEnBlocks = function (root) {
+    var sc = root || document;
+    var bqs = sc.querySelectorAll ? sc.querySelectorAll('blockquote') : [];
+    for (var i = 0; i < bqs.length; i++) {
+      var t = (bqs[i].textContent || '').replace(/\s+/g, ' ').trim();
+      if (/^(英译对读|EN对应|🔑|术语格义|主题对读注|卷末批注)/.test(t)) bqs[i].classList.add('en-block');
+    }
+  };
+
   window._applySiteLang = function () {
+    try { window._markEnBlocks(); } catch (e) {}
     var zh = (sessionStorage.getItem('site_lang') || '') === '0';
     document.body.classList.toggle('zh-only', zh);
     var btn = document.getElementById('lang-toggle');
@@ -846,6 +862,25 @@ function articlesIndexLink(){
   el.innerHTML='<a href="../articles/index.html" style="color:var(--blue);text-decoration:none">📚 独立文章目录</a>';
   nav.appendChild(el);
 }
+
+  /**
+   * 动态内容补标：Tab 视图切换、专题研究渲染、文章渲染均为运行时就地插入 DOM，
+   * 须在插入后重跑打标，否则「仅中文」下这些英文对应块不会被隐藏。
+   * 仅观察 childList（不观察 attributes），故打标自身不会触发回调、无循环之虞。
+   */
+  (function () {
+    if (typeof MutationObserver === 'undefined' || !document.body) return;
+    var pending = false;
+    var run = function () {
+      pending = false;
+      try { window._markEnBlocks && window._markEnBlocks(); } catch (e) {}
+    };
+    new MutationObserver(function () {
+      if (pending) return;
+      pending = true;
+      (window.requestAnimationFrame || window.setTimeout)(run, 16);
+    }).observe(document.body, { childList: true, subtree: true });
+  })();
 
 (function(){
   // 各 Tab 页侧栏底部自动追加「独立文章目录」入口（lineage 无侧栏则跳过）

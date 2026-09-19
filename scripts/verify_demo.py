@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Verify web/demo build output (index + 6 tab pages) structure before deployment."""
-import sys, os, re
+import sys
+import os
+import shutil
+import subprocess, os, re
 
 # Windows console cp1252 下中文输出会 UnicodeEncodeError — 强制 UTF-8
 if hasattr(sys.stdout, 'reconfigure'):
@@ -188,6 +191,29 @@ if 'articlePageHref' not in gp_html:
     fail('gap: articlePageHref helper missing')
 else:
     ok('gap: articlePageHref helper present')
+
+print()
+
+# ─── 构建产物 JS 语法校验（node --check）──────────────────────────────
+# 说明：JS 语法错误不会令本脚本的字符串检查失败，却会使整份 common.js 不执行、
+#       全站交互（含语言开关）失效，故须独立校验。node 缺失时跳过并如实标注。
+print('Verifying built JavaScript syntax')
+_js_dir = os.path.join(DEMO, 'js')
+_js_files = sorted(f for f in os.listdir(_js_dir) if f.endswith('.js')) if os.path.isdir(_js_dir) else []
+_node = shutil.which('node')
+if not _node:
+    print('  SKIP: node not found — JS syntax check skipped')
+elif not _js_files:
+    fail('js/: no built JavaScript files found')
+else:
+    for _f in _js_files:
+        _p = os.path.join(_js_dir, _f)
+        _r = subprocess.run([_node, '--check', _p], capture_output=True, text=True)
+        if _r.returncode != 0:
+            _msg = (_r.stderr or '').strip().splitlines()
+            fail(f'js/{_f}: syntax error — {_msg[0] if _msg else "parse failed"}')
+        else:
+            ok(f'js/{_f}: syntax OK')
 
 print()
 

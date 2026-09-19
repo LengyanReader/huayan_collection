@@ -8,7 +8,8 @@
 >
 > 本文为一项**仍在进行中**的调研之中期成果，非已完结之研究。其材料收集、案例考察与实证佐证均未完成，具体而言：**语种方面**，日文、韩文、越南文之一手材料尚未系统检索，而日本 SAT 与 BDK、韩国佛教数字化均属本文应当考察而未及考察之列；**地域方面**，东南亚与欧洲各国汉传社群之分口径数据尚未采集；**实证方面**，各项目之准确率除少数模型卡自述外尚无第三方评测，佛教 AI 之用户研究与效果评估基本空白；**案例方面**，项目生态之盘点仍有未及者。以上各项，将随调研推进而陆续补入，本文亦将随之修订。故其内容、判断与结论均可能变动，**引用请注明版本与日期，勿视为定稿**。
 >
-> **EN · Draft for Comment (19 September 2026) — This study is not yet complete**
+
+> **EN对应 · Draft for Comment (19 September 2026) — This study is not yet complete**
 >
 > This article is the interim result of an inquiry **still in progress**, not a completed study. Its collection of materials, examination of cases, and empirical corroboration are all unfinished. Specifically: **as to languages**, primary materials in Japanese, Korean, and Vietnamese have not been systematically searched, and Japan's SAT and BDK and Korean Buddhist digitization fall within what this study ought to examine but has not; **as to regions**, disaggregated data on Chinese Buddhist communities in Southeast Asia and Europe have not been gathered; **as to empirical work**, the accuracy of most projects rests on self-description apart from a few model cards, with no third-party evaluation, and user studies and effect evaluations of Buddhist AI are essentially absent; **as to cases**, the survey of the project landscape remains incomplete. All of these will be incorporated as the inquiry advances, and this article will be revised accordingly. Its content, judgments, and conclusions are therefore subject to change. **Please cite with version and date; it is not a final text.**
 >
@@ -100,7 +101,7 @@
 > | Fifteen | Who should build, and in what organizational form |
 > | Sixteen | The disciplinary composition, interfaces, and practitioner participation of Buddhist AI, from a transdisciplinary standpoint |
 >
->> The transmission and governance questions belonging to the companion volume—the present state of global transmission, nine structural problems, and the design of a way forward—appear in the sister volume, *The Global Transmission of Chinese Buddhism: Present State, Problems, and a Way Forward*.
+> The transmission and governance questions belonging to the companion volume—the present state of global transmission, nine structural problems, and the design of a way forward—appear in the sister volume, *The Global Transmission of Chinese Buddhism: Present State, Problems, and a Way Forward*.
 
 ## 凡例
 
@@ -476,7 +477,6 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > The third differs from the first two in that machines not only store texts but establish relations across texts, editions, languages, persons, and periods, thereby helping researchers pose questions that were previously very hard to pose. (See Figure 2.)
 >
-
 >
 > The empirical basis is clear enough. CBETA has long used TEI/XML structured encoding, so that texts can be read and also processed, cited, and analysed by machine. The University of Tokyo's SAT project joins the digital text of the Taishō canon to page images, available since the 2012 version and locatable to the line (Grade A, [SAT](https://21dzk.l.u-tokyo.ac.jp/SAT/)). Dharma Drum's DILA integrated search brings together more than ten Buddhist digital archives and exposes over 160 million characters to public search (Grade A, self-reported, [DILA iSearch](https://isearch.dila.edu.tw/)). BDRC's BUDA platform publicly offers more than 17 million pages of Buddhist material (Grade A, self-reported, [bdrc.io](https://www.bdrc.io/); the same institution elsewhere gives "over 59,000 volumes and over 30 million images"); on 14 March 2025 it released a free, open-source desktop Tibetan OCR tool capable of batch-processing images and whole PDF volumes.
 >
@@ -512,7 +512,6 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 > | Semantic search | Text segmentation, embeddings, recall by semantic similarity | Resolves the constraint that a researcher must already know the keyword in order to search | Segmentation granularity and corpus quality directly affect the result |
 > | Textual reuse detection | Full-text vectorization; identification of cross-fascicle quotation, paraphrase, and false attribution | Makes "where has this sentence appeared before" computable at scale | What it discovers is relation; the nature of the relation still requires human judgment |
 > | Knowledge graphs | Entity and relation extraction, entity linking, graph query | Makes Buddhist history a queryable dynamic network | Ontology design must distinguish schools, or senses are conflated |
-
 >
 > **From keyword search to semantic search.** Traditional retrieval depends on already knowing the keyword. A researcher wanting to know what was said about "no-thought" in the Tang and Song must first think of the term itself, then of its variant writings, alternate translations, and other names. Fail to think of them all, and the search is incomplete. Semantic search changes that step: the researcher can ask directly, and the system performs semantic recall first, then filters by period, school, person, and text type, returning the original text with fascicle, page, and edition. DILA already offers integrated search across multiple archives; MITRASearch, from the Dharmamitra project at Berkeley, extends semantic search across languages.
 >
@@ -562,7 +561,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > The governing principle is one sentence:
 >
-> > **AI may propose an interpretation; the canon is the evidence. AI may propose a hypothesis; the scholar makes the judgment.**
+> **AI may propose an interpretation; the canon is the evidence. AI may propose a hypothesis; the scholar makes the judgment.**
 >
 > A concrete example. A user asks: "What does 'let the mind arise without abiding anywhere' mean in Chan?"
 >
@@ -780,9 +779,9 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 >
 > Hence the preferable design is a **"knowledge agent for a traditional figure,"** not an **"AI master persona."** Compare two sentences:
 >
-> > "According to the *Platform Sūtra of the Sixth Patriarch* and existing scholarship, explain Huineng's thought."
+> "According to the *Platform Sūtra of the Sixth Patriarch* and existing scholarship, explain Huineng's thought."
 >
-> > "I am Huineng, the Sixth Patriarch. Let me tell you how you should practise."
+> "I am Huineng, the Sixth Patriarch. Let me tell you how you should practise."
 >
 > The first is more robust both epistemically and ethically. It confines the answer to what the texts say and what scholars have studied, and it does not impersonate a subject.
 >
@@ -790,7 +789,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 >
 > **The real ethical risk.** The most dangerous question ahead is probably not "does AI have buddha-nature" but: **has a person begun to take the AI's output as the dharma itself?**
 >
-> > Five specific risks:
+> Five specific risks:
 >
 > | Risk | Mechanism | Consequence |
 > |---|---|---|
@@ -1067,7 +1066,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > Even in the third stage, one baseline should hold: **AI is a tool, an assistant, a medium; human teachers, scholars, monastic communities, and real communities remain the core.**
 >
-> > **Six principles.**
+> **Six principles.**
 >
 > | Principle | Content | Principal application |
 > |---|---|---|
@@ -1148,7 +1147,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > Pivotal among these is this: **Buddhist specialists must participate substantively in the AI development process, not merely sign off at acceptance.** This sounds like common sense and is in practice the easiest thing to lose, because it means Buddhist scholars spending project time on engineering work—organizing corpora, annotating terminology, verifying sources—none of which counts as scholarship. **A companion requirement follows: that such work receive recognition as scholarly output.** Unless this is resolved, the proposal to bring specialists into the process cannot be implemented. (Judgment · forecast / basis: an estimate; no documentary basis)
 >
->> Governance takes a three-committee structure: an **academic committee** for canon, editions, history, terminology, and research norms; a **technical committee** for data, models, RAG, evaluation, and safety; and an **ethics and governance committee** for privacy, simulation of authority, religious ethics, minors, psychological risk, and the boundaries of data use.
+> Governance takes a three-committee structure: an **academic committee** for canon, editions, history, terminology, and research norms; a **technical committee** for data, models, RAG, evaluation, and safety; and an **ethics and governance committee** for privacy, simulation of authority, religious ethics, minors, psychological risk, and the boundaries of data use.
 
 ---
 
@@ -1266,40 +1265,44 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 ## 结语
 
-本文所论，可归为几项判断。
+本文所论，可归纳为六项判断。以下逐项列出，并注明各判断在本文中的依据所在。
 
-**其一，佛教数字化所面临之障碍，主要不在算法，而在数据；而数据之障碍，主要不在技术，而在组织形态。** 三个传统之比较显示：藏传有单一强机构与稳定资助，故能规划十年；汉传机构分散、资源分散、标准不一，故每一处都在做实事而彼此不通。这一格局不改变，单纯增加技术投入的效果将十分有限。
+**其一，佛教数字化面临的障碍，主要不在算法，而在数据；数据层面的障碍又主要不在技术，而在组织形态。**（第一章、第四章）三个传统比较的结果显示：藏传有单一主导机构与稳定资助，故可作十年之规划；汉传则机构分散、资源分散、标准不一，各处虽皆有实务，彼此却不相通。这一格局若不变，单纯增加技术投入的效果将十分有限。
 
-**其二，AI 在佛学研究中扮演的角色是放大，不是替代。** 语义检索、文本复用检测、知识图谱都能极大扩展研究者的发现能力，但它能发现的是「关联」，不能判定「意义」。宗派教义的判定、思想史的因果、文本的思想分量，仍只能由受过训练之人来做。
+**其二，AI 在佛学研究中的作用是增益，而非替代。**（第三章、第五章）语义检索、文本复用检测与知识图谱均能显著拓展研究者的发现能力，但它们所发现的是「关联」，不能判定「意义」；宗派教义的判定、思想史的因果、文本的思想分量，仍须由受过专门训练的人承担。
 
-**其三，佛学 AI 的合格线应由可核验的准确性划定，而非由文本的感染力划定。** 本文提出之十项评测——原典准确率、出处准确率、版本识别率、宗派区分率、引文完整率、翻译准确率、幻觉率、可追溯率、专家一致率、多语一致率——其中没有一项是「回答听起来多有智慧」。此非疏忽，是立场。
+**其三，佛学 AI 的合格线应由可核验的准确性划定，不能由文本的感染力划定。**（第六章、第十四章）本文提出的十项评测——原典准确率、出处准确率、版本识别率、宗派区分率、引文完整率、翻译准确率、幻觉率、可追溯率、专家一致率、多语一致率——没有一项是「回答是否听来有智慧」。这不是疏漏，而是一种立场。
 
-**其四，AI 可以辅助「学」，不能替代「修」；真正的伦理风险不在机器人有无灵魂，而在人把权威交给算法。** 历代祖师之权威建立在戒定慧的长期实践与僧团共同体的印可之上，此份权威无法被转录为参数，亦不应被模拟为一个可随时提问的对象。
+**其四，AI 可以辅助「学」，不能替代「修」；其实质性伦理风险不在机器有无灵魂，而在人将权威让渡于算法。**（第十章、第十一章）历代祖师的权威建立在戒定慧的长期实践与僧团共同体的印可之上；这份权威无法转录为参数，也不应被模拟为一个可随时提问的对象。
 
-**其五，最具突破价值的基础设施是翻译；而 AI 令初译成本下降、审校成本上升。** 这一判断对僧伽教育之含义是具体的：如果十年后佛典翻译的瓶颈在审校，则今日开始之人才培养，方向应当是培养能审校之人。
+**其五，最具突破价值的基础设施是翻译；而 AI 令初译成本下降、审校成本上升。**（第八章）这一判断对僧伽教育的含义甚为具体：若十年后佛典翻译的瓶颈在审校，则今日开始的人才培养，方向应为培养能审校之人。
 
-**其六，佛教 AI 的质量瓶颈，不在算法，也不在语料，而在学科接口与实践者参与的制度化程度。** 佛教 AI 是模式二的知识生产，其成果的正确性无法由任何单一学科判定；一个由工程师独立完成、再请法师试用反馈的项目，不属超学科，而是外部的。
+**其六，佛教 AI 的质量瓶颈不在算法，也不在语料，而在学科接口与实践者参与的制度化程度。**（第十六章）佛教 AI 属于模式二的知识生产，其成果的正确性无法由任何单一学科判定；由工程师独立完成、再请法师试用并反馈的项目，不属超学科，而是外部的。
 
-六项之中，前两项关乎方向，中间两项关乎边界，后两项关乎方法。概言之：**新技术对佛教的意义，不在于它能替佛教说什么，而在于它能让佛教所说的话被更准确地保存、检索、理解与传达。**（判断·总结／依据：全文 16 章之论述）
+以上六项，前两项关乎方向，中间两项关乎边界，后两项关乎方法。**概言之：新技术对佛教的意义，不在于它能替佛教说什么，而在于它能使佛教所说的内容被更准确地保存、检索、理解与传达。**（判断·总结／依据：全文 16 章之论述）
+
+尚须重申：本文为进行中调研之中期成果，上述各项判断均可能随材料与案例的补入而修订。其未竟之处与后续方向，见卷首声明与附录二第六节。
 
 > **EN对应 · Conclusion**
 >
-> The argument of this report reduces to several judgments.
+> The argument of this report may be reduced to six judgments. They are set out below, each with a reference to the place in this study where it is argued.
 >
-> **First, the obstacles facing Buddhist digitization lie chiefly not in algorithms but in data; and the obstacles to data lie chiefly not in technology but in organizational form.** The comparison of three traditions shows that Tibetan Buddhism has a single strong institution and stable funding and can therefore plan a decade ahead, while Chinese Buddhism has dispersed institutions, dispersed resources, and non-uniform standards, so that each party does real work without connecting to the others. Without changing this, simply increasing technical investment will accomplish little.
+> **First, the obstacles facing Buddhist digitization lie chiefly not in algorithms but in data; and the obstacles at the level of data lie chiefly not in technology but in organizational form.** (Chapters One and Four) The comparison of the three traditions shows that Tibetan Buddhism has a single dominant institution and stable funding and can therefore plan a decade ahead, whereas Chinese Buddhism has dispersed institutions, dispersed resources, and non-uniform standards, so that each party has its own practice while none connects with the others. Unless this pattern changes, simply increasing technical investment will accomplish little.
 >
-> **Second, AI's role in Buddhist scholarship is amplification, not replacement.** Semantic search, textual reuse detection, and knowledge graphs greatly extend the researcher's capacity for discovery, but what they discover is **relations**, not meaning. Doctrinal adjudication, causal explanation in intellectual history, and the intellectual weight of a text remain work for trained people.
+> **Second, AI's role in Buddhist scholarship is amplification, not replacement.** (Chapters Three and Five) Semantic search, textual reuse detection, and knowledge graphs all substantially extend the researcher's capacity for discovery, but what they discover is **relations**, not meaning; doctrinal adjudication, causal explanation in intellectual history, and the intellectual weight of a text must still be borne by those with specialized training.
 >
-> **Third, the pass mark for Buddhist AI should be set by verifiable accuracy, not by rhetorical appeal.** Of the ten metrics proposed here—canonical accuracy, source accuracy, edition recognition, school discrimination, quotation completeness, translation accuracy, hallucination rate, traceability, expert agreement, and multilingual consistency—not one is "how wise the answer sounds." That is not an oversight but a position.
+> **Third, the pass mark for Buddhist AI should be set by verifiable accuracy, not by rhetorical appeal.** (Chapters Six and Fourteen) Of the ten metrics proposed here—canonical accuracy, source accuracy, edition recognition, school discrimination, quotation completeness, translation accuracy, hallucination rate, traceability, expert agreement, and multilingual consistency—not one is "whether the answer sounds wise." That is not an omission but a position.
 >
-> **Fourth, AI can assist study but cannot replace practice; and the real ethical risk is not whether a machine has a soul but whether a person hands authority to an algorithm.** The authority of the patriarchs rests on long practice in precepts, concentration, and wisdom and on the sanction of the monastic community—an authority that cannot be transcribed into parameters and should not be simulated as an object one can question at will.
+> **Fourth, AI can assist study but cannot replace practice; and its substantive ethical risk lies not in whether a machine has a soul but in whether a person cedes authority to an algorithm.** (Chapters Ten and Eleven) The authority of the patriarchs rests on long practice in precepts, concentration, and wisdom and on the sanction of the monastic community; it cannot be transcribed into parameters, nor should it be simulated as an object one may question at will.
 >
-> **Fifth, the infrastructure most worth breaking through is translation, and AI makes first drafts cheap while making review more expensive.** The implication for monastic education is concrete: if in ten years the bottleneck is review, the training begun today should aim at producing reviewers.
+> **Fifth, the infrastructure most worth breaking through is translation; and AI lowers the cost of first drafts while raising the cost of review.** (Chapter Eight) The implication for monastic education is concrete: if in ten years the bottleneck is review, the training begun today should aim at producing reviewers.
 >
-> **Sixth, the quality bottleneck in Buddhist AI lies neither in algorithms nor in corpora but in the institutionalization of disciplinary interfaces and practitioner participation.** Buddhist AI is Mode 2 knowledge production, and the correctness of its outputs cannot be adjudicated by any single discipline; a project designed by engineers alone and shown to monastics for feedback is not transdisciplinary but external.
+> **Sixth, the quality bottleneck in Buddhist AI lies neither in algorithms nor in corpora but in the institutionalization of disciplinary interfaces and practitioner participation.** (Chapter Sixteen) Buddhist AI is Mode 2 knowledge production, and the correctness of its outputs cannot be adjudicated by any single discipline; a project designed by engineers alone and then shown to monastics for trial and feedback is not transdisciplinary but external.
 >
-> Of the six, the first two concern direction, the middle two concern boundaries, and the last two concern method. Compressed into one sentence: **the significance of new technology for Buddhism lies not in what it can say on Buddhism's behalf, but in its capacity to let what Buddhism says be more accurately preserved, retrieved, understood, and conveyed.** (Judgment)
-
+> Of the six, the first two concern direction, the two in the middle concern boundaries, and the last two concern method. **In sum: the significance of new technology for Buddhism lies not in what it can say on Buddhism's behalf, but in its capacity to let what Buddhism says be more accurately preserved, retrieved, understood, and conveyed.** (Judgment · synthesis / basis: the argument of all sixteen chapters)
+>
+> It should be reiterated that this article is the interim result of an inquiry in progress, and that all the judgments above may be revised as further materials and cases are incorporated. Its outstanding work and future directions are set out in the notice at the head of this article and in Section 6 of Appendix Two.
+>
 ---
 
 ## 附录一　项目生态与路线细节
@@ -1392,8 +1395,8 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 | 方法 | 佛教 AI 评测基准、多语术语层标准、英译覆盖率指标 | 已列入第十四章路线，见附录一 |
 
 **凡后续补入者，皆循本文既有之信源分级与判断标注体例；凡一时不能确证者，仍标〔待核〕，不以推测填补。**
-
-> **EN — 6. What Remains Unfinished, and Where the Inquiry Goes Next**
+>
+> **EN对应 · Appendix Two, Section 6: What Remains Unfinished, and Where the Inquiry Goes Next**
 >
 > This article is an interim result of an inquiry in progress. The following lists what is not yet done and will be incorporated later, so that the boundaries of this study and its future direction are clear.
 >
@@ -1407,7 +1410,6 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > **Everything subsequently incorporated will follow this article's existing source grading and judgment annotation; whatever cannot yet be confirmed will remain marked 〔pending verification〕, and will not be filled in with conjecture.**
 >
-
 > **EN对应 · Appendix Two: Limitations of This Study and Items Pending Verification**
 >
 > **1. Language limitations.** This study draws mainly on Chinese- and English-language materials. **Primary sources in Japanese and Korean were not systematically searched**, and Japanese Buddhism has deep accumulations in both scholarship and digitization—the SAT database is run by the University of Tokyo, the BDK English Tripiṭaka by the Japanese Society for the Promotion of Buddhism, and Japanese scholarship has produced a substantial body of conference papers and internal reports on Buddhist informatization. The state of Korean Buddhist digitization is likewise undeveloped here. This is the largest structural gap in the study. Materials in French, German, and Spanish on Buddhist digital humanities were also not systematically searched.
