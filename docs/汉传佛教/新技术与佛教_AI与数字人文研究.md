@@ -130,7 +130,7 @@
 ---
 ## 一、佛教数字化的现状：三个传统的比较
 
-讨论佛教与新技术，须先明了一个基本事实：**佛教各传统在数字化上的进展极不均衡，而这种不均衡的根源不在技术能力，在组织形态。**
+讨论佛教与新技术，需先明了一个基本事实：**佛教各传统在数字化上的进展极不均衡，而这种不均衡的根源不在技术能力，在组织形态。**
 
 三个传统在机构形态、资金结构、语料规模与西方通道四方面的对比，见图 1。
 
@@ -305,7 +305,7 @@ RAG 是目前佛教 AI 应用中最主流的技术路线。其原理是在生成
 
 RAG 解决了「无据生成」的一部分问题，却未解决全部问题。原因在于：**检索到的原文是否正确、完整、来自何一版本，仍然需要另行校验。** 如果检索库本身版本混乱，则 RAG 会把混乱带入答案，且因有"出处"而显得更为可信——这是一种比裸幻觉更危险的情形。
 
-此即第五章所述标准工作流中，为什么「原典定位」之后还需要「卷／页／段落核验」与「多版本比较」两道工序。
+此即第七章所述标准工作流中，为什么「原典定位」之后还需要「卷／页／段落核验」与「多版本比较」两道工序。
 
 ### 语音与图像
 
@@ -345,7 +345,7 @@ RAG 解决了「无据生成」的一部分问题，却未解决全部问题。�
 >
 > **Knowledge graphs.** The technical chain is long—entity recognition, relation extraction, entity linking, ontology design, storage and query—and accuracy losses accumulate. Its particular difficulty is **ontology design**: the same term means different things in Tiantai, Huayan, Yogācāra, Chan, and Pure Land, and an ontology that does not distinguish traditions will conflate them. The six-step process used by Dharma Drum's Digital Classics project—merging senses, rewriting summaries, classifying senses, extracting and validating relations, extracting subject-predicate-object triples, and entity linking—includes "classifying senses" and "validating relations" precisely for this difficulty, and retains human verification within the process (Grade A, [CBETA event report](https://cbeta.org/post/30491)).
 >
-> **Retrieval-augmented generation (RAG)** is the most mainstream technical route in Buddhist AI today: retrieving relevant source text before generating, and passing it as context so that generation is constrained to have a basis. RAG solves part of the problem of unsupported generation but not all of it. **Whether the retrieved text is correct, complete, and from which edition still requires separate verification.** If the retrieval corpus itself is editionally confused, RAG carries that confusion into the answer—and because it now has a "source," it appears more credible. This is more dangerous than bare hallucination. Hence the standard workflow in Chapter Five: after locating the canonical passage, verification of fascicle, page, and passage, and comparison across editions, remain necessary steps.
+> **Retrieval-augmented generation (RAG)** is the most mainstream technical route in Buddhist AI today: retrieving relevant source text before generating, and passing it as context so that generation is constrained to have a basis. RAG solves part of the problem of unsupported generation but not all of it. **Whether the retrieved text is correct, complete, and from which edition still requires separate verification.** If the retrieval corpus itself is editionally confused, RAG carries that confusion into the answer—and because it now has a "source," it appears more credible. This is more dangerous than bare hallucination. Hence the standard workflow in Chapter Seven: after locating the canonical passage, verification of fascicle, page, and passage, and comparison across editions, remain necessary steps.
 >
 > **Speech and images.** Speech recognition has practical value in transcribing dharma talks; the difficulties are chanting styles, dialectal accent, and large numbers of proper names. Speech synthesis can produce audio scriptures, but restoring historical pronunciation and chanting styles is a separate problem that general TTS cannot solve. Computer vision in Buddhist contexts is used mainly for manuscript image processing, subject recognition in murals and transformation tableaux, and stylistic classification of sculpture. The bottleneck here is not the algorithm but **scarce annotated corpora**—professional annotation in Buddhist iconography requires both iconographic and doctrinal knowledge, and the labour cost is very high.
 >
@@ -362,12 +362,12 @@ AI 在佛学研究上真正增益之处，不在于替代学者思考，而在�
 | 能力 | 技术原理 | 对佛学研究的价值 | 主要限制 |
 |---|---|---|---|
 | 语义检索 | 文本切分、向量嵌入、按语义相似度召回 | 解决「须预先知悉关键词方可检索」之困 | 切分粒度与语料质量直接影响效果 |
-| 文本复用检测 | 全文向量化，识别跨卷引用、同义改写、伪引文 | 使「此句此前出现于何处」可大规模计算 | 所发现者为关联，关系性质仍须人工判定 |
-| 知识图谱 | 实体与关系抽取、实体链接、图谱查询 | 使佛教史成为可查询的动态网络 | 本体设计须区分宗派，否则混同义项 |
+| 文本复用检测 | 全文向量化，识别跨卷引用、同义改写、伪引文 | 使「此句此前出现于何处」可大规模计算 | 所发现者为关联，关系性质仍需人工判定 |
+| 知识图谱 | 实体与关系抽取、实体链接、图谱查询 | 使佛教史成为可查询的动态网络 | 本体设计需区分宗派，否则混同义项 |
 
-**语义检索。** 传统检索依赖「研究者须预先知悉关键词」。欲知唐宋时期关于「无念」之论述，须先想到「无念」一词，并想到其异写、别译、别称；思虑不全，则检索不全。语义检索改变了这一步：研究者可直接提出检索意图，由系统先作语义召回，再按年代、宗派、人物、文本类型过滤，最后返回原文、卷次、版本信息。DILA 已有面向多个佛教数字档案的综合检索体系；伯克利 Dharmamitra 项目的 MITRASearch 则将语义检索扩展至跨语种。
+**语义检索。** 传统检索依赖「研究者须预先知悉关键词」。欲知唐宋时期关于「无念」之论述，需先想到「无念」一词，并想到其异写、别译、别称；思虑不全，则检索不全。语义检索改变了这一步：研究者可直接提出检索意图，由系统先作语义召回，再按年代、宗派、人物、文本类型过滤，最后返回原文、卷次、版本信息。DILA 已有面向多个佛教数字档案的综合检索体系；伯克利 Dharmamitra 项目的 MITRASearch 则将语义检索扩展至跨语种。
 
-**文本复用检测。** 此项适用于一个传统方法难以大规模处理的问题：「此句此前出现于何处？」将数千万字佛典转为向量之后，跨卷引用识别、同义改写识别、文本复用检测、伪引文识别、引文传播路径分析、注疏间思想继承关系分析，均变得可行。其意义在于改变思想史研究的形态：过去追踪一个人物、一部经典或一条引文或须数年，此后机器先完成大规模候选发现，学者再进行解释。佛学研究因此可能从「小规模精读」扩展为「精读与大规模计算发现并行」。
+**文本复用检测。** 此项适用于一个传统方法难以大规模处理的问题：「此句此前出现于何处？」将数千万字佛典转为向量之后，跨卷引用识别、同义改写识别、文本复用检测、伪引文识别、引文传播路径分析、注疏间思想继承关系分析，均变得可行。其意义在于改变思想史研究的形态：过去追踪一个人物、一部经典或一条引文或需数年，此后机器先完成大规模候选发现，学者再进行解释。佛学研究因此可能从「小规模精读」扩展为「精读与大规模计算发现并行」。
 
 **知识图谱。** 将佛教史重建为动态网络（人物、师承、寺院、地域、著作、讲学活动、法脉、时代、社会网络）之后，下列问题即成为可研究者：
 
@@ -463,7 +463,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > *This part asks not "what is AI" but "what has AI changed"—specifically, what it has changed about the cost of doing certain things, about who is qualified to do them, and about whom the results reach. Technical description that does not bear on those three is omitted.*
 >
-> **Fourteen: From Digitization to Knowledge Engineering.** On 28 February 2026 the Buddhist Digital Resource Center announced a plan to turn human-transcribed, OCR'd, edition-compared, and cross-validated Buddhist literature into open corpora suitable for AI training and research. The project began in December 2025 with funding from the Khyentse Foundation, at a scale measured in millions of pages. Two months of progress: Gold Standard corpora grew from 1.9 GB to 3.4 GB, over 26 million images passed through OCR, and about 35,000 images were aligned with transcriptions (Grade A, [BDRC announcement](https://www.bdrc.io/blog/2026/02/28/)).
+> **Two: From Digitization to Knowledge Engineering.** On 28 February 2026 the Buddhist Digital Resource Center announced a plan to turn human-transcribed, OCR'd, edition-compared, and cross-validated Buddhist literature into open corpora suitable for AI training and research. The project began in December 2025 with funding from the Khyentse Foundation, at a scale measured in millions of pages. Two months of progress: Gold Standard corpora grew from 1.9 GB to 3.4 GB, over 26 million images passed through OCR, and about 35,000 images were aligned with transcriptions (Grade A, [BDRC announcement](https://www.bdrc.io/blog/2026/02/28/)).
 >
 > The significance lies not in the figures but in the route it marks: **build the data first, then the intelligence**—rather than building a talking robot first.
 >
@@ -486,7 +486,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > The converse holds too: **falling behind here is not missing a publicity channel; it is being absent while others build the future order of Buddhist knowledge.** Ten years from now, if the corpora, terminology, knowledge graphs, and evaluation benchmarks of global Buddhist AI have all set hard, and the Chinese Buddhist portion within them is thin or wrong, then latecomers will be able to adapt to that order—but not define it.
 >
-> **Fifteen: Eight Layers of Infrastructure.** An adequate Buddhist knowledge system needs at least eight layers.
+> **Three: Eight Layers of Infrastructure.** An adequate Buddhist knowledge system needs at least eight layers.
 >
 > | Layer | Core content | Relevant technology |
 > |---|---|---|
@@ -505,7 +505,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > One corollary deserves separate statement: **training a Buddhist large model is almost certainly not the optimal investment for Chinese Buddhism.** General model capabilities are improving rapidly; the cost of building one's own model and the speed at which it depreciates are both worsening. Authoritative corpora, standardized terminology, clear editions, and traceable provenance, by contrast, do not lose value when models change—they gain value with every upgrade. **In resource allocation, the marginal return on corpus development exceeds that on model parameter expansion.** (Judgment)
 >
-> **Sixteen: AI in Buddhist Studies — Amplification, Not Replacement.** Where AI genuinely helps Buddhist studies is not in thinking for the scholar but in releasing him from retrieval work so that he may attend to judgment. Its capabilities fall into three classes (see Figure 3):
+> **Five: AI in Buddhist Studies — Amplification, Not Replacement.** Where AI genuinely helps Buddhist studies is not in thinking for the scholar but in releasing him from retrieval work so that he may attend to judgment. Its capabilities fall into three classes (see Figure 3):
 >
 > | Capability | Technical principle | Value to Buddhist studies | Principal limitation |
 > |---|---|---|---|
@@ -525,7 +525,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > **One boundary easily overstated.** All of the above are real capabilities, but one limit must be marked: **knowledge graphs and semantic search can discover relations; they cannot determine meaning.** A machine can tell you that a quotation appears in two hundred texts. It cannot tell you which appearance is inheritance, which is refutation, which is misreading. Doctrinal adjudication, causal explanation in intellectual history, and the intellectual weight of a text remain work for trained people.
 >
-> **Seventeen: What LLMs Can and Cannot Do — A Task Grading.** Setting the tasks out individually serves judgment better than a blanket assertion that AI is useful or unreliable; see Figure 4.
+> **Six: What LLMs Can and Cannot Do — A Task Grading.** Setting the tasks out individually serves judgment better than a blanket assertion that AI is useful or unreliable; see Figure 4.
 >
 > | Task | Suitability | Reason |
 > |---|---|---|
@@ -550,7 +550,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > Buddhist studies falls inside that 8.5 percent. Buddhist AI therefore requires its own anti-hallucination mechanism—not "greater care," but something structural.
 >
-> **Eighteen: A Standard Workflow for Trustworthy Buddhist AI.** Any professional Buddhist AI should adopt this pipeline (see Figure 5):
+> **Seven: A Standard Workflow for Trustworthy Buddhist AI.** Any professional Buddhist AI should adopt this pipeline (see Figure 5):
 >
 > ```
 > AI generation → Retrieval-augmented generation (RAG) → Location in the canon
@@ -577,7 +577,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 
 ## 八、AI 辅助佛典翻译：最具突破价值之传播基础设施
 
-回到第十章那道坎：汉文佛典资源极丰富，而世界上大量潜在读者无法直接阅读古汉语佛典。
+回到那道坎：汉文佛典资源极丰富，而世界上大量潜在读者无法直接阅读古汉语佛典。
 
 **这是汉传全球传播最大的单一结构性障碍，也是最有可能被技术实质性改变的一项。** AI 翻译在这里不是普通的传播工具——它直接改变「可访问性」这个变量，而可访问性是前面所有传播策略的前提。没有可读的译本，禅修、教育、对话、学术交流都无从谈起。
 
@@ -661,7 +661,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 学是获取知识、理解义理、建立正见——这些可以被语言承载，因此可以被机器承载。修是亲证、是身心转变、是在具体情境中的抉择——这些不通过语言传递，因此不可能通过语言模型传递。
 
-说「AI 能帮助你学习佛法」是准确的。说「AI 能帮助你修行」，就已经越界。而说「AI 可以指导你的修行」，则不只是越界，是危险。（判断·主张／依据：第二十一章第四层风险分级）
+说「AI 能帮助你学习佛法」是准确的。说「AI 能帮助你修行」，就已经越界。而说「AI 可以指导你的修行」，则不只是越界，是危险。（判断·主张／依据：第九章第四层风险分级）
 
 ## 十、「AI 师父」：最需审慎处置之方向
 
@@ -695,7 +695,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 | 教义扁平化 | 模型倾向给出「听似合理」之综合 | 宗派差异被抹平为「佛教说」 |
 | 数据隐私 | 修行日志含身心、家庭、创伤等敏感信息 | 按内容平台逻辑处理即生风险 |
 
-其中「拟人化」一项尤须说明：AI 总在、总答、从不疲倦、从不评判，这些特性恰好构成一种危险的吸引力。「数据隐私」一项亦须强调：修行日志可能包含身体状态、情绪、家庭关系、创伤经历、性与婚姻、宗教信仰与心理状态，此类数据不能按照普通内容平台的数据逻辑处理，**佛教 AI 应当建立高于一般教育 AI 的隐私标准**。
+其中「拟人化」一项尤其需要说明：AI 总在、总答、从不疲倦、从不评判，这些特性恰好构成一种危险的吸引力。「数据隐私」一项也需要强调：修行日志可能包含身体状态、情绪、家庭关系、创伤经历、性与婚姻、宗教信仰与心理状态，此类数据不能按照普通内容平台的数据逻辑处理，**佛教 AI 应当建立高于一般教育 AI 的隐私标准**。
 
 把五种风险归到一处，核心只有一句：
 
@@ -707,7 +707,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 > **EN对应 · Chapters Eight to Ten**
 >
-> **Nineteen: AI-Assisted Translation — The Infrastructure Most Worth Breaking Through.** Back to the ditch described in Chapter Ten: the Chinese Buddhist canon is extremely rich, and a great many potential readers worldwide cannot read classical Chinese Buddhist texts directly.
+> **Eight: AI-Assisted Translation — The Infrastructure Most Worth Breaking Through.** Back to the ditch: the Chinese Buddhist canon is extremely rich, and a great many potential readers worldwide cannot read classical Chinese Buddhist texts directly.
 >
 > **This is the single largest structural obstacle to the global transmission of Chinese Buddhism, and the one most likely to be substantively changed by technology.** AI translation is not an ordinary communication tool here—it changes the variable of accessibility directly, and accessibility is the precondition of every transmission strategy. Without readable translations, meditation instruction, education, dialogue, and academic exchange all have nowhere to begin.
 >
@@ -751,7 +751,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 >
 > The implication for monastic education is concrete. If in ten years the bottleneck is review, then the training begun today should aim at **producing reviewers, not producers of first drafts.**
 >
-> **Twenty: Four Tiers of Practice Support — Learning Assistance Is Not Practice.** This is the part of the field requiring the most caution.
+> **Nine: Four Tiers of Practice Support — Learning Assistance Is Not Practice.** This is the part of the field requiring the most caution.
 >
 > The list of things AI does well is long: studying doctrine, daily reading plans, terminology, scriptural Q&A, study notes, group-practice reminders, time management for meditation, reflective journals, learning-path recommendations, multilingual study of meaning, and event administration. But none of these equates to "AI has practice experience," and fluency of AI-generated language must never be mistaken for realization or depth of insight. A practical and clear tiering follows (see Figure 6).
 >
@@ -775,7 +775,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 >
 > "AI can help you study the dharma" is accurate. "AI can help you practise" has already crossed the line. And "AI can guide your practice" is not merely over the line—it is dangerous. (Judgment)
 >
-> **Twenty-One: The "AI Master" — The Direction Requiring the Most Caution.** Technically, an AI can fully simulate the verbal style of a famous monk. Three levels must be distinguished: **simulating his style** ≠ **answering from his writings** ≠ **speaking on his behalf**. The first is stylistic imitation, with limited risk. The second is sourced question and answer, a knowledge service. **The third is the simulation of religious authority, and the risk is extreme.**
+> **Ten: The "AI Master" — The Direction Requiring the Most Caution.** Technically, an AI can fully simulate the verbal style of a famous monk. Three levels must be distinguished: **simulating his style** ≠ **answering from his writings** ≠ **speaking on his behalf**. The first is stylistic imitation, with limited risk. The second is sourced question and answer, a knowledge service. **The third is the simulation of religious authority, and the risk is extreme.**
 >
 > Hence the preferable design is a **"knowledge agent for a traditional figure,"** not an **"AI master persona."** Compare two sentences:
 >
@@ -834,8 +834,8 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 | 维度 | 教理对应 | 对照要点 |
 |---|---|---|
 | 苦感敏感的影响评估 | 苦谛、不害（ahiṃsā） | 多数 AI 伦理框架以「公平」「透明」「可解释」为核心，其单位是个体与群体；苦谛所提供者不同——它问「此举令谁受苦、苦如何生、能否止」，是以感受而非以权利为起点的评估轴 |
-| 关系性问责 | 缘起 | 缘起说无一法独立自存，一切依待而生。以此观 AI，「谁该负责」不再能还原为「哪个工程师写错了代码」，而须在模型开发者、训练数据来源者、部署者、使用者与受影响者所构成之网络中定位 |
-| 慈悲与关怀的完整性 | 慈悲、同体大悲 | AI 可以生成慈悲的语句而不具有慈悲。若不区分「慈悲的表达」与「慈悲」，关怀将被表演化；而表演化的关怀在生产上更廉价、在规模上更可复制，因而具有淘汰真实关怀的市场压力 |
+| 关系性问责 | 缘起 | 缘起说无一法独立自存，一切依待而生。以此观 AI，「谁该负责」不再能还原为「哪个工程师写错了代码」，而需在模型开发者、训练数据来源者、部署者、使用者与受影响者所构成之网络中定位 |
+| 慈悲与关怀的完整性 | 慈悲、同体大悲 | AI 可以生成慈悲的语句而不具有慈悲。如果不区分「慈悲的表达」与「慈悲」，关怀将被表演化；而表演化的关怀在生产上更廉价、在规模上更可复制，因而具有淘汰真实关怀的市场压力 |
 | 诠释的谦逊 | 般若、遮诠传统 | 佛教诠释学长期警惕「以指为月」，龙树《中论》之四句否定即为系统的诠释谦逊。技术上的直接对应是：佛学 AI 应避免「断定某观点即佛法真义」之表述（见第六章任务分级表） |
 | 文化参与 | 僧团羯磨、和合 | 佛教决策传统本就包含集体议事与共同认可之程序（详见另篇《汉传佛教的全球传播》论治理与寺院经济之一章），与现代 AI 治理所提倡的利益相关方参与，在结构上有可比之处 |
 
@@ -845,7 +845,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 此类误用有两种形态。其一是**贴标签式**——把「公平」改称「平等性」，把「透明」改称「如实观」，实质内容不变，只是换了词。其二是**比附式**——把「因陀罗网」比作互联网，把「一念3,000」比作全息宇宙，把「空性」比作量子纠缠。此类比附在传播上有效，在学理上有害：它使佛教看起来像是为现代科学提供了神秘背书，而实际上既未增加科学理解，也未增加教理理解。
 
-**判断的标准是清楚的：一项佛教概念如果不能带来既有的 AI 伦理框架所没有的评估维度或决策程序，它就不是贡献；若它能带来，则该贡献应当可以被具体说明，而不必依赖比喻。**
+**判断的标准是清楚的：一项佛教概念如果不能带来既有的 AI 伦理框架所没有的评估维度或决策程序，它就不是贡献；如果它能带来，则该贡献应当可以被具体说明，而不必依赖比喻。**
 
 以此标准衡量，上举五项之中，**「苦感敏感的影响评估」与「诠释的谦逊」两项最经得起检验**——前者提供了以「苦」而非以「权利」或「效率」为起点的评估轴，后者提供了一套系统的否定性诠释纪律。（判断·评估／依据：本段所立「能否带来既有框架所无之维度」之检验标准）其余三项虽有价值，然「关系性问责」与「文化参与」在西方伦理学与治理理论中已有相当程度的对应物，「慈悲与关怀的完整性」则尚需更具体的操作化。
 
@@ -853,7 +853,7 @@ AI 很适合做的事有一长串：经教学习、每日阅读计划、术语�
 
 **佛教对 AI 伦理的贡献，不在于提供新的规则，而在于提供一种以苦为尺度、以关系为单位的评估视角。**（判断·评估／依据：Hariyanto 等 2026 五项维度之逐项对照）这一视角与主流 AI 伦理的关系不是竞争，而是补充：主流框架长于处理可计量、可归责、可程序化的问题；佛教视角长于处理那些难以计量、难以归属、需要从感受出发的问题。二者各有所长，不宜互相取代。
 
-尚须承认的是：这一领域目前**实证研究严重不足**。上述两项研究都是概念性、综述性工作，还没有大规模的用户研究、效果评估或长期追踪。何种佛教伦理原则在何种 AI 设计决策中产生何种可测差异，目前基本没有数据。此为本文如实登记之局限。
+必须承认的是：这一领域目前**实证研究严重不足**。上述两项研究都是概念性、综述性工作，还没有大规模的用户研究、效果评估或长期追踪。何种佛教伦理原则在何种 AI 设计决策中产生何种可测差异，目前基本没有数据。此为本文如实登记之局限。
 
 > **EN对应 · Eleven: What Buddhist Philosophy Contributes to AI Ethics**
 >
@@ -966,7 +966,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 **2031—2035：智能生态阶段。** 如果前两阶段的数据与治理基础建设成功，才可能发展多模态佛教 AI、个人终身佛学导师系统、AI 与 VR 结合的佛教教育、全球多语佛教课程自动适配、跨传统比较研究 Agent、佛教历史虚拟重建、个性化学习路径、国际佛教知识网络。
 
-<svg viewBox="0 0 780 372" style="width:100%;max-width:780px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="778" height="370" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><line x1="40" y1="48" x2="740" y2="48" stroke="#b8863c" stroke-width="2"/><path d="M732,42 L744,48 L732,54 Z" fill="#b8863c"/><circle cx="135" cy="48" r="9" fill="#c9b06a"/><rect x="15" y="70" width="240" height="264" rx="8" fill="#ffffff" stroke="#c9b06a" stroke-width="2"/><text x="135" y="96" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2026—2027</text><text x="135" y="116" font-size="12" font-weight="bold" fill="#4a3a22" text-anchor="middle">数据底座阶段</text><text x="135" y="138" font-size="10.5" fill="#6b5c45" text-anchor="middle">CBETA／DILA／SAT 协同</text><text x="135" y="159" font-size="10.5" fill="#6b5c45" text-anchor="middle">权威佛典数据标准</text><text x="135" y="180" font-size="10.5" fill="#6b5c45" text-anchor="middle">人物寺院法脉知识图谱</text><text x="135" y="201" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛教多语术语库</text><text x="135" y="222" font-size="10.5" fill="#6b5c45" text-anchor="middle">版本与引用标准</text><text x="135" y="243" font-size="10.5" fill="#6b5c45" text-anchor="middle">高质量 OCR</text><text x="135" y="264" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语平行语料</text><text x="135" y="285" font-size="10.5" fill="#6b5c45" text-anchor="middle">专业 RAG</text><circle cx="390" cy="48" r="9" fill="#9aab74"/><rect x="270" y="70" width="240" height="306" rx="8" fill="#ffffff" stroke="#9aab74" stroke-width="2"/><text x="390" y="96" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2028—2030</text><text x="390" y="116" font-size="12" font-weight="bold" fill="#4a3a22" text-anchor="middle">知识智能化阶段</text><text x="390" y="138" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛学 AI 研究助手</text><text x="390" y="159" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI 翻译工作台</text><text x="390" y="180" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语智能检索</text><text x="390" y="201" font-size="10.5" fill="#6b5c45" text-anchor="middle">学术文献 Agent</text><text x="390" y="222" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛教知识图谱</text><text x="390" y="243" font-size="10.5" fill="#6b5c45" text-anchor="middle">个人佛学知识库</text><text x="390" y="264" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI 课程助手</text><text x="390" y="285" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语自动字幕</text><text x="390" y="306" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI 数字博物馆</text><text x="390" y="327" font-size="10.5" fill="#6b5c45" text-anchor="middle">全球佛教知识门户</text><circle cx="645" cy="48" r="9" fill="#7a9a6b"/><rect x="525" y="70" width="240" height="264" rx="8" fill="#ffffff" stroke="#7a9a6b" stroke-width="2"/><text x="645" y="96" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2031—2035</text><text x="645" y="116" font-size="12" font-weight="bold" fill="#4a3a22" text-anchor="middle">智能生态阶段</text><text x="645" y="138" font-size="10.5" fill="#6b5c45" text-anchor="middle">多模态佛教 AI</text><text x="645" y="159" font-size="10.5" fill="#6b5c45" text-anchor="middle">终身佛学导师系统</text><text x="645" y="180" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI＋VR 佛教教育</text><text x="645" y="201" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语课程自动适配</text><text x="645" y="222" font-size="10.5" fill="#6b5c45" text-anchor="middle">跨传统比较研究 Agent</text><text x="645" y="243" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛教历史虚拟重建</text><text x="645" y="264" font-size="10.5" fill="#6b5c45" text-anchor="middle">个性化学习路径</text><text x="645" y="285" font-size="10.5" fill="#6b5c45" text-anchor="middle">国际佛教知识网络</text><text x="390" y="362" font-size="10.5" fill="#8a7b66" text-anchor="middle">前一阶段不成立，后一阶段无由开展：数据不可信，智能化即放大错误</text></svg>
+<svg viewBox="0 0 780 372" style="width:100%;max-width:780px;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="778" height="370" rx="8" fill="#faf7f1" stroke="#e0d7c8"/><line x1="40" y1="48" x2="740" y2="48" stroke="#b8863c" stroke-width="2"/><path d="M732,42 L744,48 L732,54 Z" fill="#b8863c"/><circle cx="135" cy="48" r="9" fill="#c9b06a"/><rect x="15" y="70" width="240" height="264" rx="8" fill="#ffffff" stroke="#c9b06a" stroke-width="2"/><text x="135" y="96" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2026—2027</text><text x="135" y="116" font-size="12" font-weight="bold" fill="#4a3a22" text-anchor="middle">数据底座阶段</text><text x="135" y="138" font-size="10.5" fill="#6b5c45" text-anchor="middle">CBETA／DILA／SAT 协同</text><text x="135" y="159" font-size="10.5" fill="#6b5c45" text-anchor="middle">权威佛典数据标准</text><text x="135" y="180" font-size="10.5" fill="#6b5c45" text-anchor="middle">人物寺院法脉知识图谱</text><text x="135" y="201" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛教多语术语库</text><text x="135" y="222" font-size="10.5" fill="#6b5c45" text-anchor="middle">版本与引用标准</text><text x="135" y="243" font-size="10.5" fill="#6b5c45" text-anchor="middle">高质量 OCR</text><text x="135" y="264" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语平行语料</text><text x="135" y="285" font-size="10.5" fill="#6b5c45" text-anchor="middle">专业 RAG</text><circle cx="390" cy="48" r="9" fill="#9aab74"/><rect x="270" y="70" width="240" height="306" rx="8" fill="#ffffff" stroke="#9aab74" stroke-width="2"/><text x="390" y="96" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2028—2030</text><text x="390" y="116" font-size="12" font-weight="bold" fill="#4a3a22" text-anchor="middle">知识智能化阶段</text><text x="390" y="138" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛学 AI 研究助手</text><text x="390" y="159" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI 翻译工作台</text><text x="390" y="180" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语智能检索</text><text x="390" y="201" font-size="10.5" fill="#6b5c45" text-anchor="middle">学术文献 Agent</text><text x="390" y="222" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛教知识图谱</text><text x="390" y="243" font-size="10.5" fill="#6b5c45" text-anchor="middle">个人佛学知识库</text><text x="390" y="264" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI 课程助手</text><text x="390" y="285" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语自动字幕</text><text x="390" y="306" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI 数字博物馆</text><text x="390" y="327" font-size="10.5" fill="#6b5c45" text-anchor="middle">全球佛教知识门户</text><circle cx="645" cy="48" r="9" fill="#7a9a6b"/><rect x="525" y="70" width="240" height="264" rx="8" fill="#ffffff" stroke="#7a9a6b" stroke-width="2"/><text x="645" y="96" font-size="14" font-weight="bold" fill="#b8863c" text-anchor="middle">2031—2035</text><text x="645" y="116" font-size="12" font-weight="bold" fill="#4a3a22" text-anchor="middle">智能生态阶段</text><text x="645" y="138" font-size="10.5" fill="#6b5c45" text-anchor="middle">多模态佛教 AI</text><text x="645" y="159" font-size="10.5" fill="#6b5c45" text-anchor="middle">终身佛学导师系统</text><text x="645" y="180" font-size="10.5" fill="#6b5c45" text-anchor="middle">AI＋VR 佛教教育</text><text x="645" y="201" font-size="10.5" fill="#6b5c45" text-anchor="middle">多语课程自动适配</text><text x="645" y="222" font-size="10.5" fill="#6b5c45" text-anchor="middle">跨传统比较研究 Agent</text><text x="645" y="243" font-size="10.5" fill="#6b5c45" text-anchor="middle">佛教历史虚拟重建</text><text x="645" y="264" font-size="10.5" fill="#6b5c45" text-anchor="middle">个性化学习路径</text><text x="645" y="285" font-size="10.5" fill="#6b5c45" text-anchor="middle">国际佛教知识网络</text><text x="390" y="362" font-size="10.5" fill="#8a7b66" text-anchor="middle">前一阶段不成立，后一阶段无从开展：数据不可信，智能化即放大错误</text></svg>
 
 > 图 7｜五至十年三阶段路线
 
@@ -979,8 +979,8 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 | 一、原典优先 | 任何重大教义性结论都尽可能回到原典 | 教义问答、义理解释 |
 | 二、出处优先 | 答案必须尽可能提供经名、卷次、章节或页码、版本 | 一切引用 |
 | 三、传统分层 | 不得把早期佛教、中观、唯识、天台、华严、禅宗、净土混成一个「佛教统一答案」 | 义理解释、宗派判定 |
-| 四、解释透明 | 须告知用户：此为经典原文／古代注疏／现代学术解释／AI 综合 | 一切生成内容 |
-| 五、人类导师在环 | 涉及戒律、心理危机、强烈宗教体验、师徒关系、医疗问题、高风险修行者，须设置人工介入 | 高风险咨询 |
+| 四、解释透明 | 需告知用户：此为经典原文／古代注疏／现代学术解释／AI 综合 | 一切生成内容 |
+| 五、人类导师在环 | 涉及戒律、心理危机、强烈宗教体验、师徒关系、医疗问题、高风险修行者，需设置人工介入 | 高风险咨询 |
 | 六、数据最小化 | 修行日志、个人经历、情绪与敏感身份数据，遵循最小采集原则，不因「做个性化 AI」而无限收集 | 修行日志、个人资料 |
 
 ### 十项评测
@@ -1004,7 +1004,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 > **EN对应 · Chapters Twelve to Fourteen**
 >
-> **Twenty-Two: Measurement, Algorithms, and the Boundaries of the Body.**
+> **Twelve: Measurement, Algorithms, and the Boundaries of the Body.**
 >
 > **Replacing "how many saw it" with "how many stayed."** Transmission effectiveness can no longer be measured by follower counts, likes, and views. What matters more is a **dharma transmission funnel**:
 >
@@ -1038,7 +1038,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > The distinction bears on more than scientific rigour. It bears on the teaching itself. **To equate a state of practice with a physiological index is to replace something unmeasurable with something measurable—and what gets replaced is precisely the practice.** (Judgment)
 >
-> **Twenty-Three: The Project Landscape.** Five directions are worth attention; figures and links are in Appendix Three.
+> **Thirteen: The Project Landscape.** Five directions are worth attention; figures and links are in Appendix Three.
 >
 > **BDRC** is the Buddhist digital foundation. Its approach is not to build a chatbot but to build high-quality Buddhist data first. Its 2026 open-dataset initiative deserves particular attention.
 >
@@ -1056,7 +1056,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 >
 > What does only Chinese Buddhism have? Authoritative editions and critical collations of the Chinese canon; the doctrinal systems and terminologies of its schools; two thousand years of commentary; the complete bhikṣuṇī ordination lineage; and the modern practical experience of Humanistic Buddhism. Everything else—OCR engines, vector databases, RAG frameworks, large models—should be adopted off the shelf, not rebuilt.
 >
-> **Twenty-Four: A Five- to Ten-Year Roadmap.** Reduced to a timetable, the preceding judgments fall into three stages (see Figure 7); details are in Appendix Three.
+> **Fourteen: A Five- to Ten-Year Roadmap.** Reduced to a timetable, the preceding judgments fall into three stages (see Figure 7); details are in Appendix Three.
 >
 > **2026–2027: the data foundation stage.** Priorities are coordination among CBETA, DILA, and SAT; authoritative canonical data standards; knowledge graphs of persons, temples, and lineages; a multilingual Buddhist terminology database; edition and citation standards; high-quality OCR; multilingual parallel corpora; and professional RAG. The most important thing at this stage is not "intelligence" but **ensuring the data can be trusted.**
 >
@@ -1102,7 +1102,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 要做三件事。 其一，把汉文佛典的权威数据做成开放、可引用、有版本的标准。这件事不必新建，整合 CBETA、SAT、DILA 以及灵隐寺等已有的工作即可，再加上统一的元数据规范与版本控制。其二，把术语层与平行语料开放出来。其三，建立可验证的 AI 与覆盖率仪表盘，把「可信佛学 AI」的标准工作流（第七章）作为公开规范发布，让所有做佛教 AI 的团队都可以遵循。
 
-**这三件事做完，汉传在全球佛学知识秩序里的位置就确定了。** 反之，若十年后这三件事仍由别人在做，那么汉传就只能适配别人定下的秩序。（判断·预测／依据：属推估，无文献可据）
+**这三件事做完，汉传在全球佛学知识秩序里的位置就确定了。** 反之，如果十年后这三件事仍由别人在做，那么汉传就只能适配别人定下的秩序。（判断·预测／依据：属推估，无文献可据）
 
 ### 实施主体
 
@@ -1122,7 +1122,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 组织形式宜取轻量结构：一个**佛学 AI 与数字人文研究中心**，由高校、佛学院、大型佛教组织或跨机构联盟承办。最小可行团队不止于 AI 工程师，而应包含：佛学家、文献学家、数字人文学者、NLP / LLM 工程师、数据工程师、产品与体验人员、多语翻译专家、伦理治理人员。
 
-其中居于枢纽的一条是：**佛学专家须实质参与 AI 开发流程，而非仅在验收环节签署意见。** 此条听似常识，实则最易落空，因为它意味着佛教学者须在项目内投入工程性工作——整理语料、标注术语、校验出处——而此类工作不计入学术成果。**由此产生一项配套要求：使此类工作获得成果认定。** 若这一环节不解决，「专家进入流程」之议将无从落实。（判断·预测／依据：属推估，无文献可据）
+其中居于枢纽的一条是：**佛学专家需实质参与 AI 开发流程，而非仅在验收环节签署意见。** 此条听似常识，实则最易落空，因为它意味着佛教学者需在项目内投入工程性工作——整理语料、标注术语、校验出处——而此类工作不计入学术成果。**由此产生一项配套要求：使此类工作获得成果认定。** 若这一环节不解决，「专家进入流程」之议将无从落实。（判断·预测／依据：属推估，无文献可据）
 治理上采用三委员会结构：**学术委员会**负责经典、版本、历史、术语与研究规范；**技术委员会**负责数据、模型、RAG、评测与安全；**伦理治理委员会**负责隐私、权威模拟、宗教伦理、未成年人、心理风险与数据使用边界。
 
 ---
@@ -1189,7 +1189,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 
 > 图 8｜跨学科的知识构成
 
-各学科在佛教 AI 中的位置，见图 8。上表之中，**佛学、文献学、计算语言学与翻译学四者为不可替代者**——缺其中任何一者，成果的正确性即无从保证。其余为重要但可阶段性引入者。（判断·本文评估／依据：无直接文献可据，系依各学科在佛教 AI 中的实际位置所作之分类）
+各学科在佛教 AI 中的位置，见图 8。上表之中，**佛学、文献学、计算语言学与翻译学四者为不可替代者**——缺其中任何一者，成果的正确性即无从保证。其余为重要但可阶段性引入者。（判断·评估／依据：无直接文献可据，系依各学科在佛教 AI 中的实际位置所作之分类）
 
 ### 三类典型接口失效
 
@@ -1398,7 +1398,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 | 案例 | 项目生态之未及考察者；各项目之长期进展 | 持续跟踪，随版本更新 |
 | 方法 | 佛教 AI 评测基准、多语术语层标准、英译覆盖率指标 | 已列入第十四章路线，见附录一 |
 
-**凡后续补入者，皆循本文既有之信源分级与判断标注体例；凡一时不能确证者，仍标〔待核〕，不以推测填补。**
+**凡后续补入者，一律循本文既有之信源分级与判断标注体例；凡一时不能确证者，仍标〔待核〕，不以推测填补。**
 >
 > **EN对应 · Appendix Two, Section 6: What Remains Unfinished, and Where the Inquiry Goes Next**
 >
@@ -1452,7 +1452,7 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 | 4 | 评估 |  | 本章九项技术逐项评估中瓶颈之分布 |
 | 5 | 主张 |  | 同段所述汉传译经史多译并存之事实 |
 | 6 | 推论 |  | Dharmamitra 模型卡自述之命名实体与幻觉问题、Wei 2024 之人工评价结果 |
-| 7 | 主张 |  | 第二十一章第四层风险分级 |
+| 7 | 主张 |  | 第九章第四层风险分级 |
 | 8 | 评估 |  | 第十章所列权威幻觉、拟人化、依赖、教义扁平化、数据隐私五项风险 |
 | 9 | 评估 |  | 本段所立「能否带来既有框架所无之维度」之检验标准 |
 | 10 | 评估 |  | Hariyanto 等 2026 五项维度之逐项对照 |
@@ -1473,13 +1473,13 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 | 3 | 立场 |  | 无文献可据，系本文所持之规范立场 |
 | 4 | 预测 |  | 属推估，无文献可据 |
 | 5 | 预测 |  | 属推估，无文献可据 |
-| 6 | 本文评估 |  | 无直接文献可据，系依各学科在佛教 AI 中的实际位置所作之分类 |
+| 6 | 评估 |  | 无直接文献可据，系依各学科在佛教 AI 中的实际位置所作之分类 |
 
 > **说明**：第二类所列者，非谓其无理由，而是谓其理由不来自文献，而来自本文之论证、评估或价值取向。读者若不接受其前提，即可不取结论——这正是不把主张混入事实陈述的用意。
 
 ### 三、本文未使用之论法
 
-本文尚须声明三种**未曾使用**的论法，以免读者误读：**其一，不作无来源之数字断言**——凡本文出现的数字，或出官方统计与已发表研究，或出项目自述并标【自述】，无一是估摸而来。**其二，不以比附代论证**——不以「因陀罗网即互联网」「空性即量子纠缠」一类比喻充当论据（其谬已见第十一章「一项必须避免的误用」）。**其三，不把预测说成事实**——凡涉将来之推估，均标「预测」并注明属推测。
+本文还需声明三种**未曾使用**的论法，以免读者误读：**其一，不作无来源之数字断言**——凡本文出现的数字，或出官方统计与已发表研究，或出项目自述并标【自述】，无一是估摸而来。**其二，不以比附代论证**——不以「因陀罗网即互联网」「空性即量子纠缠」一类比喻充当论据（其谬已见第十一章「一项必须避免的误用」）。**其三，不把预测说成事实**——凡涉将来之推估，均标「预测」并注明属推测。
 
 ---
 
