@@ -410,6 +410,8 @@ AI 在佛学研究上真正增益之处，不在于替代学者思考，而在�
 
 需要补充的是这张表之外的一个事实：幻觉并不限于佛学领域。*Nature* 上的一项研究提出用语义熵检测 LLM 幻觉的方法，并指出模型即使在语言流畅度很高时仍会产生无根据的答案（B 级，Farquhar 等，*Nature* 630:625–630, 2024）。而学术引用能力尤其不能盲信：一项跨学科评估发现，ChatGPT 生成的文献引用存在真实度与 DOI 准确性问题，自然科学场景下 DOI 准确率约32.7%，**人文学科场景下仅8.5%**，DOI 幻觉率达89.4%（B 级，Mugaanyi 等，*J Med Internet Res* 26:e52935, 2024）。
 
+2026 年的两批更大规模实证，把同一结论从「单一实验」推向「真实文献现实」：GhostCite 对 13 个主流大模型的引用生成做基准，引用幻觉率介于 14.23% 与 94.93% 之间，且这些模型自身校验引用时的平均准确率仅 38%（B 级，Xu 等，[arXiv:2602.06718](https://arxiv.org/abs/2602.06718)，2026）；另一项审计覆盖 250 万篇论文、1.11 亿条引用，保守估计 2025 年有约 14.7 万条幻觉引用进入正式文献，且集中出现在 AI 采用快、作者团队规模小且偏年轻的论文中——幻觉引用还会不成比例地把功劳记在已有的显赫学者与男性学者名下（B 级，Zhao 等，[arXiv:2605.07723](https://arxiv.org/abs/2605.07723)，2026）。跨地区视角同样值得注意：一项 2025 年跨国研究用四个大模型生成 3,451 条引用后逐一以 CrossRef API 校验，发现 DOI 幻觉率随地区与出版年代系统变化——低收入国家幻觉率普遍超过八成，对 2020 年代的新出版物尤为严重（B 级，Kim、Kipchumba、Min，[*Publications* 13(4):49](https://doi.org/10.3390/publications13040049)，2025）。
+
 人文学科8.5%这个数字，佛学正落在它里面。所以佛学 AI 必须有自己的防幻觉机制——不是「更小心一点」，是结构性的。
 
 ## 七、「可信佛学 AI」的标准工作流
@@ -456,6 +458,8 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 - 帮助定位人物、地点与术语
 
 （A 级，[84000 立场文件](https://84000.co/documents/84000s-position-on-ai-and-the-machine-translation-of-canonical-literature)）
+
+这份立场并非空谈。按 84000 官方里程碑专文，坎珠（Kangyur）译成英文已完成约八成、网站已发布五成以上，官方年度回顾称仍走在 2035 年译完全藏的轨道上；其平台月均独立访问约十万人次（A 级，[84000 里程碑专文](https://84000.co/post/dzongsar-khyentse-rinpoche-on-a-milestone-ai-and-the-human-work-of-wisdom)、[84000 2024 年度回顾](https://84000.co/post/2024-year-in-review)）。一个整藏规模的翻译计划因而给出了自己关于 AI 的第一手官方表态——这本身就是汉传可以直接对照的现成样例。
 
 把它读成「AI 万能论」或「AI 威胁论」，都不对。它其实是一份**职责划分说明书**：哪些交给机器，哪些必须由人负责，写得清清楚楚。汉传如果有类似的公开立场，将省去大量重复争论。这些原则与 UNESCO 针对生成式 AI 教育与研究所倡导的「以人为中心」、数据保护、人类监督等方向一致（A 级，[UNESCO 指南](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=253682)，2023 年 9 月 7 日发布）。
 
@@ -548,6 +552,8 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > One fact outside the table: hallucination is not specific to Buddhist studies. A study in *Nature* proposed detecting LLM hallucination using semantic entropy, noting that models produce unsubstantiated answers even when fluency is high (Grade B, Farquhar et al., *Nature* 630:625–630, 2024). Citation behaviour in particular cannot be trusted blindly: a cross-disciplinary evaluation found that ChatGPT's generated citations have problems of authenticity and DOI accuracy, with DOI accuracy around 32.7 percent in the natural sciences and **only 8.5 percent in the humanities**, and a DOI hallucination rate of 89.4 percent (Grade B, Mugaanyi et al., *J Med Internet Res* 26:e52935, 2024).
 >
+> In 2026 the same conclusion moved from a single experiment to the real record. GhostCite benchmarked citation generation across 13 mainstream LLMs and found hallucination rates between 14.23 percent and 94.93 percent, while those models' own ability to verify citations averaged only 38 percent accuracy (Grade B, Xu et al., [arXiv:2602.06718](https://arxiv.org/abs/2602.06718), 2026). An audit of 2.5 million papers and 111 million citations conservatively estimates that about 146,932 hallucinated citations entered the formal literature in 2025, concentrated in fields with rapid AI adoption and in teams that are small and early-career—and the errors disproportionately credit already prominent and male scholars (Grade B, Zhao et al., [arXiv:2605.07723](https://arxiv.org/abs/2605.07723), 2026). A cross-country study of four models and 3,451 references found DOI hallucination follows systematic patterns—more than 80 percent prevalence in lower-income countries and steeper for 2020s publications (Grade B, Kim, Kipchumba, & Min, [*Publications* 13(4):49](https://doi.org/10.3390/publications13040049), 2025).
+>
 > Buddhist studies falls inside that 8.5 percent. Buddhist AI therefore requires its own anti-hallucination mechanism—not "greater care," but something structural.
 >
 > **Seven: A Standard Workflow for Trustworthy Buddhist AI.** Any professional Buddhist AI should adopt this pipeline (see Figure 5):
@@ -571,7 +577,7 @@ AI 生成 → 检索增强（RAG） → 原典定位 → 卷／页／段落核�
 >
 > 84000 takes a similar approach. Its public position states in the original: "these sacred texts should not be processed using machine translation alone"; "The primary actor in the translation of sacred literature must always be the human mind." It also acknowledges the tool's value: "84000 believes that the use of AI as a tool to assist translation has considerable value." The uses it lists include checking translations for omissions and errors; offering alternative translation choices; finding related passages across Tibetan, Sanskrit, and Chinese source texts; identifying inconsistencies across translations; and helping locate people, places, and terms (Grade A, [84000 position paper](https://84000.co/documents/84000s-position-on-ai-and-the-machine-translation-of-canonical-literature)).
 >
-> The weight of this position lies in the fact that it is neither "AI solves everything" nor "AI is a threat," but a **division-of-responsibility statement.** What goes to the machine, what must remain with a human—stated plainly. If Chinese Buddhism issued a comparable public position, a great deal of repetitive argument would be saved. These principles align with UNESCO's guidance on generative AI in education and research (Grade A, [UNESCO guidance](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=253682), issued 7 September 2023).
+> The weight of this position lies in the fact that it is neither "AI solves everything" nor "AI is a threat," but a **division-of-responsibility statement.** What goes to the machine, what must remain with a human—stated plainly. If Chinese Buddhism issued a comparable public position, a great deal of repetitive argument would be saved. The position is not idle. By 84000's official milestone statement the Kangyur is now about 80 percent translated into English and over 50 percent published, and the official year-in-review reaffirms the goal of completing the collection by 2035; the platform averages roughly 100,000 unique visitors a month (Grade A, [84000 milestone post](https://84000.co/post/dzongsar-khyentse-rinpoche-on-a-milestone-ai-and-the-human-work-of-wisdom); [84000 2024 year-in-review](https://84000.co/post/2024-year-in-review)). A canon-scale translation programme has thus issued a first-hand, working statement of its own AI policy—a precedent Han Buddhism can consult directly. These principles align with UNESCO's guidance on generative AI in education and research (Grade A, [UNESCO guidance](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=253682), issued 7 September 2023).
 
 ---
 
@@ -1511,6 +1517,9 @@ VR/AR 适合做的事很清楚：佛教艺术教育、石窟与寺院数字重�
 - Wei, X. "The Use of Large Language Models for Translating Buddhist Texts from Classical Chinese to Modern English… ChatGPT 4, ERNIE Bot 4, and Gemini Advanced." *Religions* 15(12):1559, 2024. https://doi.org/10.3390/rel15121559
 - Farquhar, S., Kossen, J., Kuhn, L., & Gal, Y. "Detecting hallucinations in large language models using semantic entropy." *Nature* 630(8017):625-630, 2024. https://doi.org/10.1038/s41586-024-07421-0
 - Mugaanyi, J., Cai, L., Cheng, S., Lu, C., & Huang, J. "Evaluation of Large Language Model Performance and Reliability for Citations and References in Scholarly Writing: Cross-Disciplinary Study." *J Med Internet Res* 26:e52935, 2024. https://pmc.ncbi.nlm.nih.gov/articles/PMC11031695/
+- Xu, Z., et al. "GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models." arXiv:2602.06718, 2026. https://arxiv.org/abs/2602.06718
+- Zhao, Z., Wang, Y., Stuart, T., De Vaan, M., Ginsparg, P., & Yin, Y. "LLM hallucinations in the wild: Large-scale evidence from non-existent citations." arXiv:2605.07723, 2026. https://arxiv.org/abs/2605.07723
+- Kim, E., Kipchumba, F., & Min, S. "Geographic Variation in LLM DOI Fabrication: Cross-Country Analysis of Citation Accuracy Across Four Large Language Models." *Publications* 13(4):49, 2025. https://doi.org/10.3390/publications13040049
 - AlMazaedh, A., Tahat, Z., Alkhalaileh, M., & Tahat, D. "Digital religion in platform societies: authority, mediation, and social cohesion in algorithmic publics (2010–2025)." *Frontiers in Sociology* 11:1802281, 2026. https://pmc.ncbi.nlm.nih.gov/articles/PMC13132766/
 - Wieczorek, A., Schrank, F., Renner, K.-H., & Wagner, M. "Psychological and physiological health outcomes of virtual reality-based mindfulness interventions: A systematic review and evidence mapping." *Digital Health* 10, 2024. https://pubmed.ncbi.nlm.nih.gov/39484656/
 - Treves, I., Greene, K., Bajwa, Z., et al. "Mindfulness-based Neurofeedback: A Systematic Review of EEG and fMRI studies." *Imaging Neuroscience* 2:imag-2-00396, 2024. https://doi.org/10.1162/imag_a_00396
