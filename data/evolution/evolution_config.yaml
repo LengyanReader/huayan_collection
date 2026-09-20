@@ -1,0 +1,125 @@
+# =====================================================================
+# 华严项目 · 自我进化机制 —— 配置「基因组」(mutable genome)
+# =====================================================================
+# 本文件是 self_evolve.py 的可调参数总纲。引擎每次运行读取它，
+# 并在 --apply 模式下对带 `adaptive: true` 的字段做**有界自整定**
+# （写入 evolution_state.yaml 的 effective 覆盖值，不改本文件）。
+#
+# 设计原则（与 CLAUDE.md 编务总则互证）：
+#   - 考证优先：引擎只「发现 + 记录 + 排序」，绝不为消除待办而臆造内容。
+#   - 半自动：低风险可推导的记账动作自动做；触及内容的动作一律人工确认。
+#   - 边界自知：无法自动处理者如实登记为 next_actions，不静默丢弃。
+#   - 随时间适应：老化加权 + 反馈式阈值整定 = 提升长期适应能力。
+# =====================================================================
+
+meta:
+  version: 1
+  schema: huayan.evolution.config/v1
+
+# ── 扫描目标（sense_markers / sense_file_age 用）─────────────────────
+scan:
+  include:
+    - data/**/*.yaml
+    - data/**/*.json
+    - docs/*.md
+    - web/demo/src/*.js
+  # 排除：这些文件是「台账本身」或构建产物，待核/存疑出现在此属正常记录，
+  # 不计入待办噪声（否则进度文档会把指标顶爆）。
+  exclude:
+    - data/evolution/**             # 引擎自身的基因组/记忆，含标记词定义，勿自指
+    - docs/evolution/**            # 引擎产出的健康度/梯队报告
+    - docs/next-phase-plan.md      # 待续梯队/待核登记的权威台账
+    - docs/source-audit-report.md  # 审计报告（自动生成）
+    - docs/self-evolution.md       # 机制规范：列举标记词作示例，非待办
+    - docs/architecture.md         # 以下为工程/流程文档（verify_sources ENGINEERING_DOCS 同集）
+    - docs/knowledge-management.md
+    - docs/reference-management.md
+    - docs/engineering-workflow.md
+    - docs/multilingual-alignment.md
+    - docs/verification-framework.md
+    - docs/scalable-text-architecture.md
+    - docs/bilingual-annotation-design.md
+    - docs/tech-stack.md
+    - docs/translation-guide.md
+    - docs/visualization-research.md
+    - CLAUDE.md                    # 进度快照（待核在此为说明性引用）
+    - docs/huayanhai/**            # 海云讲法原文镜像（只读源档）
+    - docs/notes4it/**
+    - web/demo/tabs/**             # 构建产物
+    - web/demo/articles/**         # 构建产物
+    - web/demo/data/**             # 构建产物
+    - "**/*_en.yaml"
+
+# ── 待办/存疑标记词表（severity 越高越优先）────────────────────────
+# 与「内容采集与编务总则」0/6 条约定的标注体系一致。
+markers:
+  - { token: "【待订正】", severity: 5, kind: fix,        note: "已知错误待改" }
+  - { token: "〔待核〕",   severity: 4, kind: verify,     note: "考证未完成" }
+  - { token: "〔存疑〕",   severity: 4, kind: verify,     note: "来源/说法存疑" }
+  - { token: "〔待考〕",   severity: 3, kind: verify,     note: "待进一步考察" }
+  - { token: "〔线索〕",   severity: 2, kind: expand,     note: "线索性/局部信息" }
+  - { token: "〔待补〕",   severity: 2, kind: expand,     note: "信息待补充" }
+  - { token: "〔无法获取〕", severity: 1, kind: boundary, note: "受工具/语种所限(边界)" }
+  - { token: "〔无通行英译〕", severity: 1, kind: boundary, note: "译名无对应(边界)" }
+  - { token: "TODO",       severity: 3, kind: fix,        note: "通用待办", word_bound: true }
+  - { token: "🔴",         severity: 2, kind: progress,   note: "进度未实施标记" }
+
+# ── 验证关卡（sense_validators 用；缺失/报错一律降级不崩）──────────
+validators:
+  - { id: test_pipeline, cmd: ["python", "scripts/test_pipeline.py"],        weight: 0.40, pass_regex: "ALL TESTS PASSED" }
+  - { id: verify_demo,   cmd: ["python", "scripts/verify_demo.py"],          weight: 0.35, pass_regex: "ALL CHECKS PASSED" }
+  - { id: verify_sources, cmd: ["python", "scripts/verify_sources.py", "--json"], weight: 0.25, json_score_key: score_persons }
+
+# ── 链接失效检查（默认关闭：规避本环境网络直连不通/超时卡顿）────────
+link_check:
+  enabled: false            # CLI --check-links 临时开启
+  timeout_sec: 6
+  methods: ["HEAD", "GET"]
+  user_agent: "huayan-evolution/1.0 (+verification-first)"
+  # 已知在本环境直连不通、不算失效的域（避免噪声），命中则标 unreachable 而非 broken
+  allow_unreachable_hosts:
+    - 84000.co
+    - bodhiai.cn
+
+# ── 老化 / 自适应参数（随时间变化的适应能力核心）───────────────────
+temporal:
+  reference_date: auto          # auto=运行当日；也可固定 YYYY-MM-DD 做可复现实验
+  escalation_window_days:       # 未解决项按「自首次发现起经过的天数」升档加权
+    adaptive: true
+    value: 30                   # 每满一个窗口，priority 乘 (1+gain) 一档
+    gain: 0.5
+    max_multiplier: 4.0
+    min: 7
+    max: 120
+  file_stale_days:              # 数据文件久未触碰告警（git 最后提交时间为准）
+    adaptive: false
+    value: 90
+  # 反馈式阈值整定（在 evolution_state.adaptive 内累积，不改本文件）：
+  controller:
+    adaptive: true
+    kind: proportional
+    tolerance_high: 25          # 高优先级积压 > 此数 → 收紧(缩短窗口，让问题更快浮出)
+    tolerance_low: 6            # 高优先级积压 < 此数 → 放宽(降噪声、拉长复核间隔)
+    adjust_step_days: 3         # 每次整定对 escalation_window 的增减步长
+    clamp_min: 7
+    clamp_max: 120
+
+# ── 建议复核节奏（引擎据历史解决速率推算）──────────────────────────
+cadence:
+  baseline_days: 14             # 默认两周一次进化周期
+  min_days: 3
+  max_days: 45
+
+# ── 半自动「可自动执行」的低风险白名单（--apply 时逐项确认）────────
+# 全部要求：确定性、可逆(仅追加或改状态位)、不新增/篡改研究内容。
+autofix:
+  require_confirmation: true    # 即便白名单内，也逐项 y/N
+  allow:
+    - id: refresh_state         # 更新 registry/history/报告（无 --apply 亦执行）
+      auto: true
+    - id: mark_stale_progress   # next-phase-plan P0 🔴待实施 → ✅已完成(仅当管线全绿佐证)
+      auto: false
+      touches_content: false
+    - id: prune_resolved        # registry 中连续 N 周期未再出现的项 → status: resolved
+      auto: true
+      grace_cycles: 2

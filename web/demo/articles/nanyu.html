@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严宗 · 南予其时 · 独立文章</title>
+<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>南予其时</h1>
+  <button id="share-link" class="share-btn" onclick="copyPageLink();return false" title="复制本页独立地址，点击即可直达">🔗 分享地址</button>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
+  <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
+</header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
+<div style="padding:5px 16px;border-bottom:1px solid var(--line);font-size:0.76em;display:flex;gap:16px;align-items:center;background:rgba(94,139,158,0.06);flex-wrap:wrap">
+  <a href="javascript:history.back()" style="color:var(--blue);text-decoration:none;font-weight:600">← 返回上一步</a>
+  <span style="opacity:0.45">|</span>
+  <a href="../tabs/frontier.html" style="color:var(--blue);text-decoration:none">返回到：前沿对话 · 南予其时 ›</a>
+  <span style="margin-left:auto;opacity:0.75;color:var(--text2)"><a href="../index.html" style="color:var(--text2);text-decoration:none">首页 ›</a></span>
+</div>
+</div>
+<main class="content content-article" id="article-root"></main>
+<div id="share-toast" style="position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(31,36,42,0.96);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82em;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.3)"></div>
+
+<script src="../js/common.js"></script>
+<script>
+function copyPageLink(){
+  var url = window.location.href;
+  var toast = document.getElementById('share-toast');
+  function done(msg, ok){
+    if(toast){ toast.textContent = msg; toast.style.display='block'; setTimeout(function(){ toast.style.display='none'; }, 2600); }
+    return ok;
+  }
+  function fallback(u){
+    var ta = document.createElement('textarea'); ta.value = u; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done('✅ 本页独立地址已复制：' + u, true); }
+    catch(e){ done('📋 请手动复制地址：' + u, false); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(function(){ done('✅ 本页独立地址已复制：' + url, true); },
+      function(){ fallback(url); });
+  } else {
+    fallback(url);
+  }
+}
+</script>
+
+
+<script>
+var ARTICLE = {"id": "nanyu", "file": "articles/nanyu.html", "title": "南予其时", "title_sub": "感悟 · 疑情（预留栏目 · 待补）", "icon": "🍊", "version": "占位 · 内容待后续补入", "meta": "本栏目预留，用于专门收录南予的修行感悟与疑情类文章；非学术对读，而是随行随记的心得与参究之问，后续陆续补入。", "doc": "docs/南予其时.md", "doc_md": "# 南予其时 · 感悟与疑情\n\n> **EN对应 · Nanyu Qishi — Reflections & Notes of Doubt**\n> A reserved column for personal cultivation reflections and notes of doubt (疑情). This is not scholarly dialogue, but notes taken along the way; entries will be added over time.\n\n## 栏目说明 · About This Column\n\n本栏目为**预留位置**，用于专门收录南予的**修行感悟**与**疑情参究**类文字。\n\n此类内容与「前沿对话」各域的学术性对读不同，属随行随记的心得、机锋之问与未决之疑，重在存其当时之念，以备日后反观。相关文稿将由后续专门补入，本篇暂为栏目占位。\n\n**接入方式（编者备忘）**：新增此类文章时，在 `data/translation/standalone_articles.yaml` 的 `others` 项下登记（自拟 `id`，`back.tab` 置为 `frontier`），即自动生成 `web/demo/articles/<id>.html` 独立页面；随后可在本页「本栏目篇目」小节补充其链接。\n\n> **EN对应 ·** This column is a **placeholder** reserved for Nanyu's writings of a personal nature — cultivation reflections (感悟) and incubated doubts (疑情). Unlike the scholarly readings under the other frontier domains, these are notes taken along the way: glimpses, probing questions, and unresolved doubts, kept so that they may be looked back upon in time. Manuscripts will be added in later revisions; this page stands as the column's placeholder for now.\n\n## 本栏目篇目 · Entries in This Column\n\n*（暂无 · 待后续补入）*\n\n> **EN对应 ·** *(None yet — to be added.)*\n\n---\n\n> 编者注：本栏目内容与作者个人修行体验相关，仅供参考与留存，不构成任何教理判摄或学术结论。\n", "data_source": "", "data_pool": "practice", "back": {"tab": "frontier", "view": "nanyu", "label": "前沿对话 · 南予其时"}};
+</script>
+<script>
+// ═══ 独立文章页渲染器 (articles/<id>.html) ═══
+// ARTICLE 已由 build.py 内嵌；依赖 common.js 中的 _mdFullToHTML/_mdInline/_mdDocEmbed。
+function renderArticle(){
+  var a=(typeof ARTICLE!=='undefined')?ARTICLE:null;
+  var root=document.getElementById('article-root');
+  if(!root){return;}
+  if(!a){root.innerHTML='<p style=font-size:0.85em;color:var(--red)>文章数据缺失（ARTICLE 未定义）。</p>';return;}
+
+  var embed=(typeof _mdDocEmbed==='function')?_mdDocEmbed(a.doc_md||''):{html:'',toc:[]};
+  var h='';
+
+  // ── 面包屑 ──
+  h+='<div style="font-size:0.74em;color:var(--text2);margin-bottom:12px;">';
+  h+='<a href="../index.html" style="color:var(--blue);text-decoration:none">主页</a> › ';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' › <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  // ── 页头横幅 ──
+  h+='<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
+  h+='  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页</div>';
+  h+='  <h2 style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
+  if(a.title_sub)h+='  <div style="font-size:0.85em;color:var(--text2)">'+a.title_sub+'</div>';
+  if(a.version)h+='  <div style="font-size:0.78em;color:var(--text2);margin-top:6px">'+a.version+'</div>';
+  if(a.back && a.back.tab){
+    h+='  <a href="../tabs/'+a.back.tab+'.html" style="font-size:0.75em;color:var(--blue);margin-top:10px;display:inline-block">← 返回 '+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  // ── 导览 ──
+  if(a.meta){
+    h+='<div class="section" style="border-left:4px solid var(--gold)"><h2>📌 导览</h2>';
+    h+='<p style="font-size:0.8em;line-height:1.9;white-space:pre-line">'+_mdInline(a.meta)+'</p></div>';
+  }
+
+  // ── 自动目录 ──
+  if(embed.toc.length){
+    h+='<div class="section"><h2>🧭 本文目录</h2>';
+    h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75">';
+    embed.toc.forEach(function(t){
+      var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
+      h+='<div style="'+pad+'"><a href="#'+t.id+'" style="color:'+(t.lv===2?'var(--gold)':'var(--text2)')+';text-decoration:none">'+t.text+'</a></div>';
+    });
+    h+='</div></div>';
+  }
+
+  // ── 全文 ──
+  h+='<div class="section" style="border-left:4px solid var(--gold)" id="article-full">';
+  h+='<h2 style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span>'
+    +'<button id="article-en-toggle" class="f-nav-btn" onclick="toggleArticleEN()" title="在「含英文批注」与「仅中文正文」之间切换显示">🌐 英文批注：显示</button></h2>';
+  h+=embed.html;
+  h+='</div>';
+
+  // ── 页脚 ──
+  h+='<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' · <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  root.innerHTML=h;
+
+  // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
+  _initArticleENMode();
+
+  // ── 支持 #锚点 直达（目录跳转用真实 id 锚点）──
+  if(location.hash){
+    setTimeout(function(){
+      var el=document.getElementById(location.hash.slice(1));
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },80);
+  }
+}
+
+if(document.readyState!=='loading'){renderArticle();}
+else{document.addEventListener('DOMContentLoaded',renderArticle);}
+
+// ═══ 多语对读阅读模式：折叠/展开英文批注块 ═══
+// 批注块特征：以「英译对读 / 节级英译要义 / 术语格义 / 主题对读注 / 卷末批注」开头的 blockquote 视作「外文批注」，
+// 可一键切换「仅中文正文」阅读；页头「源文本/对读体例」等研究说明块不受影响。
+function _initArticleENMode(){
+  var s=document.getElementById('article-en-style');
+  if(!s){
+    s=document.createElement('style');
+    s.id='article-en-style';
+    s.textContent='#article-full.en-hidden blockquote.en-block{display:none}';
+    document.head.appendChild(s);
+  }
+  var full=document.getElementById('article-full');
+  if(full&&!full.dataset.enMarked){
+    full.dataset.enMarked='1';
+    full.querySelectorAll('blockquote').forEach(function(bq){
+      var txt=(bq.textContent||'').replace(/\s+/g,' ').trim();
+      if(/^(英译对读|EN对应|🔑|术语格义|主题对读注|卷末批注)/.test(txt)) bq.classList.add('en-block');
+    });
+  }
+  _applyArticleENMode();
+}
+function toggleArticleEN(){
+  var cur=(sessionStorage.getItem('article_en_hide')||'')==='1';
+  sessionStorage.setItem('article_en_hide', cur?'0':'1');
+  localStorage.removeItem('article_en_hide');
+  _applyArticleENMode();
+  var block=document.getElementById('article-full');
+  if(block){
+    block.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(function(){window.scrollBy(0,-140);},200);
+  }
+}
+function _applyArticleENMode(){
+  var full=document.getElementById('article-full');
+  var btn=document.getElementById('article-en-toggle');
+  var hide=(sessionStorage.getItem('article_en_hide')||'')==='1';
+  if(full) full.classList.toggle('en-hidden', hide);
+  if(btn) btn.textContent=hide?'🌐 英文批注：展开':'🌐 英文批注：显示';
+}
+</script>
+</body>
+</html>

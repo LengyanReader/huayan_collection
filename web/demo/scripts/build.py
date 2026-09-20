@@ -806,6 +806,15 @@ def load_standalone_articles():
     for art in ts.get('articles', []):
         if not art.get('id'):
             continue
+        # 默认返回文献页·专题研究，并在 gap 侧栏挂入口；
+        # 允许 YAML 通过 `views` 追加其他选项卡目录入口（如前沿对话某域），
+        # 通过 `back` 覆盖返回链接——默认视图恒保留，不因此丢失文献页入口。
+        ts_views = ['topic-' + art['id']]
+        for v in (art.get('views') or []):
+            if v not in ts_views:
+                ts_views.append(v)
+        ts_back = art.get('back') or {
+            'tab': 'gap', 'view': 'topic-' + art['id'], 'label': '华严文献 · 专题研究'}
         articles.append({
             'id': art['id'],
             'file': 'articles/%s.html' % art['id'],
@@ -815,8 +824,8 @@ def load_standalone_articles():
             'version': art.get('version', ''),
             'meta': art.get('meta', ''),
             'doc': art.get('doc', ''),
-            'back': {'tab': 'gap', 'view': 'topic-' + art['id'], 'label': '华严文献 · 专题研究'},
-            'views': ['topic-' + art['id']],
+            'back': ts_back,
+            'views': ts_views,
         })
 
     # ② 华严祖师 (data/translation/huayan_masters.yaml — 含 review_doc 者)
@@ -984,17 +993,15 @@ function renderWizLibrary() {
   h += '<div class="section" id="hl-overview" style="border-left:4px solid var(--gold)"><h2>📚 海云讲法 · 公开资料</h2>';
   h += '<p style="font-size:0.74em;color:var(--text2);margin:4px 0 0">🔗 本页可分享/收藏的独立地址：<a href="' + (location.href.indexOf('/articles/') >= 0 ? 'haiyun-lectures.html' : '../articles/haiyun-lectures.html') + '" style="color:var(--blue);text-decoration:underline">海云讲法 · 公开资料（独立页）</a> · 访问后可用页顶「分享地址」按钮一键复制。</p>';
   h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.9">' + esc(cat.subtitle || '') + '。全库共 <b style="color:var(--gold)">' + cat.totals.count + '</b> 篇、<b style="color:var(--gold)">' + cat.totals.folders_top + '</b> 个一级目录，文本合计 <b style="color:var(--gold)">' + fmtChars(cat.totals.chars) + '</b>（html 原件 ' + fmtBytes(cat.totals.size) + '）。正文按需加载，支持关键词检索与目录导航，点篇即读。</p>';
+  if ((cat.shortcuts || []).length) {
+    h += '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:0.76em"><span style="color:var(--text2)">🎯 主要讲法方向：</span>';
+    cat.shortcuts.forEach(function(s){
+      h += '<span class="topic-card" style="cursor:pointer;padding:6px 10px" onclick="wzJump(\'' + esc(s.root) + '\')"><b style="color:var(--gold)">' + esc(s.label) + '</b> <span style="color:var(--text2)">' + s.count + ' 篇</span></span>';
+    });
+    h += '</div>';
+  }
   h += '</div>';
-  // ── 主要讲法方向 · 快捷入口 ──
-  h += '<div class="section" id="hl-focus" style="border-left:4px solid var(--blue)"><h2>🎯 主要讲法方向 · 快捷入口</h2>';
-  h += '<div style="display:flex;gap:8px;flex-wrap:wrap;font-size:0.76em">';
-  (cat.shortcuts || []).forEach(function(s){
-    h += '<span class="topic-card" style="cursor:pointer;padding:8px 12px" onclick="wzJump(\'' + esc(s.root) + '\')"><b style="color:var(--gold)">' + esc(s.label) + '</b><br><span style="color:var(--text2)">' + s.count + ' 篇 · ' + fmtChars(s.chars) + '</span></span>';
-  });
-  (cat.top_folders || []).forEach(function(t){
-    h += '<span class="topic-card" style="cursor:pointer;padding:8px 12px" onclick="wzJump(\'' + esc(t.name) + '\')">📁 ' + esc(t.name) + '<br><span style="color:var(--text2)">' + t.count + ' 篇</span></span>';
-  });
-  h += '</div></div>';
+  // 去重：原独立「🎯 主要讲法方向 · 快捷入口」区块已删除——其一级目录卡片行与下方「目录·检索」树重复；三个重点讲法方向改为行内内嵌于本总览。
   // ── 目录·检索 + 阅读器（双栏：左目录 右正文；点篇即阅，无需下滑跳转）──
   h += '<div class="section" id="hl-browse" style="border-left:4px solid var(--gold)"><h2>🔍 目录 · 检索</h2>';
   h += '<p style="font-size:0.74em;color:var(--text2);line-height:1.7">点击左侧篇目，正文即刻在右侧阅读（目录自动展开、当前篇高亮）；输入关键词即输即搜。窄屏时自动上下排列。</p>';

@@ -162,6 +162,20 @@ others:
     back:
       tab: jiaoxing
       view: haiyun_lectures
-      label: 教行页 · 海云讲法 · 公开资料
+      label: 教行页 · 讲法资源 · 海云讲法
     views:
       - haiyun_lectures
+  # 南予其时——「前沿对话」侧栏最底部的独立栏目页（占位；后续感悟/疑情类文章在此挂链接）
+  - id: nanyu
+    icon: 🍊
+    title: 南予其时
+    title_sub: 感悟 · 疑情（预留栏目 · 待补）
+    version: 占位 · 内容待后续补入
+    meta: 本栏目预留，用于专门收录南予的修行感悟与疑情类文章；非学术对读，而是随行随记的心得与参究之问，后续陆续补入。
+    doc: docs/南予其时.md
+    back:
+      tab: frontier
+      view: nanyu
+      label: 前沿对话 · 南予其时
+    views:
+      - nanyu

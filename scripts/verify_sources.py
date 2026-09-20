@@ -23,6 +23,9 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8')
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DB_PATH = PROJECT_ROOT / "data" / "catalog" / "huayan.db"
 DOCS_DIR = PROJECT_ROOT / "docs"

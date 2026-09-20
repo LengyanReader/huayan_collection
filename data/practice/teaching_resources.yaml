@@ -12,13 +12,13 @@ platforms:
   - platform: "Apple Podcast"
     content: "普贤乘华严宗: 20+系列(华严学概论·禅行法·密法·净土)"
     content_en: "The Samantabhadra Vehicle Avatamsaka school: 20+ series (Introduction to Huayan studies · Chan practice · Esoteric practice · Pure Land)"
-    scale: "2000+集"
+    scale: "387集"
     type: "🎧音频"
 
   - platform: "Spotify"
     content: "普贤乘华严宗(每周一/三更新)"
     content_en: "The Samantabhadra Vehicle Avatamsaka school (updated every Monday and Wednesday)"
-    scale: "2000+集"
+    scale: "387集"
     type: "🎧音频"
 
   - platform: "YouTube"

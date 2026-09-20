@@ -10,7 +10,7 @@
 - **海云讲法正文读取路径** `../../../docs/huayanhai/<txt>`（Tab3 jiaoxing.html 与独立页 haiyn-lectures.html 通用）解析到 `/huayan_collection/docs/huayanhai/…` = **main/docs/huayanhai** → 正文必须随 main 提交（commit 1f5db24：645 txt + export_manifest.json + README = 647 项；`.gitignore` 现仅忽略 `docs/huayanhai/**/*.html` 原件，txt/清单/README 正常跟踪）。
 - **线上验证基线**（headless Chrome `--dump-dom` 稳定，CDP 10053 不可靠）：`/web/demo/tabs/jiaoxing.html` 含 `id="hl-topics"`（新构建 3,701,999 B＝仓库 LF 对象）→ 200；正文抽样 `docs/huayanhai/海云行愿/普贤行者二十一行_1.txt` → 200/136,552 B（完整正文可读）。Pages CDN 缓存约 1-2 分钟，推送后需等待刷新。
 - **仓库换行约定**：工作区 CRLF＝提交对象 LF（Git 自动归一），比对线上字节以 `git cat-file -s`（对象）为准，勿用本地磁盘文件大小（差值为 LF↔CRLF 计数）。
-- 遗留提示：`teaching_resources.yaml`「2000+集」与实际 387 集不符【待订正】（尚未处理）。
+- ~~遗留提示：`teaching_resources.yaml`「2000+集」与实际 387 集不符【待订正】（尚未处理）。~~（**已订正 2026-09-20**：Apple Podcast / Spotify 两处 `scale` 「2000+集」→「387集」，以 RSS 核验 387 items 为准）
 
 ---
 
@@ -104,7 +104,7 @@
 - **② 改名**：独立页与教行页标题 `海云法师讲法全库` → **「海云讲法 · 公开资料」**（`standalone_articles.yaml` title/title_sub/back.label 三处 + 页内 h2 双写同步）；独立分享地址不变：`https://lengyanreader.github.io/huayan_collection/web/demo/articles/haiyun-lectures.html`。
 - **③ 双栏阅读布局（目录·检索区重排并前移）**：原「目录树→阅读器」单列、目录压在 40 课题+播客两大块之后，点篇触发**长距离下滑跳转**（用户「点击后下滑到相关位置再点击」现象源头）。现：①目录·检索区移至课题/播客**之前**（总览→快捷入口→双栏阅读→课题→播客→说明）；②阅读区改**左目录·右正文**双栏（右栏 `position:sticky` 顶置、点篇即显、`max-height:78vh` 内滚、窄屏 `flex-wrap` 自动降为上下堆叠）；③阅读器新增导航「←目录 / ↑上一篇 / ↓下一篇 / ⬆顶部」（上一篇/下一篇按全库 `wzAll` 顺序数据驱动）；④点开正文后**自动展开所在文件夹链**、**当前篇高亮**（`wzn-<guid>` id + 金色背景/左描边）、检索命中同样进右侧阅读器。
 - **验证**：build 32 files｜21,556,546 B；verify_demo ✅ ALL CHECKS PASSED；test_pipeline ✅ ALL TESTS PASSED（95 人/98 边/30 地全绿）；`jiaoxing.html` 与 `haiyun-lectures.html` 内联脚本 `new Function` **0 语法错误**＋Node 沙箱 wzFilter/wzOpen **0 ReferenceError**；rename/split/wzn/mark/prevnext/sticky 标记两页齐备。
-- **遗留**：双栏上线后待用户实测体感（78vh 阅读区内滚 vs 整页滚动、上一篇/下一篇按全库顺序 vs 目录内顺序，可再迭代）；`teaching_resources.yaml`「2000+集」与 387 集不符【待订正】仍未处理。
+- **遗留**：双栏上线后待用户实测体感（78vh 阅读区内滚 vs 整页滚动、上一篇/下一篇按全库顺序 vs 目录内顺序，可再迭代）；~~`teaching_resources.yaml`「2000+集」与 387 集不符【待订正】仍未处理~~（**已订正 2026-09-20**）。
 
 ---
 
@@ -211,12 +211,12 @@
 
 | 任务 | 说明 | 状态 |
 |------|------|------|
-| **SQLite数据库初始化** | 执行schema.sql，创建huayan.db | 🔴 待实施 |
-| **JSON→SQLite迁移** | 现有personas/lineages/locations.json → SQLite | 🔴 待实施 |
-| **build.py硬编码→SQLite** | ~30人+~30边+~10地从build.py移入SQLite | 🔴 待实施 |
-| **Neo4j图验证管线** | SQLite→Neo4j加载+连通性/完备性/一致性Cypher | 🔴 待实施 |
-| **SQLite→JSON导出脚本** | export_sqlite_to_json.py | 🔴 待实施 |
-| **lineage.js数据→YAML** | ANIM_WAYPOINTS等10组数据→data/events/*.yaml | 🔴 待实施 |
+| **SQLite数据库初始化** | 执行schema.sql，创建huayan.db | ✅ 已完成·进化引擎核证2026-09-20 |
+| **JSON→SQLite迁移** | 现有personas/lineages/locations.json → SQLite | ✅ 已完成·进化引擎核证2026-09-20 |
+| **build.py硬编码→SQLite** | ~30人+~30边+~10地从build.py移入SQLite | ✅ 已完成·进化引擎核证2026-09-20 |
+| **Neo4j图验证管线** | SQLite→Neo4j加载+连通性/完备性/一致性Cypher | ✅ 已完成·进化引擎核证2026-09-20 |
+| **SQLite→JSON导出脚本** | export_sqlite_to_json.py | ✅ 已完成·进化引擎核证2026-09-20 |
+| **lineage.js数据→YAML** | ANIM_WAYPOINTS等10组数据→data/events/*.yaml | ✅ 已完成·进化引擎核证2026-09-20 |
 | **法脉动画地图联动完善** | 当前使用简化地图布局，动画双地图同步待恢复 | ✅ 已完成 |
 
 ### P1 — 多页面+布局重构（当前阶段）
@@ -657,5 +657,47 @@ python scripts/verify_demo.py
 - **⑤ YAML 1.1 实坑三则（已修·留档）**：a) `no:` 未加引号被解析为布尔 → 播客季号键改 `s:`；b) `fetched: 2026-09-18` 未引号解析为 `datetime.date` → build 报 `Object of type date is not JSON serializable`，改引号化；c) 未引号值内嵌 `: `/`"` 混排为非法 YAML，整体双引号；流式映射不允许尾逗号。
 - **⑥ 修复 wiz 目录树**：`wzTreeHTML` 原 `if (keys.length)` 包裹整段导致**叶子文件夹的笔记不渲染**（645 篇仅 111 条落 DOM）——改为恒渲染 `wz-sub` 容器，全库 **645 篇目录树全部可展开可读**（grep 复核 `class="wz-note"`=645 与 manifest 精确一致）。
 - **⑦ 验证（runtime 实测改为 headless Chrome `--dump-dom`，绕开本机 CDP WebSocket 10053 不稳）**：`node --check` 文章页 3 段内联脚本全 OK（0 SyntaxError）；Tab3 `jiaoxing.html` 实测 `hl-topics`/`hl-podcast`/`hl-overview` 均在、40 课题卡、预设芯片 `wzPodSeason(10)`、24 季 chips＋「全部 387 集」、检索框存在、**默认 S24 表格恰好 24 行、首个链接 `https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-03-202693-e3os2om`（S24-06-03 九九華嚴講座【會後問答】2026年9月第3場）**、目录树 645 篇全渲染；独立文章页 hl-topics/hl-podcast 优雅缺省、hl-overview＋645 篇正常；`scripts/verify_demo.py` ✅ ALL CHECKS PASSED、`scripts/test_pipeline.py` ✅ ALL TESTS PASSED；build 32 files｜**21,551,778 B**（jiaoxing.html 3.65 MB、haiyun-lectures.html 324 KB）。
-- **⑧ 遗留（边界自知）**：播客单集时长/简介取自 RSS 标题与内文简介（`{d,m}` 内联），RSS 无独立时长字段；`teaching_resources.yaml` 曾书 Apple「2000+集」与实际 387 集不符——**建议后续订正**[可随时执行]；互动态（wzJump/wzPodSeason 点击展开）未做 CDP 点击实测（依赖本机 CDP 稳定连接，已用 --dump-dom 静态验渲染，函数体经 node 语法+括号配平校验），下次会话可在 Chrome 真实点击复核。
+- **⑧ 遗留（边界自知）**：播客单集时长/简介取自 RSS 标题与内文简介（`{d,m}` 内联），RSS 无独立时长字段；`teaching_resources.yaml` 曾书 Apple「2000+集」与实际 387 集不符——~~**建议后续订正**[可随时执行]~~（**已订正 2026-09-20**）；互动态（wzJump/wzPodSeason 点击展开）未做 CDP 点击实测（依赖本机 CDP 稳定连接，已用 --dump-dom 静态验渲染，函数体经 node 语法+括号配平校验），下次会话可在 Chrome 真实点击复核。
 - **⑨ 补充·file:// 打开提示自动检测**：用户在 file:// 下点篇即报 `Failed to fetch`（浏览器安全策略禁止按需读本地正文，属预期），非数据缺失。已在 `renderWizLibrary` 顶部按 `location.protocol==='file:'` 注入 `#hl-filemode` 黄色警示横幅（说明成因＋"仓库根目录 `python -m http.server` → `http://127.0.0.1:8000/web/demo/tabs/jiaoxing.html`"＋GitHub Pages 部署提示；file:// 下目录/检索/课题总览仍可用，仅正文按需加载受限）；双写同步（build.py WIZ_LIB_RENDER＋practice.js）后重建 32 files｜**21,553,460 B**；headless Chrome `--dump-dom` 实测（脚本剥离计数）——http 模式 `#hl-filemode` 0 节点＋file:// 模式 1 节点、两模式目录树均 645 篇全渲染、正文 txt 经 http 实测 200/879 字可读；verify_demo/test_pipeline 全绿。
+
+---
+
+## 独立文章·内容修订与导航接入（2026-09-20 · L.㊼ — 新技术与佛教 + 海云讲法导航 + 前沿挂接）
+
+> 依用户指示先修独立文章《新技术与佛教》文字，并将海云讲法资源导航接入「讲法资源」、把《新技术与佛教》挂入「前沿对话」相关目录（均保持独立可访问页）。遵守编务总则 0/1/3/5/6；三项均 `--record` 入进化台账（#9–#11）。
+
+- **① 独立文章《新技术与佛教》文字修订**（`docs/汉传佛教/新技术与佛教_AI与数字人文研究.md`）：a) **术语统一**——全文「模型卡」→**「模型说明卡」**（8 处，首现处 L9 加注 `(model card)`；含 L592 那两句用户点名样例）；b) **口语化→书面/学术**——导言至第十六章约 40 处改写（如「AI 很适合做的事有一长串」→「AI 适宜承担的用途不一而足」、「放心用/不能用」→「可放手采用/则不可采用」、「这把尺子」→「这一度量基准」、「结构不会撒谎」→「结构不会作伪」等）；EN 对应块为正确学术英文，不动；刻意保留作者警策短句声音与「判官/镜子」等正当修辞隐喻。
+- **② 零风险数据订正**：`data/practice/teaching_resources.yaml` Apple Podcast／Spotify「普贤乘华严宗」`scale` 「2000+集」→「387集」（RSS 核验 387 items）——关闭 L.㊻⑧「[可随时执行]」遗留（`teaching_resources.yaml` 顶部遗留提示＋L.㊻⑧ 同步划账）。
+- **③ 海云讲法导航接入「讲法资源」**（依用户「放在讲法资源中、保持独立页面可单独访问」）：`web/demo/src/practice.js` `pv-resources` 顶部新增 `#res-haiyun-nav` 数据驱动导航块（源 `PRACTICE_DATA.haiyun_wiz_catalog`）——全库篇数＋「▶ 在本页打开全库」(`switchPracticeView('haiyun_lectures')`) ＋「🔗 独立页面」(`../articles/haiyun-lectures.html` 新标签) ＋三方向快捷入口（点击 `switchPracticeView` 后 `setTimeout(wzJump(root))` 直达对应目录）；海云讲法独立文章页（`haiyun-lectures.html`）保持不变。
+- **④ 《新技术与佛教》挂入「前沿对话」**（依用户「放在前沿交流页面中相关目录下」）：`web/demo/scripts/build.py` `load_standalone_articles` 专题研究展开分支改为**尊重 YAML 可选 `views`/`back` 追加**（默认 `topic-<id>` 视图恒保留，不丢文献页入口）；`data/translation/topic_studies.yaml` `buddhist-ai` 新增 `views: [ai-indranet]`——经 `articleChip(d.id,'#fv-huayan-ai-indranet')` 在前沿「🤖 人工智能 & 华严因陀罗网」域下自动注入独立文章入口芯片（与 vijnana-mind/mirror-mind 走 `yogacara` 同机制）。
+- **验证**：`build.py` ✅ **33 files｜23,061,022 B**；`verify_demo.py` ✅ **ALL CHECKS PASSED**；`test_pipeline.py` ✅ **ALL TESTS PASSED**；**headless Chrome `--dump-dom` 运行期实测**（http.server:8199 + `--virtual-time-budget`）：jiaoxing DOM 含 `#res-haiyun-nav` 与 `../articles/haiyun-lectures.html` 链接、frontier DOM 含 `#fv-huayan-ai-indranet` 容器且其内已注入指向 `buddhist-ai.html` 的 `article-chip`；`buddhist-ai.html` 重检——裸「模型卡」 0、「模型说明卡」9、“用途不一而足/孰为误译”均命中、无“组织难度很高等”等笔误。`self_evolve.py --ledger` 共 11 事件（#9–#11）。
+- **遗留（边界自知）**：①.2 原登记之 wzJump/wzPodSeason **真 Chrome 点击展开态**本批仅以 `--dump-dom` 静态验容器/芯片/导航均存在（复用已验证的 `switchPracticeView`/`wzJump`/`articleChip` 既有函数）；如仍需逐一点测展开态，待本机 CDP 稳定后补录。
+
+## 海云讲法·重叠去重 ＋ 前沿新增「南予其时」栏目（2026-09-20 · 承接 L.㊼）
+
+> 依用户三项指示：①评估「海云讲法」侧栏 tab 是否冗余；②修复海云讲法页内部重叠（如「主要讲法方向·快捷入口」）；③在「前沿对话」新增「南予其时」tab 为感悟·疑情类文章占位。遵守编务总则 0/1/3/5/6；②③ `--record` 入进化台账（#12–#13）。
+
+- **① 评估结论：保留「海云讲法」侧栏 tab**。该 tab 与「讲法资源」非真冗余——前者是**站内全文库**（645 篇讲法文本＋40 课题多源总览＋S1–S24 播客目录），后者是**站外平台目录**（全网总目/著作/YouTube/道场，均为外链）。用户所感之「重复」实为页内重叠块（见 ②）与上一批 `#res-haiyun-nav` 交叉链接所致；经 ② 去重后观感即消。如仍倾向精简，备选方案为将其**降级为「讲法资源」下的子项**（单一顶层入口）——本批未执行，留待用户定夺。
+- **② 海云讲法页·去重重叠**（双写 `web/demo/src/practice.js` `renderWizLibrary` 与 `web/demo/scripts/build.py` `WIZ_LIB_RENDER`）：删除独立「🎯 主要讲法方向 · 快捷入口」`#hl-focus` 区块——其中 **8 个一级目录卡片（`top_folders`）与下方「目录·检索」`#hl-browse` 树完全重复**；3 个重点方向（`shortcuts`）改为**行内内嵌**于 `#hl-overview` 总览（保留 1-click 直达、去掉独立小节与冗余目录卡片行）。同步移除 `data/navigation.yaml` 中失效的「主要讲法方向→`hl-focus`」子链（`公开资料总览→hl-overview` 已覆盖）。
+- **③ 前沿对话·新增「南予其时」占位栏目**：`data/navigation.yaml` frontier `nav` 于「跨宗教对话」与「文献综述」之间插入 `switchFrontierNav([nanyu])` 顶层项；`data/frontier/frontier_dialogue.yaml` 新增 `sections.nanyu`（title「🍊 南予其时 — 感悟 · 疑情」＋预留 intro＋单域锚点 `id: nanyu-notes`）；`build.py` `inject_frontier_subs` 之 `order` 加入 `nanyu`（注入侧栏子链）；`web/demo/src/frontier.js` 渲染列表（L121）与 `switchFrontier` 显隐列表（L180）均加入 `nanyu`。**后续接入方式**：新感悟/疑情类文章只需在 YAML 登记 `views: [nanyu-notes]`，即经 `articleChip` 自动挂入本栏目（与 `buddhist-ai→ai-indranet`、`vijnana-mind→yogacara` 同机制），栏目位已备好。
+- **验证**：`build.py` ✅ **33 files｜23,065,074 B**；`verify_demo.py` ✅ **ALL CHECKS PASSED**；`test_pipeline.py` ✅ **ALL TESTS PASSED**；静态核验——`jiaoxing.html`/`haiyun-lectures.html` 之 `id="hl-focus"` = **0**、总览行内「主要讲法方向：」命中、`navigation.yaml` 失效子链已删；`frontier.html` 含 `switchFrontierNav('nanyu'` 侧栏项＋`nanyu-notes` 数据＋render/switch 列表更新；**headless Chrome `--dump-dom`** 运行期实测 frontier DOM 含 `id="fv-nanyu"` 容器与 `fv-nanyu-nanyu-notes` 域锚点（占位栏渲染成功）。（PS 管道中文计数因 Out-File 重编码而显 0，ASCII 标记同源命中可反证渲染完成。）`self_evolve.py --ledger` 共 13 事件（#12–#13）。
+- **遗留**：① ~~若用户确认要「降级为子项」再执行~~ → **已执行**（见下 ①′）；③ 「南予其时」已改为独立页（见 ③′），不再依赖 `nanyu-notes` 域。
+
+### ③′ 后续修订：南予其时 → 侧栏最底部 ＋ 独立页面（2026-09-20 · 接前批）
+
+> 依用户新指示——「南予其时」不属学术对话分区，应置于侧栏**最底部**且**点击后为独立页面**。撤销上批的 frontier 内嵌 section 方案，改走独立文章页（台账 #14）。
+
+- **新建独立页**：`docs/南予其时.md`（栏目说明＋接入备忘＋「本栏目篇目」小节，中英对照）；`data/translation/standalone_articles.yaml` `others` 新增 `id: nanyu`（`back: {tab: frontier, label: 前沿对话 · 南予其时}`）——经 `article.js` 自动生成 `web/demo/articles/nanyu.html`（面包屑＋页头横幅＋导览＋全文＋返回链接，与其余 23 篇同构）。
+- **侧栏改为底部链接**：`data/navigation.yaml` frontier `nav` 中「南予其时」移至「文献综述」之后（最底部），`action` 由 `switchFrontierNav([nanyu])` 改为 `{href: '../articles/nanyu.html'}`（顶层 `href` 项由 `render_sidebar` 直出为 `<a href>`）。
+- **回退内嵌 section**：`web/demo/src/frontier.js` render 列表（L121）与 `switchFrontier` 显隐列表（L180）去掉 `nanyu`；`build.py` `inject_frontier_subs` 之 `order` 去掉 `nanyu`；`data/frontier/frontier_dialogue.yaml` 删除 `sections.nanyu` 整块（含 SECTION 4.5 注释与 `nanyu-notes` 域）。
+- **验证**：`build.py` ✅ **34 files｜23,073,916 B**（新增 `nanyu.html`｜articles 目录 **24 篇**）；`verify_demo.py` ✅；`test_pipeline.py` ✅；静态核验——`articles/nanyu.html` 含标题＋`../tabs/frontier.html` 返回链接＋占位正文；`frontier.html` 侧栏含 `href="../articles/nanyu.html"`、`switchFrontierNav('nanyu'` **已消失**、`fv-nanyu`/`nanyu-notes` = **0**（内嵌 section 已完全移除；残留 `nanyu` 仅在共享 `ARTICLES` 数据块与侧栏链接，属良性）；侧栏序位「南予其时」在「文献综述」之后。`self_evolve.py --ledger` 共 14 事件（#14）。
+- **后续接入**：新增感悟/疑情类文章时，在 `standalone_articles.yaml` `others` 登记（`back.tab: frontier`）即自动生成独立页，并在本页「本栏目篇目」小节补链。
+
+### ①′ 海云讲法 → 降级为「讲法资源」子项（2026-09-20 · 接前批 ① 评估之备选）
+
+> 用户采纳前批 ① 评估之备选方案——将「海云讲法」由顶栏一级导航**降级为「讲法资源」下的子项**，消除两个顶层入口的观感重叠（台账 #15）。
+
+- **侧栏扁平化**（`data/navigation.yaml` jiaoxing）：删除「📚 海云讲法·公开资料」顶层 group；其入口改为「讲法资源」 `subs` 内的一条 sub-link「📚 海云讲法 · 公开资料（全库）」（`jxSubNav(haiyun_lectures, hl-overview)`），其余 4 个区段锚点（目录检索/课题多源总览/播客全季目录/阅读与部署说明）标 `subsub: true` 作缩进子项（沿用 frontier 域→文章的二级样式）。
+- **面包屑**：`data/translation/standalone_articles.yaml` `haiyun-lectures` 之 `back.label` 「教行页 · 海云讲法 · 公开资料」→「教行页 · 讲法资源 · 海云讲法」，反映新层级。
+- **功能不变**：`pv-haiyun_lectures` 子页、`switchPracticeView`/`jxSubNav`、`res-haiyun-nav` 内容卡、独立页 `articles/haiyun-lectures.html` 均不依赖顶层分组；降级仅改侧栏结构。（已知小差异：`jxSubNav` 以 `.nav-link[onclick*=view]` 求高亮，海云讲法现为 sub-link，进入该视图时顶层导航不高亮——仅观感，功能无影响。）
+- **验证**：`build.py` ✅ **34 files｜23,073,649 B**；`verify_demo.py` ✅；`test_pipeline.py` ✅；静态核验——`jiaoxing.html` 顶层 `switchPracticeView('haiyun_lectures',this)` 组头 = **0**、「讲法资源」sub-link→`hl-overview` = 1、`sub-sub-link`(hl-browse/topics/podcast/hint) 各 = 1、「讲法资源」nav-link 仍在；独立页 back 面包屑已更新。`self_evolve.py --ledger` 共 15 事件（#15）。

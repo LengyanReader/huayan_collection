@@ -249,6 +249,29 @@ function renderPractice(){
   h+="</div>";
   h+="<div id=pv-resources class=pv-section style=display:none>";
 
+  // ── 海云讲法 · 全库阅读导航（本页内跳转至「海云讲法」子页，另保留可独立访问的文章页）──
+  (function(){
+    var wiz=(typeof PRACTICE_DATA!=='undefined' && PRACTICE_DATA.haiyun_wiz_catalog)||null;
+    h+="<div class=section id=res-haiyun-nav style='border-left:4px solid var(--gold)'>";
+    h+="<h2>📚 海云讲法 · 公开资料全库</h2>";
+    if(wiz && wiz.totals){
+      h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.8>wiz.cn 全量导出 <b style=color:var(--gold)>"+wiz.totals.count+"</b> 篇讲法文本，支持目录导航、关键词检索与逐篇全文阅读。";
+    }else{
+      h+="<p style=font-size:0.8em;color:var(--text2);line-height:1.8>海云继梦导师讲法文本全库，支持目录导航、检索与逐篇阅读。";
+    }
+    h+=" <a href='javascript:void(0)' onclick=\"switchPracticeView('haiyun_lectures');return false\" style='color:var(--blue);font-weight:600;text-decoration:underline'>▶ 在本页打开全库</a>";
+    h+=" · <a href='../articles/haiyun-lectures.html' target=_blank style='color:var(--blue);text-decoration:underline'>🔗 独立页面（可分享/收藏）</a></p>";
+    if(wiz && wiz.shortcuts && wiz.shortcuts.length){
+      h+="<div style='font-size:0.72em;color:var(--text2);margin-top:8px'>🎯 重点讲法方向（点击直达全库内对应目录）：</div>";
+      h+="<div style='display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;font-size:0.76em'>";
+      wiz.shortcuts.forEach(function(s){
+        h+="<span class=topic-card style='cursor:pointer;padding:8px 12px' onclick=\"switchPracticeView('haiyun_lectures');setTimeout(function(){wzJump('"+s.root+"')},150)\"><b style='color:var(--gold)>'+s.label+'</b><br><span style=\"color:var(--text2)\">"+s.count+" 篇 · 点即阅</span></span>";
+      });
+      h+="</div>";
+    }
+    h+="</div>";
+  })();
+
   // ── 全网讲法总目 (data-driven from teaching_resources.yaml platforms) ──
   (function(){
     var pl=(typeof PRACTICE_DATA!=='undefined' && PRACTICE_DATA.teaching_resources && PRACTICE_DATA.teaching_resources.platforms)||[];
@@ -916,17 +939,17 @@ function renderWizLibrary() {
   h += '<div class="section" id="hl-overview" style="border-left:4px solid var(--gold)"><h2>📚 海云讲法 · 公开资料</h2>';
   h += '<p style="font-size:0.74em;color:var(--text2);margin:4px 0 0">🔗 本页可分享/收藏的独立地址：<a href="' + (location.href.indexOf('/articles/') >= 0 ? 'haiyun-lectures.html' : '../articles/haiyun-lectures.html') + '" style="color:var(--blue);text-decoration:underline">海云讲法 · 公开资料（独立页）</a> · 访问后可用页顶「分享地址」按钮一键复制。</p>';
   h += '<p style="font-size:0.78em;color:var(--text2);line-height:1.9">' + esc(cat.subtitle || '') + '。全库共 <b style="color:var(--gold)">' + cat.totals.count + '</b> 篇、<b style="color:var(--gold)">' + cat.totals.folders_top + '</b> 个一级目录，文本合计 <b style="color:var(--gold)">' + fmtChars(cat.totals.chars) + '</b>（html 原件 ' + fmtBytes(cat.totals.size) + '）。正文按需加载，支持关键词检索与目录导航，点篇即读。</p>';
+  if ((cat.shortcuts || []).length) {
+    h += '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:0.76em"><span style="color:var(--text2)">🎯 主要讲法方向：</span>';
+    cat.shortcuts.forEach(function(s){
+      h += '<span class="topic-card" style="cursor:pointer;padding:6px 10px" onclick="wzJump(\'' + esc(s.root) + '\')"><b style="color:var(--gold)">' + esc(s.label) + '</b> <span style="color:var(--text2)">' + s.count + ' 篇</span></span>';
+    });
+    h += '</div>';
+  }
   h += '</div>';
-  // ── 主要讲法方向 · 快捷入口 ──
-  h += '<div class="section" id="hl-focus" style="border-left:4px solid var(--blue)"><h2>🎯 主要讲法方向 · 快捷入口</h2>';
-  h += '<div style="display:flex;gap:8px;flex-wrap:wrap;font-size:0.76em">';
-  (cat.shortcuts || []).forEach(function(s){
-    h += '<span class="topic-card" style="cursor:pointer;padding:8px 12px" onclick="wzJump(\'' + esc(s.root) + '\')"><b style="color:var(--gold)">' + esc(s.label) + '</b><br><span style="color:var(--text2)">' + s.count + ' 篇 · ' + fmtChars(s.chars) + '</span></span>';
-  });
-  (cat.top_folders || []).forEach(function(t){
-    h += '<span class="topic-card" style="cursor:pointer;padding:8px 12px" onclick="wzJump(\'' + esc(t.name) + '\')">📁 ' + esc(t.name) + '<br><span style="color:var(--text2)">' + t.count + ' 篇</span></span>';
-  });
-  h += '</div></div>';
+  // ── 总览（含主要讲法方向快捷入口）──
+  // 去重：原独立「🎯 主要讲法方向 · 快捷入口」区块已删除——其一级目录卡片行与下方「目录·检索」树重复；
+  //       三个重点讲法方向改为行内内嵌于本总览；重点方向的成组导航另见「讲法资源 → 海云讲法全库」。
   // ── 目录·检索 + 阅读器（双栏：左目录 右正文；点篇即阅，无需下滑跳转）──
   h += '<div class="section" id="hl-browse" style="border-left:4px solid var(--gold)"><h2>🔍 目录 · 检索</h2>';
   h += '<p style="font-size:0.74em;color:var(--text2);line-height:1.7">点击左侧篇目，正文即刻在右侧阅读（目录自动展开、当前篇高亮）；输入关键词即输即搜。窄屏时自动上下排列。</p>';

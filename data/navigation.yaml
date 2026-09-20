@@ -412,20 +412,19 @@ navigation:
         action: {type: call, fn: jxSubNav, args: [resources, res-more]}
       - label: 最新动态
         action: {type: call, fn: jxSubNav, args: [resources, res-news]}
-    - label: 📚 海云讲法·公开资料
-      action: {type: call, fn: switchPracticeView, args: [haiyun_lectures]}
-      subs:
-      - label: 公开资料总览
+      - label: 📚 海云讲法 · 公开资料（全库）
         action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-overview]}
-      - label: 主要讲法方向
-        action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-focus]}
       - label: 目录检索
+        subsub: true
         action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-browse]}
       - label: 课题多源总览
+        subsub: true
         action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-topics]}
       - label: 播客全季目录
+        subsub: true
         action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-podcast]}
       - label: 阅读与部署说明
+        subsub: true
         action: {type: call, fn: jxSubNav, args: [haiyun_lectures, hl-hint]}
 
   frontier:
@@ -451,6 +450,9 @@ navigation:
     - label: 📑 文献综述
       label_sub: Lit. Review
       action: {type: call, fn: switchFrontierNav, args: [litreview]}
+    - label: 🍊 南予其时
+      label_sub: 独立栏目 · 感悟与疑情
+      action: {href: '../articles/nanyu.html'}
 
   cosmology:
     title: 世主妙严 · 华藏世界海

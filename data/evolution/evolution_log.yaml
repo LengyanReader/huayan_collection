@@ -1,0 +1,152 @@
+schema: huayan.evolution.log/v1
+events:
+- seq: 1
+  ts: '2026-09-20T14:55:20'
+  date: '2026-09-20'
+  cycle: 1
+  actor: auto
+  category: cycle_run
+  subject: '周期 #1 体检总览'
+  outcome: observed
+  after: health=67.1 open=75 high=61
+  evidence: '管线全绿: test_pipeline=✅,verify_demo=✅,verify_sources=✅'
+  rationale: 新增 75·归档 0·台账矛盾 0
+- seq: 2
+  ts: '2026-09-20T14:55:20'
+  date: '2026-09-20'
+  cycle: 1
+  actor: auto
+  category: marker_register
+  subject: 登记新增待办 75 项
+  outcome: applied
+  rationale: 扫描 include 文件命中的待核/存疑/待订正标记
+- seq: 3
+  ts: '2026-09-20T14:55:20'
+  date: '2026-09-20'
+  cycle: 1
+  actor: auto
+  category: threshold_tune
+  subject: escalation_window_days
+  outcome: applied
+  before: 30
+  after: 27
+  rationale: 高优先积压 61 vs 带限[6,25]→收紧
+- seq: 4
+  ts: '2026-09-20T14:55:20'
+  date: '2026-09-20'
+  cycle: 1
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +14d → 2026-10-04
+  rationale: 据积压与阈值推算复核节奏
+- seq: 5
+  ts: '2026-09-20T14:55:21'
+  date: '2026-09-20'
+  cycle: null
+  actor: human
+  category: progress_backfill
+  subject: next-phase-plan P0 6项(SQLite初始化/JSON→SQLite迁移/build去硬编码/Neo4j管线/导出脚本/lineage→YAML)
+  outcome: applied
+  action: 管线全绿佐证下回填 🔴待实施→✅已完成·进化引擎核证2026-09-20（台账上线前历史动作，补记）
+- seq: 6
+  ts: '2026-09-20T14:58:23'
+  date: '2026-09-20'
+  cycle: 2
+  actor: auto
+  category: cycle_run
+  subject: '周期 #2 体检总览'
+  outcome: observed
+  after: health=69.5 open=75 high=61
+  evidence: (验证跳过)
+  rationale: 新增 0·归档 0·台账矛盾 0
+- seq: 7
+  ts: '2026-09-20T14:58:23'
+  date: '2026-09-20'
+  cycle: 2
+  actor: auto
+  category: threshold_tune
+  subject: escalation_window_days
+  outcome: applied
+  before: 27
+  after: 24
+  rationale: 高优先积压 61 vs 带限[6,25]→收紧
+- seq: 8
+  ts: '2026-09-20T14:58:23'
+  date: '2026-09-20'
+  cycle: 2
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +14d → 2026-10-04
+  rationale: 据积压与阈值推算复核节奏
+- seq: 9
+  ts: '2026-09-20T15:45:12'
+  date: '2026-09-20'
+  cycle: null
+  actor: agent
+  category: content_edit
+  subject: 独立文章·新技术与佛教
+  outcome: applied
+  action: 术语统一 模型卡→模型说明卡(首现注 model card)；口语化→书面/学术改写(导言至第十六章约40处)
+- seq: 10
+  ts: '2026-09-20T15:45:13'
+  date: '2026-09-20'
+  cycle: null
+  actor: agent
+  category: data_correction
+  subject: teaching_resources.yaml·播客规模
+  outcome: applied
+  action: Apple/Spotify 普贤乘华严宗 scale 2000+集→387集(RSS核验387 items)，关闭 L.㊻⑧ 可随时执行遗留
+- seq: 11
+  ts: '2026-09-20T15:45:14'
+  date: '2026-09-20'
+  cycle: null
+  actor: agent
+  category: content_integration
+  subject: 海云讲法导航+前沿挂接
+  outcome: applied
+  action: 讲法资源(pv-resources)顶部加海云讲法全库导航(本页跳转+独立页链接+三方向快捷入口)；build.py 令 topic_studies 支持 views 追加，新技术与佛教挂入前沿Tab
+    ai-indranet 域
+- seq: 12
+  ts: '2026-09-20T16:21:15'
+  date: '2026-09-20'
+  cycle: null
+  actor: agent
+  category: ui_refactor
+  subject: 海云讲法页·去#hl-focus重叠块(practice.js+build.py双写)
+  outcome: applied
+  action: 删除独立「主要讲法方向·快捷入口」区块(8个一级目录卡片与目录树重复)，3个重点方向内并入总览；移除navigation.yaml失效子链hl-focus。保留海云讲法侧栏tab(与讲法资源内容不同域：内部全文库
+    vs 外链目录)
+- seq: 13
+  ts: '2026-09-20T16:21:16'
+  date: '2026-09-20'
+  cycle: null
+  actor: agent
+  category: content_integration
+  subject: 前沿对话新增「南予其时」tab占位
+  outcome: applied
+  action: navigation.yaml+frontier_dialogue.yaml(section nanyu/anchor nanyu-notes)+build.py order+frontier.js
+    render/switch列表；感悟·疑情类文章后续经views:[nanyu-notes]自动挂入。headless-DOM确认fv-nanyu容器渲染
+- seq: 14
+  ts: '2026-09-20T16:49:01'
+  date: '2026-09-20'
+  cycle: null
+  actor: agent
+  category: ui_refactor
+  subject: 南予其时·由frontier内嵌section改为最底部独立页面
+  outcome: applied
+  action: 用户指示：移到tab最底部+打开为独立页面。新建docs/南予其时.md占位+standalone_articles.yaml注册id:nanyu(back:frontier)→articles/nanyu.html；navigation.yaml南予其时移至文献综述之后、改action:href；回退frontier内section(frontier.js
+    render/switch列表+build.py order+frontier_dialogue.yaml删nanyu section)。build 34 files,verify+pipeline均过,headless-free静态核验fv-nanyu/nanyu-notes=0、侧栏href+底部序位命中
+- seq: 15
+  ts: '2026-09-20T17:11:17'
+  date: '2026-09-20'
+  cycle: null
+  actor: agent
+  category: ui_refactor
+  subject: 海云讲法降级为讲法资源子项(侧栏扁平化)
+  outcome: applied
+  action: navigation.yaml删除海云讲法顶层group，其入口改为讲法资源sub-link(jxSubNav haiyun_lectures/hl-overview)，5→1+4：余4锚点作subsub缩进子项；standalone_articles.yaml
+    back.label改教行页·讲法资源·海云讲法。switchPracticeView/jxSubNav/pv-haiyun_lectures均不依赖顶层分组，功能不变。build 34 files,verify+pipeline过,静态核验顶层组=0·sub-link=1·sub-sub-link(hl-*)各1

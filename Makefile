@@ -10,7 +10,7 @@ PYTHON = $(CONDA_PYTHON)
 NEO4J_HOME = $(HOME)/neo4j-community-5.26.4
 JAVA_HOME = "C:/Program Files/Java/jdk-20"
 
-.PHONY: install install-dev db-init db-reset neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test clean env-info verify-sources verify-data demo demo-build demo-verify demo-serve demo-deploy
+.PHONY: install install-dev db-init db-reset neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test clean env-info verify-sources verify-data demo demo-build demo-verify demo-serve demo-deploy evolve evolve-apply evolve-links evolve-ledger
 
 ## 环境信息
 env-info:
@@ -92,6 +92,19 @@ demo-deploy: demo
 	git commit -m "deploy: demo update" || true
 	git push origin main
 	@echo "Deployed. Wait ~2min for GitHub Pages CDN."
+
+## 自我进化机制 (docs/self-evolution.md)
+evolve:
+	$(PYTHON) scripts/self_evolve.py
+
+evolve-apply:
+	$(PYTHON) scripts/self_evolve.py --apply
+
+evolve-links:
+	$(PYTHON) scripts/self_evolve.py --check-links
+
+evolve-ledger:
+	$(PYTHON) scripts/self_evolve.py --ledger
 
 ## 清理
 clean:

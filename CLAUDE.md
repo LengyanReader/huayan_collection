@@ -47,6 +47,7 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 | 知识管理 | [docs/knowledge-management.md](docs/knowledge-management.md) | SQLite/Neo4j/YAML三层规范 |
 | **参考文献管理** | [docs/reference-management.md](docs/reference-management.md) | 文献知识库维护规范 (新增) |
 | 工程工作流 | [docs/engineering-workflow.md](docs/engineering-workflow.md) | Loop/Graph Engineering |
+| **自我进化机制** | [docs/self-evolution.md](docs/self-evolution.md) | 闭环自适应体检：`make evolve` 感知→解释→半自动行动→学习；每一次自动/人工动作均落盘于只追加台账 `evolution_log.yaml` |
 | 翻译规范 | [docs/translation-guide.md](docs/translation-guide.md) | 藏汉对译玄奘体规范 |
 | 多语对读 | [docs/multilingual-alignment.md](docs/multilingual-alignment.md) | 梵-于阗-藏-汉-满-英对读架构 |
 | 校验框架 | [docs/verification-framework.md](docs/verification-framework.md) | 三级来源分级 + 验证状态机 |
@@ -194,4 +195,9 @@ python web/demo/scripts/build.py
 
 # 构建产物验证
 python scripts/verify_demo.py
+
+# 自我进化周期 (感知验证关卡/待核存疑积压/进度台账矛盾 → 健康度报告+老化排序待办梯队)
+python scripts/self_evolve.py            # 干跑一轮（不改研究内容）  或 make evolve
+python scripts/self_evolve.py --apply    # 追加：对已核证进度逐项确认回填 P0  或 make evolve-apply
+python scripts/self_evolve.py --ledger   # 查看进化台账（每次自动/人工动作的只追加审计流水） 或 make evolve-ledger
 ```
