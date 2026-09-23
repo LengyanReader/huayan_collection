@@ -1480,36 +1480,201 @@ sections:
     source: 《坛经·机缘品》无尽藏·灯录妙总·Barbara Ruch 论无外如大·Gross《Buddhism After Patriarchy》(1993)〔待核〕·Fink UBC 2020·Cheng(Routledge)·2024 思文閣《無外如大尼》·https://en.wikipedia.org/wiki/Mugai_Nyodai
 references:
   academic:
-  - 'Heinrich Dumoulin, Zen Buddhism: A History, Vol.1 India and China (Macmillan,
-    1988). ISBN 978-0029082201'
-  - John R. McRae, Seeing Through Zen (UC Press, 2003). ISBN 978-0520237988
-  - John R. McRae, The Northern School and the Formation of Early Ch'an Buddhism (Hawaii,
-    1986)
-  - 'Bernard Faure, The Rhetoric of Immediacy: A Cultural Critique of Chan/Zen Buddhism
-    (Princeton, 1991). ISBN 978-0691029634'
-  - 印顺《中国禅宗史》(1971, 正闻出版社)
-  - 柳田圣山《初期禅宗史书の研究》(法藏馆, 1967)
-  - Robert Buswell (ed.), The Zen Canon (Oxford, 2004). ISBN 978-0195150681
-  - 'Morten Schlütter & Stephen F. Teiser (eds.), Readings of the Platform Sūtra (Columbia UP, 2012)'
-  - 'Donald S. Lopez Jr. (ed.), The Oxford Handbook of Contemporary Buddhism (Oxford UP, 2017)'
-  - '「Dōgen''s Treatment of Huayan Concepts of Mind-Only and One-and-All」(HAL open-access, 2021)'
-  - '「Reconsidering Tibetan Chan」·Sheehy, Early Tibet on Heshang Moheyan·Demiéville《Le concile de bSam yas》(1952)'
-  - 'Sarah Fink, The Feminist Buddha: Buddhist Nuns in Contemporary Chengdu (UBC, 2020)·Rita Gross, Buddhism After Patriarchy (1993)'
+  - label: 'Heinrich Dumoulin, Zen Buddhism: A History, Vol.1 India & China (Macmillan, 1988). ISBN 978-0029082201'
+    tier: A
+    note: 禅通史奠基
+  - label: John R. McRae, Seeing Through Zen (UC Press, 2003). ISBN 978-0520237988
+    tier: A
+    note: 「看破」话语批判
+  - label: John R. McRae, The Northern School and the Formation of Early Ch'an Buddhism (Hawaii, 1986)
+    tier: A
+    note: 北宗研究奠基
+  - label: 'Bernard Faure, The Rhetoric of Immediacy: A Cultural Critique of Chan/Zen Buddhism (Princeton, 1991). ISBN 978-0691029634'
+    tier: A
+  - label: 印顺《中国禅宗史》(正闻出版社, 1971)
+    tier: A
+    note: 华文禅史经典
+  - label: 柳田聖山《初期禅宗史書の研究》(法藏馆, 1967)
+    tier: A
+    note: 敦煌禅籍文献学总源头
+  - label: 'Robert Buswell (ed.), The Zen Canon: A Zen Classic and Its Interpretations (Oxford, 2004). ISBN 978-0195150681'
+    tier: A
+  - label: Robert Buswell & Robert Beal Jr. (eds.), The Princeton Dictionary of Buddhism (Princeton, 2014)
+    tier: A
+    note: 术语权威工具书
+  - label: Morten Schlütter & Stephen F. Teiser (eds.), Readings of the Platform Sūtra (Columbia UP, 2012). ISBN 9780231158213
+    tier: A
+    url: https://cup.columbia.edu/book/readings-of-the-platform-sutra/9780231158213/
+    note: 坛经纳入亚洲宗教读法典范
+  - label: Donald S. Lopez Jr. (ed.), The Oxford Handbook of Contemporary Buddhism (Oxford UP, 2017)
+    tier: A
+    url: https://ixtheo.de/Record/1655921223
+    note: 41 篇·含禅/东亚段综述
+  - label: 白光（主持）《六祖坛经》对勘集释·国家社科基金青年项目 (2015)
+    tier: B
+    url: http://www.nopss.gov.cn/n1/2015/1223/c373410-27966078.html
+    note: 版本对勘中文新近整理
+  - label: 邓文宽《敦煌坛经读本》(民主与建设出版社, 2019)
+    tier: B
+    url: https://baike.baidu.com/item/%E6%95%A6%E7%85%8C%E5%9D%9B%E7%BB%8F%E8%AF%BB%E6%9C%AC/24593623
+    note: 藏经洞唐五代写本校注读本
+  - label: 'Michael Sheehy, ''Tibetan Chan II: the teachings of Heshang Moheyan'', Early Tibet (2008)'
+    tier: B
+    url: https://earlytibet.com/2008-05-15/tibetan-chan-ii-the-teachings-of-heshang-moheyan/
+    note: 藏文敦煌文献之禅
+  - label: '''Reconsidering Tibetan Chan'' (Academia.edu)'
+    tier: B
+    url: https://www.academia.edu/76005701/Reconsidering_Tibetan_Chan
+    note: 重估摩诃衍顿门·破反修行简化叙事
+  - label: 한국불교학회, 「쌈얘 논쟁의 비판적 검토」《佛敎學硏究》(2023-06)
+    tier: B
+    url: https://journal.kabs.re.kr/articles/article/zv5O/
+    note: 从藏传论争角度重审 bSam yas
+  - label: 'Buswell trans., The Korean Approach to Zen: The Collected Works of Chinul, 2 vols. (Hawaii)'
+    tier: A
+    url: https://buddhistuniversity.net/content/monographs/collected-works-of-chinul_jinul
+    note: 知讷·Korean Seon 奠基
+  - label: Buswell (gen. ed.), The Collected Works of Korean Buddhism (UCLA / Bukkyo, 2007–2012)
+    tier: A
+    url: https://www.international.ucla.edu/buddhist/article/127590
+    note: 东亚禅韩国段英译
+  - label: 小川隆（駒澤大学）唐宋禅思想类型化·「How Zen Became Chan」会议报告（颜氏, frogbear, 2023-10）
+    tier: B
+    url: https://frogbear.org/how-zen-became-chan-conference-report-by-yan-shiwei-chinese/
+    note: 铃木大拙→道元·白隐·盘珪脉络
+  - label: 「日本近代曹洞宗禅学者が臨济宗禅学者を批判——忽滑谷快天を中心に」(AIRITiLibrary 近刊)
+    tier: B
+    url: https://www.airitilibrary.com/Article/Detail?DocID=P20181205001-N202602030003-00001
+    note: 战前内部互批再发现
+  doctrinal_schools:
+  - label: '''Dōgen''s Treatment of Huayan Concepts of Mind-Only and One-and-All'' (HAL open-access, 2021-02)'
+    tier: A
+    url: https://hal.science/hal-03125135/document
+    note: 本项目(华严×禅)最相关近年英文论文
+  - label: 「華嚴判教論辨微」/「當代學界對華嚴判教安立空有始教·同別圓教之批評」(NTU 佛學研究庫, 2007)
+    tier: B
+    url: https://buddhism.lib.ntu.edu.tw/FT/JA/712726.pdf
+    note: 与禅之「别教一乘圆教」定位相关
+  - label: 哈佛燕京「华严法界观门校释研究」书评 (2018-07)
+    tier: B
+    url: https://www.harvard-yenching.org/research/huayan-fajie-guanmen-research-and-annotation/
+    note: 杜顺《法界观门》与禅观之交涉
+  - label: 山部能宜 (Yamabe) 阿赖耶识思想起源研究·《华林国际佛学学刊》
+    tier: B
+    url: https://glorisunglobalnetwork.org/chin-hijbs/
+    note: 为海云「心王·心所」禅法提供唯识参照
   buddhist_internal:
-  - 《六祖大师法宝坛经》(宗宝本, T48n2008)
-  - 《景德传灯录》(道原, T51n2076)
-  - 《碧岩录》(圆悟克勤, T48n2003)
-  - 《无门关》(无门慧开, T48n2005)
-  - 《来果禅师语录》(上海佛学书局)
-  - 《虚云老和尚法汇》(云居山真如寺)
+  - label: 《六祖大师法宝坛经》(宗宝本, T48n2008)
+    tier: A
+  - label: 《景德传灯录》(道原, T51n2076)
+    tier: A
+  - label: 《碧岩录》(圆悟克勤, T48n2003)
+    tier: A
+  - label: 《无门关》(无门慧开, T48n2005)
+    tier: A
+  - label: 《楞伽师资记》(净觉)·《传法宝纪》·《二入四行论》(达摩) — 敦煌本
+    tier: B
+    note: 北宗·敦煌禅籍原典群
+  - label: 神秀（系）《观心论》
+    tier: B
+    note: 北宗「拂尘看净·观心」实修原典
+  - label: 《来果禅师语录》(上海佛学书局)
+    tier: B
+  - label: 《虚云老和尚法汇》(云居山真如寺)
+    tier: B
   modern:
-  - 净慧《生活禅钥》·《入禅之门》(柏林禅寺)
-  - D.T. Suzuki, Essays in Zen Buddhism, 3 vols. (1927-1934)
-  - Philip Kapleau, The Three Pillars of Zen (1965). ISBN 978-0385260930
-  - Shunryu Suzuki, Zen Mind, Beginner's Mind (1970). ISBN 978-0834800793
+  - label: 净慧《生活禅钥》·《入禅之门》(柏林禅寺)
+    tier: B
+    note: 生活禅体系
+  - label: 冯焕珍《云门天子——佛源妙心禅师的禅法及其宗风》(全二册)·《参禅有道：坛经与禅宗十二讲》
+    tier: B
+    url: https://www.amazon.com/Books-%E5%86%AF%E7%84%95%E7%8F%8D/s?rh=n%3A283155%2Cp_27%3A%25E5%2586%25AF%25E7%2584%2595%25E7%258F%258D
+    note: 云门一系当代禅法研究·线索
+  - label: 《虚云法师讲演录》(2023 重印本)
+    tier: B
+    url: https://hx-culture.oss-cn-hangzhou.aliyuncs.com/jxfx/2023-08-28/aa131903d5d04915ad5206c3771bfe5a.pdf
+    note: 门下本焕·净慧·体光亲承自述·线索
+  - label: D.T. Suzuki, Essays in Zen Buddhism, 3 vols. (1927–1934)
+    tier: A
+    note: 禅西传首倡
+  - label: Philip Kapleau, The Three Pillars of Zen (1965). ISBN 978-0385260930
+    tier: B
+  - label: Shunryu Suzuki, Zen Mind, Beginner's Mind (1970). ISBN 978-0834800793
+    tier: B
+  interdisciplinary:
+  - label: 'Ehmann et al., ''Mindfulness, cognition, and long-term meditators: Toward a science of advanced meditation'', Imaging Neuroscience (MIT Press, 2025-07)'
+    tier: A
+    url: https://meditation.mgh.harvard.edu/files/Ehmann_25_ImagingNeuroscience.pdf
+    note: 长期禅修者认知-行为结果综合
+  - label: '''A systematic review and ALE meta-analysis of 22 fMRI studies of Buddhist meditation'', Frontiers in Psychology (2023-10)'
+    tier: A
+    url: https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1136983/full
+    note: 促醒/唤起神经证据
+  - label: '''New practice or old tradition? EBBE''s translation strategy of the Platform Sūtra'', Frontiers in Communication (2025-07)'
+    tier: A
+    url: https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2025.1569555/pdf
+    note: 以 Lefevere 框架析英译策略
+  - label: Donald Sharf, 'Buddhist Modernism and the Rhetoric of Meditative Experience' (1995)
+    tier: A
+    note: 一切「纯经验」禅述之元批判
+  - label: 'Ronald Purser, McMindfulness: How Mindfulness Became the New Capitalist Spirituality (2019)'
+    tier: B
+    note: 正念资本主义批判
+  - label: 'Sarah Fink, The Feminist Buddha: Buddhist Nuns in Contemporary Chengdu (UBC dissertation, 2020-11)'
+    tier: B
+    url: https://frogbear.org/wp-content/uploads/2020/11/ubc_2020_november_fink_sarah.pdf
+  - label: 'Rita Gross, Buddhism After Patriarchy: A Feminist History, Analysis, and Reconstruction of Buddhism (SUNY, 1993)'
+    tier: A
+  - label: 'Li-yu Cheng, Buddhist Nuns in Taiwan and Sri Lanka: A Critique of the Feminist Perspective (Routledge)'
+    tier: A
+    url: https://www.routledge.com/Buddhist-Nuns-in-Taiwan-and-Sri-Lanka-A-Critique-of-the-Feminist-Perspective/Cheng/p/book/9780415596268
+  - label: '''Reshaping Gendered Boundaries: Buddhist Women''s Monastic Experience in Korean Buddhism'' (2025-02)'
+    tier: B
+    url: https://www.researchgate.net/publication/388878553
+  - label: Brill, 'Menstruation, Gender Segregation, and a Kōan' (chapter, 2023-08)
+    tier: A
+    url: https://brill.com/display/book/9789004544925/BP000016.xml
+    note: 当代比丘尼以身世入公案
+  - label: MDPI Religions, special issue 'Women in Buddhism'
+    tier: A
+    url: https://www.mdpi.com/journal/religions/special_issues/WB
+  digital_infrastructure:
+  - label: CBETA 中华电子佛典协会 — 汉文大藏经结构化全文
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/
+    note: 本项目 T 号经源
+  - label: DILA 数位佛学研究中心 — CBETA 线上·学术辞典
+    tier: A
+    url: https://www.dila.edu.tw/
+  - label: BDRC / BUDA (Buddhist Digital Resource Center → Archives)
+    tier: A
+    url: https://www.bdrc.io/buda-archive/
+    note: 首个全面 Linked Open Data 佛教资源
+  - label: Numata Center / BDK — 佛典英译开放取（《坛经》英译在此）
+    tier: A
+    url: https://bdkamerica.org/download/1872
+  - label: 佛学数位图书馆·台湾大学 (NTU DGBL) — 铭文·论文全文库
+    tier: A
+    url: https://dlbs.liberal.ntu.edu.tw/
+    note: 本项目神会塔铭核实处
+  - label: 《中華佛學學報》(Chung-Hwa Buddhist Journal, 法鼓山人文学院)
+    tier: A
+    url: https://www.chibs.edu.tw/ch_html/chbs/%E4%B8%AD%E8%8F%AF%E4%BD%9B%E5%AD%B8%E5%AD%B8%E5%A0%B1%E7%B8%BD%E7%9B%AE%E9%8C%84.pdf
+    note: 国际同行评审·禅学论文密集
+  - label: 《中国佛学》(中国佛学院学报, 顾问 楼宇烈·杨曾文·方立天)
+    tier: B
+    url: https://www.jikan.com.cn/c/c?id=466
+  - label: 香光尼众佛图书馆「佛教禅观研究相关书目」
+    tier: B
+    url: https://www.gaya.org.tw/library/readers/guide-24.htm
+    note: 实修文献导航
+  - label: 台师大《禅宗研究的基本文献与工具书》(教学纲要页)
+    tier: B
+    url: https://web.ntnu.edu.tw/~t21015/Z-data92.htm
+    note: 灯录·语录·正续藏·目录题解总目
   haiyun:
   - 海云继梦《非常坛经》(海南出版社)
-  - 海云继梦·禅宗系列讲记(wuming.xuefo.net/fjdh.cn)
+  - 海云继梦·禅宗系列讲记 (wuming.xuefo.net / fjdh.cn)
   - 大华严寺官网源流与传承
   - S3華嚴禪行法·S8禪與入定·S9東山法門與禪宗的特色 (Spotify/Apple)
 diagrams:

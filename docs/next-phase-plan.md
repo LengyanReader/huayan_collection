@@ -60,6 +60,19 @@
 
 ---
 
+## L.51 《禅门实迹 · 参考文献结构化》（2026-09-24）
+
+> 用户检视页面后反馈：`references` **太少**、缺**信度评估**、缺**可回看检查的链接**。据此把 `data/practice/chan_authentic_traces.yaml` 的 `references` 由纯字符串**升级为结构化条目** `{label, tier, url, note}`：
+>
+> - **量**：26 → **61 条**；类目由 4（academic/buddhist_internal/modern/haiyun）扩为 **7**——新增 `doctrinal_schools`（教下·道元华严接口）、`interdisciplinary`（认知科学·正念批判·性别研究）、`digital_infrastructure`（CBETA/DILA/BDRC·BDK/台大 DGBL·学报入口）。多数字条**回连 `docs/禅门文献与研究地图_四域近年.md`**（同一手 WebSearch 溯源）。
+> - **信度分级**：每条标 **A 一手权威 / B 专著·学位论文 / C 线索待核**（承 `harness/workflows/academic-standards.md` 三级），页顶 summary 带图例。
+> - **可回查链接**：**34 条**带 `url`→页面渲染为 `🔗核对` 新标签链接；无一手链接者留空（不臆造 URL）。`haiyun` 本宗自述**保留纯字符串·不纳学术分级**。
+> - **双渲染器同步**：`renderChanTraces()` 有两处产出源——`web/demo/scripts/build.py` `CHAN_TRACES_RENDER`（独立文章页内联）与 `web/demo/src/practice.js`（tab 内联）——两处 references 渲染改为**同构**，且**向后兼容纯字符串**（`typeof r==='string'` 分支）。
+> - **安全落地**：`references:` 块以一次性脚本 `_tmp_refs.py` 在 `references:`↔`diagrams:` 间**原文本拼接**（`yaml.safe_dump` 只重写该子树），**绕开 SearchReplace 对 YAML `\n` 折叠的已知陷阱**；写前断言 `lineage_evolution.mermaid` 逐字节 == HEAD、`sections` 不变。校验后删脚本。
+> - **门禁**：`test_pipeline` ✅ / `build` 34 files ✅ / `verify_demo` ✅ ALL PASSED；渲染页 10 项结构+链接检查全 PASS。`self_evolve`：健康 83.1 持平、sev≥4 **29 未增**（本轮零新增〔待核〕·以真实链接与 tier 落地）。台账记 `content_expand`。
+
+---
+
 ## L.㊿ 《新技术与佛教》独立页·全方位审校定案（2026-09-20）
 
 > 用户上线《新技术与佛教》草稿独立页后要求**全方位检查**（完整性／准确度／文笔风格一致性等）并修复调优。发现并修复：

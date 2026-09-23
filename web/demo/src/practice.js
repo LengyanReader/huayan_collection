@@ -869,10 +869,18 @@ function renderChanTraces() {
   });
   // References
   if (ct.references) {
-    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 (学术·门内·近现代·海云)</summary>';
+    var RT={A:'一手·权威',B:'专著·学位论文',C:'线索·待核'},RC={A:'var(--gold)',B:'var(--blue)',C:'#d98a00'};
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 · 信度分级（A 一手权威 · B 专著/学位论文 · C 线索待核）· 🔗 均指向可回查原页</summary>';
     Object.keys(ct.references).forEach(function(k) {
-      h += '<p style=margin:4px 0><b>' + k + '</b></p><ul style=margin:0>';
-      ct.references[k].forEach(function(r) { h += '<li>' + r + '</li>'; });
+      h += '<p style=margin:8px 0 2px><b>' + k + '</b></p><ul style=margin:0;padding-left:18px>';
+      ct.references[k].forEach(function(r) {
+        if (typeof r === 'string') { h += '<li style=margin:2px 0>' + r + '</li>'; return; }
+        var lb = r.label || r.cite || '';
+        var bd = (r.tier && RT[r.tier]) ? '<span title="信度 ' + RT[r.tier] + '" style="display:inline-block;min-width:13px;text-align:center;padding:0 4px;margin-right:5px;border:1px solid ' + RC[r.tier] + ';border-radius:3px;color:' + RC[r.tier] + ';font-weight:700;font-size:0.88em">' + r.tier + '</span>' : '';
+        var nt = r.note ? ' <span style="color:var(--text2)">— ' + r.note + '</span>' : '';
+        var lk = r.url ? ' <a href="' + r.url + '" target=_blank rel="noopener" style="color:var(--blue);text-decoration:none;white-space:nowrap">🔗核对</a>' : '';
+        h += '<li style=margin:2px 0>' + bd + lb + nt + lk + '</li>';
+      });
       h += '</ul>';
     });
     h += '</details>';

@@ -428,3 +428,13 @@ events:
   outcome: applied
   action: Derived from docs/禅门文献与研究地图_四域近年.md; inserted by raw-text splice, mermaid byte-identical to
     HEAD; 3 verification gates green; new 待核 markers are honest boundary notes
+- seq: 42
+  ts: '2026-09-24T07:04:51'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: '禅门实迹 references: 26→61 条·A/B/C 信度分级+34可回查链接·新增教下/跨学科/数字基建三类'
+  outcome: applied
+  action: references 结构化(label/tier/url/note)+双渲染器(build.py CHAN_TRACES_RENDER & practice.js)向后兼容纯字符串;
+    Haiyun 本宗自述留不分级; mermaid 逐字节未动
