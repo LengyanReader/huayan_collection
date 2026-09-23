@@ -31,6 +31,7 @@
 - `npx skills find`（联网检索具体技能）在本环境**被中断/未成功**，故 `skills.md` §三的"可安装候选"为**方向性建议**，安装命令为**待执行**，非既成事实。
 - 2026-09-23（覆盖度复审）：应"double check 是否全面且深入"再审计——比对 `scripts/`（23 脚本）与 `web/demo/src/`（10 JS）实际资产，发现初版遗漏两个工程量最大的面→新增 `workflows/data-pipeline.md`、`workflows/web-ui.md`，并补全 `tools.md` §1b 脚本清单（审计/回填/抓取/OCR）。复审均为**实读代码/脚本名与行号**为据，未臆断。
 - 2026-09-23（待核项证据核实）：跟踪 `build_demo.py`——**纠正**初版误写（“产 graph JSON”）：它内联 GRAPH/GAP 写 **旧单页 `web/demo/index.html`**；`graph.json` 实由 `export_sqlite_to_json.py` 生成；`build.py` 才是当前 `index.html`+tabs 的产物源。build_demo.py 全仓无引用→确认遗留，且与 build.py **输出路径碰撞**（误跑覆首页）。
+- 2026-09-23（Group ②·一手溯源）：`WebSearch` 核实三项事实——a) 神会(684–758) 卒年据《神会塔铭》与宗密《圆觉经大疏钞》（NTU DGBL《有關神會的兩篇銘文》）；b)「道由心悟，岂在坐」直引宗宝本《坛经·护法品》薛簡章·并引《金刚经》「若言如来若坐若卧，是行邪道」（DRBA/星云大师《坛经讲话》·人间社），敦煌本无此品；c) 神秀(606–706) 卒于神龙二年·洛阳天宫寺（wikipedia/佛弟子文库，生年 606 通行·605 异说）。另 4 处《坛经》单一作者、「不识字」修辞、南北顿渐二分——属**证据相当而无锤定音**，改判 `〔并存〕`（不强行消）。同一会话发现 `SearchReplace` 保存会折叠长串双引号 scalar 中的 `\n` 转义→已按 HEAD raw bytes 回内 mermaid 段，坑已写入 `tools.md §六` 与长期记忆 `common_pitfalls_experience`。
 
 ## 四、扩充待办（backlog · 供后续会话逐项推进）
 
@@ -45,6 +46,7 @@
 - [x] 〔已完成〕新建 `workflows/deploy.md`（Pages 源=main 根·CRLF/LF·CDN·发布步骤，只连接 next-phase-plan 既定事实）。
 - [x] 〔已完成〕抽出 `workflows/verification.md`（三道闸+`make verify-all`+交互实测/CDP 退化+缓存陷阱）。
 - [x] 〔已完成·存疑分级〕依编务约定区分：〔待核〕=真待办(verify/sev4)、〔存疑〕=审慎判定(boundary/sev2)；并修 `act_registry` 重见时刷新 kind/severity 以同 config 基因组。
+- [x] 〔已完成·Group ② 一手核验〕`data/practice/chan_authentic_traces.yaml` 内 6 处〔待核〕 + 2 处裸「待核」逐一处置：3 项可核事实已标源（神会/神秀/道由心悟），3 项误标改 〔并存〕；本文件〔待核〕 6→0，全项目 sev≥4 积压 33→27，健康度 81.1→84.1（台账 #19）。同会话发现并恢复 SearchReplace 折叠 YAML `\n` 转义 的副作用（已在 `tools.md §六` 写坑）。
 - [ ] 〔新见〕存疑降为 boundary 后，需人工隔目抽检：数据层少数〔存疑〕或实为可补源的待办（现一律计为边界，可忍，因不丢只降噪）。
 - [ ] 〔可选〕周期性 `/better-harness` 审视本 harness（重复劳动/资产/会话产出/修复计划）。
 - [ ] 〔待落地〕用 `create-skill` 固化 4 个专属技能（详 §一）· `create-subagent` 建翻译审校/来源核查代理·实跑 `npx skills find` 装候选·评估重型 MCP·项目级 `.claude/skills/` 分工。

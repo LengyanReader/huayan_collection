@@ -85,3 +85,5 @@
 
 `SearchCodebase`（语义检索）· `SearchMemory`（长期记忆/知识树）· `LSP`（符号级跳转/引用）· `WebSearch`/`WebFetch`（联网一手核实，服务〈考证优先〉）· `TodoWrite`（长任务分解）· `AskUserQuestion`（决策分叉征询）。
 > 用法纪律：任务缺上下文时**先并行** `SearchCodebase` + `SearchMemory`；改某模块前先取该模块知识/规范。
+
+> ⚠ **`SearchReplace` 保存时会重写整份 YAML/JSON 文件**：对**双引号 scalar 内含 `\n` 转义**的字段（如 `data/practice/chan_authentic_traces.yaml` 的 `lineage_evolution.mermaid`），会**把转义折成真实换行**，导致解析后的字符串丢失缩进与内部空格。现象：行数自 19→ 38、parsed string 长度变化、`subgraph 中国禅宗 奠基` 内空格被吞。**反验**：任何触及含长串双引号 scalar 的文件的 `SearchReplace`，**事后必**运行一次 `yaml.safe_load` 对比 `git show HEAD:<path>` 解析后的目标字段。若已碎，**一次性临时脚本按 HEAD 的原始 raw bytes 精准回内该段**（不影其余编辑），**且还原后不再使用 `SearchReplace` 碰同一文件**（否则再碎）。已亲身踩到·已恢复（L.㊿续续续、2026-09-23）。

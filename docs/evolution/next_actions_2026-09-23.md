@@ -6,12 +6,6 @@
 |---|---|---|---|---|---|
 | 4.0 | 4 | 3 | verify | 〔待核〕 | `data/knowledge_graph/personas.json:458` |
 | 4.0 | 4 | 3 | verify | 〔待核〕 | `data/knowledge_graph/personas.json:916` |
-| 4.0 | 4 | 3 | verify | 〔待核〕 | `data/practice/chan_authentic_traces.yaml:202` |
-| 4.0 | 4 | 3 | verify | 〔待核〕 | `data/practice/chan_authentic_traces.yaml:220` |
-| 4.0 | 4 | 3 | verify | 〔待核〕 | `data/practice/chan_authentic_traces.yaml:696` |
-| 4.0 | 4 | 3 | verify | 〔待核〕 | `data/practice/chan_authentic_traces.yaml:706` |
-| 4.0 | 4 | 3 | verify | 〔待核〕 | `data/practice/chan_authentic_traces.yaml:1372` |
-| 4.0 | 4 | 3 | verify | 〔待核〕 | `data/practice/chan_authentic_traces.yaml:1389` |
 | 4.0 | 4 | 3 | verify | 〔待核〕 | `data/translation/topic_studies.yaml:76` |
 | 4.0 | 4 | 3 | verify | 〔待核〕 | `docs/佛门真伪问题_综合深度研究.md:391` |
 | 4.0 | 4 | 3 | verify | 〔待核〕 | `docs/佛门真伪问题_综合深度研究.md:727` |
@@ -64,17 +58,17 @@
 | 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/佛门真伪问题_综合深度研究.md:513` |
 | 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/佛门真伪问题_综合深度研究.md:966` |
 | 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/识与心灵_唯识学对话意识科学_多语对读.md:6` |
+| 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/识与心灵_唯识学对话意识科学_多语对读.md:32` |
+| 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/识与心灵_唯识学对话意识科学_多语对读.md:122` |
+| 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/识与心灵_唯识学对话意识科学_多语对读.md:1655` |
+| 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/识与心灵之镜_唯识学对话心理学_多语对读.md:6` |
+| 2.0 | 2 | 3 | boundary | 〔存疑〕 | `docs/识与心灵之镜_唯识学对话心理学_多语对读.md:1605` |
+| 2.0 | 2 | 3 | progress | 🔴 | `web/demo/src/gap.js:153` |
 
 ## 明细（前 25 条）
 
 - **[4.0] data/knowledge_graph/personas.json:458** 〔待核〕 — "source": "《成一和尚著作集》、《成一法师传》〔待核〕",
 - **[4.0] data/knowledge_graph/personas.json:916** 〔待核〕 — "source": "持松自著《密教通关》、教界《持松法师纪念文集》〔待核〕",
-- **[4.0] data/practice/chan_authentic_traces.yaml:202** 〔待核〕 — 此为理解六祖南宗「顿悟」叙事何以层累成形、以及学界何以质疑其单一作者的关键史料课题〔待核〕。'
-- **[4.0] data/practice/chan_authentic_traces.yaml:220** 〔待核〕 — authorship 〔待核〕.
-- **[4.0] data/practice/chan_authentic_traces.yaml:696** 〔待核〕 — 「道由心悟岂在坐」一系话头系后世禅门转述凝练，原文出处待核〔待核〕。
-- **[4.0] data/practice/chan_authentic_traces.yaml:706** 〔待核〕 — distillation; its exact locus is 〔待核〕). On "one-act samādhi" the
-- **[4.0] data/practice/chan_authentic_traces.yaml:1372** 〔待核〕 — 传统称其「不识字」而顿悟——学界多视为「不落文字」的宗门修辞而非严格传记事实〔待核〕。
-- **[4.0] data/practice/chan_authentic_traces.yaml:1389** 〔待核〕 — than strict biography 〔待核〕. On the North-South split: tradition
 - **[4.0] data/translation/topic_studies.yaml:76** 〔待核〕 — 三级标注；项目自述数据一律标【自述】；查无来源者如实标〔待核〕，不以推测填补；
 - **[4.0] docs/佛门真伪问题_综合深度研究.md:391** 〔待核〕 — - 1991年"盗换"疑案：公安系统勘定（骨裂痕比对，公安部原刑侦局长刘文主勘），结论为未换——圣物"防伪"自此进入法医学时代〔B级：《纵横》2018年12期；〔待核〕〕。
 - **[4.0] docs/佛门真伪问题_综合深度研究.md:727** 〔待核〕 — - 韩国近现代佛学：李能和《朝鲜佛教通史》（1918）等开启朝鲜佛教史近代研究【条目据二手引录〔待核〕】〔B级〕。
@@ -92,9 +86,15 @@
 - **[4.0] docs/识与心灵_唯识学对话意识科学_多语对读.md:812** 〔待核〕 — > **注** 本文判准：AI 全谱系在“业力连续性—自我指涉—受之在场”三层次俱缺；法文 sensation/sentiment ¤〔待核〕。
 - **[4.0] docs/识与心灵_唯识学对话意识科学_多语对读.md:857** 〔待核〕 — > **自证分** 梵 sva-saṃvedana · 藏 རང་རིག།（rang rig，“自明”）〔待核〕· 英 self-witnessing · self-awareness · 日 自証分（じしょうぶん）· 法 auto-con
 - **[4.0] docs/识与心灵_唯识学对话意识科学_多语对读.md:858** 〔待核〕 — > **转依** 梵 āśraya-parāvṛtti · 藏 གནས་འགྱུར།（gnas 'gyur）〔待核〕· 英 transformation of the basis · revolution of the support · 
+- **[4.0] docs/识与心灵_唯识学对话意识科学_多语对读.md:1655** 〔待核〕 — > 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。
+- **[4.0] docs/识与心灵之镜_唯识学对话心理学_多语对读.md:5** 〔待核〕 — > **对读体例**：中文为主文全文；英文为平行对读——每节中文小节正文之后，以「EN对应」块给作者英文修订版同小节原句全文（T1 原句，非译写）；梵/藏取词源与经藏用语；日/法仅于有通行佛学译语处收录（否则标〔待核〕）。规范见 docs/
+- **[4.0] docs/识与心灵之镜_唯识学对话心理学_多语对读.md:6** 〔待核〕 — > **信源分级**：同《识与心灵》篇——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。
+- **[4.0] docs/识与心灵之镜_唯识学对话心理学_多语对读.md:426** 〔待核〕 — > **法** semence ¤〔待核〕
+- **[4.0] docs/识与心灵之镜_唯识学对话心理学_多语对读.md:427** 〔待核〕 — > **注** 本文第十一节提出预测处理理论（predictive processing / free-energy principle）与阿赖耶识种子机制的**结构同构**假说：预测模型之先验期待 ≈ 种子的成熟功能，预测误差更新 ≈ 新
+- **[4.0] docs/识与心灵之镜_唯识学对话心理学_多语对读.md:594** 〔待核〕 — > **日** 煩悩・心所（ぼんのうしんじょ）　**法** facteurs mentaux afflictifs ¤〔待核〕
 
 ## 记忆更新提示（供 Agent 沉淀长期经验）
 
-- 当前健康度 81.1/100，高优先积压 33。
-- 自适应阈值本轮收紧至 12 天窗口——若连续多轮同向调整，说明积压结构性，应立项专项清理。
+- 当前健康度 84.1/100，高优先积压 27。
+- 自适应阈值本轮收紧至 9 天窗口——若连续多轮同向调整，说明积压结构性，应立项专项清理。
 - 若出现新的验证关卡失败或进度台账矛盾，作为 common_pitfalls 记入长期记忆。

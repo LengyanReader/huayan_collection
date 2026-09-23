@@ -194,14 +194,14 @@ sections:
       Zen       in Japan.
   - title: 神会·「南宗北伐」·《坛经》版本谱系与『神会著坛经』辨
     title_en: Shenhui, the "Northern Expedition of the South", the Platform Sutra Version Family and the "Shenhui-Authored" Question
-    body: '神会(684-758，一说卒年758，待核)于滑台、洛阳与北宗论辩(《菩提达摩南宗定是非论》为当时实录)，
+    body: '神会(684-758，卒年据《神会塔铭》与宗密《圆觉经大疏钞》为唐乾元元年758、享年七十五)于滑台、洛阳与北宗论辩(《菩提达摩南宗定是非论》为当时实录)，
       请立慧能为六祖、自为七祖(宗密记贞元十二年[796]敕立)。胡适主「神会是《坛经》作者」，
       印顺《中国禅宗史》(1971)据敦煌等史料反驳——今学界多认为《坛经》系慧能门下(含神会门人)数代层累编纂〔并存〕。
       《坛经》版本谱系：敦煌本(S.5475，约830-860，最早遗存)‣惠昕本‣契嵩本‣德异本‣宗宝本(T48n2008最通行)；
       敦煌本「佛性常清净」与宗宝本「本来无一物」等异文并存，引文须注明版本。
-      此为理解六祖南宗「顿悟」叙事何以层累成形、以及学界何以质疑其单一作者的关键史料课题〔待核〕。'
+      此为理解六祖南宗「顿悟」叙事何以层累成形、以及学界何以质疑其单一作者的关键史料课题〔并存：单一作者说与层累说并行〕。'
     en_body: |
-      Shenhui (684-758; some give only 758 for the death-year, 待核)
+      Shenhui (684-758; the death-year 758 [Qianyuan 1] and age 75 are fixed by his pagoda inscription and Zongmi's commentary)
       debated the Northern school at Huàitái and Luoyang (the Settling
       Right and Wrong in the Southern School of Bodhidharma is the
       transcript), asking that Huineng be made the Sixth Patriarch and he
@@ -217,8 +217,8 @@ sections:
       should name the version. This is the key textual problem for
       understanding how the "sudden" narrative of the Southern School took
       shape layer by layer, and why scholars question any single
-      authorship 〔待核〕.
-    source: 《菩提达摩南宗定是非论》·敦煌本/宗宝本《坛经》·印顺《中国禅宗史》
+      authorship 〔并存〕.
+    source: 《菩提达摩南宗定是非论》·敦煌本/宗宝本《坛经》·印顺《中国禅宗史》·《神会塔铭》/宗密《圆觉经大疏鈔》(卒年)
   - title: 汉语学界的禅思想史研究 I——葛兆光(1950-)
     title_en: Chinese Chan-Intellectual History I — Ge Zhaoguang (b. 1950)
     body: '复旦大学文史研究院特聘资深教授（曾任院长，2007-2013；曾任北大/清华）。禅宗方向的代表作：
@@ -693,7 +693,7 @@ sections:
     title_en: Concentration-Wisdom Equal and the Reconsideration of "Realised by Mind, Not in Sitting"
     body: '慧能主「定慧等持」——定即慧体、慧即定用，如灯与光，由此取消了坐禅的外在形式要求。
       《坛经·坐禅品》以「外离相为禅，内不乱为定」把禅定从形体移到心性；
-      「道由心悟岂在坐」一系话头系后世禅门转述凝练，原文出处待核〔待核〕。
+      「道由心悟，岂在坐也」出宗宝本《坛经·护法品》薛簡问、慧能答，并引《金刚经》「若言如来若坐若卧，是行邪道」——此品敦煌本所无，属较晚层累〔并存：出处已明，版本早晚则可议〕。
       「一行三昧」：《坛经·定慧品》「于一切处行住坐卧，常行一直心」「但行直心，于一切法勿有执著」——
       即日用当下无著，非取一境静坐。此南宗「心性本位」的定慧观，正是后世「即心即佛」与看话/默照转出的源头之一。'
     en_body: |
@@ -702,15 +702,20 @@ sections:
       dissolving the outward formal requirement of sitting. The sitting
       chapter redefines chan and samādhi as "free of marks without,
       untroubled within," moving them from posture into the mind-nature
-      (the "realised by mind, not in sitting" phrasing is a later Chan
-      distillation; its exact locus is 〔待核〕). On "one-act samādhi" the
+      ("It is realised by mind — how could it lie in sitting?" is a direct
+      quotation, not a later coinage: Huineng's reply to the layman Xue
+      Jian in the Dharma-Protection chapter of the Zongbao Platform
+      Sūtra, where he cites the Diamond Sūtra, "to say the Tathāgata
+      comes or goes, sits or reclines is to walk a false path"; that
+      chapter is absent from the Dunhuang text, so it is a later stratum).
+      On "one-act samādhi" the
       concentration-wisdom chapter says "in all places, walking, dwelling,
       sitting, lying, ever practise the one straight mind" — the immediate
       non-attachment of daily life, not taking one object in stillness.
       This mind-nature-grounded view of concentration-wisdom is one source
       from which the later "mind-itself-is-Buddha" and the Huatou/Silent
       Illumination turnings grew.
-    source: 宗宝本《坛经·定慧品/坐禅品》
+    source: 宗宝本《坛经·定慧品/坐禅品/护法品》(「道由心悟岂在坐」见〈护法品〉薛簡章·敦煌本无此品)
 - id: chan_modern
   title: 近现代禅门发展
   title_en: The Modern Development of the Chan Lineage
@@ -1369,8 +1374,8 @@ sections:
     body: '俗姓卢，唐新州(今广东新兴)人，一说范阳人而迁岭南〔并存：范阳说见于较晚的宗宝本〕。幼贫，卖柴为生。
       据《坛经》传统记述：闻诵《金刚经》「应无所住而生其心」有省，北行黄梅参五祖弘忍(601-674)，
       后弘法岭南曹溪宝林寺(今韶关南华寺)数十年，世称「曹溪大师」。示寂先天二年(713)，元和中追谥「大鉴禅师」。
-      传统称其「不识字」而顿悟——学界多视为「不落文字」的宗门修辞而非严格传记事实〔待核〕。
-      南北分宗：传统以「南宗慧能·顿、北宗神秀(606?-706，生年诸说待核)·渐」二分；
+      传统称其「不识字」而顿悟——学界多视为「不落文字」的宗门修辞而非严格传记事实〔并存：宗门传统记述与批判史学解读并行〕。
+      南北分宗：传统以「南宗慧能·顿、北宗神秀(606-706，卒于唐中宗神龙二年·洛阳天宫寺；生年通行作606，亦有605等异说〔并存〕)·渐」二分；
       敦煌文献研究(柳田圣山等)已使此框架松动——北宗实为盛唐两京主流禅法，神秀门下「拂尘看净」非简单之「渐」，
       南宗之「顿」亦非全无次第。故「顿/渐」更多是神会一系为确立法统所作的判摄，而非对两系实修的穷尽描述〔并存：宗门传统二分法与批判史观并行〕。'
     en_body: |
@@ -1386,9 +1391,9 @@ sections:
       master." He died in 713 and was posthumously honored as "Dajian."
       The traditional claim that he was "illiterate" yet awakened is
       widely read by scholars as a sectarian "beyond-words" trope rather
-      than strict biography 〔待核〕. On the North-South split: tradition
+      than strict biography 〔并存〕. On the North-South split: tradition
       polarizes the Southern Huineng (sudden) against the Northern
-      Shenxiu (606?-706; the birth-year is disputed) gradual; Dunhuang
+      Shenxiu (606-706; d. 706 at Tiangong Temple, Luoyang; the birth-year 606 is standard, with a 605 variant) gradual; Dunhuang
       studies (Yanagida Seizan and others) have loosened this frame — the
       Northern lineage was in fact the mainstream Chan of the High Tang
       capitals, its "wiping the mirror, contemplating purity" was no

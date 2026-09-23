@@ -729,3 +729,11 @@ python scripts/verify_demo.py
 - **③ 引擎修复（意外发现·重要）**：首跑暴露一处**潜伏缺陷**——`evolution_config.yaml` 排除项 `data/evolution/**` 在 pathlib 下**匹配为空**（尾缀 `/**` 不含直属文件），致引擎把**自身基因组/台账**（【待订正】token 定义、registry 里每条含〔待核〕的 snippet）当作真待办扫描 → 虚增 84 项 sev、健康度骤降至 45。**修复**：`expand_targets` 对 `/**` 后缀按"子树前缀"显式剔除。
 - **③ 存疑分级**：依编务约定区分——〔待核〕=考证未完成的**真待办**(verify/sev4)、〔存疑〕=无锤定音时的**审慎判定**(写双方·不定谳)=**边界自知**(boundary/sev2)，非待消除缺陷；并修 `act_registry` 重见时刷新 kind/severity 以同 config 基因组。一次性清仓 84 条 phantom registry 行。
 - **成效与验收**：真实 sev≥4 积压 **103 → 33**（均为真 〔待核〕）、健康度 **45 → 81.1**（旧基线 69.5 亦含同缺陷）；〔存疑〕降为 boundary 后仍在 next_actions 列示但不再占高优先。三道闸 **全绿**✅；重跑一轮确认 leak=0。`self_evolve --record tooling`。**本轮含真实代码/配置变更（self_evolve.py/evolution_config.yaml/Makefile/删 build_demo.py），已提交。**
+
+## Group ② · `chan_authentic_traces.yaml` 〔待核〕 一手核验（2026-09-23 · L.㊿续续续 · 台账 #19）
+
+> 承接 L.㊿续续 之 ②，用户「continue」指示就地启动。对 `data/practice/chan_authentic_traces.yaml` 内 6 处 〔待核〕 + 2 处裸「待核」逐一处置，严守编务总则 3（禁造假）：**能溯源者标源、证据平衡者改判为 〔并存〕、无据者保留不消**。所有事实性改动均以可查学术源支撑（《神会塔铭》/宗密《圆觉经大疏钞》、宗宝本《坛经·护法品》、维基/佛弟子文库神秀条）。
+- **3 项可核事实·已补源**：a) 神会(684–758)，卒年据《神会塔铭》与宗密《圆觉经大疏钞》＝乾元元年758、享年七十五；b) 神秀(606–706)，卒于神龙二年·洛阳天宫寺，生年通行作 606、亦有 605 异说〔并存〕；c)「道由心悟，岂在坐」直引宗宝本《坛经·护法品》薛簡问、慧能答，并引《金刚经》「若言如来若坐若卧，是行邪道」；此品敦煌本所无，属较晚层累——source 字段同步扩至《定慧品/坐禅品/护法品》并附注。
+- **3 项误标·改 〔并存〕**：《坛经》单一作者 vs 层累、「不识字」宗门修辞 vs 严格传记、「南顿北渐」传统二分 vs 批判史观——均属「证据相当而无锤定音时本文所持之审慎判定」，与文件既有 `〔并存〕/〔并存/待考〕` 用语一致，非缺陷待消除。相应更新 4 处中文 body + 4 处 en_body + 1 处 source + 1 处 source 塔铭条。
+- **⚠ 工程坑·已识别并恢复**：SearchReplace 在**保存阶段**会重写整份 YAML，把 `lineage_evolution.mermaid` 长串双引号 scalar 中的 `\n` 转义**折成真实换行**（19 行变 38 行、parsed string 由 1647 缩到 1617、`subgraph 中国禅宗 奠基` 内部空格被吞）。**修法**：一次性临时脚本按 HEAD 的原始 raw bytes 精准还原 mermaid 段（其他 12 处编辑保留），并**在还原后不再动该文件**；已在 `harness/tools.md` 记此坑。
+- **验收**：YAML parse ✅、`parsed mermaid == HEAD` ✅、`〔待核〕` 在本文件 **6→0**；三道闸 `test_pipeline`/`build+verify_demo`/`verify_sources` **全绿**；`self_evolve` 无干预重跑：**健康度 81.1 → 84.1**、**sev≥4 积压 33 → 27**（-6，与本次消化 6 项完全吻合）、新登记 0/退场 0（`〔并存〕` 不在 markers 内，不产生 noise）。`--record content_verify · applied`。**待提交**。

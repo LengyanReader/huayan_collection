@@ -3,7 +3,7 @@
 > 由 `scripts/self_evolve.py` 自动维护的**只追加**审计流水；权威机读源为 `data/evolution/evolution_log.yaml`。
 > 记录每一次进化动作——自动体检/阈值整定/自动归档，与人工确认的进度回填/否决，以及 Agent 带外记录。
 
-共 **32** 条事件。
+共 **36** 条事件。
 
 ## 2026-09-23
 
@@ -26,6 +26,10 @@
 | 30 | 6 | 🤖 | threshold_tune | escalation_window_days | 15 → 12 | ✅执行 | 高优先积压 33 vs 带限[6,25]→收紧 |
 | 31 | 6 | 🤖 | cadence_set | next_review | — → +7d → 2026-09-30 | ✅执行 | 据积压与阈值推算复核节奏 |
 | 32 | — | 🧠 | tooling | fix self_evolve scan: pathlib trailing / | expand_targets now treats /**-suffixed excludes as subtree p | ✅执行 |  |
+| 33 | 7 | 🤖 | cycle_run | 周期 #7 体检总览 | — → health=84.1 open=69 high=27 | 👁观测 | 新增 0·归档 0·台账矛盾 0 |
+| 34 | 7 | 🤖 | threshold_tune | escalation_window_days | 12 → 9 | ✅执行 | 高优先积压 27 vs 带限[6,25]→收紧 |
+| 35 | 7 | 🤖 | cadence_set | next_review | — → +7d → 2026-09-30 | ✅执行 | 据积压与阈值推算复核节奏 |
+| 36 | — | 🧠 | content_verify | chan_authentic_traces 6 items resolved:  | Shenhui dates via pagoda inscription + Zongmi commentary; Sh | ✅执行 |  |
 
 ## 2026-09-20
 

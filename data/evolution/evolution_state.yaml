@@ -8,7 +8,7 @@ registry:
     snippet: 'icon: "🔴"'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -20,7 +20,7 @@ registry:
     snippet: '"source": "《成一和尚著作集》、《成一法师传》〔待核〕",'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -32,7 +32,7 @@ registry:
     snippet: '"source": "周叔迦《中国佛学史》（1930辅仁讲义）及《贤首宗付法师资记》著录高原法系创立（据中华典藏录）；存世著作《相宗八要解》《明昱诗集》（金陵刻经处光绪二十八年刻本等）；明末高僧，生卒不详〔待补〕",'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 信息待补充
@@ -44,7 +44,7 @@ registry:
     snippet: '"source": "持松自著《密教通关》、教界《持松法师纪念文集》〔待核〕",'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -57,7 +57,7 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   d13c33f4b0bead49:
@@ -69,7 +69,7 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   ac4781825d3645c7:
@@ -81,7 +81,7 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   2439615a01ebcd36:
@@ -93,7 +93,7 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   f772ae3e2eeda365:
@@ -105,7 +105,7 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   43fc2fe490680cf3:
@@ -117,7 +117,7 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   cef7d342e86642a8:
@@ -128,7 +128,7 @@ registry:
     snippet: 'icon: 🔴'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -140,7 +140,7 @@ registry:
     snippet: 'icon: "🔴"'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -152,7 +152,7 @@ registry:
     snippet: 〔存疑〕标注与「伪不等于无用」的基本立场。
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -164,7 +164,7 @@ registry:
     snippet: 三级标注；项目自述数据一律标【自述】；查无来源者如实标〔待核〕，不以推测填补；
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -176,7 +176,7 @@ registry:
     snippet: 3. **理据不足标"存疑"**：不确证者一律标〔存疑〕，不推论为定论。
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -188,7 +188,7 @@ registry:
     snippet: '**判定〔存疑〕**：敦煌本为现存最早形态、其中的"神会系增益"依据（传衣付法、预言）相当充分；但"全部伪造"或"原有法海本完全被替代"两说均缺一锤定音的证据。比较稳妥的说法是：**《坛经》以慧能说法为内核，经荷泽等系累次增订成形，作者问题'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -200,7 +200,7 @@ registry:
     snippet: '- **译者之"实叉难陀重译"公案**：唐译两卷本（圣历三年700，授记寺，复礼笔受）见载《开元释教录》〔A级：T2154〕；但章太炎《大乘起信论辩》断言"实叉难陀并无重译《起信》之事……《大乘起信论》非真谛译也"〔B级〕；游侠《中国佛教》'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -212,7 +212,7 @@ registry:
     snippet: '- **辛嶋静志回译说〔存疑〕**：有传闻称辛嶋静志考证玄奘梵本系"回译自汉文"——此说属学术传言层面，未见正式论文确认，标存疑。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -224,7 +224,7 @@ registry:
     snippet: '**判定〔存疑〕**：原译诸本真实无争；会集本的"改易经文"属文献学事实，但其宗教有效性由信仰界自判。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -236,7 +236,7 @@ registry:
     snippet: '**判定〔存疑〕**：吕澂的文献证据链（著录晚出、文体不合）在教外学界影响极大；护法方则从义理与感应立论。**"楞严是否为印度传本"至今无梵本可证──这正是本经真伪之争论恒久不决的根因。**'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -248,7 +248,7 @@ registry:
     snippet: '**判定〔存疑〕**：经录有"伪"注、宗密反驳、契嵩再证，三面交织。**"由经的内容来判真伪，不由具体翻译年代"**是智昇以来判经的基本立场，但"翻译年代不明"仍是文献学硬伤。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -260,7 +260,7 @@ registry:
     snippet: '- **莲池《竹窗随笔》跋**即疑译者"法灯法炬"〔存疑〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -272,7 +272,7 @@ registry:
     snippet: '**判定〔存疑〕**：译者不明、梵本无踪，但因其深植民间（孝亲、度亡）而地位稳固。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -284,7 +284,7 @@ registry:
     snippet: '- 判定〔存疑〕：以"汉明帝时原译"为过强、以"后世全伪"亦过，通说视其为早期译/抄汇集而成。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -296,7 +296,7 @@ registry:
     snippet: '- 判定〔存疑〕：学界多倾向"整体可信、间有后人增补"；其"佛道对话"内容为早期佛教本土化的关键文献。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -308,7 +308,7 @@ registry:
     snippet: '- 判定〔存疑〕：倾向"印度因子＋中土扩充"的双源说。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -320,7 +320,7 @@ registry:
     snippet: '- 判定〔存疑〕：倾向清乾隆年间造；其流通量之大，反证"伪书"在功德市场的支配力（呼应9.6清代笔记考疑、10.9第五产床）。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -332,7 +332,7 @@ registry:
     snippet: '**判定〔存疑〕**：达摩历史存在（有同期旁证），但传记细节（年代、神异、著书）均为层累。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -344,7 +344,7 @@ registry:
     snippet: '**判定〔存疑〕**：文献时代矛盾（二十八祖说晚出）是硬伤，但"玄觉作者说"有唐宋高僧（永明延寿《宗镜录》946年首列）背书；神会作者说为现代主流推测之一。写双方，不定谳。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -356,7 +356,7 @@ registry:
     snippet: '- **质疑**：媒体讨论"虚云真活了120岁？"及其思想是否承自八指头陀（凤凰网2018，仅线索〔D级〕）；学界与其门派在"年岁实为两说"之间取舍〔存疑〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -368,7 +368,7 @@ registry:
     snippet: '- **判定〔存疑〕**：文本晚出可考、史实不成立；其"传法合法性"的功能反而因此而更醒目——正是10.9第二张产床（托古自重）的标本。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -380,7 +380,7 @@ registry:
     snippet: '- **判定〔存疑〕**：文本（灯录）真实、史实（烧佛）可行，然"以破斥戏论"的正当性边界随对机与立场而判——示例：**公案之"伪"须分三层——文本真伪／史实有无／正当性判摄**（对照10.1对象层）。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -392,7 +392,7 @@ registry:
     snippet: '- 1991年"盗换"疑案：公安系统勘定（骨裂痕比对，公安部原刑侦局长刘文主勘），结论为未换——圣物"防伪"自此进入法医学时代〔B级：《纵横》2018年12期；〔待核〕〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -404,7 +404,7 @@ registry:
     snippet: '- **判定〔存疑〕**："是否为佛陀真身"超出文献学（不可判定，归信仰）；"灵骨确为唐代安奉之物"则是考古—文献—影像三重互证的实然结论。**圣物"真伪"分两轨：考古真＋信仰可依**（亦可见于各处"佛陀舍利"多来源之普遍现象，回应10.2'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -416,7 +416,7 @@ registry:
     snippet: '- **结论〔存疑〕**：**"平行说"可成立（结构相近），"影响说"无证据。** 中观与斯多亚的相似性宜理解为"对人同一问题的逻辑收敛"，而非抄袭。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -428,7 +428,7 @@ registry:
     snippet: '- 韩国近现代佛学：李能和《朝鲜佛教通史》（1918）等开启朝鲜佛教史近代研究【条目据二手引录〔待核〕】〔B级〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -441,7 +441,7 @@ registry:
       Apocrypha"立为佛教学一个专门领域，收录《灌顶'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -453,7 +453,7 @@ registry:
     snippet: '- **心经之争的引爆**：Jan Nattier 〈The Heart Sūtra: A Chinese Apocryphal Text?〉（JIABS 15.2，1992）提出《心经》或系中土撰述——引发此后二十余年持续再考（Huife'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -465,7 +465,7 @@ registry:
     snippet: 2. **全程执行A/B/C/D分级与〔存疑〕标注**：凡直接引文附第一手出处（CBETA T号、原刊页码），凡转述标等级，凡不确者标存疑——这正是11.3参考文献的立法意图，也是10.10④"双重诚实"的实操。
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -477,7 +477,7 @@ registry:
     snippet: '- 杨曾文：〈六祖坛经诸本的演变〉（台大佛学数位图书馆转；完整版本谱系）【著录〔待核〕】'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -490,7 +490,7 @@ registry:
       Robert (ed.). *Chinese Buddhi'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -502,7 +502,7 @@ registry:
     snippet: '- 静、筠二禅师：《祖堂集》（通行排印本；CBETA 无在线公开本，本文引录自排印本，〔待核〕原始影印卷次）'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -515,7 +515,7 @@ registry:
       docs/'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -527,7 +527,7 @@ registry:
     snippet: '> **信源分级**：术语格义依 docs/verification-framework.md 三级分级——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -539,7 +539,7 @@ registry:
     snippet: '> **信源分级**：术语格义依 docs/verification-framework.md 三级分级——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -552,7 +552,7 @@ registry:
       of the support | 転依（てんね）'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -565,7 +565,7 @@ registry:
       共业所感器世间之种子义，与现代意相类但须别 〔存疑〕 |'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -578,7 +578,7 @@ registry:
       共业所感器世间之种子义，与现代意相类但须别 〔存疑〕 |'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -590,7 +590,7 @@ registry:
     snippet: '> **梵** sādhāraṇa-bīja（共相種子）〔待核〕　**藏** 〔待核〕'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -602,7 +602,7 @@ registry:
     snippet: '> **注** 本文谓识变所现之“共相境”由共业种子所感；与当代“共享语境/公共经验”之比附须审慎——〔存疑〕此义是否能与哲学“共同世界”平行，文中第四节起渐次展开。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -614,7 +614,7 @@ registry:
     snippet: '> **日** 唯識（ゆいしき）　**法** seule représentation ¤〔待核〕'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -626,7 +626,7 @@ registry:
     snippet: '> **注** 本文判准：AI 全谱系在“业力连续性—自我指涉—受之在场”三层次俱缺；法文 sensation/sentiment ¤〔待核〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -639,7 +639,7 @@ registry:
       · 日 自証分（じしょうぶん）· 法 auto-con'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -652,7 +652,7 @@ registry:
       · revolution of the support · '
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -664,7 +664,7 @@ registry:
     snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -676,7 +676,7 @@ registry:
     snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -689,7 +689,7 @@ registry:
       docs/'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -701,7 +701,7 @@ registry:
     snippet: '> **信源分级**：同《识与心灵》篇——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -713,7 +713,7 @@ registry:
     snippet: '> **信源分级**：同《识与心灵》篇——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -725,7 +725,7 @@ registry:
     snippet: '> **法** semence ¤〔待核〕'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -738,7 +738,7 @@ registry:
       ≈ 种子的成熟功能，预测误差更新 ≈ 新'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -750,7 +750,7 @@ registry:
     snippet: '> **日** 煩悩・心所（ぼんのうしんじょ）　**法** facteurs mentaux afflictifs ¤〔待核〕'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -762,7 +762,7 @@ registry:
     snippet: '> 〔备考〕心所“轻安（praśrabdhi）”与副交感“安全”状态的对应关系宜标注〔待核〕，留待神经佛学（contemplative neuroscience）实证研究。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -774,7 +774,7 @@ registry:
     snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -786,7 +786,7 @@ registry:
     snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -799,7 +799,7 @@ registry:
       style=color:#9e8b6e
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -811,7 +811,7 @@ registry:
     snippet: h+="<span>🟢 汉藏一致</span><span>🟡 表述有异</span><span>🔴 藏文独有</span><span>🔵 汉文独有</span></div>";
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -823,7 +823,7 @@ registry:
     snippet: if(li==='藏传佛教·格鲁派'||li==='格鲁派')return '🔴 藏传·格鲁派';
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -835,7 +835,7 @@ registry:
     snippet: if(li==='藏传佛教·萨迦派'||li==='萨迦派')return '🔴 藏传·萨迦派';
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -847,7 +847,7 @@ registry:
     snippet: if(li==='藏传佛教·宁玛派'||li==='宁玛派')return '🔴 藏传·宁玛派';
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -859,7 +859,7 @@ registry:
     snippet: if(li==='藏传佛教·噶举派'||li==='噶举派')return '🔴 藏传·噶举派';
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -871,7 +871,7 @@ registry:
     snippet: if(/宗喀巴|达赖|班禅|阿底峡|莲花生/.test(n+tname))return '🔴 藏传佛教';
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -883,7 +883,7 @@ registry:
     snippet: if(li==='藏传佛教'||/藏传/.test(li))return '🔴 藏传佛教';
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -895,7 +895,7 @@ registry:
     snippet: if(/宗喀巴|阿底峡|莲花生|米拉日巴|八思巴|寂天/.test(full))return '🔴 藏传佛教';
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -907,7 +907,7 @@ registry:
     snippet: '''🔴 藏传·格鲁派'',''🔴 藏传·萨迦派'',''🔴 藏传·宁玛派'',''🔴 藏传·噶举派'',''🔴 藏传佛教'','
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
-    seen_count: 6
+    seen_count: 7
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -990,8 +990,22 @@ history:
     test_pipeline: true
     verify_demo: true
     verify_sources: true
+- date: '2026-09-23'
+  health: 84.1
+  open: 69
+  high_backlog: 27
+  sev5: 0
+  sev4: 27
+  window: 9
+  added: 0
+  resolved: 0
+  stale_progress: 0
+  validators:
+    test_pipeline: true
+    verify_demo: true
+    verify_sources: true
 adaptive:
-  escalation_window_days: 12
+  escalation_window_days: 9
 _ref_date: 2026-09-23
-cycle_count: 6
-last_run: '2026-09-23T22:38:18'
+cycle_count: 7
+last_run: '2026-09-23T23:00:53'
