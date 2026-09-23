@@ -737,3 +737,11 @@ python scripts/verify_demo.py
 - **3 项误标·改 〔并存〕**：《坛经》单一作者 vs 层累、「不识字」宗门修辞 vs 严格传记、「南顿北渐」传统二分 vs 批判史观——均属「证据相当而无锤定音时本文所持之审慎判定」，与文件既有 `〔并存〕/〔并存/待考〕` 用语一致，非缺陷待消除。相应更新 4 处中文 body + 4 处 en_body + 1 处 source + 1 处 source 塔铭条。
 - **⚠ 工程坑·已识别并恢复**：SearchReplace 在**保存阶段**会重写整份 YAML，把 `lineage_evolution.mermaid` 长串双引号 scalar 中的 `\n` 转义**折成真实换行**（19 行变 38 行、parsed string 由 1647 缩到 1617、`subgraph 中国禅宗 奠基` 内部空格被吞）。**修法**：一次性临时脚本按 HEAD 的原始 raw bytes 精准还原 mermaid 段（其他 12 处编辑保留），并**在还原后不再动该文件**；已在 `harness/tools.md` 记此坑。
 - **验收**：YAML parse ✅、`parsed mermaid == HEAD` ✅、`〔待核〕` 在本文件 **6→0**；三道闸 `test_pipeline`/`build+verify_demo`/`verify_sources` **全绿**；`self_evolve` 无干预重跑：**健康度 81.1 → 84.1**、**sev≥4 积压 33 → 27**（-6，与本次消化 6 项完全吻合）、新登记 0/退场 0（`〔并存〕` 不在 markers 内，不产生 noise）。`--record content_verify · applied`。**待提交**。
+
+## 禅门实迹·近年文献地图 + 三线扩充落地（2026-09-24 · L.㊿续续续续 · 台账 #20）
+
+> 用户指示：扩充禅门实迹，须「学界·佛门·宗门·教下」各方面可靠文献/线索，**尤重近年研究**，且此专题做成为其他专题之模板。分两步落地。
+- **第一步·文献地图**：新建 `docs/禅门文献与研究地图_四域近年.md`（153 行·37 可点链·〔待核/线索〕分级）。方法可复用——五域框架（学界/佛门/宗门/教下/跨学科）+ 三级可靠性（A 一手权威/B 学人论著/C 线索）+ 年代带（奠基/成熟/**2015–2026 近年为要**）+ 统一条目格式。经 `WebSearch` 一手核实并回填：*Readings of the Platform Sūtra*（**Schlütter & Teiser, Columbia UP, 2012**）、*Oxford Handbook of Contemporary Buddhism*（**Lopez, 2017**）、无外如大 **Mugai Nyōdai 1223–1298**（订正旧写「无外加泥」）、Purser《McMindfulness》2019、Ehmann 2025《长期禅修者认知》、Frontiers 2023 fMRI 元分析、道元×华严 HAL 2021、邓文宽《敦煌坛经读本》2019、韩国《불교학연구》2023 僧诤重审等。
+- **第二步·整合入禅门实迹**：据地图 §六 缺口清单，优先落三条（女性参禅=最强缺口、吐蕃僧诤=三语源已备、道元×华严=本项目特色接口），各含 中文 body + en_body 块 + source 一手源；另向 `references.academic` 追加 5 条已核新著。**sections 主题数：chan_academic 10→11、chan_practice 11→12、chan_lineage_detail 6→7**。
+- **⚠ 规避 SearchReplace-YAML 坑·成功**：本轮不触碰 `mermaid` 段——改用**原样文本按锚点行插入**（`- id: chan_practice` / `- id: chan_modern` / `references:` / `  buddhist_internal:` 四锚点），临时脚本 `yaml.safe_load` 后即断言 **`mermaid` 与 HEAD 逐字节相同 = True**，其余字段各归其位、零附带改写。
+- **验收**：`test_pipeline` ✅ 95/98/30、`build` ✅ 34 files、`verify_demo` ✅ ALL CHECKS PASSED；`self_evolve` 周期 #8 三门全绿，健康度 84.1→83.1、sev≥4 27→29（**+6 新登记中 2 项系新条目自带之〔待核〕诚实边界注记**，如 Demiéville/Gross 年份，非造假·非缺陷）。`--record content_expand · applied`。**已提交**。

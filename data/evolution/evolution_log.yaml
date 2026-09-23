@@ -376,3 +376,55 @@ events:
   action: Shenhui dates via pagoda inscription + Zongmi commentary; Shenxiu via standard 606-706; Dao-you-xin-wu
     located in Zongbao Chapter 9 (absent in Dunhuang); authorship/illiterate/sudden-gradual relabeled
     to coexisting-stance where evidence is balanced
+- seq: 37
+  ts: '2026-09-24T06:41:47'
+  date: '2026-09-24'
+  cycle: 8
+  actor: auto
+  category: cycle_run
+  subject: '周期 #8 体检总览'
+  outcome: observed
+  after: health=83.1 open=75 high=29
+  evidence: '管线全绿: test_pipeline=✅,verify_demo=✅,verify_sources=✅'
+  rationale: 新增 6·归档 0·台账矛盾 0
+- seq: 38
+  ts: '2026-09-24T06:41:47'
+  date: '2026-09-24'
+  cycle: 8
+  actor: auto
+  category: marker_register
+  subject: 登记新增待办 6 项
+  outcome: applied
+  rationale: 扫描 include 文件命中的待核/存疑/待订正标记
+- seq: 39
+  ts: '2026-09-24T06:41:47'
+  date: '2026-09-24'
+  cycle: 8
+  actor: auto
+  category: threshold_tune
+  subject: escalation_window_days
+  outcome: applied
+  before: 9
+  after: 7
+  rationale: 高优先积压 29 vs 带限[6,25]→收紧
+- seq: 40
+  ts: '2026-09-24T06:41:47'
+  date: '2026-09-24'
+  cycle: 8
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +7d → 2026-10-01
+  rationale: 据积压与阈值推算复核节奏
+- seq: 41
+  ts: '2026-09-24T06:42:05'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: chan_authentic_traces +3 researched topics via literature map (Tibetan Chan / Dogen-Huayan
+    / Chan women) + 5 verified academic refs
+  outcome: applied
+  action: Derived from docs/禅门文献与研究地图_四域近年.md; inserted by raw-text splice, mermaid byte-identical to
+    HEAD; 3 verification gates green; new 待核 markers are honest boundary notes

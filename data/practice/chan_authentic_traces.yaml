@@ -305,6 +305,24 @@ sections:
       criticism toward intellectual and cultural history 〔并存: divergent
       methods and stances, not a single school〕.
     source: 葛兆光《中国禅思想史》书目·各书出版信息
+  - title: 吐蕃僧诤·汉地禅入藏与「顿门」公案
+    title_en: The bSam yas Debate — Chinese Chan in Tibet and the "Sudden Door"
+    body: '唐贞元八—九年(约792—794)间,吐蕃赞普赤松德赞(742—约800)于 bSam yas(桑耶)寺裁断「汉印二宗」之争:汉僧摩诃衍(大乘和尚,Heshang)立「顿门·不作意」,印度论师莲花戒(Kamalaśīla)依《修习次第》(Bhāvanākrama)主「渐修·方便般若双运」,判禅之「无分别」堕无记、断灭。后世藏文史籍(布顿以下)谓莲花戒获胜、中观为正统;然敦煌藏文·汉文诸写本(如 P. tib. 116、IOL Tib J 系列、《顿悟真宗要诀》)显示禅法在吐蕃并未因一役而绝,其与宁玛「大圆满」·噶举「大手印」之关系,至今聚讼。
+      近年研究已跳出「一场定胜负」框架:自 Demiéville《Le concile de bSam yas》(1952) 奠基,至 van Schaik·Karmay·Gomez 据藏抄重审、Ruegg 从二谛立场剖析,再至 2023 年韩国《불교학연구》对「僧诤作为一次论争」这一命题本身作批判性检讨。此为理解「顿悟」说之跨语言流布、以及禅与中观·如来藏交涉的关键一环。'
+    en_body: |
+      In ca. 792-794 the Tibetan emperor Khri srong lde btsan (742-c.800)
+      convened at bSam yas monastery a ruling between two Buddhist paths: the
+      Chinese master Heshang Moheyan's "sudden door" of non-conceptualisation,
+      and the Indian Kamalaśīla's "gradual" training in the pair of skillful
+      means and wisdom, expounded in his Bhāvanākrama, which judged the Chan
+      "non-discrimination" to collapse into indeterminate torpor. Later Tibetan
+      historiography cast Kamalaśīla as victor; yet the Dunhuang Tibetan and
+      Chinese manuscripts show Chan did not die out after one contest, and its
+      relation to Dzogchen and Mahāmudrā remains disputed. Recent work moves
+      beyond the "single-debate" frame — from Demiéville (1952) through van
+      Schaik, Karmay and Ruegg to a 2023 Korean study re-examining the very
+      idea of "the council of bSam yas."
+    source: 莲花戒《修习次第》Bhāvanākrama·敦煌 P.t.116/IOL Tib J·《顿悟真宗要诀》·Demiéville《Le concile de bSam yas》(1952)·"Reconsidering Tibetan Chan"(近年)·Sheehy《Early Tibet》·韩《불교학연구》2023
 - id: chan_practice
   title: 佛门内部·实修视角
   title_en: Inside the Buddhist Community — The Practical Cultivation View
@@ -716,6 +734,22 @@ sections:
       from which the later "mind-itself-is-Buddha" and the Huatou/Silent
       Illumination turnings grew.
     source: 宗宝本《坛经·定慧品/坐禅品/护法品》(「道由心悟岂在坐」见〈护法品〉薛簡章·敦煌本无此品)
+  - title: 道元与华严·「只管打坐」对「一多相即」的接受与转化
+    title_en: Dōgen and Huayan — "Just Sitting" on the Interpenetration of One and Many
+    body: '日本曹洞宗开祖道元(1200—1253)以「只管打坐」「身心脱落」立宗,常被目为纯然宗门禅;然其《正法眼藏》广摄华严「法界·一多相即·理事无碍」与天台·唯识之说。近年研究(HAL 开放取,2021〈Dōgen''s Treatment of Huayan Concepts of Mind-Only and One-and-All〉)专析:道元如何接受华严「唯心」「一多」概念,并以「个/境」互即、坐禅现量,于工夫论层面转化宗密「事事无碍」之判——非仅引证。
+      此条与本文〈禅宗与其他宗派的融合〉〈海云论祖师禅与如来禅〉诸节互文,亦是本项目「华严观」与「宗门行」对话之直接接口:一多相即之义,在贤首为法界缘起之玄谈,在道元归之于「修证一如」之坐。'
+    en_body: |
+      Dōgen (1200-1253), founder of the Sōtō school, is often read as sheer
+      sectarian Zen on "just sitting" and "dropping off body and mind." Yet his
+      Shōbōgenzō absorbs Huayan's dharma-dhātu, the mutual identification of one
+      and many, and unobstructed principle-and-phenomena, alongside Tiantai and
+      Yogācāra. A 2021 open-access study analyses how Dōgen received and
+      transformed Huayan "mind-only" and "one-and-many" — relocating Zongmi's
+      "unobstructed interpenetration of phenomenon and phenomenon" into the
+      present-moment of sitting, the "oneness of practice and realization." It
+      speaks directly to this project's Huayan contemplation in dialogue with
+      the Chan line.
+    source: 《正法眼藏》(道元)·HAL 2021〈Dōgen''s Treatment of Huayan Concepts of Mind-Only and One-and-All〉·宗密《注华严法界观门·华严策林》〔回连本项目华严文献〕
 - id: chan_modern
   title: 近现代禅门发展
   title_en: The Modern Development of the Chan Lineage
@@ -1426,6 +1460,24 @@ sections:
       redefined rather than fixed 〔并存: sectarian self-understanding and
       scholarly re-description coexist〕.
     source: 《景德传灯录》·马祖/百丈语录·明末四大师净土著述
+  - title: 禅门女性·被正统法脉叙事遮蔽的实修者
+    title_en: Chan Women — Practitioners Obscured by the Orthodox Lineage Narrative
+    body: '禅宗灯录几以男性法嗣为唯一线索,然实修史中女性从未缺席。汉地:唐代·无尽藏比丘尼(《坛经》诘问惠能「既不识字,如何会佛法」者),宋代·妙总(圆悟克勤法嗣、与士大夫交参之尼师)。日本:无外如大(1223—1298,俗名安达千代野,承宋僧无学祖元,为日本首位女禅匠,开契经寺,以「桶底脱落」水月之悟著名)。
+      学界自 Gross《Buddhism After Patriarchy》(1993) 立批判性别视角,近二十余年实证骤增:Barbara Ruch 译注无外如大、Sarah Fink《The Feminist Buddha》(UBC 2020,成都比丘尼田野)、Cheng《Buddhist Nuns in Taiwan and Sri Lanka》(Routledge)、韩国比丘尼僧团研究(2025);日本 2024《無外如大尼——禅門を開く女性》(思文閣,448 页)更成里程碑。此组文献对「不识字/顿悟/嗣法」等宗门修辞之性别前提提出根本重省,亦校正本文〈祖师传承〉诸表之视角盲区。'
+    en_body: |
+      The Chan lamp records weave an almost wholly male line of heirs, yet women
+      were never absent. In China: the nun Wujinzcang, who in the Platform Sūtra
+      questions Huineng ("if you cannot read characters, how can you understand
+      the dharma?"), and Miaozong, dharma heir of Yuanwu Keqin. In Japan: Mugai
+      Nyōdai (1223-1298; secular name Adachi Chiyono), heir to the Chinese
+      Rinzai master Wuxue Ziyuan, the first female Zen master in Japan,
+      foundress of Keiaiji, famed for the koan of "the bottom of the
+      water-bucket falling out." Scholarship from Rita Gross's Buddhism After
+      Patriarchy (1993) onward — Barbara Ruch on Mugai, Fink's fieldwork (UBC
+      2020), Cheng's Buddhist Nuns in Taiwan and Sri Lanka, Korean bhikṣuṇī
+      studies (2025), and the 2024 Shibunkaku monograph — re-reads the gendered
+      premises of "illiterate / sudden awakening / transmission."
+    source: 《坛经·机缘品》无尽藏·灯录妙总·Barbara Ruch 论无外如大·Gross《Buddhism After Patriarchy》(1993)〔待核〕·Fink UBC 2020·Cheng(Routledge)·2024 思文閣《無外如大尼》·https://en.wikipedia.org/wiki/Mugai_Nyodai
 references:
   academic:
   - 'Heinrich Dumoulin, Zen Buddhism: A History, Vol.1 India and China (Macmillan,
@@ -1438,6 +1490,11 @@ references:
   - 印顺《中国禅宗史》(1971, 正闻出版社)
   - 柳田圣山《初期禅宗史书の研究》(法藏馆, 1967)
   - Robert Buswell (ed.), The Zen Canon (Oxford, 2004). ISBN 978-0195150681
+  - 'Morten Schlütter & Stephen F. Teiser (eds.), Readings of the Platform Sūtra (Columbia UP, 2012)'
+  - 'Donald S. Lopez Jr. (ed.), The Oxford Handbook of Contemporary Buddhism (Oxford UP, 2017)'
+  - '「Dōgen''s Treatment of Huayan Concepts of Mind-Only and One-and-All」(HAL open-access, 2021)'
+  - '「Reconsidering Tibetan Chan」·Sheehy, Early Tibet on Heshang Moheyan·Demiéville《Le concile de bSam yas》(1952)'
+  - 'Sarah Fink, The Feminist Buddha: Buddhist Nuns in Contemporary Chengdu (UBC, 2020)·Rita Gross, Buddhism After Patriarchy (1993)'
   buddhist_internal:
   - 《六祖大师法宝坛经》(宗宝本, T48n2008)
   - 《景德传灯录》(道原, T51n2076)
