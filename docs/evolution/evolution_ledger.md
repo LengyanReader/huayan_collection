@@ -3,7 +3,29 @@
 > 由 `scripts/self_evolve.py` 自动维护的**只追加**审计流水；权威机读源为 `data/evolution/evolution_log.yaml`。
 > 记录每一次进化动作——自动体检/阈值整定/自动归档，与人工确认的进度回填/否决，以及 Agent 带外记录。
 
-共 **15** 条事件。
+共 **32** 条事件。
+
+## 2026-09-23
+
+| seq | 周期 | 触发 | 类别 | 对象 | 动作/变更 | 结果 | 依据/理由 |
+|---|---|---|---|---|---|---|---|
+| 16 | — | 🧠 | harness_setup | 新建 harness/ 智能体工作法总纲目录 | 综合 Anthropic《长时程 agent harness》《上下文工程》+ 本项目既有资产，落地 harness/： | ✅执行 |  |
+| 17 | — | 🧠 | harness_setup | harness coverage audit: added data-pipel | double-check found initial harness under-covered repo engine | ✅执行 |  |
+| 18 | — | 🧠 | harness_setup | verify follow-up backlog: build_demo.py  | graph.json actually produced by export_sqlite_to_json.py; bu | ✅执行 |  |
+| 19 | 3 | 🤖 | cycle_run | 周期 #3 体检总览 | — → health=45.2 open=244 high=103 | 👁观测 | 新增 84·归档 0·台账矛盾 0 |
+| 20 | 3 | 🤖 | marker_register | 登记新增待办 84 项 |  | ✅执行 | 扫描 include 文件命中的待核/存疑/待订正标记 |
+| 21 | 3 | 🤖 | threshold_tune | escalation_window_days | 24 → 21 | ✅执行 | 高优先积压 103 vs 带限[6,25]→收紧 |
+| 22 | 3 | 🤖 | cadence_set | next_review | — → +14d → 2026-10-07 | ✅执行 | 据积压与阈值推算复核节奏 |
+| 23 | 4 | 🤖 | cycle_run | 周期 #4 体检总览 | — → health=83.5 open=75 high=33 | 👁观测 | 新增 0·归档 0·台账矛盾 0 |
+| 24 | 4 | 🤖 | threshold_tune | escalation_window_days | 21 → 18 | ✅执行 | 高优先积压 33 vs 带限[6,25]→收紧 |
+| 25 | 4 | 🤖 | cadence_set | next_review | — → +14d → 2026-10-07 | ✅执行 | 据积压与阈值推算复核节奏 |
+| 26 | 5 | 🤖 | cycle_run | 周期 #5 体检总览 | — → health=81.1 open=75 high=33 | 👁观测 | 新增 0·归档 0·台账矛盾 0 |
+| 27 | 5 | 🤖 | threshold_tune | escalation_window_days | 18 → 15 | ✅执行 | 高优先积压 33 vs 带限[6,25]→收紧 |
+| 28 | 5 | 🤖 | cadence_set | next_review | — → +14d → 2026-10-07 | ✅执行 | 据积压与阈值推算复核节奏 |
+| 29 | 6 | 🤖 | cycle_run | 周期 #6 体检总览 | — → health=81.1 open=75 high=33 | 👁观测 | 新增 0·归档 0·台账矛盾 0 |
+| 30 | 6 | 🤖 | threshold_tune | escalation_window_days | 15 → 12 | ✅执行 | 高优先积压 33 vs 带限[6,25]→收紧 |
+| 31 | 6 | 🤖 | cadence_set | next_review | — → +7d → 2026-09-30 | ✅执行 | 据积压与阈值推算复核节奏 |
+| 32 | — | 🧠 | tooling | fix self_evolve scan: pathlib trailing / | expand_targets now treats /**-suffixed excludes as subtree p | ✅执行 |  |
 
 ## 2026-09-20
 

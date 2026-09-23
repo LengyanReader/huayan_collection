@@ -10,7 +10,7 @@ PYTHON = $(CONDA_PYTHON)
 NEO4J_HOME = $(HOME)/neo4j-community-5.26.4
 JAVA_HOME = "C:/Program Files/Java/jdk-20"
 
-.PHONY: install install-dev db-init db-reset neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test clean env-info verify-sources verify-data demo demo-build demo-verify demo-serve demo-deploy evolve evolve-apply evolve-links evolve-ledger
+.PHONY: install install-dev db-init db-reset neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test test-pipeline clean env-info verify-sources verify-data verify-all demo demo-build demo-verify demo-serve demo-deploy evolve evolve-apply evolve-links evolve-ledger
 
 ## 环境信息
 env-info:
@@ -63,6 +63,9 @@ lint:
 test:
 	$(PYTHON) -m pytest -v
 
+test-pipeline:
+	$(PYTHON) scripts/test_pipeline.py
+
 ## 信息校验
 verify-sources:
 	$(PYTHON) scripts/verify_sources.py --fixme
@@ -72,6 +75,10 @@ verify-sources-json:
 
 verify-data: verify-sources
 	@echo "Data validation complete."
+
+## 全量验收（三道闸 · 会话收尾必跑；详 harness/workflows/verification.md）
+verify-all: test-pipeline demo-verify verify-sources
+	@echo "All verification gates ran. 任一未绿不得声称完成。"
 
 ## Demo (web/demo/index.html)
 demo-build:
@@ -88,10 +95,11 @@ demo: demo-build demo-verify
 	@echo "Demo built and verified. Run 'make demo-serve' for local testing."
 
 demo-deploy: demo
-	git add web/demo/index.html
-	git commit -m "deploy: demo update" || true
+	git add web/demo/
+	git commit -m "deploy: rebuild demo (tabs/articles/assets)" || true
 	git push origin main
-	@echo "Deployed. Wait ~2min for GitHub Pages CDN."
+	@echo "Deployed. Pages 源=main 根；等 ~2min CDN 刷新。"
+	@echo "NOTE: 海云讲法正文 txt 属 docs/huayanhai/，须另行提交（见 harness/workflows/deploy.md）。"
 
 ## 自我进化机制 (docs/self-evolution.md)
 evolve:

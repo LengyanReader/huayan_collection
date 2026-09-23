@@ -55,7 +55,9 @@ scan:
 markers:
   - { token: "【待订正】", severity: 5, kind: fix,        note: "已知错误待改" }
   - { token: "〔待核〕",   severity: 4, kind: verify,     note: "考证未完成" }
-  - { token: "〔存疑〕",   severity: 4, kind: verify,     note: "来源/说法存疑" }
+  # 区分两类性质不同的“不确定”：〔待核〕=考证未完成的**真待办**(verify/高优先)；
+  # 〔存疑〕=证据相当而无锤定音时本文所持的**审慎判定**(写双方、不定谳)=边界自知(boundary)，非待消除缺陷。
+  - { token: "〔存疑〕",   severity: 2, kind: boundary,   note: "来源/说法存疑(审慎判定·边界自知，不强行处理)" }
   - { token: "〔待考〕",   severity: 3, kind: verify,     note: "待进一步考察" }
   - { token: "〔线索〕",   severity: 2, kind: expand,     note: "线索性/局部信息" }
   - { token: "〔待补〕",   severity: 2, kind: expand,     note: "信息待补充" }

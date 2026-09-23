@@ -701,3 +701,31 @@ python scripts/verify_demo.py
 - **面包屑**：`data/translation/standalone_articles.yaml` `haiyun-lectures` 之 `back.label` 「教行页 · 海云讲法 · 公开资料」→「教行页 · 讲法资源 · 海云讲法」，反映新层级。
 - **功能不变**：`pv-haiyun_lectures` 子页、`switchPracticeView`/`jxSubNav`、`res-haiyun-nav` 内容卡、独立页 `articles/haiyun-lectures.html` 均不依赖顶层分组；降级仅改侧栏结构。（已知小差异：`jxSubNav` 以 `.nav-link[onclick*=view]` 求高亮，海云讲法现为 sub-link，进入该视图时顶层导航不高亮——仅观感，功能无影响。）
 - **验证**：`build.py` ✅ **34 files｜23,073,649 B**；`verify_demo.py` ✅；`test_pipeline.py` ✅；静态核验——`jiaoxing.html` 顶层 `switchPracticeView('haiyun_lectures',this)` 组头 = **0**、「讲法资源」sub-link→`hl-overview` = 1、`sub-sub-link`(hl-browse/topics/podcast/hint) 各 = 1、「讲法资源」nav-link 仍在；独立页 back 面包屑已更新。`self_evolve.py --ledger` 共 15 事件（#15）。
+
+---
+
+## 智能体 Harness · 工作法总纲目录（2026-09-23 · L.㊿）
+
+> 依用户指示：全面检索/下载/梳理可用的 agentic harness 方法、技能、原则与工具，**新建一个目录**集中整理为整个项目的 harness，供翻译、信息保证、学术规范、自我演化等后续工作支撑，且**可不断增加**（台账 #16）。
+
+- **检索/来源**：`WebSearch`+`WebFetch` 取回 Anthropic 两篇工程长文《Effective harnesses for long-running agents》《Effective context engineering for AI agents》正文（另记《Agent Skills》《Writing tools for agents》链接），与 `find-skills` 技能生态、本机 29 个已装 `SKILL.md` 清单综合；`awesome-agent-skills` 列表页抓取超时失败，未据以立项（候选仅列方向、标〔待评估〕）。
+- **新建 `harness/`（9 文件）**：`README.md`（长时程 agent 机制↔本项目既有资产映射表·会话标准节拍·扩展法）· `principles.md`（上下文工程/进度记忆/结构化笔记/增量+自验证/compaction/子代理/skills/工具设计/元原则）· `skills.md`（已装·可装·自建·如何用与任务映射 + `npx skills` 安装法）· `tools.md`（验证关卡/进化引擎/子代理/MCP/Windows-pwsh 环境约束）· `sources.md`（可点外部源·项目内权威源·检索记录·扩充 backlog）· `workflows/{translation, information-assurance, academic-standards, self-evolution}.md`（四条工作流“何时用→步骤配方→技能/工具→门禁→常见坑”）。
+- **设计原则**：只**命名・连接·调度·扩展**，**不重复**权威内容（事实/原则仍指 `CLAUDE.md`、`docs/*.md`、`data/**`）；本项目未落实处一律标〔待落地〕/〔待评估〕，不假装已具备（遵考证优先）。
+- **接入**：`CLAUDE.md`〈核心文档索引〉新增“智能体 Harness·工作法总纲”行 + 〈当前下一步〉新会话指针改为“先读 `harness/README.md` 即可接续”。
+- **验证**：`harness/` **9 文件**（README 7,983 B・principles 7,892・skills 6,097・sources 4,730・tools 5,589・四工作流）；内部相对链接自检——**0 真断链**（报出的 4 例均为反引号内 `` `[text](url)` `` 示例、非真链接）；本轮未改数据/构建产物，无需重建（`harness/` 为纯文档层，不入站页）。`self_evolve.py --record harness_setup`。**未提交**（待用户指令）。
+- **后续 backlog（详 `harness/sources.md` §四）**：固化 4 个专属技能（`huayan-multilingual-en`/`huayan-source-audit`/`huayan-item-diff`/`huayan-static-build-verify`）· `create-subagent` 建翻译审校/来源核查代理 · 实跑 `npx skills find` 装文档处理/pdf·l10n QA·BibTeX·data-validation（装前核安装量/来源/星数）· 引入重型 MCP（浏览器自动化/Neo4j）· 项目级 `.claude/skills/` 分工。
+
+## 智能体 Harness · 覆盖度复审与补全（2026-09-23 · L.㊿续 · 台账 #17）
+
+> 应用户"double check 是否全面・深入"要求，拿 `harness/` 逐项比对仓库**实际资产**（`scripts/` 23 脚本·`web/demo/src/` 10 JS）。结论：初版**通用 agentic 面 + 编辑/研究质控四流**扎实，但**遗漏了两个工程量最大的工程面**。
+- **新增两条工作流**：`harness/workflows/data-pipeline.md`（三层数据栈·import→export→build→verify 主循环·幂等/源头持久化坑·Neo4j · 95/98/30 基线）与 `harness/workflows/web-ui.md`（`navigation.yaml`+`render_sidebar`、独立文章页链、双源渲染器 `WIZ_LIB_RENDER`↔`renderWizLibrary`、中英渲染链、静态≠交互实测）。
+- **补全 `tools.md` §1b 脚本清单**（初版只列 10 个、实际 23）：`audit_bilingual`/`audit_classify`、`backfill_*`×4、`add_works_links`、`fetch_wechat_*`、`extract_hy_refs`/`ocr_hy_refs`、`append_entries`。**如实标出〔待核〕两个 builder**（`build.py` 当前权威 vs `build_demo.py` 疑 legacy）。→ **随后证据核实**：`build_demo.py` 实为遗留旧单页 demo 生成器（写 `web/demo/index.html`、全仓无引用），`graph.json` 实由 `export_sqlite_to_json.py` 产出；已修正 harness 文中初版误写“产 graph JSON”。
+- **接入与自校**：`README.md` 目录树 + 工作流一览由四条→六条；`sources.md` §三记复审、§四新增 3 项 backlog（build_demo 关系核实·`deploy.md`·`verification.md` 抽取）。链接自检 **11 个 md、0 真断链**；纯文档层未改数据/产物，无需重建。`self_evolve --record harness_setup`。**未提交**（待用户指令）。
+
+## 按推荐实现 · 工程面补全 + 引擎去噪修复（2026-09-23 · L.㊿续续 · 台账 #17–#18）
+
+> 应用户"按推荐实现"，落地 Group ①（工程优化）与 Group ③（引擎信噪比）；Group ②（〔待核〕一手对勘）仍留待专题会话。
+- **① 工程**：`git rm` 遗留 `scripts/build_demo.py`（写旧单页 `index.html`·与 `build.py` 碰撞）；`Makefile` 新增 `test-pipeline` 与 `verify-all`（串三道闸）、`demo-deploy` 改为暂存整个 `web/demo/` 并提示讲法 txt 另提；新建 `harness/workflows/deploy.md`、`harness/workflows/verification.md`（工作流 6→8）。
+- **③ 引擎修复（意外发现·重要）**：首跑暴露一处**潜伏缺陷**——`evolution_config.yaml` 排除项 `data/evolution/**` 在 pathlib 下**匹配为空**（尾缀 `/**` 不含直属文件），致引擎把**自身基因组/台账**（【待订正】token 定义、registry 里每条含〔待核〕的 snippet）当作真待办扫描 → 虚增 84 项 sev、健康度骤降至 45。**修复**：`expand_targets` 对 `/**` 后缀按"子树前缀"显式剔除。
+- **③ 存疑分级**：依编务约定区分——〔待核〕=考证未完成的**真待办**(verify/sev4)、〔存疑〕=无锤定音时的**审慎判定**(写双方·不定谳)=**边界自知**(boundary/sev2)，非待消除缺陷；并修 `act_registry` 重见时刷新 kind/severity 以同 config 基因组。一次性清仓 84 条 phantom registry 行。
+- **成效与验收**：真实 sev≥4 积压 **103 → 33**（均为真 〔待核〕）、健康度 **45 → 81.1**（旧基线 69.5 亦含同缺陷）；〔存疑〕降为 boundary 后仍在 next_actions 列示但不再占高优先。三道闸 **全绿**✅；重跑一轮确认 leak=0。`self_evolve --record tooling`。**本轮含真实代码/配置变更（self_evolve.py/evolution_config.yaml/Makefile/删 build_demo.py），已提交。**

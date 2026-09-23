@@ -150,3 +150,186 @@ events:
   outcome: applied
   action: navigation.yaml删除海云讲法顶层group，其入口改为讲法资源sub-link(jxSubNav haiyun_lectures/hl-overview)，5→1+4：余4锚点作subsub缩进子项；standalone_articles.yaml
     back.label改教行页·讲法资源·海云讲法。switchPracticeView/jxSubNav/pv-haiyun_lectures均不依赖顶层分组，功能不变。build 34 files,verify+pipeline过,静态核验顶层组=0·sub-link=1·sub-sub-link(hl-*)各1
+- seq: 16
+  ts: '2026-09-23T21:46:08'
+  date: '2026-09-23'
+  cycle: null
+  actor: agent
+  category: harness_setup
+  subject: 新建 harness/ 智能体工作法总纲目录
+  outcome: applied
+  action: 综合 Anthropic《长时程 agent harness》《上下文工程》+ 本项目既有资产，落地 harness/：README(映射/节拍/扩展)+principles(上下文工程/进度记忆/自验证/子代理/skills/工具设计)+skills(已装/可装/造/用)+tools(验证关卡/子代理/MCP/环境约束)+sources(可点来源/检索记录/backlog)+workflows{translation,information-assurance,academic-standards,self-evolution}；CLAUDE.md
+    文档索引+新会话指针接入。9文件,内部相对链接0真断链(4例为反引号[text](url)示例)。事实均只连接权威源不重述,未落实者标〔待落地/待评估〕
+- seq: 17
+  ts: '2026-09-23T22:07:31'
+  date: '2026-09-23'
+  cycle: null
+  actor: agent
+  category: harness_setup
+  subject: 'harness coverage audit: added data-pipeline + web-ui workflows, expanded tools.md script inventory'
+  outcome: applied
+  action: double-check found initial harness under-covered repo engineering surfaces; added workflows/data-pipeline.md
+    + workflows/web-ui.md; tools.md 1b audit/backfill/fetch/ocr; README 4->6 workflows; flagged build_demo.py
+    vs build.py as to-verify
+- seq: 18
+  ts: '2026-09-23T22:16:15'
+  date: '2026-09-23'
+  cycle: null
+  actor: agent
+  category: harness_setup
+  subject: 'verify follow-up backlog: build_demo.py confirmed legacy (writes old single-page index.html,
+    not graph.json); corrected harness wording'
+  outcome: applied
+  action: graph.json actually produced by export_sqlite_to_json.py; build.py canonical for index.html+tabs;
+    flagged Makefile gaps (no verify-all, no test-pipeline target, demo-deploy only stages index.html).
+    11 md 0 broken links. docs-only, no rebuild.
+- seq: 19
+  ts: '2026-09-23T22:29:44'
+  date: '2026-09-23'
+  cycle: 3
+  actor: auto
+  category: cycle_run
+  subject: '周期 #3 体检总览'
+  outcome: observed
+  after: health=45.2 open=244 high=103
+  evidence: '管线全绿: test_pipeline=✅,verify_demo=✅,verify_sources=✅'
+  rationale: 新增 84·归档 0·台账矛盾 0
+- seq: 20
+  ts: '2026-09-23T22:29:44'
+  date: '2026-09-23'
+  cycle: 3
+  actor: auto
+  category: marker_register
+  subject: 登记新增待办 84 项
+  outcome: applied
+  rationale: 扫描 include 文件命中的待核/存疑/待订正标记
+- seq: 21
+  ts: '2026-09-23T22:29:44'
+  date: '2026-09-23'
+  cycle: 3
+  actor: auto
+  category: threshold_tune
+  subject: escalation_window_days
+  outcome: applied
+  before: 24
+  after: 21
+  rationale: 高优先积压 103 vs 带限[6,25]→收紧
+- seq: 22
+  ts: '2026-09-23T22:29:44'
+  date: '2026-09-23'
+  cycle: 3
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +14d → 2026-10-07
+  rationale: 据积压与阈值推算复核节奏
+- seq: 23
+  ts: '2026-09-23T22:34:17'
+  date: '2026-09-23'
+  cycle: 4
+  actor: auto
+  category: cycle_run
+  subject: '周期 #4 体检总览'
+  outcome: observed
+  after: health=83.5 open=75 high=33
+  evidence: (验证跳过)
+  rationale: 新增 0·归档 0·台账矛盾 0
+- seq: 24
+  ts: '2026-09-23T22:34:17'
+  date: '2026-09-23'
+  cycle: 4
+  actor: auto
+  category: threshold_tune
+  subject: escalation_window_days
+  outcome: applied
+  before: 21
+  after: 18
+  rationale: 高优先积压 33 vs 带限[6,25]→收紧
+- seq: 25
+  ts: '2026-09-23T22:34:17'
+  date: '2026-09-23'
+  cycle: 4
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +14d → 2026-10-07
+  rationale: 据积压与阈值推算复核节奏
+- seq: 26
+  ts: '2026-09-23T22:35:57'
+  date: '2026-09-23'
+  cycle: 5
+  actor: auto
+  category: cycle_run
+  subject: '周期 #5 体检总览'
+  outcome: observed
+  after: health=81.1 open=75 high=33
+  evidence: '管线全绿: test_pipeline=✅,verify_demo=✅,verify_sources=✅'
+  rationale: 新增 0·归档 0·台账矛盾 0
+- seq: 27
+  ts: '2026-09-23T22:35:57'
+  date: '2026-09-23'
+  cycle: 5
+  actor: auto
+  category: threshold_tune
+  subject: escalation_window_days
+  outcome: applied
+  before: 18
+  after: 15
+  rationale: 高优先积压 33 vs 带限[6,25]→收紧
+- seq: 28
+  ts: '2026-09-23T22:35:57'
+  date: '2026-09-23'
+  cycle: 5
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +14d → 2026-10-07
+  rationale: 据积压与阈值推算复核节奏
+- seq: 29
+  ts: '2026-09-23T22:38:18'
+  date: '2026-09-23'
+  cycle: 6
+  actor: auto
+  category: cycle_run
+  subject: '周期 #6 体检总览'
+  outcome: observed
+  after: health=81.1 open=75 high=33
+  evidence: '管线全绿: test_pipeline=✅,verify_demo=✅,verify_sources=✅'
+  rationale: 新增 0·归档 0·台账矛盾 0
+- seq: 30
+  ts: '2026-09-23T22:38:18'
+  date: '2026-09-23'
+  cycle: 6
+  actor: auto
+  category: threshold_tune
+  subject: escalation_window_days
+  outcome: applied
+  before: 15
+  after: 12
+  rationale: 高优先积压 33 vs 带限[6,25]→收紧
+- seq: 31
+  ts: '2026-09-23T22:38:18'
+  date: '2026-09-23'
+  cycle: 6
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +7d → 2026-09-30
+  rationale: 据积压与阈值推算复核节奏
+- seq: 32
+  ts: '2026-09-23T22:38:59'
+  date: '2026-09-23'
+  cycle: null
+  actor: agent
+  category: tooling
+  subject: 'fix self_evolve scan: pathlib trailing /** matched no files, so data/evolution genome+registry
+    leaked into marker scan (84 phantom sev items, health 45)'
+  outcome: applied
+  action: 'expand_targets now treats /**-suffixed excludes as subtree prefix; also reclassified marker
+    存疑 -> boundary/sev2 (deliberate verdict, not a to-do) and act_registry refreshes kind/severity from
+    config; purged 84 phantom registry rows. Net: genuine sev>=4 backlog 103 -> 33, health 45 -> 81.1,
+    all gates green'

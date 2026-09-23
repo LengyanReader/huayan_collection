@@ -211,6 +211,11 @@ def expand_targets(cfg):
         for p in ROOT.glob(pat):
             if p.is_file():
                 excl.add(p.relative_to(ROOT).as_posix())
+        # pathlib 的尾缀 `/**` 不匹配目录直属文件（如 data/evolution/** 命中为空）——
+        # 显式按「子树前缀」剔除，使排除表达如预期生效（防引擎自扫描基因组/台账）。
+        if pat.endswith("/**"):
+            prefix = pat[:-3].rstrip("/")
+            excl |= {f for f in files if f == prefix or f.startswith(prefix + "/")}
     return sorted(files - excl)
 
 
@@ -441,6 +446,11 @@ def act_registry(state, items, ref_date, grace_cycles):
             e["last_seen"] = ref_date.isoformat()
             e["absent_cycles"] = 0
             e["seen_count"] = e.get("seen_count", 1) + 1
+            # 刷新派生字段：config 为可变基因组，kind/severity 调整应传导至已有项
+            e["kind"] = it["kind"]
+            e["severity"] = it["severity"]
+            if it.get("note"):
+                e["note"] = it["note"]
             if e.get("status") == "resolved":
                 e["status"] = "open"
         else:
