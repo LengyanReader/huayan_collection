@@ -438,3 +438,12 @@ events:
   outcome: applied
   action: references 结构化(label/tier/url/note)+双渲染器(build.py CHAN_TRACES_RENDER & practice.js)向后兼容纯字符串;
     Haiyun 本宗自述留不分级; mermaid 逐字节未动
+- seq: 43
+  ts: '2026-09-24T07:33:41'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: Phase0 renderRefList 共享参考文献渲染器(收敛~15处重复)
+  outcome: applied
+  action: common.js 单一源;practice/gap/cosmology/build.py 全部委托;零回归:build+verify_demo+test_pipeline 全绿

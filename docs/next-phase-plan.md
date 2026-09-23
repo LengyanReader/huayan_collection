@@ -60,6 +60,19 @@
 
 ---
 
+## L.52 《文献优化 · Phase 0 共享参考文献渲染器》（2026-09-24）
+
+> 承接 `华严教海文献优化规划`（对标 L.51 禅门实迹）。**Phase 0 目标：把散落于 ~15 处的重复 `refs.forEach` 上抽为 `common.js` 单一渲染源 `window.renderRefList`，为后续华严文献/教海行云的分级参考文献铺路——只改数据结构、渲染端零改。**
+
+- **单一源**：`web/demo/js/common.js` §10 新增 `window.renderRefList(refs, opts)` + `window._refItem`。入参三态自适应（字符串数组·旧格式向后兼容 / 对象数组 `{label|cite|text, tier:'A'|'B'|'C', url, note}` / 类目映射）；A/B/C 信度徽标 + 🔗核对链接 + 图例。`opts.fmt`（注入页内格式化器如 `_dynMD`/`_escC`）· `opts.md`（全局 `mdToHTML`）· `opts.legend:false`（分组内嵌时关图例）。
+- **调用点全部收敛**（各加 `(window.renderRefList ? renderRefList(X) : '')` 兜底）：`practice.js` ct/pj/xf(逐组 legend:false)/dz/tt/zz/sq/vy/fx/yk/mm；`gap.js` avs/pj(`{md:true}`)；`cosmology.js` sec.references(`{legend:false, fmt:_escC}`，`<p>`→`<div>` 避非法嵌套)；`build.py` `CHAN_TRACES_RENDER` ct + `GAP_TOPICS_RENDER` 两处(`{fmt:_dynMD}`，保留 markdown)。
+- **可达性**：tab(`build_page`)与独立 article(`build_articles`)均先加载 `common.js`，一处定义全站复用。
+- **零回归证明**：仅改 JS/py 源、**未碰任何 YAML**。`build` ✅ 34 files｜23,173,404 B；`verify_demo` ✅ ALL CHECKS PASSED（含 `node --check` common.js）；`test_pipeline` ✅ ALL TESTS PASSED。产物 HTML 调用点核验：avatamsaka-studies=4 / panjiao=4 / chan-traces=2 / jiaoxing=22 / gap=4 / cosmology=2（独立页 `common.js` 为外链，图例运行时才产，故不计入构建 HTML——经验已写入 harness）。
+- **harness 沉淀**：`workflows/web-ui.md`〈双源渲染器〉加「✔ 收敛法：上抽 common.js 单一渲染源」；`workflows/academic-standards.md` 体例清单①升级「引用可点+信度分级」并新增「六维内容优化清单」（涵盖度/完整性/准确性/深度/论证/文献管理，每轴配可证伪动作与证据）——服务用户「全方位优化+持续积累 harness」之命。
+- **待核**：`frontier.js` refs（frontier_dialogue 异域）暂**未收敛**，留后续评估；Phase 1-3（华严文献/教海行云 map doc + 数据结构化 + md 研究文档分级参考文献）待续。
+
+---
+
 ## L.51 《禅门实迹 · 参考文献结构化》（2026-09-24）
 
 > 用户检视页面后反馈：`references` **太少**、缺**信度评估**、缺**可回看检查的链接**。据此把 `data/practice/chan_authentic_traces.yaml` 的 `references` 由纯字符串**升级为结构化条目** `{label, tier, url, note}`：

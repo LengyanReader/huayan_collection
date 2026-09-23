@@ -688,6 +688,61 @@
     window._applySiteLang();
   };
 
+  /* ═══════════════════════════════════════════════════════
+     10. 共享参考文献渲染器 renderRefList（单源·全站复用）
+     ───────────────────────────────────────────────────────
+     华严文献 / 教海行云 / 禅门实迹 各页 references 的**唯一渲染源**，
+     取代此前散落于 practice.js / gap.js / cosmology.js 及 build.py 内联
+     CHAN_TRACES_RENDER / GAP_TOPICS_RENDER 的重复 `refs.forEach(r=>'<li>'+r)`。
+     入参 refs 兼容三种形态：
+       · 字符串数组（旧格式，向后兼容，原样成条）；
+       · 对象数组 {label|cite|text|fmt, tier:'A'|'B'|'C', url, note}；
+       · 「类目 → 上述数组」映射（分组渲染）。
+     opts: { fmt: 逐条文本格式化函数(如 _dynMD), md: 用全局 mdToHTML, legend:false 关图例 }。
+     A/B/C 信度分级 + 🔗核对（指向可回查原页）；无 url 不臆造、留空即不显链接。
+     ═══════════════════════════════════════════════════════ */
+  var REF_TIER = {
+    A: ['一手 · 权威', 'var(--gold)'],
+    B: ['专著 · 学位论文', 'var(--blue)'],
+    C: ['线索 · 待核', '#d98a00']
+  };
+  function refItem(r, fmt) {
+    if (r == null) return '';
+    if (typeof r === 'string') return '<li style="margin:2px 0">' + (fmt ? fmt(r) : r) + '</li>';
+    if (typeof r === 'object') {
+      var lb = r.label || r.cite || r.text || r.fmt || ''; lb = fmt ? fmt(lb) : lb;
+      var bd = '';
+      if (r.tier && REF_TIER[r.tier]) {
+        bd = '<span title="信度 ' + REF_TIER[r.tier][0] + '" style="display:inline-block;min-width:13px;text-align:center;padding:0 4px;margin-right:5px;border:1px solid ' + REF_TIER[r.tier][1] + ';border-radius:3px;color:' + REF_TIER[r.tier][1] + ';font-weight:700;font-size:0.88em">' + r.tier + '</span>';
+      }
+      var nt = r.note ? ' <span style="color:var(--text2)">— ' + (fmt ? fmt(r.note) : r.note) + '</span>' : '';
+      var lk = r.url ? ' <a href="' + r.url + '" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;white-space:nowrap">🔗核对</a>' : '';
+      return '<li style="margin:2px 0">' + bd + lb + nt + lk + '</li>';
+    }
+    return '<li style="margin:2px 0">' + String(r) + '</li>';
+  }
+  window._refItem = refItem;
+  window.renderRefList = function (refs, opts) {
+    opts = opts || {};
+    if (!refs) return '';
+    var fmt = opts.fmt || (opts.md && typeof mdToHTML === 'function' ? mdToHTML : null);
+    var legend = (opts.legend === false) ? '' :
+      '<div style="font-size:0.9em;color:var(--text2);margin:2px 0 6px">🔖 信度分级：<b style="color:var(--gold)">A</b> 一手/权威 · <b style="color:var(--blue)">B</b> 专著/学位论文 · <b style="color:#d98a00">C</b> 线索/待核 &nbsp;·&nbsp; 🔗核对 = 指向可回查原页</div>';
+    var body = '';
+    var isMap = !Array.isArray(refs) && typeof refs === 'object';
+    if (isMap) {
+      Object.keys(refs).forEach(function (k) {
+        var arr = refs[k] || [];
+        body += '<li style="list-style:none;margin:6px 0 2px;padding-left:0"><b>' + k +
+                '</b><ul style="margin:0;padding-left:18px">' +
+                arr.map(function (r) { return refItem(r, fmt); }).join('') + '</ul></li>';
+      });
+      return legend + '<ul style="margin:0;padding-left:12px">' + body + '</ul>';
+    }
+    return legend + '<ul style="margin:0;padding-left:18px">' +
+      refs.map(function (r) { return refItem(r, fmt); }).join('') + '</ul>';
+  };
+
 })();
 
 // ═══ Global markdown-lite converter ═══

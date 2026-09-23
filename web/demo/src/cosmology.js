@@ -115,7 +115,7 @@ function renderCosmology(){
         if(t.sources && t.sources.length){ h+="<p style=font-size:0.7em;color:var(--text2);margin-top:4px>📚 "+t.sources.map(function(s){return _escC(s);}).join('<br>')+"</p>"; }
         h+='</div></div>';
       });
-      if(sec.references && sec.references.length){ h+="<p style=font-size:0.7em;color:var(--text2);margin-top:4px>📖 "+sec.references.map(function(r){return _escC(r);}).join('<br>')+"</p>"; }
+      if(sec.references && sec.references.length){ h+='<div style="font-size:0.7em;color:var(--text2);margin-top:4px">📚 参考文献 ' + (window.renderRefList ? renderRefList(sec.references, {legend:false, fmt:_escC}) : sec.references.map(function(r){return _escC(r);}).join('<br>')) + '</div>'; }
       h+='</div></div>';
     });
     h+='</div>';

@@ -26,6 +26,15 @@
 - `build.py: WIZ_LIB_RENDER`（L951，生成静态 article）**↔** `practice.js: renderWizLibrary()`（L901，运行时），注释已互标"同步"（如 `esc` 转义 L896）。
 - 加/改海云讲法库渲染时**两处一起改**，否则静态页与交互页不一致。
 
+### ✔ 收敛法：把重复逻辑上抽为 common.js 单一渲染源（refs 已落地）
+
+当同一段逻辑散落在 **N 个渲染点**（`practice.js` / `gap.js` / `cosmology.js` + `build.py` 内联 `CHAN_TRACES_RENDER`/`GAP_TOPICS_RENDER`）时，逐一镜像不可持续。解法：**在 `common.js` 里放一个 `window.xxx` 全局函数**，各调用点一律 `(window.xxx ? xxx(data) : '')` 委托：
+- **🔴 头号陷阱**：`common.js` 的**唯一真源是 `web/demo/src/common.js`**——`build.py: read_src('common.js')`（L1683）每次 build 都**覆盖** `web/demo/js/common.js`。只编辑 `js/`（构建产物）会在下次 build 被静默清空，而所有调用点走 `? : ''` 兜底 → **参考文献渲染为空却不报错**。务必改 `src/` 后 `build`，并核 `Get-FileHash src == js`。
+- **可达性前提**：tab（`build_page`）与独立 article（`build_articles` L1477）**都先加载 `common.js`**，故一处定义全站复用；独立页里 `common.js` 是外链 `<script src>`，helper 运行时才产 DOM，故构建产物 HTML 里只出现**调用点**、不含其内部标记（如"信度分级"图例）——**核验应数调用点，不以图例计数**。
+- **零回归要点**：helper 必须**向后兼容旧入参形态**（字符串数组 / 对象数组 / 类目映射三态自适），并提供 `opts.fmt` 注入各页既有格式化器（如 `_dynMD`/`_escC`/全局 `mdToHTML`），使"仅改 JS/py 源、不碰 YAML"即可安全收敛；每处保留 `? : ''` 兜底。
+- **落地例**：`window.renderRefList(refs, {fmt|md|legend})` 统一 参考文献 渲染（A/B/C 信度分级徽标 + 🔗核对链接），取代此前 ~15 处重复 `refs.forEach(r=>'<li>'+r)`。新增分级参考文献**只改 YAML 数据结构，渲染端零改动**。
+- **适用边界**：域内视觉差异大（如 `xf` 分组）时用 `{legend:false}` 逐组调用而非整块；不同数据域（frontier_dialogue 等）先评估再收敛，勿为统一而越界改坏语义。
+
 ## 中英双语渲染链（勿插坏）
 
 `.en-line`(块级独占一行) / `.en-inline`(行内配对) / `en-block`(块级整段) 由 `common.js: _markEnBlocks(root)` 生成；语言切换 `_applySiteLang()` 只切 `html[data-lang]` + `body.en-mode`。

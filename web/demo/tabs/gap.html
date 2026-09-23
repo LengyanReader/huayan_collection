@@ -639,9 +639,8 @@ function renderAvatamsakaStudies() {
   h += '</div>';
 
   if (avs.references) {
-    h += '<div class=section id=avs-refs><h2>📚 参考文献</h2><ul style="font-size:0.78em;line-height:1.9;white-space:pre-line">';
-    avs.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
-    h += '</ul></div>';
+    h += '<div class=section id=avs-refs><h2>📚 参考文献</h2>'
+       + (window.renderRefList ? renderRefList(avs.references, {md:true}) : '') + '</div>';
   }
   h += '</div>'; // close gv-avatamsaka_studies
   return h;
@@ -673,9 +672,8 @@ function renderPanjiaoHupan() {
     h += '</div>';
   });
   if (pj.references) {
-    h += '<div class=section><h2>📚 参考文献</h2><ul style="font-size:0.78em;line-height:1.9">';
-    pj.references.forEach(function(r) { h += '<li>' + r + '</li>'; });
-    h += '</ul></div>';
+    h += '<div class=section><h2>📚 参考文献</h2>'
+       + (window.renderRefList ? renderRefList(pj.references, {md:true}) : '') + '</div>';
   }
   h += '</div>'; // close gv-panjiao
   return h;

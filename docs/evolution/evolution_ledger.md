@@ -3,7 +3,7 @@
 > 由 `scripts/self_evolve.py` 自动维护的**只追加**审计流水；权威机读源为 `data/evolution/evolution_log.yaml`。
 > 记录每一次进化动作——自动体检/阈值整定/自动归档，与人工确认的进度回填/否决，以及 Agent 带外记录。
 
-共 **42** 条事件。
+共 **43** 条事件。
 
 ## 2026-09-24
 
@@ -15,6 +15,7 @@
 | 40 | 8 | 🤖 | cadence_set | next_review | — → +7d → 2026-10-01 | ✅执行 | 据积压与阈值推算复核节奏 |
 | 41 | — | 🧠 | content_expand | chan_authentic_traces +3 researched topi | Derived from docs/禅门文献与研究地图_四域近年.md; inserted by raw-text sp | ✅执行 |  |
 | 42 | — | 🧠 | content_expand | 禅门实迹 references: 26→61 条·A/B/C 信度分级+34可回 | references 结构化(label/tier/url/note)+双渲染器(build.py CHAN_TRACE | ✅执行 |  |
+| 43 | — | 🧠 | content_expand | Phase0 renderRefList 共享参考文献渲染器(收敛~15处重复) | common.js 单一源;practice/gap/cosmology/build.py 全部委托;零回归:build | ✅执行 |  |
 
 ## 2026-09-23
 

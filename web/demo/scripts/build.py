@@ -920,21 +920,8 @@ CHAN_TRACES_RENDER = r'''function renderChanTraces() {
     h += '</div>';
   });
   if (ct.references) {
-    var RT={A:'一手·权威',B:'专著·学位论文',C:'线索·待核'},RC={A:'var(--gold)',B:'var(--blue)',C:'#d98a00'};
-    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献 · 信度分级（A 一手权威 · B 专著/学位论文 · C 线索待核）· 🔗 均指向可回查原页</summary>';
-    Object.keys(ct.references).forEach(function(k) {
-      h += '<p style=margin:8px 0 2px><b>' + k + '</b></p><ul style=margin:0;padding-left:18px>';
-      ct.references[k].forEach(function(r) {
-        if (typeof r === 'string') { h += '<li style=margin:2px 0>' + r + '</li>'; return; }
-        var lb = r.label || r.cite || '';
-        var bd = (r.tier && RT[r.tier]) ? '<span title="信度 ' + RT[r.tier] + '" style="display:inline-block;min-width:13px;text-align:center;padding:0 4px;margin-right:5px;border:1px solid ' + RC[r.tier] + ';border-radius:3px;color:' + RC[r.tier] + ';font-weight:700;font-size:0.88em">' + r.tier + '</span>' : '';
-        var nt = r.note ? ' <span style="color:var(--text2)">— ' + r.note + '</span>' : '';
-        var lk = r.url ? ' <a href="' + r.url + '" target=_blank rel="noopener" style="color:var(--blue);text-decoration:none;white-space:nowrap">🔗核对</a>' : '';
-        h += '<li style=margin:2px 0>' + bd + lb + nt + lk + '</li>';
-      });
-      h += '</ul>';
-    });
-    h += '</details>';
+    h += '<details style=font-size:0.72em;margin-top:8px><summary>📚 参考文献（分级 · 🔗 可回查）</summary>'
+       + (window.renderRefList ? renderRefList(ct.references) : '') + '</details>';
   }
   h += '<div class=section id=chan-diagrams><h2>📊 禅宗法脉传承</h2>';
   h += '<table class=v-table style=font-size:0.75em><tr><th>时期</th><th>人物</th><th>贡献</th></tr>';
@@ -1305,9 +1292,8 @@ function renderDynTopics(data, mode) {
     });
     h += '</div>';
     if (data.references) {
-      h += '<div class="section" id="avs-dyn-refs"><h2>📚 参考文献</h2><ul style="font-size:0.8em;line-height:1.9;white-space:pre-line">';
-      data.references.forEach(function(r){ h += '<li>' + _dynMD(r) + '</li>'; });
-      h += '</ul></div>';
+      h += '<div class="section" id="avs-dyn-refs"><h2>📚 参考文献</h2>' + (window.renderRefList ? renderRefList(data.references, {fmt: _dynMD}) : '');
+      h += '</div>';
     }
     // ── 页脚 ──
     h += '<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
@@ -1349,9 +1335,8 @@ function renderDynTopics(data, mode) {
     h += '</div>';
   });
   if (data.references) {
-    h += '<div class=section id=avs-dyn-refs><h2>📚 参考文献</h2><ul style="font-size:0.8em;line-height:1.9">';
-    data.references.forEach(function(r){ h += '<li>' + _dynMD(r) + '</li>'; });
-    h += '</ul></div>';
+    h += '<div class=section id=avs-dyn-refs><h2>📚 参考文献</h2>' + (window.renderRefList ? renderRefList(data.references, {fmt: _dynMD}) : '');
+    h += '</div>';
   }
   return h;
 }
