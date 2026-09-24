@@ -660,21 +660,52 @@ lineage_development:
       key_text_en: "the Great Huayan Monastery practice system; YouTube lecture series"
 
 references:
-  - 杜顺《华严五教止观》— CBETA T45n1867
-  - 法藏《华严一乘教义分齐章》(《五教章》) — CBETA T45n1866
-  - 法藏《华严经探玄记》— CBETA T35n1733
-  - 法藏《金师子章》— CBETA T45n1880
-  - 智俨《华严经搜玄记》— CBETA T35n1732
-  - 澄观《大方广佛华严经疏》— CBETA T35n1735
-  - 宗密《禅源诸诠集都序》— CBETA T48n2015
-  - 李通玄《新华严经论》— CBETA T36n1739
-  - 牟宗三《佛性与般若》(1977) — 台湾学生书局
-  - 方立天《法藏与金师子章》(1996) — 中国人民大学出版社
-  - 吕澂《中国佛学源流略讲》(1979) — 中华书局
-  - 镰田茂雄『中国華厳思想史の研究』(1965) — 東京大学出版会
-  - 木村清孝『東アジア仏教思想史の構築』(2010) — 春秋社
-  - 傅伟勋《从创造的诠释学到大乘佛学》(1990) — 东大图书
-  - Peter N. Gregory, "Tsung-mi and the Sinification of Buddhism" (1991) — Princeton University Press
-  - Francis H. Cook, "Hua-yen Buddhism: The Jewel Net of Indra" (1977) — Penn State University Press
-  - 海云继梦《华严金师子章讲记》(2010) — 空庭书苑
+  primary_texts:
+  - label: 杜顺《华严五教止观》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T45n1867
+    note: 初祖·五教止观本疏
+  - label: 法藏《华严一乘教义分齐章》(《五教章》)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T45n1866
+  - label: 法藏《华严经探玄记》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T35n1733
+  - label: 法藏《金师子章》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T45n1880
+  - label: 智俨《华严经搜玄记》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T35n1732
+  - label: 澄观《大方广佛华严经疏》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T35n1735
+    note: 四祖·华严经疏
+  - label: 宗密《禅源诸诠集都序》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T48n2015
+  - label: 李通玄《新华严经论》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T36n1739
+    note: 长者·华严别传
+  studies:
+  - label: 牟宗三《佛性与般若》(1977)— 台湾学生书局
+    tier: A
+  - label: 方立天《法藏与金师子章》(1996)— 中国人民大学出版社
+    tier: B
+  - label: 吕澂《中国佛学源流略讲》(1979)— 中华书局
+    tier: A
+  - label: 镰田茂雄『中国華厳思想史の研究』(1965)— 東京大学出版会
+    tier: A
+  - label: 木村清孝『東アジア仏教思想史の構築』(2010)— 春秋社
+    tier: A
+  - label: 傅伟勋《从创造的诠释学到大乘佛学》(1990)— 东大图书
+    tier: B
+  - label: Peter N. Gregory, 'Tsung-mi and the Sinification of Buddhism' (Princeton UP, 1991)
+    tier: A
+  - label: 'Francis H. Cook, ''Hua-yen Buddhism: The Jewel Net of Indra'' (Penn State UP, 1977)'
+    tier: A
+    note: 华严哲学英文标准入门
+  haiyun:
+  - 海云继梦《华严金师子章讲记》(2010)— 空庭书苑
   - 海云继梦《华严经讲记》系列 — 大华严寺

@@ -457,3 +457,13 @@ events:
   outcome: applied
   action: 新建docs/华严文献地图_五域近年.md; references 55→62条·7类·tier A/B/C·13可点URL(CBETA/84000/MDPI/OUP/Equinox/NTU/SEP)·haiyun留纯字符串;
     零臆造
+- seq: 45
+  ts: '2026-09-24T08:58:32'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: Phase2a 教海行云·判教/止观核心 references 结构化
+  outcome: applied
+  action: 'huayan_panjiao(7)+dushun_wujiao_zhiguan(18): 3类映射+tier+CBETA经号链接(T45/T35/T48); 修复dushun中Francis
+    Cook条目被YAML误解析成dict的数据bug; 海云条留纯字符串'

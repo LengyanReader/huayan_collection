@@ -258,10 +258,28 @@ sections:
           converge in the contemporary Samantabhadra-yāna.
 
 references:
-  - 法藏《华严一乘教义分齐章》(《华严五教章》) — CBETA T45n1866
-  - 法藏《金师子章》— CBETA T45n1880
-  - 智俨《搜玄记》— CBETA T35n1732
-  - 宗密《禅源诸诠集都序》— CBETA T48n2015
+  primary_texts:
+  - label: 法藏《华严一乘教义分齐章》(《华严五教章》)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T45n1866
+    note: 华严判教根本论典
+  - label: 法藏《金师子章》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T45n1880
+    note: 帝网天珠·十玄门喻
+  - label: 智俨《搜玄记》(《大方广佛华严经搜玄记》)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T35n1732
+    note: 二祖·十玄缘起之奠基
+  - label: 宗密《禅源诸诠集都序》
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T48n2015
+    note: 四祖·禅教判释总集
+  studies:
+  - label: 陈永革《法藏评传》— 南京大学出版社
+    tier: B
+  - label: 牟宗三《佛性与般若》(1977)
+    tier: A
+    note: 从哲学角度评判华严天台判教之争
+  haiyun:
   - 海云继梦《华严经》讲记系列 — 大华严寺
-  - 陈永革《法藏评传》— 南京大学出版社
-  - 牟宗三《佛性与般若》(1977) — 从哲学角度评判华严天台判教之争

@@ -60,6 +60,21 @@
 
 ---
 
+## L.54 《文献优化 · Phase 2a 教海行云·判教/止观核心》（2026-09-24）
+
+> 承 Phase 2（教海行云 jiaoxing tab）第一子批。渲染端已全部走 `renderRefList`（Phase 0），本子批为**纯数据结构化**：类目映射 + A/B/C + 可回查链接，零渲染码改动。
+
+- **① huayan_panjiao.yaml**（华严判教）`references:` 7 条 → **3 类目映射**（primary_texts 4 / studies 2 / haiyun 1），法藏《五教章》T45n1866·《金师子章》T45n1880·智俨《搜玄记》T35n1732·宗密《禅源都序》T48n2015 各挂 **CBETA 经号可直达链接**（确定性·`cbetaonline.dila.edu.tw/zh/T…`）。
+- **② dushun_wujiao_zhiguan.yaml**（杜顺五教止观）18 条 → **3 类目**（primary_texts 8 / studies 8 / haiyun 2），八种祖师著述全部挂 CBETA 经号链接（T45n1867/T35n1733/T35n1735/T36n1739…）。
+- **🐞 数据 bug 修复（准确性/完整性）**：原 dushun `references` 中 `Francis H. Cook, "Hua-yen Buddhism: The Jewel Net of Indra"…` 因题名含**未转义冒号**，被 YAML 解析成 `{…: …}` 字典而非字符串（页面渲染畸形）。本次并入 studies 类目、改写为规范 `{label,tier}` 条目，缺陷根除。
+- **③ 本宗自述**：`海云继梦…讲记` 类沿用禅门/Phase 1 做法**保留纯字符串·不纳学术分级**（helper `typeof==='string'` 兼容分支）。
+- **安全**：一次性脚本 `scripts/_tmp_refs_groupA.py` **原文本拼接**（锚定 col-0 `references:` 行、以下一个 col-0 顶层键为界），写前 `safe_load`、写后断言**除 references 外所有顶层键深度相等** + head/tail 字节不变；两处修脚本自身缺陷（`rfind` 子串误配→整行锚定；空 tail 致 `[-0:]` 误判→改 endswith）。校验后删脚本。
+- **门禁**：`build` ✅ 34 files｜23,206,674 B；`verify_demo` ✅ ALL PASSED；`test_pipeline` ✅ ALL PASSED。运行时 headless `--dump-dom` `jiaoxing.html`：**CBETA T45n1866 链接命中 + 79 信度徽标（全 tab 聚合）+ primary_texts 类目头 + 0 JS 异常**。`self_evolve --record content_expand`；sev≥4 未新增。
+- **续（Phase 2b）**：教海行云五域文献地图 + 余下 practice YAML 批量结构化（faxiang_xuanji / sanshiqi_daopin / vinaya_school / mimi_daodi / yikong_daodi / zhuandao_ziliang / haiyun_xinfa_primary）；`mimi_daodi`/`yikong_daodi` 已是 MAP（含 fjdh/deerpark/wmxf 内联链接），下一步补 tier + 抽 url 字段。
+- **提交纪律**：应用户指示 **commit 不自动 push**（推送待用户明确要求）。
+
+---
+
 ## L.53 《文献优化 · Phase 1 华严文献（gap tab）》（2026-09-24）
 
 > 承 L.52 共享 helper（Phase 0），执行规划 Phase 1：为华严文献建**五域文献地图** + 把 `avatamsaka_studies.yaml` 的 `references:` **结构化为分级 `{label,tier,url,note}` 类目映射**。三判据（量·信度·可回看）与禅门实迹一致，渲染端复用 `renderRefList`（无需再改渲染码）。
