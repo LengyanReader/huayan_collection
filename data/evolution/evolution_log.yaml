@@ -568,3 +568,11 @@ events:
   subject: '识与心灵×2: CBETA裸号sigla规范化(T1585->T31n1585等84处,零新号)+分级图例'
   outcome: applied
   action: 链接修复;修前点击404
+- seq: 57
+  ts: '2026-09-24T18:10:35'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: 华严宗二祖研究旧稿合并入正稿(3条unique参考折入)+删除冗余旧稿
+  outcome: applied
