@@ -559,3 +559,12 @@ events:
   subject: 'Phase3批量: 华严宗二祖研究(旧稿,近重复待决去重)+ref海云继梦(当代法师[本宗]层)'
   outcome: applied
   action: 第7-8篇; 三源交集经号挂链零臆造
+- seq: 56
+  ts: '2026-09-24T18:04:28'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: '识与心灵×2: CBETA裸号sigla规范化(T1585->T31n1585等84处,零新号)+分级图例'
+  outcome: applied
+  action: 链接修复;修前点击404
