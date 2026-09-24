@@ -3,7 +3,7 @@
 > 由 `scripts/self_evolve.py` 自动维护的**只追加**审计流水；权威机读源为 `data/evolution/evolution_log.yaml`。
 > 记录每一次进化动作——自动体检/阈值整定/自动归档，与人工确认的进度回填/否决，以及 Agent 带外记录。
 
-共 **52** 条事件。
+共 **53** 条事件。
 
 ## 2026-09-24
 
@@ -25,6 +25,7 @@
 | 50 | — | 🧠 | template | Phase3 start: 分级参考文献_模板.md skeleton | unified md closing bibliography convention; 3 iron rules + A | ✅执行 |  |
 | 51 | — | 🧠 | template | Phase3试点: 杜顺综合深度研究.md 参考文献段->分级[ABC/题传]+ | 样板篇完成,待用户验收后批量套用其余20md | ✅执行 |  |
 | 52 | — | 🧠 | template | Phase3批量: 智俨综合深度研究.md 参考文献段->分级+CBETA可回查 | 第2篇; 五祖系列; 内联T号转链零臆造 | ✅执行 |  |
+| 53 | — | 🧠 | template | Phase3批量: 李通玄+永嘉玄觉 综合深度研究.md 参考文献段->分级+C | 第3-4篇; 五域+韩域; 零臆造 | ✅执行 |  |
 
 ## 2026-09-23
 
