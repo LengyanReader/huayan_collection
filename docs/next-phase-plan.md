@@ -60,6 +60,18 @@
 
 ---
 
+## L.58 《文献优化 · Phase 2b 收束：教海行云五域文献地图》（2026-09-24）
+
+> Phase 2b 综合件——`docs/教海行云文献地图_五域近年.md`（116 行）。承禅门·华严二图之同构模板，为「教海行云」`jiaoxing.html` 九篇 practice YAML 提供**五域文献总汇 + 三级可靠性 + 年代带 + 缺口反哺**。
+
+- **五域**：判教·止观 / 法相·唯识 / 般若·中观·三论 / 律宗·戒学·位次 / 唐密·道品·本宗心法；逐域列原典入口（CBETA 经号，已由 B1/B2 挂可点链接）+ 近世—当代研究 + 英文近年基座。
+- **近年线索**：东亚唯识（Lusthaus/Waldron；"Redefining the 'Dharma Characteristics School'"、早期中国唯识史镜像喻、韩国 Taehyŏn Tsadra 博论——**均标〔待核〕·只登记检索 URL·不断言未证作者**）；Anālayo 念处 × MBSR；批判佛教论辩。
+- **诚实边界**：不确定的《大正藏》经号**不由本文手抄断言**，一律指回对应 YAML（`dushun`/`huayan_panjiao`…）内已核验之可点链接；巴利本（DN22/Visuddhimagga）、无协议头片段——留空不虚构。
+- **续（Phase 3）**：本图与禅门·华严二图为「分级参考文献」模板之三份范例，Phase 3 将其体例反哺 `docs/*研究/*.md` 深度文档。
+- **提交纪律**：commit 不自动 push。
+
+---
+
 ## L.57 《文献优化 · Phase 2b-B3 教海行云·心法原文辑录可点化》（2026-09-24）
 
 > `haiyun_xinfa_primary.references` 为 `[{fmt, items}]` 结构（自宗第一手讲记辑录），经 `renderXinfaSection` → `renderRefList(g.items,{legend:false})` 渲染。本子批把「讲记原文」组的 `'标题: <完整url>'` 字符串解析为 `{label,url}` 对象，令链接可点（🔗核对）；保持**无信度分级**（自宗著述·前例）。

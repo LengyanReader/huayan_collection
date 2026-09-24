@@ -494,3 +494,13 @@ events:
   subject: 'Phase2b-B3: haiyun_xinfa_primary clickify authored URLs (label/url split)'
   outcome: applied
   action: 12 讲记 items -> {label,url} un-tiered; URLs verbatim from data; no fabrication
+- seq: 49
+  ts: '2026-09-24T16:44:27'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: lit_map
+  subject: 'Phase2b close: 教海行云五域文献地图 doc'
+  outcome: applied
+  action: five-domain map for jiaoxing; uncertain Taisho nums defer to verified YAML links; recent leads
+    marked pending
