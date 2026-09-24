@@ -60,6 +60,16 @@
 
 ---
 
+## L.68 《Phase 3 批量·八 · 三十九品 + 善财 + 文殊普贤 + Chan-EN（PLAIN 收尾）》（2026-09-24）
+
+> p3plain 子阶段收官——四篇已含参考文献者统一升级为「分级图例＋ [A/B/C/本宗] ＋确定性 CBETA 直链」。
+- **华严经学·三十九品**（standalone→`huayan-studies.html`，经 `avatamsaka_studies.yaml` 同源）：原典/祖师注疏/现代学术/教团讲法四区＋图例；六十→T09n0278、八十→T10n0279、四十→T10n0293（**⚠ 核正：doc 原注 T1974，据 YAML 为 T10n0293**），祖师诸疏按已核 YAML 挂链，法界观门/原人论标〔待核〕。
+- **善财五十三参**（**未 build 摄取·纯源文档**，md 即交付）：五区编号表转分级；**⚠ 核正两处**——#1 六十华严 doc 原注 T10n0278→T09n0278、#9 探玄记 doc 原注 T35n1731→T35n1733（均据已核 YAML/正稿，加按留痕）。
+- **文殊普贤信仰**（未 build 摄取）：一手经论/古疏两表 CBETA 栏改直链（仅对已附册号或可核者：T10n0279/0293、T14n0475、T09n0262、T45n1866/1883、T51n2076、**核正六十 T09n0278、澄观疏补册 T35n1735**）；密教单号 T1196/1167/1177B/230/178 无从核册次一律〔待核〕不臆造。
+- **Chan Traditions（EN）**（其合并体 `禅法传统_中英对读_合并.md` 方为 standalone）：Select Bibliography 两段散文→分类分级 bullet（Canonical [A]／Modern 按 Sinophone/Japonophone/Francophone/Anglophone [A/B]），仅挂已核 T45n1867（杜顺五教止观），余 sigla 标〔t.b.v.〕；去重尾部 note。
+- **验证**：build 34 files｜23,330,036 B＋verify/test ALL PASSED；grep `huayan-studies.html` 命中 T09n0278·T35n1733 各 2（核正后新链生效）。
+- **提交纪律**：commit `511144f` 不 push（本地领先 origin 2）。**p3plain 全部完成**；转 p3none：6 篇无收尾书目者**新建**书目（三十七道品/天台/密宗/法相唯识/般若中观 均 standalone→须 grep；圭峰宗密与其身后…0.md 待定摄取）。
+
 ## L.67 《Phase 3 批量·七 · 法藏贤首 + 清凉澄观 全方位文献综述（参考文献总表升级）》（2026-09-24）
 
 > 承接 p3plain 子阶段，先做零臆造最稳的两篇（YAML／祖师正稿同源，且经 `review_doc` 注入 `articles/master-{fazang,chengguan}.html`）。
