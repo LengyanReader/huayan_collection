@@ -523,3 +523,12 @@ events:
   subject: 'Phase3试点: 杜顺综合深度研究.md 参考文献段->分级[ABC/题传]+CBETA可回查(零臆造,存疑号标待核)'
   outcome: applied
   action: 样板篇完成,待用户验收后批量套用其余20md
+- seq: 52
+  ts: '2026-09-24T17:51:46'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: template
+  subject: 'Phase3批量: 智俨综合深度研究.md 参考文献段->分级+CBETA可回查'
+  outcome: applied
+  action: 第2篇; 五祖系列; 内联T号转链零臆造
