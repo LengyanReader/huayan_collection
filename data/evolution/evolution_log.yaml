@@ -632,3 +632,11 @@ events:
   category: content_verify
   subject: 〔待核〕收尾:金师子章T45n1880/1881核实+删误注;百法明门论T31n1614+正作者误(世亲非龙树提婆)
   outcome: applied
+- seq: 65
+  ts: '2026-09-24T21:08:40'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: progress_log
+  subject: 建文献待核_backlog.md:全量清点待核/待采/按名检·分P0-P5优先级·剔正文存疑勿误清
+  outcome: applied
