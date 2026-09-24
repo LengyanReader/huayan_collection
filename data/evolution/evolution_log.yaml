@@ -576,3 +576,11 @@ events:
   category: content_expand
   subject: 华严宗二祖研究旧稿合并入正稿(3条unique参考折入)+删除冗余旧稿
   outcome: applied
+- seq: 58
+  ts: '2026-09-24T18:17:18'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: template
+  subject: 法藏/澄观 全方位文献综述 参考文献总表升级为分级[ABC]+确定性CBETA直链(存疑号标待核)
+  outcome: applied
