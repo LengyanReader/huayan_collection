@@ -247,26 +247,38 @@ sections:
         context: 三条路径的关键区别——「不向四禅八定去，要向念头处看」
 
 references:
-  - fmt: "讲记原文"
+  - fmt: 讲记原文
     items:
-      - "心法 置心一处之「心」与「处」: http://wuming.xuefo.net/nr/6/59565.html"
-      - "心法 自观活心: http://www.wmxf.net/nr/6/59622.html"
-      - "心法 心定不动生命起用: http://www.wmxf.net/nr/6/59618.html"
-      - "心法 置心一处: http://wuming.xuefo.net/nr/6/59566.html"
-      - "华严禅前行概论 捌·无尽的超越: http://wuming.xuefo.com/nr/7/70374.html"
-      - "瑜伽行与禅观正行: http://wuming.xuefo.com/nr/6/59391.html"
-      - "瑜伽行派的传承(心能观身): https://www.fjdh.cn/wumin/2013/09/083454285947.html"
-      - "瑜伽行的教学体系: 约事之二: http://wuming.xuefo.com/nr/6/59385.html"
-      - "瑜伽行的教法: 约理: https://www.fjdh.cn/wumin/2013/09/081851285942.html"
-      - "禅观 第九集: http://read.goodweb.top/news/news_view.asp?newsid=60398"
-      - "直接从欲界出三界: http://wuming.xuefo.net/nr/6/59098.html"
-      - "止住妄念，自观活心: https://www.sushimei.com/tags/35178.html"
-  - fmt: "出版物"
+    - label: 心法 置心一处之「心」与「处」
+      url: http://wuming.xuefo.net/nr/6/59565.html
+    - label: 心法 自观活心
+      url: http://www.wmxf.net/nr/6/59622.html
+    - label: 心法 心定不动生命起用
+      url: http://www.wmxf.net/nr/6/59618.html
+    - label: 心法 置心一处
+      url: http://wuming.xuefo.net/nr/6/59566.html
+    - label: 华严禅前行概论 捌·无尽的超越
+      url: http://wuming.xuefo.com/nr/7/70374.html
+    - label: 瑜伽行与禅观正行
+      url: http://wuming.xuefo.com/nr/6/59391.html
+    - label: 瑜伽行派的传承(心能观身)
+      url: https://www.fjdh.cn/wumin/2013/09/083454285947.html
+    - label: '瑜伽行的教学体系: 约事之二'
+      url: http://wuming.xuefo.com/nr/6/59385.html
+    - label: '瑜伽行的教法: 约理'
+      url: https://www.fjdh.cn/wumin/2013/09/081851285942.html
+    - label: 禅观 第九集
+      url: http://read.goodweb.top/news/news_view.asp?newsid=60398
+    - label: 直接从欲界出三界
+      url: http://wuming.xuefo.net/nr/6/59098.html
+    - label: 止住妄念，自观活心
+      url: https://www.sushimei.com/tags/35178.html
+  - fmt: 出版物
     items:
-      - "海云继梦《解心·心要法门讲记》(空庭书苑 2001 / 宗教文化出版社 2005)"
-      - "海云继梦《迈向佛陀的境界——华严禅前行概论》(空庭书苑, 2011)"
-  - fmt: "搜索局限"
+    - 海云继梦《解心·心要法门讲记》(空庭书苑 2001 / 宗教文化出版社 2005)
+    - 海云继梦《迈向佛陀的境界——华严禅前行概论》(空庭书苑, 2011)
+  - fmt: 搜索局限
     items:
-      - "微信公众号(mp.weixin.qq.com)未被公共搜索引擎索引——需在微信App内搜索"
-      - "搜狗微信(weixin.sogou.com)同样返回空结果"
-      - "以上讲记均为2013年前后在fjdh.cn/wmxf.net集中发布的文字稿，后续是否有更新待查"
+    - 微信公众号(mp.weixin.qq.com)未被公共搜索引擎索引——需在微信App内搜索
+    - 搜狗微信(weixin.sogou.com)同样返回空结果
+    - 以上讲记均为2013年前后在fjdh.cn/wmxf.net集中发布的文字稿，后续是否有更新待查

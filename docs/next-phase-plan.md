@@ -60,6 +60,18 @@
 
 ---
 
+## L.57 《文献优化 · Phase 2b-B3 教海行云·心法原文辑录可点化》（2026-09-24）
+
+> `haiyun_xinfa_primary.references` 为 `[{fmt, items}]` 结构（自宗第一手讲记辑录），经 `renderXinfaSection` → `renderRefList(g.items,{legend:false})` 渲染。本子批把「讲记原文」组的 `'标题: <完整url>'` 字符串解析为 `{label,url}` 对象，令链接可点（🔗核对）；保持**无信度分级**（自宗著述·前例）。
+
+- **转换**：`讲记原文` 组 **12 条** 全数 `label: http(s)://…` → `{label, url}`；`出版物`(2)/`搜索局限`(3) 组**保留纯字符串**（书名无链接·局限为说明性文字）。
+- **安全**：URL **逐字取自原数据**（xuefo/wmxf/fjdh/goodweb/sushimei 等），脚本仅按 `^(.*\S)\s*:\s*(https?://\S+)$` 拆分标签与链接，不改写、不补全、不新增；标签内含半角冒号者（「瑜伽行的教学体系: 约事之二」）由 `yaml.safe_dump` 自动加引号。
+- **门禁**：`build` ✅ 34 files｜23,232,899 B；`verify_demo`／`test_pipeline` ✅ ALL PASSED。`--dump-dom jiaoxing.html`：xinfa **10 条可点 🔗核对链接**（wuming.xuefo/wmxf/goodweb×9 + sushimei×1）+ 全 tab CBETA 链接累计 44 + 0 JS 异常。
+- **小结（Phase 2b 数据结构化收官）**：`faxiang_xuanji`/`vinaya_school`/`sanshiqi_daopin`/`zhuandao_ziliang`（扁平→类目·B1）、`yikong_daodi`/`mimi_daodi`（映射·补分级·B2）、`haiyun_xinfa_primary`（可点化·B3）七篇 practice YAML 参考文献全部达标：**类目化 + A/B/C 信度 + 可回查链接 + 零虚构**。续：教海行云五域文献地图 doc（本 Phase 综合件）。
+- **提交纪律**：commit 不自动 push。
+
+---
+
 ## L.56 《文献优化 · Phase 2b-B2 教海行云·一空到底/不密而密》（2026-09-24）
 
 > 承 Phase 2b 第二子批——`yikong_daodi`/`mimi_daodi` **已是类目映射（纯字符串）**，本子批为**升级**：补 A/B/C 信度 + 把数据中**已有完整 URL** 提升为可点击 `url` 字段。渲染端零改动。

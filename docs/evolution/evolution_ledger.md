@@ -3,7 +3,7 @@
 > 由 `scripts/self_evolve.py` 自动维护的**只追加**审计流水；权威机读源为 `data/evolution/evolution_log.yaml`。
 > 记录每一次进化动作——自动体检/阈值整定/自动归档，与人工确认的进度回填/否决，以及 Agent 带外记录。
 
-共 **47** 条事件。
+共 **48** 条事件。
 
 ## 2026-09-24
 
@@ -20,6 +20,7 @@
 | 45 | — | 🧠 | content_expand | Phase2a 教海行云·判教/止观核心 references 结构化 | huayan_panjiao(7)+dushun_wujiao_zhiguan(18): 3类映射+tier+CBETA | ✅执行 |  |
 | 46 | — | 🧠 | content_expand | Phase2b-B1: faxiang/vinaya/sanshiqi/zhua | 4 flat-list YAMLs structured; CBETA from authored T-nos; CRL | ✅执行 |  |
 | 47 | — | 🧠 | content_expand | Phase2b-B2: yikong/mimi refs -> tiers +  | already-map upgrade; only full http(s) in data made clickabl | ✅执行 |  |
+| 48 | — | 🧠 | content_expand | Phase2b-B3: haiyun_xinfa_primary clickif | 12 讲记 items -> {label,url} un-tiered; URLs verbatim from dat | ✅执行 |  |
 
 ## 2026-09-23
 
