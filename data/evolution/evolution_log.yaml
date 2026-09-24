@@ -608,3 +608,11 @@ events:
   category: template
   subject: 法相唯识/般若中观/密宗/天台 四全方位研究 延伸阅读升级为分级+CBETA(无同源核号者如天台一律标待核不臆造)
   outcome: applied
+- seq: 62
+  ts: '2026-09-24T18:44:16'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: 圭峰大师宗密全方位文献综述 §13 分级+CBETA 直链(勘漏补:zongmi真review_doc)
+  outcome: applied

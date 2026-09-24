@@ -60,6 +60,28 @@
 
 ---
 
+## L.71 《Phase 3 批量·十一 · 圭峰大师宗密全方位文献综述（勘漏：zongmi 真·review_doc 升级）》（2026-09-24）
+
+> **发现归类误差**：p3plain 曾记「巨制综述=法藏/澄观」两篇，然 zongmi 的**实际 review_doc**《圭峰大师宗密全方位文献综述.md》（→ `articles/master-zongmi.html`）此前被误标 `ref=False`——实则**自带 §13 参考文献总表且已附完整大正藏 sigla**，属 PLAIN，一直未升级（末次改动 `af3efff`，早于 Phase 3）。batch3 所改《圭峰宗密_综合深度研究.md》系**未被任何 yaml 摄取**的另一文件，不触 master-zongmi。本轮补此漏。
+- **升级**：§13 加**分级图例**（[A]/[B]/[C]/[本宗]，与本文既有〔源N〕→附二溯源体系并行）；**13.1 宗密自著 5 号确定性拼 CBETA 直链**（T48n2015 都序·T45n1886 原人论·T45n1884 注华严法界观门·T33n1701 金刚纂要·T39n1792 盂兰盆疏——皆本已见诸 §13.1 著录，零新号）；《圆觉经》诸疏/承袭图仅署《卐续藏》无册号 → 〔待核〕不臆造；13.2 碑铭/13.3 史传加 [A/传统] 标签（宋高僧传·景德录通行号注「卷次请核·参见澄观综述同源」，不强挂）；13.4 研究标 [A/B]。
+- **验证**：build 34 files｜**23,347,394 B**＋verify/test ALL PASSED；grep `master-zongmi.html`——`zh/T48n2015`·`zh/T45n1886`·`zh/T45n1884`·`zh/T33n1701`·`zh/T39n1792` 各 1（实链渲染），[A]/[B] 标签在文。
+- **提交纪律**：commit 不 push（本机对 github.com 之 TCP 443 出站被重置·ICMP 可达而 HTTPS 连接失败·疑网络/防火墙临时阻断；batch7–11 共 5 commit 待网络恢复后一次性推送）。**p3plain 收官 7/7（含此勘漏）**；p3none 唯一余项＝《圭峰宗密与其身后全方位文献综述0.md》（1545 行·**全域无引用·未摄取·无征引目**·身后/政治题材已由本篇 §10–§13 涵盖）——判定为**孤立工作草稿**，处置待用户抉择（删/留作笔记/合入本篇）。
+
+## L.70 《Phase 3 批量·十 · 法相唯识 + 般若中观 + 密宗 + 天台 延伸阅读升级》（2026-09-24）
+
+> p3none 前四篇——原「延伸阅读与主要参考」各区按同源 YAML 已核 sigla 转分级+CBETA。
+- **法相唯识**（standalone→`faxiang.html`）：8 直链取自 `faxiang_xuanji.yaml`（解深密 T16n0676·瑜伽 T30n1579·成唯识论 T31n1585·二十论 T31n1590·述记 T43n1830·了义灯 T43n1832·演秘 T43n1833·义林章 T45n1861）；颂文/百法无核号标〔待核〕。
+- **般若中观**（→`yikong.html`）：3 链（肇论 T45n1858·宗喀巴广论 T44n1823·大智度论 T25n1509，据 `yikong_daodi.yaml`）；SearchReplace 首轮因「圣严《心的经典》」题名不符失败→分二块精准改。
+- **密宗**（→`mimi.html`）：仅宋高僧传 T50n2061 可链（`mimi_daodi.yaml` 唯 1 sigla），余〔待核〕；近年可补〔待采〕。
+- **天台**（→`tiantai.html`）：`tiantai_juejing.yaml` **零 CBETA sigla**→原典一律〔按名检 CBETA〕＋⚠ 说明不臆造经号，后续补入已核 sigla 再挂直链。
+- **验证**：build 34 files｜23,337,578 B＋verify/test ALL PASSED；grep 四篇 article html 均渲染。commit `726472f`（本地领先 origin 4·未 push）。
+
+## L.69 《Phase 3 批量·九 · 三十七道品全方位研究 延伸阅读升级》（2026-09-24）
+
+> 复核发现此篇**本有**「延伸阅读与主要参考」区（早期关键词 grep 只匹配「参考文献」而误列 p3none）→ 实为 PLAIN。
+- 据同源 `sanshiqi_daopin.yaml`（45 已核 sigla）转分级+CBETA：四阿含（T02n0099/T01n0026/T02n0125/T01n0001）、南传《大念处经》→ SuttaCentral dn22、大智度论 T25n1509、俱舍 T29n1558、大毘婆沙 T27n1545、瑜伽 T30n1579、辩中边 T31n1602、现观庄严 T30n1604、广论 T44n1823；《清净道论》无汉译 CBETA→〔检巴利/Ñāṇamoli 译〕。**WebSearch 近年研究多命中非学术站**（论坛/FB/StudyBuddhism）→ 不列 [B]、未证作者一律〔待核〕、不臆造。SearchReplace 首轮因「第四卷第67讲」不符→重读分二块改。
+- **验证**：build＋verify/test ALL PASSED；grep `sanshiqi.html` 渲染。commit `2dc7087`（未 push）。
+
 ## L.68 《Phase 3 批量·八 · 三十九品 + 善财 + 文殊普贤 + Chan-EN（PLAIN 收尾）》（2026-09-24）
 
 > p3plain 子阶段收官——四篇已含参考文献者统一升级为「分级图例＋ [A/B/C/本宗] ＋确定性 CBETA 直链」。
