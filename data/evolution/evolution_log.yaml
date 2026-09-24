@@ -504,3 +504,13 @@ events:
   outcome: applied
   action: five-domain map for jiaoxing; uncertain Taisho nums defer to verified YAML links; recent leads
     marked pending
+- seq: 50
+  ts: '2026-09-24T17:39:58'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: template
+  subject: 'Phase3 start: 分级参考文献_模板.md skeleton'
+  outcome: applied
+  action: unified md closing bibliography convention; 3 iron rules + A/B/C/本宗 + 5-domain + copyable block;
+    awaiting sign-off before batch
