@@ -704,23 +704,68 @@ topics:
       summary.
 
 references:
-  - "《杂阿含经》(CBETA T02n0099) — 三十七道品最集中的原始出处"
-  - "《增一阿含经》(CBETA T02n0125) — 首次使用「三十七菩提分」名称"
-  - "《大念处经》(长部22经, DN 22) — 四念处修法最详尽的原始依据"
-  - "龙树《大智度论》卷十九(CBETA T25n1509) — 大乘「不忆不念，是名念觉分」重诠"
-  - "世亲《俱舍论》(CBETA T29n1558) — 七科三十七法精细安立·五道位次对应"
-  - "《瑜伽师地论》卷二十九(CBETA T30n1579) — 四如意足加行三摩地·十七地体系"
-  - "《辩中边论》(CBETA T31n1602) — 辩修对治品「先共后不共」"
-  - "觉音《清净道论》(Visuddhimagga) — 慧地品南传系统化诠释"
-  - "弥勒《现观庄严论》(CBETA T30n1604) — 一切智品安立声闻道品"
-  - "宗喀巴《菩提道次第广论》(CBETA T44n1823) — 中士道「密教亦不能外」"
-  - "印顺《佛法概论》《原始佛教圣典之集成》— 「阿含经是一切佛法的总根源」"
-  - "郑石岩《三十七道品讲义》(佛陀教育基金会, 2010)"
-  - "济群《〈辩中边论〉辩修对治品讲记》(jiqun.com) — 三乘共法「先共后不共」"
-  - "Jon Kabat-Zinn, <i>Full Catastrophe Living</i> (1990) / MBSR研究文献"
-  - "Bhikkhu Anālayo, <i>Satipaṭṭhāna: The Direct Path to Realization</i> (2003)"
-  - "海云继梦「解脱道」教理架构(美国国际华严会 huayanworld.wordpress.com)"
-  - "海云继梦《四十华严讲记》第67讲 — 声闻初果对应华严十信位"
-  - "《大毘婆沙论》(CBETA T27n1545) — 部派佛教对「三十七」数目定型"
-  - "释开仁《阿含经三十七品与菩萨行》(2011)"
-  - "Tommi Husgafvel et al., \"The 'Universal Dharma Foundation' of MBSR\" (<i>Contemporary Buddhism</i>, 2018)"
+  primary_canon:
+  - label: 《杂阿含经》(T02n0099)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T02n0099
+    note: 三十七道品最集中的原始出处
+  - label: 《增一阿含经》(T02n0125)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T02n0125
+    note: 首次使用「三十七菩提分」名称
+  - label: 《大念处经》(长部 22 经, DN 22)
+    tier: A
+    note: 四念处修法最详尽的原始依据·巴利本
+  - label: 龙树《大智度论》卷十九(T25n1509)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T25n1509
+    note: 大乘「不忆不念，是名念觉分」重诠
+  - label: 世亲《俱舍论》(T29n1558)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T29n1558
+    note: 七科三十七法精细安立·五道位次对应
+  - label: 《瑜伽师地论》卷二十九(T30n1579)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T30n1579
+    note: 四如意足加行三摩地·十七地体系
+  - label: 《辩中边论》(T31n1602)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T31n1602
+    note: 辩修对治品「先共后不共」
+  - label: 觉音《清净道论》(Visuddhimagga)
+    tier: A
+    note: 慧地品南传系统化诠释
+  - label: 弥勒《现观庄严论》(T30n1604)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T30n1604
+    note: 一切智品安立声闻道品
+  - label: 宗喀巴《菩提道次第广论》(T44n1823)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T44n1823
+    note: 中士道「密教亦不能外」
+  - label: 《大毘婆沙论》(T27n1545)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T27n1545
+    note: 部派佛教对「三十七」数目定型
+  studies_sinitic:
+  - label: 印顺《佛法概论》《原始佛教圣典之集成》
+    tier: A
+    note: 「阿含经是一切佛法的总根源」
+  - label: 郑石岩《三十七道品讲义》(佛陀教育基金会, 2010)
+    tier: B
+  - label: 济群《〈辩中边论〉辩修对治品讲记》
+    tier: B
+    note: 三乘共法「先共后不共」
+  - label: 释开仁《阿含经三十七品与菩萨行》(2011)
+    tier: B
+  academic_en:
+  - label: Jon Kabat-Zinn, Full Catastrophe Living (1990) / MBSR 研究文献
+    tier: B
+    note: 四念处之当代正念应用
+  - label: 'Bhikkhu Anālayo, Satipaṭṭhāna: The Direct Path to Realization (2003)'
+    tier: A
+  - label: Tommi Husgafvel et al., "The 'Universal Dharma Foundation' of MBSR" (Contemporary Buddhism, 2018)
+    tier: B
+  haiyun:
+  - 海云继梦「解脱道」教理架构 (美国国际华严会 huayanworld.wordpress.com)
+  - 海云继梦《四十华严讲记》第67讲 — 声闻初果对应华严十信位

@@ -60,6 +60,20 @@
 
 ---
 
+## L.55 《文献优化 · Phase 2b-B1 教海行云·法相/律/道品/资粮》（2026-09-24）
+
+> 承 Phase 2b 第一子批——四篇**扁平字符串列表** `references:` → 类目映射 + A/B/C 信度 + CBETA 可回查链接。渲染端零改动（Phase 0 helper），纯数据结构化。
+
+- **① faxiang_xuanji（法相唯识）** 13 条 → 4 类（primary_texts 10·全挂 CBETA T31n1585/1586/1590·T30n1579·T16n0676·T43n1830/1832/1833·T45n1861·T44n1840 / studies_sinitic 12 / academic_en 3·Lusthaus·Waldron×2 / contemporary_practice 1）。
+- **② vinaya_school（律宗）** 8 条 → 2 类（primary_texts 5·T40n1804/1805·T22n1428·T24n1484·T50n2060 / studies 4）。
+- **③ sanshiqi_daopin（三十七道品）** 21 条 → 4 类（primary_canon 11·9 种挂 CBETA·DN22/Visuddhimagga 巴利本无 CBETA 故留空不虚构 / studies_sinitic 4 / academic_en 3 / haiyun 2）。**深度提升**：原「— 注语」尾串拆为规范 `note` 字段。
+- **④ zhuandao_ziliang（助道资粮）** 18 条 → 3 类（primary_texts 5·去重原 316/331 重复《成唯识论》T31n1585 / studies 4·含 1 条 tier C〔线索〕/ haiyun 7·保留纯字符串）。
+- **安全**：CBETA URL 一律由**数据中已有的经号**确定性拼接（`cbetaonline.dila.edu.tw/zh/T…`），非新造；未核验的外链（部分海云讲记仅给域名/片段）保留为纯文本·不虚构完整 URL。一次性脚本 `scripts/_tmp_refs_groupB1.py` 原文本拼接 + 写后深度断言，校验后删除。**踩坑修正**：本仓 practice YAML 为 **CRLF**，首版锚定 `references:` 行漏 `\r` → 匹配失败；改 `nl` 自适应 `\r\n`/`\n` 并全程按 `nl` 切分/回填。
+- **门禁**：`build` ✅ 34 files｜23,224,949 B；`verify_demo` ✅ ALL PASSED；`test_pipeline` ✅ ALL PASSED。运行时 `--dump-dom` `jiaoxing.html`（写文件规避 PS 管道截断）：**42 条 CBETA 🔗核对链接 + 信度徽标渲染 + 0 JS 异常**。
+- **提交纪律**：commit 不自动 push。
+
+---
+
 ## L.54 《文献优化 · Phase 2a 教海行云·判教/止观核心》（2026-09-24）
 
 > 承 Phase 2（教海行云 jiaoxing tab）第一子批。渲染端已全部走 `renderRefList`（Phase 0），本子批为**纯数据结构化**：类目映射 + A/B/C + 可回查链接，零渲染码改动。

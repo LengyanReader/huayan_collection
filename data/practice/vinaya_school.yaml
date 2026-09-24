@@ -499,11 +499,29 @@ sections:
       the 'normativity' of the precepts in dialogue with Kantian
       deontology and utilitarianism."
 references:
-- 道宣《四分律删繁补阙行事钞》T40n1804
-- 元照《四分律行事钞资持记》T40n1805
-- 《四分律》T22n1428 · 《梵网经》T24n1484
-- 见月读体《传戒正范》(宝华山本)
-- 弘一法师《四分律比丘戒相表记》《南山律在家备览》
-- 道宣《续高僧传》T50n2060
-- 赵朴初弘一法师纪念文章
-- 湛如《敦煌佛教律仪制度研究》(中华书局, 2003)
+  primary_texts:
+  - label: 道宣《四分律删繁补阙行事钞》(T40n1804)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T40n1804
+  - label: 元照《四分律行事钞资持记》(T40n1805)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T40n1805
+  - label: 《四分律》(T22n1428)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T22n1428
+  - label: 《梵网经》(T24n1484)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T24n1484
+  - label: 道宣《续高僧传》(T50n2060)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T50n2060
+  studies:
+  - label: 弘一法师《四分律比丘戒相表记》《南山律在家备览》
+    tier: A
+    note: 近代南山律中兴
+  - label: 见月读体《传戒正范》(宝华山本)
+    tier: B
+  - label: 湛如《敦煌佛教律仪制度研究》(中华书局, 2003)
+    tier: A
+  - label: 赵朴初弘一法师纪念文章
+    tier: B

@@ -684,17 +684,74 @@ sections:
       Chengguan explains "consciousness-only": "only" means alone; "consciousness" is the mind, namely the eight consciousnesses — all dharmas are transformations of the mind, and both the subjective seeing-part and the objective image-part are projections of the eight consciousnesses, hence "only consciousness, no object." This accords with the Avataṃsaka Sūtra's "the three realms are mind-only" and the Laṅkāvatāra's "the measure of one's own mind," the doctrine and practice schools sharing a common principle. He glosses the ālayavijñāna's three aspects of "store": as able to store (holding seeds), as the stored (receiving perfumings), and as grasping-store ("the store of attachment to self") — the seventh consciousness moment by moment grasping the eighth as its inner self, making the ālayavijñāna the "warehouse" of ego-clinging. He likens it to a bank account: many good deeds, a rich balance; much evil, an overdraft. He calls the "maturation consciousness" a "harbouring of criminals and receiving of stolen goods," and "anti-organized-crime" the purification of the karmic consciousness. The backbone of the school's practice is "cultivating good and abandoning evil" (the six root afflictions and twenty secondary ones), finally aiming at the "suchness unconditioned" among the six unconditioned dharmas — the "reality of consciousness-only" of Vasubandhu's Triṃśikā, that is, the perfectly accomplished nature. His recommended reading order runs from the Mahāyānaśatadharmaprakāśa, through the Pañcaskandhaka, the Nyāyamukha, the Triṃśikā, the Verses on the Activities of the Eight Consciousnesses, the Ālambanaparīkṣā, the six-membered grammatical analysis, the Abhidharmakośa, the Saṃdhinirmocana Sūtra, the Yogācārabhūmi, and finally the Mahāyānasaṃgraha. In his commentary on the Laṅkāvatāra he sets out the teaching of transformation: the saints, through not discriminating the delusive dharmas, can transform the living habits of the eight consciousnesses and the seeds of fundamental ignorance, changing delusional self-nature into suchness — "all self-nature habits and the habit-cognitions of the store, thought, and intentions being transformed is called nirvāṇa," where in "transformation" nirvāṇa and suchness are one reality under two names.
     source: 《唯识三十论颂义贯》第一·三章(xuefo.net) ·《八识规矩颂义贯》相宗系列总序(fjdh.cn 2013) ·《楞伽阿跋多罗宝经义贯》卷二(fjdh.cn)
 references:
-- 《成唯识论》T31n1585 · 《唯识三十论颂》T31n1586 · 《唯识二十论》T31n1590
-- 《瑜伽师地论》T30n1579 · 《解深密经》T16n0676
-- 窥基《成唯识论述记》T43n1830 · 《大乘法苑义林章》T45n1861 · 《因明入正理论疏》T44n1840
-- 慧沼《成唯识论了义灯》T43n1832 · 智周《成唯识论演秘》T43n1833
-- 欧阳竟无《唯识抉择谈》· 太虚《佛法总抉择谈》
-- 韩清净《瑜伽师地论科句披寻记》
-- 熊十力《新唯识论》(1932) · 刘衡如《破新唯识论》(1932) · 《辩佛学根本问题》(吕澂熊十力书信)
-- 印顺《印度之佛教》· 牟宗三《佛性与般若》(1977)
-- Dan Lusthaus, Buddhist Phenomenology (Routledge, 2002). ISBN 978-0415406109
-- William Waldron, The Buddhist Unconscious (Routledge, 2003) · Making Sense of Mind
-  Only (Wisdom, 2023)
-- 周贵华《唯心与了别》(2004)·《唯识通论》(2009) · 傅新毅《玄奘评传》(2006)·《识体与识变》
-- 杨维中《中国唯识宗通史》(2008) · 圣凯《摄论学派研究》(2006)
-- 济群法师「三级修学」体系 (苏州西园寺戒幢佛学研究所)
+  primary_texts:
+  - label: 《成唯识论》(T31n1585)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T31n1585
+  - label: 《唯识三十论颂》(T31n1586)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T31n1586
+  - label: 《唯识二十论》(T31n1590)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T31n1590
+  - label: 《瑜伽师地论》(T30n1579)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T30n1579
+  - label: 《解深密经》(T16n0676)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T16n0676
+  - label: 窥基《成唯识论述记》(T43n1830)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T43n1830
+  - label: 窥基《大乘法苑义林章》(T45n1861)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T45n1861
+  - label: 窥基《因明入正理论疏》(T44n1840)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T44n1840
+  - label: 慧沼《成唯识论了义灯》(T43n1832)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T43n1832
+  - label: 智周《成唯识论演秘》(T43n1833)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T43n1833
+  studies_sinitic:
+  - label: 欧阳竟无《唯识抉择谈》
+    tier: A
+    note: 内学院唯识纲目
+  - label: 太虚《佛法总抉择谈》
+    tier: A
+  - label: 韩清净《瑜伽师地论科句披寻记》
+    tier: A
+    note: 三时学会瑜伽学权威
+  - label: 熊十力《新唯识论》(1932)
+    tier: A
+    note: 儒佛之辨·近代论战焦点
+  - label: 刘衡如《破新唯识论》(1932)
+    tier: A
+    note: 唯识学界对新唯识之回应
+  - label: 吕澂、熊十力《辩佛学根本问题》(书信)
+    tier: A
+  - label: 印顺《印度之佛教》
+    tier: A
+  - label: 牟宗三《佛性与般若》(1977)
+    tier: B
+  - label: 周贵华《唯心与了别》(2004)·《唯识通论》(2009)
+    tier: B
+  - label: 傅新毅《玄奘评传》(2006)·《识体与识变》
+    tier: B
+  - label: 杨维中《中国唯识宗通史》(2008)
+    tier: A
+  - label: 圣凯《摄论学派研究》(2006)
+    tier: B
+  academic_en:
+  - label: Dan Lusthaus, Buddhist Phenomenology (Routledge, 2002). ISBN 978-0415406109
+    tier: A
+    note: 唯识现象学诠释代表作
+  - label: William Waldron, The Buddhist Unconscious (Routledge, 2003)
+    tier: A
+    note: 阿赖耶识之心理学解读
+  - label: William Waldron, Making Sense of Mind Only (Wisdom, 2023)
+    tier: A
+  contemporary_practice:
+  - 济群法师「三级修学」体系 (苏州西园寺戒幢佛学研究所)

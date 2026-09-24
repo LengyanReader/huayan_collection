@@ -313,20 +313,43 @@ topics:
       entries on the five stages; plus the Tibetan five-path literature.
 
 references:
-  - "《成唯识论》卷九 (CBETA T31n1585) — 唯识五位定义原文"
-  - "《大乘入道次第》(CBETA T45n1864) — 资粮位三十心"
-  - "《占察善恶业报经》(CBETA T17n0839) — 唯心识观·真如实观"
-  - "《华严经·十地品》(CBETA T10n0279) — 菩萨十地"
-  - "《大乘起信论》(CBETA T32n1666) — 止观门"
-  - "海云继梦《华严禅观的入法界次第道》(xuefo.net.cn/115994)"
-  - "海云继梦《迈向佛陀的境界·华严禅前行概论》(tfoyin.cn/show/57521.html)"
-  - "海云继梦《华严禅法（二）如何超越修行陷阱》(info.51.ca/articles/351822)"
-  - "海云继梦《四十华严讲记》第67讲 (2009.2.26)"
-  - "海云继梦《煖身：华严禅修入门》(布克文化2021, ISBN 9789865405984)"
-  - "海云继梦《何谓参禅金三角》(fjdh.cn 2013.12)"
-  - "成观法师《大乘百法明门论今注》(新逍遥园译经院)"
-  - "成观法师《唯识三十论颂义贯》(新逍遥园译经院)"
-  - "成观法师《大日经疏讲解》第28集 (20240820cxxz.blogspot.com)"
-  - "于凌波《唯识名词白话新解》— 唯识五位"
-  - "CBETA《成唯识论》卷九 (T31n1585) — 资粮位定义原文"
-  - "藏传佛教五道十地概述 (tibetcul.com)"
+  primary_texts:
+  - label: 《成唯识论》卷九(T31n1585)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T31n1585
+    note: 唯识五位 / 资粮位定义原文
+  - label: 《大乘入道次第》(T45n1864)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T45n1864
+    note: 资粮位三十心
+  - label: 《占察善恶业报经》(T17n0839)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T17n0839
+    note: 唯心识观·真如实观
+  - label: 《华严经·十地品》(T10n0279)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T10n0279
+    note: 菩萨十地
+  - label: 《大乘起信论》(T32n1666)
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T32n1666
+    note: 止观门
+  studies:
+  - label: 于凌波《唯识名词白话新解》
+    tier: B
+    note: 唯识五位名相
+  - label: 成观法师《大乘百法明门论今注》(新逍遥园译经院)
+    tier: B
+  - label: 成观法师《唯识三十论颂义贯》(新逍遥园译经院)
+    tier: B
+  - label: 藏传佛教五道十地概述 (tibetcul.com)
+    tier: C
+    note: 〔线索〕待核
+  haiyun:
+  - 海云继梦《华严禅观的入法界次第道》(xuefo.net.cn/115994)
+  - 海云继梦《迈向佛陀的境界·华严禅前行概论》(tfoyin.cn/show/57521.html)
+  - 海云继梦《华严禅法（二）如何超越修行陷阱》(info.51.ca/articles/351822)
+  - 海云继梦《四十华严讲记》第67讲 (2009.2.26)
+  - 海云继梦《煖身：华严禅修入门》(布克文化 2021, ISBN 9789865405984)
+  - 海云继梦《何谓参禅金三角》(fjdh.cn 2013.12)
+  - 成观法师《大日经疏讲解》第28集 (20240820cxxz.blogspot.com)
