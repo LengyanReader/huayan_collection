@@ -4553,69 +4553,171 @@ sections:
           dissemination of the Avataṃsaka Sūtra.
 
 references:
-  # ── 经典文献 ──
-  - "印顺《初期大乘佛教之起源与开展》第十三章「华严法门」(正闻出版社, 1981)"
-  - "镰田茂雄《中国华严思想史の研究》(东京大学出版会, 1965)"
-  - "木村清孝《初期中国华严思想の研究》(春秋社, 1977)"
-  - "方东美《华严宗哲学》(黎明文化, 1980)"
-  - "方立天《法藏评传》(中国人民大学出版社, 2006)"
-  - "方立天《华严金师子章校释》(中华书局, 1983)"
-  - "魏道儒《中国华严宗通史》(江苏古籍出版社, 1998)"
-  # ── 西方学术经典 ──
-  - "Francis H. Cook, Hua-yen Buddhism: The Jewel Net of Indra (Penn State, 1977). ISBN 978-0271021904"
-  - "Peter N. Gregory, Tsung-mi and the Sinification of Buddhism (Princeton, 1991). ISBN 978-0691073735"
-  - "Thomas Cleary, The Flower Ornament Scripture: A Translation of the Avatamsaka Sutra (Shambhala, 1993). ISBN 978-0877739401"
-  - "Imre Hamar (ed.), Reflecting Mirrors: Perspectives on Huayan Buddhism (Harrassowitz, 2007). ISBN 978-3447055093"
-  - "Robert M. Gimello & Peter N. Gregory (eds.), Studies in Ch'an and Hua-yen (Hawai'i, 1983). ISBN 978-0824808351"
-  - "Lancaster & Park, The Korean Buddhist Canon: A Descriptive Catalogue (UC Press, 1979)"
-  - "Buswell, Religions of Korea in Practice (Princeton, 2007)"
-  - "Robson, Power of Place: The Religious Landscape of the Southern Sacred Peak (Oxford, 2009)"
-  # ── 海云·贤度法师 ──
-  - "海云继梦《华严思想的承先与启后》讲记(fjdh.cn)"
-  - "海云继梦《华严经导读》系列(空庭书苑)"
-  - "海云继梦《九九華嚴玄談》5册(空庭书苑, 2026)"
-  - "海云继梦《探玄記懸談講記》4册(空庭书苑)"
-  - "贤度法师《华严经讲义》系列(华严莲社)"
-  - "贤度法师《华严学概论》(华严莲社)"
-  - "[华严专宗学院](https://www.huayencollege.org)"
-  # ── 数字化资源 ──
-  - "CBETA 中华电子佛典协会: T09n0278(六十)·T10n0279(八十)·T10n0293(四十)"
-  - "84000 Project: The Ten Bhumis (Toh44-31)"
-  - "84000 Project: The Gaṇḍavyūha (Toh44-44, 2021)"
-  - "[Stanford Encyclopedia of Philosophy: Huayan Buddhism (2024 revision)](https://plato.stanford.edu/entries/huayan-buddhism/)"
-  # ── 日本华严学术 ──
-  - "安藤俊雄《华严思想の研究》(法藏馆, 1965)"
-  - "伊藤瑞叡《华严教学の研究》(法藏馆, 1980)"
-  - "石井修道《中国华严宗の研究》(大东出版社, 1990)"
-  - "织田显祐《唐代华严教学の研究》(法藏馆, 2000)"
-  - "镰田茂雄《朝鲜佛教史》(东京大学出版会, 1980)"
-  # ── 中国当代学者 ──
-  - "吕澂《中国佛学源流略讲》(中华书局, 1979)"
-  - "王颂《宋代华严思想研究》(宗教文化出版社, 2008). ISBN 9787801239594"
-  - "邱高兴《李通玄佛学思想述评》(佛光文化, 2001)"
-  - "张文良《澄观华严思想研究》(日文, 东京大学, 2005)"
-  - "蒋维乔《中国佛教史》(商务印书馆, 1935)"
-  - "汤用彤《隋唐佛教史稿》(中华书局, 1982)"
-  - "陈寅恪《隋唐制度渊源略论稿》(中华书局, 1963)"
-  - "严耕望《唐代交通图考》(中央研究院历史语言研究所, 1985)"
-  # ── 韩国华严学术 ──
-  - "Michael Quinn Norton, Hwaeom Buddhism of Korea (2018)"
-  - "Sem Vermeersch, The Power of the Buddhas: The Politics of Buddhism during the Goryeo Dynasty (Harvard, 2008)"
-  - "Robert Buswell, The Zen Monastic Experience (Princeton, 1992)"
-  # ── 2024-2026年最新文献 ──
-  - "Hamar, I. (2026). 'Avataṃsaka Meditation in Khotan: Samādhi, Visualization, and the Cult of Buddha Images.' Religions 17(2):135"
-  - "An, S. (2026). 'Science in Huayan Buddhism: The Apologetic Discourse of Zhong Maosen (b. 1973).' Religions 17(3):309"
-  - "Liu, J. (2025). 'Studies on the Buddhāvataṃsaka-sūtra.' Journal of East Asian Cultures 17(1):1–20"
-  - "Zhang Y. (2025). 'A Sanctuary of Avataṃsaka: The Theoretical and Practical Studies on Huayan Buddhism Embodied in the Sculptures of the Huayan Grotto in Anyue.' Religions 16(4):438"
-  - "Li Kang (2025). 'How It All Depends: A Contemporary Reconstruction of Huayan Buddhism.' Oxford Handbook of Chinese Philosophy"
-  - "Harvey D. (2025). On the Integration of Eastern and Western Spiritual Practices. McGraw Hill"
-  - "[杨维中 (2005). '《华严经》的形成、汉译、基本思想及其修行论意义.' 普门学报 26期, 页85-143](https://buddhism.lib.ntu.edu.tw/jp/search/search_detail.jsp?comefrom=authorinfo&seq=206722)"
-  - "[杨维中 (2002). '论华严宗的染净善恶观与妄尽还源的修行路径.' 闽南佛学第一辑, 岳麓书社](https://buddhism.lib.ntu.edu.tw/search/search_detail.jsp?comefrom=authorinfo&seq=207530)"
-  - "释观慧 (2024). '《大方廣佛華嚴經》經題之「大」、「方」、「廣」要義探究.' 华梵大学硕士论文"
-  - "傅及斯 (2024). '杭州国家版本馆新入藏《华严经》探微.' 浙江大学学报"
-  - "李治华 (2024). '《華嚴經》與《楞嚴經》的菩薩階位比較再探.' 华严专宗国际学术研讨会论文集"
-  - "郭朝顺 (2025). '论《修华严奥旨妄尽还源观》作为汉传佛教修行实践心理学的基本架构.' 佛光学报"
-  - "Nicholaos Jones (2019). 'The Architecture of Fazang's Six Characteristics.' Philosophy East and West 69(4)"
-  - "Hammerstrom (2016). 'Avataṃsaka Transnationalism in Modern Sinitic Buddhism.' Journal of Global Buddhism"
-  - "Imre Hamar (2010). 'Interpretation of Yogācāra Philosophy in Huayan Buddhism.' Journal of Chinese Philosophy"
-  - "Imre Hamar (2014). The Buddhāvatamsaka-sūtra and Its Chinese Interpretation. Hungarian Academy of Sciences"
+  academic_en:
+  - label: 'Francis H. Cook, Hua-yen Buddhism: The Jewel Net of Indra (Penn State UP, 1977). ISBN 978-0271021904'
+    tier: A
+    note: 华严哲学英文标准入门
+  - label: Peter N. Gregory, Tsung-mi and the Sinification of Buddhism (Princeton UP, 1991). ISBN 978-0691073735
+    tier: A
+    note: 宗密与佛教中国化奠基
+  - label: 'Thomas Cleary, The Flower Ornament Scripture: A Translation of the Avatamsaka Sutra (Shambhala, 1993). ISBN 978-0877739401'
+    tier: A
+    note: 华严经英文全译通行本
+  - label: 'Imre Hamar (ed.), Reflecting Mirrors: Perspectives on Huayan Buddhism (Harrassowitz, 2007). ISBN 978-3447055093'
+    tier: A
+    note: 华严专题英文论文集
+  - label: Robert M. Gimello & Peter N. Gregory (eds.), Studies in Ch'an and Hua-yen (Hawai'i, 1983). ISBN 978-0824808351
+    tier: A
+    note: 华严×禅接口英文经典·本项目招牌
+  - label: 'Robert Gimello, Frédéric Girard & Imre Hamar (eds.), Avatamsaka Buddhism in East Asia: Huayan, Kegon, Flower Ornament Buddhism (Harrassowitz / Equinox, 2025)'
+    tier: A
+    url: https://journal.equinoxpub.com/BSR/article/view/33099
+    note: 华严东亚跨国研究最新集成·本图新出
+  - label: 'Lancaster & Park, The Korean Buddhist Canon: A Descriptive Catalogue (UC Press, 1979)'
+    tier: A
+  - label: Buswell, Religions of Korea in Practice (Princeton, 2007)
+    tier: A
+  - label: 'Robson, Power of Place: The Religious Landscape of the Southern Sacred Peak (Oxford, 2009)'
+    tier: A
+  - label: Nicholaos Jones, 'The Architecture of Fazang's Six Characteristics', Philosophy East and West 69(4), 2019
+    tier: A
+    note: 法藏六相之哲学分析
+  - label: Hammerstrom, 'Avataṃsaka Transnationalism in Modern Sinitic Buddhism', Journal of Global Buddhism, 2016
+    tier: B
+    note: 华严之全球/跨国传播
+  - label: Imre Hamar, 'Interpretation of Yogācāra Philosophy in Huayan Buddhism', Journal of Chinese Philosophy, 2010
+    tier: A
+    url: https://philpapers.org/rec/HAMIOY
+    note: 华严对唯识之诠释
+  - label: Imre Hamar, The Buddhāvatamsaka-sūtra and Its Chinese Interpretation (Hungarian Academy of Sciences, 2014)
+    tier: A
+    note: 梵本与汉译关系
+  academic_sinitic:
+  - label: 印顺《初期大乘佛教之起源与开展》第十三章「华严法门」(正闻出版社, 1981)
+    tier: A
+    note: 从初期大乘看华严经源流
+  - label: 方东美《华严宗哲学》(黎明文化, 1980)
+    tier: B
+  - label: 方立天《法藏评传》(中国人民大学出版社, 2006)
+    tier: A
+  - label: 方立天《华严金师子章校释》(中华书局, 1983)
+    tier: A
+    note: 《金师子章》校释权威
+  - label: 魏道儒《中国华严宗通史》(江苏古籍出版社, 1998)
+    tier: A
+    note: 华严宗断代通史
+  - label: 吕澂《中国佛学源流略讲》(中华书局, 1979)
+    tier: A
+  - label: 汤用彤《隋唐佛教史稿》(中华书局, 1982)
+    tier: A
+  - label: 陈寅恪《隋唐制度渊源略论稿》(中华书局, 1963)
+    tier: A
+  - label: 严耕望《唐代交通图考》(中央研究院历史语言研究所, 1985)
+    tier: A
+  - label: 蒋维乔《中国佛教史》(商务印书馆, 1935)
+    tier: B
+  - label: 王颂《宋代华严思想研究》(宗教文化出版社, 2008). ISBN 9787801239594
+    tier: B
+    note: 宋代华严续流
+  - label: 邱高兴《李通玄佛学思想述评》(佛光文化, 2001)
+    tier: B
+  - label: 张文良《澄观华严思想研究》(日文, 东京大学, 2005)
+    tier: B
+  - label: 杨维中《〈华严经〉的形成、汉译、基本思想及其修行论意义》, 普门学报 26 期, 2005, 页85-143
+    tier: B
+    url: https://buddhism.lib.ntu.edu.tw/jp/search/search_detail.jsp?comefrom=authorinfo&seq=206722
+  - label: 杨维中《论华严宗的染净善恶观与妄尽还源的修行路径》, 闽南佛学第一辑, 岳麓书社, 2002
+    tier: B
+    url: https://buddhism.lib.ntu.edu.tw/search/search_detail.jsp?comefrom=authorinfo&seq=207530
+  academic_japan:
+  - label: 镰田茂雄《中国华严思想史の研究》(东京大学出版会, 1965)
+    tier: A
+  - label: 木村清孝《初期中国华严思想の研究》(春秋社, 1977)
+    tier: A
+  - label: 安藤俊雄《华严思想の研究》(法藏馆, 1965)
+    tier: A
+  - label: 伊藤瑞叡《华严教学の研究》(法藏馆, 1980)
+    tier: A
+  - label: 石井修道《中国华严宗の研究》(大东出版社, 1990)
+    tier: A
+  - label: 织田显祐《唐代华严教学の研究》(法藏馆, 2000)
+    tier: A
+  - label: 镰田茂雄《朝鲜佛教史》(东京大学出版会, 1980)
+    tier: A
+  academic_korea:
+  - label: Michael Quinn Norton, Hwaeom Buddhism of Korea (2018)
+    tier: B
+    note: 韩国华严思想史
+  - label: 'Sem Vermeersch, The Power of the Buddhas: The Politics of Buddhism during the Goryeo Dynasty (Harvard, 2008)'
+    tier: A
+  - label: Robert Buswell, The Zen Monastic Experience (Princeton, 1992)
+    tier: A
+  recent_research:
+  - label: 'Hamar, I. (2026). ''Avataṃsaka Meditation in Khotan: Samādhi, Visualization, and the Cult of Buddha Images.'' Religions 17(2):135'
+    tier: A
+    url: https://www.mdpi.com/2077-1444/17/2/135
+    note: 于阗华严禅观与佛像崇拜·一手已核
+  - label: 'An, S. (2026). ''Science in Huayan Buddhism: The Apologetic Discourse of Zhong Maosen (b. 1973).'' Religions 17(3):309'
+    tier: B
+    note: 华严与科学之护教论述〔卷期待终核〕
+  - label: Liu, J. (2025). 'Studies on the Buddhāvataṃsaka-sūtra.' Journal of East Asian Cultures 17(1):1–20
+    tier: B
+    note: 〔待终核〕
+  - label: 'Zhang, Y. (2025). ''A Sanctuary of Avataṃsaka: …the Sculptures of the Huayan Grotto in Anyue.'' Religions 16(4):438'
+    tier: B
+    note: 安岳华严洞造像〔待终核〕
+  - label: 'Li Kang (2025). ''How It All Depends: A Contemporary Reconstruction of Huayan Buddhism.'' In The Oxford Handbook of Chinese Philosophy, ch.17 (Oxford UP)'
+    tier: A
+    url: https://global.oup.com/academic/product/the-oxford-handbook-of-chinese-philosophy-9780199945498
+    note: 华严相即相入之当代哲学重构·另见 https://philarchive.org/rec/KANHIA
+  - label: Harvey D. (2025). On the Integration of Eastern and Western Spiritual Practices (McGraw Hill)
+    tier: C
+    note: 〔线索·与华严直接相关度待核〕
+  - label: 释观慧 (2024). '《大方廣佛華嚴經》經題之「大」、「方」、「廣」要義探究.' 华梵大学硕士论文
+    tier: B
+    note: 学位论文·〔无稳定链接〕
+  - label: 傅及斯 (2024). '杭州国家版本馆新入藏《华严经》探微.' 浙江大学学报
+    tier: B
+    note: 〔待终核〕
+  - label: 李治华 (2024). '《華嚴經》與《楞嚴經》的菩薩階位比較再探.' 华严专宗国际学术研讨会论文集
+    tier: B
+    note: 〔无稳定链接〕
+  - label: 郭朝顺 (2025). '论《修华严奥旨妄尽还源观》作为汉传佛教修行实践心理学的基本架构.' 佛光学报
+    tier: B
+    note: 妄尽还源观×实践心理学
+  canon_digital:
+  - label: 《六十华严》· 东晋佛驮跋陀罗译 · CBETA T09n0278
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T09n0278
+    note: 汉文大藏经·经号可直达
+  - label: 《八十华严》· 唐实叉难陀译 · CBETA T10n0279
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T10n0279
+    note: 汉传通行本
+  - label: 《四十华严·普贤行愿品》· 唐般若译 · CBETA T10n0293
+    tier: A
+    url: https://cbetaonline.dila.edu.tw/zh/T10n0293
+  - label: '84000: The Gaṇḍavyūha / The Stem Array (入法界品, Toh 44-45)'
+    tier: A
+    url: https://84000.co/translation/toh44-45
+    note: 藏译·英文开放取
+  - label: '84000 Project: The Ten Bhumis (十地品, Toh 44)'
+    tier: B
+    note: 分卷 slug 续核
+  - label: 'Stanford Encyclopedia of Philosophy: Huayan Buddhism (2024 revision)'
+    tier: A
+    url: https://plato.stanford.edu/entries/huayan-buddhism/
+  - label: 华严专宗学院·历届华严研究论文目录（全文下载）
+    tier: B
+    url: https://www.huayencollege.org/index.php/huayen-centre/huayen-seminar/paper-single
+  - label: 香光尼众佛图书馆〈大方广佛华严经研究书目〉(中·日·韩·西文汇总)
+    tier: B
+    url: https://www.gaya.org.tw/library/readers/guide-34.htm
+    note: 研究书目导航
+  haiyun_xiandu:
+  - 海云继梦《华严思想的承先与启后》讲记(fjdh.cn)
+  - 海云继梦《华严经导读》系列(空庭书苑)
+  - 海云继梦《九九華嚴玄談》5册(空庭书苑, 2026)
+  - 海云继梦《探玄記懸談講記》4册(空庭书苑)
+  - 贤度法师《华严经讲义》系列(华严莲社)
+  - 贤度法师《华严学概论》(华严莲社)

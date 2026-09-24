@@ -60,6 +60,18 @@
 
 ---
 
+## L.53 《文献优化 · Phase 1 华严文献（gap tab）》（2026-09-24）
+
+> 承 L.52 共享 helper（Phase 0），执行规划 Phase 1：为华严文献建**五域文献地图** + 把 `avatamsaka_studies.yaml` 的 `references:` **结构化为分级 `{label,tier,url,note}` 类目映射**。三判据（量·信度·可回看）与禅门实迹一致，渲染端复用 `renderRefList`（无需再改渲染码）。
+
+- **① 文献地图** 新建 `docs/华严文献地图_五域近年.md`（承禅门模板同构）：五域=学界英文／学界中日韩／原典数字化／判教行证／跨学科近年；A/B/C 三级 + 年代带 + 缺口反哺清单。**逐条 WebSearch 回溯一手**，命中并核验的真实链接：Hamar 2026 于阗（MDPI `2077-1444/17/2/135`）、Li Kang《牛津中国哲学手册》章17（OUP + PhilArchive）、**新出集成 Gimello/Girard/Hamar《Avatamsaka Buddhism in East Asia》(Harrassowitz/Equinox 2025)**、Hamar 2010（PhilPapers）、84000《The Stem Array》Toh44-45、CBETA 三通经号（T09n0278/T10n0279/T10n0293·确定性可直达）、SEP Huayan、华严学报(Airiti)、华严专宗学院论文库、香光研究书目。**不可核者标〔线索/待终核〕·不臆造 URL**。
+- **② 数据结构化** `avatamsaka_studies.yaml` `references:` 由「字符串数组 + YAML 注释分组」→ **7 类目映射**（academic_en/academic_sinitic/academic_japan/academic_korea/recent_research/canon_digital/haiyun_xiandu），**55→62 条**（新增 2025 集成），每条 `{label,tier,url,note}`；**13 条带一手 URL**；`haiyun_xiandu`（本宗自述）沿用禅门做法**保留纯字符串·不纳分级**（helper 兼容分支）。
+- **③ 安全落地**：`references:` 为末位顶层键 → 一次性脚本 `scripts/_tmp_refs_hy.py` 于该处**原文本拼接**（`yaml.safe_dump(refs)` 经 `textwrap.indent` 嵌入 `references:` 下），写前断言 `sections` 深度相等 + 顶层键不变，写后校验 `safe_load`；两度修脚本 bug（`rfind` 误匹配 → 改按整行定位；dump 未缩进致类目逃逸成顶层键 → 加 indent）。校验后即删脚本。
+- **门禁**：`build` ✅ 34 files｜23,199,979 B；`verify_demo` ✅ ALL PASSED（node --check）；`test_pipeline` ✅ ALL PASSED。**运行时实测** headless Chrome `--dump-dom` `avatamsaka-studies.html`：**56 信度徽标 + 13 `rel=noopener` 链接 + 7 类目头 + 0 JS 异常**。`self_evolve --record content_expand`；sev≥4 未新增（本轮以真实链接落地，无新〔待核〕入正文）。
+- **待续**：`huayan_masters.yaml` 祖师 review 文档文末参考文献 → 归 Phase 3（md 分级模板统一）；Phase 2 教海行云（判教/止观 YAML 批量结构化）· Phase 3（md 研究文档分级参考文献模板 + 存量升级）。
+
+---
+
 ## L.52 《文献优化 · Phase 0 共享参考文献渲染器》（2026-09-24）
 
 > 承接 `华严教海文献优化规划`（对标 L.51 禅门实迹）。**Phase 0 目标：把散落于 ~15 处的重复 `refs.forEach` 上抽为 `common.js` 单一渲染源 `window.renderRefList`，为后续华严文献/教海行云的分级参考文献铺路——只改数据结构、渲染端零改。**
