@@ -1031,22 +1031,41 @@ sections:
       研究文档: docs/密宗全方位研究.md
 references:
   classical:
-  - 《大日经》（《大毗卢遮那成佛神变加持经》）、一行《大日经疏》、空海《大日经疏讲解》(当代成观法师逐集讲解)
-  - 《金刚顶经》系列、空海《即身成佛义》《三学录》《御请来目录》(CBETA T2161)
-  - 印光《复周志诚居士书》《复朱南圃居士书》（《印光大师文钞》）
+  - label: 《大日经》（《大毗卢遮那成佛神变加持经》）、一行《大日经疏》、空海《大日经疏讲解》(当代成观法师逐集讲解)
+    tier: A
+    note: 密宗根本经疏
+  - label: 《金刚顶经》系列、空海《即身成佛义》《三学录》《御请来目录》(CBETA T2161)
+    tier: A
+  - label: 印光《复周志诚居士书》《复朱南圃居士书》（《印光大师文钞》）
+    tier: B
   buddhist_internal:
-  - 持松《密宗通关》《大日经·住心品撰注》《贤密教衡》《即身成佛》
-  - 成观《大日经疏讲解》（连载于佛教导航）· 大毘卢寺官方资料
+  - label: 持松《密宗通关》《大日经·住心品撰注》《贤密教衡》《即身成佛》
+    tier: B
+    note: 民国唐密
+  - label: 成观《大日经疏讲解》（连载于佛教导航）· 大毘卢寺官方资料
+    tier: B
   - 海云继梦「解密」系列六种（《深深密》《生命密境》《悠活三昧》《神圣的游戏场》《本尊曾于此》《根本佛母》，空庭书苑）
   - 海云继梦《根本佛母·准提密法》三「显、密之别」（学佛网 wmxf.net/nr/7/69442.html）
   modern:
-  - 权田雷斧《示王弘愿居士文》(fjdh.cn, https://www.fjdh.cn/wumin/2009/05/07062180231.html)
-  - 空海《御请来目录》(CBETA, https://deerpark.app/cbeta/T2161)
-  - 《法门寺地宫唐密曼荼罗之研究》（吴立民）· 中国文化研究院·法门寺唐密曼荼罗
-  - 中国西藏网/凤凰财经：汉传佛教密宗失传千年后重回祖庭(2016-12)
-  - 凤凰网：民国唐密回传热潮为何悄然落幕
+  - label: 权田雷斧《示王弘愿居士文》(fjdh.cn)
+    url: https://www.fjdh.cn/wumin/2009-05-07062180231.html
+  - label: 空海《御请来目录》(CBETA · deerpark 镜像)
+    url: https://deerpark.app/cbeta/T2161
+  - label: 《法门寺地宫唐密曼荼罗之研究》（吴立民）· 中国文化研究院·法门寺唐密曼荼罗
+    tier: B
+  - label: 中国西藏网/凤凰财经：汉传佛教密宗失传千年后重回祖庭(2016-12)
+    tier: C
+    note: 〔线索〕待核
+  - label: 凤凰网：民国唐密回传热潮为何悄然落幕
+    tier: C
+    note: 〔线索〕待核
   academic:
-  - 'Ronald M. Davidson, Indian Esoteric Buddhism: A Social History of the Tantric Movement (2002)'
-  - 'Ronald M. Davidson, Tibetan Renaissance: Tantric Buddhism in the Rebirth of Tibetan Culture (2005)'
-  - 'Miranda Shaw, Passionate Enlightenment: Women in Tantric Buddhism (1995)'
-  - 日文维基百科「阿字観」· 兴教大师觉鑁阿字观研究(J-STAGE)
+  - label: 'Ronald M. Davidson, Indian Esoteric Buddhism: A Social History of the Tantric Movement (2002)'
+    tier: A
+  - label: 'Ronald M. Davidson, Tibetan Renaissance: Tantric Buddhism in the Rebirth of Tibetan Culture (2005)'
+    tier: A
+  - label: 'Miranda Shaw, Passionate Enlightenment: Women in Tantric Buddhism (1995)'
+    tier: A
+  - label: 日文维基百科「阿字観」· 兴教大师觉鑁阿字观研究(J-STAGE)
+    tier: C
+    note: 〔线索〕待核

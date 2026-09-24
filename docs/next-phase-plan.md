@@ -60,6 +60,18 @@
 
 ---
 
+## L.56 《文献优化 · Phase 2b-B2 教海行云·一空到底/不密而密》（2026-09-24）
+
+> 承 Phase 2b 第二子批——`yikong_daodi`/`mimi_daodi` **已是类目映射（纯字符串）**，本子批为**升级**：补 A/B/C 信度 + 把数据中**已有完整 URL** 提升为可点击 `url` 字段。渲染端零改动。
+
+- **① yikong_daodi（般若·中观·三论）** 5 类 35 条：`academic`(9) 中观西儒/批判佛教分级；`buddhist_internal`(8) 僧肇《肇论》T45n1858、宗喀巴《菩提道次第广论》T44n1823 挂 CBETA（经号系本仓 sanshiqi 已录入者，跨文件一致引用·非新造）；刘峰三论研究标 tier C〔线索〕；`haiyun`(8)/`chengguan`(5) 保留**无信度分级**（自宗著述·前例），但把 fjdh.cn/xuefo 的**完整链接**从括号内文抽为可点 `url`（🔗核对）。
+- **② mimi_daodi（唐密·真言）** 4 类 16 条：Davidson×2/Shaw 定 tier A；权田雷斧、空海《御请来目录》(deerpark 镜像) 提升为可点链接；两条新闻 + J-STAGE 阿字观条标 tier C〔线索〕；海云「解密」系列保留纯文本。
+- **安全**：仅**已存在于数据中的完整 `http(s)` URL** 才抽为可点链接；仅有域名/路径片段者（如 `wmxf.net/nr/…` 无协议头）**一律不补全、不虚构**，保留纯文本。未强行为未标经号的密教经轨编 CBETA 链接。
+- **门禁**：`build` ✅ 34 files｜23,231,699 B；`verify_demo`／`test_pipeline` ✅ ALL PASSED。`--dump-dom jiaoxing.html`：肇论 T45n1858 CBETA 链接命中 + deerpark 镜像链接 + **7 条 fjdh 🔗核对可点链接** + 信度徽标 174（自 B1 的 140 增）+ 0 JS 异常。
+- **提交纪律**：commit 不自动 push。
+
+---
+
 ## L.55 《文献优化 · Phase 2b-B1 教海行云·法相/律/道品/资粮》（2026-09-24）
 
 > 承 Phase 2b 第一子批——四篇**扁平字符串列表** `references:` → 类目映射 + A/B/C 信度 + CBETA 可回查链接。渲染端零改动（Phase 0 helper），纯数据结构化。

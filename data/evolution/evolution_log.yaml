@@ -476,3 +476,12 @@ events:
   subject: 'Phase2b-B1: faxiang/vinaya/sanshiqi/zhuandao refs -> tiered maps + CBETA'
   outcome: applied
   action: 4 flat-list YAMLs structured; CBETA from authored T-nos; CRLF splice fix; dump-dom 42 links
+- seq: 47
+  ts: '2026-09-24T09:15:26'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_expand
+  subject: 'Phase2b-B2: yikong/mimi refs -> tiers + promote authored full URLs clickable'
+  outcome: applied
+  action: already-map upgrade; only full http(s) in data made clickable; no scheme fabrication
