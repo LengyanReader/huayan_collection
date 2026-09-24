@@ -514,3 +514,12 @@ events:
   outcome: applied
   action: unified md closing bibliography convention; 3 iron rules + A/B/C/本宗 + 5-domain + copyable block;
     awaiting sign-off before batch
+- seq: 51
+  ts: '2026-09-24T17:47:42'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: template
+  subject: 'Phase3试点: 杜顺综合深度研究.md 参考文献段->分级[ABC/题传]+CBETA可回查(零臆造,存疑号标待核)'
+  outcome: applied
+  action: 样板篇完成,待用户验收后批量套用其余20md

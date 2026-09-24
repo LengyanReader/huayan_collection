@@ -3,7 +3,7 @@
 > 由 `scripts/self_evolve.py` 自动维护的**只追加**审计流水；权威机读源为 `data/evolution/evolution_log.yaml`。
 > 记录每一次进化动作——自动体检/阈值整定/自动归档，与人工确认的进度回填/否决，以及 Agent 带外记录。
 
-共 **50** 条事件。
+共 **51** 条事件。
 
 ## 2026-09-24
 
@@ -23,6 +23,7 @@
 | 48 | — | 🧠 | content_expand | Phase2b-B3: haiyun_xinfa_primary clickif | 12 讲记 items -> {label,url} un-tiered; URLs verbatim from dat | ✅执行 |  |
 | 49 | — | 🧠 | lit_map | Phase2b close: 教海行云五域文献地图 doc | five-domain map for jiaoxing; uncertain Taisho nums defer to | ✅执行 |  |
 | 50 | — | 🧠 | template | Phase3 start: 分级参考文献_模板.md skeleton | unified md closing bibliography convention; 3 iron rules + A | ✅执行 |  |
+| 51 | — | 🧠 | template | Phase3试点: 杜顺综合深度研究.md 参考文献段->分级[ABC/题传]+ | 样板篇完成,待用户验收后批量套用其余20md | ✅执行 |  |
 
 ## 2026-09-23
 
