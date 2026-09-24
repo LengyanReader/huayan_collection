@@ -624,3 +624,11 @@ events:
   category: content_expand
   subject: 删除孤立旧稿 宗密身后0.md(比对=正稿严格超集·无独有可合)
   outcome: applied
+- seq: 64
+  ts: '2026-09-24T21:04:58'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: content_verify
+  subject: 〔待核〕收尾:金师子章T45n1880/1881核实+删误注;百法明门论T31n1614+正作者误(世亲非龙树提婆)
+  outcome: applied
