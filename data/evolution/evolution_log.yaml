@@ -592,3 +592,11 @@ events:
   category: template
   subject: 三十九品/善财五十三参/文殊普贤/Chan-EN 四篇参考文献升级分级+CBETA直链(核正2处sigla)
   outcome: applied
+- seq: 60
+  ts: '2026-09-24T18:29:57'
+  date: '2026-09-24'
+  cycle: null
+  actor: agent
+  category: template
+  subject: 三十七道品全方位研究 延伸阅读升级为分级[ABC/本宗]+CBETA直链(取同源sanshiqi_daopin.yaml已核号)
+  outcome: applied
