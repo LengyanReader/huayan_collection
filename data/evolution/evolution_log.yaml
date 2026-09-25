@@ -648,3 +648,11 @@ events:
   category: content_verify
   subject: P0清账:原人论T45n1886/注华严法界观门T45n1884据宗密§13.1落链;游心法界记发菩提心章因无已核号主动降P1(不凭记忆)
   outcome: applied
+- seq: 67
+  ts: '2026-09-25T17:37:13'
+  date: '2026-09-25'
+  cycle: null
+  actor: agent
+  category: content_verify
+  subject: P1全批16号一手核实挂链(般若/杜顺/宗密/法相/智俨)
+  outcome: applied
