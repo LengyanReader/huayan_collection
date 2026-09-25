@@ -118,6 +118,7 @@
   - `清凉澄观` L812：《贞元新译华严经疏》补文献信息（十卷·贞元十四年798·终南山草堂寺奉敕·释般若新译《四十华严》），CBETA 号仍〔待核·不臆造〕（注意勿与 T35n1735《大疏》混）。
   - **诚实留白**：`密宗` L223 空海《三学录》部号、`三十七道品` L205 释开仁《阿含经三十七品与菩萨行》2011 出版信息——本会话开放源均未命中（含检索服务 40500），保持〔待核〕。
 - ⚠️ **系统性勘误（T44n1823 / T30n1604 假链全库清除·2026-09-25·本批）**：追查 `T44n1823` 时发现该误标**跨 4 文件**传播（`三论`doc＋`三十七道品`doc＋`sanshiqi_daopin.yaml` 6 处＋`yikong_daodi.yaml`）；同列 弥勒《现观庄严论》→`T30n1604` 亦为假号（维基证实此论唯近代法尊法师摘译、无汉文大藏经本，`T30n1604` 实为《显扬圣教论》）。已将二假号 CBETA 直链于全部源文件移除、YAML `references` 去 `url` 键（渲染器容许无 url 项，同列《入中论善显密意疏》即无 url）、加注正解（`T44n1823`→《俱舍论颂疏论本》唐·圆晖述）。经检 `LIVE-bad-links: NONE`、两 YAML `safe_load` 通过、build+verify 绿、sanshiqi/yikong.html 已呈正解注。
+- ✅ **收尾轮（2026-09-25）**：`chan_authentic_traces.yaml` L1480 Gross《Buddhism After Patriarchy》(1993) → 补 **State University of New York Press, 1993**（Google Books/sunypress/archive.org 三源确证）〔已核〕。⚠️ 编辑此 YAML 时 SearchReplace 触发 Mermaid 块折叠损坏，已 `git checkout` 回滚、改用 Python `read→replace→write`（newline='' 保留转义）字节级安全替换，diff 仅 1 行、mermaid 完好。**经检后确认为纯认识论/边界留白、不再处理**：`永嘉` L226《祖堂集》（中土亡佚·未入 大正/卍续·CBETA 无本属实）、L238 南怀瑾《证道歌》版本〔本宗〕；`三十九品` L422 法界观门 T45n1876 **归属**（杜顺/托名两说并存·学案存疑）；`topic_studies.yaml` L74/76（系方法论凡例非文献缺口）。
 
 
 ---
