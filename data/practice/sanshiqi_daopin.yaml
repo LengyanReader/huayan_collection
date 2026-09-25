@@ -462,7 +462,7 @@ topics:
       向汉语学界系统介绍《现观庄严论》「八品七十义」的完整架构，
       是二十世纪汉语世界理解这套体系最重要的引介文献之一。
     source: |
-      📎 弥勒《现观庄严论》(CBETA T30n1604) · 宗喀巴《菩提道次第广论》(CBETA T44n1823) · 法尊《现观庄严论》引介(《海潮音》1935年前后)
+      📎 弥勒《现观庄严论》(藏文本·唯法尊法师摘译·非汉文大藏经) · 宗喀巴《菩提道次第广论》(法尊法师汉译·非藏经) · 法尊《现观庄严论》引介(《海潮音》1935年前后)
     en_body: |
       In Abhisamayālaṃkāra, one of Maitreya's five treatises and the
       outline-compendium of the Prajñāpāramitā's hidden intention, the
@@ -618,7 +618,7 @@ topics:
       这与大乘「应无所得」式重新诠释形成有趣对照——二者出发点截然不同（一为世俗化临床应用，一为大乘义理升华），
       却都涉及「脱离原有修证脉络后，这套教法是否还保有其本来效力」这一共通的方法论问题。
     source: |
-      📎 《瑜伽师地论》(CBETA T30n1579) · 《辩中边论》(CBETA T31n1602) · 弥勒《现观庄严论》(CBETA T30n1604) · 海云继梦公开讲席 · Jon Kabat-Zinn相关文献
+      📎 《瑜伽师地论》(CBETA T30n1579) · 《辩中边论》(CBETA T31n1602) · 弥勒《现观庄严论》(藏文本·法尊摘译·非汉文藏经) · 海云继梦公开讲席 · Jon Kabat-Zinn相关文献
     en_body: |
       Common and non-common: across the Chinese Yogācāra and the Tibetan
       Abhisamayālaṃkāra, the basic logic governing the relation of the
@@ -674,8 +674,8 @@ topics:
       ·觉音《清净道论》(Visuddhimagga) — 南传三十七道品最权威的系统化诠释
 
       <b>藏传经典</b>：
-      ·弥勒《现观庄严论》(CBETA T30n1604) — 「一切智」品中安立声闻道品
-      ·宗喀巴《菩提道次第广论》(CBETA T44n1823) — 「中士道」全数纳入三十七道品
+      ·弥勒《现观庄严论》(藏文本·法尊摘译·非汉文藏经) — 「一切智」品中安立声闻道品
+      ·宗喀巴《菩提道次第广论》(法尊法师汉译·非藏经) — 「中士道」全数纳入三十七道品
 
       <b>近现代研究举要</b>：
       ·印顺《佛法概论》《原始佛教圣典之集成》《杂阿含经论会编》
@@ -735,14 +735,12 @@ references:
   - label: 觉音《清净道论》(Visuddhimagga)
     tier: A
     note: 慧地品南传系统化诠释
-  - label: 弥勒《现观庄严论》(T30n1604)
+  - label: 弥勒《现观庄严论》(藏文本·法尊法师摘译·非汉文大藏经)
     tier: A
-    url: https://cbetaonline.dila.edu.tw/zh/T30n1604
-    note: 一切智品安立声闻道品
-  - label: 宗喀巴《菩提道次第广论》(T44n1823)
+    note: 一切智品安立声闻道品（原标 CBETA T30n1604 系误·该号实为《显扬圣教论》无著造玄奘译；此论无汉文藏经本）
+  - label: 宗喀巴《菩提道次第广论》(法尊法师汉译·非藏经)
     tier: A
-    url: https://cbetaonline.dila.edu.tw/zh/T44n1823
-    note: 中士道「密教亦不能外」
+    note: 中士道「密教亦不能外」（藏文论典现代汉译·无 CBETA 号·原标 T44n1823 系误·该号实为《俱舍论颂疏论本》唐圆晖述）
   - label: 《大毘婆沙论》(T27n1545)
     tier: A
     url: https://cbetaonline.dila.edu.tw/zh/T27n1545
