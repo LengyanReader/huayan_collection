@@ -113,8 +113,14 @@
 |---|---|---|
 | P0 | 设计规范、文章页骨架、摘要/关键词/核心术语批注示范、后端接入「与佛教的对话·瑜伽行派」域 | ✅ 完成 |
 | P1 | 全节「EN对应」——每节中文小节正文后配作者英文修订版同小节原句全文（两版节内小节一一对应，信息无损） | ✅ 完成 |
-| P2 | 术语格义表覆盖正文全部核心唯识术语（梵/藏/英为主） | 🔄 进行中 |
-| P3 | 法/日文批注按「四、语言的取舍准则」精选补入；全文档〔待核〕清零闭环 | ⬜ |
+| P2 | 术语格义表覆盖正文全部核心唯识术语（梵/藏/英为主） | ✅ 完成 |
+| P3 | 法/日文批注按「四、语言的取舍准则」精选补入；全文档〔待核〕清零闭环 | 🔄 进行中（核心项已核·见下） |
+
+> **P3 〔待核〕核验纪要（2026-09-25·一手开放源·宁缺不伪）**：
+> - **坐实**：自证分 藏 rang rig（量学 svasaṃvedana 通行）；烦恼心所 藏 nyon mongs pa'i sems byung、法 facteurs mentaux（维基 Caitasika／StudyBuddhism 法文）；阿赖耶识 法 conscience-réceptacle（Lamotte 1935／维基 Chittamatra）；受 vedanā 法 sensation。
+> - **纠错**：转依 藏 gnas 'gyur → **gnas yongs su 'gyur ba**（《佛典百科》āśraya-parāvṛtti 条）；唯识 法 seule représentation → **conscience seule**（维基 Chittamatra·原系英译 mere-representation 直构）；种子 法 semence → **graine**（通行 graines karmiques）。
+> - **如实留白（无稳定专译·不强收）**：svasaṃvedana／āśraya-parāvṛtti 之法译；共相种子 sādhāraṇa-bīja（中土安立·无对读梵藏本·存疑）。
+> - 遗留：日译星标之现代心灵哲学术语（第一人称经验等）非佛教学用语，暂留〔待核〕不强拟。
 
 *状态：P0/P1 完成（2026-08-30）。*
 
