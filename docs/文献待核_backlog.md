@@ -107,6 +107,12 @@
 - ✅ **P0·善财 L435**：宗密《注华严法界观门》挂 **T45n1884**（据宗密综述 §13.1 已核交叉印证）。
 - ✅ **P1 全批 16 号**（般若/杜顺/宗密/法相/智俨）：逐条经 CBETA 目录/大正藏目录/学术论文脚注一手核实，2026-09-25 挂链（台账 L.76）。
 - ✅ **多语对读术语 QA（BQA 轨·2026-09-25）**：`识与心灵`／`识与心灵之镜` 二篇核心唯识术语〔待核〕经一手开放源（DDB/《佛典百科》/维基 Chittamatra·Caitasika/StudyBuddhism 法文/Lamotte/Praśrabdhi 梵藏词典）核验——坐实 5、纠错 3（藏 gnas yongs su 'gyur ba、法 conscience seule、法 graine），无稳定专译/中土安立者如实留白不强收；纪要见 `bilingual-annotation-design.md` §七。
+- ✅ **文献地图近年研究线索 QA（MAP 轨·2026-09-25·commits e176573/9bcc371/46b503e）**：
+  - `教海行云文献地图` L63 → **Sumi Lee, "Redefining the 'Dharma Characteristics School' *in* East Asian Yogācāra Buddhism," *The Eastern Buddhist* 46.2 (2015): 41–60**（三处独立脚注交叉印证·由〔作者待核〕升 A）；同列 ResearchGate 文 → DOI 10.1080/23729988.2022.2091375（2022·作者名序 T&F 显示 "G Qi" 待核）。
+  - `禅门文献与研究地图` L77 → 《Sermon of One Hundred Days》作者考订为**近代韩国圣哲 Seongcheol（1912–93）**、Hwang Soonil 英译·Linda Covill 编·OCBS/Equinox 2010；**原稿"高丽·一庵师生"系误**，已正。（L57 Kilpatrick 辑刊 *China's Esoteric Buddhist Tradition* 两轮检索未定位→如实存疑·宁缺不伪暂留。）
+  - `bodhiai.cn`（新技术与佛教 / 全球传播报告 4 处表/登记）→ 2026-09 复核**站点已恢复可访问**（此前 TLS 过期），自述 AI 大模型译《大藏经》为白话文；运营主体仍〔待核〕。（BDK「65%」源于 2017/2019 纸本前言，网络不可确认，文档既有如实 hedge 保留。）
+  - `personas.json` 持松节点 source → 《密教通关》1936 撰·1939 上海排印·2005 大千重刊＋三民新校标点本〔已核〕，《持松法师纪念文集》未定位保留〔待核〕。（凝然《三国佛法传通缘起》CBETA 号本会话开放源未确认，留待——CBETA 为 SPA 不可读。）
+
 
 ---
 
