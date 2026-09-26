@@ -56,3 +56,10 @@ L1: YAML/SQLite (权威数据源) → L2: build.py (构建) → L3: HTML (展示
 - **数据**: YAML + SQLite + JSON
 - **构建**: Python 3.12 (conda: `hy_py312`)
 - **部署**: GitHub Pages (main分支 `/docs` 目录)
+
+## 版权与授权披露
+
+- **本项目原创代码与文档**（`scripts/`·`web/demo/src/`·`harness/`·`CLAUDE.md`·`README.md` 等）：MIT 许可，见 [LICENSE](LICENSE)。
+- **本仓库内的第三方内容**（古代典籍转录·大德讲记·今人译著·数字化文本库·扫描图像·外链媒体·网页抓取文本）：**版权归各原权利人所有**。本项目**非商用**，按“**公开可得 + 学术梳理 + 合理使用**”原则收录；本仓库 LICENSE **不隐含**对第三方内容的再授权或商业使用许可。
+- **完整权利状态登记 + 残留风险清单**：见 [`harness/compliance.md`](harness/compliance.md)。
+- **权利人异议**：请开 Issue，将按 `harness/compliance.md` §四 触发列处置。

@@ -23,7 +23,7 @@
 | 子代理架构（主 agent 协调、子 agent 返回浓缩结论） | `Agent` 工具（Debug / CodeReview / Browser / Search 子代理）| [`tools.md`](tools.md) §子代理 |
 | 压缩（compaction）：接近窗口上限即摘要重启 | 会话续接时的自动 compaction + 本目录作为"外部记忆" | [`principles.md`](principles.md) §5 |
 
-> 一句话：**`CLAUDE.md` 是宪法，`harness/rules.md` 是规矩总索引，`harness/coverage-map.md` 是“内容×代码·开发×维护”主轴地图，`harness/concerns.md` 是“别漏了哪些面”的七面正交清单，`next-phase-plan.md` 是心跳，`self_evolve` 是免疫与记忆，`verify_*` 是验收闸——本 `harness/` 把它们串成闭环。**（主轴定位看 coverage-map · 守则看 rules · 防漏看 concerns）
+> 一句话：**`CLAUDE.md` 是宪法，`harness/rules.md` 是规矩总索引，`harness/coverage-map.md` 是“内容×代码·开发×维护”主轴地图，`harness/concerns.md` 是“别漏了哪些面”的七面正交清单，`next-phase-plan.md` 是心跳，`self_evolve` 是免疫与记忆，`verify_*` 是验收闸——本 `harness/` 把它们串成闭环。**（主轴定位看 coverage-map · 守则看 rules · 防漏看 concerns · 权利边界看 compliance）
 
 ---
 
@@ -34,6 +34,7 @@ harness/
 ├── README.md              ← 本文件：总纲·映射·索引·如何扩展
 ├── coverage-map.md        ← 【骨架】内容/代码 × 开发/维护 的 2×2 治理地图 + 缺口登记
 ├── concerns.md            ← 【正交关注面】元治理·协作·行文·合规·成本·可发现性·语义互操作（七面×四格）
+├── compliance.md         ← 【权利登记面】维护者立场·决策·各源许可·残留风险 R1–R8（合规向）
 ├── rules.md               ← 【规矩单一索引】历次原则/规矩/踩坑硬约束的一屏汇总（连接不重复）
 ├── principles.md          ← Agentic 工程方法与原则（上下文工程 + 长时程 harness）
 ├── skills.md              ← 技能目录：已安装 / 可安装 / 安装法 / 任务映射
