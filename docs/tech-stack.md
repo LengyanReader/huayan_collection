@@ -9,6 +9,28 @@
 
 ---
 
+## 〇、落地现状 vs 设计愿景（2026-09-26 代码核对）
+
+> ⚠️ 本文档其余部分是**设计蓝图**（含尚未实现的前瞻选型）。下表据 `scripts/`+`src/`+`web/demo/` **实际代码**核对，标明“已建/部分/愿景·未建”，避免新会话误把愿景当现状（承 harness〈宁缺不伪〉）。缺口登记见 [`harness/coverage-map.md`](../harness/coverage-map.md) K-M。
+
+| 组件 | 状态 | 实际落地 | 依据 |
+|---|---|---|---|
+| Git / Markdown+YAML | ✅ 已建 | 版本控制 + 数据交换主力 | 全仓 |
+| SQLite | ✅ 已建 | 权威数据源（persons/texts/chapters/…）| `data/catalog/huayan.db` · `db_reader.py` |
+| — SQLite FTS5 全文检索 | ⚠️ 声明·未接 | 站点**无全局搜索** | 代码 0 处 fts5；见 §六缺口 |
+| Neo4j | 🟡 部分 | 仅 `load_neo4j.py` **图校验**，非站点运行依赖 | `--verify-sqlite` 无需服务器 |
+| ETL Python(lxml/pandas) | ✅ 已建 | `import_all_to_sqlite.py`/`export_*`/`backfill_*` | `scripts/` |
+| 前端：Observable Framework | ❌ 愿景·未建 | 实际=**自建 `build.py` + 纯静态 HTML/CSS/JS** | `web/demo/scripts/build.py` |
+| 可视化：D3 + Observable Plot | 🟡 部分 | 实际主用 **Canvas + Leaflet**（CDN）；D3 局部/待定；Observable Plot 未用 | `web/demo/src/*.js` |
+| 向量存储 LanceDB | ❌ 愿景·未建 | 无 | 代码 0 处 |
+| 嵌入模型 dmeta-embedding / sentence-transformers | ❌ 愿景·未建 | 无（已从核心依赖移入 optional `search` 额外项，不随默认安装拉入）| 代码 0 处 |
+| 本地 LLM qwen2.5 / Ollama | ❌ 愿景·未建 | 无 | 代码 0 处 |
+| `src/` Python 后端（CLI/服务）| 🟡 骨架 | 目录存在（cli/etl/graph/translation/utils），`huayan` CLI 入口已声明 | CLAUDE.md 标“待实现” |
+
+**结论**：**已落地 = 三层数据栈（SQLite→build.py→静态站）+ Canvas/Leaflet 可视化 + Neo4j 校验 + self_evolve 体检**；**未落地愿景 = 语义向量检索（LanceDB/embedding）、本地 LLM（qwen2.5/Ollama）、Observable 框架、FTS5 搜索**。凡“AI 辅助层”与“向量检索”当前为设计意图，**勿在成果中声称已具备**。
+
+---
+
 ## 一、技术选型总表
 
 | 功能层 | 组件 | 类型 | 理由 |

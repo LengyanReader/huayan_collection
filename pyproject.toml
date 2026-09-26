@@ -29,7 +29,6 @@ dependencies = [
     "lxml>=5.0",
     "pandas>=2.0",
     "neo4j>=5.14",
-    "sentence-transformers>=2.2",
     "httpx>=0.25",
     "tqdm>=4.65",
 ]
@@ -48,6 +47,10 @@ web = [
 ner = [
     "spacy>=3.7",
     "transformers>=4.35",
+]
+search = [
+    # 计划中的语义检索（sentence-transformers 嵌入）；scripts/src 尚未接入，故移出核心依赖，按需 `pip install -e ".[search]"`
+    "sentence-transformers>=2.2",
 ]
 
 [project.scripts]
