@@ -63,6 +63,9 @@
 - **MCP**（Model Context Protocol）：本环境经共享目录暴露服务器/工具（先读其 JSON schema 再调用）。当前**未默认挂载**重型 MCP；按需评估〔待落地〕。
 - **在线翻译 API**：仅作**上量初稿辅助**、可插拔（无 key 回退子代理著写）；**质量门禁与主编审查不因 API 放松**（`CLAUDE.md`〈多语EN·原则6〉+ `docs/engineering-workflow.md`）。
 - **一手数据源**：CBETA Online（`cbetaonline.dila.edu.tw/zh/T…`）、84000（`84000.co`，本环境常直连不通→白名单）、大华严寺 `huayen.world`、NTU 佛学图书馆等。
+- **〔待落地·优化〕一手源离线化**：CBETA 官方提供 **TEI-XML 全库下载**（`https://cbeta.org/en/downloads`）、c-text 开放数据（`https://ctext.org/digital-humanities`）、84000 Reading Room 可取多语对照包。建议将这些**本地语料**纳入 `verify_sources.py`/P 轨的 SIGLA 反查（本地 grep/XML 解析），既提速又消除对在线复制粘贴的依赖，并规避 84000 直连不通。
+- **〔待评估〕浏览器自动化**：现用 headless Chrome `--dump-dom`/手搓 CDP 做交互实测；候选 `vercel-labs/agent-browser`（已核实 944K install）可把这层"真点为验"标准化（见 [`skills.md`](skills.md) §3.1）。
+- **〔文档漂移·待清〕**：`docs/tech-stack.md` 与 `pyproject.toml` 声明了 `sentence-transformers`/`neo4j`/LanceDB/Ollama/Observable 等**向量检索与本地 LLM** 能力，但当前 `scripts/`+`src/` **无任何 embedding/语义检索实现**，`neo4j` 仅 `load_neo4j.py` 校验用——属"设计蓝图 ≠ 已建"。应向导新会话明说哪些是已用、哪些是未落地愿景（或剔除未用重依赖）。
 - **技能生态 CLI**：`npx skills find/add/check/update`（见 [`skills.md`](skills.md) §三）。
 
 ---

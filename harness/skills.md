@@ -29,20 +29,72 @@
 
 ## 三、生态里"值得考虑安装"的候选 📥（尚未在本机 · 〔待评估〕）
 
-> 以下为方向性候选；**安装前务必**用 `find-skills` 核对**安装量(≥1K 优先)/来源信誉/GitHub 星数**，勿凭搜索标题就装。安装命令模板：
+> **本轮 (2026-09-26) 已实跑** `WebFetch https://skills.sh/`（榜单位 · 全部为 **verified install counts**）+ 若干 `WebSearch`；下表列 **install 数与来源均为实测事实**，未安装者仍标〔待评估〕，遵〈未装者不声称已具备〉。
+> 安装命令模板（用户级、跳过确认）：
 > ```bash
-> npx skills add <owner/repo@skill> -g -y      # -g 用户级；-y 跳过确认
-> npx skills find <关键词>                       # 关键词检索
-> npx skills check / update                     # 检查/更新已装技能
+> npx skills add <owner/repo@skill> -g -y
+> npx skills find <关键词>          # 若需再检索细分
+> npx skills check / update
 > ```
-> 浏览：https://skills.sh/ · 官方：`anthropics/skills`（文档处理 pdf/docx/xlsx/pptx、frontend-design 等）
 
-| 需求方向 | 候选类型 | 用途（本项目） |
-|---|---|---|
-| 文档处理 | anthropics 官方 `pdf` / `docx` / `xlsx` | 解析祖师大德讲记 PDF / 扫描版 CBETA 对照，抽取入 YAML |
-| 本地化 QA | `l10n` / `i18n` 质量类技能 | 多语对读字段一致性、占位符/术语校验（补充自建 `_markEnBlocks`）|
-| 学术引用 | BibTeX / 引用导出类 | 把 `bibliography.yaml` 导出为标准参考文献格式 |
-| 数据管道 | `pytest` / data-validation（great_expectations 类）| 强化 `test_pipeline.py` 之外的 schema/期望校验 |
+### 3.1 直接对齐本项目现有工作流的高价值候选 ⭐
+
+| 面向工作流 | 技能 (owner/repo@skill) | Install | 一举补哪一块 |
+|---|---|---:|---|
+| 验证关卡·DoD 门禁 | `obra/superpowers@verification-before-completion` | 221K | 把 `principles.md §4`「未验不声称完成」打包成可加载技能；补 `verify_demo/test_pipeline` 之上的**流程判据层** |
+| 数据管线 TDD | `obra/superpowers@test-driven-development` | 236K | 为 `scripts/*.py` + `build.py` 建立红-绿-重构节律，补强 `test_pipeline.py` |
+| 子代理深潜 | `obra/superpowers@subagent-driven-development` | 214K | 落地 `principles.md §6`「主 agent 计划·子 agent 浓缩结论」 |
+| 并行分派 | `obra/superpowers@dispatching-parallel-agents` | 199K | P 轨多文档批量核验 / 多稿审计 |
+| 系统化调试 | `obra/superpowers@systematic-debugging` | 271K | 渲染/构建破损时（曾 L.㊾⑭ 类问题） |
+| 交互实测 | `vercel-labs/agent-browser` | 944K | **替代现用 headless Chrome 手搓 CDP**；tools.md §一「真点为验」标准化 |
+| 文档解析（讲记/扫描件）| `anthropics/skills@pdf` | 201K | 支撑 `extract_hy_refs.py`/`ocr_hy_refs.py` 上游 PDF 拆分 |
+| 报告出稿 | `anthropics/skills@pptx` | 226K | 研究结论转讲义/弘法幻灯片 |
+| 造 / 打磨技能 | `anthropics/skills@skill-creator` | 391K | 落地 §四 4 个专属技能（`huayan-multilingual-en` 等） |
+| 前端视觉决策 | `anthropics/skills@frontend-design` | 923K | 已装；若重设计 tabs 复用 |
+
+### 3.2 学术/研究工作流（本项目〈考证优先〉的上游）
+
+| 需求 | 技能 | Install | 用途 |
+|---|---|---:|---|
+| 读论文/背景一次到位 | `lllllllama/rigorpilot-skills@paper-context-resolver` | 451K | 识与心灵二篇 意识科学/心理学 参考文献 [B] 层的**批量一手反查** |
+| 项目结构勘察 | `lllllllama/rigorpilot-skills@analyze-project` | 311K | 新会话上手时的定向（对齐 README §四 Session Protocol 步 1）|
+| 复现他人研究 | `lllllllama/rigorpilot-skills@ai-research-reproduction` | 311K | 佛学 x 意识科学 x 心理学跨学科论文的对照复现 |
+| 仓库接入规划 | `lllllllama/rigorpilot-skills@repo-intake-and-plan` | 450K | 若要并入外部语料/新子库 |
+
+### 3.3 写作·编辑（研究正文的成形）
+
+| 需求 | 技能 | Install | 用途 |
+|---|---|---:|---|
+| 文章级打磨 | `mattpocock/skills@edit-article` | 198K | 综合深度研究.md 定稿前 |
+| 结构塑形 | `mattpocock/skills@writing-shape` | 384K | 论证骨架（配合 `nature-writing`）|
+| 素材切片 | `mattpocock/skills@writing-fragments` | 383K | 从笔记→段落 |
+| 面向 agent 的写 | `mattpocock/skills@writing-for-agents` | 318K | **写本 harness / SKILL.md 本身** |
+| 造技能的文风 | `mattpocock/skills@writing-great-skills` | 324K | §四 造技能时的风格基线 |
+| 领域建模 | `mattpocock/skills@domain-modeling` | 700K | 图谱 schema / YAML 域的边界打磨 |
+| 代码库设计 | `mattpocock/skills@codebase-design` | 678K | `src/etl/graph/translation` 分层复审 |
+
+### 3.4 知识管理 · 长期笔记生态
+
+| 需求 | 技能 | Install | 用途 |
+|---|---|---:|---|
+| Obsidian 库联动 | `mattpocock/skills@obsidian-vault` | 202K | `docs/huayanhai/My Notes/`（28 文件）已接近 Obsidian 兼容；接入后可双链/图谱与 `data/knowledge_graph/` 联动 |
+| 教学/讲授 | `mattpocock/skills@teach` | 712K | 讲记→讲义→课程的转换（配合 haiyun_* 资源）|
+
+### 3.5 数据采集 / 来源抓取
+
+| 需求 | 技能 | Install | 用途 |
+|---|---|---:|---|
+| 结构化抓取 | `scrapegraphai/just-scrape` | 245K | 替代/补强 `fetch_wechat_articles.py`/`fetch_wechat_chain.py`，抗站点改版 |
+
+### 3.6 明确**不建议**装的（避免上下文熵）⛔
+
+- `microsoft/azure-skills`、`supabase/agent-skills`、`prisma/skills`、`heygen-com/hyperframes`、`genmedia-labs/*`、`prime-skills/runcomfy-agent-skills`、`flowkit-labs/reddit-automation`、`coreyhaines31/marketingskills`、`leonxlnx/taste-skill` — 与本项目（本地 SQLite + 静态 HTML + 佛学数字人文）无关，装了只污染工具选择的清晰度（`principles.md §8` 最小工具集）。
+
+### 3.7 生态外的**一手数据源**优化（配合工具层，见 [`tools.md`](tools.md) §四）
+
+- **CBETA 离线全文**：`https://cbeta.org/en/downloads`（官方**下载 TEI-XML 全库**）——把 P 轨/`verify_sources` 的 CBETA 反查**从在线复制粘贴升为本地 grep/XML 解析**，同时缓解"84000 常直连不通"。
+- **c-text 开放数据**：`https://ctext.org/digital-humanities`（bulk 下载结构化 XML）——先秦两汉/魏晋思潮对照源。
+- **84000 Reading Room**：`https://84000.co/reading-room`（多语对照·可离线包）——藏传/梵文对勘。
 
 > ⚠️ 依〈考证优先/严禁假信息〉：**未实际安装并验证的技能，不在本项目文档里声称"已具备"**——本表全部标〔待评估〕即为遵此。
 

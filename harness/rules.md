@@ -1,0 +1,94 @@
+# Rules — 原则·规矩·约定的单一索引
+
+> **这是什么**：把项目历次确立的**所有治理原则与操作规矩**（编务、工程、翻译、渲染、环境、留痕、工具选择）汇成一处，供任意会话**一屏查全**并据此执行。这是对本次指示"之前涉及的各种原则规矩也放在 harness 中"的落地。
+> **连接不重复**：每条只给**可操作精要** + **权威源指针**；**完整正文以 [`CLAUDE.md`](../CLAUDE.md) 为准**，细节以各 `docs/*.md` 与长期记忆为准。落点见 [`coverage-map.md`](coverage-map.md) 的格子。
+> **优先级**：§A 凌驾一切；任何自动/人工动作与 §A 冲突时，一律以 §A 为准。
+
+---
+
+## §A · 顶层元原则（凌驾性功能与进度）
+
+| # | 规矩 | 精要 | 权威源 | 门禁 |
+|---|---|---|---|---|
+| A0 | **考证优先 Verification-First** ⭐ | 一切数据/结论/名号/数字/年代/地点**先经一手典籍对勘**；无法确认者标〔待核〕/〔存疑〕并说明，严禁占位充数。**宁可少而可靠，不可多而失实** | CLAUDE.md〈工程核心原则 0〉 | `verify_sources.py` |
+| A1 | **严禁假信息** | 不编造年代/地点/名号/引文/出处，不把二手转述冒充原典；无法核实者留白并标注 | CLAUDE.md〈编务总则 3〉 | `verify_sources.py` |
+| A2 | **边界自知·局限留档** | 采集不到/受工具·语种·一手可得性所限处，如实标〔线索〕/〔待补〕/〔无法获取〕**并注明为何受限**——即自我完善路线图 | CLAUDE.md〈编务总则 6/0〉 | `self_evolve.py` |
+| A3 | **harness 服从宪法** | harness 只提升效率与连续性，**绝不以牺牲真实性与可溯源为代价**；自动机制只发现·记录·排序，不为消待办而臆造/篡改 | [`principles.md`](principles.md) §9 | — |
+
+## §B · 工程核心原则（代码域·开发与维护）
+
+| # | 规矩 | 精要 | 落点 |
+|---|---|---|---|
+| B1 | **知识图谱驱动** | 开发/管理/维护以结构化图谱（SQLite + YAML）为核心，不靠手工编码数据 | K-D/K-M |
+| B2 | **源头治理** | 问题在数据源头（SQLite/YAML）解决，**不在下游打补丁** | 四格通用 |
+| B3 | **灵活优先** | 可扩展性第一；新内容 = 新数据行，**不改代码** | K-D |
+| B4 | **杜绝硬编码** | 数据进 SQLite/YAML → build.py 读 → 前端渲染；**禁止在 JS/HTML/Python 写死任何内容** | K-D；`verify_demo.py` |
+
+> 权威源：CLAUDE.md〈工程核心原则 1–4〉。
+
+## §C · 内容采集与编务总则（八条 · 内容域）
+
+> 权威源：CLAUDE.md〈内容采集与编务总则〉。逐条落到 [`workflows/`](workflows/) 与 [`coverage-map.md`](coverage-map.md) C-D/C-M。
+
+- **C0 一口优先·还原分级真实性**——尽量用一手（CBETA/84000/原典/档案采访）；存疑标〔待核〕/〔存疑〕，线索/局部/不足标〔线索〕/〔待补〕。
+- **C1 中英必配·多语酌情**——新增内容一律中文 + 英文各一版（`.en-line`）；梵/藏/于阗/满等酌情，不硬凑。
+- **C2 多译本并存·考据成一**——异译/异本/卷数分歧要梳理并存并说明取舍，不冒充唯一标准；难裁决时并行注〔并存/待考〕。
+- **C3 严禁假信息**（=A1 内容侧）。
+- **C4 穷尽采集·分层落地**——量大时先登记来源入 `next-phase-plan.md`，分批慢提，不因求全失实、不因求快漏源。
+- **C5 进度留痕·计划滚动**——**每完成一任务即更新** `docs/next-phase-plan.md`（已完成/校验结果/遗留/下一梯队）。
+- **C6 边界自知·局限留档**（=A2 内容侧）。
+- **C7 引用可点·出处可溯**——引用尽量给 `[text](url)` 可点链接，由 `_dynMD` 渲染；无稳定 URL 者如实标〔无链接〕/〔待核〕，**不硬凑假链接**。
+
+## §D · 知识管理核心规则（数据↔呈现契约）
+
+> 权威源：CLAUDE.md〈知识管理核心规则〉+ [`docs/knowledge-management.md`](../docs/knowledge-management.md)。
+
+- **D0 单一权威源**：所有展示内容**必须**来自结构化源文件/SQLite，严禁硬编码于 build.py/JS。
+- **D1 三层数据栈**：`L1 SQLite（权威）` → `L2 db_reader.py（唯一数据服务出口）` → `L3 build.py → HTML`；非图谱数据（修行/宇宙观/前沿）以 YAML 为权威。
+- **D2 Tab→权威源映射**：见 CLAUDE.md 表（人物/边/地点=SQLite persons；事件/动画=`data/events/*.yaml`；术语/差异=SQLite glossary/chapters；独立文章=`standalone_articles.yaml`+`docs/*.md` 注入…）。
+- **D3 新增内容流程**：①SQLite INSERT/UPDATE 或 YAML → ②导出脚本 → ③build → ④验证人数/边数 → ⑤提交。
+
+## §E · 多语 EN 翻译原则（七条 + 结合项）
+
+> 权威源：CLAUDE.md〈多语 EN 翻译原则〉+ [`docs/translation-guide.md`](../docs/translation-guide.md) + [`docs/multilingual-alignment.md`](../docs/multilingual-alignment.md)。落点：[`workflows/translation.md`](workflows/translation.md)。
+
+- **E0 翻译与校对结合**——翻译≠成稿，一律经主编全文审查再 render/commit；含术语一致性、教理准确、结构/引号安全。
+- **E1 重实质·不逐字**——义·理·境对等优先，意译优先；名相所指与教理不偏即可。
+- **E2 考证与来源分级**——EN 不得超出中文正文范围，不新增年代/史实/观点；无法确认标〔待核〕。
+- **E3 固定术语表**——全站统一译法（八识=eight consciousnesses、法界=dharmadhātu、十玄=ten mysterious gates…）；人名循拼音/梵文通行拼写（海云继梦=Haiyun Jimeng，据 huayen.world 官方）。
+- **E4 EN 渲染约定**——EN 块 `.en-line` 随全局显隐（默认中英对照）；`title_en`/`intro_en`/`en_body` 分字段；祖师语录正文保中文、EN 用精到阐释转述。
+- **E5 YAML 转义纪律**——单引号串内 `\'` 非法用 `''`；撇号（Buddha's）易提前闭合→用双引号串；含中文「」不用双引号包裹；长 EN 用 `|` 块标量（4 空格 key/6 空格内容），**禁单引号包裹英文长文本**；`title_en` 含冒号/撇号须双引号。
+- **E6 翻译 API 仅辅助**——在线翻译只作上量初稿、可插拔（无 key 回退子代理）；质量门禁与主编审查**不因 API 放松**。
+- **E7 正式用词·不硬翻·不幻觉·无对应即明示**——用学界/佛界通行正式词（梵文转写优先）；禁字面硬翻与自造译名；无通行译名/无把握者明示〔待核〕/〔无通行英译〕，不硬译充数。
+
+## §F · 工程约定 · 反复踩坑的硬规矩（环境/工具副作用）
+
+> 权威源：长期记忆 `common_pitfalls_experience` + [`tools.md`](tools.md) §五/§六。落点：横切 + K-M。
+
+- **F1 CJK 编码**：子进程/输出前设 `$env:PYTHONIOENCODING="utf-8"`；Python 侧 `sys.stdout.reconfigure(encoding='utf-8')`；否则 Windows 控制台 CJK 崩溃/吞 stdin。
+- **F2 别用内联 CJK one-liner**：`python -c "…中文…"` 易 SyntaxError；写临时 `.py` 跑，用完删除。
+- **F3 PowerShell 约束**：pwsh 7 无 `grep/head/make`；命令用 `;` 串联而非 `&&`；长命令勿超 ~500 字符；`Out-File -Encoding utf8` 可能使中文计数误显 0（用 ASCII 标记反证）。
+- **F4 子进程 stdin 隔离**：`stdin=subprocess.DEVNULL`，防 validator 吞交互提示。
+- **F5 `SearchReplace` 会重写整份 YAML/JSON**：对**双引号 scalar 内含 `\n` 转义**的字段（如 `chan_authentic_traces.yaml` 的 mermaid）会把转义折成真实换行→事后必 `yaml.safe_load` 对比 `git show HEAD:<path>`；已碎则按 HEAD raw bytes 一次性回内且不再用 SearchReplace 碰同文件。
+- **F6 批量正则链接化 `\s*$`（MULTILINE）吞换行**：会吃掉条目末尾 `\n` 致 Markdown 段落塌缩；用 `\n` 显式锚定或匹配后回填空行，写完 `Read` 验证分隔。
+- **F7 SIGLA 必反查**：CBETA 册号+番号易张冠李戴（八识规矩颂 T45n1861→实为 T45n1865）；订正要同步 CN/EN 书目 + CN/EN 脚注四处。
+- **F8 唯一 builder**：唯一权威 builder = `web/demo/scripts/build.py`（遗留 `build_demo.py` 已删）；`graph.json` 由 `export_sqlite_to_json.py` 产出。
+- **F9 扫描排除自指**：`self_evolve` 的 `scan.exclude` 必含 `data/evolution/`、`docs/evolution/`、`next-phase-plan.md`、`CLAUDE.md` 及任何**列举标记 token 的规范文档**，否则标记定义被当作假待办（自污染）。
+
+## §G · 存疑分级 · 提交与留痕
+
+- **G1 标记分级**：〔待核〕=真待办（verify/sev4）；〔存疑〕=审慎判定（boundary/sev2）；〔线索〕/〔待补〕=局部/不足；〔并存〕=证据相当而无锤定音；〔无法获取〕=受限并注因。
+- **G2 提交规范**：一次净态一提交；描述性信息；本轨专用前缀 `bib(P-track/<X>):`。
+- **G3 台账只追加**：`data/evolution/evolution_log.yaml` 每次 auto/human/agent 动作一行、`seq` 单调递增、含 `before/after/evidence`；**被否决提议记 `outcome: declined` 也留痕**。
+- **G4 未验不声称完成**：验证未全绿不得标 `passes:true`/不得称"已完成"；交互态**必须真点为验**（headless Chrome/CDP），静态字符串命中≠功能正常。
+
+## §H · 工具/技能选择规矩
+
+- **H1 最小工具集**：职责单一、少重叠；若人类工程师都难判断该用哪个工具，agent 更不能（避免臃肿工具集）。
+- **H2 唯一出口**：`db_reader.py`（数据服务）· `build.py`（渲染）· `verify_*`（验收）各为其域唯一权威出口。
+- **H3 技能安装纪律**：装前核 install count/来源/星数；**未实际安装并验证者不在文档声称"已具备"**（一律标〔待评估〕/〔待落地〕）。
+- **H4 任务起手式**：缺上下文时**先并行** `SearchCodebase` + `SearchMemory`；改某模块前先取该模块知识/规范。
+
+---
+
+> 维护：新增规矩即在本表加一行（或归入既有 §），并回指权威源与落点格子；规矩正文若变更，**先改 CLAUDE.md / 对应 docs，再同步本索引**，避免本表与宪法漂移。

@@ -23,7 +23,7 @@
 | 子代理架构（主 agent 协调、子 agent 返回浓缩结论） | `Agent` 工具（Debug / CodeReview / Browser / Search 子代理）| [`tools.md`](tools.md) §子代理 |
 | 压缩（compaction）：接近窗口上限即摘要重启 | 会话续接时的自动 compaction + 本目录作为"外部记忆" | [`principles.md`](principles.md) §5 |
 
-> 一句话：**`CLAUDE.md` 是宪法，`next-phase-plan.md` 是心跳，`self_evolve` 是免疫与记忆，`verify_*` 是验收闸，本 `harness/` 是把它们串成闭环的操作手册。**
+> 一句话：**`CLAUDE.md` 是宪法，`harness/rules.md` 是规矩总索引，`harness/coverage-map.md` 是“内容×代码·开发×维护”主轴地图，`harness/concerns.md` 是“别漏了哪些面”的七面正交清单，`next-phase-plan.md` 是心跳，`self_evolve` 是免疫与记忆，`verify_*` 是验收闸——本 `harness/` 把它们串成闭环。**（主轴定位看 coverage-map · 守则看 rules · 防漏看 concerns）
 
 ---
 
@@ -32,16 +32,20 @@
 ```
 harness/
 ├── README.md              ← 本文件：总纲·映射·索引·如何扩展
+├── coverage-map.md        ← 【骨架】内容/代码 × 开发/维护 的 2×2 治理地图 + 缺口登记
+├── concerns.md            ← 【正交关注面】元治理·协作·行文·合规·成本·可发现性·语义互操作（七面×四格）
+├── rules.md               ← 【规矩单一索引】历次原则/规矩/踩坑硬约束的一屏汇总（连接不重复）
 ├── principles.md          ← Agentic 工程方法与原则（上下文工程 + 长时程 harness）
 ├── skills.md              ← 技能目录：已安装 / 可安装 / 安装法 / 任务映射
 ├── tools.md               ← 工具清单：验证关卡脚本 / 子代理 / MCP / CLI / 环境约束
 ├── sources.md             ← 参考来源与检索记录 + 待扩充清单（backlog）
-└── workflows/             ← 按工作流编排"技能+工具+门禁"的可复用配方
+└── workflows/             ← 按工作流编排"技能+工具+门禁"的可复用配方（9 条）
     ├── data-pipeline.md      数据管线/知识图谱策展（SQLite→build→verify 核心循环）
     ├── web-ui.md             前端·数据驱动导航与渲染（navigation.yaml/双源渲染器/双语链）
     ├── translation.md         翻译（多语EN·校对·术语·渲染安全）
     ├── information-assurance.md 信息保证（考证优先·来源分级·待核边界）
     ├── academic-standards.md  学术规范（引用可点·IEEE/脚注·反伪造）
+    ├── bibliography.md        分级参考文献轨/P 轨（三级标注+CBETA 深链+SIGLA 逐条核证·零伪造）
     ├── self-evolution.md      自我演化（感知→解释→行动→学习 闭环）
     ├── verification.md        验证/测试（三道闸 + 交互实测·make verify-all）
     └── deploy.md              部署/仓库治理（GitHub Pages 源=main 根·CRLF/LF·CDN）
@@ -60,6 +64,7 @@ harness/
 | **翻译** | 新增/订正任何 `*_en` / 多语对读字段 | `academic-research-writer`、`citation-verification` | `_markEnBlocks`/`.en-line` 渲染、`audit_bilingual`、`verify_demo`、YAML 转义纪律 | `CLAUDE.md`〈多语 EN 翻译原则〉七条 |
 | **信息保证** | 任何史实/名号/年代/数字/出处落库前 | `research`（一手源核查）、`citation-verification` | `verify_sources.py`、`backfill_*`、`extract/ocr_hy_refs`、〔待核〕标记扫描 | `CLAUDE.md`〈工程核心原则 0·考证优先〉+〈编务总则 0/3/6〉 |
 | **学术规范** | 撰写/审校研究文档、参考文献 | `academic-research-writer`、`citation-verification` | 引用可点 `[text](url)` + `_dynMD`、GB/T 15835 数字、图表编号 | `CLAUDE.md`〈编务总则 7·引用可点〉+ `docs/reference-management.md` |
+| **分级文献轨/P 轨** | 把某 `docs/*.md` 参考文献规范化为 `[A/B/C]`+CBETA 深链+SIGLA 核证 | `citation-verification`、`research` | CBETA 反查、`verify_demo`、临时 `scripts/*_tmp.py`、`bib(P-track/<X>):` 提交 | `docs/分级参考文献_模板.md` + `workflows/bibliography.md` |
 | **自我演化** | 每次会话收尾 | （本目录即其接口文档）| `make evolve` / `--apply` / `--ledger`、`--record` | `docs/self-evolution.md` |
 | **验证/测试** | 任何改动“是否算完成”的裁决 | （内置）| `make verify-all`、headless Chrome `--dump-dom`/CDP、node --check | `harness/workflows/verification.md` + memory〈Interactive State Verification〉 |
 | **部署/仓库治理** | 发布产物到 Pages、换行/缓存/分支决策 | （内置）| `make demo` / `demo-deploy`（已修暂存 web/demo/）、线上 dump-dom 核验 | `docs/next-phase-plan.md`〈部署与仓库治理〉既定事实 |

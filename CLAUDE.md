@@ -48,7 +48,7 @@ L1: SQLite (权威数据源)  →  L2: db_reader.py (数据服务层)  →  L3: 
 | **参考文献管理** | [docs/reference-management.md](docs/reference-management.md) | 文献知识库维护规范 (新增) |
 | 工程工作流 | [docs/engineering-workflow.md](docs/engineering-workflow.md) | Loop/Graph Engineering |
 | **自我进化机制** | [docs/self-evolution.md](docs/self-evolution.md) | 闭环自适应体检：`make evolve` 感知→解释→半自动行动→学习；每一次自动/人工动作均落盘于只追加台账 `evolution_log.yaml` |
-| **智能体 Harness·工作法总纲** | [harness/README.md](harness/README.md) | 长时程 agent 的方法/技能/原则/工具集中索引：会话标准节拍、四条工作流配方（翻译·信息保证·学术规范·自我演化）、验证关卡与可扩展入口 |
+| **智能体 Harness·工作法总纲** | [harness/README.md](harness/README.md) | 长时程 agent 的方法/技能/原则/工具集中索引：`coverage-map.md`（内容/代码 × 开发/维护 全景治理地图）、`rules.md`（历次原则·编务·工程·翻译·踩坑规矩的单一索引）、会话标准节拍、**九条**工作流配方（翻译·信息保证·学术规范·分级文献P轨·自我演化·数据管线·WebUI·验证·部署）、验证关卡与可扩展入口 |
 | 翻译规范 | [docs/translation-guide.md](docs/translation-guide.md) | 藏汉对译玄奘体规范 |
 | 多语对读 | [docs/multilingual-alignment.md](docs/multilingual-alignment.md) | 梵-于阗-藏-汉-满-英对读架构 |
 | 校验框架 | [docs/verification-framework.md](docs/verification-framework.md) | 三级来源分级 + 验证状态机 |
