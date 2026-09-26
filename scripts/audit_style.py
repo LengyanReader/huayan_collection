@@ -34,6 +34,29 @@ BOLD = re.compile(r"\*\*([^*\n]+?)\*\*")
 # CJK-in-Latin 粗扫：一行以拉丁字母为主(>=40 连续字母词场景)却夹带单个 CJK → 疑英译正文混入中文
 SUSPECT_MIX = re.compile(r"[A-Za-z]{4,}\s*[\u4e00-\u9fff]\s*[A-Za-z]{4,}")
 
+# 行内强调性加粗：`**` 前紧邻一个非空白/非 `>` 字符（区别于整行结构标签 / 表格加粗）——这才是 §I2 真违规
+INLINE_BOLD = re.compile(r"[^\s>]\*\*[^*]+?\*\*")
+# 整行即一个加粗标签（可带尾随：/：/。），属结构性，不算行内强调
+LABEL_LINE = re.compile(r"^>?\s*\*\*[^*]+\*\*[:\uff1a]?\s*$")
+# 中文引号误用：以右引号 \u201d 充当左引号（应为 \u201c\u2026\u201d，却写成 \u201d\u2026\u201d）
+BAD_QUOTE = re.compile(r"\u201d[^\u201c\u201d\n]{1,60}?\u201d")
+
+
+def violations(path):
+    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    inline, quotes, in_fence = [], [], False
+    for n, ln in enumerate(lines, 1):
+        if ln.strip().startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence or ln.lstrip().startswith("|"):  # 跳过代码围栏与表格
+            continue
+        if INLINE_BOLD.search(ln) and not LABEL_LINE.match(ln.strip()):
+            inline.append((n, ln.strip()[:60]))
+        if BAD_QUOTE.search(ln):
+            quotes.append((n, ln.strip()[:60]))
+    return inline, quotes
+
 
 # 项目过程/元文档（非研究正文，§I 不适用）——承 F9“排除自指”精神，不计入默认语料
 META_EXCLUDE = {
@@ -138,6 +161,22 @@ def main(argv):
 
     print("\n=== SUMMARY ===")
     print(f"  files={len(results)}  over_bold={len(over)}  with_cliche={len(clich)}  mix_suspect={len(mix)}")
+
+    if "--list" in argv:
+        print("\n=== 违例定位 (§I 逐条修改清单) ===")
+        for p in iter_md(paths):
+            inline, quotes = violations(p)
+            if not inline and not quotes:
+                continue
+            print(f"\n[{p.name}]")
+            if inline:
+                print(f"  ▶ 行内强调性加粗 ×{len(inline)}（§I2 待削）:")
+                for n, snip in inline:
+                    print(f"      L{n}: {snip}")
+            if quotes:
+                print(f"  ▶ 引号体例错 ×{len(quotes)}（§I8：右引号当左引号，应改为成对中文引号）:")
+                for n, snip in quotes:
+                    print(f"      L{n}: {snip}")
     return 0
 
 
