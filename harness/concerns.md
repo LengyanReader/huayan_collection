@@ -72,9 +72,9 @@
 
 | 落于 | 现有资产 | 〔缺口〕 |
 |---|---|---|
-| 主 C-M · 亦 K-D | `web-ui` 工作流 · `navigation.yaml` 数据驱动侧栏 · `articleChip` 视图入口 · 双语链 `.en-line`+`_markEnBlocks` · 🔗 分享地址按钮（L.㊷） · 6 Tab + 独立文章 URL · GitHub Pages | [ ] **无全局搜索**（P1·见 coverage-map；SQLite FTS5 已声明未 surface）<br>[ ] **文档间交叉引用无索引页**——44 篇 docs + 25 篇文章之间的引用关系不可视<br>[ ] **SEO**：无 sitemap.xml、无 meta description 规范、无 OG 卡片<br>[ ] **无障碍 (a111) 未评估**（键盘导航/屏幕阅读器/色盲友好）<br>[ ] **移动视口**未审<br>[ ] **社交/学术可引用性**：无 DOI/无引用导出（BibTeX/CSL）<br>[ ] **首次访客引导**：无 landing 导览、无"从哪读起"路径 |
+| 主 C-M · 亦 K-D | `web-ui` 工作流 · `navigation.yaml` 数据驱动侧栏 · `articleChip` 视图入口 · 双语链 `.en-line`+`_markEnBlocks` · 🔗 分享地址按钮（L.㊷） · 6 Tab + 独立文章 URL · GitHub Pages · **CLI 全局搜索**（`db_reader.py --search`·FTS5 MATCH + CJK LIKE 兑底·commit 99083dc） | [~] **全局搜索·CLI 已通·Web UI 待接**（历史坑：FTS5 external-content 表行数同步但 MATCH 0 命中·已 `rebuild_fts.py` 修好当前 DB + `import_all_to_sqlite.py` 尾接 safety rebuild 防复发·长期方案 可切 trigram+分词预处理）<br>[ ] **文档间交叉引用无索引页**——44 篇 docs + 25 篇文章之间的引用关系不可视<br>[ ] **SEO**：无 sitemap.xml、无 meta description 规范、无 OG 卡片<br>[ ] **无障碍 (a111) 未评估**（键盘导航/屏幕阅读器/色盲友好）<br>[ ] **移动视口**未审<br>[ ] **社交/学术可引用性**：无 DOI/无引用导出（BibTeX/CSL）<br>[ ] **首次访客引导**：无 landing 导览、无"从哪读起"路径 |
 
-**建议路径**：短期把全局搜索（coverage-map 已列 P1）+ sitemap + meta 三件事做掉；中期引 reader-first 的 landing 路径与跨文引用可视化。
+**建议路径**：搜索 CLI 已通（本项已从 [ ] 降为 [~]），下一步推 Web UI 接口；中期把 sitemap + meta 两件事做掉；中期引 reader-first 的 landing 路径与跨文引用可视化。
 
 ---
 

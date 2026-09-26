@@ -935,6 +935,31 @@ def main():
     import_person_locations(conn)
 
     conn.execute("PRAGMA foreign_keys = ON")
+
+    # ---------------------------------------------------------------
+    # Safety net: rebuild FTS5 inverted index
+    # ---------------------------------------------------------------
+    # FTS5 external-content tables (content='xxx') store ONLY the
+    # inverted index — row data stays in the source table. AFTER INSERT
+    # triggers populate the index as rows land in texts/glossary, but any
+    # path that bypasses triggers (ATTACH, bulk .import, direct rowid
+    # manipulation, historical DB that added FTS virtual tables AFTER the
+    # source data was already loaded) will silently leave the index empty.
+    # Symptom: COUNT(*) on FTS table looks right, but MATCH returns 0.
+    # Rebuild is cheap + idempotent → always run as final step.
+    # ---------------------------------------------------------------
+    print("\n--- Rebuilding FTS5 indexes (safety net) ---")
+    conn.execute("INSERT INTO texts_fts(texts_fts) VALUES('rebuild')")
+    conn.execute("INSERT INTO glossary_fts(glossary_fts) VALUES('rebuild')")
+    conn.commit()
+    for t in ("texts_fts", "glossary_fts"):
+        n = conn.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+        print(f"  {t}: {n} rows indexed")
+    hit = conn.execute(
+        "SELECT COUNT(*) FROM texts_fts WHERE texts_fts MATCH 'avatamsaka'"
+    ).fetchone()[0]
+    print(f"  sanity MATCH 'avatamsaka': {hit} hit(s)")
+
     verify_import(conn)
 
     conn.close()
