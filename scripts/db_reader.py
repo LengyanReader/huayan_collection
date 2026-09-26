@@ -470,8 +470,83 @@ def export_all_json(output_dir):
     print(f"  locations.json: {len(locations['locations'])} locations")
 
 
+def search_texts(query: str, limit: int = 20):
+    """FTS5 全文检索 texts（title_zh/bo/sa/en + abstract + dynasty + date_text）。
+
+    两层策略：
+      1) FTS5 MATCH（对 Latin 与 整串 CJK 词都能快命）
+      2) 若 CJK 查询且 MATCH 无命中 →回退 LIKE（兼容 unicode61 把连续 CJK 归一 token 导致的子串不能默认命的问题）
+    返回 [{id, title_zh, title_en, dynasty, date_text, snip, score}]
+    """
+    q = (query or '').strip()
+    if not q:
+        return []
+    has_cjk = any('\u4e00' <= c <= '\u9fff' for c in q)
+    match_expr = f'"{q}"' if has_cjk else q
+    conn = get_conn()
+    rows = conn.execute(
+        """SELECT t.id, t.title_zh, t.title_en, t.dynasty, t.date_text,
+                  snippet(texts_fts, 4, '[', ']', '…', 20) AS snip,
+                  bm25(texts_fts) AS score
+           FROM texts_fts
+           JOIN texts t ON t.id = texts_fts.rowid
+           WHERE texts_fts MATCH ?
+           ORDER BY score
+           LIMIT ?""",
+        (match_expr, limit)
+    ).fetchall()
+    if not rows and has_cjk:
+        like = f'%{q}%'
+        rows = conn.execute(
+            """SELECT id, title_zh, title_en, dynasty, date_text,
+                      substr(COALESCE(abstract,''), 1, 120) AS snip,
+                      0 AS score
+               FROM texts
+               WHERE title_zh LIKE ? OR title_en LIKE ?
+                    OR COALESCE(abstract,'') LIKE ? OR dynasty LIKE ?
+               ORDER BY id LIMIT ?""",
+            (like, like, like, like, limit)
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def search_glossary(query: str, limit: int = 20):
+    """FTS5 全文检索 glossary（term_zh/sa/bo/en + definition_zh/en）·CJK 同 texts 两层策略。"""
+    q = (query or '').strip()
+    if not q:
+        return []
+    has_cjk = any('\u4e00' <= c <= '\u9fff' for c in q)
+    match_expr = f'"{q}"' if has_cjk else q
+    conn = get_conn()
+    rows = conn.execute(
+        """SELECT g.id, g.term_zh, g.term_sa, g.term_bo, g.term_en,
+                  snippet(glossary_fts, 4, '[', ']', '…', 20) AS snip,
+                  bm25(glossary_fts) AS score
+           FROM glossary_fts
+           JOIN glossary g ON g.id = glossary_fts.rowid
+           WHERE glossary_fts MATCH ?
+           ORDER BY score
+           LIMIT ?""",
+        (match_expr, limit)
+    ).fetchall()
+    if not rows and has_cjk:
+        like = f'%{q}%'
+        rows = conn.execute(
+            """SELECT id, term_zh, term_sa, term_bo, term_en,
+                      substr(COALESCE(definition_zh,''), 1, 120) AS snip,
+                      0 AS score
+               FROM glossary
+               WHERE term_zh LIKE ? OR term_en LIKE ? OR term_sa LIKE ?
+                    OR COALESCE(definition_zh,'') LIKE ? OR COALESCE(definition_en,'') LIKE ?
+               ORDER BY id LIMIT ?""",
+            (like, like, like, like, like, limit)
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
 if __name__ == '__main__':
-    import sys
+    import sys, io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     if '--stats' in sys.argv:
         s = get_stats()
         for k, v in s.items():
@@ -494,5 +569,28 @@ if __name__ == '__main__':
         has_ti = sum(1 for n in graph['nodes'] if n.get('ti'))
         print(f"  name_sa: {has_sa}, name_en: {has_en}, title: {has_ti}")
         print(f"  key_works: {has_wk}, works_links: {has_wl}, multi_lineage: {has_ml}")
+    elif '--search' in sys.argv:
+        idx = sys.argv.index('--search')
+        q = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else ''
+        if not q:
+            print("Need query. Usage: python scripts/db_reader.py --search 华严")
+            sys.exit(1)
+        tt = search_texts(q, limit=10)
+        gl = search_glossary(q, limit=10)
+        print(f"=== TEXTS · {q} · {len(tt)} hit(s) ===")
+        for r in tt:
+            head = f"  [{r['id']:>3}] {(r.get('title_zh') or '').strip()}"
+            meta = ' · '.join(x for x in [r.get('dynasty') or '', r.get('title_en') or ''] if x)
+            if meta:
+                head += f"  ({meta})"
+            print(head)
+            if r.get('snip'):
+                print(f"        {r['snip']}")
+        print(f"\n=== GLOSSARY · {q} · {len(gl)} hit(s) ===")
+        for r in gl:
+            terms = ' / '.join(x for x in [r.get('term_zh') or '', r.get('term_sa') or '', r.get('term_en') or ''] if x)
+            print(f"  [{r['id']:>3}] {terms}")
+            if r.get('snip'):
+                print(f"        {r['snip']}")
     else:
-        print("Usage: python scripts/db_reader.py [--stats|--export DIR|--verify]")
+        print("Usage: python scripts/db_reader.py [--stats|--export DIR|--verify|--search QUERY]")

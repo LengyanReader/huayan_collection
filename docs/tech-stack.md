@@ -17,7 +17,7 @@
 |---|---|---|---|
 | Git / Markdown+YAML | ✅ 已建 | 版本控制 + 数据交换主力 | 全仓 |
 | SQLite | ✅ 已建 | 权威数据源（persons/texts/chapters/…）| `data/catalog/huayan.db` · `db_reader.py` |
-| — SQLite FTS5 全文检索 | ⚠️ 声明·未接 | 站点**无全局搜索** | 代码 0 处 fts5；见 §六缺口 |
+| — SQLite FTS5 全文检索 | ✅ 已接·CLI 层 | `db_reader.py --search 词` · 两层策略：FTS5 MATCH 主路 + CJK-LIKE 兑底（解 unicode61 将连续 CJK 归一 token 的子串命中顽疾）| `scripts/db_reader.py`、`scripts/rebuild_fts.py` · **前端 Web UI 尚未接入**（下一拍） |
 | Neo4j | 🟡 部分 | 仅 `load_neo4j.py` **图校验**，非站点运行依赖 | `--verify-sqlite` 无需服务器 |
 | ETL Python(lxml/pandas) | ✅ 已建 | `import_all_to_sqlite.py`/`export_*`/`backfill_*` | `scripts/` |
 | 前端：Observable Framework | ❌ 愿景·未建 | 实际=**自建 `build.py` + 纯静态 HTML/CSS/JS** | `web/demo/scripts/build.py` |
@@ -27,7 +27,7 @@
 | 本地 LLM qwen2.5 / Ollama | ❌ 愿景·未建 | 无 | 代码 0 处 |
 | `src/` Python 后端（CLI/服务）| 🟡 骨架 | 目录存在（cli/etl/graph/translation/utils），`huayan` CLI 入口已声明 | CLAUDE.md 标“待实现” |
 
-**结论**：**已落地 = 三层数据栈（SQLite→build.py→静态站）+ Canvas/Leaflet 可视化 + Neo4j 校验 + self_evolve 体检**；**未落地愿景 = 语义向量检索（LanceDB/embedding）、本地 LLM（qwen2.5/Ollama）、Observable 框架、FTS5 搜索**。凡“AI 辅助层”与“向量检索”当前为设计意图，**勿在成果中声称已具备**。
+**结论**：**已落地 = 三层数据栈（SQLite→build.py→静态站）+ Canvas/Leaflet 可视化 + Neo4j 校验 + self_evolve 体检 + FTS5 CLI 搜索（仅命令行·Web UI 未接）**；**未落地愿景 = 语义向量检索（LanceDB/embedding）、本地 LLM（qwen2.5/Ollama）、Observable 框架、面向前端的搜索接口**。凡“AI 辅助层”与“向量检索”当前为设计意图，**勿在成果中声称已具备**。
 
 ---
 
