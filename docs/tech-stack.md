@@ -19,7 +19,7 @@
 | SQLite | ✅ 已建 | 权威数据源（persons/texts/chapters/…）| `data/catalog/huayan.db` · `db_reader.py` |
 | — SQLite FTS5 全文检索 | ✅ 已接·CLI 层 | `db_reader.py --search 词` · 两层策略：FTS5 MATCH 主路 + CJK-LIKE 兑底（解 unicode61 将连续 CJK 归一 token 的子串命中顽疾）| `scripts/db_reader.py`、`scripts/rebuild_fts.py` · **前端 Web UI 尚未接入**（下一拍） |
 | Neo4j | 🟡 部分 | 仅 `load_neo4j.py` **图校验**，非站点运行依赖 | `--verify-sqlite` 无需服务器 |
-| ETL Python(lxml/pandas) | ✅ 已建 | `import_all_to_sqlite.py`/`export_*`/`backfill_*` | `scripts/` |
+| ETL Python(stdlib+pyyaml) | ✅ 已建 | `import_all_to_sqlite.py`/`export_*`/`backfill_*` · 2026-09-27 依赖瘦身：lxml/pandas/rich/sqlite-utils/httpx/tqdm 全仓零引用已移出核心·neo4j 入 `graph` 额外项 | `scripts/` · `pyproject.toml` |
 | 前端：Observable Framework | ❌ 愿景·未建 | 实际=**自建 `build.py` + 纯静态 HTML/CSS/JS** | `web/demo/scripts/build.py` |
 | 可视化：D3 + Observable Plot | 🟡 部分 | 实际主用 **Canvas + Leaflet**（CDN）；D3 局部/待定；Observable Plot 未用 | `web/demo/src/*.js` |
 | 向量存储 LanceDB | ❌ 愿景·未建 | 无 | 代码 0 处 |
