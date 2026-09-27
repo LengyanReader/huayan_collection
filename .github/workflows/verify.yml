@@ -48,8 +48,9 @@ jobs:
           pytest -q
           python scripts/test_pipeline.py
 
-      - name: Data checks (双语审计 + demo 结构 + 漂移报告)
+      - name: Data checks (双语审计 + demo 结构 + 一致性审计 + 漂移报告)
         run: |
           python scripts/audit_bilingual.py > /dev/null
           python scripts/verify_demo.py
+          python scripts/audit_consistency.py
           python scripts/check_drift.py || echo "::warning::docs/ 派生副本与 web/demo 漂移 · 处置待维护者定"
