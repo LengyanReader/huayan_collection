@@ -53,7 +53,7 @@ for a_rel, b_rel in PAIRS:
         print(f"DRIFT    {a_rel} ({ha[:12]}) != {b_rel} ({hb[:12]})")
         print(f"         docs: {summarize(a)}")
         print(f"         demo: {summarize(b)}")
-        print(f"         权威=web/demo(生产链所系) · docs 副本处置待维护者定")
+        print("         权威=web/demo(生产链所系) · docs 副本处置待维护者定")
 
 print(f"\ncheck_drift: {len(PAIRS) - drift}/{len(PAIRS)} pairs synced")
 sys.exit(1 if drift else 0)
