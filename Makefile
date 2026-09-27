@@ -88,6 +88,7 @@ verify-sources-json:
 	$(PYTHON) scripts/verify_sources.py --json
 
 verify-data: verify-sources
+	-$(PYTHON) scripts/check_drift.py || echo "↑ 派生副本漂移已检出 · 处置(同步/移除 docs 副本)待维护者定 · 暂不阻塞"
 	@echo "Data validation complete."
 
 ## 全量验收（三道闸 · 会话收尾必跑；详 harness/workflows/verification.md）

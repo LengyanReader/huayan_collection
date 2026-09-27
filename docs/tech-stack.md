@@ -25,9 +25,11 @@
 | 向量存储 LanceDB | ❌ 愿景·未建 | 无 | 代码 0 处 |
 | 嵌入模型 dmeta-embedding / sentence-transformers | ❌ 愿景·未建 | 无（已从核心依赖移入 optional `search` 额外项，不随默认安装拉入）| 代码 0 处 |
 | 本地 LLM qwen2.5 / Ollama | ❌ 愿景·未建 | 无 | 代码 0 处 |
-| `src/` Python 后端（CLI/服务）| 🟡 骨架 | 目录存在（cli/etl/graph/translation/utils），`huayan` CLI 入口已声明 | CLAUDE.md 标“待实现” |
+| `src/` Python 后端（CLI/服务）| 🟡 骨架 | 目录存在（cli/etl/graph/translation/utils）；`huayan` CLI 入口已声明 · `catalog init` 已实现(含 --db/--if-missing·2026-09-27)·余子命令待建 | `src/cli/catalog.py` |
+| 数据可复现（快照/恢复/演练）| ✅ 已建（2026-09-27 事故后）| `db_backup.py --snapshot/--verify/--restore`（逐表 sha256 回环）+ `drill_db_restore.py --force` 破坏性演练 PASS + `make db-rebuild` 全链重建 | `data/catalog/backups/huayan_latest.sql` 随代码 commit |
+| CI | 🟡 新建·待首跑验证 | GitHub Actions `verify.yml`：全链重建→备份回环→ruff→pytest→数据校验 | `.github/workflows/verify.yml`（push 后看首跑）|
 
-**结论**：**已落地 = 三层数据栈（SQLite→build.py→静态站）+ Canvas/Leaflet 可视化 + Neo4j 校验 + self_evolve 体检 + FTS5 CLI 搜索（仅命令行·Web UI 未接）**；**未落地愿景 = 语义向量检索（LanceDB/embedding）、本地 LLM（qwen2.5/Ollama）、Observable 框架、面向前端的搜索接口**。凡“AI 辅助层”与“向量检索”当前为设计意图，**勿在成果中声称已具备**。
+**结论**：**已落地 = 三层数据栈（SQLite→build.py→静态站）+ Canvas/Leaflet 可视化 + Neo4j 校验 + self_evolve 体检 + FTS5 CLI 搜索（仅命令行·Web UI 未接）+ 备份可复活（db_backup/演练）+ make db-rebuild 全链可复现**；**未落地愿景 = 语义向量检索（LanceDB/embedding）、本地 LLM（qwen2.5/Ollama）、Observable 框架、面向前端的搜索接口**。凡“AI 辅助层”与“向量检索”当前为设计意图，**勿在成果中声称已具备**。
 
 ---
 

@@ -1,44 +1,54 @@
-"""R6 tests for `catalog init` CLI: temp-path, idempotent safe mode, no clobber."""
-import subprocess, sys, tempfile, os
+"""R6 · `catalog init` CLI 测试：临时路径 / 安全模式 / live 不误删.
+
+可 pytest 收集，也可 `python scripts/test_cli_catalog.py` 直跑。
+"""
+import os
+import subprocess
+import sys
+import tempfile
 from pathlib import Path
+
+import pytest
 
 PY = sys.executable
 ROOT = Path(__file__).resolve().parent.parent
-ok = True
 
-def run(args, expect_rc=0, label=""):
-    global ok
+
+def run_cli(args, expect_rc=0):
     env = dict(os.environ, PYTHONIOENCODING="utf-8")
-    p = subprocess.run([PY, "-c",
-        "from src.cli.main import cli; cli(standalone_mode=True)", *args],
+    p = subprocess.run(
+        [PY, "-c", "from src.cli.main import cli; cli(standalone_mode=True)", *args],
         cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
         errors="replace", env=env)
-    passed = p.returncode == expect_rc
-    ok &= passed
-    print(f"{'PASS' if passed else 'FAIL'} {label} (rc={p.returncode})")
-    if not passed:
-        print(p.stdout[-300:], p.stderr[-500:])
+    assert p.returncode == expect_rc, f"rc={p.returncode}\n{p.stdout}\n{p.stderr}"
     return p
 
-tmp = Path(tempfile.mkdtemp())
-tdb = tmp / "t.db"
 
-p = run(["catalog", "init", "--db", str(tdb)], label="init --db 临时路径")
-assert tdb.exists() and tdb.stat().st_size > 0, "临时库未建"
-n_tables = "Tables (21)" in p.stdout
-print(("PASS " if n_tables else "FAIL ") + "schema 21 表建齐")
-ok &= n_tables
+def test_catalog_init_temp_path():
+    tdb = Path(tempfile.mkdtemp()) / "t.db"
+    p = run_cli(["catalog", "init", "--db", str(tdb)])
+    assert tdb.exists() and tdb.stat().st_size > 0
+    assert "Tables (21)" in p.stdout  # schema.sql 全 21 表建齐
 
-p = run(["catalog", "init", "--db", str(tdb), "--if-missing"], label="--if-missing 已存在跳过(不删)")
-print(("PASS " if "已存在" in p.stdout else "FAIL ") + "安全模式输出跳过")
-ok &= "已存在" in p.stdout
 
-# 默认路径护栏验证：--if-missing 对 live 无破坏（live 存在时应跳过）
-live = ROOT / "data" / "catalog" / "huayan.db"
-size_before = live.stat().st_size
-p = run(["catalog", "init", "--if-missing"], label="live 存在时 --if-missing 无操作")
-print(("PASS " if live.stat().st_size == size_before else "FAIL ") + "live DB 未被碰")
-ok &= live.stat().st_size == size_before
+def test_if_missing_never_deletes():
+    tdb = Path(tempfile.mkdtemp()) / "t.db"
+    run_cli(["catalog", "init", "--db", str(tdb)])
+    mtime = tdb.stat().st_mtime_ns
+    p = run_cli(["catalog", "init", "--db", str(tdb), "--if-missing"])
+    assert "已存在" in p.stdout
+    assert tdb.stat().st_mtime_ns == mtime, "--if-missing 竟改写了已存在的库"
 
-print("\nR6 CLI TEST:", "ALL PASS" if ok else "HAS FAILURES")
-sys.exit(0 if ok else 1)
+
+@pytest.mark.skipif(
+    not (ROOT / "data" / "catalog" / "huayan.db").exists(),
+    reason="live DB 不存在(CI 全链重建前) · 跳过")
+def test_if_missing_noop_on_live():
+    live = ROOT / "data" / "catalog" / "huayan.db"
+    size_before = live.stat().st_size
+    run_cli(["catalog", "init", "--if-missing"])
+    assert live.stat().st_size == size_before, "live DB 被 --if-missing 动了"
+
+
+if __name__ == "__main__":
+    raise SystemExit(pytest.main([__file__, "-v"]))

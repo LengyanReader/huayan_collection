@@ -1,0 +1,55 @@
+name: verify
+
+# 三道闸的 CI 化：全链重建(可复现性) → 测试/lint(质量) → 数据校验(内容完整性)
+# 2026-09-27 起因：huayan.db 系 git 外孤本且曾实测丢库一次 · 此 workflow 保证
+# 「从 git 内容即可完整重建 DB」永远为真。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install (dev extras: pytest/ruff + 核心依赖)
+        run: pip install -e ".[dev]"
+
+      - name: Rebuild DB from sources (schema → import → backfill → FTS)
+        run: |
+          python -c "from src.cli.main import cli; cli(['catalog', 'init'])"
+          python scripts/import_all_to_sqlite.py
+          python scripts/backfill_core_sources.py
+          python scripts/backfill_secondary_sources.py
+          python scripts/backfill_chapters_title_en.py
+          python scripts/backfill_location_sources.py
+          python scripts/rebuild_fts.py
+
+      - name: Snapshot round-trip verify (备份回环)
+        run: |
+          python scripts/db_backup.py --snapshot
+          python scripts/db_backup.py --verify
+
+      - name: Lint (ruff)
+        run: |
+          ruff check src/
+          ruff check scripts/ --select F,E9 --extend-ignore F841
+
+      - name: Tests (pytest + pipeline 集成)
+        run: |
+          pytest -q
+          python scripts/test_pipeline.py
+
+      - name: Data checks (双语审计 + demo 结构 + 漂移报告)
+        run: |
+          python scripts/audit_bilingual.py > /dev/null
+          python scripts/verify_demo.py
+          python scripts/check_drift.py || echo "::warning::docs/ 派生副本与 web/demo 漂移 · 处置待维护者定"
