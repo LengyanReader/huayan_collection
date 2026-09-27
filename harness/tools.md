@@ -14,12 +14,17 @@
 | **构建产物** | `python scripts/verify_demo.py` | 各 tab/article HTML 生成、数据驱动页、内联 JS 语法（node --check）| 每次 `build.py` 之后 |
 | **来源可靠性** | `python scripts/verify_sources.py [--json]` | 来源分级评分、缺源/待核统计 | 涉史实/名号/年代/出处/引文 |
 | **图谱验证** | `python scripts/load_neo4j.py --verify-sqlite` | SQLite→图结构（无需服务器）| 涉传承边/关系 |
+| **静态质量** | `make lint` | ruff 两层：src/ 严格·scripts/ 仅 F,E9 错级（2026-09-27 新增）| 涉 Python 改动 |
+| **工具自证** | `python -m pytest -q`（现 23 例）| 备份回环/live 护栏墓碑/搜索两层/drift 三态/CLI——防“验收工具自己烂掉” | 涉 scripts/src 改动·会话收尾 |
+| **备份可用** | `python scripts/db_backup.py --verify` | 快照↔live 逐表 sha256 指纹 + FTS 冒烟（§F10）| 任何直接改 DB 后 |
+| **一致性报告**（非阻塞）| `python scripts/audit_consistency.py` | 〔待核〕台账 + CBETA 号格式/配对候选 | `make verify-data`·CI |
+| **漂移报告**（非阻塞）| `python scripts/check_drift.py` | docs 镜像 ↔ web/demo 全站点面 11 对 | `make verify-data`·CI |
 | **交互/渲染实测** | headless Chrome `--dump-dom` / CDP | 以"真人用户"路径验证展开/切换/显隐等**运行态** | 涉 JS 交互、折叠门、语言开关、渲染修复 |
 | **进化体检** | `python scripts/self_evolve.py` | 汇总上述关卡 + 待核积压 + 台账矛盾 → 健康度 | 每次会话收尾 |
 
 > 交互态**必须真点为验**（记忆〈Interactive State Verification Requirement〉）：静态字符串命中 ≠ 功能正常；曾出现"引入 JS 语法错误而 verify_demo 仍 PASSED"，故 verify_demo 已含 node --check 反向验证（见 `docs/next-phase-plan.md` L.㊾⑭）。
 
-**构建/数据主命令**：`init_db.py` · `import_all_to_sqlite.py` · `db_reader.py` · `export_sqlite_to_json.py --verify` · `web/demo/scripts/build.py`（链详见 [`workflows/data-pipeline.md`](workflows/data-pipeline.md)）。
+**构建/数据主命令**：`init_db.py` · `import_all_to_sqlite.py` · `db_reader.py` · `export_sqlite_to_json.py --verify` · `web/demo/scripts/build.py`；全链重建一键 `make db-rebuild`（reset→import→4×backfill→FTS→snapshot→verify）。（链详见 [`workflows/data-pipeline.md`](workflows/data-pipeline.md)）。
 
 ### 1b. 数据摄取 · 补证 · 审计脚本（scripts/，供各工作流复用）
 
@@ -31,6 +36,10 @@
 | `fetch_wechat_articles.py` · `fetch_wechat_chain.py` | 网页/微信原文**抓取** | information-assurance |
 | `extract_hy_refs.py` · `ocr_hy_refs.py` | `docs/hy_refs` **提取 + OCR 校对**（人工审，非直用）| information-assurance |
 | `append_entries.py`(704L) | 台账/条目批量追加 | self-evolution |
+| `db_backup.py` · `drill_db_restore.py` · `rebuild_fts.py` | 快照/逐表指纹校验/恢复到副本 · 破坏性演练(需 `--force`) · FTS 重建 | data-pipeline·R1 链 |
+| `audit_consistency.py` · `check_drift.py` | 〔待核〕+CBETA 候选审计 / 全站点面镜像漂移·均为**报告模式**(不删改) | data-pipeline·verification |
+| `test_infra.py` · `test_cli_catalog.py` · `test_audit_consistency.py` | 基础设施自证 pytest 套件（入 CI） | verification |
+| `src/cli/catalog.py`（`huayan catalog init [--if-missing]`） | CLI 建库入口·安全模式绝不删已存 DB | data-pipeline |
 
 > ✅〔工具治理·已处理〕曾并存**两个写 `web/demo/index.html` 的 builder**；`scripts/build_demo.py`（遗留旧单页生成器·全仓无引用）已于 2026-09-23 **删除**（可经 git 历史恢复）。唯一权威 builder = `web/demo/scripts/build.py`。（`graph.json` 由 `export_sqlite_to_json.py` 产出，与 builder 无关。）
 

@@ -13,6 +13,24 @@
 
 **一条命令跑齐**：`make verify-all`（= `test-pipeline` + `demo-verify` + `verify-sources`）。
 
+## 基建闸（2026-09-27 R1 事故后新增·阻塞级）
+
+| 闸 | 命令 | 验什么 |
+|---|---|---|
+| 静态质量 | `make lint` | ruff 两层：src/ 严格·scripts/ 仅 F,E9 错级 |
+| 工具自证 | `python -m pytest -q`（现 23 例） | 备份回环/live 护栏墓碑/搜索两层/drift 三态/CLI——**防“验收工具自己烂掉”** |
+| 备份可用 | `python scripts/db_backup.py --verify` | 快照↔live 逐表 sha256 指纹 + FTS 冒烟（改过 DB 必跑·§F10） |
+
+## 报告闸（非阻塞·只报警不删改）
+
+- `audit_consistency.py`：〔待核〕台账 + CBETA 号格式/配对候选（首跑已抓到候选冲突·处置=内容轨）
+- `check_drift.py`：docs 镜像 ↔ web/demo 全站点面 11 对（现 10 漂移·处置待维护者定）
+- 两者已入 `make verify-data` 与 CI；退码非 0 也不拦闸——发现≠裁决（§I10 同款姿态）。
+
+## CI（2026-09-27 首推）
+
+`.github/workflows/verify.yml` = 上述全序自动化（重建链→快照回环→lint→测试→报告层·drift 只 `::warning`）；push 后首跑绿才算“已验证”，本地跑通≠Actions 环境跑通。
+
 ## 第四关：交互/渲染实测（静态 ≠ 交互）🔴
 
 数据闸全绿 ≠ 功能正常。**渲染/交互改动必须以"真人用户"路径实测**（memory〈Interactive State Verification Requirement〉）：

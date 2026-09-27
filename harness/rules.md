@@ -74,6 +74,9 @@
 - **F7 SIGLA 必反查**：CBETA 册号+番号易张冠李戴（八识规矩颂 T45n1861→实为 T45n1865）；订正要同步 CN/EN 书目 + CN/EN 脚注四处。
 - **F8 唯一 builder**：唯一权威 builder = `web/demo/scripts/build.py`（遗留 `build_demo.py` 已删）；`graph.json` 由 `export_sqlite_to_json.py` 产出。
 - **F9 扫描排除自指**：`self_evolve` 的 `scan.exclude` 必含 `data/evolution/`、`docs/evolution/`、`next-phase-plan.md`、`CLAUDE.md` 及任何**列举标记 token 的规范文档**，否则标记定义被当作假待办（自污染）。
+- **F10 改库即快照** ⭐：`data/catalog/huayan.db` 是 git 外孤本；任何直接写 DB 的脚本（backfill_*/import_*）跑完必须 `db_backup.py --snapshot` 并把 `data/catalog/backups/huayan_latest.sql` 随代码同 commit（2026-09-27 R1 事故后硬约定·详 concerns §7）。
+- **F11 写库脚本只用自然键**：重建后 rowid 必漂移（曾致 `backfill_chapters_title_en` 静默 0/41）；`UPDATE/DELETE` 一律用 title_zh 等自然键，严禁硬编码 id/rowid。
+- **F12 备份/恢复类工具必须过破坏性演练验收**：不得只在读路径自测——db_backup v1 即在护栏测试中因“先 unlink 后回放”毁掉 live DB；v2 三防线（路径 resolve 后比对/回放前不删目标/只回放到副本）+ `drill_db_restore.py --force` 演练 PASS 才算交付；同理已固为 `test_infra.py` 墓碑测试。
 
 ## §G · 存疑分级 · 提交与留痕
 
@@ -88,6 +91,7 @@
 - **H2 唯一出口**：`db_reader.py`（数据服务）· `build.py`（渲染）· `verify_*`（验收）各为其域唯一权威出口。
 - **H3 技能安装纪律**：装前核 install count/来源/星数；**未实际安装并验证者不在文档声称"已具备"**（一律标〔待评估〕/〔待落地〕）。
 - **H4 任务起手式**：缺上下文时**先并行** `SearchCodebase` + `SearchMemory`；改某模块前先取该模块知识/规范。
+- **H5 外部工具/AI 服务引入验收门**：①只认一手源（官方文档/集成页），营销口径不入决策；②与离线原则（tech-stack 原则③）、〈宁缺不伪〉冲突即一票否决；③能力宣称须用**自有标注数据实测**才算数（尤其中文/文言场景）；④不引入者也要存档评估+重启触发条件（样板：`docs/notes4it/Jev_引入评估.md`）。
 
 ## §I · 行文与文体（内容域·认知质量·反 AI 腔）
 

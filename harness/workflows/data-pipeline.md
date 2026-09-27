@@ -14,13 +14,14 @@ L1 SQLite(data/catalog/huayan.db)  ──►  L2 scripts/db_reader.py(数据服�
 - **图谱数据**（人物/边/地点/经/品目/术语）权威在 **SQLite**；其余在 **YAML**。二者都是唯一权威源，**严禁在 build.py/JS 硬编码副本**。
 - 数据流：`JSON/YAML 源` → `import_all_to_sqlite.py`(多源合并导入) → `SQLite` → `db_reader.py` → `build.py` → HTML；`export_sqlite_to_json.py` 负责 SQLite↔JSON 往返与 `--verify`。
 
-## 标准「新增内容」流程（CLAUDE.md 五步）
+## 标准「新增内容」流程（CLAUDE.md 五步 + R1 后新增快照步）
 
-1. **入库**：`init_db.py`（建库）→ 直接操作 SQLite 或用 `import_all_to_sqlite.py` 合并导入多源；或改对应 `data/**/*.yaml`。
-2. **导出**：`export_sqlite_to_json.py`（+ `--verify`）刷新 `data/knowledge_graph/*.json`（personas/lineages/locations）与 graph.json/gap.json。
-3. **构建**：`python web/demo/scripts/build.py`（6 tab + articles + css/js + index）。
-4. **验证**：`test_pipeline.py` 核对人数/边数/地点（当前基线 **95 人 / 98 边 / 30 地**）→ `verify_demo.py` →（涉史实）`verify_sources.py`。
-5. **提交**（经用户同意）+ 更新 `docs/next-phase-plan.md` + `make evolve`。
+1. **入库**：`init_db.py`（建库）→ 直接操作 SQLite 或用 `import_all_to_sqlite.py` 合并导入多源；或改对应 `data/**/*.yaml`。全链重建用 `make db-rebuild`（reset→import→4×backfill→FTS→snapshot→verify）。
+2. **快照（R1 事故后新必选·§F10）**：凡是直接写 DB 的脚本跑完，立即 `python scripts/db_backup.py --snapshot` + `--verify`，并把 `data/catalog/backups/huayan_latest.sql` 随代码同 commit。
+3. **导出**：`export_sqlite_to_json.py`（+ `--verify`）刷新 `data/knowledge_graph/*.json`（personas/lineages/locations）与 graph.json/gap.json。
+4. **构建**：`python web/demo/scripts/build.py`（6 tab + articles + css/js + index）。
+5. **验证**：`test_pipeline.py` 核对人数/边数/地点（当前基线 **95 人 / 98 边 / 30 地**）→ `verify_demo.py` →（涉史实）`verify_sources.py`。
+6. **提交**（经用户同意）+ 更新 `docs/next-phase-plan.md` + `make evolve`。
 
 ## 图验证（Neo4j）
 
@@ -33,6 +34,9 @@ L1 SQLite(data/catalog/huayan.db)  ──►  L2 scripts/db_reader.py(数据服�
 |---|---|
 | 建库/导入/导出/服务 | `init_db.py` · `import_all_to_sqlite.py`(945L, 多源合并) · `export_sqlite_to_json.py` · `db_reader.py`(498L) |
 | 验证 | `test_pipeline.py` · `verify_sources.py` · `load_neo4j.py`(892L) |
+| **备份/恢复（R1 链）** | `db_backup.py`(--snapshot/--verify/--restore) · `drill_db_restore.py --force`(破坏性演练) · `rebuild_fts.py` |
+| **一致性/漂移审计** | `audit_consistency.py`（〔待核〕台账+CBETA 号候选·报告模式）· `check_drift.py`（docs 镜像↔web/demo 全站点面 11 对） |
+| **基础设施自证测试** | `test_infra.py`（备份回环/live 护栏墓碑/搜索两层/drift 三态）· `test_cli_catalog.py` · `test_audit_consistency.py` |
 | **来源补证(幂等回填)** | `backfill_core_sources.py` · `backfill_secondary_sources.py` · `backfill_location_sources.py` · `backfill_chapters_title_en.py` · `add_works_links.py` |
 | **审校/审计** | `audit_bilingual.py`（中英配对）· `audit_classify.py`（分类）|
 | 摄取(原始→数据) | 见 [`information-assurance.md`](information-assurance.md) 与下方「摄取链」|
@@ -45,8 +49,10 @@ L1 SQLite(data/catalog/huayan.db)  ──►  L2 scripts/db_reader.py(数据服�
 - **源头持久化三步**：某字段（如 locations.source）要活过重建，须同时补 `graph.json` + `import_*.py` 读取 + `db_reader` 导出，缺一即在建库链中丢失（L.㉟）。
 - **改数据非改产物**：修复只在 SQLite/YAML 做，绝不在生成的 HTML 或 JS 里改（下游必被重建覆盖）。
 - **YAML 1.1 三坑**：`no:`→False、未引号日期→date 不可序列化、内嵌冒号/双引号非法（L.㊻⑤）。
+- **rowid 不稳定（§F11）**：`db-reset` 重建后 rowid 全变，写库脚本用 id/rowid 会静默空转——一律用自然键（title_zh 等）。
+- **FTS5 CJK 顽疾**：unicode61 把连续中文当一个 token，中文 MATCH 查不到≠索引空；诊断顺序：先拉丁探针（avatamsaka）证索引健康，再查分词。`db_reader.search_*` 已内置 LIKE 兑底。
 - **计数即回归信号**：test_pipeline 的 95/98/30 变了要么是有意的数据增补、要么是导入丢数据——必须解释差异，不可默默放行。
 
 ## 门禁（Definition of Done）
 
-`test_pipeline.py` ✅（人数/边/地一致）＋ `verify_demo.py` ✅ ＋（涉内容）`verify_sources.py` T0=0/评分不降 ＋ `docs/next-phase-plan.md` 已登记 ＋ `make evolve`。
+`test_pipeline.py` ✅（人数/边/地一致）＋ `verify_demo.py` ✅ ＋（涉内容）`verify_sources.py` T0=0/评分不降 ＋（改过 DB）`db_backup.py --verify` ✅ 且快照已随 commit ＋ `docs/next-phase-plan.md` 已登记 ＋ `make evolve`。
