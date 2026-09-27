@@ -10,7 +10,7 @@ PYTHON = $(CONDA_PYTHON)
 NEO4J_HOME = $(HOME)/neo4j-community-5.26.4
 JAVA_HOME = "C:/Program Files/Java/jdk-20"
 
-.PHONY: install install-dev db-init db-reset neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test test-pipeline clean env-info verify-sources verify-data verify-all demo demo-build demo-verify demo-serve demo-deploy evolve evolve-apply evolve-links evolve-ledger
+.PHONY: install install-dev db-init db-reset db-rebuild neo4j-start neo4j-console neo4j-stop neo4j-status graph-init lint test test-pipeline clean env-info verify-sources verify-data verify-all demo demo-build demo-verify demo-serve demo-deploy evolve evolve-apply evolve-links evolve-ledger
 
 ## 环境信息
 env-info:
@@ -30,11 +30,24 @@ install-all:
 
 ## 数据库 (SQLite)
 db-init:
-	$(PYTHON) -c "from src.cli.main import cli; cli(['catalog', 'init'])"
+	$(PYTHON) -c "from src.cli.main import cli; cli(['catalog', 'init', '--if-missing'])"
 
 db-reset:
+	@echo "⚠️ db-reset 删除 huayan.db · backfill 人工订正若未入快照会丢 · 建议先: python scripts/db_backup.py --snapshot"
 	rm -f data/catalog/huayan.db
 	$(PYTHON) -c "from src.cli.main import cli; cli(['catalog', 'init'])"
+
+## 完整重建链(源头=git 内 YAML/JSON+脚本 · 尾端=快照入库 · 2026-09-27 事故后可复现)
+db-rebuild: db-reset
+	$(PYTHON) scripts/import_all_to_sqlite.py
+	$(PYTHON) scripts/backfill_core_sources.py
+	$(PYTHON) scripts/backfill_secondary_sources.py
+	$(PYTHON) scripts/backfill_chapters_title_en.py
+	$(PYTHON) scripts/backfill_location_sources.py
+	$(PYTHON) scripts/rebuild_fts.py
+	$(PYTHON) scripts/db_backup.py --snapshot
+	$(PYTHON) scripts/db_backup.py --verify
+	@echo "重建完成 · 把 data/catalog/backups/huayan_latest.sql 随代码一起 commit"
 
 ## 图谱 (Neo4j)
 neo4j-console:
@@ -59,6 +72,7 @@ graph-load:
 ## 代码质量
 lint:
 	$(PYTHON) -m ruff check src/
+	$(PYTHON) -m ruff check scripts/ --select F,E9 --extend-ignore F841  ## scripts 存量宽仅错误级·F841(占位变量4处)登记豁免
 
 test:
 	$(PYTHON) -m pytest -v
@@ -97,8 +111,8 @@ demo: demo-build demo-verify
 demo-deploy: demo
 	git add web/demo/
 	git commit -m "deploy: rebuild demo (tabs/articles/assets)" || true
-	git push origin main
-	@echo "Deployed. Pages 源=main 根；等 ~2min CDN 刷新。"
+	@echo "已本地 commit · 按项目规矩不自动 push · 确认无误后手动: git push origin main"
+	@echo "Pages 源=main 根 · push 后等 ~2min CDN 刷新。"
 	@echo "NOTE: 海云讲法正文 txt 属 docs/huayanhai/，须另行提交（见 harness/workflows/deploy.md）。"
 
 ## 自我进化机制 (docs/self-evolution.md)

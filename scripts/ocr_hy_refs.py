@@ -56,7 +56,7 @@ def ocr_pdf(filepath, max_pages=10):
     except Exception as e:
         return {"error": f"PaddleOCR init failed: {e}"}
 
-    print(f"  Converting PDF to images...")
+    print("  Converting PDF to images...")
     try:
         # Use local poppler installation
         poppler_path = r"c:\poppler\poppler-24.08.0\Library\bin"

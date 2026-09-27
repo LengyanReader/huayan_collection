@@ -4,7 +4,7 @@ Builds a catalog knowledge graph JSON for downstream content updates.
 
 Usage: python scripts/extract_hy_refs.py
 """
-import os, sys, json, re, io
+import os, sys, json, io
 
 # Fix Windows console encoding for Chinese output
 if sys.platform == 'win32':

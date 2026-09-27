@@ -861,8 +861,8 @@ def main() -> None:
         sys.stdout.reconfigure(encoding="utf-8")
         print(cypher)
         print(
-            f"\n[INFO] Cypher script written to stdout. "
-            f"Paste into Neo4j Browser or run via cypher-shell.",
+            "\n[INFO] Cypher script written to stdout. "
+            "Paste into Neo4j Browser or run via cypher-shell.",
             file=sys.stderr,
         )
     elif args.verify:

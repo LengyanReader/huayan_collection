@@ -738,9 +738,9 @@ def main():
         print(f"  链接失效      : {len(link_broken)}")
     print("-" * 62)
     print(f"  报告 → docs/evolution/health_{ref_date.isoformat()}.md")
-    print(f"  梯队 → docs/evolution/next_actions.md")
+    print("  梯队 → docs/evolution/next_actions.md")
     print(f"  台账 → data/evolution/evolution_log.yaml (本次 +{n_led} 事件) / docs/evolution/evolution_ledger.md")
-    print(f"  记忆 → data/evolution/evolution_state.yaml")
+    print("  记忆 → data/evolution/evolution_state.yaml")
     if not args.apply:
         print("  (干跑模式；加 --apply 可对进度台账逐项确认回填)")
     print("=" * 62)

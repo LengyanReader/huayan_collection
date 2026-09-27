@@ -23,7 +23,6 @@ MOBILE_UA = (
 
 def fetch_article(url):
     """Fetch a WeChat article and extract content."""
-    import subprocess
     cmd = [
         "curl", "-sL", "--connect-timeout", "10", "--max-time", "30",
         "-H", f"User-Agent: {MOBILE_UA}",
@@ -115,7 +114,7 @@ def save_article(article):
         f.write(f"**摘要:** {article.get('description','')}\n\n")
         if article.get('source_url'):
             f.write(f"**原文链接:** {article['url']}\n\n")
-        f.write(f"**提取日期:** 2026-08-02\n\n")
+        f.write("**提取日期:** 2026-08-02\n\n")
         f.write("---\n\n")
         f.write(article["body"])
 

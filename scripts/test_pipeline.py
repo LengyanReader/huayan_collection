@@ -262,7 +262,7 @@ def test_build_consistency():
 
     if fazang_emb and fazang_sql:
         if fazang_emb['n'] == fazang_sql['n']:
-            pass_(f"法藏: embedded name = SQLite name")
+            pass_("法藏: embedded name = SQLite name")
         else:
             fail(f"法藏: embedded '{fazang_emb['n']}' != SQLite '{fazang_sql['n']}'")
 

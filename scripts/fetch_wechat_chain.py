@@ -85,7 +85,7 @@ def save_article(art, index):
         f.write(f"**原文:** {art['url']}\n\n")
         if art.get('next_url'):
             f.write(f"**下一篇:** {art['next_url']}\n\n")
-        f.write(f"**提取日期:** 2026-08-02\n\n---\n\n")
+        f.write("**提取日期:** 2026-08-02\n\n---\n\n")
         f.write(art["body"])
     return fpath
 
@@ -111,7 +111,7 @@ def main():
         print(f"\n[{i}] {url}")
         html = fetch_html(url)
         if not html or len(html) < 500:
-            print(f"  ❌ Failed to fetch (anti-bot?)")
+            print("  ❌ Failed to fetch (anti-bot?)")
             break
 
         art = parse_article(html, url)

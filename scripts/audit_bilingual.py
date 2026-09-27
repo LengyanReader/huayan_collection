@@ -115,7 +115,7 @@ def main():
     print(f"  chapters title_bo gap: {ch['total'] - ch['has_bo']}")
     print(f"  persons name_en gap: {p['total'] - p['has_en']}")
     print(f"  persons name_sa gap: {p['total'] - p['has_sa']}")
-    print(f"  locations name_en gap: {len(missing_en)}")
+    print(f"  locations name_en gap: 表无 name_en 列 · 全 {len(locs)} 条待定")
     print(f"  glossary definition_en gap: {g['total'] - g['has_def']}")
 
     conn.close()

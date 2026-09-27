@@ -10,7 +10,6 @@
 import json
 import sqlite3
 import sys
-import os
 from pathlib import Path
 
 if sys.platform == 'win32':

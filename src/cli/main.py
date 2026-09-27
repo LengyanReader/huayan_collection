@@ -8,6 +8,8 @@
 
 import click
 
+from src.cli.catalog import catalog
+
 
 @click.group()
 @click.version_option(version="0.1.0", prog_name="huayan")
@@ -15,8 +17,8 @@ def cli():
     """华严宗部文献与修行资料数字化梳理平台."""
 
 
+cli.add_command(catalog)
 # 子命令将在对应模块实现后注册
-# cli.add_command(catalog)
 # cli.add_command(graph)
 # cli.add_command(translate)
 

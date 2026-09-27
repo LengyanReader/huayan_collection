@@ -26,7 +26,6 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 
 def init_database():
     """Initialize huayan.db from schema.sql."""
-    import import_all_to_sqlite
     schema_path = ROOT / "data" / "catalog" / "schema.sql"
     if DB_PATH.exists():
         os.remove(DB_PATH)

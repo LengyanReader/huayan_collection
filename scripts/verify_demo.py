@@ -3,7 +3,7 @@
 import sys
 import os
 import shutil
-import subprocess, os, re
+import subprocess, re
 
 # Windows console cp1252 下中文输出会 UnicodeEncodeError — 强制 UTF-8
 if hasattr(sys.stdout, 'reconfigure'):
