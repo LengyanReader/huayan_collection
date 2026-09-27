@@ -27,6 +27,8 @@ Thumbs.db
 data/catalog/huayan.db
 data/catalog/*.db-shm
 data/catalog/*.db-wal
+# db_backup/drill 的恢复产物(二进制)不入 git · 快照 .sql 故意入库
+data/catalog/backups/*.db
 
 # Neo4j
 data/knowledge_graph/neo4j_import/*.dump

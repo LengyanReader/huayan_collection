@@ -84,7 +84,7 @@
 
 | 落于 | 现有资产 | 〔缺口〕 |
 |---|---|---|
-| 主 C-D · 深度影响 K-D | `data/knowledge_graph/schemas/` · SQLite 表结构（persons/texts/chapters/locations/glossary/lineages/lineage_edges）· Neo4j 校验层 · CBETA TxxnXXXX SIGLA 作外部锚点 · `graph.json` 导出 | [ ] **实体 ID 稳定性策略**未成文（曾出现 `person_050` 锚点错位 L.㉘）<br>[ ] **schema 版本化**：字段增删无迁移脚本/无 semver<br>[ ] **与外部标准对齐**：BDRC/CIDOC-CRM/TEI header 是否引入？暂无<br>[ ] **IIIF** 图像互操作（涉艺术珍品/古籍扫描时）未评估<br>[ ] **权威名称档**（Authority Files）：人名/地名/书名的规范形式无中央登记（`bilingual_glossary.yaml`/`search_aliases.yaml` 只是片段）<br>[ ] **多语术语的可重用发布**：术语表未导出为 SKOS/RDF |
+| 主 C-D · 深度影响 K-D | `data/knowledge_graph/schemas/` · SQLite 表结构（persons/texts/chapters/locations/glossary/lineages/lineage_edges）· Neo4j 校验层 · CBETA TxxnXXXX SIGLA 作外部锚点 · `graph.json` 导出 | [x] **数据可复现性（R1）· 2026-09-27 事故闭环**：huayan.db 系 git 外孤本·backfill_* 直接 UPDATE DB 不回写源。实测教训：db_backup v1 在护栏测试中误毁 live DB→已全链重建（init_db→import_all→4×backfill→FTS rebuild·8/8 基线 PASS·title_en 41/41）；重建暴露 rowid 漂移使 `backfill_chapters_title_en` 静默失效→已改 title_zh 自然键。已落地：`db_backup.py --snapshot/--verify/--restore`（逐表 sha256 指纹回环校验）+ `drill_db_restore.py --force` 破坏性演练 PASS。**新约定**：任何直接改 DB 的脚本跑完必须 --snapshot 并把 `data/catalog/backups/huayan_latest.sql` 随代码 commit<br>[ ] **实体 ID 稳定性策略**未成文（曾出现 `person_050` 锚点错位 L.㉘；本次 rowid 漂移再度印证）<br>[ ] **schema 版本化**：字段增删无迁移脚本/无 semver<br>[ ] **与外部标准对齐**：BDRC/CIDOC-CRM/TEI header 是否引入？暂无<br>[ ] **IIIF** 图像互操作（涉艺术珍品/古籍扫描时）未评估<br>[ ] **权威名称档**（Authority Files）：人名/地名/书名的规范形式无中央登记（`bilingual_glossary.yaml`/`search_aliases.yaml` 只是片段）<br>[ ] **多语术语的可重用发布**：术语表未导出为 SKOS/RDF |
 
 **建议路径**：把 schema 演进纳入 `docs/architecture.md`；建 `data/authority/*.yaml`（人/地/书/术语规范化档）；关注 BDRC/VTGS、Numata Center 等近期动向。
 
