@@ -1,7 +1,7 @@
 # Workflow — 部署 / 仓库治理（Deploy & Repo Governance）
 
 > **何时用**：把构建产物发布到 GitHub Pages、或处理仓库/换行/缓存相关决策时。
-> **权威既定事实**在 [`docs/next-phase-plan.md`](../../docs/next-phase-plan.md)〈部署与仓库治理·既定事实（勿再误判）〉——本文件只编排"怎么发"，不复述结论。
+> **权威既定事实**在 [`docs/工程治理/next-phase-plan.md`](../../docs/工程治理/next-phase-plan.md)〈部署与仓库治理·既定事实（勿再误判）〉——本文件只编排"怎么发"，不复述结论。
 
 ## 关键事实（务必先内化，否则易误判）
 
@@ -27,4 +27,4 @@
 
 ## 门禁
 
-发布属重型动作，**须用户明确同意再 `git push`**；发后必做线上 `--dump-dom` 核验并登记 `docs/next-phase-plan.md` + `make evolve`。
+发布属重型动作，**须用户明确同意再 `git push`**；发后必做线上 `--dump-dom` 核验并登记 `docs/工程治理/next-phase-plan.md` + `make evolve`。

@@ -15,15 +15,15 @@
 
 1. **提要求**：把待证断言拆成可核查条目（谁/何时/何地/何书/何数字）。
 2. **回源核查**：`WebSearch`/`WebFetch` 定位一手源；`research` 技能做背景调研并落 Markdown；必要时派 **Search/Debug 子代理**并行核验（大文档审计可分多路一手核查，参照 L.㊽ 汉传六稿核验）。
-3. **登记来源分级**：按 `docs/verification-framework.md` 三级来源（T1 原典 / T2 学术 / T3 官网…）；`source` 字段填**具体书目/URL**，避免"官网/著录制"等 VAGUE 词。
+3. **登记来源分级**：按 `docs/工程治理/verification-framework.md` 三级来源（T1 原典 / T2 学术 / T3 官网…）；`source` 字段填**具体书目/URL**，避免"官网/著录制"等 VAGUE 词。
 4. **入库**：写进 SQLite（persons.source/verified）或 YAML `source`/`sources`/`references`；带〔待核〕者保持未核实状态，**不臆升 `verified`**。
 5. **量化验证**：`python scripts/verify_sources.py --json` → 看缺源数、来源评分、T0（无源）；`test_pipeline.py` 校一致性。
 6. **积压治理**：`make evolve` 让〔待核/存疑〕按老化加权进入 `docs/evolution/next_actions.md` 高优先梯队；闭环考证后用 `self_evolve` 记录。
-7. **留痕**：把"核到什么、为何仍存疑、受何种限"写进 `docs/next-phase-plan.md` 待考梯队（这些即自我完善的路线图）。
+7. **留痕**：把"核到什么、为何仍存疑、受何种限"写进 `docs/工程治理/next-phase-plan.md` 待考梯队（这些即自我完善的路线图）。
 
 ## 已有可复用范式（研究文档级审计）
 
-`docs/next-phase-plan.md` 中多批次示范了"全面准确性+完整性"研究审计：CBETA 逐字对勘（L.㊹ 永嘉玄觉）、六稿一手核查 + 反查"真论文挂错论断"+ 清除 AI 残渣（L.㊽ 汉传）、DOI/URL 全真核验（L.㊾）。新审计可套用其"文体凡例 + 论断分七类注依据 + 判断与依据对照表"法。
+`docs/工程治理/next-phase-plan.md` 中多批次示范了"全面准确性+完整性"研究审计：CBETA 逐字对勘（L.㊹ 永嘉玄觉）、六稿一手核查 + 反查"真论文挂错论断"+ 清除 AI 残渣（L.㊽ 汉传）、DOI/URL 全真核验（L.㊾）。新审计可套用其"文体凡例 + 论断分七类注依据 + 判断与依据对照表"法。
 
 ## 常见坑
 

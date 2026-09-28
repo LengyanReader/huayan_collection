@@ -23,7 +23,7 @@ others:
     icon: 🔐
     title: 密宗全方位研究
     title_sub: 不密而密 · 密教源流·汉藏法脉·史实辨正
-    doc: docs/密宗全方位研究.md
+    doc: docs/宗派研究/密宗全方位研究.md
     back:
       tab: jiaoxing
       view: mimi
@@ -34,7 +34,7 @@ others:
     icon: 🔬
     title: 法相唯识宗全方位研究
     title_sub: 法相玄机 · 名相·渊源·法脉·式微与复兴
-    doc: docs/法相唯识宗全方位研究.md
+    doc: docs/宗派研究/法相唯识宗全方位研究.md
     back:
       tab: jiaoxing
       view: faxiang
@@ -45,7 +45,7 @@ others:
     icon: 🕳
     title: 般若空宗·三论中观全方位研究
     title_sub: 一空到底 · 空性义学·汉藏对勘·阐释与张力
-    doc: docs/般若空宗三论中观全方位研究.md
+    doc: docs/宗派研究/般若空宗三论中观全方位研究.md
     back:
       tab: jiaoxing
       view: yikong
@@ -56,7 +56,7 @@ others:
     icon: 🔭
     title: 天台宗全方位研究
     title_sub: 天台觉景 · 法脉·教观·圆融与复兴
-    doc: docs/天台宗全方位研究.md
+    doc: docs/宗派研究/天台宗全方位研究.md
     back:
       tab: jiaoxing
       view: tiantai
@@ -67,7 +67,7 @@ others:
     icon: 🌿
     title: 三十七道品全方位研究
     title_sub: 助道资粮 · 三十七道品与菩提分法
-    doc: docs/三十七道品全方位研究.md
+    doc: docs/经学文献/三十七道品全方位研究.md
     back:
       tab: jiaoxing
       view: system
@@ -78,7 +78,7 @@ others:
     icon: 🧠
     title: 识与心灵
     title_sub: 唯识学×意识科学·AI哲学 · 中主文·外文对读批注
-    doc: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    doc: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     back:
       tab: frontier
       view: buddhist
@@ -89,7 +89,7 @@ others:
     icon: 🪞
     title: 识与心灵之镜
     title_sub: 唯识学×西方心理学全景比较 · 中主文·外文对读批注
-    doc: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    doc: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     back:
       tab: frontier
       view: buddhist
@@ -100,7 +100,7 @@ others:
     icon: 🧘
     title: 六祖南宗禅以外的禅法传统
     title_sub: 禅法全览 · 达摩系诸支与南宗以外诸禅法 · 中英对读
-    doc: docs/禅法传统_中英对读_合并.md
+    doc: docs/跨学科对读/禅法传统_中英对读_合并.md
     back:
       tab: jiaoxing
       view: chan_traces
@@ -122,7 +122,7 @@ others:
     icon: 📖
     title: 华严经学·三十九品深度研究
     title_sub: 品目·批注·版本对照 · 祖师大德与学者阐释
-    doc: docs/华严经学_三十九品深度研究.md
+    doc: docs/经学文献/华严经学_三十九品深度研究.md
     back:
       tab: gap
       view: avatamsaka-studies
@@ -172,7 +172,7 @@ others:
     title_sub: 感悟 · 疑情（预留栏目 · 待补）
     version: 占位 · 内容待后续补入
     meta: 本栏目预留，用于专门收录南予的修行感悟与疑情类文章；非学术对读，而是随行随记的心得与参究之问，后续陆续补入。
-    doc: docs/南予其时.md
+    doc: docs/随笔参考/南予其时.md
     back:
       tab: frontier
       view: nanyu

@@ -18,30 +18,39 @@ meta:
 
 # ── 扫描目标（sense_markers / sense_file_age 用）─────────────────────
 scan:
-  include:
-    - data/**/*.yaml
-    - data/**/*.json
-    - docs/*.md
-    - web/demo/src/*.js
+    include:
+      - data/**/*.yaml
+      - data/**/*.json
+      # docs 研究文档已按内容类型分入下列分类目录（2026-09 整理，原为 docs/*.md 顶层平铺）。
+      # ⚠ 不可改回 docs/*.md 或 docs/*/*.md：docs 下另有 hy_refs/ notes4it/ 汉传佛教/ 等子树，
+      #   非本引擎扫描对象。⚠ 新增分类目录时须在此登记，否则 sense_markers 会静默漏扫。
+      - docs/工程治理/*.md
+      - docs/翻译规范/*.md
+      - docs/宗派研究/*.md
+      - docs/祖师人物/*.md
+      - docs/经学文献/*.md
+      - docs/跨学科对读/*.md
+      - docs/随笔参考/*.md
+      - web/demo/src/*.js
   # 排除：这些文件是「台账本身」或构建产物，待核/存疑出现在此属正常记录，
   # 不计入待办噪声（否则进度文档会把指标顶爆）。
   exclude:
     - data/evolution/**             # 引擎自身的基因组/记忆，含标记词定义，勿自指
     - docs/evolution/**            # 引擎产出的健康度/梯队报告
-    - docs/next-phase-plan.md      # 待续梯队/待核登记的权威台账
-    - docs/source-audit-report.md  # 审计报告（自动生成）
-    - docs/self-evolution.md       # 机制规范：列举标记词作示例，非待办
-    - docs/architecture.md         # 以下为工程/流程文档（verify_sources ENGINEERING_DOCS 同集）
-    - docs/knowledge-management.md
-    - docs/reference-management.md
-    - docs/engineering-workflow.md
-    - docs/multilingual-alignment.md
-    - docs/verification-framework.md
-    - docs/scalable-text-architecture.md
-    - docs/bilingual-annotation-design.md
-    - docs/tech-stack.md
-    - docs/translation-guide.md
-    - docs/visualization-research.md
+    - docs/工程治理/next-phase-plan.md      # 待续梯队/待核登记的权威台账
+    - docs/工程治理/source-audit-report.md  # 审计报告（自动生成）
+    - docs/工程治理/self-evolution.md       # 机制规范：列举标记词作示例，非待办
+    - docs/工程治理/architecture.md         # 以下为工程/流程文档（verify_sources ENGINEERING_DOCS 同集）
+    - docs/工程治理/knowledge-management.md
+    - docs/工程治理/reference-management.md
+    - docs/工程治理/engineering-workflow.md
+    - docs/翻译规范/multilingual-alignment.md
+    - docs/工程治理/verification-framework.md
+    - docs/工程治理/scalable-text-architecture.md
+    - docs/翻译规范/bilingual-annotation-design.md
+    - docs/工程治理/tech-stack.md
+    - docs/翻译规范/translation-guide.md
+    - docs/工程治理/visualization-research.md
     - CLAUDE.md                    # 进度快照（待核在此为说明性引用）
     - docs/huayanhai/**            # 海云讲法原文镜像（只读源档）
     - docs/notes4it/**

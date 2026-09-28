@@ -1,7 +1,7 @@
 # Workflow — 翻译 / 多语对读（Translation）
 
 > **何时用**：新增或订正任何 `*_en` 字段、`en_body`/`title_en`/`intro_en`、`.en-line` 对照、品目/术语多语对读。
-> **权威原则源（必读，不在本文件重述）**：`CLAUDE.md`〈多语 EN 翻译原则〉七条 +〈编务总则·中英必配〉+ `docs/translation-guide.md`（藏汉玄奘体）+ `docs/multilingual-alignment.md`（梵-于阗-藏-汉-满-英）。
+> **权威原则源（必读，不在本文件重述）**：`CLAUDE.md`〈多语 EN 翻译原则〉七条 +〈编务总则·中英必配〉+ `docs/翻译规范/translation-guide.md`（藏汉玄奘体）+ `docs/翻译规范/multilingual-alignment.md`（梵-于阗-藏-汉-满-英）。
 
 ## 配方（步骤）
 
@@ -12,7 +12,7 @@
 5. **渲染约定**：EN 块前缀 📖、走 `.en-line` 随全局显隐（默认中英对照）；`title_en`/`intro_en`/`en_body` 分别落位。英文块中的表格会被 `common.js` `_mdFullToHTML` 处理（引用块内表格渲染修复见 L.㊾⑫）。
 6. **校对=门禁**：翻译≠成稿——术语一致性 + 教理准确性 + 结构/引号安全，经主编全文审查。
 7. **验证**：`python web/demo/scripts/build.py` → `verify_demo.py` →（涉史实）`verify_sources.py` → 交互/显隐态用 headless Chrome 实测（含 zh-only 无英文泄漏、`.en-line` 全隐/全显）。
-8. **留痕**：更新 `docs/next-phase-plan.md`；`make evolve`；必要时 `self_evolve --record`。
+8. **留痕**：更新 `docs/工程治理/next-phase-plan.md`；`make evolve`；必要时 `self_evolve --record`。
 
 ## API 辅助的边界
 

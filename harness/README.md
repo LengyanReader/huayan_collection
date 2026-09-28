@@ -15,7 +15,7 @@
 | 长时程 agent 通用机制（Anthropic） | 本项目的对应资产（权威源） | harness 内说明 |
 |---|---|---|
 | 前置入上下文的"项目记忆"（CLAUDE.md 直投） | [`CLAUDE.md`](../CLAUDE.md)：概述·进度·八条编务总则·多语EN七原则·工程核心原则 | [`principles.md`](principles.md) §1 |
-| `claude-progress.txt` 进度流水 + git 历史 | [`docs/next-phase-plan.md`](../docs/next-phase-plan.md)（滚动批次登记）+ git | [`principles.md`](principles.md) §2 |
+| `claude-progress.txt` 进度流水 + git 历史 | [`docs/工程治理/next-phase-plan.md`](../docs/工程治理/next-phase-plan.md)（滚动批次登记）+ git | [`principles.md`](principles.md) §2 |
 | `feature_list.json`：结构化待办、只改 `passes` 字段 | `data/evolution/evolution_state.yaml`（registry 台账）| [`principles.md`](principles.md) §3 |
 | 结构化记笔记 / agentic memory（NOTES.md、to-do、memory 工具） | `data/evolution/evolution_log.yaml`（**只追加**台账）+ 长期记忆库 | [`principles.md`](principles.md) §3 |
 | "自验证后才算完成" + 测试工具（浏览器自动化/curl） | `verify_demo.py` / `test_pipeline.py` / `verify_sources.py` + headless Chrome CDP | [`tools.md`](tools.md) §验证关卡 |
@@ -60,15 +60,15 @@ harness/
 
 | 工作流 | 何时用 | 关键技能 | 关键工具/门禁 | 权威原则源 |
 |---|---|---|---|---|
-| **数据管线/图谱** | 新增/订正人物·边·地点·经·品目·术语，跑 import→build→verify | `research` | `import_all_to_sqlite`·`export_sqlite_to_json`·`db_reader`·`test_pipeline`(95/98/30)·`load_neo4j` | `CLAUDE.md`〈三层数据栈〉〈权威源表〉+ `docs/knowledge-management.md` |
+| **数据管线/图谱** | 新增/订正人物·边·地点·经·品目·术语，跑 import→build→verify | `research` | `import_all_to_sqlite`·`export_sqlite_to_json`·`db_reader`·`test_pipeline`(95/98/30)·`load_neo4j` | `CLAUDE.md`〈三层数据栈〉〈权威源表〉+ `docs/工程治理/knowledge-management.md` |
 | **前端/导航渲染** | 改侧栏/独立文章/中英渲染/视图切换/可视化 | `frontend-design` | `navigation.yaml`+`render_sidebar`·`standalone_articles`·双源`WIZ_LIB_RENDER`↔`renderWizLibrary`·`node --check`·CDP/dump-dom | memory〈Interactive State Verification〉+ L.㉝/㊾ 系列 |
 | **翻译** | 新增/订正任何 `*_en` / 多语对读字段 | `academic-research-writer`、`citation-verification` | `_markEnBlocks`/`.en-line` 渲染、`audit_bilingual`、`verify_demo`、YAML 转义纪律 | `CLAUDE.md`〈多语 EN 翻译原则〉七条 |
 | **信息保证** | 任何史实/名号/年代/数字/出处落库前 | `research`（一手源核查）、`citation-verification` | `verify_sources.py`、`backfill_*`、`extract/ocr_hy_refs`、〔待核〕标记扫描 | `CLAUDE.md`〈工程核心原则 0·考证优先〉+〈编务总则 0/3/6〉 |
-| **学术规范** | 撰写/审校研究文档、参考文献 | `academic-research-writer`、`citation-verification` | 引用可点 `[text](url)` + `_dynMD`、GB/T 15835 数字、图表编号 | `CLAUDE.md`〈编务总则 7·引用可点〉+ `docs/reference-management.md` |
-| **分级文献轨/P 轨** | 把某 `docs/*.md` 参考文献规范化为 `[A/B/C]`+CBETA 深链+SIGLA 核证 | `citation-verification`、`research` | CBETA 反查、`verify_demo`、临时 `scripts/*_tmp.py`、`bib(P-track/<X>):` 提交 | `docs/分级参考文献_模板.md` + `workflows/bibliography.md` |
-| **自我演化** | 每次会话收尾 | （本目录即其接口文档）| `make evolve` / `--apply` / `--ledger`、`--record` | `docs/self-evolution.md` |
+| **学术规范** | 撰写/审校研究文档、参考文献 | `academic-research-writer`、`citation-verification` | 引用可点 `[text](url)` + `_dynMD`、GB/T 15835 数字、图表编号 | `CLAUDE.md`〈编务总则 7·引用可点〉+ `docs/工程治理/reference-management.md` |
+| **分级文献轨/P 轨** | 把某 `docs/*.md` 参考文献规范化为 `[A/B/C]`+CBETA 深链+SIGLA 核证 | `citation-verification`、`research` | CBETA 反查、`verify_demo`、临时 `scripts/*_tmp.py`、`bib(P-track/<X>):` 提交 | `docs/工程治理/分级参考文献_模板.md` + `workflows/bibliography.md` |
+| **自我演化** | 每次会话收尾 | （本目录即其接口文档）| `make evolve` / `--apply` / `--ledger`、`--record` | `docs/工程治理/self-evolution.md` |
 | **验证/测试** | 任何改动“是否算完成”的裁决 | （内置）| `make verify-all`、headless Chrome `--dump-dom`/CDP、node --check | `harness/workflows/verification.md` + memory〈Interactive State Verification〉 |
-| **部署/仓库治理** | 发布产物到 Pages、换行/缓存/分支决策 | （内置）| `make demo` / `demo-deploy`（已修暂存 web/demo/）、线上 dump-dom 核验 | `docs/next-phase-plan.md`〈部署与仓库治理〉既定事实 |
+| **部署/仓库治理** | 发布产物到 Pages、换行/缓存/分支决策 | （内置）| `make demo` / `demo-deploy`（已修暂存 web/demo/）、线上 dump-dom 核验 | `docs/工程治理/next-phase-plan.md`〈部署与仓库治理〉既定事实 |
 
 ---
 
@@ -76,11 +76,11 @@ harness/
 
 > 直接对标 Anthropic "getting up to speed"：新会话先用最小上下文找回状态，再增量做**一件事**，收尾留**净态 + 痕迹**。
 
-1. **定向（orient）**：`pwd` → 读本 `README.md` → 读 `CLAUDE.md`〈当前进度·下一步〉→ 读 `docs/next-phase-plan.md` 顶部与 `docs/evolution/next_actions.md` 高优先项 → `git log --oneline -15`。
+1. **定向（orient）**：`pwd` → 读本 `README.md` → 读 `CLAUDE.md`〈当前进度·下一步〉→ 读 `docs/工程治理/next-phase-plan.md` 顶部与 `docs/evolution/next_actions.md` 高优先项 → `git log --oneline -15`。
 2. **验基线（baseline check）**：必要时先跑一次构建/验证，确认工作区处于"可合并净态"；若有破损先修，不要带着破损做新功能（zero-risk-first）。
 3. **选一件事（one feature）**：从待办台账选**最高优先级的单一事项**（避免一次做太多导致中途中断、把半成品留给下一会话）。
 4. **做+自验证（verify before done）**：改数据源（SQLite/YAML）而非下游 → `build` → `verify_demo` + `test_pipeline`（+ 涉内容则 `verify_sources`）→ 交互态用 headless Chrome/CDP 实测。**验证未全绿不得声称完成、不得标 `passes:true`。**
-5. **留痕（leave artifacts）**：更新 `docs/next-phase-plan.md`；跑 `make evolve`；必要时 `self_evolve --record --actor agent` 补记带外动作；沉淀可复用经验到长期记忆。
+5. **留痕（leave artifacts）**：更新 `docs/工程治理/next-phase-plan.md`；跑 `make evolve`；必要时 `self_evolve --record --actor agent` 补记带外动作；沉淀可复用经验到长期记忆。
 6. **净态提交（clean state）**：如经用户同意，`git commit` 描述性信息（+ 更新进度文件），使下一位"轮值工程师"可无摩擦接续。
 
 ---

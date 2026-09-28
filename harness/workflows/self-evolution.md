@@ -1,7 +1,7 @@
 # Workflow — 自我演化（Self-Evolution）
 
 > **何时用**：**每次会话收尾**都跑；以及周期性审视项目健康、把"信号→经验"固化时。
-> **权威源（不在本文件重述设计细节）**：[`docs/self-evolution.md`](../../docs/self-evolution.md)（闭环设计·组成·各阶段）+ `scripts/self_evolve.py` + `data/evolution/*.yaml`。
+> **权威源（不在本文件重述设计细节）**：[`docs/工程治理/self-evolution.md`](../../docs/工程治理/self-evolution.md)（闭环设计·组成·各阶段）+ `scripts/self_evolve.py` + `data/evolution/*.yaml`。
 
 ## 一句话
 
@@ -12,10 +12,10 @@
 
 1. **跑周期**：`python scripts/self_evolve.py`（干跑，不改内容）｜`make evolve`；已核证 P0 需回填再 `--apply`。
 2. **读梯队**：看 `docs/evolution/next_actions.md` 顶部高优先项 + 报告尾"记忆更新提示"。
-3. **回写台账**：按编务总则 5 更新 `docs/next-phase-plan.md`。
+3. **回写台账**：按编务总则 5 更新 `docs/工程治理/next-phase-plan.md`。
 4. **补记带外动作**：本会话做了未走引擎的"重型/结构性"动作，即时
    `python scripts/self_evolve.py --record <类别> --actor agent --subject ".." --note ".." --outcome applied`。
-   - 常用 `category`：`ui_refactor`·`content_integration`·`data_correction`·`cycle_run`·`note`（见 `docs/self-evolution.md` 事件 schema）。
+   - 常用 `category`：`ui_refactor`·`content_integration`·`data_correction`·`cycle_run`·`note`（见 `docs/工程治理/self-evolution.md` 事件 schema）。
    - `outcome`：`applied`·`declined`·`observed`·`skipped`。
 5. **沉淀长期记忆**（`UpdateMemory`）：
    - 进度快照变化 → 更新 `project_introduction`；

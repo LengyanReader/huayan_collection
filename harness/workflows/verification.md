@@ -54,4 +54,4 @@ conda `hy_py312`；子进程前设 `$env:PYTHONIOENCODING="utf-8"`；PowerShell 
 ## 解读与留痕
 
 - 计数与基线**有差异必须解释**（有意增补 or 丢数据），不可默默放行。
-- 全绿后：更新 `docs/next-phase-plan.md` → `make evolve`（进化引擎顺带跑三道闸并刷新 health/next_actions）。任一闸未绿不得声称完成、不得标 `passes:true`。
+- 全绿后：更新 `docs/工程治理/next-phase-plan.md` → `make evolve`（进化引擎顺带跑三道闸并刷新 health/next_actions）。任一闸未绿不得声称完成、不得标 `passes:true`。

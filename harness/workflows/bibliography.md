@@ -1,7 +1,7 @@
 # Workflow — 分级参考文献轨（Bibliography / P-track）
 
 > **何时用**：对任一 `docs/*.md` 研究文档的〈参考文献 / bibliography〉章节做**分级标注 + CBETA 深链 + 逐条核证**时；即本项目反复执行的 "P 轨"（P = Primary/Provenance/Pointed-link）。
-> **地位**：是 [`information-assurance.md`](information-assurance.md)（考证优先）与 [`academic-standards.md`](academic-standards.md)（引用可点）在**参考文献章节这一具体界面**上的落地配方。权威模板见 [`docs/分级参考文献_模板.md`](../../docs/分级参考文献_模板.md)。
+> **地位**：是 [`information-assurance.md`](information-assurance.md)（考证优先）与 [`academic-standards.md`](academic-standards.md)（引用可点）在**参考文献章节这一具体界面**上的落地配方。权威模板见 [`docs/工程治理/分级参考文献_模板.md`](../../docs/工程治理/分级参考文献_模板.md)。
 
 ---
 
@@ -38,7 +38,7 @@
 5. **批量机械变换用临时脚本**（文件多、条目多时）：写 `scripts/_<name>_tmp.py`，正则替换后**立即删除脚本**；每步之后 `Read` 抽样核对（尤其空行分隔、孤儿后缀）。
 6. **单条订正用 `SearchReplace`**：给足唯一上下文；一次调用打包同一逻辑修改的多处（CN + EN + 脚注）。
 7. **验渲染**：`python web/demo/scripts/build.py` → `python scripts/verify_demo.py`（须 ALL CHECKS PASSED）；`Grep -c` 统计成品 HTML 内 `[CBETA …](…)` Markdown 链接数应 > 0、裸 `cbetaonline` 未链接数 = 0。
-8. **净态提交**：一个文件一批，commit 前缀 `bib(P-track/<X>):`；全部完成后更新 [`docs/文献待核_backlog.md`](../../docs/文献待核_backlog.md) §F 留痕，再跑 `make evolve`。
+8. **净态提交**：一个文件一批，commit 前缀 `bib(P-track/<X>):`；全部完成后更新 [`docs/工程治理/文献待核_backlog.md`](../../docs/工程治理/文献待核_backlog.md) §F 留痕，再跑 `make evolve`。
 
 ## 四、技能 / 工具
 

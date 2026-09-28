@@ -11,7 +11,7 @@
 用法:
   python scripts/verify_sources.py                # 打印报告
   python scripts/verify_sources.py --json         # JSON 输出
-  python scripts/verify_sources.py --out docs/source-audit-report.md  # 写审计报告
+  python scripts/verify_sources.py --out docs/工程治理/source-audit-report.md  # 写审计报告
   python scripts/verify_sources.py --fixme        # 打印需修复条目
 """
 
@@ -130,16 +130,24 @@ ENGINEERING_DOCS = frozenset({
 })
 
 
+# docs 研究文档分类目录（2026-09 整理，原为 docs 顶层平铺 *.md）
+# ⚠ 三处须同步：evolution_config.yaml 的 scan.include、audit_style.RESEARCH_DOC_DIRS、本常量
+RESEARCH_DOC_DIRS = (
+    "工程治理", "翻译规范", "宗派研究", "祖师人物", "经学文献", "跨学科对读", "随笔参考",
+)
+
+
 def audit_docs():
-    """docs/*.md 研究类文档的存疑/待考标注覆盖率（工程文档除外）"""
+    """docs 研究文档的存疑/待考标注覆盖率（工程文档除外）"""
     results = []
-    for p in sorted(DOCS_DIR.glob("*.md")):
-        if p.name in ENGINEERING_DOCS:
-            continue
-        text = p.read_text(encoding="utf-8")
-        markers = len(re.findall(r"存疑|待考|待核|疑点|存异说|一说般", text))
-        citations = text.count("CBETA") + text.count("T[0-9]") + text.count("T[0-9]{1,2}n")
-        results.append({"file": p.name, "markers": markers, "citations": citations})
+    for d in RESEARCH_DOC_DIRS:
+        for p in sorted((DOCS_DIR / d).glob("*.md")):
+            if p.name in ENGINEERING_DOCS:
+                continue
+            text = p.read_text(encoding="utf-8")
+            markers = len(re.findall(r"存疑|待考|待核|疑点|存异说|一说般", text))
+            citations = text.count("CBETA") + text.count("T[0-9]") + text.count("T[0-9]{1,2}n")
+            results.append({"file": "%s/%s" % (d, p.name), "markers": markers, "citations": citations})
     return results
 
 

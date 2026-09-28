@@ -68,9 +68,19 @@ META_EXCLUDE = {
 }
 
 
+# docs 研究文档分类目录（2026-09 整理，原为 docs 顶层平铺 *.md）
+# ⚠ 三处须同步：evolution_config.yaml 的 scan.include、verify_sources.RESEARCH_DOC_DIRS、本常量
+RESEARCH_DOC_DIRS = (
+    "工程治理", "翻译规范", "宗派研究", "祖师人物", "经学文献", "跨学科对读", "随笔参考",
+)
+
+
 def default_targets():
-    files = [f for f in sorted((ROOT / "docs").glob("*.md"))  # 顶层研究文档，不含 huayanhai/ 等子树
-             if f.name not in META_EXCLUDE]
+    # 研究文档：docs 下的分类目录（不含 huayanhai/ evolution/ hy_refs/ 等子树）
+    files = []
+    for d in RESEARCH_DOC_DIRS:
+        files += sorted((ROOT / "docs" / d).glob("*.md"))
+    files = [f for f in files if f.name not in META_EXCLUDE]
     files += sorted((ROOT / "web" / "demo" / "articles").glob("*.md"))
     return [f for f in files if f.is_file()]
 

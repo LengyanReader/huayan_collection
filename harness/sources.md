@@ -22,12 +22,12 @@
 ## 二、项目内权威源（本 harness 只连接、不重述）
 
 - [`CLAUDE.md`](../CLAUDE.md) — 宪法：概述·进度·工程核心原则·编务总则八条·多语EN七原则·知识管理规则·目录约定。
-- [`docs/next-phase-plan.md`](../docs/next-phase-plan.md) — 心跳：L 系列批次滚动登记（进度权威源）。
-- [`docs/self-evolution.md`](../docs/self-evolution.md) — 免疫与记忆：闭环设计。
-- [`docs/verification-framework.md`](../docs/verification-framework.md) · [`docs/reference-management.md`](../docs/reference-management.md) · [`docs/knowledge-management.md`](../docs/knowledge-management.md) · [`docs/engineering-workflow.md`](../docs/engineering-workflow.md) · [`docs/translation-guide.md`](../docs/translation-guide.md) · [`docs/multilingual-alignment.md`](../docs/multilingual-alignment.md) · [`docs/architecture.md`](../docs/architecture.md) · [`docs/tech-stack.md`](../docs/tech-stack.md)。
+- [`docs/工程治理/next-phase-plan.md`](../docs/工程治理/next-phase-plan.md) — 心跳：L 系列批次滚动登记（进度权威源）。
+- [`docs/工程治理/self-evolution.md`](../docs/工程治理/self-evolution.md) — 免疫与记忆：闭环设计。
+- [`docs/工程治理/verification-framework.md`](../docs/工程治理/verification-framework.md) · [`docs/工程治理/reference-management.md`](../docs/工程治理/reference-management.md) · [`docs/工程治理/knowledge-management.md`](../docs/工程治理/knowledge-management.md) · [`docs/工程治理/engineering-workflow.md`](../docs/工程治理/engineering-workflow.md) · [`docs/翻译规范/translation-guide.md`](../docs/翻译规范/translation-guide.md) · [`docs/翻译规范/multilingual-alignment.md`](../docs/翻译规范/multilingual-alignment.md) · [`docs/工程治理/architecture.md`](../docs/工程治理/architecture.md) · [`docs/工程治理/tech-stack.md`](../docs/工程治理/tech-stack.md)。
 - `scripts/verify_*.py` · `test_pipeline.py` · `self_evolve.py` · `web/demo/scripts/build.py` — 验收闸与引擎。
 
-> 上列批次号引用（L.㉝ / L.㊾⑭ 等）出处为 `docs/next-phase-plan.md`，为其**权威源**；本 harness 仅指向，不复述其变更明细。
+> 上列批次号引用（L.㉝ / L.㊾⑭ 等）出处为 `docs/工程治理/next-phase-plan.md`，为其**权威源**；本 harness 仅指向，不复述其变更明细。
 
 ## 三、检索记录（本轮）
 
@@ -56,6 +56,6 @@
 - [ ] 〔新见〕存疑降为 boundary 后，需人工隔目抽检：数据层少数〔存疑〕或实为可补源的待办（现一律计为边界，可忍，因不丢只降噪）。
 - [ ] 〔可选〕周期性 `/better-harness` 审视本 harness（重复劳动/资产/会话产出/修复计划）。
 - [ ] 〔新见·P1 工程〕**一手源本地化**：下载 CBETA TEI-XML 全库（`cbeta.org/en/downloads`），把 P 轨/`verify_sources` 的 SIGLA 反查从在线改为本地 XML 解析（提速 + 解 84000 直连不通）。参 [`tools.md`](tools.md) §四。
-- [ ] 〔新见·P2 文档〕**消除 tech-stack 文档漂移**：`docs/tech-stack.md`/`pyproject.toml` 声明的 sentence-transformers/LanceDB/Ollama/Observable 均未实现；要么落地（向量语义检索）、要么在文档明标"设计愿景·未建"或剔除未用重依赖。
-- [ ] 〔新见·P2 内容〕**P 轨推广至其余文档**：目前仅 4 篇完成分级文献轨（禅法传统/判教/识与心灵×2）；其余 40+ 篇 `docs/*.md` 的参考文献待按 `workflows/bibliography.md` 逐批规范化。西文 inline ISBN/DOI ~90 条待离线逐一反查（见 `docs/文献待核_backlog.md` §F）。
+- [ ] 〔新见·P2 文档〕**消除 tech-stack 文档漂移**：`docs/工程治理/tech-stack.md`/`pyproject.toml` 声明的 sentence-transformers/LanceDB/Ollama/Observable 均未实现；要么落地（向量语义检索）、要么在文档明标"设计愿景·未建"或剔除未用重依赖。
+- [ ] 〔新见·P2 内容〕**P 轨推广至其余文档**：目前仅 4 篇完成分级文献轨（禅法传统/判教/识与心灵×2）；其余 40+ 篇 `docs/*.md` 的参考文献待按 `workflows/bibliography.md` 逐批规范化。西文 inline ISBN/DOI ~90 条待离线逐一反查（见 `docs/工程治理/文献待核_backlog.md` §F）。
 - [ ] 〔待落地〕用 `create-skill` 固化 4 个专属技能（详 §一）· `create-subagent` 建翻译审校/来源核查代理·评估重型 MCP·项目级 `.claude/skills/` 分工。

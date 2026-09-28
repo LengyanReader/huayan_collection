@@ -35,13 +35,13 @@
 - **C2 多译本并存·考据成一**——异译/异本/卷数分歧要梳理并存并说明取舍，不冒充唯一标准；难裁决时并行注〔并存/待考〕。
 - **C3 严禁假信息**（=A1 内容侧）。
 - **C4 穷尽采集·分层落地**——量大时先登记来源入 `next-phase-plan.md`，分批慢提，不因求全失实、不因求快漏源。
-- **C5 进度留痕·计划滚动**——**每完成一任务即更新** `docs/next-phase-plan.md`（已完成/校验结果/遗留/下一梯队）。
+- **C5 进度留痕·计划滚动**——**每完成一任务即更新** `docs/工程治理/next-phase-plan.md`（已完成/校验结果/遗留/下一梯队）。
 - **C6 边界自知·局限留档**（=A2 内容侧）。
 - **C7 引用可点·出处可溯**——引用尽量给 `[text](url)` 可点链接，由 `_dynMD` 渲染；无稳定 URL 者如实标〔无链接〕/〔待核〕，**不硬凑假链接**。
 
 ## §D · 知识管理核心规则（数据↔呈现契约）
 
-> 权威源：CLAUDE.md〈知识管理核心规则〉+ [`docs/knowledge-management.md`](../docs/knowledge-management.md)。
+> 权威源：CLAUDE.md〈知识管理核心规则〉+ [`docs/工程治理/knowledge-management.md`](../docs/工程治理/knowledge-management.md)。
 
 - **D0 单一权威源**：所有展示内容**必须**来自结构化源文件/SQLite，严禁硬编码于 build.py/JS。
 - **D1 三层数据栈**：`L1 SQLite（权威）` → `L2 db_reader.py（唯一数据服务出口）` → `L3 build.py → HTML`；非图谱数据（修行/宇宙观/前沿）以 YAML 为权威。
@@ -50,7 +50,7 @@
 
 ## §E · 多语 EN 翻译原则（七条 + 结合项）
 
-> 权威源：CLAUDE.md〈多语 EN 翻译原则〉+ [`docs/translation-guide.md`](../docs/translation-guide.md) + [`docs/multilingual-alignment.md`](../docs/multilingual-alignment.md)。落点：[`workflows/translation.md`](workflows/translation.md)。
+> 权威源：CLAUDE.md〈多语 EN 翻译原则〉+ [`docs/翻译规范/translation-guide.md`](../docs/翻译规范/translation-guide.md) + [`docs/翻译规范/multilingual-alignment.md`](../docs/翻译规范/multilingual-alignment.md)。落点：[`workflows/translation.md`](workflows/translation.md)。
 
 - **E0 翻译与校对结合**——翻译≠成稿，一律经主编全文审查再 render/commit；含术语一致性、教理准确、结构/引号安全。
 - **E1 重实质·不逐字**——义·理·境对等优先，意译优先；名相所指与教理不偏即可。

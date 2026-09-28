@@ -234,11 +234,11 @@ class MultilingualAlignment:
 ## 五、与现有文件的关系
 
 ```
-docs/multilingual-alignment.md          ← 本文件：多语对读架构
+docs/翻译规范/multilingual-alignment.md          ← 本文件：多语对读架构
     │
     ├── data/translation/diff_matrix.yaml     ← 品目层面差异
     ├── data/translation/glossary.yaml        ← 术语层面对齐
     ├── data/translation/alignment/           ← 段落层面对齐数据
     ├── data/translation/drafts/              ← 翻译草稿
-    └── docs/translation-guide.md             ← 翻译风格规范
+    └── docs/翻译规范/translation-guide.md             ← 翻译风格规范
 ```

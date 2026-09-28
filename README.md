@@ -9,7 +9,7 @@
 - **世主妙严** — 华藏世界海曼荼罗 · 三界诸天图 · 艺术珍品 · 梵呗
 - **灵性仁本** — 灵性经济学/人本经济学/修行传统与永续/本土知识体系
 
-> m📖 详见 [CLAUDE.md](CLAUDE.md) · [docs/next-phase-plan.md](docs/next-phase-plan.md) · [docs/architecture.md](docs/architecture.md)
+> m📖 详见 [CLAUDE.md](CLAUDE.md) · [docs/工程治理/next-phase-plan.md](docs/工程治理/next-phase-plan.md) · [docs/工程治理/architecture.md](docs/工程治理/architecture.md)
 
 ---
 
@@ -48,7 +48,7 @@ L1: YAML/SQLite (权威数据源) → L2: build.py (构建) → L3: HTML (展示
 ```
 
 所有知识性内容先进 `data/` YAML 数据层，再由 build.py 注入 HTML，严禁硬编码在 JS 中。
-详见 [docs/knowledge-management.md](docs/knowledge-management.md) · [docs/reference-management.md](docs/reference-management.md)
+详见 [docs/工程治理/knowledge-management.md](docs/工程治理/knowledge-management.md) · [docs/工程治理/reference-management.md](docs/工程治理/reference-management.md)
 
 ## 技术栈
 

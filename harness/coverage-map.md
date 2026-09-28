@@ -41,7 +41,7 @@
 | 维度 | 现状资产 |
 |---|---|
 | 工作流 | [`information-assurance`](workflows/information-assurance.md)（复审）· [`bibliography`](workflows/bibliography.md) · [`self-evolution`](workflows/self-evolution.md) |
-| 工具 | `self_evolve.py`（〔待核〕〔存疑〕标记扫描 + 老化加权优先级 + 只追加台账）· `verify_sources.py` · `--check-links` · [`docs/文献待核_backlog.md`](../docs/文献待核_backlog.md) |
+| 工具 | `self_evolve.py`（〔待核〕〔存疑〕标记扫描 + 老化加权优先级 + 只追加台账）· `verify_sources.py` · `--check-links` · [`docs/工程治理/文献待核_backlog.md`](../docs/工程治理/文献待核_backlog.md) |
 | 规矩 | 边界自知·局限留档 · 进度留痕·计划滚动（[`rules.md`](rules.md) §C） |
 
 **〔缺口〕**
@@ -75,7 +75,7 @@
 | 工具 | `self_evolve.py`（git 文件老化 + validator 汇总）· 工具治理留痕（如删遗留 `build_demo.py`） |
 
 **〔缺口〕**
-- [ ] **文档漂移（P1）**：[`docs/tech-stack.md`](../docs/tech-stack.md) + [`pyproject.toml`](../pyproject.toml) 声明 `sentence-transformers`/LanceDB/Ollama/Observable/SQLite-FTS5，但 `scripts/`+`src/` **0 实现**（neo4j 仅 `load_neo4j.py` 校验用）。要么落地、要么标"愿景·未建"、要么剔未用重依赖。
+- [ ] **文档漂移（P1）**：[`docs/工程治理/tech-stack.md`](../docs/工程治理/tech-stack.md) + [`pyproject.toml`](../pyproject.toml) 声明 `sentence-transformers`/LanceDB/Ollama/Observable/SQLite-FTS5，但 `scripts/`+`src/` **0 实现**（neo4j 仅 `load_neo4j.py` 校验用）。要么落地、要么标"愿景·未建"、要么剔未用重依赖。
 - [ ] **依赖卫生**：`pyproject` 里 `sentence-transformers` 属未用重依赖，徒增安装体积。
 - [ ] **死文件巡检**：`index_single_page_backup.html`、`test.html` 等遗留物无定期清检（曾致 builder 输出路径碰撞）。
 - [ ] **回归防护补强**：历史上"引入 JS 语法错误而 verify 仍 PASSED"已补 `node --check`；数据层等价盲区（导入非幂等）宜纳入 `test_pipeline`。

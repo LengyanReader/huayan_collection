@@ -25,7 +25,7 @@
 
 | 机制 | 本项目实现 | 使用要点 |
 |---|---|---|
-| 进度流水（`claude-progress.txt`）| [`docs/next-phase-plan.md`](../docs/next-phase-plan.md) 的 L 系列批次登记 | **每完成一任务即更新**（编务总则 5·进度留痕）；写清"已完成项 / 校验结果 / 遗留 / 下一批梯队" |
+| 进度流水（`claude-progress.txt`）| [`docs/工程治理/next-phase-plan.md`](../docs/工程治理/next-phase-plan.md) 的 L 系列批次登记 | **每完成一任务即更新**（编务总则 5·进度留痕）；写清"已完成项 / 校验结果 / 遗留 / 下一批梯队" |
 | git 历史 | 描述性 commit（一次净态一提交）| 坏改动可 `git revert`、找回工作态 |
 | 待办台账（`feature_list.json`）| `data/evolution/evolution_state.yaml` `registry` | 结构化、可排序；老化加权自动抬升长期搁置项优先级 |
 

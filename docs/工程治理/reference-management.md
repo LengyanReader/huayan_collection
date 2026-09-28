@@ -136,5 +136,5 @@ done
 | `web/demo/scripts/build.py` | 构建脚本: load_bibliography() → 注入页面 |
 | `data/spirit/spirit_content.yaml` | 灵性仁本页面内容 (通过 tags 引用文献) |
 | `data/frontier/frontier_dialogue.yaml` | 前沿对话页面内容 |
-| `docs/knowledge-management.md` | 项目知识管理总规范 |
+| `docs/工程治理/knowledge-management.md` | 项目知识管理总规范 |
 | `CLAUDE.md` | 项目总索引 |

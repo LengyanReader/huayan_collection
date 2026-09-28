@@ -65,4 +65,4 @@
 
 ## 门禁
 
-`build.py` ✅ → `verify_demo.py` ✅(+node --check) → 交互态实测（dump-dom/CDP 或注入断言）→ 涉数据一致性 `test_pipeline.py` ✅ → 更新 `docs/next-phase-plan.md` + `make evolve`。
+`build.py` ✅ → `verify_demo.py` ✅(+node --check) → 交互态实测（dump-dom/CDP 或注入断言）→ 涉数据一致性 `test_pipeline.py` ✅ → 更新 `docs/工程治理/next-phase-plan.md` + `make evolve`。

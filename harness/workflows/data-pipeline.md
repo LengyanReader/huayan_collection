@@ -1,7 +1,7 @@
 # Workflow — 数据管线 / 知识图谱策展（Data Pipeline & KG Curation）
 
 > **何时用**：新增/订正**人物·传承边·地点·经典·品目·术语**等结构化数据，或跑整条 import→export→build→verify 链时。
-> **这是本项目最核心的循环**——一切展示的底层。权威细节不在本文件重述：见 `CLAUDE.md`〈知识管理架构·三层数据栈〉〈知识管理核心规则·权威源表〉+ [`docs/knowledge-management.md`](../../docs/knowledge-management.md) + [`docs/architecture.md`](../../docs/architecture.md)。
+> **这是本项目最核心的循环**——一切展示的底层。权威细节不在本文件重述：见 `CLAUDE.md`〈知识管理架构·三层数据栈〉〈知识管理核心规则·权威源表〉+ [`docs/工程治理/knowledge-management.md`](../../docs/工程治理/knowledge-management.md) + [`docs/工程治理/architecture.md`](../../docs/工程治理/architecture.md)。
 
 ## 三层数据栈（L1 权威 → L3 呈现）
 
@@ -21,7 +21,7 @@ L1 SQLite(data/catalog/huayan.db)  ──►  L2 scripts/db_reader.py(数据服�
 3. **导出**：`export_sqlite_to_json.py`（+ `--verify`）刷新 `data/knowledge_graph/*.json`（personas/lineages/locations）与 graph.json/gap.json。
 4. **构建**：`python web/demo/scripts/build.py`（6 tab + articles + css/js + index）。
 5. **验证**：`test_pipeline.py` 核对人数/边数/地点（当前基线 **95 人 / 98 边 / 30 地**）→ `verify_demo.py` →（涉史实）`verify_sources.py`。
-6. **提交**（经用户同意）+ 更新 `docs/next-phase-plan.md` + `make evolve`。
+6. **提交**（经用户同意）+ 更新 `docs/工程治理/next-phase-plan.md` + `make evolve`。
 
 ## 图验证（Neo4j）
 
@@ -55,4 +55,4 @@ L1 SQLite(data/catalog/huayan.db)  ──►  L2 scripts/db_reader.py(数据服�
 
 ## 门禁（Definition of Done）
 
-`test_pipeline.py` ✅（人数/边/地一致）＋ `verify_demo.py` ✅ ＋（涉内容）`verify_sources.py` T0=0/评分不降 ＋（改过 DB）`db_backup.py --verify` ✅ 且快照已随 commit ＋ `docs/next-phase-plan.md` 已登记 ＋ `make evolve`。
+`test_pipeline.py` ✅（人数/边/地一致）＋ `verify_demo.py` ✅ ＋（涉内容）`verify_sources.py` T0=0/评分不降 ＋（改过 DB）`db_backup.py --verify` ✅ 且快照已随 commit ＋ `docs/工程治理/next-phase-plan.md` 已登记 ＋ `make evolve`。

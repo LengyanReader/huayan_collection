@@ -6,7 +6,7 @@
 ## 规范来源
 
 - 技能：`academic-research-writer`（同行评审来源 + IEEE 标准参考文献 + 来源可信度核实）、`citation-verification`（防伪造引用、常见错误）。
-- 文档：`docs/reference-management.md`（文献知识库维护）、`docs/verification-framework.md`（来源分级）。
+- 文档：`docs/工程治理/reference-management.md`（文献知识库维护）、`docs/工程治理/verification-framework.md`（来源分级）。
 - 项目体例：`CLAUDE.md`〈编务总则 7·引用可点〉+ L.㊾ 确立的"文体凡例 + 论断分七类 + 判断与依据对照表 + GB/T 15835 数字阿拉伯化"。
 
 ## 体例清单（Checklist）
@@ -27,7 +27,7 @@
 2. 起草/审校 → 逐条过〈体例清单〉。
 3. 机械核验（写临时 `.py`）：论断无源扫描、数字体例、文言残留、`?utm_source=`/AI 残渣、加粗密度、EN 同步。
 4. `build.py` → `verify_demo.py` → 引用可点/表格/图录渲染用 headless Chrome 实测。
-5. 留痕：`docs/next-phase-plan.md` + `make evolve`。
+5. 留痕：`docs/工程治理/next-phase-plan.md` + `make evolve`。
 
 ## 六维内容优化清单（对任一专题页/研究文档做"全面提升"时逐维过）
 
@@ -35,14 +35,14 @@
 
 | 维度 | 问什么 | 落地动作 | 证据 |
 |---|---|---|---|
-| **涵盖度** coverage | 该主题应有的子域/学派/时段/地域是否缺项？ | 对照权威文献地图（如 `docs/禅门文献与研究地图_四域近年.md` 式）列 gap，补类目而非只堆条目 | 类目数↑、缺口清单归零 |
+| **涵盖度** coverage | 该主题应有的子域/学派/时段/地域是否缺项？ | 对照权威文献地图（如 `docs/经学文献/禅门文献与研究地图_四域近年.md` 式）列 gap，补类目而非只堆条目 | 类目数↑、缺口清单归零 |
 | **完整性** completeness | 每条引用是否作者·题名·出处·年份·卷页·链接齐全？分组是否穷尽？ | 缺字段补齐或标〔待核〕；map/数组三态数据走 `renderRefList` 全渲染 | 无空 `label`、无断链 |
 | **准确性** accuracy | 经号/ CBETA 编号 / 年份 / 名号 是否一手可回查？ | 逐条回指 CBETA/大正藏/84000；不确定降级为 C 级〔线索〕，**不臆造 url/页码** | tier 分布合理、🔗可点开 |
 | **深度** depth | 是否只罗列不分析？有无"为什么/争议/研究述评"？ | 关键节点补 1 段论证或研究现状；references 补 `note` 说明该源价值/局限 | note 覆盖、非纯书目 |
 | **论证** argumentation | 论断强度是否校准、是否注明依据？ | 过〈体例清单 3·4〉；强因果→描述性，无据标〔属推测〕 | 判断—依据对照 |
 | **文献管理** lit-mgmt | 渲染是否单一源、分级是否统一、是否可增量扩展？ | 收敛到 `renderRefList`；A/B/C 分级；**只改 YAML 数据结构、渲染端零改** | 双/三源已镜像或已上抽 |
 
-> 收尾仍走标准门禁：`build.py` → `verify_demo.py`(+node --check) → `test_pipeline.py` →（涉事实）`verify_sources.py` → 交互态实测 → `docs/next-phase-plan.md` + `make evolve --record content_expand`。
+> 收尾仍走标准门禁：`build.py` → `verify_demo.py`(+node --check) → `test_pipeline.py` →（涉事实）`verify_sources.py` → 交互态实测 → `docs/工程治理/next-phase-plan.md` + `make evolve --record content_expand`。
 
 ## 常见坑
 

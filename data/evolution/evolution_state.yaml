@@ -7,8 +7,8 @@ registry:
     severity: 2
     snippet: 'icon: "🔴"'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -19,8 +19,8 @@ registry:
     severity: 4
     snippet: '"source": "《成一和尚著作集》、《成一法师传》〔待核〕",'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
@@ -31,8 +31,8 @@ registry:
     severity: 2
     snippet: '"source": "周叔迦《中国佛学史》（1930辅仁讲义）及《贤首宗付法师资记》著录高原法系创立（据中华典藏录）；存世著作《相宗八要解》《明昱诗集》（金陵刻经处光绪二十八年刻本等）；明末高僧，生卒不详〔待补〕",'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 信息待补充
@@ -45,7 +45,7 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   9ba8883da6f88141:
@@ -57,9 +57,10 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 2
-    status: open
+    absent_cycles: 3
+    status: resolved
     note: 考证未完成
+    resolved_date: '2026-09-27'
   d13c33f4b0bead49:
     file: data/practice/chan_authentic_traces.yaml
     token: 〔待核〕
@@ -69,9 +70,10 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 2
-    status: open
+    absent_cycles: 3
+    status: resolved
     note: 考证未完成
+    resolved_date: '2026-09-27'
   ac4781825d3645c7:
     file: data/practice/chan_authentic_traces.yaml
     token: 〔待核〕
@@ -81,9 +83,10 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 2
-    status: open
+    absent_cycles: 3
+    status: resolved
     note: 考证未完成
+    resolved_date: '2026-09-27'
   2439615a01ebcd36:
     file: data/practice/chan_authentic_traces.yaml
     token: 〔待核〕
@@ -93,9 +96,10 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 2
-    status: open
+    absent_cycles: 3
+    status: resolved
     note: 考证未完成
+    resolved_date: '2026-09-27'
   f772ae3e2eeda365:
     file: data/practice/chan_authentic_traces.yaml
     token: 〔待核〕
@@ -105,9 +109,10 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 2
-    status: open
+    absent_cycles: 3
+    status: resolved
     note: 考证未完成
+    resolved_date: '2026-09-27'
   43fc2fe490680cf3:
     file: data/practice/chan_authentic_traces.yaml
     token: 〔待核〕
@@ -117,9 +122,10 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-23'
     seen_count: 6
-    absent_cycles: 2
-    status: open
+    absent_cycles: 3
+    status: resolved
     note: 考证未完成
+    resolved_date: '2026-09-27'
   cef7d342e86642a8:
     file: data/practice/youtube_playlists.yaml
     token: 🔴
@@ -127,8 +133,8 @@ registry:
     severity: 2
     snippet: 'icon: 🔴'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -139,8 +145,8 @@ registry:
     severity: 2
     snippet: 'icon: "🔴"'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -151,8 +157,8 @@ registry:
     severity: 2
     snippet: 〔存疑〕标注与「伪不等于无用」的基本立场。
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -163,339 +169,339 @@ registry:
     severity: 4
     snippet: 三级标注；项目自述数据一律标【自述】；查无来源者如实标〔待核〕，不以推测填补；
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   19a9461191f1cd67:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: 3. **理据不足标"存疑"**：不确证者一律标〔存疑〕，不推论为定论。
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   adfcd5054af6c1a3:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '**判定〔存疑〕**：敦煌本为现存最早形态、其中的"神会系增益"依据（传衣付法、预言）相当充分；但"全部伪造"或"原有法海本完全被替代"两说均缺一锤定音的证据。比较稳妥的说法是：**《坛经》以慧能说法为内核，经荷泽等系累次增订成形，作者问题'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   3e7649acc0b6aef0:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **译者之"实叉难陀重译"公案**：唐译两卷本（圣历三年700，授记寺，复礼笔受）见载《开元释教录》〔A级：T2154〕；但章太炎《大乘起信论辩》断言"实叉难陀并无重译《起信》之事……《大乘起信论》非真谛译也"〔B级〕；游侠《中国佛教》'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   84810c910647b6f7:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **辛嶋静志回译说〔存疑〕**：有传闻称辛嶋静志考证玄奘梵本系"回译自汉文"——此说属学术传言层面，未见正式论文确认，标存疑。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   9d1fbcf734da50bf:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '**判定〔存疑〕**：原译诸本真实无争；会集本的"改易经文"属文献学事实，但其宗教有效性由信仰界自判。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   4ff4b3c117fc0b50:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '**判定〔存疑〕**：吕澂的文献证据链（著录晚出、文体不合）在教外学界影响极大；护法方则从义理与感应立论。**"楞严是否为印度传本"至今无梵本可证──这正是本经真伪之争论恒久不决的根因。**'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   5a2c9085c78238c0:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '**判定〔存疑〕**：经录有"伪"注、宗密反驳、契嵩再证，三面交织。**"由经的内容来判真伪，不由具体翻译年代"**是智昇以来判经的基本立场，但"翻译年代不明"仍是文献学硬伤。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   5721ece649191779:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **莲池《竹窗随笔》跋**即疑译者"法灯法炬"〔存疑〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   0c90b4920e62f625:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '**判定〔存疑〕**：译者不明、梵本无踪，但因其深植民间（孝亲、度亡）而地位稳固。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   362204a7b13d54eb:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- 判定〔存疑〕：以"汉明帝时原译"为过强、以"后世全伪"亦过，通说视其为早期译/抄汇集而成。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   21ae98623afdbdda:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- 判定〔存疑〕：学界多倾向"整体可信、间有后人增补"；其"佛道对话"内容为早期佛教本土化的关键文献。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   0cef902cb5d46849:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- 判定〔存疑〕：倾向"印度因子＋中土扩充"的双源说。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   e9e766df6d485839:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- 判定〔存疑〕：倾向清乾隆年间造；其流通量之大，反证"伪书"在功德市场的支配力（呼应9.6清代笔记考疑、10.9第五产床）。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   e14cc7e2d0268f25:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '**判定〔存疑〕**：达摩历史存在（有同期旁证），但传记细节（年代、神异、著书）均为层累。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   f861945a33ee445c:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '**判定〔存疑〕**：文献时代矛盾（二十八祖说晚出）是硬伤，但"玄觉作者说"有唐宋高僧（永明延寿《宗镜录》946年首列）背书；神会作者说为现代主流推测之一。写双方，不定谳。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   1298d4962b497041:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **质疑**：媒体讨论"虚云真活了120岁？"及其思想是否承自八指头陀（凤凰网2018，仅线索〔D级〕）；学界与其门派在"年岁实为两说"之间取舍〔存疑〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   1afcc78e3b5e5eb3:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **判定〔存疑〕**：文本晚出可考、史实不成立；其"传法合法性"的功能反而因此而更醒目——正是10.9第二张产床（托古自重）的标本。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   7f108aaaf698bfb4:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **判定〔存疑〕**：文本（灯录）真实、史实（烧佛）可行，然"以破斥戏论"的正当性边界随对机与立场而判——示例：**公案之"伪"须分三层——文本真伪／史实有无／正当性判摄**（对照10.1对象层）。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   5c4ee8ed33e3032f:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '- 1991年"盗换"疑案：公安系统勘定（骨裂痕比对，公安部原刑侦局长刘文主勘），结论为未换——圣物"防伪"自此进入法医学时代〔B级：《纵横》2018年12期；〔待核〕〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   67800bdae2a810d6:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **判定〔存疑〕**："是否为佛陀真身"超出文献学（不可判定，归信仰）；"灵骨确为唐代安奉之物"则是考古—文献—影像三重互证的实然结论。**圣物"真伪"分两轨：考古真＋信仰可依**（亦可见于各处"佛陀舍利"多来源之普遍现象，回应10.2'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   33c95b8845aaf72a:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '- **结论〔存疑〕**：**"平行说"可成立（结构相近），"影响说"无证据。** 中观与斯多亚的相似性宜理解为"对人同一问题的逻辑收敛"，而非抄袭。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   f51ba753e9d9e3ee:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '- 韩国近现代佛学：李能和《朝鲜佛教通史》（1918）等开启朝鲜佛教史近代研究【条目据二手引录〔待核〕】〔B级〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   62f283ab1408225e:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '- **领域命名**：Buswell 主编《Chinese Buddhist Apocrypha》（University of Hawai''i Press，1990）将"Chinese
       Apocrypha"立为佛教学一个专门领域，收录《灌顶'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   8c834e3fcc1b6a42:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '- **心经之争的引爆**：Jan Nattier 〈The Heart Sūtra: A Chinese Apocryphal Text?〉（JIABS 15.2，1992）提出《心经》或系中土撰述——引发此后二十余年持续再考（Huife'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   3ace22b1fce06d6d:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: 2. **全程执行A/B/C/D分级与〔存疑〕标注**：凡直接引文附第一手出处（CBETA T号、原刊页码），凡转述标等级，凡不确者标存疑——这正是11.3参考文献的立法意图，也是10.10④"双重诚实"的实操。
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   6e62179159bea5f0:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '- 杨曾文：〈六祖坛经诸本的演变〉（台大佛学数位图书馆转；完整版本谱系）【著录〔待核〕】'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   aae15a7d54d32908:
-    file: docs/佛门真伪问题_综合深度研究.md
+    file: docs/宗派研究/佛门真伪问题_综合深度研究.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '- Nattier, Jan. "The Heart Sūtra: A Chinese Apocryphal Text?" *JIABS* 15.2 (1992)；Buswell,
       Robert (ed.). *Chinese Buddhi'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   30ed75d00d5bb05c:
-    file: docs/永嘉玄觉大师_综合深度研究.md
+    file: docs/祖师人物/永嘉玄觉大师_综合深度研究.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -503,48 +509,48 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   c0f0326be411a7be:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '> **对读体例**：中文为主文全文；英文为平行对读——每节中文小节正文之后，以「EN对应」块给作者英文修订版同小节原句全文（T1 原句，非译写）；梵/藏取词源与经藏用语；日/法仅于有通行佛学译语处收录（否则标〔待核〕）。规范见
       docs/'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   c7165909f8ae6897:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
-    snippet: '> **信源分级**：术语格义依 docs/verification-framework.md 三级分级——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
+    snippet: '> **信源分级**：术语格义依 docs/工程治理/verification-framework.md 三级分级——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   f6edc86a2cdb596d:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
-    snippet: '> **信源分级**：术语格义依 docs/verification-framework.md 三级分级——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
+    snippet: '> **信源分级**：术语格义依 docs/工程治理/verification-framework.md 三级分级——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   d01c6e02d1529aab:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -553,11 +559,11 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   68ba9a0659f56cc0:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -566,11 +572,11 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   12815bfc2dcd1c5b:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
@@ -579,11 +585,11 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   ff5f67943d2c08ce:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -591,23 +597,23 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   468becf4307578d3:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '> **注** 本文谓识变所现之“共相境”由共业种子所感；与当代“共享语境/公共经验”之比附须审慎——〔存疑〕此义是否能与哲学“共同世界”平行，文中第四节起渐次展开。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   c5cb79500d84a01b:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -615,11 +621,11 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   64b5aaa2152b4301:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -627,11 +633,11 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   8c9b8e9f8069cbaa:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -640,11 +646,11 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   19eea048f8fd94ca:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -653,72 +659,72 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   2b7e3c3f80626e4f:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
-    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
+    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/翻译规范/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   e754b44f07377a7f:
-    file: docs/识与心灵_唯识学对话意识科学_多语对读.md
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
-    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
+    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/翻译规范/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   cbaa472ba117f4bf:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '> **对读体例**：中文为主文全文；英文为平行对读——每节中文小节正文之后，以「EN对应」块给作者英文修订版同小节原句全文（T1 原句，非译写）；梵/藏取词源与经藏用语；日/法仅于有通行佛学译语处收录（否则标〔待核〕）。规范见
       docs/'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   710db6830c1db2e5:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '> **信源分级**：同《识与心灵》篇——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   60463b3e32bbeef9:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
     snippet: '> **信源分级**：同《识与心灵》篇——作者英文版（T1）、CBETA 电子佛典（T0）、权威双语工具书（T2）；把握不足或跨源冲突者标〔待核〕/〔存疑〕。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
   8b7b539f578c2ff0:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -726,24 +732,24 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   67f9ab59a03de9d4:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '> **注** 本文第十一节提出预测处理理论（predictive processing / free-energy principle）与阿赖耶识种子机制的**结构同构**假说：预测模型之先验期待
       ≈ 种子的成熟功能，预测误差更新 ≈ 新'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   15b5f31259df909e:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
@@ -751,42 +757,42 @@ registry:
     first_seen: '2026-09-20'
     last_seen: '2026-09-24'
     seen_count: 8
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
     note: 考证未完成
   ad7a88fb84419a91:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '> 〔备考〕心所“轻安（praśrabdhi）”与副交感“安全”状态的对应关系宜标注〔待核〕，留待神经佛学（contemplative neuroscience）实证研究。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   b444947a720e4e34:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔待核〕
     kind: verify
     severity: 4
-    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
+    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/翻译规范/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 考证未完成
   3004446e56418ac2:
-    file: docs/识与心灵之镜_唯识学对话心理学_多语对读.md
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
     token: 〔存疑〕
     kind: boundary
     severity: 2
-    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/bilingual-annotation-design.md。'
+    snippet: '> 术语格义已覆盖正文全部核心唯识术语（P2 完成）；文内〔待核〕/〔存疑〕项均归档于各批注块内。规范见 docs/翻译规范/bilingual-annotation-design.md。'
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 来源/说法存疑(审慎判定·边界自知，不强行处理)
@@ -798,8 +804,8 @@ registry:
     snippet: h+="<span>🟡 汉文</span><span style=color:#c46b5d>🔴 藏文</span><span style=color:#5e8b9e>🔵 英文</span><span
       style=color:#9e8b6e
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -810,8 +816,8 @@ registry:
     severity: 2
     snippet: h+="<span>🟢 汉藏一致</span><span>🟡 表述有异</span><span>🔴 藏文独有</span><span>🔵 汉文独有</span></div>";
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -822,8 +828,8 @@ registry:
     severity: 2
     snippet: if(li==='藏传佛教·格鲁派'||li==='格鲁派')return '🔴 藏传·格鲁派';
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -834,8 +840,8 @@ registry:
     severity: 2
     snippet: if(li==='藏传佛教·萨迦派'||li==='萨迦派')return '🔴 藏传·萨迦派';
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -846,8 +852,8 @@ registry:
     severity: 2
     snippet: if(li==='藏传佛教·宁玛派'||li==='宁玛派')return '🔴 藏传·宁玛派';
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -858,8 +864,8 @@ registry:
     severity: 2
     snippet: if(li==='藏传佛教·噶举派'||li==='噶举派')return '🔴 藏传·噶举派';
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -870,8 +876,8 @@ registry:
     severity: 2
     snippet: if(/宗喀巴|达赖|班禅|阿底峡|莲花生/.test(n+tname))return '🔴 藏传佛教';
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -882,8 +888,8 @@ registry:
     severity: 2
     snippet: if(li==='藏传佛教'||/藏传/.test(li))return '🔴 藏传佛教';
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -894,8 +900,8 @@ registry:
     severity: 2
     snippet: if(/宗喀巴|阿底峡|莲花生|米拉日巴|八思巴|寂天/.test(full))return '🔴 藏传佛教';
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -906,8 +912,8 @@ registry:
     severity: 2
     snippet: '''🔴 藏传·格鲁派'',''🔴 藏传·萨迦派'',''🔴 藏传·宁玛派'',''🔴 藏传·噶举派'',''🔴 藏传佛教'','
     first_seen: '2026-09-20'
-    last_seen: '2026-09-24'
-    seen_count: 8
+    last_seen: '2026-09-27'
+    seen_count: 9
     absent_cycles: 0
     status: open
     note: 进度未实施标记
@@ -921,43 +927,46 @@ registry:
     first_seen: '2026-09-24'
     last_seen: '2026-09-24'
     seen_count: 1
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
   2eb18a53e9d53fa3:
-    file: docs/禅门文献与研究地图_四域近年.md
+    file: docs/经学文献/禅门文献与研究地图_四域近年.md
     token: 〔待核〕
     kind: verify
     severity: 4
     snippet: '> 定位：本文件是**文献地图 / 线索登记**，非定稿综述——凡一手已核者标〔确认〕，凡须回查者标〔线索〕/〔待核〕，以符〈边界自知·局限留档〉。其**分类框架与标注法即为可复用模板**，其余专题（净土·天台·唯识·华严·律…）可照此结构'
     first_seen: '2026-09-24'
-    last_seen: '2026-09-24'
-    seen_count: 1
+    last_seen: '2026-09-27'
+    seen_count: 2
     absent_cycles: 0
     status: open
+    note: 考证未完成
   d48e877219a2cdd2:
-    file: docs/禅门文献与研究地图_四域近年.md
+    file: docs/经学文献/禅门文献与研究地图_四域近年.md
     token: 〔线索〕
     kind: expand
     severity: 2
     snippet: '> 定位：本文件是**文献地图 / 线索登记**，非定稿综述——凡一手已核者标〔确认〕，凡须回查者标〔线索〕/〔待核〕，以符〈边界自知·局限留档〉。其**分类框架与标注法即为可复用模板**，其余专题（净土·天台·唯识·华严·律…）可照此结构'
     first_seen: '2026-09-24'
-    last_seen: '2026-09-24'
-    seen_count: 1
+    last_seen: '2026-09-27'
+    seen_count: 2
     absent_cycles: 0
     status: open
+    note: 线索性/局部信息
   b0b5c69fad5be582:
-    file: docs/禅门文献与研究地图_四域近年.md
+    file: docs/经学文献/禅门文献与研究地图_四域近年.md
     token: 〔线索〕
     kind: expand
     severity: 2
     snippet: '> 建立：2026-09-24 | 检索法：`WebSearch` 命中 → 逐条回溯出版社/学报/机构一手页 → 〔线索〕项留 URL 待续。'
     first_seen: '2026-09-24'
-    last_seen: '2026-09-24'
-    seen_count: 1
+    last_seen: '2026-09-27'
+    seen_count: 2
     absent_cycles: 0
     status: open
+    note: 线索性/局部信息
   2b478987794a4874:
-    file: docs/禅门文献与研究地图_四域近年.md
+    file: docs/经学文献/禅门文献与研究地图_四域近年.md
     token: 〔线索〕
     kind: expand
     severity: 2
@@ -965,16 +974,4301 @@ registry:
     first_seen: '2026-09-24'
     last_seen: '2026-09-24'
     seen_count: 1
-    absent_cycles: 0
+    absent_cycles: 1
     status: open
   923531e0b2ddef57:
-    file: docs/禅门文献与研究地图_四域近年.md
+    file: docs/经学文献/禅门文献与研究地图_四域近年.md
     token: 〔线索〕
     kind: expand
     severity: 2
     snippet: '- 〔线索〕Oxford UP 出版圣哲（성철 Seongcheol）禅师教导英译预告（2018 Jokwang 新闻）·（C）· [jokb.org](https://www.jokb.org/bbs/board.php?bo_table'
     first_seen: '2026-09-24'
-    last_seen: '2026-09-24'
+    last_seen: '2026-09-27'
+    seen_count: 2
+    absent_cycles: 0
+    status: open
+    note: 线索性/局部信息
+  e05d33e6fbccf804:
+    file: data/practice/mimi_daodi.yaml
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: 'note: 〔线索〕待核'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 3
+    absent_cycles: 0
+    status: open
+    note: 线索性/局部信息
+  733ff7246cd3ab53:
+    file: data/practice/yikong_daodi.yaml
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: 'note: 〔线索〕待核'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6f8818b6333e324d:
+    file: data/practice/zhuandao_ziliang.yaml
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: 'note: 〔线索〕待核'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  fbc43e3633650227:
+    file: docs/随笔参考/ref海云继梦法师_佛法修行体系研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本文传主为当代法师，来源以**教团官网、讲记开示、网络资料**为主，故以 **[本宗]**（教团自述/一手行证，不纳学术 A/B/C 分级）为骨干，辅以 **[B/C]**。🔗
+      指向可回查原页；无从核证者标〔待核〕、**不臆造链接**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0298761363ae02e9:
+    file: docs/随笔参考/ref海云继梦法师_佛法修行体系研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本文来源几全属**教团自述与网络资料**，**独立于教内认信之外的世俗学术专题研究（学位论文、期刊论文、当代人间佛教/禅修运动脉络下的海云继梦研究）目前基本阙如**，为其最大结构性缺口。后续可优先检索：①
+      贤首宗兼慈恩宗现代法脉传承之宗'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3b7501f10434cdcc:
+    file: docs/经学文献/三十七道品全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）
+      · **[本宗]** 教团/法师讲记（'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  70ba0f4eb08db583:
+    file: docs/经学文献/三十七道品全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **近年可补线索（〔待核〕·地图反哺位）**：正念运动"去脉络化"效力之宗教学／循证医学交叉研究持续更新，后续可依《禅门文献与研究地图》检得 2019–2026 同行评审新论（如
+      Anālayo 后续四念处比较研究、Husgafvel '
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6222c7a4aa974fd3:
+    file: docs/工程治理/分级参考文献_模板.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 1. **绝不臆造**：链接只指向**已回溯核验**的出版社/学报/机构/原典（CBETA/84000/SEP）页；无从核验者**留空**并标〔线索〕/〔待核〕，宁缺毋伪。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9e27835a4835b5ac:
+    file: docs/工程治理/分级参考文献_模板.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: 1. **绝不臆造**：链接只指向**已回溯核验**的出版社/学报/机构/原典（CBETA/84000/SEP）页；无从核验者**留空**并标〔线索〕/〔待核〕，宁缺毋伪。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  bc3f5fa8bf711015:
+    file: docs/工程治理/分级参考文献_模板.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 无可靠链接 → 省略 🔗，尾部改 `· 🔗〔待核〕`；'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  973ea37cec8e068d:
+    file: docs/工程治理/分级参考文献_模板.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 信度分级：**[A]** 一手/权威 · **[B]** 专著/学位论文 · **[C]** 线索/待核 · **[本宗]** 行门自述（不纳学术分级）。🔗 指向可回查原页；无从核证者标〔待核〕、不臆造。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1ca8b0cd791b104f:
+    file: docs/工程治理/分级参考文献_模板.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 作者《题名》· 刊/社 · 年 · **[A/B]** — 要旨 · 🔗〔待核〕'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c9c76d76148fc5ed:
+    file: docs/工程治理/分级参考文献_模板.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 2. 归入五域 + 打 A/B/C/本宗；**逐条回溯一手**：能点开出版社/学报/CBETA 者才给 🔗，否则留〔待核〕。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7faf2fa88f918d90:
+    file: docs/工程治理/分级参考文献_模板.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 4. 存疑经号/失效链接：只回指本项目已核验的 YAML 或标〔待核〕，**不手抄新号**。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3a7d8e136f20b1de:
+    file: docs/祖师人物/华严宗二祖智俨_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·权威出版社·同行评审学报·CBETA） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（作者或出处未核实·网络百科·仅列站点性质者）
+      · **[题/传'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f69a8c9bfc60b71f:
+    file: docs/祖师人物/华严宗二祖智俨_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 义湘：《华严一乘法界图》· **[A·海东]** · 🔗 [CBETA T45n1887A](https://cbetaonline.dila.edu.tw/zh/T45n1887A)；《入法界品钞记》·
+      **[A·海东]** · 🔗〔'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3f1e7116cffefb34:
+    file: docs/祖师人物/华严宗二祖智俨_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 依《华严文献地图_五域近年》《教海行云文献地图_五域近年》，本专题后续可优先补：① 智俨"十玄缘起"与华严视觉文化（初祖—二祖观行图表）之英文近研；② 义湘—浮石寺海东华严新出中韩整理；③
+      石井公成以后日本学界智俨性起说之新论。**未证'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a4da01f571df2f81:
+    file: docs/祖师人物/华严宗初祖杜顺_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·权威出版社·同行评审学报·CBETA） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（作者或出处未核实·网络百科·仅列站点性质者）
+      · **[题/传'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5b438ec14caf3565:
+    file: docs/祖师人物/华严宗初祖杜顺_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 净源：《注华严法界观门颂》；钱塘通义熙宁元年（1068）重校《修华严奥旨妄尽还源观》本 · **[A]** · 🔗〔待核〕'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  15b38c5472d8ceee:
+    file: docs/祖师人物/华严宗初祖杜顺_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 依《华严文献地图_五域近年》《教海行云文献地图_五域近年》，本专题后续可优先补：① 杜顺—法界观 × 禅修/认知科学之批判性英文近论；② 高丽知讷—李通玄学脉东传之韩文/英文近研；③
+      西夏华严文献（克恰诺夫目录以外）之新出整理。**未证'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3932d60591a72721:
+    file: docs/经学文献/华严文献地图_五域近年.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **定位**：本文件是**文献地图 / 线索登记**，非定稿综述——凡一手已核者标〔确认〕，凡须回查者标〔线索〕/〔待核〕，以符〈边界自知·局限留档〉。其**分类框架与标注法即为可复用模板**（承
+      `docs/禅门文献与研究地图_四域近'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4d820489e7dda1af:
+    file: docs/经学文献/华严文献地图_五域近年.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '> **定位**：本文件是**文献地图 / 线索登记**，非定稿综述——凡一手已核者标〔确认〕，凡须回查者标〔线索〕/〔待核〕，以符〈边界自知·局限留档〉。其**分类框架与标注法即为可复用模板**（承
+      `docs/禅门文献与研究地图_四域近'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9d2c6f36cee31581:
+    file: docs/经学文献/华严文献地图_五域近年.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '> 建立：2026-09-24 | 检索法：`WebSearch` 命中 → 逐条回溯出版社/学报/机构/原典（CBETA·84000）一手页 → 〔线索〕项留 URL 待续、**绝不臆造**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e872de435b1772ee:
+    file: docs/经学文献/华严文献地图_五域近年.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '- 〔线索〕日本《大正藏》与国译一切经之华严部回查入口 ·〔续核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  757685d67bf04462:
+    file: docs/经学文献/华严经学_三十九品深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）
+      · **[本宗]** 教团自述/讲记（'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8ed557c03ca42a6e:
+    file: docs/经学文献/华严经学_三十九品深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **CBETA 约定**：大正藏链接 `cbetaonline.dila.edu.tw/zh/T{册}n{部号}`，经号均据本文原典著录及本项目源数据 `avatamsaka_studies.yaml`、祖师已核
+      YAML 交叉印证；*'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  74fd77825827de22:
+    file: docs/祖师人物/善财五十三参深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）
+      · **[本宗]** 教团/上师讲论（'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4d41f6c5ee8dfa1a:
+    file: docs/祖师人物/善财五十三参深度研究.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: 21. 林韻柔，《华严经·入法界品——空间美感的当代诠释》 · **[B]** · 🔗〔存疑〕开放检索查无署名「林韻柔」之此书；同名著作《華嚴經·入法界品》空間美感的當代詮釋》之目录学记录为**陈琪瑛**（法鼓文化，2007；中华佛学研究所
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a9d70b9ee6a1f0cf:
+    file: docs/祖师人物/圭峰大师宗密全方位文献综述.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·正史碑铭·同行评审专著） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）
+      · **[本宗]** 教团自述/行证'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f7cf5ec9b6193375:
+    file: docs/祖师人物/圭峰宗密_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·权威出版社·同行评审学报·CBETA） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（作者或出处未核实·网络百科·仅列站点性质者）
+      · **[本宗]'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e44c2cd4fc8e9612:
+    file: docs/祖师人物/圭峰宗密_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 依《华严文献地图_五域近年》，本专题后续可优先补：① Broughton《Zongmi on Chan》之后宗密禅教关系之英文新论与书评；② 敦煌本/和刻本宗密文献新出整理之版本信息；③
+      藏传—敦煌视角（本文 2.5 节审慎处理处）之专'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2e4c16d62a530d2d:
+    file: docs/宗派研究/天台宗全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **近年可补线索（〔待采〕·地图反哺位）**：天台止观与"性具"思想之英文近研、宋朝天台"山家山外"论争新出整理，可后续依文献地图检得；**未证作者与卷期一律标〔待核〕、不臆造**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  09e0aba63d595bf1:
+    file: docs/宗派研究/密宗全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）
+      · **[本宗]** 教团/法师讲记。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  74e26908ad61da4c:
+    file: docs/宗派研究/密宗全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 空海《即身成佛义》· **[A·东密]** · 🔗 [CBETA T77n2428](https://cbetaonline.dila.edu.tw/zh/T77n2428)；《三学录》·
+      **[A·东密]** · 🔗〔部号待核〕；持松'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1294ffd8a68f2012:
+    file: docs/宗派研究/密宗全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **近年可补线索（〔待采〕·地图反哺位）**：唐密/东密近研（如 David Gardiner、Orison Miller 对空海教判之新论、宋代密教复兴研究）可后续依文献地图检得；**未证作者与卷期一律标〔待核〕、不臆造**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  dde3d8f9f07f31ce:
+    file: docs/经学文献/教海行云文献地图_五域近年.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **定位**：本文件是**文献地图 / 线索登记**，非定稿综述——一手已核者标〔确认〕，须回查者标〔线索〕/〔待核〕；其**分类框架与标注法即为可复用模板**（承 `docs/经学文献/华严文献地图_五域近年.md`、`docs/禅门文献与研究'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5f0d24eead28daa4:
+    file: docs/经学文献/教海行云文献地图_五域近年.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '> **定位**：本文件是**文献地图 / 线索登记**，非定稿综述——一手已核者标〔确认〕，须回查者标〔线索〕/〔待核〕；其**分类框架与标注法即为可复用模板**（承 `docs/经学文献/华严文献地图_五域近年.md`、`docs/禅门文献与研究'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1a69380d780a2080:
+    file: docs/经学文献/教海行云文献地图_五域近年.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '> 建立：2026-09-24 | 检索法：`WebSearch` 命中 → 逐条回溯出版社/学报/机构/原典（CBETA）一手页 → 〔线索〕项留 URL 待续、**绝不臆造**；CBETA
+      链接一律由**数据中已有经号**确定性拼接。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  16a057d9087644d4:
+    file: docs/祖师人物/文殊普贤信仰专题研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核。🔗 指向
+      CBETA/机构原页；**仅附册+部号、或经本项目已核 YA'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d9e6506850c3e39b:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '# 分级参考文献 · 〔待核〕收尾清单（backlog）'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  23acdda25f728abe:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **铁律**（承 `docs/工程治理/分级参考文献_模板.md`）：**绝不臆造 URL/经号**；只挂 (a) 本文已著录、(b) 本项目同源 YAML 已核、(c) 姊妹正稿已一手核
+      三类经号；无从核证者**保持〔待核〕**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a0062038af665a47:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本清单不含**正文论证内的〔存疑〕/〔待核〕史实注**（那是「边界自知」的审慎判定，非待办，见文末 §E）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  618766147370e2da:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '> 本清单不含**正文论证内的〔存疑〕/〔待核〕史实注**（那是「边界自知」的审慎判定，非待办，见文末 §E）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9c2294bc63a361fc:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> | 天台 | 始终心要 | **编辑判断项**：稿标湛然，实系北宋知礼撰·暂挂〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  33541a46e25042ec:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **QA·始终心要**：天台稿 L224 将《始终心要》系于「湛然」名下，然《始终心要》实为北宋**四明知礼**撰（卍续藏所见为宋·从义《始终心要注》X56n0938）。藏经号与作者归属均需专订，暂挂〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  98606352e0bc2014:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 善财五十三参 | L443/L445/L461/L466 · 部分✅ | **2026-09-25**：L466 台北故宫 海崙《日本僧画善财五十三参》册(故畫00363400000)·挂
+      tcmb 典藏页+张文玲故宫月刊 ✅；L461'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8fdf49456622d6dd:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| 善财五十三参 | L443/L445/L461/L466 · 部分✅ | **2026-09-25**：L466 台北故宫 海崙《日本僧画善财五十三参》册(故畫00363400000)·挂
+      tcmb 典藏页+张文玲故宫月刊 ✅；L461'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7376f51519d26cb3:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 三十七道品 | L205 / L214·L220 | **L214/L220 2026-09-25 已核**：Husgafvel《…MBSR》*Contemporary Buddhism*
+      19/2(2018)页275–326·DOI '
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2675896b6b26bb1a:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 圭峰宗密_综合深度研究 | L306/L310 ✅ | **2026-09-25 已核**：裴休〈唐故圭峰定慧禅师传法碑〉= 《全唐文》**卷七四三**（ctext 卷743＋胡适跋引「金石萃编114·全唐文743」双证）·挂
+      ctex'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2f49010edfef129d:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> - **宁缺不伪·诚实留〔待核〕**（开放检索未果或需纸本/付费/站内细检）：陈扬炯《华严宗哲学研究》标题·出版社；林韻柔署名（疑为陈琪瑛·已标〔存疑〕）；释开仁出版信息；印光复周诚虔书卷次；裴休三序卷次；Ishii「Dushun」百科'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3c8719d27d773c96:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '> - **宁缺不伪·诚实留〔待核〕**（开放检索未果或需纸本/付费/站内细检）：陈扬炯《华严宗哲学研究》标题·出版社；林韻柔署名（疑为陈琪瑛·已标〔存疑〕）；释开仁出版信息；印光复周诚虔书卷次；裴休三序卷次；Ishii「Dushun」百科'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d5cd2b0af94a3b0d:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- ✅ **多语对读术语 QA（BQA 轨·2026-09-25）**：`识与心灵`／`识与心灵之镜` 二篇核心唯识术语〔待核〕经一手开放源（DDB/《佛典百科》/维基 Chittamatra·Caitasika/StudyBuddhism'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8dd637b1ddbf8ae2:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- `bodhiai.cn`（新技术与佛教 / 全球传播报告 4 处表/登记）→ 2026-09 复核**站点已恢复可访问**（此前 TLS 过期），自述 AI 大模型译《大藏经》为白话文；运营主体仍〔待核〕。（BDK「65%」源于
+      201'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6bf83627644a80da:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- `personas.json` 持松节点 source → 《密教通关》1936 撰·1939 上海排印·2005 大千重刊＋三民新校标点本〔已核〕，《持松法师纪念文集》未定位保留〔待核〕。（凝然《三国佛法传通缘起》CBETA
+      号本会话'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6eb91883fca0d9f6:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **诚实留白**：`密宗` L223 空海《三学录》部号、`三十七道品` L205 释开仁《阿含经三十七品与菩萨行》2011 出版信息——本会话开放源均未命中（含检索服务
+      40500），保持〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ed077367c346c4c9:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **§附：不在本清单内者（正文学术存疑·勿当待办清除）**——`佛门真伪问题`(L391/517/547/587/591/626/711/727/731/732/946/948/1001/1089/1090/1105
+      等)、`禅法传统_'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  cc9f716ab78071b2:
+    file: docs/工程治理/文献待核_backlog.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '> **§附：不在本清单内者（正文学术存疑·勿当待办清除）**——`佛门真伪问题`(L391/517/547/587/591/626/711/727/731/732/946/948/1001/1089/1090/1105
+      等)、`禅法传统_'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  711a07f6da48a9ae:
+    file: docs/祖师人物/李通玄长者_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·权威出版社·同行评审学报·CBETA） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（作者或出处未核实·网络百科·仅列站点性质者）
+      · **[题/传'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f274c03e7b006c2b:
+    file: docs/祖师人物/李通玄长者_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 依《华严文献地图_五域近年》《教海行云文献地图_五域近年》，本专题后续可优先补：① Koh、Park 之后李通玄"以易解华严/时空观"之英文新论；② 高丽知讷—李通玄学脉东传之韩文近研；③《新华严经论》点校整理本之版本信息补全。**未证'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b5f87e9593da9810:
+    file: docs/祖师人物/梦参老和尚_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本文传主为近现代僧伽，史料以**道场官方、老和尚自述、出版方**为主，故信度分层与"学术研究文档"不同：**[本宗]** 教团自述/一手行证（本传记之核心信源，不纳学术 A/B/C
+      分级）· **[B]** 出版方/可靠整理 · **['
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  98062075837a873c:
+    file: docs/祖师人物/梦参老和尚_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本篇来源以教团自述与佛教媒体为主，**独立于教内认信之外的世俗学术专题研究（学位论文、期刊论文、僧传/狱政史/近代佛教复兴史脉络下的梦参研究）目前基本阙如**，为其最大结构性缺口。后续可优先检索：①
+      近代佛教复兴/戒律复兴（梦参与弘一律'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f84cc9230aaba4a7:
+    file: docs/祖师人物/永嘉玄觉大师_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·权威出版社·同行评审学报·CBETA） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（作者或出处未核实·网络百科·仅列站点性质者）
+      · **[本宗]'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b2313cfe82608f82:
+    file: docs/祖师人物/永嘉玄觉大师_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **[A]** 静、筠二禅师：《祖堂集》（通行排印本；CBETA 无在线公开本，本文引录自排印本，〔待核〕原始影印卷次）'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7e100ca21f38448a:
+    file: docs/祖师人物/永嘉玄觉大师_综合深度研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本系列迄今最国际化案例，英译接受史已较完备；后续可优先补：① **日文学界**永嘉/证道歌专题研究现状（本文自陈之明显缺口）；② Jia 洪州宗起源说之后《证道歌》作者归属之新论；③
+      Muller BDK 译本以外之多语对读本子。**未'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  40655e13eb7a062b:
+    file: docs/宗派研究/法相唯识宗全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）
+      · **[本宗]** 教团/法师讲记。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e53e22204977431e:
+    file: docs/祖师人物/法藏贤首国师全方位文献综述.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·权威出版社·同行评审学报·CBETA） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（作者或出处未核实·网络百科·仅列站点性质者）。🔗
+      指向 CBE'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0e663717ddd675ed:
+    file: docs/祖师人物/法藏贤首国师全方位文献综述.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本文英文研究区已纳入 2019–2025 近年成果（Hammerstrom 2020、Nakasone 2022、Prince 2022、Jones OUP 2025、Connelly
+      2025、de Vries 2024 等），信度较'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  872c75dae324c079:
+    file: docs/祖师人物/清凉国师澄观全方位文献综述.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）。🔗
+      指向 CBETA/机构原页；**经'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2bb9dd26b727b046:
+    file: docs/祖师人物/清凉国师澄观全方位文献综述.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **CBETA 约定**：大正藏链接为 `cbetaonline.dila.edu.tw/zh/T{册}n{部号}`，此处直链均由**本文原典区已写定的完整「册+部号」sigla
+      确定性拼接**（不另手抄新号）；仅列单号或未附册次者标〔'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4daf639bd05a1250:
+    file: docs/经学文献/禅门文献与研究地图_四域近年.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '- 〔线索〕Scott Kilpatrick 之中国（唐代）密教研究 ·〔待核·存疑：经两轮检索未定位到 Kilpatrick 辑刊之 *China''s Esoteric Buddhist
+      Tradition* 同名书，疑书名或"辑刊"身份'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  aafe265308bc0096:
+    file: docs/宗派研究/般若空宗三论中观全方位研究.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）
+      · **[本宗]** 教团/法师讲记。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4872e8b35afda1ea:
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| 共相种子 | 〔梵形待核〕 | 〔无对读藏本〕 | shared seeds（本文） · common seeds | 共相種子（きょうそうしゅじ） | 「共相种子」系《成唯识论》中土安立之语，sādhāraṇa-bīja
+      为据义理拟构'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b915fdec0aab0279:
+    file: docs/跨学科对读/识与心灵_唯识学对话意识科学_多语对读.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）。🔗
+      CBETA 链接为 `cbetao'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0bc6da1e0e73ea64:
+    file: docs/跨学科对读/识与心灵之镜_唯识学对话心理学_多语对读.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> **分级**：**[A]** 一手/权威（原典校勘·CBETA·权威出版社·同行评审） · **[B]** 专著/学位论文/可靠期刊论文 · **[C]** 线索/待核（网络资料·仅列站点性质者）。🔗
+      CBETA 链接为 `cbetao'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e0405078e2e7836f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 〔待核〕 | 线索性、有冲突或未及核验者，明标并说明**为何受限**（史料散佚／二手／语种／工具缺失） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e879a2ff0c6e0bb0:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '| 〔线索〕 | 已见线索但信息不充分，不作定论 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8af5662bc3cd207d:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| 〔无法获取〕 | 受工具、语种或一手文献可得性限制，当前无法确认 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  cfc81258ea2aeb73:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**规则**：T3 可用于导航与线索发现，不单独支撑结论；任何实质断言若无 T0–T2 支撑，必须显式标注〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8219236dfa3398db:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**结论**：本报告采其方法论内核（1–8），不采其技术断言。〔待核〕原因：文件未提供可核验的参考文献表，部分专名与数字无法追溯。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7651f55eb4744504:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**新增标记〔待落地〕**：本版起，凡**尚未进入代码或尚未办结**之条目，一律标〔待落地〕（或〔待核〕）。此标记扩充 §0.1 之标记集，**不改其原有七项**。〔待落地〕之意义：**「已写入报告」不等于「已实现」**；任何将规划误称为既'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9f7c9f670817f08b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**重要观察三（《續高僧傳》成书年）**〔并存〕：DILA 标注「Tang gaoseng zhuan by Daoxuan 道宣, dated 665」〔T1〕；而《大正藏》系统的原编通常止于唐太宗贞观十九年（645），续补材料延至总章二'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  42002c87c8782620:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '**未竟**：`youfun.litphil.sinica.edu.tw` 多次抓取报 `Transport error`，其「动机」13 类中**第 1、2 类未取得**〔无法获取〕。已确认第
+      3–13 类为：參訪朝聖、尋師訪道、避禍、隱'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  051113c8da0b66fb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**待核**：《高僧傳》原序所记传数，与 CBETA 逐篇标目所计是否一致，须依 CBETA 原页核定〔待核〕。〔T3〕工具生成导读另称「257 位高僧＋200 余附见」，与逐篇标目数不同，**不采信为结论**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f9c72fa6ba0c0f3a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 經師 | （并入雜科聲德？） | **可能取消**〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0ab7f4646111225f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 唱導 | （并入雜科聲德？） | **可能取消**〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d8d024fc8efb19f8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**卷数系统**：三十卷、三十一卷、四十卷系统并存。日本古写本中，興聖寺、金剛寺、七寺等本各属不同系统。〔待核〕原因：日本各写本影像与转写的开放获取程度不一，本次未能取得可稳定引用的影印本页面。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1a2373300cf1f620:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**原编与续补的时间界**〔并存〕：原编通常止于唐太宗贞观十九年（645），续补材料延至总章二年（669）。DILA 另标注道宣撰年 665〔T1〕。**645／665／669
+      三个年份各指何事（正传下限／全书成书／续补下限），须依序文与 '
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  efccb28f4f88d399:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**结论**〔T1 加总验讫〕：逐篇标目加总得 **531／125**，与 DILA 数位版**完全一致**，而较贊寧原序少 2 正传、5 附见。**序文自述与实际编入之间存在系统性差额，非统计误差**。此差额有三种可能解释〔待核〕：序文为'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e9e0f8e8e964d124:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 1. **習禪篇十一卷**（卷6–16），占全书 26 卷中的 11 卷，为四部核心文献中禅传比重之最。此与明末「hi禪」潮流与《高僧傳》以来累积的禅传累积效应有关〔待核〕：具体成因须以明末禅门文献（灯录、禅门日录、明代僧传）互证。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  36c531d96464ce27:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 2. **篇名异文**〔考察项，重要〕：卷21 在卍續藏作「贊誦篇」，而谭勤校本及相关研究多作「讀誦篇」。此项异文影响跨书篇目对齐，**须以底本图版核定**〔待核〕。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  932c1217874b0027:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**两者相差 11 条**〔待核〕。可能原因：谭勤本对附见的处理规则与 DILA 不同（如 DILA 或将某些附见并入正传、或有重复计入）。**DILA 未公布其计数规则，故无法裁决**〔待核〕。此项须列入
+      §七 阶段二的差异对账任务。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5967813667cf4cb4:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**成书年与撰者卒年**〔并存，待核〕：DILA 标注《補續高僧傳》成书于 1647；而撰者明河的卒年一般记为 1640。**若撰者卒于 1640，则 1647 应为序年或刊刻年，而非撰成年**〔待核〕。此项须以读彻《补续高僧传序》原文核定'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  23caecfadc7b2350:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '**动机与结果分类**：采用中研院「遊方」十三动机、八结果之分类〔T3〕。**注意**：该分类的第 1、2 类动机尚未取得〔无法获取〕，故本项目须在开工前补全；未补全前，所有动机标注须注明「分类表不完整」。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  81bd8c4521323b76:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '#### 3.2.4 未竟〔待核〕'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  da5278d9896458aa:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '### 5.2 标准选型（〔待核〕待评估）'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  888c481cd84706ef:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| IIIF | 影像调阅 | 待评估〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d3fab16f1fd5be62:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| JSON-LD | 跨库交换 | 待评估〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  dd1b2648fb2324d0:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| PREMIS | 长期保存元数据 | 待评估〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  858653808cd52cf5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| OAI-PMH | 长期获取 | 待评估〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  dee330206500ac31:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 〔待核〕原因：未进行实际工程量估算。原则性判断如下——
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  709517a23fb1f5c3:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 6. 本报告采 `gaoseng_ref.md` 之方法论内核，不采其技术断言；凡〔待核〕〔无法获取〕处均已说明**为何受限**（见附录二），构成后续工作的路线图。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a5622274a94df0a3:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: 6. 本报告采 `gaoseng_ref.md` 之方法论内核，不采其技术断言；凡〔待核〕〔无法获取〕处均已说明**为何受限**（见附录二），构成后续工作的路线图。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  79f524e8fc0a056c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '> 本编回应用户八项指示（§0.4）。凡未取得完整书目者一律标〔待核〕；凡二手来源所下之指控须经独立复核方可采信（示范见 §12.7.4）。本编与第一编之矛盾台账（附录一）、待核清单（附录二）、来源清单（附录三）共用，续编条目分别自
+      #16'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7e01a9b207375d03:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 汤用彤《高僧传》现代点校本 | 以《大正藏》为底本，参《弘教藏》《磧砂藏》《金藏》及金陵刻经处本；校雠各常见藏本 | 〔待核〕初版年代与书局（学界通称「汤用彤点校本」；1963
+      年整理本题见 T2 记载） | T1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f69672c646b54080:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 陈士强《唐高僧传》新证 | 版本系统与《大唐内典录》著录之对勘 | 〔待核〕刊物与年份（原文以学佛网转载形式流通，标〔待核〕） | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  11d6f5fdd916b87b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 《宋代僧传文学研究》〔T2 图书条目；**该条目未列作者，标〔待核〕**〕系古代文学方向专著，全书围绕撰者本人与僧传体例多方位研究，侧重撰述者的思想倾向、撰述意图、知识素养与文体倾向对编纂的影响，考察十科分类反映的多种观念与文学方法，探讨宋
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d37935f2203bae76:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 以下见于学位论文「读博期间发表论文」列表〔T1，**作者未逐条标明，标〔待核〕**〕，可作研究史线索：〈《高僧传》与《续高僧传》神异故事研究〉、〈赞宁及其《宋高僧传》研究〉、〈唐代五台山高僧著述研究〉、〈梁代僧尼传记中的话语权力——以《高僧
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f996ed86e9c89ca1:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 另有《高僧传》研究方向之著作题名：纪赟《慧皎〈高僧传〉研究》；**〈张力与典范——慧皎《高僧传〉书写研究〉**〔T1，见于学位论文发表列表；**作者未见于该列表条目，标〔待核〕**〕；**黄先炳**《高僧传》研究〔T1，同上，**标〔待核〕
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  10d4b8eaf7cfdea6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**工具书与通史**〔T3 提及，**版次与页码标〔待核〕**〕：**陈垣**《中国佛教史籍概论》（被奉为佛教史料学经典工具书，《高僧传》研究中被多次征引）、**钱穆**《中国史学名著》、**严耕望**《佛藏中之世俗史料》（对「僧传含世俗史'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  11e822f75490f17c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **藤善真澄**〈《続高僧伝》興聖寺本について〉，花園大学 IRIZ〔T1/T2〕（会议场次与年份〔待核〕）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  01a9d829e2192e64:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **前川隆司**〔T2〕为该领域研究开拓者之一，相关论文约六十页〔篇名与页码标〔待核〕〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9417353fe27c4353:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **緒方香州**于 1979 年日本印度學佛教學會发表《續高僧傳》兴圣寺本研究〔T2，**该文未正式发表，标〔待核〕**〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  de6ae958f4a5bad6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **池麗梅**在京都圣语藏发现《续高僧传》〔T2，**所发现之卷次作卷二十九或卷三十，标〔待核〕**〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f2bb007bdc6ba1e2:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔存疑〕须复核之处**：同一段材料称增补人物见于「大正藏本卷二五（习禅六）、卷二六（习禅六之余）」，并列惠祥、曇倫、普明、曇獻、無礙、道暀、法顯、玄爽、慧仙、慧寬、僧倫、靜之、智巖、善伏、解脫、智融等名而称之为「十三人」。此二处（卷次归'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  81471899ee89136e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '**〔存疑〕须复核之处**：同一段材料称增补人物见于「大正藏本卷二五（习禅六）、卷二六（习禅六之余）」，并列惠祥、曇倫、普明、曇獻、無礙、道暀、法顯、玄爽、慧仙、慧寬、僧倫、靜之、智巖、善伏、解脫、智融等名而称之为「十三人」。此二处（卷次归'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  05a5b7625c96c339:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **新續高僧傳**（真澄）〔T1，第一编 §2.6 谱系图；**经号 `B27n0151` 一说标〔待核〕，须核《大正新脩大藏經》目录**〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b71491da407a224d:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 近世 | 543／548 年说受质疑 | **质疑者与理由本次未核实，标〔待核〕** | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0a8ee95df5e5dfed:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **Charles D. Muller** 主持 Digital CBETA 英译工程〔T1，常态项目〕，为「跨语种对读」提供**可持续的协作范式**〔待核〕本项目与其具体接口方式。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e3baae736bfb1d4f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《尼众录》 | 唐 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f210e38486d4c4d3:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **三、宗派传** | 以宗派为纲之传 | 《华严经传记》 | 辽 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ffc07030f570bcda:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《释门自镜录》 | 唐 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2308a0e9d224657c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《天台九祖传》 | 宋 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  abd8b744ca16a3d8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《明高僧传》（如惺） | 明 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6fcb61725a45d99a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《大明高僧传》 | 明 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c32df1fb94bab604:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《祖堂集》 | 唐 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e73a91086f03aa16:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **六、别传·行状** | 专记一人或一事 | 神会《显宗记》 | 唐 | 〔待核〕 | T1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f464dacdfc892ce0:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 独孤炫《贞元新定释教目录》 | 唐 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  894c2ba2169afb97:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《释迦方志》 | 唐 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4ce36ffb3c680826:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **八、碑铭·行状集** | 铭文与行状汇编 | 《全唐文》碑铭类 | 唐 | 〔待核〕 | T1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  acfb32113f9eac95:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《古唐诗合集》附考 | — | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b75cb1805849c470:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 圆珍《行记》类 | 唐 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  42ea200370bf2acd:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《高丽僧统》 | 高丽 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2818d85d302c05a8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《东国正韵》《大藏经》高丽藏品 | 高丽 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6c542de98358a0d9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《新续高僧传》 | 日本 | 〔待核〕 | T1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c7e3c40467450345:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《本朝高僧传》（华严宗，12 世纪） | 日本 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0058f9a23b2451ec:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《太平广记》 | 宋 | 〔待核〕 | T1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ea4188bd8695bbe5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | | 《云谿友生传》 | 清 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1c06bbf2358e3c2e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **十三、日录·题记·游历记** | 行游所记、书事题记 | 《东征传》 | 唐 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  44426d60fd3a18a3:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**核实与标注**：上表**有经号者皆已逐条核实**（`T50n2059`、`T50n2060`、`T50n2061`、`X77n1524`、`X88n1646`、`X77n1523`、`T51n2076`、`T54n2082`、`T51n'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1b5e76c49e797c3e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 朱弁《亡友集》是否收录「往生传」〔T1〕：朱弁（1085–1144）字少章，号放翁，为陆游好友，其文集《风雅堂集》曾提及「往生传」。本项目**列此为专门核查项**〔待核〕：若成立，则「往生传」为中国中古时期已存在的独立文体，本项目「实践与信
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3fac2f25e10a0693:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **版本来源**（《中华读书报》文）：1930 年前后，陈寅恪得到一部**金陵刻经处本**，他在扉页上读到「**江南藏经……刻经处**」字样（**〔待核〕**：原文字句待核），遂疑其出自日本，1933
+      年作《高僧传初集之部》札记，**明'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ffa02ca980e65d32:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**本报告之结论**：现行十四卷本（以大正藏本为代表）**并非唯一亦非最早**；**十四卷系与十卷系之关系**（「十卷本系卷一、卷二之内有错」抑或「为原本十卷、后世补为十四卷」〔待核〕）**仍存争议**，本报告不裁决（§12.8）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e91aca60939f8252:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**说明**：上表据定源（王招国）教授对金刚寺本卷五之录文与「诸本异校」〔T2〕，及法云转述之论文（引自《妙风》）〔T2，**该 PDF 全文未取得，其可核对性低于本文其他部分，故标〔待核〕**〕。其余如「慧远」「僧叡」「法显」等人名写法之'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3d80a2e12b816679:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '- **〔存疑〕**：龍谷大學 Discovery of Buddhist Texts 所收《続高僧経》条目，**並未著錄智周為撰者**〔T2〕。故此說**非定論**，须核原書。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  30fb43e8187289c9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**七寺本**〔T1〕：以楷书写于天海册中（**原分三十行一纸**），界内书十七行半、行十四字。卷四、卷五、卷八与兴圣寺本、金刚寺本多有相同处。卷四明玄奘译经事有阙漏，是**祖本所据写本已有阙漏**。文末有「**延历三年（784）八月十六日'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e369937d6aac6da9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔存疑〕** 藤善真澄所断下限早于郭绍林之 656–661，二者差异之原因〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6c783c5fe52ebfe5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '**〔存疑〕** 藤善真澄所断下限早于郭绍林之 656–661，二者差异之原因〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d5b0ef6ea3549cb1:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 🔴
+    kind: progress
+    severity: 2
+    snippet: '- **🔴 媒体讹误之实证**〔T3，网易历史《被日本偷走的国宝：金银平生第一次公开》〕：该文称金刚寺本「**是《续高僧传》目前最古老的版本**」，并称圣语藏本「也称贤劫经，**是《续高僧传》最古老的抄本之一**」。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0c138a8ecd628528:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: 其「貞觀十九年」之「貞觀」，**大概是抄写之误，其「貞觀」当作「寶觀」，「宝观」即「寶觀十三年」之后的「天寶三年」（742）**〔T2，表述有矛盾（既称误抄又称当作），标〔存疑〕〕。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8bc3db10e6db724c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '**〔存疑〕须复核之处**：上述推断链中「慧琳七十二岁」「天宝三年」「智周即作者」三处，在**一篇 PDF 摘要**中出现，其可靠性不足以支撑定论；**本报告仅登记为待核**（附录二）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  59315d0b18715a88:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 1. 「明河似不知《大明高僧传》」之现象，**或可由《大明高僧传》成书（万历四十四年，1616）晚于明河所处之时代（部分）之事实而解释**〔待核〕；
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d0df0c780ba8d237:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '- **L3→L4**：字形、俗写、俗语之时代性（如日本古写经多用「之」作「の」；**然钱藏本《续高僧传》无此现象——〔存疑〕此例待核**）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  223bb336d62b6e09:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 法藏生于 643，卒于 712（一般系于 712 年，**〔待核〕卒年之确数**）；'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2f3ad437b2ec21a6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 赖居则卒于 670（一般系于 670 年代，**〔待核〕**）；'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a2491da13de377fe:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 《高僧传》 | 〔未系统研究，标〔待核〕〕 | 〔未系统研究〕 | 道安传「檀溪/檀溪精舍」等 | 无 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2d7a5b289811d69b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 《补续高僧传》 | 明河「别无他书」之现象 | 谭勤校笺所补之材料 | 〔待核〕 | 无 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  984ca61a4241a093:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 6 | 金陵刻经处本题「江南藏经……刻经处」之确切文字 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5a9edcc08f12719b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 7 | 十四卷系与十卷系之先后关系 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e5f8e9146924ad1e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 8 | 飞雪经本《新纂续高僧传》十六卷（钱粮版）之底本 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0aaa710c933634a7:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| 10 | 「钱藏本用『之』不用『の』」例 | 〔存疑〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8f829ed03c81a5d0:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 12 | 《宋代僧传文学研究》之作者 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5e08c9b459058467:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 13 | 「张力与典范——慧皎《高僧传》书写研究」之作者 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4e7c4c4b165f6d01:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 14 | 《新续高僧传》之经号 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5de1c22eacdb6c59:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 15 | 金刚寺本之「重复抄录、漏行」是否与影印件之公布状态有关 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  73826c707e2df520:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 玄奘（附见） | 续26 | 华严学 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  eff71b4c5f803d45:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 慧沼（附见） | 续5 | 唯识 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a09dd622eafadce0:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 僧可 | 续19 | 达摩一系 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3c762686f1a69ec9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 神秀 | 宋8 | 北宗 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  37428e186cefad89:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 惠能 | 宋8 | 南宗 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f729991f328e3990:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 智威 | 宋8 | 四祖 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f38a656d16948c6f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 法琳 | 续25 | 护法 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2bf9f8695240f62e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 智首 | 续22 | 律宗 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f00b3873c5a32b8b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 法砺 | 续22 | 律宗 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  90b7a6497b82d9a8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 怀素 | 宋15 | 附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  bfbfa755a1824541:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 鉴真 | 宋14；续29 | 律宗・东渡日本 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3c3239c2ef58ca89:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 道绰 | 续5 | 附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  824f58d42ea29e9c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 善导 | 宋25 | 净土宗祖师 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c9a6978c64fa4715:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 怀远／慧远／慧晟 | 续24 | 护法篇附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ca4c4740fec94ddd:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 永明延寿 | 宋25 | 附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e9233bf04075a501:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 慧观 | 续10 | 三论先驱 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  020f13086282ca84:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 慧远 | 续11 | 三论 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2de2a67af962a728:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 智藏 | 续11 | 附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  01275e661828231c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 元晓／慈悲 | 续24 | 三论・护法（高丽） | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d6ee76eeb83450cd:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 元晓（附见杜顺智俨传） | 续26 | 附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5b2ecb3da0b734c1:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 智越 | 续26 | 附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  efd02b5065d2cbfb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 湛然 | 宋26 | 天台九祖 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  001cc11f759c8b42:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 玄朗 | 宋26 | 天台 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  674a8d5bc4f35357:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 知礼／遵式 | 宋28 | 天台 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  873b3dcc0328b0e4:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 道宣（学） | 续21 | 天台学 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e4d748e3e47257d3:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 灌顶（章安） | 续26 | 天台 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6e9d04297f1b09e5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 窥基 | 续5 | 唯识・慈恩 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4fb9f6956953004a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 圆测 | 续5 | 唯识 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c6a2102896d4d0d5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 普光 | 续5 | 附见 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  89c0a3ee19b3d7eb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 慧沼 | 续5 | 唯识 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  958cdbf7d85b3a54:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **密教** | 不空 | 宋1 | 密教 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6e8d34e6016d3f50:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 悟空 | 宋1 | 密教 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  194a76ae3cb1aa91:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 金刚智／善无畏／一行 | 宋1 | 密教 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a10a58edff8f1112:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 圆珍 | 宋28 | 天台・密教 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  edafd4befecded73:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **地论** | 法上 | 续24 | 地论 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f8b09b64bb448131:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 灵光 | 续24 | 地论 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  15df2765cd1ec253:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **摄论** | 昙斌 | 续11 | 摄论 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5a055f4a743bcf06:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 慧斌 | 续11 | 摄论 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a082424b219fad36:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 灵隐 | 续11 | 摄论 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e40d0fada1935e79:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **俱舍** | 义净 | 续4 | 译经 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  680fa5f4304dced1:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **禅・临济** | 义玄 | 宋12 | 临济宗 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f0ceba5005f74f73:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 黄檗希运 | 宋12 | 黄檗 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c147ecc149f66507:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 洞山良价 | 宋12 | 曹洞 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8513da4094e0d809:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 仰山 | 宋12 | 沩仰 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  65ba1170201d4a2a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **禅・曹洞** | 良价 | 宋12 | 曹洞初祖 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  48e8e996c16c0b21:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **禅・法眼** | 慧忠 | 宋10 | 法眼 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ce872ea2a29101d1:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 慧永 | 续25 | 法眼 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0c2e68d70669b440:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **禅・牛头** | 智常 | 续29 | 牛头 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0062a44e11fbcab9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 法融 | 续25 | 牛头 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5f3aadc20c822ef2:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **华严（补续所收）** | 宗密 | 补2 | 华严・禅 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4b661d4b98a4b678:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 玄谈 | 补2 | 华严 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  29f3a65334014a28:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 义湘 | 补2 | 华严 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  cbd075833b07a181:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 道元 | 补2 | 华严 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  fba4282d3a7be1a5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| | 慧苑 | 宋5 | 法藏之师 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0a95cd95044ced86:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**核实统计**：上表**共 68 条人物—宗派对应**，其中**已逐条核到卷次者 14 条 T1**（杜顺、智严、法顺、法藏、澄观、智周、僧稠、道宣、昙鸾、吉藏、法朗、玄奘、智顗、慧观），**其余
+      54 条标〔待核〕**，不入正式统计。*'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ce349b27feb7aed5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**⚠️ 现有数据之清理建议**：`data/knowledge_graph/lineages.yaml` 现有 sect 值中见 `jchan`（鉴真）、`neidan`（内丹）等混入；**「内丹」一系与僧传四书无涉，应删除**〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f7de701f49303f15:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 俗姓 | 卫，或云姓程 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  01909e46891c4612:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 交往 | 与**道宣**、**法藏**、**窥基**、**智俨**、**玄奘**、**慧观**皆有交往 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e99bf5f6b3d8d3f9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 著作 | 《华严经疏钞》《金刚经宗决》《般若心经玄秘》 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d2b989862fda7a20:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 世系 | 道宣之弟子（按年齿推之当为道宣弟子） | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  04bf04378ff22a8a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 生卒 | 632–687 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d94d4ab217a8a2b2:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**其意义**：智周一人兼具**三论・唯识・华严**三家之学，且**身历玄奘、道宣、法藏时代**，是「宗派谱系之交会点」的绝佳个案。第一编 §2.4 表格「华严宗十祖」之「智周」一行，其
+      `sect_self` 应标为「华严」（T1），而 '
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ceb1806e3cebb6bb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 依 `docs/工程治理/next-phase-plan.md` 所载 `verify_sources.py` 抽取之「传统道脉 24 系」中，见 **ge6 / ge11 / ge12
+      / ge13 / ge14 / ge15 / ge16** 等
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1300a1aabeddd123:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 1. **宁缺勿滥**——对仅有 T2/T3 之归属，一律标〔待核〕，不入正式统计。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ca8e200c9e7162af:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '`CLAUDE.md` 载「24 法系」，`data/knowledge_graph/lineages.yaml` 现有 sect 值 44 处。**二者之关系未明**〔待核〕。**本报告之处理**：'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  44ade74485bbfd0a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 2. **对「24 法系」之其余者（如地论、摄论、俱舍等）**，以 §13.2 之〔待核〕标记暂存，**待逐条核实后回填**。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0bc6c5857d162cae:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔T1〕** 学者于 1998 年在**印度新德里国立博物馆**发现**伪作梵文写本**约 50 件（**〔待核〕**：具体数量与发现者姓名待核），经确认为现代之伪造品。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b01da5d16a33620b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **模式 C：跨语种对读＋数字平台** | Digital CBETA | 佛教全部大藏经 | 〔待核〕参与机构 | 英译；`lang` 字段 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6a679c435ec0b082:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **模式 D（本项目拟建）** | 本报告 §十九 之数据模型 | **僧传四书** | 〔待核〕拟合作机构 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d6fddfbf8e83d6d6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **D 造像** | 石刻・铸・泥之像 | 〔待核〕具体藏品未核 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9200936edef76dd1:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **E 壁画** | 绘于壁之像 | 〔待核〕具体窟室与年代未核 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  702e8915b328fefb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **G 经幢・供养人** | 刻于幢・碑之记 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  fd3339164e258ab5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **H 其他文物** | 印・镜・舍利・锡杖・袈裟 | 〔待核〕 | — |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c287d5e1cda504ee:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**原则**（`CLAUDE.md` 原则 0、3）：**未核具体者不写**。上表中 D、E、G、H 四类**本轮无已核实例**，一律留白并注〔待核〕，**不进入正式结论**（§17.6）。**宁可内容少而可靠，不可多而失实**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  244f3d9742b1ed4b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 依既有 v1 材料，IDP 及敦煌研究院藏本中有**《高僧传》写本**〔具体经号待核〕。**本项目应从 IDP 目录检索「高僧传」「续高僧传」「高僧传别本」之条目**〔§18.5〕。**本轮未取得具体经号，故留〔待核〕**。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  089f0eb5e8648fbb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **房山石经**：唐代刻石，收**《胜天王般若波罗蜜经序》**〔T3，见于检索摘要；**石经编号「三洞一七〇」一说出自二手材料，标〔待核〕**〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  73e80d3f8f484ce6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **敦煌写本 `P.3471`**：同收《胜天王般若波罗蜜经序》〔T3，**P 号须核，标〔待核〕**〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  57c345356236a35c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **〔待核〕** 三事：(a) 房山石经之窟号／石号；(b) `P.3471` 之 P 号与卷次；(c) 「慧皎笔受」之原文文句。三者**均须核 CBETA 或房山石经研究文献后方可立论**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  bf637c84cd7831fd:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: 敦煌遗书中有「**高僧赞／高僧传因缘**」一类文本，**称颂高僧、供赞设礼**，**其与传世僧传之关系为「同类异体」**〔〔存疑〕，须核〕。已见之抄本号：
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e3bbbac8d9b6ecf6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '`P.4597`、`S.6631V`、`S.276`、`P.2680`、`P.3727`、`P.2775`、`P.3490`、`P.3570V`、`P.4587`、`P.3355V`、`S.1774V`、`S.1635`〔T3，均见于检索摘'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  642c11faa061bc32:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**所赞之对象**（依摘要所举）：罗什、僧稠、佛图澄、道安、玄奘、义净、道宣、惠净等〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4abee19c4c213244:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 《高僧传》卷九（神异下）末「**論**」及正文引**碑传**〔T1/T2〕，如道安、慧远、僧肇等传中之碑铭。**这些碑铭多为汉魏两晋之僧人墓志**〔T2〕，**是「传记」与「实物」之交叉点**。**〔待核〕**
+      具体碑名、年代、拓本藏处待逐
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  bc5f476b309d100d:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**具体内容**〔待核〕：其碑刻类史料当分「墓志铭／塔铭／碑记／造像记」等，**须核金建锋原书**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  411834477e387b00:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 云冈、龙门石窟之华严题材造像 | 须弥山、卢舍那佛、维摩诘经变 | 〔待核〕，未核窟号与题材归属 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a07b53b12398d544:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 早期华严相关石刻 | 具体窟号与造像题记 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  033d81975fd36620:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 禅宗祖师壁画 | 法海寺壁画、敦煌第 285 窟 | 〔待核〕，未核年代与图式 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7f45efc761aa3c34:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 经幢・供养人题记 | 唐五代经幢 | 〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6da6c7bc7631f73b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 4. **《胜天王般若波罗蜜经序》**「慧皎笔受」之原文文句须核 CBETA（**〔待核〕：经号待核**）。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  94162031638d78c2:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **度牒**：〔待核〕，须核《续高僧传》《宋高僧传》之度牒记载与其制度背景。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6033971c04d41624:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **供养人题记**〔待核〕，须核实物。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0744913c01e81791:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **「往生传」之文体问题**：见 §11.4，**列为专门核查项**〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7c855dc4c92f3e4c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 3. **〈比丘尼传〉与《高僧传》之收录标准差异**（为何女众仅 43 人、而男众数百人）本身即**一研究问题**〔待核〕。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  024b992e463098f8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **感通篇**：《续高僧传》卷25–26、《宋高僧传》卷18–22〔T1〕。**《续高僧传》卷26 之特殊地位**在于：**智顗、智周、杜顺、法顺、元晓附见杜顺智俨传等华严与天台重要人物多集中于此**（§13.2）——**此一卷次本身即'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6c387d4ca941ec5e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔待核〕**：具体人物与具体作品（题名、作者、年代、馆藏）**须逐条核实**。**本报告不列**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0edc8fc7af47ceef:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔留白登记〕**：本项目之 `skill` 表（§19.3.1）**已设计但无已核数据**。**第一批入库对象应为：唐五代画家僧之可核个案**〔待核〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9cdbc5d258373c70:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔待核〕** 高僧赞抄**是否为仪式用文本**（供赞、供养）——须核敦煌文献之研究结论，**本报告不据此立论**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  35093b017b99fafd:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔待核〕** 该书之卷数、体例、与《式古堂书画汇考》之关系（§12.8.2 #11）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  37bd7863f8ed95c0:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- 《宋代僧传文学研究》**论「骈体」之运用**〔T2，条目未列作者，**标〔待核〕**〕；'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b9a2e4d54adcd115:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔待核〕** 海惠院转轮大藏《续高僧传》写本（北京保利 2021 秋拍）之**递藏与著录链**——见 §附录六。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  21ad293476242293:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**〔待核〕** 度牒制度之具体条文，及其与僧传叙述之关系。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5d17acab43c0cbcb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 依 §13.4、§13.6，**宗派归属入 `person` 表须四字段齐备**；**仅 T1 者入统计**；**待核者入但标 `sect_evidence` 为〔待核〕**。**不入正式统计直至
+      T1 齐备**。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ad9de2460eed37e3:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**清理项**：`lineages.yaml` 中 `neidan`（内丹）一系**与僧传四书无涉，应删除**〔待核〕（§13.2）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7abcf117bd84e7b9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| Z4 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕皆有台账对应条目 | 附录二（待核清单）逐条对照 | 〔待落地〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b08fd65f780e3eb6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| Z4 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕皆有台账对应条目 | 附录二（待核清单）逐条对照 | 〔待落地〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f161957dc8bc4292:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '| Z4 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕皆有台账对应条目 | 附录二（待核清单）逐条对照 | 〔待落地〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2257506f585e937a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| Z4 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕皆有台账对应条目 | 附录二（待核清单）逐条对照 | 〔待落地〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  79afd1b034afa9dc:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 标记对应 | 〔待核〕`[to be verified]`；〔存疑〕`[disputed]`；〔并存〕`[parallel readings preserved]`；〔无法获取〕`[not
+      obtainable]`；〔无通行英译〕`[n'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8cea34d8e76125e6:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| 标记对应 | 〔待核〕`[to be verified]`；〔存疑〕`[disputed]`；〔并存〕`[parallel readings preserved]`；〔无法获取〕`[not
+      obtainable]`；〔无通行英译〕`[n'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  fae5f4e37327dacf:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| 标记对应 | 〔待核〕`[to be verified]`；〔存疑〕`[disputed]`；〔并存〕`[parallel readings preserved]`；〔无法获取〕`[not
+      obtainable]`；〔无通行英译〕`[n'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  24372e527e7007a2:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无通行英译〕
+    kind: boundary
+    severity: 1
+    snippet: '| 标记对应 | 〔待核〕`[to be verified]`；〔存疑〕`[disputed]`；〔并存〕`[parallel readings preserved]`；〔无法获取〕`[not
+      obtainable]`；〔无通行英译〕`[n'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2e4544b14f5d8f2a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**文献格式**：暂定 **Chicago notes-bibliography**（CBETA、BDK、84000 之惯例），〔待核〕待与合作方（如 DILA、某期刊）确认后锁定。锁定前不得逐条改格式，避免重复劳动。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  87fac2f4b8b8ff8c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '**标记复用**：〔批注〕〔待批注〕〔存疑〕三标记已由既有规范所定，本报告沿用，不再另立同义标记（避免标记膨胀）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ede2c3727607967f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| `T3\|拍卖图录著录\|图版 7\|拍卖行\|〔待核〕` | `T2\|某学者认为\|—` | 无具体出处 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  06a8f0afd14a6c60:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**规则**（依 `CLAUDE.md` 编务总则 0 与 7）：一手优先；二手须据实注明；〔待核〕者不得据以立论；引用尽量给可点链接（`[label](url)`），无稳定
+      URL 者如实标〔无链接〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7234c2ef6eb01977:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **不清理 〔待核〕** | 〔待核〕不是错误，不得以「看起来不确定」为由删除或升格 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2197a72a4b60e624:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 4 | 〔待核〕变动已登记、已标注升降 | 是 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ee1353f138874b7b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 〔待核〕与〔存疑〕**不是错误，是诚实标注**；但不可无限积压。故：
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ce9abb9b9948d2fb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: 〔待核〕与〔存疑〕**不是错误，是诚实标注**；但不可无限积压。故：
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  63e75c52d845b148:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **老化加权** | 〔待核〕按滞留时长加权，越久越靠前 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4b83fa5dbf0cc12f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **不得清零** | 为「清零」而删除 〔待核〕＝造假（编务总则 3） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8385fa87f2f95a83:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| K6 | 存疑标注量 | 〔待核〕等标记总数 | 219 | 递减（老化加权推进） | 报告 QA | 月 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  4ae027e6f9a559ad:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| K16 | 积压老化 | 超 180 天之〔待核〕数 | 待测 | 递减 | `make evolve` | 季 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9b63abcd4ea1af9c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**指标之纪律**：K1–K16 **只报警不造假**；任一指标**不得**为改善而删数据或删标记。凡「改善」之手段若含删除 〔待核〕、降 `verified` 之严、缩小分母者，一律视为**指标造假**并撤销。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  943f22bb48ebdaaf:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| R4 | **为凑指标而删 〔待核〕／降 `verified` 之严** | **流程** | 中 | **极高** | 指标纪律明文（§21.12）；变更需 A 角色签核
+      | K4 骤升而 K6 骤降 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e6674f4d1bff7620:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待补〕
+    kind: expand
+    severity: 2
+    snippet: 本章是**全项目语言工作的操作手册**：中文、英文、专名、术语、多语对读、技能与门禁。承 `harness/rules.md` I1–I8 与 `harness/workflows/translation.md`
+      八步，补其中最弱之一环——
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5db99f1a242cda92:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 存疑 | 无把握之梵文名 **〔待核〕** 留空，**不臆补**（本项目 `name_sa` 65 处留空即此纪律之成果） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8b47486e8ef039f2:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待补〕
+    kind: expand
+    severity: 2
+    snippet: '**藏文（Wylie）**：`bkra shis` 式；调序标示为数字后置（如 `chos ''byung 1` 意「初转法轮」）；声调未用者标 `〔待补〕`。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0ebb4cfc0fef33bf:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 标注完整 | 〔待核〕等有台账条目 | 报告 QA |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0708f55d64e92bbc:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 格式 | Chicago notes-bibliography | 〔待核〕待与合作方确认 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  594bbb4a33e05d9a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 〔待核〕 | `[to be verified]` | 省略 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6d87f1c20bb31e59:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| 〔存疑〕 | `[disputed]` | 省略 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  09f6fd72486a325c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| 〔无法获取〕 | `[not obtainable]` | 省略 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  99137fa5fc3a23a8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '| 〔线索〕 | `[lead only]` | 省略 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  57b493cd15de17a5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无通行英译〕
+    kind: boundary
+    severity: 1
+    snippet: '| **〔无通行英译〕** | `[no standard English rendering]` | **自造译名充数** |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  61cbc2a617306321:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **标记** | 数量与位置对应（中文 4 处 〔待核〕 → EN 亦 4 处） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  96ced1e88885de7d:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 人名·存疑 | 无把握**留空并标〔待核〕**，不臆补 | `name_sa` 65 处留空（多系中文／日系人名本无梵名） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  413e7181fb751dcb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 地名·未定 | 坐标缺失则不落点，标〔待核〕 | —— |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d3c7a601615f151c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **机构** | 用机构官方外文名 | CBETA＝Chinese Buddhist Electronic Text Association；DILA＝Digital Library
+      of Chinese Buddhism；BDRC＝B'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  8d65c3626ecbdc74:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '**标记复用**：〔批注〕〔待批注〕〔存疑〕三标记已定，沿用，**不再另立同义标记**（避免标记膨胀致语义稀释）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c0f951f096d46263:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **如实登记·标明依据** | 维护者声明者标「维护者声明」；独立可核证者给一手 URL；未核者标〔待核〕，**不假称已核** |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  69eda2149e26def8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **R3** | CBETA／84000 数字化文本入库＋公开分发是否与其**现行使用条款**相容，未逐条对读 | 项目规模化／条款变更 | 建 `harness/permissions/cbeta_84000_terms.md`
+      一手'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7227058ebfdcbd0e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **来源分级** | T1 原典／T2 学术／T3 官网；实质断言无 T0–T2 支撑者须显式标〔待核〕 | §0.2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  37f93c1ae66e67ff:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '#### 23.5.2 合理引用之尺度（〔待核〕：非法律意见，仅为项目自律线）'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  87ede0bf4555f3d3:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**此表非法律意见**；各情形之实际合法性取决于司法辖区、用途与比例。〔待核〕待建 `harness/permissions/quote_guideline.md` 一手参考〔待落地〕。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f4778ddb670b649d:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '#### 23.6.3 条款核对（〔待核〕）'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  028324e689fc6e7e:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| CBETA 使用办法 | 〔待核〕URL 未建档 | **待办**（R3） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  39212244ced27205:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 84000 许可条款 | 〔待核〕 | **待办**（R3） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  bc2fbb251e0eda52:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 大华严寺 `huayen.world` 内容授权 | 〔待核〕 | **待办** |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d2aa56dae47466ee:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 微信公众号内容使用规约 | 〔待核〕（各号声明多标「未经授权禁止转载」） | **待办** |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5ae2b17db32f3799:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**诚实边界**：以上六项中五项为〔待核〕。**「未核条款」不等于「可自由使用」**，只等于**尚未知**；知之需求已登记于 `compliance.md` §五，本章不重复列为已办。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2c8f4e665af19e06:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| README 权利披露 | D2 已决策，**实施状态〔待核〕** | 最小动作：明写「MIT 仅覆盖本项目原创代码／文档，第三方内容权利仍归原权利人」 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  421d632b8aa7ba70:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 本项目之报告与数据集含**人工智能辅助**之检索、起草、翻译初稿与机械校验。**所有事实性断言、数字、年代、地点、名号与经号，均经人工回一手材料核验**；**AI 输出不构成任何断言之独立来源**。凡未核者已标〔待核〕〔存疑〕〔线索〕〔无法
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d7937c35c4471c5c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: 本项目之报告与数据集含**人工智能辅助**之检索、起草、翻译初稿与机械校验。**所有事实性断言、数字、年代、地点、名号与经号，均经人工回一手材料核验**；**AI 输出不构成任何断言之独立来源**。凡未核者已标〔待核〕〔存疑〕〔线索〕〔无法
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5b78e066c692eb18:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: 本项目之报告与数据集含**人工智能辅助**之检索、起草、翻译初稿与机械校验。**所有事实性断言、数字、年代、地点、名号与经号，均经人工回一手材料核验**；**AI 输出不构成任何断言之独立来源**。凡未核者已标〔待核〕〔存疑〕〔线索〕〔无法
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9e2c6bfede72f46d:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: 本项目之报告与数据集含**人工智能辅助**之检索、起草、翻译初稿与机械校验。**所有事实性断言、数字、年代、地点、名号与经号，均经人工回一手材料核验**；**AI 输出不构成任何断言之独立来源**。凡未核者已标〔待核〕〔存疑〕〔线索〕〔无法
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ea0833c14f8b6798:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 3 | **AI 不得代为「确认」〔待核〕** | 编务总则 0「考证优先」 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  97e275b257f0f8d8:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无通行英译〕
+    kind: boundary
+    severity: 1
+    snippet: '| 无可靠译名 | 自造英译充数 | 标〔无通行英译〕（§22.3.8） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  055dbf06bb917f59:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 2 | 新增外部源之权利状态已标（公有领域／CC／维护者声明／〔待核〕） | ☐ | 未标即停 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  911325433a2eb8bb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 10 | 〔待核〕等标记完整保留（未被为「整洁」而删） | ☐ | **恢复**（编务总则 3） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b43b6219e3dfe865:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**第 10 项为最重要者**：〔待核〕之删除是本项目**最高风险之动作**（§21.12 指标造假、§21.15 风险 R4）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  70df16ce17735ad7:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| C1 | README 权利披露（D2）实施 | 〔待核〕**未确认已实施** | 附录十三 §13.4 H1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2c0007a80d1ed960:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| C3 | CBETA／84000／84000 条款原文建档（R3） | 〔待核〕 | Phase 1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3fd2695365b9aa6a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| C4 | DILA 仓库许可确认（无 `LICENSE`） | 〔待核〕 | Phase 1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  dfa07cc3f625a090:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**说明**：本附录汇总第二编散见之写本信息。**T1＝一手影印或官方著录；T2＝学术论文转述；T3＝媒体或二手转述**。凡〔待核〕者**不得据以立论**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f41220703b63fd2c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 1 | 聖語藏本（権大僧都本） | 京都・聖語蔵（西福寺） | 十四卷 | 〔待核〕 | **齐藤达亦以此本与金刚寺本、兴圣寺本、七寺本、四天王寺本并提** | T1/T2
+      |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f22297c33e414804:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 5 | 西方寺本 | 宮内庁書陵部蔵 | 十四卷 | 〔待核〕 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1c863d15ab071b2f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 6 | 新宮寺本 | 〔待核〕 | 十四卷 | 〔待核〕 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e97c236452ac8a0c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 7 | 松尾社本 | 〔待核〕 | 十四卷 | 〔待核〕 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d0a7bf373427a463:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 8 | 興福寺本 | 京都・興福寺 | 十四卷 | 〔待核〕 | 〔待核〕 | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  72fe93b63de8e987:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 9 | 石山寺本 | 京都・石山寺 | **十卷** | 〔待核〕 | 《石山寺一切経本〈続高僧伝〉巻八》有专书研究（池麗梅，2014） | T1/T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  21d1d7fe0b376cc5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 10 | 四天王寺本（法隆寺本） | 京都・四天王寺 | **十卷** | 3、4（已影印） | 〔待核〕 | T1/T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a2da3c5d1c385e36:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**争议**（**不裁决**）：十四卷系与十卷系之先后〔待核〕（§12.2.3、§12.8.2 #7）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5629addbc2574b38:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 5 | 聖語藏发现本 | 写本 | 〔29 或 30，待核〕 | 〔待核〕 | 池麗梅在京都圣语藏发现（§10.2.3） | T2 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c1e1d3b3f904cb51:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 6 | 海惠院轉輪大藏本 | 写本 | 〔待核〕 | 〔待核〕 | 「勅賜海惠院轉輪大藏」题记；**媒体转述拍卖图录，T3** | T3 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  6bb878bf8dd484e4:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**说明**：本附录仅登记**已核**与**线索**两级。**线索**一律标〔待核〕，**不得据以立论**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  22f97a28e3df270a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**不入统计者**：§13.2 表中其余 54 条〔待核〕项。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c0d258d366f6e4ea:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**待删项**：`lineages.yaml` 之 `neidan`（内丹）〔待核〕（§13.2、§19.3.4）。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  bdbaf1d1a42c0e52:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 〔待核〕 | 石刻 | 房山石经（唐刻），**窟号与石号待核** | T3 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  11684ab21084d855:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 〔待核〕 | 写经 | 敦煌写本之中国收藏部分 | T3 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  16d416becc4682bd:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **新增之每一节均含 〔待核〕／〔存疑〕／〔线索〕／〔考察项〕 标记**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b1594b5273aa72c5:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '- **新增之每一节均含 〔待核〕／〔存疑〕／〔线索〕／〔考察项〕 标记**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  1fab6ef40838212f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '- **新增之每一节均含 〔待核〕／〔存疑〕／〔线索〕／〔考察项〕 标记**。'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f838919a32cf0955:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 17 | 首次登记 **KPI 16 项**（K1–K16）与「指标造假」之定义（改善手段含删除〔待核〕、降 `verified` 之严、缩小分母者，一律撤销） | §21.12
+      | 新增 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  d02bac55d7706914:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '- **未主张**任何未建成之能力：所有工程、语言、合规之待办均标〔待落地〕或〔待核〕，并汇总为逾三十项；'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  360bb0383a885d94:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| ☐ | 11 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕〔勘误〕〔考察项〕标记完整保留 | 两 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c733fe5467f842c4:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| ☐ | 11 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕〔勘误〕〔考察项〕标记完整保留 | 两 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  efbcfaf5705fc0dc:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔线索〕
+    kind: expand
+    severity: 2
+    snippet: '| ☐ | 11 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕〔勘误〕〔考察项〕标记完整保留 | 两 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  322aa746cffb60bc:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| ☐ | 11 | 〔待核〕〔存疑〕〔线索〕〔无法获取〕〔并存〕〔勘误〕〔考察项〕标记完整保留 | 两 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2783c8c931812fbb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| ☐ | 53 | 无把握之译名已留空并标〔待核〕，**未臆补**（`name_sa` 65 处留空为正例） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ba519f1aab9a22eb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔存疑〕
+    kind: boundary
+    severity: 2
+    snippet: '| ☐ | 63 | 标记复用〔批注〕〔待批注〕〔存疑〕，未另立同义标记 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  029bdc7ebf88c894:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| ☐ | 6 | CBETA／84000 条款原文建档 | — | 完成（〔待核〕） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  637605488de92e91:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| ☐ | 7 | DILA 仓库许可确认 | — | 完成（〔待核〕） |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b141eb85c8864b2b:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| ☐ | **R4** | **为凑指标而删〔待核〕／降 `verified` 之严** | **K4 上升必伴 K6 不降；发现即撤销** |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0d1b0d83422d8be7:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **R3** | 数字化文本库入库分发与现行条款之相容性未逐条对读 | 规模化／条款变更 | §23.6.3〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2f339a26db24b85c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **E4** | **为凑指标而删〔待核〕／降 `verified` 之严** | **流程** | 中 | **极高** | 指标纪律；变更需签核；K4／K6 交叉核 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a5427c9df80a30bb:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **H1** | README 权利披露（D2）落实 | 〔待核〕未确认 | **零**（约 15 行） | Phase 6 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  f24830fc6f5b6dd0:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **H3** | CBETA／84000 使用条款原文建档 | 〔待核〕 | 中 | Phase 1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7b87aa05fa4d623a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| **H4** | DILA 仓库许可确认（根目录**无 `LICENSE`**，实测） | 〔待核〕 | 低 | Phase 1 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  2038849b38983a71:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: 发布前须过 **§23.11 之 15 项**与 **附录十二 12.1 之 10 项**；其中**第 10 项（〔待核〕不得删除）**为最重要者。
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  06db4b1d6f2d903f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '## 附录二 〔待核〕与〔无法获取〕清单（含受限原因）'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  95a213ca4883ee83:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '## 附录二 〔待核〕与〔无法获取〕清单（含受限原因）'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  b1c4c8a43dcf70ca:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 1 | 續传 645／665／669 三年份所指 | 〔待核〕 | 须依 CBETA 序文与卷末题记逐处核定，本次未逐卷查证 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  ff6899e208d7761c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 2 | 续传各版本人数 331／388／414／485／486 之出处 | 〔待核〕 | 前人研究中见到但未定位到具体版本与页码 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  cddc1952273ec94c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 3 | 《高僧傳》原序传数 | 〔待核〕 | 本次未取得 CBETA 原序全文 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a63be3bd7df10e8c:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 4 | 感通篇改称是否伴随改域 | 〔待核〕 | 须逐篇比对《高僧傳》神異篇与续传感通篇内容 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  236811a26045897f:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 5 | 經師／唱導二篇是否并入雜科聲德 | 〔待核〕 | 续传目录无此二篇名，并入去向未证 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  5824955ea7e26168:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| 6 | 日本古写本（興聖寺／金剛寺／七寺）影像与转写 | 〔无法获取〕 | 各写本数字化分散于不同机构，无统一开放获取入口 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9bd9cef870026856:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| 7 | 敦煌残卷与《續高僧傳》关系 | 〔无法获取〕 | 需专门检索敦煌文献编号体系并以图版核对 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  e2c5616cb71cb2a9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔无法获取〕
+    kind: boundary
+    severity: 1
+    snippet: '| 8 | 「遊方」动机第 1、2 类 | 〔无法获取〕 | 站点多次抓取报 `Transport error` |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0737da90e418eea2:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 9 | DILA 609 人的计数规则 | 〔待核〕 | DILA 未公开计数规则 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  a6c0a16c19bc707a:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 10 | 明河卒年 1640 与成书 1647 之关系 | 〔待核〕 | 仅有 T3 二手记载；须以读彻序与《明河传》原本核定 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  0c82f55de6966f34:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 11 | DDBC 现行 schema 与 2018 快照之差异 | 〔待核〕 | 未取得 DDBC schema 变更日志 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  18fd2a4c1b085ec9:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 12 | IIIF／JSON-LD／PREMIS／OAI-PMH 是否采用 | 〔待核〕 | 属工程选型，须待规模估算后评估，不宜先定 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  866cd0fe1111b736:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 13 | 各类具体工程量与成本 | 〔待核〕 | 本阶段不实施代码，未作工程量估算 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  c22b9b3eddc784d7:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 14 | `gaoseng_ref.md` 之模型名与性能数字 | 〔待核〕 | 该文件无可核验参考文献，无法追溯 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  9ee8d4934d5d4ce1:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 游方动机 | 13 类（1、2 类待补） | 〔待核〕见附录二 #8 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  631564b7315c5d60:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 地名建置 | 十六国至明清行政沿革 | 须外接历史地理数据库〔待核〕 |'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  7a6524c9725774ed:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '| 许可 | CC BY-SA 3.0（DILA 网站所载）／CBETA 自身条款（须确认）｜**〔待核〕**·DILA `biographies` 仓库根目录**无 `LICENSE`
+      文件**（实测 2026-09-27；与附录九 #2'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
+    seen_count: 1
+    absent_cycles: 0
+    status: open
+  3a346d1dfe728688:
+    file: docs/草稿/高僧传数字人文_研究报告.md
+    token: 〔待核〕
+    kind: verify
+    severity: 4
+    snippet: '**v2.1 之诚实边界**：本报告第二十至二十三章与附录十一至附录十三所述之实现方案、语言规范与合规处置，**均为设计与登记，不是既有能力**。本报告不含可执行数据（见下），亦不主张任何已建成之系统；其所述之
+      schema、流水线、门禁与'
+    first_seen: '2026-09-27'
+    last_seen: '2026-09-27'
     seen_count: 1
     absent_cycles: 0
     status: open
@@ -1085,8 +5379,22 @@ history:
     test_pipeline: true
     verify_demo: true
     verify_sources: true
+- date: '2026-09-27'
+  health: 0.0
+  open: 446
+  high_backlog: 341
+  sev5: 0
+  sev4: 341
+  window: 7
+  added: 383
+  resolved: 6
+  stale_progress: 0
+  validators:
+    test_pipeline: true
+    verify_demo: true
+    verify_sources: true
 adaptive:
   escalation_window_days: 7
-_ref_date: 2026-09-24
-cycle_count: 8
-last_run: '2026-09-24T06:41:47'
+_ref_date: 2026-09-27
+cycle_count: 9
+last_run: '2026-09-27T21:31:40'

@@ -1,7 +1,7 @@
 # 多语对读文章设计规范（中文为主文 · 外文为平行对读批注）
 
 > 适用对象：《识与心灵》《识与心灵之镜》两篇独立文章页及其后续多语文章
-> 相关文档：《华严文献·多语对读》架构见 docs/multilingual-alignment.md；来源分级见 docs/verification-framework.md；玄奘体翻译规范见 docs/translation-guide.md
+> 相关文档：《华严文献·多语对读》架构见 docs/翻译规范/multilingual-alignment.md；来源分级见 docs/工程治理/verification-framework.md；玄奘体翻译规范见 docs/翻译规范/translation-guide.md
 
 ## 一、设计目标
 
@@ -72,7 +72,7 @@
 
 - 〔待核〕＋注明待核对象（卷次、译名、出处、年代），不阻断展示；
 - 〔待批注〕＋说明本段暂未附多语批注，纳入路线图某阶段；
-- 〔存疑〕＝信息冲突、两个来源不可调和时使用（复用 docs/verification-framework.md 的存疑语义）。
+- 〔存疑〕＝信息冲突、两个来源不可调和时使用（复用 docs/工程治理/verification-framework.md 的存疑语义）。
 
 ## 四、语言范围与取舍准则
 
@@ -89,7 +89,7 @@
 
 ## 五、来源与可靠性
 
-1. 术语格义复用本项目三级信源分级（docs/verification-framework.md）：
+1. 术语格义复用本项目三级信源分级（docs/工程治理/verification-framework.md）：
    - **T0** 一手典籍（CBETA 电子佛典编号 T31n1585 等 / 84000 Toh）；
    - **T1** 作者原文（本项目论文的中英文原稿）；
    - **T2** 权威二手（流通佛学工具书、学术专著）；
@@ -151,4 +151,4 @@
 - **SQLite 分支（Tab2 术语库）**：`glossary` 表 50 条 `definition_zh`/`definition_en` 全补齐（补 037-042 六波罗蜜与 044 十信位共 7 条 definition_en，038-041 同时补 definition_zh）；build.py `load_gap` 注入 `db_reader.load_glossary()` → `GAP.glossary`；gap.js 以数据驱动 50 行「梵-藏-汉-英」对照表替换原硬编码 30 行，并新增「术语格义 · 中英释义」卡（`definition_en` 以 `.en-line` 呈现，随全局开关显隐）。——顺带消除了原 gap.js 中的术语表硬编码。
 - 数据皆进 YAML/SQLite 权威源，不在 JS/HTML 写死（符合「杜绝硬编码」）。
 
-> 全站「中文为主文 · 简明优雅英文无损对应」双语原则及全站推广序列见 `docs/next-phase-plan.md` → **L-F**。
+> 全站「中文为主文 · 简明优雅英文无损对应」双语原则及全站推广序列见 `docs/工程治理/next-phase-plan.md` → **L-F**。
