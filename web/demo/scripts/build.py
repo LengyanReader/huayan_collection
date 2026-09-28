@@ -1488,6 +1488,12 @@ def build_articles(articles):
 
     # ── 目录页 (index) ──
     cards = []
+
+    def _doc_label(p):
+        """文章目录卡只显示源文件名，不暴露 docs/ 下的目录结构
+        （分类目录调整时版式不受影响，路径变动亦不致改写版式）"""
+        return (p or '').replace('\\', '/').rsplit('/', 1)[-1]
+
     for a in articles:
         back_link = ''
         if a.get('back', {}).get('tab'):
@@ -1496,9 +1502,9 @@ def build_articles(articles):
         if a.get('data_source'):
             meta_desc = (f'数据驱动页 · 全 YAML 渲染 · <code>{a["data_source"]}.yaml</code>'
                          if a.get('data_source') and not a.get('doc') else
-                         f'全文 {len(a.get("doc_md","")):,} 字 · <code>{a.get("doc","")}</code>')
+                         f'全文 {len(a.get("doc_md","")):,} 字 · <code>{_doc_label(a.get("doc",""))}</code>')
         else:
-            meta_desc = f'全文 {len(a.get("doc_md","")):,} 字 · <code>{a.get("doc","")}</code>'
+            meta_desc = f'全文 {len(a.get("doc_md","")):,} 字 · <code>{_doc_label(a.get("doc",""))}</code>'
         cards.append(f'''<div style="display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px">
 <div><a href="{a['id'] + '.html'}" style="color:var(--gold);font-weight:700;font-size:1.02em;text-decoration:none">{a.get('icon','📄')} {a.get('title','')} ↗</a></div>
 {"<div style='font-size:0.75em;color:var(--text2)'>" + a.get('title_sub','') + "</div>" if a.get('title_sub') else ''}
