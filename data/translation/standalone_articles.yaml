@@ -129,6 +129,17 @@ others:
       label: 文献页 · 华严经学
     views:
       - avatamsaka-studies
+  - id: shizhu-miaoyan
+    icon: 🏛
+    title: 世主妙严品细读
+    title_sub: 华严经首品·逐卷逐组细读 · 会众名号·颂赞·震动作供 · 中英对照
+    doc: docs/经学文献/华严经细读_第一部_世主妙严品.md
+    back:
+      tab: gap
+      view: avatamsaka-studies
+      label: 文献页 · 华严经学
+    views:
+      - avatamsaka-studies
   - id: avatamsaka-studies
     icon: 📚
     title: 华严经学·全卷
