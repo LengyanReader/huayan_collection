@@ -656,3 +656,43 @@ events:
   category: content_verify
   subject: P1全批16号一手核实挂链(般若/杜顺/宗密/法相/智俨)
   outcome: applied
+- seq: 68
+  ts: '2026-09-27T21:31:40'
+  date: '2026-09-27'
+  cycle: 9
+  actor: auto
+  category: cycle_run
+  subject: '周期 #9 体检总览'
+  outcome: observed
+  after: health=0.0 open=446 high=341
+  evidence: '管线全绿: test_pipeline=✅,verify_demo=✅,verify_sources=✅'
+  rationale: 新增 383·归档 6·台账矛盾 0
+- seq: 69
+  ts: '2026-09-27T21:31:40'
+  date: '2026-09-27'
+  cycle: 9
+  actor: auto
+  category: marker_register
+  subject: 登记新增待办 383 项
+  outcome: applied
+  rationale: 扫描 include 文件命中的待核/存疑/待订正标记
+- seq: 70
+  ts: '2026-09-27T21:31:40'
+  date: '2026-09-27'
+  cycle: 9
+  actor: auto
+  category: auto_resolve
+  subject: 自动归档已解决 6 项
+  outcome: applied
+  evidence: 连续 >2 周期未再出现
+  rationale: 标记已从源头消失→销账
+- seq: 71
+  ts: '2026-09-27T21:31:40'
+  date: '2026-09-27'
+  cycle: 9
+  actor: auto
+  category: cadence_set
+  subject: next_review
+  outcome: applied
+  after: +7d → 2026-10-04
+  rationale: 据积压与阈值推算复核节奏
