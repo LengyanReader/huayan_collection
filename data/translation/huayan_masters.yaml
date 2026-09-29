@@ -23,6 +23,7 @@ overview:
 
 masters:
   - id: dushun
+    group: 华严祖师
     name: 杜顺（法顺）
     dates: 557–640
     role: 华严初祖 · 帝心尊者（隋末唐初）
@@ -33,6 +34,7 @@ masters:
       - {t: 十门实相观}
     review_doc: docs/祖师人物/华严宗初祖杜顺_综合深度研究.md
   - id: zhiyan
+    group: 华严祖师
     name: 智俨
     dates: 602–668
     role: 华严二祖 · 至相尊者
@@ -44,6 +46,7 @@ masters:
       - {t: 五十要问答, u: T45n1869}
     review_doc: docs/祖师人物/华严宗二祖智俨_综合深度研究.md
   - id: fazang
+    group: 华严祖师
     name: 法藏（贤首国师）
     dates: 643–712
     role: 华严三祖 · 实际创立者
@@ -61,6 +64,7 @@ masters:
       - {t: 心经略疏, u: T33n1712}
     review_doc: docs/祖师人物/法藏贤首国师全方位文献综述.md
   - id: chengguan
+    group: 华严祖师
     name: 澄观（清凉国师）
     dates: 738–839
     role: 华严四祖 · 集大成者
@@ -73,6 +77,7 @@ masters:
       - {t: 华严经略策, u: T36n1737}
     review_doc: docs/祖师人物/清凉国师澄观全方位文献综述.md
   - id: zongmi
+    group: 华严祖师
     name: 宗密（圭峰大师）
     dates: 780–841
     role: 华严五祖 · 禅教融合
@@ -85,6 +90,7 @@ masters:
       - {t: 金刚经疏论纂要, u: T33n1701}
     review_doc: docs/祖师人物/圭峰大师宗密全方位文献综述.md
   - id: litongxuan
+    group: 华严祖师
     name: 李通玄（枣柏大士）
     dates: 635–730
     role: 在家学者
@@ -94,6 +100,7 @@ masters:
       - {t: 决疑论, u: T36n1741}
     review_doc: docs/祖师人物/李通玄长者_综合深度研究.md
   - id: mengcan
+    group: 华严祖师
     name: 梦参（梦老）
     dates: 1915–2017
     role: 近代华严弘扬巨擘 · 圆满讲解「地藏三经」

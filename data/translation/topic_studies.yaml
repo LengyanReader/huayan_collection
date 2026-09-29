@@ -21,6 +21,7 @@ intro: |
 
 articles:
   - id: zhenwei
+    group: 华严祖师
     icon: 🕵️
     title: 佛门真伪问题
     title_sub: 综合深度研究（全文）
@@ -37,6 +38,7 @@ articles:
       大乘非佛说与批判佛教 · 敦煌与会集本 · AI 参与生成、「AI 胡说八道与禅机」。
     tags: [疑经目录学, 文本版本学, 祖师叙事, 法脉祖统, 佛道交涉, 西来说, 义理判准, 考据学史, 元反思, AI真伪]
   - id: yongjia-xuanjue
+    group: 华严祖师
     icon: 🧘
     title: 永嘉玄觉大师
     title_sub: 综合深度研究（全文）
@@ -62,6 +64,7 @@ articles:
   # 未定稿，故不从本站发布。合并稿本体（docs/草稿/汉传佛教全球传播与数字未来_综合研究报告.md）
   # 保留为源档，亦不发布。待传播篇续完并定稿后，再行注册上线。
   - id: buddhist-ai
+    group: 前沿议题
     icon: 💻
     title: 新技术与佛教（未完成的调研·征求意见稿）
     title_sub: 数据科学、人工智能赋能佛学研究、修行与传播（全文·中英对照·征求意见稿）

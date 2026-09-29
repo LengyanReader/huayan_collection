@@ -821,6 +821,7 @@ def load_standalone_articles():
             'title': art.get('title', art['id']),
             'title_sub': art.get('title_sub', ''),
             'icon': art.get('icon', '📌'),
+            'group': art.get('group', ''),
             'version': art.get('version', ''),
             'meta': art.get('meta', ''),
             'doc': art.get('doc', ''),
@@ -839,6 +840,7 @@ def load_standalone_articles():
             'title': m.get('name', m['id']),
             'title_sub': ('华严祖师 · ' + m['role']) if m.get('role') else '华严祖师',
             'icon': '🧑',
+            'group': m.get('group', ''),
             'version': '',
             'meta': '',
             'doc': m['review_doc'],
@@ -856,6 +858,7 @@ def load_standalone_articles():
             'title': o.get('title', o['id']),
             'title_sub': o.get('title_sub', ''),
             'icon': o.get('icon', '📄'),
+            'group': o.get('group', ''),
             'version': o.get('version', ''),
             'meta': o.get('meta', ''),
             'doc': o.get('doc', ''),
@@ -1487,14 +1490,19 @@ def build_articles(articles):
         print(f'OK  {path} ({size:,} bytes | {doc_chars:,} doc chars)' + (' | DATA-DRIVEN' if ds else ''))
 
     # ── 目录页 (index) ──
-    cards = []
+    # 分组依数据源字段（standalone_articles.yaml 之 group / group_order / group_icons），
+    # 不在本处硬编码任何分组名或次序；文章无 group 者归「其他」。
+    reg = read_yaml('translation/standalone_articles.yaml') or {}
+    gspec = {g['key']: g for g in (reg.get('group_order') or []) if g.get('key')}
+    gicons = dict(reg.get('group_icons') or {})
+    fallback = '其他'
 
     def _doc_label(p):
         """文章目录卡只显示源文件名，不暴露 docs/ 下的目录结构
         （分类目录调整时版式不受影响，路径变动亦不致改写版式）"""
         return (p or '').replace('\\', '/').rsplit('/', 1)[-1]
 
-    for a in articles:
+    def _card(a):
         back_link = ''
         if a.get('back', {}).get('tab'):
             back_link = ('<a href="../tabs/%s.html" style="color:var(--text2);font-size:0.78em">返回 %s</a>'
@@ -1504,15 +1512,46 @@ def build_articles(articles):
                          if a.get('data_source') and not a.get('doc') else
                          f'全文 {len(a.get("doc_md","")):,} 字 · <code>{_doc_label(a.get("doc",""))}</code>')
         else:
-            meta_desc = f'全文 {len(a.get("doc_md","")):,} 字 · <code>{_doc_label(a.get("doc",""))}</code>'
-        cards.append(f'''<div style="display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px">
+            meta_desc = f'全文 {len(a.get("doc_md","") ):,} 字 · <code>{_doc_label(a.get("doc",""))}</code>'
+        return f'''<div style="display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px">
 <div><a href="{a['id'] + '.html'}" style="color:var(--gold);font-weight:700;font-size:1.02em;text-decoration:none">{a.get('icon','📄')} {a.get('title','')} ↗</a></div>
 {"<div style='font-size:0.75em;color:var(--text2)'>" + a.get('title_sub','') + "</div>" if a.get('title_sub') else ''}
 <div style="font-size:0.72em;color:var(--text3,var(--text2))">{meta_desc}</div>
 <div style="display:flex;gap:14px;font-size:0.75em"><a href="../tabs/{a['back']['tab']}.html" style="color:var(--blue);text-decoration:none">栏目: {a['back'].get('label','')}</a> {back_link}</div>
-</div>''')
-        total += 0
+</div>'''
 
+    buckets = {}
+    for a in articles:
+        buckets.setdefault(a.get('group') or fallback, []).append(a)
+
+    # 次序：先依 group_order 声明之组，余者（未声明之组／兜底组）依首见追加
+    order = [g['key'] for g in (reg.get('group_order') or []) if g.get('key')]
+    for k in buckets:
+        if k not in order:
+            order.append(k)
+    order = [k for k in order if buckets.get(k)]
+
+    sections = []
+    for gi, key in enumerate(order):
+        items = buckets[key]
+        icon = gicons.get(key) or (gspec.get(key, {}) or {}).get('icon') or '📂'
+        cards = ''.join(_card(a) for a in items)
+        sections.append(f'''<section id="grp-{gi}" style="margin-top:{8 if gi == 0 else 26}px">
+<div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:12px">
+<span style="font-size:1.12em;font-weight:700;color:var(--gold)">{icon} {key}</span>
+<span style="font-size:0.74em;color:var(--text3,var(--text2))">{len(items)} 篇</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px">
+{cards}
+</div>
+</section>''')
+
+    nav = ' · '.join(
+        '<a href="#grp-%d" style="color:var(--blue);text-decoration:none">%s %s(%d)</a>'
+        % (gi, gicons.get(k) or gspec.get(k, {}).get('icon') or '📂', k, len(buckets[k]))
+        for gi, k in enumerate(order))
+
+    n_groups = len(order)
     idx_html = f'''<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -1534,14 +1573,15 @@ def build_articles(articles):
 ⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
 </div>
 <div style="background:rgba(94,139,158,0.06);border-bottom:1px solid rgba(94,139,158,0.2);padding:5px 16px;font-size:0.7em;color:var(--blue);text-align:center">
-共 {count} 篇完整文章的独立地址 · 每篇均含整篇 doc 全文 · 由 build.py 依 data/translation/standalone_articles.yaml 生成
+共 {count} 篇完整文章 · 分 {n_groups} 组 · 每篇均含整篇 doc 全文 · 由 build.py 依 data/translation/standalone_articles.yaml 生成
+</div>
+<div style="padding:7px 16px;font-size:0.78em;line-height:1.9;border-bottom:1px solid var(--line)">
+{nav}
 </div>
 </div>
 <main class="content" id="article-root">
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-top:14px">
-{''.join(cards)}
-</div>
-<div style="margin-top:20px;text-align:center">
+{''.join(sections)}
+<div style="margin-top:26px;text-align:center">
 <a href="../index.html" style="color:var(--blue);font-size:0.8em">← 返回导航主页</a> ·
 <a href="../tabs/gap.html" style="color:var(--blue);font-size:0.8em">华严文献</a> ·
 <a href="../tabs/jiaoxing.html" style="color:var(--blue);font-size:0.8em">华严教行</a>
@@ -1555,8 +1595,10 @@ def build_articles(articles):
     size = len(idx_html.encode('utf-8'))
     total += size
     count += 1
-    print(f'OK  {idx_path} ({size:,} bytes | {len(articles)} articles)')
+    print(f'OK  {idx_path} ({size:,} bytes | {len(articles)} articles | {n_groups} groups: '
+          + ', '.join('%s=%d' % (k, len(buckets[k])) for k in order) + ')')
     return total
+
 
 
 def main():

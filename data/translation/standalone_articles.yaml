@@ -13,6 +13,9 @@
 #   meta       可选：导览/摘要（markdown 内联）
 #   back       返回链接：{tab, view, label}（label 为选项卡名+栏目名）
 #   views      在哪些选项卡视图内显示「独立文章页」入口条（与各 Tab JS 的 view id 对应）
+#   group      目录页分组（articles/index.html 依此渲染分节；见文末 group_order）
+#              缺省归入「其他」。分组之设，非按 Tab，而是按内容性质——
+#              故同属一个 Tab 的数篇亦可聚于一组（如「经论慢步」）。
 
 sources:
   - topic_studies
@@ -20,6 +23,7 @@ sources:
 
 others:
   - id: mimi
+    group: 宗派研究
     icon: 🔐
     title: 密宗全方位研究
     title_sub: 不密而密 · 密教源流·汉藏法脉·史实辨正
@@ -31,6 +35,7 @@ others:
     views:
       - mimi
   - id: faxiang
+    group: 宗派研究
     icon: 🔬
     title: 法相唯识宗全方位研究
     title_sub: 法相玄机 · 名相·渊源·法脉·式微与复兴
@@ -42,6 +47,7 @@ others:
     views:
       - faxiang
   - id: yikong
+    group: 宗派研究
     icon: 🕳
     title: 般若空宗·三论中观全方位研究
     title_sub: 一空到底 · 空性义学·汉藏对勘·阐释与张力
@@ -53,6 +59,7 @@ others:
     views:
       - yikong
   - id: tiantai
+    group: 宗派研究
     icon: 🔭
     title: 天台宗全方位研究
     title_sub: 天台觉景 · 法脉·教观·圆融与复兴
@@ -64,6 +71,7 @@ others:
     views:
       - tiantai
   - id: sanshiqi
+    group: 修学与禅门
     icon: 🌿
     title: 三十七道品全方位研究
     title_sub: 助道资粮 · 三十七道品与菩提分法
@@ -75,6 +83,7 @@ others:
     views:
       - system
   - id: vijnana-mind
+    group: 跨学科对读
     icon: 🧠
     title: 识与心灵
     title_sub: 唯识学×意识科学·AI哲学 · 中主文·外文对读批注
@@ -86,6 +95,7 @@ others:
     views:
       - yogacara
   - id: mirror-mind
+    group: 跨学科对读
     icon: 🪞
     title: 识与心灵之镜
     title_sub: 唯识学×西方心理学全景比较 · 中主文·外文对读批注
@@ -97,6 +107,7 @@ others:
     views:
       - yogacara
   - id: chan-beyond
+    group: 修学与禅门
     icon: 🧘
     title: 六祖南宗禅以外的禅法传统
     title_sub: 禅法全览 · 达摩系诸支与南宗以外诸禅法 · 中英对读
@@ -108,6 +119,7 @@ others:
     views:
       - chan_traces
   - id: chan-traces
+    group: 修学与禅门
     icon: 🌱
     title: 禅门实迹·全貌
     title_sub: 全球学界·门内实修·近现代·海云·祖师传承 · 含六祖南宗禅深化 · 中英对读
@@ -119,6 +131,7 @@ others:
     views:
       - chan_traces
   - id: huayan-studies
+    group: 经论慢步
     icon: 📖
     title: 华严经学·三十九品深度研究
     title_sub: 品目·批注·版本对照 · 祖师大德与学者阐释
@@ -130,6 +143,7 @@ others:
     views:
       - avatamsaka-studies
   - id: shizhu-miaoyan
+    group: 经论慢步
     icon: 🏛
     title: 世主妙严品细读
     title_sub: 华严经首品·逐卷逐组细读 · 会众名号·颂赞·震动作供 · 中英对照
@@ -141,6 +155,7 @@ others:
     views:
       - avatamsaka-studies
   - id: avatamsaka-studies
+    group: 经论慢步
     icon: 📚
     title: 华严经学·全卷
     title_sub: 起源深研·逐品批注·版本对照 · 教内思想·文献学·最新研究·专著 全量
@@ -153,6 +168,7 @@ others:
     views:
       - avatamsaka-studies
   - id: panjiao
+    group: 宗派与判教
     icon: ⚖️
     title: 判教互判·全卷
     title_sub: 佛教各宗·藏传·日本·儒道·世界宗教·学术界·科技圈 判教与互判全量
@@ -165,7 +181,8 @@ others:
     views:
       - panjiao
   - id: haiyun-lectures
-    icon: 📚
+    group: 修学与禅门
+    icon: 🎧
     title: 海云讲法 · 公开资料
     title_sub: wiz 全库 645 篇全量公开 · 目录·检索·双栏全文阅读
     data_source: haiyun_wiz_catalog
@@ -178,6 +195,7 @@ others:
       - haiyun_lectures
   # 南予其时——「前沿对话」侧栏最底部的独立栏目页（占位；后续感悟/疑情类文章在此挂链接）
   - id: nanyu
+    group: 前沿议题
     icon: 🍊
     title: 南予其时
     title_sub: 感悟 · 疑情（预留栏目 · 待补）
@@ -190,3 +208,25 @@ others:
       label: 前沿对话 · 南予其时
     views:
       - nanyu
+
+# ═══ 目录页分组次序 ═══
+# articles/index.html 依 group_order 排列分节；各节图标一取 group_icons，缺省 📂。
+# 改次序、增分组、换图标，皆只改此处，不动 build.py。
+group_order:
+  - {key: 经论慢步,   icon: 📖}
+  - {key: 华严祖师,   icon: 🕵️}
+  - {key: 宗派与判教, icon: ⚖️}
+  - {key: 宗派研究,   icon: 🔬}
+  - {key: 修学与禅门, icon: 🧘}
+  - {key: 跨学科对读, icon: 🌐}
+  - {key: 前沿议题,   icon: 💻}
+  - {key: 其他,       icon: 📂}
+group_icons:
+  经论慢步: 📖
+  华严祖师: 🕵️
+  宗派与判教: ⚖️
+  宗派研究: 🔬
+  修学与禅门: 🧘
+  跨学科对读: 🌐
+  前沿议题: 💻
+  其他: 📂
