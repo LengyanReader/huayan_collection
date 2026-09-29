@@ -661,7 +661,7 @@
     var bqs = sc.querySelectorAll ? sc.querySelectorAll('blockquote') : [];
     for (var i = 0; i < bqs.length; i++) {
       var t = (bqs[i].textContent || '').replace(/\s+/g, ' ').trim();
-      if (/^(英译对读|EN对应|🔑|术语格义|主题对读注|卷末批注)/.test(t)) bqs[i].classList.add('en-block');
+      if (/^(英译对读|EN对应|EN\s*corresponding|EN\s*note|EN\s*register|EN\s*block|🔑|术语格义|主题对读注|卷末批注)/i.test(t)) bqs[i].classList.add('en-block');
     }
   };
 
