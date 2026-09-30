@@ -1,0 +1,15 @@
+{
+  "workspace": "C:/DA_Practice/huayan_collection/docs/hy_refs/sub_extract",
+  "fps": 1,
+  "crop_y": 0.845,
+  "crop_h": 0.155,
+  "crop_x": 0.18,
+  "crop_w": 0.64,
+  "mask_iou": 0.82,
+  "ink_min": 0.0035,
+  "white_v": 200,
+  "ocr_lang": "chinese_cht",
+  "ocr_threads": 1,
+  "box_cx_min": 0.2,
+  "box_cx_max": 0.8
+}

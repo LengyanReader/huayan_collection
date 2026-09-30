@@ -120,6 +120,27 @@ VALIDATION_QUERIES = {
         RETURN type(r) AS relation, count(*) AS cnt
         ORDER BY cnt DESC
     """,
+    "article_term_orphan_edges": """
+        // ArticleTerm→ArticleTerm links whose target term does not exist
+        // (should be 0: every to_type='term' to_ref resolves within its article)
+        MATCH (a:ArticleTerm)-[r]->(b:ArticleTerm)
+        WHERE NOT b.article_id = a.article_id
+        RETURN a.article_id AS article, a.term_id AS src, type(r) AS rel,
+               b.article_id AS target
+        LIMIT 20
+    """,
+    "article_term_grade_distribution": """
+        // Knowledge-graph nodes per article by grade (A1/A2/B/C/D)
+        MATCH (t:ArticleTerm)
+        RETURN t.article_id AS article, t.grade AS grade, count(*) AS cnt
+        ORDER BY article, grade
+    """,
+    "article_term_rejected": """
+        // 已否之名（D 级·正文不采用）——正文引用一致性抽查用
+        MATCH (t:ArticleTerm {status: 'rejected'})
+        RETURN t.article_id AS article, t.term_id AS term_id, t.zh AS zh
+        ORDER BY article, term_id
+    """,
 }
 
 
@@ -436,6 +457,99 @@ def generate_article_cypher(article_graph: dict) -> str:
     return "\n".join(lines)
 
 
+def _load_article_graph(session, article_graph: dict, _run, _props, _san):
+    """Online loader mirroring generate_article_cypher() into a live Neo4j session.
+
+    Creates (:ArticleTerm) nodes, (:ArticleTerm)-[:rel]->(:ArticleTerm|ArticleRef)
+    relationships, and lightweight (:ArticleRef) nodes for external targets — the
+    same shape the --generate offline Cypher produces, so online and offline
+    graphs are structurally identical.
+    """
+    n_terms = n_links = n_refs = 0
+    for aid, art in sorted(article_graph.items()):
+        # --- Term nodes ---
+        term_rows: list[dict] = []
+        for t in art.get("terms", []):
+            props: dict[str, object] = {
+                "article_id": aid,
+                "term_id": t.get("id"),
+                "zh": t.get("zh"),
+                "grade": t.get("grade"),
+                "status": t.get("status"),
+                "category": t.get("category"),
+            }
+            for src, dst in (("aliases", "aliases"), ("def_zh", "def_zh"),
+                             ("def_en", "def_en"), ("source", "source"),
+                             ("source_url", "source_url"), ("note", "note")):
+                if t.get(src):
+                    props[dst] = t[src]
+            term_rows.append(props)
+        if term_rows:
+            session.execute_write(
+                _run,
+                textwrap.dedent("""\
+                    UNWIND $rows AS row
+                    MERGE (t:ArticleTerm {article_id: row.article_id, term_id: row.term_id})
+                    SET t = row
+                """),
+                {"rows": term_rows},
+            )
+            n_terms += len(term_rows)
+
+        # --- Relationships ---
+        refs: dict[str, str] = {}
+        for l in art.get("links", []):
+            src, rel = l.get("from"), l.get("rel")
+            if not src or not rel:
+                continue
+            lprops: dict[str, object] = {}
+            if l.get("to_label"):
+                lprops["to_label"] = l["to_label"]
+            if l.get("to_type"):
+                lprops["to_type"] = l["to_type"]
+            if l.get("note"):
+                lprops["note"] = l["note"]
+            if l.get("to_type") == "term" and l.get("to_ref"):
+                cypher = textwrap.dedent(f"""\
+                    MATCH (a:ArticleTerm {{article_id: $aid, term_id: $src}}),
+                          (b:ArticleTerm {{article_id: $aid, term_id: $to_ref}})
+                    MERGE (a)-[r:{rel}]->(b)
+                    SET r += $lprops
+                """)
+                params = {"aid": aid, "src": src,
+                          "to_ref": l["to_ref"], "lprops": lprops}
+            else:
+                key = f"{l.get('to_type', 'external')}:{l.get('to_ref', '')}"
+                refs[key] = l.get("to_label") or l.get("to_ref") or key
+                cypher = textwrap.dedent(f"""\
+                    MATCH (a:ArticleTerm {{article_id: $aid, term_id: $src}}),
+                          (b:ArticleRef {{ref: $key}})
+                    MERGE (a)-[r:{rel}]->(b)
+                    SET r += $lprops
+                """)
+                params = {"aid": aid, "src": src,
+                          "key": key, "lprops": lprops}
+            session.execute_write(_run, cypher, params)
+            n_links += 1
+
+        # --- ArticleRef nodes (external targets) ---
+        if refs:
+            ref_rows = [{"ref": k, "label": v} for k, v in sorted(refs.items())]
+            session.execute_write(
+                _run,
+                textwrap.dedent("""\
+                    UNWIND $rows AS row
+                    MERGE (r:ArticleRef {ref: row.ref})
+                    SET r.label = row.label
+                """),
+                {"rows": ref_rows},
+            )
+            n_refs += len(ref_rows)
+
+    print(f"[Neo4j] Article graph: {n_terms} ArticleTerm / "
+          f"{n_links} rel / {n_refs} ArticleRef loaded.", file=sys.stderr)
+
+
 # ---------------------------------------------------------------------------
 # Mode: default — load into running Neo4j
 # ---------------------------------------------------------------------------
@@ -606,6 +720,21 @@ def load_to_neo4j(
                     session.execute_write(
                         _run, cypher, ep,
                     )
+
+            # --- Load Article knowledge graph (名相·会处·术语) ---
+            try:
+                sys.path.insert(0, str(Path(__file__).resolve().parent))
+                import db_reader  # noqa: F401
+                article_graph = db_reader.load_article_knowledge()
+            except Exception as exc:  # 表未建或数据缺失不应阻断人物图的加载
+                print(f"[WARN] article knowledge graph skipped: {exc}",
+                      file=sys.stderr)
+                article_graph = {}
+            if article_graph:
+                print(f"[Neo4j] Loading article graph "
+                      f"({len(article_graph)} article(s)) …", file=sys.stderr)
+                _load_article_graph(session, article_graph, _run, _cypher_props,
+                                    _sanitize_cypher_value)
 
             # --- Summary ---
             result = session.execute_write(

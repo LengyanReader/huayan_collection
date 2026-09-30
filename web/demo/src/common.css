@@ -783,6 +783,53 @@ details.fold > .fold-body table { width: 100%; }
 /* 收态：只留标题条，正文一概不占版面 */
 details.fold:not([open]) { max-height: 38px; }
 
+/* ── 正文配图：缩略图呈现，点击看原图（initDocImages/openImageLightbox）──
+   原本图片可宽至 720px，喧宾夺主；今一律收为缩略图，尺寸全由本处决定。 */
+img.doc-img {
+  display: block;
+  margin: 10px auto;
+  max-width: min(300px, 78%);
+  max-height: 260px;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.22);
+  cursor: zoom-in;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+img.doc-img:hover { transform: scale(1.02); box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3); }
+img.doc-img:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* 灯箱：点缩略图后显示原图；✕／点遮罩／Esc 皆可关闭 */
+.img-lightbox {
+  position: fixed; inset: 0; z-index: 1200;
+  display: none;
+  background: rgba(0, 0, 0, 0.88);
+  overflow: auto;
+  padding: 28px 16px;
+  text-align: center;
+}
+.img-lightbox.is-on { display: block; }
+.img-lightbox .lb-fig { margin: 0 auto; max-width: min(1600px, 96vw); }
+.img-lightbox .lb-fig img {
+  max-width: 100%; height: auto; display: block; margin: 0 auto;
+  border-radius: 4px; box-shadow: 0 4px 30px rgba(0, 0, 0, .6);
+  cursor: default;
+}
+.img-lightbox .lb-fig figcaption {
+  margin-top: 10px; font-size: 0.86rem; line-height: 1.6; color: #ddd;
+}
+.img-lightbox .lb-fig figcaption a { color: #ffd479; }
+.img-lightbox .lb-close {
+  position: fixed; top: 12px; right: 16px;
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .35);
+  background: rgba(255, 255, 255, .12); color: #fff;
+  font-size: 16px; line-height: 1; cursor: pointer;
+}
+.img-lightbox .lb-close:hover { background: rgba(255, 255, 255, .24); }
+
 /* ═══ 章节级折叠 (article 长文 · h2/h3 层级，默认展开) ═══
    _foldDoc 依据标层级把同段兄弟包入 .secfold-body；标题 `▾/▴` 号随收展旋转。 */
 h2.secfold, h3.secfold {

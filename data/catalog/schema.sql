@@ -373,6 +373,82 @@ CREATE INDEX IF NOT EXISTS idx_artifacts_grade   ON article_artifacts(grade);
 CREATE INDEX IF NOT EXISTS idx_artifacts_status  ON article_artifacts(status);
 
 -- -----------------------------------------------------------
+-- 实体百科：有名有姓之存在（众·天王·菩萨·金刚神·龙·八部·诸神·佛）
+--   权威源 data/encyclopedia/beings.yaml
+--   → import_all_to_sqlite.py → SQLite → db_reader.load_entity_registry()
+--   → build.py 内嵌 var ENTITY_REGISTRY（全站共用一份，故非 article-scoped）
+--   → common.js markEntityRefs()／openEntityCard()：正文点开实体卡
+-- 与 article_terms（名相·会处·术语）之别：
+--   article_terms 管「法义名相」（如「业变力」「教轮」）；
+--   entities 管「有名有姓之存在」（如「善化天王」「文殊师利菩萨」「阿修罗」）。
+--   二者不重复登记：entities.relations 可指向 article_terms 之 term（to_type='term'）。
+-- 信度五级（与全站一致，勿另立名目）：
+--   A1 经文直证（本经明文作此名号/此事）| A2 古注明证（历代注疏原文明文）
+--   B 文献转述 | C 单一来源或仅见转引，待考 | D 疑讹（status='rejected'，不入正文）
+-- status：used（采用）| pending（待核，先登记不展示）| rejected（D 疑讹，不采用）
+-- 「断言级信度」：实体整体之 grade 只管其名号；小传中每一项事实之可信度
+--   由 entity_claims.grade 逐条独立判定——故名号可 A1 而梵名/世系为 C，二者并存不悖。
+--   铁律：每条 claim 必带 grade，且必带 source（经号·卷次），
+--   否则须于 note 明写〔待核〕/〔无出处〕，严禁无源之断言（编务总则第 0/3/7 条）。
+-- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS entities (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    entity_id     TEXT    NOT NULL UNIQUE,                      -- 全局唯一 id
+    name_zh       TEXT    NOT NULL,                             -- 本名（如「善化天王」）
+    name_full     TEXT,                                         -- 全称/领众全名（如「一切善化天众」之主）
+    name_sa       TEXT,                                         -- 梵名（无据则留空并于 note 标〔待核〕）
+    name_en       TEXT,                                         -- 英文名（循全站固定译名）
+    aliases       TEXT,                                         -- JSON 数组：异名/简称/繁体，供正文自动命中
+    category      TEXT,                                         -- 天众|菩萨|金刚神|龙|八部|诸神|佛|人名
+    grade         TEXT    NOT NULL DEFAULT 'C',                 -- A1|A2|B|C|D（管名号本身）
+    status        TEXT    NOT NULL DEFAULT 'used',              -- used|pending|rejected
+    auto_link     INTEGER NOT NULL DEFAULT 1,                  -- 0 = 不作正文自动命中（泛称/易误命中者）
+    bio_zh        TEXT,                                         -- 小传（中文）
+    bio_en        TEXT,                                         -- 小传（英文）
+    source_note   TEXT,                                         -- 出处：经号·卷次
+    source_url    TEXT,                                         -- 可点击回查链接（CBETA Online）
+    note          TEXT,                                         -- 存疑/待核/边界说明
+    created_at    TEXT    DEFAULT (datetime('now')),
+    updated_at    TEXT    DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_entities_cat   ON entities(category);
+CREATE INDEX IF NOT EXISTS idx_entities_grade ON entities(grade);
+CREATE INDEX IF NOT EXISTS idx_entities_status ON entities(status);
+
+-- 实体小传之逐条考据（断言级信度之载体）
+CREATE TABLE IF NOT EXISTS entity_claims (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    entity_id   TEXT    NOT NULL,                               -- → entities.entity_id
+    seq         INTEGER NOT NULL,                               -- 序（保持 YAML 顺序）
+    text        TEXT    NOT NULL,                               -- 该条事实
+    grade       TEXT    NOT NULL DEFAULT 'C',                  -- A1|A2|B|C|D
+    source      TEXT,                                           -- 经号·卷次·首倡者
+    source_url  TEXT,                                           -- 可点击回查
+    note        TEXT,                                           -- 〔待核〕/〔存疑〕/校记
+    UNIQUE(entity_id, seq)
+);
+
+CREATE INDEX IF NOT EXISTS idx_entity_claims_entity ON entity_claims(entity_id);
+CREATE INDEX IF NOT EXISTS idx_entity_claims_grade  ON entity_claims(grade);
+
+-- 实体之关系（可互点跳转；to_type='entity' 者前端可续查）
+CREATE TABLE IF NOT EXISTS entity_relations (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    from_id    TEXT    NOT NULL,                                -- → entities.entity_id
+    rel        TEXT    NOT NULL,                                -- leads|heads|同会|统属|所对|所住|师|眷属|化身|见…
+    to_type    TEXT    NOT NULL DEFAULT 'entity',              -- entity|person|location|text|chapter|term|external
+    to_ref     TEXT    NOT NULL,
+    to_label   TEXT,
+    grade      TEXT    NOT NULL DEFAULT 'C',
+    note       TEXT,
+    UNIQUE(from_id, rel, to_type, to_ref)
+);
+
+CREATE INDEX IF NOT EXISTS idx_entity_rel_from ON entity_relations(from_id);
+CREATE INDEX IF NOT EXISTS idx_entity_rel_to   ON entity_relations(to_type, to_ref);
+
+-- -----------------------------------------------------------
 -- 触发器: 保持 FTS 索引同步
 -- -----------------------------------------------------------
 CREATE TRIGGER IF NOT EXISTS texts_ai AFTER INSERT ON texts BEGIN

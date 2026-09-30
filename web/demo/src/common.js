@@ -1416,6 +1416,281 @@ function _agTip(anchorEl, t) {
   tip.style.left = Math.max(8, Math.min(r.left + window.scrollX, window.innerWidth - 320)) + 'px';
 }
 
+// ═══ 正文配图：缩略图 + 点击看原图 ═══
+// 需求：文中图片原本可达 720px 宽，喧宾夺主且挤占版面，故一律以缩略图呈现，
+// 点击后于灯箱中显示原图，并附「在新标签页打开」以便自行缩放/存档。
+// 尺寸与外观全由 CSS 决定（杜绝硬编码），本层只负责行为：
+//   ① 扫出正文配图并挂 .doc-img（文物卡 .ac-thumb 等自带尺寸者不在此列）
+//   ② 原图地址：优先取作者显式给的 data-full；否则按 Wikimedia 缩略图路径还原原图
+//   ③ 灯箱：点图开启，✕／点击遮罩／Esc 皆可关闭
+function _imgFullUrl(src) {
+  if (!src) return '';
+  // upload.wikimedia.org/wikipedia/commons/thumb/a/ab/NAME.jpg/960px-NAME.jpg
+  //   → .../wikipedia/commons/a/ab/NAME.jpg
+  var m = /^(https?:\/\/upload\.wikimedia\.org\/.+?)\/thumb\/(.+?)\/\d+px-([^/]+)$/.exec(src);
+  if (m) return m[1] + '/' + m[2] + '/' + m[3];
+  return src;   // 非缩略图链接（如本地/直链）：原图即其本身
+}
+
+function initDocImages(rootSel) {
+  var root = typeof rootSel === 'string' ? document.querySelector(rootSel) : rootSel;
+  if (!root) return 0;
+  var imgs = root.querySelectorAll('img');
+  var n = 0;
+  Array.prototype.forEach.call(imgs, function (im) {
+    if (im.closest && im.closest('.artifact-card, .ac-thumb, .figure-fold')) return;  // 文物卡等自有版式
+    if (im.dataset.imgInit) return;
+    im.dataset.imgInit = '1';
+    im.classList.add('doc-img');
+    if (!im.dataset.full) im.dataset.full = _imgFullUrl(im.getAttribute('src'));
+    im.setAttribute('role', 'button');
+    im.setAttribute('tabindex', '0');
+    im.title = '点击看原图';
+    n++;
+  });
+  return n;
+}
+
+function openImageLightbox(src, alt) {
+  if (!src) return;
+  var lb = document.getElementById('img-lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.className = 'img-lightbox';
+    lb.id = 'img-lightbox';
+    lb.innerHTML = '<button class="lb-close" type="button" aria-label="关闭">✕</button>'
+      + '<figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>';
+    document.body.appendChild(lb);
+    lb.addEventListener('click', function (e) {
+      // 点遮罩或 ✕ 关闭；点图/说明文字本身不关（便于看图）
+      if (e.target === lb || e.target.classList.contains('lb-close')
+          || e.target.classList.contains('lb-fig')) closeImageLightbox();
+    });
+    lb.querySelector('.lb-close').addEventListener('click', closeImageLightbox);
+  }
+  lb.querySelector('#lb-img').src = src;
+  lb.querySelector('#lb-img').alt = alt || '';
+  var cap = lb.querySelector('#lb-cap');
+  cap.innerHTML = (alt ? _escHtml(alt) + ' · ' : '')
+    + '<a href="' + _escHtml(src) + '" target="_blank" rel="noopener">在新标签页打开原图 ↗</a>';
+  lb.classList.add('is-on');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageLightbox() {
+  var lb = document.getElementById('img-lightbox');
+  if (lb) lb.classList.remove('is-on');
+  document.body.style.overflow = '';
+}
+
+(function () {
+  document.addEventListener('click', function (e) {
+    var im = e.target.closest && e.target.closest('img.doc-img');
+    if (im) { e.preventDefault(); openImageLightbox(im.dataset.full || im.getAttribute('src'), im.alt); return; }
+    if (e.key === 'Escape') { /* 见 keydown */ }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.tagName === 'IMG' && e.target.classList.contains('doc-img')) {
+      e.preventDefault();
+      openImageLightbox(e.target.dataset.full || e.target.getAttribute('src'), e.target.alt);
+    }
+    if (e.key === 'Escape') closeImageLightbox();
+  });
+})();
+
+// ═══ 实体百科 · 众/菩萨/金刚神/龙/八部/诸神/佛 ═══
+// 数据源：data/encyclopedia/beings.yaml
+//   → import_all_to_sqlite.py → SQLite(entities/entity_claims/entity_relations)
+//   → db_reader.load_entity_registry() → build.py 内嵌 var ENTITY_REGISTRY
+// 与 ARTICLE_GRAPH（名相·会处，article-scoped）之别：
+//   名相层管「法义」（业变力、教轮…）；实体层管「有名有姓之存在」（善化天王、文殊师利…）。
+//   二者不重复登记：实体之关系可指向名相（to_type='term'）。
+// 断言级信度：实体总 grade 只管名号；小传每条事实之可信度由 claims[].grade 逐条判定，
+//   故「名号 A1 而梵名 C」并存不悖——卡内逐条显示徽标与出处，不以总信度掩盖未考之处。
+// 泛称禁令：龙/天/王/菩萨 等单字泛称 auto_link=0，永不作自动命中（否则满篇皆蓝）；
+//   命中一律取最长名，且经 meta.stoplist 过滤。
+var _EN = null;    // ENTITY_REGISTRY
+var _ENi = null;   // entity_id -> entity
+var _ENnames = null;
+
+function _enInit() {
+  if (_EN !== null) return _EN;
+  _EN = (typeof ENTITY_REGISTRY !== 'undefined' && ENTITY_REGISTRY) ? ENTITY_REGISTRY : null;
+  if (!_EN) return null;
+  _ENi = {};
+  (_EN.entities || []).forEach(function (e) { _ENi[e.id] = e; });
+  return _EN;
+}
+
+// 名称 → id 映射（按长度降序比对，故「善化天王众」先于「善化天王」命中）
+function _enNames() {
+  if (_ENnames !== null) return _ENnames;
+  var reg = _enInit();
+  if (!reg) return (_ENnames = { re: null, map: {} });
+  var stop = {};
+  (reg.stoplist || []).forEach(function (s) { stop[s] = 1; });
+  var map = {};
+  (_EN.entities || []).forEach(function (e) {
+    if (e.status === 'rejected' || e.status === 'pending') return;  // 待核/疑讹不作正文命中
+    if (!e.auto_link) return;                                        // 泛称或易误命中者显式关闭
+    [e.zh].concat(e.aliases || []).forEach(function (n) {
+      if (!n || n.length < 2 || stop[n]) return;
+      map[n] = e.id;
+    });
+  });
+  var re = Object.keys(map).length ? new RegExp(
+    Object.keys(map).sort(function (a, b) { return b.length - a.length; })
+      .map(function (n) { return n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); })
+      .join('|'), 'g') : null;
+  _ENnames = { re: re, map: map };
+  return _ENnames;
+}
+
+function _enSkip(el) {
+  for (var n = el; n && n.nodeType === 1; n = n.parentNode) {
+    if (n.tagName === 'SCRIPT' || n.tagName === 'STYLE' || n.tagName === 'TEXTAREA') return true;
+    // 已标注者不再重入；名相标注之内也不再插入实体标注（避免两层可点文字互相嵌套）
+    if (n.classList && (n.classList.contains('entity-ref') || n.classList.contains('term-ref')
+                        || n.classList.contains('term-modal') || n.classList.contains('entity-modal'))) return true;
+  }
+  return false;
+}
+
+function _enWrap(txt, id) {
+  var t = _ENi[id];
+  var s = document.createElement('span');
+  s.className = 'term-ref entity-ref';
+  s.dataset.entityId = id;
+  s.setAttribute('role', 'button');
+  s.tabIndex = 0;
+  s.title = t ? ('实体卡：' + t.zh) : '实体卡';
+  s.textContent = txt;
+  return s;
+}
+
+function markEntityRefs(rootSel) {
+  var N = _enNames();
+  if (!N.re) return 0;
+  var root = typeof rootSel === 'string' ? document.querySelector(rootSel) : rootSel;
+  if (!root) return 0;
+  var n = 0;
+  var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: function (node) {
+      if (_enSkip(node.parentNode) || !node.nodeValue) return NodeFilter.FILTER_REJECT;
+      N.re.lastIndex = 0;
+      return N.re.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  var texts = [];
+  for (var t = walker.nextNode(); t; t = walker.nextNode()) texts.push(t);
+  texts.forEach(function (node) {
+    var s = node.nodeValue, last = 0, m;
+    N.re.lastIndex = 0;
+    while ((m = N.re.exec(s)) !== null) {
+      if (m.index > last) node.parentNode.insertBefore(document.createTextNode(s.slice(last, m.index)), node);
+      node.parentNode.insertBefore(_enWrap(m[0], N.map[m[0]]), node);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (last < s.length) node.parentNode.insertBefore(document.createTextNode(s.slice(last)), node);
+    node.parentNode.removeChild(node);
+  });
+  return n;
+}
+
+function _enMount() {
+  if (document.getElementById('entity-modal')) return;
+  var d = document.createElement('div');
+  d.className = 'term-modal entity-modal';
+  d.id = 'entity-modal';
+  // 结构与名相弹窗同构，复用既有样式；id 独立以免二者互相关闭
+  d.innerHTML = '<div class="tm-box" role="dialog" aria-modal="true">'
+    + '<div class="tm-head"><h3 id="em-title"></h3>'
+    + '<button class="tm-close" type="button" aria-label="关闭">✕</button></div>'
+    + '<div class="tm-body" id="em-body"></div></div>';
+  document.body.appendChild(d);
+  d.addEventListener('click', function (e) { if (e.target === d) closeEntityCard(); });
+  d.querySelector('.tm-close').addEventListener('click', closeEntityCard);
+}
+
+function openEntityCard(id, anchorEl) {
+  if (!_enInit()) return;
+  var e = _ENi[id];
+  if (!e) return;
+  _enMount();
+  var g = e.grade || 'C';
+  var cnt = {};
+  (e.claims || []).forEach(function (c) { cnt[c.grade] = (cnt[c.grade] || 0) + 1; });
+  var h = '<div class="tm-meta">'
+    + '<span class="grade-badge grade-' + g + '">' + _escHtml(g) + '</span>'
+    + '<span>' + _escHtml(e.category || '') + '</span>'
+    + (e.status && e.status !== 'used' ? '<span>' + _escHtml(e.status) + '</span>' : '')
+    + (e.aliases && e.aliases.length ? '<span>别称：' + _escHtml(e.aliases.join('、')) + '</span>' : '')
+    + '</div>';
+  if (e.name_full) h += '<div class="tm-src">全称：' + _mdInline(e.name_full) + '</div>';
+  if (e.name_sa) h += '<div class="tm-src">梵名：<i>' + _escHtml(e.name_sa) + '</i></div>';
+  if (e.bio_zh) h += '<div>' + _mdInline(e.bio) + '</div>';
+  if (e.bio_en) h += '<div class="en-line">📖 ' + _mdInline(e.bio_en) + '</div>';
+
+  // 逐条考据：每条自带信度与出处，未考者如实见其徽标
+  if ((e.claims || []).length) {
+    var dist = ['A1', 'A2', 'B', 'C', 'D'].filter(function (k) { return cnt[k]; })
+      .map(function (k) { return '<span class="grade-badge grade-' + k + '">' + k + ' ' + cnt[k] + '</span>'; }).join(' ');
+    h += '<div style="margin-top:10px"><div style="font-size:0.86em;color:var(--gold);margin-bottom:4px">'
+      + '考据 ' + (e.claims || []).length + ' 条 · ' + dist + '</div><ul class="en-claims">';
+    e.claims.forEach(function (c) {
+      h += '<li><span class="grade-badge grade-' + (c.grade || 'C') + '">' + _escHtml(c.grade || 'C') + '</span> '
+        + _mdInline(c.text || '');
+      if (c.source) h += ' <span class="tm-src">〔' + _mdInline(c.source) + '〕</span>';
+      if (c.note) h += ' <span class="tm-src">注：' + _mdInline(c.note) + '</span>';
+      h += '</li>';
+    });
+    h += '</ul></div>';
+  }
+  if (e.source) {
+    h += '<div class="tm-src">出处：' + _mdInline(e.source)
+      + (e.source_url ? ' <a href="' + _escHtml(e.source_url) + '" target="_blank" rel="noopener">回查</a>' : '') + '</div>';
+  }
+  if (e.note) h += '<div class="tm-src">注记：' + _mdInline(e.note) + '</div>';
+
+  var rel = (e.out || []).map(function (o) {
+    var clickable = (o.to_type === 'entity' && _ENi[o.to_ref])
+      ? ' data-entity-id="' + _escHtml(o.to_ref) + '" style="cursor:pointer" title="查看该实体"'
+      : (o.to_type === 'term' && typeof openTermModal === 'function'
+         ? ' data-term-id="' + _escHtml(o.to_ref) + '" style="cursor:pointer" title="查看该名相"' : '');
+    return '<span class="rel-chip"' + clickable + '><b>' + _escHtml(o.rel) + '</b> '
+      + _escHtml(o.to_label || o.to_ref) + '</span>';
+  }).join('');
+  if (rel) h += '<div class="tm-rel"><span style="font-size:0.82em;color:var(--text2)">关联 →</span>' + rel + '</div>';
+
+  document.getElementById('em-title').textContent = e.zh;
+  document.getElementById('em-body').innerHTML = h;
+  document.getElementById('entity-modal').classList.add('is-open');
+  if (window._markEnBlocks) try { window._markEnBlocks(); } catch (err) {}
+  // 二层互斥：实体卡与名相窗不并立，免得叠窗遮读
+  if (typeof closeTermModal === 'function') closeTermModal();
+}
+
+function closeEntityCard() {
+  var m = document.getElementById('entity-modal');
+  if (m) m.classList.remove('is-open');
+}
+
+(function () {
+  // 实体点击 / 关联节点跳转 → 开卡；点击卡外或 Esc → 关闭
+  document.addEventListener('click', function (e) {
+    var ref = e.target.closest && e.target.closest('[data-entity-id]');
+    if (ref && ref.dataset.entityId) { e.stopPropagation(); openEntityCard(ref.dataset.entityId, ref); return; }
+    if (!(e.target.closest && e.target.closest('.entity-modal'))) closeEntityCard();
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeEntityCard();
+    if (e.key === 'Enter' && e.target.dataset && e.target.dataset.entityId) {
+      openEntityCard(e.target.dataset.entityId, e.target);
+    }
+  });
+})();
+
 (function () {
   // 术语点击 / 关联节点跳转 → 开窗；点击弹窗外或 Esc → 关闭
   document.addEventListener('click', function (e) {

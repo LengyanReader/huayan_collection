@@ -142,6 +142,10 @@ function renderArticle(){
   if(typeof _markTermRefs==='function' && document.getElementById('article-full')){
     _markTermRefs('#article-full');
   }
+  // ── 正文配图收为缩略图，点击看原图 ──
+  if(typeof initDocImages==='function' && document.getElementById('article-full')){
+    initDocImages('#article-full');
+  }
   // ── 相关艺术品/文物/壁画/考古（默认折叠）──
   if(typeof renderArticleArtifacts==='function' && document.getElementById('article-artifacts')){
     renderArticleArtifacts('#article-artifacts');

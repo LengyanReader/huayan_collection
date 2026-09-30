@@ -99,7 +99,7 @@ terms:
     grade: A1
     definition_zh: 第五会之场所。经文「而往诣于兜率陀天一切妙宝所庄严殿」；品题作「升兜率天宫一切宝殿品」。
     definition_en: The Tuṣita heaven — site of the fifth assembly.
-    source_note: T10n0279 卷二十二；计数：兜率陀 24／26／7
+    source_note: T10n0279 卷二；计数：兜率陀 24／26／7
 
   - term_id: site_paranirmita
     term_zh: 他化自在天王宮摩尼寶藏殿
@@ -388,6 +388,149 @@ terms:
       the same lord whose palace hosts the sixth assembly (graph node site_paranirmita).
     source_note: T10n0279 卷二（八十华严）
 
+  # ── 卷二后六组名相（L.92 批次：组七～组十二）──
+  - term_id: tian_sanshiyisi
+    term_zh: 三十三天（忉利天）
+    aliases: [三十三天, 忉利天, 善業天]
+    category: site
+    grade: A1
+    definition_zh: >-
+      欲界第二层天（在他化自在、化乐、兜率、须夜摩之下）。本组领众作「释迦因陀罗天王」
+      （Śakra＝帝釋，「釋迦」即釋提桓因），故组十颂末句称其众为「一切三十三天众」。
+      其门名多就「忆念」「见佛」「福业生」立，与帝釋天之主位相应。
+    definition_en: >-
+      The second heaven of the desire realm. Its lord is Śakra (帝釋天, 釋迦／因陀羅), hence
+      Book Two group ten is headed by 釋迦因陀羅天王 and its verses close on the 三十三天.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: tian_rigong
+    term_zh: 日宮
+    aliases: [日宮, 日宫, 日天子宮]
+    category: site
+    grade: A1
+    definition_zh: >-
+      日天子所居之宫。组十一领众作「日天子」（不作「日天王」），T279 领起作「承佛威力，
+      遍观一切日天子众而说颂言」（遍观）。此门诸子名多带「光明」「眼」「宝月」，
+      以日之光明普照为义。
+    definition_en: >-
+      The sun-deities' palace. The group's lord is styled 日天子 (not 日天王); its gates
+      turn on light: 光明、眼、宝月 recur, for the sun's all-illuminating radiance.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: tian_yuegong
+    term_zh: 月宮殿
+    aliases: [月宮殿, 月宫殿, 月宮, 月宫]
+    category: site
+    grade: A1
+    definition_zh: >-
+      月天子所居之宫殿。组十二为卷二最末一组，颂前唯作「承佛神力」（T279）、
+      领起作「普观一切月宫殿中诸天众会而说颂曰」（说颂曰，为卷二唯一），
+      与卷二「由色界顶大自在、经欲界六天讫月天」之降序相配。
+    definition_en: >-
+      The moon-deities' palace-halls. Group twelve is the last of Book Two; its lead-in is
+      the only 承佛神力 in the fascicle (per T279) and the only 「而說頌曰」, and it closes
+      the descent from the form-realm's summit down through the six desire-heavens to the moon.
+    source_note: T10n0279 卷二（八十华严）
+    note: 组十二颂首「佛放光明遍世间，照耀十方诸国土」与卷二组一首偈「佛身普遍诸大会」
+      皆以「光明／普遍」起——卷二以光明始、以光明终（见 3.15、3.16）
+
+  - term_id: men_shihua_yebianhua
+    term_zh: 開示一切業變化力解脫門
+    aliases: [開示一切业变化力解脱门, 開示一切業變化力解脫門]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      组七（善化天王·化乐天）头门。业变力即众生业惑之变现，开示之即为「佛为群迷悉開示，
+      巧说因缘真实理」之旨——化乐天之众以「善化」为名，此门即其「化」之根本。
+    definition_en: >-
+      Head-gate of group seven (化樂天): the power whereby karma is transformed. To open it
+      up is exactly what the group's verses say — "for the deluded, the Buddha opens all
+      things up, speaking the true law of causes and conditions."
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: men_zhizu_jiaolun
+    term_zh: 一切佛出興世圓滿教輪解脫門
+    aliases: [一切佛出兴世圆满教轮解脱门, 圓滿教輪解脫門]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      组八（知足天王·兜率天）头门。「教轮」谓佛出兴世转法轮——「一切佛出兴世圆满」，
+      知足天（兜率）之众以「念持佛名」为德（见 2.1 甲戌条），此门则由「听佛教」而立。
+    definition_en: >-
+      Head-gate of group eight (兜率天): the wheel of teaching, complete, of every Buddha's
+      appearance in the world. The Tuṣita deities' own virtue is reciting the Buddhas' names
+      (§2.1 甲戌); this gate receives that teaching as a turning wheel.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: men_shiqi_faqi_liyou
+    term_zh: 發起一切眾生善根令永離憂惱解脫門
+    aliases: [發起一切眾生善根令永離憂惱解脫門, 发起一切众生善根令永离忧恼解脱门, 廣闢離塵清淨道, 广辟离尘清净道]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      组九（时分天王·须夜摩天）头门。「发起善根」在先，「令永离忧恼」在后，二语有次第。
+      本组颂首继之以「已竭世间忧恼海，广辟离尘清净道，永耀众生智慧灯」——门之「令永离忧恼」
+      与颂之「已竭忧恼海」正相照应，而「广辟离尘清净道」七字尤见须夜摩天（夜摩）之特质：
+      以「离尘」之清净道转之夜众之心。
+    definition_en: >-
+      Head-gate of group nine (須夜摩天): raising the roots of goodness in all beings so that
+      they may forever be parted from grief. The group's opening stanza takes this up —
+      "the sea of worldly grief is drained dry; a clean path apart from dust is opened wide;
+      the lamp of wisdom shines forever" — the gate's 「令永離憂惱」 answering the stanza's
+      「已竭憂惱海」. 「廣闢離塵清淨道」 marks the night-heaven's own condition of restless
+      desire, which a path apart from dust is there to turn.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: men_jiniyaocha
+    term_zh: 憶念三世佛出興乃至剎成壞皆明見大歡喜解脫門
+    aliases: [憶念三世佛出興, 忆念三世佛出兴乃至刹成坏皆明见大欢喜解脱门]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      组十（释迦因陀罗天王·三十三天）头门。「忆念」而「明见」刹之成坏，与组十颂
+      「我念三世一切佛……如其国土坏与成，以佛威神皆得见」相应——帝釋天主为过去世
+      无数佛之因缘所成，故于「念」中见诸佛国土之生灭。此门与组四（可爱乐光明）「我念
+      如来昔所行」同为卷二仅有的「我念」起首之偈。
+    definition_en: >-
+      Head-gate of group ten (三十三天): recalling the Buddhas of the three times and
+      clearly seeing their lands' forming and perishing. It answers the group's opening
+      "I recall all Buddhas of the three times… as their lands break and form, all is
+      seen by the Buddha's 威神" — the lord of the Trayastriṃśa recalling the Buddhas whose
+      karma built his heaven. Together with group four's 「我念」 opening, the two are the
+      only first-person openings in Book Two.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: men_riguang_zhao
+    term_zh: 淨光普照十方眾生盡未來劫常為利益解脫門
+    aliases: [淨光普照十方眾生盡未來劫常為利益解脫門, 净光普照十方众生尽未来劫常为利益解脱门]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      组十一（日天子·日宫）头门。「尽未来劫常为利益」——不为一世之益，而为恒常
+      之利；日之光明无有间断，故此门以「普照」而「常为」并言。日天子领众诸门多带
+      「光明」「精爽」「欢喜信解」，与日体相应。
+    definition_en: >-
+      Head-gate of group eleven (日天子): pure light illumining the beings of the ten
+      directions, endlessly, throughout every future age, ever for their benefit. The sun's
+      unceasing radiance grounds the gate's unceasing benefit.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: men_yueguang_shehua
+    term_zh: 淨光普照法界攝化眾生解脫門
+    aliases: [淨光普照法界攝化眾生解脫門, 净光普照法界摄化众生解脱门]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      组十二（月天子·月宫殿）头门。与组十一日天子头门仅差「照十方众生」与「照法界摄化
+      众生」——日门但及众生，月门已及法界；此一进退，即日月二众在卷二降序中「由光
+      及界」之别。月虽不照明，而能「摄化」，故颂言结在「永破众生痴惑暗」之「暗」上。
+    definition_en: >-
+      Head-gate of group twelve (月天子): pure light illumining the dharmadhātu and
+      gathering beings in. It differs from group eleven's sun-gate by one degree — sun
+      reaches beings, moon reaches the dharmadhātu. The moon does not illuminate, yet it
+      「攝化」; hence its verses end on breaking the dark of beings' delusion.
+    source_note: T10n0279 卷二（八十华严）
+
   # ── 已否之名（D 级 · 本文正文不采用）──
   - term_id: rejected_mahakala
     term_zh: 摩訶迦羅道場
@@ -447,6 +590,45 @@ terms:
       此则属经结构层面之描述，非术语。分级为 C（单一来源）而**非 D 疑讹**：此名不涉讹误，
       只是非经非古注之后出自取名。
 
+  # ── 本批新增（2026 T279 回源校勘）────────────────────────────────────
+  - term_id: sky_yanhai
+    term_zh: 妙焰海大自在天王
+    aliases: [妙焰海大自在天王, 妙燄海大自在天王, 妙焰海天王, 妙燄海天王]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷二组一领众之首名，得「法界虚空界寂静方便力解脱门」。本地《大华严寺袖珍版》繁本作
+      「妙燄海」，CBETA T279 作「妙焰海」，二者为同词异写（见正文 1.5 底本用字差异表第 2 条）。
+    definition_en: >-
+      Miao Yan Hai, the Great Freedom King — "Ocean of Wondrous Flames." First-listed leader of
+      the first group of Book Two, attaining the gate of the power of skillful means and stillness
+      of dharmadhātu and ākāśadhātu. The local 袖珍版 recension writes 妙燄海 where T279 writes
+      妙焰海; the two are orthographic variants of one name.
+    source_note: >-
+      T10n0279 卷二「所謂：妙焰海大自在天王，得法界虛空界寂靜方便力解脫門」；卷一列名作
+      「妙焰海天王」。本批校勘：原文「復次妙燄海大自在天王」系两处之误（T279 无「復次」，
+      且作「焰」不作「燄」），已订正，见正文 1.6 校勘记第 18 条
+    note: >-
+      〔待核〕此名之梵拼本篇未取定译。卷二此组无「復次」一词，卷二首组系承卷一「所謂：」
+      句续列众名，由「列名」入「得门」，不可与卷一文句混读。
+
+  - term_id: realm_yema
+    term_zh: 須夜摩天
+    aliases: [須夜摩天, 须夜摩天, 須夜摩天王, 夜摩天]
+    category: realm
+    grade: A1
+    definition_zh: >-
+      六欲天之第三，位在三十三天之下、兜率之上。T279 卷二作「復有無量須夜摩天王」，为组九
+      「时分天众」之总称；「时分」者，日夜之分半，夜摩天居半夜之位。
+    definition_en: >-
+      The Yama (Nyāgarāja) heaven, third of the six desire-realm heavens, standing below the
+      Trāyastriṃśa and above the Tuṣita. T279 Book Two reads 復有無量須夜摩天王, the collective
+      name of the group-nine assembly.
+    source_note: >-
+      T10n0279 卷二〔梵名待核：汉译经典及《大智度论》以来「須夜摩」多对 Nāgapratyakṣa，
+      然此名含「不喜见」之义，与「厌夜」之义不合，历来即有异说，亦有作 Candraprabha、
+      Nanda 等说者，本篇不取定译〕
+
 links:
   - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_bodhimaṇḍa, to_label: 摩竭提國阿蘭若法菩提場}
   - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_puguang, to_label: 普光法堂／普光明殿}
@@ -470,3 +652,7 @@ links:
   - {from_term_id: men_yimaokong, rel: member_door_of, to_type: term, to_ref: tian_cheng_kle_faguangmingshuang, to_label: 乐寂静天王之门（组二）}
   - {from_term_id: tian_cheng_kle_guangming, rel: leads, to_type: term, to_ref: tian_guangyin, to_label: 光音（极光）天·本组所领}
   - {from_term_id: tian_cheng_zizai, rel: located_at, to_type: term, to_ref: site_paranirmita, to_label: 他化自在天王宮摩尼寶藏殿（第六会）}
+  - {from_term_id: tian_sanshiyisi, rel: see_also, to_type: term, to_ref: men_jiniyaocha, to_label: 释迦因陀罗天王组十头门（忆念·明见）}
+  - {from_term_id: tian_rigong, rel: see_also, to_type: term, to_ref: men_riguang_zhao, to_label: 日天子组十一头门（净光普照·常为利益）}
+  - {from_term_id: tian_yuegong, rel: see_also, to_type: term, to_ref: men_yueguang_shehua, to_label: 月天子组十二头门（净光普照法界·摄化）}
+  - {from_term_id: tian_rigong, rel: see_also, to_type: term, to_ref: tian_yuegong, to_label: 日宫·月宫（日月二众，卷二降序之末二组）}

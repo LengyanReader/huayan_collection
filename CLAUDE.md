@@ -182,8 +182,14 @@ python scripts/export_sqlite_to_json.py --verify  # 数据完整性验证
 
 # 图验证: SQLite → Neo4j + Cypher检查
 python scripts/load_neo4j.py --verify-sqlite  # SQLite直接图验证（无需Neo4j服务器）
-python scripts/load_neo4j.py --generate       # 导出Cypher脚本
+python scripts/load_neo4j.py --generate       # 导出Cypher脚本（含文章图谱节点）
 python scripts/load_neo4j.py --verify         # Neo4j在线验证（需服务器）
+
+# Neo4j 在线（本项目实例：容器 huayan-neo4j，宿主 7688/7475 —— 7687 已被 ls-neo4j 占用）
+docker run -d --name huayan-neo4j -p 7475:7474 -p 7688:7687 \
+    -e NEO4J_AUTH=neo4j/huayan123 neo4j:5-community    # 未运行时启动
+python scripts/load_neo4j.py --uri bolt://localhost:7688 --user neo4j --password huayan123           # 在线加载（含文章图谱）
+python scripts/load_neo4j.py --uri bolt://localhost:7688 --user neo4j --password huayan123 --verify  # 在线验证
 
 # 来源可靠性验证
 python scripts/verify_sources.py
