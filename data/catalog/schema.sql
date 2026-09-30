@@ -333,6 +333,46 @@ CREATE INDEX IF NOT EXISTS idx_atl_to    ON article_term_links(to_type, to_ref);
 CREATE INDEX IF NOT EXISTS idx_atl_rel   ON article_term_links(article_id, rel);
 
 -- -----------------------------------------------------------
+-- 文章附录：艺术品 · 文物 · 壁画 · 考古资料（依品逐条登记）
+-- 权威源 data/translation/article_artifacts/<article_id>.yaml
+--   → import_all_to_sqlite.py → SQLite → db_reader.load_article_artifacts() → build.py
+--   → common.js renderArticleArtifacts()：默认折叠的 <details> 卡片墙
+-- 信度五级（同上，勿另立名目）：
+--   A1 一手实物/一手著录直接对应本品内容（有定年、有编号或官方释文）
+--   A2 学界/机构研究确认为华严系统（著录、专著、论文可据）
+--   B 文献转述或同类题材（与本品有涉但非专为本品而作）
+--   C 单一来源或仅见转引，细节待考 | D 不采用（status=rejected，不入页面）
+-- status：confirmed（已确认可展示）| pending（待核，先登记不展示）| rejected（不采用）
+-- 版权与外链：href 必填（指向原始藏品页/权威著录页），thumb_url 可选（公开许可缩略图）；
+--   license 与 source_note 必填；无从可点者如实标注〔无链接〕，不硬凑。
+-- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS article_artifacts (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    article_id     TEXT    NOT NULL,                          -- 对应 articles/<id>.html
+    artifact_id    TEXT    NOT NULL,                          -- 篇内唯一 id
+    title_zh       TEXT    NOT NULL,                          -- 藏品/遗迹名（中文）
+    title_en       TEXT,                                      -- 英文名
+    era            TEXT,                                      -- 年代
+    location       TEXT,                                      -- 现存地/遗址
+    category       TEXT,                                      -- mural|sculpture|painting_scroll|manuscript|print|architecture|relic|archaeology
+    grade          TEXT    NOT NULL DEFAULT 'C',              -- A1|A2|B|C|D
+    status         TEXT    NOT NULL DEFAULT 'pending',        -- confirmed|pending|rejected
+    relevance_zh   TEXT,                                      -- 与本品的关联（须具体到会/品/情节，不可泛泛）
+    relevance_en   TEXT,
+    href           TEXT,                                      -- 原始藏品页/权威著录页（必填）
+    thumb_url      TEXT,                                      -- 公开许可缩略图（可选，外链不落盘）
+    source_note    TEXT,                                      -- 出处/著录（必填）
+    license        TEXT,                                      -- 许可/版权说明（必填）
+    note           TEXT,                                      -- 〔待核〕/〔存疑〕/并存诸说
+    created_at     TEXT    DEFAULT (datetime('now')),
+    UNIQUE(article_id, artifact_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_artifacts_article ON article_artifacts(article_id);
+CREATE INDEX IF NOT EXISTS idx_artifacts_grade   ON article_artifacts(grade);
+CREATE INDEX IF NOT EXISTS idx_artifacts_status  ON article_artifacts(status);
+
+-- -----------------------------------------------------------
 -- 触发器: 保持 FTS 索引同步
 -- -----------------------------------------------------------
 CREATE TRIGGER IF NOT EXISTS texts_ai AFTER INSERT ON texts BEGIN

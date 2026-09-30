@@ -1380,6 +1380,11 @@ def build_articles(articles):
     except Exception as e:
         print(f'  ! article knowledge graph unavailable: {e}')
         article_knowledge = {}
+    try:
+        article_artifacts = db_reader.load_article_artifacts()
+    except Exception as e:
+        print(f'  ! article artifacts register unavailable: {e}')
+        article_artifacts = {}
     ARTICLES_OUT.mkdir(parents=True, exist_ok=True)
     article_js = read_src('article.js')
     common_css_rel = '../css/common.css'
@@ -1446,6 +1451,14 @@ def build_articles(articles):
         graph = article_knowledge.get(a['id'])
         if graph:
             scripts = ('<script>var ARTICLE_GRAPH = %s;</script>\n' % json.dumps(graph, ensure_ascii=False)) + scripts
+        arts = article_artifacts.get(a['id'])
+        if arts:
+            # 仅注册页内嵌 confirmed 条目（pending/rejected 留库待审，不入页面）
+            confirmed = [it for it in arts['items'] if it.get('status') == 'confirmed']
+            if confirmed:
+                scripts = ('<script>var ARTICLE_ARTIFACTS = %s;</script>\n'
+                           % json.dumps({'title': arts.get('title'), 'items': confirmed},
+                                        ensure_ascii=False)) + scripts
         _b = a.get('back') or {}
         back_tab = _b.get('tab') or 'index'
         back_label = _b.get('label') or '导航主页'

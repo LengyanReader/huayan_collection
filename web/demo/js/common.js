@@ -822,6 +822,48 @@ function _mdFullToHTML(text) {
       out.push('</ul>');
       continue;
     }
+    // block-level HTML passthrough: <details>/<figure>/<svg>/<div>/… 原样透出，
+    // 内文仍按 markdown 递归渲染。不走此路则会被段落分支包进 <p>，块级元素即失效。
+    var mh2 = l.match(/^\s*<(\/?)(details|figure|svg|div|picture|section|aside)\b/i);
+    if (mh2 && !mh2[1]) {
+      var tag = mh2[2].toLowerCase();
+      var endRe = new RegExp('</' + tag + '\\s*>', 'i');
+      var raw = [];
+      var cut = -1;
+      for (var j = i; j < lines.length; j++) {
+        raw.push(lines[j]);
+        if (endRe.test(lines[j])) { cut = j; break; }
+      }
+      if (cut >= 0) {
+        var blk = raw.join('\n');
+        i = cut + 1;
+        if (tag === 'details') {
+          // 折叠块：summary 走 inline（可含强调），正文递归按 markdown 渲染；默认收起
+          var isOpen = /<details\b[^>]*\bopen\b/i.test(raw[0]);
+          var dcls = (raw[0].match(/<details\b[^>]*\bclass="([^"]*)"/i) || [, ''])[1];
+          var inner = raw.slice(1, -1);
+          var sm = '';
+          var smIdx = -1;
+          for (var k = 0; k < inner.length; k++) {
+            if (/<summary>/i.test(inner[k])) { smIdx = k; break; }
+          }
+          if (smIdx >= 0) {
+            var smTxt = inner[smIdx].replace(/<summary>/i, '').replace(/<\/summary>/i, '');
+            inner.splice(smIdx, 1);
+            while (inner.length && /^\s*<\/summary>\s*$/i.test(inner[0])) inner.shift();
+            for (var m2 = 0; m2 < inner.length; m2++) inner[m2] = inner[m2].replace(/<\/summary>/i, '');
+            sm = _mdInline(smTxt.trim());
+          }
+          out.push('<details class="fold' + (dcls ? ' ' + dcls : '') + '"' + (isOpen ? ' open' : '') + '>'
+            + '<summary>' + sm + '</summary><div class="fold-body">'
+            + _mdFullToHTML(inner.join('\n')) + '</div></details>');
+        } else {
+          out.push(blk);   // figure/svg/div 等：整块原样透出
+        }
+        continue;
+      }
+      // 未见闭合标签 → 退回段落分支（避免误吞余下全文）
+    }
     // code fence (```)
     if (l.trim().indexOf('```') === 0) {
       var code = [];
@@ -834,7 +876,7 @@ function _mdFullToHTML(text) {
     // paragraph (collect consecutive lines)
     var para = [l];
     i++;
-    while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|---+$|>\s|\||\s*\d+\.\s|\s*[-•·]\s)/.test(lines[i].trim())) {
+    while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|---+$|>\s|\||\s*\d+\.\s|\s*[-•·]\s|\s*<\/?(details|figure|svg|div|picture|section|aside)\b)/.test(lines[i].trim())) {
       para.push(lines[i]); i++;
     }
     out.push('<p style="font-size:0.8em;line-height:1.9;margin:6px 0">' + _mdInline(para.join('<br>')) + '</p>');
@@ -1184,10 +1226,71 @@ function _agWrap(txt, id) {
   return s;
 }
 
+// ═══ 文物 · 艺术品 · 壁画 · 考古资料（默认折叠，需时点开）═══
+// 数据源：data/translation/article_artifacts/<article_id>.yaml
+//   → import_all_to_sqlite.py → SQLite(article_artifacts)
+//   → db_reader.load_article_artifacts() → build.py 内嵌 var ARTICLE_ARTIFACTS
+//   → renderArticleArtifacts()（仅 status=confirmed 入页；pending/rejected 留库待审）
+// 版权与溯源底线：href（原藏品页）必填、source/许可必填、未复核者一律不进页面。
+var _AA = null;
+function _aaInit() {
+  if (_AA !== null) return _AA;
+  _AA = (typeof ARTICLE_ARTIFACTS !== 'undefined' && ARTICLE_ARTIFACTS) ? ARTICLE_ARTIFACTS : null;
+  return _AA;
+}
+// 依信度徽章配色沿用 grade-A1…；加图例注记于 summary 行。
+var _AA_CAT_ICON = { mural: '🖼', sculpture: '🗿', painting_scroll: '🧻', manuscript: '📜', print: '🪵', architecture: '🏛', relic: '🪔', archaeology: '⛏' };
+
+function renderArticleArtifacts(containerSel) {
+  if (!_aaInit()) return 0;
+  var items = _AA.items || [];
+  if (!items.length) return 0;
+  var root = typeof containerSel === 'string' ? document.querySelector(containerSel) : containerSel;
+  if (!root) return 0;
+  var cat = {};
+  items.forEach(function (it) { cat[_AA_CAT_ICON[it.category] || '🏺'] = (cat[_AA_CAT_ICON[it.category] || '🏺'] || 0) + 1; });
+  var cats = Object.keys(cat).map(function (k) { return k + cat[k]; }).join(' · ');
+  var h = '<details class="fold artifacts-fold" id="article-artifacts-fold">'
+    + '<summary>🖼 相关艺术品 · 文物 · 壁画 · 考古（' + items.length + ' 项 · ' + cats + '）<span style="font-weight:400;color:var(--text2)"> · 默认折叠，点开查看</span></summary>'
+    + '<div class="fold-body"><div class="artifact-grid">';
+  items.forEach(function (it) {
+    var g = it.grade || 'C';
+    h += '<div class="artifact-card" data-grade="' + g + '">';
+    if (it.thumb) h += '<a href="' + _escHtml(it.href) + '" target="_blank" rel="noopener"><img class="ac-thumb" loading="lazy" src="' + _escHtml(it.thumb) + '" alt="' + _escHtml(it.title) + '"></a>';
+    h += '<div class="ac-title">' + _escHtml(it.title)
+      + ' <span class="grade-badge grade-' + g + '" style="margin-left:4px">' + g + '</span></div>';
+    if (it.title_en) h += '<div class="ac-en en-line">' + _escHtml(it.title_en) + '</div>';
+    var meta = [];
+    if (it.era) meta.push(_escHtml(it.era));
+    if (it.location) meta.push(_escHtml(it.location));
+    if (it.category) meta.push(_escHtml(it.category));
+    if (meta.length) h += '<div class="ac-meta">' + meta.join(' · ') + '</div>';
+    if (it.relevance) h += '<div class="ac-relevance">🔗 ' + _mdInline(it.relevance) + '</div>';
+    if (it.relevance_en) h += '<div class="en-line">' + _mdInline(it.relevance_en) + '</div>';
+    h += '<div class="ac-foot">';
+    h += '<div>📖 出处：' + _mdInline(it.source) + '</div>';
+    h += '<div>© 许可：' + _escHtml(it.license) + '</div>';
+    if (it.note) h += '<div>⚠️ ' + _escHtml(it.note) + '</div>';
+    h += '<div><a href="' + _escHtml(it.href) + '" target="_blank" rel="noopener">查看原始藏品页 ↗</a></div>';
+    h += '</div></div>';
+  });
+  h += '</div></div></details>';
+  root.insertAdjacentHTML('beforeend', h);
+  var n = items.length;
+  _aaGather();
+  return n;
+}
+
+// 预留钩子：如需对卡片内文本做统一语言开关/术语标注在此展开。
+function _aaGather() { }
+
 function _markTermRefs(rootSel) {
   if (!_agInit()) return 0;
   var root = typeof rootSel === 'string' ? document.querySelector(rootSel) : rootSel;
   if (!root) return 0;
+  // 显式标记先于自动扫描：若 [[显示文本|id]] 的显示文本恰是别名（如 [[普贤|…]]），
+  // 自动扫描先行会把 [[…]] 拆散成多段文本节点，显式解析将无法跨节点匹配。
+  _agExplicit(root);
   var N = _agNames();
   var n = 0;
   var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
@@ -1212,12 +1315,11 @@ function _markTermRefs(rootSel) {
     if (last < s.length) node.parentNode.insertBefore(document.createTextNode(s.slice(last)), node);
     node.parentNode.removeChild(node);
   });
-  _agExplicit(root);
   if (n) _agMount();
   return n;
 }
 
-// 显式标记：[[显示文本|term_id]]。先于自动扫描处理，故在扫描后做亦可（其产物为 .term-ref，扫描已跳过）。
+// 显式标记：[[显示文本|term_id]]。必须在自动扫描前处理，理由见 _markTermRefs。
 function _agExplicit(root) {
   var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode: function (node) {

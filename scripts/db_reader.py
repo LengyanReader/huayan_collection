@@ -395,6 +395,73 @@ def load_article_knowledge():
     return out
 
 
+def load_article_artifacts():
+    """Export per-article artwork/relic/archaeology registers for the article renderer.
+
+    Returns: {article_id: {"title": ..., "items": [...]}}
+
+    Populated by scripts/import_all_to_sqlite.py from
+    data/translation/article_artifacts/*.yaml into article_artifacts.
+    Only status='confirmed' rows are meant to surface in the UI; pending/rejected stay
+    in the database as an auditable candidate register until a human has compared them
+    against the text (registration precedes display).
+    """
+    conn = get_conn()
+    have = {r[0] for r in conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table'")}
+    if 'article_artifacts' not in have:
+        conn.close()
+        return {}
+
+    rows = conn.execute("""
+        SELECT article_id, artifact_id, title_zh, title_en, era, location, category,
+               grade, status, relevance_zh, relevance_en, href, thumb_url,
+               source_note, license, note
+        FROM article_artifacts ORDER BY article_id, grade, category, artifact_id
+    """).fetchall()
+
+    out = {}
+    for r in rows:
+        aid = r['article_id']
+        art = out.setdefault(aid, {"items": []})
+        art["items"].append({
+            "id": r['artifact_id'],
+            "title": r['title_zh'] or '',
+            "title_en": r['title_en'] or '',
+            "era": r['era'] or '',
+            "location": r['location'] or '',
+            "category": r['category'] or '',
+            "grade": r['grade'] or '',
+            "status": r['status'] or '',
+            "relevance": r['relevance_zh'] or '',
+            "relevance_en": r['relevance_en'] or '',
+            "href": r['href'] or '',
+            "thumb": r['thumb_url'] or '',
+            "source": r['source_note'] or '',
+            "license": r['license'] or '',
+            "note": r['note'] or '',
+        })
+
+    try:
+        import yaml
+        reg = ROOT / "data" / "translation" / "standalone_articles.yaml"
+        titles = {}
+        if reg.exists():
+            data = yaml.safe_load(reg.read_text(encoding='utf-8')) or {}
+            for grp in ('sources', 'others'):
+                for a in (data.get(grp) or []):
+                    if isinstance(a, dict) and a.get('id'):
+                        titles[a['id']] = a.get('title') or a['id']
+        for aid, art in out.items():
+            art["title"] = titles.get(aid, aid)
+    except Exception:
+        for aid, art in out.items():
+            art["title"] = aid
+
+    conn.close()
+    return out
+
+
 def load_texts():
     """Export texts, chapters, and cross_refs from SQLite.
 

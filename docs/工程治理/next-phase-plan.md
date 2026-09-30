@@ -1722,3 +1722,42 @@ python scripts/verify_demo.py
 5. **卷二偈颂边界**：JSON 可能受门注污染，恢复细读前须以 CBETA 原文重做边界。
 6. **Neo4j 在线验证**：本机 `7687/7474` 未监听，文章图谱的 Cypher 目前仅经 `--generate` 离线产出与结构自检，未作服务端实跑。
 7. **`opencc`/`zhconv` 未安装**：简繁归一化目前靠三版经文各自的字形，未做工具级统一。
+
+---
+
+## L.89 长文默认折叠·渲染器块级透传＋世主妙严品实证文物注册管线＋术语显式标记次序修复（2026-09-30）
+
+**主题**：循用户三项指示之（二）（三）——②「长文按标题结构默认折叠（长表/图表/考据/附录）」③「实证检索并嵌入本品相关文物/艺术品/壁画/考古资料（默认折叠、外链优先、出处可溯）」——建成两条可复用基建，并以《世主妙严品》为试点落地。
+
+### 一、`<details class="fold">` 折叠基建（Markdown 层标注，渲染器块级透传）
+
+- **标注方式**：文档正文直接书 `<details class="fold"><summary>…</summary>…</details>`（Markdown 层；`summary` 走 `_mdInline`、正文递归整段渲染）。
+- **渲染器**：`common.js` `_mdFullToHTML()` 新增**块级 HTML 透传**白名单 `details|figure|svg|div|picture|section|aside`（原仅 `table/pre`），系首次让文档 Markdown 可直接内嵌这些结构；段落收集正则同步终止于这些块标签（防把 `<details>` 后文并进 `summary` 前段落）。
+- **视觉**（`common.css`）：`gold 左边线 · summary ▸ 旋转 · 收态 max-height:38px 灰化半透明`；表随块收展（`details.fold v-table width:100%`）。
+- **折叠策略（正文常开、长材料默认收）**：默认折叠＝长表（数据行≥9）／考据札记／注疏引文／图表／附录／参考文献；**不折叠**＝主干正文、术语释文、结论。
+- **本批落地于 `华严经细读_第一部_世主妙严品.md`（1638 行）**：13 张大表按「📋 表·〈首格〉…（N 行）」折叠、L69-81「摩訶迦羅道場」之名证否长考据块按「📎 考据」折叠（内容原样保留，`details` 配对 14/14、表块 38 个不破坏）；附录叙事／EN 对照块保持展开（有意）。
+- **教训**：Python 像素级/skeleton 扫描只能验配对平衡，无法替代真实渲染——头图渲染（headless Chrome `--dump-dom`）才是折叠正确性的判据。
+
+### 二、实证文物注册管线（`article_artifacts`）
+
+- **权威源**：`data/translation/article_artifacts/<article_id>.yaml`；`db_reader.load_article_artifacts()` 键映射（`id/title/title_en/era/location/category/grade/status/relevance/relevance_en/href/thumb/source/license/note`）与前端读法一致。
+- **schema/导入**：`import_article_artifacts()` **先删后插幂等**；事件表置于 `catalog.sql` 既有 `article_terms` 一列；索引 `idx_artifacts_*`；**缺 `source`/`license` 强制 `pending`**（杜绝无出处入页）；缺 `href` 须在 `source` 注明〔无链接〕。
+- **规则（registration precedes display）**：仅 `confirmed` 注入页面；`pending`/`rejected` 留库待审。build.py 内嵌 `var ARTICLE_ARTIFACTS`（仅 confirmed；34→固定 counts）→ `common.js` `renderArticleArtifacts('待注入容器')` 渲染卡片墙（grade 徽章 A1·A2·B·C·D 五色、era/location/category、relevance 中英、「@许可」，外链卡「查看原始藏品页 ↗」，无缩略图不渲染 img）；`article.js` 存在 `ARTICLE_ARTIFACTS` 时注入 `<div id="article-artifacts">` 节。
+- **世主妙严品注册 14 条（13 confirmed＋1 pending）**：敦煌莫高窟 第12/44/231/55 窟华严经变（A1，DHA 官方释文）、第36窟龙王礼佛图（A2）、吉美 MG.26462 绢本七处九会（A1，缘边「左藏库」官印 · 伯希和 1908）、大英白描 34.6×1244cm 传李公麟（B，待核藏品号）、杭州飞来峰 第5龛卢舍那佛会浮雕 1022 胡承德（A2，146×150cm）、青林洞口元代华严三圣 1282（A2）、榆林窟25 毗卢遮那（A2，「清净法身卢那舍佛」题记）、大足宝顶山/石篆山第7号 华严三圣与大日如来（A2）、西夏黑水城华严刊本卷首（A2，艾尔米塔什藏〔无链接〕）、**大同华严寺清代七处九会壁画（C·pending，待官方著录复核，不入页）**；9 处外链均以 `[text](url)` 嵌入且逐条 webfetch 实测可回（DHA/ThePaper 张素闻 2026-07-30/FGS 世界佛教美术图说辞典/urbanchina/dhafund）；**本品对应七处九会之第一会（菩提场）始品，敦煌 29 铺经变无单为本品所绘一铺，relevance 如实注明**；手印两说并存标〔存疑〕（说法状 vs 智拳印，Ching Chang 2023）。
+- **门禁新增**：`test_pipeline.py` 新增第 [6b] 组「Article artifacts register」（必具字段定级合法／href 必填或〔无链接〕／status 三值合法且**页面仅收 confirmed**／HTML `ARTICLE_ARTIFACTS` 与 SQLite confirmed 完全一致）。
+
+### 三、`_markTermRefs` 次序修复
+
+- 显式标记 `[[显示文本|term_id]]` 改为**先于自动扫描**执行；否则别名（如「普贤」）先被自动扫描命中会拆散显式标记。显式命中后置 `data-mt` 防再扫。
+
+### 四、交付与验证（三关全绿）
+
+- DB：`article_artifacts` 14 行（confirmed 13／pending 1，全含 source/license）；重导入幂等。`import_all_to_sqlite` → `test_pipeline`（**ALL TESTS PASSED**，新增 [6b] 全绿）→ `build.py`（**36 files｜23,805,174 B**）→ `verify_demo`（**✅ ALL CHECKS PASSED**，26 文章页含 `articles/shizhu-miaoyan.html` 179,993 B）；headless Chrome `--dump-dom` 实测（`Start-Process -RedirectStandardOutput` 规避 PowerShell 管道重编码致中文乱码）：`details.fold` **15**（13 表＋1 考据＋1 文物块，收态 `open=0`）、`artifact-card` **13**、`grade-badge` 13、`.term-ref` 374、卡内容（左藏库／查看原始藏品页）与考据块正文俱在、`en-line` 26、**0 JS 异常**。
+- **未提交**：全批变更均在工作区，待 commit，未 push。
+
+### 五、遗留与下一步
+
+1. **文物块默认折叠**已达成；如用户进一步要附录叙事/EN 对照也默认折叠，仅需在文档相应章节加 `<details>`（渲染器已通）。
+2. **大同华严寺壁画**待官方著录复核后升 `confirmed`（C 级信息已如实列入，不入页）。
+3. **46 组余下细读**仍待续（卷二「世界」品为下一建议组）；每完成一组细读即照 L.88 铁律**先入图谱定级、再入正文**，并按需补文物注册。
+4. **`opencc`/`zhconv`** 仍未装；卷二偈颂边界仍须以 CBETA 原文重做。**Neo4j 在线验证**仍受阻（7687/7474 未监听）。

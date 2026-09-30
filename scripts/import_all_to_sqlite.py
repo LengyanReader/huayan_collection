@@ -847,9 +847,10 @@ def _ensure_article_knowledge_schema(conn):
         return
     have = {r[0] for r in conn.execute(
         "SELECT name FROM sqlite_master WHERE type='table'")}
-    if {'article_terms', 'article_term_links'} <= have:
+    if {'article_terms', 'article_term_links', 'article_artifacts'} <= have:
         return
-    wanted = ('article_terms', 'article_term_links', 'idx_article_terms', 'idx_atl_')
+    wanted = ('article_terms', 'article_term_links', 'article_artifacts',
+              'idx_article_terms', 'idx_atl_', 'idx_artifacts')
     stmts, buf = [], []
     for line in schema_path.read_text(encoding='utf-8').splitlines():
         s = line.strip()
@@ -937,6 +938,79 @@ def import_article_knowledge(conn):
     n_files = conn.execute("SELECT COUNT(DISTINCT article_id) FROM article_terms").fetchone()[0]
     print(f"Article-knowledge: {n_files} article(s), {n_terms} terms, {n_links} links imported")
     return n_terms
+
+
+def import_article_artifacts(conn):
+    """Populate article_artifacts from data/translation/article_artifacts/*.yaml.
+
+    One YAML per standalone article: the artworks, relics, murals and archaeological
+    material that bear on that article's subject, each registered row-by-row with a
+    provenance grade, a display status, a relevance statement, a mandatory href
+    (the original object record, never a hot-linked bulk scan) and a mandatory
+    licence/attribution line. Idempotent: a file's rows are replaced wholesale.
+
+    Registration precedes display: status=pending rows are stored and auditable but the
+    renderer leaves them out until a human has compared them against the text, so an
+    unverified candidate can never reach the page as fact.
+    """
+    import glob
+    _ensure_article_knowledge_schema(conn)
+    ar_dir = ROOT / "data" / "translation" / "article_artifacts"
+    if not ar_dir.exists():
+        print("Article-artifacts: source dir absent, skipped")
+        return 0
+
+    files = sorted(glob.glob(str(ar_dir / "*.yaml")))
+    n_art = 0
+    for fp in files:
+        data = load_yaml(fp)
+        if not isinstance(data, dict):
+            print(f"  !! {Path(fp).name}: not a mapping, skipped")
+            continue
+        article_id = data.get('article_id') or Path(fp).stem
+        items = data.get('items') or []
+
+        # 幂等：先清该篇旧行
+        conn.execute("DELETE FROM article_artifacts WHERE article_id = ?", (article_id,))
+
+        for a in items:
+            aid = a.get('artifact_id')
+            if not aid or not a.get('title_zh'):
+                print(f"  !! {Path(fp).name}: item missing artifact_id/title_zh, skipped: {aid}")
+                continue
+            grade = (a.get('grade') or 'C').upper()
+            status = a.get('status') or ('rejected' if grade == 'D' else 'pending')
+            if status not in ('confirmed', 'pending', 'rejected'):
+                print(f"  !! {Path(fp).name}: bad status '{status}', treated as pending: {aid}")
+                status = 'pending'
+            # 版权与溯源底线：出处与许可必填，链接必填或如实标注〔无链接〕
+            href = a.get('href') or ''
+            src = a.get('source_note') or ''
+            lic = a.get('license') or ''
+            if not src:
+                print(f"  !! {Path(fp).name}: source_note missing, marked pending: {aid}")
+                status = 'pending'
+            if not lic:
+                print(f"  !! {Path(fp).name}: license missing, marked pending: {aid}")
+                status = 'pending'
+            if not href:
+                print(f"  !! {Path(fp).name}: href missing, recorded as 〔无链接〕: {aid}")
+            conn.execute("""
+                INSERT OR IGNORE INTO article_artifacts
+                (article_id, artifact_id, title_zh, title_en, era, location, category,
+                 grade, status, relevance_zh, relevance_en, href, thumb_url,
+                 source_note, license, note)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (article_id, aid, a.get('title_zh'), a.get('title_en'),
+                  a.get('era'), a.get('location'), a.get('category'),
+                  grade, status, a.get('relevance_zh'), a.get('relevance_en'),
+                  href, a.get('thumb_url'), src, lic, a.get('note')))
+            n_art += 1
+
+    conn.commit()
+    n_files = conn.execute("SELECT COUNT(DISTINCT article_id) FROM article_artifacts").fetchone()[0]
+    print(f"Article-artifacts: {n_files} article(s), {n_art} item(s) imported")
+    return n_art
 
 
 def verify_import(conn):
@@ -1122,6 +1196,9 @@ def main():
 
     print("\n--- Importing Article Knowledge Graph ---")
     import_article_knowledge(conn)
+
+    print("\n--- Importing Article Artifacts ---")
+    import_article_artifacts(conn)
     conn.execute("PRAGMA foreign_keys = ON")
 
     # ---------------------------------------------------------------

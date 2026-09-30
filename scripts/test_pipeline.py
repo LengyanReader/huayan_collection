@@ -291,6 +291,71 @@ def test_article_knowledge():
             pass_(f"{aid}: no ARTICLE_GRAPH leakage into other article pages")
 
 
+# ── Test 6b: Article artifacts register（文物·艺术品·壁画·考古）──
+def test_article_artifacts():
+    """文物注册表：YAML→SQLite→构建 三关一致；registered confirmation
+    precedes display（pending/rejected 留库待审，不入页面）。"""
+    print("\n[6b] Article artifacts register")
+
+    arts = db_reader.load_article_artifacts()
+    if not arts:
+        warn("load_article_artifacts() empty (no article_artifacts/*.yaml registered yet)")
+        return
+
+    for aid, art in sorted(arts.items()):
+        items = art.get('items', [])
+        if not items:
+            warn(f"{aid}: register empty")
+            continue
+
+        # 一：必具字段（出处/许可必填，链接必填或标〔无链接〕）
+        bad = [it['id'] for it in items
+               if not it.get('title') or not it.get('source') or not it.get('license')
+               or it.get('grade') not in ('A1', 'A2', 'B', 'C', 'D')]
+        if bad:
+            fail(f"{aid}: items missing title/source/license or bad grade: {bad}")
+        else:
+            pass_(f"{aid}: {len(items)} item(s) all carry title + source + license + valid grade")
+
+        # 二：href 必填或如实标注〔无链接〕（全角括号版本也认）
+        no_link = [it['id'] for it in items if not it.get('href')]
+        if any('无链接' not in (it.get('source') or '') for it in items if not it.get('href')):
+            fail(f"{aid}: missing href without 〔无链接〕 note: {no_link}")
+        else:
+            pass_(f"{aid}: href mandatory or explicitly 〔无链接〕 ({', '.join(no_link) or 'all linked'})")
+
+        # 三：状态仅三值；页面只应收 confirmed
+        for st in ('confirmed', 'pending', 'rejected'):
+            n = sum(1 for it in items if it.get('status') == st)
+            if n:
+                pass_(f"{aid}: status {st} = {n}")
+        badst = [it['id'] for it in items if it.get('status') not in ('confirmed', 'pending', 'rejected')]
+        if badst:
+            fail(f"{aid}: bad status: {badst}")
+
+        # 四：构建产物内嵌 ARTICLE_ARTIFACTS 且与 SQLite confirmed 完全一致
+        page = ROOT / "web" / "demo" / "articles" / f"{aid}.html"
+        if not page.exists():
+            fail(f"{aid}: articles/{aid}.html not built")
+            continue
+        html = page.read_text(encoding='utf-8')
+        m = re.search(r'var ARTICLE_ARTIFACTS\s*=\s*(\{.*?\});</script>', html, re.DOTALL)
+        if not m:
+            fail(f"{aid}: built page missing var ARTICLE_ARTIFACTS")
+            continue
+        try:
+            built = json.loads(m.group(1))
+        except json.JSONDecodeError as e:
+            fail(f"{aid}: ARTICLE_ARTIFACTS is not valid JSON: {e}")
+            continue
+        built_ids = sorted(b['id'] for b in built.get('items', []))
+        db_ids = sorted(b['id'] for b in items if b.get('status') == 'confirmed')
+        if built_ids == db_ids:
+            pass_(f"{aid}: HTML injected {len(built_ids)} confirmed item(s) = SQLite confirmed")
+        else:
+            fail(f"{aid}: HTML/SQLite mismatch: html={built_ids} db={db_ids}")
+
+
 # ── Test 7: Build output matches SQLite data ──
 def test_build_consistency():
     print("\n[7] Build output consistency")
@@ -412,6 +477,7 @@ def main():
     test_edges()
     test_db_reader()
     test_article_knowledge()
+    test_article_artifacts()
     test_build_consistency()
     test_no_hardcoding()
     test_relation_normalization()

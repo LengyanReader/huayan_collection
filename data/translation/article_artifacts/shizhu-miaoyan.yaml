@@ -1,0 +1,211 @@
+# 文物 · 艺术品 · 壁画 · 考古资料 — 世主妙严品（华严经细读·第一部）
+# 注册先行、定级为准；status=confirmed 方入页面，pending/rejected 留库待审不入页。
+# 规则见 CLAUDE.md「引用可点·出处可溯」与 import_article_artifacts 底部注释。
+article_id: shizhu-miaoyan
+title: 相关艺术品 · 文物 · 壁画 · 考古资料（世主妙严品）
+items:
+  # ── 敦煌 · 莫高窟 华严经变（敦煌研究院官方著录）──
+  - artifact_id: dunhuang-cave-12
+    title_zh: "莫高窟第12窟 北壁西侧《华严经变》（索法律窟）"
+    title_en: "Mogao Cave 12, west side of north wall, Huayan Bianxiang (Su family cave)"
+    era: "晚唐（归义军时代）"
+    location: "甘肃敦煌莫高窟南区北端"
+    category: mural
+    grade: A1
+    status: confirmed
+    relevance_zh: "本品即七处九会之第一会（菩提场）始品。本图以莲花藏海与须弥山为背景，七处九会均清晰表现；善财求法绘于四铺屏风画中，其详细为他窟所无。敦煌研究院明记莫高窟华严经变共二十九铺，始于盛唐、盛行于中晚唐。"
+    relevance_en: "This chapter opens the first of the nine assemblies (the bodhimanda). The mural takes the lotus-store sea and Mount Sumeru as backdrop with all seven places and nine assemblies clearly shown; Sudhana's quest fills four screen panels unmatched in detail elsewhere."
+    href: "https://www.dha.ac.cn/info/1425/3658.htm"
+    source_note: "敦煌研究院·莫高窟第12窟（数字资源·文化专题·悦读敦煌·敦煌石窟）"
+    license: "敦煌研究院官网公开介绍（学术参考、非商业使用）"
+
+  - artifact_id: dunhuang-cave-44
+    title_zh: "莫高窟第44窟 龛顶「华严九会中之八会」及龛内「华严世界」"
+    title_en: "Mogao Cave 44, vault ceiling with eight of the nine Avatamsaka assemblies and Huayan worlds"
+    era: "盛唐凿建（中唐、五代重修）"
+    location: "甘肃敦煌莫高窟"
+    category: mural
+    grade: A1
+    status: confirmed
+    relevance_zh: "官方著录龛顶画华严九会中之八会，龛内西、南、北壁画华严世界及华严九会之一会；第一会（菩提场·本品）在九会之列。"
+    relevance_en: "The archive records eight of the nine Avatamsaka assemblies on the ceiling and Huayan worlds in the niche; the first assembly (this chapter's bodhimanda) is among them."
+    href: "https://www.dha.ac.cn/info/1425/3583.htm"
+    source_note: "敦煌研究院·莫高窟第44窟"
+    license: "敦煌研究院官网公开介绍（学术参考、非商业使用）"
+
+  - artifact_id: dunhuang-cave-231
+    title_zh: "莫高窟第231窟 北壁《华严经变》（阴家窟）"
+    title_en: "Mogao Cave 231, north wall Huayan Bianxiang (Yin family cave)"
+    era: "中唐·吐蕃统治后期（唐开成四年，839）"
+    location: "甘肃敦煌莫高窟"
+    category: mural
+    grade: A1
+    status: confirmed
+    relevance_zh: "主室北壁绘药师、华严、弥勒三经变，共十幅经变中之华严一铺，吐蕃式布局、联屏风故事画，与会众庄严之本品同属华严首会图像传统。"
+    relevance_en: "The north wall arranges three sutra-transform paintings including the Huayan Bianxiang in the Tubo-period layout with linked screen narratives."
+    href: "https://www.dha.ac.cn/info/1425/3639.htm"
+    source_note: "敦煌研究院·莫高窟第231窟"
+    license: "敦煌研究院官网公开介绍（学术参考、非商业使用）"
+
+  - artifact_id: dunhuang-cave-55
+    title_zh: "莫高窟第55窟 窟顶北披《华严经变》"
+    title_en: "Mogao Cave 55, north slope of ceiling Huayan Bianxiang"
+    era: "宋·建隆三年（962）前后（曹元忠窟）"
+    location: "甘肃敦煌莫高窟"
+    category: mural
+    grade: A1
+    status: confirmed
+    relevance_zh: "窟顶东披楞伽、南披法华、北披华严三经变并列；本品即首会图像所本。"
+    relevance_en: "The ceiling pairs Laṅkāvatāra, Lotus and Avatamsaka sutra-transforms; this chapter underlies the first-assembly imagery."
+    href: "https://www.dha.ac.cn/info/1425/3603.htm"
+    source_note: "敦煌研究院·莫高窟第55窟"
+    license: "敦煌研究院官网公开介绍（学术参考、非商业使用）"
+
+  - artifact_id: dunhuang-cave-36
+    title_zh: "莫高窟第36窟《华严经变·龙王礼佛图》"
+    title_en: "Mogao Cave 36, Dragons Paying Homage within the Huayan Bianxiang"
+    era: "唐（具体年代〔待核〕）"
+    location: "甘肃敦煌莫高窟"
+    category: mural
+    grade: A2
+    status: confirmed
+    relevance_zh: "华严经变中的龙王礼佛场景，映证本品卷一会众中诸王、龙王、八部众来集、各以解脱门礼佛之庄严。"
+    relevance_en: "A dragon homage scene inside the Huayan transform echoes the kings, dragon kings and eightfold assembly of this chapter paying homage."
+    href: "https://m.thepaper.cn/newsDetail_forward_33634018"
+    source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）"
+    license: "澎湃新闻公开报道页（学术参考、非商业使用）"
+
+  # ── 海外馆藏 ──
+  - artifact_id: mgm-26462
+    title_zh: "吉美博物馆 MG.26462 绢本彩绘《华严经变》二幅（七处九会·十地品）"
+    title_en: "Guimet Museum MG.26462, silk Huayan Bianxiang in two scrolls (Nine Assemblies and Ten Stages)"
+    era: "五代（敦煌藏经洞出土）"
+    location: "法国·巴黎吉美国立亚洲艺术博物馆"
+    category: painting_scroll
+    grade: A1
+    status: confirmed
+    relevance_zh: "五代绢本彩绘，其一为《九会》、其二为《十地品》；黄色缘边有「左藏库」官印，证其唐代库藏来源。九会图中第一会即本品之会处。"
+    relevance_en: "A five-dynasties painted silk pair, one on the Nine Assemblies and one on the Ten Stages, edged with the Zuoku seal of the Tang left storehouse; the first assembly therein is this chapter's."
+    href: "https://www.thepaper.cn/newsDetail_forward_2362303"
+    source_note: "劳合·费日（Laure Feugère）〈完整丰富的唐代织品实例：关于法国吉美博物馆藏敦煌纺织品〉，澎湃新闻·古代艺术（2018-09-03，经中国丝绸博物馆授权刊发）；吉美官方藏品页未核实〔待核〕"
+    license: "澎湃新闻公开刊发页（学术参考、非商业使用）"
+
+  - artifact_id: bm-avatamsaka-scroll
+    title_zh: "大英博物馆藏纸本白描《华严经变》长卷（34.6×1244cm，传李公麟）"
+    title_en: "British Museum handscroll, ink-outline Huayan Bianxiang, attr. Li Gonglin"
+    era: "传北宋（作者存疑）"
+    location: "英国·伦敦大英博物馆"
+    category: painting_scroll
+    grade: B
+    status: confirmed
+    note: "作者系传北宋李公麟，媒体明言「究竟是不是李公麟所作，留待学术界考证」，不作定论。"
+    relevance_zh: "长卷以白描画七处九会人物：卷端毗卢遮那佛坐于狮背，诸菩萨、阿修罗王、龙王、三十三天等一字排开，善财童子居左礼敬——第一会（本品）之会众与首会图像俱在其中。"
+    relevance_en: "An ink line handscroll of the seven places and nine assemblies: Vairocana on a lion with bodhisattvas, asura kings, dragon kings and the thirty-three heavens in procession, Sudhana leftmost in homage."
+    href: "https://m.thepaper.cn/newsDetail_forward_33634018"
+    source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）"
+    license: "澎湃新闻公开报道页（学术参考、非商业使用）"
+
+  # ── 飞来峰造像 ──
+  - artifact_id: feilaifeng-cave5
+    title_zh: "杭州飞来峰第5龛 卢舍那佛会浮雕（北宋乾兴元年 1022，胡承德造）"
+    title_en: "Feilaifeng niche 5, rock relief of the Vairocana assembly (Northern Song, 1022, by Hu Chengde)"
+    era: "北宋乾兴元年（1022）"
+    location: "浙江杭州·飞来峰青林洞南口"
+    category: sculpture
+    grade: A2
+    status: confirmed
+    note: "壶门式花头龛高146cm×宽150cm，共浮雕十七身：本尊卢舍那居中、文殊骑狮（拂蒜牵引）、普贤骑象（獠蛮牵引），菩萨四身、天王四身、龛外飞天二身。主流释文作「说法状」；Ching Chang 2023 主张或为智拳印，两说并存〔存疑〕。"
+    relevance_zh: "赖天兵《汉藏瑰宝：杭州飞来峰造像研究》立专节「《华严经》七处九会与卢舍那佛会浮雕」；卢舍那即本品主尊毗卢遮那之报身相，首会说法图像之北宋典范。"
+    relevance_en: "Lai Tianbing's 'Han-Tibetan Treasures' gives this relief its own section under the seven places and nine assemblies; Rocana, the reward-body of the chapter's Vairocana, is shown teaching."
+    href: "https://www.fjdh.cn/wumin/2009/04/14535255438.html"
+    source_note: "佛教导航〈杭州飞来峰造像〉（录乾兴元年胡承德造像题记全文）；陈俊男〈宋韵遗踪：杭州西湖飞来峰造像艺术〉，城市学研究网（2021-12-02）"
+    license: "公开宗教网站/机构介绍页（学术参考、非商业使用）"
+
+  - artifact_id: feilaifeng-yuan3
+    title_zh: "杭州飞来峰青林洞口 元代华严三圣（至元十九年 1282）"
+    title_en: "Feilaifeng Yuantai Huayan Triad at the Qingsu grotto mouth (1282)"
+    era: "元·至元十九年（1282）"
+    location: "浙江杭州·飞来峰青林洞口外壁"
+    category: sculpture
+    grade: A2
+    status: confirmed
+    relevance_zh: "本尊毗卢遮那高155cm，头戴五佛宝冠、全跏趺坐、双手作五字剑印（一说智拳印）；文殊、普贤半跏趺坐；旁镌徐僧录造像题记。杭州西湖最早的一龛元代石刻造像，华严教主三尊一龛。"
+    relevance_en: "The main Vairocana (155 cm) wears the crown of the five Tathāgatas and forms the sword-seal, with Mañjuśrī and Samantabhadra in half-lotus; inscribed to Xu Senglu in 1282 — the earliest Yuan rock triad at West Lake."
+    href: "https://www.fjdh.cn/wumin/2009/04/14535255438.html"
+    source_note: "佛教导航〈杭州飞来峰造像〉（元代部分：青林洞口华严三圣·至元十九年徐僧录题记）"
+    license: "公开宗教网站介绍页（学术参考、非商业使用）"
+
+  # ── 榆林窟／大足 ──
+  - artifact_id: yulin-cave25
+    title_zh: "榆林窟第25窟 主室东壁北段 毗卢遮那佛（题「清净法身卢那舍佛」）"
+    title_en: "Yulin Cave 25, Vairocana labelled 'Pure Dharmakaya Rocana Buddha'"
+    era: "吐蕃统治时期（中唐，约9世纪）"
+    location: "甘肃瓜州榆林窟"
+    category: mural
+    grade: A2
+    status: confirmed
+    relevance_zh: "法身佛毗卢遮那结禅定印、榜题「清净法身卢那舍佛」，即本品主尊之清净法身相，报身（卢舍那）与法身（毗卢遮那）二相并显。"
+    relevance_en: "The dharmakāya Buddha Vairocana in dhyāna-mudrā with a label naming him the Pure Dharmakāya Rocana Buddha — the very reward/ dharma-body duality of this chapter's host."
+    href: "https://m.thepaper.cn/newsDetail_forward_33634018"
+    source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）"
+    license: "澎湃新闻公开报道页（学术参考、非商业使用）"
+
+  - artifact_id: dazu-baoding
+    title_zh: "大足宝顶山 华严三圣（中尊毗卢遮那说法印）"
+    title_en: "Dazu Baodingshan, Huayan Triad with Vairocana teaching"
+    era: "南宋（大足石刻；〔待核〕具体年代）"
+    location: "重庆大足·宝顶山大佛湾"
+    category: sculpture
+    grade: A2
+    status: confirmed
+    relevance_zh: "三尊各高约7m：中尊毗卢遮那螺髻说法印、髻上两道毫光；文殊左手捧七重宝塔、右手扶塔，普贤双手捧舍利塔；背壁刻八十一尊圆龛小佛——本品「彼须弥山微尘数菩萨围绕」之图像化。"
+    relevance_en: "Three ~7 m figures: Vairocana with ushnisha and teaching mudra, Manjushri holding a seven-tiered stupa, Samantabhadra a relic stupa; eighty-one niche Buddhas behind — an image of the countless bodhisattvas surrounding the host."
+    href: "https://m.thepaper.cn/newsDetail_forward_33634018"
+    source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）"
+    license: "澎湃新闻公开报道页（学术参考、非商业使用）"
+
+  - artifact_id: dazu-shizhuan
+    title_zh: "大足石篆山第7号龛 大日如来（毗卢遮那，智拳印）"
+    title_en: "Dazu Shizhuanshan niche 7, Mahavairocana in vajra-mudra"
+    era: "北宋元丰五年（1082）〔待核〕"
+    location: "重庆大足·石篆山石窟"
+    category: sculpture
+    grade: A2
+    status: confirmed
+    relevance_zh: "戴天冠、坐莲花、手握智拳印之大日如来（毗卢遮那），法身佛造像体系（毗卢印／智拳印）与本经教主图像学互证。"
+    relevance_en: "A crown-wearing Mahavairocana in vajra-mudra, cross-reading with the iconography of this sutra's lord."
+    href: "https://m.thepaper.cn/newsDetail_forward_33634018"
+    source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）"
+    license: "澎湃新闻公开报道页（学术参考、非商业使用）"
+
+  # ── 西夏刊本 ──
+  - artifact_id: khara-khoto-blockprint
+    title_zh: "西夏黑水城出土《华严经》刊本卷首毗卢遮那说法会插绘（TK72／TK98等）"
+    title_en: "Xixia Khara-Khoto blockprint frontispiece of Vairocana teaching the Avatamsaka"
+    era: "西夏"
+    location: "俄罗斯圣彼得堡·艾尔米塔什博物馆（原藏黑水城出土）"
+    category: print
+    grade: A2
+    status: confirmed
+    note: "据赖天兵《汉藏瑰宝》所引俄藏黑水城西夏刊本著录；原件无稳定公开藏品页，据实标〔无链接〕，不硬凑。"
+    relevance_zh: "西夏刊《华严经》（如普贤行愿品 TK72／TK98、疏序 TK61）卷首毗卢遮那说法会插绘，证华严首会说法图像于西夏刻本之流通。"
+    relevance_en: "A frontispiece of Vairocana teaching at the head of the Xixia-printed Avatamsaka — evidence the first-assembly image circulated in Xixia xylographs."
+    href: ""
+    source_note: "赖天兵《汉藏瑰宝：杭州飞来峰造像研究》所引黑水城西夏华严刊本著录；原件藏艾尔米塔什博物馆〔无链接〕"
+    license: "学术著作转引著录（见原书版权）"
+
+  # ── 待审（不入页）──
+  - artifact_id: datong-huayansi-mural
+    title_zh: "山西大同华严寺大雄宝殿「七处九会」壁画"
+    title_en: "Datong Huayan Temple, Grand Hall mural of the seven places and nine assemblies"
+    era: "清代（大殿辽金遗构，壁画清代）〔待核〕"
+    location: "山西大同·华严寺大雄宝殿"
+    category: mural
+    grade: C
+    status: pending
+    note: "媒体转述：南北山墙各4幅、西檐墙1幅共9幅，另有善财童子五十三参；唯见张素闻·澎湃新闻一文，待山西省文物局／华严寺官方著录复核后入页。"
+    relevance_zh: "九会图即华严会处图像总纲，第一会（本品）居首；太子殿建于辽清宁八年（1062），大雄宝殿金天眷三年（1140）重建。"
+    relevance_en: "Nine assemblies incl. the first (this chapter) as the starting image; hall rebuilt 1140 Jin."
+    href: "https://m.thepaper.cn/newsDetail_forward_33634018"
+    source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）〔待官方著录复核〕"
+    license: "澎湃新闻公开报道页（学术参考、非商业使用）"

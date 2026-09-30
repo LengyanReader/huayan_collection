@@ -123,6 +123,11 @@ function renderArticle(){
   h+=embed.html;
   h+='</div>';
 
+  // ── 相关艺术品 · 文物 · 壁画 · 考古（默认折叠块，由 common.js renderArticleArtifacts 填充）──
+  if((typeof ARTICLE_ARTIFACTS!=='undefined')&&ARTICLE_ARTIFACTS&&(ARTICLE_ARTIFACTS.items||[]).length){
+    h+='<div class="section" data-chrome="1" id="article-artifacts" style="border-left:4px solid var(--gold)"></div>';
+  }
+
   // ── 页脚 ──
   h+='<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
   h+='<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
@@ -132,6 +137,15 @@ function renderArticle(){
   h+='</div>';
 
   root.innerHTML=h;
+
+  // ── 命中文档名相（自动扫描＋显式标记）──
+  if(typeof _markTermRefs==='function' && document.getElementById('article-full')){
+    _markTermRefs('#article-full');
+  }
+  // ── 相关艺术品/文物/壁画/考古（默认折叠）──
+  if(typeof renderArticleArtifacts==='function' && document.getElementById('article-artifacts')){
+    renderArticleArtifacts('#article-artifacts');
+  }
 
   // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
   _initArticleENMode();
