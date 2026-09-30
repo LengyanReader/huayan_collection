@@ -37,7 +37,7 @@ article_id: shizhu-miaoyan
 title: 世主妙严品细读 · 名相会处知识图谱
 source_doc: docs/经学文献/华严经细读_第一部_世主妙严品.md
 method_note: >-
-  三经计数系以程式就本项目所藏三经全文（T10n0279／T10n0278／T10n0273）归一化后逐词检索所得，
+  三经计数系以程式就本项目所藏三经全文（T10n0279／T09n0278／T10n0293）归一化后逐词检索所得，
   日期 2026-09-30，读者可依该文凡例一自行覆核。
 
 terms:
@@ -69,7 +69,7 @@ terms:
       Site of the second assembly: in the Eighty-fascicle scripture the "Hall of Universal
       Light" within the bodhimaṇḍa in Magadha; in the Sixty-fascicle version, the "Hall of
       Universal Light at the site of calming and extinction."
-    source_note: T10n0279 卷十六、卷四十；T10n0278；计数：普光法堂 1／2／0，普光明殿 3／0／0
+    source_note: T10n0279 卷十六、卷四十；T09n0278；计数：普光法堂 1／2／0，普光明殿 3／0／0
 
   - term_id: site_trayastriṃśa
     term_zh: 忉利天宮
@@ -175,7 +175,7 @@ terms:
     grade: A1
     definition_zh: 六十华严（晋译）第一品之名，即八十华严「世主妙嚴品」之对应品。
     definition_en: The title of the first chapter in the Sixty-fascicle (Jin) translation, corresponding to the Eighty-fascicle's "Adornment of the World-Lords."
-    source_note: T10n0278；澄观《颂释章》记「晉經名〈世間淨眼品〉」
+    source_note: T09n0278；澄观《颂释章》记「晉經名〈世間淨眼品〉」
 
   # ── 关键术语 ──
   - term_id: jie_tuomen
@@ -233,7 +233,7 @@ terms:
       八十卷作「如来藏三昧」，六十卷作「如来净藏三昧」——版本异名。
       澄观以此三昧摄受「胜天王出现品」等，属注疏判摄。
     definition_en: The "tathāgatagarbha samādhi" (samādhi of the Tathāgata-garbha); the Sixty-fascicle version names it "Tathāgata's pure garbha."
-    source_note: T10n0279／T10n0278；计数：1／1／1
+    source_note: T10n0279／T09n0278；计数：1／1／1
 
   - term_id: samadhi_haiyin
     term_zh: 海印三昧
@@ -629,6 +629,199 @@ terms:
       然此名含「不喜见」之义，与「厌夜」之义不合，历来即有异说，亦有作 Candraprabha、
       Nanda 等说者，本篇不取定译〕
 
+  # ── 卷三十三组·组首与头门（2026-09-30 T279 卷三逐组回源核定）────────────
+  - term_id: grp_j3_01_chiguo
+    term_zh: 持國乾闥婆王
+    aliases: [持国乾闼婆王, 持國乾闼婆, 持国乾闼婆]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组一（一切乾闼婆众，10 门 10 偈）之组首，得「自在方便攝一切眾生解脫門」。
+      长行组首与颂主同为「持國乾闥婆王」，颂引作「普觀一切乾闥婆眾而說頌言」（无「已」字）。
+    definition_en: >-
+      Head of group one of Book Three (the gandharvas: ten gates, ten stanzas), attaining "the
+      gate of freedom and skillful means in gathering in all beings." Prose-head and
+      verse-singer are the same king; the lead-in reads 普觀一切乾闥婆眾而說頌言, without 已.
+    source_note: T10n0279 卷三「復次，持國乾闥婆王，得自在方便攝一切眾生解脫門」
+
+  - term_id: grp_j3_02_zengzhang
+    term_zh: 增長鳩槃荼王
+    aliases: [增长鸠槃荼王, 增長鳩槃荼, 鳩槃荼王]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组二（一切鸠槃荼众，10 门 10 偈）之组首，得「滅一切怨害力解脫門」。**本组颂中
+      径称其王为「龍主」**（「此解脫門龍主得」），然 T279 卷三实以鸠槃荼（组 2）、龙（组 3）
+      分列两族。
+    definition_en: >-
+      Head of group two (the kumbhāṇḍas: ten gates, ten stanzas), attaining "the gate of
+      destroying all hostile force." The verse calls this king "dragon-lord" (龍主), though
+      T279 lists kumbhāṇḍas (group 2) and dragons (group 3) as two distinct classes.
+    source_note: T10n0279 卷三「復次，增長鳩槃荼王，得滅一切怨害力解脫門」
+
+  - term_id: grp_j3_03_pilouboxia
+    term_zh: 毘樓博叉龍王
+    aliases: [毘楼博叉龙王, 毘樓博叉, 毘楼博叉, 毘樓博叉龍王]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组三（一切诸龙众）之组首，得「消滅一切諸龍趣熾然苦解脫門」。**本组门与偈各 11，
+      为卷三之仅见**（余组各 10）；其颂引作「普觀一切諸龍眾已，即說頌言」，为全卷唯一用
+      「已…即說頌言」者。
+    definition_en: >-
+      Head of group three (the dragons), attaining "the gate of extinguishing the blazing
+      suffering of all dragon-fates." **This group alone has eleven gates and eleven stanzas**
+      in Book Three (all others have ten); its lead-in alone reads 普觀一切諸龍眾已，即說頌言.
+    source_note: T10n0279 卷三「復次，毘樓博叉龍王，得消滅一切諸龍趣熾然苦解脫門」
+    note: 〔待核〕此名之梵拼未定译；组内「毘摩質多羅阿脩羅王」（组 8）当与之辨
+
+  - term_id: grp_j3_04_vishamen
+    term_zh: 毘沙門夜叉王
+    aliases: [毘沙门夜叉王, 毘沙門, 毗沙门夜叉王]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组四（一切夜叉众会，10 门 10 偈）**长行组首**，得「以無邊方便救護惡眾生解脫門」。
+      然本组**颂主为「多聞大夜叉王」**，为同组第二王——长行领组以列名之首，颂则另有所指，
+      二者非讹误。
+    definition_en: >-
+      The **prose-head** of group four (the yakṣas: ten gates, ten stanzas), attaining "the
+      gate of protecting evil-doing beings with unlimited skillful means." Yet the verse is
+      sung by "Much-Heard Yaksha King" (多聞大夜叉王), the group's second king — the prose
+      leads by the first name listed, the verse by its own choice.
+    source_note: T10n0279 卷三「復次，毘沙門夜叉王，得以無邊方便救護惡眾生解脫門」
+    note: 〔待核〕颂主何以必取组内第二名，待校澄观《疏》卷四
+
+  - term_id: grp_j3_05_shanhui
+    term_zh: 善慧摩睺羅伽王
+    aliases: [善慧摩睺罗伽王, 善慧摩睺羅伽, 摩睺羅伽王]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组五（一切摩睺罗伽众，10 门 10 偈）**长行组首**，得「以一切神通方便令眾生集功德
+      解脫門」；本组**颂主为「善慧威光摩睺羅伽王」**（同组第二王），与组四同例。
+    definition_en: >-
+      The **prose-head** of group five (the makhoras: ten gates, ten stanzas), attaining "the
+      gate of all spiritual powers, by which beings are gathered into merit"; the verse is sung
+      by "Wise-Bannered Makhora King" (善慧威光摩睺羅伽王), the group's second king — the
+      same divergence as in group four.
+    source_note: T10n0279 卷三「復次，善慧摩睺羅伽王，得以一切神通方便令眾生集功德解脫門」
+
+  - term_id: grp_j3_06_kinara
+    term_zh: 善慧光明天緊那羅王
+    aliases: [善慧光明天紧那罗王, 善慧光明天緊那羅, 紧那罗王]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组六（一切紧那罗众，10 门 10 偈）之组首，得「普生一切喜樂業解脫門」。
+      长行组首与颂主同名，颂引作「普觀一切緊那羅眾而說頌言」。
+    definition_en: >-
+      Head of group six (the kiṇnaras: ten gates, ten stanzas), attaining "the gate of
+      universally engendering every joy-giving karma." Prose-head and verse-singer are the same.
+    source_note: T10n0279 卷三「復次，善慧光明天緊那羅王，得普生一切喜樂業解脫門」
+
+  - term_id: grp_j3_07_garuda
+    term_zh: 大速疾力迦樓羅王
+    aliases: [大速疾力迦楼罗王, 大速疾力迦樓羅, 迦樓羅王]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组七（一切迦楼罗众，10 门 10 偈）之组首，得「無著無礙眼普觀察眾生界解脫門」；
+      其颂首「佛眼廣大無邊際，普見十方諸國土」，**为卷三与「见」关系最密之一组**。
+    definition_en: >-
+      Head of group seven (the garuḍas: ten gates, ten stanzas), attaining "unattached,
+      unobstructed eyes, universally surveying the realm of beings"; its verse opens "The
+      Buddha's eye is vast and without bound" — the group in which seeing dominates.
+    source_note: T10n0279 卷三「復次，大速疾力迦樓羅王，得無著無礙眼普觀察眾生界解脫門」
+
+  - term_id: grp_j3_08_rahu
+    term_zh: 羅睺阿脩羅王
+    aliases: [罗睺阿修罗王, 羅睺阿脩羅, 罗睺阿修罗]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组八（一切阿修罗众，10 门 10 偈）之组首，得「現為大會尊勝主解脫門」——
+      **非谓阿修罗本为尊，而谓其能现为众会之尊胜主**。
+    definition_en: >-
+      Head of group eight (the asuras: ten gates, ten stanzas), attaining "the gate of
+      manifesting as the supreme master presiding over the great assembly" — not that the asura
+      is the master, but that he is able to appear as one.
+    source_note: T10n0279 卷三「復次，羅睺阿脩羅王，得現為大會尊勝主解脫門」
+
+  - term_id: grp_j3_09_zhoushen
+    term_zh: 示現宮殿主晝神
+    aliases: [示现宫殿主昼神, 示現宮殿主晝神, 主晝神, 主昼神]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组九（一切主昼神众，10 门 10 偈）之组首，得「普入一切世間解脫門」。
+      〔待核：昼／夜神之名，经中未标梵名〕
+    definition_en: >-
+      Head of group nine (the deities of daylight: ten gates, ten stanzas), attaining "the
+      gate of universally entering all worlds."
+    source_note: T10n0279 卷三「復次，示現宮殿主晝神，得普入一切世間解脫門」
+
+  - term_id: grp_j3_10_yeshen
+    term_zh: 普德淨光主夜神
+    aliases: [普德净光主夜神, 普德淨光主夜神, 主夜神]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组十（一切主夜神众，10 门 10 偈）之组首，得「寂靜禪定樂大勇健解脫門」——
+      **卷三唯一以「寂靜禪定」为门者**。本组颂引作「遍觀一切主夜神眾而說頌言」，
+      为全卷唯一用「遍觀」者（余组作「普觀」）。
+    definition_en: >-
+      Head of group ten (the deities of night: ten gates, ten stanzas), attaining "the gate of
+      the joy of tranquil meditation and great vigour" — the only gate in Book Three beginning
+      with stillness. Its lead-in alone reads 遍觀一切主夜神眾而說頌言, where all other groups
+      read 普觀.
+    source_note: T10n0279 卷三「復次，普德淨光主夜神，得寂靜禪定樂大勇健解脫門」
+
+  - term_id: grp_j3_11_fangshen
+    term_zh: 遍住一切主方神
+    aliases: [遍住一切主方神, 主方神, 遍住一切主方]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组十一（一切主方神众，10 门 10 偈）之组首，得「普救護力解脫門」；
+      其颂以「普示法門令悟入，悉使當成無上智」为纲。〔待核：主方神之梵名〕
+    definition_en: >-
+      Head of group eleven (the deities of the quarters: ten gates, ten stanzas), attaining
+      "the gate of universal protective power"; its verse is keyed to "he universally shows
+      them the gates so that they awaken and enter, and brings them all to accomplish
+      unsurpassed wisdom."
+    source_note: T10n0279 卷三「復次，遍住一切主方神，得普救護力解脫門」
+
+  - term_id: grp_j3_12_kongshen
+    term_zh: 淨光普照主空神
+    aliases: [净光普照主空神, 淨光普照主空神, 主空神]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组十二（一切主空神众，10 门 10 偈）之组首，得「普知諸趣一切眾生心解脫門」。
+      **本组之偈通篇五言**，与卷四妙色那罗延执金刚神组同为全品仅见之二处五言。
+    definition_en: >-
+      Head of group twelve (the deities of space: ten gates, ten stanzas), attaining "the gate
+      of universally knowing the mind of every being in every realm of existence." **This
+      group's verses are throughout in five-syllable metre** — one of only two such places in
+      the whole chapter (the other is the vajra-bearers of Book Four).
+    source_note: T10n0279 卷三「復次，淨光普照主空神，得普知諸趣一切眾生心解脫門」
+
+  - term_id: grp_j3_13_fengshen
+    term_zh: 無礙光明主風神
+    aliases: [无碍光明主风神, 無礙光明主風神, 主風神]
+    category: figure
+    grade: A1
+    definition_zh: >-
+      卷三组十三（一切主风神众，10 门 10 偈）之组首，得「普入佛法及一切世間解脫門」；
+      其颂以「無相無形無影像」三否定冠首。**主风神为卷三众神之末**，卷四诸神自此续起。
+    definition_en: >-
+      Head of group thirteen (the deities of wind: ten gates, ten stanzas), attaining "the gate
+      of universally entering the Dharma of the Buddhas and every world"; its verse opens with
+      three negations — "formless, shapeless, without image." **The wind-deities close Book
+      Three**, after which Book Four takes up the fire, water, and other deities.
+    source_note: T10n0279 卷三「復次，無礙光明主風神，得普入佛法及一切世間解脫門」
+
 links:
   - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_bodhimaṇḍa, to_label: 摩竭提國阿蘭若法菩提場}
   - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_puguang, to_label: 普光法堂／普光明殿}
@@ -656,3 +849,32 @@ links:
   - {from_term_id: tian_rigong, rel: see_also, to_type: term, to_ref: men_riguang_zhao, to_label: 日天子组十一头门（净光普照·常为利益）}
   - {from_term_id: tian_yuegong, rel: see_also, to_type: term, to_ref: men_yueguang_shehua, to_label: 月天子组十二头门（净光普照法界·摄化）}
   - {from_term_id: tian_rigong, rel: see_also, to_type: term, to_ref: tian_yuegong, to_label: 日宫·月宫（日月二众，卷二降序之末二组）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_01_chiguo, to_label: 卷三组一·持國乾闥婆王（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_02_zengzhang, to_label: 卷三组二·增長鳩槃荼王（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_03_pilouboxia, to_label: 卷三组三·毘樓博叉龍王（11 门 11 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_04_vishamen, to_label: 卷三组四·毘沙門夜叉王（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_05_shanhui, to_label: 卷三组五·善慧摩睺羅伽王（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_06_kinara, to_label: 卷三组六·善慧光明天緊那羅王（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_07_garuda, to_label: 卷三组七·大速疾力迦樓羅王（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_08_rahu, to_label: 卷三组八·羅睺阿脩羅王（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_09_zhoushen, to_label: 卷三组九·示現宮殿主晝神（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_10_yeshen, to_label: 卷三组十·普德淨光主夜神（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_11_fangshen, to_label: 卷三组十一·遍住一切主方神（10 门 10 偈）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_12_kongshen, to_label: 卷三组十二·淨光普照主空神（10 门 10 偈·五言）}
+  - {from_term_id: chapter_shizhu, rel: contains_group, to_type: term, to_ref: grp_j3_13_fengshen, to_label: 卷三组十三·無礙光明主風神（10 门 10 偈·卷三末）}
+  - {from_term_id: grp_j3_01_chiguo, rel: next_group, to_type: term, to_ref: grp_j3_02_zengzhang, to_label: 卷三组二·增長鳩槃荼王}
+  - {from_term_id: grp_j3_02_zengzhang, rel: next_group, to_type: term, to_ref: grp_j3_03_pilouboxia, to_label: 卷三组三·毘樓博叉龍王}
+  - {from_term_id: grp_j3_03_pilouboxia, rel: next_group, to_type: term, to_ref: grp_j3_04_vishamen, to_label: 卷三组四·毘沙門夜叉王}
+  - {from_term_id: grp_j3_04_vishamen, rel: next_group, to_type: term, to_ref: grp_j3_05_shanhui, to_label: 卷三组五·善慧摩睺羅伽王}
+  - {from_term_id: grp_j3_05_shanhui, rel: next_group, to_type: term, to_ref: grp_j3_06_kinara, to_label: 卷三组六·善慧光明天緊那羅王}
+  - {from_term_id: grp_j3_06_kinara, rel: next_group, to_type: term, to_ref: grp_j3_07_garuda, to_label: 卷三组七·大速疾力迦樓羅王}
+  - {from_term_id: grp_j3_07_garuda, rel: next_group, to_type: term, to_ref: grp_j3_08_rahu, to_label: 卷三组八·羅睺阿脩羅王}
+  - {from_term_id: grp_j3_08_rahu, rel: next_group, to_type: term, to_ref: grp_j3_09_zhoushen, to_label: 卷三组九·示現宮殿主晝神（八部讫，转诸神）}
+  - {from_term_id: grp_j3_09_zhoushen, rel: next_group, to_type: term, to_ref: grp_j3_10_yeshen, to_label: 卷三组十·普德淨光主夜神}
+  - {from_term_id: grp_j3_10_yeshen, rel: next_group, to_type: term, to_ref: grp_j3_11_fangshen, to_label: 卷三组十一·遍住一切主方神}
+  - {from_term_id: grp_j3_11_fangshen, rel: next_group, to_type: term, to_ref: grp_j3_12_kongshen, to_label: 卷三组十二·淨光普照主空神}
+  - {from_term_id: grp_j3_12_kongshen, rel: next_group, to_type: term, to_ref: grp_j3_13_fengshen, to_label: 卷三组十三·無礙光明主風神（卷三之末）}
+  - {from_term_id: grp_j3_02_zengzhang, rel: see_also, to_type: term, to_ref: grp_j3_03_pilouboxia, to_label: 颂称「龍主」而经分列鸠槃荼·龙两族}
+  - {from_term_id: grp_j3_04_vishamen, rel: see_also, to_type: term, to_ref: grp_j3_05_shanhui, to_label: 长行组首与颂主不同之两例（颂主取组内第二名）}
+  - {from_term_id: grp_j3_09_zhoushen, rel: see_also, to_type: term, to_ref: grp_j3_10_yeshen, to_label: 主昼·主夜（昼神遍入，夜神调伏）}
+  - {from_term_id: grp_j3_12_kongshen, rel: see_also, to_type: term, to_ref: grp_j3_13_fengshen, to_label: 五言偈之二（另一处见卷四执金刚神组）}
