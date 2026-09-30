@@ -282,6 +282,112 @@ terms:
       "the kingdom called 'harmless' (a-himsa) in translation," in Chengguan's gloss.
     source_note: T10n0279 等三经；译名「此云不害國」出澄观《新译华严经七处九会颂释章》T45n1738
 
+  # ── 卷二四组名相（L.91 批次：组二/组四/组五/组六）──
+  - term_id: tian_cheng_kle_faguangmingshuang
+    term_zh: 可愛樂法光明幢天王
+    aliases: [可爱乐法光明幢天王, 可爱乐法光明幢, 法光明幢]
+    category: person
+    grade: A1
+    definition_zh: >-
+      卷二组二之首众，领少广、无量广、广果三天天众（第四禅）。「幢」（dvaja）者高显之标，
+      以佛法之光明为幢、为众生所乐见，故名。其头门为「普观一切众生根为说法断疑解脱门」。
+    definition_en: >-
+      Leader of Book Two, group two, over the little-vast, immeasurably-vast, and vast-fruit
+      heavens (fourth dhyāna). "幢" (dvaja) is a tall standard: the Banner of Dharma-Radiance
+      that beings love to behold. His head-gate: the liberation-gate of contemplating the
+      faculties of all beings, teaching the Dharma for them, and cutting off their doubt.
+    source_note: T10n0279 卷二（八十华严）
+    note: 卷一「色界天五众」有广果天；卷二组二于此下开出少广、无量广、广果三层而颂之
+
+  - term_id: men_puguan_gen
+    term_zh: 普觀一切眾生根為說法斷疑解脫門
+    aliases: [普观一切众生根为说法断疑解脱门, 为说法断疑]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      卷二组二头门（可爱乐法光明幢天王所入）。观根、说法、断疑三事一脉：观根者知其机之所堪，
+      说法者投其器而说之，断疑者竟其劝发之功；以一句而尽一段施化次第，诸组头门中此为最明。
+    definition_en: >-
+      Head-gate of group two (entered by 可愛樂法光明幢天王): contemplating the faculties,
+      teaching the Dharma for them, and cutting off their doubt — a whole curriculum of
+      conversion in a single phrase.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: men_yimaokong
+    term_zh: 於一毛孔現不思議佛剎無障礙解脫門
+    aliases: [于一毛孔现不思议佛刹无障碍解脱门, 一毛孔現佛剎, 一毛孔现佛刹]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      卷二组二乐寂静天王之解脱门。毛孔纳剎，极小含极大而无障碍，即卷一「毛端容世界」之喻；
+      同组颂言「过去所有诸国土，一毛孔中皆示现」「十方所有诸国土，悉在其中而说法」，其致一也。
+    definition_en: >-
+      The liberation-gate of 樂寂靜天王 (group two): in a single pore-hole appear inconceivable
+      Buddha-lands without obstruction — the smallest holding the greatest, the 毛端容世界 image
+      first met in fascicle one.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: tian_cheng_kle_guangming
+    term_zh: 可愛樂光明天王
+    aliases: [可爱乐光明天王, 可爱乐光明]
+    category: person
+    grade: A1
+    definition_zh: >-
+      卷二组四之首众，领少光、无量光、极光三天天众（第二禅）。十王之名带「音」者五位
+      （自在音、可爱乐净妙音、善思惟音、演庄严音、甚深光音），与天名「光音」相映。
+      其头门为「恒受寂静乐而能降现消灭世间苦解脱门」。
+    definition_en: >-
+      Leader of Book Two, group four, over the few-light, immeasurable-light, and extreme-light
+      heavens (second dhyāna). Five of the ten kings carry 音 in their names, mirroring the
+      heaven's own name 光音 (ābhāsvara). Head-gate: ever receiving the stillness-freedom yet
+      descending to extinguish the world's suffering.
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: tian_guangyin
+    term_zh: 光音天（極光天）
+    aliases: [光音天, 极光天, 極光天, 少光天, 无量光天, 無量光天]
+    category: site
+    grade: A1
+    definition_zh: >-
+      二禅三天（少光、无量光、极光）之上首，梵 ābhāsvara，以光为语、不以音声相传，故名光音。
+      卷二组四所领，五王名带「音」，正与天名相映。卷一「色界天五众」之第二即光音天。
+    definition_en: >-
+      The topmost of the three second-dhyāna heavens (few-light, immeasurable-light,
+      extreme-light); Skt. ābhāsvara, "the heaven of light-sound," whose beings converse by
+      light. It is the second of the five form-realm hosts of fascicle one ("色界天五众").
+    source_note: T10n0279 卷一、卷二（八十华严）
+
+  - term_id: tian_cheng_shijie_dafan
+    term_zh: 尸棄大梵王
+    aliases: [尸弃大梵王, 尸棄梵王, 尸弃梵王, 尸弃]
+    category: person
+    grade: A1
+    definition_zh: >-
+      卷二组五之首众，领梵身、梵辅、梵众、大梵四天天众（初禅），初禅大梵天之天主。
+      梵言 Śikhin，义为「有顶髻」。其头门为「普住十方道场中说法而所行清净无染著解脱门」；
+      领起之语袖珍版作「承佛神力」（T279 另二处以威神/神力，见正文 3.2 注①）。
+    definition_en: >-
+      Leader of Book Two, group five, over the four Brahma heavens of the first dhyāna;
+      the Great Brahmā king. Skt. Śikhin, "wearing the top-knot." His verses open with
+      承佛神力 in the 袖珍版 kept here, the only group so distinguished (see note 3.2 ①).
+    source_note: T10n0279 卷二（八十华严）
+
+  - term_id: tian_cheng_zizai
+    term_zh: 自在天王
+    aliases: [自在天王, 他化自在天王]
+    category: person
+    grade: A1
+    definition_zh: >-
+      卷二组六之首众，欲界六天最上「他化自在天」（paranirmita-vaśavartin）之天主，
+      卷二由色界入欲界之首组。其头门为「现前成熟无量众生自在藏解脱门」；
+      领起之语 T279 作「承佛威神，遍观」，袖珍版作「承佛威力，普观」（见正文 3.2 注①）。
+      第六会即于「他化自在天王宫摩尼宝藏殿」开演，领众适为彼会之天主。
+    definition_en: >-
+      Leader of Book Two, group six, the lord of Paranirmita-vaśavartin (他化自在), topmost
+      of the six desire heavens — the group that carries Book Two down into the desire realm,
+      the same lord whose palace hosts the sixth assembly (graph node site_paranirmita).
+    source_note: T10n0279 卷二（八十华严）
+
   # ── 已否之名（D 级 · 本文正文不采用）──
   - term_id: rejected_mahakala
     term_zh: 摩訶迦羅道場
@@ -360,3 +466,7 @@ links:
   - {from_term_id: site_bodhimaṇḍa, rel: see_also, to_type: term, to_ref: rejected_mahakala, to_label: 已否之名：摩訶迦羅道場}
   - {from_term_id: chapter_shizhu, rel: see_also, to_type: term, to_ref: coined_jingshou, to_label: 法师自取名：經首}
   - {from_term_id: samadhi_rulaizang, rel: see_also, to_type: term, to_ref: huazang_shijiehai, to_label: 蓮華藏世界海}
+  - {from_term_id: tian_cheng_kle_faguangmingshuang, rel: attains, to_type: term, to_ref: men_puguan_gen, to_label: 普观一切众生根为说法断疑解脱门（组二头门）}
+  - {from_term_id: men_yimaokong, rel: member_door_of, to_type: term, to_ref: tian_cheng_kle_faguangmingshuang, to_label: 乐寂静天王之门（组二）}
+  - {from_term_id: tian_cheng_kle_guangming, rel: leads, to_type: term, to_ref: tian_guangyin, to_label: 光音（极光）天·本组所领}
+  - {from_term_id: tian_cheng_zizai, rel: located_at, to_type: term, to_ref: site_paranirmita, to_label: 他化自在天王宮摩尼寶藏殿（第六会）}

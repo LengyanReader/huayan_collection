@@ -299,8 +299,11 @@ def resolve_edges(
 # ---------------------------------------------------------------------------
 
 def _build_person_props(p: dict) -> dict:
-    """Extract Neo4j-worthy properties from a person row."""
-    person_ref = _format_person_ref(p["id"])
+    """Extract Neo4j-worthy properties from a person row.
+
+    person_id mirrors _neo4j_person_params: canonical source_id preferred.
+    """
+    person_ref = p.get("source_id") or _format_person_ref(p["id"])
     props: dict[str, object] = {"person_id": person_ref}
     for col in PERSON_COLUMNS:
         v = p.get(col)
@@ -453,8 +456,14 @@ def _try_import_neo4j():
 
 
 def _neo4j_person_params(p: dict) -> dict:
-    """Build a parameter dict for a Person node."""
-    person_ref = _format_person_ref(p["id"])
+    """Build a parameter dict for a Person node.
+
+    person_id is the canonical source_id (e.g. 'person_001', 'person_000a'),
+    falling back to the zero-padded integer PK only when source_id is absent.
+    Edge resolution (resolve_edges) keys on the same source_id, so the two
+    must agree or every MATCH in the relationship pass would fail silently.
+    """
+    person_ref = p.get("source_id") or _format_person_ref(p["id"])
     params: dict[str, object] = {"person_id": person_ref}
     for col in PERSON_COLUMNS:
         v = p.get(col)

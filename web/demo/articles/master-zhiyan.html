@@ -150,11 +150,19 @@ function renderArticle(){
   // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
   _initArticleENMode();
 
-  // ── 支持 #锚点 直达（目录跳转用真实 id 锚点）──
+  // ── 章节级折叠：h2/h3 分级折叠（默认展开；标题 ▾/▴ 号点击可单独收展）──
+  if(typeof _foldDoc==='function'){
+    try{ _foldDoc('#article-full'); }catch(e){}
+  }
+
+  // ── 支持 #锚点 直达（目录跳转用真实 id 锚点；先展开折叠祖先节）──
   if(location.hash){
     setTimeout(function(){
       var el=document.getElementById(location.hash.slice(1));
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(el){
+        if(typeof _reveal==='function')window._reveal(el);
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
     },80);
   }
 }

@@ -1761,3 +1761,65 @@ python scripts/verify_demo.py
 2. **大同华严寺壁画**待官方著录复核后升 `confirmed`（C 级信息已如实列入，不入页）。
 3. **46 组余下细读**仍待续（卷二「世界」品为下一建议组）；每完成一组细读即照 L.88 铁律**先入图谱定级、再入正文**，并按需补文物注册。
 4. **`opencc`/`zhconv`** 仍未装；卷二偈颂边界仍须以 CBETA 原文重做。**Neo4j 在线验证**仍受阻（7687/7474 未监听）。
+
+## L.90 随文缩略图·快照激活＋章节级折叠基建（h2/h3 层级，2026-09-30）
+
+**主题**：循用户三项指示之（一）（二）续推——①「艺术品随情景和阅读内容适当嵌入缩略图／快照」②「标题与内容之间的层次折叠」——前者以 **Wikimedia Commons 真实图源**为三件文物补缩略图并在正文三处语境嵌入快照；后者建成**章节级（h2/h3）折叠**基建（区别于 L.89 的表/考据/文物块折叠），全篇 74 节可单节收展＋全局工具栏。
+
+### 一、随文缩略图·快照激活（三件真实图源，其余如实留空）
+
+- **图源取证**：本机 python urllib（`User-Agent: huayan-research/1.0`，30s 超时；webfetch 对 `commons.wikimedia.org` 超时、本机直连正常）经 Commons API 检索 18 组关键词，**仅 3 件命中真实可署名图像**，经 `Invoke-WebRequest -Method Head` 逐条 200 验证：
+  - `feilaifeng-cave5` ← `File:浙江省杭州市灵隐寺石窟卢舍那佛会浮雕.jpg`（CC BY 4.0·Wshzhcn，3072×4080）
+  - `yulin-cave25` ← `File:Vairocana from Cave 25, Yulin Caves.jpg`（公有领域，1914×2580）
+  - `dazu-baoding` ← `File:Dazu 2007 807.jpg`（CC BY-SA 4.0·G41rn8，2592×1944）
+  - **档位教训**：Wikimedia thumb 仅接受白名单尺寸——`520px` 返回 400「Use thumbnail sizes listed on w.wiki/GHai」，**960px 合法**；API 返回 thumburl 带的 `?utm_source=…&utm_campaign=…&utm_content=…` 须剥离。采用 `upload.wikimedia.org/wikipedia/commons/thumb/<md5根>/<文件名>/960px-<文件名>` 规范形式。
+- **YAML 补 `thumb_url`**（schema 既有列，import 读 `thumb_url`——初稿误写 `thumb` 键导致 DB 0 命中已改正）＋许可证注明「缩略图 CC BY-SA 4.0（Wikimedia Commons·作者）」；**9 件无可用图者如实留空**（渲染器无图不渲染 img，不臆造占位）——莫高窟 4 窟经变／36窟龙王礼佛／吉美／大英白描／黑水城／石篆山／飞来峰元代三圣／大同华严寺全扫无主名真实图。
+- **正文三处随文 `<figure>`**（渲染器块级透传本已支持 figure/img，直插 Markdown）：**1.4 经题详解**（榆林25·法身「佛」字图像参证）、**二、卷第一开场**（飞来峰第5龛·「道场·佛身·会众」三重结构北宋典范）、**2.7 智正觉世间·上首十普菩萨**（宝顶山华严三圣·「十普菩萨」图像化）；figcaption 记图题/年代/出处并**交叉引用文末〔▲实证文物〕条目 id**，且带 `.en-line` 英译行（随全局语言开关显隐）。文物卡三件同显 `ac-thumb` 缩略图。
+
+### 二、章节级折叠基建（`_foldDoc` / `_reveal`）
+
+- `common.js` 新增 `window._foldDoc(rootSel)`：对 `#article-full` 内 h2/h3（跳过 `data-skip-toc` 页头标题）依层级把后续同级兄弟包入 `.secfold-body`（h2 层先包、body 内再包 h3 层），标题前置 `▾`caret、点击标题或 caret 单节收展（`tabIndex=0`＋Enter/Space 键控），首个折叠节前注入工具栏「章节折叠 · 共 N 节（h2×a · h3×b）⋯全部折叠／全部展开」；**默认全部展开**（正文可读优先，长材料才收）。`dataset.sfDone` 防重跑幂等。
+- `window._reveal(el)`：从目标起沿 `.secfold-body` 祖先链逐层去掉 `is-folded`——**目录/深链锚点跳转前自动展开祖先节**，避免「目标藏在折叠体内」。接入点：article.js 锚点直达（滚前 `_reveal`）＋悬浮目录（common.js floating-toc 点击，滚前 `_reveal` 再算 `topOf`）。
+- `common.css`：`.secfold` 光标/着色、caret 随 `.is-folded` 旋转 -90°、`.secfold.is-folded + .secfold-body{display:none}`、`.secfold-bar` 工具栏（虚线框·金色按钮）。
+- **行为实测**（headless Chrome 实跑 common.js 于同结构 harness）：点击 h3 仅折该节而 h2 保持展开、折叠体 `display:none`、`_reveal` 深目标只展开其祖先（全折叠后 reveal 剩 1 未展＝正确）、全部折叠 3 节全隐、全部展开归 0、二次调用幂等 0。**唯一坑**：harness 首轮未引 common.css 致样式不生效（非逻辑错）；`_reveal` 初测写错目标 id 亦现「不解开」假象——实测须以真实存在的目标探针验证。
+
+### 三、交付与验证
+
+- DB：`article_artifacts` 14 行不变（3 条补 `thumb_url`），重导入幂等；`import_all_to_sqlite` → `build.py`（**36 files｜23,822,860 B**）→ `verify_demo`（**✅ ALL CHECKS PASSED**，JS 语法 OK）→ `test_pipeline`（**ALL TESTS PASSED**）。
+- 真页 headless `--dump-dom`：**secfold h2 16＋h3 58＝74 节**、caret 74、默认 `is-folded` 0、`secfold-body` 74、工具栏 1＋双按钮、`details.fold` 仍 15、**`<figure>` 6**（3 随文＋3 文物卡）、wikimedia img 12、`artifact-card` 13、`ac-thumb` 3、`.term-ref` 374、`en-line` 32（随图英译行 +6）、**0 JS 异常**。
+- **未提交**：全批变更均在工作区，待 commit，未 push。
+
+### 四、遗留与下一步
+
+1. **9 件文物仍无可用图**（无主名真实图的如实留空）；后续若有可靠图源（官方著录页截图授权/自摄经授权）再按管线补 `thumb_url`。
+2. **章节折叠默认展开**为有意选择；若要「默认全折叠」仅需把 initial 态改 `is-folded` 即可，工具栏/`_reveal` 已就绪。
+3. **46 组余下细读**仍待续（卷二「世界」品为下一建议组）；每完成一组即照 L.88 铁律先入图谱定级、再入正文，并按需补文物注册；随文图照 L.90 管线补充。
+4. **`opencc`/`zhconv`** 未装；卷二偈颂边界仍须以 CBETA 原文重做。**Neo4j** 仍受阻。
+
+## L.91 卷二细读批次①「四组世界」：组二/组四/组五/组六（2026-09-30）
+
+**主题**：世主妙严品卷二细读第一批量产——以 CBETA（T10n0279 卷二）原文逐字对勘，新增四组完整细读（组二·四禅可爱乐法光明幢、组四·二禅可爱乐光明、组五·初禅尸弃大梵、组六·他化自在自在天王），收齐卷二色界五组并入欲界首组；同步图谱定级、管线全绿。
+
+### 一、CBETA 对勘（juan2_clean.txt：12 偈组块／8230 字）
+
+- **render_juan2b.py 跑通**：自 t10n0279.xml 依「尔时」段切出卷二十二组〔¶〕后「承佛…而说颂言」首句与全偈，逐字转简体袖珍版为底本。**修正 3.2 注①「全卷唯一神力」口径**：T279 实测——承佛威力×9（组1,2,3,4,7,8,9,10,11）、承佛威神×1（组6 自在，且作「遍观一切自在天众」）、承佛神力×2（组5 尸弃）＋组12 月天子（且作「普观…而说颂曰」）；「遍观」×2（组6、组11 日天子）。**「唯一神力」仅袖珍版口径成立**，正文 3.2 表/注①、3.9 EN、3.10 中/EN、附录一比勘表+要旨①均已按 T279 校正，两说并存标注。
+- 四组各 10 王 10 偈；门名/偈边界/首偈与既有 3.9 一览逐字相符；组四首偈「我念」起（全卷唯一第一人称）；组五十偈八偈就「佛身」；组六末偈签名「主光天」。
+
+### 二、正文（华严经细读_第一部_世主妙严品.md）
+
+- **未完备声明 4/50→8/50（≈16%）**，卷二 2/12→6/12，余 42 组。
+- **三章小节重排**：3.4 组二（新）｜3.5 组三（原 3.4）｜3.6 组四（新）｜3.7 组五（新）｜3.8 组六（新）｜3.9 一览（原 3.5）｜3.10 小结（原 3.6）；交叉引用已同步（3.4→3.5×1、3.6→3.10×3）；3.3 组一引用不变。
+- 四组新节各含：经文（门名全录·共十王十解脱门）、疏解（按义粗分 3-4 类）、颂言（十偈全文·逐偈末句点王名）、颂言例解、EN corresponding；均简体袖珍版行文＋T279 异文入注。
+- 关键论定：组二头门「观根·说法·断疑」一句尽施化次第之最；乐寂静「一毛孔现佛剎」与卷一 2.6「毛端容世界」互证（文档 L394）；组四五王名带「音」映天名「光音」（ābhāsvara）；组六「自在」贯欲顶与法门双关、第六会他化自在天王宫与其会处（2.2／site_paranirmita）相契；「主光天」〔存疑〕推断＝因陀罗妙光天王（Indra＝主；同例见 3.5「妙音天」）。
+
+### 三、图谱定级（shizhu-miaoyan.yaml，21→28 节点）
+
+- 新增 A1 节点 7：四领众王（可爱乐法光明幢／可爱乐光明／尸弃大梵·Śikhin／自在天王）＋「光音天（极光天）」（site）＋组二两头门（普观一切众生根为说法断疑、于一毛孔现不思议佛剎无障碍）。全部 source_note＝T10n0279 卷一/卷二；alias 含简体与〔待核〕推断名。
+- 新增 links 4：head 领众→头门（attains）／乐寂静门→本组（member_door_of）／可爱乐光明→光音天（leads）／自在天王→site_paranirmita（located_at·第六会）。
+- 导入幂等；HTML/DB 计数 21/18→28/22。
+
+### 四、交付与验证
+
+- 管线：`import_all_to_sqlite` → `test_pipeline`（**ALL TESTS PASSED**，初跑 fail 系 HTML 旧计数 21/18 vs DB 28/22，build 后转绿）→ `build.py`（**36 files｜23,855,887 B**）→ `verify_demo`（**✅ ALL CHECKS PASSED**）。
+- 真页 headless `--dump-dom`：**h3 33、blockquote 46、EN 块全渲染、术语 `.term-ref` 命中新四王**（组二幢×5／组四光明×6／尸弃×12／自在×53，均绑新 term_id）＋`is-rejected` 已否之名标记仍在；secfold/工具栏/锚点 33；**0 JS 异常**。
+- **未提交**：全批变更均在工作区，待 commit，未 push。
