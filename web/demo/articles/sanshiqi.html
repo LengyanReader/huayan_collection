@@ -84,7 +84,7 @@ function renderArticle(){
   // ── 页头横幅 ──
   h+='<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
   h+='  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页</div>';
-  h+='  <h2 style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
+  h+='  <h2 data-skip-toc="1" style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
   if(a.title_sub)h+='  <div style="font-size:0.85em;color:var(--text2)">'+a.title_sub+'</div>';
   if(a.version)h+='  <div style="font-size:0.78em;color:var(--text2);margin-top:6px">'+a.version+'</div>';
   if(a.back && a.back.tab){
@@ -94,13 +94,13 @@ function renderArticle(){
 
   // ── 导览 ──
   if(a.meta){
-    h+='<div class="section" style="border-left:4px solid var(--gold)"><h2>📌 导览</h2>';
+    h+='<div class="section" style="border-left:4px solid var(--gold)" data-chrome="1"><h2>📌 导览</h2>';
     h+='<p style="font-size:0.8em;line-height:1.9;white-space:pre-line">'+_mdInline(a.meta)+'</p></div>';
   }
 
   // ── 自动目录 ──
   if(embed.toc.length){
-    h+='<div class="section"><h2>🧭 本文目录</h2>';
+    h+='<div class="section" data-chrome="1"><h2>🧭 本文目录</h2>';
     h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75">';
     embed.toc.forEach(function(t){
       var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
@@ -111,8 +111,15 @@ function renderArticle(){
 
   // ── 全文 ──
   h+='<div class="section" style="border-left:4px solid var(--gold)" id="article-full">';
-  h+='<h2 style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span>'
-    +'<button id="article-en-toggle" class="f-nav-btn" onclick="toggleArticleEN()" title="在「含英文批注」与「仅中文正文」之间切换显示">🌐 英文批注：显示</button></h2>';
+  h+='<h2 data-skip-toc="1" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span>';
+  h+='<span style="display:flex;gap:6px;flex-wrap:wrap">';
+  // 名相会处知识图谱：仅当 build.py 内嵌了 ARTICLE_GRAPH（即 SQLite 中有本文名相表）时出现
+  if((typeof ARTICLE_GRAPH!=='undefined')&&ARTICLE_GRAPH&&(ARTICLE_GRAPH.terms||[]).length){
+    var _n=(ARTICLE_GRAPH.terms||[]).length,_e=(ARTICLE_GRAPH.links||[]).length;
+    h+='<button class="f-nav-btn" onclick="openGraphPanel()" title="查看本文名相节点、边与信度分级">🕸 名相会处（'+_n+' 节点／'+_e+' 边）</button>';
+  }
+  h+='<button id="article-en-toggle" class="f-nav-btn" onclick="toggleArticleEN()" title="在「含英文批注」与「仅中文正文」之间切换显示">🌐 英文批注：显示</button>';
+  h+='</span></h2>';
   h+=embed.html;
   h+='</div>';
 

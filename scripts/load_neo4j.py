@@ -368,6 +368,71 @@ def generate_cypher(
     return "\n".join(lines)
 
 
+def generate_article_cypher(article_graph: dict) -> str:
+    """Produce Cypher for the article-level knowledge graph (名相·会处·术语).
+
+    Node: (:ArticleTerm {article_id, term_id, ...}) — one per term in the article.
+    Edge: (:ArticleTerm)-[:rel {to_type, to_ref, to_label}]->(:ArticleTerm|ArticleRef)
+    External targets (经号 etc.) become lightweight (:ArticleRef {ref}) nodes so that
+    a single traversal can reach both in-article terms and篇外文献.
+    """
+    lines: list[str] = []
+    lines.append("// ── Article knowledge graph ────────────────────────────────────")
+    lines.append("")
+    refs: dict[str, str] = {}
+    for aid, art in sorted(article_graph.items()):
+        terms = art.get("terms", [])
+        lines.append(f"// {aid}（{art.get('title', aid)}）：{len(terms)} 节点 / "
+                     f"{len(art.get('links', []))} 边")
+        for t in terms:
+            props: dict[str, object] = {
+                "article_id": aid,
+                "term_id": t.get("id"),
+                "zh": t.get("zh"),
+                "grade": t.get("grade"),
+                "status": t.get("status"),
+                "category": t.get("category"),
+            }
+            for src, dst in (("aliases", "aliases"), ("def_zh", "def_zh"),
+                             ("def_en", "def_en"), ("source", "source"),
+                             ("source_url", "source_url"), ("note", "note")):
+                if t.get(src):
+                    props[dst] = t[src]
+            lines.append(f"CREATE (:ArticleTerm {_cypher_props(props)});")
+
+        for l in art.get("links", []):
+            src, rel = l.get("from"), l.get("rel")
+            if not src or not rel:
+                continue
+            lprops: dict[str, object] = {}
+            if l.get("to_label"):
+                lprops["to_label"] = l["to_label"]
+            if l.get("to_type"):
+                lprops["to_type"] = l["to_type"]
+            if l.get("note"):
+                lprops["note"] = l["note"]
+            prop_str = _cypher_props(lprops)
+            if l.get("to_type") == "term" and l.get("to_ref"):
+                tgt = (f"(b:ArticleTerm {{article_id: '{aid}', term_id: '{l['to_ref']}'}})")
+            else:
+                key = f"{l.get('to_type', 'external')}:{l.get('to_ref', '')}"
+                refs[key] = l.get("to_label") or l.get("to_ref") or key
+                tgt = f"(b:ArticleRef {{ref: '{key}'}})"
+            lines.append(
+                f"MATCH (a:ArticleTerm {{article_id: '{aid}', term_id: '{src}'}}), "
+                f"{tgt}\nCREATE (a)-[:{rel} {prop_str}]->(b);"
+            )
+        lines.append("")
+
+    if refs:
+        lines.append("// 篇外文献 / 外部资源（经号·论典）──")
+        lines.append("")
+        for key, label in sorted(refs.items()):
+            lines.append(f"MERGE (:ArticleRef {{ref: '{key}', label: {_sanitize_cypher_value(label)}}});")
+        lines.append("")
+    return "\n".join(lines)
+
+
 # ---------------------------------------------------------------------------
 # Mode: default — load into running Neo4j
 # ---------------------------------------------------------------------------
@@ -858,6 +923,15 @@ def main() -> None:
     # ---- Dispatch mode ----
     if args.generate:
         cypher = generate_cypher(persons, resolved_edges, locations)
+        try:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            import db_reader
+            article_graph = db_reader.load_article_knowledge()
+        except Exception as e:  # 表未建或数据缺失不应阻断人物图的导出
+            print(f"[WARN] article knowledge graph skipped: {e}", file=sys.stderr)
+            article_graph = {}
+        if article_graph:
+            cypher += "\n" + generate_article_cypher(article_graph)
         sys.stdout.reconfigure(encoding="utf-8")
         print(cypher)
         print(

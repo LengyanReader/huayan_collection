@@ -1,0 +1,383 @@
+# 八十华严（T10n0279）三十九品 + 藏文独有二品 —— chapters 表唯一权威源
+#
+# 源出 CBETA T10n0279（八十华严）与 84000 Toh 44（藏译）。
+# title_en 循 Thomas Cleary《The Flower Ornament Scripture》(1993) 通行英译，
+#   依 2026-09-27 批注「rowid 不稳定、按 title_zh 为自然键」之定值，原样迁入。
+# in_60huayan=0 者：六十华严无此独立品（十定/十通/十忍/阿僧祇/寿量/诸菩萨住处
+#   六品六十无单立，离世间品亦然），已依 CBETA T10n0279 校。
+# in_tibetan=0 者：藏译 Toh 44 无对应品。
+# is_unique_to_zh / is_unique_to_bo：仅见于汉译 / 仅见于藏译。
+# order 为 UNIQUE 键 (sutra_id, order_num) 之组成部分，勿随意改动。
+sutra_source_id: text_main_002
+chapters:
+  - order: 1
+    title_zh: "世主妙严品"
+    title_en: "The Wondrous Adornments of the Rulers of the Worlds"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 2
+    title_zh: "如来现相品"
+    title_en: "Apparitions of the Buddha"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 3
+    title_zh: "普贤三昧品"
+    title_en: "The Samādhi of Universal Good"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 4
+    title_zh: "世界成就品"
+    title_en: "Completions of the Worlds"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 5
+    title_zh: "华藏世界品"
+    title_en: "The Flower Bank World"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 6
+    title_zh: "毗卢遮那品"
+    title_en: "Vairocana"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 7
+    title_zh: "如来名号品"
+    title_en: "The Names of the Buddha"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 8
+    title_zh: "四圣谛品"
+    title_en: "The Four Holy Truths"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 9
+    title_zh: "光明觉品"
+    title_en: "Awakening by Light"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 10
+    title_zh: "菩萨问明品"
+    title_en: "Statements of the Questioning Bodhisattvas"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 11
+    title_zh: "净行品"
+    title_en: "Pure Practices"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 12
+    title_zh: "贤首品"
+    title_en: "The Chief of Worthies"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 13
+    title_zh: "升须弥山顶品"
+    title_en: "Ascending to the Peak of Mount Sumeru"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 14
+    title_zh: "须弥顶上偈赞品"
+    title_en: "Eulogies on the Peak of Mount Sumeru"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 15
+    title_zh: "十住品"
+    title_en: "The Ten Abodes"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 16
+    title_zh: "梵行品"
+    title_en: "The Practice of Purity"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 17
+    title_zh: "初发心功德品"
+    title_en: "Merits of the First Aspiration for Awakening"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 18
+    title_zh: "明法品"
+    title_en: "Understanding the Teaching"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 19
+    title_zh: "升夜摩天宫品"
+    title_en: "Ascending to the Palace of the Heaven of Yāma"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 20
+    title_zh: "夜摩宫中偈赞品"
+    title_en: "Eulogies in the Palace of the Heaven of Yāma"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 21
+    title_zh: "十行品"
+    title_en: "The Ten Practices"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 22
+    title_zh: "十无尽藏品"
+    title_en: "The Ten Inexhaustible Treasures"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 23
+    title_zh: "升兜率天宫品"
+    title_en: "Ascending to the Palace of Tuṣita Heaven"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 24
+    title_zh: "兜率宫中偈赞品"
+    title_en: "Eulogies in the Palace of Tuṣita Heaven"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 25
+    title_zh: "十回向品"
+    title_en: "The Ten Transferences"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 26
+    title_zh: "十地品"
+    title_en: "The Ten Grounds"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 27
+    title_zh: "十定品"
+    title_en: "The Ten Concentrations"
+    in_80huayan: 1
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 28
+    title_zh: "十通品"
+    title_en: "The Ten Supernatural Powers"
+    in_80huayan: 1
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 29
+    title_zh: "十忍品"
+    title_en: "The Ten Patiences"
+    in_80huayan: 1
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 30
+    title_zh: "阿僧祇品"
+    title_en: "Incalculable Numbers"
+    in_80huayan: 1
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 31
+    title_zh: "寿量品"
+    title_en: "Lifespans"
+    in_80huayan: 1
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 32
+    title_zh: "诸菩萨住处品"
+    title_en: "The Residences of the Bodhisattvas"
+    in_80huayan: 1
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 33
+    title_zh: "佛不思议法品"
+    title_en: "The Unthinkable Qualities of the Buddhas"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 34
+    title_zh: "如来十身相海品"
+    title_en: "The Ocean of Marks of the Ten Bodies of the Buddha"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 35
+    title_zh: "如来随好光明功德品"
+    title_en: "The Merits of the Great Marks of Light of the Buddha"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 36
+    title_zh: "普贤行品"
+    title_en: "The Practices of Universal Good"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 37
+    title_zh: "如来出现品"
+    title_en: "The Apparition of the Buddha"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 38
+    title_zh: "离世间品"
+    title_en: "Detachment from the World"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 39
+    title_zh: "入法界品"
+    title_en: "Entry into the Dharma Realm"
+    in_80huayan: 1
+    in_60huayan: 1
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 0
+    source: "CBETA/84000"
+  - order: 112
+    title_zh: "如来华严品"
+    title_en: "The Adornment of the Buddha"
+    title_sa: "Tathāgatāvataṃsaka"
+    in_80huayan: 0
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 1
+    source: "Toh44/84000"
+  - order: 128
+    title_zh: "普贤宣说品"
+    title_en: "The Disquisition of Universal Good"
+    title_sa: "Samantabhadraparivarta"
+    in_80huayan: 0
+    in_60huayan: 0
+    in_tibetan: 1
+    is_unique_to_zh: 0
+    is_unique_to_bo: 1
+    source: "Toh44/84000"

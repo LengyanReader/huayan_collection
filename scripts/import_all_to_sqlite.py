@@ -538,12 +538,18 @@ def import_texts(conn):
     return count, id_to_rowid
 
 
-def import_chapters(conn, id_to_rowid):
-    """Import chapter-level data for the main sutras.
+CHAPTERS_PATH = ROOT / "data" / "catalog" / "chapters.yaml"
 
-    The catalog defines chapter_count per sutra but not individual chapter names.
-    We populate the 39 chapters of 八十华严 (the standard version) as reference data,
-    since it is the most commonly used version and the basis for the gap analysis.
+
+def import_chapters(conn, id_to_rowid):
+    """Import chapter rows for 八十华严 (39) + the 2 Tibetan-unique chapters.
+
+    Authoritative source: data/catalog/chapters.yaml (single source of truth). It used to
+    live as two hardcoded lists here (39 tuples) plus a second hardcoded title_zh->title_en
+    map in backfill_chapters_title_en.py; a rebuild therefore produced rows without
+    title_en that then differed from older rows, which broke de-duplication. Both are
+    merged into the YAML, so one import now writes a complete, identical row set and
+    re-imports are true no-ops under the UNIQUE(sutra_id, order_num) index.
     """
     # Look up the 八十华严 text rowid
     hs80_rowid = None
@@ -562,80 +568,31 @@ def import_chapters(conn, id_to_rowid):
         print("Chapters: skipped (八十华严 not found in texts)")
         return 0
 
-    # 八十华严 39 chapters with cross-version comparison
-    # Format: (order, title, in_60, in_tibetan, is_unique_to_zh)
-    # in_60: whether this chapter exists in 六十华严 (0=absent/merged)
-    # in_tibetan: whether this chapter exists in 藏文 Toh44 (0=absent)
-    # is_unique_to_zh: 1 if unique to Chinese versions (not in Tibetan)
-    chapters_80 = [
-        (1,  "世主妙严品",          1, 1, 0),
-        (2,  "如来现相品",          1, 1, 0),
-        (3,  "普贤三昧品",          1, 1, 0),
-        (4,  "世界成就品",          1, 1, 0),
-        (5,  "华藏世界品",          1, 1, 0),
-        (6,  "毗卢遮那品",          1, 1, 0),
-        (7,  "如来名号品",          1, 1, 0),
-        (8,  "四圣谛品",            1, 1, 0),
-        (9,  "光明觉品",            1, 1, 0),
-        (10, "菩萨问明品",          1, 1, 0),
-        (11, "净行品",              1, 1, 0),
-        (12, "贤首品",              1, 1, 0),
-        (13, "升须弥山顶品",        1, 1, 0),
-        (14, "须弥顶上偈赞品",      1, 1, 0),
-        (15, "十住品",              1, 1, 0),
-        (16, "梵行品",              1, 1, 0),
-        (17, "初发心功德品",        1, 1, 0),
-        (18, "明法品",              1, 1, 0),
-        (19, "升夜摩天宫品",        1, 1, 0),
-        (20, "夜摩宫中偈赞品",      1, 1, 0),
-        (21, "十行品",              1, 1, 0),
-        (22, "十无尽藏品",          1, 1, 0),
-        (23, "升兜率天宫品",        1, 1, 0),
-        (24, "兜率宫中偈赞品",      1, 1, 0),
-        (25, "十回向品",            1, 1, 0),
-        (26, "十地品",              1, 1, 0),
-        (27, "十定品",              0, 1, 0),  # 六十华严无独立十定品
-        (28, "十通品",              0, 1, 0),  # 六十华严无独立十通品
-        (29, "十忍品",              0, 1, 0),  # 六十华严无独立十忍品
-        (30, "阿僧祇品",            0, 1, 0),  # 六十华严无此品
-        (31, "寿量品",              0, 1, 0),  # 六十华严无此品
-        (32, "诸菩萨住处品",        0, 1, 0),  # 六十华严无此品
-        (33, "佛不思议法品",        1, 1, 0),
-        (34, "如来十身相海品",      1, 1, 0),
-        (35, "如来随好光明功德品",  1, 1, 0),
-        (36, "普贤行品",            1, 1, 0),
-        (37, "如来出现品",          1, 1, 0),
-        (38, "离世间品",            1, 1, 0),
-        (39, "入法界品",            1, 1, 0),
-    ]
+    data = load_yaml(CHAPTERS_PATH)
+    if not data or not data.get('chapters'):
+        print("Chapters: skipped (chapters.yaml empty or absent)")
+        return 0
 
     imported = 0
-    for order_num, ch_title, in_60, in_tib, unique_zh in chapters_80:
+    for ch in data['chapters']:
         conn.execute("""
             INSERT OR REPLACE INTO chapters
-            (sutra_id, title_zh, order_num, in_80huayan, in_60huayan,
-             in_tibetan, is_unique_to_zh, source)
-            VALUES (?, ?, ?, 1, ?, ?, ?, 'CBETA/84000')
-        """, (hs80_rowid, ch_title, order_num, in_60, in_tib, unique_zh))
-        imported += 1
-
-    # 藏文独有 2 品 (汉文无对应) — use 100+ offset to avoid order_num conflicts
-    unique_bo_chapters = [
-        (112, "如来华严品", "Tathāgatāvataṃsaka"),
-        (128, "普贤宣说品", "Samantabhadraparivarta"),
-    ]
-    for bo_order, bo_title, bo_sa in unique_bo_chapters:
-        conn.execute("""
-            INSERT OR REPLACE INTO chapters
-            (sutra_id, title_zh, title_sa, order_num, in_80huayan,
-             in_60huayan, in_tibetan, is_unique_to_bo, source)
-            VALUES (?, ?, ?, ?, 0, 0, 1, 1, 'Toh44/84000')
-        """, (hs80_rowid, bo_title, bo_sa, bo_order))
+            (sutra_id, title_zh, title_bo, title_sa, title_en, order_num,
+             in_80huayan, in_60huayan, in_tibetan,
+             is_unique_to_zh, is_unique_to_bo, source)
+            VALUES (?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (hs80_rowid, ch.get('title_zh'), ch.get('title_sa'), ch.get('title_en'),
+              ch['order'], ch.get('in_80huayan', 0), ch.get('in_60huayan', 0),
+              ch.get('in_tibetan', 0), ch.get('is_unique_to_zh', 0),
+              ch.get('is_unique_to_bo', 0), ch.get('source')))
         imported += 1
 
     conn.commit()
     count = conn.execute("SELECT COUNT(*) FROM chapters").fetchone()[0]
-    print(f"Chapters: {imported} imported (八十华严 39 + 藏文独有 2) → {count} total in DB")
+    no_en = conn.execute(
+        "SELECT COUNT(*) FROM chapters WHERE title_en IS NULL OR title_en=''").fetchone()[0]
+    print(f"Chapters: {imported} imported (八十华严 39 + 藏文独有 2) → {count} total in DB"
+          f" | missing title_en={no_en}")
     return count
 
 
@@ -726,11 +683,22 @@ def import_cross_refs(conn, id_to_rowid):
 
 
 def import_person_locations(conn):
-    """Populate person_locations by reversing locations.related_persons.
+    """Rebuild person_locations from locations.related_persons (fully derived table).
 
     Each location's related_persons JSON array contains person source_ids.
     We create a person_locations row for each pair, inferring relation from context.
+
+    The table is cleared first on purpose. It is 100% derived — every row can be
+    recomputed from locations.related_persons — and it stores persons by *rowid*. Rows are
+    only ever rewritten via INSERT OR REPLACE, which on a UNIQUE conflict deletes the old
+    row and allocates a new rowid, so person_ids shifted on every re-import. OR IGNORE then
+    could not recognise the old pairs as duplicates and appended them: the table grew by
+    45 rows per run (90 -> 135 -> ... -> 360) and ended up holding 245 stale person_ids
+    that no longer pointed at any person. Clearing makes the rebuild idempotent.
     """
+    conn.execute("DELETE FROM person_locations")
+    conn.commit()
+
     rows = conn.execute("""
         SELECT id, source_id, name_zh, related_persons, dynasty
         FROM locations WHERE related_persons IS NOT NULL AND related_persons != ''
@@ -774,8 +742,201 @@ def import_person_locations(conn):
 
     conn.commit()
     count = conn.execute("SELECT COUNT(*) FROM person_locations").fetchone()[0]
-    print(f"Person-locations: {imported} imported → {count} total in DB")
+    # 陈旧引用自检：person_id 必须仍存在于 persons
+    live = {r[0] for r in conn.execute("SELECT id FROM persons")}
+    used = {r[0] for r in conn.execute("SELECT DISTINCT person_id FROM person_locations")}
+    stale = len(used - live)
+    print(f"Person-locations: {imported} imported → {count} total in DB"
+          f" | stale person_id={stale}")
+    if stale:
+        print("  !! person_locations references person rows that no longer exist")
     return count
+
+
+def _ensure_unique_index(conn, table, index_name, cols):
+    """Guarantee a UNIQUE index, replacing a same-named non-unique one if present.
+
+    `CREATE UNIQUE INDEX IF NOT EXISTS` silently does NOTHING when a non-unique index of
+    the same name already exists — the name check wins, uniqueness is never applied. A
+    database created before an index became UNIQUE therefore keeps the non-unique one, and
+    `INSERT OR REPLACE` quietly stops de-duplicating (this is what made chapters double on
+    every re-import). So: drop any same-named index that is not unique, then create the
+    unique one. Returns True if a replacement happened.
+    """
+    for row in conn.execute(f"PRAGMA index_list('{table}')"):
+        # (seq, name, unique, origin, partial)
+        if row[1] == index_name:
+            if row[2]:
+                return False
+            conn.execute(f'DROP INDEX "{index_name}"')
+            conn.commit()
+            break
+    conn.execute(f'CREATE UNIQUE INDEX "{index_name}" ON "{table}"({",".join(cols)})')
+    conn.commit()
+    return True
+
+
+def _migrate_chapters_unique(conn):
+    """Restore chapters to a de-duplicated, genuinely idempotent state.
+
+    `import_chapters` uses INSERT OR REPLACE, but OR REPLACE only substitutes when a
+    UNIQUE/PK conflict exists, and chapters had no UNIQUE on (sutra_id, order_num) — so
+    every re-import appended a fresh copy of all rows instead of replacing them. Worse,
+    the copies were not identical (title_en was filled afterwards by a second script), so
+    partial de-duplication would have been ambiguous.
+
+    chapters.yaml is now the single authoritative source, which makes a full repopulate
+    deterministic. So: refuse if anything still references chapters by id, then clear the
+    table and let import_chapters() rebuild it; finally enforce the UNIQUE index. Rows are
+    only ever removed here — the import immediately after re-creates all of them.
+    """
+    have = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+    if 'chapters' not in have:
+        return
+    if not CHAPTERS_PATH.exists():
+        print("!! chapters migration skipped: chapters.yaml absent, cannot verify a repopulate")
+        return
+
+    # 若仍有外键引用旧 id，则不可删除
+    if 'translation_units' in have:
+        tu_cols = {r[1] for r in conn.execute("PRAGMA table_info(translation_units)")}
+        if 'chapter_id' in tu_cols:
+            used = conn.execute(
+                "SELECT COUNT(*) FROM translation_units WHERE chapter_id IS NOT NULL").fetchone()[0]
+            if used:
+                print(f"!! chapters migration skipped: translation_units references {used} chapter row(s)")
+                return
+
+    before = conn.execute("SELECT COUNT(*) FROM chapters").fetchone()[0]
+    want = len(load_yaml(CHAPTERS_PATH).get('chapters') or [])
+
+    if before == want:
+        # 行数已对，仅确保唯一索引真正生效（快路径）
+        try:
+            repl = _ensure_unique_index(conn, 'chapters', 'idx_chapters_order',
+                                       ['sutra_id', 'order_num'])
+            print(f"Chapters idempotency: {before} rows as expected; "
+                  f"{'replaced non-unique index' if repl else 'unique index already in place'}")
+        except sqlite3.IntegrityError as e:
+            print(f"!! chapters UNIQUE index not created ({e})")
+        return
+
+    conn.execute("DELETE FROM chapters")
+    conn.commit()
+    try:
+        repl = _ensure_unique_index(conn, 'chapters', 'idx_chapters_order',
+                                   ['sutra_id', 'order_num'])
+        note = "unique index idx_chapters_order ensured" + (" (replaced non-unique)" if repl else "")
+    except sqlite3.IntegrityError as e:
+        note = f"index NOT created ({e})"
+    print(f"Chapters idempotency: cleared {before} stale/duplicate row(s) "
+          f"(authoritative source has {want}); will be repopulated from chapters.yaml; {note}")
+
+
+def _ensure_article_knowledge_schema(conn):
+    """Idempotently create the article-knowledge tables on an existing DB.
+
+    The DDL's single source of truth stays data/catalog/schema.sql — this only lifts
+    the `article_*` CREATE statements out of that file and runs them, so a database
+    created before these tables existed gains them on the next import without the
+    schema being maintained in two places. (The legacy tables carry DROP statements
+    and are deliberately NOT executed here — that would erase data.)
+    """
+    schema_path = ROOT / "data" / "catalog" / "schema.sql"
+    if not schema_path.exists():
+        return
+    have = {r[0] for r in conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table'")}
+    if {'article_terms', 'article_term_links'} <= have:
+        return
+    wanted = ('article_terms', 'article_term_links', 'idx_article_terms', 'idx_atl_')
+    stmts, buf = [], []
+    for line in schema_path.read_text(encoding='utf-8').splitlines():
+        s = line.strip()
+        if not buf and s.startswith('CREATE ') and any(w in s for w in wanted):
+            buf = [line]
+        elif buf:
+            buf.append(line)
+        if buf and s.endswith(';'):
+            stmts.append('\n'.join(buf))
+            buf = []
+    for stmt in stmts:
+        conn.execute(stmt)
+    conn.commit()
+    print(f"Article-knowledge schema: applied {len(stmts)} DDL statement(s) from schema.sql")
+
+
+def import_article_knowledge(conn):
+    """Populate article_terms / article_term_links from data/translation/article_knowledge/*.yaml.
+
+    Each YAML file is one standalone article's knowledge graph: its 名相/会处/术语 nodes
+    (with provenance grade A1/A2/B/C/D) plus the edges among them and out to the existing
+    entity tables. Idempotent: a file's rows are replaced wholesale, so re-running never
+    duplicates. Grade D (疑讹·不见于经与历代注疏) is stored with status='rejected' —
+    the renderer shows it struck through and never treats it as in-use terminology.
+    """
+    import glob
+    _ensure_article_knowledge_schema(conn)
+    ak_dir = ROOT / "data" / "translation" / "article_knowledge"
+    if not ak_dir.exists():
+        print("Article-knowledge: source dir absent, skipped")
+        return 0
+
+    files = sorted(glob.glob(str(ak_dir / "*.yaml")))
+    n_terms = n_links = 0
+    for fp in files:
+        data = load_yaml(fp)
+        if not isinstance(data, dict):
+            print(f"  !! {Path(fp).name}: not a mapping, skipped")
+            continue
+        article_id = data.get('article_id') or Path(fp).stem
+        terms = data.get('terms') or []
+        links = data.get('links') or []
+
+        # 幂等：先清该篇旧行（外键关，故顺序无碍）
+        conn.execute("DELETE FROM article_term_links WHERE article_id = ?", (article_id,))
+        conn.execute("DELETE FROM article_terms WHERE article_id = ?", (article_id,))
+
+        for t in terms:
+            tid = t.get('term_id')
+            if not tid or not t.get('term_zh'):
+                print(f"  !! {Path(fp).name}: term missing term_id/term_zh, skipped: {tid}")
+                continue
+            grade = (t.get('grade') or 'C').upper()
+            status = t.get('status') or ('rejected' if grade == 'D' else 'used')
+            aliases = t.get('aliases') or []
+            conn.execute("""
+                INSERT INTO article_terms
+                (article_id, term_id, term_zh, aliases, category, grade, status,
+                 definition_zh, definition_en, source_note, source_url, note)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (article_id, tid, t.get('term_zh'),
+                  j(aliases) if aliases else None,
+                  t.get('category'), grade, status,
+                  t.get('definition_zh'), t.get('definition_en'),
+                  t.get('source_note') or t.get('source'),
+                  t.get('source_url'), t.get('note')))
+            n_terms += 1
+
+        known = {t.get('term_id') for t in terms}
+        for l in links:
+            f = l.get('from_term_id')
+            if f not in known:
+                print(f"  !! {Path(fp).name}: link from unknown term '{f}', skipped")
+                continue
+            conn.execute("""
+                INSERT OR IGNORE INTO article_term_links
+                (article_id, from_term_id, rel, to_type, to_ref, to_label, note)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (article_id, f, l.get('rel') or 'see_also',
+                  l.get('to_type') or 'term', l.get('to_ref') or '',
+                  l.get('to_label'), l.get('note')))
+            n_links += 1
+
+    conn.commit()
+    n_files = conn.execute("SELECT COUNT(DISTINCT article_id) FROM article_terms").fetchone()[0]
+    print(f"Article-knowledge: {n_files} article(s), {n_terms} terms, {n_links} links imported")
+    return n_terms
 
 
 def verify_import(conn):
@@ -823,6 +984,31 @@ def verify_import(conn):
     g_with_sa = conn.execute("SELECT COUNT(*) FROM glossary WHERE term_sa IS NOT NULL AND term_sa!=''").fetchone()[0]
     g_with_en = conn.execute("SELECT COUNT(*) FROM glossary WHERE term_en IS NOT NULL AND term_en!=''").fetchone()[0]
     print(f"\nGlossary: {g_total} terms | {g_with_sa} with Sanskrit | {g_with_en} with English")
+
+    # Article knowledge graph（名相·会处·术语 + 边）
+    ak_arts = conn.execute("SELECT COUNT(DISTINCT article_id) FROM article_terms").fetchone()[0]
+    ak_terms = conn.execute("SELECT COUNT(*) FROM article_terms").fetchone()[0]
+    ak_links = conn.execute("SELECT COUNT(*) FROM article_term_links").fetchone()[0]
+    ak_grades = conn.execute(
+        "SELECT grade, COUNT(*) FROM article_terms GROUP BY grade ORDER BY grade").fetchall()
+    ak_no_def = conn.execute(
+        "SELECT COUNT(*) FROM article_terms WHERE definition_zh IS NULL OR definition_zh=''").fetchone()[0]
+    ak_bad_grade = conn.execute(
+        "SELECT COUNT(*) FROM article_terms WHERE grade NOT IN ('A1','A2','B','C','D')").fetchone()[0]
+    # D 级必须为 rejected（铁律：D 级不采用）
+    ak_d_bad = conn.execute(
+        "SELECT COUNT(*) FROM article_terms WHERE grade='D' AND status<>'rejected'").fetchone()[0]
+    # 边不得悬空（from_term_id 必为同篇之术语）
+    ak_dangling = conn.execute("""
+        SELECT COUNT(*) FROM article_term_links l
+        WHERE NOT EXISTS (SELECT 1 FROM article_terms t
+                          WHERE t.article_id = l.article_id AND t.term_id = l.from_term_id)
+    """).fetchone()[0]
+    print(f"\nArticle knowledge: {ak_arts} article(s) | {ak_terms} terms | {ak_links} links")
+    print("  grades: " + ", ".join(f"{g}={c}" for g, c in ak_grades))
+    print(f"  no_definition={ak_no_def} | bad_grade={ak_bad_grade} | D_not_rejected={ak_d_bad} | dangling_edges={ak_dangling}")
+    if ak_bad_grade or ak_d_bad or ak_dangling:
+        print("  !! Article-knowledge integrity problem (see counts above)")
 
     # Texts
     t_total = conn.execute("SELECT COUNT(*) FROM texts").fetchone()[0]
@@ -925,6 +1111,7 @@ def main():
     texts_count, id_to_rowid = import_texts(conn)
 
     print("\n--- Importing Chapters ---")
+    _migrate_chapters_unique(conn)
     import_chapters(conn, id_to_rowid)
 
     print("\n--- Importing Cross-refs ---")
@@ -933,6 +1120,8 @@ def main():
     print("\n--- Importing Person-Locations ---")
     import_person_locations(conn)
 
+    print("\n--- Importing Article Knowledge Graph ---")
+    import_article_knowledge(conn)
     conn.execute("PRAGMA foreign_keys = ON")
 
     # ---------------------------------------------------------------

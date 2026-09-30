@@ -1,0 +1,362 @@
+# ═══ 文章知识图谱 · 世主妙严品细读 ═══
+# 权威源：data/translation/article_knowledge/<article_id>.yaml（article_id = articles/<id>.html 之 id）
+# 导入：scripts/import_all_to_sqlite.py → SQLite(article_terms / article_term_links)
+# 读取：scripts/db_reader.load_article_knowledge() → build.py 内嵌 var ARTICLE_GRAPH
+# 渲染：common.js 之 _markTermRefs()（正文命中加下划线）＋ 术语弹窗（释义·出处·信度·关联）
+#
+# 本篇之图谱数据，即该文「附录九　名相·会处·术语『出处＋信度』总表」之结构化形态，
+# 二者须同步：附录九供人阅读，本文件供机器消费（杜绝同一事实两处硬写）。
+#
+# ── 信度五级（与该文凡例九一致，勿另立名目）──
+#   A1 经文直证：本经（三译对照）明文作此名
+#   A2 古注明证：历代注疏原文明文作此名（经文无，为注疏判摄名，引用须标「某某《疏》语」）
+#   B  文献转述：工具书／近人研究征引，可信但非一手
+#   C  单一来源或仅见转引：无从复核，暂存待考
+#   D  疑讹：不见于经与历代注疏 → status: rejected，本文正文一律不采用
+#
+#   status 取值：used（本文采用）· rejected（D 级，一律不采用）· coined（近人自取名，
+#   非经非古注术语，仅作其用语引述，标〔待核〕）
+#
+# ── 字段 ──
+#   article_id  必填，须与 standalone_articles.yaml 之 id 一致
+#   terms[]     term_id（篇内唯一）· term_zh · aliases（异名，供自动命中）· category
+#               grade · status · definition_zh · definition_en
+#               source_note（经号·卷次·首倡者）· source_url · note（存疑/推断/校记）
+#   links[]     from_term_id · rel · to_type · to_ref · to_label · note
+#               to_type：term（本篇内之任一条目，类别见其 category）· chapter · location
+#                        · person · text · external（篇外文献，给经号）
+#
+# ── 铁律 ──
+#   1. 凡 D 级，status 必为 rejected，且本文正文不出现该名（只在「已否之名」中出现）
+#   2. A2 级必写 source_note 注明首倡者与经号，不得只作「某某云」
+#   3. 无直接文献可据者，note 内明示「属本文推断」或「〔待核〕」，不得以定论语出
+#   4. 「卷首《釋章序》之人」与「正文作者」须分辨：T45n1738 正文署澄觀撰述、卷首序署
+#      典壽謹撰，故部分目录取序作者为作者，引用时两者并列，不得只取其一
+
+article_id: shizhu-miaoyan
+title: 世主妙严品细读 · 名相会处知识图谱
+source_doc: docs/经学文献/华严经细读_第一部_世主妙严品.md
+method_note: >-
+  三经计数系以程式就本项目所藏三经全文（T10n0279／T10n0278／T10n0273）归一化后逐词检索所得，
+  日期 2026-09-30，读者可依该文凡例一自行覆核。
+
+terms:
+  # ── 会处七处（初会至九会）──
+  - term_id: site_bodhimaṇḍa
+    term_zh: 摩竭提國阿蘭若法菩提場
+    aliases: [摩竭提國阿蘭若法菩提場中, 阿蘭若法菩提場, 菩提場, 菩提场]
+    category: site
+    grade: A1
+    definition_zh: >-
+      八十华严卷一开篇「一時佛在摩竭提國阿蘭若法菩提場中，始成正覺」之场所，
+      即佛于鹿野苑菩提树下降魔成道之地，为七处九会之初会所在。
+    definition_en: >-
+      The site of the Buddha's enlightenment — "at that time the Buddha was in the bodhimaṇḍa
+      of the Aranya hermitage in Magadha, at the time of his first proper awakening" — the
+      place of the first of the seven places / nine assemblies.
+    source_note: T10n0279 卷一（八十华严）；三经计数：阿兰若法菩提场 4／0／0
+    note: 六十卷同处作「摩竭提國寂滅道場」（3 见），四十卷作「閻浮提摩竭提國菩提場中」
+
+  - term_id: site_puguang
+    term_zh: 普光法堂／普光明殿
+    aliases: [普光法堂, 普光明殿]
+    category: site
+    grade: A1
+    definition_zh: >-
+      第二会之场所。八十华严作「摩竭提國阿蘭若法菩提場中普光明殿」（3 见），
+      六十卷作「寂灭道场初始得佛普光法堂」（2 见），同处而名异。
+    definition_en: >-
+      Site of the second assembly: in the Eighty-fascicle scripture the "Hall of Universal
+      Light" within the bodhimaṇḍa in Magadha; in the Sixty-fascicle version, the "Hall of
+      Universal Light at the site of calming and extinction."
+    source_note: T10n0279 卷十六、卷四十；T10n0278；计数：普光法堂 1／2／0，普光明殿 3／0／0
+
+  - term_id: site_trayastriṃśa
+    term_zh: 忉利天宮
+    aliases: [忉利天宮, 帝釋宮, 忉利护世龙神处]
+    category: site
+    grade: A1
+    definition_zh: >-
+      第三会之场所（帝释天宫）。经称「向于彼夜摩天宫」、称帝释宫、称「忉利护世龙神处」；
+      「妙胜」见于本品六见。
+    definition_en: The Trāyastriṃśa heaven — the palace of Indra (Śakra), site of the third assembly.
+    source_note: T10n0279 卷十六；计数：忉利天 11／2／8，妙胜 6／0／0
+    note: 澄观《颂释章》于此会称「忉利天宫妙胜殿」，殿名属注疏判摄（A2），经文作「帝釋宮」
+
+  - term_id: site_yema
+    term_zh: 夜摩天宮寶莊嚴殿
+    aliases: [夜摩天宮寶莊嚴殿, 夜摩天宝庄严殿]
+    category: site
+    grade: A1
+    definition_zh: 第四会之场所。经文「而向于彼夜摩天宫宝庄严殿」。
+    definition_en: The Yama heaven — "the Palace of Precious Adornment in the Yama heaven" — site of the fourth assembly.
+    source_note: T10n0279 卷十九；计数：宝庄严殿 1／2／0
+
+  - term_id: site_tuṣita
+    term_zh: 兜率陀天一切妙寶所莊嚴殿
+    aliases: [兜率陀天一切妙宝所庄严殿, 兜率天宫一切宝殿]
+    category: site
+    grade: A1
+    definition_zh: 第五会之场所。经文「而往诣于兜率陀天一切妙宝所庄严殿」；品题作「升兜率天宫一切宝殿品」。
+    definition_en: The Tuṣita heaven — site of the fifth assembly.
+    source_note: T10n0279 卷二十二；计数：兜率陀 24／26／7
+
+  - term_id: site_paranirmita
+    term_zh: 他化自在天王宮摩尼寶藏殿
+    aliases: [他化自在天王宫摩尼宝藏殿]
+    category: site
+    grade: A1
+    definition_zh: 第六会之场所。经文「他化自在天王宫摩尼宝藏殿」。
+    definition_en: >-
+      The heaven of Self-Transformation — the "Hall of the Jewel-Treasure in the palace of the
+      King of Self-Transformation" — site of the sixth assembly.
+    source_note: T10n0279 卷三十四
+
+  - term_id: site_jetavana
+    term_zh: 室羅筏國逝多林給孤獨園大莊嚴嚴閣
+    aliases: [室羅筏国逝多林给孤独园大庄严严阁, 逝多林, 給孤獨園]
+    category: site
+    grade: A1
+    definition_zh: >-
+      第九会之场所。经文作此全称；四十华严开篇亦在此（逝多林 25 见）。
+      须注意第七、八会「重普光法堂」，非在给孤独园，故给孤独园只当第九会。
+    definition_en: >-
+      Jeta-grove (Jetavana) in Śrāvastī — "the Great Adorned Pavilion in the Jeta Grove of
+      the solitary-sage's park in Śrāvastī" — site of the ninth assembly. (The seventh and
+      eighth assemblies are the *repeated* Puguang hall, not this grove.)
+    source_note: T10n0279 卷六十；计数：逝多林 25／0／29
+
+  - term_id: seven_places_nine_assemblies
+    term_zh: 七處九會
+    aliases: [七处九会, 七處九會頌, 七处九会颂]
+    category: method
+    grade: A2
+    definition_zh: >-
+      将《华严经》全经依「七处」分作「九会」之判摄法。**经文无此四字**，
+      首倡者为唐澄观《新译华严经七处九会颂释章》（T45n1738）。
+      初会于菩提场，第六会后第七会重于普光法堂，第九会于逝多林大庄严严阁。
+    definition_en: >-
+      The division of the whole Avataṃsaka into "nine assemblies" at "seven places."
+      **These four words do not occur in the scripture**: the classification is Chengguan's,
+      first systematically set out in his *Xin yi Huayan jing qichu jiuhui song shizhang*
+      (T45n1738). It must therefore be cited as "Chengguan's commentary classifies it as…"
+      and not as scripture wording.
+    source_note: >-
+      澄观撰《新译华严经七处九会颂释章》T45n1738（首倡）。**卷首《释章序》署「沙门典寿谨撰」**，
+      故部分目录（CBETA 检索页、Zensoul、deerpark）取序作者为作者而题作「典寿」；正文署
+      「清凉山大华严寺沙门澄观撰述」，维基文库亦题作者澄观。引用宜两者并列。
+    note: >-
+      澄观判第七会（重普光）之经文实证：八十华严《十定品》首「爾時，世尊在摩竭提國
+      阿蘭若法菩提場中始成正覺，於普光明殿入剎那際諸佛三昧」。晋译缺《十定品》，
+      故晋译本只有八会——T45n1738 自述「覺賢三藏不得十定品梵本……是故唯八會耳」，
+      「喜學三藏得十定品即分明知十地品是他化天會，十定等十一品是普光重會，故開為九會耳」，
+      与经文完全吻合。又序中言此书「僅一萬三千餘言，較之疏鈔不及百之一」，明预设《疏》《钞》
+      已在，故**不可**称其撰于《疏》前（舊說已刪）。
+
+  # ── 品名 ──
+  - term_id: chapter_shizhu
+    term_zh: 世主妙嚴品
+    aliases: [世主妙严品, 世主妙莊嚴品]
+    category: chapter
+    grade: A1
+    definition_zh: >-
+      八十华严第一品，卷内分五分（第一之一至第一之五），跨越卷一至卷五，
+      共 32,713 字、1,151 句，为全经之首品。
+    definition_en: >-
+      The first and longest chapter of the Eighty-fascicle Avataṃsaka, divided into five
+      fascicles (卷一–卷五) — the scripture's opening chapter.
+    source_note: T10n0279（本经品名，5 见）
+    note: 六十卷同位品名作「世間淨眼品」（A1，2 见）；四十卷无本品独立名，归《盧舍那佛品》
+
+  - term_id: chapter_shiyan
+    term_zh: 世間淨眼品
+    aliases: [世间净眼品]
+    category: chapter
+    grade: A1
+    definition_zh: 六十华严（晋译）第一品之名，即八十华严「世主妙嚴品」之对应品。
+    definition_en: The title of the first chapter in the Sixty-fascicle (Jin) translation, corresponding to the Eighty-fascicle's "Adornment of the World-Lords."
+    source_note: T10n0278；澄观《颂释章》记「晉經名〈世間淨眼品〉」
+
+  # ── 关键术语 ──
+  - term_id: jie_tuomen
+    term_zh: 解脫門
+    aliases: [解脱门, 解脫之門]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      众会所入之法门。本品诸天众「各得……解脱门」即此。经中习见，澄观《疏》析之：
+      「佛之解脱名为解脱，众生所得法门名为门」——门属众所得，解脱属佛之果，二者相资方为真解脱门。
+    definition_en: >-
+      The dharma-gate (mokṣa-dvāra) entered by each assembly — the most frequent technical
+      term in this chapter (550 occurrences). Chengguan distinguishes the gate obtained by
+      the assemblies from the Buddha's own liberation, which is its fruit.
+    source_note: T10n0279；澄观《疏》T35n1735 卷一（门与解脱之辨）；计数：550／20／146
+
+  - term_id: puxian
+    term_zh: 普賢菩薩
+    aliases: [普贤菩萨, 普賢]
+    category: person
+    grade: A1
+    definition_zh: >-
+      初会会主，亦为此品中会众之最著者。经中 196 见。
+      《普贤三昧品》（卷七）称其三昧，《入法界品》佛所入者称「师子频申三昧」。
+    definition_en: >-
+      Bodhisattva Samantabhadra (普賢) — the principal figure of the first assembly and the
+      most frequently named bodhisattva of the chapter (196 occurrences).
+    source_note: T10n0279；计数：196／202／60
+    note: 澄观疏就「普贤独得十门」之解，与通常「独得十法门」之读法有异，标〔待核〕
+
+  - term_id: samadhi_puxian
+    term_zh: 普賢三昧
+    aliases: [普贤三昧]
+    category: doctrine
+    grade: A1
+    definition_zh: 《普贤三昧品》（卷七）之名。
+    definition_en: The samādhi of Samantabhadra, named in the title of its chapter (fascicle 7).
+    source_note: T10n0279 卷七；计数：1／0／0
+
+  - term_id: samadhi_shi
+    term_zh: 師子頻申三昧
+    aliases: [师子频申三昧, 狮子频申三昧]
+    category: doctrine
+    grade: A1
+    definition_zh: 《入法界品》中佛所入之三昧；澄观《疏》分「本」「末」二会即以此三昧之摄受为据。
+    definition_en: The "lion's-roar samādhi" entered by the Buddha in the Chapter of Entering the Dharma Realm; Chengguan's division of that chapter into two assemblies turns on it.
+    source_note: T10n0279；计数：3／0／3
+
+  - term_id: samadhi_rulaizang
+    term_zh: 如來藏三昧
+    aliases: [如来藏三昧, 如來淨藏三昧]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      八十卷作「如来藏三昧」，六十卷作「如来净藏三昧」——版本异名。
+      澄观以此三昧摄受「胜天王出现品」等，属注疏判摄。
+    definition_en: The "tathāgatagarbha samādhi" (samādhi of the Tathāgata-garbha); the Sixty-fascicle version names it "Tathāgata's pure garbha."
+    source_note: T10n0279／T10n0278；计数：1／1／1
+
+  - term_id: samadhi_haiyin
+    term_zh: 海印三昧
+    aliases: [海印三昧]
+    category: doctrine
+    grade: A1
+    definition_zh: 华严核心三昧名，一切种智现起如海印印现万法，澄观疏广释之。
+    definition_en: The "seal-of-the-ocean samādhi" — the Huayan samādhi in which the all-reflexive knowledge displays all dharmas as a seal imprints the ocean.
+    source_note: T10n0279；计数：3／3／0
+
+  - term_id: huazang_shijiehai
+    term_zh: 蓮華藏世界海
+    aliases: [蓮華藏世界海, 华藏世界海]
+    category: doctrine
+    grade: A1
+    definition_zh: >-
+      《华藏世界品》所标之世界海，为华严世界观之总纲；本品卷五即转入此界之普贤菩萨住处。
+    definition_en: The Lotus-Store World Ocean — the world-ocean whose description occupies the "Chapter of the Lotus Store World" of this very fascicle block.
+    source_note: T10n0279；计数：14／6／3
+
+  - term_id: ten_mysterious_gates
+    term_zh: 十玄
+    aliases: [十玄, 十玄門]
+    category: doctrine
+    grade: A2
+    definition_zh: >-
+      澄观《华严经疏》玄谈门所立之十门（同时具足、普遍周备、理事无碍、事事无碍等），
+      为华严宗判教之核心。**经文无「十玄」二字**，属注疏判摄名，引用须标「澄观《疏》语」。
+    definition_en: >-
+      The "ten mysterious gates," Chengguan's tenfold classification in the introductory
+      *xuántán* section of his commentary. **The term does not occur in the scripture**; it is a
+      classificatory coinage and must be cited as Chengguan's.
+    source_note: 澄观《华严经疏》T35n1735 玄谈门（首倡）；本经 0／0／0
+    note: 十玄门名之经文零见，故不可作经文引
+
+  - term_id: er_xian_ahai
+    term_zh: 摩竭提國
+    aliases: [摩竭提国, 摩竭提, Magadha]
+    category: site
+    grade: A1
+    definition_zh: >-
+      佛成道之国，古印度中印度一国。澄观《颂释章》释其名「此云不害国」（A2）。
+      三经计数：摩竭提 9／6／4。
+    definition_en: >-
+      Magadha, the kingdom in central India where the Buddha attained awakening —
+      "the kingdom called 'harmless' (a-himsa) in translation," in Chengguan's gloss.
+    source_note: T10n0279 等三经；译名「此云不害國」出澄观《新译华严经七处九会颂释章》T45n1738
+
+  # ── 已否之名（D 级 · 本文正文不采用）──
+  - term_id: rejected_mahakala
+    term_zh: 摩訶迦羅道場
+    aliases: [摩訶迦羅道場, 摩诃迦罗道场, 摩訶迦羅, 摩诃迦罗]
+    category: site
+    grade: D
+    status: rejected
+    definition_zh: >-
+      有以为八十华严卷首「菩提场」当作此名者。**经三道检验，此名不可据**：
+      一、经文检索——CBETA T10n0279 全文「摩訶迦羅」0 见，「摩竭提」9 见；本项目三版
+      （T279／袖珍版繁／简）卷二区间四形（摩訶迦羅／摩诃迦罗／摩竭迦羅／摩竭伽羅）0 见；
+      全库 1,292 件（96 MB）扫描 0 见，含海云继梦法师讲记 645 篇在内。
+      二、两译对照——八十卷作「摩竭提國阿蘭若法菩提場中」，六十卷作「摩竭提國寂滅道場」，
+      四十卷作「閻浮提摩竭提國菩提場中」，三译无一称「摩訶迦羅」。
+      三、历代注疏实检——澄观《七处九会颂释章》T45n1738 作「第一會在摩竭提國（此云不害國）
+      菩提場樹王之下」；澄观《华严经疏》T35n1735 作「初會菩提場」；皇龙寺释表员《华严经文义要决问答》
+      X37n0237 作「摩竭提國菩提場中」；《华严经三十九品大意》X42n0242 作「初會菩提場」；
+      《佛学大辞典》及维基百科「华严经」条亦作「（初会）菩提场」。
+    definition_en: >-
+      A name sometimes given for the site of the Buddha's awakening. **Rejected**: it occurs
+      in none of the three Avataṃsaka translations nor in any known commentary — a
+      threefold search of the scriptures, the canonical commentaries, and this project's
+      1,292 files (96 MB) returns zero occurrences. The texts and the commentaries
+      uniformly read bodhimaṇḍa ("bodhi-site"). Not used in the body of this study.
+    source_note: 证否依据见 definition_zh 之三重检验
+    note: >-
+      讹因推断：此名或系将「摩竭提」（Magadha，此云不害国）与密教「摩訶迦羅」／大黑天
+      一名混同所造。〔存疑：属本文推断，无直接文献可据〕惟「不见于经与历代注疏」之前半
+      已由三重检验坐实，与后半之推断应分别看待。
+
+  # ── 近人用语（C 级 · 法师自取名，非经非古注术语）──
+  - term_id: coined_jingshou
+    term_zh: 經首
+    aliases: [经首, 經首, 《经首》]
+    category: coined
+    grade: C
+    status: coined
+    definition_zh: >-
+      **近人用语，非本经与历代注疏之既有术语**（三经 0／0／0）。海云继梦法师用以指
+      八十华严卷一开篇之经文（约一千余字「如是我聞，一時佛在摩竭提國……」）及各会之开篇段，
+      曾自陈「这个『经首』这名字是我给它取的」。因**系后出自取之名、非既有名相**，
+      本文正文不作术语使用，仅在论及法师讲记时引述其用语；**与「经题」（全经总名
+      「大方广佛华严经」七字）层级不同，二者不可相混**。
+    definition_en: >-
+      A modern coinage — **not a term of the scripture nor of any canonical commentary**
+      (zero occurrences across the three translations). Venerable Haiyun Jimeng uses it for
+      the opening passage of fascicle one (the first thousand-odd characters) and for the
+      opening section of each assembly, saying the name was his own. Being a later coinage
+      rather than an established term, it is reported here as his usage, not adopted as a
+      technical term, and must not be confused with the scripture's title (the seven
+      characters 大方广佛华严经).
+    source_note: 法师自陈，见 docs/huayanhai/…/80华严之01品世主妙严品/01华严经经首_1.txt（29 集）
+    note: >-
+      〔待核〕「法师自取」一说目前仅据其讲记自陈，未见独立旁证；其「每一会皆有一段开篇经文」
+      之用法则有经结构依据（法师《西安草堂寺八十华严导读》第 02 讲：「因为他每一会里头都有
+      一段经首。而这一会的经首就在《世主妙严品》上面」），与澄观初会判摄可相印证；
+      此则属经结构层面之描述，非术语。分级为 C（单一来源）而**非 D 疑讹**：此名不涉讹误，
+      只是非经非古注之后出自取名。
+
+links:
+  - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_bodhimaṇḍa, to_label: 摩竭提國阿蘭若法菩提場}
+  - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_puguang, to_label: 普光法堂／普光明殿}
+  - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_trayastriṃśa, to_label: 忉利天宮}
+  - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_yema, to_label: 夜摩天宮寶莊嚴殿}
+  - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_tuṣita, to_label: 兜率陀天一切妙寶所莊嚴殿}
+  - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_paranirmita, to_label: 他化自在天王宮摩尼寶藏殿}
+  - {from_term_id: seven_places_nine_assemblies, rel: located_at, to_type: term, to_ref: site_jetavana, to_label: 室羅筏國逝多林給孤獨園大莊嚴嚴閣}
+  - {from_term_id: seven_places_nine_assemblies, rel: defined_by, to_type: external, to_ref: T45n1738, to_label: 澄观《新译华严经七处九会颂释章》}
+  - {from_term_id: site_bodhimaṇḍa, rel: same_as, to_type: term, to_ref: er_xian_ahai, to_label: 摩竭提國}
+  - {from_term_id: chapter_shizhu, rel: same_as, to_type: term, to_ref: chapter_shiyan, to_label: 世間淨眼品（六十卷）}
+  - {from_term_id: chapter_shizhu, rel: commented_by, to_type: external, to_ref: T35n1735, to_label: 澄观《华严经疏》卷一至卷六}
+  - {from_term_id: jie_tuomen, rel: defined_by, to_type: external, to_ref: T35n1735, to_label: 澄观《华严经疏》（门与解脱之辨）}
+  - {from_term_id: ten_mysterious_gates, rel: defined_by, to_type: external, to_ref: T35n1735, to_label: 澄观《华严经疏》玄谈门（首倡）}
+  - {from_term_id: puxian, rel: see_also, to_type: term, to_ref: samadhi_puxian, to_label: 普賢三昧}
+  - {from_term_id: puxian, rel: see_also, to_type: term, to_ref: samadhi_shi, to_label: 師子頻申三昧}
+  - {from_term_id: site_bodhimaṇḍa, rel: see_also, to_type: term, to_ref: rejected_mahakala, to_label: 已否之名：摩訶迦羅道場}
+  - {from_term_id: chapter_shizhu, rel: see_also, to_type: term, to_ref: coined_jingshou, to_label: 法师自取名：經首}
+  - {from_term_id: samadhi_rulaizang, rel: see_also, to_type: term, to_ref: huazang_shijiehai, to_label: 蓮華藏世界海}

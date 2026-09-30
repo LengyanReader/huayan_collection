@@ -1248,12 +1248,12 @@ function renderDynTopics(data, mode) {
     // ── 页头横幅 ──
     h += '<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
     h += '  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页 · 数据驱动全文（全量展开）</div>';
-    h += '  <h2 style="color:var(--gold);margin:6px 0 4px">' + icon + ' ' + title + '</h2>';
+    h += '  <h2 data-skip-toc="1" style="color:var(--gold);margin:6px 0 4px">' + icon + ' ' + title + '</h2>';
     if (subtitle) h += '  <div style="font-size:0.85em;color:var(--text2)">' + subtitle + '</div>';
     if (data.intro) h += '  <p style="font-size:0.8em;color:var(--text2);line-height:1.8;white-space:pre-line;margin:10px 0 0">' + _dynMD(data.intro) + '</p>';
     h += '</div>';
     // ── 自动目录（含逐题锚点） ──
-    h += '<div class="section"><h2>🧭 本文目录</h2>';
+    h += '<div class="section" data-chrome="1"><h2>🧭 本文目录</h2>';
     h += '<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.85">';
     data.sections.forEach(function(sec){
       h += '<div style="padding:2px 0"><a href="#' + _dynSectionLink(sec) + '" style="color:var(--gold);text-decoration:none;font-weight:600">' + (sec.icon||'') + ' ' + sec.title + '</a> <span style="color:var(--text2);font-size:0.85em">(' + ((sec.topics||[]).length) + '题)</span></div>';
@@ -1264,7 +1264,7 @@ function renderDynTopics(data, mode) {
     if (data.references) h += '<div style="padding:2px 0"><a href="#avs-dyn-refs" style="color:var(--gold);text-decoration:none;font-weight:600">📚 参考文献</a></div>';
     h += '</div></div>';
     // ── 全文（连续展开） ──
-    h += '<div class="section" style="border-left:4px solid var(--gold)" id="article-full"><h2>📄 ' + title + ' · 全文</h2>';
+    h += '<div class="section" style="border-left:4px solid var(--gold)" id="article-full"><h2 data-skip-toc="1">📄 ' + title + ' · 全文</h2>';
     data.sections.forEach(function(sec){
       h += '<div id="' + _dynSectionLink(sec) + '">';
       h += '<h3 style="color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:18px">' + (sec.icon||'📌') + ' ' + sec.title + ' <span style="font-size:0.6em;color:var(--text2);font-weight:400">(' + ((sec.topics||[]).length) + '题)</span></h3>';
@@ -1375,6 +1375,11 @@ def build_articles(articles):
     plus a catalog index (web/demo/articles/index.html). Returns total bytes written."""
     practice = load_practice()
     gap = load_gap()
+    try:
+        article_knowledge = db_reader.load_article_knowledge()
+    except Exception as e:
+        print(f'  ! article knowledge graph unavailable: {e}')
+        article_knowledge = {}
     ARTICLES_OUT.mkdir(parents=True, exist_ok=True)
     article_js = read_src('article.js')
     common_css_rel = '../css/common.css'
@@ -1438,6 +1443,9 @@ def build_articles(articles):
             scripts = ('<script>\n' + data_script + '\n</script>\n'
                        '<script>\n' + wrap_script(article_js) + '\n</script>')
             doc_chars = len(a.get('doc_md', ''))
+        graph = article_knowledge.get(a['id'])
+        if graph:
+            scripts = ('<script>var ARTICLE_GRAPH = %s;</script>\n' % json.dumps(graph, ensure_ascii=False)) + scripts
         _b = a.get('back') or {}
         back_tab = _b.get('tab') or 'index'
         back_label = _b.get('label') or '导航主页'

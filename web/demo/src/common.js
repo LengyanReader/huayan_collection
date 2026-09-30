@@ -937,9 +937,463 @@ function articlesIndexLink(){
     }).observe(document.body, { childList: true, subtree: true });
   })();
 
+// ═══ 悬浮目录 (floating TOC) ═══
+// 长文（独立文章页）阅读用：右侧可折叠目录 rail，随滚动高亮当前节，附阅读进度。
+// 目录项**从正文标题派生**（扫描容器内 h2-h4，缺 id 者就地补 id），不硬编码任何条目，
+// 故任何长文页面（doc 型与 data_source 型皆然）自动受益。
+// 激活条件：页内存在 #article-root（独立文章页）；Tab 页不注入。
+function _initFloatingToc(containerSel) {
+  var root = document.querySelector(containerSel || '#article-root');
+  if (!root) return;
+  if (document.querySelector('.floating-toc')) return;   // 已注入，勿重复
+
+  // sticky 页头实高（据实量取，不写死像素）；另留 8px 呼吸位
+  function stickyGap() {
+    var top = document.getElementById('page-top');
+    return (top ? top.offsetHeight : 0) + 8;
+  }
+
+  // ── 收集标题（h2-h4，跳过 h2 内的按钮等非文本节点由 _flatText 处理）──
+  var heads = Array.prototype.slice.call(root.querySelectorAll('h2, h3, h4'));
+  heads = heads.filter(function (h) {
+    // 排除页面自身的装饰性标题（导览/目录等，渲染器以 data-chrome / data-skip-toc 标出）
+    if (h.hasAttribute('data-skip-toc')) return false;
+    if (h.closest && h.closest('[data-chrome]')) return false;
+    // 文本为空或仅含图标者不入目录
+    var t = _flatText(h);
+    return t && t.length > 1;
+  });
+  if (heads.length < 3) return;   // 标题太少，悬浮目录反成累赘，不注入
+
+  // ── 补 id（数据驱动页之标题未必有 id）──
+  var items = heads.map(function (h, i) {
+    if (!h.id) h.id = 'ftoc-h' + (i + 1);
+    return {
+      id: h.id,
+      lv: parseInt(h.tagName.charAt(1), 10),
+      text: _flatText(h).slice(0, 60)
+    };
+  });
+
+  // ── 结构：收态＝竖向窄轨（进度＋当前节）；展态＝标题条＋完整目录 ──
+  var rail = document.createElement('nav');
+  rail.className = 'floating-toc';
+  rail.setAttribute('aria-label', '悬浮目录');
+  var list = items.map(function (t) {
+    return '<a href="#' + t.id + '" class="ftoc-lv' + t.lv + '" data-tid="' + t.id + '">' +
+             _escHtml(t.text) + '</a>';
+  }).join('');
+  rail.innerHTML =
+    '<div class="ftoc-rail" title="点此钉住目录／再点取消；鼠标移入亦可展开">' +
+      '<span class="fr-icon">🧭</span>' +
+      '<span class="fr-track"><i class="fr-fill"></i></span>' +
+      '<span class="fr-label"></span>' +
+    '</div>' +
+    '<div class="ftoc-bar" title="点此钉住目录／再点取消；移开即收起">' +
+      '<span class="ftoc-title">🧭 目录</span>' +
+      '<span class="ftoc-count">' + items.length + ' 节</span>' +
+      '<span class="ftoc-progress"><i></i></span>' +
+      '<button class="ftoc-toggle" type="button" title="钉住／取消钉住">📌</button>' +
+    '</div>' +
+    '<div class="ftoc-list">' + list + '</div>';
+  document.body.appendChild(rail);
+
+  // 窄屏浮层钮（宽屏隐藏）
+  var tab = document.createElement('button');
+  tab.className = 'floating-toc-tab';
+  tab.type = 'button';
+  tab.title = '目录';
+  tab.innerHTML = '🧭';
+  tab.addEventListener('click', function () { rail.classList.toggle('is-mobile-open'); });
+  document.body.appendChild(tab);
+
+  // ── 钉住：默认随鼠标进出开合（不遮正文）；点窄轨／条／钮可钉住供持续可见 ──
+  var bar = rail.querySelector('.ftoc-bar');
+  var narrow = rail.querySelector('.ftoc-rail');
+  var btn = rail.querySelector('.ftoc-toggle');
+  function togglePinned() {
+    var on = rail.classList.toggle('is-open');
+    btn.textContent = on ? '📌' : '📍';
+    btn.title = on ? '取消钉住' : '钉住目录';
+  }
+  narrow.addEventListener('click', togglePinned);
+  bar.addEventListener('click', function (e) {
+    if (e.target === btn) return;      // 按钮自身已绑 togglePinned
+    togglePinned();
+  });
+  btn.addEventListener('click', function (e) { e.stopPropagation(); togglePinned(); });
+  // 触屏无 hover：以窄轨为展开把手（点一次钉住，Esc 或再点收起）
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') rail.classList.remove('is-open', 'is-mobile-open');
+  });
+
+  // ── 点击锚点：平滑滚动，避开顶部 sticky 页头 ──
+  rail.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    window.scrollTo({ top: topOf(el) - stickyGap(), behavior: 'smooth' });
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    // 释放焦点，令 :focus-within 随之解除 → 未钉住时面板即随鼠标移开而收起
+    a.blur();
+  });
+
+  // ── 当前节高亮 + 阅读进度（滚动时取「视口上缘之上最末一个标题」）──
+  var links = {};
+  items.forEach(function (t) {
+    var el = document.getElementById(t.id);
+    if (el) links[t.id] = rail.querySelector('a[data-tid="' + t.id + '"]');
+  });
+  var prog = rail.querySelector('.ftoc-progress i');
+  var railFill = rail.querySelector('.ftoc-rail .fr-fill');
+  var railLabel = rail.querySelector('.ftoc-rail .fr-label');
+  var listBox = rail.querySelector('.ftoc-list');
+  var cur = null, ticking = false;
+
+  function topOf(el) {
+    return el.getBoundingClientRect().top + window.pageYOffset;
+  }
+
+  // 幂等重算：可由 rAF 与定时器重复调用，结果一致，故双轨调度互为保险
+  // （rAF 在后台标签页与部分嵌入 webview 会被节流，单靠 rAF 会漏更新）。
+  function update() {
+    ticking = false;
+    var y = window.pageYOffset + 150;
+    var idx = -1;
+    for (var i = 0; i < items.length; i++) {
+      var el = document.getElementById(items[i].id);
+      if (!el) continue;
+      if (topOf(el) <= y) idx = i; else break;
+    }
+    // 滚到底：强制高亮末节；尚未越过首节（页头/横幅区）：高亮首节
+    if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 4)
+      idx = items.length - 1;
+    if (idx < 0) idx = 0;
+    if (idx >= 0 && items[idx].id !== cur) {
+      if (cur && links[cur]) links[cur].classList.remove('is-active');
+      cur = items[idx].id;
+      if (links[cur]) {
+        links[cur].classList.add('is-active');
+        // 高亮项保持在可视区内
+        if (listBox) {
+          var lt = links[cur].offsetTop, lb = lt + links[cur].offsetHeight;
+          if (lt < listBox.scrollTop || lb > listBox.scrollTop + listBox.clientHeight)
+            listBox.scrollTop = lt - listBox.clientHeight / 2;
+        }
+      }
+      // 收态窄轨亦示当前节（否则读者不知身在何处）
+      if (railLabel && idx >= 0) railLabel.textContent = (idx + 1) + '·' + items[idx].text;
+    }
+    if (prog) {
+      var h = document.body.scrollHeight - window.innerHeight;
+      var pct = (h > 0 ? Math.min(100, Math.max(0, window.pageYOffset / h * 100)) : 0);
+      prog.style.width = pct + '%';
+      if (railFill) railFill.style.height = pct + '%';
+    }
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    (window.requestAnimationFrame || window.setTimeout)(update, 16);
+    setTimeout(update, 200);   // rAF 未被调度时的保险（幂等）
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // 深链直达（#锚点）：浏览器原生跳转会停在 y=0 而被 sticky 页头遮住标题，
+  // 故按页头实高下移校正；载入时与运行时 hashchange 皆适用。
+  function applyHashOffset() {
+    if (!location.hash) return;
+    var el = document.getElementById(location.hash.slice(1));
+    if (!el) return;
+    window.scrollTo({ top: Math.max(0, topOf(el) - stickyGap()), behavior: 'auto' });
+    onScroll();
+  }
+  if (location.hash) setTimeout(applyHashOffset, 120);
+  window.addEventListener('hashchange', function () { setTimeout(applyHashOffset, 0); });
+}
+
+function _flatText(el) {
+  return (el && el.textContent ? el.textContent : '').replace(/\s+/g, ' ').trim();
+}
+
+function _escHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ═══ 术语标注 · 弹窗 · 知识图谱面板 ═══
+// 数据源：data/translation/article_knowledge/<article_id>.yaml
+//   → import_all_to_sqlite.py → SQLite(article_terms/article_term_links)
+//   → db_reader.load_article_knowledge() → build.py 内嵌 var ARTICLE_GRAPH
+// 命中两种方式：①正文自动扫描 term_zh + aliases ②显式标记 [[显示文本|term_id]]。
+// 信度分级：A1 经文直证 · A2 古注明证 · B 文献转述 · C 单一来源待考 · D 疑讹不采用。
+
+var _AG = null;   // {title, terms[], links[]}
+var _AGi = null;  // term_id -> term（terms 已带 out/in 邻接）
+
+function _agInit() {
+  if (_AG !== null) return _AG;
+  _AG = (typeof ARTICLE_GRAPH !== 'undefined' && ARTICLE_GRAPH) ? ARTICLE_GRAPH : null;
+  if (!_AG) return null;
+  _AGi = {};
+  (_AG.terms || []).forEach(function (t) { _AGi[t.id] = t; });
+  return _AG;
+}
+
+// 依长度降序排比，避免「摩竭提」先于「摩竭提國」命中
+function _agNames() {
+  if (_agInit() && _agNames._all) return _agNames._all;
+  var map = {};
+  (_AG.terms || []).forEach(function (t) {
+    [t.zh].concat(t.aliases || []).forEach(function (n) {
+      if (n && n.length >= 2) map[n] = t.id;
+    });
+  });
+  var re = new RegExp(
+    Object.keys(map).sort(function (a, b) { return b.length - a.length; })
+      .map(function (n) { return n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); })
+      .join('|'), 'g');
+  _agNames._all = { re: re, map: map };
+  return _agNames._all;
+}
+
+function _agSkip(el) {
+  for (var n = el; n && n.nodeType === 1; n = n.parentNode) {
+    if (n.tagName === 'SCRIPT' || n.tagName === 'STYLE' || n.tagName === 'TEXTAREA') return true;
+    if (n.classList && (n.classList.contains('term-ref') || n.classList.contains('term-modal'))) return true;
+  }
+  return false;
+}
+
+function _agWrap(txt, id) {
+  var t = _AGi[id];
+  var cls = 'term-ref' + (t && t.status === 'rejected' ? ' is-rejected' : '');
+  var s = document.createElement('span');
+  s.className = cls;
+  s.dataset.termId = id;
+  s.setAttribute('role', 'button');
+  s.tabIndex = 0;
+  s.textContent = txt;
+  return s;
+}
+
+function _markTermRefs(rootSel) {
+  if (!_agInit()) return 0;
+  var root = typeof rootSel === 'string' ? document.querySelector(rootSel) : rootSel;
+  if (!root) return 0;
+  var N = _agNames();
+  var n = 0;
+  var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: function (node) {
+      if (_agSkip(node.parentNode) || !node.nodeValue) return NodeFilter.FILTER_REJECT;
+      N.re.lastIndex = 0;
+      return N.re.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  var texts = [];
+  for (var t = walker.nextNode(); t; t = walker.nextNode()) texts.push(t);
+  texts.forEach(function (node) {
+    var s = node.nodeValue, last = 0, m;
+    N.re.lastIndex = 0;
+    while ((m = N.re.exec(s)) !== null) {
+      if (m.index > last) node.parentNode.insertBefore(document.createTextNode(s.slice(last, m.index)), node);
+      var id = N.map[m[0]];
+      node.parentNode.insertBefore(_agWrap(m[0], id), node);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (last < s.length) node.parentNode.insertBefore(document.createTextNode(s.slice(last)), node);
+    node.parentNode.removeChild(node);
+  });
+  _agExplicit(root);
+  if (n) _agMount();
+  return n;
+}
+
+// 显式标记：[[显示文本|term_id]]。先于自动扫描处理，故在扫描后做亦可（其产物为 .term-ref，扫描已跳过）。
+function _agExplicit(root) {
+  var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: function (node) {
+      if (_agSkip(node.parentNode) || !node.nodeValue) return NodeFilter.FILTER_REJECT;
+      return /\[\[[^\]]+\|[^\]]+\]\]/.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  var texts = [];
+  for (var t = walker.nextNode(); t; t = walker.nextNode()) texts.push(t);
+  texts.forEach(function (node) {
+    var s = node.nodeValue;
+    if (s.indexOf('[[') < 0) return;
+    var frag = document.createDocumentFragment(), last = 0, re = /\[\[([^\]|]+)\|([^\]]+)\]\]/g, m;
+    while ((m = re.exec(s)) !== null) {
+      if (m.index > last) frag.appendChild(document.createTextNode(s.slice(last, m.index)));
+      if (_AGi[m[2]]) frag.appendChild(_agWrap(m[1], m[2]));
+      else frag.appendChild(document.createTextNode(m[0]));
+      last = m.index + m[0].length;
+    }
+    if (last < s.length) frag.appendChild(document.createTextNode(s.slice(last)));
+    node.parentNode.replaceChild(frag, node);
+  });
+}
+
+function _agMount() {
+  if (document.getElementById('term-modal')) return;
+  var d = document.createElement('div');
+  d.className = 'term-modal';
+  d.id = 'term-modal';
+  d.innerHTML = '<div class="tm-box" role="dialog" aria-modal="true">'
+    + '<div class="tm-head"><h3 id="tm-title"></h3>'
+    + '<button class="tm-close" type="button" aria-label="关闭">✕</button></div>'
+    + '<div class="tm-body" id="tm-body"></div></div>';
+  document.body.appendChild(d);
+  d.addEventListener('click', function (e) { if (e.target === d) closeTermModal(); });
+  d.querySelector('.tm-close').addEventListener('click', closeTermModal);
+  var tip = document.createElement('div');
+  tip.className = 'term-tip';
+  tip.id = 'term-tip';
+  document.body.appendChild(tip);
+}
+
+function openTermModal(id, anchorEl) {
+  if (!_agInit()) return;
+  var t = _AGi[id];
+  if (!t) return;
+  _agMount();
+  var gradeCls = 'grade-' + (t.grade || 'C');
+  var h = '<div class="tm-meta">'
+    + '<span class="grade-badge ' + gradeCls + '">' + _escHtml(t.grade) + '</span>'
+    + '<span>' + _escHtml(t.status) + '</span>'
+    + '<span>' + _escHtml(t.category) + '</span>';
+  if (t.aliases && t.aliases.length) h += '<span>别称：' + _escHtml(t.aliases.join('、')) + '</span>';
+  h += '</div>';
+  h += '<div class="en-line">📖 ' + _mdInline(t.def_en || '') + '</div>';
+  if (t.source) {
+    h += '<div class="tm-src">出处：' + _mdInline(t.source)
+      + (t.source_url ? ' <a href="' + _escHtml(t.source_url) + '" target="_blank" rel="noopener">回查</a>' : '') + '</div>';
+  }
+  if (t.note) h += '<div class="tm-src">注记：' + _mdInline(t.note) + '</div>';
+
+  var rel = (t.out || []).map(function (o) {
+    var clickable = (o.to_type === 'term')
+      ? ' data-term-id="' + _escHtml(o.to_ref) + '" style="cursor:pointer" title="查看该节点"'
+      : '';
+    return '<span class="rel-chip"' + clickable + '><b>' + _escHtml(o.rel) + '</b> ' + _escHtml(o.to_label) + '</span>';
+  }).join('');
+  if (rel) h += '<div class="tm-rel"><span style="font-size:0.82em;color:var(--text2)">关联 →</span>' + rel + '</div>';
+
+  document.getElementById('tm-title').textContent = t.zh;
+  document.getElementById('tm-body').innerHTML = h;
+  document.getElementById('term-modal').classList.add('is-open');
+  _agTip(anchorEl, t);
+  if (window._markEnBlocks) try { window._markEnBlocks(); } catch (e) {}
+}
+
+function closeTermModal() {
+  var m = document.getElementById('term-modal');
+  if (m) m.classList.remove('is-open');
+  var tip = document.getElementById('term-tip');
+  if (tip) tip.classList.remove('is-on');
+}
+
+function _agTip(anchorEl, t) {
+  var tip = document.getElementById('term-tip');
+  if (!tip || !anchorEl) return;
+  tip.innerHTML = '<b>' + _escHtml(t.zh) + '</b><div class="tt-def">' + _escHtml((t.def_zh || t.def_en || '').slice(0, 110)) + '</div>';
+  var r = anchorEl.getBoundingClientRect();
+  tip.classList.add('is-on');
+  var top = r.bottom + 8 + window.scrollY;
+  if (top + 100 > document.documentElement.scrollHeight) top = r.top + 8 + window.scrollY;
+  tip.style.top = top + 'px';
+  tip.style.left = Math.max(8, Math.min(r.left + window.scrollX, window.innerWidth - 320)) + 'px';
+}
+
+(function () {
+  // 术语点击 / 关联节点跳转 → 开窗；点击弹窗外或 Esc → 关闭
+  document.addEventListener('click', function (e) {
+    var ref = e.target.closest && e.target.closest('.term-ref, [data-term-id]');
+    if (ref && ref.dataset.termId) { openTermModal(ref.dataset.termId, ref); return; }
+    if (!(e.target.closest && e.target.closest('.term-modal'))) closeTermModal();
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeTermModal();
+    if (e.key === 'Enter' && e.target.dataset && e.target.dataset.termId) {
+      openTermModal(e.target.dataset.termId, e.target);
+    }
+  });
+})();
+
+// 知识图谱面板：按 category 分组列出全部节点与边（数据驱动，零硬编码）
+function openGraphPanel() {
+  if (!_agInit()) { return; }
+  _agMount();
+  var cats = {}, order = [];
+  (_AG.terms || []).forEach(function (t) {
+    var c = t.category || 'other';
+    if (!cats[c]) { cats[c] = []; order.push(c); }
+    cats[c].push(t);
+  });
+  var cnt = { A1: 0, A2: 0, B: 0, C: 0, D: 0 };
+  (_AG.terms || []).forEach(function (t) { cnt[t.grade] = (cnt[t.grade] || 0) + 1; });
+  var h = '<div class="tm-meta">'
+    + '<span>节点 ' + (_AG.terms || []).length + '</span>'
+    + '<span>边 ' + (_AG.links || []).length + '</span>'
+    + '<span class="grade-badge grade-A1">A1 ' + cnt.A1 + '</span>'
+    + '<span class="grade-badge grade-A2">A2 ' + cnt.A2 + '</span>'
+    + (cnt.B ? '<span class="grade-badge grade-B">B ' + cnt.B + '</span>' : '')
+    + (cnt.C ? '<span class="grade-badge grade-C">C ' + cnt.C + '</span>' : '')
+    + (cnt.D ? '<span class="grade-badge grade-D">D ' + cnt.D + '</span>' : '')
+    + '</div>';
+  order.forEach(function (c) {
+    h += '<div style="margin-top:12px"><div style="font-size:0.86em;color:var(--gold);margin-bottom:6px">' + _escHtml(c) + '</div>';
+    cats[c].forEach(function (t) {
+      h += '<div style="margin:3px 0"><span class="term-ref" data-term-id="' + _escHtml(t.id) + '" role="button" tabindex="0"'
+        + (t.status === 'rejected' ? ' style="text-decoration:line-through"' : '') + '>'
+        + _escHtml(t.zh) + '</span> <span class="grade-badge grade-' + _escHtml(t.grade) + '">' + _escHtml(t.grade) + '</span></div>';
+    });
+    h += '</div>';
+  });
+  document.getElementById('tm-title').textContent = '🕸 名相会处 · 知识图谱';
+  document.getElementById('tm-body').innerHTML = h;
+  document.getElementById('term-modal').classList.add('is-open');
+  if (window._markEnBlocks) try { window._markEnBlocks(); } catch (e) {}
+}
+
+(function(){
+  // 长文页：正文渲染后标注术语（与悬浮目录同样轮询待 #article-root 就绪）
+  function boot(){
+    try{
+      _markTermRefs('#article-full') || _markTermRefs('#article-root');
+    }catch(e){}
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+  (function poll(tries){
+    if (document.querySelector('.term-ref')) return;
+    if (tries <= 0) return;
+    setTimeout(function(){ boot(); poll(tries-1); }, 150);
+  })(24);
+})();
+
 (function(){
   // 各 Tab 页侧栏底部自动追加「独立文章目录」入口（lineage 无侧栏则跳过）
   try{ articlesIndexLink(); }catch(e){}
   // 全局阅读语言切换：按 localStorage 恢复站点语言偏好（common.js 位于 header 之后加载）
   try{ window._applySiteLang && window._applySiteLang(); }catch(e){}
+  // 长文页：注入悬浮目录（内容运行时插入，故轮询至标题就绪）
+  function bootToc(){ try{ _initFloatingToc('#article-root'); }catch(e){} }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootToc);
+  else bootToc();
+  // 页面正文由 article.js / 各 RENDER 脚本于其后同步或异步写入 #article-root，
+  // common.js 载入时容器尚空，故短程轮询待其就绪（标题不足则自然不再注入，非错误）。
+  (function pollToc(tries) {
+    if (document.querySelector('.floating-toc')) return;
+    if (tries <= 0) return;
+    setTimeout(function () { bootToc(); pollToc(tries - 1); }, 120);
+  })(24);
 })();

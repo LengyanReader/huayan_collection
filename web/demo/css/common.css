@@ -542,6 +542,352 @@ body.zh-only .en-cell {
 /* ═══════════════════════════════════════════════════════
    Responsive (max-width: 768px)
    ═══════════════════════════════════════════════════════ */
+/* ═══ 悬浮目录 (floating TOC) ═══
+   长文阅读用：右侧「窄轨 ↔ 展开面板」两态目录。
+   收态仅占 28px（几乎不遮正文，仍显示竖向进度与当前节）；鼠标移入／键盘聚焦即向左
+   展开为完整目录，移开即收；点窄轨可「钉住」（.is-open）供触屏与需要持续可见者。
+   由 common.js 的 _initFloatingToc() 依正文标题（h2-h4）自动生成，内容从 DOM 派生
+   （非硬编码），故任何长文页面皆自动受益。 */
+.floating-toc {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  width: 28px;
+  max-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 2px 10px rgba(61, 52, 39, 0.12);
+  font-size: 0.74em;
+  overflow: hidden;
+  opacity: 0.5;
+  transition: width 0.2s ease, max-height 0.22s ease, opacity 0.18s ease,
+              box-shadow 0.2s ease, border-right-color 0.2s ease;
+}
+/* 展态：移入即向左浮出，不推动正文（浮层属正常交互反馈，移开即恢复） */
+.floating-toc:hover,
+.floating-toc:focus-within,
+.floating-toc.is-open {
+  width: 238px;
+  opacity: 1;
+  border-right: 1px solid var(--line);
+  box-shadow: 0 8px 26px rgba(61, 52, 39, 0.26);
+}
+/* 收态：竖向窄轨（阅读进度 + 当前节竖排） */
+.floating-toc .ftoc-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.floating-toc .ftoc-rail .fr-icon {
+  color: var(--gold);
+  font-size: 0.95em;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+.floating-toc .ftoc-rail .fr-track {
+  flex: 1 1 auto;
+  width: 3px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.floating-toc .ftoc-rail .fr-fill {
+  display: block;
+  width: 100%;
+  height: 0;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: height 0.12s linear;
+}
+.floating-toc .ftoc-rail .fr-label {
+  writing-mode: vertical-rl;
+  font-size: 0.88em;
+  color: var(--gold);
+  letter-spacing: 1px;
+  max-height: 12em;
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+/* 条与列表仅展态显示；窄轨仅收态显示 */
+.floating-toc:not(:hover):not(:focus-within):not(.is-open) .ftoc-bar,
+.floating-toc:not(:hover):not(:focus-within):not(.is-open) .ftoc-list { display: none; }
+.floating-toc:hover .ftoc-rail,
+.floating-toc:focus-within .ftoc-rail,
+.floating-toc.is-open .ftoc-rail { display: none; }
+.floating-toc .ftoc-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(184, 134, 60, 0.10);
+  flex: 0 0 auto;
+  cursor: pointer;
+  user-select: none;
+}
+.floating-toc .ftoc-bar .ftoc-title {
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+.floating-toc .ftoc-bar .ftoc-count {
+  color: var(--text2);
+  font-size: 0.86em;
+}
+/* 阅读进度：条内一条细线 */
+.floating-toc .ftoc-progress {
+  flex: 1 1 auto;
+  height: 3px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.floating-toc .ftoc-progress i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.12s linear;
+}
+.floating-toc .ftoc-toggle {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text2);
+  border-radius: 5px;
+  font-size: 0.9em;
+  line-height: 1;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+.floating-toc .ftoc-toggle:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.floating-toc .ftoc-list {
+  overflow-y: auto;
+  padding: 6px 4px 8px;
+  min-height: 0;
+}
+.floating-toc .ftoc-list a {
+  display: block;
+  padding: 3px 8px;
+  color: var(--text2);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.floating-toc .ftoc-list a:hover {
+  background: rgba(94, 139, 158, 0.10);
+  color: var(--blue);
+}
+.floating-toc .ftoc-list a.is-active {
+  background: rgba(184, 134, 60, 0.14);
+  border-left-color: var(--gold);
+  color: var(--gold);
+  font-weight: 600;
+}
+.floating-toc .ftoc-list a.ftoc-lv3 { padding-left: 18px; font-size: 0.94em; }
+.floating-toc .ftoc-list a.ftoc-lv4 { padding-left: 30px; font-size: 0.9em; opacity: 0.9; }
+/* 窄屏：目录收为右下角小圆钮，点开为浮层 */
+.floating-toc-tab {
+  display: none;
+  position: fixed;
+  right: 12px;
+  bottom: 18px;
+  z-index: 95;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--panel);
+  color: var(--gold);
+  font-size: 1.05em;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(61, 52, 39, 0.22);
+}
+
+/* ═══ 术语弹窗 (term popover / modal) ═══
+   数据源：article_knowledge/<id>.yaml → SQLite(article_terms) → db_reader → build.py
+   内嵌 var ARTICLE_GRAPH。术语由 _markTermRefs() 于正文命中后加下划线，点击开窗。 */
+.term-ref {
+  border-bottom: 1px dashed var(--blue);
+  cursor: pointer;
+  color: inherit;
+}
+.term-ref:hover {
+  background: rgba(94, 139, 158, 0.14);
+}
+/* 已否之名（D 级）：本文正文不采用，仅在附录「已否之名」出现，用删除线标示 */
+.term-ref.is-rejected {
+  border-bottom-color: var(--red);
+  text-decoration: line-through;
+  text-decoration-color: rgba(196, 107, 93, 0.6);
+}
+.term-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(31, 36, 42, 0.55);
+}
+.term-modal.is-open { display: flex; }
+.term-modal .tm-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.3);
+  max-width: 620px;
+  width: 100%;
+  max-height: 84vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.term-modal .tm-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.term-modal .tm-head h3 {
+  margin: 0;
+  color: var(--gold);
+  font-size: 1.06em;
+  flex: 1 1 auto;
+}
+.term-modal .tm-close {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text2);
+  border-radius: 5px;
+  font-size: 0.9em;
+  padding: 2px 8px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.term-modal .tm-close:hover { color: var(--red); border-color: var(--red); }
+.term-modal .tm-body {
+  padding: 14px 18px 18px;
+  overflow-y: auto;
+  font-size: 0.88em;
+  line-height: 1.85;
+}
+/* 信度徽章：A1/A2/B/C/D 五级 */
+.grade-badge {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 10px;
+  border: 1px solid currentColor;
+  margin-right: 6px;
+  vertical-align: 0.08em;
+  white-space: nowrap;
+}
+.grade-A1 { color: #4a7c3f; }
+.grade-A2 { color: var(--blue); }
+.grade-B  { color: #8a6a2f; }
+.grade-C  { color: #a06a2a; }
+.grade-D  { color: var(--red); }
+.term-modal .tm-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: var(--text2);
+}
+.term-modal .tm-src {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-size: 0.9em;
+  color: var(--text2);
+}
+.term-modal .tm-src a { color: var(--blue); }
+.term-modal .tm-rel {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.term-modal .tm-rel .rel-chip {
+  font-size: 0.82em;
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 12px;
+  padding: 2px 10px;
+  color: var(--text2);
+}
+.term-modal .tm-rel .rel-chip b { color: var(--blue); font-weight: 600; }
+/* 悬浮轻提示（hover） */
+.term-tip {
+  position: absolute;
+  z-index: 210;
+  max-width: 300px;
+  background: var(--panel);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  padding: 7px 10px;
+  font-size: 0.78em;
+  line-height: 1.6;
+  color: var(--text);
+  display: none;
+  pointer-events: none;
+}
+.term-tip.is-on { display: block; }
+.term-tip .tt-def {
+  color: var(--text2);
+  margin-top: 3px;
+  max-height: 4.8em;
+  overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+  .floating-toc { display: none; }
+  .floating-toc-tab { display: block; }
+  .floating-toc.is-mobile-open {
+    display: flex;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    top: auto;
+    bottom: 72px;
+    transform: none;
+    max-height: 62vh;
+    opacity: 1;
+    border-right: 1px solid var(--line);
+    border-radius: 10px;
+  }
+}
+
 @media (max-width: 768px) {
 
   /* Body: remove 100vh lock, enable scroll */

@@ -1667,3 +1667,58 @@ python scripts/verify_demo.py
 - **两关全绿**：erify_demo **✅ ALL CHECKS PASSED**（含构建产物 JS 语法校验）；	est_pipeline **ALL TESTS PASSED**。
 - Chrome DOM 实测：总纲页 **h1 正确、2 表 42 行、待开标记 76／进行中 4、体例声明与校记皆在**；世主妙严品页**未完备声明已渲染、h1 已降格、CBETA 链接 7 处**；目录页**经论慢步组在位、7 分节、总纲卡已入**。
 - **本批提交**：仅本地 commit，**不 push**。
+
+---
+
+## L.88 文章知识图谱试点打通（世主妙严品）＋悬浮目录两态化＋两处数据累积缺陷根治（2026-09-30）
+
+**主题**：以《世主妙严品细读》为试点，走通「文章名相 YAML → SQLite → db_reader → build.py → common.js 术语弹窗/图谱面板」全链路；同时根治 `chapters` / `person_locations` 两处「每次导入即累积」的静默数据缺陷，并把全站悬浮目录改为「窄轨 ↔ 展开面板」两态（不再遮挡正文）。
+
+### 一、数据完整性根治（本批最重要的修复）
+
+- **`chapters` 表每次导入翻倍**（41→82→123→164→205，Tab2 品目表曾重复渲染 41 品）。根因有二：①表无 `UNIQUE(sutra_id, order_num)`，故 `INSERT OR REPLACE` 静默失效；②`title_en` 原由独立脚本 `backfill_chapters_title_en.py` 事后补写，致副本内容不一致。
+  - 治法（**源头治理**）：新增 **`data/catalog/chapters.yaml`**（41 品，含 `title_en`）为**唯一权威源**（用 AST 自原两份硬编码 `chapters_80`／`unique_bo_chapters`／`TITLES_EN` 精确抽取生成，**零手抄**）；`import_chapters` 改读该文件；`backfill_chapters_title_en.py` 由「补写脚本」改为**校验器**（不符则 exit 1）；`schema.sql` 增 `CREATE UNIQUE INDEX idx_chapters_order ON chapters(sutra_id, order_num)`。
+- **教训（已入册）**：`CREATE UNIQUE INDEX IF NOT EXISTS` 遇**同名非唯一索引会静默跳过**；且 `sqlite_master` **无 `unique` 列**（引用不存在的列会回退为字符串字面量、恒真）。故新增 `_ensure_unique_index()`：先查 `PRAGMA index_list(t)`（第 3 列为 unique），有同名非唯一索引则先 DROP 再建。
+- **`person_locations` 陈旧引用累积**（每跑 +45 行，360 行中 245 个 `person_id` 失效）。根因：`INSERT OR REPLACE` 改变 persons rowid，`OR IGNORE` 无法去重。治法：该表 100% 派生自 `locations.related_persons`，改为**导入前整表 DELETE 后重建**，并加陈旧 `person_id` 自检。
+- **连跑 4 次导入结果恒定**：`chapters 41/41`、`person_locations 45/45`、`stale=0`、`missing title_en=0`；全库审计 0 重复键、0 陈旧引用。
+
+### 二、文章知识图谱试点（`shizhu-miaoyan`）
+
+- **权威源**：`data/translation/article_knowledge/shizhu-miaoyan.yaml`（**21 节点／18 边**；A1 17、A2 2、C 1、D 1）。
+- **schema**：`article_terms` / `article_term_links`（改 `IF NOT EXISTS`、删 `DROP TABLE`）；`status` 增 `coined`；`to_type` 明确 `term|chapter|location|person|text|lineage|external`。
+- **管线**：`import_article_knowledge()`（幂等，按 `article_id` 先删后插；D 级自动 `status='rejected'`）→ `db_reader.load_article_knowledge()`（组装 `out`/`in` 双向邻接）→ `build.py` 内嵌 `var ARTICLE_GRAPH` → `common.js` 的 `_markTermRefs()` / `openTermModal()` / `openGraphPanel()`。
+- **命中方式（混合）**：①**自动扫描** `term_zh` + `aliases`（按长度降序，避免「摩竭提」抢在「摩竭提國」前命中）；②**显式标记** `[[显示文本|term_id]]`（未知 id 保留原文，不静默吞掉）。
+- **信度徽章** A1/A2/B/C/D 五色；D 级（`rejected_mahakala`）自动加**删除线**；弹窗含中英释义、出处、注记、**关联节点可点击跳转**。
+- **门禁新增**：`test_pipeline.py` 新增第 [6] 组「Article knowledge graph」共 7 项断言（term_id 唯一／中英释义与信度齐备／D 级必 `rejected`／无悬空边／邻接 out 合计=边数／HTML `ARTICLE_GRAPH` 与 SQLite 计数一致／**未注册页不得误带 `ARTICLE_GRAPH`**）。
+- **Neo4j（离线）**：`load_neo4j.py` 新增 `generate_article_cypher()`，`--generate` 一并导出 `(:ArticleTerm)`／`(:ArticleRef)` 节点与关系（本批 21 节点／18 关系／2 ArticleRef）。**在线导入仍受阻于本机 Neo4j 未启动**。
+
+### 三、悬浮目录两态化（应读者反馈：目录遮挡正文）
+
+- 旧态：右侧 232px × 74vh 面板常驻，仅靠「折叠成 34px 标题条」减遮——**折叠态仍横占 232px**，展开态仍压住正文右侧。
+- 新态：**收态仅 28px 竖向窄轨**（贴右缘、opacity 0.5，显示竖向阅读进度 + **当前节竖排名**如「35·5.1 卷四次第：十四类神」），**鼠标移入／键盘聚焦即向左展开为 238px 完整目录，移开即收**；点窄轨／标题条／📌 可**钉住**（`.is-open`）供持续可见或触屏；点目录项后 `blur()` 释放 `:focus-within`，面板即随鼠标移开而收起。窄屏（≤1100px）沿用右下圆钮浮层。
+- CDP 实测（1600×1000）：收态 `28px / opacity .5 / 窄轨可见·条与列表隐藏`；移入后 `238px / opacity 1 / 76 节 / 窄轨隐藏`；滚动 55% 处条与轨进度**同为 56.12%**、当前节高亮与竖排名一致；点选后 `focus-within=false` 且已跳转；钉住后移开鼠标仍 `238px`；取消钉住回 `28px`；**0 JS 异常**。
+
+### 四、考证订正（本批回源核对）
+
+1. **`T45n1738` 归属**：**正文署「清涼山大華嚴寺沙門澄觀撰述」，卷首《釋章序》署「沙門典壽謹撰」**——CBETA 检索页/Zensoul/deerpark 取序作者为作者而题作「典寿」，实为目录之误。**旧记「撰于《疏》前」不成立**：其序明言「書僅一萬三千餘言，**較之疏鈔不及百之一**」，预设《疏》《钞》已在，故当在《疏》之后。（已订正文档 1.2〔订正〕、附录九、九.1 与 YAML `seven_places_nine_assemblies`。）
+2. **`经首` 由「D2 疑讹」改 C**（单一来源待考·法师自取名）：该名不涉讹误，只是**后出自取**、非经非古注之既有术语；「法师自取」一说仅据其讲记自陈，标〔待核〕。同步改 `status: coined`、移出「已否之名」节、**清除自造第六级「D2」**（凡例九只五级）。
+3. **`site_jetavana` 订正**：给孤独园为**第九会**（旧记「第九会（第七会）」及 EN "seventh assembly" 均误）——第七、八会系**重普光法堂**，非在给孤独园。
+4. **term_id 正名**：`site_śikṣā`→`site_trayastriṃśa`（忉利）、`site_parinirvāṇa_deva`→`site_paranirmita`（他化自在，原名误作「涅槃」）、`shijie_jie`→`ten_mysterious_gates`、`rejected_jingshou`→`coined_jingshou`。
+5. **计数统一**：1.2 之「摩竭提 8 见」订正为 **9 见**（与附录九「80 卷 9／60 卷 6／40 卷 4」及 YAML 一致）。
+6. **体例修正**：`to_type: site` 统一为 `term`（地点本即 term，类别由 `article_terms.category` 承载）；`links_note` 并入 link 的 `note`；`site_bodhimaṇḍa` 的 EN 释义中残留中文「阿兰若」改 `Aranya`。
+
+### 五、门禁与实测
+
+- 八道全绿：`import_all_to_sqlite`（Article-knowledge 1/21/18；Chapters 41；Person-locations 45/stale 0）→ `export_sqlite_to_json --verify`（verified=81, no_bio=0, no_dates=17, no_lineage=8）→ `backfill_chapters_title_en`（41/41，exit 0）→ `load_neo4j --verify-sqlite`（无 orphan）→ `test_pipeline`（**ALL TESTS PASSED**，新增 [6] 组全绿）→ `build.py`（**36 files | 23 763 287 B**）→ `verify_demo`（**✅ ALL CHECKS PASSED**）→ `verify_sources`（76/100）。
+- 术语功能 CDP 实测（`articles/shizhu-miaoyan.html`）：`ARTICLE_GRAPH` 21/18；正文命中 **356** 处 `.term-ref`（其中 D 级删除线 20 处，全在 1.2 考辨与附录九.4 之「已否之名」语境）；弹窗开合正常（标题/信度徽章 A2/中英块 1/关联 8 枚/出处 138 字）；**关联节点跳转**（七处九会 → 摩竭提國阿蘭若法菩提場）正常；Esc 关闭；图谱面板列全 21 节点、徽章 A1 17/A2 2/C 1/D 1；「仅中文」下弹窗 EN 块 **hidden=1 / leak=0**；显式标记 `[[…|id]]` 命中 2、未知 id 保留原文；**0 JS 异常**。DB 491 520 B。
+- **未提交**：本批变更均在工作区，**待 commit，未 push**。
+
+### 六、遗留与下一步（待续梯队）
+
+1. **恢复余下 46 组《华严经》细读**（现 4/50）。下一组建议 **卷二「世界」品**（四组，同卷便于会处与名相的横向比对）；卷二组 2、4–12 及卷三至卷五待续。
+2. **知识图谱随细读同步扩充**：每完成一组细读即增 `data/translation/article_knowledge/<id>.yaml`，并要求**先入图谱定级、再入正文**（沿用本文铁律：D 级 `rejected`、A2 必注首倡者与经号）。
+3. **既有 5 篇无图谱的独立长文**（`zhenwei`／`master-*`／`chan-*`／`vijnana-mind` 等）暂不建图；若日后补建，沿用同一 YAML 体例即可自动接入。
+4. **D 级名在正文的 20 处命中**：现以删除线标示（合于「只在已否之名出现」之意），如需更严，可让 `_markTermRefs` 对 `status=rejected` 者**只在附录节内标注**。
+5. **卷二偈颂边界**：JSON 可能受门注污染，恢复细读前须以 CBETA 原文重做边界。
+6. **Neo4j 在线验证**：本机 `7687/7474` 未监听，文章图谱的 Cypher 目前仅经 `--generate` 离线产出与结构自检，未作服务端实跑。
+7. **`opencc`/`zhconv` 未安装**：简繁归一化目前靠三版经文各自的字形，未做工具级统一。

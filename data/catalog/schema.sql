@@ -122,7 +122,8 @@ CREATE TABLE chapters (
 );
 
 CREATE INDEX idx_chapters_sutra ON chapters(sutra_id);
-CREATE INDEX idx_chapters_order ON chapters(sutra_id, order_num);
+-- UNIQUE 必需：import_chapters 用 INSERT OR REPLACE，无 UNIQUE 则每次导入追加一份而非替换
+CREATE UNIQUE INDEX idx_chapters_order ON chapters(sutra_id, order_num);
 CREATE INDEX idx_chapters_unique_bo ON chapters(is_unique_to_bo);
 
 -- -----------------------------------------------------------
@@ -279,6 +280,57 @@ CREATE TABLE translation_units (
 
 CREATE INDEX idx_trans_units_chapter ON translation_units(chapter_id);
 CREATE INDEX idx_trans_units_status ON translation_units(status);
+
+-- -----------------------------------------------------------
+-- 文章知识图谱：名相 · 会处 · 术语（文章级节点）
+-- 权威源 data/translation/article_knowledge/<article_id>.yaml
+--   → import_all_to_sqlite.py → SQLite → db_reader.load_article_knowledge() → build.py
+-- 信度五级（与各文凡例九一致，勿另立名目）：
+--   A1 经文直证 | A2 古注明证（注疏判摄名）| B 文献转述
+--   C 单一来源或仅见转引待考（含近人自取名）| D 疑讹·不见于经与历代注疏（status=rejected，正文不采用）
+-- status：used（本文采用）| rejected（D 级已否之名，仅存于「已否之名」）
+--         | coined（近人自取名，非经非古注术语，仅作其用语引述）
+-- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS article_terms (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    article_id     TEXT    NOT NULL,                          -- 对应 articles/<id>.html
+    term_id        TEXT    NOT NULL,                          -- 篇内唯一术语 id
+    term_zh        TEXT    NOT NULL,                          -- 术语（本名）
+    aliases        TEXT,                                      -- JSON 数组：异名/简称/繁体，供正文自动命中
+    category       TEXT,                                      -- site|assembly|chapter|doctrine|person|text|method|coined
+    grade          TEXT    NOT NULL DEFAULT 'C',              -- A1|A2|B|C|D
+    status         TEXT    NOT NULL DEFAULT 'used',           -- used|rejected|coined
+    definition_zh  TEXT,                                      -- 释义（中文）
+    definition_en  TEXT,                                      -- 释义（英文）
+    source_note    TEXT,                                      -- 出处：经号·卷次·首倡者
+    source_url     TEXT,                                      -- 可点击回查链接
+    note           TEXT,                                      -- 存疑/推断/校记等注记
+    created_at     TEXT    DEFAULT (datetime('now')),
+    UNIQUE(article_id, term_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_article_terms_article ON article_terms(article_id);
+CREATE INDEX IF NOT EXISTS idx_article_terms_grade   ON article_terms(grade);
+CREATE INDEX IF NOT EXISTS idx_article_terms_status  ON article_terms(status);
+
+-- 文章知识图谱：边（术语 ↔ 术语／人物／经卷／品／道场／法系／外部资源）
+-- to_type：term（本篇内之任一条目，类别见 article_terms.category，含会处/人物/品名等）
+--          | chapter | location | person | text | lineage | external（篇外文献，to_ref 给经号如 T45n1738）
+CREATE TABLE IF NOT EXISTS article_term_links (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    article_id   TEXT    NOT NULL,
+    from_term_id TEXT    NOT NULL,                            -- → article_terms.term_id
+    rel          TEXT    NOT NULL,                            -- 关系型：located_at|preached_by|commented_by|alias_of|see_also|defined_by|same_as…
+    to_type      TEXT    NOT NULL DEFAULT 'term',             -- 目标实体类型
+    to_ref       TEXT    NOT NULL,                            -- 目标 id（既有表 source_id / 经号 / 本文 term_id）
+    to_label     TEXT,                                        -- 目标显示名
+    note         TEXT,
+    UNIQUE(article_id, from_term_id, rel, to_type, to_ref)
+);
+
+CREATE INDEX IF NOT EXISTS idx_atl_from  ON article_term_links(article_id, from_term_id);
+CREATE INDEX IF NOT EXISTS idx_atl_to    ON article_term_links(to_type, to_ref);
+CREATE INDEX IF NOT EXISTS idx_atl_rel   ON article_term_links(article_id, rel);
 
 -- -----------------------------------------------------------
 -- 触发器: 保持 FTS 索引同步

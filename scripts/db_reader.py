@@ -291,6 +291,110 @@ def load_glossary():
     return terms
 
 
+def load_article_knowledge():
+    """Export per-article knowledge graphs (名相·会处·术语) for the article renderer.
+
+    Returns: {article_id: {"title": ..., "terms": [...], "links": [...]}}
+
+    Populated by scripts/import_all_to_sqlite.py from
+    data/translation/article_knowledge/*.yaml into article_terms / article_term_links.
+    `grade` is the provenance level (A1 经文直证 / A2 古注明证 / B 文献转述 /
+    C 单一来源待考 / D 疑讹不采用); grade D always carries status='rejected' and the
+    renderer must not treat it as in-use terminology. `links` are the edges among an
+    article's own terms plus edges out to the existing entity tables (chapter, location,
+    term, …), which is what lets the UI offer related-node navigation.
+    """
+    conn = get_conn()
+    have = {r[0] for r in conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table'")}
+    if not {'article_terms', 'article_term_links'} <= have:
+        conn.close()
+        return {}
+
+    trows = conn.execute("""
+        SELECT article_id, term_id, term_zh, aliases, category, grade, status,
+               definition_zh, definition_en, source_note, source_url, note
+        FROM article_terms ORDER BY article_id, term_id
+    """).fetchall()
+    lrows = conn.execute("""
+        SELECT article_id, from_term_id, rel, to_type, to_ref, to_label, note
+        FROM article_term_links ORDER BY article_id, from_term_id, rel, to_ref
+    """).fetchall()
+
+    out = {}
+    for r in trows:
+        aid = r['article_id']
+        art = out.setdefault(aid, {"terms": [], "links": []})
+        art["terms"].append({
+            "id": r['term_id'],
+            "zh": r['term_zh'] or '',
+            "aliases": _j_load(r['aliases']) or [],
+            "category": r['category'] or '',
+            "grade": r['grade'] or '',
+            "status": r['status'] or '',
+            "def_zh": r['definition_zh'] or '',
+            "def_en": r['definition_en'] or '',
+            "source": r['source_note'] or '',
+            "source_url": r['source_url'] or '',
+            "note": r['note'] or '',
+        })
+    for r in lrows:
+        aid = r['article_id']
+        art = out.setdefault(aid, {"terms": [], "links": []})
+        art["links"].append({
+            "from": r['from_term_id'],
+            "rel": r['rel'] or '',
+            "to_type": r['to_type'] or '',
+            "to_ref": r['to_ref'] or '',
+            "to_label": r['to_label'] or '',
+            "note": r['note'] or '',
+        })
+
+    # Article titles come from the standalone-article registry so the UI can label the
+    # panel without duplicating names here.
+    try:
+        import yaml
+        reg = ROOT / "data" / "translation" / "standalone_articles.yaml"
+        titles = {}
+        if reg.exists():
+            data = yaml.safe_load(reg.read_text(encoding='utf-8')) or {}
+            for grp in ('sources', 'others'):
+                for a in (data.get(grp) or []):
+                    if isinstance(a, dict) and a.get('id'):
+                        titles[a['id']] = a.get('title') or a['id']
+        for aid, art in out.items():
+            art["title"] = titles.get(aid, aid)
+    except Exception:
+        for aid, art in out.items():
+            art["title"] = aid
+
+    # 组装双向邻接：每个节点带 out（本节点发出的边）与 in（指向本节点的边），
+    # 使前端渲染「关联节点」跳转时无需二次扫描，也免去前端拼字段名。
+    for art in out.values():
+        incoming = {t["id"]: [] for t in art["terms"]}
+        for l in art["links"]:
+            edge = {"rel": l["rel"], "to_type": l["to_type"],
+                    "to_ref": l["to_ref"], "to_label": l["to_label"], "note": l["note"]}
+            src = None
+            for t in art["terms"]:
+                if t["id"] == l["from"]:
+                    src = t
+                    break
+            if src is not None:
+                src.setdefault("out", []).append(dict(edge, to_label=edge["to_label"] or edge["to_ref"]))
+            if l["to_type"] == "term" and l["to_ref"] in incoming:
+                incoming[l["to_ref"]].append({
+                    "from": l["from"], "rel": l["rel"], "to_type": l["to_type"],
+                    "to_ref": l["to_ref"], "to_label": l["to_label"], "note": l["note"],
+                })
+        for t in art["terms"]:
+            t.setdefault("in", incoming.get(t["id"], []))
+            t.setdefault("out", [])
+
+    conn.close()
+    return out
+
+
 def load_texts():
     """Export texts, chapters, and cross_refs from SQLite.
 

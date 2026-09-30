@@ -209,9 +209,91 @@ def test_db_reader():
         warn("lineage_colors is empty")
 
 
-# ── Test 6: Build output matches SQLite data ──
+# ── Test 6: 文章知识图谱（article_knowledge YAML → SQLite → db_reader → HTML）──
+def test_article_knowledge():
+    print("\n[6] Article knowledge graph")
+
+    ak = db_reader.load_article_knowledge()
+    if not ak:
+        warn("load_article_knowledge() empty (no article_knowledge/*.yaml registered yet)")
+        return
+
+    for aid, art in sorted(ak.items()):
+        terms, links = art.get('terms', []), art.get('links', [])
+        ids = {t['id'] for t in terms}
+
+        # 六：term_id 篇内唯一
+        if len(ids) != len(terms):
+            dup = [t['id'] for t in terms if [x['id'] for x in terms].count(t['id']) > 1]
+            fail(f"{aid}: duplicate term_id {sorted(set(dup))}")
+        else:
+            pass_(f"{aid}: term_id unique ({len(terms)} terms)")
+
+        # 七：字段零损失（中英释义、出处、信度必具）
+        bad = [t['id'] for t in terms
+               if not t.get('zh') or not t.get('def_zh') or not t.get('def_en')
+               or t.get('grade') not in ('A1', 'A2', 'B', 'C', 'D')]
+        if bad:
+            fail(f"{aid}: terms missing zh/def_zh/def_en or bad grade: {bad}")
+        else:
+            pass_(f"{aid}: all terms carry zh + def_zh + def_en + valid grade")
+
+        # 八：D 级（疑讹）必须 status=rejected（本文正文不采用）
+        d_bad = [t['id'] for t in terms if t.get('grade') == 'D' and t.get('status') != 'rejected']
+        if d_bad:
+            fail(f"{aid}: grade D not marked rejected: {d_bad}")
+        else:
+            nd = sum(1 for t in terms if t.get('grade') == 'D')
+            pass_(f"{aid}: {nd} grade-D term(s) all status=rejected")
+
+        # 九：无悬空边（to_type=term 必指向本篇既有节点）
+        dangling = [(l['from'], l['rel'], l['to_ref']) for l in links
+                    if l.get('to_type') == 'term' and l['to_ref'] not in ids]
+        if dangling:
+            fail(f"{aid}: dangling term edges: {dangling}")
+        else:
+            pass_(f"{aid}: no dangling term edges ({len(links)} edges)")
+
+        # 十：邻接对称（out/in 已组装，out 合计应等于边数）
+        out_n = sum(len(t.get('out', [])) for t in terms)
+        if out_n != len(links):
+            fail(f"{aid}: adjacency out={out_n} != links={len(links)}")
+        else:
+            pass_(f"{aid}: adjacency out/in assembled ({out_n} out)")
+
+        # 十一：构建产物内嵌 ARTICLE_GRAPH，节点/边数与 SQLite 一致
+        page = ROOT / "web" / "demo" / "articles" / f"{aid}.html"
+        if not page.exists():
+            fail(f"{aid}: articles/{aid}.html not built")
+            continue
+        html = page.read_text(encoding='utf-8')
+        m = re.search(r'var ARTICLE_GRAPH\s*=\s*(\{.*?\});</script>', html, re.DOTALL)
+        if not m:
+            fail(f"{aid}: built page missing var ARTICLE_GRAPH")
+            continue
+        try:
+            built = json.loads(m.group(1))
+        except json.JSONDecodeError as e:
+            fail(f"{aid}: ARTICLE_GRAPH is not valid JSON: {e}")
+            continue
+        if len(built.get('terms', [])) == len(terms) and len(built.get('links', [])) == len(links):
+            pass_(f"{aid}: HTML ARTICLE_GRAPH matches SQLite ({len(terms)} terms / {len(links)} edges)")
+        else:
+            fail(f"{aid}: HTML/SQLite mismatch: html={len(built.get('terms', []))}/{len(built.get('links', []))} "
+                 f"db={len(terms)}/{len(links)}")
+
+        # 十二：未注册知识图谱的文章页不得误带 ARTICLE_GRAPH
+        others = [p.name for p in (ROOT / "web" / "demo" / "articles").glob('*.html')
+                  if p.stem != aid and 'var ARTICLE_GRAPH' in p.read_text(encoding='utf-8', errors='ignore')]
+        if others:
+            fail(f"{aid}: ARTICLE_GRAPH leaked into unrelated pages: {others}")
+        else:
+            pass_(f"{aid}: no ARTICLE_GRAPH leakage into other article pages")
+
+
+# ── Test 7: Build output matches SQLite data ──
 def test_build_consistency():
-    print("\n[6] Build output consistency")
+    print("\n[7] Build output consistency")
     lineage_path = ROOT / "web" / "demo" / "tabs" / "lineage.html"
     if not lineage_path.exists():
         fail("lineage.html not found (run build first)")
@@ -275,7 +357,7 @@ def test_build_consistency():
 
 # ── Test 7: No hardcoded data in build.py ──
 def test_no_hardcoding():
-    print("\n[7] No hardcoded data in build.py")
+    print("\n[8] No hardcoded data in build.py")
     with open(BUILD_PY, encoding='utf-8') as f:
         build_src = f.read()
 
@@ -304,7 +386,7 @@ def test_no_hardcoding():
 
 # ── Test 8: Edge relation normalization ──
 def test_relation_normalization():
-    print("\n[8] Relation normalization")
+    print("\n[9] Relation normalization")
     conn = sqlite3.connect(str(DB_PATH))
     bad_rels = conn.execute("""
         SELECT DISTINCT relation FROM lineage_edges
@@ -329,6 +411,7 @@ def main():
     test_locations()
     test_edges()
     test_db_reader()
+    test_article_knowledge()
     test_build_consistency()
     test_no_hardcoding()
     test_relation_normalization()
