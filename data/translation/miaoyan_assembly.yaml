@@ -699,14 +699,14 @@ classes:
   group_zh: 异生众·欲界天七众
   realm: 天众
   count_expr: 復有無量
-  leader: 天子
+  leader: 月天子
   n_named: 10
   collective: 皆
   collective_pos: 起首
   vow_kind: 誓愿
   vow: 皆勤顯發眾生心寶
   members:
-  - 天子
+  - 月天子
   - 華王髻光明天子
   - 眾妙淨光明天子
   - 安樂世間心天子
@@ -723,14 +723,14 @@ classes:
   group_zh: 异生众·欲界天七众
   realm: 天众
   count_expr: 復有無量
-  leader: 天子
+  leader: 日天子
   n_named: 11
   collective: 皆
   collective_pos: 起首
   vow_kind: 誓愿
   vow: 皆勤修習，利益眾生，增其善根
   members:
-  - 天子
+  - 日天子
   - 光焰眼天子
   - 須彌光可畏敬幢天子
   - 離垢寶莊嚴天子

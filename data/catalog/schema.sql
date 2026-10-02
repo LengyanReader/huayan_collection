@@ -474,7 +474,7 @@ CREATE TABLE IF NOT EXISTS article_eda_morphemes (
     n               INTEGER NOT NULL,                          -- 两段切分下的出现次数
     n_char_only     INTEGER NOT NULL DEFAULT 0,               -- 纯逐字对照下的出现次数
     seg_mode        TEXT    NOT NULL DEFAULT 'char',           -- word=多字词命中 | char=逐字
-    domain          TEXT,                                       -- 十六语义域之一
+    domain          TEXT,                                       -- 十七语义域之一（L.100 新增 dharma 法教类）
     confidence      TEXT,                                       -- high|medium|low（判读置信度）
     gloss           TEXT,                                       -- 中文释义
     gloss_en        TEXT,

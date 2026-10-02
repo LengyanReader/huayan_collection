@@ -1397,13 +1397,21 @@ function renderArticleEDA(containerSel) {
   h += _edaStat('多字词', m.word_hits || 0, 'words');
   h += _edaStat('判读存疑', m.medconf_hits + m.lowconf_hits, 'medlow');
   h += _edaStat('低置信位', m.lowconf_hits || 0, 'lowconf');
+  h += _edaStat('待归域积压', m.unassigned_backlog_segs || 0, 'backlog');
   h += '</div>';
   h += '<div style="font-size:0.76em;color:var(--text2);margin:6px 0 14px">'
     + '覆盖率 100% 仅表示每个字皆已收入词素表，<b>不等于语义皆已核定</b>——'
     + '词素位 <code>c</code> 分三级：high ' + (m.tokens_total - m.medconf_hits - m.lowconf_hits)
     + '、medium ' + (m.medconf_hits || 0) + '、low ' + (m.lowconf_hits || 0) + '。'
     + '<b>仅 low 者前端须显示〔待考〕</b>；「判读存疑」为 medium 与 low 之合计，'
-    + '供群间比较之需，二者口径不同，勿相混。涉存疑位之比较结论宜从缓。</div>';
+    + '供群间比较之需，二者口径不同，勿相混。涉存疑位之比较结论宜从缓。</div>'
+    + '<div style="font-size:0.76em;color:var(--text2);margin:0 0 14px">'
+    + '<b>「未定域」不等于「待办」</b>——未定域共 <b>' + (m.unassigned_segs || 0) + '</b> 段，须分三类读：'
+    + '<b>①专名／音译 ' + (m.unassigned_lexeme_segs || 0) + ' 段</b>（已注册为多字词，注册目的正是阻止逐字强析，'
+    + '强行归域反属臆造）；<b>②不可归域 ' + (m.unassigned_unresolved_glyph_segs || 0) + ' 段</b>'
+    + '（底本罕字，字义不可判读，已考订而止步）；'
+    + '<b>③待归域 ' + (m.unassigned_backlog_segs || 0) + ' 段</b>——唯③方可推进，本批已归零。'
+    + '三类皆<b>不得</b>为凑「未定→0」而强并。</div>';
 
   // ── 群组纵深（5 群剖面）──
   var gps = p.group_profiles || [];

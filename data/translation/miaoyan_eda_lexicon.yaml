@@ -974,12 +974,13 @@ morphemes:
   c: low
   note: 见「普音陀羅尼天」？——本品类中作「音」后缀，待考。
 - zh: 𪗇
-  py: na
+  py: ''
   domain: unassigned
-  gloss: 𪗇（音译「那」之疑似异体，义不明）
-  gloss_en: (obscure glyph, possibly na)
+  gloss: 𪗇〔待考〕：U+2A5C7，CBETA 底本字形存疑之标记，非可判读之音译
+  gloss_en: 〔unresolved〕U+2A5C7, a textually doubtful mark in the CBETA base text — not a determinable transliteration
   c: low
-  note: 见「大精進金剛𪗇菩薩摩訶薩」「輪𪗇天」；CBETA 保留此字，字书难考，存疑待考。
+  unresolved_glyph: true
+  note: 〔更正·证伪〕旧注「音译『那』之疑似异体」（旧 py 字段作 na）经证伪，已删。经 T279 全篇核：①码位 U+2A5C7（旧注未记）；②全经 24 见，其中**仅 2 见在名号内**（「大精進金剛𪗇菩薩摩訶薩」「輪𪗇天王」），余 22 见皆在经文正文与韵文（如「於𪗇輪中放百萬阿僧祇光」「次前，於金剛𪗇佛所」「光味摩尼以為其𪗇」「十方一切諸佛𪗇中，皆放光明」「玉王𪗇臍眾神」）；③**CBETA 自家校勘在不同处分别作「𪗇＝齊」与「𪗇＝臍」，二者互不一致**——如「消＝銷【宮】𪗇＝齊【三】」「耀＝曜【宮】𪗇＝齊【宮】」「玉＝王【三】【宮】𪗇＝臍【三】【宮】」。校记既不能给出一致对应，正说明 CBETA 编校方亦将其视为底本字形存疑之衍/讹标记，而非有确定读音的音译字。故其义不可判，**不得归入任何音译域**；旧说之「那」在 CBETA 校勘中毫无支持，故 py 亦一并清空。**本条非「待归域」而是「已考订而不可归域」**，以 unresolved_glyph 标记。
 - zh: 主
   domain: affix
   gloss: 所主格标记：〔形容〕主〔所主〕，非尊称
@@ -1239,11 +1240,11 @@ morphemes:
   c: medium
   note: 见「普光師子幢」「師子王光明執金剛」；本类群中 4 见全属「師子」，为双音节词之半。
 - zh: 如
-  domain: unassigned
-  gloss: 〔存疑〕如來（佛名）／如雲、如須彌山（譬如义）
-  gloss_en: ''
-  c: low
-  note: 两义并存，暂不归域。
+  domain: affix
+  gloss: 譬喻标记「如」（如云／如须弥山／如灯幢），句法关系词，无实义
+  gloss_en: Simile marker "ru" (as / like), a syntactic particle without independent semantic content
+  c: high
+  note: 三处皆譬喻义，经文已核：「布華如雲主林神」「十方宮殿如須彌山主火神」（T279「十方宮殿如須彌山主火神」）、「如燈幢為眾所歸摩睺羅伽王」。旧注所列第二义「如來（佛名）」已由 lexeme「如來」整词吸收（故单字「如」不再需要承担佛名义），两义并存之虑消解，故归 affix（冠缀类，与「主」「不」「得」同属句法标记）。c 由 low 升 high：三处喻义一致，无判读分歧。
 - zh: 悅
   domain: virtue
   gloss: 悦、悦意
@@ -1311,11 +1312,11 @@ morphemes:
   c: high
   note: 见「普清淨無盡福光」「無盡光髻主火」。
 - zh: 藏
-  domain: unassigned
-  gloss: 〔存疑〕藏（寶藏／法藏）
-  gloss_en: ''
-  c: low
-  note: 见「雲音海光無垢藏」「垂布焰藏主林」；义有两途，暂不定域。
+  domain: jewel
+  gloss: 藏（寶藏／佛藏·如來藏）：库藏、蕴藏之义
+  gloss_en: Cang — treasury / store-house (Buddha-store, tathagata-garbha)
+  c: medium
+  note: 三处经文已核：「雲音海光無垢藏菩薩摩訶薩」（佛藏·如来藏，蕴藏佛性）、「垂布焰藏主林神」「普光焰藏主火神」（焰藏）。旧注「义有两途，暂不定域」——考其实两途同源：「寶藏」与「法藏」皆「藏＝库藏」之引申，差别在所藏者，不在「藏」本身，故可归一。取 jewel（宝严类）为主域，因「藏」字面义为宝藏/库藏，与「寶」同域；惟「法藏」偏向法教，此为已知近似（每词素只归一域，见 domain_assignment 说明）。c 仍为 medium：「法藏」一途的域归属保留歧义，不因归一而强判为 high。
 - zh: 美
   domain: form
   gloss: 美、美妙
@@ -1458,11 +1459,11 @@ morphemes:
   c: medium
   note: 见「力能竭水主風」「娑竭羅龍」。
 - zh: 所
-  domain: unassigned
-  gloss: 〔存疑〕所（关系词，无实义）
-  gloss_en: ''
-  c: low
-  note: 见「所行無礙主風」「為眾所歸」；为结构助词，非语义成分。
+  domain: affix
+  gloss: 名义化标记「所」（所行／眾所歸＝「所…者」），句法关系词，无实义
+  gloss_en: Nominalizer "suo" (that which ...), a syntactic particle without independent semantic content
+  c: high
+  note: 经文已核两处：「所行無礙主風神」（所行＝其所行）、「如燈幢為眾所歸摩睺羅伽王」（眾所歸＝眾所歸者）。二者皆名词化/关系标记，语法成分而非语义成分，归 affix（冠缀类）。注意「眾所歸」在名号中已按整词（mode=word）匹配，故单字「所」仅出现于「所行無礙」一处；两处义同，c 由 low 升 high。
 - zh: 步
   domain: motion
   gloss: 步、行步
@@ -1518,11 +1519,11 @@ morphemes:
   c: high
   note: 见「安樂世間心」「世間自在主天」。
 - zh: 法
-  domain: unassigned
-  gloss: 〔存疑〕法（法性、法教）
-  gloss_en: ''
-  c: low
-  note: 见「樂思惟法變化天」「愛樂法光明幢天」；亦可能属 wisdom，暂不定域。
+  domain: dharma
+  gloss: 法（法教·法性）：佛所说法与法之实相
+  gloss_en: Fa — the Dharma, i.e. the Buddha's teaching and the true nature of things
+  c: high
+  note: 两处经文已核：「愛樂法光明幢天王」（愛樂其法）、「樂思惟法變化天王」（思惟法之變化），二处「法」皆指佛说之「法」，非自然物象，亦非心之功德或智慧本身。旧注「亦可能属 wisdom，暂不定域」之虑，经考不成立：wisdom 域所收为「思／惟」等 cognition 词素，「法」是被思惟之对象而非心智之德性，二者不同层。故立新域 dharma（法教类）以免屈就——「法」在佛典中自成一义群（法界／法性／法教／法门），既非 nature（物象）亦非 wisdom（心智），亦非 virtue（功德）。c 由 low 升 high：两处义同，且与同词素表内既有归域惯例一致。
 - zh: 賢
   domain: unassigned
   gloss: 〔存疑〕賢（普賢＝Samantabhadra 菩萨真名）
@@ -1663,10 +1664,11 @@ morphemes:
   note: 见「普潔泉㵎主河」。
 - zh: 㵎
   domain: unassigned
-  gloss: 〔存疑〕㵎（CBETA 异体字，字书未收）
-  gloss_en: ''
+  gloss: 㵎〔待考〕：CBETA 底本原字，字书未收
+  gloss_en: 〔unresolved〕an obscure glyph attested only in the CBETA base text
   c: low
-  note: 见「普潔泉㵎主河」；疑「溢」之异体，待考。
+  unresolved_glyph: true
+  note: 经 T279 全篇核：仅一见，在「普潔泉㵎主河神」（T279「普發迅流主河神、普潔泉㵎主河神、離塵淨眼主河神」），CBETA 未附任何校勘异文。旧注「疑『溢』之异体，待考」**无实证支撑，已删**——全篇既无第二处可比对，亦无字书或校记可据，按「严禁假信息」不保留此疑测。位置在「泉」之后、类尾「主河神」之前，依「普潔泉㵎」之构式，或为泉之形容，然具体所指待考。**本条非「待归域」而是「已考订而不可归域」**：字义在现有底本与字书内不可判定，任何归域皆属臆造，故保留 unassigned 并以 unresolved_glyph 标记。
 - zh: 救
   domain: virtue
   gloss: 救、救护
@@ -1710,11 +1712,11 @@ morphemes:
   c: high
   note: 见「光明破暗主火神」。
 - zh: 暗
-  domain: unassigned
-  gloss: 〔存疑〕暗（闇）
-  gloss_en: ''
-  c: low
-  note: 见「光明破暗主火神」；义可推，暂入未定。
+  domain: luminosity
+  gloss: 暗（闇）：昏暗，为光明之否定侧
+  gloss_en: An — darkness, the negated pole of the light field
+  c: medium
+  note: 名号唯一处经文已核：「光明破暗主火神」（T279「威光自在主火神、光明破暗主火神、雷音電光主火神」）。「破暗」与「光明」同构一语，「暗」在此为光明域之否定侧，故归 luminosity（光明类）而非另立一域。**底本用字须辨明**：T279 中「暗」90 见、「闇」109 见，二字**并存而通用**，如名号作「光明破暗」，而经文散文作「令離黑闇怖畏道」「破一切闇障生喜樂大光明」「滅諸癡暗怖」。故「暗＝闇」之通用关系有经文实证，非臆断；本条只依「光明破暗」一处判读，c 为 medium（暗/闇 二体之别不影响义域，但底本字形归属仍待逐处校）。
 - zh: 飄
   domain: motion
   gloss: 飘、飘击
@@ -1890,11 +1892,11 @@ morphemes:
   c: high
   note: 见「攝伏惡眾緊那羅」。
 - zh: 為
-  domain: unassigned
-  gloss: 〔存疑〕為（关系词）
-  gloss_en: ''
-  c: low
-  note: 见「如燈幢為眾所歸摩睺羅伽」。
+  domain: affix
+  gloss: 系词「為」（＝是／充当），句法关系词，无实义
+  gloss_en: Copula "wei" (= is / serves as), a syntactic particle without independent semantic content
+  c: high
+  note: 唯一处经文已核：「如燈幢為眾所歸摩睺羅伽王」（T279「如燈幢為眾所歸摩睺羅伽王」），「為」在此为系词＝「是／充当」，语法成分而非语义成分，归 affix（冠缀类）。c 由 low 升 high：经文单一且句法角色明确。
 - zh: 歸
   domain: motion
   gloss: 归、归依

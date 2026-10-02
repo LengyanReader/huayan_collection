@@ -47,24 +47,27 @@ ASSEMBLY = os.path.join(ROOT, "data", "translation", "miaoyan_assembly.yaml")
 LEXICON = os.path.join(ROOT, "data", "translation", "miaoyan_eda_lexicon.yaml")
 EDA_OUT = os.path.join(ROOT, "data", "translation", "miaoyan_eda.yaml")
 
-# 十六语义域 → 呈现序（与 lexicon.yaml 头部说明一致）
+# 十七语义域 → 呈现序（与 lexicon.yaml 头部说明一致）
+# L.100 新增 dharma（法教类）：「法」自成一义群（法界/法性/法教/法门），
+# 既非 nature（物象）亦非 wisdom（心智）亦非 virtue（功德），故立新域而不屈就。
 DOMAIN_ORDER = [
     "luminosity", "jewel", "sound", "form", "virtue", "wisdom", "power",
     "motion", "nature", "space", "body", "speech", "time", "number",
-    "affix", "unassigned",
+    "affix", "dharma", "unassigned",
 ]
 DOMAIN_ZH = {
     "luminosity": "光明类", "jewel": "宝严类", "sound": "音聲类", "form": "形相类",
     "virtue": "功德类", "wisdom": "智慧类", "power": "威势力类", "motion": "動行类",
     "nature": "自然类", "space": "空間类", "body": "身體類", "speech": "言說类",
-    "time": "時間类", "number": "數量类", "affix": "冠綴类", "unassigned": "未定",
+    "time": "時間类", "number": "數量类", "affix": "冠綴类", "dharma": "法教类",
+    "unassigned": "未定",
 }
 DOMAIN_EN = {
     "luminosity": "luminosity", "jewel": "jewel-adornment", "sound": "sound",
     "form": "form", "virtue": "merit-virtue", "wisdom": "wisdom", "power": "power",
     "motion": "motion", "nature": "nature", "space": "space", "body": "body",
     "speech": "speech", "time": "time", "number": "quantity", "affix": "affix",
-    "unassigned": "unassigned",
+    "dharma": "dharma-teaching", "unassigned": "unassigned",
 }
 DOMAIN_COLOR = {
     "luminosity": "#f2c14e", "jewel": "#c0392b", "sound": "#8e6cbb",
@@ -72,7 +75,7 @@ DOMAIN_COLOR = {
     "power": "#d35400", "motion": "#7f8c8d", "nature": "#1e8449",
     "space": "#5dade2", "body": "#af7ac5", "speech": "#e67e22",
     "time": "#7d6608", "number": "#5d6d7e", "affix": "#a04000",
-    "unassigned": "#b3b3b3",
+    "dharma": "#6c3483", "unassigned": "#b3b3b3",
 }
 GROUP_ORDER = ["bodhisattva", "deities", "eight", "desire", "form"]
 GROUP_ZH = {
@@ -177,6 +180,11 @@ def build_lexicon(raw: Any) -> Dict[str, Dict[str, Any]]:
             "gloss_en": m.get("gloss_en", ""),
             "c": m.get("c", "low"),
             "note": m.get("note", ""),
+            # L.100：已考订而**不可归域**之罕字标记（如 𪗇／㵎）。
+            # 此标记只用于区分「待归域」与「不可归域」，不改变 domain 值，
+            # 亦不参与任何计数以外的逻辑——防止后续批次为凑「unassigned→0」
+            # 而臆造语义域（违「严禁假信息」）。
+            "unresolved_glyph": bool(m.get("unresolved_glyph", False)),
         })
     return out
 
@@ -640,6 +648,29 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
     n_un = sum(unsegmented.values())
     n_char = sum(char_total.values())
 
+    # ── L.100：domain=unassigned 三类拆分（防「为凑 0 而臆造域」）──
+    # ① lexeme 型：已注册为多字专名/音译，注册目的即防逐字强析 → **按设计不可析**
+    # ② 不可归域型：词素带 unresolved_glyph 标记 → 已考订而字义不可判读
+    # ③ 待归域型：其余 → **真正的待办积压**
+    unass_total = unass_lex = unass_glyph = 0
+    unass_lex_c: collections.Counter = collections.Counter()
+    unass_glyph_c: collections.Counter = collections.Counter()
+    unass_backlog_c: collections.Counter = collections.Counter()
+    for z, n in tok_total.items():
+        e = lex.get(z) or lx_by_zh.get(z) or {}
+        if e.get("domain", "unassigned") != "unassigned":
+            continue
+        unass_total += n
+        if z in lx_by_zh:
+            unass_lex += n
+            unass_lex_c[z] += n
+        elif e.get("unresolved_glyph"):
+            unass_glyph += n
+            unass_glyph_c[z] += n
+        else:
+            unass_backlog_c[z] += n
+    unass_backlog = sum(unass_backlog_c.values())
+
     # ── 群组纵深：群级钻取 + 群间对比 ──
     dom_of = {z: (lex.get(z) or lx_by_zh.get(z, {})).get("domain", "unassigned")
               for z in tok_total}
@@ -691,6 +722,10 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
             "coverage_pct": round(100.0 * n_tok / max(1, n_tok + n_un), 2),
             "unsegmented_chars": n_un,
             "unsegmented_distinct": len(unsegmented),
+            "unassigned_segs": unass_total,
+            "unassigned_lexeme_segs": unass_lex,
+            "unassigned_unresolved_glyph_segs": unass_glyph,
+            "unassigned_backlog_segs": unass_backlog,
             "lexicon_unused": len([z for z in lex if z not in char_total]),
             "lowconf_hits": sum(lowconf_hits.values()),
             "medconf_hits": sum(medconf_hits.values()),
@@ -751,6 +786,27 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
             {"zh": z, "n": n, "note": lex.get(z, {}).get("note", "未入词素表〔待补〕")}
             for z, n in unsegmented.most_common()
         ],
+        "unassigned_breakdown": {
+            "note": "「domain=unassigned」**不是单一性质的积压**，须分三类读（见 metrics 四项计数）："
+                    "① **专名／音译型**——已注册为多字 lexeme（如「因陀羅」「那羅延」「普賢」「毘樓博叉」），"
+                    "注册目的正是阻止逐字强析，故其 unassigned 是**设计结果而非待办**，强行归域反属臆造；"
+                    "② **不可归域型**——底本罕字，字义在现有底本与字书内不可判读（带 unresolved_glyph 标记，"
+                    "如「𪗇」「㵎」），已考订而止步于此；"
+                    "③ **待归域型**——前两类之外者，方为真正可推进的积压。"
+                    "三者皆不得为凑「unassigned→0」而强并。",
+            "note_en": "'unassigned' is not a single kind of backlog and must be read in three classes: "
+                       "(1) proper names and transliterations registered as multi-character lexemes — their "
+                       "unassigned status is by design, since registration exists precisely to prevent "
+                       "character-by-character forcing; (2) base-text obscure glyphs whose meaning cannot be "
+                       "determined from the available text or dictionaries (flagged unresolved_glyph); "
+                       "(3) everything else, the only genuinely actionable backlog. None of the three may be "
+                       "collapsed merely to drive 'unassigned' toward zero.",
+            "lexeme": [{"zh": z, "n": n} for z, n in unass_lex_c.most_common()],
+            "unresolved_glyph": [{"zh": z, "n": n,
+                                  "note": (lex.get(z) or {}).get("note", "")}
+                                 for z, n in unass_glyph_c.most_common()],
+            "backlog": [{"zh": z, "n": n} for z, n in unass_backlog_c.most_common()],
+        },
         "lexicon_notes": lexraw.get("notes", []) or [],
         "graph": {
             "lex_nodes": lexnodes,
@@ -819,6 +875,33 @@ def do_check(data: Dict[str, Any]) -> List[str]:
     for d in data["domains"]:
         if d["key"] not in DOMAIN_ORDER:
             errs.append("域 %s 不在 DOMAIN_ORDER" % d["key"])
+    # ── L.100：unassigned 三类拆分必须自洽（详见 unassigned_breakdown）──
+    ub = data.get("unassigned_breakdown") or {}
+    n_lx = sum(x["n"] for x in ub.get("lexeme") or [])
+    n_ug = sum(x["n"] for x in ub.get("unresolved_glyph") or [])
+    n_bl = sum(x["n"] for x in ub.get("backlog") or [])
+    if m.get("unassigned_segs") != n_lx + n_ug + n_bl:
+        errs.append("unassigned 拆分类 %d+%d+%d ≠ unassigned_segs %s"
+                    % (n_lx, n_ug, n_bl, m.get("unassigned_segs")))
+    for key, val in (("unassigned_lexeme_segs", n_lx),
+                     ("unassigned_unresolved_glyph_segs", n_ug),
+                     ("unassigned_backlog_segs", n_bl)):
+        if m.get(key) != val:
+            errs.append("metrics.%s=%s ≠ 明细之和 %d" % (key, m.get(key), val))
+    # 三类不得重叠：同一词素不得同时出现在两类清单中
+    zs_lx = {x["zh"] for x in ub.get("lexeme") or []}
+    zs_ug = {x["zh"] for x in ub.get("unresolved_glyph") or []}
+    zs_bl = {x["zh"] for x in ub.get("backlog") or []}
+    if zs_lx & zs_ug or zs_lx & zs_bl or zs_ug & zs_bl:
+        errs.append("unassigned 三类清单存在重叠：%s"
+                    % (sorted((zs_lx & zs_ug) | (zs_lx & zs_bl) | (zs_ug & zs_bl))))
+    # 防臆造护栏：带 unresolved_glyph 标记者不得同时被归入任何语义域
+    for x in ub.get("unresolved_glyph") or []:
+        e = next((mm for mm in data.get("morph_freq") or []
+                  if mm.get("zh") == x["zh"]), None)
+        if e and e.get("domain") not in (None, "", "unassigned"):
+            errs.append("罕字「%s」已标记 unresolved_glyph，却又归入域 %s——"
+                        "属为凑 0 而臆造语义域" % (x["zh"], e.get("domain")))
     # 切分自洽：词级切分会把「金剛」等合并为 1 位，故 tokens_total ≤ tokens_char_only
     if m["tokens_total"] > m["tokens_char_only"]:
         errs.append("两段切分位 %d > 纯逐字位 %d，逻辑矛盾"
