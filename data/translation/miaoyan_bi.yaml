@@ -1,0 +1,10394 @@
+article: shizhu-miaoyan
+title_zh: 世主妙严品会众名号 · 数据报告
+title_en: Data Report on the Assemblies of the World-Honoring Splendour Chapter
+source: CBETA T10n0279《華嚴經》卷二·世主妙嚴品（實主娑婆）
+source_url: https://cbetaonline.dila.edu.tw/zh/T10n0279
+generated_by: scripts/miaoyan_bi.py ← data/translation/miaoyan_eda.yaml（← miaoyan_eda.py ← miaoyan_assembly.yaml
+  ＋ miaoyan_eda_lexicon.yaml）
+generated_at_source: scripts/miaoyan_eda.py（源：miaoyan_assembly.yaml + miaoyan_eda_lexicon.yaml）
+disclaimer:
+  zh: ⚠️ 体例：本报告为**分析层**产物，非经文陈述。名号之属类、成员、数量出《世主妙严品》（assembly 层）；词素切分、语义域归属、相似度、聚类、相关、模板诸项皆本站析构（EDA 层与
+    BI 层）。经文自无「十七语义域」「余弦相似度」「轮廓系数」等名目。凡本报告所得，皆可复算而不可直作教义判读；一字一句之义，仍以经文为准。
+  en: '⚠️ Convention: this report is an analytical product, not a statement of the sutra. Class membership,
+    names and counts come from the World-Honoring Splendour Chapter (assembly layer); morpheme segmentation,
+    domain assignment, similarity, clustering, correlation and templates are this site''s own analysis
+    (EDA and BI layers). The sutra has no notion of ''seventeen domains'', ''cosine similarity'' or ''silhouette''.
+    Everything here is reproducible but must not be read as doctrinal judgement; for the meaning of words,
+    the sutra remains authoritative.'
+method:
+  pipeline_zh: 经文事实（assembly）→ 词素析构（EDA）→ BI 分析（本层）三层分源，逐层可回溯。
+  pipeline_en: Three separated layers — sutra facts (assembly) → morphemic analysis (EDA) → BI analysis
+    (this layer) — each independently traceable.
+  determinism_zh: 凡涉随机处，一律以定种线性同余发生器（LCG）取样，禁用 Python random 默认源（其实现版本间可变，会破坏可复现性）。
+  determinism_en: All sampling uses a seeded linear congruential generator (LCG); Python's random module
+    is deliberately avoided because its implementations vary between versions and would break reproducibility.
+  deps_zh: 零新增依赖：协方差特征分解用自实现 Jacobi 旋转，聚类/轮廓/中心性皆自实现，故结果不随第三方库版本而变。
+  deps_en: 'No new dependencies: eigen-decomposition uses a self-implemented Jacobi rotation, and clustering,
+    silhouette and centrality are all self-implemented, so results do not drift with third-party library
+    versions.'
+  integrity_zh: 本层不改 EDA 之任何数字，只读 EDA 而另作分析。故 L.101 以来之口径（high/medium/low 三分、low 单级为标注义务）在此原样承继。
+  integrity_en: This layer alters no figure produced by the EDA; it only reads it and adds analysis. The
+    calibers established since L.101 (three confidence grades, low alone carrying the annotation duty)
+    are inherited unchanged.
+scorecard:
+  note: 本记分卡刻意**不给「综合总分」**：加权合成为单一数字须预设权重，而权重无经无据可依，臆造权重即等于臆造结论。故凡须合成为一数处，一律改为分项列示并各标口径。
+  note_en: 'This scorecard deliberately withholds any composite index: collapsing metrics into a single
+    number requires weights, and weights unsupported by evidence would amount to manufacturing a conclusion.
+    Where a single figure would be wanted, metrics are listed separately with their definitions instead.'
+  items:
+  - key: classes
+    zh: 会众类别数
+    en: Classes
+    value: 40.0
+    display: '40'
+    definition: 40 类（经文明列之群类）
+    unit: count
+  - key: named_total
+    zh: 明列名号数
+    en: Named assemblies
+    value: 414.0
+    display: '414'
+    definition: 经文明列之名号总数
+    unit: count
+  - key: tokens_total
+    zh: 词素位总数
+    en: Token positions
+    value: 1877.0
+    display: 1,877
+    definition: 可析核名切分后之词素位置总数（含多字词一次计一位）
+    unit: count
+  - key: tokens_per_name
+    zh: 每名平均词素位
+    en: Token positions per name
+    value: 4.5338
+    display: '4.53'
+    definition: 词素位 ÷ 名号数 —— 名号之平均「信息长度」
+    unit: dec2
+  - key: names_per_class
+    zh: 每类平均名号数
+    en: Names per class
+    value: 10.35
+    display: '10.35'
+    definition: 名号数 ÷ 类数 —— 群类之平均「列举密度」
+    unit: dec2
+  - key: distinct_tokens
+    zh: 不同词素数
+    en: Distinct morphemes
+    value: 304.0
+    display: '304'
+    definition: 词素表中实际出现之不同词素
+    unit: count
+  - key: reuse_rate
+    zh: 语汇复用率
+    en: Morpheme reuse rate
+    value: 0.838
+    display: 83.80%
+    definition: 1 − 不同词素 ÷ 词素位 —— 越高则语汇越有限、构词越模板化
+    unit: ratio
+  - key: word_rate
+    zh: 多字词占比
+    en: Multi-char word rate
+    value: 0.0597
+    display: 5.97%
+    definition: 多字词命中 ÷ 词素位 —— 复名与专名的密度
+    unit: ratio
+  - key: high_rate
+    zh: 判读确定率
+    en: High-confidence rate
+    value: 0.8524
+    display: 85.24%
+    definition: high 词素位 ÷ 词素位 —— 「一字一句之义已核定」之比例
+    unit: ratio
+  - key: med_rate
+    zh: medium 占比
+    en: Medium-confidence rate
+    value: 0.1375
+    display: 13.75%
+    definition: medium ÷ 词素位 —— 判读存疑（比较之需），非标注义务
+    unit: ratio
+  - key: low_rate
+    zh: low 占比
+    en: Low-confidence rate
+    value: 0.0101
+    display: 1.01%
+    definition: low ÷ 词素位 —— 唯一「前端须显示〔待考〕」之单级
+    unit: ratio
+  - key: unassigned_rate
+    zh: 未定域占比
+    en: Unassigned rate
+    value: 0.0101
+    display: 1.01%
+    definition: 未定域段 ÷ 词素位 —— 含专名/音译与罕字，非「待办」
+    unit: ratio
+funnel:
+  note: 本漏斗分**两轨**，不可连读为一轨：轨道一「名号」逐层收窄，轨道二「词素位」逐层收窄；而二轨之间是**扩张**——一名析为多位词素。故「名号 414 < 词素位 1877」并非异常，而是转换之必然结果。若强并为一轨，则扩张之步会被误读为「流失」。又：t3
+    之流失（medium+low 之和）**不表示数据缺失**，而表示判读存疑之比重；误读为「覆盖率不足」即错解此表。
+  note_en: 'The funnel has two tracks that must not be read as one: track one (names) narrows, track two
+    (token positions) narrows, and between the two lies an expansion — one name yields several token positions.
+    ''414 names < 1877 positions'' is therefore not an anomaly but the necessary result of the transformation;
+    merging the tracks would make that expansion look like attrition. Further, the loss at t3 (medium
+    plus low) does not indicate missing data but the share of uncertain readings; reading it as a coverage
+    deficit misreads the table.'
+  conversion:
+    tokens_per_name: 4.5338
+    zh: 换算因子：每名平均析为几位词素
+    en: 'conversion factor: mean token positions yielded per name'
+    no_core: 0
+  track_names:
+    zh: 轨道一 · 名号
+    en: Track one — names
+    stages:
+    - key: n1
+      zh: 经文明列名号
+      en: Named assemblies in the sutra
+      n: 414
+      pct_of_track: 1.0
+      definition: 《世主妙严品》所明列之名号总数（assembly 层经文事实）
+    - key: n2
+      zh: 有可析之核名
+      en: Names with an analysable core
+      n: 414
+      pct_of_track: 1.0
+      definition: 剥去类尾后尚余有可析之核者；无核者记 ∅（CBETA 省文记号或核与类名全同者）
+  track_tokens:
+    zh: 轨道二 · 词素位
+    en: Track two — token positions
+    stages:
+    - key: t1
+      zh: 词素位
+      en: Token positions
+      n: 1877
+      pct_of_track: 1.0
+      definition: 核名按词素表切分之位置数（多字词一次计一位）
+    - key: t2
+      zh: 已归语义域
+      en: Assigned to a semantic domain
+      n: 1858
+      pct_of_track: 0.9899
+      definition: 归入十七语义域之一者；未定域者不入
+    - key: t3
+      zh: high 判读
+      en: High-confidence reading
+      n: 1589
+      pct_of_track: 0.8466
+      definition: 一字一句之义已核定者
+  reconciliation:
+    zh: '**对账**：本层自「逐词素」重算，EDA 之 metrics 为「导入时」统计，二者应当相符；不相符即数据有变或统计口径有别，须查因。'
+    en: 'Reconciliation: this layer recomputes from the segments themselves while the EDA metrics were
+      computed at import time. The two must agree; any gap means the data or the counting basis has changed
+      and must be investigated.'
+    caveat_zh: '**一处口径之差，须明辨**：EDA 之 lowconf_hits／medconf_hits 统计**全域**（含未定域词素）；本层 high/medium/low 只计**已归域**者。故「归域内
+      low」少于「全域 low」，二者之差即未定域中之 low。两个数字都对，只是所计之集合不同——混用即错。'
+    caveat_en: 'One counting difference must be made explicit: the EDA lowconf_hits and medconf_hits counts
+      span all token positions including those with unassigned domain, whereas the high/medium/low split
+      here covers assigned positions only. The gap is exactly the low-confidence unassigned positions.
+      Both figures are correct; they simply count different sets, and conflating them would be an error.'
+    tokens_total:
+      bi: 1877
+      eda: 1877
+      match: true
+    named_total:
+      bi: 414
+      eda: 414
+      match: true
+    no_core:
+      bi: 0
+      eda: 0
+      match: true
+    unassigned_segs:
+      bi: 19
+      eda: 19
+      match: true
+    lowconf_hits:
+      bi: 19
+      eda: 19
+      match: true
+    medconf_hits:
+      bi: 258
+      eda: 258
+      match: true
+    grade_matrix:
+    - scope: assigned
+      confidence: high
+      n: 1589
+    - scope: assigned
+      confidence: low
+      n: 16
+    - scope: assigned
+      confidence: medium
+      n: 253
+    - scope: unassigned
+      confidence: high
+      n: 11
+    - scope: unassigned
+      confidence: low
+      n: 3
+    - scope: unassigned
+      confidence: medium
+      n: 5
+    grade_matrix_note_zh: 由此矩阵可直接读出「已归域／未定域」×「high／medium／low」之实数分布；页面须并列此矩阵，以免读者以「归域内 low」冒充「全域 low」。
+    grade_matrix_note_en: This matrix gives the actual counts of assigned/unassigned against high/medium/low;
+      the page must display it so that 'low within assigned' is never mistaken for 'low overall'.
+  grades:
+    high:
+      n: 1589
+      pct: 0.8552
+      zh: 一字一句之义已核定
+      en: reading settled
+      duty: 无须标注
+      duty_en: no annotation required
+    medium:
+      n: 253
+      pct: 0.1362
+      zh: 判读存疑（比较之需）
+      en: reading uncertain (for comparison only)
+      duty: 不宜据以定论
+      duty_en: not to be used as settled
+    low:
+      n: 16
+      pct: 0.0086
+      zh: 底本疑读
+      en: textually doubtful
+      duty: 前端须显示〔待考〕
+      duty_en: must display 〔待考〕
+domain_landscape:
+  note: 十七语义域之分布为**语汇层**之分布，非教义权重之分布。域之划分为本站析构之分析工具，经文本身无「十七域」之名目，故本页一切域相关结论均为分析性，不可径作教义判读。
+  note_en: The distribution across the seventeen semantic domains is a distribution over the lexicon,
+    not over doctrine. The domain scheme is an analytical instrument of this site; the sutra itself has
+    no 'seventeen domains'. All domain-based conclusions here are analytical and must not be read as doctrinal
+    judgement.
+  rows:
+  - rank: 1
+    key: affix
+    zh: 冠綴类
+    en: affix
+    color: '#a04000'
+    n: 357
+    pct: 0.1902
+    cum_pct: 0.1902
+    share_of_assigned: 0.1921
+    hhi_contrib: 0.036175
+  - rank: 2
+    key: virtue
+    zh: 功德类
+    en: merit-virtue
+    color: '#27ae60'
+    n: 329
+    pct: 0.1753
+    cum_pct: 0.3655
+    share_of_assigned: 0.1771
+    hhi_contrib: 0.030723
+  - rank: 3
+    key: luminosity
+    zh: 光明类
+    en: luminosity
+    color: '#f2c14e'
+    n: 241
+    pct: 0.1284
+    cum_pct: 0.4939
+    share_of_assigned: 0.1297
+    hhi_contrib: 0.016486
+  - rank: 4
+    key: nature
+    zh: 自然类
+    en: nature
+    color: '#1e8449'
+    n: 200
+    pct: 0.1066
+    cum_pct: 0.6004
+    share_of_assigned: 0.1076
+    hhi_contrib: 0.011354
+  - rank: 5
+    key: form
+    zh: 形相类
+    en: form
+    color: '#2e86ab'
+    n: 158
+    pct: 0.0842
+    cum_pct: 0.6846
+    share_of_assigned: 0.085
+    hhi_contrib: 0.007086
+  - rank: 6
+    key: motion
+    zh: 動行类
+    en: motion
+    color: '#7f8c8d'
+    n: 130
+    pct: 0.0693
+    cum_pct: 0.7539
+    share_of_assigned: 0.07
+    hhi_contrib: 0.004797
+  - rank: 7
+    key: jewel
+    zh: 宝严类
+    en: jewel-adornment
+    color: '#c0392b'
+    n: 84
+    pct: 0.0448
+    cum_pct: 0.7986
+    share_of_assigned: 0.0452
+    hhi_contrib: 0.002003
+  - rank: 8
+    key: power
+    zh: 威势力类
+    en: power
+    color: '#d35400'
+    n: 76
+    pct: 0.0405
+    cum_pct: 0.8391
+    share_of_assigned: 0.0409
+    hhi_contrib: 0.001639
+  - rank: 9
+    key: wisdom
+    zh: 智慧类
+    en: wisdom
+    color: '#16a085'
+    n: 66
+    pct: 0.0352
+    cum_pct: 0.8743
+    share_of_assigned: 0.0355
+    hhi_contrib: 0.001236
+  - rank: 10
+    key: sound
+    zh: 音聲类
+    en: sound
+    color: '#8e6cbb'
+    n: 63
+    pct: 0.0336
+    cum_pct: 0.9078
+    share_of_assigned: 0.0339
+    hhi_contrib: 0.001127
+  - rank: 11
+    key: space
+    zh: 空間类
+    en: space
+    color: '#5dade2'
+    n: 52
+    pct: 0.0277
+    cum_pct: 0.9355
+    share_of_assigned: 0.028
+    hhi_contrib: 0.000767
+  - rank: 12
+    key: time
+    zh: 時間类
+    en: time
+    color: '#7d6608'
+    n: 42
+    pct: 0.0224
+    cum_pct: 0.9579
+    share_of_assigned: 0.0226
+    hhi_contrib: 0.000501
+  - rank: 13
+    key: number
+    zh: 數量类
+    en: quantity
+    color: '#5d6d7e'
+    n: 35
+    pct: 0.0186
+    cum_pct: 0.9766
+    share_of_assigned: 0.0188
+    hhi_contrib: 0.000348
+  - rank: 14
+    key: unassigned
+    zh: 未定
+    en: unassigned
+    color: '#b3b3b3'
+    n: 19
+    pct: 0.0101
+    cum_pct: 0.9867
+    share_of_assigned: 0.0
+    hhi_contrib: 0.000102
+  - rank: 15
+    key: speech
+    zh: 言說类
+    en: speech
+    color: '#e67e22'
+    n: 18
+    pct: 0.0096
+    cum_pct: 0.9963
+    share_of_assigned: 0.0097
+    hhi_contrib: 9.2e-05
+  - rank: 16
+    key: body
+    zh: 身體類
+    en: body
+    color: '#af7ac5'
+    n: 5
+    pct: 0.0027
+    cum_pct: 0.9989
+    share_of_assigned: 0.0027
+    hhi_contrib: 7.0e-06
+  - rank: 17
+    key: dharma
+    zh: 法教类
+    en: dharma-teaching
+    color: '#6c3483'
+    n: 2
+    pct: 0.0011
+    cum_pct: 1.0
+    share_of_assigned: 0.0011
+    hhi_contrib: 1.0e-06
+  concentration:
+    hhi: 0.116655
+    hhi_note: 赫芬达尔指数 Σp²（基于已归域词素位之概率）
+    hhi_note_en: Herfindahl index, sum of squared shares over domain-assigned token positions
+    normalized_entropy: 0.8502
+    entropy: 2.3572
+    effective_domains: 10.562
+    effective_note: 有效域数 e^H —— 「看似十七域，实若几域」之度量
+    effective_note_en: 'effective number of domains, exp(H): how many domains the data behaves as if it
+      used'
+    max_domains: 16
+  pareto:
+    k80: power
+    k80_zh: 威势力类
+    n_to_80: 8
+    total_domains: 17
+crosstab:
+  note: lift = 观测频数 ÷ 期望频数（期望按行×列独立假设）。lift>1 表示该群**偏好**此域，<1 表示**回避**。Cramér's V 为全域×群之关联强度（0 无关，1 完全决定）。两者皆只言「语汇构成之偏」，不言「教义侧重之别」。
+  note_en: lift = observed ÷ expected frequency (expected under independence of row and column). lift>1
+    marks a group's preference for a domain, <1 its avoidance. Cramér's V is the overall association strength
+    between domain and group (0 = independent, 1 = fully determined). Both speak only to lexical composition,
+    never to doctrinal emphasis.
+  groups:
+  - key: bodhisattva
+    zh: 同生众·菩萨
+    en: Bodhisattvas
+    n: 101
+  - key: deities
+    zh: 异生众·十九类神
+    en: Nineteen classes of deities
+    n: 1022
+  - key: eight
+    zh: 异生众·八部
+    en: EightLegions
+    n: 267
+  - key: desire
+    zh: 异生众·欲界主
+    en: Desire-realm deities
+    n: 284
+  - key: form
+    zh: 异生众·色界主
+    en: Form-realm deities
+    n: 203
+  domains:
+  - key: luminosity
+    zh: 光明类
+    n: 241
+  - key: jewel
+    zh: 宝严类
+    n: 84
+  - key: sound
+    zh: 音聲类
+    n: 63
+  - key: form
+    zh: 形相类
+    n: 158
+  - key: virtue
+    zh: 功德类
+    n: 329
+  - key: wisdom
+    zh: 智慧类
+    n: 66
+  - key: power
+    zh: 威势力类
+    n: 76
+  - key: motion
+    zh: 動行类
+    n: 130
+  - key: nature
+    zh: 自然类
+    n: 200
+  - key: space
+    zh: 空間类
+    n: 52
+  - key: body
+    zh: 身體類
+    n: 5
+  - key: speech
+    zh: 言說类
+    n: 18
+  - key: time
+    zh: 時間类
+    n: 42
+  - key: number
+    zh: 數量类
+    n: 35
+  - key: affix
+    zh: 冠綴类
+    n: 357
+  - key: dharma
+    zh: 法教类
+    n: 2
+  - key: unassigned
+    zh: 未定
+    n: 19
+  matrix:
+  - - 18
+    - 114
+    - 19
+    - 54
+    - 36
+  - - 8
+    - 52
+    - 11
+    - 13
+    - 0
+  - - 4
+    - 29
+    - 12
+    - 6
+    - 12
+  - - 12
+    - 71
+    - 39
+    - 26
+    - 10
+  - - 17
+    - 134
+    - 56
+    - 63
+    - 59
+  - - 5
+    - 12
+    - 9
+    - 19
+    - 21
+  - - 3
+    - 23
+    - 27
+    - 14
+    - 9
+  - - 2
+    - 81
+    - 20
+    - 17
+    - 10
+  - - 6
+    - 167
+    - 16
+    - 6
+    - 5
+  - - 1
+    - 41
+    - 2
+    - 5
+    - 3
+  - - 0
+    - 3
+    - 1
+    - 1
+    - 0
+  - - 0
+    - 4
+    - 1
+    - 5
+    - 8
+  - - 2
+    - 28
+    - 0
+    - 10
+    - 2
+  - - 1
+    - 23
+    - 6
+    - 3
+    - 2
+  - - 19
+    - 238
+    - 39
+    - 38
+    - 23
+  - - 0
+    - 0
+    - 0
+    - 0
+    - 2
+  - - 3
+    - 2
+    - 9
+    - 4
+    - 1
+  top_over:
+  - domain: speech
+    domain_zh: 言說类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 8
+    exp: 1.95
+    lift: 4.109
+  - domain: unassigned
+    domain_zh: 未定
+    group: eight
+    group_zh: 异生众·八部
+    obs: 9
+    exp: 2.7
+    lift: 3.33
+  - domain: wisdom
+    domain_zh: 智慧类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 21
+    exp: 7.14
+    lift: 2.942
+  - domain: power
+    domain_zh: 威势力类
+    group: eight
+    group_zh: 异生众·八部
+    obs: 27
+    exp: 10.81
+    lift: 2.497
+  - domain: wisdom
+    domain_zh: 智慧类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 19
+    exp: 9.99
+    lift: 1.903
+  - domain: speech
+    domain_zh: 言說类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 5
+    exp: 2.72
+    lift: 1.836
+  - domain: jewel
+    domain_zh: 宝严类
+    group: bodhisattva
+    group_zh: 同生众·菩萨
+    obs: 8
+    exp: 4.52
+    lift: 1.77
+  - domain: sound
+    domain_zh: 音聲类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 12
+    exp: 6.81
+    lift: 1.761
+  - domain: form
+    domain_zh: 形相类
+    group: eight
+    group_zh: 异生众·八部
+    obs: 39
+    exp: 22.48
+    lift: 1.735
+  - domain: virtue
+    domain_zh: 功德类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 59
+    exp: 35.58
+    lift: 1.658
+  - domain: time
+    domain_zh: 時間类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 10
+    exp: 6.35
+    lift: 1.574
+  - domain: nature
+    domain_zh: 自然类
+    group: deities
+    group_zh: 异生众·十九类神
+    obs: 167
+    exp: 108.9
+    lift: 1.534
+  - domain: luminosity
+    domain_zh: 光明类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 54
+    exp: 36.46
+    lift: 1.481
+  - domain: space
+    domain_zh: 空間类
+    group: deities
+    group_zh: 异生众·十九类神
+    obs: 41
+    exp: 28.31
+    lift: 1.448
+  - domain: form
+    domain_zh: 形相类
+    group: bodhisattva
+    group_zh: 同生众·菩萨
+    obs: 12
+    exp: 8.5
+    lift: 1.411
+  top_under:
+  - domain: nature
+    domain_zh: 自然类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 6
+    exp: 30.26
+    lift: 0.198
+  - domain: nature
+    domain_zh: 自然类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 5
+    exp: 21.63
+    lift: 0.231
+  - domain: wisdom
+    domain_zh: 智慧类
+    group: deities
+    group_zh: 异生众·十九类神
+    obs: 12
+    exp: 35.94
+    lift: 0.334
+  - domain: luminosity
+    domain_zh: 光明类
+    group: eight
+    group_zh: 异生众·八部
+    obs: 19
+    exp: 34.28
+    lift: 0.554
+  - domain: power
+    domain_zh: 威势力类
+    group: deities
+    group_zh: 异生众·十九类神
+    obs: 23
+    exp: 41.38
+    lift: 0.556
+  - domain: nature
+    domain_zh: 自然类
+    group: bodhisattva
+    group_zh: 同生众·菩萨
+    obs: 6
+    exp: 10.76
+    lift: 0.558
+  - domain: nature
+    domain_zh: 自然类
+    group: eight
+    group_zh: 异生众·八部
+    obs: 16
+    exp: 28.45
+    lift: 0.562
+  - domain: form
+    domain_zh: 形相类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 10
+    exp: 17.09
+    lift: 0.585
+  - domain: affix
+    domain_zh: 冠綴类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 23
+    exp: 38.61
+    lift: 0.596
+  - domain: sound
+    domain_zh: 音聲类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 6
+    exp: 9.53
+    lift: 0.629
+  - domain: space
+    domain_zh: 空間类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 5
+    exp: 7.87
+    lift: 0.635
+  - domain: affix
+    domain_zh: 冠綴类
+    group: desire
+    group_zh: 异生众·欲界主
+    obs: 38
+    exp: 54.02
+    lift: 0.703
+  - domain: motion
+    domain_zh: 動行类
+    group: form
+    group_zh: 异生众·色界主
+    obs: 10
+    exp: 14.06
+    lift: 0.711
+  - domain: virtue
+    domain_zh: 功德类
+    group: deities
+    group_zh: 异生众·十九类神
+    obs: 134
+    exp: 179.14
+    lift: 0.748
+  - domain: affix
+    domain_zh: 冠綴类
+    group: eight
+    group_zh: 异生众·八部
+    obs: 39
+    exp: 50.78
+    lift: 0.768
+  chi2: 377.444
+  df: 64
+  cramers_v: 0.2242
+  p_approx: 0.0
+  p_approx_txt: p < 1e-9（Wilson-Hilferty z = 13.7；erfc 已下溢，故不报精确 p）
+  p_approx_txt_en: p < 1e-9 (Wilson-Hilferty z = 13.7; erfc has underflowed, so no exact p is reported)
+  p_wh_z: 13.7494
+  df_note_zh: 自由度 = (行数−1)×(列数−1) = (17−1)×(5−1) = 64，其中行数为语义域 17（含「未定域」一行）、列数为群 5。Cramér's V 之分母用 min(行,列)−1
+    = 4，故 V 之值与 df 之取法不同，二者不可互换。
+  df_note_en: Degrees of freedom = (rows−1)(cols−1) = (17−1)(5−1) = 64, with 17 semantic domains as rows
+    (including the unassigned row) and 5 groups as columns. Cramér's V uses min(rows,cols)−1 = 4 in its
+    denominator, so V and the choice of df are not interchangeable.
+  v_strength_zh: Cramér's V=0.2242 属中等：此关联统计上显著但效应量有限，不可称强。故「五群与语汇面貌大体相应」一语须以此弱至中等之关联为限，不可升级为「五群即语汇之分群」。
+  v_strength_en: 'Cramér''s V of 0.2242 is moderate: the association is statistically significant but
+    of limited effect size and must not be called strong. Any statement that the five groups broadly track
+    lexical profile must stay within this weak-to-moderate effect and must not be upgraded to ''the five
+    groups are lexical clusters''.'
+  p_note: p 值为 Wilson–Hilferty 近似（非查表精确值），仅作量级参考
+  p_note_en: p is a Wilson–Hilferty approximation, not a table-exact value; for order of magnitude only
+similarity:
+  space_zh: 语义域分布向量（17 维）× TF-IDF 加权 × 余弦相似度
+  space_en: 17-dim semantic-domain distribution, TF-IDF weighted, cosine similarity
+  caveat_zh: 此「相似度」量的是**构词层语汇构成之相近**，**不是词义相近**。两域分布相同之两类，其名号所指可能全然不同；反之词义相近而构词迥异者，此测度必测不到。故本页相似度只可读作「语汇面貌之相似」。
+  caveat_en: This similarity measures closeness of lexical composition, not of meaning. Two classes with
+    identical domain profiles may denote entirely different things, and semantically close classes built
+    from different words are structurally invisible here. Read it strictly as similarity of lexical surface.
+  idx: &id002
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  names: &id001
+  - 菩薩摩訶薩
+  - 執金剛神
+  - 身眾神
+  - 足行神
+  - 道場神
+  - 主城神
+  - 主地神
+  - 主山神
+  - 主林神
+  - 主藥神
+  - 主稼神
+  - 主河神
+  - 主海神
+  - 主水神
+  - 主火神
+  - 主風神
+  - 主空神
+  - 主方神
+  - 主夜神
+  - 主晝神
+  - 阿脩羅王
+  - 迦樓羅王
+  - 緊那羅王
+  - 摩睺羅伽王
+  - 夜叉王
+  - 諸大龍王
+  - 鳩槃荼王
+  - 乾闥婆王
+  - 月天子
+  - 日天子
+  - 三十三天王
+  - 須夜摩天王
+  - 兜率陀天王
+  - 化樂天王
+  - 他化自在天王
+  - 大梵天王
+  - 光音天王
+  - 遍淨天王
+  - 廣果天王
+  - 大自在天王
+  groups: &id003
+  - bodhisattva
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - deities
+  - eight
+  - eight
+  - eight
+  - eight
+  - eight
+  - eight
+  - eight
+  - eight
+  - desire
+  - desire
+  - desire
+  - desire
+  - desire
+  - desire
+  - desire
+  - form
+  - form
+  - form
+  - form
+  - form
+  domain_keys:
+  - luminosity
+  - jewel
+  - sound
+  - form
+  - virtue
+  - wisdom
+  - power
+  - motion
+  - nature
+  - space
+  - body
+  - speech
+  - time
+  - number
+  - affix
+  - dharma
+  - unassigned
+  idf:
+  - 0.0247
+  - 0.4555
+  - 0.2796
+  - 0.076
+  - 0.0
+  - 0.4177
+  - 0.3124
+  - 0.1027
+  - 0.1027
+  - 0.8232
+  - 1.9218
+  - 1.411
+  - 0.8804
+  - 0.5781
+  - 0.0
+  - 2.615
+  - 1.2287
+  matrix:
+  - - 0.0
+    - 0.8885
+    - 0.5115
+    - 0.6997
+    - 0.6398
+    - 0.529
+    - 0.7185
+    - 0.5681
+    - 0.4539
+    - 0.1473
+    - 0.3864
+    - 0.5035
+    - 0.6212
+    - 0.3591
+    - 0.2895
+    - 0.2618
+    - 0.1674
+    - 0.2187
+    - 0.35
+    - 0.4225
+    - 0.6266
+    - 0.3294
+    - 0.5167
+    - 0.3681
+    - 0.8386
+    - 0.6383
+    - 0.7847
+    - 0.6337
+    - 0.391
+    - 0.675
+    - 0.6149
+    - 0.4679
+    - 0.5405
+    - 0.5533
+    - 0.6707
+    - 0.5743
+    - 0.3497
+    - 0.3084
+    - 0.2707
+    - 0.1208
+  - - 0.8885
+    - 0.0
+    - 0.6889
+    - 0.7781
+    - 0.74
+    - 0.5001
+    - 0.7971
+    - 0.6914
+    - 0.5065
+    - 0.1572
+    - 0.425
+    - 0.4704
+    - 0.6297
+    - 0.3009
+    - 0.2875
+    - 0.2936
+    - 0.0712
+    - 0.0646
+    - 0.3535
+    - 0.42
+    - 0.53
+    - 0.4073
+    - 0.5796
+    - 0.4204
+    - 0.7791
+    - 0.5267
+    - 0.7356
+    - 0.6723
+    - 0.3513
+    - 0.8171
+    - 0.4756
+    - 0.2424
+    - 0.6184
+    - 0.4655
+    - 0.4997
+    - 0.3836
+    - 0.3109
+    - 0.1967
+    - 0.0799
+    - 0.0434
+  - - 0.5115
+    - 0.6889
+    - 0.0
+    - 0.7793
+    - 0.6426
+    - 0.4886
+    - 0.6337
+    - 0.9307
+    - 0.5504
+    - 0.1677
+    - 0.3332
+    - 0.5425
+    - 0.6032
+    - 0.2899
+    - 0.5612
+    - 0.5365
+    - 0.0898
+    - 0.111
+    - 0.0863
+    - 0.155
+    - 0.0776
+    - 0.3718
+    - 0.8141
+    - 0.2696
+    - 0.4121
+    - 0.1781
+    - 0.5508
+    - 0.5979
+    - 0.0995
+    - 0.5848
+    - 0.2006
+    - 0.2012
+    - 0.277
+    - 0.5742
+    - 0.2539
+    - 0.2684
+    - 0.1914
+    - 0.0656
+    - 0.1523
+    - 0.032
+  - - 0.6997
+    - 0.7781
+    - 0.7793
+    - 0.0
+    - 0.9177
+    - 0.6319
+    - 0.8475
+    - 0.7599
+    - 0.5888
+    - 0.1168
+    - 0.3589
+    - 0.195
+    - 0.7666
+    - 0.1592
+    - 0.293
+    - 0.1905
+    - 0.0258
+    - 0.0746
+    - 0.2811
+    - 0.3693
+    - 0.0175
+    - 0.1896
+    - 0.6702
+    - 0.1123
+    - 0.4507
+    - 0.079
+    - 0.3871
+    - 0.8245
+    - 0.287
+    - 0.8297
+    - 0.3148
+    - 0.1905
+    - 0.4792
+    - 0.4586
+    - 0.3247
+    - 0.1793
+    - 0.1249
+    - 0.1359
+    - 0.1246
+    - 0.0413
+  - - 0.6398
+    - 0.74
+    - 0.6426
+    - 0.9177
+    - 0.0
+    - 0.7126
+    - 0.8717
+    - 0.686
+    - 0.6684
+    - 0.0624
+    - 0.3648
+    - 0.1139
+    - 0.7573
+    - 0.1972
+    - 0.1752
+    - 0.13
+    - 0.0193
+    - 0.0089
+    - 0.0528
+    - 0.1517
+    - 0.0366
+    - 0.2044
+    - 0.5249
+    - 0.1579
+    - 0.4979
+    - 0.0509
+    - 0.3478
+    - 0.8898
+    - 0.116
+    - 0.8376
+    - 0.2696
+    - 0.007
+    - 0.342
+    - 0.3422
+    - 0.3389
+    - 0.0823
+    - 0.1136
+    - 0.0354
+    - 0.0219
+    - 0.0203
+  - - 0.529
+    - 0.5001
+    - 0.4886
+    - 0.6319
+    - 0.7126
+    - 0.0
+    - 0.7152
+    - 0.5998
+    - 0.6883
+    - 0.1219
+    - 0.3935
+    - 0.4663
+    - 0.9523
+    - 0.5007
+    - 0.6584
+    - 0.6091
+    - 0.5941
+    - 0.5881
+    - 0.1397
+    - 0.2739
+    - 0.0034
+    - 0.2338
+    - 0.3678
+    - 0.0616
+    - 0.3154
+    - 0.0618
+    - 0.2881
+    - 0.8481
+    - 0.3115
+    - 0.5751
+    - 0.1781
+    - 0.0102
+    - 0.2362
+    - 0.2247
+    - 0.6679
+    - 0.2295
+    - 0.0076
+    - 0.2154
+    - 0.0253
+    - 0.015
+  - - 0.7185
+    - 0.7971
+    - 0.6337
+    - 0.8475
+    - 0.8717
+    - 0.7152
+    - 0.0
+    - 0.7531
+    - 0.8024
+    - 0.2038
+    - 0.5881
+    - 0.3162
+    - 0.7897
+    - 0.4869
+    - 0.2479
+    - 0.3469
+    - 0.0468
+    - 0.0712
+    - 0.3511
+    - 0.4345
+    - 0.0811
+    - 0.3436
+    - 0.5448
+    - 0.3577
+    - 0.5718
+    - 0.0941
+    - 0.4485
+    - 0.7891
+    - 0.3721
+    - 0.8693
+    - 0.354
+    - 0.1616
+    - 0.63
+    - 0.4986
+    - 0.3552
+    - 0.1951
+    - 0.2793
+    - 0.2259
+    - 0.1392
+    - 0.0758
+  - - 0.5681
+    - 0.6914
+    - 0.9307
+    - 0.7599
+    - 0.686
+    - 0.5998
+    - 0.7531
+    - 0.0
+    - 0.6376
+    - 0.1953
+    - 0.4768
+    - 0.5639
+    - 0.6496
+    - 0.3814
+    - 0.5179
+    - 0.5539
+    - 0.0886
+    - 0.0998
+    - 0.0807
+    - 0.1617
+    - 0.0805
+    - 0.4644
+    - 0.7839
+    - 0.3888
+    - 0.5329
+    - 0.1534
+    - 0.6238
+    - 0.5935
+    - 0.1223
+    - 0.6628
+    - 0.2549
+    - 0.2475
+    - 0.3673
+    - 0.6015
+    - 0.2943
+    - 0.236
+    - 0.2392
+    - 0.1065
+    - 0.236
+    - 0.0723
+  - - 0.4539
+    - 0.5065
+    - 0.5504
+    - 0.5888
+    - 0.6684
+    - 0.6883
+    - 0.8024
+    - 0.6376
+    - 0.0
+    - 0.2032
+    - 0.5163
+    - 0.5071
+    - 0.6854
+    - 0.6459
+    - 0.2942
+    - 0.5281
+    - 0.0397
+    - 0.073
+    - 0.0712
+    - 0.1378
+    - 0.0591
+    - 0.159
+    - 0.398
+    - 0.1293
+    - 0.3102
+    - 0.1294
+    - 0.3264
+    - 0.6723
+    - 0.1177
+    - 0.5063
+    - 0.2018
+    - 0.0236
+    - 0.2095
+    - 0.4038
+    - 0.2043
+    - 0.1984
+    - 0.1253
+    - 0.0767
+    - 0.0352
+    - 0.0321
+  - - 0.1473
+    - 0.1572
+    - 0.1677
+    - 0.1168
+    - 0.0624
+    - 0.1219
+    - 0.2038
+    - 0.1953
+    - 0.2032
+    - 0.0
+    - 0.7671
+    - 0.2156
+    - 0.1539
+    - 0.2624
+    - 0.1503
+    - 0.2128
+    - 0.0159
+    - 0.0492
+    - 0.2638
+    - 0.1891
+    - 0.0141
+    - 0.2498
+    - 0.5601
+    - 0.1055
+    - 0.0742
+    - 0.0696
+    - 0.1306
+    - 0.0731
+    - 0.3281
+    - 0.0973
+    - 0.7158
+    - 0.6557
+    - 0.1869
+    - 0.1613
+    - 0.0522
+    - 0.5716
+    - 0.4945
+    - 0.5993
+    - 0.0888
+    - 0.8475
+  - - 0.3864
+    - 0.425
+    - 0.3332
+    - 0.3589
+    - 0.3648
+    - 0.3935
+    - 0.5881
+    - 0.4768
+    - 0.5163
+    - 0.7671
+    - 0.0
+    - 0.3236
+    - 0.4152
+    - 0.4023
+    - 0.1797
+    - 0.3471
+    - 0.0536
+    - 0.0676
+    - 0.4075
+    - 0.3379
+    - 0.0823
+    - 0.6131
+    - 0.4957
+    - 0.3423
+    - 0.3701
+    - 0.0649
+    - 0.3341
+    - 0.3233
+    - 0.5577
+    - 0.4852
+    - 0.535
+    - 0.4159
+    - 0.4801
+    - 0.3438
+    - 0.1817
+    - 0.3355
+    - 0.4229
+    - 0.4465
+    - 0.1335
+    - 0.4761
+  - - 0.5035
+    - 0.4704
+    - 0.5425
+    - 0.195
+    - 0.1139
+    - 0.4663
+    - 0.3162
+    - 0.5639
+    - 0.5071
+    - 0.2156
+    - 0.3236
+    - 0.0
+    - 0.4715
+    - 0.6029
+    - 0.7078
+    - 0.8262
+    - 0.4071
+    - 0.4294
+    - 0.1137
+    - 0.1632
+    - 0.5501
+    - 0.3087
+    - 0.4079
+    - 0.2
+    - 0.4182
+    - 0.6564
+    - 0.7
+    - 0.2726
+    - 0.1774
+    - 0.1075
+    - 0.2789
+    - 0.277
+    - 0.0967
+    - 0.3621
+    - 0.5163
+    - 0.5527
+    - 0.1316
+    - 0.1781
+    - 0.1147
+    - 0.0301
+  - - 0.6212
+    - 0.6297
+    - 0.6032
+    - 0.7666
+    - 0.7573
+    - 0.9523
+    - 0.7897
+    - 0.6496
+    - 0.6854
+    - 0.1539
+    - 0.4152
+    - 0.4715
+    - 0.0
+    - 0.4872
+    - 0.6823
+    - 0.6128
+    - 0.5622
+    - 0.5828
+    - 0.333
+    - 0.4605
+    - 0.0192
+    - 0.2516
+    - 0.4774
+    - 0.0728
+    - 0.3371
+    - 0.0835
+    - 0.3087
+    - 0.8902
+    - 0.4508
+    - 0.6696
+    - 0.229
+    - 0.0773
+    - 0.4021
+    - 0.3073
+    - 0.6622
+    - 0.2802
+    - 0.061
+    - 0.2822
+    - 0.0358
+    - 0.0155
+  - - 0.3591
+    - 0.3009
+    - 0.2899
+    - 0.1592
+    - 0.1972
+    - 0.5007
+    - 0.4869
+    - 0.3814
+    - 0.6459
+    - 0.2624
+    - 0.4023
+    - 0.6029
+    - 0.4872
+    - 0.0
+    - 0.5182
+    - 0.7398
+    - 0.3722
+    - 0.4072
+    - 0.109
+    - 0.1438
+    - 0.1062
+    - 0.3348
+    - 0.31
+    - 0.4772
+    - 0.3263
+    - 0.1728
+    - 0.3073
+    - 0.3882
+    - 0.1995
+    - 0.112
+    - 0.2238
+    - 0.2278
+    - 0.1507
+    - 0.5571
+    - 0.4758
+    - 0.5497
+    - 0.5048
+    - 0.3313
+    - 0.2652
+    - 0.1453
+  - - 0.2895
+    - 0.2875
+    - 0.5612
+    - 0.293
+    - 0.1752
+    - 0.6584
+    - 0.2479
+    - 0.5179
+    - 0.2942
+    - 0.1503
+    - 0.1797
+    - 0.7078
+    - 0.6823
+    - 0.5182
+    - 0.0
+    - 0.8922
+    - 0.8149
+    - 0.8238
+    - 0.1746
+    - 0.2702
+    - 0.0364
+    - 0.3405
+    - 0.4509
+    - 0.1326
+    - 0.1278
+    - 0.1383
+    - 0.298
+    - 0.4619
+    - 0.3201
+    - 0.1488
+    - 0.06
+    - 0.1469
+    - 0.0861
+    - 0.3112
+    - 0.6786
+    - 0.4328
+    - 0.1046
+    - 0.2938
+    - 0.107
+    - 0.0195
+  - - 0.2618
+    - 0.2936
+    - 0.5365
+    - 0.1905
+    - 0.13
+    - 0.6091
+    - 0.3469
+    - 0.5539
+    - 0.5281
+    - 0.2128
+    - 0.3471
+    - 0.8262
+    - 0.6128
+    - 0.7398
+    - 0.8922
+    - 0.0
+    - 0.6795
+    - 0.6853
+    - 0.1579
+    - 0.2348
+    - 0.1021
+    - 0.442
+    - 0.4116
+    - 0.3034
+    - 0.2042
+    - 0.1721
+    - 0.3743
+    - 0.3985
+    - 0.2841
+    - 0.1456
+    - 0.081
+    - 0.126
+    - 0.1335
+    - 0.4176
+    - 0.5579
+    - 0.431
+    - 0.2239
+    - 0.2907
+    - 0.1138
+    - 0.0392
+  - - 0.1674
+    - 0.0712
+    - 0.0898
+    - 0.0258
+    - 0.0193
+    - 0.5941
+    - 0.0468
+    - 0.0886
+    - 0.0397
+    - 0.0159
+    - 0.0536
+    - 0.4071
+    - 0.5622
+    - 0.3722
+    - 0.8149
+    - 0.6795
+    - 0.0
+    - 0.9742
+    - 0.1695
+    - 0.2751
+    - 0.0411
+    - 0.3302
+    - 0.0774
+    - 0.1253
+    - 0.0856
+    - 0.0193
+    - 0.0817
+    - 0.395
+    - 0.3837
+    - 0.0627
+    - 0.0232
+    - 0.0199
+    - 0.0567
+    - 0.0992
+    - 0.8044
+    - 0.3303
+    - 0.0871
+    - 0.3555
+    - 0.0247
+    - 0.0106
+  - - 0.2187
+    - 0.0646
+    - 0.111
+    - 0.0746
+    - 0.0089
+    - 0.5881
+    - 0.0712
+    - 0.0998
+    - 0.073
+    - 0.0492
+    - 0.0676
+    - 0.4294
+    - 0.5828
+    - 0.4072
+    - 0.8238
+    - 0.6853
+    - 0.9742
+    - 0.0
+    - 0.2636
+    - 0.3636
+    - 0.0144
+    - 0.2628
+    - 0.1163
+    - 0.0755
+    - 0.0616
+    - 0.0322
+    - 0.099
+    - 0.407
+    - 0.4566
+    - 0.0448
+    - 0.0737
+    - 0.1337
+    - 0.0933
+    - 0.1813
+    - 0.799
+    - 0.4006
+    - 0.0857
+    - 0.4128
+    - 0.1073
+    - 0.0398
+  - - 0.35
+    - 0.3535
+    - 0.0863
+    - 0.2811
+    - 0.0528
+    - 0.1397
+    - 0.3511
+    - 0.0807
+    - 0.0712
+    - 0.2638
+    - 0.4075
+    - 0.1137
+    - 0.333
+    - 0.109
+    - 0.1746
+    - 0.1579
+    - 0.1695
+    - 0.2636
+    - 0.0
+    - 0.9701
+    - 0.008
+    - 0.1591
+    - 0.0782
+    - 0.0344
+    - 0.0447
+    - 0.0198
+    - 0.0589
+    - 0.1236
+    - 0.9248
+    - 0.4123
+    - 0.1845
+    - 0.2332
+    - 0.836
+    - 0.0904
+    - 0.1585
+    - 0.1007
+    - 0.0378
+    - 0.4211
+    - 0.0404
+    - 0.0151
+  - - 0.4225
+    - 0.42
+    - 0.155
+    - 0.3693
+    - 0.1517
+    - 0.2739
+    - 0.4345
+    - 0.1617
+    - 0.1378
+    - 0.1891
+    - 0.3379
+    - 0.1632
+    - 0.4605
+    - 0.1438
+    - 0.2702
+    - 0.2348
+    - 0.2751
+    - 0.3636
+    - 0.9701
+    - 0.0
+    - 0.0144
+    - 0.1278
+    - 0.1341
+    - 0.0574
+    - 0.1048
+    - 0.0189
+    - 0.1036
+    - 0.2448
+    - 0.8824
+    - 0.5035
+    - 0.2104
+    - 0.2348
+    - 0.8671
+    - 0.1304
+    - 0.2703
+    - 0.1261
+    - 0.0454
+    - 0.4534
+    - 0.0477
+    - 0.0173
+  - - 0.6266
+    - 0.53
+    - 0.0776
+    - 0.0175
+    - 0.0366
+    - 0.0034
+    - 0.0811
+    - 0.0805
+    - 0.0591
+    - 0.0141
+    - 0.0823
+    - 0.5501
+    - 0.0192
+    - 0.1062
+    - 0.0364
+    - 0.1021
+    - 0.0411
+    - 0.0144
+    - 0.008
+    - 0.0144
+    - 0.0
+    - 0.2082
+    - 0.0767
+    - 0.2324
+    - 0.6879
+    - 0.9469
+    - 0.75
+    - 0.0434
+    - 0.025
+    - 0.1042
+    - 0.4608
+    - 0.2661
+    - 0.0979
+    - 0.1457
+    - 0.4409
+    - 0.4831
+    - 0.1788
+    - 0.0501
+    - 0.0231
+    - 0.0196
+  - - 0.3294
+    - 0.4073
+    - 0.3718
+    - 0.1896
+    - 0.2044
+    - 0.2338
+    - 0.3436
+    - 0.4644
+    - 0.159
+    - 0.2498
+    - 0.6131
+    - 0.3087
+    - 0.2516
+    - 0.3348
+    - 0.3405
+    - 0.442
+    - 0.3302
+    - 0.2628
+    - 0.1591
+    - 0.1278
+    - 0.2082
+    - 0.0
+    - 0.3983
+    - 0.7737
+    - 0.6025
+    - 0.0512
+    - 0.4512
+    - 0.2334
+    - 0.3888
+    - 0.4341
+    - 0.2131
+    - 0.1818
+    - 0.3898
+    - 0.5589
+    - 0.4282
+    - 0.2377
+    - 0.5569
+    - 0.2605
+    - 0.2414
+    - 0.1103
+  - - 0.5167
+    - 0.5796
+    - 0.8141
+    - 0.6702
+    - 0.5249
+    - 0.3678
+    - 0.5448
+    - 0.7839
+    - 0.398
+    - 0.5601
+    - 0.4957
+    - 0.4079
+    - 0.4774
+    - 0.31
+    - 0.4509
+    - 0.4116
+    - 0.0774
+    - 0.1163
+    - 0.0782
+    - 0.1341
+    - 0.0767
+    - 0.3983
+    - 0.0
+    - 0.3778
+    - 0.466
+    - 0.1379
+    - 0.4943
+    - 0.4733
+    - 0.1016
+    - 0.4852
+    - 0.6358
+    - 0.6516
+    - 0.2769
+    - 0.6708
+    - 0.2964
+    - 0.6045
+    - 0.5883
+    - 0.4328
+    - 0.3168
+    - 0.5722
+  - - 0.3681
+    - 0.4204
+    - 0.2696
+    - 0.1123
+    - 0.1579
+    - 0.0616
+    - 0.3577
+    - 0.3888
+    - 0.1293
+    - 0.1055
+    - 0.3423
+    - 0.2
+    - 0.0728
+    - 0.4772
+    - 0.1326
+    - 0.3034
+    - 0.1253
+    - 0.0755
+    - 0.0344
+    - 0.0574
+    - 0.2324
+    - 0.7737
+    - 0.3778
+    - 0.0
+    - 0.7145
+    - 0.0788
+    - 0.4987
+    - 0.1486
+    - 0.1169
+    - 0.3884
+    - 0.3005
+    - 0.2944
+    - 0.4182
+    - 0.7159
+    - 0.3586
+    - 0.3441
+    - 0.7889
+    - 0.2956
+    - 0.383
+    - 0.1918
+  - - 0.8386
+    - 0.7791
+    - 0.4121
+    - 0.4507
+    - 0.4979
+    - 0.3154
+    - 0.5718
+    - 0.5329
+    - 0.3102
+    - 0.0742
+    - 0.3701
+    - 0.4182
+    - 0.3371
+    - 0.3263
+    - 0.1278
+    - 0.2042
+    - 0.0856
+    - 0.0616
+    - 0.0447
+    - 0.1048
+    - 0.6879
+    - 0.6025
+    - 0.466
+    - 0.7145
+    - 0.0
+    - 0.5818
+    - 0.8557
+    - 0.4334
+    - 0.131
+    - 0.5981
+    - 0.5726
+    - 0.4062
+    - 0.4249
+    - 0.6343
+    - 0.5927
+    - 0.4923
+    - 0.5579
+    - 0.225
+    - 0.3193
+    - 0.1523
+  - - 0.6383
+    - 0.5267
+    - 0.1781
+    - 0.079
+    - 0.0509
+    - 0.0618
+    - 0.0941
+    - 0.1534
+    - 0.1294
+    - 0.0696
+    - 0.0649
+    - 0.6564
+    - 0.0835
+    - 0.1728
+    - 0.1383
+    - 0.1721
+    - 0.0193
+    - 0.0322
+    - 0.0198
+    - 0.0189
+    - 0.9469
+    - 0.0512
+    - 0.1379
+    - 0.0788
+    - 0.5818
+    - 0.0
+    - 0.7687
+    - 0.0792
+    - 0.0117
+    - 0.0255
+    - 0.4464
+    - 0.3088
+    - 0.0195
+    - 0.1278
+    - 0.4133
+    - 0.5435
+    - 0.07
+    - 0.0266
+    - 0.035
+    - 0.0139
+  - - 0.7847
+    - 0.7356
+    - 0.5508
+    - 0.3871
+    - 0.3478
+    - 0.2881
+    - 0.4485
+    - 0.6238
+    - 0.3264
+    - 0.1306
+    - 0.3341
+    - 0.7
+    - 0.3087
+    - 0.3073
+    - 0.298
+    - 0.3743
+    - 0.0817
+    - 0.099
+    - 0.0589
+    - 0.1036
+    - 0.75
+    - 0.4512
+    - 0.4943
+    - 0.4987
+    - 0.8557
+    - 0.7687
+    - 0.0
+    - 0.3382
+    - 0.1049
+    - 0.4197
+    - 0.52
+    - 0.4381
+    - 0.3
+    - 0.5427
+    - 0.5112
+    - 0.5287
+    - 0.3103
+    - 0.1513
+    - 0.2685
+    - 0.104
+  - - 0.6337
+    - 0.6723
+    - 0.5979
+    - 0.8245
+    - 0.8898
+    - 0.8481
+    - 0.7891
+    - 0.5935
+    - 0.6723
+    - 0.0731
+    - 0.3233
+    - 0.2726
+    - 0.8902
+    - 0.3882
+    - 0.4619
+    - 0.3985
+    - 0.395
+    - 0.407
+    - 0.1236
+    - 0.2448
+    - 0.0434
+    - 0.2334
+    - 0.4733
+    - 0.1486
+    - 0.4334
+    - 0.0792
+    - 0.3382
+    - 0.0
+    - 0.2561
+    - 0.7186
+    - 0.2578
+    - 0.0174
+    - 0.277
+    - 0.3812
+    - 0.6086
+    - 0.2607
+    - 0.1269
+    - 0.1803
+    - 0.0226
+    - 0.026
+  - - 0.391
+    - 0.3513
+    - 0.0995
+    - 0.287
+    - 0.116
+    - 0.3115
+    - 0.3721
+    - 0.1223
+    - 0.1177
+    - 0.3281
+    - 0.5577
+    - 0.1774
+    - 0.4508
+    - 0.1995
+    - 0.3201
+    - 0.2841
+    - 0.3837
+    - 0.4566
+    - 0.9248
+    - 0.8824
+    - 0.025
+    - 0.3888
+    - 0.1016
+    - 0.1169
+    - 0.131
+    - 0.0117
+    - 0.1049
+    - 0.2561
+    - 0.0
+    - 0.4366
+    - 0.202
+    - 0.2256
+    - 0.7522
+    - 0.1595
+    - 0.3655
+    - 0.1741
+    - 0.0954
+    - 0.46
+    - 0.0786
+    - 0.0353
+  - - 0.675
+    - 0.8171
+    - 0.5848
+    - 0.8297
+    - 0.8376
+    - 0.5751
+    - 0.8693
+    - 0.6628
+    - 0.5063
+    - 0.0973
+    - 0.4852
+    - 0.1075
+    - 0.6696
+    - 0.112
+    - 0.1488
+    - 0.1456
+    - 0.0627
+    - 0.0448
+    - 0.4123
+    - 0.5035
+    - 0.1042
+    - 0.4341
+    - 0.4852
+    - 0.3884
+    - 0.5981
+    - 0.0255
+    - 0.4197
+    - 0.7186
+    - 0.4366
+    - 0.0
+    - 0.315
+    - 0.0898
+    - 0.7484
+    - 0.3916
+    - 0.3346
+    - 0.0301
+    - 0.2211
+    - 0.2017
+    - 0.0548
+    - 0.0331
+  - - 0.6149
+    - 0.4756
+    - 0.2006
+    - 0.3148
+    - 0.2696
+    - 0.1781
+    - 0.354
+    - 0.2549
+    - 0.2018
+    - 0.7158
+    - 0.535
+    - 0.2789
+    - 0.229
+    - 0.2238
+    - 0.06
+    - 0.081
+    - 0.0232
+    - 0.0737
+    - 0.1845
+    - 0.2104
+    - 0.4608
+    - 0.2131
+    - 0.6358
+    - 0.3005
+    - 0.5726
+    - 0.4464
+    - 0.52
+    - 0.2578
+    - 0.202
+    - 0.315
+    - 0.0
+    - 0.8647
+    - 0.3058
+    - 0.418
+    - 0.384
+    - 0.8017
+    - 0.6566
+    - 0.6429
+    - 0.2673
+    - 0.8343
+  - - 0.4679
+    - 0.2424
+    - 0.2012
+    - 0.1905
+    - 0.007
+    - 0.0102
+    - 0.1616
+    - 0.2475
+    - 0.0236
+    - 0.6557
+    - 0.4159
+    - 0.277
+    - 0.0773
+    - 0.2278
+    - 0.1469
+    - 0.126
+    - 0.0199
+    - 0.1337
+    - 0.2332
+    - 0.2348
+    - 0.2661
+    - 0.1818
+    - 0.6516
+    - 0.2944
+    - 0.4062
+    - 0.3088
+    - 0.4381
+    - 0.0174
+    - 0.2256
+    - 0.0898
+    - 0.8647
+    - 0.0
+    - 0.2579
+    - 0.556
+    - 0.2835
+    - 0.8057
+    - 0.6535
+    - 0.6547
+    - 0.4868
+    - 0.7861
+  - - 0.5405
+    - 0.6184
+    - 0.277
+    - 0.4792
+    - 0.342
+    - 0.2362
+    - 0.63
+    - 0.3673
+    - 0.2095
+    - 0.1869
+    - 0.4801
+    - 0.0967
+    - 0.4021
+    - 0.1507
+    - 0.0861
+    - 0.1335
+    - 0.0567
+    - 0.0933
+    - 0.836
+    - 0.8671
+    - 0.0979
+    - 0.3898
+    - 0.2769
+    - 0.4182
+    - 0.4249
+    - 0.0195
+    - 0.3
+    - 0.277
+    - 0.7522
+    - 0.7484
+    - 0.3058
+    - 0.2579
+    - 0.0
+    - 0.321
+    - 0.2141
+    - 0.0748
+    - 0.2811
+    - 0.404
+    - 0.1352
+    - 0.0655
+  - - 0.5533
+    - 0.4655
+    - 0.5742
+    - 0.4586
+    - 0.3422
+    - 0.2247
+    - 0.4986
+    - 0.6015
+    - 0.4038
+    - 0.1613
+    - 0.3438
+    - 0.3621
+    - 0.3073
+    - 0.5571
+    - 0.3112
+    - 0.4176
+    - 0.0992
+    - 0.1813
+    - 0.0904
+    - 0.1304
+    - 0.1457
+    - 0.5589
+    - 0.6708
+    - 0.7159
+    - 0.6343
+    - 0.1278
+    - 0.5427
+    - 0.3812
+    - 0.1595
+    - 0.3916
+    - 0.418
+    - 0.556
+    - 0.321
+    - 0.0
+    - 0.3919
+    - 0.5667
+    - 0.7195
+    - 0.3475
+    - 0.5709
+    - 0.2417
+  - - 0.6707
+    - 0.4997
+    - 0.2539
+    - 0.3247
+    - 0.3389
+    - 0.6679
+    - 0.3552
+    - 0.2943
+    - 0.2043
+    - 0.0522
+    - 0.1817
+    - 0.5163
+    - 0.6622
+    - 0.4758
+    - 0.6786
+    - 0.5579
+    - 0.8044
+    - 0.799
+    - 0.1585
+    - 0.2703
+    - 0.4409
+    - 0.4282
+    - 0.2964
+    - 0.3586
+    - 0.5927
+    - 0.4133
+    - 0.5112
+    - 0.6086
+    - 0.3655
+    - 0.3346
+    - 0.384
+    - 0.2835
+    - 0.2141
+    - 0.3919
+    - 0.0
+    - 0.6096
+    - 0.3304
+    - 0.3998
+    - 0.205
+    - 0.099
+  - - 0.5743
+    - 0.3836
+    - 0.2684
+    - 0.1793
+    - 0.0823
+    - 0.2295
+    - 0.1951
+    - 0.236
+    - 0.1984
+    - 0.5716
+    - 0.3355
+    - 0.5527
+    - 0.2802
+    - 0.5497
+    - 0.4328
+    - 0.431
+    - 0.3303
+    - 0.4006
+    - 0.1007
+    - 0.1261
+    - 0.4831
+    - 0.2377
+    - 0.6045
+    - 0.3441
+    - 0.4923
+    - 0.5435
+    - 0.5287
+    - 0.2607
+    - 0.1741
+    - 0.0301
+    - 0.8017
+    - 0.8057
+    - 0.0748
+    - 0.5667
+    - 0.6096
+    - 0.0
+    - 0.6862
+    - 0.6088
+    - 0.3554
+    - 0.6461
+  - - 0.3497
+    - 0.3109
+    - 0.1914
+    - 0.1249
+    - 0.1136
+    - 0.0076
+    - 0.2793
+    - 0.2392
+    - 0.1253
+    - 0.4945
+    - 0.4229
+    - 0.1316
+    - 0.061
+    - 0.5048
+    - 0.1046
+    - 0.2239
+    - 0.0871
+    - 0.0857
+    - 0.0378
+    - 0.0454
+    - 0.1788
+    - 0.5569
+    - 0.5883
+    - 0.7889
+    - 0.5579
+    - 0.07
+    - 0.3103
+    - 0.1269
+    - 0.0954
+    - 0.2211
+    - 0.6566
+    - 0.6535
+    - 0.2811
+    - 0.7195
+    - 0.3304
+    - 0.6862
+    - 0.0
+    - 0.5737
+    - 0.4209
+    - 0.6504
+  - - 0.3084
+    - 0.1967
+    - 0.0656
+    - 0.1359
+    - 0.0354
+    - 0.2154
+    - 0.2259
+    - 0.1065
+    - 0.0767
+    - 0.5993
+    - 0.4465
+    - 0.1781
+    - 0.2822
+    - 0.3313
+    - 0.2938
+    - 0.2907
+    - 0.3555
+    - 0.4128
+    - 0.4211
+    - 0.4534
+    - 0.0501
+    - 0.2605
+    - 0.4328
+    - 0.2956
+    - 0.225
+    - 0.0266
+    - 0.1513
+    - 0.1803
+    - 0.46
+    - 0.2017
+    - 0.6429
+    - 0.6547
+    - 0.404
+    - 0.3475
+    - 0.3998
+    - 0.6088
+    - 0.5737
+    - 0.0
+    - 0.6214
+    - 0.6579
+  - - 0.2707
+    - 0.0799
+    - 0.1523
+    - 0.1246
+    - 0.0219
+    - 0.0253
+    - 0.1392
+    - 0.236
+    - 0.0352
+    - 0.0888
+    - 0.1335
+    - 0.1147
+    - 0.0358
+    - 0.2652
+    - 0.107
+    - 0.1138
+    - 0.0247
+    - 0.1073
+    - 0.0404
+    - 0.0477
+    - 0.0231
+    - 0.2414
+    - 0.3168
+    - 0.383
+    - 0.3193
+    - 0.035
+    - 0.2685
+    - 0.0226
+    - 0.0786
+    - 0.0548
+    - 0.2673
+    - 0.4868
+    - 0.1352
+    - 0.5709
+    - 0.205
+    - 0.3554
+    - 0.4209
+    - 0.6214
+    - 0.0
+    - 0.2009
+  - - 0.1208
+    - 0.0434
+    - 0.032
+    - 0.0413
+    - 0.0203
+    - 0.015
+    - 0.0758
+    - 0.0723
+    - 0.0321
+    - 0.8475
+    - 0.4761
+    - 0.0301
+    - 0.0155
+    - 0.1453
+    - 0.0195
+    - 0.0392
+    - 0.0106
+    - 0.0398
+    - 0.0151
+    - 0.0173
+    - 0.0196
+    - 0.1103
+    - 0.5722
+    - 0.1918
+    - 0.1523
+    - 0.0139
+    - 0.104
+    - 0.026
+    - 0.0353
+    - 0.0331
+    - 0.8343
+    - 0.7861
+    - 0.0655
+    - 0.2417
+    - 0.099
+    - 0.6461
+    - 0.6504
+    - 0.6579
+    - 0.2009
+    - 0.0
+  top:
+  - i: 16
+    j: 17
+    a: 主空神
+    b: 主方神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.9742
+  - i: 18
+    j: 19
+    a: 主夜神
+    b: 主晝神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.9701
+  - i: 5
+    j: 12
+    a: 主城神
+    b: 主海神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.9523
+  - i: 20
+    j: 25
+    a: 阿脩羅王
+    b: 諸大龍王
+    ga: eight
+    gb: eight
+    same_group: true
+    sim: 0.9469
+  - i: 2
+    j: 7
+    a: 身眾神
+    b: 主山神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.9307
+  - i: 18
+    j: 28
+    a: 主夜神
+    b: 月天子
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.9248
+  - i: 3
+    j: 4
+    a: 足行神
+    b: 道場神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.9177
+  - i: 14
+    j: 15
+    a: 主火神
+    b: 主風神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.8922
+  - i: 12
+    j: 27
+    a: 主海神
+    b: 乾闥婆王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.8902
+  - i: 4
+    j: 27
+    a: 道場神
+    b: 乾闥婆王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.8898
+  - i: 0
+    j: 1
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    ga: bodhisattva
+    gb: deities
+    same_group: false
+    sim: 0.8885
+  - i: 19
+    j: 28
+    a: 主晝神
+    b: 月天子
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.8824
+  - i: 4
+    j: 6
+    a: 道場神
+    b: 主地神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.8717
+  - i: 6
+    j: 29
+    a: 主地神
+    b: 日天子
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.8693
+  - i: 19
+    j: 32
+    a: 主晝神
+    b: 兜率陀天王
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.8671
+  - i: 30
+    j: 31
+    a: 三十三天王
+    b: 須夜摩天王
+    ga: desire
+    gb: desire
+    same_group: true
+    sim: 0.8647
+  - i: 24
+    j: 26
+    a: 夜叉王
+    b: 鳩槃荼王
+    ga: eight
+    gb: eight
+    same_group: true
+    sim: 0.8557
+  - i: 5
+    j: 27
+    a: 主城神
+    b: 乾闥婆王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.8481
+  - i: 3
+    j: 6
+    a: 足行神
+    b: 主地神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.8475
+  - i: 9
+    j: 39
+    a: 主藥神
+    b: 大自在天王
+    ga: deities
+    gb: form
+    same_group: false
+    sim: 0.8475
+  - i: 0
+    j: 24
+    a: 菩薩摩訶薩
+    b: 夜叉王
+    ga: bodhisattva
+    gb: eight
+    same_group: false
+    sim: 0.8386
+  - i: 4
+    j: 29
+    a: 道場神
+    b: 日天子
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.8376
+  - i: 18
+    j: 32
+    a: 主夜神
+    b: 兜率陀天王
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.836
+  - i: 30
+    j: 39
+    a: 三十三天王
+    b: 大自在天王
+    ga: desire
+    gb: form
+    same_group: false
+    sim: 0.8343
+  - i: 3
+    j: 29
+    a: 足行神
+    b: 日天子
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.8297
+  - i: 11
+    j: 15
+    a: 主河神
+    b: 主風神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.8262
+  - i: 3
+    j: 27
+    a: 足行神
+    b: 乾闥婆王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.8245
+  - i: 14
+    j: 17
+    a: 主火神
+    b: 主方神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.8238
+  - i: 1
+    j: 29
+    a: 執金剛神
+    b: 日天子
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.8171
+  - i: 14
+    j: 16
+    a: 主火神
+    b: 主空神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.8149
+  far:
+  - i: 5
+    j: 20
+    a: 主城神
+    b: 阿脩羅王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.0034
+  - i: 4
+    j: 31
+    a: 道場神
+    b: 須夜摩天王
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.007
+  - i: 5
+    j: 36
+    a: 主城神
+    b: 光音天王
+    ga: deities
+    gb: form
+    same_group: false
+    sim: 0.0076
+  - i: 18
+    j: 20
+    a: 主夜神
+    b: 阿脩羅王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.008
+  - i: 4
+    j: 17
+    a: 道場神
+    b: 主方神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.0089
+  - i: 5
+    j: 31
+    a: 主城神
+    b: 須夜摩天王
+    ga: deities
+    gb: desire
+    same_group: false
+    sim: 0.0102
+  - i: 16
+    j: 39
+    a: 主空神
+    b: 大自在天王
+    ga: deities
+    gb: form
+    same_group: false
+    sim: 0.0106
+  - i: 25
+    j: 28
+    a: 諸大龍王
+    b: 月天子
+    ga: eight
+    gb: desire
+    same_group: false
+    sim: 0.0117
+  - i: 25
+    j: 39
+    a: 諸大龍王
+    b: 大自在天王
+    ga: eight
+    gb: form
+    same_group: false
+    sim: 0.0139
+  - i: 9
+    j: 20
+    a: 主藥神
+    b: 阿脩羅王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.0141
+  - i: 17
+    j: 20
+    a: 主方神
+    b: 阿脩羅王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.0144
+  - i: 19
+    j: 20
+    a: 主晝神
+    b: 阿脩羅王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.0144
+  - i: 5
+    j: 39
+    a: 主城神
+    b: 大自在天王
+    ga: deities
+    gb: form
+    same_group: false
+    sim: 0.015
+  - i: 18
+    j: 39
+    a: 主夜神
+    b: 大自在天王
+    ga: deities
+    gb: form
+    same_group: false
+    sim: 0.0151
+  - i: 12
+    j: 39
+    a: 主海神
+    b: 大自在天王
+    ga: deities
+    gb: form
+    same_group: false
+    sim: 0.0155
+  - i: 9
+    j: 16
+    a: 主藥神
+    b: 主空神
+    ga: deities
+    gb: deities
+    same_group: true
+    sim: 0.0159
+  - i: 19
+    j: 39
+    a: 主晝神
+    b: 大自在天王
+    ga: deities
+    gb: form
+    same_group: false
+    sim: 0.0173
+  - i: 27
+    j: 31
+    a: 乾闥婆王
+    b: 須夜摩天王
+    ga: eight
+    gb: desire
+    same_group: false
+    sim: 0.0174
+  - i: 3
+    j: 20
+    a: 足行神
+    b: 阿脩羅王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.0175
+  - i: 19
+    j: 25
+    a: 主晝神
+    b: 諸大龍王
+    ga: deities
+    gb: eight
+    same_group: false
+    sim: 0.0189
+  within_mean: 0.4161
+  within_n: 230
+  across_mean: 0.3113
+  across_n: 550
+  confound:
+    tail_of_class:
+    - i: 0
+      cat: 菩薩摩訶薩
+      tail: 菩薩摩訶薩
+    - i: 1
+      cat: 執金剛神
+      tail: 執金剛神
+    - i: 2
+      cat: 身眾神
+      tail: 身眾神
+    - i: 3
+      cat: 足行神
+      tail: 足行神
+    - i: 4
+      cat: 道場神
+      tail: 道場神
+    - i: 5
+      cat: 主城神
+      tail: 神
+    - i: 6
+      cat: 主地神
+      tail: 神
+    - i: 7
+      cat: 主山神
+      tail: 神
+    - i: 8
+      cat: 主林神
+      tail: 神
+    - i: 9
+      cat: 主藥神
+      tail: 神
+    - i: 10
+      cat: 主稼神
+      tail: 神
+    - i: 11
+      cat: 主河神
+      tail: 神
+    - i: 12
+      cat: 主海神
+      tail: 神
+    - i: 13
+      cat: 主水神
+      tail: 神
+    - i: 14
+      cat: 主火神
+      tail: 神
+    - i: 15
+      cat: 主風神
+      tail: 神
+    - i: 16
+      cat: 主空神
+      tail: 神
+    - i: 17
+      cat: 主方神
+      tail: 神
+    - i: 18
+      cat: 主夜神
+      tail: 神
+    - i: 19
+      cat: 主晝神
+      tail: 神
+    - i: 20
+      cat: 阿脩羅王
+      tail: 阿脩羅王
+    - i: 21
+      cat: 迦樓羅王
+      tail: 迦樓羅王
+    - i: 22
+      cat: 緊那羅王
+      tail: 緊那羅王
+    - i: 23
+      cat: 摩睺羅伽王
+      tail: 摩睺羅伽王
+    - i: 24
+      cat: 夜叉王
+      tail: 夜叉王
+    - i: 25
+      cat: 諸大龍王
+      tail: 龍王
+    - i: 26
+      cat: 鳩槃荼王
+      tail: 鳩槃荼王
+    - i: 27
+      cat: 乾闥婆王
+      tail: 乾闥婆王
+    - i: 28
+      cat: 月天子
+      tail: 天子
+    - i: 29
+      cat: 日天子
+      tail: 天子
+    - i: 30
+      cat: 三十三天王
+      tail: 天王
+    - i: 31
+      cat: 須夜摩天王
+      tail: 天王
+    - i: 32
+      cat: 兜率陀天王
+      tail: 天王
+    - i: 33
+      cat: 化樂天王
+      tail: 天王
+    - i: 34
+      cat: 他化自在天王
+      tail: 天王
+    - i: 35
+      cat: 大梵天王
+      tail: 天王
+    - i: 36
+      cat: 光音天王
+      tail: 天王
+    - i: 37
+      cat: 遍淨天王
+      tail: 天王
+    - i: 38
+      cat: 廣果天王
+      tail: 天王
+    - i: 39
+      cat: 大自在天王
+      tail: 天王
+    n_same_tail_pairs: 151
+    n_diff_tail_pairs: 629
+    same_tail_mean: 0.4281
+    diff_tail_mean: 0.3216
+    overall_mean: 0.3422
+    confound_ratio_zh: 同句式（同类尾）类对之平均相似度 ÷ 全体类对之平均相似度
+    confound_ratio_en: mean similarity of same-tail pairs divided by mean similarity of all pairs
+    confound_ratio: 1.2509
+    note_zh: 此为**混淆项检验**：「主X神」诸类共用一句式，其域分布因句式而趋同，故彼此相似度可能反映的是句式同构而非语汇相近。读相似度矩阵时须扣除此项；否则「主夜神≈主昼神」一类结果将被过度解读。消混淆之对照量即「异句式类对之平均相似度」。
+    note_en: 'This is a confounding check: the 「主X神」 series shares one syntactic template, so their domain
+      profiles converge because of the template rather than through shared vocabulary. Similarity must
+      be read with this subtracted, or results such as ''主夜神 ≈ 主晝神'' will be over-interpreted. The de-confounded
+      reference is the mean similarity across pairs with different templates.'
+  group_pair_means:
+  - a: bodhisattva
+    b: eight
+    a_zh: 同生众·菩萨
+    b_zh: 异生众·八部
+    mean_sim: 0.592
+    n: 8
+  - a: bodhisattva
+    b: desire
+    a_zh: 同生众·菩萨
+    b_zh: 异生众·欲界主
+    mean_sim: 0.559
+    n: 7
+  - a: bodhisattva
+    b: deities
+    a_zh: 同生众·菩萨
+    b_zh: 异生众·十九类神
+    mean_sim: 0.4598
+    n: 19
+  - a: desire
+    b: form
+    a_zh: 异生众·欲界主
+    b_zh: 异生众·色界主
+    mean_sim: 0.3721
+    n: 35
+  - a: eight
+    b: desire
+    a_zh: 异生众·八部
+    b_zh: 异生众·欲界主
+    mean_sim: 0.3556
+    n: 56
+  - a: deities
+    b: desire
+    a_zh: 异生众·十九类神
+    b_zh: 异生众·欲界主
+    mean_sim: 0.3375
+    n: 133
+  - a: bodhisattva
+    b: form
+    a_zh: 同生众·菩萨
+    b_zh: 异生众·色界主
+    mean_sim: 0.3248
+    n: 5
+  - a: deities
+    b: eight
+    a_zh: 异生众·十九类神
+    b_zh: 异生众·八部
+    mean_sim: 0.2948
+    n: 152
+  - a: eight
+    b: form
+    a_zh: 异生众·八部
+    b_zh: 异生众·色界主
+    mean_sim: 0.2774
+    n: 40
+  - a: deities
+    b: form
+    a_zh: 异生众·十九类神
+    b_zh: 异生众·色界主
+    mean_sim: 0.1945
+    n: 95
+  verdict_zh: 群内显著高于群外，故「五群」之划分与语汇面貌**大体相应**
+  verdict_en: within-group similarity clearly exceeds across-group, so the five-group division broadly
+    tracks lexical profile
+clustering:
+  method_zh: 层次聚类（average linkage）＋余弦距离；自 k=2 至 k=15 逐一切分并算全样本平均轮廓系数，取其最大者为最佳 k（仅取切分后确为 k 簇者入算）。稳定性以 LCG
+    定种（种子 20240717）bootstrap 200 次量同簇共现率。
+  stability_method_zh: 稳定性为**无放回 80% 子抽样**（jackknife 型）之同簇共现率：定种 LCG（种子 20240717）重复 200 次，每次无放回抽取 32/40
+    个类，重作层次聚类并切于最佳 k；某一对类之共现率 = 该对同簇之次数 ÷ 该对同时入选之次数。**更正**：旧式用有放回 bootstrap，而仅 40 个类有放回抽 40 次时期望仅约 25.3
+    个互异单位入选，任一对同时入选之概率本已受限，共现率因而被结构性压低；今改无放回，分母改为「同时入选之次数」，故新旧稳定度之数值不可直接比较。
+  stability_method_en: 'Stability is the co-assignment rate under **subsampling without replacement at
+    80%** (jackknife-type): a seeded LCG (seed 20240717) draws 32 of the 40 classes without replacement,
+    200 times, re-runs hierarchical clustering and cuts at the best k; a pair''s rate is the number of
+    resamples in which the pair co-clustered, divided by the number of resamples in which the pair was
+    drawn together. **Correction**: an earlier implementation used bootstrap with replacement; drawing
+    40 classes with replacement from only 40 classes leaves on average just 25.3 distinct units drawn,
+    which mechanically depresses co-assignment. Subsampling removes that bias, so old and new stability
+    figures are not directly comparable.'
+  method_en: Agglomerative clustering (average linkage) on cosine distance; for k = 2..15 the data is
+    cut at each k and the mean silhouette computed, the maximum being the chosen k (only cuts yielding
+    exactly k clusters are admitted).
+  caveat_zh: 聚类之数（k）非经文所定，乃算法依轮廓系数所择。故簇界可随参数而移，此表当读作「一种可复现之切分」，非「经文自有之类别」。
+  caveat_en: The number of clusters is not fixed by the sutra; it is chosen by the algorithm via the silhouette
+    coefficient. Cluster boundaries shift with parameters, so this table should be read as one reproducible
+    partition, not as the sutra's own categories.
+  best_k: 6
+  best_silhouette: 0.43
+  k_range:
+  - 2
+  - 15
+  k_at_boundary: false
+  k_boundary_note_zh: 最佳 k 落于区间内部。
+  k_boundary_note_en: the best k lies inside the scanned range
+  weak_structure_zh: 轮廓系数 0.43 分离度尚可：语汇面貌可见数处聚处，然仍非截然分群，故本页聚类当读作「一种可复现之切分」，不宜作「经文自有之类别」。
+  weak_structure_en: the silhouette of 0.43 indicates moderate separation; several groupings are discernible,
+    yet they are not sharply divided, so this partition should be read as one reproducible cut rather
+    than the sutra's own categories.
+  curve:
+  - k: 2
+    silhouette: 0.226
+  - k: 3
+    silhouette: 0.2759
+  - k: 4
+    silhouette: 0.3313
+  - k: 5
+    silhouette: 0.355
+  - k: 6
+    silhouette: 0.43
+  - k: 7
+    silhouette: 0.4196
+  - k: 8
+    silhouette: 0.3761
+  - k: 9
+    silhouette: 0.3454
+  - k: 10
+    silhouette: 0.3623
+  - k: 11
+    silhouette: 0.3845
+  - k: 12
+    silhouette: 0.3748
+  - k: 13
+    silhouette: 0.3619
+  - k: 14
+    silhouette: 0.383
+  - k: 15
+    silhouette: 0.3669
+  merges:
+  - step: 1
+    a: 主空神
+    b: 主方神
+    d: 0.0258
+    size: 2
+  - step: 2
+    a: 主夜神
+    b: 主晝神
+    d: 0.0299
+    size: 2
+  - step: 3
+    a: 主城神
+    b: 主海神
+    d: 0.0477
+    size: 2
+  - step: 4
+    a: 阿脩羅王
+    b: 諸大龍王
+    d: 0.0531
+    size: 2
+  - step: 5
+    a: 身眾神
+    b: 主山神
+    d: 0.0693
+    size: 2
+  - step: 6
+    a: 足行神
+    b: 道場神
+    d: 0.0823
+    size: 2
+  - step: 7
+    a: 主夜神
+    b: 主晝神
+    d: 0.0964
+    size: 3
+  - step: 8
+    a: 主火神
+    b: 主風神
+    d: 0.1078
+    size: 2
+  - step: 9
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    d: 0.1115
+    size: 2
+  - step: 10
+    a: 主地神
+    b: 日天子
+    d: 0.1307
+    size: 2
+  - step: 11
+    a: 主城神
+    b: 主海神
+    d: 0.13085
+    size: 3
+  - step: 12
+    a: 三十三天王
+    b: 須夜摩天王
+    d: 0.1353
+    size: 2
+  - step: 13
+    a: 夜叉王
+    b: 鳩槃荼王
+    d: 0.1443
+    size: 2
+  - step: 14
+    a: 主藥神
+    b: 大自在天王
+    d: 0.1525
+    size: 2
+  - step: 15
+    a: 足行神
+    b: 道場神
+    d: 0.153375
+    size: 4
+  - step: 16
+    a: 主夜神
+    b: 主晝神
+    d: 0.181567
+    size: 4
+  - step: 17
+    a: 三十三天王
+    b: 須夜摩天王
+    d: 0.1963
+    size: 3
+  - step: 18
+    a: 主空神
+    b: 主方神
+    d: 0.1983
+    size: 3
+  - step: 19
+    a: 身眾神
+    b: 主山神
+    d: 0.201
+    size: 3
+  - step: 20
+    a: 摩睺羅伽王
+    b: 光音天王
+    d: 0.2111
+    size: 2
+  - step: 21
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    d: 0.2155
+    size: 4
+  - step: 22
+    a: 主河神
+    b: 主火神
+    d: 0.233
+    size: 3
+  - step: 23
+    a: 足行神
+    b: 道場神
+    d: 0.263333
+    size: 7
+  - step: 24
+    a: 摩睺羅伽王
+    b: 光音天王
+    d: 0.2823
+    size: 3
+  - step: 25
+    a: 主藥神
+    b: 大自在天王
+    d: 0.2984
+    size: 5
+  - step: 26
+    a: 足行神
+    b: 道場神
+    d: 0.341157
+    size: 8
+  - step: 27
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    d: 0.36125
+    size: 6
+  - step: 28
+    a: 主藥神
+    b: 大自在天王
+    d: 0.36728
+    size: 6
+  - step: 29
+    a: 迦樓羅王
+    b: 摩睺羅伽王
+    d: 0.370167
+    size: 4
+  - step: 30
+    a: 主河神
+    b: 主火神
+    d: 0.378578
+    size: 6
+  - step: 31
+    a: 身眾神
+    b: 主山神
+    d: 0.409817
+    size: 11
+  - step: 32
+    a: 主河神
+    b: 主火神
+    d: 0.48065
+    size: 7
+  - step: 33
+    a: 主藥神
+    b: 大自在天王
+    d: 0.503983
+    size: 7
+  - step: 34
+    a: 迦樓羅王
+    b: 摩睺羅伽王
+    d: 0.59595
+    size: 5
+  - step: 35
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    d: 0.619712
+    size: 17
+  - step: 36
+    a: 主藥神
+    b: 大自在天王
+    d: 0.638074
+    size: 12
+  - step: 37
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    d: 0.689578
+    size: 24
+  - step: 38
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    d: 0.749822
+    size: 36
+  - step: 39
+    a: 菩薩摩訶薩
+    b: 執金剛神
+    d: 0.771649
+    size: 40
+  dendrogram:
+    heights:
+    - 0.0258
+    - 0.0299
+    - 0.0477
+    - 0.0531
+    - 0.0693
+    - 0.0823
+    - 0.0964
+    - 0.1078
+    - 0.1115
+    - 0.1307
+    - 0.13085
+    - 0.1353
+    - 0.1443
+    - 0.1525
+    - 0.153375
+    - 0.181567
+    - 0.1963
+    - 0.1983
+    - 0.201
+    - 0.2111
+    - 0.2155
+    - 0.233
+    - 0.263333
+    - 0.2823
+    - 0.2984
+    - 0.341157
+    - 0.36125
+    - 0.36728
+    - 0.370167
+    - 0.378578
+    - 0.409817
+    - 0.48065
+    - 0.503983
+    - 0.59595
+    - 0.619712
+    - 0.638074
+    - 0.689578
+    - 0.749822
+    - 0.771649
+    names: *id001
+    idx: *id002
+    groups: *id003
+  cophenetic_corr: 0.6948
+  cophenetic_note_zh: 共形相关系数：树高与原距离之相关（>0.9 视为树结构良好）
+  cophenetic_note_en: cophenetic correlation between tree heights and original distances (>0.9 conventionally
+    indicates a good tree)
+  clusters:
+  - id: 0
+    members:
+    - idx: 2
+      cat: 身眾神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 3
+      cat: 足行神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 4
+      cat: 道場神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 5
+      cat: 主城神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 6
+      cat: 主地神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 7
+      cat: 主山神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 8
+      cat: 主林神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 12
+      cat: 主海神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 22
+      cat: 緊那羅王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    - idx: 27
+      cat: 乾闥婆王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    - idx: 29
+      cat: 日天子
+      group: desire
+      group_zh: 异生众·欲界主
+      n_named: 11
+    n_classes: 11
+    n_named: 111
+    top_domains:
+    - key: affix
+      n: 96
+      pct: 0.1853
+    - key: nature
+      n: 83
+      pct: 0.1602
+    - key: virtue
+      n: 82
+      pct: 0.1583
+    top_morphs:
+    - zh: 主
+      n: 50
+    - zh: 光
+      n: 41
+    - zh: 華
+      n: 24
+    - zh: 妙
+      n: 20
+    - zh: 明
+      n: 18
+    - zh: 寶
+      n: 16
+    - zh: 嚴
+      n: 14
+    - zh: 普
+      n: 14
+    - zh: 淨
+      n: 13
+    - zh: 海
+      n: 12
+    group_mix:
+    - key: deities
+      zh: 异生众·十九类神
+      n: 8
+    - key: eight
+      zh: 异生众·八部
+      n: 2
+    - key: desire
+      zh: 异生众·欲界主
+      n: 1
+    silhouette: 0.4045
+    stability: 0.9918
+    stability_n_pairs: 55
+  - id: 1
+    members:
+    - idx: 9
+      cat: 主藥神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 10
+      cat: 主稼神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 30
+      cat: 三十三天王
+      group: desire
+      group_zh: 异生众·欲界主
+      n_named: 11
+    - idx: 31
+      cat: 須夜摩天王
+      group: desire
+      group_zh: 异生众·欲界主
+      n_named: 10
+    - idx: 35
+      cat: 大梵天王
+      group: form
+      group_zh: 异生众·色界主
+      n_named: 10
+    - idx: 37
+      cat: 遍淨天王
+      group: form
+      group_zh: 异生众·色界主
+      n_named: 11
+    - idx: 39
+      cat: 大自在天王
+      group: form
+      group_zh: 异生众·色界主
+      n_named: 10
+    n_classes: 7
+    n_named: 72
+    top_domains:
+    - key: virtue
+      n: 69
+      pct: 0.2184
+    - key: affix
+      n: 46
+      pct: 0.1456
+    - key: luminosity
+      n: 42
+      pct: 0.1329
+    top_morphs:
+    - zh: 光
+      n: 23
+    - zh: 主
+      n: 21
+    - zh: 明
+      n: 11
+    - zh: 藥
+      n: 10
+    - zh: 稼
+      n: 10
+    - zh: 淨
+      n: 9
+    - zh: 音
+      n: 9
+    - zh: 樂
+      n: 8
+    - zh: 稱
+      n: 7
+    - zh: 普
+      n: 7
+    group_mix:
+    - key: form
+      zh: 异生众·色界主
+      n: 3
+    - key: deities
+      zh: 异生众·十九类神
+      n: 2
+    - key: desire
+      zh: 异生众·欲界主
+      n: 2
+    silhouette: 0.3919
+    stability: 0.9407
+    stability_n_pairs: 21
+  - id: 2
+    members:
+    - idx: 11
+      cat: 主河神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 13
+      cat: 主水神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 14
+      cat: 主火神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 15
+      cat: 主風神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 16
+      cat: 主空神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 17
+      cat: 主方神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 34
+      cat: 他化自在天王
+      group: desire
+      group_zh: 异生众·欲界主
+      n_named: 10
+    n_classes: 7
+    n_named: 70
+    top_domains:
+    - key: affix
+      n: 103
+      pct: 0.2675
+    - key: nature
+      n: 56
+      pct: 0.1455
+    - key: luminosity
+      n: 42
+      pct: 0.1091
+    top_morphs:
+    - zh: 主
+      n: 61
+    - zh: 光
+      n: 23
+    - zh: 普
+      n: 16
+    - zh: 水
+      n: 11
+    - zh: 風
+      n: 11
+    - zh: 空
+      n: 11
+    - zh: 河
+      n: 10
+    - zh: 妙
+      n: 10
+    - zh: 火
+      n: 10
+    - zh: 方
+      n: 10
+    group_mix:
+    - key: deities
+      zh: 异生众·十九类神
+      n: 6
+    - key: desire
+      zh: 异生众·欲界主
+      n: 1
+    silhouette: 0.3885
+    stability: 0.9053
+    stability_n_pairs: 21
+  - id: 3
+    members:
+    - idx: 0
+      cat: 菩薩摩訶薩
+      group: bodhisattva
+      group_zh: 同生众·菩萨
+      n_named: 20
+    - idx: 1
+      cat: 執金剛神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 20
+      cat: 阿脩羅王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    - idx: 24
+      cat: 夜叉王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    - idx: 25
+      cat: 諸大龍王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    - idx: 26
+      cat: 鳩槃荼王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    n_classes: 6
+    n_named: 70
+    top_domains:
+    - key: virtue
+      n: 46
+      pct: 0.179
+    - key: form
+      n: 40
+      pct: 0.1556
+    - key: affix
+      n: 40
+      pct: 0.1556
+    top_morphs:
+    - zh: 光
+      n: 16
+    - zh: 普
+      n: 13
+    - zh: 大
+      n: 12
+    - zh: 幢
+      n: 9
+    - zh: 音
+      n: 8
+    - zh: 德
+      n: 6
+    - zh: 妙
+      n: 6
+    - zh: 焰
+      n: 5
+    - zh: 智
+      n: 5
+    - zh: 華
+      n: 5
+    group_mix:
+    - key: eight
+      zh: 异生众·八部
+      n: 4
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      n: 1
+    - key: deities
+      zh: 异生众·十九类神
+      n: 1
+    silhouette: 0.4555
+    stability: 0.8825
+    stability_n_pairs: 15
+  - id: 4
+    members:
+    - idx: 21
+      cat: 迦樓羅王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    - idx: 23
+      cat: 摩睺羅伽王
+      group: eight
+      group_zh: 异生众·八部
+      n_named: 10
+    - idx: 33
+      cat: 化樂天王
+      group: desire
+      group_zh: 异生众·欲界主
+      n_named: 11
+    - idx: 36
+      cat: 光音天王
+      group: form
+      group_zh: 异生众·色界主
+      n_named: 10
+    - idx: 38
+      cat: 廣果天王
+      group: form
+      group_zh: 异生众·色界主
+      n_named: 10
+    n_classes: 5
+    n_named: 51
+    top_domains:
+    - key: virtue
+      n: 45
+      pct: 0.2228
+    - key: luminosity
+      n: 32
+      pct: 0.1584
+    - key: affix
+      n: 32
+      pct: 0.1584
+    top_morphs:
+    - zh: 光
+      n: 19
+    - zh: 音
+      n: 10
+    - zh: 明
+      n: 10
+    - zh: 淨
+      n: 8
+    - zh: 慧
+      n: 7
+    - zh: 清
+      n: 6
+    - zh: 普
+      n: 6
+    - zh: 勝
+      n: 6
+    - zh: 妙
+      n: 6
+    - zh: 最
+      n: 6
+    group_mix:
+    - key: eight
+      zh: 异生众·八部
+      n: 2
+    - key: form
+      zh: 异生众·色界主
+      n: 2
+    - key: desire
+      zh: 异生众·欲界主
+      n: 1
+    silhouette: 0.2617
+    stability: 0.7749
+    stability_n_pairs: 10
+  - id: 5
+    members:
+    - idx: 18
+      cat: 主夜神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 19
+      cat: 主晝神
+      group: deities
+      group_zh: 异生众·十九类神
+      n_named: 10
+    - idx: 28
+      cat: 月天子
+      group: desire
+      group_zh: 异生众·欲界主
+      n_named: 10
+    - idx: 32
+      cat: 兜率陀天王
+      group: desire
+      group_zh: 异生众·欲界主
+      n_named: 10
+    n_classes: 4
+    n_named: 40
+    top_domains:
+    - key: virtue
+      n: 46
+      pct: 0.2312
+    - key: affix
+      n: 40
+      pct: 0.201
+    - key: time
+      n: 28
+      pct: 0.1407
+    top_morphs:
+    - zh: 主
+      n: 20
+    - zh: 光
+      n: 12
+    - zh: 夜
+      n: 10
+    - zh: 晝
+      n: 10
+    - zh: 樂
+      n: 7
+    - zh: 普
+      n: 6
+    - zh: 淨
+      n: 6
+    - zh: 妙
+      n: 6
+    - zh: 明
+      n: 6
+    - zh: 喜
+      n: 4
+    group_mix:
+    - key: deities
+      zh: 异生众·十九类神
+      n: 2
+    - key: desire
+      zh: 异生众·欲界主
+      n: 2
+    silhouette: 0.8112
+    stability: 1.0
+    stability_n_pairs: 6
+pca:
+  method_zh: PCA：对「类×语义域」TF-IDF 加权矩阵按列中心化，求 17×17 协方差之特征分解（Jacobi 旋转，纯 Python 实现），取前若干主成分。坐标已作符号规范化以保证可复现。
+  method_en: 'PCA: the class-by-domain TF-IDF matrix is column-centred, its 17x17 covariance matrix diagonalised
+    by Jacobi rotations (pure-Python), and the leading components retained. Component signs are normalised
+    so that results are reproducible.'
+  caveat_zh: 二维散点**不可**读作「距离之远近」——主成分投影有损，三维以上之差异常被压平；两轴之正负亦无教义向背之意，仅为统计方向。
+  caveat_en: 'The 2-D scatter must not be read as true distance: a principal-component projection is lossy
+    and flattens differences lying beyond the retained axes. The signs of the axes carry no doctrinal
+    valence; they are statistical directions only.'
+  explained:
+  - pc: 1
+    var: 5.1323
+    pct: 0.3243
+  - pc: 2
+    var: 4.0175
+    pct: 0.2538
+  - pc: 3
+    var: 2.2498
+    pct: 0.1422
+  - pc: 4
+    var: 1.3593
+    pct: 0.0859
+  - pc: 5
+    var: 0.9863
+    pct: 0.0623
+  loadings:
+  - pc: 1
+    explained_pct: 0.3243
+    top_domains:
+    - key: space
+      load: 0.7865
+    - key: time
+      load: 0.5636
+    - key: speech
+      load: -0.1636
+    - key: unassigned
+      load: -0.1343
+    - key: motion
+      load: 0.0735
+    - key: wisdom
+      load: -0.0514
+    - key: jewel
+      load: -0.051
+    - key: body
+      load: 0.0508
+  - pc: 2
+    explained_pct: 0.2538
+    top_domains:
+    - key: time
+      load: 0.8063
+    - key: space
+      load: -0.5604
+    - key: body
+      load: 0.1187
+    - key: jewel
+      load: 0.1012
+    - key: speech
+      load: 0.0703
+    - key: number
+      load: -0.0575
+    - key: power
+      load: -0.0306
+    - key: sound
+      load: -0.0274
+  - pc: 3
+    explained_pct: 0.1422
+    top_domains:
+    - key: speech
+      load: 0.8174
+    - key: jewel
+      load: -0.4297
+    - key: wisdom
+      load: 0.3164
+    - key: space
+      load: 0.1211
+    - key: dharma
+      load: 0.102
+    - key: nature
+      load: -0.1012
+    - key: body
+      load: 0.0778
+    - key: time
+      load: 0.0417
+  points:
+  - idx: 0
+    cat: 菩薩摩訶薩
+    group: bodhisattva
+    group_zh: 同生众·菩萨
+    x: -0.317
+    y: 1.0194
+    n_named: 20
+  - idx: 1
+    cat: 執金剛神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -0.9207
+    y: 0.5554
+    n_named: 10
+  - idx: 2
+    cat: 身眾神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -1.1121
+    y: -0.2566
+    n_named: 10
+  - idx: 3
+    cat: 足行神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -0.7813
+    y: 0.7454
+    n_named: 10
+  - idx: 4
+    cat: 道場神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -1.3376
+    y: 0.0809
+    n_named: 10
+  - idx: 5
+    cat: 主城神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 0.0786
+    y: -1.022
+    n_named: 10
+  - idx: 6
+    cat: 主地神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -0.7974
+    y: 0.6274
+    n_named: 10
+  - idx: 7
+    cat: 主山神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -1.2
+    y: -0.2199
+    n_named: 10
+  - idx: 8
+    cat: 主林神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -1.1478
+    y: -0.1936
+    n_named: 10
+  - idx: 9
+    cat: 主藥神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -1.2405
+    y: 0.9122
+    n_named: 10
+  - idx: 10
+    cat: 主稼神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -0.8397
+    y: 0.8117
+    n_named: 10
+  - idx: 11
+    cat: 主河神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -0.575
+    y: -0.8397
+    n_named: 10
+  - idx: 12
+    cat: 主海神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 1.1672
+    y: -0.6954
+    n_named: 10
+  - idx: 13
+    cat: 主水神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: -0.5602
+    y: -0.7948
+    n_named: 10
+  - idx: 14
+    cat: 主火神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 1.5207
+    y: -2.2417
+    n_named: 10
+  - idx: 15
+    cat: 主風神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 0.2278
+    y: -1.3294
+    n_named: 10
+  - idx: 16
+    cat: 主空神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 6.0246
+    y: -5.4222
+    n_named: 10
+  - idx: 17
+    cat: 主方神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 7.2432
+    y: -5.1641
+    n_named: 10
+  - idx: 18
+    cat: 主夜神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 5.7624
+    y: 6.8554
+    n_named: 10
+  - idx: 19
+    cat: 主晝神
+    group: deities
+    group_zh: 异生众·十九类神
+    x: 5.7721
+    y: 5.5412
+    n_named: 10
+  - idx: 20
+    cat: 阿脩羅王
+    group: eight
+    group_zh: 异生众·八部
+    x: -1.7951
+    y: -0.301
+    n_named: 10
+  - idx: 21
+    cat: 迦樓羅王
+    group: eight
+    group_zh: 异生众·八部
+    x: -0.5074
+    y: -0.5736
+    n_named: 10
+  - idx: 22
+    cat: 緊那羅王
+    group: eight
+    group_zh: 异生众·八部
+    x: -1.4129
+    y: -0.1433
+    n_named: 10
+  - idx: 23
+    cat: 摩睺羅伽王
+    group: eight
+    group_zh: 异生众·八部
+    x: -1.2272
+    y: -0.3025
+    n_named: 10
+  - idx: 24
+    cat: 夜叉王
+    group: eight
+    group_zh: 异生众·八部
+    x: -1.4143
+    y: -0.1891
+    n_named: 10
+  - idx: 25
+    cat: 諸大龍王
+    group: eight
+    group_zh: 异生众·八部
+    x: -1.5886
+    y: -0.3025
+    n_named: 10
+  - idx: 26
+    cat: 鳩槃荼王
+    group: eight
+    group_zh: 异生众·八部
+    x: -1.3046
+    y: -0.258
+    n_named: 10
+  - idx: 27
+    cat: 乾闥婆王
+    group: eight
+    group_zh: 异生众·八部
+    x: -0.5455
+    y: -0.558
+    n_named: 10
+  - idx: 28
+    cat: 月天子
+    group: desire
+    group_zh: 异生众·欲界主
+    x: 2.2487
+    y: 1.9239
+    n_named: 10
+  - idx: 29
+    cat: 日天子
+    group: desire
+    group_zh: 异生众·欲界主
+    x: -0.7333
+    y: 0.608
+    n_named: 11
+  - idx: 30
+    cat: 三十三天王
+    group: desire
+    group_zh: 异生众·欲界主
+    x: -1.8246
+    y: 0.8968
+    n_named: 11
+  - idx: 31
+    cat: 須夜摩天王
+    group: desire
+    group_zh: 异生众·欲界主
+    x: -1.3155
+    y: 0.645
+    n_named: 10
+  - idx: 32
+    cat: 兜率陀天王
+    group: desire
+    group_zh: 异生众·欲界主
+    x: 0.2624
+    y: 1.9352
+    n_named: 10
+  - idx: 33
+    cat: 化樂天王
+    group: desire
+    group_zh: 异生众·欲界主
+    x: -1.1641
+    y: -0.2675
+    n_named: 11
+  - idx: 34
+    cat: 他化自在天王
+    group: desire
+    group_zh: 异生众·欲界主
+    x: 0.5391
+    y: -1.5575
+    n_named: 10
+  - idx: 35
+    cat: 大梵天王
+    group: form
+    group_zh: 异生众·色界主
+    x: -0.9096
+    y: -0.6631
+    n_named: 10
+  - idx: 36
+    cat: 光音天王
+    group: form
+    group_zh: 异生众·色界主
+    x: -1.5173
+    y: -0.211
+    n_named: 10
+  - idx: 37
+    cat: 遍淨天王
+    group: form
+    group_zh: 异生众·色界主
+    x: 0.6027
+    y: 0.437
+    n_named: 11
+  - idx: 38
+    cat: 廣果天王
+    group: form
+    group_zh: 异生众·色界主
+    x: -1.233
+    y: -0.243
+    n_named: 10
+  - idx: 39
+    cat: 大自在天王
+    group: form
+    group_zh: 异生众·色界主
+    x: -2.1273
+    y: 0.1547
+    n_named: 10
+  group_centroids:
+    bodhisattva:
+      x: -0.317
+      y: 1.0194
+    deities:
+      x: 0.9097
+      y: -0.1079
+    eight:
+      x: -1.2245
+      y: -0.3285
+    desire:
+      x: -0.2839
+      y: 0.5977
+    form:
+      x: -1.0369
+      y: -0.1051
+pareto:
+  note_zh: 帕累托读法：k80 = 累计达 80% 频次所需之项数。k80_pct_items 越低，则语汇越集中于少数词素。本表用于回答「华严会众名号之语汇，是高度模板化还是高度多样」。
+  note_en: 'Pareto reading: k80 is the number of items needed to reach 80% of total frequency. The lower
+    k80_pct_items, the more concentrated the lexicon. This answers whether the vocabulary of Huayan assemblies
+    is highly templated or highly varied.'
+  series:
+  - dimension: morphemes
+    label: 词素频次
+    label_en: Morpheme frequency
+    total: 1877
+    n_items: 304
+    k80: 89
+    k80_pct_items: 0.2928
+    points:
+    - rank: 1
+      key: 主
+      n: 156
+      cum_pct: 0.0831
+    - rank: 2
+      key: 光
+      n: 134
+      cum_pct: 0.1545
+    - rank: 3
+      key: 普
+      n: 62
+      cum_pct: 0.1875
+    - rank: 4
+      key: 明
+      n: 56
+      cum_pct: 0.2174
+    - rank: 5
+      key: 妙
+      n: 53
+      cum_pct: 0.2456
+    - rank: 6
+      key: 淨
+      n: 46
+      cum_pct: 0.2701
+    - rank: 7
+      key: 音
+      n: 43
+      cum_pct: 0.293
+    - rank: 8
+      key: 幢
+      n: 40
+      cum_pct: 0.3143
+    - rank: 9
+      key: 華
+      n: 38
+      cum_pct: 0.3346
+    - rank: 10
+      key: 嚴
+      n: 35
+      cum_pct: 0.3532
+    - rank: 11
+      key: 髻
+      n: 30
+      cum_pct: 0.3692
+    - rank: 12
+      key: 大
+      n: 27
+      cum_pct: 0.3836
+    - rank: 13
+      key: 海
+      n: 26
+      cum_pct: 0.3974
+    - rank: 14
+      key: 樂
+      n: 25
+      cum_pct: 0.4108
+    - rank: 15
+      key: 莊
+      n: 25
+      cum_pct: 0.4241
+    - rank: 16
+      key: 勝
+      n: 23
+      cum_pct: 0.4363
+    - rank: 17
+      key: 寶
+      n: 23
+      cum_pct: 0.4486
+    - rank: 18
+      key: 眼
+      n: 23
+      cum_pct: 0.4608
+    - rank: 19
+      key: 清
+      n: 19
+      cum_pct: 0.471
+    - rank: 20
+      key: 慧
+      n: 18
+      cum_pct: 0.4806
+    - rank: 21
+      key: 德
+      n: 16
+      cum_pct: 0.4891
+    - rank: 22
+      key: 照
+      n: 16
+      cum_pct: 0.4976
+    - rank: 23
+      key: 焰
+      n: 16
+      cum_pct: 0.5061
+    - rank: 24
+      key: 自在
+      n: 15
+      cum_pct: 0.5141
+    - rank: 25
+      key: 善
+      n: 15
+      cum_pct: 0.5221
+    - rank: 26
+      key: 最
+      n: 14
+      cum_pct: 0.5296
+    - rank: 27
+      key: 雲
+      n: 14
+      cum_pct: 0.537
+    - rank: 28
+      key: 現
+      n: 14
+      cum_pct: 0.5445
+    - rank: 29
+      key: 目
+      n: 13
+      cum_pct: 0.5514
+    - rank: 30
+      key: 可愛
+      n: 12
+      cum_pct: 0.5578
+    - rank: 31
+      key: 林
+      n: 12
+      cum_pct: 0.5642
+    - rank: 32
+      key: 力
+      n: 12
+      cum_pct: 0.5706
+    - rank: 33
+      key: 水
+      n: 12
+      cum_pct: 0.577
+    - rank: 34
+      key: 智
+      n: 11
+      cum_pct: 0.5828
+    - rank: 35
+      key: 地
+      n: 11
+      cum_pct: 0.5887
+    - rank: 36
+      key: 山
+      n: 11
+      cum_pct: 0.5946
+    - rank: 37
+      key: 藥
+      n: 11
+      cum_pct: 0.6004
+    - rank: 38
+      key: 風
+      n: 11
+      cum_pct: 0.6063
+    - rank: 39
+      key: 空
+      n: 11
+      cum_pct: 0.6121
+    - rank: 40
+      key: 方
+      n: 11
+      cum_pct: 0.618
+    - rank: 41
+      key: 香
+      n: 10
+      cum_pct: 0.6233
+    - rank: 42
+      key: 城
+      n: 10
+      cum_pct: 0.6287
+    - rank: 43
+      key: 遍
+      n: 10
+      cum_pct: 0.634
+    - rank: 44
+      key: 稼
+      n: 10
+      cum_pct: 0.6393
+    - rank: 45
+      key: 河
+      n: 10
+      cum_pct: 0.6446
+    - rank: 46
+      key: 火
+      n: 10
+      cum_pct: 0.65
+    - rank: 47
+      key: 夜
+      n: 10
+      cum_pct: 0.6553
+    - rank: 48
+      key: 晝
+      n: 10
+      cum_pct: 0.6606
+    - rank: 49
+      key: 生
+      n: 9
+      cum_pct: 0.6654
+    - rank: 50
+      key: 金剛
+      n: 9
+      cum_pct: 0.6702
+    - rank: 51
+      key: 樹
+      n: 9
+      cum_pct: 0.675
+    - rank: 52
+      key: 喜
+      n: 9
+      cum_pct: 0.6798
+    - rank: 53
+      key: 離
+      n: 9
+      cum_pct: 0.6846
+    - rank: 54
+      key: 聲
+      n: 8
+      cum_pct: 0.6889
+    - rank: 55
+      key: 十方
+      n: 8
+      cum_pct: 0.6931
+    - rank: 56
+      key: 稱
+      n: 8
+      cum_pct: 0.6974
+    - rank: 57
+      key: 寂
+      n: 8
+      cum_pct: 0.7017
+    - rank: 58
+      key: 靜
+      n: 8
+      cum_pct: 0.7059
+    - rank: 59
+      key: 持
+      n: 7
+      cum_pct: 0.7096
+    - rank: 60
+      key: 見
+      n: 7
+      cum_pct: 0.7134
+    - rank: 61
+      key: 眾
+      n: 7
+      cum_pct: 0.7171
+    - rank: 62
+      key: 發
+      n: 7
+      cum_pct: 0.7208
+    - rank: 63
+      key: 廣
+      n: 7
+      cum_pct: 0.7246
+    - rank: 64
+      key: 世
+      n: 7
+      cum_pct: 0.7283
+    - rank: 65
+      key: 種
+      n: 7
+      cum_pct: 0.732
+    - rank: 66
+      key: 功
+      n: 6
+      cum_pct: 0.7352
+    - rank: 67
+      key: 福
+      n: 6
+      cum_pct: 0.7384
+    - rank: 68
+      key: 須彌
+      n: 6
+      cum_pct: 0.7416
+    - rank: 69
+      key: 威
+      n: 6
+      cum_pct: 0.7448
+    - rank: 70
+      key: 宮
+      n: 6
+      cum_pct: 0.748
+    - rank: 71
+      key: 殿
+      n: 6
+      cum_pct: 0.7512
+    - rank: 72
+      key: 觀
+      n: 6
+      cum_pct: 0.7544
+    - rank: 73
+      key: 名
+      n: 6
+      cum_pct: 0.7576
+    - rank: 74
+      key: 勇
+      n: 6
+      cum_pct: 0.7608
+    - rank: 75
+      key: 變
+      n: 6
+      cum_pct: 0.764
+    - rank: 76
+      key: 化
+      n: 6
+      cum_pct: 0.7672
+    - rank: 77
+      key: 意
+      n: 5
+      cum_pct: 0.7698
+    - rank: 78
+      key: 月
+      n: 5
+      cum_pct: 0.7725
+    - rank: 79
+      key: 王
+      n: 5
+      cum_pct: 0.7752
+    - rank: 80
+      key: 蓮
+      n: 5
+      cum_pct: 0.7778
+    - rank: 81
+      key: 日
+      n: 5
+      cum_pct: 0.7805
+    - rank: 82
+      key: 色
+      n: 5
+      cum_pct: 0.7832
+    - rank: 83
+      key: 輪
+      n: 5
+      cum_pct: 0.7858
+    - rank: 84
+      key: 雷
+      n: 5
+      cum_pct: 0.7885
+    - rank: 85
+      key: 攝
+      n: 5
+      cum_pct: 0.7912
+    - rank: 86
+      key: 耀
+      n: 5
+      cum_pct: 0.7938
+    - rank: 87
+      key: 吉祥
+      n: 5
+      cum_pct: 0.7965
+    - rank: 88
+      key: 吼
+      n: 5
+      cum_pct: 0.7991
+    - rank: 89
+      key: 垢
+      n: 5
+      cum_pct: 0.8018
+    - rank: 90
+      key: 行
+      n: 5
+      cum_pct: 0.8045
+    - rank: 91
+      key: 遊
+      n: 5
+      cum_pct: 0.8071
+    - rank: 92
+      key: 念
+      n: 5
+      cum_pct: 0.8098
+    - rank: 93
+      key: 師子
+      n: 4
+      cum_pct: 0.8119
+    - rank: 94
+      key: 悅
+      n: 4
+      cum_pct: 0.8141
+    - rank: 95
+      key: 勇猛
+      n: 4
+      cum_pct: 0.8162
+    - rank: 96
+      key: 深
+      n: 4
+      cum_pct: 0.8183
+    - rank: 97
+      key: 諸
+      n: 4
+      cum_pct: 0.8205
+    - rank: 98
+      key: 根
+      n: 4
+      cum_pct: 0.8226
+    - rank: 99
+      key: 護
+      n: 4
+      cum_pct: 0.8247
+    - rank: 100
+      key: 星
+      n: 4
+      cum_pct: 0.8269
+    - rank: 101
+      key: 峯
+      n: 4
+      cum_pct: 0.829
+    - rank: 102
+      key: 堅
+      n: 4
+      cum_pct: 0.8311
+    - rank: 103
+      key: 高
+      n: 4
+      cum_pct: 0.8332
+    - rank: 104
+      key: 健
+      n: 4
+      cum_pct: 0.8354
+    - rank: 105
+      key: 成
+      n: 4
+      cum_pct: 0.8375
+    - rank: 106
+      key: 無礙
+      n: 4
+      cum_pct: 0.8396
+    - rank: 107
+      key: 能
+      n: 4
+      cum_pct: 0.8418
+    - rank: 108
+      key: 思
+      n: 4
+      cum_pct: 0.8439
+    - rank: 109
+      key: 燈
+      n: 3
+      cum_pct: 0.8455
+    - rank: 110
+      key: 覺
+      n: 3
+      cum_pct: 0.8471
+    - rank: 111
+      key: 無盡
+      n: 3
+      cum_pct: 0.8487
+    - rank: 112
+      key: 無垢
+      n: 3
+      cum_pct: 0.8503
+    - rank: 113
+      key: 藏
+      n: 3
+      cum_pct: 0.8519
+    - rank: 114
+      key: 美
+      n: 3
+      cum_pct: 0.8535
+    - rank: 115
+      key: 速
+      n: 3
+      cum_pct: 0.8551
+    - rank: 116
+      key: 疾
+      n: 3
+      cum_pct: 0.8567
+    - rank: 117
+      key: 密
+      n: 3
+      cum_pct: 0.8583
+    - rank: 118
+      key: 不動
+      n: 3
+      cum_pct: 0.8599
+    - rank: 119
+      key: 微
+      n: 3
+      cum_pct: 0.8615
+    - rank: 120
+      key: 集
+      n: 3
+      cum_pct: 0.8631
+    - rank: 121
+      key: 時
+      n: 3
+      cum_pct: 0.8647
+    - rank: 122
+      key: 塵
+      n: 3
+      cum_pct: 0.8663
+    - rank: 123
+      key: 可
+      n: 3
+      cum_pct: 0.8679
+    - rank: 124
+      key: 味
+      n: 3
+      cum_pct: 0.8695
+    - rank: 125
+      key: 氣
+      n: 3
+      cum_pct: 0.8711
+    - rank: 126
+      key: 就
+      n: 3
+      cum_pct: 0.8727
+    - rank: 127
+      key: 出
+      n: 3
+      cum_pct: 0.8743
+    - rank: 128
+      key: 示
+      n: 3
+      cum_pct: 0.8759
+    - rank: 129
+      key: 固
+      n: 3
+      cum_pct: 0.8775
+    - rank: 130
+      key: 冠
+      n: 3
+      cum_pct: 0.8791
+    - rank: 131
+      key: 宿
+      n: 3
+      cum_pct: 0.8807
+    - rank: 132
+      key: 惟
+      n: 3
+      cum_pct: 0.8823
+    - rank: 133
+      key: 境
+      n: 2
+      cum_pct: 0.8833
+    - rank: 134
+      key: 相
+      n: 2
+      cum_pct: 0.8844
+    - rank: 135
+      key: 精進
+      n: 2
+      cum_pct: 0.8855
+    - rank: 136
+      key: 𪗇
+      n: 2
+      cum_pct: 0.8865
+    - rank: 137
+      key: 伏
+      n: 2
+      cum_pct: 0.8876
+    - rank: 138
+      key: 上
+      n: 2
+      cum_pct: 0.8887
+    - rank: 139
+      key: 栴檀
+      n: 2
+      cum_pct: 0.8897
+    - rank: 140
+      key: 積
+      n: 2
+      cum_pct: 0.8908
+    - rank: 141
+      key: 雨
+      n: 2
+      cum_pct: 0.8918
+    - rank: 142
+      key: 纓
+      n: 2
+      cum_pct: 0.8929
+    - rank: 143
+      key: 毛
+      n: 2
+      cum_pct: 0.894
+    - rank: 144
+      key: 旋
+      n: 2
+      cum_pct: 0.895
+    - rank: 145
+      key: 布
+      n: 2
+      cum_pct: 0.8961
+    - rank: 146
+      key: 如
+      n: 2
+      cum_pct: 0.8972
+    - rank: 147
+      key: 垂
+      n: 2
+      cum_pct: 0.8982
+    - rank: 148
+      key: 果
+      n: 2
+      cum_pct: 0.8993
+    - rank: 149
+      key: 益
+      n: 2
+      cum_pct: 0.9004
+    - rank: 150
+      key: 增
+      n: 2
+      cum_pct: 0.9014
+    - rank: 151
+      key: 長
+      n: 2
+      cum_pct: 0.9025
+    - rank: 152
+      key: 精
+      n: 2
+      cum_pct: 0.9036
+    - rank: 153
+      key: 者
+      n: 2
+      cum_pct: 0.9046
+    - rank: 154
+      key: 愛樂
+      n: 2
+      cum_pct: 0.9057
+    - rank: 155
+      key: 無熱
+      n: 2
+      cum_pct: 0.9068
+    - rank: 156
+      key: 遠
+      n: 2
+      cum_pct: 0.9078
+    - rank: 157
+      key: 龍
+      n: 2
+      cum_pct: 0.9089
+    - rank: 158
+      key: 潮
+      n: 2
+      cum_pct: 0.91
+    - rank: 159
+      key: 巧
+      n: 2
+      cum_pct: 0.911
+    - rank: 160
+      key: 知
+      n: 2
+      cum_pct: 0.9121
+    - rank: 161
+      key: 足
+      n: 2
+      cum_pct: 0.9132
+    - rank: 162
+      key: 業
+      n: 2
+      cum_pct: 0.9142
+    - rank: 163
+      key: 安
+      n: 2
+      cum_pct: 0.9153
+    - rank: 164
+      key: 住
+      n: 2
+      cum_pct: 0.9164
+    - rank: 165
+      key: 步
+      n: 2
+      cum_pct: 0.9174
+    - rank: 166
+      key: 周
+      n: 2
+      cum_pct: 0.9185
+    - rank: 167
+      key: 不
+      n: 2
+      cum_pct: 0.9196
+    - rank: 168
+      key: 無
+      n: 2
+      cum_pct: 0.9206
+    - rank: 169
+      key: 壞
+      n: 2
+      cum_pct: 0.9217
+    - rank: 170
+      key: 心
+      n: 2
+      cum_pct: 0.9227
+    - rank: 171
+      key: 不退轉
+      n: 2
+      cum_pct: 0.9238
+    - rank: 172
+      key: 天
+      n: 2
+      cum_pct: 0.9249
+    - rank: 173
+      key: 動
+      n: 2
+      cum_pct: 0.9259
+    - rank: 174
+      key: 臂
+      n: 2
+      cum_pct: 0.927
+    - rank: 175
+      key: 無邊
+      n: 2
+      cum_pct: 0.9281
+    - rank: 176
+      key: 甚
+      n: 2
+      cum_pct: 0.9291
+    - rank: 177
+      key: 畏
+      n: 2
+      cum_pct: 0.9302
+    - rank: 178
+      key: 端
+      n: 2
+      cum_pct: 0.9313
+    - rank: 179
+      key: 間
+      n: 2
+      cum_pct: 0.9323
+    - rank: 180
+      key: 因陀羅
+      n: 2
+      cum_pct: 0.9334
+    - rank: 181
+      key: 法
+      n: 2
+      cum_pct: 0.9345
+    - rank: 182
+      key: 普賢
+      n: 1
+      cum_pct: 0.935
+    - rank: 183
+      key: 如來
+      n: 1
+      cum_pct: 0.9355
+    - rank: 184
+      key: 那羅延
+      n: 1
+      cum_pct: 0.9361
+    - rank: 185
+      key: 摩尼
+      n: 1
+      cum_pct: 0.9366
+    - rank: 186
+      key: 調
+      n: 1
+      cum_pct: 0.9371
+    - rank: 187
+      key: 無量
+      n: 1
+      cum_pct: 0.9377
+    - rank: 188
+      key: 儀
+      n: 1
+      cum_pct: 0.9382
+    - rank: 189
+      key: 守
+      n: 1
+      cum_pct: 0.9387
+    - rank: 190
+      key: 取
+      n: 1
+      cum_pct: 0.9393
+    - rank: 191
+      key: 印
+      n: 1
+      cum_pct: 0.9398
+    - rank: 192
+      key: 手
+      n: 1
+      cum_pct: 0.9403
+    - rank: 193
+      key: 吐
+      n: 1
+      cum_pct: 0.9409
+    - rank: 194
+      key: 彩
+      n: 1
+      cum_pct: 0.9414
+    - rank: 195
+      key: 憂
+      n: 1
+      cum_pct: 0.9419
+    - rank: 196
+      key: 盛
+      n: 1
+      cum_pct: 0.9425
+    - rank: 197
+      key: 散
+      n: 1
+      cum_pct: 0.943
+    - rank: 198
+      key: 體
+      n: 1
+      cum_pct: 0.9435
+    - rank: 199
+      key: 開
+      n: 1
+      cum_pct: 0.9441
+    - rank: 200
+      key: 擢
+      n: 1
+      cum_pct: 0.9446
+    - rank: 201
+      key: 幹
+      n: 1
+      cum_pct: 0.9451
+    - rank: 202
+      key: 舒
+      n: 1
+      cum_pct: 0.9457
+    - rank: 203
+      key: 芽
+      n: 1
+      cum_pct: 0.9462
+    - rank: 204
+      key: 葉
+      n: 1
+      cum_pct: 0.9467
+    - rank: 205
+      key: 迴
+      n: 1
+      cum_pct: 0.9473
+    - rank: 206
+      key: 聞
+      n: 1
+      cum_pct: 0.9478
+    - rank: 207
+      key: 孔
+      n: 1
+      cum_pct: 0.9483
+    - rank: 208
+      key: 治
+      n: 1
+      cum_pct: 0.9489
+    - rank: 209
+      key: 蔽
+      n: 1
+      cum_pct: 0.9494
+    - rank: 210
+      key: 柔
+      n: 1
+      cum_pct: 0.9499
+    - rank: 211
+      key: 軟
+      n: 1
+      cum_pct: 0.9505
+    - rank: 212
+      key: 環
+      n: 1
+      cum_pct: 0.951
+    - rank: 213
+      key: 潤
+      n: 1
+      cum_pct: 0.9515
+    - rank: 214
+      key: 澤
+      n: 1
+      cum_pct: 0.9521
+    - rank: 215
+      key: 迅
+      n: 1
+      cum_pct: 0.9526
+    - rank: 216
+      key: 流
+      n: 1
+      cum_pct: 0.9531
+    - rank: 217
+      key: 潔
+      n: 1
+      cum_pct: 0.9536
+    - rank: 218
+      key: 泉
+      n: 1
+      cum_pct: 0.9542
+    - rank: 219
+      key: 㵎
+      n: 1
+      cum_pct: 0.9547
+    - rank: 220
+      key: 救
+      n: 1
+      cum_pct: 0.9552
+    - rank: 221
+      key: 歡
+      n: 1
+      cum_pct: 0.9558
+    - rank: 222
+      key: 興
+      n: 1
+      cum_pct: 0.9563
+    - rank: 223
+      key: 漩
+      n: 1
+      cum_pct: 0.9568
+    - rank: 224
+      key: 澓
+      n: 1
+      cum_pct: 0.9574
+    - rank: 225
+      key: 橋
+      n: 1
+      cum_pct: 0.9579
+    - rank: 226
+      key: 如須彌山
+      n: 1
+      cum_pct: 0.9584
+    - rank: 227
+      key: 破
+      n: 1
+      cum_pct: 0.959
+    - rank: 228
+      key: 暗
+      n: 1
+      cum_pct: 0.9595
+    - rank: 229
+      key: 電
+      n: 1
+      cum_pct: 0.96
+    - rank: 230
+      key: 飄
+      n: 1
+      cum_pct: 0.9606
+    - rank: 231
+      key: 擊
+      n: 1
+      cum_pct: 0.9611
+    - rank: 232
+      key: 竭
+      n: 1
+      cum_pct: 0.9616
+    - rank: 233
+      key: 杪
+      n: 1
+      cum_pct: 0.9622
+    - rank: 234
+      key: 所
+      n: 1
+      cum_pct: 0.9627
+    - rank: 235
+      key: 障
+      n: 1
+      cum_pct: 0.9632
+    - rank: 236
+      key: 一切
+      n: 1
+      cum_pct: 0.9638
+    - rank: 237
+      key: 礙
+      n: 1
+      cum_pct: 0.9643
+    - rank: 238
+      key: 永
+      n: 1
+      cum_pct: 0.9648
+    - rank: 239
+      key: 斷
+      n: 1
+      cum_pct: 0.9654
+    - rank: 240
+      key: 迷
+      n: 1
+      cum_pct: 0.9659
+    - rank: 241
+      key: 惑
+      n: 1
+      cum_pct: 0.9664
+    - rank: 242
+      key: 亂
+      n: 1
+      cum_pct: 0.967
+    - rank: 243
+      key: 覽
+      n: 1
+      cum_pct: 0.9675
+    - rank: 244
+      key: 平等
+      n: 1
+      cum_pct: 0.968
+    - rank: 245
+      key: 育
+      n: 1
+      cum_pct: 0.9686
+    - rank: 246
+      key: 戲
+      n: 1
+      cum_pct: 0.9691
+    - rank: 247
+      key: 快
+      n: 1
+      cum_pct: 0.9696
+    - rank: 248
+      key: 常
+      n: 1
+      cum_pct: 0.9702
+    - rank: 249
+      key: 起
+      n: 1
+      cum_pct: 0.9707
+    - rank: 250
+      key: 作
+      n: 1
+      cum_pct: 0.9712
+    - rank: 251
+      key: 悲
+      n: 1
+      cum_pct: 0.9718
+    - rank: 252
+      key: 瓔珞
+      n: 1
+      cum_pct: 0.9723
+    - rank: 253
+      key: 羅睺
+      n: 1
+      cum_pct: 0.9728
+    - rank: 254
+      key: 毘摩質多羅
+      n: 1
+      cum_pct: 0.9734
+    - rank: 255
+      key: 巧幻術
+      n: 1
+      cum_pct: 0.9739
+    - rank: 256
+      key: 大眷屬
+      n: 1
+      cum_pct: 0.9744
+    - rank: 257
+      key: 因慧
+      n: 1
+      cum_pct: 0.975
+    - rank: 258
+      key: 好
+      n: 1
+      cum_pct: 0.9755
+    - rank: 259
+      key: 處
+      n: 1
+      cum_pct: 0.976
+    - rank: 260
+      key: 捷
+      n: 1
+      cum_pct: 0.9766
+    - rank: 261
+      key: 欣
+      n: 1
+      cum_pct: 0.9771
+    - rank: 262
+      key: 惡
+      n: 1
+      cum_pct: 0.9776
+    - rank: 263
+      key: 為
+      n: 1
+      cum_pct: 0.9782
+    - rank: 264
+      key: 眾所歸
+      n: 1
+      cum_pct: 0.9787
+    - rank: 265
+      key: 臆
+      n: 1
+      cum_pct: 0.9792
+    - rank: 266
+      key: 毘沙門
+      n: 1
+      cum_pct: 0.9798
+    - rank: 267
+      key: 器
+      n: 1
+      cum_pct: 0.9803
+    - rank: 268
+      key: 仗
+      n: 1
+      cum_pct: 0.9808
+    - rank: 269
+      key: 敵
+      n: 1
+      cum_pct: 0.9814
+    - rank: 270
+      key: 軍
+      n: 1
+      cum_pct: 0.9819
+    - rank: 271
+      key: 富
+      n: 1
+      cum_pct: 0.9824
+    - rank: 272
+      key: 資
+      n: 1
+      cum_pct: 0.983
+    - rank: 273
+      key: 財
+      n: 1
+      cum_pct: 0.9835
+    - rank: 274
+      key: 毘樓博叉
+      n: 1
+      cum_pct: 0.984
+    - rank: 275
+      key: 娑竭羅
+      n: 1
+      cum_pct: 0.9845
+    - rank: 276
+      key: 口
+      n: 1
+      cum_pct: 0.9851
+    - rank: 277
+      key: 德叉迦
+      n: 1
+      cum_pct: 0.9856
+    - rank: 278
+      key: 運
+      n: 1
+      cum_pct: 0.9861
+    - rank: 279
+      key: 惱
+      n: 1
+      cum_pct: 0.9867
+    - rank: 280
+      key: 饒
+      n: 1
+      cum_pct: 0.9872
+    - rank: 281
+      key: 怖
+      n: 1
+      cum_pct: 0.9877
+    - rank: 282
+      key: 面
+      n: 1
+      cum_pct: 0.9883
+    - rank: 283
+      key: 阿脩羅
+      n: 1
+      cum_pct: 0.9888
+    - rank: 284
+      key: 國
+      n: 1
+      cum_pct: 0.9893
+    - rank: 285
+      key: 搖
+      n: 1
+      cum_pct: 0.9899
+    - rank: 286
+      key: 放
+      n: 1
+      cum_pct: 0.9904
+    - rank: 287
+      key: 敬
+      n: 1
+      cum_pct: 0.9909
+    - rank: 288
+      key: 釋迦
+      n: 1
+      cum_pct: 0.9915
+    - rank: 289
+      key: 滿
+      n: 1
+      cum_pct: 0.992
+    - rank: 290
+      key: 慈
+      n: 1
+      cum_pct: 0.9925
+    - rank: 291
+      key: 正
+      n: 1
+      cum_pct: 0.9931
+    - rank: 292
+      key: 悟
+      n: 1
+      cum_pct: 0.9936
+    - rank: 293
+      key: 分
+      n: 1
+      cum_pct: 0.9941
+    - rank: 294
+      key: 總
+      n: 1
+      cum_pct: 0.9947
+    - rank: 295
+      key: 議
+      n: 1
+      cum_pct: 0.9952
+    - rank: 296
+      key: 察
+      n: 1
+      cum_pct: 0.9957
+    - rank: 297
+      key: 得
+      n: 1
+      cum_pct: 0.9963
+    - rank: 298
+      key: 句
+      n: 1
+      cum_pct: 0.9968
+    - rank: 299
+      key: 界
+      n: 1
+      cum_pct: 0.9973
+    - rank: 300
+      key: 門
+      n: 1
+      cum_pct: 0.9979
+    - rank: 301
+      key: 蘂
+      n: 1
+      cum_pct: 0.9984
+    - rank: 302
+      key: 尸棄
+      n: 1
+      cum_pct: 0.9989
+    - rank: 303
+      key: 言
+      n: 1
+      cum_pct: 0.9995
+    - rank: 304
+      key: 極
+      n: 1
+      cum_pct: 1.0
+  - dimension: head_char
+    label: 冠字频次
+    label_en: Head-character frequency
+    total: 414
+    n_items: 119
+    k80: 50
+    k80_pct_items: 0.4202
+    points:
+    - rank: 1
+      key: 普
+      n: 53
+      cum_pct: 0.128
+    - rank: 2
+      key: 妙
+      n: 26
+      cum_pct: 0.1908
+    - rank: 3
+      key: 大
+      n: 17
+      cum_pct: 0.2319
+    - rank: 4
+      key: 光
+      n: 14
+      cum_pct: 0.2657
+    - rank: 5
+      key: 善
+      n: 13
+      cum_pct: 0.2971
+    - rank: 6
+      key: 清
+      n: 13
+      cum_pct: 0.3285
+    - rank: 7
+      key: 可
+      n: 13
+      cum_pct: 0.3599
+    - rank: 8
+      key: 無
+      n: 13
+      cum_pct: 0.3913
+    - rank: 9
+      key: 最
+      n: 11
+      cum_pct: 0.4179
+    - rank: 10
+      key: 淨
+      n: 10
+      cum_pct: 0.442
+    - rank: 11
+      key: 華
+      n: 9
+      cum_pct: 0.4638
+    - rank: 12
+      key: 寶
+      n: 8
+      cum_pct: 0.4831
+    - rank: 13
+      key: 樂
+      n: 8
+      cum_pct: 0.5024
+    - rank: 14
+      key: 離
+      n: 8
+      cum_pct: 0.5217
+    - rank: 15
+      key: 金
+      n: 7
+      cum_pct: 0.5386
+    - rank: 16
+      key: 須
+      n: 6
+      cum_pct: 0.5531
+    - rank: 17
+      key: 勇
+      n: 6
+      cum_pct: 0.5676
+    - rank: 18
+      key: 寂
+      n: 6
+      cum_pct: 0.5821
+    - rank: 19
+      key: 海
+      n: 5
+      cum_pct: 0.5942
+    - rank: 20
+      key: 廣
+      n: 5
+      cum_pct: 0.6063
+    - rank: 21
+      key: 香
+      n: 4
+      cum_pct: 0.6159
+    - rank: 22
+      key: 蓮
+      n: 4
+      cum_pct: 0.6256
+    - rank: 23
+      key: 成
+      n: 4
+      cum_pct: 0.6353
+    - rank: 24
+      key: 眾
+      n: 4
+      cum_pct: 0.6449
+    - rank: 25
+      key: 自
+      n: 4
+      cum_pct: 0.6546
+    - rank: 26
+      key: 不
+      n: 3
+      cum_pct: 0.6618
+    - rank: 27
+      key: 微
+      n: 3
+      cum_pct: 0.6691
+    - rank: 28
+      key: 焰
+      n: 3
+      cum_pct: 0.6763
+    - rank: 29
+      key: 堅
+      n: 3
+      cum_pct: 0.6836
+    - rank: 30
+      key: 悅
+      n: 3
+      cum_pct: 0.6908
+    - rank: 31
+      key: 吉
+      n: 3
+      cum_pct: 0.6981
+    - rank: 32
+      key: 出
+      n: 3
+      cum_pct: 0.7053
+    - rank: 33
+      key: 種
+      n: 3
+      cum_pct: 0.7126
+    - rank: 34
+      key: 樹
+      n: 3
+      cum_pct: 0.7198
+    - rank: 35
+      key: 毘
+      n: 3
+      cum_pct: 0.7271
+    - rank: 36
+      key: 星
+      n: 3
+      cum_pct: 0.7343
+    - rank: 37
+      key: 變
+      n: 3
+      cum_pct: 0.7415
+    - rank: 38
+      key: 雲
+      n: 2
+      cum_pct: 0.7464
+    - rank: 39
+      key: 功
+      n: 2
+      cum_pct: 0.7512
+    - rank: 40
+      key: 日
+      n: 2
+      cum_pct: 0.756
+    - rank: 41
+      key: 諸
+      n: 2
+      cum_pct: 0.7609
+    - rank: 42
+      key: 師
+      n: 2
+      cum_pct: 0.7657
+    - rank: 43
+      key: 攝
+      n: 2
+      cum_pct: 0.7705
+    - rank: 44
+      key: 栴
+      n: 2
+      cum_pct: 0.7754
+    - rank: 45
+      key: 雷
+      n: 2
+      cum_pct: 0.7802
+    - rank: 46
+      key: 雨
+      n: 2
+      cum_pct: 0.785
+    - rank: 47
+      key: 高
+      n: 2
+      cum_pct: 0.7899
+    - rank: 48
+      key: 威
+      n: 2
+      cum_pct: 0.7947
+    - rank: 49
+      key: 生
+      n: 2
+      cum_pct: 0.7995
+    - rank: 50
+      key: 增
+      n: 2
+      cum_pct: 0.8043
+    - rank: 51
+      key: 見
+      n: 2
+      cum_pct: 0.8092
+    - rank: 52
+      key: 十
+      n: 2
+      cum_pct: 0.814
+    - rank: 53
+      key: 知
+      n: 2
+      cum_pct: 0.8188
+    - rank: 54
+      key: 力
+      n: 2
+      cum_pct: 0.8237
+    - rank: 55
+      key: 遍
+      n: 2
+      cum_pct: 0.8285
+    - rank: 56
+      key: 周
+      n: 2
+      cum_pct: 0.8333
+    - rank: 57
+      key: 喜
+      n: 2
+      cum_pct: 0.8382
+    - rank: 58
+      key: 示
+      n: 2
+      cum_pct: 0.843
+    - rank: 59
+      key: 發
+      n: 2
+      cum_pct: 0.8478
+    - rank: 60
+      key: 巧
+      n: 2
+      cum_pct: 0.8527
+    - rank: 61
+      key: 甚
+      n: 2
+      cum_pct: 0.8575
+    - rank: 62
+      key: 持
+      n: 2
+      cum_pct: 0.8623
+    - rank: 63
+      key: 密
+      n: 1
+      cum_pct: 0.8647
+    - rank: 64
+      key: 守
+      n: 1
+      cum_pct: 0.8671
+    - rank: 65
+      key: 積
+      n: 1
+      cum_pct: 0.8696
+    - rank: 66
+      key: 盛
+      n: 1
+      cum_pct: 0.872
+    - rank: 67
+      key: 布
+      n: 1
+      cum_pct: 0.8744
+    - rank: 68
+      key: 擢
+      n: 1
+      cum_pct: 0.8768
+    - rank: 69
+      key: 垂
+      n: 1
+      cum_pct: 0.8792
+    - rank: 70
+      key: 名
+      n: 1
+      cum_pct: 0.8816
+    - rank: 71
+      key: 毛
+      n: 1
+      cum_pct: 0.8841
+    - rank: 72
+      key: 蔽
+      n: 1
+      cum_pct: 0.8865
+    - rank: 73
+      key: 明
+      n: 1
+      cum_pct: 0.8889
+    - rank: 74
+      key: 益
+      n: 1
+      cum_pct: 0.8913
+    - rank: 75
+      key: 柔
+      n: 1
+      cum_pct: 0.8937
+    - rank: 76
+      key: 時
+      n: 1
+      cum_pct: 0.8961
+    - rank: 77
+      key: 色
+      n: 1
+      cum_pct: 0.8986
+    - rank: 78
+      key: 潤
+      n: 1
+      cum_pct: 0.901
+    - rank: 79
+      key: 救
+      n: 1
+      cum_pct: 0.9034
+    - rank: 80
+      key: 遠
+      n: 1
+      cum_pct: 0.9058
+    - rank: 81
+      key: 福
+      n: 1
+      cum_pct: 0.9082
+    - rank: 82
+      key: 吼
+      n: 1
+      cum_pct: 0.9106
+    - rank: 83
+      key: 飄
+      n: 1
+      cum_pct: 0.913
+    - rank: 84
+      key: 所
+      n: 1
+      cum_pct: 0.9155
+    - rank: 85
+      key: 深
+      n: 1
+      cum_pct: 0.9179
+    - rank: 86
+      key: 永
+      n: 1
+      cum_pct: 0.9203
+    - rank: 87
+      key: 髻
+      n: 1
+      cum_pct: 0.9227
+    - rank: 88
+      key: 護
+      n: 1
+      cum_pct: 0.9251
+    - rank: 89
+      key: 平
+      n: 1
+      cum_pct: 0.9275
+    - rank: 90
+      key: 遊
+      n: 1
+      cum_pct: 0.93
+    - rank: 91
+      key: 羅
+      n: 1
+      cum_pct: 0.9324
+    - rank: 92
+      key: 心
+      n: 1
+      cum_pct: 0.9348
+    - rank: 93
+      key: 動
+      n: 1
+      cum_pct: 0.9372
+    - rank: 94
+      key: 勝
+      n: 1
+      cum_pct: 0.9396
+    - rank: 95
+      key: 如
+      n: 1
+      cum_pct: 0.942
+    - rank: 96
+      key: 嚴
+      n: 1
+      cum_pct: 0.9444
+    - rank: 97
+      key: 富
+      n: 1
+      cum_pct: 0.9469
+    - rank: 98
+      key: 娑
+      n: 1
+      cum_pct: 0.9493
+    - rank: 99
+      key: 德
+      n: 1
+      cum_pct: 0.9517
+    - rank: 100
+      key: 龍
+      n: 1
+      cum_pct: 0.9541
+    - rank: 101
+      key: 美
+      n: 1
+      cum_pct: 0.9565
+    - rank: 102
+      key: 月
+      n: 1
+      cum_pct: 0.9589
+    - rank: 103
+      key: 安
+      n: 1
+      cum_pct: 0.9614
+    - rank: 104
+      key: 釋
+      n: 1
+      cum_pct: 0.9638
+    - rank: 105
+      key: 慈
+      n: 1
+      cum_pct: 0.9662
+    - rank: 106
+      key: 智
+      n: 1
+      cum_pct: 0.9686
+    - rank: 107
+      key: 總
+      n: 1
+      cum_pct: 0.971
+    - rank: 108
+      key: 輪
+      n: 1
+      cum_pct: 0.9734
+    - rank: 109
+      key: 莊
+      n: 1
+      cum_pct: 0.9758
+    - rank: 110
+      key: 念
+      n: 1
+      cum_pct: 0.9783
+    - rank: 111
+      key: 得
+      n: 1
+      cum_pct: 0.9807
+    - rank: 112
+      key: 因
+      n: 1
+      cum_pct: 0.9831
+    - rank: 113
+      key: 尸
+      n: 1
+      cum_pct: 0.9855
+    - rank: 114
+      key: 慧
+      n: 1
+      cum_pct: 0.9879
+    - rank: 115
+      key: 觀
+      n: 1
+      cum_pct: 0.9903
+    - rank: 116
+      key: 能
+      n: 1
+      cum_pct: 0.9928
+    - rank: 117
+      key: 世
+      n: 1
+      cum_pct: 0.9952
+    - rank: 118
+      key: 愛
+      n: 1
+      cum_pct: 0.9976
+    - rank: 119
+      key: 極
+      n: 1
+      cum_pct: 1.0
+  - dimension: tail_char
+    label: 尾字频次
+    label_en: Tail-character frequency
+    total: 385
+    n_items: 60
+    k80: 24
+    k80_pct_items: 0.4
+    points:
+    - rank: 1
+      key: 明
+      n: 31
+      cum_pct: 0.0805
+    - rank: 2
+      key: 幢
+      n: 27
+      cum_pct: 0.1506
+    - rank: 3
+      key: 光
+      n: 23
+      cum_pct: 0.2104
+    - rank: 4
+      key: 音
+      n: 19
+      cum_pct: 0.2597
+    - rank: 5
+      key: 眼
+      n: 14
+      cum_pct: 0.2961
+    - rank: 6
+      key: 方
+      n: 13
+      cum_pct: 0.3299
+    - rank: 7
+      key: 海
+      n: 13
+      cum_pct: 0.3636
+    - rank: 8
+      key: 髻
+      n: 12
+      cum_pct: 0.3948
+    - rank: 9
+      key: 嚴
+      n: 12
+      cum_pct: 0.426
+    - rank: 10
+      key: 山
+      n: 11
+      cum_pct: 0.4545
+    - rank: 11
+      key: 城
+      n: 10
+      cum_pct: 0.4805
+    - rank: 12
+      key: 地
+      n: 10
+      cum_pct: 0.5065
+    - rank: 13
+      key: 林
+      n: 10
+      cum_pct: 0.5325
+    - rank: 14
+      key: 藥
+      n: 10
+      cum_pct: 0.5584
+    - rank: 15
+      key: 稼
+      n: 10
+      cum_pct: 0.5844
+    - rank: 16
+      key: 河
+      n: 10
+      cum_pct: 0.6104
+    - rank: 17
+      key: 水
+      n: 10
+      cum_pct: 0.6364
+    - rank: 18
+      key: 火
+      n: 10
+      cum_pct: 0.6623
+    - rank: 19
+      key: 風
+      n: 10
+      cum_pct: 0.6883
+    - rank: 20
+      key: 空
+      n: 10
+      cum_pct: 0.7143
+    - rank: 21
+      key: 夜
+      n: 10
+      cum_pct: 0.7403
+    - rank: 22
+      key: 晝
+      n: 10
+      cum_pct: 0.7662
+    - rank: 23
+      key: 慧
+      n: 9
+      cum_pct: 0.7896
+    - rank: 24
+      key: 主
+      n: 6
+      cum_pct: 0.8052
+    - rank: 25
+      key: 在
+      n: 6
+      cum_pct: 0.8208
+    - rank: 26
+      key: 照
+      n: 5
+      cum_pct: 0.8338
+    - rank: 27
+      key: 目
+      n: 5
+      cum_pct: 0.8468
+    - rank: 28
+      key: 力
+      n: 5
+      cum_pct: 0.8597
+    - rank: 29
+      key: 聲
+      n: 4
+      cum_pct: 0.8701
+    - rank: 30
+      key: 羅
+      n: 3
+      cum_pct: 0.8779
+    - rank: 31
+      key: 德
+      n: 3
+      cum_pct: 0.8857
+    - rank: 32
+      key: 月
+      n: 3
+      cum_pct: 0.8935
+    - rank: 33
+      key: 稱
+      n: 3
+      cum_pct: 0.9013
+    - rank: 34
+      key: 相
+      n: 2
+      cum_pct: 0.9065
+    - rank: 35
+      key: 生
+      n: 2
+      cum_pct: 0.9117
+    - rank: 36
+      key: 𪗇
+      n: 2
+      cum_pct: 0.9169
+    - rank: 37
+      key: 雲
+      n: 2
+      cum_pct: 0.9221
+    - rank: 38
+      key: 見
+      n: 2
+      cum_pct: 0.9273
+    - rank: 39
+      key: 轉
+      n: 2
+      cum_pct: 0.9325
+    - rank: 40
+      key: 門
+      n: 2
+      cum_pct: 0.9377
+    - rank: 41
+      key: 臂
+      n: 2
+      cum_pct: 0.9429
+    - rank: 42
+      key: 念
+      n: 2
+      cum_pct: 0.9481
+    - rank: 43
+      key: 化
+      n: 2
+      cum_pct: 0.9532
+    - rank: 44
+      key: 智
+      n: 2
+      cum_pct: 0.9584
+    - rank: 45
+      key: 賢
+      n: 1
+      cum_pct: 0.961
+    - rank: 46
+      key: 境
+      n: 1
+      cum_pct: 0.9636
+    - rank: 47
+      key: 藏
+      n: 1
+      cum_pct: 0.9662
+    - rank: 48
+      key: 延
+      n: 1
+      cum_pct: 0.9688
+    - rank: 49
+      key: 妙
+      n: 1
+      cum_pct: 0.9714
+    - rank: 50
+      key: 伏
+      n: 1
+      cum_pct: 0.974
+    - rank: 51
+      key: 儀
+      n: 1
+      cum_pct: 0.9766
+    - rank: 52
+      key: 持
+      n: 1
+      cum_pct: 0.9792
+    - rank: 53
+      key: 取
+      n: 1
+      cum_pct: 0.9818
+    - rank: 54
+      key: 手
+      n: 1
+      cum_pct: 0.9844
+    - rank: 55
+      key: 華
+      n: 1
+      cum_pct: 0.987
+    - rank: 56
+      key: 耀
+      n: 1
+      cum_pct: 0.9896
+    - rank: 57
+      key: 睺
+      n: 1
+      cum_pct: 0.9922
+    - rank: 58
+      key: 術
+      n: 1
+      cum_pct: 0.9948
+    - rank: 59
+      key: 屬
+      n: 1
+      cum_pct: 0.9974
+    - rank: 60
+      key: 疾
+      n: 1
+      cum_pct: 1.0
+  - dimension: class_size
+    label: 各类名号数
+    label_en: Names per class
+    total: 414
+    n_items: 40
+    k80: 32
+    k80_pct_items: 0.8
+    points:
+    - rank: 1
+      key: 菩薩摩訶薩
+      n: 20
+      cum_pct: 0.0483
+    - rank: 2
+      key: 日天子
+      n: 11
+      cum_pct: 0.0749
+    - rank: 3
+      key: 三十三天王
+      n: 11
+      cum_pct: 0.1014
+    - rank: 4
+      key: 化樂天王
+      n: 11
+      cum_pct: 0.128
+    - rank: 5
+      key: 遍淨天王
+      n: 11
+      cum_pct: 0.1546
+    - rank: 6
+      key: 執金剛神
+      n: 10
+      cum_pct: 0.1787
+    - rank: 7
+      key: 身眾神
+      n: 10
+      cum_pct: 0.2029
+    - rank: 8
+      key: 足行神
+      n: 10
+      cum_pct: 0.2271
+    - rank: 9
+      key: 道場神
+      n: 10
+      cum_pct: 0.2512
+    - rank: 10
+      key: 主城神
+      n: 10
+      cum_pct: 0.2754
+    - rank: 11
+      key: 主地神
+      n: 10
+      cum_pct: 0.2995
+    - rank: 12
+      key: 主山神
+      n: 10
+      cum_pct: 0.3237
+    - rank: 13
+      key: 主林神
+      n: 10
+      cum_pct: 0.3478
+    - rank: 14
+      key: 主藥神
+      n: 10
+      cum_pct: 0.372
+    - rank: 15
+      key: 主稼神
+      n: 10
+      cum_pct: 0.3961
+    - rank: 16
+      key: 主河神
+      n: 10
+      cum_pct: 0.4203
+    - rank: 17
+      key: 主海神
+      n: 10
+      cum_pct: 0.4444
+    - rank: 18
+      key: 主水神
+      n: 10
+      cum_pct: 0.4686
+    - rank: 19
+      key: 主火神
+      n: 10
+      cum_pct: 0.4928
+    - rank: 20
+      key: 主風神
+      n: 10
+      cum_pct: 0.5169
+    - rank: 21
+      key: 主空神
+      n: 10
+      cum_pct: 0.5411
+    - rank: 22
+      key: 主方神
+      n: 10
+      cum_pct: 0.5652
+    - rank: 23
+      key: 主夜神
+      n: 10
+      cum_pct: 0.5894
+    - rank: 24
+      key: 主晝神
+      n: 10
+      cum_pct: 0.6135
+    - rank: 25
+      key: 阿脩羅王
+      n: 10
+      cum_pct: 0.6377
+    - rank: 26
+      key: 迦樓羅王
+      n: 10
+      cum_pct: 0.6618
+    - rank: 27
+      key: 緊那羅王
+      n: 10
+      cum_pct: 0.686
+    - rank: 28
+      key: 摩睺羅伽王
+      n: 10
+      cum_pct: 0.7101
+    - rank: 29
+      key: 夜叉王
+      n: 10
+      cum_pct: 0.7343
+    - rank: 30
+      key: 諸大龍王
+      n: 10
+      cum_pct: 0.7585
+    - rank: 31
+      key: 鳩槃荼王
+      n: 10
+      cum_pct: 0.7826
+    - rank: 32
+      key: 乾闥婆王
+      n: 10
+      cum_pct: 0.8068
+    - rank: 33
+      key: 月天子
+      n: 10
+      cum_pct: 0.8309
+    - rank: 34
+      key: 須夜摩天王
+      n: 10
+      cum_pct: 0.8551
+    - rank: 35
+      key: 兜率陀天王
+      n: 10
+      cum_pct: 0.8792
+    - rank: 36
+      key: 他化自在天王
+      n: 10
+      cum_pct: 0.9034
+    - rank: 37
+      key: 大梵天王
+      n: 10
+      cum_pct: 0.9275
+    - rank: 38
+      key: 光音天王
+      n: 10
+      cum_pct: 0.9517
+    - rank: 39
+      key: 廣果天王
+      n: 10
+      cum_pct: 0.9758
+    - rank: 40
+      key: 大自在天王
+      n: 10
+      cum_pct: 1.0
+scatter:
+  note_zh: 散点为 40 类之逐类实点（气泡大小＝名号数）。相关系数仅言**统计关联**，**不含因果**；且 n=40 之样本，相关系数之抽样波动不可忽略，故并列 Spearman 秩相关以资对照——两者差距大者，提示非线性或离群点主导。
+  note_en: Each point is one of the forty classes (bubble size = number of names). Correlation denotes
+    statistical association only, never causation; with n=40 the sampling variation is not negligible,
+    so Spearman rank correlation is given alongside Pearson — a large gap between them signals non-linearity
+    or outlier dominance.
+  rows:
+  - idx: 0
+    cat: 菩薩摩訶薩
+    group: bodhisattva
+    group_zh: 同生众·菩萨
+    n_named: 20
+    n_tokens: 101
+    tokens_per_name: 5.05
+    uncertain_rate: 0.1188
+    low_rate: 0.0099
+    distinct_morph: 0
+    domain_hhi: 0.1253
+    domain_neff: 7.982
+  - idx: 1
+    cat: 執金剛神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 40
+    tokens_per_name: 4.0
+    uncertain_rate: 0.15
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1281
+    domain_neff: 7.805
+  - idx: 2
+    cat: 身眾神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 37
+    tokens_per_name: 3.7
+    uncertain_rate: 0.1081
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1994
+    domain_neff: 5.015
+  - idx: 3
+    cat: 足行神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 37
+    tokens_per_name: 3.7
+    uncertain_rate: 0.1892
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1322
+    domain_neff: 7.564
+  - idx: 4
+    cat: 道場神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 37
+    tokens_per_name: 3.7
+    uncertain_rate: 0.1351
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1614
+    domain_neff: 6.195
+  - idx: 5
+    cat: 主城神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 60
+    tokens_per_name: 6.0
+    uncertain_rate: 0.2167
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1778
+    domain_neff: 5.625
+  - idx: 6
+    cat: 主地神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 59
+    tokens_per_name: 5.9
+    uncertain_rate: 0.0847
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1589
+    domain_neff: 6.295
+  - idx: 7
+    cat: 主山神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 58
+    tokens_per_name: 5.8
+    uncertain_rate: 0.1724
+    low_rate: 0.0172
+    distinct_morph: 0
+    domain_hhi: 0.1688
+    domain_neff: 5.923
+  - idx: 8
+    cat: 主林神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 59
+    tokens_per_name: 5.9
+    uncertain_rate: 0.1525
+    low_rate: 0.0678
+    distinct_morph: 0
+    domain_hhi: 0.1882
+    domain_neff: 5.315
+  - idx: 9
+    cat: 主藥神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 54
+    tokens_per_name: 5.4
+    uncertain_rate: 0.0926
+    low_rate: 0.0185
+    distinct_morph: 0
+    domain_hhi: 0.1557
+    domain_neff: 6.423
+  - idx: 10
+    cat: 主稼神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 59
+    tokens_per_name: 5.9
+    uncertain_rate: 0.3559
+    low_rate: 0.0169
+    distinct_morph: 0
+    domain_hhi: 0.1652
+    domain_neff: 6.054
+  - idx: 11
+    cat: 主河神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 58
+    tokens_per_name: 5.8
+    uncertain_rate: 0.1379
+    low_rate: 0.0345
+    distinct_morph: 0
+    domain_hhi: 0.1751
+    domain_neff: 5.711
+  - idx: 12
+    cat: 主海神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 57
+    tokens_per_name: 5.7
+    uncertain_rate: 0.1228
+    low_rate: 0.0175
+    distinct_morph: 0
+    domain_hhi: 0.1714
+    domain_neff: 5.833
+  - idx: 13
+    cat: 主水神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 59
+    tokens_per_name: 5.9
+    uncertain_rate: 0.1525
+    low_rate: 0.0169
+    distinct_morph: 0
+    domain_hhi: 0.1807
+    domain_neff: 5.534
+  - idx: 14
+    cat: 主火神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 58
+    tokens_per_name: 5.8
+    uncertain_rate: 0.1552
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1766
+    domain_neff: 5.663
+  - idx: 15
+    cat: 主風神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 58
+    tokens_per_name: 5.8
+    uncertain_rate: 0.1552
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1683
+    domain_neff: 5.943
+  - idx: 16
+    cat: 主空神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 56
+    tokens_per_name: 5.6
+    uncertain_rate: 0.1071
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1875
+    domain_neff: 5.333
+  - idx: 17
+    cat: 主方神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 59
+    tokens_per_name: 5.9
+    uncertain_rate: 0.1356
+    low_rate: 0.0169
+    distinct_morph: 0
+    domain_hhi: 0.1767
+    domain_neff: 5.66
+  - idx: 18
+    cat: 主夜神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 58
+    tokens_per_name: 5.8
+    uncertain_rate: 0.0862
+    low_rate: 0.0172
+    distinct_morph: 0
+    domain_hhi: 0.1784
+    domain_neff: 5.607
+  - idx: 19
+    cat: 主晝神
+    group: deities
+    group_zh: 异生众·十九类神
+    n_named: 10
+    n_tokens: 59
+    tokens_per_name: 5.9
+    uncertain_rate: 0.0339
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1531
+    domain_neff: 6.531
+  - idx: 20
+    cat: 阿脩羅王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 25
+    tokens_per_name: 2.5
+    uncertain_rate: 0.16
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1392
+    domain_neff: 7.184
+  - idx: 21
+    cat: 迦樓羅王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 40
+    tokens_per_name: 4.0
+    uncertain_rate: 0.15
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1363
+    domain_neff: 7.339
+  - idx: 22
+    cat: 緊那羅王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 40
+    tokens_per_name: 4.0
+    uncertain_rate: 0.2
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1363
+    domain_neff: 7.339
+  - idx: 23
+    cat: 摩睺羅伽王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 38
+    tokens_per_name: 3.8
+    uncertain_rate: 0.2105
+    low_rate: 0.0263
+    distinct_morph: 0
+    domain_hhi: 0.1537
+    domain_neff: 6.505
+  - idx: 24
+    cat: 夜叉王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 29
+    tokens_per_name: 2.9
+    uncertain_rate: 0.2069
+    low_rate: 0.0345
+    distinct_morph: 0
+    domain_hhi: 0.1451
+    domain_neff: 6.893
+  - idx: 25
+    cat: 諸大龍王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 26
+    tokens_per_name: 2.6
+    uncertain_rate: 0.2308
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1169
+    domain_neff: 8.557
+  - idx: 26
+    cat: 鳩槃荼王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 36
+    tokens_per_name: 3.6
+    uncertain_rate: 0.1944
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1782
+    domain_neff: 5.61
+  - idx: 27
+    cat: 乾闥婆王
+    group: eight
+    group_zh: 异生众·八部
+    n_named: 10
+    n_tokens: 33
+    tokens_per_name: 3.3
+    uncertain_rate: 0.0909
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.135
+    domain_neff: 7.408
+  - idx: 28
+    cat: 月天子
+    group: desire
+    group_zh: 异生众·欲界主
+    n_named: 10
+    n_tokens: 42
+    tokens_per_name: 4.2
+    uncertain_rate: 0.0714
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1508
+    domain_neff: 6.632
+  - idx: 29
+    cat: 日天子
+    group: desire
+    group_zh: 异生众·欲界主
+    n_named: 11
+    n_tokens: 41
+    tokens_per_name: 3.727
+    uncertain_rate: 0.122
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.185
+    domain_neff: 5.405
+  - idx: 30
+    cat: 三十三天王
+    group: desire
+    group_zh: 异生众·欲界主
+    n_named: 11
+    n_tokens: 44
+    tokens_per_name: 4.0
+    uncertain_rate: 0.1591
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1198
+    domain_neff: 8.345
+  - idx: 31
+    cat: 須夜摩天王
+    group: desire
+    group_zh: 异生众·欲界主
+    n_named: 10
+    n_tokens: 39
+    tokens_per_name: 3.9
+    uncertain_rate: 0.2308
+    low_rate: 0.0256
+    distinct_morph: 0
+    domain_hhi: 0.1525
+    domain_neff: 6.556
+  - idx: 32
+    cat: 兜率陀天王
+    group: desire
+    group_zh: 异生众·欲界主
+    n_named: 10
+    n_tokens: 40
+    tokens_per_name: 4.0
+    uncertain_rate: 0.15
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.2125
+    domain_neff: 4.706
+  - idx: 33
+    cat: 化樂天王
+    group: desire
+    group_zh: 异生众·欲界主
+    n_named: 11
+    n_tokens: 41
+    tokens_per_name: 3.727
+    uncertain_rate: 0.1463
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1481
+    domain_neff: 6.751
+  - idx: 34
+    cat: 他化自在天王
+    group: desire
+    group_zh: 异生众·欲界主
+    n_named: 10
+    n_tokens: 37
+    tokens_per_name: 3.7
+    uncertain_rate: 0.2432
+    low_rate: 0.0541
+    distinct_morph: 0
+    domain_hhi: 0.1417
+    domain_neff: 7.057
+  - idx: 35
+    cat: 大梵天王
+    group: form
+    group_zh: 异生众·色界主
+    n_named: 10
+    n_tokens: 35
+    tokens_per_name: 3.5
+    uncertain_rate: 0.0857
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.142
+    domain_neff: 7.04
+  - idx: 36
+    cat: 光音天王
+    group: form
+    group_zh: 异生众·色界主
+    n_named: 10
+    n_tokens: 41
+    tokens_per_name: 4.1
+    uncertain_rate: 0.122
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1719
+    domain_neff: 5.817
+  - idx: 37
+    cat: 遍淨天王
+    group: form
+    group_zh: 异生众·色界主
+    n_named: 11
+    n_tokens: 43
+    tokens_per_name: 3.909
+    uncertain_rate: 0.1163
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1401
+    domain_neff: 7.139
+  - idx: 38
+    cat: 廣果天王
+    group: form
+    group_zh: 异生众·色界主
+    n_named: 10
+    n_tokens: 42
+    tokens_per_name: 4.2
+    uncertain_rate: 0.1429
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.2063
+    domain_neff: 4.846
+  - idx: 39
+    cat: 大自在天王
+    group: form
+    group_zh: 异生众·色界主
+    n_named: 10
+    n_tokens: 42
+    tokens_per_name: 4.2
+    uncertain_rate: 0.119
+    low_rate: 0.0
+    distinct_morph: 0
+    domain_hhi: 0.1939
+    domain_neff: 5.158
+  pairs:
+  - x: n_named
+    y: n_tokens
+    zh: 类之名号数 × 类之词素位
+    en: names per class x token positions
+    pearson: 0.6079
+    spearman: 0.1472
+    r2: 0.3695
+    verdict: 中等正相关
+    verdict_en: moderate positive
+  - x: n_tokens
+    y: tokens_per_name
+    zh: 类之词素位 × 每名平均词素位
+    en: token positions x token positions per name
+    pearson: 0.8153
+    spearman: 0.9525
+    r2: 0.6647
+    verdict: 强正相关
+    verdict_en: strong positive
+  - x: n_tokens
+    y: uncertain_rate
+    zh: 类之词素位 × 判读存疑率
+    en: token positions x uncertain-reading rate
+    pearson: -0.1682
+    spearman: -0.2133
+    r2: 0.0283
+    verdict: 中等负相关
+    verdict_en: moderate negative
+  - x: n_named
+    y: domain_neff
+    zh: 类之名号数 × 语义域有效数
+    en: names per class x effective number of domains
+    pearson: 0.305
+    spearman: 0.2662
+    r2: 0.093
+    verdict: 弱相关
+    verdict_en: weak
+  - x: domain_hhi
+    y: n_named
+    zh: 语义域集中度 × 类之名号数
+    en: domain concentration x names per class
+    pearson: -0.2706
+    spearman: -0.2662
+    r2: 0.0732
+    verdict: 中等负相关
+    verdict_en: moderate negative
+templates:
+  note_zh: 模板以**语义域序列**表述（而非原字），即「功德＋光明＋冠缀＋威势力」之类。此举把 414 个名号之构词抽象为有限之结构式样，正是「表法」「象征」二角度之可操作化：先见结构之型，再问其义。注意此为**结构**之陈述，非**意义**之解释。
+  note_en: 'Templates are expressed as sequences of semantic domains rather than literal characters —
+    for example virtue+luminosity+affix+power. This reduces the construction of the 414 names to a limited
+    set of structural patterns, which is the operational form of the ''manifestation'' and ''symbol''
+    perspectives: first the structural type, then its meaning. Note that this states structure, not meaning.'
+  verdict_zh: '**两层方向相反，此反差本身即是发现**。字面层：414 名号之核名首二字只落在 255 种二字组上（最多者「清淨」占 3.14%），语汇复用率 38.4%，故高度模板化。语义域序列层：414
+    名之仅 379 种式样，其中 356 种只现一次（占 86.0%），归一熵 0.9897；抽象到「首词素域×末词素域」之骨架仍有 100 种。故其构词之「模板性」在**字面**而不在**域构成**——华严会众之语汇，乃同一批字反复组装而成，非同一批语义反复填充。此反差本身可读为：经文之会众名号，重在其**名相之庄严整饬**（字字有出处、字字见对称），而其**语义配置**则逐名而异、乃至有意相重。'
+  verdict_en: 'The two layers point in opposite directions, and the contrast is itself the finding. Literal
+    layer: the first two characters of the 414 nuclei fall into only 255 distinct bigrams (the leading
+    one, 「清淨」, covering 3.14%), a reuse rate of 38.4%, so this layer is highly templated. Domain-sequence
+    layer: the same 414 names yield only 379 patterns, 356 of which occur exactly once (86.0%, normalised
+    entropy 0.9897), and even the abstract head-by-tail skeleton still takes 100 forms. The templating
+    therefore lies in the *characters*, not in the *domain composition*: Huayan assembly vocabulary re-assembles
+    the same stock of characters rather than filling the same stock of meanings. The contrast itself is
+    readable: these names excel in the dignity and orderliness of their wording (every character attested,
+    every arrangement symmetrical), while their semantic configurations vary from name to name, and may
+    even be deliberately overlapping.'
+  n_members: 414
+  layer1_literal:
+    zh: 层一 · 字面 n-gram 复用
+    en: Layer one — literal n-gram reuse
+    measure_zh: '**衡量之法**：以「核名首二字」为准，一名只计一次，故覆盖率不会超过 100%。若改用「所有二字组出现次数之和」（一名可含多组），其和将超过名号数而得荒谬之 >100%
+      覆盖率——此即常见之度量陷阱，页面不得混用。'
+    measure_en: 'Measurement: based on the first two characters of each nucleus, counted once per name,
+      so coverage cannot exceed 100%. Summing the occurrence counts of all bigrams instead (a name may
+      contain several) would exceed the number of names and yield a nonsensical coverage above 100%; that
+      is a common measurement trap and the two must not be mixed on the page.'
+    n_distinct_bigram: 255
+    n_distinct_trigram: 1042
+    bigram_coverage: 0.9952
+    bigram_reuse_rate: 0.3841
+    top24_coverage: 0.2923
+    leading_bigram:
+      gram: 清淨
+      n: 13
+      pct: 0.0314
+    bigram_rows:
+    - gram: 清淨
+      n: 13
+      pct: 0.0314
+      examples:
+      - 清淨雲音執金剛神
+      - 清淨華髻足行神
+      - 清淨喜寶主城神
+    - gram: 可愛
+      n: 12
+      pct: 0.029
+      examples:
+      - 可愛樂光明執金剛神
+      - 可愛樂光明摩睺羅伽王
+      - 可愛樂正念天王
+    - gram: 最勝
+      n: 9
+      pct: 0.0217
+      examples:
+      - 最勝光莊嚴緊那羅王
+      - 最勝光明幢摩睺羅伽王
+      - 最勝幢光明天子
+    - gram: 金剛
+      n: 7
+      pct: 0.0169
+      examples:
+      - 金剛彩雲道場神
+      - 金剛嚴體主地神
+      - 金剛密眼主山神
+    - gram: 須彌
+      n: 6
+      pct: 0.0145
+      examples:
+      - 須彌華光執金剛神
+      - 須彌寶光道場神
+      - 須彌堅固摩睺羅伽王
+    - gram: 普現
+      n: 6
+      pct: 0.0145
+      examples:
+      - 普現攝取身眾神
+      - 普現威光主水神
+      - 普現勇業主風神
+    - gram: 妙華
+      n: 6
+      pct: 0.0145
+      examples:
+      - 妙華嚴樹主地神
+      - 妙華旋髻主地神
+      - 妙華龍髻主海神
+    - gram: 寂靜
+      n: 6
+      pct: 0.0145
+      examples:
+      - 寂靜海音主夜神
+      - 寂靜光天王
+      - 寂靜音光明天王
+    - gram: 普音
+      n: 5
+      pct: 0.0121
+      examples:
+      - 普音功德海幢菩薩摩訶薩
+      - 普音廣目迦樓羅王
+      - 普音乾闥婆王
+    - gram: 普光
+      n: 4
+      pct: 0.0097
+      examples:
+      - 普光師子幢菩薩摩訶薩
+      - 普光明相菩薩摩訶薩
+      - 普光焰藏主火神
+    - gram: 蓮華
+      n: 4
+      pct: 0.0097
+      examples:
+      - 蓮華光摩尼髻執金剛神
+      - 蓮華光足行神
+      - 蓮華光明足行神
+    - gram: 光照
+      n: 4
+      pct: 0.0097
+      examples:
+      - 光照十方身眾神
+      - 光照十方主山神
+      - 光照普世主河神
+    - gram: 離垢
+      n: 4
+      pct: 0.0097
+      examples:
+      - 離垢淨光主稼神
+      - 離垢香積主水神
+      - 離垢光明主空神
+    - gram: 眾妙
+      n: 4
+      pct: 0.0097
+      examples:
+      - 眾妙宮殿主火神
+      - 眾妙莊嚴音摩睺羅伽王
+      - 眾妙淨光明天子
+    - gram: 自在
+      n: 4
+      pct: 0.0097
+      examples:
+      - 自在音夜叉王
+      - 自在光明能覺悟天王
+      - 自在智慧幢天王
+    - gram: 普德
+      n: 3
+      pct: 0.0072
+      examples:
+      - 普德最勝燈光照菩薩摩訶薩
+      - 普德淨華主地神
+      - 普德淨光主夜神
+    - gram: 普智
+      n: 3
+      pct: 0.0072
+      examples:
+      - 普智光照如來境菩薩摩訶薩
+      - 普智雲日幢菩薩摩訶薩
+      - 普智眼天王
+    - gram: 妙色
+      n: 3
+      pct: 0.0072
+      examples:
+      - 妙色那羅延執金剛神
+      - 妙色勝眼主地神
+      - 妙色輪髻主水神
+    - gram: 淨光
+      n: 3
+      pct: 0.0072
+      examples:
+      - 淨光香雲身眾神
+      - 淨光莊嚴主風神
+      - 淨光普照主空神
+    - gram: 勇猛
+      n: 3
+      pct: 0.0072
+      examples:
+      - 勇猛香眼道場神
+      - 勇猛不退轉天子
+      - 勇猛慧天王
+    - gram: 妙光
+      n: 3
+      pct: 0.0072
+      examples:
+      - 妙光照耀道場神
+      - 妙光迴耀主林神
+      - 妙光幢天王
+    - gram: 寶峯
+      n: 3
+      pct: 0.0072
+      examples:
+      - 寶峯光耀主城神
+      - 寶峯開華主山神
+      - 寶峯淨月天王
+    - gram: 悅意
+      n: 3
+      pct: 0.0072
+      examples:
+      - 悅意音聲主地神
+      - 悅意吼聲緊那羅王
+      - 悅意海音天王
+    - gram: 吉祥
+      n: 3
+      pct: 0.0072
+      examples:
+      - 吉祥淨葉主林神
+      - 吉祥主藥神
+      - 吉祥寶月主海神
+    rows:
+    - gram: 光明
+      n: 51
+      pct: 0.1232
+      examples:
+      - 普光明相菩薩摩訶薩
+      - 可愛樂光明執金剛神
+      - 師子王光明執金剛神
+    - gram: 莊嚴
+      n: 25
+      pct: 0.0604
+      examples:
+      - 華髻莊嚴身眾神
+      - 淨莊嚴幢道場神
+      - 雨寶莊嚴道場神
+    - gram: 清淨
+      n: 19
+      pct: 0.0459
+      examples:
+      - 普清淨無盡福光菩薩摩訶薩
+      - 清淨雲音執金剛神
+      - 清淨華髻足行神
+    - gram: 自在
+      n: 15
+      pct: 0.0362
+      examples:
+      - 功德自在王大光菩薩摩訶薩
+      - 知足自在主水神
+      - 威光自在主火神
+    - gram: 淨光
+      n: 15
+      pct: 0.0362
+      examples:
+      - 淨光香雲身眾神
+      - 清淨光明主城神
+      - 清淨光明主林神
+    - gram: 愛樂
+      n: 14
+      pct: 0.0338
+      examples:
+      - 可愛樂光明執金剛神
+      - 見者愛樂主稼神
+      - 可愛樂光明摩睺羅伽王
+    - gram: 最勝
+      n: 12
+      pct: 0.029
+      examples:
+      - 普德最勝燈光照菩薩摩訶薩
+      - 最勝光莊嚴緊那羅王
+      - 最勝光明幢摩睺羅伽王
+    - gram: 可愛
+      n: 12
+      pct: 0.029
+      examples:
+      - 可愛樂光明執金剛神
+      - 可愛樂光明摩睺羅伽王
+      - 可愛樂正念天王
+    - gram: 可愛樂
+      n: 12
+      pct: 0.029
+      examples:
+      - 可愛樂光明執金剛神
+      - 可愛樂光明摩睺羅伽王
+      - 可愛樂正念天王
+    - gram: 光明主
+      n: 12
+      pct: 0.029
+      examples:
+      - 盛福光明主城神
+      - 清淨光明主城神
+      - 妙寶光明主城神
+    - gram: 明主
+      n: 12
+      pct: 0.029
+      examples:
+      - 盛福光明主城神
+      - 清淨光明主城神
+      - 妙寶光明主城神
+    - gram: 光主
+      n: 11
+      pct: 0.0266
+      examples:
+      - 香毛發光主地神
+      - 擢幹舒光主林神
+      - 時華淨光主稼神
+    - gram: 主城
+      n: 10
+      pct: 0.0242
+      examples:
+      - 寶峯光耀主城神
+      - 妙嚴宮殿主城神
+      - 清淨喜寶主城神
+    - gram: 主地
+      n: 10
+      pct: 0.0242
+      examples:
+      - 普德淨華主地神
+      - 堅福莊嚴主地神
+      - 妙華嚴樹主地神
+    - gram: 髻主
+      n: 10
+      pct: 0.0242
+      examples:
+      - 妙華旋髻主地神
+      - 華林妙髻主山神
+      - 離塵淨髻主山神
+    - gram: 主山
+      n: 10
+      pct: 0.0242
+      examples:
+      - 寶峯開華主山神
+      - 華林妙髻主山神
+      - 高幢普照主山神
+    - gram: 主林
+      n: 10
+      pct: 0.0242
+      examples:
+      - 布華如雲主林神
+      - 擢幹舒光主林神
+      - 生芽發耀主林神
+    - gram: 主藥
+      n: 10
+      pct: 0.0242
+      examples:
+      - 吉祥主藥神
+      - 栴檀林主藥神
+      - 清淨光明主藥神
+    - gram: 主稼
+      n: 10
+      pct: 0.0242
+      examples:
+      - 柔軟勝味主稼神
+      - 時華淨光主稼神
+      - 色力勇健主稼神
+    - gram: 主河
+      n: 10
+      pct: 0.0242
+      examples:
+      - 普發迅流主河神
+      - 普潔泉㵎主河神
+      - 離塵淨眼主河神
+    - gram: 主海
+      n: 10
+      pct: 0.0242
+      examples:
+      - 出現寶光主海神
+      - 成金剛幢主海神
+      - 遠塵離垢主海神
+    - gram: 主水
+      n: 10
+      pct: 0.0242
+      examples:
+      - 普興雲幢主水神
+      - 海潮雲音主水神
+      - 妙色輪髻主水神
+    - gram: 主火
+      n: 10
+      pct: 0.0242
+      examples:
+      - 普光焰藏主火神
+      - 普集光幢主火神
+      - 大光普照主火神
+    - gram: 主風
+      n: 10
+      pct: 0.0242
+      examples:
+      - 無礙光明主風神
+      - 普現勇業主風神
+      - 飄擊雲幢主風神
+    - gram: 主空
+      n: 10
+      pct: 0.0242
+      examples:
+      - 淨光普照主空神
+      - 普遊深廣主空神
+      - 生吉祥風主空神
+    - gram: 主方
+      n: 10
+      pct: 0.0242
+      examples:
+      - 遍住一切主方神
+      - 普現光明主方神
+      - 光行莊嚴主方神
+    - gram: 主夜
+      n: 10
+      pct: 0.0242
+      examples:
+      - 普德淨光主夜神
+      - 喜眼觀世主夜神
+      - 護世精氣主夜神
+    - gram: 主晝
+      n: 10
+      pct: 0.0242
+      examples:
+      - 示現宮殿主晝神
+      - 發起慧香主晝神
+      - 樂勝莊嚴主晝神
+    - gram: 光照
+      n: 9
+      pct: 0.0217
+      examples:
+      - 普德最勝燈光照菩薩摩訶薩
+      - 普智光照如來境菩薩摩訶薩
+      - 光照十方身眾神
+    - gram: 金剛
+      n: 9
+      pct: 0.0217
+      examples:
+      - 大精進金剛𪗇菩薩摩訶薩
+      - 金剛彩雲道場神
+      - 金剛嚴體主地神
+  layer2_domain:
+    zh: 层二 · 语义域序列式样
+    en: Layer two — semantic-domain sequence patterns
+    n_distinct: 379
+    n_singleton: 356
+    singleton_pct: 0.8599
+    distinct_per_member: 0.9155
+    pattern_entropy: 5.8765
+    normalized_entropy: 0.9897
+    coverage_top24: 0.1425
+    rows: &id004
+    - pattern: unassigned
+      pattern_zh: 未定
+      n: 10
+      pct: 0.0242
+      length: 1
+      has_unassigned: true
+      dominant:
+      - key: unassigned
+        zh: 未定
+        n: 10
+      examples:
+      - name: 普賢菩薩摩訶薩
+        cat: 菩薩摩訶薩
+        idx: 0
+      - name: 羅睺阿脩羅王
+        cat: 阿脩羅王
+        idx: 20
+      - name: 毘摩質多羅阿脩羅王
+        cat: 阿脩羅王
+        idx: 20
+    - pattern: virtue+virtue+luminosity+luminosity
+      pattern_zh: 功德类＋功德类＋光明类＋光明类
+      n: 4
+      pct: 0.0097
+      length: 4
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 8
+      - key: luminosity
+        zh: 光明类
+        n: 8
+      examples:
+      - name: 可愛樂光明執金剛神
+        cat: 執金剛神
+        idx: 1
+      - name: 可愛樂光明摩睺羅伽王
+        cat: 摩睺羅伽王
+        idx: 23
+      - name: 可愛樂光明天王
+        cat: 須夜摩天王
+        idx: 31
+    - pattern: virtue+virtue+luminosity+luminosity+affix+nature
+      pattern_zh: 功德类＋功德类＋光明类＋光明类＋冠綴类＋自然类
+      n: 4
+      pct: 0.0097
+      length: 6
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 8
+      - key: luminosity
+        zh: 光明类
+        n: 8
+      - key: affix
+        zh: 冠綴类
+        n: 4
+      examples:
+      - name: 盛福光明主城神
+        cat: 主城神
+        idx: 5
+      - name: 清淨光明主城神
+        cat: 主城神
+        idx: 5
+      - name: 清淨光明主林神
+        cat: 主林神
+        idx: 8
+    - pattern: nature+jewel+luminosity
+      pattern_zh: 自然类＋宝严类＋光明类
+      n: 2
+      pct: 0.0048
+      length: 3
+      has_unassigned: false
+      dominant:
+      - key: nature
+        zh: 自然类
+        n: 2
+      - key: jewel
+        zh: 宝严类
+        n: 2
+      - key: luminosity
+        zh: 光明类
+        n: 2
+      examples:
+      - name: 須彌華光執金剛神
+        cat: 執金剛神
+        idx: 1
+      - name: 須彌寶光道場神
+        cat: 道場神
+        idx: 4
+    - pattern: virtue+virtue+nature+sound
+      pattern_zh: 功德类＋功德类＋自然类＋音聲类
+      n: 2
+      pct: 0.0048
+      length: 4
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 4
+      - key: nature
+        zh: 自然类
+        n: 2
+      - key: sound
+        zh: 音聲类
+        n: 2
+      examples:
+      - name: 清淨雲音執金剛神
+        cat: 執金剛神
+        idx: 1
+      - name: 悅意海音天王
+        cat: 大梵天王
+        idx: 35
+    - pattern: virtue+virtue+virtue+virtue
+      pattern_zh: 功德类＋功德类＋功德类＋功德类
+      n: 2
+      pct: 0.0048
+      length: 4
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 8
+      examples:
+      - name: 守護攝持身眾神
+        cat: 身眾神
+        idx: 2
+      - name: 可愛樂莊嚴天王
+        cat: 兜率陀天王
+        idx: 32
+    - pattern: jewel+jewel+luminosity+luminosity
+      pattern_zh: 宝严类＋宝严类＋光明类＋光明类
+      n: 2
+      pct: 0.0048
+      length: 4
+      has_unassigned: false
+      dominant:
+      - key: jewel
+        zh: 宝严类
+        n: 4
+      - key: luminosity
+        zh: 光明类
+        n: 4
+      examples:
+      - name: 蓮華光明足行神
+        cat: 足行神
+        idx: 3
+      - name: 蓮華光明道場神
+        cat: 道場神
+        idx: 4
+    - pattern: affix+virtue+virtue+virtue+affix+nature
+      pattern_zh: 冠綴类＋功德类＋功德类＋功德类＋冠綴类＋自然类
+      n: 2
+      pct: 0.0048
+      length: 6
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 6
+      - key: affix
+        zh: 冠綴类
+        n: 4
+      - key: nature
+        zh: 自然类
+        n: 2
+      examples:
+      - name: 離憂清淨主城神
+        cat: 主城神
+        idx: 5
+      - name: 普治清淨主藥神
+        cat: 主藥神
+        idx: 9
+    - pattern: virtue+virtue+sound+sound+affix+nature
+      pattern_zh: 功德类＋功德类＋音聲类＋音聲类＋冠綴类＋自然类
+      n: 2
+      pct: 0.0048
+      length: 6
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 4
+      - key: sound
+        zh: 音聲类
+        n: 4
+      - key: affix
+        zh: 冠綴类
+        n: 2
+      examples:
+      - name: 悅意音聲主地神
+        cat: 主地神
+        idx: 6
+      - name: 可意雷音主林神
+        cat: 主林神
+        idx: 8
+    - pattern: affix+number+virtue+form+affix+nature
+      pattern_zh: 冠綴类＋數量类＋功德类＋形相类＋冠綴类＋自然类
+      n: 2
+      pct: 0.0048
+      length: 6
+      has_unassigned: false
+      dominant:
+      - key: affix
+        zh: 冠綴类
+        n: 4
+      - key: number
+        zh: 數量类
+        n: 2
+      - key: virtue
+        zh: 功德类
+        n: 2
+      examples:
+      - name: 離塵淨髻主山神
+        cat: 主山神
+        idx: 7
+      - name: 離塵淨眼主河神
+        cat: 主河神
+        idx: 11
+    - pattern: affix+luminosity+affix+luminosity+affix+nature
+      pattern_zh: 冠綴类＋光明类＋冠綴类＋光明类＋冠綴类＋自然类
+      n: 2
+      pct: 0.0048
+      length: 6
+      has_unassigned: false
+      dominant:
+      - key: affix
+        zh: 冠綴类
+        n: 6
+      - key: luminosity
+        zh: 光明类
+        n: 4
+      - key: nature
+        zh: 自然类
+        n: 2
+      examples:
+      - name: 大光普照主火神
+        cat: 主火神
+        idx: 14
+      - name: 大光普照主風神
+        cat: 主風神
+        idx: 15
+    - pattern: motion+motion+virtue+virtue+affix+time
+      pattern_zh: 動行类＋動行类＋功德类＋功德类＋冠綴类＋時間类
+      n: 2
+      pct: 0.0048
+      length: 6
+      has_unassigned: false
+      dominant:
+      - key: motion
+        zh: 動行类
+        n: 4
+      - key: virtue
+        zh: 功德类
+        n: 4
+      - key: affix
+        zh: 冠綴类
+        n: 2
+      examples:
+      - name: 遊戲快樂主夜神
+        cat: 主夜神
+        idx: 18
+      - name: 出生淨福主夜神
+        cat: 主夜神
+        idx: 18
+    - pattern: virtue+virtue+virtue+luminosity
+      pattern_zh: 功德类＋功德类＋功德类＋光明类
+      n: 2
+      pct: 0.0048
+      length: 4
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 6
+      - key: luminosity
+        zh: 光明类
+        n: 2
+      examples:
+      - name: 攝伏惡眾緊那羅王
+        cat: 緊那羅王
+        idx: 22
+      - name: 無垢寂靜光天王
+        cat: 廣果天王
+        idx: 38
+    - pattern: affix+form+affix
+      pattern_zh: 冠綴类＋形相类＋冠綴类
+      n: 2
+      pct: 0.0048
+      length: 3
+      has_unassigned: false
+      dominant:
+      - key: affix
+        zh: 冠綴类
+        n: 4
+      - key: form
+        zh: 形相类
+        n: 2
+      examples:
+      - name: 妙目主摩睺羅伽王
+        cat: 摩睺羅伽王
+        idx: 23
+      - name: 妙目主天王
+        cat: 他化自在天王
+        idx: 34
+    - pattern: jewel+form
+      pattern_zh: 宝严类＋形相类
+      n: 2
+      pct: 0.0048
+      length: 2
+      has_unassigned: false
+      dominant:
+      - key: jewel
+        zh: 宝严类
+        n: 2
+      - key: form
+        zh: 形相类
+        n: 2
+      examples:
+      - name: 金剛眼夜叉王
+        cat: 夜叉王
+        idx: 24
+      - name: 華冠乾闥婆王
+        cat: 乾闥婆王
+        idx: 27
+    - pattern: virtue+power+form
+      pattern_zh: 功德类＋威势力类＋形相类
+      n: 2
+      pct: 0.0048
+      length: 3
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 2
+      - key: power
+        zh: 威势力类
+        n: 2
+      - key: form
+        zh: 形相类
+        n: 2
+      examples:
+      - name: 勇健臂夜叉王
+        cat: 夜叉王
+        idx: 24
+      - name: 勇健臂鳩槃荼王
+        cat: 鳩槃荼王
+        idx: 26
+    - pattern: affix+virtue+virtue+form
+      pattern_zh: 冠綴类＋功德类＋功德类＋形相类
+      n: 2
+      pct: 0.0048
+      length: 4
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 4
+      - key: affix
+        zh: 冠綴类
+        n: 2
+      - key: form
+        zh: 形相类
+        n: 2
+      examples:
+      - name: 善莊嚴幢鳩槃荼王
+        cat: 鳩槃荼王
+        idx: 26
+      - name: 妙莊嚴眼天王
+        cat: 大自在天王
+        idx: 39
+    - pattern: time
+      pattern_zh: 時間类
+      n: 2
+      pct: 0.0048
+      length: 1
+      has_unassigned: false
+      dominant:
+      - key: time
+        zh: 時間类
+        n: 2
+      examples:
+      - name: 月天子
+        cat: 月天子
+        idx: 28
+      - name: 日天子
+        cat: 日天子
+        idx: 29
+    - pattern: luminosity+luminosity+form
+      pattern_zh: 光明类＋光明类＋形相类
+      n: 2
+      pct: 0.0048
+      length: 3
+      has_unassigned: false
+      dominant:
+      - key: luminosity
+        zh: 光明类
+        n: 4
+      - key: form
+        zh: 形相类
+        n: 2
+      examples:
+      - name: 光焰眼天子
+        cat: 日天子
+        idx: 29
+      - name: 光明眼天子
+        cat: 日天子
+        idx: 29
+    - pattern: luminosity+luminosity
+      pattern_zh: 光明类＋光明类
+      n: 2
+      pct: 0.0048
+      length: 2
+      has_unassigned: false
+      dominant:
+      - key: luminosity
+        zh: 光明类
+        n: 4
+      examples:
+      - name: 光焰天王
+        cat: 須夜摩天王
+        idx: 31
+      - name: 光照天王
+        cat: 須夜摩天王
+        idx: 31
+    - pattern: wisdom+luminosity
+      pattern_zh: 智慧类＋光明类
+      n: 2
+      pct: 0.0048
+      length: 2
+      has_unassigned: false
+      dominant:
+      - key: wisdom
+        zh: 智慧类
+        n: 2
+      - key: luminosity
+        zh: 光明类
+        n: 2
+      examples:
+      - name: 念光天王
+        cat: 化樂天王
+        idx: 33
+      - name: 慧光天王
+        cat: 大梵天王
+        idx: 35
+    - pattern: virtue+virtue+virtue
+      pattern_zh: 功德类＋功德类＋功德类
+      n: 2
+      pct: 0.0048
+      length: 3
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 6
+      examples:
+      - name: 寂靜德天王
+        cat: 遍淨天王
+        idx: 37
+      - name: 樂寂靜天王
+        cat: 廣果天王
+        idx: 38
+    - pattern: virtue+virtue+affix+wisdom
+      pattern_zh: 功德类＋功德类＋冠綴类＋智慧类
+      n: 2
+      pct: 0.0048
+      length: 4
+      has_unassigned: false
+      dominant:
+      - key: virtue
+        zh: 功德类
+        n: 4
+      - key: affix
+        zh: 冠綴类
+        n: 2
+      - key: wisdom
+        zh: 智慧类
+        n: 2
+      examples:
+      - name: 可愛樂大慧天王
+        cat: 大自在天王
+        idx: 39
+      - name: 可愛樂大智天王
+        cat: 大自在天王
+        idx: 39
+    - pattern: affix+virtue+affix+power+form+luminosity+luminosity
+      pattern_zh: 冠綴类＋功德类＋冠綴类＋威势力类＋形相类＋光明类＋光明类
+      n: 1
+      pct: 0.0024
+      length: 7
+      has_unassigned: false
+      dominant:
+      - key: affix
+        zh: 冠綴类
+        n: 2
+      - key: luminosity
+        zh: 光明类
+        n: 2
+      - key: virtue
+        zh: 功德类
+        n: 1
+      examples:
+      - name: 普德最勝燈光照菩薩摩訶薩
+        cat: 菩薩摩訶薩
+        idx: 0
+    unassigned_in_top: 1
+    unassigned_note_zh: 首列式样多含「未定」域（专名/音译与罕字），故层二之式样不宜径直释为语义结构——含未定域者，其结构意义悬空，页面须并列「未参与结构分析」之计数。
+    unassigned_note_en: 'Leading patterns often contain the unassigned domain (proper names, transliterations
+      and rare glyphs), so such patterns should not be read directly as semantic structure: where unassigned
+      segments occur, the structural reading is left hanging and must be counted separately.'
+  layer3_skeleton:
+    zh: 层三 · 抽象骨架（首词素域 × 末词素域）
+    en: Layer three — abstract skeleton (head domain × tail domain)
+    n_distinct: 100
+    distinct_per_member: 0.2415
+    normalized_entropy: 0.8807
+    rows:
+    - head: affix
+      head_zh: 冠綴类
+      tail: nature
+      tail_zh: 自然类
+      n: 40
+      pct: 0.0966
+    - head: affix
+      head_zh: 冠綴类
+      tail: form
+      tail_zh: 形相类
+      n: 21
+      pct: 0.0507
+    - head: virtue
+      head_zh: 功德类
+      tail: nature
+      tail_zh: 自然类
+      n: 21
+      pct: 0.0507
+    - head: affix
+      head_zh: 冠綴类
+      tail: luminosity
+      tail_zh: 光明类
+      n: 18
+      pct: 0.0435
+    - head: virtue
+      head_zh: 功德类
+      tail: form
+      tail_zh: 形相类
+      n: 17
+      pct: 0.0411
+    - head: virtue
+      head_zh: 功德类
+      tail: luminosity
+      tail_zh: 光明类
+      n: 15
+      pct: 0.0362
+    - head: unassigned
+      head_zh: 未定
+      tail: unassigned
+      tail_zh: 未定
+      n: 11
+      pct: 0.0266
+    - head: affix
+      head_zh: 冠綴类
+      tail: sound
+      tail_zh: 音聲类
+      n: 11
+      pct: 0.0266
+    - head: jewel
+      head_zh: 宝严类
+      tail: nature
+      tail_zh: 自然类
+      n: 10
+      pct: 0.0242
+    - head: affix
+      head_zh: 冠綴类
+      tail: space
+      tail_zh: 空間类
+      n: 9
+      pct: 0.0217
+    - head: motion
+      head_zh: 動行类
+      tail: nature
+      tail_zh: 自然类
+      n: 9
+      pct: 0.0217
+    - head: nature
+      head_zh: 自然类
+      tail: nature
+      tail_zh: 自然类
+      n: 8
+      pct: 0.0193
+    - head: affix
+      head_zh: 冠綴类
+      tail: time
+      tail_zh: 時間类
+      n: 8
+      pct: 0.0193
+    - head: virtue
+      head_zh: 功德类
+      tail: sound
+      tail_zh: 音聲类
+      n: 7
+      pct: 0.0169
+    - head: jewel
+      head_zh: 宝严类
+      tail: form
+      tail_zh: 形相类
+      n: 7
+      pct: 0.0169
+    - head: affix
+      head_zh: 冠綴类
+      tail: virtue
+      tail_zh: 功德类
+      n: 7
+      pct: 0.0169
+    - head: jewel
+      head_zh: 宝严类
+      tail: luminosity
+      tail_zh: 光明类
+      n: 7
+      pct: 0.0169
+    - head: luminosity
+      head_zh: 光明类
+      tail: nature
+      tail_zh: 自然类
+      n: 7
+      pct: 0.0169
+    - head: virtue
+      head_zh: 功德类
+      tail: time
+      tail_zh: 時間类
+      n: 7
+      pct: 0.0169
+    - head: nature
+      head_zh: 自然类
+      tail: luminosity
+      tail_zh: 光明类
+      n: 6
+      pct: 0.0145
+  coverage_top24: 0.1425
+  rows: *id004
+  head_domain:
+  - key: affix
+    zh: 冠綴类
+    n: 135
+    pct: 0.3261
+  - key: virtue
+    zh: 功德类
+    n: 93
+    pct: 0.2246
+  - key: motion
+    zh: 動行类
+    n: 30
+    pct: 0.0725
+  - key: jewel
+    zh: 宝严类
+    n: 28
+    pct: 0.0676
+  - key: nature
+    zh: 自然类
+    n: 27
+    pct: 0.0652
+  - key: luminosity
+    zh: 光明类
+    n: 23
+    pct: 0.0556
+  - key: number
+    zh: 數量类
+    n: 16
+    pct: 0.0386
+  - key: power
+    zh: 威势力类
+    n: 16
+    pct: 0.0386
+  - key: unassigned
+    zh: 未定
+    n: 12
+    pct: 0.029
+  - key: form
+    zh: 形相类
+    n: 10
+    pct: 0.0242
+  - key: wisdom
+    zh: 智慧类
+    n: 9
+    pct: 0.0217
+  - key: time
+    zh: 時間类
+    n: 8
+    pct: 0.0193
+  - key: sound
+    zh: 音聲类
+    n: 3
+    pct: 0.0072
+  - key: space
+    zh: 空間类
+    n: 2
+    pct: 0.0048
+  - key: speech
+    zh: 言說类
+    n: 1
+    pct: 0.0024
+  - key: body
+    zh: 身體類
+    n: 1
+    pct: 0.0024
+  tail_domain:
+  - key: nature
+    zh: 自然类
+    n: 117
+    pct: 0.2826
+  - key: form
+    zh: 形相类
+    n: 69
+    pct: 0.1667
+  - key: luminosity
+    zh: 光明类
+    n: 62
+    pct: 0.1498
+  - key: virtue
+    zh: 功德类
+    n: 29
+    pct: 0.07
+  - key: sound
+    zh: 音聲类
+    n: 24
+    pct: 0.058
+  - key: time
+    zh: 時間类
+    n: 24
+    pct: 0.058
+  - key: space
+    zh: 空間类
+    n: 23
+    pct: 0.0556
+  - key: wisdom
+    zh: 智慧类
+    n: 15
+    pct: 0.0362
+  - key: unassigned
+    zh: 未定
+    n: 14
+    pct: 0.0338
+  - key: motion
+    zh: 動行类
+    n: 11
+    pct: 0.0266
+  - key: power
+    zh: 威势力类
+    n: 8
+    pct: 0.0193
+  - key: affix
+    zh: 冠綴类
+    n: 7
+    pct: 0.0169
+  - key: number
+    zh: 數量类
+    n: 4
+    pct: 0.0097
+  - key: jewel
+    zh: 宝严类
+    n: 3
+    pct: 0.0072
+  - key: speech
+    zh: 言說类
+    n: 3
+    pct: 0.0072
+  - key: body
+    zh: 身體類
+    n: 1
+    pct: 0.0024
+  token_length_hist:
+  - len: 1
+    n: 12
+    pct: 0.029
+  - len: 2
+    n: 27
+    pct: 0.0652
+  - len: 3
+    n: 57
+    pct: 0.1377
+  - len: 4
+    n: 95
+    pct: 0.2295
+  - len: 5
+    n: 80
+    pct: 0.1932
+  - len: 6
+    n: 141
+    pct: 0.3406
+  - len: 7
+    n: 2
+    pct: 0.0048
+network:
+  note_zh: 网络建于词素之**相邻共现**（同一名号内核名中相邻之两词素），非经文语序，亦非共现于全体文句。故此网所显者，名号构词之内在联结，非叙事结构。
+  note_en: The network is built on adjacency co-occurrence of morphemes within a single core name, not
+    on their order in the sutra nor co-occurrence across sentences. It therefore shows internal bonding
+    in name-construction, not narrative structure.
+  truncation:
+    zh: '**须声明之截断**：本图之边取自 EDA 之 lex_edges，为相邻共现**全部 824 对中权重最高之 400 对**；其余 424 对（多为 n=1 之弱共现，占全对 51.5%）未入图。经独立复算（networkx
+      之全图与截断图对读），此截断对 PageRank 之影响显著：全图之首五为「音」「須彌」「髻」「龍」「華」，截断后则「主」「光」显著上升、前二者消失。故本页之一切中心性数值皆为「**强共现子图**上之中心性」，**非全网之中心性**；且弱共现之被排除，恰恰抬高了强联结者之分。读本页中心性时须常带此caveat，勿径以「此词素在会众语汇中最具枢纽性」了之。'
+    en: '**Declared truncation**: the edges here come from the EDA lex_edges, which are the 400 highest-weight
+      pairs out of all 824 adjacent co-occurrence pairs; the remaining 424 pairs (mostly weak co-occurrences
+      of n=1, 51.5% of the whole) are absent. An independent recomputation (networkx, full graph against
+      truncated graph) shows this truncation materially changes PageRank: the full graph''s top five are
+      「音」「須彌」「髻」「龍」「華」, while after truncation 「主」「光」 rise sharply and the first two vanish. Every centrality
+      figure on this page is therefore centrality **within the strong-co-occurrence subgraph**, not within
+      the full network, and the exclusion of weak co-occurrences raises the scores of the strongly connected.
+      This caveat must accompany any reading of these centralities.'
+    n_all_pairs: 824
+    n_used_edges: 400
+    n_dropped_pairs: 424
+    dropped_pct: 0.5146
+    pair_counting_zh: 相邻共现之对数：一名号内相邻两词素计一对，A-B 与 B-A 不分方向。
+    pair_counting_en: 'Pair counting: adjacent morphemes within one name form one pair; A-B and B-A are
+      not distinguished.'
+  method_zh: PageRank（阻尼 0.85，幂迭代收敛）、无权介数中心性（Brandes）、加权标签传播社群（同步更新，遍历序按频次降序、同频按字序以保确定性）
+  method_en: PageRank (damping 0.85, power iteration to convergence), unweighted betweenness centrality
+    (Brandes), weighted label-propagation communities (synchronous update; nodes visited by descending
+    frequency then by character order, so the result is deterministic)
+  n_nodes: 304
+  n_edges: 400
+  n_active: 191
+  isolated: 113
+  isolated_note_zh: 孤立节点（零共现）不入中心性排名——它们在构词上不与他词素相邻，此事实本身亦是信息：单字成词之独立角色。
+  isolated_note_en: 'Isolated nodes (no co-occurrence) are excluded from centrality rankings: they adjoin
+    no other morpheme in name-construction, which is itself informative — the independent role of single-character
+    morphemes.'
+  top_pagerank:
+  - id: m:種
+    zh: 種
+    domain: number
+    n: 7
+    pagerank: 0.164892
+    degree: 2
+    wdegree: 6.0
+  - id: m:主
+    zh: 主
+    domain: affix
+    n: 156
+    pagerank: 0.132016
+    degree: 56
+    wdegree: 276.0
+  - id: m:光
+    zh: 光
+    domain: luminosity
+    n: 134
+    pagerank: 0.048451
+    degree: 56
+    wdegree: 210.0
+  - id: m:明
+    zh: 明
+    domain: luminosity
+    n: 56
+    pagerank: 0.029571
+    degree: 12
+    wdegree: 76.0
+  - id: m:幢
+    zh: 幢
+    domain: form
+    n: 40
+    pagerank: 0.022238
+    degree: 19
+    wdegree: 42.0
+  - id: m:妙
+    zh: 妙
+    domain: affix
+    n: 53
+    pagerank: 0.018696
+    degree: 23
+    wdegree: 64.0
+  - id: m:音
+    zh: 音
+    domain: sound
+    n: 43
+    pagerank: 0.016558
+    degree: 17
+    wdegree: 46.0
+  - id: m:髻
+    zh: 髻
+    domain: form
+    n: 30
+    pagerank: 0.011957
+    degree: 15
+    wdegree: 38.0
+  - id: m:華
+    zh: 華
+    domain: jewel
+    n: 38
+    pagerank: 0.01177
+    degree: 23
+    wdegree: 58.0
+  - id: m:海
+    zh: 海
+    domain: nature
+    n: 26
+    pagerank: 0.011764
+    degree: 8
+    wdegree: 21.0
+  - id: m:嚴
+    zh: 嚴
+    domain: virtue
+    n: 35
+    pagerank: 0.011571
+    degree: 13
+    wdegree: 50.0
+  - id: m:林
+    zh: 林
+    domain: nature
+    n: 12
+    pagerank: 0.010953
+    degree: 5
+    wdegree: 14.0
+  - id: m:水
+    zh: 水
+    domain: nature
+    n: 12
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:地
+    zh: 地
+    domain: nature
+    n: 11
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:山
+    zh: 山
+    domain: nature
+    n: 11
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:藥
+    zh: 藥
+    domain: nature
+    n: 11
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:風
+    zh: 風
+    domain: nature
+    n: 11
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:空
+    zh: 空
+    domain: space
+    n: 11
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:方
+    zh: 方
+    domain: space
+    n: 11
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:城
+    zh: 城
+    domain: nature
+    n: 10
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:稼
+    zh: 稼
+    domain: nature
+    n: 10
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:河
+    zh: 河
+    domain: nature
+    n: 10
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:火
+    zh: 火
+    domain: nature
+    n: 10
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:夜
+    zh: 夜
+    domain: time
+    n: 10
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  - id: m:晝
+    zh: 晝
+    domain: time
+    n: 10
+    pagerank: 0.010208
+    degree: 1
+    wdegree: 10.0
+  top_betweenness:
+  - id: m:主
+    zh: 主
+    domain: affix
+    n: 156
+    betweenness: 42.704396
+    degree: 56
+  - id: m:光
+    zh: 光
+    domain: luminosity
+    n: 134
+    betweenness: 40.714528
+    degree: 56
+  - id: m:普
+    zh: 普
+    domain: affix
+    n: 62
+    betweenness: 12.16585
+    degree: 24
+  - id: m:妙
+    zh: 妙
+    domain: affix
+    n: 53
+    betweenness: 9.405601
+    degree: 23
+  - id: m:淨
+    zh: 淨
+    domain: virtue
+    n: 46
+    betweenness: 9.196591
+    degree: 18
+  - id: m:現
+    zh: 現
+    domain: motion
+    n: 14
+    betweenness: 8.516686
+    degree: 8
+  - id: m:華
+    zh: 華
+    domain: jewel
+    n: 38
+    betweenness: 7.498947
+    degree: 23
+  - id: m:音
+    zh: 音
+    domain: sound
+    n: 43
+    betweenness: 7.351
+    degree: 17
+  - id: m:幢
+    zh: 幢
+    domain: form
+    n: 40
+    betweenness: 6.25629
+    degree: 19
+  - id: m:寶
+    zh: 寶
+    domain: jewel
+    n: 23
+    betweenness: 6.055745
+    degree: 15
+  - id: m:善
+    zh: 善
+    domain: affix
+    n: 15
+    betweenness: 5.403182
+    degree: 6
+  - id: m:勝
+    zh: 勝
+    domain: power
+    n: 23
+    betweenness: 5.114632
+    degree: 14
+  - id: m:攝
+    zh: 攝
+    domain: virtue
+    n: 5
+    betweenness: 5.078548
+    degree: 5
+  - id: m:氣
+    zh: 氣
+    domain: body
+    n: 3
+    betweenness: 4.851485
+    degree: 4
+  - id: m:嚴
+    zh: 嚴
+    domain: virtue
+    n: 35
+    betweenness: 4.326707
+    degree: 13
+  communities:
+  - id: 0
+    size: 139
+    members:
+    - id: m:主
+      zh: 主
+      n: 156
+      domain: affix
+    - id: m:光
+      zh: 光
+      n: 134
+      domain: luminosity
+    - id: m:普
+      zh: 普
+      n: 62
+      domain: affix
+    - id: m:明
+      zh: 明
+      n: 56
+      domain: luminosity
+    - id: m:妙
+      zh: 妙
+      n: 53
+      domain: affix
+    - id: m:淨
+      zh: 淨
+      n: 46
+      domain: virtue
+    - id: m:音
+      zh: 音
+      n: 43
+      domain: sound
+    - id: m:幢
+      zh: 幢
+      n: 40
+      domain: form
+    - id: m:華
+      zh: 華
+      n: 38
+      domain: jewel
+    - id: m:髻
+      zh: 髻
+      n: 30
+      domain: form
+    - id: m:大
+      zh: 大
+      n: 27
+      domain: affix
+    - id: m:海
+      zh: 海
+      n: 26
+      domain: nature
+    - id: m:勝
+      zh: 勝
+      n: 23
+      domain: power
+    - id: m:寶
+      zh: 寶
+      n: 23
+      domain: jewel
+    - id: m:眼
+      zh: 眼
+      n: 23
+      domain: form
+    - id: m:清
+      zh: 清
+      n: 19
+      domain: virtue
+    - id: m:慧
+      zh: 慧
+      n: 18
+      domain: wisdom
+    - id: m:德
+      zh: 德
+      n: 16
+      domain: virtue
+    - id: m:照
+      zh: 照
+      n: 16
+      domain: luminosity
+    - id: m:焰
+      zh: 焰
+      n: 16
+      domain: luminosity
+    - id: m:自在
+      zh: 自在
+      n: 15
+      domain: virtue
+    - id: m:善
+      zh: 善
+      n: 15
+      domain: affix
+    - id: m:最
+      zh: 最
+      n: 14
+      domain: affix
+    - id: m:雲
+      zh: 雲
+      n: 14
+      domain: nature
+    - id: m:現
+      zh: 現
+      n: 14
+      domain: motion
+    - id: m:目
+      zh: 目
+      n: 13
+      domain: form
+    - id: m:林
+      zh: 林
+      n: 12
+      domain: nature
+    - id: m:力
+      zh: 力
+      n: 12
+      domain: power
+    - id: m:水
+      zh: 水
+      n: 12
+      domain: nature
+    - id: m:智
+      zh: 智
+      n: 11
+      domain: wisdom
+    - id: m:地
+      zh: 地
+      n: 11
+      domain: nature
+    - id: m:山
+      zh: 山
+      n: 11
+      domain: nature
+    - id: m:藥
+      zh: 藥
+      n: 11
+      domain: nature
+    - id: m:風
+      zh: 風
+      n: 11
+      domain: nature
+    - id: m:空
+      zh: 空
+      n: 11
+      domain: space
+    - id: m:方
+      zh: 方
+      n: 11
+      domain: space
+    - id: m:香
+      zh: 香
+      n: 10
+      domain: nature
+    - id: m:城
+      zh: 城
+      n: 10
+      domain: nature
+    - id: m:遍
+      zh: 遍
+      n: 10
+      domain: motion
+    - id: m:稼
+      zh: 稼
+      n: 10
+      domain: nature
+    - id: m:河
+      zh: 河
+      n: 10
+      domain: nature
+    - id: m:火
+      zh: 火
+      n: 10
+      domain: nature
+    - id: m:夜
+      zh: 夜
+      n: 10
+      domain: time
+    - id: m:晝
+      zh: 晝
+      n: 10
+      domain: time
+    - id: m:生
+      zh: 生
+      n: 9
+      domain: motion
+    - id: m:金剛
+      zh: 金剛
+      n: 9
+      domain: jewel
+    - id: m:樹
+      zh: 樹
+      n: 9
+      domain: nature
+    - id: m:喜
+      zh: 喜
+      n: 9
+      domain: virtue
+    - id: m:聲
+      zh: 聲
+      n: 8
+      domain: sound
+    - id: m:十方
+      zh: 十方
+      n: 8
+      domain: number
+    - id: m:見
+      zh: 見
+      n: 7
+      domain: wisdom
+    - id: m:眾
+      zh: 眾
+      n: 7
+      domain: luminosity
+    - id: m:發
+      zh: 發
+      n: 7
+      domain: motion
+    - id: m:廣
+      zh: 廣
+      n: 7
+      domain: affix
+    - id: m:世
+      zh: 世
+      n: 7
+      domain: space
+    - id: m:功
+      zh: 功
+      n: 6
+      domain: virtue
+    - id: m:福
+      zh: 福
+      n: 6
+      domain: virtue
+    - id: m:須彌
+      zh: 須彌
+      n: 6
+      domain: nature
+    - id: m:威
+      zh: 威
+      n: 6
+      domain: power
+    - id: m:觀
+      zh: 觀
+      n: 6
+      domain: wisdom
+    - id: m:月
+      zh: 月
+      n: 5
+      domain: time
+    - id: m:王
+      zh: 王
+      n: 5
+      domain: affix
+    - id: m:蓮
+      zh: 蓮
+      n: 5
+      domain: jewel
+    - id: m:日
+      zh: 日
+      n: 5
+      domain: time
+    - id: m:色
+      zh: 色
+      n: 5
+      domain: form
+    - id: m:輪
+      zh: 輪
+      n: 5
+      domain: luminosity
+    - id: m:雷
+      zh: 雷
+      n: 5
+      domain: sound
+    - id: m:耀
+      zh: 耀
+      n: 5
+      domain: luminosity
+    - id: m:吉祥
+      zh: 吉祥
+      n: 5
+      domain: virtue
+    - id: m:吼
+      zh: 吼
+      n: 5
+      domain: sound
+    - id: m:遊
+      zh: 遊
+      n: 5
+      domain: motion
+    - id: m:師子
+      zh: 師子
+      n: 4
+      domain: form
+    - id: m:勇猛
+      zh: 勇猛
+      n: 4
+      domain: power
+    - id: m:深
+      zh: 深
+      n: 4
+      domain: power
+    - id: m:諸
+      zh: 諸
+      n: 4
+      domain: number
+    - id: m:根
+      zh: 根
+      n: 4
+      domain: form
+    - id: m:峯
+      zh: 峯
+      n: 4
+      domain: nature
+    - id: m:高
+      zh: 高
+      n: 4
+      domain: form
+    - id: m:無礙
+      zh: 無礙
+      n: 4
+      domain: virtue
+    - id: m:燈
+      zh: 燈
+      n: 3
+      domain: form
+    - id: m:無盡
+      zh: 無盡
+      n: 3
+      domain: number
+    - id: m:無垢
+      zh: 無垢
+      n: 3
+      domain: virtue
+    - id: m:藏
+      zh: 藏
+      n: 3
+      domain: jewel
+    - id: m:美
+      zh: 美
+      n: 3
+      domain: form
+    - id: m:密
+      zh: 密
+      n: 3
+      domain: form
+    - id: m:不動
+      zh: 不動
+      n: 3
+      domain: motion
+    - id: m:微
+      zh: 微
+      n: 3
+      domain: number
+    - id: m:集
+      zh: 集
+      n: 3
+      domain: motion
+    - id: m:時
+      zh: 時
+      n: 3
+      domain: time
+    - id: m:味
+      zh: 味
+      n: 3
+      domain: nature
+    - id: m:氣
+      zh: 氣
+      n: 3
+      domain: body
+    - id: m:出
+      zh: 出
+      n: 3
+      domain: motion
+    - id: m:示
+      zh: 示
+      n: 3
+      domain: motion
+    - id: m:相
+      zh: 相
+      n: 2
+      domain: form
+    - id: m:精進
+      zh: 精進
+      n: 2
+      domain: virtue
+    - id: m:𪗇
+      zh: 𪗇
+      n: 2
+      domain: unassigned
+    - id: m:伏
+      zh: 伏
+      n: 2
+      domain: virtue
+    - id: m:上
+      zh: 上
+      n: 2
+      domain: affix
+    - id: m:栴檀
+      zh: 栴檀
+      n: 2
+      domain: nature
+    - id: m:積
+      zh: 積
+      n: 2
+      domain: virtue
+    - id: m:雨
+      zh: 雨
+      n: 2
+      domain: nature
+    - id: m:纓
+      zh: 纓
+      n: 2
+      domain: jewel
+    - id: m:毛
+      zh: 毛
+      n: 2
+      domain: form
+    - id: m:旋
+      zh: 旋
+      n: 2
+      domain: motion
+    - id: m:布
+      zh: 布
+      n: 2
+      domain: motion
+    - id: m:如
+      zh: 如
+      n: 2
+      domain: affix
+    - id: m:垂
+      zh: 垂
+      n: 2
+      domain: motion
+    - id: m:果
+      zh: 果
+      n: 2
+      domain: nature
+    - id: m:益
+      zh: 益
+      n: 2
+      domain: virtue
+    - id: m:精
+      zh: 精
+      n: 2
+      domain: virtue
+    - id: m:者
+      zh: 者
+      n: 2
+      domain: speech
+    - id: m:愛樂
+      zh: 愛樂
+      n: 2
+      domain: virtue
+    - id: m:潮
+      zh: 潮
+      n: 2
+      domain: nature
+    - id: m:業
+      zh: 業
+      n: 2
+      domain: motion
+    - id: m:間
+      zh: 間
+      n: 2
+      domain: space
+    - id: m:那羅延
+      zh: 那羅延
+      n: 1
+      domain: unassigned
+    - id: m:摩尼
+      zh: 摩尼
+      n: 1
+      domain: jewel
+    - id: m:調
+      zh: 調
+      n: 1
+      domain: virtue
+    - id: m:無量
+      zh: 無量
+      n: 1
+      domain: number
+    - id: m:儀
+      zh: 儀
+      n: 1
+      domain: form
+    - id: m:彩
+      zh: 彩
+      n: 1
+      domain: form
+    - id: m:盛
+      zh: 盛
+      n: 1
+      domain: virtue
+    - id: m:散
+      zh: 散
+      n: 1
+      domain: motion
+    - id: m:體
+      zh: 體
+      n: 1
+      domain: form
+    - id: m:開
+      zh: 開
+      n: 1
+      domain: motion
+    - id: m:芽
+      zh: 芽
+      n: 1
+      domain: nature
+    - id: m:葉
+      zh: 葉
+      n: 1
+      domain: nature
+    - id: m:迴
+      zh: 迴
+      n: 1
+      domain: motion
+    - id: m:聞
+      zh: 聞
+      n: 1
+      domain: speech
+    - id: m:孔
+      zh: 孔
+      n: 1
+      domain: form
+    - id: m:治
+      zh: 治
+      n: 1
+      domain: virtue
+    - id: m:蔽
+      zh: 蔽
+      n: 1
+      domain: form
+    - id: m:柔
+      zh: 柔
+      n: 1
+      domain: virtue
+    - id: m:軟
+      zh: 軟
+      n: 1
+      domain: virtue
+    - id: m:環
+      zh: 環
+      n: 1
+      domain: form
+    - id: m:潤
+      zh: 潤
+      n: 1
+      domain: virtue
+    - id: m:澤
+      zh: 澤
+      n: 1
+      domain: nature
+    - id: m:迅
+      zh: 迅
+      n: 1
+      domain: motion
+    - id: m:流
+      zh: 流
+      n: 1
+      domain: motion
+    top_domains:
+    - key: nature
+      zh: 自然类
+      n: 24
+    - key: virtue
+      zh: 功德类
+      n: 22
+    - key: form
+      zh: 形相类
+      n: 19
+    internal_weight: 1757.0
+  - id: 1
+    size: 4
+    members:
+    - id: m:離
+      zh: 離
+      n: 9
+      domain: affix
+    - id: m:垢
+      zh: 垢
+      n: 5
+      domain: virtue
+    - id: m:塵
+      zh: 塵
+      n: 3
+      domain: number
+    - id: m:憂
+      zh: 憂
+      n: 1
+      domain: virtue
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 2
+    - key: affix
+      zh: 冠綴类
+      n: 1
+    - key: number
+      zh: 數量类
+      n: 1
+    internal_weight: 20.0
+  - id: 2
+    size: 4
+    members:
+    - id: m:意
+      zh: 意
+      n: 5
+      domain: virtue
+    - id: m:悅
+      zh: 悅
+      n: 4
+      domain: virtue
+    - id: m:覺
+      zh: 覺
+      n: 3
+      domain: wisdom
+    - id: m:可
+      zh: 可
+      n: 3
+      domain: virtue
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 3
+    - key: wisdom
+      zh: 智慧类
+      n: 1
+    internal_weight: 16.0
+  - id: 3
+    size: 3
+    members:
+    - id: m:嚴
+      zh: 嚴
+      n: 35
+      domain: virtue
+    - id: m:莊
+      zh: 莊
+      n: 25
+      domain: virtue
+    - id: m:端
+      zh: 端
+      n: 2
+      domain: form
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 2
+    - key: form
+      zh: 形相类
+      n: 1
+    internal_weight: 91.0
+  - id: 4
+    size: 3
+    members:
+    - id: m:樂
+      zh: 樂
+      n: 25
+      domain: virtue
+    - id: m:可愛
+      zh: 可愛
+      n: 12
+      domain: virtue
+    - id: m:吐
+      zh: 吐
+      n: 1
+      domain: sound
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 2
+    - key: sound
+      zh: 音聲类
+      n: 1
+    internal_weight: 35.0
+  - id: 5
+    size: 3
+    members:
+    - id: m:持
+      zh: 持
+      n: 7
+      domain: virtue
+    - id: m:攝
+      zh: 攝
+      n: 5
+      domain: virtue
+    - id: m:取
+      zh: 取
+      n: 1
+      domain: virtue
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 3
+    internal_weight: 9.0
+  - id: 6
+    size: 3
+    members:
+    - id: m:勇
+      zh: 勇
+      n: 6
+      domain: virtue
+    - id: m:健
+      zh: 健
+      n: 4
+      domain: power
+    - id: m:臂
+      zh: 臂
+      n: 2
+      domain: form
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 1
+    - key: power
+      zh: 威势力类
+      n: 1
+    - key: form
+      zh: 形相类
+      n: 1
+    internal_weight: 14.0
+  - id: 7
+    size: 3
+    members:
+    - id: m:擢
+      zh: 擢
+      n: 1
+      domain: motion
+    - id: m:幹
+      zh: 幹
+      n: 1
+      domain: motion
+    - id: m:舒
+      zh: 舒
+      n: 1
+      domain: motion
+    top_domains:
+    - key: motion
+      zh: 動行类
+      n: 3
+    internal_weight: 5.0
+  - id: 8
+    size: 2
+    members:
+    - id: m:稱
+      zh: 稱
+      n: 8
+      domain: speech
+    - id: m:名
+      zh: 名
+      n: 6
+      domain: speech
+    top_domains:
+    - key: speech
+      zh: 言說类
+      n: 2
+    internal_weight: 16.0
+  - id: 9
+    size: 2
+    members:
+    - id: m:寂
+      zh: 寂
+      n: 8
+      domain: virtue
+    - id: m:靜
+      zh: 靜
+      n: 8
+      domain: virtue
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 2
+    internal_weight: 19.0
+  - id: 10
+    size: 2
+    members:
+    - id: m:宮
+      zh: 宮
+      n: 6
+      domain: space
+    - id: m:殿
+      zh: 殿
+      n: 6
+      domain: space
+    top_domains:
+    - key: space
+      zh: 空間类
+      n: 2
+    internal_weight: 18.0
+  - id: 11
+    size: 2
+    members:
+    - id: m:變
+      zh: 變
+      n: 6
+      domain: motion
+    - id: m:化
+      zh: 化
+      n: 6
+      domain: motion
+    top_domains:
+    - key: motion
+      zh: 動行类
+      n: 2
+    internal_weight: 14.0
+  - id: 12
+    size: 2
+    members:
+    - id: m:護
+      zh: 護
+      n: 4
+      domain: virtue
+    - id: m:守
+      zh: 守
+      n: 1
+      domain: virtue
+    top_domains:
+    - key: virtue
+      zh: 功德类
+      n: 2
+    internal_weight: 3.0
+  - id: 13
+    size: 2
+    members:
+    - id: m:星
+      zh: 星
+      n: 4
+      domain: time
+    - id: m:宿
+      zh: 宿
+      n: 3
+      domain: time
+    top_domains:
+    - key: time
+      zh: 時間类
+      n: 2
+    internal_weight: 8.0
+  - id: 14
+    size: 2
+    members:
+    - id: m:堅
+      zh: 堅
+      n: 4
+      domain: power
+    - id: m:固
+      zh: 固
+      n: 3
+      domain: power
+    top_domains:
+    - key: power
+      zh: 威势力类
+      n: 2
+    internal_weight: 7.0
+  - id: 15
+    size: 2
+    members:
+    - id: m:成
+      zh: 成
+      n: 4
+      domain: motion
+    - id: m:就
+      zh: 就
+      n: 3
+      domain: motion
+    top_domains:
+    - key: motion
+      zh: 動行类
+      n: 2
+    internal_weight: 7.0
+  - id: 16
+    size: 2
+    members:
+    - id: m:思
+      zh: 思
+      n: 4
+      domain: wisdom
+    - id: m:惟
+      zh: 惟
+      n: 3
+      domain: wisdom
+    top_domains:
+    - key: wisdom
+      zh: 智慧类
+      n: 2
+    internal_weight: 8.0
+  - id: 17
+    size: 2
+    members:
+    - id: m:速
+      zh: 速
+      n: 3
+      domain: power
+    - id: m:疾
+      zh: 疾
+      n: 3
+      domain: power
+    top_domains:
+    - key: power
+      zh: 威势力类
+      n: 2
+    internal_weight: 8.0
+  - id: 18
+    size: 2
+    members:
+    - id: m:境
+      zh: 境
+      n: 2
+      domain: space
+    - id: m:如來
+      zh: 如來
+      n: 1
+      domain: unassigned
+    top_domains:
+    - key: space
+      zh: 空間类
+      n: 1
+    - key: unassigned
+      zh: 未定
+      n: 1
+    internal_weight: 3.0
+  - id: 19
+    size: 2
+    members:
+    - id: m:增
+      zh: 增
+      n: 2
+      domain: motion
+    - id: m:長
+      zh: 長
+      n: 2
+      domain: motion
+    top_domains:
+    - key: motion
+      zh: 動行类
+      n: 2
+    internal_weight: 5.0
+  - id: 20
+    size: 2
+    members:
+    - id: m:知
+      zh: 知
+      n: 2
+      domain: wisdom
+    - id: m:足
+      zh: 足
+      n: 2
+      domain: form
+    top_domains:
+    - key: wisdom
+      zh: 智慧类
+      n: 1
+    - key: form
+      zh: 形相类
+      n: 1
+    internal_weight: 4.0
+  - id: 21
+    size: 2
+    members:
+    - id: m:印
+      zh: 印
+      n: 1
+      domain: form
+    - id: m:手
+      zh: 手
+      n: 1
+      domain: form
+    top_domains:
+    - key: form
+      zh: 形相类
+      n: 2
+    internal_weight: 3.0
+  community_coverage: 0.625
+benchmark:
+  note_zh: 雷达图各轴皆已**逐轴极差归一**（同轴内最劣为 0、最优为 1），故只可比较「同一指标之相对位次」，**不可**跨轴比较绝对大小——归一即抹去量纲。轴之朝向为「外优内劣」，故多边形越外扩者越优；惟
+    low 占比、判读存疑占比二轴本为「内优外劣」（越低越好），已在图中反向标示，不可误读为「越大越好」。
+  note_en: Every axis is min-max normalised within itself (worst = 0, best = 1), so only the relative
+    standing on one metric is comparable; magnitudes across axes are not, since normalisation removes
+    scale. Outward is better, except the two uncertainty axes (low rate, uncertain-reading rate) where
+    inward is better — these are drawn inverted and must not be read as 'bigger is better'.
+  dims:
+  - key: core_len_mean
+    zh: 核名平均字数
+    en: Mean core length
+    unit: char
+    higher_better: true
+    min: 3.77
+    max: 5.61
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 5.5
+    - key: deities
+      zh: 异生众·十九类神
+      v: 5.61
+    - key: eight
+      zh: 异生众·八部
+      v: 3.77
+    - key: desire
+      zh: 异生众·欲界主
+      v: 4.22
+    - key: form
+      zh: 异生众·色界主
+      v: 4.37
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.9402
+    - key: deities
+      zh: 异生众·十九类神
+      v: 1.0
+    - key: eight
+      zh: 异生众·八部
+      v: 0.0
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.2446
+    - key: form
+      zh: 异生众·色界主
+      v: 0.3261
+  - key: n_distinct_morph
+    zh: 不同词素数
+    en: Distinct morphemes
+    unit: count
+    higher_better: true
+    min: 49.0
+    max: 222.0
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 49.0
+    - key: deities
+      zh: 异生众·十九类神
+      v: 222.0
+    - key: eight
+      zh: 异生众·八部
+      v: 124.0
+    - key: desire
+      zh: 异生众·欲界主
+      v: 106.0
+    - key: form
+      zh: 异生众·色界主
+      v: 62.0
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.0
+    - key: deities
+      zh: 异生众·十九类神
+      v: 1.0
+    - key: eight
+      zh: 异生众·八部
+      v: 0.4335
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.3295
+    - key: form
+      zh: 异生众·色界主
+      v: 0.0751
+  - key: word_rate
+    zh: 多字词占比
+    en: Multi-char word rate
+    unit: ratio
+    higher_better: true
+    min: 0.0391
+    max: 0.0985
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.0891
+    - key: deities
+      zh: 异生众·十九类神
+      v: 0.0391
+    - key: eight
+      zh: 异生众·八部
+      v: 0.0824
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.0739
+    - key: form
+      zh: 异生众·色界主
+      v: 0.0985
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.8415
+    - key: deities
+      zh: 异生众·十九类神
+      v: 0.0
+    - key: eight
+      zh: 异生众·八部
+      v: 0.7285
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.5861
+    - key: form
+      zh: 异生众·色界主
+      v: 1.0
+  - key: lowconf_pct
+    zh: low 占比
+    en: Low-confidence rate
+    unit: ratio
+    higher_better: true
+    min: 0.0
+    max: 1.3
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 1.0
+    - key: deities
+      zh: 异生众·十九类神
+      v: 1.3
+    - key: eight
+      zh: 异生众·八部
+      v: 0.7
+    - key: desire
+      zh: 异生众·欲界主
+      v: 1.1
+    - key: form
+      zh: 异生众·色界主
+      v: 0.0
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.7692
+    - key: deities
+      zh: 异生众·十九类神
+      v: 1.0
+    - key: eight
+      zh: 异生众·八部
+      v: 0.5385
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.8462
+    - key: form
+      zh: 异生众·色界主
+      v: 0.0
+  - key: medlow_pct
+    zh: 判读存疑占比
+    en: Uncertain-reading rate
+    unit: ratio
+    higher_better: true
+    min: 11.8
+    max: 17.9
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 11.9
+    - key: deities
+      zh: 异生众·十九类神
+      v: 14.5
+    - key: eight
+      zh: 异生众·八部
+      v: 17.9
+    - key: desire
+      zh: 异生众·欲界主
+      v: 15.9
+    - key: form
+      zh: 异生众·色界主
+      v: 11.8
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.0164
+    - key: deities
+      zh: 异生众·十九类神
+      v: 0.4426
+    - key: eight
+      zh: 异生众·八部
+      v: 1.0
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.6721
+    - key: form
+      zh: 异生众·色界主
+      v: 0.0
+  - key: domain_top_share
+    zh: 主域集中度
+    en: Top-domain share
+    unit: ratio
+    higher_better: true
+    min: 0.188
+    max: 0.291
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.188
+    - key: deities
+      zh: 异生众·十九类神
+      v: 0.233
+    - key: eight
+      zh: 异生众·八部
+      v: 0.21
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.222
+    - key: form
+      zh: 异生众·色界主
+      v: 0.291
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.0
+    - key: deities
+      zh: 异生众·十九类神
+      v: 0.4369
+    - key: eight
+      zh: 异生众·八部
+      v: 0.2136
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.3301
+    - key: form
+      zh: 异生众·色界主
+      v: 1.0
+  - key: lexical_economy
+    zh: 语汇经济率
+    en: Lexical economy
+    unit: ratio
+    higher_better: true
+    min: 0.5149
+    max: 0.7828
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.5149
+    - key: deities
+      zh: 异生众·十九类神
+      v: 0.7828
+    - key: eight
+      zh: 异生众·八部
+      v: 0.5356
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.6268
+    - key: form
+      zh: 异生众·色界主
+      v: 0.6946
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 0.0
+    - key: deities
+      zh: 异生众·十九类神
+      v: 1.0
+    - key: eight
+      zh: 异生众·八部
+      v: 0.0774
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.4177
+    - key: form
+      zh: 异生众·色界主
+      v: 0.6708
+  - key: names_per_class
+    zh: 每类平均名号数
+    en: Names per class
+    unit: ratio
+    higher_better: true
+    min: 10.0
+    max: 20.0
+    raw:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 20.0
+    - key: deities
+      zh: 异生众·十九类神
+      v: 10.0
+    - key: eight
+      zh: 异生众·八部
+      v: 10.0
+    - key: desire
+      zh: 异生众·欲界主
+      v: 10.4286
+    - key: form
+      zh: 异生众·色界主
+      v: 10.2
+    norm:
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      v: 1.0
+    - key: deities
+      zh: 异生众·十九类神
+      v: 0.0
+    - key: eight
+      zh: 异生众·八部
+      v: 0.0
+    - key: desire
+      zh: 异生众·欲界主
+      v: 0.0429
+    - key: form
+      zh: 异生众·色界主
+      v: 0.02
+  groups:
+  - key: bodhisattva
+    zh: 同生众·菩萨
+    en: Bodhisattvas
+    n_named: 20
+    n_classes: 1
+    n_tokens: 101
+  - key: deities
+    zh: 异生众·十九类神
+    en: Nineteen classes of deities
+    n_named: 190
+    n_classes: 19
+    n_tokens: 1022
+  - key: eight
+    zh: 异生众·八部
+    en: EightLegions
+    n_named: 80
+    n_classes: 8
+    n_tokens: 267
+  - key: desire
+    zh: 异生众·欲界主
+    en: Desire-realm deities
+    n_named: 73
+    n_classes: 7
+    n_tokens: 284
+  - key: form
+    zh: 异生众·色界主
+    en: Form-realm deities
+    n_named: 51
+    n_classes: 5
+    n_tokens: 203
+quality:
+  note_zh: 本节度量「本分析自身之可信度」，非度量经文。稳健性检验回答的问题是：若剔除某一级数据，结论会不会翻转？翻转者不可依赖。
+  note_en: 'This section measures the reliability of the analysis itself, not of the sutra. The robustness
+    test asks: if one confidence grade were removed, would the conclusion flip? Conclusions that flip
+    cannot be relied upon.'
+  grade_policy_zh: low 单级＝标注义务（须显示〔待考〕）；med+low ＝比较之需。二者口径不同，严禁相混。
+  grade_policy_en: low alone is an annotation duty (must display 〔待考〕); med+low is for comparison. The
+    two calibers differ and must never be conflated.
+  worst_classes:
+  - idx: 10
+    cat: 主稼神
+    group_zh: 异生众·十九类神
+    n_tokens: 59
+    med: 20
+    low: 1
+    rate: 0.3559
+  - idx: 34
+    cat: 他化自在天王
+    group_zh: 异生众·欲界主
+    n_tokens: 37
+    med: 7
+    low: 2
+    rate: 0.2432
+  - idx: 25
+    cat: 諸大龍王
+    group_zh: 异生众·八部
+    n_tokens: 26
+    med: 6
+    low: 0
+    rate: 0.2308
+  - idx: 31
+    cat: 須夜摩天王
+    group_zh: 异生众·欲界主
+    n_tokens: 39
+    med: 8
+    low: 1
+    rate: 0.2308
+  - idx: 5
+    cat: 主城神
+    group_zh: 异生众·十九类神
+    n_tokens: 60
+    med: 13
+    low: 0
+    rate: 0.2167
+  - idx: 23
+    cat: 摩睺羅伽王
+    group_zh: 异生众·八部
+    n_tokens: 38
+    med: 7
+    low: 1
+    rate: 0.2105
+  - idx: 24
+    cat: 夜叉王
+    group_zh: 异生众·八部
+    n_tokens: 29
+    med: 5
+    low: 1
+    rate: 0.2069
+  - idx: 22
+    cat: 緊那羅王
+    group_zh: 异生众·八部
+    n_tokens: 40
+    med: 8
+    low: 0
+    rate: 0.2
+  - idx: 26
+    cat: 鳩槃荼王
+    group_zh: 异生众·八部
+    n_tokens: 36
+    med: 7
+    low: 0
+    rate: 0.1944
+  - idx: 3
+    cat: 足行神
+    group_zh: 异生众·十九类神
+    n_tokens: 37
+    med: 7
+    low: 0
+    rate: 0.1892
+  - idx: 7
+    cat: 主山神
+    group_zh: 异生众·十九类神
+    n_tokens: 58
+    med: 9
+    low: 1
+    rate: 0.1724
+  - idx: 20
+    cat: 阿脩羅王
+    group_zh: 异生众·八部
+    n_tokens: 25
+    med: 4
+    low: 0
+    rate: 0.16
+  - idx: 30
+    cat: 三十三天王
+    group_zh: 异生众·欲界主
+    n_tokens: 44
+    med: 7
+    low: 0
+    rate: 0.1591
+  - idx: 14
+    cat: 主火神
+    group_zh: 异生众·十九类神
+    n_tokens: 58
+    med: 9
+    low: 0
+    rate: 0.1552
+  - idx: 15
+    cat: 主風神
+    group_zh: 异生众·十九类神
+    n_tokens: 58
+    med: 9
+    low: 0
+    rate: 0.1552
+  robustness:
+  - id: R1
+    zh: 五群按「判读存疑率」（med+low / 总词素位）排序：full vs 除 low 后
+    en: 'ranking of the five groups by uncertain-reading rate: full vs low excluded'
+    full:
+    - key: eight
+      zh: 异生众·八部
+      rate: 0.1705
+    - key: desire
+      zh: 异生众·欲界主
+      rate: 0.1536
+    - key: deities
+      zh: 异生众·十九类神
+      rate: 0.1441
+    - key: form
+      zh: 异生众·色界主
+      rate: 0.1188
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      rate: 0.1122
+    no_low:
+    - key: eight
+      zh: 异生众·八部
+      rate: 0.1641
+    - key: desire
+      zh: 异生众·欲界主
+      rate: 0.1475
+    - key: deities
+      zh: 异生众·十九类神
+      rate: 0.1339
+    - key: form
+      zh: 异生众·色界主
+      rate: 0.1188
+    - key: bodhisattva
+      zh: 同生众·菩萨
+      rate: 0.1122
+    order_preserved: true
+    claim_zh: 若排除低置信词素位（low）之后，五群之存疑率排序仍保持不变，则该排序对 low 之影响较小。
+    claim_en: If the ranking of the five groups by med+low rate remains unchanged when low-grade tokens
+      are excluded, the ranking is not driven solely by low-confidence items.
+    finding_zh: full 排序：异生众·八部 > 异生众·欲界主 > 异生众·十九类神 > 异生众·色界主 > 同生众·菩萨；除 low 后：相同
+    finding_en: 'Full ranking: eight > desire > deities > form > bodhisattva; excluding low: unchanged'
+    result: preserved
+    result_zh: 排序不变
+    result_en: ranking preserved
+    conclusion_zh: 排序不变，故最存疑之群的排序不依赖 low 等级之数据
+    conclusion_en: order is preserved, so the ranking of most-uncertain group does not depend on low-grade
+      data
+  - id: R2
+    zh: 树状图之共形相关系数（树高与原距离之相关）
+    en: cophenetic correlation of the dendrogram (tree heights vs original distances)
+    value: 0.6948
+    claim_zh: 若共形相关系数 ≥ 0.75，则树结构与原始距离之吻合度尚可，层级大致可信。
+    claim_en: If the cophenetic correlation is ≥ 0.75, the dendrogram structure agrees sufficiently with
+      the original distances.
+    finding_zh: 共形相关系数 = 0.6948
+    finding_en: Cophenetic correlation = 0.6948
+    result: weak
+    result_zh: 吻合度偏弱
+    result_en: weak
+    conclusion_zh: 共形相关系数偏低，树结构与原距离之吻合度弱，层次仅宜作参考
+    conclusion_en: agreement is weak, so the hierarchy should be treated as indicative only
+  - id: R3
+    zh: 群内平均相似度 vs 群外平均相似度
+    en: mean similarity within vs across groups
+    within: 0.4161
+    across: 0.3113
+    claim_zh: 若群内平均相似度高于群外平均相似度，则聚类之内聚性优于随机，即分群具备统计意义。
+    claim_en: If within-group mean similarity exceeds across-group mean similarity, within-cluster cohesion
+      is better than random.
+    finding_zh: 群内 = 0.4161，群外 = 0.3113（差值 0.1048）
+    finding_en: within = 0.4161, across = 0.3113 (diff 0.1048)
+    result: within>across
+    result_zh: 群内 > 群外
+    result_en: within > across
+    conclusion_zh: 群内显著高于群外，故「五群」之划分与语汇面貌**大体相应**
+    conclusion_en: within-group similarity clearly exceeds across-group, so the five-group division broadly
+      tracks lexical profile
+  outliers:
+  - idx: 38
+    cat: 廣果天王
+    group_zh: 异生众·色界主
+    mean_sim: 0.1839
+  - idx: 39
+    cat: 大自在天王
+    group_zh: 异生众·色界主
+    mean_sim: 0.1936
+  - idx: 20
+    cat: 阿脩羅王
+    group_zh: 异生众·八部
+    mean_sim: 0.1985
+  - idx: 25
+    cat: 諸大龍王
+    group_zh: 异生众·八部
+    mean_sim: 0.2063
+  - idx: 18
+    cat: 主夜神
+    group_zh: 异生众·十九类神
+    mean_sim: 0.2233
+  - idx: 16
+    cat: 主空神
+    group_zh: 异生众·十九类神
+    mean_sim: 0.2277
+  - idx: 9
+    cat: 主藥神
+    group_zh: 异生众·十九类神
+    mean_sim: 0.2495
+  - idx: 17
+    cat: 主方神
+    group_zh: 异生众·十九类神
+    mean_sim: 0.2527
+  - idx: 19
+    cat: 主晝神
+    group_zh: 异生众·十九类神
+    mean_sim: 0.27
+  - idx: 28
+    cat: 月天子
+    group_zh: 异生众·欲界主
+    mean_sim: 0.2886
+  outlier_note_zh: 离群类＝其语汇面貌与任何他类皆不相近者。此非缺陷，反而标出语汇之边界个案。
+  outlier_note_en: Outlier classes are those whose lexical profile resembles no other. This is not a defect;
+    it marks boundary cases of the lexicon.
+  metrics_snapshot:
+    tokens_total: 1877
+    distinct_tokens: 304
+    lowconf_hits: 19
+    medconf_hits: 258
+    unassigned_segs: 19
+    unassigned_lexeme_segs: 16
+    unassigned_unresolved_glyph_segs: 3
+    unassigned_backlog_segs: 0
+    coverage_pct: 100.0
+    n_no_core: 0
+ordinal:
+  note_zh: 本节问：经文把四十类依次排出，其**前后相邻**之两类是否比随机两两更相近？若显著更高，则类次之编排本身含语义梯度（非随机排列）；若不显著，则类次或为编纂体例之故。此为统计检验，不涉教义。
+  note_en: This section asks whether classes adjacent in the sutra's order are more similar than randomly
+    chosen pairs. If significantly higher, the ordering itself carries a semantic gradient rather than
+    being arbitrary; if not, the order may reflect editorial convention. This is a statistical test, not
+    a doctrinal one.
+  method_zh: 以 LCG 定种（种子 19970815）作 5000 次随机置换之零分布，取 z 值与正态近似 p
+  method_en: Null distribution from 5000 random permutations drawn from a seeded LCG (seed 19970815);
+    z statistic and normal-approximation p
+  adjacent_mean: 0.5533
+  null_mean: 0.3426
+  null_sd: 0.0343
+  z: 6.1388
+  p: 0.0
+  all_pairs_mean: 0.3422
+  same_group_adjacent: 0.566
+  cross_group_adjacent: 0.4421
+  confound:
+    adj_same_template_mean: 0.5675
+    adj_diff_template_mean: 0.5307
+    same_minus_diff: 0.0368
+    n_same_template: 24
+    n_diff_template: 15
+    tail_of_class:
+    - idx: 0
+      cat: 菩薩摩訶薩
+      tail: 菩薩摩訶薩
+    - idx: 1
+      cat: 執金剛神
+      tail: 執金剛神
+    - idx: 2
+      cat: 身眾神
+      tail: 身眾神
+    - idx: 3
+      cat: 足行神
+      tail: 足行神
+    - idx: 4
+      cat: 道場神
+      tail: 道場神
+    - idx: 5
+      cat: 主城神
+      tail: 神
+    - idx: 6
+      cat: 主地神
+      tail: 神
+    - idx: 7
+      cat: 主山神
+      tail: 神
+    - idx: 8
+      cat: 主林神
+      tail: 神
+    - idx: 9
+      cat: 主藥神
+      tail: 神
+    - idx: 10
+      cat: 主稼神
+      tail: 神
+    - idx: 11
+      cat: 主河神
+      tail: 神
+    - idx: 12
+      cat: 主海神
+      tail: 神
+    - idx: 13
+      cat: 主水神
+      tail: 神
+    - idx: 14
+      cat: 主火神
+      tail: 神
+    - idx: 15
+      cat: 主風神
+      tail: 神
+    - idx: 16
+      cat: 主空神
+      tail: 神
+    - idx: 17
+      cat: 主方神
+      tail: 神
+    - idx: 18
+      cat: 主夜神
+      tail: 神
+    - idx: 19
+      cat: 主晝神
+      tail: 神
+    - idx: 20
+      cat: 阿脩羅王
+      tail: 阿脩羅王
+    - idx: 21
+      cat: 迦樓羅王
+      tail: 迦樓羅王
+    - idx: 22
+      cat: 緊那羅王
+      tail: 緊那羅王
+    - idx: 23
+      cat: 摩睺羅伽王
+      tail: 摩睺羅伽王
+    - idx: 24
+      cat: 夜叉王
+      tail: 夜叉王
+    - idx: 25
+      cat: 諸大龍王
+      tail: 龍王
+    - idx: 26
+      cat: 鳩槃荼王
+      tail: 鳩槃荼王
+    - idx: 27
+      cat: 乾闥婆王
+      tail: 乾闥婆王
+    - idx: 28
+      cat: 月天子
+      tail: 天子
+    - idx: 29
+      cat: 日天子
+      tail: 天子
+    - idx: 30
+      cat: 三十三天王
+      tail: 天王
+    - idx: 31
+      cat: 須夜摩天王
+      tail: 天王
+    - idx: 32
+      cat: 兜率陀天王
+      tail: 天王
+    - idx: 33
+      cat: 化樂天王
+      tail: 天王
+    - idx: 34
+      cat: 他化自在天王
+      tail: 天王
+    - idx: 35
+      cat: 大梵天王
+      tail: 天王
+    - idx: 36
+      cat: 光音天王
+      tail: 天王
+    - idx: 37
+      cat: 遍淨天王
+      tail: 天王
+    - idx: 38
+      cat: 廣果天王
+      tail: 天王
+    - idx: 39
+      cat: 大自在天王
+      tail: 天王
+    n_distinct_tail: 16
+    note_zh: '**本节之 z 值须与混淆诊断对读**：全品中「主X神」诸类共用一句式（类尾同为「神」），句式相同故域分布趋同；此类又被排为相邻，故相邻相似度可能被推高。但实测混淆幅度有限：同句式相邻
+      0.5675 与异句式相邻 0.5307 仅差 0.0368，故主效应非由此项造成。为不凭推理定论，另立**去混淆检验**（de-confounded，见下）：仅取异句式之相邻类对重作置换检验，此为「语义梯度」之真正所在之判据。'
+    note_en: 'The z statistic must be read together with this confounding check. The 「主X神」 classes of
+      this sutra share one template (the same class tail, 「神」), so their domain profiles converge; they
+      are also placed adjacently, which could inflate adjacent similarity. The measured confound is however
+      small: same-template adjacent 0.5675 differs from different-template adjacent 0.5307 by only 0.0368,
+      so the main effect is not produced by it. Rather than settle this by argument, a separate de-confounded
+      test is run below, using adjacent pairs with different templates only; that is the real criterion
+      for a semantic gradient.'
+    deconfounded:
+      zh: 去混淆检验 · 仅取跨句式边界之相邻类对
+      en: De-confounded test — adjacent pairs crossing a template boundary only
+      n_pairs: 15
+      observed_mean: 0.5307
+      null_mean: 0.3217
+      null_sd: 0.0358
+      z: 5.8313
+      p: 0.0
+      significant: true
+      null_pair_count_mean: 31.441
+      method_zh: 零假设：句式标签沿类序之排列出于偶然。置换时标签随其所属类一同移动，于置换序中取「标签不同」之相邻类对求均值——与观测统计量口径全同。旧式实现误取置换序之前 n 个相邻类对而未筛标签，使同句式之对混入零分布，此已更正。
+      method_en: 'Null hypothesis: the arrangement of template labels along the class order is accidental.
+        Under permutation each label travels with its own class, and the statistic is the mean similarity
+        of adjacent pairs whose labels differ — identical in construction to the observed statistic. An
+        earlier implementation took the first n adjacent pairs of the permuted order without screening
+        labels, so same-template pairs contaminated the null; this has been corrected.'
+      caveat_zh: 置换后「跨边界相邻对」之个数并不恒等于观测之 15（零分布均值 31.441），故统计量在名义上略有异方差，z 值宜读作量级而非精确显著性。且句式标签仅取「类首名之末字」一端为代理，此一代理是否足表句式，仍属待考。
+      caveat_en: The number of boundary-crossing adjacent pairs under permutation does not equal the observed
+        15 (null mean 31.441), so the statistic is nominally heteroscedastic and z should be read as an
+        order of magnitude rather than an exact significance. Template labels moreover take only the last
+        character of each class's leading name as their proxy, and whether that proxy adequately represents
+        the template remains an open question.
+      note_zh: 此为**排除「同句式聚于相邻」这一混淆项之后**的独立检验。若仍显著，则「类次编排含语义梯度」之断不依赖句式同聚，可独立成立；若不显著，则该断只能归因于句式同聚，须撤回。
+      note_en: This test excludes the confounding effect of same-template classes being adjacent. If it
+        remains significant, the claim that the ordering carries a semantic gradient survives independently
+        of template adjacency; if not, that claim must be withdrawn as an artefact of template adjacency.
+  segments:
+  - group: deities
+    zh: 异生众·十九类神
+    from_idx: 1
+    to_idx: 19
+    n_classes: 19
+    mean_sim_internal: 0.4115
+  - group: eight
+    zh: 异生众·八部
+    from_idx: 20
+    to_idx: 27
+    n_classes: 8
+    mean_sim_internal: 0.4251
+  - group: desire
+    zh: 异生众·欲界主
+    from_idx: 28
+    to_idx: 34
+    n_classes: 7
+    mean_sim_internal: 0.3818
+  - group: form
+    zh: 异生众·色界主
+    from_idx: 35
+    to_idx: 39
+    n_classes: 5
+    mean_sim_internal: 0.5422
+  conclusion_zh: 相邻类显著更相近（z=6.14）。去混淆检验（仅异句式相邻对，n=15）仍然显著（z=5.83），故「类次编排含语义梯度」之断成立，且不依赖同句式聚于相邻之效应。
+  conclusion_en: Adjacent classes are significantly more similar (z=6.14). The de-confounded test (different-template
+    adjacent pairs only, n=15) remains significant (z=5.83), so the claim that the ordering carries a
+    semantic gradient holds and does not depend on the effect of same-template classes being placed adjacently.
+executive:
+  note_zh: 以下六条为执行摘要，每条皆附**证据字段**指回本报告之算得小节，可逐条复算。凡摘要不得为正文所无之断语。
+  note_en: The six findings below form the executive summary; each carries an evidence field pointing
+    back to the computed section of this report and is independently recomputable. The summary may not
+    assert anything absent from the body.
+  findings:
+  - id: F1
+    zh: 会众名号之语汇高度模板化：不同词素 304 个撑起 1,877 个词素位，语汇复用率 83.80%。
+    en: 'The vocabulary of the assemblies is strongly templated: 304 distinct morphemes support 1,877
+      token positions, a reuse rate of 83.80%.'
+    evidence: scorecard · reuse_rate；pareto · morphemes.k80=89
+  - id: F2
+    zh: 语义域分布并不均匀：主域为「冠綴类」占 19.02，有效域数仅 10.562（满值 16）。
+    en: 'The domain distribution is uneven: the leading domain is affix at 19.02%, with an effective number
+      of domains of only 10.562 (maximum 16).'
+    evidence: domain_landscape · HHI=0.116655, 归一熵=0.8502
+  - id: F3
+    zh: 「五群」之划分与语汇面貌群内显著高于群外，故「五群」之划分与语汇面貌**大体相应**（群内均值 0.4161 vs 群外 0.3113）。惟此对应并不严密：域×群之关联强度 Cramér's
+      V=0.2242，属弱至中等，故「五群」者乃**卷次所分之经文体例**，非由语汇面貌自然析出之类。
+    en: 'The five-group division is within-group similarity clearly exceeds across-group, so the five-group
+      division broadly tracks lexical profile (within-group mean 0.4161 vs across-group 0.3113). The correspondence
+      is not tight, however: a Cramér''s V of 0.2242 between domain and group is weak to moderate, so
+      the five groups are an editorial division by scroll, not classes that fall out of the lexical landscape.'
+    evidence: similarity · within=0.4161 vs across=0.3113；crosstab · Cramér's V=0.2242
+  - id: F4
+    zh: 构词之模板性在**字面**而不在**域构成**：414 名之核名首二字只落在 255 种二字组上（复用率 38.4%），而语义域序列则碎为 379 种（356 种只现一次，占 86.0%，归一熵
+      0.9897）。故此会众语汇乃同一批字反复组装，非同一批语义反复填充。
+    en: 'The templating of these names lies in the characters, not in the domain composition: the first
+      two characters of the 414 nuclei fall into only 255 distinct bigrams (a reuse rate of 38.4%), whereas
+      the semantic-domain sequences fragment into 379 patterns (356 of them occurring exactly once, 86.0%
+      of all names, normalised entropy 0.9897). The vocabulary therefore re-assembles the same stock of
+      characters rather than filling the same stock of meanings.'
+    evidence: templates · layer1_literal.n_distinct_bigram=255；layer2_domain.n_distinct=379，n_singleton=356
+  - id: F5
+    zh: 类次编排相邻类显著更相近（z=6.14）。去混淆检验（仅异句式相邻对，n=15）仍然显著（z=5.83），故「类次编排含语义梯度」之断成立，且不依赖同句式聚于相邻之效应。（相邻类平均相似度
+      0.5533，置换零分布 0.3426，z=6.1388）。
+    en: Adjacent classes are significantly more similar (z=6.14). The de-confounded test (different-template
+      adjacent pairs only, n=15) remains significant (z=5.83), so the claim that the ordering carries
+      a semantic gradient holds and does not depend on the effect of same-template classes being placed
+      adjacently. (mean similarity of adjacent classes 0.5533, permutation null 0.3426, z=6.1388).
+    evidence: ordinal · 5000 次置换检验；去混淆检验 n=15, z=5.8313
+  - id: F6
+    zh: 构词网络存在 22 个词素社群，覆盖 62.5% 之节点；此社群由名号内部共现生成，非经文语序。
+    en: The morphological network yields 22 communities covering 62.5% of nodes; these arise from co-occurrence
+      within names, not from the sutra's word order.
+    evidence: network · label propagation

@@ -927,3 +927,10 @@ if __name__ == '__main__':
                 print(f"        {r['snip']}")
     else:
         print("Usage: python scripts/db_reader.py [--stats|--export DIR|--verify|--search QUERY]")
+
+
+
+
+
+
+

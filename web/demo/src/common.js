@@ -2169,9 +2169,11 @@ function openGraphPanel() {
   })(24);
 })();
 
-// ═══ 章节级折叠（独立文章页 · h2/h3 层级，默认展开）═══
-// 长文经 h2/h3 分组为可折叠章节；点击标题或 ▾ 号折叠/展开该节，
-// 顶部提供「全部折叠 / 全部展开」工具栏；跳转目录/深链锚点前自动展开祖先节（_reveal）。
+// ═══ 章节级折叠（独立文章页 · h2/h3/h4/h5 层级，默认全部折叠）═══
+// 长文经各级标题分组为可折叠章节；点击标题或 ▾ 号折叠/展开该节，
+// 每节顶部提供「全部折叠 / 全部展开」工具栏；
+// 跳转目录/深链锚点前自动展开祖先节（_reveal），故折叠不影响导航。
+// 依站点设置：所有标题层次默认折叠（含数据剖面），故 foldDefault 默认 true。
 
 // 展开包裹 el 的折叠祖先节（目录/锚点跳转前调用，防止目标「藏在折叠体内」）
 window._reveal = function (el) {
@@ -2189,25 +2191,31 @@ window._reveal = function (el) {
   return el;
 };
 
-// 载入章节折叠。rootSel：长文容器；结束返回 {h2, h3, groups} 或 0。
-window._foldDoc = function (rootSel) {
+// 载入章节折叠。rootSel：长文容器；opts：{foldDefault(默认 true), label(工具栏前缀)}。
+// 结束返回 {h2, h3, h4, h5, groups, total} 或 0。
+window._foldDoc = function (rootSel, opts) {
+  var o = opts || {};
   var root = typeof rootSel === 'string' ? document.querySelector(rootSel) : rootSel;
   if (!root) return 0;
   if (root.dataset.sfDone === '1') return 0;
   root.dataset.sfDone = '1';
-  var h2 = 0, h3 = 0, groups = 0;
+  var counts = { 2: 0, 3: 0, 4: 0, 5: 0 }, groups = 0, total = 0;
+  var LV = 'h2, h3, h4, h5';
+  var SEL = 'h2.secfold, h3.secfold, h4.secfold, h5.secfold';
 
   function caret() { return '<span class="secfold-caret" aria-hidden="true">▾</span>'; }
 
   function setFolded(h, folded) {
     h.classList.toggle('is-folded', !!folded);
+    if (folded) h.setAttribute('aria-expanded', 'false');
+    else h.setAttribute('aria-expanded', 'true');
   }
 
-  // 1) 标记全部可折叠标题（跳过 data-skip-toc 之页头性标题；h4 依附于 h3 节内不折叠）
-  root.querySelectorAll('h2, h3').forEach(function (h) {
+  // 1) 标记全部可折叠标题（跳过 data-skip-toc 之页头性标题）
+  root.querySelectorAll(LV).forEach(function (h) {
     if (h.hasAttribute('data-skip-toc')) return;
     if (h.classList.contains('secfold')) return;
-    var lv = h.tagName === 'H2' ? 2 : 3;
+    var lv = +h.tagName.charAt(1);
     h.classList.add('secfold');
     h.dataset.fh = lv;
     if (!h.tabIndex) h.tabIndex = 0;
@@ -2215,15 +2223,18 @@ window._foldDoc = function (rootSel) {
     h.addEventListener('click', function (e) {
       var c = e.target && e.target.closest && e.target.closest('.secfold-caret');
       if (c) e.stopPropagation();
-      setFolded(h, !h.classList.contains('is-folded'));
+      setFolded(h, h.classList.contains('is-folded'));
     });
     h.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFolded(h, !h.classList.contains('is-folded')); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFolded(h, h.classList.contains('is-folded')); }
     });
+    counts[lv] = (counts[lv] || 0) + 1;
+    total++;
   });
 
-  // 2) 依层级（2→3）把后续同级兄弟包入 .secfold-body（标题与其 body 保持相邻兄弟）
+  // 2) 依层级递归（2→3→4→5）把下级标题及其正文包入 .secfold-body（标题与 body 相邻兄弟）
   function wrapLevel(container, level) {
+    if (level > 5) return;
     var kids = Array.prototype.slice.call(container.children);
     for (var i = 0; i < kids.length; i++) {
       var el = kids[i];
@@ -2244,31 +2255,40 @@ window._foldDoc = function (rootSel) {
       el.insertAdjacentElement('afterend', body);
       el.dataset.sfDone = '1';
       groups++;
-      if (level === 2) h2++; else h3++;
+      wrapLevel(body, level + 1);
     }
   }
 
   wrapLevel(root, 2);
-  root.querySelectorAll(':scope > .secfold-body').forEach(function (b) { wrapLevel(b, 3); });
 
+  // 3) 依设置置默认状态：全部折叠（可由 opts.foldDefault === false 退回展开）
+  var foldDefault = (o.foldDefault === undefined) ? true : !!o.foldDefault;
+  if (total) {
+    root.querySelectorAll(SEL).forEach(function (h) { setFolded(h, foldDefault); });
+  }
+
+  // 4) 工具栏：置于首个可折叠标题之前（页头「全文」标题 data-skip-toc 不参与）
   if (groups) {
-    // 3) 工具栏：置于首个可折叠标题之前（页头「全文」标题 data-skip-toc 不参与）
-    var first = root.querySelector('h2.secfold, h3.secfold');
+    var first = root.querySelector(SEL);
     if (first) {
       var bar = document.createElement('div');
       bar.className = 'secfold-bar';
-      bar.innerHTML = '<span style="opacity:.85">章节折叠 · 共 ' + (h2 + h3) + ' 节（h2×' + h2 + ' · h3×' + h3 + '）</span>'
+      var pre = o.label ? o.label + ' · ' : '';
+      var mix = [];
+      [2, 3, 4, 5].forEach(function (l) { if (counts[l]) mix.push('h' + l + '×' + counts[l]); });
+      bar.innerHTML = '<span style="opacity:.85">' + pre + '章节折叠 · 共 ' + total
+        + ' 节（' + mix.join(' · ') + '）</span>'
         + '<button type="button" class="sf-btn" data-sf="fold">全部折叠</button>'
         + '<button type="button" class="sf-btn" data-sf="open">全部展开</button>'
-        + '<span style="opacity:.6">点击任一标题可单独折叠／展开</span>';
+        + '<span style="opacity:.6">默认折叠 · 点击任一标题可单独展开</span>';
       bar.addEventListener('click', function (e) {
         var b = e.target.closest ? e.target.closest('.sf-btn') : null;
         if (!b) return;
         var fold = b.dataset.sf === 'fold';
-        root.querySelectorAll('h2.secfold, h3.secfold').forEach(function (x) { setFolded(x, fold); });
+        root.querySelectorAll(SEL).forEach(function (x) { setFolded(x, fold); });
       });
       first.parentNode.insertBefore(bar, first);
     }
   }
-  return { h2: h2, h3: h3, groups: groups };
+  return { h2: counts[2], h3: counts[3], h4: counts[4], h5: counts[5], groups: groups, total: total };
 };

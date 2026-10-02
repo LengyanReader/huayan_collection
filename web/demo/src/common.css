@@ -868,16 +868,18 @@ img.doc-img:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 }
 .img-lightbox .lb-close:hover { background: rgba(255, 255, 255, .24); }
 
-/* ═══ 章节级折叠 (article 长文 · h2/h3 层级，默认展开) ═══
-   _foldDoc 依据标层级把同段兄弟包入 .secfold-body；标题 `▾/▴` 号随收展旋转。 */
-h2.secfold, h3.secfold {
+/* ═══ 章节级折叠 (article 长文 · h2/h3/h4/h5 层级，默认全部折叠) ═══
+   _foldDoc 依据标层级把同段兄弟包入 .secfold-body；标题 `▾/▴` 号随收展旋转。
+   依设置：所有标题层次默认折叠，读者按需展开；目录跳转/深链锚点由 _reveal 自动展开祖先节。 */
+h2.secfold, h3.secfold, h4.secfold, h5.secfold {
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
   transition: color .15s;
   margin-right: 0;
 }
-h2.secfold:hover, h3.secfold:hover { color: var(--gold); }
+h2.secfold:hover, h3.secfold:hover, h4.secfold:hover, h5.secfold:hover { color: var(--gold); }
+h4.secfold, h5.secfold { font-size: .96em; }
 .secfold-caret {
   display: inline-block;
   margin-right: 8px;
@@ -888,7 +890,9 @@ h2.secfold:hover, h3.secfold:hover { color: var(--gold); }
   text-align: left;
 }
 h2.secfold.is-folded > .secfold-caret,
-h3.secfold.is-folded > .secfold-caret { transform: rotate(-90deg); }
+h3.secfold.is-folded > .secfold-caret,
+h4.secfold.is-folded > .secfold-caret,
+h5.secfold.is-folded > .secfold-caret { transform: rotate(-90deg); }
 .secfold.is-folded + .secfold-body { display: none; }
 .secfold-body > *:first-child { margin-top: 0; }
 .secfold-bar {

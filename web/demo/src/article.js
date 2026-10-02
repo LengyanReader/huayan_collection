@@ -105,9 +105,12 @@ function renderArticle(){
   // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
   _initArticleENMode();
 
-  // ── 章节级折叠：h2/h3 分级折叠（默认展开；标题 ▾/▴ 号点击可单独收展）──
+  // ── 章节级折叠：h2/h3/h4/h5 分级折叠（默认全部折叠；标题 ▾ 号点击可单独收展）──
+  // 依站点设置：包括数据剖面在内的所有标题层次默认折叠；
+  // 数据剖面须在其内容渲染完毕后再折叠，故置于 renderArticleEDA 之后。
   if(typeof _foldDoc==='function'){
     try{ _foldDoc('#article-full'); }catch(e){}
+    try{ _foldDoc('#article-eda', {label:'数据剖面'}); }catch(e){}
   }
 
   // ── 支持 #锚点 直达（目录跳转用真实 id 锚点；先展开折叠祖先节）──
