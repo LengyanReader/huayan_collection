@@ -46,10 +46,51 @@ def main():
     if len({i["figure_no"] for i in IM}) != len(IM):
         errs.append("登记表存在重复图号")
     # 图号须为裸「N-M」：若含「图 」前缀，渲染模板再补一字即成「图 图 N-M」
+    # L.102：卷三至卷五（4-x／5-x／6-x）入册，故放宽至 1—6 章（原为 1-2）
+    FIGPAT = r"[1-6]-\d+"
     for it in IM:
-        if not re.fullmatch(r"[12]-\d+", str(it["figure_no"]).strip()):
+        if not re.fullmatch(FIGPAT, str(it["figure_no"]).strip()):
             errs.append("登记表 %s 之 figure_no 非裸「N-M」式：%r"
                         % (it["id"], it["figure_no"]))
+
+    # ---- 0b. 四类框架（内容／名相／行动／象征）之声明与取值 ----
+    TD = Y.get("typology_definitions") or {}
+    if not TD:
+        errs.append("登记表缺 typology_definitions——凡例六「边界自知」："
+                    "入册之图须能自述其属「内容／名相／行动／象征」何类，不得只言『配图』")
+    else:
+        for k in ("内容", "名相", "行动", "象征"):
+            if not str(TD.get(k) or "").strip():
+                errs.append("typology_definitions 缺「%s」之定义（四类须齐备）" % k)
+        TYP = set(TD)
+        for it in IM:
+            if not str(it.get("typology") or "").strip():
+                errs.append("登记表 %s 缺 typology 字段（内容／名相／行动／象征）"
+                            % it["id"])
+            elif it["typology"] not in TYP:
+                errs.append("登记表 %s 之 typology=%r 不在四类之内（%s）"
+                            % (it["id"], it["typology"], "／".join(sorted(TYP))))
+    notes.append("四类框架：%s（各图须自报其类）"
+                 % "／".join("%s %d" % (k, sum(1 for i in IM
+                                              if i.get("typology") == k))
+                             for k in ("内容", "名相", "行动", "象征")))
+
+    # ---- 0c. 否定性记录：未配图之组须载明「未查」或「查无」，不可留白 ----
+    NEG = Y.get("negative_findings") or []
+    if not NEG:
+        warns.append("登记表缺 negative_findings——未能配图之组须留否定性记录，"
+                     "以免「查无此图」与「未查」不可辨（凡例六）")
+    else:
+        for nf in NEG:
+            for k in ("section", "motif_zh", "status", "query_terms", "note_zh"):
+                if not str(nf.get(k) or "").strip():
+                    errs.append("否定性记录 %s：字段 %s 为空"
+                                % (nf.get("motif_zh", "?"), k))
+            if nf.get("status") not in ("未查", "查无"):
+                errs.append("否定性记录 %s 之 status=%r 须为「未查」或「查无」"
+                            "（%s）" % (nf.get("motif_zh"), nf.get("status"),
+                                       nf.get("section")))
+        notes.append("否定性记录 %d 条（未查／查无各须注明检索词）" % len(NEG))
 
     # ---- 1. A 类不得无据（防拔高） ----
     for it in IM:
@@ -85,15 +126,20 @@ def main():
             if it["kind"] in ("B", "C") and "边界" not in blk:
                 errs.append("%s 属 %s 类，图注未见「边界」声明" % (it["id"], it["kind"]))
 
-    # ---- 4. 图号连续无缺 ----
-    fig1 = sorted(int(n) for c, n in re.findall(r"图 (\d+)-(\d+)　", doc) if c == "1")
-    fig2 = sorted(int(n) for c, n in re.findall(r"图 (\d+)-(\d+)　", doc) if c == "2")
-    if fig1 and fig1 != list(range(1, len(fig1) + 1)):
-        errs.append("第一分图图号不连续：%s" % fig1)
-    if fig2 and fig2 != list(range(1, len(fig2) + 1)):
-        errs.append("第二分图图号不连续：%s" % fig2)
-    notes.append("图号：1-%s ／ 2-%s（共 %d）" % (",".join(map(str, fig1)),
-                                                ",".join(map(str, fig2)), len(fig1) + len(fig2)))
+    # ---- 4. 图号连续无缺（逐章；L.102 由 1-2 两章泛化至各章皆验） ----
+    byc = collections.defaultdict(list)
+    for c, n in re.findall(r"图 (\d+)-(\d+)　", doc):
+        byc[c].append(int(n))
+    for c in sorted(byc):
+        ns = sorted(byc[c])
+        if ns != list(range(1, len(ns) + 1)):
+            errs.append("第 %s 分图图号不连续：%s" % (c, ns))
+    if not byc:
+        errs.append("全文未见「图 N-M　」式图注")
+    notes.append("图号：%s（共 %d）" % (
+        " ／ ".join("%s-%s" % (c, ",".join(map(str, sorted(byc[c]))))
+                    for c in sorted(byc)),
+        sum(len(v) for v in byc.values())))
 
     # ---- 4b. 逐图图注之图号须「恰一处」，且不得出现「图 图」重字 ----
     for it in IM:
@@ -101,7 +147,7 @@ def main():
         n = doc.count(pat)
         if n != 1:
             errs.append("图注「%s」在全文出现 %d 处（应恰 1 处）" % (pat, n))
-    for m in re.finditer(r"图\s+图\s*[12]-\d+", doc):
+    for m in re.finditer(r"图\s+图\s*[1-6]-\d+", doc):
         errs.append("图号重字「%s」——渲染模板与登记表图号重复加了「图」" % m.group(0))
 
     # ---- 4c. A 类为 0 时，须留下检索与否决记录（否则「查无此图」与「未查」不可辨） ----
@@ -112,6 +158,15 @@ def main():
                         "——须载明检索方式与逐条否决理由，方能区分「查无」与「未查」")
         else:
             notes.append("A 类 0 件，已留检索与否决记录（十.4）")
+
+    # ---- 4d. 未配图之组，文中须有对应之否定性记录（十.5）----
+    if NEG:
+        if "十.5" not in doc or "查无" not in doc:
+            errs.append("登记表载有 %d 条否定性记录，然文中未见「十.5」未配图组之"
+                        "「未查／查无」记录——凡例六：信息边界须自述，"
+                        "「查无此图」与「未查」不可混同" % len(NEG))
+        else:
+            notes.append("未配图组已留否定性记录（十.5），%d 条" % len(NEG))
 
     # ---- 5. 图注所指之登记册须真实存在 ----
     if "〔▲实证文物与图像登记〕" in doc:
