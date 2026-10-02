@@ -55,10 +55,20 @@ function renderArticle(){
     var _n=(ARTICLE_GRAPH.terms||[]).length,_e=(ARTICLE_GRAPH.links||[]).length;
     h+='<button class="f-nav-btn" onclick="openGraphPanel()" title="查看本文名相节点、边与信度分级">🕸 名相会处（'+_n+' 节点／'+_e+' 边）</button>';
   }
+  // 会众名号数据剖面：仅当 build.py 内嵌了 ARTICLE_EDA（SQLite 中有本文 EDA 表）时出现
+  if((typeof ARTICLE_EDA!=='undefined')&&ARTICLE_EDA&&ARTICLE_EDA.payload){
+    var _m=ARTICLE_EDA.metrics||{};
+    h+='<button class="f-nav-btn" onclick="edaGo()" title="查看会众名号的词素切分、语义域、群组剖面与共现网络">🔬 会众名号剖面（'+(_m.tokens_total||0)+' 词素位／'+(_m.distinct_tokens||0)+' 词素）</button>';
+  }
   h+='<button id="article-en-toggle" class="f-nav-btn" onclick="toggleArticleEN()" title="在「含英文批注」与「仅中文正文」之间切换显示">🌐 英文批注：显示</button>';
   h+='</span></h2>';
   h+=embed.html;
   h+='</div>';
+
+  // ── 会众名号数据剖面（EDA；仅当 build.py 内嵌 ARTICLE_EDA 时出现，由 common.js renderArticleEDA 填充）──
+  if((typeof ARTICLE_EDA!=='undefined')&&ARTICLE_EDA&&ARTICLE_EDA.payload){
+    h+='<div class="section" data-chrome="1" id="article-eda" style="border-left:4px solid var(--gold)"></div>';
+  }
 
   // ── 相关艺术品 · 文物 · 壁画 · 考古（默认折叠块，由 common.js renderArticleArtifacts 填充）──
   if((typeof ARTICLE_ARTIFACTS!=='undefined')&&ARTICLE_ARTIFACTS&&(ARTICLE_ARTIFACTS.items||[]).length){
@@ -87,6 +97,10 @@ function renderArticle(){
   if(typeof renderArticleArtifacts==='function' && document.getElementById('article-artifacts')){
     renderArticleArtifacts('#article-artifacts');
   }
+  // ── 会众名号数据剖面（EDA）──
+  if(typeof renderArticleEDA==='function' && document.getElementById('article-eda')){
+    renderArticleEDA('#article-eda');
+  }
 
   // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
   _initArticleENMode();
@@ -110,6 +124,13 @@ function renderArticle(){
 
 if(document.readyState!=='loading'){renderArticle();}
 else{document.addEventListener('DOMContentLoaded',renderArticle);}
+
+// 会众名号数据剖面：自页头按钮跳至该节（该节为页面末尾的大节，故直接滚到底）
+function edaGo(){
+  var el=document.getElementById('article-eda');
+  if(!el)return;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+}
 
 // ═══ 多语对读阅读模式：折叠/展开英文批注块 ═══
 // 批注块特征：以「英译对读 / 节级英译要义 / 术语格义 / 主题对读注 / 卷末批注」开头的 blockquote 视作「外文批注」，

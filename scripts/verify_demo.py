@@ -155,6 +155,26 @@ for obj in sorted(os.listdir(ARTICLES)):
         ('common.css', '../css/common.css' in html),
     ]
     bad = [c[0] for c in checks if not c[1]]
+    # 会众名号 EDA 页：数据与调用在页面内，渲染器本体在 js/common.js（外链共享），故分处检查。
+    # 分源之要：经文事实（ARTICLE_ASSEMBLY）须与编辑性析构（ARTICLE_EDA）并存且页面明言之。
+    if 'var ARTICLE_EDA' in html:
+        eda_checks = [
+            ('ARTICLE_ASSEMBLY (经文事实)', 'var ARTICLE_ASSEMBLY' in html),
+            ('renderArticleEDA 调用', "renderArticleEDA('#article-eda')" in html),
+            ('edaGo 入口', 'function edaGo' in html),
+            ('剖面节容器', 'id="article-eda"' in html),
+        ]
+        bad += [c[0] for c in eda_checks if not c[1]]
+        # 渲染器要件（声明/群组/热力）落在外链 js/common.js
+        cjs_path = os.path.join(DEMO, 'js', 'common.js')
+        cjs = open(cjs_path, encoding='utf-8').read() if os.path.exists(cjs_path) else ''
+        for label, token in (('renderArticleEDA 渲染器', 'function renderArticleEDA'),
+                             ('方法与限度声明', '切分方法与限度'),
+                             ('体例声明（编辑性析构）', '编辑性析构'),
+                             ('群组纵深', '群组纵深'),
+                             ('热力矩阵', '热力矩阵')):
+            if token not in cjs:
+                bad.append(f'js/common.js 缺 {label}')
     if bad:
         fail(f'articles/{obj}: missing {", ".join(bad)}')
     else:

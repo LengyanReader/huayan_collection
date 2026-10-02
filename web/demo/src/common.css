@@ -355,6 +355,44 @@ body.zh-only .en-cell {
   font-weight: 600;
 }
 
+/* ── Figure / Caption (学术图注：须小于正文 0.8em) ── */
+.content-article figure,
+#article-full figure {
+  margin: 18px 0 20px;
+}
+.content-article figure > svg,
+#article-full figure > svg {
+  display: block;
+  margin: 0 auto;
+}
+.content-article figcaption,
+#article-full figcaption {
+  font-size: 0.75em;
+  line-height: 1.8;
+  color: var(--text2);
+  padding: 10px 14px 2px;
+  border-top: 1px solid var(--line);
+  margin-top: 10px;
+  text-align: justify;
+}
+.content-article figcaption b,
+#article-full figcaption b {
+  color: var(--gold);
+  font-weight: 600;
+}
+.content-article figcaption .en-line,
+#article-full figcaption .en-line {
+  display: block;
+  font-size: 0.92em;
+  line-height: 1.7;
+  color: var(--text2);
+  font-style: italic;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  text-align: left;
+}
+
 /* ── Stage Box (left gold-border blockquote style) ── */
 .stage-box {
   border-left: 4px solid var(--gold);
@@ -1244,3 +1282,48 @@ h3.secfold.is-folded > .secfold-caret { transform: rotate(-90deg); }
     overflow: visible;
   }
 }
+
+/* ═══ 会众名号数据剖面（EDA）· articles/shizhu-miaoyan.html ═══
+   类名一律 eda-* 前缀，避免与全站既有样式冲突。配色取 payload.domains.color。 */
+.eda-declare{background:rgba(196,107,93,.07);border:1px solid rgba(196,107,93,.3);border-left:4px solid var(--red);border-radius:8px;padding:12px 14px;margin:10px 0 16px;font-size:.82em;line-height:1.85}
+.eda-declare-t{color:var(--red);font-weight:600;margin-bottom:6px}
+.eda-declare code{font-size:.92em;background:rgba(0,0,0,.05);padding:1px 5px;border-radius:4px}
+.eda-stats{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.eda-stat{flex:1 1 96px;min-width:96px;background:var(--bg2,rgba(94,139,158,.06));border:1px solid var(--line);border-radius:8px;padding:8px 10px;text-align:center}
+.eda-stat-v{font-size:1.24em;font-weight:700;color:var(--gold);line-height:1.25}
+.eda-stat-l{font-size:.72em;color:var(--text2);margin-top:2px}
+.eda-stat-s{font-size:.64em;color:var(--text2);opacity:.7;font-family:ui-monospace,Menlo,monospace}
+.eda-morph{display:inline-block;padding:.5px 4px;margin:1px 2px 1px 0;border:1px solid transparent;border-radius:4px;font-size:.88em;line-height:1.5;white-space:nowrap}
+.eda-bar{display:inline-block;width:56px;height:6px;background:rgba(0,0,0,.08);border-radius:3px;overflow:hidden;vertical-align:middle;margin:0 4px}
+.eda-bar i{display:block;height:100%;border-radius:3px}
+.eda-gp{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:11px 13px;margin:9px 0;background:rgba(184,134,60,.04)}
+.eda-gp-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:.95em}
+.eda-gp-h b{color:var(--gold)}
+.eda-gp-n{margin-left:auto;font-size:.76em;color:var(--text2)}
+.eda-gp-c{font-size:.84em;color:var(--blue);margin:5px 0 3px}
+.eda-gp-m{font-size:.76em;color:var(--text2);margin-bottom:7px}
+.eda-gp-n2{font-size:.8em;line-height:1.85;margin-top:7px;padding-top:7px;border-top:1px dashed var(--line)}
+.eda-doms{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:3px 14px;margin:7px 0}
+.eda-dom{display:flex;align-items:center;font-size:.78em;gap:2px}
+.eda-dom-k{width:4.6em;flex:0 0 4.6em}
+.eda-dom-v{color:var(--text2);font-size:.94em}
+.eda-line{font-size:.82em;line-height:1.9;margin:5px 0}
+.eda-line b{color:var(--text2);font-weight:600}
+.eda-note{line-height:1.8}
+.eda-note code{font-size:.92em}
+.eda-dim{color:var(--text2);font-size:.92em}
+.eda-tbl{width:100%;border-collapse:collapse;font-size:.8em;margin:6px 0}
+.eda-tbl th,.eda-tbl td{border:1px solid var(--line);padding:4px 7px;vertical-align:top;text-align:left}
+.eda-tbl thead th{background:rgba(94,139,158,.1);font-weight:600;white-space:nowrap;font-size:.94em}
+.eda-tbl th{background:rgba(0,0,0,.03);font-weight:600}
+.eda-heat td{font-size:.86em;padding:3px 5px}
+.eda-seg td:nth-child(4){line-height:2}
+.eda-seg .eda-morph{margin-right:1px}
+.eda-lead{font-size:.72em;background:var(--gold);color:#fff;padding:0 4px;border-radius:3px;vertical-align:middle}
+.eda-src{font-size:.8em;line-height:1.85;background:rgba(94,139,158,.07);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:8px 11px;margin-bottom:8px}
+.eda-src>b{color:var(--blue);margin-right:6px}
+.eda-vow{margin-top:3px}
+.eda-cls>summary{font-weight:600}
+.eda-cls>summary .eda-morph{font-weight:400}
+.eda-ul{font-size:.82em;line-height:1.9;padding-left:20px;margin:5px 0}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}

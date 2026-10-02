@@ -373,6 +373,133 @@ CREATE INDEX IF NOT EXISTS idx_artifacts_grade   ON article_artifacts(grade);
 CREATE INDEX IF NOT EXISTS idx_artifacts_status  ON article_artifacts(status);
 
 -- -----------------------------------------------------------
+-- 会众结构：品类（四十类）· 成员（四百一十四名）· 所主 · 誓愿
+-- 权威源 data/translation/<article_id>_assembly.yaml
+--   → import_all_to_sqlite.py → SQLite → db_reader.load_article_assembly() → build.py
+-- 用途：《世主妙严品》会众列名段的 EDA 基座（构词法/语义场/网络/维度矩阵）。
+--
+-- 【实测依据】T10n0279 卷一「而為上首」恰四十次 ↔ 四十类，互证。
+--   · 异生三十九类通例各实列十名（上首一＋同类九），非仅列上首一名；
+--     十一名之孤例四类：日天子、三十三天王、化樂天王、遍淨天王（已逐条对源核）。
+--   · 菩萨轨实列二十名。故卷一实列名共 414 名。
+--   · 与《華嚴經三十八卷本》袖珍版编者按「20/190/80/71/51＝412」之关系：
+--     菩萨20、神190、八部80、色界天51 四项与本表**完全吻合**（说明编者按系据
+--     实列名统计），惟欲界天编者按作71、本表实测73，差二（〔存疑〕待考）。
+--
+-- 【n_named 语义】该类经文明列之成员数，≠ 该类众数（后者为「微塵數／無量」，
+--   经文不确指）。executive 类的 count_expr 存经文原数词。
+-- 【vow】该类结句。执金刚神一类长达 128 字（分号分七句），为三十九类誓愿之最
+--   （余多在 8–22 字），此不对称为经文事实，非抽取误差。
+-- 【vow_kind】结句语法有二，不可合并统计：「誓愿」为三十九类之集总誓语；
+--   「成就」仅菩萨轨一（314 字之成就赞叹）。菩萨之结句与异生之结句不同质，
+--   早期版本误截为 14 字（「往昔皆與毘盧遮那如來共集善根」），已复原全段。
+-- 【collective_zh / collective_pos】集总词与其位置。**位置不可省**：主藥神作
+--   「性皆離垢」、主空神作「心皆離垢」，集总词「皆」在第二字；若以「是否以集总词
+--   起首」判有无，此二类连同数词混入之四类共六类将被误记为无。实测全四十类中
+--   确无集总词者仅主水神、主方神二类（与「十九类神十七类用总词」之说相合）。
+-- 【punct_variant / glyph_variant】CBETA 异文与字形异文，据实登记，不擅改经文。
+-- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS article_assembly_classes (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    article_id      TEXT    NOT NULL,                          -- 对应 articles/<id>.html
+    cls_idx         INTEGER NOT NULL,                          -- 卷一列名次第，0=菩萨轨
+    cat_zh          TEXT    NOT NULL,                          -- 类名（依 CBETA 字形，如「阿脩羅王」）
+    group_key       TEXT    NOT NULL,                          -- bodhisattva|deities|eight|desire|form
+    group_zh        TEXT,                                      -- 同生众·菩萨／异生众·十九类神 等
+    realm           TEXT,                                      -- 智正觉世间主／器世间主／天众／众生世间主
+    count_expr      TEXT,                                      -- 经文数词原样：復有無量／復有佛世界微塵數
+    leader_zh       TEXT,                                      -- 上首（所列首名）
+    n_named         INTEGER NOT NULL,                          -- 经文明列成员数（非众数）
+    domain_zh       TEXT,                                      -- 所主/职能：城郭宫殿／山岳／四王 等
+    collective_zh   TEXT,                                      -- 集总词：皆／悉已／莫不皆得
+    collective_pos  TEXT,                                      -- 集总词位置：起首／句中
+    vow_kind        TEXT,                                      -- 结句性质：誓愿／成就
+    vow_zh          TEXT,                                      -- 结句（集总誓愿或成就赞叹）全量
+    punct_variant   TEXT,                                      -- 标点异文：所謂；／所謂
+    glyph_variant   TEXT,                                      -- 字形异文：寶峯 等
+    source_note     TEXT,                                      -- 出处：T10n0279 卷一
+    created_at      TEXT    DEFAULT (datetime('now')),
+    UNIQUE(article_id, cls_idx)
+);
+
+CREATE INDEX IF NOT EXISTS idx_aac_article ON article_assembly_classes(article_id);
+CREATE INDEX IF NOT EXISTS idx_aac_group   ON article_assembly_classes(article_id, group_key);
+
+CREATE TABLE IF NOT EXISTS article_assembly_members (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    article_id      TEXT    NOT NULL,
+    cls_idx         INTEGER NOT NULL,                          -- 所属类（外键逻辑关联，勿加 FK 以保可重导）
+    member_idx      INTEGER NOT NULL,                          -- 类内次第，1=上首
+    member_zh       TEXT    NOT NULL,                          -- 成员名（依 CBETA 字形）
+    is_leader       INTEGER NOT NULL DEFAULT 0,               -- 1=该类上首
+    created_at      TEXT    DEFAULT (datetime('now')),
+    UNIQUE(article_id, cls_idx, member_idx)
+);
+
+CREATE INDEX IF NOT EXISTS idx_aam_article ON article_assembly_members(article_id);
+CREATE INDEX IF NOT EXISTS idx_aam_cls     ON article_assembly_members(article_id, cls_idx);
+
+-- -----------------------------------------------------------
+-- 会众名号构词法 EDA（世主妙严品卷一 414 名）
+--   权威源 data/translation/miaoyan_eda.yaml（由 scripts/miaoyan_eda.py 生成，
+--   其语义标注源为 data/translation/miaoyan_eda_lexicon.yaml，人工编纂）
+--   → import_all_to_sqlite.py → SQLite → db_reader.load_article_eda()
+--   → build.py 内嵌 var ARTICLE_EDA → common.js renderArticleEDA()
+--
+-- ⚠ 铁律：本组三表装的是**编辑性析构分析**，非经文自述数据。
+--   ① 切分（词级最长匹配 + 逐字退段）是工具的**方法选择**，非经文原貌；
+--   ② domain 语义域是**单一判读视角**下每词素归一域，非该字全部义项；
+--   ③ confidence=c 逐条标 high/medium/low，low 者前端须显示〔待考〕；
+--   ④ n_named（明列成员数）≠ 该类众数（经文作「微塵數／無量」），严禁混用；
+--   ⑤ method_json 存全部方法声明，渲染层须原样呈现，不得只挑好看的数。
+--   故本组表与 article_assembly_* 分立：前者是经文事实，后者是编者分析。
+-- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS article_eda_docs (
+    article_id      TEXT    NOT NULL UNIQUE,                    -- 对应 articles/<id>.html
+    source          TEXT,                                       -- 经号·卷次
+    source_url      TEXT,                                       -- 可点击回查链接
+    generated_by    TEXT,                                       -- 生成器（脚本路径＋源文件）
+    method_json     TEXT,                                       -- 方法声明（method 段全量 JSON）
+    metrics_json    TEXT,                                       -- 统计指标（metrics 段全量 JSON）
+    payload_json    TEXT,                                       -- 渲染所需全量文档（热力图/矩阵/图/类目…）
+    created_at      TEXT    DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS article_eda_morphemes (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    article_id      TEXT    NOT NULL,
+    zh              TEXT    NOT NULL,                          -- 词素（词级或多字，单字皆可能）
+    n               INTEGER NOT NULL,                          -- 两段切分下的出现次数
+    n_char_only     INTEGER NOT NULL DEFAULT 0,               -- 纯逐字对照下的出现次数
+    seg_mode        TEXT    NOT NULL DEFAULT 'char',           -- word=多字词命中 | char=逐字
+    domain          TEXT,                                       -- 十六语义域之一
+    confidence      TEXT,                                       -- high|medium|low（判读置信度）
+    gloss           TEXT,                                       -- 中文释义
+    gloss_en        TEXT,
+    rank            INTEGER NOT NULL DEFAULT 0,                -- 频次序（1=最高）
+    UNIQUE(article_id, zh)
+);
+
+CREATE INDEX IF NOT EXISTS idx_aem_article ON article_eda_morphemes(article_id, rank);
+
+CREATE TABLE IF NOT EXISTS article_eda_member_segs (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    article_id      TEXT    NOT NULL,
+    cls_idx         INTEGER NOT NULL,                          -- 所属类
+    member_idx      INTEGER NOT NULL,                          -- 类内次第
+    seq             INTEGER NOT NULL,                          -- 词素在核名中之序（1=首）
+    token           TEXT    NOT NULL,                          -- 词素字面
+    seg_mode        TEXT    NOT NULL,                          -- word|char
+    known           INTEGER NOT NULL DEFAULT 1,               -- 0=未入词素表（待补）
+    domain          TEXT,                                       -- 语义域（unassigned=未定）
+    confidence      TEXT,
+    UNIQUE(article_id, cls_idx, member_idx, seq)
+);
+
+CREATE INDEX IF NOT EXISTS idx_aems_member ON article_eda_member_segs(article_id, cls_idx, member_idx);
+CREATE INDEX IF NOT EXISTS idx_aems_token  ON article_eda_member_segs(article_id, token);
+
+-- -----------------------------------------------------------
 -- 实体百科：有名有姓之存在（众·天王·菩萨·金刚神·龙·八部·诸神·佛）
 --   权威源 data/encyclopedia/beings.yaml
 --   → import_all_to_sqlite.py → SQLite → db_reader.load_entity_registry()

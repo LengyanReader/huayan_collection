@@ -1385,6 +1385,18 @@ def build_articles(articles):
     except Exception as e:
         print(f'  ! article artifacts register unavailable: {e}')
         article_artifacts = {}
+    # 世主妙严品会众：EDA（词素切分/群组剖面等，编辑性析构）与 assembly（经文事实，40 类/414 名）。
+    # 两者皆自 SQLite 读取、按文章 id 内嵌；缺席则该篇不注入，页面照常渲染正文。
+    try:
+        article_eda = db_reader.load_article_eda()
+    except Exception as e:
+        print(f'  ! article EDA unavailable: {e}')
+        article_eda = {}
+    try:
+        article_assembly = db_reader.load_article_assembly()
+    except Exception as e:
+        print(f'  ! article assembly unavailable: {e}')
+        article_assembly = {}
     ARTICLES_OUT.mkdir(parents=True, exist_ok=True)
     article_js = read_src('article.js')
     common_css_rel = '../css/common.css'
@@ -1459,6 +1471,16 @@ def build_articles(articles):
                 scripts = ('<script>var ARTICLE_ARTIFACTS = %s;</script>\n'
                            % json.dumps({'title': arts.get('title'), 'items': confirmed},
                                         ensure_ascii=False)) + scripts
+        # 经文事实在前、EDA 析构在后：先注 assembly，使 EDA 可就地回链类名与成员原名
+        asm = article_assembly.get(a['id'])
+        if asm and asm.get('classes'):
+            scripts = ('<script>var ARTICLE_ASSEMBLY = %s;</script>\n'
+                       % json.dumps(asm, ensure_ascii=False)) + scripts
+        eda = article_eda.get(a['id'])
+        if eda:
+            scripts = ('<script>var ARTICLE_EDA = %s;</script>\n'
+                       % json.dumps(eda, ensure_ascii=False)) + scripts
+            a['_eda'] = True
         _b = a.get('back') or {}
         back_tab = _b.get('tab') or 'index'
         back_label = _b.get('label') or '导航主页'

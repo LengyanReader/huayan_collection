@@ -356,6 +356,206 @@ def test_article_artifacts():
             fail(f"{aid}: HTML/SQLite mismatch: html={built_ids} db={db_ids}")
 
 
+# ── Test 6c: 世主妙严品会众 EDA（assembly 经文事实 → SQLite → reader → HTML）──
+def test_article_eda():
+    print("\n[6c] 世主妙严品会众 EDA pipeline")
+    asm_all = db_reader.load_article_assembly()
+    eda_all = db_reader.load_article_eda()
+    if not asm_all or not eda_all:
+        warn("load_article_assembly()/load_article_eda() empty (no assembly/EDA imported yet)")
+        return
+    aid = 'shizhu-miaoyan'
+    if aid not in asm_all or aid not in eda_all:
+        fail(f"{aid}: absent from reader output (assembly={aid in asm_all}, eda={aid in eda_all})")
+        return
+    asm, eda = asm_all[aid], eda_all[aid]
+    p = eda.get('payload') or {}
+    m = eda.get('metrics') or p.get('metrics') or {}
+
+    # 经文事实：40 类 / 414 名，类名与成员名不得为空
+    classes = asm.get('classes') or []
+    n_members = sum(len(c.get('members') or []) for c in classes)
+    if len(classes) == 40:
+        pass_(f"assembly: 40 classes")
+    else:
+        fail(f"assembly: {len(classes)} classes != 40")
+    if n_members == 414:
+        pass_(f"assembly: 414 members")
+    else:
+        fail(f"assembly: {n_members} members != 414")
+    empty_name = [f"{c.get('cat')}#{mm.get('i')}" for c in classes
+                  for mm in (c.get('members') or []) if not (mm.get('name') or '').strip()]
+    if empty_name:
+        fail(f"assembly: {len(empty_name)} member(s) with empty name")
+    else:
+        pass_("assembly: all 414 member names non-empty")
+
+    # 切分覆盖：每位成员的每个字皆须有词素（unsegmented 为空）
+    if (m.get('unsegmented_chars') or 0) == 0:
+        pass_("EDA: 0 unsegmented chars (full morpheme coverage)")
+    else:
+        fail(f"EDA: {m.get('unsegmented_chars')} unsegmented chars")
+
+    # 词素位计数须与逐类逐名之和自洽（metrics 为权威，逐类重算以校验之）
+    ecs = p.get('eda_classes') or []
+    seg_sum = sum(len((mm.get('segs') or [])) for ec in ecs for mm in (ec.get('members') or []))
+    if seg_sum == (m.get('tokens_total') or -1):
+        pass_(f"EDA: per-class segment sum {seg_sum} == metrics.tokens_total")
+    else:
+        fail(f"EDA: segment sum {seg_sum} != metrics.tokens_total {m.get('tokens_total')}")
+
+    # 归一化段行（SQLite 侧）频次和须等于 tokens_total
+    # 归一化段行（SQLite 侧）频次和须等于 tokens_total
+    conn = sqlite3.connect(str(DB_PATH))
+    try:
+        row = conn.execute("SELECT SUM(n) FROM article_eda_morphemes WHERE article_id=?",
+                           (aid,)).fetchone()
+        n_doc = conn.execute("SELECT COUNT(*) FROM article_eda_docs WHERE article_id=?",
+                             (aid,)).fetchone()[0]
+        n_seg = conn.execute("SELECT COUNT(*) FROM article_eda_member_segs WHERE article_id=?",
+                             (aid,)).fetchone()[0]
+        if n_doc == 1 and row[0] == m.get('tokens_total') and n_seg == m.get('tokens_total'):
+            pass_(f"SQLite: 1 doc / {n_seg} seg rows / morpheme sum {row[0]} == tokens_total")
+        else:
+            fail(f"SQLite: docs={n_doc} segs={n_seg} morph_sum={row[0]} "
+                 f"!= tokens_total {m.get('tokens_total')}")
+        # 段行不得缺置信度／语义域（NULL 或空串即失范）
+        miss_c = conn.execute("SELECT COUNT(*) FROM article_eda_member_segs "
+                              "WHERE article_id=? AND (confidence IS NULL OR TRIM(confidence)='')",
+                              (aid,)).fetchone()[0]
+        miss_d = conn.execute("SELECT COUNT(*) FROM article_eda_member_segs "
+                              "WHERE article_id=? AND (domain IS NULL OR TRIM(domain)='')",
+                              (aid,)).fetchone()[0]
+        if miss_c == 0 and miss_d == 0:
+            pass_("SQLite: all segment rows carry confidence + domain")
+        else:
+            fail(f"SQLite: {miss_c} seg row(s) missing confidence, {miss_d} missing domain")
+    except sqlite3.Error as e:
+        fail(f"SQLite EDA tables unreadable: {e}")
+    finally:
+        conn.close()
+
+    # 置信度与语义域齐备（0 unassigned 时全段皆有判读）
+    n_unassigned = 0
+    for ec in ecs:
+        for mm in (ec.get('members') or []):
+            for s in (mm.get('segs') or []):
+                if not s.get('c'):
+                    fail("EDA: segment without confidence")
+                    return
+                if not s.get('domain'):
+                    fail("EDA: segment without domain")
+                    return
+                if s.get('domain') == 'unassigned':
+                    n_unassigned += 1
+    pass_(f"EDA: all {seg_sum} segments carry confidence + domain (unassigned={n_unassigned})")
+
+    # 分源之要：EDA 分析投影不得夹带经文事实字段（誓愿/数量/上首）
+    leak = []
+    for ec in ecs:
+        for key in ('vow', 'count_expr', 'leader', 'source', 'collective', 'domain_dept'):
+            if key in ec:
+                leak.append(f"{ec.get('cat')}.{key}")
+    # 成员原名亦属经文事实：逐成员记录里不得复制，只能在 assembly 一处。
+    # 故不只查 eda_classes 顶层，须下探到逐成员层。
+    def _walk(node, path, out):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if k in ('name', 'core', 'tail') and isinstance(v, str):
+                    out.append(f"{path}.{k}")
+                _walk(v, f"{path}.{k}", out)
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                _walk(v, f"{path}[{i}]", out)
+    deep = []
+    for key in ('eda_classes', 'epithet_sharing', 'zhu_formula'):
+        _walk(p.get(key), key, deep)
+    leak += deep
+    if leak:
+        fail(f"EDA: sutra-fact fields leaked into analysis projection: {leak[:5]}")
+    else:
+        pass_("EDA: analysis projection free of sutra-fact fields "
+              "(vow/count/leader/source + member name/core/tail, deep-walked)")
+
+    # 跨类同赞词：可析名须为十九类神全体 150；每组跨类且一名一类
+    eps = p.get('epithet_sharing') or {}
+    n_parsed = eps.get('n_members_parsed', 0)
+    egs = eps.get('groups') or []
+    if n_parsed == 150:
+        pass_("epithet_sharing: 150 主X神 members parse into 〔epithet〕+主+〔domain〕")
+    else:
+        fail(f"epithet_sharing: n_members_parsed {n_parsed} != 150")
+    bad_ep = [g.get('epithet') for g in egs
+              if g.get('n') != len(g.get('members') or [])
+              or len(set(g.get('classes') or [])) < 2
+              or len(set(g.get('classes') or [])) != g.get('n')]
+    if bad_ep:
+        fail(f"epithet_sharing: malformed groups {bad_ep[:4]}")
+    else:
+        pass_(f"epithet_sharing: {len(egs)} cross-class shared epithets, each one-member-per-class")
+    if (m.get('epithet_shared') == len(egs)
+            and m.get('epithet_members') == n_parsed):
+        pass_("epithet_sharing: metrics agree with payload")
+    else:
+        fail("epithet_sharing: metrics.epithet_shared/epithet_members disagree with payload")
+
+    # 群组纵深：5 群 + 10 对；类数须不大于明列名数
+    gps = p.get('group_profiles') or []
+    if len(gps) == 5:
+        pass_("group_profiles: 5 groups")
+    else:
+        fail(f"group_profiles: {len(gps)} groups != 5")
+    for gp in gps:
+        if gp.get('n_classes', 0) > gp.get('n_named', 0):
+            fail(f"group {gp.get('key')}: n_classes {gp.get('n_classes')} > n_named {gp.get('n_named')}")
+        if not (gp.get('note') or '').strip():
+            warn(f"group {gp.get('key')}: no editorial note in lexicon group_profiles")
+    if len(p.get('group_pairs') or []) == 10:
+        pass_("group_pairs: 10 pairs")
+    else:
+        fail(f"group_pairs: {len(p.get('group_pairs') or [])} != 10")
+
+    # 域占比不得超过 100%（分母为词素位数，非成员数）
+    over = [(c.get('domain'), c.get('pct')) for row in (p.get('heat_matrix') or [])
+            for c in (row.get('cells') or []) if (c.get('pct') or 0) > 100]
+    if over:
+        fail(f"heat_matrix: pct > 100% in {over[:3]}")
+    else:
+        pass_("heat_matrix: all domain pct <= 100")
+
+    # HTML 端：EDA 内嵌且与 SQLite 同量
+    page = ROOT / "web" / "demo" / "articles" / f"{aid}.html"
+    if not page.exists():
+        fail(f"{aid}.html not found (run build first)")
+        return
+    html = page.read_text(encoding='utf-8')
+    for token in ('var ARTICLE_EDA', 'var ARTICLE_ASSEMBLY',
+                  "renderArticleEDA('#article-eda')", 'function edaGo'):
+        if token not in html:
+            fail(f"{aid}.html missing {token}")
+            return
+    mt = re.search(r'var ARTICLE_EDA\s*=\s*(\{.*?\});</script>', html, re.DOTALL)
+    ma = re.search(r'var ARTICLE_ASSEMBLY\s*=\s*(\{.*?\});</script>', html, re.DOTALL)
+    if not mt or not ma:
+        fail(f"{aid}.html: could not extract embedded ARTICLE_EDA/ARTICLE_ASSEMBLY")
+        return
+    try:
+        b_eda = json.loads(mt.group(1))
+        b_asm = json.loads(ma.group(1))
+    except json.JSONDecodeError as e:
+        fail(f"{aid}.html: embedded JSON parse error: {e}")
+        return
+    if (b_eda.get('metrics') or {}).get('tokens_total') == m.get('tokens_total'):
+        pass_(f"{aid}.html: embedded EDA tokens_total == SQLite ({m.get('tokens_total')})")
+    else:
+        fail(f"{aid}.html: EDA tokens_total {b_eda.get('metrics', {}).get('tokens_total')} != db {m.get('tokens_total')}")
+    b_n = sum(len(c.get('members') or []) for c in (b_asm.get('classes') or []))
+    if b_n == n_members:
+        pass_(f"{aid}.html: embedded assembly {b_n} members == SQLite")
+    else:
+        fail(f"{aid}.html: assembly members {b_n} != db {n_members}")
+
+
 # ── Test 7: Build output matches SQLite data ──
 def test_build_consistency():
     print("\n[7] Build output consistency")
@@ -478,6 +678,7 @@ def main():
     test_db_reader()
     test_article_knowledge()
     test_article_artifacts()
+    test_article_eda()
     test_build_consistency()
     test_no_hardcoding()
     test_relation_normalization()

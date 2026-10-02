@@ -15,7 +15,7 @@
 #   views      在哪些选项卡视图内显示「独立文章页」入口条（与各 Tab JS 的 view id 对应）
 #   group      目录页分组（articles/index.html 依此渲染分节；见文末 group_order）
 #              缺省归入「其他」。分组之设，非按 Tab，而是按内容性质——
-#              故同属一个 Tab 的数篇亦可聚于一组（如「经论慢步」）。
+#              故同属一个 Tab 的数篇亦可聚于一组（如「经论茶歇」）。
 
 sources:
   - topic_studies
@@ -131,7 +131,7 @@ others:
     views:
       - chan_traces
   - id: huayan-studies
-    group: 经论慢步
+    group: 经论茶歇
     icon: 📖
     title: 华严经学·三十九品深度研究
     title_sub: 品目·批注·版本对照 · 祖师大德与学者阐释
@@ -143,9 +143,9 @@ others:
     views:
       - avatamsaka-studies
   - id: huayan-series-outline
-    group: 经论慢步
+    group: 经论茶歇
     icon: 🗺
-    title: 华严经细读·系列总纲
+    title: 华严经引读·系列总纲
     title_sub: 三十九品品目次第·各品精读方式规划 · 单品独读/多品合读 · 完备度自陈
     doc: docs/经学文献/华严经细读_系列总纲.md
     back:
@@ -155,9 +155,9 @@ others:
     views:
       - avatamsaka-studies
   - id: shizhu-miaoyan
-    group: 经论慢步
+    group: 经论茶歇
     icon: 🏛
-    title: 世主妙严品细读
+    title: 世主妙严品引读
     title_sub: 华严经首品·按品精读·卷一组群详解 · 会众名号·颂赞·震动作供 · 中英对照 · 未完备已标明
     doc: docs/经学文献/华严经细读_第一部_世主妙严品.md
     back:
@@ -167,7 +167,7 @@ others:
     views:
       - avatamsaka-studies
   - id: avatamsaka-studies
-    group: 经论慢步
+    group: 经论茶歇
     icon: 📚
     title: 华严经学·全卷
     title_sub: 起源深研·逐品批注·版本对照 · 教内思想·文献学·最新研究·专著 全量
@@ -225,7 +225,7 @@ others:
 # articles/index.html 依 group_order 排列分节；各节图标一取 group_icons，缺省 📂。
 # 改次序、增分组、换图标，皆只改此处，不动 build.py。
 group_order:
-  - {key: 经论慢步,   icon: 📖}
+  - {key: 经论茶歇,   icon: 📖}
   - {key: 华严祖师,   icon: 🕵️}
   - {key: 宗派与判教, icon: ⚖️}
   - {key: 宗派研究,   icon: 🔬}
@@ -234,7 +234,7 @@ group_order:
   - {key: 前沿议题,   icon: 💻}
   - {key: 其他,       icon: 📂}
 group_icons:
-  经论慢步: 📖
+  经论茶歇: 📖
   华严祖师: 🕵️
   宗派与判教: ⚖️
   宗派研究: 🔬

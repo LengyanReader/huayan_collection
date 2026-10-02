@@ -1285,6 +1285,386 @@ function renderArticleArtifacts(containerSel) {
 // 预留钩子：如需对卡片内文本做统一语言开关/术语标注在此展开。
 function _aaGather() { }
 
+// ═══════════════════════════════════════════════════════════════
+// 会众名号数据剖面（EDA）· articles/shizhu-miaoyan.html
+// 数据源：build.py 自 SQLite 内嵌 ARTICLE_EDA（词素切分/语义域/群组/网络，编辑性析构）
+//        与 ARTICLE_ASSEMBLY（40 类 414 名之经文事实：类名/成员原名/所主/誓愿/数量表达）
+// 分源之要：经文事实与编辑析构分居两表，页面须明示二者性质不同——
+//        名称与誓愿出经文，词素切分与百分比则为本站析构，非经文所有。
+// 本函数不含任何硬编码数据：一切取自 ARTICLE_EDA.payload。
+// ═══════════════════════════════════════════════════════════════
+var _EDA_DOMCOLOR = {};   // domain key → color（取自 payload.domains，运行时建立）
+var _EDA_DOMZH = {};      // domain key → 中文名
+var _EDA_DOMEN = {};      // domain key → 英文名
+var _EDA_GRPZH = {};      // group key → 中文名
+var _EDA_M = null;
+
+function _edaInit() {
+  if (typeof ARTICLE_EDA === 'undefined' || !ARTICLE_EDA || !ARTICLE_EDA.payload) return 0;
+  var p = ARTICLE_EDA.payload;
+  _EDA_M = ARTICLE_EDA.metrics || p.metrics || {};
+  (p.domains || []).forEach(function (d) {
+    _EDA_DOMCOLOR[d.key] = d.color || '#888';
+    _EDA_DOMZH[d.key] = d.zh || d.key;
+    _EDA_DOMEN[d.key] = d.en || '';
+  });
+  (p.groups || []).forEach(function (g) { _EDA_GRPZH[g.key] = g.zh || g.key; });
+  return 1;
+}
+
+// 词素徽标（着色 + 判读置信度）
+function _edaMorph(zh, domain, conf) {
+  var col = _EDA_DOMCOLOR[domain] || '#888';
+  var op = conf === 'high' ? 1 : (conf === 'medium' ? 0.72 : 0.5);
+  var t = '<span class="eda-morph" style="background:' + col + op
+    + ';border-color:' + col + '" title="' + _escHtml(_EDA_DOMZH[domain] || domain || '')
+    + (conf && conf !== 'high' ? '（判读：' + (conf === 'medium' ? '中' : '待考') + '）' : '')
+    + '">' + _escHtml(zh) + '</span>';
+  return t;
+}
+
+// 数值格
+function _edaStat(label, val, sub) {
+  return '<div class="eda-stat"><div class="eda-stat-v">' + val + '</div>'
+    + '<div class="eda-stat-l">' + label + '</div>'
+    + (sub ? '<div class="eda-stat-s">' + sub + '</div>' : '') + '</div>';
+}
+
+function _edaBar(pct, color) {
+  var w = Math.max(0, Math.min(100, pct || 0));
+  return '<span class="eda-bar"><i style="width:' + w.toFixed(1) + '%;background:'
+    + (color || 'var(--gold)') + '"></i></span>';
+}
+
+function renderArticleEDA(containerSel) {
+  if (!_edaInit()) return 0;
+  var root = typeof containerSel === 'string' ? document.querySelector(containerSel) : containerSel;
+  if (!root) return 0;
+  var p = ARTICLE_EDA.payload, m = _EDA_M;
+  var asm = (typeof ARTICLE_ASSEMBLY !== 'undefined' && ARTICLE_ASSEMBLY) ? ARTICLE_ASSEMBLY : null;
+  var byIdx = {};   // class idx → 经文事实（供逐类节回链类名/成员原名/所主/誓愿）
+  if (asm && asm.classes) asm.classes.forEach(function (c) { byIdx[c.idx] = c; });
+  // 核名（剥类尾）由「经文原名 − 派生类尾」在渲染时现算，不取自 EDA 投影：
+  // EDA 侧刻意不存 core/tail（其分析投影不夹带经文事实字段），故此处于 join 之后推得。
+  var tailOf = {};
+  var tailOfCat = {};
+  (p.class_tails_derived || []).forEach(function (t) {
+    tailOf[t.idx] = t.tail || '';
+    tailOfCat[t.cat] = t.tail || '';
+  });
+  function _edaCore(idx, name) {
+    var t = tailOf[idx];
+    var core = '';
+    if (t && name.length > t.length && name.slice(-t.length) === t) {
+      core = name.slice(0, name.length - t.length);
+    }
+    // 剥后与类名全同者（天子／月天子之属）亦无可析之核
+    if (core && byIdx[idx] && core === byIdx[idx].cat) core = '';
+    return core;
+  }
+  var h = '';
+
+  h += '<h2>🔬 会众名号 · 数据剖面</h2>';
+
+  // ── 体例声明：编辑性析构 vs 经文事实 ──
+  h += '<div class="eda-declare">';
+  h += '<div class="eda-declare-t">⚠️ 体例：以下为<b>编辑性析构</b>，非经文原文</div>';
+  h += '<div>经文事实（类名、成员原名、所主、誓愿、数量表达）与本站分析（词素切分、语义域归属、'
+    + '百分比、群组剖面、网络图）<b>分属两表</b>：前者出《世主妙严品》本文，后者依 '
+    + '<code>miaoyan_eda_lexicon.yaml</code> 词素表析构。切分与百分比供比较之用，'
+    + '一字一句之义，仍以经文为准。</div>';
+  if (p.method) {
+    h += '<details class="fold"><summary>📐 切分方法与限度（点开查看）</summary><div class="fold-body">';
+    h += '<table class="eda-tbl"><tbody>';
+    ['segmentation', 'segmentation_alt', 'domain_assignment', 'class_tail',
+      'n_named_caveat', 'caveat'].forEach(function (k) {
+        if (p.method[k]) h += '<tr><th style="width:170px">' + k + '</th><td>' + _mdInline(p.method[k]) + '</td></tr>';
+      });
+    h += '</tbody></table></div></details>';
+  }
+  h += '<div style="font-size:0.74em;color:var(--text2);margin-top:6px">生成：<code>'
+    + _escHtml(p.generated_by || '') + '</code> · 源：<code>' + _escHtml(p.source || '') + '</code></div>';
+  h += '</div>';
+
+  // ── 指标总览 ──
+  h += '<h3>📊 指标总览</h3><div class="eda-stats">';
+  h += _edaStat('类', m.classes || 0, 'classes');
+  h += _edaStat('明列名号', m.named_total || 0, 'named');
+  h += _edaStat('词素位', m.tokens_total || 0, 'tokens');
+  h += _edaStat('不同词素', m.distinct_tokens || 0, 'distinct');
+  h += _edaStat('覆盖率', (m.coverage_pct || 0) + '%', 'coverage');
+  h += _edaStat('待补字次', m.unsegmented_chars || 0, 'unsegmented');
+  h += _edaStat('多字词', m.word_hits || 0, 'words');
+  h += _edaStat('低置信位', m.lowconf_hits || 0, 'lowconf');
+  h += '</div>';
+  h += '<div style="font-size:0.76em;color:var(--text2);margin:6px 0 14px">'
+    + '覆盖率 100% 仅表示每个字皆已收入词素表，<b>不等于语义皆已核定</b>——'
+    + '其中 low-confidence 命中 ' + (m.lowconf_hits || 0) + ' 处、待考域若干，'
+    + '涉此等位之比较结论宜从缓。</div>';
+
+  // ── 群组纵深（5 群剖面）──
+  var gps = p.group_profiles || [];
+  if (gps.length) {
+    h += '<h3>👥 群组纵深 · 五群剖面</h3>';
+    h += '<div class="eda-note" style="font-size:0.78em;color:var(--text2);margin-bottom:8px">'
+      + '各群之量（名数/类数/词素/判读）皆由脚本实算；群之一句定位与判读出 '
+      + '<code>miaoyan_eda_lexicon.yaml ▸ group_profiles</code>，页面不另生数据。</div>';
+    gps.forEach(function (g) {
+      h += '<div class="eda-gp">';
+      h += '<div class="eda-gp-h"><b>' + _escHtml(g.zh) + '</b>'
+        + '<span class="en-line"> · ' + _escHtml(g.en || '') + '</span>'
+        + '<span class="eda-gp-n">' + g.n_named + ' 名／' + g.n_classes + ' 类／'
+        + g.n_tokens + ' 词素位</span></div>';
+      if (g.character) h += '<div class="eda-gp-c">' + _mdInline(g.character) + '</div>';
+      h += '<div class="eda-gp-m">核名均值 ' + g.core_len_mean + '（' + g.core_len_min + '–'
+        + g.core_len_max + ' 字）· 词素 ' + g.n_distinct_morph + ' · 多字词 ' + g.n_word_hits
+        + ' · 判读待考 ' + g.n_lowconf + '（' + g.lowconf_pct + '%）</div>';
+      // 语义域分布
+      h += '<div class="eda-doms">';
+      (g.domains || []).slice(0, 8).forEach(function (d) {
+        h += '<div class="eda-dom"><span class="eda-dom-k" style="color:'
+          + (_EDA_DOMCOLOR[d.domain] || '#888') + '">' + _escHtml(d.domain_zh || d.domain)
+          + '</span>' + _edaBar(d.pct, _EDA_DOMCOLOR[d.domain])
+          + '<span class="eda-dom-v">' + d.n + '／' + d.pct + '%</span></div>';
+      });
+      h += '</div>';
+      // 高频词素 + 冠字/尾字
+      h += '<div class="eda-line"><b>高频词素</b>：' + (g.top_morphs || []).slice(0, 12)
+        .map(function (x) { return _edaMorph(x.zh, x.domain, x.c); }).join(' ') + '</div>';
+      if ((g.top_heads || []).length) h += '<div class="eda-line"><b>冠字</b>：'
+        + g.top_heads.slice(0, 10).map(function (x) { return _escHtml(x.zh) + '×' + x.n; }).join(' · ') + '</div>';
+      if ((g.exclusive_morphs || []).length) h += '<div class="eda-line"><b>本群特有</b>：'
+        + g.exclusive_morphs.map(function (x) { return _edaMorph(x.zh, x.domain, x.c) + '<span style="opacity:.6">×' + x.n + '</span>'; }).join(' ')
+        + '</div>';
+      else h += '<div class="eda-line" style="color:var(--text2)"><b>本群特有</b>：（无）'
+        + '——其词素全部见于他群，与他群共用同一语料池。</div>';
+      if ((g.class_tails || []).length) h += '<div class="eda-line"><b>类尾</b>：'
+        + g.class_tails.map(function (t) { return '<code>' + _escHtml(t) + '</code>'; }).join('、') + '</div>';
+      if (g.note) h += '<div class="eda-gp-n2">' + _mdInline(g.note) + '</div>';
+      if (g.note_en) h += '<div class="eda-gp-n2 en-line">' + _mdInline(g.note_en) + '</div>';
+      h += '</div>';
+    });
+
+    // 群间对比
+    var prs = p.group_pairs || [];
+    if (prs.length) {
+      h += '<h4>🔀 群间对比（十对）</h4>';
+      h += '<div class="scroll-x"><table class="eda-tbl"><thead><tr><th>群 A</th><th>群 B</th>'
+        + '<th>共有词素</th><th>Jaccard</th><th>域分布距离</th><th>共有高频词素</th></tr></thead><tbody>';
+      prs.forEach(function (q) {
+        h += '<tr><td>' + _escHtml(q.a_zh) + '</td><td>' + _escHtml(q.b_zh) + '</td>'
+          + '<td style="text-align:right">' + q.shared + '</td>'
+          + '<td style="text-align:right">' + q.jaccard + '</td>'
+          + '<td style="text-align:right">' + q.domain_dist + '%</td>'
+          + '<td>' + (q.top_shared || []).slice(0, 6).map(function (x) {
+            return _escHtml(x.zh) + '<span style="opacity:.55">(' + x.n_a + '/' + x.n_b + ')</span>';
+          }).join(' ') + '</td></tr>';
+      });
+      h += '</tbody></table></div>';
+    }
+  }
+
+  // ── 群 × 语义域 热力矩阵 ──
+  var heat = p.heat_matrix || [];
+  if (heat.length) {
+    h += '<h3>🌡 群 × 语义域 · 热力矩阵</h3>';
+    h += '<div style="font-size:0.76em;color:var(--text2);margin-bottom:6px">'
+      + '格内为该群之词素位落于该域之百分比（分母为该群词素位数，故各行合计≈100%）。</div>';
+    h += '<div class="scroll-x"><table class="eda-tbl eda-heat"><thead><tr><th>群＼域</th>';
+    var doms = (heat[0].cells || []).map(function (c) { return c; });
+    doms.forEach(function (c) {
+      h += '<th style="color:' + (_EDA_DOMCOLOR[c.domain] || '#888') + '">' + _escHtml(c.domain_zh) + '</th>';
+    });
+    h += '</tr></thead><tbody>';
+    heat.forEach(function (row) {
+      h += '<tr><th style="text-align:left;white-space:nowrap">' + _escHtml(row.group_zh) + '</th>';
+      (row.cells || []).forEach(function (c) {
+        var col = _EDA_DOMCOLOR[c.domain] || '#888';
+        var a = c.n ? Math.min(0.55, 0.06 + c.pct / 40) : 0;
+        h += '<td style="text-align:center;background:' + col + a + '">' + (c.n ? c.pct : '·') + '</td>';
+      });
+      h += '</tr>';
+    });
+    h += '</tbody></table></div>';
+    h += '<div style="font-size:0.74em;color:var(--text2);margin-top:4px">'
+      + '（格内数字为百分比；空白「·」表示该群无词素落此域。着色深浅随占比。）</div>';
+  }
+
+  // ── 高频词素 × 群 矩阵 ──
+  var mm = p.morph_matrix || [];
+  if (mm.length) {
+    h += '<h3>🧬 高频词素 × 群（前 ' + mm.length + '）</h3>';
+    h += '<div class="scroll-x"><table class="eda-tbl"><thead><tr><th>词素</th><th>域</th>';
+    (p.groups || []).forEach(function (g) { h += '<th>' + _escHtml(g.zh) + '</th>'; });
+    h += '<th>合计</th></tr></thead><tbody>';
+    mm.forEach(function (x) {
+      h += '<tr><td>' + _edaMorph(x.zh, x.domain, x.c) + '</td><td style="color:'
+        + (_EDA_DOMCOLOR[x.domain] || '#888') + ';font-size:.86em">' + _escHtml(x.domain_zh || '') + '</td>';
+      (p.groups || []).forEach(function (g) {
+        var v = (x.by_group || {})[g.key] || 0;
+        h += '<td style="text-align:right' + (v ? ';color:var(--gold);font-weight:600' : ';opacity:.28') + '">'
+          + (v || '·') + '</td>';
+      });
+      h += '<td style="text-align:right;font-weight:600">' + x.total + '</td></tr>';
+    });
+    h += '</tbody></table></div>';
+  }
+
+  // ── 逐类：经文事实 × 词素切分（此节是「分源」之要：左经文、右析构）──
+  var ecs = p.eda_classes || [];
+  if (ecs.length) {
+    h += '<h3>📚 逐类详解 · 经文事实 × 词素切分</h3>';
+      h += '<div style="font-size:0.76em;color:var(--text2);margin-bottom:8px">'
+      + '每类一节：上为经文所载（类名、所主、誓愿、明列名号），下为本站切分（每名之核名与词素序列）。'
+      + '两者并列而不相混。核名 <b>∅</b> 者有二：一为剥除类尾后与类名全同者（<code>日天子</code>／<code>月天子</code> 之属）；'
+      + '一为经文原名带省文记号（<code>……</code>，CBETA 原卷如此）而尾字不全者。'
+      + '二者皆无可析之核，其词素序列即全名。</div>';
+    ecs.forEach(function (ec) {
+      var f = byIdx[ec.idx] || {};
+      var open = (ec.idx === 0);
+      h += '<details class="fold eda-cls"' + (open ? ' open' : '') + '>';
+      h += '<summary>🧩 ' + _escHtml(f.cat || ec.cat)
+        + '<span style="font-weight:400;color:var(--text2)"> · ' + _escHtml(f.group_zh || _EDA_GRPZH[ec.group] || '')
+        + ' · ' + (f.n_named || 0) + ' 名 · 核名 ' + ec.n_char_total + ' 字'
+        + (ec.n_word_hits ? ' · 多字词 ' + ec.n_word_hits : '')
+        + (ec.n_unsegmented ? ' · <span style="color:var(--red)">待补 ' + ec.n_unsegmented + '</span>' : '')
+        + '</span></summary>';
+      h += '<div class="fold-body">';
+      // 经文事实
+      h += '<div class="eda-src"><b>经文</b>';
+      var facts = [];
+      if (f.domain) facts.push('所主：' + _escHtml(f.domain));
+      if (f.realm) facts.push('界：' + _escHtml(f.realm));
+      if (f.count_expr) facts.push('数量：<code>' + _escHtml(f.count_expr) + '</code>');
+      if (f.collective) facts.push('总称：' + _escHtml(f.collective));
+      if (f.leader) facts.push('上首：' + _escHtml(f.leader));
+      if (facts.length) h += '<div>' + facts.join(' · ') + '</div>';
+      if (f.vow) h += '<div class="eda-vow">誓愿：' + _mdInline(f.vow) + '</div>';
+      if (f.source) h += '<div style="font-size:.76em;color:var(--text2)">出处：' + _mdInline(f.source) + '</div>';
+      h += '</div>';
+      // 逐名切分
+      h += '<table class="eda-tbl eda-seg"><thead><tr><th style="width:44px">#</th><th>经文名号</th>'
+        + '<th>核名（剥类尾）</th><th>词素序列</th></tr></thead><tbody>';
+      (ec.members || []).forEach(function (mm2) {
+        var a2 = (f.members || []).filter(function (x) { return x.i === mm2.i; })[0] || {};
+          h += '<tr><td style="text-align:right;opacity:.5">' + mm2.i + '</td>'
+          + '<td style="white-space:nowrap">' + _escHtml(a2.name || '') + (a2.is_leader ? ' <span class="eda-lead">上首</span>' : '') + '</td>'
+          + '<td style="color:var(--gold);white-space:nowrap">' + _escHtml(_edaCore(ec.idx, a2.name || '') || '∅') + '</td>'
+          + '<td>' + (mm2.segs || []).map(function (s) {
+            return _edaMorph(s.zh, s.domain, s.c);
+          }).join('') + '</td></tr>';
+      });
+      h += '</tbody></table>';
+      h += '</div></details>';
+    });
+  }
+
+  // ── 共现网络（词素—词素 二部网络之投影 + 类—词素 二部图）──
+  var g = p.graph || {};
+  if ((g.lex_nodes || []).length) {
+    h += '<h3>🕸 词素共现网络</h3>';
+    h += '<div style="font-size:0.76em;color:var(--text2);margin-bottom:8px">'
+      + '节点为词素（按域着色，边宽为共现次数），连线示同一名号内二词素相邻之频。'
+      + '共 ' + (g.lex_nodes || []).length + ' 节点／' + (g.lex_edges || []).length + ' 边；'
+      + '另有类—词素二部边 ' + (g.bipartite_edges || []).length + ' 条（逐名归类，见逐类节）。</div>';
+    h += '<details class="fold"><summary>🕸 展开网络（' + (g.lex_edges || []).length + ' 条共现边）</summary><div class="fold-body">';
+    h += '<div class="scroll-x"><table class="eda-tbl"><thead><tr><th>词素 A</th><th>词素 B</th><th>共现</th><th>合成词</th></tr></thead><tbody>';
+    (g.lex_edges || []).slice(0, 120).forEach(function (e) {
+      var pair = e.source.replace('m:', '') + e.target.replace('m:', '');
+      var word = (p.word_hits || []).filter(function (w) { return w.zh === pair; })[0];
+      h += '<tr><td>' + _escHtml(e.source.replace('m:', '')) + '</td><td>'
+        + _escHtml(e.target.replace('m:', '')) + '</td><td style="text-align:right">' + e.n + '</td>'
+        + '<td style="font-size:.82em;color:var(--text2)">' + (word ? _escHtml(word.gloss || '') : '（未收为多字词）') + '</td></tr>';
+    });
+    h += '</tbody></table></div></details>';
+  }
+
+  // ── 多字词 / 固定搭配 ──
+  if ((p.word_hits || []).length) {
+    h += '<h3>🔗 多字词与固定搭配</h3><div class="eda-line">';
+    h += p.word_hits.map(function (w) { return _edaMorph(w.zh, w.domain, w.c) + '<span style="opacity:.6">×' + w.n + '</span>'; }).join(' ');
+    h += '</div>';
+  }
+
+  // ── 跨类重名（同一核名分属多类）──
+  if ((p.core_duplicates || []).length) {
+    h += '<h3>🔁 跨类重名（同一核名分属多类）</h3>';
+    h += '<div style="font-size:.76em;color:var(--text2);margin-bottom:6px">'
+      + '剥类尾后核名相同而类名不同者——示名号之 epithet 语料跨类共用。</div><table class="eda-tbl"><thead><tr><th>核名</th><th>类</th></tr></thead><tbody>';
+    (p.core_duplicates || []).forEach(function (d) {
+      h += '<tr><td style="color:var(--gold);white-space:nowrap">' + _escHtml(d.core) + '</td><td>'
+        + d.classes.map(function (c) { return _escHtml(c); }).join('、') + '</td></tr>';
+    });
+    h += '</tbody></table>';
+  }
+
+  // ── 跨类同赞词（剥「主X」所主槽后；整核比较测不到者）──
+  var eps = p.epithet_sharing;
+  if (eps && (eps.groups || []).length) {
+    h += '<h3>🏷️ 跨类同赞词（剥所主槽后）</h3>';
+    if (eps.note) h += '<div class="eda-line" style="margin-bottom:6px">' + _mdInline(eps.note) + '</div>';
+    if (eps.note_en) h += '<div class="eda-line en-line" style="margin-bottom:6px">' + _mdInline(eps.note_en) + '</div>';
+    h += '<div style="font-size:.76em;color:var(--text2);margin-bottom:6px">'
+      + '可析 ' + (eps.n_members_parsed || 0) + ' 名（十九类神 150 名），跨类共用 <b>'
+      + (eps.groups || []).length + '</b> 组。</div>'
+      + '<div class="scroll-x"><table class="eda-tbl"><thead><tr><th>赞词</th><th>名数</th><th>所主槽（分属各类）</th></tr></thead><tbody>';
+    (eps.groups || []).forEach(function (g) {
+      h += '<tr><td style="color:var(--gold);white-space:nowrap">' + _escHtml(g.epithet) + '</td>'
+        + '<td style="text-align:right">' + g.n + '</td><td>'
+        + (g.members || []).map(function (m) {
+            // 成员原名属经文事实，只在 assembly 一处；此处由赞词＋所主槽＋类尾现拼
+            var tn = tailOfCat[m.cat] || '';
+            return _escHtml(g.epithet) + '主' + _escHtml(m.domain) + _escHtml(tn)
+              + '<span class="eda-dim">（' + _escHtml(m.cat) + '）</span>';
+          }).join('、')
+        + '</td></tr>';
+    });
+    h += '</tbody></table></div>';
+  }
+  // ── 主X神 句式 ──
+  if (p.zhu_formula && (p.zhu_formula.classes || []).length) {
+    var z = p.zhu_formula;
+    h += '<h3>🧩 「主X神」句式</h3>';
+    if (z.note) h += '<div class="eda-line" style="margin-bottom:8px">' + _mdInline(z.note) + '</div>';
+    if (z.note_en) h += '<div class="eda-line en-line" style="margin-bottom:8px">' + _mdInline(z.note_en) + '</div>';
+    h += '<div class="scroll-x"><table class="eda-tbl"><thead><tr><th>类</th><th>明列</th><th>合句式</th><th>比率</th></tr></thead><tbody>';
+    (z.classes || []).forEach(function (c) {
+      h += '<tr><td>' + _escHtml(c.cat) + '</td><td style="text-align:right">' + c.n_named
+        + '</td><td style="text-align:right">' + c.n_formula + '</td><td>' + c.pct + '%</td></tr>';
+    });
+    h += '</tbody></table></div>';
+  }
+
+  // ── 异体字 / 判读词素 ──
+  if ((p.glyph_variants || []).length) {
+    h += '<h3>🔠 异体字对照</h3><table class="eda-tbl"><thead><tr><th>CBETA 字形</th><th>通行字形</th><th>本篇用次</th></tr></thead><tbody>';
+    (p.glyph_variants || []).forEach(function (v) {
+      h += '<tr><td>' + _escHtml(v.cbeta) + '</td><td>' + _escHtml(v.common) + '</td><td style="text-align:right">'
+        + v.n_cbeta + '</td></tr>';
+    });
+    h += '</tbody></table>';
+  }
+
+  // ── 词素表待考 ──
+  if ((p.unsegmented || []).length) {
+    h += '<h3>❓ 待补判读</h3><table class="eda-tbl"><thead><tr><th>字</th><th>域</th><th>注</th></tr></thead><tbody>';
+    (p.unsegmented || []).forEach(function (u) {
+      h += '<tr><td>' + _escHtml(u.zh) + '</td><td>' + _escHtml(u.domain || '') + '</td><td style="font-size:.84em">'
+        + _escHtml(u.note || '') + '</td></tr>';
+    });
+    h += '</tbody></table>';
+  }
+  if ((p.lexicon_notes || []).length) {
+    h += '<h3>📝 词素表注记</h3><ul class="eda-ul">';
+    (p.lexicon_notes || []).forEach(function (n) { h += '<li>' + _mdInline(n) + '</li>'; });
+    h += '</ul>';
+  }
+
+  root.insertAdjacentHTML('beforeend', h);
+  return 1;
+}
+
+
 function _markTermRefs(rootSel) {
   if (!_agInit()) return 0;
   var root = typeof rootSel === 'string' ? document.querySelector(rootSel) : rootSel;

@@ -847,10 +847,14 @@ def _ensure_article_knowledge_schema(conn):
         return
     have = {r[0] for r in conn.execute(
         "SELECT name FROM sqlite_master WHERE type='table'")}
-    if {'article_terms', 'article_term_links', 'article_artifacts'} <= have:
+    if {'article_terms', 'article_term_links', 'article_artifacts',
+        'article_assembly_classes', 'article_assembly_members'} <= have:
+        # Tables all present, but a table can still predate a later column addition.
+        _migrate_article_assembly_columns(conn)
         return
     wanted = ('article_terms', 'article_term_links', 'article_artifacts',
-              'idx_article_terms', 'idx_atl_', 'idx_artifacts')
+              'article_assembly_classes', 'article_assembly_members',
+              'idx_article_terms', 'idx_atl_', 'idx_artifacts', 'idx_aac_', 'idx_aam_')
     stmts, buf = [], []
     for line in schema_path.read_text(encoding='utf-8').splitlines():
         s = line.strip()
@@ -865,6 +869,35 @@ def _ensure_article_knowledge_schema(conn):
         conn.execute(stmt)
     conn.commit()
     print(f"Article-knowledge schema: applied {len(stmts)} DDL statement(s) from schema.sql")
+    _migrate_article_assembly_columns(conn)
+
+
+# Columns added to article_assembly_classes after the table first shipped. A database
+# created earlier has the table but not these, and CREATE TABLE IF NOT EXISTS is a no-op
+# for it, so they are added here rather than left to a manual rebuild.
+_ASSEMBLY_NEW_COLS = (
+    # Documented in data/catalog/schema.sql; kept bare here because ALTER TABLE
+    # ADD COLUMN does not take a trailing comment cleanly.
+    ("collective_pos", "TEXT"),
+    ("vow_kind", "TEXT"),
+)
+
+
+def _migrate_article_assembly_columns(conn):
+    """Add post-hoc columns to article_assembly_classes if they are absent."""
+    if 'article_assembly_classes' not in {r[0] for r in conn.execute(
+            "SELECT name FROM sqlite_master WHERE type='table'")}:
+        return
+    have = {r[1] for r in conn.execute("PRAGMA table_info(article_assembly_classes)")}
+    added = 0
+    for col, decl in _ASSEMBLY_NEW_COLS:
+        if col not in have:
+            conn.execute(f"ALTER TABLE article_assembly_classes ADD COLUMN {col} {decl}")
+            added += 1
+    if added:
+        conn.commit()
+        print(f"Article-assembly schema: added {added} column(s): "
+              + ", ".join(c for c, _ in _ASSEMBLY_NEW_COLS if c not in have))
 
 
 def import_article_knowledge(conn):
@@ -1013,6 +1046,243 @@ def import_article_artifacts(conn):
     return n_art
 
 
+def import_article_assembly(conn):
+    """Populate article_assembly_classes/members from data/translation/*_assembly.yaml.
+
+    The assembly lists of a 品 (e.g. 世主妙严品 vol.1) are the substrate for EDA on that
+    assembly: the class name, the number expression the text actually uses, every member it
+    names outright, the domain it presides over, and the collective vow of the block.
+
+    The distinction that matters and is easy to lose: `n_named` counts the members the sutra
+    lists by name; it is NOT the size of the class, which the sutra gives only as 微塵數／無量.
+    Conflating the two is how a deck of named figures gets promoted into a headcount.
+
+    The vow is captured per block, bounded by that class's own 「如是等而為上首」 marker, so a
+    long vow can never bleed into its neighbour. Idempotent: a file's rows are replaced
+    wholesale.
+    """
+    import glob
+    _ensure_article_knowledge_schema(conn)
+    asm_glob = str(ROOT / "data" / "translation" / "*_assembly.yaml")
+    files = sorted(glob.glob(asm_glob))
+    if not files:
+        print("Article-assembly: source absent, skipped")
+        return 0
+
+    n_cls = n_mem = 0
+    for fp in files:
+        data = load_yaml(fp)
+        if not isinstance(data, dict):
+            print(f"  !! {Path(fp).name}: not a mapping, skipped")
+            continue
+        article_id = data.get('article') or Path(fp).stem.replace('_assembly', '')
+        classes = data.get('classes') or []
+        src = data.get('source_note') or data.get('source') or 'T10n0279'
+
+        # 幂等：先清该篇旧行（无外键约束，顺序无碍）
+        conn.execute("DELETE FROM article_assembly_members WHERE article_id = ?", (article_id,))
+        conn.execute("DELETE FROM article_assembly_classes WHERE article_id = ?", (article_id,))
+
+        for c in classes:
+            cat = c.get('cat')
+            if not cat or 'n_named' not in c:
+                print(f"  !! {Path(fp).name}: class missing cat/n_named, skipped: {cat}")
+                continue
+            members = c.get('members') or []
+            # 守恒：n_named 必须等于实列成员数，否则该类不可信
+            if len(members) != c['n_named']:
+                print(f"  !! {Path(fp).name}: {cat} n_named={c['n_named']} "
+                      f"but {len(members)} member(s) listed, using listed count")
+                c['n_named'] = len(members)
+            conn.execute("""
+                INSERT OR REPLACE INTO article_assembly_classes
+                (article_id, cls_idx, cat_zh, group_key, group_zh, realm, count_expr,
+                 leader_zh, n_named, domain_zh, collective_zh, collective_pos, vow_kind,
+                 vow_zh, punct_variant, glyph_variant, source_note)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (article_id, c.get('idx', n_cls), cat, c.get('group') or '',
+                  c.get('group_zh'), c.get('realm'), c.get('count_expr'),
+                  c.get('leader'), c['n_named'], c.get('domain'), c.get('collective'),
+                  c.get('collective_pos'), c.get('vow_kind'),
+                  c.get('vow'), c.get('punct_variant'), c.get('glyph_variant'), src))
+            n_cls += 1
+            for j, m in enumerate(members, start=1):
+                conn.execute("""
+                    INSERT OR REPLACE INTO article_assembly_members
+                    (article_id, cls_idx, member_idx, member_zh, is_leader)
+                    VALUES (?, ?, ?, ?, ?)
+                """, (article_id, c.get('idx', n_cls - 1), j, m, 1 if j == 1 else 0))
+                n_mem += 1
+
+    conn.commit()
+    # 自洽：各类 n_named 之和须等于成员表行数
+    s = conn.execute("SELECT COALESCE(SUM(n_named),0) FROM article_assembly_classes").fetchone()[0]
+    m = conn.execute("SELECT COUNT(*) FROM article_assembly_members").fetchone()[0]
+    if s != m:
+        print(f"  !! Article-assembly: class n_named sum {s} != member rows {m}")
+    print(f"Article-assembly: {n_cls} class(es), {n_mem} member(s) imported "
+          f"(n_named sum {s} == member rows {m})")
+    return n_cls
+
+
+_EDA_TABLES = ('article_eda_docs', 'article_eda_morphemes', 'article_eda_member_segs',
+               'idx_aem_', 'idx_aems_')
+
+
+# Fields of the generated EDA `classes` block that are the EDITOR's analysis rather than
+# a statement of the sutra. Everything else (cat aside, which is the join label) is a sutra
+# fact and is therefore served from article_assembly_* so it is stated in exactly one place.
+_EDA_CLASS_KEEP = ('idx', 'cat', 'n_char_total', 'len_hist', 'head_hist', 'tailch_hist',
+                   'domain_hist', 'domain_top', 'top_morphemes', 'top_pairs',
+                   'n_word_hits', 'n_unsegmented')
+_EDA_MEMBER_KEEP = ('i', 'n_char', 'head', 'tailch', 'segs', 'segs_char_only',
+                    'domains', 'n_word', 'n_unsegmented', 'n_unsegmented_char_only',
+                    'zhu_object')
+
+
+def _project_eda_classes(classes):
+    """Keep only the analysis half of the generated per-class block."""
+    out = []
+    for c in classes:
+        keep = {k: c[k] for k in _EDA_CLASS_KEEP if k in c}
+        keep['members'] = [{k: mm[k] for k in _EDA_MEMBER_KEEP if k in mm}
+                           for mm in (c.get('members') or [])]
+        out.append(keep)
+    return out
+
+
+def _ensure_article_eda_schema(conn):
+    """Idempotently create the EDA tables on an existing DB.
+
+    Same approach — and the same restraint — as _ensure_article_knowledge_schema: lift
+    only the EDA `CREATE` statements out of data/catalog/schema.sql and run those, so
+    the schema has a single source of truth. Executing schema.sql wholesale would run
+    its `DROP TABLE IF EXISTS persons/texts/…` statements and destroy the database, so
+    the extraction is not optional here.
+    """
+    schema_path = ROOT / "data" / "catalog" / "schema.sql"
+    if not schema_path.exists():
+        return
+    have = {r[0] for r in conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table'")}
+    if set(_EDA_TABLES[:3]) <= have:
+        return
+    stmts, buf = [], []
+    for line in schema_path.read_text(encoding='utf-8').splitlines():
+        s = line.strip()
+        if not buf and s.startswith('CREATE ') and any(w in s for w in _EDA_TABLES):
+            buf = [line]
+        elif buf:
+            buf.append(line)
+        if buf and s.endswith(';'):
+            stmts.append('\n'.join(buf))
+            buf = []
+    for stmt in stmts:
+        conn.execute(stmt)
+    conn.commit()
+    print(f"Article-EDA schema: applied {len(stmts)} DDL statement(s) from schema.sql")
+
+
+def import_article_eda(conn):
+    """Populate the article EDA group from data/translation/*_eda.yaml.
+
+    Source: scripts/miaoyan_eda.py, which derives every number from
+    data/translation/miaoyan_assembly.yaml (the sutra facts) plus a hand-compiled
+    morpheme lexicon. Nothing here is invented downstream: this step only moves the
+    generated document into SQLite so that db_reader/build can serve it without the
+    frontend ever reading YAML.
+
+    Two shapes are stored on purpose:
+      * article_eda_docs.payload_json — the whole rendered document (heat matrix, morph
+        matrix, graphs, per-class member segmentation), because the renderer needs it
+        whole and re-assembling it from rows would only invite drift;
+      * article_eda_morphemes / article_eda_member_segs — the same analysis normalised,
+        so SQL can audit it (e.g. 「sum(n) == metrics.tokens_total」) and so a future
+        generator can be checked against what shipped.
+
+    Idempotent: a file's rows are replaced wholesale.
+    """
+    import glob
+    _ensure_article_eda_schema(conn)
+    files = sorted(glob.glob(str(ROOT / "data" / "translation" / "*_eda.yaml")))
+    files = [f for f in files if not f.endswith("_eda_lexicon.yaml")]
+    if not files:
+        print("Article-EDA: source absent, skipped")
+        return 0
+
+    n_doc = n_mor = n_seg = 0
+    for fp in files:
+        data = load_yaml(fp)
+        if not isinstance(data, dict) or 'metrics' not in data:
+            print(f"  !! {Path(fp).name}: no metrics, skipped")
+            continue
+        article_id = data.get('article') or Path(fp).stem.replace('_eda', '')
+
+        conn.execute("DELETE FROM article_eda_member_segs WHERE article_id = ?", (article_id,))
+        conn.execute("DELETE FROM article_eda_morphemes  WHERE article_id = ?", (article_id,))
+        conn.execute("DELETE FROM article_eda_docs       WHERE article_id = ?", (article_id,))
+
+        # payload = whole document minus the two pieces served elsewhere:
+        #   * classes are projected to analysis-only (below) so sutra facts (name, vow,
+        #     count_expr, domain) live in exactly ONE place — article_assembly_*;
+        #   * the per-member segmentation is also normalised into article_eda_member_segs.
+        eda_classes = _project_eda_classes(data.get('classes') or [])
+        payload = {k: v for k, v in data.items() if k != 'classes'}
+        payload['eda_classes'] = eda_classes
+        conn.execute("""
+            INSERT OR REPLACE INTO article_eda_docs
+            (article_id, source, source_url, generated_by, method_json, metrics_json, payload_json)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (article_id, data.get('source'), data.get('source_url'),
+              data.get('generated_by'), j(data.get('method')), j(data.get('metrics')),
+              j(payload)))
+        n_doc += 1
+
+        for rank, m in enumerate(data.get('morph_freq') or [], start=1):
+            conn.execute("""
+                INSERT OR REPLACE INTO article_eda_morphemes
+                (article_id, zh, n, n_char_only, seg_mode, domain, confidence,
+                 gloss, gloss_en, rank)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (article_id, m.get('zh', ''), m.get('n', 0), m.get('n_char_only', 0),
+                  m.get('mode', 'char'), m.get('domain', 'unassigned'), m.get('c', 'low'),
+                  m.get('gloss', ''), m.get('gloss_en', ''), rank))
+            n_mor += 1
+
+        # 逐类逐名写入切分结果；类目本身仍以 article_assembly_* 为准，此处只存分析
+        for c in data.get('classes') or []:
+            ci = c.get('idx', 0)
+            for mm in c.get('members') or []:
+                for seq, t in enumerate(mm.get('segs') or [], start=1):
+                    conn.execute("""
+                        INSERT OR REPLACE INTO article_eda_member_segs
+                        (article_id, cls_idx, member_idx, seq, token, seg_mode,
+                         known, domain, confidence)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """, (article_id, ci, mm.get('i', 0), seq, t.get('zh', ''),
+                          t.get('mode', 'char'), 1 if t.get('known') else 0,
+                          t.get('domain', 'unassigned'), t.get('c', 'low')))
+                    n_seg += 1
+
+    conn.commit()
+    # 自洽：词素频次合计须等于 metrics.tokens_total
+    for (aid,) in conn.execute("SELECT article_id FROM article_eda_docs").fetchall():
+        s = conn.execute(
+            "SELECT COALESCE(SUM(n),0) FROM article_eda_morphemes WHERE article_id = ?",
+            (aid,)).fetchone()[0]
+        mj = conn.execute(
+            "SELECT metrics_json FROM article_eda_docs WHERE article_id = ?",
+            (aid,)).fetchone()[0]
+        try:
+            want = (json.loads(mj) if mj else {}).get('tokens_total')
+        except Exception:
+            want = None
+        if want is not None and s != want:
+            print(f"  !! Article-EDA: {aid} morpheme sum {s} != metrics.tokens_total {want}")
+    print(f"Article-EDA: {n_doc} doc(s), {n_mor} morpheme row(s), {n_seg} segment row(s) imported")
+    return n_doc
+
+
 def verify_import(conn):
     """Comprehensive verification of imported data."""
     print("\n" + "=" * 60)
@@ -1083,6 +1353,97 @@ def verify_import(conn):
     print(f"  no_definition={ak_no_def} | bad_grade={ak_bad_grade} | D_not_rejected={ak_d_bad} | dangling_edges={ak_dangling}")
     if ak_bad_grade or ak_d_bad or ak_dangling:
         print("  !! Article-knowledge integrity problem (see counts above)")
+
+    # Article assembly（会众结构：类 × 成员 × 所主 × 誓愿）
+    have_asm = {r[0] for r in conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table'")}
+    if {'article_assembly_classes', 'article_assembly_members'} <= have_asm:
+        aa_arts = conn.execute("SELECT COUNT(DISTINCT article_id) FROM article_assembly_classes").fetchone()[0]
+        aa_cls = conn.execute("SELECT COUNT(*) FROM article_assembly_classes").fetchone()[0]
+        aa_mem = conn.execute("SELECT COUNT(*) FROM article_assembly_members").fetchone()[0]
+        aa_sum = conn.execute("SELECT COALESCE(SUM(n_named),0) FROM article_assembly_classes").fetchone()[0]
+        aa_grp = conn.execute(
+            "SELECT group_key, COUNT(*) FROM article_assembly_classes GROUP BY group_key ORDER BY 2 DESC").fetchall()
+        aa_nvow = conn.execute(
+            "SELECT COUNT(*) FROM article_assembly_classes WHERE vow_zh IS NULL OR vow_zh=''").fetchone()[0]
+        # 每类必有上首，且上首必须是该类首名成员
+        aa_nolead = conn.execute(
+            "SELECT COUNT(*) FROM article_assembly_classes WHERE leader_zh IS NULL OR leader_zh=''").fetchone()[0]
+        aa_badlead = conn.execute("""
+            SELECT COUNT(*) FROM article_assembly_classes c
+            WHERE c.leader_zh <> (SELECT m.member_zh FROM article_assembly_members m
+                                  WHERE m.article_id=c.article_id AND m.cls_idx=c.cls_idx
+                                    AND m.member_idx=1)
+        """).fetchone()[0]
+        # 成员不得悬空（每成员必属本篇已存在的类）
+        aa_orphan = conn.execute("""
+            SELECT COUNT(*) FROM article_assembly_members m
+            WHERE NOT EXISTS (SELECT 1 FROM article_assembly_classes c
+                              WHERE c.article_id=m.article_id AND c.cls_idx=m.cls_idx)
+        """).fetchone()[0]
+        # 结句不得以数词开头（数词混入结句是早期抽取之失，须防复现）
+        aa_numleak = conn.execute("""
+            SELECT COUNT(*) FROM article_assembly_classes
+            WHERE vow_zh LIKE '其數%' OR vow_zh LIKE '不可思議數%' OR vow_zh LIKE '不思議數%'
+               OR vow_zh LIKE '有無量數%' OR vow_zh LIKE '不可稱數%' OR vow_zh LIKE '%微塵數%'
+        """).fetchone()[0]
+        # 有集总词者必须记其位置
+        aa_nopos = conn.execute(
+            "SELECT COUNT(*) FROM article_assembly_classes "
+            "WHERE collective_zh IS NOT NULL AND collective_zh<>'' "
+            "AND (collective_pos IS NULL OR collective_pos='')").fetchone()[0]
+        aa_kind = conn.execute(
+            "SELECT vow_kind, COUNT(*) FROM article_assembly_classes GROUP BY vow_kind").fetchall()
+        print(f"\nArticle assembly: {aa_arts} article(s) | {aa_cls} classes | {aa_mem} members")
+        print("  groups: " + ", ".join(f"{g}={c}" for g, c in aa_grp))
+        print("  vow kinds: " + ", ".join(f"{k or 'NULL'}={c}" for k, c in aa_kind))
+        print(f"  n_named_sum={aa_sum} (must equal members={aa_mem}) | no_vow={aa_nvow} | "
+              f"no_leader={aa_nolead} | leader_mismatch={aa_badlead} | orphan_members={aa_orphan}")
+        print(f"  vow_leaks_count_expr={aa_numleak} | collective_without_pos={aa_nopos}")
+        if (aa_sum != aa_mem or aa_orphan or aa_badlead or aa_nolead
+                or aa_nvow or aa_numleak or aa_nopos):
+            print("  !! Article-assembly integrity problem (see counts above)")
+
+    # Article EDA（名号构词法析构：编辑性分析，非经文事实）
+    have_eda = {r[0] for r in conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table'")}
+    if {'article_eda_docs', 'article_eda_morphemes', 'article_eda_member_segs'} <= have_eda:
+        ed_docs = conn.execute("SELECT COUNT(*) FROM article_eda_docs").fetchone()[0]
+        ed_mor = conn.execute("SELECT COUNT(*) FROM article_eda_morphemes").fetchone()[0]
+        ed_seg = conn.execute("SELECT COUNT(*) FROM article_eda_member_segs").fetchone()[0]
+        ed_unknown = conn.execute(
+            "SELECT COUNT(*) FROM article_eda_member_segs WHERE known=0").fetchone()[0]
+        ed_noconf = conn.execute(
+            "SELECT COUNT(*) FROM article_eda_morphemes WHERE confidence IS NULL OR confidence=''").fetchone()[0]
+        ed_nodom = conn.execute(
+            "SELECT COUNT(*) FROM article_eda_morphemes WHERE domain IS NULL OR domain=''").fetchone()[0]
+        ed_nomethod = conn.execute(
+            "SELECT COUNT(*) FROM article_eda_docs WHERE method_json IS NULL OR method_json=''").fetchone()[0]
+        # 词素频次合计须等于 metrics.tokens_total（否则分析文档与规范化表脱节）
+        ed_badsum = 0
+        for (aid, mj) in conn.execute(
+                "SELECT article_id, metrics_json FROM article_eda_docs").fetchall():
+            s = conn.execute(
+                "SELECT COALESCE(SUM(n),0) FROM article_eda_morphemes WHERE article_id=?",
+                (aid,)).fetchone()[0]
+            try:
+                want = (json.loads(mj) if mj else {}).get('tokens_total')
+            except Exception:
+                want = None
+            if want is not None and s != want:
+                ed_badsum += 1
+        # 切分段不得指向不存在的成员
+        ed_orphan = conn.execute("""
+            SELECT COUNT(*) FROM article_eda_member_segs s
+            WHERE NOT EXISTS (SELECT 1 FROM article_assembly_members m
+                              WHERE m.article_id=s.article_id AND m.cls_idx=s.cls_idx
+                                AND m.member_idx=s.member_idx)
+        """).fetchone()[0]
+        print(f"\nArticle EDA: {ed_docs} doc(s) | {ed_mor} morpheme row(s) | {ed_seg} segment row(s)")
+        print(f"  unsegmented_tokens={ed_unknown} | no_confidence={ed_noconf} | no_domain={ed_nodom}")
+        print(f"  doc_without_method={ed_nomethod} | morpheme_sum_mismatch={ed_badsum} | orphan_segments={ed_orphan}")
+        if ed_badsum or ed_orphan or ed_nomethod or ed_noconf or ed_nodom:
+            print("  !! Article-EDA integrity problem (see counts above)")
 
     # Texts
     t_total = conn.execute("SELECT COUNT(*) FROM texts").fetchone()[0]
@@ -1199,6 +1560,13 @@ def main():
 
     print("\n--- Importing Article Artifacts ---")
     import_article_artifacts(conn)
+
+    print("\n--- Importing Article Assembly (会众结构) ---")
+    import_article_assembly(conn)
+
+    print("\n--- Importing Article EDA (名号构词法析构) ---")
+    import_article_eda(conn)
+
     conn.execute("PRAGMA foreign_keys = ON")
 
     # ---------------------------------------------------------------
