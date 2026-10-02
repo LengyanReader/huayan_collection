@@ -1354,10 +1354,13 @@ morphemes:
   note: ''
 - zh: 因
   domain: unassigned
-  gloss: 〔存疑〕因陀羅（梵 indra 之误写）／廣大因慧
+  gloss: 因（因慧之因）／〔存疑〕因陀羅之因
   gloss_en: ''
   c: low
-  note: 见「釋迦因陀羅天」；「因」于此作音译成分。
+  note: 二义：①「廣大因慧阿脩羅王」中「因慧」为词（已立 lexeme「因慧」，
+        domain=virtue），此字随之而解；②「釋迦因陀羅天」中「因」为音译成分
+        〔存疑〕（因陀罗之因字，或系 indra 之省写）。本条 domain 仍留
+        unassigned，因两义分属不同层，不宜强行归一。
 - zh: 宿
   domain: time
   gloss: 宿、星宿
@@ -1917,11 +1920,13 @@ morphemes:
   c: medium
   note: 见「嚴持器仗夜叉」。
 - zh: 軍
-  domain: unassigned
-  gloss: 〔存疑〕軍（大軍）
-  gloss_en: ''
-  c: low
-  note: 见「勇敵大軍夜叉」。
+  domain: power
+  gloss: 军（军旅、兵众）
+  gloss_en: army, host
+  c: medium
+  note: 见「勇敵大軍夜叉王」，义明为军旅之「军」。原注〔存疑〕者，
+        误以「軍」入音译成分之列（实为梵名 śena 之音译，非此字），
+        今正其域为 power、去其存疑标记。
 - zh: 富
   domain: virtue
   gloss: 富、富贵
@@ -2409,6 +2414,56 @@ lexemes:
   domain: unassigned
   gloss: 巧幻术
   c: medium
+# ── 补登记（2026-10-02）：以下皆为「拆则失义」之固定词，先前散拆为字、
+#    致 須彌／栴檀／音译全称等失其读法者，一并补入。判准与既有一致：
+#    固定专名与音译全称即立为词，不待其义项在本品内被判定。
+- zh: 須彌
+  domain: nature
+  gloss: 须弥（须弥山名，梵 sumeru）
+  c: high
+  note: 与既注「如須彌山」（譬喻义，domain=nature）不同层：此为山名本词。
+- zh: 栴檀
+  domain: nature
+  gloss: 栴檀（旃檀，香木名，梵 candana）
+  c: high
+- zh: 羅睺
+  domain: unassigned
+  gloss: 罗睺（Rāhu，音译，阿修罗名）
+  c: high
+- zh: 阿脩羅
+  domain: unassigned
+  gloss: 阿修罗（asura，音译）
+  c: high
+  note: CBETA 字形「脩」。本词亦见于类名「阿脩羅王」，然类尾已整剥，故此处所收
+        皆为修饰语用法（如「阿脩羅眼」）。
+- zh: 毘樓博叉
+  domain: unassigned
+  gloss: 毘楼博叉（音译，龙王名）
+  c: medium
+  note: 四字音译全称，梵名原形未考〔待核〕。
+- zh: 德叉迦
+  domain: unassigned
+  gloss: 德叉迦（音译，龙王名）
+  c: medium
+  note: 梵名原形未考〔待核〕。
+- zh: 因慧
+  domain: virtue
+  gloss: 因慧（因与慧双修之智）
+  c: medium
+  note: 此前「因」字兼收「因陀羅」（音译）与「廣大因慧」（正名）二义而未加
+        切分，故「廣大因慧阿脩羅王」中「因」失其读法；立此词以正之。
+- zh: 釋迦
+  domain: unassigned
+  gloss: 釋迦（Śikhyā，音译）
+  c: medium
+  note: 见「釋迦因陀羅天」——三十三天之一，梵名 Śikhyāndhra 之拆称。
+        既注「因陀羅」已收其後半，今補前半，「釋迦因陀羅」之名遂整。
+- zh: 眾所歸
+  domain: motion
+  gloss: 众所归（为众所归依者）
+  c: medium
+  note: 既注「所歸」为二字词，然经文作「眾所歸」，二字词不触发，故补三字词。
+
 class_tails:
 - zh: 菩薩摩訶薩
   domain: body
@@ -2473,51 +2528,65 @@ group_profiles:
     character: "五群中唯一「同类多名」之群：二十名同属菩薩摩訶薩一类，故核名反较八部、天众为长。"
     note: |-
       实算：20 名 / 1 类，核名均值 5.50（区间 2–7），49 个词素、9 处多字词，
-      lowconf 11.9%。**本群无一特有词素**——其 49 词素全部见于他群，即菩萨名号与他群
-      共用同一语料池，此为「同一模板造众名」之最强证据。冠字「普」占 11/20，
+      判读存疑（medium+low）11.9%、须标〔待考〕之 low 仅 2.0%。**本群特有词素仅二：
+      普賢、如來**——一为本群上首之真名，一为佛号，二者皆专名而非语汇；余 47 词素
+      全部见于他群，即菩萨名号与他群共用同一语料池，此为「同一模板造众名」之最强证据。冠字「普」占 11/20，
       与上首「普賢菩薩摩訶薩」相应；前二名（普賢、普德）亦皆冠「普」。
     note_en: |-
       Measured: 20 names in a single class, mean core length 5.50 (range 2–7),
-      49 morphemes, 9 multi-character words, 11.9% low-confidence.
-      The group has **no exclusive morpheme at all** — every one of its 49
-      morphemes also occurs in another group, so the bodhisattva names draw on
-      exactly the same lexical pool as the non-human groups. This is the
-      strongest evidence that one naming template produced all 414 names.
+      49 morphemes, 9 multi-character words; 11.9% of positions medium or low in
+      reading, of which only 2.0% sit at the low tier that must be flagged 〔待考〕.
+      The group has **just two exclusive morphemes, 普賢 and 如來** — the leader's
+      own proper name and a Buddha title, both proper nouns rather than vocabulary;
+      the remaining 47 morphemes all occur in other groups, so the bodhisattva
+      names draw on exactly the same lexical pool as the non-human groups. This
+      is the strongest evidence that one naming template produced all 414 names.
       The head character 普 heads 11 of 20 names, matching the leader 普賢菩薩摩訶薩.
   deities:
     character: "全篇唯一具严格句式律之群：后十五类「主X神」150/150 名无一例外。"
     note: |-
-      实算：190 名 / 19 类，核名均值 5.61（3–10），224 个词素（为五群最多）、
-      36 处多字词，lowconf 14.6%。**群特有词素恰为十五个「所主」字**
-      （城、地、山、林、藥、稼、河、海、水、火、風、空、方、夜、晝），
+      实算：190 名 / 19 类，核名均值 5.61（3–10），222 个词素（为五群最多）、
+      40 处多字词，判读存疑 14.7%、low 1.8%。**群特有词素凡 107 个**（为五群最多），
+      其中「所主」槽位字十三个（城、林、藥、稼、河、海、水、火、風、空、方、夜、晝）
+      确为他群所无，惟「地」「山」二字兼见于八部（毘樓博叉、須彌堅固），
+      故非本群所独。旧记「特有词素恰为十五个所主字」不确，今依实算正之：
       即句式的槽位本身成了该群的识别标记——此为 19 类神中 15 类「主X神」
       句式率 100%（150/150）的直接体现。类尾分化为五种（執金剛神／身眾神／
       足行神／道場神／神），恰对应「四类造型神 + 十五类所主神」两型之别。
     note_en: |-
-      Measured: 190 names in 19 classes, mean core length 5.61 (3–10), 224
-      morphemes (the most of the five groups), 36 multi-character words,
-      14.6% low-confidence. The group's **exclusive morphemes are exactly the
-      fifteen governed-domain characters** 城 地 山 林 藥 稼 河 海 水 火 風 空 方 夜 晝 —
-      the slots of the formula themselves became the group's signature. This is
-      the direct correlate of the 100% formula rate (150/150) among the fifteen
+      Measured: 190 names in 19 classes, mean core length 5.61 (3–10), 222
+      morphemes (the most of the five groups), 40 multi-character words; 14.7% of
+      positions medium or low, 1.8% at the low tier. The group has **107
+      exclusive morphemes — the most of the five** — of which thirteen are the
+      governed-domain characters 城 林 藥 稼 河 海 水 火 風 空 方 夜 晝, exclusive
+      to this group; 地 and 山 also occur in the 八部 (毘樓博叉, 須彌堅固) and so
+      are not exclusive here. The earlier claim that the exclusive morphemes were
+      exactly the fifteen domain characters does not hold and is corrected to the
+      measured figure. The slots of the formula themselves did become a signature
+      of the group. This is the direct correlate of the 100% formula rate
+      (150/150) among the fifteen
       「主X神」 classes. The class tails split into five forms (執金剛神／身眾神／
       足行神／道場神／神), matching the two patterns: four form-deity classes
       against fifteen governed-domain classes.
   eight:
-    character: "核名最短（均值 3.77）而判读最不确定（lowconf 21.2%，五群最高）之群。"
+    character: "核名最短（均值 3.77）而判读存疑最厚（medium+low 18.7%，五群最高）之群。"
     note: |-
-      实算：80 名 / 8 类，核名均值 3.77（2–8），为五群最短；130 个词素、16 处多字词；
-      lowconf 21.2% 为五群最高。其成因是**语料性质而非切分之弊**：八部名多以本类
-      或本尊音译立名（羅睺、毘摩質多羅、毘沙門、娑竭羅、持國…），音译专名切分后
-      多落「未定」域。后果须明言——**八部的 epithet 分析置信度最低**，
+      实算：80 名 / 8 类，核名均值 3.77（2–8），为五群最短；124 个词素、22 处多字词；
+      判读存疑（medium+low）18.7% 为五群最高，而须标〔待考〕之 low 仅 1.5%、居五群
+      第四——二者方向相反，正见其存疑之性质。其成因是**语料性质而非切分之弊**：
+      八部名多以本类或本尊音译立名（羅睺、毘摩質多羅、毘沙門、娑竭羅、持國…），
+      音译专名之读法「合理而未证」，故多落 medium 而非 low。后果须明言——**八部的 epithet 分析置信度最低**，
       涉八部之造词结论应加保留；欲比较「群间用字差异」，八部一组宜只看有判读的词素。
     note_en: |-
       Measured: 80 names in 8 classes, mean core length 3.77 (2–8) — the
-      shortest of the five groups; 130 morphemes, 16 multi-character words;
-      21.2% low-confidence, the highest of the five. The cause is the nature of
-      the material, not a defect of segmentation: many 八部 names are built on a
-      transliterated class or deity name (羅睺, 毘摩質多羅, 毘沙門, 娑竭羅, 持國),
-      and transliterated proper names mostly fall outside the lexicon. The
+      shortest of the five groups; 124 morphemes, 22 multi-character words;
+      18.7% of positions medium or low, the highest of the five, yet only 1.5% at
+      the low tier that must be flagged — fourth of five. The two measures point
+      in opposite directions, which is itself diagnostic. The cause is the nature
+      of the material, not a defect of segmentation: many 八部 names are built on
+      a transliterated class or deity name (羅睺, 毘摩質多羅, 毘沙門, 娑竭羅, 持國),
+      whose readings are plausible but unverified and therefore settle at medium
+      rather than low. The
       consequence must be stated plainly — **the epithet analysis of the 八部 is
       the least reliable of the five**; any claim about word-building in this
       group needs a caveat, and cross-group comparison should read only the
@@ -2525,34 +2594,43 @@ group_profiles:
   desire:
     character: "以「天子」「天王」二尾统摄，全群无句式律之群。"
     note: |-
-      实算：73 名 / 7 类，核名均值 4.25（2–9），110 个词素、18 处多字词，
-      lowconf 16.6%。类尾仅「天子」「天王」两种，无所主标记，故与十九类神之
-      严格句式律成对照：同为天王而一为填空式、一为自由式。特有词素仅
-      「子」「因陀羅」——后者为帝释别名（Śakra／因陀羅），仅见于三十三天王。
+      实算：73 名 / 7 类，核名均值 4.25（2–9），108 个词素、21 处多字词，
+      判读存疑（medium+low）16.4%、low 1.7%。类尾仅「天子」「天王」两种，无所主标记，
+      故与十九类神之严格句式律成对照：同为天王而一为填空式、一为自由式。
+      群特有词素 17 个（分、句、察、得、悟、慈、敬、正、滿、界、總、蘂、議、門、
+      子、因陀羅、釋迦），多于八部之 5、少于天众之 107。其中「因陀羅」为帝释别名
+      （Śakra），见于三十三天王「釋迦因陀羅天王」与他化自在天王
+      「因陀羅力妙莊嚴光明天王」二处；旧记「仅见于三十三天王」不确，今正之。
       本群「光」「明」二词素之和 47，为群内最高，显示其名号仍以光明语汇为主调。
     note_en: |-
-      Measured: 73 names in 7 classes, mean core length 4.25 (2–9), 110
-      morphemes, 18 multi-character words, 16.6% low-confidence. Class tails
-      are only 「天子」 and 「天王」, with no governed-domain marker, so this group
-      stands in contrast to the strict formula of the nineteen deity classes:
-      both are 天王, but one is fill-in-the-blank and the other free. Its only
-      exclusive morphemes are 子 and 因陀羅, the latter a name of Śakra appearing
-      solely in the Trayastriṃśa class. 光 and 明 together reach 47 occurrences
+      Measured: 73 names in 7 classes, mean core length 4.25 (2–9), 108
+      morphemes, 21 multi-character words; 16.4% medium or low, 1.7% at the low
+      tier. Class tails are only 「天子」 and 「天王」, with no governed-domain
+      marker, so this group stands in contrast to the strict formula of the
+      nineteen deity classes: both are 天王, but one is fill-in-the-blank and
+      the other free. It has 17 exclusive morphemes (分 句 察 得 悟 慈 敬 正 滿 界
+      總 蘂 議 門 子 因陀羅 釋迦) — more than the 八部's 5, fewer than the devas'
+      107. 因陀羅 is a name of Śakra occurring in **two** classes, the
+      Trayastriṃśa (釋迦因陀羅天王) and the Nirmāṇarati
+      (因陀羅力妙莊嚴光明天王); the earlier claim that it appeared solely in the
+      Trayastriṃśa does not hold and is corrected. 光 and 明 together reach 47 occurrences
       within the group, the highest of any pair, so luminosity still dominates
       the group's vocabulary.
   form:
-    character: "类尾统一为「天王」、句式最简，而功德类占比为五群最高（28.9%）。"
+    character: "类尾统一为「天王」、句式最简，而功德类占比为五群最高（29.1%）。"
     note: |-
-      实算：51 名 / 5 类，核名均值 4.37（2–7），63 个词素（五群最少）、
-      19 处多字词，lowconf 12.7% 为五群最低。功德类占 28.9% 为五群之最，
+      实算：51 名 / 5 类，核名均值 4.37（2–7），62 个词素（五群最少）、
+      20 处多字词，判读存疑（medium+low）12.8%、low 1.0%，二者皆为五群最低。
+      功德类占 29.1% 为五群之最，
       与本群多以德相立名相应（「清淨名稱天王」「自在名稱光天王」「最勝見天王」）。
       「自在」复合词 7 见、「可愛」5 见，为本群最显著的两个多字词。
       群间比较上，本群与欲界天之 Jaccard 最高（0.362）、域分布距离最小（16.7%），
       即两天之造词实践最为接近。
     note_en: |-
       Measured: 51 names in 5 classes, mean core length 4.37 (2–7), 63 morphemes
-      (the fewest of the five), 19 multi-character words, 12.7% low-confidence
-      (the lowest of the five). The merit-virtue domain takes 28.9%, the highest
+      (the fewest of the five), 20 multi-character words; 12.8% medium or low and
+      1.0% at the low tier, both the lowest of the five. The merit-virtue domain
+      takes 29.1%, the highest
       of any group, matching the group's habit of naming after a virtue
       (「清淨名稱天王」「自在名稱光天王」「最勝見天王」). The compounds 自在 (7)
       and 可愛 (5) are its most conspicuous multi-character words. In the

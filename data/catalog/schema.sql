@@ -450,6 +450,8 @@ CREATE INDEX IF NOT EXISTS idx_aam_cls     ON article_assembly_members(article_i
 --   ① 切分（词级最长匹配 + 逐字退段）是工具的**方法选择**，非经文原貌；
 --   ② domain 语义域是**单一判读视角**下每词素归一域，非该字全部义项；
 --   ③ confidence=c 逐条标 high/medium/low，low 者前端须显示〔待考〕；
+--      故「须标待考」之计数为 low 单级，勿与 medium 混计——「判读存疑」则是
+--      medium+low 之合计，二者口径不同：前者为标注义务，后者为比较之需；
 --   ④ n_named（明列成员数）≠ 该类众数（经文作「微塵數／無量」），严禁混用；
 --   ⑤ method_json 存全部方法声明，渲染层须原样呈现，不得只挑好看的数。
 --   故本组表与 article_assembly_* 分立：前者是经文事实，后者是编者分析。

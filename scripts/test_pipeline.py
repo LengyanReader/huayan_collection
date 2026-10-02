@@ -404,6 +404,32 @@ def test_article_eda():
     else:
         fail(f"EDA: segment sum {seg_sum} != metrics.tokens_total {m.get('tokens_total')}")
 
+    # 置信度三级须互斥穷尽：lowconf 仅计 low，medconf 单列 medium，二者不得互相吞并。
+    # 旧版 lowconf_hits 合并了 low+medium，与 schema「low 者须标〔待考〕」相悖，故立此关。
+    seg_c = {}
+    for ec in ecs:
+        for mm in (ec.get('members') or []):
+            for sg in (mm.get('segs') or []):
+                seg_c[sg.get('c')] = seg_c.get(sg.get('c'), 0) + 1
+    n_low, n_med = seg_c.get('low', 0), seg_c.get('medium', 0)
+    n_high = seg_c.get('high', 0)
+    if len(seg_c) == 3 and n_high + n_med + n_low == (m.get('tokens_total') or -1):
+        pass_(f"EDA: 3 confidence tiers disjoint & exhaustive (high {n_high}/med {n_med}/low {n_low})")
+    else:
+        fail(f"EDA: confidence tiers not exhaustive: {seg_c} vs tokens_total {m.get('tokens_total')}")
+    if m.get('lowconf_hits') == n_low and m.get('medconf_hits') == n_med:
+        pass_("EDA: lowconf_hits/medconf_hits split low vs medium (no bundling)")
+    else:
+        fail("EDA: lowconf_hits={} medconf_hits={} != measured low {} med {}".format(
+            m.get('lowconf_hits'), m.get('medconf_hits'), n_low, n_med))
+    gps = p.get('group_profiles') or []
+    gl = sum(g.get('n_lowconf', 0) for g in gps)
+    gm = sum(g.get('n_medconf', 0) for g in gps)
+    if gl == n_low and gm == n_med and all('n_medconf' in g for g in gps):
+        pass_("EDA: group_profiles low/med split consistent with metrics")
+    else:
+        fail("EDA: group_profiles low/med = {}/{} != {}/{}".format(gl, gm, n_low, n_med))
+
     # 归一化段行（SQLite 侧）频次和须等于 tokens_total
     # 归一化段行（SQLite 侧）频次和须等于 tokens_total
     conn = sqlite3.connect(str(DB_PATH))

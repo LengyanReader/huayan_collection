@@ -21,7 +21,7 @@ domains:
   zh: 光明类
   en: luminosity
   color: '#f2c14e'
-  n: 241
+  n: 240
 - key: jewel
   zh: 宝严类
   en: jewel-adornment
@@ -46,12 +46,12 @@ domains:
   zh: 智慧类
   en: wisdom
   color: '#16a085'
-  n: 67
+  n: 66
 - key: power
   zh: 威势力类
   en: power
   color: '#d35400'
-  n: 75
+  n: 76
 - key: motion
   zh: 動行类
   en: motion
@@ -61,7 +61,7 @@ domains:
   zh: 自然类
   en: nature
   color: '#1e8449'
-  n: 194
+  n: 202
 - key: space
   zh: 空間类
   en: space
@@ -96,7 +96,7 @@ domains:
   zh: 未定
   en: unassigned
   color: '#b3b3b3'
-  n: 57
+  n: 31
 groups:
 - key: bodhisattva
   zh: 同生众·菩萨
@@ -143,7 +143,7 @@ groups:
     n: 236
   - domain: nature
     domain_zh: 自然类
-    n: 163
+    n: 167
   - domain: virtue
     domain_zh: 功德类
     n: 134
@@ -180,13 +180,13 @@ groups:
     n: 37
   - domain: power
     domain_zh: 威势力类
-    n: 26
-  - domain: unassigned
-    domain_zh: 未定
-    n: 22
+    n: 27
   - domain: motion
     domain_zh: 動行类
     n: 20
+  - domain: luminosity
+    domain_zh: 光明类
+    n: 19
 - key: desire
   zh: 异生众·欲界天
   en: desire-realm gods
@@ -251,19 +251,20 @@ groups:
 metrics:
   classes: 40
   named_total: 414
-  tokens_total: 1898
+  tokens_total: 1879
   tokens_char_only: 2010
-  word_hits: 98
-  distinct_tokens: 312
+  word_hits: 112
+  distinct_tokens: 305
   morphemes_lexicon: 336
-  lexemes_lexicon: 37
+  lexemes_lexicon: 46
   class_tails: 40
   n_no_core: 2
   coverage_pct: 100.0
   unsegmented_chars: 0
   unsegmented_distinct: 0
   lexicon_unused: 16
-  lowconf_hits: 295
+  lowconf_hits: 31
+  medconf_hits: 254
   tail_hist:
     神: 150
     天王: 103
@@ -505,28 +506,28 @@ heat_matrix:
 - group: deities
   group_zh: 异生众·十九类神
   n: 190
-  n_tokens: 1026
+  n_tokens: 1022
   cells:
   - domain: luminosity
     domain_zh: 光明类
     n: 113
-    pct: 11.01
+    pct: 11.06
   - domain: jewel
     domain_zh: 宝严类
     n: 50
-    pct: 4.87
+    pct: 4.89
   - domain: sound
     domain_zh: 音聲类
     n: 29
-    pct: 2.83
+    pct: 2.84
   - domain: form
     domain_zh: 形相类
     n: 71
-    pct: 6.92
+    pct: 6.95
   - domain: virtue
     domain_zh: 功德类
     n: 134
-    pct: 13.06
+    pct: 13.11
   - domain: wisdom
     domain_zh: 智慧类
     n: 12
@@ -534,19 +535,19 @@ heat_matrix:
   - domain: power
     domain_zh: 威势力类
     n: 23
-    pct: 2.24
+    pct: 2.25
   - domain: motion
     domain_zh: 動行类
     n: 81
-    pct: 7.89
+    pct: 7.93
   - domain: nature
     domain_zh: 自然类
-    n: 163
-    pct: 15.89
+    n: 167
+    pct: 16.34
   - domain: space
     domain_zh: 空間类
     n: 41
-    pct: 4.0
+    pct: 4.01
   - domain: body
     domain_zh: 身體類
     n: 3
@@ -558,72 +559,72 @@ heat_matrix:
   - domain: time
     domain_zh: 時間类
     n: 28
-    pct: 2.73
+    pct: 2.74
   - domain: number
     domain_zh: 數量类
     n: 23
-    pct: 2.24
+    pct: 2.25
   - domain: affix
     domain_zh: 冠綴类
     n: 236
-    pct: 23.0
+    pct: 23.09
   - domain: unassigned
     domain_zh: 未定
-    n: 15
-    pct: 1.46
+    n: 7
+    pct: 0.68
 - group: eight
   group_zh: 异生众·八部
   n: 80
-  n_tokens: 278
+  n_tokens: 267
   cells:
   - domain: luminosity
     domain_zh: 光明类
-    n: 20
-    pct: 7.19
+    n: 19
+    pct: 7.12
   - domain: jewel
     domain_zh: 宝严类
     n: 11
-    pct: 3.96
+    pct: 4.12
   - domain: sound
     domain_zh: 音聲类
     n: 12
-    pct: 4.32
+    pct: 4.49
   - domain: form
     domain_zh: 形相类
     n: 39
-    pct: 14.03
+    pct: 14.61
   - domain: virtue
     domain_zh: 功德类
     n: 56
-    pct: 20.14
+    pct: 20.97
   - domain: wisdom
     domain_zh: 智慧类
-    n: 10
-    pct: 3.6
+    n: 9
+    pct: 3.37
   - domain: power
     domain_zh: 威势力类
-    n: 26
-    pct: 9.35
+    n: 27
+    pct: 10.11
   - domain: motion
     domain_zh: 動行类
     n: 20
-    pct: 7.19
+    pct: 7.49
   - domain: nature
     domain_zh: 自然类
-    n: 15
-    pct: 5.4
+    n: 16
+    pct: 5.99
   - domain: space
     domain_zh: 空間类
     n: 2
-    pct: 0.72
+    pct: 0.75
   - domain: body
     domain_zh: 身體類
     n: 1
-    pct: 0.36
+    pct: 0.37
   - domain: speech
     domain_zh: 言說类
     n: 1
-    pct: 0.36
+    pct: 0.37
   - domain: time
     domain_zh: 時間类
     n: 0
@@ -631,60 +632,60 @@ heat_matrix:
   - domain: number
     domain_zh: 數量类
     n: 6
-    pct: 2.16
+    pct: 2.25
   - domain: affix
     domain_zh: 冠綴类
     n: 37
-    pct: 13.31
+    pct: 13.86
   - domain: unassigned
     domain_zh: 未定
-    n: 22
-    pct: 7.91
+    n: 11
+    pct: 4.12
 - group: desire
   group_zh: 异生众·欲界天
   n: 73
-  n_tokens: 289
+  n_tokens: 286
   cells:
   - domain: luminosity
     domain_zh: 光明类
     n: 54
-    pct: 18.69
+    pct: 18.88
   - domain: jewel
     domain_zh: 宝严类
     n: 13
-    pct: 4.5
+    pct: 4.55
   - domain: sound
     domain_zh: 音聲类
     n: 6
-    pct: 2.08
+    pct: 2.1
   - domain: form
     domain_zh: 形相类
     n: 26
-    pct: 9.0
+    pct: 9.09
   - domain: virtue
     domain_zh: 功德类
     n: 63
-    pct: 21.8
+    pct: 22.03
   - domain: wisdom
     domain_zh: 智慧类
     n: 19
-    pct: 6.57
+    pct: 6.64
   - domain: power
     domain_zh: 威势力类
     n: 14
-    pct: 4.84
+    pct: 4.9
   - domain: motion
     domain_zh: 動行类
     n: 17
-    pct: 5.88
+    pct: 5.94
   - domain: nature
     domain_zh: 自然类
-    n: 6
-    pct: 2.08
+    n: 8
+    pct: 2.8
   - domain: space
     domain_zh: 空間类
     n: 5
-    pct: 1.73
+    pct: 1.75
   - domain: body
     domain_zh: 身體類
     n: 1
@@ -692,32 +693,32 @@ heat_matrix:
   - domain: speech
     domain_zh: 言說类
     n: 5
-    pct: 1.73
+    pct: 1.75
   - domain: time
     domain_zh: 時間类
     n: 8
-    pct: 2.77
+    pct: 2.8
   - domain: number
     domain_zh: 數量类
     n: 3
-    pct: 1.04
+    pct: 1.05
   - domain: affix
     domain_zh: 冠綴类
     n: 38
-    pct: 13.15
+    pct: 13.29
   - domain: unassigned
     domain_zh: 未定
-    n: 11
-    pct: 3.81
+    n: 6
+    pct: 2.1
 - group: form
   group_zh: 异生众·色界天
   n: 51
-  n_tokens: 204
+  n_tokens: 203
   cells:
   - domain: luminosity
     domain_zh: 光明类
     n: 36
-    pct: 17.65
+    pct: 17.73
   - domain: jewel
     domain_zh: 宝严类
     n: 0
@@ -725,35 +726,35 @@ heat_matrix:
   - domain: sound
     domain_zh: 音聲类
     n: 12
-    pct: 5.88
+    pct: 5.91
   - domain: form
     domain_zh: 形相类
     n: 10
-    pct: 4.9
+    pct: 4.93
   - domain: virtue
     domain_zh: 功德类
     n: 59
-    pct: 28.92
+    pct: 29.06
   - domain: wisdom
     domain_zh: 智慧类
     n: 21
-    pct: 10.29
+    pct: 10.34
   - domain: power
     domain_zh: 威势力类
     n: 9
-    pct: 4.41
+    pct: 4.43
   - domain: motion
     domain_zh: 動行类
     n: 10
-    pct: 4.9
+    pct: 4.93
   - domain: nature
     domain_zh: 自然类
-    n: 4
-    pct: 1.96
+    n: 5
+    pct: 2.46
   - domain: space
     domain_zh: 空間类
     n: 3
-    pct: 1.47
+    pct: 1.48
   - domain: body
     domain_zh: 身體類
     n: 0
@@ -761,23 +762,23 @@ heat_matrix:
   - domain: speech
     domain_zh: 言說类
     n: 8
-    pct: 3.92
+    pct: 3.94
   - domain: time
     domain_zh: 時間类
     n: 2
-    pct: 0.98
+    pct: 0.99
   - domain: number
     domain_zh: 數量类
     n: 2
-    pct: 0.98
+    pct: 0.99
   - domain: affix
     domain_zh: 冠綴类
     n: 23
-    pct: 11.27
+    pct: 11.33
   - domain: unassigned
     domain_zh: 未定
-    n: 5
-    pct: 2.45
+    n: 3
+    pct: 1.48
 group_profiles:
 - key: bodhisattva
   zh: 同生众·菩萨
@@ -799,8 +800,10 @@ group_profiles:
     7: 5
   n_distinct_morph: 49
   n_word_hits: 9
-  n_lowconf: 12
-  lowconf_pct: 11.9
+  n_lowconf: 2
+  lowconf_pct: 2.0
+  n_medconf: 10
+  medconf_pct: 9.9
   top_morphs:
   - zh: 光
     n: 11
@@ -945,22 +948,28 @@ group_profiles:
   - 菩薩摩訶薩
   note: '实算：20 名 / 1 类，核名均值 5.50（区间 2–7），49 个词素、9 处多字词，
 
-    lowconf 11.9%。**本群无一特有词素**——其 49 词素全部见于他群，即菩萨名号与他群
+    判读存疑（medium+low）11.9%、须标〔待考〕之 low 仅 2.0%。**本群特有词素仅二：
 
-    共用同一语料池，此为「同一模板造众名」之最强证据。冠字「普」占 11/20，
+    普賢、如來**——一为本群上首之真名，一为佛号，二者皆专名而非语汇；余 47 词素
+
+    全部见于他群，即菩萨名号与他群共用同一语料池，此为「同一模板造众名」之最强证据。冠字「普」占 11/20，
 
     与上首「普賢菩薩摩訶薩」相应；前二名（普賢、普德）亦皆冠「普」。'
   note_en: 'Measured: 20 names in a single class, mean core length 5.50 (range 2–7),
 
-    49 morphemes, 9 multi-character words, 11.9% low-confidence.
+    49 morphemes, 9 multi-character words; 11.9% of positions medium or low in
 
-    The group has **no exclusive morpheme at all** — every one of its 49
+    reading, of which only 2.0% sit at the low tier that must be flagged 〔待考〕.
 
-    morphemes also occurs in another group, so the bodhisattva names draw on
+    The group has **just two exclusive morphemes, 普賢 and 如來** — the leader''s
 
-    exactly the same lexical pool as the non-human groups. This is the
+    own proper name and a Buddha title, both proper nouns rather than vocabulary;
 
-    strongest evidence that one naming template produced all 414 names.
+    the remaining 47 morphemes all occur in other groups, so the bodhisattva
+
+    names draw on exactly the same lexical pool as the non-human groups. This
+
+    is the strongest evidence that one naming template produced all 414 names.
 
     The head character 普 heads 11 of 20 names, matching the leader 普賢菩薩摩訶薩.'
   character: 五群中唯一「同类多名」之群：二十名同属菩薩摩訶薩一类，故核名反较八部、天众为长。
@@ -968,7 +977,7 @@ group_profiles:
   zh: 异生众·十九类神
   en: nineteen classes of deities
   n_named: 190
-  n_tokens: 1026
+  n_tokens: 1022
   n_classes: 19
   classes:
   - 執金剛神
@@ -1000,10 +1009,12 @@ group_profiles:
     5: 5
     6: 148
     10: 1
-  n_distinct_morph: 224
-  n_word_hits: 36
-  n_lowconf: 150
-  lowconf_pct: 14.6
+  n_distinct_morph: 222
+  n_word_hits: 40
+  n_lowconf: 18
+  lowconf_pct: 1.8
+  n_medconf: 132
+  medconf_pct: 12.9
   top_morphs:
   - zh: 主
     n: 150
@@ -1097,24 +1108,24 @@ group_profiles:
     n: 5
   - zh: 無礙
     n: 4
+  - zh: 須彌
+    n: 2
+  - zh: 栴檀
+    n: 2
   - zh: 自在
     n: 2
   - zh: 那羅延
-    n: 1
-  - zh: 可愛
-    n: 1
-  - zh: 師子
     n: 1
   domains:
   - &id002
     domain: affix
     domain_zh: 冠綴类
     n: 236
-    pct: 23.0
+    pct: 23.1
   - domain: nature
     domain_zh: 自然类
-    n: 163
-    pct: 15.9
+    n: 167
+    pct: 16.3
   - domain: virtue
     domain_zh: 功德类
     n: 134
@@ -1122,7 +1133,7 @@ group_profiles:
   - domain: luminosity
     domain_zh: 光明类
     n: 113
-    pct: 11.0
+    pct: 11.1
   - domain: motion
     domain_zh: 動行类
     n: 81
@@ -1150,19 +1161,19 @@ group_profiles:
   - domain: power
     domain_zh: 威势力类
     n: 23
-    pct: 2.2
+    pct: 2.3
   - domain: number
     domain_zh: 數量类
     n: 23
-    pct: 2.2
-  - domain: unassigned
-    domain_zh: 未定
-    n: 15
-    pct: 1.5
+    pct: 2.3
   - domain: wisdom
     domain_zh: 智慧类
     n: 12
     pct: 1.2
+  - domain: unassigned
+    domain_zh: 未定
+    n: 7
+    pct: 0.7
   - domain: speech
     domain_zh: 言說类
     n: 4
@@ -1178,28 +1189,42 @@ group_profiles:
   - 足行神
   - 身眾神
   - 道場神
-  note: '实算：190 名 / 19 类，核名均值 5.61（3–10），224 个词素（为五群最多）、
+  note: '实算：190 名 / 19 类，核名均值 5.61（3–10），222 个词素（为五群最多）、
 
-    36 处多字词，lowconf 14.6%。**群特有词素恰为十五个「所主」字**
+    40 处多字词，判读存疑 14.7%、low 1.8%。**群特有词素凡 107 个**（为五群最多），
 
-    （城、地、山、林、藥、稼、河、海、水、火、風、空、方、夜、晝），
+    其中「所主」槽位字十三个（城、林、藥、稼、河、海、水、火、風、空、方、夜、晝）
+
+    确为他群所无，惟「地」「山」二字兼见于八部（毘樓博叉、須彌堅固），
+
+    故非本群所独。旧记「特有词素恰为十五个所主字」不确，今依实算正之：
 
     即句式的槽位本身成了该群的识别标记——此为 19 类神中 15 类「主X神」
 
     句式率 100%（150/150）的直接体现。类尾分化为五种（執金剛神／身眾神／
 
     足行神／道場神／神），恰对应「四类造型神 + 十五类所主神」两型之别。'
-  note_en: 'Measured: 190 names in 19 classes, mean core length 5.61 (3–10), 224
+  note_en: 'Measured: 190 names in 19 classes, mean core length 5.61 (3–10), 222
 
-    morphemes (the most of the five groups), 36 multi-character words,
+    morphemes (the most of the five groups), 40 multi-character words; 14.7% of
 
-    14.6% low-confidence. The group''s **exclusive morphemes are exactly the
+    positions medium or low, 1.8% at the low tier. The group has **107
 
-    fifteen governed-domain characters** 城 地 山 林 藥 稼 河 海 水 火 風 空 方 夜 晝 —
+    exclusive morphemes — the most of the five** — of which thirteen are the
 
-    the slots of the formula themselves became the group''s signature. This is
+    governed-domain characters 城 林 藥 稼 河 海 水 火 風 空 方 夜 晝, exclusive
 
-    the direct correlate of the 100% formula rate (150/150) among the fifteen
+    to this group; 地 and 山 also occur in the 八部 (毘樓博叉, 須彌堅固) and so
+
+    are not exclusive here. The earlier claim that the exclusive morphemes were
+
+    exactly the fifteen domain characters does not hold and is corrected to the
+
+    measured figure. The slots of the formula themselves did become a signature
+
+    of the group. This is the direct correlate of the 100% formula rate
+
+    (150/150) among the fifteen
 
     「主X神」 classes. The class tails split into five forms (執金剛神／身眾神／
 
@@ -1211,7 +1236,7 @@ group_profiles:
   zh: 异生众·八部
   en: eight classes of non-humans
   n_named: 80
-  n_tokens: 278
+  n_tokens: 267
   n_classes: 8
   classes:
   - 阿脩羅王
@@ -1234,10 +1259,12 @@ group_profiles:
     6: 2
     7: 1
     8: 1
-  n_distinct_morph: 130
-  n_word_hits: 16
-  n_lowconf: 59
-  lowconf_pct: 21.2
+  n_distinct_morph: 124
+  n_word_hits: 22
+  n_lowconf: 4
+  lowconf_pct: 1.5
+  n_medconf: 46
+  medconf_pct: 17.2
   top_morphs:
   - zh: 嚴
     n: 10
@@ -1263,9 +1290,6 @@ group_profiles:
   - zh: 莊
     n: 7
     domain_zh: 功德类
-  - zh: 慧
-    n: 6
-    domain_zh: 智慧类
   - zh: 淨
     n: 6
     domain_zh: 功德类
@@ -1275,18 +1299,17 @@ group_profiles:
   - zh: 目
     n: 5
     domain_zh: 形相类
+  - zh: 慧
+    n: 5
+    domain_zh: 智慧类
   exclusive_morphs:
   - zh: 固
     n: 3
-  - zh: 羅
-    n: 2
   - zh: 壞
     n: 2
   - zh: 動
     n: 2
   - zh: 臂
-    n: 2
-  - zh: 叉
     n: 2
   - zh: 無邊
     n: 2
@@ -1323,62 +1346,62 @@ group_profiles:
     n: 2
   - zh: 無邊
     n: 2
+  - zh: 羅睺
+    n: 1
   - zh: 毘摩質多羅
     n: 1
   - zh: 巧幻術
     n: 1
   - zh: 大眷屬
     n: 1
-  - zh: 不退轉
-    n: 1
-  - zh: 所歸
+  - zh: 因慧
     n: 1
   domains:
   - &id003
     domain: virtue
     domain_zh: 功德类
     n: 56
-    pct: 20.1
+    pct: 21.0
   - domain: form
     domain_zh: 形相类
     n: 39
-    pct: 14.0
+    pct: 14.6
   - domain: affix
     domain_zh: 冠綴类
     n: 37
-    pct: 13.3
+    pct: 13.9
   - domain: power
     domain_zh: 威势力类
-    n: 26
-    pct: 9.4
-  - domain: unassigned
-    domain_zh: 未定
-    n: 22
-    pct: 7.9
+    n: 27
+    pct: 10.1
   - domain: motion
     domain_zh: 動行类
     n: 20
-    pct: 7.2
+    pct: 7.5
   - domain: luminosity
     domain_zh: 光明类
-    n: 20
-    pct: 7.2
+    n: 19
+    pct: 7.1
   - domain: nature
     domain_zh: 自然类
-    n: 15
-    pct: 5.4
+    n: 16
+    pct: 6.0
   - domain: sound
     domain_zh: 音聲类
     n: 12
-    pct: 4.3
+    pct: 4.5
+  - domain: unassigned
+    domain_zh: 未定
+    n: 11
+    pct: 4.1
   - domain: jewel
     domain_zh: 宝严类
     n: 11
-    pct: 4.0
+    pct: 4.1
   - domain: wisdom
     domain_zh: 智慧类
-    n: 10
-    pct: 3.6
+    n: 9
+    pct: 3.4
   - domain: number
     domain_zh: 數量类
     n: 6
@@ -1405,26 +1428,34 @@ group_profiles:
   - 阿脩羅王
   - 鳩槃荼王
   - 龍王
-  note: '实算：80 名 / 8 类，核名均值 3.77（2–8），为五群最短；130 个词素、16 处多字词；
+  note: '实算：80 名 / 8 类，核名均值 3.77（2–8），为五群最短；124 个词素、22 处多字词；
 
-    lowconf 21.2% 为五群最高。其成因是**语料性质而非切分之弊**：八部名多以本类
+    判读存疑（medium+low）18.7% 为五群最高，而须标〔待考〕之 low 仅 1.5%、居五群
 
-    或本尊音译立名（羅睺、毘摩質多羅、毘沙門、娑竭羅、持國…），音译专名切分后
+    第四——二者方向相反，正见其存疑之性质。其成因是**语料性质而非切分之弊**：
 
-    多落「未定」域。后果须明言——**八部的 epithet 分析置信度最低**，
+    八部名多以本类或本尊音译立名（羅睺、毘摩質多羅、毘沙門、娑竭羅、持國…），
+
+    音译专名之读法「合理而未证」，故多落 medium 而非 low。后果须明言——**八部的 epithet 分析置信度最低**，
 
     涉八部之造词结论应加保留；欲比较「群间用字差异」，八部一组宜只看有判读的词素。'
   note_en: 'Measured: 80 names in 8 classes, mean core length 3.77 (2–8) — the
 
-    shortest of the five groups; 130 morphemes, 16 multi-character words;
+    shortest of the five groups; 124 morphemes, 22 multi-character words;
 
-    21.2% low-confidence, the highest of the five. The cause is the nature of
+    18.7% of positions medium or low, the highest of the five, yet only 1.5% at
 
-    the material, not a defect of segmentation: many 八部 names are built on a
+    the low tier that must be flagged — fourth of five. The two measures point
 
-    transliterated class or deity name (羅睺, 毘摩質多羅, 毘沙門, 娑竭羅, 持國),
+    in opposite directions, which is itself diagnostic. The cause is the nature
 
-    and transliterated proper names mostly fall outside the lexicon. The
+    of the material, not a defect of segmentation: many 八部 names are built on
+
+    a transliterated class or deity name (羅睺, 毘摩質多羅, 毘沙門, 娑竭羅, 持國),
+
+    whose readings are plausible but unverified and therefore settle at medium
+
+    rather than low. The
 
     consequence must be stated plainly — **the epithet analysis of the 八部 is
 
@@ -1433,12 +1464,12 @@ group_profiles:
     group needs a caveat, and cross-group comparison should read only the
 
     morphemes that carry a reading.'
-  character: 核名最短（均值 3.77）而判读最不确定（lowconf 21.2%，五群最高）之群。
+  character: 核名最短（均值 3.77）而判读存疑最厚（medium+low 18.7%，五群最高）之群。
 - key: desire
   zh: 异生众·欲界天
   en: desire-realm gods
   n_named: 73
-  n_tokens: 289
+  n_tokens: 286
   n_classes: 7
   classes:
   - 月天子
@@ -1460,10 +1491,12 @@ group_profiles:
     6: 3
     7: 2
     9: 1
-  n_distinct_morph: 110
-  n_word_hits: 18
-  n_lowconf: 48
-  lowconf_pct: 16.6
+  n_distinct_morph: 108
+  n_word_hits: 21
+  n_lowconf: 5
+  lowconf_pct: 1.7
+  n_medconf: 42
+  medconf_pct: 14.7
   top_morphs:
   - zh: 光
     n: 30
@@ -1537,6 +1570,8 @@ group_profiles:
     n: 5
   - zh: 自在
     n: 4
+  - zh: 須彌
+    n: 2
   - zh: 勇猛
     n: 2
   - zh: 因陀羅
@@ -1545,28 +1580,26 @@ group_profiles:
     n: 1
   - zh: 不退轉
     n: 1
-  - zh: 無盡
-    n: 1
-  - zh: 金剛
+  - zh: 釋迦
     n: 1
   domains:
   - &id004
     domain: virtue
     domain_zh: 功德类
     n: 63
-    pct: 21.8
+    pct: 22.0
   - domain: luminosity
     domain_zh: 光明类
     n: 54
-    pct: 18.7
+    pct: 18.9
   - domain: affix
     domain_zh: 冠綴类
     n: 38
-    pct: 13.1
+    pct: 13.3
   - domain: form
     domain_zh: 形相类
     n: 26
-    pct: 9.0
+    pct: 9.1
   - domain: wisdom
     domain_zh: 智慧类
     n: 19
@@ -1578,21 +1611,21 @@ group_profiles:
   - domain: power
     domain_zh: 威势力类
     n: 14
-    pct: 4.8
+    pct: 4.9
   - domain: jewel
     domain_zh: 宝严类
     n: 13
     pct: 4.5
-  - domain: unassigned
-    domain_zh: 未定
-    n: 11
-    pct: 3.8
+  - domain: nature
+    domain_zh: 自然类
+    n: 8
+    pct: 2.8
   - domain: time
     domain_zh: 時間类
     n: 8
     pct: 2.8
-  - domain: nature
-    domain_zh: 自然类
+  - domain: unassigned
+    domain_zh: 未定
     n: 6
     pct: 2.1
   - domain: sound
@@ -1619,28 +1652,42 @@ group_profiles:
   class_tails:
   - 天子
   - 天王
-  note: '实算：73 名 / 7 类，核名均值 4.25（2–9），110 个词素、18 处多字词，
+  note: '实算：73 名 / 7 类，核名均值 4.25（2–9），108 个词素、21 处多字词，
 
-    lowconf 16.6%。类尾仅「天子」「天王」两种，无所主标记，故与十九类神之
+    判读存疑（medium+low）16.4%、low 1.7%。类尾仅「天子」「天王」两种，无所主标记，
 
-    严格句式律成对照：同为天王而一为填空式、一为自由式。特有词素仅
+    故与十九类神之严格句式律成对照：同为天王而一为填空式、一为自由式。
 
-    「子」「因陀羅」——后者为帝释别名（Śakra／因陀羅），仅见于三十三天王。
+    群特有词素 17 个（分、句、察、得、悟、慈、敬、正、滿、界、總、蘂、議、門、
+
+    子、因陀羅、釋迦），多于八部之 5、少于天众之 107。其中「因陀羅」为帝释别名
+
+    （Śakra），见于三十三天王「釋迦因陀羅天王」与他化自在天王
+
+    「因陀羅力妙莊嚴光明天王」二处；旧记「仅见于三十三天王」不确，今正之。
 
     本群「光」「明」二词素之和 47，为群内最高，显示其名号仍以光明语汇为主调。'
-  note_en: 'Measured: 73 names in 7 classes, mean core length 4.25 (2–9), 110
+  note_en: 'Measured: 73 names in 7 classes, mean core length 4.25 (2–9), 108
 
-    morphemes, 18 multi-character words, 16.6% low-confidence. Class tails
+    morphemes, 21 multi-character words; 16.4% medium or low, 1.7% at the low
 
-    are only 「天子」 and 「天王」, with no governed-domain marker, so this group
+    tier. Class tails are only 「天子」 and 「天王」, with no governed-domain
 
-    stands in contrast to the strict formula of the nineteen deity classes:
+    marker, so this group stands in contrast to the strict formula of the
 
-    both are 天王, but one is fill-in-the-blank and the other free. Its only
+    nineteen deity classes: both are 天王, but one is fill-in-the-blank and
 
-    exclusive morphemes are 子 and 因陀羅, the latter a name of Śakra appearing
+    the other free. It has 17 exclusive morphemes (分 句 察 得 悟 慈 敬 正 滿 界
 
-    solely in the Trayastriṃśa class. 光 and 明 together reach 47 occurrences
+    總 蘂 議 門 子 因陀羅 釋迦) — more than the 八部''s 5, fewer than the devas''
+
+    107. 因陀羅 is a name of Śakra occurring in **two** classes, the
+
+    Trayastriṃśa (釋迦因陀羅天王) and the Nirmāṇarati
+
+    (因陀羅力妙莊嚴光明天王); the earlier claim that it appeared solely in the
+
+    Trayastriṃśa does not hold and is corrected. 光 and 明 together reach 47 occurrences
 
     within the group, the highest of any pair, so luminosity still dominates
 
@@ -1650,7 +1697,7 @@ group_profiles:
   zh: 异生众·色界天
   en: form-realm gods
   n_named: 51
-  n_tokens: 204
+  n_tokens: 203
   n_classes: 5
   classes:
   - 大梵天王
@@ -1669,10 +1716,12 @@ group_profiles:
     5: 18
     6: 5
     7: 2
-  n_distinct_morph: 63
-  n_word_hits: 19
-  n_lowconf: 26
-  lowconf_pct: 12.7
+  n_distinct_morph: 62
+  n_word_hits: 20
+  n_lowconf: 2
+  lowconf_pct: 1.0
+  n_medconf: 24
+  medconf_pct: 11.8
   top_morphs:
   - zh: 光
     n: 21
@@ -1752,22 +1801,22 @@ group_profiles:
     n: 1
   - zh: 十方
     n: 1
+  - zh: 須彌
+    n: 1
   - zh: 愛樂
     n: 1
   - zh: 不動
-    n: 1
-  - zh: 精進
     n: 1
   domains:
   - &id005
     domain: virtue
     domain_zh: 功德类
     n: 59
-    pct: 28.9
+    pct: 29.1
   - domain: luminosity
     domain_zh: 光明类
     n: 36
-    pct: 17.6
+    pct: 17.7
   - domain: affix
     domain_zh: 冠綴类
     n: 23
@@ -1796,14 +1845,14 @@ group_profiles:
     domain_zh: 言說类
     n: 8
     pct: 3.9
-  - domain: unassigned
-    domain_zh: 未定
-    n: 5
-    pct: 2.5
   - domain: nature
     domain_zh: 自然类
-    n: 4
-    pct: 2.0
+    n: 5
+    pct: 2.5
+  - domain: unassigned
+    domain_zh: 未定
+    n: 3
+    pct: 1.5
   - domain: space
     domain_zh: 空間类
     n: 3
@@ -1819,9 +1868,11 @@ group_profiles:
   top_domain: *id005
   class_tails:
   - 天王
-  note: '实算：51 名 / 5 类，核名均值 4.37（2–7），63 个词素（五群最少）、
+  note: '实算：51 名 / 5 类，核名均值 4.37（2–7），62 个词素（五群最少）、
 
-    19 处多字词，lowconf 12.7% 为五群最低。功德类占 28.9% 为五群之最，
+    20 处多字词，判读存疑（medium+low）12.8%、low 1.0%，二者皆为五群最低。
+
+    功德类占 29.1% 为五群之最，
 
     与本群多以德相立名相应（「清淨名稱天王」「自在名稱光天王」「最勝見天王」）。
 
@@ -1832,9 +1883,11 @@ group_profiles:
     即两天之造词实践最为接近。'
   note_en: 'Measured: 51 names in 5 classes, mean core length 4.37 (2–7), 63 morphemes
 
-    (the fewest of the five), 19 multi-character words, 12.7% low-confidence
+    (the fewest of the five), 20 multi-character words; 12.8% medium or low and
 
-    (the lowest of the five). The merit-virtue domain takes 28.9%, the highest
+    1.0% at the low tier, both the lowest of the five. The merit-virtue domain
+
+    takes 29.1%, the highest
 
     of any group, matching the group''s habit of naming after a virtue
 
@@ -1847,14 +1900,14 @@ group_profiles:
     desire-realm gods (0.362) and the smallest domain-profile distance (16.7%),
 
     i.e. the two heavenly groups name most alike.'
-  character: 类尾统一为「天王」、句式最简，而功德类占比为五群最高（28.9%）。
+  character: 类尾统一为「天王」、句式最简，而功德类占比为五群最高（29.1%）。
 group_pairs:
 - a: deities
   b: eight
   a_zh: 异生众·十九类神
   b_zh: 异生众·八部
-  shared: 78
-  jaccard: 0.283
+  shared: 77
+  jaccard: 0.286
   top_shared:
   - zh: 主
     n_a: 150
@@ -1880,13 +1933,13 @@ group_pairs:
   - zh: 嚴
     n_a: 14
     n_b: 10
-  domain_dist: 31.7
+  domain_dist: 30.8
 - a: deities
   b: desire
   a_zh: 异生众·十九类神
   b_zh: 异生众·欲界天
-  shared: 75
-  jaccard: 0.29
+  shared: 74
+  jaccard: 0.289
   top_shared:
   - zh: 主
     n_a: 150
@@ -1912,13 +1965,13 @@ group_pairs:
   - zh: 髻
     n_a: 17
     n_b: 7
-  domain_dist: 30.2
+  domain_dist: 29.8
 - a: eight
   b: desire
   a_zh: 异生众·八部
   b_zh: 异生众·欲界天
-  shared: 54
-  jaccard: 0.29
+  shared: 52
+  jaccard: 0.289
   top_shared:
   - zh: 光
     n_a: 9
@@ -1938,19 +1991,19 @@ group_pairs:
   - zh: 普
     n_a: 9
     n_b: 6
-  - zh: 莊
-    n_a: 7
-    n_b: 6
   - zh: 音
     n_a: 8
     n_b: 5
-  domain_dist: 21.9
+  - zh: 莊
+    n_a: 7
+    n_b: 6
+  domain_dist: 21.6
 - a: deities
   b: form
   a_zh: 异生众·十九类神
   b_zh: 异生众·色界天
-  shared: 47
-  jaccard: 0.196
+  shared: 46
+  jaccard: 0.193
   top_shared:
   - zh: 主
     n_a: 150
@@ -1964,12 +2017,12 @@ group_pairs:
   - zh: 淨
     n_a: 26
     n_b: 8
-  - zh: 妙
-    n_a: 26
-    n_b: 5
   - zh: 明
     n_a: 22
     n_b: 9
+  - zh: 妙
+    n_a: 26
+    n_b: 5
   - zh: 音
     n_a: 15
     n_b: 12
@@ -1981,8 +2034,8 @@ group_pairs:
   b: form
   a_zh: 异生众·欲界天
   b_zh: 异生众·色界天
-  shared: 46
-  jaccard: 0.362
+  shared: 45
+  jaccard: 0.36
   top_shared:
   - zh: 光
     n_a: 30
@@ -1990,12 +2043,12 @@ group_pairs:
   - zh: 明
     n_a: 17
     n_b: 9
-  - zh: 妙
-    n_a: 12
-    n_b: 5
   - zh: 音
     n_a: 5
     n_b: 12
+  - zh: 妙
+    n_a: 12
+    n_b: 5
   - zh: 樂
     n_a: 8
     n_b: 8
@@ -2014,7 +2067,7 @@ group_pairs:
   a_zh: 同生众·菩萨
   b_zh: 异生众·十九类神
   shared: 40
-  jaccard: 0.172
+  jaccard: 0.173
   top_shared:
   - zh: 光
     n_a: 11
@@ -2025,10 +2078,10 @@ group_pairs:
   - zh: 華
     n_a: 2
     n_b: 26
-  - zh: 妙
+  - zh: 淨
     n_a: 1
     n_b: 26
-  - zh: 淨
+  - zh: 妙
     n_a: 1
     n_b: 26
   - zh: 明
@@ -2040,13 +2093,13 @@ group_pairs:
   - zh: 海
     n_a: 3
     n_b: 16
-  domain_dist: 25.8
+  domain_dist: 26.4
 - a: eight
   b: form
   a_zh: 异生众·八部
   b_zh: 异生众·色界天
-  shared: 37
-  jaccard: 0.237
+  shared: 36
+  jaccard: 0.24
   top_shared:
   - zh: 光
     n_a: 9
@@ -2054,31 +2107,31 @@ group_pairs:
   - zh: 音
     n_a: 8
     n_b: 12
-  - zh: 妙
-    n_a: 9
-    n_b: 5
   - zh: 嚴
     n_a: 10
     n_b: 4
-  - zh: 明
-    n_a: 5
-    n_b: 9
   - zh: 淨
     n_a: 6
     n_b: 8
+  - zh: 明
+    n_a: 5
+    n_b: 9
+  - zh: 妙
+    n_a: 9
+    n_b: 5
   - zh: 普
     n_a: 9
     n_b: 4
-  - zh: 慧
-    n_a: 6
-    n_b: 7
-  domain_dist: 32.8
+  - zh: 幢
+    n_a: 9
+    n_b: 4
+  domain_dist: 32.4
 - a: bodhisattva
   b: desire
   a_zh: 同生众·菩萨
   b_zh: 异生众·欲界天
   shared: 33
-  jaccard: 0.262
+  jaccard: 0.266
   top_shared:
   - zh: 光
     n_a: 11
@@ -2101,16 +2154,16 @@ group_pairs:
   - zh: 德
     n_a: 5
     n_b: 4
-  - zh: 寶
-    n_a: 3
-    n_b: 5
-  domain_dist: 16.8
+  - zh: 大
+    n_a: 5
+    n_b: 3
+  domain_dist: 17.4
 - a: bodhisattva
   b: eight
   a_zh: 同生众·菩萨
   b_zh: 异生众·八部
   shared: 29
-  jaccard: 0.193
+  jaccard: 0.201
   top_shared:
   - zh: 光
     n_a: 11
@@ -2133,16 +2186,16 @@ group_pairs:
   - zh: 明
     n_a: 3
     n_b: 5
-  - zh: 淨
-    n_a: 1
-    n_b: 6
-  domain_dist: 23.2
+  - zh: 華
+    n_a: 2
+    n_b: 5
+  domain_dist: 22.2
 - a: bodhisattva
   b: form
   a_zh: 同生众·菩萨
   b_zh: 异生众·色界天
   shared: 25
-  jaccard: 0.287
+  jaccard: 0.291
   top_shared:
   - zh: 光
     n_a: 11
@@ -2162,13 +2215,13 @@ group_pairs:
   - zh: 淨
     n_a: 1
     n_b: 8
-  - zh: 智
-    n_a: 4
-    n_b: 4
   - zh: 大
     n_a: 5
     n_b: 3
-  domain_dist: 28.0
+  - zh: 自在
+    n_a: 1
+    n_b: 7
+  domain_dist: 28.3
 morph_matrix:
 - zh: 主
   domain: affix
@@ -2386,10 +2439,10 @@ morph_matrix:
   by_group:
     bodhisattva: 0
     deities: 1
-    eight: 6
+    eight: 5
     desire: 5
     form: 7
-  total: 19
+  total: 18
 - zh: 德
   domain: virtue
   domain_zh: 功德类
@@ -2397,10 +2450,10 @@ morph_matrix:
   by_group:
     bodhisattva: 5
     deities: 4
-    eight: 2
+    eight: 1
     desire: 4
     form: 2
-  total: 17
+  total: 16
 - zh: 照
   domain: luminosity
   domain_zh: 光明类
@@ -2783,7 +2836,7 @@ morph_freq:
   gloss: 清、净
   gloss_en: pure, clear
 - zh: 慧
-  n: 19
+  n: 18
   domain: wisdom
   domain_zh: 智慧类
   c: high
@@ -2792,7 +2845,7 @@ morph_freq:
   gloss: 慧、智慧
   gloss_en: wisdom
 - zh: 德
-  n: 17
+  n: 16
   domain: virtue
   domain_zh: 功德类
   c: high
@@ -3106,15 +3159,6 @@ morph_freq:
   n_char_only: 0
   gloss: 十方
   gloss_en: ''
-- zh: 眾
-  n: 8
-  domain: luminosity
-  domain_zh: 光明类
-  c: medium
-  mode: char
-  n_char_only: 8
-  gloss: 众妙＝种种奇妙，形容语素，非指众生
-  gloss_en: manifold, wonderful (adjectival)
 - zh: 稱
   n: 8
   domain: speech
@@ -3160,6 +3204,15 @@ morph_freq:
   n_char_only: 7
   gloss: 见、观见
   gloss_en: seeing, vision
+- zh: 眾
+  n: 7
+  domain: luminosity
+  domain_zh: 光明类
+  c: medium
+  mode: char
+  n_char_only: 8
+  gloss: 众妙＝种种奇妙，形容语素，非指众生
+  gloss_en: manifold, wonderful (adjectival)
 - zh: 發
   n: 7
   domain: motion
@@ -3214,24 +3267,15 @@ morph_freq:
   n_char_only: 6
   gloss: 福、福德
   gloss_en: blessing, good fortune
-- zh: 須
+- zh: 須彌
   n: 6
-  domain: unassigned
-  domain_zh: 未定
+  domain: nature
+  domain_zh: 自然类
   c: high
-  mode: char
-  n_char_only: 7
-  gloss: 须（须弥山之须）
-  gloss_en: Xu of Meru (name-element)
-- zh: 彌
-  n: 6
-  domain: unassigned
-  domain_zh: 未定
-  c: high
-  mode: char
-  n_char_only: 7
-  gloss: 弥（须弥山名成分）
-  gloss_en: Meru (name-element)
+  mode: word
+  n_char_only: 0
+  gloss: 须弥（须弥山名，梵 sumeru）
+  gloss_en: ''
 - zh: 威
   n: 6
   domain: power
@@ -3871,24 +3915,15 @@ morph_freq:
   n_char_only: 2
   gloss: 上（无上义）
   gloss_en: supreme (prefix)
-- zh: 栴
+- zh: 栴檀
   n: 2
-  domain: unassigned
-  domain_zh: 未定
+  domain: nature
+  domain_zh: 自然类
   c: high
-  mode: char
-  n_char_only: 2
-  gloss: 栴（栴檀香）
-  gloss_en: sandalwood
-- zh: 檀
-  n: 2
-  domain: unassigned
-  domain_zh: 未定
-  c: high
-  mode: char
-  n_char_only: 2
-  gloss: 檀（檀香）
-  gloss_en: sandalwood
+  mode: word
+  n_char_only: 0
+  gloss: 栴檀（旃檀，香木名，梵 candana）
+  gloss_en: ''
 - zh: 積
   n: 2
   domain: virtue
@@ -4150,15 +4185,6 @@ morph_freq:
   n_char_only: 17
   gloss: 无量（无量数之省）
   gloss_en: countless, immeasurable
-- zh: 羅
-  n: 2
-  domain: unassigned
-  domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 7
-  gloss: 〔存疑〕梵音译成分（羅睺／阿脩羅／迦樓羅／鳩槃荼／乾闥婆）
-  gloss_en: ''
 - zh: 壞
   n: 2
   domain: motion
@@ -4204,24 +4230,6 @@ morph_freq:
   n_char_only: 2
   gloss: 臂
   gloss_en: arm
-- zh: 叉
-  n: 2
-  domain: unassigned
-  domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 2
-  gloss: 〔存疑〕梵音译成分（夜叉／博叉）
-  gloss_en: ''
-- zh: 迦
-  n: 2
-  domain: unassigned
-  domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 2
-  gloss: 〔存疑〕梵音译成分（迦樓羅／德叉迦）
-  gloss_en: ''
 - zh: 無邊
   n: 2
   domain: number
@@ -4933,14 +4941,14 @@ morph_freq:
   n_char_only: 0
   gloss: 瓔珞（项饰）
   gloss_en: ''
-- zh: 睺
+- zh: 羅睺
   n: 1
   domain: unassigned
   domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 1
-  gloss: 〔存疑〕梵音译成分（羅睺／摩睺羅伽）
+  c: high
+  mode: word
+  n_char_only: 0
+  gloss: 罗睺（Rāhu，音译，阿修罗名）
   gloss_en: ''
 - zh: 毘摩質多羅
   n: 1
@@ -4969,14 +4977,14 @@ morph_freq:
   n_char_only: 0
   gloss: 大眷属（阿修罗名）
   gloss_en: ''
-- zh: 因
+- zh: 因慧
   n: 1
-  domain: unassigned
-  domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 3
-  gloss: 〔存疑〕因陀羅（梵 indra 之误写）／廣大因慧
+  domain: virtue
+  domain_zh: 功德类
+  c: medium
+  mode: word
+  n_char_only: 0
+  gloss: 因慧（因与慧双修之智）
   gloss_en: ''
 - zh: 好
   n: 1
@@ -5032,14 +5040,14 @@ morph_freq:
   n_char_only: 1
   gloss: 〔存疑〕為（关系词）
   gloss_en: ''
-- zh: 所歸
+- zh: 眾所歸
   n: 1
   domain: motion
   domain_zh: 動行类
-  c: high
+  c: medium
   mode: word
   n_char_only: 0
-  gloss: 所归（归依处）
+  gloss: 众所归（为众所归依者）
   gloss_en: ''
 - zh: 臆
   n: 1
@@ -5088,13 +5096,13 @@ morph_freq:
   gloss_en: enemy, foe
 - zh: 軍
   n: 1
-  domain: unassigned
-  domain_zh: 未定
-  c: low
+  domain: power
+  domain_zh: 威势力类
+  c: medium
   mode: char
   n_char_only: 1
-  gloss: 〔存疑〕軍（大軍）
-  gloss_en: ''
+  gloss: 军（军旅、兵众）
+  gloss_en: army, host
 - zh: 富
   n: 1
   domain: virtue
@@ -5122,32 +5130,14 @@ morph_freq:
   n_char_only: 1
   gloss: 财、资财
   gloss_en: ''
-- zh: 毘
+- zh: 毘樓博叉
   n: 1
   domain: unassigned
   domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 3
-  gloss: 〔存疑〕梵音译成分（毘沙門／毘樓／毘摩質多羅）；CBETA 字形「毘」
-  gloss_en: ''
-- zh: 樓
-  n: 1
-  domain: unassigned
-  domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 1
-  gloss: 〔存疑〕梵音译成分（迦樓羅）
-  gloss_en: ''
-- zh: 博
-  n: 1
-  domain: unassigned
-  domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 1
-  gloss: 〔存疑〕博（毘樓博叉）
+  c: medium
+  mode: word
+  n_char_only: 0
+  gloss: 毘楼博叉（音译，龙王名）
   gloss_en: ''
 - zh: 娑竭羅
   n: 1
@@ -5166,6 +5156,15 @@ morph_freq:
   mode: char
   n_char_only: 1
   gloss: 口
+  gloss_en: ''
+- zh: 德叉迦
+  n: 1
+  domain: unassigned
+  domain_zh: 未定
+  c: medium
+  mode: word
+  n_char_only: 0
+  gloss: 德叉迦（音译，龙王名）
   gloss_en: ''
 - zh: 運
   n: 1
@@ -5212,23 +5211,14 @@ morph_freq:
   n_char_only: 1
   gloss: 面（天面）
   gloss_en: face
-- zh: 阿
+- zh: 阿脩羅
   n: 1
   domain: unassigned
   domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 1
-  gloss: 〔存疑〕梵音译成分（阿脩羅）
-  gloss_en: ''
-- zh: 脩
-  n: 1
-  domain: unassigned
-  domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 1
-  gloss: 〔存疑〕梵音译成分（阿脩羅）；CBETA 字形「脩」
+  c: high
+  mode: word
+  n_char_only: 0
+  gloss: 阿修罗（asura，音译）
   gloss_en: ''
 - zh: 國
   n: 1
@@ -5266,14 +5256,14 @@ morph_freq:
   n_char_only: 1
   gloss: 敬、畏敬
   gloss_en: ''
-- zh: 釋
+- zh: 釋迦
   n: 1
   domain: unassigned
   domain_zh: 未定
-  c: low
-  mode: char
-  n_char_only: 1
-  gloss: 〔存疑〕釋（釋迦）
+  c: medium
+  mode: word
+  n_char_only: 0
+  gloss: 釋迦（Śikhyā，音译）
   gloss_en: ''
 - zh: 滿
   n: 1
@@ -5440,6 +5430,11 @@ word_hits:
   domain: number
   domain_zh: 數量类
   gloss: 十方
+- zh: 須彌
+  n: 6
+  domain: nature
+  domain_zh: 自然类
+  gloss: 须弥（须弥山名，梵 sumeru）
 - zh: 吉祥
   n: 5
   domain: virtue
@@ -5480,6 +5475,11 @@ word_hits:
   domain: virtue
   domain_zh: 功德类
   gloss: 精进
+- zh: 栴檀
+  n: 2
+  domain: nature
+  domain_zh: 自然类
+  gloss: 栴檀（旃檀，香木名，梵 candana）
 - zh: 愛樂
   n: 2
   domain: virtue
@@ -5550,6 +5550,11 @@ word_hits:
   domain: jewel
   domain_zh: 宝严类
   gloss: 瓔珞（项饰）
+- zh: 羅睺
+  n: 1
+  domain: unassigned
+  domain_zh: 未定
+  gloss: 罗睺（Rāhu，音译，阿修罗名）
 - zh: 毘摩質多羅
   n: 1
   domain: unassigned
@@ -5565,21 +5570,46 @@ word_hits:
   domain: unassigned
   domain_zh: 未定
   gloss: 大眷属（阿修罗名）
-- zh: 所歸
+- zh: 因慧
+  n: 1
+  domain: virtue
+  domain_zh: 功德类
+  gloss: 因慧（因与慧双修之智）
+- zh: 眾所歸
   n: 1
   domain: motion
   domain_zh: 動行类
-  gloss: 所归（归依处）
+  gloss: 众所归（为众所归依者）
 - zh: 毘沙門
   n: 1
   domain: unassigned
   domain_zh: 未定
   gloss: 毘沙门（Vaiśravaṇa）
+- zh: 毘樓博叉
+  n: 1
+  domain: unassigned
+  domain_zh: 未定
+  gloss: 毘楼博叉（音译，龙王名）
 - zh: 娑竭羅
   n: 1
   domain: unassigned
   domain_zh: 未定
   gloss: 娑竭罗（音译，龙名）
+- zh: 德叉迦
+  n: 1
+  domain: unassigned
+  domain_zh: 未定
+  gloss: 德叉迦（音译，龙王名）
+- zh: 阿脩羅
+  n: 1
+  domain: unassigned
+  domain_zh: 未定
+  gloss: 阿修罗（asura，音译）
+- zh: 釋迦
+  n: 1
+  domain: unassigned
+  domain_zh: 未定
+  gloss: 釋迦（Śikhyā，音译）
 - zh: 尸棄
   n: 1
   domain: unassigned
@@ -6275,16 +6305,6 @@ pair_freq:
     deities: 2
     eight: 1
     desire: 1
-    form: 1
-- a: 須
-  b: 彌
-  n: 6
-  word: 須彌
-  by_group:
-    bodhisattva: 0
-    deities: 2
-    eight: 1
-    desire: 2
     form: 1
 - a: 淨
   b: 華
@@ -7116,16 +7136,6 @@ pair_freq:
     eight: 0
     desire: 0
     form: 0
-- a: 栴
-  b: 檀
-  n: 2
-  word: 栴檀
-  by_group:
-    bodhisattva: 0
-    deities: 2
-    eight: 0
-    desire: 0
-    form: 0
 - a: 微
   b: 妙
   n: 2
@@ -7140,6 +7150,26 @@ pair_freq:
   b: 妙
   n: 2
   word: 集妙
+  by_group:
+    bodhisattva: 0
+    deities: 2
+    eight: 0
+    desire: 0
+    form: 0
+- a: 淨
+  b: 莊
+  n: 2
+  word: 淨莊
+  by_group:
+    bodhisattva: 0
+    deities: 1
+    eight: 0
+    desire: 0
+    form: 1
+- a: 華
+  b: 妙
+  n: 2
+  word: 華妙
   by_group:
     bodhisattva: 0
     deities: 2
@@ -7305,6 +7335,12 @@ lexemes:
   gloss_en: ''
   c: medium
   note: 见「十方宮殿如須彌山主火神」。
+- zh: 毘樓博叉
+  domain: unassigned
+  gloss: 毘楼博叉（音译，龙王名）
+  gloss_en: ''
+  c: medium
+  note: 四字音译全称，梵名原形未考〔待核〕。
 - zh: 執金剛
   domain: affix
   gloss: 執金剛（執持金剛者）
@@ -7353,6 +7389,24 @@ lexemes:
   gloss_en: ''
   c: medium
   note: ''
+- zh: 阿脩羅
+  domain: unassigned
+  gloss: 阿修罗（asura，音译）
+  gloss_en: ''
+  c: high
+  note: CBETA 字形「脩」。本词亦见于类名「阿脩羅王」，然类尾已整剥，故此处所收 皆为修饰语用法（如「阿脩羅眼」）。
+- zh: 德叉迦
+  domain: unassigned
+  gloss: 德叉迦（音译，龙王名）
+  gloss_en: ''
+  c: medium
+  note: 梵名原形未考〔待核〕。
+- zh: 眾所歸
+  domain: motion
+  gloss: 众所归（为众所归依者）
+  gloss_en: ''
+  c: medium
+  note: 既注「所歸」为二字词，然经文作「眾所歸」，二字词不触发，故补三字词。
 - zh: 金剛
   domain: jewel
   gloss: 金刚（坚固体）
@@ -7509,6 +7563,36 @@ lexemes:
   gloss_en: ''
   c: high
   note: ''
+- zh: 須彌
+  domain: nature
+  gloss: 须弥（须弥山名，梵 sumeru）
+  gloss_en: ''
+  c: high
+  note: 与既注「如須彌山」（譬喻义，domain=nature）不同层：此为山名本词。
+- zh: 栴檀
+  domain: nature
+  gloss: 栴檀（旃檀，香木名，梵 candana）
+  gloss_en: ''
+  c: high
+  note: ''
+- zh: 羅睺
+  domain: unassigned
+  gloss: 罗睺（Rāhu，音译，阿修罗名）
+  gloss_en: ''
+  c: high
+  note: ''
+- zh: 因慧
+  domain: virtue
+  gloss: 因慧（因与慧双修之智）
+  gloss_en: ''
+  c: medium
+  note: 此前「因」字兼收「因陀羅」（音译）与「廣大因慧」（正名）二义而未加 切分，故「廣大因慧阿脩羅王」中「因」失其读法；立此词以正之。
+- zh: 釋迦
+  domain: unassigned
+  gloss: 釋迦（Śikhyā，音译）
+  gloss_en: ''
+  c: medium
+  note: 见「釋迦因陀羅天」——三十三天之一，梵名 Śikhyāndhra 之拆称。 既注「因陀羅」已收其後半，今補前半，「釋迦因陀羅」之名遂整。
 class_tails:
 - zh: 菩薩摩訶薩
   domain: body
@@ -8193,7 +8277,7 @@ graph:
     py: hui
     domain: wisdom
     domain_zh: 智慧类
-    n: 19
+    n: 18
     c: high
     mode: char
     gloss: 慧、智慧
@@ -8203,7 +8287,7 @@ graph:
     py: de
     domain: virtue
     domain_zh: 功德类
-    n: 17
+    n: 16
     c: high
     mode: char
     gloss: 德、功德
@@ -8548,16 +8632,6 @@ graph:
     mode: word
     gloss: 十方
     gloss_en: ''
-  - id: m:眾
-    zh: 眾
-    py: zhong
-    domain: luminosity
-    domain_zh: 光明类
-    n: 8
-    c: medium
-    mode: char
-    gloss: 众妙＝种种奇妙，形容语素，非指众生
-    gloss_en: manifold, wonderful (adjectival)
   - id: m:稱
     zh: 稱
     py: cheng
@@ -8608,6 +8682,16 @@ graph:
     mode: char
     gloss: 见、观见
     gloss_en: seeing, vision
+  - id: m:眾
+    zh: 眾
+    py: zhong
+    domain: luminosity
+    domain_zh: 光明类
+    n: 7
+    c: medium
+    mode: char
+    gloss: 众妙＝种种奇妙，形容语素，非指众生
+    gloss_en: manifold, wonderful (adjectival)
   - id: m:發
     zh: 發
     py: ''
@@ -8668,26 +8752,16 @@ graph:
     mode: char
     gloss: 福、福德
     gloss_en: blessing, good fortune
-  - id: m:須
-    zh: 須
-    py: xu
-    domain: unassigned
-    domain_zh: 未定
+  - id: m:須彌
+    zh: 須彌
+    py: ''
+    domain: nature
+    domain_zh: 自然类
     n: 6
     c: high
-    mode: char
-    gloss: 须（须弥山之须）
-    gloss_en: Xu of Meru (name-element)
-  - id: m:彌
-    zh: 彌
-    py: mi
-    domain: unassigned
-    domain_zh: 未定
-    n: 6
-    c: high
-    mode: char
-    gloss: 弥（须弥山名成分）
-    gloss_en: Meru (name-element)
+    mode: word
+    gloss: 须弥（须弥山名，梵 sumeru）
+    gloss_en: ''
   - id: m:威
     zh: 威
     py: wei
@@ -9398,26 +9472,16 @@ graph:
     mode: char
     gloss: 上（无上义）
     gloss_en: supreme (prefix)
-  - id: m:栴
-    zh: 栴
-    py: zhan
-    domain: unassigned
-    domain_zh: 未定
+  - id: m:栴檀
+    zh: 栴檀
+    py: ''
+    domain: nature
+    domain_zh: 自然类
     n: 2
     c: high
-    mode: char
-    gloss: 栴（栴檀香）
-    gloss_en: sandalwood
-  - id: m:檀
-    zh: 檀
-    py: tan
-    domain: unassigned
-    domain_zh: 未定
-    n: 2
-    c: high
-    mode: char
-    gloss: 檀（檀香）
-    gloss_en: sandalwood
+    mode: word
+    gloss: 栴檀（旃檀，香木名，梵 candana）
+    gloss_en: ''
   - id: m:積
     zh: 積
     py: ''
@@ -9708,16 +9772,6 @@ graph:
     mode: char
     gloss: 无量（无量数之省）
     gloss_en: countless, immeasurable
-  - id: m:羅
-    zh: 羅
-    py: ''
-    domain: unassigned
-    domain_zh: 未定
-    n: 2
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（羅睺／阿脩羅／迦樓羅／鳩槃荼／乾闥婆）
-    gloss_en: ''
   - id: m:壞
     zh: 壞
     py: ''
@@ -9768,26 +9822,6 @@ graph:
     mode: char
     gloss: 臂
     gloss_en: arm
-  - id: m:叉
-    zh: 叉
-    py: ''
-    domain: unassigned
-    domain_zh: 未定
-    n: 2
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（夜叉／博叉）
-    gloss_en: ''
-  - id: m:迦
-    zh: 迦
-    py: ''
-    domain: unassigned
-    domain_zh: 未定
-    n: 2
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（迦樓羅／德叉迦）
-    gloss_en: ''
   - id: m:無邊
     zh: 無邊
     py: ''
@@ -10578,15 +10612,15 @@ graph:
     mode: word
     gloss: 瓔珞（项饰）
     gloss_en: ''
-  - id: m:睺
-    zh: 睺
+  - id: m:羅睺
+    zh: 羅睺
     py: ''
     domain: unassigned
     domain_zh: 未定
     n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（羅睺／摩睺羅伽）
+    c: high
+    mode: word
+    gloss: 罗睺（Rāhu，音译，阿修罗名）
     gloss_en: ''
   - id: m:毘摩質多羅
     zh: 毘摩質多羅
@@ -10618,15 +10652,15 @@ graph:
     mode: word
     gloss: 大眷属（阿修罗名）
     gloss_en: ''
-  - id: m:因
-    zh: 因
+  - id: m:因慧
+    zh: 因慧
     py: ''
-    domain: unassigned
-    domain_zh: 未定
+    domain: virtue
+    domain_zh: 功德类
     n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕因陀羅（梵 indra 之误写）／廣大因慧
+    c: medium
+    mode: word
+    gloss: 因慧（因与慧双修之智）
     gloss_en: ''
   - id: m:好
     zh: 好
@@ -10688,15 +10722,15 @@ graph:
     mode: char
     gloss: 〔存疑〕為（关系词）
     gloss_en: ''
-  - id: m:所歸
-    zh: 所歸
+  - id: m:眾所歸
+    zh: 眾所歸
     py: ''
     domain: motion
     domain_zh: 動行类
     n: 1
-    c: high
+    c: medium
     mode: word
-    gloss: 所归（归依处）
+    gloss: 众所归（为众所归依者）
     gloss_en: ''
   - id: m:臆
     zh: 臆
@@ -10751,13 +10785,13 @@ graph:
   - id: m:軍
     zh: 軍
     py: ''
-    domain: unassigned
-    domain_zh: 未定
+    domain: power
+    domain_zh: 威势力类
     n: 1
-    c: low
+    c: medium
     mode: char
-    gloss: 〔存疑〕軍（大軍）
-    gloss_en: ''
+    gloss: 军（军旅、兵众）
+    gloss_en: army, host
   - id: m:富
     zh: 富
     py: ''
@@ -10788,35 +10822,15 @@ graph:
     mode: char
     gloss: 财、资财
     gloss_en: ''
-  - id: m:毘
-    zh: 毘
+  - id: m:毘樓博叉
+    zh: 毘樓博叉
     py: ''
     domain: unassigned
     domain_zh: 未定
     n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（毘沙門／毘樓／毘摩質多羅）；CBETA 字形「毘」
-    gloss_en: ''
-  - id: m:樓
-    zh: 樓
-    py: ''
-    domain: unassigned
-    domain_zh: 未定
-    n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（迦樓羅）
-    gloss_en: ''
-  - id: m:博
-    zh: 博
-    py: ''
-    domain: unassigned
-    domain_zh: 未定
-    n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕博（毘樓博叉）
+    c: medium
+    mode: word
+    gloss: 毘楼博叉（音译，龙王名）
     gloss_en: ''
   - id: m:娑竭羅
     zh: 娑竭羅
@@ -10837,6 +10851,16 @@ graph:
     c: high
     mode: char
     gloss: 口
+    gloss_en: ''
+  - id: m:德叉迦
+    zh: 德叉迦
+    py: ''
+    domain: unassigned
+    domain_zh: 未定
+    n: 1
+    c: medium
+    mode: word
+    gloss: 德叉迦（音译，龙王名）
     gloss_en: ''
   - id: m:運
     zh: 運
@@ -10888,25 +10912,15 @@ graph:
     mode: char
     gloss: 面（天面）
     gloss_en: face
-  - id: m:阿
-    zh: 阿
+  - id: m:阿脩羅
+    zh: 阿脩羅
     py: ''
     domain: unassigned
     domain_zh: 未定
     n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（阿脩羅）
-    gloss_en: ''
-  - id: m:脩
-    zh: 脩
-    py: ''
-    domain: unassigned
-    domain_zh: 未定
-    n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕梵音译成分（阿脩羅）；CBETA 字形「脩」
+    c: high
+    mode: word
+    gloss: 阿修罗（asura，音译）
     gloss_en: ''
   - id: m:國
     zh: 國
@@ -10948,15 +10962,15 @@ graph:
     mode: char
     gloss: 敬、畏敬
     gloss_en: ''
-  - id: m:釋
-    zh: 釋
+  - id: m:釋迦
+    zh: 釋迦
     py: ''
     domain: unassigned
     domain_zh: 未定
     n: 1
-    c: low
-    mode: char
-    gloss: 〔存疑〕釋（釋迦）
+    c: medium
+    mode: word
+    gloss: 釋迦（Śikhyā，音译）
     gloss_en: ''
   - id: m:滿
     zh: 滿
@@ -11218,9 +11232,6 @@ graph:
   - source: m:雲
     target: m:音
     n: 6
-  - source: m:須
-    target: m:彌
-    n: 6
   - source: m:淨
     target: m:華
     n: 6
@@ -11469,9 +11480,6 @@ graph:
     n: 2
   - source: m:妙
     target: m:寶
-    n: 2
-  - source: m:栴
-    target: m:檀
     n: 2
   - source: m:微
     target: m:妙
@@ -11839,7 +11847,7 @@ graph:
   - source: m:疾
     target: m:幢
     n: 1
-  - source: m:彌
+  - source: m:須彌
     target: m:華
     n: 1
   - source: m:淨
@@ -11938,13 +11946,13 @@ graph:
   - source: m:吐
     target: m:妙
     n: 1
-  - source: m:檀
+  - source: m:栴檀
     target: m:樹
     n: 1
   - source: m:積
     target: m:集
     n: 1
-  - source: m:彌
+  - source: m:須彌
     target: m:寶
     n: 1
   - source: m:音
@@ -12208,7 +12216,7 @@ graph:
   - source: m:果
     target: m:光
     n: 1
-  - source: m:檀
+  - source: m:栴檀
     target: m:林
     n: 1
   - source: m:林
@@ -12318,6 +12326,12 @@ graph:
     n: 1
   - source: m:愛樂
     target: m:主
+    n: 1
+  - source: m:垢
+    target: m:淨
+    n: 1
+  - source: m:發
+    target: m:迅
     n: 1
   class_nodes:
   - id: c:0
@@ -15363,12 +15377,12 @@ classes:
     affix: 4
     jewel: 4
     virtue: 4
+    nature: 3
     power: 3
     sound: 3
-    unassigned: 3
-    nature: 2
     number: 1
     time: 1
+    unassigned: 1
   domain_top: form
   top_morphemes:
   - zh: 光
@@ -15406,7 +15420,7 @@ classes:
   - a: 輪
     b: 速
     n: 1
-  n_word_hits: 4
+  n_word_hits: 5
   n_unsegmented: 0
   members:
   - i: 1
@@ -15546,16 +15560,11 @@ classes:
     head: 須
     tailch: 光
     segs:
-    - zh: 須
-      domain: unassigned
+    - zh: 須彌
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 彌
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 華
       domain: jewel
       c: high
@@ -15588,11 +15597,10 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - jewel
     - luminosity
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -16738,11 +16746,10 @@ classes:
     affix: 5
     virtue: 5
     form: 4
+    nature: 2
     number: 2
     sound: 2
-    unassigned: 2
     motion: 1
-    nature: 1
     time: 1
     wisdom: 1
   domain_top: jewel
@@ -16782,7 +16789,7 @@ classes:
   - a: 清
     b: 淨
     n: 1
-  n_word_hits: 0
+  n_word_hits: 1
   n_unsegmented: 0
   members:
   - i: 1
@@ -17126,16 +17133,11 @@ classes:
     head: 栴
     tailch: 光
     segs:
-    - zh: 栴
-      domain: unassigned
+    - zh: 栴檀
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 檀
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 樹
       domain: nature
       c: high
@@ -17168,11 +17170,10 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - nature
     - luminosity
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -17394,11 +17395,10 @@ classes:
     jewel: 8
     form: 7
     luminosity: 7
+    nature: 5
     virtue: 5
-    nature: 4
     affix: 2
     sound: 2
-    unassigned: 2
     power: 1
   domain_top: jewel
   top_morphemes:
@@ -17428,16 +17428,16 @@ classes:
   - a: 嚴
     b: 幢
     n: 1
-  - a: 須
-    b: 彌
-    n: 1
-  - a: 彌
+  - a: 須彌
     b: 寶
     n: 1
   - a: 寶
     b: 光
     n: 1
-  n_word_hits: 2
+  - a: 雷
+    b: 音
+    n: 1
+  n_word_hits: 3
   n_unsegmented: 0
   members:
   - i: 1
@@ -17508,16 +17508,11 @@ classes:
     head: 須
     tailch: 光
     segs:
-    - zh: 須
-      domain: unassigned
+    - zh: 須彌
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 彌
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 寶
       domain: jewel
       c: high
@@ -17550,11 +17545,10 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - jewel
     - luminosity
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -21584,13 +21578,12 @@ classes:
     藥: 10
   domain_hist:
     affix: 13
-    nature: 11
+    nature: 12
     luminosity: 7
     virtue: 7
     form: 5
     speech: 3
     sound: 2
-    unassigned: 2
     body: 1
     motion: 1
     number: 1
@@ -21630,10 +21623,10 @@ classes:
   - a: 吉祥
     b: 主
     n: 1
-  - a: 栴
-    b: 檀
+  - a: 栴檀
+    b: 林
     n: 1
-  n_word_hits: 2
+  n_word_hits: 3
   n_unsegmented: 0
   members:
   - i: 1
@@ -21698,16 +21691,11 @@ classes:
     head: 栴
     tailch: 藥
     segs:
-    - zh: 栴
-      domain: unassigned
+    - zh: 栴檀
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 檀
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 林
       domain: nature
       c: high
@@ -21750,12 +21738,11 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - nature
     - affix
     - nature
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: 藥
@@ -31258,23 +31245,20 @@ classes:
     德: 1
     聲: 1
   domain_hist:
-    unassigned: 6
     affix: 5
+    virtue: 5
     motion: 4
     power: 4
-    virtue: 4
+    unassigned: 4
     sound: 2
     luminosity: 1
-    wisdom: 1
-  domain_top: unassigned
+  domain_top: affix
   top_morphemes:
   - zh: 大
     n: 2
   - zh: 妙
     n: 2
-  - zh: 羅
-    n: 1
-  - zh: 睺
+  - zh: 羅睺
     n: 1
   - zh: 毘摩質多羅
     n: 1
@@ -31284,10 +31268,9 @@ classes:
     n: 1
   - zh: 力
     n: 1
-  top_pairs:
-  - a: 羅
-    b: 睺
+  - zh: 遍
     n: 1
+  top_pairs:
   - a: 大
     b: 力
     n: 1
@@ -31303,7 +31286,10 @@ classes:
   - a: 行
     b: 妙
     n: 1
-  n_word_hits: 3
+  - a: 妙
+    b: 莊
+    n: 1
+  n_word_hits: 5
   n_unsegmented: 0
   members:
   - i: 1
@@ -31315,16 +31301,11 @@ classes:
     head: 羅
     tailch: 睺
     segs:
-    - zh: 羅
+    - zh: 羅睺
       domain: unassigned
-      c: low
+      c: high
       known: true
-      mode: char
-    - zh: 睺
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
+      mode: word
     segs_char_only:
     - zh: 羅
       domain: unassigned
@@ -31338,8 +31319,7 @@ classes:
       mode: char
     domains:
     - unassigned
-    - unassigned
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -31635,16 +31615,11 @@ classes:
       c: high
       known: true
       mode: char
-    - zh: 因
-      domain: unassigned
-      c: low
+    - zh: 因慧
+      domain: virtue
+      c: medium
       known: true
-      mode: char
-    - zh: 慧
-      domain: wisdom
-      c: high
-      known: true
-      mode: char
+      mode: word
     segs_char_only:
     - zh: 廣
       domain: affix
@@ -31669,9 +31644,8 @@ classes:
     domains:
     - affix
     - affix
-    - unassigned
-    - wisdom
-    n_word: 0
+    - virtue
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -33211,13 +33185,14 @@ classes:
   domain_hist:
     virtue: 8
     form: 7
-    luminosity: 6
     affix: 5
+    luminosity: 5
     power: 5
-    unassigned: 4
     sound: 2
+    unassigned: 2
     wisdom: 2
     motion: 1
+    nature: 1
   domain_top: virtue
   top_morphemes:
   - zh: 慧
@@ -33234,7 +33209,7 @@ classes:
     n: 2
   - zh: 幢
     n: 2
-  - zh: 眾
+  - zh: 光
     n: 2
   top_pairs:
   - a: 莊
@@ -33255,7 +33230,7 @@ classes:
   - a: 威
     b: 音
     n: 1
-  n_word_hits: 3
+  n_word_hits: 4
   n_unsegmented: 0
   members:
   - i: 1
@@ -33501,14 +33476,9 @@ classes:
       c: low
       known: true
       mode: char
-    - zh: 眾
-      domain: luminosity
-      c: medium
-      known: true
-      mode: char
-    - zh: 所歸
+    - zh: 眾所歸
       domain: motion
-      c: high
+      c: medium
       known: true
       mode: word
     segs_char_only:
@@ -33552,7 +33522,6 @@ classes:
     - form
     - form
     - unassigned
-    - luminosity
     - motion
     n_word: 1
     n_unsegmented: 0
@@ -33749,16 +33718,11 @@ classes:
     head: 須
     tailch: 固
     segs:
-    - zh: 須
-      domain: unassigned
+    - zh: 須彌
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 彌
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 堅
       domain: power
       c: high
@@ -33791,11 +33755,10 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - power
     - power
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -33905,15 +33868,15 @@ classes:
   domain_hist:
     virtue: 7
     form: 6
+    power: 4
     affix: 3
-    power: 3
     jewel: 2
-    unassigned: 2
     wisdom: 2
     luminosity: 1
     motion: 1
     nature: 1
     sound: 1
+    unassigned: 1
   domain_top: virtue
   top_morphemes:
   - zh: 大
@@ -34302,8 +34265,8 @@ classes:
       known: true
       mode: char
     - zh: 軍
-      domain: unassigned
-      c: low
+      domain: power
+      c: medium
       known: true
       mode: char
     segs_char_only:
@@ -34323,15 +34286,15 @@ classes:
       known: true
       mode: char
     - zh: 軍
-      domain: unassigned
-      c: low
+      domain: power
+      c: medium
       known: true
       mode: char
     domains:
     - virtue
     - power
     - affix
-    - unassigned
+    - power
     n_word: 0
     n_unsegmented: 0
     n_unsegmented_char_only: 0
@@ -34481,43 +34444,34 @@ classes:
     聲: 1
     惱: 1
   domain_hist:
-    unassigned: 7
     form: 5
     affix: 4
     nature: 4
-    virtue: 4
+    unassigned: 3
+    virtue: 3
     luminosity: 2
     motion: 2
     sound: 2
     number: 1
-  domain_top: unassigned
+  domain_top: form
   top_morphemes:
-  - zh: 叉
-    n: 2
   - zh: 雲
     n: 2
   - zh: 幢
     n: 2
   - zh: 普
     n: 2
-  - zh: 毘
-    n: 1
-  - zh: 樓
-    n: 1
-  - zh: 博
+  - zh: 毘樓博叉
     n: 1
   - zh: 娑竭羅
     n: 1
+  - zh: 音
+    n: 1
+  - zh: 妙
+    n: 1
+  - zh: 焰
+    n: 1
   top_pairs:
-  - a: 毘
-    b: 樓
-    n: 1
-  - a: 樓
-    b: 博
-    n: 1
-  - a: 博
-    b: 叉
-    n: 1
   - a: 雲
     b: 音
     n: 1
@@ -34527,7 +34481,16 @@ classes:
   - a: 妙
     b: 幢
     n: 1
-  n_word_hits: 3
+  - a: 焰
+    b: 口
+    n: 1
+  - a: 口
+    b: 海
+    n: 1
+  - a: 海
+    b: 光
+    n: 1
+  n_word_hits: 5
   n_unsegmented: 0
   members:
   - i: 1
@@ -34539,26 +34502,11 @@ classes:
     head: 毘
     tailch: 叉
     segs:
-    - zh: 毘
+    - zh: 毘樓博叉
       domain: unassigned
-      c: low
+      c: medium
       known: true
-      mode: char
-    - zh: 樓
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
-    - zh: 博
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
-    - zh: 叉
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
+      mode: word
     segs_char_only:
     - zh: 毘
       domain: unassigned
@@ -34582,10 +34530,7 @@ classes:
       mode: char
     domains:
     - unassigned
-    - unassigned
-    - unassigned
-    - unassigned
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -34811,21 +34756,11 @@ classes:
     head: 德
     tailch: 迦
     segs:
-    - zh: 德
-      domain: virtue
-      c: high
-      known: true
-      mode: char
-    - zh: 叉
+    - zh: 德叉迦
       domain: unassigned
-      c: low
+      c: medium
       known: true
-      mode: char
-    - zh: 迦
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
+      mode: word
     segs_char_only:
     - zh: 德
       domain: virtue
@@ -34843,10 +34778,8 @@ classes:
       known: true
       mode: char
     domains:
-    - virtue
     - unassigned
-    - unassigned
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -35089,10 +35022,10 @@ classes:
     affix: 5
     motion: 3
     nature: 3
-    unassigned: 3
     power: 2
     jewel: 1
     number: 1
+    unassigned: 1
     wisdom: 1
   domain_top: virtue
   top_morphemes:
@@ -35131,7 +35064,7 @@ classes:
   - a: 普
     b: 饒
     n: 1
-  n_word_hits: 1
+  n_word_hits: 2
   n_unsegmented: 0
   members:
   - i: 1
@@ -35633,21 +35566,11 @@ classes:
       c: medium
       known: true
       mode: char
-    - zh: 阿
+    - zh: 阿脩羅
       domain: unassigned
-      c: low
+      c: high
       known: true
-      mode: char
-    - zh: 脩
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
-    - zh: 羅
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
+      mode: word
     - zh: 眼
       domain: form
       c: high
@@ -35700,10 +35623,8 @@ classes:
     - nature
     - form
     - unassigned
-    - unassigned
-    - unassigned
     - form
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -37086,9 +37007,9 @@ classes:
     form: 5
     jewel: 4
     power: 3
-    unassigned: 3
+    nature: 2
     motion: 1
-    nature: 1
+    unassigned: 1
   domain_top: luminosity
   top_morphemes:
   - zh: 光
@@ -37123,10 +37044,10 @@ classes:
   - a: 焰
     b: 眼
     n: 1
-  - a: 須
-    b: 彌
+  - a: 須彌
+    b: 光
     n: 1
-  n_word_hits: 2
+  n_word_hits: 3
   n_unsegmented: 0
   members:
   - i: 1
@@ -37223,16 +37144,11 @@ classes:
     head: 須
     tailch: 幢
     segs:
-    - zh: 須
-      domain: unassigned
+    - zh: 須彌
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 彌
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 光
       domain: luminosity
       c: high
@@ -37295,14 +37211,13 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - luminosity
     - virtue
     - virtue
     - virtue
     - form
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -37826,7 +37741,6 @@ classes:
   domain_hist:
     virtue: 11
     form: 5
-    unassigned: 5
     wisdom: 5
     luminosity: 4
     motion: 4
@@ -37834,7 +37748,9 @@ classes:
     speech: 3
     power: 2
     sound: 2
+    unassigned: 2
     affix: 1
+    nature: 1
     time: 1
   domain_top: virtue
   top_morphemes:
@@ -37858,10 +37774,7 @@ classes:
   - a: 可愛
     b: 樂
     n: 2
-  - a: 釋
-    b: 迦
-    n: 1
-  - a: 迦
+  - a: 釋迦
     b: 因陀羅
     n: 1
   - a: 普
@@ -37873,7 +37786,10 @@ classes:
   - a: 滿
     b: 音
     n: 1
-  n_word_hits: 4
+  - a: 慈
+    b: 目
+    n: 1
+  n_word_hits: 6
   n_unsegmented: 0
   members:
   - i: 1
@@ -37885,16 +37801,11 @@ classes:
     head: 釋
     tailch: 羅
     segs:
-    - zh: 釋
+    - zh: 釋迦
       domain: unassigned
-      c: low
+      c: medium
       known: true
-      mode: char
-    - zh: 迦
-      domain: unassigned
-      c: low
-      known: true
-      mode: char
+      mode: word
     - zh: 因陀羅
       domain: unassigned
       c: high
@@ -37929,8 +37840,7 @@ classes:
     domains:
     - unassigned
     - unassigned
-    - unassigned
-    n_word: 1
+    n_word: 2
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -38265,16 +38175,11 @@ classes:
     head: 須
     tailch: 音
     segs:
-    - zh: 須
-      domain: unassigned
+    - zh: 須彌
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 彌
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 勝
       domain: power
       c: high
@@ -38307,11 +38212,10 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - power
     - sound
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''
@@ -42723,13 +42627,14 @@ classes:
     luminosity: 4
     motion: 4
     wisdom: 4
-    unassigned: 3
     form: 2
     power: 2
     sound: 2
     space: 2
     speech: 2
     time: 2
+    nature: 1
+    unassigned: 1
   domain_top: virtue
   top_morphemes:
   - zh: 淨
@@ -42767,7 +42672,7 @@ classes:
   - a: 勝
     b: 見
     n: 1
-  n_word_hits: 3
+  n_word_hits: 4
   n_unsegmented: 0
   members:
   - i: 1
@@ -42934,16 +42839,11 @@ classes:
     head: 須
     tailch: 音
     segs:
-    - zh: 須
-      domain: unassigned
+    - zh: 須彌
+      domain: nature
       c: high
       known: true
-      mode: char
-    - zh: 彌
-      domain: unassigned
-      c: high
-      known: true
-      mode: char
+      mode: word
     - zh: 音
       domain: sound
       c: high
@@ -42966,10 +42866,9 @@ classes:
       known: true
       mode: char
     domains:
-    - unassigned
-    - unassigned
+    - nature
     - sound
-    n_word: 0
+    n_word: 1
     n_unsegmented: 0
     n_unsegmented_char_only: 0
     zhu_object: ''

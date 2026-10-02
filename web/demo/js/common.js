@@ -1395,12 +1395,15 @@ function renderArticleEDA(containerSel) {
   h += _edaStat('覆盖率', (m.coverage_pct || 0) + '%', 'coverage');
   h += _edaStat('待补字次', m.unsegmented_chars || 0, 'unsegmented');
   h += _edaStat('多字词', m.word_hits || 0, 'words');
+  h += _edaStat('判读存疑', m.medconf_hits + m.lowconf_hits, 'medlow');
   h += _edaStat('低置信位', m.lowconf_hits || 0, 'lowconf');
   h += '</div>';
   h += '<div style="font-size:0.76em;color:var(--text2);margin:6px 0 14px">'
     + '覆盖率 100% 仅表示每个字皆已收入词素表，<b>不等于语义皆已核定</b>——'
-    + '其中 low-confidence 命中 ' + (m.lowconf_hits || 0) + ' 处、待考域若干，'
-    + '涉此等位之比较结论宜从缓。</div>';
+    + '词素位 <code>c</code> 分三级：high ' + (m.tokens_total - m.medconf_hits - m.lowconf_hits)
+    + '、medium ' + (m.medconf_hits || 0) + '、low ' + (m.lowconf_hits || 0) + '。'
+    + '<b>仅 low 者前端须显示〔待考〕</b>；「判读存疑」为 medium 与 low 之合计，'
+    + '供群间比较之需，二者口径不同，勿相混。涉存疑位之比较结论宜从缓。</div>';
 
   // ── 群组纵深（5 群剖面）──
   var gps = p.group_profiles || [];
@@ -1418,7 +1421,9 @@ function renderArticleEDA(containerSel) {
       if (g.character) h += '<div class="eda-gp-c">' + _mdInline(g.character) + '</div>';
       h += '<div class="eda-gp-m">核名均值 ' + g.core_len_mean + '（' + g.core_len_min + '–'
         + g.core_len_max + ' 字）· 词素 ' + g.n_distinct_morph + ' · 多字词 ' + g.n_word_hits
-        + ' · 判读待考 ' + g.n_lowconf + '（' + g.lowconf_pct + '%）</div>';
+        + ' · 判读存疑 ' + (g.n_medconf + g.n_lowconf) + '（'
+        + (Math.round((g.medconf_pct + g.lowconf_pct) * 10) / 10) + '%）'
+        + ' · low ' + g.n_lowconf + '</div>';
       // 语义域分布
       h += '<div class="eda-doms">';
       (g.domains || []).slice(0, 8).forEach(function (d) {

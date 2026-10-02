@@ -255,8 +255,8 @@ def segment_chars_only(core: str, lex: Dict[str, Dict[str, Any]]) -> Tuple[List[
 
 def _build_group_profiles(order, zh, en, n_by_group, classes_by_group,
                          tok_by_group, dom_by_group, head_by_group, tailch_by_group,
-                         wordhit_by_group, lowconf_by_group, nchars_by_group,
-                         len_by_group, tails_derived, notes, dom_of):
+                         wordhit_by_group, lowconf_by_group, medconf_by_group,
+                         nchars_by_group, len_by_group, tails_derived, notes, dom_of):
     """群级纵深剖面：定量（脚本算得）+ 定性（取自 lexicon.yaml group_profiles 段）。
 
     定性描述不写在脚本里（编务总则·杜绝硬编码）：脚本只负责算出可核的量，
@@ -296,6 +296,8 @@ def _build_group_profiles(order, zh, en, n_by_group, classes_by_group,
             "n_word_hits": sum(wordhit_by_group[g].values()),
             "n_lowconf": lowconf_by_group.get(g, 0),
             "lowconf_pct": round(100.0 * lowconf_by_group.get(g, 0) / tok_sum, 1),
+            "n_medconf": medconf_by_group.get(g, 0),
+            "medconf_pct": round(100.0 * medconf_by_group.get(g, 0) / tok_sum, 1),
             "top_morphs": [{"zh": z, "n": c,
                             "domain_zh": DOMAIN_ZH.get(dom_of.get(z, "unassigned"), "未定")}
                            for z, c in toks.most_common(12)],
@@ -358,7 +360,8 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
     tailch_total = collections.Counter()         # 核名末字
     len_by_group: Dict[str, collections.Counter] = {g: collections.Counter() for g in GROUP_ORDER}
     unsegmented = collections.Counter()          # 未入表字 → 出现次数
-    lowconf_hits = collections.Counter()         # c: low/medium → 次数
+    lowconf_hits = collections.Counter()         # c == "low" 逐位计（前端须显示〔待考〕者）
+    medconf_hits = collections.Counter()         # c == "medium" 单列，不与 low 混计
     word_hits = collections.Counter()            # 多字词命中 → 次数
     # ── 群组纵深所需累加器（群级钻取，见 group_profiles）──
     tok_by_group: Dict[str, collections.Counter] = {g: collections.Counter() for g in GROUP_ORDER}
@@ -366,6 +369,7 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
     tailch_by_group: Dict[str, collections.Counter] = {g: collections.Counter() for g in GROUP_ORDER}
     wordhit_by_group: Dict[str, collections.Counter] = {g: collections.Counter() for g in GROUP_ORDER}
     lowconf_by_group: Dict[str, int] = collections.Counter()
+    medconf_by_group: Dict[str, int] = collections.Counter()
     nchars_by_group: Dict[str, int] = collections.Counter()
     classes_by_group: Dict[str, List[str]] = collections.defaultdict(list)
     core_of: Dict[str, str] = {}                 # 整名 → 核名
@@ -413,9 +417,12 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
                     dom_total[t["domain"]] += 1
                     mdom[t["domain"]] += 1
                     dom_by_group[g][t["domain"]] += 1
-                    if t["c"] in ("low", "medium"):
+                    if t["c"] == "low":
                         lowconf_hits[t["zh"]] += 1
                         lowconf_by_group[g] += 1
+                    elif t["c"] == "medium":
+                        medconf_hits[t["zh"]] += 1
+                        medconf_by_group[g] += 1
                 else:
                     unsegmented[t["zh"]] += 1
             nchars_by_group[g] += len(core)
@@ -639,7 +646,7 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
     group_profiles, group_pairs = _build_group_profiles(
         GROUP_ORDER, GROUP_ZH, GROUP_EN, n_by_group, classes_by_group,
         tok_by_group, dom_by_group, head_by_group, tailch_by_group,
-        wordhit_by_group, lowconf_by_group, nchars_by_group, len_by_group,
+        wordhit_by_group, lowconf_by_group, medconf_by_group, nchars_by_group, len_by_group,
         class_tails_derived, (lexraw.get("group_profiles") or {}), dom_of,
     )
 
@@ -686,6 +693,7 @@ def analyse(asm: Any, lexraw: Any) -> Dict[str, Any]:
             "unsegmented_distinct": len(unsegmented),
             "lexicon_unused": len([z for z in lex if z not in char_total]),
             "lowconf_hits": sum(lowconf_hits.values()),
+            "medconf_hits": sum(medconf_hits.values()),
             "tail_hist": dict(tail_total.most_common()),
             "pair_edges": len(lexedges),
             "core_duplicates": len(dup_cores),
@@ -834,6 +842,36 @@ def do_check(data: Dict[str, Any]) -> List[str]:
     s = sum(mt["n"] for mt in data["morph_freq"])
     if s != m["tokens_total"]:
         errs.append("morph_freq 合计 %d ≠ tokens_total %d" % (s, m["tokens_total"]))
+
+    # 置信度三级须互斥且穷尽：low + med ≤ tokens_total，且逐成员统计与之相符。
+    # 旧版 lowconf_hits 曾把 low 与 medium 合并计数，与 schema 及页面「low 者须标〔待考〕」
+    # 之约不符；故三级分列并加此不变量，令口径失实无处可藏。
+    n_low = m.get("lowconf_hits", 0)
+    n_med = m.get("medconf_hits", 0)
+    if n_low + n_med > m["tokens_total"]:
+        errs.append("low %d + med %d > tokens_total %d（三级非互斥？）"
+                    % (n_low, n_med, m["tokens_total"]))
+    seg_low = seg_med = 0
+    for c in data["classes"]:
+        for mem in c["members"]:
+            for sg in mem.get("segs") or []:
+                if sg.get("c") == "low":
+                    seg_low += 1
+                elif sg.get("c") == "medium":
+                    seg_med += 1
+    if (seg_low, seg_med) != (n_low, n_med):
+        errs.append("逐成员 confidence 统计 low/med = %d/%d ≠ metrics %d/%d"
+                    % (seg_low, seg_med, n_low, n_med))
+    for gp in data.get("group_profiles") or []:
+        gl = gp.get("n_lowconf", 0)
+        gm = gp.get("n_medconf")
+        if gm is None:
+            errs.append("群 %s 缺 n_medconf" % gp.get("key"))
+        elif gl + gm > gp.get("n_tokens", 0):
+            errs.append("群 %s low %d + med %d > n_tokens %d"
+                        % (gp.get("key"), gl, gm, gp.get("n_tokens")))
+    if sum(g.get("n_lowconf", 0) for g in data.get("group_profiles") or []) != n_low:
+        errs.append("各群 n_lowconf 之和 ≠ metrics.lowconf_hits")
     # 「主X神」两型论断：命中类必为十九类神之后十五类，且各类须 100% 合式。
     # 该论断已写入 zhu_formula.note，故在此加不变量防止改数据时注文与统计脱节。
     zf = data["zhu_formula"]["classes"]
