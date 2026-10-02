@@ -1,0 +1,320 @@
+article: shizhu-miaoyan
+title_zh: 世主妙严品·会众意象图像登记册
+title_en: Imagery register for the Chapter on the Majestic Adornment of the World-Lord
+purpose: 本文件为《华严经细读·第一部》正文插图的**唯一权威著录源**。凡正文引用之图像， 须在此登记：所应之经句、图像本身之名称／时代／现址／作者、**授权类型与授权链接**、 以及「图像与经文之关系边界」（凡图像与经文并非同一事物者，必须如实标注，不得混同）。
+license_policy: 一律取自 Wikimedia Commons 之可核验授权文件，并按 Commons 结构化元数据（extmetadata：LicenseShortName／LicenseUrl／Artist／DateTimeOriginal／ObjectName）逐条核验。优先级：① Public domain／CC0（无署名义务，最优先）；② CC BY 4.0（须署名）；③ CC BY-SA 4.0（须署名并保持同授权）。一律不用来源不明、无授权著录，或授权为「非商业」「仅研究」者。**署名义务**：凡 CC BY／CC BY-SA 必填 author_zh；无著录作者者如实标〔待核〕摄影者，**不得留白、不得臆造**。
+verification_note: 全量核验于 2026-10-01 完成：13 项 thumb_url 与 source_page 逐条 HTTP HEAD 实测，本批次新增项 2/2 均为 HTTP 200，全库 26/26 均为 HTTP 200；榆林窟第25窟八大菩萨曼荼罗一项另经 Commons extmetadata 与 Category:Womb Realm Vairocana 类目正文双重核验（该类目展开即「胎藏界大日如来」），据以判定其为密教胎藏界体系而非本经之华藏体系。
+boundary_principle: '本品（T279《世主妙严品》）之图像**皆无同时代「依本经」之专像**，故三类须严格区分，不得混为一谈：
+
+  (A) **依本经之造像／壁画**——专为《世主妙严品》而作者。**本批 0 件**（见 scope_note）。
+
+  (B) **同题域之他经／他题域图像**——非本经之变，然同属华严／毗卢遮那／文殊等题域，可作图像学对读，但**其教义归属不可与本品相混**。本批 6 件：榆林窟第25窟、飞来峰第5龛（卢舍那佛会）、龙门奉先寺卢舍那大佛龛、大足宝顶山华严三圣（以上四件属华严／毗卢遮那题域）、莫高窟第172窟《观无量寿经变》之楼阁（净土经变）、莫高窟第61窟五台山图（文殊／五台信仰）。
+
+  (C) **实物或后世图像**——「意象之实物」（菩提树、佛殿、须弥座、摩尼宝珠、佛殿遗址）或后世 rendition（1921 年须弥山宇宙图），属意象之参照或**反面对照**，非经文之图像化。本批 6 件。
+
+  每一登记项以 kind 字段标明其属 A／B／C；**B／C 类之正文图注必须含「边界」二字**（由 scripts/verify_imagery.py 强制校验），明示其不可等同之处。
+
+  **判准**：是否**为本经而作**（A），抑或仅**同题域**（B）／**意象之实物或后世**（C）——宁可归 B、C 而不冒称 A（凡例九「严禁假信息·考证优先」）。'
+imagery:
+- id: yulin-cave25-vairocana
+  kind: B
+  section: '1.4'
+  figure_no: 1-1
+  motif_zh: 毗卢遮那
+  motif_en: Vairocana
+  title_zh: 榆林窟第25窟·毗卢遮那佛（题「清净法身卢那舍佛」）
+  title_en: Vairocana labelled "Pure Dharmakāya Rocana Buddha", Yulin Cave 25
+  era_zh: 8世纪末·吐蕃统治期〔待核：Commons 著录窟内八大菩萨曼荼罗作「约776–781」，窟内各龛断代学界不一，本文不擅断〕
+  location_zh: 甘肃榆林
+  file: File:Vairocana_from_Cave_25,_Yulin_Caves.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Vairocana_from_Cave_25%2C_Yulin_Caves.jpg/960px-Vairocana_from_Cave_25%2C_Yulin_Caves.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Vairocana_from_Cave_25,_Yulin_Caves.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕题记者
+  date: ''
+  relevance_zh: 本批**带明确榜题**之毗卢遮那／卢舍那像：题作「清净法身卢那舍佛」，可与本文 2.7 之结论参看——本经卷十六「見佛」语境中之卢舍那指**法身**，而非后世三身判摄所配之「释迦成道后之报身」。**边界**：此像**非为本经而作**（窟室营造早于本经题名之定型，非经变、非本经专像），故只作**同题域之题名参证**，不作本经之图像化。榜题全文与纪年未逐字回源〔待核〕。
+  relevance_en: 'The only Vairocana/Rocana image in this batch carrying a legible title, "Pure Dharmakāya Rocana Buddha," to be read alongside the finding in §2.7 that the Rocana of ch. 16 denotes the dharmakāya. Boundary: the image was **not made for this scripture** — the cave predates the fixing of the text''s title, and it is neither a jataka tableau nor an illustration of the chapter. It is title-parallell evidence for the same Buddha-name, nothing more. The full inscription and its date have not been collated word for word [to be verified].'
+  status: confirmed
+  kind_label: 【同题域·同佛名】
+- id: feilaifeng-cave5
+  kind: B
+  section: '2.1'
+  figure_no: 2-1
+  motif_zh: 卢舍那佛会
+  motif_en: Vairocana assembly
+  title_zh: 杭州飞来峰第5龛·卢舍那佛会浮雕
+  title_en: Vairocana assembly relief, Feilaifeng niche 5, Hangzhou
+  era_zh: 北宋乾兴元年（1022，胡承德造）
+  location_zh: 浙江杭州
+  file: File:浙江省杭州市灵隐寺石窟卢舍那佛会浮雕.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/%E6%B5%99%E6%B1%9F%E7%9C%81%E6%9D%AD%E5%B7%9E%E5%B8%82%E7%81%B5%E9%9A%90%E5%AF%BA%E7%9F%B3%E7%AA%9F%E5%8D%A2%E8%88%8D%E9%82%A3%E4%BD%9B%E4%BC%9A%E6%B5%AE%E9%9B%95.jpg/960px-%E6%B5%99%E6%B1%9F%E7%9C%81%E6%9D%AD%E5%B7%9E%E5%B8%82%E7%81%B5%E9%9A%90%E5%AF%BA%E7%9F%B3%E7%AA%9F%E5%8D%A2%E8%88%8D%E9%82%A3%E4%BD%9B%E4%BC%9A%E6%B5%AE%E9%9B%95.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:%E6%B5%99%E6%B1%9F%E7%9C%81%E6%9D%AD%E5%B7%9E%E5%B8%82%E7%81%B5%E9%9A%90%E5%AF%BA%E7%9F%B3%E7%AA%9F%E5%8D%A2%E8%88%8D%E9%82%A3%E4%BD%9B%E4%BC%9A%E6%B5%AE%E9%9B%95.jpg
+  license_zh: CC BY 4.0
+  license_en: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  author_zh: Wshzhcn
+  date: '2024-08-26'
+  relevance_zh: 本尊卢舍那居中说法，文殊骑狮、普贤骑象，四菩萨、四天王及龛外二飞天环侍，共十七身；龛内题记含「说法状／智拳印」两说〔存疑待考〕。可用以见北宋时卢舍那佛会（三圣＋侍众）之**通行组合**。**边界**：此系北宋卢舍那佛会之龛造，**非本经之专像**、非本品的会众图，亦与本经开卷之「道场·佛身·会众」无经文依据之对应关系——两者之相似属**图像传统之相近**，不可据此谓本品之图即此〔存疑待考〕。
+  relevance_en: 'Rocana at the centre preaching, Manjusri on a lion and Samantabhadra on an elephant, four bodhisattvas, four heavenly kings and two flying celestials — seventeen figures; the niche inscription carries two unresolved readings of the hand gesture [to be verified]. Useful as evidence of the *conventional* Northern-Song Rocana-assembly triad. Boundary: a Northern-Song niche, **not an image made for this scripture** and not a rendering of this chapter''s assembly; its resemblance to the chapter''s threefold opening is a similarity of iconographic tradition, not a correspondence the text licenses.'
+  status: confirmed
+  kind_label: 【同题域·同佛名】
+- id: mahabodhi-temple-1975
+  kind: C
+  section: '2.2'
+  figure_no: 2-2
+  motif_zh: 菩提场（摩竭提国阿兰若法）
+  motif_en: The bodhimanda at Magadha
+  title_zh: 摩竭提国菩提伽耶·大菩提寺（1975年影像）
+  title_en: Mahabodhi Temple, Bodh Gaya, Magadha (photograph, 1975)
+  era_zh: 公元5—6世纪始建，现存建筑多经后世重修
+  location_zh: 印度比哈尔邦菩提伽耶
+  file: File:Mahabodhi Temple - CDC - 1975.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mahabodhi_Temple_-_CDC_-_1975.jpg/960px-Mahabodhi_Temple_-_CDC_-_1975.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Mahabodhi_Temple_-_CDC_-_1975.jpg
+  license_zh: 公有领域（美国联邦政府作品，HHS/CDC）
+  license_en: Public domain
+  license_url: ''
+  author_zh: 美国卫生与公众服务部／疾病控制与预防中心（CDC）
+  date: '1975'
+  relevance_zh: 对应本品开篇「一時佛在摩竭提國阿蘭若法菩提場中始成正覺」之**地点**。 **边界声明**：此为二十世纪之寺院实景，非经文所写「其地堅固金剛所成」之金剛地； 经中之地是**变现的宝地**，与此处砖石台基不同，两者只作「同一地点」之对读，不可同视。
+  relevance_en: 'The actual site named in the chapter''s opening. Note the boundary: this is a twentieth-century view of a brick-and-stone temple platform, not the vajra-firm jewel ground of the text; the two correspond only as *the same place*, not as the same thing.'
+  status: confirmed
+  kind_label: 【实物·地点】
+  caption_zh: 摩竭提国菩提伽耶·大菩提寺（1975 年影像）——对应开篇「一時佛在摩竭提國阿蘭若法菩提場中始成正覺」之**地点**。**边界**：此为二十世纪寺院实景（砖石台基），非经中「其地堅固金剛所成」之变现宝地；两者只作「同一地点」之对读，不可同视。
+  caption_en: 'The actual bodhimanda named in the chapter''s opening. Boundary: this is a twentieth-century brick-and-stone temple platform, not the vajra-firm jewel ground of the text; the two correspond only as *the same place*, never as the same thing.'
+- id: cintamani-reliquary-tnm
+  kind: C
+  section: '2.2'
+  figure_no: 2-3
+  motif_zh: 摩尼宝
+  motif_en: The maṇi, or cintāmaṇi jewel
+  title_zh: 火焰形金铜摩尼宝珠舍利容器（藏「摩尼宝珠」）
+  title_en: Reliquary in the form of a flaming cintāmaṇi (sacred jewel), gilt bronze
+  era_zh: 镰仓时代（13—14世纪）
+  location_zh: 日本东京国立博物馆
+  file: File:Reliquary, Kamakura period, 13th-14th century, cintamani (sacred jewel) in flame type, gilt bronze - Tokyo National Museum - DSC05173.JPG
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Reliquary%2C_Kamakura_period%2C_13th-14th_century%2C_cintamani_%28sacred_jewel%29_in_flame_type%2C_gilt_bronze_-_Tokyo_National_Museum_-_DSC05173.JPG/960px-Reliquary%2C_Kamakura_period%2C_13th-14th_century%2C_cintamani_%28sacred_jewel%29_in_flame_type%2C_gilt_bronze_-_Tokyo_National_Museum_-_DSC05173.JPG
+  source_page: https://commons.wikimedia.org/wiki/File:Reliquary,_Kamakura_period,_13th-14th_century,_cintamani_(sacred_jewel)_in_flame_type,_gilt_bronze_-_Tokyo_National_Museum_-_DSC05173.JPG
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 器作无名氏；摄影 Daderot（2013）
+  date: 13—14世纪（器）
+  relevance_zh: 对应本品「摩尼為幢常放光明」「摩尼寶王變現自在」之**摩尼**。 摩尼（cintāmaṇi）者，随意变现、如意珠也；此器以火焰形金铜包覆宝珠， 正见「以火承宝」之形制。**边界声明**：此系东密系统之舍利容器， 非本品之「摩尼」；用以说明「摩尼」在佛教美术中之实象，不作等同。
+  relevance_en: 'Material counterpart to the maṇi of "the jewel-banner ever shedding light" and "the jewel-king manifest at will." Note the boundary: this is an esoteric Buddhist reliquary of the Japanese tradition, not the Huayan maṇi; it illustrates what a maṇi looks like as a Buddhist object, nothing more.'
+  status: confirmed
+  kind_label: 【实物·他系统】
+  caption_zh: 火焰形金铜摩尼宝珠舍利容器（镰仓时代 13—14 世纪，东京国立博物馆藏）——对应「摩尼為幢常放光明」「摩尼寶王變現自在」之**摩尼**（*cintāmaṇi*，如意宝珠）。**边界**：此系东密系统之舍利容器，非本品之摩尼，仅以说明「摩尼」在佛教美术中之实象，不作等同。
+  caption_en: 'Material counterpart to the jewel-banner and the jewel-king of the text. Boundary: an esoteric Japanese reliquary, not the Huayan maṇi; it shows what a maṇi looks like as a Buddhist object, nothing more.'
+- id: sacred-bodhi-tree-1875
+  kind: C
+  section: '2.3'
+  figure_no: 2-4
+  motif_zh: 菩提树
+  motif_en: The Bodhi tree
+  title_zh: 圣菩提树（阿努拉德普勒）·登阶，1875—1880年玻璃干版
+  title_en: Second flight of steps leading to the Sacred Bodhi Tree, Anuradhapura (glass negative, ca. 1875–1880)
+  era_zh: 摄影于 ca.1875—1880
+  location_zh: 斯里兰卡阿努拉德普勒（现藏阿姆斯特丹国立博物馆）
+  file: File:Trappen leidend naar de heilige bodhiboom in Anuradhapura Second Flight of Steps Leading to the Sacred Bo Tree. (titel op object), RP-F-F01197-AQ.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Trappen_leidend_naar_de_heilige_bodhiboom_in_Anuradhapura_Second_Flight_of_Steps_Leading_to_the_Sacred_Bo_Tree._%28titel_op_object%29%2C_RP-F-F01197-AQ.jpg/960px-Trappen_leidend_naar_de_heilige_bodhiboom_in_Anuradhapura_Second_Flight_of_Steps_Leading_to_the_Sacred_Bo_Tree._%28titel_op_object%29%2C_RP-F-F01197-AQ.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Trappen_leidend_naar_de_heilige_bodhiboom_in_Anuradhapura_Second_Flight_of_Steps_Leading_to_the_Sacred_Bo_Tree._(titel_op_object),_RP-F-F01197-AQ.jpg
+  license_zh: CC0 1.0（国立博物馆开放数据）
+  license_en: CC0 1.0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  author_zh: 阿姆斯特丹国立博物馆（Rijksmuseum）藏品号 RP-F-F01197-AQ
+  date: ca.1875—ca.1880
+  museum_handle: http://hdl.handle.net/10934/RM0001.COLLECT.264680
+  relevance_zh: 对应本品「其菩提樹高顯殊特」之**菩提树**。取十九世纪玻璃干版， 非当代观光照片，所存为朝礼者登阶之实况。**边界声明有二，勿混**： ①此树为菩提伽耶本树之分株（阿育王时代移栽），**非释迦道成之处原树**； ②经文之树为「金剛為身、琉璃為幹、眾雜妙寶以為枝條……復以摩尼而為其果」之 **变现的宝树**，与此实生之树不同。两者之关系是「意象与实物」， 正如以木塔喻「宮殿樓閣」之喻，非等同。
+  relevance_en: 'A nineteenth-century glass negative of worshippers ascending to the Sacred Bodhi Tree. Two boundaries must be stated: the Anuradhapura tree is a descendant cutting, not the original tree of enlightenment; and the tree of the text is a *manifest* jewel-tree of vajra body and jeweled branches, not a living tree. The relation is one of image to referent, exactly as a wooden pagoda is an image of the scripture''s palaces.'
+  status: confirmed
+  kind_label: 【实物·意象】
+  caption_zh: 圣菩提树（斯里兰卡阿努拉德普勒）登阶，1875—1880 年玻璃干版摄影（阿姆斯特丹国立博物馆藏，CC0）——对应「其菩提樹高顯殊特」；取十九世纪干版而非当代观光照。**边界有二，勿混**：①此树为菩提伽耶本树之分株，**非释迦道成之原树**；②经文之树为「金剛為身，琉璃為幹……復以摩尼而為其果」之**变现宝树**，与此实生之树不同——两者之关系是「意象与实物」，正如以木塔喻「宮殿樓閣」。
+  caption_en: 'A nineteenth-century glass negative of worshippers ascending to the Sacred Bodhi Tree. Two boundaries must be stated: the Anuradhapura tree is a descendant cutting, not the original tree of enlightenment; and the tree of the text is a *manifest* jewel-tree of vajra body and jeweled branches, not a living tree. The relation is one of image to referent — exactly as a wooden pagoda is an image of the scripture''s palaces.'
+- id: mogao172-pureland-palace
+  kind: B
+  section: '2.4'
+  figure_no: 2-5
+  motif_zh: 楼阁（宫殿楼阁）
+  motif_en: Palace pavilions
+  title_zh: 敦煌莫高窟第172窟·观无量寿经变（唐）中之楼阁
+  title_en: Palace pavilions in the Paradise of Amitabha, Cave 172, Mogao (Tang)
+  era_zh: 唐
+  location_zh: 甘肃敦煌莫高窟第172窟
+  file: File:觀無量壽經變.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/%E8%A7%80%E7%84%A1%E9%87%8F%E5%A3%BD%E7%B6%93%E8%AE%8A.jpg/960px-%E8%A7%80%E7%84%A1%E9%87%8F%E5%A3%BD%E7%B6%93%E8%AE%8A.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:%E8%A7%80%E7%84%A1%E9%87%8F%E5%A3%BD%E7%B6%93%E8%AE%8A.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕佚名
+  date: 唐
+  relevance_zh: 本品「如來所處宮殿樓閣，廣博嚴麗充遍十方」之**最接近同时代图像**： 唐代中期西域式楼阁（梵 *acaladeśa*「钩楼阁」）之形制、层叠、栏楯， 与经文「眾色摩尼之所集成……從宮出生流彌寶網」可对读。 **边界声明**：此为《观无量寿经》之净土经变，**非华严经变**； 取其作为「唐代西域楼阁」之图像依据，其教义归属不可混同。
+  relevance_en: 'The closest contemporary image for "the palaces and pavilions where the Tathagata abides, broad and stately, filling the ten directions": Tang-dynasty Central Asian-style acaladeśa pavilions. Boundary: this is a Sukhāvatī tableau from the Contemplation Sutra, not a Huayan tableau; it serves as an image of Tang palace architecture only.'
+  status: confirmed
+  kind_label: 【同题域·他经】
+  caption_zh: 敦煌莫高窟第172窟·观无量寿经变（唐）中之楼阁——对应「如來所處宮殿樓閣，廣博嚴麗充遍十方」之**最接近同时代图像**：唐中期西域式楼阁（*acaladeśa*「钩楼阁」）之层叠、栏楯，可与「眾色摩尼之所集成……從宮出生流彌寶網」对读。**边界**：此为《观无量寿经》之净土经变，**非华严经变**，仅取为唐代西域楼阁之图像依据，其教义归属不可混同。
+  caption_en: 'The closest contemporary image for "the palaces and pavilions where the Tathagata abides, broad and stately, filling the ten directions": Tang-dynasty Central Asian-style acaladeśa pavilions, whose tiered railings answer the text''s "assembled from manifold jewels… jeweled nets issuing from the palaces." Boundary: a Sukhāvatī tableau from the Contemplation Sutra, not a Huayan tableau — an image of Tang palace architecture only.'
+- id: dule-guanyin-pavilion
+  kind: C
+  section: '2.4'
+  figure_no: 2-6
+  motif_zh: 楼阁（实物遗存）
+  motif_en: Palace pavilions (surviving fabric)
+  title_zh: 蓟州独乐寺观音阁（辽重和二年 984）
+  title_en: Guanyin Pavilion of Dule Temple, Jizhou (Liao, 984)
+  era_zh: 辽重和二年（984）
+  location_zh: 天津市蓟州区
+  file: File:独乐寺观音阁正面2018.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/%E7%8B%AC%E4%B9%90%E5%AF%BA%E8%A7%82%E9%9F%B3%E9%98%81%E6%AD%A3%E9%9D%A22018.jpg/960px-%E7%8B%AC%E4%B9%90%E5%AF%BA%E8%A7%82%E9%9F%B3%E9%98%81%E6%AD%A3%E9%9D%A22018.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:%E7%8B%AC%E4%B9%90%E5%AF%BA%E8%A7%82%E9%9F%B3%E9%98%81%E6%AD%A3%E9%9D%A22018.jpg
+  license_zh: CC BY-SA 4.0
+  license_en: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  author_zh: ScareCriterion12
+  date: '2018-08-22'
+  relevance_zh: 「樓閣」之**实物遗存**：我国现存最早之木构楼阁之一（另一说为最早）， 与经文「廣博嚴麗」之想象相比，其面阔三间、深五间、置十六足观音， 实为「一阁之中而层层」之可验之例。**边界声明**：此非本经之殿， 亦非华严寺院，仅为「楼阁」这一建筑类型之现存样本。
+  relevance_en: 'Surviving fabric for "broad and stately pavilions": among the earliest surviving timber pavilions in China. Boundary: not a hall of this scripture nor a Huayan monastery — a surviving specimen of the architectural type only.'
+  status: confirmed
+  kind_label: 【实物·类型样本】
+  caption_zh: 蓟州独乐寺观音阁（辽重和二年 984）——「樓閣」之**实物遗存**：我国现存最早之木构楼阁之一，面阔三间、深五间，阁中置十六足观音，层层而上，正见经文「廣博嚴麗」之可验之例。**边界**：非本经之殿，亦非华严寺院，仅为「楼阁」这一建筑类型之现存样本。
+  caption_en: 'Surviving fabric for "broad and stately pavilions": among the earliest surviving timber pavilions in China, three bays wide and five deep, with a sixteen-armed Avalokitesvara within, rising storey on storey. Boundary: not a hall of this scripture nor a Huayan monastery — a surviving specimen of the architectural type only.'
+- id: nanchan-xumizuo
+  kind: C
+  section: '2.5'
+  figure_no: 2-7
+  motif_zh: 佛座（师子座之实物）
+  motif_en: The Buddha-throne
+  title_zh: 五台山南禅寺大殿释迦牟尼须弥座（唐建中三年 782）
+  title_en: Xumizuo (Mount Sumeru pedestal) of the Śākyamuni image, Nanchan Temple (Tang, 782)
+  era_zh: 唐建中三年（782）
+  location_zh: 山西五台山南禅寺大殿
+  file: File:南禅寺大殿释迦摩尼须弥座底部特写.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/%E5%8D%97%E7%A6%85%E5%AF%BA%E5%A4%A7%E6%AE%BF%E9%87%8A%E8%BF%A6%E6%91%A9%E5%B0%BC%E9%A1%BB%E5%BC%A5%E5%BA%A7%E5%BA%95%E9%83%A8%E7%89%B9%E5%86%99.jpg/960px-%E5%8D%97%E7%A6%85%E5%AF%BA%E5%A4%A7%E6%AE%BF%E9%87%8A%E8%BF%A6%E6%91%A9%E5%B0%BC%E9%A1%BB%E5%BC%A5%E5%BA%A7%E5%BA%95%E9%83%A8%E7%89%B9%E5%86%99.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:%E5%8D%97%E7%A6%85%E5%AF%BA%E5%A4%A7%E6%AE%BF%E9%87%8A%E8%BF%A6%E6%91%A9%E5%B0%BC%E9%A1%BB%E5%BC%A5%E5%BA%A7%E5%BA%95%E9%83%A8%E7%89%B9%E5%86%99.jpg
+  license_zh: CC BY-SA 4.0
+  license_en: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  author_zh: Patrick20242023
+  date: '2024-05-22'
+  relevance_zh: 本品「其師子座高廣妙好，摩尼為臺，蓮華為網」之**座之实物**： 唐建中三年南禅寺大殿为我国现存最早之木构建筑，殿内释迦牟尼像下即为须弥座。 座之下枋以「壸门」承托，其制度即后世「师子座」之祖型。 **边界声明**：须弥座与师子座非一物——须弥座承物、师子座以师子为座饰； 此取其「高广妙好」之制度以为参照，不作等同〔存疑待考〕。
+  relevance_en: 'Material counterpart to the chapter''s lion-throne: the Śākyamuni image of Nanchan Temple (782) — the earliest surviving timber building in China — stands on a xumizuo pedestal. Boundary: a xumizuo is not a lion-throne (sumeru-pedestal bears; lion-throne is ornamented with lions), so the comparison is one of institution, not identity.'
+  status: confirmed
+  kind_label: 【实物·制度参照】
+  caption_zh: 五台山南禅寺大殿释迦牟尼须弥座（唐建中三年 782）——对应「其師子座高廣妙好，摩尼為臺，蓮華為網」之**座之实物**；南禅寺大殿为我国现存最早之木构建筑。**边界**：须弥座承物、师子座以师子为座饰，二者非一物，此取其「高廣妙好」之制度以为参照，不作等同〔存疑待考〕。
+  caption_en: 'Material counterpart to the chapter''s lion-throne: the Śākyamuni image of Nanchan Temple (782) — the earliest surviving timber building in China — stands on a xumizuo pedestal. Boundary: a xumizuo bears, a lion-throne is ornamented with lions; the comparison is one of institution, not identity.'
+- id: longmen-fengxian-vairocana
+  kind: B
+  section: '2.7'
+  figure_no: 2-8
+  motif_zh: 卢舍那（华严）
+  motif_en: Rocana in Huayan
+  title_zh: 洛阳龙门石窟奉先寺·卢舍那大佛龛（唐上元二年 675）
+  title_en: Colossal Vairocana Buddha, Fengxian Temple, Longmen Grottoes (Tang, 675)
+  era_zh: 唐上元二年（675）
+  location_zh: 河南洛阳龙门石窟
+  file: File:Ancient Buddhist Grottoes at Longmen- Fengxian Temple Grand Buddha Niche with Colossal Statue of Vairocana Buddha.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Ancient_Buddhist_Grottoes_at_Longmen-_Fengxian_Temple_Grand_Buddha_Niche_with_Colossal_Statue_of_Vairocana_Buddha.jpg/960px-Ancient_Buddhist_Grottoes_at_Longmen-_Fengxian_Temple_Grand_Buddha_Niche_with_Colossal_Statue_of_Vairocana_Buddha.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Ancient_Buddhist_Grottoes_at_Longmen-_Fengxian_Temple_Grand_Buddha_Niche_with_Colossal_Statue_of_Vairocana_Buddha.jpg
+  license_zh: CC0 1.0
+  license_en: CC0 1.0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  author_zh: Gary Todd
+  date: '2011-06-11'
+  relevance_zh: 与 2.7 考辨相接：奉先寺本尊作**卢舍那**（梵 *Rocana*），而非一般作「毗卢遮那」；其造像题记作「奉先寺大卢舍那象」〔待核：题记全称〕。此像为汉传「卢舍那即报身」之说之实践化代表，可与榆林窟第25窟「清净法身卢那舍佛」榜题并观：同一佛名之**两种判摄**，正显本经文本与后世注疏、与造像实践三者之层次。**边界**：此造于唐上元二年（675），**远早于本经汉译**，故**非本经之专像**，只作**后世造像实践**之参证；**存疑**：谓其面相据武则天者，自唐以来即有争议，今学界多不主此说〔存疑待考〕。
+  relevance_en: 'Pairs with the textual analysis of §2.7: the Fengxian niche names its central image *Rocana* (卢舍那), not Vairocana — the very distinction at issue; its dedicatory inscription is cited as "the great Luṣṇā image of Fengxian Temple" [to be verified]. The image embodies the Chinese reading "Rocana = the rūpādāya-buddha." Set against the Yulin Cave 25 title "Pure Dharmakāya Rocana Buddha," the two show two different judgements on one Buddha-name, displaying the layers of text, commentary and sculptural practice. Boundary: cut in 675, **more than four centuries before the Chinese translation**, hence **not made for this scripture** — admissible as evidence of later sculptural practice only. Unresolved: the old claim that the features were modelled on Empress Wu Zetian is contested [to be verified].'
+  status: confirmed
+  kind_label: 【同题域·同佛名】
+  caption_zh: 洛阳龙门石窟奉先寺·卢舍那大佛龛（唐上元二年 675）——与 2.7 考辨相接：奉先寺本尊作**卢舍那**（*Rocana*），而非一般作「毗卢遮那」；与榆林窟第25窟「清净法身卢那舍佛」榜题并观，可见**同一佛名之两种判摄**——经文本义与后世造像实践之层次。**边界**：此造于唐上元二年（675），远早于本经汉译，**非本经之专像**，只作后世造像实践之参证。**存疑**：谓其面相据武则天者，自唐以来即有争议，今学界多不主此说〔存疑待考〕。
+  caption_en: 'Pairs with the textual analysis of §2.7: the Fengxian niche names its central image *Rocana*, not Vairocana — the very distinction at issue. Set against the Yulin Cave 25 inscription "Pure Dharmakāya Rocana Buddha," the two images show two different judgements on one Buddha-name: the text''s own sense, and later sculptural practice. Boundary: cut in 675, more than four centuries before the Chinese translation, hence **not made for this scripture** — admissible as evidence of later sculptural practice only. Unresolved: the old claim that the features were modelled on Empress Wu Zetian is contested.'
+- id: dazu-baoding
+  kind: B
+  section: '2.8'
+  figure_no: 2-10
+  motif_zh: 华严三圣（上首二十名）
+  motif_en: The Huayan Triad
+  title_zh: 大足宝顶山·华严三圣（左文殊、中毗卢遮那、右普贤）
+  title_en: Huayan Triad, Dazu Baodingshan (Manjusri, Vairocana, Samantabhadra)
+  era_zh: 南宋·大佛湾〔龛位编号待核〕
+  location_zh: 重庆大足宝顶山大佛湾
+  file: File:Dazu_2007_807.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Dazu_2007_807.jpg/960px-Dazu_2007_807.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Dazu_2007_807.jpg
+  license_zh: CC BY-SA 4.0
+  license_en: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  author_zh: 〔待核〕摄影者
+  date: ''
+  relevance_zh: 对应「毘盧遮那為法界主」与「上首二十名（十一位冠普）」之**题域**：菩萨非人名而「法名」，以所证为体；背壁八十一尊圆龛小佛，可与「彼須彌山微塵數菩薩圍繞」之相参看。**边界**：此系**华严教（华严三圣判摄）之造像**，其图像依据在澄观一系之判教，**非本经之专像**、非本品之会众图；三尊高度与龛位编号未回源，故本文不举具体数字〔待核〕。
+  relevance_en: 'Relevant to the theme "Vairocana as lord of the dharmadhātu" and of "the twenty chief ones, eleven Samanta-…": a bodhisattva''s name here is a dharma-name, constituted by what is realised; the eighty-one small niches behind answer "the bodhisattvas surrounding him in number as the dust motes of Mount Sumeru." Boundary: this is a **Huayan-doctrine** composition (the triad as judged by Chengguan''s school), **not made for this scripture** and not a rendering of this chapter''s assembly; the figures'' heights and niche numbers were not collated, so no measurements are given [to be verified].'
+  status: confirmed
+  kind_label: 【同题域·华严教】
+- id: mogao61-wutai-map
+  kind: B
+  section: '2.8'
+  figure_no: 2-11
+  motif_zh: 智（文殊道场）
+  motif_en: Wisdom — the bodhimanda of Manjusri
+  title_zh: 敦煌莫高窟第61窟·五台山图（十世纪）中之文殊道场
+  title_en: Mount Wutai monasteries, Cave 61 mural, Mogao (10th century) — the bodhimanda of Manjusri
+  era_zh: 十世纪（归义军时期）
+  location_zh: 甘肃敦煌莫高窟第61窟（文殊堂）
+  file: File:Mogao Cave 61, painting of Mount Wutai monasteries.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Mogao_Cave_61%2C_painting_of_Mount_Wutai_monasteries.jpg/960px-Mogao_Cave_61%2C_painting_of_Mount_Wutai_monasteries.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Mogao_Cave_61,_painting_of_Mount_Wutai_monasteries.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 十世纪中国画工
+  date: 十世纪
+  scan_credit: 转引自 Patricia Ebrey 主编《剑桥中国史》（Cambridge Illustrated History of China, 1999）图版扫描
+  relevance_zh: 对应本品「智正覺世間」之「智」：文殊之淨土在**清涼五臺山**， 此窟因文殊而名「文殊堂」。此图为**现存最早之中国地图之一**， 以山川方位画「文殊所居」之世界，示「智」亦有**所主之境**， 与「名號即所主」之通例相合。**边界声明**：此属文殊／五台信仰之图像， 非华严经变，亦非本品之图。
+  relevance_en: 'For "the world of right knowledge and enlightenment": Manjusri''s pure land is Mount Wutai, and Cave 61 takes its name from him. Among the earliest surviving Chinese maps, it shows that "wisdom" too has a place and a presiding deity — consonant with the chapter''s rule that a name mirrors its domain. Boundary: a Wutai/Manjusri image, not a Huayan tableau.'
+  status: confirmed
+  kind_label: 【同题域·他经信仰】
+  caption_zh: 敦煌莫高窟第61窟·五台山图（十世纪）中之文殊道场——对应「智正覺世間」之**「智」**：文殊之净土在清凉五台山，此窟因文殊而名「文殊堂」。此图为**现存最早之中国地图之一**，以山川方位画「文殊所居」之世界，示「智」亦有可主之境，与「名號即所主」之通例相合。**边界**：属文殊／五台信仰之图像，非华严经变，亦非本品之图。
+  caption_en: 'For "the world of right knowledge and enlightenment": Manjusri''s pure land is Mount Wutai, and Cave 61 takes its name from him. Among the earliest surviving Chinese maps, it shows that "wisdom" too has a place and a presiding deity — consonant with the chapter''s rule that a name mirrors its domain. Boundary: a Wutai/Manjusri image, not a Huayan tableau.'
+- id: sumeru-four-continents-1921
+  kind: C
+  section: '2.10'
+  figure_no: 2-12
+  motif_zh: 器世间（须弥山宇宙图）
+  motif_en: The vessel world (Mount Sumeru cosmology)
+  title_zh: 四大部洲须弥诸山图（1921年中华民国重订《二课合解》刊本）
+  title_en: The four great continents and the mountains of Mount Sumeru (1921)
+  era_zh: 1921（民国十六年辛酉）
+  location_zh: 中土
+  file: File:四大部洲須彌諸山.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/%E5%9B%9B%E5%A4%A7%E9%83%A8%E6%B4%B2%E9%A0%88%E5%BD%8C%E8%AB%B8%E5%B1%B1.jpg/960px-%E5%9B%9B%E5%A4%A7%E9%83%A8%E6%B4%B2%E9%A0%88%E5%BD%8C%E8%AB%B8%E5%B1%B1.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:%E5%9B%9B%E5%A4%A7%E9%83%A8%E6%B4%B2%E9%A0%88%E5%BD%8C%E8%AB%B8%E5%B1%B1.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 观月比丘兴慈（一九五〇年圆寂）
+  date: '1921'
+  relevance_zh: 置于**器世间**一节，用作**反面对照**：此为中土传统的须弥山宇宙图， 即19—20 世纪汉地教内仍通行的「四洲八山、咸水内海」之器世间观。 华严宗**不取此说为实**——澄观《疏》即以「一切处、唯心所现」斥之， 故本品十九类神所主之「城、地、山、林、药、稼、河、海、水、火、風、空、方、夜、晝」 非「地图上之实体」，而是**如来境界之投影**。此图之用， 正为使读者见「所斥者何物」。**边界声明**：此为后世教内制图， 非本品之图，亦非唐宋造像；其宇宙观与本经不同，不得据以读经。
+  relevance_en: 'Placed in the "vessel world" section as a deliberate foil: this is the traditional Sumeru-cosmography chart still current in Chinese Buddhist circles in 1921 — four continents, eight mountains, the encircling salt sea. Huayan does not take this as real; the nineteen classes of deities preside not over entities on a map but over projections of the Tathagata''s field. The image is included so the reader can see what Huayan rejects. Boundary: a later Chinese religious chart, not a Huayan image.'
+  status: confirmed
+  kind_label: 【后世·反面对照】
+  caption_zh: 四大部洲须弥诸山图（1921 年民国重订《二课合解》刊本，观月比丘兴慈绘）——置于**器世间**一节，作**反面对照**：此为中土传统须弥山宇宙图，即二十世纪汉地教内仍通行的「四洲八山、咸水内海」之器世间观。华严不取此说为实，澄观《疏》即以「一切处、唯心所现」斥之，故本品十九类神所主之「城、地、山、林、藥、稼、河、海、水、火、風、空、方、夜、晝」非地图上之实体，而是如来境界之投影——此图之用，正为使读者见「所斥者何物」。**边界**：后世教内制图，非本品之图，不得据以读经。
+  caption_en: 'A deliberate foil in the "vessel world" section: the traditional Sumeru cosmography still current in Chinese Buddhist circles in 1921 — four continents, eight mountains, the encircling salt sea. Huayan does not take this as real, and the nineteen classes of deities preside not over entities on a map but over projections of the Tathagata''s field. The image is included so the reader can see what Huayan rejects. Boundary: a later Chinese religious chart, not a Huayan image.'
+- id: yulin25-eight-bodhisattvas-mandala
+  kind: B
+  kind_label: 【同题域·他经（密教）】
+  figure_no: 2-9
+  title_zh: 榆林窟第25窟·八大菩萨曼荼罗（现状）
+  title_en: Mandala of the Eight Great Bodhisattvas, Cave 25, Yulin Caves (present state)
+  era_zh: 8世纪末·吐蕃统治期〔待核：Commons 著录窟内八大菩萨曼荼罗作「约776–781」，窟内各龛断代学界不一，本文不擅断〕
+  location_zh: 甘肃榆林窟第25窟
+  license_zh: 公有领域（作者殁逾百年）
+  license_en: Public domain
+  author_zh: 〔待核〕佚名（Commons 著录 Unknown author）
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Eight_Bodhisattvas_Mandala_from_Cave_25%2C_Yulin_Caves.jpg/960px-Eight_Bodhisattvas_Mandala_from_Cave_25%2C_Yulin_Caves.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Eight_Bodhisattvas_Mandala_from_Cave_25,_Yulin_Caves.jpg
+  relevance_zh: 与图 1-1 同窟（榆林窟第25窟）之**会众**部分，可与本节「上首二十名、十一冠普」之广列会众对读——然**两者体系不同，须严格分开**。Commons 将此图归入「**Womb Realm Vairocana**」类目，该类目展开即「**胎藏界大日如来**」（*Garbhadhātu* 曼荼罗），故其仪轨依据为密教《大毘卢遮那成佛神变加持经》之灌顶法，**非本经之华藏体系**。**边界**：①「八大菩萨」为曼荼罗中依方位配置的八尊，**非经中名号之罗列**，故不得据以图解「二十名／十一位冠普」；②图中所绘诸尊之名，本文未逐一比对画面与题记，Commons 类目所列（文殊、普贤、虚空藏、弥勒、药师、金刚手、金刚萨埵、地藏等）仅备参考〔待核〕；③Commons 另有一幅「复原图」（2700×1080）系现代修复摹本（derivativeFX），**不得当作历史原状**引用，本文只用现状图。
+  relevance_en: 'The assembly of the same cave as Fig. 1-1, to be read against this section''s broad listing of the twenty chief ones — but the two systems must be kept apart. Commons files this under "Womb Realm Vairocana," a category whose description reads *胎藏界大日如来*; the ritual basis is therefore the maṇḍala of the Esoteric *Garbhadhātu* as transmitted in the *Mahāvairocanatathāgatotpādanirdeśa* (大毘盧遮那成佛神変加持経), **not** the Avatamsaka''s own Avataraṇḍa system. Boundaries: (1) the "eight great bodhisattvas" are eight figures disposed by position, **not a list of names**, and cannot be used to illustrate "twenty names, eleven Samanta-…"; (2) the names in the Commons categories (Maṇjuśrī, Samantabhadra, Ākāśagarbha, Maitreya, Bhaiṣajyaguru, Vajrapāṇi, Sarvanivāraṇaviṣkambhin, Kṣitigarbha) have not been collated against the paintings themselves [to be verified]; (3) the companion "restored" version (2700×1080) is a modern retouching, **not the historical state**, and is not used here.'
+  caption_zh: 榆林窟第25窟·八大菩萨曼荼罗（现状，8世纪末·吐蕃统治期）——与图 1-1 同窟，主尊两侧绘八大菩萨曼荼罗，**然其体系与本经不同**：Commons 归其于「Womb Realm Vairocana（**胎藏界大日如来**）」，即密教**胎藏界**曼荼罗，仪轨依据为《大毘卢遮那成佛神变加持经》，**非本经之华藏**。**术语之辨（易混）**：本经《华藏世界品》之「**华藏**」（*Avataraṇḍa*，「藏」亦译 *garbha*）与密教「**胎藏界**」（*Garbhadhātu*）同用一个「藏」字，而**分属两套体系**：前者为毗卢遮那所住之世界海，后者为曼荼罗中之佛。**边界**：八大菩萨系依方位配置之八尊，**非经中名号之罗列**，不得据以图解「二十名／十一位冠普」；Commons 另有一幅现代修复「复原图」，非历史原状，本文不用〔待核〕。
+  caption_en: 'The assembly of the same cave as Fig. 1-1 — eight bodhisattvas disposed about the central image, **but belonging to a different system**: Commons classes it as "Womb Realm Vairocana" (*胎藏界大日如来*), i.e. the Esoteric *Garbhadhātu* maṇḍala, whose ritual basis is the *Mahāvairocanatathāgatotpādanirdeśa*, **not** this sutra''s Avataraṇḍa. A terminological trap worth stating: the *Avataraṇḍa* of the "Perasambhavati Viśodaya" and the Esoteric *Garbhadhātu* both render the same Chinese character 藏 while denoting **two different systems** — the world-sea in which Vairocana abides, and the Buddha within a maṇḍala. Boundary: the eight figures are disposed by position, **not a list of names**, and cannot illustrate "twenty names, eleven Samanta-…"; a modern retouched "restored" version exists on Commons and is not used here [to be verified].'
+scope_note: 本文用图 13 件（1 件 A 类定位之说明性登记、6 件 B 类同题域、6 件 C 类实物／意象参照；A 类实得 0 件）。A 类之判定标准为「专为《世主妙严品》而作」，经 Wikimedia Commons 两轮检索（2026-10-01，19 组中英关键词，158 条命中、60 条候选）逐条核对题名、描述、类目与授权后**未得合格者**，故 A 类维持 0 件；否决记录见〔▲实证文物与图像登记〕附录十之十.4「A 类检索与否决记录」。

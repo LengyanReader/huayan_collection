@@ -115,8 +115,8 @@ items:
     grade: A2
     status: confirmed
     note: "壶门式花头龛高146cm×宽150cm，共浮雕十七身：本尊卢舍那居中、文殊骑狮（拂蒜牵引）、普贤骑象（獠蛮牵引），菩萨四身、天王四身、龛外飞天二身。主流释文作「说法状」；Ching Chang 2023 主张或为智拳印，两说并存〔存疑〕。"
-    relevance_zh: "赖天兵《汉藏瑰宝：杭州飞来峰造像研究》立专节「《华严经》七处九会与卢舍那佛会浮雕」；卢舍那即本品主尊毗卢遮那之报身相，首会说法图像之北宋典范。"
-    relevance_en: "Lai Tianbing's 'Han-Tibetan Treasures' gives this relief its own section under the seven places and nine assemblies; Rocana, the reward-body of the chapter's Vairocana, is shown teaching."
+    relevance_zh: "赖天兵《汉藏瑰宝：杭州飞来峰造像研究》立专节「《华严经》七处九会与卢舍那佛会浮雕」；龛中卢舍那即本品会主毘盧遮那（T279 通名作「毘盧遮那」；法藏《探玄记》卷三「此舍那佛非局報身」，故本经遮那是法报合一，**不宜径称报身相**），此龛为首会说法图像之北宋典范。"
+    relevance_en: "Lai Tianbing's 'Han-Tibetan Treasures' gives this relief its own section under the seven places and nine assemblies. The central Rocana is the assembly's presiding Vairocana (the T279 usual form is 毘盧遮那). Note that Fazang's Tanxuan ji, juan 3, states that \"this Rocana Buddha is not confined to the reward-body\" — in this sutra Vairocana is dharma-body and reward-body unified, so the figure should not simply be labelled a reward-body image (see §2.7 of the article)."
     href: "https://www.fjdh.cn/wumin/2009/04/14535255438.html"
     source_note: "佛教导航〈杭州飞来峰造像〉（录乾兴元年胡承德造像题记全文）；陈俊男〈宋韵遗踪：杭州西湖飞来峰造像艺术〉，城市学研究网（2021-12-02）"
     license: "公开宗教网站/机构介绍页（学术参考、非商业使用）；缩略图 CC BY 4.0（Wikimedia Commons·Wshzhcn，图源 File:浙江省杭州市灵隐寺石窟卢舍那佛会浮雕.jpg）"
@@ -140,13 +140,13 @@ items:
   - artifact_id: yulin-cave25
     title_zh: "榆林窟第25窟 主室东壁北段 毗卢遮那佛（题「清净法身卢那舍佛」）"
     title_en: "Yulin Cave 25, Vairocana labelled 'Pure Dharmakaya Rocana Buddha'"
-    era: "吐蕃统治时期（中唐，约9世纪）"
+    era: "8世纪末·吐蕃统治期〔待核：Commons 著录窟内八大菩萨曼荼罗作「约776–781」，窟内断代学界不一，本文不擅断〕"
     location: "甘肃瓜州榆林窟"
     category: mural
     grade: A2
     status: confirmed
-    relevance_zh: "法身佛毗卢遮那结禅定印、榜题「清净法身卢那舍佛」，即本品主尊之清净法身相，报身（卢舍那）与法身（毗卢遮那）二相并显。"
-    relevance_en: "The dharmakāya Buddha Vairocana in dhyāna-mudrā with a label naming him the Pure Dharmakāya Rocana Buddha — the very reward/ dharma-body duality of this chapter's host."
+    relevance_zh: "法身佛毗卢遮那结禅定印，榜题作「清净法身卢那舍佛」。**此榜题本身即是一手证据**——它把「卢那舍」直接判为「清净法身」，与本篇 2.7 节的实测互证：法藏《探玄记》卷三「此舍那佛非局報身」，T279 卷十六「则见卢舍那」于「自性无所有」条件下即见法身。**故此处不宜读作「报身（卢舍那）与法身（毗卢遮那）二相并显」，而应读作同一尊遮那之清净法身相**；三身分判属后世判摄，非本经与本题记之立场。"
+    relevance_en: "The dharmakāya Buddha Vairocana in dhyāna-mudrā, labelled 「清净法身卢那舍佛」 — 'Rocana, the Pure Dharmakāya Buddha'. The inscription is itself primary evidence: it identifies Rocana directly with the pure dharmakāya, corroborating §2.7 of the article (Fazang: 「此舍那佛非局報身」; T279 fasc.16: 「則見盧舍那」 under the condition of 「自性無所有」). The figure should therefore be read as one Vairocana in his pure dharmakāya aspect, not as a reward-body/dharmakāya pairing — the three-body division is a later scholastic judgment, not the position of this sutra or this inscription."
     href: "https://m.thepaper.cn/newsDetail_forward_33634018"
     source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）"
     license: "澎湃新闻公开报道页（学术参考、非商业使用）；缩略图公有领域（Wikimedia Commons，图源 File:Vairocana from Cave 25, Yulin Caves.jpg）"
@@ -160,8 +160,8 @@ items:
     category: sculpture
     grade: A2
     status: confirmed
-    relevance_zh: "三尊各高约7m：中尊毗卢遮那螺髻说法印、髻上两道毫光；文殊左手捧七重宝塔、右手扶塔，普贤双手捧舍利塔；背壁刻八十一尊圆龛小佛——本品「彼须弥山微尘数菩萨围绕」之图像化。"
-    relevance_en: "Three ~7 m figures: Vairocana with ushnisha and teaching mudra, Manjushri holding a seven-tiered stupa, Samantabhadra a relic stupa; eighty-one niche Buddhas behind — an image of the countless bodhisattvas surrounding the host."
+    relevance_zh: "中尊毗卢遮那螺髻说法印、髻上两道毫光；文殊左手捧七重宝塔、右手扶塔，普贤双手捧舍利塔；背壁刻八十一尊圆龛小佛——本品「彼须弥山微尘数菩萨围绕」之图像化。"
+    relevance_en: "Three figures: Vairocana with usnisa and the teaching mudra, with two rays of light above the usnisa; Manjusri at the left holding a seven-storied reliquary tower, Samantabhadra at the right holding a relic tower; eighty-one small Buddhas in round niches on the rear wall. The scale of the figures is not stated here [to be verified]."
     href: "https://m.thepaper.cn/newsDetail_forward_33634018"
     source_note: "张素闻〈华严经变和毗卢遮那佛的艺术形象〉，澎湃新闻·古代艺术（2026-07-30）"
     license: "澎湃新闻公开报道页（学术参考、非商业使用）；缩略图 CC BY-SA 4.0（Wikimedia Commons·G41rn8，图源 File:Dazu 2007 807.jpg）"
