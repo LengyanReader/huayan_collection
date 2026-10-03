@@ -2223,10 +2223,10 @@ window._foldDoc = function (rootSel, opts) {
     h.addEventListener('click', function (e) {
       var c = e.target && e.target.closest && e.target.closest('.secfold-caret');
       if (c) e.stopPropagation();
-      setFolded(h, h.classList.contains('is-folded'));
+      setFolded(h, !h.classList.contains('is-folded'));
     });
     h.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFolded(h, h.classList.contains('is-folded')); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFolded(h, !h.classList.contains('is-folded')); }
     });
     counts[lv] = (counts[lv] || 0) + 1;
     total++;

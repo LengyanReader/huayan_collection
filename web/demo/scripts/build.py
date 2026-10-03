@@ -1375,6 +1375,9 @@ def build_articles(articles):
     plus a catalog index (web/demo/articles/index.html). Returns total bytes written."""
     practice = load_practice()
     gap = load_gap()
+    article_bi = db_reader.load_article_bi()
+    narr_m = db_reader.load_miaoyan_narrative()
+    kp_m = db_reader.load_miaoyan_keypoints()
     try:
         article_knowledge = db_reader.load_article_knowledge()
     except Exception as e:
@@ -1457,8 +1460,15 @@ def build_articles(articles):
                             for t in s.get('topics', []))
         else:
             data_script = 'var ARTICLE = %s;' % json.dumps(payload, ensure_ascii=False)
+            # 世主妙严品：另并入要点导览＋叙事动画（曼荼罗）两套渲染器
+            #   数据源 data/narrative/miaoyan_keypoints.yaml / miaoyan_narrative.yaml
+            extra_js = ''
+            if a['id'] == 'shizhu-miaoyan':
+                # 会众全景流程图＋叙事动画两套渲染器（要点导览已行除）
+                extra_js = ('\n<script>\n' + wrap_script(read_src('miaoyan_flow.js')) + '\n</script>'
+                            + '\n<script>\n' + wrap_script(read_src('miaoyan_narrative.js')) + '\n</script>')
             scripts = ('<script>\n' + data_script + '\n</script>\n'
-                       '<script>\n' + wrap_script(article_js) + '\n</script>')
+                       '<script>\n' + wrap_script(article_js) + '\n</script>' + extra_js)
             doc_chars = len(a.get('doc_md', ''))
         graph = article_knowledge.get(a['id'])
         if graph:
@@ -1481,6 +1491,11 @@ def build_articles(articles):
             scripts = ('<script>var ARTICLE_EDA = %s;</script>\n'
                        % json.dumps(eda, ensure_ascii=False)) + scripts
             a['_eda'] = True
+        bi = article_bi.get(a['id'])
+        if bi:
+            scripts = ('<script>var ARTICLE_BI = %s;</script>\n' % json.dumps(bi, ensure_ascii=False)) + scripts
+            scripts = ('<script>var MIAOYAN_NARR = %s;</script>\n' % json.dumps(narr_m, ensure_ascii=False)) + scripts
+            # （要点导览已行除：不再注入 MIAOYAN_KP，数据层仍存而不入页面。）
         _b = a.get('back') or {}
         back_tab = _b.get('tab') or 'index'
         back_label = _b.get('label') or '导航主页'
