@@ -4,6 +4,7 @@ import sys
 import os
 import shutil
 import subprocess, re
+import json
 
 # Windows console cp1252 下中文输出会 UnicodeEncodeError — 强制 UTF-8
 if hasattr(sys.stdout, 'reconfigure'):
@@ -175,6 +176,59 @@ for obj in sorted(os.listdir(ARTICLES)):
                              ('热力矩阵', '热力矩阵')):
             if token not in cjs:
                 bad.append(f'js/common.js 缺 {label}')
+    # 文本分析层：内嵌 ARTICLE_BI + article.js 内的 renderArticleBI。
+    # schema 契约：校验「产物实际内嵌之 JSON」含渲染器所读之全部键路径——
+    # 前端零硬编码，故键名笔误会静默渲染不出内容（而非报错），必以契约卡住。
+    if 'var ARTICLE_BI' in html:
+        bi_checks = [
+            ('renderArticleBI 渲染器', 'function renderArticleBI' in html),
+            ('biGo 入口', 'function biGo' in html),
+            ('BI 入口按钮', 'onclick="biGo()"' in html),
+            ('BI 节容器', 'id="bi-report"' in html),
+        ]
+        bad += [c[0] for c in bi_checks if not c[1]]
+        # 锚定 </script>：BI 脚本仅一条赋值语句，故取「贪婪至最后一个 };」即全量 JSON
+        # （不可用 };\n 或非贪婪 —— JSON 字符串值内可能含 `};` 之形）
+        m = re.search(r'var ARTICLE_BI = (\{.*?\});</script>', html, re.S)
+        if not m:
+            bad.append('ARTICLE_BI JSON 无法定位')
+        else:
+            try:
+                bi = json.loads(m.group(1))
+            except Exception as e:
+                bi = None
+                bad.append(f'ARTICLE_BI JSON 解析失败({e.__class__.__name__})')
+            if bi is not None:
+                # (路径, 期望类型) —— 与 renderArticleBI 所读键一一对应
+                contract = [
+                    ('scorecard.items', list), ('funnel.track_names.stages', list),
+                    ('funnel.track_tokens.stages', list), ('funnel.grades', dict),
+                    ('funnel.conversion.tokens_per_name', (int, float)),
+                    ('domain_landscape.rows', list), ('domain_landscape.concentration.hhi', (int, float)),
+                    ('crosstab.groups', list), ('crosstab.domains', list), ('crosstab.matrix', list),
+                    ('similarity.names', list), ('similarity.matrix', list),
+                    ('clustering.clusters', list), ('clustering.curve', list),
+                    ('pca.points', list), ('pca.explained', list),
+                    ('pareto.series', list), ('network.top_pagerank', list),
+                    ('network.truncation.n_used_edges', (int, float)),
+                    ('ordinal.segments', list), ('ordinal.z', (int, float)),
+                    ('quality.robustness', list), ('executive.findings', list),
+                ]
+                missing = []
+                for path, typ in contract:
+                    cur = bi
+                    for k in path.split('.'):
+                        if isinstance(cur, dict) and k in cur:
+                            cur = cur[k]
+                        else:
+                            cur = None
+                            break
+                    if not isinstance(cur, typ) or (typ is list and not cur):
+                        missing.append(path)
+                if missing:
+                    bad.append(f'ARTICLE_BI 契约缺键 {missing}')
+                else:
+                    ok(f'articles/{obj}: BI schema 契约 {len(contract)} 键路径齐备')
     if bad:
         fail(f'articles/{obj}: missing {", ".join(bad)}')
     else:
@@ -234,6 +288,109 @@ else:
             fail(f'js/{_f}: syntax error — {_msg[0] if _msg else "parse failed"}')
         else:
             ok(f'js/{_f}: syntax OK')
+
+    # BI 渲染器冒烟测试（node）：renderArticleBI 纯拼字符串、不触 DOM，故可在 node 中实跑。
+    # 仅 --check 语法不足以证其可运行 —— 键名笔误、类型误判皆为静默失败（渲染不出内容而不报错）。
+    _smoke = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'verify_bi_render.js')
+    if not _node:
+        print('  SKIP: node not found — BI render smoke test skipped')
+    elif not os.path.exists(_smoke):
+        print('  SKIP: verify_bi_render.js not found')
+    else:
+        for _t in sorted(os.listdir(ARTICLES)):
+            if not _t.endswith('.html') or _t == 'index.html':
+                continue
+            _p = os.path.join(ARTICLES, _t)
+            if 'var ARTICLE_BI' not in open(_p, encoding='utf-8').read():
+                continue
+            _r = subprocess.run([_node, _smoke, _p], capture_output=True, text=True)
+            if _r.returncode != 0:
+                fail(f'articles/{_t}: BI render — {(_r.stderr or "").strip().splitlines()[-1]}')
+            else:
+                ok(f'articles/{_t}: BI render — {(_r.stdout or "").strip()}')
+
+    # 叙事动画播放器冒烟测试（node）：MiaoyanNarrative 触 DOM/Canvas，故以最小
+    # DOM+Canvas 桩实跑，驱动播放/暂停/步进/跳拍/进度/倍速/图层诸控件，并校验环位
+    # 口径（一点=一类，全图 40 类 == assembly 之 40 类／414 名）。
+    # --check 仅能证语法，不能证「按钮真的绑了、画布真的出图、旁白随拍切换」。
+    _nsmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           'verify_narrative_render.js')
+    if not _node:
+        print('  SKIP: node not found — narrative render smoke test skipped')
+    elif not os.path.exists(_nsmoke):
+        print('  SKIP: verify_narrative_render.js not found')
+    else:
+        for _t in sorted(os.listdir(ARTICLES)):
+            if not _t.endswith('.html') or _t == 'index.html':
+                continue
+            _p = os.path.join(ARTICLES, _t)
+            if 'var MIAOYAN_NARR' not in open(_p, encoding='utf-8').read():
+                continue
+            _r = subprocess.run([_node, _nsmoke, _p], capture_output=True,
+                                encoding='utf-8', errors='replace')
+            if _r.returncode != 0 or not (_r.stdout or '').strip():
+                # stdout 空亦计失败：非 ASCII 输出遇 locale 解码失败时 rc 仍为 0，
+                # 若只验 rc 会出现「显示 OK 而无任何证据」的假绿。
+                _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
+                fail(f'articles/{_t}: narrative render — {_msg.strip().splitlines()[-1]}')
+            else:
+                ok(f'articles/{_t}: narrative render — {(_r.stdout or "").strip()}')
+
+    # 要点导览门禁（node）：MiaoyanKeypoints 触 DOM/Canvas，故以最小 DOM+Canvas 桩实跑。
+    # 与叙事门禁分工：那一路证曼荼罗六环，此一路证 8 要点之内挂正文（#article-kp）——
+    # 故须先证 markdown 未吞占位（正文内挂载之前提），再证数据不变量（要点号连续/四层
+    # 注册/point_at 落在单位圆上/判断者必附 judgment_zh/引文逐字见于 T279），末驱控件。
+    # 皆以页面内联之源码/数据为准；改桩只会「测不到东西」。
+    _ksmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           'verify_keypoints_render.js')
+    _common_js = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                              'web', 'demo', 'js', 'common.js')
+    _cbeta_t279 = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                               'data', 'references', 'cbeta', 'T10n0279.xml')
+    if not _node:
+        print('  SKIP: node not found — keypoints render gate skipped')
+    elif not os.path.exists(_ksmoke):
+        print('  SKIP: verify_keypoints_render.js not found')
+    else:
+        for _t in sorted(os.listdir(ARTICLES)):
+            if not _t.endswith('.html') or _t == 'index.html':
+                continue
+            _p = os.path.join(ARTICLES, _t)
+            if 'var MIAOYAN_KP' not in open(_p, encoding='utf-8').read():
+                continue
+            _r = subprocess.run([_node, _ksmoke, _p, _common_js, _cbeta_t279],
+                                capture_output=True, encoding='utf-8', errors='replace')
+            if _r.returncode != 0 or not (_r.stdout or '').strip():
+                _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
+                fail(f'articles/{_t}: keypoints render — {_msg.strip().splitlines()[-1]}')
+            else:
+                ok(f'articles/{_t}: keypoints render — {(_r.stdout or "").strip()}')
+
+    # 会众全景流程门禁（node）：MiaoyanFlow 触 DOM，故以最小 DOM 桩实跑。与要点/叙事门禁分工：
+    # 此一路证「详版全景流程图」之不损——四十类之类名/上首/全成员名号/本愿原文，
+    # 既须逐字见于渲染产物（折叠亦在 DOM），亦须逐字见于 CBETA T10n0279（回源）；
+    # 末驱检索/展开/折叠/跳转/目录诸控件。
+    _fsmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           'verify_flow_render.js')
+    if not _node:
+        print('  SKIP: node not found — flow render gate skipped')
+    elif not os.path.exists(_fsmoke):
+        print('  SKIP: verify_flow_render.js not found')
+    else:
+        for _t in sorted(os.listdir(ARTICLES)):
+            if not _t.endswith('.html') or _t == 'index.html':
+                continue
+            _p = os.path.join(ARTICLES, _t)
+            _c = open(_p, encoding='utf-8').read()
+            if 'var ARTICLE_ASSEMBLY' not in _c or 'function renderMiaoyanFlow' not in _c:
+                continue
+            _r = subprocess.run([_node, _fsmoke, _p, _common_js, _cbeta_t279],
+                                capture_output=True, encoding='utf-8', errors='replace')
+            if _r.returncode != 0 or not (_r.stdout or '').strip():
+                _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
+                fail(f'articles/{_t}: flow render — {_msg.strip().splitlines()[-1]}')
+            else:
+                ok(f'articles/{_t}: flow render — {(_r.stdout or "").strip()}')
 
 print()
 

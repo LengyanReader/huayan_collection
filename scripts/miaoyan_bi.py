@@ -1848,7 +1848,7 @@ def build_report() -> Dict[str, Any]:
                   "words, the sutra remains authoritative.",
         },
         "method": {
-            "pipeline_zh": "经文事实（assembly）→ 词素析构（EDA）→ BI 分析（本层）三层分源，逐层可回溯。",
+            "pipeline_zh": "经文事实（assembly）→ 词素析构（EDA）→ 文本分析（本层）三层分源，逐层可回溯。",
             "pipeline_en": "Three separated layers — sutra facts (assembly) → morphemic analysis (EDA) → "
                            "BI analysis (this layer) — each independently traceable.",
             "determinism_zh": "凡涉随机处，一律以定种线性同余发生器（LCG）取样，"

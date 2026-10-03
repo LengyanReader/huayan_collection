@@ -45,7 +45,8 @@ docs/huayanhai/**/*.html
 data/references/cbeta/*.tmp
 # 报告 PDF：pandoc+Chrome 派生产物（12.5MB 二进制），可由 .md ＋ print.css 完整复现，故不入库；
 # 源 .md 与自包含 .html 照常入库（版式与内容均可在库内审阅）
-docs/草稿/*.pdf
+docs/草稿/*
 
 
 node_modules
+.tmp_*.json

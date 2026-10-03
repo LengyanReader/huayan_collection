@@ -1,0 +1,352 @@
+# 《世主妙严品》·文本叙事动画（Storyboard）
+# 三层：经文事实（assembly）→ 叙事节拍（narrative）→ 可视化呈现（visual）
+# 原则：凡无法定准之处标注〔待核〕；中英必配；不臆造定论。
+
+meta:
+  id: shizhu-miaoyan-narrative
+  title_zh: "世主妙严品 · 叙事动画"
+  title_en: "Adorning the World-Ruler · Narrative Animation (Progressive Emergence)"
+  source_primary: "CBETA T10n0279《大方廣佛華嚴經》（实叉难陀译，八十卷本）·世主妙严品第一＝卷一至卷五"
+  sources:
+    - label: "CBETA T10n0279《世主妙严品第一》（八十卷本）"
+      url: "https://cbetaonline.dila.edu.tw/zh/T10n0279"
+    - label: "CBETA T09n0279（六十卷本·旧译）·仅作对照，动画不据其底本"
+      url: "https://cbetaonline.dila.edu.tw/zh/T09n0279"
+  note_zh: "本动画按会众列次（assembly.order）重组成叙事节拍，用于表达「次第出现」与「时空圆融」之意向，不等同于逐颂逐句的逐字演绎。"
+  note_en: "Reconstructed from assembly sequence to express progressive emergence and mandalic spatiality; not verse-by-verse enactment."
+  version: "1.0.0"
+  status: "draft"
+
+space:
+  center:
+    id: "center-buddha"
+    label_zh: "法界座（世主）"
+    label_en: "Dharmadhātu Seat (Lord of the Assembly)"
+    radius: 0
+    z: 10
+  rings:
+    - id: r1
+      label_zh: "内环·菩萨众"
+      label_en: "Inner ring — Bodhisattvas"
+      r: 140
+      z: 9
+      member_count: 20
+      member_classes: 1
+      source_ref: "miaoyan_assembly: bodhisattva（普賢菩薩摩訶薩等 20 名）"
+    - id: r2
+      label_zh: "护持环·執金剛神（十九类之一）"
+      label_en: "Guardian ring — Vajrapāṇis (one of the nineteen classes)"
+      r: 220
+      z: 8
+      member_count: 10
+      member_classes: 1
+      source_ref: "miaoyan_assembly: deities idx=1（妙色那羅延執金剛神等 10 名）"
+      caliber_note: "執金剛神系十九类神众之第一类，非另立一类；本环与 r3 相加方得十九类（190 名）。"
+    - id: r3
+      label_zh: "中环·其余十八类神众"
+      label_en: "Middle ring — the other eighteen classes"
+      r: 320
+      z: 7
+      member_count: 180
+      member_classes: 18
+      source_ref: "miaoyan_assembly: deities idx=2–19（身眾神…主晝神，共 180 名）"
+      caliber_note: "此环 18 类 + r2 之 1 类 = 十九类神众（190 名）。"
+    - id: r4
+      label_zh: "外环·天龙八部"
+      label_en: "Outer ring — Eight Legions"
+      r: 420
+      z: 6
+      member_count: 80
+      member_classes: 8
+      source_ref: "miaoyan_assembly: eight（八部四王，共 80 名）"
+    - id: r5
+      label_zh: "上层·欲界七众→色界五众"
+      label_en: "Upper tier — seven desire-realm / five form-realm classes"
+      r: 520
+      z: 5
+      member_count: 124
+      member_classes: 12
+      source_ref: "miaoyan_assembly: desire（73 名）+ form（51 名）"
+      splits:
+        - id: desire
+          label_zh: "欲界七众"
+          label_en: "Seven desire-realm classes"
+          classes: 7
+          members: 73
+        - id: form
+          label_zh: "色界五众"
+          label_en: "Five form-realm classes"
+          classes: 5
+          members: 51
+  background:
+    mandala_grid: true
+    worldsea: true
+    opacity: 0.12
+    calibration: "六环 member_count 之和 = assembly.metrics.named_total = 414，与 40 类之口径相合。微尘刹海之广不可尽言，此仅取会众列次为同心环之空间意象。"
+    token_note: "环上光点为【示意】：一点代表一类（r2/r3）或一员之名相，非一人一点之精确比例图。真实员数见各环 member_count（源 miaoyan_assembly）。"
+
+visual_style:
+  palette:
+    center: "#f2d77c"
+    bodhisattva: "#b8863c"
+    vajra: "#8b5e8b"
+    deities: "#5e8b9e"
+    eight: "#6b8b3c"
+    desire: "#a05e3c"
+    form: "#7fa3b3"
+    light: "#f5e9b8"
+    bg: "#0f1419"
+  easing: "cubic-bezier(0.22,0.61,0.36,1)"
+  duration_base_ms: 900
+  stagger_ms: 90
+  breath_ms: 1200
+
+beats:
+  - id: b0
+    order: 0
+    title_zh: "B0 · 佛成正觉"
+    title_en: "B0 · Perfect Awakening"
+    time_start_s: 0.0
+    time_end_s: 2.6
+    camera: { zoom: 1.00, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["center"]
+    cast_groups: ["center"]
+    actions:
+      - type: "awaken"
+        target: "center-buddha"
+        zh: "世主于法界座上成正觉"
+        en: "The Lord awakens upon the Dharmadhātu seat"
+        dur_ms: 1000
+        delay_ms: 0
+    narration_zh: "〔待核〕从佛成正觉始。法界澄明，世主安住于妙严之座。"
+    narration_en: "[TBC] Beginning with the Buddha's perfect awakening. The Dharmadhātu becomes clear as the Lord abides in wondrous adornment."
+    narration_ref: "T10n0279 世主妙严品·卷一（信入·幢王·佛菩提）〔待核〕"
+    uncertainty: ["scene_boundary"]
+
+  - id: b1
+    order: 1
+    title_zh: "B1 · 光明出现"
+    title_en: "B1 · Radiance Emerges"
+    time_start_s: 2.6
+    time_end_s: 6.0
+    camera: { zoom: 1.08, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["center","bg"]
+    cast_groups: ["center","light"]
+    actions:
+      - type: "radiate"
+        target: "center-buddha"
+        zh: "身放光明，遍照华藏世界海"
+        en: "Radiant light streams forth, illuminating the vast world-ocean of Huayan"
+        dur_ms: 1400
+        delay_ms: 0
+      - type: "grid_fade_in"
+        target: "bg-mandala"
+        zh: "光网次第显现"
+        en: "A network of light gradually appears"
+        dur_ms: 900
+        delay_ms: 250
+    narration_zh: "〔待核〕佛身放光，照触十方世界海，令重重国土同时显现。"
+    narration_en: "[TBC] From the Tathāgata's body, light radiates pervading world-oceans; multiple layers of realms appear simultaneously."
+    narration_ref: "T10n0279 世主妙严品·卷一（信入·菩提场光明·普照）〔待核〕"
+    uncertainty: ["sequence_timing"]
+
+  - id: b2
+    order: 2
+    title_zh: "B2 · 世界海震动·重重无尽"
+    title_en: "B2 · World-Oceans Stir — Interpenetration"
+    time_start_s: 6.0
+    time_end_s: 9.0
+    camera: { zoom: 1.12, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["bg","center"]
+    cast_groups: ["bg"]
+    actions:
+      - type: "ripple"
+        target: "bg-worldsea"
+        zh: "世界海微动，重重无尽互摄互入"
+        en: "World-oceans ripple; realms interpenetrate without obstruction"
+        dur_ms: 1200
+        delay_ms: 0
+    narration_zh: "〔待核〕十方世界海随觉而现，依正重重，圆融无碍。"
+    narration_en: "[TBC] Ten directions' world-oceans arise in response; phenomena and realms interpenetrate."
+    narration_ref: "T10n0279 世主妙严品·卷五（其地一切六種、十八相震動）〔待核〕"
+    uncertainty: ["conceptual_mapping"]
+
+  - id: b3
+    order: 3
+    title_zh: "B3 · 菩萨众次第出现（同生众）"
+    title_en: "B3 · Bodhisattvas Emerge (Co-born Assembly)"
+    time_start_s: 9.0
+    time_end_s: 12.5
+    camera: { zoom: 1.18, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["r1","center"]
+    cast_groups: ["bodhisattva"]
+    actions:
+      - type: "emerge_spiral"
+        ring: "r1"
+        zh: "菩萨摩訶薩于内环次第涌现，环绕世主"
+        en: "Mahāsattva bodhisattvas spiral into inner ring, surrounding the Lord"
+        dur_ms: 1600
+        delay_ms: 0
+    narration_zh: "〔待核〕菩萨摩訶薩最先感召而现，围绕法界世主。"
+    narration_en: "[TBC] Bodhisattvas first respond and appear, encircling the Dharmadhātu Lord."
+    narration_ref: "miaoyan_assembly: bodhisattva（order=0）"
+    uncertainty: ["timing"]
+
+  - id: b4
+    order: 4
+    title_zh: "B4 · 執金剛神护持"
+    title_en: "B4 · Vajrapāṇis Arise as Guardians"
+    time_start_s: 12.5
+    time_end_s: 15.0
+    camera: { zoom: 1.20, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["r2","r1","center"]
+    cast_groups: ["vajra"]
+    actions:
+      - type: "emerge_ring"
+        ring: "r2"
+        zh: "執金剛神次第入护持环"
+        en: "Vajrapāṇis enter the guardian ring"
+        dur_ms: 1100
+        delay_ms: 0
+    narration_zh: "〔待核〕执金刚神出现，严净护持道场法界。"
+    narration_en: "[TBC] Vajrapāṇis arise to guard and purify the Dharma-realm."
+    narration_ref: "miaoyan_assembly: 執金剛神（order=1）"
+    uncertainty: ["role"]
+
+  - id: b5
+    order: 5
+    title_zh: "B5 · 十九类神众次第布列"
+    title_en: "B5 · Nineteen Classes of Deities Emerge"
+    time_start_s: 15.0
+    time_end_s: 19.0
+    camera: { zoom: 1.26, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["r3","r2","r1"]
+    cast_groups: ["deities"]
+    actions:
+      - type: "emerge_spiral"
+        ring: "r3"
+        zh: "身眾神等十九类神众，按列次沿中环螺旋涌现"
+        en: "Nineteen classes spiral into middle ring in assembly order"
+        dur_ms: 1800
+        delay_ms: 0
+    narration_zh: "〔待核〕身眾神、足行神、道場神等十九类，次第布列于处所、自然、时缘等位。"
+    narration_en: "[TBC] Nineteen classes emerge in sequence covering locations, natural forces, time and conditions."
+    narration_ref: "miaoyan_assembly: deities（order=2–20）"
+    uncertainty: ["spatial_mapping"]
+
+  - id: b6
+    order: 6
+    title_zh: "B6 · 天龙八部分布外环"
+    title_en: "B6 · Eight Legions Take Outer Ring"
+    time_start_s: 19.0
+    time_end_s: 22.0
+    camera: { zoom: 1.32, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["r4","r3"]
+    cast_groups: ["eight"]
+    actions:
+      - type: "emerge_ring"
+        ring: "r4"
+        zh: "乾闥婆、阿脩羅、迦樓羅、緊那羅、摩睺羅伽、龍、夜叉、鳩槃荼次第入外环"
+        en: "Gandharvas, Asuras, Garuḍas, Kinnaras, Mahoragas, Nāgas, Yakṣas, Kumbhāṇḍas enter outer ring"
+        dur_ms: 1300
+        delay_ms: 0
+    narration_zh: "〔待核〕天龙八部分布于外环，护持遍布法界。"
+    narration_en: "[TBC] Eight Legions occupy outer ring, guarding and pervading the Dharma-realm."
+    narration_ref: "miaoyan_assembly: eight（order=21–28）"
+    uncertainty: ["orientation"]
+
+  - id: b7
+    order: 7
+    title_zh: "B7 · 欲界主天上层现"
+    title_en: "B7 · Desire-Realm Lords Appear in Upper Tier"
+    time_start_s: 22.0
+    time_end_s: 24.5
+    camera: { zoom: 1.36, pan_x: 0, pan_y: -60, ease_ms: 900 }
+    space_focus: ["r5"]
+    cast_groups: ["desire"]
+    actions:
+      - type: "emerge_up"
+        ring: "r5"
+        zh: "日天子、月天子、梵天王、帝釋天王等欲界主天于上层次第现"
+        en: "Desire-realm lords emerge in upper tier"
+        dur_ms: 1100
+        delay_ms: 0
+    narration_zh: "〔待核〕欲界诸天次第而现，示其依报与感应。"
+    narration_en: "[TBC] Lords of desire realm appear, indicating their spheres of influence."
+    narration_ref: "miaoyan_assembly: desire（order=29–35）"
+    uncertainty: ["hierarchy_reading"]
+
+  - id: b8
+    order: 8
+    title_zh: "B8 · 色界主天续现"
+    title_en: "B8 · Form-Realm Lords Continue"
+    time_start_s: 24.5
+    time_end_s: 26.5
+    camera: { zoom: 1.38, pan_x: 0, pan_y: -80, ease_ms: 800 }
+    space_focus: ["r5"]
+    cast_groups: ["form"]
+    actions:
+      - type: "emerge_up"
+        ring: "r5"
+        zh: "色界主天续于上层现，界别渐次分明"
+        en: "Form-realm lords appear; realm distinctions become clear"
+        dur_ms: 900
+        delay_ms: 0
+    narration_zh: "〔待核〕色界主天次第现，欲色界别以淡化方式表现。"
+    narration_en: "[TBC] Form-realm lords appear; distinction shown subtly."
+    narration_ref: "miaoyan_assembly: form（order=36–39）"
+    uncertainty: ["subtlety"]
+
+  - id: b9
+    order: 9
+    title_zh: "B9 · 庄严陈设·光网圆满"
+    title_en: "B9 · Adornments Fulfilled — Light-Net"
+    time_start_s: 26.5
+    time_end_s: 29.0
+    camera: { zoom: 1.42, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["bg","r1","r2","r3","r4","r5","center"]
+    cast_groups: ["center","light"]
+    actions:
+      - type: "adorn"
+        target: "bg-mandala"
+        zh: "光网、宝幢、莲座次第圆满"
+        en: "Light-net, jeweled banners, lotus seats reach fullness"
+        dur_ms: 1200
+        delay_ms: 0
+      - type: "breathe"
+        target: "center-buddha"
+        zh: "会众安住，法界庄严周备"
+        en: "Assembly settles; Dharma-realm fully adorned"
+        dur_ms: 800
+        delay_ms: 200
+    narration_zh: "〔待核〕光网遍布，诸妙庄严次第具足，会众咸在。"
+    narration_en: "[TBC] Jeweled net spreads; wondrous adornments complete; assembly fully present."
+    narration_ref: "T10n0279 世主妙严品·卷一（信入·种种广大差别）〔待核〕"
+    uncertainty: ["arrangement"]
+
+  - id: b10
+    order: 10
+    title_zh: "B10 · 赞叹与启请（结拍）"
+    title_en: "B10 · Praise and Inquiry (Closure Gesture)"
+    time_start_s: 29.0
+    time_end_s: 32.0
+    camera: { zoom: 1.30, pan_x: 0, pan_y: 0, ease_ms: 1200 }
+    space_focus: ["center","r1","bg"]
+    cast_groups: ["bodhisattva","center"]
+    actions:
+      - type: "gesture"
+        target: "r1"
+        zh: "众生见闻，随类得益；会众恭敬赞叹"
+        en: "Beings see and hear, gain according to capacity; assembly pays homage"
+        dur_ms: 1000
+        delay_ms: 0
+      - type: "hold"
+        target: "bg"
+        zh: "法会安住，次第展开未尽"
+        en: "Assembly abides; the unfolding remains open"
+        dur_ms: 800
+        delay_ms: 200
+    narration_zh: "〔待核〕众会赞叹，启请说法。法会安住，圆融次第，意犹未尽。"
+    narration_en: "[TBC] Assembly praises and requests teaching. Abiding in harmony, the progressive unfolding remains open."
+    narration_ref: "T10n0279 世主妙严品·卷五（一切世界海微塵供養）〔待核〕"
+    uncertainty: ["ending"]

@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 华严项目 — SQLite 数据读取模块
@@ -934,3 +935,94 @@ if __name__ == '__main__':
 
 
 
+
+def load_article_bi() -> dict[str, any]:
+    articles = {}
+    return articles
+
+
+
+def load_article_bi() -> dict[str, any]:
+    articles = {}
+    p_list = os.path.join(ROOT, 'data', 'translation', 'standalone_articles.yaml')
+    if os.path.exists(p_list):
+        try:
+            with open(p_list, 'r', encoding='utf-8') as f:
+                lst = yaml.safe_load(f) or {}
+            for k in ('sources', 'others'):
+                for a in lst.get(k, []):
+                    if isinstance(a, str):
+                        aid = a
+                    elif isinstance(a, dict):
+                        aid = a.get('id')
+                    else:
+                        aid = None
+                    if aid:
+                        articles[aid] = {}
+        except Exception:
+            pass
+    articles.setdefault('shizhu-miaoyan', {})
+    db_path = os.path.join(ROOT, 'data', 'catalog', 'huayan.db')
+    if os.path.exists(db_path):
+        try:
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            cur = conn.cursor()
+            cur.execute('SELECT article_id, payload_json, method_json, metrics_json, source, source_url, generated_by FROM article_bi_docs')
+            for r in cur.fetchall():
+                aid = r['article_id']
+                if aid in articles:
+                    payload = {}
+                    try:
+                        payload = json.loads(r['payload_json']) if r['payload_json'] else {}
+                    except Exception:
+                        payload = {}
+                    articles[aid] = payload
+            conn.close()
+        except Exception:
+            pass
+    if 'shizhu-miaoyan' in articles and not articles['shizhu-miaoyan']:
+        p2 = os.path.join(ROOT, 'data', 'translation', 'miaoyan_bi.yaml')
+        if os.path.exists(p2):
+            try:
+                with open(p2, 'r', encoding='utf-8') as f2:
+                    d = yaml.safe_load(f2) or {}
+                articles['shizhu-miaoyan'] = d
+            except Exception:
+                pass
+    return articles
+
+
+
+def load_miaoyan_narrative():
+    import os, yaml
+    DATA_DIR = os.path.join(ROOT, 'data')
+    p = os.path.join(DATA_DIR, 'narrative', 'miaoyan_narrative.yaml')
+    if not os.path.exists(p): return {}
+    with open(p, encoding='utf-8') as f2:
+        y = yaml.safe_load(f2) or {}
+    beats = y.get('beats') or []
+    beats_sorted = sorted(beats, key=lambda x: (x.get('order') if x.get('order') is not None else 999))
+    y['beats'] = beats_sorted
+    return y
+
+
+def load_miaoyan_keypoints():
+    """一品要点导览（data/narrative/miaoyan_keypoints.yaml）。
+
+    要点一律依 `idx` 排序，不依赖 YAML 书写次序——重排文件不应改变编次。
+    （注：字段名取 `idx` 而非 `no`——YAML 1.1 会将裸 `no` 解析为布尔键 False。）
+    实算要点数与总时长，供页面与校验器共用同一口径（免两处各算一遍而生歧）。
+    """
+    import os, yaml
+    DATA_DIR = os.path.join(ROOT, 'data')
+    p = os.path.join(DATA_DIR, 'narrative', 'miaoyan_keypoints.yaml')
+    if not os.path.exists(p): return {}
+    with open(p, encoding='utf-8') as f2:
+        y = yaml.safe_load(f2) or {}
+    kps = y.get('keypoints') or []
+    kps = sorted(kps, key=lambda x: (x.get('idx') if x.get('idx') is not None else 999))
+    y['keypoints'] = kps
+    y['keypoint_count'] = len(kps)
+    y['duration_total_s'] = sum(k.get('duration_s') or 0 for k in kps)
+    return y

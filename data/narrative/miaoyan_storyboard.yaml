@@ -1,0 +1,978 @@
+# 世主妙严品 · 电影式分镜数据（序/承/转/合 · 26 镜）
+# 一切引文逐字见于 CBETA T10n0279（八十华严·实叉难陀译）；本文件由脚本生成并附核验断言。
+# 空间关系/取景/运镜/光色氛围为现代视觉重构，凡此标 reconstruction: true 并附 judgment_zh。
+meta:
+  id: shizhu-miaoyan-storyboard
+  title_zh: 世主妙严品 · 电影式分镜
+  title_en: 'Adorning the World-Ruler: A Cinematic Storyboard'
+  subtitle_zh: 四幕二十六镜——序幕·承·转·合
+  subtitle_en: 'Four acts, twenty-six shots: Prelude, Assumption, Transition, Coda'
+  source_primary: CBETA T10n0279（八十华严·实叉难陀译）——本经唯一现行底本
+  source_ref: https://cbetaonline.dila.edu.tw/zh/T10n0279
+  spec_ref: 本设计依用户 2026-10-01 指示之「动画电影式分镜」规格（台账 L.94 ⑩-3）编排
+  tradition_zh: 佛教「變相圖／經變」传统以圖繪釋教義、構畫佛會之莊嚴；本分鏡與之可相比擬，然其形制與布局出于现代视觉重构，**非經變圖之复现**，不可混同。
+  tradition_en: Comparable to the bianxiang tu (經變) tradition of Buddhist pictorial exegesis, this storyboard
+    is nonetheless a modern visual reconstruction, not a reproduction of such images.
+  method_zh: 每镜之**要素**（地・樹・珠・殿・座・網・幢等）悉出底本，逐字可覆核；其**空间关系、取景、运镜、光色氛围**则属现代重构，凡此一律标〔本文判断〕，不冒充经文所陈。
+  method_en: Every element in every shot derives from the base text and can be verified word for word;
+    spatial relations, framing, camera moves and atmosphere are modern reconstruction, always marked as
+    editorial judgement.
+  uncertainty_zh: 经文所述为同时圆融之境，非时间先后。分镜之先后为阅读之便而设，不代表义理上的次第〔待考〕。四幕之界亦然。
+  uncertainty_en: The states described are simultaneous, not successive; the shot order is editorial (pending
+    verification).
+  reconstruction_flag_zh: 〔本文判断〕
+  reconstruction_flag_en: '[Editorial judgement]'
+shot_sizes:
+  ews:
+    zh: 大远景
+    en: Extreme wide shot
+    zoom: 1.0
+  ws:
+    zh: 远景
+    en: Wide shot
+    zoom: 0.68
+  ms:
+    zh: 中景
+    en: Medium shot
+    zoom: 0.44
+  cu:
+    zh: 近景
+    en: Close shot
+    zoom: 0.26
+  ecu:
+    zh: 大特写
+    en: Extreme close-up
+    zoom: 0.15
+camera_moves:
+  static:
+    zh: 固定
+    en: Static
+    drift:
+    - 0
+    - 0
+    - 0
+  push:
+    zh: 推近
+    en: Push in
+    drift:
+    - 0.62
+    - 0
+    - -0.14
+  pull:
+    zh: 拉远
+    en: Pull back
+    drift:
+    - -0.62
+    - 0
+    - 0.14
+  pan_left:
+    zh: 左横移
+    en: Pan left
+    drift:
+    - 0
+    - -0.52
+    - 0
+  pan_right:
+    zh: 右横移
+    en: Pan right
+    drift:
+    - 0
+    - 0.52
+    - 0
+  tilt_up:
+    zh: 上摇
+    en: Tilt up
+    drift:
+    - 0
+    - 0
+    - -0.46
+  tilt_down:
+    zh: 下摇
+    en: Tilt down
+    drift:
+    - 0
+    - 0
+    - 0.46
+  orbit:
+    zh: 环绕
+    en: Orbit
+    drift:
+    - 0.4
+    - 0.4
+    - -0.1
+corrections:
+- 'no': 1
+  zh: 普賢入三昧在卷五开篇（已移入合幕第 23 镜）；卷一仅作列名上首（第 16 镜）
+  en: Samantabhadra's entry into the samadhi is at the opening of fascicle 5 (shot 23); in fascicle 1
+    he appears only as first among the named (shot 16).
+- 'no': 2
+  zh: 卷五内「迴向」0 次，「卷末回向」不成立，合幕改为「卷末頌別」
+  en: The word 迴向 occurs zero times in fascicle 5; the planned "closing dedication" does not exist, so
+    the coda closes with a verse.
+- 'no': 3
+  zh: 「四十類雲集」真锚点在卷二开篇「眾海悉已雲集」（置于承幕第 17 镜），非卷末
+  en: The true anchor for "the forty classes gathered" is at the opening of fascicle 2 (shot 17), not
+    the end.
+acts:
+- 'no': 序
+  id: prelude
+  layout: buddhafield
+  title_zh: 序幕 · 正觉所现之境庄严
+  title_en: 'Prelude: The Adornment Manifested at Awakening'
+  fascicle_zh: 卷一（品首）
+  fascicle_en: Fascicle 1
+  lead_zh: 一時，佛在摩竭提國阿蘭若法菩提場中，始成正覺。
+  lead_en: At one time, the Buddha, in the Place of Enlightenment at Araññavipṛśa in Magadha, attained
+    perfect awakening.
+  props:
+  - id: ground
+    kind: ground
+    label_zh: 地·堅固
+    label_en: Ground, solid
+    quote_zh: 其地堅固，金剛所成
+    quote_en: The ground is solid, made of vajra.
+    level: 0
+  - id: wheel
+    kind: wheel
+    label_zh: 上妙寶輪
+    label_en: Wondrous jeweled wheel
+    quote_zh: 上妙寶輪，及眾寶華、清淨摩尼，以為嚴飾
+    quote_en: Above it a wondrous jeweled wheel, with jeweled blossoms and pure jewels as adornment.
+    level: 0
+  - id: blossom
+    kind: lotus
+    label_zh: 眾寶華
+    label_en: Jeweled blossoms
+    quote_zh: 眾寶華、清淨摩尼，以為嚴飾
+    quote_en: Jeweled blossoms and pure jewels serve as adornment.
+    level: 0
+  - id: mani
+    kind: jewel
+    label_zh: 清淨摩尼
+    label_en: Pure maṇi jewel
+    quote_zh: 眾寶華、清淨摩尼，以為嚴飾
+    quote_en: Jeweled blossoms and pure jewels serve as adornment.
+    level: 0
+  - id: formsea
+    kind: lightsea
+    label_zh: 諸色相海
+    label_en: Sea of forms and colors
+    quote_zh: 諸色相海，無邊顯現
+    quote_en: Seas of forms and colors appear without bound.
+    level: 0
+  - id: banner
+    kind: banner
+    label_zh: 摩尼為幢
+    label_en: Maṇi as banner
+    quote_zh: 摩尼為幢，常放光明，恒出妙音
+    quote_en: A maṇi banner, constantly radiating light, forever emitting wondrous sound.
+    level: 1
+  - id: net
+    kind: net
+    label_zh: 眾寶羅網
+    label_en: Jeweled net
+    quote_zh: 眾寶羅網，妙香華纓，周匝垂布
+    quote_en: A jeweled net and scented blossom-garlands hang all around.
+    level: 1
+  - id: garland
+    kind: cloud
+    label_zh: 妙香華纓
+    label_en: Scented blossom-garlands
+    quote_zh: 眾寶羅網，妙香華纓，周匝垂布
+    quote_en: A jeweled net and scented blossom-garlands hang all around.
+    level: 1
+  - id: maniking
+    kind: jewelrain
+    label_zh: 摩尼寶王
+    label_en: Maṇi jewel-king
+    quote_zh: 摩尼寶王，變現自在，雨無盡寶及眾妙華分散於地
+    quote_en: The maṇi jewel-king manifests freely, raining endless jewels and wondrous blossoms upon
+      the ground.
+    level: 0
+  - id: trees
+    kind: tree
+    label_zh: 寶樹行列
+    label_en: Rows of jeweled trees
+    quote_zh: 寶樹行列，枝葉光茂
+    quote_en: Jeweled trees stand in rows, their branches and leaves luminous and flourishing.
+    level: 0
+  - id: bodhi
+    kind: tree
+    label_zh: 菩提樹
+    label_en: The Bodhi Tree
+    quote_zh: 其菩提樹高顯殊特：金剛為身，瑠璃為幹
+    quote_en: 'Its bodhi tree, tall and singular: vajra for its body, lapis lazuli for its trunk.'
+    level: 0
+    role: focus
+  - id: bodhi_trunk
+    kind: trunk
+    label_zh: 瑠璃為幹
+    label_en: Lapis lazuli trunk
+    quote_zh: 其菩提樹高顯殊特：金剛為身，瑠璃為幹
+    quote_en: Vajra for its body, lapis lazuli for its trunk.
+    level: 1
+  - id: bodhi_branch
+    kind: branch
+    label_zh: 寶為枝條・寶葉扶踈
+    label_en: Jewel branches, jewel leaves
+    quote_zh: 眾雜妙寶以為枝條；寶葉扶踈，垂蔭如雲
+    quote_en: Assorted wondrous jewels for its branches; jewel-leaves support and spread, hanging shade
+      like clouds.
+    level: 2
+  - id: bodhi_fruit
+    kind: jewel
+    label_zh: 寶華雜色・摩尼為果
+    label_en: Jewel blossoms, maṇi fruit
+    quote_zh: 寶華雜色，分枝布影，復以摩尼而為其果，含輝發焰
+    quote_en: Jewel-blossoms of varied colors, branching and casting shadows; and maṇi jewels for its
+      fruit, holding radiance, emitting flames.
+    level: 3
+  - id: bodhi_inner
+    kind: assembly
+    label_zh: 寶內諸菩薩如雲
+    label_en: Bodhisattvas within, a cloud
+    quote_zh: 摩尼寶內，有諸菩薩，其眾如雲，俱時出現
+    quote_en: Within the maṇi jewels there are bodhisattvas, a host like clouds, appearing all at once.
+    level: 3
+  - id: bodhi_sound
+    kind: sound
+    label_zh: 恒出妙音
+    label_en: Ever-sounding wondrous tone
+    quote_zh: 其菩提樹恒出妙音，說種種法，無有盡極
+    quote_en: The bodhi tree forever emits wondrous sound, speaking all manner of Dharma without end.
+    level: 1
+  - id: palace
+    kind: palace
+    label_zh: 宮殿樓閣
+    label_en: Palace and mansions
+    quote_zh: 如來所處宮殿樓閣，廣博嚴麗充遍十方
+    quote_en: The palace and mansions where the Tathāgata abides are spacious and stately, filling the
+      ten directions.
+    level: 0
+  - id: adorn
+    kind: lightstream
+    label_zh: 莊嚴具流光成幢
+    label_en: Adornments streaming light into banners
+    quote_zh: 諸莊嚴具流光如雲，從宮殿間萃影成幢
+    quote_en: All adornments stream light like clouds; their shadows gather from between the mansions
+      into banners.
+    level: 1
+  - id: manicloud
+    kind: cloudpair
+    label_zh: 摩尼光雲
+    label_en: Clouds of maṇi light
+    quote_zh: 摩尼光雲，互相照耀；十方諸佛，化現珠玉
+    quote_en: Clouds of maṇi light illuminate one another; the Buddhas of the ten directions manifest
+      as pearls and gems.
+    level: 1
+  - id: seat
+    kind: seat
+    label_zh: 師子座
+    label_en: The Lion Throne
+    quote_zh: 其師子座，高廣妙好：摩尼為臺，蓮華為網
+    quote_en: 'His lion throne, tall and broad: maṇi for its platform, lotus for its net.'
+    level: 0
+  - id: seat_detail
+    kind: hall
+    label_zh: 堂榭階砌戶牖
+    label_en: Halls, steps, doors and windows
+    quote_zh: 堂榭、樓閣、階砌、戶牖，凡諸物像，備體莊嚴
+    quote_en: Halls, pavilions, towers, steps, terraces, doors and windows — every form is fully adorned.
+    level: 1
+  - id: awake
+    kind: sun
+    label_zh: 成最正覺
+    label_en: Perfect awakening
+    quote_zh: 於一切法成最正覺
+    quote_en: He attained the unsurpassed right awakening to all phenomena.
+    level: 0
+  - id: void
+    kind: void
+    label_zh: 虛空譬
+    label_en: Simile of space
+    quote_zh: 譬如虛空具含眾像，於諸境界無所分別
+    quote_en: Like space, which contains all images and distinguishes no realms.
+    level: 0
+  - id: hairtip
+    kind: hairtip
+    label_zh: 毛端容世界
+    label_en: All worlds in a hair-tip
+    quote_zh: 一一毛端，悉能容受一切世界而無障礙
+    quote_en: In each single hair-tip he contains all worlds without obstruction.
+    level: 0
+  shots:
+  - 'no': 1
+    size: ews
+    move: static
+    duration_s: 5.0
+    subject: null
+    focus:
+    - ground
+    - wheel
+    - blossom
+    - mani
+    - trees
+    subtitle_zh: 菩提場全境：地・寶輪・寶華摩尼・寶樹行列
+    subtitle_en: 'The whole Place of Enlightenment: ground, jeweled wheel, blossoms and jewels, rows of
+      trees'
+    quote_zh: 一時，佛在摩竭提國阿蘭若法菩提場中，始成正覺。
+    quote_en: At one time, the Buddha, in the Place of Enlightenment at Araññavipṛśa in Magadha, attained
+      perfect awakening.
+    ref: T10n0279 卷一·品首
+    reconstruction: true
+    judgment_zh: 摩竭提国之地理氛围、方位与光色皆为意象性补足；经文唯言「佛在……菩提場中，始成正覺」，未描摹环境。
+  - 'no': 2
+    size: ews
+    move: push
+    duration_s: 4.5
+    subject: ground
+    focus:
+    - ground
+    - wheel
+    subtitle_zh: 其地堅固，金剛所成；上妙寶輪
+    subtitle_en: The ground is solid, made of vajra; above it, a wondrous jeweled wheel
+    quote_zh: 其地堅固，金剛所成
+    quote_en: The ground is solid, made of vajra.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 3
+    size: ws
+    move: pan_right
+    duration_s: 4.0
+    subject: blossom
+    focus:
+    - blossom
+    - mani
+    - wheel
+    subtitle_zh: 眾寶華、清淨摩尼，以為嚴飾
+    subtitle_en: Jeweled blossoms and pure jewels serve as its adornment
+    quote_zh: 眾寶華、清淨摩尼，以為嚴飾
+    quote_en: Jeweled blossoms and pure jewels serve as adornment.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 4
+    size: ws
+    move: pull
+    duration_s: 4.0
+    subject: formsea
+    focus:
+    - formsea
+    subtitle_zh: 諸色相海，無邊顯現
+    subtitle_en: Seas of forms and colors appear without bound
+    quote_zh: 諸色相海，無邊顯現
+    quote_en: Seas of forms and colors appear without bound.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 5
+    size: ms
+    move: tilt_up
+    duration_s: 4.5
+    subject: banner
+    focus:
+    - banner
+    - net
+    subtitle_zh: 摩尼為幢，常放光明，恒出妙音
+    subtitle_en: A maṇi banner, constantly radiating light, forever emitting wondrous sound
+    quote_zh: 摩尼為幢，常放光明，恒出妙音
+    quote_en: A maṇi banner, constantly radiating light, forever emitting wondrous sound.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 6
+    size: ms
+    move: orbit
+    duration_s: 4.5
+    subject: net
+    focus:
+    - net
+    - garland
+    subtitle_zh: 眾寶羅網，妙香華纓，周匝垂布
+    subtitle_en: A jeweled net and scented blossom-garlands hang all around
+    quote_zh: 眾寶羅網，妙香華纓，周匝垂布
+    quote_en: A jeweled net and scented blossom-garlands hang all around.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 7
+    size: ws
+    move: push
+    duration_s: 4.0
+    subject: maniking
+    focus:
+    - maniking
+    - ground
+    subtitle_zh: 摩尼寶王，變現自在，雨無盡寶及眾妙華分散於地
+    subtitle_en: The maṇi jewel-king manifests freely, raining endless jewels and wondrous blossoms on
+      the ground
+    quote_zh: 摩尼寶王，變現自在，雨無盡寶及眾妙華分散於地
+    quote_en: The maṇi jewel-king manifests freely, raining endless jewels and wondrous blossoms upon
+      the ground.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 8
+    size: ws
+    move: push
+    duration_s: 5.0
+    subject: bodhi
+    focus:
+    - bodhi
+    - trees
+    subtitle_zh: 菩提樹高顯殊特：金剛為身，瑠璃為幹
+    subtitle_en: 'The bodhi tree, tall and singular: vajra for its body, lapis lazuli for its trunk'
+    quote_zh: 其菩提樹高顯殊特：金剛為身，瑠璃為幹
+    quote_en: 'Its bodhi tree, tall and singular: vajra for its body, lapis lazuli for its trunk.'
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 9
+    size: cu
+    move: tilt_up
+    duration_s: 4.5
+    subject: bodhi_branch
+    focus:
+    - bodhi_trunk
+    - bodhi_branch
+    subtitle_zh: 眾雜妙寶以為枝條；寶葉扶踈，垂蔭如雲
+    subtitle_en: Assorted jewels for its branches; jewel-leaves spread, hanging shade like clouds
+    quote_zh: 眾雜妙寶以為枝條；寶葉扶踈，垂蔭如雲
+    quote_en: Assorted wondrous jewels for its branches; jewel-leaves support and spread, hanging shade
+      like clouds.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 10
+    size: ecu
+    move: static
+    duration_s: 4.0
+    subject: bodhi_fruit
+    focus:
+    - bodhi_fruit
+    subtitle_zh: 寶華雜色，分枝布影；復以摩尼而為其果，含輝發焰
+    subtitle_en: Jewel-blossoms of varied hues; and maṇi jewels for its fruit, holding radiance, emitting
+      flames
+    quote_zh: 寶華雜色，分枝布影，復以摩尼而為其果，含輝發焰，與華間列
+    quote_en: Jewel-blossoms of varied colors, branching and casting shadows; and maṇi jewels for its
+      fruit, holding radiance and emitting flames, set among the blossoms.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 11
+    size: ms
+    move: orbit
+    duration_s: 5.0
+    subject: bodhi_inner
+    focus:
+    - bodhi_inner
+    - bodhi_sound
+    subtitle_zh: 光明中雨摩尼寶，寶內諸菩薩如雲俱時出現；樹恒出妙音
+    subtitle_en: Within the light it rains maṇi jewels; within them bodhisattvas appear like clouds; the
+      tree forever sounds
+    quote_zh: 其樹周圍咸放光明，於光明中雨摩尼寶，摩尼寶內，有諸菩薩，其眾如雲，俱時出現
+    quote_en: All around it radiates light, and within that light it rains maṇi jewels; within the maṇi
+      jewels there are bodhisattvas, a host like clouds, appearing all at once.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 12
+    size: ws
+    move: pull
+    duration_s: 5.0
+    subject: palace
+    focus:
+    - palace
+    - adorn
+    - manicloud
+    subtitle_zh: 宮殿樓閣充遍十方；莊嚴具流光如雲，萃影成幢
+    subtitle_en: Palace and mansions fill the ten directions; adornments stream light, shadows gathering
+      into banners
+    quote_zh: 如來所處宮殿樓閣，廣博嚴麗充遍十方
+    quote_en: The palace and mansions where the Tathāgata abides are spacious and stately, filling the
+      ten directions.
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+  - 'no': 13
+    size: ms
+    move: push
+    duration_s: 5.0
+    subject: seat
+    focus:
+    - seat
+    - seat_detail
+    - manicloud
+    subtitle_zh: 師子座高廣妙好：摩尼為臺，蓮華為網，妙寶為輪，雜華作瓔珞
+    subtitle_en: 'The lion throne, tall and broad: maṇi platform, lotus net, jeweled wheels, blossom necklaces'
+    quote_zh: 其師子座，高廣妙好：摩尼為臺，蓮華為網
+    quote_en: 'His lion throne, tall and broad: maṇi for its platform, lotus for its net.'
+    ref: T10n0279 卷一·品首
+    reconstruction: false
+- 'no': 承
+  id: assumption
+  layout: assembly
+  title_zh: 承 · 正觉广大 · 众海云集
+  title_en: 'Assumption: The Vastness of Awakening, the Assembly Gathered'
+  fascicle_zh: 卷一末–卷二
+  fascicle_en: End of fascicle 1 – fascicle 2
+  lead_zh: 其身充滿一切世間，其音普順十方國土。
+  lead_en: His body fills all the worlds; his voice accords with all lands of the ten directions.
+  props:
+  - id: awake
+    kind: sun
+    label_zh: 成最正覺
+    label_en: Perfect awakening
+    quote_zh: 於一切法成最正覺
+    quote_en: He attained the unsurpassed right awakening to all phenomena.
+    level: 0
+  - id: void
+    kind: void
+    label_zh: 虛空具含眾像
+    label_en: Space containing all images
+    quote_zh: 譬如虛空具含眾像，於諸境界無所分別
+    quote_en: Like space, which contains all images and distinguishes no realms.
+    level: 0
+  - id: hairtip
+    kind: hairtip
+    label_zh: 毛端悉容世界
+    label_en: All worlds within a hair-tip
+    quote_zh: 一一毛端，悉能容受一切世界而無障礙
+    quote_en: In each single hair-tip he contains all worlds without obstruction.
+    level: 0
+  - id: onemind
+    kind: void
+    label_zh: 一念悉包法界
+    label_en: In one thought, all of dharmadhātu
+    quote_zh: 又以諸佛神力所加，一念之間，悉包法界
+    quote_en: And by the power of the Buddhas, in a single moment he embraces all of dharmadhātu.
+    level: 0
+  - id: dwellings
+    kind: assembly
+    label_zh: 眾生屋宅皆現影像
+    label_en: Dwellings of beings appear within
+    quote_zh: 一切眾生居處屋宅，皆於此中現其影像
+    quote_en: The dwellings of all sentient beings all appear within it.
+    level: 1
+  - id: samantabhadra
+    kind: seat
+    label_zh: 普賢菩薩（十首之首）
+    label_en: Samantabhadra, first of the ten
+    quote_zh: 其名曰：普賢菩薩摩訶薩
+    quote_en: 'Their names are: Samantabhadra Bodhisattva, and the rest.'
+    level: 0
+    role: focus
+  - id: vajraspirit
+    kind: ring
+    label_zh: 執金剛神
+    label_en: Vajra-holding spirits
+    quote_zh: 復有佛世界微塵數執金剛神
+    quote_en: There are further a dust-mote number of vajra-holding spirits.
+    level: 0
+  - id: cloudsea
+    kind: assembly
+    label_zh: 道場眾海悉已雲集
+    label_en: The ocean of the field has gathered
+    quote_zh: 爾時，如來道場眾海，悉已雲集
+    quote_en: Then the ocean of the assembly at the Tathāgata's field had fully gathered.
+    level: 0
+    role: focus
+  - id: variety
+    kind: assembly
+    label_zh: 形色部從各各差別
+    label_en: Forms and colors, each distinct
+    quote_zh: 無邊品類，周匝遍滿；形色部從，各各差別
+    quote_en: Boundless in kind, filling all around; in form and color and array, each distinctly its
+      own.
+    level: 0
+  - id: gaze
+    kind: assembly
+    label_zh: 隨所來方一心瞻仰
+    label_en: Each facing the World-Honored One
+    quote_zh: 隨所來方，親近世尊，一心瞻仰
+    quote_en: Coming from whatever direction, they draw near the World-Honored One and gaze on him with
+      one mind.
+    level: 0
+  - id: purity
+    kind: light
+    label_zh: 摧重障山見佛無礙
+    label_en: The mountain of great obstacles shattered
+    quote_zh: 此諸眾會，已離一切煩惱心垢及其餘習，摧重障山，見佛無礙
+    quote_en: These assemblies had already left all mental defilement of passions and their residue, had
+      shattered the mountain of great obstacles, and see the Buddha without hindrance.
+    level: 0
+  - id: heavens
+    kind: ring
+    label_zh: 天王得解脫門
+    label_en: Celestial kings enter the liberations
+    quote_zh: 妙焰海大自在天王，得法界、虛空界寂靜方便力解脫門
+    quote_en: Maitreya-of-the-wondrous-sea, the Great Free One, obtained the liberation-door of the still
+      and easy power of the dharmadhātu and the empty realm.
+    level: 0
+  shots:
+  - 'no': 14
+    size: ecu
+    move: static
+    duration_s: 4.5
+    subject: awake
+    focus:
+    - awake
+    subtitle_zh: 爾時，世尊處于此座，於一切法成最正覺
+    subtitle_en: Then, seated on this throne, the World-Honored One attained the unsurpassed right awakening
+      to all phenomena
+    quote_zh: 於一切法成最正覺
+    quote_en: He attained the unsurpassed right awakening to all phenomena.
+    ref: T10n0279 卷一·世尊處座
+    reconstruction: false
+  - 'no': 15
+    size: ews
+    move: pull
+    duration_s: 5.0
+    subject: void
+    focus:
+    - void
+    - hairtip
+    - onemind
+    subtitle_zh: 譬如虛空具含眾像；一一毛端，悉能容受一切世界
+    subtitle_en: Like space containing all images; in each hair-tip, all worlds
+    quote_zh: 譬如虛空具含眾像，於諸境界無所分別
+    quote_en: Like space, which contains all images and distinguishes no realms.
+    ref: T10n0279 卷一·正覺段
+    reconstruction: false
+  - 'no': 16
+    size: ws
+    move: push
+    duration_s: 4.5
+    subject: samantabhadra
+    focus:
+    - samantabhadra
+    - vajraspirit
+    subtitle_zh: 普賢菩薩摩訶薩為十首之首；復有執金剛神
+    subtitle_en: Samantabhadra heads the ten foremost; and there are the vajra-holding spirits
+    quote_zh: 有十佛世界微塵數菩薩摩訶薩所共圍遶，其名曰：普賢菩薩摩訶薩
+    quote_en: 'Surrounded by a dust-mote number of bodhisattvas from ten Buddha-worlds, whose names are:
+      Samantabhadra Bodhisattva...'
+    ref: T10n0279 卷一·菩薩列名
+    reconstruction: false
+  - 'no': 17
+    size: ews
+    move: pull
+    duration_s: 5.5
+    subject: cloudsea
+    focus:
+    - cloudsea
+    - variety
+    - gaze
+    - purity
+    - heavens
+    subtitle_zh: 如來道場眾海，悉已雲集；形色部從，各各差別，隨所來方，一心瞻仰
+    subtitle_en: The ocean of the assembly at the field has gathered; each from its own direction, gazing
+      with one mind
+    quote_zh: 爾時，如來道場眾海，悉已雲集；無邊品類，周匝遍滿；形色部從，各各差別；隨所來方，親近世尊，一心瞻仰
+    quote_en: Then the ocean of the assembly at the Tathāgata's field had fully gathered; boundless in
+      kind, filling all around; in form and color and array, each distinctly its own; coming from whatever
+      direction, they drew near the World-Honored One and gazed on him with one mind.
+    ref: T10n0279 卷二·品首
+    reconstruction: false
+- 'no': 转
+  id: transition
+  layout: classes
+  title_zh: 转 · 逐类陈愿
+  title_en: 'Transition: Vows Uttered Class by Class'
+  fascicle_zh: 卷一–卷四
+  fascicle_en: Fascicles 1–4
+  lead_zh: 皆於往昔無量劫中恒發大願，願常親近供養諸佛
+  lead_en: In past eons without number they constantly formed great vows, wishing always to draw near
+    and make offerings to the Buddhas.
+  props:
+  - id: bodyspirit
+    kind: ring
+    label_zh: 身眾神
+    label_en: Body-spirits
+    quote_zh: 有佛世界微塵數身眾神
+    quote_en: There are a dust-mote number of body-spirits.
+    level: 0
+  - id: footspirit
+    kind: ring
+    label_zh: 足行神
+    label_en: Foot-walking spirits
+    quote_zh: 有佛世界微塵數足行神
+    quote_en: There are a dust-mote number of foot-walking spirits.
+    level: 0
+  - id: fieldspirit
+    kind: ring
+    label_zh: 道場神
+    label_en: Field spirits
+    quote_zh: 復有佛世界微塵數道場神
+    quote_en: There are further a dust-mote number of field-spirits.
+    level: 0
+  - id: cityspirit
+    kind: ring
+    label_zh: 主城神
+    label_en: City-spirits
+    quote_zh: 復有佛世界微塵數主城神
+    quote_en: There are a dust-mote number of city-spirits.
+    level: 0
+  - id: earthspirit
+    kind: ring
+    label_zh: 主地神
+    label_en: Earth-spirits
+    quote_zh: 復有佛世界微塵數主地神
+    quote_en: There are a dust-mote number of earth-spirits.
+    level: 0
+  - id: mountainspirit
+    kind: ring
+    label_zh: 主山神
+    label_en: Mountain-spirits
+    quote_zh: 復有無量主山神
+    quote_en: There are further countless mountain-spirits.
+    level: 0
+  - id: forestspirit
+    kind: ring
+    label_zh: 主林神
+    label_en: Forest-spirits
+    quote_zh: 復有不可思議數主林神
+    quote_en: There are further inconceivable numbers of forest-spirits.
+    level: 0
+  - id: herbspirit
+    kind: ring
+    label_zh: 主藥神
+    label_en: Herb-spirits
+    quote_zh: 復有無量主藥神
+    quote_en: There are further countless herb-spirits.
+    level: 0
+  - id: gandharva
+    kind: ring
+    label_zh: 持國乾闥婆王
+    label_en: The gandharva king Dhrtarastra
+    quote_zh: 復次，持國乾闥婆王，得自在方便攝一切眾生解脫門
+    quote_en: Then King Dhrtarastra the gandharva obtained the liberation-door of the self-wielding expedient
+      that gathers all beings.
+    level: 0
+    role: focus
+  - id: firegod
+    kind: ring
+    label_zh: 普光焰藏主火神
+    label_en: The fire-spirit Praphu-rakshita
+    quote_zh: 復次，普光焰藏主火神，得悉除一切世間闇解脫門
+    quote_en: Then the fire-spirit Great Light Flame-Treasure obtained the liberation-door of totally
+      removing the darkness of the world.
+    level: 0
+    role: focus
+  - id: vow1
+    kind: light
+    label_zh: 同修福業
+    label_en: Practicing virtue together
+    quote_zh: 皆於往昔發深重願，願常親近諸佛如來，同修福業
+    quote_en: In past lives they formed profound vows, wishing always to draw near the Buddhas and practice
+      virtue together.
+    level: 0
+  - id: vow2
+    kind: light
+    label_zh: 嚴淨如來所居宮殿
+    label_en: Purifying the Buddha's abiding palace
+    quote_zh: 皆於無量不思議劫，嚴淨如來所居宮殿
+    quote_en: Throughout countless inconceivable eons they purify the palace wherein the Tathāgata abides.
+    level: 0
+  - id: vow3
+    kind: light
+    label_zh: 性皆離垢，仁慈祐物
+    label_en: Free of defilement, benign toward beings
+    quote_zh: 其數無量，性皆離垢，仁慈祐物
+    quote_en: Their number is countless; all are free of defilement, benign and assisting beings.
+    level: 0
+  shots:
+  - 'no': 18
+    size: ms
+    move: pan_right
+    duration_s: 4.0
+    subject: bodyspirit
+    focus:
+    - bodyspirit
+    - footspirit
+    subtitle_zh: 身眾神、足行神：親近如來，隨逐不捨
+    subtitle_en: 'Body-spirits and foot-walking spirits: following the Buddha unfailingly'
+    quote_zh: 有佛世界微塵數身眾神
+    quote_en: There are a dust-mote number of body-spirits.
+    ref: T10n0279 卷一·列名
+    reconstruction: false
+  - 'no': 19
+    size: ms
+    move: pan_left
+    duration_s: 4.0
+    subject: fieldspirit
+    focus:
+    - fieldspirit
+    - cityspirit
+    - earthspirit
+    subtitle_zh: 道場神、主城神、主地神：嚴淨宮殿，同修福業
+    subtitle_en: 'Field-, city- and earth-spirits: purifying the palace, practicing virtue together'
+    quote_zh: 皆於無量不思議劫，嚴淨如來所居宮殿
+    quote_en: Throughout countless inconceivable eons they purify the palace wherein the Tathāgata abides.
+    ref: T10n0279 卷一·主城神
+    reconstruction: false
+  - 'no': 20
+    size: ws
+    move: pan_right
+    duration_s: 4.5
+    subject: mountainspirit
+    focus:
+    - mountainspirit
+    - forestspirit
+    - herbspirit
+    subtitle_zh: 主山神、主林神、主藥神：性皆離垢，仁慈祐物
+    subtitle_en: 'Mountain-, forest- and herb-spirits: all free of defilement, benign to beings'
+    quote_zh: 其數無量，性皆離垢，仁慈祐物
+    quote_en: Their number is countless; all are free of defilement, benign and assisting beings.
+    ref: T10n0279 卷一·主藥神
+    reconstruction: false
+  - 'no': 21
+    size: ws
+    move: push
+    duration_s: 4.5
+    subject: gandharva
+    focus:
+    - gandharva
+    subtitle_zh: 持國乾闥婆王得自在方便攝一切眾生解脫門
+    subtitle_en: King Dhrtarastra the gandharva obtained the liberation-door of gathering all beings
+    quote_zh: 復次，持國乾闥婆王，得自在方便攝一切眾生解脫門
+    quote_en: Then King Dhrtarastra the gandharva obtained the liberation-door of the self-wielding expedient
+      that gathers all beings.
+    ref: T10n0279 卷三·品首
+    reconstruction: false
+  - 'no': 22
+    size: ws
+    move: push
+    duration_s: 4.5
+    subject: firegod
+    focus:
+    - firegod
+    subtitle_zh: 普光焰藏主火神得悉除一切世間闇解脫門
+    subtitle_en: The fire-spirit Great Light Flame-Treasure obtained the liberation-door of removing all
+      worldly darkness
+    quote_zh: 復次，普光焰藏主火神，得悉除一切世間闇解脫門
+    quote_en: Then the fire-spirit Great Light Flame-Treasure obtained the liberation-door of totally
+      removing the darkness of the world.
+    ref: T10n0279 卷四·品首
+    reconstruction: false
+- 'no': 合
+  id: coda
+  layout: mandala
+  title_zh: 合 · 普贤入三昧 · 四十类总现 · 卷末颂别
+  title_en: 'Coda: Samantabhadra Enters the Ocean of Merit, the Forty Classes Appear, the Final Verse'
+  fascicle_zh: 卷五
+  fascicle_en: Fascicle 5
+  lead_zh: 復次，普賢菩薩摩訶薩，入不思議解脫門方便海，入如來功德海。
+  lead_en: Then Samantabhadra Bodhisattva entered the ocean of the inconceivable liberation-doors and
+    expedients, and the ocean of the Buddhas's merits.
+  note_zh: 【据回源更正】台账 L.94⑩-3 原拟「合（四十类云集·卷末回向）」。实测卷五内「迴向」二字为 0 次，卷五以妙色那羅延執金剛神之頌收束（「…示佛所行處。」），故不作回向；「四十类云集」之真锚点为卷二开篇「眾海悉已雲集」（已置于承幕第
+    17 镜）。
+  note_en: 'Correction: the originally planned "closing dedication" does not exist — the word 迴向 occurs
+    zero times in fascicle 5, which closes instead with the verse of the vajra-holding spirit Vimalaprabha.'
+  props:
+  - id: samantabhadra
+    kind: seat
+    label_zh: 普賢菩薩入三昧
+    label_en: Samantabhadra enters the samadhi
+    quote_zh: 復次，普賢菩薩摩訶薩，入不思議解脫門方便海，入如來功德海
+    quote_en: Then Samantabhadra Bodhisattva entered the ocean of the inconceivable liberation-doors and
+      expedients, and the ocean of the Buddhas's merits.
+    level: 0
+    role: focus
+  - id: gate1
+    kind: gate
+    label_zh: 嚴淨一切佛國土
+    label_en: Purifying all Buddhaland
+    quote_zh: 有解脫門，名：嚴淨一切佛國土調伏眾生令究竟出離
+    quote_en: 'There is a liberation-door named: purifying all Buddhaland and taming sentient beings,
+      bringing them to final release.'
+    level: 1
+  - id: gate2
+    kind: gate
+    label_zh: 普現微塵數無量身
+    label_en: Manifesting countless bodies
+    quote_zh: 有解脫門，名：普現法界微塵數無量身
+    quote_en: 'There is a liberation-door named: universally manifesting countless bodiless bodies.'
+    level: 1
+  - id: gate3
+    kind: gate
+    label_zh: 一念現三世劫成壞
+    label_en: A moment containing aeons
+    quote_zh: 有解脫門，名：一念中現三世劫成壞事
+    quote_en: 'There is a liberation-door named: within a single moment, manifesting the arising and perishing
+      of aeons across the three times.'
+    level: 1
+  - id: gaze_all
+    kind: assembly
+    label_zh: 普觀一切眾會海
+    label_en: Surveying the whole ocean of assemblies
+    quote_zh: 普觀一切眾會海已，即說頌言
+    quote_en: Having surveyed the whole ocean of assemblies, he spoke this verse.
+    level: 0
+  - id: mandala
+    kind: mandala
+    label_zh: 四十類雲集（曼荼羅全景）
+    label_en: The forty classes gathered (mandala view)
+    quote_zh: 爾時，如來道場眾海，悉已雲集
+    quote_en: Then the ocean of the assembly at the Tathāgata's field had fully gathered.
+    level: 0
+    rings_ref: miaoyan_narrative.yaml:space.rings
+  - id: final
+    kind: sound
+    label_zh: 卷末頌：示佛所行處
+    label_en: 'Final verse: showing where the Buddha walks'
+    quote_zh: 焰雲普照明，種種光圓滿，法界無不及，示佛所行處
+    quote_en: Flame-clouds shine everywhere, all lights made full, nothing of dharmadhātu unreached —
+      showing where the Buddha walks.
+    level: 0
+    role: focus
+  shots:
+  - 'no': 23
+    size: ms
+    move: push
+    duration_s: 5.0
+    subject: samantabhadra
+    focus:
+    - samantabhadra
+    subtitle_zh: 普賢菩薩摩訶薩，入不思議解脫門方便海，入如來功德海
+    subtitle_en: Samantabhadra entered the ocean of inconceivable liberation-doors and the ocean of merit
+    quote_zh: 復次，普賢菩薩摩訶薩，入不思議解脫門方便海，入如來功德海
+    quote_en: Then Samantabhadra Bodhisattva entered the ocean of the inconceivable liberation-doors and
+      expedients, and the ocean of the Buddhas's merits.
+    ref: T10n0279 卷五·品首
+    reconstruction: false
+  - 'no': 24
+    size: ws
+    move: orbit
+    duration_s: 5.0
+    subject: gate1
+    focus:
+    - gate1
+    - gate2
+    - gate3
+    - gaze_all
+    subtitle_zh: 十解脫門；普觀一切眾會海已，即說頌言
+    subtitle_en: The ten liberation-doors; having surveyed all assemblies, he spoke verse
+    quote_zh: 普觀一切眾會海已，即說頌言
+    quote_en: Having surveyed the whole ocean of assemblies, he spoke this verse.
+    ref: T10n0279 卷五·普賢頌
+    reconstruction: false
+  - 'no': 25
+    size: ews
+    move: static
+    duration_s: 6.0
+    subject: mandala
+    focus:
+    - mandala
+    subtitle_zh: 四十類雲集——六環曼荼羅全景（40 類／414 名）
+    subtitle_en: The forty classes gathered — the six-ring mandala in full (40 classes / 414 named)
+    quote_zh: 爾時，如來道場眾海，悉已雲集
+    quote_en: Then the ocean of the assembly at the Tathāgata's field had fully gathered.
+    ref: T10n0279 卷二·品首（钟位数据依 miaoyan_assembly.yaml）
+    reconstruction: true
+    judgment_zh: 曼荼罗六环之环数、环距、环位及各类之代表点分布，属现代重构；经文唯言「眾海悉已雲集」「無邊品類」，未陈方位与排列。四十类／414名之数则出 assembly 实测。
+  - 'no': 26
+    size: ecu
+    move: static
+    duration_s: 5.0
+    subject: final
+    focus:
+    - final
+    subtitle_zh: 焰雲普照明，種種光圓滿，法界無不及，示佛所行處
+    subtitle_en: Flame-clouds shine everywhere, all lights made full, nothing of dharmadhātu unreached
+      — showing where the Buddha walks
+    quote_zh: 焰雲普照明，種種光圓滿，法界無不及，示佛所行處
+    quote_en: Flame-clouds shine everywhere, all lights made full, nothing of dharmadhātu unreached —
+      showing where the Buddha walks.
+    ref: T10n0279 卷五·妙色那羅延執金剛神頌（卷末）
+    reconstruction: false
