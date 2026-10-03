@@ -212,7 +212,9 @@ function renderArticle(){
   if(typeof _foldDoc==='function'){
     try{ _foldDoc('#article-full'); }catch(e){}
     try{ _foldDoc('#article-eda', {label:'文本分析层'}); }catch(e){}
+    try{ _foldDoc('#bi-report', {label:'文本分析层'}); }catch(e){}
     try{ _foldDoc('#article-narrative', {label:'叙事动画'}); }catch(e){}
+    try{ _foldDoc('#article-flow .miaoyan-flow', {label:'会众全景流程'}); }catch(e){}
   }
 
   // ── 支持 #锚点 直达（目录跳转用真实 id 锚点；先展开折叠祖先节）──
