@@ -44,10 +44,11 @@ for fn in os.listdir(CB):
 lines = doc.split('\n')
 checked = 0
 misses = []
-for ln in lines:
-    if not (ln.startswith('**六十本对读**') or ln.startswith('**诸家强调')):
-        continue
-    tag = ln[:14]
+active = False  # 处于 六十本对读/诸家强调 块内(含其拆分后的 - 项目行)
+
+
+def scan(ln, tag):
+    global checked
     for frag in re.findall(r'「([^」]+)」', ln):
         # split on joiners I used editorially
         for part in re.split(r'……|…|／|、|（', frag):
@@ -57,6 +58,19 @@ for ln in lines:
             checked += 1
             if not any(p in v for v in SRC.values()):
                 misses.append((tag, part[:40]))
+
+
+for ln in lines:
+    if ln.startswith('**六十本对读**') or ln.startswith('**诸家强调'):
+        scan(ln, ln[:14])
+        active = True  # 分列样式: 引文在后续 - 行
+        continue
+    if ln.strip() == '':
+        continue  # 标记行与项目行之间的空行: 保持块状态
+    if active and ln.startswith('- '):
+        scan(ln, ln[:14])
+        continue
+    active = False  # 其它内容行: 退出块
 with open(base + r'\scripts\_roll_misses.txt', 'w', encoding='utf-8') as f:
     f.write('checked=%d misses=%d  SRC=%s\n' % (checked, len(misses), ','.join(SRC)))
     for t, m in misses:
