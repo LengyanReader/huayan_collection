@@ -821,6 +821,14 @@ details.fold > .fold-body table { width: 100%; }
 /* 收态：只留标题条，正文一概不占版面 */
 details.fold:not([open]) { max-height: 38px; }
 
+/* ── 交互面板默认折叠壳（panel-fold：文本分析层/会众名号剖面/叙事动画）──
+   面板内容各有其既定字号与版式，不适用通用 .fold-body 的 0.8em 缩小，
+   故此处回复为正文尺度，并令折叠壳满宽、去内联外边距，与 .section 卡片贴合。 */
+details.fold.panel-fold > summary { font-size: 0.92em; }
+details.fold.panel-fold:not([open]) { max-height: none; }
+details.fold.panel-fold > .fold-body { font-size: 1em; padding: 12px 14px 14px; }
+details.fold.panel-fold > .fold-body > *:first-child { margin-top: 0; }
+
 /* ── 正文配图：缩略图呈现，点击看原图（initDocImages/openImageLightbox）──
    原本图片可宽至 720px，喧宾夺主；今一律收为缩略图，尺寸全由本处决定。 */
 img.doc-img {

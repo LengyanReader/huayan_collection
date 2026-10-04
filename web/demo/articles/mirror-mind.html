@@ -149,21 +149,37 @@ function renderArticle(){
   h+='</div>';
 
   // ── 会众名号文本分析层（EDA；仅当 build.py 内嵌 ARTICLE_EDA 时出现，由 common.js renderArticleEDA 填充）──
+  // 交互面板一律纳入默认折叠壳（panel-fold），点开方显；内容渲染入壳内 #article-eda-inner。
   if((typeof ARTICLE_EDA!=='undefined')&&ARTICLE_EDA&&ARTICLE_EDA.payload){
-    h+='<div class="section" data-chrome="1" id="article-eda" style="border-left:4px solid var(--gold)"></div>';
+    h+='<div class="section" data-chrome="1" id="article-eda" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('article-eda-inner','🔬 会众名号 · 数据剖面（交互）'):'';
+    h+='</div>';
   }
 
-  // ── 相关艺术品 · 文物 · 壁画 · 考古（默认折叠块，由 common.js renderArticleArtifacts 填充）──
+  // ── 相关艺术品 · 文物 · 壁画 · 考古（renderArticleArtifacts 自带 <details> 折叠，无需再包）──
   if((typeof ARTICLE_ARTIFACTS!=='undefined')&&ARTICLE_ARTIFACTS&&(ARTICLE_ARTIFACTS.items||[]).length){
     h+='<div class="section" data-chrome="1" id="article-artifacts" style="border-left:4px solid var(--gold)"></div>';
   }
 
   // ── 文本分析层（miaoyan_bi.yaml 解释层；置于页脚之前）──
-  try{ if(typeof renderArticleBI==='function') h+=renderArticleBI(); }catch(e){}
+  // 面板自带 h2，恒展开会成附录十一后之独立一节；今包进折叠壳，内容渲染入 #bi-report-inner。
+  if(typeof renderArticleBI==='function'){
+    try{
+      var _biHtml=renderArticleBI();
+      if(_biHtml){
+        h+='<div class="section" data-chrome="1" style="border-left:4px solid var(--gold);padding:0">';
+        h+=(typeof _foldShellHtml==='function')?_foldShellHtml('bi-report-inner','📊 文本分析层（解释·交互）'):_biHtml;
+        h+='</div>';
+      }
+    }catch(e){}
+  }
 
   // ── 叙事动画（miaoyan_narrative.yaml 叙事节拍；仅当内嵌 MIAOYAN_NARR 时出现）──
+  // 内容渲染入壳内 #article-narrative-inner。
   if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
-    h+='<div class="section" data-chrome="1" id="article-narrative" style="border-left:4px solid var(--gold)"></div>';
+    h+='<div class="section" data-chrome="1" id="article-narrative" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('article-narrative-inner','📽 叙事动画（会众次第涌现·交互）'):'';
+    h+='</div>';
   }
 
   // ── 页脚 ──
@@ -188,9 +204,9 @@ function renderArticle(){
   if(typeof renderArticleArtifacts==='function' && document.getElementById('article-artifacts')){
     renderArticleArtifacts('#article-artifacts');
   }
-  // ── 会众名号文本分析层（EDA）──
-  if(typeof renderArticleEDA==='function' && document.getElementById('article-eda')){
-    renderArticleEDA('#article-eda');
+  // ── 会众名号文本分析层（EDA）：渲染入折叠壳内 ──
+  if(typeof renderArticleEDA==='function' && document.getElementById('article-eda-inner')){
+    renderArticleEDA('#article-eda-inner');
   }
 
   // ── 会众全景流程图（MiaoyanFlow；简明结构流程图）──
@@ -198,23 +214,22 @@ function renderArticle(){
     try{ renderMiaoyanFlow('#article-flow'); }catch(e){ console.warn('flow', e); }
   }
 
-  // ── 叙事动画播放器（MiaoyanNarrative）──
-  if(typeof renderMiaoyanNarrative==='function' && document.getElementById('article-narrative')){
-    try{ renderMiaoyanNarrative('#article-narrative'); }catch(e){ console.warn('narrative', e); }
+  // ── 叙事动画播放器（MiaoyanNarrative）：渲染入折叠壳内 ──
+  if(typeof renderMiaoyanNarrative==='function' && document.getElementById('article-narrative-inner')){
+    try{ renderMiaoyanNarrative('#article-narrative-inner'); }catch(e){ console.warn('narrative', e); }
   }
 
   // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
   _initArticleENMode();
 
   // ── 章节级折叠：h2/h3/h4/h5 分级折叠（默认全部折叠；标题 ▾ 号点击可单独收展）──
-  // 依站点设置：包括文本分析层在内的所有标题层次默认折叠；
-  // 文本分析层须在其内容渲染完毕后再折叠，故置于 renderArticleEDA 之后。
+  // 依站点设置：正文（含附录）所有标题层次默认折叠。
+  // 惟 EDA/文本分析层(BI)/叙事动画 三面板已各自纳入 <details class="panel-fold"> 折叠壳，
+  // 若再施 _foldDoc 便会「壳折叠＋内层节折叠」双重套叠，点开壳仍见其内复折——故此处不再对
+  // 该三者施折叠；仅正文 #article-full 与页首会众流程 #article-flow 仍按 h2–h5 分级折叠。
   // 各节工具栏一概不生成（noBar），改由页首「一套」页面级控件统管全页折叠/展开。
   if(typeof _foldDoc==='function'){
     try{ _foldDoc('#article-full', {noBar:true}); }catch(e){}
-    try{ _foldDoc('#article-eda', {label:'文本分析层', noBar:true}); }catch(e){}
-    try{ _foldDoc('#bi-report', {label:'文本分析层', noBar:true}); }catch(e){}
-    try{ _foldDoc('#article-narrative', {label:'叙事动画', noBar:true}); }catch(e){}
     try{ _foldDoc('#article-flow .miaoyan-flow', {label:'会众全景流程', noBar:true}); }catch(e){}
   }
   // ── 页面级统一控件：整页仅此一对「全部折叠／全部展开」，兼管章节折叠与 <details>（表·图）──
@@ -237,13 +252,14 @@ function renderArticle(){
 if(document.readyState!=='loading'){renderArticle();}
 else{document.addEventListener('DOMContentLoaded',renderArticle);}
 
-// 会众名号文本分析层：自页头按钮跳至该节（该节为页面末尾的大节，故直接滚到底）
+// 会众名号文本分析层：自页头按钮跳至该节。三面板（EDA/BI/叙事）现默认折叠，
+// 故须经 _scrollReveal 先展开其折叠壳再滚动，否则滚至一处空白折叠条。
 function edaGo(){
-  var el=document.getElementById('article-eda');
-  if(!el)return;
-  el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(typeof _scrollReveal==='function' && _scrollReveal('article-eda')) return;
+  var el=document.getElementById('article-eda'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function biGo(){ // scroll to textual analysis
+  if(typeof _scrollReveal==='function' && _scrollReveal('bi-report')){ if(history.replaceState) history.replaceState(null,'','#bi-report'); return; }
   var el=document.getElementById('bi-report');
   if(!el)return;
   el.scrollIntoView({behavior:'smooth',block:'start'});
@@ -251,6 +267,7 @@ function biGo(){ // scroll to textual analysis
 }
 
 function narrGo(){ // scroll to narrative animation
+  if(typeof _scrollReveal==='function' && _scrollReveal('article-narrative')){ if(history.replaceState) history.replaceState(null,'','#article-narrative'); return; }
   var el=document.getElementById('article-narrative');
   if(!el)return;
   el.scrollIntoView({behavior:'smooth',block:'start'});

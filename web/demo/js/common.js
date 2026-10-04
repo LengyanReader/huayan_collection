@@ -2188,7 +2188,27 @@ window._reveal = function (el) {
     }
     p = body.parentElement;
   }
+  // 另向上升开沿途 <details>（表折叠/图折叠/交互面板折叠壳 panel-fold 皆属之）：
+  // 锚点跳转的目标若藏在默认折叠的 <details> 内，浏览器不会自动展开，须手动 open。
+  var q = el;
+  while (q && q !== document.body) {
+    if (q.tagName === 'DETAILS') q.setAttribute('open', 'open');
+    q = q.parentElement;
+  }
   return el;
+};
+
+// 滚至某 id 元素，并先展开其沿途所有 <details>（供页头「文本分析层/叙事动画」等入口按钮用）。
+// 目标 id 传入时不带 '#'。返回是否命中元素。
+window._scrollReveal = function (id) {
+  var el = document.getElementById(id);
+  if (!el) return false;
+  if (el.closest) {
+    var d = el.closest('details');
+    while (d) { d.setAttribute('open', 'open'); d = d.parentElement ? d.parentElement.closest('details') : null; }
+  }
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return true;
 };
 
 // 载入章节折叠。rootSel：长文容器；opts：{foldDefault(默认 true), label(工具栏前缀)}。
@@ -2337,3 +2357,16 @@ window._installPageBar = function (opts) {
   else mount.insertBefore(bar, mount.firstChild);
   return true;
 };
+
+// ═══ 交互面板默认折叠壳（panel-fold）═══
+// 依用户诉求：文本分析层/会众名号剖面/叙事动画等 JS 交互面板，此前于附录十一之后
+// 恒常「摊开」成独立一节；今一一纳入原生 <details class="fold panel-fold">，默认折叠、
+// 点开方显——与全篇 table-fold 体例归一，且受页首「全页折叠/展开」(_foldPage 切 details.open) 统管。
+// 返回 <details> 之外壳字符串，innerId 为内容渲染目标（各 render* 须注入 '#' + innerId）。
+window._foldShellHtml = function (innerId, label) {
+  return '<details class="fold panel-fold">'
+    + '<summary>📁 ' + label + '<span style="font-weight:400;color:var(--text2)"> · 默认折叠，点开查看</span></summary>'
+    + '<div class="fold-body"><div id="' + innerId + '"></div></div>'
+    + '</details>';
+};
+

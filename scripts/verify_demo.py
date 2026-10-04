@@ -161,7 +161,7 @@ for obj in sorted(os.listdir(ARTICLES)):
     if 'var ARTICLE_EDA' in html:
         eda_checks = [
             ('ARTICLE_ASSEMBLY (经文事实)', 'var ARTICLE_ASSEMBLY' in html),
-            ('renderArticleEDA 调用', "renderArticleEDA('#article-eda')" in html),
+            ('renderArticleEDA 调用', "renderArticleEDA('#article-eda" in html),
             ('edaGo 入口', 'function edaGo' in html),
             ('剖面节容器', 'id="article-eda"' in html),
         ]
@@ -176,6 +176,17 @@ for obj in sorted(os.listdir(ARTICLES)):
                              ('热力矩阵', '热力矩阵')):
             if token not in cjs:
                 bad.append(f'js/common.js 缺 {label}')
+        # 交互面板默认折叠壳（panel-fold）：文本分析层/会众名号剖面/叙事动画须纳入可折叠 <details>，
+        # 由 _foldShellHtml 生成，内容渲染入壳内 *-inner 容器；页首另设「全页折叠/展开」一对统管。
+        pf_checks = [
+            ('_foldShellHtml 折叠壳', "class=\"fold panel-fold\"" in cjs),
+            ('EDA 折叠壳内渲染', "renderArticleEDA('#article-eda-inner')" in html),
+            ('BI 折叠壳内渲染', "_foldShellHtml('bi-report-inner'" in html),
+            ('叙事动画折叠壳内渲染', "renderMiaoyanNarrative('#article-narrative-inner')" in html),
+            ('全页折叠控件', 'function _installPageBar' in cjs or '_installPageBar' in cjs),
+        ]
+        bad += [c[0] for c in pf_checks if not c[1]]
+
     # 文本分析层：内嵌 ARTICLE_BI + article.js 内的 renderArticleBI。
     # schema 契约：校验「产物实际内嵌之 JSON」含渲染器所读之全部键路径——
     # 前端零硬编码，故键名笔误会静默渲染不出内容（而非报错），必以契约卡住。
