@@ -555,8 +555,15 @@ def test_article_eda():
         fail(f"{aid}.html not found (run build first)")
         return
     html = page.read_text(encoding='utf-8')
+    # 挂点说明（L107 更正）：交互面板已一律纳入默认折叠壳 panel-fold，EDA 之内容
+    # 渲染入壳内 `#article-eda-inner`（旧断言查的是壳外 `#article-eda`，系断言过期
+    # 而非页面缺失——二者曾同时误判，须以实际调用为准）。此处并验内外两个 id 之
+    # 存在性：内层为实渲染目标，外层为折叠壳本身，缺一即视为挂载残缺。
+    # 折叠壳之 id 由 `_foldShellHtml()` 运行时生成，故 HTML 中无 `id="..."` 字面量；
+    # 应验其生成调用与实渲染调用两端（L107：此断言初次写成查字面量，如期失败）。
     for token in ('var ARTICLE_EDA', 'var ARTICLE_ASSEMBLY',
-                  "renderArticleEDA('#article-eda')", 'function edaGo'):
+                  "renderArticleEDA('#article-eda-inner')", 'function edaGo',
+                  "_foldShellHtml('article-eda-inner'"):
         if token not in html:
             fail(f"{aid}.html missing {token}")
             return

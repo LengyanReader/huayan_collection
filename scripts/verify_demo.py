@@ -403,6 +403,41 @@ else:
             else:
                 ok(f'articles/{_t}: flow render — {(_r.stdout or "").strip()}')
 
+# ─── 世主妙严品专书门禁（源文档级）────────────────────────────────────
+# 前述诸门禁皆作用于**构建产物**（页面/JS）。本门禁作用于**Markdown 源文档**
+# 《华严经细读_第一部_世主妙严品.md》之学术正确性：实测口径、旧数回潮、引文回源
+# （含海云讲记逐字）、来源声明自洽。凡经此门禁，故其成果不因重建而失效。
+# 内含反向验证（scripts/_verify_shizhu_reverse.py）：以破坏性变异确认各断言真能捕获，
+# 否则「全绿」不足为凭（L106 已立之原则）。
+_shizhu = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'verify_shizhu.py')
+_shizhu_rev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           '_verify_shizhu_reverse.py')
+if not os.path.exists(_shizhu):
+    fail('verify_shizhu.py not found — 世主妙严品专书门禁缺失')
+else:
+    _r = subprocess.run([sys.executable, _shizhu], capture_output=True,
+                        encoding='utf-8', errors='replace')
+    _tail = [l for l in (_r.stdout or '').splitlines() if l.strip()][-6:]
+    if _r.returncode != 0 or not (_r.stdout or '').strip():
+        for _l in _tail:
+            print('    ' + _l)
+        fail('shizhu: 专书门禁失败（rc=%d）' % _r.returncode)
+    else:
+        _line = [l for l in (_r.stdout or '').splitlines() if 'ALL CHECKS PASSED' in l]
+        ok('shizhu: 专书门禁 — %s' % (_line[0].strip() if _line else 'ran'))
+    if os.path.exists(_shizhu_rev):
+        _r2 = subprocess.run([sys.executable, _shizhu_rev], capture_output=True,
+                             encoding='utf-8', errors='replace')
+        _last = [l for l in (_r2.stdout or '').splitlines() if '反向验证' in l]
+        if _r2.returncode != 0 or not (_r2.stdout or '').strip():
+            for _l in (_r2.stdout or '').splitlines()[-6:]:
+                print('    ' + _l)
+            fail('shizhu: 反向验证未全数捕获（rc=%d）' % _r2.returncode)
+        else:
+            ok('shizhu: 反向验证 — %s' % (_last[-1].strip() if _last else 'ran'))
+    else:
+        print('  SKIP: _verify_shizhu_reverse.py not found')
+
 print()
 
 print('=' * 40)
