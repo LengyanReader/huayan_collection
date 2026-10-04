@@ -2268,7 +2268,9 @@ window._foldDoc = function (rootSel, opts) {
   }
 
   // 4) 工具栏：置于首个可折叠标题之前（页头「全文」标题 data-skip-toc 不参与）
-  if (groups) {
+  //    opts.noBar === true 时不逐节生成工具栏——改由页面级「一套」统一控件管理全页
+  //    （见 window._installPageBar / window._foldPage）。
+  if (groups && !o.noBar) {
     var first = root.querySelector(SEL);
     if (first) {
       var bar = document.createElement('div');
@@ -2291,4 +2293,47 @@ window._foldDoc = function (rootSel, opts) {
     }
   }
   return { h2: counts[2], h3: counts[3], h4: counts[4], h5: counts[5], groups: groups, total: total };
+};
+
+// ═══ 页面级统一折叠控件（整页「一套」全部折叠／全部展开）═══
+// 依用户诉求：整页只设一对按钮，统一管理全页所有可折叠内容——
+//   ① 章节折叠（h2/h3/h4/h5 .secfold）；② 原生 <details>（表折叠 table-fold、图折叠 figure-fold）。
+// 与逐节 secfold-bar 并立无益，故各 _foldDoc 调用改传 {noBar:true} 取消逐节工具栏，由此一处控件总揽。
+// 折叠/展开逻辑与原生理所相宜：章节切 is-folded；details 切 open 属性。
+window._foldPage = function (folded, rootSel) {
+  var root = rootSel ? (typeof rootSel === 'string' ? document.querySelector(rootSel) : rootSel) : document;
+  if (!root) return;
+  root.querySelectorAll('h2.secfold, h3.secfold, h4.secfold, h5.secfold').forEach(function (h) {
+    h.classList.toggle('is-folded', !!folded);
+    h.setAttribute('aria-expanded', folded ? 'false' : 'true');
+  });
+  root.querySelectorAll('details').forEach(function (d) {
+    if (folded) d.removeAttribute('open'); else d.setAttribute('open', 'open');
+  });
+};
+
+// 安装页面级一套控件于容器顶部（幂等；已存 .pagefold-bar 则不重植）。
+// opts：{rootSel（_foldPage 作用域，默认全文）, mountSel（挂载容器，默认其内首个 .secfold-bar/标题之前）}。
+window._installPageBar = function (opts) {
+  var o = opts || {};
+  if (document.querySelector('.pagefold-bar')) return false;
+  var mount = o.mountSel ? document.querySelector(o.mountSel) : document.getElementById('article-full');
+  if (!mount) return false;
+  var nSec = document.querySelectorAll('#article-full h2.secfold, #article-full h3.secfold, #article-full h4.secfold, #article-full h5.secfold').length;
+  var nDet = document.querySelectorAll('details').length;
+  var bar = document.createElement('div');
+  bar.className = 'secfold-bar pagefold-bar';
+  bar.innerHTML = '<span style="opacity:.85">🗂 全页折叠 · 章节 ' + nSec + ' 节 · 图表 ' + nDet + ' 处</span>'
+    + '<button type="button" class="sf-btn" data-pf="fold">全部折叠</button>'
+    + '<button type="button" class="sf-btn" data-pf="open">全部展开</button>'
+    + '<span style="opacity:.6">此一对统管全页（章节＋表格＋图像）· 各标题 ▾ 仍可单节收展</span>';
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.sf-btn') : null;
+    if (!b) return;
+    window._foldPage(b.dataset.pf === 'fold', o.rootSel || '#article-root');
+  });
+  var anchor = mount.querySelector('.secfold, h2, h3') || mount.firstElementChild;
+  if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(bar, anchor);
+  else mount.insertBefore(bar, mount.firstChild);
+  return true;
 };

@@ -209,12 +209,17 @@ function renderArticle(){
   // ── 章节级折叠：h2/h3/h4/h5 分级折叠（默认全部折叠；标题 ▾ 号点击可单独收展）──
   // 依站点设置：包括文本分析层在内的所有标题层次默认折叠；
   // 文本分析层须在其内容渲染完毕后再折叠，故置于 renderArticleEDA 之后。
+  // 各节工具栏一概不生成（noBar），改由页首「一套」页面级控件统管全页折叠/展开。
   if(typeof _foldDoc==='function'){
-    try{ _foldDoc('#article-full'); }catch(e){}
-    try{ _foldDoc('#article-eda', {label:'文本分析层'}); }catch(e){}
-    try{ _foldDoc('#bi-report', {label:'文本分析层'}); }catch(e){}
-    try{ _foldDoc('#article-narrative', {label:'叙事动画'}); }catch(e){}
-    try{ _foldDoc('#article-flow .miaoyan-flow', {label:'会众全景流程'}); }catch(e){}
+    try{ _foldDoc('#article-full', {noBar:true}); }catch(e){}
+    try{ _foldDoc('#article-eda', {label:'文本分析层', noBar:true}); }catch(e){}
+    try{ _foldDoc('#bi-report', {label:'文本分析层', noBar:true}); }catch(e){}
+    try{ _foldDoc('#article-narrative', {label:'叙事动画', noBar:true}); }catch(e){}
+    try{ _foldDoc('#article-flow .miaoyan-flow', {label:'会众全景流程', noBar:true}); }catch(e){}
+  }
+  // ── 页面级统一控件：整页仅此一对「全部折叠／全部展开」，兼管章节折叠与 <details>（表·图）──
+  if(typeof _installPageBar==='function'){
+    try{ _installPageBar({mountSel:'#article-full', rootSel:'#article-root'}); }catch(e){}
   }
 
   // ── 支持 #锚点 直达（目录跳转用真实 id 锚点；先展开折叠祖先节）──
