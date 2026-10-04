@@ -82,11 +82,37 @@ function _dynRenderTable(rows) {
   h += '<tbody>' + body.map(function(cs){return '<tr>' + cs.map(function(c){return '<td>'+_dynMDInline(c)+'</td>';}).join('') + '</tr>';}).join('') + '</tbody></table>';
   return h;
 }
-// 块级：连续的 | 行成组转表，其余文字走内联格式化（换行留经容器 pre-line 处理）
+// CJK 重排：源文多为定宽硬换行，pre-line 会照原样断行致句中断裂（「佛光即法界/全体」），
+// 行末的。！？多因定宽截断而非段落结束，故不能当换行信号。规则：只有「真空行 / 结构行（·【（[①-㊿
+// 数字. ═══ ** label: 起首）」才另起新行，其余换行一律视为软折行并入上一行（体-体不补空格，涉拉丁则补
+// 一空格）。重排后仍走 pre-line，于是段落自然按容器宽度折行。
+function _dynStartsNew(t) {
+  return /^[·【〔\[]/.test(t) || /^[(（][0-9一二三四五六七八九十]{1,3}[)）]/.test(t) || /^\*\*/.test(t) || /^[\u2460-\u24ff\u3251-\u32bf]/.test(t)
+    || /^\d+[\.、)]/.test(t) || /═/.test(t) || /^[\u4e00-\u9fffA-Za-z0-9]{1,6}[:：]/.test(t);
+}
+function _dynReflowLines(lines) {
+  var res = [], cur = null, prev = '';
+  function pushCur(){ if (cur !== null) { res.push(cur); cur = null; } }
+  lines.forEach(function(raw){
+    var t = raw.replace(/\s+$/, '');
+    if (t.trim() === '') { pushCur(); if (prev !== '') res.push(''); prev = ''; return; }
+    var body = t.replace(/^\s+/, '');
+    if (cur === null || _dynStartsNew(body)) { pushCur(); cur = t; }
+    else {
+      var a = cur.replace(/\s+$/, '');
+      var cjk = /[\u4e00-\u9fff、）」』]$/.test(a) && /^[\u4e00-\u9fff、（「『]/.test(body);
+      cur = a + (cjk ? '' : ' ') + body;
+    }
+    prev = t;
+  });
+  pushCur();
+  return res.join('\n');
+}
+// 块级：连续的 | 行成组转表，其余文字重排后走内联格式化（换行留经容器 pre-line 处理）
 function _dynMD(s) {
   var lines = String(s||'').split('\n');
   var out = [], text = [], tbl = [];
-  function flushText(){ if(text.length){ out.push(_dynMDInline(text.join('\n'))); text=[]; } }
+  function flushText(){ if(text.length){ out.push(_dynMDInline(_dynReflowLines(text))); text=[]; } }
   function flushTbl(){ if(tbl.length){ out.push(_dynRenderTable(tbl)); tbl=[]; } }
   lines.forEach(function(ln){
     if (/^\s*\|.*\|\s*$/.test(ln)) { flushText(); tbl.push(ln); }
