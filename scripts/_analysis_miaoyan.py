@@ -263,6 +263,36 @@ out['class_sizes'] = dict(min_n=min(c.get('n_named',0) for c in classes),
                           total_named=sum(c.get('n_named',0) for c in classes),
                           n_classes=len(classes))
 
+# ---------- 会众名号数据剖面 (assembly-name data profile) ----------
+# NOTE: purely quantitative profile of the 414 member names; doctrinal 归类见附录二,
+#       构词矩阵见附录七·三 — no duplication, this feeds the network layer.
+nlen = [len(x) for x in names if x]
+bucket = Counter()
+for x in nlen:
+    bucket[str(x) if x <= 7 else '8+'] += 1
+heads = Counter(x[0] for x in names if x)
+tails = Counter(x[-1] for x in names if x)
+morph = Counter(ch for x in names for ch in x)
+# 〔本文判断〕 heuristic: names carrying a Sanskrit-transliteration cue
+TRANS = ['那羅','摩天','闥婆','修羅','迦樓','佛陀','摩睺','優鉢','拘留','曼陀','三漫',
+         '須彌','般遮','缽頭','摩訶','莎羅','由梨','目眞','目真','離婆','睒摩','尼拘',
+         '陀羅','彌伽','蜜伽','薩','嚩','伽','呬']
+ntrans = sum(1 for x in names if any(t in x for t in TRANS))
+out['name_profile'] = dict(
+    n_names=len(names), distinct=len(set(names)),
+    len_mean=round(float(np.mean(nlen)), 2), len_median=int(np.median(nlen)),
+    len_mode=int(Counter(nlen).most_common(1)[0][0]), len_min=min(nlen), len_max=max(nlen),
+    len_dist={k: bucket[k] for k in sorted(bucket, key=lambda s: int(s.replace('+', '')))},
+    heads_top12=heads.most_common(12), tails_top15=tails.most_common(15),
+    morph_top25=morph.most_common(25),
+    transliterated_approx=ntrans, semantic_approx=len(names) - ntrans,
+    pu_prefixed=sum(1 for x in names if x.startswith('普')),
+    per_group={str(g): sum(c.get('n_named', 0) for c in classes if c.get('group') == g)
+               for g in sorted(set(c.get('group') for c in classes))},
+    per_realm={str(r): sum(c.get('n_named', 0) for c in classes if c.get('realm') == r)
+               for r in sorted(set(c.get('realm') for c in classes))},
+)
+
 json.dump(out, open(base + r'\scripts\_analysis_out.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)
 # summary print
 for k in out:
