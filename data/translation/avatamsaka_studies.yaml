@@ -1190,7 +1190,7 @@ sections:
             表现, 为后文「一即一切」的哲学奠定了宗教基础。
 
           ② 如来现相品(第二) [Tathāgatotpattisaṃbhava]
-          经文: 卷3-4
+          经文: 卷6
           内容: 毗卢遮那佛于眉间白毫放光, 光中显现无量世界·无量佛刹·无量众生·
           无量佛菩萨, 令在会大众亲见法界全体。此品          建立「佛身即法界」的核心命题。
 
@@ -1216,7 +1216,7 @@ sections:
             的直接显现媒介。
 
           ③ 普贤三昧品(第三) [Samantabhadra-samādhi]
-          经文: 卷4
+          经文: 卷7
           内容: 普贤菩萨入「一切诸佛毗卢遮那如来藏身」三昧, 从三昧起,
           以佛神力说一切诸佛毗卢遮那法界佛刹重重无尽之相。此品确立普贤菩萨
           作为华严「行愿」核心代表的地位。
@@ -1243,7 +1243,7 @@ sections:
             「证」的根本统一——普贤之行即是证入法身之行。
 
           ④ 世界成就品(第四) [Lokadhātu-samudra-nirdeśa]
-          经文: 卷4-5
+          经文: 卷7
           内容: 普贤菩萨宣说世界海(无量世界的总体)的成立因缘——世界如何由
           众生业力·佛力·法力等因缘和合而成,           以及世界的成住坏空·无尽循环。
 
@@ -1265,7 +1265,7 @@ sections:
             的「无尽重重」结构提供了宇宙论基础。
 
           ⑤ 华藏世界品(第五) [Kusumatala-vyūhālaṃkāra-lokadhātu]
-          经文: 卷5-6 (约2卷)
+          经文: 卷8-10 (约3卷)
           内容: 详细描述毗卢遮那佛的净土「华藏庄严世界海」——二十重世界层层叠绕,
           每一世界有微尘数佛刹围绕; 最底层为风轮所持, 风轮之上有香水海·
           香水河·世界种·世界等重重无尽的结构。此品是华严宇宙观最核心的描述。
@@ -1297,7 +1297,7 @@ sections:
             「一即一切」的华严境界。
 
           ⑥ 毗卢遮那品(第六) [Vairocana]
-          经文: 卷6-11 (约5卷)
+          经文: 卷11 (1卷)
           内容: 追述毗卢遮那佛在无量劫前的因地修行——从最初发心·修行六度·
           度化众生·圆满佛果的完整过程。此品说明「佛果」非一蹴而就, 而是
           无量劫修行的累积。
@@ -3564,14 +3564,14 @@ sections:
       - title: 五周因果——义理结构
         title_en: Five Cycles of Cause and Effect — Doctrinal Structure
         body: |
-          澄观(738-839)在《华严经疏》中将三十九品归纳为「五周因果」——
-          (1) **所信因果周**[信](第1-6品, 11卷): 说毗卢遮那佛依正庄严, 令众生生信。
-          (2) **差别因果周**[解·前半](第7-34品, 31卷): 说十信·十住·十行·十回向·十地·
+          澄观(738-839)在《华严经疏》中将三十九品归纳为「五周因果」——(卷次依八十华严T279, 五周五段合计恰满八十卷)
+          (1) **所信因果周**[信](第1-6品, 卷1-11): 说毗卢遮那佛依正庄严, 令众生生信。
+          (2) **差别因果周**[解·前半](第7-33品, 卷12-47, 36卷): 说十信·十住·十行·十回向·十地·
           等觉·妙觉的修行次第, 因与果有差别(不同的阶位有不同的修行内容)。
-          (3) **平等因果周**[解·后半](第35-37品, 约5卷): 说佛的相好·光明·出现,
-          因与果平等(一切佛皆同此因·同此果)。
-          (4) **成行因果周**[行](第38品, 7卷): 说普贤二千行门, 将理论化为具体的修行。
-          (5) **证入因果周**[证](第39品, 21卷): 说善财五十三参, 将修行落实为实际的证入。
+          (3) **平等因果周**[解·后半](第34-37品, 卷48-52): 说佛的相好·光明·出现,
+          因与果平等(一切佛皆同此因·同此果)。〈如来十身相海品〉说佛相好, 当入此周, 非差别。
+          (4) **成行因果周**[行](第38品, 卷53-59): 说普贤二千行门, 将理论化为具体的修行。
+          (5) **证入因果周**[证](第39品, 卷60-80): 说善财五十三参, 将修行落实为实际的证入。
           
           五周因果与「信·解·行·证」四分法相对应:
           信(第一周) → 解(第二·三周) → 行(第四周) → 证(第五周)。
@@ -3582,23 +3582,25 @@ sections:
           - "灵隐寺《学处|数十万字的华严经如何分段》(2019)"
         en_body: |
           Chengguan (738–839) summarized the 39 chapters into "five cycles of cause
-          and effect" in his *Huayan jing shu* —
+          and effect" in his *Huayan jing shu* (fascicle numbers after the
+          *Eighty-fascicle Avataṃsaka*, T.279; the five cycles sum to exactly 80) —
           (1) **The cycle of the cause and effect of what is to be believed** [Faith]
-            (chs. 1–6, 11 fascicles): expounding the adornments of Vairocana's
+            (chs. 1–6, fasc. 1–11): expounding the adornments of Vairocana's
             environment and body to inspire faith.
           (2) **The cycle of differentiated cause and effect** [Understanding, first
-            half] (chs. 7–34, 31 fascicles): expounding the sequential stages of the
+            half] (chs. 7–33, fasc. 12–47, 36 fascicles): expounding the sequential stages of the
             Ten Faiths, Ten Abodes, Ten Practices, Ten Transferences, Ten Grounds,
             Equality-Enlightenment, and Wonderful Enlightenment — cause and effect are
             differentiated (each stage has its own content).
           (3) **The cycle of equal cause and effect** [Understanding, second half]
-            (chs. 35–37, ~5 fascicles): expounding the Buddha's marks, light, and
+            (chs. 34–37, fasc. 48–52): expounding the Buddha's marks, light, and
             manifestation — cause and effect are equal (all buddhas share the same
-            cause and the same fruit).
-          (4) **The cycle of completing the practice** [Practice] (ch. 38, 7 fascicles):
+            cause and the same fruit). The *Tathāgata-marks* Chapter (ch. 34), on the
+            Buddha's physical marks, belongs to this cycle, not the differentiated one.
+          (4) **The cycle of completing the practice** [Practice] (ch. 38, fasc. 53–59):
             expounding Samantabhadra's 2,000 practices, transforming theory into
             concrete cultivation.
-          (5) **The cycle of realization** [Realization] (ch. 39, 21 fascicles):
+          (5) **The cycle of realization** [Realization] (ch. 39, fasc. 60–80):
             expounding Sudhana's fifty-three pilgrimages, bringing cultivation to
             actual realization.
 
@@ -3762,11 +3764,11 @@ sections:
           | 序 | 品名 | 梵名/原名 | 属会 | 卷次 | 要义（首句，取自逐品详解） | 五周 |
           |---|---|---|---|---|---|---|
           | 1 | **世主妙严品** | Sarva-lokendra-vyūha-naya-prabhāva | 第一会·菩提道场 | 卷1-5 (约5卷; 依八十华严卷次, 世主妙严品第一之一至第一之五) | 全经总序。毗卢遮那佛成道后, 佛号「普」, 以佛为会主。 | 所信因果〔信〕 |
-          | 2 | **如来现相品** | Tathāgatotpattisaṃbhava | 第一会·菩提道场 | 卷3-4 | 毗卢遮那佛于眉间白毫放光, 光中显现无量世界·无量佛刹·无量众生· | 所信因果〔信〕 |
-          | 3 | **普贤三昧品** | Samantabhadra-samādhi | 第一会·菩提道场 | 卷4 | 普贤菩萨入「一切诸佛毗卢遮那如来藏身」三昧, 从三昧起, | 所信因果〔信〕 |
-          | 4 | **世界成就品** | Lokadhātu-samudra-nirdeśa | 第一会·菩提道场 | 卷4-5 | 普贤菩萨宣说世界海(无量世界的总体)的成立因缘——世界如何由 | 所信因果〔信〕 |
-          | 5 | **华藏世界品** | Kusumatala-vyūhālaṃkāra-lokadhātu | 第一会·菩提道场 | 卷5-6 (约2卷) | 详细描述毗卢遮那佛的净土「华藏庄严世界海」——二十重世界层层叠绕, | 所信因果〔信〕 |
-          | 6 | **毗卢遮那品** | Vairocana | 第一会·菩提道场 | 卷6-11 (约5卷) | 追述毗卢遮那佛在无量劫前的因地修行——从最初发心·修行六度· | 所信因果〔信〕 |
+          | 2 | **如来现相品** | Tathāgatotpattisaṃbhava | 第一会·菩提道场 | 卷6 | 毗卢遮那佛于眉间白毫放光, 光中显现无量世界·无量佛刹·无量众生· | 所信因果〔信〕 |
+          | 3 | **普贤三昧品** | Samantabhadra-samādhi | 第一会·菩提道场 | 卷7 | 普贤菩萨入「一切诸佛毗卢遮那如来藏身」三昧, 从三昧起, | 所信因果〔信〕 |
+          | 4 | **世界成就品** | Lokadhātu-samudra-nirdeśa | 第一会·菩提道场 | 卷7 | 普贤菩萨宣说世界海(无量世界的总体)的成立因缘——世界如何由 | 所信因果〔信〕 |
+          | 5 | **华藏世界品** | Kusumatala-vyūhālaṃkāra-lokadhātu | 第一会·菩提道场 | 卷8-10 (约3卷) | 详细描述毗卢遮那佛的净土「华藏庄严世界海」——二十重世界层层叠绕, | 所信因果〔信〕 |
+          | 6 | **毗卢遮那品** | Vairocana | 第一会·菩提道场 | 卷11 (1卷) | 追述毗卢遮那佛在无量劫前的因地修行——从最初发心·修行六度· | 所信因果〔信〕 |
           | 7 | **如来名号品** | Tathāgata-nāma | 第二会·普光明殿 | 卷12-15 | 如来以无量名号度化众生——于一世界中, 佛以一名说一切法; | 差别因果〔解〕 |
           | 8 | **四圣谛品** | Catvāri-ārya-satyāni | 第二会·普光明殿 | 卷12-15 | 以华严的立场重新阐释苦·集·灭·道四圣谛—— | 差别因果〔解〕 |
           | 9 | **光明觉品** | Prabhāsvara | 第二会·普光明殿 | 卷12-15 | 毗卢遮那佛放光, 光中显现十方世界的一切佛刹·一切佛·一切菩萨· | 差别因果〔解〕 |
@@ -3794,7 +3796,7 @@ sections:
           | 31 | **如来寿量品** | Āyuṣpramāṇa | 第七会·普光法堂重 | 卷40-52 | 佛说如来的寿命非算数所能计量—— | 差别因果〔解〕 |
           | 32 | **诸菩萨住处品** | Bodhisattva-vihāra | 第七会·普光法堂重 | 卷40-52 | 列举诸大菩萨在世界各地的住处(道场)—— | 差别因果〔解〕 |
           | 33 | **佛不思议法品** | Acintya-dharma | 第七会·普光法堂重 | 卷40-52 | 佛说如来所证的法·所现的境·所教的法, 皆不可思议—— | 差别因果〔解〕 |
-          | 34 | **如来十身相海品** | Daśakāya | 第七会·普光法堂重 | 卷40-52 | 普贤菩萨说如来「十身」(十种佛身)的相好庄严—— | 差别因果〔解〕 |
+          | 34 | **如来十身相海品** | Daśakāya | 第七会·普光法堂重 | 卷40-52 | 普贤菩萨说如来「十身」(十种佛身)的相好庄严—— | 平等因果〔解〕 |
           | 35 | **如来随好光明功德品** | Anuvyañjana | 第七会·普光法堂重 | 卷40-52 | 佛说如来「随好」(微细相好)的光明功德—— | 平等因果〔解〕 |
           | 36 | **普贤行品** | Samantabhadra-caryā | 第七会·普光法堂重 | 卷40-52 | 普贤菩萨说「普贤行」—— | 平等因果〔解〕 |
           | 37 | **如来出现品** | Tathāgatotpattisaṃbhava | 第七会·普光法堂重 | 卷40-52 | 佛说如来「出现」(成道·转法轮·入灭)的因缘—— | 平等因果〔解〕 |
