@@ -1219,11 +1219,39 @@ function wzPodFilter(q) {
 
 # 通用数据驱动独立页渲染脚本：处理「sections + topics」schema（vatamsaka_studies / panjiao_hupan
 # 等 gap 数据源共用），生成折叠门布局 + 中英对照 + 出处/链接 + 参考文献。演示层代码，正文单存于 YAML。
-GAP_TOPICS_RENDER = r'''function _dynMD(s) {
+GAP_TOPICS_RENDER = r'''function _dynMDInline(s) {
   return String(s||'')
     .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
     .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<i>$2</i>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target=_blank style="color:var(--blue)">$1</a>');
+}
+// Markdown 管道表 → <table class="dyn-tbl">：首个非分隔行为表头，|---| 分隔行丢弃
+function _dynRenderTable(rows) {
+  var cells = rows.map(function(r){
+    return r.replace(/^\s*\|/,'').replace(/\|\s*$/,'').split('|').map(function(c){return c.trim();});
+  });
+  var isSep = function(cs){ return cs.length>0 && cs.every(function(c){return /^:?-{2,}:?$/.test(c);}); };
+  var head = cells[0] || [], body;
+  if (isSep(head)) { head = []; body = cells.filter(function(cs){return !isSep(cs);}); }
+  else { body = cells.slice(1).filter(function(cs){return !isSep(cs);}); }
+  var h = '<table class="dyn-tbl">';
+  if (head.length) h += '<thead><tr>' + head.map(function(c){return '<th>'+_dynMDInline(c)+'</th>';}).join('') + '</tr></thead>';
+  h += '<tbody>' + body.map(function(cs){return '<tr>' + cs.map(function(c){return '<td>'+_dynMDInline(c)+'</td>';}).join('') + '</tr>';}).join('') + '</tbody></table>';
+  return h;
+}
+// 块级：连续的 | 行成组转表，其余文字走内联格式化（换行留经容器 pre-line 处理）
+function _dynMD(s) {
+  var lines = String(s||'').split('\n');
+  var out = [], text = [], tbl = [];
+  function flushText(){ if(text.length){ out.push(_dynMDInline(text.join('\n'))); text=[]; } }
+  function flushTbl(){ if(tbl.length){ out.push(_dynRenderTable(tbl)); tbl=[]; } }
+  lines.forEach(function(ln){
+    if (/^\s*\|.*\|\s*$/.test(ln)) { flushText(); tbl.push(ln); }
+    else if (tbl.length && /^\s*$/.test(ln)) { /* 表内空行忽略 */ }
+    else { flushTbl(); text.push(ln); }
+  });
+  flushText(); flushTbl();
+  return out.join('\n');
 }
 function _dynSectionLink(sec) { return 'avs-dyn-' + sec.id; }
 function _dynTopicLink(sec, i) { return 'avs-topic-' + sec.id + '-' + i; }

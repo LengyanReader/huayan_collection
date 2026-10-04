@@ -248,6 +248,21 @@ body.zh-only .en-cell {
   margin: 0 auto;
   width: 100%;
 }
+/* 自动换行：pre-line 仅在空格处折行，超长拉丁串/·连接机构机会横向溢出 · 补 overflow-wrap 断行 */
+.content-article .section, .content-article p, .content-article div {
+  overflow-wrap: break-word; word-break: break-word;
+}
+/* 数据驱动页（_dynMD）markdown 表→HTML 表：单元格自动换行、不横向溢出 */
+table.dyn-tbl {
+  width: 100%; border-collapse: collapse; table-layout: fixed;
+  font-size: 0.82em; line-height: 1.7; margin: 10px 0;
+}
+table.dyn-tbl th, table.dyn-tbl td {
+  border: 1px solid var(--line); padding: 6px 9px; vertical-align: top;
+  text-align: left; white-space: normal; overflow-wrap: break-word; word-break: break-word;
+}
+table.dyn-tbl thead th { background: rgba(184,134,60,0.12); color: var(--gold); font-weight: 600; }
+table.dyn-tbl tbody tr:nth-child(even) td { background: rgba(94,139,158,0.05); }
 .article-chip {
   display: inline-block;
   background: rgba(94, 139, 158, 0.10);
