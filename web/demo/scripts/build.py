@@ -1317,35 +1317,31 @@ function renderDynTopics(data, mode) {
     });
     if (data.references) h += '<div style="padding:2px 0"><a href="#avs-dyn-refs" style="color:var(--gold);text-decoration:none;font-weight:600">📚 参考文献</a></div>';
     h += '</div></div>';
-    // ── 全文（连续展开） ──
-    h += '<div class="section" style="border-left:4px solid var(--gold)" id="article-full"><h2 data-skip-toc="1">📄 ' + title + ' · 全文</h2>';
+    // ── 全文（标题层级：节=h2 / 题=h3，平级兄弟，交 _foldDoc 逐级折叠展开）──
+    h += '<div class="section" style="border-left:4px solid var(--gold)" id="article-full"><h2 data-skip-toc="1" style="color:var(--gold)">📄 ' + title + ' · 全文</h2>';
     data.sections.forEach(function(sec){
-      h += '<div id="' + _dynSectionLink(sec) + '">';
-      h += '<h3 style="color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:18px">' + (sec.icon||'📌') + ' ' + sec.title + ' <span style="font-size:0.6em;color:var(--text2);font-weight:400">(' + ((sec.topics||[]).length) + '题)</span></h3>';
+      h += '<h2 id="' + _dynSectionLink(sec) + '" style="color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:18px;font-size:1.08em">' + (sec.icon||'📌') + ' ' + sec.title + ' <span style="font-size:0.6em;color:var(--text2);font-weight:400">(' + ((sec.topics||[]).length) + '题)</span></h2>';
       if (sec.title_en) h += '<div class="en-line" style="font-size:0.74em;color:var(--text2);font-style:italic">' + sec.title_en + '</div>';
       if (sec.intro) h += '<p style="font-size:0.82em;color:var(--text2);line-height:1.8;white-space:pre-line">' + _dynMD(sec.intro) + '</p>';
       if (sec.intro_en) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line">📖 ' + _dynMD(sec.intro_en) + '</div>';
       (sec.topics||[]).forEach(function(t,i){
-        h += '<div id="' + _dynTopicLink(sec,i) + '" style="margin:14px 0 4px;padding-left:14px;border-left:3px solid rgba(94,139,158,0.25);">';
-        h += '<div style="font-size:0.92em;color:var(--blue);font-weight:600">' + (i+1) + '. ' + t.title;
+        h += '<h3 id="' + _dynTopicLink(sec,i) + '" style="margin:14px 0 4px;padding-left:12px;border-left:3px solid rgba(94,139,158,0.25);color:var(--blue);font-size:1em;font-weight:600">' + (i+1) + '. ' + t.title;
         if (t.title_en) h += ' <span class="en-line" style="color:var(--text2);font-weight:400;font-style:italic;font-size:0.82em">(' + t.title_en + ')</span>';
-        h += '</div>';
-        h += '<div style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px">' + _dynMD(t.body) + '</div>';
-        if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line;margin-top:6px">📖 ' + _dynMD(t.en_body) + '</div>';
+        h += '</h3>';
+        h += '<div style="font-size:0.8em;line-height:1.8;white-space:pre-line;margin-top:4px;padding-left:12px">' + _dynMD(t.body) + '</div>';
+        if (t.en_body) h += '<div class="en-line" style="font-size:0.78em;color:var(--text2);line-height:1.8;white-space:pre-line;margin-top:6px;padding-left:12px">📖 ' + _dynMD(t.en_body) + '</div>';
         var srcs = t.sources || (t.source ? [t.source] : []);
         if (srcs.length) {
-          h += '<div style="font-size:0.7em;color:var(--text2);margin-top:6px">📎 ';
+          h += '<div style="font-size:0.7em;color:var(--text2);margin-top:6px;padding-left:12px">📎 ';
           srcs.forEach(function(s,si){ h += (si>0?'<br>':'') + _dynMD(s); });
           h += '</div>';
         }
         if (t.links) {
-          h += '<div style="font-size:0.7em;margin-top:2px">';
+          h += '<div style="font-size:0.7em;margin-top:2px;padding-left:12px">';
           Object.keys(t.links).forEach(function(k){ h += '<a href="' + t.links[k] + '" target=_blank style="color:var(--blue)">🔗 ' + k + '</a> '; });
           h += '</div>';
         }
-        h += '</div>';
       });
-      h += '</div>';
     });
     h += '</div>';
     if (data.references) {
@@ -1478,11 +1474,16 @@ def build_articles(articles):
                                               'icon': a.get('icon'), 'title_sub': a.get('title_sub'),
                                               'data_source': ds, 'back': a.get('back')},
                                              ensure_ascii=False)))
-                # 华严经学独立页采用 zhenwei 式连续全文布局（全量展开可读）；其余 gap 数据驱动页保持折叠门
+                # 华严经学独立页采用 zhenwei 式连续全文布局（标题层级节h2/题h3）；其余 gap 数据驱动页保持折叠门
                 dyn_mode = "'article'" if a['id'] == 'avatamsaka-studies' else "'doors'"
                 render_script = (GAP_TOPICS_RENDER
-                                 + ('\nrenderDynTopics(GAP_DATA[ARTICLE.data_source], %s);' % dyn_mode)
                                  + ('\ndocument.getElementById("article-root").innerHTML = renderDynTopics(GAP_DATA[ARTICLE.data_source], %s);' % dyn_mode))
+                if a['id'] == 'avatamsaka-studies':
+                    # 全文渲染后就地启用站点既有章节折叠机制：节/题标题逐级可单点收展，
+                    # 页首一套「全部折叠/全部展开」（_foldDoc 逐级包裹 + _installPageBar 页面级控件）。
+                    # foldDefault:false → 默认展开，保留本页「全文可读」身份，折叠按需。
+                    render_script += ("\nif(window._foldDoc){ _foldDoc('#article-full', {noBar:true, foldDefault:false}); }"
+                                      + "\nif(window._installPageBar){ _installPageBar({rootSel:'#article-root', mountSel:'#article-full'}); }")
             else:
                 if ds == 'haiyun_wiz_catalog':
                     # 海云讲法·公开资料独立页：必须与教行页同源同量——文档库 + 40 课题 + 播客全季 全量内嵌
