@@ -1698,3 +1698,7 @@ details.ovw>.section>section:first-child>h2{font-size:1.14em}
   .mfd-cell{font-size:.74em}
   .mfd-up::before{content:''}
 }
+
+/* 独立文章页·最后更新时间带（内容取自 YAML updated_at，未登记则不显） */
+#header .art-updated{font-size:.66em;color:var(--text2);opacity:.85;white-space:nowrap;align-self:center;letter-spacing:.02em}
+#header .art-updated:empty{display:none}

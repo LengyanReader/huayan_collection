@@ -825,6 +825,7 @@ def load_standalone_articles():
             'version': art.get('version', ''),
             'meta': art.get('meta', ''),
             'doc': art.get('doc', ''),
+            'updated_at': art.get('updated_at', ''),
             'back': ts_back,
             'views': ts_views,
         })
@@ -867,6 +868,9 @@ def load_standalone_articles():
             # 由 build_articles 内嵌完整数据 + 自包含渲染脚本生成，正文单源存于 YAML
             'data_source': o.get('data_source', ''),
             'data_pool': o.get('data_pool', 'practice'),
+            # 内容最后更新时间：仅登记「内容实质变更」之日，未登记则页头不显时间带
+            #（不得以构建时间冒充内容更新时间——二者性质不同）。
+            'updated_at': o.get('updated_at', ''),
             'back': o.get('back') or {},
             'views': o.get('views', [o['id']]),
         })
@@ -1457,7 +1461,7 @@ def build_articles(articles):
     count = 0
 
     for a in articles:
-        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'data_pool', 'back')}
+        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'data_pool', 'back', 'updated_at')}
         title = a.get('title', a['id'])
         ds = a.get('data_source', '')
         pool = a.get('data_pool', 'practice')
@@ -1555,6 +1559,7 @@ def build_articles(articles):
         back_tab = _b.get('tab') or 'index'
         back_label = _b.get('label') or '导航主页'
         back_href = ('../tabs/%s.html' % back_tab) if back_tab != 'index' else '../index.html'
+        updated_at = ('\U0001F4DD 最后更新：' + a['updated_at']) if a.get('updated_at') else ''
         html = f'''<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -1571,6 +1576,7 @@ def build_articles(articles):
 <header id="header">
   <a href="../index.html" class="back-link">&larr; Home</a>
   <h1>{title}</h1>
+  <span class="art-updated">{updated_at}</span>
   <button id="share-link" class="share-btn" onclick="copyPageLink();return false" title="复制本页独立地址，点击即可直达">🔗 分享地址</button>
   <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
   <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>

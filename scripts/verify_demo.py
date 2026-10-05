@@ -134,6 +134,56 @@ else:
     else:
         ok('articles/index: all hrefs resolve')
 
+# ── 「最后更新」时间带：登记源 → 产物 一一对账 ──
+# 不变量：① 页面上出现的每个「最后更新：」日期必能在 YAML 注册表找到同值（禁凭空日期）；
+#         ② 注册表声明 updated_at 者产物必显；③ 未注册者产物时间带须为空（不得以构建时间冒充内容更新时间）；
+#         ④ 日期须为 ISO YYYY-MM-DD。
+import re as _re
+import yaml as _yaml
+_reg = _yaml.safe_load(open(os.path.join(ROOT, 'data', 'translation', 'standalone_articles.yaml'), encoding='utf-8')) or {}
+_decl = {}
+for _o in (_reg.get('others') or []):
+    if _o.get('updated_at'):
+        _decl[_o['id']] = str(_o['updated_at'])
+_ts = _yaml.safe_load(open(os.path.join(ROOT, 'data', 'translation', 'topic_studies.yaml'), encoding='utf-8')) or {}
+for _a in (_ts.get('articles') or []):
+    if _a.get('id') and _a.get('updated_at'):
+        _decl[_a['id']] = str(_a['updated_at'])
+_badfmt = {k: v for k, v in _decl.items() if not _re.fullmatch(r'\d{4}-\d{2}-\d{2}', v)}
+if _badfmt:
+    fail(f'articles updated_at: 非 ISO 日期 {sorted(_badfmt)}')
+else:
+    ok(f'articles updated_at: {_len if False else len(_decl)} 条声明皆为 ISO YYYY-MM-DD')
+_orph, _miss = [], []
+for _id, _v in sorted(_decl.items()):
+    _p = os.path.join(ARTICLES, _id + '.html')
+    if not os.path.exists(_p):
+        _miss.append(_id + '(page absent)')
+        continue
+    _h = open(_p, encoding='utf-8').read()
+    _m = _re.search(r'<span class="art-updated">(.*?)</span>', _h, _re.S)
+    _shown = (_m.group(1).strip() if _m else '')
+    if _v not in _shown:
+        _miss.append(f'{_id}(声明 {_v} / 产物 {_shown or "空"})')
+for _obj in sorted(os.listdir(ARTICLES)):
+    if not _obj.endswith('.html') or _obj == 'index.html':
+        continue
+    _id = _obj[:-5]
+    if _id in _decl:
+        continue
+    _h = open(os.path.join(ARTICLES, _obj), encoding='utf-8').read()
+    for _d in _re.findall(r'<span class="art-updated">([^<]*最后更新[^<]*)</span>', _h):
+        if _d.strip():
+            _orph.append(f'{_id}:{_d.strip()}')
+if _orph:
+    fail(f'articles updated_at: 未注册却显时间 {_orph}')
+else:
+    ok('articles updated_at: 无未注册而显时间者')
+if _miss:
+    fail(f'articles updated_at: 声明与产物不符 {_miss}')
+else:
+    ok(f'articles updated_at: {_len if False else len(_decl)} 条声明与产物一一对账')
+
 for obj in sorted(os.listdir(ARTICLES)):
     if not obj.endswith('.html') or obj == 'index.html':
         continue
