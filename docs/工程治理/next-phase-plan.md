@@ -1884,7 +1884,8 @@ python scripts/verify_demo.py
 ### 四·验证与终态
 
 - 构建 **36 files｜23 664 485 B**（较 L.86 增 22 479 B）。独立文章 **25 → 26 篇**，经论慢步组 3 → **4 篇**。
-- **两关全绿**：erify_demo **✅ ALL CHECKS PASSED**（含构建产物 JS 语法校验）；	est_pipeline **ALL TESTS PASSED**。
+- **两关全绿**：
+erify_demo **✅ ALL CHECKS PASSED**（含构建产物 JS 语法校验）；	est_pipeline **ALL TESTS PASSED**。
 - Chrome DOM 实测：总纲页 **h1 正确、2 表 42 行、待开标记 76／进行中 4、体例声明与校记皆在**；世主妙严品页**未完备声明已渲染、h1 已降格、CBETA 链接 7 处**；目录页**经论慢步组在位、7 分节、总纲卡已入**。
 - **本批提交**：仅本地 commit，**不 push**。
 
@@ -2994,6 +2995,15 @@ L.102 遗留之「四组未查项」（卷二五神／卷四十三个主某神�
 ---
 
 ## L.107 世主妙严品专书全量学术校勘＋常设门禁立桩（`verify_shizhu.py` 五道＋反向 10/10）＋三处门禁自身缺陷之如实修正（2026-10-04）
+
+### L.108　世主妙严品·用字计数按剥校勘口径重订＋出处系误标订正【收尾】
+
+- 完成点：① §1.5 三版用字表以「卷一至卷五·剥控制符/<note>/<app>」口径重测重写，区分正文/CBETA 校勘层，补裸「毘盧」卷七 1 见，正「徧」属校勘层；② §2.7 毘盧串剥校勘口径 120（118+1+1）、含校勘 124，两口径并列，舍那系 8 不变；③ 附录一「承佛威力/威神/神力」按 T279 逐卷实测订正，交叉引用指向〔1.5〕；④ L395/L407 来源系误标订正：澄观乙类四书本地无底本，不以未获立证，撤回「菩提場樹王」全库 0 見、误系之「此云不害國」（实出李通玄）三条，改以甲类（T1733/T1739/X0223）实勘为据，保留暂不强断并加厚〔待核〕；⑤ _audit_zixing.py PAIRS 修正。
+- 验证：verify_demo ALL CHECKS PASSED（shizhu 专书＋反向 10/10）｜test_pipeline ALL PASSED｜_audit_jingwen checked=1023 miss=0｜_roll_verify checked=763 misses=0｜verify_imagery 26 项 OK｜verify_sources 76/100 T0=0｜node --check JS OK｜build 36/27,004,550 B｜git diff --check 0。
+- 变更文件：docs/经学文献/华严经细读_第一部_世主妙严品.md、scripts/_audit_zixing.py、web/demo/articles/shizhu-miaoyan.html、web/demo/articles/index.html
+- 提交：f623a47
+- 遗留：T2/T3 其余项（L395 澄观三条出处·L406 巻第五竟补充、6.13/2.12/2.13/6.14 EN、6.6 偈次、3.5「五类」、3.11 须夜摩卷次、L1760 𪗇、4.2 倒序、附录六 6.3 补李通玄、十位冠普之校、繁简混入/Markdown 嵌套/表格失衡）待续；浏览器真机渲染未验收；缺 T09n0278.xml/T10n0293.xml、B0002 定位未定。
+
 
 **根问题**：L.106 之前，本专书之校勘依据**全为一次性 scratch 脚本**（`_audit_jingwen.py`／`_roll_verify.py`／`hyq*.py`／`fix_t*.py`），既不常设、不可重跑，结论亦无法被后续批次复现；且多轮「查无原文」之判**因归一方法有误而误报**。本批立唯一权威实测口径、修全部已证伪之引文与数字、并把核验固化为常设门禁。
 
