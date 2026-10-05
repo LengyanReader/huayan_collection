@@ -111,7 +111,50 @@ for t, title in zip(TABS, TAB_TITLES):
         fail(f'{t}: size {len(html):,} too small')
     else:
         ok(f'{t}: size {len(html):,} bytes')
-    print()
+# ─── 海云修行体系实证库门禁（源文档级）────────────────────────────
+# 与世主妙严品门禁同理：作用于 Markdown 源文档 + YAML 实证库，非构建产物。
+# 两道：①verify_haiyun_evidence.py 逐条回源（行号＋字串，信度与台账对账）
+#       ②verify_haiyun_draft.py     草稿↔实证库编号一致、无伪断言回潮
+# 反向验证（scripts/_verify_haiyun_reverse.py）以破坏性变异确认各项断言真能捕获
+# （L109：首轮 6 项盲区——行号容差使偏移通过、下限过松使删条目通过、信度无值域、
+#  否定性记录无下限——皆已修，门禁自身之缺陷亦须如实修正，不可迁就）。
+_hai_gates = [('evidence', 'verify_haiyun_evidence.py'),
+              ('draft', 'verify_haiyun_draft.py')]
+for _tag, _fn in _hai_gates:
+    _g = os.path.join(os.path.dirname(os.path.abspath(__file__)), _fn)
+    if not os.path.exists(_g):
+        fail('%s not found — 海云实证库门禁缺失' % _fn)
+        continue
+    _r = subprocess.run([sys.executable, _g], capture_output=True,
+                        encoding='utf-8', errors='replace')
+    _out = (_r.stdout or '')
+    if _r.returncode != 0 or not _out.strip():
+        for _l in [x for x in _out.splitlines() if x.strip()][-6:]:
+            print('    ' + _l)
+        fail('haiyun: %s 门禁失败（rc=%d）' % (_tag, _r.returncode))
+    else:
+        _line = [l for l in _out.splitlines() if 'ALL CHECKS PASSED' in l]
+        _cnt = [l for l in _out.splitlines() if '条目：' in l]
+        ok('haiyun %s: %s' % (_tag, (_cnt[0].strip() if _cnt else
+                                     (_line[0].strip() if _line else 'ran'))))
+
+_hai_rev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        '_verify_haiyun_reverse.py')
+if not os.path.exists(_hai_rev):
+    print('  SKIP: _verify_haiyun_reverse.py not found')
+else:
+    _r3 = subprocess.run([sys.executable, _hai_rev], capture_output=True,
+                         encoding='utf-8', errors='replace')
+    _out3 = (_r3.stdout or '')
+    if _r3.returncode != 0 or not _out3.strip():
+        for _l in _out3.splitlines()[-8:]:
+            print('    ' + _l)
+        fail('haiyun: 反向验证未全数捕获（rc=%d）' % _r3.returncode)
+    else:
+        _last = [l for l in _out3.splitlines() if '反向验证' in l]
+        ok('haiyun: %s' % (_last[-1].strip() if _last else '反向验证 ran'))
+
+print()
 
 # ── 独立文章页 (articles/<id>.html) ──
 print('Verifying articles/ (standalone article pages)\n')
