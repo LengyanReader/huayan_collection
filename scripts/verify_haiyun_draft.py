@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """草稿 ↔ 实证库 一致性校验（防止正文引用漂移与编号失联）
 
-校验五项：
+校验七项：
   A 正文所引之实证库编号（S1/M4/L2…）皆存在于实证库
   B 正文所引之 file:line 皆与实证库登记一致（抽样：以 `:行号` 形式出现者比对所属文件基名）
   C 实证库每条皆有正文引用（未被使用之条目须显式说明，防「建而不用」的死数据）
   D 关键论断段落皆带信度标记（〔实测〕/〔本文判断〕/〔待核〕/〔存疑〕/〔待比勘〕）
   E 不得残留旧之伪断言（「137 条」「待后续精筛补充」「初筛重点」等）
+  F **T1 比勘编号不悬空**（〔C01〕〔N5〕必存在于 t1_bikan_evidence.yaml）
+  G **T1 引文不得充作法师原话**——凡「—— 法师…」式署名之后若紧跟 T1 之 C 号，
+    即为张冠李戴，属「严禁假信息」，必失败
 
 用法：python scripts/verify_haiyun_draft.py
 """
@@ -27,6 +30,7 @@ DOC = os.environ.get("HAI_DRAFT",
                      "docs/随笔参考/海云继梦法师_复原·重构·建构的修行体系（草稿）.md")
 YML = os.environ.get("HAI_EVIDENCE",
                      "data/research/haiyun_practice_system_evidence.yaml")
+T1 = os.environ.get("HAI_T1", "data/research/t1_bikan_evidence.yaml")
 
 # 正文残留检测：旧版之伪断言与占位语
 STALE = [
@@ -37,7 +41,9 @@ STALE = [
     (u"A·组织性候选", u"旧之伪命中标记（已撤回）"),
     (u"待补入实证库", u"引文尚未入库（须入库后方可引）"),
 ]
-MUST_MARK = re.compile(u"〔实测|本文判断|待核|存疑|待比勘|待证|已查|查无|盲区|待补|体例|方法|重要|局限〕")
+# 〔L109·增〕并入 T1 比勘之标记语：「比勘」「T1」「否定记录」「结论」「分源」
+#   「已定」——§5.1–5.6 之分析段落皆以此等标记，非「无标记之论断」。
+MUST_MARK = re.compile(u"〔实测|本文判断|待核|存疑|待比勘|待证|已查|查无|盲区|待补|体例|方法|重要|局限|比勘|T1|否定记录|结论|分源|已定|排除|勾稽")
 
 
 def main():
@@ -112,6 +118,40 @@ def main():
     if unmarked:
         notes.append(u"D 有 %d 个较长段落未见信度标记（须人工确认是否为纯过渡句）"
                      % unmarked)
+
+    # ── F/G T1 比勘编号不悬空·且不得冒充法师原话 ────────────────
+    t1_ids, t1_negs = set(), set()
+    if os.path.exists(T1):
+        t1 = io.open(T1, "r", encoding="utf-8").read()
+        head = t1.split("negative_findings:")[0]
+        t1_ids = set(re.findall(u"(?m)^  - id: (C\\d{2})$", head))
+        t1_negs = set(re.findall(u"(?m)^  - id: (N\\d+)$",
+                                 t1.split("negative_findings:")[1]
+                                 .split("conclusions:")[0]))
+        # 正文所引之 T1 编号（〔C01〕〔C01–C05〕〔N5〕〔T1 否定记录 N5、N7〕）
+        t1_cited = set()
+        for m in re.finditer(u"〔([^〕]{0,60})〕", doc):
+            g = m.group(1)
+            t1_cited.update(re.findall(u"\\bC(\\d{2})\\b", g))
+            t1_cited.update(u"C" + x for x in re.findall(u"\\bC(\\d{2})\\b", g))
+            t1_cited.update(u"N" + x for x in re.findall(u"\\bN(\\d{1,2})\\b", g))
+        # 只保留形如 Cxx / Nx 的（避免把「N5」误当别的）
+        t1_cited = set(c for c in t1_cited
+                       if re.match(u"^[CN]\\d{1,2}$", c))
+        miss_t1 = sorted(t1_cited - t1_ids - t1_negs)
+        if miss_t1:
+            fails.append(u"F 正文引用了 T1 库不存在之编号：%s" % u"、".join(miss_t1))
+        else:
+            notes.append(u"F T1 编号引用：%s（共 %d 个编号）"
+                         % (u"、".join(sorted(t1_cited)), len(t1_cited)))
+    else:
+        notes.append(u"F 【T1 库缺失】%s，比勘编号无从校验" % T1)
+
+    # G 张冠李戴：「—— 法师…」后紧跟 T1 之 C 号 → 把祖典当法师原话
+    for lineno, line in enumerate(doc.split(u"\n"), 1):
+        if re.search(u"—\\s*[^\\n]{0,12}法师[^\\n]{0,30}〔[^〕]*\\bC\\d{2}", line):
+            fails.append(u"G L%d 疑将 T1 祖典引文署名于法师（「%s」）"
+                         % (lineno, line.strip()[:60]))
 
     print(u"草稿：%s（%d 行）" % (DOC, len(doc.splitlines())))
     print(u"实证库引用：%d 处，涉 %d/%d 条" % (len(cited), len(used), len(lib_ids)))

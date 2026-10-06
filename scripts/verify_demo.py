@@ -154,6 +154,51 @@ else:
         _last = [l for l in _out3.splitlines() if '反向验证' in l]
         ok('haiyun: %s' % (_last[-1].strip() if _last else '反向验证 ran'))
 
+# ─── T1 比勘门禁（祖典原文级·L.109 立）────────────────────────────
+# 〔分源〕T0 ＝ 法师原话库（haiyun_practice_system_evidence.yaml）
+#         T1 ＝ 祖典引文库（t1_bikan_evidence.yaml）——**分源立册**，
+#         二者不可互相顶替：T1 之引文**不得**充作法师原话。
+# 三道：①t1_quote.py --check   27 条引文逐字回源（行号＋归一字位）
+#       ②verify_t1_bikan.py    台账对账六项（计数／连号／字段／否定记录／结论／引用不悬空）
+#       ③_verify_t1_reverse.py 破坏性变异反向验证（职责分离：指派应捕获之门禁）
+_t1_gates = [('quote', ['t1_quote.py', '--check',
+                        'data/research/t1_bikan_evidence.yaml']),
+             ('bikan', ['verify_t1_bikan.py'])]
+for _tag, _argv in _t1_gates:
+    _g = os.path.join(os.path.dirname(os.path.abspath(__file__)), _argv[0])
+    if not os.path.exists(_g):
+        fail('%s not found — T1 比勘门禁缺失' % _argv[0])
+        continue
+    _r = subprocess.run([sys.executable, _g] + _argv[1:], capture_output=True,
+                        encoding='utf-8', errors='replace')
+    _out = (_r.stdout or '')
+    # 〔防假绿〕非 ASCII 输出遇 locale 解码失败时 rc 仍为 0 而 stdout 为空
+    if _r.returncode != 0 or not _out.strip():
+        for _l in [x for x in _out.splitlines() if x.strip()][-6:]:
+            print('    ' + _l)
+        fail('t1: %s 门禁失败（rc=%d）' % (_tag, _r.returncode))
+    else:
+        _line = [l for l in _out.splitlines() if 'ALL CHECKS PASSED' in l]
+        _cnt = [l for l in _out.splitlines() if '引文' in l and '失配' in l]
+        ok('t1 %s: %s' % (_tag, (_cnt[-1].strip() if _cnt else
+                                   (_line[-1].strip() if _line else 'ran'))))
+
+_t1_rev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       '_verify_t1_reverse.py')
+if not os.path.exists(_t1_rev):
+    print('  SKIP: _verify_t1_reverse.py not found')
+else:
+    _r4 = subprocess.run([sys.executable, _t1_rev], capture_output=True,
+                         encoding='utf-8', errors='replace')
+    _out4 = (_r4.stdout or '')
+    if _r4.returncode != 0 or not _out4.strip():
+        for _l in _out4.splitlines()[-8:]:
+            print('    ' + _l)
+        fail('t1: 反向验证未全数捕获（rc=%d）' % _r4.returncode)
+    else:
+        _last4 = [l for l in _out4.splitlines() if '反向验证' in l]
+        ok('t1: %s' % (_last4[-1].strip() if _last4 else '反向验证 ran'))
+
 print()
 
 # ── 独立文章页 (articles/<id>.html) ──

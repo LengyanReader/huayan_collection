@@ -50,3 +50,8 @@ docs/草稿/*
 
 node_modules
 .tmp_*.json
+# 〔L109〕T1 比勘之构建中间件（.frag 由 Python 直写、.txt 为旧法遗留）
+.tmp_*.frag
+.tmp_*.txt
+.tmp_*.yaml
+data/research/t1_bikan_evidence.yaml.bak
