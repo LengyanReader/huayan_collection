@@ -118,6 +118,14 @@ def main():
             die("conclusions 缺 sec %s" % s, fails)
 
     print("F 引用不悬空")
+    # 〔L.113·防重犯〕否定记录之 ID 前缀已由 N# 改为 T1N#（以与 T0 库之
+    # N# 相区别，见「命名空间」段）。**若此处仍用 `ref.startswith("N")`，
+    # 则 T1N# 一律不以其首字母开头 → 此断言整条成为死码**，
+    # 「结论引用悬空」之变异将**不被捕获而反向验证假绿**（本轮实测果然如此：
+    # 改名后 `_verify_t1_reverse.py` 由 8/8 退为 6/8 而无人察觉）。
+    # 故此处**不用前缀判断，改用正则**，新旧两式皆纳：
+    #   ^(?:T1)?N\d+$  —— 旧号 N# 与新号 T1N# 皆可，且**不误纳** C 引文。
+    NEGID = re.compile(r"^(?:T1)?N\d+$")
     for b in re.split(r"\n  - sec: ", con):
         m = re.search(r"^    依: \[(.+)\]$", b, re.M)
         if not m:
@@ -125,7 +133,7 @@ def main():
         for ref in [x.strip() for x in m.group(1).split(",")]:
             if ref.startswith("C") and ref not in ids:
                 die("结论引用不存在的引文 %s" % ref, fails)
-            if ref.startswith("N") and ref not in nids:
+            if NEGID.match(ref) and ref not in nids:
                 die("结论引用不存在的否定记录 %s" % ref, fails)
 
     print("\n引文 %d／否定记录 %d／结论 %d 节"

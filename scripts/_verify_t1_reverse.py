@@ -7,6 +7,7 @@
 """
 import io
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -29,13 +30,18 @@ TMP = ".tmp_t1_mut.yaml"
 #   故改为逐项**指派应捕获之门禁**。另：初版以「失配」二字判命中，
 #   而「失配 0 条」亦含此二字 → 恒假命中；改以「ALL CHECKS PASSED 不出现」
 #   且 rc≠0 为准。
+# 〔L.114·自纠·老化型假绿〕台账锚点原**写死** `"    total: 27"`。
+#   库据实增至 31 后，锚点失配 → 变异为空操作 → SKIP → 反向验证误报 FAIL。
+#   病不在数据而在锚点：**锚点随数据写死，等于门禁在数据合法增长后静默失效**。
+#   故台账类锚点改为占位符 `@TOTAL@`，运行时自库解析现行值再加一。
+#   〔前置断言「锚点不存在即不算通过」仍保留〕——只是不再让「写死的数字」冒充锚点。
 MUT = [
-    ("台账 total 谎报", "    total: 27", "    total: 28", "bikan"),
+    ("台账 total 谎报", "@TOTAL@", "@TOTAL_BOGUS@", "bikan"),
     ("分节计数谎报", '      "5.2": 9', '      "5.2": 8', "bikan"),
     ("引文改一字", 'quote: "遊入故號門也"', 'quote: "遊入故號門耶"', "quote"),
     ("行号偏移", "    src_line: 2432", "    src_line: 2433", "quote"),
-    ("否定记录删除", "  - id: N8", "  - id: X8", "bikan"),
-    ("结论引用悬空", "依: [C01, C02, N5, N7]", "依: [C01, C02, N5, N99]", "bikan"),
+    ("否定记录删除", "  - id: T1N4", "  - id: XT1N4", "bikan"),
+    ("结论引用悬空", "依: [C01, C02, T1N1, T1N3]", "依: [C01, C02, T1N1, T1N99]", "bikan"),
     ("结论缺一节", '  - sec: "5.5"', '  - sec: "9.9"', "bikan"),
     ("id 断号", "  - id: C14", "  - id: X14", "bikan"),
 ]
@@ -54,8 +60,19 @@ def run(cmd):
 
 def main():
     orig = io.open(LIB, encoding="utf-8").read()
+    # 占位符解析：现行 total 自库读出，bogus 取其 +1（必与实际条数不等）
+    m = re.search(r"^    total: \d+$", orig, re.M)
+    if not m:
+        print("FAIL：库中未见 meta.counts.total——台账变异无从施加")
+        return 1
+    RES = {
+        "@TOTAL@": m.group(0),
+        "@TOTAL_BOGUS@": "    total: %d" % (int(m.group(0).rsplit(":", 1)[1]) + 1),
+    }
     passed = 0
     for name, anchor, repl, gate in MUT:
+        anchor = RES.get(anchor, anchor)
+        repl = RES.get(repl, repl)
         # 〔前置断言〕变异必已生效——否则本项作废而非「通过」
         if anchor not in orig:
             print("  SKIP  %-14s 【锚点不存在，变异未生效——不算通过】" % name)
