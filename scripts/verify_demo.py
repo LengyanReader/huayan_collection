@@ -199,6 +199,35 @@ else:
         _last4 = [l for l in _out4.splitlines() if '反向验证' in l]
         ok('t1: %s' % (_last4[-1].strip() if _last4 else '反向验证 ran'))
 
+# ─── L.111《九九華嚴》OCR 立册门禁 ──────────────────────────────────────
+# 【第四层·语料】T0 ＝ 法师原话（T0 一手栈 docs/huayanhai）
+#         T1 ＝ 祖典引文｜本讲座 OCR 稿为**第四层之待校语料**——
+#         寺方原始字幕已遗失、硬字幕影像还原、时间码 ±1s、含幻燈片文字，
+#         故**不得**充逐字依据；立册与门禁即为此设。
+# 两道：①verify_jj_lectures.py  七道（结构／实测对账／出处可点／校定诚实／
+#         T0 限栈／否定记录／越界断言／月份自洽）
+#       ②_verify_jj_reverse.py  八类破坏性变异（职责分离：异文件执行）
+_jj_gate = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        'verify_jj_lectures.py')
+_jj_rev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       '_verify_jj_reverse.py')
+for _tag, _p in (('门禁', _jj_gate), ('反向', _jj_rev)):
+    if not os.path.exists(_p):
+        fail('%s not found — 九九華嚴 OCR 立册门禁缺失' % os.path.basename(_p))
+        continue
+    _r5 = subprocess.run([sys.executable, _p], capture_output=True,
+                         encoding='utf-8', errors='replace')
+    _out5 = (_r5.stdout or '')
+    # 〔防假绿〕stdout 空亦计失败（locale 解码失败时 rc 仍 0，见 L.105）
+    if _r5.returncode != 0 or not _out5.strip():
+        for _l in _out5.splitlines()[-8:]:
+            print('    ' + _l)
+        fail('jj: %s 失败（rc=%d）' % (_tag, _r5.returncode))
+    else:
+        _last5 = [l for l in _out5.splitlines()
+                  if 'ALL CHECKS PASSED' in l or '反向验证' in l]
+        ok('jj %s: %s' % (_tag, (_last5[-1].strip() if _last5 else 'ran')))
+
 print()
 
 # ── 独立文章页 (articles/<id>.html) ──

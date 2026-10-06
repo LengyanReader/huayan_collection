@@ -1,0 +1,278 @@
+# 《九九華嚴》華嚴經弘法講座（2026）· OCR 重建稿 —— 立册与质量实测
+#   （集数**自动发现**：交付者明言讲座尚未完結，故此处不写死「12 集」）
+# ---------------------------------------------------------------------------
+# 〔L.111 立〕本文件之全部数字由 `scripts/jj_ocr_audit.py` **实测**生成
+#   （`--json` → 本生成器），**不得手录**。
+#
+# 【性質·最重要】**OCR 重建稿 · 待校定**。寺方原始字幕稿件已遺失，
+#   画面內硬字幕（hardsub）為唯一存續形態，本稿係影像層還原。
+#   故：**不得**以本稿作逐字引证之最终依据；引用须标〔OCR 待校〕，
+#   或**先与讲义／录音互证校定**（交付者明言「三源互证另行进行」）。
+#
+# 【授权】交付者（華嚴弟子·維護者）自述「已獲寺方授權，用途為傳播正法」。
+#   ——此為**交付者陳述**，**授权書未見**〔待核〕；权利状态依
+#   `harness/compliance.md` §三/§四 R1 登记。
+#
+# 【與既有語料之關係】`docs/huayanhai/` 645 篇之「九九华严」條目**僅 1 件**
+#   （`菩萨问明品是下手处_1.txt`，66 汉字，2025-12），且係**另一讲题之摘录**，
+#   非本講座內容。故本講座為**語料新增**，非既有語料之重複。
+
+meta:
+  source: "大华严寺官方 YouTube（@huayen-world）· 華嚴經弘法講座《九九華嚴》"
+  venue: "台北國際會議中心"
+  period: "2026　依逐集實測月份：4月(第2/3集)、5月(第4/5/6集)、6月(第7/8/9集)、7月(第10/11/12集)"
+  episodes: 12
+  nature: "OCR 重建稿 · 待校定（寺方原始字幕稿件已遺失，硬字幕為唯一存續形態）"
+  provenance: "交付者自述：yt-dlp 720p → ffmpeg 1fps 裁字幕帶 → IoU 掩碼去重 → PaddleOCR(PP-OCRv6 繁中)；生成日期 2026-09-30"
+  license_claim: "交付者（華嚴弟子）自述已獲寺方授權，用途為傳播正法 —— **授权書未見**〔待核〕"
+  completeness: "本册所收 12 集為現有交付之全部；講座本身**尚未完結**，交付者語「後續會持續更新」"
+
+# ── 實測台帳（數字全部來自 jj_ocr_audit.py，不得手改）──────────
+measured:
+  consistency: "md／srt／html 三產物字幕條數相符：12/12 集"
+  coverage_min: 0.9842
+  coverage_max: 0.9976
+  coverage_mean: 0.9933
+  total_cues: 36670
+  total_han_chars: 325415
+  total_hours: 32.66
+  head_garbage_cues: 47
+  pipe_cues: 2256
+  latin_cues: 876
+  latin_only_cues: 161
+  simp_cues: 369
+  short_cues: 625
+
+# ── 逐集台帳 ───────────────────────────────────────────────
+episodes_detail:
+  - ep: 1
+    title: "九九華嚴第1集"
+    video_id: "aNIhhEfXSUE"
+    url: "https://www.youtube.com/watch?v=aNIhhEfXSUE"
+    src: "docs/hy_refs/sub_extract/delivery/ep01.md"
+    declared_sec: 5872
+    covered_sec: 5779
+    coverage: 0.9842
+    cues: 1728
+    han_chars: 17371
+    pipe_cues: 221
+    calibration: "待校定"
+  - ep: 2
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 2 集  #2026 #4月 #台北國際會議中心"
+    video_id: "Z5QNzrCi990"
+    url: "https://www.youtube.com/watch?v=Z5QNzrCi990"
+    src: "docs/hy_refs/sub_extract/delivery/ep02.md"
+    declared_sec: 8200
+    covered_sec: 8137
+    coverage: 0.9923
+    cues: 2632
+    han_chars: 23802
+    pipe_cues: 202
+    calibration: "待校定"
+  - ep: 3
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 3 集 #2026 #4月 #台北國際會議中心"
+    video_id: "h5gOAne5G24"
+    url: "https://www.youtube.com/watch?v=h5gOAne5G24"
+    src: "docs/hy_refs/sub_extract/delivery/ep03.md"
+    declared_sec: 8869
+    covered_sec: 8814
+    coverage: 0.9938
+    cues: 2881
+    han_chars: 24381
+    pipe_cues: 230
+    calibration: "待校定"
+  - ep: 4
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 4 集 #2026 #5月 #台北國際會議中心"
+    video_id: "jVkDHV483iQ"
+    url: "https://www.youtube.com/watch?v=jVkDHV483iQ"
+    src: "docs/hy_refs/sub_extract/delivery/ep04.md"
+    declared_sec: 11061
+    covered_sec: 10978
+    coverage: 0.9925
+    cues: 3415
+    han_chars: 28408
+    pipe_cues: 63
+    calibration: "待校定"
+  - ep: 5
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 5 集 #2026 #5月 #台北國際會議中心"
+    video_id: "HjrdWNvah4w"
+    url: "https://www.youtube.com/watch?v=HjrdWNvah4w"
+    src: "docs/hy_refs/sub_extract/delivery/ep05.md"
+    declared_sec: 10712
+    covered_sec: 10643
+    coverage: 0.9936
+    cues: 3652
+    han_chars: 31904
+    pipe_cues: 249
+    calibration: "待校定"
+  - ep: 6
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 6 集 #2026 #5月 #台北國際會議中心"
+    video_id: "yU7pjzNCc98"
+    url: "https://www.youtube.com/watch?v=yU7pjzNCc98"
+    src: "docs/hy_refs/sub_extract/delivery/ep06.md"
+    declared_sec: 10020
+    covered_sec: 9996
+    coverage: 0.9976
+    cues: 3170
+    han_chars: 30081
+    pipe_cues: 337
+    calibration: "待校定"
+  - ep: 7
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 7 集 #2026 #6月 #台北國際會議中心"
+    video_id: "wmKHsCmaYVc"
+    url: "https://www.youtube.com/watch?v=wmKHsCmaYVc"
+    src: "docs/hy_refs/sub_extract/delivery/ep07.md"
+    declared_sec: 10366
+    covered_sec: 10271
+    coverage: 0.9908
+    cues: 3041
+    han_chars: 24432
+    pipe_cues: 21
+    calibration: "待校定"
+  - ep: 8
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 8 集 #2026 #6月 #台北國際會議中心"
+    video_id: "JCOA1fCQsi0"
+    url: "https://www.youtube.com/watch?v=JCOA1fCQsi0"
+    src: "docs/hy_refs/sub_extract/delivery/ep08.md"
+    declared_sec: 10330
+    covered_sec: 10280
+    coverage: 0.9952
+    cues: 2870
+    han_chars: 24408
+    pipe_cues: 106
+    calibration: "待校定"
+  - ep: 9
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 9 集 #2026 #6月 #台北國際會議中心"
+    video_id: "Q310uDRGfk0"
+    url: "https://www.youtube.com/watch?v=Q310uDRGfk0"
+    src: "docs/hy_refs/sub_extract/delivery/ep09.md"
+    declared_sec: 10802
+    covered_sec: 10770
+    coverage: 0.9970
+    cues: 2968
+    han_chars: 24170
+    pipe_cues: 64
+    calibration: "待校定"
+  - ep: 10
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 10 集 #2026 #7月 #台北國際會議中心"
+    video_id: "e6_1t2-3TF8"
+    url: "https://www.youtube.com/watch?v=e6_1t2-3TF8"
+    src: "docs/hy_refs/sub_extract/delivery/ep10.md"
+    declared_sec: 10449
+    covered_sec: 10418
+    coverage: 0.9970
+    cues: 3264
+    han_chars: 31511
+    pipe_cues: 296
+    calibration: "待校定"
+  - ep: 11
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 11 集 #2026 #7月 #台北國際會議中心"
+    video_id: "47GWFvcytws"
+    url: "https://www.youtube.com/watch?v=47GWFvcytws"
+    src: "docs/hy_refs/sub_extract/delivery/ep11.md"
+    declared_sec: 10510
+    covered_sec: 10433
+    coverage: 0.9927
+    cues: 3417
+    han_chars: 33006
+    pipe_cues: 281
+    calibration: "待校定"
+  - ep: 12
+    title: "華嚴教海 | 華嚴經弘法講座《九九華嚴》| 第 12 集 #2026 #7月 #台北國際會議中心"
+    video_id: "PNKB2nHp-IE"
+    url: "https://www.youtube.com/watch?v=PNKB2nHp-IE"
+    src: "docs/hy_refs/sub_extract/delivery/ep12.md"
+    declared_sec: 10392
+    covered_sec: 10319
+    coverage: 0.9930
+    cues: 3632
+    han_chars: 31941
+    pipe_cues: 186
+    calibration: "待校定"
+
+# ── 否定性記錄（比勘須雙向：除「有何用」亦須記「有何不可用」）────────
+negative_findings:
+
+  - id: N-JJ1
+    key: 跨源互證不可行（非「兩源不一致」）
+    probe: 以 delivery 全部各集逐句（去漢字、去標點、長度 ≥8）檢索 docs/huayanhai 內「九九华严」路徑下全部文本
+    result: 命中 0/856（0.000%）；惟比對語料僅 1 件／66 漢字，且內容係**另一讲题**（菩萨问明品是下手处）之摘录
+    判读: >-
+      **不可**表述为「OCR 稿与既有语料一致」或「两源不一致」——比對語料僅 66 漢字，
+      根本不足以互證。此为**「檢索未及／無可互證之对象」**，非實測所得之矛盾。
+      欲真互證，須取得同一場次之講義或錄音（〔待补〕）。
+
+  - id: N-JJ2
+    key: 既有語料未覆蓋本講座
+    probe: 遍歷 docs/huayanhai/export_manifest.json 645 條，檢其 category／htmlPath 含「九九华严」者
+    result: 僅 1 條（`菩萨问明品是下手处_1.html`，category `/华严云海/浩瀚华严海/九九华严/摘录/`）
+    判读: >-
+      本講座現有 12 集（約 32.7 小時／325415 漢字）為**新增語料**，
+      现有 645 篇語料**未覆蓋**。故不可據既有語料之結論推及本講座，
+      反之亦然——二者分屬不同場次，须分源立册、分源判读。
+
+  - id: N-JJ3
+    key: 「 | 」之義為幻燈片＋口播拼接，**非**雙軌 OCR
+    probe: 統計含「 | 」之字幕條數；並與交付者報告「五·已知瑕疵清單」第 2 條對照
+    result: 含「 | 」者 2256 條（佔全部 6.2%）
+    判读: >-
+      交付者已明言：「幻燈片時段帶內多行文字以「 | 」拼接，非純口播字幕」。
+      故「 | 」**左／右兩側語義不同**（幻燈片投影文字 vs 口播字幕），
+      **不可**當作兩路 OCR 互校之依据（**此為本批一度之誤判，已撤回**）。
+      凡引用本講記内容，**须先剥离**幻燈片文字，否則即以投影字冒充法師語。
+
+  - id: N-JJ4
+    key: 覆蓋率缺口 0.2%–1.6%，成因未核
+    probe: 逐集比較「html 声明時長」与「末條時間戳」
+    result: 最低 98.4%／最高 99.8%／均值 99.3%；缺口約 1–3 分鐘
+    判读: >-
+      **不可**稱本講記「完整」。缺口成因〔待核〕——可能為片尾無字幕、片尾幻燈片，
+      亦可能為漏提。**未定即不臆断**；引用時须留意末尾數分鐘可能缺漏。
+
+  - id: N-JJ5
+    key: 片頭動畫幀亂碼
+    probe: 統計時間碼 < 40 秒之字幕條數（依交付者自述此段可整段丟棄）
+    result: 47 條
+    判读: >-
+      已實測為**少量**（佔 0.13%），且交付者已指明可丟。校定時整段刪除即可，
+      無實質損失。此為**已解決**之瑕疵，非待辦。
+
+# ── 限度（邊界自知 · 局限留檔）────────────────────────────────────────
+limits:
+  - 性質: 本稿為**影像層還原**，非語詞級校定；交付者明言「與講義、錄音的語詞級校定（三源互證）另行進行」
+  - 時間碼: 精度 ±1s（交付者自述）；快語速換句**可能丟首字**——故**逐字引證須以音／講義覆核**
+  - 幻燈片: 2256 條含投影文字，引用前须剥离（N-JJ3）
+  - 簡繁: 實測 369 條含簡體字（1.0%），校定時須統一；本工具**只判有無，不作轉換**（未用 OpenCC）
+  - 拉丁混入: 實測 876 條含拉丁字母、其中 161 條為**純拉丁**（動畫幀／頻道角標殘留）
+  - 片頭: 前 40 秒動畫幀亂碼 47 條，可整段刪（N-JJ5）
+  - 授權: 交付者自述已獲寺方授權，**授权書未見**〔待核〕；見 `harness/compliance.md` §三/§四 R1
+  - 完整性: 本册所收 12 集為**現有交付之全部**，然講座本身**尚未完結**（交付者語：「後續會持續更新」），故本册**非全集**
+
+# ── 使用規則（硬规则 · 與 A 類語料之分野）────────────────────────────────
+usage_rules:
+  - id: U1
+    rule: 本稿**不得**充作 A 類（法师原话逐字回源）之依据；`verify_haiyun_evidence.py` 之 T0 限栈**不含**本路徑
+    理由: OCR 重建 · 待校定 · 時間碼 ±1s · 可能丟首字 · 含幻燈片文字——逐字不可靠
+  - id: U2
+    rule: 引用須逐處標〔OCR 待校〕，或先完成三源互證（講義／錄音／影像）後升級
+  - id: U3
+    rule: 凡引用**教义性关键语**（名号／判教／法门定义），**不得**單憑本稿——须回 T1 祖典或已校定之讲记
+  - id: U4
+    rule: 幻燈片文字（N-JJ3 之「 | 」側）**不得**引作法師語
+  - id: U5
+    rule: 本讲座（2026-04→07）之时间／地点／集数，据 **YouTube 頻道頁面**；交付者自述授权見 compliance.md，非本册自证
+
+# ── 結論（依實測，非依印象）────────────────────────────────────────────
+conclusions:
+  - topic: 可用性
+    判: 可用作**内容索引·主题定位·时间锚点·讲题线索**；不可用作**逐字引证**
+    依据: [U1, U2, N-JJ1, N-JJ3, N-JJ4]
+  - topic: 可复现性
+    判: 提取流水線**可复跑**——md／srt／html 三份产物之字幕条数 12/12 集完全相符
+    依据: [实测·一致性]
+  - topic: 对既有語料之价值
+    判: "**新增约 32.7 小時／325415 漢字**之第一手素材，且为**现有 645 篇未覆盖之最新场次**；对「時間軸」与「2026 年現況」具關鍵價值"
+    依据: [N-JJ2]
+  - topic: 校定優先級
+    判: 若資源有限，**首集（開篇·立論）與末集（收束）優先校定**；中间各集可按引用需要逐集校
+    依据: [实测·集次时长分布]
