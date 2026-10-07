@@ -200,6 +200,17 @@ others:
     label: 前沿对话 · 南予其时
   views:
   - nanyu
+- id: ru-lai-xian-xiang
+  group: 研究·华严细读
+  icon: 📖
+  title: 九九华严第二品 如来现相品
+  title_sub: 细读·第二品（筹备中）
+  updated_at: '2026-10-07'
+  doc: docs/经学文献/华严经细读_第二部_如来现相品.md
+  back:
+    tab: gap
+    label: 华严文献
+  views: article
 group_order:
 - key: 经论茶歇
   icon: 📖
