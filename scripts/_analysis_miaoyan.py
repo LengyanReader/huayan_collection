@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# scratch 文本分析层: network + complex-systems analysis of 世主妙嚴品.
+# scratch 数据科学层: network + complex-systems analysis of 世主妙嚴品.
 # Substrate: canonical ARTICLE_ASSEMBLY (40 classes / 414 members, T279-verified)
 #            + T279 品 continuous text (89k chars).
 # Outputs scripts/_analysis_out.json + human summary.

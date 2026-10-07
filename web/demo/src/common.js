@@ -2198,7 +2198,7 @@ window._reveal = function (el) {
   return el;
 };
 
-// 滚至某 id 元素，并先展开其沿途所有 <details>（供页头「文本分析层/叙事动画」等入口按钮用）。
+// 滚至某 id 元素，并先展开其沿途所有 <details>（供页头「数据科学/叙事动画」等入口按钮用）。
 // 目标 id 传入时不带 '#'。返回是否命中元素。
 window._scrollReveal = function (id) {
   var el = document.getElementById(id);
@@ -2359,7 +2359,7 @@ window._installPageBar = function (opts) {
 };
 
 // ═══ 交互面板默认折叠壳（panel-fold）═══
-// 依用户诉求：文本分析层/会众名号剖面/叙事动画等 JS 交互面板，此前于附录十一之后
+// 依用户诉求：数据科学/会众名号剖面/叙事动画等 JS 交互面板，此前于附录十一之后
 // 恒常「摊开」成独立一节；今一一纳入原生 <details class="fold panel-fold">，默认折叠、
 // 点开方显——与全篇 table-fold 体例归一，且受页首「全页折叠/展开」(_foldPage 切 details.open) 统管。
 // 返回 <details> 之外壳字符串，innerId 为内容渲染目标（各 render* 须注入 '#' + innerId）。

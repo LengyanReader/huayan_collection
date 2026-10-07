@@ -80,7 +80,7 @@ function renderArticle(){
     h+='<div class="section" data-chrome="1" id="article-artifacts" style="border-left:4px solid var(--gold)"></div>';
   }
 
-  //    BI miaoyan_bi.yaml 
+  //    数据科学 miaoyan_bi.yaml 
   try{ if(typeof renderArticleBI==='function') h+=renderArticleBI(); }catch(e){}
 
   //   
@@ -188,15 +188,15 @@ function _applyArticleENMode(){
   if(full) full.classList.toggle('en-hidden', hide);
   if(btn) btn.textContent=hide?' ':' ';
 }/* ============================================================================
- * renderArticleBI  BI 
+ * renderArticleBI  数据科学 
  *
  * 
  *  1.  ARTICLE_BI data/translation/miaoyan_bi.yaml
  *     
  *  2. methodnotecaveattruncation
  *     
- *  3. (assembly)  (EDA)  (BI)
- *      [BI] scorecard 
+ *  3. (assembly)  (EDA)  (数据科学)
+ *      [数据科学] scorecard 
  *  4. 
  * ==========================================================================*/
 function renderArticleBI(){
@@ -239,8 +239,8 @@ function renderArticleBI(){
 
   var h='';
   h+='<section id="bi-report">';
-  h+='<h2>   BI </h2>';
-  h+='<div class="en-line" style="font-size:0.66em;color:var(--text2);margin:-6px 0 10px"> Data Profile  BI Analysis Layer</div>';
+  h+='<h2>   数据科学 </h2>';
+  h+='<div class="en-line" style="font-size:0.66em;color:var(--text2);margin:-6px 0 10px"> Data Profile  数据科学 Analysis Layer</div>';
 
   /* ---------- 0.  ---------- */
   var head='';

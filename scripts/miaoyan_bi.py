@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""世主妙严品会众名号 · BI 式数据分析引擎
+"""世主妙严品会众名号 · 数据科学分析引擎
 
 分层关系（源 → 源）：
     miaoyan_assembly.yaml（经文事实） + miaoyan_eda_lexicon.yaml（析构词表）
         └─ miaoyan_eda.py ─→ miaoyan_eda.yaml（词素层析构结果）
-              └─ miaoyan_bi.py ─→ miaoyan_bi.yaml（★本引擎：BI 式分析层）
+              └─ miaoyan_bi.py ─→ miaoyan_bi.yaml（★本引擎：数据科学分析层）
 
 设计约束（承项目铁律）：
   · 一切数字皆实算，无一处臆造；每个方法皆给出公式、参数与限度。
@@ -1835,22 +1835,22 @@ def build_report() -> Dict[str, Any]:
                         "（← miaoyan_eda.py ← miaoyan_assembly.yaml ＋ miaoyan_eda_lexicon.yaml）",
         "generated_at_source": E.get("generated_by"),
         "disclaimer": {
-            "zh": "⚠️ 体例：本报告为**分析层**产物，非经文陈述。名号之属类、成员、数量出《世主妙严品》"
+            "zh": "⚠️ 体例：本报告为**数据科学层**产物，非经文陈述。名号之属类、成员、数量出《世主妙严品》"
                   "（assembly 层）；词素切分、语义域归属、相似度、聚类、相关、模板诸项皆本站析构"
-                  "（EDA 层与 BI 层）。经文自无「十七语义域」「余弦相似度」「轮廓系数」等名目。"
+                  "（EDA 层与数据科学层）。经文自无「十七语义域」「余弦相似度」「轮廓系数」等名目。"
                   "凡本报告所得，皆可复算而不可直作教义判读；一字一句之义，仍以经文为准。",
             "en": "⚠️ Convention: this report is an analytical product, not a statement of the sutra. "
                   "Class membership, names and counts come from the World-Honoring Splendour Chapter "
                   "(assembly layer); morpheme segmentation, domain assignment, similarity, clustering, "
-                  "correlation and templates are this site's own analysis (EDA and BI layers). The sutra "
+                  "correlation and templates are this site's own analysis (EDA and data-science layers). The sutra "
                   "has no notion of 'seventeen domains', 'cosine similarity' or 'silhouette'. Everything "
                   "here is reproducible but must not be read as doctrinal judgement; for the meaning of "
                   "words, the sutra remains authoritative.",
         },
         "method": {
-            "pipeline_zh": "经文事实（assembly）→ 词素析构（EDA）→ 文本分析（本层）三层分源，逐层可回溯。",
+            "pipeline_zh": "经文事实（assembly）→ 词素析构（EDA）→ 数据科学（本层）三层分源，逐层可回溯。",
             "pipeline_en": "Three separated layers — sutra facts (assembly) → morphemic analysis (EDA) → "
-                           "BI analysis (this layer) — each independently traceable.",
+                           "data-science analysis (this layer) — each independently traceable.",
             "determinism_zh": "凡涉随机处，一律以定种线性同余发生器（LCG）取样，"
                               "禁用 Python random 默认源（其实现版本间可变，会破坏可复现性）。",
             "determinism_en": "All sampling uses a seeded linear congruential generator (LCG); Python's "
@@ -2229,7 +2229,7 @@ def dump_yaml(data: Any, path: str) -> int:
 def summary(R: Dict[str, Any]) -> str:
     L: List[str] = []
     L.append("═" * 68)
-    L.append("世主妙严品会众名号 · 数据报告 (BI 层)")
+    L.append("世主妙严品会众名号 · 数据报告 (数据科学层)")
     L.append("═" * 68)
     sc = R["scorecard"]["items"]
     L.append("【记分卡】")
@@ -2297,7 +2297,7 @@ def summary(R: Dict[str, Any]) -> str:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="世主妙严品会众名号 · BI 式数据报告引擎")
+    ap = argparse.ArgumentParser(description="世主妙严品会众名号 · 数据科学报告引擎")
     ap.add_argument("--check", action="store_true", help="只跑不变量校验，不写盘")
     a = ap.parse_args()
     R = build_report()

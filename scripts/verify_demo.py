@@ -343,29 +343,29 @@ for obj in sorted(os.listdir(ARTICLES)):
                              ('热力矩阵', '热力矩阵')):
             if token not in cjs:
                 bad.append(f'js/common.js 缺 {label}')
-        # 交互面板默认折叠壳（panel-fold）：文本分析层/会众名号剖面/叙事动画须纳入可折叠 <details>，
+        # 交互面板默认折叠壳（panel-fold）：数据科学/会众名号剖面/叙事动画须纳入可折叠 <details>，
         # 由 _foldShellHtml 生成，内容渲染入壳内 *-inner 容器；页首另设「全页折叠/展开」一对统管。
         pf_checks = [
             ('_foldShellHtml 折叠壳', "class=\"fold panel-fold\"" in cjs),
             ('EDA 折叠壳内渲染', "renderArticleEDA('#article-eda-inner')" in html),
-            ('BI 折叠壳内渲染', "_foldShellHtml('bi-report-inner'" in html),
+            ('数据科学折叠壳内渲染', "_foldShellHtml('bi-report-inner'" in html),
             ('叙事动画折叠壳内渲染', "renderMiaoyanNarrative('#article-narrative-inner')" in html),
             ('全页折叠控件', 'function _installPageBar' in cjs or '_installPageBar' in cjs),
         ]
         bad += [c[0] for c in pf_checks if not c[1]]
 
-    # 文本分析层：内嵌 ARTICLE_BI + article.js 内的 renderArticleBI。
+    # 数据科学层：内嵌 ARTICLE_BI + article.js 内的 renderArticleBI。
     # schema 契约：校验「产物实际内嵌之 JSON」含渲染器所读之全部键路径——
     # 前端零硬编码，故键名笔误会静默渲染不出内容（而非报错），必以契约卡住。
     if 'var ARTICLE_BI' in html:
         bi_checks = [
             ('renderArticleBI 渲染器', 'function renderArticleBI' in html),
             ('biGo 入口', 'function biGo' in html),
-            ('BI 入口按钮', 'onclick="biGo()"' in html),
-            ('BI 节容器', 'id="bi-report"' in html),
+            ('数据科学入口按钮', 'onclick="biGo()"' in html),
+            ('数据科学节容器', 'id="bi-report"' in html),
         ]
         bad += [c[0] for c in bi_checks if not c[1]]
-        # 锚定 </script>：BI 脚本仅一条赋值语句，故取「贪婪至最后一个 };」即全量 JSON
+        # 锚定 </script>：数据科学层脚本仅一条赋值语句，故取「贪婪至最后一个 };」即全量 JSON
         # （不可用 };\n 或非贪婪 —— JSON 字符串值内可能含 `};` 之形）
         m = re.search(r'var ARTICLE_BI = (\{.*?\});</script>', html, re.S)
         if not m:
@@ -406,7 +406,7 @@ for obj in sorted(os.listdir(ARTICLES)):
                 if missing:
                     bad.append(f'ARTICLE_BI 契约缺键 {missing}')
                 else:
-                    ok(f'articles/{obj}: BI schema 契约 {len(contract)} 键路径齐备')
+                    ok(f'articles/{obj}: 数据科学 schema 契约 {len(contract)} 键路径齐备')
     if bad:
         fail(f'articles/{obj}: missing {", ".join(bad)}')
     else:
@@ -467,11 +467,11 @@ else:
         else:
             ok(f'js/{_f}: syntax OK')
 
-    # BI 渲染器冒烟测试（node）：renderArticleBI 纯拼字符串、不触 DOM，故可在 node 中实跑。
+    # 数据科学层渲染器冒烟测试（node）：renderArticleBI 纯拼字符串、不触 DOM，故可在 node 中实跑。
     # 仅 --check 语法不足以证其可运行 —— 键名笔误、类型误判皆为静默失败（渲染不出内容而不报错）。
     _smoke = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'verify_bi_render.js')
     if not _node:
-        print('  SKIP: node not found — BI render smoke test skipped')
+        print('  SKIP: node not found — data-science render smoke test skipped')
     elif not os.path.exists(_smoke):
         print('  SKIP: verify_bi_render.js not found')
     else:
@@ -483,9 +483,9 @@ else:
                 continue
             _r = subprocess.run([_node, _smoke, _p], capture_output=True, text=True)
             if _r.returncode != 0:
-                fail(f'articles/{_t}: BI render — {(_r.stderr or "").strip().splitlines()[-1]}')
+                fail(f'articles/{_t}: data-science render — {(_r.stderr or "").strip().splitlines()[-1]}')
             else:
-                ok(f'articles/{_t}: BI render — {(_r.stdout or "").strip()}')
+                ok(f'articles/{_t}: data-science render — {(_r.stdout or "").strip()}')
 
     # 叙事动画播放器冒烟测试（node）：MiaoyanNarrative 触 DOM/Canvas，故以最小
     # DOM+Canvas 桩实跑，驱动播放/暂停/步进/跳拍/进度/倍速/图层诸控件，并校验环位

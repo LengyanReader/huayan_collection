@@ -7,17 +7,17 @@ generated_by: scripts/miaoyan_bi.py ← data/translation/miaoyan_eda.yaml（← 
   ＋ miaoyan_eda_lexicon.yaml）
 generated_at_source: scripts/miaoyan_eda.py（源：miaoyan_assembly.yaml + miaoyan_eda_lexicon.yaml）
 disclaimer:
-  zh: ⚠️ 体例：本报告为**分析层**产物，非经文陈述。名号之属类、成员、数量出《世主妙严品》（assembly 层）；词素切分、语义域归属、相似度、聚类、相关、模板诸项皆本站析构（EDA 层与
-    BI 层）。经文自无「十七语义域」「余弦相似度」「轮廓系数」等名目。凡本报告所得，皆可复算而不可直作教义判读；一字一句之义，仍以经文为准。
+  zh: ⚠️ 体例：本报告为**数据科学层**产物，非经文陈述。名号之属类、成员、数量出《世主妙严品》（assembly 层）；词素切分、语义域归属、相似度、聚类、相关、模板诸项皆本站析构（EDA 层与
+    数据科学层）。经文自无「十七语义域」「余弦相似度」「轮廓系数」等名目。凡本报告所得，皆可复算而不可直作教义判读；一字一句之义，仍以经文为准。
   en: '⚠️ Convention: this report is an analytical product, not a statement of the sutra. Class membership,
     names and counts come from the World-Honoring Splendour Chapter (assembly layer); morpheme segmentation,
     domain assignment, similarity, clustering, correlation and templates are this site''s own analysis
-    (EDA and BI layers). The sutra has no notion of ''seventeen domains'', ''cosine similarity'' or ''silhouette''.
+    (EDA and data-science layers). The sutra has no notion of ''seventeen domains'', ''cosine similarity'' or ''silhouette''.
     Everything here is reproducible but must not be read as doctrinal judgement; for the meaning of words,
     the sutra remains authoritative.'
 method:
-  pipeline_zh: 经文事实（assembly）→ 词素析构（EDA）→ 文本分析（本层）三层分源，逐层可回溯。
-  pipeline_en: Three separated layers — sutra facts (assembly) → morphemic analysis (EDA) → BI analysis
+  pipeline_zh: 经文事实（assembly）→ 词素析构（EDA）→ 数据科学（本层）三层分源，逐层可回溯。
+  pipeline_en: Three separated layers — sutra facts (assembly) → morphemic analysis (EDA) → data-science analysis
     (this layer) — each independently traceable.
   determinism_zh: 凡涉随机处，一律以定种线性同余发生器（LCG）取样，禁用 Python random 默认源（其实现版本间可变，会破坏可复现性）。
   determinism_en: All sampling uses a seeded linear congruential generator (LCG); Python's random module

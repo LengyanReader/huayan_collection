@@ -60,15 +60,15 @@ function renderArticle(){
     var _n=(ARTICLE_GRAPH.terms||[]).length,_e=(ARTICLE_GRAPH.links||[]).length;
     h+='<button class="f-nav-btn" onclick="openGraphPanel()" title="查看本文名相节点、边与信度分级">🕸 名相会处（'+_n+' 节点／'+_e+' 边）</button>';
   }
-  // 会众名号文本分析层：仅当 build.py 内嵌了 ARTICLE_EDA（SQLite 中有本文 EDA 表）时出现
+  // 会众名号数据剖面：仅当 build.py 内嵌了 ARTICLE_EDA（SQLite 中有本文 EDA 表）时出现
   if((typeof ARTICLE_EDA!=='undefined')&&ARTICLE_EDA&&ARTICLE_EDA.payload){
     var _m=ARTICLE_EDA.metrics||{};
     h+='<button class="f-nav-btn" onclick="edaGo()" title="查看会众名号的词素切分、语义域、群组剖面与共现网络">🔬 会众名号剖面（'+(_m.tokens_total||0)+' 词素位／'+(_m.distinct_tokens||0)+' 词素）</button>';
   }
-  // 文本分析层：仅当 build.py 内嵌 ARTICLE_BI（本文有 miaoyan_bi.yaml 分析）时出现
+  // 数据科学层：仅当 build.py 内嵌 ARTICLE_BI（本文有 miaoyan_bi.yaml 分析）时出现
   if((typeof ARTICLE_BI!=='undefined')&&ARTICLE_BI&&(typeof renderArticleBI==='function')){
     var _b=(ARTICLE_BI.scorecard&&ARTICLE_BI.scorecard.items)||[];
-    h+='<button class="f-nav-btn" onclick="biGo()" title="跳至文本分析层：漏斗、语义域、交叉表、相似度、聚类、PCA、网络与稳健性">📊 文本分析层（'+_b.length+' 项）</button>';
+    h+='<button class="f-nav-btn" onclick="biGo()" title="跳至数据科学分析层：漏斗、语义域、交叉表、相似度、聚类、PCA、网络与稳健性">📊 数据科学（'+_b.length+' 项）</button>';
   }
   // 叙事动画：仅当 build.py 内嵌了 MIAOYAN_NARR 时出现
   if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
@@ -85,7 +85,7 @@ function renderArticle(){
   h+=embed.html;
   h+='</div>';
 
-  // ── 会众名号文本分析层（EDA；仅当 build.py 内嵌 ARTICLE_EDA 时出现，由 common.js renderArticleEDA 填充）──
+  // ── 会众名号数据剖面（EDA；仅当 build.py 内嵌 ARTICLE_EDA 时出现，由 common.js renderArticleEDA 填充）──
   // 交互面板一律纳入默认折叠壳（panel-fold），点开方显；内容渲染入壳内 #article-eda-inner。
   if((typeof ARTICLE_EDA!=='undefined')&&ARTICLE_EDA&&ARTICLE_EDA.payload){
     h+='<div class="section" data-chrome="1" id="article-eda" style="border-left:4px solid var(--gold);padding:0">';
@@ -98,14 +98,14 @@ function renderArticle(){
     h+='<div class="section" data-chrome="1" id="article-artifacts" style="border-left:4px solid var(--gold)"></div>';
   }
 
-  // ── 文本分析层（miaoyan_bi.yaml 解释层；置于页脚之前）──
+  // ── 数据科学层（miaoyan_bi.yaml 解释层；置于页脚之前）──
   // 面板自带 h2，恒展开会成附录十一后之独立一节；今包进折叠壳，内容渲染入 #bi-report-inner。
   if(typeof renderArticleBI==='function'){
     try{
       var _biHtml=renderArticleBI();
       if(_biHtml){
         h+='<div class="section" data-chrome="1" style="border-left:4px solid var(--gold);padding:0">';
-        h+=(typeof _foldShellHtml==='function')?_foldShellHtml('bi-report-inner','📊 文本分析层（解释·交互）'):_biHtml;
+        h+=(typeof _foldShellHtml==='function')?_foldShellHtml('bi-report-inner','📊 数据科学（解释·交互）'):_biHtml;
         h+='</div>';
       }
     }catch(e){}
@@ -141,7 +141,7 @@ function renderArticle(){
   if(typeof renderArticleArtifacts==='function' && document.getElementById('article-artifacts')){
     renderArticleArtifacts('#article-artifacts');
   }
-  // ── 会众名号文本分析层（EDA）：渲染入折叠壳内 ──
+  // ── 会众名号数据剖面（EDA）：渲染入折叠壳内 ──
   if(typeof renderArticleEDA==='function' && document.getElementById('article-eda-inner')){
     renderArticleEDA('#article-eda-inner');
   }
@@ -161,7 +161,7 @@ function renderArticle(){
 
   // ── 章节级折叠：h2/h3/h4/h5 分级折叠（默认全部折叠；标题 ▾ 号点击可单独收展）──
   // 依站点设置：正文（含附录）所有标题层次默认折叠。
-  // 惟 EDA/文本分析层(BI)/叙事动画 三面板已各自纳入 <details class="panel-fold"> 折叠壳，
+  // 惟 EDA/数据科学/叙事动画 三面板已各自纳入 <details class="panel-fold"> 折叠壳，
   // 若再施 _foldDoc 便会「壳折叠＋内层节折叠」双重套叠，点开壳仍见其内复折——故此处不再对
   // 该三者施折叠；仅正文 #article-full 与页首会众流程 #article-flow 仍按 h2–h5 分级折叠。
   // 各节工具栏一概不生成（noBar），改由页首「一套」页面级控件统管全页折叠/展开。
@@ -189,13 +189,13 @@ function renderArticle(){
 if(document.readyState!=='loading'){renderArticle();}
 else{document.addEventListener('DOMContentLoaded',renderArticle);}
 
-// 会众名号文本分析层：自页头按钮跳至该节。三面板（EDA/BI/叙事）现默认折叠，
+// 会众名号数据剖面：自页头按钮跳至该节。三面板（EDA/数据科学/叙事）现默认折叠，
 // 故须经 _scrollReveal 先展开其折叠壳再滚动，否则滚至一处空白折叠条。
 function edaGo(){
   if(typeof _scrollReveal==='function' && _scrollReveal('article-eda')) return;
   var el=document.getElementById('article-eda'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function biGo(){ // scroll to textual analysis
+function biGo(){ // scroll to data-science layer
   if(typeof _scrollReveal==='function' && _scrollReveal('bi-report')){ if(history.replaceState) history.replaceState(null,'','#bi-report'); return; }
   var el=document.getElementById('bi-report');
   if(!el)return;
@@ -257,15 +257,15 @@ function _applyArticleENMode(){
   if(full) full.classList.toggle('en-hidden', hide);
   if(btn) btn.textContent=hide?'🌐 英文批注：展开':'🌐 英文批注：显示';
 }/* ============================================================================
- * renderArticleBI —— 世主妙严品文本分析层渲染
+ * renderArticleBI —— 世主妙严品数据科学层渲染
  *
  * 守「严禁假信息」四条：
  *  1. 一切数字与文字皆来自注入的 ARTICLE_BI（源自 data/translation/miaoyan_bi.yaml），
  *     前端零硬编码数值；无数据即不渲染该节，绝不补空猜测。
  *  2. 方法（method）、口径（note）、限制（caveat）与网络截断（truncation）原样呈现，
  *     不得省略改写——省了限制，结论就会被误读为「经文事实」。
- *  3. 三层不得混同：经文事实(assembly) → 编辑析构(EDA) → 解释判断(BI)。
- *     故本层各节标题皆标 [BI]，且 scorecard 刻意不给综合总分。
+ *  3. 三层不得混同：经文事实(assembly) → 编辑析构(EDA) → 解释判断(数据科学层)。
+ *     故本层各节标题皆标 [数据科学]，且 scorecard 刻意不给综合总分。
  *  4. 图表仅绘制既有矩阵，不外推、不插值、不跨轴比较（归一后尤忌）。
  * ==========================================================================*/
 function renderArticleBI(){
@@ -308,8 +308,8 @@ function renderArticleBI(){
 
   var h='';
   h+='<section id="bi-report">';
-  h+='<h2>📊 文本分析层</h2>';
-  h+='<div class="en-line" style="font-size:0.66em;color:var(--text2);margin:-6px 0 10px">📖 Textual Analysis Layer</div>';
+  h+='<h2>📊 数据科学</h2>';
+  h+='<div class="en-line" style="font-size:0.66em;color:var(--text2);margin:-6px 0 10px">📖 Data Science</div>';
 
   /* ---------- 0. 分层声明与总则 ---------- */
   var head='';
