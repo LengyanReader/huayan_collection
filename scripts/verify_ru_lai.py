@@ -8,8 +8,10 @@
   A 实测口径  —— 本品（＝卷第六）字/句/解脫门数须与 miaoyan_metrics.py 同源实测一致
   B 失效结论  —— 扫「已订正之旧数/旧论断」，命中即失败，但**须豁免校勘留痕段**
                   （口径留痕/范围更正本就应记录旧误，扫到它属门禁自身缺陷）
-  C 引文回源  —— §6.1 三译对读之 blockquote 逐条比对可信源；**繁简归一（T2S）＋
+C 引文回源  —— §6.1 三译对读之 blockquote 逐条比对可信源；**繁简归一（T2S）＋
                   部首归一（RAD）**双层，俾传统字形引文能对上简体底本
+  C2 §5 引文 —— §5.1′〈隨疏演義鈔〉/§5.3′〈新華嚴經論〉对应条：**自 doc 抽「」引文**
+                  逐条回源 T1736/T1739（须自 doc 抽取，hardcode 即假绿）
   D 来源自洽  —— 文中所引本地路径皆须存在，且关键路径须出现
   E 契约串    —— 关键事实性论断（本品＝卷第六；解脫門＝0；四十华严不涉本品……）须在文
 
@@ -64,7 +66,7 @@ def t2s(s: str) -> str:
 
 
 PUNCT = re.compile(
-    r'[，。、；：？！（）()「」『』《》〈〉〔〕【】…—－·,.;:!?\'"“”‘’\[\]{}<>｜|]')
+    r'[＋，。、；：？！（）()「」『』《》〈〉〔〕【】…—－·,.;:!?\'"“”‘’\[\]{}<>｜|]')
 
 
 def squash(s: str) -> str:
@@ -208,6 +210,33 @@ else:
                     C_BAD.append('L%d %s' % (i + 1, part[:40]))
     check(C_MISS == 0, 'C1', '§6.1 引文回源 %d 条全中（miss=%d）%s'
           % (C_N, C_MISS, ('  ← ' + str(C_BAD[:5])) if C_BAD else ''))
+
+# ── C2 §5.1′〈演義鈔〉/§5.3′〈新論〉对应条：自 doc 抽「」引文逐条回源 ─────────
+print('\n【C2】§5.1′〈鈔〉/§5.3′〈論〉引文回源（自 doc 抽「」·繁简＋部首归一）')
+C2_REGIONS = [('T1736', '**〔T1736《隨疏演義鈔》对应条〕**', '### 5.2'),
+              ('T1739', '### 5.3′', '### 5.4')]
+C2_N = C2_MISS = 0
+C2_BAD = []
+for src_key, m_start, m_end in C2_REGIONS:
+    i0 = next((i for i, l in enumerate(lines) if l.strip().startswith(m_start)), None)
+    i1 = next((i for i, l in enumerate(lines)
+               if i0 is not None and i > i0 and l.strip().startswith(m_end)), None)
+    if i0 is None or i1 is None:
+        check(False, 'C2:loc', '未定位 §5 区段（%s … %s）' % (m_start, m_end))
+        continue
+    for i in range(i0, i1):
+        for seg in re.findall(r'「([^」]+)」', lines[i]):
+            for part in re.split(r'……|…|／', seg):
+                p = squash(part)
+                if len(p) < 6:
+                    continue
+                C2_N += 1
+                if p not in SS.get(src_key, ''):
+                    C2_MISS += 1
+                    C2_BAD.append('L%d %s' % (i + 1, part[:40]))
+check(C2_MISS == 0 and C2_N > 0, 'C2',
+      '§5 对应条引文回源 %d 条全中（miss=%d）%s'
+      % (C2_N, C2_MISS, ('  ← ' + str(C2_BAD[:6])) if C2_BAD else ''))
 
 # ── D 来源自洽 ────────────────────────────────────────────────────────────
 print('\n【D】来源声明自洽（防假出处）')
