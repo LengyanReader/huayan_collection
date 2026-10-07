@@ -605,6 +605,40 @@ else:
     else:
         print('  SKIP: _verify_shizhu_reverse.py not found')
 
+# ─── 如来现相品专书门禁（源文档级）────────────────────────────────────
+# 同 shizhu 之门禁模式，作用于《华严经细读_第二部_如来现相品.md》：实测口径
+# （本品＝卷第六一卷 8,119 字／208 句／解脫門 0 见）、旧数回潮、§6.1 三译对读
+# 引文回源（繁简 T2S ＋ 部首 RAD 归一）、来源自洽、事实契约。含反向验证
+# （scripts/_verify_ru_lai_reverse.py）。
+_rulai = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'verify_ru_lai.py')
+_rulai_rev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          '_verify_ru_lai_reverse.py')
+if not os.path.exists(_rulai):
+    fail('verify_ru_lai.py not found — 如来现相品专书门禁缺失')
+else:
+    _r = subprocess.run([sys.executable, _rulai], capture_output=True,
+                        encoding='utf-8', errors='replace')
+    _tail = [l for l in (_r.stdout or '').splitlines() if l.strip()][-6:]
+    if _r.returncode != 0 or not (_r.stdout or '').strip():
+        for _l in _tail:
+            print('    ' + _l)
+        fail('ru-lai: 专书门禁失败（rc=%d）' % _r.returncode)
+    else:
+        _line = [l for l in (_r.stdout or '').splitlines() if 'ALL CHECKS PASSED' in l]
+        ok('ru-lai: 专书门禁 — %s' % (_line[0].strip() if _line else 'ran'))
+    if os.path.exists(_rulai_rev):
+        _r2 = subprocess.run([sys.executable, _rulai_rev], capture_output=True,
+                             encoding='utf-8', errors='replace')
+        _last = [l for l in (_r2.stdout or '').splitlines() if '反向验证' in l]
+        if _r2.returncode != 0 or not (_r2.stdout or '').strip():
+            for _l in (_r2.stdout or '').splitlines()[-6:]:
+                print('    ' + _l)
+            fail('ru-lai: 反向验证未全数捕获（rc=%d）' % _r2.returncode)
+        else:
+            ok('ru-lai: 反向验证 — %s' % (_last[-1].strip() if _last else 'ran'))
+    else:
+        print('  SKIP: _verify_ru_lai_reverse.py not found')
+
 print()
 
 print('=' * 40)

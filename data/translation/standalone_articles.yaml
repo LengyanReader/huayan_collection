@@ -201,16 +201,18 @@ others:
   views:
   - nanyu
 - id: ru-lai-xian-xiang
-  group: 研究·华严细读
+  group: 经论茶歇
   icon: 📖
-  title: 九九华严第二品 如来现相品
-  title_sub: 细读·第二品（筹备中）
+  title: 九九华严第二品 如来现相品之拼读
+  title_sub: 华严经第二品·按品精读·念请四十问·现相放光·十方云奔·十士说颂 · 中英对照 · 未完备已标明
   updated_at: '2026-10-07'
   doc: docs/经学文献/华严经细读_第二部_如来现相品.md
   back:
     tab: gap
-    label: 华严文献
-  views: article
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 group_order:
 - key: 经论茶歇
   icon: 📖
