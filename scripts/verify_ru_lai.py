@@ -12,6 +12,8 @@ C 引文回源  —— §6.1 三译对读之 blockquote 逐条比对可信源；
                   部首归一（RAD）**双层，俾传统字形引文能对上简体底本
   C2 §5 引文 —— §5.1′〈隨疏演義鈔〉/§5.3′〈新華嚴經論〉对应条：**自 doc 抽「」引文**
                   逐条回源 T1736/T1739（须自 doc 抽取，hardcode 即假绿）
+  C3 §3 旁参 —— §3 卷第七旁参（非本品）之 blockquote 经文逐条回源 T10n0279（卷七前半），
+                 同用繁简＋部首归一
   D 来源自洽  —— 文中所引本地路径皆须存在，且关键路径须出现
   E 契约串    —— 关键事实性论断（本品＝卷第六；解脫門＝0；四十华严不涉本品……）须在文
 
@@ -238,6 +240,36 @@ check(C2_MISS == 0 and C2_N > 0, 'C2',
       '§5 对应条引文回源 %d 条全中（miss=%d）%s'
       % (C2_N, C2_MISS, ('  ← ' + str(C2_BAD[:6])) if C2_BAD else ''))
 
+# ── C3 §3 旁参（卷七·非本品）blockquote 经文回源 T10n0279 ──────────────────
+print('\n【C3】§3 旁参（卷七）blockquote 回源（繁简＋部首归一）')
+C3_N = C3_MISS = 0
+C3_BAD = []
+s3 = next((i for i, l in enumerate(lines) if l.startswith('## 三、旁参')), None)
+e3 = next((i for i, l in enumerate(lines) if l.startswith('## 四、义理要点')), None)
+if s3 is None or e3 is None:
+    check(False, 'C3:loc', '未定位 §3 区块')
+else:
+    for i in range(s3, e3):
+        ln = lines[i].strip()
+        if not ln.startswith('>'):
+            continue
+        t = ln[1:].lstrip()
+        # 仅查以「起首之经文 blockquote（排除 `> **〔…〕**` 之类 callout/注释块）
+        if not t.startswith('「'):
+            continue
+        for seg in re.findall(r'「([^」]+)」', t):
+            for part in re.split(r'……|…|／', seg):
+                p = squash(part)
+                if len(p) < 6:
+                    continue
+                C3_N += 1
+                if p not in SS['T279']:
+                    C3_MISS += 1
+                    C3_BAD.append('L%d %s' % (i + 1, part[:40]))
+    check(C3_MISS == 0 and C3_N > 0, 'C3',
+          '§3 旁参 blockquote 回源 %d 条全中（miss=%d）%s'
+          % (C3_N, C3_MISS, ('  ← ' + str(C3_BAD[:6])) if C3_BAD else ''))
+
 # ── D 来源自洽 ────────────────────────────────────────────────────────────
 print('\n【D】来源声明自洽（防假出处）')
 paths = set(re.findall(r'\]\(\.\./\.\./\.\./(docs/[^)]+)\)', doc))
@@ -268,6 +300,12 @@ check('偈颂支分' in doc or '偈頌支分' in doc, 'E6', '有 §2.6 偈颂支
 check(('十一组' in doc or '十一位' in doc) and ('勝音' in doc or '胜音' in doc),
       'E7', '述「胜音＋十大士（十一组）」之数（订正旧「十大士」含混）')
 check(re.search(r'132\s*偈', doc) is not None, 'E8', '述卷六偈颂合计「132 偈」')
+# §3 旁参（卷七·非本品）：卷七含二品；前半普贤三昧品 1,995 字／二颂共 20 偈
+check(re.search(r'1,995\s*字', doc) is not None and '世界成就品' in doc,
+      'E9', '述 §3 旁参--卷七前半 1,995 字 且及「世界成就品第四」')
+check(re.search(r'20\s*偈', doc) is not None
+      and ('光中颂' in doc or '光中頌' in doc) and '众赞颂' in doc,
+      'E10', '述 §3 旁参--普贤三昧品二颂共 20 偈')
 
 # ── 汇总 ──────────────────────────────────────────────────────────────────
 print('\n' + '=' * 74)
