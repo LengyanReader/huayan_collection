@@ -1,0 +1,134 @@
+# 《如来现相品》·经文事实层（assembly）
+# 三层分源：经文事实（本层）→ 析构/度量（generator 出 ru_lai_studies.yaml）→ 呈现。
+# 一切条目回源 CBETA T10n0279 卷第六；凡不能定准者标〔待核〕。
+meta:
+  id: ru-lai-assembly
+  article: ru-lai-xian-xiang
+  title_zh: "如来现相品 · 经文事实层"
+  title_en: "The Tathāgata's Manifestation · Sutra-Fact Layer"
+  source_primary: "CBETA T10n0279《大方廣佛華嚴經》卷第六·如來現相品第二"
+  sources:
+    - label: "CBETA T10n0279《如來現相品第二》"
+      url: "https://cbetaonline.dila.edu.tw/zh/T10n0279"
+  note_zh: "本层只录经文所出之名相与数目，不作分析；分析另见 ru_lai_studies.yaml。名相逐字回源卷六并由 generator 断言。"
+  note_en: "This layer records only names and counts that the sutra states; analysis lives in ru_lai_studies.yaml."
+
+# 一、所召云奔之十方（世界海·国土·佛号·上首菩萨）—— 逐字各依 doc §2.5 表
+directions:
+  - id: E
+    dir_zh: "東"
+    dir_en: "East"
+    world_ocean_zh: "清淨光蓮華莊嚴"
+    land_zh: "摩尼瓔珞金剛藏"
+    buddha_zh: "法水覺虛空無邊王"
+    bodhisattva_zh: "觀察勝法蓮華幢"
+  - id: S
+    dir_zh: "南"
+    dir_en: "South"
+    world_ocean_zh: "一切寶月光明莊嚴藏"
+    land_zh: "無邊光圓滿莊嚴"
+    buddha_zh: "普智光明德須彌王"
+    bodhisattva_zh: "普照法海慧"
+  - id: W
+    dir_zh: "西"
+    dir_en: "West"
+    world_ocean_zh: "可愛樂寶光明"
+    land_zh: "出生上妙資身具"
+    buddha_zh: "香焰功德寶莊嚴"
+    bodhisattva_zh: "月光香焰普莊嚴"
+  - id: N
+    dir_zh: "北"
+    dir_en: "North"
+    world_ocean_zh: "毘瑠璃蓮華光圓滿藏"
+    land_zh: "優鉢羅華莊嚴"
+    buddha_zh: "普智幢音王"
+    bodhisattva_zh: "師子奮迅光明"
+  - id: NE
+    dir_zh: "東北"
+    dir_en: "Northeast"
+    world_ocean_zh: "閻浮檀金玻瓈色幢"
+    land_zh: "眾寶莊嚴"
+    buddha_zh: "一切法無畏燈"
+    bodhisattva_zh: "最勝光明燈無盡功德藏"
+  - id: SE
+    dir_zh: "東南"
+    dir_en: "Southeast"
+    world_ocean_zh: "金莊嚴瑠璃光普照"
+    land_zh: "清淨香光明"
+    buddha_zh: "普喜深信王"
+    bodhisattva_zh: "慧燈普明"
+  - id: SW
+    dir_zh: "西南"
+    dir_en: "Southwest"
+    world_ocean_zh: "日光遍照"
+    land_zh: "師子日光明"
+    buddha_zh: "普智光明音"
+    bodhisattva_zh: "普華光焰髻"
+  - id: NW
+    dir_zh: "西北"
+    dir_en: "Northwest"
+    world_ocean_zh: "寶光照耀"
+    land_zh: "眾香莊嚴"
+    buddha_zh: "無量功德海光明"
+    bodhisattva_zh: "無盡光摩尼王"
+  - id: D
+    dir_zh: "下"
+    dir_en: "Below"
+    world_ocean_zh: "蓮華香妙德藏"
+    land_zh: "寶師子光明照耀"
+    buddha_zh: "法界光明"
+    bodhisattva_zh: "法界光焰慧"
+  - id: U
+    dir_zh: "上"
+    dir_en: "Above"
+    world_ocean_zh: "摩尼寶照耀莊嚴"
+    land_zh: "無相妙光明"
+    buddha_zh: "無礙功德光明王"
+    bodhisattva_zh: "無礙力精進慧"
+# 〔考证限制〕上表名相逐字取自 doc §2.5 表（该表已回源卷六）；generator 须断言
+# 每一名相逐字见于卷六扫描文本，否则报错（防转录/臆造）。
+
+# 二、念请四十问（甲 20 ＋ 乙 20）
+questions:
+  group_a:
+    id: A
+    label_zh: "甲组·问佛之体用"
+    label_en: "Set A — on the Tathāgata's essence and function"
+    items_zh: ["佛地", "境界", "加持", "所行", "力", "無所畏", "三昧", "神通", "自在",
+               "無能攝取", "眼", "耳", "鼻", "舌", "身", "意", "身光", "光明", "聲", "智"]
+  group_b:
+    id: B
+    label_zh: "乙组·问诸「海」"
+    label_en: "Set B — on the various 'oceans'"
+    items_zh: ["世界海", "眾生海", "法界安立海", "佛海", "佛波羅蜜海", "佛解脫海",
+               "佛變化海", "佛演說海", "佛名號海", "佛壽量海", "菩薩誓願海", "菩薩發趣海",
+               "菩薩助道海", "菩薩乘海", "菩薩行海", "菩薩出離海", "菩薩神通海",
+               "菩薩波羅蜜海", "菩薩地海", "菩薩智海"]
+
+# 三、偈颂支分（逐组回源 §2.6）
+verses:
+  leading:
+    - id: "L1"
+      source_zh: "自然出音（承念请）"
+      incipit_zh: "無量劫中修行滿"
+      count: 2
+    - id: "L2"
+      source_zh: "面门光·光中说颂"
+      incipit_zh: "無量劫中修行海"
+      count: 10
+    - id: "L3"
+      source_zh: "光中同时发声"
+      incipit_zh: "諸光明中出妙音"
+      count: 10
+  main:
+    - {id: 1, speaker_zh: "一切法勝音", note_zh: "白毫出众", incipit_zh: "佛身充滿於法界", count: 10}
+    - {id: 2, speaker_zh: "觀察一切勝法蓮華光慧王", incipit_zh: "如來甚深智", count: 10}
+    - {id: 3, speaker_zh: "法喜慧光明", incipit_zh: "佛身常顯現", count: 10}
+    - {id: 4, speaker_zh: "香焰光普明慧", incipit_zh: "此會諸菩薩", count: 10}
+    - {id: 5, speaker_zh: "師子奮迅慧光明", incipit_zh: "毘盧遮那佛", count: 10}
+    - {id: 6, speaker_zh: "法海慧功德藏", incipit_zh: "此會諸佛子", count: 10}
+    - {id: 7, speaker_zh: "慧燈普明", incipit_zh: "一切諸如來", count: 10}
+    - {id: 8, speaker_zh: "華焰髻普明智", incipit_zh: "一切國土中", count: 10}
+    - {id: 9, speaker_zh: "威德慧無盡光", incipit_zh: "一一佛剎中", count: 10}
+    - {id: 10, speaker_zh: "法界普明慧", incipit_zh: "如來微妙身", count: 10}
+    - {id: 11, speaker_zh: "精進力無礙慧", incipit_zh: "佛演一妙音", count: 10}

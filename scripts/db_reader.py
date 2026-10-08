@@ -993,6 +993,27 @@ def load_article_bi() -> dict[str, any]:
     return articles
 
 
+def load_ru_lai_studies() -> dict[str, any]:
+    """《如来现相品》数据科学层（data/translation/ru_lai_studies.yaml，YAML 为权威源）。
+
+    以 meta.article 为键返回，供 build.py 按文章 id 内嵌为 RU_LAI_STUDIES。
+    生成器：scripts/ru_lai_studies.py。
+    """
+    import yaml
+    out = {}
+    p = os.path.join(ROOT, 'data', 'translation', 'ru_lai_studies.yaml')
+    if os.path.exists(p):
+        try:
+            with open(p, 'r', encoding='utf-8') as f:
+                d = yaml.safe_load(f) or {}
+            aid = (d.get('meta') or {}).get('article')
+            if aid:
+                out[aid] = d
+        except Exception:
+            pass
+    return out
+
+
 
 def load_miaoyan_narrative():
     import os, yaml

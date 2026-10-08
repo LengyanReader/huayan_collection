@@ -570,6 +570,42 @@ else:
             else:
                 ok(f'articles/{_t}: flow render — {(_r.stdout or "").strip()}')
 
+# 《如来现相品》数据科学层门禁（node）：自构建产物抽内嵌 RU_LAI_STUDIES（验集成），
+# 再以最小 DOM 桩加载 web/demo/src/ru_lai_studies.js 实跑 renderRuLaiStudies；校验
+# 三视角节俱在、输出无 undefined/NaN，并核数据不变量（Burnside 定轨、过滤 β1 恒等）。
+_rlsmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        'verify_ru_lai_studies_render.js')
+if not _node:
+    print('  SKIP: node not found — ru-lai studies render gate skipped')
+elif not os.path.exists(_rlsmoke):
+    print('  SKIP: verify_ru_lai_studies_render.js not found')
+else:
+    for _t in sorted(os.listdir(ARTICLES)):
+        if not _t.endswith('.html') or _t == 'index.html':
+            continue
+        _p = os.path.join(ARTICLES, _t)
+        if 'var RU_LAI_STUDIES' not in open(_p, encoding='utf-8').read():
+            continue
+        _r = subprocess.run([_node, _rlsmoke, _p],
+                            capture_output=True, encoding='utf-8', errors='replace')
+        if _r.returncode != 0 or not (_r.stdout or '').strip():
+            _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
+            fail(f'articles/{_t}: ru-lai studies render — {_msg.strip().splitlines()[-1]}')
+        else:
+            ok(f'articles/{_t}: ru-lai studies render — {(_r.stdout or "").strip()}')
+
+    # 反向验证（破坏性变异，职责分离于异文件执行）
+    _rlsrev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           '_verify_ru_lai_studies_reverse.py')
+    if os.path.exists(_rlsrev):
+        _rr = subprocess.run([sys.executable, _rlsrev], capture_output=True,
+                             text=True, encoding='utf-8', errors='replace')
+        _rtail = (_rr.stdout or '').strip().splitlines()
+        if _rr.returncode != 0:
+            fail('ru-lai studies reverse — ' + (_rtail[-1].strip() if _rtail else 'no output'))
+        else:
+            ok('ru-lai studies reverse — ' + (_rtail[-1].strip() if _rtail else 'done'))
+
 # ─── 世主妙严品专书门禁（源文档级）────────────────────────────────────
 # 前述诸门禁皆作用于**构建产物**（页面/JS）。本门禁作用于**Markdown 源文档**
 # 《华严经细读_第一部_世主妙严品.md》之学术正确性：实测口径、旧数回潮、引文回源

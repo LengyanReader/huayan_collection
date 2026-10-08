@@ -1,0 +1,529 @@
+meta:
+  id: ru-lai-studies
+  article: ru-lai-xian-xiang
+  title_zh: 《如来现相品》数据科学层
+  title_en: The Tathāgata's Manifestation · Data-Science Layer
+  source_primary: CBETA T10n0279《大方廣佛華嚴經》卷第六·如來現相品第二
+  generated_by: scripts/ru_lai_studies.py
+  sources:
+  - label: CBETA T10n0279
+    url: https://cbetaonline.dila.edu.tw/zh/T10n0279
+  note_zh: 体例：本层为数据科学层产物，非经文陈述。名相与数目出 assembly 层；字频／熵／Zipf／TF-IDF／群作用／图论诸项皆本站析构。三视角（语言统计·代数组合·拓扑）为观察同一经文之三种窗口。
+  note_en: This is an analytical (data-science) layer, not a sutra statement. Names
+    and counts come from the assembly layer; all statistics are computed here. The
+    three lenses are three windows onto one text.
+linguistic:
+  corpus:
+    cjk_total: 8119
+    unique_chars: 498
+    type_token_ratio: 0.0613
+    shannon_entropy_bits: 7.5454
+    max_entropy_bits: 8.96
+    note_zh: 字熵以卷六经文（CJK 表意字）计；ZIPF 斜率取秩 1–200 之 log–log 最小二乘。
+    note_en: Character entropy over the CJK characters of juan 6; Zipf slope is the
+      log-log least-squares fit over ranks 1–200.
+  zipf:
+    ranks: 200
+    slope: -0.8517
+    top_chars:
+    - char: 一
+      count: 259
+    - char: 佛
+      count: 228
+    - char: 現
+      count: 183
+    - char: 切
+      count: 174
+    - char: 十
+      count: 151
+    - char: 諸
+      count: 146
+    - char: 種
+      count: 146
+    - char: 海
+      count: 137
+    - char: 雲
+      count: 135
+    - char: 眾
+      count: 128
+    - char: 界
+      count: 124
+    - char: 光
+      count: 122
+    - char: 法
+      count: 122
+    - char: 中
+      count: 118
+    - char: 薩
+      count: 113
+  term_counts:
+    海: 137
+    光: 122
+    如來: 45
+    佛: 228
+    智: 35
+    蓮華: 20
+    莊嚴: 50
+    世界: 80
+    眾生: 51
+    菩薩: 91
+    雲: 135
+    三昧: 6
+    解脫: 7
+    光明: 68
+    微塵: 65
+    佛剎: 14
+    供養: 18
+    十方: 47
+    法界: 36
+  sea_family:
+    total_sea: 137
+    distinct_forms: 50
+    top:
+    - form: 世界海
+      count: 65
+    - form: 大眾海
+      count: 10
+    - form: 眾生海
+      count: 4
+    - form: 安立海
+      count: 3
+    - form: 羅蜜海
+      count: 3
+    - form: 諸剎海
+      count: 3
+    - form: 功德海
+      count: 3
+    - form: 諸佛海
+      count: 2
+    - form: 大願海
+      count: 2
+    - form: 諸法海
+      count: 2
+    - form: 海佛海
+      count: 1
+    - form: 解脫海
+      count: 1
+    - form: 變化海
+      count: 1
+    - form: 演說海
+      count: 1
+    - form: 名號海
+      count: 1
+    - form: 壽量海
+      count: 1
+    - form: 誓願海
+      count: 1
+    - form: 發趣海
+      count: 1
+    - form: 助道海
+      count: 1
+    - form: 薩乘海
+      count: 1
+  tfidf:
+    L1:
+    - form: 云何
+      tfidf: 0.02873
+      count: 7
+    - form: 莊嚴
+      tfidf: 0.01077
+      count: 4
+    - form: 剎微
+      tfidf: 0.00895
+      count: 4
+    - form: 其光
+      tfidf: 0.00821
+      count: 2
+    - form: 知諸
+      tfidf: 0.00821
+      count: 2
+    L2:
+    - form: 現十
+      tfidf: 0.05267
+      count: 101
+    - form: 十種
+      tfidf: 0.04082
+      count: 98
+    - form: 雲復
+      tfidf: 0.04067
+      count: 78
+    - form: 復現
+      tfidf: 0.03665
+      count: 88
+    - form: 莊嚴
+      tfidf: 0.01471
+      count: 43
+    L3:
+    - form: 勝音
+      tfidf: 0.00791
+      count: 3
+    - form: 普能
+      tfidf: 0.00791
+      count: 3
+    - form: 摩尼
+      tfidf: 0.00632
+      count: 3
+    - form: 清淨
+      tfidf: 0.00575
+      count: 4
+    - form: 蓮華
+      tfidf: 0.00575
+      count: 4
+    '1':
+    - form: 剎土
+      tfidf: 0.01684
+      count: 4
+    - form: 土微
+      tfidf: 0.01283
+      count: 2
+    - form: 塵諸
+      tfidf: 0.01283
+      count: 2
+    - form: 提座
+      tfidf: 0.01283
+      count: 2
+    - form: 一毛
+      tfidf: 0.0105
+      count: 3
+    '2': []
+    '8':
+    - form: 現佛
+      tfidf: 0.01485
+      count: 2
+    - form: 妙音
+      tfidf: 0.00856
+      count: 2
+    '3':
+    - form: 亦無
+      tfidf: 0.01919
+      count: 4
+    - form: 無住
+      tfidf: 0.0176
+      count: 2
+    - form: 隨眾
+      tfidf: 0.01732
+      count: 3
+    - form: 佛隨
+      tfidf: 0.01406
+      count: 2
+    - form: 方國
+      tfidf: 0.00959
+      count: 2
+    '4':
+    - form: 入佛
+      tfidf: 0.01433
+      count: 3
+    - form: 普見
+      tfidf: 0.014
+      count: 2
+    - form: 能於
+      tfidf: 0.014
+      count: 2
+    - form: 皆能
+      tfidf: 0.01149
+      count: 2
+    - form: 一念
+      tfidf: 0.00955
+      count: 2
+    '5':
+    - form: 悉周
+      tfidf: 0.01749
+      count: 2
+    - form: 令見
+      tfidf: 0.01194
+      count: 2
+    - form: 名號
+      tfidf: 0.01194
+      count: 2
+    - form: 周遍
+      tfidf: 0.01194
+      count: 2
+    - form: 差別
+      tfidf: 0.01194
+      count: 2
+    '7': []
+    '6':
+    - form: 中普
+      tfidf: 0.02219
+      count: 2
+    '9':
+    - form: 佛以
+      tfidf: 0.00741
+      count: 3
+    - form: 力觀
+      tfidf: 0.00741
+      count: 3
+    - form: 曰一
+      tfidf: 0.00741
+      count: 3
+    - form: 真實
+      tfidf: 0.00741
+      count: 3
+    - form: 普明
+      tfidf: 0.00648
+      count: 4
+    '10':
+    - form: 於諸
+      tfidf: 0.01732
+      count: 3
+    - form: 及以
+      tfidf: 0.01406
+      count: 2
+    - form: 能於
+      tfidf: 0.01406
+      count: 2
+    - form: 身一
+      tfidf: 0.01406
+      count: 2
+    - form: 念中
+      tfidf: 0.00959
+      count: 2
+    '11':
+    - form: 四天
+      tfidf: 0.01544
+      count: 2
+    - form: 天下
+      tfidf: 0.01544
+      count: 2
+    - form: 影像
+      tfidf: 0.01544
+      count: 2
+    - form: 方所
+      tfidf: 0.01544
+      count: 2
+    - form: 場中
+      tfidf: 0.01233
+      count: 2
+algebra:
+  octagon_symmetry:
+    group: D8（正八边形对称群）
+    order: 16
+    generators:
+    - r（旋转 45°）
+    - s（反射）
+    burnside_fixed_sum: 48
+    num_orbits: 3.0
+    orbits:
+    - - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+    - - 8
+    - - 9
+    readout_zh: 八方为 1 个传递轨道（G·E ＝ 八方全体）；上、下各为不动点；合 3 轨道。
+    readout_en: 'The eight directions form a single transitive orbit; zenith and nadir
+      are each fixed. Total: 3 orbits.'
+    note_zh: 此为对方位几何之对称性分析（数学视角），非经文所说；经文本无「群」之名。
+    note_en: A symmetry analysis of the eight directions (a mathematical lens); the
+      sutra itself has no notion of a group.
+  antipodal:
+    pairing:
+    - - E
+      - W
+    - - N
+      - S
+    - - NE
+      - SW
+    - - NW
+      - SE
+    - - U
+      - D
+    pairs: 5
+    readout_zh: 十方＝五组对跖（对径）方向；对径映射为无不动点之对合，商得 5 元。
+    readout_en: The ten directions pair into five antipodal pairs; the antipodal involution
+      is fixed-point-free, giving a 5-element quotient.
+  questions_partition:
+    total: 40
+    group_a: 20
+    group_b: 20
+    group_a_endswith_sea: 0
+    group_b_endswith_sea: 20
+    readout_zh: 以「海」作词尾之单一特征即完全分判甲、乙二组（甲 0/20，乙 20/20）。
+    readout_en: A single lexical feature (terminating in 海) perfectly separates Set
+      A from Set B (A 0/20, B 20/20).
+topology:
+  graph:
+    nodes: 10
+    rule_zh: 两方之「世界海／国土／佛号／上首菩萨」四名相共字 ≥1 则连边；权＝共字数。
+    rule_en: Two directions are linked if their four names (ocean/land/buddha/leading
+      bodhisattva) share ≥1 character; weight = shared count.
+    max_weight: 13
+    density_t1: 1.0
+    degree_t1:
+      E: 9
+      S: 9
+      W: 9
+      N: 9
+      NE: 9
+      SE: 9
+      SW: 9
+      NW: 9
+      D: 9
+      U: 9
+    components_t1:
+    - - D
+      - E
+      - N
+      - NE
+      - NW
+      - S
+      - SE
+      - SW
+      - U
+      - W
+    top_edges:
+    - a: NW
+      b: U
+      shared: 13
+    - a: S
+      b: NE
+      shared: 11
+    - a: NE
+      b: NW
+      shared: 10
+    - a: S
+      b: N
+      shared: 10
+    - a: S
+      b: NW
+      shared: 10
+    - a: S
+      b: U
+      shared: 10
+    - a: E
+      b: NE
+      shared: 9
+    - a: D
+      b: U
+      shared: 8
+    - a: E
+      b: N
+      shared: 8
+    - a: E
+      b: S
+      shared: 8
+    - a: N
+      b: SE
+      shared: 8
+    - a: N
+      b: SW
+      shared: 8
+    readout_zh: 阈值 t＝1 时十方名相两两皆有共字，图退化为完全图 K10 —— 名相用字高度互渗。故有意义之结构在**较高阈值之过滤**中显现（见
+      filtration）。
+    readout_en: At t=1 every pair of directions shares a character, so the graph is
+      the complete graph K10. Structure appears only under higher-threshold filtration
+      (see filtration).
+  flag_complex:
+    note_zh: β1 取旗复形（clique complex）之整系数模 GF(2) 同调：β1＝(E−V+β0)−rank ∂2。
+    note_en: 'β1 is the GF(2) homology of the flag (clique) complex: β1 = (E − V +
+      β0) − rank(∂2).'
+    at_t1:
+      threshold: 1
+      edges: 45
+      beta0: 1
+      cyclomatic: 36
+      triangles: 120
+      rank_d2: 36
+      beta1: 0
+  filtration:
+    note_zh: 按共字数阈值 t 过滤：阈值越高、保留之边越少，β0(t) 自 1（连通）递增而碎裂；β1 与三角形数同录。
+    note_en: 'Filtration by shared-character threshold t: the higher the threshold,
+      the fewer edges kept, so β0(t) rises from 1 (connected) as components fragment;
+      β1 and triangle counts recorded alongside.'
+    max_threshold: 13
+    steps:
+    - threshold: 1
+      edges: 45
+      beta0: 1
+      cyclomatic: 36
+      triangles: 120
+      rank_d2: 36
+      beta1: 0
+    - threshold: 2
+      edges: 45
+      beta0: 1
+      cyclomatic: 36
+      triangles: 120
+      rank_d2: 36
+      beta1: 0
+    - threshold: 3
+      edges: 43
+      beta0: 1
+      cyclomatic: 34
+      triangles: 105
+      rank_d2: 34
+      beta1: 0
+    - threshold: 4
+      edges: 40
+      beta0: 1
+      cyclomatic: 31
+      triangles: 87
+      rank_d2: 31
+      beta1: 0
+    - threshold: 5
+      edges: 38
+      beta0: 1
+      cyclomatic: 29
+      triangles: 80
+      rank_d2: 29
+      beta1: 0
+    - threshold: 6
+      edges: 32
+      beta0: 1
+      cyclomatic: 23
+      triangles: 49
+      rank_d2: 23
+      beta1: 0
+    - threshold: 7
+      edges: 28
+      beta0: 1
+      cyclomatic: 19
+      triangles: 33
+      rank_d2: 19
+      beta1: 0
+    - threshold: 8
+      edges: 18
+      beta0: 1
+      cyclomatic: 9
+      triangles: 11
+      rank_d2: 9
+      beta1: 0
+    - threshold: 9
+      edges: 7
+      beta0: 5
+      cyclomatic: 2
+      triangles: 2
+      rank_d2: 2
+      beta1: 0
+    - threshold: 10
+      edges: 6
+      beta0: 6
+      cyclomatic: 2
+      triangles: 2
+      rank_d2: 2
+      beta1: 0
+    - threshold: 11
+      edges: 2
+      beta0: 8
+      cyclomatic: 0
+      triangles: 0
+      rank_d2: 0
+      beta1: 0
+    - threshold: 12
+      edges: 1
+      beta0: 9
+      cyclomatic: 0
+      triangles: 0
+      rank_d2: 0
+      beta1: 0
+    - threshold: 13
+      edges: 1
+      beta0: 9
+      cyclomatic: 0
+      triangles: 0
+      rank_d2: 0
+      beta1: 0
