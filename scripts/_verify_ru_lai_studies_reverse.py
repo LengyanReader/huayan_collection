@@ -12,6 +12,12 @@ import sys
 import subprocess
 import tempfile
 
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGE = os.path.join(ROOT, 'web', 'demo', 'articles', 'ru-lai-xian-xiang.html')
 SRC = os.path.join(ROOT, 'web', 'demo', 'src', 'ru_lai_studies.js')
@@ -42,6 +48,10 @@ PAGE_MUT = [
      lambda t: repl(t, '"beta1": 0', '"beta1": 5', 'beta1')),
     ('四十问划分破坏',
      lambda t: repl(t, '"group_b_endswith_sea": 20', '"group_b_endswith_sea": 19', 'group_b')),
+    ('持久同调单纯形数脱钩',
+     lambda t: repl(t, '"n_simplices": 1023', '"n_simplices": 1022', 'n_simplices')),
+    ('持久同调最大维脱钩',
+     lambda t: repl(t, '"max_dim": 9', '"max_dim": 8', 'max_dim')),
 ]
 
 SRC_MUT = [

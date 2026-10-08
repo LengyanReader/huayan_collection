@@ -1,4 +1,4 @@
-/* ru_lai_studies.js — 《如来现相品》数据科学层渲染器（三视角：语言统计·代数组合·拓扑）
+/* ru_lai_studies.js — 《如来现相品》数据科学层渲染器（四视角：语言统计·代数组合·拓扑·几何持久同调）
  * 数据由 build.py 内嵌为全局 RU_LAI_STUDIES（源自 data/translation/ru_lai_studies.yaml）。
  * 零依赖；节点桩可测。渲染入 renderRuLaiStudies(sel) 指定容器。
  */
@@ -123,6 +123,48 @@
     return h;
   }
 
+  function renderL4(G) {
+    var h = '<div style="font-size:0.82em;color:var(--text2)">' + esc(G.method_zh) + '</div>';
+    h += table(['指标', '值'], [
+      ['单纯形总数', G.n_simplices],
+      ['最大维数', G.max_dim],
+      ['本质类', 'H₀ ×' + ((G.essential || {}).H0 || []).length]
+    ]);
+    var bar = G.barcode || {}, ess = G.essential || {}, dims = ['H0', 'H1', 'H2', 'H3'];
+    var zh = { H0: 'H₀（连通）', H1: 'H₁（环）', H2: 'H₂（空腔）', H3: 'H₃' };
+    var summ = dims.map(function (k) {
+      var b = (bar[k] || []).slice(), mx = 0, top = null;
+      b.forEach(function (p) {
+        var len = p.birth - (p.death == null ? 0 : p.death);
+        if (len > mx) { mx = len; top = p; }
+      });
+      return [zh[k], b.length, ((ess[k] || []).length),
+        top ? (top.birth + ' → ' + top.death + '（幅度 ' + mx + '）') : '—'];
+    });
+    h += '<div style="font-size:0.82em;margin-top:8px"><b>持久条形摘要</b>（幅度＝birth−death；本质类＝终不灭）</div>';
+    h += table(['同调', '有限条数', '本质类', '最长条（birth → death）'], summ);
+
+    // 各维最长 5 条（依幅度降序，仅有限条）
+    var rows = [];
+    dims.forEach(function (k) {
+      (bar[k] || []).slice().sort(function (a, b) {
+        return (b.birth - (b.death == null ? 0 : b.death)) - (a.birth - (a.death == null ? 0 : a.death));
+      }).slice(0, 5).forEach(function (p) {
+        rows.push([zh[k], p.birth, (p.death == null ? '∞' : p.death), p.birth - (p.death == null ? 0 : p.death)]);
+      });
+    });
+    h += '<div style="font-size:0.82em;margin-top:8px"><b>各维最长条（前 5）</b></div>';
+    h += table(['同调', 'birth(t)', 'death(t)', '幅度'], rows);
+
+    var curve = G.betti_curve || [];
+    h += '<div style="font-size:0.82em;margin-top:8px"><b>Betti 曲线</b>（t 自大至小，复形渐满）</div>';
+    h += table(['t', '边 n₁', '三角 n₂', '四面 n₃', 'β₀', 'β₁', 'β₂', 'β₃'], curve.map(function (s) {
+      return [s.t, s.n1, s.n2, s.n3, s.beta0, s.beta1, s.beta2, s.beta3];
+    }));
+    h += '<div style="font-size:0.82em;color:var(--text2);margin-top:4px">' + esc(G.readout_zh || '') + '</div>';
+    return h;
+  }
+
   function renderRuLaiStudies(sel) {
     var d = (typeof global.RU_LAI_STUDIES !== 'undefined') ? global.RU_LAI_STUDIES : null;
     if (!d || !d.linguistic) return '';
@@ -133,6 +175,7 @@
     h += section('rls-linguistic', '📊', '视角一 · 语言统计', renderL1(d.linguistic));
     h += section('rls-algebra', '🔷', '视角二 · 代数·组合', renderL2(d.algebra));
     h += section('rls-topology', '🕸', '视角三 · 拓扑', renderL3(d.topology));
+    if (d.geometry) h += section('rls-geometry', '📐', '视角四 · 几何·持久同调', renderL4(d.geometry));
     var root = (typeof document !== 'undefined') ? document.querySelector(sel) : null;
     if (root) root.innerHTML = h;
     return h;

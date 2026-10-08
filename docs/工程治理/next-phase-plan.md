@@ -3633,4 +3633,15 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
     - **验证**：build **37 files｜27,336,220 B**（`ru-lai-xian-xiang.html` 156,754→）｜`verify_demo` ✅ ALL CHECKS PASSED（含 `ru-lai studies render — ALL CHECKS PASSED`＋`ru-lai studies reverse — 6/6`）｜`test_pipeline` ✅｜`verify_sources` 76/100（T0=0）｜`node --check`（`ru_lai_studies.js`／`verify_ru_lai_studies_render.js`／`article.js`／`common.js`）rc=0｜`git diff --check` rc=0。
     - **⚠️ 遗留**：①真机浏览器实测**第八次缺位**（`--remote-debugging-port` 拒连／`--dump-dom` 0 B），三视角**实际渲染未作真机确认**；②L3 现止于**共字图**之静态拓扑（β0/β1 与过滤），**持久同调图（barcode）／更高维单纯形尚未落**；③数据科学层**尚为《如来现相品》专设**（`ru_lai_*` 命名），未泛化至世主妙严品；④`verify_storyboard_render.js` 未对齐（item 16 遗留②）；⑤`git push` 未通（见下）。
 
+18. **〔同日续补〕§7.4 数据科学层·**第四视角·几何·持久同调**（persistent homology）**（承 item 17 遗留②「L3 现止于静态拓扑……持久同调图／更高维单纯形尚未落」；依用户「拓扑、几何、代数多多尝试」之指示）：
+
+    - **构造（生成器 `scripts/ru_lai_studies.py` 新增 `lens_geometry`）**：顶点＝十方；λ(σ)＝σ 诸边共字数之**最小值**（顶点令其最先出现）；复形 K_t＝{σ : λ(σ) ≥ t}，t 自 max＝13 降至 1 而**自空渐满**（增过滤）。以 **GF(2) 边界矩阵约化（standard reduction）** 得各维配对（birth, death）；未配对者为本原类（infinite bar）。
+    - **结果**：全复形 **1023 单纯形＝2¹⁰−1**、最大维 **9**；**H0＝9 有限条＋1 本原条**（十顶点随边合并，终余 1＝连通）；**H1＝36、H2＝84、H3＝126 有限条**（环随阈值升高而生、随三角形／四面体填充而灭）；另附 **Betti 曲线** β0..β3 逐阈值（β0 自 9 递减至 1，t=1 终为可缩 K10 故 β1=β2=β3=0）。
+    - **与 L3 之别**：L3 为**静态** Betti 数（某阈值下有几环）；L4 为**持久**（环于何阈值生、何阈值灭）——二者互补，正合「同一经文之多窗口」。
+    - **渲染**：`ru_lai_studies.js` 新增 `renderL4`＋第四节 `rls-geometry`（持久条形摘要表／各维最长条前 5／Betti 曲线表）；`article.js` 按钮与折叠壳标题改「**四视角**（语言统计·代数组合·拓扑·几何）」，注释同步。
+    - **门禁扩增**（`verify_ru_lai_studies_render.js`）：四节俱在（`rls-geometry`）＋持久同调不变量（单纯形数＝1023、最大维＝9、H0 有限条＝9、H0 本原类＝1、H0 类总＝10、Betti 曲线首行 β0∈[1,10]、末行 β0=1 且 β1=β2=β3=0、β0 随 t 降不增）；**反向** `_verify_ru_lai_studies_reverse.py` 增二变异（单纯形数脱钩／最大维脱钩）→ **8/8 如期失败**。
+    - **自伤之鉴（如实登记）**：门禁初稿误断「t=max 首行 β0=10」，实为 **9**（有一边权恰＝13，已连二顶点）——**「仅顶点」之想当然须以实算为正**；改为区间断言＋单调性。
+    - **验证**：build **37 files｜27,348,489 B**｜`verify_demo` ✅ ALL CHECKS PASSED（ru-lai studies render＋reverse **8/8**）｜`test_pipeline` ✅｜`node --check` rc=0｜`git diff --check` rc=0。
+    - **⚠️ 遗留**：①真机浏览器实测第八次缺位（几何节实际渲染未真机确认）；②持久同调现**只到 H3 条**（H4+ 未列，惟 K10 可缩故皆有限）；③**几何视角可深化**——单纯复形之**重心分域（barycentric subdivision）／离散 Morse 理论／加权图的谱几何（Laplacian 特征值）**尚未采；④数据科学层仍未泛化至世主妙严品。
+
 - **〔push 状态〕**：item 16（`5d5a200`）与 item 17（`18f5fe4`）之提交**已推送**（`git push origin main` → `7ec8bbd..18f5fe4  main -> main`，rc=0）。**先前两次失败留档**——`Recv failure: Connection was reset`（rc=128）／`Failed to connect to github.com port 443 after 21114 ms`（rc=128），系网络/防火墙临时阻断，**第三次已通**。

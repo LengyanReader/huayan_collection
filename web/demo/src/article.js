@@ -70,9 +70,9 @@ function renderArticle(){
     var _b=(ARTICLE_BI.scorecard&&ARTICLE_BI.scorecard.items)||[];
     h+='<button class="f-nav-btn" onclick="biGo()" title="跳至数据科学分析层：漏斗、语义域、交叉表、相似度、聚类、PCA、网络与稳健性">📊 数据科学（'+_b.length+' 项）</button>';
   }
-  // 数据科学层（三视角）：仅当 build.py 内嵌 RU_LAI_STUDIES（本文有 ru_lai_studies.yaml）时出现
+  // 数据科学层（四视角）：仅当 build.py 内嵌 RU_LAI_STUDIES（本文有 ru_lai_studies.yaml）时出现
   if((typeof RU_LAI_STUDIES!=='undefined')&&RU_LAI_STUDIES&&RU_LAI_STUDIES.linguistic){
-    h+='<button class="f-nav-btn" onclick="rlsGo()" title="跳至数据科学层：语言统计·代数组合·拓扑三视角">📐 数据科学（三视角）</button>';
+    h+='<button class="f-nav-btn" onclick="rlsGo()" title="跳至数据科学层：语言统计·代数组合·拓扑·几何持久同调四视角">📐 数据科学（四视角）</button>';
   }
   // 叙事动画：仅当 build.py 内嵌了 MIAOYAN_NARR 时出现
   if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
@@ -120,10 +120,10 @@ function renderArticle(){
     }catch(e){}
   }
 
-  // ── 数据科学层（三视角）面板：仅当内嵌 RU_LAI_STUDIES 时出现（内容渲染入壳内 #rls-inner）──
+  // ── 数据科学层（四视角）面板：仅当内嵌 RU_LAI_STUDIES 时出现（内容渲染入壳内 #rls-inner）──
   if((typeof RU_LAI_STUDIES!=='undefined')&&RU_LAI_STUDIES&&RU_LAI_STUDIES.linguistic){
     h+='<div class="section" data-chrome="1" id="article-rls" style="border-left:4px solid var(--gold);padding:0">';
-    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('rls-inner','📐 数据科学 · 三视角（语言统计·代数组合·拓扑）'):'';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('rls-inner','📐 数据科学 · 四视角（语言统计·代数组合·拓扑·几何）'):'';
     h+='</div>';
   }
 

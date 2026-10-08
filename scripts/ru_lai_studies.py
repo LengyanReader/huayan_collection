@@ -321,6 +321,133 @@ def lens_topology(asm):
     }
 
 
+def lens_geometry(asm):
+    """几何视角·持久同调（persistent homology）：以十方共字加权复形之过滤
+    计算各维持久条形。与『拓扑』一节之静态 Betti 数互补。
+
+    构造：顶点＝十方；λ(σ)＝σ 诸边共字数之最小值（|σ|=1 者令其最先出现）；
+    复形 K_t＝{σ : λ(σ) ≥ t}，t 自 max 降至 1 而自空渐满（增过滤）。以 GF(2)
+    边界矩阵约化得各维配对（birth, death）。
+    """
+    from itertools import combinations
+
+    nv = len(asm["directions"])
+    chars = []
+    for d in asm["directions"]:
+        s = set()
+        for k in ("world_ocean_zh", "land_zh", "buddha_zh", "bodhisattva_zh"):
+            s |= set(d[k])
+        chars.append(s)
+    weight = {}
+    for i, j in combinations(range(nv), 2):
+        weight[(i, j)] = len(chars[i] & chars[j])
+    maxt = max(weight.values()) if weight else 0
+
+    simplices = []          # (verts_tuple, birth)
+    for k in range(1, nv + 1):
+        for c in combinations(range(nv), k):
+            if k == 1:
+                b = maxt + 1
+            else:
+                b = min(weight[tuple(sorted((a, d)))] for a, d in combinations(c, 2))
+            if k >= 2 and b < 1:
+                continue
+            simplices.append((c, b))
+    simplices.sort(key=lambda sc: (-sc[1], len(sc[0]), sc[0]))
+    pos = {sc[0]: idx for idx, sc in enumerate(simplices)}
+    n = len(simplices)
+
+    def boundary_mask(c):
+        m = 0
+        for r in range(len(c)):
+            m ^= (1 << pos[c[:r] + c[r + 1:]])
+        return m
+
+    reduced = [0] * n
+    low_to_col = {}
+    pairs = []
+    creators = []
+    for j in range(n):
+        col = boundary_mask(simplices[j][0]) if len(simplices[j][0]) > 1 else 0
+        while col:
+            low = col.bit_length() - 1
+            if low in low_to_col:
+                col ^= reduced[low_to_col[low]]
+            else:
+                break
+        reduced[j] = col
+        if col:
+            low = col.bit_length() - 1
+            low_to_col[low] = j
+            pairs.append((len(simplices[low][0]) - 1, low, j))
+        else:
+            creators.append(j)
+    death_lows = set(low_to_col.keys())
+    essential = [j for j in creators if j not in death_lows]
+
+    def _bars(dim):
+        out = [{"birth": simplices[bi][1], "death": simplices[di][1]}
+               for d, bi, di in pairs if d == dim]
+        out.sort(key=lambda p: (-p["birth"], p["death"]))
+        return out
+
+    def _ess(dim):
+        return [{"birth": simplices[j][1], "death": None}
+                for j in essential if len(simplices[j][0]) - 1 == dim]
+
+    def _ranks_at(t):
+        from itertools import combinations as C
+        edges = [(i, j) for i, j in C(range(nv), 2) if weight[(i, j)] >= t]
+        eidx = {e: idx for idx, e in enumerate(edges)}
+        tris = [c for c in C(range(nv), 3)
+                if all(weight[tuple(sorted(e))] >= t for e in C(c, 2))]
+        tets = [c for c in C(range(nv), 4)
+                if all(weight[tuple(sorted(e))] >= t for e in C(c, 2))]
+        pents = [c for c in C(range(nv), 5)
+                 if all(weight[tuple(sorted(e))] >= t for e in C(c, 2))]
+
+        def d(cols, face_idx, full):
+            rows = [sum(1 << face_idx[c[:r] + c[r + 1:]] for r in range(len(c)))
+                    for c in cols]
+            return _rank_gf2(rows, full)
+        r1 = _rank_gf2([(1 << i) | (1 << j) for i, j in edges], nv)
+        r2 = d(tris, eidx, len(edges)) if edges else 0
+        tidx = {c: idx for idx, c in enumerate(tris)}
+        r3 = d(tets, tidx, len(tris)) if tris else 0
+        teidx = {c: idx for idx, c in enumerate(tets)}
+        r4 = d(pents, teidx, len(tets)) if tets else 0
+        return {"t": t, "n1": len(edges), "n2": len(tris), "n3": len(tets),
+                "beta0": nv - r1, "beta1": len(edges) - r1 - r2,
+                "beta2": len(tris) - r2 - r3, "beta3": len(tets) - r3 - r4}
+
+    betti = [_ranks_at(t) for t in range(maxt, 0, -1)]
+    return {
+        "method_zh": ("顶点＝十方；λ(σ)＝σ 诸边共字数之最小值（顶点最先出现）；复形 K_t＝{σ : λ(σ) ≥ t}，"
+                      "t 自 max 降至 1 而自空渐满（增过滤）。以 GF(2) 边界矩阵约化（standard reduction）"
+                      "得各维配对（birth, death）。与拓扑节之静态 Betti 数互补：静态只问某阈值下有几何环，"
+                      "持久则问环于何阈值生、何阈值灭。"),
+        "method_en": ("Vertices = ten directions; λ(σ) = min shared-character count over the edges of σ "
+                      "(vertices first); complex K_t = {σ : λ(σ) ≥ t}, with t from max down to 1 (an increasing "
+                      "filtration). GF(2) boundary-matrix reduction yields per-dimension (birth, death) pairs. "
+                      "This complements the static Betti numbers of the topology lens: there we ask how many "
+                      "cycles at a threshold, here when each cycle is born and dies."),
+        "n_simplices": n,
+        "max_dim": nv - 1,
+        "betti_curve": betti,
+        "barcode": {
+            "H0": _bars(0), "H1": _bars(1), "H2": _bars(2), "H3": _bars(3),
+        },
+        "essential": {
+            "H0": _ess(0), "H1": _ess(1), "H2": _ess(2), "H3": _ess(3),
+        },
+        "readout_zh": ("t 自 %d 降至 1，复形由疏而满：十顶点启 10 个 H0 类，随边出现而并，终余 1（连通）；"
+                       "H1／H2 之类随环而生、随三角形／四面体填充而灭。") % maxt,
+        "readout_en": ("As t drops from %d to 1 the complex densifies: the ten vertices start 10 H0 classes that "
+                       "merge as edges appear, leaving 1 (connected); H1/H2 classes are born with cycles and die as "
+                       "triangles/tetrahedra fill them.") % maxt,
+    }
+
+
 if __name__ == "__main__":
     vol6 = mm.load()[6]
     asm = yaml.safe_load(ASM.read_text(encoding="utf-8"))
@@ -354,6 +481,7 @@ if __name__ == "__main__":
         "linguistic": lens_linguistic(vol6, asm),
         "algebra": lens_algebra(asm),
         "topology": lens_topology(asm),
+        "geometry": lens_geometry(asm),
     }
     OUT.write_text(yaml.safe_dump(data, allow_unicode=True, sort_keys=False, default_flow_style=False), encoding="utf-8")
     print("wrote", OUT)
@@ -367,3 +495,7 @@ if __name__ == "__main__":
         data["topology"]["flag_complex"]["at_t1"]["beta0"],
         data["topology"]["flag_complex"]["at_t1"]["beta1"],
         data["topology"]["flag_complex"]["at_t1"]["triangles"]))
+    _g = data["geometry"]
+    print("L4 simplices=%d maxdim=%d H0=%d H1=%d H2=%d H3=%d essential(H0)=%d" % (
+        _g["n_simplices"], _g["max_dim"], len(_g["barcode"]["H0"]), len(_g["barcode"]["H1"]),
+        len(_g["barcode"]["H2"]), len(_g["barcode"]["H3"]), len(_g["essential"]["H0"])))

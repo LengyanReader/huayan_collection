@@ -527,3 +527,645 @@ topology:
       triangles: 0
       rank_d2: 0
       beta1: 0
+geometry:
+  method_zh: '顶点＝十方；λ(σ)＝σ 诸边共字数之最小值（顶点最先出现）；复形 K_t＝{σ : λ(σ) ≥ t}，t 自 max 降至 1 而自空渐满（增过滤）。以
+    GF(2) 边界矩阵约化（standard reduction）得各维配对（birth, death）。与拓扑节之静态 Betti 数互补：静态只问某阈值下有几何环，持久则问环于何阈值生、何阈值灭。'
+  method_en: 'Vertices = ten directions; λ(σ) = min shared-character count over the
+    edges of σ (vertices first); complex K_t = {σ : λ(σ) ≥ t}, with t from max down
+    to 1 (an increasing filtration). GF(2) boundary-matrix reduction yields per-dimension
+    (birth, death) pairs. This complements the static Betti numbers of the topology
+    lens: there we ask how many cycles at a threshold, here when each cycle is born
+    and dies.'
+  n_simplices: 1023
+  max_dim: 9
+  betti_curve:
+  - t: 13
+    n1: 1
+    n2: 0
+    n3: 0
+    beta0: 9
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 12
+    n1: 1
+    n2: 0
+    n3: 0
+    beta0: 9
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 11
+    n1: 2
+    n2: 0
+    n3: 0
+    beta0: 8
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 10
+    n1: 6
+    n2: 2
+    n3: 0
+    beta0: 6
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 9
+    n1: 7
+    n2: 2
+    n3: 0
+    beta0: 5
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 8
+    n1: 18
+    n2: 11
+    n3: 2
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 7
+    n1: 28
+    n2: 33
+    n3: 18
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 6
+    n1: 32
+    n2: 49
+    n3: 40
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 5
+    n1: 38
+    n2: 80
+    n3: 106
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 4
+    n1: 40
+    n2: 87
+    n3: 115
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 3
+    n1: 43
+    n2: 105
+    n3: 161
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 2
+    n1: 45
+    n2: 120
+    n3: 210
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  - t: 1
+    n1: 45
+    n2: 120
+    n3: 210
+    beta0: 1
+    beta1: 0
+    beta2: 0
+    beta3: 0
+  barcode:
+    H0:
+    - birth: 14
+      death: 8
+    - birth: 14
+      death: 8
+    - birth: 14
+      death: 8
+    - birth: 14
+      death: 8
+    - birth: 14
+      death: 9
+    - birth: 14
+      death: 10
+    - birth: 14
+      death: 10
+    - birth: 14
+      death: 11
+    - birth: 14
+      death: 13
+    H1:
+    - birth: 10
+      death: 10
+    - birth: 10
+      death: 10
+    - birth: 8
+      death: 8
+    - birth: 8
+      death: 8
+    - birth: 8
+      death: 8
+    - birth: 8
+      death: 8
+    - birth: 8
+      death: 8
+    - birth: 8
+      death: 8
+    - birth: 8
+      death: 8
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    H2:
+    - birth: 8
+      death: 8
+    - birth: 8
+      death: 8
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    H3:
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 7
+      death: 7
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 6
+      death: 6
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 5
+      death: 5
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+  essential:
+    H0:
+    - birth: 14
+      death: null
+    H1: []
+    H2: []
+    H3: []
+  readout_zh: t 自 13 降至 1，复形由疏而满：十顶点启 10 个 H0 类，随边出现而并，终余 1（连通）；H1／H2 之类随环而生、随三角形／四面体填充而灭。
+  readout_en: 'As t drops from 13 to 1 the complex densifies: the ten vertices start
+    10 H0 classes that merge as edges appear, leaving 1 (connected); H1/H2 classes
+    are born with cycles and die as triangles/tetrahedra fill them.'

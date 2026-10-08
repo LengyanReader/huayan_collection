@@ -42,6 +42,7 @@ check('renderRuLaiStudies 已定义', typeof global.renderRuLaiStudies === 'func
 const out = global.renderRuLaiStudies('#rls-inner') || '';
 check('渲染输出非空', out.length > 0);
 check('三节俱在', ['rls-linguistic', 'rls-algebra', 'rls-topology'].every(function (id) { return out.indexOf(id) >= 0; }));
+check('几何节（第四视角）俱在', out.indexOf('rls-geometry') >= 0);
 check('无 undefined 泄漏', out.indexOf('undefined') < 0);
 check('无 NaN 泄漏', out.indexOf('NaN') < 0);
 
@@ -66,6 +67,24 @@ for (let i = 1; i < fil.length; i++) {
 }
 check('t=1 完全图 K10（E=45, cyclomatic=36）', fil[0].edges === 45 && fil[0].cyclomatic === 36);
 check('t=1 旗复形 β1=0（K10 可缩）', T.flag_complex.at_t1.beta1 === 0);
+
+// ── 几何视角·持久同调不变量 ──
+const G = data.geometry;
+check('几何视角存在', !!G);
+const GROM = G && G.barcode, GEss = G && G.essential;
+check('单纯形数 = 2^nv − 1 = 1023', G.n_simplices === 1023, String(G && G.n_simplices));
+check('最大维 = nv − 1 = 9', G.max_dim === 9);
+check('H0 有限条 = nv − 1 = 9', (GROM.H0 || []).length === 9, String((GROM.H0 || []).length));
+check('H0 本质类 = 1（连通）', (GEss.H0 || []).length === 1);
+check('H0 类总数 = nv（9 有限 + 1 本质）', (GROM.H0 || []).length + (GEss.H0 || []).length === 10);
+const cv = G.betti_curve || [];
+check('Betti 曲线首行 t=max，β0∈[1,10]', cv.length > 0 && cv[0].beta0 >= 1 && cv[0].beta0 <= 10, String(cv[0] && cv[0].beta0));
+check('Betti 曲线末行 t=1，β0=1（连通）', cv.length > 0 && cv[cv.length - 1].beta0 === 1, String(cv[cv.length - 1] && cv[cv.length - 1].beta0));
+check('Betti 曲线末行 β1=β2=β3=0（终为可缩 K10）', cv.length > 0 && cv[cv.length - 1].beta1 === 0 && cv[cv.length - 1].beta2 === 0 && cv[cv.length - 1].beta3 === 0);
+for (let i = 1; i < cv.length; i++) {
+  check('β0 随 t 降不增', cv[i].beta0 <= cv[i - 1].beta0, 't' + cv[i].t);
+}
+check('渲染输出含几何节 id', out.indexOf('rls-geometry') >= 0);
 
 if (fails.length) {
   console.log('FAIL: ' + fails.length + ' check(s) failed');
