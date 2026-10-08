@@ -139,6 +139,11 @@ function renderArticle(){
     var _nb=(MIAOYAN_NARR.beats||[]).length;
     h+='<button class="f-nav-btn" onclick="narrGo()" title="跳至叙事动画：'+_nb+' 拍会众曼荼罗次第涌现">📽 叙事动画（'+_nb+' 拍）</button>';
   }
+  // 电影式分镜：仅当 build.py 内嵌 MIAOYAN_SB 时出现
+  if((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length){
+    var _sbn=0;(MIAOYAN_SB.acts||[]).forEach(function(x){_sbn+=((x.shots)||[]).length;});
+    h+='<button class="f-nav-btn" onclick="sbGo()" title="跳至电影式分镜：'+MIAOYAN_SB.acts.length+' 幕 '+_sbn+' 镜">🎬 分镜动画（'+_sbn+' 镜）</button>';
+  }
   // 会众全景流程：仅当 build.py 内嵌了 ARTICLE_ASSEMBLY 且已加载 renderMiaoyanFlow 时出现
   if((typeof renderMiaoyanFlow==='function')&&(typeof ARTICLE_ASSEMBLY!=='undefined')&&ARTICLE_ASSEMBLY&&(ARTICLE_ASSEMBLY.classes||[]).length){
     var _afc=(ARTICLE_ASSEMBLY.classes||[]),_afn=0;_afc.forEach(function(c){_afn+=(c.members||[]).length;});
@@ -183,6 +188,14 @@ function renderArticle(){
     h+='</div>';
   }
 
+  // ── 电影式分镜（storyboard.yaml；仅当内嵌 MIAOYAN_SB 时出现）──
+  // 内容渲染入壳内 #article-sb（分镜播放器自带舞台/字幕/控件/分镜表）。
+  if((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length){
+    h+='<div class="section" data-chrome="1" id="article-storyboard" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('article-sb','🎬 分镜动画（电影式·交互）'):'';
+    h+='</div>';
+  }
+
   // ── 页脚 ──
   h+='<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
   h+='<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
@@ -209,6 +222,10 @@ function renderArticle(){
   if(typeof renderArticleEDA==='function' && document.getElementById('article-eda-inner')){
     renderArticleEDA('#article-eda-inner');
   }
+  // ── 数据科学层（BI）：渲染入折叠壳内 #bi-report-inner（此前只发空壳，面板恒为空，2026-10-08 修复）──
+  if(typeof renderArticleBI==='function' && document.getElementById('bi-report-inner')){
+    try{ document.getElementById('bi-report-inner').innerHTML=renderArticleBI(); }catch(e){ console.warn('bi', e); }
+  }
 
   // ── 会众全景流程图（MiaoyanFlow；简明结构流程图）──
   if(typeof renderMiaoyanFlow==='function' && document.getElementById('article-flow')){
@@ -218,6 +235,12 @@ function renderArticle(){
   // ── 叙事动画播放器（MiaoyanNarrative）：渲染入折叠壳内 ──
   if(typeof renderMiaoyanNarrative==='function' && document.getElementById('article-narrative-inner')){
     try{ renderMiaoyanNarrative('#article-narrative-inner'); }catch(e){ console.warn('narrative', e); }
+  }
+  // ── 电影式分镜播放器（MiaoyanStoryboard）：渲染入折叠壳内 #article-sb ──
+  if(typeof renderMiaoyanStoryboard==='function' && document.getElementById('article-sb')){
+    try{ renderMiaoyanStoryboard('#article-sb',
+          (typeof MIAOYAN_SB!=='undefined'?MIAOYAN_SB:null),
+          (typeof MIAOYAN_NARR!=='undefined'?MIAOYAN_NARR:null)); }catch(e){ console.warn('storyboard', e); }
   }
 
   // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
@@ -273,6 +296,14 @@ function narrGo(){ // scroll to narrative animation
   if(!el)return;
   el.scrollIntoView({behavior:'smooth',block:'start'});
   if(history.replaceState) history.replaceState(null,'','#article-narrative');
+}
+
+function sbGo(){ // scroll to storyboard panel
+  if(typeof _scrollReveal==='function' && _scrollReveal('article-storyboard')){ if(history.replaceState) history.replaceState(null,'','#article-storyboard'); return; }
+  var el=document.getElementById('article-storyboard');
+  if(!el)return;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(history.replaceState) history.replaceState(null,'','#article-storyboard');
 }
 
 function flowGo(){ // scroll to assembly panorama flow diagram

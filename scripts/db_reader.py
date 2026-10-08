@@ -1007,6 +1007,44 @@ def load_miaoyan_narrative():
     return y
 
 
+def _load_narrative_library(kind):
+    """按文章 id 归集的叙事／分镜库（通用，供任意独立文章页复用）。
+
+    扫 `data/narrative/*_<kind>.yaml`，以各文件 `meta.article` 为键。
+    未标 `meta.article` 者不入册（避免全局单例误挂到别篇）。
+    narrative 之 beats 依 order 排序；storyboard 交渲染器自排，不加干预。
+    """
+    import glob as _glob, yaml as _yaml
+    lib = {}
+    d = os.path.join(ROOT, 'data', 'narrative')
+    if not os.path.isdir(d):
+        return lib
+    for p in sorted(_glob.glob(os.path.join(d, '*_%s.yaml' % kind))):
+        try:
+            with open(p, encoding='utf-8') as f:
+                y = _yaml.safe_load(f) or {}
+        except Exception:
+            continue
+        aid = (y.get('meta') or {}).get('article')
+        if not aid:
+            continue
+        if kind == 'narrative':
+            beats = y.get('beats') or []
+            y['beats'] = sorted(beats, key=lambda x: (x.get('order') if x.get('order') is not None else 999))
+        lib[aid] = y
+    return lib
+
+
+def load_narrative_library():
+    """按文章 id 索引的叙事动画库（data/narrative/*_narrative.yaml）。"""
+    return _load_narrative_library('narrative')
+
+
+def load_storyboard_library():
+    """按文章 id 索引的分镜库（data/narrative/*_storyboard.yaml）。"""
+    return _load_narrative_library('storyboard')
+
+
 def load_miaoyan_keypoints():
     """一品要点导览（data/narrative/miaoyan_keypoints.yaml）。
 

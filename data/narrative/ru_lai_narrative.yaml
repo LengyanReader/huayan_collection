@@ -1,0 +1,290 @@
+# 《如来现相品》·文本叙事动画（Narrative）
+# 三层：经文事实（T10n0279 卷第六）→ 叙事节拍（narrative）→ 可视化呈现（visual）
+# 原则：凡无法定准之处标注〔待核〕；中英必配；不臆造定论。偈颂支分见正文 §2.6。
+# 与世主妙严品叙事动画同构：环上「一点＝一类」，不以点数冒充人数。
+# 节拍依正文 §7.4 之十镜依次落成，order 0..9 连续、时码首尾相接不重叠。
+
+meta:
+  id: ru-lai-xian-xiang-narrative
+  article: ru-lai-xian-xiang
+  title_zh: "如来现相品 · 叙事动画"
+  title_en: "The Tathāgata's Manifestation · Narrative Animation"
+  source_primary: "CBETA T10n0279《大方廣佛華嚴經》（实叉难陀译·八十卷本）·如來現相品第二＝卷第六"
+  sources:
+    - label: "CBETA T10n0279《如來現相品第二》（八十卷本）"
+      url: "https://cbetaonline.dila.edu.tw/zh/T10n0279"
+    - label: "CBETA T09n0278（六十卷本·旧译）·本品内容归〈卢舍那佛品〉，仅作对照"
+      url: "https://cbetaonline.dila.edu.tw/zh/T09n0278"
+  note_zh: "本动画依本品「一光召众→十方云奔→白毫出众→十士说颂」之经文次第重组成十镜，用以表达「光相表示」与「时空圆融」之意向，不等同于逐颂逐句的逐字演绎。"
+  note_en: "Reconstructed from the sūtra's own sequence (light beckons the assembly → the ten directions converge → the white-hair light → ten worthies utter verses) into ten shots, to express manifestation-by-light and spatiotemporal interpenetration; not a verse-by-verse enactment."
+  version: "0.1.0"
+  status: "draft"
+
+space:
+  center:
+    id: "center-buddha"
+    label_zh: "毘盧遮那如來（菩提場·法界座）"
+    label_en: "Vairocana (Bodhimaṇḍa seat)"
+    radius: 0
+    z: 10
+  rings:
+    - id: r1
+      label_zh: "十方世界海来众（十上首菩萨）"
+      label_en: "Assemblies from the ten world-oceans (ten leading bodhisattvas)"
+      color: "#b8863c"
+      r: 200
+      z: 8
+      member_count: 10
+      member_classes: 10
+      source_ref: "T10n0279 卷第六·十方各世界海来众，各举上首菩萨（正文 §2.5 十方表）；众数经作「佛剎微塵數」不确指，此仅取上首十位为空间意象"
+    - id: r2
+      label_zh: "眉间光·白毫所出众（胜音等十一位说颂者）"
+      label_en: "The white-hair light's assembly (Shengyin and the ten worthies)"
+      color: "#5e8b9e"
+      r: 330
+      z: 7
+      member_count: 11
+      member_classes: 11
+      source_ref: "T10n0279 卷第六·眉间光后十一组各说颂（胜音领一颂＋十大士各一颂，正文 §2.6）；白毫所出众不止此，此取说颂者十一位"
+  background:
+    mandala_grid: true
+    worldsea: true
+    opacity: 0.12
+    calibration: "本品会众之众数经文皆作「佛剎微塵數」「不可說」等，不确指；今仅取经文实列之上首菩萨为同心环之空间意象，一点＝一方（r1）或一说颂者（r2），非一人一点之精确比例图。"
+    token_note: "环上光点为【示意】：一点代表一方世界海或一位说颂者，员数另以文字标注，不以点数冒充人数。"
+
+visual_style:
+  palette:
+    center: "#f2d77c"
+    bodhisattva: "#b8863c"
+    deities: "#5e8b9e"
+    light: "#f5e9b8"
+    bg: "#0f1419"
+  easing: "cubic-bezier(0.22,0.61,0.36,1)"
+  duration_base_ms: 900
+  stagger_ms: 90
+  breath_ms: 1200
+
+beats:
+  # ① 念请四十问（甲 20「云何是諸佛…」＋乙 20「…海」）
+  - id: b0
+    order: 0
+    title_zh: "① 念请四十问"
+    title_en: "1 · Forty Questions of Mental Entreaty"
+    time_start_s: 0.0
+    time_end_s: 2.8
+    camera: { zoom: 1.00, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["center"]
+    cast_groups: ["center"]
+    actions:
+      - type: "breathe"
+        target: "center-buddha"
+        zh: "菩萨众于心念中请问，如来默然"
+        en: "The bodhisattvas entreat in thought; the Buddha remains silent"
+        dur_ms: 1100
+        delay_ms: 0
+    narration_zh: "会中菩萨以「念请」请问，凡四十问：前二十问「云何是諸佛……」之义，后二十问及种种「海」——众生海、世界海、法界海之相。念请者，不作言说，但以心念请法。"
+    narration_en: "The assembled bodhisattvas entreat by thought alone — forty questions in all: twenty on the marks of the Buddhas, twenty on the 'oceans' of beings, worlds and dharmadhātu."
+    narration_ref: "T10n0279 卷第六·念请四十问（正文 §2.1；问数「四十」据经逐项，「三十七」为李氏别判，见 §2.6）〔待核〕"
+    uncertainty: ["scene_boundary"]
+
+  # ② 面门放光
+  - id: b1
+    order: 1
+    title_zh: "② 面门放光"
+    title_en: "2 · Light from the Face-Gate"
+    time_start_s: 2.8
+    time_end_s: 5.6
+    camera: { zoom: 1.08, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["center", "bg"]
+    cast_groups: ["center", "bg"]
+    actions:
+      - type: "radiate"
+        target: "center-buddha"
+        zh: "如來面門放光，普照十方世界海"
+        en: "Light issues from the Tathāgata's face-door, illumining the ten world-oceans"
+        dur_ms: 1000
+        delay_ms: 0
+    narration_zh: "如来于面门放光，其光「普照十方各一亿佛刹微尘数世界海」；彼世界海诸菩萨众，于光明中「各得见此华藏庄严世界海」。"
+    narration_en: "Light issues from the Tathāgata's face; it illumines world-oceans in the ten directions, and within that light the bodhisattvas each behold this Flower-Adorned world-ocean."
+    narration_ref: "T10n0279 卷第六·面门放光（正文 §2.2 现相五义之一）"
+    uncertainty: ["scene_boundary"]
+
+  # ③ 光中出颂召众（前导三颂共二十二偈）
+  - id: b2
+    order: 2
+    title_zh: "③ 光中出颂·召众"
+    title_en: "3 · Verses Issue from the Light"
+    time_start_s: 5.6
+    time_end_s: 8.4
+    camera: { zoom: 1.04, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["center", "bg"]
+    cast_groups: ["center", "bg"]
+    actions:
+      - type: "radiate"
+        target: "center-buddha"
+        zh: "光中同时出声说偈，召十方众"
+        en: "Verses sound from within the light, summoning the ten directions"
+        dur_ms: 900
+        delay_ms: 200
+    narration_zh: "光中同时出声说偈召众。前导三颂（自然出音二偈＋光中说颂十偈＋光中同时发声十偈）共二十二偈，为眉间光后十一组颂之引。"
+    narration_en: "Verses sound from within the light, summoning the assemblies of the ten directions. The three leading verse-blocks total twenty-two verses, introducing the eleven later groups."
+    narration_ref: "T10n0279 卷第六·光中出声说颂（正文 §2.6 前导三颂）"
+    uncertainty: ["scene_boundary"]
+
+  # ④ 十方云奔
+  - id: b3
+    order: 3
+    title_zh: "④ 十方云奔"
+    title_en: "4 · The Ten Directions Converge"
+    time_start_s: 8.4
+    time_end_s: 11.4
+    camera: { zoom: 1.10, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["center", "r1"]
+    cast_groups: ["center", "r1"]
+    actions:
+      - type: "emerge_ring"
+        target: "r1"
+        ring: "r1"
+        zh: "十方世界海众云奔而至"
+        en: "Assemblies from the ten world-oceans converge"
+        dur_ms: 1100
+        delay_ms: 0
+    narration_zh: "十方世界海众闻光而云奔，各从世界海来，举其国佛号与上首菩萨；众数如「佛刹微尘数」，不可尽言。"
+    narration_en: "Beholding the light, the assemblies of the ten world-oceans converge, each naming its Buddha and leading bodhisattva; their numbers are as dust-motes beyond telling."
+    narration_ref: "T10n0279 卷第六·十方云奔（正文 §2.5）"
+    uncertainty: ["scene_boundary"]
+
+  # ⑤ 供养云遍空
+  - id: b4
+    order: 4
+    title_zh: "⑤ 供养云遍空"
+    title_en: "5 · Clouds of Offering Fill Space"
+    time_start_s: 11.4
+    time_end_s: 14.2
+    camera: { zoom: 1.06, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["r1", "bg"]
+    cast_groups: ["r1", "bg"]
+    actions:
+      - type: "ripple"
+        target: "bg-worldsea"
+        zh: "众海以供养云普覆虚空"
+        en: "Offering-clouds spread throughout space"
+        dur_ms: 1000
+        delay_ms: 0
+    narration_zh: "诸来众各以摩尼宝、华、香、幢、网等供养云普覆虚空，供佛及众。"
+    narration_en: "Each arriving assembly covers space with clouds of jewels, flowers, incense, banners and nets, offering to the Buddha and the assembly."
+    narration_ref: "T10n0279 卷第六·供养云（正文 §2.2）〔待核〕"
+    uncertainty: ["scene_boundary", "detail"]
+
+  # ⑥ 眉间光
+  - id: b5
+    order: 5
+    title_zh: "⑥ 眉间放光"
+    title_en: "6 · The Mid-Brow Light"
+    time_start_s: 14.2
+    time_end_s: 17.0
+    camera: { zoom: 1.12, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["center"]
+    cast_groups: ["center"]
+    actions:
+      - type: "radiate"
+        target: "center-buddha"
+        zh: "眉间放光，名「一切菩薩智光明普照耀十方藏」"
+        en: "From the brow issues the light named 'The Wisdom-Light of All Bodhisattvas, Illuming All Directions' Treasury'"
+        dur_ms: 1000
+        delay_ms: 0
+    narration_zh: "如来复放眉间光，光名「一切菩薩智光明，普照耀十方藏」，其状犹如宝色灯云；普震动诸世界网，一一尘中现无数佛。此光示说法主。"
+    narration_en: "Light again issues from between the Buddha's brows — 'the light of all bodhisattvas' wisdom, illumining the treasury of the ten directions' — like a cloud of jewelled lamps, shaking the world-nets, revealing countless Buddhas in each mote."
+    narration_ref: "T10n0279 卷第六·眉间光（正文 §2.2 现相五义之二／§2.5）"
+    uncertainty: ["scene_boundary"]
+
+  # ⑦ 佛前现华
+  - id: b6
+    order: 6
+    title_zh: "⑦ 佛前现华"
+    title_en: "7 · A Lotus Appears Before the Buddha"
+    time_start_s: 17.0
+    time_end_s: 19.8
+    camera: { zoom: 1.05, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["center"]
+    cast_groups: ["center"]
+    actions:
+      - type: "emerge_spiral"
+        target: "bg-mandala"
+        zh: "佛前忽现大宝莲华"
+        en: "A great jewelled lotus appears before the Buddha"
+        dur_ms: 900
+        delay_ms: 200
+    narration_zh: "佛前忽现大宝莲华，其华「具足十种庄严」，为依果之表。"
+    narration_en: "A great jewelled lotus appears before the Buddha, endowed with ten adornments — a token of the fruit of reliance."
+    narration_ref: "T10n0279 卷第六·佛前现华（正文 §2.2 现相五义之四）"
+    uncertainty: ["scene_boundary"]
+
+  # ⑧ 白毫出众
+  - id: b7
+    order: 7
+    title_zh: "⑧ 白毫出众"
+    title_en: "8 · The White-Hair Light's Assembly"
+    time_start_s: 19.8
+    time_end_s: 22.6
+    camera: { zoom: 1.08, pan_x: 0, pan_y: 0, ease_ms: 900 }
+    space_focus: ["r2"]
+    cast_groups: ["r2"]
+    actions:
+      - type: "emerge_ring"
+        target: "r2"
+        ring: "r2"
+        zh: "白毫出众，胜音等菩萨现前"
+        en: "From the white-hair light an assembly emerges"
+        dur_ms: 1000
+        delay_ms: 100
+    narration_zh: "如来白毫出众，胜音等菩萨自光中现前，表「教从佛流」。"
+    narration_en: "From the Buddha's white-hair light an assembly emerges — Shengyin and the worthies — showing the teaching flowing from the Buddha."
+    narration_ref: "T10n0279 卷第六·白毫出众（正文 §2.2 现相五义之五）"
+    uncertainty: ["scene_boundary"]
+
+  # ⑨ 胜音说颂·十士继颂（十一组·每组十偈·共一百一十偈）
+  - id: b8
+    order: 8
+    title_zh: "⑨ 胜音说颂·十士继颂"
+    title_en: "9 · Shengyin and the Ten Worthies Utter Verses"
+    time_start_s: 22.6
+    time_end_s: 25.6
+    camera: { zoom: 1.06, pan_x: 0, pan_y: 0, ease_ms: 1000 }
+    space_focus: ["r2"]
+    cast_groups: ["r2"]
+    actions:
+      - type: "emerge_up"
+        target: "r2"
+        ring: "r2"
+        zh: "胜音领一颂，十大士各说一颂"
+        en: "Shengyin leads; ten worthies each add a verse"
+        dur_ms: 1100
+        delay_ms: 0
+    narration_zh: "胜音菩萨承佛威神说颂，其后十大士各说一颂，凡十一组、每组十偈，共一百一十偈（卷六偈颂合计一百三十二偈）。"
+    narration_en: "Shengyin utters a verse by the Buddha's power, then ten worthies each add one — eleven groups of ten verses, a hundred and ten in all (132 for the whole fascicle)."
+    narration_ref: "T10n0279 卷第六·眉间光后十一组颂（正文 §2.6）"
+    uncertainty: ["scene_boundary"]
+
+  # ⑩ 法身如影·遍周一摄
+  - id: b9
+    order: 9
+    title_zh: "⑩ 法身如影·遍周一摄"
+    title_en: "10 · Dharmakāya Like an Image, All-Pervading"
+    time_start_s: 25.6
+    time_end_s: 28.4
+    camera: { zoom: 1.00, pan_x: 0, pan_y: 0, ease_ms: 1100 }
+    space_focus: ["center", "r1", "r2"]
+    cast_groups: ["center", "r1", "r2"]
+    actions:
+      - type: "breathe"
+        target: "center-buddha"
+        zh: "法身同虚空，色形如影像"
+        en: "The dharmakāya is like space; forms appear as reflections"
+        dur_ms: 1200
+        delay_ms: 0
+    narration_zh: "品末颂明法身之德：「諸佛同法身……隨諸众生意，令見佛色形」；「法身同虚空……色形如影像」。光相所表，归于法身之一摄。"
+    narration_en: "The closing verses declare the dharmakāya: 'the Buddhas share one dharmakāya … yet appear as forms according to beings' minds'; 'the dharmakāya is like space … its forms are as reflections.' What is shown by light resolves into the dharmakāya's single embrace."
+    narration_ref: "T10n0279 卷第六·法身偈（正文 §2.3）〔译文为本文暂译〕"
+    uncertainty: ["translation_pending"]

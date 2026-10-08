@@ -4,6 +4,7 @@
 
 meta:
   id: shizhu-miaoyan-narrative
+  article: shizhu-miaoyan
   title_zh: "世主妙严品 · 叙事动画"
   title_en: "Adorning the World-Ruler · Narrative Animation (Progressive Emergence)"
   source_primary: "CBETA T10n0279《大方廣佛華嚴經》（实叉难陀译，八十卷本）·世主妙严品第一＝卷一至卷五"
@@ -18,6 +19,10 @@ meta:
   status: "draft"
 
 space:
+  # 本品自有之数字契约（供 verify_narrative_render.js 校验；一点＝一类）
+  expected:
+    classes: 40
+    named: 414
   center:
     id: "center-buddha"
     label_zh: "法界座（世主）"

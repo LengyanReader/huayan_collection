@@ -66,7 +66,9 @@ var MiaoyanNarrative = (function(){
     /* h2 置于 section 之外，充当 _foldDoc 的折叠标题：其相邻兄弟 <section> 会被裹入
        .secfold-body 并默认收起。若标题嵌在 section 内，wrapLevel 只认直接子级、无从包裹，
        折叠便形同虚设——叙事动画会一直铺在页面底部。 */
-    h += '<h2>📽 世主妙严品 · 叙事动画<span class="en-line" style="font-size:0.62em;color:var(--text2);margin-left:8px">📖 Narrative Animation — Progressive Emergence</span></h2>';
+    h += '<h2>📽 '+(d.meta&&d.meta.title_zh?d.meta.title_zh:'叙事动画')
+       + (d.meta&&d.meta.title_en?'<span class="en-line" style="font-size:0.62em;color:var(--text2);margin-left:8px">📖 '+d.meta.title_en+'</span>':'')
+       + '</h2>';
     h += '<section class="miaoyan-narr" data-chrome="1">';
 
     if(d.meta && d.meta.note_zh){
@@ -96,7 +98,7 @@ var MiaoyanNarrative = (function(){
     h += '<label><input type="checkbox" class="mn-lg" data-k="en" checked> 英文标签</label>';
     h += '</div>';
 
-    h += '<canvas class="mn-cv" width="'+W+'" height="'+H+'" role="img" aria-label="世主妙严品会众曼荼罗叙事动画"></canvas>';
+    h += '<canvas class="mn-cv" width="'+W+'" height="'+H+'" role="img" aria-label="'+((d.meta&&d.meta.title_zh)||'会众')+'叙事动画"></canvas>';
 
     /* 拍条 */
     h += '<div class="mn-beats">';
@@ -171,7 +173,10 @@ var MiaoyanNarrative = (function(){
     }
 
     /* ── 绘制 ────────────────────────────────────────── */
-    function ringColor(rid){
+    function ringColor(rg){
+      /* 环色优先取数据所给 rg.color；否则退回世主妙严品旧环位映射，末位取 deities 色 */
+      if(rg && rg.color) return rg.color;
+      var rid = (rg && rg.id) || rg;
       return {r1:pal.bodhisattva, r2:pal.vajra, r3:pal.deities,
               r4:pal.eight, r5:pal.desire}[rid] || pal.deities;
     }
@@ -246,13 +251,13 @@ var MiaoyanNarrative = (function(){
         var R = (rg.r||0)*SCALE;
         cx.save();
         cx.globalAlpha = rp;
-        cx.strokeStyle = ringColor(rg.id);
+        cx.strokeStyle = ringColor(rg);
         cx.lineWidth = 1.2;
         cx.beginPath(); cx.arc(CX,CY,R,0,Math.PI*2); cx.stroke();
         /* 环名 */
         if(S.layer.labels){
           cx.globalAlpha = rp*0.92;
-          cx.fillStyle = ringColor(rg.id);
+          cx.fillStyle = ringColor(rg);
           cx.font = '12px "Noto Serif SC", serif';
           cx.textAlign = 'left'; cx.textBaseline = 'middle';
           var ang = -Math.PI*0.78;
@@ -275,7 +280,7 @@ var MiaoyanNarrative = (function(){
             var px = CX + Math.cos(a2)*R, py = CY + Math.sin(a2)*R;
             var rr = (nc>12? 3.2 : 4.6) * easeOut(dp);
             /* 上层环分欲界/色界两半着色 */
-            var col = ringColor(rg.id);
+            var col = ringColor(rg);
             if(rg.splits && rg.splits.length){
               var rel = d2/nc;
               col = (rel < (rg.splits[0].classes||1)/nc) ? pal.desire : pal.form;

@@ -21,20 +21,46 @@ const we = html.indexOf('\n}', ei);
 if (ri < 0 || se < 0 || we < 0) { console.error('FAIL: source bounds not found'); process.exit(1); }
 const src = html.slice(si, we + 2);
 
-/* ── 数据层不变量（先于渲染校验）───────────────────────── */
+/* ── 数据层不变量（先于渲染校验）─────────────────────────
+ * 本门禁对「任一文章之叙事数据」通用：结构/口径/可溯源为硬不变量；
+ * 各品自有之数字契约（如世主妙严「40 类 / 414 名」）以 space.expected 随数据声明，
+ * 有则校验、无则略，故新增品类不必改门禁。 */
 const rings = (MIAOYAN_NARR.space && MIAOYAN_NARR.space.rings) || [];
+if (!rings.length) errs.push('no rings defined');
+const ringIds = new Set();
 const sumCls = rings.reduce((a, r) => a + (r.member_classes || 0), 0);
 const sumMem = rings.reduce((a, r) => a + (r.member_count || 0), 0);
-if (sumCls !== 40) errs.push('member_classes sum = ' + sumCls + ', expected 40');
-if (sumMem !== 414) errs.push('member_count sum = ' + sumMem + ', expected 414');
+for (const r of rings) {
+  if (!r.id) errs.push('ring missing id');
+  else if (ringIds.has(r.id)) errs.push('duplicate ring id: ' + r.id);
+  else ringIds.add(r.id);
+  if (!r.label_zh) errs.push('ring ' + r.id + ' missing label_zh');
+  if (!(r.member_classes >= 1)) errs.push('ring ' + r.id + ' bad member_classes');
+  if (!(r.member_count >= 1)) errs.push('ring ' + r.id + ' bad member_count');
+}
+const exp = MIAOYAN_NARR.space.expected;
+if (exp) {
+  if (exp.classes != null && sumCls !== exp.classes)
+    errs.push('member_classes sum = ' + sumCls + ', expected ' + exp.classes);
+  if (exp.named != null && sumMem !== exp.named)
+    errs.push('member_count sum = ' + sumMem + ', expected ' + exp.named);
+}
 const beats = MIAOYAN_NARR.beats || [];
-if (beats.length !== 11) errs.push('beats = ' + beats.length + ', expected 11');
+if (!beats.length) errs.push('no beats');
+const okWho = new Set(['center', 'bg', 'bg-worldsea', 'bg-mandala', ...ringIds]);
 for (const b of beats) {
   if (!(b.time_end_s > b.time_start_s)) errs.push('beat ' + b.id + ' bad time range');
   if (!b.narration_zh || !b.narration_en) errs.push('beat ' + b.id + ' missing zh/en narration');
-  if (!/T10n0279|T279|miaoyan_assembly/.test(b.narration_ref || ''))
-    errs.push('beat ' + b.id + ' ref not traceable: ' + b.narration_ref);
+  if (!b.narration_ref) errs.push('beat ' + b.id + ' missing narration_ref');
+  for (const g of (b.space_focus || [])) if (!okWho.has(g)) errs.push('beat ' + b.id + ' unknown space_focus: ' + g);
+  // cast_groups 为渲染器未消费之自由标注（环名/色位/图层），不施白名单
+  if (b.cast_groups && !Array.isArray(b.cast_groups)) errs.push('beat ' + b.id + ' cast_groups not array');
+  for (const a of (b.actions || [])) {
+    if (!a.type) errs.push('beat ' + b.id + ' action missing type');
+    if (a.ring && !ringIds.has(a.ring)) errs.push('beat ' + b.id + ' action ring unknown: ' + a.ring);
+  }
 }
+const total = beats[beats.length - 1].time_end_s;
 
 /* ── 最小 DOM + Canvas 桩（元素按选择器记忆化，方可事后取控件）── */
 let CTX = null;
@@ -128,15 +154,15 @@ if (!/width="960" height="620"/.test(H)) errs.push('canvas size not set');
 for (const leak of ['undefined', 'NaN', '[object Object]']) {
   if (H.includes(leak)) errs.push('leak in innerHTML: ' + leak);
 }
-if (!H.includes('cbetaonline.dila.edu.tw/zh/T10n0279')) errs.push('T10n0279 source link missing');
-if (!H.includes('不可尽言')) errs.push('calibration note missing');
-if (!/= 414/.test(H)) errs.push('414 calibration not shown');
-if (/Mahādevī/.test(H)) errs.push('stray title leaked into page');
-if (/T09n0279/.test(H.replace(/[^]*?仅作对照[^]*?T09n0279/, ''))) {
-  // 允许 meta.sources 中「仅作对照」那一处，旧译不得作底本
-  const hits = (H.match(/T09n0279/g) || []).length;
-  if (hits > 2) errs.push('T09n0279 appears ' + hits + ' times (expect label+url only)');
-}
+// 数据自带之口径说明/标题/来源须原样见于页面（有则校，无则略）
+const _meta = MIAOYAN_NARR.meta || {};
+const _bg = (MIAOYAN_NARR.space && MIAOYAN_NARR.space.background) || {};
+const _tzh = _meta.title_zh || '';
+if (_tzh && !H.includes(_tzh)) errs.push('meta.title_zh not shown');
+const _srcs = _meta.sources || [];
+if (_srcs.length && !H.includes(_srcs[0].url)) errs.push('primary source link missing: ' + _srcs[0].url);
+if (_bg.calibration && !H.includes(_bg.calibration)) errs.push('calibration note not shown verbatim');
+if (_bg.token_note && !H.includes(_bg.token_note)) errs.push('token_note not shown verbatim');
 
 /* ── 交互驱动 ──────────────────────────────────────────── */
 const c = (s) => root.querySelector(s);
@@ -161,8 +187,9 @@ if (!beats[0].narration_zh.includes(nz.textContent.replace(/<\/?b>/g, '')))
   errs.push('beat0 narration mismatch');
 if (beats[0].narration_en !== ne.textContent) errs.push('beat0 EN narration mismatch');
 // 渲染器以 innerHTML 写入旁白/按钮/元信息，故桩校验亦读 innerHTML
-if (!/T10n0279|assembly/.test(meta.innerHTML)) errs.push('beat0 ref not shown');
-if (!/存疑/.test(meta.innerHTML)) errs.push('beat0 uncertainty not shown');
+if (!meta.innerHTML.includes(beats[0].narration_ref)) errs.push('beat0 ref not shown');
+if (beats[0].uncertainty && beats[0].uncertainty.length && !/存疑/.test(meta.innerHTML))
+  errs.push('beat0 uncertainty not shown');
 
 const ops0 = ops();
 if (!(ops0 > 0)) errs.push('no canvas ops on first paint');
@@ -188,18 +215,26 @@ c('.mn-prev').fire('click');
 if (!beats[0].title_zh.includes(nt.textContent.split('  ·')[0]))
   errs.push('prev beat failed: ' + nt.textContent);
 
-// 直接跳拍（第 5 拍 = 法界/上层相关）
-chipEls[5].fire('click');
-if (!beats[5].title_zh.includes(nt.textContent.split('  ·')[0]))
+// 直接跳拍（取正中一拍，不写死序号）
+const mid = Math.floor(beats.length / 2);
+chipEls[mid].fire('click');
+if (!beats[mid].title_zh.includes(nt.textContent.split('  ·')[0]))
   errs.push('chip jump failed: ' + nt.textContent);
 
-// 进度条 seek 到 70%（总时长 32s，70% = 22.4s → 落 B7 区间 22.0–24.5）
+// 进度条 seek 到 70%：按各拍时码累计反算应落之拍（不写死总时长/落点）
+let seekBeat = 0, acc = 0;
+const seekT = 0.7 * total;
+for (let i = 0; i < beats.length; i++) {
+  const d = beats[i].time_end_s - beats[i].time_start_s;
+  if (seekT <= acc + d || i === beats.length - 1) { seekBeat = i; break; }
+  acc += d;
+}
 const sk = c('.mn-seek');
 sk.value = '700';
 sk.fire('input');
 pump(2, 300);
-if (!beats[7].title_zh.includes(nt.textContent.split('  ·')[0]))
-  errs.push('seek 70% should land in B7 (22.4s), got: ' + nt.textContent);
+if (!beats[seekBeat].title_zh.includes(nt.textContent.split('  ·')[0]))
+  errs.push('seek 70% should land in beat ' + seekBeat + ' (' + seekT.toFixed(1) + 's), got: ' + nt.textContent);
 
 // 倍速
 const sp = c('.mn-speed');

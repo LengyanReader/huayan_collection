@@ -1430,8 +1430,16 @@ def build_articles(articles):
     practice = load_practice()
     gap = load_gap()
     article_bi = db_reader.load_article_bi()
-    narr_m = db_reader.load_miaoyan_narrative()
-    kp_m = db_reader.load_miaoyan_keypoints()
+    try:
+        narr_lib = db_reader.load_narrative_library()
+    except Exception as e:
+        print(f'  ! narrative library unavailable: {e}')
+        narr_lib = {}
+    try:
+        sb_lib = db_reader.load_storyboard_library()
+    except Exception as e:
+        print(f'  ! storyboard library unavailable: {e}')
+        sb_lib = {}
     try:
         article_knowledge = db_reader.load_article_knowledge()
     except Exception as e:
@@ -1519,13 +1527,17 @@ def build_articles(articles):
                             for t in s.get('topics', []))
         else:
             data_script = 'var ARTICLE = %s;' % json.dumps(payload, ensure_ascii=False)
-            # 世主妙严品：另并入要点导览＋叙事动画（曼荼罗）两套渲染器
-            #   数据源 data/narrative/miaoyan_keypoints.yaml / miaoyan_narrative.yaml
+            # 交互渲染器按「本文实际所含数据」注入（不再绑定 shizhu-miaoyan 单一 id）：
+            #   assembly(40 类会众) → 会众全景流程图；narrative → 叙事动画；storyboard → 分镜。
+            # 数据缺席则该篇不注入该渲染器，页面照常渲染正文。
             extra_js = ''
-            if a['id'] == 'shizhu-miaoyan':
-                # 会众全景流程图＋叙事动画两套渲染器（要点导览已行除）
-                extra_js = ('\n<script>\n' + wrap_script(read_src('miaoyan_flow.js')) + '\n</script>'
-                            + '\n<script>\n' + wrap_script(read_src('miaoyan_narrative.js')) + '\n</script>')
+            _asm_here = article_assembly.get(a['id']) if isinstance(article_assembly, dict) else None
+            if _asm_here and _asm_here.get('classes'):
+                extra_js += ('\n<script>\n' + wrap_script(read_src('miaoyan_flow.js')) + '\n</script>')
+            if (narr_lib.get(a['id']) or {}).get('beats'):
+                extra_js += ('\n<script>\n' + wrap_script(read_src('miaoyan_narrative.js')) + '\n</script>')
+            if (sb_lib.get(a['id']) or {}).get('acts'):
+                extra_js += '\n<script>\n' + wrap_script(read_src('miaoyan_storyboard.js')) + '\n</script>'
             scripts = ('<script>\n' + data_script + '\n</script>\n'
                        '<script>\n' + wrap_script(article_js) + '\n</script>' + extra_js)
             doc_chars = len(a.get('doc_md', ''))
@@ -1553,8 +1565,14 @@ def build_articles(articles):
         bi = article_bi.get(a['id'])
         if bi:
             scripts = ('<script>var ARTICLE_BI = %s;</script>\n' % json.dumps(bi, ensure_ascii=False)) + scripts
-            scripts = ('<script>var MIAOYAN_NARR = %s;</script>\n' % json.dumps(narr_m, ensure_ascii=False)) + scripts
-            # （要点导览已行除：不再注入 MIAOYAN_KP，数据层仍存而不入页面。）
+        # 叙事动画 / 分镜：按文章 id 内嵌（全局单例 MIAOYAN_NARR/MIAOYAN_SB，逐页独立，互不相撞）
+        _narr = narr_lib.get(a['id'])
+        if _narr and _narr.get('beats'):
+            scripts = ('<script>var MIAOYAN_NARR = %s;</script>\n' % json.dumps(_narr, ensure_ascii=False)) + scripts
+        _sb = sb_lib.get(a['id'])
+        if _sb and _sb.get('acts'):
+            scripts = ('<script>var MIAOYAN_SB = %s;</script>\n' % json.dumps(_sb, ensure_ascii=False)) + scripts
+        # （要点导览已行除：不再注入 MIAOYAN_KP，数据层仍存而不入页面。）
         _b = a.get('back') or {}
         back_tab = _b.get('tab') or 'index'
         back_label = _b.get('label') or '导航主页'
