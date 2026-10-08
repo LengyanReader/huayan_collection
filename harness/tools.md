@@ -89,6 +89,7 @@
 - **别用内联 CJK one-liner**：`python -c "…中文…"` 易 SyntaxError/编码坏；**写临时 `.py` 文件**跑，用完删除。
 - **PowerShell 吞输出/重编码**：`Out-File -Encoding utf8` 可能让中文计数误显 0——用 **ASCII 标记**（如 `id="fv-x"`）反证渲染，或把校验写进 Python。
 - **Chrome**：`C:\Program Files\Google\Chrome\Application\chrome.exe`（headless `--dump-dom`）。
+- **网络代理（Clash Party·端口会变）**：`git push/pull` 走本机代理，`http.proxy` 若与 Clash 实际端口不符即报 `connect`/`Connection reset`（如 `Failed to connect to github.com`、`Could not resolve host` 以外的 443/连接类错）。**push 前先探端口**：`Get-NetTCPConnection -State Listen | Where-Object { $_.LocalPort -in 7890,7891,7892 }`；当前实测 `git config --global http.proxy` ＝ `http://127.0.0.1:7890`（系统代理亦 127.0.0.1:7890，Clash 监听 7890/7891/7892）。端口变了就改 `git config --global http.proxy http://127.0.0.1:<port>`，或单次 `git -c http.proxy=http://127.0.0.1:<port> push`；**先查端口再查网络**，勿把端口失配误记为「push 未通」（L.118 台账当时留档即属此类，后已转正）。
 - **长命令**：勿超 ~500 字符；复杂逻辑落脚本文件再执行。
 
 ---

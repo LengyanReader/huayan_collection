@@ -218,4 +218,9 @@ python scripts/verify_demo.py
 python scripts/self_evolve.py            # 干跑一轮（不改研究内容）  或 make evolve
 python scripts/self_evolve.py --apply    # 追加：对已核证进度逐项确认回填 P0  或 make evolve-apply
 python scripts/self_evolve.py --ledger   # 查看进化台账（每次自动/人工动作的只追加审计流水） 或 make evolve-ledger
+
+# 推送 (⚠️ 本机代理 Clash Party·端口会变，push 前先探端口，别误判成仓库/网络坏了)
+Get-NetTCPConnection -State Listen | Where-Object { $_.LocalPort -in 7890,7891,7892 }   # 谁在听
+git config --global http.proxy                                                          # 须 = http://127.0.0.1:<在听端口>
+git push origin main                                                                    # 端口不符先改 http.proxy(或 git -c http.proxy=… push)再推
 ```
