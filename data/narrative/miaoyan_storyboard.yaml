@@ -4,6 +4,11 @@
 meta:
   id: shizhu-miaoyan-storyboard
   article: shizhu-miaoyan
+  expected:
+    acts: 4
+    shots: 26
+    seconds: 121.0
+    corrections: 3
   title_zh: 世主妙严品 · 电影式分镜
   title_en: 'Adorning the World-Ruler: A Cinematic Storyboard'
   subtitle_zh: 四幕二十六镜——序幕·承·转·合

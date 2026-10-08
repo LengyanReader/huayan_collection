@@ -15,6 +15,9 @@ TXT = re.sub(r'\s+', '', re.sub(r'<[^>]+>', '', raw))
 
 META = {
  'id': 'shizhu-miaoyan-storyboard',
+ 'article': 'shizhu-miaoyan',  # 供 db_reader.load_storyboard_library 以 meta.article 归集（L.116 设计）
+ # 契约锚点：门禁以此为准，读者改内容须同步改此（防「改了数据而门禁不察」）
+ 'expected': {'acts': 4, 'shots': 26, 'seconds': 121.0, 'corrections': 3},
  'title_zh': '世主妙严品 · 电影式分镜', 'title_en': 'Adorning the World-Ruler: A Cinematic Storyboard',
  'subtitle_zh': '四幕二十六镜——序幕·承·转·合',
   'subtitle_en': 'Four acts, twenty-six shots: Prelude, Assumption, Transition, Coda',

@@ -3644,4 +3644,14 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
     - **验证**：build **37 files｜27,348,489 B**｜`verify_demo` ✅ ALL CHECKS PASSED（ru-lai studies render＋reverse **8/8**）｜`test_pipeline` ✅｜`node --check` rc=0｜`git diff --check` rc=0。
     - **⚠️ 遗留**：①真机浏览器实测第八次缺位（几何节实际渲染未真机确认）；②持久同调现**只到 H3 条**（H4+ 未列，惟 K10 可缩故皆有限）；③**几何视角可深化**——单纯复形之**重心分域（barycentric subdivision）／离散 Morse 理论／加权图的谱几何（Laplacian 特征值）**尚未采；④数据科学层仍未泛化至世主妙严品。
 
+19. **〔同日续补〕分镜总览门禁对齐＋接入 `verify_demo`（清 item 16 遗留②）**：
+
+    - **根问题**：`scripts/verify_storyboard_render.js`（L.106 立）自建立即**从未接入 `verify_demo`**，为**孤儿门禁**；期间设计已变（L.116 将分镜由 **doc 正文内占位 `<div id="article-sb">`** 改为 **`article.js` 运行时生成折叠壳 `#article-sb`**），故该门禁默认即 **FAIL 8 项**（`shot_count`/`duration_total_s` 等旧字段已在数据中消失；`doc_md` 已不含占位与「〇之二.0 分镜总览／.7」重编号标题）——**门禁既未运行，其失效遂无人察觉**。
+    - **连带查出根因缺陷（潜在假信息级）**：`scripts/build_sb.py` 之 `META` **缺 `article: shizhu-miaoyan` 键**——该键系 L.116 为 `db_reader.load_storyboard_library()` 按 `meta.article` 归集而**只加在 YAML、未回写生成器**；**一旦重跑生成器即静默丢掉该键**（分镜将不再挂到《世主妙严品》文章）。今补入 `META`。
+    - **锚点数据化**：`META` 增 `expected: {acts:4, shots:26, seconds:121.0, corrections:3}`，门禁以 `meta.expected` 为**唯一锚点**（缺则失败、不以硬编码旧数充当校验），镜像 narrative 门禁之 `space.expected` 设计。
+    - **门禁重写**：①数据层改用 `meta.expected` 对账（幕/镜/时长/更正数）＋逐幕时长不为零＋镜号连续唯一；②section 二由「doc 占位放行＋重编号」改为**挂载壳三断言**（产物含 `_foldShellHtml('article-sb'`／`renderMiaoyanStoryboard`／`getElementById('article-sb')` 之挂载守卫）；③保留并沿用最小 DOM＋Canvas＋**假时钟**桩（显式换算运镜于要素坐标、倍速时基不漏除 speed）驱动全控件；④头部与报告文案同步改。
+    - **接入**：`verify_demo.py` 新增分镜门禁段（按 `var MIAOYAN_SB` 遍历文章页），**修插入时误重复的一行 `ru-lai studies reverse` 报告**（去重）。
+    - **验证**：`node --check verify_storyboard_render.js` rc=0｜`verify_demo` ✅ ALL CHECKS PASSED（新增 `storyboard render` 一行）｜`build` **37 files｜27,348,563 B**（`miaoyan_storyboard.yaml` 38,220 B，diff **仅 +5 行**＝`article`＋`expected`）。
+    - **⚠️ 遗留**：本门禁**尚无独立反向验证**（与 narrative/keypoints/flow 诸门禁一致；仅源文档级 shizhu/ru-lai 门禁配有反向）。
+
 - **〔push 状态〕**：item 16（`5d5a200`）与 item 17（`18f5fe4`）之提交**已推送**（`git push origin main` → `7ec8bbd..18f5fe4  main -> main`，rc=0）。**先前两次失败留档**——`Recv failure: Connection was reset`（rc=128）／`Failed to connect to github.com port 443 after 21114 ms`（rc=128），系网络/防火墙临时阻断，**第三次已通**。

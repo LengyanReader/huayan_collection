@@ -606,6 +606,33 @@ else:
         else:
             ok('ru-lai studies reverse — ' + (_rtail[-1].strip() if _rtail else 'done'))
 
+# 分镜总览门禁（node）：MiaoyanStoryboard 触 DOM/Canvas，故以最小 DOM+Canvas 桩**实跑**
+# build 产物内联之 renderMiaoyanStoryboard，驱动播放/暂停/步进/跳镜/跳幕/进度/倍速/四图层，
+# 并对账 meta.expected 锚点与数据不变量（镜号连续／drift 三轴／景别运镜注册／重建必附判断／
+# subject·focus 属本幕要素／曼荼罗唯一且在合幕）。与叙事门禁分工：那一路证六环之法，此一路
+# 证四幕二十六镜之举镜（L.116 起分镜由 article.js 折叠壳挂载，不在 doc 正文内）。
+_sbsmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        'verify_storyboard_render.js')
+if not _node:
+    print('  SKIP: node not found — storyboard render gate skipped')
+elif not os.path.exists(_sbsmoke):
+    print('  SKIP: verify_storyboard_render.js not found')
+else:
+    for _t in sorted(os.listdir(ARTICLES)):
+        if not _t.endswith('.html') or _t == 'index.html':
+            continue
+        _p = os.path.join(ARTICLES, _t)
+        if 'var MIAOYAN_SB' not in open(_p, encoding='utf-8').read():
+            continue
+        _r = subprocess.run([_node, _sbsmoke, _p], capture_output=True,
+                            encoding='utf-8', errors='replace')
+        if _r.returncode != 0 or not (_r.stdout or '').strip():
+            _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
+            fail(f'articles/{_t}: storyboard render — {_msg.strip().splitlines()[-1]}')
+        else:
+            _lines = [l for l in (_r.stdout or '').strip().splitlines() if l.strip()]
+            ok(f'articles/{_t}: storyboard render — {_lines[-1] if _lines else "OK"}')
+
 # ─── 世主妙严品专书门禁（源文档级）────────────────────────────────────
 # 前述诸门禁皆作用于**构建产物**（页面/JS）。本门禁作用于**Markdown 源文档**
 # 《华严经细读_第一部_世主妙严品.md》之学术正确性：实测口径、旧数回潮、引文回源

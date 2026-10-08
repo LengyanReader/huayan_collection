@@ -1,14 +1,13 @@
 // 分镜总览门禁（Node）：以最小 DOM + Canvas 桩**真跑** build 产物内联的
 // MiaoyanStoryboard / renderMiaoyanStoryboard，校验
-//   ① markdown 之 <div id="article-sb"> 放行（占位不被渲染器吞掉——正文内挂载之前提）
-//   ② 数据层不变量（26 镜／121 秒／镜号连续／drift 三轴／景别运镜皆注册／判断齐备）
+//   ① 挂载壳（article.js 生成 #article-sb 折叠壳并挂载渲染器——L.116 起分镜不在 doc 正文内）
+//   ② 数据层不变量（meta.expected 锚点对账；镜号连续／drift 三轴／景别运镜皆注册／判断齐备）
 //   ③ 播放·暂停·步进·跳镜·跳幕·进度·倍速·四图层皆可驱动，且无 undefined/NaN 泄漏
 // 浏览器 CDP 本机不可用，故以桩执行求「逻辑真跑」；像素级渲染仍待真机复验。
 const fs = require('fs');
 const ART = process.argv[2] || 'web/demo/articles/shizhu-miaoyan.html';
 const JS = process.argv[3] || 'web/demo/js/common.js';
 const html = fs.readFileSync(ART, 'utf8');
-const common = fs.readFileSync(JS, 'utf8');
 const errs = [];
 const ok = (c, m) => { if (!c) errs.push(m); };
 
@@ -21,22 +20,29 @@ const NARR = NARRm ? JSON.parse(NARRm[1]) : null;
 
 const acts = SB.acts || [];
 const flat = [].concat.apply([], acts.map(a => a.shots || []));
-ok(acts.length === 4, 'acts = ' + acts.length + ', expected 4');
-ok(flat.length === 26, 'shots = ' + flat.length + ', expected 26');
-ok(SB.shot_count === 26, 'shot_count = ' + SB.shot_count + ', expected 26');
+/* 契约锚点取自数据自身 meta.expected（L.116 立）——防「改了数据而门禁不察」。
+   expected 缺则门禁无效：宁失败，勿以硬编码旧数充当校验。 */
+const exp = (SB.meta || {}).expected || {};
+ok(exp.acts != null, 'meta.expected.acts missing — anchors required');
+ok(exp.shots != null, 'meta.expected.shots missing — anchors required');
+ok(exp.seconds != null, 'meta.expected.seconds missing — anchors required');
+ok(acts.length === exp.acts, 'acts = ' + acts.length + ', expected ' + exp.acts + ' (meta.expected)');
+ok(flat.length === exp.shots, 'shots = ' + flat.length + ', expected ' + exp.shots + ' (meta.expected)');
 
-/* 时长三处对账：逐镜合计 / 幕合计 / 顶层声明 */
+/* 时长对账：逐镜合计须等于锚点声明（幕级 duration 已并入逐镜计算，不再单列）*/
 const sumShot = flat.reduce((a, s) => a + s.duration_s, 0);
-const sumAct = acts.reduce((a, x) => a + (x.duration_total_s || 0), 0);
-ok(sumShot === SB.duration_total_s, `duration mismatch: shots ${sumShot} vs declared ${SB.duration_total_s}`);
-ok(sumAct === SB.duration_total_s, `duration mismatch: acts ${sumAct} vs declared ${SB.duration_total_s}`);
-ok(sumShot === 121, 'total duration = ' + sumShot + ', expected 121');
+ok(Math.abs(sumShot - exp.seconds) < 1e-6,
+  `duration mismatch: shots ${sumShot} vs meta.expected ${exp.seconds}`);
+for (const a of acts) {
+  const ad = (a.shots || []).reduce((x, s) => x + s.duration_s, 0);
+  ok(ad > 0, 'act ' + a.no + ' has zero total duration');
+}
 
-/* 镜号连续 1..26 且全局唯一 */
+/* 镜号连续 1..N 且全局唯一 */
 const nos = flat.map(s => s.no);
-ok(nos.join(',') === Array.from({ length: 26 }, (_, i) => i + 1).join(','),
-  'shot numbers not contiguous 1..26: ' + nos.join(','));
-ok(new Set(nos).size === 26, 'duplicate shot numbers');
+ok(nos.join(',') === Array.from({ length: exp.shots }, (_, i) => i + 1).join(','),
+  'shot numbers not contiguous 1..' + exp.shots + ': ' + nos.join(','));
+ok(new Set(nos).size === exp.shots, 'duplicate shot numbers');
 
 /* 景别与运镜皆注册；drift 必须三轴（推拉/横移/升降不可串轴）*/
 const SIZES = SB.shot_sizes || {}, MOVES = SB.camera_moves || {};
@@ -69,7 +75,8 @@ for (const a of acts) {
 }
 ok(flat.some(s => s.subject === null), 'no establishing shot with null subject — '
   + '全镜总览应如实留空 subject，而非硬指某一要素');
-ok((SB.corrections || []).length === 3, 'corrections = ' + (SB.corrections || []).length);
+ok((SB.corrections || []).length === exp.corrections,
+  'corrections = ' + (SB.corrections || []).length + ', expected ' + exp.corrections + ' (meta.expected)');
 
 /* 机位须真作用于要素坐标：若 pan/zoom 只动背景而不动图元，
    则「平移摇摄」在画面上等于不动——运镜沦为装饰。故须有两镜之
@@ -89,31 +96,17 @@ if (NARR && NARR.space) {
   ok(sumCls === 40, 'mandala ring classes sum = ' + sumCls + ', expected 40');
 }
 
-/* ══ 二、markdown 放行：<div id="article-sb"> 须原样透出 ══ */
-const i0 = common.indexOf('function _mdFullToHTML');
-const i1 = common.indexOf('function articlePageHref');
-if (i0 < 0 || i1 < 0) { console.error('FAIL: markdown renderer not found in ' + JS); process.exit(1); }
-const mdSrc = common.slice(i0, i1);
-let docHtml = '';
-try {
-  const embed = new Function(mdSrc + '\nreturn _mdDocEmbed;')();
-  const artMd = html.match(/var ARTICLE = (\{[\s\S]*?\});\s*<\/script>/);
-  ok(!!artMd, 'ARTICLE payload not found');
-  if (artMd) {
-    const A = JSON.parse(artMd[1]);
-    ok(!!A.doc_md && A.doc_md.includes('id="article-sb"'),
-      'doc_md lost the #article-sb placeholder');
-    const r = embed(A.doc_md || '');
-    docHtml = r.html;
-  }
-} catch (e) {
-  errs.push('markdown embed threw — ' + e.message);
-}
-ok(docHtml.includes('id="article-sb"'),
-  'markdown renderer DROPPED the #article-sb placeholder (storyboard cannot mount in-body)');
-ok(docHtml.includes('〇之二.0 分镜总览'), 'rendered html lost the storyboard heading');
-ok(docHtml.includes('〇之二.7 数与位之谱'), 'renumbered heading 〇之二.7 missing');
-ok(!docHtml.includes('〇之二.0 提要'), 'stale heading 〇之二.0 提要 still present');
+/* ══ 二、挂载壳：分镜面板由 article.js 以折叠壳 #article-sb 生成于正文之外 ══
+   （L.116 起分镜不再置于 doc 正文内，故不校 doc 占位与章节重编号；
+    改校构建产物确含①壳之生成 ②renderMiaoyanStoryboard 之挂载——缺一则分镜无从现身。）*/
+ok(html.indexOf("_foldShellHtml('article-sb'") >= 0
+  || html.indexOf('_foldShellHtml("article-sb"') >= 0,
+  'article chrome does not create the #article-sb fold shell');
+ok(html.indexOf('renderMiaoyanStoryboard') >= 0,
+  'renderMiaoyanStoryboard mount call absent from built page');
+ok(html.indexOf("document.getElementById('article-sb')") >= 0
+  || html.indexOf('document.getElementById("article-sb")') >= 0,
+  'built page does not guard the storyboard mount on #article-sb existence');
 
 /* ══ 三、最小 DOM + Canvas 桩 ═════════════════════════════ */
 let CTX = null;
@@ -448,7 +441,7 @@ if (errs.length) {
   process.exit(1);
 }
 console.log('✅ 分镜门禁通过');
-console.log(`   数据　4 幕 / ${flat.length} 镜 / ${sumShot} 秒 · 镜号 1–26 连续 · drift 三轴`);
-console.log(`   markdown　#article-sb 占位原样透出（正文内挂载成立）`);
+console.log(`   数据　${acts.length} 幕 / ${flat.length} 镜 / ${sumShot} 秒 · 镜号 1–${flat.length} 连续 · drift 三轴（对账 meta.expected）`);
+console.log(`   挂载　article.js 生成 #article-sb 折叠壳并挂载渲染器（分镜于正文外现身）`);
 console.log(`   控件　播放/暂停·上一镜/下一镜·点格跳镜·跳幕·进度·倍速·四图层 皆可驱动`);
 console.log(`   canvas　${ops()} 次绘制调用 · 无 undefined/NaN 泄漏`);
