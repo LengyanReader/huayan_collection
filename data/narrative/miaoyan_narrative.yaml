@@ -87,8 +87,12 @@ space:
     mandala_grid: true
     worldsea: true
     opacity: 0.12
+    label_zh: 背景·世界海（示意底图）
+    label_en: Backdrop — world-ocean ground (schematic)
     calibration: "六环 member_count 之和 = assembly.metrics.named_total = 414，与 40 类之口径相合。微尘刹海之广不可尽言，此仅取会众列次为同心环之空间意象。"
+    calibration_en: "The sum of member_count across the six rings equals assembly.metrics.named_total = 414, matching the forty-class tally. The vastness of the dust-like Buddha-lands cannot be told in full; here the assembly sequence serves only as a spatial image of concentric rings."
     token_note: "环上光点为【示意】：一点代表一类（r2/r3）或一员之名相，非一人一点之精确比例图。真实员数见各环 member_count（源 miaoyan_assembly）。"
+    token_note_en: "The dots on the rings are schematic: one dot stands for one class (r2/r3) or for one name, not a point-for-point scale of individuals. Actual counts are given by member_count on each ring (source: miaoyan_assembly)."
 
 visual_style:
   palette:
@@ -101,6 +105,14 @@ visual_style:
     form: "#7fa3b3"
     light: "#f5e9b8"
     bg: "#0f1419"
+  cast_labels:
+    bodhisattva: { label_zh: 菩萨众, label_en: Bodhisattva host }
+    vajra: { label_zh: 執金剛神, label_en: Vajra-holding spirits }
+    deities: { label_zh: 杂神众, label_en: Miscellaneous deities }
+    eight: { label_zh: 八部众, label_en: Eight classes of beings }
+    desire: { label_zh: 欲界诸天, label_en: Gods of the desire realm }
+    form: { label_zh: 色界诸天, label_en: Gods of the form realm }
+    light: { label_zh: 光明, label_en: Radiance }
   easing: "cubic-bezier(0.22,0.61,0.36,1)"
   duration_base_ms: 900
   stagger_ms: 90

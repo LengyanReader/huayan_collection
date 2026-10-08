@@ -16,6 +16,7 @@ meta:
   source_primary: CBETA T10n0279（八十华严·实叉难陀译）——本经唯一现行底本
   source_ref: https://cbetaonline.dila.edu.tw/zh/T10n0279
   spec_ref: 本设计依用户 2026-10-01 指示之「动画电影式分镜」规格（台账 L.94 ⑩-3）编排
+  spec_ref_en: 'This design follows the user''s cinematic-storyboard specification of 2026-10-01 (ledger L.94 ⑩-3).'
   tradition_zh: 佛教「變相圖／經變」传统以圖繪釋教義、構畫佛會之莊嚴；本分鏡與之可相比擬，然其形制與布局出于现代视觉重构，**非經變圖之复现**，不可混同。
   tradition_en: Comparable to the bianxiang tu (經變) tradition of Buddhist pictorial exegesis, this storyboard
     is nonetheless a modern visual reconstruction, not a reproduction of such images.
@@ -327,6 +328,7 @@ acts:
     ref: T10n0279 卷一·品首
     reconstruction: true
     judgment_zh: 摩竭提国之地理氛围、方位与光色皆为意象性补足；经文唯言「佛在……菩提場中，始成正覺」，未描摹环境。
+    judgment_en: The mood, orientation and light of Magadha are supplied imaginatively; the text says only that the Buddha was in the Place of Enlightenment, having just attained awakening, and does not describe the setting.
   - 'no': 2
     size: ews
     move: push
@@ -967,6 +969,7 @@ acts:
     ref: T10n0279 卷二·品首（钟位数据依 miaoyan_assembly.yaml）
     reconstruction: true
     judgment_zh: 曼荼罗六环之环数、环距、环位及各类之代表点分布，属现代重构；经文唯言「眾海悉已雲集」「無邊品類」，未陈方位与排列。四十类／414名之数则出 assembly 实测。
+    judgment_en: The number, spacing and placement of the six mandalic rings, and the distribution of representative points for each class, are a modern reconstruction; the text says only that the oceans of assemblies had all gathered and that the categories are boundless, without specifying directions or arrangement. The counts of forty classes and 414 names are measured from the assembly data.
   - 'no': 26
     size: ecu
     move: static

@@ -3701,3 +3701,30 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 - **验证**：`node --check`（story_comic／article／gate）✅｜build **37 files｜27,381,742 B**｜`verify_demo` ✅ **ALL CHECKS PASSED**（story-comic 两页：shizhu `4幕/26格·11拍·4图·98 en-line`、ru-lai `10拍·3图·28 en-line`；**story-comic reverse 16/16**；data-science 40/40、shizhu 10/10、ru-lai 12/12 等既有门禁俱绿）｜`test_pipeline` ✅ ALL TESTS PASSED（95 人/98 边/30 地）｜`git diff --check` rc=0（仅 LF→CRLF 提示）。
 - **⚠️ 验证限度（第十次记录）**：本机 Chrome 之 `--remote-debugging-port` 与 `--dump-dom` 仍皆不可用，**静态版面、四张 SVG 信息图、折叠态实际排版皆未作真机渲染确认**；本批所证为**逻辑真跑**（node 桩实跑＋静态门禁＋反向变异三路），像素级观感待浏览器可用补验。
 - **遗留**：①逐格 `quote_en`／`judgment_zh`／幕级 `layout` 未上版面亦未断言（`layout` 字段未渲染，属可选设计提示）；②反向仅覆盖两页之 16 条变异，未含 `figsSection` 单图逐一变异；③`miaoyan_flow`／`keypoints` 等既有面板仍各带独立门禁，**尚未与本线合并**；④L.117 遗留（重心细分／离散 Morse／数据科学再泛化）未动；⑤台账 `L.92` 相重、缺 `T09n0278.xml` 等旧遗留未变。
+
+### L.118-2　连环画·图幅收敛＋版面充实（用户三令：图过大→调整／内容未充实→仅需充实／其他重要事项）【收尾】
+
+**编号说明**：不另占新号，附于 L.118 之下作续批（同一条线、同一渲染器），免与 L.103 待用号相扰。
+
+- **用户三令与诊断**：①「可视化图有些过大」——`story_comic.js` 之 `svgBars`／`svgLines` 只有 `width="100%"` 而 viewBox 宽 560 单位，在 ~1500px 容器中被放大约 **2.7 倍**（字号 11→30px）；对照 `article.js` 各信息图本已带 `max-width:600–780px`，故**只此两处需收敛**。②「内容未充实」——经逐字段普查，**数据在 YAML 而未上版面**者如后列（DS 层 `term_counts`／`sea_family`／`tfidf` 已由 `data_science.js` 渲染，不缺）。③其余：门禁随之加严并修两处假绿。
+- **① 图幅收敛**：`svgBars` `max-width:(opt.maxW||620)px`、`svgLines` `(opt.maxW||700)px`，配 `height:auto;margin:0 auto`；门禁新增**每个 `<svg …>` 标签必带 `max-width:`** 断言（回归即 FAIL）。
+- **② 版面充实清单（中英必配，逐项均已上版面并加断言）**：
+  - 头注：`method_en` 行、`spec_ref`＋`spec_ref_en`「分镜规格」块、`reconstruction_flag_en` chip；
+  - 重建格：`judgment_en` 英译行（2 格：序-1、合-25）；
+  - `corrections` **逐条** zh＋en（原仅「回源更正 N 处」标题）；
+  - 幕级 `layout` chip「版面类型 …」；
+  - 幕内 `props` 由 title-tooltip chips 改**正文逐项**（`label_zh＋quote_zh` ＋ en-line `label_en＋quote_en`，全 4 幕 56 项）；
+  - 逐格**取景行**「主体／焦点」——`shot.focus`／`shot.subject` 之 id 全 26 格皆解析为本幕名相并英译（`Framing:`）；
+  - 拍点：`meta.sources` **回源链接**、逐拍「画面：」`actions` zh/en、环位 chips（`Rings:`）、画面构成 cast chips（`Composition:`）；
+  - **新节 `#story-space`「环位与口径」**：中心 chip＋环位表（环位/类数/员数/出处）＋`口径：共 40 类 · 具名 414 名`＋`calibration`（zh/en）＋`token_note`（zh/en）。
+- **③ 数据侧补（YAML；只译既有中文，未增任何史实）**：`miaoyan_storyboard.yaml` 补 `spec_ref_en`＋2×`judgment_en`；`miaoyan_narrative.yaml`／`ru_lai_narrative.yaml` 补 `space.background.label_zh/label_en`＋`calibration_en`＋`token_note_en`；`miaoyan_narrative.yaml` 新增 `visual_style.cast_labels` **7 token 中英名相**（bodhisattva/vajra/deities/eight/desire/form/light）——此前 `cast_groups` 之内部 id（如 `light`／`bodhisattva`）**直印上版面**，属真实的内容层泄漏，非渲染细节。
+- **④ 门禁加严＋两处假绿如实修正（不隐己过）**：
+  - **窗口制**：逐格 2600／逐拍 2400 字符固定切片，在新内容入版后**大面积漏项**（首跑 16 项报错大半属此）→ 改为**以下一格／下一拍锚点为界**的动态窗口；
+  - **PMAP 跨幕串用**：`samantabhadra` 在承幕名相为「普賢菩薩（十首之首）」、合幕为「普賢菩薩入三昧」，全局单表后写覆盖前写 → 门禁改**按幕分账 `ACTPMAP`**，取景标签只与本幕比对；
+  - **corrections EN 误报**：渲染器 `esc()` 将 `"` 转为 `&quot;`，门禁以原始串比对必然落空 → 改「原串**或** HTML 转义串任一命中」；
+  - **M17 首轮假绿（门禁自身缺陷）**：以**数据变异**去测「数据值是否上版面」是**同源自比**——渲染器本就从同一数据渲染，改了值两边同时变、永远「已打印」→ 改**页面作用域变异**（渲染器不再印 `esc(meta.spec_ref)`），断言自此可被打破；
+  - **M11 首轮假绿（门禁自身缺陷）**：`类 · 具名`→`组 · 具名` 之变异原先**没有对应断言**（门禁只分别查「40」「414」两个数字，字面被改照样通过）→ 新增**整行字面**断言 `口径：共 N 类 · 具名 M 名`。
+- **⑤ 反向验证 16→21 条**：新增 M17（渲染层丢 `spec_ref`）／M18（`calibration_en` 抹去）／M19（`quote_en` 抹去）／M20（cast 名相抹去→id 裸露）／M21（`bg` 环位标签抹去·rl 页）＝ **21/21 如期失败 ＋ 两正本先通过**（M11／M17 已按上文修至真可打破）。
+- **验证**：`node --check`（story_comic／gate）✅｜build **37 files｜27,402,814 B**（较 L.118 之 27,381,742 B ＋21,072 B，全为本批内容）｜`verify_demo` ✅ **ALL CHECKS PASSED**（story-comic：shizhu `4幕/26格 · 11拍 · 4图 · 229 en-line`、ru-lai `10拍 · 3图 · 64 en-line`、**reverse 21/21**；data-science 40/40、shizhu 10/10、ru-lai 12/12 俱绿）｜`test_pipeline` ✅ ALL TESTS PASSED｜`git diff --check` rc=0（仅 LF→CRLF 提示）。
+- **⚠️ 验证限度（第十一次记录）**：本机 Chrome `--remote-debugging-port`／`--dump-dom` 仍不可用，本批**未再尝试真机**，故**图幅实际收敛后的像素观感、新节 `#story-space` 与取景/构成行的真实排版皆未真机确认**；所证为逻辑真跑＋静态门禁＋反向变异三路。
+- **遗留**：①`cast_labels` 只补了 miaoyan（ru-lai 的 cast token 皆为可解析环位 id，无泄漏，暂不补）；②L.118 遗留之「`quote_en`／`layout`／`judgment` 未上版面」**本批已清**并加断言，但 `figsSection` 单图逐一变异仍未做；③**push 状态已复核转正**——`git push origin main` 报 `Everything up-to-date`，`origin/main == main == 91dd273`，**前批已推通**（前记「push 未通」系网络故障当时的留档，今已恢复）；**本批改动（L.118-2）尚未提交**；④L.118 其余遗留（既有面板门禁未合并／L.117 遗留／台账 L.92 相重／缺 `T09n0278.xml`）未变。

@@ -50,8 +50,12 @@ space:
     mandala_grid: true
     worldsea: true
     opacity: 0.12
+    label_zh: 背景·世界海（示意底图）
+    label_en: Backdrop — world-ocean ground (schematic)
     calibration: "本品会众之众数经文皆作「佛剎微塵數」「不可說」等，不确指；今仅取经文实列之上首菩萨为同心环之空间意象，一点＝一方（r1）或一说颂者（r2），非一人一点之精确比例图。"
+    calibration_en: "The numbers of assemblies in this chapter are all expressed as Buddha-land-dust counts or as unspeakably many, never as exact figures; here only the leading bodhisattvas actually named in the text are taken as the spatial image of concentric rings. One dot stands for one direction (r1) or one reciter (r2), not a point-for-point scale of individuals."
     token_note: "环上光点为【示意】：一点代表一方世界海或一位说颂者，员数另以文字标注，不以点数冒充人数。"
+    token_note_en: "The dots on the rings are schematic: one dot stands for one world-ocean or one reciter, while the actual counts are stated in words; dot counts are never used as head counts."
 
 visual_style:
   palette:

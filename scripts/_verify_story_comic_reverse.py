@@ -100,6 +100,22 @@ MUTS = [
      ('story-beats', 'story-beatX', '拍点序列整节失踪', 'lit')),
     ('M14 首拍出处被抹去', 'rl', 'json:MIAOYAN_NARR',
      (r'"narration_ref": "[^"]*"', '"narration_ref": ""', '（如来现相品）拍点无据', 're')),
+    # ── L.118 续批（充实·缩图）新增断言的反向覆盖 ──
+    ('M17 分镜规格出处未上版面', 'sz', 'page',
+     ("分镜规格：' + esc(meta.spec_ref)", "分镜规格：'",
+      '数据在而渲染层不印 spec_ref（头注出处失真）', 'lit')),
+    ('M18 口径校准英译被抹去', 'sz', 'json:MIAOYAN_NARR',
+     (r'"calibration_en": "[^"]*"', '"calibration_en": ""',
+      '环位口径中英必配失守', 're')),
+    ('M19 画面要素英译被抹去', 'sz', 'json:MIAOYAN_SB',
+     (r'"quote_en": "[^"]*"', '"quote_en": ""',
+      '画面要素经文英译缺失（中英必配失守）', 're')),
+    ('M20 画面构成名相被抹去', 'sz', 'json:MIAOYAN_NARR',
+     (r'"light": \{"label_zh": "[^"]*"', '"light": {"label_zh": ""',
+      'cast token 名相丢失 → 内部 id 裸露上版面', 're')),
+    ('M21 背景环位标签被抹去', 'rl', 'json:MIAOYAN_NARR',
+     (r'"label_zh": "背景[^"]*"', '"label_zh": ""',
+      'bg 环位名相丢失 → space_focus 无法解析', 're')),
 ]
 
 
