@@ -3655,3 +3655,19 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
     - **⚠️ 遗留**：本门禁**尚无独立反向验证**（与 narrative/keypoints/flow 诸门禁一致；仅源文档级 shizhu/ru-lai 门禁配有反向）。
 
 - **〔push 状态〕**：item 16（`5d5a200`）与 item 17（`18f5fe4`）之提交**已推送**（`git push origin main` → `7ec8bbd..18f5fe4  main -> main`，rc=0）。**先前两次失败留档**——`Recv failure: Connection was reset`（rc=128）／`Failed to connect to github.com port 443 after 21114 ms`（rc=128），系网络/防火墙临时阻断，**第三次已通**。**item 18（`7ced01b`，几何视角）已推送**（`07ae336..7ced01b  main -> main`，rc=0）。**item 19（`46bc2b5`，分镜门禁对齐）本地已提交而 push 未通**——连试三次皆 `Failed to connect to github.com port 443`（rc=128），网络复通后须补推（`git push origin main`）。
+
+
+### L.117　数据科学层·泛化（品品对齐）＋几何视角深化（谱几何·Fiedler 重心分域）【收尾】
+
+**编号避让**：L.116 为九九华严第二品起卷；本批承其 §7.4「数据科学层泛化＋几何深化」之待续，编 L.117。
+
+- **根问题**：数据科学层（四视角）在 L.116 时**专设于《如来现相品》**（脚本 `ru_lai_studies.py`／渲染器 `ru_lai_studies.js`／全局 `RU_LAI_STUDIES`／门禁 `verify_ru_lai_studies_render.js`）；层名与其「品品对齐」之定位不符，且 geometry 视角只到持久同调（H3 为限）。用户指示：泛化并深化几何。
+- **① 通用引擎** `scripts/data_science.py`（新，纯 Python 零依赖）：L1 `lens_linguistic`／L3 `lens_topology`／L4 `lens_geometry`＋GF(2) 线代算子（`rank_gf2`／`_components`／`_cliques`）＋`_weights`；`FULL_SIMPLEX_LIMIT=11`（nv≤11 全枚举得完整持久同调，否则限 `max_simplex_dim`）。
+- **② 薄驱动**：`scripts/ru_lai_studies.py` 重构为薄驱动（复用引擎；保留 `lens_algebra` D8 群作用＋`verse_groups`），重跑数值与旧版一致；新增 `scripts/shizhu_studies.py`（《世主妙严品》驱动，40 类，L2 作组合普查〔本品无天然对称群〕，L4 限维 `max_simplex_dim=3`、报 H0–H2；实测单纯形 10058、H0=39、H1=351、H2=1704）。
+- **③ 渲染器泛化**：`web/demo/src/ru_lai_studies.js` → `data_science.js`；`renderRuLaiStudies` → `renderDataScience`、全局 `RU_LAI_STUDIES` → `ARTICLE_DS`、节 id `rls-*` → `ds-*`、`rlsGo()` → `dsGo()`、面板 `#article-rls`/`#rls-inner` → `#article-ds`/`#ds-inner`；L2 按数据形状分派（`octagon_symmetry`／`census`）。
+- **④ 接线**：`db_reader.load_ru_lai_studies` → `load_data_science()`（扫 `data/translation/*_studies.yaml`，按 `meta.article` 归集）；`build.py` 内嵌 `ARTICLE_DS`＋注入 `data_science.js`；`article.js` 相应改名。
+- **⑤ 门禁泛化**：`verify_ru_lai_studies_render.js` → `verify_data_science_render.js`（数据驱动：遍历含 `var ARTICLE_DS` 之页；形分派不变量；`meta.article` 与页名对账；限维/全枚举之别）；`_verify_ru_lai_studies_reverse.py` → `_verify_data_science_reverse.py`（两页各 16 变异＝**32/32 如期失败＋两正本通过**）；均挂 `verify_demo`。
+- **⑥ 几何视角深化·谱几何（第四视角之第二式）**：引擎新增 `jacobi_eigen()`（纯 Python 对称矩阵全谱）＋`spectral_geometry()`——加权图 Laplacian L＝D−W 之全谱、代数连通度 λ₂（Fiedler 值）、谱半径、零特征值数（＝连通分量）、Fiedler 向量及其「重心分域」正负二分；渲染入 `ds-geometry` 节；门禁增 6 不变量（谱升序／Σλ＝2m／零特征值数＝t=1 连通分量数／λ₂≥0／Fiedler 二分覆盖全节点／渲染含「谱几何」）。**实测**：ru-lai Σλ=612=2m、零特征值 1、λ₂=40.62、Fiedler 二分 3／7；shizhu Σλ=1310=2m、零特征值 1、λ₂=3.40、Fiedler 二分 **20／20**。
+- **验证**：`verify_data_science_render` 两页 ✅｜反向 **32/32** ✅｜`verify_demo` ✅ ALL CHECKS PASSED｜`test_pipeline` ✅｜`verify_sources` 76/100｜`node --check` ✅｜`git diff --check` rc=0｜build **37 files｜27,436,347 B**（`shizhu-miaoyan.html` 2,548,632 B；`ru-lai-xian-xiang.html` 约 104 KB）。
+- **⚠️ 验证限度（第九次记录）**：本机 Chrome 之 `--remote-debugging-port` 与 `--dump-dom` 仍皆不可用，**新增谱几何节之真机渲染未作确认**，页面证据仅静态门禁＋反向＋node 桩三路。
+- **遗留**：几何视角可再深化——**重心细分（barycentric subdivision）／离散 Morse 理论（临界单形·梯度向量场）／更细之谱不变量（Cheeger 常数、谱嵌入）**；数据科学层仍未泛化至其余品目；分镜门禁无独立反向；真机实测缺位。

@@ -570,41 +570,42 @@ else:
             else:
                 ok(f'articles/{_t}: flow render — {(_r.stdout or "").strip()}')
 
-# 《如来现相品》数据科学层门禁（node）：自构建产物抽内嵌 RU_LAI_STUDIES（验集成），
-# 再以最小 DOM 桩加载 web/demo/src/ru_lai_studies.js 实跑 renderRuLaiStudies；校验
-# 三视角节俱在、输出无 undefined/NaN，并核数据不变量（Burnside 定轨、过滤 β1 恒等）。
-_rlsmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                        'verify_ru_lai_studies_render.js')
+# 数据科学层（四视角）门禁（node，数据驱动）：遍历含 var ARTICLE_DS 之文章页，
+# 自构建产物抽内嵌 ARTICLE_DS（验集成），再以最小 DOM 桩加载 web/demo/src/data_science.js，
+# 实跑 renderDataScience；校验四视角节俱在、输出无 undefined/NaN，并核数据不变量
+# （形分派：Burnside／普查；过滤 β1 恒等；H0 条数与连通、限维与全枚举之别）。
+_dssmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        'verify_data_science_render.js')
 if not _node:
-    print('  SKIP: node not found — ru-lai studies render gate skipped')
-elif not os.path.exists(_rlsmoke):
-    print('  SKIP: verify_ru_lai_studies_render.js not found')
+    print('  SKIP: node not found — data-science render gate skipped')
+elif not os.path.exists(_dssmoke):
+    print('  SKIP: verify_data_science_render.js not found')
 else:
     for _t in sorted(os.listdir(ARTICLES)):
         if not _t.endswith('.html') or _t == 'index.html':
             continue
         _p = os.path.join(ARTICLES, _t)
-        if 'var RU_LAI_STUDIES' not in open(_p, encoding='utf-8').read():
+        if 'var ARTICLE_DS' not in open(_p, encoding='utf-8').read():
             continue
-        _r = subprocess.run([_node, _rlsmoke, _p],
+        _r = subprocess.run([_node, _dssmoke, _p],
                             capture_output=True, encoding='utf-8', errors='replace')
         if _r.returncode != 0 or not (_r.stdout or '').strip():
             _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
-            fail(f'articles/{_t}: ru-lai studies render — {_msg.strip().splitlines()[-1]}')
+            fail(f'articles/{_t}: data-science render — {_msg.strip().splitlines()[-1]}')
         else:
-            ok(f'articles/{_t}: ru-lai studies render — {(_r.stdout or "").strip()}')
+            ok(f'articles/{_t}: data-science render — {(_r.stdout or "").strip()}')
 
     # 反向验证（破坏性变异，职责分离于异文件执行）
-    _rlsrev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                           '_verify_ru_lai_studies_reverse.py')
-    if os.path.exists(_rlsrev):
-        _rr = subprocess.run([sys.executable, _rlsrev], capture_output=True,
+    _dsrev = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          '_verify_data_science_reverse.py')
+    if os.path.exists(_dsrev):
+        _rr = subprocess.run([sys.executable, _dsrev], capture_output=True,
                              text=True, encoding='utf-8', errors='replace')
         _rtail = (_rr.stdout or '').strip().splitlines()
         if _rr.returncode != 0:
-            fail('ru-lai studies reverse — ' + (_rtail[-1].strip() if _rtail else 'no output'))
+            fail('data-science reverse — ' + (_rtail[-1].strip() if _rtail else 'no output'))
         else:
-            ok('ru-lai studies reverse — ' + (_rtail[-1].strip() if _rtail else 'done'))
+            ok('data-science reverse — ' + (_rtail[-1].strip() if _rtail else 'done'))
 
 # 分镜总览门禁（node）：MiaoyanStoryboard 触 DOM/Canvas，故以最小 DOM+Canvas 桩**实跑**
 # build 产物内联之 renderMiaoyanStoryboard，驱动播放/暂停/步进/跳镜/跳幕/进度/倍速/四图层，

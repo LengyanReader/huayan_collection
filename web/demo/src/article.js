@@ -70,9 +70,9 @@ function renderArticle(){
     var _b=(ARTICLE_BI.scorecard&&ARTICLE_BI.scorecard.items)||[];
     h+='<button class="f-nav-btn" onclick="biGo()" title="跳至数据科学分析层：漏斗、语义域、交叉表、相似度、聚类、PCA、网络与稳健性">📊 数据科学（'+_b.length+' 项）</button>';
   }
-  // 数据科学层（四视角）：仅当 build.py 内嵌 RU_LAI_STUDIES（本文有 ru_lai_studies.yaml）时出现
-  if((typeof RU_LAI_STUDIES!=='undefined')&&RU_LAI_STUDIES&&RU_LAI_STUDIES.linguistic){
-    h+='<button class="f-nav-btn" onclick="rlsGo()" title="跳至数据科学层：语言统计·代数组合·拓扑·几何持久同调四视角">📐 数据科学（四视角）</button>';
+  // 数据科学层（四视角）：仅当 build.py 内嵌 ARTICLE_DS（本文有 *_studies.yaml）时出现
+  if((typeof ARTICLE_DS!=='undefined')&&ARTICLE_DS&&ARTICLE_DS.linguistic){
+    h+='<button class="f-nav-btn" onclick="dsGo()" title="跳至数据科学层：语言统计·代数组合·拓扑·几何（同调·谱几何）四视角">📐 数据科学（四视角）</button>';
   }
   // 叙事动画：仅当 build.py 内嵌了 MIAOYAN_NARR 时出现
   if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
@@ -120,10 +120,10 @@ function renderArticle(){
     }catch(e){}
   }
 
-  // ── 数据科学层（四视角）面板：仅当内嵌 RU_LAI_STUDIES 时出现（内容渲染入壳内 #rls-inner）──
-  if((typeof RU_LAI_STUDIES!=='undefined')&&RU_LAI_STUDIES&&RU_LAI_STUDIES.linguistic){
-    h+='<div class="section" data-chrome="1" id="article-rls" style="border-left:4px solid var(--gold);padding:0">';
-    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('rls-inner','📐 数据科学 · 四视角（语言统计·代数组合·拓扑·几何）'):'';
+  // ── 数据科学层（四视角）面板：仅当内嵌 ARTICLE_DS 时出现（内容渲染入壳内 #ds-inner）──
+  if((typeof ARTICLE_DS!=='undefined')&&ARTICLE_DS&&ARTICLE_DS.linguistic){
+    h+='<div class="section" data-chrome="1" id="article-ds" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('ds-inner','📐 数据科学 · 四视角（语言统计·代数组合·拓扑·几何（同调·谱））'):'';
     h+='</div>';
   }
 
@@ -173,9 +173,9 @@ function renderArticle(){
   if(typeof renderArticleBI==='function' && document.getElementById('bi-report-inner')){
     try{ document.getElementById('bi-report-inner').innerHTML=renderArticleBI(); }catch(e){ console.warn('bi', e); }
   }
-  // ── 数据科学层（三视角）：渲染入折叠壳内 #rls-inner ──
-  if(typeof renderRuLaiStudies==='function' && document.getElementById('rls-inner')){
-    try{ renderRuLaiStudies('#rls-inner'); }catch(e){ console.warn('rls', e); }
+  // ── 数据科学层（四视角）：渲染入折叠壳内 #ds-inner ──
+  if(typeof renderDataScience==='function' && document.getElementById('ds-inner')){
+    try{ renderDataScience('#ds-inner'); }catch(e){ console.warn('ds', e); }
   }
 
   // ── 会众全景流程图（MiaoyanFlow；简明结构流程图）──
@@ -264,12 +264,12 @@ function flowGo(){ // scroll to assembly panorama flow diagram
   if(history.replaceState) history.replaceState(null,'','#article-flow');
 }
 
-function rlsGo(){ // scroll to data-science (three lenses) panel
-  if(typeof _scrollReveal==='function' && _scrollReveal('article-rls')){ if(history.replaceState) history.replaceState(null,'','#article-rls'); return; }
-  var el=document.getElementById('article-rls');
+function dsGo(){ // scroll to data-science (four lenses) panel
+  if(typeof _scrollReveal==='function' && _scrollReveal('article-ds')){ if(history.replaceState) history.replaceState(null,'','#article-ds'); return; }
+  var el=document.getElementById('article-ds');
   if(!el)return;
   el.scrollIntoView({behavior:'smooth',block:'start'});
-  if(history.replaceState) history.replaceState(null,'','#article-rls');
+  if(history.replaceState) history.replaceState(null,'','#article-ds');
 }
 
 // ═══ 多语对读阅读模式：折叠/展开英文批注块 ═══

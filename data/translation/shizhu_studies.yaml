@@ -1,0 +1,4948 @@
+meta:
+  id: shizhu-studies
+  article: shizhu-miaoyan
+  title_zh: 《世主妙嚴品》数据科学层
+  title_en: The Lords of the Assembly · Data-Science Layer
+  source_primary: CBETA T10n0279《大方廣佛華嚴經》卷一至卷五·世主妙嚴品第一
+  generated_by: scripts/shizhu_studies.py
+  sources:
+  - label: CBETA T10n0279
+    url: https://cbetaonline.dila.edu.tw/zh/T10n0279
+  note_zh: 体例：本层为数据科学层产物，非经文陈述。名相与数目出 assembly 层（40 类／414 名）；字频／熵／Zipf／TF-IDF／组合普查／图论诸项皆本站析构。四视角（语言统计·代数组合·拓扑·几何持久同调）为观察同一品经文之四种窗口。
+  note_en: This is an analytical (data-science) layer, not a sutra statement. Names
+    and counts come from the assembly layer (40 classes / 414 named); all statistics
+    are computed here. The four lenses are four windows onto one chapter.
+linguistic:
+  corpus:
+    cjk_total: 31953
+    unique_chars: 837
+    type_token_ratio: 0.0262
+    shannon_entropy_bits: 7.9521
+    max_entropy_bits: 9.7091
+    note_zh: 字熵以本品（卷一至卷五）经文（CJK 表意字）计；Zipf 斜率取秩 1–200 之 log–log 最小二乘；TF-IDF 以卷为文档单位。
+    note_en: Character entropy over the CJK characters of the chapter (juan 1–5);
+      Zipf slope is the log-log least-squares fit over ranks 1–200; TF-IDF treats
+      each juan as a document.
+  zipf:
+    slope: -0.8003
+    top_chars:
+    - char: 一
+      count: 673
+    - char: 神
+      count: 618
+    - char: 無
+      count: 604
+    - char: 眾
+      count: 597
+    - char: 切
+      count: 551
+    - char: 生
+      count: 546
+    - char: 門
+      count: 546
+    - char: 解
+      count: 536
+    - char: 光
+      count: 524
+    - char: 普
+      count: 503
+    - char: 脫
+      count: 502
+    - char: 佛
+      count: 489
+    - char: 王
+      count: 477
+    - char: 得
+      count: 463
+    - char: 如
+      count: 462
+  term_counts:
+    佛: 489
+    菩薩: 99
+    神: 618
+    天王: 227
+    龍王: 23
+    海: 248
+    光明: 188
+    解脫門: 442
+    功德: 70
+    莊嚴: 126
+    眾生: 409
+    世界: 29
+    微塵: 29
+    如來: 207
+    三昧: 9
+    供養: 39
+    神力: 12
+    威神: 11
+    清淨: 131
+    智慧: 36
+    法界: 56
+    眾會: 30
+    善根: 23
+  sea_family:
+    char: 海
+    total_sea: 248
+    distinct_forms: 144
+    top:
+    - form: 功德海
+      count: 12
+    - form: 場眾海
+      count: 11
+    - form: 智慧海
+      count: 6
+    - form: 大劫海
+      count: 6
+    - form: 光主海
+      count: 5
+    - form: 脫門海
+      count: 5
+    - form: 德大海
+      count: 4
+    - form: 髻主海
+      count: 4
+    - form: 莊嚴海
+      count: 4
+    - form: 大悲海
+      count: 4
+    - form: 諸行海
+      count: 4
+    - form: 福德海
+      count: 4
+    - form: 歡喜海
+      count: 4
+    - form: 世界海
+      count: 4
+    - form: 善根海
+      count: 3
+    - form: 妙焰海
+      count: 3
+    - form: 於劫海
+      count: 3
+    - form: 解脫海
+      count: 3
+    - form: 量劫海
+      count: 3
+    - form: 生心海
+      count: 3
+  tfidf:
+    卷1:
+    - form: 天王
+      tfidf: 0.01442
+      count: 113
+    - form: 復有
+      tfidf: 0.00789
+      count: 39
+    - form: 首其
+      tfidf: 0.00526
+      count: 26
+    - form: 上首
+      tfidf: 0.0051
+      count: 40
+    - form: 為上
+      tfidf: 0.0051
+      count: 40
+    - form: 等而
+      tfidf: 0.0051
+      count: 40
+    - form: 羅王
+      tfidf: 0.00421
+      count: 33
+    - form: 神普
+      tfidf: 0.00404
+      count: 20
+    卷2:
+    - form: 天王
+      tfidf: 0.01185
+      count: 114
+    - form: 王得
+      tfidf: 0.01071
+      count: 103
+    - form: 子得
+      tfidf: 0.00346
+      count: 21
+    - form: 光天
+      tfidf: 0.00291
+      count: 28
+    - form: 天子
+      tfidf: 0.0026
+      count: 25
+    - form: 天之
+      tfidf: 0.00231
+      count: 14
+    - form: 天眾
+      tfidf: 0.00231
+      count: 14
+    - form: 梵王
+      tfidf: 0.00181
+      count: 11
+    卷3:
+    - form: 王得
+      tfidf: 0.00831
+      count: 81
+    - form: 神得
+      tfidf: 0.00513
+      count: 50
+    - form: 羅王
+      tfidf: 0.00349
+      count: 34
+    - form: 主夜
+      tfidf: 0.00133
+      count: 13
+    - form: 夜神
+      tfidf: 0.00133
+      count: 13
+    - form: 晝神
+      tfidf: 0.00133
+      count: 13
+    - form: 緊那
+      tfidf: 0.00133
+      count: 13
+    - form: 主方
+      tfidf: 0.00123
+      count: 12
+    卷4:
+    - form: 神得
+      tfidf: 0.01328
+      count: 141
+    - form: 城神
+      tfidf: 0.00141
+      count: 15
+    - form: 場神
+      tfidf: 0.00141
+      count: 15
+    - form: 主地
+      tfidf: 0.00132
+      count: 14
+    - form: 神承
+      tfidf: 0.00132
+      count: 14
+    - form: 主城
+      tfidf: 0.00122
+      count: 13
+    - form: 林神
+      tfidf: 0.00122
+      count: 13
+    - form: 河神
+      tfidf: 0.00122
+      count: 13
+    卷5:
+    - form: 摩訶
+      tfidf: 0.00544
+      count: 45
+    - form: 薩摩
+      tfidf: 0.00544
+      count: 45
+    - form: 訶薩
+      tfidf: 0.00544
+      count: 45
+    - form: 薩得
+      tfidf: 0.00383
+      count: 20
+    - form: 薩承
+      tfidf: 0.0023
+      count: 12
+    - form: 摩尼
+      tfidf: 0.00205
+      count: 29
+    - form: 有解
+      tfidf: 0.00192
+      count: 10
+    - form: 即說
+      tfidf: 0.00157
+      count: 13
+algebra:
+  kind: census
+  note_zh: 本品四十类会众无天然之对称群可作用（异于〈如来现相品〉之十方方位），故本视角作组合普查：以类目、摄属、列名员数三分，见其构成之数。
+  note_en: The forty classes here admit no natural symmetry group (unlike the ten
+    directions of the Tathāgata's Manifestation); this lens is thus a combinatorial
+    census — by group, realm, and listed-member count.
+  readout_zh: 四十类＝菩萨 1 ＋ 异生众 39（十九类神 19・八部四王 8・欲界天七众 7·色界天五众 5）；列名员数合计 414 名（n_named
+    之和），与 assembly.metrics.named_total 相合。
+  readout_en: Forty classes = 1 bodhisattva class + 39 other classes (19 god-classes,
+    8 legions/kings, 7 desire-realm, 5 form-realm); listed members total 414, matching
+    assembly.metrics.named_total.
+  census:
+  - title_zh: 按所属组
+    title_en: By group
+    rows:
+    - - 异生众·十九类神
+      - 19
+    - - 异生众·八部四王
+      - 8
+    - - 异生众·欲界天七众
+      - 7
+    - - 异生众·色界天五众
+      - 5
+    - - 同生众·菩萨
+      - 1
+  - title_zh: 按世间摄属
+    title_en: By realm
+    rows:
+    - - 器世間主
+      - 19
+    - - 天眾
+      - 12
+    - - 眾生世間主
+      - 8
+    - - 智正覺世間主
+      - 1
+  - title_zh: 按列名员数 n_named
+    title_en: By listed-member count
+    rows:
+    - - 列名 20 员
+      - 1
+    - - 列名 11 员
+      - 4
+    - - 列名 10 员
+      - 35
+  total_classes: 40
+  total_named: 414
+topology:
+  graph:
+    nodes: 40
+    rule_zh: 两「类」（其类名与上首之名）共字 ≥1 则连边；权＝共字数。
+    rule_en: Two classes are linked if their class name and leading name share ≥1
+      character; weight = shared count.
+    max_weight: 6
+    density_t1: 0.5013
+    degree_t1:
+      c00: 8
+      c01: 24
+      c02: 18
+      c03: 19
+      c04: 20
+      c05: 21
+      c06: 20
+      c07: 18
+      c08: 18
+      c09: 18
+      c10: 18
+      c11: 19
+      c12: 22
+      c13: 20
+      c14: 23
+      c15: 21
+      c16: 23
+      c17: 19
+      c18: 25
+      c19: 18
+      c20: 18
+      c21: 18
+      c22: 26
+      c23: 19
+      c24: 18
+      c25: 17
+      c26: 17
+      c27: 17
+      c28: 12
+      c29: 12
+      c30: 20
+      c31: 21
+      c32: 20
+      c33: 19
+      c34: 19
+      c35: 19
+      c36: 25
+      c37: 24
+      c38: 27
+      c39: 22
+    components_t1:
+    - - c00
+      - c01
+      - c02
+      - c03
+      - c04
+      - c05
+      - c06
+      - c07
+      - c08
+      - c09
+      - c10
+      - c11
+      - c12
+      - c13
+      - c14
+      - c15
+      - c16
+      - c17
+      - c18
+      - c19
+      - c20
+      - c21
+      - c22
+      - c23
+      - c24
+      - c25
+      - c26
+      - c27
+      - c28
+      - c29
+      - c30
+      - c31
+      - c32
+      - c33
+      - c34
+      - c35
+      - c36
+      - c37
+      - c38
+      - c39
+    top_edges:
+    - a: c36
+      b: c38
+      shared: 6
+    - a: c06
+      b: c18
+      shared: 5
+    - a: c16
+      b: c18
+      shared: 5
+    - a: c05
+      b: c07
+      shared: 4
+    - a: c05
+      b: c12
+      shared: 4
+    - a: c06
+      b: c16
+      shared: 4
+    - a: c14
+      b: c16
+      shared: 4
+    - a: c14
+      b: c18
+      shared: 4
+    - a: c22
+      b: c23
+      shared: 4
+    - a: c22
+      b: c36
+      shared: 4
+    - a: c22
+      b: c38
+      shared: 4
+    - a: c34
+      b: c39
+      shared: 4
+    - a: c02
+      b: c04
+      shared: 3
+    - a: c05
+      b: c14
+      shared: 3
+    - a: c05
+      b: c15
+      shared: 3
+    labels: &id001
+      c00: 菩薩摩訶薩
+      c01: 執金剛神
+      c02: 身眾神
+      c03: 足行神
+      c04: 道場神
+      c05: 主城神
+      c06: 主地神
+      c07: 主山神
+      c08: 主林神
+      c09: 主藥神
+      c10: 主稼神
+      c11: 主河神
+      c12: 主海神
+      c13: 主水神
+      c14: 主火神
+      c15: 主風神
+      c16: 主空神
+      c17: 主方神
+      c18: 主夜神
+      c19: 主晝神
+      c20: 阿脩羅王
+      c21: 迦樓羅王
+      c22: 緊那羅王
+      c23: 摩睺羅伽王
+      c24: 夜叉王
+      c25: 諸大龍王
+      c26: 鳩槃荼王
+      c27: 乾闥婆王
+      c28: 月天子
+      c29: 日天子
+      c30: 三十三天王
+      c31: 須夜摩天王
+      c32: 兜率陀天王
+      c33: 化樂天王
+      c34: 他化自在天王
+      c35: 大梵天王
+      c36: 光音天王
+      c37: 遍淨天王
+      c38: 廣果天王
+      c39: 大自在天王
+    readout_zh: 阈值 t＝1 时四十类名相（类名＋上首）两两共字者达 391 条边（密度 0.501）——因类名多用同一后缀（如「神」「天王」）而高度互渗，图近乎稠密。有意义之结构在较高阈值之过滤中显现（见
+      filtration）。
+    readout_en: At t=1 the forty class-names (class + leading member) share characters
+      on 391 edges — the heavy reuse of common suffixes (神, 天王 …) makes the graph
+      nearly dense; structure appears only under higher-threshold filtration (see
+      filtration).
+  flag_complex:
+    note_zh: β1 取旗复形（clique complex）之整系数模 GF(2) 同调：β1＝(E−V+β0)−rank ∂2。
+    note_en: 'β1 is the GF(2) homology of the flag (clique) complex: β1 = (E − V +
+      β0) − rank(∂2).'
+    at_t1:
+      threshold: 1
+      edges: 391
+      beta0: 1
+      cyclomatic: 352
+      triangles: 2055
+      rank_d2: 351
+      beta1: 1
+  filtration:
+    note_zh: 按共字数阈值 t 过滤：阈值越高、保留之边越少，β0(t) 自 1（连通）递增而碎裂；β1 与三角形数同录。
+    note_en: 'Filtration by shared-character threshold t: the higher the threshold,
+      the fewer edges kept, so β0(t) rises from 1 (connected) as components fragment;
+      β1 and triangle counts recorded.'
+    max_threshold: 6
+    steps:
+    - threshold: 1
+      edges: 391
+      beta0: 1
+      cyclomatic: 352
+      triangles: 2055
+      rank_d2: 351
+      beta1: 1
+    - threshold: 2
+      edges: 194
+      beta0: 5
+      cyclomatic: 159
+      triangles: 659
+      rank_d2: 158
+      beta1: 1
+    - threshold: 3
+      edges: 54
+      beta0: 14
+      cyclomatic: 28
+      triangles: 48
+      rank_d2: 27
+      beta1: 1
+    - threshold: 4
+      edges: 12
+      beta0: 31
+      cyclomatic: 3
+      triangles: 3
+      rank_d2: 3
+      beta1: 0
+    - threshold: 5
+      edges: 3
+      beta0: 37
+      cyclomatic: 0
+      triangles: 0
+      rank_d2: 0
+      beta1: 0
+    - threshold: 6
+      edges: 1
+      beta0: 39
+      cyclomatic: 0
+      triangles: 0
+      rank_d2: 0
+      beta1: 0
+geometry:
+  method_zh: 顶点＝四十类；λ(σ)＝σ 诸边共字数之最小值（顶点最先出现）；K_t＝{σ:λ(σ)≥t}，t 自 max 降至 1（增过滤）。以 GF(2)
+    边界矩阵约化得各维配对（birth, death）。节点四十，为避免组合爆炸，限单纯形维数至 3（故只报 H0／H1／H2 三维持久条形），乃『限维旗复形』近似。
+  method_en: Vertices = forty classes; λ(σ) = min shared-character count over the
+    edges of σ (vertices first); K_t = {σ:λ(σ)≥t}, t from max down to 1 (increasing
+    filtration). GF(2) boundary-matrix reduction yields per-dimension (birth, death)
+    pairs. With forty nodes the simplex dimension is capped at 3 (a dimension-capped
+    flag-complex approximation) to avoid combinatorial explosion, so only H0/H1/H2
+    bars are reported.
+  n_simplices: 10058
+  max_dim: 3
+  truncated: false
+  betti_curve:
+  - t: 6
+    n1: 1
+    n2: 0
+    n3: 0
+    beta0: 39
+    beta1: 0
+    beta2: 0
+  - t: 5
+    n1: 3
+    n2: 0
+    n3: 0
+    beta0: 37
+    beta1: 0
+    beta2: 0
+  - t: 4
+    n1: 12
+    n2: 3
+    n3: 0
+    beta0: 31
+    beta1: 0
+    beta2: 0
+  - t: 3
+    n1: 54
+    n2: 48
+    n3: 31
+    beta0: 14
+    beta1: 1
+    beta2: 0
+  - t: 2
+    n1: 194
+    n2: 659
+    n3: 1716
+    beta0: 5
+    beta1: 1
+    beta2: 0
+  - t: 1
+    n1: 391
+    n2: 2055
+    n3: 7572
+    beta0: 1
+    beta1: 1
+    beta2: 0
+  barcode:
+    H0:
+    - birth: 7
+      death: 1
+    - birth: 7
+      death: 1
+    - birth: 7
+      death: 1
+    - birth: 7
+      death: 1
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 2
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 3
+    - birth: 7
+      death: 4
+    - birth: 7
+      death: 4
+    - birth: 7
+      death: 4
+    - birth: 7
+      death: 4
+    - birth: 7
+      death: 4
+    - birth: 7
+      death: 4
+    - birth: 7
+      death: 5
+    - birth: 7
+      death: 5
+    - birth: 7
+      death: 6
+    H1:
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 4
+      death: 4
+    - birth: 3
+      death: 2
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 2
+      death: 1
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    H2:
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 3
+      death: 3
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 2
+      death: 2
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+    - birth: 1
+      death: 1
+  essential:
+    H0:
+    - birth: 7
+      death: null
+    H1:
+    - birth: 1
+      death: null
+    H2: []
+  readout_zh: t 自 6 降至 1，复形由疏而满：四十顶点启 40 个 H0 类，随边出现而并，终余 1（连通）；H1／H2 之类随环而生、随三角形／四面体填充而灭。
+  readout_en: 'As t drops from 6 to 1 the complex densifies: the forty vertices start
+    40 H0 classes that merge as edges appear, leaving 1 (connected); H1/H2 classes
+    are born with cycles and die as triangles/tetrahedra fill them.'
+  spectral:
+    t: 1
+    n_nodes: 40
+    n_edges_weighted: 655
+    spectrum:
+    - 0.0
+    - 3.400227
+    - 8.070016
+    - 11.40816
+    - 15.0
+    - 18.0
+    - 18.478134
+    - 21.267311
+    - 22.792188
+    - 23.539355
+    - 24.041323
+    - 24.658621
+    - 25.982295
+    - 27.732221
+    - 29.133351
+    - 30.259753
+    - 32.919267
+    - 34.0
+    - 34.001678
+    - 34.14077
+    - 34.56997
+    - 35.11287
+    - 35.736292
+    - 36.573068
+    - 37.865843
+    - 38.404453
+    - 38.671276
+    - 39.238996
+    - 39.948255
+    - 40.587508
+    - 43.139098
+    - 44.703652
+    - 46.641232
+    - 46.864436
+    - 48.710054
+    - 50.12792
+    - 50.216972
+    - 53.162379
+    - 53.574928
+    - 57.32613
+    top_k: 8
+    algebraic_connectivity: 3.400227
+    spectral_radius: 57.32613
+    n_zero_eigen: 1
+    sum_eigen_equals_2m: 1310.0
+    two_edges: 1310.0
+    fiedler:
+      index1: 0
+      id_neg:
+      - c20
+      - c21
+      - c22
+      - c23
+      - c24
+      - c25
+      - c26
+      - c27
+      - c28
+      - c29
+      - c30
+      - c31
+      - c32
+      - c33
+      - c34
+      - c35
+      - c36
+      - c37
+      - c38
+      - c39
+      id_pos:
+      - c00
+      - c01
+      - c02
+      - c03
+      - c04
+      - c05
+      - c06
+      - c07
+      - c08
+      - c09
+      - c10
+      - c11
+      - c12
+      - c13
+      - c14
+      - c15
+      - c16
+      - c17
+      - c18
+      - c19
+      labels: *id001
+      vec:
+      - 0.135558
+      - 0.088401
+      - 0.185015
+      - 0.168107
+      - 0.15864
+      - 0.150597
+      - 0.162385
+      - 0.172956
+      - 0.174906
+      - 0.175404
+      - 0.175404
+      - 0.170773
+      - 0.144177
+      - 0.16403
+      - 0.143233
+      - 0.131482
+      - 0.14421
+      - 0.166085
+      - 0.133517
+      - 0.174415
+      - -0.162641
+      - -0.163795
+      - -0.105492
+      - -0.147107
+      - -0.166114
+      - -0.179067
+      - -0.186137
+      - -0.186137
+      - -0.200869
+      - -0.200869
+      - -0.157714
+      - -0.147507
+      - -0.156605
+      - -0.161122
+      - -0.16648
+      - -0.167725
+      - -0.106232
+      - -0.11905
+      - -0.094989
+      - -0.143641
+    note_zh: 以加权图 Laplacian L＝D−W（W＝共字边权）之谱为「几何」之不变量：其最小非零特征值 λ₂ 为代数连通度（Fiedler 值），其对应之
+      Fiedler 向量给出将名相图二分之内在「重心方向」——沿此方向正负号即二分域。此与 L4 之持久同调互补：同调看「洞之生灭」，谱看「图之伸张」。
+    note_en: 'Spectral geometry of the weighted graph Laplacian L = D − W (W = shared-character
+      edge weights): the smallest non-zero eigenvalue λ₂ is the algebraic connectivity
+      (Fiedler value); its Fiedler vector gives an intrinsic bipartition of the name-graph
+      (sign of the vector = the two domains). Complementary to L4''s persistent homology:
+      homology sees the birth/death of holes, the spectrum sees the stretch of the
+      graph.'

@@ -993,21 +993,20 @@ def load_article_bi() -> dict[str, any]:
     return articles
 
 
-def load_ru_lai_studies() -> dict[str, any]:
-    """《如来现相品》数据科学层（data/translation/ru_lai_studies.yaml，YAML 为权威源）。
+def load_data_science() -> dict[str, any]:
+    """数据科学层（data/translation/*_studies.yaml，YAML 为权威源，通用扫多篇）。
 
-    以 meta.article 为键返回，供 build.py 按文章 id 内嵌为 RU_LAI_STUDIES。
-    生成器：scripts/ru_lai_studies.py。
+    以各文件 `meta.article` 为键返回，供 build.py 按文章 id 内嵌为 ARTICLE_DS。
+    生成器：scripts/ru_lai_studies.py ／ scripts/shizhu_studies.py（共用 scripts/data_science.py）。
     """
-    import yaml
+    import yaml, glob
     out = {}
-    p = os.path.join(ROOT, 'data', 'translation', 'ru_lai_studies.yaml')
-    if os.path.exists(p):
+    for p in sorted(glob.glob(os.path.join(ROOT, 'data', 'translation', '*_studies.yaml'))):
         try:
             with open(p, 'r', encoding='utf-8') as f:
                 d = yaml.safe_load(f) or {}
             aid = (d.get('meta') or {}).get('article')
-            if aid:
+            if aid and (d.get('linguistic')):
                 out[aid] = d
         except Exception:
             pass

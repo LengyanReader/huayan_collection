@@ -1431,10 +1431,10 @@ def build_articles(articles):
     gap = load_gap()
     article_bi = db_reader.load_article_bi()
     try:
-        ru_lai_lib = db_reader.load_ru_lai_studies()
+        ds_lib = db_reader.load_data_science()
     except Exception as e:
-        print(f'  ! ru-lai studies unavailable: {e}')
-        ru_lai_lib = {}
+        print(f'  ! data-science layer unavailable: {e}')
+        ds_lib = {}
     try:
         narr_lib = db_reader.load_narrative_library()
     except Exception as e:
@@ -1543,8 +1543,8 @@ def build_articles(articles):
                 extra_js += ('\n<script>\n' + wrap_script(read_src('miaoyan_narrative.js')) + '\n</script>')
             if (sb_lib.get(a['id']) or {}).get('acts'):
                 extra_js += '\n<script>\n' + wrap_script(read_src('miaoyan_storyboard.js')) + '\n</script>'
-            if (ru_lai_lib.get(a['id']) or {}).get('linguistic'):
-                extra_js += '\n<script>\n' + wrap_script(read_src('ru_lai_studies.js')) + '\n</script>'
+            if (ds_lib.get(a['id']) or {}).get('linguistic'):
+                extra_js += '\n<script>\n' + wrap_script(read_src('data_science.js')) + '\n</script>'
             scripts = ('<script>\n' + data_script + '\n</script>\n'
                        '<script>\n' + wrap_script(article_js) + '\n</script>' + extra_js)
             doc_chars = len(a.get('doc_md', ''))
@@ -1579,10 +1579,10 @@ def build_articles(articles):
         _sb = sb_lib.get(a['id'])
         if _sb and _sb.get('acts'):
             scripts = ('<script>var MIAOYAN_SB = %s;</script>\n' % json.dumps(_sb, ensure_ascii=False)) + scripts
-        # 数据科学层（三视角）：按文章 id 内嵌 RU_LAI_STUDIES（data/translation/ru_lai_studies.yaml）
-        _rls = ru_lai_lib.get(a['id'])
+        # 数据科学层（四视角）：按文章 id 内嵌 ARTICLE_DS（data/translation/*_studies.yaml）
+        _rls = ds_lib.get(a['id'])
         if _rls and _rls.get('linguistic'):
-            scripts = ('<script>var RU_LAI_STUDIES = %s;</script>\n' % json.dumps(_rls, ensure_ascii=False)) + scripts
+            scripts = ('<script>var ARTICLE_DS = %s;</script>\n' % json.dumps(_rls, ensure_ascii=False)) + scripts
         # （要点导览已行除：不再注入 MIAOYAN_KP，数据层仍存而不入页面。）
         _b = a.get('back') or {}
         back_tab = _b.get('tab') or 'index'

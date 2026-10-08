@@ -8,10 +8,10 @@ meta:
   sources:
   - label: CBETA T10n0279
     url: https://cbetaonline.dila.edu.tw/zh/T10n0279
-  note_zh: 体例：本层为数据科学层产物，非经文陈述。名相与数目出 assembly 层；字频／熵／Zipf／TF-IDF／群作用／图论诸项皆本站析构。三视角（语言统计·代数组合·拓扑）为观察同一经文之三种窗口。
+  note_zh: 体例：本层为数据科学层产物，非经文陈述。名相与数目出 assembly 层；字频／熵／Zipf／TF-IDF／群作用／图论诸项皆本站析构。四视角（语言统计·代数组合·拓扑·几何持久同调）为观察同一经文之四种窗口。
   note_en: This is an analytical (data-science) layer, not a sutra statement. Names
     and counts come from the assembly layer; all statistics are computed here. The
-    three lenses are three windows onto one text.
+    four lenses are four windows onto one text.
 linguistic:
   corpus:
     cjk_total: 8119
@@ -23,7 +23,6 @@ linguistic:
     note_en: Character entropy over the CJK characters of juan 6; Zipf slope is the
       log-log least-squares fit over ranks 1–200.
   zipf:
-    ranks: 200
     slope: -0.8517
     top_chars:
     - char: 一
@@ -77,6 +76,7 @@ linguistic:
     十方: 47
     法界: 36
   sea_family:
+    char: 海
     total_sea: 137
     distinct_forms: 50
     top:
@@ -365,16 +365,16 @@ topology:
       D: 9
       U: 9
     components_t1:
-    - - D
-      - E
+    - - E
+      - S
+      - W
       - N
       - NE
-      - NW
-      - S
       - SE
       - SW
+      - NW
+      - D
       - U
-      - W
     top_edges:
     - a: NW
       b: U
@@ -382,9 +382,6 @@ topology:
     - a: S
       b: NE
       shared: 11
-    - a: NE
-      b: NW
-      shared: 10
     - a: S
       b: N
       shared: 10
@@ -393,25 +390,39 @@ topology:
       shared: 10
     - a: S
       b: U
+      shared: 10
+    - a: NE
+      b: NW
       shared: 10
     - a: E
       b: NE
       shared: 9
-    - a: D
-      b: U
+    - a: E
+      b: S
       shared: 8
     - a: E
       b: N
       shared: 8
-    - a: E
-      b: S
+    - a: S
+      b: W
       shared: 8
-    - a: N
+    - a: S
       b: SE
       shared: 8
-    - a: N
-      b: SW
+    - a: S
+      b: D
       shared: 8
+    labels:
+      E: 東
+      S: 南
+      W: 西
+      N: 北
+      NE: 東北
+      SE: 東南
+      SW: 西南
+      NW: 西北
+      D: 下
+      U: 上
     readout_zh: 阈值 t＝1 时十方名相两两皆有共字，图退化为完全图 K10 —— 名相用字高度互渗。故有意义之结构在**较高阈值之过滤**中显现（见
       filtration）。
     readout_en: At t=1 every pair of directions shares a character, so the graph is
@@ -433,7 +444,7 @@ topology:
     note_zh: 按共字数阈值 t 过滤：阈值越高、保留之边越少，β0(t) 自 1（连通）递增而碎裂；β1 与三角形数同录。
     note_en: 'Filtration by shared-character threshold t: the higher the threshold,
       the fewer edges kept, so β0(t) rises from 1 (connected) as components fragment;
-      β1 and triangle counts recorded alongside.'
+      β1 and triangle counts recorded.'
     max_threshold: 13
     steps:
     - threshold: 1
@@ -538,6 +549,7 @@ geometry:
     and dies.'
   n_simplices: 1023
   max_dim: 9
+  truncated: false
   betti_curve:
   - t: 13
     n1: 1
@@ -1169,3 +1181,68 @@ geometry:
   readout_en: 'As t drops from 13 to 1 the complex densifies: the ten vertices start
     10 H0 classes that merge as edges appear, leaving 1 (connected); H1/H2 classes
     are born with cycles and die as triangles/tetrahedra fill them.'
+  spectral:
+    t: 1
+    n_nodes: 10
+    n_edges_weighted: 306
+    spectrum:
+    - -0.0
+    - 40.623658
+    - 57.909921
+    - 63.801207
+    - 66.090092
+    - 68.123504
+    - 70.299374
+    - 74.635345
+    - 82.767436
+    - 87.749462
+    top_k: 8
+    algebraic_connectivity: 40.623658
+    spectral_radius: 87.749462
+    n_zero_eigen: 1
+    sum_eigen_equals_2m: 612.0
+    two_edges: 612.0
+    fiedler:
+      index1: 0
+      id_neg:
+      - E
+      - S
+      - W
+      - NE
+      - SE
+      - NW
+      - U
+      id_pos:
+      - N
+      - SW
+      - D
+      labels:
+        E: 東
+        S: 南
+        W: 西
+        N: 北
+        NE: 東北
+        SE: 東南
+        SW: 西南
+        NW: 西北
+        D: 下
+        U: 上
+      vec:
+      - -0.207451
+      - -0.084399
+      - -0.102935
+      - 0.047576
+      - -0.188694
+      - -0.104467
+      - 0.919096
+      - -0.153345
+      - 0.022017
+      - -0.147398
+    note_zh: 以加权图 Laplacian L＝D−W（W＝共字边权）之谱为「几何」之不变量：其最小非零特征值 λ₂ 为代数连通度（Fiedler 值），其对应之
+      Fiedler 向量给出将名相图二分之内在「重心方向」——沿此方向正负号即二分域。此与 L4 之持久同调互补：同调看「洞之生灭」，谱看「图之伸张」。
+    note_en: 'Spectral geometry of the weighted graph Laplacian L = D − W (W = shared-character
+      edge weights): the smallest non-zero eigenvalue λ₂ is the algebraic connectivity
+      (Fiedler value); its Fiedler vector gives an intrinsic bipartition of the name-graph
+      (sign of the vector = the two domains). Complementary to L4''s persistent homology:
+      homology sees the birth/death of holes, the spectrum sees the stretch of the
+      graph.'
