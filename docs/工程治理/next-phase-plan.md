@@ -3654,4 +3654,4 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
     - **验证**：`node --check verify_storyboard_render.js` rc=0｜`verify_demo` ✅ ALL CHECKS PASSED（新增 `storyboard render` 一行）｜`build` **37 files｜27,348,563 B**（`miaoyan_storyboard.yaml` 38,220 B，diff **仅 +5 行**＝`article`＋`expected`）。
     - **⚠️ 遗留**：本门禁**尚无独立反向验证**（与 narrative/keypoints/flow 诸门禁一致；仅源文档级 shizhu/ru-lai 门禁配有反向）。
 
-- **〔push 状态〕**：item 16（`5d5a200`）与 item 17（`18f5fe4`）之提交**已推送**（`git push origin main` → `7ec8bbd..18f5fe4  main -> main`，rc=0）。**先前两次失败留档**——`Recv failure: Connection was reset`（rc=128）／`Failed to connect to github.com port 443 after 21114 ms`（rc=128），系网络/防火墙临时阻断，**第三次已通**。
+- **〔push 状态〕**：item 16（`5d5a200`）与 item 17（`18f5fe4`）之提交**已推送**（`git push origin main` → `7ec8bbd..18f5fe4  main -> main`，rc=0）。**先前两次失败留档**——`Recv failure: Connection was reset`（rc=128）／`Failed to connect to github.com port 443 after 21114 ms`（rc=128），系网络/防火墙临时阻断，**第三次已通**。**item 18（`7ced01b`，几何视角）已推送**（`07ae336..7ced01b  main -> main`，rc=0）。**item 19（`46bc2b5`，分镜门禁对齐）本地已提交而 push 未通**——连试三次皆 `Failed to connect to github.com port 443`（rc=128），网络复通后须补推（`git push origin main`）。
