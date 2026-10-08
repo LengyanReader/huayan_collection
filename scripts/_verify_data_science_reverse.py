@@ -55,13 +55,29 @@ DATA_MUT = [
      "global.ARTICLE_DS.geometry.spectral.cheeger.inequality_ok=false;"),
     ('Cheeger 值置负',
      "global.ARTICLE_DS.geometry.spectral.cheeger.value=-1;"),
+    # 分析说明卡（lens_guides）——结构性检查：整块抹去须被门禁抓住
+    ('lens_guides 整块抹去', "delete global.ARTICLE_DS.lens_guides;"),
 ]
 
 # 渲染器源级变异：文本替换。
+# 说明卡四条皆为**渲染层**变异（改页面作用域，不改数据）——
+# 若只改数据则「数据→渲染→比对」同源自比会假绿（M17 教训）。
 SRC_MUT = [
     ('抹去拓扑节 id', lambda t: repl(t, "'ds-topology'", "'ds-TP'", 'ds-topology')),
     ('抹去几何节 id', lambda t: repl(t, "'ds-geometry'", "'ds-GE'", 'ds-geometry')),
     ('引入 undefined 泄漏', lambda t: repl(t, "'ds-linguistic'", "'ds-linguistic'+undefined", 'ds-linguistic')),
+    ('说明卡不印目的（zh）',
+     lambda t: repl(t, "guideRow('目的', 'Purpose', g.purpose_zh, g.purpose_en)",
+                    "guideRow('目的', 'Purpose', null, g.purpose_en)", '目的行')),
+    ('说明卡不印方法（en）',
+     lambda t: repl(t, "guideRow('方法', 'Method', g.method_zh, g.method_en)",
+                    "guideRow('方法', 'Method', g.method_zh, null)", '方法行')),
+    ('说明卡不印效果（zh）',
+     lambda t: repl(t, "guideRow('效果', 'Effect', g.effect_zh, g.effect_en)",
+                    "guideRow('效果', 'Effect', null, g.effect_en)", '效果行')),
+    ('说明卡 data-guide 属性抹去',
+     lambda t: repl(t, "'<div class=\"ds-guide\" data-guide=\"' + esc(key) + '\" '",
+                    "'<div class=\"ds-guide\" '", 'data-guide')),
 ]
 
 

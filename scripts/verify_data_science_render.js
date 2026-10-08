@@ -48,6 +48,38 @@ check('四节俱在', ['ds-linguistic', 'ds-algebra', 'ds-topology', 'ds-geometr
 check('无 undefined 泄漏', out.indexOf('undefined') < 0);
 check('无 NaN 泄漏', out.indexOf('NaN') < 0);
 
+// ── 分析说明卡（lens_guides：目的 · 方法 · 效果，中英必配，零硬编码）──
+// 断言取自数据（YAML→内嵌）并要求逐字实印于渲染输出；
+// 数字之外更验「说明」本身上版面——数据在而说明缺席即为失职。
+const GG = data.lens_guides || {};
+const GUIDE_KEYS = ['linguistic', 'algebra', 'topology', 'geometry'];
+const GUIDE_FIELDS = ['purpose_zh', 'purpose_en', 'method_zh', 'method_en', 'effect_zh', 'effect_en'];
+function printed(s) {
+  if (!s) return false;
+  if (out.indexOf(s) >= 0) return true;
+  // 渲染器经 esc() 者（&<>"）以转义形态比对（story-comic corrections 教训）
+  const escd = String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return escd !== s && out.indexOf(escd) >= 0;
+}
+check('lens_guides 四视角俱在', GUIDE_KEYS.every(function (k) { return !!GG[k]; }));
+check('说明卡三标签齐（目的/方法/效果）',
+  ['<b>目的</b>', '<b>方法</b>', '<b>效果</b>'].every(function (t) { return out.indexOf(t) >= 0; }));
+check('说明卡标题在版面', out.indexOf('分析说明：目的 · 方法 · 效果') >= 0);
+check('说明卡英文标题在版面', out.indexOf('Analytical note: what this lens asks') >= 0);
+GUIDE_KEYS.forEach(function (k) {
+  const g = GG[k] || {};
+  check('说明卡 data-guide=' + k + ' 在版面', out.indexOf('data-guide="' + k + '"') >= 0);
+  GUIDE_FIELDS.forEach(function (f) {
+    check(k + '.' + f + ' 非空', typeof g[f] === 'string' && g[f].length > 0, String(g[f]));
+    check(k + '.' + f + ' 实印', printed(g[f]), String(g[f]).slice(0, 40));
+  });
+  check(k + '.en-line 中英对照随行', (function () {
+    const m = out.match(new RegExp('<div class="ds-guide" data-guide="' + k + '"[\\s\\S]*?(?=<div class="ds-guide"|<div class="section"|$)'));
+    return !!m && /class="en-line"/.test(m[0]);
+  })());
+});
+
 // ── L1 语言统计 ──
 const c = data.linguistic.corpus;
 check('CJK 字数 > 0', c.cjk_total > 0, String(c.cjk_total));

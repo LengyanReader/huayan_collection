@@ -37,6 +37,30 @@
       '<h3>' + icon + ' ' + esc(title) + '</h3>' + body + '</div>';
   }
 
+  /* 分析说明卡（目的 · 方法 · 效果）— 数据取自 YAML 之 lens_guides，零硬编码；
+   * 置于该视角读数之前，读者先明「为何算、怎么算、说明了什么」再看数。 */
+  function guideRow(labZh, labEn, zh, en) {
+    if (!zh && !en) return '';
+    var s = '<div style="margin:3px 0"><b>' + esc(labZh) + '</b> ' + esc(zh) + '</div>';
+    if (en) s += '<div class="en-line" style="font-size:0.92em;color:var(--text2);margin:-1px 0 4px 1.4em">' +
+      esc(labEn) + ': ' + esc(en) + '</div>';
+    return s;
+  }
+
+  function guideCard(key, g) {
+    if (!g) return '';
+    return '<div class="ds-guide" data-guide="' + esc(key) + '" ' +
+      'style="border:1px solid var(--line);border-left:3px solid var(--gold);' +
+      'background:rgba(201,162,39,.07);border-radius:4px;padding:7px 10px;margin:4px 0 8px;font-size:0.86em">' +
+      '<div style="font-weight:600">📌 分析说明：目的 · 方法 · 效果</div>' +
+      '<div class="en-line" style="font-size:0.92em;color:var(--text2);margin-bottom:3px">' +
+      'Analytical note: what this lens asks, how it computes, what the numbers show.</div>' +
+      guideRow('目的', 'Purpose', g.purpose_zh, g.purpose_en) +
+      guideRow('方法', 'Method', g.method_zh, g.method_en) +
+      guideRow('效果', 'Effect', g.effect_zh, g.effect_en) +
+      '</div>';
+  }
+
   function renderL1(L) {
     var c = L.corpus, z = L.zipf;
     var h = '<div style="font-size:0.82em;color:var(--text2)">' + esc(c.note_zh) + '</div>';
@@ -247,10 +271,12 @@
     var h = '<div class="section" style="border-left:4px solid var(--gold)"><h3>🧭 ' +
       esc(m.title_zh || '数据科学层') + '</h3>' +
       '<div style="font-size:0.8em;color:var(--text2)">' + esc(m.note_zh || '') + '</div></div>';
-    h += section('ds-linguistic', '📊', '视角一 · 语言统计', renderL1(d.linguistic));
-    h += section('ds-algebra', '🔷', '视角二 · 代数·组合', renderL2(d.algebra));
-    h += section('ds-topology', '🕸', '视角三 · 拓扑', renderL3(d.topology));
-    if (d.geometry) h += section('ds-geometry', '📐', '视角四 · 几何（持久同调 · 谱几何）', renderL4(d.geometry));
+    var G = d.lens_guides || {};
+    h += section('ds-linguistic', '📊', '视角一 · 语言统计', guideCard('linguistic', G.linguistic) + renderL1(d.linguistic));
+    h += section('ds-algebra', '🔷', '视角二 · 代数·组合', guideCard('algebra', G.algebra) + renderL2(d.algebra));
+    h += section('ds-topology', '🕸', '视角三 · 拓扑', guideCard('topology', G.topology) + renderL3(d.topology));
+    if (d.geometry) h += section('ds-geometry', '📐', '视角四 · 几何（持久同调 · 谱几何）',
+      guideCard('geometry', G.geometry) + renderL4(d.geometry));
     var root = (typeof document !== 'undefined') ? document.querySelector(sel) : null;
     if (root) root.innerHTML = h;
     return h;
