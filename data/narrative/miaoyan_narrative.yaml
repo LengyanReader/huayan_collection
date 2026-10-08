@@ -19,7 +19,7 @@ meta:
   status: "draft"
 
 space:
-  # 本品自有之数字契约（供 verify_narrative_render.js 校验；一点＝一类）
+  # 本品自有之数字契约（供 verify_story_comic_render.js 校验；一点＝一类）
   expected:
     classes: 40
     named: 414

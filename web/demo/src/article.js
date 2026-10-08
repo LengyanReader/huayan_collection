@@ -74,15 +74,20 @@ function renderArticle(){
   if((typeof ARTICLE_DS!=='undefined')&&ARTICLE_DS&&ARTICLE_DS.linguistic){
     h+='<button class="f-nav-btn" onclick="dsGo()" title="跳至数据科学层：语言统计·代数组合·拓扑·几何（同调·谱几何）四视角">📐 数据科学（四视角）</button>';
   }
-  // 叙事动画：仅当 build.py 内嵌了 MIAOYAN_NARR 时出现
-  if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
-    var _nb=(MIAOYAN_NARR.beats||[]).length;
-    h+='<button class="f-nav-btn" onclick="narrGo()" title="跳至叙事动画：'+_nb+' 拍会众曼荼罗次第涌现">📽 叙事动画（'+_nb+' 拍）</button>';
-  }
-  // 电影式分镜：仅当 build.py 内嵌 MIAOYAN_SB 时出现
-  if((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length){
-    var _sbn=0;(MIAOYAN_SB.acts||[]).forEach(function(x){_sbn+=((x.shots)||[]).length;});
-    h+='<button class="f-nav-btn" onclick="sbGo()" title="跳至电影式分镜：'+MIAOYAN_SB.acts.length+' 幕 '+_sbn+' 镜">🎬 分镜动画（'+_sbn+' 镜）</button>';
+  // 连环画 · 分镜信息图：仅当 build.py 内嵌 MIAOYAN_NARR / MIAOYAN_SB 任一时出现
+  // （静态版面 + 维度信息图，取代原两套 Canvas 播放器）
+  if((typeof renderStoryComic==='function')&&
+     (((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length)||
+      ((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length))){
+    var _parts=[];
+    if((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length){
+      var _sbn=0;(MIAOYAN_SB.acts||[]).forEach(function(x){_sbn+=((x.shots)||[]).length;});
+      _parts.push(MIAOYAN_SB.acts.length+' 幕 '+_sbn+' 镜');
+    }
+    if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
+      _parts.push(MIAOYAN_NARR.beats.length+' 拍');
+    }
+    h+='<button class="f-nav-btn" onclick="comicGo()" title="跳至连环画式分镜总览与各维度信息图（静态·可检索可打印）">🎞 连环画·信息图（'+_parts.join(' · ')+'）</button>';
   }
   // 会众全景流程：仅当 build.py 内嵌了 ARTICLE_ASSEMBLY 且已加载 renderMiaoyanFlow 时出现
   if((typeof renderMiaoyanFlow==='function')&&(typeof ARTICLE_ASSEMBLY!=='undefined')&&ARTICLE_ASSEMBLY&&(ARTICLE_ASSEMBLY.classes||[]).length){
@@ -127,19 +132,13 @@ function renderArticle(){
     h+='</div>';
   }
 
-  // ── 叙事动画（miaoyan_narrative.yaml 叙事节拍；仅当内嵌 MIAOYAN_NARR 时出现）──
-  // 内容渲染入壳内 #article-narrative-inner。
-  if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
-    h+='<div class="section" data-chrome="1" id="article-narrative" style="border-left:4px solid var(--gold);padding:0">';
-    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('article-narrative-inner','📽 叙事动画（会众次第涌现·交互）'):'';
-    h+='</div>';
-  }
-
-  // ── 电影式分镜（storyboard.yaml；仅当内嵌 MIAOYAN_SB 时出现）──
-  // 内容渲染入壳内 #article-sb（分镜播放器自带舞台/字幕/控件/分镜表）。
-  if((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length){
-    h+='<div class="section" data-chrome="1" id="article-storyboard" style="border-left:4px solid var(--gold);padding:0">';
-    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('article-sb','🎬 分镜动画（电影式·交互）'):'';
+  // ── 连环画式分镜总览 + 维度信息图（story_comic.js；静态零 Canvas）──
+  // 仅当内嵌 MIAOYAN_NARR 或 MIAOYAN_SB 时出现；内容渲染入壳内 #story-comic-inner。
+  if((typeof renderStoryComic==='function')&&
+     (((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length)||
+      ((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length))){
+    h+='<div class="section" data-chrome="1" id="story-comic" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('story-comic-inner','🎞 连环画 · 分镜信息图'):'';
     h+='</div>';
   }
 
@@ -183,15 +182,9 @@ function renderArticle(){
     try{ renderMiaoyanFlow('#article-flow'); }catch(e){ console.warn('flow', e); }
   }
 
-  // ── 叙事动画播放器（MiaoyanNarrative）：渲染入折叠壳内 ──
-  if(typeof renderMiaoyanNarrative==='function' && document.getElementById('article-narrative-inner')){
-    try{ renderMiaoyanNarrative('#article-narrative-inner'); }catch(e){ console.warn('narrative', e); }
-  }
-  // ── 电影式分镜播放器（MiaoyanStoryboard）：渲染入折叠壳内 #article-sb ──
-  if(typeof renderMiaoyanStoryboard==='function' && document.getElementById('article-sb')){
-    try{ renderMiaoyanStoryboard('#article-sb',
-          (typeof MIAOYAN_SB!=='undefined'?MIAOYAN_SB:null),
-          (typeof MIAOYAN_NARR!=='undefined'?MIAOYAN_NARR:null)); }catch(e){ console.warn('storyboard', e); }
+  // ── 连环画 · 分镜信息图（静态）：渲染入折叠壳内 #story-comic-inner ──
+  if(typeof renderStoryComic==='function' && document.getElementById('story-comic-inner')){
+    try{ renderStoryComic('#story-comic-inner'); }catch(e){ console.warn('story-comic', e); }
   }
 
   // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
@@ -199,7 +192,7 @@ function renderArticle(){
 
   // ── 章节级折叠：h2/h3/h4/h5 分级折叠（默认全部折叠；标题 ▾ 号点击可单独收展）──
   // 依站点设置：正文（含附录）所有标题层次默认折叠。
-  // 惟 EDA/数据科学/叙事动画 三面板已各自纳入 <details class="panel-fold"> 折叠壳，
+  // 惟 EDA/数据科学/连环画·信息图 三面板已各自纳入 <details class="panel-fold"> 折叠壳，
   // 若再施 _foldDoc 便会「壳折叠＋内层节折叠」双重套叠，点开壳仍见其内复折——故此处不再对
   // 该三者施折叠；仅正文 #article-full 与页首会众流程 #article-flow 仍按 h2–h5 分级折叠。
   // 各节工具栏一概不生成（noBar），改由页首「一套」页面级控件统管全页折叠/展开。
@@ -241,20 +234,12 @@ function biGo(){ // scroll to data-science layer
   if(history.replaceState) history.replaceState(null,'','#bi-report');
 }
 
-function narrGo(){ // scroll to narrative animation
-  if(typeof _scrollReveal==='function' && _scrollReveal('article-narrative')){ if(history.replaceState) history.replaceState(null,'','#article-narrative'); return; }
-  var el=document.getElementById('article-narrative');
+function comicGo(){ // scroll to storyboard-strip + information graphics panel
+  if(typeof _scrollReveal==='function' && _scrollReveal('story-comic')){ if(history.replaceState) history.replaceState(null,'','#story-comic'); return; }
+  var el=document.getElementById('story-comic');
   if(!el)return;
   el.scrollIntoView({behavior:'smooth',block:'start'});
-  if(history.replaceState) history.replaceState(null,'','#article-narrative');
-}
-
-function sbGo(){ // scroll to storyboard panel
-  if(typeof _scrollReveal==='function' && _scrollReveal('article-storyboard')){ if(history.replaceState) history.replaceState(null,'','#article-storyboard'); return; }
-  var el=document.getElementById('article-storyboard');
-  if(!el)return;
-  el.scrollIntoView({behavior:'smooth',block:'start'});
-  if(history.replaceState) history.replaceState(null,'','#article-storyboard');
+  if(history.replaceState) history.replaceState(null,'','#story-comic');
 }
 
 function flowGo(){ // scroll to assembly panorama flow diagram

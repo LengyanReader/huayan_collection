@@ -117,7 +117,7 @@ var MiaoyanFlow = (function () {
 
     // 交叉入口（仅跳既有区块，不臆造映射）
     h += '<div class="mfd-xref">另可参：';
-    if (typeof narrGo === 'function') h += '<button class="f-nav-btn" type="button" onclick="narrGo()">📽 叙事动画（会众次第涌现）</button>';
+    if (typeof comicGo === 'function') h += '<button class="f-nav-btn" type="button" onclick="comicGo()">🎞 连环画·信息图（分镜次第涌现）</button>';
     if (typeof edaGo === 'function') h += '<button class="f-nav-btn" type="button" onclick="edaGo()">🔬 名号剖面（词素析构）</button>';
     h += '</div>';
 

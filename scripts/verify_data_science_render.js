@@ -119,6 +119,17 @@ for (let i = 1; i < cv.length; i++) {
 }
 check('渲染输出含几何节 id', out.indexOf('ds-geometry') >= 0);
 
+// ── L4b Euler 特征 · Euler–Poincaré 恒等式 ──
+const BF = G.betti_final || {};
+check('betti_final 非空（直接同调）', Object.keys(BF).length > 0, String(Object.keys(BF).length));
+let eulFromBetti = 0;
+Object.keys(BF).forEach(function (k) { eulFromBetti += Math.pow(-1, +k.slice(1)) * BF[k]; });
+check('Euler–Poincaré：χ = Σ(−1)ⁱβᵢ', typeof G.euler_char === 'number' &&
+  Math.abs(G.euler_char - eulFromBetti) < 1e-9, G.euler_char + '/' + eulFromBetti);
+check('euler_ok 标记为真', G.euler_ok === true, String(G.euler_ok));
+check('最终复形 β0 = 1（连通）', BF.H0 === 1, String(BF.H0));
+check('渲染输出含 Euler 校验', out.indexOf('Euler') >= 0);
+
 // ── L4b 谱几何（加权图 Laplacian） ──
 const SP = G.spectral;
 check('谱几何存在', !!SP);
@@ -134,6 +145,18 @@ if (SP) {
   check('Fiedler 二分覆盖全节点',
     ((SP.fiedler.id_pos || []).length + (SP.fiedler.id_neg || []).length) === T.graph.nodes);
   check('渲染输出含谱几何文本', out.indexOf('谱几何') >= 0);
+
+  // 归一化谱 · Cheeger 不等式
+  const nrm = SP.normalized_algebraic_connectivity;
+  check('归一化 λ₂ ∈ [0, 2]', typeof nrm === 'number' && nrm >= -1e-9 && nrm <= 2 + 1e-6, String(nrm));
+  const CH = SP.cheeger || {};
+  check('Cheeger 扫掠切存在', typeof CH.value === 'number', String(CH.value));
+  check('Cheeger 值 ≥ 0', CH.value >= -1e-12, String(CH.value));
+  check('Cheeger 不等式 λ₂/2 ≤ h ≤ √(2λ₂)', CH.inequality_ok === true,
+    CH.bound_lo + ' <= ' + CH.value + ' <= ' + CH.bound_hi);
+  check('Cheeger 下界 = 归一化λ₂/2', Math.abs(CH.bound_lo - Math.max(0, nrm) / 2) < 1e-4,
+    CH.bound_lo + '/' + (Math.max(0, nrm) / 2));
+  check('渲染输出含 Cheeger 扫掠切', out.indexOf('Cheeger') >= 0);
 }
 
 if (fails.length) {

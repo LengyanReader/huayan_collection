@@ -343,13 +343,13 @@ for obj in sorted(os.listdir(ARTICLES)):
                              ('热力矩阵', '热力矩阵')):
             if token not in cjs:
                 bad.append(f'js/common.js 缺 {label}')
-        # 交互面板默认折叠壳（panel-fold）：数据科学/会众名号剖面/叙事动画须纳入可折叠 <details>，
+        # 交互面板默认折叠壳（panel-fold）：数据科学/会众名号剖面/连环画·信息图须纳入可折叠 <details>，
         # 由 _foldShellHtml 生成，内容渲染入壳内 *-inner 容器；页首另设「全页折叠/展开」一对统管。
         pf_checks = [
             ('_foldShellHtml 折叠壳', "class=\"fold panel-fold\"" in cjs),
             ('EDA 折叠壳内渲染', "renderArticleEDA('#article-eda-inner')" in html),
             ('数据科学折叠壳内渲染', "_foldShellHtml('bi-report-inner'" in html),
-            ('叙事动画折叠壳内渲染', "renderMiaoyanNarrative('#article-narrative-inner')" in html),
+            ('连环画折叠壳内渲染', "renderStoryComic('#story-comic-inner')" in html),
             ('全页折叠控件', 'function _installPageBar' in cjs or '_installPageBar' in cjs),
         ]
         bad += [c[0] for c in pf_checks if not c[1]]
@@ -487,22 +487,23 @@ else:
             else:
                 ok(f'articles/{_t}: data-science render — {(_r.stdout or "").strip()}')
 
-    # 叙事动画播放器冒烟测试（node）：MiaoyanNarrative 触 DOM/Canvas，故以最小
-    # DOM+Canvas 桩实跑，驱动播放/暂停/步进/跳拍/进度/倍速/图层诸控件，并校验环位
-    # 口径（一点=一类，全图 40 类 == assembly 之 40 类／414 名）。
-    # --check 仅能证语法，不能证「按钮真的绑了、画布真的出图、旁白随拍切换」。
+    # 连环画·分镜信息图门禁（node）：renderStoryComic 触 DOM，故以最小 DOM 桩**实跑**内联
+    # 之 story_comic.js，校验静态版面诸不变量（分幕/格号连续/逐格回源出处/〔编辑判断〕在场/
+    # 拍点出处在场/信息图 SVG 在场/无 undefined·NaN），并据 meta.expected 对账幕数与格数。
+    # 本机无真机浏览器（CDP 拒连），故以此静态门禁＋反向验证证其「渲染得对」，而非仅证语法。
     _nsmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                           'verify_narrative_render.js')
+                           'verify_story_comic_render.js')
     if not _node:
-        print('  SKIP: node not found — narrative render smoke test skipped')
+        print('  SKIP: node not found — story-comic render gate skipped')
     elif not os.path.exists(_nsmoke):
-        print('  SKIP: verify_narrative_render.js not found')
+        print('  SKIP: verify_story_comic_render.js not found')
     else:
         for _t in sorted(os.listdir(ARTICLES)):
             if not _t.endswith('.html') or _t == 'index.html':
                 continue
             _p = os.path.join(ARTICLES, _t)
-            if 'var MIAOYAN_NARR' not in open(_p, encoding='utf-8').read():
+            _src = open(_p, encoding='utf-8').read()
+            if 'var MIAOYAN_NARR' not in _src and 'var MIAOYAN_SB' not in _src:
                 continue
             _r = subprocess.run([_node, _nsmoke, _p], capture_output=True,
                                 encoding='utf-8', errors='replace')
@@ -510,9 +511,24 @@ else:
                 # stdout 空亦计失败：非 ASCII 输出遇 locale 解码失败时 rc 仍为 0，
                 # 若只验 rc 会出现「显示 OK 而无任何证据」的假绿。
                 _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
-                fail(f'articles/{_t}: narrative render — {_msg.strip().splitlines()[-1]}')
+                fail(f'articles/{_t}: story-comic render — {_msg.strip().splitlines()[-1]}')
             else:
-                ok(f'articles/{_t}: narrative render — {(_r.stdout or "").strip()}')
+                ok(f'articles/{_t}: story-comic render — {(_r.stdout or "").strip()}')
+
+        # 反向验证（破坏性变异，职责分离于异文件执行）：16 条变异须如期 FAIL，
+        # 两正本须先通过——正本不过则反向无意义；变异空操作/只改 JSON 语法者计 FAIL 不计通过。
+        _screv = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              '_verify_story_comic_reverse.py')
+        if os.path.exists(_screv):
+            _rr = subprocess.run([sys.executable, _screv], capture_output=True,
+                                 text=True, encoding='utf-8', errors='replace')
+            _rtail = (_rr.stdout or '').strip().splitlines()
+            if _rr.returncode != 0:
+                fail('story-comic reverse — ' + (_rtail[-1].strip() if _rtail else 'no output'))
+            else:
+                ok('story-comic reverse — ' + (_rtail[-1].strip() if _rtail else 'done'))
+        else:
+            print('  SKIP: _verify_story_comic_reverse.py not found')
 
     # 要点导览门禁（node）：MiaoyanKeypoints 触 DOM/Canvas，故以最小 DOM+Canvas 桩实跑。
     # 与叙事门禁分工：那一路证曼荼罗六环，此一路证 8 要点之内挂正文（#article-kp）——
@@ -606,33 +622,6 @@ else:
             fail('data-science reverse — ' + (_rtail[-1].strip() if _rtail else 'no output'))
         else:
             ok('data-science reverse — ' + (_rtail[-1].strip() if _rtail else 'done'))
-
-# 分镜总览门禁（node）：MiaoyanStoryboard 触 DOM/Canvas，故以最小 DOM+Canvas 桩**实跑**
-# build 产物内联之 renderMiaoyanStoryboard，驱动播放/暂停/步进/跳镜/跳幕/进度/倍速/四图层，
-# 并对账 meta.expected 锚点与数据不变量（镜号连续／drift 三轴／景别运镜注册／重建必附判断／
-# subject·focus 属本幕要素／曼荼罗唯一且在合幕）。与叙事门禁分工：那一路证六环之法，此一路
-# 证四幕二十六镜之举镜（L.116 起分镜由 article.js 折叠壳挂载，不在 doc 正文内）。
-_sbsmoke = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                        'verify_storyboard_render.js')
-if not _node:
-    print('  SKIP: node not found — storyboard render gate skipped')
-elif not os.path.exists(_sbsmoke):
-    print('  SKIP: verify_storyboard_render.js not found')
-else:
-    for _t in sorted(os.listdir(ARTICLES)):
-        if not _t.endswith('.html') or _t == 'index.html':
-            continue
-        _p = os.path.join(ARTICLES, _t)
-        if 'var MIAOYAN_SB' not in open(_p, encoding='utf-8').read():
-            continue
-        _r = subprocess.run([_node, _sbsmoke, _p], capture_output=True,
-                            encoding='utf-8', errors='replace')
-        if _r.returncode != 0 or not (_r.stdout or '').strip():
-            _msg = (_r.stderr or _r.stdout or 'no output (rc=%d)' % _r.returncode)
-            fail(f'articles/{_t}: storyboard render — {_msg.strip().splitlines()[-1]}')
-        else:
-            _lines = [l for l in (_r.stdout or '').strip().splitlines() if l.strip()]
-            ok(f'articles/{_t}: storyboard render — {_lines[-1] if _lines else "OK"}')
 
 # ─── 世主妙严品专书门禁（源文档级）────────────────────────────────────
 # 前述诸门禁皆作用于**构建产物**（页面/JS）。本门禁作用于**Markdown 源文档**

@@ -344,6 +344,34 @@ def lens_geometry(nv, w, *, method_zh, method_en, report_dims,
     max_report = max(report_dims)
     curve = [betti_at(t, max_report) for t in range(maxt, 0, -1)]
 
+    # ── 独立之直接同调（对最终复形＝全部已列单纯形，GF(2) 边界约化）──
+    #    与持久条形互为交叉校验：Euler–Poincaré 恒等式 χ = Σ(−1)^i β_i。
+    _pos = {sc[0]: i for i, sc in enumerate(simplices)}
+    _red = [0] * nsim
+    _low = {}
+    _rank = Counter()
+    for _j, (_c, _b) in enumerate(simplices):
+        _col = 0
+        if len(_c) > 1:
+            for _r in range(len(_c)):
+                _col ^= 1 << _pos[_c[:_r] + _c[_r + 1:]]
+        while _col:
+            _l = _col.bit_length() - 1
+            if _l in _low:
+                _col ^= _red[_low[_l]]
+            else:
+                break
+        _red[_j] = _col
+        if _col:
+            _low[_col.bit_length() - 1] = _j
+            _rank[len(_c) - 1] += 1
+    _fdim = Counter(len(sc[0]) - 1 for sc in simplices)
+    _maxd = max(_fdim)
+    betti_final = {d: _fdim.get(d, 0) - _rank.get(d, 0) - _rank.get(d + 1, 0)
+                   for d in range(_maxd + 1)}
+    euler_char = sum(((-1) ** d) * _fdim.get(d, 0) for d in range(_maxd + 1))
+    euler_from_betti = sum(((-1) ** d) * betti_final[d] for d in range(_maxd + 1))
+
     if not readout_zh:
         readout_zh = ("t 自 %d 降至 1，复形由疏而满：%d 顶点启 %d 个 H0 类，随边出现而并，终余 1（连通）；"
                       "H1／H2 之类随环而生、随三角形／四面体填充而灭。") % (maxt, nv, nv)
@@ -360,6 +388,10 @@ def lens_geometry(nv, w, *, method_zh, method_en, report_dims,
         "betti_curve": curve,
         "barcode": {"H%d" % d: bars(d) for d in report_dims},
         "essential": {"H%d" % d: ess(d) for d in report_dims},
+        "betti_final": {"H%d" % d: betti_final.get(d, 0) for d in range(_maxd + 1)},
+        "euler_char": euler_char,
+        "euler_from_betti": euler_from_betti,
+        "euler_ok": euler_char == euler_from_betti,
         "readout_zh": readout_zh, "readout_en": readout_en,
     }
 
@@ -415,6 +447,50 @@ def spectral_geometry(nv, w, *, ids=None, labels=None, top_k=8, t=1):
     pos = [ids[i] for i in range(nv) if fvec[i] >= 0]
     neg = [ids[i] for i in range(nv) if fvec[i] < 0]
     zero_count = sum(1 for e in evals if e < 1e-6)
+
+    # ── 归一化 Laplacian（Cheeger 不等式之正确配对；用于同「归一化」之 conductance）──
+    dsqrt = [(_m.sqrt(deg[i]) if deg[i] > 0 else 0.0) for i in range(nv)]
+    Ln = [[0.0] * nv for _ in range(nv)]
+    for i in range(nv):
+        for j in range(nv):
+            if i == j:
+                Ln[i][j] = 0.0 if deg[i] == 0 else 1.0
+            elif dsqrt[i] > 0 and dsqrt[j] > 0:
+                Ln[i][j] = -A[i][j] / (dsqrt[i] * dsqrt[j])
+    neig, _ = jacobi_eigen(Ln)
+    norm_lambda2 = round(sorted(neig)[1], 6) if nv > 1 else 0.0
+
+    # ── Isoperimetric（Cheeger）扫掠切：沿 Fiedler 方向之最小 conductance ──
+    total_vol = sum(deg)
+    sweep = sorted(range(nv), key=lambda i: fvec[i])
+    in_S = [False] * nv
+    vol_S = 0.0
+    cut = 0.0
+    best_h = None
+    best_k = 0
+    for k in range(1, nv):
+        v = sweep[k - 1]
+        to_in = sum(A[v][u] for u in range(nv) if in_S[u])
+        to_out = sum(A[v][u] for u in range(nv) if not in_S[u])
+        cut += to_out - to_in
+        vol_S += deg[v]
+        in_S[v] = True
+        other = total_vol - vol_S
+        if vol_S <= 0 or other <= 0:
+            continue
+        h = cut / min(vol_S, other)
+        if best_h is None or h < best_h:
+            best_h, best_k = h, k
+    lo = max(0.0, norm_lambda2) / 2.0
+    hi = _m.sqrt(2.0 * max(0.0, norm_lambda2))
+    cheeger = {
+        "value": round(best_h if best_h is not None else 0.0, 6),
+        "cut_size": best_k,
+        "bound_lo": round(lo, 6),
+        "bound_hi": round(hi, 6),
+        "inequality_ok": (best_h is None) or (lo - 1e-9 <= best_h + 1e-9 and best_h <= hi + 1e-9),
+    }
+
     return {
         "t": t,
         "n_nodes": nv,
@@ -426,6 +502,8 @@ def spectral_geometry(nv, w, *, ids=None, labels=None, top_k=8, t=1):
         "n_zero_eigen": zero_count,
         "sum_eigen_equals_2m": round(sum(evals), 4),
         "two_edges": 2.0 * sum(x for x in w.values() if x >= t),
+        "normalized_algebraic_connectivity": norm_lambda2,
+        "cheeger": cheeger,
         "fiedler": {
             "index1": 0,
             "id_neg": neg,
@@ -436,6 +514,8 @@ def spectral_geometry(nv, w, *, ids=None, labels=None, top_k=8, t=1):
         "note_zh": ("以加权图 Laplacian L＝D−W（W＝共字边权）之谱为「几何」之不变量："
                     "其最小非零特征值 λ₂ 为代数连通度（Fiedler 值），其对应之 Fiedler 向量"
                     "给出将名相图二分之内在「重心方向」——沿此方向正负号即二分域。"
+                    "另以归一化 Laplacian 之 λ₂ 配 Cheeger 不等式，量该二分之内禀边界"
+                    "（isoperimetric／conductance），并作 Fiedler 扫掠切以求最小割比。"
                     "此与 L4 之持久同调互补：同调看「洞之生灭」，谱看「图之伸张」。"),
         "note_en": ("Spectral geometry of the weighted graph Laplacian L = D − W (W = shared-character "
                     "edge weights): the smallest non-zero eigenvalue λ₂ is the algebraic connectivity "

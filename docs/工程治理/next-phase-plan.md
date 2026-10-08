@@ -3671,3 +3671,33 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 - **验证**：`verify_data_science_render` 两页 ✅｜反向 **32/32** ✅｜`verify_demo` ✅ ALL CHECKS PASSED｜`test_pipeline` ✅｜`verify_sources` 76/100｜`node --check` ✅｜`git diff --check` rc=0｜build **37 files｜27,436,347 B**（`shizhu-miaoyan.html` 2,548,632 B；`ru-lai-xian-xiang.html` 约 104 KB）。
 - **⚠️ 验证限度（第九次记录）**：本机 Chrome 之 `--remote-debugging-port` 与 `--dump-dom` 仍皆不可用，**新增谱几何节之真机渲染未作确认**，页面证据仅静态门禁＋反向＋node 桩三路。
 - **遗留**：几何视角可再深化——**重心细分（barycentric subdivision）／离散 Morse 理论（临界单形·梯度向量场）／更细之谱不变量（Cheeger 常数、谱嵌入）**；数据科学层仍未泛化至其余品目；分镜门禁无独立反向；真机实测缺位。
+
+### L.118　两套 Canvas 播放器退役 → 静态连环画式分镜＋拍点字幕序列＋维度信息图（方案 B 落地·新门禁＋反向 16/16）
+
+**编号避让**：L.117 为数据科学层泛化＋谱几何；本批处理「叙事动画/分镜播放器」一线，编 L.118（L.103–L.113 之号已他用或空闲，未相重）。
+
+- **根问题（为何退役）**：L.105 叙事动画播放器与 L.106 电影式分镜播放器皆为 **Canvas 动画**，而动画信道窄——**不可检索、不可引用、不可打印**；两播放器＋两门禁（`verify_narrative_render.js`／`verify_storyboard_render.js`）≈ **88 KB** 源码与维护面，且**正撞本项目最大验证盲区**（CDP 连续十次缺位、Canvas 像素渲染从未真机确认）。三份 YAML（`miaoyan_narrative.yaml`／`miaoyan_storyboard.yaml`／`ru_lai_narrative.yaml`）逐句回源之成果**不随播放器退场而浪费**——改为静态呈现。经用户批准采「方案 B」。
+- **① 新渲染器** `web/demo/src/story_comic.js`（**静态·零 Canvas·inline style 自包含**，可检索/可引用/可打印），三节：
+  - `#story-panels` **分镜连环画**：4 幕 26 格，逐格「第 N 格」序号＋`▼ 转入下幕`／`↓` 续格，格内含景别·运镜·时码·字幕（zh/en）·经文引文·出处 `ref`·`〔编辑判断〕`（重建格）·幕头 `props` 图注 chips·回源更正·凡例·`expected` 计数（4 幕 26 格 约 121 秒）。
+  - `#story-beats` **拍点字幕序列**：逐拍旁白（zh/en）·时码·`narration_ref`·存疑 chips·`↓` 续拍（shizhu 11 拍、ru-lai 10 拍）。
+  - `#story-figs` **维度信息图**：图一 词频 Top-12 条形＋Zipf 斜率、图二 Betti 曲线、图三 谱柱状＋Cheeger 读数、图四 会众结构（按群组/按世间类数·`共 N 类`/`具名 M 名`）——`svgBars`／`svgLines` 通用绘图（网格＋图例＋x 标注），SVG 用字面 hex 色（presentation attribute 不支持 `var()`）。
+  - **公开契约**：`renderStoryComic(sel)`（IIFE 挂 global，写 `innerHTML` 并返回）、入口 `comicGo()`（页首按钮＋折叠壳 `#story-comic-inner`）。
+- **② 退役清单**：`git rm web/demo/src/miaoyan_narrative.js`、`web/demo/src/miaoyan_storyboard.js`、`scripts/verify_narrative_render.js`、`scripts/verify_storyboard_render.js`、`scripts/_neg2.js`、`scripts/_neg3.js`（`_neg1.js` 属 heyy/双语线，保留）；`web/demo/src/common.css` 删两播放器样式块（36＋94 行，MiaoyanKeypoints／MiaoyanFlow 保留）；`article.js` 两按钮/两折叠壳/两 render 合并为 `comicGo()`＋`#story-comic`＋`renderStoryComic('#story-comic-inner')`；`build.py` 注入条件合并为单条件（**`MIAOYAN_NARR`／`MIAOYAN_SB` 数据内嵌保留**——分镜与拍点数据仍是版面之源）；`miaoyan_narrative.yaml` L22 注释改指新门禁。
+- **③ 连带查出并修掉两处死链**：`web/demo/src/miaoyan_flow.js:120` 交叉入口按钮仍绑 `narrGo()`（播放器已撤，`typeof` 守卫使其静默不渲染，属死码）→ 改 `comicGo()`；`article.js`/`common.css`/`common.js` 四处「叙事动画」注释改「连环画·信息图」。
+- **④ 新门禁** `scripts/verify_story_comic_render.js`（最小 DOM 桩 **vm 实跑**内联之 `story_comic.js`）：
+  - **A 分镜**：幕数/格数对账 `meta.expected`、`printed` 格号计数、`▼` 分幕数＝acts−1、**格号连续 1..N**、逐格 `ref`／`subtitle_zh`／`subtitle_en`（中英必配）／`quote_zh` 在场且**实印**（窗口切片对账）、景别/运镜 `zh` 标签不落空、`reconstruction` 格必带 `〔编辑判断〕`＋ `judgment_zh` 实印、`corrections` 上版面；**头注（meta.title_zh/en·subtitle_zh/en·source_primary·method_zh）与逐幕（title_zh/en·fascicle_zh/en·lead_zh/en·props label_zh）非空且实印**。
+  - **B 拍点**：拍数对账、`printed` 拍号计数、逐拍 `narration_ref`／`narration_zh`／`title_zh`／存疑 chips 实印、`NARR.meta.title_zh/en` 实印。
+  - **B′ 数据口径**：`space.expected` 40 类/414 名环和（自旧叙事门禁移入——**播放器退场而口径不因之失守**）。
+  - **C 信息图**：`<svg>` 在场、四图 id、Top-3 字符标签＋计数与 `ARTICLE_DS` 对账（`>char<`／`>count<`）、图四 `共 N 类` 与 `ARTICLE_ASSEMBLY` 对账。
+  - **通用**：无 `undefined`／`NaN`／`[object Object]` 泄漏、`.en-line` 在场、`function comicGo`＋`onclick="comicGo()"`＋挂载钩子齐。
+  - **因新断言当场查出两处真实 EN 缺口并补**：渲染器补 `act.fascicle_en` 行、`h3` 补 `meta.title_en` 行（此前 `|| ''` 静默吞空）。
+- **⑤ 反向验证** `scripts/_verify_story_comic_reverse.py`：**16 条破坏性变异 = 16/16 如期失败 ＋ 两正本先通过**；变异均**限定作用域**（`var X = {...};</script>` JSON 块内或渲染器源码），变异后**自检 JSON 仍可解析**（语法坏者计「测不到目标断言」的 FAIL，不计通过）；已挂 `verify_demo`（story-comic gate 的 `else` 分支内）。
+- **⑥ 门禁/反向自身缺陷如实修正（不隐己过）**：
+  - **M6 首次假绿**——按首处 `"subtitle_zh"` 命中的是 **meta 头注**而非镜头（首处 ≠ 目标处）→ 改锚 `"focus": [...], "subtitle_zh"` 之镜头字幕，并**加严门禁**（头注与逐幕标题也须非空实印）；
+  - **M2 首次假绿**——`function comicGo` 是 `function comicGone` 的**子串**，子串检查测不到改名 → 改 `function comicgo`；
+  - **M4/M5/M6/M14 首轮变异吞掉键名**（把 `"narration_ref": "…"` 整体替换成 `""`）→ JSON 解析失败，门禁以「数据缺失」告警退出——**FAIL 是真的，但目标断言从未被执行** → 改**反向引用保留键名**（`"narration_ref": ""`）；
+  - **M13 锚点 `id="story-beats"` 只在运行时产生**，产物源码里只有 `'story-beats'` 字面量 → 锚点不存在、变异为空操作 → 改锚源码字面量；
+  - 上述四病**已入册 `harness/rules.md` §F16**（变异作用域限定＋变异后须仍可解析＋锚点先实查字面形态）。
+- **验证**：`node --check`（story_comic／article／gate）✅｜build **37 files｜27,381,742 B**｜`verify_demo` ✅ **ALL CHECKS PASSED**（story-comic 两页：shizhu `4幕/26格·11拍·4图·98 en-line`、ru-lai `10拍·3图·28 en-line`；**story-comic reverse 16/16**；data-science 40/40、shizhu 10/10、ru-lai 12/12 等既有门禁俱绿）｜`test_pipeline` ✅ ALL TESTS PASSED（95 人/98 边/30 地）｜`git diff --check` rc=0（仅 LF→CRLF 提示）。
+- **⚠️ 验证限度（第十次记录）**：本机 Chrome 之 `--remote-debugging-port` 与 `--dump-dom` 仍皆不可用，**静态版面、四张 SVG 信息图、折叠态实际排版皆未作真机渲染确认**；本批所证为**逻辑真跑**（node 桩实跑＋静态门禁＋反向变异三路），像素级观感待浏览器可用补验。
+- **遗留**：①逐格 `quote_en`／`judgment_zh`／幕级 `layout` 未上版面亦未断言（`layout` 字段未渲染，属可选设计提示）；②反向仅覆盖两页之 16 条变异，未含 `figsSection` 单图逐一变异；③`miaoyan_flow`／`keypoints` 等既有面板仍各带独立门禁，**尚未与本线合并**；④L.117 遗留（重心细分／离散 Morse／数据科学再泛化）未动；⑤台账 `L.92` 相重、缺 `T09n0278.xml` 等旧遗留未变。

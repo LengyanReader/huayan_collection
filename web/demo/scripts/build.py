@@ -1533,16 +1533,16 @@ def build_articles(articles):
         else:
             data_script = 'var ARTICLE = %s;' % json.dumps(payload, ensure_ascii=False)
             # 交互渲染器按「本文实际所含数据」注入（不再绑定 shizhu-miaoyan 单一 id）：
-            #   assembly(40 类会众) → 会众全景流程图；narrative → 叙事动画；storyboard → 分镜。
+            #   assembly(40 类会众) → 会众全景流程图；narrative/storyboard → 连环画·信息图。
             # 数据缺席则该篇不注入该渲染器，页面照常渲染正文。
             extra_js = ''
             _asm_here = article_assembly.get(a['id']) if isinstance(article_assembly, dict) else None
             if _asm_here and _asm_here.get('classes'):
                 extra_js += ('\n<script>\n' + wrap_script(read_src('miaoyan_flow.js')) + '\n</script>')
-            if (narr_lib.get(a['id']) or {}).get('beats'):
-                extra_js += ('\n<script>\n' + wrap_script(read_src('miaoyan_narrative.js')) + '\n</script>')
-            if (sb_lib.get(a['id']) or {}).get('acts'):
-                extra_js += '\n<script>\n' + wrap_script(read_src('miaoyan_storyboard.js')) + '\n</script>'
+            # 连环画式分镜信息图（静态零 Canvas，方案 B）：叙事/分镜任一在场即注入，
+            # 数据（MIAOYAN_NARR / MIAOYAN_SB）仍各自内嵌，由 story_comic.js 读取渲染。
+            if (narr_lib.get(a['id']) or {}).get('beats') or (sb_lib.get(a['id']) or {}).get('acts'):
+                extra_js += ('\n<script>\n' + wrap_script(read_src('story_comic.js')) + '\n</script>')
             if (ds_lib.get(a['id']) or {}).get('linguistic'):
                 extra_js += '\n<script>\n' + wrap_script(read_src('data_science.js')) + '\n</script>'
             scripts = ('<script>\n' + data_script + '\n</script>\n'

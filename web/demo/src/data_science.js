@@ -154,8 +154,16 @@
     h += table(['指标', '值'], [
       ['单纯形总数', G.n_simplices],
       ['最大维数', G.max_dim],
-      ['本质类', 'H₀ ×' + ((G.essential || {}).H0 || []).length]
+      ['本质类', 'H₀ ×' + ((G.essential || {}).H0 || []).length],
+      ['Euler 特征 χ（Σ(−1)ⁱfᵢ）', G.euler_char],
+      ['Euler–Poincaré 校验', (G.euler_ok ? 'χ = Σ(−1)ⁱβᵢ ✓' : 'χ ≠ Σ(−1)ⁱβᵢ ✗')]
     ]);
+    var bf = G.betti_final || {};
+    var bfk = Object.keys(bf).sort(function (a, b) { return (+a.slice(1)) - (+b.slice(1)); });
+    if (bfk.length) {
+      h += '<div style="font-size:0.82em;margin-top:8px"><b>最终复形之 Betti 数</b>（直接 GF(2) 约化，与持久条形互校）</div>';
+      h += table(['同调'].concat(bfk), [['βᵢ'].concat(bfk.map(function (k) { return bf[k]; }))]);
+    }
     var barcode = G.barcode || {}, ess = G.essential || {};
     var dims = Object.keys(barcode).sort(function (a, b) { return (+a.slice(1)) - (+b.slice(1)); });
     var zh = { H0: 'H₀（连通）', H1: 'H₁（环）', H2: 'H₂（空腔）', H3: 'H₃' };
@@ -207,8 +215,18 @@
       ['代数连通度 λ₂（Fiedler）', S.algebraic_connectivity],
       ['谱半径 λₙ', S.spectral_radius],
       ['零特征值数（＝连通分量）', S.n_zero_eigen],
-      ['谱和 Σλ（＝2m）', S.sum_eigen_equals_2m]
+      ['谱和 Σλ（＝2m）', S.sum_eigen_equals_2m],
+      ['归一化 λ₂（Cheeger 配对）', S.normalized_algebraic_connectivity]
     ]);
+    var ch = S.cheeger || {};
+    if (ch.value != null) {
+      h += '<div style="font-size:0.82em;margin-top:6px"><b>Cheeger 扫掠切（isoperimetric／conductance）</b></div>';
+      h += table(['量', '值'], [
+        ['最小割比 h（Fiedler 扫掠切）', ch.value + '（|S|=' + ch.cut_size + '）'],
+        ['Cheeger 界 [λ₂/2, √(2λ₂)]', '[' + ch.bound_lo + ', ' + ch.bound_hi + ']'],
+        ['不等式校验 λ₂/2 ≤ h ≤ √(2λ₂)', (ch.inequality_ok ? '✓' : '✗')]
+      ]);
+    }
     h += '<div style="font-size:0.82em;margin-top:6px"><b>谱（升序）</b></div>';
     h += table(['#', '特征值', ''], spec.map(function (e, i) {
       return [i, e, bar(Math.max(0, e), mx, '#8a6db0')];

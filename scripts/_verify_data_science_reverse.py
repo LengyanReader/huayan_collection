@@ -48,6 +48,13 @@ DATA_MUT = [
     ('谱零特征值数脱钩', "global.ARTICLE_DS.geometry.spectral.n_zero_eigen+=1;"),
     ('Fiedler 二分不覆盖全节点',
      "global.ARTICLE_DS.geometry.spectral.fiedler.id_pos=[];global.ARTICLE_DS.geometry.spectral.fiedler.id_neg=[];"),
+    ('Euler–Poincaré 恒等式破坏（β 累加错）',
+     "global.ARTICLE_DS.geometry.betti_final['H1']+=1;"),
+    ('euler_ok 标记伪为真', "global.ARTICLE_DS.geometry.euler_ok=false;"),
+    ('Cheeger 不等式标记伪为假',
+     "global.ARTICLE_DS.geometry.spectral.cheeger.inequality_ok=false;"),
+    ('Cheeger 值置负',
+     "global.ARTICLE_DS.geometry.spectral.cheeger.value=-1;"),
 ]
 
 # 渲染器源级变异：文本替换。

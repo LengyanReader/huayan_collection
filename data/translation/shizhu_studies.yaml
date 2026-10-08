@@ -4797,6 +4797,14 @@ geometry:
     - birth: 1
       death: null
     H2: []
+  betti_final:
+    H0: 1
+    H1: 1
+    H2: 0
+    H3: 5868
+  euler_char: -5868
+  euler_from_betti: -5868
+  euler_ok: true
   readout_zh: t 自 6 降至 1，复形由疏而满：四十顶点启 40 个 H0 类，随边出现而并，终余 1（连通）；H1／H2 之类随环而生、随三角形／四面体填充而灭。
   readout_en: 'As t drops from 6 to 1 the complex densifies: the forty vertices start
     40 H0 classes that merge as edges appear, leaving 1 (connected); H1/H2 classes
@@ -4852,6 +4860,13 @@ geometry:
     n_zero_eigen: 1
     sum_eigen_equals_2m: 1310.0
     two_edges: 1310.0
+    normalized_algebraic_connectivity: 0.109153
+    cheeger:
+      value: 0.070707
+      cut_size: 20
+      bound_lo: 0.054577
+      bound_hi: 0.467232
+      inequality_ok: true
     fiedler:
       index1: 0
       id_neg:
@@ -4939,7 +4954,8 @@ geometry:
       - -0.094989
       - -0.143641
     note_zh: 以加权图 Laplacian L＝D−W（W＝共字边权）之谱为「几何」之不变量：其最小非零特征值 λ₂ 为代数连通度（Fiedler 值），其对应之
-      Fiedler 向量给出将名相图二分之内在「重心方向」——沿此方向正负号即二分域。此与 L4 之持久同调互补：同调看「洞之生灭」，谱看「图之伸张」。
+      Fiedler 向量给出将名相图二分之内在「重心方向」——沿此方向正负号即二分域。另以归一化 Laplacian 之 λ₂ 配 Cheeger 不等式，量该二分之内禀边界（isoperimetric／conductance），并作
+      Fiedler 扫掠切以求最小割比。此与 L4 之持久同调互补：同调看「洞之生灭」，谱看「图之伸张」。
     note_en: 'Spectral geometry of the weighted graph Laplacian L = D − W (W = shared-character
       edge weights): the smallest non-zero eigenvalue λ₂ is the algebraic connectivity
       (Fiedler value); its Fiedler vector gives an intrinsic bipartition of the name-graph
