@@ -90,9 +90,9 @@ function renderGap(){
 
   // ── Priority roadmap ──
   h+="<h2 style=color:var(--gold)>🗺 对译优先级</h2><div class=section>";
-  h+="<p style=line-height:1.8><b style=color:#c46b5d>P0 — 最高优先:</b> Ch.11 如来华严品 · Ch.28 普贤宣说品 — 汉文三译全缺，学术价值最高。<br>获取路径: ① BDRC/BUDA API (buda.bdrc.io, 需注册) → Toh44 Unicode电子文本 ② 84000项目: 已发布入法界品(2021), Ch.11+Ch.28尚未发布 ③ 兜底: 学术论文中对藏文独有品目的研究摘要。目前P0阶段可先整理已知内容结构大纲。</p>";
-  h+="<p style=line-height:1.8><b style=color:#c8893e>P1 — 高优先:</b> Ch.27 十地品 · Ch.40 离世间品 — 有鸠摩罗什《十住经》、世亲《十地经论》、竺法护《度世品经》等别译可作对勘桥梁。</p>";
-  h+="<p style=line-height:1.8><b style=color:#a08020>P2 — 中优先:</b> Ch.33 寿量品 · Ch.39 如来出现品 — 有玄奘《显无边佛土功德经》和竺法护《如来兴显经》等别译可对照。</p>";
+  h+="<p style=line-height:1.8><b style=color:#c46b5d>P0 — 最高优先:</b> Ch.11 如来华严品 · Ch.32 普贤宣说品 — 汉文三译全缺，学术价值最高。<br>获取路径: ① BDRC/BUDA API (buda.bdrc.io, 需注册) → Toh44 Unicode电子文本 ② 84000项目: 已发布入法界品(2021), Ch.11+Ch.32尚未发布 ③ 兜底: 学术论文中对藏文独有品目的研究摘要。目前P0阶段可先整理已知内容结构大纲。</p>";
+  h+="<p style=line-height:1.8><b style=color:#c8893e>P1 — 高优先:</b> Ch.31 十地品 · Ch.44 离世间品 — 有鸠摩罗什《十住经》、世亲《十地经论》、竺法护《度世品经》等别译可作对勘桥梁。</p>";
+  h+="<p style=line-height:1.8><b style=color:#a08020>P2 — 中优先:</b> Ch.37 寿量品 · Ch.43 如来出现品 — 有玄奘《显无边佛土功德经》和竺法护《如来兴显经》等别译可对照。</p>";
   h+="</div>";
 
   // ── References ──
@@ -183,7 +183,7 @@ function renderGap(){
   h+="<option value='ch45'>Ch.45 入法界品 (84000已发布·可对读)</option>";
   h+="<option value='ch11'>Ch.11 如来华严品 (待获取藏文原文)</option>";
   h+="<option value='ch32'>Ch.32 普贤宣说品 (待获取藏文原文)</option>";
-  h+="<option value='ch40'>Ch.40 离世间品 (待对齐)</option>";
+  h+="<option value='ch40'>Ch.44 离世间品 (待对齐)</option>";
   h+="</select></p>";
 
   // Parallel reading layout placeholder
@@ -246,7 +246,7 @@ function renderGap(){
   h+="<div style='display:flex;gap:8px;flex-wrap:wrap'>";
   [{t:'文殊师利发愿经',n:'T0296',u:'T10n0296'},
    {t:'普贤菩萨行愿赞',n:'T0297·不空',u:'T10n0297'},
-   {t:'⭐ 大方广普贤所说经',n:'T0847·实叉难陀',note:'↔藏文普贤宣说品',u:'T10n0847'},
+   {t:'⭐ 大方广普贤所说经',n:'T10n0298·实叉难陀',note:'↔藏文普贤宣说品',u:'T10n0298'},
    {t:'总持宝光明经',n:'T0299·法天',u:'T10n0299'},
    {t:'不思议佛境界分',n:'T0300·提云般若',u:'T10n0300'},
    {t:'如来不思议境界经',n:'T0301·实叉难陀',u:'T10n0301'},
@@ -778,14 +778,14 @@ function loadParallelChapter(chId){
   }else if(chId==="ch11"||chId==="ch32"){
     // Loaded via fetch() above
     en.innerHTML="<span style=color:var(--text2)>⏳ 84000尚未发布此品英译<br><br>📎 已从Kangyur ZIP提取藏文Wylie原文</span>";
-    zh.innerHTML="<span style=color:var(--text2)>⏳ 汉文无对应品目——此品为藏文独有"+(chId==="ch32"?"<br><br>📎 关联别译: T0847《大方广普贤所说经》(实叉难陀译·1卷)":"<br><br>📎 关联: T0300-T0304等如来不思议境界经典")+"</span>";
+    zh.innerHTML="<span style=color:var(--text2)>⏳ 汉文无对应品目——此品为藏文独有"+(chId==="ch32"?"<br><br>📎 关联别译: T10n0298《大方广普贤所说经》(实叉难陀译·1卷)":"<br><br>📎 关联: T0300-T0304等如来不思议境界经典")+"</span>";
   }else if(chId==="ch40"){
-    bo.innerHTML="<b>离世间品</b><br><span style=font-size:0.78em>de nas 'jig rten las 'das pa'i le'u ste |...<br><br></span><span style=color:var(--text2);font-size:0.75em>藏文此品有独特异译段落。Toh44-40 (德格版)</span>";
+    bo.innerHTML="<b>离世间品</b><br><span style=font-size:0.78em>de nas 'jig rten las 'das pa'i le'u ste |...<br><br></span><span style=color:var(--text2);font-size:0.75em>藏文此品有独特异译段落。Toh44-44 (德格版)</span>";
     en.innerHTML="<b>Transcending the World</b><br><span style=font-size:0.78em>The chapter on transcending the world contains unique passages in the Tibetan version not found in the Chinese translations...<br><br></span><span style=color:var(--text2);font-size:0.75em>待84000发布此品英译后进行逐段对勘</span>";
     zh.innerHTML="<b>离世间品第三十八</b><br><span style=font-size:0.78em>尔时，世尊在摩竭提国阿兰若法菩提场中...<br><br></span><span style=color:var(--text2);font-size:0.75em>CBETA T10n0279 · 实叉难陀译<br>📎 别译: 竺法护《度世品经》(T10n0292, 6卷)</span>";
     sg.innerHTML="<span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em'>藏文有独特段落</span>";
   }else if(chId==="ch33"){
-    bo.innerHTML="<b>寿量品</b><br><span style=font-size:0.78em>de nas 'jig rten gyi khams kyi tshe'i tshad bstan pa...<br><br></span><span style=color:var(--text2);font-size:0.75em>藏文有更详尽的诸佛寿量描述。Toh44-33 (德格版)</span>";
+    bo.innerHTML="<b>寿量品</b><br><span style=font-size:0.78em>de nas 'jig rten gyi khams kyi tshe'i tshad bstan pa...<br><br></span><span style=color:var(--text2);font-size:0.75em>藏文有更详尽的诸佛寿量描述。Toh44-37 (德格版)</span>";
     en.innerHTML="<b>Lifespan</b><br><span style=font-size:0.78em>The Tibetan version contains more elaborate descriptions of the lifespans of Buddhas...<br><br></span><span style=color:var(--text2);font-size:0.75em>有玄奘别译《显无边佛土功德经》(T10n0289)可对照</span>";
     zh.innerHTML="<b>寿量品第三十一</b><br><span style=font-size:0.78em>尔时，心王菩萨摩诃萨于众会中...<br><br></span><span style=color:var(--text2);font-size:0.75em>CBETA T10n0279 · 实叉难陀译<br>📎 别译: 玄奘《显无边佛土功德经》(T10n0289)</span>";
     sg.innerHTML="<span style='padding:4px 10px;background:rgba(200,137,62,0.15);border-radius:12px;font-size:0.78em'>藏文有扩展内容</span>";

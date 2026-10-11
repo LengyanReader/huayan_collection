@@ -290,12 +290,12 @@ related_sutras:
   - id: text_rel_003
     title_en: Mahavaipulya Sutra Spoken by Samantabhadra
     title_zh: "大方广普贤所说经"
-    taisho_no: "T0847"
+    taisho_no: "T10n0298"
     volumn_count: 1
     dynasty: "唐"
     translator: "实叉难陀"
     context_note: >
-      【高优先级对勘目标】与藏文华严《普贤宣说品》(Toh44.28) 内容高度对应。
+      【高优先级对勘目标】与藏文华严《普贤宣说品》(Toh44.32) 内容高度对应。
       汉文大藏经有此别译本但未纳入八十华严正文。
       藏汉对译项目核心对比文本。
 
@@ -572,7 +572,7 @@ tibetan_sources:
     context_note: >
       【本项目核心文献】藏文华严共45品，比汉文八十华严多2品:
       - 第11品 《如来华严品》(Tathāgatāvataṃsaka): 汉文全缺
-      - 第28品 《普贤宣说品》: 汉文有实叉难陀别译单行本(T0847)
+      - 第32品 《普贤宣说品》: 汉文有实叉难陀别译单行本(T10n0298)
       此外《离世间品》有部分独特异译段落。
       译自中亚于阗原本，而非印度梵本，具有独立的版本传承体系。
 
