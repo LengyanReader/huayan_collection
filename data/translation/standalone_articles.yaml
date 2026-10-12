@@ -200,6 +200,18 @@ others:
     label: 前沿对话 · 南予其时
   views:
   - nanyu
+- id: ai-wisdom-alignment
+  group: 前沿议题
+  icon: 🧠
+  title: 沉思式 AI · 人工智慧 · 正向对齐 — 文献综述
+  title_sub: Contemplative AI × Artificial Wisdom × Positive Alignment · 84 条经核验文献 · 共识与争议 · 中英对照
+  doc: docs/随笔参考/ref_ai_wisdom_alignment_文献综述.md
+  back:
+    tab: frontier
+    view: others
+    label: 前沿对话 · 沉思式 AI 与正向对齐
+  views:
+  - ai-wisdom-alignment
 - id: ru-lai-xian-xiang
   group: 经论茶歇
   icon: 📖
