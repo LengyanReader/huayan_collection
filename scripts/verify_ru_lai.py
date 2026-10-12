@@ -12,13 +12,22 @@ C 引文回源  —— §6.1 三译对读之 blockquote 逐条比对可信源；
                   部首归一（RAD）**双层，俾传统字形引文能对上简体底本
   C2 §5 引文 —— §5.1′〈隨疏演義鈔〉/§5.3′〈新華嚴經論〉对应条：**自 doc 抽「」引文**
                   逐条回源 T1736/T1739（须自 doc 抽取，hardcode 即假绿）
-  C3 §3 旁参 —— §3 卷第七旁参（非本品）之 blockquote 经文逐条回源 T10n0279（卷七前半），
+  C3 §3 旁参 —— §3 卷第七旁参（非本品）之 blockquote 经文逐条回源 T10n0279
+  H §2.7 逐颂 —— L.125 说颂分逐颂细读（前导三颂＋勝音＋十大士十四组）之 blockquote
+                   偈颂逐条回源 T10n0279 卷六（繁简＋部首归一）（卷七前半），
                  同用繁简＋部首归一
   D 来源自洽  —— 文中所引本地路径皆须存在，且关键路径须出现
   E 契约串    —— 关键事实性论断（本品＝卷第六；解脫門＝0；四十华严不涉本品……）须在文
   F 续补契约  —— L.122 新增：§1.1 品题释义（非〔待续〕）／§6.1 〇′ 面门光段十光名
                   （八十回源 T279、六十 T2S 回源）／§6.2·§6.4 藏译对应品坐实（84000）／
                   §7.4 数据科学＋叙事已成（非空登记）
+   G 附录契约  —— L.124 新增：附录一～（除四）诸附录皆须**有成文**（非空壳），且附录一
+                   载逐卷数（442／129／135／144／551）、附录二载十方名相与四十问、附录三载
+                   十光名对照、附录六载讲稿入口、附录九三级（A1/A2/T2）、附录十一四视角；
+                   并销 §7.2 旧数（承佛威神 8→9、爾時 44→17）与 §5.4.3 交叉引用（§7→§2.1）
+   H §2.7 逐颂 —— L.125：§2.7 说颂分逐颂细读之 blockquote 逐条回源 T10n0279（繁简＋部首）
+   I §6.5 全量 —— 本批：§6.5 六十〈卢舍那佛品〉全量逐段对照之 blockquote 逐条回源
+                   （T10n0279 或六十华严_1.txt）＋十方表十名＋契约串
 
 **口径要点**：本品＝卷第六**一卷**（卷七＝《普贤三昧品第三》，非本品）；实测
 **8,119 字／208 句**、「解脫門」**0 见**（第一品 442 见）。数字须与单位绑定（同 L.107）。
@@ -111,7 +120,7 @@ def check(cond, tag, msg):
 
 
 print('=' * 74)
-print('verify_ru_lai.py —— 《如来现相品》专书门禁（L.116 立；L.122 续补 F 段）')
+print('verify_ru_lai.py —— 《如来现相品》专书门禁（L.116 立；L.122 F 段；L.124 G 段；L.125 H 段；§6.5 I 段）')
 print('=' * 74)
 
 # 校勘留痕段识别（豁免旧数扫描）：凡记录旧误之段，正当保留旧数
@@ -154,6 +163,7 @@ BANNED = [
     ('卷六～卷七', '本品＝卷第六一卷，非卷六～卷七'),
     ('卷六~卷七', '本品＝卷第六一卷，非卷六～卷七'),
     ('卷第六～卷第七', '本品＝卷第六一卷'),
+    ('132 偈', '旧偈数计入之误，正为 140 偈（前① 10 偈；L.125）'),
 ]
 for bad, why in BANNED:
     hits = [i for i, l in enumerate(lines, 1) if bad in l and not is_proof(l)]
@@ -305,7 +315,7 @@ check(re.search(r'解脫門[^。]{0,20}0\s*见', doc) is not None
 check('偈颂支分' in doc or '偈頌支分' in doc, 'E6', '有 §2.6 偈颂支分（逐颂标定）')
 check(('十一组' in doc or '十一位' in doc) and ('勝音' in doc or '胜音' in doc),
       'E7', '述「胜音＋十大士（十一组）」之数（订正旧「十大士」含混）')
-check(re.search(r'132\s*偈', doc) is not None, 'E8', '述卷六偈颂合计「132 偈」')
+check(re.search(r'140\s*偈', doc) is not None, 'E8', '述卷六偈颂合计「140 偈」（旧 132 已订正·L.125）')
 # §3 旁参（卷七·非本品）：卷七含二品；前半普贤三昧品 1,995 字／二颂共 20 偈
 check(re.search(r'1,995\s*字', doc) is not None and '世界成就品' in doc,
       'E9', '述 §3 旁参--卷七前半 1,995 字 且及「世界成就品第四」')
@@ -377,6 +387,165 @@ check(('ru_lai_studies.yaml' in t74) and ('ru_lai_narrative.yaml' in t74),
 check(('未及·登记' not in t74) and ('未做' not in t74) and
       ('数据科学' in t74 or '数据科學' in t74), 'F13',
       '§7.4 已更新（无「未及·登记／未做」旧记）')
+
+# ── G L.124 附录成套契约 ──────────────────────────────────────────────────
+print('\n【G】L.124 附录成套契约（附录一/二/三/五/六/七/八/九/十一非空；旧数销项）')
+
+
+def apx(title_prefix):
+    s = next((i for i, l in enumerate(lines) if l.startswith(title_prefix)), None)
+    if s is None:
+        return None
+    e = next((i for i, l in enumerate(lines) if i > s and l.startswith('### ')), len(lines))
+    return '\n'.join(lines[s:e])
+
+
+A1 = apx('### 附录一·') or ''
+A2 = apx('### 附录二·') or ''
+A3 = apx('### 附录三·') or ''
+for tag, t, need in [
+        ('G1', A1, None), ('G2', A2, None), ('G3', A3, None),
+        ('G4', apx('### 附录五·') or '', None), ('G5', apx('### 附录六·') or '', None),
+        ('G6', apx('### 附录七·') or '', None), ('G7', apx('### 附录八·') or '', None),
+        ('G8', apx('### 附录九·') or '', None), ('G9', apx('### 附录十·') or '', None),
+        ('G10', apx('### 附录十一·') or '', None)]:
+    check(len(t) > 200, tag, '附录有成文（len=%d > 200）' % len(t))
+# 附录一：实测数（442 逐卷 129/135/144/34；全经 551）
+check(all(k in A1 for k in ('442', '129', '135', '144', '551')) and '解脫門' in A1,
+      'G11', '附录一 载解脫门逐卷数（0/129/135/144/34＝442）及全经 551')
+check('**0**' in A1 or '**0 见**' in A1 or '＝ **0**' in A1 or '0 见' in A1, 'G12',
+      '附录一 述本品解脫门 0 见')
+# 附录二：十方名相＋四十问
+check(('清淨光蓮華莊嚴' in A2) and ('無礙力精進慧' in A2) and ('甲' in A2 and '乙' in A2),
+      'G13', '附录二 载十方世界海名相与四十问（甲/乙）')
+# 附录三：十光名对照＋三译位置
+check(('眾寶華遍照光明' in A3) and ('寶幢照光明' in A3) and ('T09n0278' in A3)
+      and ('T10n0293' in A3), 'G14', '附录三 载十光名对照与三译位置')
+# 附录六：讲记入口（西安草堂寺导读）
+check(('西安草堂寺' in (apx('### 附录六·') or ''))
+      and ('八十华严导读' in (apx('### 附录六·') or '')), 'G15',
+      '附录六 载海云《八十华严导读》入口')
+# 附录九：三级（A1 经证／A2 注疏／T2 学术）
+A9 = apx('### 附录九·') or ''
+check(('A1' in A9) and ('A2' in A9) and ('T2' in A9), 'G16',
+      '附录九 三级「出处＋信度」（A1/A2/T2）俱在')
+# 附录十一：四视角
+A11 = apx('### 附录十一·') or ''
+check(all(k in A11 for k in ('语言统计', '代数', '拓扑', '几何'))
+      and ('Burnside' in A11) and ('Laplacian' in A11), 'G17',
+      '附录十一 载数据科学四视角（语言统计/代数/拓扑/几何）')
+# 旧数销项：§7.2 承佛威神 9／爾時 17（**限定 §7.2 区段**，避免他处「承佛威神 9」
+# 同句蒙过——L.107「数字须与单位绑定」之变体：数字须与**所在区段**绑定）
+t72 = region_text('### 7.2', '### 7.3') or ''
+check('「承佛威神」**9** 见' in t72, 'G18',
+      '§7.2 述「承佛威神 9 见」（旧 8 已销）')
+check('**17** 见' in t72 and '「爾時」**：' in t72, 'G19',
+      '§7.2 述「爾時 17 见」（旧 44 已销）')
+check('见 §7 待补' not in doc and '見 §7 待補' not in doc, 'G20',
+      '§5.4.3 交叉引用已改指 §2.1（无「见 §7 待补」）')
+_lst = dict(re.findall(r'^- 附录([一二三四五六七八九十]+)：(.*?)\s*$', doc, re.M))
+_hd = dict(re.findall(r'^### 附录([一二三四五六七八九十]+)·(.*?)\s*$', doc, re.M))
+_mm = [k for k in _lst if _hd.get(k) != _lst[k]]
+check(len(_lst) == 11 and not _mm, 'G21',
+      '§八 附录目录标题与正文标题一致（%d 条%s）'
+      % (len(_lst), '' if not _mm else '；异：' + ','.join(_mm)))
+
+# ── H L.125 §2.7 说颂分·逐颂细读 引文回源 ────────────────────────────────
+print('\n【H】L.125 §2.7 逐颂细读·引文回源（繁简＋部首归一；十四组各十偈）')
+s7 = next((i for i, l in enumerate(lines) if l.startswith('### 2.7')), None)
+e7 = None
+if s7 is not None:
+    e7 = next((i for i, l in enumerate(lines)
+               if i > s7 and l.startswith('## 三、')), None)
+if s7 is None or e7 is None:
+    check(False, 'H:loc', '未定位 §2.7 区块（### 2.7 … ## 三、）')
+else:
+    H_N = H_MISS = 0
+    H_BAD = []
+    reg = '\n'.join(lines[s7:e7])
+    for i in range(s7, e7):
+        ln = lines[i].strip()
+        if not ln.startswith('>'):
+            continue
+        t = ln[1:].lstrip()
+        # §2.7 之偈颂 blockquote 直书经文（未以「」包裹）；排除 callout/注释块
+        if t.startswith('**') or t.startswith('〔') or t.startswith('>') or not t:
+            continue
+        segs = re.findall(r'「([^」]+)」', t) or [t]
+        for seg in segs:
+            for part in re.split(r'……|…|／', seg):
+                p = squash(part)
+                if len(p) < 6:
+                    continue
+                H_N += 1
+                if p not in SS['T279']:
+                    H_MISS += 1
+                    H_BAD.append('L%d %s' % (i + 1, part[:40]))
+    check(H_MISS == 0 and H_N >= 100, 'H1',
+          '§2.7 逐颂引文回源 %d 条全中（miss=%d）%s'
+          % (H_N, H_MISS, ('  ← ' + str(H_BAD[:6])) if H_BAD else ''))
+    check(len(re.findall(r'^#### 2\.7\.\d+ ', '\n'.join(lines[s7:e7]), re.M)) >= 15,
+          'H2', '§2.7 逐组细读（≥15 小节 #### 2.7.N：十四组＋小结）')
+    check(('140 偈' in '\n'.join(lines[s7:e7]))
+          or ('一百四十偈' in '\n'.join(lines[s7:e7])), 'H3',
+          '§2.7 述卷六说颂合计「140 偈／一百四十偈」')
+    check(('40 句＝10 偈' in doc), 'H4',
+          '§2.7／§2.6 记前①「自然出音」颂勘误实测「40 句＝10 偈」')
+
+# ── I L.晋级 §6.5 六十全量逐段对照（引文回源＋十方表＋契约）─────────────────
+print('\n【I】§6.5 六十〈卢舍那佛品〉全量逐段对照（引文回源＋十方表＋契约）')
+s65 = next((i for i, l in enumerate(lines) if l.startswith('### 6.5 ')), None)
+e65 = next((i for i, l in enumerate(lines)
+            if i > (s65 or 0) and l.startswith('## 七、')), None)
+t65 = '\n'.join(lines[s65:e65]) if (s65 is not None and e65 is not None) else ''
+check(s65 is not None and e65 is not None and len(t65) > 2000, 'I1',
+      '§6.5 全量对照有成文（len=%d > 2000）' % len(t65))
+if s65 is not None and e65 is not None:
+    I_N = I_MISS = 0
+    I_BAD = []
+    for i in range(s65, e65):
+        ln = lines[i].strip()
+        if not ln.startswith('>'):
+            continue
+        t = ln[1:].lstrip()
+        if t.startswith('**') or t.startswith('〔'):
+            continue
+        segs = re.findall(r'「([^」]+)」', t) or [t]
+        for seg in segs:
+            for part in re.split(r'……|…|／', seg):
+                p = squash(part)
+                if len(p) < 6:
+                    continue
+                I_N += 1
+                hit = (p in SS['T279']) or (p in SS.get('六十', ''))
+                if not hit:
+                    I_MISS += 1
+                    I_BAD.append('L%d %s' % (i + 1, part[:40]))
+    check(I_MISS == 0 and I_N >= 20, 'I2',
+          '§6.5 引文回源 %d 条全中（miss=%d）%s'
+          % (I_N, I_MISS, ('  ← ' + str(I_BAD[:6])) if I_BAD else ''))
+    # 十方表：六十世界海名（简体·直接比对底本）
+    NX10 = ['净莲华胜光庄严', '众宝月光庄严藏', '宝光乐', '琉璃宝光充满藏',
+            '阎浮檀玻璃色幢', '普照庄严', '善光照', '宝照光明藏',
+            '莲华妙香胜藏', '杂宝光海庄严']
+    miss_src = [n for n in NX10 if n not in SS.get('六十', '')]
+    check(not miss_src, 'I3', '§6.5 十方表·六十世界海名俱回源六十华严_1.txt%s'
+          % (('  ← 缺 ' + str(miss_src)) if miss_src else ''))
+    NX10_DOC = ['淨蓮華勝光莊嚴', '眾寶月光莊嚴藏', '寶光樂', '琉璃寶光充滿藏',
+                '閻浮檀玻璃色幢', '普照莊嚴', '善光照', '寶照光明藏',
+                '蓮華妙香勝藏', '雜寶光海莊嚴']
+    miss_doc = [n for n in NX10_DOC if n not in t65]
+    check(not miss_doc, 'I4', '§6.5 十方表载十世界海名（传统字形）%s'
+          % (('  ← 缺 ' + str(miss_doc)) if miss_doc else ''))
+    # 契约串
+    check('师子焰光奋迅音' in t65 and '11→1' in t65, 'I5',
+          '§6.5 述「说颂者 11→1」（师子焰光奋迅音）')
+    check('40→25' in t65 and '二十五目' in t65, 'I6',
+          '§6.5 述念请问目「40→25」（并载「二十五目」）')
+    check(('勝音' in t65 or '胜音' in t65) and (r'3 偈' in t65), 'I7',
+          '§6.5 述勝音六十一颂「3 偈」')
+    check('T09n0278' in t65 and 'T10n0279' in t65, 'I8',
+          '§6.5 标注二译底本经号')
 
 # ── 汇总 ──────────────────────────────────────────────────────────────────
 print('\n' + '=' * 74)
