@@ -212,6 +212,19 @@ others:
     label: 前沿对话 · 沉思式 AI 与正向对齐
   views:
   - ai-wisdom-alignment
+- id: puxian-sanmei
+  group: 经论茶歇
+  icon: 📖
+  title: 九九华严第三品 普贤三昧品之拼读
+  title_sub: 华严经第三品·按品精读·入定受加·起定作证·光中颂与众赞颂·世界成就品第四旁参·六十对读·注疏四家会读
+  updated_at: '2026-10-16'
+  doc: docs/经学文献/华严经细读_第三部_普贤三昧品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: ru-lai-xian-xiang
   group: 经论茶歇
   icon: 📖
