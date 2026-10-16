@@ -225,6 +225,19 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huazang-shijie
+  group: 经论茶歇
+  icon: 📖
+  title: 九九华严第五品 华藏世界品之拼读
+  title_sub: 华严经第五品·按品精读·华藏因果自体（风轮—香海—莲华—剎海）·藏海安布庄严（轮山·宝地·香海·香河·华林）·世界种十门·中央二十重·十方十海·重颂百一·八十与六十对读·注疏四家会读·数据层L1-L4·未完备已标明
+  updated_at: '2026-10-17'
+  doc: docs/经学文献/华严经细读_第五部_华藏世界品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: puxian-sanmei
   group: 经论茶歇
   icon: 📖
