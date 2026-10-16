@@ -1,0 +1,10 @@
+{
+  "generated_by": "harness-factory",
+  "generation_mode": "L0",
+  "generated_at": "2026-10-16",
+  "harness_factory": "C:\\DA_Practice\\research_foodie\\research_foodie\\harness_factory",
+  "skill_md": "C:\\DA_Practice\\research_foodie\\research_foodie\\harness_factory\\SKILL.md",
+  "router": "C:\\DA_Practice\\research_foodie\\research_foodie\\harness_factory\\reference\\capability-router.md",
+  "refinement": "C:\\DA_Practice\\research_foodie\\research_foodie\\harness_factory\\reference\\requirement-refinement.md",
+  "derivation_rules": "C:\\DA_Practice\\research_foodie\\research_foodie\\harness_factory\\reference\\derivation-rules.md"
+}

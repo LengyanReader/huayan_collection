@@ -1,0 +1,159 @@
+/* 僧传画像 · 共享样式 */
+:root {
+  --c-verified: #2e7d32;
+  --c-pending: #f9a825;
+  --c-disputed: #c62828;
+  --c-fact: #1565c0;
+  --c-infer: #6a1b9a;
+  --c-accent: #00695c;
+  --bg-body: #fafafa;
+  --bg-card: #fff;
+  --border: #e0e0e0;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", serif;
+  --font-sans: "Noto Sans SC", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font: 14px/1.7 var(--font-serif); background: var(--bg-body); color: #212121; }
+a { color: var(--c-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Layout */
+.page-wrap { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; }
+.mega-header { display: flex; align-items: center; gap: 1rem; border-bottom: 3px solid #333; padding-bottom: .8rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.mega-header h1 { font-size: 1.8rem; }
+.mega-header .meta-badges { display: flex; gap: .5rem; flex-wrap: wrap; }
+.badge { padding: .15rem .6rem; border-radius: 3px; font-size: .78rem; font-family: var(--font-sans); }
+.badge-ke { background: #e8f5e9; color: #2e7d32; }
+.badge-sect { background: #e3f2fd; color: #1565c0; }
+.badge-dynasty { background: #fff3e0; color: #e65100; }
+.badge-type { background: #f3e5f5; color: #6a1b9a; }
+
+/* Main grid: sidebar (infobox) + content */
+.portrait-grid { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; }
+@media (max-width: 800px) { .portrait-grid { grid-template-columns: 1fr; } }
+
+/* Infobox (sidebar) */
+.infobox { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; position: sticky; top: 1rem; }
+.infobox h3 { font-size: .9rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; margin-bottom: .6rem; color: var(--c-accent); }
+.infobox dl { font-size: .85rem; }
+.infobox dt { font-weight: 600; margin-top: .5rem; color: #555; }
+.infobox dd { margin-left: 0; }
+
+/* Content sections */
+.content-area > section { margin-bottom: 2.5rem; }
+section > h2 { font-size: 1.2rem; border-bottom: 2px solid var(--c-accent); padding-bottom: .3rem; margin-bottom: 1rem; }
+section > h2 .sec-icon { margin-right: .4rem; }
+
+/* 年谱 Timeline */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 1rem; padding: .5rem .8rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; }
+.tl-item::before { content: ''; position: absolute; left: -1.6rem; top: .8rem; width: 10px; height: 10px; border-radius: 50%; background: var(--c-accent); border: 2px solid #fff; }
+.tl-item.pending::before { background: var(--c-pending); }
+.tl-year { font-weight: 700; font-size: .9rem; color: var(--c-accent); }
+.tl-event { margin-top: .2rem; }
+.tl-src { font-size: .78rem; color: #888; font-family: var(--font-mono); margin-top: .3rem; }
+
+/* 关系网络 */
+.rel-graph { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; overflow-x: auto; }
+.rel-graph svg { display: block; margin: 0 auto; }
+.rel-node { font: 12px var(--font-sans); }
+.rel-node text { dominant-baseline: central; text-anchor: middle; }
+.rel-edge line { stroke: #999; stroke-width: 1.5; }
+.rel-edge text { font-size: 10px; fill: #666; }
+.rel-legend { display: flex; gap: 1.5rem; margin-top: .8rem; font-size: .8rem; flex-wrap: wrap; }
+.rel-legend span::before { content: ''; display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: .3rem; vertical-align: middle; }
+.rel-legend .self::before { background: var(--c-accent); }
+.rel-legend .master::before { background: #1565c0; }
+.rel-legend .disciple::before { background: #2e7d32; }
+.rel-legend .contemporary::before { background: #f57c00; }
+.rel-legend .patron::before { background: #6a1b9a; }
+
+/* 时空行迹 */
+.geo-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.geo-table th, .geo-table td { padding: .4rem .6rem; border-bottom: 1px solid #eee; text-align: left; }
+.geo-table th { background: #f5f5f5; }
+
+/* 13层维度表 */
+details { margin: .5rem 0; border: 1px solid var(--border); border-radius: 4px; }
+details summary { font-weight: 600; padding: .5rem .8rem; cursor: pointer; background: var(--bg-card); font-size: .92rem; }
+details[open] summary { border-bottom: 1px solid var(--border); }
+.dim-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.dim-table th, .dim-table td { padding: .35rem .5rem; border-bottom: 1px solid #f0f0f0; text-align: left; vertical-align: top; }
+.dim-table th { background: #fafafa; font-weight: 600; white-space: nowrap; }
+.dim-table td.src { font-family: var(--font-mono); font-size: .78rem; color: #555; word-break: break-all; max-width: 260px; }
+.tag { display: inline-block; padding: 0 .35em; border-radius: 2px; font-size: .72rem; font-family: var(--font-sans); }
+.tag-fact { background: #e3f2fd; color: var(--c-fact); }
+.tag-infer { background: #f3e5f5; color: var(--c-infer); }
+.tag-ok { color: var(--c-verified); }
+.tag-pend { color: var(--c-pending); }
+.tag-disp { color: var(--c-disputed); }
+/* 信度等级 */
+.grade { display: inline-block; width: 1.4em; text-align: center; font-weight: 700; border-radius: 2px; font-size: .72rem; font-family: var(--font-sans); }
+.grade-A { background: #c8e6c9; color: #1b5e20; }
+.grade-B { background: #dcedc8; color: #33691e; }
+.grade-C { background: #fff9c4; color: #f57f17; }
+.grade-D { background: #ffcdd2; color: #b71c1c; }
+.grade-E { background: #e1bee7; color: #4a148c; }
+/* 验证态 */
+.v-ok { color: var(--c-verified); font-weight: 700; }
+.v-doubt { color: var(--c-pending); font-weight: 700; }
+.v-miss { color: #9e9e9e; font-weight: 700; }
+.v-solo { color: #ff6f00; font-weight: 700; }
+.v-conflict { color: var(--c-disputed); font-weight: 700; }
+/* 考据表 */
+.prov-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.prov-table th { background: #263238; color: #fff; padding: .4rem .5rem; font-weight: 600; }
+.prov-table td { padding: .4rem .5rem; border-bottom: 1px solid #eee; vertical-align: top; }
+.prov-table tr:nth-child(even) { background: #fafafa; }
+.prov-quote { font-style: italic; color: #37474f; max-width: 260px; }
+.prov-src { font-family: var(--font-mono); font-size: .76rem; color: #555; max-width: 200px; }
+
+/* Index grid */
+.figure-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.figure-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; transition: box-shadow .2s; }
+.figure-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.figure-card h3 { font-size: 1rem; margin-bottom: .3rem; }
+.figure-card .card-meta { font-size: .8rem; color: #666; }
+
+/* Navigation */
+.nav-bar { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: .85rem; }
+.nav-bar a { padding: .3rem .8rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; }
+footer { margin-top: 3rem; font-size: .78rem; color: #999; border-top: 1px solid var(--border); padding-top: .8rem; }
+
+/* 文献全景图谱 */
+.biblio-section { margin-bottom: 2.5rem; }
+.ring-diagram { background: #1a237e; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; }
+.ring-diagram svg { display: block; margin: 0 auto; }
+.ring-title { fill: none; stroke: rgba(255,255,255,.15); stroke-width: 1.5; }
+.ring-label { fill: rgba(255,255,255,.75); font-size: 10px; font-family: var(--font-sans); }
+.ring-node { font-size: 9px; font-family: var(--font-sans); fill: rgba(255,255,255,.9); }
+.ring-node-dot { stroke: rgba(255,255,255,.4); stroke-width: 1; }
+.biblio-ring-block { margin-bottom: 1.2rem; border-left: 4px solid; padding-left: .8rem; }
+.ring-1 { border-color: #1b5e20; }
+.ring-2 { border-color: #0277bd; }
+.ring-3 { border-color: #00695c; }
+.ring-4 { border-color: #e65100; }
+.ring-5 { border-color: #6a1b9a; }
+.ring-6 { border-color: #37474f; }
+.biblio-ring-block > h3 { font-size: .95rem; margin-bottom: .5rem; }
+.biblio-ring-block > h3 span { font-size: .75rem; color: #888; font-weight: normal; }
+.biblio-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.biblio-table th { background: #f5f5f5; font-weight: 600; padding: .3rem .5rem; border-bottom: 2px solid #ddd; text-align: left; }
+.biblio-table td { padding: .3rem .5rem; border-bottom: 1px solid #eee; vertical-align: top; }
+.biblio-table .tid { font-family: var(--font-mono); font-size: .76rem; color: #1565c0; white-space: nowrap; }
+.rel-type { display: inline-block; padding: 0 .4em; border-radius: 2px; font-size: .72rem; font-family: var(--font-sans); margin-right: .2rem; }
+.rel-authored { background: #c8e6c9; color: #1b5e20; }
+.rel-contemporary { background: #b3e5fc; color: #01579b; }
+.rel-cited { background: #fff9c4; color: #f57f17; }
+.rel-compiler-source { background: #dcedc8; color: #33691e; border: 1px dashed #66bb6a; }
+.rel-cites-aftermath { background: #ffe0b2; color: #e65100; }
+.rel-modern { background: #e1bee7; color: #4a148c; }
+.used-tag { font-size: .72rem; padding: 0 .35em; border-radius: 2px; }
+.used-yes { background: #c8e6c9; color: #1b5e20; }
+.used-no { background: #ffcdd2; color: #b71c1c; }
+.used-unknown { background: #fff9c4; color: #f57f17; }
+.extant { color: #2e7d32; }
+.lost { color: #b71c1c; font-style: italic; }
+.frag { color: #f57c00; }

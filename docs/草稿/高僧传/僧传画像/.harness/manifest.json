@@ -1,0 +1,47 @@
+{
+  "generated_by": "harness-factory",
+  "mode": "L0",
+  "task": "为「高僧传书群·高僧画像」设计维度骨架与声明级画像数据模型，以跨大宗派取样做 demo HTML 结构验证",
+  "features": {
+    "horizon": "multi_session",
+    "verifiability": "high",
+    "stakes": "medium",
+    "grounding": "required",
+    "artifact": "mixed",
+    "tool_surface": "read_write",
+    "collaboration": "human_review",
+    "domain": "research"
+  },
+  "modules": {
+    "M0": {"enabled": true, "reason": "always", "source": "rules"},
+    "M1": {"enabled": true, "reason": "always", "source": "rules"},
+    "M2": {"enabled": true, "reason": "horizon>=session", "params": {"memory_depth": "durable"}, "source": "rules"},
+    "M3": {"enabled": true, "reason": "always+verifiability=high+grounding=required override", "params": {"gate_strictness": "strict"}, "source": "mixed"},
+    "M4": {"enabled": true, "reason": "grounding=required", "params": {"provenance": "field-level"}, "source": "rules"},
+    "M5": {"enabled": true, "reason": "horizon>=multi_session", "params": {"evolution_cadence": "per_session"}, "source": "rules"},
+    "M6": {"enabled": true, "reason": "tool_surface!=none", "params": {"tool_surface": "read_write"}, "source": "rules"},
+    "M7": {"enabled": true, "reason": "always", "params": {"commit_policy": "draft_area_gitignored"}, "source": "rules"},
+    "M8": {"enabled": true, "reason": "collaboration!=solo", "params": {"collaboration": "human_review", "autonomy": "medium"}, "source": "rules"}
+  },
+  "capabilities": [
+    "baseline-discipline", "verification-gate", "resumable-memory", "traceable-sources",
+    "self-improving-loop", "tool-use", "human-review-gate", "portable-skills",
+    "ambition-elevation", "expert-instruments", "reproducible-experiments", "frontier-standard",
+    "bidirectional-capability-flow"
+  ],
+  "conditional_capabilities": [
+    {"id": "sandboxed-execution", "fires_when": "tool_surface becomes external (CBETA/DDBC fetch)"}
+  ],
+  "files": [
+    "AGENTS.md",
+    "tasks/PLAN.md",
+    "tasks/PROGRESS.md",
+    ".harness/manifest.json",
+    ".harness/gates.md",
+    ".harness/PROVENANCE.md",
+    ".harness/check.py",
+    ".harness/capabilities.local.md",
+    ".harness/ledger.md",
+    ".harness/pointer.json"
+  ]
+}

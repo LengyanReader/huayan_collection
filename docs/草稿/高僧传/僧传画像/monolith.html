@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>僧传画像 · 知识图谱 Demo (10人)</title>
+<style>
+:root {
+  --c-verified: #2e7d32; --c-pending: #f9a825; --c-disputed: #c62828;
+  --c-fact: #1565c0; --c-infer: #6a1b9a; --c-accent: #00695c;
+  --bg-body: #fafafa; --bg-card: #fff; --border: #e0e0e0;
+  --font-serif: "Noto Serif SC","Source Han Serif SC",serif;
+  --font-sans: "Noto Sans SC",sans-serif;
+  --font-mono: "JetBrains Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.7 var(--font-serif);background:var(--bg-body);color:#212121}
+a{color:var(--c-accent);text-decoration:none}a:hover{text-decoration:underline}
+.page-wrap{max-width:1200px;margin:0 auto;padding:1.5rem 1rem}
+.mega-header{display:flex;align-items:center;gap:1rem;border-bottom:3px solid #333;padding-bottom:.8rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.mega-header h1{font-size:1.8rem}
+.mega-header .meta-badges{display:flex;gap:.5rem;flex-wrap:wrap}
+.badge{padding:.15rem .6rem;border-radius:3px;font-size:.78rem;font-family:var(--font-sans)}
+.badge-ke{background:#e8f5e9;color:#2e7d32}.badge-sect{background:#e3f2fd;color:#1565c0}
+.badge-dynasty{background:#fff3e0;color:#e65100}.badge-type{background:#f3e5f5;color:#6a1b9a}
+.portrait-grid{display:grid;grid-template-columns:280px 1fr;gap:1.5rem}
+@media(max-width:800px){.portrait-grid{grid-template-columns:1fr}}
+.infobox{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:1rem;position:sticky;top:1rem}
+.infobox h3{font-size:.9rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;margin-bottom:.6rem;color:var(--c-accent)}
+.infobox dl{font-size:.85rem}.infobox dt{font-weight:600;margin-top:.5rem;color:#555}.infobox dd{margin-left:0}
+.content-area>section{margin-bottom:2.5rem}
+section>h2{font-size:1.2rem;border-bottom:2px solid var(--c-accent);padding-bottom:.3rem;margin-bottom:1rem}
+section>h2 .sec-icon{margin-right:.4rem}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:1rem;padding:.5rem .8rem;background:var(--bg-card);border:1px solid var(--border);border-radius:4px}
+.tl-item::before{content:'';position:absolute;left:-1.6rem;top:.8rem;width:10px;height:10px;border-radius:50%;background:var(--c-accent);border:2px solid #fff}
+.tl-item.pending::before{background:var(--c-pending)}
+.tl-year{font-weight:700;font-size:.9rem;color:var(--c-accent)}.tl-event{margin-top:.2rem}
+.tl-src{font-size:.78rem;color:#888;font-family:var(--font-mono);margin-top:.3rem}
+.rel-graph{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:1.5rem;overflow-x:auto}
+.rel-graph svg{display:block;margin:0 auto}
+.rel-legend{display:flex;gap:1.5rem;margin-top:.8rem;font-size:.8rem;flex-wrap:wrap}
+.rel-legend span::before{content:'';display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:.3rem;vertical-align:middle}
+.rel-legend .self::before{background:var(--c-accent)}.rel-legend .master::before{background:#1565c0}
+.rel-legend .disciple::before{background:#2e7d32}.rel-legend .contemporary::before{background:#f57c00}
+.rel-legend .patron::before{background:#6a1b9a}
+.geo-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.geo-table th,.geo-table td{padding:.4rem .6rem;border-bottom:1px solid #eee;text-align:left}
+.geo-table th{background:#f5f5f5}
+details{margin:.5rem 0;border:1px solid var(--border);border-radius:4px}
+details summary{font-weight:600;padding:.5rem .8rem;cursor:pointer;background:var(--bg-card);font-size:.92rem;display:flex;align-items:center;gap:.5rem}
+details[open] summary{border-bottom:1px solid var(--border)}
+.dim-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.dim-table th,.dim-table td{padding:.35rem .5rem;border-bottom:1px solid #f0f0f0;text-align:left;vertical-align:top}
+.dim-table th{background:#fafafa;font-weight:600;white-space:nowrap}
+.dim-table td.src{font-family:var(--font-mono);font-size:.78rem;color:#555;word-break:break-all;max-width:260px}
+.tag{display:inline-block;padding:0 .35em;border-radius:2px;font-size:.72rem;font-family:var(--font-sans)}
+.tag-fact{background:#e3f2fd;color:var(--c-fact)}.tag-infer{background:#f3e5f5;color:var(--c-infer)}
+.tag-ok{color:var(--c-verified)}.tag-pend{color:var(--c-pending)}.tag-disp{color:var(--c-disputed)}
+.grade{display:inline-block;width:1.4em;text-align:center;font-weight:700;border-radius:2px;font-size:.72rem;font-family:var(--font-sans)}
+.grade-A{background:#c8e6c9;color:#1b5e20}.grade-B{background:#dcedc8;color:#33691e}
+.grade-C{background:#fff9c4;color:#f57f17}.grade-D{background:#ffcdd2;color:#b71c1c}.grade-E{background:#e1bee7;color:#4a148c}
+.v-ok{color:var(--c-verified);font-weight:700}.v-doubt{color:var(--c-pending);font-weight:700}
+.v-miss{color:#9e9e9e;font-weight:700}.v-solo{color:#ff6f00;font-weight:700}.v-conflict{color:var(--c-disputed);font-weight:700}
+.prov-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.prov-table th{background:#263238;color:#fff;padding:.4rem .5rem;font-weight:600}
+.prov-table td{padding:.4rem .5rem;border-bottom:1px solid #eee;vertical-align:top}
+.prov-table tr:nth-child(even){background:#fafafa}
+.prov-quote{font-style:italic;color:#37474f;max-width:260px}
+.prov-src{font-family:var(--font-mono);font-size:.76rem;color:#555;max-width:200px}
+.biblio-section{margin-bottom:2.5rem}
+.ring-diagram{background:#1a237e;border-radius:8px;padding:1rem;margin-bottom:1.5rem}
+.ring-diagram svg{display:block;margin:0 auto}
+.biblio-ring-block{margin-bottom:1.2rem;border-left:4px solid;padding-left:.8rem}
+.ring-1{border-color:#1b5e20}.ring-2{border-color:#0277bd}.ring-3{border-color:#00695c}
+.ring-4{border-color:#e65100}.ring-5{border-color:#6a1b9a}.ring-6{border-color:#37474f}
+.biblio-ring-block>h3{font-size:.95rem;margin-bottom:.5rem}
+.biblio-ring-block>h3 span{font-size:.75rem;color:#888;font-weight:normal}
+.biblio-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.biblio-table th{background:#f5f5f5;font-weight:600;padding:.3rem .5rem;border-bottom:2px solid #ddd;text-align:left}
+.biblio-table td{padding:.3rem .5rem;border-bottom:1px solid #eee;vertical-align:top}
+.biblio-table .tid{font-family:var(--font-mono);font-size:.76rem;color:#1565c0;white-space:nowrap}
+.rel-type{display:inline-block;padding:0 .4em;border-radius:2px;font-size:.72rem;font-family:var(--font-sans);margin-right:.2rem}
+.rel-authored{background:#c8e6c9;color:#1b5e20}.rel-contemporary{background:#b3e5fc;color:#01579b}
+.rel-cited{background:#fff9c4;color:#f57f17}.rel-cites-aftermath{background:#ffe0b2;color:#e65100}.rel-modern{background:#e1bee7;color:#4a148c}
+.used-tag{font-size:.72rem;padding:0 .35em;border-radius:2px}
+.used-yes{background:#c8e6c9;color:#1b5e20}.used-no{background:#ffcdd2;color:#b71c1c}.used-unknown{background:#fff9c4;color:#f57f17}
+.extant{color:#2e7d32}.lost{color:#b71c1c;font-style:italic}.frag{color:#f57c00}
+/* === NEW: Tab navigation === */
+.tabs{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1.5rem;border-bottom:2px solid var(--c-accent);padding-bottom:.5rem}
+.tab-btn{padding:.4rem .8rem;border:1px solid var(--border);border-radius:4px 4px 0 0;background:var(--bg-card);font:600 .85rem var(--font-sans);cursor:pointer;transition:all .15s}
+.tab-btn:hover{background:#e0f2f1}.tab-btn.active{background:var(--c-accent);color:#fff;border-color:var(--c-accent)}
+.person-panel{display:none}.person-panel.active{display:block}
+/* === NEW: Dimension progress === */
+.dim-progress{margin-left:auto;font-size:.72rem;font-weight:normal;color:#666;font-family:var(--font-mono)}
+.dim-progress .bar{display:inline-block;width:60px;height:6px;background:#e0e0e0;border-radius:3px;vertical-align:middle;overflow:hidden;margin-left:.3rem}
+.dim-progress .bar-fill{height:100%;border-radius:3px;background:var(--c-accent)}
+.dim-progress.empty .bar-fill{background:var(--c-pending)}
+/* === NEW: Reference list === */
+.ref-section{margin-top:2rem;border-top:2px solid #333;padding-top:1rem}
+.ref-section h2{font-size:1.1rem;border-bottom:none}
+.ref-list{font-size:.82rem;line-height:1.8;padding-left:1.5rem}
+.ref-list li{margin-bottom:.4rem}
+.ref-list .ref-meta{font-family:var(--font-mono);font-size:.75rem;color:#666}
+.skeleton-note{background:#fff3e0;border:1px solid #ffcc02;border-radius:6px;padding:1rem;font-size:.85rem;color:#555}
+/* === NEW: 关系 分谊细绎 卡片 === */
+.rel-card{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--c-accent);border-radius:6px;padding:.9rem 1rem;margin-bottom:1rem}
+.rel-card h4{font-size:1rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.rel-card h4 .rel-role{font-size:.75rem;font-family:var(--font-sans);background:#e0f2f1;color:var(--c-accent);padding:.1rem .5rem;border-radius:3px}
+.w-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.4rem .8rem;font-size:.82rem}
+.w-grid .w{display:flex;gap:.35rem}.w-grid .w b{color:var(--c-accent);font-family:var(--font-sans);font-size:.72rem;white-space:nowrap;font-weight:700}
+.rel-dims{margin-top:.5rem;font-size:.75rem;color:#666;font-family:var(--font-sans)}
+.rel-dims a{background:#f5f5f5;border:1px solid var(--border);border-radius:3px;padding:0 .35rem;margin-right:.25rem;color:#37474f}
+.rel-conf{margin-top:.4rem;font-size:.78rem}
+/* === NEW: 关系·分谊流评 === */
+.w-eval{margin:.6rem 0 0;font-size:.82rem;line-height:1.65;padding:.55rem .8rem;background:var(--bg-alt,#faf8f2);border-left:3px solid var(--c-accent);border-radius:0 5px 5px 0}
+.w-eval .ev-hd{font-weight:700;color:var(--c-accent);font-family:var(--font-sans);font-size:.74rem;letter-spacing:.02em;display:block;margin-bottom:.15rem}
+/* === NEW: 概述多维评价表 === */
+.eval-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.4rem}
+.eval-table th{background:#eceff1;text-align:left;padding:.4rem .55rem;font-family:var(--font-sans);font-size:.76rem;border:1px solid var(--border)}
+.eval-table td{padding:.45rem .55rem;border:1px solid var(--border);vertical-align:top}
+.eval-table td.ev-ang{white-space:nowrap;font-weight:700;color:#37474f}
+.eval-table td.ev-con{color:#8d4a4a}
+.eval-table td.ev-band{background:#e3f2fd;font-family:var(--font-sans);font-size:.75rem;font-weight:700;color:#37474f;padding:.35rem .55rem;letter-spacing:.02em}
+/* === NEW: 形象媒介考 === */
+.media-callout{margin:.6rem 0;padding:.7rem .95rem;background:#fff8e1;border-left:4px solid #f0a30a;border-radius:0 6px 6px 0;font-size:.85rem;line-height:1.65}
+.media-callout .mc-hd{font-weight:700;color:#8d6e00;display:block;margin-bottom:.2rem}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem;margin:.7rem 0}
+.media-cell{border:1px dashed var(--border);border-radius:6px;padding:.6rem .7rem;min-height:130px;display:flex;flex-direction:column;background:var(--bg-card)}
+.media-cell .mc-type{font-size:.75rem;color:var(--c-accent);font-weight:700}
+.media-cell .mc-ph{flex:1;display:flex;align-items:center;justify-content:center;color:#c2c2c2;font-size:2rem;margin:.3rem 0;font-family:var(--font-sans)}
+.media-cell .mc-meta{font-size:.68rem;color:#777;line-height:1.45}
+/* === NEW: 生平脉络 === */
+.bio{margin:.5rem 0 0;font-size:.86rem;line-height:1.72}
+.bio dt{font-weight:700;color:var(--c-accent);font-family:var(--font-sans);font-size:.78rem;margin-top:.55rem;letter-spacing:.02em}
+.bio dd{margin:.15rem 0 0 1.1rem;color:#37474f}
+.bio dd ul{margin:.15rem 0 .1rem 1.1rem;padding-left:.9rem}
+.bio dd li{margin:.15rem 0}
+.bio .bio-x{display:block;font-size:.72rem;color:#888;margin-top:.25rem;font-family:var(--font-sans)}
+/* === NEW: 连续行程链 === */
+.itin{list-style:none;padding-left:0}
+.itin-leg{position:relative;padding:.6rem .8rem .6rem 2rem;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);margin-bottom:.1rem}
+.itin-leg::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--c-accent)}
+.itin-leg:first-child::before{top:50%}.itin-leg:last-child::before{bottom:50%}
+.itin-dot{position:absolute;left:.45rem;top:1rem;width:12px;height:12px;border-radius:50%;background:var(--c-accent);border:2px solid #fff}
+.itin-move{font-weight:700;font-size:.86rem}.itin-when{font-family:var(--font-mono);font-size:.76rem;color:#1565c0}
+.itin-note{font-size:.78rem;color:#555;margin-top:.2rem}
+.itin-gap{background:#fff8e1;border:1px dashed var(--c-pending);border-radius:6px;padding:.4rem .8rem .4rem 2rem;margin:.15rem 0;font-size:.78rem;color:#8d6e00;position:relative}
+.itin-gap::before{content:'⚠';position:absolute;left:.55rem;top:.4rem}
+.itin-jump{background:#ffebee;border:1px dashed var(--c-disputed);border-radius:6px;padding:.4rem .8rem .4rem 2rem;margin:.15rem 0;font-size:.78rem;color:#b71c1c;position:relative}
+.itin-jump::before{content:'↯';position:absolute;left:.6rem;top:.4rem}
+.cont-summary{font-size:.82rem;background:#eceff1;border-radius:6px;padding:.6rem .8rem;margin-top:.6rem}
+/* === NEW: 消歧表 === */
+.disamb-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.disamb-table th{background:var(--c-disputed);color:#fff;padding:.35rem .5rem;text-align:left}
+.disamb-table td{padding:.35rem .5rem;border-bottom:1px solid #eee;vertical-align:top}
+.disamb-this{background:#e8f5e9}
+/* === NEW: 穷尽度评估 === */
+.cov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.6rem;margin:.8rem 0}
+.cov-cell{border:1px solid var(--border);border-radius:6px;padding:.6rem;background:var(--bg-card);font-size:.8rem}
+.cov-cell .cov-name{font-weight:700;font-family:var(--font-sans);font-size:.82rem}
+.cov-cell .cov-bar{height:8px;background:#e0e0e0;border-radius:4px;margin:.4rem 0;overflow:hidden}
+.cov-cell .cov-fill{height:100%;background:var(--c-accent)}
+.cov-low .cov-fill{background:var(--c-pending)}.cov-zero .cov-fill{background:#bdbdbd}
+.gap-list{font-size:.82rem;line-height:1.9;padding-left:1.3rem}.gap-list li{margin-bottom:.25rem}
+.nextstep{background:#e3f2fd;border-left:4px solid var(--c-fact);padding:.6rem .9rem;border-radius:0 6px 6px 0;font-size:.82rem;margin-top:.6rem}
+/* === 三层信息架构 · 渐进披露 === */
+.tier-band{display:flex;align-items:center;gap:.5rem;margin:1.7rem 0 1rem;font:700 .84rem/1.1 var(--font-sans);color:#fff;background:var(--c-accent);padding:.5rem .85rem;border-radius:4px;letter-spacing:.03em}
+.tier-band .tb-sub{font-weight:400;opacity:.85;font-size:.72rem}
+.jumpbar{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem;padding:.5rem .6rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;position:sticky;top:.2rem;z-index:6}
+.jumpbar .jb-cap{font:600 .72rem var(--font-sans);color:#999;align-self:center;margin-right:.2rem}
+.jumpbar a{font:600 .74rem/1 var(--font-sans);color:#37474f;background:#f0f0f0;border:1px solid var(--border);border-radius:12px;padding:.24rem .62rem}
+.jumpbar a:hover{background:var(--c-accent);color:#fff;text-decoration:none}
+details.fold.table-fold{margin:.5rem 0 0;border:1px solid var(--border);border-radius:6px;background:var(--bg-card)}
+details.fold.table-fold>summary{cursor:pointer;list-style:none;padding:.5rem .85rem;font:700 .8rem var(--font-sans);color:var(--c-accent);background:#f7f5ef;border-radius:6px}
+details.fold.table-fold[open]>summary{border-bottom:1px solid var(--border);border-radius:6px 6px 0 0}
+details.fold.table-fold>summary::-webkit-details-marker{display:none}
+details.fold.table-fold>summary::before{content:'▸ '}
+details.fold.table-fold[open]>summary::before{content:'▾ '}
+details.fold.table-fold>*:not(summary){margin:.3rem .8rem .8rem}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<h1 style="font-size:1.5rem;margin-bottom:.3rem">僧传画像 · 知识图谱 Demo</h1>
+<p style="font-size:.82rem;color:#666;margin-bottom:1rem">以高僧传为入手节点，穷尽人物所有历史层级文献 → 知识图谱网络 · 10人 × 20层 (A–P基础 + Q实物·S文学·T教义·U域外；R号让予O层文献环) · 信度评级 + 逐人完成度开放</p>
+
+<details class="fold table-fold" id="legend" style="margin-bottom:1.1rem">
+<summary>◈ 信度凡例 · 甲乙丙丁戊 / 确疑阙孤冲突 / 完成态 / 层位代号 A–U ▾（全页通用 · 点开即查）</summary>
+<p style="font-size:.82rem;color:#444;line-height:1.7">本页每一断言均随标<strong>两组正交的元数据</strong>：① <strong>信度分级</strong>（甲→戊）记该条史料的<strong>性质与去古远近</strong>；② <strong>验证判断</strong>（确/疑/阙/孤/冲突）记其<strong>互证状态</strong>。另以四枚符号标该字段的<strong>完成态</strong>。分级低而判断为“确”（如碑刻存世之丙级实物）仍可采；分级高而“孤/冲突”者须存疑。</p>
+<table class="dim-table"><tr><th colspan="4">ⅰ · 信度分级（证据等级）</th></tr>
+<tr><td><span class="grade grade-A">甲</span></td><td>第一手 · 亲著/自述或经校原典</td><td>如：法藏《探玄记》自序、T0279 经题署</td><td>去古最近·可直接</td></tr>
+<tr><td><span class="grade grade-B">乙</span></td><td>第二手 · 近距（亲炙/近时记录）</td><td>如：崔致远《法藏和尚传》、阎朝隐碑</td><td>时代相接·可据而须校</td></tr>
+<tr><td><span class="grade grade-C">丙</span></td><td>第三手 · 后世编纂（官修/总集）</td><td>如：《宋高僧传》、《居士传》</td><td>聚合加工·须溯其史源</td></tr>
+<tr><td><span class="grade grade-D">丁</span></td><td>第四手 · 增附传说·笔记外围</td><td>如：《北梦琐言》、转世叙事</td><td>文学性高·史实性低</td></tr>
+<tr><td><span class="grade grade-E">戊</span></td><td>今人推定 · 圣传母题/公式</td><td>如：瑞应、烧指套语、生年逆推</td><td>非史料证据·只作标签</td></tr>
+<tr><th colspan="4">ⅱ · 验证判断（互证状态） · ⅲ · 完成态符号</th></tr>
+<tr><td><span class="v-ok">确</span></td><td>多源互证</td><td><span class="v-doubt">疑</span></td><td>单源或存异·未他证</td></tr>
+<tr><td><span class="v-miss">阙</span></td><td>缺载待补</td><td><span class="v-solo">孤</span></td><td>孤证无旁·难定</td></tr>
+<tr><td><span class="v-conflict">冲突</span></td><td>诸源矛盾·并存两说</td><td style="color:#888">符号</td><td>✓已核 · ◐待核 · ✗存异/二说 · ◻待填（空位·宁缺不伪）</td></tr>
+</table>
+<p style="font-size:.78rem;color:#555;margin:.3rem .8rem .5rem"><strong>层位代号 A–U（20 层）速查：</strong>
+<span class="tag tag-fact">A 标识</span><span class="tag tag-fact">B 时空</span><span class="tag tag-fact">C 文献定位</span><span class="tag tag-fact">D 师承宗派</span><span class="tag tag-fact">E 制度</span><span class="tag tag-fact">F 译述</span><span class="tag tag-fact">G 修行</span><span class="tag tag-fact">H 神异</span><span class="tag tag-fact">I 寂卒</span><span class="tag tag-fact">J 版本考证</span><span class="tag tag-fact">K 元数据</span><span class="tag tag-infer">L 史源追溯</span><span class="tag tag-infer">M 传播演变</span><span class="tag tag-infer">N 本文考据</span><span class="tag tag-infer">O 文献全景图谱</span><span class="tag tag-infer">P 同名消歧</span><span class="tag tag-infer">Q 实物与考古</span><span class="tag tag-infer">S 文学叙事母题</span><span class="tag tag-infer">T 教义六层</span><span class="tag tag-infer">U 域外散藏</span>
+<span style="color:#888">（R 号让予 O 层文献环编号）</span></p>
+</details>
+
+<div class="tabs">
+<button class="tab-btn active" onclick="showTab(0)">法藏</button>
+<button class="tab-btn" onclick="showTab(1)">惠能</button>
+<button class="tab-btn" onclick="showTab(2)">智顗</button>
+<button class="tab-btn" onclick="showTab(3)">玄奘</button>
+<button class="tab-btn" onclick="showTab(4)">慧远</button>
+<button class="tab-btn" onclick="showTab(5)">鉴真</button>
+<button class="tab-btn" onclick="showTab(6)">不空</button>
+<button class="tab-btn" onclick="showTab(7)">吉藏</button>
+<button class="tab-btn" onclick="showTab(8)">裴休</button>
+<button class="tab-btn" onclick="showTab(9)">净检</button>
+</div>
+
+<!-- ═══════════════════ 法藏 ═══════════════════ -->
+<div class="person-panel active" id="p0">
+<header class="mega-header"><h1>释法藏</h1><div class="meta-badges">
+<span class="badge badge-sect">华严三祖</span><span class="badge badge-ke">宋传·卷5</span>
+<span class="badge badge-dynasty">唐 643–712</span><span class="badge badge-type">僧</span>
+</div></header>
+<nav class="jumpbar"><span class="jb-cap">直达</span><a href="#f-ov">概述</a><a href="#f-yr">年谱</a><a href="#f-rel">人物关系</a><a href="#f-itin">时空行迹</a><a href="#f-geo">古今地名</a><a href="#f-img">形象媒介</a><a href="#f-folk">俗流文艺</a><a href="#f-dab">同名消歧</a><a href="#f-bib">文献全景</a><a href="#f-prov">本文考据</a><a href="#f-dim">维度详表</a><a href="#f-cov">穷尽度</a><a href="#f-ref">参考文献</a></nav>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>名</dt><dd>法藏 (梵: Khaṅta)</dd><dt>号</dt><dd>贤首国师</dd>
+<dt>俗姓</dt><dd>康 (康居国后裔)</dd><dt>生</dt><dd>643〔待核：推算〕</dd>
+<dt>卒</dt><dd>712 (先天元年)〔另说710〕</dd><dt>籍</dt><dd>长安(祖籍康国)</dd>
+<dt>主传</dt><dd>T50n2061 宋高僧传 卷5</dd><dt>师</dt><dd>智俨(云华和尚)</dd>
+<dt>嗣法</dt><dd>慧苑、澄观(远承)</dd><dt>验证态</dt><dd class="tag-ok">✓ verified</dd>
+</dl><h3 style="margin-top:1rem">整体完成度</h3>
+<p style="font-size:.82rem"><span class="dim-progress" style="margin:0"><span class="bar"><span class="bar-fill" style="width:58%"></span></span> ~58%</span> 已填核心层+文献图谱+关系时空+多维评价+崔传/阎碑回填</p>
+</aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">自上而下的读流</span></div>
+<section id="f-ov"><h2><span class="sec-icon">§</span>概述</h2>
+<p>法藏 (643–712)，唐华严宗三祖。祖籍康居国(Sogdiana)，生于长安。年十六往太原寺依智俨受华严大旨，后为则天证义《八十华严》新译，建立五教十宗判教体系与十玄门、六相圆融之说，集华严教学之大成。中宗神龙间重开法宴，先天元年(712)坐化，世寿七十。</p>
+<h3 style="margin-top:.7rem;font-size:.95rem">生平脉络 · 出身·成长·学修历程·交往</h3>
+<dl class="bio">
+<dt>一 · 出身·家世</dt>
+<dd>祖籍西域<strong>康国</strong>（Sogdiana，昭武九姓），先世徙居<strong>京兆长安</strong>。僧传称“本出自康氏”<span class="grade grade-C">丙</span><span class="v-solo">孤</span>，另有冯翊高陵、京兆云阳及以李氏为祖等异说，诸源不一（详见史源 L 层、同名消歧 P 层）。母〔待核〕孕时相传有异梦之瑞，属圣传公式。<strong>胡商族裔与长安士族双重背景</strong>，为其后来出入宫廷译场埋下政治资本。</dd>
+<dt>二 · 成长·向道</dt>
+<dd>少而颖悟，早蓄出离志。年十六于太原寺<strong>“灼然指背”</strong>（燃指供佛；<span class="grade grade-C">丙</span><span class="v-solo">孤</span>·母题唐宋公式化，史实须警），由此投身华严一系。<span class="bio-x">→ 参 年谱 ~658、N2 考据、H 神异层</span></dd>
+<dt>三 · 问学·修证·弘传</dt>
+<dd>为学由师承而译修而观行，次第分明：
+<ul>
+<li><strong>启蒙：</strong>依太原寺道成、薄尘（受智俨临终付嘱护持者）。<span class="src">崔致远传T2054</span></li>
+<li><strong>正学：</strong>从云华寺<strong>智俨</strong>受《华严》大旨，尽传六相·十玄之学。<span class="grade grade-A">甲</span><span class="v-ok">确</span>（T1733自序三源互证，N3）。智俨 668 卒，法藏继其席。</li>
+<li><strong>受戒：</strong>约 663（年二十）受具足戒，隶太原寺。</li>
+<li><strong>开讲·弘传：</strong>688（永昌元年）于太原寺开华严讲席；一生讲《华严》三十余遍<sup>疑</sup>（N5）。</li>
+<li><strong>译修并重：</strong>695–699 于洛阳佛授记寺参与实叉难陀<strong>《八十华严》</strong>译场，任笔受证义。<span class="grade grade-A">甲</span><span class="v-ok">确</span>（T0279经题）。</li>
+<li><strong>观行·述作：</strong>传持华严法界观·五教止观一系；述《探玄记》《五教章》《金师子章》《妄尽还源观》等〔部分著作权有争，见 F/J 层〕。</li>
+<li><strong>晚年·付嘱：</strong>705 中宗复位，请为受戒礼，诏住崇福寺；先天元年（712）坐化于长安，塔于龙门（另说 710，N6冲突）。<span class="bio-x">→ 参 D 师承·F 译述·G 修行·O 文献图谱</span></li>
+</ul>
+</dd>
+<dt>四 · 交往·交游</dt>
+<dd>亲教师<strong>智俨</strong>；同门<strong>义湘</strong>（新罗，后开海东华严）；译伴<strong>实叉难陀</strong>（于阗译主）；护法缘<strong>则天武后</strong>·中宗·太平公主·李峤；弟子<strong>慧苑</strong>（后承而歧，“慧苑异议”）、宗一、惠英、宏观、文超、智光；远承（私淑）<strong>澄观</strong>·宗密——法嗣跨世。<span class="bio-x">→ 详见下方“人物关系 · 分谊细绎”七张卡片</span></dd>
+</dl>
+<p style="font-size:.8rem;color:#888;margin-top:.7rem">重构评价坐标：以内证三格（佛学·佛法·佛教）观其<strong>于佛教自身</strong>之义，以外延三圈（人文·文化·文明）观其<strong>推及于世</strong>之用；历史不另列为第四格，而为<strong>横贯六格之证据轴</strong>（见末段）。一事一断，成与争并举，不作溢美。</p>
+<h3 style="margin-top:.9rem;font-size:.95rem">多维评价 · 内证三格×外延三圈（成就 ↔ 争议）</h3>
+<table class="eval-table">
+<tr><th>评价角度</th><th>成就 · 贡献</th><th>争议 · 存疑</th></tr>
+<tr class="ev-band"><td colspan="3">〔内证三格 · 佛教自身〕</td></tr>
+<tr><td class="ev-ang">佛学<br><small>（义理）</small></td><td>集华严教学之大成。承杜顺、智俨之说，整合为五教十宗、十玄门（新十玄）、六相圆融、四法界、法界缘起一套完整教观体系。著《探玄记》《五教章》《金师子章》，华严一宗至藏而始密。 <span class="src">T1733/T1866/T1881；汤一介1995；SEP·Gimello1976</span></td><td class="ev-con">判教与十玄之说，先遭嗣法弟子慧苑《刊定记》「改易师说」，后澄观在《疏钞》中批驳慧苑以复法藏之旧，新古十玄之分由此而起。《金师子章》作者权、《妄尽还源观》著作权均有后学之争（孤山智圆归杜顺、宋净源主法藏）。 <span class="src">澄观T1736；北村太道；Nhuir博论</span></td></tr>
+<tr><td class="ev-ang">佛法<br><small>（观行·教化）</small></td><td>善以事显法。为则天构镜殿（十镜互光）、指金狮子立喻，直观演示无尽缘起、事事无碍，今人称为中国最早「装置化」教理演示之一。一生讲《华严》三十余遍。 <span class="src">崔致远《法藏和尚传》T2054；Hamar2007；陈金华2007</span></td><td class="ev-con">灼指、神灯、日照瑞应诸事属僧传圣传层，史实性存疑（见 N 层）；其「神异」叙事与武周政治权威相互构塑，非单纯宗教经验。 <span class="src">陈金华2003；N2/N5 存疑</span></td></tr>
+<tr><td class="ev-ang">佛教<br><small>（教团·政治·法统）</small></td><td>华严宗实际建立者。判教立宗、译场证义、度人立寺；则天朝封「贤首」，法统东传义湘（新罗）、远承澄观、宗密，辐射日韩。 <span class="src">宋传卷5；Forte2000；义天《圆宗文类》</span></td><td class="ev-con">依附武周政治，与太平公主、李峤等政治网络交织，陈金华题为「Politician and Miracle-worker」；慧苑异议一度致宗内分裂。 <span class="src">陈金华2003《History of Religions》42.4</span></td></tr>
+<tr class="ev-band"><td colspan="3">〔外延三圈 · 推及于世〕</td></tr>
+<tr><td class="ev-ang">人文<br><small>（人格·教化·生命）</small></td><td>一完整宗教人格——少小出离、燃指求法、应机设教（对帝王以金狮子·镜殿作直观教化）、坐化塔于龙门。讲经三十余遍，摄受僧俗弟子（慧苑·宗一·惠英·宏观·文超·智光），示范“托事显法生解门”之人格面。<span class="src">宋传卷五；崔致远传T2054</span></td><td class="ev-con">人格形象高度经僧传圣传层加工，“颖悟”“瑞应”“神异”多为公式化建构，“信史人格”难还原；其教化半径与宫廷政治纠缠，感人亦感人主。<span class="src">陈金华2003；N2/H 存疑</span></td></tr>
+<tr><td class="ev-ang">文化<br><small>（思想·学术·文艺·教育）</small></td><td>华严义理渗入中国思想—文学—艺术—知识生产。① 思想：五教判·法界缘起·事事无碍，为宋明理学“理一分殊·万物一体”提供近缘观念之对话对象；② 文艺：《金师子章》以物喻理之文风，镜殿十镜互影之“装置”，因陀罗网意象入东亚文学与视觉；③ 教育：判教体系成后世佛学院·宗教学修课程骨架；④ 汉字文化圈共享“法界/缘起/无碍/华严”之概念语汇。<span class="src">Cook1970；SEP；木村清孝；魏道儒</span></td><td class="ev-con">“影响宋明理学”须具体思想史论证，或仅为平行近似而非直接承继；华严义学唐末后渐微，“文化渗透”持续性有限；镜殿之“装置化”表述为今人回溯性追认，非当事自觉。<span class="src">待思想史个案验证</span></td></tr>
+<tr><td class="ev-ang">文明<br><small>（跨域·长程·秩序·世界想象）</small></td><td>① 跨域：法藏集大成→义湘传新罗→日僧入唐请益→东亚华严佛教文明圈之形成，为汉传佛教内部最早完成“东亚化”之宗派；② 秩序：政教互动典型个案——则天以华严“法界”义为武周受命作宇宙论论证，法藏一面为其受戒师、一面提供“法界”统治范式，东亚“佛教王权”格局由此展开；③ 想象：帝网天珠无尽缘起为东亚思想史提供一种“互即互入·重重无尽”之世界图景，与儒道天下观互补。<span class="src">Forte2000；义天《圆宗文类》；陈金华2007</span></td><td class="ev-con">东亚华严圈之成非一手一足，法藏属关键节点之一而非唯一；“佛教王权”叙事含后世史家为武周立论而放大者；文明意义多为长程回溯性建构，非当事者自觉。<span class="src">陈金华2003；Forte2000</span></td></tr>
+</table>
+<p style="font-size:.8rem;color:#888;margin-top:.5rem">以上六格（内证三 · 外延三）为<strong>评价之维</strong>；「历史（文献·史实·考信）」不再另列一格，而为<strong>贯注六格之共同基底</strong>——生卒二说（643/634 · 712/710）、族姓诸源（康氏 vs 李氏）、《华严经传记》撰者之争（王颂主门人续成、陈金华主法藏草稿）、圣传母题公式化，均以 <a>L 史源追溯</a>·<a>N 本文考据</a>·<a>O 文献图谱</a>·<a>P 同名消歧</a> 与项目既有「甲乙丙丁戊 · 确疑阙孤冲突」信度体系为凭。<strong>此为“评价坐标”与“证据轴”之分</strong>：前者论意义，后者定信实；坐标可多元，证据轴唯一。</p></section>
+
+<section id="f-yr"><h2><span class="sec-icon">▦</span>年谱</h2><div class="timeline">
+<div class="tl-item pending"><div class="tl-year">643 · 贞观十七年</div><div class="tl-event">生于长安。宋传不载生年；崔传T2054「以貞觀十七年癸卯…而生」明载（依僧千里《藏公别录》·近同时代）。</div><div class="tl-src">T50n2054_p0280a + 阎朝隐《康藏法师碑》；另“母吞日而孕”属瑞应待考</div></div>
+<div class="tl-item"><div class="tl-year">~658 · 显庆间</div><div class="tl-event">年十六，炼一指于阿育王舍利塔前（宋传“灼然指背”），入太白山学道。后于云华寺依智俨受业。</div><div class="tl-src">T50n2061_p0731a；崔传T2054</div></div>
+<div class="tl-item"><div class="tl-year">~663/670 · 出家</div><div class="tl-event">年二十受具足戒（宋传）。〔崔传异说：总章元年668智俨卒时法藏犹居俗年26；咸亨元年670因荣国夫人薨、则天度人乃落发住太原寺，年28〕</div><div class="tl-src">T50n2061；崔传T2054〔出家年二说〕</div></div>
+<div class="tl-item"><div class="tl-year">658–670 · 太白山→太原寺</div><div class="tl-event"><strong>崔传补此段（宋传所阙）：</strong>年十七辞亲入太白山饵术学道数年；闻亲疾出谷入京，云华寺遇智俨；总章元年(668)智俨卒、法藏犹居俗；咸亨元年(670)落发、住太原寺。</div><div class="tl-src">崔致远传T50n2054（近同时代·补宋传之阙）</div></div>
+<div class="tl-item"><div class="tl-year">688 · 永昌元年</div><div class="tl-event">于太原寺开华严讲席。感日照讲堂瑞。</div><div class="tl-src">T50n2061</div></div>
+<div class="tl-item"><div class="tl-year">691 · 天授二年</div><div class="tl-event">则天闻其叹异，诏请为证义。</div><div class="tl-src">T50n2061</div></div>
+<div class="tl-item"><div class="tl-year">695–699</div><div class="tl-event">实叉难陀译《八十华严》至洛阳，法藏参与证义。</div><div class="tl-src">T0279经题 + T50n2061</div></div>
+<div class="tl-item"><div class="tl-year">~700–704</div><div class="tl-event">讲梵网经；造华严经像。著《探玄记》。</div><div class="tl-src">T50n2061 + T1733</div></div>
+<div class="tl-item"><div class="tl-year">705 · 神龙元年</div><div class="tl-event">中宗复位，请为受戒礼。诏住崇福寺。</div><div class="tl-src">T50n2061</div></div>
+<div class="tl-item"><div class="tl-year">712 · 先天元年(另说710)</div><div class="tl-event">十一月十四日终于西京大荐福寺，世寿七十。葬地二说：宋传主“塔于龙门”（今洛阳）；崔传·阎朝隐碑主“葬神禾原华严寺南”（今长安少陵原，贤首塔清乾隆间崩毁）。舍利放光属信仰史。</div><div class="tl-src">T50n2061；崔传T50n2054 + 阎朝隐《康藏法师碑》〔二说并立〕</div></div>
+</div></section>
+
+<section id="f-rel"><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.8rem">论一人之交游，不止标其"类型"。每条关系细绎为六事——<strong>其人、交谊、时遇、方域、因缘、情状</strong>；复附<strong>「分谊 · 流评」</strong>一节：既双向观双方在彼此间之名分、给予与行动，复追溯此缘入法脉后之影响、以及后世史家与宗内之评断。末注所涉维度、信度层级与语出。</p>
+
+<div class="rel-graph">
+<p style="font-size:.78rem;color:#666;margin-bottom:.5rem;font-family:var(--font-sans)"><strong>最小师承网络图（管道验证 · 静态示意）</strong> — 对应 schema <span class="src">relationship</span> 表：9 节点 · 8 有向边；边色即分谊类型。可直接导出 <span class="src">graph.json</span> 并入 Neo4j：<span class="src">STUDIED_UNDER · DHARMA_HEIR_OF · CONTEMPORARY_OF · TRANSLATED_WITH · PATRONIZED_BY · INFLUENCED</span>。此为法藏一人之最小样本，非统计结论。</p>
+<svg viewBox="0 0 640 360" width="100%" style="max-width:660px" role="img" aria-label="法藏最小师承网络图">
+<defs>
+<marker id="arrB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1565c0"/></marker>
+<marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2e7d32"/></marker>
+<marker id="arrO" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#f57c00"/></marker>
+<marker id="arrP" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6a1b9a"/></marker>
+</defs>
+<g stroke-linecap="round" fill="none">
+<line x1="70" y1="80" x2="70" y2="140" stroke="#1565c0" stroke-width="2" marker-end="url(#arrB)"/>
+<line x1="116" y1="160" x2="243" y2="160" stroke="#1565c0" stroke-width="2.5" marker-end="url(#arrB)"/>
+<line x1="300" y1="66" x2="300" y2="134" stroke="#6a1b9a" stroke-width="2" marker-end="url(#arrP)"/>
+<line x1="350" y1="146" x2="472" y2="114" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG)"/>
+<line x1="356" y1="166" x2="484" y2="183" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG)"/>
+<line x1="345" y1="182" x2="457" y2="250" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrG)"/>
+<line x1="262" y1="180" x2="162" y2="270" stroke="#f57c00" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrO)"/>
+<line x1="303" y1="185" x2="318" y2="278" stroke="#f57c00" stroke-width="2" marker-end="url(#arrO)"/>
+</g>
+<g font-family="var(--font-sans)">
+<text x="78" y="112" font-size="9" fill="#1565c0">承</text>
+<text x="126" y="154" font-size="9.5" fill="#1565c0">亲教师 · 甲·确</text>
+<text x="306" y="104" font-size="9.5" fill="#6a1b9a">帝王护法 · 乙·疑</text>
+<text x="372" y="128" font-size="9.5" fill="#c62828">嗣法·改易师说 乙·冲突</text>
+<text x="384" y="180" font-size="9.5" fill="#2e7d32">弟子</text>
+<text x="360" y="232" font-size="9.5" fill="#2e7d32">私淑远承（隔世·破慧苑复法藏）</text>
+<text x="150" y="232" font-size="9.5" fill="#f57c00">同期法友 · 新罗</text>
+<text x="238" y="242" font-size="9.5" fill="#f57c00">译场合作 · 甲·确</text>
+</g>
+<g font-family="var(--font-sans)">
+<rect x="24" y="40" width="92" height="40" rx="6" fill="#fff" stroke="#1565c0" stroke-width="2"/><text x="70" y="64" text-anchor="middle" font-size="14" font-weight="700" fill="#212121">杜顺</text><text x="70" y="93" text-anchor="middle" font-size="9.5" fill="#78909c">华严初祖</text>
+<rect x="24" y="140" width="92" height="40" rx="6" fill="#fff" stroke="#1565c0" stroke-width="2"/><text x="70" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#212121">智俨</text><text x="70" y="193" text-anchor="middle" font-size="9.5" fill="#78909c">二祖·云华和尚</text>
+<rect x="254" y="25" width="92" height="40" rx="6" fill="#fff" stroke="#6a1b9a" stroke-width="2"/><text x="300" y="49" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">则天武后</text><text x="300" y="78" text-anchor="middle" font-size="9.5" fill="#78909c">帝王·护法</text>
+<rect x="245" y="136" width="110" height="48" rx="8" fill="#00695c" stroke="#004d40" stroke-width="2"/><text x="300" y="164" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">法藏</text><text x="300" y="197" text-anchor="middle" font-size="9.5" fill="#00695c">三祖·贤首国师</text>
+<rect x="474" y="90" width="100" height="40" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="2"/><text x="524" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#212121">慧苑</text><text x="524" y="143" text-anchor="middle" font-size="9.5" fill="#78909c">嗣法弟子</text>
+<rect x="486" y="165" width="118" height="40" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="2"/><text x="545" y="189" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">宗一·惠英</text><text x="545" y="218" text-anchor="middle" font-size="9.5" fill="#78909c">侍仪高徒</text>
+<rect x="459" y="238" width="92" height="40" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5 4"/><text x="505" y="262" text-anchor="middle" font-size="14" font-weight="700" fill="#212121">澄观</text><text x="505" y="291" text-anchor="middle" font-size="9.5" fill="#78909c">四祖·私淑</text>
+<rect x="104" y="270" width="92" height="40" rx="6" fill="#fff" stroke="#f57c00" stroke-width="2" stroke-dasharray="5 4"/><text x="150" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#212121">义湘</text><text x="150" y="323" text-anchor="middle" font-size="9.5" fill="#78909c">同期·海东华严</text>
+<rect x="274" y="280" width="92" height="40" rx="6" fill="#fff" stroke="#f57c00" stroke-width="2"/><text x="320" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">实叉难陀</text><text x="320" y="333" text-anchor="middle" font-size="9.5" fill="#78909c">于阗译主</text>
+</g>
+</svg>
+<div class="rel-legend"><span class="self">法藏（焦点）</span><span class="master">师承（远祖·亲教师）</span><span class="disciple">弟子·嗣法·远承</span><span class="contemporary">同期法友·译伴</span><span class="patron">帝王护法</span></div>
+</div>
+
+<div class="rel-graph" style="margin-top:1.1rem">
+<p style="font-size:.78rem;color:#666;margin-bottom:.5rem;font-family:var(--font-sans)"><strong>东亚法脉流传（三通道示意 · 静态）</strong> — 把 schema 的 <span class="src">DHARMA_HEIR_OF · INFLUENCED</span> 边型展开为三通道：中华本土教脉（通道A）、海东华严·韩国（通道B，出智俨之门、法藏之<em>同法兄弟</em>义湘）、东传日本（通道C，出法藏嗣门审祥）。<strong>按义湘乃法藏同法兄弟（并禀智俨），非其弟子</strong>；均如、义天之学则嗣法藏章疏而传。对应本页 M2/M3/M4 传播演变层，节点均采《法藏综述》§2已核人物。</p>
+<svg viewBox="0 0 660 292" width="100%" style="max-width:680px" role="img" aria-label="东亚法脉流传三通道图">
+<defs>
+<marker id="arrG2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2e7d32"/></marker>
+<marker id="arrO2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#f57c00"/></marker>
+<marker id="arrB2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1565c0"/></marker>
+</defs>
+<text x="10" y="20" font-size="11" font-weight="700" fill="#2e7d32">通道A · 华严教脉（中华本土）</text>
+<text x="10" y="118" font-size="11" font-weight="700" fill="#f57c00">通道B · 海东华严（韩国·出智俨之门）</text>
+<text x="10" y="216" font-size="11" font-weight="700" fill="#1565c0">通道C · 东传日本（出法藏嗣门）</text>
+<g stroke-linecap="round" fill="none">
+<line x1="140" y1="58" x2="166" y2="58" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG2)"/>
+<line x1="298" y1="58" x2="324" y2="58" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG2)"/>
+<line x1="456" y1="58" x2="482" y2="58" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG2)"/>
+<line x1="140" y1="156" x2="166" y2="156" stroke="#f57c00" stroke-width="2" marker-end="url(#arrO2)"/>
+<line x1="298" y1="156" x2="324" y2="156" stroke="#f57c00" stroke-width="2" marker-end="url(#arrO2)"/>
+<line x1="456" y1="156" x2="482" y2="156" stroke="#f57c00" stroke-width="2" marker-end="url(#arrO2)"/>
+<line x1="140" y1="254" x2="166" y2="254" stroke="#1565c0" stroke-width="2" marker-end="url(#arrB2)"/>
+<line x1="298" y1="254" x2="324" y2="254" stroke="#1565c0" stroke-width="2" marker-end="url(#arrB2)"/>
+<line x1="456" y1="254" x2="482" y2="254" stroke="#1565c0" stroke-width="2" marker-end="url(#arrB2)"/>
+</g>
+<g font-family="var(--font-sans)">
+<rect x="10" y="36" width="130" height="44" rx="6" fill="#00695c" stroke="#004d40" stroke-width="2"/><text x="75" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">法藏</text><text x="75" y="70" text-anchor="middle" font-size="9.5" fill="#c8e6c9">三祖·贤首</text>
+<rect x="168" y="36" width="130" height="44" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="2"/><text x="233" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">澄观</text><text x="233" y="70" text-anchor="middle" font-size="9.5" fill="#78909c">四祖·私淑</text>
+<rect x="326" y="36" width="130" height="44" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="2"/><text x="391" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">宗密</text><text x="391" y="70" text-anchor="middle" font-size="9.5" fill="#78909c">五祖·圭峰</text>
+<rect x="484" y="36" width="130" height="44" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5 4"/><text x="549" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">宋华严复兴</text><text x="549" y="70" text-anchor="middle" font-size="9.5" fill="#78909c">净源·慧因</text>
+<rect x="10" y="134" width="130" height="44" rx="6" fill="#fff" stroke="#f57c00" stroke-width="2"/><text x="75" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">智俨</text><text x="75" y="168" text-anchor="middle" font-size="9.5" fill="#78909c">二祖·所出之门</text>
+<rect x="168" y="134" width="130" height="44" rx="6" fill="#fff" stroke="#f57c00" stroke-width="2"/><text x="233" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">义湘</text><text x="233" y="168" text-anchor="middle" font-size="9.5" fill="#78909c">同法兄弟·浮山</text>
+<rect x="326" y="134" width="130" height="44" rx="6" fill="#fff" stroke="#f57c00" stroke-width="2"/><text x="391" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">均如</text><text x="391" y="168" text-anchor="middle" font-size="9.5" fill="#78909c">圆通钞·五教章</text>
+<rect x="484" y="134" width="130" height="44" rx="6" fill="#fff" stroke="#f57c00" stroke-width="2"/><text x="549" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">义天</text><text x="549" y="168" text-anchor="middle" font-size="9.5" fill="#78909c">圆宗文类</text>
+<rect x="10" y="232" width="130" height="44" rx="6" fill="#00695c" stroke="#004d40" stroke-width="2"/><text x="75" y="251" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">法藏</text><text x="75" y="266" text-anchor="middle" font-size="9.5" fill="#c8e6c9">嗣门东传</text>
+<rect x="168" y="232" width="130" height="44" rx="6" fill="#fff" stroke="#1565c0" stroke-width="2"/><text x="233" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">审祥</text><text x="233" y="266" text-anchor="middle" font-size="9.5" fill="#78909c">初传·东大寺</text>
+<rect x="326" y="232" width="130" height="44" rx="6" fill="#fff" stroke="#1565c0" stroke-width="2"/><text x="391" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">良辨</text><text x="391" y="266" text-anchor="middle" font-size="9.5" fill="#78909c">南都华严</text>
+<rect x="484" y="232" width="130" height="44" rx="6" fill="#fff" stroke="#1565c0" stroke-width="2"/><text x="549" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#212121">凝然·明惠</text><text x="549" y="266" text-anchor="middle" font-size="9.5" fill="#78909c">东大寺戒坛·高山寺</text>
+</g>
+</svg>
+<div class="rel-legend"><span style="color:#2e7d32">通道A 教脉嗣承</span><span style="color:#f57c00">通道B 海东华严</span><span style="color:#1565c0">通道C 东传日本</span><span class="self">法藏（焦点）</span><span style="color:#78909c">虚线·隔世复兴</span></div>
+</div>
+
+<div class="rel-card"><h4>智俨 <span class="rel-role">亲教师</span> <span class="grade grade-A">甲</span> <span class="v-ok">确</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>智俨(602–668)，云华和尚，华严二祖</span></div>
+<div class="w"><b>交谊</b><span>法藏从之受《华严》大旨，为根本师承</span></div>
+<div class="w"><b>时遇</b><span>~658 初见 → 668 卒前问学</span></div>
+<div class="w"><b>方域</b><span>长安 云华寺 / 太原寺</span></div>
+<div class="w"><b>因缘</b><span>法藏少年求法，投依华严一系；智俨承杜顺法绪</span></div>
+<div class="w"><b>情状</b><span>口受讲授；智俨卒后法藏继其席（载体：T1733自序）</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>D1 masters</a><a>D3 sect</a><a>N3 考据</a><a>R2 智俨传续22</a></div>
+<div class="rel-conf"><span class="src">语出：T1733《探玄记》序「往云华寺智俨和尚受业」+ T50n2060卷22 + T50n2061</span> — 三源互证，甲+乙+丙</div><div class="w-eval"><span class="ev-hd">分谊 · 流评</span>智俨器重法藏，临终将其交付道成、薄尘护持，尽传六相十玄之学——视之为可继己席的法嗣，而非寻常门人。← 行为：付嘱、传衣钵，定法藏为法统接引人。<span class="src">崔致远传T2054；宋传卷五</span></div></div>
+
+<div class="rel-card"><h4>则天武后 <span class="rel-role">帝王·护法</span> <span class="grade grade-B">乙</span> <span class="v-doubt">疑</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>武则天(624–705)，唐/周皇帝</span></div>
+<div class="w"><b>交谊</b><span>诏请证义新译《华严》；敕号"贤首国师"〔待核册封年〕</span></div>
+<div class="w"><b>时遇</b><span>691 闻叹 → 695–699 译场 → 说金师子章</span></div>
+<div class="w"><b>方域</b><span>洛阳 佛授记寺 / 长安宫中</span></div>
+<div class="w"><b>因缘</b><span>则天奉佛立周，需华严"法界"义理辅政；慕藏名</span></div>
+<div class="w"><b>情状</b><span>诏请·亲制经序·金狮子喻说法（载体：T0279则天序）</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>E4 state</a><a>A5 title</a><a>N4 考据</a><a>R2 则天序</a></div>
+<div class="rel-conf"><span class="src">语出：T50n2061「则天闻而叹异」— 序原文无"叹异"二字，或赞宁加工，乙+疑</span></div><div class="w-eval"><span class="ev-hd">分谊 · 流评</span>则天慕藏名，召入译场、亲造经序、长生殿以金狮子问无尽缘起，待以师礼。然崇重兼为政治：借华严「法界」义理辅证武周受命，法藏亦因权力而位冠僧右——崇重与利用并存，非单纯护法。流评：后世史家（陈金华）重估此缘，谓法藏之盛乃政治与神异互构之果，非仅道业感格。<span class="src">陈金华2003；宋传卷五</span></div></div>
+
+<div class="rel-card"><h4>实叉难陀 <span class="rel-role">译场合作</span> <span class="grade grade-A">甲</span> <span class="v-ok">确</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>Śikṣānanda(652–710)，于阗译僧</span></div>
+<div class="w"><b>交谊</b><span>主译《八十华严》，法藏任证义</span></div>
+<div class="w"><b>时遇</b><span>695 启译 → 699 译成</span></div>
+<div class="w"><b>方域</b><span>洛阳 大遍空寺 / 佛授记寺</span></div>
+<div class="w"><b>因缘</b><span>旧译《六十华严》未备，则天遣使求新本</span></div>
+<div class="w"><b>情状</b><span>译场分工（证义），载于经题下署名</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>F1 translations</a><a>E4 state</a><a>R2 经题署</a></div>
+<div class="rel-conf"><span class="src">语出：T0279 经题下"于阗国三藏实叉难陀奉制译…证义" — 甲一手译场记</span></div><div class="w-eval"><span class="ev-hd">分谊 · 流评</span>实叉为于阗译主，法藏任证义——异域译师掌本、本土义学高僧为其新译《华严》印证义理，属协作而非师承。新译之成，实赖法藏之学始得义理落地。流评：后世判教皆据新译《华严》而立，译场一缘，成华严义学千年所凭。<span class="src">T0279 经题署名</span></div></div>
+
+<div class="rel-card"><h4>澄观 <span class="rel-role">远承法嗣</span> <span class="grade grade-B">乙</span> <span class="v-ok">确</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>澄观(738–839)，华严四祖</span></div>
+<div class="w"><b>交谊</b><span>继法藏之席造《华严经疏》，追承法藏为祖</span></div>
+<div class="w"><b>时遇</b><span>~787（距法藏卒~75年，非生平相接）</span></div>
+<div class="w"><b>方域</b><span>长安 崇福寺·青龙寺</span></div>
+<div class="w"><b>因缘</b><span>宗派法统续立；澄观以法藏为学理源头</span></div>
+<div class="w"><b>情状</b><span>疏中大量称引法藏著述（间接传承）</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>D4 lineage</a><a>L2 ur_source</a><a>R3 澄观疏</a><a>M2 accretion</a></div>
+<div class="rel-conf"><span class="src">语出：T1735《华严经疏》称引法藏 + 宋传卷5 — 乙近距</span></div><div class="w-eval"><span class="ev-hd">分谊 · 流评</span>澄观未及法藏之世，却「私淑」其学，以恢复法藏正统为己任。为拨乱反正，在《华严经疏钞》中数破慧苑「改易师说」，重立法藏五教十宗、十玄门，判智俨为「古十玄」、法藏为「新十玄」。微妙之处：澄观自法诜受华严，而法诜正是慧苑弟子——破其徒之说，却承其徒之法。<span class="src">澄观T1736；《法源》1999 师承考</span></div></div>
+
+<div class="rel-card"><h4>义湘 <span class="rel-role">同期法友·域外</span> <span class="grade grade-C">丙</span> <span class="v-doubt">疑</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>义湘(625–702)，新罗华严初祖</span></div>
+<div class="w"><b>交谊</b><span>入唐从智俨学华严，与法藏同门/同期；归国弘传</span></div>
+<div class="w"><b>时遇</b><span>~660s 入唐（与法藏问学期重叠）</span></div>
+<div class="w"><b>方域</b><span>唐 长安 → 新罗 浮石寺</span></div>
+<div class="w"><b>因缘</b><span>华严东传朝鲜半岛；同门之谊</span></div>
+<div class="w"><b>情状</b><span>是否直接往来无确证〔待核〕；法→韩传播网络节点</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>M5 cross-cultural</a><a>R2 同期旁证</a><a>R5 义湘传</a></div>
+<div class="rel-conf"><span class="src">语出：《三国史记》义湘传(宋4) + 华严图记〔待核〕— 丙，关系性质存疑</span></div><div class="w-eval"><span class="ev-hd">分谊 · 流评</span>义湘归新罗后开海东华严，奉法藏之说为宗；法藏曾致《寄海东书》并赠《探玄记》《一乘教分记》，主动将自家章疏付与同门东传。义湘一系浮石寺法脉，遂成法藏之学在朝鲜的分支。<span class="src">崔致远传；Forte2000；义天《圆宗文类》</span></div></div>
+
+<div class="rel-card"><h4>慧苑 <span class="rel-role">近侍弟子</span> <span class="grade grade-B">乙</span> <span class="v-ok">确</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>慧苑，法藏门人</span></div>
+<div class="w"><b>交谊</b><span>撰《新译华严音义》，承法藏译场之业</span></div>
+<div class="w"><b>时遇</b><span>则天朝后（译场同期或稍后）</span></div>
+<div class="w"><b>方域</b><span>长安·洛阳</span></div>
+<div class="w"><b>因缘</b><span>弟子嗣法，释新译名相</span></div>
+<div class="w"><b>情状</b><span>自署法藏弟子（载体：T1737题署）</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>D2 disciples</a><a>R2 弟子记录</a></div>
+<div class="rel-conf"><span class="src">语出：T50n2061 + 《新译华严音义》自署 — 乙</span></div><div class="w-eval"><span class="ev-hd">分谊 · 流评（枢纽）</span>慧苑以嗣法弟子自居，续成《华严经传记》《新译华严音义》，承师之业；却于《刊定记》中「改易师说」，修正法藏三时判教与十玄门之义，后世称「<strong>慧苑异议</strong>」。正因这一教义分歧，慧苑虽为近侍高徒，终<strong>未列入华严祖位</strong>。其说后又经弟子法诜传与澄观，遂酿成澄观破慧苑、复法藏的一场宗内公案。<span class="src">宋传卷五；王颂2017；Nhuir 博论</span><span class="grade grade-B">乙</span> <span class="v-conf">冲突</span></div></div>
+
+<div class="rel-card"><h4>李通玄 <span class="rel-role">并行学者·张力</span> <span class="grade grade-E">戊</span> <span class="v-doubt">疑</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>李通玄(635–730)，唐居士，华严学者，著《新华严经论》</span></div>
+<div class="w"><b>交谊</b><span>与法藏同为唐代华严大家而路径迥异：法藏主经论义学·判教体系，通玄主自心观解·不落言诠</span></div>
+<div class="w"><b>时遇</b><span>时代部分重叠（法藏卒 712，通玄主要活动至 730）</span></div>
+<div class="w"><b>方域</b><span>法藏 长安/洛阳；通玄 太原孟县/山中</span></div>
+<div class="w"><b>因缘</b><span>华严学在唐有两系：一依师承判教（法藏），一依自悟解经（通玄）</span></div>
+<div class="w"><b>情状</b><span>无直接交往确证；二人关系多见于后世传说</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>D4 lineage</a><a>T 教义六层</a><a>M2 叙事增饰</a></div>
+<div class="rel-conf"><span class="src">语出：《宋高僧传》卷22 李通玄传 + 宗密《注华严法界论证》引</span> — 戊·传说层</div>
+<div class="w-eval"><span class="ev-hd">分谊 · 流评</span>传说法藏因通玄《论》难破其说，遣净方/超邈往受其论，归而传之，法藏读后自悔——此系后出传说，年代与行迹多不吻合，史实性低〔待核〕。真正并峙的是「法藏体系」与「李通玄解经」两种华严范式；澄观于通玄学说有取舍，宗密则试图沟通两系。<span class="src">宋传卷22；魏道儒《通史》</span></div></div>
+</section>
+
+<section id="f-itin"><h2><span class="sec-icon">🗺</span>时空行迹 · 连续行程链（史阙⚠ · 途阙↯）</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.8rem">目标：看出一人一世的时空<strong>连续性</strong>——从何到哪里、何时。凡载籍于某时段失载者标 <strong>⚠ 史阙</strong>（时间缺环）；凡已书至其地而往返行程无载者标 <strong>↯ 途阙</strong>（行程失载）。</p>
+<ul class="itin">
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">长安（生·长）<span class="itin-when">643–~658</span></div><div class="itin-note">家住长安，祖籍康国。T50n2061</div></li>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">长安 → 太原寺 <span class="itin-when">~658</span></div><div class="itin-note">同城移动，无跨域。年十六灼然指背，依智俨。<span class="src">T50n2061_p0731a</span></div></li>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">太原寺（受具）<span class="itin-when">~663</span></div><div class="itin-note">与前段同城连续。年二十受具。T50n2061</div></li>
+<div class="itin-gap"><strong>⚠ 史阙：</strong>663–688 约二十五年，本传无明确行迹记载（智俨668卒后法藏行止待考）。← 需《华严传》等旁证补环。</div>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">太原寺（开华严讲席）<span class="itin-when">688</span></div><div class="itin-note">永昌元年开讲。仍长安同城。<span class="src">T50n2061</span></div></li>
+<div class="itin-jump"><strong>↯ 途阙：</strong>长安 → 洛阳（跨域 ~350km）。本传仅载“则天闻而诏请”，途中行迹无载。需核召请年与到洛年。</div>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">洛阳 · 佛授记寺（证义译经）<span class="itin-when">691–699</span></div><div class="itin-note">实叉难陀译《八十华严》，法藏证义。驻洛时段连续。<span class="src">T50n2061 + T0279</span></div></li>
+<div class="itin-jump"><strong>↯ 途阙：</strong>洛阳 → 五台山（跨域）。朝礼感圣灯一事仅〔待核〕，无行程记载。</div>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">五台山〔待核〕<span class="itin-when">~700</span></div><div class="itin-note">朝礼·感圣灯。仅后世传载，存否待核。</div></li>
+<div class="itin-jump"><strong>↯ 途阙：</strong>五台 → 长安（跨域回程）。中宗神龙召回，途中无载。</div>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">长安 · 崇福寺 <span class="itin-when">705–712</span></div><div class="itin-note">中宗受戒礼，诏住崇福寺。驻长安时段连续。<span class="src">T50n2061</span></div></li>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">长安（卒·大荐福寺）→ 塔（龙门 / 神禾原二说）<span class="itin-when">712</span></div><div class="itin-note">坐化于西京大荐福寺。葬处二说：宋传主龙门（今洛阳），崔传·阎碑主神禾原华严寺南（今长安）。<span class="src">T50n2061；T50n2054</span></div></li>
+</ul>
+<div class="cont-summary"><strong>连续性小结：</strong>生卒跨度~70年。旧标“663–688约25年史阙”<strong>已由崔传T2054大幅补齐</strong>（太白山学道→咸亨元年出家→住太原寺）；仅余 670–688 一段行迹稀疏。<strong>⚠时间史阙 降为 1 处（稀疏）</strong>；<strong>↯空间途阙 3 处</strong>（长安↔洛阳、→五台、五台→长安）。→ 补环已得崔传/阎碑，余依澄观疏。五台段存疑最高。</div>
+</section>
+
+<div class="tier-band">Ⅱ · 考信装置 <span class="tb-sub">就地取用的重表 · 默认折叠</span></div>
+<section id="f-geo"><h2><span class="sec-icon">⌖</span>古今地名对照 （B层时空 · 今地考）</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.6rem">行迹与交游所涉古代地名，附当代地理位置以便可循。今地经纬度参项目 <span class="src">geo_features.yaml</span> 口径；凡寺址无定说者标〔待考〕，宁缺不伪。</p>
+<details class="fold table-fold"><summary>展开古今地名对照 ▾（14 条·含今地经纬）</summary>
+<table class="dim-table"><tr><th>古地名</th><th>关联事迹</th><th>今地（约 · 经纬）</th><th>置信</th></tr>
+<tr><td><strong>长安</strong></td><td>生·长·受戒·开讲·坐化</td><td>今陕西西安市区（≈34.3N,108.9E）</td><td class="tag-ok">✓ 确</td></tr>
+<tr><td><strong>洛阳</strong></td><td>证义译场·长生殿问金狮子</td><td>今河南洛阳市（≈34.6N,112.5E）</td><td class="tag-ok">✓ 确</td></tr>
+<tr><td>太原寺</td><td>依智俨·受具·开讲席</td><td>长安城内，后改称崇福寺；今西安市·寺址〔待考〕</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>云华寺</td><td>智俨住·法藏受业</td><td>长安；今西安市·寺址〔待考〕</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>佛授记寺</td><td>八十华严译场·镜殿</td><td>洛阳；今洛阳市·寺址〔待考〕</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>大遍空寺</td><td>实叉难陀启译</td><td>洛阳；今洛阳市·寺址〔待考〕</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td><strong>五台山</strong></td><td>朝礼·感圣灯（事待核）</td><td>今山西忻州市五台县（≈39.0N,113.6E）</td><td class="tag-ok">✓ 确（地）</td></tr>
+<tr><td><strong>龙门</strong></td><td>宋传主塔处（崔传主神禾原·二说）</td><td>今河南洛阳市南 龙门伊阙（≈34.5N,112.5E）</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>华严寺（祖庭）</td><td>杜顺·澄观塔所在</td><td>今陕西西安市长安区少陵原/终南山（法藏塔今不存）</td><td class="tag-ok">✓ 确</td></tr>
+<tr><td><strong>康国 / 康居</strong></td><td>族属祖籍</td><td>粟特康国≈今乌兹别克斯坦撒马尔罕（≈39.7N,67.0E）；旧题“康居”另指哈萨克巴尔喀什湖一带，族属诸说</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td><strong>于阗</strong></td><td>实叉难陀出身</td><td>今新疆和田地区（≈37.1N,79.9E）</td><td class="tag-ok">✓ 确</td></tr>
+<tr><td><strong>新罗</strong></td><td>义湘归国传法</td><td>朝鲜半岛（今韩国/朝鲜）</td><td class="tag-ok">✓ 确</td></tr>
+<tr><td>浮石寺</td><td>义湘·海东华严初祖</td><td>今韩国庆尚北道荣州市（≈36.6N,128.6E）</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>太原孟县</td><td>李通玄居·注经</td><td>唐孟县≈今山西阳曲县（太原北，≈38.0N,112.6E）</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td><strong>大荐福寺</strong></td><td>晚年寺主·卒所</td><td>唐长安开化坊；今西安市·寺址〔待考〕</td><td class="tag-ok">✓ 确（地）</td></tr>
+<tr><td>神禾原华严寺</td><td>崔传·阎碑主葬地</td><td>唐长安城南；今陕西西安长安区少陵原/神禾原一带（贤首塔清乾隆崩毁）</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>太白山</td><td>青年·饵术学道</td><td>今陕西宝鸡眉县/太白县境（秦岭主峰）</td><td class="tag-ok">✓ 确（地）</td></tr>
+<tr><td>阿育王舍利塔·法门寺</td><td>十六炼指处·后往迎舍利</td><td>岐州扶风；今陕西宝鸡扶风县法门寺</td><td class="tag-ok">✓ 确</td></tr>
+</table></details></section>
+
+<section id="f-img"><h2><span class="sec-icon">▤</span>形象媒介考 · 画像·造像·形貌（Q层展开）</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.5rem">既为“画像”页，形象媒介本属核心。然须先立可考性分级：区分“同时代史容”与“后世追念像”，不以后世想象冒充真相。<strong>注：下方 ◻ 为刻意保留之“空位”（非图像加载故障）——因无经核证之真容，本层不嵌假像；待联网取证并授权后方入库，且一律标“后世追造/想象·非史容”。</strong></p>
+<div class="media-callout"><span class="mc-hd">◆ 关键判定（高置信负结论）</span>华严法藏<strong>无同时代写生真容传世</strong>。写真“顶相”传统主要行于禅宗，华严一宗罕见；今见一切“法藏像”皆为<strong>后世追造或想象</strong>，非史容。故本页不嵌入未经核证的“标准像”，以免以想象代史实——这本身就是最可靠的“画像”结论。</div>
+<details class="fold table-fold"><summary>展开六类媒介 · 数字图像检索途径 ▾（当前实图 0·皆待核证）</summary>
+<div class="media-grid">
+<div class="media-cell"><div class="mc-type">① 同时代写生·顶相真容</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span> <span class="v-ok">确</span>（不存在判定）·华严不立禅家顶相传统，无同时代真容可考</div></div>
+<div class="media-cell"><div class="mc-type">② 文本形貌描写</div><div class="mc-ph">文</div><div class="mc-meta"><span class="grade grade-B">乙</span> <span class="v-ok">确</span>（负结论）·核崔传T2054/阎碑：不载身量形貌之实写，唯以“十缘配十观”结构立文字像</div></div>
+<div class="media-cell"><div class="mc-type">③ 华严五祖·追造像</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span>·追念 ·宋明以降祖堂画像/图，年代晚，精神像非写容</div></div>
+<div class="media-cell"><div class="mc-type">④ 祖庭塑像</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span>·非写生 ·西安华严寺/终南/新罗浮石寺，多后世重建</div></div>
+<div class="media-cell"><div class="mc-type">⑤ 现代出版·网络像</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span>·非史料 ·多为想象画/艺术创作，若用须显著标注</div></div>
+<div class="media-cell"><div class="mc-type">⑥ 变相·敦煌相关</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span>·推定 ·华严变相是否含法藏待核</div></div>
+<div class="media-cell"><div class="mc-type">⑦ 敕写真仪·御制赞</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-B">乙</span>·像佚文存·神龙元年(705)中宗敕“写藏真仪”并御制赞四章（赞文载T2054）——最近于“同时代肖像”之记录，然实物不传</div></div>
+</div>
+<h3 style="font-size:.9rem;margin:.6rem 0 .3rem">数字图像资源·检索途径（待联网取证+授权）</h3>
+<table class="dim-table"><tr><th>机构/库</th><th>可能含</th><th>状态</th></tr>
+<tr><td>中国国家图书馆·古籍画像</td><td>祖师像版画/祖堂图</td><td class="tag-pend">◐ 待检索登记号</td></tr>
+<tr><td>DILA 数字佛典·图像库</td><td>佛教人物图像</td><td class="tag-pend">◐ 待检索</td></tr>
+<tr><td>Wikimedia Commons “Fazang/法蔵”</td><td>现代像/祖庭照片</td><td class="tag-pend">◐ 待检索·需授权核实</td></tr>
+<tr><td>国际敦煌项目 IDP</td><td>相关变相/写本图像</td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>西安华严寺/浮石寺 现影像</td><td>塑像实物照</td><td class="tag-pend">◐ 需拍摄/授权</td></tr></table></details>
+<p style="font-size:.78rem;color:#888;margin-top:.4rem">形象媒介环当前实图为 0：需联网核实“文本形貌”一条（唯一或近同时代之“像”），其余均需取得授权数字像并标注“后世追造/想象，非史容”。参 §15.6 三重证据法、§17 文学艺术。</p>
+</section>
+
+<section id="f-folk"><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变（接受史 · M/S 层展开）</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.5rem">前“形象媒介考（Q）”辨<strong>写真与塑像之史容性</strong>；本节则辨其人<strong>身后进入民俗·文艺·集体记忆后的形象流变与重构</strong>——即“历史之法藏”如何被转写为“传说/图像/信仰之法藏”。此类均属后世衍生，信度多列丁/戊，不作史实依据。</p>
+<div class="media-callout"><span class="mc-hd">◆ 辨伪要义</span>民俗与文艺所传“法藏形象”多由僧传圣传层（S 层）衍生：金师子、镜殿、焚指、神灯诸端，一经转述便递层累而成俗讲底本。又如“法海”等民间附会系后世文学再生产，不可误作本人。本层与同名消歧（P）联动，凡附会存疑者一律标〔待辨〕。</div>
+<details class="fold table-fold"><summary>展开六个流变层面 ▾（均待逐层回源）</summary>
+<table class="dim-table"><tr><th>流变层面</th><th>表现 / 遗存</th><th>信度</th><th>状态</th><th>语出/待采</th></tr>
+<tr><td>① 祖庭·香火记忆</td><td>华严寺（少陵原）/至相寺 祖师供奉·贤首塔（清乾隆间崩毁）</td><td><span class="grade grade-C">丙</span></td><td class="tag-pend">◐ 待核</td><td class="src">崔传塔铭·祖庭志〔待采〕</td></tr>
+<tr><td>② 名号·追封入祀</td><td>“贤首国师”谥号入祀；民间称“康藏国师”</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td><td class="src">宋传卷五·敕谥</td></tr>
+<tr><td>③ 圣传之俗化</td><td>金狮子·镜殿·焚指·神灯入后世笔记与民间讲唱</td><td><span class="grade grade-D">丁</span></td><td class="tag-pend">◐ 待核</td><td class="src">《华严经传记》T2073 感应集</td></tr>
+<tr><td>④ 诗偈·文题</td><td>后世以《金师子章》为文学母题之吟咏与散文改写</td><td><span class="grade grade-C">丙</span></td><td>◻ 待采</td><td class="src">待辑总集/诗话</td></tr>
+<tr><td>⑤ 变文·变相</td><td>敦煌华严变/法藏故事否？</td><td><span class="grade grade-E">戊</span></td><td><span class="v-miss">阙</span></td><td class="src">IDP·敦煌检索未获〔待核·负面登记〕</td></tr>
+<tr><td>⑥ 祖师影帧（域外）</td><td>新罗浮石寺·日本东大寺 华严五祖绘像/塑像</td><td><span class="grade grade-E">戊</span></td><td class="tag-pend">◐ 待核</td><td class="src">U2 韩日祖师绘像〔追造〕</td></tr>
+<tr><td>⑦ 戏曲·宝卷·说部</td><td>“国师”叙事入俗文学？与“法海”附会须辨</td><td><span class="grade grade-E">戊</span></td><td><span class="v-doubt">存疑·待辨</span></td><td class="src">与同名消歧 P 联动</td></tr>
+<tr><td>⑧ 当代再现</td><td>海云继梦讲座/华严莲社/网络影像</td><td><span class="grade grade-D">丁</span></td><td>◻ 待采</td><td class="src">data/practice/haiyun_*.yaml</td></tr>
+</table></details>
+</section>
+
+<section id="f-dab"><h2><span class="sec-icon">⛙</span>同名异人消歧 (P层 · 防误合)</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.8rem">“法藏”系高僧传常见同名。深度检查报告 v2.6 记载旧稿曾将<strong>北周禅僧法藏误作华严法藏</strong>并据以立论——此即"同名合并"之误。本层逐一消歧。</p>
+<details class="fold table-fold"><summary>展开同名异人对照 ▾（华严法藏 vs 紫盖沙门法藏 等）</summary>
+<table class="disamb-table">
+<tr><th>法藏</th><th>时代</th><th>俗姓/出身</th><th>宗派</th><th>传位</th><th>判定</th></tr>
+<tr class="disamb-this"><td><strong>华严法藏</strong>(贤首国师)</td><td>唐 643–712</td><td>康(康国)</td><td>华严三祖</td><td>宋传卷5</td><td class="tag-ok">✓ 本画像</td></tr>
+<tr><td>紫盖沙门法藏</td><td>北周–隋</td><td>苟氏·出俗周天和二年(567)</td><td>禅/天台系</td><td>续传卷19</td><td class="tag-disp">✗ 异人</td></tr>
+<tr><td>〔待列其他〕</td><td>〔待核〕</td><td>—</td><td>—</td><td>CBETA全库检索</td><td class="tag-pend">◐</td></tr>
+</table></details>
+<p style="font-size:.78rem;color:#888;margin-top:.5rem">消歧依据：俗姓(康 vs 苟)、年代(643 vs 出俗567)、宗派(华严 vs 北周禅)、地点(长安/洛阳 vs 紫盖山)。四要素全不同→必为二人。</p>
+</section>
+
+<section class="biblio-section" id="f-bib"><h2><span class="sec-icon">◈</span>文献全景图谱 · 以高僧传为入手点</h2>
+<p style="font-size:.86rem;color:#555;margin-bottom:1rem">宋高僧传是本图谱的<strong>入手节点</strong>，不是终点。以下六环覆盖所有历史层级文献，目标：穷尽所有涉及法藏的材料→知识图谱网络。</p>
+<details class="fold table-fold"><summary>展开六环文献全景 ▾（R1–R6 · 亲笔/旁证/中间/入手/征引/研究）</summary>
+<div class="biblio-ring-block ring-1"><h3>R1 · 法藏亲笔文献群 <span>(甲 · 现存)</span></h3>
+<table class="biblio-table"><tr><th>文献</th><th>T号</th><th>价值</th><th>存佚</th></tr>
+<tr><td>华严经探玄记(20卷)</td><td class="tid">T1733</td><td>自述师承·判教框架·内证</td><td class="extant">存</td></tr>
+<tr><td>华严五教章(3卷)</td><td class="tid">T1866</td><td>五教十宗判教定型文本</td><td class="extant">存</td></tr>
+<tr><td>华严经旨归(1卷)</td><td class="tid">T1871</td><td>十玄门系统论述</td><td class="extant">存</td></tr>
+<tr><td>金师子章(1卷)</td><td class="tid">T1881</td><td>为则天说法〔作者归属待核〕</td><td class="extant">存</td></tr>
+<tr><td>大乘起信论义疏</td><td class="tid">T1734</td><td>起信论与华严关系</td><td class="extant">存</td></tr></table></div>
+
+<div class="biblio-ring-block ring-2"><h3>R2 · 同时代旁证群 <span>(甲–乙)</span></h3>
+<table class="biblio-table"><tr><th>文献</th><th>T号</th><th>赞宁是否采用</th><th>存佚</th></tr>
+<tr><td>则天《华严经序》</td><td class="tid">T0279经首</td><td><span class="used-tag used-unknown">?待核</span></td><td class="extant">存</td></tr>
+<tr><td>智俨传(续高僧传卷22)</td><td class="tid">T50n2060</td><td><span class="used-tag used-yes">可能</span></td><td class="extant">存</td></tr>
+<tr><td>慧苑《新译华严音义》</td><td class="tid">T1737</td><td><span class="used-tag used-unknown">?待核</span></td><td class="extant">存</td></tr>
+<tr><td>八十华严经题署名</td><td class="tid">T0279</td><td><span class="used-tag used-yes">可能</span></td><td class="extant">存</td></tr></table></div>
+
+<div class="biblio-ring-block ring-3"><h3>R3 · 僧传前中间文献 <span>(712–988 · 乙–丙)</span></h3>
+<table class="biblio-table"><tr><th>文献</th><th>T号</th><th>年代</th><th>赞宁采用</th><th>存佚</th></tr>
+<tr><td>澄观《华严经疏》</td><td class="tid">T1735</td><td>~787</td><td><span class="used-tag used-yes">可能</span></td><td class="extant">存</td></tr>
+<tr><td>宗密《圆觉大疏钞》</td><td class="tid">T1795</td><td>~830</td><td><span class="used-tag used-unknown">?待核</span></td><td class="extant">存</td></tr>
+<tr><td>智昇《开元释教录》卷九</td><td class="tid">T55n2154</td><td>730</td><td><span class="used-tag used-yes">很可能</span></td><td class="extant">存</td></tr></table></div>
+
+<div class="biblio-ring-block ring-4"><h3>R4 · 入手节点：宋高僧传本传 <span>(988 · 丙)</span></h3>
+<p style="font-size:.82rem">T50n2061 卷5 · 聚合编纂体 → §N层逐句考据</p></div>
+
+<div class="biblio-ring-block ring-5"><h3>R5 · 传后征引群 <span>(988–近代 · 丙–丁)</span></h3>
+<table class="biblio-table"><tr><th>文献</th><th>年代</th><th>关系</th><th>存佚</th></tr>
+<tr><td>佛祖统纪 T2033</td><td>1269</td><td><span class="rel-type rel-cites-aftermath">重述</span></td><td class="extant">存</td></tr>
+<tr><td>释氏稽古略 X230</td><td>元</td><td><span class="rel-type rel-cites-aftermath">类书征引</span></td><td class="extant">存</td></tr>
+<tr><td>华严传 JB17</td><td>宋?</td><td><span class="rel-type rel-cites-aftermath">宗派世系</span></td><td class="extant">存</td></tr>
+<tr><td>三国史记·义湘传</td><td>12c高丽</td><td><span class="rel-type rel-contemporary">域外旁证</span></td><td class="extant">存</td></tr></table></div>
+
+<div class="biblio-ring-block ring-6"><h3>R6 · 近现代研究 <span>(戊 · 中日韩西多语种·采自《法藏综述》§5)</span></h3>
+<p style="font-size:.78rem;color:#666;margin:.3rem 0 .5rem">以下条目均采自《法藏贤首国师全方位文献综述》§5（本项目已检索核实），旨在穷尽 R6“全球文献→知识图谱”。语言标记：zh中·ja日·en英·ko韩。</p>
+<p style="font-weight:700;font-size:.82rem;margin:.5rem 0 .2rem;color:#1565c0">① 汉语学界（大陆·港台）</p>
+<table class="biblio-table"><tr><th>学者·著作</th><th>年代</th><th>要旨</th></tr>
+<tr><td>陈金华 <em>Philosopher, Practitioner, Politician: The Many Lives of Fazang</em>（Brill）</td><td>2007</td><td>西文最全面法藏专书·粟特血统与跨文化身份</td></tr>
+<tr><td>方立天《法藏》/《法藏评传》/《华严金师子章校释》</td><td>1991·1995·1983</td><td>思想与年谱重建·金师子章校释</td></tr>
+<tr><td>魏道儒《中国华严宗通史》</td><td>1998/2008</td><td>大陆华严研究代表作·宗派传承与法藏定位</td></tr>
+<tr><td>汤用彤《隋唐佛教史稿》（汤一介整理）</td><td>1982</td><td>辨法藏卒年·史料考</td></tr>
+<tr><td>吕澂《中国佛学源流略讲》</td><td>1979</td><td>华严宗源流·著述归属考订</td></tr>
+<tr><td>廖明活《中国佛教思想述要》·〈法藏的华严教学〉</td><td>2006</td><td>义理分析 pp.381–451</td></tr>
+<tr><td>汤一介《华严“十玄门”的哲学意义》</td><td>1995</td><td>十玄义理重构</td></tr>
+<tr><td>陈金华《舍利与王权——武后对佛舍利的政治利用》《汉语佛学评论》5</td><td>2017</td><td>武周政治·舍利·法藏</td></tr>
+<tr><td>曾瓊瑤《华严如来性起正法之研究—以法藏〈探玄记〉为主》（政大博论）</td><td>2002</td><td>性起思想·探玄记为主</td></tr>
+<tr><td>陈英善《华严与诸宗之对话》（法鼓）</td><td>2020</td><td>华严与诸宗交涉</td></tr></table>
+<p style="font-weight:700;font-size:.82rem;margin:.5rem 0 .2rem;color:#c62828">② 日本学界（华严学重镇）</p>
+<table class="biblio-table"><tr><th>学者·著作</th><th>年代</th><th>要旨</th></tr>
+<tr><td>鎌田茂雄《中国華嚴思想史の研究》/《华严の思想》</td><td>1965·1988</td><td>日本中国华严研究奠基·第2章专论“华严宗の大成者・法藏”</td></tr>
+<tr><td>木村清孝《初期中國華嚴思想史の研究》/《中国華厳思想史》</td><td>1977·1992</td><td>华严早期思想通史·东传</td></tr>
+<tr><td>吉津宜英《華嚴一乘思想の研究》/《華嚴禪の思想史的研究》</td><td>1991·1985</td><td>一乘思想·华严禅教史</td></tr>
+<tr><td>平川彰等《講座大乘佛教3：華嚴思想》</td><td>1983</td><td>讲座体系华严专卷</td></tr>
+<tr><td>小林實玄《華厳経研究》（法藏館）</td><td>1965</td><td>华严经文本研究·涉及法藏</td></tr>
+<tr><td>道津綾乃〈華厳経明法品内三宝章の諸本〉《印度学仏教学研究》68.2</td><td>2020</td><td>T1874 归属考订（主张均如撰）</td></tr></table>
+<p style="font-weight:700;font-size:.82rem;margin:.5rem 0 .2rem;color:#2e7d32">③ 西方学界（专书·论文·工具书·哲学重构）</p>
+<table class="biblio-table"><tr><th>学者·著作</th><th>年代</th><th>要旨</th></tr>
+<tr><td>Forte, <em>A Jewel in Indra's Net</em>（ISEAS）</td><td>2000</td><td>《寄海东书》(法藏→义湘)校订·译注·年代考</td></tr>
+<tr><td>Chang, <em>The Buddhist Teaching of Totality</em> / Cook, <em>Hua-yen Buddhism: The Jewel Net of Indra</em></td><td>1971·1977</td><td>华严整体论/相即相入 英文经典导论</td></tr>
+<tr><td>Hamar ed., <em>Reflecting Mirrors</em> / Gimello·Girard·Hamar eds., <em>Avataṃsaka Buddhism in East Asia</em></td><td>2007·2012</td><td>国际华严论文集·东亚视觉文化</td></tr>
+<tr><td>Hammerstrom, <em>The Huayan University Network</em>（Columbia）</td><td>2020</td><td>二十世纪中国华严复兴·学网</td></tr>
+<tr><td>Nakasone, <em>Mapping the Pathways of Huayan Buddhist Thought</em> / Prince, <em>Universal Enlightenment</em> / Connelly, <em>Inside the Flower Garland Sutra</em></td><td>2022·2025</td><td>华严思想史系统专著·当代导论</td></tr>
+<tr><td>Gimello, <em>Chih-yen (602–668) and the Foundations of Hua-yen Buddhism</em>（Columbia博论）</td><td>1976</td><td>华严成立史最权威历史分析</td></tr>
+<tr><td>Gregory, <em>Tsung-mi and the Sinification of Buddhism</em>（Princeton）</td><td>1991</td><td>华严判教·法藏后转向标准参考</td></tr>
+<tr><td>Ming-Wood Liu（廖明活）<em>The Teaching of Fa-tsang</em>（UCLA博论）+ <em>T'oung Pao</em> 判教·三性论文</td><td>1979/1981/1982</td><td>判教·三性·形上学</td></tr>
+<tr><td>Nicholaos Jones, <em>Metaphors for Interdependence</em>（OUP）+ “Fazang 法藏 Website”</td><td>2009–2025</td><td>分析哲学重构；英语学界最完整法藏文献库（Writings/Secondary/Teachings/Influences）</td></tr>
+<tr><td>Van Norden & Jones “Huayan Buddhism”(SEP) / Rothschild “Fazang”(IEP) / Britannica</td><td>2019–</td><td>工具书条目</td></tr>
+<tr><td>Priest, “The Golden Lion” in <em>The Fifth Corner of Four</em>（Oxford）</td><td>2018</td><td>四角逻辑析金师子章</td></tr>
+<tr><td>Owens, <em>Inventing Indra's Net</em>（Lancaster博论）</td><td>2022</td><td>因陀罗网隐喻之20世纪建构谱系</td></tr>
+<tr><td>Vorenkamp（起信论义记译 2004·十二门论译 2015）/ de Vries, <em>Thinking Through Texts</em>（Berkeley博论）</td><td>1997–2024</td><td>注疏英译·华严疏文献学</td></tr></table>
+<p style="font-weight:700;font-size:.82rem;margin:.5rem 0 .2rem;color:#6a1b9a">④ 韩国学界（海东华严·均如/义天系）</p>
+<table class="biblio-table"><tr><th>学者·著作</th><th>年代</th><th>要旨</th></tr>
+<tr><td>金知见编《均如大师华严学全书》</td><td>1976·CBETA</td><td>均如《五教章圆通钞》(现存最早)古写本·校勘法藏原著</td></tr>
+<tr><td>高翊晋《韩国华严思想研究》（东国大学）</td><td>—</td><td>海东华严·义湘←法藏传播网络</td></tr>
+<tr><td>朴鎔辰：义天《圆宗文类》与法藏《探玄记》研究</td><td>2018</td><td>卷十四〈诸文行位类〉采《探玄记》</td></tr>
+<tr><td>Park Sang-keun, “The Sōuxuán jì and the Origins of Huayan Hermeneutics”《Acta Koreana》18.2</td><td>2015</td><td>探玄记与华严诠释学起源</td></tr></table>
+<p style="font-size:.78rem;color:#888;margin-top:.5rem">穷尽检索库：CBETA·WorldCat·CiNii·JSTOR·CNKI·KCI·DILA·PhilPapers；N.Jones“Fazang Website”为现成英语书目索引。<strong>注</strong>：R6 为“研究史总览”而非穷尽；本表仅据《综述》已核项，凡未核者〔待核〕一律不列。</p></div></details>
+</section>
+
+<section id="f-prov"><h2><span class="sec-icon">⚠</span>N · 僧传本文考据 (逐句语出 + 信度)</h2>
+<p style="font-size:.82rem;color:#555;margin-bottom:1rem">宋高僧传卷5法藏本传逐条考据。</p>
+<details class="fold table-fold"><summary>展开本传逐句考据 ▾（N1–N7·含信度）</summary>
+<table class="prov-table">
+<tr><th>#</th><th>僧传原文</th><th>赞宁取材自</th><th>信度</th><th>验证态</th><th>备注</th></tr>
+<tr><td>N1</td><td class="prov-quote">"本出自康氏"</td><td>待考·塔铭套语?</td><td><span class="grade grade-C">丙</span></td><td><span class="v-solo">孤</span></td><td>仅宋传载，澄观疏未见</td></tr>
+<tr><td>N2</td><td class="prov-quote">"年十六灼然指背"</td><td>宗派行状?·公式化叙事</td><td><span class="grade grade-C">丙</span></td><td><span class="v-solo">孤</span></td><td>烧指母题唐宋常见须警惕</td></tr>
+<tr><td>N3</td><td class="prov-quote">"往依智俨受业华严"</td><td>T1733自序+智俨传(续22)</td><td><span class="grade grade-A">甲</span></td><td><span class="v-ok">确</span></td><td>三源互证</td></tr>
+<tr><td>N4</td><td class="prov-quote">"则天闻而叹异"</td><td>则天序T0279? 或赞宁加工</td><td><span class="grade grade-B">乙</span></td><td><span class="v-doubt">疑</span></td><td>序原文无"叹异"二字</td></tr>
+<tr><td>N5</td><td class="prov-quote">"讲八十华严三十余遍"</td><td>澄观疏T1735?〔待核〕</td><td><span class="grade grade-B">乙</span>?</td><td><span class="v-doubt">疑</span></td><td>须核疏原文</td></tr>
+<tr><td>N6</td><td class="prov-quote">卒"先天元年/景龙四年"</td><td>塔铭?+宋传+华严传二说</td><td><span class="grade grade-B">乙</span></td><td><span class="v-conflict">冲突</span></td><td>汤用彤主712，并录</td></tr>
+<tr><td>N7</td><td class="prov-quote">生年643·贞观十七年</td><td>宋传无载；崔传T2054「貞觀十七年癸卯」明载 + 阎朝隐碑</td><td><span class="grade grade-B">乙</span></td><td><span class="v-ok">确</span></td><td>旧标“无文本载”已更正：崔传据僧千里《别录》有年号（孕梦瑞应仍疑）</td></tr>
+</table></details></section>
+
+<section id="f-dim"><h2><span class="sec-icon">☰</span>维度详表（20 层 A–U · 逐项系信度与完成态）</h2>
+<details><summary>A · 标识层 <span class="dim-progress">5/5 <span class="bar"><span class="bar-fill" style="width:100%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处</th><th>信度</th><th>状态</th></tr>
+<tr><td>A1 name</td><td>法藏</td><td class="src">T50n2061_p0731a</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>A2 foreign</td><td>Khaṅta(康)</td><td class="src">"本出自康氏"</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>A3 alt_names</td><td>贤首国师·藏大师·康藏</td><td class="src">T50n2061+敕谥</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>A4 type</td><td>僧</td><td class="src">体例</td><td>—</td><td class="tag-ok">✓</td></tr>
+<tr><td>A5 title</td><td>贤首国师</td><td class="src">〔待核〕</td><td><span class="grade grade-C">丙</span></td><td class="tag-pend">◐</td></tr></table></details>
+
+<details><summary>B · 时空层 <span class="dim-progress">5/5 <span class="bar"><span class="bar-fill" style="width:100%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处</th><th>信度</th><th>状态</th></tr>
+<tr><td>B1 birth</td><td>643</td><td class="src">逆推</td><td><span class="grade grade-E">戊</span></td><td class="tag-pend">◐</td></tr>
+<tr><td>B2 death</td><td>712/710二说</td><td class="src">T50n2061 vs JB17</td><td><span class="grade grade-B">乙</span></td><td class="tag-disp">✗</td></tr>
+<tr><td>B3 birth_place</td><td>长安(祖籍康国)</td><td class="src">T50n2061</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>B4 locations</td><td>长安·洛阳·太原寺·崇福寺</td><td class="src">传文综合</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>B5 dynasty</td><td>唐(高宗–玄宗)</td><td class="src">通史</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr></table></details>
+
+<details><summary>C · 文献定位 <span class="dim-progress">5/7 <span class="bar"><span class="bar-fill" style="width:71%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处</th><th>状态</th></tr>
+<tr><td>C1 primary_text</td><td>T50n2061 宋高僧传</td><td class="src">CBETA</td><td class="tag-ok">✓</td></tr>
+<tr><td>C2 juan</td><td>卷5</td><td class="src">CBETA核验</td><td class="tag-ok">✓</td></tr>
+<tr><td>C3 ke</td><td>感通篇〔待核〕</td><td class="src">—</td><td class="tag-pend">◐</td></tr>
+<tr><td>C5 para_ref</td><td>p0731a–p0734b</td><td class="src">CBETA folio</td><td class="tag-ok">✓</td></tr>
+<tr><td>C6 corpus_class</td><td>总传(宋僧传)</td><td class="src">§11.1</td><td class="tag-ok">✓</td></tr></table></details>
+
+<details><summary>D · 师承宗派 <span class="dim-progress">7/7 <span class="bar"><span class="bar-fill" style="width:100%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处</th><th>信度</th><th>状态</th></tr>
+<tr><td>D1 masters</td><td>智俨(云华和尚)</td><td class="src">T1733序+T50n2061</td><td><span class="grade grade-A">甲</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>D2 disciples</td><td>慧苑·康素·道成等</td><td class="src">T50n2061+题署</td><td><span class="grade grade-C">丙</span></td><td class="tag-pend">◐</td></tr>
+<tr><td>D3 sect_self</td><td>华严(杜顺→智俨→法藏)</td><td class="src">T1733序</td><td><span class="grade grade-A">甲</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>D4 lineage</td><td>三祖</td><td class="src">澄观后追立</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr></table></details>
+
+<details><summary>E · 制度层 <span class="dim-progress">3/5 <span class="bar"><span class="bar-fill" style="width:60%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处</th><th>状态</th></tr>
+<tr><td>E3 temple</td><td>太原寺→崇福寺→佛授记寺</td><td class="src">T50n2061</td><td class="tag-ok">✓</td></tr>
+<tr><td>E4 state</td><td>则天亲请证义·中宗受戒礼</td><td class="src">T50n2061</td><td class="tag-ok">✓</td></tr>
+<tr><td>E5 ordination</td><td>20岁受具</td><td class="src">T50n2061</td><td class="tag-ok">✓</td></tr></table></details>
+
+<details><summary>F · 译述层 (亲著述作·译场所任) <span class="dim-progress">5/5 <span class="bar"><span class="bar-fill" style="width:85%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>F1 核心亲著</td><td>五教章T1866·探玄记T1733·旨归T1871·义海百门T1875·妄尽还源观T1876</td><td class="src">CBETA·综述§3.1</td><td><span class="grade grade-A">甲</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>F2 现存著述总量</td><td>27 部（大正 22＋卍续藏 5）</td><td class="src">综述§3·CBETA/deerpark 现行登记</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>F3 译场所任</td><td>680 日照补译·695–99 八十华严笔受证义·700 大乘入楞伽·703 金光明·706 大宝积经</td><td class="src">崔传T2054·开元录T55n2154</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>F4 归属/疑伪</td><td>T1876 智圆↔净源争·T1879a 或文超·T1874 或均如·T1877 争·X0917 存疑</td><td class="src">综述§3.4·王颂2017·道津绫乃2020</td><td><span class="grade grade-C">丙</span></td><td class="tag-disp">✗存异</td></tr>
+<tr><td>F5 佚作</td><td>《楞伽经疏》7·《法华经疏》7·华严翻梵语·新华严经略疏(未竟)</td><td class="src">崔传T2054 著录</td><td><span class="grade grade-C">丙</span></td><td class="v-miss">阙</td></tr></table></details>
+
+<details><summary>G · 修行层 (观行法要·止观传承·法筵) <span class="dim-progress">4/5 <span class="bar"><span class="bar-fill" style="width:70%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>G1 观行承系</td><td>承杜顺《法界观》《五教止观》；《妄尽还源观》T1876 六门观法(显一体·起二用·示三遍·行四德·入五止·起六观)</td><td class="src">综述§4.8·T1876</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>G2 普贤观行</td><td>X0991《华严经普贤观行法门》十门止观(元禄元年1688序)</td><td class="src">综述§3.2·卍续藏</td><td><span class="grade grade-E">戊</span></td><td class="tag-pend">◐ 归属存疑</td></tr>
+<tr><td>G3 灼指行愿</td><td>~658 年十六于阿育王塔前炼指供佛(宋传“灼然指背”)</td><td class="src">T50n2061·灵隐纪念文</td><td><span class="grade grade-C">丙</span></td><td class="v-solo">孤·公式警</td></tr>
+<tr><td>G4 法筵讲席</td><td>一生讲《华严》三十余遍；688 于太原寺开华严讲席</td><td class="src">T50n2061</td><td><span class="grade grade-B">乙</span></td><td class="v-doubt">疑·数</td></tr></table></details>
+
+<details><summary>H · 神异层 (圣传母题·须史学警惕) <span class="dim-progress">4/5 <span class="bar"><span class="bar-fill" style="width:60%"></span></span></span></summary>
+<p style="padding:.4rem .8rem;font-size:.8rem;color:#888">本层皆僧传圣传层，与武周政治权威相互构塑(陈金花2003)，不作史实，仅存为信仰史素材。</p>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>H1 灼指感通</td><td>燃指供佛感通</td><td class="src">T50n2061·综述§1.5</td><td><span class="grade grade-C">丙</span></td><td class="v-solo">孤</td></tr>
+<tr><td>H2 日照·地动</td><td>688 太原寺讲经日照讲堂；699 佛授记寺讲《华藏世界品》地动</td><td class="src">T50n2061·崔传</td><td><span class="grade grade-C">丙</span></td><td class="v-doubt">疑</td></tr>
+<tr><td>H3 镜殿·金师子设教</td><td>十镜互影/指金师子演示无尽缘起(属善巧方便·亦见俗流文艺)</td><td class="src">崔传T2054·Hamar2007</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓ 教学·见S</td></tr>
+<tr><td>H4 祷雨·神灯·舍利光</td><td>中宗敕集百法师祷雨感霖；神灯·舍利放光</td><td class="src">T50n2061·灵隐纪念</td><td><span class="grade grade-D">丁</span></td><td class="v-doubt">疑·公式</td></tr></table></details>
+
+<details><summary>I · 寂卒层 (卒年·葬地·追赠·塔与舍利) <span class="dim-progress">5/5 <span class="bar"><span class="bar-fill" style="width:80%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>I1 卒年</td><td>712 先天元年十一月十四日(一说 710 景龙四年)</td><td class="src">T50n2061·崔传·汤用彤辨</td><td><span class="grade grade-B">乙</span></td><td class="v-conflict">冲突二说</td></tr>
+<tr><td>I2 卒处</td><td>西京长安大荐福寺·世寿70(一说 69)</td><td class="src">T50n2061·崔传T2054</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>I3 葬地</td><td>宋传主塔于龙门；崔传·阎朝隐碑主葬神禾原华严寺南</td><td class="src">T50n2061 vs T2054·阎碑</td><td><span class="grade grade-C">丙</span></td><td class="v-conflict">冲突二说</td></tr>
+<tr><td>I4 追赠</td><td>玄宗赠鸿胪卿·绢1200匹；武周赐号“贤首”、中宗赐“国一法师”</td><td class="src">崔传T2054·灵隐纪念</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>I5 贤首塔现状</td><td>神禾原华严寺塔清乾隆间崩毁/今不存(杜顺塔·澄观塔存)</td><td class="src">综述§2.6·祖庭现状</td><td><span class="grade grade-D">丁</span></td><td class="v-miss">阙·待田野</td></tr></table></details>
+
+<details><summary>J · 版本考证层 (写本·版本系统·藏外流布) <span class="dim-progress">4/5 <span class="bar"><span class="bar-fill" style="width:55%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>J1 现行版次</td><td>大正 22 部＋卍续藏 5 部＝27(CBETA/deerpark)</td><td class="src">综述§3·CBETA 对勘</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>J2 海东本文之价值</td><td>均如所见《五教章》本文与宋本有异→校勘法藏原著之关键</td><td class="src">综述§2.4·《均如大师华严学全书》</td><td><span class="grade grade-B">乙</span></td><td class="tag-pend">◐ 需对校</td></tr>
+<tr><td>J3 藏外古写本流布</td><td>《华严三昧章》：1900 南条文雄得高丽古写本·杨仁山金陵刻经处校刻</td><td class="src">综述§3.3·杨仁山《遗书》</td><td><span class="grade grade-D">丁</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>J4 古写本存否</td><td>探玄记古写本？正仓院/敦煌</td><td class="src">综述§3·§15.2〔待核〕</td><td><span class="grade grade-E">戊</span></td><td class="v-miss">阙</td></tr></table></details>
+
+<details><summary>K · 元数据层 (藏号·双源·书目·消歧) <span class="dim-progress">4/4 <span class="bar"><span class="bar-fill" style="width:75%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>K1 藏号编目</td><td>T1712/1733/1734/1790/1813/1826/1838/1846/1847/1866–1881/2073 + 续藏 X0368/0531/0765/0917/0991</td><td class="src">CBETA 册号已核(综述§八.一)</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>K2 传记双源</td><td>崔传T2054 CBETA·东京SAT 双源确；宋传T2061</td><td class="src">CBETA＋SAT</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>K3 书目权威</td><td>“Fazang 法藏 Website”(N.Jones·U.Alabama)—英语学界最完整法藏文献库</td><td class="src">综述§5.5·sites.google.com/view/fazang</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>K4 同名消歧</td><td>法藏(唐·华严) vs 法藏(明·三峰语录) vs 紫盖/北周法藏</td><td class="src">综述§3 提示→见 P 层</td><td><span class="grade grade-C">丙</span></td><td class="tag-pend">◐ 见P</td></tr></table></details>
+
+<details><summary>L · 史源追溯层 (宋传取材回溯·旁证·矛盾) <span class="dim-progress">5/5 <span class="bar"><span class="bar-fill" style="width:80%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>L1 宋传性质</td><td>T2061 卷5·北宋官修/988/去唐~280年→入手点非原发</td><td class="src">综述§7·部类年代</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>L2 先于宋传之旁证</td><td>崔传T2054(904·最详)＋阎朝隐《康藏法师碑》(同时代)＋开元释教录</td><td class="src">综述§7·IEP</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>L3 亲笔内证</td><td>《探玄记》T1733 自序(师承智俨)·则天《华严经序》T0279·《寄海东书》(Forte 2000 校订)</td><td class="src">T1733·T0279·Forte 2000</td><td><span class="grade grade-A">甲</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>L4 宋传所阙·崔传补</td><td>太白山饵术→太原寺落发一段(宋传阙·崔传补)</td><td class="src">崔传T2054·见“年谱”658–670段</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓ 补阙</td></tr>
+<tr><td>L5 诸源矛盾</td><td>生年643(崔传明载·宋不载)·卒年712/710·葬地二说·传记撰者之争</td><td class="src">T2054 vs T2061·综述§1.3【考】</td><td><span class="grade grade-B">乙</span></td><td class="v-conflict">冲突·并存</td></tr></table></details>
+
+<details><summary>M · 传播演变层 (法脉·海东·日本·近世·接受) <span class="dim-progress">6/6 <span class="bar"><span class="bar-fill" style="width:75%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>M1 宗内承嗣·异议</td><td>嗣法慧苑《刊定记》“改易师说”(慧苑异议)→澄观《疏钞》破苑复藏→宗密完成华严禅</td><td class="src">T1736·王颂2017·Nhuir博论</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>M2 海东传(韩)</td><td>同门义湘归新罗开海东华严(浮石寺)·致《寄海东书》赠《探玄记》；高丽均如《圆通钞》(五教章最早注)·义天《圆宗文类》</td><td class="src">Forte2000·义天《圆宗文类》·综述§2.4</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>M3 东传日本(华严)</td><td>弟子审祥→东大寺初讲华严(日本华严初祖)→南都华严；镰仓凝然《五教章通路记》52·明惠十重唯识观</td><td class="src">综述§2.5·日本华严传承</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>M4 近世复兴</td><td>月霞华严大学(1913)→华严莲社系/华严专宗学院；海云继梦(称贤首宗 42世)</td><td class="src">综述§2.6·Hammerstrom 2020</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>M5 教义流变</td><td>新/古十玄之争(法藏改智俨旧十玄)；五教判为澄观·宗密·凝然沿承</td><td class="src">综述§4.1–4.2·Gimello 1976</td><td><span class="grade grade-B">乙</span></td><td class="tag-pend">◐</td></tr>
+<tr><td>M6 接受·世俗形象</td><td>身后圣传层俗化为讲唱/戏曲/祖庭香火·地名记忆；详见本页“俗流文艺”专节</td><td class="src">→ <a href="#f-folk">世俗形象专节</a></td><td><span class="grade grade-D">丁</span></td><td class="tag-pend">◐ 待核</td></tr></table></details>
+
+<details open><summary>O · 文献全景图谱 <span class="dim-progress">6环 <span class="bar"><span class="bar-fill" style="width:50%"></span></span></span></summary>
+<p style="padding:.5rem .8rem;font-size:.82rem;color:#666">见上方完整 R1–R6 六环结构。完成度约 50%（R6 近现代研究书目已据《综述》§5 成体系录入；待办：R3 逐卷核、R5 征引原文采集）。</p></details>
+
+<details><summary>Q · 实物与考古证据层 (三重证据之实物环) <span class="dim-progress empty">0/5 <span class="bar"><span class="bar-fill" style="width:8%"></span></span></span></summary>
+<p style="padding:.4rem .8rem;font-size:.8rem;color:#666">参 §15 实物八类 + §15.6 三重证据法（文献·实物·田野）。当前法藏画像仅有“文献”一环，实物环多缺。</p>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>语出/依据</th><th>信度</th><th>状态</th></tr>
+<tr><td>Q1 塔铭·碑刻</td><td>法藏塔铭存否?〔待核·传为阙宾撰〕</td><td class="src">《全唐文》? / 澄观疏引</td><td><span class="grade grade-C">丙</span></td><td class="v-miss">阙</td></tr>
+<tr><td>Q2 舍利·塔</td><td>龙门塔·塔前舍利放光</td><td class="src">T50n2061〔信仰史素材，非实物证据〕</td><td><span class="grade grade-D">丁</span></td><td class="tag-pend">◐</td></tr>
+<tr><td>Q3 写本实物</td><td>探玄记古写本? 正仓院/敦煌</td><td class="src">〔待核〕§15.2 日本古写经</td><td><span class="grade grade-E">戊</span></td><td class="v-miss">阙</td></tr>
+<tr><td>Q4 造像·壁画·形貌似</td><td>→ 见上方“形象媒介考”专节（无同时代真容，均后世追造/想象）</td><td class="src">〔待核·§17.6 D层留白〕</td><td>—</td><td class="v-miss">阙</td></tr>
+<tr><td>Q5 三重证据判定</td><td>现仅文献一环，实物环缺</td><td class="src">方法论判定</td><td><span class="grade grade-E">戊</span></td><td class="v-ok">确</td></tr></table></details>
+
+<details><summary>S · 文学性与叙事母题层 <span class="dim-progress">2/5 <span class="bar"><span class="bar-fill" style="width:40%"></span></span></span></summary>
+<p style="padding:.4rem .8rem;font-size:.8rem;color:#666">参 §17 文学艺术四层 + §18 叙事类型学。僧传不徒史料，亦为文学建构。</p>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>语出</th><th>信度</th><th>状态</th></tr>
+<tr><td>S1 文体</td><td>本传属“感通”科叙事; 自著为论/疏/章/序</td><td class="src">T50n2061体例</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>S2 叙事母题</td><td>烧指感通·神灯照室·日照讲堂·金师子喻</td><td class="src">T50n2061</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>S3 公式化风险</td><td>“烧指”为唐宋僧传常见套语，需警惕类型化</td><td class="src">§16/§18 通论</td><td><span class="grade grade-E">戊</span></td><td class="tag-pend">◐</td></tr>
+<tr><td>S4 叙事增饰</td><td>宋传 vs 澄观疏 详略差异 (→M2)</td><td class="src">对比T1735 vs T50n2061</td><td><span class="grade grade-E">戊</span></td><td class="tag-pend">◐</td></tr>
+<tr><td>S5 画僧/仪式</td><td>〔待核〕</td><td class="src">—</td><td>—</td><td class="v-miss">阙</td></tr></table></details>
+
+<details><summary>T · 教义诠释六层读法 <span class="dim-progress empty">0/6 <span class="bar"><span class="bar-fill" style="width:5%"></span></span></span></summary>
+<p style="padding:.4rem .8rem;font-size:.8rem;color:#666">参 §32 佛法·佛教·佛学·生命·真理·觉悟六层。<strong>约束：每层必须绑定具体文本，防充空泛。</strong></p>
+<table class="dim-table"><tr><th>层</th><th>法藏对应</th><th>绑定文本</th><th>状态</th></tr>
+<tr><td>佛法层</td><td>法界缘起·十玄·六相圆融</td><td class="src">T1866/T1733</td><td class="tag-pend">◐</td></tr>
+<tr><td>佛教层</td><td>华严宗团之建立·译场·讲席</td><td class="src">T0279 + T50n2061</td><td class="tag-pend">◐</td></tr>
+<tr><td>佛学层</td><td>五教十宗判教作为学术对象</td><td class="src">T1866</td><td class="tag-pend">◐</td></tr>
+<tr><td>生命层</td><td>烧指·坐化·舍利 (修行者生死)</td><td class="src">T50n2061</td><td class="tag-pend">◐</td></tr>
+<tr><td>真理层</td><td>帝网无尽之真理性主张</td><td class="src">T1733</td><td class="tag-pend">◐</td></tr>
+<tr><td>觉悟层</td><td>华严三昧/证果叙事</td><td class="src">〔待核〕</td><td class="v-miss">阙</td></tr></table></details>
+
+<details><summary>U · 域外散藏与写本流布 <span class="dim-progress empty">0/5 <span class="bar"><span class="bar-fill" style="width:10%"></span></span></span></summary>
+<p style="padding:.4rem .8rem;font-size:.8rem;color:#666">参 §14 全球视野四层 + §27 高丽·越南·敦煌·吐鲁番。扩展 M5 之物质层面。</p>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>依据</th><th>状态</th></tr>
+<tr><td>U1 新罗</td><td>义湘→华严入韩 (浮石寺)</td><td class="src">《三国史记》义湘传</td><td class="tag-ok">✓</td></tr>
+<tr><td>U2 日本</td><td>南都华严宗·入唐求法僧携归写本</td><td class="src">〔待核〕玄昉?</td><td class="tag-pend">◐</td></tr>
+<tr><td>U3 高丽</td><td>高丽藏·义天入宋</td><td class="src">〔待核〕M5关联</td><td class="tag-pend">◐</td></tr>
+<tr><td>U4 敦煌/吐鲁番</td><td>法藏相关写本</td><td class="src">〔待核·负面结果登记〕</td><td class="v-miss">阙</td></tr>
+<tr><td>U5 收藏机构</td><td>IDP·正仓院·古写经</td><td class="src">〔待核〕§27/附8</td><td class="v-miss">阙</td></tr></table></details>
+
+</section>
+
+<!-- 穷尽度评估 (需求3) -->
+<div class="tier-band">Ⅲ · 元信息 <span class="tb-sub">关于本页自身的覆盖率与延展</span></div>
+<section id="f-cov"><h2><span class="sec-icon">◱</span>文献穷尽度评估 · gap 与延展规划</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.6rem">方法：套用《深度检查报告》四维（完整·涵盖·深度·准确），对各文献环与维度层逐一评覆盖率，明确 gap 所在与下一步优先级。</p>
+
+<details class="fold table-fold"><summary>展开 覆盖率 · 四维总评 · gap 清单 · 延展规划 ▾</summary>
+<h3 style="font-size:.9rem;margin:.8rem 0 .4rem">① 文献环覆盖率 (R1–R6)</h3>
+<div class="cov-grid">
+<div class="cov-cell"><div class="cov-name">R1 亲笔</div><div class="cov-bar"><div class="cov-fill" style="width:70%"></div></div>约 70%·探玄记/五教章等已列</div>
+<div class="cov-cell cov-low"><div class="cov-name">R2 同时代旁证</div><div class="cov-bar"><div class="cov-fill" style="width:55%"></div></div>阎朝隐碑/崔传近同时代已入·实物待考</div>
+<div class="cov-cell cov-low"><div class="cov-name">R3 僧传前中代</div><div class="cov-bar"><div class="cov-fill" style="width:35%"></div></div>澄观疏/宗密待逐卷核</div>
+<div class="cov-cell"><div class="cov-name">R4 入手节点</div><div class="cov-bar"><div class="cov-fill" style="width:60%"></div></div>宋传本传已回源</div>
+<div class="cov-cell cov-low"><div class="cov-name">R5 传后征引</div><div class="cov-bar"><div class="cov-fill" style="width:30%"></div></div>仅列名目未采原文</div>
+<div class="cov-cell"><div class="cov-name">R6 近现代研究</div><div class="cov-bar"><div class="cov-fill" style="width:65%"></div></div>中日韩西四区研究书目已据《综述》§5 录入·属总览非穷尽</div>
+</div>
+
+<h3 style="font-size:.9rem;margin:.8rem 0 .4rem">② 四维总评</h3>
+<table class="dim-table"><tr><th>维度</th><th>结论</th><th>一句话</th></tr>
+<tr><td>完整性</td><td class="tag-ok">✓ 良</td><td>20层结构自洽；唯 C4/E1/I3/I5 数项空位待回源</td></tr>
+<tr><td>涵盖度</td><td class="tag-pend">◐ 中</td><td>汉传文献基本覆盖；塔铭文存(附崔传)，唯实物石刻/舍利/造像、域外写本未纳入</td></tr>
+<tr><td>深度</td><td class="tag-pend">◐ 中</td><td>N层逐句考据已开例；7条未完全部本传</td></tr>
+<tr><td>准确度</td><td class="tag-ok">✓ 高</td><td>关键事实经CBETA核；卒年二说/生年逆推均标信度</td></tr></table>
+
+<h3 style="font-size:.9rem;margin:.8rem 0 .4rem">③ 尚未纳入/整合的内容 (gap 清单)</h3>
+<ul class="gap-list">
+<li><strong>物质证据</strong>：塔铭<strong>文已存</strong>——阎朝隐撰《大唐大荐福寺故大德康藏法师之碑》附载于崔传T50n2054（非全佚）；唯石刻原物、龙门塔/神禾原塔、舍利、造像题记仍缺实物一环</li>
+<li><strong>本传全文逐句考据</strong>：现仅 N1–N7，本传 p0731a–p0734b 尚余多句未考</li>
+<li><strong>文学叙事层</strong>：“烧指”“神灯”等母题之类型学(§17/§18)未展开</li>
+<li><strong>教义判摄层</strong>：五教十宗/十玄在法藏生平中的建构时序(§32六层读法)未立</li>
+<li><strong>域外传播原始文献</strong>：义湘→新罗、入唐求法僧→日本南都华严宗之现存早期写本/传述未采(R5/M5)</li>
+<li><strong>近现代研究穷尽度</strong>：R6 书目已据《综述》§5 分中·日·西·韩四区录入（见上方“近现代研究”）；尚余论文页码逐条反核、个别书评/通识文献未及</li>
+</ul>
+
+<div class="nextstep"><strong>④ 下一步延展（优先级）：</strong><br>
+<strong>P1</strong> 补全N层本传逐句考据(p0731a–p0734b全段) → 提升深度<br>
+<strong>P2</strong> 检索塔铭/舍利实物与考古报告(CBETA+全唐文+考古数据库) → 补涵盖度<br>
+<strong>P3</strong> R5/R6 逐条回源：采《华严传》原文、定近现代研究书目(依CiNii/JSTOR/CNKI)<br>
+<strong>P4</strong> 新增维度层（见下方需求评估→待用户定）</div></details>
+</section>
+
+<!-- 参考文献 -->
+<section class="ref-section" id="f-ref"><h2>📚 参考文献 · 法藏</h2>
+<ol class="ref-list">
+<li>[ primary ] 赞宁. <strong>《宋高僧传》</strong>卷5·法藏本传. T50n2061_p0731a–p0734b. CBETA 2024.R4. <span class="grade grade-C">丙</span> <span class="ref-meta">[入手节点·编纂体]</span></li>
+<li>[ primary ] 法藏. <strong>《华严经探玄记》</strong>序. T1733. CBETA. <span class="grade grade-A">甲</span> <span class="ref-meta">[亲笔自序·师承内证]</span></li>
+<li>[ primary ] 法藏. <strong>《华严五教章》</strong>(一乘教义分齐章). T1866. CBETA. <span class="grade grade-A">甲</span> <span class="ref-meta">[核心教义]</span></li>
+<li>[ primary ] 则天. <strong>《大方广佛华严经序》</strong>. T0279经首. CBETA. <span class="grade grade-B">乙</span> <span class="ref-meta">[帝王旁证]</span></li>
+<li>[ secondary ] 澄观. <strong>《华严经疏》</strong>. T1735. ~787. <span class="grade grade-B">乙</span> <span class="ref-meta">[引述法藏·去今不远]</span></li>
+<li>[ secondary ] 智昇. <strong>《开元释教录》</strong>卷九. T55n2154. 730. <span class="grade grade-B">乙</span> <span class="ref-meta">[经录著录]</span></li>
+<li>[ secondary ] 慧皎/道宣. <strong>《续高僧传》</strong>卷22·智俨传. T50n2060. <span class="grade grade-B">乙</span> <span class="ref-meta">[师承侧证]</span></li>
+<li>[ modern ] 汤用彤. 《隋唐佛教史丛考》法藏与华严. 北京: 中华书局, 1955. <span class="grade grade-E">戊</span></li>
+<li>[ modern ] 方立天. 《华严哲学》. 北京: 商务印书馆, 2003. <span class="grade grade-E">戊</span></li>
+<li>[ modern ] 魏道儒. 《中国华严宗通史》. 南京: 江苏人民出版社, 1998. <span class="grade grade-E">戊</span></li>
+<li>[ primary ] 崔致远. <strong>《法藏和尚传》</strong>(唐大荐福寺故寺主翻经大德法藏和尚传). T50n2054_p0280a–c【CBETA·东京SAT双源确】. <span class="grade grade-B">乙</span> <span class="ref-meta">[法藏专传·附阎朝隐《康藏法师碑》·生年贞观十七载载·敕写真仪]</span></li>
+<li>[ primary ] 澄观. 《华严经随疏演义钞》. T1736. <span class="grade grade-B">乙</span> <span class="ref-meta">[数破慧苑·复法藏正统]</span></li>
+<li>[ primary ] 慧苑. 《续华严经略疏刊定记》. 已佚/残【待核】. <span class="grade grade-C">丙</span> <span class="ref-meta">[「改易师说」·慧苑异议原始文本]</span></li>
+<li>[ secondary ] 法藏(门人慧苑/惠英续). 《华严经传记》. T2073. <span class="grade grade-B">乙</span> <span class="ref-meta">[撰者有争·见王颂/陈金华]</span></li>
+<li>[ modern ] 汤一介. 《华严“十玄门”的哲学意义》. 1995. <span class="grade grade-E">戊</span> <span class="ref-meta">[义理研究]</span></li>
+<li>[ modern ] Chen, Jinhua (陈金华). "More Than a Philosopher: Fazang (643–712) as a Politician and Miracle-worker." <em>History of Religions</em> 42.4 (2003): 320–358. <span class="grade grade-E">戊</span> <span class="ref-meta">[政治与神异建构]</span></li>
+<li>[ modern ] Forte, Antonello. <em>Political Propaganda and Ideology in China at the End of the Seventh Century</em>. 2nd ed. 2000. <span class="grade grade-E">戊</span> <span class="ref-meta">[则天·华严政治网络]</span></li>
+<li>[ modern ] 王颂. 《华严经传记考：年代·撰者·史源》. 首届佛教史论坛, 2017. <span class="grade grade-E">戊</span> <span class="ref-meta">[慧苑惠英续成说]</span></li>
+<li>[ modern ] Nhuin（阮瑞）. 博士论：佛教宗派内部思想歧异——以华严宗慧苑与澄观为例【待核】. <span class="grade grade-E">戊</span> <span class="ref-meta">[慧苑异议研究]</span></li>
+<li>[ digital ] CBETA 中文电子佛典集成 2024.R4. <a href="https://cbetaonline.dila.edu.tw/">cbetaonline.dila.edu.tw</a></li>
+</ol>
+</section>
+</main></div></div>
+
+<!-- ═══════════════════ 惠能 (骨架) ═══════════════════ -->
+<div class="person-panel" id="p1">
+<header class="mega-header"><h1>释惠能</h1><div class="meta-badges">
+<span class="badge badge-sect">禅宗六祖</span><span class="badge badge-ke">宋传·卷8</span>
+<span class="badge badge-dynasty">唐 638–713</span><span class="badge badge-type">僧</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>禅宗六祖</dd><dt>时代</dt><dd>唐 638–713</dd>
+<dt>入手传</dt><dd>宋传·卷8</dd><dt>类型</dt><dd>僧</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">三层脚手架已就位（结构同法藏 / 裴休页）；空位标 ◻，<strong>宁缺不伪</strong>——填充须逐字回源。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 生平脉络 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span>内证三格（佛学·佛法·佛教）＋外延三圈（人文·文化·文明），历史为证据轴；一事一断、成与争并举。<span class="src">回源：T50n2061卷8 + 坛经(敦博本/宗宝本) + 王维《能禅师碑》 + 柳宗元《赐谥大鉴记》 + 敦煌文献</span></div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐年系年，凡阙标〔待核〕。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 每关系六事（其人·交谊·时遇·方域·因缘·情状）＋分谊流评；配最小师承网络图。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 连续行程链，标史阙⚠ / 途阙↯。</p></section>
+<div class="tier-band">Ⅱ · 考信装置 <span class="tb-sub">默认折叠 · 待建</span></div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 今地经纬依 geo_features.yaml 口径，无定说标〔待考〕。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 先立可考性分级，区分同时代史容与后世追造；无经核真容则留 ◻，不嵌假像。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 R1–R6 · 本文考据 · 维度详表 · 同名消歧</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐条甲乙丙丁戊＋确疑阙孤，可逐字回源。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 完成度计量随填充更新；参考文献分层列甲乙丙丁戊。</p></section>
+</main></div>
+</div>
+
+<!-- ═══════════════════ 智顗 ═══════════════════ -->
+<div class="person-panel" id="p2">
+<header class="mega-header"><h1>释智顗</h1><div class="meta-badges">
+<span class="badge badge-sect">天台宗祖</span><span class="badge badge-ke">续传·卷17</span>
+<span class="badge badge-dynasty">陈–隋 538–597</span><span class="badge badge-type">僧</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>天台宗祖</dd><dt>时代</dt><dd>陈–隋 538–597</dd>
+<dt>入手传</dt><dd>续传·卷17</dd><dt>类型</dt><dd>僧</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">三层脚手架已就位（结构同法藏 / 裴休页）；空位标 ◻，<strong>宁缺不伪</strong>——填充须逐字回源。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 生平脉络 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span>内证三格＋外延三圈，历史为证据轴。<span class="src">回源：T50n2060卷17 + 《法华玄义》T1727 + 《摩诃止观》T1911 + 灌顶《别传》 + 国清百录</span></div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐年系年，凡阙标〔待核〕。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六事＋流评；配最小师承网络图。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 连续行程链，标史阙⚠ / 途阙↯。</p></section>
+<div class="tier-band">Ⅱ · 考信装置 <span class="tb-sub">默认折叠 · 待建</span></div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 今地经纬依 geo_features.yaml 口径。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 无经核真容则留 ◻，不嵌假像。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 · 本文考据 · 维度详表 · 同名消歧</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐条甲乙丙丁戊＋确疑阙孤。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 完成度随填充更新。</p></section>
+</main></div>
+</div>
+
+<!-- ═══════════════════ 玄奘 ═══════════════════ -->
+<div class="person-panel" id="p3">
+<header class="mega-header"><h1>释玄奘</h1><div class="meta-badges">
+<span class="badge badge-sect">法相唯识</span><span class="badge badge-ke">续传·卷4</span>
+<span class="badge badge-dynasty">唐 602–664</span><span class="badge badge-type">僧</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>法相唯识</dd><dt>时代</dt><dd>唐 602–664</dd>
+<dt>入手传</dt><dd>续传·卷4</dd><dt>类型</dt><dd>僧</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">三层脚手架已就位；空位标 ◻，<strong>宁缺不伪</strong>。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span><span class="src">回源：T50n2060卷4 + 《大唐西域记》T2087 + 慧立彦悰《大慈恩寺三藏法师传》T2053 + 广弘明集</span></div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐年系年。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六事＋流评；配网络图。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 行程链（长安→凉州→西域→那烂陀→长安），标史阙⚠ / 途阙↯。</p></section>
+<div class="tier-band">Ⅱ · 考信装置</div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 西域诸国经纬需专档。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 无经核真容则留 ◻。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 · 本文考据 · 维度详表 · 同名消歧</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+</main></div>
+</div>
+
+<!-- ═══════════════════ 慧远 ═══════════════════ -->
+<div class="person-panel" id="p4">
+<header class="mega-header"><h1>释慧远</h1><div class="meta-badges">
+<span class="badge badge-sect">净土初祖</span><span class="badge badge-ke">高僧传·卷6</span>
+<span class="badge badge-dynasty">东晋 334–416</span><span class="badge badge-type">僧</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>净土初祖</dd><dt>时代</dt><dd>东晋 334–416</dd>
+<dt>入手传</dt><dd>高僧传·卷6</dd><dt>类型</dt><dd>僧</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">入手已核（T50n2059卷6）；余待填，<strong>宁缺不伪</strong>。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span>已核：“釋慧遠，本姓賈氏，雁門婁煩人也”。待补：庐山远公集/莲社渊源/念佛法门史料。</div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐年系年。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六事＋流评（预期：惠持、刘遗民、庐山结社等）。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 行程链（雁门→太行→恒山→长安→庐山），标史阙⚠。</p></section>
+<div class="tier-band">Ⅱ · 考信装置</div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 庐山/东林寺经纬待考。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 无经核真容则留 ◻。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 · 本文考据 · 维度详表 · 同名消歧</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 同名“慧远”多人，P层消歧必做。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+</main></div>
+</div>
+
+<!-- ═══════════════════ 鉴真 ═══════════════════ -->
+<div class="person-panel" id="p5">
+<header class="mega-header"><h1>释鉴真</h1><div class="meta-badges">
+<span class="badge badge-sect">律宗·东渡</span><span class="badge badge-ke">宋传·卷14</span>
+<span class="badge badge-dynasty">唐 688–763</span><span class="badge badge-type">僧</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>律宗·东渡</dd><dt>时代</dt><dd>唐 688–763</dd>
+<dt>入手传</dt><dd>宋传·卷14</dd><dt>类型</dt><dd>僧</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">三层脚手架已就位；空位标 ◻，<strong>宁缺不伪</strong>。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span><span class="src">回源：T50n2061卷14 + 思托《大唐传鉴真大和尚东征传》 + 唐招提寺相关</span></div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六次东渡系年。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六事＋流评（预期：荣叡、普照、安宿德等）。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 扬州→海东→日本（跨海），标史阙⚠ / 途阙↯。</p></section>
+<div class="tier-band">Ⅱ · 考信装置</div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 唐招提寺（奈良）经纬待考。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 鉴真干漆夹纻像（唐招提寺，国宝）为重要实物，属后世追造还是同时期待考，须分级。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 · 本文考据 · 维度详表</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+</main></div>
+</div>
+
+<!-- ═══════════════════ 不空 ═══════════════════ -->
+<div class="person-panel" id="p6">
+<header class="mega-header"><h1>不空三藏</h1><div class="meta-badges">
+<span class="badge badge-sect">密宗·译场</span><span class="badge badge-ke">宋传·卷1</span>
+<span class="badge badge-dynasty">唐 705–774</span><span class="badge badge-type">僧</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>密宗·译场</dd><dt>时代</dt><dd>唐 705–774</dd>
+<dt>入手传</dt><dd>宋传·卷1</dd><dt>类型</dt><dd>僧</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">三层脚手架已就位；空位标 ◻，<strong>宁缺不伪</strong>。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span><span class="src">回源：T50n2061卷1 + 开元录 + 不空译场题署 + 密教史</span></div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐年系年。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六事＋流评（预期：金刚智、善无畏、玄宗/代宗等）。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 狮子国→唐土·两京，跨海跨域。</p></section>
+<div class="tier-band">Ⅱ · 考信装置</div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 无经核真容则留 ◻。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 · 本文考据 · 维度详表</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+</main></div>
+</div>
+
+<!-- ═══════════════════ 吉藏 ═══════════════════ -->
+<div class="person-panel" id="p7">
+<header class="mega-header"><h1>释吉藏</h1><div class="meta-badges">
+<span class="badge badge-sect">三论宗祖</span><span class="badge badge-ke">续传·卷11</span>
+<span class="badge badge-dynasty">隋–唐 549–623</span><span class="badge badge-type">僧</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>三论宗祖</dd><dt>时代</dt><dd>隋–唐 549–623</dd>
+<dt>入手传</dt><dd>续传·卷11</dd><dt>类型</dt><dd>僧</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">三层脚手架已就位；空位标 ◻，<strong>宁缺不伪</strong>。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span><span class="src">回源：T50n2060卷11 + 三论玄义T1859 + 中观论疏 + 大乘玄论</span></div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 逐年系年。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六事＋流评（预期：吉藏师承僧侃/慧均、与天台/唯识之争）。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 金陵→长安（实藏寺）。</p></section>
+<div class="tier-band">Ⅱ · 考信装置</div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 无经核真容则留 ◻。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 · 本文考据 · 维度详表</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+</main></div>
+</div>
+
+<!-- ═══════════════════ 裴休 ═══════════════════ -->
+<div class="person-panel" id="p8">
+<header class="mega-header"><h1>裴休</h1><div class="meta-badges">
+<span class="badge badge-sect">黄檗·荷泽</span><span class="badge badge-ke">居士传·卷13</span>
+<span class="badge badge-dynasty">唐 ?–870</span><span class="badge badge-type">居士</span>
+</div></header>
+<nav class="jumpbar"><span class="jb-cap">直达</span><a href="#x-ov">概述</a><a href="#x-yr">年谱</a><a href="#x-rel">人物关系</a><a href="#x-itin">时空行迹</a><a href="#x-geo">古今地名</a><a href="#x-img">形象媒介</a><a href="#x-folk">俗流文艺</a><a href="#x-dim">维度详表</a><a href="#x-cov">穷尽度</a><a href="#x-ref">参考文献</a></nav>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>名</dt><dd>休</dd><dt>字</dt><dd>公美</dd>
+<dt>籍</dt><dd>河东闻喜(山西)</dd><dt>卒</dt><dd>咸通初(≈870)年七十四</dd>
+<dt>官</dt><dd>同中书门下平章事(宰相)</dd><dt>主传</dt><dd>X88n1646 居士传卷13</dd>
+<dt>禅门师</dt><dd>黄檗希运</dd><dt>教下友</dt><dd>圭峰宗密</dd>
+<dt>验证态</dt><dd class="tag-ok">✓ verified</dd>
+</dl><h3 style="margin-top:1rem">整体完成度</h3>
+<p style="font-size:.82rem"><span class="dim-progress" style="margin:0"><span class="bar"><span class="bar-fill" style="width:30%"></span></span></span> ~30% 核心层已抽样</p>
+</aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">自上而下的读流</span></div>
+<section id="x-ov"><h2><span class="sec-icon">§</span>概述</h2>
+<p>裴休(?–870)，字公美，河东闻喜人。唐宣宗朝宰相。以宰相之尊为禅门嗣法居士，兼通教观。参黄檗希运得法、为圭峰宗密著述序、集《传心法要》、撰《劝发菩提心文》。《承袭图》记六祖→荷泽→宗密法脉，影响禅门判系至深。彭际清列其为"唐世士大夫善说法要者三君子"。</p>
+<h3 style="margin-top:.7rem;font-size:.95rem">生平脉络 · 出身·入仕·参禅·护教</h3>
+<dl class="bio">
+<dt>一 · 出身·家世</dt><dd>河东<strong>闻喜</strong>裴氏，中唐士族。字公美。有子裴諴、俓等。<span class="src">X88n1646</span></dd>
+<dt>二 · 入仕·宰辅</dt><dd>长庆间擢进士，历新安太守、户部侍郎·盐铁转运使（立税茶十二法），大中六年(852)同中书门下平章事。<span class="src">X88n1646·新唐书卷182</span></dd>
+<dt>三 · 参禅·嗣法</dt><dd>任新安时入<strong>大安精舍</strong>遇黄檗希运，当下知旨，延入府署执弟子礼；后请希运住黄檗山，录其示众语成《传心法要》。<span class="grade grade-B">乙</span></dd>
+<dt>四 · 教缘·护教</dt><dd>与圭峰宗密往来甚亲，为《圆觉》诸疏序，撰《圭峰禅师碑铭》；会昌–宣宗复法之际，以相位护持禅教。<span class="bio-x">→ 参 人物关系·分谊细绎</span></dd>
+</dl>
+<h3 style="margin-top:.9rem;font-size:.95rem">多维评价 · 内证三格×外延三圈（成就 ↔ 争议）</h3>
+<table class="eval-table">
+<tr><th>评价角度</th><th>成就 · 贡献</th><th>争议 · 存疑</th></tr>
+<tr class="ev-band"><td colspan="3">〔内证三格 · 佛教自身〕</td></tr>
+<tr><td class="ev-ang">佛学<br><small>（义理）</small></td><td>主"禅教一致"：嗣法洪州禅（黄檗）而序华严禅（宗密），集《传心法要》、撰《承袭图》，以士大夫身份沟通宗门与教观。 <span class="src">T2012A；X1225</span></td><td class="ev-con">义学多属护法·编纂而非独创；《承袭图》判六祖→荷泽→宗密之系，含宗派建构，为后学所议。</td></tr>
+<tr><td class="ev-ang">佛法<br><small>（观行·教化）</small></td><td>以宰相身延请禅德、创精舍、撰《劝发菩提心文》，示范"仕宦修行"之居士轨范。</td><td class="ev-con">居士弘法之实修证量难考；其教化与政治地位相即，感格与权势并存。</td></tr>
+<tr><td class="ev-ang">佛教<br><small>（教团·政治·法统）</small></td><td>会昌法难前后士族护教关键节点；《承袭图》影响禅门判系至深，黄檗一系藉休而显。 <span class="src">五灯会元卷4</span></td><td class="ev-con">法统叙事赖休一人之文，临济虽出黄檗而别为宗，休之"嗣法"位分诸书所载有差。</td></tr>
+<tr class="ev-band"><td colspan="3">〔外延三圈 · 推及于世〕</td></tr>
+<tr><td class="ev-ang">人文<br><small>（人格·教化·生命）</small></td><td>孝友清廉、文章行谊，为唐士大夫笃信之代表人格。</td><td class="ev-con">《北梦琐言》载转世叙事，彭际清已删正附会，人格形象经后世层累。</td></tr>
+<tr><td class="ev-ang">文化<br><small>（思想·学术·文艺）</small></td><td>以书法名世，《圭峰禅师碑》传出其手，文士禅悦之风之象征。 <span class="src">全唐文卷742</span></td><td class="ev-con">书迹之归属与摹刻源流须金石学核证；"禅悦"入文艺多为回溯建构。</td></tr>
+<tr><td class="ev-ang">文明<br><small>（跨域·长程·秩序）</small></td><td>士大夫佛教——儒释交融之典型样本，为东亚儒家仕人接触佛教之范型。</td><td class="ev-con">文明意义多为长程回溯性建构；民间文学附会（如"法海"）系后世再生产，与史实无涉〔待考〕。</td></tr>
+</table>
+<p style="font-size:.8rem;color:#888;margin-top:.5rem">六格为评价之维；「历史（文献·考信）」为贯注六格之证据轴——生年逆推、书迹归属、转世传说之删正，均以 <a>L 史源追溯</a>·<a>N 本文考据</a> 与「甲乙丙丁戊 · 确疑阙孤」体系为凭。</p></section>
+
+<section id="x-yr"><h2><span class="sec-icon">▦</span>年谱</h2><div class="timeline">
+<div class="tl-item pending"><div class="tl-year">? · 约797</div><div class="tl-event">生于河东闻喜。〔待核〕</div><div class="tl-src">逆推：咸通初卒·年七十四</div></div>
+<div class="tl-item"><div class="tl-year">长庆间(821–824)</div><div class="tl-event">擢进士第，举贤良方正异等。</div><div class="tl-src">X88n1646</div></div>
+<div class="tl-item"><div class="tl-year">任新安太守时</div><div class="tl-event">入大安精舍遇黄檗希运，当下知旨，延入府署执弟子礼。</div><div class="tl-src">X88n1646</div></div>
+<div class="tl-item"><div class="tl-year">太和–会昌间</div><div class="tl-event">请希运住黄檗山。迁宣城复创精舍。与宗密往来甚亲。</div><div class="tl-src">X88n1646</div></div>
+<div class="tl-item"><div class="tl-year">大中初(847–)</div><div class="tl-event">官户部侍郎·盐铁转运使。立税茶十二法。</div><div class="tl-src">X88n1646</div></div>
+<div class="tl-item"><div class="tl-year">大中六年(852)</div><div class="tl-event">同中书门下平章事(拜相)。</div><div class="tl-src">X88n1646</div></div>
+<div class="tl-item"><div class="tl-year">大中六年+5≈857</div><div class="tl-event">罢相，历诸州节度。</div><div class="tl-src">X88n1646</div></div>
+<div class="tl-item"><div class="tl-year">咸通初(≈870)</div><div class="tl-event">卒，年七十四。</div><div class="tl-src">X88n1646</div></div>
+</div></section>
+
+<section id="x-rel"><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2>
+<div class="rel-card"><h4>黄檗希运 <span class="rel-role">亲教师·嗣法</span> <span class="grade grade-B">乙</span> <span class="v-ok">确</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>希运，洪州禅，百丈怀海法嗣，住黄檗山</span></div>
+<div class="w"><b>交谊</b><span>休任新安时入大安精舍遇之，当下知旨，延入府署执弟子礼</span></div>
+<div class="w"><b>时遇</b><span>长庆–会昌间（约820s–840s）</span></div>
+<div class="w"><b>方域</b><span>新安 / 黄檗山 / 宣城（休创精舍延请）</span></div>
+<div class="w"><b>因缘</b><span>士大夫参禅，希运以"即心是佛"接引</span></div>
+<div class="w"><b>情状</b><span>执弟子礼；录其示众语成《传心法要》T2012A（题裴休集）</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>D1 masters</a><a>D4 lineage</a><a>F 集录</a></div>
+<div class="rel-conf"><span class="src">语出：X88n1646卷13 + T2012A题署 + 五灯会元卷4</span> — 乙</div>
+<div class="w-eval"><span class="ev-hd">分谊 · 流评</span>休以宰相为法嗣居士，集希运语为《传心法要》，洪州禅之要旨藉休笔而传世。临济义玄亦出希运门而别立宗，休之嗣法位分诸灯录所载有差。<span class="src">五灯会元</span></div></div>
+
+<div class="rel-card"><h4>圭峰宗密 <span class="rel-role">教下至友·碑序</span> <span class="grade grade-B">乙</span> <span class="v-ok">确</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>宗密(780–841)，华严禅，荷泽系，圭峰</span></div>
+<div class="w"><b>交谊</b><span>往来甚亲；为《圆觉》诸疏序，撰《圭峰禅师碑铭》并书</span></div>
+<div class="w"><b>时遇</b><span>太和间（宗密卒841后立碑）</span></div>
+<div class="w"><b>方域</b><span>长安草堂寺 / 圭峰</span></div>
+<div class="w"><b>因缘</b><span>禅教一致之共契；休兼宗门嗣法与教下护法</span></div>
+<div class="w"><b>情状</b><span>文与书双出休手（《全唐文》卷742碑铭）</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>D3 sect</a><a>L 史源</a><a>形象·书迹</a></div>
+<div class="rel-conf"><span class="src">语出：《圭峰禅师碑铭》全唐文742 + 宗密圆觉大疏序</span> — 乙</div>
+<div class="w-eval"><span class="ev-hd">分谊 · 流评</span>宗密示寂，休为碑序，使清凉之学行于士大夫；《中华传心地禅门师资承袭图》记六祖→荷泽→宗密法脉，判系影响深远，休实为禅门史观之重要建构者。<span class="src">X1225</span></div></div>
+
+<div class="rel-card"><h4>唐宣宗 <span class="rel-role">帝王</span> <span class="grade grade-B">乙</span> <span class="v-doubt">疑</span></h4>
+<div class="w-grid">
+<div class="w"><b>其人</b><span>李忱，唐宣宗(846–859在位)</span></div>
+<div class="w"><b>交谊</b><span>尝目"休真儒者"；休拜相在其朝</span></div>
+<div class="w"><b>时遇</b><span>大中六年(852)拜相</span></div>
+<div class="w"><b>方域</b><span>长安</span></div>
+<div class="w"><b>因缘</b><span>会昌法难(武宗)后宣宗复法，休以相位护持</span></div>
+<div class="w"><b>情状</b><span>君相际遇，兼及佛事〔"真儒者"语出处待核〕</span></div>
+</div>
+<div class="rel-dims">涉及维度：<a>E2 gov_post</a><a>E4 state</a></div>
+<div class="rel-conf"><span class="src">语出：《新唐书》卷182（"真儒者"待核）</span> — 乙·疑</div></div>
+</section>
+
+<section id="x-itin"><h2><span class="sec-icon">🗺</span>时空行迹 · 行程链</h2>
+<ul class="itin">
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">河东闻喜（生·长）<span class="itin-when">约797</span></div><div class="itin-note">中唐士族。X88n1646</div></li>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">闻喜 → 长安（入仕）<span class="itin-when">长庆间821–824</span></div><div class="itin-note">擢进士第。↯ 跨域，途中行迹无载。</div></li>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">新安（守·遇黄檗）<span class="itin-when">—</span></div><div class="itin-note">入大安精舍遇希运。今浙江淳安一带〔待考〕。</div></li>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">黄檗山 / 宣城（延法·创舍）<span class="itin-when">太和–会昌</span></div><div class="itin-note">请希运住黄檗山，迁宣城创精舍。</div></li>
+<li class="itin-leg"><span class="itin-dot"></span><div class="itin-move">长安（拜相·护教·立碑）<span class="itin-when">847–870</span></div><div class="itin-note">盐铁使→同平章事；为宗密立碑；咸通初卒〔葬地待考〕。</div></li>
+</ul>
+<div class="cont-summary"><strong>连续性小结：</strong>仕宦—护法双线，空间以长安为中心，散落新安/黄檗/宣城。史阙：生年逆推、任新安确切年、卒后葬地多阙。↯途阙：闻喜→长安、长安↔地方藩镇。</div>
+</section>
+
+<div class="tier-band">Ⅱ · 考信装置 <span class="tb-sub">就地取用的重表 · 默认折叠</span></div>
+<section id="x-geo"><h2><span class="sec-icon">⌖</span>古今地名对照</h2>
+<details class="fold table-fold"><summary>展开古今地名对照 ▾（含今地经纬）</summary>
+<table class="dim-table"><tr><th>古地名</th><th>关联事迹</th><th>今地（约·经纬）</th><th>置信</th></tr>
+<tr><td><strong>河东闻喜</strong></td><td>出身·家世</td><td>今山西运城市闻喜县（≈35.4N,111.2E）</td><td class="tag-ok">✓ 确</td></tr>
+<tr><td><strong>长安</strong></td><td>入仕·拜相·护教</td><td>今陕西西安市（≈34.3N,108.9E）</td><td class="tag-ok">✓ 确</td></tr>
+<tr><td>黄檗山</td><td>请希运住·传心法要</td><td>唐黄檗山≈今湖北武穴市（广济）（≈29.9N,115.4E）</td><td class="tag-pend">◐ 待考</td></tr>
+<tr><td>宣城</td><td>创精舍延黄檗</td><td>今安徽宣城市（≈31.1N,118.8E）</td><td class="tag-ok">✓ 确（地）</td></tr>
+<tr><td>新安</td><td>守郡·遇黄檗于大安精舍</td><td>唐新安≈今浙江淳安/安徽歙县一带（≈29.6N,118.9E）</td><td class="tag-pend">◐ 待考</td></tr>
+<tr><td>草堂寺 / 圭峰</td><td>宗密驻锡·立碑</td><td>唐鄠县；今陕西西安鄠邑区（≈33.9N,108.6E）</td><td class="tag-pend">◐ 待核</td></tr>
+</table></details></section>
+
+<section id="x-img"><h2><span class="sec-icon">▤</span>形象媒介考 · 画像·书迹·形貌（Q层）</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.5rem">裴休为<strong>居士</strong>而非僧，本无禅家顶相传统；其"留形"之最强者非画像，而是<strong>书迹</strong>——《圭峰禅师碑》传世为其手笔，是士人以笔墨自写其形之特殊媒介。</p>
+<div class="media-callout"><span class="mc-hd">◆ 关键判定</span>无同时代写真真容可考；然<strong>书法墨迹/碑刻存</strong>（《圭峰禅师碑》，丙级·需金石学核摹刻源流），较之僧传"顶相"更能代表其本人。凡今见"裴休像"多为后世追造或想象。</div>
+<details class="fold table-fold"><summary>展开媒介分级 ▾（真容 0 · 书迹 1）</summary>
+<div class="media-grid">
+<div class="media-cell"><div class="mc-type">① 同时代写真</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span> <span class="v-miss">阙</span>·居士不立顶相，无同时代真容</div></div>
+<div class="media-cell"><div class="mc-type">② 书法手迹·碑</div><div class="mc-ph">笔</div><div class="mc-meta"><span class="grade grade-C">丙</span>·存 ·《圭峰禅师碑》传出其手，最强自我媒介；摹刻源流待核</div></div>
+<div class="media-cell"><div class="mc-type">③ 文本形貌</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-D">丁</span>·待核 ·新唐书/居士传容止记载待逐字回源</div></div>
+<div class="media-cell"><div class="mc-type">④ 后世追造像</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span>·追念 ·祖堂/民间想象，非史容</div></div>
+<div class="media-cell"><div class="mc-type">⑤ 文学形象</div><div class="mc-ph">◻</div><div class="mc-meta"><span class="grade grade-E">戊</span>·附会 ·《北梦琐言》转世叙事；民间"法海"附会待考〔非史实〕</div></div>
+</div></details></section>
+
+<section id="x-folk"><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变（接受史 · M/S 层）</h2>
+<p style="font-size:.8rem;color:#666;margin-bottom:.5rem">裴休以<strong>居士·宰辅·书家</strong>三重身份入后世记忆，其俗流形象较僧人更为复杂：既有金石书迹之实物，亦有民间附会之传说。</p>
+<details class="fold table-fold"><summary>展开流变层面 ▾（部分存疑·待辨）</summary>
+<table class="dim-table"><tr><th>流变层面</th><th>表现 / 遗存</th><th>信度</th><th>状态</th></tr>
+<tr><td>① 书法·金石</td><td>《圭峰禅师碑》传出其手；《浓秀帖》等墨迹归属须辨</td><td><span class="grade grade-C">丙</span></td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>② 祖庭·地名记忆</td><td>黄檗山（请希运住）·宣城南岳精舍（休创）之寺志叙事</td><td><span class="grade grade-C">丙</span></td><td class="tag-pend">◐ 待核</td></tr>
+<tr><td>③ 俗传·附会</td><td>《白蛇传》“法海”或附会为裴休及其子——属后世文学再生产</td><td><span class="grade grade-E">戊</span></td><td><span class="v-conflict">待辨·非史实</span></td></tr>
+<tr><td>④ 居士典范·文学再现</td><td>彭际清《居士传》立其“唐世士大夫善说法要者”形象</td><td><span class="grade grade-C">丙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>⑤ 当代再现</td><td>禅门寺志·书法史·网络影像</td><td><span class="grade grade-D">丁</span></td><td>◻ 待采</td></tr>
+</table></details>
+</section>
+
+<section id="x-dim"><h2><span class="sec-icon">☰</span>维度详表 (居士适配)</h2>
+<details open><summary>D · 师承(双轨) <span class="dim-progress">4/7 <span class="bar"><span class="bar-fill" style="width:57%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>出处</th><th>状态</th></tr>
+<tr><td>D1 masters</td><td>黄檗希运(禅嗣)+宗密(教下)</td><td class="src">X88n1646</td><td class="tag-ok">✓</td></tr>
+<tr><td>D3 sect</td><td>禅(荷泽—宗密—黄檗)+教(华严/圆觉)</td><td class="src">《承袭图》</td><td class="tag-ok">✓</td></tr>
+<tr><td>D4 lineage</td><td>黄檗法嗣→临济宗旁承</td><td class="src">五灯会元卷4</td><td class="tag-ok">✓</td></tr></table></details>
+
+<details open><summary>E · 制度(居士→仕宦) <span class="dim-progress">2/5 <span class="bar"><span class="bar-fill" style="width:40%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>状态</th></tr>
+<tr><td>E1 monk_office</td><td><em>不适用(居士)</em></td><td>—</td></tr>
+<tr><td>E2 gov_post</td><td>进士→新安守→盐铁使→同平章事→节度使</td><td class="tag-ok">✓</td></tr></table></details>
+
+<details open><summary>L · 史源追溯 <span class="dim-progress">7/7 <span class="bar"><span class="bar-fill" style="width:100%"></span></span></span></summary>
+<table class="dim-table"><tr><th>维度</th><th>取值</th><th>信度</th><th>状态</th></tr>
+<tr><td>L1 stratum</td><td>L3(居士传·清1775距唐末~900年)</td><td><span class="grade grade-E">戊</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>L2 ur_source</td><td>唐书+五灯+圆觉序+道院集+北梦琐言</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>L5 indep</td><td>宋传·宗密传载裴休为序 + T2012A题裴休集 + 新唐书本传</td><td><span class="grade grade-B">乙</span></td><td class="tag-ok">✓</td></tr>
+<tr><td>J5 crit</td><td>彭际清按:"清凉通传载李詵事…明为后人附会。削之"</td><td><span class="grade grade-A">甲</span></td><td class="tag-ok">✓</td></tr></table></details>
+</section>
+
+<div class="tier-band">Ⅲ · 元信息 <span class="tb-sub">覆盖率与延展</span></div>
+<section id="x-cov"><h2><span class="sec-icon">◫</span>穷尽度</h2>
+<div class="cov-grid">
+<div class="cov-cell cov-low"><div class="cov-name">核心层</div><div class="cov-bar"><div class="cov-fill" style="width:40%"></div></div><small>概述·年谱·关系·维度·史源 已抽</small></div>
+<div class="cov-cell cov-low"><div class="cov-name">框架升级新增</div><div class="cov-bar"><div class="cov-fill" style="width:55%"></div></div><small>分谊细绎/古今地名/形象媒介/多维评价</small></div>
+<div class="cov-cell cov-zero"><div class="cov-name">文献环 R1–R6</div><div class="cov-bar"><div class="cov-fill" style="width:20%"></div></div><small>仅入手级，待扩展</small></div>
+</div>
+<ul class="gap-list"><li>生年逆推·确切里居·卒后葬地·书迹归属源流·"真儒者"语出，均待逐字回源。</li></ul>
+</section>
+
+<!-- 参考文献 -->
+<section id="x-ref" class="ref-section"><h2>📚 参考文献 · 裴休</h2>
+<ol class="ref-list">
+<li>[ primary ] 裴休. <strong>《黄檗山断际禅师传心法要》</strong>(集). T2012A. CBETA. <span class="grade grade-A">甲</span> <span class="ref-meta">[亲笔集录]</span></li>
+<li>[ primary ] 裴休. <strong>《圭峰禅师碑铭》</strong>(并序). 《全唐文》卷742. <span class="grade grade-A">甲</span> <span class="ref-meta">[亲撰碑文]</span></li>
+<li>[ primary ] 裴休. <strong>《中华传心地禅门师资承袭图》</strong>. X1225. CBETA. <span class="grade grade-A">甲</span></li>
+<li>[ secondary ] 彭际清. <strong>《居士传》</strong>卷13. X88n1646. 清1775. <span class="grade grade-C">丙</span> <span class="ref-meta">[入手节点·聚合编纂]</span></li>
+<li>[ secondary ] 欧阳修/宋祁. <strong>《新唐书》</strong>卷182·裴休传. <span class="grade grade-B">乙</span> <span class="ref-meta">[正史]</span></li>
+<li>[ secondary ] 普济. <strong>《五灯会元》</strong>卷3·黄檗下. T2058. <span class="grade grade-C">丙</span></li>
+<li>[ secondary ] 孙光宪. <strong>《北梦琐言》</strong>. <span class="grade grade-D">丁</span> <span class="ref-meta">[笔记·转世叙事]</span></li>
+<li>[ digital ] CBETA 2024.R4. <a href="https://cbetaonline.dila.edu.tw/">cbetaonline.dila.edu.tw</a></li>
+</ol></section>
+</main></div></div>
+
+<!-- ═══════════════════ 净检 ═══════════════════ -->
+<div class="person-panel" id="p9">
+<header class="mega-header"><h1>净检</h1><div class="meta-badges">
+<span class="badge badge-sect">比丘尼·汉土第一人</span><span class="badge badge-ke">比丘尼传·卷1</span>
+<span class="badge badge-dynasty">晋 4世纪</span><span class="badge badge-type">尼</span>
+</div></header>
+<div class="portrait-grid">
+<aside class="infobox"><h3>基本信息</h3><dl>
+<dt>宗派</dt><dd>比丘尼·汉土第一人</dd><dt>时代</dt><dd>晋 4世纪</dd>
+<dt>入手传</dt><dd>比丘尼传·卷1</dd><dt>类型</dt><dd>尼</dd>
+<dt>完成度</dt><dd class="tag-pend">◻ 0% · 待回源</dd>
+</dl><h3 style="margin-top:1rem">框架状态</h3>
+<p style="font-size:.78rem">入手已核（T50n2063卷1）；余待填，<strong>宁缺不伪</strong>。</p></aside>
+<main class="content-area">
+<div class="tier-band">Ⅰ · 生平叙事 <span class="tb-sub">框架占位 · 待回源填充</span></div>
+<section><h2><span class="sec-icon">§</span>概述 · 多维评价 6+1</h2><div class="media-callout"><span class="mc-hd">◻ 待填</span>已核：“晉洛陽竹林寺淨檢尼傳一”。待补：竹林寺考·二部僧受戒。</div></section>
+<section><h2><span class="sec-icon">▦</span>年谱</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 4世纪纪年多阙，标〔待核〕。</p></section>
+<section><h2><span class="sec-icon">◉</span>人物关系 · 分谊细绎</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 六事＋流评（预期：支雄、安法钦等译人）。</p></section>
+<section><h2><span class="sec-icon">🗺</span>时空行迹</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 洛阳一带。</p></section>
+<div class="tier-band">Ⅱ · 考信装置</div>
+<section><h2><span class="sec-icon">⌖</span>古今地名对照</h2><p style="font-size:.8rem;color:#888">◻ 待填 · 洛阳竹林寺今地待考。</p></section>
+<section><h2><span class="sec-icon">▤</span>形象媒介考</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 无经核真容则留 ◻。</p></section>
+<section><h2><span class="sec-icon">☰</span>文献全景 · 本文考据 · 维度详表</h2><p style="font-size:.8rem;color:#888">◻ 待填 · <strong>E5 ordination 需特别标注比丘尼戒坛制度差异（二部僧受戒）</strong>。</p></section>
+<section><h2><span class="sec-icon">⛩</span>世俗形象 · 民俗与文艺流变</h2><p style="font-size:.8rem;color:#888">◻ 待核 · 辨其人身后进入民俗/文艺/祖庭记忆之形象流变（变文·戏曲·祖师影·地名香火·当代再现），信度多丁戊，附会标〔待辨〕。</p></section>
+<div class="tier-band">Ⅲ · 元信息</div>
+<section><h2><span class="sec-icon">◫</span>穷尽度 · 参考文献</h2><p style="font-size:.8rem;color:#888">◻ 待填。</p></section>
+</main></div>
+</div>
+
+<script>
+function showTab(i){
+  const panels=document.querySelectorAll('.person-panel');
+  const btns=document.querySelectorAll('.tab-btn');
+  panels.forEach((p,idx)=>{p.classList.toggle('active',idx===i)});
+  btns.forEach((b,idx)=>{b.classList.toggle('active',idx===i)});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+<footer style="margin-top:3rem;font-size:.78rem;color:#999;border-top:1px solid var(--border);padding-top:.8rem">
+僧传画像 · 知识图谱 Demo v0.3 · 数据截至 2026-10-16 · CBETA 2024.R4<br>
+〔待核〕项须逐步回源闭合。原文所载 vs 今人推断严格分离。宁缺不伪。<br>
+完成度实时更新——空维度标记为「◻待填」不遮蔽结构。
+</footer>
+</div></body></html>
