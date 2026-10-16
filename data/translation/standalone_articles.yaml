@@ -212,6 +212,19 @@ others:
     label: 前沿对话 · 沉思式 AI 与正向对齐
   views:
   - ai-wisdom-alignment
+- id: shijie-chengjiu
+  group: 经论茶歇
+  icon: 📖
+  title: 九九华严第四品 世界成就品之拼读
+  title_sub: 华严经第四品·按品精读·承力遍观十海·世界海十事逐事长行＋一百二十颂·十因缘·无差别门·八十与六十对读·注疏四家会读·数据层L1-L2·未完备已标明
+  updated_at: '2026-10-16'
+  doc: docs/经学文献/华严经细读_第四部_世界成就品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: puxian-sanmei
   group: 经论茶歇
   icon: 📖
