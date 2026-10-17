@@ -7,7 +7,7 @@ import re
 import os
 
 BASE = r'c:\DA_Practice\huayan_collection'
-P = os.path.join(BASE, 'docs', '经学文献', '华严经细读_第一部_世主妙严品.md')
+P = os.path.join(BASE, 'docs', '经学文献', '华严经细读', '第一会_菩提场_所信因果周', '华严经细读_第一部_世主妙严品.md')
 HDR = '**诸家强调**'
 
 

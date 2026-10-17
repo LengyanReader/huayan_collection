@@ -19,7 +19,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 BASE = r'C:\DA_Practice\huayan_collection'
 GATE = os.path.join(BASE, r'scripts\verify_ru_lai.py')
-DOC = os.path.join(BASE, r'docs\经学文献\华严经细读_第二部_如来现相品.md')
+DOC = os.path.join(BASE, r'docs\经学文献\华严经细读\第一会_菩提场_所信因果周\华严经细读_第二部_如来现相品.md')
 
 MUT = [
     # (描述, 锚点, 替换, 期望捕获之 tag)

@@ -21,7 +21,7 @@ import tempfile
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 BASE = r'C:\DA_Practice\huayan_collection'
-SRC = os.path.join(BASE, r'docs\经学文献\华严经细读_第一部_世主妙严品.md')
+SRC = os.path.join(BASE, r'docs\经学文献\华严经细读\第一会_菩提场_所信因果周\华严经细读_第一部_世主妙严品.md')
 SCRIPT = os.path.join(BASE, r'scripts\verify_shizhu.py')
 
 ANCHOR = '**天众十二类**'          # 正文非校勘行，稳锚

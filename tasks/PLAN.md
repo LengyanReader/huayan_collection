@@ -29,7 +29,7 @@ horizon=multi_session, verifiability=medium, stakes=high, grounding=required, ar
 - [ ] 交付物符合目标（一品一专篇；体例／三层疏解齐全）。
 - [ ] **硬门**（`.harness/gates.md`）全绿并附证据：`build` · `test-pipeline` · `demo-verify` · `verify-sources` · `node --check` · `git diff --check` · `python .harness/check.py .`。
 - [ ] 经文引文**逐字回源** CBETA `T10n0279`（繁体原字形）；存疑／推断标记齐备。
-- [ ] 登记同步：`data/translation/standalone_articles.yaml`（如需）· `docs/经学文献/华严经细读_系列总纲.md` · `docs/工程治理/next-phase-plan.md`。
+- [ ] 登记同步：`data/translation/standalone_articles.yaml`（如需）· `docs/经学文献/华严经细读/华严经细读_系列总纲.md` · `docs/工程治理/next-phase-plan.md`。
 - [ ] 每章结论可溯（文件:行 / 经号卷页 / URL）。
 
 ## Steps
@@ -92,10 +92,34 @@ horizon=multi_session, verifiability=medium, stakes=high, grounding=required, ar
 
 ### 六、交付
 
-新文件 `docs/经学文献/华严经细读_第六部_毗盧遮那品.md`；登记 `data/translation/standalone_articles.yaml` ＋ 系列总纲 ＋ `next-phase-plan.md`；`web/demo` 重建；门禁全绿；本地 commit（不 push）。
+新文件 `docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第六部_毗盧遮那品.md`；登记 `data/translation/standalone_articles.yaml` ＋ 系列总纲 ＋ `next-phase-plan.md`；`web/demo` 重建；门禁全绿；本地 commit（不 push）。
 
 ### 七、待确认（R4）
 
 1. 是否按上拟**单品独读 · §〇–§九**结构开写？
 2. §二「逐段逐颂」：**全 73 颂逐颂疏解**（篇幅大），或**分组疏解＋择要颂**（中篇口径）？
 3. 是否同步把「六十卷四约 20 名对勘」从遗留项**转为本批交付**（语料已具备）？
+
+---
+
+## L.134 篇目归档整理（已完成 · 2026-10-17）
+
+```text
+用户指示：把 docs/经学文献 下细读系列文章梳理分组入子目录（虑及后续篇目渐多）
+四项裁决：①结构=按会/周分组  ②扫描器=显式加子目录（非递归）  ③5 非系列件本次不动  ④先提交在途批再整理
+```
+
+### 一、已完成
+
+- **`git mv`（保历史）**：6 部专篇 → `docs/经学文献/华严经细读/第一会_菩提场_所信因果周/`；系列总纲 → `docs/经学文献/华严经细读/`。**篇名一律不改**。
+- **引用同步 20 文件／35 处**（单串路径形 15 档 ＋ `os.path.join` 分参数形 5 档；逐档 fail 计数、全对才写盘）。
+- **三处「静默失效」glob 各增录两行**（`evolution_config.yaml`·`audit_style.py`·`verify_sources.py`）并留维护注：**每新增一会目录，须三处各登记一行**。
+- **SSOT**：系列总纲新立 **§七 篇目归档目录约定（会／周）**（九会目录全表）；**不另设 README**（免成二源）。
+- **门禁**：`build` 42 files｜28,368,848 B｜`verify_demo` ✅｜`test_pipeline` ✅｜`.harness/check.py` OK｜`verify_sources` OK（系列 7 篇仍入覆盖）｜`audit_style` files=45｜`t1_quote --check`／`verify_t1_bikan` ✅｜系列路径旧形活源 0 残留。
+
+### 二、下一步
+
+1. **开第七品《如来名号品》（卷十二·品7）专篇** → 落 `docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/`。
+2. 续 (A) 批·二：体例骨架一致性 · 标记完备度 · 数据层复算；顺带核订 `三十九品深度研究.md` §2.1「第一会·场所＝世间净眼普严殿」〔待核〕。
+3. 落笔已授权之审计提议 2-②／2-①／2-③（补引 `T1732` 智俨 · `X0221` 慧苑 · `T1871` 旨歸）；各部 §5 计数标题改「诸家」并加说明。
+

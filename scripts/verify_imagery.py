@@ -16,7 +16,7 @@ import io, os, re, sys, collections, argparse
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.stdout.reconfigure(encoding="utf-8")
 
-DOC = os.path.join(ROOT, "docs", "经学文献", "华严经细读_第一部_世主妙严品.md")
+DOC = os.path.join(ROOT, "docs", "经学文献", "华严经细读", "第一会_菩提场_所信因果周", "华严经细读_第一部_世主妙严品.md")
 REG = os.path.join(ROOT, "data", "imagery", "shizhu_miaoyan_imagery.yaml")
 
 import yaml

@@ -33,7 +33,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 BASE = r'C:\DA_Practice\huayan_collection'
 # 文档路径可由环境变量覆盖（供反向验证在副本上作破坏性变异；勿用于日常运行）
 DOC = os.environ.get('SHIZHU_DOC') or os.path.join(
-    BASE, r'docs\经学文献\华严经细读_第一部_世主妙严品.md')
+    BASE, r'docs\经学文献\华严经细读\第一会_菩提场_所信因果周\华严经细读_第一部_世主妙严品.md')
 
 # ── 归一层：NFKC 不收 U+2E80–U+2EF3（康熙/中日韩部首补充块），须 RAD 兜底 ──
 RAD = {

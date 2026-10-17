@@ -28,7 +28,7 @@
 
 | 要找 | 去哪 |
 |---|---|
-| 研究正文（各品专篇） | `docs/经学文献/华严经细读_第N部_*.md` · 系列总纲 `docs/经学文献/华严经细读_系列总纲.md` |
+| 研究正文（各品专篇） | `docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第N部_*.md` · 系列总纲 `docs/经学文献/华严经细读/华严经细读_系列总纲.md` |
 | 底本（繁体） | `data/references/cbeta/T10n0279.xml`（八十）· `data/references/cbeta_txt/`（注疏 / `T09n0278` 六十） |
 | 本次任务计划 | [`tasks/PLAN.md`](tasks/PLAN.md) ｜ 结果流水 [`tasks/PROGRESS.md`](tasks/PROGRESS.md) |
 | 完成门禁 | [`.harness/gates.md`](.harness/gates.md) |

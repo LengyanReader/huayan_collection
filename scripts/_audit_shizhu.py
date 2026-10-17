@@ -4,7 +4,7 @@ import io, sys, re, json
 from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-DOC = Path('docs/经学文献/华严经细读_第一部_世主妙严品.md')
+DOC = Path('docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第一部_世主妙严品.md')
 t = DOC.read_text(encoding='utf-8')
 L = t.split('\n')
 

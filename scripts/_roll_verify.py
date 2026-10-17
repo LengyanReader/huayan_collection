@@ -25,7 +25,7 @@ def cjk(s):
 
 
 base = r'c:\DA_Practice\huayan_collection'
-doc = open(base + r'\docs\经学文献\华严经细读_第一部_世主妙严品.md', encoding='utf-8').read()
+doc = open(base + r'\docs\经学文献\华严经细读\第一会_菩提场_所信因果周\华严经细读_第一部_世主妙严品.md', encoding='utf-8').read()
 t279 = cjk(re.sub(r'<[^>]+>', '', open(base + r'\data\references\cbeta\T10n0279.xml', encoding='utf-8').read()))
 jian = cjk(open(base + r'\docs\huayanhai\义学专题\经论原典\八十华严-简-大华严寺袖珍版_1.txt', encoding='utf-8').read())
 fan = cjk(open(base + r'\docs\huayanhai\义学专题\经论原典\八十华严-繁-大华严寺袖珍版_1.txt', encoding='utf-8').read())

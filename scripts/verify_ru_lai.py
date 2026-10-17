@@ -46,7 +46,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 BASE = r'C:\DA_Practice\huayan_collection'
 DOC = os.environ.get('RU_LAI_DOC',
-                     os.path.join(BASE, r'docs\经学文献\华严经细读_第二部_如来现相品.md'))
+                     os.path.join(BASE, r'docs\经学文献\华严经细读\第一会_菩提场_所信因果周\华严经细读_第二部_如来现相品.md'))
 
 # ── 部首归一（康熙/兼容部首字；NFKC 不覆盖 U+2F00–U+2FDF）────────────────
 RAD = {'⽣': '生', '⼤': '大', '⾨': '門', '⾝': '身', '⻄': '西', '⺠': '民',
