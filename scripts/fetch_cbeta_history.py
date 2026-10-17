@@ -46,6 +46,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 API = "https://api.github.com"
 REPO = "cbeta-org/xml-p5"
+RAW_BASE = "https://raw.githubusercontent.com/cbeta-org/xml-p5/master"
 DEST = Path(__file__).resolve().parents[1] / "data" / "references" / "cbeta"
 LOG = DEST / "INGEST_log.md"
 DEFAULT_BRANCH = "master"
@@ -65,6 +66,8 @@ TARGETS = {
                      purpose="不空(卷1)·惠能(卷8)·鉴真(卷14)·赞宁", who="r1/r5/r6", big=True),
     "T50n2053": dict(title="大唐大慈恩寺三藏法師傳", juan="10", bytes=1816700,
                      purpose="玄奘传记·慧立彦悰", who="r2", big=True),
+    "T48n2008": dict(title="六祖大師法寶壇經", juan="1", ce="48", bytes=343972,
+                     verify="六祖大師", purpose="惠能义理一手底本（宗宝本·敦煌本另记）", who="r5"),
 }
 
 
@@ -145,10 +148,37 @@ def fetch_blob_text(blob_sha, expect=0):
     return gh_raw(f"{API}/repos/{REPO}/git/blobs/{blob_sha}", expect=expect)  # bytes, verbatim
 
 
+def git_blob_sha(data: bytes) -> str:
+    """按 git 自身算法从内容算 blob SHA-1：sha1('blob <len>\\0' + data)。"""
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def raw_get(url, expect=0, tries=4):
+    """从 raw.githubusercontent 直取逐字字节（api.github 限流时的后备通道）。
+    带重试 + 长度校验（同 gh_raw），expect 非零且取回不足视为不完整。"""
+    last = None
+    for n in range(tries):
+        try:
+            req = urllib.request.Request(url)
+            req.add_header("User-Agent", "huayan-collection-g1-ingest")
+            with urllib.request.urlopen(req, timeout=180) as r:
+                data = r.read()
+            if expect and len(data) < expect:
+                last = f"IncompleteRead({len(data):,}/{expect:,})"
+                time.sleep(2 * (n + 1))
+                continue
+            return data
+        except (http.client.HTTPException, urllib.error.URLError,
+                ConnectionError, TimeoutError) as e:
+            last = f"{type(e).__name__}: {e}"
+            time.sleep(2 * (n + 1))
+    raise RuntimeError(f"raw 取回失败（{tries} 次）：{last}")
+
+
 def log_row(sig, meta, blob_sha, nbytes, status, fname):
     """Append/refresh one row in INGEST_log.md keyed by 经号."""
     today = date.today().isoformat()
-    row = (f"| {sig} | {meta['title']} | 册50 卷{meta.get('juan','?')} | "
+    row = (f"| {sig} | {meta['title']} | 册{meta.get('ce','50')} 卷{meta.get('juan','?')} | "
            f"{nbytes:,} | `{blob_sha[:10]}` | {today} | {status} | `{fname}` |\n")
     header = ("# CBETA 史传部入库日志（G1·fetch_cbeta_history.py 自动生成）\n\n"
               "> 一手 TEI/P5 逐字底本。勿擅改本目录内 .xml——一经改动即失一手性。\n"
@@ -166,9 +196,31 @@ def log_row(sig, meta, blob_sha, nbytes, status, fname):
     LOG.write_text(body, encoding="utf-8")
 
 
-def ingest(sig, meta, apply_, max_bytes):
+def ingest(sig, meta, apply_, max_bytes, raw=False):
     fname = f"{sig}.xml"
     path = DEST / fname
+    if raw:
+        vol = sig.split("n")[0]            # T48n2008 -> T48
+        est = meta["bytes"]
+        if path.exists():
+            local = path.stat().st_size
+            if local and abs(local - est) <= 4096:
+                print(f"  ✓ {sig} 已在库且字节相符（{local:,} B）→ 幂等跳过")
+                return "exists"
+        if not apply_:
+            print(f"  ⬇(raw) {sig} {meta['title']}：预估 {est:,} B（dry-run 未下载）")
+            return "fetch"
+        text = raw_get(f"{RAW_BASE}/T/{vol}/{fname}", expect=est)
+        blob_sha = git_blob_sha(text)
+        mk = meta.get("verify", "")
+        if mk and mk.encode("utf-8") not in text:
+            raise RuntimeError(f"{sig}：内容未含校验串「{mk}」（疑错经，拒入库）")
+        sha256 = hashlib.sha256(text).hexdigest()
+        print(f"  ⬇(raw) {sig} {meta['title']}：{len(text):,} B · blob={blob_sha[:10]} · SHA256={sha256[:12]}…")
+        DEST.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(text)
+        log_row(sig, meta, blob_sha, len(text), f"已入库(raw) sha256:{sha256[:12]}", fname)
+        return "fetch"
     blob_sha, size = find_blob(sig)
     est = size or meta["bytes"]
     if est > max_bytes:
@@ -209,6 +261,8 @@ def main():
     ap.add_argument("--max-bytes", type=int, default=20_000_000,
                     help="整取字节上限（raw 媒体型可支持至 ~100 MiB；默认 20 MB）")
     ap.add_argument("--juan", action="store_true", help="大书逐卷模式（报告）")
+    ap.add_argument("--raw", action="store_true",
+                    help="走 raw.githubusercontent 直取（api.github 限流时的后备；路径 T/<册>/<sig>.xml）")
     a = ap.parse_args()
 
     print("=" * 56)
@@ -220,7 +274,7 @@ def main():
     todo = {a.only: TARGETS[a.only]} if a.only else TARGETS
     tally = {"fetch": 0, "exists": 0, "skip": 0}
     for sig, meta in todo.items():
-        tally[ingest(sig, meta, a.apply, a.max_bytes)] += 1
+        tally[ingest(sig, meta, a.apply, a.max_bytes, raw=a.raw)] += 1
     print("-" * 56)
     print(f"取回 {tally['fetch']} · 已在库 {tally['exists']} · 待分卷 {tally['skip']}")
     if not a.apply and tally["fetch"]:
