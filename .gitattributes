@@ -1,0 +1,4 @@
+# CBETA 一手 TEI/P5 底本：逐字保真。
+# 本目录 .xml 与 data/references/cbeta/INGEST_log.md 记录的 SHA256 一一对应，
+# 一经换行规范化即失一手性与可校验性，故禁用 Git 的 eol 转换与空白处理。
+data/references/cbeta/*.xml -text -whitespace
