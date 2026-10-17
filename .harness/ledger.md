@@ -17,3 +17,5 @@
 | 2026-10-17 | agent | 第六品登记发布（`standalone_articles.yaml` 新增 `piluzhena`；系列总纲同步；`next-phase-plan.md` 增 L.133）；新脚本 `scripts/pilu_shena_studies.py` | 系列体例 | done |
 | 2026-10-17 | agent | 门禁全绿：`build` 42 files｜28,365,369 B；`verify_demo` ✅ ALL CHECKS PASSED；`test_pipeline` ✅；`verify_sources` EXIT=0；`git diff --check` 净 | verify_* 五关 | done（真机渲染未确认） |
 | 2026-10-17 | agent | 观察：`docs/草稿/高僧传/僧传画像/*.html` 有他会话在途改动（13→20 层）；`docs/祖师人物/不空三藏…md` 未跟踪——**本批未触碰、未纳入提交** | `git status` | recorded |
+| 2026-10-17 | agent | SSOT 漂移订正：`系列总纲` §二 品6「⬜待开」→「✅已成篇」（与 §三.1 自相矛盾）；`CLAUDE.md` 当前进度补登 L.133（第六品） | 自我 commit 遗漏＋门禁重跑全绿 | done（本地 commit `a2576e2`，未 push） |
+| 2026-10-17 | agent | 评估：按七处九会，**第一会（品1–6·卷1–11·所信因果周）六品皆已成篇＝完整**；附记 `三十九品研究` §2.1「第一会 场所＝世间净眼普严殿」于 `T10n0279` 无此组合〔待核〕 | `三十九品研究` §2.1/§2.2（据 `T1735`）＋澄观「所信因果會竟」（`T1735` L5090） | recorded |
