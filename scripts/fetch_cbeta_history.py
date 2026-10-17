@@ -79,6 +79,19 @@ TARGETS = {
                      verify="居士傳", purpose="裴休本传（卷次待抽验）·丙C後世編纂", who="r9", big=True),
     "X63n1225": dict(title="中華傳心地禪門師資承襲圖（唐裴休問·宗密答）", juan="1", ce="63", bytes=59140,
                      verify="承襲圖", purpose="裴休亲撰·甲A級（宗密荷泽系谱核心·知歸子所評對象）", who="r9"),
+    # —— r10 图谱补库轮（2026-10-17 目录树/题署双验·待取清单关闭）——
+    "T50n2054": dict(title="唐大薦福寺故寺主翻經大德法藏和尚傳（崔致遠）", juan="1", ce="50", bytes=101536,
+                     verify="法藏和尚傳", purpose="法藏乙B一手传记·页内多处引T2054回源底本", who="r10"),
+    "T46n1934": dict(title="國清百錄", juan="4", ce="46", bytes=265953,
+                     verify="國清百錄", purpose="智顗制教文书·表疏敕文汇编（L/Z2层）", who="r10"),
+    "T55n2154": dict(title="開元釋教錄", juan="20", ce="55", bytes=5487122,
+                     verify="開元釋教錄", purpose="经录SSOT：玄奘/不空/法藏译目基准（G2）", who="r10", big=True),
+    "T49n2026": dict(title="撰集三藏及雜藏傳（僧幽錄）", juan="1", ce="49", ce_note="禅源", bytes=73005,
+                     verify="撰集三藏", purpose="禅门史源·裴休轮旁及（旧标传灯稿T49n2058系误号）", who="r10"),
+    "T52n2102": dict(title="弘明集", juan="14", ce="52", bytes=2871676,
+                     verify="弘明集", purpose="慧远诸文（沙门不敬王者论等）单行文本层", who="r10", big=True),
+    "T52n2103": dict(title="廣弘明集", juan="30", ce="52", bytes=6980381,
+                     verify="廣弘明集", purpose="慧远/历代护法文献层", who="r10", big=True),
 }
 
 
