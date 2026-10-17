@@ -17,10 +17,11 @@
 | `T50n2061.xml` | `T2061` | 册50 No. 2061《宋高僧傳》（宋赞宁）全 30 卷（不空卷一/惠能卷八/鉴真卷十四） | CBETA TEI/P5·raw 媒体型整本·`2026-10-17` |
 | `T50n2053.xml` | `T2053` | 册50 No. 2053《大唐大慈恩寺三藏法師傳》（慧立彦悰）全 10 卷 | CBETA TEI/P5·raw 媒体型整本·`2026-10-17` |
 | `T48n2008.xml` | `T2008` | 册48 No. 2008《六祖大師法寶壇經》（**元·宗宝编**·宗宝本）——惠能义理一手底本（敦煌本 S.5475 另计） | CBETA TEI/P5·**`--raw` 通道**（`raw.githubusercontent.com`）·`2026-10-17` |
+| `T51n2089.xml` | `T2089` | 册51 No. 2089《遊方記抄》（内第七节《唐大和上東征傳》·卷首题真人元開撰）——鉴真六度/失明一手底本 | CBETA TEI/P5·**`--raw` 通道**·`2026-10-17` |
 
 > **史传部入库（G1）**：逐书取数由 `scripts/fetch_cbeta_history.py` 走 `api.github.com` git blob 的 **raw 媒体型**（`Accept: application/vnd.github.raw`，支持至 ~100 MiB·保 TEI 结构）完成；带重试+长度校验，逐项来源/字节/git-blob-SHA/本地SHA256/日期登于本目录 `INGEST_log.md`。**六部史传已全部整本入库**（T2053/2056/2059/2060/2061/2063）；关键本传已抽验逐字在盘（不空·玄奘·智顗·吉藏·慧远·净检）。
 >
-> **`--raw` 后备通道（`2026-10-17` 新增）**：api.github 未认证限流（60/时）时，`fetch_cbeta_history.py --raw` 改走 `raw.githubusercontent.com/cbeta-org/xml-p5/master/T/<册>/<sig>.xml` 直取逐字字节；**git-blob-SHA 由内容本地算得**（`sha1("blob <len>\0"+data)`，即 git 自身算法），并用 `verify` 题署串防错经。首次适用：册48《坛经》宗宝本（T48n2008，非史传部·教义底本）。
+> **`--raw` 后备通道（`2026-10-17` 新增）**：api.github 未认证限流（60/时）时，`fetch_cbeta_history.py --raw` 改走 `raw.githubusercontent.com/cbeta-org/xml-p5/master/T/<册>/<sig>.xml` 直取逐字字节；**git-blob-SHA 由内容本地算得**（`sha1("blob <len>\0"+data)`，即 git 自身算法），并用 `verify` 题署串防错经。首次适用：册48《坛经》宗宝本（T48n2008，非史传部·教义底本）与册51《遊方記抄》（T51n2089，内含《唐大和上東征傳》·鉴真一手）——后者短号经 CBETA 篇页题记（T51n2089_p0975a18「七唐大和上東征傳」）核实，**非臆测**。
 
 ## 附：纯文本对读语料（`../cbeta_txt/`）
 

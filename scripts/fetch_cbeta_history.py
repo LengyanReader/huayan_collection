@@ -68,6 +68,8 @@ TARGETS = {
                      purpose="玄奘传记·慧立彦悰", who="r2", big=True),
     "T48n2008": dict(title="六祖大師法寶壇經", juan="1", ce="48", bytes=343972,
                      verify="六祖大師", purpose="惠能义理一手底本（宗宝本·敦煌本另记）", who="r5"),
+    "T51n2089": dict(title="遊方記抄（内唐大和上東征傳）", juan="1", ce="51", bytes=475774,
+                     verify="唐大和上東征傳", purpose="鉴真六渡·失明·東征傳一手（思託撰）", who="r6"),
 }
 
 
