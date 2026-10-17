@@ -6,7 +6,29 @@
 """
 import os
 import sys
-import pypdf
+
+
+def _read_pages(pdf_path):
+    """Return list of per-page text. Prefer pypdf, then PyPDF2, then fitz(pymupdf)."""
+    try:
+        import pypdf as _p  # noqa: F401
+        r = _p.PdfReader(pdf_path)
+        return [(pg.extract_text() or "") for pg in r.pages]
+    except ImportError:
+        pass
+    try:
+        import PyPDF2 as _p  # noqa: F401
+        r = _p.PdfReader(pdf_path)
+        return [(pg.extract_text() or "") for pg in r.pages]
+    except ImportError:
+        pass
+    import fitz  # pymupdf
+    d = fitz.open(pdf_path)
+    try:
+        return [d[i].get_text() for i in range(d.page_count)]
+    finally:
+        d.close()
+
 
 SRC_DIR = r"C:\华严\经典著作"
 OUT_DIR = os.path.join(
@@ -19,9 +41,12 @@ TARGETS = {
     "CBETA_T1735": ("T1735_澄观_华严经疏.txt", "唐澄观《大方广佛华严经疏》"),
     "CBETA_T1736": ("T1736_澄观_随疏演义钞.txt", "唐澄观《华严经随疏演义钞》"),
     "CBETA_T1733": ("T1733_法藏_探玄记.txt", "唐法藏《华严经探玄记》"),
-    "CBETA_T1732": ("T1732_法藏_搜玄记.txt", "唐法藏《华严经搜玄分齐通智方轨》"),
+    # T1732 为智俨（终南山至相寺沙门）述，非智俨法藏之误；正名见 cbeta/README.md
+    "CBETA_T1732": ("T1732_智俨_搜玄记.txt", "唐智俨《大方广佛华严经搜玄分齐通智方轨》"),
     "CBETA_T1739": ("T1739_李通玄_新华严经论.txt", "唐李通玄《新华严经论》"),
     "CBETA_X0223": ("X0223_李通玄_华严经合论.txt", "唐李通玄《华严经合论》"),
+    "CBETA_X0221": ("X0221_慧苑_续华严略疏刊定记.txt", "唐慧苑《续华严略疏刊定记》"),
+    "T1871": ("T1871_法藏_华严经旨归.txt", "唐法藏《华严经旨归》"),
     "CBETA_L1557": ("L1557_澄观_华严经疏钞会本.txt", "《华严经疏钞会本》"),
     "CBETA_B0002": ("B0002_道霈_华严经疏论纂要.txt", "清道霈《华严经疏论纂要》"),
 }
@@ -35,14 +60,10 @@ def find_pdf(siglum):
 
 
 def extract(pdf_path, out_name, title):
-    r = pypdf.PdfReader(pdf_path)
-    n = len(r.pages)
+    pages = _read_pages(pdf_path)
+    n = len(pages)
     chunks = ["# %s\n# 来源 PDF: %s\n# 共 %d 页\n\n" % (title, os.path.basename(pdf_path), n)]
-    for i, page in enumerate(r.pages):
-        try:
-            t = page.extract_text() or ""
-        except Exception as e:  # noqa: BLE001
-            t = "\n[[PAGE %d ERROR: %s]]\n" % (i, e)
+    for i, t in enumerate(pages):
         chunks.append("\n<<<PAGE %d>>>\n" % i)
         chunks.append(t)
     out = os.path.join(OUT_DIR, out_name)

@@ -29,7 +29,7 @@ FILES = {
     'T1735': [os.path.join(CB, 'T1735_澄观_华严经疏.txt')],
     'T1736': [os.path.join(CB, 'T1736_澄观_随疏演义钞.txt')],
     'T1733': [os.path.join(CB, 'T1733_法藏_探玄记.txt')],
-    'T1732': [os.path.join(CB, 'T1732_法藏_搜玄记.txt')],
+    'T1732': [os.path.join(CB, 'T1732_智俨_搜玄记.txt')],
     'T1739': [os.path.join(CB, 'T1739_李通玄_新华严经论.txt')],
     'X0223': [os.path.join(CB, 'X0223_李通玄_华严经合论.txt')],
 }
