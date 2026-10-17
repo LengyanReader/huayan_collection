@@ -7,6 +7,7 @@
 | traceable-sources | 字段级 `source:` 栏; CBETA 链接+访问日期; 十科名目须核 T50n2059; 未核→〔待核〕 | 继承自 huayan 项目四门, 扩展到字段级 |
 | expert-instruments | 最raw材料 = CBETA XML (非二手); 外部判据 = `check.py` + 审计脚本; 不用"模型自评" | 待 first-move 执行 |
 | reproducible-experiments | 回源→渲染→check = 可重跑管线; 同输入→同产物 | PLAN DoD #4 |
+| **reproducible-experiments (v4 具体化)** | 「分册为源→`build.py merge`→产物」可重跑；无损性用 `plain()` 文字级比对（而非行数/字数量级）作证；迁移覆盖前 `.bak` + `_bakdiff.py` 逐页反核 | ✅ 2026-10-17 已执行（10 页零内容损失） |
 | frontier-standard | 对标同类数字人文人物画像项目(如 CBDB, DILA); 不自宣"最高标准" | Phase 8 学术项 |
 | ambition-elevation | R0-R5 已走完一轮(MVP×high 确认); 后续新需求从 R0 重启 | ✅ 本轮已执行 |
 | resumable-memory | `.harness/ledger.md` 记状态; PROGRESS.md append-only; AGENTS.md 含 resume 段 | 已启用 |

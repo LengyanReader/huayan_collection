@@ -70,6 +70,15 @@ TARGETS = {
                      verify="六祖大師", purpose="惠能义理一手底本（宗宝本·敦煌本另记）", who="r5"),
     "T51n2089": dict(title="遊方記抄（内唐大和上東征傳）", juan="1", ce="51", bytes=475774,
                      verify="唐大和上東征傳", purpose="鉴真六渡·失明·東征傳一手（思託撰）", who="r6"),
+    # —— 裴休轮（r9·居士样本）——经 raw 仓目录实测档名存在（2026-10-17 探针）
+    "T48n2012A": dict(title="黃檗斷際禪師傳心法要", juan="1", ce="48", bytes=73805,
+                     verify="傳心法要", purpose="裴休記錄撰述·甲A級自作文（序跋）", who="r9"),
+    "T48n2012B": dict(title="待验（T48n2012 B本）", juan="1", ce="48", bytes=50482,
+                     verify="黃檗", purpose="裴休相关·B本（入库时以 XML 自题验名）", who="r9"),
+    "X88n1646": dict(title="居士傳（卍續藏·撰者待XML验）", juan="?", ce="88", bytes=1273718,
+                     verify="居士傳", purpose="裴休本传（卷次待抽验）·丙C後世編纂", who="r9", big=True),
+    "X63n1225": dict(title="中華傳心地禪門師資承襲圖（唐裴休問·宗密答）", juan="1", ce="63", bytes=59140,
+                     verify="承襲圖", purpose="裴休亲撰·甲A級（宗密荷泽系谱核心·知歸子所評對象）", who="r9"),
 }
 
 
@@ -202,7 +211,8 @@ def ingest(sig, meta, apply_, max_bytes, raw=False):
     fname = f"{sig}.xml"
     path = DEST / fname
     if raw:
-        vol = sig.split("n")[0]            # T48n2008 -> T48
+        vol = sig.split("n")[0]            # T48n2008 -> T48；X88n1646 -> X88
+        top = vol.rstrip("0123456789")     # 册首字母 T/X（倉庫頂層目錄）
         est = meta["bytes"]
         if path.exists():
             local = path.stat().st_size
@@ -212,7 +222,7 @@ def ingest(sig, meta, apply_, max_bytes, raw=False):
         if not apply_:
             print(f"  ⬇(raw) {sig} {meta['title']}：预估 {est:,} B（dry-run 未下载）")
             return "fetch"
-        text = raw_get(f"{RAW_BASE}/T/{vol}/{fname}", expect=est)
+        text = raw_get(f"{RAW_BASE}/{top}/{vol}/{fname}", expect=est)
         blob_sha = git_blob_sha(text)
         mk = meta.get("verify", "")
         if mk and mk.encode("utf-8") not in text:

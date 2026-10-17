@@ -73,6 +73,7 @@ Never fabricate task substance (M0.4); truth/traceability outrank speed (M0.1/M0
 4. **Human decides content** — The agent classifies/selects/scaffolds/ranks. It does NOT compose biography text, invent 十科 names, or assert monk data without source.
 5. **Irreversible acts require explicit OK** — Push, delete, publish → user confirms first.
 6. **Connect-not-duplicate** — Reference existing `persona.schema.json`, `person_trajectories.yaml`, project audit scripts; do not recreate the same discipline.
+7. **探源四问与两层隔离** (v5.1) — 每条承重断言除出处外须能答：是否存在 / 在哪里（含**架号**）/ 是否可用 / 如何取用（参但不限于此）。受限通道（需权限·申请·付费·非公开）与无公开路径的传闻层**各自单独立账**（台账 §九/§十），**零入库、零上页**；取用申请与对外接触须用户逐次同意。
 
 ## Requirement refinement
 
@@ -86,14 +87,33 @@ When the ask shifts or expands, restart from R0; do not silently substitute gran
 AGENTS.md                        ← this file
 tasks/PLAN.md                    ← goal + DoD + first move
 tasks/PROGRESS.md                ← append-only changelog
+tasks/语料通道与文献缺口台账.md    ← 探源台账（§一通道实测 · §三缺口 L0–L3 · §六探源问题域 Q1–Q14 · §七逐人史源谱 · §九受限通道 O0–O4 · §十传闻层 A–F）
 .harness/manifest.json           ← HarnessPlan (features, modules, capabilities, files, provenance)
 .harness/gates.md                ← hard/soft gate definitions
 .harness/PROVENANCE.md           ← derivation record (which rule/capability fired)
-.harness/check.py                ← self-check gate (run: python .harness/check.py)
+.harness/check.py                ← harness self-check (run: python .harness/check.py)
+.harness/_tagcheck.py            ← 标签配平闸（逐页：index + monolith + portraits/*）
+.harness/_linkcheck.py           ← 链接落盘闸（目录即站点根·相对链接必须存在）
 .harness/capabilities.local.md   ← task-local capability ledger (concretize)
 .harness/ledger.md               ← durable memory (M2)
 .harness/pointer.json            ← resolved factory path
+── 产物层（v4·目录即 demo 根）──
+index.html                       ← 索引页（卡片 → 分册）
+portraits/<slug>.html            ← 一人一分册 = 手工编辑的真相源
+parts/legend.html                ← 全页通用信度凡例（单一源·sync-legend 刷入分册）
+assets/portrait.css              ← 分册样式（monolith 内联同一内容）
+monolith.html                    ← 单文件分享件（非阅读主路径）：全 N 人自包含，勿手工编辑
+portraits/_legacy/               ← v0.2 旧版式归档（不参与构建）
+build.py                         ← split / merge / sync-shell / renumber / sync-legend / check
 ```
+
+## Build workflow (v4)
+
+1. 只改分册面板区 `portraits/<slug>.html`（公共件在 `parts/legend.html`、`assets/portrait.css`）。
+2. `python build.py merge` → 重生成 `monolith.html`（自动重编 `portrait-order`）；另存一份用 `python build.py merge dist/monolith.html`。
+3. 页头/导航/页脚措辞或人数变更后：`python build.py sync-shell`（正文逐字节保留、幂等）；凡例变更走 `sync-legend`。
+4. 验收四闸（五个检查面）：`python build.py check`（内含 5 项）·`python .harness/check.py`·`python .harness/_linkcheck.py`·`python .harness/_tagcheck.py`，全绿方可交。
+5. `split` 仅用于结构重建（覆盖前有 `.bak` 保护）。monolith 定位为分享件：人物 > 12 或体积 > 400 KB 即删常驻件改按需生成（见 gates.md）。
 
 ## How to resume (new session)
 

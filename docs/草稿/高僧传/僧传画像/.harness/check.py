@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """check.py · 僧传画像 harness self-check (M3 gate, strict)."""
-import json, re, sys
+import io, json, re, sys
 from pathlib import Path
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")  # 移植安全：不依赖宿主 locale（cp1252 等）
 
 ROOT = Path(__file__).resolve().parent.parent  # 僧传画像/
 MANIFEST = ROOT / ".harness" / "manifest.json"
