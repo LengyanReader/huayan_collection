@@ -251,6 +251,19 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: rulai-minghao
+  group: 经论茶歇
+  icon: 📖
+  title: 九九华严第七品 如来名号品之拼读
+  title_sub: 华严经第七品·第二会首品·卷十二全篇·序请说三分·四十问·四天下十方名号（十方各十名）·娑婆百亿与娑婆十方名号·类通一切·名号二百一十一·八十与六十对读·藏译独有品〈如来华严品〉之辨·注疏诸家会读（澄观·法藏·李通玄·海云＋智俨·慧苑）·数据层·未完备已标明
+  updated_at: '2026-10-19'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第七部_如来名号品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: puxian-sanmei
   group: 经论茶歇
   icon: 📖
