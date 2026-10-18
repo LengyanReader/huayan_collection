@@ -32,3 +32,12 @@
 | 2026-10-17 | agent | L.136 核订 `三十九品研究` §2.1：`世间净眼普严殿`→`阿兰若法菩提场`＋〔L.136 校订〕注（`X0221` L3181「約處。名摩竭提國法阿蘭若菩提場會」一手佐证） | X0221／T1735／T10n0279 | done |
 | 2026-10-17 | agent | L.136 第 2 项：`T1871`《華嚴經旨歸》补入 `三十九品研究`（§2.4＋§八 参考文献＋修订志 3 条）与 `系列总纲`（§五 bullet／§六 行／新 §八 十义大纲／L5）；细目逐字核实底本；底本自歧二处照录不统一 | `cbeta_txt/T1871_法藏_华严经旨归.txt` L45–451 | done |
 | 2026-10-17 | agent | L.136 门禁全绿：`.harness/check.py` ✅｜`verify_round_h2` 34 片段/0 失配｜`verify_sources` EXIT=0｜`t1_quote --check` 31 条/0 失配｜`verify_t1_bikan` ALL PASSED｜`build` 42 files｜28,412,788 B｜EOL 全保 | verify_* 诸关 | done |
+
+- 2026-10-17 kx2 校勘落改闭合：8页~35处（MISS✓ 9→0·错挂史源归位 huineng/jianzhen/huiyuan/zhiyi/peixiu·盘外降◐ bukong/fazang+两页图例全局校勘注·T2061立碑真逐字升级·扫描器 SIGLA 复形与命名檔兜底二修 attr?62→6）·四闸全绿·零入库；下轮 jj1 净检深填。
+
+- 2026-10-17 jj1 净检深填闭合：jingjian.html 拉平 20 层 A–U（T50n2063 本传并序 79 片段全命中✓·待核 0 全站唯一全净·新增「莫由諮稟/晋咸康中」归位与「其法不成」主体考定）；新建 scripts/quote_selfcheck.py 严格自查仪·四闸全绿·零入库；下轮 jq1 金乔觉。
+- 2026-10-17 jq1 金乔觉新建页闭合：新建 portraits/jinqiaojue.html（order=10·单源丙C）·盘内 T50n2061 卷廿一〈九华山地藏传〉约500字逐字回采·20层A–U全拉平·64片段全命中待核0（全站第二全净页）；守律=本传不书「乔觉」(◐九华山志层追称)·本传未言「化身」(戊E不裁)·神异丁D与史实双栏；新建后自查8处省笔/简体标签「」→〔〕·复扫CLEAN；index 加金乔觉卡+规划中缩为仅空海+footer 11人；四闸全绿(build check 11页/harness/linkcheck 36/tagcheck)·零入库；下轮 kh1 空海（先估 T55n2161 御请来目录在盘史源）。
+| 2026-10-18 | agent | 收束：品六 §5.3 十五条科判表格内李通玄原文节引繁体照底本订正（L856–L872），第一会 §5 格式一致性收束。 | 收束批次 | done（本地） |
+| 2026-10-18 | agent | 品四 §5 补充关键术语精到英文对应（四門判/世界海/dhātu-samudra/差之無差-無差之差/二源成就/infinite interpenetration） | 英文对应试水 | done（本地） |
+| 2026-10-18 | agent | 第一会六品 §5 补充关键术语精到英文对应（统一风格：fourfold analysis/main theme/textual division/ocean of worlds/infinite interpenetration 等） | 英文对应全六品 | done（本地） |
+| 2026-10-18 | agent | 第二会首品《如来名号品》第七部框架创建（卷十二），沿用既定体例 | 第七品起草 | done（本地） |

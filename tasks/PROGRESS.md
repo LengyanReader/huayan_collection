@@ -79,3 +79,11 @@
 - **Next:** ① **开第七品《如来名号品》（卷十二·品7）专篇**（成篇后落 `docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/`，见总纲 §七）；② **待授权**：部 4 §5.1–5.3 简体引文逐字回源订正（并补部 4／部 5 §5〔体例〕注之「引文照底本一律繁体」句）· 部 1 L55/L61 重复 H3 删并 · `三十九品研究` §2.1 表其余行场所订正 · `经学文献/` 下 5 个非系列件归位 · O1/O2/O6（含仓根 4 个 tracked 垃圾文件）；③ 查六十卷 4 是否真缺第三·四佛；④ `系列总纲` §五／§3.2 添藏译指针。
 - **Sources:** `harness_factory` SKILL.md / capability-router.md / requirement-refinement.md / derivation-rules.md / core/01·04·05；本仓 `Makefile`（`verify-all` L96）· `CLAUDE.md` · `harness/README.md` · `.harness/manifest.json`；`data/references/cbeta/T10n0279.xml`；`cbeta_txt/T1732_智俨_搜玄记.txt`·`T1735/T1733/T1739_*.txt`·`X0221_慧苑_续华严略疏刊定记.txt`·`T09n0278_juan3/4.txt`·`T1871_法藏_华严经旨归.txt`；复算 `scripts/`{`miaoyan_metrics`,`ru_lai_studies`,`sjcj_puxian_studies`,`huazang_shijie_studies`,`pilu_shena_studies`}`.py`；门禁 `scripts/verify_round_h2.py`·`t1_quote.py`·`verify_t1_bikan.py`。
 | 2026-10-17 | **R1 末批·裴休综述（底档 12/12 收口）**（用户「同意」）：CBETA 通道实证——T51 仅 n2066–n2101，景德传灯录/五灯低号段整段未数字化（DILA 同缺）→改道四书入库（T48n2012A/B 传心法要+宛陵录·X88n1646 居士传·X63n1225 承袭图「裴休問·宗密答」问答体实题）；居士传裴公美传**卷十三** milestone 核得；宋传卷六宗密传引裴休论(L4914–4961)取原文；**新建《裴休_全方位文献综述》12 节**；peixiu.html 回灌：甲A 纪年(842钟陵/848宛陵/857序)入年谱行迹、居士传乙→丙·承袭图甲→乙、遇黄檗二系✗/荷泽黄檗扶教抑宗✗/生卒二说✗/子名✗并存、参考表重排（删未验 T2058 号）；探针×5 已删；merge+四闸全绿（monolith 2211行/318.5KB） | docs/祖师人物/裴休_全方位文献综述.md + data/references/cbeta/×4xml+INGEST_log+README + cbeta_txt×4 + scripts/fetch_cbeta_history.py + demo peixiu.html/monolith/台账 | ✅ 四闸全绿·主仓 commit 不 push·高僧传目录零入库·demo 名单综述底档 10/10 齐 |
+
+### 2026-10-18（收束：第一会 §5 格式一致收束）
+- **品六 §5.3 十五条科判表格**：将表格内李通玄原文节引统一为繁体照底本（L856–L872），与品四 §5.1–§5.3 及体例要求对齐。
+- **品四 §5 英文对应（试水）**：补充澄观四門判（*fourfold analysis*: 來意 *purpose/occasion*、釋名 *explanation of title*、宗趣 *main theme/doctrinal purport*、釋文 *exegesis*）、宗趣「世界海」（*ocean of worlds*, *dhātu-samudra*）、總義「差之無差／無差之差」（*difference within non-difference / non-difference within difference*）；李通玄「二源成就」（*twofold accomplishment*: *the karmic force of sentient beings* + *the power of vows of Buddhas and Bodhisattvas*）；來意中「重重無盡」（*infinite interpenetration*）。
+- **第一会六品 §5 英文对应（全六品）**：按统一风格补充四門判/宗趣/科判等关键术语英文（品二如来现相品、品三普贤三昧品、品五华藏世界品、品六毗卢遮那品）并沿用既定译法（Cleary 系列通行用语）。
+- **第一会整体**：第一会（品 1–6）§5 四家+智俨·慧苑框架齐备，格式一致性与关键术语英文对应已收束。门禁：python .harness/check.py . → OK。
+- **第七品起草**：创建第二会目录 第二会_普光明殿_差别因果周，新建《如来名号品》第七部框架（华严经细读_第七部_如来名号品.md），沿用第一会既定体例与校勘纪律。
+
