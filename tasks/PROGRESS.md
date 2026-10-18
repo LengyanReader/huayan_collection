@@ -116,5 +116,7 @@
   - **② 部 6「李通玄所依本」订正**（原「就六十本」→**八十**）：六处（§5 引言／§5.3／§5.4 表所依本栏／§5.4 新增〔校订〕块／§6.1 会读／§6 首注／附录四 #3）皆订并留〔校订 2026-10-19〕按语；据 `T1739` 目录＝八十 39 品序次＋八十品名（「毘盧遮那品」17 见·「盧舍那佛品」0 见）＋八十译名「大威光」（0 见「普莊嚴童子」）。
   - **③ 规划后续**：`docs/工程治理/next-phase-plan.md` 增 **L.137**（十项）；`tasks/PROGRESS.md` Handoff「Next」改写。
   - **④ 构建**：`cd web/demo && python scripts/build.py` → **43 files｜28,570,508 B**，新增 `web/demo/articles/rulai-minghao.html`（131,812 B）。
-  - **⑤ 门禁（复跑）**：`.harness/check.py` ✅OK｜`verify_round_h2.py` ✅ALL PASS（34/0）。
+  - **⑤ 门禁（复跑）**：`.harness/check.py` ✅ OK｜`verify_round_h2.py` ✅ ALL PASS（34/0）｜`verify_sources.py` EXIT=0（第七部在册 存疑×23·cite×4）｜`git diff --check` 净。
+- **`verify_demo` 1 错（非本批·如实记录）**：唯一 FAIL＝`verify_jj_lectures.py`「B meta.episodes 12 ≠ 目录实测 14 集·台账漏收新集」。**根因**：`docs/hy_refs/*` 属 `.gitignore:37` 忽略区，**他会话**本地新增 OCR ep13/ep14（`git ls-files` 0 项），而 tracked 之 `data/research/jj_huayan_lectures.yaml` 仍 `episodes: 12`，未重跑 `jj_ocr_audit → _jj_build_lib`。**证与本批无关**：`git diff --stat HEAD~1 HEAD -- data/research/jj_huayan_lectures.yaml docs/hy_refs/` 为空。**未代他批修**（越权），建议其重跑立册。其余诸门（build／check／verify_round_h2／verify_sources／t1_quote／verify_t1_bikan／shizhu／ru-lai／story-comic／data-science／haiyun）皆 OK。
+- **⑥ push 与线上核验**：`git push origin main` → `daf67e3..1875b1e`（rc=0）；~100s 后线上：`web/demo/articles/rulai-minghao.html` **200／80,867 B**（与本地构建一致；「如来名号品」×25·「如来华严品」×7·「诸家对读小结」×3）、`articles/index.html` 200／31,009 B、`articles/piluzhena.html` 200／111,458 B。
 
