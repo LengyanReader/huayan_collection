@@ -4150,3 +4150,11 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 - html 363,894 → **393,499 B**（Ep3 32,096 漢字）
 **门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit 0 FAIL。
 **下一步**：Ep 4 K3 流水线（切分→生成 K3c→精校 K3d·依 Ep 3 双轮节奏·玄谈段无 CBETA 回源）。
+
+### L.144 · Ep 4 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+- _probe_ep04b.py 定界 → _segment_ep04.py 6 講章·3400 有效 cues → 73 可讀段·ep04.md **98,195 B**·28,374 漢字·状态 **試點精校**
+- 玄谈段三段结构：第一節承接（舍利弗/阿難·婆羅門·大西洋/太平洋）→第二節華嚴寺華嚴學華嚴法（~24:50）→現場問答（~02:07:50）
+- yaml ep4 待校→試點精校·补 collation_* 字段·html 393,499 → **496,645 B**（Ep4 29,956 漢字）
+**门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit 0 FAIL。
+**铁律自校**：不引经文（玄谈段·CBETA 空合规）·raw 不擅改·佛教史观 K3d 標〔本文判斷〕·本地 commit **未 push**。
+**下一步**：Ep 4 K3d 二次精校（逐段填〔〕按语 + huayanhai 比对 + §三~§五完整化）·或 Ep 5 K3c 流水线。

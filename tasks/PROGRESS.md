@@ -264,3 +264,20 @@
 **铁律自校**：未造任何经文（玄谈段·CBETA 空）·讲者口语照 OCR 原字形不擅改·slide echo 標記保留·存疑标〔待核〕/推断标〔本文判断〕·不臆造。
 **验证**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit_consistency 0 FAIL。
 **本地 commit · 未 push**（memory 5102c2b8）。
+
+## L.144 · Ep 4 K3c 首轮 raw 逐段照录（2026-10-22）
+
+- **产物**：`episodes/ep04.md` 新建 **98,195 B**（402 行·§二正文 28,374 漢字·73 可讀段）·状态 **試點精校**
+- **切分**：`_segment_ep04.py` 依 `_probe_ep04b.py`（heading marker + 每 5 分钟话题流）定 6 講章边界·3415 cues → 3400 有效（剔 15 句首独立 slide 残片/noise）
+- **讲章**：§A 承接前講·舍利弗/阿難兩系統 · §B 婆羅門文化融入·大西洋/太平洋文明 · §C 玄談第二節·華嚴寺承先啟後 · §D 五教止觀·法身佛行法四十二世 · §E 貧富礦上下迴向·具足善根·清涼閣→通天塔 · §F 現場問答（港西提問·靈性經濟學·禮謝和上 02:07:50–03:02）
+- **结构**：〇凡例·一概要·二逐段照录[OCR 起止]+字数量·三~五待续（延後 K3d）·六后续批次路线
+- **元数据**：yaml ep4 status 待校→**試點精校**·补 collation_doc/coverage/sections/paragraphs·topic_zh 扩为二段+問答
+- **视图**：build_jj_collation_page.py 加 ep04_md/EP04_HTML/media_bar_html(4)/tabbar「✒️ Ep 4 精校」/section#tab-ep04·html 393,499 → **496,645 B**（Ep4 29,956 漢字）
+
+**铁律自校**：**本轮不引入任何经文引文**（属玄谈段·不涉 CBETA 回源）· raw 保字不擅改·涉印度婆羅門／舍利弗阿難兩系統佛教史观 K3d 時須標〔本文判斷〕不代講者立論 · slide echo 標記不删 · 不臆造。
+
+**验证**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0**（skip_html 白名单 496,645B DOCTYPE/收尾/体量 OK）· audit_consistency 0 FAIL。
+
+**并行隔离**：staged 显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
+
+**本地 commit · 未 push**（memory 5102c2b8）。下步 Ep 4 K3d 二次精校批补〔〕按语 + huayanhai 比对 + §三~§五完整化。
