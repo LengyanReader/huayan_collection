@@ -4066,3 +4066,39 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 
 **铁律自校**：本批未造任一经文·未擅改既有 SSOT·订正只改元数据不改讲者口语·本地 commit · 未 push。
 
+---
+
+## L.140 · 独立文章总目录重排（A 分层重构·2026-10-21）
+
+**触发**：用户「页面需要重新梳理目录或显示结构·毕竟有很多的独立文章和专题·请做好分类」+ 「别忘添加海云法师 99 华严讲法字幕梳理」。
+
+**背景**：L.139.1 push 后·用户开 `file:///.../web/demo/articles/index.html` 查看时·发现 jj-huayan-collation 未上目录。探因：L.138 Phase 3 时将 entry 写入 `standalone_articles.yaml`·但 `data_source:` 采用了 list（`- jj_huayan_lectures / - jj_huayan_collation`）·build.py `practice.get(ds)` 将 list 作 dict key 报 unhashable → 崩。本轮一并修。
+
+**方案**：三候选 A/B/C 中用户选 **A 分层重构**（修 bug + 归组 panjiao + 排序 + group summary·不改数据模型 schema·只新两字段）。
+
+**变更（三文件）**：
+
+1. **`data/translation/standalone_articles.yaml`** 重写：
+   - jj-huayan-collation：`data_source: jj_huayan_collation` (标量) + `skip_html: true` + `family: lectures` + `order_in_group: 2` + 标题「海云法师 · 九九华严讲记校勘工作台」
+   - `family` 7 值 + `order_in_group` 2–10 分配至 24 个 others 入口
+   - mimi/faxiang/yikong/tiantai `group: 宗派研究 → 宗派与判教`·**7 组→6 组**
+   - `group_order` 新 `summary` 行（如「华严经细读系列 · 3 总纲 + 7 单品（依品次第 1→7）」）
+
+2. **`web/demo/scripts/build.py`**：
+   - `load_standalone_articles` 三处 append 透传 `family`/`order_in_group`/`skip_html`
+   - `build_articles` per-page 循环头 `if a.get('skip_html'): continue`
+   - `build_articles` bucket 集合后新排序·group 区开内新插 `summary_html`（gspec[key]['summary']）
+
+3. **`scripts/verify_demo.py`**：新 `skip_html` 分支（读 yaml `others`·`skip_html: true` 入口仅校 DOCTYPE/收尾/体量·不再要 build.py 内模三签名）。
+
+**产物**：
+- `web/demo/articles/index.html` 38,042 B · **34 篇 · 6 组**
+- grp-0 卡片实序：3 总纲 → 7 单品（品数 1→7 无扭曲）
+- grp-3 卡片实序：haiyun-lectures → **jj-huayan-collation** → chan-traces → chan-beyond → sanshiqi
+- tabs 内嵌 `var ARTICLES` 同步（包含 jj-huayan-collation）·**不**影响 tab 正文内容
+- jj-huayan-collation.html 256,333 B 不变（skip_html 生效）
+
+**门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXITCODE=0** · audit_classify 0 issues · verify_sources EXIT=0。
+
+**铁律自校**：本批未造任一经文·未改 讲记 SSOT·订正只重构目录层元数据·本地 commit·**未 push**（待用户 OK）。
+

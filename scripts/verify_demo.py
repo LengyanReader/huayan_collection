@@ -304,6 +304,26 @@ else:
 for obj in sorted(os.listdir(ARTICLES)):
     if not obj.endswith('.html') or obj == 'index.html':
         continue
+    _id_sk = obj[:-5]
+    # 外部专项构建入口（yaml 中 skip_html: true）：build.py 不写同名 .html，
+    # 由项目内其他脚本（如 scripts/build_jj_collation_page.py）自包含处理。
+    # 本页必须存在且包含自身声明的 marker，但不必同享 build.py 内模的 ARTICLE /
+    # PRACTICE_DATA / renderArticle 三签名——则属无意义的同构卡销。
+    _skip_entry = next((o for o in (_reg.get('others') or []) if o.get('id') == _id_sk and o.get('skip_html')), None)
+    if _skip_entry:
+        _p_sk = os.path.join(ARTICLES, obj)
+        if not os.path.exists(_p_sk):
+            fail(f'articles/{obj}: skip_html 入口但页面缺失（外部构建脚本未跑或未入库）')
+            continue
+        _h_sk = open(_p_sk, encoding='utf-8').read()
+        if not _h_sk.lstrip().startswith('<!DOCTYPE html') or not _h_sk.rstrip().endswith('</html>'):
+            fail(f'articles/{obj}: skip_html 页面不属完整 HTML 开/收')
+            continue
+        if len(_h_sk) < 1024:
+            fail(f'articles/{obj}: skip_html 页面体异常小 ({len(_h_sk)}B)')
+            continue
+        ok(f'articles/{obj}: skip_html 入口 (external builder·{os.path.getsize(_p_sk):,}B) — DOCTYPE/收尾/体量 OK')
+        continue
     path = os.path.join(ARTICLES, obj)
     with open(path, encoding='utf-8') as f:
         html = f.read()

@@ -190,6 +190,31 @@
   - 删除易漂移的「全檔字数」字段·5 档（ep01/ep02/README/collation.yaml/发布页）一致性扫描全 clean。
 - **构建脚本修复**：`build_jj_collation_page.py` 补 `import os`（原缺·ep02 条件读取会崩）·修控制台「汉字」mislabel（`len(md)` → 真 CJK 正则计数）·扩展支持 ep02.md。重跑 → `jj-huayan-collation.html` **148,488 → 256,333 B**（新增 Ep2 tab · 实测校验包含普賢乘/靈性教室/D15–D17/21,925）。
 - **未新增任何未存疑引文**·严守分层铁律（不逆向授权修正主体）。
+
+### 2026-10-21（L.140 · 独立文章总目录重排 · A 分层重构）
+
+用户「页面需要重新梳理目录或显示结构·毕竟有很多的独立文章和专题·请做好分类」·另提醒「别忘添加海云法师 99 华严讲法字幕梳理」。给出三候选（A 分层重构 / B 最小修 bug / C 树目次）·用户选 A·并即木不拖·本轮开启。
+
+- **摸底**：`index.html` 现 33 篇 · 7 组·实际存在 8 项可商糞：经论茶歇(10) 混装 3 总纲 + 7 单品·单品显示 1→4→5→6→7→3→2 乱·修学与禅门 内部混杂讲记类·宗派与判教(1) 孤儿组·华严祖师平铺无次·顶部无内容家族导览·旧 yaml 中 jj-huayan-collation entry 中 `data_source: list` 导致 build.py 崩溃（本轮发现）。**未**发现 yaml group_order 拼写错（旧探报 属 PowerShell 展示伪影·非真错）。
+- **yaml**（`data/translation/standalone_articles.yaml`·完全重写 335→403 行）：
+  - `data_source: list` → 标量 `jj_huayan_collation` + `skip_html: true`（build.py 不写同名 html·避免与 `build_jj_collation_page.py` 互盖）
+  - 新增两字段：`family` (`huayan_xidu` / `masters` / `sect_panjiiao` / `practice_zen` / `lectures` / `cross_discipline` / `frontier`) + `order_in_group`（单品 4→10 · 总纲 1→3 · 讲记 1→2 · 四宗 1→5 · 祖师 YAML 登记序已合法脉无需显式）
+  - 归组：mimi/faxiang/yikong/tiantai 从 `宗派研究` 合入 `宗派与判教`·panjiao 仍属本组作总览首位·**7 组→6 组**
+  - `group_order` 新增 `summary` 行（如「含 系列总纲 3 · 单品拼读 7」）供页头小标题旁展示
+  - jj-huayan-collation 标题扩为「海云法师 · 九九华严讲记校勘工作台」·副标含「讲记主体 · huayanhai/外部导读参照 · Ep1-2 已校 · Ep3+ 进行中」
+- **build.py**（`web/demo/scripts/build.py`）：
+  - `load_standalone_articles` 三处 append（TS/masters/others）均透传 `family` / `order_in_group` / `skip_html`（masters 固定 `family: masters`）
+  - `build_articles` per-page 循环头部新 `if a.get('skip_html'): continue`（只跳 HTML 写·不跳 index 登卡）
+  - bucket 集合后新排序（`order_in_group` None 沉尾 · 保持自然）
+  - group 区开 内新插 `summary_html`（当 `gspec[key]['summary']` 非空时）· flex-wrap:wrap 保证窄屏不溢
+- **verify_demo.py**：新 `skip_html` 分支·对 `data/translation/standalone_articles.yaml` 中 `skip_html: true` 入口仅校 DOCTYPE/收尾/体量 (`os.path.getsize ≥ 1024`)·不再要 `var ARTICLE =` 等 build.py 内模三签名（属无意义同构卡销）。
+- **产物**：
+  - `web/demo/articles/index.html` 38,042 B · **34 篇 · 6 组**·顶部 nav 展新 6 组·经论茶歇(10)/华严祖师(9)/宗派与判教(5)/修学与禅门(5)/跨学科对读(2)/前沿议题(3)
+  - grp-0 card order 实测：huayan-studies(1) → series-outline(2) → avatamsaka-studies(3) → shizhu(品1) → ru-lai-xian(品2) → puxian-sanmei(品3) → shijie-chengjiu(品4) → huazang(品5) → piluzhena(品6) → rulai-minghao(品7) — **单品 1→7 无扭曲**
+  - grp-3 修学与禅门 card order：haiyun-lectures → jj-huayan-collation → chan-traces → chan-beyond → sanshiqi — **讲记与校勘前置**
+  - **jj-huayan-collation 首次上 index**（href 存在）·外部产物 256,333 B 保留（`var ARTICLE` 未射入 · verify 新分支接受）
+  - tabs 重 build 内嵌 `var ARTICLES` 同步（包含 jj-huayan-collation）·5 tab 各自 +1/-1 diff（只一 行 JSON）·**不**影响其他 tab 内容
+- **门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXITCODE=0**·audit_classify 0 issues·verify_sources EXIT=0·**本批 未新增任一经文引文**·仅目录层结构重构·本地 commit·**未 push**（待用户 OK）。
 - **本地 commit `L.139.1` · 未 push**（用户偏好）。
 
 

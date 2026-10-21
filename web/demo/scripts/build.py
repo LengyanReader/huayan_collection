@@ -822,6 +822,8 @@ def load_standalone_articles():
             'title_sub': art.get('title_sub', ''),
             'icon': art.get('icon', '📌'),
             'group': art.get('group', ''),
+            'family': art.get('family', ''),
+            'order_in_group': art.get('order_in_group'),
             'version': art.get('version', ''),
             'meta': art.get('meta', ''),
             'doc': art.get('doc', ''),
@@ -842,6 +844,8 @@ def load_standalone_articles():
             'title_sub': ('华严祖师 · ' + m['role']) if m.get('role') else '华严祖师',
             'icon': '🧑',
             'group': m.get('group', ''),
+            'family': 'masters',
+            'order_in_group': m.get('order_in_group'),
             'version': '',
             'meta': '',
             'doc': m['review_doc'],
@@ -860,6 +864,8 @@ def load_standalone_articles():
             'title_sub': o.get('title_sub', ''),
             'icon': o.get('icon', '📄'),
             'group': o.get('group', ''),
+            'family': o.get('family', ''),
+            'order_in_group': o.get('order_in_group'),
             'version': o.get('version', ''),
             'meta': o.get('meta', ''),
             'doc': o.get('doc', ''),
@@ -868,6 +874,10 @@ def load_standalone_articles():
             # 由 build_articles 内嵌完整数据 + 自包含渲染脚本生成，正文单源存于 YAML
             'data_source': o.get('data_source', ''),
             'data_pool': o.get('data_pool', 'practice'),
+            # skip_html: true → 该 id 的 HTML 由项目内其他专项脚本生成（如 jj-huayan-collation
+            # 由 scripts/build_jj_collation_page.py 生成），build.py 只登记 index 卡片入口，
+            # 不再重复生成同名 .html，避免两个来源互相覆盖。
+            'skip_html': bool(o.get('skip_html', False)),
             # 内容最后更新时间：仅登记「内容实质变更」之日，未登记则页头不显时间带
             #（不得以构建时间冒充内容更新时间——二者性质不同）。
             'updated_at': o.get('updated_at', ''),
@@ -1474,6 +1484,9 @@ def build_articles(articles):
     count = 0
 
     for a in articles:
+        if a.get('skip_html'):
+            # HTML 由专项脚本生成，build.py 只在 index 登记卡片入口，跳过页面写入
+            continue
         payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'data_pool', 'back', 'updated_at')}
         title = a.get('title', a['id'])
         ds = a.get('data_source', '')
@@ -1672,6 +1685,14 @@ def build_articles(articles):
     for a in articles:
         buckets.setdefault(a.get('group') or fallback, []).append(a)
 
+    # 组内排序：优先依 order_in_group（None 沉尾·保持自然登记序）；
+    # 无 order_in_group 者维持 YAML/注入先后（华严祖师 YAML 已按法脉 杜顺→智俨→法藏→澄观→宗密→李通玄→梦参 登记）。
+    for _k in buckets:
+        buckets[_k] = sorted(
+            buckets[_k],
+            key=lambda x: (x.get('order_in_group') is None,
+                           x.get('order_in_group') if x.get('order_in_group') is not None else 0))
+
     # 次序：先依 group_order 声明之组，余者（未声明之组／兜底组）依首见追加
     order = [g['key'] for g in (reg.get('group_order') or []) if g.get('key')]
     for k in buckets:
@@ -1683,11 +1704,15 @@ def build_articles(articles):
     for gi, key in enumerate(order):
         items = buckets[key]
         icon = gicons.get(key) or (gspec.get(key, {}) or {}).get('icon') or '📂'
+        summary = (gspec.get(key, {}) or {}).get('summary') or ''
         cards = ''.join(_card(a) for a in items)
+        summary_html = (f'<div style="font-size:0.74em;color:var(--text2);margin-top:2px">{summary}</div>'
+                        if summary else '')
         sections.append(f'''<section id="grp-{gi}" style="margin-top:{8 if gi == 0 else 26}px">
-<div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:12px">
+<div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:12px;flex-wrap:wrap">
 <span style="font-size:1.12em;font-weight:700;color:var(--gold)">{icon} {key}</span>
 <span style="font-size:0.74em;color:var(--text3,var(--text2))">{len(items)} 篇</span>
+{summary_html}
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px">
 {cards}
