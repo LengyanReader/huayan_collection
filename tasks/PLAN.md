@@ -252,4 +252,44 @@ R0–R4 精炼确认：
 4. **`haiyun-lectures.html`** 增 ep01 链接（不吞并·用户 2026-10-21 裁定）。
 5. **铁律自校**（未造经文 · 未擅改 SSOT · 存疑标记 · 本地 commit）。
 
+---
+
+## L.138.1+　分层铁律内化（已完成 · 2026-10-21）
+
+```text
+用户补充提醒：「99 华严的讲经才是主体内容，其他只是作为参照和对比」
+```
+
+### 一、已完成
+
+- **`.harness/decisions.md # 9`** 新增：讲记校勘分层——**99 华严讲记 = 主体**；huayanhai 玄谈旧整理 + 外部 `C:\华严\经典著作` 华严导读/玄谈类 = **仅参照与对比**·不逆向授权修正主体·不引入外部权威判读。**例外**：Ep 13+ 正行段 CBETA `T10n0279` 回源为最高铁律（不属本分层）。
+- **`ep01.md §〇 凡例`** 开头新增 ⚖ 分层原则声明；**§五** 标题「与 huayanhai 比对表」→「huayanhai 玄谈系列参照对比」·加本表性质声明「不逆向授权旧稿修正新讲记」。
+- **`README.md §2.0 主体 vs 参照`** 新节；§2.1 三源互证行中标注 主体／参照／最高 三属性·尾行新增「**不因参照而改写主体**」。
+- **长期 memory** `450522ca-4b76-4001-8305-cd917e7d6a87`（`important_decision_experience`）已创建。
+- 重建 `jj-huayan-collation.html` 148,488 B（合并 L.138.1+ 与 L.138.2 增量）·门禁全绿。**本地 commit `73a23de` · 未 push**。
+
+---
+
+## L.138.2　外部「华严导读/玄谈」参照源接入·目录级（已完成 · 2026-10-21）
+
+```text
+用户扩展：可将 huayanhai 中与 C:\华严\经典著作 下所有华严导读或玄谈之类主题与 Ep 1 内容进行对比
+R4 确认：Q1(b) 一级同名 4 件 + 二级传统纲要 2 件 = 6 件·Q2 🅐 目录级（不做抽取）·Q3 分开发
+```
+
+### 一、已完成
+
+- **`ep01.md §5.4`**（+22 行）：6 件外部档 E1–E6 目录级对照·每件列文件名/级/归属/**与 Ep 1 主论题映射候选**/内容提取状态〔待提取〕。E1《堪玄记 02》→§A/B·E2《堪玄记 一》→§D/E·E3《勘玄记 三》→§F·E4《勘玄记 04》→§D/F·E5《淨行品剖裂玄義疏》→§C·E6《華嚴經旨歸 T1871》→§D–F。
+- **明确未纳入项**：白话/图解（经本通俗化）·注疏（依文逐句）·经本（本体）·不属「玄谈主题」。`华藏妙海 整理版.pdf` 标〔待核〕不预设归属。
+- **接入路径预留**：`data/references/huayan_daodu_index.yaml`（待 L.139+ 开）。
+- **`jj_huayan_collation.yaml`** Ep1 新字段：`external_daodu_ref{tier1×4+tier2×2}` / `external_daodu_pending×1` / `external_daodu_layering_principle`。
+- **发布**：`jj-huayan-collation.html` 143,762 → **148,488 B**·§五 tab 新增 5.4 小节·严守分层铁律**未新增任何未存疑引文**。
+- **门禁**：check.py ✅ · verify_jj_lectures ALL PASSED · audit_classify 0 issues · verify_sources EXIT=0。**本地 commit `a760dfa` · 未 push**。
+
+### 二、下一步（归入 L.139+）
+
+1. **PDF 文本抽取**（pdftotext / pypdf / calibre）真实内容比对（若授权）·`data/references/huayan_daodu_index.yaml` 建索引。
+2. `华藏妙海 整理版.pdf` 归属人工确认（若属海雲旧稿则入 huayanhai 同级）。
+3. Ep 2–14 精校（方法论承 L.138.1）·huayanhai 玄谈 6 集待续入库·`haiyun-lectures.html` 增 ep01 链接。
+
 
