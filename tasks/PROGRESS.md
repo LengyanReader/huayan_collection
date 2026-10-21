@@ -234,3 +234,21 @@
 **并行隔离**：staged 6 条显式路径 · 未动 高僧传/CBETA ingest/quote_koushu/ep03 scratch。
 
 **本地 commit · 未 push**（memory 5102c2b8）。Ep 3 K3c 写**待用户确认格式妥当后**启动。
+
+## L.142 · 2026-10-21 · Ep 3 K3c 首轮 · raw 逐段照录（試點精校）
+
+**触发**：用户 Message 5「大致可以了，那就进入下一步吧」→ 启 Ep 3 校勘（承 L.141 media bar + 排版 overhaul 妥当后）。
+
+**动作**：
+- **切分**（_segment_ep03.py 复跑）：2881 cues → 2873 有效（剔除 noise/slide）· 6 講章 · 81 可讀段 · 24,370 漢字。边界：§A 00:00:04–00:34:58(16P) · §B 00:35:02–00:59:59(10P) · §C 01:00:01–01:29:56(20P) · §D 01:30:05–01:59:58(17P) · §E 02:00:03–02:17:57(12P) · §F 02:18:02–02:26:12(6P)
+- **生成**（_gen_ep03.py）：docs/经学文献/海云讲记_九九华严/episodes/ep03.md 87,868B · 433 行 · §〇凡例 + §一集段概要 + §二逐段照录（每段 [OCR 起止] + 字数 + 漢字 · 含 slide 拼接「|」提示）· §三~§五 标「待 K3d 补入」· §六后续批次路线图
+- **元数据**：jj_huayan_collation.yaml ep 3 · collation_status 待校 → **試點精校** · 补 collation_doc/coverage/sections/paragraphs(6/81) + huayanhai_xuantan_pending 全 12 集 · podcast 块 S24-01-03 高置信不变
+- **视图**：build_jj_collation_page.py 加 ep03_md 加载 + EP03_HTML 生成 + media_bar_html(3) · tabbar 新按钮「✒️ Ep 3 精校」· 新 section#tab-ep03 · 主 HTML 270,945 → **363,894 B**（+92.9 KB）
+
+**铁律自校**：**本轮不引入任何经文引文**（属玄谈段·不涉 CBETA 回源）· 讲记主体 raw 保字不擅改 · 编者按语（〔本文判斷〕/〔講記比對〕等）延后至 K3d 二次精校批补入 · 不臆造。
+
+**验证**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXITCODE=0**（skip_html 白名单 363,894B OK）· audit_classify 0 issues · audit_consistency 0 FAIL。
+
+**并行隔离**：staged 6 条显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
+
+**本地 commit · 未 push**（memory 5102c2b8）。下步 K3d 待用户确认 Ep 3 raw 版可看后启动。

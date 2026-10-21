@@ -4120,3 +4120,25 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 **铁律自校**：本批未造任一经文·未改 ep01/ep02.md 讲记 SSOT·仅元数据/视图层·本地 commit·**未 push**（待用户 OK）。
 
 **下一步（待用户确认 L.141 妥当后）**：Ep 3 K3c 全量精校写盘（暂停于 6 章边界确认前）。
+
+---
+
+## L.142 · 2026-10-21 · Ep 3 K3c 首轮 · raw 逐段照录
+
+**用户确认**：L.141 media bar + 中文排版 overhaul「大致可以了」→ 启 Ep 3。
+
+**已完成（L.142 · K3c）**：
+- 切分：_segment_ep03.py 6 講章边界 · 2873 有效 cues · 81 可讀段 · 24,370 漢字
+- 生成：ep03.md（87,868B · 433 行）· §〇凡例 + §一概要 + §二逐段照录（含 [OCR 起止] + 字数量） · §三~§五标待 K3d 补入 · §六后续批次路线图
+- 元数据：jj_huayan_collation.yaml ep 3 collation_status 待校→**試點精校** · 补 collation_doc/coverage/sections/paragraphs · podcast 块 S24-01-03 高置信不变
+- 视图：build_jj_collation_page.py 加 EP03_HTML + media_bar_html(3) + tabbar 新按钮「✒️ Ep 3 精校」· 主 HTML 270,945 → **363,894 B**
+
+**门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXITCODE=0**（skip_html 白名单 363,894B）· audit 0 FAIL。
+
+**铁律自校**：**本轮不引入任何经文引文**（属玄谈段）· raw 保字不擅改 · 编者按语延后至 K3d 二次精校批补入 · 不臆造 · 本地 commit · **未 push**。
+
+**下一步（K3d · 待用户确认 Ep 3 raw 版可看）**：
+- 逐段填 〔本文判斷〕/〔講記比對〕/〔OCR 待校〕/〔待聽核〕 標注（约 12 集 huayanhai_xuantan 比對·重点 §B §C 华严经性·§D 四法界·§E 三套工程·§F 法界护法）
+- §三 要語集錄 · §四 huayanhai 比對 · §五 校勘記 三节完整化
+- 状态升 已校·信息無損 · 主 HTML 二次生成
+- Ep 4 K3 流水线接续（切分→生成→精校·依 Ep 3 双轮节奏）

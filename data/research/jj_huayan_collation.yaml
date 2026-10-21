@@ -89,18 +89,24 @@ episodes:
 
   - ep: 3
     segment: "玄談"
-    topic_zh: "AI 時代對讀·2050 年關鍵點·AI 橋表·文明週期"
+    topic_zh: "承接前講·一佛乘→普賢乘·AI 时代對读·华严经行法总綱·四法界深入·三套工程·法界护法"
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "待校"
+    collation_status: "試點精校"
+    collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep03.md"
+    collation_coverage: "K3c 首轮·raw 逐段照录·81 可讀段（有效 cues 2873）·6 講章·§二正文 24,370 漢字·韩字抽取率 100%（不删不改）"
+    collation_sections: 6
+    collation_paragraphs: 81
+    huayanhai_xuantan_ref: []
+    huayanhai_xuantan_pending: [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12]
     cross_ref_series: []
     podcast:
       url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-03--202643-e3na7ot"
       label: "S24-01-03 · 2026年4月第3場 · 148min · 上線 2026-04-27"
       confidence: high
       match_basis: "標題 #4月 + 場序 3 + 時長精確匹配（8869s ≈ 147m49s · 播客 148min）"
-    notes: "本集多幻燈片拼接（| 分隔）·OCR pipe_cues 較高·校勘時需按 | 切分"
+    notes: "K3c 首轮 (L.142)：仅 raw 逐段照录·不擅改不臆造按语·段末〔〕标注延至 K3d 二次精校批·本轮不含任何经文引文（属玄谈段）·本集多幻燈片拼接（| 分隔）·OCR pipe_cues 較高"
 
   - ep: 4
     segment: "玄談"

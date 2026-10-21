@@ -111,6 +111,8 @@ readme_md = io.open("docs/经学文献/海云讲记_九九华严/README.md", enc
 ep01_md = io.open("docs/经学文献/海云讲记_九九华严/episodes/ep01.md", encoding="utf-8").read()
 ep02_path = "docs/经学文献/海云讲记_九九华严/episodes/ep02.md"
 ep02_md = io.open(ep02_path, encoding="utf-8").read() if os.path.exists(ep02_path) else ""
+ep03_path = "docs/经学文献/海云讲记_九九华严/episodes/ep03.md"
+ep03_md = io.open(ep03_path, encoding="utf-8").read() if os.path.exists(ep03_path) else ""
 
 DATA_JSON = json.dumps(episodes, ensure_ascii=False)
 MEASURED_JSON = json.dumps(M.get("measured", {}), ensure_ascii=False)
@@ -118,6 +120,7 @@ CHANNELS_JSON = json.dumps(CHANNELS, ensure_ascii=False)
 README_HTML = md_to_html(readme_md)
 EP01_HTML = md_to_html(ep01_md)
 EP02_HTML = md_to_html(ep02_md) if ep02_md else ""
+EP03_HTML = md_to_html(ep03_md) if ep03_md else ""
 
 
 # ── L.141 · 每集顶部回看媒体条（YouTube + Spotify 播客）───────────
@@ -162,6 +165,7 @@ def media_bar_html(ep_num):
 
 EP01_HTML = media_bar_html(1) + EP01_HTML
 EP02_HTML = media_bar_html(2) + EP02_HTML
+EP03_HTML = media_bar_html(3) + EP03_HTML
 
 TEMPLATE = r"""<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -346,6 +350,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <button class="active" data-tab="overview">📊 概览·14 集</button>
   <button data-tab="pilot">✒️ Ep 1 精校</button>
   <button data-tab="ep02">✒️ Ep 2 精校</button>
+  <button data-tab="ep03">✒️ Ep 3 精校</button>
   <button data-tab="protocol">📖 凡例·体例</button>
 </div>
 
@@ -382,6 +387,12 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 <section id="tab-ep02" class="tab-panel">
   <div class="doc-panel">
     <div id="ep02-body">__EP02_HTML__</div>
+  </div>
+</section>
+
+<section id="tab-ep03" class="tab-panel">
+  <div class="doc-panel">
+    <div id="ep03-body">__EP03_HTML__</div>
   </div>
 </section>
 
@@ -582,9 +593,10 @@ out = (TEMPLATE
        .replace("__CHANNELS_JSON__", CHANNELS_JSON)
        .replace("__EP01_HTML__", EP01_HTML)
        .replace("__EP02_HTML__", EP02_HTML)
+       .replace("__EP03_HTML__", EP03_HTML)
        .replace("__README_HTML__", README_HTML))
 
 io.open("web/demo/articles/jj-huayan-collation.html", "w", encoding="utf-8", newline="\n").write(out)
 _cjk = lambda s: len(re.findall(r"[\u4e00-\u9fff]", s))
-print("已生成 web/demo/articles/jj-huayan-collation.html · %d bytes · %d 集 · Ep1 %d 漢字 · Ep2 %d 漢字 · README %d 漢字" % (
-    len(out.encode("utf-8")), len(episodes), _cjk(ep01_md), _cjk(ep02_md), _cjk(readme_md)))
+print("已生成 web/demo/articles/jj-huayan-collation.html · %d bytes · %d 集 · Ep1 %d 漢字 · Ep2 %d 漢字 · Ep3 %d 漢字 · README %d 漢字" % (
+    len(out.encode("utf-8")), len(episodes), _cjk(ep01_md), _cjk(ep02_md), _cjk(ep03_md), _cjk(readme_md)))
