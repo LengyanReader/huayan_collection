@@ -93,9 +93,9 @@ episodes:
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "試點精校"
+    collation_status: "已校·信息无损"
     collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep03.md"
-    collation_coverage: "K3c 首轮·raw 逐段照录·81 可讀段（有效 cues 2873）·6 講章·§二正文 24,370 漢字·韩字抽取率 100%（不删不改）"
+    collation_coverage: "K3d 二次精校·段末〔〕標注補入·81 可讀段（含 A01–A02 片头 slide 残片与 C19 孤立数字·信息无损不删）·有效 cues 2873·6 講章·§二正文 24,370 漢字·§三術語表 39 條·§五 huayanhai 比對 19 行·§七存疑 23 條"
     collation_sections: 6
     collation_paragraphs: 81
     huayanhai_xuantan_ref: []
@@ -106,7 +106,7 @@ episodes:
       label: "S24-01-03 · 2026年4月第3場 · 148min · 上線 2026-04-27"
       confidence: high
       match_basis: "標題 #4月 + 場序 3 + 時長精確匹配（8869s ≈ 147m49s · 播客 148min）"
-    notes: "K3c 首轮 (L.142)：仅 raw 逐段照录·不擅改不臆造按语·段末〔〕标注延至 K3d 二次精校批·本轮不含任何经文引文（属玄谈段）·本集多幻燈片拼接（| 分隔）·OCR pipe_cues 較高"
+    notes: "K3d 二次精校 (L.143)：逐段选择性標注〔本文判斷〕/〔講記比對〕/〔待聽核〕/〔OCR 待校〕·slide echo 標記不删（§B06/B08/C01/C04–C13 重災區·待依原圖重構）·本轮不含任何经文引文（属玄谈段·CBETA 欄空合规）·講者口语照 OCR 原字形不擅改"
 
   - ep: 4
     segment: "玄談"

@@ -252,3 +252,15 @@
 **并行隔离**：staged 6 条显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
 
 **本地 commit · 未 push**（memory 5102c2b8）。下步 K3d 待用户确认 Ep 3 raw 版可看后启动。
+
+## L.143 · Ep 3 K3d 二次精校（2026-10-21）
+
+- **产物**：`episodes/ep03.md` 87,868 → **114,530 B**（545 行·§二正文 24,370 漢字）·状态 試點精校 → **已校·信息无损**
+- **方法**：`_gen_ep03_k3d.py` 从 `_seg_ep03.json` 逐字读取 raw（不重打 24K 字·保字不擅改）+ 注入按段批注字典（81 段选择性標注）
+- **结构对齐 ep02**：〇凡例·一概要（13 条核心立论）·二讲章（6 章逐段+inline 〔〕）·三術語表 39·四 CBETA 回源（玄谈段·空·合规）·五 huayanhai 比对 19 行·六双向会读·七存疑 23·八原则·九修订
+- **关键发现**：§C（C04–C13）为 **slide echo 重災區**——幻灯片标题「是為人處事、待人接物、溝通協調的感知係數 | 指大腦」高频回聲混入口語·逐段标〔OCR 待校〕·标記不删（依 decisions #9 + Ep 2 惯例）
+- **元数据**：yaml ep3 status 升「已校·信息无损」·coverage/notes 改写为 K3d 口径
+- **视图**：重建 jj-huayan-collation.html 363,894 → **393,499 B**（Ep3 32,096 漢字）
+**铁律自校**：未造任何经文（玄谈段·CBETA 空）·讲者口语照 OCR 原字形不擅改·slide echo 標記保留·存疑标〔待核〕/推断标〔本文判断〕·不臆造。
+**验证**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit_consistency 0 FAIL。
+**本地 commit · 未 push**（memory 5102c2b8）。
