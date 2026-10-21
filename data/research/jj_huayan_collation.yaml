@@ -40,6 +40,18 @@ episodes:
     collation_paragraphs: 74
     huayanhai_xuantan_ref: [01, 05, 07, 08, 09, 11]
     huayanhai_xuantan_pending: [02, 03, 04, 06, 10, 12]
+    external_daodu_ref:
+      tier1_同名玄谈:
+        - {id: E1, path: 'C:/华严/经典著作/《堪玄记 02》华严哲学玄谈 note.pdf', ep1_map: [§A, §B]}
+        - {id: E2, path: 'C:/华严/经典著作/《堪玄记 一》（华严经枢纽）.pdf', ep1_map: [§D, §E]}
+        - {id: E3, path: 'C:/华严/经典著作/《勘玄记 三》（普贤行愿品—华严经总结）.pdf', ep1_map: [§F]}
+        - {id: E4, path: 'C:/华严/经典著作/《勘玄记04》（离世间品）.pdf', ep1_map: [§D, §F]}
+      tier2_传统玄义纲要:
+        - {id: E5, path: 'C:/华严/经典著作/《華嚴經》〈淨行品〉剖裂玄義疏(1).pdf', ep1_map: [§C]}
+        - {id: E6, path: 'C:/华严/经典著作/T1871 華嚴經旨歸 (唐 法藏述).pdf', ep1_map: [§D, §E, §F]}
+    external_daodu_pending:
+      - {path: 'C:/华严/经典著作/华藏妙海 整理版.pdf', reason: '名字与海雲可能相关·归属待人工确认'}
+    external_daodu_layering_principle: "仅作参照与对比·不逆向授权修正主体·见 .harness/decisions.md # 9"
     cross_ref_series: []
     notes: "L.138.1 试点升级为全量：保留所有 OCR 原字形不擅改 · 段末按语四类标识 · huayanhai 玄谈 01–11 六集比对（六集待续已标）·待听核 12 / 待核 5"
 

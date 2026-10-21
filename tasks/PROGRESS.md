@@ -156,4 +156,19 @@
 - **门禁（本批）**：`.harness/check.py .` ✅ OK｜`verify_jj_lectures.py` ✅ ALL PASSED（14 集对账·实测台账未动）｜`audit_classify.py` ✅ 0 issues｜`verify_sources.py` EXIT=0（本批无新增未存疑引文）。**本地 commit `L.138.1` 、未 push**（用户偏好）。
 - **未竟**：① Ep 2–12 依 segment 分批精校（参考本批方法论：`_probe_<ep>.py` + `_segment_<ep>.py` + ep02.md 手写）·② Ep 13–14 首次涉 CBETA 逐字回源·世主妙嚴品 卷 1 / 如來現相卷 6·**昆盧遮那三形异出已汇归“毘盧遮那”**（Ep 14 需 720p 重跑避 SABR）·③ huayanhai 玄谈 6 集待续入库·④ `haiyun-lectures.html` 增 ep01 链接（不吞并）。
 
+### 2026-10-21（L.138.2 · 外部导读参照源接入·目录级）
+
+用户扩展：「可将 huayanhai 中与 `C:\华严\经典著作` 下所有华严导读或玄谈之类主题与 Ep 1 内容进行对比」+ 铁律提醒：「**99 华严的讲经才是主体内容，其他只是作为参照和对比**」。
+
+- **R4 确认**：Q1(b) 只取一级同名 4 件 + 二级传统纲要 2 件 = **6 件**·Q2 🅐 **目录级**（不做文本抽取）·Q3 **先 commit L.138.1 再另起 L.138.2**（已完成 commit `73a23de`）
+- **分层铁律**（前置写入 L.138.1+）：`.harness/decisions.md # 9` + `ep01.md §〇` + `README.md §2.0 主体 vs 参照` + 长期 memory `450522ca-4b76-4001-8305-cd917e7d6a87`
+- **ep01.md §五 新增 5.4 小节**（+22 行）· 6 件外部档 E1–E6 目录级对照·每件列：文件名 · 级 · 归属 · **与 Ep 1 主论题映射（候选）**·内容提取状态〔待提取〕
+- **明确未纳入项与理由**：白话/图解（经本通俗化）·注疏（依文逐句）·经本（本体），三者不属「玄谈主题」；`华藏妙海 整理版.pdf` 标〔待核〕不预设归属
+- **接入路径预留**：`data/references/huayan_daodu_index.yaml`（待 L.139+ 开·建议字段 `{id, path, tier, topic_zh, ep1_section_map, extraction_status, extraction_tool}`）
+- **台账**：`jj_huayan_collation.yaml` Ep1 新增 `external_daodu_ref (tier1×4+tier2×2)` + `external_daodu_pending (1)` + `external_daodu_layering_principle` 三字段
+- **发布**：`jj-huayan-collation.html` **143,762 → 148,488 B**（§五 tab 新增 5.4 小节 · Ep1 43,000 字）
+- **门禁**：check.py ✅ · verify_jj_lectures ALL PASSED · audit_classify 0 issues · verify_sources EXIT=0（本批**未新增任何未存疑引文**·严守分层铁律）
+- **本地 commit `L.138.2` · 未 push**（用户偏好）
+
+
 

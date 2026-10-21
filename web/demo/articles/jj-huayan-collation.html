@@ -790,6 +790,28 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 <p>   - 五教（小 · 始 · 终 · 顿 · 圆）</p>
 <p>   - 心量 · 体量 · 无尽超越</p>
 
+<h3>5.4 · 外部「华严导读 / 玄谈」参照项与 Ep 1 主题映射（<strong>目录级 · L.138.2</strong>）</h3>
+
+<blockquote><strong>本小节性质</strong>：将外部 <code>C:\华严\经典著作\</code> 中<strong>与 Ep 1 “华严玄谈”主题同名同类</strong>的 6 件<strong>目录级</strong>列出·仅作<strong>后续批比对入口</strong>预留。<strong>本小节不作内容校订</strong>（待 PDF 文本层接入后另批）·<strong>不逆向授权修正主体讲记</strong>（参⃤ <code>.harness/decisions.md # 9</code>）。未纳入之经本（六十/八十/四十华严·密教典等）与注疏（探玄记/疏/演義鈔/合论/金师子章等）<strong>不属「导读/玄谈」</strong>·不列入本表。</blockquote>
+
+<table class="md-table">
+<tr><th>#</th><th>外部档</th><th>级</th><th>归属</th><th>与 Ep 1 主论题映射（候选）</th><th>内容提取状态</th></tr>
+<tr><td><strong>E1</strong></td><td>《堪玄记 02》华严哲学玄谈 note.pdf</td><td>一</td><td><strong>同名「玄谈」</strong>·现代导读</td><td><strong>§A 开宗名义</strong>·<strong>§B 三问立宗</strong>（现代知识分子知识良知 ↔ 哲学玄谈框架）</td><td>〔待提取·待后续批〕</td></tr>
+<tr><td><strong>E2</strong></td><td>《堪玄记 一》（华严经枢纽）.pdf (+cmt)</td><td>一</td><td>同名系列·枢纽论</td><td><strong>§E 华严系统</strong>·<strong>§D 六经集</strong>（枢纽 = 入口出口论）</td><td>〔待提取〕</td></tr>
+<tr><td><strong>E3</strong></td><td>《勘玄记 三》（普贤行愿品—华严经总结）.pdf</td><td>一</td><td>同名系列·行愿总结</td><td><strong>§F P19–P21 普贤乘预告</strong>·一佛乘→普贤乘</td><td>〔待提取〕</td></tr>
+<tr><td><strong>E4</strong></td><td>《勘玄记 04》（离世间品）.pdf</td><td>一</td><td>同名系列·离世间品</td><td><strong>§D/F 行法部分</strong>（与 2026 Ep 13+ 正行衍接）</td><td>〔待提取〕</td></tr>
+<tr><td><strong>E5</strong></td><td>《華嚴經》〈淨行品〉剖裂玄義疏.pdf</td><td>二</td><td><strong>传统玄义</strong>·净行品</td><td><strong>§C 安那般那十六行观</strong>·三摩提到三摩地（净行品 = 贤首五教·日用万行）</td><td>〔待提取〕</td></tr>
+<tr><td><strong>E6</strong></td><td>T1871 華嚴經旨歸 (唐 法藏述).pdf</td><td>二</td><td>传统纲要·法藏</td><td><strong>§D–F 判教总纲</strong>（旨归 = 五教/十门/六义·与贤首国师主题相关）</td><td>〔待提取〕</td></tr>
+</table>
+<strong>〔待核〕</strong>：<code>华藏妙海 整理版.pdf</code>——名字与<strong>海雲法师</strong>可能相关·<strong>需人工确认归属</strong>（本仓现有档案无同名项），若确属海雲旧稿则应入 huayanhai 同级；否则归入外部导读类。<strong>本批不预设</strong>。
+
+<strong>本次未纳入之外部项及理由</strong>：
+<li><strong>《图解华严经》（龙树释著）· 《白话华严经》（洪启嵩）</strong>：属“经本通俗化”（将经文白话/图解），<strong>不属玄谈主题</strong>·与 Ep 1 “前言性讲法”不对应</li>
+<li><strong>注疏类（探玄记 · 疏 · 演義鈔 · 合论 · 华严经论 · 纂要 · 金师子章 · 搜玄分齐 · 普贤行愿品疏钞 · 续华严经略疏刊定记等）</strong>：属“依文逐句疏”，不属“前言性”玄谈，与 Ep 1 不对应</li>
+<li><strong>经本（六十/八十/四十华严 · 大毗卢遮那 · 金刚顶 · 佛说瑜伽大教王等）</strong>：经文本体·不属导读类（Ep 13+ 正行段将直接对映 T10n0279）</li>
+
+<strong>接入路径预留</strong>：<code>data/references/huayan_daodu_index.yaml</code>（未开·待 L.139+ 建·建议内容：<code>{id, path, tier, topic_zh, ep1_section_map: [§A/§B/…], extraction_status: pending, extraction_tool: pdftotext|pypdf|calibre}</code>）。
+
 <hr>
 
 <h2>§六 · 与《华严经细读》系列的 cross_ref（hook）</h2>
@@ -846,6 +868,8 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 <h2>§九 · 修订记录</h2>
 
 <li><strong>2026-10-21 L.138.1</strong>：Ep 1 <strong>试点 → 全量精校</strong>（4 片段 → 74 段 · 6 章 · 约 30K 字）· huayanhai 玄谈比对从<strong>仅 01</strong> → <strong>01/05/07/08/09/11 全量</strong> · 明确标注 6 集待续 · 新增 5 类标识（〔本文判断 47〕〔OCR 待校 8〕〔待听核 12〕〔待核 5〕〔讲记比对 24〕）· 保留所有 OCR 原字形（不擅改）· 状态 <code>試點精校</code> → <code>已校·信息无损·待续（若听核需要）</code></li>
+<li><strong>2026-10-21 L.138.1+</strong>：<strong>分层铁律内化</strong>（用户显式提醒）·§〇开头新增 <strong>⃤ 主体 vs 参照</strong>声明·§五 标题从“比对表”改为“<strong>参照对比</strong>”并开头新增性质声明·写入 <code>decisions.md # 9</code> 与长期 memory</li>
+<li><strong>2026-10-21 L.138.2</strong>：<strong>§五 新增 5.4 外部导读 6 件目录级对照</strong>（用户扩展参照源）· <strong>不逆向授权修正主体</strong>（严守分层）·预留接入路径 <code>data/references/huayan_daodu_index.yaml</code>·明确未纳入之白话/图解/注疏/经本四类及其不纳入理由·对“华藏妙海 整理版.pdf”标〔待核〕不预设</li>
 </div>
   </div>
 </section>

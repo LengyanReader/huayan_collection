@@ -4015,3 +4015,28 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 
 **铁律自校**：本批未造任一经文 · 未擅改既有 SSOT · 存疑标〔待听核〕12 例 · 推断标〔本文判断〕47 例 · 本地 commit、未 push。
 
+
+### L.138.2  外部「华严导读 / 玄谈」参照源接入·目录级（2026-10-21）
+
+**触发**：用户扩展比对源至 C:\华严\经典著作（70 余件 PDF/EPUB/MOBI）+ 铁律提醒「**99 华严讲经才是主体内容，其他只是作为参照和对比**」。
+
+**R4 确认**（三问）：Q1(b) **只取一级同名 4 件 + 二级传统纲要 2 件 = 6 件**（白话/图解/注疏/经本**不属玄谈主题**·不纳入）·Q2 🅐 **目录级**（不做文本抽取）·Q3 **先 commit L.138.1 再另起 L.138.2**（73a23de）。
+
+**分层铁律内化**（前置 L.138.1+）：
+- .harness/decisions.md # 9 讲记校勘分层决策（主体=2026 讲记·参照=huayanhai+外部·Ep 13+ CBETA 为最高铁律例外）
+- p01.md §〇 开头 ⚖ 声明·§五 标题从"比对表"→"**参照对比**"+ 本表性质声明
+- README.md §2.0 主体 vs 参照 新节·三源互证 各源标注主体/参照/最高 属性
+- 长期 memory（important_decision_experience·id 450522ca-4b76-4001-8305-cd917e7d6a87）
+
+**已完成**（本批 L.138.2）：
+1. p01.md §五 新增 §5.4 外部导读 6 件目录级对照表（E1–E6·文件名·级·归属·Ep 1 主论题映射·内容提取状态〔待提取〕）
+2. **未纳入项与理由**（4 类）：白话/图解（经本通俗化）·注疏（依文逐句疏）·经本（文本体）·华藏妙海 整理版.pdf 标〔待核〕不预设
+3. **接入路径预留**：data/references/huayan_daodu_index.yaml（待 L.139+ 开·建议字段 {id, path, tier, topic_zh, ep1_section_map, extraction_status, extraction_tool}）
+4. **台账**：jj_huayan_collation.yaml Ep1 新字段 xternal_daodu_ref{tier1×4+tier2×2} / xternal_daodu_pending×1 / xternal_daodu_layering_principle
+5. **发布**：jj-huayan-collation.html 143,762 → **148,488 B**（§五 tab 含 §5.4）
+6. **门禁**：check.py · verify_jj_lectures · audit_classify 0 issues · verify_sources EXIT=0（**未新增任何未存疑引文**·严守分层铁律）
+
+**下一步（L.139+）**：① 若需真实内容比对，抽 pdftotext / pypdf / calibre 三选一（外部文件 PDF 文本层·繁简·表格脚注风险）·② 确认 华藏妙海 整理版.pdf 归属（本仓现有档案无同名）·③ Ep 2–12 精校（复用 L.138.1 方法论）·④ Ep 13–14 CBETA 逐字回源。
+
+**铁律自校**：本批**未新增未存疑引文**·严守分层（不逆向授权修正主体）·本地 commit · 未 push。
+
