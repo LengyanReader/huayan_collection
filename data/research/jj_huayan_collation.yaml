@@ -1,0 +1,173 @@
+# 《九九華嚴》2026 講座 · 校勘與會讀元數據（L.138 立）
+# ---------------------------------------------------------------------------
+# 【職責分離】本檔只存**編輯判斷**（segment 归属 · anchor 品卷 · 校勘狀態 ·
+#   與《華嚴經細讀》之 cross_ref）。實測指標（cues / han_chars / coverage /
+#   pipe_cues …）一律見 `jj_huayan_lectures.yaml`（由 `jj_ocr_audit.py`
+#   自動生成 · 不得手錄）。兩檔以 `ep` 號相連。
+#
+# 【性質】OCR 重建稿之**校勘稿**·非定稿。凡所引經文·一律以 CBETA `T10n0279`
+#   繁體逐字回源為準（本檔之 `anchor_cbeta` 為回源指針）。講者口語之簡繁混排
+#   照原不統一（依本倉鐵律：異文各照底本）。
+#
+# 【segment 三檔】
+#   - 玄談：請法因緣 · 華嚴宗架構 · 時代對讀 · 歷史 · 上下回向 · 未逐品講經
+#   - 宏觀華嚴經：華嚴經部類 · 品目結構 · 七處九會 · 判教
+#   - 正行：依八十華嚴次第逐品講經文（Ep 13 起）
+#
+# 【校勘狀態四檔】
+#   未啟 · 待校 · 試點精校（本批 Ep 1） · 已校
+
+meta:
+  version: "L.138.1"
+  created: "2026-10-21"
+  source_ssot: "docs/hy_refs/sub_extract/delivery/ep*.md (OCR)"
+  measured_ssot: "data/research/jj_huayan_lectures.yaml"
+  collation_scope_first: 1
+  collation_status_legend: ["未啟", "待校", "試點精校", "已校"]
+
+episodes:
+  - ep: 1
+    segment: "玄談"
+    topic_zh: "請法因緣·2026 華嚴法化弘開根本年·五教行法架構·整体教學體系展開"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "試點精校"
+    collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep01.md"
+    cross_ref_series: []
+    notes: "开场致辞·未入經文正行·有可點睛語（『整體華嚴五教行法』）可作導讀引用"
+
+  - ep: 2
+    segment: "玄談"
+    topic_zh: "中國佛教一佛乘·理法界→理事無礙法界·實修之難·會期場次安排"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "涉及判教框架之口傳表述·校勘時須與 docs/huayanhai/ 既有讲记比对"
+
+  - ep: 3
+    segment: "玄談"
+    topic_zh: "AI 時代對讀·2050 年關鍵點·AI 橋表·文明週期"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "本集多幻燈片拼接（| 分隔）·OCR pipe_cues 較高·校勘時需按 | 切分"
+
+  - ep: 4
+    segment: "玄談"
+    topic_zh: "舍利弗/阿難兩系統·印度婆羅門文化影響·大西洋/太平洋文明對照"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "涉及佛教史观·校勘時須標〔本文判斷〕·不代講者立論"
+
+  - ep: 5
+    segment: "玄談"
+    topic_zh: "科舉時代與文字普及·下化=下迴向·上迴向求阿耨多羅三藐三菩提·華嚴學作為基地"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "『阿耨多羅三藐三菩提』為經文名相·校勘時可回源 CBETA 對照（非某品專指）"
+
+  - ep: 6
+    segment: "玄談"
+    topic_zh: "第一章玄談·第二節華嚴寺·華嚴學·華嚴法·五教止觀"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "OCR 中『第一章玄談|第二節華嚴寺、華嚴學、華嚴法』為幻燈片標題·可作該集之講章結構索引"
+
+  - ep: 7
+    segment: "宏觀華嚴經"
+    topic_zh: "宏觀華嚴經·華嚴經六大部類·經集與篩選兩層次"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series:
+      - "docs/经学文献/华严经学_三十九品深度研究.md"
+    notes: "『六大部類』說法須核《三十九品研究》·判屬講者自創術語或舊說"
+
+  - ep: 8
+    segment: "宏觀華嚴經"
+    topic_zh: "為何要講華嚴經·信仰之義·經學與義學之分·華嚴宗祖師建立"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "『經學 vs 義學』之判·Ep 14 再現·校勘時宜連讀"
+
+  - ep: 9
+    segment: "宏觀華嚴經"
+    topic_zh: "十個重點問題·凡夫=三意識（個人/族群/社會）之無意識·覺醒之義"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "講者與湯教授討論·屬當機語錄·校勘時須保留『那一天我跟湯教授討論』原語"
+
+  - ep: 10
+    segment: "宏觀華嚴經"
+    topic_zh: "七處九會·三十九品八十卷·七處 vs 八處 vs 十處之研議·第一處菩提場會·第二處普光明殿·第三處忉利天宮"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series:
+      - "docs/经学文献/华严经细读/华严经细读_系列总纲.md"
+    notes: "『七處九會』為傳統判教·『八處/十處』為講者『研議』新說·校勘時須標〔本文判斷〕·並列不取捨"
+
+  - ep: 11
+    segment: "宏觀華嚴經"
+    topic_zh: "真理之結構與作用·本會=下迴向·末會=上迴向·上下兩迴向為經文基本結構"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "『上下迴向』對讀與 Ep 5 呼應·可作術語索引"
+
+  - ep: 12
+    segment: "宏觀華嚴經"
+    topic_zh: "傳承之難·『師父藏一手』之辨·西瓜籽喻·橫空出世之病"
+    anchor_pin: null
+    anchor_juan: null
+    anchor_cbeta: null
+    collation_status: "待校"
+    cross_ref_series: []
+    notes: "民間諺語多·校勘時口語標點宜保留原語感"
+
+  - ep: 13
+    segment: "正行"
+    topic_zh: "第一處 vs 第一會之辨·『如是我聞。一時。佛在摩竭提國阿蘭若法菩提場中始成正覺』·其菩提樹恆出妙音·入世主妙嚴品"
+    anchor_pin: "世主妙嚴品"
+    anchor_juan: "卷 1"
+    anchor_cbeta: "T10n0279_卷1 · 品目次第第 1 品起首句"
+    collation_status: "待校"
+    cross_ref_series:
+      - "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第一部_世主妙严品.md"
+    notes: "本集開始正經·首句『如是我聞…』校勘時必須逐字回 CBETA·不得以口語改字"
+
+  - ep: 14
+    segment: "正行"
+    topic_zh: "如來現相·毘盧遮那品·存在 vs 顯相·經學 vs 義學·從下迴向之最高·從上迴向之最終"
+    anchor_pin: "如來現相品 / 毘盧遮那品"
+    anchor_juan: "卷 6 / 卷 11"
+    anchor_cbeta: "T10n0279_卷6 · T10n0279_卷11"
+    collation_status: "待校"
+    cross_ref_series:
+      - "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第二部_如来现相品.md"
+      - "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第六部_毗卢遮那品.md"
+    notes: "本集 OCR 因 SABR 限制退 360p·『昆廬遮/毘盧遮那/星险遮那』三形混出·校勘須統一為 CBETA 底本『毘盧遮那』"

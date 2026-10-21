@@ -186,6 +186,21 @@ others:
     label: 教行页 · 讲法资源 · 海云讲法
   views:
   - haiyun_lectures
+- id: jj-huayan-collation
+  group: 修学与禅门
+  icon: 📚
+  title: 九九华严 · 讲记校勘工作台
+  title_sub: 海云法师 2026 讲座 · OCR 重建 · 三源互证 · L.138 试点
+  data_source:
+  - jj_huayan_lectures
+  - jj_huayan_collation
+  data_pool: research
+  back:
+    tab: jiaoxing
+    view: jj_huayan_collation
+    label: 教行页 · 讲法资源 · 讲记校勘
+  views:
+  - jj_huayan_collation
 - id: nanyu
   group: 前沿议题
   icon: 🍊

@@ -3977,3 +3977,24 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 - **⑨ 验证**：`.harness/check.py` ✅ **OK**｜`scripts/verify_round_h2.py` ✅ **ALL PASS**（34 片段／0 失配，回归）｜第 7 部括号 **〔〕68/68·（）460/460·《》54/54** 全平（「」411/412 之差＝§7.4 代码块内字符串，须含底本 `」` 方能精确匹配，非缺陷）｜`build` **43 files｜28,570,508 B**（较 L.136 之 42 files／28,412,788 B，增 `rulai-minghao.html` 131,812 B 与相关回显）。
 - **⑩ 遗留·交下批**：**藏译逐字对勘**（本机无德格版 `Toh 44` 入库，藏 11 品文细节据二手编目〔T2·待核〕）；`T1732`／`X0221` PDF 抽取本二次校对〔待核〕；慧苑 `X0221` 本品之记（今传本无，待访辑）；单品《兜沙经》`T10n0280` 文段对应〔待核〕；八十本娑婆西北「歡喜」11 名之校勘定论〔待核〕；**部 1／部 6 之「」/〔〕/（）历史不平衡**（偈颂 `「『…』` 未闭合体例）宜另开批统一；**下一品《四圣谛品》（品 8·卷十二末–十三）专篇**。
 
+
+---
+
+## L.138　讲记校勘工作台 · 骨架 + Ep 1 试点（2026-10-21）
+
+> **起因**：用户「基于 docs/hy_refs/sub_extract 已提取字幕·新建文档与可发布页面·现阶段进行海云法师九九华严讲经内容的梳理与校勘·后续融入华严经细读·导读·经学相关文章」。经 R0–R5 精炼·采 **Elevated（🅑）**。
+> **用户 R4 三裁**：① 先做 Phase 0（修 YAML 到 14 集·消既有门禁红）·② Ep 1 单集试点·③ 独立新页（与 haiyun-lectures.html 并列·未来可回引）。
+
+### 十项（滚动）
+
+- **① Phase 0·SSOT 修复**（本批首要）：重跑 scripts/jj_ocr_audit.py --json → scripts/_jj_build_lib.py·data/research/jj_huayan_lectures.yaml 由 `episodes: 12` → **`episodes: 14`**（合计 43,272 cues · 388,848 汉字·覆盖率 98.4%–99.8%·均值 99.3%）。scripts/verify_jj_lectures.py **ALL CHECKS PASSED**——**消 L.137 遗留之唯一 FAIL**（原「B meta.episodes 12 ≠ 目录实测 14 集·台账漏收新集」）。
+- **② Phase 1a·人定元数据新开**：data/research/jj_huayan_collation.yaml·**职责与实测台账分离**（铁律「不得手录」·数字由实测自动生成·编辑判断另存）。字段 `{segment, topic_zh, anchor_pin, anchor_juan, anchor_cbeta, collation_status, collation_doc, cross_ref_series, notes}` × 14 集。
+- **③ 集段三档**：**玄談**（Ep 1–6 · 请法因缘 · 架构 · 时代对读 · 历史 · 上下回向）· **宏觀華嚴經**（Ep 7–12 · 部类 · 品目结构 · 七处九会 · 判教）· **正行**（Ep 13 起 · 依八十华严次第 · 逐品讲经文）。**Ep 13 anchor**：世主妙嚴品 卷 1（T10n0279 · 「如是我聞。一時。佛在摩竭提國阿蘭若法菩提場中始成正覺。」）·**Ep 14 anchor**：如來現相品 卷 6 + 毘盧遮那品 卷 11。
+- **④ Phase 1b·校勘工作台目录 & 体例**：新建 docs/经学文献/海云讲记_九九华严/README.md（七节·§一 定位 / §二 凡例三源互证 · 标识符 · 简繁 / §三 集段归属 / §四 epNN.md 模板 / §五 发布与 haiyun-lectures 职责分离 / §六 进度心跳 / §七 门禁三条）。
+- **⑤ Phase 1c·Ep 1 试点校订稿**：docs/经学文献/海云讲记_九九华严/episodes/ep01.md（168 行·5,804 字）。§一 概要 · §二 **4 关键片段**（A 请法因缘 · B 玄谈定位 · C 三问立宗 · D 现代知识分子立场·约 6% 覆盖·示范三源流程）· §三 术语表 · §四 CBETA 回源**栏空**（玄谈段不涉逐字引经·合规）· §五 huayanhai 玄谈01 同题比对（4 议题表）· §六 与细读系列之预留 hook · §七 存疑 6 条 · §八 台账。标识计数：〔本文判断〕4 ·〔待听核〕4 ·〔讲记比对〕2。
+- **⑥ Phase 3·独立发布页**：新脚本 scripts/build_jj_collation_page.py（403 行·读 YAML + Markdown 自转换）·产出 web/demo/articles/jj-huayan-collation.html（45,596 B·三 tab：概览·14 集表 / Ep 1 试点 / 凡例·体例·segment/状态双筛·行点击展开 anchor+CBETA+cross_ref+视频链接·Ep 1 全文嵌入）。**17/17 结构自测全绿**。data/translation/standalone_articles.yaml 增 `- id: jj-huayan-collation`（在 haiyun-lectures 之后·`group: 修学与禅门`·`data_pool: research`·`data_source: [jj_huayan_lectures, jj_huayan_collation]`·back→教行页·讲法资源·讲记校勘）。
+- **⑦ 与 haiyun-lectures 之职责分工**：现有 web/demo/articles/haiyun-lectures.html（375 KB·645-file wiz catalog reader·PRACTICE_DATA）——**不同源**·**不吞并**·本页 (jj-huayan-collation) 是**「讲记校订工作台」**（14 集 OCR + 三源互证）·haiyun-lectures 是**「海云全库 reader」**。用户 2026-10-21 裁定：后续 haiyun-lectures 将**引用与融合**本工作台 anchor。
+- **⑧ 与细读系列之双向会读路径**（未来·待后续批）：华严经细读 §五「诸家注疏」拟增「海云·2026」条目·回指本工作台相应片段 anchor。系列总纲 §一.5 已预留讲记会读接口·待相应品目页成篇时同步。
+- **⑨ 门禁（本批）**：.harness/check.py ✅ OK｜verify_jj_lectures.py ✅ ALL PASSED（14 集对账）｜audit_classify.py ✅ 0 issues｜verify_sources.py EXIT=0（本批未新增未存疑引文·计数同前）｜audit_consistency.py 无新 FAIL（历史同名多号提示·非本批）｜页面 17/17 自测全绿。
+- **⑩ 遗留·交下批 L.139+**：**Ep 13 精校**（首次涉 CBETA 逐字回源·世主妙嚴品 卷 1 起首句）——**建议先开**。Ep 14 精校（先 360p→720p 重跑·避 SABR·昆盧遮那三形异出已确定汇归「毘盧遮那」）· Ep 2–12 精校（依 segment 分批）· 幻灯片拼接 221 条 逐条分离（Ep 1 已示范 · 全量待后续批）· haiyun-lectures.html anchor 集成 · 细读 §五 相梅 · 音频 ASR 引入（若可用）以消 〔待听核〕。
+

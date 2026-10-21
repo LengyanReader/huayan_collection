@@ -135,7 +135,7 @@ tools/sub_extract/              ← 本目录（纯代码，可版本控制）
 
 ## 目标频道
 
-**@huayen-world** · 播放列表 `PL8Dfz9i9H18MhK8kX4NHOY8jsxz80Tt4G` · 《九九華嚴》讲座 12 集
+**@huayen-world** · 播放列表 `PL8Dfz9i9H18MhK8kX4NHOY8jsxz80Tt4G` · 《九九華嚴》讲座 14 集
 
 | 集 | Video ID |
 |---|---|
@@ -151,6 +151,8 @@ tools/sub_extract/              ← 本目录（纯代码，可版本控制）
 | 10 | `e6_1t2-3TF8` |
 | 11 | `47GWFvcytws` |
 | 12 | `PNKB2nHp-IE` |
+| 13 | `dPzOJ_HLBJg` |
+| 14 | `xNej63VlSCw` |
 
 ---
 

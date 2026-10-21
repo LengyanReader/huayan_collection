@@ -192,3 +192,34 @@ horizon=multi_session, verifiability=medium, stakes=high, grounding=required, ar
 5. **清理候选**：部 1／部 6 之「」/〔〕/（）历史不平衡（偈颂 `「『…』` 未闭合体例）宜另开批统一。
 6. `T1732`／`X0221` PDF 抽取本二次校对；慧苑 `X0221` 本品之记待访辑；《兜沙经》`T10n0280` 文段对应〔待核〕。
 
+---
+
+## L.138　讲记校勘工作台 · 骨架 + Ep 1 试点（已完成 · 2026-10-21）
+
+```text
+用户指示（R0–R5 精炼 · Elevated 🅑 确认）：
+ 1 先修 YAML 到 14 集（Phase 0）
+ 2 Ep 1 试点（Phase 1c 单集）
+ 3 独立新页 jj-huayan-collation.html（Phase 3）·与 haiyun-lectures.html 并列不吞并
+```
+
+### 一、已完成
+
+- **Phase 0 · SSOT 修复**：`jj_ocr_audit.py --json` → `_jj_build_lib.py` 重跑·`data/research/jj_huayan_lectures.yaml` 由 `episodes: 12` → **`episodes: 14`**（合计 43,272 cues · 388,848 汉字·均值 99.3%）。`verify_jj_lectures.py` **ALL CHECKS PASSED**·消 L.137 遗留唯一 FAIL。
+- **Phase 1a · 新开人定元数据**：`data/research/jj_huayan_collation.yaml`（**职责与实测台账分离**）·字段 `{segment, topic_zh, anchor_pin, anchor_juan, anchor_cbeta, collation_status, collation_doc, cross_ref_series, notes}` × 14 集。Ep 1–6 玄談·Ep 7–12 宏觀華嚴經·Ep 13–14 正行（Ep 13 → 世主妙嚴品 卷 1·Ep 14 → 如來現相品 卷 6 + 毘盧遮那品 卷 11）。
+- **Phase 1b · 目录 & 体例**：`docs/经学文献/海云讲记_九九华严/README.md` 七节（系列定位 · 凡例三源互证 · 标识符 · 简繁 · 集段三档 · `epNN.md` 模板 · 发布与 `haiyun-lectures.html` 职责分离 · 进度心跳 · 门禁）。
+- **Phase 1c · Ep 1 试点校订稿**：`docs/经学文献/海云讲记_九九华严/episodes/ep01.md`（168 行·5,804 字）·§一 概要 · §二 **4 关键片段**（A 请法因缘 · B 玄谈定位 · C 三问立宗 · D 现代知识分子立场·约 6% 覆盖）· §三 术语表 · §四 CBETA 回源**栏空**（玄谈段不涉逐字引经 · 合规）· §五 `docs/huayanhai/华严经玄谈01_1.txt` 同题比对 4 议题表 · §六 预留 hook · §七 存疑 6 条 · §八 台账。
+- **Phase 3 · 独立新页**：`scripts/build_jj_collation_page.py`（403 行）·自 YAML 读入 + Markdown 自转换·产出 `web/demo/articles/jj-huayan-collation.html`（45,596 B·三 tab：概览·14 集表 / Ep 1 试点 / 凡例·体例·行点击展开 anchor+CBETA+cross_ref+视频链接）·**17/17 结构自测全绿**。`standalone_articles.yaml` 开 `- id: jj-huayan-collation` 条目（`group: 修学与禅门`·`data_pool: research`·`data_source: [jj_huayan_lectures, jj_huayan_collation]`）。
+- **门禁（本批）**：`.harness/check.py` ✅ OK｜`verify_jj_lectures.py` ✅ ALL PASSED｜`audit_classify.py` ✅ 0 issues｜`verify_sources.py` EXIT=0（本批无新增存疑）。
+
+### 二、下一步（规划 L.139+）
+
+1. **Ep 13 精校**（**首次涉 CBETA 逐字回源** · 世主妙嚴品 卷 1 起首句「如是我聞。一時。佛在摩竭提國阿蘭若法菩提場中始成正覺。」）·建议先开。
+2. **Ep 14 精校**（先 360p→720p 重跑·昆盧遮那三形异出汇归 CBETA 底本「毘盧遮那」）。
+3. **Ep 2–12 精校**（依 segment 分批：6 集玄談 → 6 集宏观华严经）。
+4. **幻灯片拼接 221 条 分离**（Ep 1 已示范 · 全量待后续批）。
+5. **与 `haiyun-lectures.html` 相构**（用户 2026-10-21 裁定：后续 haiyun-lectures 将引用与融合本工作台 · **不吞并** · 两页各自职责）。
+6. **与细读系列 §五 相梅**（待总纲 §五「讲记会读」定稿同步 · 增「海云·2026」条目 · 回指本工作台 anchor）。
+7. **铁律自校**（未造经文 · 未擅改 SSOT · 存疑标记 · 本地 commit）。
+
+
