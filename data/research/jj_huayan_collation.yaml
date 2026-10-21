@@ -25,6 +25,11 @@ meta:
   measured_ssot: "data/research/jj_huayan_lectures.yaml"
   collation_scope_first: 1
   collation_status_legend: ["未啟", "待校", "試點精校", "已校"]
+  # 媒体渠道（供读者 回看 原片 与 原声）
+  media_channels:
+    youtube_channel: {url: "https://www.youtube.com/@huayen-world", label: "大华严寺官方频道"}
+    podcast_channel: {url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng", label: "海云继梦法师 · Spotify Podcast (S24=九九華嚴講座)"}
+    podcast_mapping_note: "YouTube Ep n 与 S24 MM-NN 依【讲座月份 + 时长】双向对质·Ep 1–12 高置信·Ep 13+ 本月拆正行/问答需二次校"
 
 episodes:
   - ep: 1
@@ -53,6 +58,12 @@ episodes:
       - {path: 'C:/华严/经典著作/华藏妙海 整理版.pdf', classification: '二手整理资料·可引用·须标明来源', owner_confirmed: true}
     external_daodu_layering_principle: "仅作参照与对比·不逆向授权修正主体·见 .harness/decisions.md # 9"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-01--202641-e3na7jo"
+      label: "S24-01-01 · 2026年4月第1場 · 98min · 上線 2026-04-20"
+      confidence: high
+      match_basis: "首集序位 + 時長精確匹配（declared 5872s ≈ 97m52s · 播客 98min）"
+      caveat: "ep01.md 頭記『講座日 2026-06-12·視頻日 2026-06-15』與此對映存在差異·〔待核〕（不擅改·僅存疑標記）"
     notes: "L.138.1 试点升级为全量：保留所有 OCR 原字形不擅改 · 段末按语四类标识 · huayanhai 玄谈 01–11 六集比对（六集待续已标）·待听核 12 / 待核 5"
 
   - ep: 2
@@ -69,6 +80,11 @@ episodes:
     huayanhai_xuantan_ref: [01, 05, 07, 08, 09, 11]
     huayanhai_xuantan_pending: [02, 03, 04, 06, 10, 12]
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-02--202642-e3na7ng"
+      label: "S24-01-02 · 2026年4月第2場 · 137min · 上線 2026-04-22"
+      confidence: high
+      match_basis: "標題 #4月 + 場序 2 + 時長精確匹配（8200s ≈ 136m40s · 播客 137min）"
     notes: "L.139.1 全量精校：含现场问答段(E/F)·E20-E22图解OCR严重损坏待重构·不擅改原则全覆盖·华严四法系首次详列"
 
   - ep: 3
@@ -79,6 +95,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-03--202643-e3na7ot"
+      label: "S24-01-03 · 2026年4月第3場 · 148min · 上線 2026-04-27"
+      confidence: high
+      match_basis: "標題 #4月 + 場序 3 + 時長精確匹配（8869s ≈ 147m49s · 播客 148min）"
     notes: "本集多幻燈片拼接（| 分隔）·OCR pipe_cues 較高·校勘時需按 | 切分"
 
   - ep: 4
@@ -89,6 +110,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-01--202651-e3na7p2"
+      label: "S24-02-01 · 2026年5月第1場 · 184min · 上線 2026-06-01"
+      confidence: high
+      match_basis: "標題 #5月 + 場序 1 + 時長精確匹配（11061s ≈ 184m21s · 播客 184min）"
     notes: "涉及佛教史观·校勘時須標〔本文判斷〕·不代講者立論"
 
   - ep: 5
@@ -99,6 +125,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-02--202652-e3na7vo"
+      label: "S24-02-02 · 2026年5月第2場 · 179min · 上線 2026-06-03"
+      confidence: high
+      match_basis: "標題 #5月 + 場序 2 + 時長精確匹配（10712s ≈ 178m32s · 播客 179min）"
     notes: "『阿耨多羅三藐三菩提』為經文名相·校勘時可回源 CBETA 對照（非某品專指）"
 
   - ep: 6
@@ -109,6 +140,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-03--202653-e3na800"
+      label: "S24-02-03 · 2026年5月第3場 · 167min · 上線 2026-06-07"
+      confidence: high
+      match_basis: "標題 #5月 + 場序 3 + 時長精確匹配（10020s = 167m00s · 播客 167min）"
     notes: "OCR 中『第一章玄談|第二節華嚴寺、華嚴學、華嚴法』為幻燈片標題·可作該集之講章結構索引"
 
   - ep: 7
@@ -120,6 +156,11 @@ episodes:
     collation_status: "待校"
     cross_ref_series:
       - "docs/经学文献/华严经学_三十九品深度研究.md"
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-01--202661-e3na803"
+      label: "S24-03-01 · 2026年6月第1場 · 173min · 上線 2026-07-01"
+      confidence: high
+      match_basis: "標題 #6月 + 場序 1 + 時長匹配（10366s ≈ 172m46s · 播客 173min·四捨五入）"
     notes: "『六大部類』說法須核《三十九品研究》·判屬講者自創術語或舊說"
 
   - ep: 8
@@ -130,6 +171,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-02--202662-e3na806"
+      label: "S24-03-02 · 2026年6月第2場 · 172min · 上線 2026-07-06"
+      confidence: high
+      match_basis: "標題 #6月 + 場序 2 + 時長精確匹配（10330s ≈ 172m10s · 播客 172min）"
     notes: "『經學 vs 義學』之判·Ep 14 再現·校勘時宜連讀"
 
   - ep: 9
@@ -140,6 +186,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-03--202663-e3na85m"
+      label: "S24-03-03 · 2026年6月第3場 · 180min · 上線 2026-07-08"
+      confidence: high
+      match_basis: "標題 #6月 + 場序 3 + 時長精確匹配（10802s ≈ 180m02s · 播客 180min）"
     notes: "講者與湯教授討論·屬當機語錄·校勘時須保留『那一天我跟湯教授討論』原語"
 
   - ep: 10
@@ -151,6 +202,11 @@ episodes:
     collation_status: "待校"
     cross_ref_series:
       - "docs/经学文献/华严经细读/华严经细读_系列总纲.md"
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-01--202671-e3nb9fs"
+      label: "S24-04-01 · 2026年7月第1場 · 174min · 上線 2026-08-03"
+      confidence: high
+      match_basis: "標題 #7月 + 場序 1 + 時長精確匹配（10449s ≈ 174m09s · 播客 174min）"
     notes: "『七處九會』為傳統判教·『八處/十處』為講者『研議』新說·校勘時須標〔本文判斷〕·並列不取捨"
 
   - ep: 11
@@ -161,6 +217,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-02--202672-e3nb9g2"
+      label: "S24-04-02 · 2026年7月第2場 · 175min · 上線 2026-08-05"
+      confidence: high
+      match_basis: "標題 #7月 + 場序 2 + 時長精確匹配（10510s ≈ 175m10s · 播客 175min）"
     notes: "『上下迴向』對讀與 Ep 5 呼應·可作術語索引"
 
   - ep: 12
@@ -171,6 +232,11 @@ episodes:
     anchor_cbeta: null
     collation_status: "待校"
     cross_ref_series: []
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-03--202673-e3nb9g4"
+      label: "S24-04-03 · 2026年7月第3場 · 173min · 上線 2026-08-10"
+      confidence: high
+      match_basis: "標題 #7月 + 場序 3 + 時長匹配（10392s ≈ 173m12s · 播客 173min）"
     notes: "民間諺語多·校勘時口語標點宜保留原語感"
 
   - ep: 13
@@ -182,6 +248,11 @@ episodes:
     collation_status: "待校"
     cross_ref_series:
       - "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第一部_世主妙严品.md"
+    podcast:
+      url: ""
+      label: "〔待核〕· 2026年8月場次拆分【正行】+【會後問答】兩條·Ep 13 疑對應 S24-05-01+05-02 或合并場"
+      confidence: pending
+      match_basis: "八月場次播客按『正行/問答』分條上架·YouTube Ep 為完整場·需逐集比對時長與內容"
     notes: "本集開始正經·首句『如是我聞…』校勘時必須逐字回 CBETA·不得以口語改字"
 
   - ep: 14
@@ -194,4 +265,9 @@ episodes:
     cross_ref_series:
       - "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第二部_如来现相品.md"
       - "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第六部_毗卢遮那品.md"
+    podcast:
+      url: ""
+      label: "〔待核〕· 2026年8月場次拆分【正行】+【會後問答】·Ep 14 疑對應 S24-05-02 或 05-03"
+      confidence: pending
+      match_basis: "同 Ep 13·待校·可借 CBETA 品目對照 + 時長分配二次核"
     notes: "本集 OCR 因 SABR 限制退 360p·『昆廬遮/毘盧遮那/星险遮那』三形混出·校勘須統一為 CBETA 底本『毘盧遮那』"

@@ -47,21 +47,94 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 .jj-detail .kv .k { color: var(--text2); }
 .jj-detail .kv .v { color: var(--text1); }
 
-.doc-panel { margin-top: 14px; padding: 12px 16px; background: rgba(255,255,255,0.4);
-  border: 1px solid var(--line); border-radius: 8px; max-height: 720px; overflow-y: auto; }
-.doc-panel h1 { font-size: 1.35em; color: var(--jj-teal); border-bottom: 2px solid var(--jj-teal); padding-bottom: 4px; }
-.doc-panel h2 { font-size: 1.05em; color: var(--text1); margin-top: 22px; padding-left: 8px; border-left: 3px solid var(--jj-teal); }
-.doc-panel h3 { font-size: 0.98em; color: var(--text1); margin-top: 16px; }
-.doc-panel code { background: rgba(74,138,143,0.10); padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
-.doc-panel pre { background: rgba(31,36,42,0.05); padding: 10px 12px; border-radius: 6px;
-  overflow-x: auto; font-size: 0.82em; }
-.doc-panel blockquote { border-left: 3px solid var(--jj-warn); padding: 6px 12px; margin: 8px 0;
-  background: rgba(180,138,90,0.06); color: var(--text1); font-size: 0.9em; }
-.doc-panel ul, .doc-panel ol { padding-left: 22px; }
-.doc-panel .md-table { width: 100%; border-collapse: collapse; font-size: 0.82em; margin: 8px 0; }
-.doc-panel .md-table th, .doc-panel .md-table td { border: 1px solid var(--line); padding: 4px 8px; text-align: left; vertical-align: top; }
-.doc-panel .md-table th { background: rgba(74,138,143,0.10); }
-.doc-panel hr { border: none; border-top: 1px dashed var(--line); margin: 16px 0; }
+.doc-panel { margin-top: 14px; padding: 24px 28px 32px; background: rgba(255,255,255,0.55);
+  border: 1px solid var(--line); border-radius: 10px; max-height: 780px; overflow-y: auto;
+  max-width: 960px; margin-left: auto; margin-right: auto;
+  font-size: 15.5px; line-height: 1.85; letter-spacing: 0.015em; color: var(--text1);
+  font-family: -apple-system, "PingFang SC", "Microsoft JhengHei", "Noto Sans CJK TC", "Source Han Sans TC", sans-serif; }
+.doc-panel p { font-size: inherit; line-height: inherit; margin: 0.65em 0 1em;
+  text-align: justify; text-justify: inter-ideograph; }
+.doc-panel h1 { font-size: 1.6em; color: var(--jj-teal); border-bottom: 2px solid var(--jj-teal);
+  padding-bottom: 6px; margin: 0 0 18px; line-height: 1.4; letter-spacing: 0.02em; }
+.doc-panel h2 { font-size: 1.28em; color: var(--text1); margin: 30px 0 12px;
+  padding: 6px 12px; border-left: 4px solid var(--jj-teal);
+  background: rgba(74,138,143,0.06); border-radius: 3px; line-height: 1.5; }
+.doc-panel h3 { font-size: 1.12em; color: var(--text1); margin: 22px 0 8px; line-height: 1.5; }
+.doc-panel h4 { font-size: 1.02em; color: var(--jj-teal); margin: 16px 0 6px; line-height: 1.5; }
+.doc-panel h5, .doc-panel h6 { font-size: 0.98em; color: var(--text2); margin: 12px 0 4px; }
+.doc-panel code { background: rgba(74,138,143,0.10); padding: 1px 6px; border-radius: 3px;
+  font-size: 0.9em; font-family: "SF Mono", Consolas, Menlo, monospace; }
+.doc-panel pre { background: rgba(31,36,42,0.05); padding: 12px 14px; border-radius: 6px;
+  overflow-x: auto; font-size: 0.85em; line-height: 1.6; }
+.doc-panel blockquote { border-left: 3px solid var(--jj-warn); padding: 10px 16px; margin: 12px 0;
+  background: rgba(180,138,90,0.06); color: var(--text1); font-size: 0.95em; line-height: 1.75;
+  border-radius: 0 4px 4px 0; }
+.doc-panel blockquote p { margin: 0.35em 0; }
+.doc-panel ul, .doc-panel ol { padding-left: 24px; margin: 0.6em 0 1em; }
+.doc-panel li { line-height: 1.75; margin: 0.35em 0; }
+.doc-panel strong { color: var(--text1); font-weight: 600; }
+.doc-panel .md-table { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 14px 0;
+  line-height: 1.55; }
+.doc-panel .md-table th, .doc-panel .md-table td { border: 1px solid var(--line);
+  padding: 8px 12px; text-align: left; vertical-align: top; }
+.doc-panel .md-table th { background: rgba(74,138,143,0.10); font-weight: 600; }
+.doc-panel .md-table tr:nth-child(even) td { background: rgba(255,255,255,0.35); }
+.doc-panel hr { border: none; border-top: 1px dashed var(--line); margin: 22px 0; }
+.doc-panel a { color: var(--jj-teal); text-decoration: none; border-bottom: 1px dotted rgba(74,138,143,0.4); }
+.doc-panel a:hover { border-bottom-style: solid; }
+
+/* L.141 · 本集回看媒体条（YouTube 红 · Spotify 紫 · 置信度/微词标签）*/
+.media-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  padding: 12px 16px; margin: 4px 0 22px; border-radius: 10px;
+  background: linear-gradient(90deg, rgba(220,20,60,0.07), rgba(128,90,213,0.07));
+  border: 1px solid rgba(74,138,143,0.18); font-size: 0.86em; line-height: 1.5; }
+.media-bar .mb-label { color: var(--text2); font-weight: 600; margin-right: 4px; }
+.media-bar .mbt { text-decoration: none; padding: 5px 12px; border-radius: 16px;
+  display: inline-flex; align-items: center; gap: 5px; border: 1px solid transparent;
+  transition: background .15s, transform .1s; font-weight: 500; cursor: pointer; }
+.media-bar .mbt:hover { transform: translateY(-1px); }
+.media-bar .mbt-yt { background: rgba(220,20,60,0.14); color: #a01030;
+  border-color: rgba(220,20,60,0.30); }
+.media-bar .mbt-yt:hover { background: rgba(220,20,60,0.22); }
+.media-bar .mbt-pod { background: rgba(128,90,213,0.14); color: #5a2fa0;
+  border-color: rgba(128,90,213,0.30); }
+.media-bar .mbt-pod:hover { background: rgba(128,90,213,0.22); }
+.media-bar .mbt-pod-pending { background: rgba(180,138,90,0.14); color: var(--jj-warn);
+  border-color: rgba(180,138,90,0.30); border-style: dashed; cursor: help; }
+.media-bar .mb-conf { font-size: 0.82em; padding: 3px 10px; border-radius: 10px; }
+.media-bar .mb-conf-high { background: rgba(92,141,92,0.16); color: var(--jj-ok);
+  border: 1px solid rgba(92,141,92,0.30); }
+.media-bar .mb-conf-pending { background: rgba(180,138,90,0.16); color: var(--jj-warn);
+  border: 1px solid rgba(180,138,90,0.30); }
+.media-bar .mb-caveat { font-size: 0.78em; color: var(--jj-warn); padding: 2px 8px;
+  background: rgba(180,138,90,0.08); border-radius: 8px; cursor: help; }
+
+/* L.141 · 顶部官方渠道 strip */
+.channels-strip { display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  padding: 10px 18px; margin: 12px 0 4px; border-radius: 8px;
+  background: rgba(94,139,158,0.08); border: 1px solid rgba(94,139,158,0.20);
+  font-size: 0.82em; color: var(--text2); }
+.channels-strip .cs-label { font-weight: 600; color: var(--text1); }
+.channels-strip a { text-decoration: none; padding: 4px 12px; border-radius: 14px;
+  font-weight: 500; border: 1px solid transparent; }
+.channels-strip a.cs-yt { background: rgba(220,20,60,0.14); color: #a01030;
+  border-color: rgba(220,20,60,0.30); }
+.channels-strip a.cs-pod { background: rgba(128,90,213,0.14); color: #5a2fa0;
+  border-color: rgba(128,90,213,0.30); }
+.channels-strip a:hover { filter: brightness(0.94); }
+.channels-strip .cs-note { font-size: 0.9em; opacity: 0.85; margin-left: auto; }
+
+/* L.141 · 概览表「媒体」列图标*/
+.media-cell { white-space: nowrap; }
+.media-cell a { display: inline-block; width: 22px; height: 22px; line-height: 22px;
+  text-align: center; border-radius: 50%; margin: 0 2px; text-decoration: none;
+  font-size: 0.9em; }
+.media-cell a.mbt-yt-mini { background: rgba(220,20,60,0.16); color: #a01030; }
+.media-cell a.mbt-yt-mini:hover { background: rgba(220,20,60,0.28); }
+.media-cell a.mbt-pod-mini { background: rgba(128,90,213,0.16); color: #5a2fa0; }
+.media-cell a.mbt-pod-mini:hover { background: rgba(128,90,213,0.28); }
+.media-cell a.mb-pending { background: rgba(180,138,90,0.14); color: var(--jj-warn);
+  border: 1px dashed rgba(180,138,90,0.35); }
 
 .tabbar { display: flex; gap: 4px; margin: 20px 0 0; border-bottom: 1px solid var(--line); }
 .tabbar button { background: transparent; border: none; padding: 8px 14px; font-size: 0.85em;
@@ -102,6 +175,8 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <div class="badges" id="hero-badges"></div>
 </div>
 
+<div class="channels-strip" id="channels-strip"></div>
+
 <div class="tabbar">
   <button class="active" data-tab="overview">📊 概览·14 集</button>
   <button data-tab="pilot">✒️ Ep 1 精校</button>
@@ -124,7 +199,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <div style="overflow-x:auto">
     <table class="jj-eps">
       <thead><tr>
-        <th>集</th><th>segment</th><th>主题 / 品目 anchor</th>
+        <th>集</th><th>segment</th><th>媒体</th><th>主题 / 品目 anchor</th>
         <th>状态</th><th>cues</th><th>汉字</th><th>覆盖</th><th>pipe</th><th>时长</th>
       </tr></thead>
       <tbody id="eps-body"></tbody>
@@ -135,7 +210,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 
 <section id="tab-pilot" class="tab-panel">
   <div class="doc-panel">
-    <div id="ep01-body"><h1>Ep 1 · 九九華嚴 2026 · 第一章 玄談 · 第一節《華嚴經》的過去、現在、未來（全）</h1>
+    <div id="ep01-body"><div class="media-bar"><span class="mb-label">本集回看：</span><a class="mbt mbt-yt" href="https://www.youtube.com/watch?v=aNIhhEfXSUE" target="_blank" rel="noopener" title="YouTube 原片 · aNIhhEfXSUE">▶ YouTube · 第 1 集原片</a><a class="mbt mbt-pod" href="https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-01--202641-e3na7jo" target="_blank" rel="noopener" title="首集序位 + 時長精確匹配（declared 5872s ≈ 97m52s · 播客 98min）">🎧 Spotify 播客 · S24-01-01 · 2026年4月第1場 · 98min · 上線 2026-04-20</a><span class="mb-conf mb-conf-high" title="首集序位 + 時長精確匹配（declared 5872s ≈ 97m52s · 播客 98min）">高置信 · 時長+月份雙向核</span><span class="mb-caveat" title="ep01.md 頭記『講座日 2026-06-12·視頻日 2026-06-15』與此對映存在差異·〔待核〕（不擅改·僅存疑標記）">⚠ ep01.md 頭記『講座日 2026-06-12·視頻日 2026-06-15…</span></div><h1>Ep 1 · 九九華嚴 2026 · 第一章 玄談 · 第一節《華嚴經》的過去、現在、未來（全）</h1>
 
 <blockquote><strong>主标（OCR slide 检出）</strong>：<code>法講座 | 第一章玄談 | 第一節《華嚴經》的過去、現在、未來</code></blockquote>
 <blockquote><strong>讲座日</strong>：2026-06-12 · <strong>视频日</strong>：2026-06-15 · <strong>时长</strong>：01:36:19 · <strong>cues</strong>：1728</blockquote>
@@ -877,7 +952,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 
 <section id="tab-ep02" class="tab-panel">
   <div class="doc-panel">
-    <div id="ep02-body"><h1>Ep 2 · 《華嚴教海》 · 校訂稿</h1>
+    <div id="ep02-body"><div class="media-bar"><span class="mb-label">本集回看：</span><a class="mbt mbt-yt" href="https://www.youtube.com/watch?v=Z5QNzrCi990" target="_blank" rel="noopener" title="YouTube 原片 · Z5QNzrCi990">▶ YouTube · 第 2 集原片</a><a class="mbt mbt-pod" href="https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-02--202642-e3na7ng" target="_blank" rel="noopener" title="標題 #4月 + 場序 2 + 時長精確匹配（8200s ≈ 136m40s · 播客 137min）">🎧 Spotify 播客 · S24-01-02 · 2026年4月第2場 · 137min · 上線 2026-04-22</a><span class="mb-conf mb-conf-high" title="標題 #4月 + 場序 2 + 時長精確匹配（8200s ≈ 136m40s · 播客 137min）">高置信 · 時長+月份雙向核</span></div><h1>Ep 2 · 《華嚴教海》 · 校訂稿</h1>
 
 <blockquote><strong>狀態</strong>：已校 · 信息無損</blockquote>
 <blockquote><strong>依賴實測</strong>：<code>jj_huayan_lectures.yaml</code> ep 2（2632 cues · 23,802 漢字 · 覆蓋 99.2% · 8137 sec ≈ 2h 15m）</blockquote>
@@ -1488,10 +1563,40 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 
 <script src="../js/common.js"></script>
 <script>
-const EPISODES = [{"ep": 1, "segment": "玄談", "topic": "第一章玄談·第一節《華嚴經》的過去現在未來（请法因缘·三问·外道禅定·佛世→部派→大乘·西域·华严系统·中国宗派·化身报身法身佛）", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "已校·信息无损", "cross_ref": [], "notes": "L.138.1 试点升级为全量：保留所有 OCR 原字形不擅改 · 段末按语四类标识 · huayanhai 玄谈 01–11 六集比对（六集待续已标）·待听核 12 / 待核 5", "cues": 1728, "han": 17371, "coverage": 98.4, "pipe": 221, "declared_sec": 5872, "video_id": "aNIhhEfXSUE", "url": "https://www.youtube.com/watch?v=aNIhhEfXSUE", "calibration": "待校定"}, {"ep": 2, "segment": "玄談", "topic": "承接前讲·一佛乘·四法界·外道辨伪·发菩提心·灵性教室·普贤乘·AI桥·现场问答", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "已校·信息无损", "cross_ref": [], "notes": "L.139.1 全量精校：含现场问答段(E/F)·E20-E22图解OCR严重损坏待重构·不擅改原则全覆盖·华严四法系首次详列", "cues": 2632, "han": 23802, "coverage": 99.2, "pipe": 202, "declared_sec": 8200, "video_id": "Z5QNzrCi990", "url": "https://www.youtube.com/watch?v=Z5QNzrCi990", "calibration": "待校定"}, {"ep": 3, "segment": "玄談", "topic": "AI 時代對讀·2050 年關鍵點·AI 橋表·文明週期", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "本集多幻燈片拼接（| 分隔）·OCR pipe_cues 較高·校勘時需按 | 切分", "cues": 2881, "han": 24381, "coverage": 99.4, "pipe": 230, "declared_sec": 8869, "video_id": "h5gOAne5G24", "url": "https://www.youtube.com/watch?v=h5gOAne5G24", "calibration": "待校定"}, {"ep": 4, "segment": "玄談", "topic": "舍利弗/阿難兩系統·印度婆羅門文化影響·大西洋/太平洋文明對照", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "涉及佛教史观·校勘時須標〔本文判斷〕·不代講者立論", "cues": 3415, "han": 28408, "coverage": 99.2, "pipe": 63, "declared_sec": 11061, "video_id": "jVkDHV483iQ", "url": "https://www.youtube.com/watch?v=jVkDHV483iQ", "calibration": "待校定"}, {"ep": 5, "segment": "玄談", "topic": "科舉時代與文字普及·下化=下迴向·上迴向求阿耨多羅三藐三菩提·華嚴學作為基地", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "『阿耨多羅三藐三菩提』為經文名相·校勘時可回源 CBETA 對照（非某品專指）", "cues": 3652, "han": 31904, "coverage": 99.4, "pipe": 249, "declared_sec": 10712, "video_id": "HjrdWNvah4w", "url": "https://www.youtube.com/watch?v=HjrdWNvah4w", "calibration": "待校定"}, {"ep": 6, "segment": "玄談", "topic": "第一章玄談·第二節華嚴寺·華嚴學·華嚴法·五教止觀", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "OCR 中『第一章玄談|第二節華嚴寺、華嚴學、華嚴法』為幻燈片標題·可作該集之講章結構索引", "cues": 3170, "han": 30081, "coverage": 99.8, "pipe": 337, "declared_sec": 10020, "video_id": "yU7pjzNCc98", "url": "https://www.youtube.com/watch?v=yU7pjzNCc98", "calibration": "待校定"}, {"ep": 7, "segment": "宏觀華嚴經", "topic": "宏觀華嚴經·華嚴經六大部類·經集與篩選兩層次", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经学_三十九品深度研究.md"], "notes": "『六大部類』說法須核《三十九品研究》·判屬講者自創術語或舊說", "cues": 3041, "han": 24432, "coverage": 99.1, "pipe": 21, "declared_sec": 10366, "video_id": "wmKHsCmaYVc", "url": "https://www.youtube.com/watch?v=wmKHsCmaYVc", "calibration": "待校定"}, {"ep": 8, "segment": "宏觀華嚴經", "topic": "為何要講華嚴經·信仰之義·經學與義學之分·華嚴宗祖師建立", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "『經學 vs 義學』之判·Ep 14 再現·校勘時宜連讀", "cues": 2870, "han": 24408, "coverage": 99.5, "pipe": 106, "declared_sec": 10330, "video_id": "JCOA1fCQsi0", "url": "https://www.youtube.com/watch?v=JCOA1fCQsi0", "calibration": "待校定"}, {"ep": 9, "segment": "宏觀華嚴經", "topic": "十個重點問題·凡夫=三意識（個人/族群/社會）之無意識·覺醒之義", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "講者與湯教授討論·屬當機語錄·校勘時須保留『那一天我跟湯教授討論』原語", "cues": 2968, "han": 24170, "coverage": 99.7, "pipe": 64, "declared_sec": 10802, "video_id": "Q310uDRGfk0", "url": "https://www.youtube.com/watch?v=Q310uDRGfk0", "calibration": "待校定"}, {"ep": 10, "segment": "宏觀華嚴經", "topic": "七處九會·三十九品八十卷·七處 vs 八處 vs 十處之研議·第一處菩提場會·第二處普光明殿·第三處忉利天宮", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经细读/华严经细读_系列总纲.md"], "notes": "『七處九會』為傳統判教·『八處/十處』為講者『研議』新說·校勘時須標〔本文判斷〕·並列不取捨", "cues": 3264, "han": 31511, "coverage": 99.7, "pipe": 296, "declared_sec": 10449, "video_id": "e6_1t2-3TF8", "url": "https://www.youtube.com/watch?v=e6_1t2-3TF8", "calibration": "待校定"}, {"ep": 11, "segment": "宏觀華嚴經", "topic": "真理之結構與作用·本會=下迴向·末會=上迴向·上下兩迴向為經文基本結構", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "『上下迴向』對讀與 Ep 5 呼應·可作術語索引", "cues": 3417, "han": 33006, "coverage": 99.3, "pipe": 281, "declared_sec": 10510, "video_id": "47GWFvcytws", "url": "https://www.youtube.com/watch?v=47GWFvcytws", "calibration": "待校定"}, {"ep": 12, "segment": "宏觀華嚴經", "topic": "傳承之難·『師父藏一手』之辨·西瓜籽喻·橫空出世之病", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "民間諺語多·校勘時口語標點宜保留原語感", "cues": 3632, "han": 31941, "coverage": 99.3, "pipe": 186, "declared_sec": 10392, "video_id": "PNKB2nHp-IE", "url": "https://www.youtube.com/watch?v=PNKB2nHp-IE", "calibration": "待校定"}, {"ep": 13, "segment": "正行", "topic": "第一處 vs 第一會之辨·『如是我聞。一時。佛在摩竭提國阿蘭若法菩提場中始成正覺』·其菩提樹恆出妙音·入世主妙嚴品", "anchor_pin": "世主妙嚴品", "anchor_juan": "卷 1", "anchor_cbeta": "T10n0279_卷1 · 品目次第第 1 品起首句", "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第一部_世主妙严品.md"], "notes": "本集開始正經·首句『如是我聞…』校勘時必須逐字回 CBETA·不得以口語改字", "cues": 3402, "han": 32601, "coverage": 99.2, "pipe": 451, "declared_sec": 10785, "video_id": "dPzOJ_HLBJg", "url": "https://www.youtube.com/watch?v=dPzOJ_HLBJg", "calibration": "待校定"}, {"ep": 14, "segment": "正行", "topic": "如來現相·毘盧遮那品·存在 vs 顯相·經學 vs 義學·從下迴向之最高·從上迴向之最終", "anchor_pin": "如來現相品 / 毘盧遮那品", "anchor_juan": "卷 6 / 卷 11", "anchor_cbeta": "T10n0279_卷6 · T10n0279_卷11", "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第二部_如来现相品.md", "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第六部_毗卢遮那品.md"], "notes": "本集 OCR 因 SABR 限制退 360p·『昆廬遮/毘盧遮那/星险遮那』三形混出·校勘須統一為 CBETA 底本『毘盧遮那』", "cues": 3200, "han": 30832, "coverage": 99.2, "pipe": 89, "declared_sec": 10153, "video_id": "xNej63VlSCw", "url": "https://www.youtube.com/watch?v=xNej63VlSCw", "calibration": "待校定"}];
+const EPISODES = [{"ep": 1, "segment": "玄談", "topic": "第一章玄談·第一節《華嚴經》的過去現在未來（请法因缘·三问·外道禅定·佛世→部派→大乘·西域·华严系统·中国宗派·化身报身法身佛）", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "已校·信息无损", "cross_ref": [], "notes": "L.138.1 试点升级为全量：保留所有 OCR 原字形不擅改 · 段末按语四类标识 · huayanhai 玄谈 01–11 六集比对（六集待续已标）·待听核 12 / 待核 5", "cues": 1728, "han": 17371, "coverage": 98.4, "pipe": 221, "declared_sec": 5872, "video_id": "aNIhhEfXSUE", "url": "https://www.youtube.com/watch?v=aNIhhEfXSUE", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-01--202641-e3na7jo", "podcast_label": "S24-01-01 · 2026年4月第1場 · 98min · 上線 2026-04-20", "podcast_confidence": "high", "podcast_basis": "首集序位 + 時長精確匹配（declared 5872s ≈ 97m52s · 播客 98min）", "podcast_caveat": "ep01.md 頭記『講座日 2026-06-12·視頻日 2026-06-15』與此對映存在差異·〔待核〕（不擅改·僅存疑標記）"}, {"ep": 2, "segment": "玄談", "topic": "承接前讲·一佛乘·四法界·外道辨伪·发菩提心·灵性教室·普贤乘·AI桥·现场问答", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "已校·信息无损", "cross_ref": [], "notes": "L.139.1 全量精校：含现场问答段(E/F)·E20-E22图解OCR严重损坏待重构·不擅改原则全覆盖·华严四法系首次详列", "cues": 2632, "han": 23802, "coverage": 99.2, "pipe": 202, "declared_sec": 8200, "video_id": "Z5QNzrCi990", "url": "https://www.youtube.com/watch?v=Z5QNzrCi990", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-02--202642-e3na7ng", "podcast_label": "S24-01-02 · 2026年4月第2場 · 137min · 上線 2026-04-22", "podcast_confidence": "high", "podcast_basis": "標題 #4月 + 場序 2 + 時長精確匹配（8200s ≈ 136m40s · 播客 137min）", "podcast_caveat": ""}, {"ep": 3, "segment": "玄談", "topic": "AI 時代對讀·2050 年關鍵點·AI 橋表·文明週期", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "本集多幻燈片拼接（| 分隔）·OCR pipe_cues 較高·校勘時需按 | 切分", "cues": 2881, "han": 24381, "coverage": 99.4, "pipe": 230, "declared_sec": 8869, "video_id": "h5gOAne5G24", "url": "https://www.youtube.com/watch?v=h5gOAne5G24", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-01-03--202643-e3na7ot", "podcast_label": "S24-01-03 · 2026年4月第3場 · 148min · 上線 2026-04-27", "podcast_confidence": "high", "podcast_basis": "標題 #4月 + 場序 3 + 時長精確匹配（8869s ≈ 147m49s · 播客 148min）", "podcast_caveat": ""}, {"ep": 4, "segment": "玄談", "topic": "舍利弗/阿難兩系統·印度婆羅門文化影響·大西洋/太平洋文明對照", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "涉及佛教史观·校勘時須標〔本文判斷〕·不代講者立論", "cues": 3415, "han": 28408, "coverage": 99.2, "pipe": 63, "declared_sec": 11061, "video_id": "jVkDHV483iQ", "url": "https://www.youtube.com/watch?v=jVkDHV483iQ", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-01--202651-e3na7p2", "podcast_label": "S24-02-01 · 2026年5月第1場 · 184min · 上線 2026-06-01", "podcast_confidence": "high", "podcast_basis": "標題 #5月 + 場序 1 + 時長精確匹配（11061s ≈ 184m21s · 播客 184min）", "podcast_caveat": ""}, {"ep": 5, "segment": "玄談", "topic": "科舉時代與文字普及·下化=下迴向·上迴向求阿耨多羅三藐三菩提·華嚴學作為基地", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "『阿耨多羅三藐三菩提』為經文名相·校勘時可回源 CBETA 對照（非某品專指）", "cues": 3652, "han": 31904, "coverage": 99.4, "pipe": 249, "declared_sec": 10712, "video_id": "HjrdWNvah4w", "url": "https://www.youtube.com/watch?v=HjrdWNvah4w", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-02--202652-e3na7vo", "podcast_label": "S24-02-02 · 2026年5月第2場 · 179min · 上線 2026-06-03", "podcast_confidence": "high", "podcast_basis": "標題 #5月 + 場序 2 + 時長精確匹配（10712s ≈ 178m32s · 播客 179min）", "podcast_caveat": ""}, {"ep": 6, "segment": "玄談", "topic": "第一章玄談·第二節華嚴寺·華嚴學·華嚴法·五教止觀", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "OCR 中『第一章玄談|第二節華嚴寺、華嚴學、華嚴法』為幻燈片標題·可作該集之講章結構索引", "cues": 3170, "han": 30081, "coverage": 99.8, "pipe": 337, "declared_sec": 10020, "video_id": "yU7pjzNCc98", "url": "https://www.youtube.com/watch?v=yU7pjzNCc98", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-03--202653-e3na800", "podcast_label": "S24-02-03 · 2026年5月第3場 · 167min · 上線 2026-06-07", "podcast_confidence": "high", "podcast_basis": "標題 #5月 + 場序 3 + 時長精確匹配（10020s = 167m00s · 播客 167min）", "podcast_caveat": ""}, {"ep": 7, "segment": "宏觀華嚴經", "topic": "宏觀華嚴經·華嚴經六大部類·經集與篩選兩層次", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经学_三十九品深度研究.md"], "notes": "『六大部類』說法須核《三十九品研究》·判屬講者自創術語或舊說", "cues": 3041, "han": 24432, "coverage": 99.1, "pipe": 21, "declared_sec": 10366, "video_id": "wmKHsCmaYVc", "url": "https://www.youtube.com/watch?v=wmKHsCmaYVc", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-01--202661-e3na803", "podcast_label": "S24-03-01 · 2026年6月第1場 · 173min · 上線 2026-07-01", "podcast_confidence": "high", "podcast_basis": "標題 #6月 + 場序 1 + 時長匹配（10366s ≈ 172m46s · 播客 173min·四捨五入）", "podcast_caveat": ""}, {"ep": 8, "segment": "宏觀華嚴經", "topic": "為何要講華嚴經·信仰之義·經學與義學之分·華嚴宗祖師建立", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "『經學 vs 義學』之判·Ep 14 再現·校勘時宜連讀", "cues": 2870, "han": 24408, "coverage": 99.5, "pipe": 106, "declared_sec": 10330, "video_id": "JCOA1fCQsi0", "url": "https://www.youtube.com/watch?v=JCOA1fCQsi0", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-02--202662-e3na806", "podcast_label": "S24-03-02 · 2026年6月第2場 · 172min · 上線 2026-07-06", "podcast_confidence": "high", "podcast_basis": "標題 #6月 + 場序 2 + 時長精確匹配（10330s ≈ 172m10s · 播客 172min）", "podcast_caveat": ""}, {"ep": 9, "segment": "宏觀華嚴經", "topic": "十個重點問題·凡夫=三意識（個人/族群/社會）之無意識·覺醒之義", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "講者與湯教授討論·屬當機語錄·校勘時須保留『那一天我跟湯教授討論』原語", "cues": 2968, "han": 24170, "coverage": 99.7, "pipe": 64, "declared_sec": 10802, "video_id": "Q310uDRGfk0", "url": "https://www.youtube.com/watch?v=Q310uDRGfk0", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-03--202663-e3na85m", "podcast_label": "S24-03-03 · 2026年6月第3場 · 180min · 上線 2026-07-08", "podcast_confidence": "high", "podcast_basis": "標題 #6月 + 場序 3 + 時長精確匹配（10802s ≈ 180m02s · 播客 180min）", "podcast_caveat": ""}, {"ep": 10, "segment": "宏觀華嚴經", "topic": "七處九會·三十九品八十卷·七處 vs 八處 vs 十處之研議·第一處菩提場會·第二處普光明殿·第三處忉利天宮", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经细读/华严经细读_系列总纲.md"], "notes": "『七處九會』為傳統判教·『八處/十處』為講者『研議』新說·校勘時須標〔本文判斷〕·並列不取捨", "cues": 3264, "han": 31511, "coverage": 99.7, "pipe": 296, "declared_sec": 10449, "video_id": "e6_1t2-3TF8", "url": "https://www.youtube.com/watch?v=e6_1t2-3TF8", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-01--202671-e3nb9fs", "podcast_label": "S24-04-01 · 2026年7月第1場 · 174min · 上線 2026-08-03", "podcast_confidence": "high", "podcast_basis": "標題 #7月 + 場序 1 + 時長精確匹配（10449s ≈ 174m09s · 播客 174min）", "podcast_caveat": ""}, {"ep": 11, "segment": "宏觀華嚴經", "topic": "真理之結構與作用·本會=下迴向·末會=上迴向·上下兩迴向為經文基本結構", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "『上下迴向』對讀與 Ep 5 呼應·可作術語索引", "cues": 3417, "han": 33006, "coverage": 99.3, "pipe": 281, "declared_sec": 10510, "video_id": "47GWFvcytws", "url": "https://www.youtube.com/watch?v=47GWFvcytws", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-02--202672-e3nb9g2", "podcast_label": "S24-04-02 · 2026年7月第2場 · 175min · 上線 2026-08-05", "podcast_confidence": "high", "podcast_basis": "標題 #7月 + 場序 2 + 時長精確匹配（10510s ≈ 175m10s · 播客 175min）", "podcast_caveat": ""}, {"ep": 12, "segment": "宏觀華嚴經", "topic": "傳承之難·『師父藏一手』之辨·西瓜籽喻·橫空出世之病", "anchor_pin": null, "anchor_juan": null, "anchor_cbeta": null, "collation_status": "待校", "cross_ref": [], "notes": "民間諺語多·校勘時口語標點宜保留原語感", "cues": 3632, "han": 31941, "coverage": 99.3, "pipe": 186, "declared_sec": 10392, "video_id": "PNKB2nHp-IE", "url": "https://www.youtube.com/watch?v=PNKB2nHp-IE", "calibration": "待校定", "podcast_url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-04-03--202673-e3nb9g4", "podcast_label": "S24-04-03 · 2026年7月第3場 · 173min · 上線 2026-08-10", "podcast_confidence": "high", "podcast_basis": "標題 #7月 + 場序 3 + 時長匹配（10392s ≈ 173m12s · 播客 173min）", "podcast_caveat": ""}, {"ep": 13, "segment": "正行", "topic": "第一處 vs 第一會之辨·『如是我聞。一時。佛在摩竭提國阿蘭若法菩提場中始成正覺』·其菩提樹恆出妙音·入世主妙嚴品", "anchor_pin": "世主妙嚴品", "anchor_juan": "卷 1", "anchor_cbeta": "T10n0279_卷1 · 品目次第第 1 品起首句", "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第一部_世主妙严品.md"], "notes": "本集開始正經·首句『如是我聞…』校勘時必須逐字回 CBETA·不得以口語改字", "cues": 3402, "han": 32601, "coverage": 99.2, "pipe": 451, "declared_sec": 10785, "video_id": "dPzOJ_HLBJg", "url": "https://www.youtube.com/watch?v=dPzOJ_HLBJg", "calibration": "待校定", "podcast_url": "", "podcast_label": "〔待核〕· 2026年8月場次拆分【正行】+【會後問答】兩條·Ep 13 疑對應 S24-05-01+05-02 或合并場", "podcast_confidence": "pending", "podcast_basis": "八月場次播客按『正行/問答』分條上架·YouTube Ep 為完整場·需逐集比對時長與內容", "podcast_caveat": ""}, {"ep": 14, "segment": "正行", "topic": "如來現相·毘盧遮那品·存在 vs 顯相·經學 vs 義學·從下迴向之最高·從上迴向之最終", "anchor_pin": "如來現相品 / 毘盧遮那品", "anchor_juan": "卷 6 / 卷 11", "anchor_cbeta": "T10n0279_卷6 · T10n0279_卷11", "collation_status": "待校", "cross_ref": ["docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第二部_如来现相品.md", "docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第六部_毗卢遮那品.md"], "notes": "本集 OCR 因 SABR 限制退 360p·『昆廬遮/毘盧遮那/星险遮那』三形混出·校勘須統一為 CBETA 底本『毘盧遮那』", "cues": 3200, "han": 30832, "coverage": 99.2, "pipe": 89, "declared_sec": 10153, "video_id": "xNej63VlSCw", "url": "https://www.youtube.com/watch?v=xNej63VlSCw", "calibration": "待校定", "podcast_url": "", "podcast_label": "〔待核〕· 2026年8月場次拆分【正行】+【會後問答】·Ep 14 疑對應 S24-05-02 或 05-03", "podcast_confidence": "pending", "podcast_basis": "同 Ep 13·待校·可借 CBETA 品目對照 + 時長分配二次核", "podcast_caveat": ""}];
 const MEASURED = {"consistency": "md／srt／html 三產物字幕條數相符：14/14 集", "coverage_min": 0.9842, "coverage_max": 0.9976, "coverage_mean": 0.9932, "total_cues": 43272, "total_han_chars": 388848, "total_hours": 38.48, "head_garbage_cues": 53, "pipe_cues": 2796, "latin_cues": 1007, "latin_only_cues": 201, "simp_cues": 401, "short_cues": 720};
+const CHANNELS = {"youtube_channel": {"url": "https://www.youtube.com/@huayen-world", "label": "大华严寺官方频道"}, "podcast_channel": {"url": "https://podcasters.spotify.com/pod/show/haiyun-jimeng", "label": "海云继梦法师 · Spotify Podcast (S24=九九華嚴講座)"}, "podcast_mapping_note": "YouTube Ep n 与 S24 MM-NN 依【讲座月份 + 时长】双向对质·Ep 1–12 高置信·Ep 13+ 本月拆正行/问答需二次校"};
+
+function renderChannels(){
+  var box = document.getElementById('channels-strip');
+  if(!box || !CHANNELS) return;
+  var yt = CHANNELS.youtube_channel || {};
+  var pod = CHANNELS.podcast_channel || {};
+  var html = '<span class="cs-label">📡 官方渠道常驻回看：</span>';
+  if(yt.url) html += '<a class="cs-yt" href="'+yt.url+'" target="_blank" rel="noopener">▶ YouTube · '+(yt.label||'官方频道')+'</a>';
+  if(pod.url) html += '<a class="cs-pod" href="'+pod.url+'" target="_blank" rel="noopener">🎧 Spotify · '+(pod.label||'播客')+'</a>';
+  if(CHANNELS.podcast_mapping_note) html += '<span class="cs-note" title="'+CHANNELS.podcast_mapping_note+'">'+CHANNELS.podcast_mapping_note.slice(0,60)+(CHANNELS.podcast_mapping_note.length>60?'…':'')+'</span>';
+  box.innerHTML = html;
+}
 
 function fmtDur(sec){ if(!sec) return '—'; const h=Math.floor(sec/3600), m=Math.floor((sec%3600)/60); return h ? (h+'h'+String(m).padStart(2,'0')+'m') : (m+'m'); }
+
+function mediaCellHtml(e){
+  var out = '';
+  if(e.url){
+    out += '<a class="mbt-yt-mini" href="'+e.url+'" target="_blank" rel="noopener" title="▶ YouTube 原片 · '+(e.video_id||'')+'">▶</a>';
+  } else {
+    out += '<span class="mbt-yt-mini" style="opacity:0.35">▶</span>';
+  }
+  if(e.podcast_url){
+    out += '<a class="mbt-pod-mini" href="'+e.podcast_url+'" target="_blank" rel="noopener" title="🎧 '+(e.podcast_label||'')+'\n'+(e.podcast_basis||'')+'">🎧</a>';
+  } else if(e.podcast_label){
+    out += '<a class="mbt-pod-mini mb-pending" href="https://podcasters.spotify.com/pod/show/haiyun-jimeng" target="_blank" rel="noopener" title="🎧 待核·'+(e.podcast_label||'')+'\n'+(e.podcast_basis||'')+'">?</a>';
+  } else {
+    out += '<span class="mbt-pod-mini" style="opacity:0.35">🎧</span>';
+  }
+  return out;
+}
 
 function renderBadges(){
   const b = document.getElementById('hero-badges');
@@ -1525,6 +1630,7 @@ function renderTable(){
     return '<tr data-ep="'+e.ep+'">'+
       '<td><strong>Ep '+String(e.ep).padStart(2,'0')+'</strong></td>'+
       '<td><span class="seg-tag '+segCls+'">'+e.segment+'</span></td>'+
+      '<td class="media-cell">'+mediaCellHtml(e)+'</td>'+
       '<td>'+e.topic+anchor+'</td>'+
       '<td><span class="'+stagCls+'">'+e.collation_status+'</span></td>'+
       '<td>'+(e.cues||'—')+'</td>'+
@@ -1546,7 +1652,17 @@ function showDetail(ep){
   const cross = e.cross_ref && e.cross_ref.length
     ? '<ul>'+e.cross_ref.map(p=>'<li><code>'+p+'</code></li>').join('')+'</ul>'
     : '<span style="color:var(--text2)">（无）</span>';
-  const link = e.url ? ' <a href="'+e.url+'" target="_blank" rel="noopener" style="color:var(--jj-teal)">▶ 官方视频</a>' : '';
+  const ytLink = e.url ? '<a href="'+e.url+'" target="_blank" rel="noopener" style="color:#a01030">▶ 官方视频</a>' : '';
+  const podLink = e.podcast_url
+    ? ' <a href="'+e.podcast_url+'" target="_blank" rel="noopener" style="color:#5a2fa0" title="'+(e.podcast_basis||"").replace(/"/g,'&quot;')+'">🎧 播客·'+(e.podcast_label||'')+'</a>'
+    : (e.podcast_label ? ' <span style="color:var(--jj-warn)" title="'+(e.podcast_basis||"").replace(/"/g,'&quot;')+'">🎧 '+(e.podcast_label||'')+'</span>' : '');
+  const link = (ytLink || podLink) ? (' '+ytLink+podLink) : '';
+  const podKv = e.podcast_label
+    ? ('<div class="k">播客對映</div><div class="v">'+(e.podcast_url?('<a href="'+e.podcast_url+'" target="_blank" rel="noopener" style="color:#5a2fa0">'+e.podcast_label+'</a>'):e.podcast_label)
+       +(e.podcast_basis?('<br><span style="color:var(--text2);font-size:0.9em">匹配依据：'+e.podcast_basis+'</span>'):'')
+       +(e.podcast_caveat?('<br><span style="color:var(--jj-warn);font-size:0.9em">⚠ '+e.podcast_caveat+'</span>'):'')
+       +'</div>')
+    : '';
   holder.innerHTML =
     '<div class="jj-detail">'+
       '<h2>Ep '+String(e.ep).padStart(2,'0')+' · '+e.segment+' · '+e.collation_status+link+'</h2>'+
@@ -1556,6 +1672,7 @@ function showDetail(ep){
         '<div class="k">CBETA 回源</div><div class="v">'+(e.anchor_cbeta||'—')+'</div>'+
         '<div class="k">video_id</div><div class="v"><code>'+(e.video_id||'—')+'</code></div>'+
         '<div class="k">实测</div><div class="v">'+(e.cues||'—')+' cues · '+(e.han?e.han.toLocaleString():'—')+' 汉字 · 覆盖 '+(e.coverage?e.coverage.toFixed(1)+'%':'—')+' · pipe '+(e.pipe||'—')+' · '+fmtDur(e.declared_sec)+'</div>'+
+        podKv+
         '<div class="k">细读 cross_ref</div><div class="v">'+cross+'</div>'+
         '<div class="k">按语</div><div class="v">'+(e.notes||'—')+'</div>'+
       '</div>'+
@@ -1609,6 +1726,7 @@ function copyPageLink(){
 }
 
 renderBadges();
+renderChannels();
 renderTable();
 </script>
 </body>

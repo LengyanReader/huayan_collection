@@ -4102,3 +4102,21 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 
 **铁律自校**：本批未造任一经文·未改 讲记 SSOT·订正只重构目录层元数据·本地 commit·**未 push**（待用户 OK）。
 
+
+---
+
+## L.141 · 2026-10-21 · 九九华严校勘页 · 每集 YouTube + Podcast 链接 + 中文排版 overhaul
+
+**用户要求**：每集梳理给出对应 YouTube + Podcast 视频/音频链接·便于回看；调整字体·字号·行文·段落等中文排版；妥当后再启下一集。
+
+**已完成（L.141）**：
+- L.141.1 数据：jj_huayan_collation.yaml · meta.media_channels 顶层（YouTube + Spotify Podcast 双向渠道 + 對映注記）· episodes[1-14].podcast 块（url · label · confidence · match_basis · caveat）
+- L.141.2 對映：Ep 1-12 YouTube ↔ S24-MM-NN 播客 高置信（月份 tag 定位 batch · declared_sec 与 m 分钟精确或四舍五入匹配 · 場序 1/2/3 依月内次序）· Ep 13/14 pending（八月场拆正行+問答两条上架 · 需校）
+- L.141.3 视图：media_bar_html() 每集顶部胶囊条 · channels-strip 顶部常驻官方渠道 · 概览表「媒体」列 · 详情「播客對映」kv · 高置信/待核/⚠ 三色标签
+- L.141.4 排版：doc-panel max-width 960 · font-size 15.5px · line-height 1.85 · p justify inter-ideograph · 四级标题尺度重整 · blockquote 1em 化 · md-table 0.95em 斑马 · 家族字体 PingFang SC / JhengHei / Noto Sans CJK TC
+
+**门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXITCODE=0**·audit_consistency 0 FAIL。
+
+**铁律自校**：本批未造任一经文·未改 ep01/ep02.md 讲记 SSOT·仅元数据/视图层·本地 commit·**未 push**（待用户 OK）。
+
+**下一步（待用户确认 L.141 妥当后）**：Ep 3 K3c 全量精校写盘（暂停于 6 章边界确认前）。

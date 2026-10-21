@@ -28,6 +28,7 @@ episodes = []
 for cm in C["episodes"]:
     ep = cm["ep"]
     md = next((x for x in M["episodes_detail"] if x["ep"] == ep), {})
+    pod = cm.get("podcast") or {}
     episodes.append({
         "ep": ep,
         "segment": cm["segment"],
@@ -46,7 +47,16 @@ for cm in C["episodes"]:
         "video_id": md.get("video_id"),
         "url": md.get("url"),
         "calibration": md.get("calibration"),
+        # L.141 · 播客回看（与 haiyun_podcast_catalog.yaml S24 對映）
+        "podcast_url": pod.get("url", ""),
+        "podcast_label": pod.get("label", ""),
+        "podcast_confidence": pod.get("confidence", ""),
+        "podcast_basis": pod.get("match_basis", ""),
+        "podcast_caveat": pod.get("caveat", ""),
     })
+
+# L.141 · 官方渠道 strip（顶部常驻）
+CHANNELS = (C.get("meta") or {}).get("media_channels") or {}
 
 # Markdown to simple HTML (only for embedded Ep1 doc + README)
 def md_to_html(md):
@@ -104,9 +114,54 @@ ep02_md = io.open(ep02_path, encoding="utf-8").read() if os.path.exists(ep02_pat
 
 DATA_JSON = json.dumps(episodes, ensure_ascii=False)
 MEASURED_JSON = json.dumps(M.get("measured", {}), ensure_ascii=False)
+CHANNELS_JSON = json.dumps(CHANNELS, ensure_ascii=False)
 README_HTML = md_to_html(readme_md)
 EP01_HTML = md_to_html(ep01_md)
 EP02_HTML = md_to_html(ep02_md) if ep02_md else ""
+
+
+# ── L.141 · 每集顶部回看媒体条（YouTube + Spotify 播客）───────────
+def media_bar_html(ep_num):
+    e = next((x for x in episodes if x["ep"] == ep_num), None)
+    if not e:
+        return ""
+    parts = []
+    if e.get("url"):
+        parts.append(
+            '<a class="mbt mbt-yt" href="' + e["url"] + '" target="_blank" rel="noopener" '
+            'title="YouTube 原片 · ' + (e.get("video_id") or "") + '">'
+            '▶ YouTube · 第 ' + str(ep_num) + ' 集原片</a>'
+        )
+    pod_url = e.get("podcast_url") or ""
+    pod_label = e.get("podcast_label") or ""
+    conf = e.get("podcast_confidence") or ""
+    basis = e.get("podcast_basis") or ""
+    caveat = e.get("podcast_caveat") or ""
+    if pod_url:
+        parts.append(
+            '<a class="mbt mbt-pod" href="' + pod_url + '" target="_blank" rel="noopener" '
+            'title="' + (basis or "") + '">'
+            '🎧 Spotify 播客 · ' + pod_label + '</a>'
+        )
+    elif pod_label:
+        parts.append(
+            '<span class="mbt mbt-pod mbt-pod-pending" title="' + (basis or "") + '">'
+            '🎧 播客 · ' + pod_label + '</span>'
+        )
+    if conf == "high":
+        parts.append('<span class="mb-conf mb-conf-high" title="' + (basis or "") + '">高置信 · 時長+月份雙向核</span>')
+    elif conf == "pending":
+        parts.append('<span class="mb-conf mb-conf-pending" title="' + (basis or "") + '">待核 · 八月場次拆正行/問答</span>')
+    if caveat:
+        parts.append('<span class="mb-caveat" title="' + caveat + '">⚠ ' + caveat[:40] + ('…' if len(caveat) > 40 else '') + '</span>')
+    if not parts:
+        return ""
+    return ('<div class="media-bar"><span class="mb-label">本集回看：</span>'
+            + ''.join(parts) + '</div>')
+
+
+EP01_HTML = media_bar_html(1) + EP01_HTML
+EP02_HTML = media_bar_html(2) + EP02_HTML
 
 TEMPLATE = r"""<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -157,21 +212,94 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 .jj-detail .kv .k { color: var(--text2); }
 .jj-detail .kv .v { color: var(--text1); }
 
-.doc-panel { margin-top: 14px; padding: 12px 16px; background: rgba(255,255,255,0.4);
-  border: 1px solid var(--line); border-radius: 8px; max-height: 720px; overflow-y: auto; }
-.doc-panel h1 { font-size: 1.35em; color: var(--jj-teal); border-bottom: 2px solid var(--jj-teal); padding-bottom: 4px; }
-.doc-panel h2 { font-size: 1.05em; color: var(--text1); margin-top: 22px; padding-left: 8px; border-left: 3px solid var(--jj-teal); }
-.doc-panel h3 { font-size: 0.98em; color: var(--text1); margin-top: 16px; }
-.doc-panel code { background: rgba(74,138,143,0.10); padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
-.doc-panel pre { background: rgba(31,36,42,0.05); padding: 10px 12px; border-radius: 6px;
-  overflow-x: auto; font-size: 0.82em; }
-.doc-panel blockquote { border-left: 3px solid var(--jj-warn); padding: 6px 12px; margin: 8px 0;
-  background: rgba(180,138,90,0.06); color: var(--text1); font-size: 0.9em; }
-.doc-panel ul, .doc-panel ol { padding-left: 22px; }
-.doc-panel .md-table { width: 100%; border-collapse: collapse; font-size: 0.82em; margin: 8px 0; }
-.doc-panel .md-table th, .doc-panel .md-table td { border: 1px solid var(--line); padding: 4px 8px; text-align: left; vertical-align: top; }
-.doc-panel .md-table th { background: rgba(74,138,143,0.10); }
-.doc-panel hr { border: none; border-top: 1px dashed var(--line); margin: 16px 0; }
+.doc-panel { margin-top: 14px; padding: 24px 28px 32px; background: rgba(255,255,255,0.55);
+  border: 1px solid var(--line); border-radius: 10px; max-height: 780px; overflow-y: auto;
+  max-width: 960px; margin-left: auto; margin-right: auto;
+  font-size: 15.5px; line-height: 1.85; letter-spacing: 0.015em; color: var(--text1);
+  font-family: -apple-system, "PingFang SC", "Microsoft JhengHei", "Noto Sans CJK TC", "Source Han Sans TC", sans-serif; }
+.doc-panel p { font-size: inherit; line-height: inherit; margin: 0.65em 0 1em;
+  text-align: justify; text-justify: inter-ideograph; }
+.doc-panel h1 { font-size: 1.6em; color: var(--jj-teal); border-bottom: 2px solid var(--jj-teal);
+  padding-bottom: 6px; margin: 0 0 18px; line-height: 1.4; letter-spacing: 0.02em; }
+.doc-panel h2 { font-size: 1.28em; color: var(--text1); margin: 30px 0 12px;
+  padding: 6px 12px; border-left: 4px solid var(--jj-teal);
+  background: rgba(74,138,143,0.06); border-radius: 3px; line-height: 1.5; }
+.doc-panel h3 { font-size: 1.12em; color: var(--text1); margin: 22px 0 8px; line-height: 1.5; }
+.doc-panel h4 { font-size: 1.02em; color: var(--jj-teal); margin: 16px 0 6px; line-height: 1.5; }
+.doc-panel h5, .doc-panel h6 { font-size: 0.98em; color: var(--text2); margin: 12px 0 4px; }
+.doc-panel code { background: rgba(74,138,143,0.10); padding: 1px 6px; border-radius: 3px;
+  font-size: 0.9em; font-family: "SF Mono", Consolas, Menlo, monospace; }
+.doc-panel pre { background: rgba(31,36,42,0.05); padding: 12px 14px; border-radius: 6px;
+  overflow-x: auto; font-size: 0.85em; line-height: 1.6; }
+.doc-panel blockquote { border-left: 3px solid var(--jj-warn); padding: 10px 16px; margin: 12px 0;
+  background: rgba(180,138,90,0.06); color: var(--text1); font-size: 0.95em; line-height: 1.75;
+  border-radius: 0 4px 4px 0; }
+.doc-panel blockquote p { margin: 0.35em 0; }
+.doc-panel ul, .doc-panel ol { padding-left: 24px; margin: 0.6em 0 1em; }
+.doc-panel li { line-height: 1.75; margin: 0.35em 0; }
+.doc-panel strong { color: var(--text1); font-weight: 600; }
+.doc-panel .md-table { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 14px 0;
+  line-height: 1.55; }
+.doc-panel .md-table th, .doc-panel .md-table td { border: 1px solid var(--line);
+  padding: 8px 12px; text-align: left; vertical-align: top; }
+.doc-panel .md-table th { background: rgba(74,138,143,0.10); font-weight: 600; }
+.doc-panel .md-table tr:nth-child(even) td { background: rgba(255,255,255,0.35); }
+.doc-panel hr { border: none; border-top: 1px dashed var(--line); margin: 22px 0; }
+.doc-panel a { color: var(--jj-teal); text-decoration: none; border-bottom: 1px dotted rgba(74,138,143,0.4); }
+.doc-panel a:hover { border-bottom-style: solid; }
+
+/* L.141 · 本集回看媒体条（YouTube 红 · Spotify 紫 · 置信度/微词标签）*/
+.media-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  padding: 12px 16px; margin: 4px 0 22px; border-radius: 10px;
+  background: linear-gradient(90deg, rgba(220,20,60,0.07), rgba(128,90,213,0.07));
+  border: 1px solid rgba(74,138,143,0.18); font-size: 0.86em; line-height: 1.5; }
+.media-bar .mb-label { color: var(--text2); font-weight: 600; margin-right: 4px; }
+.media-bar .mbt { text-decoration: none; padding: 5px 12px; border-radius: 16px;
+  display: inline-flex; align-items: center; gap: 5px; border: 1px solid transparent;
+  transition: background .15s, transform .1s; font-weight: 500; cursor: pointer; }
+.media-bar .mbt:hover { transform: translateY(-1px); }
+.media-bar .mbt-yt { background: rgba(220,20,60,0.14); color: #a01030;
+  border-color: rgba(220,20,60,0.30); }
+.media-bar .mbt-yt:hover { background: rgba(220,20,60,0.22); }
+.media-bar .mbt-pod { background: rgba(128,90,213,0.14); color: #5a2fa0;
+  border-color: rgba(128,90,213,0.30); }
+.media-bar .mbt-pod:hover { background: rgba(128,90,213,0.22); }
+.media-bar .mbt-pod-pending { background: rgba(180,138,90,0.14); color: var(--jj-warn);
+  border-color: rgba(180,138,90,0.30); border-style: dashed; cursor: help; }
+.media-bar .mb-conf { font-size: 0.82em; padding: 3px 10px; border-radius: 10px; }
+.media-bar .mb-conf-high { background: rgba(92,141,92,0.16); color: var(--jj-ok);
+  border: 1px solid rgba(92,141,92,0.30); }
+.media-bar .mb-conf-pending { background: rgba(180,138,90,0.16); color: var(--jj-warn);
+  border: 1px solid rgba(180,138,90,0.30); }
+.media-bar .mb-caveat { font-size: 0.78em; color: var(--jj-warn); padding: 2px 8px;
+  background: rgba(180,138,90,0.08); border-radius: 8px; cursor: help; }
+
+/* L.141 · 顶部官方渠道 strip */
+.channels-strip { display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  padding: 10px 18px; margin: 12px 0 4px; border-radius: 8px;
+  background: rgba(94,139,158,0.08); border: 1px solid rgba(94,139,158,0.20);
+  font-size: 0.82em; color: var(--text2); }
+.channels-strip .cs-label { font-weight: 600; color: var(--text1); }
+.channels-strip a { text-decoration: none; padding: 4px 12px; border-radius: 14px;
+  font-weight: 500; border: 1px solid transparent; }
+.channels-strip a.cs-yt { background: rgba(220,20,60,0.14); color: #a01030;
+  border-color: rgba(220,20,60,0.30); }
+.channels-strip a.cs-pod { background: rgba(128,90,213,0.14); color: #5a2fa0;
+  border-color: rgba(128,90,213,0.30); }
+.channels-strip a:hover { filter: brightness(0.94); }
+.channels-strip .cs-note { font-size: 0.9em; opacity: 0.85; margin-left: auto; }
+
+/* L.141 · 概览表「媒体」列图标*/
+.media-cell { white-space: nowrap; }
+.media-cell a { display: inline-block; width: 22px; height: 22px; line-height: 22px;
+  text-align: center; border-radius: 50%; margin: 0 2px; text-decoration: none;
+  font-size: 0.9em; }
+.media-cell a.mbt-yt-mini { background: rgba(220,20,60,0.16); color: #a01030; }
+.media-cell a.mbt-yt-mini:hover { background: rgba(220,20,60,0.28); }
+.media-cell a.mbt-pod-mini { background: rgba(128,90,213,0.16); color: #5a2fa0; }
+.media-cell a.mbt-pod-mini:hover { background: rgba(128,90,213,0.28); }
+.media-cell a.mb-pending { background: rgba(180,138,90,0.14); color: var(--jj-warn);
+  border: 1px dashed rgba(180,138,90,0.35); }
 
 .tabbar { display: flex; gap: 4px; margin: 20px 0 0; border-bottom: 1px solid var(--line); }
 .tabbar button { background: transparent; border: none; padding: 8px 14px; font-size: 0.85em;
@@ -212,6 +340,8 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <div class="badges" id="hero-badges"></div>
 </div>
 
+<div class="channels-strip" id="channels-strip"></div>
+
 <div class="tabbar">
   <button class="active" data-tab="overview">📊 概览·14 集</button>
   <button data-tab="pilot">✒️ Ep 1 精校</button>
@@ -234,7 +364,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <div style="overflow-x:auto">
     <table class="jj-eps">
       <thead><tr>
-        <th>集</th><th>segment</th><th>主题 / 品目 anchor</th>
+        <th>集</th><th>segment</th><th>媒体</th><th>主题 / 品目 anchor</th>
         <th>状态</th><th>cues</th><th>汉字</th><th>覆盖</th><th>pipe</th><th>时长</th>
       </tr></thead>
       <tbody id="eps-body"></tbody>
@@ -278,8 +408,38 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 <script>
 const EPISODES = __DATA_JSON__;
 const MEASURED = __MEASURED_JSON__;
+const CHANNELS = __CHANNELS_JSON__;
+
+function renderChannels(){
+  var box = document.getElementById('channels-strip');
+  if(!box || !CHANNELS) return;
+  var yt = CHANNELS.youtube_channel || {};
+  var pod = CHANNELS.podcast_channel || {};
+  var html = '<span class="cs-label">📡 官方渠道常驻回看：</span>';
+  if(yt.url) html += '<a class="cs-yt" href="'+yt.url+'" target="_blank" rel="noopener">▶ YouTube · '+(yt.label||'官方频道')+'</a>';
+  if(pod.url) html += '<a class="cs-pod" href="'+pod.url+'" target="_blank" rel="noopener">🎧 Spotify · '+(pod.label||'播客')+'</a>';
+  if(CHANNELS.podcast_mapping_note) html += '<span class="cs-note" title="'+CHANNELS.podcast_mapping_note+'">'+CHANNELS.podcast_mapping_note.slice(0,60)+(CHANNELS.podcast_mapping_note.length>60?'…':'')+'</span>';
+  box.innerHTML = html;
+}
 
 function fmtDur(sec){ if(!sec) return '—'; const h=Math.floor(sec/3600), m=Math.floor((sec%3600)/60); return h ? (h+'h'+String(m).padStart(2,'0')+'m') : (m+'m'); }
+
+function mediaCellHtml(e){
+  var out = '';
+  if(e.url){
+    out += '<a class="mbt-yt-mini" href="'+e.url+'" target="_blank" rel="noopener" title="▶ YouTube 原片 · '+(e.video_id||'')+'">▶</a>';
+  } else {
+    out += '<span class="mbt-yt-mini" style="opacity:0.35">▶</span>';
+  }
+  if(e.podcast_url){
+    out += '<a class="mbt-pod-mini" href="'+e.podcast_url+'" target="_blank" rel="noopener" title="🎧 '+(e.podcast_label||'')+'\n'+(e.podcast_basis||'')+'">🎧</a>';
+  } else if(e.podcast_label){
+    out += '<a class="mbt-pod-mini mb-pending" href="https://podcasters.spotify.com/pod/show/haiyun-jimeng" target="_blank" rel="noopener" title="🎧 待核·'+(e.podcast_label||'')+'\n'+(e.podcast_basis||'')+'">?</a>';
+  } else {
+    out += '<span class="mbt-pod-mini" style="opacity:0.35">🎧</span>';
+  }
+  return out;
+}
 
 function renderBadges(){
   const b = document.getElementById('hero-badges');
@@ -313,6 +473,7 @@ function renderTable(){
     return '<tr data-ep="'+e.ep+'">'+
       '<td><strong>Ep '+String(e.ep).padStart(2,'0')+'</strong></td>'+
       '<td><span class="seg-tag '+segCls+'">'+e.segment+'</span></td>'+
+      '<td class="media-cell">'+mediaCellHtml(e)+'</td>'+
       '<td>'+e.topic+anchor+'</td>'+
       '<td><span class="'+stagCls+'">'+e.collation_status+'</span></td>'+
       '<td>'+(e.cues||'—')+'</td>'+
@@ -334,7 +495,17 @@ function showDetail(ep){
   const cross = e.cross_ref && e.cross_ref.length
     ? '<ul>'+e.cross_ref.map(p=>'<li><code>'+p+'</code></li>').join('')+'</ul>'
     : '<span style="color:var(--text2)">（无）</span>';
-  const link = e.url ? ' <a href="'+e.url+'" target="_blank" rel="noopener" style="color:var(--jj-teal)">▶ 官方视频</a>' : '';
+  const ytLink = e.url ? '<a href="'+e.url+'" target="_blank" rel="noopener" style="color:#a01030">▶ 官方视频</a>' : '';
+  const podLink = e.podcast_url
+    ? ' <a href="'+e.podcast_url+'" target="_blank" rel="noopener" style="color:#5a2fa0" title="'+(e.podcast_basis||"").replace(/"/g,'&quot;')+'">🎧 播客·'+(e.podcast_label||'')+'</a>'
+    : (e.podcast_label ? ' <span style="color:var(--jj-warn)" title="'+(e.podcast_basis||"").replace(/"/g,'&quot;')+'">🎧 '+(e.podcast_label||'')+'</span>' : '');
+  const link = (ytLink || podLink) ? (' '+ytLink+podLink) : '';
+  const podKv = e.podcast_label
+    ? ('<div class="k">播客對映</div><div class="v">'+(e.podcast_url?('<a href="'+e.podcast_url+'" target="_blank" rel="noopener" style="color:#5a2fa0">'+e.podcast_label+'</a>'):e.podcast_label)
+       +(e.podcast_basis?('<br><span style="color:var(--text2);font-size:0.9em">匹配依据：'+e.podcast_basis+'</span>'):'')
+       +(e.podcast_caveat?('<br><span style="color:var(--jj-warn);font-size:0.9em">⚠ '+e.podcast_caveat+'</span>'):'')
+       +'</div>')
+    : '';
   holder.innerHTML =
     '<div class="jj-detail">'+
       '<h2>Ep '+String(e.ep).padStart(2,'0')+' · '+e.segment+' · '+e.collation_status+link+'</h2>'+
@@ -344,6 +515,7 @@ function showDetail(ep){
         '<div class="k">CBETA 回源</div><div class="v">'+(e.anchor_cbeta||'—')+'</div>'+
         '<div class="k">video_id</div><div class="v"><code>'+(e.video_id||'—')+'</code></div>'+
         '<div class="k">实测</div><div class="v">'+(e.cues||'—')+' cues · '+(e.han?e.han.toLocaleString():'—')+' 汉字 · 覆盖 '+(e.coverage?e.coverage.toFixed(1)+'%':'—')+' · pipe '+(e.pipe||'—')+' · '+fmtDur(e.declared_sec)+'</div>'+
+        podKv+
         '<div class="k">细读 cross_ref</div><div class="v">'+cross+'</div>'+
         '<div class="k">按语</div><div class="v">'+(e.notes||'—')+'</div>'+
       '</div>'+
@@ -397,6 +569,7 @@ function copyPageLink(){
 }
 
 renderBadges();
+renderChannels();
 renderTable();
 </script>
 </body>
@@ -406,6 +579,7 @@ renderTable();
 out = (TEMPLATE
        .replace("__DATA_JSON__", DATA_JSON)
        .replace("__MEASURED_JSON__", MEASURED_JSON)
+       .replace("__CHANNELS_JSON__", CHANNELS_JSON)
        .replace("__EP01_HTML__", EP01_HTML)
        .replace("__EP02_HTML__", EP02_HTML)
        .replace("__README_HTML__", README_HTML))

@@ -219,3 +219,18 @@
 
 
 
+
+## L.141 · 2026-10-21 · 九九华严校勘页 · 媒体回看 + 中文排版
+
+**触发**：用户 Message 4「每一集的海云法师的99华严的讲经梳理中·可以把对应的 youtube 和 podcast 的视频音频的链接给到·便于读者查看·另外·需要调整一下格式·保证字体·字号·行文·段落等等都是恰当的·在把这些都做妥当后·可以开始下一集了」。
+
+**动作**：
+- **数据层**（jj_huayan_collation.yaml · +71 行）：meta 补 `media_channels`（YouTube 频道 · Spotify Podcast 频道 · 对映注记）· 14 集各补 `podcast:`（url · label · confidence · match_basis · caveat·Ep 1 特记 ep01.md 頭記日期差異·Ep 13/14 八月场拆正行/问答）。Ep 1-12 依 haiyun_podcast_catalog.yaml S24-MM-NN 命名 · YouTube 标题月份 tag + declared_sec 与播客 m 分钟数 双向核 → **12/12 高置信** · Ep 13/14 pending。
+- **构建层**（build_jj_collation_page.py · +55+88+48 行）：合并 episodes JSON 时透传 5 个 podcast_* 字段 · 新 media_bar_html(ep) 拼顶部条 · 顶部常驻 channels-strip · 概览表新增「媒体」列 + mediaCellHtml(e) · 详情面板新增「播客對映」kv + 匹配依据 + caveat 三色标签 · CHANNELS_JSON 注入。**排版 overhaul**：doc-panel 960px 居中 · 15.5px/1.85 · p justify + inter-ideograph · h1 1.6em · h2 1.28em 背景条 · h3 1.12em · h4 1.02em · blockquote lh 1.75 · md-table 0.95em 斑马 · PingFang/JhengHei/Noto CJK 家族。
+- **产物**：web/demo/articles/jj-huayan-collation.html 256,333 → **270,945 B**（+14.6 KB）· 14 集全含 podcast 块 · Ep1+Ep2 各自顶部 media-bar · channels-strip 常驻。
+
+**验证**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXITCODE=0**（skip_html 白名单 OK）· audit_consistency 0 FAIL · 本批**未新增任一经文引文**·仅元数据 + 视图层重构。
+
+**并行隔离**：staged 6 条显式路径 · 未动 高僧传/CBETA ingest/quote_koushu/ep03 scratch。
+
+**本地 commit · 未 push**（memory 5102c2b8）。Ep 3 K3c 写**待用户确认格式妥当后**启动。
