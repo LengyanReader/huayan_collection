@@ -281,3 +281,24 @@
 **并行隔离**：staged 显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
 
 **本地 commit · 未 push**（memory 5102c2b8）。下步 Ep 4 K3d 二次精校批补〔〕按语 + huayanhai 比对 + §三~§五完整化。
+
+---
+
+## L.145 · Ep 4 K3d 二次精校 ✅（2026-10-22）
+
+**用户指示**：「再精校一下，评估可以的话，就可以进入 ep05 了」→ Ep 4 二次精校（試點精校→已校·信息无损）。
+
+**产物**：
+- `_gen_ep04_k3d.py`（从 `_seg_ep04.json` 73 段逐字取 raw + 注入批注）：ANNOT 73 条·SEG_LEAD 6·GLOSSARY 48·HY_CMP 22·DOUBTS 36
+- `episodes/ep04.md` 98,195 → **156,363 B**·402 → 536 行·§二正文 **28,374 漢字不变**（信息无损）·状态 **已校·信息无损**
+- 结构对齐 ep02/ep03：〇凡例·一概要·二讲章（逐段内联批注）·三術語表·四 CBETA（空）·五 huayanhai 比对·六双向会读·七存疑·八原则·九修订
+- yaml ep4 collation_status 試點精校→**已校·信息无损**·coverage/notes 改写 K3d 口径
+- html 496,645 → **558,641 B**（Ep4 44,516 漢字）
+
+**铁律自校**：逐段標〔本文判斷〕/〔講記比對〕/〔OCR 待校〕/〔待聽核〕/〔待核〕·**slide echo 標記不删**（§C01–C11/E07/F25 重災區）·涉四禅八定/大藏经/部派分流等佛教史观劲爆判语（§E10–E11）一律標〔本文判斷〕**不代講者立论**·不造经文（玄谈/問答段·CBETA 欄空合规）·不擅改講者口语。
+
+**验证**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0**（skip_html 白名单 558,641B DOCTYPE/收尾/体量 OK）· audit_consistency 0 FAIL。
+
+**并行隔离**：staged 显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
+
+**本地 commit · 未 push**（memory 5102c2b8）。**评估**：Ep 1–4 均已校·信息无损·闸门全绿 → 可进 Ep 5 K3c 流水线。

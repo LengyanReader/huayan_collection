@@ -4158,3 +4158,12 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 **门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit 0 FAIL。
 **铁律自校**：不引经文（玄谈段·CBETA 空合规）·raw 不擅改·佛教史观 K3d 標〔本文判斷〕·本地 commit **未 push**。
 **下一步**：Ep 4 K3d 二次精校（逐段填〔〕按语 + huayanhai 比对 + §三~§五完整化）·或 Ep 5 K3c 流水线。
+
+### L.145 · Ep 4 K3d 二次精校 ✅（2026-10-22）
+- 用户「再精校一下·评估可以的话·就可以进入 ep05」→ 扩展 `_gen_ep04_k3d.py`（ANNOT 73·SEG_LEAD 6·GLOSSARY 48·HY_CMP 22·DOUBTS 36）
+- ep04.md 98,195→**156,363B**·402→536 行·§二正文 28,374 漢字不变·状态 試點精校→**已校·信息无损**
+- 逐段標〔本文判斷〕/〔講記比對〕/〔OCR 待校〕/〔待聽核〕/〔待核〕·slide echo 標記不删（§C01–C11/E07/F25）·佛教史观劲爆判语（§E10–E11）不代立论
+- yaml ep4 collation_status→已校·信息无损·html 496,645→**558,641B**（Ep4 44,516 漢字）
+**门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit 0 FAIL。
+**评估**：Ep 1–4 均已校·信息无损·闸门全绿→**可进 Ep 5 K3c**。
+**下一步**：Ep 5 K3c 流水线（probe→segment→gen→yaml 待校→試點精校→HTML Ep5 tab→重建→闸门→commit）·玄谈段无 CBETA 回源。

@@ -114,9 +114,9 @@ episodes:
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "試點精校"
+    collation_status: "已校·信息无损"
     collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep04.md"
-    collation_coverage: "K3c 首轮 raw·§二逐段照录不擅改·73 可讀段·有效 cues 3400（剔除句首独立 slide 残片·實語與 slide「 | 」拼接保留原貌）·6 講章（含 §F 現場問答 02:07:50–03:02）·§二正文 28,374 漢字·§三/§四/§五 待续（延後 K3d）"
+    collation_coverage: "K3d 二次精校·段末〔〕標注補入·73 可讀段（含 A01–A02 片头 slide 残片·信息无损不删）·有效 cues 3400·6 講章（含 §F 現場問答 02:07:50–03:02）·§二正文 28,374 漢字·§三術語表 48 條·§五 huayanhai 比對 22 行·§七存疑 36 條"
     collation_sections: 6
     collation_paragraphs: 73
     huayanhai_xuantan_ref: []
@@ -127,7 +127,7 @@ episodes:
       label: "S24-02-01 · 2026年5月第1場 · 184min · 上線 2026-06-01"
       confidence: high
       match_basis: "標題 #5月 + 場序 1 + 時長精確匹配（11061s ≈ 184m21s · 播客 184min）"
-    notes: "K3c 首轮 (L.144)：玄談段第二節「華嚴寺、華嚴學、華嚴法」+ 現場問答·本轮不含经文引文（属玄谈段·CBETA 欄空合规）·講者口语照 OCR 原字形不擅改·涉印度婆羅門／舍利弗阿難兩系統佛教史观·K3d 時須標〔本文判斷〕不代講者立論"
+    notes: "K3d 二次精校 (L.145)：逐段選擇性標注〔本文判斷〕/〔講記比對〕/〔待聽核〕/〔待核〕/〔OCR 待校〕·slide echo 標記不删（§C01–C11/E07/F25 重災區·待依原圖重構）·本轮不含任何经文引文（属玄谈/問答段·CBETA 欄空合规）·講者口语照 OCR 原字形不擅改·涉四禪八定/大藏经/部派分流等佛教史观劲爆判语（§E10–E11）一律標〔本文判斷〕不代講者立论"
 
   - ep: 5
     segment: "玄談"
