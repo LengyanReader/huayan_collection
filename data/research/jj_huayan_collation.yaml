@@ -20,6 +20,7 @@
 meta:
   version: "L.138.1"
   created: "2026-10-21"
+  updated: "2026-10-21"
   source_ssot: "docs/hy_refs/sub_extract/delivery/ep*.md (OCR)"
   measured_ssot: "data/research/jj_huayan_lectures.yaml"
   collation_scope_first: 1
@@ -28,14 +29,19 @@ meta:
 episodes:
   - ep: 1
     segment: "玄談"
-    topic_zh: "請法因緣·2026 華嚴法化弘開根本年·五教行法架構·整体教學體系展開"
+    topic_zh: "第一章玄談·第一節《華嚴經》的過去現在未來（请法因缘·三问·外道禅定·佛世→部派→大乘·西域·华严系统·中国宗派·化身报身法身佛）"
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "試點精校"
+    collation_status: "已校·信息无损"
     collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep01.md"
+    collation_coverage: "1681/1681 有效 cues · 74 可读段 · 6 讲章 · 22403 汉字"
+    collation_sections: 6
+    collation_paragraphs: 74
+    huayanhai_xuantan_ref: [01, 05, 07, 08, 09, 11]
+    huayanhai_xuantan_pending: [02, 03, 04, 06, 10, 12]
     cross_ref_series: []
-    notes: "开场致辞·未入經文正行·有可點睛語（『整體華嚴五教行法』）可作導讀引用"
+    notes: "L.138.1 试点升级为全量：保留所有 OCR 原字形不擅改 · 段末按语四类标识 · huayanhai 玄谈 01–11 六集比对（六集待续已标）·待听核 12 / 待核 5"
 
   - ep: 2
     segment: "玄談"
