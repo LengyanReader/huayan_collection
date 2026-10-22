@@ -388,3 +388,18 @@
 **验证**：check.py ✅ · audit_consistency [B1] 格式异常 0 · verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,113,328B OK）。
 **并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
 **下一步**：迳进 Ep 7 K3d（通读 `_seg_ep07.json` 74 段全文取证·扩展 `_gen_ep07_k3d.py`）。
+
+## L.151 · Ep 7 K3d 二次精校 ✅（2026-10-22）
+**目标**：Ep 7《宏觀的華嚴經》K3d 二次精校·已校·信息無損（授权连续推进·逐集确认免除）。
+**产出**：
+- 通读 `_seg_ep07.json` 74 段全文（`_read_ep07.py`→`_read_ep07.txt`）逐段标注意据
+- `_gen_ep07_k3d.py`（ANNOT **74 段全覆盖**·SEG_LEAD 6·GLOSSARY **49**·HY_CMP **17**·DOUBTS **40**）·ep07.md 88,362→**145,608B·546 行·正文 24,432 漢字与 K3c 逐字相等＝信息無損**·结构对齐 ep02–ep06
+- **K3d-e 重点**：§C01–D04「方廣境界…解所能受持」文言残片（疑投影片经题标题条·标记不删·不作回源·§六标待人工依原图核）·§E10/E12「因陀雅…華酸」疑因陀罗误识
+- **§F17「這三次都是玄談」（02:24）＝系列定位内证**·坐实 Ep 5–7＝玄談三節·Ep 13+ 正行段 CBETA 回源前提段（与 Ep6 §F15 同线互证）·入 §六/§七
+- §D05「华严数学」术语本集首现（承 Ep4/5「名词我随便取的」）·占察轮须弥山地居天行法出《占察经》T14n0421（非华严·承 Ep6 §F05）只作回源指引
+- 劲爆判语（华严故乡在西域/二期才出龙树请出/四期佛教/普贤乘/李通玄长者系/欲界四天/AI 真理身/外道神通巫术判）一律〔本文判斷〕只标不代立论
+- yaml ep7 collation_status 試點精校→**已校·信息无损**·coverage/notes 更新 K3d 实测
+- 重建 html 1,113,328→**1,176,970B**
+**验证**：check.py ✅ · audit_consistency [B1] 格式异常 0（ep07.md 11 条〔待核〕属正常·与 ep06 齐平）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,176,970B OK）。
+**并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
+**下一步**：迳进 Ep 8 K3c（probe ep08 话题流定界·`_segment_ep08.py`·`_gen_ep08.py`）。
