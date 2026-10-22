@@ -131,18 +131,24 @@ episodes:
 
   - ep: 5
     segment: "玄談"
-    topic_zh: "科舉時代與文字普及·下化=下迴向·上迴向求阿耨多羅三藐三菩提·華嚴學作為基地"
+    topic_zh: "承接前講·下化=下迴向·上迴向求阿耨多羅三藐三菩提·華嚴學作為義學/學術/教育中心基地·四法界·轉慢帳·心動大誤會·法身佛資糧道·現場問答"
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "待校"
+    collation_status: "試點精校"
+    collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep05.md"
+    collation_coverage: "K3c 首轮 raw 逐段照录·106 可讀段·有效 cues 3576 / 全局 3652·6 講章（含 §C slide echo 重災區 00:25–00:45·§F 現場問答 02:07–02:57）·§二正文 30,553 漢字（占 OCR 漢字 31,904 之 95%）·段末〔〕標注延後至 K3d 二次精校批"
+    collation_sections: 6
+    collation_paragraphs: 106
+    huayanhai_xuantan_ref: []
+    huayanhai_xuantan_pending: [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12]
     cross_ref_series: []
     podcast:
       url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-02-02--202652-e3na7vo"
       label: "S24-02-02 · 2026年5月第2場 · 179min · 上線 2026-06-03"
       confidence: high
       match_basis: "標題 #5月 + 場序 2 + 時長精確匹配（10712s ≈ 178m32s · 播客 179min）"
-    notes: "『阿耨多羅三藐三菩提』為經文名相·校勘時可回源 CBETA 對照（非某品專指）"
+    notes: "K3c 首轮 (L.146)：逐段照录 raw OCR + 时间戳·講者口语照 OCR 原字形不擅改·本轮不含任何经文引文（属玄谈/問答段·CBETA 欄空合规）·『阿耨多羅三藐三菩提』為經文名相·校勘時可回源 CBETA 對照（非某品專指）·§C 00:25–00:45 為屏內標題條密集疊印重災區·部分實語以豎線拼接殘留·待依原圖重構·涉心動大誤會/法身佛資糧道/新興宗教誤認輕安等佛教史观判语·K3d 一律標〔本文判斷〕不代講者立论"
 
   - ep: 6
     segment: "玄談"

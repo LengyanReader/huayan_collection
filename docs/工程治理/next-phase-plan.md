@@ -4167,3 +4167,12 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 **门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit 0 FAIL。
 **评估**：Ep 1–4 均已校·信息无损·闸门全绿→**可进 Ep 5 K3c**。
 **下一步**：Ep 5 K3c 流水线（probe→segment→gen→yaml 待校→試點精校→HTML Ep5 tab→重建→闸门→commit）·玄谈段无 CBETA 回源。
+
+### L.146 · Ep 5 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+- 用户「再精校一下·评估可以的话就可以进入 ep05」→ Ep 4 评估通过·启 Ep 5 K3c
+- _probe_ep05.py 扫 3652 cues·末 02:57:21（修正 PowerShell `>` 致 UTF-8→GBK mojibake）→ _segment_ep05.py 6 講章·**3576 有效 cues → 106 可讀段**·ep05.md **109,139B·535行·正文30,553漢字**（占 OCR 95%）·状态 **試點精校**
+- 玄谈段三段结构：承接前讲（下化=下迴向/上迴向求阿耨多羅三藐三菩提）→玄谈第二節華嚴寺/學/法（四法界/众生分类/转慢帐/心动/资粮道 ~02:07）→现场问答（~02:09–02:57·广东/北京/上海）
+- yaml ep5 待校→試點精校·补 collation_* 字段·html 558,641 → **673,988B**（新增 Ep5 tab + media bar）
+**门禁**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit 0 FAIL（B1 格式异常 0）。
+**铁律自校**：不引经文（玄谈/問答段·CBETA 空合规）·raw 不擅改·§C 重災區 slide echo 標記不删·佛教史观判语 K3d 標〔本文判斷〕·本地 commit **未 push**。
+**下一步**：Ep 5 K3d 二次精校（逐段填〔〕按语 + huayanhai 比对 + §三~五完整化）·或 Ep 6 K3c 流水线。

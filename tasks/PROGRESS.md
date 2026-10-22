@@ -302,3 +302,23 @@
 **并行隔离**：staged 显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
 
 **本地 commit · 未 push**（memory 5102c2b8）。**评估**：Ep 1–4 均已校·信息无损·闸门全绿 → 可进 Ep 5 K3c 流水线。
+
+## L.146 · Ep 5 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+
+**用户指示**：「再精校一下，评估可以的话，就可以进入 ep05 了」→ Ep 4 评估通过·启 Ep 5 K3c。
+
+**产物**：
+- `_probe_ep05.py` 扫 3652 cues（末 02:57:21）·修正 PowerShell `>` 重定向致 **UTF-8→GBK mojibake**（改脚本内 `io.open(...,encoding='utf-8')` 直写）·定三段结构：承接前讲→玄谈第二節·華嚴寺/學/法（~02:07）→现场问答（~02:09–02:57）
+- `_segment_ep05.py` 6 講章边界·3576 有效 cues（剔句首独立 slide 残片/noise）→**106 可讀段**（§A 9P·§B 6P·§C 26P 重災區·§D 16P·§E 28P·§F 問答 21P）
+- `_gen_ep05.py` → `episodes/ep05.md` **109,139B·535行·正文30,553漢字**（占 OCR 漢字 31,904 之 95%）·〇凡例+一概要+二逐段照录[OCR起止]+字数量+三~五待续·不擅改不臆造
+- 结构对齐 ep01–ep04（本轮仅 K3c 骨架·逐段〔〕按语/§三~五 延后 K3d）
+- yaml ep5 collation_status 待校→**試點精校**·补 collation_doc/coverage/sections(6)/paragraphs(106)·topic_zh 改写实测口径
+- html 558,641 → **673,988B**（新增 Ep5 tab + media bar）
+
+**铁律自校**：本轮**不引经文**（玄谈/問答段·CBETA 欄空合规）·raw 逐字不擅改·**slide echo 標記不删**（§C 00:25–00:45 重災區）·涉心动大误会/法身佛资粮道/新兴宗教误认轻安等佛教史观判语→K3d 一律標〔本文判斷〕**不代講者立论**。
+
+**验证**：check.py ✅ · verify_demo **ALL CHECKS PASSED · EXIT=0** · audit_consistency 0 FAIL（B1 格式异常 0）。
+
+**并行隔离**：staged 显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
+
+**本地 commit · 未 push**（memory 5102c2b8）。**下一步**：Ep 5 K3d 二次精校（逐段填〔〕按语 + huayanhai 比对 + §三~五完整化）·或 Ep 6 K3c。
