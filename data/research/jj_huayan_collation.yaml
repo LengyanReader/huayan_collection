@@ -135,9 +135,9 @@ episodes:
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "試點精校"
+    collation_status: "已校·信息无损"
     collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep05.md"
-    collation_coverage: "K3c 首轮 raw 逐段照录·106 可讀段·有效 cues 3576 / 全局 3652·6 講章（含 §C slide echo 重災區 00:25–00:45·§F 現場問答 02:07–02:57）·§二正文 30,553 漢字（占 OCR 漢字 31,904 之 95%）·段末〔〕標注延後至 K3d 二次精校批"
+    collation_coverage: "K3d 二次精校·106 可讀段段末〔〕標注全覆蓋（按注 106 條）·§三術語表 89 條·§五 huayanhai 比對 28 行·§七存疑 53 條·有效 cues 3576 / 全局 3652·6 講章·§二正文 30,553 漢字（占 OCR 漢字 31,904 之 95%·與 K3c 逐字一致·信息無損）"
     collation_sections: 6
     collation_paragraphs: 106
     huayanhai_xuantan_ref: []
@@ -148,7 +148,7 @@ episodes:
       label: "S24-02-02 · 2026年5月第2場 · 179min · 上線 2026-06-03"
       confidence: high
       match_basis: "標題 #5月 + 場序 2 + 時長精確匹配（10712s ≈ 178m32s · 播客 179min）"
-    notes: "K3c 首轮 (L.146)：逐段照录 raw OCR + 时间戳·講者口语照 OCR 原字形不擅改·本轮不含任何经文引文（属玄谈/問答段·CBETA 欄空合规）·『阿耨多羅三藐三菩提』為經文名相·校勘時可回源 CBETA 對照（非某品專指）·§C 00:25–00:45 為屏內標題條密集疊印重災區·部分實語以豎線拼接殘留·待依原圖重構·涉心動大誤會/法身佛資糧道/新興宗教誤認輕安等佛教史观判语·K3d 一律標〔本文判斷〕不代講者立论"
+    notes: "K3d 二次精校 (L.147)：逐段標注〔本文判斷〕/〔詞條〕/〔待聽核〕/〔待核〕/〔OCR 待校〕·slide echo 標記不删（§C 全段/§D02–D06 皆令入佛智/§E04–E05 黑業圖例/§E22–E24 新興宗教標語重災區·待依原圖重構）·本轮不含任何经文引文（属玄谈/問答段·CBETA 欄空合规）·講者口语照 OCR 原字形不擅改·涉心動大誤會/四智三界內/佛陀七天息身令現/閻王玉皇/新興宗教誤認輕安/四禪八定等佛教史观劲爆判语一律標〔本文判斷〕不代講者立论·異文（息身令現/息至令現·前三三/前三覺）各照本文存異不擅自統一"
 
   - ep: 6
     segment: "玄談"

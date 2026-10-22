@@ -322,3 +322,22 @@
 **并行隔离**：staged 显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
 
 **本地 commit · 未 push**（memory 5102c2b8）。**下一步**：Ep 5 K3d 二次精校（逐段填〔〕按语 + huayanhai 比对 + §三~五完整化）·或 Ep 6 K3c。
+
+## L.147 · Ep 5 K3d 二次精校 ✅（2026-10-22）
+
+**用户指示**：「还是先精校一下，最终确认可以收尾了，再进入下一步」→ Ep 5 K3d 二次精校。
+
+**产物**：
+- 通读 `_seg_ep05.json` 106 段全文·重生成 pid 清单纠偏（§E 段序 E09=瞬間定/DNA/閻王玉皇·E10=彌勒內院·E13=掌聲不夠）·逐词核实 OCR 实形（息至令現×1 vs 息身令現×2·前三覺×1 vs 前三三×2→异文存异不統一）
+- `_gen_ep05_k3d.py`（ANNOT **106 条全覆蓋**·SEG_LEAD 6·GLOSSARY **89**·HY_CMP **28**·DOUBTS **53**·未標注段自检=無）
+- `episodes/ep05.md` 109,139 → **202,197B**·535→737 行·§二正文 **30,553 漢字与 K3c 逐字一致（信息無損）**·结构九节对齐 ep02–ep04
+- yaml ep5 collation_status 試點精校→**已校·信息无损**·coverage/notes 改写 K3d 口径
+- html 673,988 → **772,877 B**（Ep5 tab 升级为精校稿）
+
+**铁律自校**：slide echo 標記不删（§C 全段/§D02–D06/§E04–E05/§E22–E24 重災區）·心动大誤會/四智三界內/佛陀七天/閻王玉皇/新興宗教誤認輕安/四禪八定等判语一律標〔本文判斷〕**不代講者立论**·不造经文（玄谈/問答段·CBETA 欄空合规）·不擅改講者口语·**异文各照本文存异不擅自統一**（息身令現/息至令現·前三三/前三覺）。
+
+**验证**：check.py ✅ · audit_consistency 0 FAIL（B1 格式异常 0）· verify_demo **ALL CHECKS PASSED · EXIT=0**（skip_html 白名单 772,877B DOCTYPE/收尾/体量 OK）。
+
+**并行隔离**：staged 显式路径 · 未动 高僧传/CBETA ingest/quote_koushu 草稿线。
+
+**本地 commit · 未 push**（memory 5102c2b8）。**评估**：Ep 1–5 均已校·信息无损·闸门全绿 → 待用户收尾确认后进入 Ep 6 K3c（§六钩注：Ep 6 优先核「前三三/駐佇心觀」内容并校异文）。
