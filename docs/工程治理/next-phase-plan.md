@@ -4234,3 +4234,12 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 **门禁**：check.py ✅ · audit [B1] 格式异常 0（ep08.md K3c raw 无〔待核〕属正常）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,273,052B OK）。
 **铁律自校**：本轮不引经文（玄谈/問答段·CBETA 欄空合规）·slide echo 标记不删·本地 commit **未 push**。
 **下一步**：迳进 Ep 8 K3d（通读 `_seg_ep08.json` 69 段·扩展 `_gen_ep08_k3d.py`）·其后 Ep 9→14 逐集连续推进至收官评估。
+### L.153 · Ep 8 K3d 二次精校 ✅（2026-10-22）
+- 授权连续推进·Ep 8 玄談第四節《微觀的華嚴經》段末〔〕標注補入·状态 試點精校→**已校·信息无损**
+- 通读 `_seg_ep08.json` 69 段全文（`_read_ep08.py`→`_read_ep08.txt`）取证·扩展 `_gen_ep07_k3d.py`→`_gen_ep08_k3d.py`（ANNOT **69 段全覆盖**·SEG_LEAD 6·GLOSSARY **58**·HY_CMP **16**·DOUBTS **37**）
+- 生成 ep08.md（90,133→**176,555B**·389→530 行·正文 **24,408 漢字·与 K3c 基线逐字相等＝信息無損**）·结构对齐 ep02–ep07
+- **K3d-e**：标题条密集（十門談議几乎常驻·多变体『教痘浅保/余趣/邮類/积扣/部频』·标不删·§六待人工依原图核）；§A03 开场「微觀的華嚴經就是我們要講經了」＝系列定位内证（承 Ep7 宏觀·Ep13+ 別解經文预备·与 Ep6 §F15/Ep7 §F17 互证）；§D05–D06 信解行證＝三的 n+1 次方；§E05–E07 三業安素 vs 六根安素·心動令生 vs 息至令現＝橫出三界；劲爆判语一律标〔本文判斷〕不代立论
+- yaml ep8 collation_status 試點精校→**已校·信息无损**·coverage/notes 更新 K3d 实测·重建 html 1,273,052→**1,369,243B**
+**门禁**：check.py ✅ · audit exit 0（[B1] 格式异常 0）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,369,243B OK）。
+**铁律自校**：本轮不引经文（玄谈/問答段·CBETA 欄空合规）·slide echo 标记不删·本地 commit **未 push**·Ep 1–8 已校。
+**下一步**：迳进 Ep 9 K3c（probe ep09 话题流定界·`_segment_ep09.py`·`_gen_ep09.py`）·其后 Ep 10→14 逐集连续推进至收官评估。

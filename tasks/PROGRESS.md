@@ -416,3 +416,16 @@
 **验证**：check.py ✅ · audit_consistency [B1] 格式异常 0（ep08.md K3c raw 无〔待核〕属正常）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,273,052B OK）。
 **并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
 **下一步**：迳进 Ep 8 K3d（通读 `_seg_ep08.json` 69 段全文取证·扩展 `_gen_ep08_k3d.py`）。
+
+## L.153 · Ep 8 K3d 二次精校 ✅（2026-10-22）
+**目标**：Ep 8《微觀的華嚴經・为何要講華嚴經》K3d 二次精校·段末〔〕標注補入·达「已校·信息無損」（授权连续推进·逐集确认免除）。
+**产出**：
+- 通读 `_seg_ep08.json` 69 段全文（`_read_ep08.py`→`_read_ep08.txt`）标注意据
+- 扩展 `_gen_ep07_k3d.py` 模板→`_gen_ep08_k3d.py`（ANNOT **69 段全覆盖**·SEG_LEAD 6·GLOSSARY **58**·HY_CMP **16**·DOUBTS **37**）
+- 生成 ep08.md（90,133→**176,555B**·389→530 行·正文 **24,408 漢字·与 K3c 基线逐字相等＝信息無損**）·结构对齐 ep02–ep07（〇凡例·一概要·二讲章·三术语表·四CBETA·五huayanhai·六双向会读·七存疑·八原则·九修订）
+- **K3d-e 重点**：标题条密集（十門談議几乎常驻·多变体『教痘浅保/余趣/邮類/积扣/部频』·标不删·§六待人工依原图核）；§A03 开场「微觀的華嚴經就是我們要講經了」＝系列定位内证（承 Ep7 宏觀·Ep13+ 別解經文预备·与 Ep6 §F15/Ep7 §F17 互证）；§D05–D06 信解行證＝三的 n+1 次方·十信不入位·能信/所信；§E05–E07 三業安素 vs 六根安素·心動令生 vs 息至令現＝橫出三界；劲爆判语（信仰之義·法務燒腦vs會務·三傳承三選一·感=共振頻率錫63·人乘觀75-85分·十大槍擊要犯改命·Dharma vs Religion·AI 鬥不過華藏世界圖·因陀羅網=新冠疫情顯微鏡圖·華嚴分四宗至正十二年·圭峰宗密遣散僧團·禪宗初祖=杜順）一律标〔本文判斷〕不代立论
+- yaml ep8 collation_status 試點精校→**已校·信息无损**·coverage/notes 更新 K3d 实测
+- 重建 html 1,273,052→**1,369,243B**
+**验证**：check.py ✅ · audit_consistency exit 0（[B1] 格式异常 0）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,369,243B OK）。
+**并行隔离**：staged 显式 6 路径·scratch `_*.py`/`_*.json`/`_*.txt` 不入仓·**未 push**。
+**下一步**：迳进 Ep 9 K3c（probe ep09 话题流定界·`_segment_ep09.py`·`_gen_ep09.py`）·其后 Ep 10→14 逐集连续推进至收官评估。
