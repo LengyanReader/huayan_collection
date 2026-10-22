@@ -173,11 +173,17 @@ episodes:
 
   - ep: 7
     segment: "宏觀華嚴經"
-    topic_zh: "宏觀華嚴經·華嚴經六大部類·經集與篩選兩層次"
+    topic_zh: "宏觀華嚴經·華嚴經簡介三部分·聽經方法（有定非入定）·經學研究（淨行品智首菩薩二十問·翻譯距離·義學非經學）·大小本（四十一位·微塵數偈·日照三藏增補）·華嚴數學（洛叉·三千大千世界·重重無盡·AI 物理身心理身真理身）·陀羅尼力（登地·旋陀羅尼·法身佛化身佛·占察輪·因陀羅網 n+1 次方·外道神通·元音）·現場問答"
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "待校"
+    collation_status: "試點精校"
+    collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep07.md"
+    collation_coverage: "K3c 首轮 raw 逐段照录·74 可讀段（§A9 §B4 §C8 §D10 §E14 §F29）·有效 cues 3026 / 全局 3041（剔 noise/纯标题条 15 条）·6 講章·§二正文 24,432 漢字（占 OCR 漢字 24,443 之 99%·信息無損）·段末〔〕標注延後 K3d"
+    collation_sections: 6
+    collation_paragraphs: 74
+    huayanhai_xuantan_ref: []
+    huayanhai_xuantan_pending: [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12]
     cross_ref_series:
       - "docs/经学文献/华严经学_三十九品深度研究.md"
     podcast:
@@ -185,7 +191,7 @@ episodes:
       label: "S24-03-01 · 2026年6月第1場 · 173min · 上線 2026-07-01"
       confidence: high
       match_basis: "標題 #6月 + 場序 1 + 時長匹配（10366s ≈ 172m46s · 播客 173min·四捨五入）"
-    notes: "『六大部類』說法須核《三十九品研究》·判屬講者自創術語或舊說"
+    notes: "K3c 首轮 (L.150)：玄談第三節·宏觀華嚴經·讲者 02:24 自述「這三次都是玄談」為系列定位內證·§二逐段照录 raw OCR·含 [OCR 起–止] 時間戳·本轮不含编者按语（延後 K3d）·本轮不含任何经文正行引文（属玄谈/問答段·CBETA 欄空合规）·slide 殘片『方廣境界…解所能受持』『因陀雅西境个華酸』疑為經文標題条叠印·待 K3d 核·『六大部類』說法須核《三十九品研究》·判屬講者自創術語或舊說"
 
   - ep: 8
     segment: "宏觀華嚴經"

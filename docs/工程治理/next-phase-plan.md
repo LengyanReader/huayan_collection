@@ -4204,3 +4204,13 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 **门禁**：check.py ✅ · audit 0 FAIL（B1 格式异常 0）· verify_demo **ALL CHECKS PASSED · EXIT=0**（skip_html 白名单 1,019,345B OK）。
 **铁律自校**：不引经文·slide echo 标记不删·劲爆判语〔本文判斷〕只标不代立论·本地 commit **未 push**。
 **下一步**：迳进 Ep 7 K3c（注意 8 月场正行/问答拆档）·其后逐集 K3c+K3d 连续推进至 Ep 14 收官评估。
+
+### L.150 · Ep 7 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+- 授权连续推进·Ep 7《宏觀的華嚴經》＝玄談第三節（讲者 02:24 自述「這三次都是玄談」为系列定位内证）
+- `_probe_ep07.py`+`_pipes_ep07.py` 扫 **3041 cues**·末时 02:51:10·玄談宏观段（00:00–01:48:56）→現場問答（全球 20 余提问者）；标题条稀薄（仅 21 条含「|」）·仅剔 noise/纯标题条 15 条（3041→3026）·覆盖 **99.95%**
+- `_segment_ep07.py` 6 講章→**74 可讀段**；`_gen_ep07.py`→ep07.md **88,362B·409 行·正文 24,432 漢字**（VIDEO_ID wmKHsCmaYVc）·〇凡例+一概要+二逐段照录·不擅改不臆造
+- yaml ep7 待校→**試點精校**·补 collation_doc/coverage/sections(6)/paragraphs(74)·保留 cross_ref_series《三十九品研究》「六大部類須核」；build_jj_collation_page.py 加 Ep7 tab·html 1,019,345→**1,113,328B**
+- **待 K3d**：slide 残片「方廣境界…解所能受持」疑经文标题条叠印须核；劲爆判语（有定非入定/义学非经学/天选之人智商180/AI 真理身/旋陀羅尼登地/因陀罗网 n+1 次方/外道神通30万/禅让元音）标〔本文判斷〕
+**门禁**：check.py ✅ · audit [B1] 格式异常 0 · verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,113,328B OK）。
+**铁律自校**：本轮不引经文（玄谈/問答段·CBETA 欄空合规）·slide echo 标记不删·本地 commit **未 push**。
+**下一步**：迳进 Ep 7 K3d（通读 `_seg_ep07.json` 74 段·扩展 `_gen_ep07_k3d.py`）·其后 Ep 8→14 逐集连续推进至收官评估。

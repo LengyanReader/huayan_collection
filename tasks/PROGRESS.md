@@ -374,3 +374,17 @@
 **验证**：check.py ✅ · audit_consistency 0 FAIL · verify_demo **ALL CHECKS PASSED · EXIT=0**（skip_html 白名单 1,019,345B OK）·html 889,649→**1,019,345B**。
 **并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
 **下一步**：迳进 Ep 7 K3c（probe `docs/hy_refs/sub_extract/delivery/ep07.md`·注意 8 月场正行/问答拆档）。
+
+## L.150 · Ep 7 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+**目标**：Ep 7《宏觀的華嚴經》K3c 首轮逐段照录（玄談第三節·授权连续推进·逐集确认免除）。
+**产出**：
+- `_probe_ep07.py`+`_pipes_ep07.py` 扫 **3041 cues**·末时 02:51:10·玄談第三節《宏觀的華嚴經》华严经简介三部分之「宏观」（00:00–01:48:56）→現場問答（01:48:56–02:51:10·全球 20 余提問者）；讲者 02:24 自述「這三次都是玄談」＝系列定位内证
+- ep07 标题条稀薄（仅 21 条含「|」）·沿用 is_pure_slide·仅剔 noise/纯标题条 15 条（3041→3026 有效）·覆盖 **99.95%**
+- `_segment_ep07.py` 6 講章→**74 可讀段**（§A 听经方法·有定非入定9P·§B 经学·净行品二十问4P·§C 大小本·四十一位·微尘数8P·§D 华严数学·洛叉·AI10P·§E 陀罗尼力·登地·因陀罗网·n+1次方14P·§F 问答29P）
+- `_gen_ep07.py` 生成 ep07.md **88,362B·409 行·正文 24,432 漢字**（占 OCR 漢字 24,443 之 99%·VIDEO_ID wmKHsCmaYVc）·〇凡例+一概要+二逐段照录·不擅改不臆造
+- yaml ep7 status 待校→**試點精校**·补 collation_doc/coverage/sections(6)/paragraphs(74)·保留 cross_ref_series《三十九品研究》「六大部類須核」
+- build_jj_collation_page.py 加 Ep7 tab 6 触点·html 1,019,345→**1,113,328B**
+**待 K3d**：slide 残片「方廣境界…解所能受持」「因陀雅西境个華酸」疑经文标题条叠印须核；劲爆判语（有定非入定/义学非经学/天选之人智商180/AI真理身/旋陀羅尼登地/因陀罗网n+1次方/外道神通30万/禅让元音）标〔本文判斷〕。
+**验证**：check.py ✅ · audit_consistency [B1] 格式异常 0 · verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,113,328B OK）。
+**并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
+**下一步**：迳进 Ep 7 K3d（通读 `_seg_ep07.json` 74 段全文取证·扩展 `_gen_ep07_k3d.py`）。
