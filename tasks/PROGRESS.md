@@ -429,3 +429,16 @@
 **验证**：check.py ✅ · audit_consistency exit 0（[B1] 格式异常 0）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,369,243B OK）。
 **并行隔离**：staged 显式 6 路径·scratch `_*.py`/`_*.json`/`_*.txt` 不入仓·**未 push**。
 **下一步**：迳进 Ep 9 K3c（probe ep09 话题流定界·`_segment_ep09.py`·`_gen_ep09.py`）·其后 Ep 10→14 逐集连续推进至收官评估。
+
+## L.154 · Ep 9 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+**目标**：Ep 9《十個重點問題·凡夫＝三意識之無意識與覺醒之義》（玄談第五節＋現場問答）K3c 首轮逐段照录（授权连续推进·逐集确认免除）。
+**产出**：
+- `_probe_ep09.py` 扫 **2968 cues**·末时 02:59:29·定结构 玄談第五節（00:00–02:10:06）→現場問答（02:10:07 起·現場/深圳/瀋陽/西安/上海×3/新加坡/長春×2/台中/台南/台北）
+- **ep09 特化清洗**：slide 標題條中等密度（64 条含「|」·**特有《華嚴經》卷四十〈入不思議解脫境界〉投影片引文叠印**·多变体·另『族群意識|象牙塔意識』『所行|相應』『古十玄』『(3)運動之音』）·沿用 is_pure_slide·仅剔 noise/纯标题条 18 条（2968→2950 有效）·覆盖 **99.95%**
+- `_segment_ep09.py` 6 講章→**78 可讀段**（§A9 §B6 §C5 §D5 §E20 §F33）
+- `_gen_ep09.py` 生成 ep09.md（**90,646B·425行·正文24,170漢字**·占OCR漢字24,181之99%·VIDEO_ID Q310uDRGfk0）·〇凡例+一概要+二逐段照录·不擅改不臆造·卷四十引文标记不删·本轮不作经文正行回源（玄谈/問答段·CBETA 欄空合规·K3d-e 依原圖核是否近四十華嚴 T1472）
+- yaml ep9 status 待校→**試點精校**·补 collation_doc/coverage/sections(6)/paragraphs(78)·topic_zh 改写实测口径·保留『湯教授討論』當機語錄按语
+- build_jj_collation_page.py 加 Ep9 tab 6 触点·html 1,369,243→**1,466,238B**
+**验证**：check.py ✅ · audit_consistency exit 0（[B1] 格式异常 0）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,466,238B OK）。
+**并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
+**下一步**：迳进 Ep 9 K3d（通读 `_seg_ep09.json` 78 段全文取证·扩展 `_gen_ep09_k3d.py`）。
