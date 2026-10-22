@@ -4224,3 +4224,13 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 **门禁**：check.py ✅ · audit [B1] 格式异常 0（ep07.md 11 条〔待核〕属正常）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,176,970B OK）。
 **铁律自校**：本轮不引经文（玄谈/問答段·CBETA 欄空合规）·slide echo 标记不删·本地 commit **未 push**。
 **下一步**：迳进 Ep 8 K3c（probe ep08 话题流定界·`_segment_ep08.py`·`_gen_ep08.py`）·其后 Ep 9→14 逐集连续推进至收官评估。
+
+### L.152 · Ep 8 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+- 授权连续推进·Ep 8 玄談第四節《微觀的華嚴經・为何要講華嚴經》首轮逐段照录·状态 待校→**試點精校**
+- `_probe_ep08.py`+`_pipes_ep08.py` 扫 **2870 cues**·末时 02:51:19·定结构 玄談第四節《微觀華嚴經》（开场「微觀的華嚴經 就是我們要講經了」·华严经简介三部分之「微觀」·为 Ep 13+「別解經文」正行段科判预备）→現場問答（02:01:33 起）
+- **ep08 特化清洗**：标题条密集（106 条 cue 含「|」·十門談議标题条几乎常驻·OCR 多变体「教痘浅保/余趣/邮類」·华藏世界图叠印）·沿用 is_pure_slide·仅剔 noise/纯标题条 15 条（2870→2855 有效）·覆盖 **99.95%**
+- `_segment_ep08.py` 6 講章→**69 可讀段**（§A6 §B7 §C7 §D11 §E13 §F25）·`_gen_ep08.py` 生成 ep08.md（**90,133B·389行·正文24,408漢字**·VIDEO_ID JCOA1fCQsi0）
+- yaml ep8 status 待校→**試點精校**·补 collation_doc/coverage/sections(6)/paragraphs(69)·build_jj_collation_page.py 加 Ep8 tab 6 触点·html 1,176,970→**1,273,052B**
+**门禁**：check.py ✅ · audit [B1] 格式异常 0（ep08.md K3c raw 无〔待核〕属正常）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,273,052B OK）。
+**铁律自校**：本轮不引经文（玄谈/問答段·CBETA 欄空合规）·slide echo 标记不删·本地 commit **未 push**。
+**下一步**：迳进 Ep 8 K3d（通读 `_seg_ep08.json` 69 段·扩展 `_gen_ep08_k3d.py`）·其后 Ep 9→14 逐集连续推进至收官评估。

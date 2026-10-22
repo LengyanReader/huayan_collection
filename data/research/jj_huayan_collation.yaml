@@ -195,18 +195,24 @@ episodes:
 
   - ep: 8
     segment: "宏觀華嚴經"
-    topic_zh: "為何要講華嚴經·信仰之義·經學與義學之分·華嚴宗祖師建立"
+    topic_zh: "微觀華嚴經（玄談第四節·「微觀的華嚴經就是我們要講經了」）·為何要講華嚴經·信仰之義·法務會務·清涼疏主·十門談議（教起因緣/總釋名題/別解經文）·經學與義學之判·三傳承（賢首/清涼/李通玄）·感通共振·信解行證=三的n+1次方·十玄門·華藏世界海·因陀羅網·AI物理身·三明法門·明朝華嚴分四宗·得定體顯定相起定用·七菩提分三三昧·羅漢道菩薩道·十力覺力·十王擁護·明心見性入法界·現場問答（長春/新加坡/北京/西安/深圳）"
     anchor_pin: null
     anchor_juan: null
     anchor_cbeta: null
-    collation_status: "待校"
+    collation_status: "試點精校"
+    collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep08.md"
+    collation_coverage: "K3c 首轮 raw 逐段照录·69 可讀段（§A6 §B7 §C7 §D11 §E13 §F25）·有效 cues 2855 / 全局 2870（剔 noise/纯标题条 15 条）·6 講章·§二正文 24,408 漢字（占 OCR 漢字 24,419 之 99%·信息無損）·段末〔〕標注延後 K3d"
+    collation_sections: 6
+    collation_paragraphs: 69
+    huayanhai_xuantan_ref: []
+    huayanhai_xuantan_pending: [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12]
     cross_ref_series: []
     podcast:
       url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-03-02--202662-e3na806"
       label: "S24-03-02 · 2026年6月第2場 · 172min · 上線 2026-07-06"
       confidence: high
       match_basis: "標題 #6月 + 場序 2 + 時長精確匹配（10330s ≈ 172m10s · 播客 172min）"
-    notes: "『經學 vs 義學』之判·Ep 14 再現·校勘時宜連讀"
+    notes: "K3c 首轮 (L.152)：玄談第四節·微觀華嚴經（华严经简介三部分之「微觀」·讲者开场「微觀的華嚴經就是我們要講經了」·为 Ep 13+「別解經文」正行段之科判預備）·§二逐段照录 raw OCR·含 [OCR 起–止] 時間戳·本轮不含编者按语（延後 K3d）·本轮不含任何经文正行引文（属玄谈/問答段·CBETA 欄空合规）·**slide 標題條密集**（106 条含「|」·十門談議『5.教起因緣|6.趣通别|7.部類品音|9.總釋名題|10.別解經文』几乎常驻·OCR 多变体『教痘浅保/余趣/邮類』；另『古十玄/主伴』『界輪图/大千世/四洲所』华藏世界图叠印）·待 K3d 核·『清涼=疏主/賢首/李通玄三傳承』cross-ref《三十九品研究》及 docs/祖師人物·『經學 vs 義學』之判承 Ep 7·Ep 14 再現"
 
   - ep: 9
     segment: "宏觀華嚴經"

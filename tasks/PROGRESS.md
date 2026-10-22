@@ -403,3 +403,16 @@
 **验证**：check.py ✅ · audit_consistency [B1] 格式异常 0（ep07.md 11 条〔待核〕属正常·与 ep06 齐平）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,176,970B OK）。
 **并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
 **下一步**：迳进 Ep 8 K3c（probe ep08 话题流定界·`_segment_ep08.py`·`_gen_ep08.py`）。
+
+## L.152 · Ep 8 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+**目标**：Ep 8《微觀的華嚴經・为何要講華嚴經》（玄談第四節＋現場問答）K3c 首轮逐段照录（授权连续推进·逐集确认免除）。
+**产出**：
+- `_probe_ep08.py`+`_pipes_ep08.py` 扫 **2870 cues**·末时 02:51:19·定结构 玄談第四節《微觀華嚴經》（开场「微觀的華嚴經 就是我們要講經了」·华严经简介三部分之「微觀」·为 Ep 13+「別解經文」正行段科判预备）→現場問答（02:01:33 起·長春/新加坡/北京×3/西安×2/深圳）
+- **ep08 特化清洗**：本集**标题条密集**（106 条 cue 含「|」·十門談議结构标题条几乎常驻·OCR 多变体「教痘浅保/余趣/邮類」·另华藏世界图叠印）·沿用 is_pure_slide（剩余口语汉字≤2 才剔）·仅剔 noise/纯标题条 15 条（2870→2855 有效）·覆盖 **99.95%**
+- `_segment_ep08.py` 6 講章→**69 可讀段**（§A 微觀華嚴經·为何讲经·信仰·法务会务·清凉疏主6P·§B 十门玄谈标准·总释名题·三传承7P·§C 感通频率·发菩提心·信解行证·n+1次方7P·§D 十玄门·华藏世界海·因陀罗网·AI物理身·三明法门·华严四宗11P·§E 中数·十具足·七菩提分·罗汉道菩萨道·十力觉力·十王拥护13P·§F 问答25P）
+- `_gen_ep08.py` 生成 ep08.md（**90,133B·389行·正文24,408漢字**·占OCR漢字24,419之99%·VIDEO_ID JCOA1fCQsi0）·〇凡例+一概要+二逐段照录·不擅改不臆造·slide 标题条密集标记不删·本轮不引经文（玄谈/問答段·CBETA 欄空合规）
+- yaml ep8 status 待校→**試點精校**·补 collation_doc/coverage/sections(6)/paragraphs(69)·topic_zh 改写实测口径
+- build_jj_collation_page.py 加 Ep8 tab 6 触点·html 1,176,970→**1,273,052B**
+**验证**：check.py ✅ · audit_consistency [B1] 格式异常 0（ep08.md K3c raw 无〔待核〕属正常）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,273,052B OK）。
+**并行隔离**：staged 显式路径·scratch `_*.py` 不入仓。
+**下一步**：迳进 Ep 8 K3d（通读 `_seg_ep08.json` 69 段全文取证·扩展 `_gen_ep08_k3d.py`）。
