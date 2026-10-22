@@ -456,3 +456,16 @@
 **验证**：check.py ✅ · audit_consistency exit 0（[B1] 格式异常 0）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,609,463B OK）。
 **并行隔离**：staged 显式 6 路径·scratch `_*.py` 不入仓·**未 push**。
 **下一步**：迳进 Ep 10 K3c（《七處九會·三十九品八十卷》·probe→清洗→segment→gen）。
+
+## L.156 · Ep 10 K3c 首轮 raw 逐段照录 ✅（2026-10-22）
+**目标**：Ep 10《七處九會・華嚴經之結構》（玄談·7月場＋現場問答）K3c 首轮逐段照录（授权连续推进·逐集确认免除）。
+**产出**：
+- `_probe_ep10.py` 扫 **3264 cues**·末时 02:53:37·定结构 玄談·七月場（00:00–01:58:19）→現場問答（01:58:19 起·廣東×3/新加坡×2/中和道場/現場）·VIDEO_ID e6_1t2-3TF8·pod S24-04-01·174min
+- **ep10 特化清洗**：slide 局部密集（296 条含「|」·**特有大段《禮記·射義》／《大學》「心之不存也」投影片引文叠印**·系儒家典籍非華嚴經·另佛名『最勝功德海佛／華眼幢佛』·科判残片『五時教』『發心凡夫此第一關也過嶺』garble）·沿用 is_pure_slide·仅剔 noise/纯标题条 17 条（3264→3247 有效）·覆盖 **99.26%**
+- 合并阈值调优（本集 cue 短碎·缓冲≥25漢且gap>1.0s 断·或≥60漢且句末断·上限700）→`_segment_ep10.py` 6 講章→**110 可讀段**（§A4 §B5 §C15 §D6 §E62 §F18）
+- `_gen_ep10.py` 生成 ep10.md（**120,406B·553行·正文31,290漢字**·占OCR漢字31,522之99%）·〇凡例+一概要+二逐段照录·不擅改不臆造·射箭引文标记不删·本轮不作经文正行回源（玄谈/問答段·CBETA 欄空合规）
+- yaml ep10 status 待校→**試點精校**·补 collation_doc/coverage/sections(6)/paragraphs(110)·topic_zh 保留『七處九會傳統判教·八處/十處研議新說·並列不取捨』
+- build_jj_collation_page.py 加 Ep10 tab 6 触点·html 1,609,463→**1,737,664B**
+**验证**：check.py ✅ · audit_consistency exit 0（[B1] 格式异常 0）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 1,737,664B OK）。
+**并行隔离**：staged 显式路径·scratch `_*.py` 不入仓·**未 push**。
+**下一步**：迳进 Ep 10 K3d（通读 `_seg_ep10.json` 110 段全文取证·扩展 `_gen_ep10_k3d.py`）。
