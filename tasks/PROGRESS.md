@@ -496,3 +496,16 @@
 **验证**：check.py ✅ · audit_consistency exit 0（[B1] 格式异常 0·K3c raw 无〔待核〕属正常）· verify_demo **ALL CHECKS PASSED**（skip_html 白名单 2,036,328B OK）。
 **并行隔离**：staged 显式路径（含构建脚本·K3c 惯例）·scratch `_*.py` 不入仓·**未 push**。
 **下一步**：迳进 Ep 11 K3d（通读 `_seg_ep11.json` 116 段全文取证·扩展 `_gen_ep11_k3d.py`·信息无损基线 32,477 漢字）。
+
+## L.159 · Ep 11 K3d 二次精校 ✅（2026-10-23）
+**目标**：Ep 11《華嚴學·真理之結構與作用》K3d 二次精校·116 段逐段编者按语全覆蓋·信息無損坐實（授权连续推进·逐集确认免除）。
+**产出**：
+- 通读 `_read_ep11.txt` 361 行全文取证·扩展 `_gen_ep11_k3d.py`：ANNOT **116/116 段全覆蓋**（§A17 §B5 §C33 §D22 §E9 §F30）·SEG_LEAD 6·GLOSSARY 59·HY_CMP 18·DOUBTS 37
+- 生成 ep11.md：**242,574B·722行·§二正文 32,477 漢字**（= K3c 基线·`assert TOTAL_HAN == K3C_BASELINE_HAN` 通过·段末只附不減·未標注段：無）
+- **slide 双峰重災區標記**：① §B03-C20『漸教小三观』四階公式『人、得、顯、起』投影片叠印（多变体『輝修/陣修/禪修/西階/么式』·讲者自制科判图非華嚴經逐字）；② §C21-D06『發心凡夫此第一關也過嶺｜菩薩種性範圍』科判标题条（承 Ep10 §E 同线·garble『過領/第二屬』）·標〔OCR 待校〕不删·不回源
+- §四 CBETA 栏空合规·例外標記三类：① §F25 經首口誦『佛在摩竭提國阿蘭若法菩提場中始成正覺』（本集唯一華嚴經文口誦·俟 Ep13+ 逐字回源·標〔待核〕）；② 雙峰 slide echo；③ §F20-F21 王陽明《射記》系『五者心之不存也』『七者君子之德成』儒家外典（與 Ep10 §C03-C12 同文互證·不回源）
+- yaml ep11 試點精校→**已校·信息无损**·coverage/notes 改写 K3d 口径（YAML parse ✓）
+- html 重建（K3d 惯例·不改构建脚本）：2,036,328→**2,172,451B·14 集**
+**验证**：check.py exit 0 ✅ · audit_consistency exit 0（[B1] 格式异常 0）· verify_demo **✓ ALL CHECKS PASSED**（skip_html 白名单 2,172,451B OK）。
+**并行隔离**：staged 显式 6 路径（不含构建脚本·K3d 惯例）·scratch `_*.py/_*.txt` 不入仓·**未 push**·Ep 1–11 已校。
+**下一步**：迳进 Ep 12 K3c（《傳承之難·『師父藏一手』之辨》·probe→清洗→segment→gen·L.160）·其后 Ep 12 K3d→Ep13（正行段 CBETA 回源）→Ep14 收官评估。
