@@ -522,3 +522,16 @@
 **验证**：check.py ✅ · audit_consistency exit 0（[B1] 格式异常 0·K3c raw 无〔待核〕属正常）· verify_demo **✓ ALL CHECKS PASSED**（skip_html 白名单 2,297,416B OK）。
 **并行隔离**：staged 显式路径（含构建脚本·K3c 惯例）·scratch `_*.py` 不入仓·**未 push**。
 **下一步**：迳进 Ep 12 K3d（通读 `_seg_ep12.json` 91 段全文取证·扩展 `_gen_ep12_k3d.py`·信息无损基线 31,596 漢字）。
+
+## L.161 · Ep 12 K3d 二次精校 ✅（2026-10-23）
+**目标**：Ep 12《華嚴學·傳承之難》K3d 二次精校·91 段逐段编者按语全覆蓋·信息無損坐實（授权连续推进·逐集确认免除）。
+**产出**：
+- 通读 `_read_ep12.txt` 286 行全文取证·撰写 `_gen_ep12_k3d.py`：ANNOT **91/91 段全覆蓋**（§A2 §B6 §C12 §D19 §E17 §F35）·SEG_LEAD 6·GLOSSARY 67·HY_CMP 22·DOUBTS 32
+- 生成 ep12.md：**242,388B·629行·§二正文 31,596 漢字**（= K3c 基线·`assert TOTAL_HAN == K3C_BASELINE_HAN` 通过·段末只附不減·未標注段：無）
+- **slide 双峰重災區標記**：① §D01-D10『專移)，而成為發心凡夫，此第一關也。過此關，即入菩薩種性範圍，而不屬於凡 | … | 可稱：具天冠菩薩資質！』科判標題條几乎常駐叠印（garble『專移/轉移·著薩/即人·帆風順』·承 Ep10 §E09、Ep11 §C21-D06 三集同线互證）；② §E04-E14『法門 | 身孔出界数 | 供養 | 障 | 法輪 | 過向 | 業障』圆教观 slide 词元碎化·標〔OCR 待校〕不删·不作回源
+- §四 CBETA 栏空合规·例外標記三类：① 『度世品經』『圓教觀』名相群口誦俟 Ep13+ 依 CBETA 逐字回源·標〔待核〕；② 双峰 slide echo；③ 他典（法華經句·地藏線等）不回源只標
+- yaml ep12 試點精校→**已校·信息无损**·coverage/notes 改写 K3d 口径·K3c 原文全保留（YAML parse ✓）
+- html 重建（K3d 惯例·不改构建脚本）：2,297,416→**2,440,183B·14 集**
+**验证**：check.py exit 0 ✅ · audit_consistency exit 0（[B1] 格式异常 0·ep12.md 52 〔待核〕）· verify_demo **✓ ALL CHECKS PASSED**（skip_html 白名单 2,440,183B DOCTYPE/收尾/体量 OK·以观察到的证据为准）。
+**并行隔离**：staged 显式 6 路径（不含构建脚本·K3d 惯例）·scratch `_*.py/_*.txt` 不入仓·**未 push**·Ep 1–12 已校。
+**下一步**：迳进 Ep 13 K3c（**正行段**·世主妙严品·须依 CBETA `T10n0279` 卷1『如是我聞。一時。佛在摩竭提國阿蘭若法菩提場中始成正覺』逐字回源·§四不得为空·L.162）·其后 Ep 13 K3d→Ep 14 + 收官评估。
