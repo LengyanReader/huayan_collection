@@ -548,3 +548,20 @@
 **验证**：check.py exit 0 ✅ · audit_consistency exit 0（[B1] 格式异常 0·ep13.md 3 〔待核〕）· verify_demo **✓ ALL CHECKS PASSED**（skip_html 白名单 2,577,321B DOCTYPE/收尾/体量 OK·日志 verify_k3c_ep13.txt 观察到）。
 **并行隔离**：staged 显式路径（含构建脚本·K3c 惯例）·scratch `_*.py/_*.txt` 不入仓·**未 push**。
 **下一步**：迳进 Ep 13 K3d（通读 `_seg_ep13.json` 131 段全文取证·扩展 `_gen_ep13_k3d.py`·信息无损基线 32,397 漢字·§四对勘细校）·其后 Ep 14 K3c/K3d（L.164/165）+ 收官评估。
+
+## L.163 · Ep 13 K3d 二次精校（正行段首集·§四 CBETA 对勘细校） ✅（2026-10-23）
+
+**授权**：用户授权连续推进 Ep 7→14（无需逐集确认）·信息无损铁律。
+
+- 通读 `_read_ep13.txt` 131 段全文（§A5 §B8 §C4 §D8 §E18 §F33 §G16 §H39）取标注意据
+- 扩展 ep12 K3d 模板→`_gen_ep13_k3d.py`：ANNOT **131 段全覆盖**·SEG_LEAD 8·GLOSSARY **61**·HY_CMP **18**·DOUBTS **40**·结构对齐 ep02–ep12（〇凡例·一概要·二讲章·三术语表·四CBETA·五huayanhai·六双向会读·七存疑·八原则·九修订）
+- 生成 ep13.md：128,849→**227,225B**·688→835 行·正文 **32,397 漢字·与 K3c 基线逐字相等＝信息無損·assert 通过**·段末只附不减
+- **§四 CBETA 逐字回源四组实引＋K3d 对勘细校（正行段铁律·非空）**：4.1 起首段·4.2 十普菩薩·4.3 十異名菩薩（大精進金剛𪗇）·4.4 執金剛神十名——講者口誦逐字合·異文各照底本不统一（恒/恆·焰/燄·𪗇/臍）·garble『證種種法無有書極』照录標〔OCR 待校〕不改·他典（壇經系）不回源
+- **K3d-e slide 四峰重災區**：①『三十九眾』科判標題條（票/粟/墨 garble）§C01-D02；②『具天冠菩薩資質』+『發心凡夫此第一關…菩薩種性範圍』§E12-E18/§F01-F02（**与 Ep10/11/12 四集同线互证**）；③『表|相重眠(黑業、负能量)|生身|迴性|身舍利』碎片 §E01-E10/§F08-F12；④『五(主城神/丰城神/志城神/王城神)』garble §F03-F06；另 §G11 師子座名號混出·皆標〔OCR 待校·K3d-e〕不删·不回源
+- **劲爆判语只標不代立论**（存在主義者那幾位大德其實都沒開悟·李炳南/淨空流水文之辯·含金量65分明心見性·三明非六通·羅漢坑·那伽常在定·唯智四智非八識·黃金時代20-40·雞蛋小雞喻·Muniji·帶狀課程學分學級制·萬神嘉年華·定業不可轉邪說·有定不等於入定）一律標〔本文判斷〕
+- yaml ep13 collation_status 試點精校→**已校·信息无损**·coverage 更新 K3d 实测（YAML parse ✓）
+- 重建 html（`build_jj_collation_page.py`·K3d 不改构建脚本）2,577,321→**2,688,852B**
+
+**验证**：check.py exit 0 ✅（CHECK_EXIT=0 观察到）· audit_consistency exit 0（[B1] 格式异常 0·ep13.md 28 处〔待核〕）· verify_demo **✓ ALL CHECKS PASSED**（skip_html 白名单 2,688,852B DOCTYPE/收尾/体量 OK·VERIFY_EXIT=0 观察到·日志 verify_k3d_ep13.txt）。
+**并行隔离**：staged 显式 6 路径（ep13.md·yaml·html·ledger·PROGRESS·plan·K3d 惯例不含构建脚本）·scratch `_*.py/_*.txt` 与并行泳道（INGEST_log·高僧传草稿·fetch_cbeta_history·T55n2161.xml·quote_koushu*）不入仓·**未 push**。
+**下一步**：迳进 Ep 14 K3c（L.164·正行段·如來現相品/毘盧遮那品·卷6/卷11·CBETA `T10n0279` 逐字回源·§四不得为空·规范化「昆廬遮/毘盧遮那/星险遮那」360p garble）→ Ep 14 K3d（L.165）+ 收官评估。

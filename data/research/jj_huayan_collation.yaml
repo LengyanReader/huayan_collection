@@ -299,9 +299,9 @@ episodes:
     anchor_pin: "世主妙嚴品"
     anchor_juan: "卷 1"
     anchor_cbeta: "T10n0279_卷1 · 品目次第第 1 品起首句"
-    collation_status: "試點精校"
+    collation_status: "已校·信息无损"
     collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep13.md"
-    collation_coverage: "K3c 首轮 raw 逐段照录·131 可讀段（§A5 §B8 §C4 §D8 §E18 §F33 §G16 §H39）·有效 cues 3367 / 全局 3402（剔 noise/纯标题条 35 条）·8 講章·§二正文 32,397 漢字（占 OCR 漢字 32,612 之 99%）·段末〔〕標注延後 K3d·**§四 CBETA 逐字回源已實引**（本系列首个正行段集·卷1 世主妙嚴品起首段/十普菩薩/十異名菩薩/執金剛神四组）"
+    collation_coverage: "K3d 二次精校·131 段全覆蓋逐段〔〕標注（§A5 §B8 §C4 §D8 §E18 §F33 §G16 §H39）·有效 cues 3367 / 全局 3402（剔 noise/纯标题条 35 条）·8 講章·§二正文 32,397 漢字（占 OCR 漢字 32,612 之 99%·与 K3c 基线逐字相等＝信息無損·assert 通过）·§三術語表 61 條·§五 huayanhai/細讀比對 18 行·§七存疑 40 條·**§四 CBETA 逐字回源四组實引＋K3d 對勘細校**（本系列首個正行段集·卷1 世主妙嚴品起首段/十普菩薩/十異名菩薩/執金剛神·口誦逐字合·異文恒恆·焰燄·𪗇臍各照底本存記）·四峰 slide echo（三十九眾/天冠資質/相重眠生身迴性/主城神garble）標〔OCR 待校·K3d-e〕不刪"
     collation_sections: 8
     collation_paragraphs: 131
     cross_ref_series:
