@@ -579,3 +579,16 @@
 **验证**：check.py exit 0 ✅（CHECK_EXIT=0 观察到）· audit_consistency exit 0（[B1] 格式异常 0·ep14.md K3c raw 无〔待核〕属正常）· verify_demo **✓ ALL CHECKS PASSED**（skip_html 白名单 2,815,474B DOCTYPE/收尾/体量 OK·VERIFY_EXIT=0 观察到·日志 verify_k3c_ep14.txt）。
 **并行隔离**：staged 显式 7 路径（ep14.md·yaml·html·**构建脚本**·ledger·PROGRESS·plan·K3c 惯例含构建脚本）·scratch `_*.py/_*.txt` 与并行泳道（INGEST_log·高僧传草稿·fetch_cbeta_history·T55n2161.xml·quote_koushu*）不入仓·**未 push**。
 **下一步**：迳进 Ep 14 K3d（通读 99 段·扩展 `_gen_ep14_k3d.py`·信息无损基线 30,351 漢字·§四对勘细校·360p garble 統一毘盧遮那）+ 收官评估（Ep 7→14 全系列）。
+
+## L.165 · Ep 14 K3d 二次精校（正行段·§四对勘细校＋补充回源三组·收官轮） ✅（2026-10-23）
+**目标**：Ep 14《華嚴學·如來現相品·毘盧遮那品（諸菩薩思惟四十問…）（正行＋現場問答）》K3d 逐段标注二次精校（**本系列第二个正行段集**·信息無損基线 30,351 漢字·§四 CBETA 对勘细校＋补充回源三组·360p garble 统一毘盧遮那定讞·授权连续推进·逐集确认免除）。
+**产出**：
+- 通读 `_read_ep14.txt` 99 段全文（§A4 §B4 §C9 §D4 §E9 §F15 §G24 §H30）取标注意据
+- **`_gen_ep14_k3d.py`（分块撰写·哨兵 `# @@TAIL@@` 续写法·前会话整体 Write 超限之对策）**：ANNOT **99 段全覆盖**·SEG_LEAD 8·GLOSSARY **57**·HY_CMP **18**·DOUBTS **38**·生成 ep14.md 119,153→**198,885B**（563→714 行·正文 **30,351 漢字·与 K3c 基线逐字相等＝信息無損·assert 通过**·段末只附不减）·结构对齐 ep02–ep13（〇凡例·一概要·二讲章·三术语表·四CBETA·五huayanhai·六双向会读·七存疑·八原则·九修订）
+- **§四 CBETA 对勘细校＋补充回源三组（`_cbeta_ep14_k3d.py` 实测·T10n0279 平文 701,229 字）**：4.1 四十問@39649 口誦逐問 interleave「世尊哀愍我等」vs 底本结句一体＝**体例差照录非誤經**·4.2 十方來會@41205 **峰②定讞**『各化作演佛音聲光明蓮華藏師子之座』污染源＝卷1 主藥神「得能演佛音說諸法差別義解脫門」@27869 串入（§F07-F08 口誦逐字合底本为反证·不据 garble 改经）·4.3 摩頂@49837＋**补充三组**十智@49650·佛身充滿偈@45847·大蓮華十莊嚴@45511（恒/圍遶/安立/右遶/次第而住 底本原字形·異文焰/燄·恒/恆·遶/繞·刹/剎·坐/住·立/坐各照底本存记）·4.4 毘盧遮那品@81099 品題核定·峰① garble 统一策略坐实
+- slide「觀察十方一切三昧解脫神通」底本无此连续串＝「乃至一切三昧解脫、神通變化」OCR 节略 garble（峰③照录标记不删）
+- 劲爆判语〔本文判斷〕（天才白痴0/360度·總統被抓去關·厄爾尼諾·拆槍喻·銀行數鈔票·碗糕·高鐵飛機十方外緣喻·13歲深圳兩問）只标不代立论·他典（老子道法自然·禮運天下為公·心經六十二品口誤·般若波羅蜜多）只标不回源
+- yaml ep14 collation_status 試點精校→**已校·信息无损**·coverage 更新 K3d 实测（YAML parse ✓）·重建 html（K3d 不改构建脚本）2,815,474→**2,903,830B**
+**验证**：check.py exit 0 ✅（CHECK_EXIT=0 观察到）· audit_consistency exit 0（[B1] 格式异常 0·ep14.md 57 处〔待核〕属正常）· verify_demo **✓ ALL CHECKS PASSED**（skip_html 白名单 2,903,830B DOCTYPE/收尾/体量 OK·VERIFY_EXIT=0 观察到）。
+**并行隔离**：staged 显式 6 路径（ep14.md·yaml·html·ledger·PROGRESS·plan·K3d 惯例不含构建脚本）·scratch `_*.py/_*.txt` 与并行泳道（INGEST_log·高僧传草稿·fetch_cbeta_history·T55n2161.xml·quote_koushu*）不入仓·**未 push**。
+**下一步**：收官评估（Ep 7→14 全系列·L.165 收束段）。
