@@ -55,3 +55,9 @@ node_modules
 .tmp_*.txt
 .tmp_*.yaml
 data/research/t1_bikan_evidence.yaml.bak
+
+# 〔L.165 收官后清理〕校订批次 root 级 scratch（_gen/_probe/_segment/_read/_cbeta/_bounds/_pipes 等脚本保留本地作 Ep15+ 模板，但不入版本控制；中段 _seg_*.json 与 verify 转储已删）
+/_*.py
+/_*.txt
+/_*.json
+/verify_*.txt
