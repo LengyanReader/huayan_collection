@@ -131,6 +131,8 @@ ep11_path = "docs/经学文献/海云讲记_九九华严/episodes/ep11.md"
 ep11_md = io.open(ep11_path, encoding="utf-8").read() if os.path.exists(ep11_path) else ""
 ep12_path = "docs/经学文献/海云讲记_九九华严/episodes/ep12.md"
 ep12_md = io.open(ep12_path, encoding="utf-8").read() if os.path.exists(ep12_path) else ""
+ep13_path = "docs/经学文献/海云讲记_九九华严/episodes/ep13.md"
+ep13_md = io.open(ep13_path, encoding="utf-8").read() if os.path.exists(ep13_path) else ""
 
 DATA_JSON = json.dumps(episodes, ensure_ascii=False)
 MEASURED_JSON = json.dumps(M.get("measured", {}), ensure_ascii=False)
@@ -148,6 +150,7 @@ EP09_HTML = md_to_html(ep09_md) if ep09_md else ""
 EP10_HTML = md_to_html(ep10_md) if ep10_md else ""
 EP11_HTML = md_to_html(ep11_md) if ep11_md else ""
 EP12_HTML = md_to_html(ep12_md) if ep12_md else ""
+EP13_HTML = md_to_html(ep13_md) if ep13_md else ""
 
 
 # ── L.141 · 每集顶部回看媒体条（YouTube + Spotify 播客）───────────
@@ -202,6 +205,7 @@ EP09_HTML = media_bar_html(9) + EP09_HTML
 EP10_HTML = media_bar_html(10) + EP10_HTML
 EP11_HTML = media_bar_html(11) + EP11_HTML
 EP12_HTML = media_bar_html(12) + EP12_HTML
+EP13_HTML = media_bar_html(13) + EP13_HTML
 
 TEMPLATE = r"""<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -396,6 +400,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <button data-tab="ep10">✒️ Ep 10 精校</button>
   <button data-tab="ep11">✒️ Ep 11 精校</button>
   <button data-tab="ep12">✒️ Ep 12 精校</button>
+  <button data-tab="ep13">✒️ Ep 13 精校</button>
   <button data-tab="protocol">📖 凡例·体例</button>
 </div>
 
@@ -492,6 +497,12 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 <section id="tab-ep12" class="tab-panel">
   <div class="doc-panel">
     <div id="ep12-body">__EP12_HTML__</div>
+  </div>
+</section>
+
+<section id="tab-ep13" class="tab-panel">
+  <div class="doc-panel">
+    <div id="ep13-body">__EP13_HTML__</div>
   </div>
 </section>
 
@@ -702,6 +713,7 @@ out = (TEMPLATE
        .replace("__EP10_HTML__", EP10_HTML)
        .replace("__EP11_HTML__", EP11_HTML)
               .replace("__EP12_HTML__", EP12_HTML)
+              .replace("__EP13_HTML__", EP13_HTML)
        .replace("__README_HTML__", README_HTML))
 
 io.open("web/demo/articles/jj-huayan-collation.html", "w", encoding="utf-8", newline="\n").write(out)
