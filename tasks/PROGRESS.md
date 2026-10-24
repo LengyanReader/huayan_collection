@@ -714,3 +714,15 @@
 - **EN**：头部品题 EN（"The Samādhi of Universal Good"）＋§1.4 三画龙睛 EN＋附录九中英要目（11 行）。
 - **闸门全绿（观察到）**：build 45 files｜28,764,294B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
 **blocked**：无。**next**：第二部《如来现相品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/sjcj_puxian_studies.py`・`.harness/ledger.md` L.174。
+
+## L.175 · item5 续轮：第二部《如来现相品》四步流水线 ✅（2026-10-24）
+**触发**：第三部完成后，用户「继续」，按 7→1 序列推进第二部（本品 Ep14 正行第二集主体·六十对读卷二/卷三）。
+**goal**：第二部四步（mining→六十全本回源→EN→gap 终检＋闸门）全完。
+**done**：
+- **mining·Ep14 正行段逐字对勘录入 §5.4.6**：四十問起首 `@39649`·師子座 `@41205`·佛身充滿偈 `@45847`·大蓮華十莊嚴 `@45511` 以 `T10n0279` anchor 切片逐字回源（访问 2026-10-24），讲者口诵逐字合（T0）；slide garble 污染源定讞 `@27869` 卷一串入；**卷次核定**：十智段/摩頂段实测卷七属品三→Ep14 §4.3「卷6」段标滑移只标不改。
+- **六十全本复验·新增 §6.6**：卷二侧（念请·十光名·十方号·出音偈）逐字皆合·但本机无卷二 txt→单源不立断；卷三本品段全本脱文七处（含起首十六字·白毫段十五字），与 P3 三处合并为**卷三全本脱文十处**（8,134 对 8,406·净差 272 字）·积证链 P5→P4→P3→P2；探针自误「覲」作「詣」据实更正非脱文；六十「各化作/華光明藏」实测 0 见。
+- **数据层复算**：`scripts/ru_lai_studies.py` 净文 8,119·独字 498·熵 7.5454·Zipf −0.8517——与 §7.1/§7.4 全吻合。
+- **EN**：头部品题 EN（"Apparitions of the Buddha"）＋§1.4 三画龙睛 EN＋附录九中英要目（13 行）＋〔EN 自陈〕。
+- **附录增补**：附录四#10–#12·附录六 Ep13–Ep15 入口·§九台账/未竟⑩⑪⑫/本批补订（P2）。
+- **闸门全绿（观察到）**：build 45 files｜28,783,254B・test_pipeline/verify_demo ALL PASSED（ru-lai 专书门禁全绿＋反向 39/39）・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
+**blocked**：无。**next**：第一部《世主妙严品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep14.md/ep15.md・`scripts/ru_lai_studies.py`・`.harness/ledger.md` L.175。
