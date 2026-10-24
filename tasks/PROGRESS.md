@@ -726,3 +726,15 @@
 - **附录增补**：附录四#10–#12·附录六 Ep13–Ep15 入口·§九台账/未竟⑩⑪⑫/本批补订（P2）。
 - **闸门全绿（观察到）**：build 45 files｜28,783,254B・test_pipeline/verify_demo ALL PASSED（ru-lai 专书门禁全绿＋反向 39/39）・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
 **blocked**：无。**next**：第一部《世主妙严品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep14.md/ep15.md・`scripts/ru_lai_studies.py`・`.harness/ledger.md` L.175。
+
+
+## L.176 · item5 末轮：第一部《世主妙严品》四步流水线收口＋P2–P5 重大勘误 ✅（2026-10-24）
+**触发**：第二部完成后，用户「继续」，按 7→1 序列推进末轮第一部（本品 Ep13 卷一–五讲记主体·六十对读卷一–五全段）。
+**goal**：第一部四步全完＋前批误判「六十全本脱文」勘误义务清偿（P2–P5 文档＋数据＋记忆）。
+**done**：
+- **mining·Ep13 录入 §1.7**：讲记 §四 四组 anchor 实引逐串复验皆合（T0）；异文 恒/恆·焰/燄·𪗇/臍 各照底本；新得底本真异文「承佛威神・遍觀」（CBETA xml 自在天王导语·与卷五善勇猛光幢「威神」互证·附录四#2 得进一翼之解）。
+- **重大勘误·§1.8**：旧平文器丢 anchor tail 致 P2–P5「卷三/卷四全本脱文·积证链」误判——修正后 65 探针全部 xml＝txt 转合·残差唯题名行·正文净差 0·积证链整链作废；鬪/涌二探针定点非脱文；八十侧三源重测 46＋2/37/442/56 ≡ txt·五.8 旧数〔待核〕；六十自有导语（承佛神力 16/以偈頌曰 19）→「无导语」改判「导语句式异」；P2–P5 勘误声明全落位（原文不删）；记忆修正完成。
+- **数据层复算**：`scripts/shizhu_studies.py` 31,953/837/7.9521・40 类/414 名・edges 391/tri 2055・simplices 10,058——与附录十一吻合·yaml 复算 git-clean。
+- **EN**：头部品题 EN（chapters.yaml）＋§1.4 画龙睛三行＋附录九中英要目 13 行。
+- **闸门全绿（观察到）**：build 45 files｜28,807,162B・test_pipeline/verify_demo ALL PASSED（shizhu 专书门禁）・verify_sources 76/100・audit_consistency 0・check.py OK。
+**blocked**：无。**next**：系列总纲相关文章（zg）→ 第一会深度篇（hui）；push 待显式授权。**sources**：CBETA `T10n0279.xml`/`T09n0278.xml`（sha256 a2bfcee6213f・修正器 `_p1_lib.py`）・ep13.md §四・`scripts/shizhu_studies.py`・`.harness/ledger.md` L.176。
