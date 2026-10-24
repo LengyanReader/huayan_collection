@@ -222,7 +222,7 @@ others:
   order_in_group: 2
   icon: 📚
   title: 海云法师 · 九九华严讲记校勘工作台
-  title_sub: 99 华严讲座字幕 OCR 梳理 · 三源互证 · 讲记主体 · huayanhai/外部导读参照 · Ep1-2 已校 · Ep3+ 进行中
+  title_sub: 99 华严讲座字幕 OCR 梳理 · 三源互证 · 讲记主体 · huayanhai/外部导读参照 · Ep1-15 已校·信息无损
   skip_html: true
   data_source: jj_huayan_collation
   data_pool: research
@@ -323,6 +323,21 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-sidi-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 11
+  icon: 📖
+  title: 九九华严第八品 四圣谛品之拼读
+  title_sub: 华严经第八品·第二会·差别因果周·卷十二末·十方十世界说四圣谛·四谛各十名共四百名·随众生心乐而异名·与六十对读·注疏诸家会读·数据层·未完备已标明
+  updated_at: '2026-10-24'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第八部_四圣谛品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: puxian-sanmei
   group: 经论茶歇
   family: huayan_xidu
@@ -386,7 +401,7 @@ articles:
 - id: huayan_jing_xidi_pin
   title: 华严经细读·第八部　四圣谛品
   title_en: 'Huayan Sutra Close Reading Vol. 8: Chapter of the Four Noble Truths'
-  source_path: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第八部_四圣谛品.md
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第八部_四圣谛品.md
   category: huayan_close_reading
   series: huayan_collection
   volume: 8
