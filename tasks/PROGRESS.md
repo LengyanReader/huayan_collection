@@ -641,3 +641,16 @@
   - **t1-sync**：`t1_bikan_evidence.yaml` counts 32→31、"5.2" 8→9（经用户批准）；修复 `_verify_t1_reverse.py` WinError 1224 回滚崩溃（残留四处变异逐一回滚；改 os.replace 原子换位）→反向 8/8。
   - **三闸门全绿（观察到）**：build 45 files｜28,711,332B・test_pipeline・verify_demo ALL CHECKS PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
   **goal**：本品增补批全部交付。**done**：P0–P6・t1・rebuild・heartbeat 十项全完。**blocked**：无。**next**：六十卷五四界回源・Ep16+ 海云正行段・push 待授权（本地 commit 已做，未 push）。**sources**：CBETA `T10n0279`/`T09n0278` 卷四抽取本・T1732/T1733/T1735/T1736/T1739/X0221 抽取本・ep10.md・`data/translation/gap_analysis.md`・`data/catalog/chapters.yaml`。
+
+## L.169 · 第八部《四圣谛品》五指令轮・真正收尾 ✅（2026-10-24）
+**触发**：用户 2026-10-24 五项指令（①Ep16 未上 YouTube・正行逐字等更新；②Ep01-15 讲记 mining＋缺失文献尝试下载；③EN 画龙睛要义；④最终 gap 充实至真正收尾；⑤收尾后 1-7 品复做一轮）。
+**goal**：items 2-4 于本轮关闭第八品；item 5 只呈报计划不动手（R4 未确认前不执行）。
+**done**：
+- **item1 约束落实**：§5.3′ 正行段逐字维持〔待后续批〕，未臆造一字。
+- **item2 mining 如实报告**：grep 十五集，仅 ep10 点名四圣谛品（三會三寶配，§5.3′ 已整合）；README 判正行 Ep13=品1→本品品8 未讲——**无新增可整合，不硬凑旁参**。
+- **item2 下载（显式授权）**：`T10n0280` 兜沙经（42,277B・sha256:7232badbeb89）＋ `T09n0278` 六十华严全本（4,923,364B・sha256:a2bfcee6213f）入库 `data/references/cbeta/`，INGEST_log 两行登记。
+- **回源订正三处**：§3.3 兜沙降格（实测无四谛列名・属 proto-名号/华藏系统）＋新增 §6.5 本地直证；§6.1 表（二）七–十界补实（鮮少同・歡喜↔知足・關𨷲↔所求・振音↔解脫音・附苦谛首名）；图〇-3 重建（清 8 个臆造占位界名＋孤立 mermaid 残码・480→实算 440 名）。
+- **复验 §2.5**：八十品界 CJK=3262・四界苦谛首名逐一 True——400 名 claim 属实。
+- **item3 EN**：头部 EN 品题＋§1.4 三要义画龙睛 EN＋附录九中英要目填实（术语依 glossary.yaml・达意不硬译）。
+- **item4 闸门全绿（观察到）**：build 45 files｜28,718,867B（huayan-sidi-pin.html 141,331B）・test_pipeline・verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。**第八品判定可收尾**（遗留 Ep16/藏译逐字/梵本/图像文物＝不属本篇细读之缺）。
+**blocked**：无。**next**：item5——1-7 品＋相关文章复做一轮的计划已拟，**待用户确认范围/优先级后启动**；push 待授权（本轮仅本地 commit）。**sources**：CBETA `T10n0279`/`T10n0280`/`T09n0278`（本机 sha256 直证）・`docs/经学文献/海云讲记_九九华严/episodes/ep01-15.md`・`.harness/ledger.md` L.169。
