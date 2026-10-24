@@ -667,3 +667,15 @@
 - **信息源登记×2**：`C:\华严\经典著作`（约 69 文件·更新长期记忆＋sources.md §二之附）；`huayenworld.org` 大华严寺官网（WebFetch 实测可达·新建记忆＋同节·T2/T3 作进度佐证）。
 - **闸门全绿（观察到）**：build 45 files｜28,723,297B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
 **blocked**：无。**next**：第六部《毗卢遮那品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`/`T10n0280`（本机 sha256 直证）・ep10.md・`C:\华严\经典著作`・huayenworld.org・`.harness/ledger.md` L.170。
+
+## L.171 · item5 续轮：第六部《毗卢遮那品》四步流水线 ✅（2026-10-24）
+**触发**：第七部完成后，用户「继续」，按 7→1 序列推进第六部。
+**goal**：第六部四步（mining→六十全本回源→EN→gap 终检＋闸门）全完。
+**done**：
+- **mining·正行段可据实录入**：本品不同于第八品四圣谛（俟 Ep16）——毘盧遮那已在 99华严 **Ep15**（正行第三集）§F–§G 逐段讲授，§四以 CBETA `T10n0279` anchor 切片逐字回源九组（访问 2026-10-24）；口诵逐字合六组录入 §5.3′.4（T0），讲者义解标 T3〔本文判断〕，slide garble「華蕊燄輪」标〔待核·底本未見此名〕。
+- **六十全本直证·§6 首注〔待核〕转〔已核〕**：`T09n0278.xml`（sha256 a2bfcee6213f）第二之三切片 idx 36355→名號品 41564（凡 5,209 字）**叙至第二佛即转名號品·实无八十式第三·四佛**（第三佛/第四佛/有佛出現全本 0 见）——**六十结构事实非语料缺**；证「经来不尽」在六十尤甚，李通玄《论》有第三·四佛恰证实依八十。
+- **数据层复验**：`scripts/pilu_shena_studies.py` 实测 CJK 4,939·净 4,932·unique 551·sent_ends 147·p23·lg7·颂73·l146——与 §1.3/§7.1 全吻合；§6.2 名相 25 项全本复确，#14/#16/#25「—」=全本直证六十实无。
+- **EN**：头部品题 EN「Part Six: The Vairocana Chapter（光明遍照）」（chapters.yaml title_en="Vairocana"）＋§1.4 三画龙睛 EN＋附录九中英要目表（11 行）＋〔EN 自陈〕。
+- **编辑修订**：「止证」→「恰证」·「有数 5,209 字」→「凡 5,209 字」·「倩后续批」→「俟后续批」（2 处）。
+- **闸门全绿（观察到）**：build 45 files｜28,732,481B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
+**blocked**：无。**next**：第五部《华藏世界品》同四步（六十对读重点）；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/pilu_shena_studies.py`・`.harness/ledger.md` L.171。
