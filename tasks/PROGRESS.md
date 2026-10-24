@@ -604,3 +604,13 @@
 **遗留（〔待核〕不臆造·数据层只出实测可得者）**：ep14.md 70 处〔待核/聽核〕·全系列各集均有存疑清单（§七）；播客分條上架 ep10–14〔待核〕；slide garble 三/四峰**待人工依原图（非 360p）重构归位**（机器不代决）；卷5 天地徵祥段·华藏世界品·阿僧祇名数等**俟后续批回源**；ep15+（普賢行品等）未开工。
 **边界与下一步**：本授权止于 **Ep 14 收官**——Ep 15+ 续校、push/发布、以高码率原图重构 slide 均**属新决策·须用户显式授权**（M0 硬规则 5·不可逆/外发动作人工闸）。建议优先级：① 高码率 delivery 重跑 OCR 消解三/四峰 garble（收益最大·解 70+ 处〔待核〕）② ep15+ 续环（现成流水线·边际成本最低）③ 播客 URL 逐集比对回填 ④ 全系列英文对照（依 EN 原则·另案评估）。
 **交接**：goal=Ep 7–14 全部双循环+收官评估 → **done**；blocked=无（授权内事项全部完成）；next=待用户裁决遗留四项优先级；sources=CBETA `T10n0279.xml`（2026-10-23 实测）·`jj_huayan_collation.yaml`·`.harness/ledger.md` L.150–L.165·`tasks/PROGRESS.md` 各集小节。
+
+## L.166 新任务 · 「AI 赋能历史研究」中英对照综述（随笔参考）⚠️ 中断·综述未落盘（2026-10-23 起·2026-10-24 修正）
+**目标**：依用户 R4 确认之 **Elevated 完整综述·按节交错 EN→ZH·严格回源不加在地案例**，在 `docs/随笔参考/` 写一篇 AI-empowered historical research 中英对照文献综述，以四篇公众号文章为起点并向外对勘全球可核验文献。
+**过程（harness_factory 常驻引用·已声明能力）**：`requirement-refinement.md`(R0–R5) 精炼并 AskUserQuestion 收三档确认；`cross-language.md`(M4.10) 定意群对齐体例；`capability-router.md` 路由（命中 traceable-sources·cross-language·baseline-discipline）。
+**落地**：
+- 4 篇起点文本经 `scripts/fetch_wechat_articles.py` 拉取入库 `docs/hy_refs/wechat/`（gitignored·访问 2026-10-23·脚本默认「提取日期」2026-08-02 与本人访问日不符→正文以访问日期为准并注）；[给1] 梁晨《中国社会科学》2026(8):121–137·[给2] inhistory 史料库·[给3] 关书朋等《文献与数据学报》2026(3)·[给4] QGIS/Stata/Gephi/KH Coder 工具链。
+- ~~交付 `docs/随笔参考/AI赋能史学研究_文献综述.md`（282 行·35.6 KB·摘要/引言/谱系/四层能力栈/认识论与边界/人机协同规范/缺口前沿/结语/附录A 信度分级/参考文献/方法学限度）~~　〔**修正·2026-10-24**：该文件**实际从未落盘**——会话两次中断；全盘检索无此内容、git 无对应对象（含 dangling blob）。原记录保留以存轨迹，**综述正文待重做**。〕
+- **回源核验**：WebSearch 逐条核 12 项英文锚点（Moretti NLR 2000·Jockers 2013·Underwood DHQ **2017**〔纠网络常传 2019〕·Lewis RAG NeurIPS 2020 arXiv:2005.11401·Edge GraphRAG arXiv:2404.16130·Huang 幻觉综述 arXiv:2311.05232·Ji KG 综述 IEEE TNNLS 33(2)2022·Cohen JAH 2008·CBDB JOHD 2022 DOI 10.5334/johd.68·CHGIS Harvard–Fudan·Foegel/North+Goldin JEH 1995·Chan 古汉语预训练）。〔待核〕24 处（Berry 卷期·Ji/ Liu/Peng/Chan 未独立回源·模型版本·相关伦理引文未直读）；〔转引·丙〕10 处（[给3] 参考文献表中文学刊·未独立回源）。
+**门禁**：〔**修正·2026-10-24**〕综述既未落盘，则本条原「self-check passed」不成立；且旧文本把「空双花括号」占位符字面量直接写进本行，反触发 `check.py` 的空双花括号扫描致门禁转红——现剔除该字面量，恢复绿灯。综述重做完成后须**实跑三门禁**再据实记「观察到」，不得预记通过。
+**边界**：本地未 commit·未 push（核心 Git 安全：非显式请求不 commit/push）。next=若需，可补 Berry/KG-Buddhism/GraphRAG survey 一手回源升等、或加方法论谱系图（Exploratory 增量·待授权）。
