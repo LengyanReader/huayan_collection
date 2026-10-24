@@ -654,3 +654,16 @@
 - **item3 EN**：头部 EN 品题＋§1.4 三要义画龙睛 EN＋附录九中英要目填实（术语依 glossary.yaml・达意不硬译）。
 - **item4 闸门全绿（观察到）**：build 45 files｜28,718,867B（huayan-sidi-pin.html 141,331B）・test_pipeline・verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。**第八品判定可收尾**（遗留 Ep16/藏译逐字/梵本/图像文物＝不属本篇细读之缺）。
 **blocked**：无。**next**：item5——1-7 品＋相关文章复做一轮的计划已拟，**待用户确认范围/优先级后启动**；push 待授权（本轮仅本地 commit）。**sources**：CBETA `T10n0279`/`T10n0280`/`T09n0278`（本机 sha256 直证）・`docs/经学文献/海云讲记_九九华严/episodes/ep01-15.md`・`.harness/ledger.md` L.169。
+
+## L.170 · item5 续轮：第七部《如来名号品》四步流水线＋两项必选信息源登记 ✅（2026-10-24）
+**触发**：第八品收尾后，用户 R4 确认 item5「按 7→1 逐篇做完·相关文章＝系列总纲＋第一会深度篇」；同轮用户追加两条登记指令。
+**goal**：第七部四步（mining→回源→EN→gap 终检）全完；登记 `C:\华严\经典著作` 与 `https://www.huayenworld.org/` 为必选信息源。
+**done**：
+- **mining 如实**：grep ep01-15 仅 ep10 玄談命中（§5.3′ 已整合）·正行名号品逐字真待后续集，不硬凑。
+- **兜沙 §6.3 关闭〔本机未核〕**：T10n0280 直证题记译者；**十方菩萨「同名師利」（師利 22 见）印证法藏 §5.2 所引**；「或名/名號/四天下」零见→旧编目降格「同型早期料·结构平行文本独立」〔本文判断〕。
+- **六十 §6.1 全表逐名复验**：净界切片 36154-39704·密訓10/知足11/饒益11 逐名全中·其數一萬11见·诸异名逐一命中。
+- **数据层复算订二处**：含标点 4,199→4,198・「名號」12→13（三处同步）；余 3,226/211/20 等全吻合。
+- **EN**：头部品题 EN＋§1.4 要义四画龙睛 EN；§九〔EN 自陈〕名相表 EN 栏俟后续批。
+- **信息源登记×2**：`C:\华严\经典著作`（约 69 文件·更新长期记忆＋sources.md §二之附）；`huayenworld.org` 大华严寺官网（WebFetch 实测可达·新建记忆＋同节·T2/T3 作进度佐证）。
+- **闸门全绿（观察到）**：build 45 files｜28,723,297B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
+**blocked**：无。**next**：第六部《毗卢遮那品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`/`T10n0280`（本机 sha256 直证）・ep10.md・`C:\华严\经典著作`・huayenworld.org・`.harness/ledger.md` L.170。
