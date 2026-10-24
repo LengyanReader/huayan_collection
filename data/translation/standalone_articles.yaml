@@ -338,6 +338,22 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: firsthui-jiaopan
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 12
+  icon: 🏛
+  title: 华严细读·第一会 菩提场会读判教篇
+  title_en: 'Huayan Sutra Close Reading · Assembly One (Bodhimaṇḍa): Synthetic Reading and Doctrinal Classification'
+  title_sub: 第一会六品之会读与判教深度篇·所信因果周回源（T1735·T1736·T1733·X0221）·六品故受之以相由链·举果劝乐生信分名目直证·法藏普庄严与八十大威光之异译考·两译初会结构实测·诸家异科对照·与细读六部互见·未完备已标明
+  updated_at: '2026-10-24'
+  doc: docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第一会_菩提场会读判教篇.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: puxian-sanmei
   group: 经论茶歇
   family: huayan_xidu

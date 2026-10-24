@@ -749,3 +749,14 @@
 - 核对 `standalone_articles.yaml` 第八部条目既存合规，不重复登记。
 - 闸门：build 45 files｜28,808,601B・verify_demo ALL PASSED・check.py OK（均 exit 0）。
 **blocked**：无。**next**：第一会深度篇（会读/判教相关文章·hui）。**sources**：`.harness/ledger.md` L.168–177・`data/translation/standalone_articles.yaml`・总纲本体。
+
+
+## L.178 · item5 收官：第一会深度篇《菩提场会读判教》成篇（hui）✅（2026-10-24）
+**触发**：zg 批（L.177）后，按 standing scope 推进末项 hui「第一会深度篇（会读/判教相关文章）」。
+**goal**：为第一会六品立一会级会读/判教专篇，判教名目全数一手回源，与细读六部及总纲互见。
+**done**：
+- 新篇 159 行落位第一会目录：§一 判教之纲（T1735 五周/襵疊/鉤鎖·T1736「举果劝乐生信分」直证·T1733 法藏首对）；§二 六品相由链；§三 初会—二会之交＋两译结构实测表（承 L.176 勘误定谳）；§四 诸家异科对照；§五 体—序—交结论；§六 相关文章入口；§七 未竟④＋待核；§八 证据源。
+- 「普莊嚴」（法藏据六十本）与「大威光」（八十实测 25 见）异译考成立；旧传窥基名目标〔待核〕不妄据。
+- `standalone_articles.yaml` 注册 `firsthui-jiaopan`；总纲 §六 补入口。
+- 闸门：build 46 files｜28,881,671B・test_pipeline/verify_demo ALL PASSED・verify_sources/audit_consistency/check.py exit 0。
+**blocked**：无。**next**：item5 全案收官；续读梯队依总纲 §3.2（第 9–10 品起）；push 待显式授权。**sources**：`T1735`/`T1736`/`T1733`/`X0221` cbeta_txt 直证・八十繁/六十 txt 实测・`.harness/ledger.md` L.178。
