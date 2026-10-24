@@ -691,3 +691,15 @@
 - **编辑修订**：§5.4′.5 焰/燄存记误引「凡例八」→ 订为「凡例四」。
 - **闸门全绿（观察到）**：build 45 files｜28,743,444B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
 **blocked**：无。**next**：第四部《世界成就品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/huazang_shijie_studies.py`・`.harness/ledger.md` L.172。
+
+## L.173 · item5 续轮：第四部《世界成就品》四步流水线 ✅（2026-10-24）
+**触发**：第五部完成后，用户「继续」，按 7→1 序列推进第四部（本品为六十对读、Ep15 正行段已讲授）。
+**goal**：第四部四步（mining→六十全本回源→EN→gap 终检＋闸门）全完。
+**done**：
+- **mining·Ep15 正行段逐字录入 §5.3′.4**：本品 §四 4.2 叙分起首·十海 ＋ 4.2b 十「為令」句以 `T10n0279` anchor 切片逐字回源（访问 2026-10-24），讲者 §D01/§C01 口诵逐字合（T0）；作意义稻子/花粉喻标〔本文判断〕；承 Ep14 §E 宏觀段义解标 T3。
+- **六十全本复验·新增 §6.9 揭露一处两源自歧**：§6.2/6.3/6.5 逐名全本＝txt 皆合；唯 §6.1 叙分「觀察一切諸世界海」全本脱作「界海」（脱六字）、txt 完整——各照其源不统一·存记待核·六十「传写不尽」直证（承 P5 同一系统特征）。
+- **数据层复算**：`scripts/sjcj_puxian_studies.py` CJK 5,894·unique 444·熵 7.4271·Zipf −1.3448·sent_ends 173——与 §7.1 全吻合。
+- **EN**：头部品题 EN（"Completions of the Worlds"）＋§1.4 三画龙睛 EN＋附录九中英要目（10 行）。
+- **编辑修订**：§5.3′.4「宏観」→「宏觀」；§1.4 EN point2 语法/引号修订。
+- **闸门全绿（观察到）**：build 45 files｜28,753,345B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
+**blocked**：无。**next**：第三部《普贤三昧品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/sjcj_puxian_studies.py`・`.harness/ledger.md` L.173。
