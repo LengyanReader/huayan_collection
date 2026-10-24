@@ -135,6 +135,8 @@ ep13_path = "docs/经学文献/海云讲记_九九华严/episodes/ep13.md"
 ep13_md = io.open(ep13_path, encoding="utf-8").read() if os.path.exists(ep13_path) else ""
 ep14_path = "docs/经学文献/海云讲记_九九华严/episodes/ep14.md"
 ep14_md = io.open(ep14_path, encoding="utf-8").read() if os.path.exists(ep14_path) else ""
+ep15_path = "docs/经学文献/海云讲记_九九华严/episodes/ep15.md"
+ep15_md = io.open(ep15_path, encoding="utf-8").read() if os.path.exists(ep15_path) else ""
 
 DATA_JSON = json.dumps(episodes, ensure_ascii=False)
 MEASURED_JSON = json.dumps(M.get("measured", {}), ensure_ascii=False)
@@ -154,6 +156,7 @@ EP11_HTML = md_to_html(ep11_md) if ep11_md else ""
 EP12_HTML = md_to_html(ep12_md) if ep12_md else ""
 EP13_HTML = md_to_html(ep13_md) if ep13_md else ""
 EP14_HTML = md_to_html(ep14_md) if ep14_md else ""
+EP15_HTML = md_to_html(ep15_md) if ep15_md else ""
 
 
 # ── L.141 · 每集顶部回看媒体条（YouTube + Spotify 播客）───────────
@@ -210,6 +213,7 @@ EP11_HTML = media_bar_html(11) + EP11_HTML
 EP12_HTML = media_bar_html(12) + EP12_HTML
 EP13_HTML = media_bar_html(13) + EP13_HTML
 EP14_HTML = media_bar_html(14) + EP14_HTML
+EP15_HTML = media_bar_html(15) + EP15_HTML
 
 TEMPLATE = r"""<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -391,7 +395,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 <div class="channels-strip" id="channels-strip"></div>
 
 <div class="tabbar">
-  <button class="active" data-tab="overview">📊 概览·14 集</button>
+  <button class="active" data-tab="overview" id="overview-tab-btn">📊 概览·集目</button>
   <button data-tab="pilot">✒️ Ep 1 精校</button>
   <button data-tab="ep02">✒️ Ep 2 精校</button>
   <button data-tab="ep03">✒️ Ep 3 精校</button>
@@ -406,6 +410,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <button data-tab="ep12">✒️ Ep 12 精校</button>
   <button data-tab="ep13">✒️ Ep 13 精校</button>
   <button data-tab="ep14">✒️ Ep 14 精校</button>
+  <button data-tab="ep15">✒️ Ep 15 精校</button>
   <button data-tab="protocol">📖 凡例·体例</button>
 </div>
 
@@ -517,6 +522,12 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   </div>
 </section>
 
+<section id="tab-ep15" class="tab-panel">
+  <div class="doc-panel">
+    <div id="ep15-body">__EP15_HTML__</div>
+  </div>
+</section>
+
 <section id="tab-protocol" class="tab-panel">
   <div class="doc-panel">
     <div id="readme-body">__README_HTML__</div>
@@ -528,8 +539,8 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <code>data/research/jj_huayan_lectures.yaml</code>（实测·自动生成）·
   <code>data/research/jj_huayan_collation.yaml</code>（编辑判断·人定）·
   <code>docs/经学文献/海云讲记_九九华严/episodes/ep01.md</code>（试点校订稿）·
-  <code>docs/hy_refs/sub_extract/delivery/ep01.md … ep14.md</code>（OCR 初稿·不入 git）。
-  <br><strong>批次</strong>：L.138 · 建立工作台骨架 + Ep 1 试点 · 后续 Ep 2–14 依 segment 分批。
+  <code>docs/hy_refs/sub_extract/delivery/ep01.md … ep15.md</code>（OCR 初稿·不入 git）。
+  <br><strong>批次</strong>：L.138 · 建立工作台骨架 + Ep 1 试点 · 后续 Ep 2–15 依 segment 分批。
 </div>
 
 </main>
@@ -576,6 +587,9 @@ function mediaCellHtml(e){
 function renderBadges(){
   const b = document.getElementById('hero-badges');
   const total = EPISODES.length;
+  // 概览 tab 标签集数随数据动态更新（讲座尚未完結·集数会增·不写死）
+  const ovBtn = document.getElementById('overview-tab-btn');
+  if (ovBtn) ovBtn.textContent = '📊 概览·' + total + ' 集';
   const xuan = EPISODES.filter(e=>e.segment==='玄談').length;
   const hong = EPISODES.filter(e=>e.segment==='宏觀華嚴經').length;
   const zheng = EPISODES.filter(e=>e.segment==='正行').length;
@@ -726,6 +740,7 @@ out = (TEMPLATE
               .replace("__EP12_HTML__", EP12_HTML)
               .replace("__EP13_HTML__", EP13_HTML)
               .replace("__EP14_HTML__", EP14_HTML)
+              .replace("__EP15_HTML__", EP15_HTML)
        .replace("__README_HTML__", README_HTML))
 
 io.open("web/demo/articles/jj-huayan-collation.html", "w", encoding="utf-8", newline="\n").write(out)

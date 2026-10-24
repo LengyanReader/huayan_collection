@@ -4371,3 +4371,16 @@ T0／T1 双向比勘，**新增 S20–S25 六条实证**，所得**不立单一�
 - **铁律达成**：正行段 Ep13/Ep14 CBETA `T10n0279` 逐字回源（四组＋四组＋补充三组）·峰②『演佛音』污染源@27869 定讞·異文各照底本不统一·信息無損 assert 逐集通过
 - **遗留（不臆造）**：各集〔待核〕清单（ep14 70 处）·播客分條 ep10–14·slide garble 待人工依高码率原图重构·卷5 天地徵祥/华藏世界品/阿僧祇名数俟后续批·ep15+ 未开工
 - **边界**：Ep 15+ 续校、push/发布、高码率 OCR 重跑均属**新决策·须用户显式授权**（M0-5 人工闸）·详见 `tasks/PROGRESS.md` L.165 收官评估段（goal·done·blocked·next·sources）
+
+### L.167 · Ep 15 K3c+K3d 双循环（本系列第三个正行段集·§四 CBETA anchor 程序切片九组实引） ✅（2026-10-24）
+- 用户令「综述不用做了，把 e15 做好即可」·Ep 15 达 Ep 1–14 同等标准·状态→**已校·信息无损**（普贤三昧→世界成就→华藏世界→毗卢遮那）
+- `_gen_ep15.py` K3c 照录 **89 可讀段**（§A3 §B5 §C6 §D4 §E9 §F21 §G14 §H27·有效 cues 3137/全局 3156）·§二正文基线 **29,695 漢字**；`_gen_ep15_k3d.py` K3d（承 ep14 模板）·ANNOT **89 段全覆盖**·GLOSSARY **47**·HY_CMP **18**·DOUBTS **52**·ep15.md **218,011B**·689 行·正文 **29,695 漢字 == K3c 基线·信息無損 assert 通过**
+- **§四 CBETA `T10n0279` anchor 程序切片九组实引**（`cut()` 去 note/app/figure·剥标签·压平·起迄 anchor 切片·assert 命中·**非手抄杜绝转写漂移·承伪造经文事故最高铁律**）：普贤三昧@49046·世界成就@51302·十為令@51815·华藏风轮@58123「其最下風輪名：平等住」·摩尼华枝轮@81326·眉间放光@82502「其光名：發起一切善根音」·大威光@82750·念佛三昧@85006「名：無邊海藏門」·大福德@86356·普门欢喜藏@86902·异文焰/燄各照底本
+- **slide 名相铁律**：『華蕊燄輪/其道場前有一大海』『藍香幢/燕香幢』逐字检索未见→标〔待核·底本未见此名〕不擅等同（近形 @59147/@58515 仅旁证）·他典（心經/彌陀經/楞嚴/占察經/老子）只标不回源
+- **补齐第三份交付物 `delivery/ep15.html`**（本批关键修复）：merge 仅出 md/srt·html 缺→`jj_ocr_audit.discover_eps` 报「交付物不齐」→复跑正牌生成器 `docs/hy_refs/tools/sub_extract/report.py 251rNVk2HLA`（entries=3156·628KB·td.t=3156 与 md/srt 相符）→copy 至 delivery
+- **台账依实测重建（承「数须来自实测·不得手录」）**：复跑 `jj_ocr_audit.py --json && _jj_build_lib.py`→meta.episodes 14→**15**·15/15 consistent·total_cues 46428·total_han 418635·**ep15 由手录漂移（declared 10524/han 29798/覆盖 99.65）校正为实测 declared_sec=10575（2:56:15·yt-dlp info.json 为准）·han_chars=29787·coverage=0.9954**·同步修正两生成器与 collation.yaml 两处编辑性元数据→复跑 K3c/K3d→assert PASS·全库 0 处残留 10524
+- collation.yaml ep15→**已校·信息无损**（四 cross_ref 细读三四五六品·YAML parse ✓）·`build_jj_collation_page.py` 六触点·html 2,903,830→**3,140,477B·15 集**
+**门禁**：check.py ✅ exit 0·audit exit 0（[B1] 格式异常 0）·verify_demo **✓ ALL CHECKS PASSED** exit 0（jj 门禁 ALL PASSED·jj 反向 8/8·skip_html 白名单 3,140,477B DOCTYPE/收尾/体量 OK）。
+**铁律自校**：§四 CBETA anchor 程序切片逐字回源（非空·繁体原字形·不擅改经文·異文焰/燄各照底本）·两峰 slide echo 标记保留不删·slide 名相底本未见不擅等同·劲爆判语（地球柚子形·卍字八相·BMW总裁被骗·靠佛吃饭·褲管戒律·意识时代）只标〔本文判斷〕不代立论·本地 commit·**未 push**·并行泳道文件不入仓。
+**教训**：新增集的 merge 步骤须同时产出第三份交付物 html；手录本应生成的台账数字会引入偏差（已由重跑生成器链纠偏）。
+**下一步**：Ep 16+ 续校、push/发布、高码率原图重构 slide、播客分條 ep10–15 均属新决策·待用户显式授权。

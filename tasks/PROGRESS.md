@@ -614,3 +614,20 @@
 - **回源核验**：WebSearch 逐条核 12 项英文锚点（Moretti NLR 2000·Jockers 2013·Underwood DHQ **2017**〔纠网络常传 2019〕·Lewis RAG NeurIPS 2020 arXiv:2005.11401·Edge GraphRAG arXiv:2404.16130·Huang 幻觉综述 arXiv:2311.05232·Ji KG 综述 IEEE TNNLS 33(2)2022·Cohen JAH 2008·CBDB JOHD 2022 DOI 10.5334/johd.68·CHGIS Harvard–Fudan·Foegel/North+Goldin JEH 1995·Chan 古汉语预训练）。〔待核〕24 处（Berry 卷期·Ji/ Liu/Peng/Chan 未独立回源·模型版本·相关伦理引文未直读）；〔转引·丙〕10 处（[给3] 参考文献表中文学刊·未独立回源）。
 **门禁**：〔**修正·2026-10-24**〕综述既未落盘，则本条原「self-check passed」不成立；且旧文本把「空双花括号」占位符字面量直接写进本行，反触发 `check.py` 的空双花括号扫描致门禁转红——现剔除该字面量，恢复绿灯。综述重做完成后须**实跑三门禁**再据实记「观察到」，不得预记通过。
 **边界**：本地未 commit·未 push（核心 Git 安全：非显式请求不 commit/push）。next=若需，可补 Berry/KG-Buddhism/GraphRAG survey 一手回源升等、或加方法论谱系图（Exploratory 增量·待授权）。
+
+## L.167 · Ep 15 K3c+K3d 双循环（本系列第三个正行段集）✅ 已校·信息无损（2026-10-24）
+**触发**：用户令「综述不用做了，把 e15 做好即可」——Ep 15 达 Ep 1–14 同等标准。
+**goal**：Ep 15 双循环（K3c 照录 → K3d 二次精校）·§四 CBETA 逐字回源·发布静态站点 Ep 15 tab·三闸门全绿·本地 commit。
+**done**：
+- `_gen_ep15.py` K3c：**89 可讀段**（§A3 §B5 §C6 §D4 §E9 §F21 §G14 §H27·有效 cues 3137/全局 3156）·§二正文基线 **29,695 漢字**。
+- `_gen_ep15_k3d.py` K3d（承 ep14 模板）：ANNOT **89 段全覆盖**·GLOSSARY **47**·HY_CMP **18**·DOUBTS **52**·生成 `episodes/ep15.md`（**218,011B·689 行·信息無損 assert 通过**）·结构〇–九齐备。
+- **§四 CBETA `T10n0279` anchor 程序切片九组实引**（`cut()` 去 note/app/figure·剥标签·压平·起迄 anchor 切片·assert 命中·**非手抄**）：普贤三昧@49046·世界成就@51302·十為令@51815·华藏风轮@58123·摩尼华枝轮@81326·眉间放光@82502·大威光@82750·念佛三昧@85006·大福德@86356·普门欢喜藏@86902·异文焰/燄各照底本。
+- **slide 名相铁律**：『華蕊燄輪/其道場前有一大海』『藍香幢/燕香幢』逐字检索 T10n0279 未见→标〔待核·底本未见此名〕·不擅等同（近形 @59147/@58515 仅旁证）·他典（心經/彌陀經/楞嚴/占察經/老子）只标不回源。
+- **补齐第三份交付物 `delivery/ep15.html`**：merge 仅出 md/srt·html 缺→`discover_eps` 报「交付物不齐」→复跑正牌生成器 `docs/hy_refs/tools/sub_extract/report.py 251rNVk2HLA`（entries=3156·628KB·td.t=3156 与 md/srt 相符）→copy 至 delivery。
+- **台账依实测重建**：复跑 `jj_ocr_audit.py --json && _jj_build_lib.py`→meta.episodes 14→**15**·15/15 consistent·total_cues 46428·total_han 418635·**ep15 由手录漂移（declared 10524/han 29798/覆盖 99.65）校正为实测 declared_sec=10575（2:56:15·yt-dlp info.json 为准）·han_chars=29787·coverage=0.9954**·同步修正两处生成器与 collation.yaml 两处编辑性元数据（10524→10575·29798→29787·99.65→99.54·2h55m→2h56m）→复跑 K3c/K3d→ep15.md 重生成 assert PASS·全库 0 处残留 10524。
+- collation.yaml ep15→**已校·信息无损**（YAML parse ✓）·`build_jj_collation_page.py` 六触点·html 2,903,830→**3,140,477B·15 集**。
+- **三闸门全绿（观察到）**：check.py ✅ exit 0·audit_consistency exit 0（[B1] 格式异常 0）·verify_demo **✓ ALL CHECKS PASSED** exit 0（jj 门禁 ALL PASSED·jj 反向 8/8·skip_html 白名单 3,140,477B DOCTYPE/收尾/体量 OK）。
+**blocked**：无（授权内事项全部完成）。本地 commit·**未 push**。
+**next**：Ep 16+ 续校、push/发布、高码率原图重构 slide garble、播客分條 ep10–15 均属新决策·待用户显式授权（M0 硬规则 5）。
+**sources**：CBETA `T10n0279.xml`（2026-10-24 anchor 切片实测）·`docs/hy_refs/sub_extract/251rNVk2HLA.info.json`（duration 10575）·`jj_huayan_collation.yaml`·`jj_huayan_lectures.yaml`（重生成）·`.harness/ledger.md` L.167。
+**教训（入 ledger）**：新增集的 merge 步骤须同时产出第三份交付物 html；手录本应生成的台账数字会引入偏差（已由重跑生成器链纠偏）。
