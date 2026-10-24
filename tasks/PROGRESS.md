@@ -738,3 +738,14 @@
 - **EN**：头部品题 EN（chapters.yaml）＋§1.4 画龙睛三行＋附录九中英要目 13 行。
 - **闸门全绿（观察到）**：build 45 files｜28,807,162B・test_pipeline/verify_demo ALL PASSED（shizhu 专书门禁）・verify_sources 76/100・audit_consistency 0・check.py OK。
 **blocked**：无。**next**：系列总纲相关文章（zg）→ 第一会深度篇（hui）；push 待显式授权。**sources**：CBETA `T10n0279.xml`/`T09n0278.xml`（sha256 a2bfcee6213f・修正器 `_p1_lib.py`）・ep13.md §四・`scripts/shizhu_studies.py`・`.harness/ledger.md` L.176。
+
+
+## L.177 · item5 收尾：系列总纲收官登记（zg）✅（2026-10-24）
+**触发**：第一部收口（L.176）后，按 standing scope 推进 zg「系列总纲（相关文章）」。
+**goal**：总纲与八部成篇现状同步——第八部登记＋item5 收官注＋L.176 勘误指针＋待续梯队换首项。
+**done**：
+- §二 品 8 行补实测（3,262 字／句末 116）与 html 地址；§3.1 增第八部行＋〔item5 收官注·2026-10-24〕（含「六十脱文诸说一律以第一部 §1.8 为准」硬指针）。
+- §3.2 首项改「第 9–10 品（卷十三·第二会余品）」；§六 入口增第八部；L5 最后更新→2026-10-24。
+- 核对 `standalone_articles.yaml` 第八部条目既存合规，不重复登记。
+- 闸门：build 45 files｜28,808,601B・verify_demo ALL PASSED・check.py OK（均 exit 0）。
+**blocked**：无。**next**：第一会深度篇（会读/判教相关文章·hui）。**sources**：`.harness/ledger.md` L.168–177・`data/translation/standalone_articles.yaml`・总纲本体。
