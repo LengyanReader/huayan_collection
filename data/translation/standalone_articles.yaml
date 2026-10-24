@@ -223,8 +223,6 @@ others:
   icon: 📚
   title: 海云法师 · 九九华严讲记校勘工作台
   title_sub: 99 华严讲座字幕 OCR 梳理 · 三源互证 · 讲记主体 · huayanhai/外部导读参照 · Ep1-2 已校 · Ep3+ 进行中
-  # 该独立页由 scripts/build_jj_collation_page.py 数据驱动生成（读 jj_huayan_collation.yaml + episodes/epNN.md），
-  # build.py 只登记卡片入口、不重复生成 HTML。
   skip_html: true
   data_source: jj_huayan_collation
   data_pool: research
@@ -256,7 +254,8 @@ others:
   order_in_group: 2
   icon: 🧠
   title: 沉思式 AI · 人工智慧 · 正向对齐 — 文献综述
-  title_sub: Contemplative AI × Artificial Wisdom × Positive Alignment · 84 条经核验文献 · 共识与争议 · 中英对照
+  title_sub: Contemplative AI × Artificial Wisdom × Positive Alignment · 84 条经核验文献
+    · 共识与争议 · 中英对照
   doc: docs/随笔参考/ref_ai_wisdom_alignment_文献综述.md
   back:
     tab: frontier
@@ -383,3 +382,19 @@ group_icons:
   跨学科对读: 🌐
   前沿议题: 💻
   其他: 📂
+articles:
+- id: huayan_jing_xidi_pin
+  title: 华严经细读·第八部　四圣谛品
+  title_en: 'Huayan Sutra Close Reading Vol. 8: Chapter of the Four Noble Truths'
+  source_path: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第八部_四圣谛品.md
+  category: huayan_close_reading
+  series: huayan_collection
+  volume: 8
+  locale: zh-CN
+  status: completed
+  tags:
+  - 华严经
+  - 四圣谛品
+  - 细读
+  - 实叉难陀
+  - T10n0279
