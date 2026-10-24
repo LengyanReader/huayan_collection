@@ -40,6 +40,9 @@ meta:
   truncation_note: 〔订正 2026-10-17〕原记 T1735 为截断本，实测为全帙（至卷第六十）；T1732／T1733 亦全帙
   normalization: NFKC + RAD（CJK 部首补充区），故本库 quote 为归一字
   extraction: scripts/t1_quote.py 程序抽取，不手录
+  # 〔订正 2026-10-24〕旧记 total 32／"5.2": 8；实测 quotes C01–C31 共 31 条，
+  #   其中 sec=="5.2" 为 9 条（sum(by_sec)=31，与 yaml 解析及 verify_t1_bikan 一致）。
+  #   注：本二行须保持裸行，verify_t1_bikan.py 之台账正则行锚定 `$`。
   counts:
     total: 31
     by_sec:

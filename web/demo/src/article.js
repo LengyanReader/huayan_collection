@@ -215,6 +215,7 @@ function renderArticle(){
       }
     },80);
   }
+  // ── Mermaid 图表渲染（已禁用，使用 HTML/CSS 可视化） ──
 }
 
 if(document.readyState!=='loading'){renderArticle();}

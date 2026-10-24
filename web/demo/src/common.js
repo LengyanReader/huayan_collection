@@ -864,15 +864,20 @@ function _mdFullToHTML(text) {
       }
       // 未见闭合标签 → 退回段落分支（避免误吞余下全文）
     }
-    // code fence (```)
-    if (l.trim().indexOf('```') === 0) {
-      var code = [];
-      i++;
-      while (i < lines.length && lines[i].trim().indexOf('```') !== 0) { code.push(lines[i]); i++; }
-      if (i < lines.length) i++; // skip closing fence
-      out.push('<pre style="background:rgba(94,139,158,0.08);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:0.78em;line-height:1.5;overflow-x:auto;margin:8px 0;white-space:pre">' + code.join('\n').replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</pre>');
-      continue;
-    }
+     // code fence (```)
+     if (l.trim().indexOf('```') === 0) {
+       var fenceLang = l.trim().slice(3).trim().toLowerCase();
+       var code = [];
+       i++;
+       while (i < lines.length && lines[i].trim().indexOf('```') !== 0) { code.push(lines[i]); i++; }
+       if (i < lines.length) i++; // skip closing fence
+       if (fenceLang === 'mermaid') {
+         out.push('<div class="mermaid" style="background:rgba(94,139,158,0.04);border:1px solid var(--line);border-radius:8px;padding:12px;margin:8px 0;overflow-x:auto;text-align:center">' + code.join('\n').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>');
+       } else {
+         out.push('<pre style="background:rgba(94,139,158,0.08);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:0.78em;line-height:1.5;overflow-x:auto;margin:8px 0;white-space:pre">' + code.join('\n').replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</pre>');
+       }
+       continue;
+     }
     // paragraph (collect consecutive lines)
     var para = [l];
     i++;

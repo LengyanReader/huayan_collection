@@ -99,7 +99,14 @@ def main():
                   % (status, name, "由" + gate, oth))
         finally:
             if os.path.exists(LIB + ".bak"):
-                shutil.move(LIB + ".bak", LIB)
+                # 〔WinError 1224 兼容·2026-10-24〕不用 shutil.move 的
+                # CopyFile2 覆盖路径：目标文件被内存映射（编辑器/索引器打开）时
+                # 必报 user-mapped section open；改为写副本＋os.replace 原子换位，
+                # 验证语义不变（仍是从 .bak 如实回滚真库）。
+                bak_txt = io.open(LIB + ".bak", encoding="utf-8").read()
+                io.open(LIB + ".rst", "w", encoding="utf-8", newline="\n").write(bak_txt)
+                os.replace(LIB + ".rst", LIB)
+                os.remove(LIB + ".bak")
     # 对照：原库必过
     rc1, out1 = run([sys.executable, "scripts/t1_quote.py", "--check", LIB])
     rc2, out2 = run([sys.executable, "scripts/verify_t1_bikan.py"])

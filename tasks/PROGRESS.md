@@ -631,3 +631,13 @@
 **next**：Ep 16+ 续校、push/发布、高码率原图重构 slide garble、播客分條 ep10–15 均属新决策·待用户显式授权（M0 硬规则 5）。
 **sources**：CBETA `T10n0279.xml`（2026-10-24 anchor 切片实测）·`docs/hy_refs/sub_extract/251rNVk2HLA.info.json`（duration 10575）·`jj_huayan_collation.yaml`·`jj_huayan_lectures.yaml`（重生成）·`.harness/ledger.md` L.167。
 **教训（入 ledger）**：新增集的 merge 步骤须同时产出第三份交付物 html；手录本应生成的台账数字会引入偏差（已由重跑生成器链纠偏）。
+
+- 2026-10-24 — **第八部《四圣谛品》增补批 P0–P6 全批完成（L.168）**，用户「可以，请逐步完成」预先批准整序：
+  - **P1 串科三案（本批最重要）**：§5.1/§5.2/§5.2′ 旧稿均将〈如来名号品〉五/四门误挂本品；依品题锚逐字改回真四谛品段（T1733 L3931–L3953・T1732 L815–L827・T1739 L6050–L6106），各加校订注＋旁引块；另订四处查无项（四十四句→三十二問・逼迫義四句・在方无方・前會舉所信之境归位法藏）；慧苑「记不传」得 X0221 L4623 直证。核验器 `_verify_sidi_cites.py` 49中/21失，失项逐条定性。
+  - **P2**：六十品题实作「四諦品」无「聖」字@L297；§6.1 三表（框架/界名次第/娑婆 40 名逐名：同 13・近 9・异 18）。
+  - **P3**：§5.3′ 补 ep10 海云玄談「三會三寶配」照听录逐字＋正行段 Ep16+ 指针。
+  - **P4**：§6.3 藏译位次论证链透明化（藏=汉+5/+6 规则标〔本文判断〕・来源分级 T2・本机无藏本一律〔待核〕）；§3.3 兜沙经本地无文本声明。
+  - **P5/P6**：§2.0 明定甲/乙/丙三档「择要三层＋全表」体例；continuation→续品等中英夹杂清理。
+  - **t1-sync**：`t1_bikan_evidence.yaml` counts 32→31、"5.2" 8→9（经用户批准）；修复 `_verify_t1_reverse.py` WinError 1224 回滚崩溃（残留四处变异逐一回滚；改 os.replace 原子换位）→反向 8/8。
+  - **三闸门全绿（观察到）**：build 45 files｜28,711,332B・test_pipeline・verify_demo ALL CHECKS PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
+  **goal**：本品增补批全部交付。**done**：P0–P6・t1・rebuild・heartbeat 十项全完。**blocked**：无。**next**：六十卷五四界回源・Ep16+ 海云正行段・push 待授权（本地 commit 已做，未 push）。**sources**：CBETA `T10n0279`/`T09n0278` 卷四抽取本・T1732/T1733/T1735/T1736/T1739/X0221 抽取本・ep10.md・`data/translation/gap_analysis.md`・`data/catalog/chapters.yaml`。
