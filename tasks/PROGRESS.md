@@ -679,3 +679,15 @@
 - **编辑修订**：「止证」→「恰证」·「有数 5,209 字」→「凡 5,209 字」·「倩后续批」→「俟后续批」（2 处）。
 - **闸门全绿（观察到）**：build 45 files｜28,732,481B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
 **blocked**：无。**next**：第五部《华藏世界品》同四步（六十对读重点）；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/pilu_shena_studies.py`・`.harness/ledger.md` L.171。
+
+## L.172 · item5 续轮：第五部《华藏世界品》四步流水线（六十对读重点） ✅（2026-10-24）
+**触发**：第六部完成后，用户「继续」，按 7→1 序列推进第五部（本品为六十对读重点）。
+**goal**：第五部四步（mining→六十全本回源→EN→gap 终检＋闸门）全完。
+**done**：
+- **mining·Ep15 正行段可据实录入**：本品已于 99华严 Ep15（正行第三集）§D–§E 逐段讲授，§四 4.3 以 CBETA `T10n0279` anchor 切片逐字回源「華藏世界品第五之一·風輪平等住」（访问 2026-10-24），讲者 §D04/§H07 口诵逐字合（T0）录入 §5.4′.5；讲者义解（风轮＝大愿＝普贤行愿）标 T3；§D「十依住」实属品四且 ep15 自标俟核——只存目不录入。
+- **六十全本复验·两处发现**：（甲）**§6.7〔待核〕关闭**——八十全本 `T10n0279.xml`「從佛眉間白毫相出」0 见（眉間白毫 5 见皆放光段）→ 八十实无此增句，六十增句属实。（乙）**如实揭露本机两六十源自歧**——§6.9「约二十名」全本复验：14 名与卷四 txt 逐字合、5 名全本 XML 脱文而 txt 独有全名（#2 名嚴／#11 名華林＋佛号／#15 海性对／§6.3 一切年）；处理：§6.9 依 txt 全名成立、全本脱文不推翻之，不擅补不擅删、两源并存存记待核；此脱文即六十「传写不尽」之直证。
+- **数据层复算**：`scripts/huazang_shijie_studies.py` CJK 19,098·净 19,071·unique 657·sent_ends 626·p47·lg9·颂181·l362——与 §7.1 全吻合。
+- **EN**：头部品题 EN「Part Five: The Flower Treasury World（華藏世界）」（title_en="The Flower Bank World"）＋§1.4 三画龙睛 EN＋附录九中英要目（11 行）＋〔EN 自陈〕。
+- **编辑修订**：§5.4′.5 焰/燄存记误引「凡例八」→ 订为「凡例四」。
+- **闸门全绿（观察到）**：build 45 files｜28,743,444B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
+**blocked**：无。**next**：第四部《世界成就品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/huazang_shijie_studies.py`・`.harness/ledger.md` L.172。
