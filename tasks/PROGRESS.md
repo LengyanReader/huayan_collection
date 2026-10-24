@@ -703,3 +703,14 @@
 - **编辑修订**：§5.3′.4「宏観」→「宏觀」；§1.4 EN point2 语法/引号修订。
 - **闸门全绿（观察到）**：build 45 files｜28,753,345B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
 **blocked**：无。**next**：第三部《普贤三昧品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/sjcj_puxian_studies.py`・`.harness/ledger.md` L.173。
+
+## L.174 · item5 续轮：第三部《普贤三昧品》四步流水线 ✅（2026-10-24）
+**触发**：第四部完成后，用户「继续」，按 7→1 序列推进第三部（本品 Ep15 正行段已讲授·六十对读重点）。
+**goal**：第三部四步（mining→六十全本回源→EN→gap 终检＋闸门）全完。
+**done**：
+- **mining·Ep15 正行段逐字录入 §5.4.6**：本品 §四 4.1 入定·彰定名「此三昧名：一切諸佛毘盧遮那如來藏身」以 `T10n0279` anchor 切片逐字回源（访问 2026-10-24），讲者 §A02/§F01 口诵逐字合（T0）；本元→本體判属〔本文判断〕；听录「長生」疑为「藏身」只标不改。
+- **六十全本复验·新增 §6.7 揭露三处两源自歧**：定名/起定/寶王雲七名/光中颂四言逐名全本＝txt 皆合；唯 ②「是皆盧舍那佛本願力故」全本脱·⑤「各申右手摩普賢菩薩頂」全本乱简·⑩叙分「觀察一切諸世界海」全本脱作「界海」（与 P4 同一处互证）——各照其源不统一·存记待核·辨明盧舍那异译由品名他处成立；合 P4/P5 为全本卷三–卷四系统性脱文之积证。
+- **数据层复算**：`scripts/sjcj_puxian_studies.py` 本品 cjk_total 1,995·净 1,988·世界海 59——与 §7.1 全吻合。
+- **EN**：头部品题 EN（"The Samādhi of Universal Good"）＋§1.4 三画龙睛 EN＋附录九中英要目（11 行）。
+- **闸门全绿（观察到）**：build 45 files｜28,764,294B・test_pipeline/verify_demo ALL PASSED・verify_sources 76/100・audit_consistency・check.py 均 exit 0。
+**blocked**：无。**next**：第二部《如来现相品》同四步；push 待授权。**sources**：CBETA `T10n0279`/`T09n0278`（sha256 a2bfcee6213f 直证）・ep15.md・`scripts/sjcj_puxian_studies.py`・`.harness/ledger.md` L.174。
