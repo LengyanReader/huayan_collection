@@ -61,3 +61,7 @@ data/research/t1_bikan_evidence.yaml.bak
 /_*.txt
 /_*.json
 /verify_*.txt
+
+# 〔L.167 VC 区清理〕本地一次性探索 scratch 归档区（move·可逆·不入库）+ 编辑器/工具缓存
+/_archive/
+/.kilo/
