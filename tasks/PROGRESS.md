@@ -896,3 +896,16 @@
 **blocked**：无。
 **next**：L.188 显式路径本地 commit（不 push）→ L.189 P11《净行品》充实（141 愿逐愿全文·可顺带修 `_p9_11_audit.py` EDIT_PREFIX 消 P11 8 处假阳性）。
 **sources**：`_e10_dump.txt`·`_e10_win.txt`·`_e10_stats.txt`·`_e10_pre.txt`·`_e10_u.txt`·`_e10_inject_log.txt`（留痕·gitignore）· `T10n0279.xml` · `T1735_澄观_华严经疏.txt` · `T09n0278_juan5.txt`。
+
+## 2026-10-25 · L.189 第十一部《净行品》充实批（E9-12 战役三批）
+**goal**：P11 专篇充实至 ≥1,200 行基线（141 愿逐愿全文·问端全文·疏科长文全摘·六十全本·十段愿 SVG·附录四照录）·程序化零手抄。
+**done**：
+- 提取层：`_e11_full.py`→`_e11_dump.txt`（6 单元·品界 @87073–90041·2,968；141 愿单一 `<lg>` CJK 2,255·「。」切分 141/141→`_e11_vows.txt`）；`_e11_stats.py` 十段 [11,15,7,6,7,55,22,5,10,3]·愿长 16×140＋15×1·若44/見61/時17；疏窗 `_e11_win.txt` raw @188383–195840·259 行。
+- 枢要教训：ONLYF 锚须正字形（shcut）而 winrange 行锚走 raw 保康熙；U+2ED1「⻑」不参 NFKD 分解且被 MAP 滤除→shuC 无该字（戊段锚跳它・引文内手写补）；CBETA 行包装跨行锚改行内首现序列「若入堂下七願」；winrange 末锚行不并入（14 块 13 界无重叠无缺口・卷十五/十六尾题入卯）；审计口径：`>` 行只放连续原文・同行两「」quote 必分行。
+- 照记订正：段八讫「暑退涼初」/段九起「諷誦經時」（原表照录不删・§7.4 旧脚本仍合）。
+- 预检 `_e11_pre.py` **BAD=0**；注入 `_e11_inject.py` R1–R12：问端 509 全文·§2.3′ 141 愿逐愿十段·§5.1 疏科甲–己·§6.1′ 六十 192 行全本·§7.5 数科 L1–L4＋图 7-1 SVG·附录四甲–卯 14 块照录·附录三/七/十·台账·引文块结构修正两轮。
+- 体量：**468→1,225 行**，越 ≥1,200 基线（memory ea9c73a9）。
+- 审计与闸门（观察到）：`_p9_11_audit.py` P11 **hit=152 miss=0**（144/9→146/3→152/0・旧 8 假阳性一并消除）・P9 25/0・P10 21/0 不变；build **50 files｜29,635,542B**（`huayan-jingxing-pin.html` 177,215B・svg×7・index 卡片 52,103 字）；六闸门全绿（check.py OK・test_pipeline ALL PASSED・verify_demo ALL CHECKS PASSED・verify_sources --fixme exit 0・audit_consistency exit 0・git diff --check 净）。
+**blocked**：无。
+**next**：L.189 显式路径本地 commit（不 push）→ L.190 P12《贤首品》充实（偈颂全量·两万言级·起锚首见 @124463 防误二见）。
+**sources**：`_e11_dump.txt`·`_e11_vows.txt`·`_e11_stats.txt`·`_e11_win.txt`·`_e11_pre.txt`·`_e11_inject_log.txt`·`_e11_md_backup.md`（留痕·gitignore）· `T10n0279.xml` · `T1735_澄观_华严经疏.txt` · `T09n0278_juan6.txt`。
