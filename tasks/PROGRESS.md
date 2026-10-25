@@ -860,3 +860,14 @@
 **blocked**：无新增。Ep12 正行逐字俟后续批；藏译德格版逐字对勘〔待核〕；法藏贤首品正科未获直证〔待核〕；偈颂数「半」计量依疏家口径·不裁古数〔待核〕。
 **next**：**P9-10-11-12 联排收官·第二会六品（差别因果周·十信）全成篇**。第三会《升须弥山顶品》（卷十六·与十住品合读群）·俟 PLAN 序列确认后续开。
 **sources**：`_p12_cite2.py`·`_p12_cov_run.py`·`_p12_body80.txt`·`_p12_body60.txt`（探测留痕·gitignore）· `T10n0279.xml` · `T09n0278_juan6.txt`/`_juan7.txt` · `T1735/T1733/T1732/X0221/T1739/T1736` · `data/catalog/chapters.yaml` order 12 · 海云讲记 ep08/10/12。
+
+## 2026-10-25 · L.186 巩固审计 P9–P12 引文回源（入后续规划前的 double-check）
+**goal**：用户要求在进入后续规划前先巩固—逐字核验刚完成的 P9–P12 四篇是否完备/完善/准确/得当（重点：引文回源铁律）。
+**done**：
+- 方法：新写标点形态无关的通用引文回源器（`_p12_cite_audit.py`／`_p9_11_audit.py`／`_p9_11_diag.py`·平文器重建各品 body→剥非CJK→逐原子句/长跑子串归属）；`_p12_cov_run.py` 复跑 EXIT=0。§5 五家祖典引文逐一对回 `_p12_cite2_out.txt` 窗口（澄观體性至順調善/三百五十九頌半·法藏十信滿心即得六位·智俨七百一十五偈半/依法生解·慧苑三百五十七頌半/有財釋·李通玄五门含明信心退住）均逐字存在。
+- **发现并订正 2 处真·引文错误**（同类·皆偈颂脱/倒字）：① P12 §1.5「如於大海一滴水」（底本 0 见）→「**猶如**大海一滴水」（_p12_chk.txt 真句×1）；② P10 §2 L113（注“逐字节录”）与 §4.1 L210「諸法無作用，亦無體性」漏“有”→「亦無**有**體性」（底本亦無有體性=True·附录三 L471 已正·文内自相矛盾已统一）。
+- **P9/P11 经 ground truth 直证无真误引**：P9 11 miss=P2 分析性 `>` 提示块（十段编号/光明過X遍照Y…）与偈起公式黏连；P11 8 miss=「段一在家/段二出家…」段标与尾注黏连·首愿“佛子菩薩在家當願眾生知家性空免其逼迫…”（无“若”）与底本一致。→ 均为工具标签假阳性·无残留真误。
+- 重建与六闸门：build 50 files｜29,393,961B（P10/P12 html 重建）·test_pipeline ALL TESTS PASSED·verify_demo ✓ ALL CHECKS PASSED·verify_sources --fixme exit 0·audit_consistency exit 0·check.py OK·git diff --check 净；本地 commit（显式路径·两专篇 md＋重建 html＋ledger＋PROGRESS・**未 push**・无关 .gitignore 不纳入）。
+**blocked**：无。审计为只读+最小订正，未动已 commit 的结构/数据层结论。
+**next**：P9-10-11-12 联排已成篇并经巩固审计·待用户确认是否开第三会 P13《升须弥山顶品》。
+**sources**：`_p12_cite_audit.py`·`_p9_11_audit.py`·`_p9_11_diag.py`·`_p12_chk.txt`·`_gt.txt`（审计留痕·gitignore）· `T10n0279.xml` · `_p12_cov_run.py`·`_p12_cite2_out.txt`。
