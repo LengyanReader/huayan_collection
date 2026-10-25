@@ -883,3 +883,16 @@
 **blocked**：无。
 **next**：L.188 第十部《菩萨问明品》充实（同提取→预检→注入→审计模式·立宗颂「亦無有體性」已订正·基线同样 ≥1,200）。
 **sources**：`_e9_dump.txt`·`_e9_win.txt`·`_e9_stats.txt`·`_e9_pre3.txt`·`_e9_inject_log.txt`（留痕·gitignore）· `T10n0279.xml` · `T1735_澄观_华严经疏.txt` · `X0221_慧苑_续华严略疏刊定记.txt` · `T09n0278_juan5.txt`。
+
+## 2026-10-25 · L.188 第十部《菩萨问明品》充实批（E9-12 战役次批）
+**goal**：P10 专篇充实至 ≥1,200 行基线（十一段全文入文·疏科长文全摘·六十全量对照·声部 SVG·数科 L1–L4·附录四照录）·程序化零手抄。
+**done**：
+- 提取层：`_e10_full.py`→`_e10_dump.txt`（32 单元·品界 CJK 3,167·六十 juan5 3,088）；`_e10_stats.py` 频计全中；疏窗口收割 `_e10_win.txt`（raw @167350–188366·703 行）。
+- 枢要教训（pin-div cursor bug）：全档 iter＋前向游标被逐品重复 byline 推过品界致 31 单元全跳→只在本品 `div type="pin"` 内迭代；康熙 trap 再证：锚「二釋品者」（raw ⼆·非「第二釋品者」）；「三宗趣者」×33／「第四釋文」×9 靠窗内前向序搜。
+- 预检 `_e10_pre.py` **BAD=0**（md 锚唯一·21 行级标记·32 单元 CJK 复算·18 锚对落窗且十五段链单调·切片边界抽查）。
+- 注入 `_e10_inject.py` R1–R10：§2 十一段全量入文（21 处行级替换·`>` 全引块）·§5.1 疏科纲格甲–己（含末句問明品辨信中解竟）·§6.1′ 六十全本·§7.5 数科 L1–L4＋图 7-1 声部 SVG·附录三/七/十·附录四疏本科段全文照录（甲–辰十五段）。
+- 体量：**568→1,699 行**，越 ≥1,200 基线（memory ea9c73a9）。
+- 审计与闸门（观察到）：`_p9_11_audit.py` P10 **hit=21 miss=0**（4→21）；build **50 files｜29,572,795B**（`huayan-wenming-pin.html` 223,364B·附录四＋SVG 入站·index 卡片 68,189 字）；六闸门全绿（check.py OK·test_pipeline ALL PASSED·verify_demo ALL CHECKS PASSED·verify_sources --fixme exit 0·audit_consistency exit 0·git diff --check 净）。
+**blocked**：无。
+**next**：L.188 显式路径本地 commit（不 push）→ L.189 P11《净行品》充实（141 愿逐愿全文·可顺带修 `_p9_11_audit.py` EDIT_PREFIX 消 P11 8 处假阳性）。
+**sources**：`_e10_dump.txt`·`_e10_win.txt`·`_e10_stats.txt`·`_e10_pre.txt`·`_e10_u.txt`·`_e10_inject_log.txt`（留痕·gitignore）· `T10n0279.xml` · `T1735_澄观_华严经疏.txt` · `T09n0278_juan5.txt`。
