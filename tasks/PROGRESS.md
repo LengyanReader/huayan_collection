@@ -790,3 +790,19 @@
 **next**：P9-10-11-12 联排开跑：STEP0（六十第二会增补·一次）→ 第九部四步 → 第十部 → 第十一部 → 第十二部。
 
 **sources**：`_p1112_probe_out.txt`·`_p1112_probe2_out.txt`（本批探测留痕·`_`前缀 gitignore）· `T10n0279.xml` itertext 定位 · `T1736` @184478/184538 · `T1732` 目录 @180 · episodes/ep11-12。
+
+## L.181 · STEP0 六十华严卷一~七增补入库（2026-10-25）
+
+**goal**：P9-10-11-12 联排前置 STEP0——六十第二会对应卷 clean txt 入库（一次入库、四批共用）。
+
+**done**：
+- 前提升格：本地 `T09n0278.xml` 经摸底即**全本六十卷**（sha 在册），STEP0 由「联网增补」降为**纯本地生成**，零外网依赖。
+- 六十第二会品题底本直证（后续四批 STEP2 对读坐标）：光明觉=**如來光明覺品第五**、问明=**菩薩明難品第六**（六十不作「問明」）、净行=淨行品第七、贤首=賢首菩薩品第八之一/之二（八十分二与之相合）、四谛作「四諦品」非「四聖諦」。
+- 跟踪版生成器 `scripts/ingest_sixty_juan.py`（L.176 修正提取器之 RAW 增强：lem 保字·mulu 不泄漏·结构断行）；新档五卷 juan1/2/5/6/7 落位（P9-12 范围 + 初会补足供深度篇复用）；卷三/四在册不覆写，mulu 杂线仅新档杜绝。
+- 保真三路全绿（双实现全等×7卷·旧档对源残差仅预登一处）；README 入库清单登记；六闸门 exit 0 附观察证据。
+
+**blocked**：无新增。push 仍待授权。
+
+**next**：第九部 光明觉品 四步流水线（STEP1 八十回源+疏主导变例 → STEP2 六十对读用新档 juan5 → STEP3 EN/画龙睛/附录九 → STEP4 收口）。
+
+**sources**：`_step0_probe_out.txt`·`_step0_probe2_out.txt`·`_step0_ingest_out.txt`（探测留痕·gitignore）· `data/references/cbeta/T09n0278.xml` · `scripts/ingest_sixty_juan.py` · `data/references/cbeta/README.md`。
