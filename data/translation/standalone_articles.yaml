@@ -383,6 +383,21 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-xianshou-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 17
+  icon: 📖
+  title: 九九华严第十二品 贤首品之拼读
+  title_sub: 华严经第十二品·第二会·差别因果周·八十跨卷十四～十五（之一/之二二分）·文殊以偈问·贤首以偈答·宗眼「信为道元功德母」·初发心功德·十信相续链·三昧光明门·智自在譬喻·校量结叹·十方摩顶现证·偈颂数多源分歧（澄观359半·慧苑357半／依八十·智俨715半／依六十·颂偈口径别不裁）·注疏五家会读（澄观·法藏·智俨·慧苑·李通玄＋海云）·与六十《賢首菩薩品第八》对读·第二会六品收官·数据层·未完备已标明
+  updated_at: '2026-10-25'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十二部_贤首品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
@@ -432,7 +447,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 11 单品（依品次第 1→11）
+  summary: 华严经细读系列 · 3 总纲 + 12 单品（依品次第 1→12）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
