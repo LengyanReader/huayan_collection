@@ -368,6 +368,21 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-jingxing-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 16
+  icon: 📖
+  title: 九九华严第十一品 净行品之拼读
+  title_sub: 华严经第十一品·第二会·差别因果周·八十卷十四首品·智首菩萨二十云何问·文殊答一百四十一当愿众生（善用其心）·⻑分為十十段·誓数多源对验（依八十141·澄观慧苑／依六十140·法藏智俨）·注疏五家会读（澄观·法藏·智俨·慧苑·李通玄＋海云）·与六十《淨行品第七》对读·数据层·未完备已标明
+  updated_at: '2026-10-25'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十一部_净行品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
@@ -417,7 +432,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 10 单品（依品次第 1→10）
+  summary: 华严经细读系列 · 3 总纲 + 11 单品（依品次第 1→11）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
@@ -486,6 +501,21 @@ articles:
   tags:
   - 华严经
   - 菩萨问明品
+  - 细读
+  - 实叉难陀
+  - T10n0279
+- id: huayan_jing_jingxing_pin
+  title: 华严经细读·第十一部　净行品
+  title_en: 'Huayan Sutra Close Reading Vol. 11: The Chapter of Pure Practices'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十一部_净行品.md
+  category: huayan_close_reading
+  series: huayan_collection
+  volume: 11
+  locale: zh-CN
+  status: completed
+  tags:
+  - 华严经
+  - 净行品
   - 细读
   - 实叉难陀
   - T10n0279
