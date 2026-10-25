@@ -815,5 +815,18 @@
 - 专篇 618 行 §〇–§九全齐；慧苑 X0221 本品有记直证（解「恐不传」悬案·梵本题名「如來光明網能覺悟品」）；李通玄光位表阶位；数据层观察：CJK 4,358·含标点 5,198·照境目 23（初校 22 误已纠偏·数来自实测）。
 - 登记：yaml 新条 huayan-guangmingjue-pin（order 13・firsthui 12→14）；总纲四处同步；页面 127,838B 入站；六闸门 exit 0 观察到（build 47 files・test_pipeline/verify_demo ALL PASSED・verify_sources --fixme T0=0・audit exit 0・check.py OK）・git diff --check 净；本地 commit·**未 push**。
 **blocked**：无新增。Ep10 正行逐字俟后续批（讲记未上架至彼）；藏译德格版本机未入库〔待核〕。
-**next**：第十部 菩萨问明品（同卷十三·问明尾锚第二见规则已备·六十侧真证品题《菩薩明難品第六》）。
+**next**：第十部 菩萨问明品（同卷十三·问明品题唯一见锚口径已备·见本部订正条·六十侧真证品题《菩薩明難品第六》）。
 **sources**：`_p9_cov_run.py`·`_p9_tiers.py`·`_p9_probe3/4`（探测留痕·gitignore）· `data/references/cbeta/T10n0279.xml` · `data/references/cbeta_txt/T09n0278_juan5.txt` · `T1735/T1733/T1732/X0221/T1739` · `data/catalog/chapters.yaml` order 9。
+
+## 2026-10-25 · L.183 第十部《菩萨问明品》四步流水线成篇（用户「继续」·P9-10-11-12 联排 P10）
+**goal**：卷十三次品单品成篇（回源→结构→专篇→门禁）。
+**done**：
+- 回源：八十品界 @115815–120214（品题全档唯一见断言·止锚卷十三尾题裁 junk）；六十《菩薩明難品第六》juan5@7719–11712 逐字回源（L.181 新档）。
+- 结构：十一「爾時」段（九难九酬＋佛境界十一问一偈酬＋九差别长行结归·偏移表实测）；十首＝九问对象＋文殊（九首/十首辨⚖）。
+- 专篇 569 行 §〇–§九全齐：异文 ~30 对逐难逐喻；**慧苑缺问明专段存疑直证**（X0221 光明觉→净行衔接 16,061 字「問明」×0·两条删并旁证登录·夺抑不裁）；祖典五家会读（澄观四门／法藏明難四义·八门辨十信／智俨十心→百法明門／李通玄十首名义·十色世界／海云 Ep11〔玄谈〕）。
+- 照记订正（本轮内）：答式「以頌答曰」剥空白×10 齐整（初稿「×7不齐」系换行空白假象·四处同步·附录六#7 已闭）；六十含标点口径（剥空白 3,769/raw 3,993）；头部 EN 品题 chapters.yaml 直证取定。
+- 数据层观察：`_p10_cov_run.py` §7.4 全 assert 通过——八十 CJK **3,133**·含标点 **3,839**·爾時×11·佛子×14·頌×10·各各不相知×6·不相知对×10·三昧/普賢×0；六十 CJK **3,088**·以偈答曰×9·頌×0·二俱不相知×5。
+- 登记：yaml 新条 huayan-wenming-pin（order 14·firsthui 14→15·summary 1→10）；总纲五处同步（§3.2 改第 11–12 品·净行誓数不径写只记「旧说一百四十一须实计」）；页面 125,555B 入站（build 48 files）；六闸门 exit 0 观察到（test_pipeline/verify_demo ALL PASSED・verify_sources --fixme exit 0・audit exit 0・check.py OK）・git diff --check 净；本地 commit·**未 push**。
+**blocked**：无新增。Ep11 正行逐字俟后续批；慧苑删并/夺页判定〔待核〕；藏译德格版逐字对勘〔待核〕。
+**next**：第十一部 净行品（卷十四·誓数旧说一百四十一（ep12 口径）须以底本实计对验·智首问事数同核·六十《淨行品第七》juan6 对读）。
+**sources**：`_p10_probe.py`·`_p10_probe2/3/4(_out)`·`_p10_body.txt`·`_p10_seg60_clean.txt`·`_p10_cov_run.py`（探测留痕·gitignore）· `T10n0279.xml` · `T09n0278_juan5.txt` · `T1735/T1733/T1732/X0221/T1739/T1736` · `data/catalog/chapters.yaml` order 10 · `data/translation/diff_matrix.yaml` order 10 · 海云讲记 ep11。

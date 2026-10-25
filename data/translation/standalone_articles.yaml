@@ -353,10 +353,25 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
-- id: firsthui-jiaopan
+- id: huayan-wenming-pin
   group: 经论茶歇
   family: huayan_xidu
   order_in_group: 14
+  icon: 📖
+  title: 九九华严第十品 菩萨问明品之拼读
+  title_sub: 华严经第十品·第二会·差别因果周·卷十三次品·文殊与十首菩萨互为明难·九难九酬＋佛境界十一问＋九差别结归·诸法各各不相知·十信解门开篇·与六十《菩萨明难品第六》对读·注疏诸家会读（澄观·法藏·智俨·慧苑〔本品无记〕·李通玄·海云）·数据层·未完备已标明
+  updated_at: '2026-10-25'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十部_菩萨问明品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
+- id: firsthui-jiaopan
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 15
   icon: 🏛
   title: 华严细读·第一会 菩提场会读判教篇
   title_en: 'Huayan Sutra Close Reading · Assembly One (Bodhimaṇḍa): Synthetic Reading and Doctrinal Classification'
@@ -402,7 +417,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 9 单品（依品次第 1→9）
+  summary: 华严经细读系列 · 3 总纲 + 10 单品（依品次第 1→10）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
@@ -456,6 +471,21 @@ articles:
   tags:
   - 华严经
   - 光明觉品
+  - 细读
+  - 实叉难陀
+  - T10n0279
+- id: huayan_jing_wenming_pin
+  title: 华严经细读·第十部　菩萨问明品
+  title_en: 'Huayan Sutra Close Reading Vol. 10: Statements of the Questioning Bodhisattvas'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十部_菩萨问明品.md
+  category: huayan_close_reading
+  series: huayan_collection
+  volume: 10
+  locale: zh-CN
+  status: completed
+  tags:
+  - 华严经
+  - 菩萨问明品
   - 细读
   - 实叉难陀
   - T10n0279
