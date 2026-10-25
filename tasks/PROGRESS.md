@@ -869,5 +869,17 @@
 - **P9/P11 经 ground truth 直证无真误引**：P9 11 miss=P2 分析性 `>` 提示块（十段编号/光明過X遍照Y…）与偈起公式黏连；P11 8 miss=「段一在家/段二出家…」段标与尾注黏连·首愿“佛子菩薩在家當願眾生知家性空免其逼迫…”（无“若”）与底本一致。→ 均为工具标签假阳性·无残留真误。
 - 重建与六闸门：build 50 files｜29,393,961B（P10/P12 html 重建）·test_pipeline ALL TESTS PASSED·verify_demo ✓ ALL CHECKS PASSED·verify_sources --fixme exit 0·audit_consistency exit 0·check.py OK·git diff --check 净；本地 commit（显式路径·两专篇 md＋重建 html＋ledger＋PROGRESS・**未 push**・无关 .gitignore 不纳入）。
 **blocked**：无。审计为只读+最小订正，未动已 commit 的结构/数据层结论。
-**next**：P9-10-11-12 联排已成篇并经巩固审计·待用户确认是否开第三会 P13《升须弥山顶品》。
+**next**：P9-10-11-12 联排已成篇并经巩固审计·待用户确认是否开第三会 P13《升须弥山顶品》。（后经用户裁定改道 E9-12 内容充实战役·见 L.187）
 **sources**：`_p12_cite_audit.py`·`_p9_11_audit.py`·`_p9_11_diag.py`·`_p12_chk.txt`·`_gt.txt`（审计留痕·gitignore）· `T10n0279.xml` · `_p12_cov_run.py`·`_p12_cite2_out.txt`。
+
+## 2026-10-25 · L.187 第九部《光明觉品》充实批（E9-12 战役首批·用户裁定第一会/第二会丰富度=最低达标标准）
+**goal**：P9 专篇充实至 ≥1,200 行基线（全文入文·注疏长文全摘·六十全量对照·SVG·书目·数科附录）·程序化零手抄。
+**done**：
+- 提取层：`_e9_full.py`→`_e9_dump.txt`（25 单元·品界 CJK 4,358）；`_e9_stats.py` 频计全中；澄观疏窗口收割 `_e9_win.txt`（raw @157264–167350·341 行）。
+- 锚点回源教训：初稿 29 组疏文锚预检 18 miss（凭记忆失真）→全部改窗口逐字收割；`shcut` 重写 CJK-only 坐标→MAP 回映 raw 切片（保 U+2ED1「⻑」）；慧苑数级直证改 `hycut` 取 X0221（全档唯一见实证）。
+- 注入层 `_e9_inject.py` R1–R11：§2.3–2.12 全量入文（T6–T10 逐段全文＋疏解逐字片语＋体式观察）·§5.1 疏科长文全摘甲–庚·§6.1′ 六十全本逐行照录（4,870 CJK）·§7.5 数科 L1–L4＋图 7-1 倍增链 SVG（无损失）·附录七 研究线索 5 条·附录三/十 指针·**R11 附录四 澄观疏本科段全文照录（甲–壬九段 ~9,981 字·`_e9_pre3.py` 锚对预检 BAD=0）**。
+- 体量：**626→1,105→1,457 行**，越 ≥1,200 基线达标（memory ea9c73a9）。
+- 审计与闸门（观察到）：`_p9_11_audit.py` P9 **hit=25 miss=0**（R11 后复跑不变·P10 4/0·P11 8 miss 系既有工具假阳性）；build **50 files｜29,475,848B**（`huayan-guangmingjue-pin.html` 210,669B·SVG＋附录四入站）；六闸门全绿（check.py OK·test_pipeline ALL PASSED·verify_demo ALL CHECKS PASSED·verify_sources --fixme exit 0·audit_consistency exit 0·git diff --check 净）。
+**blocked**：无。
+**next**：L.188 第十部《菩萨问明品》充实（同提取→预检→注入→审计模式·立宗颂「亦無有體性」已订正·基线同样 ≥1,200）。
+**sources**：`_e9_dump.txt`·`_e9_win.txt`·`_e9_stats.txt`·`_e9_pre3.txt`·`_e9_inject_log.txt`（留痕·gitignore）· `T10n0279.xml` · `T1735_澄观_华严经疏.txt` · `X0221_慧苑_续华严略疏刊定记.txt` · `T09n0278_juan5.txt`。
