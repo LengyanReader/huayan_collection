@@ -338,10 +338,25 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-guangmingjue-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 13
+  icon: 📖
+  title: 九九华严第九品 光明觉品之拼读
+  title_sub: 华严经第九品·第二会·差别因果周·卷十三首品·足轮放光十段遍照倍增·一切处文殊十偈叹佛果德·三业意业遍觉·金轮放光·与六十《如来光明觉品第五》对读·注疏诸家会读（澄观·法藏·智俨·慧苑·李通玄·海云）·数据层·未完备已标明
+  updated_at: '2026-10-25'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第九部_光明觉品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 12
+  order_in_group: 14
   icon: 🏛
   title: 华严细读·第一会 菩提场会读判教篇
   title_en: 'Huayan Sutra Close Reading · Assembly One (Bodhimaṇḍa): Synthetic Reading and Doctrinal Classification'
@@ -387,7 +402,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 7 单品（依品次第 1→7）
+  summary: 华严经细读系列 · 3 总纲 + 9 单品（依品次第 1→9）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
@@ -426,6 +441,21 @@ articles:
   tags:
   - 华严经
   - 四圣谛品
+  - 细读
+  - 实叉难陀
+  - T10n0279
+- id: huayan_jing_guangmingjue_pin
+  title: 华严经细读·第九部　光明觉品
+  title_en: 'Huayan Sutra Close Reading Vol. 9: Chapter of Awakening by Light'
+  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第九部_光明觉品.md
+  category: huayan_close_reading
+  series: huayan_collection
+  volume: 9
+  locale: zh-CN
+  status: completed
+  tags:
+  - 华严经
+  - 光明觉品
   - 细读
   - 实叉难陀
   - T10n0279

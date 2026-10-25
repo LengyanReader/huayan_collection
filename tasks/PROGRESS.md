@@ -806,3 +806,14 @@
 **next**：第九部 光明觉品 四步流水线（STEP1 八十回源+疏主导变例 → STEP2 六十对读用新档 juan5 → STEP3 EN/画龙睛/附录九 → STEP4 收口）。
 
 **sources**：`_step0_probe_out.txt`·`_step0_probe2_out.txt`·`_step0_ingest_out.txt`（探测留痕·gitignore）· `data/references/cbeta/T09n0278.xml` · `scripts/ingest_sixty_juan.py` · `data/references/cbeta/README.md`。
+
+## 2026-10-25 · L.182 第九部《光明觉品》四步流水线成篇（用户「继续」·P9-10-11-12 联排 P9）
+**goal**：卷十三首品单品成篇（回源→结构→专篇→门禁）。
+**done**：
+- 回源：八十品界 @109946–115815；**品题征引陷阱锚规则**坐实并入 §7.4 脚本（「光明覺品第九」首见@95973系卷十二尾题连读假串；尾锚「菩薩問明品第十」须取第二见）；六十侧 STEP0 新档 juan5 逐字回源·真证品题《如来光明觉品第五》。
+- 结构：十段遍照倍增两译逐段对齐；颂起公式差异×10 坐实；异文 ~30 对各 1/1；底本自歧「金色世界」重出（全品 11 见·照底本不改）。
+- 专篇 618 行 §〇–§九全齐；慧苑 X0221 本品有记直证（解「恐不传」悬案·梵本题名「如來光明網能覺悟品」）；李通玄光位表阶位；数据层观察：CJK 4,358·含标点 5,198·照境目 23（初校 22 误已纠偏·数来自实测）。
+- 登记：yaml 新条 huayan-guangmingjue-pin（order 13・firsthui 12→14）；总纲四处同步；页面 127,838B 入站；六闸门 exit 0 观察到（build 47 files・test_pipeline/verify_demo ALL PASSED・verify_sources --fixme T0=0・audit exit 0・check.py OK）・git diff --check 净；本地 commit·**未 push**。
+**blocked**：无新增。Ep10 正行逐字俟后续批（讲记未上架至彼）；藏译德格版本机未入库〔待核〕。
+**next**：第十部 菩萨问明品（同卷十三·问明尾锚第二见规则已备·六十侧真证品题《菩薩明難品第六》）。
+**sources**：`_p9_cov_run.py`·`_p9_tiers.py`·`_p9_probe3/4`（探测留痕·gitignore）· `data/references/cbeta/T10n0279.xml` · `data/references/cbeta_txt/T09n0278_juan5.txt` · `T1735/T1733/T1732/X0221/T1739` · `data/catalog/chapters.yaml` order 9。
