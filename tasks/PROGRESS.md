@@ -909,3 +909,16 @@
 **blocked**：无。
 **next**：L.189 显式路径本地 commit（不 push）→ L.190 P12《贤首品》充实（偈颂全量·两万言级·起锚首见 @124463 防误二见）。
 **sources**：`_e11_dump.txt`·`_e11_vows.txt`·`_e11_stats.txt`·`_e11_win.txt`·`_e11_pre.txt`·`_e11_inject_log.txt`·`_e11_md_backup.md`（留痕·gitignore）· `T10n0279.xml` · `T1735_澄观_华严经疏.txt` · `T09n0278_juan6.txt`。
+
+## 2026-10-25 · L.190 第十二部《贤首品》充实批（E9-12 战役四批·收官）
+**goal**：P12 专篇充实至 ≥1,200 行基线（偈颂全量·两万言级·八十 717 颂行逐行入文·疏科长文全摘·六十全量 736 段对照·十门三昧颂数 SVG·数科 L1–L4·附录四照录）·程序化零手抄。
+**done**：
+- 提取层：`_e12_full.py`→`_e12_dump.txt`（品界 raw @124463–137665·CJK-only @90041–100269；bodyC 10,228）；`_e12_lines.py`→717 颂行（`_e12_lines.txt`·lg|idx|CJK|text）；`_e12_stats.py`→`_e12_stats.txt`（三 lg·CJK 10,037·行长 14×716＋13×1·又放光明37/信為道元1/三昧33/光明94/菩提心3/一切106；叠咏 28 处·前 20 门名；六十 CJK 10,159/raw 11,633/736 段）；疏窗 `_e12_win.txt` raw @195841–210565·496 行（T1735 止锚 `升須彌山頂`、经本止锚 `昇須彌山頂品第十三`）。品界坐标 raw-full 与 CJK-only 两空间绝不混用。
+- 本轮枢要教训：（a）**康熙/正字双口径**——winrange 行锚走 raw 保康熙（⽂/⼀/⾸/⾏），而 T 颂行、md 错本走 NFKD 归一后正字（「文分為五」「第一智慧廣大慧」），一类锚跨两口径需逐个实取；（b）**wr() 跳行锚**——joined W=''.join(WT) 行界有句号分隔，跨行必须用行内首现序列（「九頌校量勸持分」代「⼤⽂第三第⼀智慧下」）；（c）**GATE 颂数界**——逐门探针取实际 T 行内容（「嚴淨不可思議剎」L147 等），「俯同世間」无名号句→硬编 fix=229；（d）**R5 引文行审计口径**——嵌套全角括号 `（…（壬）…）` 会被审计正则先匹内层、留尾字粘连→改〔〕夹注；同一 `>` 块拆行时 rep 不重复上文已含之首句（所放光明名善現双写 trap）。
+- 预检 `_e12_pre.py` **BAD=0**（hit=745 miss=0·八检：行数 2,956·§2.7′ 存·颂行 1,453·六十 736·附录四 15 块·SVG·§7.5·审计口径预演）。
+- 注入 `_e12_inject.py` R1–R10（全程程序化零手抄）：R1 §2.7′ 717 颂行逐行照录（段题 甲–卯·BND 25 探针逐 assert）·R2 §5.1 疏科长文全摘甲–己六纲格·R3 §6.1′ 六十全本 736 段逐行·R4 §7.5 数科 L1–L4＋图 7-1 十门三昧颂数分箱 SVG（12 科段 GL）·R5 引文五处订正（顶针全式/边咒语/清淨门·bs 切片零手打）·R6 附录三指针·R7 附录四疏本科段全文照录 15 块链甲–辛·R8–R10 书目/图表/台账。
+- 体量：**453→2,956 行**，越 ≥1,200 基线（memory ea9c73a9·E9-12 战役四批最高）。
+- 审计与闸门（观察到）：`_p9_11_audit.py` CH 新增 P12（`body('賢首品第十二','昇須彌山頂品第十三')`·body80_CJK=10,228）**hit=745 miss=0**·P9 25/0·P10 21/0·P11 152/0 不变；build **50 files｜29,822,964B**（`huayan-xianshou-pin.html` 312,022B·附录四＋SVG 入站·index 卡片 45,298B）；六闸门全绿：check.py OK·test_pipeline ALL PASSED·verify_demo ALL CHECKS PASSED（含 ru-lai 反向 39/39 如期失败）·verify_sources --fixme exit 0·audit_consistency exit 0·git diff --check 净（仅 CRLF 警告）。
+**blocked**：无。
+**next**：L.190 显式路径本地 commit（不 push）→ E9-12 战役（L.187–L.190）P9–P12 四批全部收官；后续可开第三会 P13《升须弥山顶品》（与十住品合读）。
+**sources**：`_e12_dump.txt`·`_e12_lines.txt`·`_e12_stats.txt`·`_e12_win.txt`·`_e12_pre.py`·`_e12_inject.py`·`_e12_md_backup.md`（留痕·gitignore）· `T10n0279.xml` · `T1735_澄观_华严经疏.txt` · `T09n0278_juan6.txt`·`T09n0278_juan7.txt`。
