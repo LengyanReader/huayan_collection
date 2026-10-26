@@ -977,3 +977,23 @@
 **blocked**：无。
 **next**：L.193 显式路径本地 commit（不 push）→ L.194 P14《须弥顶上偈赞品》（附品·系 P13 重颂·品题含 anchor/space 标签需 SKIP 后取净 title·注明重颂↔长行互见）。
 **sources**：`_e13_dump.txt`·`_e13_stats.txt`·`_e13_sources.txt`·`_e13_inject_log.txt`·`_e13_md_backup.md`（留痕·不入库）· `T10n0279.xml` · `T09n0278`（卷七）· `T1735_澄观_华严经疏.txt` · `T1733`·`T1732`·`X0221`·`T1739`·`X0223`。
+
+## L.194 · 第十四部《须弥顶上偈赞品》充实批（2026-10-26）
+
+**goal**：附品体例成篇（P13 重颂·重颂↔长行互见）·六要素注入·引文回源 miss=0·六闸门绿·本地收口。
+
+**done**：
+- **提取层**：`_e14_full.py`→`_e14_dump.txt`（八十品界 CJK-only @100923–103433·2,510 含品题／净 2,500·22 单元＝1 head＋11 p＋10 lg·每 lg 恰 CJK200；六十侧界锚失败揭示 **T09n0278 本机仅入库卷一–七**·菩薩十住品第十一在卷八未入库→改卷末截止·〔跨卷未竟〕如实标不造；疏窗 T1735 NFKD @214595–221315·nsh 6,720／CJK 5,479）。
+- **统计层**：`_e14_stats.py`（两度口径修正：① lb 空格拆词→频计键全走 bodyC·切片走 CJK→raw MAPX；② 贪心正则吞并→名数三列按标点切分＋剥前缀）：三列名数 10/10/10·两译菩萨同名 10/10·世界同根 3·佛号同名 5·「普觀十方」×9「觀察十方」×1·「十妙頌」×1·句末。×106，×334。
+- **祖典窗**：`_e14_sources.py`（澄观全窗 raw＋五家探测）：李通玄《论》T1739／《合论》X0223／慧苑 X0221 三专段命中·法藏 T1733 智俨 T1732 散科直证。
+- **骨架与注入**：`华严经细读_第十四部_须弥顶上偈赞品.md` §〇–§九；`_e14_inject.py` 五道标记整段换入（§2.13 22 单元逐字·§5.1 澄观甲–庚长摘（来意／释名／宗趣／三分十同／放光六义／十段颂科·锚「初一是總」形制实探定锚）·§6.1′ 六十 109 段照录＋两译段次对应按·§7.5 四视角＋图 7-1 十菩萨十颂矩阵 SVG·附录四′ 疏窗原分行照录）→ 全篇 1,484 行。
+- **回源与审计（观察到）**：`_e14_check_quotes.py` 双轨（紧口径逐行＋宽口径无 bracket 内核·照录前缀 token 化·META 豁免）frags=202 miss=0；`_p9_11_audit.py` CH 新增 P14 **hit=21 miss=0**·P7–P13 无回归（87/57/25/21/152/745/14 旧值不动）。
+- **SSOT**：standalone_articles.yaml `huayan-xumidingjizan-pin`（order_in_group 19·summary 13→14 单品）；总纲四处（头行 L.194 成篇记录·§二 row14 ⬜→✅·§3.1 第十四部行·§六入口）；slug 实检零碰撞；第三会三扫描器已于 L.193 建（同目录无新增登记）。
+- **build**：52 files｜30,341,642 bytes·新建 `huayan-xumidingjizan-pin.html`。
+- **闸门**：check／test_pipeline／verify_sources --fixme／audit_consistency／git diff --check 皆 exit=0；verify_demo 结果以 `_e14_gates.txt` 实录为准。
+
+**blocked**：无。
+
+**next**：L.194 显式路径本地 commit（不 push）→ L.195 P15《十住品》（正说·最长·slug 另定防撞）。
+
+**sources**：`_e14_dump.txt`·`_e14_stats.txt`·`_e14_sources.txt`·`_e14_cq_miss.txt`·`_e14_inject_log.txt`·`_e14_md_backup.md`·`_p9_11_audit_out.txt`·`data/references/cbeta/T10n0279.xml`·`data/references/cbeta_txt/`（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan7）。
