@@ -1110,3 +1110,25 @@ done(
 **next**：第三会六品 verdict=**全部充实成篇·可收束**。第四会（P19 起·昇夜摩天宫品·差别因果周续）规划**俟用户显式确认**后方启动（不擅自开新会）。
 
 **sources**：`_h3_audit.py`·`_h3_audit_out.txt`·`_v_final_hui3.py`·`data/references/cbeta/T10n0279.xml`·`docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第{十三|十四|十五|十六|十七|十八}部_*.md`·第二会终审先例 `_v_final_hui2.py`/`_p9_11_audit.py`。
+
+---
+
+### L.201 · 藏线阶段二·内容扩充批（demo 页底本处理成果） · 2026-10-27
+
+**goal**：用户反馈 demo 页「无变化」（属实——L.200 为治理收敛、零内容改动），明确选择「内容扩充」→ 开藏线**阶段二·底本处理**（Elevated 档），把真实、可回源的底本处理成果落地到页。
+
+**done**（观察到）：
+- **重大发现（可回源）**：德格 Toh 44（035-0038）文本内嵌 `{T44-1}…{T44-45}` 东北编号品目标记，**恰好 45 个**（与各卷分布 035:31/036:8/037:7），与已知藏译 45 品结构完全吻合——品目清单可**逐字机械提取**，无需臆造。
+- **提取器 `workspace/.../tools/extract_tibetan_toc.py`** → 产物 `data/alignment/tibetan-derge-toc.json`：
+  - 45 品 TOC：品号·卷号·起始叶码 `[Na.b]`·藏文开篇种子（均 byte 回源·去叶码/编号标记后节选）；
+  - 6 底本 sha256 台账：德格 035-038（3,417,558/3,230,925/3,365,546/3,170,453 B）+ T10n0279（4,579,678 B）+ T09n0278（4,923,364 B）；
+  - 结构事实**机器自证**（`last_pin` 由中文数字转整取最大）：八十末=〈入法界品第三十九〉=39、六十末=〈入法界品第三十四〉=34（初版取最大因中文数字排序错→修 `_cn2int`）。
+- **注入器 `inject_toc_to_demo_page.py`**：以 json 往返安全改写 HTML 内 `ARTICLE.doc_md`（防手拼 `\n` 转义事故·f-string 字面 `{T44-N}` 已转义为 `{{}}`）；新增 §1.1 sha 台账、§2 45 品目录表（保留原对读示例·重编节号）；页 **11,662→22,296 B**·version v0.1→v0.2。
+- **yaml 同步**：`standalone_articles.yaml` title_sub v0.1→v0.2（与页内不漂移）；skip_html 通道下 build 不重生正文页（实测注入内容仍在）。**不新增 updated_at**（页头空时间带合规）。
+- **闸门**：`build` 57 files｜**31,346,919 B**（较 L.200 +18,207）；`test_pipeline`/`verify_demo`/`verify_sources --fixme`/`audit_consistency`/`.harness/check.py` **exit 0×5**；`git diff --check` 全仓 EXIT=2（均为 P17 等遗留脏文件 `[SH-XXXX]` 行尾空格·非本批）→ 本批 6 文件 `git diff --cached --check` **EXIT=0** 自证清白。
+
+**blocked**：无。`index.html` 内含他卡字符数 ±1 抖动（423,299↔300、66,890↔889），系 build 对当前工作区（含 P17 等未提交 md）的**实测观察**，非伪造；本批不裹入那些 md 本体。
+
+**next**：阶段三（模型选型评估）、阶段四（逐段内容比对→重建汉藏逐品对应·现在均〔待核〕）、阶段五（完整对读界面）俟用户确认再开。可选近期：补全 BDRC Choni 剩余卷作旁校·或就 45 品抽若干代名相密集处做人工初对。
+
+**sources**：`data/alignment/tibetan-derge-toc.json`·`workspace/tibetan-avatamsaka-translation/tools/{extract_tibetan_toc,inject_toc_to_demo_page}.py`·`_h3page_md_backup.html`（原页备份）·德格 `data/references/tibetan/derge_kangyur/avatamsaka/035-038`·CBETA `T10n0279/T09n0278`·`CLAUDE.md` L7（Toh44 45品 vs 汉 39品既有陈述）。
