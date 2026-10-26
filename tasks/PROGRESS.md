@@ -997,3 +997,21 @@
 **next**：L.194 显式路径本地 commit（不 push）→ L.195 P15《十住品》（正说·最长·slug 另定防撞）。
 
 **sources**：`_e14_dump.txt`·`_e14_stats.txt`·`_e14_sources.txt`·`_e14_cq_miss.txt`·`_e14_inject_log.txt`·`_e14_md_backup.md`·`_p9_11_audit_out.txt`·`data/references/cbeta/T10n0279.xml`·`data/references/cbeta_txt/`（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan7）。
+
+## L.195 · 第十五部《十住品》成篇批（2026-10-26）
+
+**goal**：第三会正说·十住位本尊成篇（P15·品界CJK5589·19单元·长行2749＋重颂百颂2800）·六要素注入·引文回源 miss=0·六闸门绿·本地收口。
+
+**done**：
+- **提取层**：_e15_full.py→_e15_dump.txt（八十品界 CJK-only @103433–109022·body80 5,589·19 单元＝1 head＋15 p＋1 lg＋1 byline＋1 短 p「法慧菩薩言」；六十卷八全本入库·body80 5,589 assert PASS·P60 221 段 assert PASS·lg 百颂颂行 100 行 assert PASS）；_e15_stats.py（长行 2749·重颂 2800·爾時×3·佛子×15·双十矩阵各10×10·颂行均七言）。_e15_sources.py 祖典窗口（澄观T1735 @221315–234245 nsh 12930·五家专段全命中：法藏T1733·智俨T1732·慧苑X0221七分科·李通玄T1739·合论X0223·六十品题T09n0278卷八）。
+- **骨架正文**：§〇–§九 全九章·_e15_check_quotes.py 双轨紧/宽口径 frags=72 hit=72 miss=0（初稿 16 miss·含康熙部首NFKD假匹配／伪造短语·全部回源订正·逐一经 _e15_probe2.py/_e15_probe3.py raw 验证后修正）。
+- **六要素注入 _e15_inject.py**（nsh 1:1 坐标·16 段锚·P60 221段·WIN 12930）：R1 §2.13 全文19单元逐段入文·R2 §5.1 疏科长文全摘甲–癸（来意·释名·宗趣·释文广科·慧苑七分·瑜伽四十七·十段别释各·重颂分·锚定 nsh 唯一）·R3 §6.1′ 六十卷八全本 221 段照录·R4 §7.5 数科四视角＋图 7-1 十住双十矩阵 SVG·R5 附录四′ 疏窗 raw 全文照录·R6 §九台账。nest() 函数（照录区内「」→『』防双轨误判）·注入后 frags=91 hit=91 miss=0·全篇 2,009 行（越 ≥1,200 基线）。
+- **SSOT**：standalone_articles.yaml huayan-shizhu-pin（order_in_group 20·summary 14→15 单品）；总纲四处（头行 L.195 成篇·§二 row15 ⬜→✅·§3.1 第十五部行·§六入口）；slug 防撞实检：shizhu-miaoyan（世主妙严）≠huayan-shizhu-pin·33 IDs 全唯一·零碰撞。
+- **build**：53 files｜30,583,545 bytes·新建 huayan-shizhu-pin.html。
+- **闸门（观察到）**：check.py·test_pipeline·verify_demo·verify_sources·audit_style·audit_consistency 皆 exit=0。
+
+**blocked**：无。
+
+**next**：L.195 显式路径本地 commit（不 push）→ L.196 P16《梵行品》。
+
+**sources**：_e15_dump.txt·_e15_stats.txt·_e15_sources.txt·_e15_cq_miss.txt·_e15_inject_log.txt·_e15_md_backup.md·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan8）。

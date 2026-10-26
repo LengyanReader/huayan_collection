@@ -428,6 +428,21 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-shizhu-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 20
+  icon: 📖
+  title: 九九华严第十五品 十住品之拼读
+  title_sub: 华严经第十五品·第三会正说·卷十六–十七·品界CJK5589（长行2749+重颂2800）·法慧菩萨承佛威力入无量方便三昧·千佛刹微尘数同名诸佛与十智摩顶·总标十住（发心·治地·修行·生贵·具足方便·正心·不退·童真·王子·灌顶）·各双列十法·瑞应证成（一万佛刹六动·同名菩萨来证）·重颂百颂七言·平文器19单元·与六十《菩薩十住品第十一》卷八全本对读（220段·正文CJK5659·七名全同三名小异）·注疏五家齐备（澄观四门·法藏四释·智俨五门·慧苑七分科·李通玄两家）·六要素齐备·数据层实测·未完备已标明
+  updated_at: '2026-10-26'
+  doc: docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第十五部_十住品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
@@ -477,7 +492,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 14 单品（依品次第 1→14）
+  summary: 华严经细读系列 · 3 总纲 + 15 单品（依品次第 1→15）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
