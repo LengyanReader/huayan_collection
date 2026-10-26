@@ -131,3 +131,4 @@
 
 L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品·P13重颂·八十 CJK2,510（净2,500·22单元·每lg恰200）·三列名数矩阵10/10/10·六十卷七存段109段1,421字照录（同名10/10·同根3·佛号5·跨卷未竟卷八未入库如实标）·澄观疏窗三分十段长摘＋附录四′照录·李通玄论／合论／慧苑专段·注器五道注入全篇1,484行·_e14_check_quotes frags=202 miss=0·_p9_11_audit P14 hit=21 miss=0·build 52 files·六闸门绿·SSOT standalone/总纲四处·slug huayan-xumidingjizan-pin 防撞·本地commit不push。
 | 2026-10-26 | agent | **L.195 · 第十五部《十住品》成篇批** | 用户「继续」（达标基线 memory ea9c73a9：>=1,200 行） | done(提取层 _e15_full 品界CJK5589·19单元·body80 assert PASS·P60 221段·lg百颂 PASS；统计层 _e15_stats 长行2749重颂2800；祖典窗 五家全命中·澄观T1735 nsh12930 疏窗；骨架正文 §0-§9 引文回源 frags=72 miss=0 含16处订正·NFKD部首/伪造短语·probe验证后改；注入 _e15_inject 六要素 R1-R5 nsh坐标1:1·16段锚·nest函数·全篇2009行·post frags=91 miss=0；SSOT standalone huayan-shizhu-pin order20·总纲四处·slug 33唯一零碰撞；build 53files 30,583,545B；六闸门全绿 exit=0。**blocked**：无。**next**：L.195 commit(不push)->L.196 P16梵行品。 |
+| L.196 | P16 梵行品充实批·成篇 | miss=0·1669行·54files | 引文回源修 U+8129 修 / U+2EC4 radical / … elision |

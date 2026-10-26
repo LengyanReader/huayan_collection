@@ -1015,3 +1015,23 @@
 **next**：L.195 显式路径本地 commit（不 push）→ L.196 P16《梵行品》。
 
 **sources**：_e15_dump.txt·_e15_stats.txt·_e15_sources.txt·_e15_cq_miss.txt·_e15_inject_log.txt·_e15_md_backup.md·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan8）。
+
+---
+
+### L.196 · P16《梵行品》充实批 · 2026-10-26
+
+**goal**：第十六部《梵行品》充实批成篇（卷十七·第三会胜进·纯长行无偈颂·CJK 923·5 单元·六要素注入≥1,200 行）。
+
+**done**：
+- 提取层 _e16_full.py（品界 923·5 units·六十 993·5 lines·疏窗 5,044 nsh）· _e16_stats.py（梵行×25·法×27·纯长行）· _e16_sources.py（五家祖典窗口·慧苑 7,657 最长）
+- 骨架正文 249→1,669 行（§〇–§九·INJECT:R1–R5 六要素注入完成）
+- 引文回源 _e16_check_quotes.py frags=33 hit=33 miss=0（X0221 用 U+8129 修·T1735 用 …… 处理揀上淨行立梵行名跳跃·⻄ U+2EC4 radical 问题用截取处理）
+- SSOT 登记 standalone_articles.yaml (id huayan-fanxing-pin order 21) + 系列总纲四处
+- Build 54 files 30,739,943 bytes（+1 huayan-fanxing-pin.html）
+- 六闸门 EXIT=0 全通过（build·test_pipeline ALL PASSED·verify_demo ALL CHECKS PASSED·verify_sources·audit_consistency·audit_style·check.py OK·git diff --check）
+
+**blocked**：无。
+
+**next**：L.196 显式路径本地 commit（不 push）→ L.197 P17《初发心功德品》。
+
+**sources**：_e16_dump.txt·_e16_stats.py·_e16_sources.txt·_e16_cq_miss.txt·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan8）。

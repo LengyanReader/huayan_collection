@@ -443,6 +443,22 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-fanxing-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 21
+  icon: 📖
+  title: 九九华严第十六品 梵行品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Sixteen: The Practice of Purity'
+  title_sub: 华严经第十六品·第三会胜进·卷十七·品界CJK923（纯长行·无偈颂·5单元）·正念天子问·法慧推徵十法中梵行不可得·九喻遮遣·修十种法（如来十力·起大慈悲·了如幻如梦）·初发心时即得阿耨多羅三藐三菩提·与六十卷八全本对读（5行·CJK993·口/語异译）·注疏五家齐备·六要素齐备·数据层实测
+  updated_at: '2026-10-26'
+  doc: docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第十六部_梵行品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
@@ -492,7 +508,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 15 单品（依品次第 1→15）
+  summary: 华严经细读系列 · 3 总纲 + 16 单品（依品次第 1→16）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
