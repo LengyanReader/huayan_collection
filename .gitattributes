@@ -4,3 +4,5 @@
 data/references/cbeta/*.xml -text -whitespace
 # cbeta_txt 平文抽卷（承同一保真原则·L.181 STEP0 起用）：禁 eol 规范化，SHA 可复核
 data/references/cbeta_txt/*.txt -text -whitespace
+# 德格版藏文底本（Toh 44 · avatamsaka 035-038 等）：逐字保真·一手可校验（承 CBETA 同例·L.200 藏译对读线入库）
+data/references/tibetan/** -text -whitespace

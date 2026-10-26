@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藏汉英对读 · 大方广佛华严经（德格藏文本）初探 — 独立文章</title>
+<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>藏汉英对读 · 大方广佛华严经（德格藏文本）初探</h1>
+  <span class="art-updated"></span>
+  <button id="share-link" class="share-btn" onclick="copyPageLink();return false" title="复制本页独立地址">🔗 分享地址</button>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
+  <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
+</header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+  ⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
+<div style="padding:5px 16px;border-bottom:1px solid var(--line);font-size:0.76em;display:flex;gap:16px;align-items:center;background:rgba(94,139,158,0.06);flex-wrap:wrap">
+  <a href="javascript:history.back()" style="color:var(--blue);text-decoration:none;font-weight:600">← 返回上一步</a>
+  <span style="opacity:0.45">|</span>
+  <a href="../tabs/gap.html" style="color:var(--blue);text-decoration:none">返回到：华严文献 · 雅思渊才 ›</a>
+  <span style="margin-left:auto;opacity:0.75;color:var(--text2)"><a href="../index.html" style="color:var(--text2);text-decoration:none">首页 ›</a></span>
+</div>
+</div>
+<main class="content content-article" id="article-root"></main>
+<div id="share-toast" style="position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(31,36,42,0.96);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82em;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.3)"></div>
+
+<script src="../js/common.js"></script>
+<script>
+function copyPageLink(){
+  var url = window.location.href;
+  var toast = document.getElementById('share-toast');
+  function done(msg, ok){
+    if(toast){ toast.textContent = msg; toast.style.display='block'; setTimeout(function(){ toast.style.display='none'; }, 2600); }
+    return ok;
+  }
+  function fallback(u){
+    var ta = document.createElement('textarea'); ta.value = u; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done('✅ 本页独立地址已复制：' + u, true); }
+    catch(e){ done('📋 请手动复制地址：' + u, false); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(function(){ done('✅ 本页独立地址已复制：' + url, true); },
+      function(){ fallback(url); });
+  } else {
+    fallback(url);
+  }
+}
+</script>
+
+<script>
+var ARTICLE = {
+  "id": "tibetan-avatamsaka-alignment-demo",
+  "file": "articles/tibetan-avatamsaka-alignment-demo.html",
+  "title": "藏汉英对读 · 大方广佛华严经（德格藏文本）初探",
+  "title_sub": "Tibetan-Chinese-English Parallel Reading Demo · Derge Kangyur 035-038 (Toh 44) · Cross-alignment to T09n0278 / T10n0279 / T10n0293",
+  "icon": "📜",
+  "version": "v0.1 Demo",
+  "meta": "底本：德格藏经《大方广佛华严经》（Toh 44，藏经目录号 035-038）\n工作区：workspace/tibetan-avatamsaka-translation/\n目标：建立藏、汉（六十华严、八十华严、四十华严）、英对读框架",
+  "doc": "",
+  "doc_md": "# 藏汉英对读 · 大方广佛华严经（德格藏文本）初探\n\n> **说明**：本页为藏汉英对读的 Demo，旨在展示对读结构设计思路。翻译采用本地模型 `buddhist-nlp/mitra-qwen35-translate`（9B）初步试译，尚未人工校对，仅供技术验证用。\n\n## 1. 底本概况\n\n| 版本 | 文本 | 状态 | 备注 |\n|---|---|---|---|\n| **藏文（主底本）** | 德格版《大方广佛华严经》（*Tohoku* 44） | `data/references/tibetan/derge_kangyur/avatamsaka/`（035-038，4 卷） | **完整**，包含《入法界品》（Gaṇḍavyūha）。共 115 *bam po*。 |\n| **汉文（对勘）** | 《大方广佛华严经》六十卷（*T09n0278*） | `data/references/cbeta/T09n0278.xml` | 对应藏本主要部分 |\n| **汉文（对勘）** | 《大方广佛华严经》八十卷（*T10n0279*） | `data/references/cbeta/T10n0279.xml` | 最通行的中文译本，本项目主要研读对象 |\n| **汉文（对勘）** | 《大方广佛华严经》四十卷（*T10n0293*） | *待补充* | 入法界品等相关部分 |\n\n## 2. 对读示例（首段试译）\n\n以下选取德格藏本卷一（035）开篇经文，展示拟议的对读呈现格式。\n\n### 2.1 藏文原文（Derge 035）\n\n```tibetan\n།འདི་སྐད་བདག་གིས་ཐོས་པའི་དུས་གཅིག་ན།\nབཅོམ་ལྡན་འདས་ཐོག་མ་མངོན་པར་སངས་རྒྱས་པ།\nསངས་རྒྱས་ཀྱི་ཆོས་ཐམས་ཅད་ཤིན་ཏུ་རྣམ་པར་སངས་རྒྱས་པའི་ཐུགས་མངའ་བ།\n```\n\n### 2.2 藏译→中文（模型试译，MITRA）\n\n> 如是我闻，一时，世尊最初成正等觉，心具一切佛法，已圆满证悟。\n\n### 2.3 藏译→英文（模型试译，MITRA）\n\n> Thus have I heard. At one time, the Blessed One had just attained unsurpassed, complete enlightenment. His mind possessed all the qualities of the Buddha and had fully realized them.\n\n### 2.4 汉译对勘（八十华严 T10n0279）\n\n> 如是我聞：一時，佛在摩竭提國，阿蘭若法菩提場中，始成正覺。\n\n### 2.5 汉译对勘（六十华严 T09n0278）\n\n> 如是我聞：一時，佛在摩竭提國菩提樹下，成佛未久。\n\n## 3. 对读结构设计\n\n拟采用以下多栏对读布局：\n\n| 栏目 | 用途 |\n|---|---|\n| **藏文原文** | 德格底本原字形（保留 *tsheg*、句读，逐字可回溯） |\n| **藏文分词/直译** | 逐词对应，标注助词、名词、动词等 |\n| **中文译文（新译）** | 基于藏文本的新译（模型辅助 + 人工校对） |\n| **英文译文（新译）** | 英文对照翻译 |\n| **八十华严（T10n0279）** | 实叉难陀译，对勘异同 |\n| **六十华严（T09n0278）** | 佛驮跋陀罗等译，对勘异同 |\n| **四十华严（T10n0293）** | 般若译，对勘异同（如有对应） |\n| **校记** | 异文、术语、存疑（〔待核〕）、推断（〔本文判断〕） |\n\n## 4. 技术路线\n\n1. **底本规范化**：从德格藏文 `.txt` 提取经文，保留行号、页码信息\n2. **品目对照**：建立藏汉品目对应表，厘清 *Toh 44* 各 *bam po* 与汉译《华严经》品目的对应关系\n3. **AI 辅助翻译**：使用 `hy_py312` 环境下的 `mitra-qwen35-translate` 进行初译\n"
+};
+</script>
+<script>
+function renderArticle(){
+  var a=(typeof ARTICLE!=='undefined')?ARTICLE:null;
+  var root=document.getElementById('article-root');
+  if(!root){return;}
+  if(!a){root.innerHTML='<p style=font-size:0.85em;color:var(--red)>文章数据缺失（ARTICLE 未定义）。</p>';return;}
+
+  var embed=(typeof _mdDocEmbed==='function')?_mdDocEmbed(a.doc_md||''):{html:'',toc:[]};
+  var h='';
+
+  h+='<div style="font-size:0.74em;color:var(--text2);margin-bottom:12px;">';
+  h+='<a href="../index.html" style="color:var(--blue);text-decoration:none">主页</a> › ';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' › <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  h+='<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
+  h+='  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页</div>';
+  h+='  <h2 data-skip-toc="1" style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
+  if(a.title_sub)h+='  <div style="font-size:0.85em;color:var(--text2)">'+a.title_sub+'</div>';
+  if(a.version)h+='  <div style="font-size:0.78em;color:var(--text2);margin-top:6px">'+a.version+'</div>';
+  if(a.back && a.back.tab){
+    h+='  <a href="../tabs/'+a.back.tab+'.html" style="font-size:0.75em;color:var(--blue);margin-top:10px;display:inline-block">← 返回 '+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  if(a.meta){
+    h+='<div class="section" style="border-left:4px solid var(--gold)" data-chrome="1"><h2>📌 导览</h2>';
+    h+='<p style="font-size:0.8em;line-height:1.9;white-space:pre-line">'+(typeof _mdInline==='function'?_mdInline(a.meta):a.meta)+'</p></div>';
+  }
+
+  if(embed.toc.length){
+    h+='<div class="section" data-chrome="1"><h2>🧭 本文目录</h2>';
+    h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75">';
+    embed.toc.forEach(function(t){
+      var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
+      h+='<div style="'+pad+'"><a href="#'+t.id+'" style="color:'+(t.lv===2?'var(--gold)':'var(--text2)')+';text-decoration:none">'+t.text+'</a></div>';
+    });
+    h+='</div></div>';
+  }
+
+  h+='<div class="section" style="border-left:4px solid var(--gold)" id="article-full">';
+  h+='<h2 data-skip-toc="1" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span></h2>';
+  h+=embed.html;
+  h+='</div>';
+
+  h+='<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' · <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  root.innerHTML=h;
+
+  if(typeof _markTermRefs==='function' && document.getElementById('article-full')){
+    _markTermRefs('#article-full');
+  }
+  if(typeof initDocImages==='function' && document.getElementById('article-full')){
+    initDocImages('#article-full');
+  }
+  if(typeof _initArticleENMode==='function') _initArticleENMode();
+  if(typeof _foldDoc==='function'){
+    try{ _foldDoc('#article-full', {noBar:true}); }catch(e){}
+  }
+  if(typeof _installPageBar==='function'){
+    try{ _installPageBar({mountSel:'#article-full', rootSel:'#article-root'}); }catch(e){}
+  }
+  if(location.hash){
+    setTimeout(function(){
+      var el=document.getElementById(location.hash.slice(1));
+      if(el){
+        if(typeof _reveal==='function')window._reveal(el);
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    },80);
+  }
+}
+
+if(document.readyState!=='loading'){renderArticle();}
+else{document.addEventListener('DOMContentLoaded',renderArticle);}
+</script>
+</body>
+</html>

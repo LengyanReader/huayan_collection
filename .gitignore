@@ -71,3 +71,7 @@ _bdrc_pdfs/
 
 _brave_profile/
 
+# 藏文参考文献（L.200 藏译对读线）：只入 .txt/.md/.json 文本底本（PLAN.md「只处理 .txt·不涉及 images/」）；扫描图与 zip 不入仓
+data/references/tibetan/**/*.jpg
+data/references/tibetan/**/*.zip
+

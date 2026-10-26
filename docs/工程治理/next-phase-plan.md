@@ -100,7 +100,7 @@
 - **⑥ 其他订正**——3.16「除组十一、组十二末偈外」之**无据豁免已删**（第一／第二人称起颂确实三处，group 4／10 之首、group 7 之末，无例外条款），**中英文块同步改**（EN 段并补 124 王／123 偈之计数实证与「頌N 分段」方法存记）；组九梵名 `Nāgapratyakṣa?` 之**问号名相**改为按 `T279`「復有無量須夜摩天王」立说，并如实标明「須夜摩」与 *Nāgapratyakṣa* 义不合、历来有异说、**本篇不取定译**。
 - **⑦ 验证**——build **36 files｜23,933,880 B**；**test_pipeline ✅ ALL TESTS PASSED**；**verify_demo ✅ ALL CHECKS PASSED**（含 `js/common.js` node --check）；headless Chrome（CDP）实测 `articles/shizhu-miaoyan.html`：`ARTICLE_GRAPH` 39 节点、术语标注 **673** 处、`img.doc-img` **3/3**（`plainImgs` 0）、`.en-line` 50 处、`<h3>` 69（含「▾1.6 本批校勘记」）、`<table>` 39、**0 JS 异常**；**点图开灯箱实测 `display:block` 且带原图链接**（`/thumb/` 已还原为 `/` 原图）。
 - **⑧ 工具待续**：`cbeta_char_map.json` 缓存**须随 `EXTRA_CANDIDATES` 变更而失效重算**（本批已因旧缓存把「骄→憍」「睹→覩」「疏→踈」误记为「经中无此字」，删表重建后始正）；`DEFAULT_XML` 已改为「环境变量 → 仓库 `data/references/cbeta/` → 旧临时路径」三级回退；**本工具当可用于其他经论细读篇目**（凡标 `> **经文**` 者），篇目清单与底本差异表待续建。
-- **⑨ 待续梯队**：①**藏译华严对读**之规划与数据源（`T279` 之外，需取藏文 `sde dga'`/`Tengyur` 对应品，**尚未启动**）；②卷三至卷五及后续品目续以本工具回源；③实体百科 MVP（`data/encyclopedia/beings.yaml` 待建，`import_entities()`／`load_entity_registry()`／`ENTITY_REGISTRY` 内嵌待接）；④`docs/tabs/` 陈旧副本处置（承 `L.84` ⑨）。
+- **⑨ 待续梯队**：①**藏译华严对读**之规划与数据源（`T279` 之外，需取藏文 `sde dga'`/`Tengyur` 对应品）——**已启动（L.200·2026-10-26）**：德格版 Toh 44（035-038 四卷·115 bam po）底本已入库 `data/references/tibetan/`，对读框架 PoC 已建（`workspace/tibetan-avatamsaka-translation/docs/PLAN.md` 五阶段·demo 页 `articles/tibetan-avatamsaka-alignment-demo.html` v0.1·MITRA 本地试译未校对）；品目对照、模型选型评估、逐字对勘属阶段二至四**未启动**；②卷三至卷五及后续品目续以本工具回源；③实体百科 MVP（`data/encyclopedia/beings.yaml` 待建，`import_entities()`／`load_entity_registry()`／`ENTITY_REGISTRY` 内嵌待接）；④`docs/tabs/` 陈旧副本处置（承 `L.84` ⑨）。
 
 ---
 

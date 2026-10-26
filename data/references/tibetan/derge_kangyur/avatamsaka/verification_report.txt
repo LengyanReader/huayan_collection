@@ -1,0 +1,17 @@
+=== Derge Kangyur Avatamsaka E-text Verification (COMPLETE) ===
+
+vol 035: bytes=3417558 chars=1190016 bam_po=29 phal_title=2 gandhavyuha=False
+vol 036: bytes=3230925 chars=1125843 bam_po=29 phal_title=5 gandhavyuha=False
+vol 037: bytes=3365546 chars=1169930 bam_po=32 phal_title=9 gandhavyuha=False
+vol 038: bytes=3170453 chars=1101997 bam_po=25 phal_title=3 gandhavyuha=True
+
+TOTAL: files=4 bytes=13184482 chars=4587786 bam_po=115
+
+CONCLUSION: COMPLETE
+- 4 volumes (035-038) of the Derge Kangyur cover the full Avatamsaka (Toh 44).
+- Gaṇḍavyūha (སྡོང་པོས་བརྒྱན) is present in volume 038 (last volume).
+- Total: 13.2 MB, 4.6M chars, 115 bam po markers.
+- This complements the BDRC Choni Kangyur Volume 5 e-text (3.1 MB, partial).
+
+Source: Esukhia Derge Kangyur, https://github.com/Esukhia/derge-kangyur
+License: Public Domain

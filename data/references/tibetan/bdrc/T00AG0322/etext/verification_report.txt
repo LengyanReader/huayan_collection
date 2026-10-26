@@ -1,0 +1,55 @@
+=== Tibetan Avatamsaka E-text Completeness Verification ===
+File: data/references/tibetan/bdrc/T00AG0322/etext/avatamsaka_etext_bo_sa_zh.txt
+Size: 3134040 bytes
+Chars: 1071718
+Lines: 16767
+
+=== CONCLUSION: PARTIAL (single volume, not complete sutra) ===
+
+Evidence:
+1. bam po (volume) markers: 28 occurrences, 24 unique patterns
+   Highest bam po number found: 26 (བམ་པོ་ཉི་ཤུ་དྲུག)
+   The full Avatamsaka has ~45 bam po (chapters). This file covers only ~26.
+
+2. Gaṇḍavyūha (རྒྱན་སྟུག་པོ) phrase count: 0
+   Gaṇḍavyūha is a late chapter of the Avatamsaka. Its absence confirms
+   the file does not contain the full sutra.
+
+3. File size: 3.1 MB. The full 6-volume Avatamsaka e-text would be
+   approximately 15-20 MB. This file is roughly 1/6 of the expected size.
+
+4. The BDRC e-text viewer showed "第5卷" (Volume 5) when opened,
+   confirming the downloaded e-text covers only one volume.
+
+=== bam po markers found ===
+  བམ་པོ་་བཅོ་
+  བམ་པོ་གཉིས་པ།
+  བམ་པོ་གསུམ་པ
+  བམ་པོ་ཉི་ཤུ་
+  བམ་པོ་ཉི་ཤུ་
+  བམ་པོ་ཉི་ཤུ་དྲུག་
+  བམ་པོ་ཉི་ཤུ་པའོ༎
+  བམ་པོ་ཉི་ཤུ་བཞི་
+  བམ་པོ་ཉི་ཤུ་ལྔ་པ།
+  བམ་པོ་དགུ་པ།
+  བམ་པོ་དང་པོའོ།
+  བམ་པོ་དྲུག་པ།
+  བམ་པོ་བཅུ་
+  བམ་པོ་བཅུ་
+  བམ་པོ་བཅུ་གསུམ་པདེ་ནས་བཅོ
+  བམ་པོ་བཅུ་དགུ་
+  བམ་པོ་བཅུ་དྲུག་
+  བམ་པོ་བཅུ་པ།
+  བམ་པོ་བཅུ་བཞི་
+  བམ་པོ་བཅོ་ལྔ་པ།
+  བམ་པོ་བདུན་པ།
+  བམ་པོ་བཞི་པ།
+  བམ་པོ་བརྒྱད་པ།
+  བམ་པོ་ལྔ་པ།
+
+=== Next steps ===
+1. Open BDRC e-text record bdr:MW1PD107129_EADECA in Brave.
+2. Check the volume tabs in the e-text viewer for volumes 1-6.
+3. Download each missing volume via "下载Etext".
+4. Save with volume-numbered filenames (e.g., vol_01.txt, vol_02.txt, ...).
+5. Concatenate and re-verify (expect ~15-20 MB, 45 bam po markers).

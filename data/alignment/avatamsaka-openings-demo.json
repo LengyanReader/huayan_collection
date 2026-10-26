@@ -1,0 +1,20 @@
+{
+  "title": "藏汉英对读 Demo - 开篇段落",
+  "units": [
+    {
+      "unit_id": "u1",
+      "label": "经文开篇（共通起首）",
+      "tibetan_text": "།འདི་སྐད་བདག་གིས་ཐོས་པའི་དུས་གཅིག་ན།\nབཅོམ་ལྡན་འདས་ཐོག་མ་མངོན་པར་སངས་རྒྱས་པ།\nསངས་རྒྱས་ཀྱི་ཆོས་ཐམས་ཅད་ཤིན་ཏུ་རྣམ་པར་སངས་རྒྱས་པའི་ཐུགས་མངའ་བ།",
+      "tibetan_gloss": "如是我闻，一时，世尊最初成正等觉，心具一切佛法，已圆满证悟。",
+      "new_chinese": "如是我闻，一时，世尊最初成正等觉，心具一切佛法，已圆满证悟。（模型试译，未校对）",
+      "new_english": "Thus have I heard. At one time, the Blessed One had just attained unsurpassed, complete enlightenment. His mind possessed all the qualities of the Buddha and had fully realized them.（模型试译，未校对）",
+      "t09_text": "如是我聞：一時，佛在摩竭提國菩提樹下，成佛未久。（六十华严 T09n0278）",
+      "t10_text": "如是我聞：一時，佛在摩竭提國，阿蘭若法菩提場中，始成正覺。（八十华严 T10n0279）",
+      "t0293_text": null,
+      "notes": [
+        "〔待核〕藏译开篇与汉译开篇场所、时节表述存在差异。",
+        "〔本文判断〕需进一步比对藏译与汉译的经文脉络，确定更精确的对齐范围。"
+      ]
+    }
+  ]
+}

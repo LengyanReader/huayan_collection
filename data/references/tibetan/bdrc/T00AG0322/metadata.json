@@ -1,0 +1,22 @@
+{
+  "resource_id": "bdr:T00AG0322",
+  "topic": "Avatamsaka Sutra (华严经)",
+  "instance": "bdr:MW1PD96685",
+  "instance_name": "Choni Kangyur (co ne bka' 'gyur)",
+  "section": "bdr:MW1PD96685_S0010",
+  "section_label": "phal chen (华严经)",
+  "volumes": [
+    {"vol_number": 89, "instance_id": "I1PD105152", "total_pages": 568},
+    {"vol_number": 90, "instance_id": "I1PD105153", "total_pages": 574},
+    {"vol_number": 91, "instance_id": "I1PD105154", "total_pages": 592},
+    {"vol_number": 92, "instance_id": "I1PD105155", "total_pages": 526},
+    {"vol_number": 93, "instance_id": "I1PD105156", "total_pages": 594},
+    {"vol_number": 94, "instance_id": "I1PD105157", "total_pages": 574}
+  ],
+  "total_pages": 3428,
+  "iiif_url_template": "https://iiif.bdrc.io/bdr:{vol_id}::bdr:{vol_id}{page:04d}.jpg/full/full/0/default.jpg",
+  "download_date": "2026-10-24",
+  "source": "BDRC (Buddhist Digital Resource Center) - https://library.bdrc.io/show/bdr:T00AG0322",
+  "access": "AccessOpen",
+  "license": "See BDRC access policies: https://www.bdrc.io/access-policies/"
+}

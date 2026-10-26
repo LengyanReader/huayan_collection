@@ -1076,3 +1076,19 @@ done(
 **next**：L.198 显式路径本地 commit（不 push）→ L.199 第三会六品（P13–P18）收尾终审（三探针扩 P13–P18·全绿出 verdict → 经用户确认后方规划第四会）。
 
 **sources**：_e18_dump.txt·_e18_stats.txt·_e18_sources.txt·_e18_cq_miss.txt·_e18_md_backup.md·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan8）。
+
+---
+
+### L.200 · 藏译华严对读线 MVP·治理收敛批（PoC 入库） · 2026-10-26
+
+**goal**：把今日新建的「藏汉英对读」PoC（demo 页 + workspace + 对齐数据）纳入 harness 治理轨道——消除心跳双源漂移、底本入库保真、demo 页正式登记入站（用户 R4 经 AskUserQuestion 三题显式确认·decisions #10）。
+
+done(
+- **心跳收敛**：`next-phase-plan.md` ⑨待续梯队①「藏译华严对读…尚未启动」改实况（已启动 L.200·底本入库+PoC 已建·阶段二至四未启动）；ledger 增 L.200 行（编号让位：L.199 仍留第三会收尾终审）；decisions.md 增 #10（三事登记）。
+- **底本入库（保真）**：`.gitattributes` 增 `data/references/tibetan/** -text -whitespace`（承 CBETA/cbeta_txt 一手语料 SHA 可复核先例）；撤销当日早先工作区 `.gitignore` 屏蔽行（git restore 后实测 HEAD 与本区均不含）；**新发现并如实登记**：`data/references/tibetan` 全目实测 **8.5 GB**（jpg 扫描图 3,422 张·8,442 MB + zip 31.5 MB），远超 R4 决策前提「约 13 MB 四卷 txt」→ 依 PLAN.md「只处理 .txt·不涉及 images/」既有铁律收敛入库面：`.gitignore` 增两条例外（tibetan 下 *.jpg/*.zip 不入仓），**只入文本底本约 29.7 MB txt**（德格 avatamsaka 035-038 为核心·含 bdrc etext/mdo_sde 参照片）。
+- **demo 页入站**：`standalone_articles.yaml` others 增 `tibetan-avatamsaka-alignment-demo`（经论茶歇/huayan_xidu·order 24·`skip_html: true` 外部自包含页通道·jj-huayan-collation 同例·题注明标 v0.1 Demo·MITRA 试译未校对）；yaml parse OK（37 条）；不声明 updated_at（页头空时间带合规·禁凭空日期）。
+- **闸门（观察到）**：build **57 files｜31,328,712 B**（articles/index + 5 tabs 含新卡）；四闸 exit 0：`test_pipeline` ALL TESTS PASSED·`verify_demo` ✓ALL CHECKS PASSED（新页显式过 skip_html 通道：DOCTYPE/收尾/体量 OK·11,662B）·`verify_sources --fixme`·`audit_consistency`·`.harness/check.py` OK·`git diff --check` 净（仅全仓 CRLF 警告）；本地 commit 显式路径·**未 push**。
+)
+**blocked**：无新增。藏线实质内容（MITRA 试译未人工校对、45 品目对照仅 1 条粗映射、模型选型评估未做）皆属阶段二至四未启动项，已按实况登记不臆造；R4 时体量前提失真一事已在本批内以 PLAN.md 既有铁律收敛并留痕（如需 jpg 入仓/LFS 另须显式决策）。
+**next**：藏线阶段二候选（45 品目对照表扩建·底本 sha256 台账·Elevated 档）俟用户确认；主线 L.199 第三会收尾终审照旧待行。
+**sources**：`.tmp_l200_{test,demo,src,check,audit}.txt`（闸门输出留痕·gitignore 面外则不入库）·`workspace/tibetan-avatamsaka-translation/docs/PLAN.md`·`data/alignment/*.json`·`web/demo/articles/tibetan-avatamsaka-alignment-demo.html`·德格版 `data/references/tibetan/derge_kangyur/avatamsaka/verification_report.txt`。
