@@ -1035,3 +1035,23 @@
 **next**：L.196 显式路径本地 commit（不 push）→ L.197 P17《初发心功德品》。
 
 **sources**：_e16_dump.txt·_e16_stats.py·_e16_sources.txt·_e16_cq_miss.txt·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan8）。
+
+---
+
+### L.197 · P17《初发心功德品》充实批 · 2026-10-26
+
+**goal**：第十七部《初发心功德品》充实批成篇（跨卷十七–十八·第三会十住位胜进德·第三会最长品·CJK 8,207·27 单元·十一大喻校量·六要素注入≥1,200 行）。
+
+**done**：
+- 提取层 _e17_full.py（品界 8,207·27 units＝1 head＋25 p＋1 lg＋1 byline·六十初发心菩萨功德品第十三在卷九未入库如实标·疏窗 10,187 nsh）· _e17_stats.py（长行 4,785·重颂 3,388·佛子×38·十方×38·無量×46·發心×31·阿僧祇×21·那由他×8·優波尼沙陀×4·十难各×1·颂均七言 484 句段）· _e17_sources.py（六家窗口·跳品目目录命中：澄观@239289-249476 10,187·法藏@162219-170651 8,432·慧苑@185641-195786 10,145·通玄@197438-202602 5,164·合论@324670-339294 14,624·智俨缺口）
+- 骨架正文 293→4,410 行（§〇–§九·INJECT:R1–R5 六要素注入完成·lg 一百廿一颂分行）
+- 引文回源 _e17_check_quotes.py frags=57 hit=57 miss=0（初稿 4 miss 皆为编者「」内简体 paraphrase·逐一改繁体逐字回源或脱「」·注入后复核仍 miss=0）
+- SSOT 登记 standalone_articles.yaml (id huayan-chufaxin-gongde-pin order 22·summary 16→17 单品) + 系列总纲四处（§二 row17 ✅·§3.1 第十七部行·§六入口·最后更新头行）
+- Build 55 files 31,034,088 bytes（+1 huayan-chufaxin-gongde-pin.html 290,129 bytes）
+- 六闸门 EXIT=0 全通过（check.py OK·test_pipeline ALL PASSED·verify_demo ALL CHECKS PASSED·verify_sources·audit_consistency·audit_style·git diff --check）
+
+**blocked**：无。六十对读（初发心菩萨功德品第十三·卷九）本仓未入库，如实标〔未入库·待核〕不臆造对齐（承 P8 铁律）；智俨《搜玄记》现存卷不覆本品，标〔缺口〕。
+
+**next**：L.197 显式路径本地 commit（不 push）→ L.198 P18《明法品》（卷十八·第三会收束品）→ L.199 第三会六品收尾终审批。
+
+**sources**：_e17_dump.txt·_e17_stats.txt·_e17_sources.txt·_e17_cq_miss.txt·_e17_md_backup.md·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·X0221·T1739·X0223·T09n0278_juan8）。

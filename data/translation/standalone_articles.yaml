@@ -459,6 +459,22 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-chufaxin-gongde-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 22
+  icon: 📖
+  title: 九九华严第十七品 初发心功德品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Seventeen: The Merits of the First Aspiration for Awakening'
+  title_sub: 华严经第十七品·第三会十住位胜进德·跨卷十七–十八·第三会最长品·品界CJK8207（长行4785＋重颂3388·27单元）·天帝释问·法慧先叹十难·再以十一大喻层层校量（利樂眾生→供佛及生·後後過於前前）·就法略示十二句配如来十力·动地兴供·他方证成（万佛同名法慧·皆号清淨心如來）·一百二十一颂重颂·歌羅分（竖析·百分之一）／優波尼沙陀（近少）校量数释义·澄观疏窗10187（四门·释文七分）·法藏8432·慧苑10145·通玄5164·合论14624·智俨〔缺口〕·六十〈初发心菩萨功德品第十三〉在卷九〔未入库·待核〕·六要素齐备·数据层实测
+  updated_at: '2026-10-26'
+  doc: docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第十七部_初发心功德品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
@@ -508,7 +524,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 16 单品（依品次第 1→16）
+  summary: 华严经细读系列 · 3 总纲 + 17 单品（依品次第 1→17）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
