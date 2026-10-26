@@ -1092,3 +1092,21 @@ done(
 **blocked**：无新增。藏线实质内容（MITRA 试译未人工校对、45 品目对照仅 1 条粗映射、模型选型评估未做）皆属阶段二至四未启动项，已按实况登记不臆造；R4 时体量前提失真一事已在本批内以 PLAN.md 既有铁律收敛并留痕（如需 jpg 入仓/LFS 另须显式决策）。
 **next**：藏线阶段二候选（45 品目对照表扩建·底本 sha256 台账·Elevated 档）俟用户确认；主线 L.199 第三会收尾终审照旧待行。
 **sources**：`.tmp_l200_{test,demo,src,check,audit}.txt`（闸门输出留痕·gitignore 面外则不入库）·`workspace/tibetan-avatamsaka-translation/docs/PLAN.md`·`data/alignment/*.json`·`web/demo/articles/tibetan-avatamsaka-alignment-demo.html`·德格版 `data/references/tibetan/derge_kangyur/avatamsaka/verification_report.txt`。
+
+---
+
+### L.199 · 第三会六品（P13–P18）收尾终审批 · 2026-10-26
+
+**goal**：对第三会已充实成篇的六品（P13 升须弥山顶·P14 须弥顶上偈赞·P15 十住·P16 梵行·P17 初发心功德·P18 明法）做一次收束终审——基线行数/元素集齐平/引文逐字回源/格式残留四维逐项，出可观察 verdict（承第二会收尾终审范式 `_v_final_hui2.py`+`_p9_11_audit.py`；编号让位 L.200 已先执行，本批按时序后补·ledger 末行登记）。
+
+**done**（观察到）：
+- **§2 经文引文回源全 miss=0**：`_h3_audit.py`（承 `_p9_11_audit.py`·纯 CJK 子串归属·≥12 长跑判）扩至 P13–P18——各品命中 hit=14/21/35/6/276/78·miss=0；body80_CJK=654/2510/5589/923/8207/5529 与 L.193–L.198 各批登记逐一吻合（P15–P18 独立复算）。品界锚：`昇須彌山頂品第十三`→…→`明法品第十八`→`昇夜摩天宮品第十九`（第四会首品·P18 收束确认）。
+- **元素集终审 PASS**：`_v_final_hui3.py`——六品行数 1236/1483/2008/1629/4323/3783 均 ≥ 基线 1200；六元素（全文入文·疏科长文全摘·六十对读[全本或如实标]·数据科学§7.5·SVG 图7-1·附录四′疏科照录）齐平；格式残留 `<<<PAGE>`=0、裸 mermaid=0、TODO/FIXME=0。
+- **终审 3 处初判 ✗ 经核为探测词表窄、非正文缺**：P16 作「与六十华严…对读」（非「六十全本」字样）、P17/P18 用「澄观科判/疏窗/探玄记」（非「疏科长文全摘」字样）→ 依「机器只观察·不篡改实质」**只放宽识别器同义词表、正文一字未改**；复跑全绿。
+- **闸门（观察到）**：六闸 exit 0——`test_pipeline` ALL TESTS PASSED·`verify_demo` ✓ALL CHECKS PASSED·`verify_sources --fixme`·`audit_consistency`·`.harness/check.py` OK·`git diff --check` 净（仅全仓 CRLF 提示·无空白误）。本批**零内容改动**（终审不改正文/yaml），故未重建 build（产物无变化）。
+
+**blocked**：无。`git status` 显大量 `M docs/**.md` 经核为 autocrlf **LF↔CRLF 行尾噪声**（gate6 逐条 warn 同一批文件），非本批内容改动 → commit 用**显式路径暂存**隔离（只入 ledger/PROGRESS + 两探针脚本），不裹入行尾假改。
+
+**next**：第三会六品 verdict=**全部充实成篇·可收束**。第四会（P19 起·昇夜摩天宫品·差别因果周续）规划**俟用户显式确认**后方启动（不擅自开新会）。
+
+**sources**：`_h3_audit.py`·`_h3_audit_out.txt`·`_v_final_hui3.py`·`data/references/cbeta/T10n0279.xml`·`docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第{十三|十四|十五|十六|十七|十八}部_*.md`·第二会终审先例 `_v_final_hui2.py`/`_p9_11_audit.py`。
