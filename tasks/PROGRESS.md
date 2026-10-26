@@ -1055,3 +1055,24 @@
 **next**：L.197 显式路径本地 commit（不 push）→ L.198 P18《明法品》（卷十八·第三会收束品）→ L.199 第三会六品收尾终审批。
 
 **sources**：_e17_dump.txt·_e17_stats.txt·_e17_sources.txt·_e17_cq_miss.txt·_e17_md_backup.md·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·X0221·T1739·X0223·T09n0278_juan8）。
+
+---
+
+### L.198 · P18《明法品》充实批 · 2026-10-26
+
+**goal**：第十八部《明法品》充实批成篇（卷第十八整卷·第三会收束品·CJK 5,529·32 单元·十法矩阵·六要素注入≥1,200 行·结归衔接第四会不越界）。
+
+done(
+- 提取层 _e18_full.py（品界 @118152–123681·body80 5,529·32 units＝1 head＋28 p＋2 lg＋1 byline·疏窗 8,647 nsh；六十直搜卷一–八无「明法品」命中→拟卷九未入库如实标）· _e18_stats.py（长行 4,921·双颂 588＝问端頌308／結颂280·佛子×34·如來×29·莊嚴×26·波羅蜜×23·清淨×22·說法×22·無盡藏×12·阿僧祇仅×1）· _e18_sources.py（六祖典窗口全命中：澄观@249476-258123 8,647·法藏@170651-178636 7,985·智俨@39308-40735 1,427〔本品有文·非缺口〕·慧苑@195786-209850 14,064〔诸家最长〕·通玄@202602-207937 5,335·合论@339294-350549 11,255）
+- **实测驳计划假设**：主计划 L.198 预告「十佛名号矩阵」实测佛名號×0·十佛×0 → 按 M0.4 不臆造改锚**十法矩阵**（十不放逸→十波羅蜜→十莊嚴等十二组实测密集句式）；**昇(U+6607) 无 NFKD 折叠**新教训 → harvest/get_win end marker 改变体列表取最先命中
+- 骨架正文 331→3,881 行（§〇–§九·INJECT:R1–R5 六要素零手抄注入·两 lg 双空格分行·六窗全注入含新增 R2c 智俨/R2f 合论）
+- 引文回源 _e18_check_quotes.py（双轨·CORP＝P18+P17+P16+P15 body80+juan8+六祖典）：初跑 97 frags miss=9（5 处引文与原句出入〔漏「故次來也」·通者→別者·讚問科句·結說分句·第二答科句〕＋4 处编者自铸/简体 paraphrase → 逐一对 dump 订正）→ 重跑 miss=0；注入后复核 frags=98 hit=98 miss=0
+- SSOT 登记 standalone_articles.yaml (id huayan-mingfa-pin order 23·slug 零碰撞实检) + 系列总纲四处（§二 row18 ✅·§3.1 第十八部行·§六入口·最后更新头行）
+- Build 56 files 31,326,578 bytes（+1 huayan-mingfa-pin.html 288,288 bytes·index/tabs 共享 ARTICLES 数组含 P18 卡）
+- 六闸门 EXIT=0 全通过（check.py·test_pipeline·verify_demo·verify_sources --fixme·audit_style·audit_consistency·git diff --check）
+
+**blocked**：无。六十对读（明法品第十四·卷九）未入库，如实标〔未入库·待核〕仅登品题对应（法藏/智俨两疏品题直证）；第三会六品至此全部成篇，收尾终审（L.199）待行。
+
+**next**：L.198 显式路径本地 commit（不 push）→ L.199 第三会六品（P13–P18）收尾终审（三探针扩 P13–P18·全绿出 verdict → 经用户确认后方规划第四会）。
+
+**sources**：_e18_dump.txt·_e18_stats.txt·_e18_sources.txt·_e18_cq_miss.txt·_e18_md_backup.md·data/references/cbeta/T10n0279.xml·data/references/cbeta_txt/（T1735·T1733·T1732·X0221·T1739·X0223·T09n0278_juan8）。
