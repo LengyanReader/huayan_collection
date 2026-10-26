@@ -398,6 +398,21 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-shengxumishanding-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 18
+  icon: 📖
+  title: 九九华严第十三品 升须弥山顶品之拼读
+  title_sub: 华严经第十三品·第三会首品·差别因果周十住位之始·卷十六单品·佛不离菩提树而上昇须弥·帝释遥见佛来严殿敷普光明藏师子之座·十千庄严·善来三称请佛入殿（品界实测「善來」×3 一处三称·无重出·平文器幻影单元订正）·乐音自息·忆念昔佛·说颂赞十佛（十颂各「诸吉祥中最无上」「是故此處最吉祥」）·殿忽然广博宽容·十方同然·注疏诸家会读（澄观·法藏·智俨·慧苑·李通玄）·与六十《佛昇須彌頂品第九》对读·十佛名号多异（迦羅鳩馱／拘樓·毘舍浮／隨葉·然燈／錠光等）各照底本不统一·数据层实测八十正文 645 字（含品题 654）·未完备已标明
+  updated_at: '2026-10-27'
+  doc: docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第十三部_升须弥山顶品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
@@ -447,7 +462,7 @@ others:
 group_order:
 - key: 经论茶歇
   icon: 📖
-  summary: 华严经细读系列 · 3 总纲 + 12 单品（依品次第 1→12）
+  summary: 华严经细读系列 · 3 总纲 + 13 单品（依品次第 1→13）
 - key: 华严祖师
   icon: 🕵️
   summary: 五祖法脉 + 李通玄/梦参 · 依 杜顺→智俨→法藏→澄观→宗密 次第
