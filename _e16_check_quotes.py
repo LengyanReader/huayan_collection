@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 MD = 'docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第十六部_梵行品.md'
 norm = lambda ch: (unicodedata.normalize('NFKD', ch)[0] if unicodedata.normalize('NFKD', ch) else ch)
 ONLY = lambda s: ''.join(ch for ch in (norm(c) for c in s) if '\u4e00' <= ch <= '\u9fff')
+KX = lambda s: ''.join({'\u2ed1': '\u9577', '\u2ec4': '\u897f', '\u2ea0': '\u6c11', '\u2e92': '\u5df3'}.get(norm(c), norm(c)) for c in s)   # L.199·语料侧部首补位显式正字化（⻑⻄⺠⺒无 NFKD 分解）
 GAP = lambda s: s.replace('：', '，')
 
 SKIP = {'note', 'rdg', 'mulu', 'pb', 'anchor', 'app'}
@@ -23,7 +24,7 @@ def walk(el):
         walk(c)
         if c.tail: acc.append(c.tail)
 walk(ET.parse('data/references/cbeta/T10n0279.xml').getroot())
-fullC = ONLY(''.join(acc))
+fullC = ONLY(KX(''.join(acc)))
 iC = fullC.find('梵行品第十六')
 kC = fullC.find('初發心功德品第十七', iC + 6)
 assert 0 < iC < kC, (iC, kC)
@@ -31,12 +32,12 @@ CORP = [GAP(fullC[iC:kC])]                    # 本品 body80
 CORP.append(GAP(fullC[fullC.find('十住品第十五'):iC]))   # P15 前品（互见）
 CORP.append(GAP(fullC[fullC.find('須彌頂上偈讚品第十四'):fullC.find('十住品第十五')]))  # P14（脉络引）
 j8 = io.open('data/references/cbeta_txt/T09n0278_juan8.txt', encoding='utf-8').read()
-CORP.append(GAP(ONLY(j8)))                    # 六十卷八全本
+CORP.append(GAP(ONLY(KX(j8))))              # 六十卷八全本
 for p in ['T1735_澄观_华严经疏', 'T1733_法藏_探玄记', 'T1732_智俨_搜玄记',
           'X0221_慧苑_续华严略疏刊定记', 'T1739_李通玄_新华严经论', 'X0223_李通玄_华严经合论']:
     s = io.open('data/references/cbeta_txt/%s.txt' % p, encoding='utf-8').read()
     s = re.sub(r'<<<PAGE\s*\d+>>>', '', s)
-    CORP.append(GAP(ONLY(s)))
+    CORP.append(GAP(ONLY(KX(s))))
 
 md = io.open(MD, encoding='utf-8').read()
 md = md.replace('**', '')
