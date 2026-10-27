@@ -543,7 +543,7 @@ others:
   order_in_group: 24
   icon: 📜
   title: 藏汉英对读 · 大方广佛华严经（德格藏文本）初探
-  title_sub: v0.2 · 德格甘珠尔 Toh 44（035-038）45 品 TOC 逐字提取 · 底本 sha256 台账 · MITRA 本地试译未校对 · 汉藏对勘待核
+  title_sub: v0.3 · 德格甘珠尔 Toh 44（035-038）45 品 TOC 逐字提取 · 底本 sha256 台账 · 首品开篇藏·八十·六十逐字回源示范对勘（订正两处汉译误引）· MITRA 本地试译未校对 · 逐品对勘待核
   skip_html: true
   back:
     tab: gap

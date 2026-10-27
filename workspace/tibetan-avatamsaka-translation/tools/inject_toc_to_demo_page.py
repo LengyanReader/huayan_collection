@@ -17,6 +17,13 @@ TOCJ = 'data/alignment/tibetan-derge-toc.json'
 d = json.loads(io.open(TOCJ, encoding='utf-8').read())
 sf = d['structural_facts']
 
+# --- 第1品开篇段 示范级人工初对（数据层 SSOT: avatamsaka-openings-demo.json）---
+op = json.loads(io.open('data/alignment/avatamsaka-openings-demo.json', encoding='utf-8').read())
+ex = op['exemplar']
+ex_tib = ex['tibetan']; ex_seg = ex['tibetan_segmentation_gloss']
+ex80 = ex['chinese_80']; ex60 = ex['chinese_60']
+ex_findings = '\n'.join('> - ' + f for f in ex['collation_findings'])
+
 # --- 底本台账表 ---
 bt_rows = []
 for bt in d['base_texts']:
@@ -32,8 +39,9 @@ for e in d['toc']:
     seed = e['tibetan_open'].replace('|', '｜').strip()
     if len(seed) > 46:
         seed = seed[:46] + '…'
-    toc_rows.append('| %d | %s | %s | %s | 〔待核〕 |' % (
-        e['no'], e['vol'], e['start_folio'], seed))
+    stat = '〔待核〕' if e['no'] != 1 else '开篇段已实证对勘·示范（余文〔待核〕）'
+    toc_rows.append('| %d | %s | %s | %s | %s |' % (
+        e['no'], e['vol'], e['start_folio'], seed, stat))
 toc_table = '\n'.join(toc_rows)
 
 new_doc = f"""# 藏汉英对读 · 大方广佛华严经（德格藏文本）初探
@@ -91,11 +99,30 @@ new_doc = f"""# 藏汉英对读 · 大方广佛华严经（德格藏文本）初
 
 ### 3.4 汉译对勘（八十华严 T10n0279）
 
-> 如是我聞：一時，佛在摩竭提國，阿蘭若法菩提場中，始成正覺。
+> 如是我聞：一時，佛在摩竭提國阿蘭若法菩提場中，始成正覺。
 
 ### 3.5 汉译对勘（六十华严 T09n0278）
 
-> 如是我聞：一時，佛在摩竭提國菩提樹下，成佛未久。
+> 如是我聞：一時，佛在摩竭提國寂滅道場始成正覺。
+>
+> 〔订正〕本仓前版此处误作「佛在摩竭提國菩提樹下，成佛未久」，与 T09n0278 底本起句不符，本次逐字回源改正（详见 §3.6 对勘记录）。
+
+### 3.6 第1品开篇段 · 示范级人工初对（已回源）
+
+对第1品（T44-1，德格 035:393a）**开篇三句**作藏·八十·六十三本逐字对读。三本起句皆为实证回源（藏：德格原文件；汉：CBETA XML 去注释拼接）：
+
+| 层 | 原文（逐字） |
+|---|---|
+| 藏文（德格） | {ex_tib} |
+| 藏文转写 | {ex_seg} |
+| 八十 T10n0279 | {ex80} |
+| 六十 T09n0278 | {ex60} |
+
+**对勘发现**（机器回源 + 人工判读，实质判断标〔本文判断〕/〔待核〕）：
+
+{ex_findings}
+
+> 〔口径〕本示范仅覆盖第1品**开篇段**，非全品；该品余文及他品逐段对齐属阶段四，逐品对应仍〔待核〕。MITRA 试译（§3.2/3.3）为机器草稿、未校订，不等同于对勘结论。
 
 ## 4. 对读结构设计
 
@@ -128,11 +155,12 @@ if not m:
     raise SystemExit('ARTICLE 块未找到')
 obj = json.loads(m.group(1))
 obj['doc_md'] = new_doc
-obj['version'] = 'v0.2 · 阶段二 底本处理（德格 45 品 TOC 逐字提取 + 底本 sha256 台账·汉藏对勘待核）'
+obj['version'] = 'v0.3 · 阶段四 首品开篇示范对勘（藏·八十·六十逐字回源 + 订正两处汉译误引）'
 obj['title_sub'] = ('Tibetan-Chinese-English Parallel Reading · Derge Kangyur 035-038 (Toh 44) · '
-                    '45-chapter TOC machine-extracted · sha256 ledger · cross-alignment 待核')
+                    '45-chapter TOC machine-extracted · sha256 ledger · '
+                    'Ch.1 opening exemplar collation (Tibetan×T10n0279×T09n0278 verbatim-grounded)')
 new_block = 'var ARTICLE = ' + json.dumps(obj, ensure_ascii=False, indent=2) + ';'
 html2 = html[:m.start()] + new_block + html[m.end():]
 io.open(HTML, 'w', encoding='utf-8').write(html2)
-print('OK doc_md 注入·长度=%d 字符·toc行=%d·底本行=%d·version=v0.2' % (
+print('OK doc_md 注入·长度=%d 字符·toc行=%d·底本行=%d·version=v0.3' % (
     len(new_doc), len(d['toc']), len(d['base_texts'])))
