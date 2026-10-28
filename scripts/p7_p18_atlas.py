@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""P7–P18 atlas layer generator.
+"""P2, P7–P18 atlas layer generator.
 
-Inserts/replaces a standardized front-matter block for every 第二会 / 第三会
-article:
+Inserts/replaces a standardized front-matter block for the 第一会 P2 and every
+第二会 / 第三会 article:
 
     〇之零  导读指南
     〇之二  本品内容地图 (2 SVG figures + 特色矩阵 + 五种读法 + 数与位之谱)
@@ -20,6 +20,7 @@ import sys
 sys.stdout.reconfigure(encoding="utf-8")
 
 BASE = os.path.join("docs", "经学文献", "华严经细读")
+DIR1 = os.path.join(BASE, "第一会_菩提场_所信因果周")
 DIR2 = os.path.join(BASE, "第二会_普光明殿_差别因果周")
 DIR3 = os.path.join(BASE, "第三会_忉利天宫_差别因果周")
 
@@ -2018,7 +2019,160 @@ P18 = {
     "shu_note": "> **〔读法〕** 本品之数与第十七品恰相反：**十七品之数愈大愈显其不足，十八品之数愈整愈显其全**。故读十七品当问「何以犹不及」，读十八品当问「何以恰为十」。**同一「十」字，一为校量之起点，一为条目之定数**，不可混看。",
 }
 
-ALL = [P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
+# ----------------------------------------------------------------------------
+# 第二部　如来现相品（第一会·卷第六）
+# ----------------------------------------------------------------------------
+P2 = {
+    "tag": "P2",
+    "path": os.path.join(DIR1, "华严经细读_第二部_如来现相品.md"),
+    "hui": "第一会（菩提场·所信因果周）",
+    "dingwei": "本品承《世主妙严品》之后，一味以「现相」为法，故读法以**问与光为纲**：四十问是能请，放光是能应；先数其问、谱其颂，再入光名之异。",
+    "yiju": "**四十问是众海之心念，放光是如来之答应**——问未出口而光已遍；「解脫門」0 见，本品以光代门，为第一会「能／所」之转轴。",
+    "sanwen": "① 四十问如何由甲乙两组各二十开出？李通玄 37、智俨 23、六十 25，四数何以并存？② 十四组偈颂何以组组皆十偈？③ 「解脫門」0 见而「承佛」11 见，本品骨架与第一品何异？",
+    "tiyao": "本品占**卷第六一卷**，剥校勘 **CJK 8,119 字／208 句**（§7.1），是第一会中之短品（对照世主妙严品 31,953）。结构为四段：**念请**（甲 20＋乙 20＝四十问）→**现相**（自然出音颂·面门光十光名·光中说颂·十方云奔·光中同声·眉间光·白毫出众）→**说颂**（勝音＋十大士，十一组各十偈）→**结通**。前导三组＋眉间光后十一组＝**十四组 140 偈**（§2.6 逐颂标定）；「解脫門」**0 见**（§7.2）——第一品「组组有门、门偈相当」之框架至此不可复用，故先立二图，以问与颂立其骨。",
+    "xufa": "先观图 〇-1 以得其问（40＝甲 20＋乙 20，四数并存），次观图 〇-2 以得其颂（14 组×10＝140），次读〇之二.3 之坐标、〇之二.6 之数等，然后入 §二逐段。**问既明，光始不乱。**",
+    "en_map": "Book Six, the chapter of the Tathāgata's manifest portents, is a short chapter by this assembly's standard: 8,119 CJK characters against the 31,953 of Book One. Its skeleton is light rather than nominal: forty questions asked in the mind — twenty on the Tathāgata's person and powers, twenty on the oceans of Buddhas and Bodhisattvas — answered not in words but in portents: light from the face, clouds from the ten directions, a bodhisattva born between the brows. Fourteen verse-groups of exactly ten stanzas each make 140 verses, while the phrase 'gate of deliverance', 442 times in Book One, never occurs here. Fig. 0-1 lays out the forty questions with the four rival counts (40/37/25/23); Fig. 0-2 shows the fourteen-by-ten verse lattice.",
+    "figs": [
+        {
+            "n": 1,
+            "title": "四十问之谱",
+            "what": "问从何来，数何以有四说",
+            "one": "40＝甲 20＋乙 20；同段另得 37／25／23，各注所据",
+            "svg": """<svg viewBox="0 0 1000 470" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">四十问之谱：甲乙两组各二十，四数并存</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">上：八十经文之四十问（每问 10px）；下：同一念请之四数并存，各注所据</text>
+
+<text x="30" y="88" font-size="13" font-weight="bold" fill="#7a5a28">甲组 · 二十（问佛之体用）</text>
+<rect x="250" y="72" width="100" height="22" fill="#d4a03c" stroke="#b8863c"/>
+<rect x="350" y="72" width="100" height="22" fill="#e6dbc5" stroke="#c9b98f"/>
+<text x="254" y="87" font-size="10" fill="#3f3629">佛德十</text>
+<text x="354" y="87" font-size="10" fill="#5a5147">佛门十</text>
+<text x="462" y="87" font-size="10.5" fill="#5a5147">地·境界·加持·所行·力·無所畏·三昧·神通·自在·無能攝取 ｜ 眼·耳·鼻·舌·身·意·身光·光明·聲·智</text>
+
+<text x="30" y="128" font-size="13" font-weight="bold" fill="#7a5a28">乙组 · 二十（问诸「海」）</text>
+<rect x="250" y="112" width="100" height="22" fill="#d4a03c" stroke="#b8863c"/>
+<rect x="350" y="112" width="100" height="22" fill="#e6dbc5" stroke="#c9b98f"/>
+<text x="254" y="127" font-size="10" fill="#3f3629">佛海十</text>
+<text x="354" y="127" font-size="10" fill="#5a5147">菩萨海十</text>
+<text x="462" y="127" font-size="10.5" fill="#5a5147">世界海·眾生海·法界安立海·佛海·佛波羅蜜海·佛解脫海·佛變化海·佛演說海·佛名號海·佛壽量海 ｜ 誓願·發趣·助道·乘·行·出離·神通·波羅蜜·地·智</text>
+
+<text x="250" y="162" font-size="12.5" font-weight="bold" fill="#5a5147">四十问 ＝ 甲 20 ＋ 乙 20（§2.1 据经点定）</text>
+<line x1="30" y1="186" x2="970" y2="186" stroke="#d8c9a8" stroke-width="1"/>
+
+<text x="30" y="216" font-size="13" font-weight="bold" fill="#7a5a28">同一「念请」，四数并存（盖所据本与归并口径之别）</text>
+<text x="30" y="252" font-size="11.5" fill="#5a5147">八十经文（本品实点）</text>
+<rect x="260" y="238" width="320" height="20" fill="#d4a03c" stroke="#b8863c"/>
+<text x="588" y="253" font-size="12" font-weight="bold" fill="#5a5147">40</text>
+<text x="30" y="292" font-size="11.5" fill="#5a5147">李通玄《新华严经论》</text>
+<rect x="260" y="278" width="296" height="20" fill="#c9a25a" stroke="#b8863c"/>
+<text x="564" y="293" font-size="12" font-weight="bold" fill="#5a5147">37</text>
+<text x="30" y="332" font-size="11.5" fill="#5a5147">六十〈盧舍那佛品〉</text>
+<rect x="260" y="318" width="200" height="20" fill="#8a7a5e" stroke="#7a6a50"/>
+<text x="468" y="333" font-size="12" font-weight="bold" fill="#5a5147">25 目</text>
+<text x="30" y="372" font-size="11.5" fill="#5a5147">智俨《搜玄分齊通智方軌》</text>
+<rect x="260" y="358" width="184" height="20" fill="#a89a80" stroke="#8a7a5e"/>
+<text x="452" y="373" font-size="12" font-weight="bold" fill="#5a5147">23 句</text>
+
+<text x="30" y="416" font-size="11.5" fill="#8a7a5e">李 T1739「問佛菩薩海有十九問……通為三十七問」；智俨 T1732「請中有二十三句問」；六十 §6.5「問目 40→25」。</text>
+<text x="30" y="438" font-size="11.5" fill="#8a7a5e">四数各注所据，不据以回改经文〔本文判断：计数与归并口径之别〕。</text>
+</svg>""",
+            "cap": "四十问＝甲 20＋乙 20（§2.1 据经实点）；同一念请另得李通玄 37、六十 25 目、智俨 23 句——数随所据本与归并口径而异，四数并存、各注所据。",
+            "en": "The forty questions: two twenties (§2.1); the same passage yields three further counts elsewhere — 37 (Li Tongxuan), 25 items (the sixty-book rendering), 23 (Zhiyan) — each count tied to its own base text and mode of grouping.",
+            "dufa": [
+                "先只看上层两横：**甲问佛、乙问海**，二十加二十，问目一望而知，不必先读经文。",
+                "再看下层四横：**同一段念请，四个数目**——这不等于经文有歧，只说明**计数随所据本与归并口径而异**；四数各注所据，正见校勘之本分。",
+                "持此四数回 §2.1 与 §5.2′／§5.3′／§6.5：知每一家**如何数**，比知**数多少**更要紧。",
+            ],
+        },
+        {
+            "n": 2,
+            "title": "十四组偈颂骨图",
+            "what": "颂从何起，组何以皆十",
+            "one": "前导 3 组＋勝音＋十大士＝14 组×10 偈＝140",
+            "svg": """<svg viewBox="0 0 1000 440" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">卷六说颂十四组：组组十偈，凡一百四十偈</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">前导三组（浅）在眉间光之前；勝音（金）白毫出众领颂；十大士（深）次第各一颂。一格＝一偈。</text>
+
+<rect x="44" y="80" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="106" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="132" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="158" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="184" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="210" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="236" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="262" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="288" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="44" y="314" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/>
+<rect x="110" y="80" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="106" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="132" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="158" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="184" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="210" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="236" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="262" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="288" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="110" y="314" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/>
+<rect x="176" y="80" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="106" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="132" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="158" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="184" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="210" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="236" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="262" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="288" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/><rect x="176" y="314" width="18" height="18" fill="#e6dbc5" stroke="#c9b98f"/>
+<rect x="242" y="80" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="106" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="132" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="158" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="184" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="210" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="236" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="262" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="288" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/><rect x="242" y="314" width="18" height="18" fill="#d4a03c" stroke="#b8863c"/>
+<rect x="308" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="308" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="374" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="374" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="440" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="440" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="506" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="506" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="572" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="572" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="638" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="638" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="704" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="704" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="770" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="770" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="836" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="836" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<rect x="902" y="80" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="106" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="132" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="158" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="184" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="210" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="236" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="262" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="288" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/><rect x="902" y="314" width="18" height="18" fill="#b8863c" stroke="#7a5a28"/>
+
+<text x="53" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">前①出音</text>
+<text x="119" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">前②面門</text>
+<text x="185" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">前③同聲</text>
+<text x="251" y="352" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#7a5a28">勝音</text>
+<text x="317" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">蓮華慧王</text>
+<text x="383" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">法喜慧</text>
+<text x="449" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">香焰光</text>
+<text x="515" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">師子奮迅</text>
+<text x="581" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">法海慧</text>
+<text x="647" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">慧燈明</text>
+<text x="713" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">華焰髻</text>
+<text x="779" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">威德慧</text>
+<text x="845" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">法界慧</text>
+<text x="911" y="352" text-anchor="middle" font-size="10.5" fill="#5a5147">精進力</text>
+
+<rect x="44" y="382" width="14" height="14" fill="#e6dbc5" stroke="#c9b98f"/><text x="64" y="394" font-size="11" fill="#5a5147">前导三颂 30 偈（§2.6 前①②③）</text>
+<rect x="330" y="382" width="14" height="14" fill="#d4a03c" stroke="#b8863c"/><text x="350" y="394" font-size="11" fill="#5a5147">勝音（白毫出众）10 偈</text>
+<rect x="560" y="382" width="14" height="14" fill="#b8863c" stroke="#7a5a28"/><text x="580" y="394" font-size="11" fill="#5a5147">十大士 100 偈（各承佛威神／威力，§7.2 凡 11 见）</text>
+<text x="44" y="424" font-size="11.5" fill="#8a7a5e">140 偈 ÷ 4 ＝ 560 句偈行（与 §7.2「208 句」两种口径，不可互校）；「而說頌曰」11＋「而說頌言」2。</text>
+</svg>""",
+            "cap": "卷六说颂十四组（前导三组＋勝音＋十大士），组组十偈，凡 140 偈（§2.6 逐颂标定）；眉间光后十一组各以「承佛威神／威力」领起（9＋2＝11，§7.2）。",
+            "en": "Fourteen verse-groups of ten stanzas each — 140 verses (§2.6, group by group against the base text); the eleven groups after the brow-light are each introduced by the 'by the Buddha's majesty / might' formula (nine plus two occurrences, §7.2).",
+            "dufa": [
+                "先看**列**：十四列一望而齐，前导三列色浅、勝音一列金色、十大士十列色深——**组组十偈**即本品说颂之整严。",
+                "再看**起**：前导三组起于「自然出音／面门光／光中同声」，眉间光后十一组起于「承佛威神／威力」——**谁在说、凭什么说**，即图上两段色之别。",
+                "最后记一数：**140**（旧数 132 作废，§2.6 勘误）；「解脫門」0 见——本品以颂代门，与第一品恰成两途。",
+            ],
+        },
+    ],
+    "weici_note": "本品在第一会居**果德现相之位**：前品（世主妙严）集众严刹，本品众海现相致问，后品（普贤三昧）以定起因。藏译与六十之对应各注其段。",
+    "weici": [
+        ["世主妙严品（品 1）", "卷一–五", "第一会·所信因果·果", "会众庄严，解脱门 442 见", "本品所现之相，即前品所集之众而感"],
+        ["普贤三昧品（品 3）", "卷七", "第一会·因之始", "普贤入毘盧遮那藏身三昧", "承本品现相之应，启世界成就之因"],
+        ["毗卢遮那品（品 6）", "卷十一", "第一会末·本事", "大威光历事四佛", "所信因果周之本事据，「所信因果會竟」"],
+        ["藏译 Toh 44-2", "德格 ja 藏", "藏译第 2 品", "de bzhin gshegs pa", "与本品对应坐实（§6.4）"],
+        ["六十〈盧舍那佛品〉", "卷二–三", "晋译·无独立现相品名", "段次全同", "问目 40→25、前① 10→9 偈（§6.5）"],
+    ],
+    "teshe_note": "本品之形式特征皆与邻品对看而得；数字之出处逐条标注。",
+    "teshe": [
+        ["篇幅", "8,119 CJK／208 句（§7.1）", "第一品 31,953／700", "短品宜整读，勿逐名"],
+        ["骨架句式", "「解脫門」0 见（§7.2）", "第一品 442 见", "第一品「门偈相当」框架不可套用"],
+        ["说颂体例", "十四组·组组 10 偈＝140（§2.6）", "第一品偈数 10／11 间出", "以「组」为读诵单位，旧数 132 作废"],
+        ["请数", "40＝甲 20＋乙 20（§2.1）", "李 37／智俨 23／六十 25", "数随所据本与归并口径而异，四数并存"],
+        ["放光名相", "面门十光名（八十）", "六十「面門及一一齒間」，名相各异", "光名不作两译统一，各照底本"],
+    ],
+    "dufa5": [
+        ["疑情读法", "先抄 §2.1 四十问全文置案头，再读 §2.2 现相", "修行者", "四十问即海云所谓「疑情」，问在光先"],
+        ["结构读法", "图 〇-1 → 图 〇-2 → §2.6 总表", "结构读者", "十四组各十偈之整严，与「解脫門 0 见」之反差"],
+        ["对勘读法", "§6.5 全量对照＋〇之二.5 形式特征", "版本学读者", "段次全同而问目 40→25、前① 10→9 之两译分寸"],
+        ["数据读法", "§7.1–7.2＋〇之二.6 数位谱", "数据读者", "8,119 字／140 偈／导语 11 见之骨架量化"],
+        ["义理读法", "§1.4 十身·§4.1–4.3", "义理读者", "现相＝法身之显，光＝功德海之波"],
+    ],
+    "shu": [
+        ["**T0 经文明文**", "四十问＝甲 20＋乙 20", "§2.1（`T10n0279` 卷六实点）", "问目之定数"],
+        ["**T0 经文明文**", "十四组偈·组组十偈＝140", "§2.6（卷六逐颂标定）", "说颂之骨"],
+        ["**T0 经文明文**", "承佛威神 9＋承佛威力 2＝11", "§7.2 实测", "眉间光后十一组之导语"],
+        ["**T0 本文实测**", "8,119 字／208 句／独字 498／熵 7.5454", "§7.1（CJK 剥校勘）", "篇幅与信度"],
+        ["**T1 注疏**", "念请「三十七問」", "李通玄 `T1739`（§5.3′）", "论中自分之归并"],
+        ["**T1 注疏**", "「請中有二十三句問」", "智俨 `T1732` 品 2（§5.2′）", "所据本之别"],
+        ["**T0·六十本实测**", "问目 25 目／前① 9 偈／面② 38 句", "§6.5（`T09n0278` 卷二–三）", "两译分寸"],
+    ],
+    "shu_note": "> **〔读法〕** 同一「念请」，八十得 40、李得 37、智俨得 23、六十得 25——**数随所据本与归并口径而异**，四数并存、各注所据，不据任何一数回改经文。本品之数以 140 偈（14×10）最整，以「解脫門 0 见」最奇：**一整一零，即本品之性情**。",
+}
+
+ALL = [P2, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
 
 if __name__ == "__main__":
     want = set(sys.argv[1:])
