@@ -2172,7 +2172,151 @@ P2 = {
     "shu_note": "> **〔读法〕** 同一「念请」，八十得 40、李得 37、智俨得 23、六十得 25——**数随所据本与归并口径而异**，四数并存、各注所据，不据任何一数回改经文。本品之数以 140 偈（14×10）最整，以「解脫門 0 见」最奇：**一整一零，即本品之性情**。",
 }
 
-ALL = [P2, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
+# ----------------------------------------------------------------------------
+# 第三部　普贤三昧品（第一会·卷第七前半）
+# ----------------------------------------------------------------------------
+P3 = {
+    "tag": "P3",
+    "path": os.path.join(DIR1, "华严经细读_第三部_普贤三昧品.md"),
+    "hui": "第一会（菩提场·所信因果周）",
+    "dingwei": "本品一味以「三昧」为法，故读法以**定之为仪**为纲：入定、受加、起定、作证，四步一仪；先谱其仪，再数其云，末辨其名。",
+    "yiju": "**普贤一入「毘盧遮那藏身」三昧，九门齐起、九云齐得、十王云齐雨**——定是全经之行门枢纽，「先果后行」自本品始。",
+    "sanwen": "① 澄观何以分六分？定⇄起如何成一状态机？② 九三昧门、九种海云、十摩尼王云三集并列，何以门→云非双射？③ 定名「一切諸佛毘盧遮那如來藏身」／六十「一切如來淨藏」／梵「毘盧遮那藏」，三本之异何所表？",
+    "tiyao": "本品占**卷第七前半**，剥校勘 **CJK 1,995 字（含品题 7·正文净 1,988）／句末 52**（§7.1），为全经最短之品。结构依澄观**六分**（§5.1）：三昧分（承力入定·彰定名）→加持分（口加同赞·意加与十智·身加摩顶）→起定分（从三昧海门起·九门）→作证分（世界海微动·雨十摩尼王云）→毛光赞德分（光中颂十偈）→大众偈请分（众赞十偈·请转法轮）。偈凡 **20＝2 组×10**（§2.6）；「三昧」29 见、「海」54 见（§7.4）。**篇幅最小而枢纽最大**——第一会自此由果转因。",
+    "xufa": "先观图 〇-1 以得其仪（六分一链），次观图 〇-2 以得其数（9·9·10 三集），次读〇之二.3 之坐标、.6 之数等，然后入 §二逐段。**仪既明，定始可拟。**",
+    "en_map": "The shortest chapter of the sūtra by this measure (1,995 characters including the title) is its pivotal ritual. Samantabhadra enters the samādhi of the 'garbha of the Vairocana of all Buddhas', receives the ten knowledges and the Buddhas' touch, rises through nine gates of samādhi, and his rising rains nine ocean-clouds upon the assembly while ten jewelled cloud-kings testify over the trembling oceans of worlds. Śeṅguan divides the chapter into six parts; the verses run twenty, two groups of ten. Fig. 0-1 maps the six-part ritual; Fig. 0-2 counts the three matched sets (9, 9, 10) and marks their deliberately non-bijective pairing.",
+    "figs": [
+        {
+            "n": 1,
+            "title": "六分之仪图",
+            "what": "定之仪式如何一链相承",
+            "one": "入定→三加→起定→作证→光赞→偈请",
+            "svg": """<svg viewBox="0 0 1000 300" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">普贤三昧品六分之仪：入定—受加—起定—作证—光赞—偈请</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">六分依澄观《疏》科（§5.1）；框下一行为本品实测要点</text>
+
+<rect x="18" y="90" width="146" height="64" rx="6" fill="#f6efe1" stroke="#b8863c"/>
+<text x="91" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5a28">① 三昧分</text>
+<text x="91" y="130" text-anchor="middle" font-size="10" fill="#5a5147">承力入定·彰定名</text>
+<text x="91" y="144" text-anchor="middle" font-size="10" fill="#8a7a5e">藏身三昧</text>
+
+<rect x="180" y="90" width="146" height="64" rx="6" fill="#f6efe1" stroke="#b8863c"/>
+<text x="253" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5a28">② 加持分</text>
+<text x="253" y="130" text-anchor="middle" font-size="10" fill="#5a5147">口加同赞·意加与十智</text>
+<text x="253" y="144" text-anchor="middle" font-size="10" fill="#8a7a5e">身加摩顶</text>
+
+<rect x="342" y="90" width="146" height="64" rx="6" fill="#e6dbc5" stroke="#b8863c"/>
+<text x="415" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5a28">③ 起定分</text>
+<text x="415" y="130" text-anchor="middle" font-size="10" fill="#5a5147">从三昧海门起</text>
+<text x="415" y="144" text-anchor="middle" font-size="10" fill="#8a7a5e">九门·一出一切出</text>
+
+<rect x="504" y="90" width="146" height="64" rx="6" fill="#e6dbc5" stroke="#b8863c"/>
+<text x="577" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5a28">④ 作证分</text>
+<text x="577" y="130" text-anchor="middle" font-size="10" fill="#5a5147">世界海微动</text>
+<text x="577" y="144" text-anchor="middle" font-size="10" fill="#8a7a5e">雨十摩尼王云</text>
+
+<rect x="666" y="90" width="146" height="64" rx="6" fill="#d4a03c" stroke="#b8863c"/>
+<text x="739" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#5a3d10">⑤ 毛光赞德</text>
+<text x="739" y="130" text-anchor="middle" font-size="10" fill="#5a3d10">毛孔放光</text>
+<text x="739" y="144" text-anchor="middle" font-size="10" fill="#5a3d10">光中颂十偈</text>
+
+<rect x="828" y="90" width="146" height="64" rx="6" fill="#d4a03c" stroke="#b8863c"/>
+<text x="901" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#5a3d10">⑥ 大众偈请</text>
+<text x="901" y="130" text-anchor="middle" font-size="10" fill="#5a3d10">众赞十偈</text>
+<text x="901" y="144" text-anchor="middle" font-size="10" fill="#5a3d10">请转法轮</text>
+
+<line x1="164" y1="122" x2="180" y2="122" stroke="#b8863c" stroke-width="2"/>
+<line x1="326" y1="122" x2="342" y2="122" stroke="#b8863c" stroke-width="2"/>
+<line x1="488" y1="122" x2="504" y2="122" stroke="#b8863c" stroke-width="2"/>
+<line x1="650" y1="122" x2="666" y2="122" stroke="#b8863c" stroke-width="2"/>
+<line x1="812" y1="122" x2="828" y2="122" stroke="#b8863c" stroke-width="2"/>
+
+<text x="500" y="196" text-anchor="middle" font-size="12" fill="#5a5147">定⇄起一机：所入之定（藏身）本含无量三昧，故起时「从一切世界海微尘数三昧海门起」（§2.4·L3）</text>
+<text x="500" y="222" text-anchor="middle" font-size="12" fill="#5a5147">偈凡 20＝毛光赞德 10＋大众偈请 10（§2.6）；「三昧」29 见、「海」54 见（§7.4）</text>
+<text x="500" y="248" text-anchor="middle" font-size="11.5" fill="#8a7a5e">第一会自此由果转因——前二品明所信之果，本品启能感之行（先果后行，§4.4）。</text>
+</svg>""",
+            "cap": "六分依澄观科（§5.1）；③④两框为「起定—作证」之枢纽：九门齐起、九云齐得、十王云齐雨，皆「世界海微尘数」为量。",
+            "en": "The six-part ritual after Śeṅguan's division (§5.1): entering the samādhi, receiving the three-fold empowerment, rising through nine gates, the trembling oceans and ten cloud-kings as testimony, the praise in light, and the assembly's request in verse.",
+            "dufa": [
+                "先只看六框一链：**入定—受加—起定—作证**四步成仪，光赞与偈请两步收束——仪式次第一望而知。",
+                "再记框下三数：**九门·十王云·二十偈**——皆本品实测（§2.4／§2.5／§2.6），不取注疏转数。",
+                "末看底行两语：**定⇄起一机**与**先果后行**——本品在第一会中之枢纽地位，尽在此二语。",
+            ],
+        },
+        {
+            "n": 2,
+            "title": "三同构集图",
+            "what": "九门·九云·十王云何相应",
+            "one": "|A|=|B|=9 而「门→云」非双射；王云十而六十作七名",
+            "svg": """<svg viewBox="0 0 1000 330" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">三同构集：九三昧门 · 九种海云 · 十摩尼王云</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">一格＝一名；「如是等」摄余者为经文固有省略，非残缺（§1.5）</text>
+
+<text x="30" y="112" font-size="12.5" font-weight="bold" fill="#7a5a28">九三昧门</text>
+<circle cx="270" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="300" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="330" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="360" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="390" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="420" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="450" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="480" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/><circle cx="510" cy="107" r="9" fill="#d4a03c" stroke="#b8863c"/>
+<text x="540" y="112" font-size="12" font-weight="bold" fill="#5a5147">9（具名九·末以「如是等」摄余）</text>
+
+<text x="30" y="162" font-size="12.5" font-weight="bold" fill="#7a5a28">九种海云</text>
+<circle cx="270" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="300" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="330" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="360" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="390" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="420" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="450" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="480" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/><circle cx="510" cy="157" r="9" fill="#b8863c" stroke="#7a5a28"/>
+<text x="540" y="162" font-size="12" font-weight="bold" fill="#5a5147">9（与会菩萨一一各得·皆世界海微尘数）</text>
+
+<text x="30" y="212" font-size="12.5" font-weight="bold" fill="#7a5a28">十摩尼王云</text>
+<circle cx="270" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="300" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="330" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="360" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="390" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="420" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="450" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="480" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="510" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/><circle cx="540" cy="207" r="9" fill="#e6dbc5" stroke="#c9b98f"/>
+<text x="570" y="212" font-size="12" font-weight="bold" fill="#5a5147">10（具名十·尽列无「等」）</text>
+
+<line x1="262" y1="117" x2="262" y2="147" stroke="#8a7a5e" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="360" y1="117" x2="345" y2="147" stroke="#8a7a5e" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="700" y="137" font-size="11.5" fill="#8a7a5e">门九云九而次第不齐——非一一对配，不可套「门＝云」（§7.4·L2）</text>
+
+<text x="30" y="262" font-size="11.5" fill="#5a5147">六十侧对照：〈盧舍那佛品〉雨十種**寶王雲**，具名仅 **7** 名（名目异，§6）——两译各照其本，不强拉齐。</text>
+<text x="30" y="288" font-size="11.5" fill="#8a7a5e">王云之名多与「赞德／光明／宝」相关，与光中颂十偈之旨相衔（§2.5〔本文判断〕）。</text>
+</svg>""",
+            "cap": "九三昧门、九种海云、十摩尼王云三集并列（§2.4／§2.5 实点）；门→云非双射（§7.4·L2）；六十侧宝王云仅七名，两译各照其本（§6）。",
+            "en": "Three matched sets: nine gates of samādhi, nine ocean-clouds, ten jewelled cloud-kings (counted group by group in §2.4–2.5). The gates and clouds are equal in number but not paired one-to-one (§7.4, L2); the sixty-book rendering names only seven cloud-kings — each translation kept to its own base.",
+            "dufa": [
+                "先看三行点数：**9·9·10**——前两集等数而次第不齐，第三集独多一；数之「齐」与「不齐」皆经文实况。",
+                "再看虚线两笔：**非双射**之意不在线，而在「不可套门＝云之配」——配对之欲是读华严常犯之病（§2.4 疏解）。",
+                "末记底线一句：**六十侧仅七名**——同名异数，正是两译分寸；两译各照其本，不强拉齐（§6 铁律）。",
+            ],
+        },
+    ],
+    "weici_note": "本品在第一会居**果因转关之位**：前二品明所信之果（会众庄严·现相致问），本品以定启因，后品（世界成就）承定而说世界海十事。",
+    "weici": [
+        ["世主妙严品（品 1）", "卷一–五", "第一会·果·会众", "解脱门 442 见", "本品入定所感之果海"],
+        ["如来现相品（品 2）", "卷六", "第一会·果·现相", "四十问致请", "本品之定，应前品之问"],
+        ["世界成就品（品 4）", "卷七后半", "第一会·因·说海", "世界海十事", "承本品起定而说（§3.3 请说相续）"],
+        ["毗卢遮那品（品 6）", "卷十一", "第一会末·本事", "大威光历事四佛", "所信因果周之结"],
+        ["藏译 Toh 44 第 3 章", "德格 035 卷 fol 83b（L.201 TOC）", "开篇「ཀུན་ཏུ་བཟང་པོ」（普贤）于佛前〔L.210 实测〕", "与本品开篇相应", "对应判读〔本文判断〕·逐字对勘未作〔待核〕"],
+        ["六十〈盧舍那佛品〉", "卷三", "晋译·无独立品名", "定名「一切如來淨藏」", "次第文句有别（§6）"],
+    ],
+    "teshe_note": "本品之形式特征皆与邻品对看而得；数字之出处逐条标注。",
+    "teshe": [
+        ["篇幅", "1,995 CJK（含品题 7）／句末 52（§7.1）", "第一品 31,953／第二品 8,119", "全经最短之品，宜一气读"],
+        ["骨架句式", "「三昧」29 见·「解脫門」0 见（§7.4）", "第一品「解脫門」442 见", "以「三昧」代「门」为骨，定学之品"],
+        ["仪式体例", "六分四步（入定—受加—起定—作证）", "第二品念请—现相—说颂", "本品是仪，第二品是相"],
+        ["数集", "9 门／9 云／10 王云·非双射（§7.4·L2）", "第二品 14 组×10 偈之整", "本品之数「不齐」处正是读法"],
+        ["定名", "「一切諸佛毘盧遮那如來藏身」（八十）", "六十「一切如來淨藏」·梵「毘盧遮那藏」", "三本异名各照底本，不统一（§6）"],
+    ],
+    "dufa5": [
+        ["仪式读法", "图 〇-1 → §2.1–2.5 逐分", "禅观行者", "入定—受加—起定—作证四步成仪"],
+        ["数门读法", "图 〇-2 → §2.4／§2.5 实点", "结构读者", "9·9·10 三集与非双射之分寸"],
+        ["义理读法", "§1.4／§4.2／§4.4–4.6", "义理读者", "如来藏身·先果后行·海印·重重无尽"],
+        ["对勘读法", "§6 全节＋〇之二.5", "版本学读者", "定名三本·次第文句有别·宝王云七名"],
+        ["数据读法", "§7.1–7.4＋`sjcj_puxian_studies.py`", "数据读者", "L1–L4 四视角一命令可复算"],
+    ],
+    "shu": [
+        ["**T0 经文明文**", "九三昧门（具名九·末「如是等」）", "§2.4（`T10n0279` 卷七实点）", "起定之门"],
+        ["**T0 经文明文**", "九种海云", "§2.4", "起定成益"],
+        ["**T0 经文明文**", "十摩尼王云（尽列）", "§2.5", "作证之瑞"],
+        ["**T0 经文明文**", "偈 20＝2 组×10", "§2.6（逐颂标定）", "毛光赞德＋大众偈请"],
+        ["**T0 本文实测**", "1,995 字（含品题 7·净 1,988）／句末 52／独字 306／熵 7.1185", "§7.1（CJK 剥校勘）", "篇幅与信度"],
+        ["**T1 注疏**", "澄观六分之科", "`T1735`（§5.1）", "结构之判"],
+        ["**T0·六十本实测**", "定名「一切如來淨藏」／宝王云 7 名／光中颂四言", "§6（`T09n0278` 卷三）", "两译分寸"],
+    ],
+    "shu_note": "> **〔读法〕** 本品之数两两成趣：**9 与 9 等而不配，10 与 7 异而不齐**——门→云非双射、两译不强拉齐，皆「各照其本」之铁律在数目上之呈现。读数如读文，**先后其位，再论其义**。",
+}
+
+ALL = [P2, P3, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
 
 if __name__ == "__main__":
     want = set(sys.argv[1:])
