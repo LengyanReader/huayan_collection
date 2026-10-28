@@ -1235,3 +1235,18 @@ done(
 4. P7–P12 第二会六品同法回扫（本批以第三会为主，第二会只做陈述订正）。
 
 **sources**：`data/references/cbeta/T10n0279.xml`（品14–18）·`data/references/cbeta/T09n0278.xml`（全 60 卷·品10之二卷八·品13 卷9–10·品14 卷10）·`data/references/cbeta_txt/T1735`（澄观疏）·`X0221`（慧苑刊定记）·`T09n0278_juan8.txt`（新纳入校验语料）·`_e1{4,5,6,7,8}_check_quotes.py`·`_tmp_l206_{stale_patch,p1516,p1718,p1718b}.py`·`_v_hui3_{audit,final}.py`。
+
+### L.207 · 前三会战役第 0 批：在途部首码位归一收尾＋战役计划锁定 · 2026-10-28
+
+**goal**：收尾 L.206 战役在途未竟件（第一部/第六部引文康熙部首码位归一＋2 构建产物），作「前三会全方位充实校勘战役」第 0 批（用户 R4 裁定：Elevated｜第一会先行｜在途先收尾｜元素集齐平）；战役计划锁入 `tasks/PLAN.md`。
+
+**done**（观察到）：
+- **码位扫描归零**：两部 md 之 U+2E80–2EFF（CJK 部首补充区）/U+2F00–2FDF（康熙部首区）残留 **0**（python 全文扫描为证）。订正内容＝引注疏原文归一正字（第一部引 `T1733` 探玄记「託此表⽰→表示」「主⼗⼆⽉→十二月」、`T1739` 新华严经论「⼆故→二故」「⼜摩竭提國者→又」「⼗⽅三世→十方」「⼀⽰→一示」「⼤⼩→大小」「⼈→人」、`X0223` 合论「此故⼜→此故又」）＋第一部体例注「如 `⻄`＝西」例改「部首码位对应正字」＋第六部表行尾随空白一处。
+- **战役计划锁定**：`tasks/PLAN.md` 增「前三会全方位充实校勘战役」节（R4 四项裁定＋实测基线〇之二层缺口/第一部基准/六十卷1–8 在库＋批次序列 L.207→L.213→L.214+＋元素集齐平 DoD）。
+- **闸门全绿**：`build` 57 files｜31,567,716 B（受影响面恰 2 md+2 html）｜`.harness/check.py` rc=0｜`test_pipeline` ALL TESTS PASSED｜`verify_demo` ALL CHECKS PASSED｜`verify_sources` rc=0（76/100·T0=0）｜`git diff --check` EXIT=0。
+
+**blocked**：无。
+
+**next**：第 1 批（L.208）＝第一部元素集体检＋待核 117 处逐条清账（可决者回源解决、真不可决者如实保留）；其后第 2–6 批部 2–6 补〇之二七节层＋元素集齐平（生成器扩展 `p7_p18_atlas.py` 或新立 `p1_p6_atlas.py`）。
+
+**sources**：两部 md 码位扫描（python 内联·0 残留）·门禁输出（check/test_pipeline/verify_demo/verify_sources）·`tasks/PLAN.md` 战役节。
