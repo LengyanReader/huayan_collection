@@ -2477,7 +2477,155 @@ P4 = {
     "shu_note": "> **〔读法〕** 本品之数有**三种口径**：字级（一 237）、词级（一一 26）、订正口径（世界海 59，旧 71 作废）——凡引必注。十事「非等量」与十因缘「十／八」并存，正是**各照其本**之铁律在数目上之呈现。",
 }
 
-ALL = [P2, P3, P4, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
+# ----------------------------------------------------------------------------
+# 第五部　华藏世界品（第一会·卷第八至卷第十）
+# ----------------------------------------------------------------------------
+P5 = {
+    "tag": "P5",
+    "path": os.path.join(DIR1, "华严经细读_第五部_华藏世界品.md"),
+    "hui": "第一会（菩提场·所信因果周）",
+    "dingwei": "本品一味以「藏」为法，故读法以**含藏与环列为纲**：竖看三重含藏（海⊃华⊃种⊃二十重⊃世界），横看十海环列与外围八十九海；先立其构，再数其名。",
+    "yiju": "**香水海生莲华，莲华持世界种，种含二十重世界**——「積剎成種、積種成海」；本品是华严宇宙论之图面，立名四百八十一处，列举即其修辞。",
+    "sanwen": "① 三重含藏如何层层相生？十海何以环列而世界成网？② 中央二十重而佛号 19、十海理想二百重而实得 194——数之「不齐」何所表？③ 「名：」481、「此上過」218，两个标记如何撑起全品之枚举？",
+    "tiyao": "本品占**卷第八至卷第十**三卷，内分**「之一／之二／之三」**三段各冠品题（合 27 字），剥校勘 **CJK 19,098 字／句末 626**（§7.1）；**长行 47 段·偈颂 181**（之一 80／之三 101·`<l>` 362），偈颂全出。结构为**竖**三重含藏（香水海「無邊妙華光」→大蓮華「一切香摩尼王莊嚴」→世界種「普照十方熾然寶光明」→二十重，娑婆居第十三重）、**横**十海环列（各出莲华各持世界种）、**总**外围八十九海递相连成「世界网」。计数：「名：」**481**、「佛號」**249**（中央 19＋「其佛即是」1）、十海世界数 **20/19/18 不齐**（实得 194，§7.2）、总绕数 **210**（1＋2＋…＋20，澄观「二百一十佛剎塵數」）。",
+    "xufa": "先观图 〇-1 以得其构（三重含藏＋十海环列），次观图 〇-2 以得其数（中央与十海之重数谱），次读〇之二.3 坐标、.6 数等，然后入 §二逐段。**构既立，名始可循。**",
+    "en_map": "Books Eight to Ten form the sūtra's cosmological tableau: one central perfume-sea bears a great lotus, the lotus holds a world-system, and the system carries twenty tiers of worlds — ours the thirteenth. Around it ten perfume-seas stand in a ring, each with its lotus and system, and eighty-nine outer seas link everything into a 'net of worlds'. The chapter names things 481 times with the marker 'named:'; its 181 verses are given in full. The ideal ten-by-twenty tiers appear in the text as 20/19/18 per sea — 194 Buddha-names against an ideal 200. Fig. 0-1 maps the containment and the ring; Fig. 0-2 charts the tier counts and their deliberate unevenness.",
+    "figs": [
+        {
+            "n": 1,
+            "title": "三重含藏与十海环列图",
+            "what": "华藏之构如何层层相生",
+            "one": "海⊃华⊃种⊃二十重；十海绕中海外围 89 海成网",
+            "svg": """<svg viewBox="0 0 1000 470" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">华藏之构：三重含藏（竖）·十海环列（横）·世界成网（总）</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">中央一海放大示意；十海绕列；外围 89 海以点环示意（非比例）</text>
+
+<circle cx="330" cy="240" r="150" fill="#f6efe1" stroke="#c9b98f"/>
+<circle cx="330" cy="240" r="112" fill="#f0e4cb" stroke="#b8863c"/>
+<circle cx="330" cy="240" r="76" fill="#e6dbc5" stroke="#b8863c"/>
+<circle cx="330" cy="240" r="42" fill="#d4a03c" stroke="#7a5a28"/>
+<text x="330" y="150" text-anchor="middle" font-size="11" fill="#7a5a28">香水海「無邊妙華光」</text>
+<text x="330" y="192" text-anchor="middle" font-size="11" fill="#7a5a28">大蓮華「一切香摩尼王莊嚴」</text>
+<text x="330" y="236" text-anchor="middle" font-size="11" fill="#5a3d10">世界種「普照十方熾然寶光明」</text>
+<text x="330" y="258" text-anchor="middle" font-size="10.5" fill="#5a3d10">二十重世界</text>
+<text x="330" y="274" text-anchor="middle" font-size="10" fill="#5a3d10">（娑婆＝第十三重）</text>
+
+<circle cx="680" cy="240" r="118" fill="none" stroke="#b8863c" stroke-dasharray="4,4"/>
+<circle cx="680" cy="152" r="16" fill="#d4a03c" stroke="#7a5a28"/><text x="680" y="128" text-anchor="middle" font-size="10" fill="#5a5147">东·離垢焰藏</text>
+<circle cx="766" cy="196" r="16" fill="#d4a03c" stroke="#7a5a28"/><text x="820" y="192" text-anchor="middle" font-size="10" fill="#5a5147">南·無盡光明輪</text>
+<circle cx="766" cy="284" r="16" fill="#d4a03c" stroke="#7a5a28"/><text x="822" y="288" text-anchor="middle" font-size="10" fill="#5a5147">西·金剛寶焰光</text>
+<circle cx="680" cy="328" r="16" fill="#d4a03c" stroke="#7a5a28"/><text x="680" y="362" text-anchor="middle" font-size="10" fill="#5a5147">北·帝青寶莊嚴</text>
+<circle cx="594" cy="284" r="14" fill="#e6dbc5" stroke="#c9b98f"/><text x="560" y="306" text-anchor="middle" font-size="10" fill="#8a7a5e">右旋六海</text>
+<circle cx="594" cy="196" r="14" fill="#e6dbc5" stroke="#c9b98f"/>
+<text x="680" y="392" text-anchor="middle" font-size="11" fill="#8a7a5e">「十海如環。繞於中海」（澄观 `T1735`）·各出莲华各持世界种</text>
+
+<circle cx="680" cy="240" r="20" fill="#b8863c" stroke="#7a5a28"/>
+<text x="680" y="245" text-anchor="middle" font-size="9.5" fill="#f6efe1">中海</text>
+
+<text x="30" y="422" font-size="11.5" fill="#5a5147">竖：香水海 ⊃（出大蓮華）⊃ 世界種 ⊃（含）二十重 ⊃ 世界——「積剎成種、積種成海」；横：十海环列、又各管外围香水海；总：一一世界「遞相接連，成世界網」。</text>
+<text x="30" y="446" font-size="11.5" fill="#8a7a5e">计数：香水海 99＝环 10＋外围 89（中央「最中央香水海」别计）；「名：」481 为全品第一标记（§7.2）。</text>
+</svg>""",
+            "cap": "三重含藏之竖构与十海环列之横构（§2.1–2.3·§7.2）；中央放大示意、环点非比例。娑婆居中央世界种第十三重，独作「其佛即是」。",
+            "en": "The containment (sea ⊃ lotus ⊃ world-system ⊃ twenty tiers ⊃ world) drawn vertically, and the ring of ten seas around the central sea drawn schematically; the outer eighty-nine seas form the 'net of worlds'. Names, not geometry, carry the chapter: 481 'named:' markers.",
+            "dufa": [
+                "先看左圆四层：**海→华→种→二十重**——四层相生即「積剎成種、積種成海」之图解；娑婆居第十三重，独例「其佛即是」。",
+                "再看右环：**十海如環，绕于中海**——每海自出莲华自持世界种；环上点数是构意，非比例。",
+                "末记底行两数：**香水海 99（环 10＋外围 89）**与**「名：」481**——构与名，即本品之两面。",
+            ],
+        },
+        {
+            "n": 2,
+            "title": "二十重之数谱",
+            "what": "理想二十重，实得几何",
+            "one": "中央 19 佛号＋「其佛即是」1；十海 20/19/18 不齐，实得 194",
+            "svg": """<svg viewBox="0 0 1000 430" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">「各含二十重」之数谱：理想与现文</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">每重 10px；虚线＝理想 20；括注＝佛号实得（§7.2 逐海实点）</text>
+
+<text x="30" y="86" font-size="12" fill="#5a5147">中央世界種</text>
+<rect x="250" y="72" width="200" height="18" fill="#d4a03c" stroke="#b8863c"/>
+<line x1="450" y1="66" x2="450" y2="96" stroke="#8a7a5e" stroke-dasharray="4,3"/>
+<text x="460" y="86" font-size="11" fill="#5a5147">20 重 · 佛号 19＋「其佛即是」1（澄观「但列十九佛剎塵數。為二十重」）</text>
+
+<text x="30" y="120" font-size="12" fill="#5a5147">東 離垢焰藏</text>
+<rect x="250" y="106" width="200" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="460" y="120" font-size="11" fill="#5a5147">20 · 佛号 20</text>
+<text x="30" y="150" font-size="12" fill="#5a5147">南 無盡光明輪</text>
+<rect x="250" y="136" width="190" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="450" y="150" font-size="11" fill="#5a5147">19</text>
+<text x="30" y="180" font-size="12" fill="#5a5147">東南 金剛寶焰光</text>
+<rect x="250" y="166" width="200" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="460" y="180" font-size="11" fill="#5a5147">20</text>
+<text x="30" y="210" font-size="12" fill="#5a5147">西南 帝青寶莊嚴</text>
+<rect x="250" y="196" width="200" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="460" y="210" font-size="11" fill="#5a5147">20</text>
+<text x="30" y="240" font-size="12" fill="#5a5147">西 金剛輪莊嚴底</text>
+<rect x="250" y="226" width="180" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="440" y="240" font-size="11" fill="#5a5147">18</text>
+<text x="30" y="270" font-size="12" fill="#5a5147">西北 蓮華因陀羅網</text>
+<rect x="250" y="256" width="200" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="460" y="270" font-size="11" fill="#5a5147">20</text>
+<text x="30" y="300" font-size="12" fill="#5a5147">北 積集寶香藏</text>
+<rect x="250" y="286" width="180" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="440" y="300" font-size="11" fill="#5a5147">18</text>
+<text x="30" y="330" font-size="12" fill="#5a5147">東北 寶莊嚴</text>
+<rect x="250" y="316" width="200" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="460" y="330" font-size="11" fill="#5a5147">20</text>
+<text x="30" y="360" font-size="12" fill="#5a5147">下方 金剛寶聚</text>
+<rect x="250" y="346" width="200" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="460" y="360" font-size="11" fill="#5a5147">20</text>
+<text x="30" y="390" font-size="12" fill="#5a5147">上方 天城寶堞</text>
+<rect x="250" y="376" width="190" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="450" y="390" font-size="11" fill="#5a5147">19</text>
+
+<text x="30" y="418" font-size="11.5" fill="#8a7a5e">十海合计 194 佛号（少于「十海×20＝200」之理想数）——现文略说与文本现象〔待核〕；两译各照其本（§7.2）。</text>
+</svg>""",
+            "cap": "中央与十海各世界种之重数与佛号实得（§7.2 逐海实点）：理想 20 而现文 20/19/18 不齐，合计 194——「不齐」即现文之实相，非计数之误。",
+            "en": "Tier counts across the central system and the ten ring seas (§7.2, counted sea by sea): the ideal twenty appears in the text as 20/19/18 per sea — 194 Buddha-names against an ideal 200. The unevenness is the text as it stands, not a counting error.",
+            "dufa": [
+                "先看虚线与条长之差：**条到 20 不足处即现文略说处**——19 与 18 两条即本品数之「不齐」，如实呈现，不补齐。",
+                "再看中央一条注：**佛号 19＋「其佛即是」1**——澄观已觉「但列十九」，计数与经文互相发明。",
+                "末记总数：**194 对 200**——理想数是读法之尺，实得数是文本之实；两数并立，即是本篇之数伦理。",
+            ],
+        },
+    ],
+    "weici_note": "本品在第一会居**别辩果相之位**：前品（世界成就）总说十事，本品即其「别辩」——以三卷之量铺华藏一海；后品（毗卢遮那）明能感之本事。",
+    "weici": [
+        ["世界成就品（品 4）", "卷七后半", "第一会·总纲", "世界海十事", "本品即十事之「别辩果相」"],
+        ["毗卢遮那品（品 6）", "卷十一", "第一会末·本事", "大威光历事四佛", "华藏之所依止（毘盧遮那）"],
+        ["世主妙严品（品 1）", "卷一–五", "第一会·果·会众", "解脱门 442 见", "同属所信因果周之果门"],
+        ["藏译 Toh 44 第 6 章", "德格 035 卷 fol 103b（L.201 TOC）", "开篇「…འཇིག་རྟེན་གྱི་ཁམས་རྒྱ་མཚོ…སྙིང་པོ་མེ་ཏོག་གི་རྒྱན…」（世界海·花庄严之藏）〔L.212 实测〕", "与「華藏莊嚴世界海」相应", "对应判读〔本文判断〕·逐字对勘未作〔待核〕"],
+        ["藏译 Toh 44 第 5 章", "德格 035 卷 fol 102a", "开篇为一新起经题（「…མདོ། བམ་པོ་བརྒྱད་པ།」）", "与本品开篇无直接相应", "藏译于此有分界，性质待勘〔待核〕"],
+        ["六十〈盧舍那佛品〉", "卷四", "晋译·大幅压缩", "仅列约二十名", "详略之别最著（§6.4）"],
+    ],
+    "teshe_note": "本品之形式特征皆与邻品对看而得；数字之出处逐条标注。",
+    "teshe": [
+        ["篇幅", "19,098 CJK（含三段品题 27）／句末 626（§7.1）", "第四品 5,894", "第一会第二大品，三卷三段"],
+        ["分品体例", "内分「之一／之二／之三」＝卷八/九/十", "他品一卷一题", "三段各冠品题，随卷分段"],
+        ["立名体例", "「名：」481·「此上過」218（§7.2）", "第四品 10/10「世界海」词头", "列举即修辞，标记即骨架"],
+        ["数之不齐", "中央 19＋1·十海 20/19/18＝194（§7.2）", "理想 20×10＝200", "理想数与实得数并立，不补齐"],
+        ["六十侧", "大幅压缩，仅列约二十名（§6.4）", "八十逐海逐重枚举", "详略之别为两本最著差异"],
+    ],
+    "dufa5": [
+        ["构形读法", "图 〇-1 → §2.1–2.3", "宇宙论读者", "三重含藏＋十海环列＋世界网"],
+        ["数名读法", "图 〇-2 → §7.2 计量表", "数据读者", "名：481·佛号 249·此上過 218 之枚举骨架"],
+        ["义理读法", "§1.4／§4.1–4.6", "义理读者", "華藏因陀罗网·依正不二·重重无尽"],
+        ["对勘读法", "§6.4／§6.9＋〇之二.5", "版本学读者", "六十约二十名节录·「约二十名对勘」廿五项"],
+        ["仪轨读法", "§5.4′.5 讲记（Ep15 風輪平等住）", "修行者", "风轮平等住之观法"],
+    ],
+    "shu": [
+        ["**T0 经文明文**", "偈 181（之一 80／之三 101）·长行 47 段", "§7.1（逐组标定）", "结构总量"],
+        ["**T0 经文明文**", "「名：」481／「佛號」249／「有世界，名：」247〔订正〕", "§7.2（逐项实点）", "立名之海"],
+        ["**T0 经文明文**", "十海重数 20/19/18＝194·中央 19＋「其佛即是」1", "§7.2（逐海实点）", "理想 200 之差"],
+        ["**T0 本文实测**", "19,098 字／626 句／独字 657／熵 7.2864／Zipf −1.6057", "§7.1（剥校勘）", "篇幅与信度"],
+        ["**T1 注疏**", "「十海如環。繞於中海」·「但列十九佛剎塵數。為二十重」·绕数「二百一十佛剎塵數」", "`T1735`（§2.3／§7.2 引）", "结构之判与计数互证"],
+        ["**T0·六十本实测**", "约二十名节录（§6.9 廿五项对勘）", "`T09n0278` 卷四", "详略之别"],
+        ["**T0·藏本实测**", "藏 6 开篇「世界海·花庄严之藏」与本品相应；藏 5 新起经题", "L.201 TOC（fol 102a/103b）", "开篇相应·逐字对勘未作"],
+    ],
+    "shu_note": "> **〔读法〕** 本品之数以「**立名**」为性：名：481、佛號 249——**数即列举，列举即数**。三组数字须并立而观：**99 与 100**（香水海中央别计之辨）、**194 与 200**（现文与理想之差）、**210**（总绕数，1＋2＋…＋20）——**理想数是读法之尺，实得数是文本之实**，凡引必注口径。",
+}
+
+ALL = [P2, P3, P4, P5, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
 
 if __name__ == "__main__":
     want = set(sys.argv[1:])
