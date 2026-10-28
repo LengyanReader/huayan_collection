@@ -430,10 +430,10 @@ Hard：引文逐字回源 T10n0279 繁体·不擅改经文·异文各照底本·
 - **第 7–18 批（L.214+）**：第二/三会十二部逐部复检——回源复 audit、六十覆盖补齐、疏科照录缺口、EN 核对、待核清账。
 - **收口批**：系列总纲/`standalone_articles.yaml`/`CLAUDE.md`/`next-phase-plan.md` 心跳同步＋战役终审。
 
-### 二、验收线（DoD）
+### 二、验收线（DoD·L.221 核销）
 
-- [ ] 每部元素集齐平（按部体例清点，逐项留证据）；行数不设硬指标、不注水。
-- [ ] 引文回源 miss=0（复 audit 输出为证）；数据层复算抽查无漂移。
-- [ ] 待核只余「真不可决」者（本机无一手材料），清账记录逐条留痕。
-- [ ] 每批六门禁 exit 0：`.harness/check.py`·`build`·`test_pipeline`·`verify_demo`·`verify_sources`·`git diff --check`。
-- [ ] 登记同步（系列总纲/standalone_articles 如需）；本地 commit、**不 push**。
+- [x] 每部元素集齐平：〇之二层 18 部全覆盖（P1 原有＋P2–P6 L.209–L.213 新补＋P7–P18 L.204）；各部台账立本批段；行数未注水。
+- [x] 引文回源 miss=0：第二会本批机检（P7 31 合+3 节略／P8 3+2／P9 6/6／P10 21/21／P11 0 讹／P12 去序号抽检全中）；第三会 L.206 hit=430 miss=0 在册；常设审计器 `_l214_audit.py` 三轮器误如实修正。
+- [x] 待核只余真不可决者：L.208 清五处＋过期陈述 12 处（L.210/211/212/214/215）＋藏 5 观察得解（L.213）；余量＝梵名对音/图像著录/断代（本机无一手材料）。
+- [x] 每批六门禁 exit 0：L.207–L.220 十四批全绿（`build` 57 files｜31,558,287→31,694,531 B；check/test_pipeline/verify_demo/verify_sources/git diff --check 输出见各批 PROGRESS 条目）。
+- [x] 登记同步：CLAUDE.md 当前进度插战役行；next-phase-plan.md 立战役节（L.207–L.220 总账/成果/遗留）；`.harness/ledger.md` L.207–L.220 各一行；standalone_articles 无新增页免登记；本地 commit、**未 push**（14 commits `3a15299…cea6c45`）。
