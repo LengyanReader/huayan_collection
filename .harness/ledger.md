@@ -159,3 +159,4 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 | L.221 | 战役收口·DoD 五项核销（PLAN/CLAUDE.md/next-phase-plan 心跳同步）——前三会战役终态：〇之二层全覆盖·藏开篇实测全立·过期陈述清零·复审 0 讹字 | done(十四批+收口批共 15 commits 3a15299…cea6c45+本批·build 57 files 31,694,531 B·六门禁 exit 0·未 push) |
 | L.222 | 外库补课第 0 步：T10n0293 四十华严 epub 提取入库（261,403 CJK·L.206 记阙闭合）＋华藏妙海提取（111,947 CJK）＋huayan_daodu_index.yaml 总索引（14 items·OCR 探测 5 件待 OCR）＋P16「未上架」订正（huayanhai 品级讲记在库未查） | done(build 57 files 31,695,120 B·六门禁 exit 0·本地 commit 未 push) |
 | L.223 | 外库补课批一·第十五部补引十住品品级讲记（25 集 233,537 CJK 全在库·十住位分布实测·引文四条程序化抽取 0 手抄·重诵未入库记阙） | done(build 57 files 31,700,264 B·六门禁 exit 0·本地 commit 未 push) |
+| L.224 | 外库补课批二·第十八部补引明法品品级讲记（47 集 414,382 CJK 全在库·47 集结会语与澄观「第三會竟」三源同指·引文四条程序化） | done(build 57 files 31,704,501 B·六门禁 exit 0·本地 commit 未 push) |
