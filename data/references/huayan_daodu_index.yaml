@@ -1,0 +1,124 @@
+# 华严导读／经典著作外库总索引（L.222 建·L.138.2 预留项之落实）
+#
+# SSOT：本索引为 `C:\华严\经典著作\` 外库件之唯一台账；分层铁律见 .harness/decisions.md #9
+# ——海云讲经类（勘玄记系·华藏妙海·品级讲记）属主体/参照之辨照旧例；CBETA 复本类免提取。
+# 引用纪律：凡引此处文件，逐字照录并注路径与提取状态；OCR 件引用前须先 OCR 入库，不得凭记忆转述。
+
+meta:
+  created: "2026-10-28"
+  batch: L.222
+  source_root: "C:/华严/经典著作/"
+  ruling: "二手整理资料可引用·须标明来源（用户裁定 2026-10-21 L.139.0）"
+
+items:
+  # ── 一级同名·玄谈／枢纽系（L.138.2 E1–E4）──
+  - id: kanxuanji-1
+    path: "C:/华严/经典著作/《堪玄记 一》（华严经枢纽）.pdf"
+    tier: 一级
+    topic_zh: 华严经枢纽（玄谈）
+    ep_map: "Ep1 §D/E"
+    pages: 232
+    extraction_status: 待OCR（扫描件·文字层 0·2026-10-28 探测）
+    extraction_tool: ""
+    cited_in: []
+  - id: kanxuanji-1-cmt
+    path: "C:/华严/经典著作/《堪玄记 一》（华严经枢纽）cmt.pdf"
+    tier: 一级（批注本）
+    topic_zh: 华严经枢纽·批注版
+    pages: ""
+    extraction_status: 待OCR
+    cited_in: []
+  - id: kanxuanji-02
+    path: "C:/华严/经典著作/《堪玄记 02》华严哲学玄谈note.pdf"
+    tier: 一级
+    topic_zh: 华严哲学玄谈笔记
+    ep_map: "Ep1 §A/B"
+    pages: 128
+    extraction_status: 待OCR（文字层 0）
+    cited_in: []
+  - id: kanxuanji-3
+    path: "C:/华严/经典著作/《勘玄记 三》（普贤行愿品—华严经总结）.pdf"
+    tier: 一级
+    topic_zh: 普贤行愿品—华严经总结（勘玄记三）
+    pages: 240
+    extraction_status: 待OCR（文字层 0·211MB 扫描件）
+    cited_in: []
+  - id: kanxuanji-4
+    path: "C:/华严/经典著作/《勘玄记04》（离世间品）.pdf"
+    tier: 一级
+    topic_zh: 离世间品（勘玄记04·44MB 版）
+    pages: 370
+    extraction_status: 待OCR（文字层 0）
+    cited_in: []
+  - id: kanxuanji-4-big
+    path: "C:/华严/经典著作/《勘玄记04》（离世间品）--.pdf"
+    tier: 一级（高清重复件）
+    topic_zh: 离世间品（594MB 版·与上件同书）
+    extraction_status: 待OCR（与 kanxuanji-4 同源·择一即可）
+    cited_in: []
+
+  # ── 净行品专题（L.138.2 E5）──
+  - id: polie-xuanyi
+    path: "C:/华严/经典著作/《華嚴經》〈淨行品〉剖裂玄義疏(1).pdf"
+    tier: 一级
+    topic_zh: 净行品剖裂玄义疏
+    ep_map: "Ep1 §C"
+    pages: 130
+    extraction_status: 待重OCR（有文字层但乱码级质量·2026-10-28 探测）
+    target_article: 第十一部_净行品
+    cited_in: []
+
+  # ── 已提取入库件 ──
+  - id: huazang-miaohai
+    path: "C:/华严/经典著作/华藏妙海 整理版.pdf"
+    tier: 二级（二手整理·可引用·须标来源）
+    topic_zh: 华藏妙海（海云玄谈整理稿）
+    pages: 191
+    extraction_status: 已提取→data/references/huayan_daodu/华藏妙海_整理版_提取本.txt（111,947 CJK·2026-10-28 L.222）
+    extraction_tool: pypdf
+    cited_in: []
+  - id: t0293-sishihuaran
+    path: "C:/华严/经典著作/T0293 大方廣佛華嚴經 (唐 般若譯 [般若譯, 唐]) (z-lib.org).epub"
+    tier: 一级（CBETA 官方 epub）
+    topic_zh: 四十华严全本（T10n0293）
+    extraction_status: 已提取→data/references/cbeta_txt/T10n0293.txt（261,403 CJK·40 卷·2026-10-28 L.222·开篇室罗筏城逝多林核验✓）
+    extraction_tool: "python zipfile＋剥标签"
+    note: "L.206 记「四十全本未入仓」之阙自此闭合（PROGRESS blocked 行与 next-phase-plan 遗留行均已订正）"
+    cited_in: []
+  - id: t1871-zhigui
+    path: "C:/华严/经典著作/T1871 華嚴經旨歸 (唐 法藏述) (Z-Library).pdf"
+    tier: 一级
+    topic_zh: 华严经旨归
+    extraction_status: 免提取（库内 cbeta_txt/T1871_法藏_华严经旨归.txt 已有·L.136 已入总纲与三十九品研究）
+    cited_in: ["系列总纲", "三十九品研究", "第十部", "第十六部"]
+
+  # ── 后续品目备用（非前三会）──
+  - id: sishiliu-bashihua-contrast
+    path: "C:/华严/经典著作/四十六十八十华严对比合集.pdf"
+    tier: 二级
+    topic_zh: 四十/六十/八十华严对比合集（453MB）
+    extraction_status: 未提取（品 26+ 或版本比对专项用）
+  - id: sishixuhua-shu
+    path: "C:/华严/经典著作/华严经普贤行愿品疏（四十华严疏）.pdf"
+    tier: 一级
+    topic_zh: 华严经普贤行愿品疏（四十华严疏）
+    extraction_status: 未提取（品 39 相关批用）
+  - id: jb005-biexingshuchao
+    path: "C:/华严/经典著作/大方廣佛華嚴經普賢行願品別行疏鈔 CBETA_JB005 .pdf"
+    tier: 一级
+    topic_zh: 普贤行愿品别行疏钞（JB005）
+    extraction_status: 未提取（品 39 相关批用）
+  - id: l1557-shuchao-huiben
+    path: "C:/华严/经典著作/大方廣佛華嚴經疏鈔會本 CBETA_L1557 .pdf"
+    tier: 一级
+    topic_zh: 华严经疏钞会本（L1557·与 Kanripo KR6e0021 异版）
+    extraction_status: 免提取备查（库内已有 KR6e0021 会本 12 卷·L.84 取得）
+
+# ── CBETA 复本类（库内已有电子底本·免提取清单）──
+cbeta_duplicates_free:
+  note: "以下外库 PDF/mobi 为库内已有 CBETA 电子底本之复本，引用一律以库内 cbeta_txt/ 底本为准，不复录外库件"
+  items:
+    - "T1732 搜玄记（库内 PDF 抽取本已归一）"
+    - "T1733 探玄记 · T1735 疏 · T1736 演义钞 · T1739 论 · X0221 刊定记 · X0223 合论"
+    - "B0002 疏论纂要（第一部附录六已引）· X0229 行愿品疏钞 · T1880/T1881 金师子章系"
+    - "八十/六十华严经本复本（库内 T10n0279.xml＋T09n0278.xml 全卷在）"
