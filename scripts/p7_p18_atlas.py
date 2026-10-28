@@ -2316,7 +2316,168 @@ P3 = {
     "shu_note": "> **〔读法〕** 本品之数两两成趣：**9 与 9 等而不配，10 与 7 异而不齐**——门→云非双射、两译不强拉齐，皆「各照其本」之铁律在数目上之呈现。读数如读文，**先后其位，再论其义**。",
 }
 
-ALL = [P2, P3, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
+# ----------------------------------------------------------------------------
+# 第四部　世界成就品（第一会·卷第七后半）
+# ----------------------------------------------------------------------------
+P4 = {
+    "tag": "P4",
+    "path": os.path.join(DIR1, "华严经细读_第四部_世界成就品.md"),
+    "hui": "第一会（菩提场·所信因果周）",
+    "dingwei": "本品一味以「境」为法，故读法以**十事为纲、以数为纬**：十事各长行＋颂，事二独得二十二颂；先谱十事之量，再看十因缘之答，末观图元成图。",
+    "yiju": "**十事是问，十因缘是答**——世界海以「一」字冠首、以「海」为量；尘刹互入，恰成一张完全二部图，本品即说此「境」之总纲。",
+    "sanwen": "① 十事之中何以事二「所依住」独得二十二颂？② 十因缘八十列十缘、六十只八缘，省在何处？③ 尘刹互入之图为何是完全二部图、为何不可作欧氏平面读？",
+    "tiyao": "本品占**卷第七后半**，剥校勘 **CJK 5,894 字（含品题 7·净 5,887）／句末 173**（§7.1）。结构为**叙分**（遍观·牒问·许说·重颂 10 颂）＋**正宗分**（总标十事·十因缘，十事各「长行＋颂」）：`<p>` 24／`<lg>` 11／`<l>` 240＝**120 颂**，逐事颂数 **9／22／10／10／10／9／10／10／10／10**（§7.2·事非等量）。十事名目 **10／10 共享「世界海」词头**，十因缘 **10／10 以「故」结句**（§7.3）；「世界海」**59** 见（L.136 订正口径）。澄观谓十事「**亦攝十八圓滿**」；六十本无独立品名、无「劫轉變差別」「無差別門」二事、十因缘只八缘（§6）。",
+    "xufa": "先观图 〇-1 以得其量（十事逐事颂数），次观图 〇-2 以得其图元（相入语汇即图例），次读〇之二.3 坐标、.6 数等，然后入 §二逐段。**量既明，海始可测。**",
+    "en_map": "Book Seven (second half), the chapter on the accomplishment of worlds, states the total scheme of the ocean of worlds in ten topics, each with its prose items and verses: 120 stanzas in eleven verse-groups, the second topic alone taking twenty-two. The ten topic-names all share the head 'ocean of worlds', and the ten causal statements all end in 'therefore'; the sixty-book rendering drops two of the ten topics and merges the chapter into the Locana chapter. Fig. 0-1 charts the ten topics by their verse counts; Fig. 0-2 plots the interpenetration vocabulary — dust, middle, appear, enter — whose very counts are the legend of the complete bipartite graph of dusts and worlds (§7.4).",
+    "figs": [
+        {
+            "n": 1,
+            "title": "十事之量谱",
+            "what": "十事各得几颂",
+            "one": "9／22／10／10／10／9／10／10／10／10＝110＋叙分 10＝120",
+            "svg": """<svg viewBox="0 0 1000 480" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">世界海十事之量：十事各「长行＋颂」，事非等量</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">每颂 8px；横标＝事名（依经次第）；条目数注于条末</text>
+
+<text x="30" y="84" font-size="12" fill="#5a5147">叙分（遍观·牒问·许说·重颂）</text>
+<rect x="360" y="70" width="80" height="18" fill="#e6dbc5" stroke="#c9b98f"/>
+<text x="448" y="84" font-size="11" fill="#5a5147">10 颂</text>
+
+<text x="30" y="122" font-size="12" fill="#5a5147">一 起具因緣</text>
+<rect x="360" y="108" width="72" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="440" y="122" font-size="11" fill="#5a5147">9 颂 · 条目 10</text>
+<text x="30" y="152" font-size="12" fill="#5a5147">二 所依住</text>
+<rect x="360" y="138" width="176" height="18" fill="#d4a03c" stroke="#b8863c"/>
+<text x="544" y="152" font-size="11" font-weight="bold" fill="#5a5147">22 颂 · 条目 10（十事最巨）</text>
+<text x="30" y="182" font-size="12" fill="#5a5147">三 形狀</text>
+<rect x="360" y="168" width="80" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="448" y="182" font-size="11" fill="#5a5147">10 颂 · 条目 10</text>
+<text x="30" y="212" font-size="12" fill="#5a5147">四 體性</text>
+<rect x="360" y="198" width="80" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="448" y="212" font-size="11" fill="#5a5147">10 颂 · 条目 20（条最繁）</text>
+<text x="30" y="242" font-size="12" fill="#5a5147">五 莊嚴</text>
+<rect x="360" y="228" width="80" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="448" y="242" font-size="11" fill="#5a5147">10 颂 · 条目 10</text>
+<text x="30" y="272" font-size="12" fill="#5a5147">六 清淨</text>
+<rect x="360" y="258" width="72" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="440" y="272" font-size="11" fill="#5a5147">9 颂 · 条目 10</text>
+<text x="30" y="302" font-size="12" fill="#5a5147">七 佛出興</text>
+<rect x="360" y="288" width="80" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="448" y="302" font-size="11" fill="#5a5147">10 颂 · 条目 10</text>
+<text x="30" y="332" font-size="12" fill="#5a5147">八 劫住</text>
+<rect x="360" y="318" width="80" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="448" y="332" font-size="11" fill="#5a5147">10 颂 · 条目 9</text>
+<text x="30" y="362" font-size="12" fill="#5a5147">九 劫轉變差別</text>
+<rect x="360" y="348" width="80" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="448" y="362" font-size="11" fill="#5a5147">10 颂 · 条目 10</text>
+<text x="30" y="392" font-size="12" fill="#5a5147">十 無差別門</text>
+<rect x="360" y="378" width="80" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="448" y="392" font-size="11" fill="#5a5147">10 颂 · 条目 10</text>
+
+<line x1="30" y1="412" x2="970" y2="412" stroke="#d8c9a8" stroke-width="1"/>
+<text x="30" y="436" font-size="11.5" fill="#8a7a5e">合计 120 颂（叙分 10＋十事 110）；`<p>` 24·`<lg>` 11·`<l>` 240（§7.2 实测）。十因缘八十 10 缘／六十 8 缘（§6）。</text>
+<text x="30" y="458" font-size="11.5" fill="#8a7a5e">事二「所依住」独厚、事四「體性」条目独繁——二处即本品之重心（§7.2 澄观分科）。</text>
+</svg>""",
+            "cap": "十事逐事颂数与长行条目（§7.2 逐事实测·澄观分科）；叙分另 10 颂，合计 120。",
+            "en": "The ten topics charted by verse count and prose items (§7.2, counted item by item): the topic 'abiding support' alone takes twenty-two verses, the topic 'nature' alone carries twenty prose items; plus the ten stanza introduction, 120 stanzas in all.",
+            "dufa": [
+                "先看两条最长的：**事二 22 颂、事四 20 条**——十事非均匀铺陈，重心自有厚薄，此即「依住」与「体性」之说最详。",
+                "再看条目与颂数的错落：**条 20 而颂 10（事四）、条 9 而颂 10（事八）**——条与颂各成一段，不互相折算。",
+                "末看底行：**叙分 10＋十事 110＝120**——先记总量，再入逐事，免为一事之繁所夺。",
+            ],
+        },
+        {
+            "n": 2,
+            "title": "相入图元谱",
+            "what": "尘刹互入之词如何成图",
+            "one": "中 64·現 62·塵 48·一一 26……图元即图例",
+            "svg": """<svg viewBox="0 0 1000 430" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">相入图元谱：本品「相入／显现」语汇之实点</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">每见 6px；词级计数（剥校勘·卷七后半）；右栏注其图位（§7.4）</text>
+
+<text x="30" y="86" font-size="12" fill="#5a5147">「中」（方位）</text>
+<rect x="230" y="72" width="384" height="18" fill="#d4a03c" stroke="#b8863c"/>
+<text x="622" y="86" font-size="11.5" font-weight="bold" fill="#5a5147">64</text>
+<text x="660" y="86" font-size="10.5" fill="#8a7a5e">含摄定位（尘中／刹中）</text>
+<text x="30" y="116" font-size="12" fill="#5a5147">「現」</text>
+<rect x="230" y="102" width="372" height="18" fill="#d4a03c" stroke="#b8863c"/>
+<text x="610" y="116" font-size="11.5" font-weight="bold" fill="#5a5147">62</text>
+<text x="660" y="116" font-size="10.5" fill="#8a7a5e">显现（动作边·一现一切）</text>
+<text x="30" y="146" font-size="12" fill="#5a5147">「塵」</text>
+<rect x="230" y="132" width="288" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="526" y="146" font-size="11.5" font-weight="bold" fill="#5a5147">48</text>
+<text x="660" y="146" font-size="10.5" fill="#8a7a5e">顶点（一侧基）</text>
+<text x="30" y="176" font-size="12" fill="#5a5147">「無量」</text>
+<rect x="230" y="162" width="216" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="454" y="176" font-size="11.5" font-weight="bold" fill="#5a5147">36</text>
+<text x="660" y="176" font-size="10.5" fill="#8a7a5e">量之无界（基数无限）</text>
+<text x="30" y="206" font-size="12" fill="#5a5147">「一一」</text>
+<rect x="230" y="192" width="156" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="394" y="206" font-size="11.5" font-weight="bold" fill="#5a5147">26</text>
+<text x="660" y="206" font-size="10.5" fill="#8a7a5e">全称量化（边生成子）</text>
+<text x="30" y="236" font-size="12" fill="#5a5147">「無邊」</text>
+<rect x="230" y="222" width="156" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="394" y="236" font-size="11.5" font-weight="bold" fill="#5a5147">26</text>
+<text x="660" y="236" font-size="10.5" fill="#8a7a5e">量之无界</text>
+<text x="30" y="266" font-size="12" fill="#5a5147">「微塵」</text>
+<rect x="230" y="252" width="150" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="388" y="266" font-size="11.5" font-weight="bold" fill="#5a5147">25</text>
+<text x="660" y="266" font-size="10.5" fill="#8a7a5e">顶点（点集基数）</text>
+<text x="30" y="296" font-size="12" fill="#5a5147">「入」</text>
+<rect x="230" y="282" width="132" height="18" fill="#b8863c" stroke="#7a5a28"/>
+<text x="370" y="296" font-size="11.5" font-weight="bold" fill="#5a5147">22</text>
+<text x="660" y="296" font-size="10.5" fill="#8a7a5e">相入（动作边）</text>
+
+<line x1="30" y1="322" x2="970" y2="322" stroke="#d8c9a8" stroke-width="1"/>
+<text x="30" y="348" font-size="11.5" fill="#5a5147">读法：**尘—刹之间每对皆有边，故成完全二部图 K_{m,n}**——连通·直径≤2·非平面·邻域即全体（密着），不可作欧氏平面读（§7.4〔本文判断〕·`sjcj_puxian_studies.py` 可复算）。</text>
+<text x="30" y="374" font-size="11.5" fill="#8a7a5e">字级另计：「一」237·「海」174·「切」145·「或」130（§7.1 高频字）——字与词两种口径，不可互比；「世界海」59（L.136 订正口径）。</text>
+<text x="30" y="400" font-size="11.5" fill="#8a7a5e">图元即图例：读图 〇-2 所举诸词，即是读 §7.4 相入图之顶点、边与量。</text>
+</svg>""",
+            "cap": "相入语汇词级实点（§7.4 图元表）；字级高频另见 §7.1，两口径不可互比。图元即相入图 K_{m,n} 之顶点、边与量词。",
+            "en": "The interpenetration vocabulary counted at word level (§7.4): 'middle' 64, 'appear' 62, 'dust' 48, 'without measure' 36, 'each-and-every' 26, 'enter' 22 — these counts are themselves the legend of the complete bipartite graph of dusts and worlds; character-level frequencies are a separate gauge and must not be mixed with these.",
+            "dufa": [
+                "先分两层：**上四条是「量与动作」（中·現·塵·無量），下四条是「边与生成」（一一·無邊·微塵·入）**——合起来恰是相入图之四要素。",
+                "再看右栏图位注：**每词皆有图职**——顶点、边、边生成子、基数；词表即图例，非装饰。",
+                "末记底线警语：**字级（一 237）与词级（一一 26）两种口径**——混读即错，凡引数必注口径。",
+            ],
+        },
+    ],
+    "weici_note": "本品在第一会居**说境之位**：前品（普贤三昧）起定成行，本品承起而总说世界海十事；后品（华藏世界）即十事总纲之别显（本师所严净之果相）。",
+    "weici": [
+        ["普贤三昧品（品 3）", "卷七前半", "第一会·行·定", "藏身三昧·九门起", "本品承其起定而说境（§3.3 请说相续）"],
+        ["华藏世界品（品 5）", "卷八–十", "第一会·果相", "别辩华藏", "本品十事总纲之别显"],
+        ["如来现相品（品 2）", "卷六", "第一会·果·现相", "四十问致请", "「安立」问由本品正答"],
+        ["藏译 Toh 44 第 4 章", "德格 035 卷 fol 88b（L.201 TOC）", "开篇「ཀུན་ཏུ་བཟང་པོས…བྱིན་གྱི་རླབས…འཇིག་རྟེན」（普贤·承佛加持·世界）〔L.211 实测〕", "与本品「承佛神力遍观世界海」相应", "对应判读〔本文判断〕·逐字对勘未作〔待核〕"],
+        ["六十〈盧舍那佛品〉", "卷三–四", "晋译·无独立品名", "无「劫轉變差別」「無差別門」二事", "十因缘 8 缘·第十「壞方便」（§6）"],
+    ],
+    "teshe_note": "本品之形式特征皆与邻品对看而得；数字之出处逐条标注；「世界海」从 59（L.136 订正口径）。",
+    "teshe": [
+        ["篇幅", "5,894 CJK／句末 173（§7.1）", "第三品 1,995／第二品 8,119", "中篇，十事宜按事分读"],
+        ["说境体例", "十事各「长行＋颂」，事非等量（9–22）", "第三品六分一链", "以「事」为单位，不以「分」"],
+        ["名目结构", "10／10 共享「世界海」词头·10／10「故」尾（§7.3）", "第三品 9·9·10 三集", "一纲十目·一缘一故，笛卡儿积之骨"],
+        ["计数口径", "「世界海」59（L.136 订正·两法皆 59）", "旧记 71 作废", "凡引数必注口径与订正痕"],
+        ["六十侧", "并入〈盧舍那佛品〉·少二事·十因缘 8", "八十十事俱全", "收摄之异，非教义之别（§6.8）"],
+    ],
+    "dufa5": [
+        ["结构读法", "图 〇-1 → §7.2 矩阵", "结构读者", "十事条目×颂数之矩阵与澄观分科"],
+        ["图元读法", "图 〇-2 → §7.4 相入图", "数据读者", "词表即图例，K_{m,n} 五性质可复算"],
+        ["义理读法", "§1.4／§4.1–4.2", "义理读者", "十事摄十八圆满·十因缘五力类·依正不二"],
+        ["对勘读法", "§6 全节＋〇之二.5", "版本学读者", "少二事·十缘 8·第十「壞方便」之收摄分寸"],
+        ["仪轨读法", "§2.1 叙分＋§5.3′.4 讲记", "修行者", "遍观—牒问—许说之说法仪"],
+    ],
+    "shu": [
+        ["**T0 经文明文**", "十事逐事颂数 9／22／10／10／10／9／10／10／10／10", "§7.2（`T10n0279` 卷七后半实点）", "事非等量"],
+        ["**T0 经文明文**", "十因缘 10 缘（皆以「故」结）", "§2.2／§7.3", "成刹之缘"],
+        ["**T0 经文明文**", "`<p>` 24／`<lg>` 11／`<l>` 240＝120 颂", "§7.1–7.2 实测", "结构总量"],
+        ["**T0 本文实测**", "5,894 字／173 句／独字 444／熵 7.4271／Zipf −1.3448", "§7.1（剥校勘）", "篇幅与信度"],
+        ["**T1 注疏**", "十事「亦攝十八圓滿」·梵题「世界海成就」", "`T1735`（§5.1·据疏转述）", "结构之判与题名之据"],
+        ["**T0·六十本实测**", "十因缘 8 缘·无「劫轉變差別」「無差別門」", "§6（`T09n0278` 卷三–四）", "收摄之异"],
+        ["**T0·藏本实测**", "藏 4 开篇「ཀུན་ཏུ་བཟང་པོས…བྱིན་གྱི་རླབས…འཇིག་རྟེན」", "L.201 TOC（fol 88b）", "开篇相应·逐字对勘未作"],
+    ],
+    "shu_note": "> **〔读法〕** 本品之数有**三种口径**：字级（一 237）、词级（一一 26）、订正口径（世界海 59，旧 71 作废）——凡引必注。十事「非等量」与十因缘「十／八」并存，正是**各照其本**之铁律在数目上之呈现。",
+}
+
+ALL = [P2, P3, P4, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
 
 if __name__ == "__main__":
     want = set(sys.argv[1:])
