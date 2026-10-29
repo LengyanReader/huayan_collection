@@ -491,6 +491,22 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-shengyemotiangong-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 24
+  icon: 🌙
+  title: 九九华严第十九品 昇夜摩天宫品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Nineteen: Rising to the Yāma Heaven'
+  title_sub: 第四会首品·卷十九·品文782·6段＋十佛偈组「是故此處最吉祥」×10·不离而升第二例·善來三称与品13互见·澄观四品三分直引·六十〈佛昇夜摩天宮自在品第十五〉品名对读·藏24开篇实测·L.233核心成文·深化批L.233b预登记
+  updated_at: '2026-10-28'
+  doc: docs/经学文献/华严经细读/第四会_夜摩天宫_差别因果周/华严经细读_第十九部_昇夜摩天宫品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
