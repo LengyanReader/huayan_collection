@@ -1549,3 +1549,9 @@ done(
 - **闸门全绿**：build 58 files｜31,809,324 B｜check.py OK｜test_pipeline ALL PASSED｜verify_demo rc=0｜verify_sources rc=0｜verify_ru_lai ALL PASSED｜git diff --check OK。
 
 **next**：L.235 第三部（同体例）→ L.236–L.238 四/五/六部 → push 检查点。
+
+### L.235 · 会读深化批二（第三部）——进行中 · 2026-10-30
+
+**done**（观察到·截至本心跳）：**5.1 澄观**（要点5：近方便之位/普贤即三昧释名法/四同六异之实证性格/宗趣三叠/广大生息三义＋阐释3·「科判论证范本」启发）＋**5.2 法藏**（要点6：诸会料简四问/入定四问/四净四藏/三昧三折训/十重三昧/加持三加＋阐释4·「纳法在心」启发）。**闸门**：build 58 files｜31,813,358 B｜check OK｜verify_demo rc=0｜diff-check OK。
+
+**未竟（L.235 续）**：5.2′ 智俨／5.2″ 慧苑／5.3 李通玄四件套＋§5.5 总汇升格（P3 小结 41 行已在·并入总汇）。
