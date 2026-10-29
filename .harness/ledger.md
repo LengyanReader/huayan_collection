@@ -165,3 +165,4 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 | L.227 | 缺文献下载批·canonical XML 八件入库（五家注疏全链 canonical 化·2.4M CJK）＋颂释章维基文库本（13,900·L.107 记阙闭合）＋B0002 epub 本（1,702,267·记阙闭合）＋X37n0237/X42n0242 开放渠道不可得如实记 | done(build 57 files 31,714,419 B·六门禁 exit 0·本地 commit 未 push) |
 | L.228 | OCR 批·环境三段史（conda-forge DLL 失败→UB-Mannheim 5.4.0→仓内 tessdata）＋剖裂玄义疏 130 页 65,276 CJK＋堪玄记一 232 页 131,547 CJK（残误如实保留） | done(build 57 files 31,714,419 B·六门禁 exit 0·本地 commit 未 push) |
 | L.229 | 十住讲记逐集对位批·对位表入 §5.3″′（22/25 机器对位）＋八十本第九住名「王子住」实证（集 19/20 讲记「法王子」=三名小异） | done(build 57 files 31,719,377 B·六门禁 exit 0·本地 commit 未 push) |
+| L.230 | 品 39 准备批·三源实测（八十段 174,911 CJK·四十行愿章·六十末品卷44·藏 44/45·讲记 3 件）＋批次计划锁入 PLAN（拆分俟裁定） | done(build 57 files 31,719,377 B·六门禁 exit 0·本地 commit 未 push) |
