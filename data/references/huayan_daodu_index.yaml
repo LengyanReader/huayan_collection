@@ -18,8 +18,8 @@ items:
     topic_zh: 华严经枢纽（玄谈）
     ep_map: "Ep1 §D/E"
     pages: 232
-    extraction_status: 待OCR（扫描件·文字层 0·2026-10-28 探测）
-    extraction_tool: ""
+    extraction_status: 已OCR→data/references/huayan_daodu/堪玄记一_华严经枢纽_OCR提取本.txt（232 页·131,547 CJK·2026-10-28 L.228·残误如实保留约 90-95% 字准·引前须对原书核）
+    extraction_tool: 同 polie-xuanyi
     cited_in: []
   - id: kanxuanji-1-cmt
     path: "C:/华严/经典著作/《堪玄记 一》（华严经枢纽）cmt.pdf"
@@ -64,7 +64,8 @@ items:
     topic_zh: 净行品剖裂玄义疏
     ep_map: "Ep1 §C"
     pages: 130
-    extraction_status: 待重OCR（有文字层但乱码级质量·2026-10-28 探测）
+    extraction_status: 已OCR→data/references/huayan_daodu/剖裂玄义疏_OCR提取本.txt（130 页·65,276 CJK·2026-10-28 L.228·tesseract 5.4.0 chi_tra psm3·残误如实保留约 90-95% 字准·引前须对原书核）
+    extraction_tool: pypdfium2 渲染＋UB-Mannheim tesseract 5.4.0（TESSDATA_PREFIX 指向仓内 tools/tesseract/tessdata）
     target_article: 第十一部_净行品
     cited_in: []
 

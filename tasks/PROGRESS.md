@@ -1468,3 +1468,18 @@ done(
 **blocked**：无。
 
 **next**：颂释章内容批（P1 乙类→甲类引文择要＋8.7 圆融读法待核之推进）俟裁定；canonical XML 二次校对（PDF 抽取本勘验）为长线。
+
+### L.228 · OCR 批：环境建立＋剖裂玄义疏/堪玄记一全本 OCR · 2026-10-28
+
+**goal**：下一步候选①——OCR 环境建立（用户指示可用 conda hy_py312）与待 OCR 两件全本提取。
+
+**done**（观察到）：
+- **OCR 环境建立（三段史·如实录）**：①conda-forge tesseract 装入 hy_py312（tesseract.exe+tesseract55.dll）但**二进制静默无法启动**（DLL 问题·conda run 亦失败·实测）；②改 **UB-Mannheim v5.4.0** 官方发行版（GitHub latest·PowerShell 静默安装·落 Program Files）；③繁中模型 chi_tra/chi_tra_vert 因 Program Files 无写权限，置仓内 `tools/tesseract/tessdata/`＋`TESSDATA_PREFIX` 指向（免管理员·可复现）。pypdfium2 渲染（hy_py312 已有）。
+- **试点**：两书 p.10/p.30 双模式（chi_tra psm3/5·chi_tra_vert psm5）对比——**两书皆横排**（非竖版预期·勘玄记一 psm5/vert 反而差·弃用）；chi_tra psm3 出 351/698 CJK 基本可读。
+- **全本 OCR（后台·逐页落盘·断点续跑）**：剖裂玄义疏 **130 页·65,276 CJK**；堪玄记一（华严经枢纽）**232 页·131,547 CJK**。中段抽验（p.60/p.100）约 90–95% 字准（「樞紐→槿紐」类残误·空格噪声可后处理）——**残误如实保留、引前须对原书核**（铁律）。
+- **登记**：`huayan_daodu_index.yaml` 两件状态→已OCR（含工具与质量注）；YAML parse ✓。
+- **闸门全绿**：build 57 files｜31,714,419 B｜六门禁 exit 0。
+
+**blocked**：无。
+
+**next**：①RapidOCR（pip 系·用户建议方向）试点对比——若对中文质量更优，用于勘玄记三/04 两件大扫描件；②品级讲记逐段深对勘（L.229·预备件 `huayanhai_shizhu_alignment.json` 22/25 集已对位）；③品 39 准备（L.230·四十华严与藏 44/45 料源已探）。

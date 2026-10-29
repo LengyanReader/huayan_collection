@@ -163,3 +163,4 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 | L.225 | 外库补课批三·第十一部补引净行品品级讲记（171,330 CJK·三段式同构互证·引文二条程序化）＋剖裂玄义疏 OCR 记阙（工具不可用如实登记） | done(build 57 files 31,708,034 B·六门禁 exit 0·本地 commit 未 push) |
 | L.226 | 外库补课批四收官·十二部补引贤首品导读(73k·字差即义差)+十六部补引梵行清净成书(141k·践 L.222 诺)——**补课战役终态：五部品级讲记 1,033k CJK 接入·引文十四条程序化** | done(build 57 files 31,713,855 B·六门禁 exit 0·本地 commit 未 push) |
 | L.227 | 缺文献下载批·canonical XML 八件入库（五家注疏全链 canonical 化·2.4M CJK）＋颂释章维基文库本（13,900·L.107 记阙闭合）＋B0002 epub 本（1,702,267·记阙闭合）＋X37n0237/X42n0242 开放渠道不可得如实记 | done(build 57 files 31,714,419 B·六门禁 exit 0·本地 commit 未 push) |
+| L.228 | OCR 批·环境三段史（conda-forge DLL 失败→UB-Mannheim 5.4.0→仓内 tessdata）＋剖裂玄义疏 130 页 65,276 CJK＋堪玄记一 232 页 131,547 CJK（残误如实保留） | done(build 57 files 31,714,419 B·六门禁 exit 0·本地 commit 未 push) |
