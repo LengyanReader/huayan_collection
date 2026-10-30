@@ -2,7 +2,7 @@
 # 惯例承 standalone_articles.yaml：数据驱动生成物，构建器只消费本表。
 # 新增子页 = subpages 加一条目 + 相应 build 函数（F.2+ 批），壳页自动收录。
 # status 枚举：live（已上线）/ in-build（施工中）/ planned（已规划）
-version: "1.0.0"
+version: "1.1.0"
 last_updated: "2026-10-30"
 module:
   title: "法脉传承"
@@ -28,10 +28,10 @@ subpages:
     title_en: "Mountains & Rivers of the Lineage"
     icon: "⛰️"
     file: "shanhe.html"
-    status: planned
-    summary: "时间轴驱动历史疆域底图 · Ghost 断代对照 · 点人溯事（行迹逐站 · 逐字回源引文）· 地谱追溯卡 · 法脉递归展开 · 零坐标 URL 协议（?person= / ?place=&year=）。设计定稿见 tasks/PLAN.md「法脉传承模块改造」节；批次 F.2–F.5。"
-    summary_en: "Timeline-driven historical base maps with ghost boundary diffs, person chronicles with verbatim sourced citations, place genealogy cards, recursive lineage expansion, and a zero-coordinate URL protocol. Design SSOT: tasks/PLAN.md (batches F.2–F.5)."
+    status: live
+    summary: "F.2 骨架已上线：NE 物理底图 (PD) × aourednik 断代政体色块 (GPL-3.0 独立集合·示意待核) × Ghost 前时段轮廓对照 × 仓内 DB 地名标点 × 静态兜底无损表 × 层源许可声明页。规划中：点人溯事逐站引文（F.3）· 地谱卡与法脉递归展开（F.4）· 零坐标 URL 协议（F.3）。设计 SSOT：tasks/PLAN.md。"
+    summary_en: "F.2 skeleton live: Natural Earth physical base (PD) x period polities (GPL-3.0 separate collection, indicative, verification pending), ghost boundary diff, DB place pins, no-loss static fallback tables, layer license declaration page. Person chronicle, place cards and deep-link protocol follow in F.3-F.4."
     data_sources:
-      - "同「时空长河」底层数据 · 另扩 lineage_edges（TRANSMITTED_TEXT / source_ref / reliability·F.1 批）"
-      - "断代底图分层：L1 自建 / L2 开放层 / L3 学术层（CHGIS·非商用声明·F.2 批实测后定源）"
-    tags: ["Historical Base Map", "Person Chronicle", "Ghost Diff", "Deep Link"]
+      - "同「时空长河」底层数据 · 另扩 lineage_edges（TRANSMITTED_TEXT / source / reliability·F.1 契约已就位）"
+      - "data/geo/manifest.yaml（受控入库 2026-10-30·R4 授权·sha256 逐层可复核·CHGIS 依许可仅外链）"
+    tags: ["Historical Base Map", "Ghost Diff", "Person Chronicle", "Deep Link"]

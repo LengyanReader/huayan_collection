@@ -537,6 +537,287 @@ td,th{{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-ali
     return size
 
 
+# ══════════════ F.2 「山河法脉」底图子页 ＋ license 声明页 ══════════════
+GEO_VIEW_LON = (58, 142)
+GEO_VIEW_LAT = (0, 60)
+GEO_CW, GEO_CH = 840, 540
+
+
+def _geo_proj(lon, lat):
+    x = (lon - GEO_VIEW_LON[0]) / (GEO_VIEW_LON[1] - GEO_VIEW_LON[0]) * GEO_CW
+    y = (GEO_VIEW_LAT[1] - lat) / (GEO_VIEW_LAT[1] - GEO_VIEW_LAT[0]) * GEO_CH
+    return (round(x, 1), round(y, 1))
+
+
+def _geo_all_pts(geom):
+    def walk(g):
+        t = g.get('type'); c = g.get('coordinates')
+        if not c:
+            return
+        if t == 'Polygon':
+            for ring in c:
+                for pt in ring:
+                    yield pt[:2]
+        elif t == 'MultiPolygon':
+            for poly in c:
+                for ring in poly:
+                    for pt in ring:
+                        yield pt[:2]
+        elif t == 'LineString':
+            for pt in c:
+                yield pt[:2]
+        elif t == 'MultiLineString':
+            for seg in c:
+                for pt in seg:
+                    yield pt[:2]
+    return list(walk(geom))
+
+
+def _geo_rings(geom, max_rings=12, max_pts=180):
+    """只保外环（洞不显·骨架阶段），按点数抽稀。"""
+    t = geom.get('type'); c = geom.get('coordinates') or []
+    raw = []
+    if t == 'Polygon' and c:
+        raw.append(c[0])
+    elif t == 'MultiPolygon':
+        for poly in c[:max_rings]:
+            if poly:
+                raw.append(poly[0])
+    out = []
+    for ring in raw:
+        step = max(1, len(ring) // max_pts)
+        pts = [_geo_proj(p[0], p[1]) for p in ring[::step]][:max_pts + 1]
+        if len(pts) >= 4:
+            out.append(pts)
+    return out
+
+
+def _geo_lines(geom, max_pts=220):
+    t = geom.get('type'); c = geom.get('coordinates') or []
+    seqs = [c] if t == 'LineString' else (c if t == 'MultiLineString' else [])
+    out = []
+    for s in seqs:
+        step = max(1, len(s) // max_pts)
+        pts = [_geo_proj(p[0], p[1]) for p in s[::step]][:max_pts + 1]
+        if len(pts) >= 2:
+            out.append(pts)
+    return out
+
+
+def _geo_feature_bbox_hits_view(geom):
+    pts = _geo_all_pts(geom)
+    if not pts:
+        return False
+    lons = [p[0] for p in pts]; lats = [p[1] for p in pts]
+    return not (max(lons) < GEO_VIEW_LON[0] or min(lons) > GEO_VIEW_LON[1]
+                or max(lats) < GEO_VIEW_LAT[0] or min(lats) > GEO_VIEW_LAT[1])
+
+
+def build_shanhe_page():
+    """子页 B「山河法脉」(famai/shanhe.html)：NE 物理底(PD)＋aourednik 断代色块(GPL 独立集合)
+    ＋Ghost Diff＋DB 标点＋静态兜底（信息無损）。数据均实测投影，不臆造几何。"""
+    import datetime
+    geo = DATA_DIR / 'geo'
+    man = read_yaml('geo/manifest.yaml') or {}
+    if not (geo / 'historical-basemaps').exists():
+        print('WARN data/geo 未入库（先跑 scripts/f2_fetch_geo.py）- skip shanhe')
+        return 0
+
+    years_out = []
+    for y in (500, 600, 700, 800, 900):
+        p = geo / 'historical-basemaps' / ('world_%d.geojson' % y)
+        if not p.exists():
+            continue
+        d = json.loads(p.read_text(encoding='utf-8'))
+        polities = []
+        for f in d.get('features', []):
+            geom = f.get('geometry') or {}
+            pts = _geo_all_pts(geom)
+            if not pts:
+                continue
+            lon = sum(q[0] for q in pts) / len(pts); lat = sum(q[1] for q in pts) / len(pts)
+            if not (60 <= lon <= 138 and 0 <= lat <= 58):
+                continue
+            pr = f['properties'].get('BORDERPRECISION')
+            polities.append({
+                'n': f['properties'].get('NAME'),
+                'sup': f['properties'].get('SUBJECTO') or '',
+                'pr': pr if pr is not None else '',
+                'rings': _geo_rings(geom),
+            })
+        years_out.append({'year': y, 'polities': polities})
+
+    coast, countries = [], []
+    p = geo / 'natural_earth' / 'ne_110m_coastline.geojson'
+    if p.exists():
+        for f in json.loads(p.read_text(encoding='utf-8')).get('features', []):
+            if _geo_feature_bbox_hits_view(f.get('geometry') or {}):
+                coast.append(_geo_lines(f['geometry']))
+    p = geo / 'natural_earth' / 'ne_110m_admin_0_countries.geojson'
+    if p.exists():
+        for f in json.loads(p.read_text(encoding='utf-8')).get('features', []):
+            g = f.get('geometry') or {}
+            if g.get('type') in ('Polygon', 'MultiPolygon') and _geo_feature_bbox_hits_view(g):
+                countries.extend(_geo_rings(g, max_rings=8, max_pts=140))
+
+    places = []
+    graph = load_graph()
+    for loc in graph.get('locations', []):
+        try:
+            lat = float(loc.get('lat')); lng = float(loc.get('lng'))
+        except (TypeError, ValueError):
+            continue
+        if GEO_VIEW_LON[0] <= lng <= GEO_VIEW_LON[1] and GEO_VIEW_LAT[0] <= lat <= GEO_VIEW_LAT[1]:
+            x, y2 = _geo_proj(lng, lat)
+            places.append({'id': loc.get('id', ''), 'n': loc.get('n', ''), 'lat': loc.get('lat'),
+                           'lng': loc.get('lng'), 'tp': loc.get('tp', ''), 'dy': loc.get('dy', ''),
+                           'x': x, 'y': y2})
+
+    payload = {
+        'canvas': {'w': GEO_CW, 'h': GEO_CH},
+        'view': {'lon': list(GEO_VIEW_LON), 'lat': list(GEO_VIEW_LAT)},
+        'years': years_out,
+        'base': {'coast': coast, 'countries': countries},
+        'places': places,
+        'meta': {'generated': str(datetime.date.today()),
+                 'license_note': '断代层 aourednik/historical-basemaps (GPL-3.0 独立集合)；物理层 Natural Earth (PD)；CHGIS 依其许可仅外链'},
+    }
+    data_json = json.dumps(payload, ensure_ascii=False).replace('</', '<\\/')
+
+    year_buttons = ''.join('<button class="year-btn" data-year="%d">%d</button>' % (yy['year'], yy['year'])
+                           for yy in years_out)
+    # 静态兜底（信息無损）：逐年政体表＋标点表＋层源表 always-in-DOM
+    fb = ''
+    for yy in years_out:
+        rows = ''
+        for po in sorted(yy['polities'], key=lambda q: (q['n'] is None, str(q['n']))):
+            rows += '<tr><td>{}</td><td>{}</td><td>{}</td></tr>'.format(
+                po['n'] or '(未標名）', po['sup'] or '—', po['pr'] if po['pr'] != '' else '〔待核〕')
+        fb += ('<details style="margin:6px 0"><summary>西 %d 年快照 · %d 政体（东亚区内）</summary>'
+               '<table><tr><th>政体 NAME</th><th>宗主/归因</th><th>边界精度</th></tr>%s</table></details>\n'
+               % (yy['year'], len(yy['polities']), rows))
+    prows = ''
+    for e in man.get('layers', []):
+        prows += '<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(
+            e.get('file', ''), e.get('license', ''), e.get('accessed', ''), str(e.get('sha256', ''))[:12])
+    fb += ('<details style="margin:6px 0"><summary>层源与许可（data/geo/manifest.yaml · %d 层）</summary>'
+           '<table><tr><th>文件</th><th>许可</th><th>访问日期</th><th>sha256前12</th></tr>%s</table></details>'
+           % (len(man.get('layers', [])), prows))
+
+    shanhe_js = read_src('shanhe.js')
+    tmpl = '''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山河法脉 · 断代山河上的法脉流传</title>
+<link rel="stylesheet" href="../css/common.css">
+<style>
+.wrap{max-width:1200px;margin:0 auto;padding:18px 20px}
+#ctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.year-btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:14px;padding:4px 14px;cursor:pointer;font-size:0.85em}
+.year-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+#map-row{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+#map-box{flex:3;min-width:340px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px}
+#map-svg{width:100%;height:auto;display:block;background:#f4efe5;border-radius:8px}
+#info-panel{flex:1;min-width:260px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card);min-height:180px;font-size:0.86em}
+#info-panel h4{margin:0 0 8px;color:var(--gold)}#info-panel .yr{font-size:0.7em;color:var(--text2);font-weight:400}
+#info-panel .lic{font-size:0.78em;color:var(--text2);border-top:1px dashed var(--line);padding-top:8px;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:0.78em}td,th{border:1px solid var(--line);padding:3px 7px;text-align:left}
+details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
+#fallback{margin-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="index.html" class="back-link">&larr; 法脉传承模块</a>
+    <h1>⛰️ 山河法脉 <span style="font-size:0.5em;color:var(--text2);font-weight:400">Mountains &amp; Rivers · Dharma on the Historical Map</span></h1>
+  </header>
+  <div id="ctl">
+    __YEAR_BUTTONS__
+    <label style="font-size:0.82em"><input type="checkbox" id="ghost-toggle"> 叠加前一时段轮廓（Ghost Diff）</label>
+    <label style="font-size:0.82em"><input type="checkbox" id="place-toggle" checked> 仓内实地标点（DB locations · __N_PLACES__）</label>
+    <a href="license.html" style="margin-left:auto;font-size:0.8em">层源与许可 →</a>
+  </div>
+  <div id="map-row">
+    <div id="map-box">
+      <svg id="map-svg" viewBox="0 0 __CW__ __CH__" xmlns="http://www.w3.org/2000/svg">
+        <g id="g-base"></g><g id="g-polity"></g><g id="g-ghost"></g><g id="g-place"></g>
+      </svg>
+      <p style="font-size:0.72em;color:var(--text2);margin:6px 4px 2px">断代色块为<b>示意底图</b>（aourednik 百年快照·GPL-3.0 独立集合·学术精度待核）；
+      唐代 700 年快照疑承旧隋界〔待核〕；CHGIS（禁再分发）仅外链：<a href="https://dataverse.harvard.edu/dataverse/chgis_v6">Harvard Dataverse</a>。</p>
+    </div>
+    <div id="info-panel"><h4>点击政体或标点</h4><p>政体=断代示意层（GPL·待核）；蓝点=仓内实证地名（DB 实测坐标）。</p></div>
+  </div>
+  <div id="fallback">
+    <h3 style="font-size:1em">静态兜底 · 全字段无损在场（信息無损惯例）</h3>
+    __FALLBACK__
+  </div>
+</div>
+<script>var SHANHE = __DATA_JSON__;</script>
+<script>__SHANHE_JS__</script>
+</body>
+</html>'''
+    html = (tmpl.replace('__YEAR_BUTTONS__', year_buttons)
+                .replace('__N_PLACES__', str(len(places)))
+                .replace('__CW__', str(GEO_CW)).replace('__CH__', str(GEO_CH))
+                .replace('__FALLBACK__', fb)
+                .replace('__DATA_JSON__', data_json)
+                .replace('__SHANHE_JS__', shanhe_js))
+    famai_dir = OUT / 'famai'
+    famai_dir.mkdir(exist_ok=True)
+    path = famai_dir / 'shanhe.html'
+    path.write_text(html, encoding='utf-8')
+    size = len(html.encode('utf-8'))
+    npoly = sum(len(yy['polities']) for yy in years_out)
+    print('OK  %s (%s bytes | %d 年·%d 政体·%d 标点·coast %d/countries %d)' % (
+        path, format(size, ','), len(years_out), npoly, len(places), len(coast), len(countries)))
+    return size
+
+
+def build_famai_license_page():
+    """famai/license.html — 数据层许可声明页（由 data/geo/manifest.yaml 生成·可复核）。"""
+    man = read_yaml('geo/manifest.yaml')
+    if not man:
+        print('WARN data/geo/manifest.yaml missing - skip license page')
+        return 0
+    rows = ''
+    for e in man.get('layers', []):
+        rows += ('<tr><td>{}</td><td><a href="{}">{}</a></td><td>{}</td><td>{}</td>'
+                 '<td>{}</td><td>{}</td></tr>').format(
+            e.get('file', ''), e.get('url', ''), e.get('url', '').split('/')[2],
+            e.get('license', ''), e.get('accessed', ''), format(e.get('bytes', 0), ','),
+            str(e.get('sha256', ''))[:16])
+    html = '''<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>层源与许可 · 法脉传承模块</title><link rel="stylesheet" href="../css/common.css">
+<style>body{max-width:1000px;margin:0 auto;padding:26px 22px}
+table{border-collapse:collapse;width:100%;font-size:0.8em}td,th{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:0.88em;margin:16px 0}</style></head>
+<body>
+<a href="index.html">&larr; 法脉传承模块</a>
+<h1>层源与许可声明 · Provenance &amp; Licenses</h1>
+<p class="note"><b>非商用声明</b>：本项目为人文书读与数字人文研究用途，非商业。各数据层按上游许可分层管理：
+<a href="https://github.com/aourednik/historical-basemaps">aourednik/historical-basemaps</a> = <b>GPL-3.0</b>（作独立数据集合入库·其 LICENSE 全文随仓
+<code>data/geo/historical-basemaps/LICENSE</code>·不与本仓 MIT 代码组件混许可）；
+<a href="https://www.naturalearthdata.com/">Natural Earth</a> = <b>Public Domain</b>（无需许可）；
+<a href="https://chgis.fas.harvard.edu/data/chgis/v6/">CHGIS V6</a> 官方许可「free for academic research, no commercial use, resale, or
+<b>redistribution</b> permitted」——故其原始数据<b>不入库、不分发</b>，仅作外链引用；
+<a href="https://www.openhistoricalmap.org/">OpenHistoricalMap</a> = ODbL（覆盖评估中·暂未接入）。
+若未来商业化，须先移除/替换 GPL 层并重审全部上游条款。断代几何为<b>示意底图</b>，学术精度逐项待核。</p>
+<table><tr><th>文件</th><th>来源域</th><th>许可</th><th>访问日期</th><th>字节</th><th>sha256 前16</th></tr>
+__ROWS__</table>
+<p style="font-size:0.75em;color:var(--text2)">溯源 SSOT：<code>data/geo/manifest.yaml</code>（受控下载器 <code>scripts/f2_fetch_geo.py</code> 生成·幂等可复核）·本批裁定见 <code>.harness/decisions.md</code> #12</p>
+</body></html>'''.replace('__ROWS__', rows)
+    path = OUT / 'famai' / 'license.html'
+    path.write_text(html, encoding='utf-8')
+    size = len(html.encode('utf-8'))
+    print('OK  %s (%s bytes | %d layers declared)' % (path, format(size, ','), len(man.get('layers', []))))
+    return size
+
+
 def build_lineage_page():
     """Build Tab1: 法脉传承 (standalone, Canvas+Leaflet, layout preserved)."""
     graph = load_graph()
@@ -1886,6 +2167,16 @@ def main():
     famai_size = build_famai_shell()
     if famai_size:
         total_size += famai_size
+        file_count += 1
+
+    # ── Build 子页B「山河法脉」＋层源许可声明页 (F.2) ──
+    sh_size = build_shanhe_page()
+    if sh_size:
+        total_size += sh_size
+        file_count += 1
+    li_size = build_famai_license_page()
+    if li_size:
+        total_size += li_size
         file_count += 1
 
     # ── Build Tab2: Gap (restructured layout) ──

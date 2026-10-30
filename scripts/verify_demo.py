@@ -69,6 +69,41 @@ else:
                     fail('famai shell: missing registry provenance (famai_subpages.yaml)')
                 else:
                     ok('famai shell: routes lineage subpage + registry provenance present')
+                # F.2 registry-driven：status=live 的子页文件必须实存（扩编性验证）
+                try:
+                    import yaml as _yaml
+                    with open(os.path.join(ROOT, 'data', 'famai_subpages.yaml'), encoding='utf-8') as f:
+                        reg = _yaml.safe_load(f)
+                    for s in (reg or {}).get('subpages', []):
+                        fp = s.get('file', '')
+                        if s.get('status') == 'live' and fp and not os.path.exists(
+                                os.path.normpath(os.path.join(DEMO, 'famai', fp))):
+                            fail('registry live subpage file missing: %s' % fp)
+                except Exception as e:
+                    fail('cannot verify famai registry: %s' % e)
+                if 'shanhe.html' not in shell:
+                    fail('famai shell: live subpage B (shanhe.html) not linked')
+                shp = os.path.join(DEMO, 'famai', 'shanhe.html')
+                lic = os.path.join(DEMO, 'famai', 'license.html')
+                if not os.path.exists(shp):
+                    fail('shanhe.html missing (registry says live)')
+                else:
+                    with open(shp, encoding='utf-8') as f:
+                        sh = f.read()
+                    for marker in ['var SHANHE', 'Ghost Diff', 'manifest.yaml', 'license.html',
+                                   'Harvard Dataverse', '静态兜底', 'GPL-3.0']:
+                        if marker not in sh:
+                            fail('shanhe.html missing marker: %s' % marker)
+                    if not os.path.exists(lic):
+                        fail('license.html missing')
+                    else:
+                        with open(lic, encoding='utf-8') as f:
+                            L = f.read()
+                        for m2 in ['GPL-3.0', 'Public Domain', 'redistribution',
+                                   'manifest.yaml', 'f2_fetch_geo.py']:
+                            if m2 not in L:
+                                fail('license.html missing marker: %s' % m2)
+                        ok('F.2 shanhe subpage + license page complete (registry live verified)')
         elif f'tabs/{t}.html' not in idx:
             fail(f'index: missing link to tabs/{t}.html')
     ok('index: links to all 6 tab pages')

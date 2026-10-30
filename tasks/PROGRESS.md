@@ -1698,3 +1698,24 @@ done(
 **next**：**F.2 底图批**——断代底图分层接入（L2 开放层先行、L3 CHGIS 叠加其次）＋Ghost Diff＋license 声明页；子页 B「山河法脉」自 F.2 起实现。`reliability` 列迁移与 TRANSMITTED_TEXT 实边待有回源依据时按 #11 办。
 
 **sources**：`data/knowledge_graph/schemas/lineage.schema.json`·`scripts/test_pipeline.py`·`scripts/f1a_route_audit.py`·`data/events/person_trajectories.yaml`·`data/catalog/schema.sql`·`.harness/decisions.md` #11·`tasks/PLAN.md` §四。
+
+---
+
+## F 系列·F.2 底图批 — 收口 2026-10-30
+
+**goal**：接入断代历史底图（B＋A 叠加路线·用户 AskUserQuestion R4 显式授权受控下载入库），产出「山河法脉」子页 B 骨架（NE 物理底 × aourednik 断代政体色块 × Ghost 前时段轮廓 × DB 标点 × 静态兜底无损表）＋层源许可声明页。**不改 live DB·不造边**。
+
+**done**（观察到）：
+- **受控下载器** `scripts/f2_fetch_geo.py`（幂等·sha256）落 `data/geo/`：aourednik/historical-basemaps 五张百年快照 world_{500,600,700,800,900}.geojson（**GPL-3.0 独立数据集合**·LICENSE 全文 35KB 随仓·index.json）＋ Natural Earth 110m land/coastline/admin_0_countries ×3（PD）；共 **10 层 + `manifest.yaml`（3,761 B·url·license·访问日期·sha256·bytes 逐层溯源）**·geo 总 6,388,538 B。
+- **入库校验** `_f2_validate.py`：10 geojson 全可解析；每快照 features 205/204/253/225/244（东亚区政体 41/44/60/46/56·合计 247）；`properties.NAME` 可空（海洋/填充块）→ builder 已兜底。
+- **子页 B** `web/demo/famai/shanhe.html`（345,010 B·build.py 新函数 `build_shanhe_page`·**token 替换非 f-string** 避前次转义事故）＋渲染器 `web/demo/src/shanhe.js`（6,715 B）＋声明页 `famai/license.html`（4,971 B·`build_famai_license_page`·L1/L2/L3 分层＋GPL/PD 义务如实标注＋商业化移除条款）。
+- **注册表** `data/famai_subpages.yaml` v1.1.0：shanhe-famai `planned`→`live`；壳页 `famai/index.html` 卡片转为链接＋如实摘要（现范围＋未完项 F.3–F.4）。
+- **门禁** `verify_demo.py` ＋35 行：注册表驱动断言 live 子页实存＋marker；`.gitattributes` 增 `data/geo/** -text -whitespace`（承 CBETA 字节可校验先例·decisions #12）。
+
+**gates**（观察到）：py_compile ✅｜**check.py ✅ rc=0**｜**verify_demo ✅ ALL CHECKS PASSED rc=0**（含 F.2 新断言）｜**test_pipeline ✅ ALL TESTS PASSED rc=0**｜**headless DOM 9/9 HIT**（chrome rc=0·DOM 441,318 vs raw·year-500 渲 68 色块·证 shanhe.js 真执行）。
+
+**铁律自校**：零造几何（10 层均真实下载·sha256 可复核）；CHGIS 禁 redistribution 实测原文→**恒外链不入库**（原 L3 计划废止）；aourednik world_700 疑承隋界〔质量待核·页内免责声明〕；**L.250 在飞未纳入**（明法品 md＋被全量 build 带入字数上涨的 built tabs/articles HTML 一律排除·辨源探针 `_f2_lane.py` 证实 articles/index 各部字数 102,933→103,350 等系他人在飞内容）；scratch（`_f2_*.py`·`_f1_probe.py` 等）不入仓；本地 commit **未 push**。
+
+**blocked**：无。逐站引文（S2·站级 0/936 基线见 F.1a）、地谱卡/法脉递归（S3–S5）、零坐标 URL 协议（S6）按批次 F.3–F.4。
+
+**sources**：`data/geo/manifest.yaml`·`scripts/f2_fetch_geo.py`·`web/demo/famai/shanhe.html`·`web/demo/src/shanhe.js`·`web/demo/famai/license.html`·`data/famai_subpages.yaml`·`web/demo/scripts/build.py`·`scripts/verify_demo.py`·`.gitattributes`·`.harness/decisions.md` #12·`tasks/PLAN.md` §四。

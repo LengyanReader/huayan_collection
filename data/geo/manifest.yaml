@@ -1,0 +1,74 @@
+generated: '2026-10-30'
+layers:
+- file: historical-basemaps/LICENSE
+  url: https://raw.githubusercontent.com/aourednik/historical-basemaps/master/LICENSE
+  license: GPL-3.0（数据集合独立保留 GPL 声明·不传染 MIT 代码组件）
+  note: 随仓 GPL 全文
+  accessed: '2026-10-30'
+  sha256: 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+  bytes: 35147
+- file: historical-basemaps/index.json
+  url: https://raw.githubusercontent.com/aourednik/historical-basemaps/master/index.json
+  license: GPL-3.0
+  note: 年份↔文件↔政体名索引（离线核对用）
+  accessed: '2026-10-30'
+  sha256: 9332926809d1524c6a7ec1c7bd9127be75e1ed88adafa5a91c8b2126f04cb904
+  bytes: 239065
+- file: historical-basemaps/world_500.geojson
+  url: https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/world_500.geojson
+  license: GPL-3.0
+  note: 500 年世界政体快照·示意底图〔学术精度待核〕
+  accessed: '2026-10-30'
+  sha256: 06f7512efec9151b91b5967e8bee3e2dacf8c623e8719de8c64a996bec5ec2c1
+  bytes: 968264
+- file: historical-basemaps/world_600.geojson
+  url: https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/world_600.geojson
+  license: GPL-3.0
+  note: 600 年世界政体快照·示意底图〔学术精度待核〕
+  accessed: '2026-10-30'
+  sha256: e8d285de5d4257c55158979e866191d13464abc74e3082fb5f2065b357beec7a
+  bytes: 1025118
+- file: historical-basemaps/world_700.geojson
+  url: https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/world_700.geojson
+  license: GPL-3.0
+  note: 700 年世界政体快照·示意底图〔学术精度待核〕
+  accessed: '2026-10-30'
+  sha256: bb66ebee15e57f5d43b0ca524dd9a230651bb821e7e002882b1981a25fd42a38
+  bytes: 966976
+- file: historical-basemaps/world_800.geojson
+  url: https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/world_800.geojson
+  license: GPL-3.0
+  note: 800 年世界政体快照·示意底图〔学术精度待核〕
+  accessed: '2026-10-30'
+  sha256: 9d046cdc4662109c3f803ae46e2c8cba941aa092ec86eccc7823e6cf1554920c
+  bytes: 977296
+- file: historical-basemaps/world_900.geojson
+  url: https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/world_900.geojson
+  license: GPL-3.0
+  note: 900 年世界政体快照·示意底图〔学术精度待核〕
+  accessed: '2026-10-30'
+  sha256: f483b93e799d6518830ed6da6c3772c49170872d0f07515981a53e71d8dbc74c
+  bytes: 1056118
+- file: natural_earth/ne_110m_land.geojson
+  url: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson
+  license: Public Domain
+  note: 110m 陆地多边形（现代海岸线）
+  accessed: '2026-10-30'
+  sha256: 9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9
+  bytes: 138160
+- file: natural_earth/ne_110m_coastline.geojson
+  url: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_coastline.geojson
+  license: Public Domain
+  note: 110m 海岸线（描绘层）
+  accessed: '2026-10-30'
+  sha256: 851f581ff5ffb844deed8ae1a9ce22e3c4bb3d74fa342cadb5d8e39b41ae7c3c
+  bytes: 139907
+- file: natural_earth/ne_110m_admin_0_countries.geojson
+  url: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson
+  license: Public Domain
+  note: 110m 现代国界（方位参考·非历史断代）
+  accessed: '2026-10-30'
+  sha256: 6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f
+  bytes: 838726
+policy: CHGIS=禁再分发·仅外链（Harvard Dataverse）；OHM=ODbL 后置；aourednik=GPL-3.0 独立集合；Natural
+  Earth=PD。

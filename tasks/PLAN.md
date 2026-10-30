@@ -584,7 +584,7 @@ STEP1 回源对勘（八十为干·六十补卷对读·藏 24–27 开篇实测�
 
 - **F.0 shell 批**：实测 persons/locations 坐标与 events 字段 → 落「实测前提」账；模块壳＋注册表 yaml＋子页 A 挂链（旧页零改动）。
 - **F.1 数据批 ✅（2026-10-30 收口·结构批）**：边模型契约扩展——lineage.schema relation enum 增 `TRANSMITTED_TEXT`＋`LINEAGE`（后者本为 schema.sql 旧枚举、与前会话 schema 分列两处→三源归一）；加可选 `source`（实测 DB 列 `lineage_edges.source` **98/98 已全填**——设计所称 `source_ref` 即此列、**不另立新源**）＋`reliability`（primary/secondary/inferred/disputed）；from/to id 模式由 `^person_\d{3}$` 放宽为 `^person_[0-9A-Za-z]+$`（实测 `person_000a` 等含字母 id 与旧模式相悖、契约↔数据漂移已修）。`test_pipeline` relation 白名单同步。**live DB 列迁移（reliability）缓行**——无既成可靠性值、依不可逆动作人工授权（见 decisions #11）。行迹层生成器并入 F.3。
-- **F.2 底图批**：断代底图分层接入（L2 开放层先行，L3 CHGIS 叠加其次）＋Ghost Diff＋license 声明页。
+- **F.2 底图批 ✅（2026-10-30·B＋A 叠加路线·用户 R4 显式授权入库）**：受控下载器 `scripts/f2_fetch_geo.py`（幂等·sha256）落 `data/geo/`（aourednik 500–900 五快照 GPL-3.0 独立集合＋LICENSE 全文随仓＋index.json；Natural Earth 110m land/coastline/countries ×3 PD·共 10 层 + manifest 溯源）；子页 B `famai/shanhe.html` 骨架上线（NE 物理底×断代政体色块×Ghost 前时段轮廓×DB 标点 30×静态兜底无损表）＋`famai/license.html` 声明页；`.gitattributes` 增 `data/geo/** -text -whitespace` 保字节可校验。实测：页 345,010 B·5 快照共 1,131 features（东亚区政体 247·每快照 41–60·`_f2_validate.py`）·headless DOM 9/9 HIT（chrome rc=0·year-500 渲 68 色块·证 shanhe.js 真执行）。**订正**：CHGIS 禁 redistribution→恒外链（原 L3 叠加计划废止）；world_700 仍标 Sui Empire〔质量待核·页内已免责声明〕；行迹层/地谱卡/URL 协议按批次 F.3–F.4。
 - **F.3 点人溯事批**：S2＋S6 深链＋逐字引文挂载。
 - **F.4 地谱卡与法脉展开批**：S3＋S4＋S5。
 - **F.5 门禁与交付批**：信息無损 verify 扩展＋build/verify_demo/test_pipeline 全绿＋headless Chrome DOM 实测（subprocess 直取，避 PowerShell 重编码陷阱）。
