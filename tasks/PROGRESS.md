@@ -1744,3 +1744,27 @@ done(
 **next**：**F.4 地谱卡与法脉展开批**（S3＋S4＋S5）；5 祖之外逐站回源逐批扩量。零坐标 URL 协议（S6）本批已落地。
 
 **sources**：`data/references/cbeta/T50n2060.xml`·`T50n2061.xml`·`T50n2054.xml`·`scripts/f3_build_citations.py`·`data/events/person_chronicle_citations.yaml`·`data/events/person_trajectories.yaml`·`web/demo/scripts/build.py`·`web/demo/src/shanhe.js`·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`.harness/decisions.md` #13·`tasks/PLAN.md` §四。
+
+---
+
+## F 系列·F.4 地谱卡与法脉展开批 — 收口 2026-10-30
+
+**goal**：S3 地谱追溯卡 + S4 法脉递归弟子树 + S5 图例隔离高亮/zoom（用户 AskUserQuestion 三项显式确认·decisions **#14**）：S3 首批＝**华严核心子集 12 处**；S4 模型＝**五祖代际骨干＋边递归**（默认 3 代）；S3 文字＝**如实展示 temple_directory 既有溯源摘要＋信度标**（综述·非额外逐字回源·一手逐字仍归 S2）。本质**只读投影＋UI 批**——`temple_directory.yaml`/`lineages.json`/`complete_lineage_chart.yaml`/`person_trajectories.yaml` **全为现存 SSOT·不改任一原档**。
+
+**done**（观察到）：
+- **只读投影层**（`build.py`·新增 `_f4_*` 助手）：`_f4_temples()` 筛 school 含华严/贤首 或 id `t_huayan_` 前缀 → **12 处**·实测经纬投影入画布坐标；`_f4_lineage()` 从 focus 支系 `lineages.json` 建邻接·CBDB 式递归（`walk` 深度<3·path 断环）·**直系 MASTER_OF vs 私淑/影响 INFLUENCED 分列**·`masters` 仅收「有直系弟子且具 name」者 → **18 位可展开**·五祖骨干 `backbone` 蒸馏自 `complete_lineage_chart`（5 世）·`branches` 去重排序（华严五祖居首）→ **6 支**固定色板。
+- **客观传承守卫**（处理实测数据自歧·不擅改原档）：① 自环 `person_050→person_050` 剔；② 与法统序次相悖反向直系边 `person_005→person_004`（宗密→澄观）按 `HW_ORDER` 守卫剔出展开；③ `法藏→澄观` INFLUENCED（私淑·隔代）虚线、不并入直系；④ 6 个仅存边注、`person_trajectories` 无 name 的 person_id（净海/明度/体佛/鸠摩罗什等）递归至该节点标**〔待核〕**·绝不臆造名。
+- **S3/S4/S5 UI**（`shanhe.js`·+141 行 F.4 模块）：S3 要地旋转方标 ⛩·点击→地谱卡（沿革/创建鼎盛/华严事件/历史地位/关联人物/信度/依据/参考链接全字段·`verified`→确证/〔待核〕）；S4 分层 dendrogram（x=深度·直系实线／私淑虚线 `.lg-edge.inf`·节点按支系着色·点击重定根·viewBox 存 `data-full`）；S5 图例 chip `mouseenter`→`applyIsolate` 非该支 dim、`mouseleave` 复位、`click`→`zoomBranch` getBBox 包围盒。S6 `syncURL` 扩 `master`/`temple` 语义参·**恒零经纬入 URL**。
+- **信息無损静态兜底**（`build.py`）：S5 图例表（分支/色值/边数）+ S4 五祖骨干表 + 每师递归弟子链表（未具名弟子逐条 `〔待核〕无 name 记录·仅见边注：…`）+ S3 每要地卡（沿革/事件/人物/信度/依据/链接全字段）。
+- **headless 实测暴露并修正缺陷**：未具名弟子节点文本曾双标 `〔待核〕person_033〔待核〕`→改 `person_033〔待核〕`（`shanhe.js` L340·与静态兜底一致）。
+
+**gates**（观察到）：py_compile（build.py·verify_demo.py）✅｜**check.py ✅ rc=0**｜**verify_demo ✅ ALL CHECKS PASSED rc=0**（含 F.4 新断言：机件 marker·SHANHE 投影计数 temples12/masters18/branches6/backbone5·要地子集越界守卫·未具名弟子〔待核〕计数==数据 dverified=false 边 7·反向直系边漏网即 fail）｜**test_pipeline ✅ ALL TESTS PASSED rc=0**｜**headless 运行时实测 `_f4_domcheck.py` 全绿**（Chromium 145·真实 DOM 事件驱动：S3 #g-temple 12 标·S4 默认 person_003 树 nodes11/edges17/虚线7·S5 hover 高原法系 dim28/28→leave 复位 dim0·zoom viewBox 变更·S3 地谱卡五字段齐·零坐标 URL `?master=person_003&temple=t_huayan_002` 无经纬·**pageerror=0 console.error=0**·**SSOT 前后 sha256 恒定**）。shanhe.html **379,145→460,225 B**。
+
+**铁律自校**：**只读投影**·四份 SSOT 核验前后 sha256 一致（未改一档·向后兼容）；零造传承（守卫剔反向/自环边系**照骨干不擅改原档**·未具名弟子诚实〔待核〕不臆造名）；S3 文字如实标注「综述·非逐字回源·一手逐字见 S2」不夸大来源层级；信息無损（静态兜底全字段在场·计数与运行时一致）；**L.250 在飞未纳入**（明法品 md＋被全量 build 带入的 built tabs/articles HTML 一律排除）；scratch（`_f4_probe*.py`·`_f4_proj.py`·`_f4_domcheck.py`·`_f4_pend.py`·`_f4_selfcheck.py`·`_f4_*.out` 等）**不入仓**；本地 commit **未 push**。
+
+**blocked**：无。海外支线（日本华严/高丽华严）本批仅作简洁色块标识·逐师跨国递归归后续；全 63 寺（非华严核心）地谱、S4 深度可调（现硬编 3 代）按需扩量。
+
+**next**：**F.5 门禁与交付批**——信息無损 verify 扩展＋build/verify_demo/test_pipeline 全绿＋headless Chrome DOM 实测固化入 CI 式检查。
+
+**sources**：`data/locations/temple_directory.yaml`·`data/knowledge_graph/lineages.json`·`data/knowledge_graph/complete_lineage_chart.yaml`·`data/events/person_trajectories.yaml`·`web/demo/scripts/build.py`·`web/demo/src/shanhe.js`·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`.harness/decisions.md` #14·`tasks/PLAN.md` §四。
+

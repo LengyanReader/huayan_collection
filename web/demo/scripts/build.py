@@ -614,6 +614,128 @@ def _geo_feature_bbox_hits_view(geom):
                 or max(lats) < GEO_VIEW_LAT[0] or min(lats) > GEO_VIEW_LAT[1])
 
 
+# ── F.4 只读投影（S3 地谱卡 · S4 法脉展开 · S5 法系色块）────────────────────
+# 数据皆现存 SSOT（temple_directory / lineages.json / complete_lineage_chart /
+# person_trajectories），本层仅**只读投影**、不改任一 SSOT。客观传承守卫：反向边剔除。
+import collections as _collections
+
+HUAYAN_FOCUS_LINEAGES = {'lineage_hw5', 'lineage_japan', 'lineage_goryeo',
+                         'lineage_huayen_lotus', 'lineage_yuexia',
+                         'lineage_xianshou_gaoyuan', 'lineage_贤首宗高原法系'}
+HUAYAN_BRANCH_CN = {'lineage_hw5': '华严五祖', 'lineage_japan': '日本华严',
+                    'lineage_goryeo': '高丽华严', 'lineage_huayen_lotus': '华严莲社',
+                    'lineage_yuexia': '月霞系', 'lineage_xianshou_gaoyuan': '高原法系',
+                    'lineage_贤首宗高原法系': '高原法系'}
+HUAYAN_BRANCH_COLOR = {'华严五祖': '#b8863c', '日本华严': '#8b7a9e', '高丽华严': '#6f93b4',
+                       '华严莲社': '#5e8b9e', '月霞系': '#7a9ec0', '高原法系': '#c46b5d'}
+HW_ORDER = {'person_001': 1, 'person_002': 2, 'person_003': 3, 'person_004': 4, 'person_005': 5}
+HW_BACKBONE_ID = 'lineage_hw_patriarchs'
+
+
+def _f4_is_huayan_temple(t):
+    s = t.get('school') or ''
+    return ('华严' in s) or ('贤首' in s) or str(t.get('id', '')).startswith('t_huayan_')
+
+
+def _f4_person_meta():
+    """id→(name,color) 只读自 person_trajectories（178 人）。"""
+    pt = read_yaml('events/person_trajectories.yaml') or {}
+    persons = pt.get('persons', pt)
+    names, colors = {}, {}
+    if isinstance(persons, dict):
+        for pid, v in persons.items():
+            if isinstance(v, dict):
+                names[pid] = v.get('name')
+                colors[pid] = v.get('color')
+    return names, colors
+
+
+def _f4_temples():
+    """S3：华严核心要地子集（school 含华严/贤首 或 id t_huayan_ 前缀）。投影实测坐标。"""
+    td = read_yaml('locations/temple_directory.yaml') or {}
+    out = []
+    for t in td.get('temples', []):
+        if not _f4_is_huayan_temple(t):
+            continue
+        try:
+            x, y = _geo_proj(float(t.get('lng')), float(t.get('lat')))
+        except (TypeError, ValueError):
+            continue
+        out.append({
+            'id': t.get('id'), 'name': t.get('name', ''), 'ancient': t.get('ancient_name', ''),
+            'school': t.get('school', ''), 'type': t.get('type', ''), 'location': t.get('location', ''),
+            'dynasty': t.get('dynasty', ''), 'founded': t.get('founded'), 'founder': t.get('founder', ''),
+            'desc': t.get('description', ''), 'sig': t.get('significance', ''),
+            'persons': t.get('persons') or [], 'events': t.get('events') or [],
+            'source': t.get('source', ''), 'verified': t.get('verified'),
+            'links': t.get('links') or [], 'lat': t.get('lat'), 'lng': t.get('lng'), 'x': x, 'y': y,
+        })
+    return out
+
+
+def _f4_lineage():
+    """S4：CBDB 式递归（华严核心支系·直系 MASTER_OF / 私淑·影响 INFLUENCED 分列）。
+       守卫：剔自环 + 剔与法统次序相悖的反向边（数据自歧·各照骨干不擅改 SSOT）。"""
+    names, colors = _f4_person_meta()
+    lj = read_json('data/knowledge_graph/lineages.json') or {}
+    adj = _collections.defaultdict(list)
+    for L in lj.get('lineages', []):
+        lid = L.get('id')
+        if lid not in HUAYAN_FOCUS_LINEAGES:
+            continue
+        br = HUAYAN_BRANCH_CN.get(lid, L.get('name'))
+        for e in L.get('edges', []):
+            f, d, rel = e.get('from'), e.get('to'), e.get('relation')
+            if not f or not d or f == d or rel not in ('MASTER_OF', 'INFLUENCED'):
+                continue
+            if f in HW_ORDER and d in HW_ORDER and HW_ORDER[f] > HW_ORDER[d]:
+                continue  # 反向边（如 宗密→澄观）与法统相悖 → 剔出直系展开、不擅改原档
+            adj[f].append({'disc': d, 'rel': rel, 'note': e.get('note', ''), 'branch': br})
+
+    masters = [{'id': f, 'name': names[f], 'color': colors.get(f)}
+               for f, lst in adj.items()
+               if any(x['rel'] == 'MASTER_OF' for x in lst) and names.get(f)]
+    masters.sort(key=lambda m: (HW_ORDER.get(m['id'], 99), m['id']))
+
+    trees = {}
+    for m in masters:
+        res = []
+
+        def walk(pid, depth, path):
+            for e in adj.get(pid, []):
+                d = e['disc']
+                if d in path:
+                    continue
+                dn = names.get(d)
+                res.append({'parent': pid, 'pname': names.get(pid), 'disc': d, 'dname': dn,
+                            'dverified': bool(dn), 'rel': e['rel'], 'branch': e['branch'],
+                            'depth': depth + 1, 'note': e.get('note', '')})
+                if depth + 1 < 3:
+                    walk(d, depth + 1, path | {d})
+
+        walk(m['id'], 0, {m['id']})
+        trees[m['id']] = res
+
+    backbone = []
+    clc = read_yaml('knowledge_graph/complete_lineage_chart.yaml') or {}
+    for L in clc.get('lineages', []):
+        if L.get('id') == HW_BACKBONE_ID:
+            for g in L.get('generations', []):
+                backbone.append({'order': g.get('order'), 'name': g.get('name'),
+                                 'title': g.get('title'), 'years': g.get('years'),
+                                 'note': g.get('note', '')})
+            break
+
+    seen, branches = set(), []
+    for lid in HUAYAN_FOCUS_LINEAGES:
+        cn = HUAYAN_BRANCH_CN.get(lid)
+        if cn and cn not in seen:
+            seen.add(cn)
+            branches.append({'name': cn, 'color': HUAYAN_BRANCH_COLOR.get(cn, '#888888')})
+    branches.sort(key=lambda b: 0 if b['name'] == '华严五祖' else 1)
+    return {'masters': masters, 'trees': trees, 'branches': branches, 'backbone': backbone}
+
+
 def build_shanhe_page():
     """子页 B「山河法脉」(famai/shanhe.html)：NE 物理底(PD)＋aourednik 断代色块(GPL 独立集合)
     ＋Ghost Diff＋DB 标点＋静态兜底（信息無损）。数据均实测投影，不臆造几何。"""
@@ -694,6 +816,11 @@ def build_shanhe_page():
             persons_out.append({'id': pid, 'name': pp.get('name', pid),
                                 'person_source': pp.get('person_source', ''), 'stations': sts})
 
+    # ── F.4 S3/S4/S5 只读投影 ──
+    temples_out = _f4_temples()
+    lin = _f4_lineage()
+    _lnames, _lcolors = _f4_person_meta()
+
     payload = {
         'canvas': {'w': GEO_CW, 'h': GEO_CH},
         'view': {'lon': list(GEO_VIEW_LON), 'lat': list(GEO_VIEW_LAT)},
@@ -701,6 +828,8 @@ def build_shanhe_page():
         'base': {'coast': coast, 'countries': countries},
         'places': places,
         'persons': persons_out,
+        'temples': temples_out,
+        'lineage': lin,
         'meta': {'generated': str(datetime.date.today()),
                  'license_note': '断代层 aourednik/historical-basemaps (GPL-3.0 独立集合)；物理层 Natural Earth (PD)；CHGIS 依其许可仅外链'},
     }
@@ -750,6 +879,73 @@ def build_shanhe_page():
                '<table><tr><th>#</th><th>站点</th><th>一手引文（繁体逐字回源）</th><th>出处·页锚·按语</th><th>底本URL</th></tr>%s</table></details>\n'
                % (_esc(p['name']), len(p['stations']), _esc(p['person_source'] or ''), srows))
 
+    # ── F.4 S4 择师下拉（仅列有直系弟子且具 name 记录者·数据驱动）──
+    lineage_options = '<option value="">— 择祖师·递归展开弟子链（S4）—</option>' + ''.join(
+        '<option value="%s">%s</option>' % (m['id'], _esc(m['name'])) for m in lin['masters'])
+
+    # ── F.4 静态兜底（信息無损·全字段逐字在场）──
+    # S5 法系色块图例
+    legend_chips = ''.join(
+        '<span class="lg-chip" data-branch="%s"><i style="background:%s"></i>%s</span>'
+        % (_esc(b['name']), _esc(b['color']), _esc(b['name'])) for b in lin['branches'])
+    fb += ('<details style="margin:6px 0"><summary>🗺️ 法系分支图例（S5·色块隔离基准 · %d 支）</summary>'
+           '<table><tr><th>分支</th><th>色值</th><th>直系/影响边数（本批 focus 子集）</th></tr>%s</table></details>\n'
+           % (len(lin['branches']),
+              ''.join('<tr><td><i style="display:inline-block;width:10px;height:10px;background:%s"></i> %s</td>'
+                      '<td>%s</td><td>%d</td></tr>'
+                      % (_esc(b['color']), _esc(b['name']), _esc(b['color']),
+                         sum(1 for m in lin['masters'] for e in lin['trees'][m['id']] if e['branch'] == b['name']))
+                      for b in lin['branches'])))
+
+    # S4 五祖法统骨干（蒸馏自 complete_lineage_chart·客观祖统）
+    _hw_note = '法藏→澄观为「私淑」（隔代影响·非直系）；本骨干表法统序次，弟子链详见各师递归。'
+    fb += ('<details style="margin:6px 0"><summary>👑 华严五祖法统骨干（complete_lineage_chart · %d 世）</summary>'
+           '<table><tr><th>序</th><th>名</th><th>尊号</th><th>年代</th><th>注</th></tr>%s</table>'
+           '<p class="lic">%s</p></details>\n'
+           % (len(lin['backbone']),
+              ''.join('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+                      % (g['order'], _esc(g['name']), _esc(g['title'] or '—'), _esc(g['years'] or '—'),
+                         _esc(g['note'] or '')) for g in lin['backbone']),
+              _esc(_hw_note)))
+
+    # S4 逐师递归弟子链（每师一表·全字段·未具名弟子标〔待核〕）
+    for m in lin['masters']:
+        trows = ''
+        for e in lin['trees'][m['id']]:
+            dn = _esc(e['dname']) if e['dverified'] else \
+                ('<span style="color:#b00">〔待核〕无 name 记录·仅见边注：%s</span>' % _esc(e['note'] or e['disc']))
+            rel = '直系（师承）' if e['rel'] == 'MASTER_OF' else '私淑／影响（非直系）'
+            trows += ('<tr><td>%s</td><td style="padding-left:%dem">%s → %s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+                      % (e['depth'], 1 + 3 * (e['depth'] - 1), _esc(e['pname'] or e['parent']), dn,
+                         rel, _esc(e['branch']), _esc(e['note'] or '')))
+        fb += ('<details style="margin:6px 0"><summary>🌿 %s · 递归弟子链（直系展开·%d 节点）</summary>'
+               '<table><tr><th>代</th><th>师 → 徒</th><th>传承性质</th><th>分支</th><th>依据/边注</th></tr>%s</table></details>\n'
+               % (_esc(m['name']), len(lin['trees'][m['id']]), trows))
+
+    # S3 地谱追溯卡（每要地一卡·沿革/华严事件/关联人物/信度/依据/链接 全字段）
+    for t in temples_out:
+        ev = '、'.join(_esc(x) for x in t['events']) or '—'
+        ps = '、'.join(_esc(_lnames.get(pid) or ('〔待核〕' + str(pid))) for pid in t['persons']) or '—'
+        lk = ''.join('<a href="%s" target="_blank" rel="noopener">%s</a> '
+                     % (_esc(l.get('url', '')), _esc(l.get('name') or l.get('url', ''))) for l in t['links']) or '—'
+        ver = '确证（堪核）' if t['verified'] == 1 else '〔待核〕传统记载'
+        fb += ('<details style="margin:6px 0"><summary>⛩️ %s · %s（%s）</summary>'
+               '<table>'
+               '<tr><th>沿革</th><td>古称：%s ｜ 今：%s（%s）｜ 类型：%s</td></tr>'
+               '<tr><th>创建/鼎盛</th><td>朝代：%s ｜ 约 %s 年 ｜ 开建：%s</td></tr>'
+               '<tr><th>华严事件</th><td>%s</td></tr>'
+               '<tr><th>简介</th><td>%s</td></tr>'
+               '<tr><th>历史地位</th><td>%s</td></tr>'
+               '<tr><th>关联人物</th><td>%s</td></tr>'
+               '<tr><th>信度</th><td>%s</td></tr>'
+               '<tr><th>文献依据</th><td>%s</td></tr>'
+               '<tr><th>参考链接</th><td>%s</td></tr>'
+               '</table></details>\n'
+               % (_esc(t['name']), _esc(t['school']), _esc(t['id']),
+                  _esc(t['ancient'] or t['name']), _esc(t['location']), _esc(t['dynasty'] or '—'),
+                  _esc(t['type'] or '—'), _esc(t['dynasty'] or '—'), _esc(str(t['founded']) if t['founded'] is not None else '—'),
+                  _esc(t['founder'] or '—'), ev, _esc(t['desc']), _esc(t['sig']), ps, ver, _esc(t['source']), lk))
+
     shanhe_js = read_src('shanhe.js')
     tmpl = '''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -783,6 +979,20 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 .cite-card .src{font-size:0.82em;color:var(--text2);margin-top:6px}
 .cite-card .pend{color:#b00;font-size:0.86em}
 .cite-card .note{font-size:0.8em;color:var(--text2);margin-top:4px;font-style:italic}
+#lineage-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:4px 0}
+#lineage-select{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:5px 10px;font-size:0.86em;max-width:280px}
+#legend{display:flex;gap:8px;flex-wrap:wrap}
+.lg-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:12px;padding:2px 10px;font-size:0.78em;cursor:pointer;background:var(--card)}
+.lg-chip i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.lg-chip.dim{opacity:0.35}
+#lineage-hint{font-size:0.74em;color:var(--text2)}
+#lineage-box{margin-top:6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+#lineage-svg{width:100%;height:auto;display:block;background:#f6f1e7;border-radius:8px}
+.lg-edge{stroke-width:1.6;fill:none}
+.lg-edge.inf{stroke-dasharray:5,3}
+.lg-node.dim,.lg-edge.dim{opacity:0.15}
+.lg-node text{font-size:11px;fill:#3a2f1e}
+.lg-root text{font-weight:bold}
 </style>
 </head>
 <body>
@@ -795,6 +1005,7 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
     __YEAR_BUTTONS__
     <label style="font-size:0.82em"><input type="checkbox" id="ghost-toggle"> 叠加前一时段轮廓（Ghost Diff）</label>
     <label style="font-size:0.82em"><input type="checkbox" id="place-toggle" checked> 仓内实地标点（DB locations · __N_PLACES__）</label>
+    <label style="font-size:0.82em"><input type="checkbox" id="temple-toggle" checked> ⛩️ 华严要地·地谱卡（S3 · __N_TEMPLES__）</label>
     <a href="license.html" style="margin-left:auto;font-size:0.8em">层源与许可 →</a>
   </div>
   <div id="person-bar">
@@ -804,16 +1015,26 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
     <span id="st-ind"></span>
     <span id="person-hint">选中后：‹ › 或空格逐站推进·每站一手引文逐字回源</span>
   </div>
+  <div id="lineage-bar">
+    <select id="lineage-select">__LINEAGE_OPTIONS__</select>
+    <span id="legend">__LEGEND__</span>
+    <span id="lineage-hint">S4 择师递归展弟子链（直系＝实线／私淑·影响＝虚线）·S5 悬停图例隔离色块、点击 zoom</span>
+  </div>
   <div id="map-row">
     <div id="map-box">
       <svg id="map-svg" viewBox="0 0 __CW__ __CH__" xmlns="http://www.w3.org/2000/svg">
-        <g id="g-base"></g><g id="g-polity"></g><g id="g-ghost"></g><g id="g-place"></g><g id="g-person"></g>
+        <g id="g-base"></g><g id="g-polity"></g><g id="g-ghost"></g><g id="g-place"></g><g id="g-person"></g><g id="g-temple"></g>
       </svg>
 
       <p style="font-size:0.72em;color:var(--text2);margin:6px 4px 2px">断代色块为<b>示意底图</b>（aourednik 百年快照·GPL-3.0 独立集合·学术精度待核）；
       唐代 700 年快照疑承旧隋界〔待核〕；CHGIS（禁再分发）仅外链：<a href="https://dataverse.harvard.edu/dataverse/chgis_v6">Harvard Dataverse</a>。</p>
     </div>
-    <div id="info-panel"><h4>点击政体或标点</h4><p>政体=断代示意层（GPL·待核）；蓝点=仓内实证地名（DB 实测坐标）。</p></div>
+    <div id="info-panel"><h4>点击政体或标点</h4><p>政体=断代示意层（GPL·待核）；蓝点=仓内实证地名（DB 实测坐标）；⛩=华严要地（S3 地谱卡）。</p></div>
+  </div>
+  <div id="lineage-box">
+    <h3 style="font-size:1em;margin:14px 0 4px">法脉展开 · 递归弟子树（S4/S5）</h3>
+    <svg id="lineage-svg" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p style="font-size:0.74em;color:var(--text2)">直系师承＝实线；私淑／隔代影响＝虚线（依客观传承·不并置同等）。〔待核〕＝person_trajectories 无 name 记录、仅见边注，不臆造。数据源 lineages.json＋complete_lineage_chart.yaml（只读投影·未改 SSOT）。</p>
   </div>
   <div id="fallback">
     <h3 style="font-size:1em">静态兜底 · 全字段无损在场（信息無损惯例）</h3>
@@ -826,7 +1047,10 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 </html>'''
     html = (tmpl.replace('__YEAR_BUTTONS__', year_buttons)
                 .replace('__N_PLACES__', str(len(places)))
+                .replace('__N_TEMPLES__', str(len(temples_out)))
                 .replace('__PERSON_OPTIONS__', person_options)
+                .replace('__LINEAGE_OPTIONS__', lineage_options)
+                .replace('__LEGEND__', legend_chips)
                 .replace('__CW__', str(GEO_CW)).replace('__CH__', str(GEO_CH))
                 .replace('__FALLBACK__', fb)
                 .replace('__DATA_JSON__', data_json)
@@ -838,9 +1062,11 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
     size = len(html.encode('utf-8'))
     npoly = sum(len(yy['polities']) for yy in years_out)
     nstn = sum(len(p['stations']) for p in persons_out)
-    print('OK  %s (%s bytes | %d 年·%d 政体·%d 标点·%d 祖师/%d 站·coast %d/countries %d)' % (
+    nedge = sum(len(v) for v in lin['trees'].values())
+    print('OK  %s (%s bytes | %d 年·%d 政体·%d 标点·%d 祖师/%d 站·要地 %d·法脉 %d 师/%d 边/%d 支·coast %d/countries %d)' % (
         path, format(size, ','), len(years_out), npoly, len(places),
-        len(persons_out), nstn, len(coast), len(countries)))
+        len(persons_out), nstn, len(temples_out), len(lin['masters']), nedge, len(lin['branches']),
+        len(coast), len(countries)))
     return size
 
 

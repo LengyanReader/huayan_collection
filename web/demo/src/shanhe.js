@@ -21,6 +21,10 @@
   var gPerson = document.getElementById('g-person');
   var panel = document.getElementById('info-panel');
   var PERSONS = S.persons || [];
+  var TEMPLES = S.temples || [];
+  var LIN = S.lineage || { masters: [], trees: {}, branches: [], backbone: [] };
+  var gTemple = document.getElementById('g-temple');
+  var lSvg = document.getElementById('lineage-svg');
   var cur = S.years.length ? S.years[0].year : null;
 
   function esc(s) {
@@ -229,9 +233,11 @@
     syncURL();
   }
   function syncURL() {   // S6：零坐标深链——仅记语义参数，不含经纬度
-    var qs = '';
-    if (pCur) qs = 'person=' + encodeURIComponent(pCur) + '&station=' + encodeURIComponent(stCur);
-    var url = location.pathname + (qs ? ('?' + qs) : '') + location.hash;
+    var parts = [];
+    if (pCur) { parts.push('person=' + encodeURIComponent(pCur)); parts.push('station=' + encodeURIComponent(stCur)); }
+    if (linCur) parts.push('master=' + encodeURIComponent(linCur));
+    if (templeCur) parts.push('temple=' + encodeURIComponent(templeCur));
+    var url = location.pathname + (parts.length ? ('?' + parts.join('&')) : '') + location.hash;
     try { history.replaceState(null, '', url); } catch (e) {}
   }
 
@@ -247,12 +253,148 @@
     else if (e.key === 'ArrowLeft') step(-1);
   });
 
+  /* ══ F.4 S3 地谱追溯卡（华严要地·点击→沿革/华严事件/人物/信度/依据）══ */
+  var BRANCH_COLOR = {};
+  (LIN.branches || []).forEach(function (b) { BRANCH_COLOR[b.name] = b.color; });
+  var PNAME = {};
+  (LIN.masters || []).forEach(function (m) { PNAME[m.id] = m.name; });
+  Object.keys(LIN.trees || {}).forEach(function (mid) {
+    (LIN.trees[mid] || []).forEach(function (e) { if (e.pname) PNAME[e.parent] = e.pname; if (e.dname) PNAME[e.disc] = e.dname; });
+  });
+  var templeCur = null;
+  function findTemple(id) { for (var i = 0; i < TEMPLES.length; i++) if (TEMPLES[i].id === id) return TEMPLES[i]; return null; }
+  function drawTemples() {
+    if (!gTemple) return;
+    gTemple.innerHTML = '';
+    for (var i = 0; i < TEMPLES.length; i++) {
+      var t = TEMPLES[i], on = (t.id === templeCur), s = on ? 6 : 4.2;
+      var r = el('rect', { x: t.x - s, y: t.y - s, width: 2 * s, height: 2 * s, fill: on ? '#c0392b' : '#7a5a2e',
+        stroke: '#fff', 'stroke-width': 1, transform: 'rotate(45 ' + t.x + ' ' + t.y + ')' });
+      r.style.cursor = 'pointer';
+      r.addEventListener('click', (function (id) { return function () { selectTemple(id); }; })(t.id));
+      gTemple.appendChild(r);
+      var tx = el('text', { x: t.x + 8, y: t.y - 6, 'font-size': 8.5, fill: on ? '#c0392b' : '#6b5a3a' });
+      tx.textContent = t.name; gTemple.appendChild(tx);
+    }
+  }
+  function templeCard(t) {
+    var ev = (t.events && t.events.length) ? t.events.map(esc).join('、') : '—';
+    var ps = (t.persons && t.persons.length) ? t.persons.map(function (id) { return esc(PNAME[id] || ('〔待核〕' + id)); }).join('、') : '—';
+    var lk = (t.links || []).map(function (l) { return '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.name || l.url) + '</a>'; }).join(' ') || '—';
+    var ver = (t.verified === 1) ? '确证（堪核）' : '〔待核〕传统记载';
+    return '<h4>⛩ ' + esc(t.name) + ' <span class="yr">' + esc(t.school) + '</span></h4>' +
+      '<p><b>沿革</b>：古称 ' + esc(t.ancient || t.name) + ' ｜ 今 ' + esc(t.location) + '（' + esc(t.dynasty || '—') + '）· ' + esc(t.type || '—') + '</p>' +
+      '<p><b>创建/鼎盛</b>：约 ' + esc(t.founded == null ? '—' : t.founded) + ' 年 · 开建 ' + esc(t.founder || '—') + '</p>' +
+      '<p><b>华严事件</b>：' + ev + '</p><p>' + esc(t.desc) + '</p>' +
+      '<p><b>历史地位</b>：' + esc(t.sig) + '</p><p><b>关联人物</b>：' + ps + '</p>' +
+      '<p><b>信度</b>：' + ver + ' ｜ <b>依据</b>：' + esc(t.source) + '</p>' +
+      '<p class="src">参考：' + lk + '</p>' +
+      '<p class="lic">地谱卡＝现存道场名录（temple_directory.yaml）逐字摘要＋信度标·只读投影。沿革/事件属综述（非逐字回源）；一手逐字引文见「点人溯事」S2。</p>';
+  }
+  function selectTemple(id) {
+    templeCur = id || null;
+    var t = findTemple(templeCur);
+    if (t) { panel.innerHTML = templeCard(t); if (t.founded != null) { var yy = nearestSnapshot(Math.round(t.founded)); if (yy != null) { cur = yy; refresh(); } } }
+    drawTemples(); syncURL();
+  }
+
+  /* ══ F.4 S4 法脉递归弟子树（分层 dendrogram）＋ S5 法系色块隔离/zoom ══ */
+  var linCur = null, isoBranch = null;
+  function findMaster(id) { for (var i = 0; i < LIN.masters.length; i++) if (LIN.masters[i].id === id) return LIN.masters[i]; return null; }
+  function branchOf(nodeId, mid) {
+    var es = LIN.trees[mid] || [];
+    for (var i = 0; i < es.length; i++) if (es[i].disc === nodeId) return es[i].branch;
+    return '华严五祖';
+  }
+  function setSel(id) { var s = document.getElementById('lineage-select'); if (s) s.value = id || ''; }
+  function renderTree(mid) {
+    if (!lSvg) return;
+    while (lSvg.firstChild) lSvg.removeChild(lSvg.firstChild);
+    linCur = mid || null; isoBranch = null;
+    if (!mid) { lSvg.setAttribute('viewBox', '0 0 900 60'); var tip = el('text', { x: 14, y: 32, 'font-size': 13, fill: '#8a7a5a' }); tip.textContent = '择祖师后展开其 N 代弟子链（直系＝实线／私淑·影响＝虚线）'; lSvg.appendChild(tip); syncURL(); return; }
+    var edges = LIN.trees[mid] || [];
+    var mrec = findMaster(mid);
+    var nodes = {}; nodes[mid] = { id: mid, name: mrec ? mrec.name : mid, depth: 0, verified: true };
+    edges.forEach(function (e) {
+      if (!nodes[e.parent]) nodes[e.parent] = { id: e.parent, name: e.pname || e.parent, depth: e.depth - 1, verified: true };
+      if (!nodes[e.disc] || nodes[e.disc].depth > e.depth) nodes[e.disc] = { id: e.disc, name: e.dname || null, depth: e.depth, verified: e.dverified };
+    });
+    var byDepth = {}, maxD = 0;
+    Object.keys(nodes).forEach(function (k) { var n = nodes[k]; (byDepth[n.depth] = byDepth[n.depth] || []).push(n); if (n.depth > maxD) maxD = n.depth; });
+    var CW = 170, rowH = 30, y = 26;
+    for (var d = 0; d <= maxD; d++) { var arr = byDepth[d] || []; for (var j = 0; j < arr.length; j++) { arr[j].y = y; y += rowH; } if (arr.length) y += 6; }
+    var height = Math.max(60, y + 8), width = 24 + (maxD + 1) * CW + 220;
+    var gE = el('g', {}), gN = el('g', {});
+    edges.forEach(function (e) {
+      var pn = nodes[e.parent], dn = nodes[e.disc]; if (!pn || !dn) return;
+      var x1 = 24 + pn.depth * CW, x2 = 24 + dn.depth * CW, col = BRANCH_COLOR[e.branch] || '#888';
+      var path = el('path', { d: 'M' + x1 + ',' + pn.y + ' C' + (x1 + CW / 2) + ',' + pn.y + ' ' + (x2 - CW / 2) + ',' + dn.y + ' ' + x2 + ',' + dn.y,
+        stroke: col, 'class': 'lg-edge' + (e.rel === 'INFLUENCED' ? ' inf' : ''), 'data-branch': e.branch, 'stroke-opacity': 0.8 });
+      gE.appendChild(path);
+    });
+    Object.keys(nodes).forEach(function (k) {
+      var n = nodes[k], x = 24 + n.depth * CW;
+      var gg = el('g', { 'class': 'lg-node' + (n.depth === 0 ? ' lg-root' : ''), 'data-branch': branchOf(n.id, mid) });
+      gg.appendChild(el('circle', { cx: x, cy: n.y, r: n.depth === 0 ? 6 : 4.5, fill: n.depth === 0 ? '#c0392b' : (BRANCH_COLOR[branchOf(n.id, mid)] || '#8d5a2b'), stroke: '#fff', 'stroke-width': 1 }));
+      var tx = el('text', { x: x + 9, y: n.y + 4, 'font-size': 11, fill: n.verified ? '#3a2f1e' : '#b00' });
+      tx.textContent = (n.name || n.id) + (n.verified ? '' : '〔待核〕');
+      gg.appendChild(tx); gg.style.cursor = 'pointer';
+      gg.addEventListener('click', (function (nid) { return function () { if (nid !== linCur) { renderTree(nid); setSel(nid); } }; })(n.id));
+      gN.appendChild(gg);
+    });
+    lSvg.appendChild(gE); lSvg.appendChild(gN);
+    var vb = '0 0 ' + width + ' ' + height;
+    lSvg.setAttribute('viewBox', vb); lSvg.setAttribute('data-full', vb);
+    applyIsolate(); syncURL();
+  }
+  function applyIsolate() {
+    if (!lSvg) return;
+    var ns = lSvg.querySelectorAll('.lg-node'), es = lSvg.querySelectorAll('.lg-edge'), k;
+    for (k = 0; k < ns.length; k++) ns[k].classList.toggle('dim', !!isoBranch && ns[k].getAttribute('data-branch') !== isoBranch);
+    for (k = 0; k < es.length; k++) es[k].classList.toggle('dim', !!isoBranch && es[k].getAttribute('data-branch') !== isoBranch);
+  }
+  function zoomBranch(bname) {
+    if (!lSvg || !linCur) return;
+    var els = lSvg.querySelectorAll('.lg-node,.lg-edge'), minx = 1e9, miny = 1e9, maxx = -1e9, maxy = -1e9, hit = false;
+    for (var k = 0; k < els.length; k++) {
+      if (els[k].getAttribute('data-branch') !== bname) continue;
+      var bb; try { bb = els[k].getBBox(); } catch (e) { continue; }
+      hit = true; minx = Math.min(minx, bb.x); miny = Math.min(miny, bb.y);
+      maxx = Math.max(maxx, bb.x + bb.width); maxy = Math.max(maxy, bb.y + bb.height);
+    }
+    if (!hit) { if (lSvg.getAttribute('data-full')) lSvg.setAttribute('viewBox', lSvg.getAttribute('data-full')); return; }
+    var pad = 26;
+    lSvg.setAttribute('viewBox', (minx - pad) + ' ' + (miny - pad) + ' ' + (maxx - minx + 2 * pad) + ' ' + (maxy - miny + 2 * pad));
+  }
+  (function wireLegend() {
+    var chips = document.querySelectorAll('.lg-chip');
+    for (var k = 0; k < chips.length; k++) {
+      (function (c) {
+        var b = c.getAttribute('data-branch');
+        c.addEventListener('mouseenter', function () { isoBranch = b; applyIsolate(); });
+        c.addEventListener('mouseleave', function () { isoBranch = null; applyIsolate(); });
+        c.addEventListener('click', function () { zoomBranch(b); });
+      })(chips[k]);
+    }
+  })();
+  var lsel = document.getElementById('lineage-select');
+  if (lsel) lsel.addEventListener('change', function () { renderTree(this.value || null); });
+  var tbt = document.getElementById('temple-toggle');
+  if (tbt) tbt.addEventListener('change', function () { if (gTemple) gTemple.style.display = tbt.checked ? '' : 'none'; });
+
   /* ── 启动 ── */
   drawBase();
   refresh();
   drawPlaces();
+  drawTemples();
+  (function initLineage() {
+    if (LIN.masters && LIN.masters.length) {
+      var def = findMaster('person_003') ? 'person_003' : LIN.masters[0].id;
+      renderTree(def); setSel(def);
+    }
+  })();
 
-  /* ── S6 深链初始化：读 URL 参数 person/station/year（零坐标） ── */
+  /* ── S6 深链初始化：读 URL 参数 person/station/year/master/temple（零坐标） ── */
   (function initFromURL() {
     var q = {};
     location.search.replace(/^\?/, '').split('&').forEach(function (kv) {
@@ -267,6 +409,8 @@
       if (q.station != null) for (var i = 0; i < p.stations.length; i++) if (String(p.stations[i].index) === String(q.station)) stCur = p.stations[i].index;
       drawRoute(); showCard();
     }
+    if (q.temple && findTemple(q.temple)) selectTemple(q.temple);
+    if (q.master && findMaster(q.master)) { renderTree(q.master); setSel(q.master); }
   })();
 })();
 

@@ -119,6 +119,54 @@ else:
                             fail('F.3 station-level 〔待核〕 count mismatch in fallback')
                         ok('F.3 person-chronicle 5祖/33站·sourced28逐字在场·pending5标〔待核〕')
 
+                    # ── F.4 地谱卡(S3)+法脉展开(S4)+图例隔离(S5)·只读投影页侧证 ──
+                    for m4 in ['id="g-temple"', 'id="lineage-select"', 'id="legend"',
+                               'id="lineage-svg"', '只读投影', '递归弟子链', '法系分支图例']:
+                        if m4 not in sh:
+                            fail('F.4 shanhe.html missing marker: %s' % m4)
+                    _mm = re.search(r'var SHANHE = (\{.*?\});</script>', sh, re.S)
+                    if not _mm:
+                        fail('F.4 cannot locate SHANHE payload for projection check')
+                    else:
+                        _sh = json.loads(_mm.group(1).replace('<\\/', '</'))
+                        _tpl = _sh.get('temples', [])
+                        _lin = _sh.get('lineage', {})
+                        _mast = _lin.get('masters', [])
+                        _br = _lin.get('branches', [])
+                        _bb = _lin.get('backbone', [])
+                        # 计数守卫（与 build._f4_* 投影预期一致）
+                        if len(_tpl) != 12:
+                            fail('F.4 S3 华严要地应 12 处，实得 %d' % len(_tpl))
+                        if len(_mast) != 18:
+                            fail('F.4 S4 可展开祖师应 18 位，实得 %d' % len(_mast))
+                        if len(_br) != 6:
+                            fail('F.4 S5 法系色块应 6 支，实得 %d' % len(_br))
+                        if len(_bb) < 5:
+                            fail('F.4 五祖骨干应≥5 世，实得 %d' % len(_bb))
+                        # 只读投影一致性：每要地 school 必含华严/贤首 或 id t_huayan_ 前缀
+                        for t in _tpl:
+                            _s = t.get('school') or ''
+                            if not (('华严' in _s) or ('贤首' in _s) or str(t.get('id', '')).startswith('t_huayan_')):
+                                fail('F.4 要地投影越界（非华严核心子集）: %s' % t.get('id'))
+                        # 未具名弟子→静态兜底逐条标〔待核〕；计数与 trees 中 dverified=false 边数一致
+                        _unnamed = sum(1 for mid in _lin.get('trees', {})
+                                       for e in _lin['trees'][mid] if not e.get('dverified'))
+                        _pend_markers = sh.count('〔待核〕无 name 记录')
+                        if _pend_markers != _unnamed:
+                            fail('F.4 未具名弟子〔待核〕兜底计数不符: 页=%d 数据=%d'
+                                 % (_pend_markers, _unnamed))
+                        # 反向边守卫：法统序次内不得出现 高序→低序 直系边（如 宗密→澄观）
+                        _order = {'person_001': 1, 'person_002': 2, 'person_003': 3,
+                                  'person_004': 4, 'person_005': 5}
+                        for mid in _lin.get('trees', {}):
+                            for e in _lin['trees'][mid]:
+                                f, d = e.get('parent'), e.get('disc')
+                                if f in _order and d in _order and e.get('rel') == 'MASTER_OF' \
+                                        and _order[f] > _order[d]:
+                                    fail('F.4 反向直系边漏网: %s→%s' % (f, d))
+                        ok('F.4 只读投影 S3要地12·S4祖师18/骨干%d世·S5色块6·未具名弟子%d标〔待核〕·反向边已剔'
+                           % (len(_bb), _unnamed))
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:
