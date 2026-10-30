@@ -592,6 +592,8 @@ STEP1 回源对勘（八十为干·六十补卷对读·藏 24–27 开篇实测�
 
 > **F.1a 实测基线（2026-10-30·持久脚本 `scripts/f1a_route_audit.py`）**：`person_trajectories.yaml` 178 人 · **177 人带 route · 936 站点**；**站级逐字引文 0/936（0.0%）**——此即 S2「点人溯事」每站引文卡片补源工作量基线。人物级 `source` 在场 **174/177（98.3%）**、`verified` **143/177（80.8%）**、**34 位无 verified**（含 `person_000a`）标〔待核〕。F.3 逐站补源须回源一手·人物级 source 为起点非终点。
 
+> **F.2 侦察订正（2026-10-30·WebFetch 原文实测·探针 `_f2_probe.py`·scratch 不入仓）**：① **aourednik/historical-basemaps = GPL-3.0**（LICENSE 34KB 全文实测·非预期纯开放数据）：百年一份世界快照（500/600/700/800/900 均在·800/900 含 `Tang Empire`/`Tibetan Empire`·**world_700 仍标 `Sui Empire`〔质量待核〕**）；本仓 root LICENSE 实测 = **MIT**，GPL 数据入库须作独立集合＋声明页，非零风险。② **CHGIS V6 官方原文**："free for academic research, no commercial use, resale, or **redistribution** permitted" → **原始数据不得入库/入公版仓**，只能外链引用（Harvard Dataverse）——原 L3 叠加计划据此**降为外链＋引用**。③ OpenHistoricalMap（ODbL·许可友好）但官方论坛自认 **pre-1880 中国边框覆盖稀**→后置。④ 仓内 `dynasty_boundaries.yaml` 实查：仅 4 朝·每朝只有 **bounding box 无边界几何**；`timeline_dynasty_bands.yaml` 仅色带；**两文件零消费方**→撑不起底图，只能作色带/时间轴复用。⑤ Natural Earth = **public domain**（零风险·现代物理底图）。→ **F.2 候选裁定待人工 R4**：**B 主线（零许可风险）**＝NE 物理底图＋仓内行迹/寺刹/教区核心层＋外部源外链区；**A 叠加（须批准 GPL 入库）**＝aourednik 500–900 五快照作断代 polity 色块层（Ghost Diff 核心体验）；CHGIS 恒外链。
+
 ### 五、DoD（B 档验收线）
 
 - [ ] 模块壳注册表可用，子页 ≥2 且**加第三页只动注册表**（扩编性验证）。
