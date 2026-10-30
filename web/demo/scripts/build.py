@@ -456,6 +456,87 @@ def build_page(title, tab_id, sidebar_links, tab_js_name, init_call):
     return html
 
 
+def build_famai_shell():
+    """Build 法脉传承模块壳 (famai/index.html) from data/famai_subpages.yaml registry.
+    Adding a new sub-page = one more registry entry (F.0 design, tasks/PLAN.md)."""
+    reg = read_yaml('famai_subpages.yaml')
+    if not reg:
+        print('WARN famai_subpages.yaml missing - skip famai shell')
+        return ''
+    mod = reg.get('module', {})
+    subs = reg.get('subpages', [])
+    status_badge = {'live': ('已上线', 'var(--green,#3d8b5f)'),
+                    'in-build': ('施工中', 'var(--gold,#b8863c)'),
+                    'planned': ('規劃中', 'var(--text2)')}
+    cards = ''
+    for s in subs:
+        zh, col = status_badge.get(s.get('status', 'planned'), status_badge['planned'])
+        badge = '<span style="font-size:0.62em;padding:2px 8px;border:1px solid {};border-radius:10px;color:{}">{}</span>'.format(col, col, zh)
+        inner = ('<span class="icon">{}</span>'
+                 '<h3>{} <span style="font-size:0.65em;color:var(--text2);font-weight:400">{}</span> {}</h3>'
+                 '<p style="font-size:0.82em">{}</p>'
+                 '<div class="tag-row">{}</div>').format(
+            s.get('icon', ''), s.get('title', ''), s.get('title_en', ''), badge, s.get('summary', ''),
+            ''.join('<span class="tag">{}</span>'.format(t) for t in s.get('tags', [])))
+        if s.get('status') == 'live':
+            cards += '<a href="{}" class="card">{}</a>\n'.format(s.get('file', '#'), inner)
+        else:
+            cards += '<div class="card" style="opacity:0.72;cursor:default" title="批次 F.2–F.5 施工中">{}</div>\n'.format(inner)
+    # 静态兜底（信息無损惯例）：注册表全字段 always-in-DOM
+    reg_rows = ''
+    for s in subs:
+        ds = '；'.join(s.get('data_sources', []))
+        reg_rows += ('<tr><td>{}</td><td>{}／{}</td><td>{}</td><td>{}</td><td>{}</td></tr>\n').format(
+            s.get('id', ''), s.get('title', ''), s.get('title_en', ''),
+            s.get('file', ''), s.get('status', ''), ds)
+    html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法脉传承 · 视角模块</title>
+<link rel="stylesheet" href="../css/common.css">
+<style>
+.wrap{{max-width:1080px;margin:0 auto;padding:24px 20px}}
+.grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:18px}}
+.card{{display:block;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:18px 20px;text-decoration:none;color:var(--text);transition:transform .15s,box-shadow .15s}}
+.card:hover{{transform:translateY(-2px);box-shadow:0 6px 18px rgba(60,40,20,.12)}}
+.card h3{{color:var(--gold);margin:6px 0}}
+.tag-row{{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}}
+.tag{{font-size:0.68em;padding:2px 8px;border-radius:10px;background:var(--panel);border:1px solid var(--line);color:var(--text2)}}
+table{{border-collapse:collapse;width:100%;font-size:0.72em}}
+td,th{{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}}
+</style>
+</head>
+<body>
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>🌊 {mod.get('title','法脉传承')} · 视角模块 <span style="font-size:0.55em;color:var(--text2);font-weight:400">{mod.get('title_en','')}</span></h1>
+</header>
+<div class="wrap">
+  <p style="color:var(--text2);font-size:0.88em">{mod.get('intro','')}</p>
+  <p style="color:var(--text2);font-size:0.78em;font-style:italic">{mod.get('intro_en','')}</p>
+  <div class="grid">
+{cards}  </div>
+  <details style="margin-top:22px;font-size:0.8em">
+    <summary>📇 子页注册表溯源 · Sub-page registry（<code>data/famai_subpages.yaml</code> v{reg.get('version','')} · {reg.get('last_updated','')}）——新增子页只改本表</summary>
+    <table><tr><th>id</th><th>标题</th><th>文件</th><th>状态</th><th>数据源</th></tr>
+{reg_rows}    </table>
+  </details>
+</div>
+</body>
+</html>'''
+    famai_dir = OUT / 'famai'
+    famai_dir.mkdir(exist_ok=True)
+    shell_path = famai_dir / 'index.html'
+    with open(shell_path, 'w', encoding='utf-8') as f:
+        f.write(html)
+    size = len(html.encode('utf-8'))
+    print(f'OK  {shell_path} ({size:,} bytes | {len(subs)} subpages registered)')
+    return size
+
+
 def build_lineage_page():
     """Build Tab1: 法脉传承 (standalone, Canvas+Leaflet, layout preserved)."""
     graph = load_graph()
@@ -1800,6 +1881,12 @@ def main():
     file_count += 1
     graph = load_graph()
     print(f'OK  {lineage_path} ({size:,} bytes | {len(graph.get("nodes",[]))} persons | {len(graph.get("edges",[]))} edges)')
+
+    # ── Build 法脉传承模块壳 (famai/index.html · registry-driven) ──
+    famai_size = build_famai_shell()
+    if famai_size:
+        total_size += famai_size
+        file_count += 1
 
     # ── Build Tab2: Gap (restructured layout) ──
     gap_spec = nav.get('gap', {})

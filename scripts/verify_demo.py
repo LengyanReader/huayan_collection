@@ -53,7 +53,23 @@ else:
     else:
         ok('index: ends with </html>')
     for t in TABS:
-        if f'tabs/{t}.html' not in idx:
+        if t == 'lineage':
+            # F.0 双子页架构：lineage 经法脉传承模块壳路由（famai/index.html 内直链 tabs/lineage.html）
+            if 'tabs/lineage.html' not in idx and 'famai/index.html' not in idx:
+                fail('index: lineage entry missing (direct tabs/lineage.html or via famai/index.html shell)')
+            shell_path = os.path.join(DEMO, 'famai', 'index.html')
+            if not os.path.exists(shell_path):
+                fail('famai shell missing (web/demo/famai/index.html)')
+            else:
+                with open(shell_path, encoding='utf-8') as f:
+                    shell = f.read()
+                if '../tabs/lineage.html' not in shell:
+                    fail('famai shell: missing link to ../tabs/lineage.html')
+                if 'famai_subpages.yaml' not in shell:
+                    fail('famai shell: missing registry provenance (famai_subpages.yaml)')
+                else:
+                    ok('famai shell: routes lineage subpage + registry provenance present')
+        elif f'tabs/{t}.html' not in idx:
             fail(f'index: missing link to tabs/{t}.html')
     ok('index: links to all 6 tab pages')
     for title in TAB_TITLES:

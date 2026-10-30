@@ -1651,3 +1651,28 @@ done(
 **done**（观察到）：P17 §5 已极富（3035 行·五家长窗·智俨缺口如实记），本轮补 **会读启发**（4条：**渐/顿最大张力**——十一喻渐语说顿义/一即一切之量化形态·数量是表法/**智俨缺口登记即诚实**/十一大喻=量纲转换·末喻不可通约）。**闸门全绿**：build 58 files｜31,860,503 B｜check OK｜verify_demo rc=0｜diff-check OK。
 
 **next**：L.250 第十八部（明法）→ 战役收口终审（18 部矩阵＋门禁电池）。
+
+---
+
+## F 系列 · 法脉传承模块改造（独立批次号·与 L.* 会读战役并行不争号）
+
+### F.0 · 模块壳 + 子页注册表 收口 ✅ · 2026-10-30
+
+**goal**：落地 tasks/PLAN.md「法脉传承双子页架构」设计之 F.0 shell 批——建立可扩编的子页注册表 + 模块壳页，旧「时空长河」页零改动纳入。
+
+**done**（观察到）：
+- **实测前提账**（探针 `_f0_probe.py`）：`locations` 表 **30 行 lat/lng 全填**、`lineage_edges` 98 边自带 source、`person_locations` 45 行带 period、`person_trajectories.yaml` **177 人带 route**、`geo_flow.yaml`/`dynasty_boundaries.yaml`/`timeline_dynasty_bands.yaml` 俱在 → 基础比预估厚，**PLAN §二 据此订正**（坐标无需补列·F.1 改为审计复用＋增量·新增 F.1a route 站引文覆盖审计）。
+- **数据层**：新建 `data/famai_subpages.yaml`（子页注册表 SSOT·2 条目·status 枚举 live/in-build/planned）。
+- **构建层**：`build.py` 增 `build_famai_shell()`（registry 驱动生成 `web/demo/famai/index.html`·含静态兜底注册表溯源折叠表）＋main 挂接；`verify_demo.py` 增壳页路由＋溯源断言。
+- **首页卡**改指 `famai/index.html` 并标注子页并存（含「⛰️ 山河法脉·規劃中」）。
+- **棘轮收口**：PLAN 补 §六线框图（presentation gap）＋§七设计自评台账（floor=2.65·持平标杆 jiangshan-map）。
+
+**gates**（观察到）：build **59 files｜31,866,530 B**（旧 58→59·+famai 壳）｜py_compile ✅ rc=0｜**check.py ✅ exit 0**｜**verify_demo ✅ ALL CHECKS PASSED rc=0**｜**test_pipeline ✅ ALL TESTS PASSED rc=0**｜headless Chrome（subprocess 直取 DOM）探针 **9/9 全中**（时空长河/山河法脉/../tabs/lineage.html/famai_subpages.yaml/已上线/規劃中/person_trajectories/Dharma Lineage Transmission/Mountains &amp; Rivers）·stderr 非扩展行 0。
+
+**铁律自校**：旧「时空长河」`build_lineage_page()` **零改写**；8 个在途 built HTML 重建前后 **sha256 逐一相等（8/8 SAME·未卷入 L.250 明法品在途改动）**；并行泳道 scratch 文件（`_f0_probe.py`/`_f0_domcheck.py`/日志）**不入仓**；本地 commit **未 push**。
+
+**blocked**：无（F.1 可迳进）。
+
+**next**：**F.1 数据批**——lineage.schema 增 `TRANSMITTED_TEXT` 边＋`source_ref`＋`reliability`（向后兼容）→ **F.1a** route 站逐字回源覆盖审计。子页 B「山河法脉」实现自 **F.2** 起。
+
+**sources**：`tasks/PLAN.md`（设计 SSOT·§〇–§七）·`data/famai_subpages.yaml`·`web/demo/famai/index.html`·harness_factory `domains/excellence/standard-ladder.md`（自评台账基准）。

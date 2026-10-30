@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法脉传承 · 视角模块</title>
+<link rel="stylesheet" href="../css/common.css">
+<style>
+.wrap{max-width:1080px;margin:0 auto;padding:24px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:18px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:18px 20px;text-decoration:none;color:var(--text);transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(60,40,20,.12)}
+.card h3{color:var(--gold);margin:6px 0}
+.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:0.68em;padding:2px 8px;border-radius:10px;background:var(--panel);border:1px solid var(--line);color:var(--text2)}
+table{border-collapse:collapse;width:100%;font-size:0.72em}
+td,th{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+</style>
+</head>
+<body>
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>🌊 法脉传承 · 视角模块 <span style="font-size:0.55em;color:var(--text2);font-weight:400">Dharma Lineage Transmission</span></h1>
+</header>
+<div class="wrap">
+  <p style="color:var(--text2);font-size:0.88em">以不同视角呈现客观法脉传承关系（师承链 · 著述传导 · 跨域接受）；本子页注册表可继续扩编，新增视角只需在此加一行。</p>
+  <p style="color:var(--text2);font-size:0.78em;font-style:italic">The same transmission reality — master lines, text transmission, cross-region reception — presented through different lenses. This registry is extensible: a new sub-page is one more entry.</p>
+  <div class="grid">
+<a href="../tabs/lineage.html" class="card"><span class="icon">🌊</span><h3>时空长河 <span style="font-size:0.65em;color:var(--text2);font-weight:400">Spacetime River</span> <span style="font-size:0.62em;padding:2px 8px;border:1px solid var(--green,#3d8b5f);border-radius:10px;color:var(--green,#3d8b5f)">已上线</span></h3><p style="font-size:0.82em">Canvas 时间轴 × Leaflet 地图 · 从印度源流 (Aśvaghoṣa·Nāgārjuna) 到当代普贤乘 (Haiyun Jimeng) · 跨 7 国 · 1500 年 · 10 大法系 · 全球文明路线动画 · 贝塞尔传承连线（师徒金 · 法脉绿 · 影响蓝）。</p><div class="tag-row"><span class="tag">Knowledge Graph</span><span class="tag">Canvas Timeline</span><span class="tag">GIS Map</span><span class="tag">Animation</span></div></a>
+<div class="card" style="opacity:0.72;cursor:default" title="批次 F.2–F.5 施工中"><span class="icon">⛰️</span><h3>山河法脉 <span style="font-size:0.65em;color:var(--text2);font-weight:400">Mountains & Rivers of the Lineage</span> <span style="font-size:0.62em;padding:2px 8px;border:1px solid var(--text2);border-radius:10px;color:var(--text2)">規劃中</span></h3><p style="font-size:0.82em">时间轴驱动历史疆域底图 · Ghost 断代对照 · 点人溯事（行迹逐站 · 逐字回源引文）· 地谱追溯卡 · 法脉递归展开 · 零坐标 URL 协议（?person= / ?place=&year=）。设计定稿见 tasks/PLAN.md「法脉传承模块改造」节；批次 F.2–F.5。</p><div class="tag-row"><span class="tag">Historical Base Map</span><span class="tag">Person Chronicle</span><span class="tag">Ghost Diff</span><span class="tag">Deep Link</span></div></div>
+  </div>
+  <details style="margin-top:22px;font-size:0.8em">
+    <summary>📇 子页注册表溯源 · Sub-page registry（<code>data/famai_subpages.yaml</code> v1.0.0 · 2026-10-30）——新增子页只改本表</summary>
+    <table><tr><th>id</th><th>标题</th><th>文件</th><th>状态</th><th>数据源</th></tr>
+<tr><td>spacetime-river</td><td>时空长河／Spacetime River</td><td>../tabs/lineage.html</td><td>live</td><td>data/catalog/huayan.db · persons / locations (30 地名 lat/lng 全填) / lineage_edges (98) / person_locations (45)；data/events/person_trajectories.yaml（177 人有 route·实测 2026-10-30）；data/events/geo_flow.yaml · dynasty_boundaries.yaml · timeline_dynasty_bands.yaml</td></tr>
+<tr><td>shanhe-famai</td><td>山河法脉／Mountains & Rivers of the Lineage</td><td>shanhe.html</td><td>planned</td><td>同「时空长河」底层数据 · 另扩 lineage_edges（TRANSMITTED_TEXT / source_ref / reliability·F.1 批）；断代底图分层：L1 自建 / L2 开放层 / L3 学术层（CHGIS·非商用声明·F.2 批实测后定源）</td></tr>
+    </table>
+  </details>
+</div>
+</body>
+</html>

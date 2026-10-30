@@ -1,0 +1,37 @@
+# 法脉传承模块 · 子页注册表（SSOT · F.0 批建立 2026-10-30）
+# 惯例承 standalone_articles.yaml：数据驱动生成物，构建器只消费本表。
+# 新增子页 = subpages 加一条目 + 相应 build 函数（F.2+ 批），壳页自动收录。
+# status 枚举：live（已上线）/ in-build（施工中）/ planned（已规划）
+version: "1.0.0"
+last_updated: "2026-10-30"
+module:
+  title: "法脉传承"
+  title_en: "Dharma Lineage Transmission"
+  intro: "以不同视角呈现客观法脉传承关系（师承链 · 著述传导 · 跨域接受）；本子页注册表可继续扩编，新增视角只需在此加一行。"
+  intro_en: "The same transmission reality — master lines, text transmission, cross-region reception — presented through different lenses. This registry is extensible: a new sub-page is one more entry."
+subpages:
+  - id: spacetime-river
+    title: "时空长河"
+    title_en: "Spacetime River"
+    icon: "🌊"
+    file: "../tabs/lineage.html"
+    status: live
+    summary: "Canvas 时间轴 × Leaflet 地图 · 从印度源流 (Aśvaghoṣa·Nāgārjuna) 到当代普贤乘 (Haiyun Jimeng) · 跨 7 国 · 1500 年 · 10 大法系 · 全球文明路线动画 · 贝塞尔传承连线（师徒金 · 法脉绿 · 影响蓝）。"
+    summary_en: "Canvas timeline × Leaflet map: from Indian origins to the contemporary Samantabhadra vehicle; 7 regions, 15 centuries, 10 lineages, animated transmission routes."
+    data_sources:
+      - "data/catalog/huayan.db · persons / locations (30 地名 lat/lng 全填) / lineage_edges (98) / person_locations (45)"
+      - "data/events/person_trajectories.yaml（177 人有 route·实测 2026-10-30）"
+      - "data/events/geo_flow.yaml · dynasty_boundaries.yaml · timeline_dynasty_bands.yaml"
+    tags: ["Knowledge Graph", "Canvas Timeline", "GIS Map", "Animation"]
+  - id: shanhe-famai
+    title: "山河法脉"
+    title_en: "Mountains & Rivers of the Lineage"
+    icon: "⛰️"
+    file: "shanhe.html"
+    status: planned
+    summary: "时间轴驱动历史疆域底图 · Ghost 断代对照 · 点人溯事（行迹逐站 · 逐字回源引文）· 地谱追溯卡 · 法脉递归展开 · 零坐标 URL 协议（?person= / ?place=&year=）。设计定稿见 tasks/PLAN.md「法脉传承模块改造」节；批次 F.2–F.5。"
+    summary_en: "Timeline-driven historical base maps with ghost boundary diffs, person chronicles with verbatim sourced citations, place genealogy cards, recursive lineage expansion, and a zero-coordinate URL protocol. Design SSOT: tasks/PLAN.md (batches F.2–F.5)."
+    data_sources:
+      - "同「时空长河」底层数据 · 另扩 lineage_edges（TRANSMITTED_TEXT / source_ref / reliability·F.1 批）"
+      - "断代底图分层：L1 自建 / L2 开放层 / L3 学术层（CHGIS·非商用声明·F.2 批实测后定源）"
+    tags: ["Historical Base Map", "Person Chronicle", "Ghost Diff", "Deep Link"]
