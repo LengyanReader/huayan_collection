@@ -533,3 +533,65 @@ STEP1 回源对勘（八十为干·六十补卷对读·藏 24–27 开篇实测�
 - [ ] §5.4 会读总汇三件齐（矩阵/同异辨/启发）。
 - [ ] 新增阐释皆标 〔本文判断〕 或系引文直解；启发不外骛。
 - [ ] 六门禁 exit 0；专书门禁（verify_shizhu/verify_ru_lai 等）如涉及。
+
+---
+
+## 「法脉传承」模块改造：双子页架构 ＋ 新页「山河法脉」（2026-10-30 设计定稿 · 用户 R4 已确认）
+
+> 缘起：用户指示参考 https://github.com/DeanChensj/jiangshan-map （江山时序·交互历史地图，README 全文已于 2026-10-30 抓取核实）及同类项目，设计新法脉传承页面。R4 裁定：①旧 Tab1 与新页并列为「法脉传承」模块的**两个子页**，架构须可继续扩编子页；②野心档 **B（Elevated）→ 做到位后转 C**；③本就**非商用**，license 分层由我评估定案；④**要交互**、尽心设计。本设计同时承接心跳 **L.830 待办**「历史朝代疆域 GeoJSON 叠加（OpenHistoricalMap·CHGIS）📋 调研中」。
+
+### 〇、参考生态与采纳定案（本轮实测 2026-10-30）
+
+| 项目 | 核实态 | 采纳 |
+|---|---|---|
+| jiangshan-map（主参考） | README 全文已抓 | 六大内核：时间轴驱动底图 / Ghost 断代对照 / 点人溯事 Person Chronicle / 地谱追溯卡 / 零坐标 URL 协议（year+place 语义参数）/ llms.txt+MCP 接口范式（→C）。**代码 GPL-3.0：不搬码、借概念**（clean-room） |
+| CBDB 学术传承可视化平台（Harvard） | 已核实在线 | 师徒三类记载归一为边＋递归求下一代弟子的算法范式 → 用于「法脉展开」 |
+| CBDB RelFinder（PKU-DH） | 已核实在线 | 知识图谱师承呈现界面参考 |
+| BDRC Lineage Transmission Knowledge Model | 已核实（bdrc.io 博客） | 传承三分：**人-人／人-文本／文本-文本** → 边模型扩展之理论依据（合本仓「师承链＋著述传导」规范） |
+| aourednik/historical-basemaps | **license 待 shell 批实测**（README 仅提及） | 朝代疆域底图候选源（GPL 与本项目兼容） |
+| Harvard ART / CBETA 地名坐标 | unverified | 只登记不作依赖，后续探索 |
+| Bipantsa 传承可视化 | 本轮检索未核实 | 标〔待核〕，列入后续探索 |
+
+**license 定案（用户授权由我评估）**：本项目非商用成立 → CHGIS 学术非商用条款可满足；采纳**分层标注**：L1 自建数据（本项目 SSOT）／L2 开放层（DataV GeoAtlas 现代边界·historical-basemaps〔实测后定〕）／L3 学术层（CHGIS·标注出处与条款）。发布页附声明「非商用·学术用途」；**若未来商业化，L3 层须复审**。jiangshan-map 代码一行不搬（避免 GPL 传染争议），仅概念级借鉴。
+
+### 一、模块架构（可扩编子页）
+
+- 新建**模块壳** `web/demo/famai/index.html`：子页注册表（数据驱动，仿 `standalone_articles.yaml` 惯例 → 新增 `data/**/famai_subpages.yaml`〔待定名〕），每子页一条目（id/标题/摘要/标签/状态）；首页卡片改为进入模块壳；**后续加新子页＝注册表加一行**。
+- **子页 A（旧·不动）**：`tabs/lineage.html`「时空长河」——build_lineage_page() 原样保留，仅在壳内以链接并列，**零迁移零改写**（非破坏性原则）。
+- **子页 B（新）**：`famai/shanhe.html`「山河法脉」——本战役主体。
+
+### 二、数据层扩展（shell 批实测后再动，不臆造）
+
+1. **实测前提**：核查 SQLite persons/locations 现有字段（`DATA.locations`·`GEO_FLOW` 已证地理数据雏形存在）；缺 lat/lng 则补列并逐地**回源定坐标**（标注坐标判据：今地名对照〔本文判断〕/史籍载地〔待核〕分层）。
+2. **事件行迹层**：`data/events/*.yaml` 既有事件→ 统一为 `person × year × place × event_type`（求法/译场/弘法/示寂/著述传导…）；沿用信度评级（甲A–戊E × 确/疑/阙/孤/冲突）。
+3. **边模型扩展**：lineage.schema 现四边型（MASTER_OF/INFLUENCED/CONTEMPORARY/STUDIED_UNDER）→ 增 `TRANSMITTED_TEXT`（著述传导，依 BDRC 模型）＋每边 `source_ref`（回查锚点）＋`reliability`。schema 向后兼容（新字段 optional）。
+4. **断代底图层**：朝代/期别 → 疆域 GeoJSON 快照索引（仿 jiangshan `index.json` phases 结构；源=L2/L3 分层）。
+
+### 三、新页「山河法脉」交互设计（交互确认必要，静态兜底过信息無损门禁）
+
+- **S1 时间轴驱动底图**：底部年代滑轨（公元 640–今），拖过关键断代 → 底图政区层切换，叠上一期**虚线幽灵边界**（Ghost Diff）。
+- **S2 点人溯事**：全局搜索框（`/` 聚焦）选任一祖师 → 行迹弧线按年-地序列绘于地图，‹ › 逐站推进＋Space auto-play，每站附**逐字一手引文**（回源僧传/CBETA，繁体原字形）与深链。
+- **S3 地谱追溯卡**：单击任一地名 → 该地沿革（历代称谓）＋华严事件层（谁·何时·何事）＋信度标；「清凉山/长安/五台/大华严寺」为首批要地。
+- **S4 法脉展开**：任选一师 → CBDB 式递归展开其 N 代弟子链（依客观传承，海外支线简洁标识——**合既有法脉图规范**）。
+- **S5 图例隔离**：悬停法系色块 → 隔离高亮该支；点击 → zoom 到包围盒。
+- **S6 零坐标 URL 协议**：`?person=<id>`／`?place=<古名>&year=<公元>`／`?place=a,b,c&year=y1,y2,…`（多站行迹）；细读文章引文后续可自动生成深链（B 做完的联结红利）。
+- **静态兜底**：全部字段同时入 always-in-DOM 静态列表（details/summary 折叠不灭·沿用 Visualization No-Loss 两范式）；verify 门禁断言字段逐字现身于渲染 DOM 且可回源主数据。
+- 中英对照延续（EN corresponding 块）。
+
+### 四、批次序列（严格串行·每批六门禁＋L.* 心跳＋显式路径本地 commit·不 push）
+
+- **F.0 shell 批**：实测 persons/locations 坐标与 events 字段 → 落「实测前提」账；模块壳＋注册表 yaml＋子页 A 挂链（旧页零改动）。
+- **F.1 数据批**：边模型扩展（TRANSMITTED_TEXT＋source_ref＋reliability）＋行迹层生成器＋schema 复验。
+- **F.2 底图批**：断代底图分层接入（L2 开放层先行，L3 CHGIS 叠加其次）＋Ghost Diff＋license 声明页。
+- **F.3 点人溯事批**：S2＋S6 深链＋逐字引文挂载。
+- **F.4 地谱卡与法脉展开批**：S3＋S4＋S5。
+- **F.5 门禁与交付批**：信息無损 verify 扩展＋build/verify_demo/test_pipeline 全绿＋headless Chrome DOM 实测（subprocess 直取，避 PowerShell 重编码陷阱）。
+- **C 阶段（B 收官后另立战役，须再确认）**：`llms.txt`＋本机 MCP server 范式（inspect_person/inspect_place/search_lineage 三工具概念）＋「文本→深链」自动转写；通用模式以**提案**回流 `<HF>/updates/`。
+
+### 五、DoD（B 档验收线）
+
+- [ ] 模块壳注册表可用，子页 ≥2 且**加第三页只动注册表**（扩编性验证）。
+- [ ] 时间轴驱动底图＋Ghost Diff 可用，底图每层有出处与 license 标注。
+- [ ] 任一祖师行迹可逐站推进，每站引文**逐字回源**（miss=0），零坐标 URL 三态（定点/同年多站/跨年多站）可达。
+- [ ] 信息無损门禁通过：动态视图每字段在静态兜底中逐字在场。
+- [ ] 六门禁 exit 0；旧子页 A 行为零变化（diff 断言）。
