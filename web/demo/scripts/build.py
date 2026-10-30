@@ -7,6 +7,7 @@ Usage (from project root):
   python web/demo/scripts/build.py
 """
 import json
+import html as _html
 import yaml
 import os
 import sys
@@ -673,12 +674,33 @@ def build_shanhe_page():
                            'lng': loc.get('lng'), 'tp': loc.get('tp', ''), 'dy': loc.get('dy', ''),
                            'x': x, 'y': y2})
 
+    # F.3 S2 祖师行迹（逐字回源引文挂载·data/events/person_chronicle_citations.yaml）
+    cit = read_yaml('events/person_chronicle_citations.yaml') or {}
+    persons_out = []
+    for pid in sorted((cit.get('persons') or {}).keys()):
+        pp = cit['persons'][pid]
+        sts = []
+        for s in pp.get('stations', []):
+            try:
+                x, y2 = _geo_proj(float(s.get('lng')), float(s.get('lat')))
+            except (TypeError, ValueError):
+                continue
+            sts.append({'index': s.get('index'), 'label': s.get('label', ''), 'yr': s.get('y'),
+                        'lat': s.get('lat'), 'lng': s.get('lng'), 'x': x, 'y': y2,
+                        'status': s.get('status', ''), 'quote': s.get('quote'),
+                        'source': s.get('source'), 'anchor': s.get('anchor'),
+                        'url': s.get('url'), 'note': s.get('note', '')})
+        if sts:
+            persons_out.append({'id': pid, 'name': pp.get('name', pid),
+                                'person_source': pp.get('person_source', ''), 'stations': sts})
+
     payload = {
         'canvas': {'w': GEO_CW, 'h': GEO_CH},
         'view': {'lon': list(GEO_VIEW_LON), 'lat': list(GEO_VIEW_LAT)},
         'years': years_out,
         'base': {'coast': coast, 'countries': countries},
         'places': places,
+        'persons': persons_out,
         'meta': {'generated': str(datetime.date.today()),
                  'license_note': '断代层 aourednik/historical-basemaps (GPL-3.0 独立集合)；物理层 Natural Earth (PD)；CHGIS 依其许可仅外链'},
     }
@@ -686,6 +708,9 @@ def build_shanhe_page():
 
     year_buttons = ''.join('<button class="year-btn" data-year="%d">%d</button>' % (yy['year'], yy['year'])
                            for yy in years_out)
+    person_options = '<option value="">— 择祖师行迹（点人溯事）—</option>' + ''.join(
+        '<option value="%s">%s</option>' % (p['id'], p['name']) for p in persons_out)
+
     # 静态兜底（信息無损）：逐年政体表＋标点表＋层源表 always-in-DOM
     fb = ''
     for yy in years_out:
@@ -703,6 +728,27 @@ def build_shanhe_page():
     fb += ('<details style="margin:6px 0"><summary>层源与许可（data/geo/manifest.yaml · %d 层）</summary>'
            '<table><tr><th>文件</th><th>许可</th><th>访问日期</th><th>sha256前12</th></tr>%s</table></details>'
            % (len(man.get('layers', [])), prows))
+
+    # 祖师行迹静态兜底（信息無损·逐字回源）：每站 label/纪年/引文/出处/页锚/URL/按语 全字段在场
+    _esc = _html.escape
+    for p in persons_out:
+        srows = ''
+        for s in p['stations']:
+            if s['status'] == 'sourced':
+                cite = '「%s」' % _esc(s['quote'] or '')
+                src = '%s · 〔%s〕' % (_esc(s['source'] or ''), _esc(s['anchor'] or ''))
+                link = '<a href="%s">%s</a>' % (_esc(s['url'] or ''), _esc(s['url'] or '')) if s.get('url') else '—'
+            else:
+                cite = '<span style="color:#b00">〔待核〕底本未载此站逐字句</span>'
+                src = '—'
+                link = '—'
+            note = ('<br><small>%s</small>' % _esc(s['note'])) if s.get('note') else ''
+            srows += ('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+                      % (s['index'], _esc('%s（西 %s 年）' % (s['label'], s['yr'])),
+                         cite, src + note, link))
+        fb += ('<details style="margin:6px 0"><summary>🚶 %s · 行迹 %d 站（%s）</summary>'
+               '<table><tr><th>#</th><th>站点</th><th>一手引文（繁体逐字回源）</th><th>出处·页锚·按语</th><th>底本URL</th></tr>%s</table></details>\n'
+               % (_esc(p['name']), len(p['stations']), _esc(p['person_source'] or ''), srows))
 
     shanhe_js = read_src('shanhe.js')
     tmpl = '''<!DOCTYPE html>
@@ -726,6 +772,17 @@ def build_shanhe_page():
 table{border-collapse:collapse;width:100%;font-size:0.78em}td,th{border:1px solid var(--line);padding:3px 7px;text-align:left}
 details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 #fallback{margin-top:20px}
+#person-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:4px 0}
+#person-select{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:5px 10px;font-size:0.86em;max-width:260px}
+.st-btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;width:34px;height:30px;cursor:pointer;font-size:1.1em;line-height:1}
+.st-btn:disabled{opacity:0.35;cursor:default}
+#st-ind{font-size:0.82em;color:var(--text2);min-width:70px}
+#person-hint{font-size:0.74em;color:var(--text2)}
+.cite-card{border-left:3px solid var(--gold);padding:8px 10px;margin:8px 0;background:var(--panel);border-radius:0 8px 8px 0;font-size:0.9em}
+.cite-card .q{color:var(--text);line-height:1.6}
+.cite-card .src{font-size:0.82em;color:var(--text2);margin-top:6px}
+.cite-card .pend{color:#b00;font-size:0.86em}
+.cite-card .note{font-size:0.8em;color:var(--text2);margin-top:4px;font-style:italic}
 </style>
 </head>
 <body>
@@ -740,11 +797,19 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
     <label style="font-size:0.82em"><input type="checkbox" id="place-toggle" checked> 仓内实地标点（DB locations · __N_PLACES__）</label>
     <a href="license.html" style="margin-left:auto;font-size:0.8em">层源与许可 →</a>
   </div>
+  <div id="person-bar">
+    <select id="person-select">__PERSON_OPTIONS__</select>
+    <button class="st-btn" id="st-prev" title="上一站">‹</button>
+    <button class="st-btn" id="st-next" title="下一站">›</button>
+    <span id="st-ind"></span>
+    <span id="person-hint">选中后：‹ › 或空格逐站推进·每站一手引文逐字回源</span>
+  </div>
   <div id="map-row">
     <div id="map-box">
       <svg id="map-svg" viewBox="0 0 __CW__ __CH__" xmlns="http://www.w3.org/2000/svg">
-        <g id="g-base"></g><g id="g-polity"></g><g id="g-ghost"></g><g id="g-place"></g>
+        <g id="g-base"></g><g id="g-polity"></g><g id="g-ghost"></g><g id="g-place"></g><g id="g-person"></g>
       </svg>
+
       <p style="font-size:0.72em;color:var(--text2);margin:6px 4px 2px">断代色块为<b>示意底图</b>（aourednik 百年快照·GPL-3.0 独立集合·学术精度待核）；
       唐代 700 年快照疑承旧隋界〔待核〕；CHGIS（禁再分发）仅外链：<a href="https://dataverse.harvard.edu/dataverse/chgis_v6">Harvard Dataverse</a>。</p>
     </div>
@@ -761,6 +826,7 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 </html>'''
     html = (tmpl.replace('__YEAR_BUTTONS__', year_buttons)
                 .replace('__N_PLACES__', str(len(places)))
+                .replace('__PERSON_OPTIONS__', person_options)
                 .replace('__CW__', str(GEO_CW)).replace('__CH__', str(GEO_CH))
                 .replace('__FALLBACK__', fb)
                 .replace('__DATA_JSON__', data_json)
@@ -771,8 +837,10 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
     path.write_text(html, encoding='utf-8')
     size = len(html.encode('utf-8'))
     npoly = sum(len(yy['polities']) for yy in years_out)
-    print('OK  %s (%s bytes | %d 年·%d 政体·%d 标点·coast %d/countries %d)' % (
-        path, format(size, ','), len(years_out), npoly, len(places), len(coast), len(countries)))
+    nstn = sum(len(p['stations']) for p in persons_out)
+    print('OK  %s (%s bytes | %d 年·%d 政体·%d 标点·%d 祖师/%d 站·coast %d/countries %d)' % (
+        path, format(size, ','), len(years_out), npoly, len(places),
+        len(persons_out), nstn, len(coast), len(countries)))
     return size
 
 

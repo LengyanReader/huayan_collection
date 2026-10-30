@@ -1,0 +1,389 @@
+version: 1
+last_updated: '2026-10-30'
+generated_by: scripts/f3_build_citations.py
+note: 逐字回源引文挂载表（F.3 首批 5 祖核心）；只读 person_trajectories.yaml，不改轨迹。sourced 子集经 miss=0
+  审计；pending 站为底本未载，标〔待核〕。
+persons:
+  person_001:
+    name: 杜顺·华严初祖
+    person_source: 《续高僧传》卷二十五·法顺传 / 汤用彤《隋唐佛教史稿》
+    stations:
+    - index: 0
+      label: 诞于雍州万年
+      y: 557
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 姓杜氏。雍州萬年人。
+      source: CBETA T50n2060《續高僧傳》卷廿五·釋法順傳
+      anchor: 0653b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2060
+      note: ''
+    - index: 1
+      label: 年十八出家于因圣寺
+      y: 575
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 十八棄俗出家。事因聖寺僧珍禪師。
+      source: CBETA T50n2060《續高僧傳》卷廿五·釋法順傳
+      anchor: 0653b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2060
+      note: ''
+    - index: 2
+      label: 终南山至相寺修行
+      y: 600
+      lat: 34.1
+      lng: 108.6
+      status: pending
+      quote: null
+      source: null
+      anchor: null
+      url: null
+      note: 本传未载杜顺住终南山至相寺逐字句（传世系据他籍）
+    - index: 3
+      label: 著《法界观门》开华严观法
+      y: 620
+      lat: 34.1
+      lng: 108.6
+      status: sourced
+      quote: 昔者燉煌杜順傳《華嚴法界觀》與弟子智儼，講授此晉譯之本。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0732a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 4
+      label: 唐太宗赐号帝心
+      y: 635
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 今上奉其德仰其神引入內禁。
+      source: CBETA T50n2060《續高僧傳》卷廿五·釋法順傳
+      anchor: 0654a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2060
+      note: 〔本文判断〕号'帝心'后世所传，本传但云引入内禁隆礼崇敬
+    - index: 5
+      label: 圆寂于终南山
+      y: 640
+      lat: 34.1
+      lng: 108.6
+      status: sourced
+      quote: 言訖如常坐定。於南郊義善寺。
+      source: CBETA T50n2060《續高僧傳》卷廿五·釋法順傳
+      anchor: 0654a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2060
+      note: 〔本文判断〕底本载卒于南郊义善寺、葬樊川北原，与站点label'终南山'异
+  person_002:
+    name: 智俨·华严二祖
+    person_source: 《宋高僧传》卷五·智俨传 / 《华严经传记》
+    stations:
+    - index: 0
+      label: 诞于天水
+      y: 602
+      lat: 34.6
+      lng: 105.7
+      status: pending
+      quote: null
+      source: null
+      anchor: null
+      url: null
+      note: 诸传未载智俨诞地'天水'逐字句
+    - index: 1
+      label: 从杜顺出家于长安
+      y: 614
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 弟子智儼名貫至相。幼年奉敬雅遵餘度。
+      source: CBETA T50n2060《續高僧傳》卷廿五·釋法順傳
+      anchor: 0654a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2060
+      note: 本传但云弟子智俨名贯至相、幼年奉敬
+    - index: 2
+      label: 至相寺从慧光学华严
+      y: 630
+      lat: 34.1
+      lng: 108.6
+      status: pending
+      quote: null
+      source: null
+      anchor: null
+      url: null
+      note: 本传未载'至相寺从慧光学华严'逐字句
+    - index: 3
+      label: 著《搜玄记》开华严经疏先河
+      y: 650
+      lat: 34.1
+      lng: 108.6
+      status: sourced
+      quote: 初至相儼和尚每嗟大教久阻中興。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0282b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: ''
+    - index: 4
+      label: 创十玄门义理
+      y: 660
+      lat: 34.1
+      lng: 108.6
+      status: sourced
+      quote: 但自立十玄義門以通經旨俾通智境應指言搜十玄義之分齊耳。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0282c
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: ''
+    - index: 5
+      label: 圆寂·法藏继师位
+      y: 668
+      lat: 34.1
+      lng: 108.6
+      status: sourced
+      quote: 紹隆遺法其惟是人。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0281b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: ''
+  person_003:
+    name: 法藏·贤首国师
+    person_source: 《宋高僧传》卷五·法藏传 / 方立天《法藏评传》
+    stations:
+    - index: 0
+      label: 诞于长安·祖籍康居
+      y: 643
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 釋法藏字賢首，姓康，康居人也。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0732a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 1
+      label: 从智俨学华严于至相寺
+      y: 660
+      lat: 34.1
+      lng: 108.6
+      status: sourced
+      quote: 聞雲華寺儼法師講華嚴經投為上足。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0280b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: 〔本文判断〕底本作'雲華寺'，站点label作'至相寺'
+    - index: 2
+      label: 太原寺出家
+      y: 670
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 法師策名宮禁落髮道場住太原寺。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0280b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: ''
+    - index: 3
+      label: 洛阳·参与实叉难陀译场证义
+      y: 695
+      lat: 34.7
+      lng: 112.4
+      status: sourced
+      quote: 證聖年中奉勅與于闐國三藏實叉難陀譯華嚴經。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0280b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: ''
+    - index: 4
+      label: 八十华严译毕·著《探玄记》
+      y: 699
+      lat: 34.7
+      lng: 112.4
+      status: sourced
+      quote: 乃效同恥者之述撰探玄記二十通。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0282b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: ''
+    - index: 5
+      label: 长安·殿前金师子为武则天说法
+      y: 700
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 藏乃指鎮殿金獅子為喻，因撰義門，徑捷易解，號《金師子章》，列十門總別之相，帝遂開悟其旨。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0732a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 6
+      label: 著《五教章》系统化判教
+      y: 710
+      lat: 34.3
+      lng: 108.9
+      status: pending
+      quote: null
+      source: null
+      anchor: null
+      url: null
+      note: 二传未逐字载书名'五教章'（别名教分/分齐）
+    - index: 7
+      label: 圆寂于长安大荐福寺
+      y: 712
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 先天元年歲次壬子十一月十四日終於西京大薦福寺。
+      source: CBETA T50n2054《法藏和尚傳》
+      anchor: 0280c
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2054
+      note: ''
+  person_004:
+    name: 澄观·清凉国师
+    person_source: 《宋高僧传》卷五·澄观传 / 《华严经疏》自序
+    stations:
+    - index: 0
+      label: 诞于越州山阴
+      y: 738
+      lat: 30.0
+      lng: 120.5
+      status: sourced
+      quote: 釋澄觀，姓夏侯氏，越州山陰人也。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0737a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 1
+      label: 出家·遍学律禅三论天台
+      y: 750
+      lat: 30.3
+      lng: 120.0
+      status: sourced
+      quote: 遂遍尋名山，旁求祕藏。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0737a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 2
+      label: 五台山·始著《华严经疏》
+      y: 776
+      lat: 39.0
+      lng: 113.5
+      status: sourced
+      quote: 吾既遊普賢之境界，泊妙吉之鄉原，不疏《毘盧》，有辜二聖矣。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0737b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 3
+      label: 《华严经疏》六十卷完成
+      y: 787
+      lat: 39.0
+      lng: 113.5
+      status: sourced
+      quote: 起興元元年正月，貞元三年十二月畢功，成二十軸，乃飯千僧以落成也。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0737b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 4
+      label: 长安·德宗赐号清凉国师
+      y: 796
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 德宗降中使李輔光宣詔入都，與罽賓三藏般若譯烏荼國王所進《華嚴》後分四十卷。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0737b
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: 〔本文判断〕本传载德宗宣诏入都；'清凉'号因住清凉山
+    - index: 5
+      label: 著《演义钞》九十卷
+      y: 810
+      lat: 39.0
+      lng: 113.5
+      status: sourced
+      quote: 觀甞於新創雲花寺般若閣下畫《華藏世界圖相》，又著《隨疏演義》四十卷，允齊相請述《華嚴經綱要》一卷、《法界玄鑑》一卷、《三聖圓融觀》一卷、《華嚴》、《法華》、《楞伽》、《中觀論》等。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0737c
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: 〔本文判断〕底本《隨疏演義》卷数与站点label异
+    - index: 6
+      label: 圆寂·历七帝之师
+      y: 839
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 以元和年卒，春秋七十餘。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0737c
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: 〔本文判断〕本传但云元和年卒；'历七帝师'系概称
+  person_005:
+    name: 宗密·圭峰禅师
+    person_source: 《宋高僧传》卷六·宗密传 / 冉云华《宗密》
+    stations:
+    - index: 0
+      label: 诞于果州西充
+      y: 780
+      lat: 31.0
+      lng: 106.0
+      status: sourced
+      quote: 釋宗密，姓何氏，果州西充人也。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0741c
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 1
+      label: 初习儒学·后从道圆禅师出家
+      y: 800
+      lat: 30.5
+      lng: 105.5
+      status: sourced
+      quote: 元和二年，偶謁遂州圓禪師，圓未與語，密欣然而慕之，乃從其削染受教。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0741c
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 2
+      label: 长安·遇澄观受学华严
+      y: 810
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 復見洛陽照禪師，照曰：「菩薩人也，誰能識之？」末見上都華嚴觀，觀曰：「毘盧華藏，能隨我遊者，其唯汝乎？」初在蜀，因齋次受經，得《圓覺》十二章，深達義趣，誓傳是經。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0741c
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''
+    - index: 3
+      label: 圭峰草堂寺·著《禅源诸诠集》
+      y: 820
+      lat: 34.1
+      lng: 108.5
+      status: sourced
+      quote: 又集諸宗禪言，為《禪藏》，總而序之，并《酬答》、《書偈》、《議論》等。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0742a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: 〔本文判断〕本传作集《禪藏》；草堂寺未逐字载
+    - index: 4
+      label: 著《原人论》判摄儒道释
+      y: 830
+      lat: 34.1
+      lng: 108.5
+      status: pending
+      quote: null
+      source: null
+      anchor: null
+      url: null
+      note: 本传未列《原人論》书名
+    - index: 5
+      label: 圆寂于长安
+      y: 841
+      lat: 34.3
+      lng: 108.9
+      status: sourced
+      quote: 會昌元年正月六日坐滅於興福塔院，儼若平日，容貌益悅。
+      source: CBETA T50n2061《宋高僧傳》
+      anchor: 0742a
+      url: https://cbetaonline.dila.edu.tw/zh/T50n2061
+      note: ''

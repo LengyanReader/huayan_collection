@@ -91,9 +91,34 @@ else:
                     with open(shp, encoding='utf-8') as f:
                         sh = f.read()
                     for marker in ['var SHANHE', 'Ghost Diff', 'manifest.yaml', 'license.html',
-                                   'Harvard Dataverse', '静态兜底', 'GPL-3.0']:
+                                   'Harvard Dataverse', '静态兜底', 'GPL-3.0',
+                                   # F.3 S2 点人溯事 + S6 零坐标深链
+                                   'id="g-person"', 'id="person-select"', 'id="st-prev"',
+                                   'id="st-next"', 'cite-card', '点人溯事']:
                         if marker not in sh:
                             fail('shanhe.html missing marker: %s' % marker)
+                    # F.3 逐字回源引文挂载完整性（数据↔页面一致·miss=0 的页面侧证）
+                    _cyp = os.path.join(ROOT, 'data', 'events', 'person_chronicle_citations.yaml')
+                    if not os.path.exists(_cyp):
+                        fail('person_chronicle_citations.yaml missing (F.3)')
+                    else:
+                        import yaml as _cyaml
+                        with open(_cyp, encoding='utf-8') as _cf:
+                            _cit = _cyaml.safe_load(_cf)
+                        _st = [s for p in _cit.get('persons', {}).values() for s in p.get('stations', [])]
+                        _src = [s for s in _st if s.get('status') == 'sourced']
+                        _pend = [s for s in _st if s.get('status') == 'pending']
+                        if len(_st) != 33 or len(_src) != 28 or len(_pend) != 5:
+                            fail('F.3 chronicle counts off: st=%d sourced=%d pending=%d'
+                                 % (len(_st), len(_src), len(_pend)))
+                        for s in _src:  # 每条 sourced 引文逐字在场（繁体回源字节·信息無损）
+                            if s.get('quote') and s['quote'] not in sh:
+                                fail('F.3 sourced quote not in shanhe.html: %s#%s'
+                                     % (s.get('source'), s.get('anchor')))
+                        if sh.count('〔待核〕底本未载此站逐字句') != len(_pend):
+                            fail('F.3 station-level 〔待核〕 count mismatch in fallback')
+                        ok('F.3 person-chronicle 5祖/33站·sourced28逐字在场·pending5标〔待核〕')
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:

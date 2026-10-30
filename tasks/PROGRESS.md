@@ -1719,3 +1719,28 @@ done(
 **blocked**：无。逐站引文（S2·站级 0/936 基线见 F.1a）、地谱卡/法脉递归（S3–S5）、零坐标 URL 协议（S6）按批次 F.3–F.4。
 
 **sources**：`data/geo/manifest.yaml`·`scripts/f2_fetch_geo.py`·`web/demo/famai/shanhe.html`·`web/demo/src/shanhe.js`·`web/demo/famai/license.html`·`data/famai_subpages.yaml`·`web/demo/scripts/build.py`·`scripts/verify_demo.py`·`.gitattributes`·`.harness/decisions.md` #12·`tasks/PLAN.md` §四。
+
+---
+
+## F 系列·F.3 点人溯事批 — 收口 2026-10-30
+
+**goal**：跑通「逐字回源→挂载→深链→静态兜底→门禁」全流水线（首批 **Elevated 5 祖核心**·用户 AskUserQuestion 三项显式确认·decisions **#13**）：S2 选人行迹弧 + ‹/›/Space 逐站advance + 逐站引文卡；S6 零坐标 URL 深链 `?person=<id>&station=<idx>`。**只读 `person_trajectories.yaml`·不改轨迹 SSOT·不造数据**。
+
+**done**（观察到）：
+- **回源底座**：作者僧传 XML 均存于仓内——T50n2060/T50n2061《宋高僧伝》·T50n2054《法蔵和尚伝》。智俨无自存传→其 4/6 站由《法蔵和尚伝》互证回源（捜玄記 @0282b・十玄義門 @0282c・圓寂付蔵 @0281b）。
+- **逐字回源机件**（生成器 `scripts/f3_build_citations.py`·committed）：异体字码点风险→引文一律由**源字节切片**提取（共同字 seed + 傳内 scoping [i0,i1] + 句号界扩展），**绝不手打繁体**；页锚就近回溯大正 pagination；**内建 miss=0 审计**（`q not in TXT_RAW` 即拒置 sourced）。
+- **挂载数据** `data/events/person_chronicle_citations.yaml`（生成·390 行）：**5 祖 · 33 站 · sourced 28 · pending 5**（每站 index/label/y/lat/lng/status/quote/source/anchor/url/note）。**5 处本传未载**（杜順住終南・智儼誕天水・智儼従慧光・法蔵五教章書名・宗密原人論書名）→ 诚实标**〔待核〕不臆造**。
+- **S2/S6 UI** `web/demo/src/shanhe.js` + `build_shanhe_page`（`build.py`）：选人行迹弧（polyline + 站点圈色 sourced=#8d5a2b/current=#c0392b/pending=#9a9a9a + 编号）·‹/›/Space 逐站·逐字引文卡（「quote」+ 出処・頁錨・CBETA 外链）。S6 `syncURL` 仅写 `person`/`station` 语义参·**恒零经纬入 URL**；`initFromURL` 加载解参。
+- **信息無损静态兜底表**（`build.py`·`_html.escape`）：每祖 `<details>`・逐站 quote/source+anchor/url/note 全字段逐字在场・pending 行现「〔待核〕底本未载此站逐字句」。
+- **三处数据/记忆漂移**由回源当场校正·各照底本不统一：法蔵卒年「**先天元年**…終於西京大薦福寺」@0280c（非旧记「開元」）・智儼有传与否・站 label 与底本自歧（杜順卒地/法蔵従学処雲華vs至相/澄観演義鈔巻数）—已注〔本文判断〕。
+- **门禁** `verify_demo.py`：F.2 marker 表扩 F.3（g-person/person-select/st-prev/st-next/cite-card/点人溯事）+ 新增**人物行迹完整度断言**（5祖/33站·sourced28 逐字在场·pending5 标〔待核〕·计数不符即 fail）。
+
+**gates**（观察到）：py_compile ✅｜**check.py ✅ rc=0**｜**verify_demo ✅ ALL CHECKS PASSED rc=0**（含 F.3 新断言＋28 逐字引文 `quote in shanhe.html` 全中）｜**test_pipeline ✅ ALL TESTS PASSED rc=0**｜headless DOM 审计 `_f3_domcheck.py` **ALL PASSED**（5/33/28/5・三方逐字 SHANHE↔yaml↔CBETA・5〔待核〕・机件在场・零坐标 URL・无坐标溢出）。shanhe.html **379,145 B**。
+
+**铁律自校**：零伪造（sourced 必须逐字存于底本正文·生成器审计兼 verify 双层卡；pending 诚实〔待核〕）；引文由源字节切片提取非手打；`person_chronicle_citations.yaml` **只读不改 `person_trajectories.yaml`**（向后兼容·轨迹 SSOT 单一）；异文各照底本不统一；**L.250 在飞未纳入**（明法品 md＋被全量 build 带入的 built tabs/articles HTML 一律排除）；scratch（`_f3_*.py`·`_f3_*.out` 等）不入仓；本地 commit **未 push**。
+
+**blocked**：无。首批 5 祖核心已跑通全流水线；扩量（其余 173 人·177 带 route·936 站基线见 F.1a）归后续批。
+
+**next**：**F.4 地谱卡与法脉展开批**（S3＋S4＋S5）；5 祖之外逐站回源逐批扩量。零坐标 URL 协议（S6）本批已落地。
+
+**sources**：`data/references/cbeta/T50n2060.xml`·`T50n2061.xml`·`T50n2054.xml`·`scripts/f3_build_citations.py`·`data/events/person_chronicle_citations.yaml`·`data/events/person_trajectories.yaml`·`web/demo/scripts/build.py`·`web/demo/src/shanhe.js`·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`.harness/decisions.md` #13·`tasks/PLAN.md` §四。

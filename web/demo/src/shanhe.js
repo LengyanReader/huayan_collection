@@ -4,8 +4,12 @@
      years:[{year, polities:[{n,sup,pr, rings:[[[x,y],…],…]}]}],   // 坐标已由 Python 投影为画布坐标
      base:{coast:[rings], countries:[rings]},
      places:[{id,n,lat,lng,tp,dy,x,y}],
+     persons:[{id,name,person_source,stations:[{index,label,yr,lat,lng,x,y,status,quote,source,anchor,url,note}]}],
      meta:{generated, license_note}
-   } 静态兜底表（信息無损）在 DOM 中先行存在，本脚本只做增强。 */
+   } 静态兜底表（信息無损）在 DOM 中先行存在，本脚本只做增强。
+   F.3 S2「点人溯事」：择祖师→行迹折线＋逐站 ‹›/空格推进→每站一手引文卡（CBETA 繁体逐字回源·
+   pending 站显〔待核〕）；S6 零坐标深链 ?person=<id>&station=<idx>（&year=<公元>），URL 不含经纬度。 */
+
 (function () {
   var S = window.SHANHE;
   if (!S) return;
@@ -14,8 +18,17 @@
   var gPoly = document.getElementById('g-polity');
   var gGhost = document.getElementById('g-ghost');
   var gPlace = document.getElementById('g-place');
+  var gPerson = document.getElementById('g-person');
   var panel = document.getElementById('info-panel');
+  var PERSONS = S.persons || [];
   var cur = S.years.length ? S.years[0].year : null;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
 
   /* ── 坐标 → path 串 ── */
   function ringPath(r) {
@@ -141,8 +154,119 @@
   var pb = document.getElementById('place-toggle');
   if (pb) pb.addEventListener('change', function () { showPlaces = pb.checked; gPlace.style.display = showPlaces ? '' : 'none'; });
 
+  /* ── F.3 S2 祖师行迹（点人溯事·逐站推进·引文卡·S6 零坐标 URL） ── */
+  var pCur = null, stCur = 0;   // pCur=person id；stCur=当前站点 index
+  function findPerson(id) { for (var i = 0; i < PERSONS.length; i++) if (PERSONS[i].id === id) return PERSONS[i]; return null; }
+  function indexOfStation(p, idx) { for (var i = 0; i < p.stations.length; i++) if (p.stations[i].index === idx) return i; return 0; }
+  function nearestSnapshot(y) {
+    var ys = S.years.map(function (d) { return d.year; }).sort(function (a, b) { return a - b; });
+    var best = ys.length ? ys[0] : null;
+    for (var i = 0; i < ys.length; i++) if (ys[i] <= y) best = ys[i];
+    return best;
+  }
+  function drawRoute() {
+    if (!gPerson) return;
+    gPerson.innerHTML = '';
+    var p = findPerson(pCur);
+    if (!p) return;
+    var sts = p.stations, dpath = '';
+    for (var i = 0; i < sts.length; i++) dpath += (i ? 'L' : 'M') + sts[i].x + ',' + sts[i].y;
+    gPerson.appendChild(el('path', { d: dpath, fill: 'none', stroke: '#8d5a2b', 'stroke-width': 1.6, 'stroke-dasharray': '5,3', opacity: 0.75 }));
+    for (var i = 0; i < sts.length; i++) {
+      var s = sts[i], on = (s.index === stCur);
+      var fill = s.status === 'sourced' ? (on ? '#c0392b' : '#8d5a2b') : '#9a9a9a';
+      var c = el('circle', { cx: s.x, cy: s.y, r: on ? 5.5 : 3.6, fill: fill, stroke: '#fff', 'stroke-width': 1 });
+      c.style.cursor = 'pointer';
+      c.setAttribute('data-idx', s.index);
+      c.addEventListener('click', function () { selectStation(parseInt(this.getAttribute('data-idx'), 10)); });
+      gPerson.appendChild(c);
+      var tx = el('text', { x: s.x + 6, y: s.y - 5, 'font-size': on ? 10 : 8.5, fill: on ? '#c0392b' : '#6b5a3a', 'font-weight': on ? 'bold' : 'normal' });
+      tx.textContent = (i + 1) + '. ' + s.label;
+      gPerson.appendChild(tx);
+    }
+  }
+  function card(p, s) {
+    var head = '<h4>' + esc(p.name) + ' <span class="yr">' + esc(s.label) + ' · 西 ' + esc(s.yr) + ' 年</span></h4>';
+    var body;
+    if (s.status === 'sourced') {
+      body = '<div class="cite-card"><div class="q">「' + esc(s.quote) + '」</div>' +
+        '<div class="src">出处：' + esc(s.source) + ' · 大正页锚 〔' + esc(s.anchor) + '〕' +
+        (s.url ? (' · <a href="' + esc(s.url) + '" target="_blank" rel="noopener">回源底本 →</a>') : '') + '</div>' +
+        (s.note ? ('<div class="note">' + esc(s.note) + '</div>') : '') + '</div>';
+    } else {
+      body = '<div class="cite-card"><div class="pend">〔待核〕本传未载此站逐字句' +
+        (s.note ? ('：' + esc(s.note)) : '') + '</div></div>';
+    }
+    return head + body + '<p class="lic">一手引文＝CBETA 底本繁体逐字回源（miss=0）·异文／底本自歧各照底本、不统一。</p>';
+  }
+  function showCard() {
+    var p = findPerson(pCur);
+    if (!p) return;
+    var s = null;
+    for (var i = 0; i < p.stations.length; i++) if (p.stations[i].index === stCur) s = p.stations[i];
+    if (!s) s = p.stations[0];
+    panel.innerHTML = card(p, s);
+    var pos = indexOfStation(p, s.index);
+    var ind = document.getElementById('st-ind');
+    if (ind) ind.textContent = '第 ' + (pos + 1) + '/' + p.stations.length + ' 站';
+    var pv = document.getElementById('st-prev'), nx = document.getElementById('st-next');
+    if (pv) pv.disabled = pos <= 0;
+    if (nx) nx.disabled = pos >= p.stations.length - 1;
+    if (s.yr != null) { cur = nearestSnapshot(parseInt(s.yr, 10)); refresh(); }
+  }
+  function selectStation(idx) { if (!findPerson(pCur)) return; stCur = idx; drawRoute(); showCard(); syncURL(); }
+  function step(delta) {
+    var p = findPerson(pCur); if (!p) return;
+    var pos = Math.max(0, Math.min(p.stations.length - 1, indexOfStation(p, stCur) + delta));
+    stCur = p.stations[pos].index; drawRoute(); showCard(); syncURL();
+  }
+  function selectPerson(id) {
+    pCur = id || null;
+    var p = findPerson(pCur);
+    stCur = p ? p.stations[0].index : 0;
+    drawRoute();
+    if (p) showCard();
+    syncURL();
+  }
+  function syncURL() {   // S6：零坐标深链——仅记语义参数，不含经纬度
+    var qs = '';
+    if (pCur) qs = 'person=' + encodeURIComponent(pCur) + '&station=' + encodeURIComponent(stCur);
+    var url = location.pathname + (qs ? ('?' + qs) : '') + location.hash;
+    try { history.replaceState(null, '', url); } catch (e) {}
+  }
+
+  var sel = document.getElementById('person-select');
+  if (sel) sel.addEventListener('change', function () { selectPerson(this.value); });
+  var pbtn = document.getElementById('st-prev'), nbtn = document.getElementById('st-next');
+  if (pbtn) pbtn.addEventListener('click', function () { step(-1); });
+  if (nbtn) nbtn.addEventListener('click', function () { step(1); });
+  document.addEventListener('keydown', function (e) {
+    if (!pCur) return;
+    if (e.code === 'Space') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowRight') step(1);
+    else if (e.key === 'ArrowLeft') step(-1);
+  });
+
   /* ── 启动 ── */
   drawBase();
   refresh();
   drawPlaces();
+
+  /* ── S6 深链初始化：读 URL 参数 person/station/year（零坐标） ── */
+  (function initFromURL() {
+    var q = {};
+    location.search.replace(/^\?/, '').split('&').forEach(function (kv) {
+      if (!kv) return; var i = kv.indexOf('=');
+      q[decodeURIComponent(kv.slice(0, i))] = decodeURIComponent(kv.slice(i + 1));
+    });
+    if (q.year) { var yy = nearestSnapshot(parseInt(q.year, 10)); if (yy != null && !isNaN(yy)) { cur = yy; refresh(); } }
+    if (sel && q.person && findPerson(q.person)) {
+      var p = findPerson(q.person);
+      sel.value = q.person; pCur = q.person;
+      stCur = p.stations[0].index;
+      if (q.station != null) for (var i = 0; i < p.stations.length; i++) if (String(p.stations[i].index) === String(q.station)) stCur = p.stations[i].index;
+      drawRoute(); showCard();
+    }
+  })();
 })();
+
