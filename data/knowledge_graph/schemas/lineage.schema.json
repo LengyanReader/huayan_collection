@@ -23,13 +23,16 @@
               "type": "object",
               "required": ["from", "to", "relation"],
               "properties": {
-                "from": { "type": "string", "pattern": "^person_\\d{3}$" },
-                "to": { "type": "string", "pattern": "^person_\\d{3}$" },
+                "from": { "type": "string", "pattern": "^person_[0-9A-Za-z]+$" },
+                "to": { "type": "string", "pattern": "^person_[0-9A-Za-z]+$" },
                 "relation": {
                   "type": "string",
-                  "enum": ["MASTER_OF", "INFLUENCED", "CONTEMPORARY", "STUDIED_UNDER"]
+                  "enum": ["MASTER_OF", "INFLUENCED", "CONTEMPORARY", "STUDIED_UNDER", "LINEAGE", "TRANSMITTED_TEXT"],
+                  "description": "MASTER_OF/INFLUENCED/CONTEMPORARY = in use (measured 45/42/11); STUDIED_UNDER = schema reserved, 0 edges; LINEAGE = legacy DB enum in schema.sql comment; TRANSMITTED_TEXT = F.1 new person-to-person text-transmission edge (cf. BDRC lineage model). Creating any such edge requires verbatim source grounding; currently 0."
                 },
-                "note": { "type": "string" }
+                "note": { "type": "string" },
+                "source": { "type": "string", "description": "Literature basis for the edge; maps to DB lineage_edges.source column (measured 98/98 filled). Citation anchor for source-grounding." },
+                "reliability": { "type": "string", "enum": ["primary", "secondary", "inferred", "disputed"], "description": "F.1 optional reliability tier: primary=direct biographical evidence, secondary=later denglu compilation, inferred=text-based inference, disputed=conflicting accounts. 0 edges tagged; DB column migration deferred (see .harness/decisions.md)." }
               }
             }
           }

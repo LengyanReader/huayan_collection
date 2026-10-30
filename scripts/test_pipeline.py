@@ -686,9 +686,12 @@ def test_no_hardcoding():
 def test_relation_normalization():
     print("\n[9] Relation normalization")
     conn = sqlite3.connect(str(DB_PATH))
+    # Whitelist kept in sync with data/knowledge_graph/schemas/lineage.schema.json
+    # (relation enum) and schema.sql. STUDIED_UNDER/TRANSMITTED_TEXT are F.1-afforded
+    # types: currently 0 edges, so this check still passes; grounding required before use.
     bad_rels = conn.execute("""
         SELECT DISTINCT relation FROM lineage_edges
-        WHERE relation NOT IN ('MASTER_OF', 'INFLUENCED', 'LINEAGE', 'CONTEMPORARY')
+        WHERE relation NOT IN ('MASTER_OF', 'INFLUENCED', 'LINEAGE', 'CONTEMPORARY', 'STUDIED_UNDER', 'TRANSMITTED_TEXT')
     """).fetchall()
     conn.close()
 

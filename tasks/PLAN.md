@@ -583,12 +583,14 @@ STEP1 回源对勘（八十为干·六十补卷对读·藏 24–27 开篇实测�
 ### 四、批次序列（严格串行·每批六门禁＋L.* 心跳＋显式路径本地 commit·不 push）
 
 - **F.0 shell 批**：实测 persons/locations 坐标与 events 字段 → 落「实测前提」账；模块壳＋注册表 yaml＋子页 A 挂链（旧页零改动）。
-- **F.1 数据批**：边模型扩展（TRANSMITTED_TEXT＋source_ref＋reliability）＋行迹层生成器＋schema 复验。
+- **F.1 数据批 ✅（2026-10-30 收口·结构批）**：边模型契约扩展——lineage.schema relation enum 增 `TRANSMITTED_TEXT`＋`LINEAGE`（后者本为 schema.sql 旧枚举、与前会话 schema 分列两处→三源归一）；加可选 `source`（实测 DB 列 `lineage_edges.source` **98/98 已全填**——设计所称 `source_ref` 即此列、**不另立新源**）＋`reliability`（primary/secondary/inferred/disputed）；from/to id 模式由 `^person_\d{3}$` 放宽为 `^person_[0-9A-Za-z]+$`（实测 `person_000a` 等含字母 id 与旧模式相悖、契约↔数据漂移已修）。`test_pipeline` relation 白名单同步。**live DB 列迁移（reliability）缓行**——无既成可靠性值、依不可逆动作人工授权（见 decisions #11）。行迹层生成器并入 F.3。
 - **F.2 底图批**：断代底图分层接入（L2 开放层先行，L3 CHGIS 叠加其次）＋Ghost Diff＋license 声明页。
 - **F.3 点人溯事批**：S2＋S6 深链＋逐字引文挂载。
 - **F.4 地谱卡与法脉展开批**：S3＋S4＋S5。
 - **F.5 门禁与交付批**：信息無损 verify 扩展＋build/verify_demo/test_pipeline 全绿＋headless Chrome DOM 实测（subprocess 直取，避 PowerShell 重编码陷阱）。
 - **C 阶段（B 收官后另立战役，须再确认）**：`llms.txt`＋本机 MCP server 范式（inspect_person/inspect_place/search_lineage 三工具概念）＋「文本→深链」自动转写；通用模式以**提案**回流 `<HF>/updates/`。
+
+> **F.1a 实测基线（2026-10-30·持久脚本 `scripts/f1a_route_audit.py`）**：`person_trajectories.yaml` 178 人 · **177 人带 route · 936 站点**；**站级逐字引文 0/936（0.0%）**——此即 S2「点人溯事」每站引文卡片补源工作量基线。人物级 `source` 在场 **174/177（98.3%）**、`verified` **143/177（80.8%）**、**34 位无 verified**（含 `person_000a`）标〔待核〕。F.3 逐站补源须回源一手·人物级 source 为起点非终点。
 
 ### 五、DoD（B 档验收线）
 

@@ -1676,3 +1676,25 @@ done(
 **next**：**F.1 数据批**——lineage.schema 增 `TRANSMITTED_TEXT` 边＋`source_ref`＋`reliability`（向后兼容）→ **F.1a** route 站逐字回源覆盖审计。子页 B「山河法脉」实现自 **F.2** 起。
 
 **sources**：`tasks/PLAN.md`（设计 SSOT·§〇–§七）·`data/famai_subpages.yaml`·`web/demo/famai/index.html`·harness_factory `domains/excellence/standard-ladder.md`（自评台账基准）。
+
+---
+
+## F 系列·F.1 数据批（结构批）— 收口 2026-10-30
+
+**goal**：扩展边模型契约（为「山河法脉」文本承传层铺结构基础）＋固化 F.1a 行迹引文覆盖审计为可复用只读脚本。**不改 live DB、不造边**（守不编造＋不可逆动作缓行）。
+
+**done**（观察到）：
+- **取证**（探针 `_f1_probe.py`）：`lineage.schema.json` 全仓 grep 确认**无脚本机械强制**；真正被 `test_pipeline` L691 白名单强制的是 DB 边表。DB `lineage_edges` 实测 98 边（MASTER_OF 45/INFLUENCED 42/CONTEMPORARY 11）、**`source` 列 98/98 全填**（设计所称 `source_ref` 即此列）；真实 id 含字母（`person_000a`）与 schema `^person_\d{3}$` 相悖。
+- **契约层** `lineage.schema.json`：relation enum 增 `LINEAGE`＋`TRANSMITTED_TEXT`（三源归一）；新增可选 `source`/`reliability`（向后兼容·required 不变）；from/to 模式 `^person_\d{3}$`→`^person_[0-9A-Za-z]+$`（修契约↔数据漂移）。JSON 合法性已验。
+- **门禁层** `test_pipeline.py` L691：relation 白名单同步加 `STUDIED_UNDER`/`TRANSMITTED_TEXT`＋同步注释（当前 0 此类边→检查仍 PASS）。
+- **审计层** 新建持久只读脚本 `scripts/f1a_route_audit.py`：**178 人·177 带 route·936 站；站级逐字引文 0/936（0.0%）**；人物级 source 174/177（98.3%）、verified 143/177（80.8%）、**34 位无 verified**〔待核〕。
+
+**gates**（观察到）：py_compile（f1a_route_audit.py·test_pipeline.py）✅ rc=0｜**check.py ✅ exit 0**｜**verify_demo ✅ ALL CHECKS PASSED rc=0**｜**test_pipeline ✅ ALL TESTS PASSED（Test8 relation 归一 PASS rc=0）**。未重建 HTML（schema 不进 build·产物无变）。
+
+**铁律自校**：零造数据（0 新边・reliability 列未往 live DB 写入）；契约修正仅对齐实存数据（非臆测）；`source_ref`→`source` 不另立新源（M0.5）；live DB 迁移缓行记 decisions **#11**；他道在飞（L.250 明法品 md＋8 built HTML）**未纳入 commit**；scratch（`_f1_probe.py`等）**不入仓**；本地 commit **未 push**。
+
+**blocked**：无。F.1 为结构铺路；实边（哪部论谁传谁）需逐字回源→归入后续内容批。
+
+**next**：**F.2 底图批**——断代底图分层接入（L2 开放层先行、L3 CHGIS 叠加其次）＋Ghost Diff＋license 声明页；子页 B「山河法脉」自 F.2 起实现。`reliability` 列迁移与 TRANSMITTED_TEXT 实边待有回源依据时按 #11 办。
+
+**sources**：`data/knowledge_graph/schemas/lineage.schema.json`·`scripts/test_pipeline.py`·`scripts/f1a_route_audit.py`·`data/events/person_trajectories.yaml`·`data/catalog/schema.sql`·`.harness/decisions.md` #11·`tasks/PLAN.md` §四。
