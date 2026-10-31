@@ -686,6 +686,17 @@ others:
   back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
   views: [avatamsaka-studies]
 
+- id: huayan-putanxing-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 39
+  icon: 🙏
+  title: 九九华严第三十四品 普贤行品之拼读
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十四部_普贤行品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
