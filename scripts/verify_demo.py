@@ -249,6 +249,16 @@ else:
                         fail('G.3 放射子树无 S4 逐字代际兜底链表（信息無损失守）')
                     ok('G.3 放射式时间轴 d3.tree radial：lineage-radial-svg 容器·linkRadial 连线·纪年/代际角·S4 弟子链逐字兜底在场')
 
+                    # ── G.4 四视图联动·选择总线（linked brushing）·静态侧证 ──
+                    for m4 in ['id="bs-status"', 'function bsSelect', 'function bsApply',
+                               "'bs-hl'", "'bs-neighbor'", "sel=' + encodeURIComponent", "view=' + encodeURIComponent"]:
+                        if m4 not in sh:
+                            fail('G.4 shanhe.html 缺选择总线标记: %s（linked brushing 未跃迁）' % m4)
+                    # 零坐标深链铁律：sel/view 只携语义 id，不得入经纬
+                    if re.search(r"(lat|lon|lng)='\s*\+", sh):
+                        fail('G.4 syncURL 疑似将坐标拼入深链（违反零坐标铁律）')
+                    ok('G.4 四视图联动·选择总线：bs-status 面板·bsSelect/bsApply 跨视图高亮·.bs-hl/.bs-neighbor·URL 含 sel/view 零坐标')
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:

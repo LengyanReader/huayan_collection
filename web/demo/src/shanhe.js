@@ -252,6 +252,8 @@
     if (pCur) { parts.push('person=' + encodeURIComponent(pCur)); parts.push('station=' + encodeURIComponent(stCur)); }
     if (linCur) parts.push('master=' + encodeURIComponent(linCur));
     if (templeCur) parts.push('temple=' + encodeURIComponent(templeCur));
+    if (BS.sel) parts.push('sel=' + encodeURIComponent(BS.sel));
+    if (BS.view && BS.view !== 'tree') parts.push('view=' + encodeURIComponent(BS.view));
     var url = location.pathname + (parts.length ? ('?' + parts.join('&')) : '') + location.hash;
     try { history.replaceState(null, '', url); } catch (e) {}
   }
@@ -326,6 +328,7 @@
   }
   function setSel(id) { var s = document.getElementById('lineage-select'); if (s) s.value = id || ''; }
   var collapseSet = {}, linZoom = null, linG = null, fullVB = null, lastLayout = [];
+  var BS = { sel: null, view: 'tree' }, TREE_PARENT = {};
   var ROWH = 34, CWp = 190, PADL = 40, PADR = 200, PADV = 30;
   function metaOf(id) {
     var m = (window.__LIN_META || {})[id];
@@ -357,6 +360,7 @@
       if (!(e.disc in parentOf)) { parentOf[e.disc] = e.parent; chEdge[e.disc] = { rel: e.rel, branch: e.branch }; }
     });
     Object.keys(parentOf).forEach(function (d) { var p = parentOf[d]; (kids[p] = kids[p] || []).push(d); });
+    TREE_PARENT = parentOf;   /* G.4 选择总线：当前子树父链·供 bsReveal 展开祖先 */
     window.__LIN_META = {};
     Object.keys(NAME).concat([mid]).forEach(function (id) {
       window.__LIN_META[id] = { name: (id in NAME) ? NAME[id] : null, verified: (id in VER) ? VER[id] : true,
@@ -402,6 +406,7 @@
     nodeSel = nodeEnter.merge(nodeSel);
     /* 重定根后深度会变：class/root/circle 一律在合并集上重绘（不只在 enter），否则新根丢 .lg-root */
     nodeSel.attr('class', function (d) { return 'lg-node' + (d.depth === 0 ? ' lg-root' : ''); })
+      .attr('data-id', function (d) { return d.data.id; })
       .attr('data-branch', function (d) { return metaOf(d.data.id).branch; });
     nodeSel.select('circle')
       .attr('r', function (d) { return d.depth === 0 ? 6 : 4.5; })
@@ -417,6 +422,7 @@
     nodeSel.on('click', function (ev, d) {
       ev.stopPropagation();
       if (d.data.id !== linCur) { renderTree(d.data.id); setSel(d.data.id); }
+      bsSelect(d.data.id, 'tree');
     });
     nodeSel.select('.lg-tog').on('click', function (ev, d) {
       ev.stopPropagation();
@@ -437,7 +443,7 @@
     } else {
       svgS.call(linZoom.transform, DS.zoomIdentity);
     }
-    applyIsolate(); syncURL(); renderLinGeo(mid);
+    applyIsolate(); syncURL(); renderLinGeo(mid); bsApply();
   }
   function resetView() {
     if (!lSvg || !window.d3) return;
@@ -520,7 +526,7 @@
     // draw nodes
     Object.keys(nodes).forEach(function (k) {
       var n = nodes[k], g = PGEO[k]; if (!g) return;
-      var gg = el('g', { 'class': 'lm-node', 'data-branch': n.branch });
+      var gg = el('g', { 'class': 'lm-node', 'data-branch': n.branch, 'data-id': k });
       var isRoot = (k === mid);
       gg.appendChild(el('circle', { cx: g.x, cy: g.y, r: isRoot ? 7 : 4.5,
         fill: BRANCH_COLOR[n.branch] || '#8d5a2b', stroke: '#fff', 'stroke-width': isRoot ? 2 : 1.2 }));
@@ -528,9 +534,10 @@
       tx.textContent = (n.name || k) + (g.year ? ' (' + g.year + ')' : '');
       gg.appendChild(tx);
       gg.style.cursor = 'pointer';
-      gg.addEventListener('click', (function (nid) { return function () { if (nid !== linCur) { renderTree(nid); setSel(nid); renderLinGeo(nid); } }; })(k));
+      gg.addEventListener('click', (function (nid) { return function () { if (nid !== linCur) { renderTree(nid); setSel(nid); renderLinGeo(nid); } bsSelect(nid, 'map'); }; })(k));
       gLinGeo.appendChild(gg);
     });
+    bsApply();
   }
   if (lgeoTgl) lgeoTgl.addEventListener('change', function () { renderLinGeo(linCur); });
 
@@ -611,7 +618,7 @@
       showTip(netTipHtml(d), ev.clientX, ev.clientY);
     }).on('mousemove', function (ev) { var t = tip; if (t && !t.hidden) { var r = t.getBoundingClientRect(); showTip(t.innerHTML, ev.clientX - 14, ev.clientY - 14); } })
       .on('mouseleave', function () { hideTip(); applyFocus(); })
-      .on('click', function (ev, d) { ev.stopPropagation(); netFocus = (netFocus === d.id ? null : d.id); applyFocus(); });
+      .on('click', function (ev, d) { ev.stopPropagation(); netFocus = (netFocus === d.id ? null : d.id); applyFocus(); bsSelect(d.id, 'net'); });
     netSim.nodes(nodes);
     netSim.force('link').links(links);
     netSim.on('tick', netDraw);
@@ -622,6 +629,7 @@
     }
     var nl = document.getElementById('net-labels');
     netNodeSel.selectAll('text.net-label').style('display', (nl && nl.checked) ? null : 'none');
+    bsApply();
   }
   (function wireNet() {
     var nb = document.getElementById('net-reset');
@@ -733,13 +741,14 @@
       .style('display', function (d) { return (kids[d.data.id] && kids[d.data.id].length) ? null : 'none'; })
       .attr('x', function (d) { return d.depth === 0 ? 0 : (Math.sin(d.rdA) >= 0 ? -9 : 9); })
       .text(function (d) { return collapseSet[d.data.id] ? '⊕' : '⊖'; });
-    nd.on('click', function (ev, d) { ev.stopPropagation(); if (d.data.id !== linCur) { renderTree(d.data.id); setSel(d.data.id); renderRadial(d.data.id); } });
+    nd.on('click', function (ev, d) { ev.stopPropagation(); if (d.data.id !== linCur) { renderTree(d.data.id); setSel(d.data.id); renderRadial(d.data.id); } bsSelect(d.data.id, 'radial'); });
     nd.select('.rd-tog').on('click', function (ev, d) { ev.stopPropagation(); collapseSet[d.data.id] = !collapseSet[d.data.id]; renderTree(linCur); renderRadial(linCur); });
     nd.on('mouseenter', function (ev, d) { var kin = {}; d.ancestors().forEach(function (a) { kin[a.data.id] = 1; }); d.descendants().forEach(function (n) { kin[n.data.id] = 1; }); nd.classed('dim', function (n) { return !kin[n.data.id]; }); lk.classed('dim', function (l) { return !(kin[l.source.data.id] && kin[l.target.data.id]); }); })
       .on('mouseleave', function () { nd.classed('dim', false); lk.classed('dim', false); });
     /* —— 缩放平移（初变中位归入 zoom transform·保确定性）—— */
     if (!rdZoom) { rdZoom = DS.zoom().scaleExtent([0.4, 4]).on('zoom', function (ev) { rdG.attr('transform', ev.transform); }); svgS.call(rdZoom).on('dblclick.zoom', null); }
     svgS.call(rdZoom.transform, DS.zoomIdentity.translate(RCEN, RCEN));
+    bsApply();
   }
   (function wireRadial() {
     var rb = document.getElementById('radial-reset');
@@ -747,6 +756,51 @@
     ['rd-angle-gen', 'rd-angle-year'].forEach(function (idv) { var el2 = document.getElementById(idv); if (el2) el2.addEventListener('change', function () { renderRadial(rdCur); }); });
     var rl = document.getElementById('rd-labels');
     if (rl) rl.addEventListener('change', function () { if (rSvg) { var ts = rSvg.querySelectorAll('text.rd-label'); for (var k = 0; k < ts.length; k++) ts[k].style.display = rl.checked ? null : 'none'; } });
+  })();
+
+  /* ══ G.4 四视图联动·选择总线（任一选中→弟子树/放射/网络/地理同步高亮该人及其一阶邻域）══ */
+  function bsRelated(id) { var s = {}; if (!id) return s; s[id] = 1; var nb = NET_ADJ[id] || {}; for (var k in nb) s[k] = 1; return s; }
+  function bsStatus(id) {
+    var st = document.getElementById('bs-status'); if (!st) return;
+    if (!id) { st.textContent = '选择总线：点任一视图节点→四视图同步高亮该师及其一阶邻域；再点同一节点或空白处取消。'; return; }
+    var nb = NET_ADJ[id] || {}, cnt = 0; for (var k in nb) cnt++;
+    var nm = (PNAME[id] || (window.__LIN_META && window.__LIN_META[id] && window.__LIN_META[id].name) || id);
+    st.innerHTML = '已选：<b>' + esc(nm) + '</b>（' + esc(id) + '）·一阶邻域 ' + cnt + ' 人·四视图已联动高亮（再点取消）';
+  }
+  function bsApply() {
+    var rel = bsRelated(BS.sel);
+    var conts = ['#lineage-svg', '#lineage-radial-svg', '#lineage-net-svg', '#g-linmap'];
+    conts.forEach(function (c) {
+      var svg = document.querySelector(c); if (!svg) return;
+      var ns = svg.querySelectorAll('[data-id]');
+      for (var i = 0; i < ns.length; i++) {
+        var node = ns[i], d = node.getAttribute('data-id');
+        node.classList.toggle('bs-hl', !!BS.sel && d === BS.sel);
+        node.classList.toggle('bs-neighbor', !!BS.sel && d !== BS.sel && !!rel[d]);
+      }
+    });
+    bsStatus(BS.sel);
+  }
+  function bsReveal(id) { if (!id || !TREE_PARENT[id]) return false; var changed = false, cur = id; while (cur) { if (collapseSet[cur]) { delete collapseSet[cur]; changed = true; } cur = TREE_PARENT[cur]; } return changed; }
+  function bsSelect(id, view) {
+    if (view) BS.view = view;
+    if (!id) { bsClear(); return; }
+    if (BS.sel === id) { BS.sel = null; }
+    else {
+      BS.sel = id;
+      if (bsReveal(id)) { if (linCur) renderTree(linCur); if (rdCur) renderRadial(rdCur); }
+    }
+    bsApply(); syncURL();
+  }
+  function bsClear() { BS.sel = null; bsApply(); syncURL(); }
+  (function wireBusGlobal() {
+    var nrs = document.getElementById('net-reset'); if (nrs) nrs.addEventListener('click', bsClear);
+    var rrs = document.getElementById('radial-reset'); if (rrs) rrs.addEventListener('click', bsClear);
+    ['#lineage-svg', '#lineage-radial-svg', '#lineage-net-svg'].forEach(function (sid) {
+      var s = document.getElementById(sid.slice(1)); if (s) s.addEventListener('click', function (ev) { if (!(ev.target.closest && ev.target.closest('[data-id]'))) bsClear(); });
+    });
+    var ls2 = document.getElementById('lineage-select');
+    if (ls2) ls2.addEventListener('change', function () { if (this.value) bsSelect(this.value, 'tree'); });
   })();
 
   /* ══ F.5 视觉持平：连续时间滑轨 · hover tooltip · 全局搜索（/ 聚焦）══ */
@@ -837,6 +891,10 @@
     }
     if (q.temple && findTemple(q.temple)) selectTemple(q.temple);
     if (q.master && findMaster(q.master)) { renderTree(q.master); setSel(q.master); renderRadial(q.master); }
+    /* G.4 深链复位：选择总线 sel + 激活视图 view（零坐标·仅语义） */
+    if (q.view) BS.view = q.view;
+    if (q.sel) { BS.sel = q.sel; if (bsReveal(q.sel)) { if (linCur) renderTree(linCur); if (rdCur) renderRadial(rdCur); } bsApply(); }
+    if (q.view) { var vmap = { tree: 'lineage-box', radial: 'radial-box', net: 'net-box', map: 'lineage-box' }; var ve = document.getElementById(vmap[q.view] || ''); if (ve && ve.scrollIntoView) ve.scrollIntoView({ block: 'start' }); }
   })();
 })();
 

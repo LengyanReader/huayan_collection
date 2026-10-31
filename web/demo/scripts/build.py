@@ -1121,6 +1121,12 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 .rd-node text{font-size:10px;fill:#3a2f1e}
 .rd-node.dim,.rd-link.dim{opacity:0.16}
 .rd-root circle{stroke:#c0392b;stroke-width:2}
+/* ══ G.4 四视图联动·选择总线（linked brushing）══ */
+.bs-hl circle{stroke:#b0341f;stroke-width:2.8}
+.bs-neighbor circle{stroke:#c0392b;stroke-width:2}
+.lg-node.bs-hl text,.rd-node.bs-hl text,.net-node.bs-hl text,.lm-node.bs-hl text{font-weight:bold;fill:#b0341f}
+#bs-status{font-size:0.8em;color:var(--text2);padding:2px 0 0}
+#bs-status b{color:#b0341f}
 /* ══ F.5 视觉持平批 · 羊皮纸美术方向 + 交互打磨（对标 jiangshan-map·clean-room）══ */
 :root{--parch:#f3ecdd;--ink:#3a2f1e;--ink2:#6b5a3a;--verm:#a83a24;--gold2:#b8863c}
 body{background:
@@ -1233,6 +1239,7 @@ body{background:
       <span id="net-hint">节点半径＝直系弟子出度·色＝所属支系·实线=师承／虚线=影响／淡线=同期·拖拽平移·滚轮缩放·悬停高亮一阶邻域·点节点聚焦其直系子网络</span>
     </div>
     <svg id="lineage-net-svg" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div id="bs-status" title="选择总线状态">选择总线：点任一视图节点→四视图（弟子树/放射/网络/地理）同步高亮该师及其一阶邻域；再点同一节点或空白处取消。</div>
     <p style="font-size:0.74em;color:var(--text2)">只画现存 __NET_E__ 条边（98 剔 1 自环 person_050→person_050）·不臆造著述传导（TRANSMITTED_TEXT 待逐字回源）。节点色按所属支系·未具名 id 标〔待核〕。数据源 lineages.json（全库只读投影·未改 SSOT）。</p>
   </div>
   <div id="radial-box">
