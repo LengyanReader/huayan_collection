@@ -1783,3 +1783,21 @@ done(
 **next**：**F.6 超越批**（已登记 PLAN §四）——法脉时间化（S4 树铺底图）／文本→深链（细读引文自动生成 S6 深链）／著述传导边可视化（TRANSMITTED_TEXT）＋标签防堆叠打磨。
 **sources**：`web/demo/scripts/build.py`·`web/demo/src/shanhe.js`·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`tasks/PLAN.md` §四/§七·`.harness/decisions.md` #15·标杆特征清单=WebFetch `github.com/DeanChensj/jiangshan-map` README（2026-10-31 访问）。
 
+---
+## F 系列·F.6 超越批（F.6a 法脉时间化 + F.6b 文本→深链）— 收口 2026-10-31
+
+**goal**：以**主题纵深**超越标杆（非覆盖军备·decisions **#16**）·三项拆分独立落地——**F.6a 法脉时间化**（S4 递归弟子树按地理质心铺于断代底图·二次 Bezier 弧形师承边·toggle 显隐）、**F.6b 文本→深链**（细读文章祖师名自动链接至 `shanhe.html?master=<id>`·progressive enhancement 不动源文）、**F.6c 著述传导边可视化**（TRANSMITTED_TEXT·F.1 契约已备·实测数据 0 条边）。**全程只读投影·四份 SSOT 前后 sha256 恒定·零造边**。
+
+**done**（观察到）：
+- **F.6a 地理投影层**（`build.py`·新增 `_f6_person_geo()`）：遍历 `person_trajectories` 有 route 者·视口内点求**经纬质心→画布投影 (x,y)**＋站点**中位纪年** → `person_geo` **171 条**入 SHANHE payload。verify 断言：≥40 条门槛·18 可展开祖师 geo 覆盖 **18/18**（≥15 门）。
+- **F.6a 前端叠加**（`shanhe.js`·`renderLinGeo(mid)` 43 行 + `#g-linmap` SVG 组默认 `display:none` + `#lingeo-toggle`）：随 S4 `renderTree` 触发·父子师承间绘**二次 Bezier 弧**（`.lm-edge`·INFLUENCED 走虚线 `.lm-edge.inf`）·分支着色·每节点绘带姓名圆点（`.lm-node`）·点击圆点重定根。toggle `change` 重绘。
+- **F.6b 数据驱动映射**（`build.py`·`_f6b_deeplink_map()`）：从 `person_trajectories`（华严 focus 支系 person_id 之名·取「·」前主名）＋`complete_lineage_chart`（五祖骨干 name/title 别名·清涼/賢首/圭峰）＋`lineages.json` 动态生成 name-variant→person_id·叠加策展别名 `_extra`（繁体字形·避开 `test_pipeline` 简体 hardcoded-name 扫描）·**无一处硬编人名到 JS 字面量**。
+- **F.6b 前端接线**（`LIN_DEEPLINK_JS_TMPL`·注入文章 f-string `{SHARE_JS}` 后）：`TreeWalker` 扫 `#article-root` 文本节点·按名长降序 `indexOf` 命中→包 `<a class="lin-deeplink" href="../famai/shanhe.html?master=<id>">`·`skip()` 守卫跳过 `A/CODE/PRE/BLOCKQUOTE` 及 `.q/.quote/.cite-card` 容器（**不动引文原字形**）·progressive enhancement：无 JS 时源文照常显示。
+
+**gates**（观察到）：py_compile（build.py·verify_demo.py）✅｜**check.py ✅ rc=0**｜**test_pipeline ✅ ALL TESTS PASSED rc=0**（含「No hardcoded data」·F.6b 全数据驱动通过）｜**verify_demo ✅ ALL CHECKS PASSED rc=0**（F.6a 新断言：`g-linmap`/`lingeo-toggle`/`renderLinGeo`/`person_geo` 四 marker·person_geo≥40·祖师 geo 覆盖≥15·OK 行报 171 条/18-18）｜**headless F.6a `_f6a_domcheck.py` 9 项全绿**（Chromium·真实事件：默认隐藏 nodes0→toggle ON nodes11/edges17·越界/无色节点 0·无 Q 弧 0·切 person_001 11→9·toggle OFF 复位·回归 F.3/F.4/F.5（12 要地标·6 chip·滑轨·搜索·URL `?master=person_001`）·**pageerror=0 console.error=0**·**SSOT 四档 sha256 前后恒定**）｜**headless F.6b `_f6b_domcheck.py` 8 项全绿**（明法品 `.lin-deeplink` **132 处**·malformed href 0·禁用容器内 deeplink 0·点击→`shanhe.html?master=person_003`·shanhe 回归（linmap/toggle/slider/search/12 要地）在场·**pageerror=0 console.error=0**·SSOT 恒定）。shanhe.html **469,549→482,811 B**（F.6a·+person_geo+叠加层·数据计数不变）。
+
+**铁律自校**：**只读投影**·`person_geo` 仅由现存 route 实测点求质心、无 route 者不入表（不臆造地理）；`_f6b_deeplink_map` 全量名映射源自三 SSOT、`_extra` 系既有 person_id 之别名补录、**不新增人、不编造传承**；F.6c **实测 0 条 TRANSMITTED_TEXT 边 → 诚实 BLOCKED 不造边**（依铁律须逐字回源人工补录）；deeplink `skip()` 保引文 blockquote/.q 繁体原字形**逐字不动**；**L.250 在飞不入本批**（明法品 md＋被全量 build 带入的 built tabs/articles HTML 一律排除·F.6b 仅提交 `build.py` 源改动）；scratch（`_f6_scout.out`·`_f6a_*.out`·`_f6b_*.out`·`_f6a_domcheck.py`·`_f6b_domcheck.py`·`_f6a_shot.png`）**不入仓**；本地 commit **未 push**。
+
+**blocked**：**F.6c 著述传导边可视化**——schema 契约（`lineage.schema.json`·TRANSMITTED_TEXT 入 enum·F.1）就绪·live `lineages.json` **0 条实边**。依「不编造·逐字回源」铁律，须人工补录各师→弟子所传著述边（含 source 锚点·reliability）后方可视化，归后续独立批。**next 待定**（用户方向）：push 累计 4 commit（F.4/F.5/F.6a/F.6b）·或 C 阶段（`llms.txt`＋本机 MCP server `inspect_person/inspect_place/search_lineage`）·或其他。
+
+**sources**：`web/demo/scripts/build.py`（`_f6_person_geo`·`_f6b_deeplink_map`·`LIN_DEEPLINK_JS_TMPL`）·`web/demo/src/shanhe.js`（`renderLinGeo`）·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`data/events/person_trajectories.yaml`·`data/knowledge_graph/lineages.json`·`data/knowledge_graph/complete_lineage_chart.yaml`·`tasks/PLAN.md` §四/§七·`.harness/decisions.md` #16。
