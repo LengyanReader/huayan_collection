@@ -240,6 +240,15 @@ else:
                         fail('G.2 lineage_net 未同时含三类边（实：%s）' % _tri)
                     ok('G.2 全法脉网络 d3-force：lineage-net-svg 容器·力导向·三边型·静态兜底边表在场')
 
+                    # ── G.3 放射式·时间轴法脉 d3.tree radial·静态侧证 ──
+                    for m3 in ['id="lineage-radial-svg"', 'id="radial-reset"', 'id="rd-angle-year"',
+                               'DS.linkRadial', 'DS.tree().size', "'rd-node'", "'rd-link'"]:
+                        if m3 not in sh:
+                            fail('G.3 shanhe.html 缺放射式标记: %s（renderRadial 未跃迁）' % m3)
+                    if '递归弟子链' not in sh:
+                        fail('G.3 放射子树无 S4 逐字代际兜底链表（信息無损失守）')
+                    ok('G.3 放射式时间轴 d3.tree radial：lineage-radial-svg 容器·linkRadial 连线·纪年/代际角·S4 弟子链逐字兜底在场')
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:
