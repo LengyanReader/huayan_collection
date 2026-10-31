@@ -25,6 +25,10 @@
   var LIN = S.lineage || { masters: [], trees: {}, branches: [], backbone: [] };
   var gTemple = document.getElementById('g-temple');
   var lSvg = document.getElementById('lineage-svg');
+  var tlRange = document.getElementById('tl-range');
+  var tlYear = document.getElementById('tl-year');
+  var tlMeta = document.getElementById('tl-meta');
+  var tip = document.getElementById('tip');
   var cur = S.years.length ? S.years[0].year : null;
 
   function esc(s) {
@@ -88,9 +92,9 @@
       for (var j = 0; j < po.rings.length; j++) {
         var pth = el('path', { d: ringPath(po.rings[j]) });
         if (ghostMode) {
-          pth.setAttribute('fill', 'none'); pth.setAttribute('stroke', '#555');
-          pth.setAttribute('stroke-width', 0.7); pth.setAttribute('stroke-dasharray', '4,3');
-          pth.setAttribute('opacity', 0.55);
+          pth.setAttribute('fill', 'none'); pth.setAttribute('stroke', '#a83a24');
+          pth.setAttribute('stroke-width', 1); pth.setAttribute('stroke-dasharray', '5,3');
+          pth.setAttribute('opacity', 0.7);
         } else {
           pth.setAttribute('fill', hue(po.n)); pth.setAttribute('fill-opacity', 0.42);
           pth.setAttribute('stroke', hue(po.n)); pth.setAttribute('stroke-width', 1);
@@ -149,6 +153,17 @@
     } else gGhost.innerHTML = '';
     var btns = document.querySelectorAll('.year-btn');
     for (var k = 0; k < btns.length; k++) btns[k].className = 'year-btn' + (String(btns[k].getAttribute('data-year')) === String(cur) ? ' active' : '');
+    /* F.5 断代淡入过渡：整层 opacity 复位→下一帧升回（CSS #g-polity transition 承接） */
+    gPoly.style.opacity = 0;
+    requestAnimationFrame(function () { gPoly.style.opacity = 1; });
+    updateTimeline();
+  }
+  function updateTimeline() {
+    if (!tlRange) return;
+    var d = yearData(cur), n = d ? d.polities.length : 0;
+    if (tlYear) tlYear.textContent = cur;
+    if (tlMeta) tlMeta.textContent = '依 ' + cur + ' 年最近断代快照 · 区内 ' + n + ' 政体 · 帝号/年号〔待核·断代底图未含〕';
+    if (document.activeElement !== tlRange) tlRange.value = cur;   /* 外部改年代时吸附滑轨；拖拽中不打断 */
   }
   document.querySelectorAll('.year-btn').forEach(function (b) {
     b.addEventListener('click', function () { cur = parseInt(b.getAttribute('data-year'), 10); refresh(); });
@@ -247,6 +262,7 @@
   if (pbtn) pbtn.addEventListener('click', function () { step(-1); });
   if (nbtn) nbtn.addEventListener('click', function () { step(1); });
   document.addEventListener('keydown', function (e) {
+    if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;  /* F.5 搜索框内不劫持按键 */
     if (!pCur) return;
     if (e.code === 'Space') { e.preventDefault(); step(1); }
     else if (e.key === 'ArrowRight') step(1);
@@ -271,6 +287,8 @@
       var r = el('rect', { x: t.x - s, y: t.y - s, width: 2 * s, height: 2 * s, fill: on ? '#c0392b' : '#7a5a2e',
         stroke: '#fff', 'stroke-width': 1, transform: 'rotate(45 ' + t.x + ' ' + t.y + ')' });
       r.style.cursor = 'pointer';
+      r.setAttribute('data-name', t.name); r.setAttribute('data-tp', '华严要地 · 点击开地谱卡');
+      r.setAttribute('data-dy', t.dynasty || '');
       r.addEventListener('click', (function (id) { return function () { selectTemple(id); }; })(t.id));
       gTemple.appendChild(r);
       var tx = el('text', { x: t.x + 8, y: t.y - 6, 'font-size': 8.5, fill: on ? '#c0392b' : '#6b5a3a' });
@@ -381,6 +399,63 @@
   if (lsel) lsel.addEventListener('change', function () { renderTree(this.value || null); });
   var tbt = document.getElementById('temple-toggle');
   if (tbt) tbt.addEventListener('change', function () { if (gTemple) gTemple.style.display = tbt.checked ? '' : 'none'; });
+
+  /* ══ F.5 视觉持平：连续时间滑轨 · hover tooltip · 全局搜索（/ 聚焦）══ */
+  if (tlRange) tlRange.addEventListener('input', function () {
+    var snap = nearestSnapshot(parseInt(this.value, 10));
+    if (snap != null) { cur = snap; refresh(); }
+  });
+  function showTip(html, x, y) {
+    if (!tip) return; tip.innerHTML = html; tip.hidden = false;
+    var pad = 14, w = tip.offsetWidth, h = tip.offsetHeight, L = x + pad, T = y + pad;
+    if (L + w > window.innerWidth) L = x - w - pad;
+    if (T + h > window.innerHeight) T = y - h - pad;
+    tip.style.left = L + 'px'; tip.style.top = T + 'px';
+  }
+  function hideTip() { if (tip) tip.hidden = true; }
+  if (svg) svg.addEventListener('mousemove', function (ev) {
+    var t = ev.target, nm = t.getAttribute && t.getAttribute('data-name');
+    if (!nm) { hideTip(); return; }
+    var line = '<b>' + esc(nm) + '</b>', dy = t.getAttribute('data-dy'), tp = t.getAttribute('data-tp');
+    if (dy) line += '<br>' + esc(dy);
+    if (tp) line += (dy ? ' · ' : '<br>') + esc(tp);
+    var yr = t.getAttribute('data-year'); if (yr) line += '<br>' + esc(yr) + ' 年快照';
+    var sup = t.getAttribute('data-sup'); if (sup != null) line += '<br>宗主／归因：' + esc(sup || '—');
+    var pr = t.getAttribute('data-pr'); if (pr != null) line += '<br>边界精度 ' + (pr === '' ? '〔待核〕' : esc(pr) + '/3');
+    showTip(line, ev.clientX, ev.clientY);
+  });
+  if (svg) svg.addEventListener('mouseleave', hideTip);
+  (function initSearch() {
+    var gi = document.getElementById('gs-input'), gd = document.getElementById('gs-drop');
+    if (!gi || !gd) return;
+    var idx = [];
+    PERSONS.forEach(function (p) { idx.push({ kind: '祖师行迹', name: p.name, go: function () { var s = document.getElementById('person-select'); if (s) s.value = p.id; selectPerson(p.id); } }); });
+    TEMPLES.forEach(function (t) { idx.push({ kind: '要地', name: t.name, go: function () { var s = document.getElementById('temple-toggle'); if (s && !s.checked) { s.checked = true; if (gTemple) gTemple.style.display = ''; } selectTemple(t.id); } }); });
+    (LIN.masters || []).forEach(function (m) { idx.push({ kind: '法师·法脉', name: m.name, go: function () { renderTree(m.id); setSel(m.id); } }); });
+    var hits = [], sel = -1;
+    function match(q) { return q ? idx.filter(function (it) { return it.name && it.name.indexOf(q) >= 0; }) : []; }
+    function render() {
+      if (!hits.length) { gd.hidden = true; return; }
+      gd.innerHTML = hits.map(function (it, i) {
+        return '<div class="it' + (i === sel ? ' sel' : '') + '" data-i="' + i + '"><span>' + esc(it.name) + '</span><span class="tag">' + esc(it.kind) + '</span></div>';
+      }).join('');
+      gd.hidden = false;
+    }
+    function choose(i) { if (i < 0 || i >= hits.length) return; hits[i].go(); gi.value = hits[i].name; gd.hidden = true; sel = -1; }
+    gi.addEventListener('input', function () { hits = match(this.value.trim()); sel = hits.length ? 0 : -1; render(); });
+    gi.addEventListener('focus', function () { var q = gi.value.trim(); hits = q ? match(q) : idx.slice(0, 15); sel = hits.length ? 0 : -1; render(); });
+    gi.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); sel = Math.min(sel + 1, hits.length - 1); render(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); sel = Math.max(sel - 1, 0); render(); }
+      else if (e.key === 'Enter') { e.preventDefault(); choose(sel >= 0 ? sel : 0); }
+      else if (e.key === 'Escape') { gd.hidden = true; gi.blur(); }
+    });
+    gd.addEventListener('click', function (e) { var d = e.target.closest ? e.target.closest('.it') : null; if (d) choose(parseInt(d.getAttribute('data-i'), 10)); });
+    document.addEventListener('click', function (e) { if (!(e.target.closest && e.target.closest('#gs'))) gd.hidden = true; });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === '/' && document.activeElement !== gi && !/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName || '')) { e.preventDefault(); gi.focus(); gi.select(); }
+    });
+  })();
 
   /* ── 启动 ── */
   drawBase();

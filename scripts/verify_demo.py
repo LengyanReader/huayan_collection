@@ -167,6 +167,26 @@ else:
                         ok('F.4 只读投影 S3要地12·S4祖师18/骨干%d世·S5色块6·未具名弟子%d标〔待核〕·反向边已剔'
                            % (len(_bb), _unnamed))
 
+                    # ── F.5 视觉持平批·静态侧证（对标 jiangshan-map 八项·clean-room）──
+                    for m5 in ['id="tl-range"', 'id="tl-year"', 'id="tl-meta"', 'id="gs-input"',
+                               'id="gs-drop"', 'id="tip"', '@keyframes nodeIn',
+                               '@media(max-width:820px)', '--verm:#a83a24']:
+                        if m5 not in sh:
+                            fail('F.5 shanhe.html missing marker: %s' % m5)
+                    if 'Songti SC' not in sh or 'Noto Serif CJK SC' not in sh:
+                        fail('F.5 羊皮纸衬线字栈缺失（Songti/Noto Serif 任一不在场）')
+                    if '#__YMIN__' in sh or '#__YMAX__' in sh or '__Y0__' in sh or '__YMIN__' in sh:
+                        fail('F.5 时间滑轨模板 token 未替换完全')
+                    _ym = re.search(r'id="tl-range"[^>]*min="(\d+)" max="(\d+)"', sh)
+                    if not _ym:
+                        fail('F.5 tl-range min/max 不可解析（数据驱动滑轨未落地）')
+                    elif int(_ym.group(1)) >= int(_ym.group(2)):
+                        fail('F.5 tl-range min≥max: %s≥%s' % (_ym.group(1), _ym.group(2)))
+                    if '帝号/年号〔待核·断代底图未含〕' not in sh:
+                        fail('F.5 帝号/年号诚实〔待核〕标不在场（不得臆造年号）')
+                    ok('F.5 视觉持平 滑轨%s–%s·搜索/tooltip·朱红Ghost·羊皮纸字栈·断点动画·年号诚实〔待核〕'
+                       % (_ym.group(1), _ym.group(2)))
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:

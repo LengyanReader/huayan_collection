@@ -1768,3 +1768,18 @@ done(
 
 **sources**：`data/locations/temple_directory.yaml`·`data/knowledge_graph/lineages.json`·`data/knowledge_graph/complete_lineage_chart.yaml`·`data/events/person_trajectories.yaml`·`web/demo/scripts/build.py`·`web/demo/src/shanhe.js`·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`.harness/decisions.md` #14·`tasks/PLAN.md` §四。
 
+---
+## F 系列·F.5 视觉持平与门禁批 — 收口 2026-10-31
+
+**goal**：对标 jiangshan-map **全套视觉持平八项**（用户 R4 确认「全套持平」·超越归独立 F.6 批·decisions **#15**）：连续时间滑轨＋年号标签／断代过渡动画／朱红 Ghost Diff／hover tooltip／全局搜索（`/` 聚焦）／羊皮纸美术方向（衬线字栈＋纸纹）／响应式断点／原 F.5 门禁交付（verify 扩展＋三件套＋headless 固化）。**纯 UI/UX 债清偿·零新数据源·SSOT 不动**。诚实边界：帝号/年号 aourednik 断代底图无源 → 滑轨元信息标〔待核·断代底图未含〕，**绝不臆造年号**。
+
+**done**（观察到）：
+- **build.py 模板/CSS**（+46 行 CSS·token 链扩 `__YMIN__/__YMAX__/__Y0__` 数据驱动）：`#gs` 搜索框＋`#gs-drop` 下拉；`#tl-bar` 滑轨（min=500 max=900 step=1）＋`#tl-year` 朱红大字年＋`#tl-meta` 快照元信息；`#tip` tooltip 容器；羊皮纸三层渐变纸纹 body＋衬线字栈（Songti SC/STSong/Noto Serif CJK SC/Source Han Serif SC/SimSun/Georgia）＋`--verm:#a83a24`/`--gold2` 配色；`#g-polity` opacity .45s 过渡＋`@keyframes nodeIn` 节点入画；`@media` 820px（map-row 转 column）/560px 断点。
+- **shanhe.js**（F.5 模块）：滑轨 input→`nearestSnapshot` 吸附→refresh（聚焦时不强扭滑块位置·年标签显示实际渲染快照年）；`updateTimeline()` 元信息「依 N 年最近断代快照 · 区内 X 政体 · 帝号/年号〔待核·断代底图未含〕」；refresh 尾部淡入（opacity 0→rAF→1）；Ghost 描边 #555→**#a83a24** 虚线 5,3；`#map-svg` mousemove 事件委托 tooltip（政体/要地/站点·视口越界翻转），drawTemples 补 `data-name/data-tp/data-dy`；`initSearch` 索引 PERSONS(祖师行迹)+TEMPLES(要地)+LIN.masters(法师·法脉)·点击路由 selectPerson/selectTemple/renderTree·`/` 全局聚焦（原站台快捷键加 INPUT/TEXTAREA/SELECT 目标守卫防劫持）。
+**gates**（观察到）：py_compile（build.py·verify_demo.py）✅｜**check.py ✅ rc=0**｜**test_pipeline ✅ ALL TESTS PASSED rc=0**｜**verify_demo ✅ ALL CHECKS PASSED rc=0**（含 F.5 新断言：滑轨/搜索/tooltip/关键帧/断点/朱红/字栈 marker·token 残留即 fail·min<max·帝号年号〔待核〕标在场·OK 行「F.5 视觉持平 滑轨500–900·搜索/tooltip·朱红Ghost·羊皮纸字栈·断点动画·年号诚实〔待核〕」）｜**headless 逐项实测 `_f5_domcheck.py` 10 项全过 rc=0**（Chromium·真实事件驱动：滑轨 800→年标签 800+按钮吸附+区内 48 政体·computed transition `opacity 0.45s`+keyframes `['nodeIn']`·ghost stroke `#a83a24` 命中·政体/要地 tooltip 双现·搜索「法藏」双命中→选法师 lineage-select=person_003 树 11 节点·`/`→activeElement=gs-input·400px 视口 #map-row=column·回归 F.3/F.4（12 要地标·6 chip·URL 零经纬）·**pageerror=0 console.error=0**·**SSOT 四档 sha256 前后恒定**）。截图 `_f5_shot_parchment.png` 目视确认羊皮纸+衬线+朱红滑轨整体观感。shanhe.html **460,225→469,549 B**（数据计数不变·纯 UI）。
+**台账复测**：PLAN §七 standard-ladder **Polish 2→3**（八项逐项实测为证）·加权 **2.65→2.75 首次超线标杆**·棘轮 floor 提至 **2.75**；覆盖维度维持 2 vs 3（标杆 164 快照/2400 年·**刻意不追**——超越轴=主题纵深：法脉时间化×miss=0 回源×文本→深链）。
+**铁律自校**：零新数据源·四份 SSOT sha256 前后一致；年号无源诚实〔待核〕不臆造；L.250 在飞（明法品 md＋built tabs/articles）不入本批 commit；scratch（`_f5_vision.py`·`_f5_domcheck.py`·`_f5_*.out`·`_f5_shot_*.png`）不入仓；本地 commit **不 push**。
+**blocked**：无。视觉残留打磨项：要地标签堆叠（长安/五台簇）→ F.6 一并处理。
+**next**：**F.6 超越批**（已登记 PLAN §四）——法脉时间化（S4 树铺底图）／文本→深链（细读引文自动生成 S6 深链）／著述传导边可视化（TRANSMITTED_TEXT）＋标签防堆叠打磨。
+**sources**：`web/demo/scripts/build.py`·`web/demo/src/shanhe.js`·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`tasks/PLAN.md` §四/§七·`.harness/decisions.md` #15·标杆特征清单=WebFetch `github.com/DeanChensj/jiangshan-map` README（2026-10-31 访问）。
+

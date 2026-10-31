@@ -837,6 +837,10 @@ def build_shanhe_page():
 
     year_buttons = ''.join('<button class="year-btn" data-year="%d">%d</button>' % (yy['year'], yy['year'])
                            for yy in years_out)
+    # F.5 S1 连续时间滑轨：min/max 取实存快照首末·value 取首快照（数据驱动·不臆造中间年代几何）
+    _ymin = years_out[0]['year'] if years_out else 500
+    _ymax = years_out[-1]['year'] if years_out else 900
+    _y0 = _ymin
     person_options = '<option value="">— 择祖师行迹（点人溯事）—</option>' + ''.join(
         '<option value="%s">%s</option>' % (p['id'], p['name']) for p in persons_out)
 
@@ -993,6 +997,52 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 .lg-node.dim,.lg-edge.dim{opacity:0.15}
 .lg-node text{font-size:11px;fill:#3a2f1e}
 .lg-root text{font-weight:bold}
+/* ══ F.5 视觉持平批 · 羊皮纸美术方向 + 交互打磨（对标 jiangshan-map·clean-room）══ */
+:root{--parch:#f3ecdd;--ink:#3a2f1e;--ink2:#6b5a3a;--verm:#a83a24;--gold2:#b8863c}
+body{background:
+  radial-gradient(ellipse at 18% 8%, rgba(201,178,132,.16), transparent 52%),
+  radial-gradient(ellipse at 84% 96%, rgba(150,128,88,.14), transparent 50%),
+  repeating-linear-gradient(0deg, rgba(120,100,60,.022) 0 2px, transparent 2px 4px),
+  var(--parch)}
+.wrap{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC","SimSun",Georgia,"Times New Roman",serif;color:var(--ink)}
+.wrap h1,.wrap h2,.wrap h3,.wrap h4{font-weight:600;letter-spacing:.02em}
+#gs{position:relative;margin:8px 0 2px;max-width:360px}
+#gs-input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:18px;
+  padding:6px 14px 6px 30px;font:inherit;font-size:.9em;background:rgba(255,252,244,.8);color:var(--ink);
+  box-shadow:inset 0 1px 2px rgba(120,100,60,.12);transition:box-shadow .2s,border-color .2s}
+#gs-input:focus{outline:none;border-color:var(--gold2);box-shadow:0 0 0 3px rgba(184,134,60,.18)}
+#gs-input::before{content:"🔍"}
+#gs-drop{position:absolute;z-index:40;left:0;right:0;top:105%;background:#fffcf4;
+  border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 22px rgba(80,60,20,.22);max-height:280px;overflow:auto}
+#gs-drop .it{padding:7px 13px;font-size:.85em;cursor:pointer;border-bottom:1px solid rgba(120,100,60,.12);display:flex;gap:8px;align-items:center}
+#gs-drop .it:last-child{border-bottom:none}
+#gs-drop .it:hover,#gs-drop .it.sel{background:rgba(184,134,60,.16)}
+#gs-drop .tag{font-size:.78em;color:var(--ink2);border:1px solid var(--line);border-radius:8px;padding:0 6px;margin-left:auto}
+#tl-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0 4px;
+  background:rgba(255,252,244,.55);border:1px solid var(--line);border-radius:12px;padding:8px 14px}
+.tl-cap{font-size:.8em;color:var(--ink2)}
+#tl-range{flex:1;min-width:220px;height:6px;-webkit-appearance:none;appearance:none;border-radius:4px;
+  background:linear-gradient(90deg,var(--gold2),var(--verm));outline:none;cursor:pointer}
+#tl-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--verm);border:2px solid #fff;box-shadow:0 1px 4px rgba(80,40,10,.4);transition:transform .12s}
+#tl-range::-webkit-slider-thumb:hover{transform:scale(1.18)}
+#tl-range::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--verm);border:2px solid #fff;cursor:pointer}
+.tl-year{font-size:1.05em;font-weight:700;color:var(--verm);min-width:52px;text-align:center}
+.tl-meta{font-size:.76em;color:var(--ink2)}
+#tip{position:fixed;z-index:60;pointer-events:none;background:rgba(58,47,30,.94);color:#f5eeda;
+  font-size:.72em;line-height:1.5;padding:5px 9px;border-radius:7px;max-width:250px;box-shadow:0 4px 14px rgba(0,0,0,.32)}
+#tip b{color:#f0c674}
+/* 断代过渡动画：整层淡入 */
+#g-polity{transition:opacity .45s ease}
+@keyframes nodeIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+.lg-node circle{transform-box:fill-box;transform-origin:center;animation:nodeIn .4s ease}
+.lg-edge{transition:opacity .3s}
+.lg-node{transition:opacity .3s}
+/* 响应式断点 */
+@media(max-width:820px){#map-row{flex-direction:column}#map-box,#info-panel{flex:none;width:100%;min-width:0}
+  #info-panel{min-height:120px}#gs{max-width:none}}
+@media(max-width:560px){.wrap{padding:12px}h1{font-size:1.25em}#ctl,#person-bar,#lineage-bar{font-size:.86em}
+  #tl-bar{gap:8px;padding:6px 10px}}
 </style>
 </head>
 <body>
@@ -1000,7 +1050,15 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
   <header>
     <a href="index.html" class="back-link">&larr; 法脉传承模块</a>
     <h1>⛰️ 山河法脉 <span style="font-size:0.5em;color:var(--text2);font-weight:400">Mountains &amp; Rivers · Dharma on the Historical Map</span></h1>
+    <div id="gs"><input id="gs-input" type="search" placeholder="🔍 搜祖师 / 要地 / 法师 · 按 / 聚焦" autocomplete="off"><div id="gs-drop" hidden></div></div>
   </header>
+  <div id="tl-bar">
+    <span class="tl-cap">时间轴</span>
+    <input type="range" id="tl-range" min="__YMIN__" max="__YMAX__" step="1" value="__Y0__">
+    <span id="tl-year" class="tl-year">__Y0__</span>
+    <span id="tl-meta" class="tl-meta"></span>
+  </div>
+
   <div id="ctl">
     __YEAR_BUTTONS__
     <label style="font-size:0.82em"><input type="checkbox" id="ghost-toggle"> 叠加前一时段轮廓（Ghost Diff）</label>
@@ -1041,11 +1099,13 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
     __FALLBACK__
   </div>
 </div>
+<div id="tip" hidden></div>
 <script>var SHANHE = __DATA_JSON__;</script>
 <script>__SHANHE_JS__</script>
 </body>
 </html>'''
     html = (tmpl.replace('__YEAR_BUTTONS__', year_buttons)
+                .replace('__YMIN__', str(_ymin)).replace('__YMAX__', str(_ymax)).replace('__Y0__', str(_y0))
                 .replace('__N_PLACES__', str(len(places)))
                 .replace('__N_TEMPLES__', str(len(temples_out)))
                 .replace('__PERSON_OPTIONS__', person_options)
