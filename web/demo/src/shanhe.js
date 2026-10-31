@@ -487,7 +487,7 @@
     }
   })();
   var lsel = document.getElementById('lineage-select');
-  if (lsel) lsel.addEventListener('change', function () { renderTree(this.value || null); });
+  if (lsel) lsel.addEventListener('change', function () { renderTree(this.value || null); renderRadial(this.value || null); });
   var tbt = document.getElementById('temple-toggle');
   if (tbt) tbt.addEventListener('change', function () { if (gTemple) gTemple.style.display = tbt.checked ? '' : 'none'; });
 
@@ -641,6 +641,114 @@
     });
   })();
 
+  /* ═ G.3 放射式·时间轴法脉（d3.tree radial）══
+     圆心＝择定祖师·半径＝代际·角度按代际均分或公元纪年·环刻度＝世代·直系实线/影响虚线 */
+  var rSvg = document.getElementById('lineage-radial-svg');
+  var RCEN = 380, RRR = 320, rdG = null, rdZoom = null, rdCur = null;
+  function rdYearMode() { var y = document.getElementById('rd-angle-year'); return !!(y && y.checked); }
+  function yearOf(id) { var g = PGEO[id]; return (g && g.year != null) ? g.year : null; }
+  function renderRadial(mid) {
+    if (!rSvg) return;
+    var DS = window.d3;
+    if (!DS) { rSvg.innerHTML = '<text x="14" y="24" font-size="12" fill="#b00">D3 未加载·放射图不可用（静态兜底见下方 S4 弟子链表）</text>'; return; }
+    rdCur = mid || null;
+    var svgS = DS.select(rSvg);
+    svgS.selectAll('*').remove();
+    rdG = svgS.append('g').attr('class', 'rd-g');
+    if (!mid) {
+      rdG.append('text').attr('text-anchor', 'middle').attr('y', 4).attr('font-size', 13).attr('fill', '#8a7a5a')
+        .text('择祖师后以其为圆心展开放射法脉（半径＝代际·点节点重定根·⊖ 收展·滚轮缩放）');
+      return;
+    }
+    /* —— 只读构树（与 G.1 同一守卫：单父·自环跳·环不擅改 SSOT）—— */
+    var edges = LIN.trees[mid] || [], mrec = findMaster(mid);
+    var NAME = {}, VER = {}, parentOf = {}, chEdge = {}, kids = {};
+    NAME[mid] = mrec ? mrec.name : mid; VER[mid] = true;
+    edges.forEach(function (e) {
+      if (e.parent === e.disc) return;
+      if (e.pname) NAME[e.parent] = e.pname;
+      if (e.dname) NAME[e.disc] = e.dname;
+      if (!(e.disc in VER)) VER[e.disc] = !!e.dverified;
+      if (!(e.disc in parentOf)) { parentOf[e.disc] = e.parent; chEdge[e.disc] = { rel: e.rel, branch: e.branch }; }
+    });
+    Object.keys(parentOf).forEach(function (d) { (kids[parentOf[d]] = kids[parentOf[d]] || []).push(d); });
+    function rmeta(id) { return { name: (id in NAME) ? NAME[id] : null, verified: (id in VER) ? VER[id] : true, rel: chEdge[id] ? chEdge[id].rel : null, branch: chEdge[id] ? chEdge[id].branch : '华严五祖' }; }
+    function rcol(id) { return BRANCH_COLOR[rmeta(id).branch] || '#8d5a2b'; }
+    function build(id) { var o = { id: id }; var ch = collapseSet[id] ? [] : (kids[id] || []); if (ch.length) o.children = ch.map(build); return o; }
+    var root = DS.hierarchy(build(mid));
+    DS.tree().size([2 * Math.PI, RRR]).separation(function (a, b) { return a.parent === b.parent ? 1 : 2.2; })(root);
+    var maxD = root.height || 1;
+    /* —— 角度：代际均分（tree.x）或纪年映射（scaleLinear 年→角·无纪年继承父角·不插值）—— */
+    var ymode = rdYearMode(), ys = null;
+    if (ymode) {
+      var yrs = root.descendants().map(function (n) { return yearOf(n.data.id); }).filter(function (v) { return v != null; });
+      if (yrs.length >= 2 && DS.max(yrs) > DS.min(yrs)) ys = DS.scaleLinear().domain([DS.min(yrs), DS.max(yrs)]).range([0, 2 * Math.PI]);
+    }
+    root.eachBefore(function (n) {
+      n.rdR = n.y;
+      if (ys) { var yy = yearOf(n.data.id); n.rdA = (yy != null) ? ys(yy) : (n.depth === 0 ? 0 : n.parent.rdA); }
+      else n.rdA = n.x;
+    });
+    var nodes = root.descendants(), links = root.links();
+    function rpx(n) { return n.rdR * Math.sin(n.rdA); }
+    function rpy(n) { return -n.rdR * Math.cos(n.rdA); }
+    /* —— 世代导环 + 刻度（纪年模式加年代辐条）—— */
+    var ringG = rdG.append('g').attr('class', 'rd-rings');
+    for (var g = 1; g <= maxD; g++) {
+      var rr = (g / maxD) * RRR;
+      ringG.append('circle').attr('class', 'rd-ring').attr('r', rr);
+      ringG.append('text').attr('class', 'rd-rlabel').attr('x', 3).attr('y', -rr - 1).text(g + '代');
+    }
+    if (ys) {
+      var tks = ys.ticks ? ys.ticks(6) : [];
+      tks.forEach(function (yr) {
+        var a = ys(yr), sx = Math.sin(a) * RRR, sy = -Math.cos(a) * RRR;
+        ringG.append('line').attr('class', 'rd-tick').attr('x1', 0).attr('y1', 0).attr('x2', sx * 0.55).attr('y2', sy * 0.55);
+        ringG.append('text').attr('class', 'rd-rlabel').attr('x', sx * 1.06).attr('y', sy * 1.06).attr('text-anchor', 'middle').text(yr);
+      });
+    }
+    /* —— 连线（linkRadial 直系实线/影响虚线/支系色）—— */
+    var linkGen = DS.linkRadial().angle(function (d) { return d.rdA; }).radius(function (d) { return d.rdR; });
+    var lk = rdG.append('g').selectAll('path.rd-link').data(links).enter().append('path')
+      .attr('class', function (d) { return 'rd-link' + (rmeta(d.target.data.id).rel === 'INFLUENCED' ? ' inf' : ''); })
+      .attr('stroke', function (d) { return rcol(d.target.data.id); })
+      .attr('data-branch', function (d) { return rmeta(d.target.data.id).branch; })
+      .attr('d', linkGen);
+    /* —— 节点（圆+水平名·root 加粗·未具名〔待核〕·⊖/⊕ 折叠·点重定根·悬停直系链高亮）—— */
+    var nd = rdG.append('g').selectAll('g.rd-node').data(nodes).enter().append('g')
+      .attr('class', function (d) { return 'rd-node' + (d.depth === 0 ? ' rd-root' : ''); })
+      .attr('data-id', function (d) { return d.data.id; })
+      .attr('data-branch', function (d) { return rmeta(d.data.id).branch; })
+      .attr('transform', function (d) { return 'translate(' + rpx(d) + ',' + rpy(d) + ')'; })
+      .style('cursor', 'pointer');
+    nd.append('circle').attr('r', function (d) { return d.depth === 0 ? 6 : 4; }).attr('fill', function (d) { return d.depth === 0 ? '#c0392b' : rcol(d.data.id); }).attr('stroke', '#fff').attr('stroke-width', 1);
+    var showL = document.getElementById('rd-labels'); showL = !showL || showL.checked;
+    nd.append('text').attr('class', 'rd-label')
+      .attr('text-anchor', function (d) { return Math.sin(d.rdA) >= 0 ? 'start' : 'end'; })
+      .attr('x', function (d) { return Math.sin(d.rdA) >= 0 ? 6 : -6; }).attr('y', 3)
+      .style('display', showL ? null : 'none')
+      .attr('fill', function (d) { return rmeta(d.data.id).verified ? '#3a2f1e' : '#b00'; })
+      .text(function (d) { var m = rmeta(d.data.id); return (m.name || d.data.id) + (m.verified ? '' : '〔待核〕'); });
+    nd.append('text').attr('class', 'rd-tog').attr('y', 4).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', '#7a6a4a').style('cursor', 'pointer')
+      .style('display', function (d) { return (kids[d.data.id] && kids[d.data.id].length) ? null : 'none'; })
+      .attr('x', function (d) { return d.depth === 0 ? 0 : (Math.sin(d.rdA) >= 0 ? -9 : 9); })
+      .text(function (d) { return collapseSet[d.data.id] ? '⊕' : '⊖'; });
+    nd.on('click', function (ev, d) { ev.stopPropagation(); if (d.data.id !== linCur) { renderTree(d.data.id); setSel(d.data.id); renderRadial(d.data.id); } });
+    nd.select('.rd-tog').on('click', function (ev, d) { ev.stopPropagation(); collapseSet[d.data.id] = !collapseSet[d.data.id]; renderTree(linCur); renderRadial(linCur); });
+    nd.on('mouseenter', function (ev, d) { var kin = {}; d.ancestors().forEach(function (a) { kin[a.data.id] = 1; }); d.descendants().forEach(function (n) { kin[n.data.id] = 1; }); nd.classed('dim', function (n) { return !kin[n.data.id]; }); lk.classed('dim', function (l) { return !(kin[l.source.data.id] && kin[l.target.data.id]); }); })
+      .on('mouseleave', function () { nd.classed('dim', false); lk.classed('dim', false); });
+    /* —— 缩放平移（初变中位归入 zoom transform·保确定性）—— */
+    if (!rdZoom) { rdZoom = DS.zoom().scaleExtent([0.4, 4]).on('zoom', function (ev) { rdG.attr('transform', ev.transform); }); svgS.call(rdZoom).on('dblclick.zoom', null); }
+    svgS.call(rdZoom.transform, DS.zoomIdentity.translate(RCEN, RCEN));
+  }
+  (function wireRadial() {
+    var rb = document.getElementById('radial-reset');
+    if (rb) rb.addEventListener('click', function () { Object.keys(collapseSet).forEach(function (k) { delete collapseSet[k]; }); renderTree(linCur); renderRadial(linCur); });
+    ['rd-angle-gen', 'rd-angle-year'].forEach(function (idv) { var el2 = document.getElementById(idv); if (el2) el2.addEventListener('change', function () { renderRadial(rdCur); }); });
+    var rl = document.getElementById('rd-labels');
+    if (rl) rl.addEventListener('change', function () { if (rSvg) { var ts = rSvg.querySelectorAll('text.rd-label'); for (var k = 0; k < ts.length; k++) ts[k].style.display = rl.checked ? null : 'none'; } });
+  })();
+
   /* ══ F.5 视觉持平：连续时间滑轨 · hover tooltip · 全局搜索（/ 聚焦）══ */
   if (tlRange) tlRange.addEventListener('input', function () {
     var snap = nearestSnapshot(parseInt(this.value, 10));
@@ -710,6 +818,7 @@
     }
   })();
   renderNet();   /* G.2 全法脉网络总览 */
+  renderRadial(linCur);   /* G.3 放射式·时间轴法脉（随 S4 当前祖师）*/
 
   /* ── S6 深链初始化：读 URL 参数 person/station/year/master/temple（零坐标） ── */
   (function initFromURL() {
@@ -727,7 +836,7 @@
       drawRoute(); showCard();
     }
     if (q.temple && findTemple(q.temple)) selectTemple(q.temple);
-    if (q.master && findMaster(q.master)) { renderTree(q.master); setSel(q.master); }
+    if (q.master && findMaster(q.master)) { renderTree(q.master); setSel(q.master); renderRadial(q.master); }
   })();
 })();
 

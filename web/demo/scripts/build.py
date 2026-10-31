@@ -1106,6 +1106,21 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 .net-link.inf{stroke-dasharray:5,3}
 .net-link.contemp{stroke-width:1;opacity:0.3}
 .net-node.hl circle{stroke:#c0392b;stroke-width:2}
+/* ═ G.3 放射式·时间轴法脉（radial tidy tree）══ */
+#radial-box{margin-top:6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+#radial-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:2px 0 6px;font-size:0.86em}
+#radial-reset{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 12px;font-size:0.82em;cursor:pointer}
+#radial-hint{font-size:0.74em;color:var(--text2)}
+#lineage-radial-svg{width:100%;height:auto;display:block;background:#f6f1e7;border-radius:8px;cursor:grab}
+.rd-ring{fill:none;stroke:#d8cdb4;stroke-width:1}
+.rd-tick{stroke:#c9b98f;stroke-width:1}
+.rd-rlabel{font-size:9px;fill:#8a7a5a}
+.rd-link{fill:none;stroke-width:1.5}
+.rd-link.inf{stroke-dasharray:5,3}
+.rd-node{cursor:pointer}
+.rd-node text{font-size:10px;fill:#3a2f1e}
+.rd-node.dim,.rd-link.dim{opacity:0.16}
+.rd-root circle{stroke:#c0392b;stroke-width:2}
 /* ══ F.5 视觉持平批 · 羊皮纸美术方向 + 交互打磨（对标 jiangshan-map·clean-room）══ */
 :root{--parch:#f3ecdd;--ink:#3a2f1e;--ink2:#6b5a3a;--verm:#a83a24;--gold2:#b8863c}
 body{background:
@@ -1219,6 +1234,18 @@ body{background:
     </div>
     <svg id="lineage-net-svg" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg"></svg>
     <p style="font-size:0.74em;color:var(--text2)">只画现存 __NET_E__ 条边（98 剔 1 自环 person_050→person_050）·不臆造著述传导（TRANSMITTED_TEXT 待逐字回源）。节点色按所属支系·未具名 id 标〔待核〕。数据源 lineages.json（全库只读投影·未改 SSOT）。</p>
+  </div>
+  <div id="radial-box">
+    <h3 style="font-size:1em;margin:14px 0 4px">放射式·时间轴法脉（G.3 · d3.tree radial · 圆心＝择定祖师）</h3>
+    <div id="radial-bar">
+      <button id="radial-reset" title="复位视图·取消折叠">↺ 复位全景</button>
+      <label style="font-size:0.8em"><input type="radio" name="rd-angle" id="rd-angle-gen" checked> 角度按代际均分</label>
+      <label style="font-size:0.8em"><input type="radio" name="rd-angle" id="rd-angle-year"> 角度按纪年（person_geo.year）</label>
+      <label style="font-size:0.8em"><input type="checkbox" id="rd-labels" checked> 显名标签</label>
+      <span id="radial-hint">半径＝代际·环刻度＝世代（纪年模式角＝公元年）·直系实线／影响虚线·点节点重定根·⊖/⊕ 收展·滚轮缩放·拖拽平移·悬停高亮直系链</span>
+    </div>
+    <svg id="lineage-radial-svg" viewBox="0 0 760 760" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p style="font-size:0.74em;color:var(--text2)">放射布局只读投影当前祖师弟子子树（S4 递归弟子链表·逐字代际在场）·无纪年节点按代际落位不插值·未具名标〔待核〕。数据源 lineages.json＋person_geo（只读投影·未改 SSOT）。</p>
   </div>
   <div id="fallback">
     <h3 style="font-size:1em">静态兜底 · 全字段无损在场（信息無损惯例）</h3>
