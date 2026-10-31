@@ -623,6 +623,37 @@ others:
   back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
   views: [avatamsaka-studies]
 
+- id: huayan-asamkhya-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 33
+  icon: 🔢
+  title: 九九华严第二十八品 阿僧祇品之拼读
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十八部_阿僧祇品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+- id: huayan-shouliang-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 34
+  icon: ⏳
+  title: 九九华严第二十九品 寿量品之拼读
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十九部_寿量品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+- id: huayan-zhuchu-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 35
+  icon: ⛰
+  title: 九九华严第三十品 菩萨住处品之拼读
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十部_菩萨住处品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
