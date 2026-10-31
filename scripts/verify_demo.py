@@ -187,6 +187,20 @@ else:
                     ok('F.5 视觉持平 滑轨%s–%s·搜索/tooltip·朱红Ghost·羊皮纸字栈·断点动画·年号诚实〔待核〕'
                        % (_ym.group(1), _ym.group(2)))
 
+                    # ── F.6a 法脉时间化·静态侧证 ──
+                    for m6 in ['id="g-linmap"', 'id="lingeo-toggle"', 'renderLinGeo', 'person_geo']:
+                        if m6 not in sh:
+                            fail('F.6a shanhe.html missing marker: %s' % m6)
+                    _pg = _sh.get('person_geo', {})
+                    if len(_pg) < 40:
+                        fail('F.6a person_geo 应≥40 条目（42 祖师有 route），实得 %d' % len(_pg))
+                    _lin_masters = [m['id'] for m in _lin.get('masters', [])]
+                    _geo_covered = sum(1 for mid in _lin_masters if mid in _pg)
+                    if _geo_covered < 15:
+                        fail('F.6a 18 可展开祖师中仅 %d 位有 geo（应≥15）' % _geo_covered)
+                    ok('F.6a 法脉时间化 g-linmap·toggle·person_geo %d 条·祖师 geo 覆盖 %d/%d'
+                       % (len(_pg), _geo_covered, len(_lin_masters)))
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:

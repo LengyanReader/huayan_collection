@@ -364,6 +364,7 @@
     var vb = '0 0 ' + width + ' ' + height;
     lSvg.setAttribute('viewBox', vb); lSvg.setAttribute('data-full', vb);
     applyIsolate(); syncURL();
+    renderLinGeo(mid);
   }
   function applyIsolate() {
     if (!lSvg) return;
@@ -399,6 +400,49 @@
   if (lsel) lsel.addEventListener('change', function () { renderTree(this.value || null); });
   var tbt = document.getElementById('temple-toggle');
   if (tbt) tbt.addEventListener('change', function () { if (gTemple) gTemple.style.display = tbt.checked ? '' : 'none'; });
+
+  /* ══ F.6a 法脉时间化：S4 树铺底图（地理质心+弧形师承边+分支色） ══ */
+  var gLinGeo = document.getElementById('g-linmap');
+  var lgeoTgl = document.getElementById('lingeo-toggle');
+  var PGEO = S.person_geo || {};
+  function renderLinGeo(mid) {
+    if (!gLinGeo) return;
+    while (gLinGeo.firstChild) gLinGeo.removeChild(gLinGeo.firstChild);
+    if (!mid || !lgeoTgl || !lgeoTgl.checked) { if (gLinGeo) gLinGeo.style.display = 'none'; return; }
+    gLinGeo.style.display = '';
+    var edges = LIN.trees[mid] || [];
+    var mrec = findMaster(mid);
+    var nodes = {}; nodes[mid] = { id: mid, name: mrec ? mrec.name : mid, branch: '华严五祖' };
+    edges.forEach(function (e) {
+      if (!nodes[e.parent]) nodes[e.parent] = { id: e.parent, name: e.pname || e.parent, branch: e.branch };
+      if (!nodes[e.disc]) nodes[e.disc] = { id: e.disc, name: e.dname || null, branch: e.branch };
+    });
+    // draw edges as arcs
+    edges.forEach(function (e) {
+      var pf = PGEO[e.parent], pt = PGEO[e.disc];
+      if (!pf || !pt) return;
+      var mx = (pf.x + pt.x) / 2, my = (pf.y + pt.y) / 2 - Math.abs(pt.x - pf.x) * 0.18;
+      var col = BRANCH_COLOR[e.branch] || '#888';
+      var path = el('path', { d: 'M' + pf.x + ',' + pf.y + ' Q' + mx + ',' + my + ' ' + pt.x + ',' + pt.y,
+        'class': 'lm-edge' + (e.rel === 'INFLUENCED' ? ' inf' : ''), stroke: col, 'data-branch': e.branch });
+      gLinGeo.appendChild(path);
+    });
+    // draw nodes
+    Object.keys(nodes).forEach(function (k) {
+      var n = nodes[k], g = PGEO[k]; if (!g) return;
+      var gg = el('g', { 'class': 'lm-node', 'data-branch': n.branch });
+      var isRoot = (k === mid);
+      gg.appendChild(el('circle', { cx: g.x, cy: g.y, r: isRoot ? 7 : 4.5,
+        fill: BRANCH_COLOR[n.branch] || '#8d5a2b', stroke: '#fff', 'stroke-width': isRoot ? 2 : 1.2 }));
+      var tx = el('text', { x: g.x + 8, y: g.y + 3, 'font-size': isRoot ? 11 : 9 });
+      tx.textContent = (n.name || k) + (g.year ? ' (' + g.year + ')' : '');
+      gg.appendChild(tx);
+      gg.style.cursor = 'pointer';
+      gg.addEventListener('click', (function (nid) { return function () { if (nid !== linCur) { renderTree(nid); setSel(nid); renderLinGeo(nid); } }; })(k));
+      gLinGeo.appendChild(gg);
+    });
+  }
+  if (lgeoTgl) lgeoTgl.addEventListener('change', function () { renderLinGeo(linCur); });
 
   /* ══ F.5 视觉持平：连续时间滑轨 · hover tooltip · 全局搜索（/ 聚焦）══ */
   if (tlRange) tlRange.addEventListener('input', function () {

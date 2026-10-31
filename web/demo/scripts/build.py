@@ -650,6 +650,38 @@ def _f4_person_meta():
     return names, colors
 
 
+def _f6_person_geo():
+    """F.6a 法脉时间化：person_id → {x, y, year}（路线质心投影+中位纪年）。
+       只读 person_trajectories·不添加·不臆造·无 route 者不入表。"""
+    pt = read_yaml('events/person_trajectories.yaml') or {}
+    persons = pt.get('persons', pt)
+    geo = {}
+    if not isinstance(persons, dict):
+        return geo
+    for pid, v in persons.items():
+        route = (v or {}).get('route') or []
+        pts = []
+        years = []
+        for s in route:
+            try:
+                lat = float(s.get('lat')); lng = float(s.get('lng'))
+            except (TypeError, ValueError):
+                continue
+            if not (GEO_VIEW_LON[0] <= lng <= GEO_VIEW_LON[1] and GEO_VIEW_LAT[0] <= lat <= GEO_VIEW_LAT[1]):
+                continue
+            x, y = _geo_proj(lng, lat)
+            pts.append((x, y))
+            yr = s.get('y')
+            if yr is not None:
+                years.append(int(yr))
+        if pts:
+            cx = sum(p[0] for p in pts) / len(pts)
+            cy = sum(p[1] for p in pts) / len(pts)
+            med_year = sorted(years)[len(years) // 2] if years else None
+            geo[pid] = {'x': round(cx, 1), 'y': round(cy, 1), 'year': med_year}
+    return geo
+
+
 def _f4_temples():
     """S3：华严核心要地子集（school 含华严/贤首 或 id t_huayan_ 前缀）。投影实测坐标。"""
     td = read_yaml('locations/temple_directory.yaml') or {}
@@ -820,6 +852,7 @@ def build_shanhe_page():
     temples_out = _f4_temples()
     lin = _f4_lineage()
     _lnames, _lcolors = _f4_person_meta()
+    person_geo = _f6_person_geo()  # F.6a 法脉时间化：地理质心+中位纪年
 
     payload = {
         'canvas': {'w': GEO_CW, 'h': GEO_CH},
@@ -830,6 +863,7 @@ def build_shanhe_page():
         'persons': persons_out,
         'temples': temples_out,
         'lineage': lin,
+        'person_geo': person_geo,
         'meta': {'generated': str(datetime.date.today()),
                  'license_note': '断代层 aourednik/historical-basemaps (GPL-3.0 独立集合)；物理层 Natural Earth (PD)；CHGIS 依其许可仅外链'},
     }
@@ -1043,6 +1077,11 @@ body{background:
   #info-panel{min-height:120px}#gs{max-width:none}}
 @media(max-width:560px){.wrap{padding:12px}h1{font-size:1.25em}#ctl,#person-bar,#lineage-bar{font-size:.86em}
   #tl-bar{gap:8px;padding:6px 10px}}
+/* F.6a 法脉地理 overlay */
+#g-linmap .lm-node circle{stroke:#fff;stroke-width:1.5;cursor:pointer}
+#g-linmap .lm-node text{font-size:9px;fill:var(--ink);paint-order:stroke;stroke:#f3ecdd;stroke-width:2px}
+#g-linmap .lm-edge{fill:none;stroke-width:1.4;stroke-opacity:.7}
+#g-linmap .lm-edge.inf{stroke-dasharray:4,3}
 </style>
 </head>
 <body>
@@ -1064,6 +1103,7 @@ body{background:
     <label style="font-size:0.82em"><input type="checkbox" id="ghost-toggle"> 叠加前一时段轮廓（Ghost Diff）</label>
     <label style="font-size:0.82em"><input type="checkbox" id="place-toggle" checked> 仓内实地标点（DB locations · __N_PLACES__）</label>
     <label style="font-size:0.82em"><input type="checkbox" id="temple-toggle" checked> ⛩️ 华严要地·地谱卡（S3 · __N_TEMPLES__）</label>
+    <label style="font-size:0.82em"><input type="checkbox" id="lingeo-toggle"> 🌐 法脉地理（S4 树铺底图·F.6a）</label>
     <a href="license.html" style="margin-left:auto;font-size:0.8em">层源与许可 →</a>
   </div>
   <div id="person-bar">
@@ -1081,7 +1121,7 @@ body{background:
   <div id="map-row">
     <div id="map-box">
       <svg id="map-svg" viewBox="0 0 __CW__ __CH__" xmlns="http://www.w3.org/2000/svg">
-        <g id="g-base"></g><g id="g-polity"></g><g id="g-ghost"></g><g id="g-place"></g><g id="g-person"></g><g id="g-temple"></g>
+        <g id="g-base"></g><g id="g-polity"></g><g id="g-ghost"></g><g id="g-place"></g><g id="g-person"></g><g id="g-temple"></g><g id="g-linmap" style="display:none"></g>
       </svg>
 
       <p style="font-size:0.72em;color:var(--text2);margin:6px 4px 2px">断代色块为<b>示意底图</b>（aourednik 百年快照·GPL-3.0 独立集合·学术精度待核）；
