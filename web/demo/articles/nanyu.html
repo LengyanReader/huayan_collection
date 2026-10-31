@@ -57,6 +57,65 @@ function copyPageLink(){
 }
 </script>
 
+<script>
+(function(){
+  var MAP = {"法显西行": "person_110", "鸠摩罗什": "person_103", "佛驮跋陀罗": "person_006", "杜顺": "person_001", "智俨": "person_002", "法藏": "person_003", "澄观": "person_004", "宗密": "person_005", "实叉难陀": "person_007", "般若": "person_008", "义天": "person_010", "净源": "person_011", "月霞": "person_012", "海云继梦": "person_042", "南亭": "person_015", "成一": "person_016", "贤度": "person_017", "智光": "person_018", "应慈": "person_031", "常惺": "person_013", "支娄迦谶": "person_007b", "审祥": "person_050", "钦因": "person_041", "真禅": "person_044", "慧光": "person_090", "元晓": "person_060", "义湘": "person_061", "慧苑": "person_070", "子璿": "person_091", "均如": "person_062", "续法": "person_080", "良弁": "person_j01", "实忠": "person_j02", "等定": "person_j03", "圣宝": "person_j04", "观贤": "person_j05", "明惠": "person_j06", "凝然": "person_j07", "思元慧三": "person_f01", "成观法师": "person_126", "体化性果": "person_f02", "了中": "person_032", "賢首": "person_003", "康藏法藏": "person_003", "雲華": "person_002", "澄觀": "person_004", "清涼": "person_004", "義天": "person_010", "義湘": "person_061", "元曉": "person_060", "審祥": "person_050", "實叉難陀": "person_007", "佛陀跋陀罗": "person_006", "應慈": "person_031", "續法": "person_080", "淨源": "person_011"};
+  var NAMES = Object.keys(MAP).sort(function(a,b){return b.length-a.length;});
+  var BASE = '../famai/shanhe.html';
+  function skip(node){
+    var p = node.parentElement;
+    while(p && p !== document.body){
+      var tag = p.tagName;
+      if(tag==='A'||tag==='CODE'||tag==='PRE'||tag==='BLOCKQUOTE') return true;
+      var cls = p.getAttribute ? (p.getAttribute('class')||'') : '';
+      if(/\b(q|quote|cite-card|lic)\b/.test(cls)) return true;
+      p = p.parentElement;
+    }
+    return false;
+  }
+  function linkify(){
+    var root = document.getElementById('article-root');
+    if(!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var edits = [];
+    var tn;
+    while((tn = walker.nextNode())){
+      if(skip(tn)) continue;
+      var text = tn.textContent;
+      for(var i=0;i<NAMES.length;i++){
+        var nm = NAMES[i], pos = text.indexOf(nm);
+        if(pos < 0) continue;
+        edits.push({node:tn, name:nm, pid:MAP[nm], pos:pos});
+        break;
+      }
+    }
+    for(var j=edits.length-1;j>=0;j--){
+      var e = edits[j];
+      var t = e.node.textContent;
+      var idx = t.indexOf(e.name);
+      if(idx < 0) continue;
+      var before = t.slice(0, idx), after = t.slice(idx + e.name.length);
+      var a = document.createElement('a');
+      a.href = BASE + '?master=' + e.pid;
+      a.className = 'lin-deeplink';
+      a.title = '在山河法脉地图中展开 ' + e.name;
+      a.textContent = e.name;
+      var frag = document.createDocumentFragment();
+      if(before) frag.appendChild(document.createTextNode(before));
+      frag.appendChild(a);
+      if(after) frag.appendChild(document.createTextNode(after));
+      e.node.parentNode.replaceChild(frag, e.node);
+    }
+    if(edits.length) console.log('[lin-deeplink] linked %d mentions' % edits.length);
+  }
+  if(document.readyState==='complete') setTimeout(linkify,100);
+  else window.addEventListener('load', function(){ setTimeout(linkify,100); });
+})();
+</script>
+<style>
+.lin-deeplink{color:var(--gold,#b8863c);text-decoration:none;border-bottom:1px dashed var(--gold,#b8863c);cursor:pointer;font-weight:600}
+.lin-deeplink:hover{color:var(--red,#a83a24);border-bottom-color:var(--red,#a83a24)}
+</style>
 
 <script>
 var ARTICLE = {"id": "nanyu", "file": "articles/nanyu.html", "title": "南予其时", "title_sub": "感悟 · 疑情（预留栏目 · 待补）", "icon": "🍊", "version": "占位 · 内容待后续补入", "meta": "本栏目预留，用于专门收录南予的修行感悟与疑情类文章；非学术对读，而是随行随记的心得与参究之问，后续陆续补入。", "doc": "docs/随笔参考/南予其时.md", "doc_md": "# 南予其时 · 感悟与疑情\n\n> **EN对应 · Nanyu Qishi — Reflections & Notes of Doubt**\n> A reserved column for personal cultivation reflections and notes of doubt (疑情). This is not scholarly dialogue, but notes taken along the way; entries will be added over time.\n\n## 栏目说明 · About This Column\n\n本栏目为**预留位置**，用于专门收录南予的**修行感悟**与**疑情参究**类文字。\n\n此类内容与「前沿对话」各域的学术性对读不同，属随行随记的心得、机锋之问与未决之疑，重在存其当时之念，以备日后反观。相关文稿将由后续专门补入，本篇暂为栏目占位。\n\n**接入方式（编者备忘）**：新增此类文章时，在 `data/translation/standalone_articles.yaml` 的 `others` 项下登记（自拟 `id`，`back.tab` 置为 `frontier`），即自动生成 `web/demo/articles/<id>.html` 独立页面；随后可在本页「本栏目篇目」小节补充其链接。\n\n> **EN对应 ·** This column is a **placeholder** reserved for Nanyu's writings of a personal nature — cultivation reflections (感悟) and incubated doubts (疑情). Unlike the scholarly readings under the other frontier domains, these are notes taken along the way: glimpses, probing questions, and unresolved doubts, kept so that they may be looked back upon in time. Manuscripts will be added in later revisions; this page stands as the column's placeholder for now.\n\n## 本栏目篇目 · Entries in This Column\n\n*（暂无 · 待后续补入）*\n\n> **EN对应 ·** *(None yet — to be added.)*\n\n---\n\n> 编者注：本栏目内容与作者个人修行体验相关，仅供参考与留存，不构成任何教理判摄或学术结论。\n", "data_source": "", "data_pool": "practice", "back": {"tab": "frontier", "view": "nanyu", "label": "前沿对话 · 南予其时"}, "updated_at": ""};
