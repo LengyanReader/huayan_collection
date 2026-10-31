@@ -229,6 +229,17 @@ else:
                             fail('G.1 shanhe.html 缺 d3-tree 升级标记: %s（renderTree 未跃迁）' % m1)
                     ok('G.1 单祖子树 d3-hierarchy：hierarchy/tree.nodeSize/zoom/折叠/lin-g/elbow 连线齐备')
 
+                    # ── G.2 全法脉网络总览 d3-force·静态侧证 ──
+                    for m2 in ['id="lineage-net-svg"', 'id="net-reset"', 'DS.forceSimulation',
+                               'forceManyBody', "'net-node'", "'net-link'", '全法脉网络边表']:
+                        if m2 not in sh:
+                            fail('G.2 shanhe.html 缺网络总览标记: %s' % m2)
+                    _nl2 = _net.get('links', [])
+                    _tri = set(e.get('rel') for e in _nl2)
+                    if not {'MASTER_OF', 'INFLUENCED', 'CONTEMPORARY'} <= _tri:
+                        fail('G.2 lineage_net 未同时含三类边（实：%s）' % _tri)
+                    ok('G.2 全法脉网络 d3-force：lineage-net-svg 容器·力导向·三边型·静态兜底边表在场')
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:

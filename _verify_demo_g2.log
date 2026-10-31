@@ -1,0 +1,161 @@
+Verifying C:\DA_Practice\huayan_collection\web\demo\index.html
+
+  OK:   index.html (7,863 bytes)
+  OK:   index: starts with <!DOCTYPE html>
+  OK:   index: ends with </html>
+  OK:   famai shell: routes lineage subpage + registry provenance present
+  OK:   F.3 person-chronicle 5τÑû/33τ½Ö┬╖sourced28ΘÇÉσ¡ùσ£¿σ£║┬╖pending5µáçπÇöσ╛àµá╕πÇò
+  OK:   F.4 σÅ¬Φ»╗µèòσ╜▒ S3Φªüσ£░12┬╖S4τÑûσ╕ê18/Θ¬¿σ╣▓5Σ╕û┬╖S5Φë▓σ¥ù6┬╖µ£¬σà╖σÉìσ╝ƒσ¡É7µáçπÇöσ╛àµá╕πÇò┬╖σÅìσÉæΦ╛╣σ╖▓σëö
+  OK:   F.5 ΦºåΦºëµîüσ╣│ µ╗æΦ╜¿500ΓÇô900┬╖µÉ£τ┤ó/tooltip┬╖µ£▒τ║óGhost┬╖τ╛èτÜ«τ║╕σ¡ùµáê┬╖µû¡τé╣σè¿τö╗┬╖σ╣┤σÅ╖Φ»Üσ«₧πÇöσ╛àµá╕πÇò
+  OK:   F.6a µ│òΦäëµù╢Θù┤σîû g-linmap┬╖toggle┬╖person_geo 171 µ¥í┬╖τÑûσ╕ê geo Φªåτ¢û 18/18
+  OK:   G.0 D3 v7.9.0 σåàΦüö┬╖lineage_net σÅ¬Φ»╗µèòσ╜▒ 80 τé╣/97 Φ╛╣/22 µö»┬╖Θ¢╢Φç¬τÄ»┬╖Θ¢╢ΦçåΘÇáΦ╛╣
+  OK:   G.1 σìòτÑûσ¡Éµáæ d3-hierarchy∩╝Ühierarchy/tree.nodeSize/zoom/µèÿσÅá/lin-g/elbow Φ┐₧τ║┐Θ╜Éσñç
+  OK:   G.2 σà¿µ│òΦäëτ╜æτ╗£ d3-force∩╝Ülineage-net-svg σ«╣σÖ¿┬╖σè¢σ»╝σÉæ┬╖Σ╕ëΦ╛╣σ₧ï┬╖Θ¥ÖµÇüσà£σ║òΦ╛╣Φí¿σ£¿σ£║
+  OK:   F.2 shanhe subpage + license page complete (registry live verified)
+  OK:   index: links to all 6 tab pages
+
+Verifying tabs/lineage.html (µ│òΦäëΣ╝áµë┐)
+  OK:   lineage: DOCTYPE
+  OK:   lineage: ends with </html>
+  OK:   lineage: div balanced (59)
+  OK:   lineage: var GRAPH embedded
+  OK:   lineage: size 423,129 bytes
+Verifying tabs/gap.html (σìÄΣ╕Ñµûçτî«)
+  OK:   gap: DOCTYPE
+  OK:   gap: ends with </html>
+  OK:   gap: div balanced (252)
+  OK:   gap: var GAP embedded
+  OK:   gap: sidebar nav links (11)
+  OK:   gap: size 2,626,027 bytes
+Verifying tabs/jiaoxing.html (µòÖµ╡╖ΦíîΣ║æ)
+  OK:   jiaoxing: DOCTYPE
+  OK:   jiaoxing: ends with </html>
+  OK:   jiaoxing: div balanced (358)
+  OK:   jiaoxing: var PRACTICE_DATA embedded
+  OK:   jiaoxing: sidebar nav links (14)
+  OK:   jiaoxing: size 2,709,434 bytes
+Verifying tabs/frontier.html (σëìµ▓┐σ»╣Φ»¥)
+  OK:   frontier: DOCTYPE
+  OK:   frontier: ends with </html>
+  OK:   frontier: div balanced (95)
+  OK:   frontier: var FRONTIER_DATA embedded
+  OK:   frontier: sidebar nav links (8)
+  OK:   frontier: size 2,566,230 bytes
+Verifying tabs/cosmology.html (Σ╕ûΣ╕╗σªÖΣ╕Ñ)
+  OK:   cosmology: DOCTYPE
+  OK:   cosmology: ends with </html>
+  OK:   cosmology: div balanced (110)
+  OK:   cosmology: var SPIRIT_DATA embedded
+  OK:   cosmology: sidebar nav links (5)
+  OK:   cosmology: size 2,574,816 bytes
+Verifying tabs/spirit.html (τü╡µÇºΣ╗üµ£¼)
+  OK:   spirit: DOCTYPE
+  OK:   spirit: ends with </html>
+  OK:   spirit: div balanced (92)
+  OK:   spirit: var SPIRIT_DATA embedded
+  OK:   spirit: sidebar nav links (7)
+  OK:   spirit: size 2,565,644 bytes
+  OK:   haiyun evidence: µ¥íτ¢«∩╝Ü38 µ¥í∩╝êstrong 23∩╝Åmedium 10∩╝Ålimit 5∩╝ë
+  OK:   haiyun draft: ALL CHECKS PASSED
+  OK:   haiyun: σÅìσÉæΘ¬îΦ»ü 22/22 σªéµ£ƒσñ▒Φ┤Ñ
+  OK:   t1 quote: ALL CHECKS PASSED
+  OK:   t1 bikan: ALL CHECKS PASSED
+  OK:   t1: σÅìσÉæΘ¬îΦ»ü 8/8 σªéµ£ƒσñ▒Φ┤Ñ
+  OK:   jj Θù¿τªü: ALL CHECKS PASSED∩╝êL.111 Σ╣¥Σ╣¥ΦÅ»σÜ┤ OCR τ½ïσåî∩╝ë
+  OK:   jj σÅìσÉæ: σÅìσÉæΘ¬îΦ»ü∩╝Ü8/8 σªéµ£ƒµìòΦÄ╖
+
+Verifying articles/ (standalone article pages)
+
+  OK:   articles/index: catalog title
+  OK:   articles/index: links to 65 article pages
+  OK:   articles/index: all hrefs resolve
+  OK:   articles updated_at: 37 µ¥íσú░µÿÄτÜåΣ╕║ ISO YYYY-MM-DD
+  OK:   articles updated_at: µùáµ£¬µ│¿σåîΦÇîµÿ╛µù╢Θù┤ΦÇà
+  OK:   articles updated_at: 37 µ¥íσú░µÿÄΣ╕ÄΣ║ºτë⌐Σ╕ÇΣ╕Çσ»╣Φ┤ª
+  OK:   articles/ai-wisdom-alignment.html (109,030 bytes, all checks)
+  OK:   articles/avatamsaka-studies.html (260,120 bytes, all checks)
+  OK:   articles/buddhist-ai.html (220,387 bytes, all checks)
+  OK:   articles/chan-beyond.html (286,952 bytes, all checks)
+  OK:   articles/chan-traces.html (95,859 bytes, all checks)
+  OK:   articles/faxiang.html (77,542 bytes, all checks)
+  OK:   articles/firsthui-jiaopan.html (61,660 bytes, all checks)
+  OK:   articles/haiyun-lectures.html (278,737 bytes, all checks)
+  OK:   articles/huayan-asamkhya-pin.html (59,390 bytes, all checks)
+  OK:   articles/huayan-chufaxin-gongde-pin.html (161,646 bytes, all checks)
+  OK:   articles/huayan-fanxing-pin.html (108,807 bytes, all checks)
+  OK:   articles/huayan-fobusiyi-pin.html (72,353 bytes, all checks)
+  OK:   articles/huayan-guangmingjue-pin.html (128,200 bytes, all checks)
+  OK:   articles/huayan-jingxing-pin.html (118,653 bytes, all checks)
+  OK:   articles/huayan-lishijian-pin.html (128,804 bytes, all checks)
+  OK:   articles/huayan-mingfa-pin.html (160,312 bytes, all checks)
+  OK:   articles/huayan-putanxing-pin.html (60,243 bytes, all checks)
+  OK:   articles/huayan-rlchuxian-pin.html (83,198 bytes, all checks)
+  OK:   articles/huayan-series-outline.html (73,504 bytes, all checks)
+  OK:   articles/huayan-shengxumishanding-pin.html (120,258 bytes, all checks)
+  OK:   articles/huayan-shengyemotiangong-pin.html (69,345 bytes, all checks)
+  OK:   articles/huayan-shidi-pin.html (55,164 bytes, all checks)
+  OK:   articles/huayan-shiding-pin.html (52,841 bytes, all checks)
+  OK:   articles/huayan-shihuiuxiang-pin.html (146,922 bytes, all checks)
+  OK:   articles/huayan-shiren-pin.html (52,798 bytes, all checks)
+  OK:   articles/huayan-shishenxiang-pin.html (64,178 bytes, all checks)
+  OK:   articles/huayan-shitong-pin.html (52,766 bytes, all checks)
+  OK:   articles/huayan-shiwujincang-pin.html (62,406 bytes, all checks)
+  OK:   articles/huayan-shixing-pin.html (67,912 bytes, all checks)
+  OK:   articles/huayan-shizhu-pin.html (144,254 bytes, all checks)
+  OK:   articles/huayan-shouliang-pin.html (54,986 bytes, all checks)
+  OK:   articles/huayan-sidi-pin.html (124,117 bytes, all checks)
+  OK:   articles/huayan-studies.html (72,105 bytes, all checks)
+  OK:   articles/huayan-suihao-pin.html (57,865 bytes, all checks)
+  OK:   articles/huayan-wenming-pin.html (136,472 bytes, all checks)
+  OK:   articles/huayan-xianshou-pin.html (173,609 bytes, all checks)
+  OK:   articles/huayan-xumidingjizan-pin.html (130,817 bytes, all checks)
+  OK:   articles/huayan-yemogongzhongjizan-pin.html (70,844 bytes, all checks)
+  OK:   articles/huayan-zhuchu-pin.html (56,197 bytes, all checks)
+  OK:   articles/huazang-shijie.html (137,372 bytes, all checks)
+  OK:   articles/jj-huayan-collation.html: skip_html σàÑσÅú (external builder┬╖3,140,477B) ΓÇö DOCTYPE/µö╢σ░╛/Σ╜ôΘçÅ OK
+  OK:   articles/master-chengguan.html (103,631 bytes, all checks)
+  OK:   articles/master-dushun.html (97,178 bytes, all checks)
+  OK:   articles/master-fazang.html (88,473 bytes, all checks)
+  OK:   articles/master-litongxuan.html (80,975 bytes, all checks)
+  OK:   articles/master-mengcan.html (68,954 bytes, all checks)
+  OK:   articles/master-zhiyan.html (81,914 bytes, all checks)
+  OK:   articles/master-zongmi.html (119,129 bytes, all checks)
+  OK:   articles/mimi.html (68,170 bytes, all checks)
+  OK:   articles/mirror-mind.html (210,337 bytes, all checks)
+  OK:   articles/nanyu.html (52,710 bytes, all checks)
+  OK:   articles/panjiao.html (168,588 bytes, all checks)
+  OK:   articles/piluzhena.html (132,274 bytes, all checks)
+  OK:   articles/puxian-sanmei.html (122,565 bytes, all checks)
+  OK:   articles/ru-lai-xian-xiang.html (235,440 bytes, all checks)
+  OK:   articles/rulai-minghao.html (137,829 bytes, all checks)
+  OK:   articles/sanshiqi.html (66,655 bytes, all checks)
+  OK:   articles/shijie-chengjiu.html (127,848 bytes, all checks)
+  OK:   articles/shizhu-miaoyan.html: µò░µì«τºæσ¡ª schema σÑæτ║ª 23 Θö«Φ╖»σ╛äΘ╜Éσñç
+  OK:   articles/shizhu-miaoyan.html (2,039,124 bytes, all checks)
+  OK:   articles/tiantai.html (69,693 bytes, all checks)
+  OK:   articles/tibetan-avatamsaka-alignment-demo.html: skip_html σàÑσÅú (external builder┬╖31,378B) ΓÇö DOCTYPE/µö╢σ░╛/Σ╜ôΘçÅ OK
+  OK:   articles/vijnana-mind.html (221,786 bytes, all checks)
+  OK:   articles/yikong.html (77,299 bytes, all checks)
+  OK:   articles/yongjia-xuanjue.html (76,910 bytes, all checks)
+  OK:   articles/zhenwei.html (104,782 bytes, all checks)
+  OK:   tabs: all article-chip hrefs resolve
+  OK:   gap sidebar: 8 article entries link straight to standalone pages
+  OK:   gap: articlePageHref helper present
+
+Verifying built JavaScript syntax
+  OK:   js/common.js: syntax OK
+  OK:   articles/shizhu-miaoyan.html: data-science render ΓÇö OK  renderArticleBI: 196,882 chars, 14 sections, 6 svg, no leaks
+  OK:   articles/ru-lai-xian-xiang.html: story-comic render ΓÇö OK: 10µïì ┬╖ 3σ¢╛ ┬╖ 64 en-line
+  OK:   articles/shizhu-miaoyan.html: story-comic render ΓÇö OK: 4σ╣ò/26µá╝ ┬╖ 11µïì ┬╖ 4σ¢╛ ┬╖ 229 en-line
+  OK:   story-comic reverse ΓÇö σÅìσÉæΘ¬îΦ»ü∩╝Ü21/21 σªéµ£ƒσñ▒Φ┤Ñ + Σ╕ñµ¡úµ£¼ΘÇÜΦ┐ç
+  OK:   articles/shizhu-miaoyan.html: flow render ΓÇö OK: flow render - 40 classes, 414 members, 5 contiguous group bands; diagram has 40 cells + 5 bands + 4 arrows; cats/leaders present in DOM AND verbatim in T279 (no-loss); cats/leaders/vows/members all verbatim in T279; static (no interaction); no leaks
+  OK:   articles/ru-lai-xian-xiang.html: data-science render ΓÇö verify_data_science_render[ru-lai-xian-xiang]: ALL CHECKS PASSED
+  OK:   articles/shizhu-miaoyan.html: data-science render ΓÇö verify_data_science_render[shizhu-miaoyan]: ALL CHECKS PASSED
+  OK:   data-science reverse ΓÇö σÅìσÉæΘ¬îΦ»üΘÇÜΦ┐ç∩╝Ü50/50 σªéµ£ƒσñ▒Φ┤Ñ + Σ╕ñµ¡úµ£¼ΘÇÜΦ┐ç
+  OK:   shizhu: Σ╕ôΣ╣ªΘù¿τªü ΓÇö ALL CHECKS PASSED ΓÇöΓÇö πÇèΣ╕ûΣ╕╗σªÖΣ╕ÑσôüπÇïΘù¿τªüσà¿τ╗┐
+  OK:   shizhu: σÅìσÉæΘ¬îΦ»ü ΓÇö σÅìσÉæΘ¬îΦ»ü 10/10 σªéµ£ƒσñ▒Φ┤Ñ
+  OK:   ru-lai: Σ╕ôΣ╣ªΘù¿τªü ΓÇö ALL CHECKS PASSED ΓÇöΓÇö πÇèσªéµ¥ÑτÄ░τ¢╕σôüπÇïΘù¿τªüσà¿τ╗┐
+  OK:   ru-lai: σÅìσÉæΘ¬îΦ»ü ΓÇö σÅìσÉæΘ¬îΦ»ü 39/39 σªéµ£ƒσñ▒Φ┤Ñ
+
+========================================
+Γ£à ALL CHECKS PASSED
