@@ -558,6 +558,23 @@ others:
   views:
   - avatamsaka-studies
 
+- id: huayan-shihuiuxiang-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 28
+  icon: 🏔
+  title: 九九华严第二十三品 十回向品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Twenty-Three: The Ten Dedications'
+  title_sub: 第五会首品·兜率天宫·卷二十三～三十三·品文75744（全经最大单一品·跨十一卷）·金刚幢菩萨智光三昧说十回向（救护众生→法界无量）·L.257骨架成文·深化批L.258–L.261预登记
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第五会_兜率天宫_回向位/华严经细读_第二十三部_十回向品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
+
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
