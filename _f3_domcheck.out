@@ -1,0 +1,8 @@
+[1] persons=5 stations=33 sourced=28 pending=5
+[2] sourced-quote verbatim checks: PASS
+[3] station-level πÇöσ╛àµá╕πÇò in fallback = 5 (expect 5)
+[4] S2 µ£║Σ╗╢ + σ╝òµûçσìíµá╖σ╝Å in DOM: PASS
+[5] Θ¢╢σ¥Éµáçµ╖▒Θô╛σìÅΦ««(person/station Φ»¡Σ╣ëσÅé┬╖Σ╕ìσÉ½τ╗Åτ║¼σ║ª): PASS
+[6] µèòσ╜▒σ¥ÉµáçΦ╢èτòî: µùá
+
+ALL F.3 DOM/σ¢₧µ║É CHECKS PASSED  (miss=0 verbatim ┬╖ Σ┐íµü»τäíµìƒ ┬╖ S2µ£║Σ╗╢ ┬╖ Θ¢╢σ¥ÉµáçURL)

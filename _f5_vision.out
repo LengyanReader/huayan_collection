@@ -1,0 +1,19 @@
+ΓÇö µò░µì«σ»åσ║ª ΓÇö
+  year_snapshots: [500, 600, 700, 800, 900]
+  polity_density: {'500': 41, '600': 45, '700': 61, '800': 48, '900': 58}
+  ghost_toggle: True
+  place_markers: 30
+  temple_markers: 12
+  person_route_nodes: 0
+  lg_nodes: 11
+  lg_edges: 17
+  coastline_paths: 76
+  keyframes: 0
+  transitions: 0
+  animations: 0
+  media_queries: 0
+  font_stack: "Segoe UI", "Microsoft YaHei", sans-serif
+  has_timeline_slider: False
+  year_buttons: 5
+  svg_filters: 0
+screenshots: _f5_shot_default.png ┬╖ _f5_shot_800ghost.png

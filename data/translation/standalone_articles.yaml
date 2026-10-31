@@ -592,6 +592,37 @@ others:
   views:
   - avatamsaka-studies
 
+- id: huayan-shiding-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 30
+  icon: 🔮
+  title: 九九华严第二十五品 十定品之拼读
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十五部_十定品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+- id: huayan-shitong-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 31
+  icon: 👁
+  title: 九九华严第二十六品 十通品之拼读
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十六部_十通品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+- id: huayan-shiren-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 32
+  icon: 🕊
+  title: 九九华严第二十七品 十忍品之拼读
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十七部_十忍品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu

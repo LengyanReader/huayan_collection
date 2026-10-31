@@ -1,0 +1,62 @@
+persons container type: dict
+sample record keys: ['name', 'color', 'route', 'source', 'verified']
+sample person_001: {"name": "杜顺·华严初祖", "color": "#b8863c", "route": [{"y": 557, "lat": 34.3, "lng": 108.9, "label": "诞于雍州万年"}, {"y": 575, "lat": 34.3, "lng": 108.9, "label": "年十八出家于因圣寺"}, {"y": 600, "lat": 34.1, "lng": 108.6, "label": "终南山至相寺修行"}, {"y": 620, "lat": 34.1, "lng": 108.6, "label": "著《法界观门》开华严观法"}, {"y": 6
+total persons: 178
+
+MASTER_OF distinct ids: 53
+ resolvable names: 47  MISSING: 6
+ MISSING ids: ['person_033', 'person_034', 'person_043', 'person_104', 'person_130', 'person_131']
+ id->name (present): {"person_000b": "世亲·唯识宗祖师·十地经论造者", "person_001": "杜顺·华严初祖", "person_002": "智俨·华严二祖", "person_003": "法藏·贤首国师", "person_004": "澄观·清凉国师", "person_005": "宗密·圭峰禅师", "person_010": "义天·高丽华严初祖·大觉国师", "person_011": "净源·宋代华严中兴之祖", "person_012": "月霞·近现代华严复兴先驱", "person_013": "常惺·月霞系·华严大学校长", "person_015": "南亭·华严莲社第二任住持", "person_016": "成一·华严莲社第三任住持·华严专宗学院创办人", "person_017": "贤度·华严莲社第六任住持·女性法嗣", "person_018": "智光·华严莲社首任住持", "person_019": "梦参·临济宗46代·华严弘扬巨擘", "person_031": "应慈·近代华严座主", "person_032": "了中·华严莲社第四任", "person_041": "钦因·贤首宗41世·福慧寺住持", "person_042": "海云继梦·当代华严传承者·三脉汇一", "person_044": "真禅·华严禅实践者", "person_050": "审祥·日本华严宗初传", "person_061": "义湘·海东华严初祖", "person_070": "慧苑·法藏弟子", "person_090": "慧光·地论师南道派始祖", "person_092": "持松·月霞系法嗣", "person_102": "无著·瑜伽行派创始人", "person_111": "玄奘西行求法·丝绸之路", "person_115": "不空·开元三大士", "person_120": "善无畏·开元三大士之密教始祖", "person_121": "金刚智·开元三大士之金刚界", "person_122": "一行·大日经疏造者", "person_123": "慧果·两部密法传持", "person_124": "空海·日本真言宗开祖", "person_126": "成观法师·华严42世真言53世", "person_132": "普拉梵纳德·现代大乘瑜伽行法开祖", "person_133": "克利普梵纳德·大乘瑜伽行法继传", "person_134": "胜师子王菩萨·LIFE Mission创立者", "person_140": "罗摩克里希纳·近代印度灵性复兴之源", "person_141": "辨喜·吠檀多西传第一人", "person_f01": "思元慧三·福慧寺开山", "person_f02": "体化性果·福慧寺三代", "person_j01": "良弁·东大寺开山", "person_j02": "实忠·东大寺继任", "person_j03": "等定·东大寺学僧", "person_j05": "观贤·东大寺华严中兴", "person_x01": "虚云老和尚·禅宗泰斗", "person_x02": "净慧长老·生活禅"}
+
+=== focus-lineage edges (master->disciple w/ names) ===
+ [lineage_hw5 / 华严五祖]
+   杜顺·华严初祖(person_001) -MASTER_OF-> 智俨·华严二祖(person_002)  杜顺传法于智俨
+   智俨·华严二祖(person_002) -MASTER_OF-> 法藏·贤首国师(person_003)  智俨传法于法藏
+   法藏·贤首国师(person_003) -INFLUENCED-> 澄观·清凉国师(person_004)  法藏后传。澄观私淑法藏之学
+   澄观·清凉国师(person_004) -MASTER_OF-> 宗密·圭峰禅师(person_005)  澄观传法于宗密
+   法藏·贤首国师(person_003) -MASTER_OF-> 审祥·日本华严宗初传(person_050)  法藏传法于审祥
+   ?person_021(person_021) -INFLUENCED-> 钦因·贤首宗41世·福慧寺住持(person_041)  高原明昱(25世)法脉传至钦因(41世)
+   法藏·贤首国师(person_003) -MASTER_OF-> 慧苑·法藏弟子(person_070)  
+   慧苑·法藏弟子(person_070) -INFLUENCED-> 澄观·清凉国师(person_004)  
+   杜顺·华严初祖(person_001) -INFLUENCED-> 元晓·新罗华严学僧(person_060)  
+   ?person_021(person_021) -INFLUENCED-> 续法·清代华严集大成者(person_080)  
+   智俨·华严二祖(person_002) -MASTER_OF-> 义湘·海东华严初祖(person_061)  
+   慧光·地论师南道派始祖(person_090) -INFLUENCED-> 杜顺·华严初祖(person_001)  
+   净源·宋代华严中兴之祖(person_011) -INFLUENCED-> 子璿·宋代华严学者(person_091)  
+   子璿·宋代华严学者(person_091) -INFLUENCED-> 义天·高丽华严初祖·大觉国师(person_010)  
+   ?person_104(person_104) -MASTER_OF-> 慧光·地论师南道派始祖(person_090)  
+   宗密·圭峰禅师(person_005) -MASTER_OF-> 澄观·清凉国师(person_004)  
+ [lineage_huayen_lotus / 华严莲社（智光→南亭→成一→贤度）]
+   智光·华严莲社首任住持(person_018) -MASTER_OF-> 南亭·华严莲社第二任住持(person_015)  智光(1st)传南亭(2nd)
+   南亭·华严莲社第二任住持(person_015) -MASTER_OF-> 成一·华严莲社第三任住持·华严专宗学院创办人(person_016)  南亭(2nd)传成一(3rd)
+   成一·华严莲社第三任住持·华严专宗学院创办人(person_016) -MASTER_OF-> 了中·华严莲社第四任(person_032)  成一(3rd)传了中(4th)
+   了中·华严莲社第四任(person_032) -MASTER_OF-> ?person_033(person_033)  了中(4th)传净海(5th)
+   ?person_033(person_033) -MASTER_OF-> 贤度·华严莲社第六任住持·女性法嗣(person_017)  净海(5th)传贤度(6th)
+   贤度·华严莲社第六任住持·女性法嗣(person_017) -MASTER_OF-> ?person_034(person_034)  贤度(6th)传明度(7th)
+ [lineage_japan / 日本华严]
+   法藏·贤首国师(person_003) -MASTER_OF-> 审祥·日本华严宗初传(person_050)  法藏传法于审祥
+   审祥·日本华严宗初传(person_050) -MASTER_OF-> 良弁·东大寺开山(person_j01)  
+   良弁·东大寺开山(person_j01) -MASTER_OF-> 实忠·东大寺继任(person_j02)  
+   实忠·东大寺继任(person_j02) -MASTER_OF-> 等定·东大寺学僧(person_j03)  
+   等定·东大寺学僧(person_j03) -INFLUENCED-> 圣宝·醍醐寺开山(person_j04)  
+   等定·东大寺学僧(person_j03) -MASTER_OF-> 观贤·东大寺华严中兴(person_j05)  
+   观贤·东大寺华严中兴(person_j05) -INFLUENCED-> 明惠·高山寺开山(person_j06)  
+   明惠·高山寺开山(person_j06) -INFLUENCED-> 凝然·日本华严教学集大成(person_j07)  
+   审祥·日本华严宗初传(person_050) -MASTER_OF-> 审祥·日本华严宗初传(person_050)  审祥赴日，于东大寺弘传华严
+ [lineage_yuexia / 月霞系（华严大学→应慈→真禅）]
+   月霞·近现代华严复兴先驱(person_012) -MASTER_OF-> 常惺·月霞系·华严大学校长(person_013)  月霞传法于常惺
+   月霞·近现代华严复兴先驱(person_012) -MASTER_OF-> 应慈·近代华严座主(person_031)  月霞师弟应慈，共弘华严
+   应慈·近代华严座主(person_031) -MASTER_OF-> 真禅·华严禅实践者(person_044)  应慈传法于真禅
+ [lineage_贤首宗高原法系 / 贤首宗高原法系]
+   思元慧三·福慧寺开山(person_f01) -MASTER_OF-> 钦因·贤首宗41世·福慧寺住持(person_041)  
+   钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF-> 体化性果·福慧寺三代(person_f02)  
+ [lineage_xianshou_gaoyuan / 贤首宗高原法系（钦因→海云继梦）]
+   ?person_021(person_021) -INFLUENCED-> 钦因·贤首宗41世·福慧寺住持(person_041)  高原明昱(25世)法脉传至钦因(41世)
+   钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF-> 海云继梦·当代华严传承者·三脉汇一(person_042)  钦因(41世)2008年传衣钵予海云继梦(42世)
+   钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF-> ?person_043(person_043)  钦因另传体佛法师等法嗣
+   钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF-> 成观法师·华严42世真言53世(person_126)  钦因(41世)2010年4月24日传华严兼慈恩法脉予成观法师(42世)
+ [lineage_goryeo / 高丽华严]
+   净源·宋代华严中兴之祖(person_011) -MASTER_OF-> 义天·高丽华严初祖·大觉国师(person_010)  净源传法于义天
+   法藏·贤首国师(person_003) -INFLUENCED-> 净源·宋代华严中兴之祖(person_011)  法藏学说是净源华严教学源头
+   净源·宋代华严中兴之祖(person_011) -INFLUENCED-> 均如·高丽华严学僧(person_062)  
+   均如·高丽华严学僧(person_062) -INFLUENCED-> 义天·高丽华严初祖·大觉国师(person_010)  

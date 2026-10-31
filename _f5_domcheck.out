@@ -1,0 +1,14 @@
+[1] µ╗æΦ╜¿ min=500 max=900 ΓåÆ tl-year=800 activeBtn=800
+    tl-meta: Σ╛¥ 800 σ╣┤µ£ÇΦ┐æµû¡Σ╗úσ┐½τàº ┬╖ σî║σåà 48 µö┐Σ╜ô ┬╖ σ╕¥σÅ╖/σ╣┤σÅ╖πÇöσ╛àµá╕┬╖µû¡Σ╗úσ║òσ¢╛µ£¬σÉ½πÇò
+[2] #g-polity transition = opacity 0.45s | keyframes = ['nodeIn']
+[3] ghost stroke = #a83a24
+[4] tooltip: {'shownPolity': True, 'shownTemple': True, 'html': '<b>τ╗êσìùσ▒▒Φç│τ¢╕σ»║</b><br>ΘÜïσöÉ ┬╖ σìÄΣ╕ÑΦªüσ£░ ┬╖ τé╣σç╗σ╝Çσ£░Φ░▒σìí'}
+[5] µÉ£τ┤óπÇîµ│òΦùÅπÇìσæ╜Σ╕¡: ['µ│òΦùÅ┬╖Φ┤ñΘªûσ¢╜σ╕êτÑûσ╕êΦíîΦ┐╣', 'µ│òΦùÅ┬╖Φ┤ñΘªûσ¢╜σ╕êµ│òσ╕ê┬╖µ│òΦäë'] ΓåÆ ΘÇëµ│òσ╕êσÉÄ lineage-select = person_003 µáæΦèéτé╣ = 11
+[5b] '/' ΦüÜτäª ΓåÆ activeElement = gs-input
+[6] body bg-image: radial-gradient(at 18% 8%, rgba(201, 178 | wrap font: "Songti SC", STSong, "Noto Serif CJK SC", "Source Han Serif 
+[7] 400px ΦºåσÅú #map-row flex-direction = column
+[8] σ¢₧σ╜Æ: {'templeRects': 12, 'chips': 6, 'personSel': True, 'url': '?master=person_003'}
+[0] pageerror=0 console.error=0
+[9] SSOT σÅ¬Φ»╗µ£¬σÅÿ: {'temple_directory.yaml': '43c5c5d03991', 'lineages.json': 'd66f1387e145', 'complete_lineage_chart.yaml': 'b4a74d81cccd', 'person_trajectories.yaml': '32b2467b00a1'}
+
+ALL F.5 VISUAL-PARITY HEADLESS CHECKS PASSED (µ╗æΦ╜¿┬╖σè¿τö╗┬╖µ£▒τ║óGhost┬╖tooltip┬╖µÉ£τ┤ó┬╖τ╛èτÜ«τ║╕┬╖σôìσ║öσ╝Å┬╖σ¢₧σ╜Æ┬╖Θ¢╢JSΘöÖ┬╖SSOTµ£¬µö╣)

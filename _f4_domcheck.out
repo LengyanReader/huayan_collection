@@ -1,0 +1,12 @@
+[1] SHANHE µèòσ╜▒: temples=12 masters=18 branches=6 backbone=5 trees=18
+[2] S3 #g-temple rect µáçΦ«░ = 12 (expect 12)
+[3] S4 Θ╗ÿΦ«ñµáæ: nodes=11 edges=17 inf(ΦÖÜτ║┐)=7 σ╛àµá╕Φèéτé╣=0 root=1 viewBox=0 0 924 388
+[4a] S5 σ¢╛Σ╛ï chip = 6 (expect 6)
+[4b] S5 ΘÜöτª╗ hover 'Θ½ÿΣ╕╜σìÄΣ╕Ñ': dim=22/28 ΓåÆ leaveσÉÄ dim=0
+[4c] S5 zoom viewBox: 0 0 924 388 ΓåÆ -8 -8.222478866577148 544.0864868164062 318.66693687438965
+[5a] S3 σ£░Φ░▒σìíσ¡ùµ«╡: {'temple': True, 'yan': True, 'shi': True, 'xindu': True, 'jju': True}
+[5b] σ╜ôσëì location.search = '?master=person_003&temple=t_huayan_002'
+[0] pageerror=0 console.error=0
+[6] SSOT σÅ¬Φ»╗µ£¬σÅÿ: {'temple_directory.yaml': '43c5c5d03991', 'lineages.json': 'd66f1387e145', 'complete_lineage_chart.yaml': 'b4a74d81cccd', 'person_trajectories.yaml': '32b2467b00a1'}
+
+ALL F.4 HEADLESS RUNTIME CHECKS PASSED  (S3σ£░Φ░▒σìí ┬╖ S4ΘÇÆσ╜Æµáæ ┬╖ S5ΘÜöτª╗zoom ┬╖ Θ¢╢σ¥ÉµáçURL ┬╖ Θ¢╢JSΘöÖ ┬╖ SSOTµ£¬µö╣)

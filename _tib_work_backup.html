@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藏汉英对读 · 大方广佛华严经（德格藏文本）初探</title>
+<style>
+body { font-family: "Noto Serif SC", serif; background: #f9f7f2; margin: 0; padding: 0; color: #2d2a26; }
+header { background: #3e352a; color: #f0e6d2; padding: 12px 20px; display: flex; align-items: center; gap: 16px; }
+header h1 { font-size: 1.3em; margin: 0; }
+.back-link { color: #d4b942; text-decoration: none; }
+main { max-width: 1900px; margin: 0 auto; padding: 20px; }
+.note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin: 16px 0; line-height: 1.8; }
+.alert { background: #ffeaa7; border-left: 4px solid #fdcb6e; padding: 12px; margin: 16px 0; line-height: 1.8; }
+table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 0.82em; table-layout: fixed; }
+th { background: #3e352a; color: #f0e6d2; padding: 10px 8px; text-align: left; border: 1px solid #3e352a; font-weight: 600; }
+td { padding: 10px 8px; border: 1px solid #d4c4b0; vertical-align: top; line-height: 1.9; word-break: break-word; }
+.tibetan { font-family: "Jomolhari", "Tibetan Machine Uni", serif; font-size: 1.02em; line-height: 2.05; }
+.missing { color: #999; font-style: italic; background: #f8f8f8; text-align: center; }
+.primary { background: #fff8e1; }
+.unique { background: #e8f4fd; }
+h2 { color: #3e352a; margin-top: 44px; padding-bottom: 8px; border-bottom: 2px solid #d4b942; }
+h3 { color: #5a4a3a; margin-top: 36px; }
+.source { font-size: 0.78em; color: #6b5d4f; font-style: italic; }
+.small { font-size: 0.75em; }
+</style>
+</head>
+<body>
+<header>
+  <a href="../index.html" class="back-link">← 返回首页</a>
+  <h1>藏汉英对读 · 大方广佛华严经（德格藏文本）初探</h1>
+</header>
+<main>
+  <div class="note">
+    <strong>说明：</strong>本页面采用<strong>并集</strong>视角展示藏汉英对读。对于藏译华严的对应汉译华严：<strong>藏本品1-39 对应部分以八十华严（T10n0279·唐·于阗国三藏实叉难陀译）为主；藏本品40《入法界品》（善财童子五十三参）以八十华严《入法界品》（T10n0279 卷39起，亦称《入法界品第三十九》）为主</strong>。六十华严（T09n0278）亦有《入法界品》，可作参照。<br/><br/>
+    <strong>底本与出处：</strong>藏文原文引自德格版《大方广佛华严经》（Toh 44，德格藏经 035-038，共45品）。汉译引自大正藏 T09n0278、T10n0279（CBETA）。涉及善财童子参访的段落，需<strong>明确标注出自第几参、参访的是哪一位善知识</strong>（依八十华严《入法界品》脉络）。藏译中文、藏译英文为本地模型（MITRA·9B）初译，未校对，仅供结构性对比。
+  </div>
+
+  <div class="alert">
+    <strong>校正说明：</strong>八十华严（T10n0279）本身即包含《入法界品》（品第三十九）长篇，记述文殊师利菩萨勅善财童子参访善知识、善财童子五十三参等情节，并非全然缺失。四十华严（T10n0293）亦有《入法界品》，但其传本结构与篇幅不同。需以具体卷页、品次、善知识名号为依据逐段比对。
+  </div>
+
+  <h2>一、并集对读示范（较长段落）</h2>
+
+  <h3>1.1 经首段落（藏本品1，德格 035）——以八十华严（T10n0279）为主</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 16%;">藏文原文（德格藏经 035，品1 开篇）</th>
+        <th style="width: 14%;">藏译→中文（MITRA·9B，未校对）</th>
+        <th style="width: 14%;">藏译→英文（MITRA·9B，未校对）</th>
+        <th style="width: 19%;">八十华严（T10n0279，卷1，品1）·主本</th>
+        <th style="width: 19%;">六十华严（T09n0278，卷1，品1）·参照</th>
+        <th style="width: 18%;">四十华严（T10n0293，《入法界品》）·参照</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tibetan">།འདི་སྐད་བདག་གིས་ཐོས་པའི་དུས་གཅིག་ན། ...<br/><span class="source">【德格 035，卷一，1b.1 起】</span></td>
+        <td>如是我闻，一时。世尊最初成正等觉，心具一切佛法，已圆满证悟，具足一切神通、神变、威力及证悟，遍知一切有情心心所。<br/><span class="source">【藏译新译】</span></td>
+        <td>Thus have I heard. At one time. The Blessed One had just attained unsurpassed, complete enlightenment...<br/><span class="source">【藏译新译（英）】</span></td>
+        <td class="primary">如是我聞：一時，佛在摩竭提國，阿蘭若法菩提場中，始成正覺。坐於普光明殿，入於一切佛法普光明三昧，...<br/><span class="source">【T10n0279，卷1，第1頁上欄】</span></td>
+        <td>如是我聞：一時，佛在摩竭提國菩提樹下，成佛未久。於普光明殿，坐蓮華藏師子之座，...<br/><span class="source">【T09n0278，卷1，第1頁上欄】</span></td>
+        <td class="missing">〔缺〕（四十华严以《入法界品》为主，非全经首品）<br/><span class="source">【T10n0293】</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>1.2 《入法界品》开篇与善财发心（藏本品40，德格 037）——以八十华严（T10n0279）为主</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 16%;">藏文原文（德格藏经 037，品40）</th>
+        <th style="width: 14%;">藏译→中文（MITRA·9B，未校对）</th>
+        <th style="width: 14%;">藏译→英文（MITRA·9B，未校对）</th>
+        <th style="width: 19%;">八十华严（T10n0279，《入法界品第三十九》）·主本</th>
+        <th style="width: 19%;">六十华严（T09n0278，《入法界品第三十四》）·参照</th>
+        <th style="width: 18%;">四十华严（T10n0293，《入法界品》）·参照</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tibetan">།དེ་ནས་བྱང་ཆུབ་སེམས་དཔའ་སངས་རྒྱས་ཀྱི་མཛད་པ་མཐའ་ཡས་པ་ལ་སྤྱོད་པའི་སྦྱོར་བས་བསྐུལ་ཏེ། ...<br/><span class="source">【德格 037，品40，41b 起】</span></td>
+        <td>尔时，菩萨善财童子为如来无边事业所摄持...<br/><span class="source">【藏译新译】</span></td>
+        <td>Then the Bodhisattva Sudhana...<br/><span class="source">【藏译新译（英）】</span></td>
+        <td class="primary">爾時，世尊在室羅筏國逝多林給孤獨園大莊嚴重閣，與菩薩摩訶薩五百人俱，普賢菩薩、文殊師利菩薩而為上首。爾時，文殊師利菩薩勅善財童子往詣善知識所，求菩薩行。<br/><span class="source">【T10n0279，卷39，p.319a06起（《入法界品第三十九之一》）】</span></td>
+        <td>（六十华严亦有《入法界品》，善財童子於此品中参访善知識，脉络大致相通，但分卷、分品及部分细节有别。）<br/><span class="source">【T09n0278，卷58-60，《入法界品第三十四》】</span></td>
+        <td>善財童子周遍十方，求善知識，欲聞佛法，修菩薩行。善財童子白諸善知識言：「我已發阿耨多羅三藐三菩提心，未知菩薩云何學菩薩行？云何修菩薩道？」<br/><span class="source">【T10n0293，《入法界品》】</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>1.3 五十三参示范（文殊勅参首位善知識）——需标注「第几参」「善知識」</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 16%;">藏文原文（德格藏经 037，品40）</th>
+        <th style="width: 14%;">藏译→中文（MITRA·9B，未校对）</th>
+        <th style="width: 14%;">藏译→英文（MITRA·9B，未校对）</th>
+        <th style="width: 19%;">八十华严（T10n0279）·主本（标注参次）</th>
+        <th style="width: 19%;">六十华严（T09n0278）·参照</th>
+        <th style="width: 18%;">四十华严（T10n0293）·参照</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tibetan">（对应文段待精确对位）<br/><span class="source">【德格 037，品40】</span></td>
+        <td>（藏译初稿）<br/><span class="source">【藏译新译】</span></td>
+        <td>（藏译初稿）<br/><span class="source">【藏译新译（英）】</span></td>
+        <td class="primary"><strong>第1参</strong>：善財童子承文殊師利菩薩教，往勝樂國妙峯山，參訪<strong>德雲比丘</strong>。<br/>「善男子！於此南方有一國土，名為：勝樂；其國有山，名曰：妙峯；於彼山中，有一比丘，名曰：德雲。汝可往問：菩薩云何學菩薩行？...」<br/><span class="source">【T10n0279，卷39，p.334a09-a13；善財童子見德雲比丘，頂禮問法】</span></td>
+        <td>（六十华严《入法界品》中亦有善財参访善知識的记载，具体参次、名号需逐段对比。）<br/><span class="source">【T09n0278，《入法界品第三十四》】</span></td>
+        <td>（四十华严《入法界品》亦述善財童子求善知識事，传本不同，需细致比对。）<br/><span class="source">【T10n0293】</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>二、藏译版本独有内容（汉译华严经无对应）</h2>
+
+  <div class="alert">
+    <strong>提示：</strong>德格藏译《大方广佛华严经》（Toh 44）共45品，而八十华严39品、六十华严34品。藏译多出品目，且在结构上与汉译颇有不同。以下标注需以逐段回源校勘为准。
+  </div>
+
+  <h3>2.1 藏译多出的品目（结构性差异）</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">藏本品序（德格）</th>
+        <th style="width: 30%;">藏本（德格目录相关信息）</th>
+        <th style="width: 25%;">对应汉译华严</th>
+        <th style="width: 25%;">备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>品1-39<br/><span class="source">【德格 035-037 前半】</span></td>
+        <td>与八十华严大体对应的诸品<br/><span class="source">【需逐品细对】</span></td>
+        <td>八十华严（T10n0279）品1-39大体对应<br/><span class="source">【T10n0279】</span></td>
+        <td>次第、分合、品名或有差异，需精确比对。<br/><span class="source">【结构性对比】</span></td>
+      </tr>
+      <tr>
+        <td>品40《入法界品》<br/><span class="source">【德格 037】</span></td>
+        <td>善财童子五十三参（记述参访善知识）<br/><span class="source">【德格 037】</span></td>
+        <td>八十华严《入法界品第三十九》（T10n0279 卷39起）、六十华严《入法界品第三十四》（T09n0278）、四十华严《入法界品》（T10n0293）<br/><span class="source">【均有《入法界品》】</span></td>
+        <td>汉译三本均收《入法界品》，但详略、分卷、某些情节表述有别。需以<strong>参次（第几参）及善知识名号</strong>逐一对位。<br/><span class="source">【需细致比对】</span></td>
+      </tr>
+      <tr>
+        <td>品41-45<br/><span class="source">【德格 037 后半-038】</span></td>
+        <td>藏译于《入法界品》后续的诸品<br/><span class="source">【德格目录】</span></td>
+        <td class="missing">〔在现存汉译三本（T09n0278、T10n0279、T10n0293）中大体无对应〕<br/><span class="source">【汉译均以《入法界品》为全经或相关部分之终】</span></td>
+        <td class="unique">藏译多出品目，构成藏汉华严传本结构上的重要差异。需逐段回源核实是否真无对应。<br/><span class="source">【结构性差异】</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.2 藏译独有段落示例（长段对比）</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 16%;">藏文原文（德格藏经 037，品42，节选）</th>
+        <th style="width: 14%;">藏译→中文（MITRA·9B，未校对）</th>
+        <th style="width: 14%;">藏译→英文（MITRA·9B，未校对）</th>
+        <th style="width: 19%;">八十华严（T10n0279，《入法界品》）·检索结果</th>
+        <th style="width: 19%;">六十华严（T09n0278，《入法界品》）·检索结果</th>
+        <th style="width: 18%;">四十华严（T10n0293，《入法界品》）·检索结果</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tibetan">（长段节选，待精确定位）<br/><span class="source">【德格 037，品42，约63a 起】</span></td>
+        <td>（藏译初稿）<br/><span class="source">【藏译新译】</span></td>
+        <td>（藏译初稿）<br/><span class="source">【藏译新译（英）】</span></td>
+        <td class="missing">〔初步检索未发现完全对应的长段；八十华严《入法界品》虽长，但藏本品42-45之叙述是否有对应需逐段比对〕<br/><span class="source">【T10n0279，《入法界品第三十九》】</span></td>
+        <td class="missing">〔未见明显对应〕<br/><span class="source">【T09n0278，《入法界品第三十四》】</span></td>
+        <td class="missing">〔未见明显对应〕<br/><span class="source">【T10n0293】</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>操作要求（针对善财五十三参）：</strong>凡涉及善财童子参访的段落，须在对读表中<strong>明确标注</strong>：（1）出自何经何卷何品；（2）<strong>第几参</strong>（参访次第）；（3）<strong>参访的善知识</strong>（全名及身份，如比丘、长者、童女、夜神、菩萨等）；（4）善知识所说法要简要或关键语句；（5）如有异同，逐项比对。<br/><br/>
+    <strong>说明：</strong>本表严格按照对应原则对位。藏译中英为MITRA·9B初译，未校对，仅供结构性对比。以上内容均需回源校勘后方能最终定论。
+  </div>
+</main>
+</body>
+</html>

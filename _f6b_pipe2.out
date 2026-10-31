@@ -1,0 +1,108 @@
+============================================================
+  σìÄΣ╕ÑΘí╣τ¢« ΓÇö σà¿Θô╛Φ╖»µò░µì«Σ╕ÇΦç┤µÇºµ╡ïΦ»ò
+============================================================
+
+[1] Persons completeness
+  PASS  All 95 graph.json persons in DB
+  PASS  All 95 personas.json persons in DB
+  PASS  DB has exactly 95 persons (union of sources)
+
+[2] Person field preservation
+  PASS  graph.json 'id' ΓåÆ DB 'source_id'
+  PASS  graph.json 'n' ΓåÆ DB 'name_zh'
+  PASS  graph.json 'ti' ΓåÆ DB 'title'
+  PASS  graph.json 'li' ΓåÆ DB 'lineage_branch'
+  PASS  graph.json 'multi' ΓåÆ DB 'multi_lineage'
+  PASS  graph.json 'tp' ΓåÆ DB 'type'
+  PASS  graph.json 'b' ΓåÆ DB 'birth_year'
+  PASS  graph.json 'd' ΓåÆ DB 'death_year'
+  PASS  graph.json 'dy' ΓåÆ DB 'dynasty'
+  PASS  graph.json 'bio' ΓåÆ DB 'biography'
+  PASS  graph.json 'wk' ΓåÆ DB 'key_works'
+  PASS  graph.json 'wl' ΓåÆ DB 'works_links'
+  PASS  graph.json 'v' ΓåÆ DB 'verified'
+  PASS  personas.json 'id' ΓåÆ DB 'source_id'
+  PASS  personas.json 'name_zh' ΓåÆ DB 'name_zh'
+  PASS  personas.json 'name_sa' ΓåÆ DB 'name_sa'
+  PASS  personas.json 'name_en' ΓåÆ DB 'name_en'
+  PASS  personas.json 'name_bo' ΓåÆ DB 'name_bo'
+  PASS  personas.json 'title' ΓåÆ DB 'title'
+  PASS  personas.json 'type' ΓåÆ DB 'type'
+  PASS  personas.json 'birth_year' ΓåÆ DB 'birth_year'
+  PASS  personas.json 'death_year' ΓåÆ DB 'death_year'
+  PASS  personas.json 'dynasty' ΓåÆ DB 'dynasty'
+  PASS  personas.json 'lineage_branch' ΓåÆ DB 'lineage_branch'
+  PASS  personas.json 'lineage_order' ΓåÆ DB 'lineage_order'
+  PASS  personas.json 'biography' ΓåÆ DB 'biography'
+  PASS  personas.json 'key_works' ΓåÆ DB 'key_works'
+  PASS  personas.json 'source' ΓåÆ DB 'source'
+  PASS  personas.json 'verified' ΓåÆ DB 'verified'
+
+[3] Locations completeness
+  PASS  All 30 graph.json locations in DB
+  PASS  All 30 locations.json locations in DB
+
+[4] Edges completeness
+  PASS  DB has 98 edges (graph.json has 98)
+
+[5] db_reader output format
+  PASS  load_graph() returns correct keys: nodes=95, edges=98, locations=30
+  PASS  Node has all legacy fields + extras: {'name_bo', 'name_ja', 'src', 'li', 'biography_full', 'lineage_order', 'ti', 'alt_names', 'multi', 'name_sa', 'name_en'}
+  PASS  lineage_colors: 11 entries
+
+[6] Article knowledge graph
+  PASS  shizhu-miaoyan: term_id unique (52 terms)
+  PASS  shizhu-miaoyan: all terms carry zh + def_zh + def_en + valid grade
+  PASS  shizhu-miaoyan: 1 grade-D term(s) all status=rejected
+  PASS  shizhu-miaoyan: no dangling term edges (55 edges)
+  PASS  shizhu-miaoyan: adjacency out/in assembled (55 out)
+  PASS  shizhu-miaoyan: HTML ARTICLE_GRAPH matches SQLite (52 terms / 55 edges)
+  PASS  shizhu-miaoyan: no ARTICLE_GRAPH leakage into other article pages
+
+[6b] Article artifacts register
+  PASS  shizhu-miaoyan: 14 item(s) all carry title + source + license + valid grade
+  PASS  shizhu-miaoyan: href mandatory or explicitly πÇöµùáΘô╛µÄÑπÇò (khara-khoto-blockprint)
+  PASS  shizhu-miaoyan: status confirmed = 13
+  PASS  shizhu-miaoyan: status pending = 1
+  PASS  shizhu-miaoyan: HTML injected 13 confirmed item(s) = SQLite confirmed
+
+[6c] Σ╕ûΣ╕╗σªÖΣ╕ÑσôüΣ╝ÜΣ╝ù EDA pipeline
+  PASS  assembly: 40 classes
+  PASS  assembly: 414 members
+  PASS  assembly: all 414 member names non-empty
+  PASS  EDA: 0 unsegmented chars (full morpheme coverage)
+  PASS  EDA: per-class segment sum 1877 == metrics.tokens_total
+  PASS  EDA: 3 confidence tiers disjoint & exhaustive (high 1600/med 258/low 19)
+  PASS  EDA: lowconf_hits/medconf_hits split low vs medium (no bundling)
+  PASS  EDA: group_profiles low/med split consistent with metrics
+  PASS  SQLite: 1 doc / 1877 seg rows / morpheme sum 1877 == tokens_total
+  PASS  SQLite: all segment rows carry confidence + domain
+  PASS  EDA: all 1877 segments carry confidence + domain (unassigned=19)
+  PASS  EDA: analysis projection free of sutra-fact fields (vow/count/leader/source + member name/core/tail, deep-walked)
+  PASS  epithet_sharing: 150 Σ╕╗XτÑ₧ members parse into πÇöepithetπÇò+Σ╕╗+πÇödomainπÇò
+  PASS  epithet_sharing: 2 cross-class shared epithets, each one-member-per-class
+  PASS  epithet_sharing: metrics agree with payload
+  PASS  group_profiles: 5 groups
+  PASS  group_pairs: 10 pairs
+  PASS  heat_matrix: all domain pct <= 100
+  PASS  shizhu-miaoyan.html: embedded EDA tokens_total == SQLite (1877)
+  PASS  shizhu-miaoyan.html: embedded assembly 414 members == SQLite
+
+[7] Build output consistency
+  PASS  Embedded nodes: 95 = SQLite nodes
+  PASS  Embedded edges: 98 = SQLite edges
+  PASS  Embedded locations: 30 = SQLite locations
+  PASS  µ│òΦùÅ: embedded name = SQLite name
+  PASS  µ│òΦùÅ: name_sa='Dharmamitra' preserved
+  PASS  µ│òΦùÅ: key_works=['σìÄΣ╕ÑΣ╕ÇΣ╣ÿµòÖΣ╣ëσêåΘ╜Éτ½á∩╝êΣ║öµòÖτ½á∩╝ë', 'σìÄΣ╕Ñτ╗ÅµÄóτÄäΦ«░', 'σìÄΣ╕Ñτ╗ÅΣ╣ëµ╡╖τÖ╛Θù¿', 'σìÄΣ╕ÑΘçæσ╕êσ¡Éτ½á', 'σñºΣ╣ÿΦ╡╖Σ┐íΦ«║Σ╣ëΦ«░', 'σìüΣ║îΘù¿Φ«║σ«ùΦç┤Σ╣ëΦ«░'] preserved
+
+[8] No hardcoded data in build.py
+  PASS  No hardcoded person names
+  PASS  No hardcoded location names
+
+[9] Relation normalization
+  PASS  All relations normalized to standard values
+
+============================================================
+  ALL TESTS PASSED
+============================================================

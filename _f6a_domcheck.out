@@ -1,0 +1,11 @@
+[1] default hidden: {'display': 'none', 'nodes': 0}
+[2] after toggle ON: {'display': '', 'nodes': 11, 'edges': 17}
+[3] out-of-bounds or colorless nodes: []
+[4] arcs without Q: 0
+[5] switch to person_001: {'before': 11, 'after': 9}
+[6] after toggle OFF: {'display': 'none'}
+[7] regression: {'templeRects': 12, 'chips': 6, 'slider': True, 'search': True, 'personSel': True, 'url': '?master=person_001'}
+[8] pageerror=0 console.error=0
+[9] SSOT read-only unchanged: {'temple_directory.yaml': '43c5c5d03991', 'lineages.json': 'd66f1387e145', 'complete_lineage_chart.yaml': 'b4a74d81cccd', 'person_trajectories.yaml': '32b2467b00a1'}
+
+ALL F.6a HEADLESS CHECKS PASSED (µ│òΦäëµù╢Θù┤σîû geo overlay┬╖toggle┬╖arcs┬╖nodes┬╖regression┬╖zero JS┬╖SSOT)

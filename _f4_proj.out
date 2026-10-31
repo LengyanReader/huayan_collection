@@ -1,0 +1,89 @@
+=== S3 huayan core temples: 12 ===
+   t_huayan_001 | 终南山至相寺 | 华严宗 | 34.1 108.6 | ver 1
+   t_huayan_002 | 太原寺(大荐福寺) | 华严宗 | 34.24 108.93 | ver 1
+   t_huayan_003 | 五台山清凉寺 | 华严宗 | 39.0 113.5 | ver 1
+   t_huayan_004 | 圭峰草堂寺 | 华严宗 | 34.1 108.5 | ver 1
+   t_huayan_005 | 杭州慧因寺 | 华严宗 | 30.25 120.15 | ver 1
+   t_huayan_006 | 常熟兴福寺(华严大学) | 华严宗 | 31.65 120.75 | ver 1
+   t_huayan_007 | 台北华严莲社 | 华严宗 | 25.04 121.51 | ver 1
+   t_huayan_008 | 南投大华严寺 | 华严宗·普贤乘 | 23.92 120.88 | ver 1
+   t_huayan_009 | 台北福慧寺 | 贤首宗高原法系 | 24.98 121.42 | ver 1
+   t_huayan_010 | 支提山大华严寺 | 华严宗·普贤乘 | 24.5 120.7 | ver 1
+   t_japan_001 | 奈良东大寺 | 日本华严宗 | 34.69 135.84 | ver 1
+   t_korea_001 | 浮石寺 | 高丽华严宗 | 36.0 129.0 | ver 1
+  [drop self-loop] person_050 MASTER_OF
+
+=== selectable masters (has direct MASTER_OF): 20 ===
+   person_001 -> 杜顺·华严初祖 | color #b8863c
+   person_002 -> 智俨·华严二祖 | color #b8863c
+   person_003 -> 法藏·贤首国师 | color #b8863c
+   person_004 -> 澄观·清凉国师 | color #b8863c
+   person_011 -> 净源·宋代华严中兴之祖 | color #b8863c
+   person_012 -> 月霞·近现代华严复兴先驱 | color #7a9ec0
+   person_015 -> 南亭·华严莲社第二任住持 | color #5e8b9e
+   person_016 -> 成一·华严莲社第三任住持·华严专宗学院创办人 | color #5e8b9e
+   person_017 -> 贤度·华严莲社第六任住持·女性法嗣 | color #5e8b9e
+   person_018 -> 智光·华严莲社首任住持 | color #5e8b9e
+   person_031 -> 应慈·近代华严座主 | color #7a9ec0
+   person_032 -> 了中·华严莲社第四任 | color #5e8b9e
+   person_033 -> [无name记录·待核] | color None
+   person_041 -> 钦因·贤首宗41世·福慧寺住持 | color #c46b5d
+   person_050 -> 审祥·日本华严宗初传 | color #8b7a9e
+   person_104 -> [无name记录·待核] | color None
+   person_f01 -> 思元慧三·福慧寺开山 | color #c46b5d
+   person_j01 -> 良弁·东大寺开山 | color #8b7a9e
+   person_j02 -> 实忠·东大寺继任 | color #8b7a9e
+   person_j03 -> 等定·东大寺学僧 | color #8b7a9e
+
+--- tree from person_003 法藏·贤首国师 : nodes 17 ---
+   d1 法藏·贤首国师(person_003) -INFLUENCED[华严五祖]-> 澄观·清凉国师 法藏后传。澄观私淑法藏之学
+   d2 澄观·清凉国师(person_004) -MASTER_OF[华严五祖]-> 宗密·圭峰禅师 澄观传法于宗密
+   d1 法藏·贤首国师(person_003) -MASTER_OF[华严五祖]-> 审祥·日本华严宗初传 法藏传法于审祥
+   d2 审祥·日本华严宗初传(person_050) -MASTER_OF[日本华严]-> 良弁·东大寺开山 
+   d3 良弁·东大寺开山(person_j01) -MASTER_OF[日本华严]-> 实忠·东大寺继任 
+   d1 法藏·贤首国师(person_003) -MASTER_OF[华严五祖]-> 慧苑·法藏弟子 
+   d2 慧苑·法藏弟子(person_070) -INFLUENCED[华严五祖]-> 澄观·清凉国师 
+   d3 澄观·清凉国师(person_004) -MASTER_OF[华严五祖]-> 宗密·圭峰禅师 澄观传法于宗密
+   d1 法藏·贤首国师(person_003) -MASTER_OF[日本华严]-> 审祥·日本华严宗初传 法藏传法于审祥
+   d2 审祥·日本华严宗初传(person_050) -MASTER_OF[日本华严]-> 良弁·东大寺开山 
+   d3 良弁·东大寺开山(person_j01) -MASTER_OF[日本华严]-> 实忠·东大寺继任 
+   d1 法藏·贤首国师(person_003) -INFLUENCED[高丽华严]-> 净源·宋代华严中兴之祖 法藏学说是净源华严教学源头
+   d2 净源·宋代华严中兴之祖(person_011) -INFLUENCED[华严五祖]-> 子璿·宋代华严学者 
+   d3 子璿·宋代华严学者(person_091) -INFLUENCED[华严五祖]-> 义天·高丽华严初祖·大觉国师 
+   d2 净源·宋代华严中兴之祖(person_011) -MASTER_OF[高丽华严]-> 义天·高丽华严初祖·大觉国师 净源传法于义天
+   d2 净源·宋代华严中兴之祖(person_011) -INFLUENCED[高丽华严]-> 均如·高丽华严学僧 
+   d3 均如·高丽华严学僧(person_062) -INFLUENCED[高丽华严]-> 义天·高丽华严初祖·大觉国师 
+
+--- tree from person_001 杜顺·华严初祖 : nodes 9 ---
+   d1 杜顺·华严初祖(person_001) -MASTER_OF[华严五祖]-> 智俨·华严二祖 杜顺传法于智俨
+   d2 智俨·华严二祖(person_002) -MASTER_OF[华严五祖]-> 法藏·贤首国师 智俨传法于法藏
+   d3 法藏·贤首国师(person_003) -INFLUENCED[华严五祖]-> 澄观·清凉国师 法藏后传。澄观私淑法藏之学
+   d3 法藏·贤首国师(person_003) -MASTER_OF[华严五祖]-> 审祥·日本华严宗初传 法藏传法于审祥
+   d3 法藏·贤首国师(person_003) -MASTER_OF[华严五祖]-> 慧苑·法藏弟子 
+   d3 法藏·贤首国师(person_003) -MASTER_OF[日本华严]-> 审祥·日本华严宗初传 法藏传法于审祥
+   d3 法藏·贤首国师(person_003) -INFLUENCED[高丽华严]-> 净源·宋代华严中兴之祖 法藏学说是净源华严教学源头
+   d2 智俨·华严二祖(person_002) -MASTER_OF[华严五祖]-> 义湘·海东华严初祖 
+   d1 杜顺·华严初祖(person_001) -INFLUENCED[华严五祖]-> 元晓·新罗华严学僧 
+
+--- tree from person_012 月霞·近现代华严复兴先驱 : nodes 3 ---
+   d1 月霞·近现代华严复兴先驱(person_012) -MASTER_OF[月霞系]-> 常惺·月霞系·华严大学校长 月霞传法于常惺
+   d1 月霞·近现代华严复兴先驱(person_012) -MASTER_OF[月霞系]-> 应慈·近代华严座主 月霞师弟应慈，共弘华严
+   d2 应慈·近代华严座主(person_031) -MASTER_OF[月霞系]-> 真禅·华严禅实践者 应慈传法于真禅
+
+--- tree from person_018 智光·华严莲社首任住持 : nodes 3 ---
+   d1 智光·华严莲社首任住持(person_018) -MASTER_OF[华严莲社]-> 南亭·华严莲社第二任住持 智光(1st)传南亭(2nd)
+   d2 南亭·华严莲社第二任住持(person_015) -MASTER_OF[华严莲社]-> 成一·华严莲社第三任住持·华严专宗学院创办人 南亭(2nd)传成一(3rd)
+   d3 成一·华严莲社第三任住持·华严专宗学院创办人(person_016) -MASTER_OF[华严莲社]-> 了中·华严莲社第四任 成一(3rd)传了中(4th)
+
+--- tree from person_041 钦因·贤首宗41世·福慧寺住持 : nodes 4 ---
+   d1 钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF[高原法系]-> 体化性果·福慧寺三代 
+   d1 钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF[高原法系]-> 海云继梦·当代华严传承者·三脉汇一 钦因(41世)2008年传衣钵予海云继梦(42世
+   d1 钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF[高原法系]-> 〔待核〕person_043 钦因另传体佛法师等法嗣
+   d1 钦因·贤首宗41世·福慧寺住持(person_041) -MASTER_OF[高原法系]-> 成观法师·华严42世真言53世 钦因(41世)2010年4月24日传华严兼慈恩法
+
+--- tree from person_011 净源·宋代华严中兴之祖 : nodes 5 ---
+   d1 净源·宋代华严中兴之祖(person_011) -INFLUENCED[华严五祖]-> 子璿·宋代华严学者 
+   d2 子璿·宋代华严学者(person_091) -INFLUENCED[华严五祖]-> 义天·高丽华严初祖·大觉国师 
+   d1 净源·宋代华严中兴之祖(person_011) -MASTER_OF[高丽华严]-> 义天·高丽华严初祖·大觉国师 净源传法于义天
+   d1 净源·宋代华严中兴之祖(person_011) -INFLUENCED[高丽华严]-> 均如·高丽华严学僧 
+   d2 均如·高丽华严学僧(person_062) -INFLUENCED[高丽华严]-> 义天·高丽华严初祖·大觉国师 

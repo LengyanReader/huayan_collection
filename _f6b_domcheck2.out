@@ -1,0 +1,10 @@
+[1] article-root innerHTML length: 406718
+[2] .lin-deeplink count: 132 sample: ['µÖ║Σ┐¿', 'µÖ║Σ┐¿', 'µ╛äΦºé', 'µ╛äΦºé', 'µ│òΦùÅ', 'µ╛äΦºé', 'µ╛äΦºé', 'µ╛äΦºé']
+[3] malformed hrefs: 0
+[4] deeplinks in forbidden containers: 0
+[5] after click, URL: file:///C:/DA_Practice/huayan_collection/web/demo/famai/shanhe.html?master=person_003
+[6] shanhe regression: {'linmap': True, 'toggle': True, 'slider': True, 'search': True, 'temples': 12}
+[7] pageerror=0 console.error=0
+[8] SSOT read-only unchanged
+
+ALL F.6b HEADLESS CHECKS PASSED (µûçµ£¼ΓåÆµ╖▒Θô╛┬╖article render┬╖linkify┬╖href┬╖no nesting┬╖click nav┬╖shanhe regression┬╖zero JS┬╖SSOT)

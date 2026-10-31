@@ -1,0 +1,25 @@
+=== lineages.json ===
+toplevel type: dict
+ key: version -> str len=5
+ key: lineages -> list len=24
+  sample[lineages][0]: {"id": "lineage_临济宗", "name": "临济宗", "description": "", "period": "", "edges": [{"from": "person_x01", "to": "person_x02", "relation": "MASTER_OF", "note": ""}, {"from": "person_x01", "to": "person_s04", "relation": "INFLUENCED", "note": ""}, {"from": "person_x01", "to": "person_x03", "relation": "INFLUENCED", "note": ""}, {"from": "person_x02", "to": "person_x03", "relation": "CONTEMPORARY", "not
+=== data/knowledge_graph/locations.json ===
+toplevel type: dict len=2
+ key: version -> str
+ key: locations -> list
+=== complete_lineage_chart.yaml ===
+toplevel type: dict
+ key: meta -> dict len=4
+ key: lineages -> list len=5
+ key: key_nodes -> list len=12
+ key: contemporary_status -> dict len=2
+  list[lineages][0] keys: ['id', 'name', 'period', 'note', 'generations']
+  sample: {"id": "lineage_hw_patriarchs", "name": "华严五祖根本法脉", "period": "557-841 CE (唐)", "note": "华严宗思想体系的创立者，五人奠定了华严教学的完整框架", "generations": [{"order": 1, "name": "杜顺", "title": "帝心尊者", "years": "557-640", "also_known_as": ["法顺"], "note": "华严初祖，著《法界观门》"}, {"order": 2, "name": "智俨", "title": "云华尊者", "years": "602-668", "also_known_as": ["至相尊者"], "note": "华严二祖，著《搜玄记》"}, {"order": 3, "name": "法藏", "title": "
+  list[key_nodes][0] keys: ['order', 'name', 'event']
+  sample: {"order": 3, "name": "法藏", "event": "贤首宗正式确立，贤首第一世"}
+=== temple_directory.yaml ===
+temples count: 63
+ field keys: ['id', 'name', 'school', 'type', 'location', 'ancient_name', 'lat', 'lng', 'dynasty', 'founded', 'founder', 'description', 'significance', 'persons', 'events', 'source', 'verified', 'links']
+ verified distribution: 63 yes / 0 other
+ names: 终南山至相寺 | 太原寺(大荐福寺) | 五台山清凉寺 | 圭峰草堂寺 | 杭州慧因寺 | 常熟兴福寺(华严大学) | 台北华严莲社 | 南投大华严寺 | 台北福慧寺 | 支提山大华严寺 | 嵩山少林寺 | 黄梅四祖寺(双峰山) | 黄梅五祖寺(凭茂山) | 韶关南华寺(宝林寺) | 赵州柏林禅寺(观音院) | 天台山国清寺 | 庐山东林寺 | 苏州灵岩山寺 | 终南山净业寺 | 长安大慈恩寺 | 南京栖霞寺 | 长安大兴善寺 | 长安青龙寺 | 拉萨甘丹寺 | 拉萨大昭寺 | 奈良东大寺 | 高野山金刚峰寺 | 浮石寺 | 那烂陀寺 | 菩提伽耶 | 终南山楼观台 | 青城山 | 武当山 | 广东罗浮山 | 曲阜孔庙 | 岳麓书院 | 白鹿洞书院 | 桑耶寺 | 布达拉宫 | 萨迦寺 | 洪州开元寺(佑民寺) | 百丈山百丈寺 | 福州雪峰崇圣寺 | 雪窦山资圣寺 | 茅山道院 | 王屋山阳台宫 | 天台山高明寺 | 长安兴教寺 | 长安草堂寺 | 正定临济寺 | 韶关云门寺 | 南京清凉寺 | 拉萨哲蚌寺 | 日喀则扎什伦布寺 | 西宁塔尔寺 | 龙虎山天师府 | 崂山太清宫 | 西安化觉巷清真大寺 | 北京牛街礼拜寺 | 上海徐家汇天主堂 | 瓦拉纳西·喀什黄金庙 | 仰光大金塔(瑞光大金塔) | 吴哥窟
+ schools: ['三论宗', '上座部佛教', '伊斯兰教', '儒家', '儒家·理学', '净土宗', '华严宗', '华严宗·普贤乘', '印度佛教', '印度教', '印度教/佛教', '基督教·天主教', '天台宗', '密宗', '律宗·南山律', '日本华严宗', '日本真言宗', '法相宗', '禅宗', '禅宗·临济宗', '禅宗·云门宗', '禅宗·法眼宗', '禅宗·洪州宗', '藏传·格鲁派', '藏传佛教', '藏传佛教·格鲁派', '藏传佛教·萨迦派', '贤首宗高原法系', '道家', '道家·上清派', '道家·丹鼎派', '道家·全真', '道家·天师道', '高丽华严宗']
