@@ -575,6 +575,23 @@ others:
   views:
   - avatamsaka-studies
 
+- id: huayan-shidi-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 29
+  icon: ⛰
+  title: 九九华严第二十四品 十地品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Twenty-Four: The Ten Stages'
+  title_sub: 第六会首品·他化自在天宫·卷三十四～四十·品文43413（跨七卷）·金刚藏菩萨说十地（欢喜→法云=十波罗蜜增上）·解脱月三请·L.266骨架成文
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第六会_他化自在天宫_十地位/华严经细读_第二十四部_十地品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
+
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
