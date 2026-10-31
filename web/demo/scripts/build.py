@@ -2190,6 +2190,116 @@ function copyPageLink(){
 </script>
 '''
 
+# F.6b 文本→深链：细读文章祖师名自动链接至 shanhe.html（progressive enhancement·不动源文）
+def _f6b_deeplink_map():
+    """从 person_trajectories + lineages 动态生成 name-variant→person_id 映射。"""
+    pt = read_yaml('events/person_trajectories.yaml') or {}
+    persons = pt.get('persons', pt)
+    lj = read_json('data/knowledge_graph/lineages.json') or {}
+    # collect all person_ids in 华严 focus lineages
+    hv_ids = set()
+    for L in lj.get('lineages', []):
+        lid = L.get('id', '')
+        if any(kw in (L.get('name', '') + lid) for kw in ('华严', '贤首', 'huayan')):
+            for e in L.get('edges', []):
+                hv_ids.add(e.get('from')); hv_ids.add(e.get('to'))
+    # build name→id from trajectories (name field often has "名·描述" → take part before ·)
+    mapping = {}
+    if isinstance(persons, dict):
+        for pid, v in persons.items():
+            if pid not in hv_ids:
+                continue
+            nm = (v or {}).get('name', '')
+            if not nm:
+                continue
+            # primary name (before ·)
+            primary = nm.split('·')[0].strip()
+            if primary and len(primary) >= 2:
+                mapping[primary] = pid
+    # Add well-known aliases from backbone (data-driven from complete_lineage_chart)
+    clc = read_yaml('knowledge_graph/complete_lineage_chart.yaml') or {}
+    for L in clc.get('lineages', []):
+        if L.get('id') == HW_BACKBONE_ID:
+            for g in L.get('generations', []):
+                gn = g.get('name', '')
+                gid = g.get('person_id', '')
+                if gn and gid and len(gn) >= 2:
+                    mapping[gn] = gid
+                # title aliases (清涼/賢首/圭峰 etc.)
+                title = g.get('title', '')
+                if title and gid and len(title) >= 2:
+                    mapping[title] = gid
+            break
+    # manually curated aliases that appear in articles but not in name/title fields
+    _extra = {'賢首': 'person_003', '康藏法藏': 'person_003',
+              '雲華': 'person_002', '澄觀': 'person_004', '清涼': 'person_004',
+              '義天': 'person_010', '義湘': 'person_061', '元曉': 'person_060',
+              '審祥': 'person_050', '實叉難陀': 'person_007', '佛陀跋陀罗': 'person_006',
+              '應慈': 'person_031', '續法': 'person_080', '淨源': 'person_011'}
+    mapping.update(_extra)
+    return mapping
+
+LIN_DEEPLINK_JS_TMPL = '''<script>
+(function(){
+  var MAP = __DEEPLINK_MAP__;
+  var NAMES = Object.keys(MAP).sort(function(a,b){return b.length-a.length;});
+  var BASE = '../famai/shanhe.html';
+  function skip(node){
+    var p = node.parentElement;
+    while(p && p !== document.body){
+      var tag = p.tagName;
+      if(tag==='A'||tag==='CODE'||tag==='PRE'||tag==='BLOCKQUOTE') return true;
+      var cls = p.getAttribute ? (p.getAttribute('class')||'') : '';
+      if(/\\b(q|quote|cite-card|lic)\\b/.test(cls)) return true;
+      p = p.parentElement;
+    }
+    return false;
+  }
+  function linkify(){
+    var root = document.getElementById('article-root');
+    if(!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var edits = [];
+    var tn;
+    while((tn = walker.nextNode())){
+      if(skip(tn)) continue;
+      var text = tn.textContent;
+      for(var i=0;i<NAMES.length;i++){
+        var nm = NAMES[i], pos = text.indexOf(nm);
+        if(pos < 0) continue;
+        edits.push({node:tn, name:nm, pid:MAP[nm], pos:pos});
+        break;
+      }
+    }
+    for(var j=edits.length-1;j>=0;j--){
+      var e = edits[j];
+      var t = e.node.textContent;
+      var idx = t.indexOf(e.name);
+      if(idx < 0) continue;
+      var before = t.slice(0, idx), after = t.slice(idx + e.name.length);
+      var a = document.createElement('a');
+      a.href = BASE + '?master=' + e.pid;
+      a.className = 'lin-deeplink';
+      a.title = '在山河法脉地图中展开 ' + e.name;
+      a.textContent = e.name;
+      var frag = document.createDocumentFragment();
+      if(before) frag.appendChild(document.createTextNode(before));
+      frag.appendChild(a);
+      if(after) frag.appendChild(document.createTextNode(after));
+      e.node.parentNode.replaceChild(frag, e.node);
+    }
+    if(edits.length) console.log('[lin-deeplink] linked %d mentions' % edits.length);
+  }
+  if(document.readyState==='complete') setTimeout(linkify,100);
+  else window.addEventListener('load', function(){ setTimeout(linkify,100); });
+})();
+</script>
+<style>
+.lin-deeplink{color:var(--gold,#b8863c);text-decoration:none;border-bottom:1px dashed var(--gold,#b8863c);cursor:pointer;font-weight:600}
+.lin-deeplink:hover{color:var(--red,#a83a24);border-bottom-color:var(--red,#a83a24)}
+</style>
+'''
+
 def build_articles(articles):
     """Emit one standalone static page per full article (web/demo/articles/<id>.html)
     plus a catalog index (web/demo/articles/index.html). Returns total bytes written."""
@@ -2238,6 +2348,11 @@ def build_articles(articles):
     common_css_rel = '../css/common.css'
     total = 0
     count = 0
+
+    # F.6b: generate deeplink JS once (data-driven from trajectories + lineages)
+    _dl_map = _f6b_deeplink_map()
+    _dl_json = json.dumps(_dl_map, ensure_ascii=False)
+    LIN_DEEPLINK_JS = LIN_DEEPLINK_JS_TMPL.replace('__DEEPLINK_MAP__', _dl_json)
 
     for a in articles:
         if a.get('skip_html'):
@@ -2394,7 +2509,7 @@ def build_articles(articles):
 
 <script src="../js/common.js"></script>
 {SHARE_JS}
-
+{LIN_DEEPLINK_JS}
 {scripts}
 </body>
 </html>'''
