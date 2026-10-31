@@ -8,3 +8,5 @@ data/references/cbeta_txt/*.txt -text -whitespace
 data/references/tibetan/** -text -whitespace
 # F.2 断代底图数据（aourednik GPL 独立集合＋Natural Earth PD）：data/geo/manifest.yaml 记 sha256·禁 eol 规范化保字节可校验（承 CBETA 同例·2026-10-30 R4 授权入库）
 data/geo/** -text -whitespace
+# G.0 本地 vendor 第三方代码库（D3.js v7.9.0 UMD·ISC）：禁 eol 规范化保字节可校验（PLAN/decisions #17 记 sha256 F2094BBF… 承 CBETA/geo 同例）
+web/demo/src/vendor/** -text -whitespace

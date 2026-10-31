@@ -768,6 +768,46 @@ def _f4_lineage():
     return {'masters': masters, 'trees': trees, 'branches': branches, 'backbone': backbone}
 
 
+# G 系列·全法脉网络总览（G.0 只读投影·非只华严 focus 支系）
+NET_RELATIONS = ('MASTER_OF', 'INFLUENCED', 'CONTEMPORARY')  # 现存三类·不臆造 TRANSMITTED_TEXT
+NET_PALETTE = ['#b8863c', '#8b7a9e', '#6f93b4', '#5e8b9e', '#7a9ec0', '#c46b5d',
+               '#7a9e7e', '#a6915d', '#b47fa0', '#88a48c', '#c07f6a', '#7f8fb4']
+
+
+def _f_net():
+    """G.0 全法脉网络只读投影：lineages.json 全部支系 → {nodes, links, branches}。
+       剔自环·只画现存边·无名 id 保 null（前端标〔待核〕）·不添加·不臆造。
+       节点色按所属支系（支系色 Python 单源算定·静态兜底与前端一致）。"""
+    names, _colors = _f4_person_meta()
+    lj = read_json('data/knowledge_graph/lineages.json') or {}
+    links, nodes, branches, bseen = [], {}, [], set()
+    for L in lj.get('lineages', []):
+        lid = L.get('id', '')
+        cn = HUAYAN_BRANCH_CN.get(lid) or L.get('name') or lid
+        if cn not in bseen:
+            bseen.add(cn)
+            col = HUAYAN_BRANCH_COLOR.get(cn) or NET_PALETTE[len(branches) % len(NET_PALETTE)]
+            branches.append({'id': lid, 'name': cn, 'color': col})
+        bcol = next((b['color'] for b in branches if b['name'] == cn), '#888888')
+        for e in L.get('edges', []):
+            f, d, rel = e.get('from'), e.get('to'), e.get('relation')
+            if not f or not d or f == d or rel not in NET_RELATIONS:
+                continue
+            links.append({'source': f, 'target': d, 'rel': rel, 'branch': cn,
+                          'color': bcol, 'note': e.get('note', '')})
+            for pid in (f, d):
+                nd = nodes.setdefault(pid, {'id': pid, 'name': names.get(pid),
+                                            'out': 0, 'in': 0, 'branches': []})
+                if cn not in nd['branches']:
+                    nd['branches'].append(cn)
+            if rel == 'MASTER_OF':
+                nodes[f]['out'] += 1
+                nodes[d]['in'] += 1
+    for nd in nodes.values():
+        nd['verified'] = bool(nd['name'])
+    return {'nodes': list(nodes.values()), 'links': links, 'branches': branches}
+
+
 def build_shanhe_page():
     """子页 B「山河法脉」(famai/shanhe.html)：NE 物理底(PD)＋aourednik 断代色块(GPL 独立集合)
     ＋Ghost Diff＋DB 标点＋静态兜底（信息無损）。数据均实测投影，不臆造几何。"""
@@ -851,6 +891,7 @@ def build_shanhe_page():
     # ── F.4 S3/S4/S5 只读投影 ──
     temples_out = _f4_temples()
     lin = _f4_lineage()
+    net = _f_net()  # G.0 全法脉网络只读投影（24 支·现存边）
     _lnames, _lcolors = _f4_person_meta()
     person_geo = _f6_person_geo()  # F.6a 法脉时间化：地理质心+中位纪年
 
@@ -863,6 +904,7 @@ def build_shanhe_page():
         'persons': persons_out,
         'temples': temples_out,
         'lineage': lin,
+        'lineage_net': net,
         'person_geo': person_geo,
         'meta': {'generated': str(datetime.date.today()),
                  'license_note': '断代层 aourednik/historical-basemaps (GPL-3.0 独立集合)；物理层 Natural Earth (PD)；CHGIS 依其许可仅外链'},
@@ -985,6 +1027,9 @@ def build_shanhe_page():
                   _esc(t['founder'] or '—'), ev, _esc(t['desc']), _esc(t['sig']), ps, ver, _esc(t['source']), lk))
 
     shanhe_js = read_src('shanhe.js')
+    d3_js = read_src('vendor/d3.v7.min.js')  # G.0 D3 v7.9.0 UMD(MIT)·内联前置于 shanhe.js
+    if 'd3' not in d3_js[:4000]:
+        print('WARN vendor/d3.v7.min.js 缺失或非 UMD 构建·shanhe 页将无法用 D3 渲染')
     tmpl = '''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -1141,6 +1186,7 @@ body{background:
 </div>
 <div id="tip" hidden></div>
 <script>var SHANHE = __DATA_JSON__;</script>
+<script>__D3_JS__</script>
 <script>__SHANHE_JS__</script>
 </body>
 </html>'''
@@ -1154,6 +1200,7 @@ body{background:
                 .replace('__CW__', str(GEO_CW)).replace('__CH__', str(GEO_CH))
                 .replace('__FALLBACK__', fb)
                 .replace('__DATA_JSON__', data_json)
+                .replace('__D3_JS__', d3_js)
                 .replace('__SHANHE_JS__', shanhe_js))
     famai_dir = OUT / 'famai'
     famai_dir.mkdir(exist_ok=True)
@@ -1163,9 +1210,10 @@ body{background:
     npoly = sum(len(yy['polities']) for yy in years_out)
     nstn = sum(len(p['stations']) for p in persons_out)
     nedge = sum(len(v) for v in lin['trees'].values())
-    print('OK  %s (%s bytes | %d 年·%d 政体·%d 标点·%d 祖师/%d 站·要地 %d·法脉 %d 师/%d 边/%d 支·coast %d/countries %d)' % (
+    print('OK  %s (%s bytes | %d 年·%d 政体·%d 标点·%d 祖师/%d 站·要地 %d·法脉 %d 师/%d 边/%d 支·网络 %d 点/%d 边/%d 支·coast %d/countries %d)' % (
         path, format(size, ','), len(years_out), npoly, len(places),
         len(persons_out), nstn, len(temples_out), len(lin['masters']), nedge, len(lin['branches']),
+        len(net['nodes']), len(net['links']), len(net['branches']),
         len(coast), len(countries)))
     return size
 
@@ -1200,6 +1248,7 @@ table{border-collapse:collapse;width:100%;font-size:0.8em}td,th{border:1px solid
 <a href="https://chgis.fas.harvard.edu/data/chgis/v6/">CHGIS V6</a> 官方许可「free for academic research, no commercial use, resale, or
 <b>redistribution</b> permitted」——故其原始数据<b>不入库、不分发</b>，仅作外链引用；
 <a href="https://www.openhistoricalmap.org/">OpenHistoricalMap</a> = ODbL（覆盖评估中·暂未接入）。
+<b>代码依赖</b>：<a href="https://github.com/d3/d3">D3.js v7.9.0</a>（<b>ISC 许可</b>·本地 vendor <code>web/demo/src/vendor/d3.v7.min.js</code>·内联前置于页面脚本·无 CDN/离线可用）——仅用于法脉可视化，与本仓内容数据层无关。
 若未来商业化，须先移除/替换 GPL 层并重审全部上游条款。断代几何为<b>示意底图</b>，学术精度逐项待核。</p>
 <table><tr><th>文件</th><th>来源域</th><th>许可</th><th>访问日期</th><th>字节</th><th>sha256 前16</th></tr>
 __ROWS__</table>

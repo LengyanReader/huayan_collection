@@ -201,6 +201,27 @@ else:
                     ok('F.6a 法脉时间化 g-linmap·toggle·person_geo %d 条·祖师 geo 覆盖 %d/%d'
                        % (len(_pg), _geo_covered, len(_lin_masters)))
 
+                    # ── G.0 D3 基座 + 全法脉网络只读投影·静态侧证 ──
+                    if 'd3js.org v7.9.0' not in sh:
+                        fail('G.0 shanhe.html 未内联 D3 v7.9.0（vendor/d3.v7.min.js 缺失或未前置）')
+                    if '"lineage_net"' not in sh:
+                        fail('G.0 shanhe.html 缺 lineage_net 投影')
+                    _net = _sh.get('lineage_net', {})
+                    _nn, _nl = len(_net.get('nodes', [])), len(_net.get('links', []))
+                    if _nn < 40:
+                        fail('G.0 lineage_net 节点应≥40（全库 80），实得 %d' % _nn)
+                    if _nl < 90:
+                        fail('G.0 lineage_net 边应≥90（98 剔自环=97），实得 %d' % _nl)
+                    _loose = [e for e in _net.get('links', []) if e.get('source') == e.get('target')]
+                    if _loose:
+                        fail('G.0 lineage_net 含自环（应剔）: %d' % len(_loose))
+                    _badrel = [e for e in _net.get('links', [])
+                               if e.get('rel') not in ('MASTER_OF', 'INFLUENCED', 'CONTEMPORARY')]
+                    if _badrel:
+                        fail('G.0 lineage_net 含非法/臆造关系: %d' % len(_badrel))
+                    ok('G.0 D3 v7.9.0 内联·lineage_net 只读投影 %d 点/%d 边/%d 支·零自环·零臆造边'
+                       % (_nn, _nl, len(_net.get('branches', []))))
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:

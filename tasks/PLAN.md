@@ -589,6 +589,19 @@ STEP1 回源对勘（八十为干·六十补卷对读·藏 24–27 开篇实测�
 - **F.4 地谱卡与法脉展开批 ✅（2026-10-30·只读投影·用户 R4 三项确认·decisions #14）**：S3 华严核心要地 **12 处**（school 含华严/贤首）点击→地谱追溯卡（沿革/华严事件/人物/信度/依据·temple_directory 逐字摘要·综述非逐字回源）；S4 择祖师 **18 位**→CBDB 式递归弟子树（默认 3 代·直系实线／私淑·影响虚线·五祖骨干 5 世）；S5 法系色块 **6 支**图例隔离高亮＋点击 zoom 包围盒。**只读投影** `temple_directory`/`lineages.json`/`complete_lineage_chart`/`person_trajectories`（SSOT 前后 sha256 恒定）；客观传承守卫剔自环/反向边·未具名弟子 7 处标〔待核〕。实测：页 379,145→**460,225 B**·headless 运行时全绿（S3 12 标·S4 默认树 nodes11/edges17/虚线7·S5 dim28/28 复位无残留·零坐标 URL `master/temple`·0 JS 错）。S6 深链协议本批扩 master/temple 语义参。
 - **F.5 视觉持平与门禁批 ✅（2026-10-31·全套持平八项·用户 R4 确认「全套持平」·decisions #15）**：对标 jiangshan-map 视觉债一次清偿（纯 UI/UX·零新数据源）：**连续时间滑轨**（500–900 step=1·input→最近断代吸附·年标签+快照元信息同步·帝号/年号底图无源→诚实标〔待核·断代底图未含〕不臆造）＋**断代过渡淡入**（#g-polity opacity .45s＋nodeIn 关键帧）＋**朱红 Ghost Diff**（#a83a24 虚线 5,3）＋**hover tooltip**（政体/要地/站点事件委托·越界翻转）＋**全局搜索**（祖师行迹/要地/法师·`/` 聚焦·命中即路由 selectPerson/selectTemple/renderTree）＋**羊皮纸美术方向**（三层渐变纸纹＋衬线字栈 Songti/STSong/Noto Serif/SimSun/Georgia＋朱红·金棕配色）＋**响应式**（820/560 断点）。headless 逐项实测 `_f5_domcheck.py`：10 项全过（滑轨 800→48 政体·transition 0.45s 实算·ghost 色值命中·tooltip 双现·搜索「法藏」双命中→person_003 树 11 节点·`/` 聚焦·400px column·F.3/F.4 回归全绿·0 JS 错·SSOT sha256 恒定）。页 460,225→**469,549 B**。
 - **F.6 超越批（另立·用户 R4 确认独立批）**：以主题纵深超越标杆（非覆盖军备）——**F.6a 法脉时间化 ✅（2026-10-31）**（S4 递归树按地理质心铺于断代底图·`person_geo` 171 条·18/18 祖师全覆盖·二次 Bezier 弧形师承边·分支色·toggle 显隐·headless 9 项全绿·页 469,549→482,811 B）、**F.6b 文本→深链 ✅（2026-10-31）**（细读文章祖师名自动链接至 shanhe.html·`_f6b_deeplink_map()` 数据驱动·progressive enhancement 不动源文·明法品 126 处命中·blockquote/.q 内自动跳过·点击直达 `?master=person_XXX`·headless 8 项全绿·三件套 rc=0）、**F.6c 著述传导边可视化**（TRANSMITTED_TEXT·BDRC 模型·F.1 契约已备·**数据 0 条边·BLOCKED 待人工补录**）。
+
+### G 系列·法脉视觉跃迁（D3 lineage visual overhaul · 用户 2026-10-31 确认四视图全要 + 引入 D3）
+
+> 目标：把法脉视图从手写 SVG dendrogram 升级为**世界顶级数字人文族谱**（对标 CBDB Q-VIS 多视图联动 + 学术放射族谱）·三轴并治（精美/互动/结构）。**零造边·只读投影·信息無损·progressive enhancement·三门禁绿灯**。
+
+- **G.0 D3 基座接入 ✅（2026-10-31）**：本地 vendor `web/demo/src/vendor/d3.v7.min.js`（**D3 v7.9.0 UMD·ISC 许可**·sha256 `F2094BBF…`·无 CDN/离线可用·内联前置于 shanhe.js·`window.d3` 全局可见）；`_f_net()` 全库只读投影 `lineage_net`（**80 点/97 边/22 支**·98 边剔 1 自环 person_050→person_050·零臆造·无名 id 保 null→前端〔待核〕）；license.html 声明 D3 代码依赖·decisions **#17**。headless `_g0_selfcheck.py` 7 项全绿（d3.tree/hierarchy/forceSimulation/zoom/transition 皆函数·lineage_net 计数·零自环零非法边·F.3–F.6a 回归不破·0 JS 错·SSOT sha256 恒定）。页 482,811→**790,672 B**（+D3 280KB·视觉暂不变·地基先）。**blocked**：无。
+- **G.1 单祖子树打磨（d3-hierarchy）**：重写 `renderTree`——正交/elbow 连线·折叠/展开·平移+缩放·入场/过渡动画·标签防重叠（长安/五台簇）·悬停高亮邻域（复用 `#lineage-svg` marker）。
+- **G.2 全法脉网络总览（d3-force）**：新 `#lineage-net-svg` 绘 80/97 全网络·节点径=出度·色=支系·边型 MASTER_OF/INFLUENCED/CONTEMPORARY·拖拽·邻域高亮·点节点 focus 子网络·跨支显影。
+- **G.3 放射式·时间轴法脉（radial tidy tree）**：新 `#lineage-radial-svg`·圆=择定祖·半径=代际·角度=纪年/经度·外环年代刻度·呼应 F.6a geo。
+- **G.4 四视图联动（linked brushing）**：选择总线·树/网络/放射/地图/时间/传记任一选中→其余同步·深链含 `view=` 态。
+- **G.5 美术与动效精修**：D3 尺度重标羊皮纸色板（WCAG AA）·入场编排·微交互·暗/亮·minimap·去 cluttering。
+- **G.6 门禁与无损固化**：verify_demo 补新视图断言·信息無损兜底含全网络·全 `_g*_domcheck.py` 复跑·台账 §七 复评（5 分制·新增 Interaction 轴）。
+
 - **C 阶段（B 收官后另立战役，须再确认）**：`llms.txt`＋本机 MCP server 范式（inspect_person/inspect_place/search_lineage 三工具概念）＋「文本→深链」自动转写；通用模式以**提案**回流 `<HF>/updates/`。
 
 > **F.1a 实测基线（2026-10-30·持久脚本 `scripts/f1a_route_audit.py`）**：`person_trajectories.yaml` 178 人 · **177 人带 route · 936 站点**；**站级逐字引文 0/936（0.0%）**——此即 S2「点人溯事」每站引文卡片补源工作量基线。人物级 `source` 在场 **174/177（98.3%）**、`verified` **143/177（80.8%）**、**34 位无 verified**（含 `person_000a`）标〔待核〕。F.3 逐站补源须回源一手·人物级 source 为起点非终点。
