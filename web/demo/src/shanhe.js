@@ -534,6 +534,113 @@
   }
   if (lgeoTgl) lgeoTgl.addEventListener('change', function () { renderLinGeo(linCur); });
 
+  /* ══ G.2 全法脉网络总览（d3-force 力导向·80 点/97 边·只画现存边·零臆造）══
+     节点半径＝直系出度·色＝所属支系·实线=师承/虚线=影响/淡线=同期·拖拽·缩放·邻域高亮·点节点聚焦直系子网络 */
+  var NET = S.lineage_net || { nodes: [], links: [], branches: [] };
+  var nSvg = document.getElementById('lineage-net-svg');
+  var NET_BCOL = {}; (NET.branches || []).forEach(function (b) { NET_BCOL[b.name] = b.color; });
+  var NET_ADJ = {}, NET_CHILD = {};
+  (NET.links || []).forEach(function (l) {
+    (NET_ADJ[l.source] = NET_ADJ[l.source] || {})[l.target] = 1;
+    (NET_ADJ[l.target] = NET_ADJ[l.target] || {})[l.source] = 1;
+    if (l.rel === 'MASTER_OF') (NET_CHILD[l.source] = NET_CHILD[l.source] || {})[l.target] = 1;
+  });
+  function netSubtree(id) { var seen = {}, st = [id]; while (st.length) { var c = st.pop(); if (seen[c]) continue; seen[c] = 1; var ch = NET_CHILD[c] || {}; for (var k in ch) st.push(k); } return seen; }
+  var netSim = null, netG = null, netNodeSel = null, netLinkSel = null, netZoom = null, netFocus = null;
+  var NW = 960, NH = 620;
+  function netRad(d) { return 4 + Math.sqrt(d.out || 0) * 2.4; }
+  function netCol(d) { return NET_BCOL[(d.branches || [])[0]] || '#8d5a2b'; }
+  function netDraw() {
+    if (!netLinkSel || !netNodeSel) return;
+    netLinkSel.attr('x1', function (l) { return l.source.x; }).attr('y1', function (l) { return l.source.y; })
+      .attr('x2', function (l) { return l.target.x; }).attr('y2', function (l) { return l.target.y; });
+    netNodeSel.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+  }
+  function netTipHtml(d) {
+    var nm = d.name || ('〔待核〕' + d.id), br = (d.branches || []).join('·');
+    return '<b>' + esc(nm) + '</b><br>支系：' + esc(br || '—') +
+      '<br>直系弟子出度 ' + (d.out || 0) + ' · 受法入度 ' + (d.in || 0) +
+      (d.verified ? '' : '<br><span style="color:#e0a">未具名·仅见边注〔待核〕</span>');
+  }
+  function applyFocus() {
+    if (!netNodeSel) return;
+    if (!netFocus) { netNodeSel.classed('dim', false); netLinkSel.classed('dim', false); return; }
+    var sub = netSubtree(netFocus);
+    netNodeSel.classed('dim', function (n) { return !sub[n.id]; });
+    netLinkSel.classed('dim', function (l) { return !(sub[l.source.id] && sub[l.target.id]); });
+  }
+  function renderNet() {
+    if (!nSvg) return;
+    var DS = window.d3;
+    if (!DS) { nSvg.innerHTML = '<text x="14" y="24" font-size="12" fill="#b00">D3 未加载·网络图不可用（静态兜底边表见下方）</text>'; return; }
+    netFocus = null;
+    var svgS = DS.select(nSvg);
+    svgS.selectAll('*').remove();
+    netG = svgS.append('g').attr('class', 'net-g');
+    var nodes = (NET.nodes || []).map(function (n) { return Object.assign({}, n); });
+    var links = (NET.links || []).map(function (l) { return Object.assign({}, l); });
+    if (!netSim) {
+      netSim = DS.forceSimulation()
+        .force('link', DS.forceLink().id(function (d) { return d.id; })
+          .distance(function (l) { return l.rel === 'MASTER_OF' ? 46 : (l.rel === 'INFLUENCED' ? 72 : 96); }).strength(0.5))
+        .force('charge', DS.forceManyBody().strength(-150).distanceMax(300))
+        .force('center', DS.forceCenter(NW / 2, NH / 2))
+        .force('x', DS.forceX(NW / 2).strength(0.05))
+        .force('y', DS.forceY(NH / 2).strength(0.09))
+        .force('collide', DS.forceCollide().radius(function (d) { return netRad(d) + 6; }));
+    }
+    netLinkSel = netG.append('g').selectAll('line.net-link').data(links).enter().append('line')
+      .attr('class', function (l) { return 'net-link' + (l.rel === 'INFLUENCED' ? ' inf' : (l.rel === 'CONTEMPORARY' ? ' contemp' : '')); })
+      .attr('stroke', function (l) { return l.color || '#999'; })
+      .attr('data-branch', function (l) { return l.branch; })
+      .attr('data-rel', function (l) { return l.rel; });
+    netNodeSel = netG.append('g').selectAll('g.net-node').data(nodes).enter().append('g')
+      .attr('class', 'net-node').attr('data-branch', function (d) { return (d.branches || [])[0] || ''; })
+      .attr('data-id', function (d) { return d.id; })
+      .call(DS.drag()
+        .on('start', function (ev, d) { var np = document.getElementById('net-phys'); if (np && np.checked && !ev.active) netSim.alphaTarget(0.25).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag', function (ev, d) { d.fx = ev.x; d.fy = ev.y; var np = document.getElementById('net-phys'); if (np && !np.checked) { d.x = ev.x; d.y = ev.y; netDraw(); } })
+        .on('end', function (ev, d) { var np = document.getElementById('net-phys'); if (np && np.checked) { if (!ev.active) netSim.alphaTarget(0); d.fx = null; d.fy = null; } else { d.x = d.fx; d.y = d.fy; netDraw(); } }));
+    netNodeSel.append('circle').attr('r', netRad).attr('fill', netCol).attr('stroke', '#fff').attr('stroke-width', 1);
+    netNodeSel.append('text').attr('class', 'net-label').attr('x', function (d) { return netRad(d) + 3; }).attr('y', 3)
+      .text(function (d) { return (d.name || d.id) + (d.verified ? '' : '〔待核〕'); });
+    netNodeSel.on('mouseenter', function (ev, d) {
+      var nb = NET_ADJ[d.id] || {};
+      netNodeSel.classed('dim', function (n) { return !(n.id === d.id || nb[n.id]); });
+      netLinkSel.classed('dim', function (l) { return !(l.source.id === d.id || l.target.id === d.id); });
+      showTip(netTipHtml(d), ev.clientX, ev.clientY);
+    }).on('mousemove', function (ev) { var t = tip; if (t && !t.hidden) { var r = t.getBoundingClientRect(); showTip(t.innerHTML, ev.clientX - 14, ev.clientY - 14); } })
+      .on('mouseleave', function () { hideTip(); applyFocus(); })
+      .on('click', function (ev, d) { ev.stopPropagation(); netFocus = (netFocus === d.id ? null : d.id); applyFocus(); });
+    netSim.nodes(nodes);
+    netSim.force('link').links(links);
+    netSim.on('tick', netDraw);
+    netSim.alpha(1).restart();
+    if (!netZoom) {
+      netZoom = DS.zoom().scaleExtent([0.3, 4]).on('zoom', function (ev) { netG.attr('transform', ev.transform); });
+      svgS.call(netZoom);
+    }
+    var nl = document.getElementById('net-labels');
+    netNodeSel.selectAll('text.net-label').style('display', (nl && nl.checked) ? null : 'none');
+  }
+  (function wireNet() {
+    var nb = document.getElementById('net-reset');
+    if (nb) nb.addEventListener('click', function () {
+      netFocus = null; applyFocus();
+      if (nSvg && window.d3 && netZoom) window.d3.select(nSvg).transition().duration(300).call(netZoom.transform, window.d3.zoomIdentity);
+    });
+    var nl = document.getElementById('net-labels');
+    if (nl) nl.addEventListener('change', function () {
+      if (netNodeSel) netNodeSel.selectAll('text.net-label').style('display', nl.checked ? null : 'none');
+    });
+    var np = document.getElementById('net-phys');
+    if (np) np.addEventListener('change', function () {
+      if (!netSim) return;
+      if (np.checked) netSim.alpha(0.3).restart();
+      else { netSim.stop(); (netSim.nodes() || []).forEach(function (d) { d.fx = d.x; d.fy = d.y; }); }
+    });
+  })();
+
   /* ══ F.5 视觉持平：连续时间滑轨 · hover tooltip · 全局搜索（/ 聚焦）══ */
   if (tlRange) tlRange.addEventListener('input', function () {
     var snap = nearestSnapshot(parseInt(this.value, 10));
@@ -602,6 +709,7 @@
       renderTree(def); setSel(def);
     }
   })();
+  renderNet();   /* G.2 全法脉网络总览 */
 
   /* ── S6 深链初始化：读 URL 参数 person/station/year/master/temple（零坐标） ── */
   (function initFromURL() {

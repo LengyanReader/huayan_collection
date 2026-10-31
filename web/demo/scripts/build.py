@@ -1002,6 +1002,23 @@ def build_shanhe_page():
                '<table><tr><th>代</th><th>师 → 徒</th><th>传承性质</th><th>分支</th><th>依据/边注</th></tr>%s</table></details>\n'
                % (_esc(m['name']), len(lin['trees'][m['id']]), trows))
 
+    # ── G.2 全法脉网络边表（信息無损·全 97 现存边逐条在场·零自环·未具名标〔待核〕）──
+    _nid2 = {nd['id']: nd for nd in net['nodes']}
+    def _ndsp(pid):
+        nd = _nid2.get(pid) or {}
+        nm = nd.get('name')
+        return _esc(nm) if nm else ('<span style="color:#b00">〔待核〕' + _esc(str(pid)) + '</span>')
+    _rel_cn = {'MASTER_OF': '直系师承', 'INFLUENCED': '私淑／影响', 'CONTEMPORARY': '同期交融'}
+    nrows = ''
+    for e in net['links']:
+        nrows += ('<tr><td>%s</td><td>%s → %s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+                  % (_esc(e['rel']), _ndsp(e['source']), _ndsp(e['target']),
+                     _rel_cn.get(e['rel'], _esc(e['rel'])), _esc(e['branch']), _esc(e['note'] or '')))
+    fb += ('<details style="margin:6px 0"><summary>🕸️ 全法脉网络边表（G.2·d3-force 数据源·%d 点/%d 边·只读投影）</summary>'
+           '<table><tr><th>关系</th><th>源 → 目标</th><th>传承性质</th><th>分支</th><th>依据/边注</th></tr>%s</table>'
+           '<p class="lic">全部现存边（已剔 1 自环）逐条在场·无臆造·无遗漏；未具名 id 标〔待核〕。</p></details>\n'
+           % (len(net['nodes']), len(net['links']), nrows))
+
     # S3 地谱追溯卡（每要地一卡·沿革/华严事件/关联人物/信度/依据/链接 全字段）
     for t in temples_out:
         ev = '、'.join(_esc(x) for x in t['events']) or '—'
@@ -1076,6 +1093,19 @@ details{font-size:0.9em}summary{cursor:pointer;color:var(--text2)}
 .lg-node.dim,.lg-edge.dim{opacity:0.15}
 .lg-node text{font-size:11px;fill:#3a2f1e}
 .lg-root text{font-weight:bold}
+/* ══ G.2 全法脉网络总览（d3-force 力导向图）══ */
+#net-box{margin-top:6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+#net-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:2px 0 6px;font-size:0.86em}
+#net-reset{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:4px 12px;font-size:0.82em;cursor:pointer}
+#net-hint{font-size:0.74em;color:var(--text2)}
+#lineage-net-svg{width:100%;height:auto;display:block;background:#f6f1e7;border-radius:8px;cursor:grab}
+.net-node{cursor:pointer}
+.net-node text{font-size:9px;fill:#4a4033;pointer-events:none}
+.net-node.dim,.net-link.dim{opacity:0.1}
+.net-link{stroke-width:1.4;fill:none}
+.net-link.inf{stroke-dasharray:5,3}
+.net-link.contemp{stroke-width:1;opacity:0.3}
+.net-node.hl circle{stroke:#c0392b;stroke-width:2}
 /* ══ F.5 视觉持平批 · 羊皮纸美术方向 + 交互打磨（对标 jiangshan-map·clean-room）══ */
 :root{--parch:#f3ecdd;--ink:#3a2f1e;--ink2:#6b5a3a;--verm:#a83a24;--gold2:#b8863c}
 body{background:
@@ -1179,6 +1209,17 @@ body{background:
     <svg id="lineage-svg" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg"></svg>
     <p style="font-size:0.74em;color:var(--text2)">直系师承＝实线；私淑／隔代影响＝虚线（依客观传承·不并置同等）。〔待核〕＝person_trajectories 无 name 记录、仅见边注，不臆造。数据源 lineages.json＋complete_lineage_chart.yaml（只读投影·未改 SSOT）。</p>
   </div>
+  <div id="net-box">
+    <h3 style="font-size:1em;margin:14px 0 4px">全法脉网络总览（G.2 · d3-force · __NET_N__ 节点/__NET_E__ 边 · 跨支系显影）</h3>
+    <div id="net-bar">
+      <button id="net-reset" title="复位全景·取消聚焦">↺ 复位全景</button>
+      <label style="font-size:0.8em"><input type="checkbox" id="net-labels" checked> 显名标签</label>
+      <label style="font-size:0.8em"><input type="checkbox" id="net-phys" checked> 物理力导向（关→可手动拖拽定格）</label>
+      <span id="net-hint">节点半径＝直系弟子出度·色＝所属支系·实线=师承／虚线=影响／淡线=同期·拖拽平移·滚轮缩放·悬停高亮一阶邻域·点节点聚焦其直系子网络</span>
+    </div>
+    <svg id="lineage-net-svg" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p style="font-size:0.74em;color:var(--text2)">只画现存 __NET_E__ 条边（98 剔 1 自环 person_050→person_050）·不臆造著述传导（TRANSMITTED_TEXT 待逐字回源）。节点色按所属支系·未具名 id 标〔待核〕。数据源 lineages.json（全库只读投影·未改 SSOT）。</p>
+  </div>
   <div id="fallback">
     <h3 style="font-size:1em">静态兜底 · 全字段无损在场（信息無损惯例）</h3>
     __FALLBACK__
@@ -1197,6 +1238,7 @@ body{background:
                 .replace('__PERSON_OPTIONS__', person_options)
                 .replace('__LINEAGE_OPTIONS__', lineage_options)
                 .replace('__LEGEND__', legend_chips)
+                .replace('__NET_N__', str(len(net['nodes']))).replace('__NET_E__', str(len(net['links'])))
                 .replace('__CW__', str(GEO_CW)).replace('__CH__', str(GEO_CH))
                 .replace('__FALLBACK__', fb)
                 .replace('__DATA_JSON__', data_json)
