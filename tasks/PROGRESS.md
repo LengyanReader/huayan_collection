@@ -1801,3 +1801,9 @@ done(
 **blocked**：**F.6c 著述传导边可视化**——schema 契约（`lineage.schema.json`·TRANSMITTED_TEXT 入 enum·F.1）就绪·live `lineages.json` **0 条实边**。依「不编造·逐字回源」铁律，须人工补录各师→弟子所传著述边（含 source 锚点·reliability）后方可视化，归后续独立批。**next 待定**（用户方向）：push 累计 4 commit（F.4/F.5/F.6a/F.6b）·或 C 阶段（`llms.txt`＋本机 MCP server `inspect_person/inspect_place/search_lineage`）·或其他。
 
 **sources**：`web/demo/scripts/build.py`（`_f6_person_geo`·`_f6b_deeplink_map`·`LIN_DEEPLINK_JS_TMPL`）·`web/demo/src/shanhe.js`（`renderLinGeo`）·`web/demo/famai/shanhe.html`·`scripts/verify_demo.py`·`data/events/person_trajectories.yaml`·`data/knowledge_graph/lineages.json`·`data/knowledge_graph/complete_lineage_chart.yaml`·`tasks/PLAN.md` §四/§七·`.harness/decisions.md` #16。
+
+### L.250 · 会读深化批十七（第十八部）收口 ✅ · 2026-10-31
+
+**done**（观察到）：P18 §5 已极富（2729 行·六窗覆盖全谱·品级讲记 47 集 L.224 在案·5.5 表 737 行），本轮补 **【会读启发】**（4条：**十法矩阵=收束+转运双义**/**品小而窗全**——六窗覆盖全谱正见收束品地位/**三源同指**——品级讲记结会语与澄观疏末第三會竟·法藏「此上第三會竟」合流/十法矩阵=能力清单之总表·纵向是法横向是验收）。**闸门全绿**：build 58 files｜check OK｜verify_demo rc=0｜diff-check OK。
+
+**里程碑**：**前三会 18 部会读深化战役 L.234–L.250 十七批全毕**（P1 附录八汇览体例另议；P2–P18 十七部四件套/要点卡/对照/启发+§5.5 总汇全覆盖）。**next**：L.251 战役收口终审（18 部矩阵＋门禁电池）→ 回到第四会余程。
