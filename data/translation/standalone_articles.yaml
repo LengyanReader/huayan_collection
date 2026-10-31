@@ -541,6 +541,23 @@ others:
   views:
   - avatamsaka-studies
 
+- id: huayan-shiwujincang-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 27
+  icon: 💎
+  title: 九九华严第二十二品 十无尽藏品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Twenty-Two: The Ten Inexhaustible Treasuries'
+  title_sub: 第四会终曲·卷二十一～二十二·品文16956·长行83段+偈组11·功德林续说十藏（信/戒/惭/愧/闻/施/慧/念/持/辩=十行之所依体）·藏27功德林续说开篇实测·L.254核心成文
+  updated_at: '2026-10-31'
+  doc: docs/经学文献/华严经细读/第四会_夜摩天宫_差别因果周/华严经细读_第二十二部_十无尽藏品.md
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
+
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
