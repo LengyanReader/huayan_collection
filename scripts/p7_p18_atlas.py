@@ -2896,7 +2896,272 @@ P19 = {
     "shu_note": "> **〔读法〕** 本品之数以「复沓」为性：最吉祥 ×10、百万 ×25、善来 ×3——**复沓即仪式之节拍**，非修辞冗余。三个数（10/25/3）各司一职：10 表十佛遍、25 表庄严遍、3 表敬仪遍。**凡引必注口径**（品文净 782，品题另 7）。",
 }
 
-ALL = [P2, P3, P4, P5, P19, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
+# ----------------------------------------------------------------------------
+# 第二十部　夜摩宫中偈赞品（第四会·卷第十九次品）
+# ----------------------------------------------------------------------------
+P20 = {
+    "tag": "P20",
+    "path": os.path.join(DIR4, "华严经细读_第二十部_夜摩宫中偈赞品.md"),
+    "hui": "第四会（夜摩天宫·十行位）",
+    "dingwei": "本品为第四会「赞德显体」——十林菩萨（功德林·慧林·勝林…智林）各承佛威力说十偈赞佛，纯偈赞体（无长行说法），一味以「赞」为法，故读法以**十赞十面**为纲。",
+    "yiju": "**十菩萨各以自位赞佛——承佛威力×10 之齐整即本品之眼**；觉林「工画师」喻为全经名段（一切唯心造），智林「但随其自心」收束全品。",
+    "sanwen": "① 十菩萨何以皆名「林」？② 觉林「工画师」喻何以被后世引为华严唯心义之代表作？③ 十组偈各 10 偈（功德林 12）之齐整是编集还是义理？",
+    "tiyao": "本品占**卷第十九次品**，剥校勘 **CJK 2,543 字**（含品题 9 字）。结构为**序＋十赞**：序段（佛神力集众·十林菩萨名录 415 字）→十菩萨各「承佛威力……而说颂言」→偈组各 200 CJK＝10 偈（功德林组 240＝12 偈）→「承佛威力」**×10**。义理顶点＝觉林「工画师」喻（§4.1）。",
+    "xufa": "先观图 〇-1 以得其齐整（十林菩萨×十偈之矩阵），次观图 〇-2 以得其义理（工画师喻之色心四句），次读〇之二.3 坐标、.6 数等，然后入 §二逐段。**赞既明，行始可入。**",
+    "en_map": "Ten 'grove' bodhisattvas each offer ten verses of praise, introduced by a prose section listing their names. The ninth group — the Painter metaphor — is the sūtra's most famous passage on mind ('The mind is like a skilled painter'). Fig. 0-1 maps the ten-by-ten verse matrix; Fig. 0-2 unpacks the painter's fourfold negation of color and element.",
+    "figs": [
+        {
+            "n": 1,
+            "title": "十林十偈矩阵图",
+            "what": "十赞之齐整结构",
+            "one": "10 菩萨×10 偈（功德林 12）＝102 偈",
+            "svg": """<svg viewBox="0 0 1000 420" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">十林菩萨十偈矩阵：承佛威力×10</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">一格＝一偈；功德林独 12 偈（首组总叙）；合计 102 偈</text>
+<circle cx="70" cy="100" r="24" fill="#d4a03c" stroke="#b8863c"/><text x="70" y="105" text-anchor="middle" font-size="9" fill="#fff">功</text>
+<rect x="100" y="80" width="240" height="40" fill="#e6dbc5" stroke="#c9b98f"/><text x="220" y="104" text-anchor="middle" font-size="10.5" fill="#5a5147">12 偈（总叙·佛光普照·佛坐夜摩）</text>
+<circle cx="70" cy="160" r="24" fill="#b8863c" stroke="#7a5a28"/><text x="70" y="165" text-anchor="middle" font-size="9" fill="#fff">慧</text>
+<rect x="100" y="140" width="200" height="40" fill="#f6efe1" stroke="#c9b98f"/><text x="200" y="164" text-anchor="middle" font-size="10.5" fill="#5a5147">10 偈（难遇·放光普照）</text>
+<circle cx="70" cy="220" r="24" fill="#b8863c" stroke="#7a5a28"/><text x="70" y="225" text-anchor="middle" font-size="9" fill="#fff">勝</text>
+<rect x="100" y="200" width="200" height="40" fill="#f6efe1" stroke="#c9b98f"/><text x="200" y="224" text-anchor="middle" font-size="10.5" fill="#5a5147">10 偈（孟夏赫日·光不可量）</text>
+<circle cx="70" cy="280" r="24" fill="#b8863c" stroke="#7a5a28"/><text x="70" y="285" text-anchor="middle" font-size="9" fill="#fff">畏</text>
+<rect x="100" y="260" width="200" height="40" fill="#f6efe1" stroke="#c9b98f"/><text x="200" y="284" text-anchor="middle" font-size="10.5" fill="#5a5147">10 偈（不离此座遍一切处）</text>
+<text x="330" y="350" font-size="11.5" fill="#8a7a5e">余六林菩萨（惭愧·精进·力·行·觉·智）各 10 偈同式；觉林「工画师」＝ lg9；智林「但随其自心」＝ lg10 收束</text>
+<text x="70" y="380" text-anchor="middle" font-size="11" font-weight="bold" fill="#5a5147">承佛威力 ×10</text>
+</svg>""",
+            "cap": "十林菩萨十偈矩阵（§2.0–2.11 实测）：功德林 12 偈（总叙·首组）·余九组各 10 偈；「承佛威力」×10 即齐整之节拍。",
+            "en": "The ten-grove matrix: each bodhisattva offers exactly ten verses (twelve for the lead grove), 'by the Buddha's majesty' ×10 as the chapter's rhythmic pulse.",
+            "dufa": [
+                "先看首组之**金色**：功德林独 12 偈——首组总叙佛光与坐，为余九组之纲。",
+                "再看**同构**：余九组各 10 偈——每组起于「承佛威力」、结于末偈，齐整即节拍。",
+                "末看觉林一格：**工画师喻**居第九组（lg9），全品之义理顶点——下一图专释。",
+            ],
+        },
+        {
+            "n": 2,
+            "title": "工画师喻·色心四句图",
+            "what": "觉林菩萨之义理顶点",
+            "one": "大种中无色·色中无大种·不离大种·色可得立",
+            "svg": """<svg viewBox="0 0 1000 360" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">觉林菩萨·工画师喻：色心四句遮表</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">大种＝地水火风（法性）；彩色＝五蕴（现象）；画师＝心</text>
+
+<rect x="120" y="80" width="340" height="50" rx="6" fill="#e6dbc5" stroke="#b8863c"/>
+<text x="290" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#5a3d10">「大種中無色」</text>
+<text x="290" y="124" text-anchor="middle" font-size="10" fill="#8a7a5e">法性中无现象（遮：体不即相）</text>
+
+<rect x="540" y="80" width="340" height="50" rx="6" fill="#e6dbc5" stroke="#b8863c"/>
+<text x="710" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#5a3d10">「色中無大種」</text>
+<text x="710" y="124" text-anchor="middle" font-size="10" fill="#8a7a5e">现象中无法性（遮：相不即体）</text>
+
+<rect x="120" y="160" width="340" height="50" rx="6" fill="#d4a03c" stroke="#b8863c"/>
+<text x="290" y="188" text-anchor="middle" font-size="12" font-weight="bold" fill="#5a3d10">「而不離大種」</text>
+<text x="290" y="204" text-anchor="middle" font-size="10" fill="#5a3d10">现象不离法性（表：相依于体）</text>
+
+<rect x="540" y="160" width="340" height="50" rx="6" fill="#d4a03c" stroke="#b8863c"/>
+<text x="710" y="188" text-anchor="middle" font-size="12" font-weight="bold" fill="#5a3d10">「色可得安立」</text>
+<text x="710" y="204" text-anchor="middle" font-size="10" fill="#5a3d10">现象可得安立（表：体能立相）</text>
+
+<text x="500" y="250" text-anchor="middle" font-size="13" font-weight="bold" fill="#7a5a28">→ 心如工畫師 · 畫種種五陰 · 一切世間中 · 無法而不造</text>
+<text x="500" y="276" text-anchor="middle" font-size="11.5" fill="#5a5147">→ 若人欲了知 · 三世一切佛 · 應觀法界性 · 一切唯心造</text>
+<text x="500" y="310" text-anchor="middle" font-size="11.5" fill="#8a7a5e">四句遮表＝不即不离之中道结构；末二偈＝唯心造之正表（全经被引最频之偈）</text>
+<text x="500" y="338" text-anchor="middle" font-size="11" fill="#8a7a5e">〔本文判断〕此四句结构在 §7 数科 L2 代数层为「互斥+互依」之逻辑关系（§第四部 K&#8342;&#8342;&#8342;&#8342; 之同构雏形）</text>
+</svg>""",
+            "cap": "觉林菩萨工画师喻之色心四句遮表结构（§2.10·lg9 全引）——大种与色之「不即不离」即心与世间之「不即不离」；末偈「一切唯心造」为四句之正表总结。",
+            "en": "The fourfold negation-affirmation of element and color in the Painter metaphor: element contains no color, color contains no element, yet color cannot depart from element, and color can thus be established — culminating in 'all is made by mind alone.'",
+            "dufa": [
+                "先看上两框（浅色·遮）：**体不即相·相不即体**——大种与色互不包含。",
+                "再看下两框（金色·表）：**相依于体·体能立相**——不离而可得。",
+                "末读中心线二偈：**工画师→五蕴→唯心造**——从喻到义，一步到位。",
+            ],
+        },
+    ],
+    "weici_note": "本品在第四会居「赞德显体」位：前品升殿（由致），本品十菩萨赞（显体），次品十行（正宗）。",
+    "weici": [
+        ["昇夜摩天宮品（品 19）", "卷十九首", "第四会·由致", "不离而升·感应道交", "本品之升殿前提"],
+        ["十行品（品 21）", "卷二十起", "第四会·正宗", "十波罗蜜行位化", "本品十林之首功德林即说主"],
+        ["十无尽藏品（品 22）", "卷二十一", "第四会·胜进", "十藏体性", "本品十赞之义理所依"],
+        ["藏译 Toh 44 ch 25", "德格 035 卷 fol 299b（L.201 TOC）", "开篇「དེ་ནས་སངས་རྒྱས་ཀྱི་མཐུས…」（佛神力·十方菩萨多来）〔L.252 实测〕", "与本品序段「佛神力故……来集会」直接相应", "对应判读〔本文判断〕·逐字对勘未作〔待核〕"],
+        ["六十〈菩薩雲集妙勝殿上說偈品第十〉", "卷七（存段）", "晋译·品次 20→10", "「妙胜殿」＝夜摩宫殿名", "殿名体系两译不同（§6.1）"],
+    ],
+    "teshe_note": "本品之形式特征皆与邻品对看而得；数字之出处逐条标注。",
+    "teshe": [
+        ["篇幅", "2,543 CJK／6 段＋10 偈组（§7.1）", "品 19 的 782·品 21 的 11,806", "短品，纯偈赞体"],
+        ["偈赞体例", "承佛威力 ×10·组组 10 偈（功德林 12）", "品 14 同构（X 首→X 林）", "承佛威力＝齐整节拍"],
+        ["义理顶点", "觉林工画师喻（lg9·§4.1）", "品 1 无对应段", "色心四句遮表·全经名段"],
+        ["十菩萨名", "十「林」（功德/慧/勝…智）", "品 14 十「首」（佛力/自在…）", "首→林＝信位→行位之命名学"],
+        ["六十侧", "〈菩薩雲集妙勝殿上說偈品第十〉", "八十品次 20", "品次 20↔10·殿名体系两译异"],
+    ],
+    "dufa5": [
+        ["矩阵读法", "图 〇-1 → §2.0 总表", "结构读者", "十林×十偈之齐整与功德林独多之辨"],
+        ["义理读法", "图 〇-2 → §4.1 工画师", "义理读者", "色心四句遮表·唯心造之古典对应"],
+        ["对勘读法", "§6.1＋〇之二.5", "版本学读者", "品次 20↔10·妙胜殿体系两译异"],
+        ["会读读法", "§5 各家存目＋5.4 启发", "会读者", "四家存目现状与深化方向"],
+        ["联品读法", "§3.3 同构表·§3.2 启后", "贯通读者", "首→林之命名学·工画师→十行义理预备"],
+    ],
+    "shu": [
+        ["**T0 经文明文**", "序段 415 字＋偈组 10 组（各 200/240 CJK）", "§2.0–2.11（程序注入 0 手抄）", "结构总量"],
+        ["**T0 经文明文**", "「承佛威力」×10", "§2.0–2.11 逐组实测", "齐整之节拍"],
+        ["**T0 本文实测**", "2,543 字／独字 ~180／「百万」0 见", "§7.1（剥校勘）", "短品纯偈赞体"],
+        ["**T1 注疏**", "梵题「如來於須彌頂神變集會菩薩說偈品」·集众七事", "`X0221` 品 20（§5.2″）", "品名与结构之判"],
+        ["**T0·六十本实测**", "〈菩薩雲集妙勝殿上說偈品第十〉", "`T09n0278` 卷七（§6.1）", "品次 20↔10·殿名体系异"],
+        ["**T0·藏本实测**", "藏 25 开篇「དེ་ནས་སངས་རྒྱས་ཀྱི་མཐུས」佛神力·十方菩萨多来", "L.201 TOC（fol 299b）", "开篇相应·逐字对勘未作"],
+    ],
+    "shu_note": "> **〔读法〕** 本品之数以「**齐整**」为性：承佛威力 ×10、偈组各 10 偈、菩萨各 1 位——齐整非单调，是**十行之十面镜**；觉林一组独出「工画师」，如镜中之镜。",
+}
+
+
+# ----------------------------------------------------------------------------
+# 第二十一部　十行品（第四会·卷第二十～二十一）
+# ----------------------------------------------------------------------------
+P21 = {
+    "tag": "P21",
+    "path": os.path.join(DIR4, "华严经细读_第二十一部_十行品.md"),
+    "hui": "第四会（夜摩天宫·十行位）",
+    "dingwei": "本品为第四会「正宗」——功德林入善思惟三昧，十方万佛同名加持，起定说十波罗蜜之行位化（欢喜→真实），一味以「行」为法，故读法以**十行十度**为纲。",
+    "yiju": "**十波罗蜜之行位化**——欢喜（檀）→饶益（戒）→无违逆（忍）→无屈挠（进）→离痴乱（禅）→善现（慧）→无著（方便）→难得（愿）→善法（力）→真实（智）；品 20 觉林「心画师」为本品之义理前提。",
+    "sanwen": "① 十行何以一一对应十波罗蜜？② 欢喜居首之义何在？③ 李通玄「都会断惑次第」独门何所表？",
+    "tiyao": "本品占**卷第二十～二十一**，剥校勘 **CJK 11,806 字**。结构：**入定加持**（功德林入善思惟三昧·万佛同名加持）→**总标十行**→**十行各说**（各段含行相与利益）→**重颂**（2,828 CJK·一心敬礼十力尊起）。十行＝十波罗蜜之行位化：檀·戒·忍·进·禅·慧·方便·愿·力·智。",
+    "xufa": "先读 §2.0 十行总表以得其位（十度配位），次入 §2.3–2.12 逐行细读，末观重颂之偈体总持。**位既明，行始可拟。**",
+    "en_map": "The ortho dox chapter of the fourth assembly: Dharma-Grove Bodhisattva enters samādhi, is empowered by ten thousand Buddhas of the same name, and expounds the ten practices — each mapped to one of the ten pāramitās. A 2,828-character recapitulation verse closes the chapter.",
+    "figs": [
+        {
+            "n": 1,
+            "title": "十行·十波罗蜜对照图",
+            "what": "十行与十度之配位",
+            "one": "欢喜=檀→饶益=戒→…→真实=智",
+            "svg": """<svg viewBox="0 0 1000 420" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">十行品·十波罗蜜行位化对照</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">左＝十行名（本品）；右＝十波罗蜜（义配）</text>
+<text x="60" y="90" font-size="12" fill="#5a5147">一 歡喜行</text><rect x="280" y="76" width="180" height="20" fill="#d4a03c" stroke="#b8863c"/><text x="470" y="90" font-size="11" fill="#5a5147">檀波罗蜜（布施）</text>
+<text x="60" y="124" font-size="12" fill="#5a5147">二 饒益行</text><rect x="280" y="110" width="180" height="20" fill="#c9a25a" stroke="#b8863c"/><text x="470" y="124" font-size="11" fill="#5a5147">戒波罗蜜（持戒）</text>
+<text x="60" y="158" font-size="12" fill="#5a5147">三 無違逆行</text><rect x="280" y="144" width="180" height="20" fill="#b8863c" stroke="#7a5a28"/><text x="470" y="158" font-size="11" fill="#5a5147">忍波罗蜜（忍辱）</text>
+<text x="60" y="192" font-size="12" fill="#5a5147">四 無屈撓行</text><rect x="280" y="178" width="180" height="20" fill="#b8863c" stroke="#7a5a28"/><text x="470" y="192" font-size="11" fill="#5a5147">进波罗蜜（精进）</text>
+<text x="60" y="226" font-size="12" fill="#5a5147">五 離癡亂行</text><rect x="280" y="212" width="180" height="20" fill="#a8815a" stroke="#7a5a28"/><text x="470" y="226" font-size="11" fill="#5a5147">禅波罗蜜（禅定）</text>
+<text x="60" y="260" font-size="12" fill="#5a5147">六 善現行</text><rect x="280" y="246" width="180" height="20" fill="#8a7a5e" stroke="#7a5a28"/><text x="470" y="260" font-size="11" fill="#5a5147">慧波罗蜜（般若）</text>
+<text x="60" y="294" font-size="12" fill="#5a5147">七 無著行</text><rect x="280" y="280" width="180" height="20" fill="#8a7a5e" stroke="#7a5a28"/><text x="470" y="294" font-size="11" fill="#5a5147">方便波罗蜜</text>
+<text x="60" y="328" font-size="12" fill="#5a5147">八 難得行</text><rect x="280" y="314" width="180" height="20" fill="#e6dbc5" stroke="#c9b98f"/><text x="470" y="328" font-size="11" fill="#5a5147">愿波罗蜜</text>
+<text x="60" y="362" font-size="12" fill="#5a5147">九 善法行</text><rect x="280" y="348" width="180" height="20" fill="#e6dbc5" stroke="#c9b98f"/><text x="470" y="362" font-size="11" fill="#5a5147">力波罗蜜</text>
+<text x="60" y="396" font-size="12" fill="#5a5147">十 真實行</text><rect x="280" y="382" width="180" height="20" fill="#d4a03c" stroke="#b8863c"/><text x="470" y="396" font-size="11" fill="#5a5147">智波罗蜜</text>
+<text x="700" y="200" font-size="11.5" fill="#8a7a5e">前六＝六波罗蜜扩充；</text>
+<text x="700" y="220" font-size="11.5" fill="#8a7a5e">后四（方便·愿·力·智）＝华严增列；</text>
+<text x="700" y="240" font-size="11.5" fill="#8a7a5e">十行即十度之行相化。</text>
+</svg>""",
+            "cap": "十行与十波罗蜜之一一配位（§2.2 总标）；前六承传统六度，后四为华严增列。",
+            "en": "The ten practices mapped one-to-one to the ten pāramitās: the first six extend the traditional six, the last four are the Huayan addition (skillful means, vows, powers, knowledge).",
+            "dufa": [
+                "先看配位：**十行＝十度**，非十种孤立行为而系波罗蜜之行相化。",
+                "再看**色阶**：前六深色（传统）·后四浅色（华严增列）——色彩即义理层。",
+                "末问：为何「欢喜」居首而非「布施」？——欢喜是布施之**相**（心态），非行为本身。",
+            ],
+        },
+    ],
+    "weici_note": "本品在第四会居「正宗」位：承品 20 偈赞（赞德显体），正陈十行；次品十无尽藏说十藏（胜进）。",
+    "weici": [
+        ["夜摩宫中偈赞品（品 20）", "卷十九次品", "第四会·赞德显体", "十林菩萨偈赞 102 偈", "本品之人事预备（功德林=说主）"],
+        ["十无尽藏品（品 22）", "卷二十一～二十二", "第四会·胜进", "十藏（信/戒/惭/愧/…）", "十行之体化"],
+        ["十住品（品 15）", "卷十六", "第三会·正说", "法慧说十住", "位→行之递进（§3.2）"],
+        ["藏译 Toh 44 ch 26", "德格 035 卷 fol 305a", "功德林（ཡོན་ཏན་དང་ལྡན་པ）说十行", "与本品功德林说十行直接相应", "对应判读〔本文判断〕·逐字对勘未作〔待核〕"],
+    ],
+    "teshe_note": "本品之形式特征皆与邻品对看而得。",
+    "teshe": [
+        ["篇幅", "11,806 CJK／44 `<p>`＋重颂 2,828", "品 20 的 2,543", "第四会正宗之体量"],
+        ["十行体例", "各段「佛子！何等为菩萨摩诃萨X行」起·行相＋利益", "品 20 十组各「承佛威力」起", "散文说行·偈体赞佛"],
+        ["配位", "十行＝十波罗蜜", "品 15 十住＝十支", "位（住）与行（行）之法义递进"],
+        ["重颂", "2,828 CJK·一心敬礼十力尊起", "品 17 重颂 121 颂", "偈体总持（行相之偈化）"],
+    ],
+    "dufa5": [
+        ["配位读法", "图 〇-1 → §2.2 总标", "结构读者", "十行×十度之一一配位"],
+        ["义理读法", "§4.1–4.3", "义理读者", "欢喜居首·心画师先声·无生行"],
+        ["对勘读法", "§6.3＋〇之二.5", "版本学读者", "藏 26 功德林开篇相应"],
+        ["会读读法", "§5 各家＋5.4 启发", "会读者", "李通玄断惑地图独门"],
+        ["数据读法", "§7 L1 实测", "数据读者", "11,806 CJK/44 段/重颂 2,828"],
+    ],
+    "shu": [
+        ["**T0 经文明文**", "十行名目（欢喜→真实）", "§2.2（`T10n0279` 总标实点）", "十度配位"],
+        ["**T0 经文明文**", "重颂 2,828 CJK", "§2.13（`<lg>`×1）", "偈体总持"],
+        ["**T0 本文实测**", "11,806 字／44 `<p>`／1 `<lg>`", "§7.1（剥校勘）", "篇幅与信度"],
+        ["**T1 注疏**", "「十行者。行谓行甫。……十身十土皆此所成」", "`T1735` 疏卷二十三（§5.1）", "十行之位判"],
+        ["**T0·藏本实测**", "藏 26 开篇功德林（ཡོན་ཏན་དང་ལྡན་པ）佛神力说十行", "L.201 TOC（fol 305a）", "开篇相应·逐字对勘未作"],
+    ],
+    "shu_note": "> **〔读法〕** 本品之数以「**配位**」为性：十行即十度、一度一行——数即义、义即数；**行相虽广，不出十度**。",
+}
+
+
+# ----------------------------------------------------------------------------
+# 第二十二部　十无尽藏品（第四会·卷第二十一～二十二）
+# ----------------------------------------------------------------------------
+P22 = {
+    "tag": "P22",
+    "path": os.path.join(DIR4, "华严经细读_第二十二部_十无尽藏品.md"),
+    "hui": "第四会（夜摩天宫·十行位）",
+    "dingwei": "本品为第四会终曲——功德林续说十藏（信·戒·惭·愧·闻·施·慧·念·持·辩），一味以「藏」为法：藏者含摄无尽，十行之体归于此。读法以**行→藏之体用转**为纲。",
+    "yiju": "**十藏收十行之体**——行（品 21）是藏之显，藏（本品）是行之体；十无尽者，每一藏遍法界虚空界而无边际。",
+    "sanwen": "① 十藏与十行如何一一对应？② 惭/愧何以分立为二藏？③ 「无尽」是数量义还是体性义？",
+    "tiyao": "本品占**卷第二十一～二十二**，剥校勘 **CJK 16,956 字**。长行 **83 段**＋偈组 **11**（重颂 2,280 CJK）。结构：功德林续说→**总标十藏**→十藏各说（各段含定义＋十义分疏＋利益）→重颂。十藏＝十波罗蜜之**含摄化**（行重起修·藏重含摄）。",
+    "xufa": "先读 §2.0 十藏总表以得其体（十藏配十行），次入 §2.2–2.11 逐藏细读，末观重颂。**体既明，回向始可通（次会十回向）。**",
+    "en_map": "The closing chapter of the fourth assembly: Dharma-Grove Bodhisattva continues with the ten 'treasuries' that underlie the ten practices — faith, morality, modesty, shame, learning, generosity, wisdom, mindfulness, retention, and eloquence. Each treasury is inexhaustible, filling all of space.",
+    "figs": [
+        {
+            "n": 1,
+            "title": "十藏·十行配位图",
+            "what": "十藏与十行之体用配",
+            "one": "信藏↔欢喜行·戒藏↔饶益行…辩藏↔真实行",
+            "svg": """<svg viewBox="0 0 1000 320" width="100%" style="max-width:1000px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+<text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">十藏·十行体用配位</text>
+<text x="500" y="46" text-anchor="middle" font-size="11.5" fill="#8a7a5e">左＝十藏（本品·体）；右＝十行（品 21·用）；线＝一一对应</text>
+<text x="30" y="90" font-size="11.5" fill="#5a5147">一 信藏</text><line x1="120" y1="86" x2="380" y2="86" stroke="#b8863c"/><text x="400" y="90" font-size="11.5" fill="#5a5147">欢喜行（檀）</text>
+<text x="30" y="120" font-size="11.5" fill="#5a5147">二 戒藏</text><line x1="120" y1="116" x2="380" y2="116" stroke="#b8863c"/><text x="400" y="120" font-size="11.5" fill="#5a5147">饶益行（戒）</text>
+<text x="30" y="150" font-size="11.5" fill="#5a5147">三 慚藏</text><line x1="120" y1="146" x2="380" y2="146" stroke="#b8863c"/><text x="400" y="150" font-size="11.5" fill="#5a5147">无违逆行（忍）</text>
+<text x="30" y="180" font-size="11.5" fill="#5a5147">四 愧藏</text><line x1="120" y1="176" x2="380" y2="176" stroke="#b8863c"/><text x="400" y="180" font-size="11.5" fill="#5a5147">无屈挠行（进）</text>
+<text x="30" y="210" font-size="11.5" fill="#5a5147">五 聞藏</text><line x1="120" y1="206" x2="380" y2="206" stroke="#b8863c"/><text x="400" y="210" font-size="11.5" fill="#5a5147">离痴乱行（禅）</text>
+<text x="30" y="240" font-size="11.5" fill="#5a5147">六 施藏</text><line x1="120" y1="236" x2="380" y2="236" stroke="#b8863c"/><text x="400" y="240" font-size="11.5" fill="#5a5147">善现行（慧）</text>
+<text x="30" y="270" font-size="11.5" fill="#5a5147">七 慧藏</text><line x1="120" y1="266" x2="380" y2="266" stroke="#b8863c"/><text x="400" y="270" font-size="11.5" fill="#5a5147">无著行（方便）</text>
+<text x="30" y="300" font-size="11.5" fill="#5a5147">八 念藏</text><line x1="120" y1="296" x2="380" y2="296" stroke="#b8863c"/><text x="400" y="300" font-size="11.5" fill="#5a5147">难得行（愿）</text>
+<text x="30" y="300" font-size="11.5" fill="#5a5147"> </text>
+<text x="30" y="290" font-size="11.5" fill="#5a5147"> </text>
+<text x="500" y="315" text-anchor="middle" font-size="11.5" fill="#8a7a5e">藏＝体（含摄无尽）·行＝用（起修遍周）——体用不二（§3.1）</text>
+</svg>""",
+            "cap": "十藏与十行之一一配位（§2.1 总标）：藏是行之体，行是藏之用；体用不二。",
+            "en": "The ten treasuries mapped one-to-one to the ten practices: treasury is the substance, practice is the function — the two are nondual.",
+            "dufa": [
+                "先看配线：**十藏↔十行一一对应**——每藏是其行之体化。",
+                "再看「惭/愧分立」：他系统常合为一，华严分之——**惭于己·愧于人**之别。",
+                "末问：每一藏之「无尽」是数量还是体性？——答：体性（遍法界虚空界）。",
+            ],
+        },
+    ],
+    "weici_note": "本品在第四会居「胜进趣后」位（澄观）：承十行（品 21）之行相，说十藏之体性；次品〈十回向品〉即从十藏出发回向众生与菩提。",
+    "weici": [
+        ["十行品（品 21）", "卷二十起", "第四会·正宗", "十波罗蜜行位化", "本品十藏之用"],
+        ["十回向品（品 23）", "卷二十三起", "第五会·回向位", "金刚幢说十回向", "本品十藏之流出（回向）"],
+        ["藏译 Toh 44 ch 27", "德格 035 卷 fol 333b", "功德林续说十藏", "与本品「功德林复告诸菩萨言」直接相应", "对应判读〔本文判断〕·逐字对勘未作〔待核〕"],
+    ],
+    "teshe_note": "本品之形式特征皆与邻品对看而得。",
+    "teshe": [
+        ["篇幅", "16,956 CJK／83 `<p>`＋11 `<lg>`（§7.1）", "品 21 的 11,806", "第四会体量最大品"],
+        ["十藏体例", "各段定义＋十义分疏＋利益结", "品 21 十行各段行相＋利益", "藏重含摄·行重起修"],
+        ["惭愧分立", "惭/愧各为一藏", "他系统常合为「惭愧」", "华严位次学之细"],
+        ["重颂", "2,280 CJK·11 偈组", "品 21 重颂 2,828 CJK", "两品重颂体量相当"],
+    ],
+    "dufa5": [
+        ["配位读法", "图 〇-1 → §2.1 总标", "结构读者", "十藏↔十行之一一对应"],
+        ["体用读法", "§3.1 行藏不二", "义理读者", "藏是体·行是用·不二"],
+        ["对勘读法", "§6.3＋〇之二.5", "版本学读者", "藏 27 功德林续说相应"],
+        ["会读读法", "§5 各家存目＋5.4 启发", "会读者", "惭愧分立·闻持辩=闻思修"],
+        ["联品读法", "§3.2 启后（十回向）", "贯通读者", "藏→回向=体→用之流出"],
+    ],
+    "shu": [
+        ["**T0 经文明文**", "十藏名目（信→辩）", "§2.1（`T10n0279` 总标实点）", "十藏之目"],
+        ["**T0 经文明文**", "重颂 2,280 CJK", "§2.12（`<lg>`×11）", "偈体总持"],
+        ["**T0 本文实测**", "16,956 字／83 `<p>`／11 `<lg>`", "§7.1（剥校勘）", "篇幅与信度"],
+        ["**T1 注疏**", "「藏者含摄之义……无尽者体无边际」", "`T1735` 疏卷二十四（§5.1）", "藏之训释"],
+        ["**T0·藏本实测**", "藏 27 开篇功德林续说", "L.201 TOC（fol 333b）", "续说相应·逐字对勘未作"],
+    ],
+    "shu_note": "> **〔读法〕** 本品之数以「**含摄**」为性：十藏各含十义、十义各摄万法——**藏之名即无尽之保证**；读十藏当问「此藏含摄何法」，不问「此藏有多少」。",
+}
+
+ALL = [P2, P3, P4, P5, P19, P20, P21, P22, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18]
 
 if __name__ == "__main__":
     want = set(sys.argv[1:])
