@@ -222,6 +222,13 @@ else:
                     ok('G.0 D3 v7.9.0 内联·lineage_net 只读投影 %d 点/%d 边/%d 支·零自环·零臆造边'
                        % (_nn, _nl, len(_net.get('branches', []))))
 
+                    # ── G.1 单祖子树 d3-hierarchy 跃迁·静态侧证（内联 shanhe.js）──
+                    for m1 in ['DS.hierarchy', 'DS.tree().nodeSize', 'DS.zoom()',
+                               'collapseSet', "'g.lin-g'", "'lg-edge'"]:
+                        if m1 not in sh:
+                            fail('G.1 shanhe.html 缺 d3-tree 升级标记: %s（renderTree 未跃迁）' % m1)
+                    ok('G.1 单祖子树 d3-hierarchy：hierarchy/tree.nodeSize/zoom/折叠/lin-g/elbow 连线齐备')
+
                     if not os.path.exists(lic):
                         fail('license.html missing')
                     else:

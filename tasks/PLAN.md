@@ -595,7 +595,7 @@ STEP1 回源对勘（八十为干·六十补卷对读·藏 24–27 开篇实测�
 > 目标：把法脉视图从手写 SVG dendrogram 升级为**世界顶级数字人文族谱**（对标 CBDB Q-VIS 多视图联动 + 学术放射族谱）·三轴并治（精美/互动/结构）。**零造边·只读投影·信息無损·progressive enhancement·三门禁绿灯**。
 
 - **G.0 D3 基座接入 ✅（2026-10-31）**：本地 vendor `web/demo/src/vendor/d3.v7.min.js`（**D3 v7.9.0 UMD·ISC 许可**·sha256 `F2094BBF…`·无 CDN/离线可用·内联前置于 shanhe.js·`window.d3` 全局可见）；`_f_net()` 全库只读投影 `lineage_net`（**80 点/97 边/22 支**·98 边剔 1 自环 person_050→person_050·零臆造·无名 id 保 null→前端〔待核〕）；license.html 声明 D3 代码依赖·decisions **#17**。headless `_g0_selfcheck.py` 7 项全绿（d3.tree/hierarchy/forceSimulation/zoom/transition 皆函数·lineage_net 计数·零自环零非法边·F.3–F.6a 回归不破·0 JS 错·SSOT sha256 恒定）。页 482,811→**790,672 B**（+D3 280KB·视觉暂不变·地基先）。**blocked**：无。
-- **G.1 单祖子树打磨（d3-hierarchy）**：重写 `renderTree`——正交/elbow 连线·折叠/展开·平移+缩放·入场/过渡动画·标签防重叠（长安/五台簇）·悬停高亮邻域（复用 `#lineage-svg` marker）。
+- **G.1 单祖子树打磨（d3-hierarchy）✅（2026-10-31）**：`d3.hierarchy`+`d3.tree().nodeSize` 重写 `renderTree`——elbow 正交连线·折叠/展开（`collapseSet`·⊖/⊕）·平移+缩放（`d3.zoom`·fit-to-view·双击复位）·入场/过渡动画（`d3.transition`）·标签防重叠（nodeSize 坐标互异）·悬停高亮邻域（dim 非直系 0.16）·点节点重定根（修 re-root 后 class/circle 于合并集重绘）。复用 `#lineage-svg` marker·保留全部门禁/测选择器→F.4 零漂移；verify_demo 新增 G.1 静态侧证。headless `_g1_domcheck.py` 9 项全绿（真实 DOM 事件：折叠 9→1→9·滚轮 scale1.414·拖拽平移·双击复位·邻域 dim·重定根 root=1·防重叠·F.3–F.6a 回归·URL 零经纬·0 JS 错·SSOT 恒定）。页 790,672→**795,252 B**。decisions **#18**。**blocked**：无。
 - **G.2 全法脉网络总览（d3-force）**：新 `#lineage-net-svg` 绘 80/97 全网络·节点径=出度·色=支系·边型 MASTER_OF/INFLUENCED/CONTEMPORARY·拖拽·邻域高亮·点节点 focus 子网络·跨支显影。
 - **G.3 放射式·时间轴法脉（radial tidy tree）**：新 `#lineage-radial-svg`·圆=择定祖·半径=代际·角度=纪年/经度·外环年代刻度·呼应 F.6a geo。
 - **G.4 四视图联动（linked brushing）**：选择总线·树/网络/放射/地图/时间/传记任一选中→其余同步·深链含 `view=` 态。

@@ -325,46 +325,139 @@
     return '华严五祖';
   }
   function setSel(id) { var s = document.getElementById('lineage-select'); if (s) s.value = id || ''; }
+  var collapseSet = {}, linZoom = null, linG = null, fullVB = null, lastLayout = [];
+  var ROWH = 34, CWp = 190, PADL = 40, PADR = 200, PADV = 30;
+  function metaOf(id) {
+    var m = (window.__LIN_META || {})[id];
+    return m || { name: null, verified: true, rel: null, branch: '华严五祖' };
+  }
   function renderTree(mid) {
     if (!lSvg) return;
-    while (lSvg.firstChild) lSvg.removeChild(lSvg.firstChild);
+    var DS = window.d3;
+    if (!DS) { lSvg.innerHTML = '<text x="14" y="20" fill="#b00" font-size="12">D3 未加载·法脉树不可用（静态兜底见下方无损表）</text>'; return; }
     linCur = mid || null; isoBranch = null;
-    if (!mid) { lSvg.setAttribute('viewBox', '0 0 900 60'); var tip = el('text', { x: 14, y: 32, 'font-size': 13, fill: '#8a7a5a' }); tip.textContent = '择祖师后展开其 N 代弟子链（直系＝实线／私淑·影响＝虚线）'; lSvg.appendChild(tip); syncURL(); return; }
-    var edges = LIN.trees[mid] || [];
-    var mrec = findMaster(mid);
-    var nodes = {}; nodes[mid] = { id: mid, name: mrec ? mrec.name : mid, depth: 0, verified: true };
+    var svgS = DS.select(lSvg);
+    linG = svgS.select('g.lin-g');
+    if (linG.empty()) linG = svgS.append('g').attr('class', 'lin-g');
+    if (!mid) {
+      linG.selectAll('*').remove(); svgS.attr('viewBox', '0 0 900 60');
+      linG.append('text').attr('x', 14).attr('y', 32).attr('font-size', 13).attr('fill', '#8a7a5a')
+        .text('择祖师后展开其 N 代弟子链（直系＝实线／私淑·影响＝虚线·点节点重定根·⊖ 收展分支·滚轮缩放/拖拽平移·双击复位）');
+      return;
+    }
+    /* —— 只读构树（单父·按首见父边·自环/环守卫·不擅改 SSOT）—— */
+    var edges = LIN.trees[mid] || [], mrec = findMaster(mid);
+    var NAME = {}, VER = {}, parentOf = {}, chEdge = {}, kids = {};
+    NAME[mid] = mrec ? mrec.name : mid; VER[mid] = true;
     edges.forEach(function (e) {
-      if (!nodes[e.parent]) nodes[e.parent] = { id: e.parent, name: e.pname || e.parent, depth: e.depth - 1, verified: true };
-      if (!nodes[e.disc] || nodes[e.disc].depth > e.depth) nodes[e.disc] = { id: e.disc, name: e.dname || null, depth: e.depth, verified: e.dverified };
+      if (e.parent === e.disc) return;
+      if (e.pname) NAME[e.parent] = e.pname;
+      if (e.dname) NAME[e.disc] = e.dname;
+      if (!(e.disc in VER)) VER[e.disc] = !!e.dverified;
+      if (!(e.disc in parentOf)) { parentOf[e.disc] = e.parent; chEdge[e.disc] = { rel: e.rel, branch: e.branch }; }
     });
-    var byDepth = {}, maxD = 0;
-    Object.keys(nodes).forEach(function (k) { var n = nodes[k]; (byDepth[n.depth] = byDepth[n.depth] || []).push(n); if (n.depth > maxD) maxD = n.depth; });
-    var CW = 170, rowH = 30, y = 26;
-    for (var d = 0; d <= maxD; d++) { var arr = byDepth[d] || []; for (var j = 0; j < arr.length; j++) { arr[j].y = y; y += rowH; } if (arr.length) y += 6; }
-    var height = Math.max(60, y + 8), width = 24 + (maxD + 1) * CW + 220;
-    var gE = el('g', {}), gN = el('g', {});
-    edges.forEach(function (e) {
-      var pn = nodes[e.parent], dn = nodes[e.disc]; if (!pn || !dn) return;
-      var x1 = 24 + pn.depth * CW, x2 = 24 + dn.depth * CW, col = BRANCH_COLOR[e.branch] || '#888';
-      var path = el('path', { d: 'M' + x1 + ',' + pn.y + ' C' + (x1 + CW / 2) + ',' + pn.y + ' ' + (x2 - CW / 2) + ',' + dn.y + ' ' + x2 + ',' + dn.y,
-        stroke: col, 'class': 'lg-edge' + (e.rel === 'INFLUENCED' ? ' inf' : ''), 'data-branch': e.branch, 'stroke-opacity': 0.8 });
-      gE.appendChild(path);
+    Object.keys(parentOf).forEach(function (d) { var p = parentOf[d]; (kids[p] = kids[p] || []).push(d); });
+    window.__LIN_META = {};
+    Object.keys(NAME).concat([mid]).forEach(function (id) {
+      window.__LIN_META[id] = { name: (id in NAME) ? NAME[id] : null, verified: (id in VER) ? VER[id] : true,
+        rel: chEdge[id] ? chEdge[id].rel : null, branch: chEdge[id] ? chEdge[id].branch : '华严五祖' };
     });
-    Object.keys(nodes).forEach(function (k) {
-      var n = nodes[k], x = 24 + n.depth * CW;
-      var gg = el('g', { 'class': 'lg-node' + (n.depth === 0 ? ' lg-root' : ''), 'data-branch': branchOf(n.id, mid) });
-      gg.appendChild(el('circle', { cx: x, cy: n.y, r: n.depth === 0 ? 6 : 4.5, fill: n.depth === 0 ? '#c0392b' : (BRANCH_COLOR[branchOf(n.id, mid)] || '#8d5a2b'), stroke: '#fff', 'stroke-width': 1 }));
-      var tx = el('text', { x: x + 9, y: n.y + 4, 'font-size': 11, fill: n.verified ? '#3a2f1e' : '#b00' });
-      tx.textContent = (n.name || n.id) + (n.verified ? '' : '〔待核〕');
-      gg.appendChild(tx); gg.style.cursor = 'pointer';
-      gg.addEventListener('click', (function (nid) { return function () { if (nid !== linCur) { renderTree(nid); setSel(nid); } }; })(n.id));
-      gN.appendChild(gg);
+    function buildNode(id) {
+      var o = { id: id };
+      var ch = collapseSet[id] ? [] : (kids[id] || []);
+      if (ch.length) o.children = ch.map(buildNode);
+      return o;
+    }
+    var root = DS.hierarchy(buildNode(mid));
+    DS.tree().nodeSize([ROWH, CWp])(root);
+    var nodes = root.descendants(), links = root.links();
+    var sx = function (n) { return n.y; }, sy = function (n) { return n.x; };
+    lastLayout = nodes.map(function (n) { return { id: n.data.id, x: sx(n), y: sy(n), branch: metaOf(n.data.id).branch }; });
+
+    /* —— 连线（elbow 折线·直系实线／私淑·影响虚线·支系色）—— */
+    var edgeSel = linG.selectAll('path.lg-edge').data(links, function (d) { return d.target.data.id; });
+    edgeSel.exit().transition().duration(300).style('opacity', 0).remove();
+    var edgeEnter = edgeSel.enter().append('path')
+      .attr('class', function (d) { return 'lg-edge' + (metaOf(d.target.data.id).rel === 'INFLUENCED' ? ' inf' : ''); })
+      .attr('data-branch', function (d) { return metaOf(d.target.data.id).branch; })
+      .attr('stroke', function (d) { return BRANCH_COLOR[metaOf(d.target.data.id).branch] || '#888'; })
+      .attr('fill', 'none').style('opacity', 0);
+    edgeSel = edgeEnter.merge(edgeSel);
+    edgeSel.transition().duration(450).style('opacity', 0.85)
+      .attr('d', function (d) {
+        var px = sx(d.source), py = sy(d.source), cx = sx(d.target), cy = sy(d.target), mx = (px + cx) / 2;
+        return 'M' + px + ',' + py + 'L' + mx + ',' + py + 'L' + mx + ',' + cy + 'L' + cx + ',' + cy;
+      });
+
+    /* —— 节点（圆+名·root 加粗·未具名〔待核〕·⊖/⊕ 折叠钮·点节点重定根·悬停邻域高亮）—— */
+    var nodeSel = linG.selectAll('g.lg-node').data(nodes, function (d) { return d.data.id; });
+    nodeSel.exit().transition().duration(250).style('opacity', 0).remove();
+    var nodeEnter = nodeSel.enter().append('g')
+      .attr('transform', function (d) { return 'translate(' + sx(d) + ',' + sy(d) + ')'; })
+      .style('cursor', 'pointer').style('opacity', 0);
+    nodeEnter.append('circle').attr('stroke', '#fff').attr('stroke-width', 1);
+    nodeEnter.append('text').attr('class', 'lg-label').attr('x', 9).attr('y', 4).attr('font-size', 11);
+    nodeEnter.append('text').attr('class', 'lg-tog').attr('x', -15).attr('y', 4).attr('font-size', 12)
+      .attr('fill', '#7a6a4a').style('cursor', 'pointer');
+    nodeSel = nodeEnter.merge(nodeSel);
+    /* 重定根后深度会变：class/root/circle 一律在合并集上重绘（不只在 enter），否则新根丢 .lg-root */
+    nodeSel.attr('class', function (d) { return 'lg-node' + (d.depth === 0 ? ' lg-root' : ''); })
+      .attr('data-branch', function (d) { return metaOf(d.data.id).branch; });
+    nodeSel.select('circle')
+      .attr('r', function (d) { return d.depth === 0 ? 6 : 4.5; })
+      .attr('fill', function (d) { return d.depth === 0 ? '#c0392b' : (BRANCH_COLOR[metaOf(d.data.id).branch] || '#8d5a2b'); });
+    nodeSel.select('.lg-label')
+      .attr('fill', function (d) { return metaOf(d.data.id).verified ? '#3a2f1e' : '#b00'; })
+      .text(function (d) { var m = metaOf(d.data.id); return (m.name || d.data.id) + (m.verified ? '' : '〔待核〕'); });
+    nodeSel.select('.lg-tog')
+      .style('display', function (d) { return (kids[d.data.id] && kids[d.data.id].length) ? null : 'none'; })
+      .text(function (d) { return collapseSet[d.data.id] ? '⊕' : '⊖'; });
+    nodeSel.transition().duration(450).style('opacity', 1)
+      .attr('transform', function (d) { return 'translate(' + sx(d) + ',' + sy(d) + ')'; });
+    nodeSel.on('click', function (ev, d) {
+      ev.stopPropagation();
+      if (d.data.id !== linCur) { renderTree(d.data.id); setSel(d.data.id); }
     });
-    lSvg.appendChild(gE); lSvg.appendChild(gN);
-    var vb = '0 0 ' + width + ' ' + height;
-    lSvg.setAttribute('viewBox', vb); lSvg.setAttribute('data-full', vb);
-    applyIsolate(); syncURL();
-    renderLinGeo(mid);
+    nodeSel.select('.lg-tog').on('click', function (ev, d) {
+      ev.stopPropagation();
+      collapseSet[d.data.id] = !collapseSet[d.data.id];
+      renderTree(linCur);
+    });
+    nodeSel.on('mouseenter', function (ev, d) { hiNeighbor(d); }).on('mouseleave', clearHi);
+
+    /* —— 视口 fit + 缩放平移 —— */
+    var minx = 1e9, miny = 1e9, maxx = -1e9, maxy = -1e9;
+    nodes.forEach(function (n) { var X = sx(n), Y = sy(n); if (X < minx) minx = X; if (X > maxx) maxx = X; if (Y < miny) miny = Y; if (Y > maxy) maxy = Y; });
+    fullVB = (minx - PADL) + ' ' + (miny - PADV) + ' ' + (maxx - minx + PADL + PADR) + ' ' + (maxy - miny + 2 * PADV);
+    svgS.attr('viewBox', fullVB);
+    if (!linZoom) {
+      linZoom = DS.zoom().scaleExtent([0.3, 5]).on('zoom', function (ev) { linG.attr('transform', ev.transform); });
+      svgS.call(linZoom).on('dblclick.zoom', null);
+      svgS.on('dblclick', resetView);
+    } else {
+      svgS.call(linZoom.transform, DS.zoomIdentity);
+    }
+    applyIsolate(); syncURL(); renderLinGeo(mid);
+  }
+  function resetView() {
+    if (!lSvg || !window.d3) return;
+    var svgS = d3.select(lSvg);
+    if (fullVB) svgS.attr('viewBox', fullVB);
+    if (linZoom) svgS.transition().duration(350).call(linZoom.transform, d3.zoomIdentity);
+  }
+  function hiNeighbor(d) {
+    if (!linG) return;
+    var kin = {};
+    d.ancestors().forEach(function (a) { kin[a.data.id] = 1; });
+    d.descendants().forEach(function (n) { kin[n.data.id] = 1; });
+    linG.selectAll('g.lg-node').style('opacity', function (n) { return kin[n.data.id] ? 1 : 0.16; });
+    linG.selectAll('path.lg-edge').style('opacity', function (l) { return (kin[l.source.data.id] && kin[l.target.data.id]) ? 0.9 : 0.1; });
+  }
+  function clearHi() {
+    if (!linG) return;
+    linG.selectAll('g.lg-node').style('opacity', 1);
+    linG.selectAll('path.lg-edge').style('opacity', 0.85);
+    applyIsolate();
   }
   function applyIsolate() {
     if (!lSvg) return;
@@ -374,16 +467,13 @@
   }
   function zoomBranch(bname) {
     if (!lSvg || !linCur) return;
-    var els = lSvg.querySelectorAll('.lg-node,.lg-edge'), minx = 1e9, miny = 1e9, maxx = -1e9, maxy = -1e9, hit = false;
-    for (var k = 0; k < els.length; k++) {
-      if (els[k].getAttribute('data-branch') !== bname) continue;
-      var bb; try { bb = els[k].getBBox(); } catch (e) { continue; }
-      hit = true; minx = Math.min(minx, bb.x); miny = Math.min(miny, bb.y);
-      maxx = Math.max(maxx, bb.x + bb.width); maxy = Math.max(maxy, bb.y + bb.height);
-    }
-    if (!hit) { if (lSvg.getAttribute('data-full')) lSvg.setAttribute('viewBox', lSvg.getAttribute('data-full')); return; }
-    var pad = 26;
-    lSvg.setAttribute('viewBox', (minx - pad) + ' ' + (miny - pad) + ' ' + (maxx - minx + 2 * pad) + ' ' + (maxy - miny + 2 * pad));
+    resetView();
+    if (!bname) return;
+    var pts = lastLayout.filter(function (p) { return p.branch === bname; });
+    if (!pts.length) return;
+    var minx = 1e9, miny = 1e9, maxx = -1e9, maxy = -1e9;
+    pts.forEach(function (p) { if (p.x < minx) minx = p.x; if (p.x > maxx) maxx = p.x; if (p.y < miny) miny = p.y; if (p.y > maxy) maxy = p.y; });
+    lSvg.setAttribute('viewBox', (minx - PADL) + ' ' + (miny - PADV) + ' ' + (maxx - minx + PADL + PADR) + ' ' + (maxy - miny + 2 * PADV));
   }
   (function wireLegend() {
     var chips = document.querySelectorAll('.lg-chip');
