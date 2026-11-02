@@ -2187,3 +2187,8 @@ done(
 - **审计**：P37引块55·hit 52·miss 3（皆编者块EN/成篇识）——**经文引块零miss**。
 - **门禁**：六门禁全绿（check·build 79 files 36.21MB·test_pipeline ALL PASSED·verify_demo rc=0·verify_sources rc=0·diff --check）。
 - **如实陈报（在册未竟）**：①各品60/40本逐参对勘与藏译逐字对勘（全系列〔未竟〕）；②P25–P27及品24深化批之诸家注疏扩展；③53参总表之参界为锚点级（注入以到达句/请法锚切分·地名法门名已随卡标注）。
+## L.305（2026-11-03）数据科学批一·53参结构化数据集
+
+- **dataset**：data/research/rufajie_53_dataset.json——52卡（card_no/canon_no/teacher_t40/role/city/gate/shibai_name/span/cjk）＋统计（身份分布23类·法门名可标者/最短参42遍友/最长参50彌勒·52卡span总237,214 CJK）。
+- **P37数据层增强**：数据科学附表（统计项＋身份分布23类·「道在俗世」结构性证据〔本文判断〕）。
+- **门禁**：六门禁全绿。
