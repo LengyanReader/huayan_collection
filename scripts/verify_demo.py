@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEMO = os.path.join(ROOT, 'web', 'demo')
 ARTICLES = os.path.join(DEMO, 'articles')
 
-TABS = ['lineage', 'gap', 'jiaoxing', 'frontier', 'cosmology', 'spirit', 'rufajie']
+TABS = ['lineage', 'gap', 'jiaoxing', 'frontier', 'cosmology', 'spirit']
 TAB_TITLES = ['法脉传承', '华严文献', '教海行云', '前沿对话', '世主妙严', '灵性仁本']
 DATA_VARS = {
     'lineage': ['var GRAPH'],
@@ -22,7 +22,6 @@ DATA_VARS = {
     'jiaoxing': ['var PRACTICE_DATA'],
     'frontier': ['var FRONTIER_DATA', 'var SPIRIT_DATA'],  # 任一即可
     'cosmology': ['var COSMOLOGY_DATA', 'var SPIRIT_DATA'],
-    'rufajie': ['var RUFAJIE_DATA'],
     'spirit': ['var SPIRIT_DATA'],
 }
 

@@ -2254,3 +2254,9 @@ done(
 - **夜天段实证·自省**：T0293夜神名目12见——**春和亲指普遍吉祥無垢光（菩提场·「我本從其發菩提心」）**＝本行历52卡漏此参（并入春和卡）；修正方案已定（春和止129161·新参独立·总参53卡·重排待L.316+）；dataset加counting_note。
 - **注入**：P37 新「§五之B 计数与诸说辨析」（B.1经文层/B.2四说/B.3先后文殊/B.4夜天自省/B.5口径）；53参总表加注。
 - **门禁**：六门禁全绿。
+## L.316（2026-11-04）页签迁入文章专题＋勘出补卡（用户指正批）
+
+- **页签迁移（用户指正：不应为独立板块）**：tabs/rufajie.html → **articles/huayan-rufajie-journey.html**（属〈入法界品之拼读〉文章专题）；index.html 撤卡；verify_demo TABS/TAB_DATA 回退；yaml **others 登记 skip_html: true**（others 列表尾·经yaml结构勘误：sources/others/group_order/group_icons/articles五键）；articles/index.html 加链；P37 文内三处链接改指专题页。
+- **页面真bug修复**：RUFAJIE_DATA 自 L.306 起为裸数组而 JS 按 .visits/.meta 取——**页面自上线即未渲染**；修复为对象结构（meta+stats+visits 53条含31B）。
+- **勘出补卡**：**参31B·普遍吉祥無垢光主夜神**（春和亲指·菩提场·1,646 CJK 全引＋四件套）——采用**补卡制**（既有16批不动·总参53卡口径）；dataset 31B＋页签数据同步53条。
+- **门禁**：六门禁全绿（build **80 files**·verify_demo 0 FAIL·journey页 skip_html 入口 22,653B）。

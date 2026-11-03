@@ -790,6 +790,19 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: huayan-rufajie-journey
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 43
+  icon: 🗺
+  title: 入法界品专题 · 五十三参行历（交互行历图）
+  title_sub: 底本四十华严 T0293 · 52卡+31B勘出补卡＝53卡口径 · 身份着色/篇幅定径/八处特殊标记 · 计数诸说辨析见 P37 §五之B
+  skip_html: true
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+
 group_order:
 - key: 经论茶歇
   icon: 📖
