@@ -2192,3 +2192,8 @@ done(
 - **dataset**：data/research/rufajie_53_dataset.json——52卡（card_no/canon_no/teacher_t40/role/city/gate/shibai_name/span/cjk）＋统计（身份分布23类·法门名可标者/最短参42遍友/最长参50彌勒·52卡span总237,214 CJK）。
 - **P37数据层增强**：数据科学附表（统计项＋身份分布23类·「道在俗世」结构性证据〔本文判断〕）。
 - **门禁**：六门禁全绿。
+## L.306（2026-11-03）可视化批一·五十三参行历页签
+
+- **web/demo/tabs/rufajie.html**：52卡蛇形SVG行历——节点色=身份六类（出家/圣众/在家男/在家女/天神）·半径=log(篇幅)·★特殊参八处（两疑/险门/转介/字母/楼阁/遥指/愿王）·悬停卡片（老师/处所/法门/八十对照/CJK）·点击详情（canonical参数/span）；统计条+图例+首尾标注；数据嵌入 var RUFAJIE_DATA（源自L.305 dataset）。
+- **注册**：verify_demo TABS+数据检查条目；index.html 卡片。
+- **门禁**：六门禁全绿（verify_demo ALL CHECKS PASSED 含新页签）。
