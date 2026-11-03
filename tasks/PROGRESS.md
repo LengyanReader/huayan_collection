@@ -2197,3 +2197,8 @@ done(
 - **web/demo/tabs/rufajie.html**：52卡蛇形SVG行历——节点色=身份六类（出家/圣众/在家男/在家女/天神）·半径=log(篇幅)·★特殊参八处（两疑/险门/转介/字母/楼阁/遥指/愿王）·悬停卡片（老师/处所/法门/八十对照/CJK）·点击详情（canonical参数/span）；统计条+图例+首尾标注；数据嵌入 var RUFAJIE_DATA（源自L.305 dataset）。
 - **注册**：verify_demo TABS+数据检查条目；index.html 卡片。
 - **门禁**：六门禁全绿（verify_demo ALL CHECKS PASSED 含新页签）。
+## L.307（2026-11-03）〇之二地图层补铺批一·P23–P27
+
+- **scripts/p23_p37_atlas.py 新建**（依赖 base.apply·幂等 ATLAS markers）：P23 心量十级放大图＋体行两翼图／P24 十地阶梯图（十度十王）＋十印三变体图／P25 十定十遍图＋名目纠错对照图／P26 十通知谱＋定通相即图／P27 三体七喻图＋七喻递进图——每条目 dingwei/yiju/sanwen/tiyao/xufa/en_map/两figs(带dufa)/weici 5-6行/teshe 4-5行/dufa5/shu 5-6行/shu_note 全schema。
+- **注入**：五篇各增〇之二层（P23 102,366 chars 等实测）。
+- **门禁**：六门禁全绿。
