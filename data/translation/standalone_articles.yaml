@@ -404,7 +404,9 @@ others:
   order_in_group: 18
   icon: 📖
   title: 九九华严第十三品 升须弥山顶品之拼读
-  title_sub: 华严经第十三品·第三会首品·差别因果周十住位之始·卷十六单品·佛不离菩提树而上昇须弥·帝释遥见佛来严殿敷普光明藏师子之座·十千庄严·善来三称请佛入殿（品界实测「善來」×3 一处三称·无重出·平文器幻影单元订正）·乐音自息·忆念昔佛·说颂赞十佛（十颂各「诸吉祥中最无上」「是故此處最吉祥」）·殿忽然广博宽容·十方同然·注疏诸家会读（澄观·法藏·智俨·慧苑·李通玄）·与六十《佛昇須彌頂品第九》对读·十佛名号多异（迦羅鳩馱／拘樓·毘舍浮／隨葉·然燈／錠光等）各照底本不统一·数据层实测八十正文 645 字（含品题 654）·未完备已标明
+  title_sub: 华严经第十三品·第三会首品·差别因果周十住位之始·卷十六单品·佛不离菩提树而上昇须弥·帝释遥见佛来严殿敷普光明藏师子之座·十千庄严·善来三称请佛入殿（品界实测「善來」×3
+    一处三称·无重出·平文器幻影单元订正）·乐音自息·忆念昔佛·说颂赞十佛（十颂各「诸吉祥中最无上」「是故此處最吉祥」）·殿忽然广博宽容·十方同然·注疏诸家会读（澄观·法藏·智俨·慧苑·李通玄）·与六十《佛昇須彌頂品第九》对读·十佛名号多异（迦羅鳩馱／拘樓·毘舍浮／隨葉·然燈／錠光等）各照底本不统一·数据层实测八十正文
+    645 字（含品题 654）·未完备已标明
   updated_at: '2026-10-27'
   doc: docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第十三部_升须弥山顶品.md
   back:
@@ -465,7 +467,8 @@ others:
   order_in_group: 22
   icon: 📖
   title: 九九华严第十七品 初发心功德品之拼读
-  title_en: 'Huayan Sutra Close Reading · Part Seventeen: The Merits of the First Aspiration for Awakening'
+  title_en: 'Huayan Sutra Close Reading · Part Seventeen: The Merits of the First
+    Aspiration for Awakening'
   title_sub: 华严经第十七品·第三会十住位胜进德·跨卷十七–十八·第三会最长品·品界CJK8207（长行4785＋重颂3388·27单元）·天帝释问·法慧先叹十难·再以十一大喻层层校量（利樂眾生→供佛及生·後後過於前前）·就法略示十二句配如来十力·动地兴供·他方证成（万佛同名法慧·皆号清淨心如來）·一百二十一颂重颂·歌羅分（竖析·百分之一）／優波尼沙陀（近少）校量数释义·澄观疏窗10187（四门·释文七分）·法藏8432·慧苑10145·通玄5164·合论14624·智俨〔缺口〕·六十〈初发心菩萨功德品第十三〉在卷九〔未入库·待核〕·六要素齐备·数据层实测
   updated_at: '2026-10-26'
   doc: docs/经学文献/华严经细读/第三会_忉利天宫_差别因果周/华严经细读_第十七部_初发心功德品.md
@@ -523,7 +526,6 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
-
 - id: huayan-shixing-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -540,7 +542,6 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
-
 - id: huayan-shiwujincang-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -557,7 +558,6 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
-
 - id: huayan-shihuiuxiang-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -574,7 +574,6 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
-
 - id: huayan-shidi-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -591,7 +590,6 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
-
 - id: huayan-shiding-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -600,8 +598,12 @@ others:
   title: 九九华严第二十五品 十定品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十五部_十定品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-shitong-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -610,8 +612,12 @@ others:
   title: 九九华严第二十六品 十通品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十六部_十通品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-shiren-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -620,9 +626,12 @@ others:
   title: 九九华严第二十七品 十忍品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十七部_十忍品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-asamkhya-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -631,8 +640,12 @@ others:
   title: 九九华严第二十八品 阿僧祇品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十八部_阿僧祇品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-shouliang-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -641,8 +654,12 @@ others:
   title: 九九华严第二十九品 寿量品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十九部_寿量品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-zhuchu-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -651,9 +668,12 @@ others:
   title: 九九华严第三十品 菩萨住处品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十部_菩萨住处品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-fobusiyi-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -662,9 +682,12 @@ others:
   title: 九九华严第三十一品 佛不思议法品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十一部_佛不思议法品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-shishenxiang-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -673,8 +696,12 @@ others:
   title: 九九华严第三十二品 十身相海品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十二部_十身相海品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-suihao-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -683,9 +710,12 @@ others:
   title: 九九华严第三十三品 随好光明品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十三部_随好光明品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-putanxing-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -694,9 +724,12 @@ others:
   title: 九九华严第三十四品 普贤行品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十四部_普贤行品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-rlchuxian-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -705,9 +738,12 @@ others:
   title: 九九华严第三十五品 如来出现品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十五部_如来出现品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-lishijian-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -716,9 +752,12 @@ others:
   title: 九九华严第三十六品 离世间品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第八会_普光明殿_离世间/华严经细读_第三十六部_离世间品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-rufajie-pin
   group: 经论茶歇
   family: huayan_xidu
@@ -727,16 +766,20 @@ others:
   title: 九九华严第三十七品 入法界品之拼读
   updated_at: '2026-11-02'
   doc: docs/经学文献/华严经细读/第九会_逝多林_证入法界/华严经细读_第三十七部_入法界品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页·华严经学
+  views:
+  - avatamsaka-studies
 - id: firsthui-jiaopan
   group: 经论茶歇
   family: huayan_xidu
   order_in_group: 15
   icon: 🏛
   title: 华严细读·第一会 菩提场会读判教篇
-  title_en: 'Huayan Sutra Close Reading · Assembly One (Bodhimaṇḍa): Synthetic Reading and Doctrinal Classification'
+  title_en: 'Huayan Sutra Close Reading · Assembly One (Bodhimaṇḍa): Synthetic Reading
+    and Doctrinal Classification'
   title_sub: 第一会六品之会读与判教深度篇·所信因果周回源（T1735·T1736·T1733·X0221）·六品故受之以相由链·举果劝乐生信分名目直证·法藏普庄严与八十大威光之异译考·两译初会结构实测·诸家异科对照·与细读六部互见·未完备已标明
   updated_at: '2026-10-24'
   doc: docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第一会_菩提场会读判教篇.md
@@ -782,7 +825,9 @@ others:
   order_in_group: 24
   icon: 📜
   title: 藏汉英对读 · 大方广佛华严经（德格藏文本）初探
-  title_sub: v0.4 · 德格甘珠尔 Toh 44（035-038）45 品 TOC 逐字提取 · 底本 sha256 台账 · 示范对勘二例（首品开篇＋品40 第1参 德雲比丘·八十 卷62 p.334a09／六十 卷46 p.0689c10／德格 037 [324a.3]）· 订正八十「卷39」之误 · MITRA 本地试译未校对 · 逐品对勘待核
+  title_sub: v0.4 · 德格甘珠尔 Toh 44（035-038）45 品 TOC 逐字提取 · 底本 sha256 台账 · 示范对勘二例（首品开篇＋品40
+    第1参 德雲比丘·八十 卷62 p.334a09／六十 卷46 p.0689c10／德格 037 [324a.3]）· 订正八十「卷39」之误 · MITRA
+    本地试译未校对 · 逐品对勘待核
   skip_html: true
   back:
     tab: gap
@@ -802,7 +847,18 @@ others:
     tab: gap
     view: avatamsaka-studies
     label: 文献页 · 华严经学
-
+- id: huayan-80-60-matrix
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 44
+  icon: 📊
+  title: 华严三源对读 · 八十/六十品次-体量矩阵（交互双柱图）
+  title_sub: 八十39品×六十30品逐品实测CJK双柱 · 六十阙10品红标 · 性起名对位 · L.312矩阵可视化
+  skip_html: true
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
 group_order:
 - key: 经论茶歇
   icon: 📖

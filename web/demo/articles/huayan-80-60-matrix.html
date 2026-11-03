@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严三源对读 · 八十/六十品次-体量矩阵</title>
+<link rel="stylesheet" href="../css/common.css">
+<style>
+.mx-wrap{max-width:1100px;margin:0 auto;padding:18px}
+.mx-svg{width:100%;height:auto;background:rgba(127,127,127,.04);border:1px solid rgba(127,127,127,.2);border-radius:8px}
+.mx-tip{position:fixed;pointer-events:none;background:var(--bg1,#1c1c22);color:var(--text1,#eee);border:1px solid rgba(127,127,127,.4);border-radius:6px;padding:8px 12px;font-size:.82em;max-width:340px;display:none;z-index:50}
+.mx-bar80{fill:#5b7ea6}.mx-bar60{fill:#4a7c59}.mx-bar40{fill:#c46b5d}
+.mx-que{fill:#c46b5d;font-size:9px;font-weight:bold}
+.mx-node{cursor:pointer}.mx-node:hover rect{stroke-width:2}
+.mx-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8em;margin:10px 0;color:var(--text2)}
+.mx-legend span{display:inline-flex;align-items:center;gap:5px}
+.mx-sw{width:14px;height:10px;display:inline-block}
+</style>
+</head>
+<body>
+<div style="position:sticky;top:0;z-index:100;background:var(--bg1,#1a1a20)">
+<header style="padding:10px 16px;display:flex;align-items:center;gap:12px">
+  <a href="index.html" class="back-link" style="color:var(--gold);text-decoration:none">&larr; 独立文章目录</a>
+  <h1 style="margin:0;font-size:1.1em;color:var(--text1)">华严三源对读 · 八十/六十品次-体量矩阵</h1>
+</header>
+</div>
+<div class="mx-wrap">
+<div class="mx-legend">
+  <span><span class="mx-sw mx-bar80"></span>八十 CJK</span>
+  <span><span class="mx-sw mx-bar60"></span>六十 CJK</span>
+  <span><span class="mx-sw" style="background:#c46b5d"></span>六十阙（红标）</span>
+  <span class="mx-stat" id="mx-sum"></span>
+</div>
+<svg id="mx" class="mx-svg" viewBox="0 0 1040 780" xmlns="http://www.w3.org/2000/svg"></svg>
+<div class="mx-tip" id="tip"></div>
+<p style="font-size:.82em;color:var(--text2)">底色条＝八十/六十各品实测 CJK（并排双柱）；红色「阙」标＝六十无对应品（十定→普賢行 10 品·新旧译分野核心）；数据源：data/research/huayan_80_60_matrix.json（L.312）。四十华严 T0293（261,526 CJK）即入法界单品，不列柱。</p>
+</div>
+<script>
+var MX_DATA = {"meta": {"note": "八十/六十 品题-品次-体量对读矩阵（L.312·实测CJK）", "t0293_total": 261526, "sum80": 597477, "sum60": 497623, "que60": ["十定品第二十七", "十通品第二十八", "十忍品第二十九", "阿僧祇品第三十", "壽量品第三十一", "菩薩住處品第三十二", "佛不思議法品第三十三", "十身相海品第三十四", "隨好光明功德品第三十五", "普賢行品第三十六"]}, "rows": [{"p80": "世主妙嚴品第一", "c80": 31951, "p60": "世間淨眼品第一", "c60": 15615, "pair": "品次1↔1", "note": "八十分五品·六十合二品", "que60": false}, {"p80": "如來現相品第二", "c80": 8119, "p60": "—（入盧舍那佛品）", "c60": 0, "pair": "2↔2内", "note": "六十併入盧舍那品", "que60": false}, {"p80": "普賢三昧品第三", "c80": 1995, "p60": "—（同上）", "c60": 0, "pair": "3↔2内", "note": "同上", "que60": false}, {"p80": "世界成就品第四", "c80": 5923, "p60": "—（同上）", "c60": 0, "pair": "4↔2内", "note": "同上", "que60": false}, {"p80": "華藏世界品第五", "c80": 19204, "p60": "—（同上）", "c60": 0, "pair": "5↔2内", "note": "同上", "que60": false}, {"p80": "毘盧遮那品第六", "c80": 4978, "p60": "—（盧舍那品末）", "c60": 0, "pair": "6↔2末", "note": "", "que60": false}, {"p80": "如來名號品第七", "c80": 3230, "p60": "如來名號品第三", "c60": 2932, "pair": "7↔3", "note": "第二会起·品序自此平行±2", "que60": false}, {"p80": "四諦品第八", "c80": 0, "p60": "四諦品第四", "c60": 2782, "pair": "8↔4", "note": "", "que60": false}, {"p80": "如來光明覺品第九", "c80": 0, "p60": "如來光明覺品第五", "c60": 4875, "pair": "9↔5", "note": "", "que60": false}, {"p80": "菩薩問明品第十", "c80": 3171, "p60": "菩薩明難品第六", "c60": 3124, "pair": "10↔6", "note": "名异（明难=问明）", "que60": false}, {"p80": "淨行品第十一", "c80": 2973, "p60": "淨行品第七", "c60": 2904, "pair": "11↔7", "note": "", "que60": false}, {"p80": "賢首品第十二", "c80": 10236, "p60": "賢首品第八", "c60": 0, "pair": "12↔8", "note": "", "que60": false}, {"p80": "昇須彌山頂品第十三", "c80": 661, "p60": "昇須彌山頂品第九", "c60": 0, "pair": "13↔9", "note": "", "que60": false}, {"p80": "須彌頂上偈讚品第十四", "c80": 2513, "p60": "須彌頂上偈讚品第十", "c60": 0, "pair": "14↔10", "note": "", "que60": false}, {"p80": "十住品第十五", "c80": 5592, "p60": "十住品第十一", "c60": 0, "pair": "15↔11", "note": "", "que60": false}, {"p80": "梵行品第十六", "c80": 929, "p60": "梵行品第十二", "c60": 1026, "pair": "16↔12", "note": "", "que60": false}, {"p80": "初發心功德品第十七", "c80": 8210, "p60": "初發心功德品第十三", "c60": 0, "pair": "17↔13", "note": "", "que60": false}, {"p80": "明法品第十八", "c80": 5535, "p60": "明法品第十四", "c60": 5504, "pair": "18↔14", "note": "", "que60": false}, {"p80": "昇夜摩天宮品第十九", "c80": 798, "p60": "佛昇夜摩天宮自在品第十五", "c60": 0, "pair": "19↔15", "note": "六十增「自在」", "que60": false}, {"p80": "夜摩宮中偈讚品第二十", "c80": 2543, "p60": "夜摩宮中偈讚品第十六", "c60": 0, "pair": "20↔16", "note": "", "que60": false}, {"p80": "十行品第二十一", "c80": 11806, "p60": "十行品第十七", "c60": 0, "pair": "21↔17", "note": "", "que60": false}, {"p80": "十無盡藏品第二十二", "c80": 5384, "p60": "十無盡藏品第十八", "c60": 0, "pair": "22↔18", "note": "", "que60": false}, {"p80": "昇兜率天宮品第二十三", "c80": 8510, "p60": "昇兜率天宮品第十九", "c60": 0, "pair": "23↔19", "note": "", "que60": false}, {"p80": "兜率宮中偈讚品第二十四", "c80": 3068, "p60": "兜率宮中偈讚品第二十", "c60": 0, "pair": "24↔20", "note": "", "que60": false}, {"p80": "十回向品第二十五", "c80": 0, "p60": "十回向品第二十一", "c60": 0, "pair": "25↔21", "note": "", "que60": false}, {"p80": "十地品第二十六", "c80": 43413, "p60": "十地品第二十二", "c60": 52064, "pair": "26↔22", "note": "", "que60": false}, {"p80": "十定品第二十七", "c80": 27169, "p60": "—（阙）", "c60": 0, "pair": "27↔×", "note": "六十阙〔阙本考〕", "que60": true}, {"p80": "十通品第二十八", "c80": 3646, "p60": "—（阙）", "c60": 0, "pair": "28↔×", "note": "六十阙", "que60": true}, {"p80": "十忍品第二十九", "c80": 5742, "p60": "—（阙）", "c60": 0, "pair": "29↔×", "note": "六十阙", "que60": true}, {"p80": "阿僧祇品第三十", "c80": 4819, "p60": "—（阙）", "c60": 0, "pair": "30↔×", "note": "六十阙", "que60": true}, {"p80": "壽量品第三十一", "c80": 308, "p60": "—（阙）", "c60": 0, "pair": "31↔×", "note": "六十阙", "que60": true}, {"p80": "菩薩住處品第三十二", "c80": 0, "p60": "—（阙）", "c60": 0, "pair": "32↔×", "note": "六十阙", "que60": true}, {"p80": "佛不思議法品第三十三", "c80": 13827, "p60": "—（阙）", "c60": 0, "pair": "33↔×", "note": "六十阙", "que60": true}, {"p80": "十身相海品第三十四", "c80": 0, "p60": "—（阙）", "c60": 0, "pair": "34↔×", "note": "六十阙", "que60": true}, {"p80": "隨好光明功德品第三十五", "c80": 0, "p60": "—（阙）", "c60": 0, "pair": "35↔×", "note": "六十阙", "que60": true}, {"p80": "普賢行品第三十六", "c80": 4711, "p60": "—（阙）", "c60": 0, "pair": "36↔×", "note": "六十阙", "que60": true}, {"p80": "如來出現品第三十七", "c80": 23230, "p60": "寶王如來性起品第三十二", "c60": 20372, "pair": "37↔32", "note": "名对位：出现=性起", "que60": false}, {"p80": "離世間品第三十八", "c80": 55207, "p60": "離世間品第三十三", "c60": 58056, "pair": "38↔33", "note": "", "que60": false}, {"p80": "入法界品第三十九", "c80": 170107, "p60": "入法界品第三十四", "c60": 145080, "pair": "39↔34", "note": "", "que60": false}]};
+var rows = MX_DATA.rows;
+var svg = document.getElementById('mx');
+var NS = 'http://www.w3.org/2000/svg';
+var tip = document.getElementById('tip');
+var cmax = 0;
+rows.forEach(function(r){ if(r.c80>cmax)cmax=r.c80; if(r.c60>cmax)cmax=r.c60; });
+function el(tag, attrs, parent){
+  var e = document.createElementNS(NS, tag);
+  for(var k in attrs) e.setAttribute(k, attrs[k]);
+  (parent||svg).appendChild(e); return e;
+}
+var Y0 = 50, RH = 18, BW = 420;
+rows.forEach(function(r, i){
+  var y = Y0 + i * RH;
+  var lbl = el('text', {x:10, y:y+RH-4, 'font-size':8.5, fill:'var(--text1,#ccc)'});
+  lbl.textContent = (i+1) + '.' + r.p80.replace(/第[一二三四五六七八九十]+$/,'');
+  var sc80 = r.c80 / cmax * BW;
+  var g = el('g', {'class':'mx-node'});
+  el('rect', {x:170, y:y+2, width:Math.max(sc80,1), height:6, 'class':'mx-bar80'}, g);
+  if (r.c60 > 0) {
+    var sc60 = r.c60 / cmax * BW;
+    el('rect', {x:170, y:y+10, width:Math.max(sc60,1), height:6, 'class':'mx-bar60'}, g);
+  } else {
+    el('text', {x:174, y:y+16, 'class':'mx-que'}, g).textContent = '六十闕';
+  }
+  var num = el('text', {x:174+Math.max(sc80,sc60,10)+6, y:y+12, 'font-size':7.5, fill:'var(--text2,#999)'}, g);
+  num.textContent = r.c80.toLocaleString();
+  g.addEventListener('mousemove', function(ev){
+    tip.style.display='block';
+    tip.style.left=(ev.clientX+14)+'px'; tip.style.top=(ev.clientY+14)+'px';
+    tip.innerHTML = '<b>'+r.p80+'</b>（'+r.pair+'）<br>八十 '+r.c80.toLocaleString()+' CJK｜'+(r.c60>0?r.p60+' '+r.c60.toLocaleString()+' CJK':'六十阙')+'<br>'+(r.note||'');
+  });
+  g.addEventListener('mouseleave', function(){ tip.style.display='none'; });
+});
+var total = el('text', {x:170, y:Y0+rows.length*RH+20, 'font-size':11, fill:'var(--text1,#ddd)'});
+total.textContent = '八十总 '+MX_DATA.meta.sum80.toLocaleString()+' CJK · 六十总 '+MX_DATA.meta.sum60.toLocaleString()+' CJK · 六十阙 '+MX_DATA.meta.que60.length+' 品';
+document.getElementById('mx-sum').textContent = '八十总 '+MX_DATA.meta.sum80.toLocaleString()+' · 六十总 '+MX_DATA.meta.sum60.toLocaleString()+' · 六十阙 '+MX_DATA.meta.que60.length;
+</script>
+</body>
+</html>
