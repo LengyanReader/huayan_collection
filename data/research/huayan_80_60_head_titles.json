@@ -1,0 +1,49 @@
+{
+ "source": "CBETA T10n0279 / T09n0278 head 实测",
+ "date": "2026-11-05",
+ "note": "通称仅检索用；引文回源以 CBETA head 为准",
+ "rows": [
+  {
+   "pin": 9,
+   "head80": "光明覺品第九",
+   "head60": "如來光明覺品第五",
+   "conventional": "如來光明覺品"
+  },
+  {
+   "pin": 8,
+   "head60": "賢首菩薩品第八",
+   "conventional": "賢首品"
+  },
+  {
+   "pin": 9,
+   "head60": "佛昇須彌頂品第九",
+   "conventional": "昇須彌山頂品"
+  },
+  {
+   "pin": 11,
+   "head60": "菩薩十住品第十一",
+   "conventional": "十住品"
+  },
+  {
+   "pin": 13,
+   "head60": "初發心菩薩功德品第十三",
+   "conventional": "初發心功德品"
+  },
+  {
+   "pin": 17,
+   "head60": "功德華聚菩薩十行品第十七",
+   "conventional": "十行品"
+  },
+  {
+   "pin": 19,
+   "head60": "如來昇兜率天宮一切寶殿品第十九",
+   "conventional": "昇兜率天宮品"
+  },
+  {
+   "pin": 22,
+   "head80": "十無盡藏品第二十二",
+   "head60": "十無盡藏品第十八",
+   "conventional": "十無盡藏品"
+  }
+ ]
+}
