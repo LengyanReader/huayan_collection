@@ -46,6 +46,10 @@ var RUFAJIE_DATA = {"meta": {"source": "T10n0293（四十华严）", "note": "�
 var SPECIAL = {"9": "疑一·刀山", "17": "疑二·治罚", "25": "险门·离欲", "43": "最短·纯转介", "44": "四十二字母", "51": "彌勒楼阁", "52": "文殊遥指", "53": "十愿王"};
 var GROUP_COLOR = {"出家": "#4a7c59", "圣众": "#c46b5d", "在家男": "#5b7ea6", "在家女": "#a66a8f", "天神": "#8a76b8"};
 var visits = RUFAJIE_DATA.visits, stats = RUFAJIE_DATA.stats, meta = RUFAJIE_DATA.meta;
+window.roleGroup = function(role){
+  var m = {比丘:'出家',比丘尼:'出家',菩薩:'圣众',佛母:'圣众',長者:'在家男',居士:'在家男',王:'在家男',婆羅門:'在家男',仙人:'在家男',外道:'在家男',船師:'在家男',童子:'在家男',童子師:'在家男',童子童女:'在家男',優婆夷:'在家女',童女:'在家女',女:'在家女',釋女:'在家女',夜神:'天神',天神:'天神',地神:'天神',天女:'天神',林神:'天神'};
+  return m[role] || '其他';
+};
 
 // 统计条
 var st = document.getElementById('statstrip');
@@ -66,10 +70,6 @@ legend.innerHTML = Object.keys(lg).map(function(g){
   return '<span><span class="jy-dot" style="background:'+GROUP_COLOR[g]+'"></span>'+g+' ×'+lg[g]+'</span>';
 }).join('') + '<span><span class="jy-dot" style="background:#c9a227;border-radius:0;transform:rotate(45deg)"></span>★特殊参</span>';
 
-window.roleGroup = function(role){
-  var m = {比丘:'出家',比丘尼:'出家',菩薩:'圣众',佛母:'圣众',長者:'在家男',居士:'在家男',王:'在家男',婆羅門:'在家男',仙人:'在家男',外道:'在家男',船師:'在家男',童子:'在家男',童子師:'在家男',童子童女:'在家男',優婆夷:'在家女',童女:'在家女',女:'在家女',釋女:'在家女',夜神:'天神',天神:'天神',地神:'天神',天女:'天神',林神:'天神'};
-  return m[role] || '其他';
-};
 
 // 蛇形布局：7列×8行
 var COLS = 7, X0 = 70, DX = 150, Y0 = 60, DY = 200;
