@@ -561,9 +561,9 @@ others:
 - id: huayan-shihuiuxiang-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 28
+  order_in_group: 30
   icon: 🏔
-  title: 九九华严第二十三品 十回向品之拼读
+  title: 九九华严第二十五品 十回向品之拼读
   title_en: 'Huayan Sutra Close Reading · Part Twenty-Three: The Ten Dedications'
   title_sub: 第五会首品·兜率天宫·卷二十三～三十三·品文75744（全经最大单一品·跨十一卷）·金刚幢菩萨智光三昧说十回向（救护众生→法界无量）·L.257骨架成文·深化批L.258–L.261预登记
   updated_at: '2026-10-31'
@@ -577,9 +577,9 @@ others:
 - id: huayan-shidi-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 29
+  order_in_group: 31
   icon: ⛰
-  title: 九九华严第二十四品 十地品之拼读
+  title: 九九华严第二十六品 十地品之拼读
   title_en: 'Huayan Sutra Close Reading · Part Twenty-Four: The Ten Stages'
   title_sub: 第六会首品·他化自在天宫·卷三十四～四十·品文43413（跨七卷）·金刚藏菩萨说十地（欢喜→法云=十波罗蜜增上）·解脱月三请·L.266骨架成文
   updated_at: '2026-10-31'
@@ -593,9 +593,9 @@ others:
 - id: huayan-shiding-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 30
+  order_in_group: 32
   icon: 🔮
-  title: 九九华严第二十五品 十定品之拼读
+  title: 九九华严第二十七品 十定品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十七部_十定品.md
   back:
@@ -607,9 +607,9 @@ others:
 - id: huayan-shitong-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 31
+  order_in_group: 33
   icon: 👁
-  title: 九九华严第二十六品 十通品之拼读
+  title: 九九华严第二十八品 十通品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十八部_十通品.md
   back:
@@ -621,9 +621,9 @@ others:
 - id: huayan-shiren-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 32
+  order_in_group: 34
   icon: 🕊
-  title: 九九华严第二十七品 十忍品之拼读
+  title: 九九华严第二十九品 十忍品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十九部_十忍品.md
   back:
@@ -635,9 +635,9 @@ others:
 - id: huayan-asamkhya-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 33
+  order_in_group: 35
   icon: 🔢
-  title: 九九华严第二十八品 阿僧祇品之拼读
+  title: 九九华严第三十品 阿僧祇品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十部_阿僧祇品.md
   back:
@@ -649,9 +649,9 @@ others:
 - id: huayan-shouliang-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 34
+  order_in_group: 36
   icon: ⏳
-  title: 九九华严第二十九品 寿量品之拼读
+  title: 九九华严第三十一品 寿量品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十一部_寿量品.md
   back:
@@ -663,9 +663,9 @@ others:
 - id: huayan-zhuchu-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 35
+  order_in_group: 37
   icon: ⛰
-  title: 九九华严第三十品 菩萨住处品之拼读
+  title: 九九华严第三十二品 菩萨住处品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十二部_菩萨住处品.md
   back:
@@ -677,9 +677,9 @@ others:
 - id: huayan-fobusiyi-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 36
+  order_in_group: 38
   icon: 🪷
-  title: 九九华严第三十一品 佛不思议法品之拼读
+  title: 九九华严第三十三品 佛不思议法品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十三部_佛不思议法品.md
   back:
@@ -691,9 +691,9 @@ others:
 - id: huayan-shishenxiang-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 37
+  order_in_group: 39
   icon: 🌸
-  title: 九九华严第三十二品 十身相海品之拼读
+  title: 九九华严第三十四品 十身相海品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十四部_十身相海品.md
   back:
@@ -705,9 +705,9 @@ others:
 - id: huayan-suihao-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 38
+  order_in_group: 40
   icon: ✨
-  title: 九九华严第三十三品 随好光明品之拼读
+  title: 九九华严第三十五品 随好光明品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十五部_随好光明品.md
   back:
@@ -719,9 +719,9 @@ others:
 - id: huayan-putanxing-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 39
+  order_in_group: 41
   icon: 🙏
-  title: 九九华严第三十四品 普贤行品之拼读
+  title: 九九华严第三十六品 普贤行品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十六部_普贤行品.md
   back:
@@ -733,9 +733,9 @@ others:
 - id: huayan-rlchuxian-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 40
+  order_in_group: 42
   icon: ☀️
-  title: 九九华严第三十五品 如来出现品之拼读
+  title: 九九华严第三十七品 如来出现品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十七部_如来出现品.md
   back:
@@ -747,9 +747,9 @@ others:
 - id: huayan-lishijian-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 41
+  order_in_group: 43
   icon: 🚪
-  title: 九九华严第三十六品 离世间品之拼读
+  title: 九九华严第三十八品 离世间品之拼读
   updated_at: '2026-10-31'
   doc: docs/经学文献/华严经细读/第八会_普光明殿_离世间/华严经细读_第三十八部_离世间品.md
   back:
@@ -761,9 +761,9 @@ others:
 - id: huayan-rufajie-pin
   group: 经论茶歇
   family: huayan_xidu
-  order_in_group: 42
+  order_in_group: 44
   icon: 🌈
-  title: 九九华严第三十七品 入法界品之拼读
+  title: 九九华严第三十九品 入法界品之拼读
   updated_at: '2026-11-02'
   doc: docs/经学文献/华严经细读/第九会_逝多林_证入法界/华严经细读_第三十九部_入法界品.md
   back:
@@ -859,6 +859,32 @@ others:
     tab: gap
     view: avatamsaka-studies
     label: 文献页 · 华严经学
+- id: huayan-shengdoushuaitiangong-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 28
+  icon: ⛩️
+  title: 九九华严第二十三品 升兜率天宫品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Twenty-Three: Rising to the Tushita Heaven'
+  title_sub: 第五会首品·卷二十二～二十三·品文8473·不离而升第三叠·知足天宫纯过渡品（无说法正文）·六十 CBETA head 〈如來昇兜率天宮一切寶殿品第十九〉全称勘定·体量比101%（十三对中六十不缩反增罕见例）·摩尼藏/如意宝藏同物两译·藏译无平行章（n23→n24→n26）·李通玄迴向膝义窗·道霈敷座表法窗·L.328成篇·L.348深化
+  updated_at: '2026-11-05'
+  doc: docs/经学文献/华严经细读/第五会_兜率天宫_回向位/华严经细读_第二十三部_升兜率天宫品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+
+- id: huayan-doushuaigongzhongjizan-pin
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 29
+  icon: 🎍
+  title: 九九华严第二十四品 兜率宫中偈赞品之拼读
+  title_en: 'Huayan Sutra Close Reading · Part Twenty-Four: Verses in the Tushita Palace'
+  title_sub: 第五会次品·卷二十三·品文3069·偈200·三会偈赞三叠之终（品14→20→24）·金刚幢赞主即正说者·六十 CBETA head 〈兜率天宮菩薩雲集讚佛品第二十〉·三联列次逆转（菩萨→世界→佛 vs 世界→佛→菩萨）·世界名妙×/坚固×两系统·藏译偈赞仪式在夜摩位不在兜率位·L.328成篇·L.348深化
+  updated_at: '2026-11-05'
+  doc: docs/经学文献/华严经细读/第五会_兜率天宫_回向位/华严经细读_第二十四部_兜率宫中偈赞品.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+
 group_order:
 - key: 经论茶歇
   icon: 📖
@@ -888,86 +914,3 @@ group_icons:
   跨学科对读: 🌐
   前沿议题: 💻
   其他: 📂
-articles:
-- id: huayan-sheng兜率天宫品-pin
-  group: 经论茶歇
-  family: huayan_xidu
-  order_in_group: 33
-  icon: 🔺
-  title: 九九华严第升兜率天宫品品 升兜率天宫品之拼读
-  updated_at: '2026-11-04'
-  doc: docs/经学文献/华严经细读/第五会_兜率天宫_回向位/华严经细读_第二十三部_升兜率天宫品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
-- id: huayan-兜率gongzhong偈赞品-pin
-  group: 经论茶歇
-  family: huayan_xidu
-  order_in_group: 34
-  icon: 📜
-  title: 九九华严第兜率宫中偈赞品品 兜率宫中偈赞品之拼读
-  updated_at: '2026-11-04'
-  doc: docs/经学文献/华严经细读/第五会_兜率天宫_回向位/华严经细读_第二十四部_兜率宫中偈赞品.md
-  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
-  views: [avatamsaka-studies]
-
-- id: huayan_jing_xidi_pin
-  title: 华严经细读·第八部　四圣谛品
-  title_en: 'Huayan Sutra Close Reading Vol. 8: Chapter of the Four Noble Truths'
-  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第八部_四圣谛品.md
-  category: huayan_close_reading
-  series: huayan_collection
-  volume: 8
-  locale: zh-CN
-  status: completed
-  tags:
-  - 华严经
-  - 四圣谛品
-  - 细读
-  - 实叉难陀
-  - T10n0279
-- id: huayan_jing_guangmingjue_pin
-  title: 华严经细读·第九部　光明觉品
-  title_en: 'Huayan Sutra Close Reading Vol. 9: Chapter of Awakening by Light'
-  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第九部_光明觉品.md
-  category: huayan_close_reading
-  series: huayan_collection
-  volume: 9
-  locale: zh-CN
-  status: completed
-  tags:
-  - 华严经
-  - 光明觉品
-  - 细读
-  - 实叉难陀
-  - T10n0279
-- id: huayan_jing_wenming_pin
-  title: 华严经细读·第十部　菩萨问明品
-  title_en: 'Huayan Sutra Close Reading Vol. 10: Statements of the Questioning Bodhisattvas'
-  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十部_菩萨问明品.md
-  category: huayan_close_reading
-  series: huayan_collection
-  volume: 10
-  locale: zh-CN
-  status: completed
-  tags:
-  - 华严经
-  - 菩萨问明品
-  - 细读
-  - 实叉难陀
-  - T10n0279
-- id: huayan_jing_jingxing_pin
-  title: 华严经细读·第十一部　净行品
-  title_en: 'Huayan Sutra Close Reading Vol. 11: The Chapter of Pure Practices'
-  doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十一部_净行品.md
-  category: huayan_close_reading
-  series: huayan_collection
-  volume: 11
-  locale: zh-CN
-  status: completed
-  tags:
-  - 华严经
-  - 净行品
-  - 细读
-  - 实叉难陀
-  - T10n0279
