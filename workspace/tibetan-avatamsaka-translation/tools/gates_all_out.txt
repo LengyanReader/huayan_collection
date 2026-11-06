@@ -1,0 +1,44 @@
+== 里程碑 M0 · 体例奠基（W1 · 藏章1）（L.360）
+  [PASS          ] G0.1 :: 章=1 段=6（已译 1）全部逐字复验通过·双语与状态一致
+  [PASS          ] G0.2 :: {'tibetan_chapters': 45, 'verified_pairs': 31, 'tibetan_only': 2, 'front_unparallel': 12} · conflicts=1 条已留痕
+  [PASS          ] G0.3 :: 1 个三语段序正确·模型译标注齐全
+  [PASS          ] G0.4 :: 已登记（group=经论茶歇 order=45 skip_html=true·用号无冲突）
+  [MANUAL_PENDING] G0.5 :: 本页只称『W1 部分完成』；段未全译则 §6 保留〔未竟〕——人工确认无「以规划冒充完成」
+== 里程碑 M1 · 吞吐标定与算力决策（L.361）
+  [PENDING       ] G1.1 :: 判定函数未实现（里程碑未开工）：cost_table_grounded
+  [PENDING       ] G1.2 :: 判定函数未实现（里程碑未开工）：ab_translation_recorded
+  [MANUAL_PENDING] G1.3 :: 花钱 / 装环境 / 换模型类选项只成提案，须用户显式授权后方可执行（M0 硬规则 5）
+== 里程碑 M2 · 差5 段三语（藏章14–31 ＝ 品9–26）（L.362 起 18 会话）
+  [PENDING       ] G2.1 :: 缺章=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] 未足量=[]
+  [PASS          ] G2.2 :: 已覆盖章首段均与 b*.json bo_open 衔接
+  [PASS          ] G2.3 :: 页面进度列与数据层计数一致
+  [MANUAL_PENDING] G2.4 :: 抽查 3 章：模型译无祖本文字冒充（不得以 CBETA 文替代新译），术语与 L.354a 表无冲突或已记冲突
+== 里程碑 M3 · 差6 段三语（藏章33–44 ＝ 品27–38）（M2 后 12 会话）
+  [PENDING       ] G3.1 :: 缺章=[33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45] 未足量=[]
+  [PASS          ] G3.2 :: 差6 段 13 章均有 evidence 行（b5/b6·L.357）
+  [MANUAL_PENDING] G3.3 :: 离世间品（藏44/品38）长篇问答复沓段抽查：段切分未截断半句（shad 完整性）
+== 里程碑 M4 · 入法界品专批（藏章45 ＝ 品39）（M3 后 10 会话）
+  [PENDING       ] G4.1 :: 判定函数未实现（里程碑未开工）：param_map_grounded
+  [PENDING       ] G4.2 :: 判定函数未实现（里程碑未开工）：gandavyuha_segments
+  [MANUAL_PENDING] G4.3 :: 与既有入法界行历（52+1 卡口径）交叉核对，不另立参数
+== 里程碑 M5 · 人工校订线（模型译 → 可引用译文）（M2 起可并行滚动）
+  [PENDING       ] G5.1 :: 判定函数未实现（里程碑未开工）：proofread_coverage
+  [PENDING       ] G5.2 :: 判定函数未实现（里程碑未开工）：dual_track_kept
+  [MANUAL_PENDING] G5.3 :: 无依据的「顺手改」为零：任一校订若无依据即退回〔未校订〕
+== 里程碑 M6 · 三语术语库（M5 并行 · 3 会话）
+  [PENDING       ] G6.1 :: 判定函数未实现（里程碑未开工）：terms_backtrace
+  [PENDING       ] G6.2 :: 判定函数未实现（里程碑未开工）：glossary_conflicts_logged
+  [MANUAL_PENDING] G6.3 :: 抽样 10 条由人工判定释义是否与华严义理相容（不作纯字面强译）
+== 里程碑 M7 · 藏独有二章（藏11〈如来华严〉· 藏32〈普贤宣说〉）（M6 后 3 会话）
+  [PASS          ] G7.1 :: 藏11/藏32 在数据层与页面均保持『藏独有·不配对』
+  [PENDING       ] G7.2 :: 判定函数未实现（里程碑未开工）：attribution_evidence
+  [MANUAL_PENDING] G7.3 :: 札记中实质判断均标〔本文判断〕
+== 里程碑 M8 · 前段章界比对（藏1–10、12–13 ↔ 品1–8）（最后 · 6 会话）
+  [PENDING       ] G8.1 :: 判定函数未实现（里程碑未开工）：boundary_evidence_only
+  [PENDING       ] G8.2 :: 判定函数未实现（里程碑未开工）：front_segments_short_only
+  [MANUAL_PENDING] G8.3 :: 定界结论经人工确认后方可把前段改为具体品号对应（实质判断的人类闸门）
+== 里程碑 M9 · 站点收口与发布（贯穿 · 每里程碑末次会话）
+  [PENDING       ] G9.1 :: 判定函数未实现（里程碑未开工）：six_gates
+  [PASS          ] G9.2 :: 自包含（仅站内相对路径）· ARTICLE 在位
+  [MANUAL_PENDING] G9.3 :: push / 发布须用户显式授权；未授权只本地 commit
+-- 当前里程碑 FAIL=0（PENDING/MANUAL 不计阻塞）

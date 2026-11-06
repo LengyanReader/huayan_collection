@@ -835,6 +835,24 @@ others:
     label: 文献页 · 华严经学
   views:
   - avatamsaka-studies
+- id: tibetan-avatamsaka-trilingual
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 45
+  icon: 🕻
+  title: 藏译华严 · 藏汉英三语对读（德格甘珠尔 Toh 44）
+  title_en: 'Tibetan Avataṃsaka · Trilingual Working Page (Tibetan / Chinese / English)'
+  title_sub: v0.1 · L.360 开批 · 45 章品目规划机器派生（藏14-31=品9-26 差5·藏33-45=品27-39 差6·藏独有
+    2 章·前段 12 章〔待核〕）· 一段藏→一段汉→一段英 · 藏文德格 035 逐字回源复验 · 汉/英 MITRA
+    9B 本地模型译〔未校订〕· W1 藏章1 开篇 6 段
+  updated_at: '2026-11-06'
+  skip_html: true
+  back:
+    tab: gap
+    view: avatamsaka-studies
+    label: 文献页 · 华严经学
+  views:
+  - avatamsaka-studies
 - id: huayan-rufajie-journey
   group: 经论茶歇
   family: huayan_xidu

@@ -1,0 +1,126 @@
+{
+ "id": "tibetan_avatamsaka_trilingual_segments",
+ "batch_created": "L.360",
+ "date": "2026-11-06",
+ "source_file": "data/references/tibetan/derge_kangyur/avatamsaka/035_α╜òα╜úα╝ïα╜åα╜║α╜ôα╝ì_α╜Ç.txt",
+ "source_sha256_note": "见 data/alignment/tibetan-derge-toc.json base_texts（德格 035）",
+ "grounding_rule": "藏文段一律自德格 035 {T44-1}…{T44-2} 区间字节切片提取并逐段 norm() 复验；绝不手打",
+ "segmentation_rule": "标题块（རྒྱ་གར་སྐད་དུ…）整体为段1；正文按 shad（།）整句聚合，每段约≥60 字；MVP 共6段",
+ "translation_engine": "buddhist-nlp/mitra-qwen35-translate（9B, bf16, CPU）· 输出〔模型译·未校订〕",
+ "chapter": {
+  "tibetan_no": 1,
+  "derge_vol": "035",
+  "start_folio": "1b.1",
+  "chinese_correspondence": "品1〈世主妙严品〉开篇对应已实证（L.203 示范对勘），品目整体章界不平行〔待核〕"
+ },
+ "segments": [
+  {
+   "no": 1,
+   "kind": "title",
+   "vol": "035",
+   "marker": "T44-1",
+   "folio": "1b.1",
+   "char_off": 6,
+   "bo": "རྒྱ་གར་སྐད་དུ། བུདྡྷ་ཨ་བ་ཏང་ས་ཀ་ནཱ་མ་མ་ཧཱ་བཻ་པུ་ལྱཾ་སཱུ་ཏྲ། བོད་སྐད་དུ། སངས་རྒྱས་ཕལ་པོ་ཆེ་ཞེས་བྱ་བ་ཤིན་ཏུ་རྒྱས་པ་ཆེན་པོའི་མདོ།",
+   "zh": "梵語：《佛華嚴經》（Buddhāvatamsaka-nāma-mahāvaipulya-sūtra）；藏語：《佛華嚴大廣博經》。「善男子！菩薩摩訶薩有十種法，能令菩薩成就無量無邊功德。何等為十？所謂：一者、成就無量無邊身；二者、成就無量無邊語；三者、成就無量無邊心；四者、成就無量無邊智；五者、成就無量無邊神通；六者、成就無量無邊自在；七者、成就無量無邊力；八者、成就無量無邊威德；九者、成就無量無邊莊嚴；十者、成就無量無邊清淨。善男子！是為菩薩摩訶薩十種法，能令菩薩摩訶薩成就無",
+   "en": "In the language of India: Buddhāvatamsaka-nāma-mahāvaipulya-sūtra. In the language of Tibet: Sangs rgyas phal po che zhes bya ba shin tu rgyas pa chen po'i mdo (The Great Vaipulya Sutra titled \"The Buddha-Array\").འཕགས་པ་སངས་རྒས་ཕལ་བོ་ཆེ་བམ་པོ་བཞི་བཅུ་རྩ་གཉིས་པ། བམ་པོ་ཉི་ཤུ་རྩལྔ་པ། སངསརྒྱུས་རྨད་གཅད་",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 4597.8,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T11:19:58"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 2826.3,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T12:07:05"
+   }
+  },
+  {
+   "no": 2,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-1",
+   "folio": "1b.1",
+   "char_off": 133,
+   "bo": "འདི་ སྐད་བདག་གིས་ཐོས་པའི་དུས་གཅིག་ན། བཅོམ་ལྡན་འདས་ཐོག་མ་མངོན་པར་སངས་རྒྱས་པ། སངས་རྒྱས་ཀྱི་ཆོས་ཐམས་ཅད་ཤིན་ཏུ་རྣམ་པར་སངས་རྒྱས་པའི་ཐུགས་མངའ་བ།",
+   "zh": "如是我聞：一時，薄伽梵初成正覺，於一切佛法已得圓滿覺悟之心。論曰：此中應知，諸菩薩摩訶薩於諸地中，由十種相，應知清淨。論曰：此中，應知諸菩薩摩訶薩於十地中，由十種相應知清淨。論日：此中應知，諸波羅蜜多，由十種相，應知其相。論曰：此中諸波羅蜜多，由十一種相應知其相。論曰：云何應知諸波羅蜜多果？論曰：云何應知其相？論曰：云何諸波羅蜜多清淨？論曰：云何波羅蜜多清淨？ 謂諸菩薩摩訶薩，於諸地中，由十相故，應知清淨",
+   "en": null,
+   "status": "pending",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1489.2,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T12:31:54"
+   }
+  },
+  {
+   "no": 3,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-1",
+   "folio": "[1b.3]",
+   "char_off": 285,
+   "bo": "དུས་གསུམ་མཉམ་པ་ཉིད་དུ་ཐུགས་སུ་ཆུད་པའི་ཡེ་ཤེས་ཀྱི་སྐུ་མངའ་བ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་སྐུས་ཤིན་ཏུ་ཁྱབ་པ། སངས་རྒྱས་ཀྱི་ཞིང་ཐམས་ཅད་དུ་དབྱངས་ཀྱི་ཡན་ ལག་དང་གསུང་གི་ང་རོ་ཤིན་ཏུ་བསྒྲགས་པ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 4,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-1",
+   "folio": "[1b.4]",
+   "char_off": 475,
+   "bo": "མཁའ་དང་ནམ་མཁའ་ལྟ་བུའི་མཚན་ཉིད་མཉམ་པ་ཉིད་དུ་རབ་ཏུ་སྣང་བའི་སྤྱོད་ཡུལ་ཅན་ནམ་མཁའ་ལྟར་འགྲོ་བ་ཐམས་ཅད་ཀུན་ཁྱབ་པའི་སྙིང་པོ་ བྱང་ཆུབ་ཐམས་ཅད་ལ་བཞུགས་པའི་སྐུ་བྱང་ཆུབ་སེམས་དཔའ་རྒྱ་མཚོ་ཐམས་ཅད་ཀྱི་ནང་ན་རྣམ་པར་སྣང་བ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་ཉི་མའི་དཀྱིལ་འཁོར་ལྟར་ཤར་བ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 5,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-1",
+   "folio": "[1b.5]",
+   "char_off": 739,
+   "bo": "སངས་ རྒྱས་ཀྱི་ཞིང་ཐམས་ཅད་དུ་ཡོངས་སུ་སྐྱེ་བ་བསྟན་པ། རབ་ཏུ་སྤྲོས་པ་དུས་གསུམ་གྱི་བསོད་ནམས་རྒྱ་ཆེན་པོ་རྒྱ་མཚོ་ལྟ་བུས་སྤྱོད་ཡུལ་ཡོངས་སུ་དག་པ། འོད་ཀྱི་དཀྱིལ་འཁོར་དང་།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 6,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-1",
+   "folio": "[2a.1]",
+   "char_off": 911,
+   "bo": "འོད་ཟེར་ཁ་དོག་མཐའ་ཡས་པ་མངའ་བ། ཆོས་ཀྱི་དབྱིངས་ཐམས་ཅད་རྒྱས་པར་འགེངས་པའི་ཆོས་ཀྱི་སྤྲིན་ཐམས་ཅད་ཀྱིས་རྣམ་པར་འཕྲུལ་པ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་བསྒྲིབས་པ་མེད་པ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  }
+ ]
+}
