@@ -1,0 +1,101 @@
+{
+ "id": "tibetan_avatamsaka_trilingual_segments_ch15",
+ "batch_created": "〔本段所属批次见 PROGRESS〕",
+ "date": "2026-11-06",
+ "source_file": "data/references/tibetan/derge_kangyur/avatamsaka/035_α╜òα╜úα╝ïα╜åα╜║α╜ôα╝ì_α╜Ç.txt",
+ "chapter_boundary": "{T44-15}…{T44-16}",
+ "grounding_rule": "藏文段一律自德格底本 {T44-15} 区间字节切片提取并逐段 norm() 复验；绝不手打",
+ "segmentation_rule": "正文按 shad（།）整句聚合，每段约≥60 字；本单元共 6 段",
+ "translation_engine": "buddhist-nlp/mitra-qwen35-translate（9B, bf16, CPU）· 输出〔模型译·未校订〕",
+ "chapter": {
+  "tibetan_no": 15,
+  "derge_vol": "035",
+  "start_folio": "203b.2",
+  "chinese_correspondence": "品10〈菩萨问明品〉（对应律 差5）·证据：alignment\\tibetan_zhuhuju_b2.json 章条目"
+ },
+ "ch_stats": {
+  "raw_chars": 20866,
+  "clean_chars": 19978,
+  "sentence_count": 597
+ },
+ "segments": [
+  {
+   "no": 1,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-15",
+   "folio": "203b.2",
+   "char_off": 0,
+   "bo": "སངས་རྒྱས་རྨད་ག་ཅད་ཅེས་བྱ་བ་ཤིན་ཏུ་རྒྱས་པ་ཆེན་པོའི་མདོ། །བམ་པོ་བཅུ་བདུན་པ། དེ་ནས་བྱང་ཆུབ་སེམས་དཔའ་འཇམ་དཔལ་ གྱིས།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 2,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-15",
+   "folio": "[203b.3]",
+   "char_off": 120,
+   "bo": "བྱང་ཆུབ་སེམས་དཔའ་སངས་རྒྱས་དཔལ་ལ་འདི་སྐད་ཅེས་སྨྲས་སོ། །ཀྱེ་རྒྱལ་བའི་སྲས་དག་རང་བཞིན་གཅིག་པའི་སེམས་ལ་བྱེ་བྲག་ཐ་དད་པའི་རྣམ་པ་འདི་ལྟ་བུ་དག་འདི་ལྟ་སྟེ། བདེ་འགྲོར་འགྲོ་བ་དང་།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 3,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-15",
+   "folio": "[203b.3]",
+   "char_off": 288,
+   "bo": "ངན་སོང་དུ་འགྲོ་བ་དང་། དབང་པོ་ཚང་བ་དང་ དབང་པོ་མ་ཚང་བ་དང་། སྐྱེ་བ་འཐུན་པ་དང་། སྐྱེ་བ་མི་འཐུན་པ་དང་།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 4,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-15",
+   "folio": "[203b.4]",
+   "char_off": 394,
+   "bo": "སྡུག་པ་དང་། མི་སྡུག་པ་དང་། བདེ་བ་མྱོང་བ་དང་། སྡུག་བསྔལ་མྱོང་བ་སྣང་བ་དག་ལ་ལྟོས། ལས་ཀྱིས་ནི་སེམས་མི་ཤེས་སོ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 5,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-15",
+   "folio": "[203b.4]",
+   "char_off": 501,
+   "bo": "སེམས་ཀྱིས་ནི་ལས་མི་ཤེས་སོ། །ཚོར་བས་ ནི་རྣམ་པར་སྨྱིན་པ་མི་ཤེས་སོ། །རྣམ་པར་སྨིན་པས་ནི་ཚོར་བ་མི་ཤེས་སོ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 6,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-15",
+   "folio": "[203b.5]",
+   "char_off": 611,
+   "bo": "སེམས་ཀྱིས་ནི་ཚོར་བ་མི་ཤེས་སོ། །ཚོར་བས་ནི་སེམས་མི་ཤེས་སོ། །རྒྱུས་ནི་རྐྱེན་མི་ཤེས་སོ། །རྐྱེན་ཀྱིས་ནི་རྒྱུ་མི་ཤེས་སོ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  }
+ ]
+}

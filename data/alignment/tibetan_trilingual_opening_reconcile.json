@@ -18,6 +18,20 @@
    ],
    "machine_check": "workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py::p_opening_matches_alignment（不一致章须命中本档 records 方 PASS）",
    "followup": "b2 bo_open 是否统一回改为真开篇——属对勘批 SSOT 变更，须人工另行授权；本批不动"
+  },
+  {
+   "tibetan_ch": 15,
+   "pin": "品10〈菩薩問明〉（差5 对应律）",
+   "observation": "b2 ch15 之 bo_open（起 ་རེ་ན་ཡང་འཕགས་པའི་བདེན་པ·前导杂余 tsheg 同 ch14 粗切特征）在本文件 {T44-15}…{T44-16} 区间 norm() 后 find=-1——不在藏15 章界内；本专题 seg1（སངས་རྒྱས་རྨད་ག་ཅད་ཅེས་བྱ་བ…）自 {T44-15} 标记后逐字回源切出（folio 203b.2）",
+   "verdict": "b2 bo_open 种子串与 ch14 同型错切（b2 生成器共用旧偏移口径之系统性缺陷·疑贯全表，各章开工前逐章预检）；本专题 seg1/seg2 为藏15 真开篇——不改正对勘批 b2，仅登记本订正",
+   "evidence": [
+    "b2 ch15 自记 fol=203b.2 ＝ 本专题 seg1 切片实测 folio=203b.2（同页）",
+    "本 seg2＝byang chub sems dpa' sangs rgyas dpal la 'di skad ces smras so（「菩薩問覺首言」句式·問明品標幟問答），與 b2 zh80_open「菩薩問明品第十爾時，文殊師利菩薩問覺首菩薩言」義合",
+    "bo_open 串在藏15 章界 norm() 后 find=-1（与 ch14 记录同一失配模式）",
+    "本六段经 extract_trilingual_segments.py 逐字 norm() 复验（verified=true·seg1 char_off=0 即章首）"
+   ],
+   "machine_check": "workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py::p_opening_matches_alignment（不一致章须命中本档 records 方 PASS）",
+   "followup": "同 ch14——b2 全表 bo_open 回改属对勘批 SSOT 变更须人工授权；M2 各章开工前逐章跑 G2.2 预检"
   }
  ]
 }
