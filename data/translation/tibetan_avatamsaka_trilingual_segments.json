@@ -56,8 +56,8 @@
    "char_off": 133,
    "bo": "འདི་ སྐད་བདག་གིས་ཐོས་པའི་དུས་གཅིག་ན། བཅོམ་ལྡན་འདས་ཐོག་མ་མངོན་པར་སངས་རྒྱས་པ། སངས་རྒྱས་ཀྱི་ཆོས་ཐམས་ཅད་ཤིན་ཏུ་རྣམ་པར་སངས་རྒྱས་པའི་ཐུགས་མངའ་བ།",
    "zh": "如是我聞：一時，薄伽梵初成正覺，於一切佛法已得圓滿覺悟之心。論曰：此中應知，諸菩薩摩訶薩於諸地中，由十種相，應知清淨。論曰：此中，應知諸菩薩摩訶薩於十地中，由十種相應知清淨。論日：此中應知，諸波羅蜜多，由十種相，應知其相。論曰：此中諸波羅蜜多，由十一種相應知其相。論曰：云何應知諸波羅蜜多果？論曰：云何應知其相？論曰：云何諸波羅蜜多清淨？論曰：云何波羅蜜多清淨？ 謂諸菩薩摩訶薩，於諸地中，由十相故，應知清淨",
-   "en": null,
-   "status": "pending",
+   "en": "Thus have I heard at one time: the Blessed One, who had first attained manifest enlightenment, possessed a mind that had perfectly and completely awakened to all the qualities of a Buddha.To the one who has attained the state of a Tathāgata, Arhat, and Perfectly Complete Buddha, who is the teacher of gods and humans, the Buddha, the Blessed One, I pay homage.འདི་སྐད་བདྭག་གིས་ཤོས་པའྀ་དུས་ག་ཅིག་ན༔ བཅོཾ་ལྡན྄་འདས་མངོན་རྫོགས་སངས་ར࿄ས་པ་ནས་བཟུང་སྟེ",
+   "status": "done",
    "verified": true,
    "zh_meta": {
     "model": "buddhist-nlp/mitra-qwen35-translate",
@@ -68,6 +68,16 @@
     "out_tokens": 200,
     "clipped_repeat": false,
     "ts": "2026-11-06T12:31:54"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1591.5,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T12:58:26"
    }
   },
   {
@@ -78,10 +88,30 @@
    "folio": "[1b.3]",
    "char_off": 285,
    "bo": "དུས་གསུམ་མཉམ་པ་ཉིད་དུ་ཐུགས་སུ་ཆུད་པའི་ཡེ་ཤེས་ཀྱི་སྐུ་མངའ་བ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་སྐུས་ཤིན་ཏུ་ཁྱབ་པ། སངས་རྒྱས་ཀྱི་ཞིང་ཐམས་ཅད་དུ་དབྱངས་ཀྱི་ཡན་ ལག་དང་གསུང་གི་ང་རོ་ཤིན་ཏུ་བསྒྲགས་པ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "具足通達三世平等性之智慧身，其身周遍一切世界，其音聲支分與言辭音韻於一切佛土中極其宣揚。然而，這並非指在「無自性」的意義上，才稱之為「無自性」。若無自性，則無生；若無生，則無滅。若無生滅，則無有遷變。若無遷變，則無有老死。若無老死，則無憂、悲、苦、惱。若無憂、悲、苦、煩惱，則一切苦聚皆悉寂滅。若無生，則無滅；若無生滅，則無變異；若無變異，則無老死；若無老死，則無愁、歎、苦、憂、惱。如是，則一切苦蘊皆悉寂滅。若諸法無",
+   "en": "He possesses the wisdom body that realizes the equality of the three times; his body thoroughly pervades all world systems; and the branches of his melodic voice and the resonance of his speech are proclaimed throughout all buddhafields.ཆོས་ཀྱང་མི་དམིགས་པ་དང་། ཆོས་ཀ࿄ མི་དམིཊ་པ་དང་ཆོས་ཀུན་ཏུ་ མི་དཔྱོད་པ་དང་ ཆོས་ལ་མི་རྟོག་པ་དང་རྣམ་པར་མི་ར࿄ ག་པ་དང་དེ",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 953.4,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T13:14:19"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 982.4,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T13:30:41"
+   }
   },
   {
    "no": 4,
@@ -91,10 +121,30 @@
    "folio": "[1b.4]",
    "char_off": 475,
    "bo": "མཁའ་དང་ནམ་མཁའ་ལྟ་བུའི་མཚན་ཉིད་མཉམ་པ་ཉིད་དུ་རབ་ཏུ་སྣང་བའི་སྤྱོད་ཡུལ་ཅན་ནམ་མཁའ་ལྟར་འགྲོ་བ་ཐམས་ཅད་ཀུན་ཁྱབ་པའི་སྙིང་པོ་ བྱང་ཆུབ་ཐམས་ཅད་ལ་བཞུགས་པའི་སྐུ་བྱང་ཆུབ་སེམས་དཔའ་རྒྱ་མཚོ་ཐམས་ཅད་ཀྱི་ནང་ན་རྣམ་པར་སྣང་བ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་ཉི་མའི་དཀྱིལ་འཁོར་ལྟར་ཤར་བ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "其境界顯現為如虛空與虛空般平等的法性，如虛空般周遍一切眾生，安住於一切覺悟之藏。其身顯現於一切菩薩大海之中，猶如日輪升起於一切世界。佛子！此菩薩摩訶薩，於一切法中，得無礙智，隨順一切智，普入一切法界，普知一切法界，普見一切法界，普證一切法界，普住一切法界，普遊一切法界，普觀一切法界，普入一切法界，於一切法界中，皆悉自在。佛子！此菩薩於一切法中，得無障礙智，隨順一切智，遍入一切法界，遍知一切法界，遍見一切法界，遍證一切法界，遍住一切法界，遍遊一切法界，遍觀一切法界，遍",
+   "en": "His sphere of activity is the manifestation of the equality of characteristics, like the sky and space; he is the essence that pervades all beings like space, the body abiding in all enlightenment, appearing within an ocean of all bodhisattvas, and rising like the orb of the sun in all world systems.འཇིག་རིག་རྟོག་པ་ཐམས་རྟེག་པ་ཐ་ཅད་ཀ་ཀྱིས་མི་ཤེས་པའིམ་ཤེས་བའི་མུན་པ་ཐུགས་རྗེ་ཆེན་པོའི་འོད་ཟེར་ག�ig",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 974.3,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T13:46:56"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 976.6,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T14:03:12"
+   }
   },
   {
    "no": 5,
@@ -104,10 +154,30 @@
    "folio": "[1b.5]",
    "char_off": 739,
    "bo": "སངས་ རྒྱས་ཀྱི་ཞིང་ཐམས་ཅད་དུ་ཡོངས་སུ་སྐྱེ་བ་བསྟན་པ། རབ་ཏུ་སྤྲོས་པ་དུས་གསུམ་གྱི་བསོད་ནམས་རྒྱ་ཆེན་པོ་རྒྱ་མཚོ་ལྟ་བུས་སྤྱོད་ཡུལ་ཡོངས་སུ་དག་པ། འོད་ཀྱི་དཀྱིལ་འཁོར་དང་།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "於一切佛土示現受生，以如大海般廣大、遍及三世的種種戲論功德，令其行境完全清淨，並具足圓滿的光明輪。由此，菩薩摩訶薩應當了知：這便是菩薩摩訶薩的「無盡寶篋三昧」。若菩薩摩訶薩能如是修學，則能圓滿成就一切波羅蜜多。須菩提，這便是菩薩摩訶薩修學般若波羅蜜多時，所應成就的「一切種智」。須菩提，這便是菩薩摩薩修學般若波羅蜜多的法門。\n若菩薩摩訶薩能如實了知一切法皆無所從來，亦無所從去，這便是菩薩摩訶萨修學般若波羅蜜多。\n若菩薩摩訶萨能如是修學，則能成就一切波羅蜜多。\n若諸",
+   "en": "He manifested births in all Buddha-fields; his sphere of activity was completely purified by an ocean-like, vast merit of the three times through extensive elaboration; and his mandala of light and—འོད་ཟེར་གྱི་དྲ་བ་མཐའ་ཡས་པ་ཀུན་ཏུ་འཕྲོ་བ། སྤྲུུལ་པའི་སྤ�ིན་གྱི་ཚོགས་ཀྱང་མཐའ། ཡས་པ་མངོན་པར་འཕྱེ་བ། སངས་ར� infinite networks",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 934.6,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T14:18:47"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 940.3,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T14:34:27"
+   }
   },
   {
    "no": 6,
@@ -117,10 +187,30 @@
    "folio": "[2a.1]",
    "char_off": 911,
    "bo": "འོད་ཟེར་ཁ་དོག་མཐའ་ཡས་པ་མངའ་བ། ཆོས་ཀྱི་དབྱིངས་ཐམས་ཅད་རྒྱས་པར་འགེངས་པའི་ཆོས་ཀྱི་སྤྲིན་ཐམས་ཅད་ཀྱིས་རྣམ་པར་འཕྲུལ་པ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་བསྒྲིབས་པ་མེད་པ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "具足無量無邊色光，以遍滿一切法界的種種法雲而顯現神變，於一切世間皆無障礙。於一切法界中，皆悉周遍充滿。由於對一切法皆無所執著，因此能徹底斷除對「我」的虛妄分別。正因為不再執著於自我，便能遠離一切煩惱的束縛。由於對一切法皆不生執著，因此能徹底斷除以「我」為對象的虛妄分別。正因為不再生起對自我的執著，便能遠離一切煩惱的束縳。由於對一切法皆不執著，因此能徹底斷除非我之虛妄分別。正因為不再對自我產生執著，便能遠離一切煩惱。由於對一切法皆能無所執著，因此能完全斷除對「我」的種種虛妄分別。正因為不再生起對自我的執",
+   "en": "Possessing infinite-colored light rays, they manifest through all the clouds of Dharma that extensively fill the entire realm of phenomena, remaining unobstructed throughout all world systems.འཇིག་རིགས་ཀྱང་མཐའི་མུ་མེད་དེ། འཇུག་པ་ལས། མཐའ་མེད་བདག་ཅན་འཇིག་ཚོགས་འདི་ལ་ནི།། འཇག་རྟའི་ཁམས། མུ་མཐའ། འཇོག་རྟུལ།",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 944.9,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T14:50:12"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 909.0,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T15:05:21"
+   }
   }
  ]
 }

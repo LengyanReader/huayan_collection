@@ -1,0 +1,22 @@
+[10:03:19] tokenizer ready 26.5s
+[10:03:20] model ready 1.7s dtype=torch.bfloat16 threads=16
+[10:03:20] segments total=6 todo=6
+[11:19:58] seg1 zh chars=240 gen=4597.8s clipped=False :: 梵語：《佛華嚴經》（Buddhāvatamsaka-nāma-mahāvaipulya-sūtra）；藏語：《佛華嚴大廣
+[12:07:05] seg1 en chars=299 gen=2826.3s clipped=False :: In the language of India: Buddhāvatamsaka-nāma-mahāvaipulya-
+[12:07:05] seg1 done
+[12:31:54] seg2 zh chars=204 gen=1489.2s clipped=False :: 如是我聞：一時，薄伽梵初成正覺，於一切佛法已得圓滿覺悟之心。論曰：此中應知，諸菩薩摩訶薩於諸地中，由十種相，應知清淨。論
+[12:58:26] seg2 en chars=445 gen=1591.5s clipped=False :: Thus have I heard at one time: the Blessed One, who had firs
+[12:58:26] seg2 done
+[13:14:19] seg3 zh chars=209 gen=953.4s clipped=False :: 具足通達三世平等性之智慧身，其身周遍一切世界，其音聲支分與言辭音韻於一切佛土中極其宣揚。然而，這並非指在「無自性」的意義
+[13:30:41] seg3 en chars=349 gen=982.4s clipped=False :: He possesses the wisdom body that realizes the equality of t
+[13:30:41] seg3 done
+[13:46:56] seg4 zh chars=235 gen=974.3s clipped=False :: 其境界顯現為如虛空與虛空般平等的法性，如虛空般周遍一切眾生，安住於一切覺悟之藏。其身顯現於一切菩薩大海之中，猶如日輪升起
+[14:03:12] seg4 en chars=396 gen=976.6s clipped=False :: His sphere of activity is the manifestation of the equality 
+[14:03:12] seg4 done
+[14:18:47] seg5 zh chars=233 gen=934.6s clipped=False :: 於一切佛土示現受生，以如大海般廣大、遍及三世的種種戲論功德，令其行境完全清淨，並具足圓滿的光明輪。由此，菩薩摩訶薩應當了
+[14:34:27] seg5 en chars=319 gen=940.3s clipped=False :: He manifested births in all Buddha-fields; his sphere of act
+[14:34:27] seg5 done
+[14:50:12] seg6 zh chars=253 gen=944.9s clipped=False :: 具足無量無邊色光，以遍滿一切法界的種種法雲而顯現神變，於一切世間皆無障礙。於一切法界中，皆悉周遍充滿。由於對一切法皆無所
+[15:05:21] seg6 en chars=301 gen=909.0s clipped=False :: Possessing infinite-colored light rays, they manifest throug
+[15:05:21] seg6 done
+[15:05:21] ALL DONE 18148.9s

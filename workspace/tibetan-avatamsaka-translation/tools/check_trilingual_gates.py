@@ -228,6 +228,53 @@ def p_page_selfcontained():
     return 'PASS', '自包含（仅站内相对路径）· ARTICLE 在位'
 
 
+def p_cost_table_grounded():
+    """M1 G1.1：标定表每个数字可指到来源字段（meta/log），无估算冒充实测。"""
+    rm = jload(RM)
+    mc = rm.get('measured_constraints') or {}
+    cp = rm.get('compute_policy') or {}
+    need = ('gen_seconds_per_token', 'batch_measured_seg1_zh', 'batch_final_W1',
+            'session_unit_cost_estimate')
+    miss = [k for k in need if not mc.get(k)]
+    if miss:
+        return 'FAIL', '标定表缺来源键：%s' % miss
+    if not cp.get('statement'):
+        return 'PENDING', '算力决策尚未入账（compute_policy.statement 缺）'
+    allseg = [s for v in CTX['segs'].values() for s in v]
+    done = [s for s in allseg if s.get('status') == 'done']
+    if not done:
+        return 'PENDING', '无已译段可标定'
+    nomet = [s['no'] for s in done
+             if not ((s.get('zh_meta') or {}).get('gen_s')
+                     and (s.get('en_meta') or {}).get('gen_s'))]
+    if nomet:
+        return 'FAIL', '已译段缺 *_meta.gen_s（数字无来源可指）：%s' % nomet
+    m = re.search(r'总机时\s*([0-9.]+)s', mc['batch_final_W1'])
+    ssum = sum(s['zh_meta']['gen_s'] + s['en_meta']['gen_s'] for s in done)
+    if m:
+        stated = float(m.group(1))
+        if abs(stated - ssum) / stated > 0.05:
+            return 'FAIL', '标定表总机时 %.1fs 与逐段 meta 之和 %.1fs 偏差>5%%' % (stated, ssum)
+        return 'PASS', ('标定表键齐·%d 段 meta 逐数可指·总量对账 %.1f vs Σmeta %.1f s'
+                        '（差 %.2f%%＝加载/间隔）') % (len(done), stated, ssum,
+                                                      100 * (stated - ssum) / stated)
+    return 'PASS', '标定表键齐·%d 段 meta 可指（未声明总量，免对账）' % len(done)
+
+
+def p_ab_translation_recorded():
+    """M1 G1.2：提速候选若采纳，须留同段新旧对照记录于数据层。"""
+    cp = jload(RM).get('compute_policy') or {}
+    if 'ab_candidates_adopted' not in cp:
+        return 'PENDING', '算力决策未入账（ab_candidates_adopted 缺）'
+    if not cp['ab_candidates_adopted']:
+        return ('PASS', '未采纳提速候选（决策=本机 CPU 逐点推进）→ 无新旧对照义务；'
+                        '日后采纳须补 tibetan_avatamsaka_*ab*.json 数据层')
+    ab = [p for p in glob.glob('data/translation/tibetan_avatamsaka_*ab*.json')]
+    if not ab:
+        return 'FAIL', '提速候选标记已采纳，但数据层无同段新旧对照记录'
+    return 'PASS', '提速候选已采纳且有对照：%s' % [p.split('/')[-1] for p in ab]
+
+
 PREDICATES = {
     'segments_all_verified': p_segments_all_verified,
     'plan_totals_closed': p_plan_totals_closed,
@@ -240,6 +287,8 @@ PREDICATES = {
     'evidence_cited': p_evidence_cited,
     'unique_chapters_unpaired': p_unique_chapters_unpaired,
     'page_selfcontained': p_page_selfcontained,
+    'cost_table_grounded': p_cost_table_grounded,
+    'ab_translation_recorded': p_ab_translation_recorded,
 }
 
 

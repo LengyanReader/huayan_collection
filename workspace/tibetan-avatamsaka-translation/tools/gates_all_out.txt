@@ -1,12 +1,12 @@
 == 里程碑 M0 · 体例奠基（W1 · 藏章1）（L.360）
-  [PASS          ] G0.1 :: 章=1 段=6（已译 1）全部逐字复验通过·双语与状态一致
+  [PASS          ] G0.1 :: 章=1 段=6（已译 6）全部逐字复验通过·双语与状态一致
   [PASS          ] G0.2 :: {'tibetan_chapters': 45, 'verified_pairs': 31, 'tibetan_only': 2, 'front_unparallel': 12} · conflicts=1 条已留痕
   [PASS          ] G0.3 :: 1 个三语段序正确·模型译标注齐全
   [PASS          ] G0.4 :: 已登记（group=经论茶歇 order=45 skip_html=true·用号无冲突）
   [MANUAL_PENDING] G0.5 :: 本页只称『W1 部分完成』；段未全译则 §6 保留〔未竟〕——人工确认无「以规划冒充完成」
 == 里程碑 M1 · 吞吐标定与算力决策（L.361）
-  [PENDING       ] G1.1 :: 判定函数未实现（里程碑未开工）：cost_table_grounded
-  [PENDING       ] G1.2 :: 判定函数未实现（里程碑未开工）：ab_translation_recorded
+  [PASS          ] G1.1 :: 标定表键齐·6 段 meta 逐数可指·总量对账 18148.9 vs Σmeta 18120.3 s（差 0.16%＝加载/间隔）
+  [PASS          ] G1.2 :: 未采纳提速候选（决策=本机 CPU 逐点推进）→ 无新旧对照义务；日后采纳须补 tibetan_avatamsaka_*ab*.json 数据层
   [MANUAL_PENDING] G1.3 :: 花钱 / 装环境 / 换模型类选项只成提案，须用户显式授权后方可执行（M0 硬规则 5）
 == 里程碑 M2 · 差5 段三语（藏章14–31 ＝ 品9–26）（L.362 起 18 会话）
   [PENDING       ] G2.1 :: 缺章=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] 未足量=[]

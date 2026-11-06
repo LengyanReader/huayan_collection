@@ -1,0 +1,27 @@
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[10:03:19] tokenizer ready 26.5s
+
+Loading weights:   0%|          | 0/427 [00:00<?, ?it/s]
+Loading weights:  62%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ   | 264/427 [00:00<00:00, 2434.53it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 427/427 [00:00<00:00, 2551.82it/s]
+[10:03:20] model ready 1.7s dtype=torch.bfloat16 threads=16
+[10:03:20] segments total=6 todo=6
+[11:19:58] seg1 zh chars=240 gen=4597.8s clipped=False :: µó╡Φ¬₧∩╝ÜπÇèΣ╜¢ΦÅ»σÜ┤τ╢ôπÇï∩╝êBuddh─üvatamsaka-n─üma-mah─üvaipulya-s┼½tra∩╝ë∩╝¢ΦùÅΦ¬₧∩╝ÜπÇèΣ╜¢ΦÅ»σÜ┤σñºσ╗ú
+[12:07:05] seg1 en chars=299 gen=2826.3s clipped=False :: In the language of India: Buddh─üvatamsaka-n─üma-mah─üvaipulya-
+[12:07:05] seg1 done
+[12:31:54] seg2 zh chars=204 gen=1489.2s clipped=False :: σªéµÿ»µêæΦü₧∩╝ÜΣ╕ÇµÖé∩╝îΦûäΣ╝╜µó╡σê¥µêÉµ¡úΦª║∩╝îµû╝Σ╕ÇσêçΣ╜¢µ│òσ╖▓σ╛ùσ£ôµ╗┐Φª║µéƒΣ╣ïσ┐âπÇéΦ½ûµ¢░∩╝Üµ¡ñΣ╕¡µçëτƒÑ∩╝îΦ½╕ΦÅ⌐Φû⌐µæ⌐Φ¿╢Φû⌐µû╝Φ½╕σ£░Σ╕¡∩╝îτö▒σìüτ¿«τ¢╕∩╝îµçëτƒÑµ╕àµ╖¿πÇéΦ½û
+[12:58:26] seg2 en chars=445 gen=1591.5s clipped=False :: Thus have I heard at one time: the Blessed One, who had firs
+[12:58:26] seg2 done
+[13:14:19] seg3 zh chars=209 gen=953.4s clipped=False :: σà╖Φ╢│ΘÇÜΘüöΣ╕ëΣ╕ûσ╣│τ¡ëµÇºΣ╣ïµÖ║µàºΦ║½∩╝îσà╢Φ║½σæ¿ΘüìΣ╕ÇσêçΣ╕ûτòî∩╝îσà╢Θƒ│Φü▓µö»σêåΦêçΦ¿ÇΦ╛¡Θƒ│Θƒ╗µû╝Σ╕ÇσêçΣ╜¢σ£ƒΣ╕¡µÑ╡σà╢σ«úµÅÜπÇéτä╢ΦÇî∩╝îΘÇÖΣ╕ªΘ¥₧µîçσ£¿πÇîτäíΦç¬µÇºπÇìτÜäµäÅτ╛⌐
+[13:30:41] seg3 en chars=349 gen=982.4s clipped=False :: He possesses the wisdom body that realizes the equality of t
+[13:30:41] seg3 done
+[13:46:56] seg4 zh chars=235 gen=974.3s clipped=False :: σà╢σóâτòîΘí»τÅ╛τé║σªéΦÖ¢τ⌐║ΦêçΦÖ¢τ⌐║Φê¼σ╣│τ¡ëτÜäµ│òµÇº∩╝îσªéΦÖ¢τ⌐║Φê¼σæ¿ΘüìΣ╕Çσêçτ£╛τöƒ∩╝îσ«ëΣ╜Åµû╝Σ╕ÇσêçΦª║µéƒΣ╣ïΦùÅπÇéσà╢Φ║½Θí»τÅ╛µû╝Σ╕ÇσêçΦÅ⌐Φû⌐σñºµ╡╖Σ╣ïΣ╕¡∩╝îτî╢σªéµùÑΦ╝¬σìçΦ╡╖
+[14:03:12] seg4 en chars=396 gen=976.6s clipped=False :: His sphere of activity is the manifestation of the equality 
+[14:03:12] seg4 done
+[14:18:47] seg5 zh chars=233 gen=934.6s clipped=False :: µû╝Σ╕ÇσêçΣ╜¢σ£ƒτñ║τÅ╛σÅùτöƒ∩╝îΣ╗Ñσªéσñºµ╡╖Φê¼σ╗úσñºπÇüΘüìσÅèΣ╕ëΣ╕ûτÜäτ¿«τ¿«µê▓Φ½ûσèƒσ╛╖∩╝îΣ╗ñσà╢Φíîσóâσ«îσà¿µ╕àµ╖¿∩╝îΣ╕ªσà╖Φ╢│σ£ôµ╗┐τÜäσàëµÿÄΦ╝¬πÇéτö▒µ¡ñ∩╝îΦÅ⌐Φû⌐µæ⌐Φ¿╢Φû⌐µçëτò╢Σ║å
+[14:34:27] seg5 en chars=319 gen=940.3s clipped=False :: He manifested births in all Buddha-fields; his sphere of act
+[14:34:27] seg5 done
+[14:50:12] seg6 zh chars=253 gen=944.9s clipped=False :: σà╖Φ╢│τäíΘçÅτäíΘéèΦë▓σàë∩╝îΣ╗ÑΘüìµ╗┐Σ╕Çσêçµ│òτòîτÜäτ¿«τ¿«µ│òΘ¢▓ΦÇîΘí»τÅ╛τÑ₧Φ«è∩╝îµû╝Σ╕ÇσêçΣ╕ûΘûôτÜåτäíΘÜ£τñÖπÇéµû╝Σ╕Çσêçµ│òτòîΣ╕¡∩╝îτÜåµéëσæ¿Θüìσààµ╗┐πÇéτö▒µû╝σ░ìΣ╕Çσêçµ│òτÜåτäíµëÇ
+[15:05:21] seg6 en chars=301 gen=909.0s clipped=False :: Possessing infinite-colored light rays, they manifest throug
+[15:05:21] seg6 done
+[15:05:21] ALL DONE 18148.9s

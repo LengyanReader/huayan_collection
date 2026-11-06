@@ -13,8 +13,16 @@
   "gen_throughput_tok_per_s": 0.2,
   "gen_seconds_per_token": 4.5,
   "batch_measured_seg1_zh": "2026-11-06 实跑：seg1 zh 200 tokens / 4597.8 s ≈ **23.0 s/token**（比冒烟口径 4.5 s/token 慢约 5 倍·并发争用下实测）；复读未触发（clipped_repeat=False），但**后半飘入他处经文式 boilerplate**（题名块→十法句），语义漂移实证——模型译一律不得作引文，M5 人工校订为必经环节",
+  "batch_final_W1": "L.360 全量实测（15:05:21 ALL DONE）：W1 6/6 段三语落盘·总机时 18148.9s（≈5.04 h）；稳态段（zh+en 双语）31–53 min/段（909–1591.5 s/单语）；seg1 慢尾系题名块跑满 max-new 200 tokens 叠加工况争用，非稳态代表；六段复读截断零触发；语义漂移仅 seg1 实证（其余段surface连贯，仍一律〔未校订〕）",
   "repeat_risk": "贪心长输出易复读（冒烟实测同句循环）→ no_repeat_ngram_size=8 ＋ 周期截断；批量实测另见语义漂移风险（batch_measured_seg1_zh）",
-  "session_unit_cost_estimate": "按批量实测修正：1 段（zh+en 双语）≈ 2.5 h 机时；每章开篇 6 段 ≈ 15 h → 「一章/会话」不再成立，M1 算力决策升为**紧迫**；未获加速前实际产能 ≈ 每日 2–3 段（后台续跑）"
+  "session_unit_cost_estimate": "按 W1 全量实测修正：1 段（zh+en 双语）≈ 30–50 min；每章开篇 6 段 ≈ 3.5–5 h 后台续跑（长单会话可完成·可续跑器已备）；算力决策（M1）仍有价值但**不再紧迫**"
+ },
+ "compute_policy": {
+  "decided": "2026-11-06",
+  "decided_by": "用户（会话内指示）",
+  "statement": "「关于算力方面的限制，就好好规划，一点一点逐步完成，不必一蹴即就」——维持本机 CPU 现配置逐段推进，不购算力/不装外算环境/不换模型；每会话只编排一章（或一批段）的切段→后台续跑→落盘验收，产能不够就放慢批次节奏，杜绝为赶量降质",
+  "ab_candidates_adopted": false,
+  "cost_table": "measured_constraints（gen/batch 各键）＋各段 *_meta＋mitra_batch_log.txt（W1 全量·可逐数回指）"
  },
  "scope_note": "藏文 45 章 / 115 bam po；藏章1 单章正文实测 188,713 字符（约 3,914 句读）。以本机吞吐，全经逐段译不可行；故工作单元定为「**每章开篇 6 段**」，并按对应律分波（先已实证平行段）。",
  "milestones": [
@@ -23,7 +31,7 @@
    "goal": "确立「一段藏→一段汉→一段英」的三语段制与数据层，并把 45 章品目规划做成机器派生表",
    "sessions": [
     {"no": 1, "scope": "切段器＋规划派生器＋批量翻译器＋页面生成器四件；注册独立文章；W1 六段试译",
-     "load": "藏章1 开篇 6 段（已实证逐字回源）", "est": "工程单会话内毕（L.360 实测）；W1 试译机时实测 ≈2.5 h/段（双语）→ 6 段后台续跑跨会话", "one_session": true}
+     "load": "藏章1 开篇 6 段（已实证逐字回源）", "est": "工程单会话内毕；W1 翻译实测总机时 18148.9s（≈5.04 h 后台·6/6 段三语落盘 ALL DONE 15:05）", "one_session": true}
    ],
    "gate": [
     {"id": "G0.1", "kind": "machine", "check": "segments_all_verified", "say": "segments 全部 verified=true 且 zh/en 段数一致（status=done 者双语齐）"},
@@ -35,7 +43,7 @@
   },
   {
    "id": "M1", "name": "吞吐标定与算力决策", "batch": "L.361",
-   "goal": "把 M0 的实测元数据汇成成本表，据此定工作单元尺寸；算力类选项走人工闸门",
+   "goal": "把 M0 的实测元数据汇成成本表，据此定工作单元尺寸；算力类选项走人工闸门——**L.360续已收口**：标定表＝measured_constraints＋逐段 *_meta＋批量日志（G1.1 机检总量对账通过）；用户拍板「好好规划、一点一点逐步完成、不必一蹴即就」→ 维持本机 CPU 逐点推进，不采纳提速候选（见 compute_policy）",
    "sessions": [
     {"no": 1, "scope": "汇总 segments *_meta ＋ mitra_batch_log ＋ smoke_result → 标定表；写候选方案对照（同 3 段新旧译文）；记 .harness/decisions.md",
      "load": "1 会话", "est": "机时 20 min（不重载模型）＋ 判读 30 min", "one_session": true}
@@ -51,7 +59,7 @@
    "goal": "已实证逐章平行的 18 章，各译开篇 6 段并入页面分节",
    "sessions": [
     {"no": "每章 1 会话（共 18）", "scope": "该章 {T44-N}…{T44-N+1} 切段 → MITRA zh/en → 重生页面 → 该章门禁",
-     "load": "1 章 × 6 段", "est": "会话内工程 ≈25 min；机时按 L.360 批量实测 ≈2.5 h/段（双语）→ 6 段 ≈ 15 h 后台续跑（可续跑器已备）", "one_session": false},
+     "load": "1 章 × 6 段", "est": "按 W1 全量实测：双语 ≈30–50 min/段 → 1 章 6 段 ≈ 3.5–5 h 后台续跑（长单会话可完成）", "one_session": true},
     {"no": "子批收口", "scope": "M2.1 藏14–19（6 会话）· M2.2 藏20–25（6 会话）· M2.3 藏26–31（6 会话），每子批末次会话跑全量门禁",
      "load": "6 章 / 子批", "est": "6 会话", "one_session": false}
    ],
@@ -67,7 +75,7 @@
    "goal": "另一实证平行跨段（含十定/普贤行/如来出现/离世间等）各译开篇 6 段",
    "sessions": [
     {"no": "每章 1 会话（共 12）", "scope": "同 M2 单元口径；藏33/34 与品27/28 须先复核 b5 evidence 是否仍支持该配对",
-     "load": "1 章 × 6 段", "est": "同 M2 修正口径（机时 ≈15 h/章·后台续跑）", "one_session": false}
+     "load": "1 章 × 6 段", "est": "同 M2 实测口径（机时 ≈3.5–5 h/章·后台续跑）", "one_session": true}
    ],
    "gate": [
     {"id": "G3.1", "kind": "machine", "check": "chapter_coverage_diff6", "say": "藏33–44 共 12 章各有 6 段 verified 且双语齐"},
@@ -81,7 +89,7 @@
    "sessions": [
     {"no": 1, "scope": "53 参 → 藏章45 段区间映射表（关键词定位，逐条可回源）；未定者标〔待核〕",
      "load": "映射专会", "est": "工程 1–2 h", "one_session": true},
-    {"no": "2–10（共 9）", "scope": "每会话 6 参节点开篇各 3 段（三语）", "load": "6 参 × 3 段 / 会话", "est": "18 段 × ≈2.5 h/段（双语·实测口径）≈ 45 h 后台续跑", "one_session": false}
+    {"no": "2–10（共 9）", "scope": "每会话 6 参节点开篇各 3 段（三语）", "load": "6 参 × 3 段 / 会话", "est": "18 段 × ≈30–50 min（双语·W1 实测口径）≈ 9–15 h 后台续跑", "one_session": false}
    ],
    "gate": [
     {"id": "G4.1", "kind": "machine", "check": "param_map_grounded", "say": "映射表每参给德格叶码＋藏文关键词命中数；〔待核〕行数显式统计"},
@@ -121,8 +129,8 @@
    "goal": "无汉文平行品之章单独立线：先定归属，后译，禁止强行配对",
    "sessions": [
     {"no": 1, "scope": "藏32 归属判定（b5 现记 pin:null）：支持/反对证据各≥2 条，含 × 计数与章末自题", "load": "判定专会", "est": "1 会话", "one_session": true},
-    {"no": 2, "scope": "藏11 开篇 6 段三语", "load": "1 章 × 6 段", "est": "机时 ≈15 h（实测口径·后台续跑）", "one_session": false},
-    {"no": 3, "scope": "藏32 开篇 6 段三语（依会话1 结论定配对口径或保持不配对）", "load": "1 章 × 6 段", "est": "机时 ≈15 h（实测口径·后台续跑）", "one_session": false}
+    {"no": 2, "scope": "藏11 开篇 6 段三语", "load": "1 章 × 6 段", "est": "机时 ≈3.5–5 h（W1 实测口径·后台续跑）", "one_session": true},
+    {"no": 3, "scope": "藏32 开篇 6 段三语（依会话1 结论定配对口径或保持不配对）", "load": "1 章 × 6 段", "est": "机时 ≈3.5–5 h（W1 实测口径·后台续跑）", "one_session": true}
    ],
    "gate": [
     {"id": "G7.1", "kind": "machine", "check": "unique_chapters_unpaired", "say": "页面「对应汉品」列对二章保持『藏独有』，未出现臆造配对"},
