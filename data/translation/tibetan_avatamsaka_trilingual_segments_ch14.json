@@ -1,0 +1,111 @@
+{
+ "id": "tibetan_avatamsaka_trilingual_segments_ch14",
+ "batch_created": "〔本段所属批次见 PROGRESS〕",
+ "date": "2026-11-06",
+ "source_file": "data/references/tibetan/derge_kangyur/avatamsaka/035_α╜òα╜úα╝ïα╜åα╜║α╜ôα╝ì_α╜Ç.txt",
+ "chapter_boundary": "{T44-14}…{T44-15}",
+ "grounding_rule": "藏文段一律自德格底本 {T44-14} 区间字节切片提取并逐段 norm() 复验；绝不手打",
+ "segmentation_rule": "正文按 shad（།）整句聚合，每段约≥60 字；本单元共 6 段",
+ "translation_engine": "buddhist-nlp/mitra-qwen35-translate（9B, bf16, CPU）· 输出〔模型译·未校订〕",
+ "chapter": {
+  "tibetan_no": 14,
+  "derge_vol": "035",
+  "start_folio": "191a.7",
+  "chinese_correspondence": "品9〈光明觉品〉（对应律 差5）·证据：alignment\\tibetan_zhuhuju_b2.json 章条目"
+ },
+ "ch_stats": {
+  "raw_chars": 36767,
+  "clean_chars": 35219,
+  "sentence_count": 750
+ },
+ "segments": [
+  {
+   "no": 1,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-14",
+   "folio": "191a.7",
+   "char_off": 0,
+   "bo": "དེ་ནས་བཅོམ་ལྡན་འདས་ཀྱི་ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར་བྱེ་བ་ཕྲག་བརྒྱ་བཀྱེ་སྟེ། སྟོང་གསུམ་གྱི་སྟོང་ཆེན་པོའི་འཇིག་རྟེན་གྱི་ཁམས་འདི་སྣང་བར་བྱས་ནས་འཛམ་བུའི་གླིང་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
+   "zh": "爾時，世尊從雙足掌心放射出百億道光芒，照亮了這三千大千世界，並顯現出百億個贍部洲。འཇིག་པ་མེད་པ་ཞེས་བྱ་བ་ནི་འཇིམ་པའི་གོང་བུ་ལས་རྫ་མ་བྱུང་བ་ན། འཇིམ་གོང་དེ་ཉིད་མེད་དེ་འཇིགས་པ་ལྟ་བུ་མ་ཡི如來འི་ཆོས་ཀྱང་དེ་བ",
+   "en": null,
+   "status": "pending",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1491.7,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T17:09:34"
+   }
+  },
+  {
+   "no": 2,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-14",
+   "folio": "191a.7",
+   "char_off": 180,
+   "bo": "ཤར་གྱི་ལུས་ འཕགས་བྱེ་བ་ཕྲག་བརྒྱ་དང་ནུབ་ཀྱི་བན་ལང་སྤྱོད་བྱེ་བ་ཕྲག་བརྒྱ་དང་། བྱང་གི་སྒྲ་མི་སྙན་བྱེ་བ་ཕྲག་བརྒྱ་དང་།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 3,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-14",
+   "folio": "[191b.1]",
+   "char_off": 308,
+   "bo": "རྒྱ་མཚོ་ཆེན་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཁོར་ཡུག་རྡོ་རྗེའི་རི་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །བྱང་ཆུབ་སེམས་དཔའ་སྐྱེ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 4,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-14",
+   "folio": "[191b.2]",
+   "char_off": 452,
+   "bo": "མངོན་པར་འབྱུང་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །དེ་བཞིན་གཤེགས་པ་རྣམ་པར་འཚང་རྒྱ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཆོས་ཀྱི་འཁོར་ལོ་བསྐོར་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 5,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-14",
+   "folio": "[191b.2]",
+   "char_off": 600,
+   "bo": "དེ་བཞིན་གཤེགས་པ་ཡོངས་སུ་མྱ་ངན་ལས་འདའ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །རི་རབ་ རིའི་རྒྱལ་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  },
+  {
+   "no": 6,
+   "kind": "body",
+   "vol": "035",
+   "marker": "T44-14",
+   "folio": "[191b.3]",
+   "char_off": 717,
+   "bo": "རྒྱལ་པོ་ཆེན་པོ་བཞིའི་ཁམས་ཀྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །སུམ་ཅུ་རྩ་གསུམ་གྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
+   "zh": null,
+   "en": null,
+   "status": "pending",
+   "verified": true
+  }
+ ]
+}

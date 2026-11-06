@@ -20,3 +20,7 @@
 [15:05:21] seg6 en chars=301 gen=909.0s clipped=False :: Possessing infinite-colored light rays, they manifest throug
 [15:05:21] seg6 done
 [15:05:21] ALL DONE 18148.9s
+[16:44:40] tokenizer ready 19.3s
+[16:44:42] model ready 2.3s dtype=torch.bfloat16 threads=16
+[16:44:42] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch14.json 藏章14 total=6 todo=6
+[17:09:34] seg1 zh chars=158 gen=1491.7s clipped=False :: 爾時，世尊從雙足掌心放射出百億道光芒，照亮了這三千大千世界，並顯現出百億個贍部洲。འཇིག་པ་མེད་པ་ཞེས་བྱ

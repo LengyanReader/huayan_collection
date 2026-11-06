@@ -1,0 +1,23 @@
+{
+ "id": "tibetan_trilingual_opening_reconcile",
+ "purpose": "G2.2（首段与对勘批开篇衔接）之〔订正〕登记层：不一致章逐条留证，不擅改对勘批 SSOT（各照底本·铁律）",
+ "batch": "L.361",
+ "date": "2026-11-06",
+ "rule": "三语专题切段首段与 data/alignment/tibetan_zhuhuju_b[1-6].json 之 bo_open 双向 substring 不衔接时，须在本档登记订正记录（证据≥2 条独立佐证方可判种子侧或本段侧之误），门禁方视为闭合",
+ "records": [
+  {
+   "tibetan_ch": 14,
+   "pin": "品9〈光明觉〉（差5 对应律）",
+   "observation": "b2 ch14 之 bo_open（400 字·起 ་བློ་གྲོས་ཞེས་བྱ་བར་རབ་ཏུ་ཤེས་སོ།།·名数列举段·前导杂余 tsheg 系粗切特征）在本文件 {T44-14}…{T44-15} 区间 norm() 后 find=-1——不在藏14 章界内；本专题 seg1（དེ་ནས་བཅོམ་ལྡན་འདས་ཀྱི་ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར…）自 {T44-14} 标记后逐字回源切出",
+   "verdict": "b2 bo_open 种子串为旧 raw 偏移 off=561065 之错切（{T44-N} 品目标记后插入致偏移位移）；本专题 seg1 为藏14 真开篇——不改正对勘批 b2，仅登记本订正",
+   "evidence": [
+    "b2 ch14 自记 fol=191a.7 ＝ 本专题 seg1 切片实测 folio=191a.7（同页）",
+    "b2 ch14 zh80_open=「光明覺品第九爾時，世尊從兩足輪下放百億光明…」＝品9 开篇放光，与本 seg1 义合（དེ་ནས…ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར＝尔时…从两足底放光）",
+    "b2 ch14 correspondence 自藏文引文「ཞབས་ཀྱི་མཐིལ་གཉིས་ནས…འོད་ཟ」即本 seg1 句，与 bo_open 字段自相矛盾——判 bo_open 串侧错切",
+    "本 seg1 通过 extract_trilingual_segments.py 逐字 norm() 复验（verified=true·char_off=0 即 {T44-14} 标记后章首）"
+   ],
+   "machine_check": "workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py::p_opening_matches_alignment（不一致章须命中本档 records 方 PASS）",
+   "followup": "b2 bo_open 是否统一回改为真开篇——属对勘批 SSOT 变更，须人工另行授权；本批不动"
+  }
+ ]
+}

@@ -157,15 +157,23 @@ def p_opening_matches_alignment():
         return 'PENDING', '对勘批 bo_open 种子未读'
     if not sb:
         return 'PENDING', '无 segments'
-    bad = []
+    rec_p = 'data/alignment/tibetan_trilingual_opening_reconcile.json'
+    fixed = {}
+    if glob.glob(rec_p):
+        rc = jload(rec_p) or {}
+        fixed = {r['tibetan_ch']: r for r in (rc.get('records') or [])
+                 if r.get('tibetan_ch') and len(r.get('evidence') or []) >= 2}
+    bad, corrected = [], []
     for tc, v in sb.items():
         if tc not in opens or not v:
             continue
         head = norm(v[0]['bo'])[:24]
         if head and head not in opens[tc] and opens[tc][:24] not in head:
-            bad.append(tc)
+            (corrected if tc in fixed else bad).append(tc)
     if bad:
         return 'FAIL', '首段与对勘批开篇不衔接（须出〔订正〕）：%s' % bad
+    if corrected:
+        return 'PASS', '已覆盖章首段均衔接；不一致章已登〔订正〕（证据≥2）：%s' % corrected
     return 'PASS', '已覆盖章首段均与 b*.json bo_open 衔接'
 
 

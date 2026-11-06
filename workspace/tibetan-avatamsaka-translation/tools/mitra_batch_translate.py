@@ -54,7 +54,7 @@ def main():
     ap.add_argument('--chapter', type=int, default=None, help='只译该藏章的分文件；缺省=聚合全部段文件')
     ap.add_argument('--max-new', type=int, default=MAX_NEW)
     args = ap.parse_args()
-    files = sorted(glob.glob(SEGG))
+    files = [f.replace('\\', '/') for f in sorted(glob.glob(SEGG))]  # Windows glob 混分隔符（translation\file）→ 归一后再比对
     if args.chapter is not None:
         want = SEG1 if args.chapter == 1 else (SEGCH % args.chapter)
         files = [f for f in files if f == want]
