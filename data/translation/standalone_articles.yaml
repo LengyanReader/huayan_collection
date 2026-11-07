@@ -285,7 +285,7 @@ others:
   icon: 📖
   title: 九九华严第五品 华藏世界品之拼读
   title_sub: 华严经第五品·按品精读·华藏因果自体（风轮—香海—莲华—剎海）·藏海安布庄严（轮山·宝地·香海·香河·华林）·世界种十门·中央二十重·十方十海·重颂百一·八十与六十对读·注疏四家会读·数据层L1-L4·未完备已标明
-  updated_at: '2026-10-28'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第一会_菩提场_所信因果周/华严经细读_第五部_华藏世界品.md
   back:
     tab: gap
@@ -360,7 +360,7 @@ others:
   icon: 📖
   title: 九九华严第十品 菩萨问明品之拼读
   title_sub: 华严经第十品·第二会·差别因果周·卷十三次品·文殊与十首菩萨互为明难·九难九酬＋佛境界十一问＋九差别结归·诸法各各不相知·十信解门开篇·与六十《菩萨明难品第六》对读·注疏诸家会读（澄观·法藏·智俨·慧苑〔本品无记〕·李通玄·海云）·数据层·未完备已标明
-  updated_at: '2026-10-28'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十部_菩萨问明品.md
   back:
     tab: gap
@@ -390,7 +390,7 @@ others:
   icon: 📖
   title: 九九华严第十二品 贤首品之拼读
   title_sub: 华严经第十二品·第二会·差别因果周·八十跨卷十四～十五（之一/之二二分）·文殊以偈问·贤首以偈答·宗眼「信为道元功德母」·初发心功德·十信相续链·三昧光明门·智自在譬喻·校量结叹·十方摩顶现证·偈颂数多源分歧（澄观359半·慧苑357半／依八十·智俨715半／依六十·颂偈口径别不裁）·注疏五家会读（澄观·法藏·智俨·慧苑·李通玄＋海云）·与六十《賢首菩薩品第八》对读·第二会六品收官·数据层·未完备已标明
-  updated_at: '2026-10-28'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十二部_贤首品.md
   back:
     tab: gap
@@ -518,7 +518,7 @@ others:
   title: 九九华严第二十品 夜摩宫中偈赞品之拼读
   title_en: 'Huayan Sutra Close Reading · Part Twenty: Verses in the Yāma Palace'
   title_sub: 第四会第二品·卷十九次品·品文2543·十菩萨偈赞102偈（功德林12+9×10）·承佛威力×10·觉林工画师喻=全经名段·承佛威力齐整=十行之人事预备·L.252核心成文·深化批预登记
-  updated_at: '2026-11-05'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第四会_夜摩天宫_差别因果周/华严经细读_第二十部_夜摩宫中偈赞品.md
   back:
     tab: gap
@@ -566,7 +566,7 @@ others:
   title: 九九华严第二十五品 十回向品之拼读
   title_en: 'Huayan Sutra Close Reading · Part Twenty-Three: The Ten Dedications'
   title_sub: 第五会首品·兜率天宫·卷二十三～三十三·品文75744（全经最大单一品·跨十一卷）·金刚幢菩萨智光三昧说十回向（救护众生→法界无量）·L.257骨架成文·深化批L.258–L.261预登记
-  updated_at: '2026-11-05'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第五会_兜率天宫_回向位/华严经细读_第二十五部_十回向品.md
   back:
     tab: gap
@@ -582,7 +582,7 @@ others:
   title: 九九华严第二十六品 十地品之拼读
   title_en: 'Huayan Sutra Close Reading · Part Twenty-Four: The Ten Stages'
   title_sub: 第六会首品·他化自在天宫·卷三十四～四十·品文43413（跨七卷）·金刚藏菩萨说十地（欢喜→法云=十波罗蜜增上）·解脱月三请·L.266骨架成文
-  updated_at: '2026-11-05'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第六会_他化自在天宫_十地位/华严经细读_第二十六部_十地品.md
   back:
     tab: gap
@@ -596,7 +596,7 @@ others:
   order_in_group: 32
   icon: 🔮
   title: 九九华严第二十七品 十定品之拼读
-  updated_at: '2026-11-05'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十七部_十定品.md
   back:
     tab: gap
@@ -624,7 +624,7 @@ others:
   order_in_group: 34
   icon: 🕊
   title: 九九华严第二十九品 十忍品之拼读
-  updated_at: '2026-11-05'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第二十九部_十忍品.md
   back:
     tab: gap
@@ -736,7 +736,7 @@ others:
   order_in_group: 42
   icon: ☀️
   title: 九九华严第三十七品 如来出现品之拼读
-  updated_at: '2026-10-31'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十七部_如来出现品.md
   back:
     tab: gap
@@ -750,7 +750,7 @@ others:
   order_in_group: 43
   icon: 🚪
   title: 九九华严第三十八品 离世间品之拼读
-  updated_at: '2026-10-31'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第八会_普光明殿_离世间/华严经细读_第三十八部_离世间品.md
   back:
     tab: gap
@@ -764,7 +764,7 @@ others:
   order_in_group: 44
   icon: 🌈
   title: 九九华严第三十九品 入法界品之拼读
-  updated_at: '2026-11-05'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第九会_逝多林_证入法界/华严经细读_第三十九部_入法界品.md
   back:
     tab: gap
