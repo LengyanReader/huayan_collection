@@ -28,8 +28,8 @@
    "char_off": 0,
    "bo": "དེ་ནས་བཅོམ་ལྡན་འདས་ཀྱི་ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར་བྱེ་བ་ཕྲག་བརྒྱ་བཀྱེ་སྟེ། སྟོང་གསུམ་གྱི་སྟོང་ཆེན་པོའི་འཇིག་རྟེན་གྱི་ཁམས་འདི་སྣང་བར་བྱས་ནས་འཛམ་བུའི་གླིང་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
    "zh": "爾時，世尊從雙足掌心放射出百億道光芒，照亮了這三千大千世界，並顯現出百億個贍部洲。འཇིག་པ་མེད་པ་ཞེས་བྱ་བ་ནི་འཇིམ་པའི་གོང་བུ་ལས་རྫ་མ་བྱུང་བ་ན། འཇིམ་གོང་དེ་ཉིད་མེད་དེ་འཇིགས་པ་ལྟ་བུ་མ་ཡི如來འི་ཆོས་ཀྱང་དེ་བ",
-   "en": null,
-   "status": "pending",
+   "en": "Then, from the soles of the Blessed One’s two feet, hundreds of millions of light rays were emitted, illuminating this great trichiliocosm and revealing a hundred million Jambudvīpas.འཛམ་གླིང བྱེ་བ ཕྲག་བཅུ་པོ་དེ་དག་ཐམས་ཅད་ན་ཡང་སངས་རྒྱས་བཅོཾ་ལྡན འདས་བཞུགས་ཤིང་འཚོ་སྐྱོང་བ་བརྒ�་ཕྲག བཅུ་པ་དེ",
+   "status": "done",
    "verified": true,
    "zh_meta": {
     "model": "buddhist-nlp/mitra-qwen35-translate",
@@ -40,6 +40,16 @@
     "out_tokens": 200,
     "clipped_repeat": false,
     "ts": "2026-11-06T17:09:34"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 3318.6,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T18:04:52"
    }
   },
   {
@@ -50,10 +60,30 @@
    "folio": "191a.7",
    "char_off": 180,
    "bo": "ཤར་གྱི་ལུས་ འཕགས་བྱེ་བ་ཕྲག་བརྒྱ་དང་ནུབ་ཀྱི་བན་ལང་སྤྱོད་བྱེ་བ་ཕྲག་བརྒྱ་དང་། བྱང་གི་སྒྲ་མི་སྙན་བྱེ་བ་ཕྲག་བརྒྱ་དང་།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "東方東勝身洲有百億，西方西牛貨洲有百億，北方北俱盧洲亦有百億。論曰：此中應知，諸佛世尊於一切時，常以三身現前教化眾生。論曰：在此應當知曉，諸佛世尊於一切時刻，恆常以三身現前來教化眾生。論曰：此中云何名為「無量」？謂諸佛世尊於一切時、一切處，皆能現前成就無量無邊、不可思議、不可稱量、不可宣說、不可窮盡、不可思議、不可思議之諸佛事業。論曰：此中，諸佛世尊於一切處、一切時，皆能現前成就無邊無際、不可思議、不可稱量之諸佛事業。論中說：「諸佛世尊於一切時中，恆常現前",
+   "en": "There are a billion [realms of] Pūrvavideha in the east, a billion [realms of] Aparagoyānīya in the west, and a billion [realms of] Uttarakuru in the north.འཛམ་བུའི་གླིང་བྱེབ་ཕྲུག་བརྒན་ཡོད་པ་དེ་དག་ཐམས་ཅད་ཀྱང་འཁོར་ལོས་སྒྱུར་བའི་རྒྱལ་པོ་རེ་རེས་དབང་བྱཻད་དེ། �",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1572.2,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T18:31:05"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1737.7,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T19:00:02"
+   }
   },
   {
    "no": 3,
@@ -63,10 +93,30 @@
    "folio": "[191b.1]",
    "char_off": 308,
    "bo": "རྒྱ་མཚོ་ཆེན་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཁོར་ཡུག་རྡོ་རྗེའི་རི་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །བྱང་ཆུབ་སེམས་དཔའ་སྐྱེ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "示現了百億大海，示現了百億鐵圍金剛山，並示現了百億菩薩的受生。གཞན་ཡང་འཇིག་རྟེན་གྱི་ཁམས་འདི་ན་ལྷ་དང་། ཀླུ་དང་། དྲི་ཟ་དང་། ༄༡༣༡ཨ་༌༎ ལྷ་མ་ཡིན་དང་། ༈་ནམ་མཁའ་ལྡིང་དང་། པའི་མི་དང་། ྾་ལྟ",
+   "en": "He displayed a hundred times ten million great oceans. He displayed a hundred times ten million Cakravāḍa vajra mountains. He displayed a hundred times ten millions of bodhisattva births.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱི་འཛམ་བུའི་གླིང་འདི་ཁོ་ནར་ཡང་སེམས༵་ཅ༵ན་གྱི༵་རིགས༵་མི་འདྲ་བ་བསམ་གྱིས་མི་ཁྱབ་པ་སྣ༵",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1366.2,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T19:22:49"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1395.4,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T19:46:04"
+   }
   },
   {
    "no": 4,
@@ -76,10 +126,30 @@
    "folio": "[191b.2]",
    "char_off": 452,
    "bo": "མངོན་པར་འབྱུང་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །དེ་བཞིན་གཤེགས་པ་རྣམ་པར་འཚང་རྒྱ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཆོས་ཀྱི་འཁོར་ལོ་བསྐོར་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "示現了百億次的出家，示現了百億位如來成就正覺，並示現了百億次的轉法輪。由此，便能了知一切諸法皆無自性。若無自性，則無所生；若無所生，則無所滅。若無自性，即無所生；若無所滅，則無所住。若無自性，便無所生；若無所起，亦無所滅。若無所生，則無有滅；若無所滅，則亦無所住。若無所生，亦無所滅；若無所滅，亦無所住。若法無自性，則無所從生；若無所生，亦無從滅。若無所滅，則無從安住。若無所住，則無從變異。若無變異，",
+   "en": "He displayed a hundred million renunciations; he displayed a hundred million Tathāgatas attaining perfect enlightenment; he displayed a hundred million turnings of the wheel of Dharma.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱིས་ཀྱང་འཇིག་པ་དང་ཆགས་པཻ་ཡོངས་སུ་བསྟན། འཇིག་ར་གྱི་གྱི་བཀོད་པ་ཐམས་ཅད་ཀྱངཡོངས་ས་བསྟནཏོ། �",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1803.9,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T20:16:08"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1379.1,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-06T20:39:07"
+   }
   },
   {
    "no": 5,

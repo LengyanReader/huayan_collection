@@ -24,3 +24,21 @@
 [16:44:42] model ready 2.3s dtype=torch.bfloat16 threads=16
 [16:44:42] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch14.json 藏章14 total=6 todo=6
 [17:09:34] seg1 zh chars=158 gen=1491.7s clipped=False :: 爾時，世尊從雙足掌心放射出百億道光芒，照亮了這三千大千世界，並顯現出百億個贍部洲。འཇིག་པ་མེད་པ་ཞེས་བྱ
+[18:04:52] seg1 en chars=288 gen=3318.6s clipped=False :: Then, from the soles of the Blessed One’s two feet, hundreds
+[18:04:52] seg1 done
+[18:31:05] seg2 zh chars=230 gen=1572.2s clipped=False :: 東方東勝身洲有百億，西方西牛貨洲有百億，北方北俱盧洲亦有百億。論曰：此中應知，諸佛世尊於一切時，常以三身現前教化眾生。論
+[19:00:02] seg2 en chars=256 gen=1737.7s clipped=False :: There are a billion [realms of] Pūrvavideha in the east, a b
+[19:00:02] seg2 done
+[19:22:49] seg3 zh chars=148 gen=1366.2s clipped=False :: 示現了百億大海，示現了百億鐵圍金剛山，並示現了百億菩薩的受生。གཞན་ཡང་འཇིག་རྟེན་གྱི་ཁམས་འདི་
+[19:46:04] seg3 en chars=295 gen=1395.4s clipped=False :: He displayed a hundred times ten million great oceans. He di
+[19:46:04] seg3 done
+[20:16:08] seg4 zh chars=201 gen=1803.9s clipped=False :: 示現了百億次的出家，示現了百億位如來成就正覺，並示現了百億次的轉法輪。由此，便能了知一切諸法皆無自性。若無自性，則無所生
+[20:39:07] seg4 en chars=298 gen=1379.1s clipped=False :: He displayed a hundred million renunciations; he displayed a
+[20:39:07] seg4 done
+[21:04:15] tokenizer ready 27.1s
+[21:04:17] model ready 2.2s dtype=torch.bfloat16 threads=16
+[21:04:17] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch15.json 藏章15 total=6 todo=6
+[21:31:23] seg1 zh chars=211 gen=1626.0s clipped=False :: 《佛說大毘盧遮那成佛神變加持經》（或譯《大集大虛空藏菩薩所問經》），第十七卷。爾時，文殊師利菩薩：「世尊！我今欲於如來前
+[23:20:54] tokenizer ready 91.4s
+[23:20:57] model ready 2.6s dtype=torch.bfloat16 threads=16
+[23:20:57] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch14.json 藏章14 total=6 todo=2
