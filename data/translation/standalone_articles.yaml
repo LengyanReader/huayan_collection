@@ -638,7 +638,7 @@ others:
   order_in_group: 35
   icon: 🔢
   title: 九九华严第三十品 阿僧祇品之拼读
-  updated_at: '2026-10-31'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十部_阿僧祇品.md
   back:
     tab: gap
@@ -652,7 +652,7 @@ others:
   order_in_group: 36
   icon: ⏳
   title: 九九华严第三十一品 寿量品之拼读
-  updated_at: '2026-10-31'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十一部_寿量品.md
   back:
     tab: gap
@@ -666,7 +666,7 @@ others:
   order_in_group: 37
   icon: ⛰
   title: 九九华严第三十二品 菩萨住处品之拼读
-  updated_at: '2026-10-31'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十二部_菩萨住处品.md
   back:
     tab: gap
@@ -694,7 +694,7 @@ others:
   order_in_group: 39
   icon: 🌸
   title: 九九华严第三十四品 十身相海品之拼读
-  updated_at: '2026-10-31'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十四部_十身相海品.md
   back:
     tab: gap
@@ -708,7 +708,7 @@ others:
   order_in_group: 40
   icon: ✨
   title: 九九华严第三十五品 随好光明品之拼读
-  updated_at: '2026-10-31'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第七会_普光明殿_等觉/华严经细读_第三十五部_随好光明品.md
   back:
     tab: gap
@@ -898,7 +898,7 @@ others:
   title: 九九华严第二十四品 兜率宫中偈赞品之拼读
   title_en: 'Huayan Sutra Close Reading · Part Twenty-Four: Verses in the Tushita Palace'
   title_sub: 第五会次品·卷二十三·品文3069·偈200·三会偈赞三叠之终（品14→20→24）·金刚幢赞主即正说者·六十 CBETA head 〈兜率天宮菩薩雲集讚佛品第二十〉·三联列次逆转（菩萨→世界→佛 vs 世界→佛→菩萨）·世界名妙×/坚固×两系统·藏译偈赞仪式在夜摩位不在兜率位·L.328成篇·L.348深化
-  updated_at: '2026-11-05'
+  updated_at: '2026-11-07'
   doc: docs/经学文献/华严经细读/第五会_兜率天宫_回向位/华严经细读_第二十四部_兜率宫中偈赞品.md
   back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
   views: [avatamsaka-studies]
