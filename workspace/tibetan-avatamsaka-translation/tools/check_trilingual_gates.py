@@ -88,15 +88,18 @@ def p_page_trilingual_order():
     dm = CTX['doc_md']
     if dm is None:
         return 'PENDING', '页面未生成'
-    blocks = re.findall(r'### 段 \d+[\s\S]*?(?=\n### 段 \d+|\n## |\Z)', dm)
+    # v0.3 对读工作台：段标题 #### 段 n，卡片内 tri-bo→tri-zh→tri-en 三色块依序
+    blocks = re.findall(r'#### 段 \d+[\s\S]*?(?=\n#### 段 \d+|\n### |\n## |\Z)', dm)
     if not blocks:
-        return 'FAIL', '页面 §4 无三语段'
+        return 'FAIL', '页面对读区无三语段'
     bad = [i + 1 for i, b in enumerate(blocks)
-           if not (b.find('**藏') >= 0 and b.find('**汉') > b.find('**藏') and b.find('**EN') > b.find('**汉'))]
+           if not (b.find('tri-bo') >= 0 and b.find('tri-zh') > b.find('tri-bo')
+                   and b.find('tri-en') > b.find('tri-zh'))]
     if bad:
         return 'FAIL', '段序非 藏→汉→英：%s' % bad
     unmarked = [i + 1 for i, b in enumerate(blocks)
-                if ('MITRA' in b or 'model translation' in b) and '未校订' not in b and 'unproofed' not in b]
+                if ('MITRA 模型译' in b and '未校订' not in b)
+                or ('model translation' in b and 'unproofed' not in b)]
     if unmarked:
         return 'FAIL', '模型译缺〔未校订〕标注：%s' % unmarked
     return 'PASS', '%d 个三语段序正确·模型译标注齐全' % len(blocks)
