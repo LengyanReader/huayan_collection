@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藏章1 · 汉译开篇对应（章界〔待核〕） — 三语对读 — 独立文章</title>
+<link rel="stylesheet" href="../css/common.css">
+<style>
+/* ── 三语对读工作台（L.378 · gen v0.4 子页架构） ── */
+.tri-anchor{scroll-margin-top:96px}
+.tri-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px;padding:6px;border:1px solid var(--line);border-radius:10px;background:rgba(94,139,158,.05)}
+.tri-tab{border:1px solid transparent;background:transparent;color:var(--text2);border-radius:7px;padding:5px 16px;font-size:.8em;cursor:pointer}
+.tri-tab.is-on{border-color:var(--gold);color:var(--gold);background:rgba(184,134,60,.10);font-weight:700}
+.tri-crumbs{font-size:.78em;margin:8px 0;color:var(--text2)}
+.tri-crumbs a{color:var(--blue);text-decoration:none}
+.tri-crumbs-sep{margin:0 8px;opacity:.5}
+.tri-crumbs-rule{margin-left:8px;opacity:.7}
+.tri-pager{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin:10px 0;font-size:.78em}
+.tri-pager a{color:var(--blue);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:3px 10px}
+.tri-pager a:hover{border-color:var(--gold);color:var(--gold)}
+.tri-stats{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.tri-stat{border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:.75em;color:var(--text2);background:rgba(94,139,158,.04)}
+.tri-stat b{display:block;font-size:1.5em;color:var(--gold)}
+.tri-chcard{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;background:rgba(94,139,158,.03)}
+.tri-chcard-main{margin:0 0 4px;font-size:.85em}
+.tri-chcard-pin{margin-left:10px;color:var(--text2);font-size:.85em}
+.tri-chcard-prog{margin:0 0 4px;font-size:.75em;color:var(--text2);display:flex;align-items:center;gap:8px}
+.tri-prog{display:inline-block;width:120px;height:6px;border-radius:3px;background:rgba(94,139,158,.15);overflow:hidden}
+.tri-prog i{display:block;height:100%;background:var(--gold)}
+.tri-chcard-go{margin:0;font-size:.78em}
+.tri-chcard-go a{color:var(--blue);text-decoration:none;font-weight:700}
+.tri-nav{margin:10px 0}
+.tri-nav-group{font-size:.8em;font-weight:700;color:var(--gold);margin:12px 0 6px}
+.tri-nav-group small{font-weight:400;color:var(--text2)}
+.tri-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px}
+.tri-chip{display:inline-flex;flex-direction:column;align-items:center;min-width:64px;padding:4px 8px;border:1px solid var(--line);border-radius:8px;font-size:.72em;line-height:1.5;text-decoration:none;color:var(--text2);background:rgba(94,139,158,.04)}
+.tri-chip b{font-size:1.05em;color:var(--text)}
+.tri-chip i{font-style:normal;font-size:.9em;opacity:.8}
+a.tri-chip:hover{border-color:var(--gold);color:var(--gold)}
+.tri-chip.tri-done{border-color:var(--blue);background:rgba(94,139,158,.10)}
+.tri-chip.tri-part{border-color:var(--gold);background:rgba(184,134,60,.08)}
+.tri-chip.tri-todo{opacity:.55}
+.tri-segnav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0;font-size:.75em}
+.tri-segchip{border:1px solid var(--line);border-radius:6px;padding:2px 10px;color:var(--text2);text-decoration:none}
+.tri-segchip:hover{border-color:var(--gold);color:var(--gold)}
+.tri-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:rgba(94,139,158,.05);font-size:.78em}
+.tri-toolbar-label{font-weight:700;color:var(--gold)}
+.tri-btn{border:1px solid var(--line);background:transparent;color:var(--text2);border-radius:6px;padding:3px 12px;font-size:1em;cursor:pointer}
+.tri-btn.is-on{border-color:var(--gold);color:var(--gold);background:rgba(184,134,60,.10);font-weight:700}
+.tri-toolbar-note{opacity:.65;font-size:.92em}
+.tri-seg{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0 14px;background:rgba(94,139,158,.03)}
+.tri-seg[data-status="pending"]{border-style:dashed}
+.tri-lang{margin:8px 0;padding-left:10px;border-left:3px solid var(--line)}
+.tri-lang.tri-bo{border-left-color:var(--gold)}
+.tri-lang.tri-zh{border-left-color:var(--blue)}
+.tri-lang.tri-en{border-left-color:#9a7fb8}
+.tri-head{margin:0 0 4px;font-size:.72em;color:var(--text2)}
+.tri-tag{display:inline-block;font-weight:700;border:1px solid currentColor;border-radius:4px;padding:0 6px;margin-right:8px}
+.tri-bo .tri-tag{color:var(--gold)}
+.tri-zh .tri-tag{color:var(--blue)}
+.tri-en .tri-tag{color:#9a7fb8}
+.tri-text{margin:0;padding:6px 10px;border:none;background:transparent;font-size:.85em;line-height:1.9;white-space:pre-line;overflow-wrap:break-word}
+.tri-text[lang="bo"]{font-family:'Noto Serif Tibetan','Noto Sans Tibetan','Microsoft Himalaya','Kailasa','Tibetan Machine Uni',serif;line-height:2.3;font-size:.95em}
+.tri-text[lang="en"]{font-family:Georgia,'Times New Roman',serif}
+.tri-pending{opacity:.55;font-style:italic}
+.tri-meta{margin:4px 0 0;font-size:.7em;color:var(--text2)}
+.tri-meta summary{cursor:pointer;opacity:.7}
+.tri-meta p{margin:4px 0;padding:4px 10px;background:rgba(94,139,158,.06);border-radius:6px;line-height:1.7}
+.tri-quote{margin:8px 0;padding-left:10px;border-left:3px solid var(--line)}
+.tri-quote.tri-qbo{border-left-color:var(--gold)}
+.tri-quote.tri-qzh{border-left-color:var(--blue)}
+.tri-quote .tri-tag{color:var(--text2)}
+.tri-quote.tri-qbo .tri-tag{color:var(--gold)}
+.tri-quote.tri-qzh .tri-tag{color:var(--blue)}
+.tri-cols .tri-seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}
+.tri-cols .tri-lang{margin-top:0}
+@media (max-width:960px){.tri-cols .tri-seg{grid-template-columns:1fr}}
+.tri-appx{margin:8px 0}
+.tri-term[data-gloss]{border-bottom:1px dotted var(--gold);cursor:help;position:relative}
+.tri-term[data-gloss]:hover::after{content:attr(data-gloss);position:absolute;left:0;top:100%;z-index:50;background:rgba(31,36,42,.96);color:#fff;padding:4px 10px;border-radius:6px;font-size:.85em;white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>藏章1 · 汉译开篇对应（章界〔待核〕） — 三语对读</h1>
+  <span class="art-updated"></span>
+  <button id="share-link" class="share-btn" onclick="copyPageLink();return false" title="复制本页独立地址">🔗 分享地址</button>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
+  <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
+</header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+  ⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
+<div style="padding:5px 16px;border-bottom:1px solid var(--line);font-size:0.76em;display:flex;gap:16px;align-items:center;background:rgba(94,139,158,0.06);flex-wrap:wrap">
+  <a href="javascript:history.back()" style="color:var(--blue);text-decoration:none;font-weight:600">← 返回上一步</a>
+  <span style="opacity:0.45">|</span>
+  <a href="../tabs/gap.html" style="color:var(--blue);text-decoration:none">返回到：华严文献 · 雅思渊才 ›</a>
+  <span style="margin-left:auto;opacity:0.75;color:var(--text2)"><a href="../index.html" style="color:var(--text2);text-decoration:none">首页 ›</a></span>
+</div>
+</div>
+<main class="content content-article" id="article-root"></main>
+<div id="share-toast" style="position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(31,36,42,0.96);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82em;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.3)"></div>
+
+<script src="../js/common.js"></script>
+<script>
+function copyPageLink(){
+  var url = window.location.href;
+  var toast = document.getElementById('share-toast');
+  function done(msg, ok){
+    if(toast){ toast.textContent = msg; toast.style.display='block'; setTimeout(function(){ toast.style.display='none'; }, 2600); }
+    return ok;
+  }
+  function fallback(u){
+    var ta = document.createElement('textarea'); ta.value = u; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done('✅ 本页独立地址已复制：' + u, true); }
+    catch(e){ done('📋 请手动复制地址：' + u, false); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(function(){ done('✅ 本页独立地址已复制：' + url, true); },
+      function(){ fallback(url); });
+  } else {
+    fallback(url);
+  }
+}
+</script>
+
+<script>
+var ARTICLE = {
+  "id": "tibetan-avatamsaka-trilingual-ch01",
+  "file": "articles/tibetan-avatamsaka-trilingual-ch01.html",
+  "title": "藏章1 · 汉译开篇对应（章界〔待核〕） — 三语对读",
+  "title_sub": "德格 035 · 起叶 1b.1 · 〔待核〕前段不平行 · 已试译 6/6 段 · MITRA 9B 模型译〔未校订〕",
+  "icon": "🕻",
+  "version": "v0.4 · 章子页（L.378 子页架构）· 三语对读 / 汉藏对应 / 延伸阅读",
+  "meta": "底本：德格甘珠尔《大方广佛华严经》Toh 44（035-038）\n本章数据层：data/translation\\tibetan_avatamsaka_trilingual_segments.json\n总目：articles/tibetan-avatamsaka-trilingual.html",
+  "doc": "",
+  "doc_md": "# 藏章1 · 汉译开篇对应（章界〔待核〕） — 三语对读\n\n<div class=\"tri-crumbs\"><a href=\"tibetan-avatamsaka-trilingual.html\">← 返回总目</a><span class=\"tri-crumbs-sep\">／</span><b>藏章1</b><span class=\"tri-crumbs-rule\">前段不平行</span></div>\n\n> **德格 035 · 起叶 1b.1** ｜ 对应：〔待核〕前段不平行 ｜ **进度：6/6 段已试译**（数据层实测）\n> 品1〈世主妙严品〉开篇对应已实证（L.203 示范对勘），品目整体章界不平行〔待核〕\n\n<div class=\"tri-pager\"><a href=\"tibetan-avatamsaka-trilingual.html\">返回总目</a><a href=\"tibetan-avatamsaka-trilingual-ch14.html\">藏章14 →</a></div>\n\n<div class=\"tri-tabs\" role=\"tablist\">\n<button type=\"button\" class=\"tri-tab is-on\" onclick=\"__triTab(0)\">三语对读</button>\n<button type=\"button\" class=\"tri-tab\" onclick=\"__triTab(1)\">汉藏对应</button>\n<button type=\"button\" class=\"tri-tab\" onclick=\"__triTab(2)\">延伸阅读</button>\n</div>\n\n## 一、三语对读\n\n<div class=\"tri-toolbar\"><span class=\"tri-toolbar-label\">三语排列</span><button type=\"button\" class=\"tri-btn is-on\" data-lay=\"stack\" onclick=\"__triLayout('stack')\">堆叠 · 一段三语</button><button type=\"button\" class=\"tri-btn\" data-lay=\"cols\" onclick=\"__triLayout('cols')\">并排 · 三栏对读</button><span class=\"tri-toolbar-note\">并排在窄屏自动回退堆叠 · 选择记忆在本机 · 段标题可点击折叠</span></div>\n\n<div class=\"tri-segnav\"><span class=\"tri-toolbar-label\">段导航</span><a class=\"tri-segchip\" href=\"#tri-seg-1\">段 1</a><a class=\"tri-segchip\" href=\"#tri-seg-2\">段 2</a><a class=\"tri-segchip\" href=\"#tri-seg-3\">段 3</a><a class=\"tri-segchip\" href=\"#tri-seg-4\">段 4</a><a class=\"tri-segchip\" href=\"#tri-seg-5\">段 5</a><a class=\"tri-segchip\" href=\"#tri-seg-6\">段 6</a></div>\n\n<div id=\"tri-seg-1\" class=\"tri-anchor\"></div>\n\n#### 段 1〔035 1b.1 · T44-1〕（题名块）\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">རྒྱ་གར་སྐད་དུ། བུདྡྷ་ཨ་བ་ཏང་ས་ཀ་ནཱ་མ་མ་ཧཱ་བཻ་པུ་ལྱཾ་སཱུ་ཏྲ། བོད་སྐད་དུ། སངས་རྒྱས་ཕལ་པོ་ཆེ་ཞེས་བྱ་བ་ཤིན་ཏུ་རྒྱས་པ་ཆེན་པོའི་མདོ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">梵語：《佛華嚴經》（Buddhāvatamsaka-nāma-mahāvaipulya-sūtra）；藏語：《佛華嚴大廣博經》。「善男子！菩薩摩訶薩有十種法，能令菩薩成就無量無邊功德。何等為十？所謂：一者、成就無量無邊身；二者、成就無量無邊語；三者、成就無量無邊心；四者、成就無量無邊智；五者、成就無量無邊神通；六者、成就無量無邊自在；七者、成就無量無邊力；八者、成就無量無邊威德；九者、成就無量無邊莊嚴；十者、成就無量無邊清淨。善男子！是為菩薩摩訶薩十種法，能令菩薩摩訶薩成就無</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 4597.8s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T11:19:58</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">In the language of India: Buddhāvatamsaka-nāma-mahāvaipulya-sūtra. In the language of Tibet: Sangs rgyas phal po che zhes bya ba shin tu rgyas pa chen po'i mdo (The Great Vaipulya Sutra titled &quot;The Buddha-Array&quot;).འཕགས་པ་སངས་རྒས་ཕལ་བོ་ཆེ་བམ་པོ་བཞི་བཅུ་རྩ་གཉིས་པ། བམ་པོ་ཉི་ཤུ་རྩལྔ་པ། སངསརྒྱུས་རྨད་གཅད་</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 2826.3s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T12:07:05</p></details></section>\n</div>\n\n<div id=\"tri-seg-2\" class=\"tri-anchor\"></div>\n\n#### 段 2〔035 1b.1 · T44-1〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">འདི་ སྐད་བདག་གིས་ཐོས་པའི་དུས་གཅིག་ན། བཅོམ་ལྡན་འདས་ཐོག་མ་མངོན་པར་སངས་རྒྱས་པ། སངས་རྒྱས་ཀྱི་ཆོས་ཐམས་ཅད་ཤིན་ཏུ་རྣམ་པར་སངས་རྒྱས་པའི་ཐུགས་མངའ་བ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">如是我聞：一時，薄伽梵初成正覺，於一切佛法已得圓滿覺悟之心。論曰：此中應知，諸菩薩摩訶薩於諸地中，由十種相，應知清淨。論曰：此中，應知諸菩薩摩訶薩於十地中，由十種相應知清淨。論日：此中應知，諸波羅蜜多，由十種相，應知其相。論曰：此中諸波羅蜜多，由十一種相應知其相。論曰：云何應知諸波羅蜜多果？論曰：云何應知其相？論曰：云何諸波羅蜜多清淨？論曰：云何波羅蜜多清淨？ 謂諸菩薩摩訶薩，於諸地中，由十相故，應知清淨</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 1489.2s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T12:31:54</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">Thus have I heard at one time: the Blessed One, who had first attained manifest enlightenment, possessed a mind that had perfectly and completely awakened to all the qualities of a Buddha.To the one who has attained the state of a Tathāgata, Arhat, and Perfectly Complete Buddha, who is the teacher of gods and humans, the Buddha, the Blessed One, I pay homage.འདི་སྐད་བདྭག་གིས་ཤོས་པའྀ་དུས་ག་ཅིག་ན༔ བཅོཾ་ལྡན྄་འདས་མངོན་རྫོགས་སངས་ར࿄ས་པ་ནས་བཟུང་སྟེ</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 1591.5s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T12:58:26</p></details></section>\n</div>\n\n<div id=\"tri-seg-3\" class=\"tri-anchor\"></div>\n\n#### 段 3〔035 [1b.3] · T44-1〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">དུས་གསུམ་མཉམ་པ་ཉིད་དུ་ཐུགས་སུ་ཆུད་པའི་ཡེ་ཤེས་ཀྱི་སྐུ་མངའ་བ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་སྐུས་ཤིན་ཏུ་ཁྱབ་པ། སངས་རྒྱས་ཀྱི་ཞིང་ཐམས་ཅད་དུ་དབྱངས་ཀྱི་ཡན་ ལག་དང་གསུང་གི་ང་རོ་ཤིན་ཏུ་བསྒྲགས་པ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">具足通達三世平等性之智慧身，其身周遍一切世界，其音聲支分與言辭音韻於一切佛土中極其宣揚。然而，這並非指在「無自性」的意義上，才稱之為「無自性」。若無自性，則無生；若無生，則無滅。若無生滅，則無有遷變。若無遷變，則無有老死。若無老死，則無憂、悲、苦、惱。若無憂、悲、苦、煩惱，則一切苦聚皆悉寂滅。若無生，則無滅；若無生滅，則無變異；若無變異，則無老死；若無老死，則無愁、歎、苦、憂、惱。如是，則一切苦蘊皆悉寂滅。若諸法無</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 953.4s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T13:14:19</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">He possesses the wisdom body that realizes the equality of the three times; his body thoroughly pervades all world systems; and the branches of his melodic voice and the resonance of his speech are proclaimed throughout all buddhafields.ཆོས་ཀྱང་མི་དམིགས་པ་དང་། ཆོས་ཀ࿄ མི་དམིཊ་པ་དང་ཆོས་ཀུན་ཏུ་ མི་དཔྱོད་པ་དང་ ཆོས་ལ་མི་རྟོག་པ་དང་རྣམ་པར་མི་ར࿄ ག་པ་དང་དེ</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 982.4s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T13:30:41</p></details></section>\n</div>\n\n<div id=\"tri-seg-4\" class=\"tri-anchor\"></div>\n\n#### 段 4〔035 [1b.4] · T44-1〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">མཁའ་དང་ནམ་མཁའ་ལྟ་བུའི་མཚན་ཉིད་མཉམ་པ་ཉིད་དུ་རབ་ཏུ་སྣང་བའི་སྤྱོད་ཡུལ་ཅན་ནམ་མཁའ་ལྟར་འགྲོ་བ་ཐམས་ཅད་ཀུན་ཁྱབ་པའི་སྙིང་པོ་ བྱང་ཆུབ་ཐམས་ཅད་ལ་བཞུགས་པའི་སྐུ་བྱང་ཆུབ་སེམས་དཔའ་རྒྱ་མཚོ་ཐམས་ཅད་ཀྱི་ནང་ན་རྣམ་པར་སྣང་བ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་ཉི་མའི་དཀྱིལ་འཁོར་ལྟར་ཤར་བ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">其境界顯現為如虛空與虛空般平等的法性，如虛空般周遍一切眾生，安住於一切覺悟之藏。其身顯現於一切菩薩大海之中，猶如日輪升起於一切世界。佛子！此菩薩摩訶薩，於一切法中，得無礙智，隨順一切智，普入一切法界，普知一切法界，普見一切法界，普證一切法界，普住一切法界，普遊一切法界，普觀一切法界，普入一切法界，於一切法界中，皆悉自在。佛子！此菩薩於一切法中，得無障礙智，隨順一切智，遍入一切法界，遍知一切法界，遍見一切法界，遍證一切法界，遍住一切法界，遍遊一切法界，遍觀一切法界，遍</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 974.3s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T13:46:56</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">His sphere of activity is the manifestation of the equality of characteristics, like the sky and space; he is the essence that pervades all beings like space, the body abiding in all enlightenment, appearing within an ocean of all bodhisattvas, and rising like the orb of the sun in all world systems.འཇིག་རིག་རྟོག་པ་ཐམས་རྟེག་པ་ཐ་ཅད་ཀ་ཀྱིས་མི་ཤེས་པའིམ་ཤེས་བའི་མུན་པ་ཐུགས་རྗེ་ཆེན་པོའི་འོད་ཟེར་ག�ig</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 976.6s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T14:03:12</p></details></section>\n</div>\n\n<div id=\"tri-seg-5\" class=\"tri-anchor\"></div>\n\n#### 段 5〔035 [1b.5] · T44-1〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">སངས་ རྒྱས་ཀྱི་ཞིང་ཐམས་ཅད་དུ་ཡོངས་སུ་སྐྱེ་བ་བསྟན་པ། རབ་ཏུ་སྤྲོས་པ་དུས་གསུམ་གྱི་བསོད་ནམས་རྒྱ་ཆེན་པོ་རྒྱ་མཚོ་ལྟ་བུས་སྤྱོད་ཡུལ་ཡོངས་སུ་དག་པ། འོད་ཀྱི་དཀྱིལ་འཁོར་དང་།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">於一切佛土示現受生，以如大海般廣大、遍及三世的種種戲論功德，令其行境完全清淨，並具足圓滿的光明輪。由此，菩薩摩訶薩應當了知：這便是菩薩摩訶薩的「無盡寶篋三昧」。若菩薩摩訶薩能如是修學，則能圓滿成就一切波羅蜜多。須菩提，這便是菩薩摩訶薩修學般若波羅蜜多時，所應成就的「一切種智」。須菩提，這便是菩薩摩薩修學般若波羅蜜多的法門。 若菩薩摩訶薩能如實了知一切法皆無所從來，亦無所從去，這便是菩薩摩訶萨修學般若波羅蜜多。 若菩薩摩訶萨能如是修學，則能成就一切波羅蜜多。 若諸</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 934.6s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T14:18:47</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">He manifested births in all Buddha-fields; his sphere of activity was completely purified by an ocean-like, vast merit of the three times through extensive elaboration; and his mandala of light and—འོད་ཟེར་གྱི་དྲ་བ་མཐའ་ཡས་པ་ཀུན་ཏུ་འཕྲོ་བ། སྤྲུུལ་པའི་སྤ�ིན་གྱི་ཚོགས་ཀྱང་མཐའ། ཡས་པ་མངོན་པར་འཕྱེ་བ། སངས་ར� infinite networks</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 940.3s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T14:34:27</p></details></section>\n</div>\n\n<div id=\"tri-seg-6\" class=\"tri-anchor\"></div>\n\n#### 段 6〔035 [2a.1] · T44-1〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">འོད་ཟེར་ཁ་དོག་མཐའ་ཡས་པ་མངའ་བ། ཆོས་ཀྱི་དབྱིངས་ཐམས་ཅད་རྒྱས་པར་འགེངས་པའི་ཆོས་ཀྱི་སྤྲིན་ཐམས་ཅད་ཀྱིས་རྣམ་པར་འཕྲུལ་པ། འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་དུ་བསྒྲིབས་པ་མེད་པ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">具足無量無邊色光，以遍滿一切法界的種種法雲而顯現神變，於一切世間皆無障礙。於一切法界中，皆悉周遍充滿。由於對一切法皆無所執著，因此能徹底斷除對「我」的虛妄分別。正因為不再執著於自我，便能遠離一切煩惱的束縛。由於對一切法皆不生執著，因此能徹底斷除以「我」為對象的虛妄分別。正因為不再生起對自我的執著，便能遠離一切煩惱的束縳。由於對一切法皆不執著，因此能徹底斷除非我之虛妄分別。正因為不再對自我產生執著，便能遠離一切煩惱。由於對一切法皆能無所執著，因此能完全斷除對「我」的種種虛妄分別。正因為不再生起對自我的執</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 944.9s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T14:50:12</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">Possessing infinite-colored light rays, they manifest through all the clouds of Dharma that extensively fill the entire realm of phenomena, remaining unobstructed throughout all world systems.འཇིག་རིགས་ཀྱང་མཐའི་མུ་མེད་དེ། འཇུག་པ་ལས། མཐའ་མེད་བདག་ཅན་འཇིག་ཚོགས་འདི་ལ་ནི།། འཇག་རྟའི་ཁམས། མུ་མཐའ། འཇོག་རྟུལ།</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 909.0s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T15:05:21</p></details></section>\n</div>\n\n> 〔诚实边界〕以上仅覆盖本章**开篇**，非全品；未译段如实标〔待译〕。模型译未经人工校订，不作引文使用，不得替代 CBETA 祖本文字。\n\n## 二、汉藏对应\n\n**三本开篇对照**（L.203 示范对勘 · 库存示例层）\n\n<section class=\"tri-quote tri-qbo\">\n<p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格 Toh 44-1 · 叶码 035:393a（示例层自记）</span></p>\n<blockquote class=\"tri-text\" lang=\"bo\">འདི་སྐད་བདག་གིས་ཐོས་པའི་དུས་གཅིག་ན། །བཅོམ་ལྡན་འདས་ཐོག་མ་མངོན་པར་སངས་རྒྱས་པ། །སངས་རྒྱས་ཀྱི་ཆོས་ཐམས་ཅད་ཤིན་ཏུ་རྣམ་པར་སངས་རྒྱས་པའི་ཐུགས་མངའ་བ། །</blockquote>\n</section>\n<section class=\"tri-quote tri-qzh\">\n<p class=\"tri-head\"><span class=\"tri-tag\">八十</span><span class=\"tri-sub\">CBETA T10n0279《大方廣佛華嚴經》卷1〈世主妙嚴品第1〉，逐字回源</span></p>\n<blockquote class=\"tri-text\" lang=\"zh\">如是我聞：一時，佛在摩竭提國阿蘭若法菩提場中，始成正覺。</blockquote>\n</section>\n<section class=\"tri-quote tri-qzh\">\n<p class=\"tri-head\"><span class=\"tri-tag\">六十</span><span class=\"tri-sub\">CBETA T09n0278《華嚴經》卷1〈世間淨眼品第1〉，逐字回源</span></p>\n<blockquote class=\"tri-text\" lang=\"zh\">如是我聞：一時，佛在摩竭提國寂滅道場始成正覺。</blockquote>\n</section>\n\n**对勘发现**（示例层 collation_findings 原文迻录）\n\n- 【印可分对应·已证实】三本皆以「如是我聞 / 'di skad bdag gis thos pa」(evam mayā śrutam) 信起；结构对应成立。\n- 【处所分·汉藏异】八十、六十随即标处所（摩竭提國＋道場名各異：八十「阿蘭若法菩提場」、六十「寂滅道場」）；藏文起句無處所分，逕入「世尊最初正覺」及菩提功德〔本文判断：开篇科段结构实质差异〕。\n- 「始成正覺」与藏文 thog ma mngon par sangs rgyas pa（最初現正等覺）逐字相应〔本文判断〕。\n- 【品題三譯不同】藏题 sangs rgyas phal po che＝佛華嚴；八十題「世主妙嚴品」；六十題「世間淨眼品」〔待核：品題之異涉傳本學〕。\n- 【订正记录】本仓前版（demo §3.5 与旧 JSON）六十起句误作「佛在摩竭提國菩提樹下，成佛未久」，与底本不符，本次据 T09n0278 逐字回源订正为「佛在摩竭提國寂滅道場始成正覺」；八十前版多一逗（摩竭提國，）一并据底本改正。\n\n> 〔口径〕本示例出自《藏汉英对读 · 初探》页之旧示例层（英文 IITB 词典辅助、汉译 MITRA 旧译程），与本专题 MITRA 9B 译程**非同一引擎批次**；藏文与两汉译祖本引文逐字回源口径不变。\n\n## 三、延伸阅读\n\n**本仓专篇与总纲**\n\n- [九九华严第一品〈世主妙严品〉拼读专篇](shizhu-miaoyan.html) — 第一会·菩提场：本专题藏章1 开篇所对应的汉译本品\n- [华严经引读 · 系列总纲（§五 藏汉对应总表）](huayan-series-outline.html)\n- [华严经学 · 三十九品深度研究](huayan-studies.html) — 藏独有二章之法义归属见 §2.3\n\n**数据源清单**（本页内容全部机械派生自下列库存）\n\n- 三语段数据层：`data/translation\\tibetan_avatamsaka_trilingual_segments.json`\n- 示范对勘示例层：`data/alignment/avatamsaka-openings-demo.json`\n- 品目规划表：`data/alignment/tibetan_chinese_pin_plan_L360.json`\n",
+  "title_en": "Tibetan Avataṃsaka · Chapter 1 Trilingual Reading (Tibetan / Chinese / English)"
+};
+</script>
+<script>
+function renderArticle(){
+  var a=(typeof ARTICLE!=='undefined')?ARTICLE:null;
+  var root=document.getElementById('article-root');
+  if(!root){return;}
+  if(!a){root.innerHTML='<p style=font-size:0.85em;color:var(--red)>文章数据缺失（ARTICLE 未定义）。</p>';return;}
+
+  var embed=(typeof _mdDocEmbed==='function')?_mdDocEmbed(a.doc_md||''):{html:'',toc:[]};
+  var h='';
+
+  h+='<div style="font-size:0.74em;color:var(--text2);margin-bottom:12px;">';
+  h+='<a href="../index.html" style="color:var(--blue);text-decoration:none">主页</a> › ';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' › <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  h+='<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
+  h+='  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页</div>';
+  h+='  <h2 data-skip-toc="1" style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
+  if(a.title_sub)h+='  <div style="font-size:0.85em;color:var(--text2)">'+a.title_sub+'</div>';
+  if(a.version)h+='  <div style="font-size:0.78em;color:var(--text2);margin-top:6px">'+a.version+'</div>';
+  if(a.back && a.back.tab){
+    h+='  <a href="../tabs/'+a.back.tab+'.html" style="font-size:0.75em;color:var(--blue);margin-top:10px;display:inline-block">← 返回 '+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  if(a.meta){
+    h+='<div class="section" style="border-left:4px solid var(--gold)" data-chrome="1"><h2>📌 导览</h2>';
+    h+='<p style="font-size:0.8em;line-height:1.9;white-space:pre-line">'+(typeof _mdInline==='function'?_mdInline(a.meta):a.meta)+'</p></div>';
+  }
+
+  if(embed.toc.length){
+    h+='<div class="section" data-chrome="1"><h2>🧭 本文目录</h2>';
+    h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75">';
+    embed.toc.forEach(function(t){
+      var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
+      h+='<div style="'+pad+'"><a href="#'+t.id+'" style="color:'+(t.lv===2?'var(--gold)':'var(--text2)')+';text-decoration:none">'+t.text+'</a></div>';
+    });
+    h+='</div></div>';
+  }
+
+  h+='<div class="section" style="border-left:4px solid var(--gold)" id="article-full">';
+  h+='<h2 data-skip-toc="1" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span></h2>';
+  h+=embed.html;
+  h+='</div>';
+
+  h+='<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' · <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  root.innerHTML=h;
+
+  if(typeof _markTermRefs==='function' && document.getElementById('article-full')){
+    _markTermRefs('#article-full');
+  }
+  if(typeof initDocImages==='function' && document.getElementById('article-full')){
+    initDocImages('#article-full');
+  }
+  if(typeof _initArticleENMode==='function') _initArticleENMode();
+  if(typeof _foldDoc==='function'){
+    try{ _foldDoc('#article-full', {noBar:true}); }catch(e){}
+  }
+  if(typeof _installPageBar==='function'){
+    try{ _installPageBar({mountSel:'#article-full', rootSel:'#article-root'}); }catch(e){}
+  }
+  if(location.hash){
+    setTimeout(function(){
+      var el=document.getElementById(location.hash.slice(1));
+      if(el){
+        if(typeof _reveal==='function')window._reveal(el);
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    },80);
+  }
+}
+
+if(document.readyState!=='loading'){renderArticle();}
+else{document.addEventListener('DOMContentLoaded',renderArticle);}
+</script>
+<script>
+/* ── 三语对读工作台（L.378 · gen v0.4 子页架构） ── */
+window.__triLayout = function (mode) {
+  var root = document.getElementById('article-full');
+  if (!root) return;
+  var cols = (mode === 'cols');
+  root.classList.toggle('tri-cols', cols);
+  try { localStorage.setItem('triLayout', cols ? 'cols' : 'stack'); } catch (e) {}
+  var btns = document.querySelectorAll('.tri-btn[data-lay]');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.toggle('is-on', btns[i].getAttribute('data-lay') === (cols ? 'cols' : 'stack'));
+  }
+};
+window.__triTab = function (i) {
+  var root = document.getElementById('article-full');
+  if (!root) return;
+  // shell 另渲一个裸 h2 页题（无 secfold）→ pane 只取 h2.secfold
+  var hs = root.querySelectorAll('h2.secfold');
+  for (var j = 0; j < hs.length; j++) {
+    var on = (j === i);
+    if (on) { hs[j].classList.remove('is-folded'); hs[j].setAttribute('aria-expanded', 'true'); }
+    hs[j].style.display = on ? '' : 'none';
+    var b = hs[j].nextElementSibling;
+    if (b && b.classList.contains('secfold-body')) b.style.display = on ? '' : 'none';
+  }
+  var btns = document.querySelectorAll('.tri-tab');
+  for (var k = 0; k < btns.length; k++) btns[k].classList.toggle('is-on', k === i);
+  try { localStorage.setItem('triTab:tibetan-avatamsaka-trilingual-ch01', String(i)); } catch (e) {}
+};
+(function () {
+  function paneOf(el) {
+    var root = document.getElementById('article-full');
+    if (!root) return -1;
+    var hs = root.querySelectorAll('h2.secfold');
+    for (var i = 0; i < hs.length; i++) {
+      if (el === hs[i]) return i;
+      var b = hs[i].nextElementSibling;
+      if (b && b.classList.contains('secfold-body') && b.contains(el)) return i;
+    }
+    return -1;
+  }
+  function fromHash() {
+    var h = location.hash.slice(1);
+    if (!h) return -1;
+    var el = document.getElementById(h);
+    return el ? paneOf(el) : -1;
+  }
+  function init() {
+    var root = document.getElementById('article-full');
+    if (!root || !root.querySelector('.secfold') || !root.querySelector('h2') || !root.querySelector('.tri-tabs')) return false;
+    var hs = root.querySelectorAll('.secfold');
+    for (var i = 0; i < hs.length; i++) {
+      hs[i].classList.remove('is-folded');
+      hs[i].setAttribute('aria-expanded', 'true');
+    }
+    // 窄屏页头换行可高达 200px+，固定 scroll-margin 会把锚点藏进页头 → 按实高同步
+    function syncGap() {
+      var top = document.getElementById('page-top');
+      var gap = (top ? top.offsetHeight : 0) + 12;
+      var as = document.querySelectorAll('.tri-anchor');
+      for (var i = 0; i < as.length; i++) as[i].style.scrollMarginTop = gap + 'px';
+    }
+    syncGap();
+    window.addEventListener('resize', syncGap);
+    var lay = 'stack';
+    try { lay = localStorage.getItem('triLayout') || 'stack'; } catch (e) {}
+    window.__triLayout(lay);
+    var tab = fromHash();
+    if (tab < 0) {
+      try { tab = parseInt(localStorage.getItem('triTab:tibetan-avatamsaka-trilingual-ch01') || '0', 10) || 0; } catch (e) { tab = 0; }
+    }
+    if (tab >= root.querySelectorAll('h2.secfold').length) tab = 0;
+    window.__triTab(tab);
+    root.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (!el) return;
+      e.preventDefault();
+      var p = paneOf(el);
+      if (p >= 0) window.__triTab(p);
+      if (window._reveal) window._reveal(el);
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (history.replaceState) history.replaceState(null, '', a.getAttribute('href'));
+    });
+    window.addEventListener('hashchange', function () {
+      var p = fromHash();
+      if (p >= 0) window.__triTab(p);
+    });
+    return true;
+  }
+  function poll(n) { if (init()) return; if (n > 0) setTimeout(function () { poll(n - 1); }, 120); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { poll(20); });
+  else poll(20);
+})();
+</script>
+</body>
+</html>

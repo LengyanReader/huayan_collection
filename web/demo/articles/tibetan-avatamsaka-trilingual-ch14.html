@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藏章14 · 品9〈光明觉品〉 — 三语对读 — 独立文章</title>
+<link rel="stylesheet" href="../css/common.css">
+<style>
+/* ── 三语对读工作台（L.378 · gen v0.4 子页架构） ── */
+.tri-anchor{scroll-margin-top:96px}
+.tri-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px;padding:6px;border:1px solid var(--line);border-radius:10px;background:rgba(94,139,158,.05)}
+.tri-tab{border:1px solid transparent;background:transparent;color:var(--text2);border-radius:7px;padding:5px 16px;font-size:.8em;cursor:pointer}
+.tri-tab.is-on{border-color:var(--gold);color:var(--gold);background:rgba(184,134,60,.10);font-weight:700}
+.tri-crumbs{font-size:.78em;margin:8px 0;color:var(--text2)}
+.tri-crumbs a{color:var(--blue);text-decoration:none}
+.tri-crumbs-sep{margin:0 8px;opacity:.5}
+.tri-crumbs-rule{margin-left:8px;opacity:.7}
+.tri-pager{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin:10px 0;font-size:.78em}
+.tri-pager a{color:var(--blue);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:3px 10px}
+.tri-pager a:hover{border-color:var(--gold);color:var(--gold)}
+.tri-stats{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.tri-stat{border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:.75em;color:var(--text2);background:rgba(94,139,158,.04)}
+.tri-stat b{display:block;font-size:1.5em;color:var(--gold)}
+.tri-chcard{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;background:rgba(94,139,158,.03)}
+.tri-chcard-main{margin:0 0 4px;font-size:.85em}
+.tri-chcard-pin{margin-left:10px;color:var(--text2);font-size:.85em}
+.tri-chcard-prog{margin:0 0 4px;font-size:.75em;color:var(--text2);display:flex;align-items:center;gap:8px}
+.tri-prog{display:inline-block;width:120px;height:6px;border-radius:3px;background:rgba(94,139,158,.15);overflow:hidden}
+.tri-prog i{display:block;height:100%;background:var(--gold)}
+.tri-chcard-go{margin:0;font-size:.78em}
+.tri-chcard-go a{color:var(--blue);text-decoration:none;font-weight:700}
+.tri-nav{margin:10px 0}
+.tri-nav-group{font-size:.8em;font-weight:700;color:var(--gold);margin:12px 0 6px}
+.tri-nav-group small{font-weight:400;color:var(--text2)}
+.tri-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px}
+.tri-chip{display:inline-flex;flex-direction:column;align-items:center;min-width:64px;padding:4px 8px;border:1px solid var(--line);border-radius:8px;font-size:.72em;line-height:1.5;text-decoration:none;color:var(--text2);background:rgba(94,139,158,.04)}
+.tri-chip b{font-size:1.05em;color:var(--text)}
+.tri-chip i{font-style:normal;font-size:.9em;opacity:.8}
+a.tri-chip:hover{border-color:var(--gold);color:var(--gold)}
+.tri-chip.tri-done{border-color:var(--blue);background:rgba(94,139,158,.10)}
+.tri-chip.tri-part{border-color:var(--gold);background:rgba(184,134,60,.08)}
+.tri-chip.tri-todo{opacity:.55}
+.tri-segnav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0;font-size:.75em}
+.tri-segchip{border:1px solid var(--line);border-radius:6px;padding:2px 10px;color:var(--text2);text-decoration:none}
+.tri-segchip:hover{border-color:var(--gold);color:var(--gold)}
+.tri-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:rgba(94,139,158,.05);font-size:.78em}
+.tri-toolbar-label{font-weight:700;color:var(--gold)}
+.tri-btn{border:1px solid var(--line);background:transparent;color:var(--text2);border-radius:6px;padding:3px 12px;font-size:1em;cursor:pointer}
+.tri-btn.is-on{border-color:var(--gold);color:var(--gold);background:rgba(184,134,60,.10);font-weight:700}
+.tri-toolbar-note{opacity:.65;font-size:.92em}
+.tri-seg{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0 14px;background:rgba(94,139,158,.03)}
+.tri-seg[data-status="pending"]{border-style:dashed}
+.tri-lang{margin:8px 0;padding-left:10px;border-left:3px solid var(--line)}
+.tri-lang.tri-bo{border-left-color:var(--gold)}
+.tri-lang.tri-zh{border-left-color:var(--blue)}
+.tri-lang.tri-en{border-left-color:#9a7fb8}
+.tri-head{margin:0 0 4px;font-size:.72em;color:var(--text2)}
+.tri-tag{display:inline-block;font-weight:700;border:1px solid currentColor;border-radius:4px;padding:0 6px;margin-right:8px}
+.tri-bo .tri-tag{color:var(--gold)}
+.tri-zh .tri-tag{color:var(--blue)}
+.tri-en .tri-tag{color:#9a7fb8}
+.tri-text{margin:0;padding:6px 10px;border:none;background:transparent;font-size:.85em;line-height:1.9;white-space:pre-line;overflow-wrap:break-word}
+.tri-text[lang="bo"]{font-family:'Noto Serif Tibetan','Noto Sans Tibetan','Microsoft Himalaya','Kailasa','Tibetan Machine Uni',serif;line-height:2.3;font-size:.95em}
+.tri-text[lang="en"]{font-family:Georgia,'Times New Roman',serif}
+.tri-pending{opacity:.55;font-style:italic}
+.tri-meta{margin:4px 0 0;font-size:.7em;color:var(--text2)}
+.tri-meta summary{cursor:pointer;opacity:.7}
+.tri-meta p{margin:4px 0;padding:4px 10px;background:rgba(94,139,158,.06);border-radius:6px;line-height:1.7}
+.tri-quote{margin:8px 0;padding-left:10px;border-left:3px solid var(--line)}
+.tri-quote.tri-qbo{border-left-color:var(--gold)}
+.tri-quote.tri-qzh{border-left-color:var(--blue)}
+.tri-quote .tri-tag{color:var(--text2)}
+.tri-quote.tri-qbo .tri-tag{color:var(--gold)}
+.tri-quote.tri-qzh .tri-tag{color:var(--blue)}
+.tri-cols .tri-seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}
+.tri-cols .tri-lang{margin-top:0}
+@media (max-width:960px){.tri-cols .tri-seg{grid-template-columns:1fr}}
+.tri-appx{margin:8px 0}
+.tri-term[data-gloss]{border-bottom:1px dotted var(--gold);cursor:help;position:relative}
+.tri-term[data-gloss]:hover::after{content:attr(data-gloss);position:absolute;left:0;top:100%;z-index:50;background:rgba(31,36,42,.96);color:#fff;padding:4px 10px;border-radius:6px;font-size:.85em;white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>藏章14 · 品9〈光明觉品〉 — 三语对读</h1>
+  <span class="art-updated"></span>
+  <button id="share-link" class="share-btn" onclick="copyPageLink();return false" title="复制本页独立地址">🔗 分享地址</button>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
+  <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
+</header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+  ⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
+<div style="padding:5px 16px;border-bottom:1px solid var(--line);font-size:0.76em;display:flex;gap:16px;align-items:center;background:rgba(94,139,158,0.06);flex-wrap:wrap">
+  <a href="javascript:history.back()" style="color:var(--blue);text-decoration:none;font-weight:600">← 返回上一步</a>
+  <span style="opacity:0.45">|</span>
+  <a href="../tabs/gap.html" style="color:var(--blue);text-decoration:none">返回到：华严文献 · 雅思渊才 ›</a>
+  <span style="margin-left:auto;opacity:0.75;color:var(--text2)"><a href="../index.html" style="color:var(--text2);text-decoration:none">首页 ›</a></span>
+</div>
+</div>
+<main class="content content-article" id="article-root"></main>
+<div id="share-toast" style="position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(31,36,42,0.96);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82em;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.3)"></div>
+
+<script src="../js/common.js"></script>
+<script>
+function copyPageLink(){
+  var url = window.location.href;
+  var toast = document.getElementById('share-toast');
+  function done(msg, ok){
+    if(toast){ toast.textContent = msg; toast.style.display='block'; setTimeout(function(){ toast.style.display='none'; }, 2600); }
+    return ok;
+  }
+  function fallback(u){
+    var ta = document.createElement('textarea'); ta.value = u; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done('✅ 本页独立地址已复制：' + u, true); }
+    catch(e){ done('📋 请手动复制地址：' + u, false); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(function(){ done('✅ 本页独立地址已复制：' + url, true); },
+      function(){ fallback(url); });
+  } else {
+    fallback(url);
+  }
+}
+</script>
+
+<script>
+var ARTICLE = {
+  "id": "tibetan-avatamsaka-trilingual-ch14",
+  "file": "articles/tibetan-avatamsaka-trilingual-ch14.html",
+  "title": "藏章14 · 品9〈光明觉品〉 — 三语对读",
+  "title_sub": "德格 035 · 起叶 191a.7 · 品9〈光明觉品〉（差5） · 已试译 4/6 段 · MITRA 9B 模型译〔未校订〕",
+  "icon": "🕻",
+  "version": "v0.4 · 章子页（L.378 子页架构）· 三语对读 / 汉藏对应 / 延伸阅读",
+  "meta": "底本：德格甘珠尔《大方广佛华严经》Toh 44（035-038）\n本章数据层：data/translation\\tibetan_avatamsaka_trilingual_segments_ch14.json\n总目：articles/tibetan-avatamsaka-trilingual.html",
+  "doc": "",
+  "doc_md": "# 藏章14 · 品9〈光明觉品〉 — 三语对读\n\n<div class=\"tri-crumbs\"><a href=\"tibetan-avatamsaka-trilingual.html\">← 返回总目</a><span class=\"tri-crumbs-sep\">／</span><b>藏章14</b><span class=\"tri-crumbs-rule\">差5</span></div>\n\n> **德格 035 · 起叶 191a.7** ｜ 对应：品9〈光明觉品〉（差5） ｜ **进度：4/6 段已试译**（数据层实测）\n> 品9〈光明觉品〉（对应律 差5）·证据：alignment\\tibetan_zhuhuju_b2.json 章条目\n\n<div class=\"tri-pager\"><a href=\"tibetan-avatamsaka-trilingual-ch01.html\">← 藏章1</a><a href=\"tibetan-avatamsaka-trilingual.html\">返回总目</a><a href=\"tibetan-avatamsaka-trilingual-ch15.html\">藏章15 →</a></div>\n\n<div class=\"tri-tabs\" role=\"tablist\">\n<button type=\"button\" class=\"tri-tab is-on\" onclick=\"__triTab(0)\">三语对读</button>\n<button type=\"button\" class=\"tri-tab\" onclick=\"__triTab(1)\">汉藏对应</button>\n<button type=\"button\" class=\"tri-tab\" onclick=\"__triTab(2)\">延伸阅读</button>\n</div>\n\n## 一、三语对读\n\n<div class=\"tri-toolbar\"><span class=\"tri-toolbar-label\">三语排列</span><button type=\"button\" class=\"tri-btn is-on\" data-lay=\"stack\" onclick=\"__triLayout('stack')\">堆叠 · 一段三语</button><button type=\"button\" class=\"tri-btn\" data-lay=\"cols\" onclick=\"__triLayout('cols')\">并排 · 三栏对读</button><span class=\"tri-toolbar-note\">并排在窄屏自动回退堆叠 · 选择记忆在本机 · 段标题可点击折叠</span></div>\n\n<div class=\"tri-segnav\"><span class=\"tri-toolbar-label\">段导航</span><a class=\"tri-segchip\" href=\"#tri-seg-1\">段 1</a><a class=\"tri-segchip\" href=\"#tri-seg-2\">段 2</a><a class=\"tri-segchip\" href=\"#tri-seg-3\">段 3</a><a class=\"tri-segchip\" href=\"#tri-seg-4\">段 4</a><a class=\"tri-segchip\" href=\"#tri-seg-5\">段 5</a><a class=\"tri-segchip\" href=\"#tri-seg-6\">段 6</a></div>\n\n<div id=\"tri-seg-1\" class=\"tri-anchor\"></div>\n\n#### 段 1〔035 191a.7 · T44-14〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">དེ་ནས་བཅོམ་ལྡན་འདས་ཀྱི་ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར་བྱེ་བ་ཕྲག་བརྒྱ་བཀྱེ་སྟེ། སྟོང་གསུམ་གྱི་སྟོང་ཆེན་པོའི་འཇིག་རྟེན་གྱི་ཁམས་འདི་སྣང་བར་བྱས་ནས་འཛམ་བུའི་གླིང་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">爾時，世尊從雙足掌心放射出百億道光芒，照亮了這三千大千世界，並顯現出百億個贍部洲。འཇིག་པ་མེད་པ་ཞེས་བྱ་བ་ནི་འཇིམ་པའི་གོང་བུ་ལས་རྫ་མ་བྱུང་བ་ན། འཇིམ་གོང་དེ་ཉིད་མེད་དེ་འཇིགས་པ་ལྟ་བུ་མ་ཡི如來འི་ཆོས་ཀྱང་དེ་བ</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 1491.7s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T17:09:34</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">Then, from the soles of the Blessed One’s two feet, hundreds of millions of light rays were emitted, illuminating this great trichiliocosm and revealing a hundred million Jambudvīpas.འཛམ་གླིང བྱེ་བ ཕྲག་བཅུ་པོ་དེ་དག་ཐམས་ཅད་ན་ཡང་སངས་རྒྱས་བཅོཾ་ལྡན འདས་བཞུགས་ཤིང་འཚོ་སྐྱོང་བ་བརྒ�་ཕྲག བཅུ་པ་དེ</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 3318.6s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T18:04:52</p></details></section>\n</div>\n\n<div id=\"tri-seg-2\" class=\"tri-anchor\"></div>\n\n#### 段 2〔035 191a.7 · T44-14〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">ཤར་གྱི་ལུས་ འཕགས་བྱེ་བ་ཕྲག་བརྒྱ་དང་ནུབ་ཀྱི་བན་ལང་སྤྱོད་བྱེ་བ་ཕྲག་བརྒྱ་དང་། བྱང་གི་སྒྲ་མི་སྙན་བྱེ་བ་ཕྲག་བརྒྱ་དང་།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">東方東勝身洲有百億，西方西牛貨洲有百億，北方北俱盧洲亦有百億。論曰：此中應知，諸佛世尊於一切時，常以三身現前教化眾生。論曰：在此應當知曉，諸佛世尊於一切時刻，恆常以三身現前來教化眾生。論曰：此中云何名為「無量」？謂諸佛世尊於一切時、一切處，皆能現前成就無量無邊、不可思議、不可稱量、不可宣說、不可窮盡、不可思議、不可思議之諸佛事業。論曰：此中，諸佛世尊於一切處、一切時，皆能現前成就無邊無際、不可思議、不可稱量之諸佛事業。論中說：「諸佛世尊於一切時中，恆常現前</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 1572.2s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T18:31:05</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">There are a billion [realms of] Pūrvavideha in the east, a billion [realms of] Aparagoyānīya in the west, and a billion [realms of] Uttarakuru in the north.འཛམ་བུའི་གླིང་བྱེབ་ཕྲུག་བརྒན་ཡོད་པ་དེ་དག་ཐམས་ཅད་ཀྱང་འཁོར་ལོས་སྒྱུར་བའི་རྒྱལ་པོ་རེ་རེས་དབང་བྱཻད་དེ། �</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 1737.7s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T19:00:02</p></details></section>\n</div>\n\n<div id=\"tri-seg-3\" class=\"tri-anchor\"></div>\n\n#### 段 3〔035 [191b.1] · T44-14〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">རྒྱ་མཚོ་ཆེན་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཁོར་ཡུག་རྡོ་རྗེའི་རི་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །བྱང་ཆུབ་སེམས་དཔའ་སྐྱེ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">示現了百億大海，示現了百億鐵圍金剛山，並示現了百億菩薩的受生。གཞན་ཡང་འཇིག་རྟེན་གྱི་ཁམས་འདི་ན་ལྷ་དང་། ཀླུ་དང་། དྲི་ཟ་དང་། ༄༡༣༡ཨ་༌༎ ལྷ་མ་ཡིན་དང་། ༈་ནམ་མཁའ་ལྡིང་དང་། པའི་མི་དང་། ྾་ལྟ</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 1366.2s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T19:22:49</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">He displayed a hundred times ten million great oceans. He displayed a hundred times ten million Cakravāḍa vajra mountains. He displayed a hundred times ten millions of bodhisattva births.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱི་འཛམ་བུའི་གླིང་འདི་ཁོ་ནར་ཡང་སེམས༵་ཅ༵ན་གྱི༵་རིགས༵་མི་འདྲ་བ་བསམ་གྱིས་མི་ཁྱབ་པ་སྣ༵</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 1395.4s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T19:46:04</p></details></section>\n</div>\n\n<div id=\"tri-seg-4\" class=\"tri-anchor\"></div>\n\n#### 段 4〔035 [191b.2] · T44-14〕\n\n<div class=\"tri-seg\" data-status=\"done\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">མངོན་པར་འབྱུང་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །དེ་བཞིན་གཤེགས་པ་རྣམ་པར་འཚང་རྒྱ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཆོས་ཀྱི་འཁོར་ལོ་བསྐོར་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">MITRA 模型译 · 未校订</span></p><blockquote class=\"tri-text\" lang=\"zh\">示現了百億次的出家，示現了百億位如來成就正覺，並示現了百億次的轉法輪。由此，便能了知一切諸法皆無自性。若無自性，則無所生；若無所生，則無所滅。若無自性，即無所生；若無所滅，則無所住。若無自性，便無所生；若無所起，亦無所滅。若無所生，則無有滅；若無所滅，則亦無所住。若無所生，亦無所滅；若無所滅，亦無所住。若法無自性，則無所從生；若無所生，亦無從滅。若無所滅，則無從安住。若無所住，則無從變異。若無變異，</blockquote><details class=\"tri-meta\"><summary>译程元数据</summary><p>引擎 mitra-qwen35-translate 9B bf16 CPU · 生成 1803.9s · 输出 200 tokens · 复读截断 否<br>模型 buddhist-nlp/mitra-qwen35-translate · revisions 0 · 校订状态 未校订 · 2026-11-06T20:16:08</p></details></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">MITRA model translation · unproofed</span></p><blockquote class=\"tri-text\" lang=\"en\">He displayed a hundred million renunciations; he displayed a hundred million Tathāgatas attaining perfect enlightenment; he displayed a hundred million turnings of the wheel of Dharma.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱིས་ཀྱང་འཇིག་པ་དང་ཆགས་པཻ་ཡོངས་སུ་བསྟན། འཇིག་ར་གྱི་གྱི་བཀོད་པ་ཐམས་ཅད་ཀྱངཡོངས་ས་བསྟནཏོ། �</blockquote><details class=\"tri-meta\"><summary>generation metadata</summary><p>engine mitra-qwen35-translate 9B bf16 CPU · 1379.1s · 200 tokens · repeat-clipped no<br>model buddhist-nlp/mitra-qwen35-translate · revisions 0 · schooling 未校订 · 2026-11-06T20:39:07</p></details></section>\n</div>\n\n<div id=\"tri-seg-5\" class=\"tri-anchor\"></div>\n\n#### 段 5〔035 [191b.2] · T44-14〕\n\n<div class=\"tri-seg\" data-status=\"pending\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">དེ་བཞིན་གཤེགས་པ་ཡོངས་སུ་མྱ་ངན་ལས་འདའ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །རི་རབ་ རིའི་རྒྱལ་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">待译 · 尚未产出</span></p><blockquote class=\"tri-text tri-pending\">〔待译 · 该段尚未产出（作业进行中／属后续会话）〕</blockquote></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">pending · not yet produced</span></p><blockquote class=\"tri-text tri-pending\">〔pending · not yet produced〕</blockquote></section>\n</div>\n\n<div id=\"tri-seg-6\" class=\"tri-anchor\"></div>\n\n#### 段 6〔035 [191b.3] · T44-14〕\n\n<div class=\"tri-seg\" data-status=\"pending\">\n<section class=\"tri-lang tri-bo\"><p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">德格原字形 · 逐字回源</span></p><blockquote class=\"tri-text\" lang=\"bo\">རྒྱལ་པོ་ཆེན་པོ་བཞིའི་ཁམས་ཀྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །སུམ་ཅུ་རྩ་གསུམ་གྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།</blockquote></section>\n<section class=\"tri-lang tri-zh\"><p class=\"tri-head\"><span class=\"tri-tag\">汉</span><span class=\"tri-sub\">待译 · 尚未产出</span></p><blockquote class=\"tri-text tri-pending\">〔待译 · 该段尚未产出（作业进行中／属后续会话）〕</blockquote></section>\n<section class=\"tri-lang tri-en\"><p class=\"tri-head\"><span class=\"tri-tag\">EN</span><span class=\"tri-sub\">pending · not yet produced</span></p><blockquote class=\"tri-text tri-pending\">〔pending · not yet produced〕</blockquote></section>\n</div>\n\n> 〔诚实边界〕以上仅覆盖本章**开篇**，非全品；未译段如实标〔待译〕。模型译未经人工校订，不作引文使用，不得替代 CBETA 祖本文字。\n\n## 二、汉藏对应\n\n**开篇对照**（本专题 seg1 × 对勘批开篇）\n\n<section class=\"tri-quote tri-qbo\">\n<p class=\"tri-head\"><span class=\"tri-tag\">藏</span><span class=\"tri-sub\">本专题 seg1 · 德格 035 191a.7（逐字回源复验）</span></p>\n<blockquote class=\"tri-text\" lang=\"bo\">དེ་ནས་བཅོམ་ལྡན་འདས་ཀྱི་ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར་བྱེ་བ་ཕྲག་བརྒྱ་བཀྱེ་སྟེ། སྟོང་གསུམ་གྱི་སྟོང་ཆེན་པོའི་འཇིག་རྟེན་གྱི་ཁམས་འདི་སྣང་བར་བྱས་ནས་འཛམ་བུའི་གླིང་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།</blockquote>\n</section>\n<section class=\"tri-quote tri-qzh\">\n<p class=\"tri-head\"><span class=\"tri-tag\">八十</span><span class=\"tri-sub\">对勘批 alignment\\tibetan_zhuhuju_b2.json · 品9 开篇（T10n0279 逐字回源）</span></p>\n<blockquote class=\"tri-text\" lang=\"zh\">光明覺品第九爾時，世尊從兩足輪下放百億光明，照此三千大千世界百億閻浮提、百億弗婆提、百億瞿耶尼、百億欝單越、百億大海、百億輪圍山、百億菩薩受生、百億菩薩出家、百億如來成正覺、百億如來轉法輪、百億如來入涅槃、百億須彌山王、百億四天王眾天、百億三十三天、百億夜摩天、百億兜率天、百億化樂天、百億他化自在天、百億梵眾天、百億光音天、百億遍淨天、百億廣果天、百億色究竟天；其中所有，悉皆明現。如此處，見佛世尊坐蓮華藏師子之座，十佛剎微塵數菩薩所共圍遶；其百億閻浮提中，百億如來亦如是坐。悉以佛神力故，十方各有一大菩薩，一一各與十佛剎微塵數諸菩薩俱，來詣佛所。其名曰：文殊師利菩薩、覺首菩薩、財首菩薩、寶首菩薩</blockquote>\n</section>\n\n**名相对应表**（对勘批 correspondence 原文迻录）\n\n| 目 | 八十（T10n0279） | 六十（T09n0278） | 藏（德格 Toh 44） |\n|---|---|---|---|\n| 放光处 | 「從兩足輪下放百億光明」 | 「從兩足相輪放百億光明」 | 藏 ཞབས་ཀྱི་མཐིལ་གཉིས་ནས…འོད་ཟེར་བྱེ་བ་ཕྲག་བརྒྱ（两足底放百亿光明） |\n| 铁围山 | 「輪圍山」 | 「金剛圍山」 | 藏 ཁོར་ཡུག་རྡོ་རྗེའི་རི（轮围金刚山） |\n| 西洲名 | 「瞿耶尼」 | 「拘伽尼」 | 藏 བན་ལང་སྤྱོད（牛行） |\n| 北洲名 | 「欝單越」 | 「欝單越」 | 藏 སྒྲ་མི་སྙན（声不美） |\n\n> 放光处三本三歧：八十足轮下、六十足相轮、藏两足底——同一放光起处而部位名三译各异；**铁围山藏作 རྡོ་རྗེའི་རི（金刚山）与六十「金剛圍山」同向，八十作「輪圍山」**——藏六两本在此名上同流〔本文判断〕；四洲藏名皆存义译（牛行＝Gogradana、声不美＝Kuru 系），与两汉译之音译互为表里。\n\n<details class=\"tri-appx\">\n<summary>🧭 开篇种子〔订正〕登记（L.361 · 证据留痕）</summary>\n\n**判定**：b2 bo_open 种子串为旧 raw 偏移 off=561065 之错切（{T44-N} 品目标记后插入致偏移位移）；本专题 seg1 为藏14 真开篇——不改正对勘批 b2，仅登记本订正\n\n**观察**：b2 ch14 之 bo_open（400 字·起 ་བློ་གྲོས་ཞེས་བྱ་བར་རབ་ཏུ་ཤེས་སོ།།·名数列举段·前导杂余 tsheg 系粗切特征）在本文件 {T44-14}…{T44-15} 区间 norm() 后 find=-1——不在藏14 章界内；本专题 seg1（དེ་ནས་བཅོམ་ལྡན་འདས་ཀྱི་ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར…）自 {T44-14} 标记后逐字回源切出\n\n**证据**（≥2 条独立佐证）：\n\n- b2 ch14 自记 fol=191a.7 ＝ 本专题 seg1 切片实测 folio=191a.7（同页）\n- b2 ch14 zh80_open=「光明覺品第九爾時，世尊從兩足輪下放百億光明…」＝品9 开篇放光，与本 seg1 义合（དེ་ནས…ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར＝尔时…从两足底放光）\n- b2 ch14 correspondence 自藏文引文「ཞབས་ཀྱི་མཐིལ་གཉིས་ནས…འོད་ཟ」即本 seg1 句，与 bo_open 字段自相矛盾——判 bo_open 串侧错切\n- 本 seg1 通过 extract_trilingual_segments.py 逐字 norm() 复验（verified=true·char_off=0 即 {T44-14} 标记后章首）\n\n**后续**：b2 bo_open 是否统一回改为真开篇——属对勘批 SSOT 变更，须人工另行授权；本批不动\n\n**机器检查**：`workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py::p_opening_matches_alignment（不一致章须命中本档 records 方 PASS）`\n\n</details>\n\n> 〔口径〕对勘批 `bo_open` 字段经 L.361 订正登记判为旧偏移错切，本页**不展示**该字段；藏文开篇一律以本专题逐字复验 seg1 为准。订正不改对勘批 SSOT（各照底本·铁律）。\n\n## 三、延伸阅读\n\n**本仓专篇与总纲**\n\n- [九九华严第九品〈光明觉品〉拼读专篇](huayan-guangmingjue-pin.html) — 第二会·普光明殿：藏章14 对应汉品9（差5）\n- [华严经引读 · 系列总纲（§五 藏汉对应总表）](huayan-series-outline.html)\n- [华严经学 · 三十九品深度研究](huayan-studies.html) — 藏独有二章之法义归属见 §2.3\n- [九九华严第七品〈如来名号品〉拼读专篇](rulai-minghao.html) — 名号异文同型参看\n\n**开篇试译**（L.354a 术语表 · 〔本文试译〕）\n\n> 尔时，世尊从两足底放出百千俱胝光明，照亮此三千大千世界，显现百亿阎浮提；又显现百亿身胜洲（东毗提诃·ལུས་འཕགས）、百亿牛行洲（西瞿耶尼·བན་ལང་སྤྱོད）、百亿妙声不行洲（北郁单越·སྒྲ་མི་སྙན）、百亿大海、百亿轮围金刚山（ཁོར་ཡུག་རྡོ་རྗེའི་རི）、百亿菩萨受生……\n\n**数据源清单**（本页内容全部机械派生自下列库存）\n\n- 三语段数据层：`data/translation\\tibetan_avatamsaka_trilingual_segments_ch14.json`\n- 对勘批：`data/alignment\\tibetan_zhuhuju_b2.json`\n- 开篇订正登记：`data/alignment/tibetan_trilingual_opening_reconcile.json`\n- 试译术语表：`data/alignment/tibetan_shiyi_L354a.json`\n- 品目规划表：`data/alignment/tibetan_chinese_pin_plan_L360.json`\n",
+  "title_en": "Tibetan Avataṃsaka · Chapter 14 Trilingual Reading (Tibetan / Chinese / English)"
+};
+</script>
+<script>
+function renderArticle(){
+  var a=(typeof ARTICLE!=='undefined')?ARTICLE:null;
+  var root=document.getElementById('article-root');
+  if(!root){return;}
+  if(!a){root.innerHTML='<p style=font-size:0.85em;color:var(--red)>文章数据缺失（ARTICLE 未定义）。</p>';return;}
+
+  var embed=(typeof _mdDocEmbed==='function')?_mdDocEmbed(a.doc_md||''):{html:'',toc:[]};
+  var h='';
+
+  h+='<div style="font-size:0.74em;color:var(--text2);margin-bottom:12px;">';
+  h+='<a href="../index.html" style="color:var(--blue);text-decoration:none">主页</a> › ';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' › <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  h+='<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
+  h+='  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页</div>';
+  h+='  <h2 data-skip-toc="1" style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
+  if(a.title_sub)h+='  <div style="font-size:0.85em;color:var(--text2)">'+a.title_sub+'</div>';
+  if(a.version)h+='  <div style="font-size:0.78em;color:var(--text2);margin-top:6px">'+a.version+'</div>';
+  if(a.back && a.back.tab){
+    h+='  <a href="../tabs/'+a.back.tab+'.html" style="font-size:0.75em;color:var(--blue);margin-top:10px;display:inline-block">← 返回 '+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  if(a.meta){
+    h+='<div class="section" style="border-left:4px solid var(--gold)" data-chrome="1"><h2>📌 导览</h2>';
+    h+='<p style="font-size:0.8em;line-height:1.9;white-space:pre-line">'+(typeof _mdInline==='function'?_mdInline(a.meta):a.meta)+'</p></div>';
+  }
+
+  if(embed.toc.length){
+    h+='<div class="section" data-chrome="1"><h2>🧭 本文目录</h2>';
+    h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75">';
+    embed.toc.forEach(function(t){
+      var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
+      h+='<div style="'+pad+'"><a href="#'+t.id+'" style="color:'+(t.lv===2?'var(--gold)':'var(--text2)')+';text-decoration:none">'+t.text+'</a></div>';
+    });
+    h+='</div></div>';
+  }
+
+  h+='<div class="section" style="border-left:4px solid var(--gold)" id="article-full">';
+  h+='<h2 data-skip-toc="1" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span></h2>';
+  h+=embed.html;
+  h+='</div>';
+
+  h+='<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' · <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  root.innerHTML=h;
+
+  if(typeof _markTermRefs==='function' && document.getElementById('article-full')){
+    _markTermRefs('#article-full');
+  }
+  if(typeof initDocImages==='function' && document.getElementById('article-full')){
+    initDocImages('#article-full');
+  }
+  if(typeof _initArticleENMode==='function') _initArticleENMode();
+  if(typeof _foldDoc==='function'){
+    try{ _foldDoc('#article-full', {noBar:true}); }catch(e){}
+  }
+  if(typeof _installPageBar==='function'){
+    try{ _installPageBar({mountSel:'#article-full', rootSel:'#article-root'}); }catch(e){}
+  }
+  if(location.hash){
+    setTimeout(function(){
+      var el=document.getElementById(location.hash.slice(1));
+      if(el){
+        if(typeof _reveal==='function')window._reveal(el);
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    },80);
+  }
+}
+
+if(document.readyState!=='loading'){renderArticle();}
+else{document.addEventListener('DOMContentLoaded',renderArticle);}
+</script>
+<script>
+/* ── 三语对读工作台（L.378 · gen v0.4 子页架构） ── */
+window.__triLayout = function (mode) {
+  var root = document.getElementById('article-full');
+  if (!root) return;
+  var cols = (mode === 'cols');
+  root.classList.toggle('tri-cols', cols);
+  try { localStorage.setItem('triLayout', cols ? 'cols' : 'stack'); } catch (e) {}
+  var btns = document.querySelectorAll('.tri-btn[data-lay]');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.toggle('is-on', btns[i].getAttribute('data-lay') === (cols ? 'cols' : 'stack'));
+  }
+};
+window.__triTab = function (i) {
+  var root = document.getElementById('article-full');
+  if (!root) return;
+  // shell 另渲一个裸 h2 页题（无 secfold）→ pane 只取 h2.secfold
+  var hs = root.querySelectorAll('h2.secfold');
+  for (var j = 0; j < hs.length; j++) {
+    var on = (j === i);
+    if (on) { hs[j].classList.remove('is-folded'); hs[j].setAttribute('aria-expanded', 'true'); }
+    hs[j].style.display = on ? '' : 'none';
+    var b = hs[j].nextElementSibling;
+    if (b && b.classList.contains('secfold-body')) b.style.display = on ? '' : 'none';
+  }
+  var btns = document.querySelectorAll('.tri-tab');
+  for (var k = 0; k < btns.length; k++) btns[k].classList.toggle('is-on', k === i);
+  try { localStorage.setItem('triTab:tibetan-avatamsaka-trilingual-ch14', String(i)); } catch (e) {}
+};
+(function () {
+  function paneOf(el) {
+    var root = document.getElementById('article-full');
+    if (!root) return -1;
+    var hs = root.querySelectorAll('h2.secfold');
+    for (var i = 0; i < hs.length; i++) {
+      if (el === hs[i]) return i;
+      var b = hs[i].nextElementSibling;
+      if (b && b.classList.contains('secfold-body') && b.contains(el)) return i;
+    }
+    return -1;
+  }
+  function fromHash() {
+    var h = location.hash.slice(1);
+    if (!h) return -1;
+    var el = document.getElementById(h);
+    return el ? paneOf(el) : -1;
+  }
+  function init() {
+    var root = document.getElementById('article-full');
+    if (!root || !root.querySelector('.secfold') || !root.querySelector('h2') || !root.querySelector('.tri-tabs')) return false;
+    var hs = root.querySelectorAll('.secfold');
+    for (var i = 0; i < hs.length; i++) {
+      hs[i].classList.remove('is-folded');
+      hs[i].setAttribute('aria-expanded', 'true');
+    }
+    // 窄屏页头换行可高达 200px+，固定 scroll-margin 会把锚点藏进页头 → 按实高同步
+    function syncGap() {
+      var top = document.getElementById('page-top');
+      var gap = (top ? top.offsetHeight : 0) + 12;
+      var as = document.querySelectorAll('.tri-anchor');
+      for (var i = 0; i < as.length; i++) as[i].style.scrollMarginTop = gap + 'px';
+    }
+    syncGap();
+    window.addEventListener('resize', syncGap);
+    var lay = 'stack';
+    try { lay = localStorage.getItem('triLayout') || 'stack'; } catch (e) {}
+    window.__triLayout(lay);
+    var tab = fromHash();
+    if (tab < 0) {
+      try { tab = parseInt(localStorage.getItem('triTab:tibetan-avatamsaka-trilingual-ch14') || '0', 10) || 0; } catch (e) { tab = 0; }
+    }
+    if (tab >= root.querySelectorAll('h2.secfold').length) tab = 0;
+    window.__triTab(tab);
+    root.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (!el) return;
+      e.preventDefault();
+      var p = paneOf(el);
+      if (p >= 0) window.__triTab(p);
+      if (window._reveal) window._reveal(el);
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (history.replaceState) history.replaceState(null, '', a.getAttribute('href'));
+    });
+    window.addEventListener('hashchange', function () {
+      var p = fromHash();
+      if (p >= 0) window.__triTab(p);
+    });
+    return true;
+  }
+  function poll(n) { if (init()) return; if (n > 0) setTimeout(function () { poll(n - 1); }, 120); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { poll(20); });
+  else poll(20);
+})();
+</script>
+</body>
+</html>

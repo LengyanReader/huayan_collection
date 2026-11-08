@@ -771,12 +771,43 @@ P25 十定逐种全引（27.2K）→ P26 十通（3.6K）→ P27 十忍（5.7K�
 续译之前先把 `tibetan-avatamsaka-trilingual.html` 设计为可承载 45 章逐步填充的对读工作台：读经为主体、工程为附录、章章有位、段段有状态。
 
 ### DoD
-- [ ] 45 章导航（四组分组·进度徽章·已切段章锚点可跳转）。
-- [ ] 三语段卡片化：藏→汉→英视觉分层、状态徽章（已试译/待译）、元信息折叠；堆叠⇄并排切换（窄屏自动堆叠·localStorage 记忆）。
-- [ ] 工程台账（体例/结构事实/45章品目表/里程碑门禁/复现/未竟）收折叠附录；品目表「三语进度」列格式不变（门禁所察）。
-- [ ] 门禁观察器适配新结构（不变量不降格：段序藏→汉→英＋未校订标注）。
-- [ ] 六门禁绿＋浏览器实测（导航跳转/切换/折叠/藏文渲染/0 JS 异常）留证据。
-- [ ] PROGRESS/心跳/ledger 登记＋显式路径 commit（不 push）。
+- [x] 45 章导航（四组分组·进度徽章·已切段章锚点可跳转）。
+- [x] 三语段卡片化：藏→汉→英视觉分层、状态徽章（已试译/待译）、元信息折叠；堆叠⇄并排切换（窄屏自动堆叠·localStorage 记忆）。
+- [x] 工程台账（体例/结构事实/45章品目表/里程碑门禁/复现/未竟）收折叠附录；品目表「三语进度」列格式不变（门禁所察）。
+- [x] 门禁观察器适配新结构（不变量不降格：段序藏→汉→英＋未校订标注）。
+- [x] 六门禁绿＋浏览器实测（导航跳转/切换/折叠/藏文渲染/0 JS 异常）留证据。
+- [x] PROGRESS/心跳/ledger 登记＋显式路径 commit（不 push）。（L.377 收口 commit 53726798）
 
 ### First move
 改造 `workspace/tibetan-avatamsaka-translation/tools/gen_trilingual_article.py`（导航＋卡片＋附录＋注入 CSS/JS），同步 `check_trilingual_gates.py` 段序观察器。
+
+---
+
+## L.378 藏译三语专题·子页架构与对应文献联通批（2026-11-08）
+
+### Confirmed reading（用户三项指示·已授权「规划后就可以开始工作」）
+- ①全部内容庞大 → **子页＋子 tab＋相关导航**，便于后续查阅；②**参考并增补库内相关文献**（华严经学·三十九品深度研究等）——汉译华严／其他经典／藏译华严的对应须**探索、调研、梳理**；③好好规划后动工（本节即规划）。
+- **hard**：藏文逐字回源不手打（对应素材藏文一律机械取自语料 JSON）· 模型译必标〔未校订〕· 页面全量机械派生 · 自包含无外部资源 · **子页不注册 → 时间带必须为空**（verify_demo 不变量③）· 六门禁绿方称完成 · 不 push。
+- **soft**：tab 视觉沿 tri-* 色系（藏金/汉青/英紫）· 对应内容逐条标来源 · 编辑性导读文字与数据层引文分层。
+
+### 架构（调研实测约束·2026-11-08）
+- `build.py`：`skip_html` 页不重写、未注册 HTML 不删除 → **章子页＝非注册静态文件**，hub 为唯一注册入口（index 不膨胀）。
+- `verify_demo`：未注册页须过通用六查（DOCTYPE/收尾/`var ARTICLE`/`doc_md`/`renderArticle`/common.css）＋**时间带为空** → 子页同 shell 生成、`art-updated` 留空。
+- 渲染器：**h2 节＝tab 面板**（`_foldDoc` 包 `.secfold-body`，JS 按面板显隐）；tab 条＝raw div passthrough（内无嵌套 div）；页面 JS 注入 shell `</body>` 前；锚点 scroll-margin 按页头实高同步（L.377 syncGap 沿用）。
+
+### 页面结构
+- **hub**（注册页 v0.4）：四 tab——**总览**（实测统计＋已开章卡入口＋里程碑进度）／**章目导航**（45 芯片四组·已覆盖章链接子页）／**对应研究**（对应律四条＋藏汉同异总表 same6/diff9＋藏独有二品〔深度研究 §2.3 逐字节选〕＋前段不平行〔L.352 finding〕＋库存文献地图）／**工程台账**（原五折叠照迁）。
+- **章子页** ch01/14/15（未注册）：面包屑＋章题（藏章N·品X·卷叶·进度）＋前后章/返回 hub 导航；三 tab——**三语对读**（toolbar＋6 段卡片照迁）／**汉藏对应**（ch14/15＝b2 对照表＋释读＋〔订正〕记录；ch1＝openings-demo exemplar 三本对照＋collation findings）／**延伸阅读**（P 专篇/总纲§五/深度研究链接＋shiyi〔本文试译〕＋数据集清单）。
+
+### 素材源（全部库存·机械提取·0 手填藏文）
+- `tibetan_zhuhuju_b2.json` ch14/15 correspondence＋shidu（bo_open 错切字段**不展示**，订正记录另列）；`avatamsaka-openings-demo.json` exemplar（ch1）；`tibetan_chinese_tongyi_L354.json` same/diff；`tibetan_shiyi_L354a.json` ch14/15；`tibetan_trilingual_opening_reconcile.json` records；`华严经学_三十九品深度研究.md` §2.3 两 bullet 逐字提取；`tibetan_ch_map_L352.json` finding；pin_plan/roadmap/segments 照旧。
+
+### DoD
+- [x] hub 四 tab＋章子页三 tab 全部真实内容，无占位；对应内容逐条标来源。
+- [x] 导航全通：hub 芯片→子页；子页面包屑/前后章/返回 hub；段锚点跳转不藏页头。
+- [x] 门禁适配（doc_md 多页采集·selfcontained 扩子页）不变量不降格；子页时间带为空过 verify_demo。
+- [x] 六门禁绿＋浏览器实测（每 tab/每页/窄屏/0 console 错误）留证据。
+- [x] PROGRESS/心跳/ledger 登记＋显式路径 commit（不 push）。
+
+### First move
+扩展 `gen_trilingual_article.py` 为多页生成器（hub＋3 章子页共用 shell/CSS/JS 注入管线），对应素材机械提取函数先行。

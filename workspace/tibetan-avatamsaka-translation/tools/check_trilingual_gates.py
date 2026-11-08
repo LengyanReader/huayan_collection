@@ -19,6 +19,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 RM = 'data/translation/tibetan_avatamsaka_trilingual_roadmap.json'
 PLAN = 'data/alignment/tibetan_chinese_pin_plan_L360.json'
 PAGE = 'web/demo/articles/tibetan-avatamsaka-trilingual.html'
+PAGE_GLOB = 'web/demo/articles/tibetan-avatamsaka-trilingual*.html'
 YAMLREG = 'data/translation/standalone_articles.yaml'
 ART_ID = 'tibetan-avatamsaka-trilingual'
 SEG_GLOB = 'data/translation/tibetan_avatamsaka_trilingual_segments*.json'
@@ -85,10 +86,14 @@ def p_plan_totals_closed():
 
 
 def p_page_trilingual_order():
-    dm = CTX['doc_md']
+    dm = CTX.get('all_doc_md')
     if dm is None:
         return 'PENDING', '页面未生成'
-    # v0.3 对读工作台：段标题 #### 段 n，卡片内 tri-bo→tri-zh→tri-en 三色块依序
+    # v0.4 子页架构：三语段在章子页（#### 段 n，卡片内 tri-bo→tri-zh→tri-en 三色块依序）
+    missing = [tc for tc in CTX['segs']
+               if not glob.glob('web/demo/articles/%s-ch%02d.html' % (ART_ID, tc))]
+    if missing:
+        return 'FAIL', '章子页缺失（数据层有段而页面未生成）：%s' % missing
     blocks = re.findall(r'#### 段 \d+[\s\S]*?(?=\n#### 段 \d+|\n### |\n## |\Z)', dm)
     if not blocks:
         return 'FAIL', '页面对读区无三语段'
@@ -102,7 +107,7 @@ def p_page_trilingual_order():
                 or ('model translation' in b and 'unproofed' not in b)]
     if unmarked:
         return 'FAIL', '模型译缺〔未校订〕标注：%s' % unmarked
-    return 'PASS', '%d 个三语段序正确·模型译标注齐全' % len(blocks)
+    return 'PASS', '%d 个三语段序正确·模型译标注齐全（hub＋%d 章子页合扫）' % (len(blocks), len(CTX['segs']))
 
 
 def p_registered_skip_html():
@@ -228,15 +233,17 @@ def p_unique_chapters_unpaired():
 
 
 def p_page_selfcontained():
-    if not glob.glob(PAGE):
+    files = sorted(glob.glob(PAGE_GLOB))
+    if not files:
         return 'PENDING', '页面未生成'
-    h = io.open(PAGE, encoding='utf-8').read()
-    ext = re.findall(r'(?:src|href)="(https?://[^"]+)"', h)
-    if ext:
-        return 'FAIL', '存在外部依赖资源：%s' % ext[:3]
-    if '藏' not in h or not re.search(r'var ARTICLE = \{', h):
-        return 'FAIL', '页面无 ARTICLE 块'
-    return 'PASS', '自包含（仅站内相对路径）· ARTICLE 在位'
+    for fn in files:
+        h = io.open(fn, encoding='utf-8').read()
+        ext = re.findall(r'(?:src|href)="(https?://[^"]+)"', h)
+        if ext:
+            return 'FAIL', '%s 存在外部依赖资源：%s' % (fn.split('/')[-1], ext[:3])
+        if '藏' not in h or not re.search(r'var ARTICLE = \{', h):
+            return 'FAIL', '%s 页面无 ARTICLE 块' % fn.split('/')[-1]
+    return 'PASS', '%d 页均自包含（仅站内相对路径）· ARTICLE 在位' % len(files)
 
 
 def p_cost_table_grounded():
@@ -313,6 +320,20 @@ def page_doc_md():
     return json.loads(m.group(1)).get('doc_md', '')
 
 
+def all_pages_doc_md():
+    """hub＋全部章子页之 doc_md 合扫（三语段序门禁所系；品目表/藏独有门禁仍只看 hub）。"""
+    files = sorted(glob.glob(PAGE_GLOB))
+    if not files:
+        return None
+    out = []
+    for fn in files:
+        h = io.open(fn, encoding='utf-8').read()
+        m = re.search(r'var ARTICLE = (\{.*?\n\});', h, re.S)
+        if m:
+            out.append(json.loads(m.group(1)).get('doc_md', ''))
+    return '\n\n'.join(out) if out else None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--milestone', default='M0', help='M0…M9 或 all')
@@ -322,7 +343,7 @@ def main():
         return 1
     rm = jload(RM)
     CTX.update(plan=jload(PLAN), segs=segs_by_chapter(), align=alignment_open(),
-               doc_md=page_doc_md())
+               doc_md=page_doc_md(), all_doc_md=all_pages_doc_md())
     blockers = 0
     for ms in rm['milestones']:
         if a.milestone != 'all' and ms['id'] != a.milestone:
