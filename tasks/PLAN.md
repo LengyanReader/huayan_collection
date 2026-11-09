@@ -829,3 +829,88 @@ P25 十定逐种全引（27.2K）→ P26 十通（3.6K）→ P27 十忍（5.7K�
 - [ ] ch15 验收批：重生＋六门禁＋浏览器抽查。
 - [x] L.379续 PROGRESS/心跳/ledger 登记＋显式路径 commit（不 push）。
 - [ ] ch15 验收批登记＋commit（不 push）。
+## L.380 大藏经对应研究·程序化核验＋独立文章批（2026-11-09）
+
+### 目标
+把种子《华严经与大藏经对应研究》从「报告」升为「可回源的独立文章」：先以编程管线复验，再以数据注入文章，最后注册上站。用户指示：**以编程方法做**，地毯式梳理、增补与核对。
+
+### 复验产物
+- `scripts/verify_dazang_mapping.py`：CBETA GitHub `T280–T309`＋本地 `T278/T279/T293`＋中文维基结构表＋84000 `Toh 44-31`＋本地目录；输出 JSON 与核验报告。
+- `data/research/dazang_mapping_verification.json`：10 条台账·30 部题录·39 行 60↔80 对照·28 部类区间。
+- `docs/草稿/大藏经对应研究_核验报告.md`。
+- `data/references/cbeta/T10n0281–0309.xml`（29 部新增；T280 原已有）。
+
+### 关键勘正
+- 「六十阙十品」→ **阙一品（十定）**；**十明＝十通**（T09n0278 品 23 首句／T10n0279 品 28 首句）。
+- T279 译者：卷首「製」序非译者；实叉难陀。
+- 部类 26 → **28 区间**（含 supplements 2185–2700、2701–2731）。
+
+### 文章
+- `docs/经学文献/华严经与大藏经对应研究.md`：19 节·13 图·7 数据表·约 1.8 万汉字。
+- `scripts/build_dazang_article.py`：幂等注入（start/end 标记），改 JSON 重跑即可同步。
+- 注册 `standalone_articles.yaml`：`id=huayan-dazang-mapping`，`order=46`。
+
+### DoD
+- [x] 30/30 题录解析；39/39、34/34 对照；0 解析冲突。
+- [x] 4 条新勘落文（六十阙一／十明=十通／T279 译者／部类 28）。
+- [x] 文章 17 节＋13 图＋7 表；无裸占位。
+- [x] 注册＋build **85 files**；新页 229KB。
+- [x] 六门禁：`verify_demo` ALL PASSED；`test_pipeline` ALL PASSED；`check.py` OK。
+- [ ] 梵巴藏 P1（DharmaNexus）／注疏复算／18 未决 → 后续批。
+
+### First move（下一批）
+P0 收尾：T300/T301↔Toh 187、T298↔藏 32、T281 三章、T309 归属；随后 P1 的 18 个种子。
+### L.380续 P0 收尾＋文章门禁（2026-11-09）
+- **P0 实测（A，脚本计算）**：
+  - T300/T301 与八十品 33 的 12 字共享 = **0／4**，二者互享 **86** → 非字面别译，属同一异译组。
+  - T298 与八十品 36 仅 2；84000 章题 *The Teaching of Samantabhadra* → 对应**藏 32**，非品 36。
+  - T281 品 3 题「十地品」，内容起忉利天（十住处），与品 15／26 = **0／0**；校注仍挂 279(15) → 「题名—内容—校注」错位。
+  - T309 与品 15 = **0**，法藏判语「非十住品亦非十地品」同 → 非十住别译。
+- **文章**：新增 §12.6「P0 收尾」＋脚本生成的检查表；修订 §3.3／§3.4／§14；台账 14 条。
+- **新门禁**：`scripts/verify_dazang_article.py` —— doc_md 与源 md 相等、13 图顺序、39 行对照、30 部题录、28 区间、14 台账、关键事实、无未解占位／undefined／NaN。
+- **DoD**：
+  - [x] P0 四项字面层收尾并落文。
+  - [x] 台账 14 条；核验报告含 P0 节。
+  - [x] 新门禁全过；`verify_demo`／`test_pipeline`／`check.py` 全绿。
+  - [ ] P1 梵巴藏内容级（18 种子）仍待外部语料。
+### L.381 关系网络图批（2026-11-09）
+- **图模型**：类型化多重图，9 类节点（version／pin／tib／text／cluster／commentary／work／canon_class／hub），11 类边（contains／contains_60／parallel／translation／related／belongs／unique／survives／sums_to／cites／cites_class），每条边带 `grade`。
+- **规模**：**148 节点／289 边**，0 悬空；39 pins、45 tib、29 texts、14 布局簇（12 内容簇＋初会六品＋藏文独有）。
+- **三视图**：
+  - 图7 分层拓扑：版本括号 → 39 品 → 45 藏章 → 29 异译；簇色带；十定红圈；藏 11/32 红圈。
+  - 图8 簇—品—异译力导向：确定性布局＋碰撞松弛（最小间距 12.5px），无随机种子。
+  - 图9 注疏引用二部图：四部注疏 → 合计 → 前五经论／六部类（种子 B）。
+- **门禁增强**：13 图顺序＋SVG XML 良构＋图完整性（节点/边计数、0 悬空、39 品全归簇）。
+- **DoD**：
+  - [x] 图 JSON 与三图落文（§4.5）。
+  - [x] 13 图 XML 全良构；图完整性 0 悬空。
+  - [x] 六门禁绿（verify_demo／test_pipeline／check／article）。
+  - [ ] 图上的 `related` 虚线仍需 P1 梵藏对读确认。
+### L.382 交互图页批（2026-11-09）
+- **用户指示**：better to use dynamic visuals。
+- **页面**：`web/demo/articles/huayan-dazang-graph.html`（`skip_html`，54 KB，自包含 Canvas，无 CDN）。
+- **功能**：分层／力导向／引用三模式；图层与边型过滤；搜索；标签开关；适配／重置；滚轮缩放；背景拖拽与节点拖拽；hover 邻居高亮＋tooltip；点击节点显示类型／编号／相邻边并跳转。
+- **实现**：`scripts/build_dazang_graph_page.py` 读取 `huayan_dazang_graph.json` 内嵌；渲染器纯 vanilla JS。
+- **注册**：`huayan-dazang-graph`，order 47，`skip_html: true`，时间带 `2026-11-09`。
+- **门禁**：article gate 校验交互页存在／≥20KB／关键串／无外链／文章有链接；`verify_demo` skip 入口通过。
+- **DoD**：
+  - [x] 交互页落盘＋注册＋索引。
+  - [x] 三模式＋过滤＋搜索＋缩放拖拽＋详情全部实现。
+  - [x] JS `node --check` 通过；article gate／verify_demo 全绿。
+  - [ ] 移动端手势（双指缩放）可后续补。
+### L.383 交互图内嵌融合批（2026-11-09）
+- **用户指示**：融合进主文章，不做独立文章；用 vibe coding 快速迭代。
+- **删除**：独立页 `huayan-dazang-graph.html`、registry 条目、index 入口、独立页生成器。
+- **新增**：`web/demo/src/dazang_graph_inline.js`；`build.py` 对 `id=huayan-dazang-mapping` 注入 `DAZANG_GRAPH`＋渲染器（排在 `article.js` 之后）。
+- **文章**：§4.5 插入 `<div id="dazang-graph-inline"></div>`；「展开」按钮全屏；`MutationObserver` 在重渲染后自动重挂载。
+- **门禁**：article gate 改为内嵌检查（容器／数据／渲染器关键串／无外链／无独立页链接）；build **85 files**；页面 402KB。
+- **DoD**：
+  - [x] 独立页与注册全部移除；index 不再有入口。
+  - [x] 内嵌图在文章中挂载；三模式／过滤／搜索／缩放／详情保留。
+  - [x] `node --check`、article gate、verify_demo、test_pipeline、check 全绿。
+### L.384 内嵌图 ResizeObserver 循环修复（2026-11-09）
+- **症状**：浏览器报 `JS ERROR: ResizeObserver loop completed with undelivered notifications`（文章页 `#dazang-graph-inline`）。
+- **原因**：`ResizeObserver(() => draw()).observe(stage)` 同步调用 `draw()`，`draw()` 改 `canvas.width/height`，触发同一帧内再次观测 → Chrome 的循环告警。
+- **修复**：回调改为 `requestAnimationFrame` 合并；以 `stage.clientWidth × clientHeight` 为 guard，尺寸未变则不重绘；无 RO 时退化为 `window.resize`。
+- **防回归**：article gate 新增两条检查——禁止 `new ResizeObserver(function () { draw(); })`，必须出现 `requestAnimationFrame`。
+- **验证**：`node --check` OK；article gate ALL PASSED；`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK；build **85 files**。

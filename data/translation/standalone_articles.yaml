@@ -902,6 +902,19 @@ others:
   back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
   views: [avatamsaka-studies]
 
+- id: huayan-dazang-mapping
+  group: 经论茶歇
+  family: huayan_xidu
+  order_in_group: 46
+  icon: 🗺️
+  title: 华严经与大藏经对应研究
+  title_en: 'Mapping the Buddhāvataṃsaka onto the Chinese and Tibetan Canons'
+  title_sub: v1.0 · 一经四貌（T278/T279/T293/Toh 44）· 五层坐标 · 32 部逐部题录复算 · 十二簇 · 六十↔八十勘正「阙十品」· 十三幅信息图 · 内嵌交互关系图
+  updated_at: '2026-11-09'
+  doc: docs/经学文献/华严经与大藏经对应研究.md
+  back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
+  views: [avatamsaka-studies]
+
 group_order:
 - key: 经论茶歇
   icon: 📖

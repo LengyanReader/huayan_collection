@@ -1,0 +1,3036 @@
+{
+  "meta": {
+    "source": "dazang_mapping_verification.json + tibetan-derge-toc.json",
+    "access_date": "2026-11-09"
+  },
+  "nodes": [
+    {
+      "id": "V:T278",
+      "type": "version",
+      "label": "T278 晋译",
+      "sub": "60 卷 · 34 品"
+    },
+    {
+      "id": "V:T279",
+      "type": "version",
+      "label": "T279 唐译",
+      "sub": "80 卷 · 39 品"
+    },
+    {
+      "id": "V:T293",
+      "type": "version",
+      "label": "T293 四十华严",
+      "sub": "40 卷 · 入法界"
+    },
+    {
+      "id": "V:Toh44",
+      "type": "version",
+      "label": "Toh 44 藏译",
+      "sub": "45 章 · 115 包"
+    },
+    {
+      "id": "V:Sanskrit",
+      "type": "version",
+      "label": "梵本",
+      "sub": "全经佚 · 四单品存"
+    },
+    {
+      "id": "P:1",
+      "type": "pin",
+      "label": "1 世主妙嚴品",
+      "assembly": "(初會) 菩提場 （寂滅道場）",
+      "p60": "世間淨眼品"
+    },
+    {
+      "id": "P:2",
+      "type": "pin",
+      "label": "2 如來現相品",
+      "assembly": "(初會) 菩提場 （寂滅道場）",
+      "p60": "盧舍那佛品"
+    },
+    {
+      "id": "P:3",
+      "type": "pin",
+      "label": "3 普賢三昧品",
+      "assembly": "(初會) 菩提場 （寂滅道場）",
+      "p60": "盧舍那佛品"
+    },
+    {
+      "id": "P:4",
+      "type": "pin",
+      "label": "4 世界成就品",
+      "assembly": "(初會) 菩提場 （寂滅道場）",
+      "p60": "盧舍那佛品"
+    },
+    {
+      "id": "P:5",
+      "type": "pin",
+      "label": "5 華藏世界品",
+      "assembly": "(初會) 菩提場 （寂滅道場）",
+      "p60": "盧舍那佛品"
+    },
+    {
+      "id": "P:6",
+      "type": "pin",
+      "label": "6 毗盧遮那品",
+      "assembly": "(初會) 菩提場 （寂滅道場）",
+      "p60": "盧舍那佛品"
+    },
+    {
+      "id": "P:7",
+      "type": "pin",
+      "label": "7 如來名號品",
+      "assembly": "(二會) 普光明殿",
+      "p60": "如來名號品"
+    },
+    {
+      "id": "P:8",
+      "type": "pin",
+      "label": "8 四聖諦品",
+      "assembly": "(二會) 普光明殿",
+      "p60": "四諦品"
+    },
+    {
+      "id": "P:9",
+      "type": "pin",
+      "label": "9 光明覺品",
+      "assembly": "(二會) 普光明殿",
+      "p60": "如來光明覺品"
+    },
+    {
+      "id": "P:10",
+      "type": "pin",
+      "label": "10 菩薩問明品",
+      "assembly": "(二會) 普光明殿",
+      "p60": "菩薩明難品"
+    },
+    {
+      "id": "P:11",
+      "type": "pin",
+      "label": "11 淨行品",
+      "assembly": "(二會) 普光明殿",
+      "p60": "淨行品"
+    },
+    {
+      "id": "P:12",
+      "type": "pin",
+      "label": "12 賢首品",
+      "assembly": "(二會) 普光明殿",
+      "p60": "賢首菩薩品"
+    },
+    {
+      "id": "P:13",
+      "type": "pin",
+      "label": "13 昇須彌山頂品",
+      "assembly": "(三會) 忉利天宮",
+      "p60": "佛昇須彌頂品"
+    },
+    {
+      "id": "P:14",
+      "type": "pin",
+      "label": "14 須彌山頂上偈讚品",
+      "assembly": "(三會) 忉利天宮",
+      "p60": "菩薩雲集妙勝殿上說偈品"
+    },
+    {
+      "id": "P:15",
+      "type": "pin",
+      "label": "15 十住品",
+      "assembly": "(三會) 忉利天宮",
+      "p60": "菩薩十住品"
+    },
+    {
+      "id": "P:16",
+      "type": "pin",
+      "label": "16 梵行品",
+      "assembly": "(三會) 忉利天宮",
+      "p60": "梵行品"
+    },
+    {
+      "id": "P:17",
+      "type": "pin",
+      "label": "17 初發心功德品",
+      "assembly": "(三會) 忉利天宮",
+      "p60": "初發心菩薩功德品"
+    },
+    {
+      "id": "P:18",
+      "type": "pin",
+      "label": "18 明法品",
+      "assembly": "(三會) 忉利天宮",
+      "p60": "明法品"
+    },
+    {
+      "id": "P:19",
+      "type": "pin",
+      "label": "19 昇夜摩天宮品",
+      "assembly": "(四會) 夜摩天宮",
+      "p60": "佛昇夜摩天宮自在品"
+    },
+    {
+      "id": "P:20",
+      "type": "pin",
+      "label": "20 夜摩宮中偈讚品",
+      "assembly": "(四會) 夜摩天宮",
+      "p60": "夜摩天宮菩薩說偈品"
+    },
+    {
+      "id": "P:21",
+      "type": "pin",
+      "label": "21 十行品",
+      "assembly": "(四會) 夜摩天宮",
+      "p60": "功德華聚菩薩十行品"
+    },
+    {
+      "id": "P:22",
+      "type": "pin",
+      "label": "22 十無盡藏品",
+      "assembly": "(四會) 夜摩天宮",
+      "p60": "菩薩十無盡藏品"
+    },
+    {
+      "id": "P:23",
+      "type": "pin",
+      "label": "23 昇兜率天宮品",
+      "assembly": "(五會) 兜率天宮",
+      "p60": "如來昇兜率天宮一切寶殿品"
+    },
+    {
+      "id": "P:24",
+      "type": "pin",
+      "label": "24 兜率宮中偈讚品",
+      "assembly": "(五會) 兜率天宮",
+      "p60": "兜率天宮菩薩雲集讚佛品"
+    },
+    {
+      "id": "P:25",
+      "type": "pin",
+      "label": "25 十迴向品",
+      "assembly": "(五會) 兜率天宮",
+      "p60": "金剛幢菩薩十迴向品"
+    },
+    {
+      "id": "P:26",
+      "type": "pin",
+      "label": "26 十地品",
+      "assembly": "(六會) 他化自在天宮",
+      "p60": "十地品"
+    },
+    {
+      "id": "P:27",
+      "type": "pin",
+      "label": "27 十定品",
+      "assembly": "(七會)  普光明殿",
+      "p60": ""
+    },
+    {
+      "id": "P:28",
+      "type": "pin",
+      "label": "28 十通品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "十明品"
+    },
+    {
+      "id": "P:29",
+      "type": "pin",
+      "label": "29 十忍品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "十忍品"
+    },
+    {
+      "id": "P:30",
+      "type": "pin",
+      "label": "30 阿僧祇品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "心王菩薩問阿僧祇品"
+    },
+    {
+      "id": "P:31",
+      "type": "pin",
+      "label": "31 壽量品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "壽命品"
+    },
+    {
+      "id": "P:32",
+      "type": "pin",
+      "label": "32 諸菩薩住處品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "菩薩住處品"
+    },
+    {
+      "id": "P:33",
+      "type": "pin",
+      "label": "33 佛不思議法品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "佛不思議法品"
+    },
+    {
+      "id": "P:34",
+      "type": "pin",
+      "label": "34 如來十身相海品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "如來相海品"
+    },
+    {
+      "id": "P:35",
+      "type": "pin",
+      "label": "35 隨好光明功德品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "佛小相光明功德品"
+    },
+    {
+      "id": "P:36",
+      "type": "pin",
+      "label": "36 普賢行品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "普賢菩薩行品"
+    },
+    {
+      "id": "P:37",
+      "type": "pin",
+      "label": "37 如來出現品",
+      "assembly": "(七會)  普光明殿",
+      "p60": "寶王如來性起品"
+    },
+    {
+      "id": "P:38",
+      "type": "pin",
+      "label": "38 離世間品",
+      "assembly": "(八會)  普光明殿",
+      "p60": "離世間品"
+    },
+    {
+      "id": "P:39",
+      "type": "pin",
+      "label": "39 入法界品",
+      "assembly": "(九會)  逝多林 重閣講堂",
+      "p60": "入法界品"
+    },
+    {
+      "id": "T:1",
+      "type": "tib",
+      "label": "藏1",
+      "vol": "035"
+    },
+    {
+      "id": "T:2",
+      "type": "tib",
+      "label": "藏2",
+      "vol": "035"
+    },
+    {
+      "id": "T:3",
+      "type": "tib",
+      "label": "藏3",
+      "vol": "035"
+    },
+    {
+      "id": "T:4",
+      "type": "tib",
+      "label": "藏4",
+      "vol": "035"
+    },
+    {
+      "id": "T:5",
+      "type": "tib",
+      "label": "藏5",
+      "vol": "035"
+    },
+    {
+      "id": "T:6",
+      "type": "tib",
+      "label": "藏6",
+      "vol": "035"
+    },
+    {
+      "id": "T:7",
+      "type": "tib",
+      "label": "藏7",
+      "vol": "035"
+    },
+    {
+      "id": "T:8",
+      "type": "tib",
+      "label": "藏8",
+      "vol": "035"
+    },
+    {
+      "id": "T:9",
+      "type": "tib",
+      "label": "藏9",
+      "vol": "035"
+    },
+    {
+      "id": "T:10",
+      "type": "tib",
+      "label": "藏10",
+      "vol": "035"
+    },
+    {
+      "id": "T:11",
+      "type": "tib",
+      "label": "藏11",
+      "vol": "035"
+    },
+    {
+      "id": "T:12",
+      "type": "tib",
+      "label": "藏12",
+      "vol": "035"
+    },
+    {
+      "id": "T:13",
+      "type": "tib",
+      "label": "藏13",
+      "vol": "035"
+    },
+    {
+      "id": "T:14",
+      "type": "tib",
+      "label": "藏14",
+      "vol": "035"
+    },
+    {
+      "id": "T:15",
+      "type": "tib",
+      "label": "藏15",
+      "vol": "035"
+    },
+    {
+      "id": "T:16",
+      "type": "tib",
+      "label": "藏16",
+      "vol": "035"
+    },
+    {
+      "id": "T:17",
+      "type": "tib",
+      "label": "藏17",
+      "vol": "035"
+    },
+    {
+      "id": "T:18",
+      "type": "tib",
+      "label": "藏18",
+      "vol": "035"
+    },
+    {
+      "id": "T:19",
+      "type": "tib",
+      "label": "藏19",
+      "vol": "035"
+    },
+    {
+      "id": "T:20",
+      "type": "tib",
+      "label": "藏20",
+      "vol": "035"
+    },
+    {
+      "id": "T:21",
+      "type": "tib",
+      "label": "藏21",
+      "vol": "035"
+    },
+    {
+      "id": "T:22",
+      "type": "tib",
+      "label": "藏22",
+      "vol": "035"
+    },
+    {
+      "id": "T:23",
+      "type": "tib",
+      "label": "藏23",
+      "vol": "035"
+    },
+    {
+      "id": "T:24",
+      "type": "tib",
+      "label": "藏24",
+      "vol": "035"
+    },
+    {
+      "id": "T:25",
+      "type": "tib",
+      "label": "藏25",
+      "vol": "035"
+    },
+    {
+      "id": "T:26",
+      "type": "tib",
+      "label": "藏26",
+      "vol": "035"
+    },
+    {
+      "id": "T:27",
+      "type": "tib",
+      "label": "藏27",
+      "vol": "035"
+    },
+    {
+      "id": "T:28",
+      "type": "tib",
+      "label": "藏28",
+      "vol": "035"
+    },
+    {
+      "id": "T:29",
+      "type": "tib",
+      "label": "藏29",
+      "vol": "035"
+    },
+    {
+      "id": "T:30",
+      "type": "tib",
+      "label": "藏30",
+      "vol": "035"
+    },
+    {
+      "id": "T:31",
+      "type": "tib",
+      "label": "藏31",
+      "vol": "036"
+    },
+    {
+      "id": "T:32",
+      "type": "tib",
+      "label": "藏32",
+      "vol": "036"
+    },
+    {
+      "id": "T:33",
+      "type": "tib",
+      "label": "藏33",
+      "vol": "036"
+    },
+    {
+      "id": "T:34",
+      "type": "tib",
+      "label": "藏34",
+      "vol": "036"
+    },
+    {
+      "id": "T:35",
+      "type": "tib",
+      "label": "藏35",
+      "vol": "036"
+    },
+    {
+      "id": "T:36",
+      "type": "tib",
+      "label": "藏36",
+      "vol": "036"
+    },
+    {
+      "id": "T:37",
+      "type": "tib",
+      "label": "藏37",
+      "vol": "036"
+    },
+    {
+      "id": "T:38",
+      "type": "tib",
+      "label": "藏38",
+      "vol": "036"
+    },
+    {
+      "id": "T:39",
+      "type": "tib",
+      "label": "藏39",
+      "vol": "037"
+    },
+    {
+      "id": "T:40",
+      "type": "tib",
+      "label": "藏40",
+      "vol": "037"
+    },
+    {
+      "id": "T:41",
+      "type": "tib",
+      "label": "藏41",
+      "vol": "037"
+    },
+    {
+      "id": "T:42",
+      "type": "tib",
+      "label": "藏42",
+      "vol": "037"
+    },
+    {
+      "id": "T:43",
+      "type": "tib",
+      "label": "藏43",
+      "vol": "037"
+    },
+    {
+      "id": "T:44",
+      "type": "tib",
+      "label": "藏44",
+      "vol": "037"
+    },
+    {
+      "id": "T:45",
+      "type": "tib",
+      "label": "藏45",
+      "vol": "037"
+    },
+    {
+      "id": "C:初会六品",
+      "type": "cluster",
+      "label": "初会六品",
+      "color": "#8c6a4a",
+      "count": 6
+    },
+    {
+      "id": "C:名号·光明觉",
+      "type": "cluster",
+      "label": "名号·光明觉",
+      "color": "#b06a4a",
+      "count": 2
+    },
+    {
+      "id": "C:净行",
+      "type": "cluster",
+      "label": "净行",
+      "color": "#4f6f52",
+      "count": 1
+    },
+    {
+      "id": "C:十住",
+      "type": "cluster",
+      "label": "十住",
+      "color": "#2f5d7c",
+      "count": 1
+    },
+    {
+      "id": "C:十地",
+      "type": "cluster",
+      "label": "十地",
+      "color": "#8b5e34",
+      "count": 1
+    },
+    {
+      "id": "C:十定",
+      "type": "cluster",
+      "label": "十定",
+      "color": "#7a6a9a",
+      "count": 1
+    },
+    {
+      "id": "C:寿量",
+      "type": "cluster",
+      "label": "寿量",
+      "color": "#a87900",
+      "count": 1
+    },
+    {
+      "id": "C:佛不思议",
+      "type": "cluster",
+      "label": "佛不思议",
+      "color": "#b03a2e",
+      "count": 1
+    },
+    {
+      "id": "C:普贤行愿",
+      "type": "cluster",
+      "label": "普贤行愿",
+      "color": "#4a7a8c",
+      "count": 1
+    },
+    {
+      "id": "C:如来出现",
+      "type": "cluster",
+      "label": "如来出现",
+      "color": "#6b8e6b",
+      "count": 1
+    },
+    {
+      "id": "C:离世间",
+      "type": "cluster",
+      "label": "离世间",
+      "color": "#9a6a8a",
+      "count": 1
+    },
+    {
+      "id": "C:入法界",
+      "type": "cluster",
+      "label": "入法界",
+      "color": "#3f6f8f",
+      "count": 1
+    },
+    {
+      "id": "C:其余",
+      "type": "cluster",
+      "label": "其余",
+      "color": "#9a9a9a",
+      "count": 21
+    },
+    {
+      "id": "C:藏文独有",
+      "type": "cluster",
+      "label": "藏文独有",
+      "color": "#b03a2e",
+      "count": 2
+    },
+    {
+      "id": "X:T10n0280",
+      "type": "text",
+      "label": "T280 佛說兜沙經",
+      "juan": 1,
+      "cjk": 2417
+    },
+    {
+      "id": "X:T10n0281",
+      "type": "text",
+      "label": "T281 佛說菩薩本業經",
+      "juan": 1,
+      "cjk": 4912
+    },
+    {
+      "id": "X:T10n0282",
+      "type": "text",
+      "label": "T282 諸菩薩求佛本業經",
+      "juan": 1,
+      "cjk": 5113
+    },
+    {
+      "id": "X:T10n0283",
+      "type": "text",
+      "label": "T283 菩薩十住行道品",
+      "juan": 1,
+      "cjk": 3672
+    },
+    {
+      "id": "X:T10n0284",
+      "type": "text",
+      "label": "T284 佛說菩薩十住經",
+      "juan": 1,
+      "cjk": 2146
+    },
+    {
+      "id": "X:T10n0285",
+      "type": "text",
+      "label": "T285 漸備一切智德經",
+      "juan": 5,
+      "cjk": 52804
+    },
+    {
+      "id": "X:T10n0286",
+      "type": "text",
+      "label": "T286 十住經",
+      "juan": 4,
+      "cjk": 47188
+    },
+    {
+      "id": "X:T10n0287",
+      "type": "text",
+      "label": "T287 佛說十地經",
+      "juan": 9,
+      "cjk": 54249
+    },
+    {
+      "id": "X:T10n0288",
+      "type": "text",
+      "label": "T288 等目菩薩所問三昧經",
+      "juan": 3,
+      "cjk": 24920
+    },
+    {
+      "id": "X:T10n0289",
+      "type": "text",
+      "label": "T289 顯無邊佛土功德經",
+      "juan": 1,
+      "cjk": 760
+    },
+    {
+      "id": "X:T10n0290",
+      "type": "text",
+      "label": "T290 佛說較量一切佛剎功德經",
+      "juan": 1,
+      "cjk": 786
+    },
+    {
+      "id": "X:T10n0291",
+      "type": "text",
+      "label": "T291 佛說如來興顯經",
+      "juan": 4,
+      "cjk": 32900
+    },
+    {
+      "id": "X:T10n0292",
+      "type": "text",
+      "label": "T292 度世品經",
+      "juan": 6,
+      "cjk": 56577
+    },
+    {
+      "id": "X:T10n0294",
+      "type": "text",
+      "label": "T294 佛說羅摩伽經",
+      "juan": 3,
+      "cjk": 34150
+    },
+    {
+      "id": "X:T10n0295",
+      "type": "text",
+      "label": "T295 大方廣佛華嚴經入法界品",
+      "juan": 1,
+      "cjk": 3849
+    },
+    {
+      "id": "X:T10n0296",
+      "type": "text",
+      "label": "T296 文殊師利發願經",
+      "juan": 1,
+      "cjk": 1061
+    },
+    {
+      "id": "X:T10n0297",
+      "type": "text",
+      "label": "T297 普賢菩薩行願讚",
+      "juan": 1,
+      "cjk": 2500
+    },
+    {
+      "id": "X:T10n0298",
+      "type": "text",
+      "label": "T298 大方廣普賢所說經",
+      "juan": 1,
+      "cjk": 1977
+    },
+    {
+      "id": "X:T10n0299",
+      "type": "text",
+      "label": "T299 大方廣總持寶光明經",
+      "juan": 5,
+      "cjk": 27690
+    },
+    {
+      "id": "X:T10n0300",
+      "type": "text",
+      "label": "T300 大方廣佛華嚴經不思議佛境界分",
+      "juan": 1,
+      "cjk": 5560
+    },
+    {
+      "id": "X:T10n0301",
+      "type": "text",
+      "label": "T301 大方廣如來不思議境界經",
+      "juan": 1,
+      "cjk": 4842
+    },
+    {
+      "id": "X:T10n0302",
+      "type": "text",
+      "label": "T302 度諸佛境界智光嚴經",
+      "juan": 1,
+      "cjk": 8016
+    },
+    {
+      "id": "X:T10n0303",
+      "type": "text",
+      "label": "T303 佛華嚴入如來德智不思議境界經",
+      "juan": 2,
+      "cjk": 9960
+    },
+    {
+      "id": "X:T10n0304",
+      "type": "text",
+      "label": "T304 大方廣入如來智德不思議經",
+      "juan": 1,
+      "cjk": 6390
+    },
+    {
+      "id": "X:T10n0305",
+      "type": "text",
+      "label": "T305 信力入印法門經",
+      "juan": 5,
+      "cjk": 47512
+    },
+    {
+      "id": "X:T10n0306",
+      "type": "text",
+      "label": "T306 大方廣佛花嚴經修慈分",
+      "juan": 1,
+      "cjk": 3358
+    },
+    {
+      "id": "X:T10n0307",
+      "type": "text",
+      "label": "T307 佛說莊嚴菩提心經",
+      "juan": 1,
+      "cjk": 3064
+    },
+    {
+      "id": "X:T10n0308",
+      "type": "text",
+      "label": "T308 佛說大方廣菩薩十地經",
+      "juan": 1,
+      "cjk": 3425
+    },
+    {
+      "id": "X:T10n0309",
+      "type": "text",
+      "label": "T309 最勝問菩薩十住除垢斷結經",
+      "juan": 10,
+      "cjk": 120388
+    },
+    {
+      "id": "M:ALL",
+      "type": "commentary_hub",
+      "label": "四部注疏合计",
+      "value": 7705
+    },
+    {
+      "id": "M:T1732 搜玄记",
+      "type": "commentary",
+      "label": "T1732 搜玄记",
+      "person": "智俨",
+      "value": 95
+    },
+    {
+      "id": "M:T1733 探玄记",
+      "type": "commentary",
+      "label": "T1733 探玄记",
+      "person": "法藏",
+      "value": 1580
+    },
+    {
+      "id": "M:T1735 华严经疏",
+      "type": "commentary",
+      "label": "T1735 华严经疏",
+      "person": "澄观",
+      "value": 1667
+    },
+    {
+      "id": "M:T1736 演义钞",
+      "type": "commentary",
+      "label": "T1736 演义钞",
+      "person": "澄观",
+      "value": 4363
+    },
+    {
+      "id": "W:瑜伽师地论",
+      "type": "work",
+      "label": "瑜伽师地论",
+      "value": 669
+    },
+    {
+      "id": "W:大般涅槃经",
+      "type": "work",
+      "label": "大般涅槃经",
+      "value": 585
+    },
+    {
+      "id": "W:大智度论",
+      "type": "work",
+      "label": "大智度论",
+      "value": 538
+    },
+    {
+      "id": "W:成唯识论",
+      "type": "work",
+      "label": "成唯识论",
+      "value": 507
+    },
+    {
+      "id": "W:摄大乘论",
+      "type": "work",
+      "label": "摄大乘论",
+      "value": 371
+    },
+    {
+      "id": "K:瑜伽部",
+      "type": "canon_class",
+      "label": "瑜伽部",
+      "value": 0.27
+    },
+    {
+      "id": "K:释经论部",
+      "type": "canon_class",
+      "label": "释经论部",
+      "value": 0.2
+    },
+    {
+      "id": "K:经集部",
+      "type": "canon_class",
+      "label": "经集部",
+      "value": 0.09
+    },
+    {
+      "id": "K:涅槃部",
+      "type": "canon_class",
+      "label": "涅槃部",
+      "value": 0.08
+    },
+    {
+      "id": "K:般若部",
+      "type": "canon_class",
+      "label": "般若部",
+      "value": 0.05
+    },
+    {
+      "id": "K:毗昙部",
+      "type": "canon_class",
+      "label": "毗昙部",
+      "value": 0.05
+    }
+  ],
+  "edges": [
+    {
+      "source": "V:T279",
+      "target": "P:1",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:1",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:2",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:2",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:3",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:3",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:4",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:4",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:5",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:5",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:6",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:6",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:7",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:7",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:8",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:8",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:9",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:9",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:10",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:10",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:11",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:11",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:12",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:12",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:13",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:13",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:14",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:14",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:15",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:15",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:16",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:16",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:17",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:17",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:18",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:18",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:19",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:19",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:20",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:20",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:21",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:21",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:22",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:22",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:23",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:23",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:24",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:24",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:25",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:25",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:26",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:26",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:27",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:28",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:28",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:29",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:29",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:30",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:30",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:31",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:31",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:32",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:32",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:33",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:33",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:34",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:34",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:35",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:35",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:36",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:36",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:37",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:37",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:38",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:38",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T279",
+      "target": "P:39",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T278",
+      "target": "P:39",
+      "type": "contains_60",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T293",
+      "target": "P:39",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:T293",
+      "target": "P:36",
+      "type": "contains_part",
+      "grade": "B",
+      "weight": 1
+    },
+    {
+      "source": "V:Sanskrit",
+      "target": "P:26",
+      "type": "survives",
+      "grade": "A/B",
+      "weight": 1
+    },
+    {
+      "source": "V:Sanskrit",
+      "target": "P:31",
+      "type": "survives",
+      "grade": "A/B",
+      "weight": 1
+    },
+    {
+      "source": "V:Sanskrit",
+      "target": "P:36",
+      "type": "survives",
+      "grade": "A/B",
+      "weight": 1
+    },
+    {
+      "source": "V:Sanskrit",
+      "target": "P:39",
+      "type": "survives",
+      "grade": "A/B",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:1",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:2",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:3",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:4",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:5",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:6",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:7",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:8",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:9",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:10",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:11",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:12",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:13",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:14",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:15",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:16",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:17",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:18",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:19",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:20",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:21",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:22",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:23",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:24",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:25",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:26",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:27",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:28",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:29",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:30",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:31",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:32",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:33",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:34",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:35",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:36",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:37",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:38",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:39",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:40",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:41",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:42",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:43",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:44",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "V:Toh44",
+      "target": "T:45",
+      "type": "contains",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:1",
+      "target": "T:1",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:2",
+      "target": "T:2",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:3",
+      "target": "T:3",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:4",
+      "target": "T:4",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:5",
+      "target": "T:5",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:5",
+      "target": "T:6",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:5",
+      "target": "T:7",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:5",
+      "target": "T:8",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:5",
+      "target": "T:9",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:6",
+      "target": "T:10",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:7",
+      "target": "T:12",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:8",
+      "target": "T:13",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:9",
+      "target": "T:14",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:10",
+      "target": "T:15",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:11",
+      "target": "T:16",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:12",
+      "target": "T:17",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:13",
+      "target": "T:18",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:14",
+      "target": "T:19",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:15",
+      "target": "T:20",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:16",
+      "target": "T:21",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:17",
+      "target": "T:22",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:18",
+      "target": "T:23",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:19",
+      "target": "T:24",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:20",
+      "target": "T:25",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:21",
+      "target": "T:26",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:22",
+      "target": "T:27",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:23",
+      "target": "T:28",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:24",
+      "target": "T:29",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:25",
+      "target": "T:30",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:26",
+      "target": "T:31",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:27",
+      "target": "T:33",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:28",
+      "target": "T:34",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:29",
+      "target": "T:35",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:30",
+      "target": "T:36",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:31",
+      "target": "T:37",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:32",
+      "target": "T:38",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:33",
+      "target": "T:39",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:34",
+      "target": "T:40",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:35",
+      "target": "T:41",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:36",
+      "target": "T:42",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "T:43",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:38",
+      "target": "T:44",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:39",
+      "target": "T:45",
+      "type": "parallel",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:1",
+      "target": "C:初会六品",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:2",
+      "target": "C:初会六品",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:3",
+      "target": "C:初会六品",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:4",
+      "target": "C:初会六品",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:5",
+      "target": "C:初会六品",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:6",
+      "target": "C:初会六品",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:7",
+      "target": "C:名号·光明觉",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:9",
+      "target": "C:名号·光明觉",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:11",
+      "target": "C:净行",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:15",
+      "target": "C:十住",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:26",
+      "target": "C:十地",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:27",
+      "target": "C:十定",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:31",
+      "target": "C:寿量",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:33",
+      "target": "C:佛不思议",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:36",
+      "target": "C:普贤行愿",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "C:如来出现",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:38",
+      "target": "C:离世间",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:39",
+      "target": "C:入法界",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:8",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:10",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:12",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:13",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:14",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:16",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:17",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:18",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:19",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:20",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:21",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:22",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:23",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:24",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:25",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:28",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:29",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:30",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:32",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:34",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:35",
+      "target": "C:其余",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "T:11",
+      "target": "C:藏文独有",
+      "type": "unique",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "T:32",
+      "target": "C:藏文独有",
+      "type": "unique",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:7",
+      "target": "X:T10n0280",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0280",
+      "target": "C:名号·光明觉",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:9",
+      "target": "X:T10n0280",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0280",
+      "target": "C:名号·光明觉",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:11",
+      "target": "X:T10n0281",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0281",
+      "target": "C:净行",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:15",
+      "target": "X:T10n0281",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0281",
+      "target": "C:十住",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:11",
+      "target": "X:T10n0282",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0282",
+      "target": "C:净行",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:15",
+      "target": "X:T10n0283",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0283",
+      "target": "C:十住",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:15",
+      "target": "X:T10n0284",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0284",
+      "target": "C:十住",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:26",
+      "target": "X:T10n0285",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0285",
+      "target": "C:十地",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:26",
+      "target": "X:T10n0286",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0286",
+      "target": "C:十地",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:26",
+      "target": "X:T10n0287",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0287",
+      "target": "C:十地",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:27",
+      "target": "X:T10n0288",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0288",
+      "target": "C:十定",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:31",
+      "target": "X:T10n0289",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0289",
+      "target": "C:寿量",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:31",
+      "target": "X:T10n0290",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0290",
+      "target": "C:寿量",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "X:T10n0291",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0291",
+      "target": "C:如来出现",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:38",
+      "target": "X:T10n0292",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0292",
+      "target": "C:离世间",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:39",
+      "target": "X:T10n0294",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0294",
+      "target": "C:入法界",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:39",
+      "target": "X:T10n0295",
+      "type": "translation",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0295",
+      "target": "C:入法界",
+      "type": "belongs",
+      "grade": "A",
+      "weight": 1
+    },
+    {
+      "source": "P:36",
+      "target": "X:T10n0296",
+      "type": "translation",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0296",
+      "target": "C:普贤行愿",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:36",
+      "target": "X:T10n0297",
+      "type": "translation",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0297",
+      "target": "C:普贤行愿",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0298",
+      "target": "T:32",
+      "type": "related",
+      "grade": "B",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0298",
+      "target": "C:藏文独有",
+      "type": "belongs",
+      "grade": "B",
+      "weight": 1
+    },
+    {
+      "source": "P:15",
+      "target": "X:T10n0299",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0299",
+      "target": "C:十住",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:33",
+      "target": "X:T10n0300",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0300",
+      "target": "C:佛不思议",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:33",
+      "target": "X:T10n0301",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0301",
+      "target": "C:佛不思议",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "X:T10n0302",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0302",
+      "target": "C:如来出现",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "X:T10n0303",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0303",
+      "target": "C:如来出现",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "X:T10n0304",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0304",
+      "target": "C:如来出现",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "X:T10n0305",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0305",
+      "target": "C:如来出现",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:37",
+      "target": "X:T10n0306",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0306",
+      "target": "C:如来出现",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:26",
+      "target": "X:T10n0307",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0307",
+      "target": "C:十地",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:26",
+      "target": "X:T10n0308",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0308",
+      "target": "C:十地",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "P:15",
+      "target": "X:T10n0309",
+      "type": "related",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "X:T10n0309",
+      "target": "C:十住",
+      "type": "belongs",
+      "grade": "B/C",
+      "weight": 1
+    },
+    {
+      "source": "M:T1732 搜玄记",
+      "target": "M:ALL",
+      "type": "sums_to",
+      "grade": "B",
+      "weight": 95
+    },
+    {
+      "source": "M:T1733 探玄记",
+      "target": "M:ALL",
+      "type": "sums_to",
+      "grade": "B",
+      "weight": 1580
+    },
+    {
+      "source": "M:T1735 华严经疏",
+      "target": "M:ALL",
+      "type": "sums_to",
+      "grade": "B",
+      "weight": 1667
+    },
+    {
+      "source": "M:T1736 演义钞",
+      "target": "M:ALL",
+      "type": "sums_to",
+      "grade": "B",
+      "weight": 4363
+    },
+    {
+      "source": "M:ALL",
+      "target": "W:瑜伽师地论",
+      "type": "cites",
+      "grade": "B",
+      "weight": 669
+    },
+    {
+      "source": "M:ALL",
+      "target": "W:大般涅槃经",
+      "type": "cites",
+      "grade": "B",
+      "weight": 585
+    },
+    {
+      "source": "M:ALL",
+      "target": "W:大智度论",
+      "type": "cites",
+      "grade": "B",
+      "weight": 538
+    },
+    {
+      "source": "M:ALL",
+      "target": "W:成唯识论",
+      "type": "cites",
+      "grade": "B",
+      "weight": 507
+    },
+    {
+      "source": "M:ALL",
+      "target": "W:摄大乘论",
+      "type": "cites",
+      "grade": "B",
+      "weight": 371
+    },
+    {
+      "source": "M:ALL",
+      "target": "K:瑜伽部",
+      "type": "cites_class",
+      "grade": "B",
+      "weight": 0.27
+    },
+    {
+      "source": "M:ALL",
+      "target": "K:释经论部",
+      "type": "cites_class",
+      "grade": "B",
+      "weight": 0.2
+    },
+    {
+      "source": "M:ALL",
+      "target": "K:经集部",
+      "type": "cites_class",
+      "grade": "B",
+      "weight": 0.09
+    },
+    {
+      "source": "M:ALL",
+      "target": "K:涅槃部",
+      "type": "cites_class",
+      "grade": "B",
+      "weight": 0.08
+    },
+    {
+      "source": "M:ALL",
+      "target": "K:般若部",
+      "type": "cites_class",
+      "grade": "B",
+      "weight": 0.05
+    },
+    {
+      "source": "M:ALL",
+      "target": "K:毗昙部",
+      "type": "cites_class",
+      "grade": "B",
+      "weight": 0.05
+    }
+  ],
+  "stats": {
+    "nodes": 148,
+    "edges": 289,
+    "by_node": {
+      "canon_class": 6,
+      "cluster": 14,
+      "commentary": 4,
+      "commentary_hub": 1,
+      "pin": 39,
+      "text": 29,
+      "tib": 45,
+      "version": 5,
+      "work": 5
+    },
+    "by_edge": {
+      "belongs": 70,
+      "cites": 5,
+      "cites_class": 6,
+      "contains": 85,
+      "contains_60": 38,
+      "contains_part": 1,
+      "parallel": 43,
+      "related": 12,
+      "sums_to": 4,
+      "survives": 4,
+      "translation": 19,
+      "unique": 2
+    }
+  }
+}

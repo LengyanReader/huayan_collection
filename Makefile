@@ -92,8 +92,12 @@ verify-data: verify-sources
 	-$(PYTHON) scripts/check_drift.py || echo "↑ 派生副本漂移已检出 · 处置(同步/移除 docs 副本)待维护者定 · 暂不阻塞"
 	@echo "Data validation complete."
 
+## 大藏经对应文章（内容/图表/数据一致性）
+verify-dazang:
+	$(PYTHON) scripts/verify_dazang_article.py
+
 ## 全量验收（三道闸 · 会话收尾必跑；详 harness/workflows/verification.md）
-verify-all: test-pipeline demo-verify verify-sources
+verify-all: test-pipeline demo-verify verify-dazang verify-sources
 	@echo "All verification gates ran. 任一未绿不得声称完成。"
 
 ## Demo (web/demo/index.html)

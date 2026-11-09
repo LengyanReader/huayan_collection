@@ -1,0 +1,1606 @@
+{
+  "meta": {
+    "generated": "2026-11-09T17:50:42",
+    "access_date": "2026-11-09",
+    "script": "scripts/verify_dazang_mapping.py",
+    "sources": {
+      "local_tei": [
+        "data/references/cbeta/T09n0278.xml",
+        "data/references/cbeta/T10n0279.xml"
+      ],
+      "cbeta_github": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T10/T10n0280..T10n0309.xml",
+      "zhwiki": "https://zh.wikipedia.org/wiki/華嚴經",
+      "enwiki": "https://en.wikipedia.org/wiki/Buddhāvataṃsaka_Sūtra",
+      "84000": "https://read.84000.co/translation/toh44-31.html",
+      "tibetan_toc": "data/alignment/tibetan-derge-toc.json",
+      "catalog": "data/catalog/complete_catalog.yaml"
+    }
+  },
+  "versions": {
+    "T09n0278": {
+      "cjk_body": 507687,
+      "doc_number": "No. 278 [No. 279]",
+      "title": "大方廣佛華嚴經",
+      "translator": "東晉天竺三藏佛馱跋陀羅譯",
+      "juan_count": 60,
+      "pin_count": 34,
+      "pin_titles": [
+        "1 世間淨眼品",
+        "之一",
+        "之二",
+        "2 盧舍那佛品",
+        "之一",
+        "之二",
+        "之三",
+        "3 如來名號品",
+        "4 四諦品",
+        "之一",
+        "之二",
+        "5 如來光明覺品",
+        "6 菩薩明難品",
+        "7 淨行品",
+        "8 賢首菩薩品",
+        "之一",
+        "之二",
+        "9 佛昇須彌頂品",
+        "10 菩薩雲集妙勝殿上說偈品",
+        "之一",
+        "之二",
+        "11 菩薩十住品",
+        "12 梵行品",
+        "13 初發心菩薩功德品",
+        "14 明法品",
+        "15 佛昇夜摩天宮自在品",
+        "16 夜摩天宮菩薩說偈品",
+        "17 功德華聚菩薩十行品",
+        "之一",
+        "之二",
+        "18 菩薩十無盡藏品",
+        "19 如來昇兜率天宮一切寶殿品",
+        "20 兜率天宮菩薩雲集讚佛品",
+        "21 金剛幢菩薩十迴向品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "之六",
+        "之七",
+        "之八",
+        "之九",
+        "22 十地品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "23 十明品",
+        "24 十忍品",
+        "25 心王菩薩問阿僧祇品",
+        "26 壽命品",
+        "27 菩薩住處品",
+        "28 佛不思議法品",
+        "之一",
+        "之二",
+        "29 如來相海品",
+        "30 佛小相光明功德品",
+        "31 普賢菩薩行品",
+        "32 寶王如來性起品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "33 離世間品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "之六",
+        "之七",
+        "之八",
+        "34 入法界品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "之六",
+        "之七",
+        "之八",
+        "之九",
+        "之十",
+        "之十一",
+        "之十二",
+        "之十三",
+        "之十四",
+        "之十五",
+        "之十六",
+        "之十七"
+      ],
+      "cjk": 508163
+    },
+    "T10n0279": {
+      "cjk_body": 613191,
+      "doc_number": "No. 279 [No. 278]",
+      "title": "大方廣佛華嚴經",
+      "translator": "于闐國三藏實叉難陀奉 制譯",
+      "juan_count": 80,
+      "pin_count": 39,
+      "pin_titles": [
+        "1 世主妙嚴品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "2 如來現相品",
+        "3 普賢三昧品",
+        "4 世界成就品",
+        "5 華藏世界品",
+        "之一",
+        "之二",
+        "之三",
+        "6 毘盧遮那品",
+        "7 如來名號品",
+        "8 四聖諦品",
+        "9 光明覺品",
+        "10 菩薩問明品",
+        "11 淨行品",
+        "12 賢首品",
+        "之一",
+        "之二",
+        "13 昇須彌山頂品",
+        "14 須彌頂上偈讚品",
+        "15 十住品",
+        "16 梵行品",
+        "17 初發心功德品",
+        "18 明法品",
+        "19 昇夜摩天宮品",
+        "20 夜摩宮中偈讚品",
+        "21 十行品",
+        "22 十無盡藏品",
+        "23 昇兜率天宮品",
+        "24 兜率宮中偈讚品",
+        "25 十迴向品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "之六",
+        "之七",
+        "之八",
+        "之九",
+        "之十",
+        "之十一",
+        "26 十地品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "之六",
+        "27 十定品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "28 十通品",
+        "29 十忍品",
+        "30 阿僧祇品",
+        "31 壽量品",
+        "32 諸菩薩住處品",
+        "33 佛不思議法品",
+        "34 如來十身相海品",
+        "35 如來隨好光明功德品",
+        "36 普賢行品",
+        "37 如來出現品",
+        "之一",
+        "之二",
+        "之三",
+        "38 離世間品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "之六",
+        "之七",
+        "39 入法界品",
+        "之一",
+        "之二",
+        "之三",
+        "之四",
+        "之五",
+        "之六",
+        "之七",
+        "之八",
+        "之九",
+        "之十",
+        "之十一",
+        "之十二",
+        "之十三",
+        "之十四",
+        "之十五",
+        "之十六",
+        "之十七",
+        "之十八",
+        "之十九",
+        "之二十",
+        "之二十一"
+      ],
+      "cjk": 614376
+    },
+    "Tibetan": {
+      "chapters": 45,
+      "structural_facts": {
+        "tibetan_chapters": 45,
+        "chinese_80_chapters": 39,
+        "chinese_80_last_pin": "入法界品第三十九",
+        "chinese_60_chapters": 34,
+        "chinese_60_last_pin": "入法界品第三十四",
+        "bam_po_total": 115,
+        "derge_vols": [
+          "035",
+          "036",
+          "037",
+          "038"
+        ]
+      },
+      "toh": "44"
+    }
+  },
+  "catalog_32": [
+    {
+      "taisho": "T10n0280",
+      "title_cbeta": "佛說兜沙經",
+      "title_catalog": "佛说兜沙经",
+      "translator_cbeta": "後漢月氏三藏支婁迦讖譯",
+      "translator_catalog": "支娄迦谶",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 0,
+      "cjk": 2417,
+      "cjk_body": 2417,
+      "doc_number": "No. 280 [Nos. 278(3, 5), 279(7, 9)]",
+      "xref": {
+        "T278": [
+          3,
+          5
+        ],
+        "T279": [
+          7,
+          9
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0281",
+      "title_cbeta": "佛說菩薩本業經",
+      "title_catalog": "佛说菩萨本业经",
+      "translator_cbeta": "吳月氏優婆塞支謙譯",
+      "translator_catalog": "支谦",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 2,
+      "cjk": 5957,
+      "cjk_body": 4912,
+      "doc_number": "No. 281 [Nos. 278(7, 11), 279(11, 15), 282]",
+      "xref": {
+        "T278": [
+          7,
+          11
+        ],
+        "T279": [
+          11,
+          15
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0282",
+      "title_cbeta": "諸菩薩求佛本業經",
+      "title_catalog": "诸菩萨求佛本业经",
+      "translator_cbeta": "西晉優婆塞聶道真譯",
+      "translator_catalog": "聂道真",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 0,
+      "cjk": 5113,
+      "cjk_body": 5113,
+      "doc_number": "No. 282 [Nos. 278(7), 279(11), 282]",
+      "xref": {
+        "T278": [
+          7
+        ],
+        "T279": [
+          11
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0283",
+      "title_cbeta": "菩薩十住行道品",
+      "title_catalog": "菩萨十住行道品",
+      "translator_cbeta": "西晉三藏竺法護譯",
+      "translator_catalog": "竺法护",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 0,
+      "cjk": 3672,
+      "cjk_body": 3672,
+      "doc_number": "No. 283 [Nos. 278(11), 279(15), 281(3), 284]",
+      "xref": {
+        "T278": [
+          11
+        ],
+        "T279": [
+          15
+        ],
+        "T281": [
+          3
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0284",
+      "title_cbeta": "佛說菩薩十住經",
+      "title_catalog": "佛说菩萨十住经",
+      "translator_cbeta": "東晉三藏祇多蜜譯",
+      "translator_catalog": "祇多蜜",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 0,
+      "cjk": 2146,
+      "cjk_body": 2146,
+      "doc_number": "No. 284 [Nos. 278(11), 279(15), 281(2), 283]",
+      "xref": {
+        "T278": [
+          11
+        ],
+        "T279": [
+          15
+        ],
+        "T281": [
+          2
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0285",
+      "title_cbeta": "漸備一切智德經",
+      "title_catalog": "渐备一切智德经",
+      "translator_cbeta": "西晉月支三藏竺法護譯",
+      "translator_catalog": "竺法护",
+      "juan_cbeta": 5,
+      "juan_catalog": 5,
+      "pin_count": 10,
+      "cjk": 52999,
+      "cjk_body": 52804,
+      "doc_number": "No. 285 [Nos. 278(22), 279(26), 286, 287]",
+      "xref": {
+        "T278": [
+          22
+        ],
+        "T279": [
+          26
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0286",
+      "title_cbeta": "十住經",
+      "title_catalog": "十住经",
+      "translator_cbeta": "後秦龜茲國三藏鳩摩羅什譯",
+      "translator_catalog": "鸠摩罗什",
+      "juan_cbeta": 4,
+      "juan_catalog": 4,
+      "pin_count": 0,
+      "cjk": 47188,
+      "cjk_body": 47188,
+      "doc_number": "No. 286 [Nos. 278(22), 279(26), 285, 287]",
+      "xref": {
+        "T278": [
+          22
+        ],
+        "T279": [
+          26
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0287",
+      "title_cbeta": "佛說十地經",
+      "title_catalog": "佛说十地经",
+      "translator_cbeta": "大唐國僧法界從中印度持此 梵本請于闐三藏沙門尸羅達 摩於北庭龍興寺譯",
+      "translator_catalog": "尸罗达摩",
+      "juan_cbeta": 9,
+      "juan_catalog": 9,
+      "pin_count": 4,
+      "cjk": 54427,
+      "cjk_body": 54249,
+      "doc_number": "No. 287 [Nos. 278(22), 279(26), 285, 286]",
+      "xref": {
+        "T278": [
+          22
+        ],
+        "T279": [
+          26
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0288",
+      "title_cbeta": "等目菩薩所問三昧經",
+      "title_catalog": "等目菩萨所问三昧经",
+      "translator_cbeta": "西晉月氏國三藏竺法護譯",
+      "translator_catalog": "竺法护",
+      "juan_cbeta": 3,
+      "juan_catalog": 3,
+      "pin_count": 1,
+      "cjk": 25068,
+      "cjk_body": 24920,
+      "doc_number": "No. 288 [No. 279(27)]",
+      "xref": {
+        "T279": [
+          27
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0289",
+      "title_cbeta": "顯無邊佛土功德經",
+      "title_catalog": "显无边佛土功德经",
+      "translator_cbeta": "大唐三藏法師玄奘譯",
+      "translator_catalog": "玄奘",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 0,
+      "cjk": 760,
+      "cjk_body": 760,
+      "doc_number": "No. 289 [Nos. 278(26), 279(31), 290]",
+      "xref": {
+        "T278": [
+          26
+        ],
+        "T279": [
+          31
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0290",
+      "title_cbeta": "佛說較量一切佛剎功德經",
+      "title_catalog": "佛说较量一切佛刹功德经",
+      "translator_cbeta": "西天譯經三藏朝散大夫試光祿卿 明教大師臣法賢奉 詔譯",
+      "translator_catalog": "法贤",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 0,
+      "cjk": 786,
+      "cjk_body": 786,
+      "doc_number": "No. 290 [Nos. 278(26), 279(31), 289]",
+      "xref": {
+        "T278": [
+          26
+        ],
+        "T279": [
+          31
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0291",
+      "title_cbeta": "佛說如來興顯經",
+      "title_catalog": "佛说如来兴显经",
+      "translator_cbeta": "西晉月氏三藏竺法護譯",
+      "translator_catalog": "竺法护",
+      "juan_cbeta": 4,
+      "juan_catalog": 4,
+      "pin_count": 0,
+      "cjk": 32900,
+      "cjk_body": 32900,
+      "doc_number": "No. 291 [Nos. 278(32), 279(37)]",
+      "xref": {
+        "T278": [
+          32
+        ],
+        "T279": [
+          37
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0292",
+      "title_cbeta": "度世品經",
+      "title_catalog": "度世品经",
+      "translator_cbeta": "西晉月氏三藏竺法護譯",
+      "translator_catalog": "竺法护",
+      "juan_cbeta": 6,
+      "juan_catalog": 6,
+      "pin_count": 0,
+      "cjk": 56577,
+      "cjk_body": 56577,
+      "doc_number": "No. 292 [Nos. 278(33), 279(38)]",
+      "xref": {
+        "T278": [
+          33
+        ],
+        "T279": [
+          38
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0293",
+      "title_cbeta": "大方廣佛華嚴經",
+      "title_catalog": "大方广佛华严经（四十华严）",
+      "translator_cbeta": "罽賓國三藏般若奉 詔譯",
+      "translator_catalog": "般若 (Prajñā)",
+      "juan_cbeta": 40,
+      "juan_catalog": 40,
+      "pin_count": 39,
+      "cjk": 265725,
+      "cjk_body": 265368,
+      "doc_number": "No. 293 [Fasc. 1-39 = Nos. 278(34), 279 (39); Fasc. 40 = Nos. 278(31), 279(36), 296, 297]",
+      "xref": {
+        "T278": [
+          31
+        ],
+        "T279": [
+          36
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0294",
+      "title_cbeta": "佛說羅摩伽經",
+      "title_catalog": "佛说罗摩伽经",
+      "translator_cbeta": "西秦沙門聖堅譯",
+      "translator_catalog": "圣坚",
+      "juan_cbeta": 3,
+      "juan_catalog": 3,
+      "pin_count": 0,
+      "cjk": 34150,
+      "cjk_body": 34150,
+      "doc_number": "No. 294 [Part of No. 278(34), 279(39), 293]",
+      "xref": {
+        "T278": [
+          34
+        ],
+        "T279": [
+          39
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0295",
+      "title_cbeta": "大方廣佛華嚴經入法界品",
+      "title_catalog": "大方广佛华严经入法界品",
+      "translator_cbeta": "唐天竺三藏地婆訶羅譯",
+      "translator_catalog": "地婆诃罗",
+      "juan_cbeta": 1,
+      "juan_catalog": 1,
+      "pin_count": 0,
+      "cjk": 3849,
+      "cjk_body": 3849,
+      "doc_number": "No. 295 [Part of No. 278(34), 279(39), 293]",
+      "xref": {
+        "T278": [
+          34
+        ],
+        "T279": [
+          39
+        ]
+      },
+      "match": {
+        "title": true,
+        "juan": true,
+        "translator": true
+      },
+      "catalog": "match",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0296",
+      "title_cbeta": "文殊師利發願經",
+      "title_catalog": "",
+      "translator_cbeta": "東晉天竺三藏佛陀跋陀羅譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 1061,
+      "cjk_body": 1061,
+      "doc_number": "No. 296 [No. 297; cf. 293(Fasc. 40)]",
+      "xref": {
+        "T293": [
+          40
+        ]
+      },
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0297",
+      "title_cbeta": "普賢菩薩行願讚",
+      "title_catalog": "",
+      "translator_cbeta": "開府儀同三司特進試鴻臚卿 肅國公食邑三千戶賜紫贈司空 諡大鑑正號大廣智大興善寺 三藏沙門不空奉 詔譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 2500,
+      "cjk_body": 2500,
+      "doc_number": "No. 297 [No. 296; cf. 293(Fasc. 40)]",
+      "xref": {
+        "T293": [
+          40
+        ]
+      },
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0298",
+      "title_cbeta": "大方廣普賢所說經",
+      "title_catalog": "",
+      "translator_cbeta": "唐于闐三藏實叉難陀譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 1977,
+      "cjk_body": 1977,
+      "doc_number": "No. 298",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0299",
+      "title_cbeta": "大方廣總持寶光明經",
+      "title_catalog": "",
+      "translator_cbeta": "西天中印度摩伽陀國那爛陀寺 傳教大師三藏賜紫沙門臣法天 奉 詔譯",
+      "translator_catalog": "",
+      "juan_cbeta": 5,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 27690,
+      "cjk_body": 27690,
+      "doc_number": "No. 299",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0300",
+      "title_cbeta": "大方廣佛華嚴經不思議佛境界分",
+      "title_catalog": "",
+      "translator_cbeta": "唐于闐三藏提雲般若譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 5560,
+      "cjk_body": 5560,
+      "doc_number": "No. 300 [No. 301]",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0301",
+      "title_cbeta": "大方廣如來不思議境界經",
+      "title_catalog": "",
+      "translator_cbeta": "大唐于闐三藏實叉難陀 奉 制譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 4842,
+      "cjk_body": 4842,
+      "doc_number": "No. 301 [No. 300]",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0302",
+      "title_cbeta": "度諸佛境界智光嚴經",
+      "title_catalog": "",
+      "translator_cbeta": "失譯人名附秦錄",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 8016,
+      "cjk_body": 8016,
+      "doc_number": "No. 302 [Nos. 303, 304]",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0303",
+      "title_cbeta": "佛華嚴入如來德智不思議境界經",
+      "title_catalog": "",
+      "translator_cbeta": "隋天竺三藏闍那崛多譯",
+      "translator_catalog": "",
+      "juan_cbeta": 2,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 9960,
+      "cjk_body": 9960,
+      "doc_number": "No. 303 [Nos. 302, 304]",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0304",
+      "title_cbeta": "大方廣入如來智德不思議經",
+      "title_catalog": "",
+      "translator_cbeta": "大唐于闐三藏實叉難陀譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 6390,
+      "cjk_body": 6390,
+      "doc_number": "No. 304 [Nos. 302, 303]",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0305",
+      "title_cbeta": "信力入印法門經",
+      "title_catalog": "",
+      "translator_cbeta": "元魏天竺三藏曇摩流支譯",
+      "translator_catalog": "",
+      "juan_cbeta": 5,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 47512,
+      "cjk_body": 47512,
+      "doc_number": "No. 305",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0306",
+      "title_cbeta": "大方廣佛花嚴經修慈分",
+      "title_catalog": "",
+      "translator_cbeta": "唐于闐三藏提雲般若等奉 制譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 3358,
+      "cjk_body": 3358,
+      "doc_number": "No. 306",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0307",
+      "title_cbeta": "佛說莊嚴菩提心經",
+      "title_catalog": "",
+      "translator_cbeta": "姚秦三藏鳩摩羅什譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 3064,
+      "cjk_body": 3064,
+      "doc_number": "No. 307",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0308",
+      "title_cbeta": "佛說大方廣菩薩十地經",
+      "title_catalog": "",
+      "translator_cbeta": "元魏西域三藏吉迦夜譯",
+      "translator_catalog": "",
+      "juan_cbeta": 1,
+      "juan_catalog": null,
+      "pin_count": 0,
+      "cjk": 3425,
+      "cjk_body": 3425,
+      "doc_number": "No. 308",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    },
+    {
+      "taisho": "T10n0309",
+      "title_cbeta": "最勝問菩薩十住除垢斷結經",
+      "title_catalog": "",
+      "translator_cbeta": "姚秦涼州沙門竺佛念譯",
+      "translator_catalog": "",
+      "juan_cbeta": 10,
+      "juan_catalog": null,
+      "pin_count": 14,
+      "cjk": 120622,
+      "cjk_body": 120388,
+      "doc_number": "No. 309",
+      "xref": {},
+      "match": {
+        "title": false,
+        "juan": true,
+        "translator": false
+      },
+      "catalog": "missing",
+      "status": "verified"
+    }
+  ],
+  "p0": {
+    "T300_vs_C80_33": 0,
+    "T301_vs_C80_33": 4,
+    "T300_vs_T301": 86,
+    "T298_vs_C80_36": 2,
+    "T309_vs_C80_15": 0,
+    "T281_p3_vs_C80_15": 0,
+    "T281_p3_vs_C80_26": 0,
+    "T281_pin_titles": [
+      "2 願行品",
+      "3 十地品"
+    ],
+    "toh44_32_title": "Chapter 32: The Teaching of Samantabhadra",
+    "toh187_title": "The Teaching on the Inconceivable Properties of the Buddhas"
+  },
+  "mapping_60_80": {
+    "source": "zh.wikipedia 華嚴經 structure table",
+    "rows": [
+      {
+        "assembly": "(初會) 菩提場 （寂滅道場）",
+        "p80": "世主妙嚴品",
+        "p60": "世間淨眼品",
+        "branch": ""
+      },
+      {
+        "assembly": "(初會) 菩提場 （寂滅道場）",
+        "p80": "如來現相品",
+        "p60": "盧舍那佛品",
+        "branch": ""
+      },
+      {
+        "assembly": "(初會) 菩提場 （寂滅道場）",
+        "p80": "普賢三昧品",
+        "p60": "盧舍那佛品",
+        "branch": ""
+      },
+      {
+        "assembly": "(初會) 菩提場 （寂滅道場）",
+        "p80": "世界成就品",
+        "p60": "盧舍那佛品",
+        "branch": ""
+      },
+      {
+        "assembly": "(初會) 菩提場 （寂滅道場）",
+        "p80": "華藏世界品",
+        "p60": "盧舍那佛品",
+        "branch": ""
+      },
+      {
+        "assembly": "(初會) 菩提場 （寂滅道場）",
+        "p80": "毗盧遮那品",
+        "p60": "盧舍那佛品",
+        "branch": ""
+      },
+      {
+        "assembly": "(二會) 普光明殿",
+        "p80": "如來名號品",
+        "p60": "如來名號品",
+        "branch": "兜沙經 ，後漢 支讖 譯 菩薩本業經，吳 支謙 譯"
+      },
+      {
+        "assembly": "(二會) 普光明殿",
+        "p80": "四聖諦品",
+        "p60": "四諦品",
+        "branch": ""
+      },
+      {
+        "assembly": "(二會) 普光明殿",
+        "p80": "光明覺品",
+        "p60": "如來光明覺品",
+        "branch": "兜沙經，後漢支讖譯 菩薩本業經，吳支謙譯"
+      },
+      {
+        "assembly": "(二會) 普光明殿",
+        "p80": "菩薩問明品",
+        "p60": "菩薩明難品",
+        "branch": ""
+      },
+      {
+        "assembly": "(二會) 普光明殿",
+        "p80": "淨行品",
+        "p60": "淨行品",
+        "branch": "菩薩本業經，吳支謙譯 諸菩薩求佛本業經，失譯"
+      },
+      {
+        "assembly": "(二會) 普光明殿",
+        "p80": "賢首品",
+        "p60": "賢首菩薩品",
+        "branch": ""
+      },
+      {
+        "assembly": "(三會) 忉利天宮",
+        "p80": "昇須彌山頂品",
+        "p60": "佛昇須彌頂品",
+        "branch": "菩薩本業經，吳支謙譯"
+      },
+      {
+        "assembly": "(三會) 忉利天宮",
+        "p80": "須彌山頂上偈讚品",
+        "p60": "菩薩雲集妙勝殿上說偈品",
+        "branch": ""
+      },
+      {
+        "assembly": "(三會) 忉利天宮",
+        "p80": "十住品",
+        "p60": "菩薩十住品",
+        "branch": "菩薩本業經，吳支謙譯 菩薩十住行道品，失譯 菩薩十住經，晉竺法護譯"
+      },
+      {
+        "assembly": "(三會) 忉利天宮",
+        "p80": "梵行品",
+        "p60": "梵行品",
+        "branch": ""
+      },
+      {
+        "assembly": "(三會) 忉利天宮",
+        "p80": "初發心功德品",
+        "p60": "初發心菩薩功德品",
+        "branch": ""
+      },
+      {
+        "assembly": "(三會) 忉利天宮",
+        "p80": "明法品",
+        "p60": "明法品",
+        "branch": ""
+      },
+      {
+        "assembly": "(四會) 夜摩天宮",
+        "p80": "昇夜摩天宮品",
+        "p60": "佛昇夜摩天宮自在品",
+        "branch": ""
+      },
+      {
+        "assembly": "(四會) 夜摩天宮",
+        "p80": "夜摩宮中偈讚品",
+        "p60": "夜摩天宮菩薩說偈品",
+        "branch": ""
+      },
+      {
+        "assembly": "(四會) 夜摩天宮",
+        "p80": "十行品",
+        "p60": "功德華聚菩薩十行品",
+        "branch": ""
+      },
+      {
+        "assembly": "(四會) 夜摩天宮",
+        "p80": "十無盡藏品",
+        "p60": "菩薩十無盡藏品",
+        "branch": ""
+      },
+      {
+        "assembly": "(五會) 兜率天宮",
+        "p80": "昇兜率天宮品",
+        "p60": "如來昇兜率天宮一切寶殿品",
+        "branch": ""
+      },
+      {
+        "assembly": "(五會) 兜率天宮",
+        "p80": "兜率宮中偈讚品",
+        "p60": "兜率天宮菩薩雲集讚佛品",
+        "branch": ""
+      },
+      {
+        "assembly": "(五會) 兜率天宮",
+        "p80": "十迴向品",
+        "p60": "金剛幢菩薩十迴向品",
+        "branch": ""
+      },
+      {
+        "assembly": "(六會) 他化自在天宮",
+        "p80": "十地品",
+        "p60": "十地品",
+        "branch": "漸備一切智德經，晉 竺法護 譯 十住經，後秦 鳩摩羅什 譯 十地經，唐 尸羅達摩 譯"
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "十定品",
+        "p60": "",
+        "branch": "等目菩薩所問三昧經，晉竺法護譯"
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "十通品",
+        "p60": "十明品",
+        "branch": ""
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "十忍品",
+        "p60": "十忍品",
+        "branch": "如來興顯經，晉竺法護譯"
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "阿僧祇品",
+        "p60": "心王菩薩問阿僧祇品",
+        "branch": ""
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "壽量品",
+        "p60": "壽命品",
+        "branch": "顯無邊佛土功德經，唐 玄奘 譯 校量一切佛剎功德經，宋 法賢 譯 Anantabuddhakṣetraguṇodbhāvana"
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "諸菩薩住處品",
+        "p60": "菩薩住處品",
+        "branch": ""
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "佛不思議法品",
+        "p60": "佛不思議法品",
+        "branch": ""
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "如來十身相海品",
+        "p60": "如來相海品",
+        "branch": ""
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "隨好光明功德品",
+        "p60": "佛小相光明功德品",
+        "branch": ""
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "普賢行品",
+        "p60": "普賢菩薩行品",
+        "branch": ""
+      },
+      {
+        "assembly": "(七會)  普光明殿",
+        "p80": "如來出現品",
+        "p60": "寶王如來性起品",
+        "branch": "如來興顯經，晉竺法護譯"
+      },
+      {
+        "assembly": "(八會)  普光明殿",
+        "p80": "離世間品",
+        "p60": "離世間品",
+        "branch": "度世品經，晉竺法護譯"
+      },
+      {
+        "assembly": "(九會)  逝多林 重閣講堂",
+        "p80": "入法界品",
+        "p60": "入法界品",
+        "branch": "羅摩伽經 ，失譯 續入法界品，唐 地婆訶羅 譯 三曼陀颰陀羅菩薩經，失譯 普賢行願品四十卷，唐 般若 譯 入法界品四十二字觀門，唐 不空 譯 文殊師利發願經，晉 佛馱跋陀羅 譯 普賢菩薩行願讚，唐 不空 譯 普賢菩薩行願王經，失譯 普賢菩薩行願王品，失譯 Samantabhadra-caryā-praṇidhāna"
+      }
+    ],
+    "checks": {
+      "p80_count": 39,
+      "p80_unique": 39,
+      "p60_distinct": 34,
+      "p80_has_39": true,
+      "p60_has_34": true,
+      "tenming_equals_tenTong": true,
+      "shichu_equals_xingqi": true
+    }
+  },
+  "assemblies": [
+    "(七會)  普光明殿",
+    "(三會) 忉利天宮",
+    "(九會)  逝多林 重閣講堂",
+    "(二會) 普光明殿",
+    "(五會) 兜率天宮",
+    "(八會)  普光明殿",
+    "(六會) 他化自在天宮",
+    "(初會) 菩提場 （寂滅道場）",
+    "(四會) 夜摩天宮"
+  ],
+  "tibetan_84000": {
+    "title": "The Ten Bhūmis",
+    "chapter": 31,
+    "chapters_total": 45,
+    "toh": "Toh 44-31",
+    "snippet": "The Ten Bhūmis Discover Experience Learn Inside the Work About Reading Room Donate Reading Room Kangyur The Sūtra, “A Multitude of the Buddhas” Toh 44-31 Full Screen The Ten Bhūmis Toh 44-31 · The Sūtra, “A Multitude of the Buddhas” Toggle Left Panel Toggle non-distracted view Toggle Right Panel Fro"
+  },
+  "section_ranges": [
+    {
+      "start": "1",
+      "end": "151",
+      "label": "Āgama Dīrgha Madhyama Saṃyukta Ekottara"
+    },
+    {
+      "start": "152",
+      "end": "219",
+      "label": "Jātaka"
+    },
+    {
+      "start": "220",
+      "end": "261",
+      "label": "Prajñāpāramitā"
+    },
+    {
+      "start": "262",
+      "end": "277",
+      "label": "Saddharma Puṇḍarīka"
+    },
+    {
+      "start": "278",
+      "end": "309",
+      "label": "Avataṃsaka"
+    },
+    {
+      "start": "310",
+      "end": "373",
+      "label": "Ratnakūṭa"
+    },
+    {
+      "start": "374",
+      "end": "396",
+      "label": "Nirvāṇa"
+    },
+    {
+      "start": "397",
+      "end": "424",
+      "label": "Mahāsannipāta"
+    },
+    {
+      "start": "425",
+      "end": "847",
+      "label": "Sūtrasannipāta"
+    },
+    {
+      "start": "848",
+      "end": "1420",
+      "label": "Tantra"
+    },
+    {
+      "start": "1421",
+      "end": "1504",
+      "label": "Vinaya"
+    },
+    {
+      "start": "1505",
+      "end": "1535",
+      "label": "Sūtravyākaraṇa"
+    },
+    {
+      "start": "1536",
+      "end": "1563",
+      "label": "Abhidharma"
+    },
+    {
+      "start": "1564",
+      "end": "1578",
+      "label": "Mādhyamaka"
+    },
+    {
+      "start": "1579",
+      "end": "1627",
+      "label": "Yogācāra"
+    },
+    {
+      "start": "1628",
+      "end": "1692",
+      "label": "Śāstra"
+    },
+    {
+      "start": "1693",
+      "end": "1803",
+      "label": "Sūtravibhāṣā"
+    },
+    {
+      "start": "1804",
+      "end": "1815",
+      "label": "Vinayavibhāṣā"
+    },
+    {
+      "start": "1816",
+      "end": "1850",
+      "label": "Śāstravibhāṣā"
+    },
+    {
+      "start": "1851",
+      "end": "2025",
+      "label": "Sarvasamaya"
+    },
+    {
+      "start": "2026",
+      "end": "2120",
+      "label": "Histories"
+    },
+    {
+      "start": "2121",
+      "end": "2136",
+      "label": "Cyclopedia"
+    },
+    {
+      "start": "2137",
+      "end": "2144",
+      "label": "Non-Buddhist Texts"
+    },
+    {
+      "start": "2145",
+      "end": "2184",
+      "label": "Catalogues"
+    },
+    {
+      "start": "2185",
+      "end": "2700",
+      "label": "Additional Sūtra Clarifications"
+    },
+    {
+      "start": "2701",
+      "end": "2731",
+      "label": "Siddhaṃ"
+    },
+    {
+      "start": "2732",
+      "end": "2864",
+      "label": "Ancient"
+    },
+    {
+      "start": "2865",
+      "end": "2920",
+      "label": "Doubtful"
+    }
+  ],
+  "claims": [
+    {
+      "id": "V01",
+      "claim": "T279 八十华严 39 品 / 80 卷",
+      "value": {
+        "pins": 39,
+        "juan": 80
+      },
+      "status": "verified",
+      "evidence": "CBETA TEI cb:div type=pin / juan milestones",
+      "source": "data/references/cbeta/T10n0279.xml",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V02",
+      "claim": "T278 六十华严 34 品 / 60 卷",
+      "value": {
+        "pins": 34,
+        "juan": 60
+      },
+      "status": "verified",
+      "evidence": "CBETA TEI cb:div type=pin / juan milestones",
+      "source": "data/references/cbeta/T09n0278.xml",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V03",
+      "claim": "六十阙十品（种子/矩阵）",
+      "value": "十明品=十通品；仅十定品无对应",
+      "status": "corrected",
+      "evidence": "T09n0278 品23 十明 opens '十種明' parallel to T279 品28 十通 '十種通'; zhwiki table pairs them",
+      "source": "data/references/cbeta/T09n0278.xml; zh.wikipedia",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V04",
+      "claim": "Toh 44 为 45 章，十地为第 31 章",
+      "value": {
+        "chapters": 45,
+        "ten_bhumi_chapter": 31
+      },
+      "status": "verified",
+      "evidence": "84000: 'chapter 31 in the 45-chapter Tibetan version'",
+      "source": "https://read.84000.co/translation/toh44-31.html",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V05",
+      "claim": "华严部 T278–T309 共 32 部",
+      "value": {
+        "count": 32,
+        "fetched": 30
+      },
+      "status": "verified",
+      "evidence": "T278/T279 in T09/T10; T280–T309 fetched from CBETA GitHub",
+      "source": "cbeta-org/xml-p5",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V06",
+      "claim": "T280–T309 题录（题名/卷数/译者）",
+      "value": {
+        "cbmeta_ok": 30,
+        "catalog_match": 16,
+        "catalog_missing": 14,
+        "catalog_mismatch": 0
+      },
+      "status": "verified",
+      "evidence": "CBETA byline/docNumber parsed; local catalog is a secondary cross-check",
+      "source": "cbeta-org/xml-p5",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V07",
+      "claim": "七处九会（八十）",
+      "value": [
+        "(七會)  普光明殿",
+        "(三會) 忉利天宮",
+        "(九會)  逝多林 重閣講堂",
+        "(二會) 普光明殿",
+        "(五會) 兜率天宮",
+        "(八會)  普光明殿",
+        "(六會) 他化自在天宮",
+        "(初會) 菩提場 （寂滅道場）",
+        "(四會) 夜摩天宮"
+      ],
+      "status": "verified",
+      "evidence": "zhwiki structure table first column",
+      "source": "zh.wikipedia",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V08",
+      "claim": "部类 T 号区间（26 部）",
+      "value": {
+        "ranges_found": 28
+      },
+      "status": "verified",
+      "evidence": "parsed from Template:Chinese Buddhist Canon navbox",
+      "source": "en.wikipedia",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V09",
+      "claim": "梵本仅存四部",
+      "value": "Daśabhūmika; Gaṇḍavyūha; Bhadracaryāpraṇidhāna; Anantabuddhakṣetraguṇodbhāvana",
+      "status": "B",
+      "evidence": "English Wikipedia history section (secondary)",
+      "source": "en.wikipedia",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V10",
+      "claim": "种子配套图数据（231 节点/402 边/7705 引文）",
+      "value": "not in repository",
+      "status": "unverifiable",
+      "evidence": "no companion files found under docs/data",
+      "source": "local filesystem",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V11",
+      "claim": "T300/T301 与八十品33 的字面对应",
+      "value": {
+        "T300": 0,
+        "T301": 4,
+        "T300_T301": 86
+      },
+      "status": "corrected",
+      "evidence": "12-char gram overlap; pair T300/T301 shares 86, each with C80.33 only 0/4",
+      "source": "CBETA TEI",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V12",
+      "claim": "T298 对应藏 32 普贤宣说品",
+      "value": "Chapter 32: The Teaching of Samantabhadra",
+      "status": "B",
+      "evidence": "84000 chapter page title",
+      "source": "https://read.84000.co/translation/toh44-32.html",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V13",
+      "claim": "T281 品3 题名『十地品』与内容/校注的错位",
+      "value": {
+        "pins": [
+          "2 願行品",
+          "3 十地品"
+        ],
+        "vs_pin15": 0,
+        "vs_pin26": 0
+      },
+      "status": "corrected",
+      "evidence": "T281 品3 opens at 忉利天 (十住处); Taishō docNumber still maps to 279(15)",
+      "source": "data/references/cbeta/T10n0281.xml",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "V14",
+      "claim": "T309 非十住品别译",
+      "value": {
+        "vs_pin15": 0
+      },
+      "status": "verified",
+      "evidence": "zero 12-char gram overlap; 法藏判语 '非十住品亦非十地品' agrees",
+      "source": "CBETA TEI; T1733",
+      "accessed": "2026-11-09"
+    }
+  ]
+}

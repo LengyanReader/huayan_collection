@@ -2430,6 +2430,8 @@ def build_articles(articles):
     plus a catalog index (web/demo/articles/index.html). Returns total bytes written."""
     practice = load_practice()
     gap = load_gap()
+    _dg_path = ROOT / 'data' / 'research' / 'huayan_dazang_graph.json'
+    dazang_graph = json.loads(_dg_path.read_text(encoding='utf-8')) if _dg_path.exists() else None
     article_bi = db_reader.load_article_bi()
     try:
         ds_lib = db_reader.load_data_science()
@@ -2557,6 +2559,11 @@ def build_articles(articles):
             scripts = ('<script>\n' + data_script + '\n</script>\n'
                        '<script>\n' + wrap_script(article_js) + '\n</script>' + extra_js)
             doc_chars = len(a.get('doc_md', ''))
+        if a['id'] == 'huayan-dazang-mapping' and dazang_graph:
+            scripts += ('\n<script>var DAZANG_GRAPH = %s;</script>'
+                        '\n<script>\n%s\n</script>'
+                        % (json.dumps(dazang_graph, ensure_ascii=False),
+                           wrap_script(read_src('dazang_graph_inline.js'))))
         graph = article_knowledge.get(a['id'])
         if graph:
             scripts = ('<script>var ARTICLE_GRAPH = %s;</script>\n' % json.dumps(graph, ensure_ascii=False)) + scripts

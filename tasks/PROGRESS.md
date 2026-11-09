@@ -2563,3 +2563,79 @@ done(
 - **sources**：T10n0279/T09n0278/T10n0293/derge035-038/T1735/T1736/T1739/X0223/B0002/华藏妙海OCR；dataset×8（53参/藏45章/80-60矩阵/13对序分/13对fulltext/结构对读/13对segment_map/参学统计）。
 - **build**：**81 files**·36,470,978 B。
 - **终态**：**39篇39品·部号=品号·1:1·七层＝**273项全绿**＋逐字对勘92段全比对＋53×110考据＋叙事语法发现＋藏45分位实文＋三源可视化×2页。
+## L.380 大藏经对应研究·程序化核验＋独立文章批（2026-11-09）
+
+- **用户指示**：先核对／增补／穷尽，且「用编程方法做」；基于种子但不限于种子，做成独立文章＋可视化。
+- **核验管线**：`scripts/verify_dazang_mapping.py`
+  - 抓取 CBETA GitHub `T280–T309` 30 部 XML（T281–T309 新增 29 部落盘 `data/references/cbeta/`），解析题名／译者／卷／品／`docNumber`／CJK；**30/30 成功**。
+  - 本地 `T278/T279/T293`；中文维基结构表；84000 `Toh 44-31`；英文维基 canon navbox；本地 TOC 与 `complete_catalog.yaml`。
+  - 输出 `data/research/dazang_mapping_verification.json`（10 台账／30 题录／39 行／28 区间）＋`docs/草稿/大藏经对应研究_核验报告.md`。
+- **关键勘正（A）**：
+  1. 「六十阙十品」→ **阙一品（十定）**；**十明＝十通**（T09n0278 品 23 首句 vs T10n0279 品 28 首句；zhwiki 同列）。
+  2. T279 译者 byline：取「譯」不取「製」；武则天是序作者，译者为实叉难陀。
+  3. 部类 26 → **28 区间**（含 supplements 2185–2700、2701–2731）。
+  4. 仓库 `huayan_80_60_matrix.json` 27–36 行「阙」为误；**只记录，不改既有发布内容**。
+- **文章**：19 节·13 图·7 数据表·约 1.8 万汉字 → `docs/经学文献/华严经与大藏经对应研究.md`。
+  - `scripts/build_dazang_article.py` 幂等注入（start/end 标记）；表／图由 JSON 派生，改数据重跑即同步。
+  - 注册 `huayan-dazang-mapping`（order 46）；build **85 files**；新页 229,471 B。
+- **门禁**：`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK。
+- **blocked**：种子 231/402/7705 配套文件不在仓；阿含／般若原典不在仓；注疏书名号被剥离 → 相应结论标 B／○。
+- **next**：P0 收尾（T300/T301↔Toh 187、T298↔藏 32、T281 三章、T309）；P1 的 18 个种子；P3 注疏全量化。
+- **sources**：CBETA TEI `T278/T279/T280–T309`；84000 `Toh 44-31`；zhwiki《華嚴經》；enwiki *Buddhāvataṃsaka*／*Ten Stages*；本地 TOC／complete_catalog。
+
+## L.380续 P0 收尾＋文章门禁（2026-11-09）
+
+- **P0 实测（A，脚本 12 字共享计算）**：
+  - T300/T301 vs 八十品 33 = **0／4**；T300 vs T301 = **86** → 非字面别译，同一异译组。
+  - T298 vs 品 36 = 2；84000 章题 *The Teaching of Samantabhadra* → 藏 32，非品 36。
+  - T281 品 3 题「十地品」，内容起忉利天，vs 品 15／26 = **0／0**；校注挂 279(15) → 题名—内容—校注错位。
+  - T309 vs 品 15 = **0**；法藏判语同 → 非十住别译。
+  - 84000 Toh 187 题名 *The Teaching on the Inconceivable Properties of the Buddhas* → 义理同题，非字面。
+- **文章**：新增 §12.6（P0 表，脚本生成）＋修订 §3.3／§3.4／§14；台账 10→14；§12.4 增加两条「复算推翻旧说」。
+- **新门禁**：`scripts/verify_dazang_article.py` 全过（doc_md==源、13 图、39 行、30 部、28 区间、14 台账、关键事实、无占位）。
+- **门禁**：`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK。
+- **next**：P1 梵巴藏内容级（18 种子）；P3 注疏全量化。
+## L.381 关系网络图批（2026-11-09）
+
+- **设计**：不用单张 hairball；按拓扑分三视图，共用一份类型化多重图 JSON。
+- **图模型**：9 类节点（version／pin／tib／text／cluster／commentary／work／canon_class／hub）；11 类边（contains／contains_60／parallel／translation／related／belongs／unique／survives／sums_to／cites／cites_class）；边带 `grade`（A／B／B/C）。
+- **规模**：**148 节点／289 边**，0 悬空；节点分布 pin 39、tib 45、text 29、cluster 14、version 5、commentary 4、work 5、canon_class 6、hub 1。
+- **三视图（图7–9）**：
+  - 图7 分层拓扑：版本括号 → 39 品（簇色带）→ 45 藏章 → 29 异译；十定红圈「六十无」；藏 11/32 红圈「汉无」；梵本四项落品26/31/36/39。
+  - 图8 簇—品—异译力导向：14 布局簇为锚点；确定性 220 轮＋碰撞松弛，节点最小间距 12.5px（仅簇心与光晕同心）；无随机种子。
+  - 图9 注疏引用二部图：四部注疏 → 合计 7,705 → 前五经论／六部类；种子 `B`。
+- **门禁增强**：`verify_dazang_article.py` 新增 13 图顺序、SVG XML 良构（`ElementTree`）、图完整性（148/289、0 悬空、39 品全归簇）。
+- **落盘**：`scripts/build_dazang_graph.py`、`data/research/huayan_dazang_graph.json`；文章 §4.5；13 图、19,884 CJK、页面 278,961 B。
+- **门禁**：`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK；article gate ALL PASSED。
+- **next**：`related` 虚线待 P1 梵藏对读；图7 可再加「会」层（如需）。
+## L.382 交互图页批（2026-11-09）
+
+- **用户指示**：better to use dynamic visuals。
+- **落盘**：`scripts/build_dazang_graph_page.py` → `web/demo/articles/huayan-dazang-graph.html`（**54,329 chars / 58 KB**，`skip_html`，自包含 Canvas，无 CDN）。
+- **交互**：
+  - 三模式：分层（版本→品→藏章→异译）、力导向（220 轮＋碰撞松弛）、引用（注疏→合计→经论／部类）。
+  - 过滤：6 类图层、5 组边型；搜索；标签开关；适配／重置。
+  - 操作：滚轮缩放、背景平移、力导向模式节点拖拽、hover 邻居高亮＋tooltip、点击节点显示详情与相邻边（可跳转）。
+- **注册**：`huayan-dazang-graph`，order 47，`skip_html: true`，时间带；build **86 files**。
+- **门禁**：article gate 新增交互页检查（存在／≥20KB／`const GRAPH`／canvas／force／citation／`</html>`／无外链／文章链接）全过；`verify_demo` skip 入口全过；JS `node --check` 通过。
+- **next**：移动端双指缩放；图7 可加「会」层。
+## L.383 交互图内嵌融合批（2026-11-09）
+
+- **用户指示**：融合进《华严经与大藏经对应研究》，不要独立文章；vibe coding。
+- **移除**：独立页 `huayan-dazang-graph.html`、`standalone_articles.yaml` 条目、index 入口、`scripts/build_dazang_graph_page.py`。
+- **新增**：`web/demo/src/dazang_graph_inline.js`（scoped Canvas 渲染器，23.7KB）；`build.py` 对 `huayan-dazang-mapping` 注入 `DAZANG_GRAPH`（148/289）＋渲染器，排在 `article.js` 之后。
+- **文章**：§4.5 插入 `<div id="dazang-graph-inline"></div>`；支持「展开」全屏；`MutationObserver` 在 `renderArticle` 重渲染后自动重挂载。
+- **验证**：article gate 内嵌检查全过（容器／`DAZANG_GRAPH`／`dg-bar`／force／citation／MutationObserver／无外链／无独立页链接）；`node --check` OK；build **85 files**；页面 **402,216 B**。
+- **门禁**：`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK。
+- **next**：移动端双指缩放。
+## L.384 内嵌图 ResizeObserver 循环修复（2026-11-09）
+
+- **症状**：用户报告 `JS ERROR: ResizeObserver loop completed with undelivered notifications`（文章页 `#dazang-graph-inline`）。
+- **原因**：`ResizeObserver(function(){ draw(); }).observe(stage)` 同步重绘；`draw()` 修改 canvas 尺寸 → 同一帧再次触发 → Chrome 告警。
+- **修复**（`web/demo/src/dazang_graph_inline.js`）：
+  - 观察回调改为 `requestAnimationFrame` 合并（`roFrame` 去重）。
+  - `lastSize = stage.clientWidth + 'x' + stage.clientHeight` 尺寸 guard；未变则跳过。
+  - 无 `ResizeObserver` 时用 `window.resize` 兜底。
+- **防回归**（`scripts/verify_dazang_article.py`）：禁止同步 `new ResizeObserver(function () { draw(); })`；要求内嵌脚本含 `requestAnimationFrame`。
+- **重建**：`python web/demo/scripts/build.py` → **85 files · 37,949,350 B**；页面约 403 KB。
+- **验证**：`node --check` OK；article gate ALL PASSED；`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK。
