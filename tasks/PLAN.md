@@ -811,3 +811,18 @@ P25 十定逐种全引（27.2K）→ P26 十通（3.6K）→ P27 十忍（5.7K�
 
 ### First move
 扩展 `gen_trilingual_article.py` 为多页生成器（hub＋3 章子页共用 shell/CSS/JS 注入管线），对应素材机械提取函数先行。
+
+## L.379 翻译线续跑批·M2 单元1/2 机时续批（2026-11-09）
+
+### 实况盘点（开工前实测）
+- ch1 6/6 done；ch14 4/6（seg5/6 pending）；ch15 seg1 仅 zh（en 缺·status pending）、seg2–6 pending。
+- 前批死因：ch15 批量 exit=1073807364（会话终止类突发退出·非数据损坏）；ch14b 批量同夜未竟。**无 python 进程存活**；可续跑器逐语补段（seg1 zh 已有→只补 en），数据层无损失。
+
+### 本批动作（算力策略 decisions #22：本机 CPU 逐点推进）
+- 重启 ch14 批量（PID 35648·todo=2·预估 1–2 h）→ `mitra_chain_next.py --wait-pid 35648 --chapter 15` 链值守（ch14 退出自动接 ch15·todo=6 实为 11 次单语生成 ≈3–5 h）。
+- 跨会话续跑；本机重启则链失效，可续跑器兜底。
+
+### DoD（落盘后验收批执行）
+- [ ] ch14 6/6、ch15 6/6 全 done；逐段 norm() 复验；漂移/藏文残字入 M5 校订清单。
+- [ ] 重生 hub＋章子页（v0.4 生成器自动纳入新段）；六门禁绿＋浏览器抽查。
+- [ ] PROGRESS/心跳/ledger 登记＋显式路径 commit（不 push）。
