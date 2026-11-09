@@ -2639,3 +2639,5 @@ done(
 - **防回归**（`scripts/verify_dazang_article.py`）：禁止同步 `new ResizeObserver(function () { draw(); })`；要求内嵌脚本含 `requestAnimationFrame`。
 - **重建**：`python web/demo/scripts/build.py` → **85 files · 37,949,350 B**；页面约 403 KB。
 - **验证**：`node --check` OK；article gate ALL PASSED；`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK。
+- **L.377（2026-11-09·80/40 批三·本会话线）**：品39 第三窗七目——**近全同段之最**：入三昧式（「知諸菩薩心之所念，大悲為身，大悲為門，大悲為首…入師子頻申三昧；入此三昧已，一切世間普皆嚴淨」两译句句平行）·逝多林广博（「與不可說佛剎微塵數諸佛國土其量正等」仅極/微尘一字差）·香河句句平行·阁内庄严同件异陈·请法问域同而广狭异；`huayan_80_40_duikandu_b3.json` 入库·回源 ALL PASS。〔注〕批号与并行会话 L.379–384（大藏经/翻译线）并行双轨；**diff-check 门禁现因并行线 `workspace/…/mitra_chain_ch15_stderr.txt` 尾随空白而红（非本批改动）·该线自行清理**；本批内容门禁（审计 0·check·vd·pipeline·sources）全绿。
+
