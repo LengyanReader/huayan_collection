@@ -2640,4 +2640,5 @@ done(
 - **重建**：`python web/demo/scripts/build.py` → **85 files · 37,949,350 B**；页面约 403 KB。
 - **验证**：`node --check` OK；article gate ALL PASSED；`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK。
 - **L.377（2026-11-09·80/40 批三·本会话线）**：品39 第三窗七目——**近全同段之最**：入三昧式（「知諸菩薩心之所念，大悲為身，大悲為門，大悲為首…入師子頻申三昧；入此三昧已，一切世間普皆嚴淨」两译句句平行）·逝多林广博（「與不可說佛剎微塵數諸佛國土其量正等」仅極/微尘一字差）·香河句句平行·阁内庄严同件异陈·请法问域同而广狭异；`huayan_80_40_duikandu_b3.json` 入库·回源 ALL PASS。〔注〕批号与并行会话 L.379–384（大藏经/翻译线）并行双轨；**diff-check 门禁现因并行线 `workspace/…/mitra_chain_ch15_stderr.txt` 尾随空白而红（非本批改动）·该线自行清理**；本批内容门禁（审计 0·check·vd·pipeline·sources）全绿。
+- **L.385（2026-11-09·80/40 批四·本会话线）**：品39 第四窗五目——**到会九件模板全同**（方位→世界→佛号→菩萨→眷属→兴云→顶礼→化座→趺坐·两译逐件对应）·世界/佛号各自异名（与品7 佛名异同律）·云名两套（四十长衔「不可說佛剎極微塵數」更繁）·**冠/网次序互倒**（八十先网后冠·四十先冠后网）；`duikandu_b4.json`·回源 ALL PASS·审计 0·五门禁绿（diff-check 仍因并行线 mitra 日志红·本批 scoped diff OK）。
 

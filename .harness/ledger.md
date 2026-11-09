@@ -336,3 +336,4 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - **L.383**（2026-11-09）：交互图内嵌融合批（用户：不做独立文章）——删除独立页/注册/index/生成器；新增 `web/demo/src/dazang_graph_inline.js`，build.py 对 mapping 文章注入 `DAZANG_GRAPH`＋渲染器；§4.5 容器＋全屏展开＋MutationObserver 重挂载；article gate 改内嵌检查；build 85、页面 402KB；node --check＋六门禁绿。next=移动端手势。
 - **L.384**（2026-11-09）：ResizeObserver 循环修复——同步 `draw()` 重绘 canvas 触发 `ResizeObserver loop completed with undelivered notifications`；改为 rAF 合并＋尺寸 guard＋window.resize 兜底；article gate 增两条防回归检查；node --check／六门禁绿；build 85。next=移动端双指缩放。
 - **L.377**（2026-11-09·本会话线）：80/40批三（品39第三窗七目·师子频申近全同段·同源最强实证）；内容门禁绿·diff-check 因并行线 mitra 日志尾随空白红（该线清理）。〔双轨注〕并行会话 L.379–384 大藏经/翻译线同仓运行·批号双轨已注明。
+- **L.385**（2026-11-09·本会话线）：80/40批四（第四窗五目·到会九件模板全同·冠网互倒）；内容门禁绿。
