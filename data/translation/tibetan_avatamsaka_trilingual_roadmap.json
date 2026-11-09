@@ -14,7 +14,7 @@
   "gen_seconds_per_token": 4.5,
   "batch_measured_seg1_zh": "2026-11-06 实跑：seg1 zh 200 tokens / 4597.8 s ≈ **23.0 s/token**（比冒烟口径 4.5 s/token 慢约 5 倍·并发争用下实测）；复读未触发（clipped_repeat=False），但**后半飘入他处经文式 boilerplate**（题名块→十法句），语义漂移实证——模型译一律不得作引文，M5 人工校订为必经环节",
   "batch_final_W1": "L.360 全量实测（15:05:21 ALL DONE）：W1 6/6 段三语落盘·总机时 18148.9s（≈5.04 h）；稳态段（zh+en 双语）31–53 min/段（909–1591.5 s/单语）；seg1 慢尾系题名块跑满 max-new 200 tokens 叠加工况争用，非稳态代表；六段复读截断零触发；语义漂移仅 seg1 实证（其余段surface连贯，仍一律〔未校订〕）",
-  "repeat_risk": "贪心长输出易复读（冒烟实测同句循环）→ no_repeat_ngram_size=8 ＋ 周期截断；批量实测另见语义漂移风险（batch_measured_seg1_zh）",
+  "repeat_risk": "贪心长输出易复读（冒烟实测同句循环）→ no_repeat_ngram_size=8 ＋ 周期截断；批量实测另见语义漂移风险（batch_measured_seg1_zh）；L.379 复核新增：变文复读（paraphrase loop）规避 ngram=8 与整周期截断（ch14 seg2/4·ch15 seg2/3 实证·clipped_repeat=False 仍漏网）——该标志不可作无复读之证；逐段分类清单见 tibetan_avatamsaka_drift_review_L379.json",
   "session_unit_cost_estimate": "按 W1 全量实测修正：1 段（zh+en 双语）≈ 30–50 min；每章开篇 6 段 ≈ 3.5–5 h 后台续跑（长单会话可完成·可续跑器已备）；算力决策（M1）仍有价值但**不再紧迫**",
   "batch_final_M2_ch14_resume": "L.379 续跑实测（2026-11-09 13:34:45 ALL DONE）：ch14 seg5/6 补段·总机时 4354.0s（≈72.6 min）·四次单语生成 1054.8–1076.5s（稳态口径内）·复读截断零触发；seg5/6 汉译中段漂移般若系 boilerplate、英译末尾藏文残字（M5 校订清单已注）",
   "batch_scopes": {

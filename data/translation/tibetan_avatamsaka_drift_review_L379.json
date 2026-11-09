@@ -1,0 +1,184 @@
+{
+ "id": "tibetan_avatamsaka_drift_review_L379",
+ "batch": "L.379",
+ "date": "2026-11-09",
+ "purpose": "MITRA 9B 短输入尾段退化系统复核（ch14 全六段＋ch15 已落盘段）·为 M5 校订线提供逐段分类清单",
+ "method": "逐段以藏文底本（bo·逐字回源 verified）为绳：首句吻合度人工识读＋残字正则扫描〔ཀ-࿿〕＋漂移内容对照底本无对应坐实；分类属〔本文判断〕，引文一律程序取自数据层",
+ "flaw_types": {
+  "residue": "藏文残字混入译文（疑解码/复读残留）",
+  "drift": "首句合底本，尾部飘入他经/论典 boilerplate（底本无对应）",
+  "para_loop": "变文复读循环（换了措辞的重复，规避 no_repeat_ngram_size=8 与整周期截断·clipped_repeat=False 仍漏网）"
+ },
+ "segments": [
+  {
+   "chapter": 14,
+   "seg": 1,
+   "status": "done",
+   "bo_chars": 178,
+   "bo_head": "དེ་ནས་བཅོམ་ལྡན་འདས་ཀྱི་ཞབས་ཀྱི་མཐིལ་གཉིས་ནས་འོད་ཟེར་བྱེ་བ་ཕྲག་བརྒྱ་བཀྱེ་སྟེ། སྟོང་གསུམ་གྱི་སྟོང་ཆེན་པོའི་འཇིག་རྟེན་གྱི་ཁ",
+   "zh_head": "爾時，世尊從雙足掌心放射出百億道光芒，照亮了這三千大千世界，並顯現出百億個贍部洲。",
+   "en_head": "Then, from the soles of the Blessed One’s two feet, hundreds of millions of light rays were emitted, illuminating this great trichiliocosm and revealing a hundred million Jambudvīpas.འཛམ་གླིང བྱེ་བ ཕྲག་བཅུ་པོ་དེ་དག་ཐམས་ཅད་ན་ཡང་སངས་རྒྱས་བཅོཾ་ལྡན འདས་བཞུགས་ཤིང་འཚོ་སྐྱོང་བ་བརྒ�་ཕྲག བཅུ་པ་དེ",
+   "zh_chars": 158,
+   "en_chars": 288,
+   "flaw_types": [
+    "residue"
+   ],
+   "note": "首句合底本（雙足放光百億/照三千大千/現百億贍部洲）；汉译中段藏文残字、英译末尾残字。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 14,
+   "seg": 2,
+   "status": "done",
+   "bo_chars": 112,
+   "bo_head": "ཤར་གྱི་ལུས་ འཕགས་བྱེ་བ་ཕྲག་བརྒྱ་དང་ནུབ་ཀྱི་བན་ལང་སྤྱོད་བྱེ་བ་ཕྲག་བརྒྱ་དང་། བྱང་གི་སྒྲ་མི་སྙན་བྱེ་བ་ཕྲག་བརྒྱ་དང་།",
+   "zh_head": "東方東勝身洲有百億，西方西牛貨洲有百億，北方北俱盧洲亦有百億。",
+   "en_head": "There are a billion [realms of] Pūrvavideha in the east, a billion [realms of] Aparagoyānīya in the west, and a billion [realms of] Uttarakuru in the north.འཛམ་བུའི་གླིང་བྱེབ་ཕྲུག་བརྒན་ཡོད་པ་དེ་དག་ཐམས་ཅད་ཀྱང་འཁོར་ལོས་སྒྱུར་བའི་རྒྱལ་པོ་རེ་རེས་དབང་བྱཻད་དེ། �",
+   "zh_chars": 230,
+   "en_chars": 256,
+   "flaw_types": [
+    "drift",
+    "para_loop"
+   ],
+   "note": "首句合底本（東勝身洲/西牛貨洲/北俱盧洲各百億）；尾部飘入「論曰」三身教化论议体（底本无对应），同义变文重複四次——整周期截断未捕获。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 14,
+   "seg": 3,
+   "status": "done",
+   "bo_chars": 133,
+   "bo_head": "རྒྱ་མཚོ་ཆེན་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཁོར་ཡུག་རྡོ་རྗེའི་རི་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །བྱང་ཆུབ་སེམས་དཔའ་སྐྱེ་བ་བྱེ་བ་ཕྲག་",
+   "zh_head": "示現了百億大海，示現了百億鐵圍金剛山，並示現了百億菩薩的受生。",
+   "en_head": "He displayed a hundred times ten million great oceans. He displayed a hundred times ten million Cakravāḍa vajra mountains. He displayed a hundred times ten millions of bodhisattva births.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱི་འཛམ་བུའི་གླིང་འདི་ཁོ་ནར་ཡང་སེམས༵་ཅ༵ན་གྱི༵་རིགས༵་མི་འདྲ་བ་བསམ་གྱིས་མི་ཁྱབ་པ་སྣ༵",
+   "zh_chars": 148,
+   "en_chars": 295,
+   "flaw_types": [
+    "residue"
+   ],
+   "note": "首句合底本（百億大海/鐵圍金剛山/菩薩受生）；汉译中段、英译末尾藏文残字（含八段列表头）。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 14,
+   "seg": 4,
+   "status": "done",
+   "bo_chars": 146,
+   "bo_head": "མངོན་པར་འབྱུང་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །དེ་བཞིན་གཤེགས་པ་རྣམ་པར་འཚང་རྒྱ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །ཆོས་ཀྱི་འཁོར་ལོ་བསྐོར",
+   "zh_head": "示現了百億次的出家，示現了百億位如來成就正覺，並示現了百億次的轉法輪。",
+   "en_head": "He displayed a hundred million renunciations; he displayed a hundred million Tathāgatas attaining perfect enlightenment; he displayed a hundred million turnings of the wheel of Dharma.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱིས་ཀྱང་འཇིག་པ་དང་ཆགས་པཻ་ཡོངས་སུ་བསྟན། འཇིག་ར་གྱི་གྱི་བཀོད་པ་ཐམས་ཅད་ཀྱངཡོངས་ས་བསྟནཏོ། �",
+   "zh_chars": 201,
+   "en_chars": 298,
+   "flaw_types": [
+    "drift",
+    "para_loop"
+   ],
+   "note": "首句合底本（百億出家/成正覺/轉法輪）；尾部飘入「無自性→無生無滅無住」中观式排比（底本无对应），近义循环多轮。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 14,
+   "seg": 5,
+   "status": "done",
+   "bo_chars": 107,
+   "bo_head": "དེ་བཞིན་གཤེགས་པ་ཡོངས་སུ་མྱ་ངན་ལས་འདའ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །རི་རབ་ རིའི་རྒྱལ་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
+   "zh_head": "示現了百億位如來圓滿入於涅槃，並示現了百億座須彌山王。",
+   "en_head": "He manifested a hundred million Tathāgatas passing into parinirvāṇa, and he manifested a hundred million Sumerus, the kings of mountains.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱི་འཛམ་བུའི་གླིང་འདི་ཁོ་ནར་ཡང་སེམས་ཅན་ཚད་མེད་པ་ཡོད་པར་མཐོང་ངོ་། །དེ་དག་ལ་ཡང་དེ་བཞེན་གཤེས་�",
+   "zh_chars": 231,
+   "en_chars": 254,
+   "flaw_types": [
+    "drift",
+    "residue"
+   ],
+   "note": "首句合底本（百億如來涅槃/百億須彌山王·底本仅两句）；尾部飘入般若系「善現對曰」梦中造业问答；英译末尾藏文残字。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 14,
+   "seg": 6,
+   "status": "done",
+   "bo_chars": 114,
+   "bo_head": "རྒྱལ་པོ་ཆེན་པོ་བཞིའི་ཁམས་ཀྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །སུམ་ཅུ་རྩ་གསུམ་གྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
+   "zh_head": "示現了四百億四大王眾天，並示現了四百億三十三天。",
+   "en_head": "He displayed a hundred million divine realms of the Four Great Kings. He displayed a hundred million divine realms of The Thirty-Three.འཇིག་རྟེན་གྱི་གནས་པ་ལ་མངོན་པར་ཞེན་པ་མེད་པ་དང་། འཇིག་རིགས་པ་ལས་འདས་པའི་ཆོས་ལ་མང་དུ་གནས་པར་བྱའོ། །འཇིག་ཚོགས་ལ་ལྟ་བ་ལ་མངན་པར་མ་ཞ�",
+   "zh_chars": 228,
+   "en_chars": 261,
+   "flaw_types": [
+    "drift",
+    "residue"
+   ],
+   "note": "首句合底本（四百億四大王眾天/三十三天·底本仅两句）；尾部飘入「十種法」枚举（無礙智…無分別智）；英译末尾藏文残字。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 15,
+   "seg": 1,
+   "status": "done",
+   "bo_chars": 111,
+   "bo_head": "སངས་རྒྱས་རྨད་ག་ཅད་ཅེས་བྱ་བ་ཤིན་ཏུ་རྒྱས་པ་ཆེན་པོའི་མདོ། །བམ་པོ་བཅུ་བདུན་པ། དེ་ནས་བྱང་ཆུབ་སེམས་དཔའ་འཇམ་དཔལ་ གྱིས།",
+   "zh_head": "《佛說大毘盧遮那成佛神變加持經》（或譯《大集大虛空藏菩薩所問經》），第十七卷。",
+   "en_head": "The Great Vaipulya Sutra entitled \"The Marvelous Buddha.\" Fascicle Seventeen. Then, the Bodhisattva Mañjuśrī,འཇིག་རྟེན་གྱི་ཁམས་འདི་ནས་ཤར་ཕྱོགས་ལོགས་སུ་འཇིག་ རྟེན་ གྱྀ་ཁམས་གང་གཱའི་ཀླུང་གི་བྱེ་མ་སྙེད་འདས་པ་ན། འཇིག་ར ིན་གྱི ཁ�",
+   "zh_chars": 211,
+   "en_chars": 223,
+   "flaw_types": [
+    "drift",
+    "residue"
+   ],
+   "note": "底本为题名块（rmad ga cad 經·第十七 bam po·爾時文殊師利）；汉译误系《大毘盧遮那成佛神變加持經》经题并伪造誓愿问答偈（他经·坐实）；英译题名块忠实（Great Vaipulya…Fascicle Seventeen…Mañjuśrī）但末尾藏文残字。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 15,
+   "seg": 2,
+   "status": "done",
+   "bo_chars": 167,
+   "bo_head": "བྱང་ཆུབ་སེམས་དཔའ་སངས་རྒྱས་དཔལ་ལ་འདི་སྐད་ཅེས་སྨྲས་སོ། །ཀྱེ་རྒྱལ་བའི་སྲས་དག་རང་བཞིན་གཅིག་པའི་སེམས་ལ་བྱེ་བྲག་ཐ་དད་པའི་རྣམ་པ",
+   "zh_head": "菩薩對佛德（佛陀吉祥）菩薩說道：「諸位佛子！在自性唯一的心之中，竟然會產生出如此種種不同的差別相狀，例如：往生善趣、」由此，應當了知，這便是菩薩摩訶薩的「無盡寶篋三昧」。",
+   "en_head": "The bodhisattva Buddhashrī said this to the sons of the conquerors: \"O sons of the conquerors, within the mind that is of a single nature, there are such diverse and distinct aspects as these: namely, going to the higher realms,and so forth.and so forth.and [the state of] being born in the lower realms.and [the state of being born in] the lower realms.and [being born] in the lower realms.and so forth.The bodhisattva Buddhashri said this to the sons of the Conqueror: \"O sons of the Conqueror, within the mind that is of one nature, there are such diverse and different aspects as these: namely, going toward the higher realms,and so on.and so forth.O sons of the Conqueror! Within the mind that is of a single intrinsic nature, there are such diverse and",
+   "zh_chars": 245,
+   "en_chars": 758,
+   "flaw_types": [
+    "drift",
+    "para_loop"
+   ],
+   "note": "首句合底本（菩薩問覺首〔sangs rgyas dpal=Buddhashrī〕：自性一心差別往生善趣）；汉译尾部飘入金剛藏/無盡寶篋三昧/十種法（十地十无尽藏系）；英译陷入 and so forth/lower realms 变文循环并整句重起两回（758 chars 泰半为循环）。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": false,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  },
+  {
+   "chapter": 15,
+   "seg": 3,
+   "status": "pending",
+   "bo_chars": 97,
+   "bo_head": "ངན་སོང་དུ་འགྲོ་བ་དང་། དབང་པོ་ཚང་བ་དང་ དབང་པོ་མ་ཚང་བ་དང་། སྐྱེ་བ་འཐུན་པ་དང་། སྐྱེ་བ་མི་འཐུན་པ་དང་།",
+   "zh_head": "墮入惡趣、諸根完具或諸根殘缺、投生於同類或投生於異類。",
+   "en_head": "",
+   "zh_chars": 225,
+   "en_chars": 0,
+   "flaw_types": [
+    "drift",
+    "para_loop"
+   ],
+   "note": "首句合底本（惡趣/諸根完缺/同類異類生·承 seg2 枚举）；尾部飘入般若波羅蜜多＋須菩提句式，近义重複——〔本文判断〕与 ch14 seg2/4 同型。",
+   "clipped_repeat_zh": false,
+   "clipped_repeat_en": null,
+   "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+  }
+ ],
+ "finding": "ch14 6/6＋ch15 已译 3/3 段全部呈首句忠实＋尾段退化（残字/漂移/变文复读至少其一）——短输入（97–178 字符）尾段退化在本样本为 100%〔本文判断〕；变文复读规避现有两道截断（ngram=8·整周期 regex），clipped_repeat=False 不能作无复读之证。M2 后续各章照此预期；M5 校订以「首句可信、尾段必校」为操作口径。"
+}
