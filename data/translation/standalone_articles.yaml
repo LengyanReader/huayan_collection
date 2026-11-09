@@ -842,9 +842,9 @@ others:
   icon: 🕻
   title: 藏译华严 · 藏汉英三语对读（德格甘珠尔 Toh 44）
   title_en: 'Tibetan Avataṃsaka · Trilingual Reading Workbench (Tibetan / Chinese / English)'
-  title_sub: v0.4 · L.378 子页架构批 · 总目枢纽四 tab（总览/章目导航/对应研究/工程台账）＋章子页三 tab（三语对读/汉藏对应/延伸阅读）·
-    一段藏→一段汉→一段英 · 藏文德格逐字回源复验 · 汉/英 MITRA 9B 本地模型译〔未校订〕· 已试译 3 章 18 段中 10 段
-  updated_at: '2026-11-08'
+  title_sub: v0.4 · L.379 ch14 验收 · 总目枢纽四 tab（总览/章目导航/对应研究/工程台账）＋章子页三 tab（三语对读/汉藏对应/延伸阅读）·
+    一段藏→一段汉→一段英 · 藏文德格逐字回源复验 · 汉/英 MITRA 9B 本地模型译〔未校订〕· 已试译 3 章 18 段中 12 段
+  updated_at: '2026-11-09'
   skip_html: true
   back:
     tab: gap

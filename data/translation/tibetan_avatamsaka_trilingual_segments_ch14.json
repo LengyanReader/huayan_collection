@@ -159,10 +159,30 @@
    "folio": "[191b.2]",
    "char_off": 600,
    "bo": "དེ་བཞིན་གཤེགས་པ་ཡོངས་སུ་མྱ་ངན་ལས་འདའ་བ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །རི་རབ་ རིའི་རྒྱལ་པོ་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "示現了百億位如來圓滿入於涅槃，並示現了百億座須彌山王。由此，應當了知：這一切法皆無所從來，亦無所從去。「善男子！ 譬如有人，於睡夢中，造作種種善不善業。 善男子！ 於意云何？ 是人所夢，是實有不？ 」善現對曰： 「不也！ 世尊！ 」佛告善現： 「於意云何？ 是人覺已，憶念夢中所作種種善不善業。 是人所夢，是實有耶？ 」善現對曰：\n「善男子！ 譬如有人於睡夢中，造作諸業，或善或不善。 善男子！ 於汝意云何？ 是人所造善不善業，為實有不？ 」善現答言： 「不也！",
+   "en": "He manifested a hundred million Tathāgatas passing into parinirvāṇa, and he manifested a hundred million Sumerus, the kings of mountains.འཇིག་རྟེན་གྱི་ཁམས་འདི་ཉིད་ཀྱི་འཛམ་བུའི་གླིང་འདི་ཁོ་ནར་ཡང་སེམས་ཅན་ཚད་མེད་པ་ཡོད་པར་མཐོང་ངོ་། །དེ་དག་ལ་ཡང་དེ་བཞེན་གཤེས་�",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1054.8,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T12:40:55"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1076.2,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T12:58:52"
+   }
   },
   {
    "no": 6,
@@ -172,10 +192,30 @@
    "folio": "[191b.3]",
    "char_off": 717,
    "bo": "རྒྱལ་པོ་ཆེན་པོ་བཞིའི་ཁམས་ཀྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ། །སུམ་ཅུ་རྩ་གསུམ་གྱི་ལྷའི་རིས་བྱེ་བ་ཕྲག་བརྒྱ་བསྟན་ཏོ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "示現了四百億四大王眾天，並示現了四百億三十三天。「善男子！菩薩摩訶薩有十種法，能令菩薩成就無量無邊智慧。何等為十？所謂： 一者、於一切法得無礙智；二者、於一切法得無著智；三者、於一切法得無依智；四者、於一切法得無住智；五者、於一切法得無生智；六者、於一切法得無滅智；七者、於一切法得無起智；八者、於一切法得無盡智；九者、於一切法得無壞智；十者、於一切法得無分別智。是為十。 「善男子！若菩薩摩訶薩成就此十種法，則能成就無量無邊智慧。 復次，善男子！菩薩摩訶",
+   "en": "He displayed a hundred million divine realms of the Four Great Kings. He displayed a hundred million divine realms of The Thirty-Three.འཇིག་རྟེན་གྱི་གནས་པ་ལ་མངོན་པར་ཞེན་པ་མེད་པ་དང་། འཇིག་རིགས་པ་ལས་འདས་པའི་ཆོས་ལ་མང་དུ་གནས་པར་བྱའོ། །འཇིག་ཚོགས་ལ་ལྟ་བ་ལ་མངན་པར་མ་ཞ�",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1076.5,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T13:16:48"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1076.5,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T13:34:45"
+   }
   }
  ]
 }

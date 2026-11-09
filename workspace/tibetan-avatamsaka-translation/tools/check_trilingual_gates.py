@@ -267,16 +267,34 @@ def p_cost_table_grounded():
                      and (s.get('en_meta') or {}).get('gen_s'))]
     if nomet:
         return 'FAIL', '已译段缺 *_meta.gen_s（数字无来源可指）：%s' % nomet
-    m = re.search(r'总机时\s*([0-9.]+)s', mc['batch_final_W1'])
-    ssum = sum(s['zh_meta']['gen_s'] + s['en_meta']['gen_s'] for s in done)
-    if m:
+    # 逐批对账：每个 batch_final_* 声明键按 batch_scopes 圈定段集，
+    # 总量只与同批 Σmeta 比对（多章落盘后全局求和会拿 W1总量对全部段，口径错误）。
+    scopes = mc.get('batch_scopes') or {}
+    keys = [k for k in mc if k.startswith('batch_final_')]
+    if not keys:
+        return 'FAIL', '标定表无 batch_final_* 实测键'
+    msgs = []
+    for k in keys:
+        sc = scopes.get(k)
+        if not sc:
+            return 'FAIL', '%s 缺 batch_scopes 圈定（总量无对账范围）' % k
+        segs = CTX['segs'].get(sc['chapter']) or []
+        if sc.get('segs'):
+            segs = [s for s in segs if s['no'] in sc['segs']]
+        segs = [s for s in segs if s.get('status') == 'done']
+        m = re.search(r'总机时\s*([0-9.]+)s', mc[k])
+        if not m:
+            return 'FAIL', '%s 未声明总机时（数字无来源可指）' % k
+        if not segs:
+            return 'FAIL', '%s 圈定段集无已译段' % k
         stated = float(m.group(1))
+        ssum = sum(s['zh_meta']['gen_s'] + s['en_meta']['gen_s'] for s in segs)
         if abs(stated - ssum) / stated > 0.05:
-            return 'FAIL', '标定表总机时 %.1fs 与逐段 meta 之和 %.1fs 偏差>5%%' % (stated, ssum)
-        return 'PASS', ('标定表键齐·%d 段 meta 逐数可指·总量对账 %.1f vs Σmeta %.1f s'
-                        '（差 %.2f%%＝加载/间隔）') % (len(done), stated, ssum,
-                                                      100 * (stated - ssum) / stated)
-    return 'PASS', '标定表键齐·%d 段 meta 可指（未声明总量，免对账）' % len(done)
+            return 'FAIL', '%s 总机时 %.1fs 与圈定 Σmeta %.1fs 偏差>5%%' % (k, stated, ssum)
+        msgs.append('%s %.1f vs Σmeta %.1f s（差 %.2f%%）' % (k, stated, ssum,
+                                                          100 * (stated - ssum) / stated))
+    return 'PASS', ('标定表键齐·%d 段 meta 逐数可指·逐批对账：%s'
+                    % (len(done), '；'.join(msgs)))
 
 
 def p_ab_translation_recorded():

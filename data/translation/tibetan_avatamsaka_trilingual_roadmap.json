@@ -15,7 +15,20 @@
   "batch_measured_seg1_zh": "2026-11-06 实跑：seg1 zh 200 tokens / 4597.8 s ≈ **23.0 s/token**（比冒烟口径 4.5 s/token 慢约 5 倍·并发争用下实测）；复读未触发（clipped_repeat=False），但**后半飘入他处经文式 boilerplate**（题名块→十法句），语义漂移实证——模型译一律不得作引文，M5 人工校订为必经环节",
   "batch_final_W1": "L.360 全量实测（15:05:21 ALL DONE）：W1 6/6 段三语落盘·总机时 18148.9s（≈5.04 h）；稳态段（zh+en 双语）31–53 min/段（909–1591.5 s/单语）；seg1 慢尾系题名块跑满 max-new 200 tokens 叠加工况争用，非稳态代表；六段复读截断零触发；语义漂移仅 seg1 实证（其余段surface连贯，仍一律〔未校订〕）",
   "repeat_risk": "贪心长输出易复读（冒烟实测同句循环）→ no_repeat_ngram_size=8 ＋ 周期截断；批量实测另见语义漂移风险（batch_measured_seg1_zh）",
-  "session_unit_cost_estimate": "按 W1 全量实测修正：1 段（zh+en 双语）≈ 30–50 min；每章开篇 6 段 ≈ 3.5–5 h 后台续跑（长单会话可完成·可续跑器已备）；算力决策（M1）仍有价值但**不再紧迫**"
+  "session_unit_cost_estimate": "按 W1 全量实测修正：1 段（zh+en 双语）≈ 30–50 min；每章开篇 6 段 ≈ 3.5–5 h 后台续跑（长单会话可完成·可续跑器已备）；算力决策（M1）仍有价值但**不再紧迫**",
+  "batch_final_M2_ch14_resume": "L.379 续跑实测（2026-11-09 13:34:45 ALL DONE）：ch14 seg5/6 补段·总机时 4354.0s（≈72.6 min）·四次单语生成 1054.8–1076.5s（稳态口径内）·复读截断零触发；seg5/6 汉译中段漂移般若系 boilerplate、英译末尾藏文残字（M5 校订清单已注）",
+  "batch_scopes": {
+   "batch_final_W1": {
+    "chapter": 1
+   },
+   "batch_final_M2_ch14_resume": {
+    "chapter": 14,
+    "segs": [
+     5,
+     6
+    ]
+   }
+  }
  },
  "compute_policy": {
   "decided": "2026-11-06",
@@ -27,146 +40,432 @@
  "scope_note": "藏文 45 章 / 115 bam po；藏章1 单章正文实测 188,713 字符（约 3,914 句读）。以本机吞吐，全经逐段译不可行；故工作单元定为「**每章开篇 6 段**」，并按对应律分波（先已实证平行段）。",
  "milestones": [
   {
-   "id": "M0", "name": "体例奠基（W1 · 藏章1）", "batch": "L.360",
+   "id": "M0",
+   "name": "体例奠基（W1 · 藏章1）",
+   "batch": "L.360",
    "goal": "确立「一段藏→一段汉→一段英」的三语段制与数据层，并把 45 章品目规划做成机器派生表",
    "sessions": [
-    {"no": 1, "scope": "切段器＋规划派生器＋批量翻译器＋页面生成器四件；注册独立文章；W1 六段试译",
-     "load": "藏章1 开篇 6 段（已实证逐字回源）", "est": "工程单会话内毕；W1 翻译实测总机时 18148.9s（≈5.04 h 后台·6/6 段三语落盘 ALL DONE 15:05）", "one_session": true}
+    {
+     "no": 1,
+     "scope": "切段器＋规划派生器＋批量翻译器＋页面生成器四件；注册独立文章；W1 六段试译",
+     "load": "藏章1 开篇 6 段（已实证逐字回源）",
+     "est": "工程单会话内毕；W1 翻译实测总机时 18148.9s（≈5.04 h 后台·6/6 段三语落盘 ALL DONE 15:05）",
+     "one_session": true
+    }
    ],
    "gate": [
-    {"id": "G0.1", "kind": "machine", "check": "segments_all_verified", "say": "segments 全部 verified=true 且 zh/en 段数一致（status=done 者双语齐）"},
-    {"id": "G0.2", "kind": "machine", "check": "plan_totals_closed", "say": "规划表 verified_pairs+tibetan_only+front_unparallel = 45 且 conflicts 逐条留痕"},
-    {"id": "G0.3", "kind": "machine", "check": "page_trilingual_order", "say": "页面每段严格按 藏→汉→英 排列，模型译处均带〔未校订〕与引擎元信息"},
-    {"id": "G0.4", "kind": "machine", "check": "registered_skip_html", "say": "standalone_articles.yaml 已登记该 id 且 skip_html=true、order_in_group 不与同组既有用号冲突"},
-    {"id": "G0.5", "kind": "manual", "say": "本页只称『W1 部分完成』；段未全译则 §6 保留〔未竟〕——人工确认无「以规划冒充完成」"}
+    {
+     "id": "G0.1",
+     "kind": "machine",
+     "check": "segments_all_verified",
+     "say": "segments 全部 verified=true 且 zh/en 段数一致（status=done 者双语齐）"
+    },
+    {
+     "id": "G0.2",
+     "kind": "machine",
+     "check": "plan_totals_closed",
+     "say": "规划表 verified_pairs+tibetan_only+front_unparallel = 45 且 conflicts 逐条留痕"
+    },
+    {
+     "id": "G0.3",
+     "kind": "machine",
+     "check": "page_trilingual_order",
+     "say": "页面每段严格按 藏→汉→英 排列，模型译处均带〔未校订〕与引擎元信息"
+    },
+    {
+     "id": "G0.4",
+     "kind": "machine",
+     "check": "registered_skip_html",
+     "say": "standalone_articles.yaml 已登记该 id 且 skip_html=true、order_in_group 不与同组既有用号冲突"
+    },
+    {
+     "id": "G0.5",
+     "kind": "manual",
+     "say": "本页只称『W1 部分完成』；段未全译则 §6 保留〔未竟〕——人工确认无「以规划冒充完成」"
+    }
    ]
   },
   {
-   "id": "M1", "name": "吞吐标定与算力决策", "batch": "L.361",
+   "id": "M1",
+   "name": "吞吐标定与算力决策",
+   "batch": "L.361",
    "goal": "把 M0 的实测元数据汇成成本表，据此定工作单元尺寸；算力类选项走人工闸门——**L.360续已收口**：标定表＝measured_constraints＋逐段 *_meta＋批量日志（G1.1 机检总量对账通过）；用户拍板「好好规划、一点一点逐步完成、不必一蹴即就」→ 维持本机 CPU 逐点推进，不采纳提速候选（见 compute_policy）",
    "sessions": [
-    {"no": 1, "scope": "汇总 segments *_meta ＋ mitra_batch_log ＋ smoke_result → 标定表；写候选方案对照（同 3 段新旧译文）；记 .harness/decisions.md",
-     "load": "1 会话", "est": "机时 20 min（不重载模型）＋ 判读 30 min", "one_session": true}
+    {
+     "no": 1,
+     "scope": "汇总 segments *_meta ＋ mitra_batch_log ＋ smoke_result → 标定表；写候选方案对照（同 3 段新旧译文）；记 .harness/decisions.md",
+     "load": "1 会话",
+     "est": "机时 20 min（不重载模型）＋ 判读 30 min",
+     "one_session": true
+    }
    ],
    "gate": [
-    {"id": "G1.1", "kind": "machine", "check": "cost_table_grounded", "say": "标定表每个数字都有来源字段（meta/log 可指），无估算冒充实测"},
-    {"id": "G1.2", "kind": "machine", "check": "ab_translation_recorded", "say": "提速候选（若有）须留同 3 段新旧对照记录于数据层"},
-    {"id": "G1.3", "kind": "manual", "say": "花钱 / 装环境 / 换模型类选项只成提案，须用户显式授权后方可执行（M0 硬规则 5）"}
+    {
+     "id": "G1.1",
+     "kind": "machine",
+     "check": "cost_table_grounded",
+     "say": "标定表每个数字都有来源字段（meta/log 可指），无估算冒充实测"
+    },
+    {
+     "id": "G1.2",
+     "kind": "machine",
+     "check": "ab_translation_recorded",
+     "say": "提速候选（若有）须留同 3 段新旧对照记录于数据层"
+    },
+    {
+     "id": "G1.3",
+     "kind": "manual",
+     "say": "花钱 / 装环境 / 换模型类选项只成提案，须用户显式授权后方可执行（M0 硬规则 5）"
+    }
    ]
   },
   {
-   "id": "M2", "name": "差5 段三语（藏章14–31 ＝ 品9–26）", "batch": "L.362 起 18 会话",
+   "id": "M2",
+   "name": "差5 段三语（藏章14–31 ＝ 品9–26）",
+   "batch": "L.362 起 18 会话",
    "goal": "已实证逐章平行的 18 章，各译开篇 6 段并入页面分节",
    "sessions": [
-    {"no": "每章 1 会话（共 18）", "scope": "该章 {T44-N}…{T44-N+1} 切段 → MITRA zh/en → 重生页面 → 该章门禁",
-     "load": "1 章 × 6 段", "est": "按 W1 全量实测：双语 ≈30–50 min/段 → 1 章 6 段 ≈ 3.5–5 h 后台续跑（长单会话可完成）", "one_session": true},
-    {"no": "子批收口", "scope": "M2.1 藏14–19（6 会话）· M2.2 藏20–25（6 会话）· M2.3 藏26–31（6 会话），每子批末次会话跑全量门禁",
-     "load": "6 章 / 子批", "est": "6 会话", "one_session": false}
+    {
+     "no": "每章 1 会话（共 18）",
+     "scope": "该章 {T44-N}…{T44-N+1} 切段 → MITRA zh/en → 重生页面 → 该章门禁",
+     "load": "1 章 × 6 段",
+     "est": "按 W1 全量实测：双语 ≈30–50 min/段 → 1 章 6 段 ≈ 3.5–5 h 后台续跑（长单会话可完成）",
+     "one_session": true
+    },
+    {
+     "no": "子批收口",
+     "scope": "M2.1 藏14–19（6 会话）· M2.2 藏20–25（6 会话）· M2.3 藏26–31（6 会话），每子批末次会话跑全量门禁",
+     "load": "6 章 / 子批",
+     "est": "6 会话",
+     "one_session": false
+    }
    ],
    "gate": [
-    {"id": "G2.1", "kind": "machine", "check": "chapter_coverage_diff5", "say": "规划表 rule='差5' 的 18 章，每章 segments 数=6 且全 verified"},
-    {"id": "G2.2", "kind": "machine", "check": "opening_matches_alignment", "say": "各章首段与 tibetan_zhuhuju_b*.json 的 bo_open 前缀一致（不符须出〔订正〕痕迹）"},
-    {"id": "G2.3", "kind": "machine", "check": "progress_column_synced", "say": "页面该 18 章「三语进度」列与数据层计数一致"},
-    {"id": "G2.4", "kind": "manual", "say": "抽查 3 章：模型译无祖本文字冒充（不得以 CBETA 文替代新译），术语与 L.354a 表无冲突或已记冲突"}
+    {
+     "id": "G2.1",
+     "kind": "machine",
+     "check": "chapter_coverage_diff5",
+     "say": "规划表 rule='差5' 的 18 章，每章 segments 数=6 且全 verified"
+    },
+    {
+     "id": "G2.2",
+     "kind": "machine",
+     "check": "opening_matches_alignment",
+     "say": "各章首段与 tibetan_zhuhuju_b*.json 的 bo_open 前缀一致（不符须出〔订正〕痕迹）"
+    },
+    {
+     "id": "G2.3",
+     "kind": "machine",
+     "check": "progress_column_synced",
+     "say": "页面该 18 章「三语进度」列与数据层计数一致"
+    },
+    {
+     "id": "G2.4",
+     "kind": "manual",
+     "say": "抽查 3 章：模型译无祖本文字冒充（不得以 CBETA 文替代新译），术语与 L.354a 表无冲突或已记冲突"
+    }
    ]
   },
   {
-   "id": "M3", "name": "差6 段三语（藏章33–44 ＝ 品27–38）", "batch": "M2 后 12 会话",
+   "id": "M3",
+   "name": "差6 段三语（藏章33–44 ＝ 品27–38）",
+   "batch": "M2 后 12 会话",
    "goal": "另一实证平行跨段（含十定/普贤行/如来出现/离世间等）各译开篇 6 段",
    "sessions": [
-    {"no": "每章 1 会话（共 12）", "scope": "同 M2 单元口径；藏33/34 与品27/28 须先复核 b5 evidence 是否仍支持该配对",
-     "load": "1 章 × 6 段", "est": "同 M2 实测口径（机时 ≈3.5–5 h/章·后台续跑）", "one_session": true}
+    {
+     "no": "每章 1 会话（共 12）",
+     "scope": "同 M2 单元口径；藏33/34 与品27/28 须先复核 b5 evidence 是否仍支持该配对",
+     "load": "1 章 × 6 段",
+     "est": "同 M2 实测口径（机时 ≈3.5–5 h/章·后台续跑）",
+     "one_session": true
+    }
    ],
    "gate": [
-    {"id": "G3.1", "kind": "machine", "check": "chapter_coverage_diff6", "say": "藏33–44 共 12 章各有 6 段 verified 且双语齐"},
-    {"id": "G3.2", "kind": "machine", "check": "evidence_cited", "say": "该 12 章配对均引到 b5/b6 evidence 字段（章末自题 / 术语计数），无裸断言"},
-    {"id": "G3.3", "kind": "manual", "say": "离世间品（藏44/品38）长篇问答复沓段抽查：段切分未截断半句（shad 完整性）"}
+    {
+     "id": "G3.1",
+     "kind": "machine",
+     "check": "chapter_coverage_diff6",
+     "say": "藏33–44 共 12 章各有 6 段 verified 且双语齐"
+    },
+    {
+     "id": "G3.2",
+     "kind": "machine",
+     "check": "evidence_cited",
+     "say": "该 12 章配对均引到 b5/b6 evidence 字段（章末自题 / 术语计数），无裸断言"
+    },
+    {
+     "id": "G3.3",
+     "kind": "manual",
+     "say": "离世间品（藏44/品38）长篇问答复沓段抽查：段切分未截断半句（shad 完整性）"
+    }
    ]
   },
   {
-   "id": "M4", "name": "入法界品专批（藏章45 ＝ 品39）", "batch": "M3 后 10 会话",
+   "id": "M4",
+   "name": "入法界品专批（藏章45 ＝ 品39）",
+   "batch": "M3 后 10 会话",
    "goal": "最大单章按 53 参节点分段排产，先建映射后译",
    "sessions": [
-    {"no": 1, "scope": "53 参 → 藏章45 段区间映射表（关键词定位，逐条可回源）；未定者标〔待核〕",
-     "load": "映射专会", "est": "工程 1–2 h", "one_session": true},
-    {"no": "2–10（共 9）", "scope": "每会话 6 参节点开篇各 3 段（三语）", "load": "6 参 × 3 段 / 会话", "est": "18 段 × ≈30–50 min（双语·W1 实测口径）≈ 9–15 h 后台续跑", "one_session": false}
+    {
+     "no": 1,
+     "scope": "53 参 → 藏章45 段区间映射表（关键词定位，逐条可回源）；未定者标〔待核〕",
+     "load": "映射专会",
+     "est": "工程 1–2 h",
+     "one_session": true
+    },
+    {
+     "no": "2–10（共 9）",
+     "scope": "每会话 6 参节点开篇各 3 段（三语）",
+     "load": "6 参 × 3 段 / 会话",
+     "est": "18 段 × ≈30–50 min（双语·W1 实测口径）≈ 9–15 h 后台续跑",
+     "one_session": false
+    }
    ],
    "gate": [
-    {"id": "G4.1", "kind": "machine", "check": "param_map_grounded", "say": "映射表每参给德格叶码＋藏文关键词命中数；〔待核〕行数显式统计"},
-    {"id": "G4.2", "kind": "machine", "check": "gandavyuha_segments", "say": "已覆盖参数与页面分节数一致"},
-    {"id": "G4.3", "kind": "manual", "say": "与既有入法界行历（52+1 卡口径）交叉核对，不另立参数"}
+    {
+     "id": "G4.1",
+     "kind": "machine",
+     "check": "param_map_grounded",
+     "say": "映射表每参给德格叶码＋藏文关键词命中数；〔待核〕行数显式统计"
+    },
+    {
+     "id": "G4.2",
+     "kind": "machine",
+     "check": "gandavyuha_segments",
+     "say": "已覆盖参数与页面分节数一致"
+    },
+    {
+     "id": "G4.3",
+     "kind": "manual",
+     "say": "与既有入法界行历（52+1 卡口径）交叉核对，不另立参数"
+    }
    ]
   },
   {
-   "id": "M5", "name": "人工校订线（模型译 → 可引用译文）", "batch": "M2 起可并行滚动",
+   "id": "M5",
+   "name": "人工校订线（模型译 → 可引用译文）",
+   "batch": "M2 起可并行滚动",
    "goal": "把〔模型译·未校订〕逐段升格为有人工签可的译文，保留双轨可回溯",
    "sessions": [
-    {"no": "每会话 30 段（约 5 章开篇量）", "scope": "对照藏文逐段校订 → 写 data/translation/tibetan_avatamsaka_proofreading.json（段号/原译/校订文/依据/校订人/日期）",
-     "load": "30 段", "est": "人工节奏，非机时瓶颈；尺寸待 M1 后按实际手感校准", "one_session": true}
+    {
+     "no": "每会话 30 段（约 5 章开篇量）",
+     "scope": "对照藏文逐段校订 → 写 data/translation/tibetan_avatamsaka_proofreading.json（段号/原译/校订文/依据/校订人/日期）",
+     "load": "30 段",
+     "est": "人工节奏，非机时瓶颈；尺寸待 M1 后按实际手感校准",
+     "one_session": true
+    }
    ],
    "gate": [
-    {"id": "G5.1", "kind": "machine", "check": "proofread_coverage", "say": "校订条目数 / 已译段数 比例如实公示；每条校订均有依据字段"},
-    {"id": "G5.2", "kind": "machine", "check": "dual_track_kept", "say": "页面校订段同时显示模型原译（不覆盖历史），标记由〔未校订〕改〔人工校订·L.*〕"},
-    {"id": "G5.3", "kind": "manual", "say": "无依据的「顺手改」为零：任一校订若无依据即退回〔未校订〕"}
+    {
+     "id": "G5.1",
+     "kind": "machine",
+     "check": "proofread_coverage",
+     "say": "校订条目数 / 已译段数 比例如实公示；每条校订均有依据字段"
+    },
+    {
+     "id": "G5.2",
+     "kind": "machine",
+     "check": "dual_track_kept",
+     "say": "页面校订段同时显示模型原译（不覆盖历史），标记由〔未校订〕改〔人工校订·L.*〕"
+    },
+    {
+     "id": "G5.3",
+     "kind": "manual",
+     "say": "无依据的「顺手改」为零：任一校订若无依据即退回〔未校订〕"
+    }
    ]
   },
   {
-   "id": "M6", "name": "三语术语库", "batch": "M5 并行 · 3 会话",
+   "id": "M6",
+   "name": "三语术语库",
+   "batch": "M5 并行 · 3 会话",
    "goal": "藏（原字形＋Wylie）/ 汉祖本术语 / 汉新译 / 英 term 的四方对照，行行可回源",
    "sessions": [
-    {"no": 1, "scope": "高频词抽取（德格正文词频 × 汉祖本命中）→ 候选表", "load": "词频层", "est": "机时 30 min", "one_session": true},
-    {"no": 2, "scope": "名相（佛名 / 菩萨名 / 会名 / 三昧名）对照，沿用并校验 L.354a 术语表", "load": "名相带", "est": "1 会话", "one_session": true},
-    {"no": 3, "scope": "冲突项与复译不一致项收口，回炉 M2/M3 已译段", "load": "冲突带", "est": "1 会话", "one_session": true}
+    {
+     "no": 1,
+     "scope": "高频词抽取（德格正文词频 × 汉祖本命中）→ 候选表",
+     "load": "词频层",
+     "est": "机时 30 min",
+     "one_session": true
+    },
+    {
+     "no": 2,
+     "scope": "名相（佛名 / 菩萨名 / 会名 / 三昧名）对照，沿用并校验 L.354a 术语表",
+     "load": "名相带",
+     "est": "1 会话",
+     "one_session": true
+    },
+    {
+     "no": 3,
+     "scope": "冲突项与复译不一致项收口，回炉 M2/M3 已译段",
+     "load": "冲突带",
+     "est": "1 会话",
+     "one_session": true
+    }
    ],
    "gate": [
-    {"id": "G6.1", "kind": "machine", "check": "terms_backtrace", "say": "每术语行：藏词在德格 norm() 流命中、汉词在 T10n0279 XML 命中，未命中者标〔待核〕并计数"},
-    {"id": "G6.2", "kind": "machine", "check": "glossary_conflicts_logged", "say": "与既有术语表的冲突项全部单列，不静默择一"},
-    {"id": "G6.3", "kind": "manual", "say": "抽样 10 条由人工判定释义是否与华严义理相容（不作纯字面强译）"}
+    {
+     "id": "G6.1",
+     "kind": "machine",
+     "check": "terms_backtrace",
+     "say": "每术语行：藏词在德格 norm() 流命中、汉词在 T10n0279 XML 命中，未命中者标〔待核〕并计数"
+    },
+    {
+     "id": "G6.2",
+     "kind": "machine",
+     "check": "glossary_conflicts_logged",
+     "say": "与既有术语表的冲突项全部单列，不静默择一"
+    },
+    {
+     "id": "G6.3",
+     "kind": "manual",
+     "say": "抽样 10 条由人工判定释义是否与华严义理相容（不作纯字面强译）"
+    }
    ]
   },
   {
-   "id": "M7", "name": "藏独有二章（藏11〈如来华严〉· 藏32〈普贤宣说〉）", "batch": "M6 后 3 会话",
+   "id": "M7",
+   "name": "藏独有二章（藏11〈如来华严〉· 藏32〈普贤宣说〉）",
+   "batch": "M6 后 3 会话",
    "goal": "无汉文平行品之章单独立线：先定归属，后译，禁止强行配对",
    "sessions": [
-    {"no": 1, "scope": "藏32 归属判定（b5 现记 pin:null）：支持/反对证据各≥2 条，含 × 计数与章末自题", "load": "判定专会", "est": "1 会话", "one_session": true},
-    {"no": 2, "scope": "藏11 开篇 6 段三语", "load": "1 章 × 6 段", "est": "机时 ≈3.5–5 h（W1 实测口径·后台续跑）", "one_session": true},
-    {"no": 3, "scope": "藏32 开篇 6 段三语（依会话1 结论定配对口径或保持不配对）", "load": "1 章 × 6 段", "est": "机时 ≈3.5–5 h（W1 实测口径·后台续跑）", "one_session": true}
+    {
+     "no": 1,
+     "scope": "藏32 归属判定（b5 现记 pin:null）：支持/反对证据各≥2 条，含 × 计数与章末自题",
+     "load": "判定专会",
+     "est": "1 会话",
+     "one_session": true
+    },
+    {
+     "no": 2,
+     "scope": "藏11 开篇 6 段三语",
+     "load": "1 章 × 6 段",
+     "est": "机时 ≈3.5–5 h（W1 实测口径·后台续跑）",
+     "one_session": true
+    },
+    {
+     "no": 3,
+     "scope": "藏32 开篇 6 段三语（依会话1 结论定配对口径或保持不配对）",
+     "load": "1 章 × 6 段",
+     "est": "机时 ≈3.5–5 h（W1 实测口径·后台续跑）",
+     "one_session": true
+    }
    ],
    "gate": [
-    {"id": "G7.1", "kind": "machine", "check": "unique_chapters_unpaired", "say": "页面「对应汉品」列对二章保持『藏独有』，未出现臆造配对"},
-    {"id": "G7.2", "kind": "machine", "check": "attribution_evidence", "say": "归属判定入库须带证据数组（≥2 支持＋≥2 反对），否则维持〔待核〕"},
-    {"id": "G7.3", "kind": "manual", "say": "札记中实质判断均标〔本文判断〕"}
+    {
+     "id": "G7.1",
+     "kind": "machine",
+     "check": "unique_chapters_unpaired",
+     "say": "页面「对应汉品」列对二章保持『藏独有』，未出现臆造配对"
+    },
+    {
+     "id": "G7.2",
+     "kind": "machine",
+     "check": "attribution_evidence",
+     "say": "归属判定入库须带证据数组（≥2 支持＋≥2 反对），否则维持〔待核〕"
+    },
+    {
+     "id": "G7.3",
+     "kind": "manual",
+     "say": "札记中实质判断均标〔本文判断〕"
+    }
    ]
   },
   {
-   "id": "M8", "name": "前段章界比对（藏1–10、12–13 ↔ 品1–8）", "batch": "最后 · 6 会话",
+   "id": "M8",
+   "name": "前段章界比对（藏1–10、12–13 ↔ 品1–8）",
+   "batch": "最后 · 6 会话",
    "goal": "解决唯一未定界的区间：先定段界，再译；定界前只译不配对",
    "sessions": [
-    {"no": "1–4", "scope": "每会话处理 3 个藏章边界假设（关键词 × 计数 ↔ 汉品起讫卷页）", "load": "3 章边界 / 会话", "est": "1 会话", "one_session": true},
-    {"no": "5", "scope": "边界假设表收口，更新规划表 rule 列（如推翻 L.352 finding 须出〔订正〕）", "load": "收口", "est": "1 会话", "one_session": true},
-    {"no": "6", "scope": "前段 12 章各译开篇 3 段（尺寸小于 M2，因段界未稳只取短样本）", "load": "12 章 × 3 段", "est": "超 1 会话，可再拆", "one_session": false}
+    {
+     "no": "1–4",
+     "scope": "每会话处理 3 个藏章边界假设（关键词 × 计数 ↔ 汉品起讫卷页）",
+     "load": "3 章边界 / 会话",
+     "est": "1 会话",
+     "one_session": true
+    },
+    {
+     "no": "5",
+     "scope": "边界假设表收口，更新规划表 rule 列（如推翻 L.352 finding 须出〔订正〕）",
+     "load": "收口",
+     "est": "1 会话",
+     "one_session": true
+    },
+    {
+     "no": "6",
+     "scope": "前段 12 章各译开篇 3 段（尺寸小于 M2，因段界未稳只取短样本）",
+     "load": "12 章 × 3 段",
+     "est": "超 1 会话，可再拆",
+     "one_session": false
+    }
    ],
    "gate": [
-    {"id": "G8.1", "kind": "machine", "check": "boundary_evidence_only", "say": "边界表每主张均带可回源证据行；仅凭印象者不入库"},
-    {"id": "G8.2", "kind": "machine", "check": "front_segments_short_only", "say": "前段各章已译段数 ≤3，且页面 rule 列仍标『前段不平行』直到 G8.3 通过"},
-    {"id": "G8.3", "kind": "manual", "say": "定界结论经人工确认后方可把前段改为具体品号对应（实质判断的人类闸门）"}
+    {
+     "id": "G8.1",
+     "kind": "machine",
+     "check": "boundary_evidence_only",
+     "say": "边界表每主张均带可回源证据行；仅凭印象者不入库"
+    },
+    {
+     "id": "G8.2",
+     "kind": "machine",
+     "check": "front_segments_short_only",
+     "say": "前段各章已译段数 ≤3，且页面 rule 列仍标『前段不平行』直到 G8.3 通过"
+    },
+    {
+     "id": "G8.3",
+     "kind": "manual",
+     "say": "定界结论经人工确认后方可把前段改为具体品号对应（实质判断的人类闸门）"
+    }
    ]
   },
   {
-   "id": "M9", "name": "站点收口与发布", "batch": "贯穿 · 每里程碑末次会话",
+   "id": "M9",
+   "name": "站点收口与发布",
+   "batch": "贯穿 · 每里程碑末次会话",
    "goal": "三语专题在静态站点可浏览、可分享、门禁全绿",
    "sessions": [
-    {"no": "每里程碑末次会话", "scope": "build.py ＋ 六闸 ＋ 本路线门禁脚本；ledger/PROGRESS/next-phase-plan 记录",
-     "load": "收口 20–30 min", "est": "并入当次会话", "one_session": true}
+    {
+     "no": "每里程碑末次会话",
+     "scope": "build.py ＋ 六闸 ＋ 本路线门禁脚本；ledger/PROGRESS/next-phase-plan 记录",
+     "load": "收口 20–30 min",
+     "est": "并入当次会话",
+     "one_session": true
+    }
    ],
    "gate": [
-    {"id": "G9.1", "kind": "machine", "check": "six_gates", "say": "build / test_pipeline / verify_demo / verify_sources / audit_consistency 全 EXIT=0；check.py 不因本线新增 FAIL（既有主线双大括号占位遗留按用户裁决保留）"},
-    {"id": "G9.2", "kind": "machine", "check": "page_selfcontained", "say": "页面自包含、离线可开、目录卡片与 back 链接可达"},
-    {"id": "G9.3", "kind": "manual", "say": "push / 发布须用户显式授权；未授权只本地 commit"}
+    {
+     "id": "G9.1",
+     "kind": "machine",
+     "check": "six_gates",
+     "say": "build / test_pipeline / verify_demo / verify_sources / audit_consistency 全 EXIT=0；check.py 不因本线新增 FAIL（既有主线双大括号占位遗留按用户裁决保留）"
+    },
+    {
+     "id": "G9.2",
+     "kind": "machine",
+     "check": "page_selfcontained",
+     "say": "页面自包含、离线可开、目录卡片与 back 链接可达"
+    },
+    {
+     "id": "G9.3",
+     "kind": "manual",
+     "say": "push / 发布须用户显式授权；未授权只本地 commit"
+    }
    ]
   }
  ],
- "ordering": ["M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"],
+ "ordering": [
+  "M0",
+  "M1",
+  "M2",
+  "M3",
+  "M4",
+  "M5",
+  "M6",
+  "M7",
+  "M8",
+  "M9"
+ ],
  "scheduling_notes": [
   "M5/M6 可在 M2 达成后与 M3/M4 并行滚动（人工带宽为约束，非机时）",
   "M8 刻意置后：段界未稳时先译只会制造无法对齐的孤立译文",

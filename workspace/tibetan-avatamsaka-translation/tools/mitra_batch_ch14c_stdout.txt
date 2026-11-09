@@ -1,0 +1,10 @@
+[12:23:19] tokenizer ready 67.9s
+[12:23:21] model ready 2.0s dtype=torch.bfloat16 threads=16
+[12:23:21] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch14.json 藏章14 total=6 todo=2
+[12:40:55] seg5 zh chars=231 gen=1054.8s clipped=False :: 示現了百億位如來圓滿入於涅槃，並示現了百億座須彌山王。由此，應當了知：這一切法皆無所從來，亦無所從去。「善男子！ 譬如有
+[12:58:52] seg5 en chars=254 gen=1076.2s clipped=False :: He manifested a hundred million Tathāgatas passing into pari
+[12:58:52] seg5 done
+[13:16:48] seg6 zh chars=228 gen=1076.5s clipped=False :: 示現了四百億四大王眾天，並示現了四百億三十三天。「善男子！菩薩摩訶薩有十種法，能令菩薩成就無量無邊智慧。何等為十？所謂：
+[13:34:45] seg6 en chars=261 gen=1076.5s clipped=False :: He displayed a hundred million divine realms of the Four Gre
+[13:34:45] seg6 done
+[13:34:45] ALL DONE 4354.0s

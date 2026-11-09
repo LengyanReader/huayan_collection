@@ -2,3 +2,5 @@
 [chain] pid 39520 gone at 21:03:47; launching --chapter 15
 [chain] batch chapter 15 exit=1073807364
 [chain] waiting pid=34604 -> next chapter 15
+[chain] waiting pid=35648 -> next chapter 15
+[chain] pid 35648 gone at 13:36:48; launching --chapter 15
