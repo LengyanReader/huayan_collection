@@ -335,12 +335,6 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - **L.382**（2026-11-09）：交互图页批——`huayan-dazang-graph.html`（skip_html·54KB·自包含 Canvas）三模式（分层/力导向/引用）＋图层/边型过滤＋搜索＋缩放拖拽＋hover 邻居＋详情；注册 order 47，build 86；article gate 增交互页检查，verify_demo skip 入口全过；JS node --check 通过。next=移动端双指缩放。
 - **L.383**（2026-11-09）：交互图内嵌融合批（用户：不做独立文章）——删除独立页/注册/index/生成器；新增 `web/demo/src/dazang_graph_inline.js`，build.py 对 mapping 文章注入 `DAZANG_GRAPH`＋渲染器；§4.5 容器＋全屏展开＋MutationObserver 重挂载；article gate 改内嵌检查；build 85、页面 402KB；node --check＋六门禁绿。next=移动端手势。
 - **L.384**（2026-11-09）：ResizeObserver 循环修复——同步 `draw()` 重绘 canvas 触发 `ResizeObserver loop completed with undelivered notifications`；改为 rAF 合并＋尺寸 guard＋window.resize 兜底；article gate 增两条防回归检查；node --check／六门禁绿；build 85。next=移动端双指缩放。
-- **L.377**（2026-11-09·本会话线）：80/40批三（品39第三窗七目·师子频申近全同段·同源最强实证）；内容门禁绿·diff-check 因并行线 mitra 日志尾随空白红（该线清理）。〔双轨注〕并行会话 L.379–384 大藏经/翻译线同仓运行·批号双轨已注明。
-- **L.385**（2026-11-09·本会话线）：80/40批四（第四窗五目·到会九件模板全同·冠网互倒）；内容门禁绿。
-- **L.385b**（2026-11-10·本会话线）：80/40批五（说颂段八目·逐颂重译实证·同源决定性）；六门禁绿。
-- **L.385c**（2026-11-10·本会话线）：80/40批六（十位说主1:1全对应表·方位衔有序·名目三类判）；六门禁绿。
-- **L.385d**（2026-11-10·本会话线）：80/40批七（普贤重宣十颂逐颂平行＋白毫放光近全同）；六门禁绿。next=批八（文殊问段）。
-- **L.385e**（2026-11-10·本会话线）：80/40批八（文殊颂八目·句句平行·韵文双重坐实同源·前段58目全平行）；六门禁绿。
-- **L.386**（2026-11-10·本会话线）：80/40批九（文殊南行·六千/六十比丘·十观察近全同——善财入缘前奏）；六门禁绿。
-- **L.387**（2026-11-10·本会话线）：80/40批十（善财出场段·位次异·七伏藏近全同）；六门禁绿。next=批十一（文殊指授·善财南行求道起）。
-- **L.380**（2026-11-10·三语线）：句界修剪＋全章无损切段——用户三裁决（展示层修剪双轨·全章不丢内容·续切补齐）；提取器句末感知重写（norm 双保险）；ch1 1552/ch14 278 续切·ch16 201 重切；G2.5 新立；窗口渲染；〔双轨注〕与大藏经线 L.380 同号。next=ch15 验收→续切→M5。
+- **L.388**（2026-11-10·三语线）：MITRA 官方模板修复 CoNLL（model card user-turn＋Modern Chinese）；ch16 seg1–6 中英 6/6 落盘（frame colon／question／quote strip／coverage 句单位／partial 规则）；hub 已试译 24；plan ch16=6；G2.2/G2.3 PASS，M2 FAIL=1（仅 ch17–31 未开工），G2.5 pending ch15；verify_demo/test/check 绿。next=ch17–31 或 ch15 续切→M5。
+- **STOP·2026-11-10**（用户：暂停并关闭翻译模型）：已确认无 repair/probe/mitra python 进程（仅 IDE language server）；ch16 **6/6 双语**（页 6/201）、hub 24；G2.2/G2.3 PASS，G2.1 FAIL=1 expected（ch17–31 未开工），G2.5 pending ch15，G2.4 manual。下次不自动开模型：① ch15 续切→G2.5；② M2 ch17–31；③ M5。工作树未提交/未推送；文章 L.384续 已完成。浏览器 ch16 页留作 review。
+- **L.388**（2026-11-10·本会话线）：80/40批十一（文殊指授·善财长颂·示我解脱门变体——五十三参动机总宣）；六门禁绿。
