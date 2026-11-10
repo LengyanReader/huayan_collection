@@ -32,6 +32,20 @@
    ],
    "machine_check": "workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py::p_opening_matches_alignment（不一致章须命中本档 records 方 PASS）",
    "followup": "同 ch14——b2 全表 bo_open 回改属对勘批 SSOT 变更须人工授权；M2 各章开工前逐章跑 G2.2 预检"
+  },
+  {
+   "tibetan_ch": 16,
+   "pin": "品11〈淨行〉（差5 對應律）",
+   "observation": "b2 ch16 之 bo_open（400 字·起 ་ཀྱི་ཞིང་བཅུའི་རྡུལ་ཤིན་ཏུ་ཕྲ་བ་སྙེད་དང་…·前導雜餘 tsheg＋佛剎微塵數段，與 ch14/15 同型粗切特徵）在本文件 {T44-16}…{T44-17} 區間 norm()（去葉碼標記）後 find=-1——不在藏16 章界內；本專題 seg1（དེ་ནས་བྱང་ཆུབ་སེམས་དཔའ་ཡེ་ཤེས་དཔལ་གྱིས་བྱང་ཆུབ་སེམས་དཔའ་འཇམ་…）自 {T44-16} 標記後逐字回源切出（char_off=0·folio 210b.2）",
+   "verdict": "b2 bo_open 種子串與 ch14/15 同型錯切（舊 raw 偏移 off=614598 在 {T44-N} 標記插入後位移·系統性缺陷第三證）；本專題 seg1 為藏16 真開篇——不改對勘批 b2，僅登記本訂正",
+   "evidence": [
+    "b2 ch16 自記 fol=210b.2 ＝ 本專題 seg1 切片實測 folio=210b.2（同頁）",
+    "b2 ch16 zh80_open=「淨行品第十一爾時，智首菩薩問文殊師利菩薩言：佛子！菩薩云何得無過失身、語、意業…」＝品11 開篇智首問文殊，與本 seg1 義合（ཡེ་ཤེས་དཔལ〔智首〕告 འཇམ་དཔལ〔文殊〕·ཁ་ན་མ་ཐོ་བ་མེད་པའི་ལུས་ཀྱི་ལས〔無過失身業〕）",
+    "b2 ch16 correspondence 自藏文引文「ཁ་ན་མ་ཐོ་བ་མེད་པའི་ལུས་ཀྱི་ལས」即本 seg1 句，與 bo_open 字段自相矛盾——判 bo_open 串側錯切",
+    "本 seg1 通過 extract_trilingual_segments.py 逐字 norm() 復驗（verified=true·char_off=0 即章首）；bo_open 區間 find=-1 經提取器同口徑 norm 復測"
+   ],
+   "machine_check": "workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py::p_opening_matches_alignment（不一致章須命中本檔 records 方 PASS）",
+   "followup": "同 ch14/15——b2 全表 bo_open 回改屬對勘批 SSOT 變更須人工授權；M2 各章開工前逐章跑 G2.2 預檢"
   }
  ]
 }

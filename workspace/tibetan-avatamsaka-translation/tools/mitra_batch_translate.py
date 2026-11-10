@@ -9,6 +9,8 @@
 - 加载 ~800s，生成 ~0.2 tok/s，故单次进程只加载一次、批量处理全部待译段
 - 模型在长输出上会复读（冒烟实测：同句循环），故 no_repeat_ngram_size=8 + 译后周期截断
 - 产物一律视为〔模型译·未校订〕，不作对勘结论
+- L.380：--max-segs 默认 6（里程碑单元，链逐批续挂）；--max-new 0=按段长自适应 200–600
+  （句末感知长段需要更大输出窗；meta 记 max_new 可回查）
 
 用法：
   C:\\Users\\data\\miniconda3\\envs\\hy_py312\\python.exe -X utf8 mitra_batch_translate.py
@@ -52,7 +54,9 @@ def main():
     from transformers import AutoModelForCausalLM, AutoTokenizer
     ap = argparse.ArgumentParser()
     ap.add_argument('--chapter', type=int, default=None, help='只译该藏章的分文件；缺省=聚合全部段文件')
-    ap.add_argument('--max-new', type=int, default=MAX_NEW)
+    ap.add_argument('--max-new', type=int, default=0,
+                    help='0=按段长自适应 min(600,max(200,len(bo)))（L.380 句末感知长段需更大输出窗）')
+    ap.add_argument('--max-segs', type=int, default=6, help='每批最多译段数（里程碑单元；0=不限）')
     args = ap.parse_args()
     files = [f.replace('\\', '/') for f in sorted(glob.glob(SEGG))]  # Windows glob 混分隔符（translation\file）→ 归一后再比对
     if args.chapter is not None:
@@ -73,6 +77,8 @@ def main():
     for path in files:
         doc = json.loads(io.open(path, encoding='utf-8').read())
         todo = [s for s in doc['segments'] if s.get('status') != 'done']
+        if args.max_segs > 0:
+            todo = todo[:args.max_segs]
         log('file=%s 藏章%s total=%d todo=%d' % (path, (doc.get('chapter') or {}).get('tibetan_no'),
                                                  len(doc['segments']), len(todo)))
 
@@ -88,9 +94,10 @@ def main():
                 inputs = tok.apply_chat_template(msgs, add_generation_prompt=True,
                                                  return_dict=True, return_tensors="pt",
                                                  enable_thinking=False)
+                mn = args.max_new or min(600, max(200, len(bo)))
                 t2 = time.time()
                 with torch.no_grad():
-                    out = model.generate(**inputs, max_new_tokens=args.max_new, do_sample=False,
+                    out = model.generate(**inputs, max_new_tokens=mn, do_sample=False,
                                          no_repeat_ngram_size=8,
                                          pad_token_id=tok.eos_token_id)
                 raw = tok.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
@@ -101,9 +108,10 @@ def main():
                     'revisions': 0, 'schooling': '未校订',
                     'gen_s': round(time.time() - t2, 1),
                     'out_tokens': int(out.shape[1] - inputs["input_ids"].shape[1]),
+                    'max_new': mn,
                     'clipped_repeat': clipped, 'ts': time.strftime('%Y-%m-%dT%H:%M:%S')}
-                log('seg%d %s chars=%d gen=%.1fs clipped=%s :: %s' % (
-                    s['no'], lang, len(gen), time.time() - t2, clipped, gen[:60]))
+                log('seg%d %s chars=%d gen=%.1fs max_new=%d clipped=%s :: %s' % (
+                    s['no'], lang, len(gen), time.time() - t2, mn, clipped, gen[:60]))
                 save()
             s['status'] = 'done'
             save()

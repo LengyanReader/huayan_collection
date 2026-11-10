@@ -311,6 +311,69 @@ def p_ab_translation_recorded():
     return 'PASS', '提速候选已采纳且有对照：%s' % [p.split('/')[-1] for p in ab]
 
 
+def p_segment_continuity():
+    """G2.5：段拼接无损——逐段 norm 衔接无内容缺口；full_chapter 者须覆至章末。
+
+    旧口径（未续切/continued 章）容忍纯 shad 缺口（双 shad 第二 shad 曾被旧提取器漏掉，
+    标点级非内容，如实计数）；新切全章（full_chapter 且无 continued）严合零缺口。
+    """
+    sb = CTX['segs']
+    if not sb:
+        return 'PENDING', '无 segments'
+    import extract_trilingual_segments as ex
+    fails, partial, full, notes = [], [], [], []
+    for fn in sorted(glob.glob(SEG_GLOB)):
+        d = jload(fn)
+        tc = (d.get('chapter') or {}).get('tibetan_no')
+        segs = d.get('segments') or []
+        if not tc or not segs:
+            continue
+        legacy = bool(d.get('continued')) or not d.get('full_chapter')
+        try:
+            _, raw, a, b, _, _ = ex.chapter_bounds(tc)
+        except SystemExit as e:
+            fails.append('藏%s 章界读取失败：%s' % (tc, e))
+            continue
+        src = ex.norm(raw[a:b])
+        cur = src.find(ex.norm(segs[0]['bo']))
+        if cur < 0:
+            fails.append('藏%d 段1 无法回源' % tc)
+            continue
+        ok, sg = True, 0
+        for s in segs:
+            n = ex.norm(s['bo'])
+            pos = src.find(n, cur)
+            if pos < 0:
+                fails.append('藏%d 段%d 无法回源' % (tc, s['no']))
+                ok = False
+                break
+            gap = src[cur:pos]
+            if gap:
+                if legacy and not gap.strip('།'):
+                    sg += 1
+                else:
+                    fails.append('藏%d 段%d 前内容缺口/重叠 %d 字' % (tc, s['no'], len(gap)))
+                    ok = False
+                    break
+            cur = pos + len(n)
+        if not ok:
+            continue
+        if sg:
+            notes.append('藏%d 纯shad缺口%d处（旧口径标点级）' % (tc, sg))
+        if cur == len(src):
+            full.append(tc)
+        elif d.get('full_chapter'):
+            fails.append('藏%d 标 full_chapter 但余 %d 字未覆' % (tc, len(src) - cur))
+        else:
+            partial.append(tc)
+    if fails:
+        return 'FAIL', '；'.join(fails[:6])
+    tail = ('；' + '；'.join(notes)) if notes else ''
+    if partial:
+        return 'PENDING', '段衔接无内容缺口但未覆至章末（待续切）：%s；已全章 %s%s' % (partial, full, tail)
+    return 'PASS', '%d 章段拼接逐字无内容缺口·均覆至章末：%s%s' % (len(full), full, tail)
+
+
 PREDICATES = {
     'segments_all_verified': p_segments_all_verified,
     'plan_totals_closed': p_plan_totals_closed,
@@ -325,6 +388,7 @@ PREDICATES = {
     'page_selfcontained': p_page_selfcontained,
     'cost_table_grounded': p_cost_table_grounded,
     'ab_translation_recorded': p_ab_translation_recorded,
+    'segment_continuity': p_segment_continuity,
 }
 
 

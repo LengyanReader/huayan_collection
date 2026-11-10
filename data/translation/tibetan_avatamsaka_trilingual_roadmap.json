@@ -145,7 +145,7 @@
      "id": "G2.1",
      "kind": "machine",
      "check": "chapter_coverage_diff5",
-     "say": "规划表 rule='差5' 的 18 章，每章 segments 数=6 且全 verified"
+     "say": "规划表 rule='差5' 的 18 章，每章 ≥6 已译复验段（L.380 起整章句末感知切段，段数不限）"
     },
     {
      "id": "G2.2",
@@ -163,6 +163,12 @@
      "id": "G2.4",
      "kind": "manual",
      "say": "抽查 3 章：模型译无祖本文字冒充（不得以 CBETA 文替代新译），术语与 L.354a 表无冲突或已记冲突"
+    },
+    {
+     "id": "G2.5",
+     "kind": "machine",
+     "check": "segment_continuity",
+     "say": "段拼接 norm 逐字无内容缺口无重叠；full_chapter 章须覆至章末（未续切章 PENDING；旧口径纯 shad 缺口计数留痕）"
     }
    ]
   },

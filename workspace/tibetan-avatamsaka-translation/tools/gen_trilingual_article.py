@@ -194,10 +194,37 @@ def meta_fold(mt, lang):
         summary, esc(l1), esc(l2))
 
 
+def sentence_trim(text, lang):
+    """展示层句界修剪（L.380 用户裁决）：截至最後一個完整句讀，數據層原譯不動。
+    全部已譯段 out_tokens=200 撞上限致末句半截；忠實首句通常 1–2 句，修剪不傷。
+    返回 (text, status)：ok=本完整 / cut=已修剪 / noboundary=全無句讀可截（如實標注）。"""
+    t = text.strip()
+    pat = r'[。！？][」』"\'）]*' if lang == 'zh' else r'[.!?]["\'\)]*'
+    last = None
+    for m in re.finditer(pat, t):
+        last = m
+    if last is None:
+        return t, 'noboundary'
+    if last.end() >= len(t):
+        return t, 'ok'
+    return t[:last.end()].strip(), 'cut'
+
+
 def lang_section(cls, tag, sub, s, lang):
     val = s.get(lang)
     if val:
-        text = bo_display(s) if lang == 'bo' else esc(str(val).replace('\n', ' ').strip())
+        if lang == 'bo':
+            text = bo_display(s)
+        else:
+            raw = str(val).replace('\n', ' ').strip()
+            trimmed, st = sentence_trim(raw, lang)
+            text = esc(trimmed)
+            if st == 'cut':
+                sub += ('〔截斷·已截至最後完整句讀；原譯全量存數據層〕' if lang == 'zh'
+                        else ' 〔trimmed to last full sentence; raw kept in data layer〕')
+            elif st == 'noboundary':
+                sub += ('〔截斷·全段無完整句界可截，如實存照；归 M5 校訂〕' if lang == 'zh'
+                        else ' 〔truncated; no full sentence boundary exists; kept as-is for M5〕')
         body = '<blockquote class="tri-text" lang="%s">%s</blockquote>' % (lang, text)
         meta = '' if lang == 'bo' else meta_fold(s.get(lang + '_meta'), lang)
     else:
@@ -212,11 +239,19 @@ def lang_section(cls, tag, sub, s, lang):
 
 
 def seg_blocks_for(d):
-    """一章的段导航＋三语卡片（#### 段 n 标题口径不变，门禁正则所系）。"""
+    """一章的段导航＋三语卡片（#### 段 n 标题口径不变，门禁正则所系）。
+
+    L.380 全章切段后只展示已译段＋下一批待译段（6 段里程碑窗口），
+    余段存数据层逐批推进（藏章1 全章 1552 段，全量渲染页面不可读）。
+    """
     segs = d.get('segments') or []
+    done = [s for s in segs if s.get('status') == 'done']
+    pend = [s for s in segs if s.get('status') != 'done']
+    show = done + pend[:6]
+    hidden = len(pend) - min(len(pend), 6)
     out = ['<div class="tri-segnav"><span class="tri-toolbar-label">段导航</span>%s</div>' % ''.join(
-        '<a class="tri-segchip" href="#tri-seg-%d">段 %d</a>' % (s['no'], s['no']) for s in segs)]
-    for s in segs:
+        '<a class="tri-segchip" href="#tri-seg-%d">段 %d</a>' % (s['no'], s['no']) for s in show)]
+    for s in show:
         out.append('<div id="tri-seg-%d" class="tri-anchor"></div>' % s['no'])
         head = '#### 段 %d〔%s %s · %s〕%s' % (
             s['no'], s['vol'], s['folio'], s['marker'], '（题名块）' if s.get('kind') == 'title' else '')
@@ -226,6 +261,9 @@ def seg_blocks_for(d):
             lang_section('tri-zh', '汉', BADGE_ZH, s, 'zh'),
             lang_section('tri-en', 'EN', BADGE_EN, s, 'en'))
         out.append(head + '\n\n' + card)
+    if hidden > 0:
+        out.append('> 〔待譯·未展示〕另有 **%d 段**已全章切段存數據層（逐字回源復驗·段拼接無內容缺口），'
+                   '按里程碑逐批譯出後在此展示。' % hidden)
     return '\n\n'.join(out)
 
 
@@ -554,9 +592,11 @@ python workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py 
                                        mc['gen_throughput_tok_per_s'], mc['gen_seconds_per_token'],
                                        mc['repeat_risk']))
 
-appx_todo = fold('⏳ 未竟与待核', """- 〔未竟·M0〕藏章1 开篇其余段（单章正文实测 188,713 字符／约 3,914 句读）；本批只取 6 段。
+appx_todo = fold('⏳ 未竟与待核', """- 〔體例·L.380〕**展示層句界修剪**（用戶裁決）：譯文末句不完整者，頁面截至最後一個完整句讀並標〔截斷〕；數據層原譯全量保留（雙軌）——全部已譯段 out_tokens=200 撞 max-new 上限致末句半截（實測），忠實首句通常 1–2 句，修剪不傷；適用全部已譯段（含藏章1/14/15 舊段）。
+- 〔體例·L.380〕**句末感知全章切段**（用戶裁決：語句完整＋分段連貫＋不丟內容）：累積≥60字遇句末（終結助詞/雙shad）收段，超400字非續讀處軟收，絕不以續讀收尾；整章切到底，段拼接 norm 逐字對賬無內容缺口（G2.5 機檢）。已譯章（藏1/14/15）舊段原譯不動、自舊末段尾續切補齊；未譯章（藏16起）整章重切。頁面只展示已譯段＋下一批待譯段（6段窗口），餘段存數據層逐批推進；翻譯輸出窗按段長自適應 200–600 tokens。
+- 〔未竟·M0〕藏章1 全章 1,552 段已切段入數據層（L.380 續切補齊·單章正文實測 188,713 字符／3,914 句讀），已譯 6 段；餘段逐批推進。
 - 〔未竟·M1〕吞吐标定表与算力决策（含人工闸门）。
-- 〔未竟·M2/M3/M4〕差5、差6 两跨段与入法界品的逐章开篇三语。
+- 〔未竟·M2/M3/M4〕差5、差6 两跨段与入法界品的逐章三语（L.380 起全章切段，自开篇逐批推进）。
 - 〔未竟·M5〕人工校订：模型译升格为可引用译文（须双轨保留原译）。
 - 〔未竟·M6〕三语术语库；〔未竟·M7〕藏独有二章；〔未竟·M8〕前段章界比对。
 - 〔待核〕偈颂分行对齐（藏文 `།།` 七言颂与汉译偈组对应；页面已留分行排版枝，数据层当前无偈颂段）。
@@ -624,6 +664,12 @@ def chapter_md(tc):
     prev_a = ('<a href="%s">← 藏章%d</a>' % (ch_url(covered[idx - 1]), covered[idx - 1])) if idx > 0 else ''
     next_a = ('<a href="%s">藏章%d →</a>' % (ch_url(covered[idx + 1]), covered[idx + 1])) if idx < len(covered) - 1 else ''
     pager = '<div class="tri-pager">%s<a href="%s.html">返回总目</a>%s</div>' % (prev_a, ART_ID, next_a)
+    if d.get('full_chapter'):
+        boundary = ('> 〔诚实边界〕本章已**全章切段 %d 段**（L.380 句末感知；段拼接 norm 逐字对账无内容缺口）；'
+                    '未译段如实标〔待译〕，页面展示已译段＋下一批待译段。模型译未经人工校订，不作引文使用，不得替代 CBETA 祖本文字。') % len(segs)
+    else:
+        boundary = ('> 〔诚实边界〕以上仅覆盖本章**开篇**，非全品（全章续切待跑批落地后执行）；未译段如实标〔待译〕。'
+                    '模型译未经人工校订，不作引文使用，不得替代 CBETA 祖本文字。')
     md = """# %s
 
 %s
@@ -640,7 +686,7 @@ def chapter_md(tc):
 
 %s
 
-> 〔诚实边界〕以上仅覆盖本章**开篇**，非全品；未译段如实标〔待译〕。模型译未经人工校订，不作引文使用，不得替代 CBETA 祖本文字。
+%s
 
 ## 二、汉藏对应
 
@@ -650,7 +696,7 @@ def chapter_md(tc):
 
 %s
 """ % (title, crumbs, lead, pager, tabs_bar(['三语对读', '汉藏对应', '延伸阅读']),
-       toolbar, seg_blocks_for(d), corr_pane(tc), links_pane(tc))
+       toolbar, seg_blocks_for(d), boundary, corr_pane(tc), links_pane(tc))
     return title, md
 
 

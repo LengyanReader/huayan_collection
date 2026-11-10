@@ -28,8 +28,8 @@
    "char_off": 0,
    "bo": "སངས་རྒྱས་རྨད་ག་ཅད་ཅེས་བྱ་བ་ཤིན་ཏུ་རྒྱས་པ་ཆེན་པོའི་མདོ། །བམ་པོ་བཅུ་བདུན་པ། དེ་ནས་བྱང་ཆུབ་སེམས་དཔའ་འཇམ་དཔལ་ གྱིས།",
    "zh": "《佛說大毘盧遮那成佛神變加持經》（或譯《大集大虛空藏菩薩所問經》），第十七卷。爾時，文殊師利菩薩：「世尊！我今欲於如來前，發大誓願，願於未來世中，常得親近諸佛如來，承事供養，令諸如來悉皆歡喜。」爾時，世尊告文殊師利菩薩言：「善哉，善哉！文殊師利！汝能於我前發如是願，甚為希有。」爾時，文殊師利即於佛前，而說偈言： 「我今於佛前， 發大誓願心； 願於未來世， 常得親近佛。 承事供養尊， 令佛皆歡喜； 願我於來世， 常得見諸",
-   "en": null,
-   "status": "pending",
+   "en": "The Great Vaipulya Sutra entitled \"The Marvelous Buddha.\" Fascicle Seventeen. Then, the Bodhisattva Mañjuśrī,འཇིག་རྟེན་གྱི་ཁམས་འདི་ནས་ཤར་ཕྱོགས་ལོགས་སུ་འཇིག་ རྟེན་ གྱྀ་ཁམས་གང་གཱའི་ཀླུང་གི་བྱེ་མ་སྙེད་འདས་པ་ན། འཇིག་ར ིན་གྱི ཁ�",
+   "status": "done",
    "verified": true,
    "zh_meta": {
     "model": "buddhist-nlp/mitra-qwen35-translate",
@@ -40,6 +40,16 @@
     "out_tokens": 200,
     "clipped_repeat": false,
     "ts": "2026-11-06T21:31:23"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1312.3,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T13:59:02"
    }
   },
   {
@@ -50,10 +60,30 @@
    "folio": "[203b.3]",
    "char_off": 120,
    "bo": "བྱང་ཆུབ་སེམས་དཔའ་སངས་རྒྱས་དཔལ་ལ་འདི་སྐད་ཅེས་སྨྲས་སོ། །ཀྱེ་རྒྱལ་བའི་སྲས་དག་རང་བཞིན་གཅིག་པའི་སེམས་ལ་བྱེ་བྲག་ཐ་དད་པའི་རྣམ་པ་འདི་ལྟ་བུ་དག་འདི་ལྟ་སྟེ། བདེ་འགྲོར་འགྲོ་བ་དང་།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "菩薩對佛德（佛陀吉祥）菩薩說道：「諸位佛子！在自性唯一的心之中，竟然會產生出如此種種不同的差別相狀，例如：往生善趣、」由此，應當了知，這便是菩薩摩訶薩的「無盡寶篋三昧」。 隨後，世尊對金剛藏菩薩摩訶薩如此說道：「金剛藏！你應當宣說這名為『無盡寶篋』的菩薩摩訶薩三昧。」 於是，金剛藏菩薩摩訶萨對佛陀這樣說道：「世尊！若菩薩摩訶薩能成就十種法，便能證得這名為『無盡寶篧』的菩薩摩訶薩大三昧。」\n「善男子！菩薩摩訶薩若能成就十種法，便能圓滿成就一切菩薩行。是哪十種呢？即是：能圓滿成就一切菩薩的",
+   "en": "The bodhisattva Buddhashrī said this to the sons of the conquerors: \"O sons of the conquerors, within the mind that is of a single nature, there are such diverse and distinct aspects as these: namely, going to the higher realms,and so forth.and so forth.and [the state of] being born in the lower realms.and [the state of being born in] the lower realms.and [being born] in the lower realms.and so forth.The bodhisattva Buddhashri said this to the sons of the Conqueror: \"O sons of the Conqueror, within the mind that is of one nature, there are such diverse and different aspects as these: namely, going toward the higher realms,and so on.and so forth.O sons of the Conqueror! Within the mind that is of a single intrinsic nature, there are such diverse and",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1102.9,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T14:17:25"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1090.8,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T14:35:36"
+   }
   },
   {
    "no": 3,
@@ -63,10 +93,30 @@
    "folio": "[203b.3]",
    "char_off": 288,
    "bo": "ངན་སོང་དུ་འགྲོ་བ་དང་། དབང་པོ་ཚང་བ་དང་ དབང་པོ་མ་ཚང་བ་དང་། སྐྱེ་བ་འཐུན་པ་དང་། སྐྱེ་བ་མི་འཐུན་པ་དང་།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "墮入惡趣、諸根完具或諸根殘缺、投生於同類或投生於異類。第二，若菩薩摩訶薩在修行般若波羅蜜多時，能如實了知：一切法皆無所從來，亦無所從去。若菩薩摩訶薩修行般若波羅蜜多時能如是觀察，即是在行般若波羅蜜多。須菩提！若菩薩摩訶薩能如是行，則能圓滿成就一切智智。\n若菩薩摩訶薩修行深般若波羅蜜多時，作是思惟：「一切法皆無所從來，無所從去。」須菩提！若菩薩摩訆薩能如是行，是為行般若波羅蜜多。\n若菩薩摩訶萨修行般若波羅蜜多時作是思惟：「一切諸法皆無所從來，亦復無",
+   "en": "going to the lower realms; having complete faculties or incomplete faculties; favorable births and unfavorable births;The first is the cause of the arising of the body, which is the karma that projects the aggregates. The second is the cause of the arising of experience, which is the karma that brings about the experience of the aggregates.The first is the cause of arising, which is the karma that projects [rebirth]. The second is the cause of experience, which is the karma of ripening.The first is the cause that projects [rebirth], which is the karma that projects the [new] aggregates. The second is the cause that brings about [experience], which is the karma of ripening that brings about the experience of the [new] aggregates.The first is the projecting cause, which is the karma that projects rebirth. The second is the completing cause, which is the karma of ripened experience that brings about the experience of the new aggregates.The first is",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1034.7,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T14:52:50"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1208.1,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T15:12:59"
+   }
   },
   {
    "no": 4,
@@ -76,10 +126,30 @@
    "folio": "[203b.4]",
    "char_off": 394,
    "bo": "སྡུག་པ་དང་། མི་སྡུག་པ་དང་། བདེ་བ་མྱོང་བ་དང་། སྡུག་བསྔལ་མྱོང་བ་སྣང་བ་དག་ལ་ལྟོས། ལས་ཀྱིས་ནི་སེམས་མི་ཤེས་སོ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "請觀察那些可愛、不可愛，以及感受快樂與痛苦的種種顯現。業力本身並不能了知心。由業所造作， 心為彼增上， 心依於業轉， 業依心而轉。 心依於業轉，業依心而轉者，謂由業所造作，心為彼增上，心依於業轉，業亦依心轉。 論曰： 由業所造作者，謂由業所造作故。 心為彼增上者，謂心是彼增上緣故。 心依於業轉者，謂心隨業轉故。 業依心而轉者，由心增上力，業方轉故。 如是心業互為增上，故說心業更互相依。 如偈言： 心依於業轉，亦依心而轉。 論",
+   "en": "Look at the appearances of the pleasant, the unpleasant, the experience of happiness, and the experience of suffering. Karma does not know the mind.ལས་ཀླུ་ཡི་རྒ๛ུ་ལས་བྱུང་བ་ཡིན་ཏེ། ལས་ནི་སུའི་ཡང་བྱེད་པ་པོ་མ་ཡིན་ནོ།། ལས་དེ་ཡང་འདི་ལྟ་སྟེ། སེམས་པ་དང་བསམས་པའི་ལས་སོ།། �",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1227.8,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T15:33:26"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1237.8,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-09T15:54:04"
+   }
   },
   {
    "no": 5,
@@ -89,10 +159,30 @@
    "folio": "[203b.4]",
    "char_off": 501,
    "bo": "སེམས་ཀྱིས་ནི་ལས་མི་ཤེས་སོ། །ཚོར་བས་ ནི་རྣམ་པར་སྨྱིན་པ་མི་ཤེས་སོ། །རྣམ་པར་སྨིན་པས་ནི་ཚོར་བ་མི་ཤེས་སོ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "心不能了知業，受不能了知異熟，異熟亦不能了知受。此外，這十二緣起支，每一支都具備了「無常」、「苦」以及「無我」的本質。此中，何者為「無明」？所謂「無明」，是指對於過去、未來以及現在這三世，都處於一種無知的狀態。所謂「無明」，是指在過去、未來與現在這三世之中，都處於一種無知的狀態，這就稱為無明。所謂「無明」是指什麼呢？就是指對於過去、未來以及現在這「三世」的一切，都處於一種無知的狀態；這就稱為「無明」。所謂「無明」，就是指對於過去、未來以及現在，這三世的一切，都處於一種無知的蒙昧狀態。所謂「無明」（無知），是指對於過去、未來以及現在，在這三世之中",
+   "en": "The mind does not know karma; feeling does not know the ripening; and the ripening does not know feeling.འདི་ལྟར་ཆོས་ཐམས་ཅད་ནི་མ་བྱས་པ། མངོན་པར་འདུས་མ་བྲུས་པ། དངོས་པོ་མེད་པ། རྫས་མེད་བ། རྣམ་ཐར་པ་གསུམ་གྱི་རང་བཞིན་ཅན་ཏེ། ཆོས་ཐེམས་",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1315.6,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T09:22:43"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 2053.3,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T09:56:57"
+   }
   },
   {
    "no": 6,
