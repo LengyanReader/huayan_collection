@@ -829,32 +829,6 @@ P25 十定逐种全引（27.2K）→ P26 十通（3.6K）→ P27 十忍（5.7K�
 - [ ] ch15 验收批：重生＋六门禁＋浏览器抽查。
 - [x] L.379续 PROGRESS/心跳/ledger 登记＋显式路径 commit（不 push）。
 - [ ] ch15 验收批登记＋commit（不 push）。
-
-## L.380 三语线·句界修剪＋全章无损切段批（2026-11-09/10）
-
-〔双轨注〕批号 L.380 与并行大藏经线 L.380/L.380续（2026-11-09）同号；本批属三语翻译线，代码/数据层内批号同标 L.380（沿 80/40 线 L.377 双轨例）。
-
-### 用户裁决（本批三指示）
-- 段末截断之问 → **展示层句界修剪**：译文末句不完整者页面截至最后完整句读并标〔截斷〕，数据层原译全量保留（双轨）；适用全部已译段（含藏1/14/15 旧段）。
-- **不丢内容·保证每章完整** → 全章切段（句末感知），段拼接 norm 逐字对账无内容缺口（不符即 FATAL 中止）。
-- 已译章怎么办 → **续切补齐**：旧 6 段原译不动，自段6末尾续切至章末；零重译零丢失；破句归 M5 校订；算力全给未译章。
-
-### 实现
-- 提取器重写：shad-run 感知切分（།།/། །）·句末感知（FINALS 终句助词/双 shad）·软上限 400 字符·续接词尾不切（CONT）·boundary=final/soft/tail·`--continue` 续切（旧段原样保留）·全章默认（`--max-paras 0`）·逐段 norm 复验 pos==cursor＋章末 cursor==len 双保险。
-- 数据层：ch1 **1552 段**（6 done 保留·shad_gaps=0）·ch14 **278 段**（6 done·旧口径纯 shad 缺口5处计数留痕）·ch16 **201 段**全新句末感知（0 done）；ch15 待续切（批量 PID 23996 跑中·防文件竞态）。
-- 翻译器：`--max-new` 自适应 min(600,max(200,len(bo)))·`--max-segs` 默认 6（里程碑单元）。
-- 门禁：**G2.5 段连续性**新立（norm 拼接无内容缺口无重叠·full_chapter 须覆至章末·旧口径纯 shad 缺口容忍计数）；G2.1 改 ≥6 已译复验段（段数不限）。
-- 生成器：窗口渲染（已译＋前6待译·余段〔待譯·未展示〕计数注）·章界诚实边界动态（全章/开篇）·句界修剪〔截斷〕标注。
-
-### DoD
-- [x] ch1/14 续切＋ch16 重切落层（norm 对账无内容缺口）。
-- [x] 页面重生（hub＋4章子页）·浏览器实测（ch16 窗口195段注·ch01 1540段注·修剪标 6/5/5·tab/布局切换·0 console 错误）。
-- [x] YAML title_sub 更新（2037 段口径）＋updated_at 声明/产物一致性修复（重生后 2026-11-10）。
-- [x] 翻译线门禁：当前里程碑 FAIL=0（G2.1 未译章预期 FAIL·G2.5 PENDING 待 ch15 续切）。
-- [ ] verify_demo 全站洁净复跑（旧跑输出文件遭双进程写混·另存 verify_demo_L380.txt）。
-- [ ] ch15 批量落盘 → 续切 → 验收（G2.5 转 PASS）。
-- [ ] 登记＋显式路径 commit（不 push）。
-
 ## L.380 大藏经对应研究·程序化核验＋独立文章批（2026-11-09）
 
 ### 目标
@@ -940,3 +914,11 @@ P0 收尾：T300/T301↔Toh 187、T298↔藏 32、T281 三章、T309 归属；�
 - **修复**：回调改为 `requestAnimationFrame` 合并；以 `stage.clientWidth × clientHeight` 为 guard，尺寸未变则不重绘；无 RO 时退化为 `window.resize`。
 - **防回归**：article gate 新增两条检查——禁止 `new ResizeObserver(function () { draw(); })`，必须出现 `requestAnimationFrame`。
 - **验证**：`node --check` OK；article gate ALL PASSED；`verify_demo` ALL CHECKS PASSED；`test_pipeline` ALL TESTS PASSED；`check.py` OK；build **85 files**。
+### L.388 三语线·ch16 六段双语录盘＋MITRA 官方模板修复（2026-11-10）
+- **根因**：CoNLL/Sanskrit 不是模型坏了，而是 prompt 未按 model card；改用官方 user-turn 模板＋target `Modern Chinese`，短探针返回 0 Tibetan / 0 CoNLL。
+- **模型版本**：本地 snapshot `66869d9b` 与 HF 一致（2026-08-14），非过期，无需升级。
+- **逐段**：ch16 seg1–6 **中文＋英文 6/6**；seg1 为 colon 结尾的 frame 段；seg2 为单句 question；英文外层引号先剥离；coverage 以句为单位；单语仅记 `partial`。
+- **数据/页面**：ch16 全章 201 段，开篇 6/6 已译；hub 已试译 **24** 段；plan ch16=6；G2.2/G2.3 PASS。
+- **工具**：`repair_trilingual_segment.py`（官方模板＋清理＋coverage）、`probe_mitra_official.py`。
+- **门禁**：M2 **FAIL=1**（仅 ch17–31 未开工，预期）；G2.5 仍 pending ch15 续切；`verify_demo`／`test_pipeline`／`check.py` 绿。
+- **next**：ch17–31 逐章 6 段；或先 ch15 续切收 G2.5；M5 校订仍是主 backlog。

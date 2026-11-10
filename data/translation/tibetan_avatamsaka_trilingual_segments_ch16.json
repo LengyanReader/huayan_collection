@@ -28,11 +28,53 @@
    "folio": "210b.2",
    "char_off": 0,
    "bo": "དེ་ནས་བྱང་ཆུབ་སེམས་དཔའ་ཡེ་ཤེས་དཔལ་གྱིས་བྱང་ཆུབ་སེམས་དཔའ་འཇམ་དཔལ་ལ་འདི་ སྐད་ཅེས་སྨྲས་སོ། །",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "爾時，智德菩薩對文殊師利菩薩如是言：",
+   "en": "Then the bodhisattva Jñānaśrī addressed the bodhisattva Mañjuśrī in this way:",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 279.0,
+    "out_tokens": 16,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T15:53:48"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1024.6,
+    "out_tokens": 200,
+    "max_new": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T11:29:01"
+   },
+   "zh_raw": "爾時，智德菩薩對文殊師利菩薩如是言：",
+   "zh_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": true,
+    "ts": "2026-11-10T18:38:43"
+   },
+   "en_raw": "Then the bodhisattva Jñānaśrī addressed the bodhisattva Mañjuśrī in this way:འཇམ་པའི་དབྱངས་ཀྱིས་འདི་སྐད་ཅིག་སྨྱས་སོ། རིགས་ཀྱེའི་བུ་འདི་ལ་བྱང་བྱང་སེམསདཔའ་ཆོས་ཐམས་ཅད་ལ་མངོན་པར་ཞེན་པ་མེད་པར་གནས་པ་ཡིན",
+   "en_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": true,
+    "ts": "2026-11-10T18:38:43"
+   },
+   "zh_raw2": "爾時，智德菩薩對文殊師利菩薩如是言："
   },
   {
    "no": 2,
@@ -42,11 +84,55 @@
    "folio": "[210b.3]",
    "char_off": 97,
    "bo": "ཀྱེ་རྒྱལ་བའི་སྲས་བྱང་ཆུབ་སེམས་དཔའ་རྣམས་ཇི་ལྟར་ན་ཁ་ན་མ་ཐོ་བ་མེད་པའི་ལུས་ཀྱི་ལས་དང་ལྡན་པ་ཡིན། ",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "諸佛子！菩薩們是如何成就無有過失的身業的呢？",
+   "en": "O Son of the Victorious One, how is it that bodhisattvas possess physical actions that are free from fault?",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 357.6,
+    "out_tokens": 17,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T16:05:02"
+   },
+   "zh_raw": "諸佛子！菩薩們是如何成就無有過失的身業的呢？",
+   "zh_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:43"
+   },
+   "zh_raw2": "諸佛子！菩薩們是如何成就無有過失的身業的呢？",
+   "en_raw": "\"O Son of the Victorious One, how is it that bodhisattvas possess physical actions that are free from fault?\"",
+   "en_raw2": "\"O Son of the Victorious One, how is it that bodhisattvas possess physical actions that are free from fault?\"",
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 470.3,
+    "out_tokens": 27,
+    "max_new": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T16:16:12"
+   },
+   "en_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:43"
+   }
   },
   {
    "no": 3,
@@ -56,11 +142,55 @@
    "folio": "[210b.3]",
    "char_off": 189,
    "bo": "ཁ་ན་མ་ཐོ་བ་མེད་པའི་ངག་གི་ལས་དང་ལྡན་པ་ཡིན། ཁ་ན་མ་ཐོ་བ་མེད་པའི་ཡིད་ཀྱི་ལས་དང་ལྡན་པ་ཡིན། ",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "具足無有過失的語業，具足無有過失的意業。",
+   "en": "They possess verbal actions that are free from fault; they possess mental actions that are free from fault.",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "zh_raw": "具足無有過失的語業，具足無有過失的意業。",
+   "zh_raw2": "具足無有過失的語業，具足無有過失的意業。",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 582.2,
+    "out_tokens": 21,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T16:27:58"
+   },
+   "zh_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:44"
+   },
+   "en_raw": "They possess verbal actions that are free from fault; they possess mental actions that are free from fault.",
+   "en_raw2": "They possess verbal actions that are free from fault; they possess mental actions that are free from fault.",
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 491.2,
+    "out_tokens": 21,
+    "max_new": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T16:37:02"
+   },
+   "en_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": true,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:44"
+   }
   },
   {
    "no": 4,
@@ -70,11 +200,55 @@
    "folio": "[210b.3]",
    "char_off": 275,
    "bo": "ལུས་ཀྱི་ལས་རྣམ་ པར་མ་ཉམས་པ་ཡིན། ངག་གི་ལས་རྣམ་པར་མ་ཉམས་པ་ཡིན། ཡིད་ཀྱི་ལས་རྣམ་པར་མ་ཉམས་པ་ཡིན། ",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "身業無有損壞，語業無有損壞，意業無有損壞。",
+   "en": "Their physical actions are unimpaired; their verbal actions are unimpaired; and their mental actions are unimpaired.",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "zh_raw": "身業無有損壞，語業無有損壞，意業無有損壞。",
+   "zh_raw2": "身業無有損壞，語業無有損壞，意業無有損壞。",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 474.9,
+    "out_tokens": 22,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T16:45:44"
+   },
+   "zh_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:45"
+   },
+   "en_raw": "Their physical actions are unimpaired; their verbal actions are unimpaired; and their mental actions are unimpaired.",
+   "en_raw2": "Their physical actions are unimpaired; their verbal actions are unimpaired; and their mental actions are unimpaired.",
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 594.2,
+    "out_tokens": 26,
+    "max_new": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T16:56:37"
+   },
+   "en_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": true,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:45"
+   }
   },
   {
    "no": 5,
@@ -84,11 +258,55 @@
    "folio": "[210b.4]",
    "char_off": 375,
    "bo": "ལུས་ཀྱི་ལས་མ་སྨད་པ་ཡིན། ངག་གི་ལས་མ་སྨད་པ་ཡིན། ཡིད་ཀྱི་ལས་མ་སྨད་པ་ཡིན། ",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "身業無可訶責，語業無可訶責，意業無可訶責。",
+   "en": "Their physical actions are irreproachable; their verbal actions are irreproachable; their mental actions are irreproachable.",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "zh_raw": "身業無可訶責，語業無可訶責，意業無可訶責。",
+   "zh_raw2": "身業無可訶責，語業無可訶責，意業無可訶責。",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 319.2,
+    "out_tokens": 25,
+    "max_new": 250,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T18:10:35"
+   },
+   "zh_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:46"
+   },
+   "en_raw": "Their physical actions are irreproachable; their verbal actions are irreproachable; their mental actions are irreproachable.",
+   "en_raw2": "Their physical actions are irreproachable; their verbal actions are irreproachable; their mental actions are irreproachable.",
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 290.9,
+    "out_tokens": 25,
+    "max_new": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T18:16:11"
+   },
+   "en_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": true,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:46"
+   }
   },
   {
    "no": 6,
@@ -98,11 +316,55 @@
    "folio": "[210b.4]",
    "char_off": 445,
    "bo": "ལུས་ཀྱི་ལས་མི་འཕྲོགས་པ་ཡིན། ངག་གི་ལས་ མི་འཕྲོགས་པ་ཡིན། ཡིད་ཀྱི་ལས་མི་འཕྲོགས་པ་ཡིན། ",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "身業不可奪，語業不可奪，意業不可奪。",
+   "en": "Their physical actions are unassailable; their verbal actions are unassailable; their mental actions are unassailable.",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "zh_raw": "身業不可奪，語業不可奪，意業不可奪。",
+   "zh_raw2": "身業不可奪，語業不可奪，意業不可奪。",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 177.8,
+    "out_tokens": 16,
+    "max_new": 250,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T18:19:45"
+   },
+   "zh_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:47"
+   },
+   "en_raw": "Their physical actions are unassailable; their verbal actions are unassailable; their mental actions are unassailable.",
+   "en_raw2": "Their physical actions are unassailable; their verbal actions are unassailable; their mental actions are unassailable.",
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 231.8,
+    "out_tokens": 25,
+    "max_new": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T18:24:14"
+   },
+   "en_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": true,
+    "validation": "ok",
+    "frame": false,
+    "ts": "2026-11-10T18:38:47"
+   }
   },
   {
    "no": 7,

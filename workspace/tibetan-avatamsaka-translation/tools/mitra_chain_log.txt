@@ -4,3 +4,6 @@
 [chain] waiting pid=34604 -> next chapter 15
 [chain] waiting pid=35648 -> next chapter 15
 [chain] pid 35648 gone at 13:36:48; launching --chapter 15
+[chain] batch chapter 15 exit=1
+[chain] waiting pid=23996 -> next chapter 16
+[chain] pid 23996 gone at 10:53:19; launching --chapter 16

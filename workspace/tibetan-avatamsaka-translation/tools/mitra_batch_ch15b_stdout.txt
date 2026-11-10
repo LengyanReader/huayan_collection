@@ -1,0 +1,10 @@
+[09:00:45] tokenizer ready 65.0s
+[09:00:48] model ready 2.2s dtype=torch.bfloat16 threads=16
+[09:00:48] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch15.json 藏章15 total=6 todo=2
+[09:22:43] seg5 zh chars=275 gen=1315.6s clipped=False :: 心不能了知業，受不能了知異熟，異熟亦不能了知受。此外，這十二緣起支，每一支都具備了「無常」、「苦」以及「無我」的本質。此
+[09:56:57] seg5 en chars=227 gen=2053.3s clipped=False :: The mind does not know karma; feeling does not know the ripe
+[09:56:57] seg5 done
+[10:27:58] seg6 zh chars=173 gen=1861.5s clipped=False :: 心不能了知受，受不能了知心；因不能了知緣，緣不能了知因。此外，須菩提！菩薩摩訶薩應當修學「一切種智」。須菩提！菩薩摩訶萨
+[10:53:00] seg6 en chars=268 gen=1501.5s clipped=False :: The mind does not know feeling, and feeling does not know th
+[10:53:00] seg6 done
+[10:53:00] ALL DONE 6799.6s

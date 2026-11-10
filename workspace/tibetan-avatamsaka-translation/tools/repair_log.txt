@@ -1,0 +1,78 @@
+[13:52:45] seg1 zh: raw=159 cleaned=0 complete=False trimmed=True (empty)
+[13:52:45] seg1 en: raw=196 cleaned=0 complete=False trimmed=True (empty)
+[13:53:55] model ready 6.6s
+[14:45:25] model ready 4.3s
+[15:26:13] seg1 zh: raw=513 cleaned=0 complete=False (empty)
+[15:26:13] --- cleaned ---
+
+[15:30:54] seg2 zh: raw=202 cleaned=22 complete=False trimmed=True (ok)
+[15:49:09] model ready 4.6s
+[15:53:48] seg1 zh: raw=18 cleaned=0 complete=False (empty)
+[15:53:48] --- cleaned ---
+
+[15:54:58] seg1 zh: raw=159 cleaned=0 complete=False trimmed=True (empty)
+[15:54:58] seg1 en: raw=196 cleaned=0 complete=False trimmed=True (empty)
+[15:58:01] seg1 zh: raw=18 cleaned=18 complete=True trimmed=False (ok)
+[15:58:01] seg1 en: raw=196 cleaned=77 complete=True trimmed=False (ok)
+[15:58:19] seg1 zh: raw=18 cleaned=18 complete=True trimmed=False (ok)
+[15:58:19] seg1 en: raw=196 cleaned=77 complete=True trimmed=False (ok)
+[15:59:04] model ready 5.4s
+[16:05:02] seg2 zh: raw=22 cleaned=22 complete=True (ok)
+[16:05:02] --- cleaned ---
+諸佛子！菩薩們是如何成就無有過失的身業的呢？
+[16:07:30] seg1 zh: raw=18 cleaned=18 complete=True trimmed=False (ok)
+[16:07:30] seg1 en: raw=196 cleaned=77 complete=True trimmed=False (ok)
+[16:07:30] seg2 zh: raw=22 cleaned=22 complete=True trimmed=False (ok)
+[16:08:22] model ready 5.2s
+[16:16:12] seg2 en: raw=109 cleaned=0 complete=False (empty)
+[16:16:12] --- cleaned ---
+
+[16:16:53] seg2 zh: raw=22 cleaned=22 complete=True trimmed=False (ok)
+[16:16:53] seg2 en: raw=109 cleaned=0 complete=False trimmed=True (empty)
+[16:17:34] seg2 zh: raw=22 cleaned=22 complete=True trimmed=False (ok)
+[16:17:34] seg2 en: raw=109 cleaned=107 complete=True trimmed=False (ok)
+[16:18:16] model ready 5.1s
+[16:27:58] seg3 zh: raw=20 cleaned=20 complete=True (ok)
+[16:27:58] --- cleaned ---
+具足無有過失的語業，具足無有過失的意業。
+[16:28:50] model ready 4.8s
+[16:37:02] seg3 en: raw=107 cleaned=106 complete=True (ok)
+[16:37:02] --- cleaned ---
+They possess verbal actions that are free from fault;they possess mental actions that are free from fault.
+[16:37:49] model ready 5.3s
+[16:45:44] seg4 zh: raw=21 cleaned=21 complete=True (ok)
+[16:45:44] --- cleaned ---
+身業無有損壞，語業無有損壞，意業無有損壞。
+[16:46:43] model ready 5.7s
+[16:56:37] seg4 en: raw=116 cleaned=114 complete=True (ok)
+[16:56:37] --- cleaned ---
+Their physical actions are unimpaired;their verbal actions are unimpaired;and their mental actions are unimpaired.
+[16:57:42] model ready 6.0s
+[18:05:16] model ready 4.6s
+[18:10:35] seg5 zh: raw=21 cleaned=21 complete=True (ok)
+[18:10:35] --- cleaned ---
+身業無可訶責，語業無可訶責，意業無可訶責。
+[18:11:20] model ready 4.7s
+[18:16:11] seg5 en: raw=124 cleaned=122 complete=True (ok)
+[18:16:11] --- cleaned ---
+Their physical actions are irreproachable;their verbal actions are irreproachable;their mental actions are irreproachable.
+[18:16:47] model ready 3.8s
+[18:19:45] seg6 zh: raw=18 cleaned=18 complete=True (ok)
+[18:19:45] --- cleaned ---
+身業不可奪，語業不可奪，意業不可奪。
+[18:20:22] model ready 3.8s
+[18:24:14] seg6 en: raw=118 cleaned=116 complete=True (ok)
+[18:24:14] --- cleaned ---
+Their physical actions are unassailable;their verbal actions are unassailable;their mental actions are unassailable.
+[18:38:43] seg1 zh: raw=18 cleaned=18 complete=True trimmed=False (ok)
+[18:38:43] seg1 en: raw=196 cleaned=77 complete=True trimmed=False (ok)
+[18:38:43] seg2 zh: raw=22 cleaned=22 complete=True trimmed=False (ok)
+[18:38:43] seg2 en: raw=109 cleaned=107 complete=True trimmed=False (ok)
+[18:38:44] seg3 zh: raw=20 cleaned=20 complete=True trimmed=False (ok)
+[18:38:44] seg3 en: raw=107 cleaned=106 complete=True trimmed=True (ok)
+[18:38:45] seg4 zh: raw=21 cleaned=21 complete=True trimmed=False (ok)
+[18:38:45] seg4 en: raw=116 cleaned=114 complete=True trimmed=True (ok)
+[18:38:46] seg5 zh: raw=21 cleaned=21 complete=True trimmed=False (ok)
+[18:38:46] seg5 en: raw=124 cleaned=122 complete=True trimmed=True (ok)
+[18:38:47] seg6 zh: raw=18 cleaned=18 complete=True trimmed=False (ok)
+[18:38:47] seg6 en: raw=118 cleaned=116 complete=True trimmed=True (ok)

@@ -192,10 +192,30 @@
    "folio": "[203b.5]",
    "char_off": 611,
    "bo": "སེམས་ཀྱིས་ནི་ཚོར་བ་མི་ཤེས་སོ། །ཚོར་བས་ནི་སེམས་མི་ཤེས་སོ། །རྒྱུས་ནི་རྐྱེན་མི་ཤེས་སོ། །རྐྱེན་ཀྱིས་ནི་རྒྱུ་མི་ཤེས་སོ།",
-   "zh": null,
-   "en": null,
-   "status": "pending",
-   "verified": true
+   "zh": "心不能了知受，受不能了知心；因不能了知緣，緣不能了知因。此外，須菩提！菩薩摩訶薩應當修學「一切種智」。須菩提！菩薩摩訶萨应当修学一切种智。དེ་ལ་མི་འཇིགས་པ་བཞི་གང་ཞེ་ན། འདི་ལྟ་སྟེ། ང་ནི་ཡང་དག་པར་རྫོགས་པའི་སངས་རྒ྾ས་ཏེ། འདིར་ང་ལ་ཆོས་འདི་དག་མངོན་པ",
+   "en": "The mind does not know feeling, and feeling does not know the mind. The cause does not know the condition, and the condition does not know the cause.འདི་ལྟར་ཆོས་ཐམས་ཅད་ནི་མ་སྐྱཻས་པ་དང་། མ་བྱུང་བ་དང་། དངོས་པོ་མེད་པ་དང་འདུས་མ་བྱས་པ་དང། ཡ་མ་བརླ་དང་། །སྒྱེ་མ་མཆིས་པ་དངོས་པ",
+   "status": "done",
+   "verified": true,
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1861.5,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T10:27:58"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 0,
+    "schooling": "未校订",
+    "gen_s": 1501.5,
+    "out_tokens": 200,
+    "clipped_repeat": false,
+    "ts": "2026-11-10T10:53:00"
+   }
   }
  ]
 }

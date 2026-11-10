@@ -1,0 +1,178 @@
+Verifying C:\DA_Practice\huayan_collection\web\demo\index.html
+
+  OK:   index.html (7,863 bytes)
+  OK:   index: starts with <!DOCTYPE html>
+  OK:   index: ends with </html>
+  OK:   famai shell: routes lineage subpage + registry provenance present
+  OK:   F.3 person-chronicle 5祖/33站·sourced28逐字在场·pending5标〔待核〕
+  OK:   F.4 只读投影 S3要地12·S4祖师18/骨干5世·S5色块6·未具名弟子7标〔待核〕·反向边已剔
+  OK:   F.5 视觉持平 滑轨500–900·搜索/tooltip·朱红Ghost·羊皮纸字栈·断点动画·年号诚实〔待核〕
+  OK:   F.6a 法脉时间化 g-linmap·toggle·person_geo 171 条·祖师 geo 覆盖 18/18
+  OK:   G.0 D3 v7.9.0 内联·lineage_net 只读投影 80 点/97 边/22 支·零自环·零臆造边
+  OK:   G.1 单祖子树 d3-hierarchy：hierarchy/tree.nodeSize/zoom/折叠/lin-g/elbow 连线齐备
+  OK:   G.2 全法脉网络 d3-force：lineage-net-svg 容器·力导向·三边型·静态兜底边表在场
+  OK:   G.3 放射式时间轴 d3.tree radial：lineage-radial-svg 容器·linkRadial 连线·纪年/代际角·S4 弟子链逐字兜底在场
+  OK:   G.4 四视图联动·选择总线：bs-status 面板·bsSelect/bsApply 跨视图高亮·.bs-hl/.bs-neighbor·URL 含 sel/view 零坐标
+  OK:   F.2 shanhe subpage + license page complete (registry live verified)
+  OK:   index: links to all 6 tab pages
+
+Verifying tabs/lineage.html (法脉传承)
+  OK:   lineage: DOCTYPE
+  OK:   lineage: ends with </html>
+  OK:   lineage: div balanced (59)
+  OK:   lineage: var GRAPH embedded
+  OK:   lineage: size 423,129 bytes
+Verifying tabs/gap.html (华严文献)
+  OK:   gap: DOCTYPE
+  OK:   gap: ends with </html>
+  OK:   gap: div balanced (252)
+  OK:   gap: var GAP embedded
+  OK:   gap: sidebar nav links (11)
+  OK:   gap: size 2,627,206 bytes
+Verifying tabs/jiaoxing.html (教海行云)
+  OK:   jiaoxing: DOCTYPE
+  OK:   jiaoxing: ends with </html>
+  OK:   jiaoxing: div balanced (358)
+  OK:   jiaoxing: var PRACTICE_DATA embedded
+  OK:   jiaoxing: sidebar nav links (14)
+  OK:   jiaoxing: size 2,710,613 bytes
+Verifying tabs/frontier.html (前沿对话)
+  OK:   frontier: DOCTYPE
+  OK:   frontier: ends with </html>
+  OK:   frontier: div balanced (95)
+  OK:   frontier: var FRONTIER_DATA embedded
+  OK:   frontier: sidebar nav links (8)
+  OK:   frontier: size 2,567,409 bytes
+Verifying tabs/cosmology.html (世主妙严)
+  OK:   cosmology: DOCTYPE
+  OK:   cosmology: ends with </html>
+  OK:   cosmology: div balanced (110)
+  OK:   cosmology: var SPIRIT_DATA embedded
+  OK:   cosmology: sidebar nav links (5)
+  OK:   cosmology: size 2,575,995 bytes
+Verifying tabs/spirit.html (灵性仁本)
+  OK:   spirit: DOCTYPE
+  OK:   spirit: ends with </html>
+  OK:   spirit: div balanced (92)
+  OK:   spirit: var SPIRIT_DATA embedded
+  OK:   spirit: sidebar nav links (7)
+  OK:   spirit: size 2,566,823 bytes
+  OK:   haiyun evidence: 条目：38 条（strong 23／medium 10／limit 5）
+  OK:   haiyun draft: ALL CHECKS PASSED
+  OK:   haiyun: 反向验证 22/22 如期失败
+  OK:   t1 quote: ALL CHECKS PASSED
+  OK:   t1 bikan: ALL CHECKS PASSED
+  OK:   t1: 反向验证 8/8 如期失败
+  OK:   jj 门禁: ALL CHECKS PASSED（L.111 九九華嚴 OCR 立册）
+  OK:   jj 反向: 反向验证：8/8 如期捕获
+
+Verifying articles/ (standalone article pages)
+
+  OK:   articles/index: catalog title
+  OK:   articles/index: links to 72 article pages
+  OK:   articles/index: all hrefs resolve
+  OK:   articles updated_at: 42 条声明皆为 ISO YYYY-MM-DD
+  OK:   articles updated_at: 无未注册而显时间者
+  OK:   articles updated_at: 42 条声明与产物一一对账
+  OK:   articles/ai-wisdom-alignment.html (109,030 bytes, all checks)
+  OK:   articles/avatamsaka-studies.html (260,120 bytes, all checks)
+  OK:   articles/buddhist-ai.html (220,387 bytes, all checks)
+  OK:   articles/chan-beyond.html (286,952 bytes, all checks)
+  OK:   articles/chan-traces.html (95,859 bytes, all checks)
+  OK:   articles/faxiang.html (77,542 bytes, all checks)
+  OK:   articles/firsthui-jiaopan.html (61,660 bytes, all checks)
+  OK:   articles/haiyun-lectures.html (278,737 bytes, all checks)
+  OK:   articles/huayan-80-60-matrix.html: skip_html 入口 (external builder·10,654B) — DOCTYPE/收尾/体量 OK
+  OK:   articles/huayan-asamkhya-pin.html (70,424 bytes, all checks)
+  OK:   articles/huayan-chufaxin-gongde-pin.html (173,292 bytes, all checks)
+  OK:   articles/huayan-dazang-mapping.html (341,858 bytes, all checks)
+  OK:   articles/huayan-doushuaigongzhongjizan-pin.html (68,569 bytes, all checks)
+  OK:   articles/huayan-fanxing-pin.html (116,075 bytes, all checks)
+  OK:   articles/huayan-fobusiyi-pin.html (95,596 bytes, all checks)
+  OK:   articles/huayan-guangmingjue-pin.html (140,159 bytes, all checks)
+  OK:   articles/huayan-jingxing-pin.html (127,859 bytes, all checks)
+  OK:   articles/huayan-lishijian-pin.html (147,062 bytes, all checks)
+  OK:   articles/huayan-mingfa-pin.html (170,496 bytes, all checks)
+  OK:   articles/huayan-putanxing-pin.html (72,754 bytes, all checks)
+  OK:   articles/huayan-rlchuxian-pin.html (105,372 bytes, all checks)
+  OK:   articles/huayan-rufajie-journey.html: skip_html 入口 (external builder·22,638B) — DOCTYPE/收尾/体量 OK
+  OK:   articles/huayan-rufajie-pin.html (456,370 bytes, all checks)
+  OK:   articles/huayan-series-outline.html (76,096 bytes, all checks)
+  OK:   articles/huayan-shengdoushuaitiangong-pin.html (81,410 bytes, all checks)
+  OK:   articles/huayan-shengxumishanding-pin.html (125,770 bytes, all checks)
+  OK:   articles/huayan-shengyemotiangong-pin.html (72,701 bytes, all checks)
+  OK:   articles/huayan-shidi-pin.html (130,208 bytes, all checks)
+  OK:   articles/huayan-shiding-pin.html (108,424 bytes, all checks)
+  OK:   articles/huayan-shihuiuxiang-pin.html (171,731 bytes, all checks)
+  OK:   articles/huayan-shiren-pin.html (77,890 bytes, all checks)
+  OK:   articles/huayan-shishenxiang-pin.html (77,373 bytes, all checks)
+  OK:   articles/huayan-shitong-pin.html (72,653 bytes, all checks)
+  OK:   articles/huayan-shiwujincang-pin.html (74,950 bytes, all checks)
+  OK:   articles/huayan-shixing-pin.html (79,207 bytes, all checks)
+  OK:   articles/huayan-shizhu-pin.html (155,388 bytes, all checks)
+  OK:   articles/huayan-shouliang-pin.html (63,790 bytes, all checks)
+  OK:   articles/huayan-sidi-pin.html (127,261 bytes, all checks)
+  OK:   articles/huayan-studies.html (72,105 bytes, all checks)
+  OK:   articles/huayan-suihao-pin.html (72,730 bytes, all checks)
+  OK:   articles/huayan-wenming-pin.html (148,092 bytes, all checks)
+  OK:   articles/huayan-xianshou-pin.html (184,808 bytes, all checks)
+  OK:   articles/huayan-xumidingjizan-pin.html (139,147 bytes, all checks)
+  OK:   articles/huayan-yemogongzhongjizan-pin.html (81,587 bytes, all checks)
+  OK:   articles/huayan-zhuchu-pin.html (68,224 bytes, all checks)
+  OK:   articles/huazang-shijie.html (147,749 bytes, all checks)
+  OK:   articles/jj-huayan-collation.html: skip_html 入口 (external builder·3,140,477B) — DOCTYPE/收尾/体量 OK
+  OK:   articles/master-chengguan.html (103,631 bytes, all checks)
+  OK:   articles/master-dushun.html (97,178 bytes, all checks)
+  OK:   articles/master-fazang.html (88,473 bytes, all checks)
+  OK:   articles/master-litongxuan.html (80,975 bytes, all checks)
+  OK:   articles/master-mengcan.html (68,954 bytes, all checks)
+  OK:   articles/master-zhiyan.html (81,914 bytes, all checks)
+  OK:   articles/master-zongmi.html (119,129 bytes, all checks)
+  OK:   articles/mimi.html (68,170 bytes, all checks)
+  OK:   articles/mirror-mind.html (210,337 bytes, all checks)
+  OK:   articles/nanyu.html (52,710 bytes, all checks)
+  OK:   articles/panjiao.html (168,588 bytes, all checks)
+  OK:   articles/piluzhena.html (132,191 bytes, all checks)
+  OK:   articles/puxian-sanmei.html (122,980 bytes, all checks)
+  OK:   articles/ru-lai-xian-xiang.html (235,772 bytes, all checks)
+  OK:   articles/rulai-minghao.html (146,906 bytes, all checks)
+  OK:   articles/sanshiqi.html (66,655 bytes, all checks)
+  OK:   articles/shijie-chengjiu.html (128,380 bytes, all checks)
+  OK:   articles/shizhu-miaoyan.html: 数据科学 schema 契约 23 键路径齐备
+  OK:   articles/shizhu-miaoyan.html (2,052,904 bytes, all checks)
+  OK:   articles/tiantai.html (69,693 bytes, all checks)
+  OK:   articles/tibetan-avatamsaka-alignment-demo.html: skip_html 入口 (external builder·31,378B) — DOCTYPE/收尾/体量 OK
+  OK:   articles/tibetan-avatamsaka-trilingual-ch01.html (41,163 bytes, all checks)
+  OK:   articles/tibetan-avatamsaka-trilingual-ch14.html (39,601 bytes, all checks)
+  OK:   articles/tibetan-avatamsaka-trilingual-ch15.html (33,505 bytes, all checks)
+  OK:   articles/tibetan-avatamsaka-trilingual-ch16.html (27,997 bytes, all checks)
+  OK:   articles/tibetan-avatamsaka-trilingual.html: skip_html 入口 (external builder·65,414B) — DOCTYPE/收尾/体量 OK
+  OK:   articles/vijnana-mind.html (221,786 bytes, all checks)
+  OK:   articles/yikong.html (77,299 bytes, all checks)
+  OK:   articles/yongjia-xuanjue.html (76,910 bytes, all checks)
+  OK:   articles/zhenwei.html (104,782 bytes, all checks)
+  OK:   tabs: all article-chip hrefs resolve
+  OK:   gap sidebar: 8 article entries link straight to standalone pages
+  OK:   gap: articlePageHref helper present
+
+Verifying built JavaScript syntax
+  OK:   js/common.js: syntax OK
+  OK:   articles/shizhu-miaoyan.html: data-science render — OK  renderArticleBI: 196,882 chars, 14 sections, 6 svg, no leaks
+  OK:   articles/ru-lai-xian-xiang.html: story-comic render — OK: 10拍 · 3图 · 64 en-line
+  OK:   articles/shizhu-miaoyan.html: story-comic render — OK: 4幕/26格 · 11拍 · 4图 · 229 en-line
+  OK:   story-comic reverse — 反向验证：21/21 如期失败 + 两正本通过
+  OK:   articles/shizhu-miaoyan.html: flow render — OK: flow render - 40 classes, 414 members, 5 contiguous group bands; diagram has 40 cells + 5 bands + 4 arrows; cats/leaders present in DOM AND verbatim in T279 (no-loss); cats/leaders/vows/members all verbatim in T279; static (no interaction); no leaks
+  OK:   articles/ru-lai-xian-xiang.html: data-science render — verify_data_science_render[ru-lai-xian-xiang]: ALL CHECKS PASSED
+  OK:   articles/shizhu-miaoyan.html: data-science render — verify_data_science_render[shizhu-miaoyan]: ALL CHECKS PASSED
+  OK:   data-science reverse — 反向验证通过：50/50 如期失败 + 两正本通过
+  OK:   shizhu: 专书门禁 — ALL CHECKS PASSED —— 《世主妙严品》门禁全绿
+  OK:   shizhu: 反向验证 — 反向验证 10/10 如期失败
+  OK:   ru-lai: 专书门禁 — ALL CHECKS PASSED —— 《如来现相品》门禁全绿
+  OK:   ru-lai: 反向验证 — 反向验证 39/39 如期失败
+
+========================================
+✅ ALL CHECKS PASSED
+如期失败
+
+========================================
+❌ 1 ERROR(S) FOUND

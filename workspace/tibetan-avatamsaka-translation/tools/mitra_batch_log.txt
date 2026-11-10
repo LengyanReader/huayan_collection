@@ -55,3 +55,35 @@
 [13:37:08] tokenizer ready 20.3s
 [13:37:10] model ready 1.6s dtype=torch.bfloat16 threads=16
 [13:37:10] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch15.json 藏章15 total=6 todo=6
+[13:59:02] seg1 en chars=223 gen=1312.3s clipped=False :: The Great Vaipulya Sutra entitled "The Marvelous Buddha." Fa
+[13:59:02] seg1 done
+[14:17:25] seg2 zh chars=245 gen=1102.9s clipped=False :: 菩薩對佛德（佛陀吉祥）菩薩說道：「諸位佛子！在自性唯一的心之中，竟然會產生出如此種種不同的差別相狀，例如：往生善趣、」由
+[14:35:36] seg2 en chars=758 gen=1090.8s clipped=False :: The bodhisattva Buddhashrī said this to the sons of the conq
+[14:35:36] seg2 done
+[14:52:50] seg3 zh chars=225 gen=1034.7s clipped=False :: 墮入惡趣、諸根完具或諸根殘缺、投生於同類或投生於異類。第二，若菩薩摩訶薩在修行般若波羅蜜多時，能如實了知：一切法皆無所從
+[15:12:59] seg3 en chars=959 gen=1208.1s clipped=False :: going to the lower realms; having complete faculties or inco
+[15:12:59] seg3 done
+[15:33:26] seg4 zh chars=214 gen=1227.8s clipped=False :: 請觀察那些可愛、不可愛，以及感受快樂與痛苦的種種顯現。業力本身並不能了知心。由業所造作， 心為彼增上， 心依於業轉， 業
+[15:54:04] seg4 en chars=265 gen=1237.8s clipped=False :: Look at the appearances of the pleasant, the unpleasant, the
+[15:54:04] seg4 done
+[09:00:45] tokenizer ready 65.0s
+[09:00:48] model ready 2.2s dtype=torch.bfloat16 threads=16
+[09:00:48] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch15.json 藏章15 total=6 todo=2
+[09:22:43] seg5 zh chars=275 gen=1315.6s clipped=False :: 心不能了知業，受不能了知異熟，異熟亦不能了知受。此外，這十二緣起支，每一支都具備了「無常」、「苦」以及「無我」的本質。此
+[09:56:57] seg5 en chars=227 gen=2053.3s clipped=False :: The mind does not know karma; feeling does not know the ripe
+[09:56:57] seg5 done
+[10:27:58] seg6 zh chars=173 gen=1861.5s clipped=False :: 心不能了知受，受不能了知心；因不能了知緣，緣不能了知因。此外，須菩提！菩薩摩訶薩應當修學「一切種智」。須菩提！菩薩摩訶萨
+[10:53:00] seg6 en chars=268 gen=1501.5s clipped=False :: The mind does not know feeling, and feeling does not know th
+[10:53:00] seg6 done
+[10:53:00] ALL DONE 6799.6s
+[10:54:26] tokenizer ready 66.1s
+[10:54:29] model ready 2.4s dtype=torch.bfloat16 threads=16
+[10:54:29] file=data/translation/tibetan_avatamsaka_trilingual_segments_ch16.json 藏章16 total=201 todo=6
+[11:11:56] seg1 zh chars=159 gen=1047.5s max_new=200 clipped=False :: 爾時，智德菩薩對文殊師利菩薩說了這番話：# 1. 藏文转写
+# 2. 现代汉语翻译
+# 3. 英语翻译
+
+# 1. 藏文
+[11:29:01] seg1 en chars=196 gen=1024.6s max_new=200 clipped=False :: Then the bodhisattva Jñānaśrī addressed the bodhisattva Mañj
+[11:29:01] seg1 done
+[11:50:06] seg2 zh chars=202 gen=1264.7s max_new=200 clipped=False :: 諸佛子！菩薩如何才算是具足無有過失的身業呢？# 1. 文殊師利菩薩摩訶薩、觀世音菩薩摩訶薩、得大勢菩薩摩訶薩、香象菩薩摩

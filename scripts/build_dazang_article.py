@@ -18,6 +18,7 @@ from build_dazang_graph import build_graph, render_citations, render_radial, ren
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "research" / "dazang_mapping_verification.json"
+ENRICH = ROOT / "data" / "research" / "dazang_enrichment.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -375,6 +376,48 @@ def table_claims(data):
     return "\n".join(out)
 
 
+def _clip(s, n=76):
+    s = str(s)
+    return s if len(s) <= n else s[:n] + "…"
+
+
+def table_forty(enrich):
+    rows = enrich.get("forty", {}).get("batches", [])
+    out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
+    for r in rows:
+        out.append(f'| {esc(r["batch"])} | {esc(r["date"])} | {r["windows"]} | {esc(_clip(r["finding"]))} |')
+    out.append("")
+    out.append(f'> 共 **{enrich.get("forty", {}).get("windows_total", 0)} 个对照窗**；完整发现见 `data/research/huayan_80_40_duikandu_b*.json`。')
+    return "\n".join(out)
+
+
+def table_bhumi(enrich):
+    out = ["| 地 | 梵 | T285 竺法护 | T286 罗什 | T278 六十 | T279 八十 | T287 尸罗达摩 |", "|---|---|---|---|---|---|---|"]
+    for r in enrich.get("bhumi", []):
+        out.append(f'| {esc(r["name"])} | {esc(r["sa"])} | {esc(r["T285"])} | {esc(r["T286"])} | {esc(r["T278"])} | {esc(r["T279"])} | {esc(r["T287"])} |')
+    out.append("")
+    out.append("> T285 的十地名单见其卷首「初菩薩住名曰悅豫…第十菩薩住名曰法雨」；它用「十住／道地」语汇，不用标准「十地」名。")
+    return "\n".join(out)
+
+
+def table_tib45(enrich, name_by_pin):
+    out = ["| 藏章 | 函 | 起始叶 | 汉品 | 状态 |", "|---:|---|---|---|---|"]
+    for r in enrich.get("tib45", []):
+        pin = r["pin"]
+        label = f"品{pin} {name_by_pin[int(pin)]}" if str(pin).isdigit() and int(pin) in name_by_pin else pin
+        out.append(f'| {r["no"]} | {esc(r["vol"])} | {esc(r["folio"])} | {esc(label)} | {esc(r["status"])} |')
+    return "\n".join(out)
+
+
+def table_mentions(enrich):
+    out = ["| 名称 | 匹配串 | T1732 | T1733 | T1735 | T1736 | 合计 |", "|---|---|---:|---:|---:|---:|---:|"]
+    for r in enrich.get("mentions", {}).get("rows", []):
+        out.append(f'| {esc(r["label"])} | {esc("/".join(r["variants"]))} | {r["T1732"]} | {r["T1733"]} | {r["T1735"]} | {r["T1736"]} | {r["total"]} |')
+    out.append("")
+    out.append("> 这是**名称提及**的字符串匹配，不是书名号引文计数；用于观察四部注疏的相对关注面，不能替代 §8.1 的种子 7,705 条。")
+    return "\n".join(out)
+
+
 def table_p0(data):
     p = data.get("p0", {})
     rows = [
@@ -405,6 +448,7 @@ def main():
 
     text = ARTICLE.read_text(encoding="utf-8")
     graph = build_graph()
+    enrich = json.loads(ENRICH.read_text(encoding="utf-8")) if ENRICH.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -417,6 +461,10 @@ def main():
         "dashabhumika": table_dashabhumika(),
         "claims": table_claims(data),
         "p0": table_p0(data),
+        "forty": table_forty(enrich),
+        "bhumi": table_bhumi(enrich),
+        "tib45": table_tib45(enrich, name_by_pin),
+        "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),
         "fig_catalog": fig_catalog(data),
         "fig_evolution": fig_evolution(data),

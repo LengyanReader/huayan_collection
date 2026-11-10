@@ -73,7 +73,7 @@ def main() -> int:
         fail(f"mapping rows {mapping} != {len(data['mapping_60_80']['rows'])}")
     ok(f"mapping table rows: {mapping}")
 
-    catalog = len(re.findall(r"^\| T\d{3} \|", md, re.M))
+    catalog = len(re.findall(r"^\| T\d{3} \|.*\| (别生|大本|眷属) \|", md, re.M))
     if catalog != 30:
         fail(f"catalog rows {catalog} != 30")
     ok("catalog table rows: 30")
@@ -87,6 +87,20 @@ def main() -> int:
     if claims != len(data["claims"]):
         fail(f"claims {claims} != {len(data['claims'])}")
     ok(f"claim rows: {claims}")
+
+    enrich_path = ROOT / "data" / "research" / "dazang_enrichment.json"
+    enrich = json.loads(enrich_path.read_text(encoding="utf-8"))
+    checks = [
+        ("forty", r"^\| L\.\d+", len(enrich["forty"]["batches"])),
+        ("bhumi", r"^\| (初地|二地|三地|四地|五地|六地|七地|八地|九地|十地)[^|]*\| [A-Za-z]", len(enrich["bhumi"])),
+        ("tib45", r"^\| \d{1,2} \| 03[5-8] \|", len(enrich["tib45"])),
+        ("mentions", r"^\| (瑜伽論|涅槃經|智度論|成唯識論|攝大乘論|瓔珞經|寶性論) \|", len(enrich["mentions"]["rows"])),
+    ]
+    for name, pat, want in checks:
+        got = len(re.findall(pat, md, re.M))
+        if got != want:
+            fail(f"{name} table rows {got} != {want}")
+    ok("enrichment tables: 40/十地/45章/注疏 rows match JSON")
 
     for i, block in enumerate(re.findall(r"<svg.*?</svg>", md, re.S), 1):
         try:
