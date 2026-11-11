@@ -57,8 +57,9 @@ rows.forEach(function(r, i){
   var sc80 = r.c80 / cmax * BW;
   var g = el('g', {'class':'mx-node'});
   el('rect', {x:170, y:y+2, width:Math.max(sc80,1), height:6, 'class':'mx-bar80'}, g);
+  var sc60 = 0;
   if (r.c60 > 0) {
-    var sc60 = r.c60 / cmax * BW;
+    sc60 = r.c60 / cmax * BW;
     el('rect', {x:170, y:y+10, width:Math.max(sc60,1), height:6, 'class':'mx-bar60'}, g);
   } else {
     el('text', {x:174, y:y+16, 'class':'mx-que'}, g).textContent = '六十闕';

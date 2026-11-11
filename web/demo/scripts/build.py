@@ -2413,7 +2413,7 @@ LIN_DEEPLINK_JS_TMPL = '''<script>
       if(after) frag.appendChild(document.createTextNode(after));
       e.node.parentNode.replaceChild(frag, e.node);
     }
-    if(edits.length) console.log('[lin-deeplink] linked %d mentions' % edits.length);
+    if(edits.length) console.log('[lin-deeplink] linked ' + edits.length + ' mentions');
   }
   if(document.readyState==='complete') setTimeout(linkify,100);
   else window.addEventListener('load', function(){ setTimeout(linkify,100); });
