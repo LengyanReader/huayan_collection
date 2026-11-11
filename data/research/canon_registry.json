@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "generated": "2026-11-11",
+    "version": "1.0",
+    "purpose": "跨典藏对照的载体登记册：只登记『该典藏是什么、本仓有没有一手见证、能做哪一层』，不登记未经回源的文本关系。",
+    "grading": {
+      "A": "本仓有一手文本，且已逐字回源（含校注、尾题等直接证据）",
+      "B": "有一手文本但只部分回源，或仅有可靠二手题录可核（须注明）",
+      "C": "本仓无一手文本；只可做载体层/类型层，关系结论一律〔未取一手文本〕"
+    },
+    "layers": {
+      "L1": "载体层：该典籍属哪一藏、如何编号编排、存佚与版本（目录学即可）",
+      "L2": "谱系层：译本、引用、注疏、仪轨借用——须具体 witness",
+      "L3": "类型层：共享语汇、同构阶位、同体裁——只述可比，不述同源",
+      "L4": "论衡层：护教／判教中彼此指认——须文本，属接受史",
+      "L5": "基础设施层：数字化目录与全文库（CBETA、84000、BDRC、GRETIL、SuttaCentral、Kanripo、ctext 等）"
+    },
+    "red_line": "无 witness 不得出 A／B；共享语汇不等于文本依赖；存世率不等于引用率。"
+  },
+  "rows": [
+    {
+      "domain": "汉传佛教",
+      "canon": "大正新脩大藏經（CBETA 電子佛典）",
+      "carrier": "鉛印 100 冊；CBETA 為其數位化",
+      "organization": "T 編號（如 T10n0279），經號＋卷次＋頁欄行",
+      "witness_local": "59 部 XML（華嚴部 T278–T309 為主，另 T52n2102／T52n2103 等）",
+      "layers": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5"
+      ],
+      "grade": "A",
+      "note": "僅就本倉已收之部而言；未收之部同 C。"
+    },
+    {
+      "domain": "汉传佛教",
+      "canon": "新纂卍續藏",
+      "carrier": "鉛印 90 冊；CBETA 部分收錄",
+      "organization": "X 編號",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "華嚴宗注疏多在此藏，本倉未取，故相關義理判斷只能引 CBETA 已收者。"
+    },
+    {
+      "domain": "汉传佛教",
+      "canon": "高麗大藏經（再雕本）",
+      "carrier": "木刻 81,258 版",
+      "organization": "函／卷，另有一套千字文帙號",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "版本校勘價值高（可補大正藏之誤），本倉未取。"
+    },
+    {
+      "domain": "汉传佛教",
+      "canon": "房山石經",
+      "carrier": "石刻，遼金兩代續刻",
+      "organization": "洞／經幢，無統一經號",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "石經是刻本文獻，非印本；用於版本鏈而非義理。"
+    },
+    {
+      "domain": "藏传佛教",
+      "canon": "德格版甘珠爾",
+      "carrier": "木刻，函（volume）／葉（folio）",
+      "organization": "Toh 編號（此藏以 Tohoku 目錄通行）",
+      "witness_local": "Toh 44《華嚴》全 45 章（data/references/tibetan/derge_kangyur/avatamsaka/）",
+      "layers": [
+        "L1",
+        "L2",
+        "L5"
+      ],
+      "grade": "A",
+      "note": "逐章尾題已回源；章號↔漢品對應為 A。"
+    },
+    {
+      "domain": "藏传佛教",
+      "canon": "德格版丹珠爾",
+      "carrier": "木刻，函／葉",
+      "organization": "Toh 編號",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "印度論師對《華嚴》的注釋多在此藏，是本課題最直接的空白。"
+    },
+    {
+      "domain": "藏传佛教",
+      "canon": "北京版／那塘版甘珠爾",
+      "carrier": "木刻",
+      "organization": "各版編號互異，須先做版本對照表",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "跨版比對的前提是版本對照表，本倉未建。"
+    },
+    {
+      "domain": "南传佛教",
+      "canon": "巴利三藏及覺音注疏",
+      "carrier": "貝葉／緬甸、泰、斯里蘭卡寫本；PTS 校訂本；第六結集版",
+      "organization": "律／經／論三分，經分五部（長、中、相應、增支、小部）",
+      "witness_local": "無",
+      "layers": [
+        "L1",
+        "L3"
+      ],
+      "grade": "C",
+      "note": "與華嚴的關係只能是類型層（道次、菩薩道、本生），不可作譜系。"
+    },
+    {
+      "domain": "南传佛教",
+      "canon": "漢譯四阿含（T1／T2）",
+      "carrier": "大正藏第 1–2 冊",
+      "organization": "T 編號，經號連續",
+      "witness_local": "無（本倉僅收華嚴部）",
+      "layers": [
+        "L1",
+        "L3"
+      ],
+      "grade": "C",
+      "note": "漢巴對讀的標準入口；本倉未取，不能做逐句比對。"
+    },
+    {
+      "domain": "道教",
+      "canon": "正統道藏＋萬曆續道藏",
+      "carrier": "明刻本；涵芬樓影印；三家本",
+      "organization": "三洞四輔十二類，千字文帙號",
+      "witness_local": "無",
+      "layers": [
+        "L1",
+        "L3",
+        "L4"
+      ],
+      "grade": "C",
+      "note": "與佛教的關係主要在論衡層（化胡、笑道）與類型層（齋儀、階次），非譜系。"
+    },
+    {
+      "domain": "道教",
+      "canon": "敦煌道經寫本",
+      "carrier": "唐寫本殘卷",
+      "organization": "散藏於英、法、俄、中諸家，編號各異",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "唐前期佛道交涉的一手材料，須與佛教寫本對照方能用。"
+    },
+    {
+      "domain": "儒家",
+      "canon": "十三經注疏",
+      "carrier": "刻本／排印本",
+      "organization": "經＋注＋疏三層",
+      "witness_local": "無",
+      "layers": [
+        "L1",
+        "L3",
+        "L4"
+      ],
+      "grade": "C",
+      "note": "共享語彙（如「華嚴」「法界」）多屬語詞偶合或轉義，不可作依賴證據。"
+    },
+    {
+      "domain": "儒家",
+      "canon": "四庫全書",
+      "carrier": "清寫本 3,000 餘種；影印本",
+      "organization": "經／史／子／集四部",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "價值在於「佛教典籍如何被著錄與歸類」，屬目錄學證據。"
+    },
+    {
+      "domain": "类书",
+      "canon": "永樂大典",
+      "carrier": "明寫本，存世僅殘卷",
+      "organization": "洪武正韻韻目編排",
+      "witness_local": "無",
+      "layers": [
+        "L1"
+      ],
+      "grade": "C",
+      "note": "存世比例極低，任何「引用率／比例」統計都不成立，只能作個案。"
+    },
+    {
+      "domain": "梵文·印度",
+      "canon": "《華嚴》梵本單品寫本（尼泊爾、中亞）",
+      "carrier": "貝葉／紙寫本",
+      "organization": "無統一編號，依藏地與目錄著錄",
+      "witness_local": "無（僅二手題錄：十地、入法界、普賢行願、壽量四種）",
+      "layers": [
+        "L1",
+        "L3"
+      ],
+      "grade": "B",
+      "note": "B 僅指題錄與存佚可核；寫本 itself 未見，逐字對讀仍是 C。"
+    }
+  ]
+}

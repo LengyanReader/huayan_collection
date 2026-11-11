@@ -161,6 +161,27 @@ def main() -> int:
         fail("§4.3 still says T300/T301 pending while §12.6 has decided")
     ok("no contradictory pending-state left")
 
+    # --- §17 cross-canon registry: table == JSON, and grades must match witnesses ---
+    reg = json.loads((ROOT / "data" / "research" / "canon_registry.json").read_text(encoding="utf-8"))
+    rows_json = reg.get("rows", [])
+    tbl = re.findall(r"^\| ([^|]*?) \| ([^|]*?) \| ([^|]*?) \| ([^|]*?) \| ([^|]*?) \| ([^|]*?) \| ([ABC]) \|$", md, re.M)
+    if len(tbl) != len(rows_json):
+        fail(f"§17 registry rows {len(tbl)} != JSON {len(rows_json)}")
+    seen = {(r[1].strip(), r[6]) for r in tbl}
+    for r in rows_json:
+        if (r["canon"], r["grade"]) not in seen:
+            fail(f"§17 registry row missing or mis-graded: {r['canon']} / {r['grade']}")
+        w = r["witness_local"].strip()
+        if r["grade"] == "A" and ("無" in w or "仅二手" in w or "僅二手" in w):
+            fail(f"§17 grade A without first-hand witness: {r['canon']}")
+        if r["grade"] == "B" and w.startswith("無") and "題錄" not in w and "题录" not in w:
+            fail(f"§17 grade B with no witness and no bibliographic record: {r['canon']}")
+    if "相似不是证据，见证才是证据" not in md:
+        fail("§17 red-line sentence missing")
+    if "跨典藏登记册：15 行" not in md:
+        fail("§16 data table lacks canon_registry.json row")
+    ok(f"§17 registry: {len(rows_json)} rows, grades consistent with witnesses")
+
     for i, block in enumerate(re.findall(r"<svg.*?</svg>", md, re.S), 1):
         try:
             ET.fromstring(block)

@@ -19,6 +19,7 @@ from build_dazang_graph import build_graph, render_citations, render_radial, ren
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "research" / "dazang_mapping_verification.json"
 ENRICH = ROOT / "data" / "research" / "dazang_enrichment.json"
+REGISTRY = ROOT / "data" / "research" / "canon_registry.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -381,6 +382,26 @@ def _clip(s, n=76):
     return s if len(s) <= n else s[:n] + "…"
 
 
+def table_canon_registry(reg):
+    """Cross-canon carrier registry (§17.3). Rows are data; nothing is inferred."""
+    rows = reg.get("rows", [])
+    out = ["| 域 | 典藏 | 形制 | 编排 | 本仓见证 | 可做层 | 级 |",
+           "|---|---|---|---|---|---|---|"]
+    for r in rows:
+        out.append("| {d} | {c} | {car} | {o} | {w} | {l} | {g} |".format(
+            d=esc(r["domain"]),
+            c=esc(r["canon"]),
+            car=esc(r["carrier"]),
+            o=esc(r["organization"]),
+            w=esc(r["witness_local"]),
+            l="／".join(r["layers"]),
+            g=esc(r["grade"]),
+        ))
+    out.append("")
+    out.append("其中多层登记项只表示「该层在方法上可做」，不表示已做。逐条备注见 `data/research/canon_registry.json`。")
+    return "\n".join(out)
+
+
 def table_forty(enrich):
     rows = enrich.get("forty", {}).get("batches", [])
     out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
@@ -455,6 +476,7 @@ def main():
     text = ARTICLE.read_text(encoding="utf-8")
     graph = build_graph()
     enrich = json.loads(ENRICH.read_text(encoding="utf-8")) if ENRICH.exists() else {}
+    registry = json.loads(REGISTRY.read_text(encoding="utf-8")) if REGISTRY.exists() else {"rows": []}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -468,6 +490,7 @@ def main():
         "claims": table_claims(data),
         "p0": table_p0(data),
         "forty": table_forty(enrich),
+        "canon_registry": table_canon_registry(registry),
         "bhumi": table_bhumi(enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
