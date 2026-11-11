@@ -764,7 +764,7 @@ others:
   order_in_group: 44
   icon: 🌈
   title: 九九华严第三十九品 入法界品之拼读
-  updated_at: '2026-11-11'
+  updated_at: '2026-11-12'
   doc: docs/经学文献/华严经细读/第九会_逝多林_证入法界/华严经细读_第三十九部_入法界品.md
   back:
     tab: gap
@@ -910,7 +910,7 @@ others:
   title: 华严经与大藏经对应研究
   title_en: 'Mapping the Buddhāvataṃsaka onto the Chinese and Tibetan Canons'
   title_sub: v1.1 · 一经四貌 · 五层坐标 · 32 部题录复算 · 十二簇 · 六十↔八十勘正 · 四十华严 62 窗 · 十地名五译 · 藏45章表 · 十三幅信息图 · 内嵌交互图
-  updated_at: '2026-11-10'
+  updated_at: '2026-11-11'
   doc: docs/经学文献/华严经与大藏经对应研究.md
   back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
   views: [avatamsaka-studies]
