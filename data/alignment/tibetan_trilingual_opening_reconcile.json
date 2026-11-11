@@ -46,6 +46,16 @@
    ],
    "machine_check": "workspace/tibetan-avatamsaka-translation/tools/check_trilingual_gates.py::p_opening_matches_alignment（不一致章須命中本檔 records 方 PASS）",
    "followup": "同 ch14/15——b2 全表 bo_open 回改屬對勘批 SSOT 變更須人工授權；M2 各章開工前逐章跑 G2.2 預檢"
+  },
+  {
+   "tibetan_ch": 17,
+   "pin": "品12〈贤首品〉（差5 对应律）",
+   "observation": "本专题 seg1 为章首题名块（སངས་རྒྱས་རྨད་ག་ཅད་…མདོ། བམ་པོ་བཅྭོ་བརྒྱད་པ། །·folio 219b.6），b2 bo_open 从正文／偈颂起；二者起点不同。",
+   "verdict": "题名块保留为段1（kind=title；规范译名为《大方廣佛華嚴經》第十八包），G2.2 对藏17 应以段2起比对；不改正 b2，仅登记本订正。",
+   "evidence": [
+    "本专题 seg1 逐字回源：སངས་རྒྱས་རྨད་ག་ཅད་ཅེས་བྱ་བ་ཤིན་ཏུ་རྒྱས་པ་ཆེན་པོའི་མདོ། བམ་པོ་བཅྭོ་བརྒྱད་པ། །（folio 219b.6）",
+    "本专题 seg2 起：ཡོན་ཏན་ཡངས་པའི་སྤྱོད་ཡུལ་ཡོངས་དག་པ། །…（正文／偈颂起点），与 b2 bo_open 同起"
+   ]
   }
  ]
 }

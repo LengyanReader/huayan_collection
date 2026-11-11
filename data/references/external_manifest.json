@@ -1,0 +1,553 @@
+{
+  "meta": {
+    "purpose": "§17 跨典藏登記冊的一手見證清單",
+    "updated": "2026-11-11",
+    "notes": []
+  },
+  "files": {
+    "dn1_root": {
+      "path": "data/references/pali/dn1_root-pli-ms.json",
+      "url": "https://raw.githubusercontent.com/suttacentral/bilara-data/published/root/pli/ms/sutta/dn/dn1_root-pli-ms.json",
+      "bytes": 97073,
+      "sha256": "16b1b1c26b9c3bee3845edd384136dfcc8d43abe80c2a75af5a7c7c64487e916",
+      "retrieved": "2026-11-11",
+      "note": "SuttaCentral bilara-data · root/pli/ms · DN1（樣本，非全藏）"
+    },
+    "KR5a0001": {
+      "path": "data/references/daozang/KR5a0001_001.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_001.txt",
+      "bytes": 19722,
+      "sha256": "a65fe44eabfea70bb2cba4bb7f1ead4c66cc4f5c0f0662f30ba66bfc65b3a1d9",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 洞真部本文類"
+    },
+    "mn1_root": {
+      "path": "data/references/pali/mn1_root-pli-ms.json",
+      "url": "https://raw.githubusercontent.com/suttacentral/bilara-data/published/root/pli/ms/sutta/mn/mn1_root-pli-ms.json",
+      "bytes": 21399,
+      "sha256": "bee49a5461f36eea8b0c3895a8cb5ff77353134b763898a8c9bf83248757f9ee",
+      "retrieved": "2026-11-11",
+      "note": "SuttaCentral bilara-data · root/pli/ms · MN1（樣本，非全藏）"
+    },
+    "T01n0001": {
+      "path": "data/references/cbeta/T01n0001.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T01/T01n0001.xml",
+      "bytes": 3093389,
+      "sha256": "3f051c62f20b08c33f42dbe7511e0bc7f25ddb2087f4c3f98e3d26d2678e1f6d",
+      "retrieved": "2026-11-11",
+      "note": "CBETA xml-p5 · 大正藏 T1 · 長阿含經（佛陀耶舍共竺佛念譯）"
+    },
+    "T01n0026": {
+      "path": "data/references/cbeta/T01n0026.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T01/T01n0026.xml",
+      "bytes": 6909438,
+      "sha256": "011d05d5c42dcf9ecabbd3414d9b05315cb4512627b43c92ff887f6700c906e9",
+      "retrieved": "2026-11-11",
+      "note": "CBETA xml-p5 · 大正藏 T1 · 中阿含經（瞿曇僧伽提婆譯）"
+    },
+    "T02n0099": {
+      "path": "data/references/cbeta/T02n0099.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T02/T02n0099.xml",
+      "bytes": 6349589,
+      "sha256": "6cb6d3371943705c712909ea66d48cccec0ec42a1380aab55cc15e0b4750ab73",
+      "retrieved": "2026-11-11",
+      "note": "CBETA xml-p5 · 大正藏 T2 · 雜阿含經（求那跋陀羅譯）"
+    },
+    "T02n0125": {
+      "path": "data/references/cbeta/T02n0125.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T02/T02n0125.xml",
+      "bytes": 7464214,
+      "sha256": "686f15376460ffcdcf2cb0909744249a824159dd1224baa35a5923f2015ce1c0",
+      "retrieved": "2026-11-11",
+      "note": "CBETA xml-p5 · 大正藏 T2 · 增壹阿含經（瞿曇僧伽提婆譯）"
+    },
+    "KR5a0001_001": {
+      "path": "data/references/daozang/KR5a0001_001.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_001.txt",
+      "bytes": 19722,
+      "sha256": "a65fe44eabfea70bb2cba4bb7f1ead4c66cc4f5c0f0662f30ba66bfc65b3a1d9",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之1"
+    },
+    "KR5a0001_002": {
+      "path": "data/references/daozang/KR5a0001_002.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_002.txt",
+      "bytes": 20934,
+      "sha256": "692f2a3cff344941d5eb5f94f40aa27e95bd5672acbb80f82783caa89f96c36e",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之2"
+    },
+    "KR5a0001_003": {
+      "path": "data/references/daozang/KR5a0001_003.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_003.txt",
+      "bytes": 22347,
+      "sha256": "fbe874bef83266cfcffe372c80fe5af8dd3533937fe12fdd5b5d2dbfced2128d",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之3"
+    },
+    "KR5a0001_004": {
+      "path": "data/references/daozang/KR5a0001_004.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_004.txt",
+      "bytes": 17803,
+      "sha256": "9f9505c32315f1646183dce5b401301900cf9698b3bc7af4f2ff17b2a4da6a52",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之4"
+    },
+    "KR5a0001_005": {
+      "path": "data/references/daozang/KR5a0001_005.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_005.txt",
+      "bytes": 18870,
+      "sha256": "adbf09e40712821f1092f7bb212299522371abaf6f4c3c8ccdc257a659fc8dc8",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之5"
+    },
+    "KR5a0001_006": {
+      "path": "data/references/daozang/KR5a0001_006.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_006.txt",
+      "bytes": 23836,
+      "sha256": "4ca0248be36ef7894c0612451677e773b3fa93785268ffae1486fda6f89c8a83",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之6"
+    },
+    "KR5a0001_007": {
+      "path": "data/references/daozang/KR5a0001_007.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_007.txt",
+      "bytes": 17402,
+      "sha256": "1b839ec752d1c64c0745ca0c24298fd68bea2783863e6f77daa5e48be0a8c365",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之7"
+    },
+    "KR5a0001_008": {
+      "path": "data/references/daozang/KR5a0001_008.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_008.txt",
+      "bytes": 17307,
+      "sha256": "7058c85c023ea192dbdebfcf82803643e06d82731e52322da47fe0e3ad62a331",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之8"
+    },
+    "KR5a0001_009": {
+      "path": "data/references/daozang/KR5a0001_009.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_009.txt",
+      "bytes": 20310,
+      "sha256": "e701834642b8f63ba729a0e13a6b32652b1507ae297e85c57ed9b9b1162b79fb",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之9"
+    },
+    "KR5a0001_010": {
+      "path": "data/references/daozang/KR5a0001_010.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_010.txt",
+      "bytes": 20156,
+      "sha256": "235a968f367987d2e7eda18560866be968543aee8d6173b2fa2ead0781d35812",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之10"
+    },
+    "KR5a0001_011": {
+      "path": "data/references/daozang/KR5a0001_011.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_011.txt",
+      "bytes": 23245,
+      "sha256": "9bbb2e526d9fa6d3a9f0fcbb2862e1357c716029e09b7d850728b8ad70ffba34",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之11"
+    },
+    "KR5a0001_012": {
+      "path": "data/references/daozang/KR5a0001_012.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_012.txt",
+      "bytes": 21940,
+      "sha256": "98f8905ec94c1d353d03f05adb590a8cd7319b540e1decae5dbd4456b28c74ff",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之12"
+    },
+    "KR5a0001_013": {
+      "path": "data/references/daozang/KR5a0001_013.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_013.txt",
+      "bytes": 21049,
+      "sha256": "a5906de57486e9acd14846c24074c45113739e714fec0a68b37dee2d83897d15",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之13"
+    },
+    "KR5a0001_014": {
+      "path": "data/references/daozang/KR5a0001_014.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_014.txt",
+      "bytes": 20347,
+      "sha256": "a84b14e7c591e447cc56d3a1dc047948b68644bec8b285c7aac309459cf460af",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之14"
+    },
+    "KR5a0001_015": {
+      "path": "data/references/daozang/KR5a0001_015.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_015.txt",
+      "bytes": 19875,
+      "sha256": "e9ed011593ef5ff62cf5869ddc1a2b8feeb62c5c7eab31a803ddb466a668028a",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之15"
+    },
+    "KR5a0001_016": {
+      "path": "data/references/daozang/KR5a0001_016.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_016.txt",
+      "bytes": 18088,
+      "sha256": "fc5226064517faa8a8bfe79857b5b8219c9f4ba88950aa66f79802527095c163",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之16"
+    },
+    "KR5a0001_017": {
+      "path": "data/references/daozang/KR5a0001_017.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_017.txt",
+      "bytes": 21185,
+      "sha256": "3ca4fb5cb0e0edb2ed2938a28294196c24d9f2bc56966be7043c4b3f9ffb6442",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之17"
+    },
+    "KR5a0001_018": {
+      "path": "data/references/daozang/KR5a0001_018.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_018.txt",
+      "bytes": 20143,
+      "sha256": "d53bedd9a8986515a398428b86c284a7eefa113accb1407278bd7a1d5723eaf9",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之18"
+    },
+    "KR5a0001_019": {
+      "path": "data/references/daozang/KR5a0001_019.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_019.txt",
+      "bytes": 17895,
+      "sha256": "32077174b9f81b6ac1bb53de65a36090f7173cb8c162f8d93ce4badfb5304013",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之19"
+    },
+    "KR5a0001_020": {
+      "path": "data/references/daozang/KR5a0001_020.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_020.txt",
+      "bytes": 23033,
+      "sha256": "70df1fe2d906b5c823fff2ee71ff932d8cb059b0c65342c6ac75abf6d027866b",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之20"
+    },
+    "KR5a0001_021": {
+      "path": "data/references/daozang/KR5a0001_021.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_021.txt",
+      "bytes": 20900,
+      "sha256": "a076d1bd95f12c43d07db5675c960858858658b3eaed490894a8057f01cd5f79",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之21"
+    },
+    "KR5a0001_022": {
+      "path": "data/references/daozang/KR5a0001_022.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_022.txt",
+      "bytes": 17768,
+      "sha256": "b0bbdb11a3253434b99e0b7233740da3edf3a59623ba19a86ee4e92daddfa2eb",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之22"
+    },
+    "KR5a0001_023": {
+      "path": "data/references/daozang/KR5a0001_023.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_023.txt",
+      "bytes": 17277,
+      "sha256": "9a94536abe527058a19640e746b3f48ee4ed61e1e34e16c345d185fe9d57d7c3",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之23"
+    },
+    "KR5a0001_024": {
+      "path": "data/references/daozang/KR5a0001_024.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_024.txt",
+      "bytes": 19811,
+      "sha256": "fe226e06e51fa351f36f529ea4befcfe278368dc045fa1dbe89ffb4de22913ae",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之24"
+    },
+    "KR5a0001_025": {
+      "path": "data/references/daozang/KR5a0001_025.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_025.txt",
+      "bytes": 18681,
+      "sha256": "bd03c11745c7c0fcc666c0069559260e5177f2bec78aaa37c8ca038d57d650cf",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之25"
+    },
+    "KR5a0001_026": {
+      "path": "data/references/daozang/KR5a0001_026.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_026.txt",
+      "bytes": 21301,
+      "sha256": "029ac4e6d3054864af4c364225be437891d9cbc8b2d8fbbaa4e24d246f0c2871",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之26"
+    },
+    "KR5a0001_027": {
+      "path": "data/references/daozang/KR5a0001_027.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_027.txt",
+      "bytes": 18884,
+      "sha256": "c829ab200092f315d480f1ef0d28d2273b0d5782dffba6672f0ee2527d742422",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之27"
+    },
+    "KR5a0001_028": {
+      "path": "data/references/daozang/KR5a0001_028.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_028.txt",
+      "bytes": 22894,
+      "sha256": "d0cd719bcf3b4e39d8744dbda10b8c6343062daf6c8333c87136a1b24bcec27a",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之28"
+    },
+    "KR5a0001_029": {
+      "path": "data/references/daozang/KR5a0001_029.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_029.txt",
+      "bytes": 20661,
+      "sha256": "d5f0ce5968f0536282595ad4834ee6ae6e0e6732c35e527f448e931ec5882eac",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之29"
+    },
+    "KR5a0001_030": {
+      "path": "data/references/daozang/KR5a0001_030.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_030.txt",
+      "bytes": 19130,
+      "sha256": "43323ead9fb4d53b2de1c841c20325d7fca3180fe009165d88f06b12b4bd363a",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之30"
+    },
+    "KR5a0001_031": {
+      "path": "data/references/daozang/KR5a0001_031.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_031.txt",
+      "bytes": 23390,
+      "sha256": "98f63bc7523ec51ee8adafd1eb1a489ce136d33d25f6b7485d72856aa8b1427b",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之31"
+    },
+    "KR5a0001_032": {
+      "path": "data/references/daozang/KR5a0001_032.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_032.txt",
+      "bytes": 23461,
+      "sha256": "29767f463086e0af7ae391867ca99018e5e7b3a6916cbb3684bc669f2cd3cb73",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之32"
+    },
+    "KR5a0001_033": {
+      "path": "data/references/daozang/KR5a0001_033.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_033.txt",
+      "bytes": 23705,
+      "sha256": "3fe4d40cf57719a89199b728867f244acadff601d923dbaffbd605d7a68f6951",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之33"
+    },
+    "KR5a0001_034": {
+      "path": "data/references/daozang/KR5a0001_034.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_034.txt",
+      "bytes": 19076,
+      "sha256": "f8438ac127d259932b1920690b51093e3f7cd49cc5b38e197a8e2ef3ff69b9a2",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之34"
+    },
+    "KR5a0001_035": {
+      "path": "data/references/daozang/KR5a0001_035.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_035.txt",
+      "bytes": 18149,
+      "sha256": "d66bb733f05a0dff34828b4517752d55ce1d701d2dfe0cab831880d544d2fd07",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之35"
+    },
+    "KR5a0001_036": {
+      "path": "data/references/daozang/KR5a0001_036.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_036.txt",
+      "bytes": 19919,
+      "sha256": "78eee437381f4e4b79be906b4bf98caaf3ab1c455c87ef9d5226535b90c973f4",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之36"
+    },
+    "KR5a0001_037": {
+      "path": "data/references/daozang/KR5a0001_037.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_037.txt",
+      "bytes": 25396,
+      "sha256": "85410c493a7e614e0d041315433f278c1adfff2bd2fde4b95248e5b3a673549e",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之37"
+    },
+    "KR5a0001_038": {
+      "path": "data/references/daozang/KR5a0001_038.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_038.txt",
+      "bytes": 18711,
+      "sha256": "b240132dd0a8c061a505776d3d092aa30042f82659550d8a5d3bcd95e86124cd",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之38"
+    },
+    "KR5a0001_039": {
+      "path": "data/references/daozang/KR5a0001_039.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_039.txt",
+      "bytes": 21396,
+      "sha256": "05cddc1b999e1ea880227ca32c4e67530046aaecb1feda5efdaa692ce79108ca",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之39"
+    },
+    "KR5a0001_040": {
+      "path": "data/references/daozang/KR5a0001_040.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_040.txt",
+      "bytes": 21034,
+      "sha256": "9ad4a2b9136a8419c4941e1616645bbdcd9080eea7811d9cb22ce3779e855fd6",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之40"
+    },
+    "KR5a0001_041": {
+      "path": "data/references/daozang/KR5a0001_041.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_041.txt",
+      "bytes": 19559,
+      "sha256": "237450ede79a1576a102feb178473ea2984742f875ff949a20ad62237c5d72f3",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之41"
+    },
+    "KR5a0001_042": {
+      "path": "data/references/daozang/KR5a0001_042.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_042.txt",
+      "bytes": 20734,
+      "sha256": "375b79f193f38063070b8bf4f2cd30250557a615d3d25f23499013aec25f3827",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之42"
+    },
+    "KR5a0001_043": {
+      "path": "data/references/daozang/KR5a0001_043.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_043.txt",
+      "bytes": 21643,
+      "sha256": "2fc71545407f9318dc7ba033063131c18cd691efbd02ebe4f097abc6aabdccc2",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之43"
+    },
+    "KR5a0001_044": {
+      "path": "data/references/daozang/KR5a0001_044.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_044.txt",
+      "bytes": 23859,
+      "sha256": "13c498d509bd2234ff10b03af24717894b132caff7d3528787df2290cfa99a58",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之44"
+    },
+    "KR5a0001_045": {
+      "path": "data/references/daozang/KR5a0001_045.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_045.txt",
+      "bytes": 21343,
+      "sha256": "c62892fe7f1cf955a50c8e54f56e464b519d14833a0470331aafb01b0aeef855",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之45"
+    },
+    "KR5a0001_046": {
+      "path": "data/references/daozang/KR5a0001_046.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_046.txt",
+      "bytes": 22102,
+      "sha256": "70197c9bf27679700cdd26ad65ceb71263df1e2eaadfba61a5d49fbdb772eae7",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之46"
+    },
+    "KR5a0001_047": {
+      "path": "data/references/daozang/KR5a0001_047.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_047.txt",
+      "bytes": 19733,
+      "sha256": "fa8348ae8b910795534f660608ee1c935969228562289fe8ba87b0ca6c04dd38",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之47"
+    },
+    "KR5a0001_048": {
+      "path": "data/references/daozang/KR5a0001_048.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_048.txt",
+      "bytes": 18519,
+      "sha256": "b0633c4a1c56d5496cc2c84f98e336b5308cbb7172e51fac1a372b1d48bacd89",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之48"
+    },
+    "KR5a0001_049": {
+      "path": "data/references/daozang/KR5a0001_049.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_049.txt",
+      "bytes": 20831,
+      "sha256": "29600e324aa1dbae6ddfbdddacc7d50841e968ed151b4997d2a407f3760347d0",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之49"
+    },
+    "KR5a0001_050": {
+      "path": "data/references/daozang/KR5a0001_050.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_050.txt",
+      "bytes": 23527,
+      "sha256": "a4e8f5b2c9dc29f98b8bdb5e6ebb93c900fb480f1780af776a22b74306a79d69",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之50"
+    },
+    "KR5a0001_051": {
+      "path": "data/references/daozang/KR5a0001_051.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_051.txt",
+      "bytes": 20358,
+      "sha256": "cb289b8f90f4524ca1797e2d039b010fb9d7e0dfe5fd28ba50a25b0482b586cf",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之51"
+    },
+    "KR5a0001_052": {
+      "path": "data/references/daozang/KR5a0001_052.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_052.txt",
+      "bytes": 20882,
+      "sha256": "aa4b6832c9e115249ef3a773e6cc41bad06987873bcf959c9d8ab42afe5ee654",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之52"
+    },
+    "KR5a0001_053": {
+      "path": "data/references/daozang/KR5a0001_053.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_053.txt",
+      "bytes": 18928,
+      "sha256": "c4fb05e7f74d392334e5fad3f45407159adde3b22b288193018678e248ad4fc0",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之53"
+    },
+    "KR5a0001_054": {
+      "path": "data/references/daozang/KR5a0001_054.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_054.txt",
+      "bytes": 22070,
+      "sha256": "9369900556a7ff71a78354e82543a8f23d82177eb034fce8a40c055582ee0005",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之54"
+    },
+    "KR5a0001_055": {
+      "path": "data/references/daozang/KR5a0001_055.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_055.txt",
+      "bytes": 19806,
+      "sha256": "0c9664603495ecec6f85af7ebcb8d7ba3e696677def9e0aa3588f9ef244df675",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之55"
+    },
+    "KR5a0001_056": {
+      "path": "data/references/daozang/KR5a0001_056.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_056.txt",
+      "bytes": 19768,
+      "sha256": "1413781dd2f67b63b843209bbea3206979a662c00d5ec892df754cce6b7d0efe",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之56"
+    },
+    "KR5a0001_057": {
+      "path": "data/references/daozang/KR5a0001_057.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_057.txt",
+      "bytes": 23237,
+      "sha256": "a8a16b43924b673b86f753348d3d1baafbb6f6d8a547098a0a839e4bc1b9f849",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之57"
+    },
+    "KR5a0001_058": {
+      "path": "data/references/daozang/KR5a0001_058.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_058.txt",
+      "bytes": 19823,
+      "sha256": "ac726e8e7ec7f1e0fb218be0116eb396a0a338cb414c01ffdd0e0930664658e0",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之58"
+    },
+    "KR5a0001_059": {
+      "path": "data/references/daozang/KR5a0001_059.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_059.txt",
+      "bytes": 21622,
+      "sha256": "6ac4555ce7a435f906a3658a4ed6bba0df85998d7c6699b02cfb5e84ca52b0d5",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之59"
+    },
+    "KR5a0001_060": {
+      "path": "data/references/daozang/KR5a0001_060.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_060.txt",
+      "bytes": 24911,
+      "sha256": "4bb47c7b6b67d9f4583e08b6b7680ecd8759c02acfd72a14eaef9956ad928709",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之60"
+    },
+    "KR5a0001_061": {
+      "path": "data/references/daozang/KR5a0001_061.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5a0001/master/KR5a0001_061.txt",
+      "bytes": 20555,
+      "sha256": "9caa61e17c80ba30c7998d25ae40adb11be4c0e90b36dd6ac42cece6fe6b8690",
+      "retrieved": "2026-11-11",
+      "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之61"
+    }
+  }
+}

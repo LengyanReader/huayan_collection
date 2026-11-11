@@ -335,8 +335,8 @@
    "evidence": "alignment\\tibetan_zhuhuju_b2.json 章条目",
    "rule": "差5",
    "in_60huayan": 1,
-   "trilingual_done_segments": 0,
-   "trilingual_status": "未启动"
+   "trilingual_done_segments": 1,
+   "trilingual_status": "开篇1段已试译（题名块·其余待校）"
   },
   {
    "tibetan_ch": 18,

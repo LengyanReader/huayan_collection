@@ -76,3 +76,44 @@ Their physical actions are unassailable;their verbal actions are unassailable;th
 [18:38:46] seg5 en: raw=124 cleaned=122 complete=True trimmed=True (ok)
 [18:38:47] seg6 zh: raw=18 cleaned=18 complete=True trimmed=False (ok)
 [18:38:47] seg6 en: raw=118 cleaned=116 complete=True trimmed=True (ok)
+[09:57:51] model ready 4.2s
+[10:03:15] seg1 zh: raw=39 cleaned=39 complete=True (ok)
+[10:03:15] --- cleaned ---
+《佛說大毘盧遮那成佛神變加持經》（或譯《佛說大不思議經》）大廣博部，第十八卷。
+[10:04:31] seg1 title-block: bam po 18 -> 《大方廣佛華嚴經》第十八包 / The Mahāvaipulya Sūtra, Buddhāvataṃsaka, bam po 18.
+[10:05:53] model ready 5.0s
+[10:10:54] seg2 zh: raw=25 cleaned=25 complete=True (ok)
+[10:10:54] --- cleaned ---
+功德廣大、行境極其清淨，如是宣說後，那無垢的有情。
+[10:11:52] seg1 zh: raw=39 cleaned=39 complete=True trimmed=False (ok)
+[10:11:52] seg1 en: raw=51 cleaned=51 complete=True trimmed=False (ok)
+[10:11:52] seg2 zh: raw=25 cleaned=25 complete=True trimmed=False (ok)
+[10:12:07] seg1 title-block: bam po 18 -> 《大方廣佛華嚴經》第十八包 / The Mahāvaipulya Sūtra, Buddhāvataṃsaka, bam po 18.
+[10:12:58] seg2 zh: raw=25 cleaned=25 complete=True trimmed=False (ok)
+[11:25:15] model ready 3.5s
+[11:31:52] seg2 zh: window=2 raw=49 cleaned=49 complete=True (ok)
+[11:31:52] --- cleaned ---
+廣博功德之境界，清淨無垢之眾生。
+如是言已，文殊師利菩薩，
+向彼聖者善德吉祥，請問覺悟之種種功德。
+[11:32:17] seg2 zh: raw=49 cleaned=49 complete=True trimmed=False (ok)
+[11:32:53] model ready 3.7s
+[11:41:17] seg2 en: window=2 raw=215 cleaned=215 complete=True (ok)
+[11:41:17] --- cleaned ---
+Having spoken thus, Mañjughoṣa, whose sphere of activity is the vastness of qualities and who is utterly pure, questioned the stainless being, the sublime and noble Śrīsaṃbhava, regarding the qualities of awakening.
+[11:42:00] model ready 3.2s
+[11:46:04] seg4 zh: window=1 raw=22 cleaned=22 complete=True (ok)
+[11:46:04] --- cleaned ---
+我在此為諸佛子，宣說諸佛清淨行境與種種行持。
+[11:46:36] model ready 3.2s
+[11:52:34] seg4 en: window=1 raw=139 cleaned=139 complete=True (ok)
+[11:52:34] --- cleaned ---
+I shall here explain to the sons of the Victors the various modes of conduct of the Victors, whose spheres of activity are completely pure.
+[11:53:10] model ready 3.8s
+[11:57:31] seg5 zh: window=1 raw=25 cleaned=25 complete=True (ok)
+[11:57:31] --- cleaned ---
+凡是一切所具備的功德行持，請您現在為諸位佛子宣說。
+[11:58:05] model ready 3.3s
+[12:01:47] seg5 en: window=1 raw=90 cleaned=90 complete=True (ok)
+[12:01:47] --- cleaned ---
+Now, tell the sons of the Conquerors whatever qualities and modes of conduct there may be.

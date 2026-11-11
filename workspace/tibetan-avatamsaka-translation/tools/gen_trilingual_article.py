@@ -166,7 +166,7 @@ BADGE_EN = 'MITRA model translation · unproofed'
 
 
 def bo_display(s):
-    bo = s.get('bo') or ''
+    bo = s.get('bo_merged') or s.get('bo') or ''
     if s.get('kind') == 'verse' or '།།' in bo:
         # 偈颂分行预留：数据层不动，仅排版按 shad 断行（当前各段皆长行，此枝休眠）
         return '<br>'.join(esc(x) for x in re.split(r'(?<=།)\s*', bo) if x.strip())
@@ -213,6 +213,10 @@ def sentence_trim(text, lang):
 def lang_section(cls, tag, sub, s, lang):
     val = s.get(lang)
     if val:
+        cl = s.get(lang + '_clean') or {}
+        if lang != 'bo' and cl.get('needs_review'):
+            sub += ('〔待校·覆盖率不足／疑残句〕' if lang == 'zh'
+                    else ' 〔review: coverage shortfall / possible verse fragment〕')
         if lang == 'bo':
             text = bo_display(s)
         else:
@@ -245,16 +249,20 @@ def seg_blocks_for(d):
     余段存数据层逐批推进（藏章1 全章 1552 段，全量渲染页面不可读）。
     """
     segs = d.get('segments') or []
-    done = [s for s in segs if s.get('status') == 'done']
-    pend = [s for s in segs if s.get('status') != 'done']
+    skip = {s['no'] for s in segs if s.get('merged_into')}
+    done = [s for s in segs if s.get('status') == 'done' and s['no'] not in skip]
+    pend = [s for s in segs if s.get('status') != 'done' and s['no'] not in skip]
     show = done + pend[:6]
     hidden = len(pend) - min(len(pend), 6)
     out = ['<div class="tri-segnav"><span class="tri-toolbar-label">段导航</span>%s</div>' % ''.join(
         '<a class="tri-segchip" href="#tri-seg-%d">段 %d</a>' % (s['no'], s['no']) for s in show)]
     for s in show:
         out.append('<div id="tri-seg-%d" class="tri-anchor"></div>' % s['no'])
+        win = s.get('window') or [s['no'], s['no']]
+        suffix = ('（题名块）' if s.get('kind') == 'title'
+                  else ('（合译 段%d–%d）' % (win[0], win[1]) if win[1] > win[0] else ''))
         head = '#### 段 %d〔%s %s · %s〕%s' % (
-            s['no'], s['vol'], s['folio'], s['marker'], '（题名块）' if s.get('kind') == 'title' else '')
+            s['no'], s['vol'], s['folio'], s['marker'], suffix)
         card = '<div class="tri-seg" data-status="%s">\n%s\n%s\n%s\n</div>' % (
             s.get('status', 'pending'),
             lang_section('tri-bo', '藏', '德格原字形 · 逐字回源', s, 'bo'),

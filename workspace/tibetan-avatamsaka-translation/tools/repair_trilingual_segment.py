@@ -57,8 +57,51 @@ def log(msg):
 
 
 def is_frame(bo):
-    tail = (bo or '').strip()[-40:]
-    return ('སྨྲས' in tail) or ('ཞེས' in tail)
+    tail = (bo or '').strip()[-25:]
+    return bool(re.search(r'(སྨྲས་སོ|ཞེས་སོ|སྨྲས་པ|ཞེས་པ)\s*།?\s*།?\s*$', tail))
+
+
+TIB_UNITS = {'གཅིག': 1, 'གཉིས': 2, 'གསུམ': 3, 'བཞི': 4, 'ལྔ': 5,
+             'དྲུག': 6, 'བདུན': 7, 'བརྒྱད': 8, 'དགུ': 9}
+
+
+def tib_num(s):
+    tens = 0
+    if 'ཉི་ཤུ' in s or 'ཉེར་' in s:
+        tens = 20
+    elif 'སུམ་ཅུ' in s:
+        tens = 30
+    elif 'བཅུ' in s or 'བཅྭོ' in s:
+        tens = 10
+    unit = next((v for k, v in TIB_UNITS.items() if k in s), 0)
+    return tens + unit if tens else unit
+
+
+def cn_num(n):
+    d = '〇一二三四五六七八九'
+    if 0 < n < 10:
+        return d[n]
+    if n == 10:
+        return '十'
+    if 10 < n < 20:
+        return '十' + d[n % 10]
+    if n % 10 == 0 and n < 100:
+        return d[n // 10] + '十'
+    if n < 100:
+        return d[n // 10] + '十' + d[n % 10]
+    return str(n)
+
+
+def is_title_block(bo):
+    return ('བམ་པོ་' in (bo or '')) and ('མདོ།' in (bo or ''))
+
+
+def title_block_translation(bo):
+    m = re.search(r'བམ་པོ་([^།]+)', bo or '')
+    n = tib_num(m.group(1)) if m else 0
+    zh = '《大方廣佛華嚴經》' + (('第%s包' % cn_num(n)) if n else '')
+    en = 'The Mahāvaipulya Sūtra, Buddhāvataṃsaka' + ((', bam po %d' % n) if n else '') + '.'
+    return zh, en, n
 
 
 def clean(text, lang, frame=False):
@@ -121,6 +164,28 @@ def clean_only(path, doc, seg_no):
     s = next((x for x in doc['segments'] if int(x['no']) == seg_no), None)
     if not s:
         sys.exit('segment %d not found' % seg_no)
+    if s.get('merged_into'):
+        return s
+    if is_title_block(s.get('bo')):
+        zh, en, n = title_block_translation(s['bo'])
+        s['kind'] = 'title'
+        s['zh'] = zh
+        s['en'] = en
+        for lang in ('zh', 'en'):
+            s[lang + '_meta'] = {
+                'model': 'none', 'engine': 'canonical-title-block',
+                'method': 'title-formula+bam-po', 'prompt_version': 'none',
+                'bam_po': n, 'schooling': '规范译名', 'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
+            }
+            s[lang + '_clean'] = {
+                'method': 'canonical-title-block', 'complete': True,
+                'trimmed': False, 'validation': 'ok', 'frame': False,
+                'needs_review': False, 'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
+            }
+        s['status'] = 'done'
+        save_doc(path, doc)
+        log('seg%d title-block: bam po %s -> %s / %s' % (seg_no, n, zh, en))
+        return s
     changed = False
     for lang in ('zh', 'en'):
         raw = s.get(lang + '_raw2') or s.get(lang + '_raw') or s.get(lang) or ''
@@ -131,12 +196,24 @@ def clean_only(path, doc, seg_no):
         ok, why = validate(cleaned, lang, frame=frame)
         s[lang + '_raw'] = raw
         s[lang] = cleaned
+        bo = s.get('bo') or ''
+        bo_chars = len(re.sub(r'\s', '', bo))
+        out_chars = len(re.sub(r'\s', '', cleaned))
+        ratio = round(out_chars / max(bo_chars, 1), 3)
+        bo_units = bo.count('།')
+        out_units = len(re.findall(r'[。！？；]' if lang == 'zh' else r'[.!?;]', cleaned))
+        merged = (s.get('window') or [0, 0])[1] > s['no']
+        verse = ('། །' in (s.get('bo') or ''))
+        review = (not (complete and ok)) or (not frame and (out_chars < 8 or ratio < 0.12 or ((not merged and not verse) and out_units < max(1, bo_units // 2))))
         s[lang + '_clean'] = {
             'method': 'meta+residue+sentence-trim-v1',
             'complete': bool(complete and ok),
             'trimmed': trimmed,
             'validation': why,
             'frame': frame,
+            'coverage': {'bo_chars': bo_chars, 'out_chars': out_chars, 'ratio': ratio,
+                         'bo_shad_units': bo_units, 'out_sentence_units': out_units},
+            'needs_review': review,
             'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
         }
         if not (complete and ok):
@@ -148,7 +225,10 @@ def clean_only(path, doc, seg_no):
     if changed:
         zh_ok = bool(s.get('zh')) and (s.get('zh_clean') or {}).get('complete')
         en_ok = bool(s.get('en')) and (s.get('en_clean') or {}).get('complete')
-        if zh_ok and en_ok:
+        review = bool((s.get('zh_clean') or {}).get('needs_review') or (s.get('en_clean') or {}).get('needs_review'))
+        if review:
+            s['status'] = 'needs_review'
+        elif zh_ok and en_ok:
             s['status'] = 'done'
         elif zh_ok or en_ok:
             s['status'] = 'partial'
@@ -156,11 +236,35 @@ def clean_only(path, doc, seg_no):
     return s
 
 
-def retranslate(path, doc, seg_no, lang, max_new):
+def retranslate(path, doc, seg_no, lang, max_new, window=1):
     s = next((x for x in doc['segments'] if int(x['no']) == seg_no), None)
     if not s:
         sys.exit('segment %d not found' % seg_no)
-    bo = s['bo']
+    idx = doc['segments'].index(s)
+    win = doc['segments'][idx:idx + max(1, window)]
+    bo = '\n'.join(x['bo'] for x in win) if len(win) > 1 else s['bo']
+    s['window'] = [seg_no, win[-1]['no']]
+    s['bo_merged'] = bo
+    if len(win) == 1 and is_title_block(bo):
+        zh, en, n = title_block_translation(bo)
+        s['kind'] = 'title'
+        s['zh'] = zh
+        s['en'] = en
+        for lang in ('zh', 'en'):
+            s[lang + '_meta'] = {
+                'model': 'none', 'engine': 'canonical-title-block',
+                'method': 'title-formula+bam-po', 'prompt_version': 'none',
+                'bam_po': n, 'schooling': '规范译名', 'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
+            }
+            s[lang + '_clean'] = {
+                'method': 'canonical-title-block', 'complete': True,
+                'trimmed': False, 'validation': 'ok', 'frame': False,
+                'needs_review': False, 'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
+            }
+        s['status'] = 'done'
+        save_doc(path, doc)
+        log('seg%d title-block: bam po %s -> %s / %s' % (seg_no, n, zh, en))
+        return
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     t0 = time.time()
@@ -203,7 +307,9 @@ def retranslate(path, doc, seg_no, lang, max_new):
         'bo_chars': bo_chars, 'out_chars': out_chars, 'ratio': ratio,
         'bo_shad_units': bo_units, 'out_sentence_units': out_units,
     }
-    review = (not (complete and ok)) or (not frame and (out_chars < 8 or ratio < 0.12 or out_units < max(1, bo_units // 2)))
+    merged = len(win) > 1
+    verse = ('། །' in bo)
+    review = (not (complete and ok)) or (not frame and (out_chars < 8 or ratio < 0.12 or ((not merged and not verse) and out_units < max(1, bo_units // 2))))
     s[lang + '_clean'] = {
         'method': 'official-mitra-prompt+meta/residue/sentence-trim-v1',
         'complete': bool(complete and ok),
@@ -222,8 +328,19 @@ def retranslate(path, doc, seg_no, lang, max_new):
     else:
         s['status'] = 'done'
 
+    if len(win) > 1:
+        for x in win[1:]:
+            x['status'] = s['status']
+            x['merged_into'] = seg_no
+            x['zh'] = ''
+            x['en'] = ''
+            x['zh_clean'] = {'method': 'merged-into', 'complete': True,
+                             'merged_into': seg_no, 'needs_review': False}
+            x['en_clean'] = {'method': 'merged-into', 'complete': True,
+                             'merged_into': seg_no, 'needs_review': False}
     save_doc(path, doc)
-    log('seg%d %s: raw=%d cleaned=%d complete=%s (%s)' % (seg_no, lang, len(raw), len(cleaned), complete and ok, why))
+    log('seg%d %s: window=%d raw=%d cleaned=%d complete=%s (%s)' %
+        (seg_no, lang, len(win), len(raw), len(cleaned), complete and ok, why))
     log('--- cleaned ---\n%s' % cleaned)
 
 
@@ -234,6 +351,7 @@ def main():
     ap.add_argument('--lang', choices=['zh', 'en'])
     ap.add_argument('--clean-only', action='store_true')
     ap.add_argument('--max-new', type=int, default=800)
+    ap.add_argument('--window', type=int, default=1, help='合并 1–N 段为一个译句单元（偈颂跨行）')
     args = ap.parse_args()
     path, doc = load_doc(args.chapter)
     if args.clean_only:
@@ -241,7 +359,7 @@ def main():
     else:
         if not args.lang:
             sys.exit('--lang required unless --clean-only')
-        retranslate(path, doc, args.seg, args.lang, args.max_new)
+        retranslate(path, doc, args.seg, args.lang, args.max_new, args.window)
 
 
 if __name__ == '__main__':
