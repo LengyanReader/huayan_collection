@@ -14,6 +14,14 @@
       "84000": "https://read.84000.co/translation/toh44-31.html",
       "tibetan_toc": "data/alignment/tibetan-derge-toc.json",
       "catalog": "data/catalog/complete_catalog.yaml"
+    },
+    "partial_refresh": {
+      "date": "2026-11-11",
+      "fields": [
+        "catalog_32[].pin_count",
+        "catalog_32[].xref"
+      ],
+      "reason": "品题口径（cb:mulu type=品 编号项，非 type=pin 字符串计数）与多段 docNumber 解析（T293 Fasc 1-39 不被 Fasc 40 覆盖）修正；离线重算，未重跑网络源"
     }
   },
   "versions": {
@@ -438,7 +446,7 @@
       "translator_catalog": "鸠摩罗什",
       "juan_cbeta": 4,
       "juan_catalog": 4,
-      "pin_count": 0,
+      "pin_count": 10,
       "cjk": 47188,
       "cjk_body": 47188,
       "doc_number": "No. 286 [Nos. 278(22), 279(26), 285, 287]",
@@ -466,7 +474,7 @@
       "translator_catalog": "尸罗达摩",
       "juan_cbeta": 9,
       "juan_catalog": 9,
-      "pin_count": 4,
+      "pin_count": 10,
       "cjk": 54427,
       "cjk_body": 54249,
       "doc_number": "No. 287 [Nos. 278(22), 279(26), 285, 286]",
@@ -494,7 +502,7 @@
       "translator_catalog": "竺法护",
       "juan_cbeta": 3,
       "juan_catalog": 3,
-      "pin_count": 1,
+      "pin_count": 13,
       "cjk": 25068,
       "cjk_body": 24920,
       "doc_number": "No. 288 [No. 279(27)]",
@@ -631,15 +639,17 @@
       "translator_catalog": "般若 (Prajñā)",
       "juan_cbeta": 40,
       "juan_catalog": 40,
-      "pin_count": 39,
+      "pin_count": 1,
       "cjk": 265725,
       "cjk_body": 265368,
       "doc_number": "No. 293 [Fasc. 1-39 = Nos. 278(34), 279 (39); Fasc. 40 = Nos. 278(31), 279(36), 296, 297]",
       "xref": {
         "T278": [
+          34,
           31
         ],
         "T279": [
+          39,
           36
         ]
       },
@@ -996,7 +1006,7 @@
       "translator_catalog": "",
       "juan_cbeta": 10,
       "juan_catalog": null,
-      "pin_count": 14,
+      "pin_count": 33,
       "cjk": 120622,
       "cjk_body": 120388,
       "doc_number": "No. 309",

@@ -102,6 +102,65 @@ def main() -> int:
             fail(f"{name} table rows {got} != {want}")
     ok("enrichment tables: 40/十地/45章/注疏 rows match JSON")
 
+    # --- semantic anchors: chapter -> pin must equal the Derge colophon mapping ---
+    expect_tib = {}
+    for n in range(1, 46):
+        if 1 <= n <= 4:
+            v = n
+        elif 5 <= n <= 9:
+            v = 5
+        elif n == 10:
+            v = 6
+        elif n in (11, 32):
+            v = None
+        elif 12 <= n <= 31:
+            v = n - 5
+        else:
+            v = n - 6
+        expect_tib[n] = v
+
+    tib_rows = re.findall(r"^\| (\d{1,2}) \| 0\d\d \| [0-9ab.]+ \| ([^|]+?) \| [^|]+ \|$", md, re.M)
+    if len(tib_rows) != 45:
+        fail(f"tib45 semantic rows {len(tib_rows)} != 45")
+    wrong = []
+    for no, pin_txt in tib_rows:
+        m = re.search(r"品(\d+)", pin_txt)
+        got = int(m.group(1)) if m else None
+        if got != expect_tib[int(no)]:
+            wrong.append((int(no), pin_txt.strip(), expect_tib[int(no)]))
+    if wrong:
+        fail(f"chapter->pin mismatch (colophon mapping): {wrong[:5]}")
+    ok("tib45 chapter->pin matches Derge colophons (45/45)")
+
+    # --- forty-huayan batches must track the live JSON files ---
+    batch_files = sorted((ROOT / "data" / "research").glob("huayan_80_40_duikandu_b*.json"))
+    live_windows = sum(len(json.loads(p.read_text(encoding="utf-8")).get("windows", [])) for p in batch_files)
+    if len(enrich["forty"]["batches"]) != len(batch_files) or enrich["forty"]["windows_total"] != live_windows:
+        fail(f"forty stale: {len(enrich['forty']['batches'])}/{enrich['forty']['windows_total']} "
+             f"vs live {len(batch_files)}/{live_windows}")
+    if re.search(r"10 批[、 ]*62", md):
+        fail("stale forty counts (10 批 62 窗) still in prose")
+    zero_rows = re.findall(r"^\| (L\.\d+[^|]*)\| [^|]+ \| 0 \|", md, re.M)
+    if zero_rows:
+        fail(f"forty table shows a bare 0 window count: {zero_rows}")
+    if "不以「窗口」记录" not in md:
+        fail("forty table footnote about non-window batches missing")
+    ok(f"forty batches: {len(batch_files)} batches / {live_windows} windows")
+
+    # --- catalog: pin definition + T293 docNumber coverage ---
+    if "「品」= 该文本自标的品题数" not in md:
+        fail("catalog pin-column definition missing")
+    if re.search(r"^\| T287 \|.*\| 4 \|", md, re.M):
+        fail("T287 pin count regressed to 4 (type=pin string count)")
+    if "39 入法界品、36 普賢行品" not in md:
+        fail("T293 xref missing the Fasc.1-39 (pin 39) segment")
+    ok("catalog: pin column defined; T293 xref complete")
+
+    # --- no stale cross-section state ---
+    if "是否为此品别译，〔待核〕" in md:
+        fail("§4.3 still says T300/T301 pending while §12.6 has decided")
+    ok("no contradictory pending-state left")
+
     for i, block in enumerate(re.findall(r"<svg.*?</svg>", md, re.S), 1):
         try:
             ET.fromstring(block)

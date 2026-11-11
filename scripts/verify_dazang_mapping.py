@@ -127,6 +127,9 @@ def parse_cbeta(xml: str) -> dict[str, Any]:
     byline_text = cands[0] if cands else (bylines[0] if bylines else "")
     juans = re.findall(r'<milestone n="(\d+)" unit="juan"/>', xml)
     pins = re.findall(r'<cb:mulu[^>]*type="品"[^>]*>(.*?)</cb:mulu>', xml, re.S)
+    # Count numbered chapter titles (品题), not the string 'type="pin"'.
+    # T287 has one pin div but ten bhumi titles; T309 has 14 pin divs but 33 titles.
+    numbered_pins = [p for p in pins if re.match(r"^\d+\s", clean_text(p))]
     total = cjk(re.sub(r"<note[^>]*>.*?</note>", "", xml, flags=re.S))
     idx = [m.start() for m in re.finditer(r'<cb:div type="pin">', xml)] + [len(xml)]
     body = 0
@@ -139,19 +142,28 @@ def parse_cbeta(xml: str) -> dict[str, Any]:
         "title": title,
         "translator": byline_text,
         "juan_count": len(juans) or (1 if "type=\"jing\"" in xml or "<body>" in xml else 0),
-        "pin_count": xml.count('type="pin"'),
+        "pin_count": len(numbered_pins) or xml.count('<cb:div type="pin"'),
         "pin_titles": [clean_text(x) for x in pins],
         "cjk": total,
     }
 
 
 def parse_taisho_refs(doc_number: str) -> dict[str, list[int]]:
+    """Collect every referenced Taisho pin, keeping document order.
+
+    A docNumber may carry several segments, e.g. T293:
+      [Fasc. 1-39 = Nos. 278(34), 279(39); Fasc. 40 = Nos. 278(31), 279(36), 296, 297]
+    An earlier version overwrote the first segment with the last, which made
+    T293 look like a mere witness of pin 36.
+    """
     refs: dict[str, list[int]] = {}
     for m in re.finditer(r"(\d{3})\s*\(([^)]*)\)", doc_number or ""):
         t = "T" + m.group(1)
-        nums = [int(x) for x in re.findall(r"\d+", m.group(2))]
-        if nums:
-            refs[t] = nums
+        bucket = refs.setdefault(t, [])
+        for x in re.findall(r"\d+", m.group(2)):
+            n = int(x)
+            if n not in bucket:
+                bucket.append(n)
     return refs
 
 

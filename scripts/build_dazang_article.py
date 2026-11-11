@@ -343,7 +343,7 @@ def table_catalog(data, name_by_pin):
         pin = {"T09n0278": 34, "T10n0279": 39, "T10n0293": 1}.get(t, x["pin_count"] or "—")
         out.append(f'| {t.replace("T10n0", "T")} | {esc(x["title_cbeta"])} | {esc(SHORT.get(t, x["translator_cbeta"]))} | {x["juan_cbeta"]} | {pin} | {x.get("cjk_body", x["cjk"]):,} | {role} | {CLUSTER.get(t, "—")} | {esc(xref)} |')
     out.append("")
-    out.append("> 题名、译者、卷数均由 CBETA XML 逐部解析（A）；译者栏用通行简称，全称见 CBETA byline。「角色」「对应簇」为本文判断，校注互见取自 Taishō `docNumber`。")
+    out.append("> 题名、译者、卷数、品数、CJK 均由 CBETA XML 逐部解析（`✓`，30/30）；译者栏用通行简称，全称见 CBETA byline。「角色」「对应簇」为本文判断，「校注互见」取自 Taishō `docNumber`。")
     return "\n".join(out)
 
 
@@ -384,10 +384,16 @@ def _clip(s, n=76):
 def table_forty(enrich):
     rows = enrich.get("forty", {}).get("batches", [])
     out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
+    alt = []
     for r in rows:
-        out.append(f'| {esc(r["batch"])} | {esc(r["date"])} | {r["windows"]} | {esc(_clip(r["finding"]))} |')
+        w = r.get("windows") or 0
+        cell = str(w) if w else f'—（{esc(r.get("kind", "其他记录"))}）'
+        if not w:
+            alt.append(f'{esc(r["batch"])}（{esc(r.get("kind", "其他记录"))}）')
+        out.append(f'| {esc(r["batch"])} | {esc(r["date"])} | {cell} | {esc(_clip(r["finding"]))} |')
     out.append("")
-    out.append(f'> 共 **{enrich.get("forty", {}).get("windows_total", 0)} 个对照窗**；完整发现见 `data/research/huayan_80_40_duikandu_b*.json`。')
+    out.append(f'> 共 **{enrich.get("forty", {}).get("windows_total", 0)} 个对照窗**；完整发现见 `data/research/huayan_80_40_duikandu_b*.json`。'
+               + (f'批六、批十三等项目不以「窗口」记录（{"、".join(alt)}），故窗数计「—」，不计入 92 之数。' if alt else ""))
     return "\n".join(out)
 
 
