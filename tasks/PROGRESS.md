@@ -2905,3 +2905,9 @@ done(
 - **构建**：469→477,238 B / 246,577 doc chars（36 GEN 块）；页面 85 files；`shanhe.html` 还原 HEAD；`.tmp_t9*.py` 13 个探索草稿清除；`verify_demo` ALL PASSED。
 - **用户扩展指示（下一批）**：核心＝佛门各大藏经对应；其次儒、道；再次印度教及其他修行门派；确实相关的一手文献可自可靠站点下载入库（走 external_manifest URL＋SHA-256 模式）。
 - **下一步**：扩展批 L.419——佛门先（丹珠尔华严论典题录 84000／卍续藏注疏线 CBETA GitHub）；道（阶位品一手文本）→ 儒／印度教次之。
+
+## L.420 · 2026-11-12 · 收尾门禁全量复验
+
+- **硬门全绿**：check ✓ · build ✓（85 files）· test-pipeline ALL PASSED ✓ · verify_ru_lai ✓ · verify_shizhu ✓ · verify_sources ✓（后台 exit 0）· diff-check ✓。
+- **全站可视化复扫**：80 页展开态 0 坏图·0 console 错误。
+- **本日累计**：L.401–L.420 二十批·全部 commit（未 push·待指令）。
