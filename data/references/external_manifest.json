@@ -1,7 +1,7 @@
 {
   "meta": {
     "purpose": "§17 跨典藏登記冊的一手見證清單",
-    "updated": "2026-11-11",
+    "updated": "2026-11-13",
     "notes": []
   },
   "files": {
@@ -548,6 +548,14 @@
       "sha256": "9caa61e17c80ba30c7998d25ae40adb11be4c0e90b36dd6ac42cece6fe6b8690",
       "retrieved": "2026-11-11",
       "note": "Kanripo KR5a0001 · 正統道藏 DZ0001 · 三家本 1988 · 卷之61"
+    },
+    "gandavyuha": {
+      "path": "data/references/sanskrit/gandavyuha_vaidya.txt",
+      "url": "https://gretil.sub.uni-goettingen.de/gretil/corpustei/transformations/plaintext/sa_gaNDavyUhasUtra.txt",
+      "bytes": 1233056,
+      "sha256": "83c5fb33d8bc599c4a662d1264cb7796367443fcc728a8b6cc93a38a96adb6ec",
+      "retrieved": "2026-11-13",
+      "note": "GRETIL（哥廷根）· 底本 P.L. Vaidya 1960 · Gaṇḍavyūha（〈入法界品〉梵本·印本电子转录）"
     }
   }
 }

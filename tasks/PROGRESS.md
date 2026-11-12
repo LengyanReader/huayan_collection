@@ -2911,3 +2911,13 @@ done(
 - **硬门全绿**：check ✓ · build ✓（85 files）· test-pipeline ALL PASSED ✓ · verify_ru_lai ✓ · verify_shizhu ✓ · verify_sources ✓（后台 exit 0）· diff-check ✓。
 - **全站可视化复扫**：80 页展开态 0 坏图·0 console 错误。
 - **本日累计**：L.401–L.420 二十批·全部 commit（未 push·待指令）。
+
+## L.419 · 2026-11-13 · 梵本〈入法界品〉入库＋善住/妙住梵名旁证（佛门扩展第一批）
+
+- **用户扩展指示落地**：核心＝佛门各大藏经对应；梵文写本线是登记册第 17 行（梵文·印度，B/C）的直接升级。
+- **入库**：`data/references/sanskrit/gandavyuha_vaidya.txt`（1,233,056 B）——GRETIL（哥廷根）电子文本，底本 P.L. Vaidya 1960；头部级声明核实（题名／底本／版本日期）。走 `fetch_missing_corpora.py` 幂等通道（GRETIL 目标＋内容校验），manifest 68→**69** files。
+- **实证**：梵本第 3 参作 **Supratiṣṭhita** 比丘——`sāgarameghasya bhikṣorantikāt prakrāntaḥ`（自海雲去）＋`so 'paśyatsupratiṣṭhitaṃ bhikṣuṃ gaganatale caṃkramyamāṇam`（见其虚空经行，情节与八十〈善住比丘〉章合）。**「善住」（八十／六十）与「妙住」（四十）＝ supra-（善／妙）＋ pratiṣṭhita（住）一名两译**——§17.17 名异实例从「只记不判」升为「梵本一手旁证下判同实〔本文判断〕」。
+- **落文**：endgame JSON 增 `variant_example.sanskrit`（2 梵文引文＋SHA-256）；§17.17 表后段与边界条改判读；§17.18 T9 条同步；§17.8 表增梵本行；registry 梵文行 witness_local/L2 层/note 更新（B 维持：电子印本≠写本）。
+- **门禁**：endgame 组增梵文校验（源哈希＋引文归一化子串）＝**29 项全绿**；阴性测试（篡改 prakrāntaḥ→prakrāntā）如期 FAIL；`verify_demo` ALL PASSED。
+- **渠道情报（下批）**：CBETA xml-p5 顶部目录含**趙城金藏（A）、中華藏（C）、卍續藏（X01–X88）**等 30+ 藏；X 子目录 contents API 404，需浅克隆取文件名。丹珠尔华严论典题录（84000/BDRC）、儒（Kanripo KR1 十三经）、印度教（GRETIL 同站）皆可走同一 manifest 通道。
+- **下一步**：L.420 卍续藏浅克隆→选 1–2 部华严疏入库；L.421 丹珠尔题录；儒／道／印度教按用户序次排后。

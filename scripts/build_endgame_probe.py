@@ -362,12 +362,16 @@ def main() -> int:
                 picks.append({"to": label, "cls": cls, **r})
     result["examples"] = picks
 
-    # --- 名异实例：海雲（同名锚）之后一参，八十／六十作「善住」，四十作「妙住」 ---
+    # --- 名异实例：海雲（同名锚）之后一参，八十／六十作「善住」，四十作「妙住」；梵本旁证 ---
+    gv_path = ROOT / "data" / "references" / "sanskrit" / "gandavyuha_vaidya.txt"
     result["variant_example"] = {
-        "note": ("同名锚之外的序位证据：海雲参（同名锚 T279 0336b11 ↔ T293 0682b18）"
-                 "之后的下一参，八十本指示句作「善住」、六十本参末套语作「善住比丘」，"
-                 "四十本参末套语作「妙住」——同一序位的参名异文，是否同实须人工判读，"
-                 "本批只记异文不判同实。"),
+        "note": ("海雲参（同名锚 T279 0336b11 ↔ T293 0682b18）之后的下一参，"
+                 "八十本指示句作「善住」、六十本参末套语作「善住比丘」，"
+                 "四十本参末套语作「妙住」——是否同实，梵本可旁证："
+                 "Gaṇḍavyūha 海雲（Sāgaramegha）之后一参作 Supratiṣṭhita 比丘，"
+                 "且「于虚空中经行」情节与八十本〈善住比丘〉章相合；"
+                 "supra- 兼有善／妙二义，'善住'与'妙住'为同一梵名之两译"
+                 "〔本文判断，梵本一手旁证〕。"),
         "quotes": [
             {"key": "T279", "lb": "0336b11", "text": "名曰：善住"},
             {"key": "T278", "lb": "0692c12", "text": "禮善住比丘足"},
@@ -375,6 +379,16 @@ def main() -> int:
             {"key": "T279", "lb": "0336b11", "text": "禮海雲足"},
             {"key": "T293", "lb": "0682b18", "text": "禮海雲足"},
         ],
+        "sanskrit": {
+            "source": "data/references/sanskrit/gandavyuha_vaidya.txt",
+            "sha256": sha256(gv_path.read_bytes()),
+            "quotes": [
+                {"text": "sāgarameghasya bhikṣorantikāt prakrāntaḥ",
+                 "zh": "善财自海雲（Sāgaramegha）比丘所去"},
+                {"text": "so 'paśyatsupratiṣṭhitaṃ bhikṣuṃ gaganatale caṃkramyamāṇam",
+                 "zh": "见 Supratiṣṭhita（善住）比丘于虚空中经行"},
+            ],
+        },
     }
 
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

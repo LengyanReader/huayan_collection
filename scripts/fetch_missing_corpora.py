@@ -29,6 +29,7 @@ MANIFEST = ROOT / "data" / "references" / "external_manifest.json"
 CBETA = "https://raw.githubusercontent.com/cbeta-org/xml-p5/master"
 SC = "https://raw.githubusercontent.com/suttacentral/bilara-data/published"
 KR = "https://raw.githubusercontent.com/kanripo"
+GRETIL = "https://gretil.sub.uni-goettingen.de/gretil/corpustei/transformations/plaintext"
 
 # jsDelivr mirrors the same GitHub content and is far faster on this network;
 # raw.githubusercontent is kept as fallback so the manifest stays reproducible.
@@ -76,6 +77,13 @@ TARGETS = [
         "note": "SuttaCentral bilara-data · root/pli/ms · DN1（樣本，非全藏）",
     },
     # --- 道藏：度人經（DZ0001，三家本）全 61 卷 ---
+    # --- 梵文：入法界品梵本（Gaṇḍavyūha，Vaidya 1960 底本电子转录） ---
+    {
+        "id": "gandavyuha", "dir": "sanskrit", "path": "gandavyuha_vaidya.txt",
+        "url": f"{GRETIL}/sa_gaNDavyUhasUtra.txt",
+        "check": ["Gaṇḍavyūhasūtra", "P.L. Vaidya", "samantabhadra"],
+        "note": "GRETIL（哥廷根）· 底本 P.L. Vaidya 1960 · Gaṇḍavyūha（〈入法界品〉梵本·印本电子转录）",
+    },
 ]
 
 # The Daozang text is split one file per juan; expand into 61 targets.

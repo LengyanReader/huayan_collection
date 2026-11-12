@@ -645,7 +645,18 @@ def main() -> int:
     for q in eg["variant_example"]["quotes"]:
         if cjk(q["text"]) not in eg_src[q["key"]]:
             fail(f"endgame variant quote not in source: {q['key']} {q['text']}")
-    ok(f"endgame name pairs + {len(eg['variant_example']['quotes'])} variant quotes re-verified")
+    n_q = len(eg["variant_example"]["quotes"])
+    gv = eg["variant_example"].get("sanskrit")
+    if not gv:
+        fail("endgame variant_example missing Sanskrit evidence")
+    gv_path = ROOT / gv["source"]
+    if hashlib.sha256(gv_path.read_bytes()).hexdigest() != gv["sha256"]:
+        fail("endgame Sanskrit source hash changed")
+    gv_flat = " ".join(gv_path.read_text(encoding="utf-8").split())
+    for q in gv["quotes"]:
+        if " ".join(q["text"].split()) not in gv_flat:
+            fail(f"endgame Sanskrit quote not in source: {q['text'][:40]}")
+    ok(f"endgame name pairs + {n_q} variant quotes + {len(gv['quotes'])} Sanskrit quotes re-verified")
 
     # --- §17.8 external witnesses: every manifest file must exist with the recorded hash ---
     mf = ROOT / "data" / "references" / "external_manifest.json"
