@@ -296,7 +296,14 @@ def main() -> int:
                if key == "DZ0001" else (ROOT / meta["path"]).read_bytes())
         if hashlib.sha256(raw).hexdigest() != meta["sha256"]:
             fail(f"probe source hash changed: {key}")
-    for section in ("t9", "d5", "p1"):
+    t9_cases = probes["t9"]["cases"]
+    for case in t9_cases:
+        for q in case["quotes"]:
+            if norm(q["text"]) not in probe_src[q["src"]]:
+                fail(f"t9 quote missing from {q['src']}: {q['text'][:24]}")
+            if q["text"] not in md:
+                fail(f"t9 quote not printed in article: {q['text'][:24]}")
+    for section in ("d5", "p1"):
         for q in probes[section]["quotes"]:
             if norm(q["text"]) not in probe_src[q["src"]]:
                 fail(f"{section} quote missing from {q['src']}: {q['text'][:24]}")
@@ -320,15 +327,18 @@ def main() -> int:
         e = md.find(f"<!--GEN:end:{key}-->", s + 1)
         return md[s:e]
 
-    if first_table_rows(grab("t9")) != len(probes["t9"]["rows"]):
-        fail("§17.11 table rows != probes JSON")
+    t9_grab = grab("t9")
+    t9_table_rows = sum(1 for ln in t9_grab.splitlines() if ln.startswith("| ") and not ln.startswith("|---"))
+    if t9_table_rows != sum(len(c["rows"]) for c in t9_cases) + len(t9_cases):
+        fail("§17.11 tables != probes JSON rows")
     if first_table_rows(grab("d5")) != len(probes["d5"]["rows"]):
         fail("§17.12 table rows != probes JSON")
     if first_table_rows(grab("p1")) != len(probes["p1"]["rows"]):
         fail("§17.13 table rows != probes JSON")
     if len(probes["p1"]["rows"]) != 10:
         fail("P1 must have ten stages")
-    ok(f"§17.11–17.13 probes: {len(probes['t9']['quotes']) + len(probes['d5']['quotes']) + len(probes['p1']['quotes'])} quotes re-verified")
+    nq = sum(len(c['quotes']) for c in t9_cases) + len(probes['d5']['quotes']) + len(probes['p1']['quotes'])
+    ok(f"§17.11–17.13 probes: {nq} quotes re-verified ({len(t9_cases)} 品 for T9)")
 
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"

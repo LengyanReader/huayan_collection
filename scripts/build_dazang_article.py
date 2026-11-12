@@ -469,18 +469,22 @@ def table_edges(ont):
 
 def table_t9(probes):
     p = probes["t9"]
-    out = ["| 项 | 澄觀《疏》T1735 | 法藏《探玄記》T1733 |", "|---|---|---|"]
-    for item, a, b in p["rows"]:
-        out.append(f"| {esc(item)} | {esc(a)} | {esc(b)} |")
-    out.append("")
-    out.append("回源引文（逐条在底本中做过子串校验）：")
-    out.append("")
-    for q in p["quotes"]:
-        out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
-    out.append("")
-    out.append(f'**判断**：{esc(p["finding"])}')
-    out.append("")
-    out.append(f'**边界**：{esc(p["limits"])}')
+    out = [f"共 {len(p['cases'])} 品，逐品对照；引文逐条在底本中做过子串校验。"]
+    for case in p["cases"]:
+        out.append("")
+        out.append(f"**{esc(case['pin'])}**")
+        out.append("")
+        out.append("| 项 | 澄觀《疏》T1735 | 法藏《探玄記》T1733 |")
+        out.append("|---|---|---|")
+        for item, a, b in case["rows"]:
+            out.append(f"| {esc(item)} | {esc(a)} | {esc(b)} |")
+        out.append("")
+        for q in case["quotes"]:
+            out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
+        out.append("")
+        out.append(f'**判断**：{esc(case["finding"])}')
+        out.append("")
+        out.append(f'**边界**：{esc(case["limits"])}')
     return "\n".join(out)
 
 
