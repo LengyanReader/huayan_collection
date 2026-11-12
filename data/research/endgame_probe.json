@@ -1,0 +1,2695 @@
+{
+  "meta": {
+    "date": "2026-11-12",
+    "mark": "辭退",
+    "anchor_lengths": [
+      40,
+      32,
+      24,
+      16
+    ],
+    "same_within": 60,
+    "near_within": 300,
+    "name_window": 120,
+    "shucai_window": 200,
+    "method": "①段数：在〈入法界品〉范围内数「辭退」——每次参访以「辭退」收束，末参（普賢）无此语；又开初会众散退亦用此语，故按标记前 200 字内是否出现「善財」分为参末／会众散两计。②字面锚：取八十本每个标记前 40 字（不足则递减至 16 字），在另一本中原样查找，唯该窗在对方**恰出现一次**才可锚（套语多见则记复见，首见即中会把不同参的同套语撞到一处），落点离该本最近标记 ≤60 字为同一处、≤300 邻近、否则漂移——这量的是参界措辞亲缘，无锚只说明原样窗不存在，不证明该参为对方所无。③同名锚：取各标记前 120 字内「禮X足」对象（去尾衔、去虚指），两侧同名且次序单调者配对；正名与通名（王、夜天等）分计，通名对只说明次序相合，不作人名认定。④参长：相邻标记间净字数。",
+    "sources": {
+      "T279": {
+        "path": "data/references/cbeta/T10n0279.xml",
+        "sha256": "9d3de2c63a3eca5665352d12fb3a291e99a898cf470e1c0c71491731aa998d07"
+      },
+      "T278": {
+        "path": "data/references/cbeta/T09n0278.xml",
+        "sha256": "a2bfcee6213f9a02012d8c6227ab125e2924a97619b7a3a89d6cf515410077b5"
+      },
+      "T293": {
+        "path": "data/references/cbeta/T10n0293.xml",
+        "sha256": "cf82bea4acdb8aac991f872ba9483082681a8a964730e76a99d365910e8f27d5"
+      }
+    }
+  },
+  "texts": {
+    "T279": {
+      "label": "八十華嚴〈入法界品〉",
+      "pin": 39,
+      "start": 423436,
+      "end": 593598,
+      "lb": "0319a05",
+      "chars": 170162,
+      "marks": 48
+    },
+    "T278": {
+      "label": "六十華嚴〈入法界品〉",
+      "pin": 34,
+      "start": 352654,
+      "end": 497512,
+      "lb": "0676a05",
+      "chars": 144858,
+      "marks": 45
+    },
+    "T293": {
+      "label": "四十華嚴（全）",
+      "pin": null,
+      "start": 0,
+      "end": 261034,
+      "lb": "0661a01",
+      "chars": 261034,
+      "marks": 52
+    }
+  },
+  "marks_detail": {
+    "T279": [
+      {
+        "lb": "0330c19",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 15594
+      },
+      {
+        "lb": "0330c26",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 101
+      },
+      {
+        "lb": "0334a15",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 4035
+      },
+      {
+        "lb": "0335a03",
+        "kind": "参末",
+        "name": "德雲",
+        "generic": false,
+        "visit_chars": 1271
+      },
+      {
+        "lb": "0336b11",
+        "kind": "参末",
+        "name": "海雲",
+        "generic": false,
+        "visit_chars": 2071
+      },
+      {
+        "lb": "0337b15",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1520
+      },
+      {
+        "lb": "0338b17",
+        "kind": "参末",
+        "name": "彌伽",
+        "generic": false,
+        "visit_chars": 1424
+      },
+      {
+        "lb": "0340b01",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2656
+      },
+      {
+        "lb": "0343a01",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3900
+      },
+      {
+        "lb": "0345a20",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3199
+      },
+      {
+        "lb": "0346a28",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1596
+      },
+      {
+        "lb": "0348a18",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2708
+      },
+      {
+        "lb": "0349b22",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1953
+      },
+      {
+        "lb": "0350b27",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1540
+      },
+      {
+        "lb": "0351b07",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1120
+      },
+      {
+        "lb": "0352b15",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1582
+      },
+      {
+        "lb": "0353b22",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1589
+      },
+      {
+        "lb": "0354b13",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1155
+      },
+      {
+        "lb": "0355a22",
+        "kind": "参末",
+        "name": "普眼",
+        "generic": false,
+        "visit_chars": 1123
+      },
+      {
+        "lb": "0356a16",
+        "kind": "参末",
+        "name": "王",
+        "generic": true,
+        "visit_chars": 1362
+      },
+      {
+        "lb": "0358a06",
+        "kind": "参末",
+        "name": "王",
+        "generic": true,
+        "visit_chars": 2746
+      },
+      {
+        "lb": "0359c24",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2721
+      },
+      {
+        "lb": "0360c08",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1069
+      },
+      {
+        "lb": "0361b22",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1202
+      },
+      {
+        "lb": "0362b06",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1189
+      },
+      {
+        "lb": "0363a15",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1113
+      },
+      {
+        "lb": "0365a20",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3004
+      },
+      {
+        "lb": "0366a23",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1436
+      },
+      {
+        "lb": "0366c11",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 727
+      },
+      {
+        "lb": "0367c29",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1752
+      },
+      {
+        "lb": "0368b26",
+        "kind": "参末",
+        "name": "大天",
+        "generic": false,
+        "visit_chars": 927
+      },
+      {
+        "lb": "0369a14",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 770
+      },
+      {
+        "lb": "0372a02",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3721
+      },
+      {
+        "lb": "0373a21",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1514
+      },
+      {
+        "lb": "0378a17",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 5845
+      },
+      {
+        "lb": "0384a11",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 7608
+      },
+      {
+        "lb": "0388a09",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 5475
+      },
+      {
+        "lb": "0390c28",
+        "kind": "参末",
+        "name": "夜",
+        "generic": true,
+        "visit_chars": 4100
+      },
+      {
+        "lb": "0396b04",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 6721
+      },
+      {
+        "lb": "0401c08",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 7444
+      },
+      {
+        "lb": "0405b22",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 5138
+      },
+      {
+        "lb": "0411a13",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 6520
+      },
+      {
+        "lb": "0413b29",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3263
+      },
+      {
+        "lb": "0417c25",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 6175
+      },
+      {
+        "lb": "0419a12",
+        "kind": "参末",
+        "name": "賢勝",
+        "generic": false,
+        "visit_chars": 1756
+      },
+      {
+        "lb": "0419a25",
+        "kind": "参末",
+        "name": "堅固",
+        "generic": false,
+        "visit_chars": 215
+      },
+      {
+        "lb": "0422b13",
+        "kind": "参末",
+        "name": "德生及有德",
+        "generic": false,
+        "visit_chars": 4576
+      },
+      {
+        "lb": "0439a25",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 22262
+      }
+    ],
+    "T278": [
+      {
+        "lb": "0686c27",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 13841
+      },
+      {
+        "lb": "0689c16",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3386
+      },
+      {
+        "lb": "0690b25",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1094
+      },
+      {
+        "lb": "0691c22",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1839
+      },
+      {
+        "lb": "0692c12",
+        "kind": "参末",
+        "name": "善住",
+        "generic": false,
+        "visit_chars": 1237
+      },
+      {
+        "lb": "0693c09",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1363
+      },
+      {
+        "lb": "0695b03",
+        "kind": "参末",
+        "name": "解脫",
+        "generic": false,
+        "visit_chars": 2265
+      },
+      {
+        "lb": "0697c14",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3369
+      },
+      {
+        "lb": "0699b23",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2494
+      },
+      {
+        "lb": "0700b18",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1336
+      },
+      {
+        "lb": "0702a28",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2468
+      },
+      {
+        "lb": "0703b29",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1875
+      },
+      {
+        "lb": "0704b22",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1300
+      },
+      {
+        "lb": "0705a06",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 681
+      },
+      {
+        "lb": "0705c26",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1252
+      },
+      {
+        "lb": "0706c11",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1153
+      },
+      {
+        "lb": "0707b15",
+        "kind": "参末",
+        "name": "法寶周羅",
+        "generic": false,
+        "visit_chars": 1008
+      },
+      {
+        "lb": "0708a26",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1044
+      },
+      {
+        "lb": "0709a02",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1020
+      },
+      {
+        "lb": "0710b16",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2101
+      },
+      {
+        "lb": "0712a16",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2325
+      },
+      {
+        "lb": "0712c12",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 863
+      },
+      {
+        "lb": "0713c06",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1154
+      },
+      {
+        "lb": "0714b05",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 906
+      },
+      {
+        "lb": "0715a05",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 946
+      },
+      {
+        "lb": "0716c07",
+        "kind": "参末",
+        "name": "比丘尼",
+        "generic": true,
+        "visit_chars": 2414
+      },
+      {
+        "lb": "0717b27",
+        "kind": "参末",
+        "name": "彼女人",
+        "generic": false,
+        "visit_chars": 1240
+      },
+      {
+        "lb": "0718a02",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 532
+      },
+      {
+        "lb": "0719a17",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1585
+      },
+      {
+        "lb": "0719c14",
+        "kind": "参末",
+        "name": "彼大天",
+        "generic": false,
+        "visit_chars": 871
+      },
+      {
+        "lb": "0722c18",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3880
+      },
+      {
+        "lb": "0724a05",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1493
+      },
+      {
+        "lb": "0728c28",
+        "kind": "参末",
+        "name": "喜目觀察眾生",
+        "generic": false,
+        "visit_chars": 5650
+      },
+      {
+        "lb": "0734b13",
+        "kind": "参末",
+        "name": "妙德救護眾生",
+        "generic": false,
+        "visit_chars": 6761
+      },
+      {
+        "lb": "0737c29",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 4689
+      },
+      {
+        "lb": "0741a13",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 4000
+      },
+      {
+        "lb": "0745b10",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 5133
+      },
+      {
+        "lb": "0745c21",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 534
+      },
+      {
+        "lb": "0750c29",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 6538
+      },
+      {
+        "lb": "0754c03",
+        "kind": "参末",
+        "name": "彼林天",
+        "generic": false,
+        "visit_chars": 4693
+      },
+      {
+        "lb": "0759b01",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 5221
+      },
+      {
+        "lb": "0761c08",
+        "kind": "参末",
+        "name": "彼瞿夷",
+        "generic": false,
+        "visit_chars": 3004
+      },
+      {
+        "lb": "0766c12",
+        "kind": "参末",
+        "name": "賢勝",
+        "generic": false,
+        "visit_chars": 6991
+      },
+      {
+        "lb": "0766c25",
+        "kind": "参末",
+        "name": "堅固",
+        "generic": false,
+        "visit_chars": 207
+      },
+      {
+        "lb": "0783b26",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 21548
+      }
+    ],
+    "T293": [
+      {
+        "lb": "0675c09",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 19697
+      },
+      {
+        "lb": "0675c17",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 122
+      },
+      {
+        "lb": "0679b21",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 4935
+      },
+      {
+        "lb": "0682b18",
+        "kind": "参末",
+        "name": "海雲",
+        "generic": false,
+        "visit_chars": 4181
+      },
+      {
+        "lb": "0684a06",
+        "kind": "参末",
+        "name": "妙住",
+        "generic": false,
+        "visit_chars": 2193
+      },
+      {
+        "lb": "0685b29",
+        "kind": "参末",
+        "name": "彌伽",
+        "generic": false,
+        "visit_chars": 2337
+      },
+      {
+        "lb": "0688b16",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 4077
+      },
+      {
+        "lb": "0693c03",
+        "kind": "参末",
+        "name": "海幢",
+        "generic": false,
+        "visit_chars": 7350
+      },
+      {
+        "lb": "0697a23",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 4985
+      },
+      {
+        "lb": "0698b29",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2019
+      },
+      {
+        "lb": "0701a19",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3576
+      },
+      {
+        "lb": "0702c21",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2435
+      },
+      {
+        "lb": "0704a11",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1763
+      },
+      {
+        "lb": "0706b25",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3511
+      },
+      {
+        "lb": "0707c24",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1914
+      },
+      {
+        "lb": "0709b07",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2122
+      },
+      {
+        "lb": "0710b26",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1672
+      },
+      {
+        "lb": "0712b06",
+        "kind": "参末",
+        "name": "普眼",
+        "generic": false,
+        "visit_chars": 2545
+      },
+      {
+        "lb": "0719b11",
+        "kind": "参末",
+        "name": "王",
+        "generic": true,
+        "visit_chars": 9240
+      },
+      {
+        "lb": "0722a13",
+        "kind": "参末",
+        "name": "王",
+        "generic": true,
+        "visit_chars": 3735
+      },
+      {
+        "lb": "0724b28",
+        "kind": "参末",
+        "name": "不動",
+        "generic": false,
+        "visit_chars": 3521
+      },
+      {
+        "lb": "0725b18",
+        "kind": "参末",
+        "name": "遍行",
+        "generic": false,
+        "visit_chars": 1285
+      },
+      {
+        "lb": "0726b12",
+        "kind": "参末",
+        "name": "長者",
+        "generic": true,
+        "visit_chars": 1335
+      },
+      {
+        "lb": "0727b05",
+        "kind": "参末",
+        "name": "船師",
+        "generic": true,
+        "visit_chars": 1317
+      },
+      {
+        "lb": "0728b01",
+        "kind": "参末",
+        "name": "最勝",
+        "generic": false,
+        "visit_chars": 1286
+      },
+      {
+        "lb": "0730c20",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 3673
+      },
+      {
+        "lb": "0732a16",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 1829
+      },
+      {
+        "lb": "0732c29",
+        "kind": "参末",
+        "name": "居士",
+        "generic": true,
+        "visit_chars": 1059
+      },
+      {
+        "lb": "0735c08",
+        "kind": "参末",
+        "name": "觀自在",
+        "generic": false,
+        "visit_chars": 3607
+      },
+      {
+        "lb": "0736a18",
+        "kind": "参末",
+        "name": "菩薩",
+        "generic": true,
+        "visit_chars": 643
+      },
+      {
+        "lb": "0737c09",
+        "kind": "参末",
+        "name": "大天",
+        "generic": false,
+        "visit_chars": 2068
+      },
+      {
+        "lb": "0738b13",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 999
+      },
+      {
+        "lb": "0741c13",
+        "kind": "参末",
+        "name": "夜",
+        "generic": true,
+        "visit_chars": 4587
+      },
+      {
+        "lb": "0743a09",
+        "kind": "参末",
+        "name": "夜天",
+        "generic": true,
+        "visit_chars": 1702
+      },
+      {
+        "lb": "0748c04",
+        "kind": "参末",
+        "name": "夜",
+        "generic": true,
+        "visit_chars": 7381
+      },
+      {
+        "lb": "0755a29",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 9097
+      },
+      {
+        "lb": "0760b13",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 6401
+      },
+      {
+        "lb": "0763c29",
+        "kind": "参末",
+        "name": "夜",
+        "generic": true,
+        "visit_chars": 4958
+      },
+      {
+        "lb": "0770c05",
+        "kind": "参末",
+        "name": "夜",
+        "generic": true,
+        "visit_chars": 9146
+      },
+      {
+        "lb": "0777c16",
+        "kind": "参末",
+        "name": "敬彼",
+        "generic": false,
+        "visit_chars": 9960
+      },
+      {
+        "lb": "0784a26",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 9117
+      },
+      {
+        "lb": "0793c08",
+        "kind": "会众散",
+        "name": null,
+        "generic": null,
+        "visit_chars": 12605
+      },
+      {
+        "lb": "0797b14",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 5247
+      },
+      {
+        "lb": "0802c09",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 7565
+      },
+      {
+        "lb": "0804a14",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 2052
+      },
+      {
+        "lb": "0805c21",
+        "kind": "参末",
+        "name": "眾藝",
+        "generic": false,
+        "visit_chars": 2484
+      },
+      {
+        "lb": "0806a21",
+        "kind": "参末",
+        "name": "賢勝",
+        "generic": false,
+        "visit_chars": 416
+      },
+      {
+        "lb": "0806b07",
+        "kind": "参末",
+        "name": "長者",
+        "generic": true,
+        "visit_chars": 250
+      },
+      {
+        "lb": "0807a17",
+        "kind": "参末",
+        "name": "妙月",
+        "generic": false,
+        "visit_chars": 1136
+      },
+      {
+        "lb": "0809a17",
+        "kind": "参末",
+        "name": "婆羅門",
+        "generic": true,
+        "visit_chars": 2929
+      },
+      {
+        "lb": "0816c23",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 11106
+      },
+      {
+        "lb": "0836c16",
+        "kind": "参末",
+        "name": null,
+        "generic": null,
+        "visit_chars": 26707
+      }
+    ]
+  },
+  "pivot": {
+    "T278": [
+      {
+        "lb": "0330c19",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "遶世尊，經無量匝，以諸供具種種供養；供養畢已，"
+      },
+      {
+        "lb": "0330c26",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "佛所，頂禮佛足，具白世尊；世尊聽許，右遶三匝，"
+      },
+      {
+        "lb": "0334a15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "踊躍，頭頂禮足，遶無數匝，慇懃瞻仰，悲泣流淚。"
+      },
+      {
+        "lb": "0335a03",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "慈悲力。」時，善財童子禮德雲比丘足，右遶觀察，"
+      },
+      {
+        "lb": "0336b11",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "何淨菩薩行？」時，善財童子禮海雲足，右遶瞻仰，"
+      },
+      {
+        "lb": "0337b15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "、修菩薩道？」時，善財童子頂禮其足，右遶瞻仰，"
+      },
+      {
+        "lb": "0338b17",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "增益；禮彌伽足，涕泗悲泣，遶無量匝，戀慕瞻仰，"
+      },
+      {
+        "lb": "0340b01",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "故；於善知識起慈父想，出生一切諸善法故。——"
+      },
+      {
+        "lb": "0343a01",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "思其三昧及彼大願所行境界，受其智慧清淨光明；"
+      },
+      {
+        "lb": "0345a20",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "心方便難，值遇增長一切智法光明難。」作是念已，"
+      },
+      {
+        "lb": "0346a28",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子歡喜踊躍，頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0348a18",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "、修菩薩道？」時，善財童子頂禮其足，遶無數匝，"
+      },
+      {
+        "lb": "0349b22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，戀慕瞻仰，"
+      },
+      {
+        "lb": "0350b27",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "供養無有厭倦；頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0351b07",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "三有城所有關鑰；頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0352b15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，瞻仰無厭，"
+      },
+      {
+        "lb": "0353b22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "深心事善知識。」頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0354b13",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0355a22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子禮普眼足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0356a16",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "、修菩薩道？」時，善財童子頂禮王足，遶無數匝，"
+      },
+      {
+        "lb": "0358a06",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮王足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0359c24",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0360c08",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0361b22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0362b06",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "無量匝，慇懃瞻仰，悲泣流淚，求善知識心無厭足，"
+      },
+      {
+        "lb": "0363a15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0365a20",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0366a23",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0366c11",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "時，善財童子頂禮其足，遶無量匝已，慇懃瞻仰，"
+      },
+      {
+        "lb": "0367c29",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0368b26",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "、修菩薩道？」時，善財童子禮大天足，遶無數匝，"
+      },
+      {
+        "lb": "0369a14",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子禮地神足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0372a02",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子說此頌已，頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0373a21",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0378a17",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0384a11",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0388a09",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子說此偈已，頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0390c28",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子說此頌已，禮夜神足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0396b04",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0401c08",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，合掌瞻仰，"
+      },
+      {
+        "lb": "0405b22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0411a13",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "，彼太子與妙德女并其眷屬，頂禮佛足，遶無數匝，"
+      },
+      {
+        "lb": "0413b29",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "劫所行道。」爾時，善財童子頂禮其足，遶無數匝，"
+      },
+      {
+        "lb": "0417c25",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "踊躍，不思議善根自然增廣；頂禮其足，遶無數匝，"
+      },
+      {
+        "lb": "0419a12",
+        "mapped_lb": "0766c12",
+        "dist": 0,
+        "cls": "同一处",
+        "anchor": 24,
+        "ctx": "道？」爾時，善財禮賢勝足，遶無數匝，戀慕瞻仰，"
+      },
+      {
+        "lb": "0419a25",
+        "mapped_lb": "0766c25",
+        "dist": 0,
+        "cls": "同一处",
+        "anchor": 16,
+        "ctx": "、修菩薩道？」時，善財童子禮堅固足，遶無數匝，"
+      },
+      {
+        "lb": "0422b13",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "躍歡喜，頂禮德生及有德足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0439a25",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "。」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      }
+    ],
+    "T293": [
+      {
+        "lb": "0330c19",
+        "mapped_lb": "0675c09",
+        "dist": 2,
+        "cls": "同一处",
+        "anchor": 16,
+        "ctx": "遶世尊，經無量匝，以諸供具種種供養；供養畢已，"
+      },
+      {
+        "lb": "0330c26",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "佛所，頂禮佛足，具白世尊；世尊聽許，右遶三匝，"
+      },
+      {
+        "lb": "0334a15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "踊躍，頭頂禮足，遶無數匝，慇懃瞻仰，悲泣流淚。"
+      },
+      {
+        "lb": "0335a03",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "慈悲力。」時，善財童子禮德雲比丘足，右遶觀察，"
+      },
+      {
+        "lb": "0336b11",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "何淨菩薩行？」時，善財童子禮海雲足，右遶瞻仰，"
+      },
+      {
+        "lb": "0337b15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "、修菩薩道？」時，善財童子頂禮其足，右遶瞻仰，"
+      },
+      {
+        "lb": "0338b17",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "增益；禮彌伽足，涕泗悲泣，遶無量匝，戀慕瞻仰，"
+      },
+      {
+        "lb": "0340b01",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "故；於善知識起慈父想，出生一切諸善法故。——"
+      },
+      {
+        "lb": "0343a01",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "思其三昧及彼大願所行境界，受其智慧清淨光明；"
+      },
+      {
+        "lb": "0345a20",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "心方便難，值遇增長一切智法光明難。」作是念已，"
+      },
+      {
+        "lb": "0346a28",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子歡喜踊躍，頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0348a18",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 7,
+        "ctx": "、修菩薩道？」時，善財童子頂禮其足，遶無數匝，"
+      },
+      {
+        "lb": "0349b22",
+        "mapped_lb": "0702c21",
+        "dist": 0,
+        "cls": "同一处",
+        "anchor": 32,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，戀慕瞻仰，"
+      },
+      {
+        "lb": "0350b27",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "供養無有厭倦；頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0351b07",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "三有城所有關鑰；頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0352b15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，瞻仰無厭，"
+      },
+      {
+        "lb": "0353b22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "深心事善知識。」頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0354b13",
+        "mapped_lb": "0710b26",
+        "dist": 0,
+        "cls": "同一处",
+        "anchor": 40,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0355a22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子禮普眼足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0356a16",
+        "mapped_lb": "0719b11",
+        "dist": 4,
+        "cls": "同一处",
+        "anchor": 40,
+        "ctx": "、修菩薩道？」時，善財童子頂禮王足，遶無數匝，"
+      },
+      {
+        "lb": "0358a06",
+        "mapped_lb": "0722a13",
+        "dist": 0,
+        "cls": "同一处",
+        "anchor": 40,
+        "ctx": "？」時，善財童子頂禮王足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0359c24",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0360c08",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0361b22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0362b06",
+        "mapped_lb": "0727b05",
+        "dist": 16,
+        "cls": "同一处",
+        "anchor": 16,
+        "ctx": "無量匝，慇懃瞻仰，悲泣流淚，求善知識心無厭足，"
+      },
+      {
+        "lb": "0363a15",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0365a20",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 6,
+        "ctx": "」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0366a23",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0366c11",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "時，善財童子頂禮其足，遶無量匝已，慇懃瞻仰，"
+      },
+      {
+        "lb": "0367c29",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 6,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0368b26",
+        "mapped_lb": "0737c09",
+        "dist": 4,
+        "cls": "同一处",
+        "anchor": 24,
+        "ctx": "、修菩薩道？」時，善財童子禮大天足，遶無數匝，"
+      },
+      {
+        "lb": "0369a14",
+        "mapped_lb": "0738b13",
+        "dist": 4,
+        "cls": "同一处",
+        "anchor": 32,
+        "ctx": "？」時，善財童子禮地神足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0372a02",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子說此頌已，頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0373a21",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 6,
+        "ctx": "」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0378a17",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 6,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0384a11",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 6,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0388a09",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子說此偈已，頂禮其足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0390c28",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "財童子說此頌已，禮夜神足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0396b04",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 6,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0401c08",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "？」時，善財童子頂禮其足，遶無量匝，合掌瞻仰，"
+      },
+      {
+        "lb": "0405b22",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "复见",
+        "anchor": 0,
+        "occurrences": 6,
+        "ctx": "？」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0411a13",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "，彼太子與妙德女并其眷屬，頂禮佛足，遶無數匝，"
+      },
+      {
+        "lb": "0413b29",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "劫所行道。」爾時，善財童子頂禮其足，遶無數匝，"
+      },
+      {
+        "lb": "0417c25",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "踊躍，不思議善根自然增廣；頂禮其足，遶無數匝，"
+      },
+      {
+        "lb": "0419a12",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "道？」爾時，善財禮賢勝足，遶無數匝，戀慕瞻仰，"
+      },
+      {
+        "lb": "0419a25",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "、修菩薩道？」時，善財童子禮堅固足，遶無數匝，"
+      },
+      {
+        "lb": "0422b13",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "躍歡喜，頂禮德生及有德足，遶無量匝，慇懃瞻仰，"
+      },
+      {
+        "lb": "0439a25",
+        "mapped_lb": null,
+        "dist": null,
+        "cls": "无锚",
+        "anchor": 0,
+        "ctx": "。」時，善財童子頂禮其足，遶無量匝，慇懃瞻仰，"
+      }
+    ]
+  },
+  "reverse": [
+    {
+      "lb": "0675c09",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "來，經無量匝，以諸供具種種供養，供養畢已，頂禮"
+    },
+    {
+      "lb": "0675c17",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "，一心觀佛，具白世尊，世尊聽許，右遶三匝，作禮"
+    },
+    {
+      "lb": "0679b21",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "殊師利慇懃戀慕，頂禮雙足，遶無數匝，悲泣流淚，"
+    },
+    {
+      "lb": "0682b18",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "行速得清淨？」時，善財童子禮海雲足，右遶瞻仰，"
+    },
+    {
+      "lb": "0684a06",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "何修菩薩道。」時，善財童子禮妙住足，右遶瞻仰，"
+    },
+    {
+      "lb": "0685b29",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "隨順。禮彌伽足，悲泣流淚，遶無量匝，戀慕瞻仰，"
+    },
+    {
+      "lb": "0688b16",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "，令我成就菩薩善法；如是思惟深生愛樂，悲泣流淚"
+    },
+    {
+      "lb": "0693c03",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "廣大境界，受其所得總持智慧清淨光明，諮嗟戀慕，"
+    },
+    {
+      "lb": "0697a23",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "薩方便難，善巧增長一切智法光明難。」作是念已，"
+    },
+    {
+      "lb": "0698b29",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "踊躍，生愛敬心，頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0701a19",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "复见",
+      "anchor": 0,
+      "occurrences": 5,
+      "ctx": "。」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0702c21",
+      "mapped_lb": "0349b22",
+      "dist": 0,
+      "cls": "同一处",
+      "anchor": 32,
+      "ctx": "」時，善財童子，頂禮其足，遶無數匝，戀慕瞻仰，"
+    },
+    {
+      "lb": "0704a11",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "量法，心生尊重，頂禮妙見，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0706b25",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "佛智，究竟菩提，頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0707c24",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "复见",
+      "anchor": 0,
+      "occurrences": 5,
+      "ctx": "。」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0709b07",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "善知識心無退轉，頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0710b26",
+      "mapped_lb": "0354b13",
+      "dist": 0,
+      "cls": "同一处",
+      "anchor": 40,
+      "ctx": "。」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0712b06",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "財童子禮普眼足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0719b11",
+      "mapped_lb": "0358a06",
+      "dist": 0,
+      "cls": "同一处",
+      "anchor": 32,
+      "ctx": "。」時，善財童子頂禮王足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0722a13",
+      "mapped_lb": "0358a06",
+      "dist": 0,
+      "cls": "同一处",
+      "anchor": 40,
+      "ctx": "。」時，善財童子頂禮王足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0724b28",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "善財童子頂禮不動優婆夷足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0725b18",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "。」時，善財童子禮遍行足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0726b12",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "童子禮長者足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0727b05",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "無厭足，於善知識增戀慕心、增愛樂心，一心觀察，"
+    },
+    {
+      "lb": "0728b01",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "童子禮最勝足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0730c20",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "复见",
+      "anchor": 0,
+      "occurrences": 5,
+      "ctx": "。」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0732a16",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "复见",
+      "anchor": 0,
+      "occurrences": 5,
+      "ctx": "。」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0732c29",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "」時，善財童子禮居士足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0735c08",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "厭。一心頂禮觀自在菩薩足，遶無數匝，敬承其教，"
+    },
+    {
+      "lb": "0736a18",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "。」時，善財童子禮菩薩足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0737c09",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "。」時，善財童子禮大天足，遶無數匝，一心瞻戀，"
+    },
+    {
+      "lb": "0738b13",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "財童子禮地神足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0741c13",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "此妙偈讚夜神已，禮夜神足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0743a09",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "」時，善財童子禮夜天足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0748c04",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "財童子禮夜神足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0755a29",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "財童子頂禮其足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0760b13",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "此妙偈讚彼神已，頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0763c29",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "神已，禮夜神足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0770c05",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "財童子禮夜神足，遶無數匝，慇懃瞻仰，深心戀慕，"
+    },
+    {
+      "lb": "0777c16",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "面禮敬彼夜神足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0784a26",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "禮右遶嵐毘尼神，經無數匝，慇懃瞻仰，戀慕一心，"
+    },
+    {
+      "lb": "0793c08",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "與彼童女并其眷屬聞法獲益，頂禮佛足，遶無數匝，"
+    },
+    {
+      "lb": "0797b14",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "法已，頂禮瞿波，遶百千匝，慇懃瞻仰，戀慕一心，"
+    },
+    {
+      "lb": "0802c09",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "其教，頭面禮足，遶無數匝，慇懃戀慕，一心瞻仰，"
+    },
+    {
+      "lb": "0804a14",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "議善根速疾增長，頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0805c21",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "財童子禮眾藝足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0806a21",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "，善財禮賢勝足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0806b07",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "。」時，善財童子禮長者足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "lb": "0807a17",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "善財禮妙月足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0809a17",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "心，禮婆羅門足，遶無數匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0816c23",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "禮童子及童女，足遶無量匝，慇懃瞻仰，一心戀慕，"
+    },
+    {
+      "lb": "0836c16",
+      "mapped_lb": null,
+      "dist": null,
+      "cls": "无锚",
+      "anchor": 0,
+      "ctx": "彌勒經無量匝，頂禮雙足，慇懃瞻仰，心懷戀慕，"
+    }
+  ],
+  "name_pairs": {
+    "T278": [
+      {
+        "name": "賢勝",
+        "generic": false,
+        "a_lb": "0419a12",
+        "b_lb": "0766c12"
+      },
+      {
+        "name": "堅固",
+        "generic": false,
+        "a_lb": "0419a25",
+        "b_lb": "0766c25"
+      }
+    ],
+    "T293": [
+      {
+        "name": "海雲",
+        "generic": false,
+        "a_lb": "0336b11",
+        "b_lb": "0682b18"
+      },
+      {
+        "name": "彌伽",
+        "generic": false,
+        "a_lb": "0338b17",
+        "b_lb": "0685b29"
+      },
+      {
+        "name": "普眼",
+        "generic": false,
+        "a_lb": "0355a22",
+        "b_lb": "0712b06"
+      },
+      {
+        "name": "王",
+        "generic": true,
+        "a_lb": "0356a16",
+        "b_lb": "0719b11"
+      },
+      {
+        "name": "王",
+        "generic": true,
+        "a_lb": "0358a06",
+        "b_lb": "0722a13"
+      },
+      {
+        "name": "大天",
+        "generic": false,
+        "a_lb": "0368b26",
+        "b_lb": "0737c09"
+      },
+      {
+        "name": "夜",
+        "generic": true,
+        "a_lb": "0390c28",
+        "b_lb": "0741c13"
+      },
+      {
+        "name": "賢勝",
+        "generic": false,
+        "a_lb": "0419a12",
+        "b_lb": "0806a21"
+      }
+    ]
+  },
+  "lengths": {
+    "T279": [
+      15594,
+      101,
+      4035,
+      1271,
+      2071,
+      1520,
+      1424,
+      2656,
+      3900,
+      3199,
+      1596,
+      2708,
+      1953,
+      1540,
+      1120,
+      1582,
+      1589,
+      1155,
+      1123,
+      1362,
+      2746,
+      2721,
+      1069,
+      1202,
+      1189,
+      1113,
+      3004,
+      1436,
+      727,
+      1752,
+      927,
+      770,
+      3721,
+      1514,
+      5845,
+      7608,
+      5475,
+      4100,
+      6721,
+      7444,
+      5138,
+      6520,
+      3263,
+      6175,
+      1756,
+      215,
+      4576,
+      22262
+    ],
+    "T278": [
+      13841,
+      3386,
+      1094,
+      1839,
+      1237,
+      1363,
+      2265,
+      3369,
+      2494,
+      1336,
+      2468,
+      1875,
+      1300,
+      681,
+      1252,
+      1153,
+      1008,
+      1044,
+      1020,
+      2101,
+      2325,
+      863,
+      1154,
+      906,
+      946,
+      2414,
+      1240,
+      532,
+      1585,
+      871,
+      3880,
+      1493,
+      5650,
+      6761,
+      4689,
+      4000,
+      5133,
+      534,
+      6538,
+      4693,
+      5221,
+      3004,
+      6991,
+      207,
+      21548
+    ],
+    "T293": [
+      19697,
+      122,
+      4935,
+      4181,
+      2193,
+      2337,
+      4077,
+      7350,
+      4985,
+      2019,
+      3576,
+      2435,
+      1763,
+      3511,
+      1914,
+      2122,
+      1672,
+      2545,
+      9240,
+      3735,
+      3521,
+      1285,
+      1335,
+      1317,
+      1286,
+      3673,
+      1829,
+      1059,
+      3607,
+      643,
+      2068,
+      999,
+      4587,
+      1702,
+      7381,
+      9097,
+      6401,
+      4958,
+      9146,
+      9960,
+      9117,
+      12605,
+      5247,
+      7565,
+      2052,
+      2484,
+      416,
+      250,
+      1136,
+      2929,
+      11106,
+      26707
+    ]
+  },
+  "examples": [
+    {
+      "to": "T278",
+      "cls": "同一处",
+      "lb": "0419a12",
+      "mapped_lb": "0766c12",
+      "dist": 0,
+      "anchor": 24,
+      "ctx": "道？」爾時，善財禮賢勝足，遶無數匝，戀慕瞻仰，"
+    },
+    {
+      "to": "T278",
+      "cls": "同一处",
+      "lb": "0419a25",
+      "mapped_lb": "0766c25",
+      "dist": 0,
+      "anchor": 16,
+      "ctx": "、修菩薩道？」時，善財童子禮堅固足，遶無數匝，"
+    },
+    {
+      "to": "T278",
+      "cls": "无锚",
+      "lb": "0330c19",
+      "mapped_lb": null,
+      "dist": null,
+      "anchor": 0,
+      "ctx": "遶世尊，經無量匝，以諸供具種種供養；供養畢已，"
+    },
+    {
+      "to": "T278",
+      "cls": "无锚",
+      "lb": "0330c26",
+      "mapped_lb": null,
+      "dist": null,
+      "anchor": 0,
+      "ctx": "佛所，頂禮佛足，具白世尊；世尊聽許，右遶三匝，"
+    },
+    {
+      "to": "T293",
+      "cls": "同一处",
+      "lb": "0330c19",
+      "mapped_lb": "0675c09",
+      "dist": 2,
+      "anchor": 16,
+      "ctx": "遶世尊，經無量匝，以諸供具種種供養；供養畢已，"
+    },
+    {
+      "to": "T293",
+      "cls": "同一处",
+      "lb": "0349b22",
+      "mapped_lb": "0702c21",
+      "dist": 0,
+      "anchor": 32,
+      "ctx": "？」時，善財童子頂禮其足，遶無數匝，戀慕瞻仰，"
+    },
+    {
+      "to": "T293",
+      "cls": "复见",
+      "lb": "0348a18",
+      "mapped_lb": null,
+      "dist": null,
+      "anchor": 0,
+      "occurrences": 7,
+      "ctx": "、修菩薩道？」時，善財童子頂禮其足，遶無數匝，"
+    },
+    {
+      "to": "T293",
+      "cls": "复见",
+      "lb": "0365a20",
+      "mapped_lb": null,
+      "dist": null,
+      "anchor": 0,
+      "occurrences": 6,
+      "ctx": "」時，善財童子頂禮其足，遶無數匝，慇懃瞻仰，"
+    },
+    {
+      "to": "T293",
+      "cls": "无锚",
+      "lb": "0330c26",
+      "mapped_lb": null,
+      "dist": null,
+      "anchor": 0,
+      "ctx": "佛所，頂禮佛足，具白世尊；世尊聽許，右遶三匝，"
+    },
+    {
+      "to": "T293",
+      "cls": "无锚",
+      "lb": "0334a15",
+      "mapped_lb": null,
+      "dist": null,
+      "anchor": 0,
+      "ctx": "踊躍，頭頂禮足，遶無數匝，慇懃瞻仰，悲泣流淚。"
+    }
+  ],
+  "summary": {
+    "marks": {
+      "T279": 48,
+      "T278": 45,
+      "T293": 52
+    },
+    "kinds": {
+      "T279": {
+        "参末": 45,
+        "会众散": 3
+      },
+      "T278": {
+        "参末": 42,
+        "会众散": 3
+      },
+      "T293": {
+        "参末": 48,
+        "会众散": 4
+      }
+    },
+    "pivot_to_60": {
+      "无锚": 46,
+      "同一处": 2
+    },
+    "pivot_to_40": {
+      "同一处": 8,
+      "无锚": 32,
+      "复见": 8
+    },
+    "reverse_40_to_80": {
+      "无锚": 44,
+      "复见": 4,
+      "同一处": 4
+    },
+    "reverse_40_unanchored": 44,
+    "median_dist_60": 0,
+    "median_dist_40": 4,
+    "name_pairs_60": {
+      "proper": 2,
+      "generic": 0
+    },
+    "name_pairs_40": {
+      "proper": 5,
+      "generic": 3
+    },
+    "median_visit_chars": {
+      "T279": 1953,
+      "T278": 1839,
+      "T293": 3511
+    },
+    "max_visit": {
+      "T279": {
+        "chars": 22262,
+        "lb": "0439a25"
+      },
+      "T278": {
+        "chars": 21548,
+        "lb": "0783b26"
+      },
+      "T293": {
+        "chars": 26707,
+        "lb": "0836c16"
+      }
+    }
+  },
+  "variant_example": {
+    "note": "同名锚之外的序位证据：海雲参（同名锚 T279 0336b11 ↔ T293 0682b18）之后的下一参，八十本指示句作「善住」、六十本参末套语作「善住比丘」，四十本参末套语作「妙住」——同一序位的参名异文，是否同实须人工判读，本批只记异文不判同实。",
+    "quotes": [
+      {
+        "key": "T279",
+        "lb": "0336b11",
+        "text": "名曰：善住"
+      },
+      {
+        "key": "T278",
+        "lb": "0692c12",
+        "text": "禮善住比丘足"
+      },
+      {
+        "key": "T293",
+        "lb": "0684a06",
+        "text": "禮妙住足"
+      },
+      {
+        "key": "T279",
+        "lb": "0336b11",
+        "text": "禮海雲足"
+      },
+      {
+        "key": "T293",
+        "lb": "0682b18",
+        "text": "禮海雲足"
+      }
+    ]
+  }
+}

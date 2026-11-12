@@ -25,6 +25,7 @@ PROBES = ROOT / "data" / "research" / "cross_canon_probes.json"
 IMPLICIT = ROOT / "data" / "research" / "implicit_quotes.json"
 PARAPHRASE = ROOT / "data" / "research" / "paraphrase_probe.json"
 CONFLATION = ROOT / "data" / "research" / "conflation_probe.json"
+ENDGAME = ROOT / "data" / "research" / "endgame_probe.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -723,6 +724,79 @@ def table_t4(probe):
     return "\n".join(out)
 
 
+def table_endgame(probe):
+    s = probe["summary"]
+    tx = probe["texts"]
+    lbl = {"T279": "八十〈入法界品〉品39", "T278": "六十〈入法界品〉品34",
+           "T293": "四十華嚴（全篇）"}
+    out = []
+    out.append("**一、辭退刻度**：每次参访以「辭退」收束，末参（普賢）无此语；开初会众散去亦用此语。"
+               "按标记前 200 字内是否出现「善財」分为参末／会众散——这是机械规则，译文详略会让同一叙述点"
+               "分到两边（如八十 0345a20 记参末、四十 0697a23 记会众散），逐处 `lb` 见 JSON。"
+               "与 §5.7 的 50／52／53 诸说不同口径：那是「参」的计数，这里是「有辞退语的参末」。")
+    out.append("")
+    out.append("| 本 | 起 `lb` | 净字 | 辭退 | 参末 | 会众散 | 参长中位 | 最长参 |")
+    out.append("|---|---|---:|---:|---:|---:|---:|---|")
+    for k in ("T279", "T278", "T293"):
+        t, kd = tx[k], s["kinds"][k]
+        mv = s["max_visit"][k]
+        out.append(f"| {lbl[k]} | `{t['lb']}` | {t['chars']:,} | {t['marks']} | "
+                   f"{kd['参末']} | {kd['会众散']} | {s['median_visit_chars'][k]:,} | "
+                   f"`{mv['lb']}`（{mv['chars']:,} 字） |")
+    out.append("")
+    out.append("**二、字面锚（唯一出现才可锚）**：取八十本每个标记前 40 字（不足递减至 16），"
+               "在对方原样查找——窗在对方**恰出现一次**才可锚，多见记复见"
+               "（首见即中会把不同参的相同套语撞到一处）。")
+    out.append("")
+    out.append("| 方向 | 标记 | 同一处 | 邻近 | 漂移 | 复见 | 无锚 | 中位距 |")
+    out.append("|---|---:|---:|---:|---:|---:|---:|---:|")
+    for name, rows_, tally, med in (
+            ("八十→六十", probe["pivot"]["T278"], s["pivot_to_60"], s["median_dist_60"]),
+            ("八十→四十", probe["pivot"]["T293"], s["pivot_to_40"], s["median_dist_40"]),
+            ("四十→八十", probe["reverse"], s["reverse_40_to_80"], None)):
+        out.append(f"| {name} | {len(rows_)} | {tally.get('同一处', 0)} | {tally.get('邻近', 0)} | "
+                   f"{tally.get('漂移', 0)} | {tally.get('复见', 0)} | {tally.get('无锚', 0)} | "
+                   f"{med if med is not None else '—'} |")
+    out.append("")
+    out.append("**三、锚定子集**：全部同一处／邻近对——"
+               "无锚只说明原样窗不存在，不证明该参为对方所无：")
+    out.append("")
+    out.append("| 方向 | 甲 `lb` | 乙 `lb` | 距 | 窗 | 甲标记前文 |")
+    out.append("|---|---|---|---:|---:|---|")
+    for direction, rows_ in (("八十→六十", probe["pivot"]["T278"]),
+                             ("八十→四十", probe["pivot"]["T293"]),
+                             ("四十→八十", probe["reverse"])):
+        for r in rows_:
+            if r["cls"] in ("同一处", "邻近"):
+                out.append(f"| {direction} | `{r['lb']}` | `{r['mapped_lb']}` | {r['dist']} | "
+                           f"{r['anchor']} | {esc(r['ctx'][-18:])} |")
+    out.append("")
+    np60, np40 = s["name_pairs_60"], s["name_pairs_40"]
+    p60n = [p["name"] for p in probe["name_pairs"]["T278"] if not p["generic"]]
+    p40n = [p["name"] for p in probe["name_pairs"]["T293"] if not p["generic"]]
+    g40n = [p["name"] for p in probe["name_pairs"]["T293"] if p["generic"]]
+    out.append("**四、同名锚**：参末套语直书师名（禮X足，去尾衔、去虚指），两侧同名且次序单调者配对。"
+               "正名对可锚一参；通名对（王、夜）只说明次序相合，不作人名认定。")
+    out.append("")
+    out.append("| 对 | 正名对 | 通名对 | 正名 |")
+    out.append("|---|---:|---:|---|")
+    out.append(f"| 八十↔六十 | {np60['proper']} | {np60['generic']} | {esc('、'.join(p60n))} |")
+    out.append(f"| 八十↔四十 | {np40['proper']} | {np40['generic']} | "
+               f"{esc('、'.join(p40n))}（通名：{esc('、'.join(g40n))}） |")
+    out.append("")
+    out.append("同名锚之外还有序位证据：海雲参（同名锚 `0336b11`↔`0682b18`）之后的下一参，"
+               "八十本指示句作「善住」、六十本参末套语作「善住比丘」、四十本作「妙住」——"
+               "同一序位的参名异文，是否同实须人工判读，本批只记异文。")
+    out.append("")
+    out.append(f"**判断**：①三本的辭退刻度接近（参末 {s['kinds']['T279']['参末']}／"
+               f"{s['kinds']['T278']['参末']}／{s['kinds']['T293']['参末']}），"
+               "同一段旅程被切成大体相同数目的参——分段是文本自带的刻度，不是编者后加；"
+               "②但参界措辞亲缘两极：八十→六十 48 处仅 2 处可锚（恰是直书师名的賢勝、堅固二参），"
+               "八十→四十 8 处、反向 4 处——四十華嚴在参界大量沿用八十本文字，六十本措辞独立重译；"
+               "③参名是跨译本最稳的刻度，但同名锚只覆盖少数直书师名的参。")
+    return "\n".join(out)
+
+
 def table_forty(enrich):
     rows = enrich.get("forty", {}).get("batches", [])
     out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
@@ -803,6 +877,7 @@ def main():
     implicit = json.loads(IMPLICIT.read_text(encoding="utf-8"))
     paraphrase = json.loads(PARAPHRASE.read_text(encoding="utf-8"))
     conflation = json.loads(CONFLATION.read_text(encoding="utf-8"))
+    endgame = json.loads(ENDGAME.read_text(encoding="utf-8"))
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -826,6 +901,7 @@ def main():
         "t6": table_t6(implicit),
         "t7": table_t7(paraphrase),
         "t4": table_t4(conflation),
+        "endgame": table_endgame(endgame),
         "bhumi": table_bhumi(enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),

@@ -373,8 +373,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.17 未竟" not in md:
-        fail("§17.14–17.17 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.18 未竟" not in md:
+        fail("§17.14–17.18 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -440,7 +440,7 @@ def main() -> int:
     star = [ln for ln in t7_block.splitlines() if ln.startswith("| **合** |")]
     if len(star) != 1 or f"**{a['markers_total']}**" not in star[0]:
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.17 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.18 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {a['markers_total']}+{b['markers_total']} 节略用语, "
        f"{len(t7['pairs']['A']['examples']) + len(t7['pairs']['B']['examples'])} 例 re-verified")
@@ -552,10 +552,100 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.17 未竟" not in md:
-        fail("§17.16–17.17 headings missing")
+    if "### 17.16 T4" not in md or "### 17.18 未竟" not in md:
+        fail("§17.16–17.18 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
+
+    # --- §17.17 T9 末会: departure-mark counts, unique anchors, name pairs ---
+    eg_path = ROOT / "data" / "research" / "endgame_probe.json"
+    if not eg_path.exists():
+        fail("endgame_probe.json missing")
+    eg = json.loads(eg_path.read_text(encoding="utf-8"))
+    eg_src = {}
+    for key, meta in eg["meta"]["sources"].items():
+        p = ROOT / meta["path"]
+        if hashlib.sha256(p.read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"endgame source hash changed: {key}")
+        eg_src[key] = cjk(p.read_text(encoding="utf-8"))
+
+    eg_block = grab("endgame")
+
+    def eg_row(lb: str) -> list[str]:
+        for ln in eg_block.splitlines():
+            if ln.startswith("|") and f"`{lb}`" in ln:
+                return [c.strip() for c in ln.split("|")]
+        fail(f"endgame scale row missing: {lb}")
+
+    for key, lb in (("T279", "0319a05"), ("T278", "0676a05"), ("T293", "0661a01")):
+        cells = eg_row(lb)
+        t, kd = eg["texts"][key], eg["summary"]["kinds"][key]
+        if (cells[3] != f"{t['chars']:,}" or cells[4] != str(t["marks"])
+                or cells[5] != str(kd["参末"]) or cells[6] != str(kd["会众散"])):
+            fail(f"endgame scale row out of sync: {key}")
+    if "### 17.17 T9 末会" not in md:
+        fail("§17.17 heading missing")
+    for key in ("T279", "T278", "T293"):
+        if eg["summary"]["marks"][key] != eg["texts"][key]["marks"]:
+            fail(f"endgame summary/texts mark count disagree: {key}")
+        if (eg["summary"]["kinds"][key]["参末"] + eg["summary"]["kinds"][key]["会众散"]
+                != eg["texts"][key]["marks"]):
+            fail(f"endgame kinds do not sum to marks: {key}")
+    ok("§17.17 scale rows: 48/45/52 marks, 参末/会众散 split matches JSON")
+
+    want_pairs = [r for rows in (eg["pivot"]["T278"], eg["pivot"]["T293"], eg["reverse"])
+                  for r in rows if r["cls"] in ("同一处", "邻近")]
+    got_pairs = [ln for ln in eg_block.splitlines()
+                 if re.match(r"^\| (八十→(六十|四十)|四十→八十) \| `\d", ln)]
+    if len(got_pairs) != len(want_pairs):
+        fail(f"endgame anchor rows {len(got_pairs)} != JSON {len(want_pairs)}")
+    for r in want_pairs:
+        if f"`{r['lb']}`" not in md:
+            fail(f"endgame anchor lb missing: {r['lb']}")
+    checked = 0
+    for akey, rows in (("T279", eg["pivot"]["T278"]), ("T279", eg["pivot"]["T293"]),
+                       ("T293", eg["reverse"])):
+        for r in rows:
+            if r["cls"] in ("同一处", "邻近"):
+                tail = cjk(r["ctx"])[-10:]
+                if len(tail) >= 6 and tail not in eg_src[akey]:
+                    fail(f"endgame anchor ctx not in source: {r['lb']} {tail}")
+                checked += 1
+    ok(f"§17.17 anchors: {len(want_pairs)} rows, {checked} ctx re-verified in sources")
+
+    for ln in eg_block.splitlines():
+        mm = re.match(r"^\| (八十→六十|八十→四十|四十→八十) \| (\d+) \| (\d+) \| (\d+) "
+                      r"\| (\d+) \| (\d+) \| (\d+) \|", ln)
+        if not mm:
+            continue
+        name = mm.group(1)
+        if name == "八十→六十":
+            rows_, tally = eg["pivot"]["T278"], eg["summary"]["pivot_to_60"]
+        elif name == "八十→四十":
+            rows_, tally = eg["pivot"]["T293"], eg["summary"]["pivot_to_40"]
+        else:
+            rows_, tally = eg["reverse"], eg["summary"]["reverse_40_to_80"]
+        if (int(mm.group(2)) != len(rows_)
+                or int(mm.group(3)) != tally.get("同一处", 0)
+                or int(mm.group(4)) != tally.get("邻近", 0)
+                or int(mm.group(5)) != tally.get("漂移", 0)
+                or int(mm.group(6)) != tally.get("复见", 0)
+                or int(mm.group(7)) != tally.get("无锚", 0)):
+            fail(f"endgame tally row out of sync: {name}")
+    ok("endgame tally rows match JSON (incl. 复见 tier)")
+
+    npr = [ln for ln in eg_block.splitlines() if ln.startswith("| 八十↔")]
+    if len(npr) != 2:
+        fail("endgame name-pair rows missing")
+    for ln, key in zip(npr, ("name_pairs_60", "name_pairs_40")):
+        cells = [c.strip() for c in ln.split("|")]
+        if (cells[2] != str(eg["summary"][key]["proper"])
+                or cells[3] != str(eg["summary"][key]["generic"])):
+            fail(f"endgame name-pair row out of sync: {key}")
+    for q in eg["variant_example"]["quotes"]:
+        if cjk(q["text"]) not in eg_src[q["key"]]:
+            fail(f"endgame variant quote not in source: {q['key']} {q['text']}")
+    ok(f"endgame name pairs + {len(eg['variant_example']['quotes'])} variant quotes re-verified")
 
     # --- §17.8 external witnesses: every manifest file must exist with the recorded hash ---
     mf = ROOT / "data" / "references" / "external_manifest.json"
