@@ -1,0 +1,1403 @@
+{
+  "meta": {
+    "date": "2026-11-12",
+    "gram": 12,
+    "block_chars": 1000,
+    "min_block": 200,
+    "tier2_min_chars": 20000,
+    "thresholds": {
+      "min_side_share": 0.2,
+      "side_coverage": 0.3,
+      "separation": 0.15
+    },
+    "method": "①筛查：全文去标点后取不同 12 字串，量其见于 T278／T279 的比例；②分块切分：按 1000 字切块（末块≥200 字才计），逐块量两源覆盖率，遍历切分点，要求两侧各≥20%篇幅、各自达 30%、交叉配对低 15% 以上；③对照：植入正控（T279 前半＋T278 后半）与两个注疏负控（T1735/T1736）。",
+    "sources": {
+      "T1735": {
+        "path": "data/references/cbeta/T35n1735.xml",
+        "sha256": "53b69ce2d66853d62019893e74fefe207013235185373fa1d9af9abad57cd253",
+        "chars": 638336
+      },
+      "T1736": {
+        "path": "data/references/cbeta/T36n1736.xml",
+        "sha256": "197bee1bf9d2c43f61d5e4bb774280ad1f0a51cdc99ef00b215db02618febc88",
+        "chars": 971330
+      },
+      "T278": {
+        "path": "data/references/cbeta/T09n0278.xml",
+        "sha256": "a2bfcee6213f9a02012d8c6227ab125e2924a97619b7a3a89d6cf515410077b5",
+        "chars": 497512
+      },
+      "T279": {
+        "path": "data/references/cbeta/T10n0279.xml",
+        "sha256": "9d3de2c63a3eca5665352d12fb3a291e99a898cf470e1c0c71491731aa998d07",
+        "chars": 593598
+      },
+      "T280": {
+        "path": "data/references/cbeta/T10n0280.xml",
+        "sha256": "7232badbeb89b40b50960a17ad5d6fa1085584574add2f9516acfddd89339249",
+        "chars": 2203
+      },
+      "T281": {
+        "path": "data/references/cbeta/T10n0281.xml",
+        "sha256": "3c50b45c204379d6654f78a5be6be0477c02210c8c922db24098278234688737",
+        "chars": 5335
+      },
+      "T282": {
+        "path": "data/references/cbeta/T10n0282.xml",
+        "sha256": "d74de8c802d4b958531508808cfd30a196888f319558658dff996033ee57492d",
+        "chars": 4748
+      },
+      "T283": {
+        "path": "data/references/cbeta/T10n0283.xml",
+        "sha256": "29bdc4af65fdbf7d33f3cd153fdf9075d1de1e2e2c133cded16526229daa7df5",
+        "chars": 3322
+      },
+      "T284": {
+        "path": "data/references/cbeta/T10n0284.xml",
+        "sha256": "5028dd0e2646adfcc79c009927a51632203ebcef6f05d2ece4e2a05d4747de73",
+        "chars": 1875
+      },
+      "T285": {
+        "path": "data/references/cbeta/T10n0285.xml",
+        "sha256": "2af5b00ea872ae367240e8251a7edfb2757fdd214da961eb59946ce3833a1a88",
+        "chars": 49689
+      },
+      "T286": {
+        "path": "data/references/cbeta/T10n0286.xml",
+        "sha256": "853448b13f93466b32aa0269e94f6657f14cc3703cae51feb3aa12f66e6e48ad",
+        "chars": 45881
+      },
+      "T287": {
+        "path": "data/references/cbeta/T10n0287.xml",
+        "sha256": "5c194e2be7dcbb1e3835e5e516bc131a89a56a12c2609ee554d0052bb4db9632",
+        "chars": 54097
+      },
+      "T288": {
+        "path": "data/references/cbeta/T10n0288.xml",
+        "sha256": "3e04ff3a0f641ab8cfd1fecdd5ac9fc17311e5faa4874181aed2c0a871da372e",
+        "chars": 24117
+      },
+      "T289": {
+        "path": "data/references/cbeta/T10n0289.xml",
+        "sha256": "76ab1fad2f1dcd6bd3a526fba2ca6e5a47fb88c7c918c576800096d1397cbd78",
+        "chars": 631
+      },
+      "T290": {
+        "path": "data/references/cbeta/T10n0290.xml",
+        "sha256": "96093a5ef945178c9a9144a822819b08b52d9cce89d381ef6a6ba77f780f86ef",
+        "chars": 606
+      },
+      "T291": {
+        "path": "data/references/cbeta/T10n0291.xml",
+        "sha256": "22f56daae855291d8f7475831712d5ed74835d01a88c45a91297ef0f9f25f65b",
+        "chars": 30867
+      },
+      "T292": {
+        "path": "data/references/cbeta/T10n0292.xml",
+        "sha256": "92c05436caebe542c7f2768940d60eb26e7a175632523504b8062363d074500a",
+        "chars": 54699
+      },
+      "T293": {
+        "path": "data/references/cbeta/T10n0293.xml",
+        "sha256": "cf82bea4acdb8aac991f872ba9483082681a8a964730e76a99d365910e8f27d5",
+        "chars": 261034
+      },
+      "T294": {
+        "path": "data/references/cbeta/T10n0294.xml",
+        "sha256": "57694d2cc444cec968d21124b5fa166a30ad60bcb5c74ca6437f743b02e2ad08",
+        "chars": 33314
+      },
+      "T295": {
+        "path": "data/references/cbeta/T10n0295.xml",
+        "sha256": "af871000add94daf6c6a97b60e7d65c564e397e78abbaa18aeefd5ce3ef0e183",
+        "chars": 3674
+      },
+      "T296": {
+        "path": "data/references/cbeta/T10n0296.xml",
+        "sha256": "e736416431061894928c48357d044484bdfa14c08218f829326a585d3fb96fb0",
+        "chars": 927
+      },
+      "T297": {
+        "path": "data/references/cbeta/T10n0297.xml",
+        "sha256": "22e817e49781d29ae2661427559ce3e8770a74881aa53672a6bfe84a85b8b81e",
+        "chars": 2139
+      },
+      "T298": {
+        "path": "data/references/cbeta/T10n0298.xml",
+        "sha256": "4ef661c5c18a5b51400f449fe6b0e56a2f6001b4c3cba7fd920a56166c41578c",
+        "chars": 1820
+      },
+      "T299": {
+        "path": "data/references/cbeta/T10n0299.xml",
+        "sha256": "db2242968f5fe93d0ce6fb788bb765864deb86c28615f20df502ef5beb2fa5d3",
+        "chars": 27362
+      },
+      "T300": {
+        "path": "data/references/cbeta/T10n0300.xml",
+        "sha256": "f0acf0a8b8bd28e19d69c46a57e1f633831858969a92d37ebc6b4e534beb04df",
+        "chars": 5292
+      },
+      "T301": {
+        "path": "data/references/cbeta/T10n0301.xml",
+        "sha256": "9d608a2c26b3a25549ca374941c5bc839956dc9cf9c9b011976166ea98587ca1",
+        "chars": 4635
+      },
+      "T302": {
+        "path": "data/references/cbeta/T10n0302.xml",
+        "sha256": "451b8b348abbdbb3261129f83687bc7a4a23e31193b97dbb18d918b8899b86f7",
+        "chars": 7714
+      },
+      "T303": {
+        "path": "data/references/cbeta/T10n0303.xml",
+        "sha256": "538a5e0e8113a50ace584458b893ccb1b0853201798fcbe2562269096e947b35",
+        "chars": 9966
+      },
+      "T304": {
+        "path": "data/references/cbeta/T10n0304.xml",
+        "sha256": "d102ab992ffbb0057ca2169ac97238bb6eb6e4b3c21134b4441744be46cbda6d",
+        "chars": 6169
+      },
+      "T305": {
+        "path": "data/references/cbeta/T10n0305.xml",
+        "sha256": "a968d7d4b9af763d0de9cff63f0d7c1c14f91454dbadfd77c01110d31cfcea2c",
+        "chars": 44019
+      },
+      "T306": {
+        "path": "data/references/cbeta/T10n0306.xml",
+        "sha256": "3cd6f7da327137ab22882a4d89d50a7febc4caf10ea40bd9cf44a2ec3846430d",
+        "chars": 3172
+      },
+      "T307": {
+        "path": "data/references/cbeta/T10n0307.xml",
+        "sha256": "9c73c363b94b0a5d3abbd774512a115c4df6bf6cfc265f44a18f434b3c1bc5d7",
+        "chars": 2866
+      },
+      "T308": {
+        "path": "data/references/cbeta/T10n0308.xml",
+        "sha256": "ab2df2e3828f7ef04b2238eeef8d05e5f0148cad4eab2ce3891faa7f27535bac",
+        "chars": 3205
+      },
+      "T309": {
+        "path": "data/references/cbeta/T10n0309.xml",
+        "sha256": "9efd58e28f1e2d93ae2ac9928a6ced507090de9f48fba3f188babee44b503330",
+        "chars": 117404
+      }
+    }
+  },
+  "controls": {
+    "positive": {
+      "label": "植入正控：八十華嚴前半 ＋ 六十華嚴後半",
+      "recipe": {
+        "first": "T279",
+        "first_chars": 296799,
+        "second": "T278",
+        "second_chars": 248756
+      },
+      "expected_split_char": 296799,
+      "blocks": 546,
+      "result": {
+        "split_block": 297,
+        "split_char": 297000,
+        "left_share": 0.544,
+        "left": {
+          "T279": 0.9993,
+          "T278": 0.0212
+        },
+        "right": {
+          "T279": 0.0409,
+          "T278": 1.0
+        },
+        "min_side": 0.9993,
+        "separation": 0.9584,
+        "pass": true,
+        "recovered_error": 201
+      },
+      "sources": [
+        "T279",
+        "T278"
+      ],
+      "pass": true
+    },
+    "negative": [
+      {
+        "id": "T1735",
+        "title": "大方廣佛華嚴經疏",
+        "sources": [
+          "T279",
+          "T278"
+        ],
+        "min_side": 0.0002,
+        "separation": -0.0005,
+        "pass": false
+      },
+      {
+        "id": "T1736",
+        "title": "大方廣佛華嚴經隨疏演義鈔",
+        "sources": [
+          "T1735",
+          "T279"
+        ],
+        "min_side": 0.0083,
+        "separation": -0.0359,
+        "pass": false
+      }
+    ]
+  },
+  "screen": [
+    {
+      "id": "T280",
+      "title": "佛說兜沙經",
+      "juan": 1,
+      "chars": 2203,
+      "xref": {
+        "T278": [
+          3,
+          5
+        ],
+        "T279": [
+          7,
+          9
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T281",
+      "title": "佛說菩薩本業經",
+      "juan": 1,
+      "chars": 5335,
+      "xref": {
+        "T278": [
+          7,
+          11
+        ],
+        "T279": [
+          11,
+          15
+        ]
+      },
+      "cov": {
+        "T278": 0.0186,
+        "T279": 0.0032
+      },
+      "tier2": false
+    },
+    {
+      "id": "T282",
+      "title": "諸菩薩求佛本業經",
+      "juan": 1,
+      "chars": 4748,
+      "xref": {
+        "T278": [
+          7
+        ],
+        "T279": [
+          11
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T283",
+      "title": "菩薩十住行道品",
+      "juan": 1,
+      "chars": 3322,
+      "xref": {
+        "T278": [
+          11
+        ],
+        "T279": [
+          15
+        ],
+        "T281": [
+          3
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T284",
+      "title": "佛說菩薩十住經",
+      "juan": 1,
+      "chars": 1875,
+      "xref": {
+        "T278": [
+          11
+        ],
+        "T279": [
+          15
+        ],
+        "T281": [
+          2
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T285",
+      "title": "漸備一切智德經",
+      "juan": 5,
+      "chars": 49689,
+      "xref": {
+        "T278": [
+          22
+        ],
+        "T279": [
+          26
+        ]
+      },
+      "cov": {
+        "T278": 0.0001,
+        "T279": 0.0001
+      },
+      "tier2": true
+    },
+    {
+      "id": "T286",
+      "title": "十住經",
+      "juan": 4,
+      "chars": 45881,
+      "xref": {
+        "T278": [
+          22
+        ],
+        "T279": [
+          26
+        ]
+      },
+      "cov": {
+        "T278": 0.3972,
+        "T279": 0.0127
+      },
+      "tier2": true
+    },
+    {
+      "id": "T287",
+      "title": "佛說十地經",
+      "juan": 9,
+      "chars": 54097,
+      "xref": {
+        "T278": [
+          22
+        ],
+        "T279": [
+          26
+        ]
+      },
+      "cov": {
+        "T278": 0.0021,
+        "T279": 0.0823
+      },
+      "tier2": true
+    },
+    {
+      "id": "T288",
+      "title": "等目菩薩所問三昧經",
+      "juan": 3,
+      "chars": 24117,
+      "xref": {
+        "T279": [
+          27
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0001
+      },
+      "tier2": true
+    },
+    {
+      "id": "T289",
+      "title": "顯無邊佛土功德經",
+      "juan": 1,
+      "chars": 631,
+      "xref": {
+        "T278": [
+          26
+        ],
+        "T279": [
+          31
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0081
+      },
+      "tier2": false
+    },
+    {
+      "id": "T290",
+      "title": "佛說較量一切佛剎功德經",
+      "juan": 1,
+      "chars": 606,
+      "xref": {
+        "T278": [
+          26
+        ],
+        "T279": [
+          31
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T291",
+      "title": "佛說如來興顯經",
+      "juan": 4,
+      "chars": 30867,
+      "xref": {
+        "T278": [
+          32
+        ],
+        "T279": [
+          37
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": true
+    },
+    {
+      "id": "T292",
+      "title": "度世品經",
+      "juan": 6,
+      "chars": 54699,
+      "xref": {
+        "T278": [
+          33
+        ],
+        "T279": [
+          38
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": true
+    },
+    {
+      "id": "T293",
+      "title": "大方廣佛華嚴經",
+      "juan": 40,
+      "chars": 261034,
+      "xref": {
+        "T278": [
+          34,
+          31
+        ],
+        "T279": [
+          39,
+          36
+        ]
+      },
+      "cov": {
+        "T278": 0.0085,
+        "T279": 0.175
+      },
+      "tier2": true
+    },
+    {
+      "id": "T294",
+      "title": "佛說羅摩伽經",
+      "juan": 3,
+      "chars": 33314,
+      "xref": {
+        "T278": [
+          34
+        ],
+        "T279": [
+          39
+        ]
+      },
+      "cov": {
+        "T278": 0.0618,
+        "T279": 0.0059
+      },
+      "tier2": true
+    },
+    {
+      "id": "T295",
+      "title": "大方廣佛華嚴經入法界品",
+      "juan": 1,
+      "chars": 3674,
+      "xref": {
+        "T278": [
+          34
+        ],
+        "T279": [
+          39
+        ]
+      },
+      "cov": {
+        "T278": 0.9103,
+        "T279": 0.5307
+      },
+      "tier2": false
+    },
+    {
+      "id": "T296",
+      "title": "文殊師利發願經",
+      "juan": 1,
+      "chars": 927,
+      "xref": {
+        "T293": [
+          40
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T297",
+      "title": "普賢菩薩行願讚",
+      "juan": 1,
+      "chars": 2139,
+      "xref": {
+        "T293": [
+          40
+        ]
+      },
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T298",
+      "title": "大方廣普賢所說經",
+      "juan": 1,
+      "chars": 1820,
+      "xref": {},
+      "cov": {
+        "T278": 0.0053,
+        "T279": 0.002
+      },
+      "tier2": false
+    },
+    {
+      "id": "T299",
+      "title": "大方廣總持寶光明經",
+      "juan": 5,
+      "chars": 27362,
+      "xref": {},
+      "cov": {
+        "T278": 0.0001,
+        "T279": 0.0004
+      },
+      "tier2": true
+    },
+    {
+      "id": "T300",
+      "title": "大方廣佛華嚴經不思議佛境界分",
+      "juan": 1,
+      "chars": 5292,
+      "xref": {},
+      "cov": {
+        "T278": 0.0009,
+        "T279": 0.0011
+      },
+      "tier2": false
+    },
+    {
+      "id": "T301",
+      "title": "大方廣如來不思議境界經",
+      "juan": 1,
+      "chars": 4635,
+      "xref": {},
+      "cov": {
+        "T278": 0.0039,
+        "T279": 0.003
+      },
+      "tier2": false
+    },
+    {
+      "id": "T302",
+      "title": "度諸佛境界智光嚴經",
+      "juan": 1,
+      "chars": 7714,
+      "xref": {},
+      "cov": {
+        "T278": 0.0023,
+        "T279": 0.0011
+      },
+      "tier2": false
+    },
+    {
+      "id": "T303",
+      "title": "佛華嚴入如來德智不思議境界經",
+      "juan": 2,
+      "chars": 9966,
+      "xref": {},
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": false
+    },
+    {
+      "id": "T304",
+      "title": "大方廣入如來智德不思議經",
+      "juan": 1,
+      "chars": 6169,
+      "xref": {},
+      "cov": {
+        "T278": 0.0055,
+        "T279": 0.006
+      },
+      "tier2": false
+    },
+    {
+      "id": "T305",
+      "title": "信力入印法門經",
+      "juan": 5,
+      "chars": 44019,
+      "xref": {},
+      "cov": {
+        "T278": 0.0005,
+        "T279": 0.0001
+      },
+      "tier2": true
+    },
+    {
+      "id": "T306",
+      "title": "大方廣佛花嚴經修慈分",
+      "juan": 1,
+      "chars": 3172,
+      "xref": {},
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0003
+      },
+      "tier2": false
+    },
+    {
+      "id": "T307",
+      "title": "佛說莊嚴菩提心經",
+      "juan": 1,
+      "chars": 2866,
+      "xref": {},
+      "cov": {
+        "T278": 0.006,
+        "T279": 0.0032
+      },
+      "tier2": false
+    },
+    {
+      "id": "T308",
+      "title": "佛說大方廣菩薩十地經",
+      "juan": 1,
+      "chars": 3205,
+      "xref": {},
+      "cov": {
+        "T278": 0.0009,
+        "T279": 0.0009
+      },
+      "tier2": false
+    },
+    {
+      "id": "T309",
+      "title": "最勝問菩薩十住除垢斷結經",
+      "juan": 10,
+      "chars": 117404,
+      "xref": {},
+      "cov": {
+        "T278": 0.0,
+        "T279": 0.0
+      },
+      "tier2": true
+    },
+    {
+      "id": "T1735",
+      "title": "大方廣佛華嚴經疏",
+      "juan": 60,
+      "chars": 638336,
+      "xref": {},
+      "cov": {
+        "T278": 0.0002,
+        "T279": 0.0019
+      },
+      "tier2": true,
+      "note": "經疏合刊：疏文里是否整段插入經文"
+    },
+    {
+      "id": "T1736",
+      "title": "大方廣佛華嚴經隨疏演義鈔",
+      "juan": 90,
+      "chars": 971330,
+      "xref": {},
+      "cov": {
+        "T278": 0.0007,
+        "T279": 0.014
+      },
+      "tier2": true,
+      "note": "疏钞合刊：钞文里是否整段重刊疏文"
+    }
+  ],
+  "partition": [
+    {
+      "id": "T285",
+      "title": "漸備一切智德經",
+      "chars": 49689,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 50,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.0051,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.0051,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": null,
+        "split_char": null,
+        "left_share": 0.0,
+        "left": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "right": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "min_side": 0.0,
+        "separation": 0.0,
+        "pass": false
+      },
+      "best_block": null,
+      "pass": false
+    },
+    {
+      "id": "T286",
+      "title": "十住經",
+      "chars": 45881,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 46,
+      "block_stats": {
+        "T278": {
+          "median": 0.3923,
+          "max": 0.6935,
+          "blocks_ge_30": 36
+        },
+        "T279": {
+          "median": 0.0051,
+          "max": 0.1062,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": 15,
+        "split_char": 15000,
+        "left_share": 0.327,
+        "left": {
+          "T278": 0.4758,
+          "T279": 0.0247
+        },
+        "right": {
+          "T278": 0.3589,
+          "T279": 0.008
+        },
+        "min_side": 0.008,
+        "separation": -0.3508,
+        "pass": false
+      },
+      "best_block": {
+        "source": "T278",
+        "lb": "0499a18",
+        "chars": 1000,
+        "coverage": 0.6935,
+        "head": "願說安隱法，菩薩無上行，分別於諸地，令智慧清淨。眾智淨無垢，安住深信解，於"
+      },
+      "pass": false
+    },
+    {
+      "id": "T287",
+      "title": "佛說十地經",
+      "chars": 54097,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 54,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.0415,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0314,
+          "max": 0.3579,
+          "blocks_ge_30": 2
+        }
+      },
+      "best_split": {
+        "split_block": 11,
+        "split_char": 11000,
+        "left_share": 0.204,
+        "left": {
+          "T278": 0.0066,
+          "T279": 0.0563
+        },
+        "right": {
+          "T278": 0.001,
+          "T279": 0.0862
+        },
+        "min_side": 0.0066,
+        "separation": -0.0497,
+        "pass": false
+      },
+      "best_block": {
+        "source": "T279",
+        "lb": "0555b28",
+        "chars": 1000,
+        "coverage": 0.3579,
+        "head": "亦見若干無量佛，譬如盛夏空中日。甚深微妙難見知，聲聞、獨覺無能了；如是菩薩"
+      },
+      "pass": false
+    },
+    {
+      "id": "T288",
+      "title": "等目菩薩所問三昧經",
+      "chars": 24117,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 24,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.0,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.003,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": null,
+        "split_char": null,
+        "left_share": 0.0,
+        "left": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "right": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "min_side": 0.0,
+        "separation": 0.0,
+        "pass": false
+      },
+      "best_block": null,
+      "pass": false
+    },
+    {
+      "id": "T291",
+      "title": "佛說如來興顯經",
+      "chars": 30867,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 31,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.001,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.0,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": null,
+        "split_char": null,
+        "left_share": 0.0,
+        "left": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "right": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "min_side": 0.0,
+        "separation": 0.0,
+        "pass": false
+      },
+      "best_block": null,
+      "pass": false
+    },
+    {
+      "id": "T292",
+      "title": "度世品經",
+      "chars": 54699,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 55,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.001,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.0,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": null,
+        "split_char": null,
+        "left_share": 0.0,
+        "left": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "right": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "min_side": 0.0,
+        "separation": 0.0,
+        "pass": false
+      },
+      "best_block": null,
+      "pass": false
+    },
+    {
+      "id": "T293",
+      "title": "大方廣佛華嚴經",
+      "chars": 261034,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 261,
+      "block_stats": {
+        "T278": {
+          "median": 0.0081,
+          "max": 0.1802,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.1496,
+          "max": 0.8261,
+          "blocks_ge_30": 60
+        }
+      },
+      "best_split": {
+        "split_block": 105,
+        "split_char": 105000,
+        "left_share": 0.402,
+        "left": {
+          "T278": 0.0184,
+          "T279": 0.1443
+        },
+        "right": {
+          "T278": 0.0121,
+          "T279": 0.2082
+        },
+        "min_side": 0.0184,
+        "separation": -0.1259,
+        "pass": false
+      },
+      "best_block": {
+        "source": "T279",
+        "lb": "0821c10",
+        "chars": 1000,
+        "coverage": 0.8261,
+        "head": "當作世光明，當成三界師，示其解脫處。亦當令世間，普離諸想著，普覺煩惱睡，普"
+      },
+      "pass": false
+    },
+    {
+      "id": "T294",
+      "title": "佛說羅摩伽經",
+      "chars": 33314,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 34,
+      "block_stats": {
+        "T278": {
+          "median": 0.0586,
+          "max": 0.229,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0061,
+          "max": 0.0465,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": 10,
+        "split_char": 10000,
+        "left_share": 0.3,
+        "left": {
+          "T278": 0.0201,
+          "T279": 0.0089
+        },
+        "right": {
+          "T278": 0.0875,
+          "T279": 0.0107
+        },
+        "min_side": 0.0107,
+        "separation": -0.0769,
+        "pass": false
+      },
+      "best_block": {
+        "source": "T278",
+        "lb": "0873b10",
+        "chars": 1000,
+        "coverage": 0.229,
+        "head": "音聲，我已悉供養。如是等諸佛，十億那由他，猶未得慧眼，究竟生死海。次第復有"
+      },
+      "pass": false
+    },
+    {
+      "id": "T299",
+      "title": "大方廣總持寶光明經",
+      "chars": 27362,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 28,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.002,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.004,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": 6,
+        "split_char": 6000,
+        "left_share": 0.219,
+        "left": {
+          "T278": 0.0003,
+          "T279": 0.0005
+        },
+        "right": {
+          "T278": 0.0,
+          "T279": 0.0006
+        },
+        "min_side": 0.0003,
+        "separation": -0.0002,
+        "pass": false
+      },
+      "best_block": null,
+      "pass": false
+    },
+    {
+      "id": "T305",
+      "title": "信力入印法門經",
+      "chars": 44019,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 44,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.0154,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.002,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": null,
+        "split_char": null,
+        "left_share": 0.0,
+        "left": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "right": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "min_side": 0.0,
+        "separation": 0.0,
+        "pass": false
+      },
+      "best_block": null,
+      "pass": false
+    },
+    {
+      "id": "T309",
+      "title": "最勝問菩薩十住除垢斷結經",
+      "chars": 117404,
+      "sources": [
+        "T278",
+        "T279"
+      ],
+      "blocks": 118,
+      "block_stats": {
+        "T278": {
+          "median": 0.0,
+          "max": 0.001,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.002,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": 66,
+        "split_char": 66000,
+        "left_share": 0.562,
+        "left": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "right": {
+          "T278": 0.0,
+          "T279": 0.0
+        },
+        "min_side": 0.0,
+        "separation": 0.0,
+        "pass": false
+      },
+      "best_block": null,
+      "pass": false
+    },
+    {
+      "id": "T1735",
+      "title": "大方廣佛華嚴經疏",
+      "chars": 638336,
+      "sources": [
+        "T279",
+        "T278"
+      ],
+      "blocks": 639,
+      "block_stats": {
+        "T279": {
+          "median": 0.0,
+          "max": 0.1739,
+          "blocks_ge_30": 0
+        },
+        "T278": {
+          "median": 0.0,
+          "max": 0.0182,
+          "blocks_ge_30": 0
+        }
+      },
+      "best_split": {
+        "split_block": 445,
+        "split_char": 445000,
+        "left_share": 0.697,
+        "left": {
+          "T279": 0.0027,
+          "T278": 0.0002
+        },
+        "right": {
+          "T279": 0.0007,
+          "T278": 0.0002
+        },
+        "min_side": 0.0002,
+        "separation": -0.0005,
+        "pass": false
+      },
+      "best_block": {
+        "source": "T279",
+        "lb": "0514b26",
+        "chars": 1000,
+        "coverage": 0.1739,
+        "head": "云何說諸蘊？諸蘊有何性？蘊性不可滅，是故說無生。分別此諸蘊，其性本空寂。空故"
+      },
+      "pass": false
+    },
+    {
+      "id": "T1736",
+      "title": "大方廣佛華嚴經隨疏演義鈔",
+      "chars": 971330,
+      "sources": [
+        "T1735",
+        "T279"
+      ],
+      "blocks": 972,
+      "block_stats": {
+        "T1735": {
+          "median": 0.002,
+          "max": 0.1476,
+          "blocks_ge_30": 0
+        },
+        "T279": {
+          "median": 0.0,
+          "max": 0.5253,
+          "blocks_ge_30": 4
+        }
+      },
+      "best_split": {
+        "split_block": 195,
+        "split_char": 195000,
+        "left_share": 0.201,
+        "left": {
+          "T1735": 0.0083,
+          "T279": 0.0441
+        },
+        "right": {
+          "T1735": 0.0049,
+          "T279": 0.0085
+        },
+        "min_side": 0.0083,
+        "separation": -0.0359,
+        "pass": false
+      },
+      "best_block": {
+        "source": "T279",
+        "lb": "0012b20",
+        "chars": 1000,
+        "coverage": 0.5253,
+        "head": "時諸比丘聞此法已則得三昧，名無礙眼見一切佛境界。得此三昧故，悉見十方無量無"
+      },
+      "pass": false
+    }
+  ],
+  "baselines": [
+    {
+      "a": "T295",
+      "b": "T278",
+      "label": "逐字重合：一卷《入法界品》↔ 六十華嚴",
+      "chars_a": 3674,
+      "coverage": 0.9103
+    },
+    {
+      "a": "T286",
+      "b": "T278",
+      "label": "近文：〈十地品〉異譯《十住經》↔ 六十華嚴",
+      "chars_a": 45881,
+      "coverage": 0.3972
+    },
+    {
+      "a": "T293",
+      "b": "T279",
+      "label": "近文：四十華嚴 ↔ 八十〈入法界品〉",
+      "chars_a": 261034,
+      "coverage": 0.175
+    },
+    {
+      "a": "T287",
+      "b": "T279",
+      "label": "近文：《十地經》↔ 八十〈十地品〉",
+      "chars_a": 54097,
+      "coverage": 0.0823
+    },
+    {
+      "a": "T279",
+      "b": "T278",
+      "label": "同本異譯：八十 ↔ 六十（全本）",
+      "chars_a": 593598,
+      "coverage": 0.0248
+    },
+    {
+      "a": "T1736",
+      "b": "T1735",
+      "label": "疏—鈔：隨疏演義鈔 ↔ 疏",
+      "chars_a": 971330,
+      "coverage": 0.0046
+    },
+    {
+      "a": "T1735",
+      "b": "T279",
+      "label": "經—疏：澄觀疏 ↔ 八十華嚴",
+      "chars_a": 638336,
+      "coverage": 0.0019
+    },
+    {
+      "a": "T309",
+      "b": "T279",
+      "label": "無關文本：《十住除垢斷結經》↔ 八十華嚴",
+      "chars_a": 117404,
+      "coverage": 0.0
+    }
+  ],
+  "targeted": [
+    {
+      "a": "T293",
+      "b": "T297",
+      "label": "四十華嚴卷40（普賢行願品）是否取自《普賢菩薩行願讚》",
+      "chars_a": 8730,
+      "lb": "0844b13",
+      "coverage": 0.0004
+    },
+    {
+      "a": "T293",
+      "b": "T279",
+      "label": "四十華嚴卷1–39 → 八十華嚴（對照）",
+      "chars_a": 252304,
+      "lb": "001a01",
+      "coverage": 0.1808
+    }
+  ],
+  "verdict": {
+    "candidates": 13,
+    "passed": [],
+    "screen_texts": 32,
+    "statement": "库内无合本候选：无一部可通过分块来源分离检验。"
+  }
+}

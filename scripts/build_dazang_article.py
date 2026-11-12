@@ -24,6 +24,7 @@ ONTOLOGY = ROOT / "data" / "research" / "relation_ontology.json"
 PROBES = ROOT / "data" / "research" / "cross_canon_probes.json"
 IMPLICIT = ROOT / "data" / "research" / "implicit_quotes.json"
 PARAPHRASE = ROOT / "data" / "research" / "paraphrase_probe.json"
+CONFLATION = ROOT / "data" / "research" / "conflation_probe.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -634,6 +635,94 @@ def table_t7(probe):
     return "\n".join(out)
 
 
+def _pair_cells(blk, s1, s2):
+    return (f"{blk[s1]:.1%}／{blk[s2]:.1%}")
+
+
+def table_t4(probe):
+    meta = probe["meta"]
+    thr = meta["thresholds"]
+    pos = probe["controls"]["positive"]
+    out = []
+    out.append(f"**一、筛查**：库内 {len(probe['screen'])} 部文本（{len(probe['screen']) - 2} 部華嚴部 + 2 部注疏）整篇对测。"
+               f"两列是「本文去标点后的不同 {meta['gram']} 字串，有多少也见于该本」。"
+               "合本至少要贴住一个源；贴不住的，先出局。")
+    out.append("")
+    out.append("| 编号 | 题名 | 卷 | 字 | 与 T278 | 与 T279 | 分块检验 |")
+    out.append("|---|---|---:|---:|---:|---:|:--:|")
+    for r in probe["screen"]:
+        out.append(f"| {esc(r['id'])} | {esc(r['title'])} | {r['juan']} | {r['chars']:,} | "
+                   f"{r['cov']['T278']:.2%} | {r['cov']['T279']:.2%} | "
+                   f"{'受检' if r['tier2'] else '—'} |")
+    out.append("")
+    out.append(f"（分块检验须 ≥{meta['tier2_min_chars']:,} 字：短经切不出两段，只过筛查。）")
+    out.append("")
+    out.append("**二、什么算「像」**：同一把尺子量已知关系，排成阶梯：")
+    out.append("")
+    out.append("| 关系 | 甲 | 乙 | 甲文字数 | 甲 12 字串见于乙 |")
+    out.append("|---|---|---|---:|---:|")
+    for r in sorted(probe["baselines"], key=lambda x: -x["coverage"]):
+        out.append(f"| {esc(r['label'])} | {esc(r['a'])} | {esc(r['b'])} | "
+                   f"{r['chars_a']:,} | {r['coverage']:.2%} |")
+    out.append("")
+    out.append("**三、分块切分**：先植入一部真正的合本当正控，再测库内候选。")
+    out.append(f"一个切分点须同时满足：两侧各≥{thr['min_side_share']:.0%}篇幅、"
+               f"各自≥{thr['side_coverage']:.0%}覆盖、且压过交叉配对≥{thr['separation']:.0%}，才算通过。")
+    out.append("")
+    out.append("| 候选 | 源一 | 源二 | 块数 | 单块≥30%（源一／源二） | 左均 源一／源二 | 右均 源一／源二 | 分离度 | 判 |")
+    out.append("|---|---|---|---:|---|---|---|---:|---|")
+    pr = pos["result"]
+    out.append(f"| 正控（植入） | {pos['sources'][0]} | {pos['sources'][1]} | {pos['blocks']} | "
+               f"— | {_pair_cells(pr['left'], *pos['sources'])} | "
+               f"{_pair_cells(pr['right'], *pos['sources'])} | {pr['separation']:+.1%} | "
+               f"{'通过' if pos['pass'] else '未通过'} |")
+    for r in probe["partition"]:
+        bs, st = r["best_split"], r["block_stats"]
+        s1, s2 = r["sources"]
+        cells = [r["id"], s1, s2, str(r["blocks"]),
+                 f"{st[s1]['blocks_ge_30']}／{st[s2]['blocks_ge_30']}"]
+        if bs["split_char"] is None:
+            cells += ["—", "—", "—", "不通过"]
+        else:
+            cells += [_pair_cells(bs["left"], s1, s2), _pair_cells(bs["right"], s1, s2),
+                      f"{bs['separation']:+.1%}", "通过" if r["pass"] else "不通过"]
+        out.append("| " + " | ".join(cells) + " |")
+    out.append("")
+    out.append(f"正控是「八十華嚴前半＋六十華嚴後半」的拼接本（{pos['recipe']['first_chars']:,} ＋ "
+               f"{pos['recipe']['second_chars']:,} 字）。切点实际落在一块之内："
+               f"误差 {pos['result']['recovered_error']} 字，左段对八十 {pos['result']['left'][pos['sources'][0]]:.1%}、"
+               f"右段对六十 {pos['result']['right'][pos['sources'][1]]:.1%}，分离度 "
+               f"{pos['result']['separation']:+.1%}。检验能看见接缝。")
+    out.append("")
+    out.append("**四、最佳块**（首块含经题、不计；覆盖率=该 1,000 字块中见于所标源的 12 字串比例）：")
+    out.append("")
+    out.append("| 候选 | 源 | 块 `lb` | 覆盖率 | 起首 |")
+    out.append("|---|---|---|---:|---|")
+    for r in probe["partition"]:
+        b = r["best_block"]
+        if not b:
+            continue
+        out.append(f"| {r['id']} | {b['source']} | `{b['lb']}` | {b['coverage']:.1%} | "
+                   f"{esc(b['head'])}… |")
+    out.append("")
+    tg = {r["label"]: r for r in probe["targeted"]}
+    out.append("**五、定点**：四十華嚴末卷（`%s`，%s 字）与《普賢菩薩行願讚》只有 %.2f%% 相同，"
+               "不是从讚文拼入；同本卷 1–39 与八十〈入法界品〉为 %.2f%%。"
+               % (probe["targeted"][0]["lb"], f"{probe['targeted'][0]['chars_a']:,}",
+                  probe["targeted"][0]["coverage"] * 100, probe["targeted"][1]["coverage"] * 100))
+    out.append("")
+    v = probe["verdict"]
+    out.append(f"**判断**：{v['screen_texts']} 部受检于筛查、{v['candidates']} 部进入分块检验，"
+               f"通过 {len(v['passed'])} 部——**{v['statement']}**")
+    out.append("")
+    t286 = next(r for r in probe["partition"] if r["id"] == "T286")
+    out.append("两种「像」必须分开：**通篇对齐一个源**是近文異譯或抄出"
+               f"（T286《十住經》{t286['block_stats']['T278']['blocks_ge_30']}/{t286['blocks']} 个块对六十本都≥30%，"
+               "但切到哪一侧都一样高，分离度为负）；**两侧分别对齐两个源**才是拼合（正控即如此）。"
+               f"库内 {len(probe['partition'])} 部候选全属前者或无对齐，无一部属后者。")
+    return "\n".join(out)
+
+
 def table_forty(enrich):
     rows = enrich.get("forty", {}).get("batches", [])
     out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
@@ -713,6 +802,7 @@ def main():
     probes = json.loads(PROBES.read_text(encoding="utf-8")) if PROBES.exists() else {}
     implicit = json.loads(IMPLICIT.read_text(encoding="utf-8"))
     paraphrase = json.loads(PARAPHRASE.read_text(encoding="utf-8"))
+    conflation = json.loads(CONFLATION.read_text(encoding="utf-8"))
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -735,6 +825,7 @@ def main():
         "p1": table_p1(probes),
         "t6": table_t6(implicit),
         "t7": table_t7(paraphrase),
+        "t4": table_t4(conflation),
         "bhumi": table_bhumi(enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),

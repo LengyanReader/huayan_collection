@@ -373,8 +373,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.16 未竟" not in md:
-        fail("§17.14–17.15 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.17 未竟" not in md:
+        fail("§17.14–17.17 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -440,10 +440,122 @@ def main() -> int:
     star = [ln for ln in t7_block.splitlines() if ln.startswith("| **合** |")]
     if len(star) != 1 or f"**{a['markers_total']}**" not in star[0]:
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.16 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.17 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {a['markers_total']}+{b['markers_total']} 节略用语, "
        f"{len(t7['pairs']['A']['examples']) + len(t7['pairs']['B']['examples'])} 例 re-verified")
+
+    # --- §17.16 T4: screen / partition / controls must be reproduced by the article ---
+    t4_path = ROOT / "data" / "research" / "conflation_probe.json"
+    if not t4_path.exists():
+        fail("conflation_probe.json missing")
+    t4 = json.loads(t4_path.read_text(encoding="utf-8"))
+    t4_src = {}
+
+    def src_of(key: str) -> str:
+        if key not in t4_src:
+            path = ROOT / t4["meta"]["sources"][key]["path"]
+            t4_src[key] = imp_src[key] if key in imp_src else cjk(path.read_text(encoding="utf-8"))
+        return t4_src[key]
+
+    for key, meta in t4["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"T4 source hash changed: {key}")
+
+    def tables_of(block: str) -> list[list[str]]:
+        out, cur = [], []
+        for ln in block.splitlines():
+            if ln.startswith("|"):
+                cur.append(ln)
+            elif cur:
+                if len(cur) > 1:
+                    out.append(cur)
+                cur = []
+        if len(cur) > 1:
+            out.append(cur)
+        return out
+
+    t4_block = grab("t4")
+    t4_tables = tables_of(t4_block)
+    screen_t = next(t for t in t4_tables if "分块检验" in t[0])
+    base_t = next(t for t in t4_tables if "甲 12 字串见于乙" in t[0])
+    part_t = next(t for t in t4_tables if "分离度" in t[0])
+    exh_t = next(t for t in t4_tables if "`lb`" in t[0])
+    if len(screen_t) - 2 != len(t4["screen"]):
+        fail("§17.16 screen table rows != JSON")
+    if len(base_t) - 2 != len(t4["baselines"]):
+        fail("§17.16 baseline table rows != JSON")
+    if len(part_t) - 2 != len(t4["partition"]) + 1:
+        fail("§17.16 partition table rows != JSON (+1 正控)")
+
+    for r in t4["screen"]:
+        line = next((ln for ln in screen_t[2:] if ln.startswith(f"| {r['id']} |")), None)
+        if line is None:
+            fail(f"T4 screen row missing: {r['id']}")
+        if f"{r['cov']['T278']:.2%}" not in line or f"{r['cov']['T279']:.2%}" not in line:
+            fail(f"T4 screen coverage out of sync: {r['id']}")
+    for r in t4["baselines"]:
+        if f"{r['coverage']:.2%}" not in base_t[[ln for ln in base_t].index(
+                next(ln for ln in base_t[2:] if ln.startswith(f"| {r['label']} |")))]:
+            fail(f"T4 baseline coverage out of sync: {r['label']}")
+
+    pos = t4["controls"]["positive"]
+    if not pos["pass"]:
+        fail("T4 positive control did not pass; the detector cannot see a seam")
+    if pos["result"]["recovered_error"] > t4["meta"]["block_chars"]:
+        fail("T4 positive control split error exceeds one block")
+    pos_line = next(ln for ln in part_t[2:] if ln.startswith("| 正控（植入） |"))
+    if f"{pos['result']['separation']:+.1%}" not in pos_line:
+        fail("T4 positive-control separation out of sync")
+    if f"误差 {pos['result']['recovered_error']} 字" not in md:
+        fail("T4 positive-control sentence out of sync")
+
+    for r in t4["partition"]:
+        line = next((ln for ln in part_t[2:] if ln.startswith(f"| {r['id']} |")), None)
+        if line is None:
+            fail(f"T4 partition row missing: {r['id']}")
+        bs = r["best_split"]
+        if bs["split_char"] is None:
+            if "— | — | — | 不通过" not in line:
+                fail(f"T4 {r['id']}: empty split not printed as dashes")
+        elif f"{bs['separation']:+.1%}" not in line:
+            fail(f"T4 {r['id']}: separation out of sync")
+        if r["pass"] != bs["pass"]:
+            fail(f"T4 {r['id']}: pass flag inconsistent with split")
+
+    if t4["verdict"]["passed"]:
+        fail(f"T4: {t4['verdict']['passed']} passed, but the article claims none")
+    if "库内无合本候选" not in md:
+        fail("T4: verdict sentence missing")
+    thr = t4["meta"]["thresholds"]
+    if (f"两侧各≥{thr['min_side_share']:.0%}篇幅" not in md
+            or f"各自≥{thr['side_coverage']:.0%}覆盖" not in md
+            or f"压过交叉配对≥{thr['separation']:.0%}" not in md):
+        fail("T4 threshold sentence out of sync")
+
+    shown = 0
+    for r in t4["partition"]:
+        b = r["best_block"]
+        if not b:
+            continue
+        shown += 1
+        h = cjk(b["head"])
+        if h not in src_of(r["id"]):
+            fail(f"T4 {r['id']}: exhibit head not in candidate")
+        if h not in src_of(b["source"]):
+            fail(f"T4 {r['id']}: exhibit head not in source {b['source']}")
+        if h not in md_cjk:
+            fail(f"T4 {r['id']}: exhibit head not printed")
+    if len(exh_t) - 2 != shown:
+        fail("§17.16 exhibit rows != JSON")
+
+    t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
+    if f"{t293['coverage']:.2%}" not in md:
+        fail("T4 targeted (卷40 vs 願讚) number missing")
+    if "### 17.16 T4" not in md or "### 17.17 未竟" not in md:
+        fail("§17.16–17.17 headings missing")
+    ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
+       f"{shown} exhibits re-verified; no candidate passes")
 
     # --- §17.8 external witnesses: every manifest file must exist with the recorded hash ---
     mf = ROOT / "data" / "references" / "external_manifest.json"
