@@ -2790,6 +2790,14 @@ done(
 - **门禁**：check ✓ · build ✓（85 files）· diff-check ✓；verify_demo 后台跑毕为准。
 
 
+## L.410 · 2026-11-12 · 三语线·ch17 六段收口（verse window）
+
+- **ch17 覆盖**：712 段；seg1 题名块（规范译名）、seg2–3 合译窗、seg4、seg5、seg6–7 合译窗；**7 段覆盖 = 6 段里程碑＋seg7 并入**；页面 5 个展示块。
+- **机制**：`--window N` 合并 2–4 shad 行；译文存首段，覆盖段 `merged_into`；页面跳过覆盖段，显示「合译 段2–3 / 6–7」；`bo_merged` 保留全源。
+- **校验**：verse 窗口按长度/完整性审，不按 shad 数；英文 `!From`→`! From`、外层引号剥离；0 个待校徽。
+- **门禁**：G2.2/G2.3/G2.5 PASS；G2.1 **FAIL=1**（仅 ch18–31 未开工）；G2.4 manual；`verify_demo` 绿。
+- **next**：ch18 六段；M5 校订 backlog。
+
 ## L.411 · 2026-11-12 · 大藏对应 v1.4 关系本体（面 × 算子 × 判）
 
 - **本体**：`relation_ontology.json` 7 面 / 34 算子 / 3 判；每算子强制 `min_evidence`、`forbidden`、`status`、`refs`；12 类图边→facet 映射。
