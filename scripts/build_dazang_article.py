@@ -23,6 +23,7 @@ REGISTRY = ROOT / "data" / "research" / "canon_registry.json"
 ONTOLOGY = ROOT / "data" / "research" / "relation_ontology.json"
 PROBES = ROOT / "data" / "research" / "cross_canon_probes.json"
 IMPLICIT = ROOT / "data" / "research" / "implicit_quotes.json"
+PARAPHRASE = ROOT / "data" / "research" / "paraphrase_probe.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -567,6 +568,72 @@ def table_t6(implicit):
     return "\n".join(out)
 
 
+def table_t7(probe):
+    pairs = probe["pairs"]
+    order = ["A", "B"]
+    out = ["| 对 | 注释 | 所注经 | 品数 | 经文字 | 注疏字 | 长比 | 引文字 | 引用率（中位／最高） | 单条最长 | 链最长 |",
+           "|---|---|---|---:|---:|---:|---:|---:|---|---:|---:|"]
+    for pid in order:
+        p = pairs[pid]
+        st = p["stats"]
+        out.append(
+            f"| {pid} | {esc(p['commentary'])} | {esc(p['sutra'])} | {st['pins']} | "
+            f"{st['sutra_chars']:,} | {st['com_chars']:,} | {st['length_ratio']:.3f} | "
+            f"{st['quoted_chars']:,} | {st['quoted_share_median']:.2%}／{st['quoted_share_max']:.2%} | "
+            f"{st['max_hit']} 字（`{st['max_hit_c_lb']}`） | {st['chain_max_span']} 字 |"
+        )
+    for pid in order:
+        st = pairs[pid]["stats"]
+        out.append("")
+        out.append(f"最长单条引文（{pid}）：`{st['max_hit_c_lb']}`（{st['max_hit']} 字）：「{esc(st['max_hit_head'])}…」")
+    out.append("")
+    out.append("明标节略的用语（同一底本内计数；多义的「不具」「故略」「文略」「此略」已剔除）：")
+    out.append("")
+    out.append("| 用语 | " + " | ".join(order) + " |")
+    out.append("|---|" + "---:|" * len(order))
+    for label in probe["meta"]["markers"]:
+        cells = [str(pairs[pid]["stats"]["markers_by_type"].get(label, 0)) for pid in order]
+        out.append(f"| {esc(label)} | " + " | ".join(cells) + " |")
+    out.append("| **合** | " + " | ".join(f"**{pairs[pid]['stats']['markers_total']}**" for pid in order) + " |")
+    out.append("")
+    out.append("引用率最高的品（各取前三）：")
+    out.append("")
+    out.append("| 对 | 品 | 经文字 | 注疏字 | 长比 | 引用率 |")
+    out.append("|---|---|---:|---:|---:|---:|")
+    for pid in order:
+        for r in pairs[pid]["top"][:3]:
+            out.append(f"| {pid} | {esc(r['title'])} | {r['sutra_chars']:,} | {r['com_chars']:,} | "
+                       f"{r['ratio']:.2f} | {r['quoted_share']:.2%} |")
+    out.append("")
+    out.append("注疏反而短于经文的品（长比最低者；这些才是字面意义上的「节略」）：")
+    out.append("")
+    out.append("| 对 | 品 | 经文字 | 注疏字 | 长比 | 引用率 |")
+    out.append("|---|---|---:|---:|---:|---:|")
+    for pid in order:
+        low = sorted(pairs[pid]["pins"], key=lambda r: r["ratio"])[:3]
+        for r in low:
+            out.append(f"| {pid} | {esc(r['title'])} | {r['sutra_chars']:,} | {r['com_chars']:,} | "
+                       f"{r['ratio']:.2f} | {r['quoted_share']:.2%} |")
+    out.append("")
+    out.append("明标节略例（`lb` 为 CBETA 行号，可回源核对）：")
+    out.append("")
+    for pid in order:
+        p = pairs[pid]
+        for e in p["examples"]:
+            out.append(f"- {pid} `{p['commentary']}` {e['lb']}〔{esc(e['type'])}〕：…{esc(e['ctx'])}…")
+    out.append("")
+    a, b = pairs["A"]["stats"], pairs["B"]["stats"]
+    out.append(
+        f"**判断**：两疏对经文既不压缩也不逐句转述——注疏比经文长 {(a['length_ratio'] - 1) * 100:.1f}%（A）"
+        f"与 {(b['length_ratio'] - 1) * 100:.1f}%（B），逐品引用率中位 {a['quoted_share_median']:.2%}／"
+        f"{b['quoted_share_median']:.2%}，引文点状；多锚点链最长 {a['chain_max_span']}／"
+        f"{b['chain_max_span']} 字，无一跨 120 字，注释从不沿经文连续推进。"
+        f"可复验的「节略」只有明标的那 {a['markers_total']}／{b['markers_total']} 处"
+        f"（略不釋／頌、準前、例類知）——是点状声明，不是整体行为。"
+    )
+    return "\n".join(out)
+
+
 def table_forty(enrich):
     rows = enrich.get("forty", {}).get("batches", [])
     out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
@@ -645,6 +712,7 @@ def main():
     ontology = json.loads(ONTOLOGY.read_text(encoding="utf-8"))
     probes = json.loads(PROBES.read_text(encoding="utf-8")) if PROBES.exists() else {}
     implicit = json.loads(IMPLICIT.read_text(encoding="utf-8"))
+    paraphrase = json.loads(PARAPHRASE.read_text(encoding="utf-8"))
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -666,6 +734,7 @@ def main():
         "d5": table_d5(probes),
         "p1": table_p1(probes),
         "t6": table_t6(implicit),
+        "t7": table_t7(paraphrase),
         "bhumi": table_bhumi(enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),

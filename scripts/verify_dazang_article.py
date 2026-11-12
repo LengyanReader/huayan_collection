@@ -373,7 +373,7 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 未竟" not in md:
+    if "### 17.14 T6" not in md or "### 17.16 未竟" not in md:
         fail("§17.14–17.15 headings missing")
 
     def rows_in(block: str) -> list[str]:
@@ -394,6 +394,56 @@ def main() -> int:
     if len(sweep_rows) != len(imp["meta"]["sweep"]):
         fail("§17.14 sweep table rows != meta.sweep")
     ok(f"§17.14 T6: {sum(len(imp['pairs'][k]['examples_unmarked']) for k in ('A','B'))} examples re-verified in both texts")
+
+    # --- §17.15 T7: 品级长度比、引用率、节略用语、锚点链 ---
+    t7_path = ROOT / "data" / "research" / "paraphrase_probe.json"
+    if not t7_path.exists():
+        fail("paraphrase_probe.json missing")
+    t7 = json.loads(t7_path.read_text(encoding="utf-8"))
+    for key, meta in t7["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"T7 source hash changed: {key}")
+    for pid in ("A", "B"):
+        p = t7["pairs"][pid]
+        st = p["stats"]
+        if sum(st["markers_by_type"].values()) != st["markers_total"]:
+            fail(f"T7 {pid}: marker counts do not add up")
+        if sum(r["quoted_chars"] for r in p["pins"]) != st["quoted_chars"]:
+            fail(f"T7 {pid}: per-品 quoted chars != total")
+        if sum(r["quoted_hits"] for r in p["pins"]) != st["hits"]:
+            fail(f"T7 {pid}: per-品 hit counts != total")
+        if sum(r["sutra_chars"] for r in p["pins"]) != st["sutra_chars"]:
+            fail(f"T7 {pid}: per-品 sutra chars != total")
+        q = cjk(st["max_hit_head"])
+        if q not in imp_src[p["commentary"]] or q not in imp_src[p["sutra"]]:
+            fail(f"T7 {pid}: longest hit not found in both texts")
+        if q not in md_cjk:
+            fail(f"T7 {pid}: longest hit not printed in article")
+        for e in p["examples"]:
+            ec = cjk(e["ctx"])
+            if ec not in md_cjk:
+                fail(f"T7 {pid}: example not printed: {e['lb']}")
+            if ec not in imp_src[p["commentary"]]:
+                fail(f"T7 {pid}: example not found in commentary: {e['lb']}")
+    a, b = t7["pairs"]["A"]["stats"], t7["pairs"]["B"]["stats"]
+    if a["chain_spans_ge_120"] or b["chain_spans_ge_120"]:
+        if "无一跨 120 字" in md:
+            fail("T7: article claims no chain >= 120 but JSON has one")
+    elif "无一跨 120 字" not in md:
+        fail("T7: article should state that no chain spans 120")
+    if f"{a['chain_max_span']}／{b['chain_max_span']} 字" not in md:
+        fail("T7: chain span sentence out of sync")
+    t7_block = grab("t7")
+    t7_tables = [ln for ln in t7_block.splitlines() if ln.startswith("| 对 |")]
+    if len(t7_tables) != 3:
+        fail("§17.15 should print three tables with a 对 column")
+    star = [ln for ln in t7_block.splitlines() if ln.startswith("| **合** |")]
+    if len(star) != 1 or f"**{a['markers_total']}**" not in star[0]:
+        fail("§17.15 marker total row out of sync")
+    if "### 17.15 T7" not in md or "### 17.16 未竟" not in md:
+        fail("§17.15–17.16 headings missing")
+    ok(f"§17.15 T7: {a['markers_total']}+{b['markers_total']} 节略用语, "
+       f"{len(t7['pairs']['A']['examples']) + len(t7['pairs']['B']['examples'])} 例 re-verified")
 
     # --- §17.8 external witnesses: every manifest file must exist with the recorded hash ---
     mf = ROOT / "data" / "references" / "external_manifest.json"
