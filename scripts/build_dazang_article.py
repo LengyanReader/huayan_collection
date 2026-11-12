@@ -712,6 +712,27 @@ def table_t4(probe):
                % (probe["targeted"][0]["lb"], f"{probe['targeted'][0]['chars_a']:,}",
                   probe["targeted"][0]["coverage"] * 100, probe["targeted"][1]["coverage"] * 100))
     out.append("")
+    # 六、经论合编（卍续藏库外档 X223）
+    x = next(r for r in probe["partition"] if r["id"] == "X223")
+    hl = x["helun"]
+    xs = next(r for r in probe["screen"] if r["id"] == "X223")
+    out.append("**六、经论合编**（卍续藏库外档）：志寧把经文「釐入」李通玄《合論》。"
+               "这是合编形态的库内实例，但它不是本节问的「两段拼合」——逐块分类可见第三种形态：")
+    out.append("")
+    out.append("| 量 | 值 | 值 | 值 |")
+    out.append("|---|---|---|---|")
+    out.append(f"| 整体覆盖率 | →八十本 {hl['cov_overall']['T279']:.1%} | "
+               f"→李通玄论 {hl['cov_overall']['T1739']:.1%} | "
+               f"→六十本 {xs['cov']['T278']:.1%} |")
+    out.append(f"| 块级分类（1,000 字块，共 {x['blocks']} 块） | 经块 {hl['labels']['经块']} | "
+               f"论块 {hl['labels']['论块']} | 双高 {hl['labels']['双高']}／双低 {hl['labels']['双低']}／无涉 {hl['labels']['无涉']} |")
+    out.append("")
+    out.append(f"经论**交错 {hl['transitions']} 次**（最长同型段 {hl['longest_run']} 块）：先一段长的论正文，"
+               "此后经文按章段厘入论中，经块与论块高频交替。逐段嵌入下不存在「两侧各贴一个源」的切点——"
+               f"分离度 {x['best_split']['separation']:+.1%}，与通篇近文的 T286 同属不可分离，"
+               "但成因不同：T286 是一个源到底，合論是两个源编织。"
+               "「两本合成一书」在藏内确有其例，只是形态为**章段级经论合编**，而非「两经各取半部」的拼合本。")
+    out.append("")
     v = probe["verdict"]
     out.append(f"**判断**：{v['screen_texts']} 部受检于筛查、{v['candidates']} 部进入分块检验，"
                f"通过 {len(v['passed'])} 部——**{v['statement']}**")

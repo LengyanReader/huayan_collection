@@ -35,6 +35,7 @@ import json
 import re
 import sys
 from datetime import date
+from itertools import groupby
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -63,15 +64,28 @@ FILES = {
     "T302": "T10n0302.xml",
     "T1735": "T35n1735.xml",
     "T1736": "T36n1736.xml",
+    "T1739": "T36n1739.xml",
 }
 for n in range(280, 310):
     FILES[f"T{n}"] = f"T10n{n:04d}.xml"
 
+# 卍續藏庫外檔（§17.8 入庫，路徑不同）
+XFILES = {
+    "X223": "data/references/cbeta_x/X04n0223.xml",
+}
+
 # 两个注疏候选＝负控：若「经疏合刊／疏钞合刊」真的存在，它们最像。
+# X223＝库外第一试金石：志寧「釐經合論」——经文被逐段厘入李通玄论。
 PARTITION_EXTRA = [
     ("T1735", ["T279", "T278"], "經疏合刊：疏文里是否整段插入經文"),
     ("T1736", ["T1735", "T279"], "疏钞合刊：钞文里是否整段重刊疏文"),
+    ("X223", ["T279", "T1739"], "经论合编：志寧釐經入論，是逐段嵌入还是两段拼合"),
 ]
+EXTRA_TITLES = {
+    "T1735": "大方廣佛華嚴經疏",
+    "T1736": "大方廣佛華嚴經隨疏演義鈔",
+    "X223": "華嚴經合論（李通玄造論・志寧釐經合論）",
+}
 TARGETED = [
     ("T293", "T297", "四十華嚴卷40（普賢行願品）是否取自《普賢菩薩行願讚》"),
 ]
@@ -214,7 +228,8 @@ def main() -> int:
 
     def doc_of(k: str) -> Doc:
         if k not in docs:
-            docs[k] = Doc(k, CBETA / FILES[k])
+            p = (ROOT / XFILES[k]) if k in XFILES else (CBETA / FILES[k])
+            docs[k] = Doc(k, p)
         return docs[k]
 
     def gs_of(k: str) -> set[str]:
@@ -251,8 +266,9 @@ def main() -> int:
         "verdict": {},
     }
 
-    needed = ["T278", "T279", "T293", "T297", "T300", "T302", "T1735", "T1736"]
+    needed = ["T278", "T279", "T293", "T297", "T300", "T302", "T1735", "T1736", "T1739"]
     needed += [f"T{n}" for n in range(280, 310)]
+    needed += list(XFILES)
     for k in sorted(set(needed)):
         d = doc_of(k)
         result["meta"]["sources"][k] = {
@@ -304,7 +320,7 @@ def main() -> int:
         d = doc_of(k)
         result["screen"].append({
             "id": k,
-            "title": {"T1735": "大方廣佛華嚴經疏", "T1736": "大方廣佛華嚴經隨疏演義鈔"}[k],
+            "title": EXTRA_TITLES[k],
             "juan": len(re.findall(r'<milestone n="\d+" unit="juan"/>', d.raw)),
             "chars": len(d.norm),
             "xref": {},
@@ -326,8 +342,7 @@ def main() -> int:
         row = meta.get(k, {})
         result["partition"].append({
             "id": k,
-            "title": row.get("title_cbeta") or {
-                "T1735": "大方廣佛華嚴經疏", "T1736": "大方廣佛華嚴經隨疏演義鈔"}.get(k, k),
+            "title": row.get("title_cbeta") or EXTRA_TITLES.get(k, k),
             "chars": len(d.norm),
             "sources": srcs,
             "blocks": len(rows),
@@ -350,6 +365,39 @@ def main() -> int:
             "separation": row["best_split"]["separation"],
             "pass": row["pass"],
         })
+
+    # --- X223 逐段嵌入检验：块级分类与经/论交错次数 ---
+    # 逐段嵌入的签名是高频交错；两段拼合的签名是两个长 run。
+    xrow = next(r for r in result["partition"] if r["id"] == "X223")
+    dx = doc_of("X223")
+    sets_x = {s: gs_of(s) for s in ("T279", "T1739")}
+    xrows = profile(dx.norm, sets_x)
+    labels = []
+    for r in xrows:
+        c9, cl = r["cov"]["T279"], r["cov"]["T1739"]
+        if c9 >= SIDE_COVERAGE and cl >= SIDE_COVERAGE:
+            lab = "双高"
+        elif c9 >= SIDE_COVERAGE:
+            lab = "经块"
+        elif cl >= SIDE_COVERAGE:
+            lab = "论块"
+        elif max(c9, cl) >= 0.10:
+            lab = "双低"
+        else:
+            lab = "无涉"
+        labels.append(lab)
+    runs = [(k, sum(1 for _ in g)) for k, g in groupby(labels)]
+    xrow["helun"] = {
+        "labels": {k: labels.count(k) for k in ("经块", "论块", "双高", "双低", "无涉")},
+        "runs": len(runs),
+        "transitions": len(runs) - 1,
+        "longest_run": max(n for _, n in runs),
+        "cov_overall": {"T279": round(coverage(dx.norm, gs_of("T279")), 4),
+                        "T1739": round(coverage(dx.norm, gs_of("T1739")), 4)},
+        "runs_head": [list(x) for x in runs[:24]],
+    }
+    print(f"X223 helun: labels={xrow['helun']['labels']} runs={len(runs)} "
+          f"transitions={len(runs)-1} longest={xrow['helun']['longest_run']}")
 
     # --- 基线：什么才算「像」 ---
     for x, y, label in BASELINES:
@@ -377,12 +425,20 @@ def main() -> int:
     })
 
     passed = [r["id"] for r in result["partition"] if r["pass"]]
+    xrow = next(r for r in result["partition"] if r["id"] == "X223")
+    hl = xrow["helun"]
+    if hl["transitions"] >= 6:
+        form = (f"经块 {hl['labels']['经块']}／论块 {hl['labels']['论块']}／双高 {hl['labels']['双高']}，"
+                f"经论交错 {hl['transitions']} 次——逐段嵌入，非两段拼合")
+    else:
+        form = f"块级交错仅 {hl['transitions']} 次，形态偏两段拼合"
     result["verdict"] = {
         "candidates": len(result["partition"]),
         "passed": passed,
         "screen_texts": len(result["screen"]),
-        "statement": ("库内无合本候选：无一部可通过分块来源分离检验。" if not passed
-                      else f"通不过预期之外：{passed}"),
+        "statement": (f"大正藏 32 部无合本候选：无一部可通过分块来源分离检验；"
+                      f"卍续藏《合論》是库内外的第一个合编实例，形态为{form}。" if not passed
+                      else f"通过者：{passed}；合論形态：{form}"),
     }
 
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

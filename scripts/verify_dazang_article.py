@@ -525,8 +525,21 @@ def main() -> int:
 
     if t4["verdict"]["passed"]:
         fail(f"T4: {t4['verdict']['passed']} passed, but the article claims none")
-    if "库内无合本候选" not in md:
+    if "无一部可通过分块来源分离检验" not in md:
         fail("T4: verdict sentence missing")
+    x223 = next((r for r in t4["partition"] if r["id"] == "X223"), None)
+    if x223 is None:
+        fail("T4: X223 helun candidate missing")
+    hl = x223["helun"]
+    if x223["pass"]:
+        fail("T4: X223 unexpectedly passes two-segment separation (逐段嵌入不该有切点)")
+    for frag in (f"经论**交错 {hl['transitions']} 次**",
+                 f"经块 {hl['labels']['经块']}", f"论块 {hl['labels']['论块']}",
+                 f"→八十本 {hl['cov_overall']['T279']:.1%}"):
+        if frag not in md:
+            fail(f"T4: helun figure missing in article: {frag}")
+    if "逐段嵌入" not in md or "两段拼合" not in md:
+        fail("T4: helun form wording missing")
     thr = t4["meta"]["thresholds"]
     if (f"两侧各≥{thr['min_side_share']:.0%}篇幅" not in md
             or f"各自≥{thr['side_coverage']:.0%}覆盖" not in md
