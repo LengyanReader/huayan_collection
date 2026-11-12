@@ -174,6 +174,8 @@ def pick(hits: list[dict], n: int, distinct_only: bool) -> list[dict]:
     pool = [h for h in hits if h["kind"] == "暗引" and (h["distinct"] or not distinct_only)]
     # 年號、譯記、干支一類的相同段落是史料共用，不是經文暗引
     pool = [h for h in pool if not re.search(r"[0-9０-９]|歲次|義熙|年歲", h["text"])]
+    # 兩本同收的卷首序（如 T279/T234 卷首武周序）不算注經復用，示例不取經側序區
+    pool = [h for h in pool if h["s_line"] >= "0004a00"]
     pool.sort(key=lambda h: -h["length"])
     return [{k: h[k] for k in ("text", "length", "c_line", "s_line", "ctx")} for h in pool[:n]]
 
@@ -187,6 +189,7 @@ def main() -> int:
     pairs = [
         ("A", "T1735", "T279", "澄觀《華嚴經疏》 vs 八十華嚴"),
         ("B", "T1733", "T278", "法藏《探玄記》 vs 六十華嚴"),
+        ("C", "X234", "T279", "淨源《華嚴經疏注》（澄觀疏＋淨源注合體） vs 八十華嚴"),
     ]
     files = {
         "T1735": "T35n1735.xml",
@@ -194,11 +197,13 @@ def main() -> int:
         "T1733": "T35n1733.xml",
         "T278": "T09n0278.xml",
     }
+    xfiles = {"X234": "data/references/cbeta_x/X07n0234.xml"}
     docs: dict[str, Doc] = {}
     for _, c, s, _ in pairs:
         for key in (c, s):
             if key not in docs:
-                docs[key] = Doc(key, CBETA / files[key])
+                p = (ROOT / xfiles[key]) if key in xfiles else (CBETA / files[key])
+                docs[key] = Doc(key, p)
 
     result = {
         "meta": {

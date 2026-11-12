@@ -1,6 +1,6 @@
 {
   "meta": {
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "n_main": 12,
     "sweep": [
       8,
@@ -26,6 +26,10 @@
       "T278": {
         "path": "data/references/cbeta/T09n0278.xml",
         "sha256": "a2bfcee6213f9a02012d8c6227ab125e2924a97619b7a3a89d6cf515410077b5"
+      },
+      "X234": {
+        "path": "data/references/cbeta_x/X07n0234.xml",
+        "sha256": "53362854246154ede1f7db48e030c902f2d4257a9badefb644127991ead1cbd7"
       }
     }
   },
@@ -351,6 +355,168 @@
           "c_line": "0380a28",
           "s_line": "0639c05",
           "ctx": "間品〉十明相攝\n者，彼文約所知明了，非約業用自在。唯彼\n第四"
+        }
+      ]
+    },
+    "C": {
+      "label": "淨源《華嚴經疏注》（澄觀疏＋淨源注合體） vs 八十華嚴",
+      "commentary": "X234",
+      "sutra": "T279",
+      "stats": {
+        "hits": 1925,
+        "matched_chars": 30393,
+        "sutra_chars": 593598,
+        "coverage": 0.0512,
+        "marked": {
+          "hits": 197,
+          "chars": 3331
+        },
+        "unmarked": {
+          "hits": 1728,
+          "chars": 27062
+        },
+        "unmarked_distinct": {
+          "hits": 1503,
+          "chars": 23815
+        },
+        "max_length": 128,
+        "median_length": 15,
+        "ge_40": 9
+      },
+      "sweep": {
+        "8": {
+          "hits": 7965,
+          "matched_chars": 82624,
+          "coverage": 0.1392,
+          "marked": {
+            "hits": 668,
+            "chars": 7451
+          },
+          "unmarked": {
+            "hits": 7297,
+            "chars": 75173
+          },
+          "unmarked_distinct": {
+            "hits": 5490,
+            "chars": 56926
+          },
+          "ge_40": 9
+        },
+        "10": {
+          "hits": 3696,
+          "matched_chars": 48042,
+          "coverage": 0.0809,
+          "marked": {
+            "hits": 341,
+            "chars": 4781
+          },
+          "unmarked": {
+            "hits": 3355,
+            "chars": 43261
+          },
+          "unmarked_distinct": {
+            "hits": 2621,
+            "chars": 34805
+          },
+          "ge_40": 9
+        },
+        "12": {
+          "hits": 1925,
+          "matched_chars": 30393,
+          "coverage": 0.0512,
+          "marked": {
+            "hits": 197,
+            "chars": 3331
+          },
+          "unmarked": {
+            "hits": 1728,
+            "chars": 27062
+          },
+          "unmarked_distinct": {
+            "hits": 1503,
+            "chars": 23815
+          },
+          "ge_40": 9
+        },
+        "16": {
+          "hits": 953,
+          "matched_chars": 18027,
+          "coverage": 0.0304,
+          "marked": {
+            "hits": 106,
+            "chars": 2140
+          },
+          "unmarked": {
+            "hits": 847,
+            "chars": 15887
+          },
+          "unmarked_distinct": {
+            "hits": 785,
+            "chars": 14826
+          },
+          "ge_40": 9
+        }
+      },
+      "examples_marked": [
+        {
+          "text": "無量百千億那由他劫行六波羅蜜修習種種菩提分法若未聞此如來不思議大威德法門或時聞已不信不解不順不入不得名為真實菩薩以不能生如來家故若",
+          "length": 65,
+          "c_line": "0044b17",
+          "s_line": "0277c15",
+          "ctx": "不銷」等。二、令起行，成證入故。〈出現品〉又云：\n「設有菩薩"
+        },
+        {
+          "text": "菩薩摩訶薩應知自心念念常有佛成正覺何以故諸佛如來不離此心成正覺故如自心一切眾生心亦復如是悉有",
+          "length": 46,
+          "c_line": "0076b03",
+          "s_line": "0275b23",
+          "ctx": "遺。\n佛尚在於心中，況所說教非眾生心現？故〈出現品〉\n云：「"
+        },
+        {
+          "text": "如來成正覺時於其身中普見一切眾生成正覺乃至普見一切眾生入涅槃皆同一性所謂無性",
+          "length": 38,
+          "c_line": "0064b06",
+          "s_line": "0275a19",
+          "ctx": "即\n徧法界。由上二義互該徹故，皆同一性。故〈出現品〉\n云：「"
+        }
+      ],
+      "examples_unmarked": [
+        {
+          "text": "爾時善財童子恭敬合掌却住一面以偈讚曰我善財得見如是大神力其心生歡喜說偈而讚歎",
+          "length": 38,
+          "c_line": "0627a01",
+          "s_line": "0378c22",
+          "ctx": "不捨其自在神力。\n△三、口以偈讚二十偈半，分二：初、偈總。\n"
+        },
+        {
+          "text": "爾時喜目觀察眾生主夜神以頌答曰我念過去世過於剎塵劫剎號摩尼光劫名寂靜音",
+          "length": 35,
+          "c_line": "0623b12",
+          "s_line": "0375c13",
+          "ctx": "心久近，十：初、寂靜音劫，正是發心之時。文\n六：初、總標。\n"
+        },
+        {
+          "text": "此普眼法門一品中一門一門中一法一法中一義一義中一句不得少分何況能盡",
+          "length": 33,
+          "c_line": "0083a02",
+          "s_line": "0336a07",
+          "ctx": "\n不傳之。五、普眼經，即海雲所持，以大海量墨，須彌\n聚筆，書"
+        }
+      ],
+      "examples_unmarked_any": [
+        {
+          "text": "爾時善財童子恭敬合掌却住一面以偈讚曰我善財得見如是大神力其心生歡喜說偈而讚歎",
+          "length": 38,
+          "c_line": "0627a01",
+          "s_line": "0378c22",
+          "ctx": "不捨其自在神力。\n△三、口以偈讚二十偈半，分二：初、偈總。\n"
+        },
+        {
+          "text": "爾時普賢菩薩欲重宣其義承佛威力而說頌言華藏世界海法界等無別莊嚴極清淨安住於",
+          "length": 37,
+          "c_line": "0284b06",
+          "s_line": "0051b13",
+          "ctx": "建立之處。△二、重頌，總有一百一偈，分二：初、華\n藏自體。\n"
         }
       ]
     }

@@ -15,6 +15,7 @@ import re
 from pathlib import Path
 
 from build_dazang_graph import build_graph, render_citations, render_radial, render_spine
+from build_conflation_probe import EXTRA_TITLES
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "research" / "dazang_mapping_verification.json"
@@ -534,7 +535,7 @@ def table_p1(probes):
 
 def table_t6(implicit):
     pairs = implicit["pairs"]
-    order = ["A", "B"]
+    order = ["A", "B", "C"]
     out = ["| 对 | 注释 | 所注经 | 12 字长句 | 明引 | 暗引 | 暗引独见 | 最长 | ≥40 字 | 长句字／经文 |",
            "|---|---|---|---:|---:|---:|---:|---:|---:|---:|"]
     for pid in order:
@@ -549,14 +550,18 @@ def table_t6(implicit):
     out.append("")
     out.append("门槛敏感度（同一方法，只改 N）：")
     out.append("")
-    out.append("| N | A 长句 | A 覆盖 | B 长句 | B 覆盖 |")
-    out.append("|---:|---:|---:|---:|---:|")
+    sweep_pids = [p for p in order if "sweep" in pairs[p]]
+    head = "| N |" + "".join(f" {p} 长句 | {p} 覆盖 |" for p in sweep_pids)
+    out.append(head)
+    out.append("|---:|" + "---:|---:|" * len(sweep_pids))
     for n in implicit["meta"]["sweep"]:
-        a = pairs["A"]["sweep"][str(n)]
-        b = pairs["B"]["sweep"][str(n)]
-        out.append(f"| {n} | {a['hits']} | {a['coverage']:.2%} | {b['hits']} | {b['coverage']:.2%} |")
+        cells = [str(n)]
+        for p in sweep_pids:
+            s = pairs[p]["sweep"][str(n)]
+            cells += [str(s["hits"]), f"{s['coverage']:.2%}"]
+        out.append("| " + " | ".join(cells) + " |")
     out.append("")
-    out.append("暗引示例（两侧行号均为 CBETA `lb`，可回源核对）：")
+    out.append("暗引示例（两侧行号均为 CBETA `lb`，可回源核对；两本同收的卷首序不算注经复用，示例不取序区）：")
     out.append("")
     for pid in order:
         p = pairs[pid]
@@ -566,7 +571,10 @@ def table_t6(implicit):
                 f"（{e['length']} 字）：「{esc(e['text'])}」"
             )
     out.append("")
-    out.append("**判断**：两部注疏对自宗经的长句复用都是点状的，且以明引为主；暗引是少数，成因多为「已标品名、句下省引号」。")
+    out.append("**判断**：唐疏（A）与唐钞（B）对自宗经的长句复用都是点状的，且以明引为主；"
+               "暗引是少数，成因多为「已标品名、句下省引号」。宋注（C）是另一种体例——"
+               "疏注合体把经文嵌进注层，长句复用近十倍于唐疏，且九成无引号："
+               "注经体的「引」不标明引，是格式的不同，不是袭用的证据。")
     return "\n".join(out)
 
 
@@ -712,26 +720,28 @@ def table_t4(probe):
                % (probe["targeted"][0]["lb"], f"{probe['targeted'][0]['chars_a']:,}",
                   probe["targeted"][0]["coverage"] * 100, probe["targeted"][1]["coverage"] * 100))
     out.append("")
-    # 六、经论合编（卍续藏库外档 X223）
-    x = next(r for r in probe["partition"] if r["id"] == "X223")
-    hl = x["helun"]
-    xs = next(r for r in probe["screen"] if r["id"] == "X223")
-    out.append("**六、经论合编**（卍续藏库外档）：志寧把经文「釐入」李通玄《合論》。"
-               "这是合编形态的库内实例，但它不是本节问的「两段拼合」——逐块分类可见第三种形态：")
+    # 六、经文合编（卍续藏库外档 X223／X240a／X240b）
+    hls = [r for r in probe["partition"] if r["id"] in ("X223", "X240a", "X240b")]
+    out.append("**六、经文合编**（卍续藏库外档）：志寧把经文「釐入」李通玄《合論》，"
+               "德清《綱要》把经文与澄观疏义合编。两例都不是本节问的「两段拼合」——"
+               "块级分类（1,000 字块）见出第三种形态：")
     out.append("")
-    out.append("| 量 | 值 | 值 | 值 |")
-    out.append("|---|---|---|---|")
-    out.append(f"| 整体覆盖率 | →八十本 {hl['cov_overall']['T279']:.1%} | "
-               f"→李通玄论 {hl['cov_overall']['T1739']:.1%} | "
-               f"→六十本 {xs['cov']['T278']:.1%} |")
-    out.append(f"| 块级分类（1,000 字块，共 {x['blocks']} 块） | 经块 {hl['labels']['经块']} | "
-               f"论块 {hl['labels']['论块']} | 双高 {hl['labels']['双高']}／双低 {hl['labels']['双低']}／无涉 {hl['labels']['无涉']} |")
+    out.append("| 候选 | 合编 | 块数 | 经块 | 义块 | 双高 | 交错 | 最长同型 | 整体覆盖 →经／→义源 | 分离度 |")
+    out.append("|---|---|---:|---:|---:|---:|---:|---:|---|---:|")
+    for r in hls:
+        hl = r["helun"]
+        s1, s2 = r["sources"]
+        out.append(f"| {r['id']} | {esc(EXTRA_TITLES[r['id']])} | {r['blocks']} | "
+                   f"{hl['labels']['经块']} | {hl['labels']['义块']} | {hl['labels']['双高']} | "
+                   f"{hl['transitions']} | {hl['longest_run']} | "
+                   f"{hl['cov_overall'][s1]:.1%}／{hl['cov_overall'][s2]:.1%} | "
+                   f"{r['best_split']['separation']:+.1%} |")
     out.append("")
-    out.append(f"经论**交错 {hl['transitions']} 次**（最长同型段 {hl['longest_run']} 块）：先一段长的论正文，"
-               "此后经文按章段厘入论中，经块与论块高频交替。逐段嵌入下不存在「两侧各贴一个源」的切点——"
-               f"分离度 {x['best_split']['separation']:+.1%}，与通篇近文的 T286 同属不可分离，"
-               "但成因不同：T286 是一个源到底，合論是两个源编织。"
-               "「两本合成一书」在藏内确有其例，只是形态为**章段级经论合编**，而非「两经各取半部」的拼合本。")
+    out.append(f"经论**交错 {hls[0]['helun']['transitions']} 次**（合論；最长同型段 {hls[0]['helun']['longest_run']} 块＝卷首论正文），"
+               f"綱要两档交错 {hls[1]['helun']['transitions']}／{hls[2]['helun']['transitions']} 次——"
+               "经文按章段厘入，经块与义块高频交替。逐段嵌入下不存在「两侧各贴一个源」的切点，"
+               "与通篇近文的 T286 同属不可分离，但成因不同：T286 是一个源到底，合編是两个源编织。"
+               "「两本合成一书」在藏内确有其例，形态为**章段级逐段嵌入**，而非「两经各取半部」的拼合本。")
     out.append("")
     v = probe["verdict"]
     out.append(f"**判断**：{v['screen_texts']} 部受检于筛查、{v['candidates']} 部进入分块检验，"

@@ -349,14 +349,12 @@ def main() -> int:
         return re.sub(r"[^\u4e00-\u9fff]", "", text)
 
     imp_src = {}
-    for key, fn in (("T1735", "T35n1735.xml"), ("T279", "T10n0279.xml"),
-                    ("T1733", "T35n1733.xml"), ("T278", "T09n0278.xml")):
-        imp_src[key] = cjk((ROOT / "data" / "references" / "cbeta" / fn).read_text(encoding="utf-8"))
-    md_cjk = cjk(md)
     for key, meta in imp["meta"]["sources"].items():
         if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
             fail(f"T6 source hash changed: {key}")
-    for pid in ("A", "B"):
+        imp_src[key] = cjk((ROOT / meta["path"]).read_text(encoding="utf-8"))
+    md_cjk = cjk(md)
+    for pid in imp["pairs"]:
         p = imp["pairs"][pid]
         st = p["stats"]
         if st["marked"]["hits"] + st["unmarked"]["hits"] != st["hits"]:
@@ -393,7 +391,7 @@ def main() -> int:
     sweep_rows = [ln for ln in t6_block.splitlines() if re.match(r"^\| \d+ \|", ln)]
     if len(sweep_rows) != len(imp["meta"]["sweep"]):
         fail("§17.14 sweep table rows != meta.sweep")
-    ok(f"§17.14 T6: {sum(len(imp['pairs'][k]['examples_unmarked']) for k in ('A','B'))} examples re-verified in both texts")
+    ok(f"§17.14 T6: {sum(len(p['examples_unmarked']) for p in imp['pairs'].values())} examples re-verified in both texts")
 
     # --- §17.15 T7: 品级长度比、引用率、节略用语、锚点链 ---
     t7_path = ROOT / "data" / "research" / "paraphrase_probe.json"
@@ -530,14 +528,25 @@ def main() -> int:
     x223 = next((r for r in t4["partition"] if r["id"] == "X223"), None)
     if x223 is None:
         fail("T4: X223 helun candidate missing")
-    hl = x223["helun"]
-    if x223["pass"]:
-        fail("T4: X223 unexpectedly passes two-segment separation (逐段嵌入不该有切点)")
-    for frag in (f"经论**交错 {hl['transitions']} 次**",
-                 f"经块 {hl['labels']['经块']}", f"论块 {hl['labels']['论块']}",
-                 f"→八十本 {hl['cov_overall']['T279']:.1%}"):
-        if frag not in md:
-            fail(f"T4: helun figure missing in article: {frag}")
+    for hid in ("X223", "X240a", "X240b"):
+        hr = next((r for r in t4["partition"] if r["id"] == hid), None)
+        if hr is None or "helun" not in hr:
+            fail(f"T4: helun candidate missing: {hid}")
+        if hr["pass"]:
+            fail(f"T4: {hid} unexpectedly passes two-segment separation (逐段嵌入不该有切点)")
+        hl = hr["helun"]
+        row = next((ln for ln in md.splitlines()
+                    if ln.startswith(f"| {hid} |") and len(ln.split("|")) == 12), None)
+        if row is None:
+            fail(f"T4: helun table row missing: {hid}")
+        cells = [c.strip() for c in row.split("|")]
+        want = [str(hr["blocks"]), str(hl["labels"]["经块"]), str(hl["labels"]["义块"]),
+                str(hl["labels"]["双高"]), str(hl["transitions"]), str(hl["longest_run"]),
+                f"{hl['cov_overall'][hr['sources'][0]]:.1%}／{hl['cov_overall'][hr['sources'][1]]:.1%}",
+                f"{hr['best_split']['separation']:+.1%}"]
+        got = cells[3:11]
+        if got != want:
+            fail(f"T4: helun row out of sync: {hid} got={got} want={want}")
     if "逐段嵌入" not in md or "两段拼合" not in md:
         fail("T4: helun form wording missing")
     thr = t4["meta"]["thresholds"]
