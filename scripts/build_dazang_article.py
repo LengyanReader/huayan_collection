@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "research" / "dazang_mapping_verification.json"
 ENRICH = ROOT / "data" / "research" / "dazang_enrichment.json"
 REGISTRY = ROOT / "data" / "research" / "canon_registry.json"
+ONTOLOGY = ROOT / "data" / "research" / "relation_ontology.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -402,6 +403,68 @@ def table_canon_registry(reg):
     return "\n".join(out)
 
 
+STATUS_ZH = {"done": "已做", "partial": "部分", "none": "未做"}
+FACET_ZH = {"M": "物质载体", "T": "文本", "D": "义理", "P": "修行",
+            "S": "社会史", "R": "接受传播", "C": "比较类型"}
+
+
+def table_operators(ont):
+    """§17.3 — all operators, grouped by facet, straight from the ontology."""
+    out = ["| 算子 | 面 | 问法 | 判 | 最低证据 | 越界禁令 | 本文 | 出处 |",
+           "|---|---|---|---|---|---|---|---|"]
+    for o in ont["operators"]:
+        refs = o.get("refs") or "—"
+        out.append("| {i} {z} | {f} | {a} | {v} | {e} | {x} | {s} | {r} |".format(
+            i=esc(o["id"]), z=esc(o["zh"]), f=esc(o["facet"]),
+            a=esc(o["ask"]), v=esc(o["verdict"]), e=esc(o["min_evidence"]),
+            x=esc(o["forbidden"]), s=STATUS_ZH.get(o["status"], o["status"]), r=esc(refs)))
+    out.append("")
+    out.append("「本文」栏是**覆盖状态**，不是价值判断：`未做` 的格子显式留白，比含糊带过可信。")
+    return "\n".join(out)
+
+
+def table_audit(ont):
+    """§17.4 — coverage matrix; counts are computed, never typed by hand."""
+    ops = ont["operators"]
+    out = ["| 面 | 面名 | 算子 | 已做 | 部分 | 未做 | 覆盖率 | 未做／部分算子 |",
+           "|---|---|---:|---:|---:|---:|---:|---|"]
+    tot = {"done": 0, "partial": 0, "none": 0}
+    for f in ont["facets"]:
+        mine = [o for o in ops if o["facet"] == f["id"]]
+        c = {k: sum(1 for o in mine if o["status"] == k) for k in tot}
+        for k in tot:
+            tot[k] += c[k]
+        score = c["done"] + 0.5 * c["partial"]
+        gaps = [f'{o["id"]} {o["zh"]}' for o in mine if o["status"] != "done"]
+        out.append(f'| {f["id"]} | {esc(f["name"])} | {len(mine)} | {c["done"]} | {c["partial"]} | {c["none"]} '
+                   f'| {score / len(mine) * 100:.0f}% | {esc("、".join(gaps)) if gaps else "—"} |')
+    score = tot["done"] + 0.5 * tot["partial"]
+    out.append(f'| **合** | — | **{len(ops)}** | **{tot["done"]}** | **{tot["partial"]}** | **{tot["none"]}** '
+               f'| **{score / len(ops) * 100:.0f}%** | — |')
+    out.append("")
+    out.append("口径：`已做`=1、`部分`=0.5、`未做`=0；覆盖率＝加权和÷该面算子数。"
+               f"全书加权覆盖 {score:g}/{len(ops)}＝{score / len(ops) * 100:.1f}%。"
+               "此表由 `data/research/relation_ontology.json` 直接生成，手改无效。")
+    return "\n".join(out)
+
+
+def table_edges(ont):
+    """§4.5 — graph edge types with the facet each one belongs to."""
+    ge = ont.get("graph_edges", {})
+    order = ["contains", "contains_60", "parallel", "translation", "related", "belongs",
+             "unique", "survives", "cites", "cites_class", "sums_to", "contains_part"]
+    out = ["| 边型 | 方向 | 含义 | 线型 | 面 | 级 |", "|---|---|---|---|---|---|"]
+    for k in order:
+        v = ge[k]
+        out.append(f'| `{k}` | {esc(v["dir"])} | {esc(v["meaning"])} | {esc(v["line"])} '
+                   f'| {v["facet"]} | {esc(v["grade"])} |')
+    out.append("")
+    out.append(f'> **边型共 {len(ge)} 类**（上表 11 行，其中 `cites`／`cites_class` 为两类）。'
+               "「面」按 §17.1 的七面标注：M 物质载体、T 文本、D 义理、P 修行、S 社会史、R 接受传播、C 比较类型。"
+               "`sums_to` 与 `contains_part` 只在数据层出现。")
+    return "\n".join(out)
+
+
 def table_forty(enrich):
     rows = enrich.get("forty", {}).get("batches", [])
     out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
@@ -477,6 +540,7 @@ def main():
     graph = build_graph()
     enrich = json.loads(ENRICH.read_text(encoding="utf-8")) if ENRICH.exists() else {}
     registry = json.loads(REGISTRY.read_text(encoding="utf-8")) if REGISTRY.exists() else {"rows": []}
+    ontology = json.loads(ONTOLOGY.read_text(encoding="utf-8"))
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -491,6 +555,9 @@ def main():
         "p0": table_p0(data),
         "forty": table_forty(enrich),
         "canon_registry": table_canon_registry(registry),
+        "operators": table_operators(ontology),
+        "audit": table_audit(ontology),
+        "edge_types": table_edges(ontology),
         "bhumi": table_bhumi(enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),

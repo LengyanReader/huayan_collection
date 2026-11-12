@@ -113,7 +113,7 @@
       "canon": "巴利三藏及覺音注疏",
       "carrier": "貝葉／緬甸、泰、斯里蘭卡寫本；PTS 校訂本；第六結集版",
       "organization": "律／經／論三分，經分五部（長、中、相應、增支、小部）",
-      "witness_local": "無",
+      "witness_local": "無（僅 2 經樣本 MN1／DN1，見次行）",
       "layers": [
         "L1",
         "L3"
@@ -123,23 +123,36 @@
     },
     {
       "domain": "南传佛教",
+      "canon": "巴利經藏樣本（MN1／DN1）",
+      "carrier": "bilara root JSON（段號制）",
+      "organization": "SuttaCentral：mn1:1.1／dn1:1.1",
+      "witness_local": "有（2 經全文；MN1 334 段、DN1 662 段；2026-11-11 入庫）",
+      "layers": [
+        "L3",
+        "L5"
+      ],
+      "grade": "B",
+      "note": "樣本，非全藏；只夠做「體裁與道次語彙」的類型對位，不足以下譜系判斷。"
+    },
+    {
+      "domain": "南传佛教",
       "canon": "漢譯四阿含（T1／T2）",
       "carrier": "大正藏第 1–2 冊",
       "organization": "T 編號，經號連續",
-      "witness_local": "無（本倉僅收華嚴部）",
+      "witness_local": "有 4 部 XML：T01n0001（22 卷）／T01n0026（60 卷）／T02n0099（50 卷）／T02n0125（51 卷）；2026-11-11 入庫",
       "layers": [
         "L1",
         "L3"
       ],
-      "grade": "C",
-      "note": "漢巴對讀的標準入口；本倉未取，不能做逐句比對。"
+      "grade": "B",
+      "note": "漢巴對讀的標準入口；已入庫但未做逐句對讀，且未與印本互校，故為 B。"
     },
     {
       "domain": "道教",
       "canon": "正統道藏＋萬曆續道藏",
       "carrier": "明刻本；涵芬樓影印；三家本",
       "organization": "三洞四輔十二類，千字文帙號",
-      "witness_local": "無",
+      "witness_local": "無（僅 1 部樣本：度人經 61 卷，見次行）",
       "layers": [
         "L1",
         "L3",
@@ -147,6 +160,20 @@
       ],
       "grade": "C",
       "note": "與佛教的關係主要在論衡層（化胡、笑道）與類型層（齋儀、階次），非譜系。"
+    },
+    {
+      "domain": "道教",
+      "canon": "《靈寶無量度人上品妙經》（正統道藏 DZ0001）",
+      "carrier": "三家本 1988 影印；Kanripo 數位全 61 卷",
+      "organization": "DZ0001 · 洞真部本文類 · 一卷一檔",
+      "witness_local": "有（61 卷全文，353,259 CJK 字；2026-11-11 入庫）",
+      "layers": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "grade": "B",
+      "note": "道藏中唯一已入庫的完整文本；可作儀軌體裁與度人語彙的類型對照，不作佛道譜系。"
     },
     {
       "domain": "道教",

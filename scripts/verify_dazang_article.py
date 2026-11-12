@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
@@ -140,6 +141,11 @@ def main() -> int:
              f"vs live {len(batch_files)}/{live_windows}")
     if re.search(r"10 批[、 ]*62", md):
         fail("stale forty counts (10 批 62 窗) still in prose")
+    pairs = set(re.findall(r"(\d+) 批[、 ]*(\d+) (?:个对照)?窗", md))
+    allowed = {(str(len(batch_files)), str(live_windows)), ("16", "92")}  # 16/92 是 v1.2 历史记述
+    bad_pairs = pairs - allowed
+    if bad_pairs:
+        fail(f"forty window counts out of sync with live data: {sorted(bad_pairs)}")
     zero_rows = re.findall(r"^\| (L\.\d+[^|]*)\| [^|]+ \| 0 \|", md, re.M)
     if zero_rows:
         fail(f"forty table shows a bare 0 window count: {zero_rows}")
@@ -178,9 +184,110 @@ def main() -> int:
             fail(f"§17 grade B with no witness and no bibliographic record: {r['canon']}")
     if "相似不是证据，见证才是证据" not in md:
         fail("§17 red-line sentence missing")
-    if "跨典藏登记册：15 行" not in md:
+    if "跨典藏登记册：17 行" not in md:
         fail("§16 data table lacks canon_registry.json row")
     ok(f"§17 registry: {len(rows_json)} rows, grades consistent with witnesses")
+
+    # --- §17.3/17.4 relation ontology: facets, operators, coverage must agree with the text ---
+    ont_path = ROOT / "data" / "research" / "relation_ontology.json"
+    if not ont_path.exists():
+        fail("relation_ontology.json missing")
+    ont = json.loads(ont_path.read_text(encoding="utf-8"))
+    facets, ops = ont["facets"], ont["operators"]
+    fids = [f["id"] for f in facets]
+    if len(facets) != 7 or len(set(fids)) != 7:
+        fail(f"ontology facets {len(facets)} != 7")
+    if len(ops) < 34 or len({o["id"] for o in ops}) != len(ops):
+        fail(f"ontology operators {len(ops)} (<34) or duplicated ids")
+    verdicts = set(ont["meta"]["verdicts"])
+    statuses = set(ont["meta"]["status_legend"])
+    for o in ops:
+        if o["facet"] not in fids:
+            fail(f"operator {o['id']} has unknown facet {o['facet']}")
+        if not o["min_evidence"].strip() or not o["forbidden"].strip():
+            fail(f"operator {o['id']} lacks min_evidence/forbidden")
+        if o["verdict"] not in verdicts:
+            fail(f"operator {o['id']} has unknown verdict {o['verdict']}")
+        if o["status"] not in statuses:
+            fail(f"operator {o['id']} has unknown status {o['status']}")
+        if o["status"] == "done" and not o.get("refs"):
+            fail(f"operator {o['id']} marked done but cites no section")
+    def gen_block(key: str) -> str:
+        s = md.find(f"<!--GEN:start:{key}-->")
+        e = md.find(f"<!--GEN:end:{key}-->", s + 1)
+        if s < 0 or e < 0:
+            fail(f"§17 GEN block missing: {key}")
+        return md[s:e]
+
+    op_md = gen_block("operators")
+    audit_md = gen_block("audit")
+    op_rows = re.findall(r"^\| ([MTDPRSC]\d+) ", op_md, re.M)
+    if sorted(op_rows) != sorted(o["id"] for o in ops):
+        fail(f"§17.3 operator table rows {len(op_rows)} != ontology {len(ops)}")
+    total = {"done": 0, "partial": 0, "none": 0}
+    for f in facets:
+        mine = [o for o in ops if o["facet"] == f["id"]]
+        c = {k: sum(1 for o in mine if o["status"] == k) for k in total}
+        for k in total:
+            total[k] += c[k]
+        pat = (rf"^\| {f['id']} \| [^|]+ \| {len(mine)} \| {c['done']} \| {c['partial']} "
+               rf"\| {c['none']} \| (\d+)% \|")
+        m = re.search(pat, audit_md, re.M)
+        if not m:
+            fail(f"§17.4 audit row for facet {f['id']} missing or miscounted")
+        want = round((c["done"] + 0.5 * c["partial"]) / len(mine) * 100)
+        if int(m.group(1)) != want:
+            fail(f"§17.4 facet {f['id']} coverage {m.group(1)}% != {want}%")
+    score = total["done"] + 0.5 * total["partial"]
+    m = re.search(rf"^\| \*\*合\*\* \| — \| \*\*{len(ops)}\*\* \| \*\*{total['done']}\*\* "
+                  rf"\| \*\*{total['partial']}\*\* \| \*\*{total['none']}\*\* \| \*\*(\d+)%\*\*", audit_md, re.M)
+    if not m:
+        fail("§17.4 audit total row missing or miscounted")
+    want = round(score / len(ops) * 100)
+    if int(m.group(1)) != want:
+        fail(f"§17.4 total coverage {m.group(1)}% != {want}%")
+    per = "＋".join(f"{f['id']}{sum(1 for o in ops if o['facet'] == f['id'])}" for f in facets)
+    if f"共 {len(ops)} 个（{per}）" not in md:
+        fail(f"§17.3 facet-count sentence out of sync: expected 共 {len(ops)} 个（{per}）")
+    if f"加权 {score:g}/{len(ops)}" not in md:
+        fail(f"§17.4 prose coverage out of sync: expected 加权 {score:g}/{len(ops)}")
+    ok(f"§17.3–17.4 ontology: {len(facets)} facets / {len(ops)} operators, audit {score:g}/{len(ops)} = {want}%")
+
+    # --- §4.5 edge types must each be assigned a facet (checked after the graph loads) ---
+    emap = ont.get("graph_edges", {})
+    graph = json.loads((ROOT / "data" / "research" / "huayan_dazang_graph.json").read_text(encoding="utf-8"))
+    graph_types = {e["type"] for e in graph["edges"]}
+    if set(emap) != graph_types:
+        fail(f"edge->facet map {sorted(emap)} != graph edge types {sorted(graph_types)}")
+    edge_rows = re.findall(r"^\| `([a-z_0-9]+)` \| [^|]+ \| [^|]+ \| [^|]+ \| ([MTDPRSC]) \| [^|]+ \|$", md, re.M)
+    if len(edge_rows) != len(emap):
+        fail(f"§4.5 edge table rows {len(edge_rows)} != {len(emap)}")
+    for name, facet in edge_rows:
+        if emap.get(name, {}).get("facet") != facet:
+            fail(f"§4.5 edge {name} facet {facet} != ontology {emap.get(name)}")
+    if "| 边型 | 方向 | 含义 | 线型 | 面 | 级 |" not in md:
+        fail("§4.5 edge table lacks the facet column")
+    ok(f"§4.5 edge facets: {len(edge_rows)} edge types mapped")
+
+    # --- §17.7 external witnesses: every manifest file must exist with the recorded hash ---
+    mf = ROOT / "data" / "references" / "external_manifest.json"
+    if not mf.exists():
+        fail("external_manifest.json missing")
+    man = json.loads(mf.read_text(encoding="utf-8"))
+    bad = []
+    for k, v in man["files"].items():
+        p = ROOT / v["path"]
+        if not p.exists():
+            bad.append(f"{k}: missing")
+            continue
+        h = hashlib.sha256(p.read_bytes()).hexdigest()
+        if h != v["sha256"]:
+            bad.append(f"{k}: sha256 {h[:8]} != {v['sha256'][:8]}")
+    if bad:
+        fail(f"external witness mismatch: {bad[:3]}")
+    if "本批新入库的见证" not in md:
+        fail("§17.7 witness table missing")
+    ok(f"§17.7 external witnesses: {len(man['files'])} files hash-verified")
 
     for i, block in enumerate(re.findall(r"<svg.*?</svg>", md, re.S), 1):
         try:

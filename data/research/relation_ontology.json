@@ -1,0 +1,563 @@
+{
+  "meta": {
+    "version": "1.0",
+    "date": "2026-11-12",
+    "model": "三层：面（facet，关联发生在哪） × 算子（operator，具体是什么关系） × 判（verdict，证据够到哪）",
+    "verdicts": {
+      "谱系": "genealogy：谁译谁、谁引谁、谁抄谁。须具体 witness（同文段落、题记、书名号、实物）。",
+      "类型": "typology：结构同构、体裁同类、语汇共享。只述「可比」，不述「同源／借用」。",
+      "论衡": "polemic：护教、判教、教义辩驳中的互相指认。属接受史，证明「当时人如何说」，不证明「文本如此」。"
+    },
+    "rules": [
+      "一个算子可以落在两个判上：有见证即谱系，无见证即类型。判由证据决定，不由措辞决定。",
+      "「同源」二字只能用于谱系判，且必须给出 witness。",
+      "算子为空（未做）不是缺陷，把它标出来才是方法。",
+      "跨传统比较（道、儒、南传、梵）默认只到类型判；升为谱系须另有见证。"
+    ],
+    "status_legend": {
+      "done": "本文已有对应内容且回源",
+      "partial": "本文有片段或仅到题录／样本",
+      "none": "本文未做（显式留白）"
+    }
+  },
+  "facets": [
+    {
+      "id": "M",
+      "name": "物质载体",
+      "question": "这份文本以什么实物形态存在、是否同一见证",
+      "note": "版本的物质侧：写本、刻本、石经、残卷、藏地编号。"
+    },
+    {
+      "id": "T",
+      "name": "文本",
+      "question": "两份文本在字句上是什么关系",
+      "note": "版本的内容侧与引文关系：译本、异译、别生、合本、引用、注疏。"
+    },
+    {
+      "id": "D",
+      "name": "义理",
+      "question": "教义上是否同源、改造、判摄或对立",
+      "note": "须逐句对位或术语链；判教安置属论衡，不属谱系。"
+    },
+    {
+      "id": "P",
+      "name": "修行",
+      "question": "阶位、仪轨、咒术、教学是否相承",
+      "note": "本文基本空白；需仪轨书、科仪、陀罗尼文本。"
+    },
+    {
+      "id": "S",
+      "name": "社会史",
+      "question": "译场、王室、法难等制度条件",
+      "note": "本文基本空白；需敕令、译场记录、史传。"
+    },
+    {
+      "id": "R",
+      "name": "接受传播",
+      "question": "后来的人怎样使用、观看、讲述这部经",
+      "note": "目录以外的接受形态：图像、文学、音乐、灵验叙事。"
+    },
+    {
+      "id": "C",
+      "name": "比较类型",
+      "question": "跨传统看，是否同构、同体裁、共享语汇",
+      "note": "只到类型判；升谱系须另有见证。"
+    }
+  ],
+  "operators": [
+    {
+      "id": "M1",
+      "facet": "M",
+      "zh": "同一见证",
+      "en": "same witness",
+      "ask": "这是同一份文本的同一份实物吗",
+      "verdict": "谱系",
+      "min_evidence": "实物／影印、题记、藏书印、藏地编号",
+      "forbidden": "以现代目录题录充实物见证",
+      "status": "done",
+      "refs": "§2.1"
+    },
+    {
+      "id": "M2",
+      "facet": "M",
+      "zh": "异本（版本）",
+      "en": "recension",
+      "ask": "同一文本的不同版本，异文在哪",
+      "verdict": "谱系",
+      "min_evidence": "同文异文对照表",
+      "forbidden": "以品数差异当异文",
+      "status": "done",
+      "refs": "§2.2–2.4"
+    },
+    {
+      "id": "M3",
+      "facet": "M",
+      "zh": "写本·刻本",
+      "en": "manuscript / print",
+      "ask": "该本就是那份写本或刻本吗",
+      "verdict": "谱系",
+      "min_evidence": "行款、题跋、影印、藏地函叶",
+      "forbidden": "以现代排印本充宋元刻本",
+      "status": "partial",
+      "refs": "§6.5、§6.7"
+    },
+    {
+      "id": "M4",
+      "facet": "M",
+      "zh": "残卷·碎片",
+      "en": "fragment",
+      "ask": "残卷属哪一系统，能缀合吗",
+      "verdict": "谱系",
+      "min_evidence": "缀合、行款、编号",
+      "forbidden": "以残卷推全本面貌",
+      "status": "partial",
+      "refs": "§6.5"
+    },
+    {
+      "id": "T1",
+      "facet": "T",
+      "zh": "译本",
+      "en": "translation",
+      "ask": "是否译自同一底本",
+      "verdict": "谱系",
+      "min_evidence": "译者题记、梵藏对文",
+      "forbidden": "以题名相同当同本",
+      "status": "done",
+      "refs": "§2"
+    },
+    {
+      "id": "T2",
+      "facet": "T",
+      "zh": "异译·别译",
+      "en": "variant translation",
+      "ask": "同一品的另一次翻译",
+      "verdict": "谱系",
+      "min_evidence": "同文段落、品题对应",
+      "forbidden": "以同题当同译",
+      "status": "done",
+      "refs": "§4.1"
+    },
+    {
+      "id": "T3",
+      "facet": "T",
+      "zh": "别生",
+      "en": "excerpt circulated separately",
+      "ask": "是否从大本中单出流通",
+      "verdict": "谱系",
+      "min_evidence": "品题、内容重合、经录著录",
+      "forbidden": "以单行本存在当独立创作",
+      "status": "done",
+      "refs": "§4.2"
+    },
+    {
+      "id": "T4",
+      "facet": "T",
+      "zh": "合本",
+      "en": "conflation",
+      "ask": "是否由两本拼合而成",
+      "verdict": "谱系",
+      "min_evidence": "段落来源可分离",
+      "forbidden": "以篇幅长当合本",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "T5",
+      "facet": "T",
+      "zh": "明引",
+      "en": "marked quotation",
+      "ask": "是否有书名号或明确标示的引用",
+      "verdict": "谱系",
+      "min_evidence": "书名号、引文与原句对得上",
+      "forbidden": "以关键词命中当引用",
+      "status": "done",
+      "refs": "§8.1"
+    },
+    {
+      "id": "T6",
+      "facet": "T",
+      "zh": "暗引·化用",
+      "en": "allusion",
+      "ask": "无标示而句意相袭",
+      "verdict": "谱系",
+      "min_evidence": "连续多句、非套语、可排除巧合",
+      "forbidden": "以语汇相同当暗引",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "T7",
+      "facet": "T",
+      "zh": "转述·节略",
+      "en": "paraphrase / abridgement",
+      "ask": "是否以己语复述或删节",
+      "verdict": "谱系",
+      "min_evidence": "顺序与要点可对齐",
+      "forbidden": "以大意相近当转述",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "T8",
+      "facet": "T",
+      "zh": "注疏",
+      "en": "commentary",
+      "ask": "是否逐句解释该文本",
+      "verdict": "谱系",
+      "min_evidence": "所释原文可复原",
+      "forbidden": "以注疏引文当经文原句",
+      "status": "done",
+      "refs": "§5、§8"
+    },
+    {
+      "id": "T9",
+      "facet": "T",
+      "zh": "科判",
+      "en": "structural analysis",
+      "ask": "是否按同一科段切割文本",
+      "verdict": "谱系",
+      "min_evidence": "科段层级对照",
+      "forbidden": "以章数相同当同科判",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "T10",
+      "facet": "T",
+      "zh": "疑伪·托名",
+      "en": "pseudepigraph",
+      "ask": "题名与译者是否可疑",
+      "verdict": "谱系",
+      "min_evidence": "经录异说、译文风格、用语年代",
+      "forbidden": "以「可疑」当「已伪」",
+      "status": "partial",
+      "refs": "§12.6"
+    },
+    {
+      "id": "D1",
+      "facet": "D",
+      "zh": "同源教义",
+      "en": "genetic doctrine",
+      "ask": "同一教义是否有共同文本来源",
+      "verdict": "谱系",
+      "min_evidence": "术语链＋同文段落",
+      "forbidden": "以共享清单当教义同源",
+      "status": "partial",
+      "refs": "§7"
+    },
+    {
+      "id": "D2",
+      "facet": "D",
+      "zh": "教义改造",
+      "en": "doctrinal transformation",
+      "ask": "同一教义被改写为何种形态",
+      "verdict": "谱系",
+      "min_evidence": "逐项对位表",
+      "forbidden": "以名词沿用当教义不变",
+      "status": "partial",
+      "refs": "§9"
+    },
+    {
+      "id": "D3",
+      "facet": "D",
+      "zh": "判摄",
+      "en": "doxographic subsumption",
+      "ask": "宗派把此经判在什么位置",
+      "verdict": "论衡",
+      "min_evidence": "判教原文",
+      "forbidden": "以判教安置当文本影响",
+      "status": "done",
+      "refs": "§9"
+    },
+    {
+      "id": "D4",
+      "facet": "D",
+      "zh": "教义对立",
+      "en": "doctrinal opposition",
+      "ask": "两方在哪一点上互相否定",
+      "verdict": "论衡",
+      "min_evidence": "双方原文对读",
+      "forbidden": "以立场标签代原文",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "D5",
+      "facet": "D",
+      "zh": "内核共享",
+      "en": "shared doctrinal core",
+      "ask": "法界、缘起等内核是否同构",
+      "verdict": "类型",
+      "min_evidence": "内核命题逐条对位",
+      "forbidden": "以同构当同源",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "P1",
+      "facet": "P",
+      "zh": "同一阶位",
+      "en": "shared stage scheme",
+      "ask": "十地、十住等阶位是否相承",
+      "verdict": "类型",
+      "min_evidence": "阶位名、次序、断证逐项对照",
+      "forbidden": "以阶位名同当制度同源",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "P2",
+      "facet": "P",
+      "zh": "仪轨化",
+      "en": "ritualization",
+      "ask": "经文是否被编入斋醮、礼忏仪轨",
+      "verdict": "类型",
+      "min_evidence": "仪轨书次第、所引经文",
+      "forbidden": "以寺院现存法会当古代仪轨",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "P3",
+      "facet": "P",
+      "zh": "陀罗尼化",
+      "en": "dharani / mantra use",
+      "ask": "是否以咒语、陀罗尼形式流通",
+      "verdict": "类型",
+      "min_evidence": "咒文对照、仪轨位置",
+      "forbidden": "以音译咒文相似当同源",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "P4",
+      "facet": "P",
+      "zh": "教学·课仪",
+      "en": "pedagogy",
+      "ask": "是否进入讲经、课诵、僧教育",
+      "verdict": "类型",
+      "min_evidence": "课仪单、讲录、学制记载",
+      "forbidden": "以现代佛学院课程当古代学制",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "S1",
+      "facet": "S",
+      "zh": "译场·制度",
+      "en": "translation bureau",
+      "ask": "译本产生于怎样的译场与制度",
+      "verdict": "谱系",
+      "min_evidence": "译场记录、职衔、敕令",
+      "forbidden": "以译者署名当译场存在",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "S2",
+      "facet": "S",
+      "zh": "王室·国家祭祀",
+      "en": "state cult",
+      "ask": "是否进入国家祭祀与王室信仰",
+      "verdict": "谱系",
+      "min_evidence": "诏令、仪注、国家书目",
+      "forbidden": "以帝王崇佛泛论当本经受崇",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "S3",
+      "facet": "S",
+      "zh": "法难·护法",
+      "en": "persecution / apologetics",
+      "ask": "在法难与护法中如何被援引",
+      "verdict": "论衡",
+      "min_evidence": "护法文本、诏令",
+      "forbidden": "以护法套语当本经专引",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "R1",
+      "facet": "R",
+      "zh": "目录著录",
+      "en": "catalog record",
+      "ask": "经录如何著录、归类",
+      "verdict": "谱系",
+      "min_evidence": "经录原文、编号",
+      "forbidden": "以著录一条当流通证据",
+      "status": "done",
+      "refs": "§3、§11"
+    },
+    {
+      "id": "R2",
+      "facet": "R",
+      "zh": "图像化",
+      "en": "iconography",
+      "ask": "是否被绘为经变、造像、版画",
+      "verdict": "类型",
+      "min_evidence": "题记、榜题、图本",
+      "forbidden": "以题材相似当据本经绘制",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "R3",
+      "facet": "R",
+      "zh": "文学化",
+      "en": "literary reception",
+      "ask": "是否进入诗、赋、小说、戏曲",
+      "verdict": "类型",
+      "min_evidence": "作品原文与用典注",
+      "forbidden": "以意象相近当用典",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "R4",
+      "facet": "R",
+      "zh": "仪式·音乐化",
+      "en": "liturgical / musical use",
+      "ask": "是否被唱诵、谱曲、编入法事",
+      "verdict": "类型",
+      "min_evidence": "仪轨本、曲谱、录音（近代）",
+      "forbidden": "以现存唱腔当古代原貌",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "R5",
+      "facet": "R",
+      "zh": "灵验叙事",
+      "en": "miracle narrative",
+      "ask": "是否有灵验记、感应故事",
+      "verdict": "类型",
+      "min_evidence": "故事原文、年代、人物",
+      "forbidden": "以灵验记当史实",
+      "status": "none",
+      "refs": ""
+    },
+    {
+      "id": "C1",
+      "facet": "C",
+      "zh": "同构",
+      "en": "structural homology",
+      "ask": "结构或阶位是否同构",
+      "verdict": "类型",
+      "min_evidence": "逐项对位表",
+      "forbidden": "以同构当同源",
+      "status": "partial",
+      "refs": "§7、§17.9"
+    },
+    {
+      "id": "C2",
+      "facet": "C",
+      "zh": "同体裁",
+      "en": "shared genre",
+      "ask": "是否属同一体裁（陀罗尼、愿文、经变）",
+      "verdict": "类型",
+      "min_evidence": "体裁特征清单",
+      "forbidden": "以体裁相同当文本相承",
+      "status": "partial",
+      "refs": "§7"
+    },
+    {
+      "id": "C3",
+      "facet": "C",
+      "zh": "共享语汇",
+      "en": "shared lexicon",
+      "ask": "术语是否共享",
+      "verdict": "类型",
+      "min_evidence": "词频与语境抽样",
+      "forbidden": "以共享语汇当文本依赖",
+      "status": "partial",
+      "refs": "§17.9"
+    }
+  ],
+  "graph_edges": {
+    "contains": {
+      "facet": "T",
+      "dir": "版本 → 品／章",
+      "meaning": "大本含此品／章",
+      "line": "实线",
+      "grade": "A"
+    },
+    "contains_60": {
+      "facet": "T",
+      "dir": "T278 → 品",
+      "meaning": "六十系统的品位（不是同编号）",
+      "line": "虚线",
+      "grade": "A"
+    },
+    "parallel": {
+      "facet": "T",
+      "dir": "品 ↔ 藏章",
+      "meaning": "内容平行",
+      "line": "细灰线",
+      "grade": "A"
+    },
+    "translation": {
+      "facet": "T",
+      "dir": "品 → 异译",
+      "meaning": "别生／异译",
+      "line": "橙线",
+      "grade": "A（有校注）／B"
+    },
+    "related": {
+      "facet": "D",
+      "dir": "品／藏 → 异译",
+      "meaning": "义理或待核关联",
+      "line": "红虚线",
+      "grade": "B／C"
+    },
+    "belongs": {
+      "facet": "C",
+      "dir": "品／异译 → 簇",
+      "meaning": "归簇（分析性分组，非文本关系）",
+      "line": "细线",
+      "grade": "本文判断"
+    },
+    "unique": {
+      "facet": "T",
+      "dir": "藏章 → 藏文独有",
+      "meaning": "汉本无",
+      "line": "红圈",
+      "grade": "A"
+    },
+    "survives": {
+      "facet": "M",
+      "dir": "梵本 → 品",
+      "meaning": "梵本单品存",
+      "line": "红虚线",
+      "grade": "A／B"
+    },
+    "cites": {
+      "facet": "T",
+      "dir": "注疏 → 经论／部类",
+      "meaning": "引用",
+      "line": "宽度＝量",
+      "grade": "B"
+    },
+    "cites_class": {
+      "facet": "T",
+      "dir": "注疏 → 部类",
+      "meaning": "引用（类目汇总）",
+      "line": "宽度＝量",
+      "grade": "B"
+    },
+    "sums_to": {
+      "facet": "T",
+      "dir": "注疏 → 合计",
+      "meaning": "四部注疏的引文总量（95／1,580／1,667／4,363）",
+      "line": "仅数据表",
+      "grade": "B"
+    },
+    "contains_part": {
+      "facet": "T",
+      "dir": "大本 → 品",
+      "meaning": "多品本中的局部所含（T293 卷 40 挂品 36）",
+      "line": "点线",
+      "grade": "A（校注）"
+    }
+  }
+}
