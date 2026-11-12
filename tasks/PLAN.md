@@ -964,3 +964,13 @@ P0 收尾：T300/T301↔Toh 187、T298↔藏 32、T281 三章、T309 归属；�
 - [x] 门禁 22 项 + 阴性测试；全量重建页面并还原 `shanhe.html`
 - [ ] 待授权：commit v1.4
 - [ ] 下一步：T9 科判、D5 内核共享、P1 阶位对位（依 17.11 优先级）
+
+### L.412 大藏对应 v1.5·三试点（T9 科判 / D5 内核 / P1 阶位）（2026-11-12）
+
+- [x] `scripts/build_cross_canon_probes.py`：三条试点抽取器，引文逐条在底本中做子串校验（找不到即 FAIL）
+- [x] `data/research/cross_canon_probes.json`：T9 科判 7 引文 / D5 四命题＋词频 / P1 十住十地 10 对，含源路径与 SHA-256
+- [x] §17.11–17.13 三小节（GEN 生成），§17.14 未竟重写并重排优先级
+- [x] `relation_ontology.json`：T9 / D5 / P1 由 `none` 升 `partial`；覆盖 9 done / 11 partial / 14 none＝14.5/34（43%）
+- [x] 门禁 23 项＋阴性测试（篡改 T9 引文 → FAIL）；页面 447,465 B / 231,777 doc chars
+- [x] 卡片文案回源：`standalone_articles.yaml` 由 v1.1／62 窗改为 v1.5／104 窗，构建不再回退
+- [ ] 下一步：T9 扩品（入法界・如来出现）与 T6 暗引；再补《丹珠尔》题录

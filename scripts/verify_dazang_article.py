@@ -269,7 +269,66 @@ def main() -> int:
         fail("§4.5 edge table lacks the facet column")
     ok(f"§4.5 edge facets: {len(edge_rows)} edge types mapped")
 
-    # --- §17.7 external witnesses: every manifest file must exist with the recorded hash ---
+    # --- §17.11–17.13 probes: every quote must still be present in its source ---
+    probes_path = ROOT / "data" / "research" / "cross_canon_probes.json"
+    if not probes_path.exists():
+        fail("cross_canon_probes.json missing")
+    probes = json.loads(probes_path.read_text(encoding="utf-8"))
+
+    def norm(text: str) -> str:
+        text = re.sub(r"<pb:[^>]*>", "", text)
+        text = re.sub(r"<lb[^>]*/>", "", text)
+        text = re.sub(r"<pb[^>]*/>", "", text)
+        text = re.sub(r"<anchor[^>]*/>", "", text)
+        text = re.sub(r"<[^>]+>", "", text)
+        return re.sub(r"\s+", "", text.replace("¶", ""))
+
+    probe_files = {"T1735": "T35n1735.xml", "T1733": "T35n1733.xml", "T279": "T10n0279.xml"}
+    probe_src = {}
+    for key, fn in probe_files.items():
+        probe_src[key] = norm((ROOT / "data" / "references" / "cbeta" / fn).read_text(encoding="utf-8"))
+    dz_dir = ROOT / "data" / "references" / "daozang"
+    probe_src["DZ0001"] = norm("".join(p.read_text(encoding="utf-8") for p in sorted(dz_dir.glob("KR5a0001_*.txt"))))
+    for key, meta in probes["meta"]["sources"].items():
+        raw = (b"".join(p.read_bytes() for p in sorted(dz_dir.glob("KR5a0001_*.txt")))
+               if key == "DZ0001" else (ROOT / meta["path"]).read_bytes())
+        if hashlib.sha256(raw).hexdigest() != meta["sha256"]:
+            fail(f"probe source hash changed: {key}")
+    for section in ("t9", "d5", "p1"):
+        for q in probes[section]["quotes"]:
+            if norm(q["text"]) not in probe_src[q["src"]]:
+                fail(f"{section} quote missing from {q['src']}: {q['text'][:24]}")
+            if q["text"] not in md:
+                fail(f"{section} quote not printed in article: {q['text'][:24]}")
+    if "### 17.11 T9" not in md or "### 17.12 D5" not in md or "### 17.13 P1" not in md:
+        fail("§17.11–17.13 probe headings missing")
+
+    def first_table_rows(block: str) -> int:
+        lines = block.splitlines()
+        start = next(i for i, ln in enumerate(lines) if ln.startswith("|"))
+        n = 0
+        for ln in lines[start:]:
+            if not ln.startswith("|"):
+                break
+            n += 1
+        return max(0, n - 2)
+
+    def grab(key: str) -> str:
+        s = md.find(f"<!--GEN:start:{key}-->")
+        e = md.find(f"<!--GEN:end:{key}-->", s + 1)
+        return md[s:e]
+
+    if first_table_rows(grab("t9")) != len(probes["t9"]["rows"]):
+        fail("§17.11 table rows != probes JSON")
+    if first_table_rows(grab("d5")) != len(probes["d5"]["rows"]):
+        fail("§17.12 table rows != probes JSON")
+    if first_table_rows(grab("p1")) != len(probes["p1"]["rows"]):
+        fail("§17.13 table rows != probes JSON")
+    if len(probes["p1"]["rows"]) != 10:
+        fail("P1 must have ten stages")
+    ok(f"§17.11–17.13 probes: {len(probes['t9']['quotes']) + len(probes['d5']['quotes']) + len(probes['p1']['quotes'])} quotes re-verified")
+
+    # --- §17.8 external witnesses: every manifest file must exist with the recorded hash ---
     mf = ROOT / "data" / "references" / "external_manifest.json"
     if not mf.exists():
         fail("external_manifest.json missing")
@@ -286,8 +345,8 @@ def main() -> int:
     if bad:
         fail(f"external witness mismatch: {bad[:3]}")
     if "本批新入库的见证" not in md:
-        fail("§17.7 witness table missing")
-    ok(f"§17.7 external witnesses: {len(man['files'])} files hash-verified")
+        fail("§17.8 witness table missing")
+    ok(f"§17.8 external witnesses: {len(man['files'])} files hash-verified")
 
     for i, block in enumerate(re.findall(r"<svg.*?</svg>", md, re.S), 1):
         try:

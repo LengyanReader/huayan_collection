@@ -218,8 +218,9 @@
       "verdict": "谱系",
       "min_evidence": "科段层级对照",
       "forbidden": "以章数相同当同科判",
-      "status": "none",
-      "refs": ""
+      "status": "partial",
+      "refs": "§17.11",
+      "note": "已做〈十地品〉一品：澄觀疏 vs 法藏探玄記；其餘 38 品未做。"
     },
     {
       "id": "T10",
@@ -290,8 +291,9 @@
       "verdict": "类型",
       "min_evidence": "内核命题逐条对位",
       "forbidden": "以同构当同源",
-      "status": "none",
-      "refs": ""
+      "status": "partial",
+      "refs": "§17.12",
+      "note": "试点：《度人經》DZ0001；四命题中三项功能同构、一多相即不成立；只到类型判。"
     },
     {
       "id": "P1",
@@ -302,8 +304,9 @@
       "verdict": "类型",
       "min_evidence": "阶位名、次序、断证逐项对照",
       "forbidden": "以阶位名同当制度同源",
-      "status": "none",
-      "refs": ""
+      "status": "partial",
+      "refs": "§17.13",
+      "note": "已做华严自宗十住 vs 十地（名目 0 重合）；道教阶次无一手文本，跨传统一半缺。"
     },
     {
       "id": "P2",

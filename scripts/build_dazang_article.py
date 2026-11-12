@@ -21,6 +21,7 @@ DATA = ROOT / "data" / "research" / "dazang_mapping_verification.json"
 ENRICH = ROOT / "data" / "research" / "dazang_enrichment.json"
 REGISTRY = ROOT / "data" / "research" / "canon_registry.json"
 ONTOLOGY = ROOT / "data" / "research" / "relation_ontology.json"
+PROBES = ROOT / "data" / "research" / "cross_canon_probes.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -426,7 +427,7 @@ def table_operators(ont):
 def table_audit(ont):
     """§17.4 — coverage matrix; counts are computed, never typed by hand."""
     ops = ont["operators"]
-    out = ["| 面 | 面名 | 算子 | 已做 | 部分 | 未做 | 覆盖率 | 未做／部分算子 |",
+    out = ["| 面 | 面名 | 算子 | 已做 | 部分 | 未做 | 覆盖率 | 未满算子（部分／未做） |",
            "|---|---|---:|---:|---:|---:|---:|---|"]
     tot = {"done": 0, "partial": 0, "none": 0}
     for f in ont["facets"]:
@@ -462,6 +463,64 @@ def table_edges(ont):
     out.append(f'> **边型共 {len(ge)} 类**（上表 11 行，其中 `cites`／`cites_class` 为两类）。'
                "「面」按 §17.1 的七面标注：M 物质载体、T 文本、D 义理、P 修行、S 社会史、R 接受传播、C 比较类型。"
                "`sums_to` 与 `contains_part` 只在数据层出现。")
+    return "\n".join(out)
+
+
+def table_t9(probes):
+    p = probes["t9"]
+    out = ["| 项 | 澄觀《疏》T1735 | 法藏《探玄記》T1733 |", "|---|---|---|"]
+    for item, a, b in p["rows"]:
+        out.append(f"| {esc(item)} | {esc(a)} | {esc(b)} |")
+    out.append("")
+    out.append("回源引文（逐条在底本中做过子串校验）：")
+    out.append("")
+    for q in p["quotes"]:
+        out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
+    out.append("")
+    out.append(f'**判断**：{esc(p["finding"])}')
+    out.append("")
+    out.append(f'**边界**：{esc(p["limits"])}')
+    return "\n".join(out)
+
+
+def table_d5(probes):
+    p = probes["d5"]
+    out = ["| 命题 | 《華嚴》T279 | 《度人經》DZ0001 | 判定 | 说明 |",
+           "|---|---|---|---|---|"]
+    for prop, h, d, note, verdict in p["rows"]:
+        out.append(f"| {esc(prop)} | {esc(h)} | {esc(d)} | {esc(verdict)} | {esc(note)} |")
+    out.append("")
+    c = p["counts"]
+    out.append("| 关键词 | T279 | DZ0001 |")
+    out.append("|---|---:|---:|")
+    for k, v in c.items():
+        out.append(f"| {esc(k)} | {v['T279']:,} | {v['DZ0001']:,} |")
+    out.append("")
+    out.append("计数为去标记后的子串出现次数，只作量级参考。")
+    out.append("")
+    for q in p["quotes"]:
+        out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
+    out.append("")
+    out.append(f'**判断**：{esc(p["finding"])}')
+    out.append("")
+    out.append(f'**边界**：{esc(p["limits"])}')
+    return "\n".join(out)
+
+
+def table_p1(probes):
+    p = probes["p1"]
+    out = ["| 位次 | 十住（T279 品15） | 十地（T279 品26） |", "|---:|---|---|"]
+    for rank, a, b in p["rows"]:
+        out.append(f"| {rank} | {esc(a)} | {esc(b)} |")
+    out.append("")
+    out.append(f'> 两组名称交集：{len(p["name_overlap"])} 个。')
+    out.append("")
+    for q in p["quotes"]:
+        out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
+    out.append("")
+    out.append(f'**判断**：{esc(p["finding"])}')
+    out.append("")
+    out.append(f'**边界**：{esc(p["limits"])}')
     return "\n".join(out)
 
 
@@ -541,6 +600,7 @@ def main():
     enrich = json.loads(ENRICH.read_text(encoding="utf-8")) if ENRICH.exists() else {}
     registry = json.loads(REGISTRY.read_text(encoding="utf-8")) if REGISTRY.exists() else {"rows": []}
     ontology = json.loads(ONTOLOGY.read_text(encoding="utf-8"))
+    probes = json.loads(PROBES.read_text(encoding="utf-8")) if PROBES.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -558,6 +618,9 @@ def main():
         "operators": table_operators(ontology),
         "audit": table_audit(ontology),
         "edge_types": table_edges(ontology),
+        "t9": table_t9(probes),
+        "d5": table_d5(probes),
+        "p1": table_p1(probes),
         "bhumi": table_bhumi(enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
