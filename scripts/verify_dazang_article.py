@@ -251,6 +251,8 @@ def main() -> int:
         fail(f"§17.3 facet-count sentence out of sync: expected 共 {len(ops)} 个（{per}）")
     if f"加权 {score:g}/{len(ops)}" not in md:
         fail(f"§17.4 prose coverage out of sync: expected 加权 {score:g}/{len(ops)}")
+    if f"已做 {total['done']} 个、部分 {total['partial']} 个、未做 {total['none']} 个" not in md:
+        fail(f"§17.1 prose counts out of sync: expected 已做 {total['done']} / 部分 {total['partial']} / 未做 {total['none']}")
     ok(f"§17.3–17.4 ontology: {len(facets)} facets / {len(ops)} operators, audit {score:g}/{len(ops)} = {want}%")
 
     # --- §4.5 edge types must each be assigned a facet (checked after the graph loads) ---
@@ -327,6 +329,61 @@ def main() -> int:
     if len(probes["p1"]["rows"]) != 10:
         fail("P1 must have ten stages")
     ok(f"§17.11–17.13 probes: {len(probes['t9']['quotes']) + len(probes['d5']['quotes']) + len(probes['p1']['quotes'])} quotes re-verified")
+
+    # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
+    imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
+    if not imp_path.exists():
+        fail("implicit_quotes.json missing")
+    imp = json.loads(imp_path.read_text(encoding="utf-8"))
+    def cjk(text: str) -> str:
+        return re.sub(r"[^\u4e00-\u9fff]", "", text)
+
+    imp_src = {}
+    for key, fn in (("T1735", "T35n1735.xml"), ("T279", "T10n0279.xml"),
+                    ("T1733", "T35n1733.xml"), ("T278", "T09n0278.xml")):
+        imp_src[key] = cjk((ROOT / "data" / "references" / "cbeta" / fn).read_text(encoding="utf-8"))
+    md_cjk = cjk(md)
+    for key, meta in imp["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"T6 source hash changed: {key}")
+    for pid in ("A", "B"):
+        p = imp["pairs"][pid]
+        st = p["stats"]
+        if st["marked"]["hits"] + st["unmarked"]["hits"] != st["hits"]:
+            fail(f"T6 {pid}: marked + unmarked != hits")
+        if st["marked"]["chars"] + st["unmarked"]["chars"] != st["matched_chars"]:
+            fail(f"T6 {pid}: char sums do not add up")
+        if len(p["sweep"]) != len(imp["meta"]["sweep"]):
+            fail(f"T6 {pid}: sweep incomplete")
+        for e in p["examples_unmarked"]:
+            q = cjk(e["text"])
+            if q not in imp_src[p["commentary"]] or q not in imp_src[p["sutra"]]:
+                fail(f"T6 {pid}: example not found in both texts: {e['text'][:20]}")
+            if q not in md_cjk:
+                fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
+            if not imp_src[p["commentary"]].count(q):
+                fail(f"T6 {pid}: empty example")
+    if "### 17.14 T6" not in md or "### 17.15 未竟" not in md:
+        fail("§17.14–17.15 headings missing")
+
+    def rows_in(block: str) -> list[str]:
+        lines = block.splitlines()
+        start = next(i for i, ln in enumerate(lines) if ln.startswith("|"))
+        out = []
+        for ln in lines[start:]:
+            if not ln.startswith("|"):
+                break
+            out.append(ln)
+        return out
+
+    t6_block = grab("t6")
+    t6_rows = rows_in(t6_block)
+    if len(t6_rows) - 2 != len(imp["pairs"]):
+        fail("§17.14 first table rows != pairs in JSON")
+    sweep_rows = [ln for ln in t6_block.splitlines() if re.match(r"^\| \d+ \|", ln)]
+    if len(sweep_rows) != len(imp["meta"]["sweep"]):
+        fail("§17.14 sweep table rows != meta.sweep")
+    ok(f"§17.14 T6: {sum(len(imp['pairs'][k]['examples_unmarked']) for k in ('A','B'))} examples re-verified in both texts")
 
     # --- §17.8 external witnesses: every manifest file must exist with the recorded hash ---
     mf = ROOT / "data" / "references" / "external_manifest.json"

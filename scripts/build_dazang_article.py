@@ -22,6 +22,7 @@ ENRICH = ROOT / "data" / "research" / "dazang_enrichment.json"
 REGISTRY = ROOT / "data" / "research" / "canon_registry.json"
 ONTOLOGY = ROOT / "data" / "research" / "relation_ontology.json"
 PROBES = ROOT / "data" / "research" / "cross_canon_probes.json"
+IMPLICIT = ROOT / "data" / "research" / "implicit_quotes.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -524,6 +525,44 @@ def table_p1(probes):
     return "\n".join(out)
 
 
+def table_t6(implicit):
+    pairs = implicit["pairs"]
+    order = ["A", "B"]
+    out = ["| 对 | 注释 | 所注经 | 12 字长句 | 明引 | 暗引 | 暗引独见 | 最长 | ≥40 字 | 长句字／经文 |",
+           "|---|---|---|---:|---:|---:|---:|---:|---:|---:|"]
+    for pid in order:
+        p = pairs[pid]
+        st = p["stats"]
+        out.append(
+            f"| {pid} | {esc(p['commentary'])} | {esc(p['sutra'])} | {st['hits']} | "
+            f"{st['marked']['hits']} | {st['unmarked']['hits']} | {st['unmarked_distinct']['hits']} | "
+            f"{st['max_length']} | {st['ge_40']} | {st['matched_chars']:,}／{st['sutra_chars']:,}"
+            f"（{st['coverage']:.2%}） |"
+        )
+    out.append("")
+    out.append("门槛敏感度（同一方法，只改 N）：")
+    out.append("")
+    out.append("| N | A 长句 | A 覆盖 | B 长句 | B 覆盖 |")
+    out.append("|---:|---:|---:|---:|---:|")
+    for n in implicit["meta"]["sweep"]:
+        a = pairs["A"]["sweep"][str(n)]
+        b = pairs["B"]["sweep"][str(n)]
+        out.append(f"| {n} | {a['hits']} | {a['coverage']:.2%} | {b['hits']} | {b['coverage']:.2%} |")
+    out.append("")
+    out.append("暗引示例（两侧行号均为 CBETA `lb`，可回源核对）：")
+    out.append("")
+    for pid in order:
+        p = pairs[pid]
+        for e in p["examples_unmarked"]:
+            out.append(
+                f"- {pid} `{p['commentary']}` {e['c_line']} ↔ `{p['sutra']}` {e['s_line']}"
+                f"（{e['length']} 字）：「{esc(e['text'])}」"
+            )
+    out.append("")
+    out.append("**判断**：两部注疏对自宗经的长句复用都是点状的，且以明引为主；暗引是少数，成因多为「已标品名、句下省引号」。")
+    return "\n".join(out)
+
+
 def table_forty(enrich):
     rows = enrich.get("forty", {}).get("batches", [])
     out = ["| 批 | 日期 | 窗 | 主要发现（节录） |", "|---|---|---:|---|"]
@@ -601,6 +640,7 @@ def main():
     registry = json.loads(REGISTRY.read_text(encoding="utf-8")) if REGISTRY.exists() else {"rows": []}
     ontology = json.loads(ONTOLOGY.read_text(encoding="utf-8"))
     probes = json.loads(PROBES.read_text(encoding="utf-8")) if PROBES.exists() else {}
+    implicit = json.loads(IMPLICIT.read_text(encoding="utf-8"))
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -621,6 +661,7 @@ def main():
         "t9": table_t9(probes),
         "d5": table_d5(probes),
         "p1": table_p1(probes),
+        "t6": table_t6(implicit),
         "bhumi": table_bhumi(enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),

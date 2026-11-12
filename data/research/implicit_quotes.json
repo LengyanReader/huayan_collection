@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "date": "2026-11-12",
+    "n_main": 12,
+    "sweep": [
+      8,
+      10,
+      12,
+      16
+    ],
+    "ctx": 30,
+    "method": "去标记去标点后取 N 字窗索引；注释侧贪心取极大公共子串（≥N 字），按左侧 30 字内是否有「『云曰《 判明引／暗引；首 N 字在经中只出现一次者记「独见」，用于滤掉套语。",
+    "sources": {
+      "T1735": {
+        "path": "data/references/cbeta/T35n1735.xml",
+        "sha256": "53b69ce2d66853d62019893e74fefe207013235185373fa1d9af9abad57cd253"
+      },
+      "T279": {
+        "path": "data/references/cbeta/T10n0279.xml",
+        "sha256": "9d3de2c63a3eca5665352d12fb3a291e99a898cf470e1c0c71491731aa998d07"
+      },
+      "T1733": {
+        "path": "data/references/cbeta/T35n1733.xml",
+        "sha256": "08ca180c805376b96c97d9e51c6df4b25a95f4ba9ed6436a4d0c0b96b45065e5"
+      },
+      "T278": {
+        "path": "data/references/cbeta/T09n0278.xml",
+        "sha256": "a2bfcee6213f9a02012d8c6227ab125e2924a97619b7a3a89d6cf515410077b5"
+      }
+    }
+  },
+  "pairs": {
+    "A": {
+      "label": "澄觀《華嚴經疏》 vs 八十華嚴",
+      "commentary": "T1735",
+      "sutra": "T279",
+      "stats": {
+        "hits": 199,
+        "matched_chars": 3447,
+        "sutra_chars": 593598,
+        "coverage": 0.0058,
+        "marked": {
+          "hits": 164,
+          "chars": 2926
+        },
+        "unmarked": {
+          "hits": 35,
+          "chars": 521
+        },
+        "unmarked_distinct": {
+          "hits": 34,
+          "chars": 508
+        },
+        "max_length": 65,
+        "median_length": 14,
+        "ge_40": 6
+      },
+      "sweep": {
+        "8": {
+          "hits": 926,
+          "matched_chars": 9592,
+          "coverage": 0.0162,
+          "marked": {
+            "hits": 575,
+            "chars": 6415
+          },
+          "unmarked": {
+            "hits": 351,
+            "chars": 3177
+          },
+          "unmarked_distinct": {
+            "hits": 270,
+            "chars": 2512
+          },
+          "ge_40": 6
+        },
+        "10": {
+          "hits": 361,
+          "matched_chars": 5113,
+          "coverage": 0.0086,
+          "marked": {
+            "hits": 278,
+            "chars": 4096
+          },
+          "unmarked": {
+            "hits": 83,
+            "chars": 1017
+          },
+          "unmarked_distinct": {
+            "hits": 78,
+            "chars": 964
+          },
+          "ge_40": 6
+        },
+        "12": {
+          "hits": 199,
+          "matched_chars": 3447,
+          "coverage": 0.0058,
+          "marked": {
+            "hits": 164,
+            "chars": 2926
+          },
+          "unmarked": {
+            "hits": 35,
+            "chars": 521
+          },
+          "unmarked_distinct": {
+            "hits": 34,
+            "chars": 508
+          },
+          "ge_40": 6
+        },
+        "16": {
+          "hits": 87,
+          "matched_chars": 1997,
+          "coverage": 0.0034,
+          "marked": {
+            "hits": 76,
+            "chars": 1777
+          },
+          "unmarked": {
+            "hits": 11,
+            "chars": 220
+          },
+          "unmarked_distinct": {
+            "hits": 11,
+            "chars": 220
+          },
+          "ge_40": 6
+        }
+      },
+      "examples_marked": [
+        {
+          "text": "無量百千億那由他劫行六波羅蜜修習種種菩提分法若未聞此如來不思議大威德法門或時聞已不信不解不順不入不得名為真實菩薩以不能生如來家故若",
+          "length": 65,
+          "c_line": "0504c24",
+          "s_line": "0277c15",
+          "ctx": "金剛，終竟不消」等。二令起行成\n證入故出現。又云「設有菩薩，"
+        },
+        {
+          "text": "云何說諸蘊諸蘊有何性蘊性不可滅是故說無生分別此諸蘊其性本空寂空故不可滅此是無生義眾生既如是諸佛亦復然佛及諸佛法自性無所有",
+          "length": 60,
+          "c_line": "0514b26",
+          "s_line": "0101c08",
+          "ctx": "\n理實，依他無性即是圓成，如波相虛令水\n現故。〈夜摩〉偈云「"
+        },
+        {
+          "text": "譬如虛空一切世界若成若壞常無增減何以故虛空無生故諸佛菩提亦復如是若成正覺不成正覺亦無增減何以故菩提無相",
+          "length": 51,
+          "c_line": "0514c06",
+          "s_line": "0275a26",
+          "ctx": "無遺，如\n水奪波波相全盡，故說生佛不增不減。〈出現\n品〉云「"
+        }
+      ],
+      "examples_unmarked": [
+        {
+          "text": "常妙光明不可說不可說種種色相以為嚴好為光明藏出生無量圓滿光明普照十方無有障礙",
+          "length": 38,
+          "c_line": "0564a13",
+          "s_line": "0244c19",
+          "ctx": "〉說佛三業各具十義。然諸經\n論說佛常光一尋，準〈不思議品〉，"
+        },
+        {
+          "text": "一切諸佛能於一身化現不可說不可說佛剎微塵數頭一一頭化",
+          "length": 26,
+          "c_line": "0503c22",
+          "s_line": "0249b06",
+          "ctx": "，令諸眾生反本還源，窮未\n來際無有休息。故〈不思議品〉中明，"
+        },
+        {
+          "text": "以普賢行願盡未來劫修菩薩行入如來海不生疲厭",
+          "length": 21,
+          "c_line": "0671c17",
+          "s_line": "0223a17",
+          "ctx": "\n言身兼語意也。四顯無疲厭，謂四河入海\n累劫無疲。菩薩亦爾，"
+        }
+      ],
+      "examples_unmarked_any": [
+        {
+          "text": "常妙光明不可說不可說種種色相以為嚴好為光明藏出生無量圓滿光明普照十方無有障礙",
+          "length": 38,
+          "c_line": "0564a13",
+          "s_line": "0244c19",
+          "ctx": "〉說佛三業各具十義。然諸經\n論說佛常光一尋，準〈不思議品〉，"
+        },
+        {
+          "text": "一切諸佛能於一身化現不可說不可說佛剎微塵數頭一一頭化",
+          "length": 26,
+          "c_line": "0503c22",
+          "s_line": "0249b06",
+          "ctx": "，令諸眾生反本還源，窮未\n來際無有休息。故〈不思議品〉中明，"
+        }
+      ]
+    },
+    "B": {
+      "label": "法藏《探玄記》 vs 六十華嚴",
+      "commentary": "T1733",
+      "sutra": "T278",
+      "stats": {
+        "hits": 136,
+        "matched_chars": 2704,
+        "sutra_chars": 497512,
+        "coverage": 0.0054,
+        "marked": {
+          "hits": 121,
+          "chars": 2474
+        },
+        "unmarked": {
+          "hits": 15,
+          "chars": 230
+        },
+        "unmarked_distinct": {
+          "hits": 13,
+          "chars": 206
+        },
+        "max_length": 204,
+        "median_length": 15,
+        "ge_40": 7
+      },
+      "sweep": {
+        "8": {
+          "hits": 521,
+          "matched_chars": 6034,
+          "coverage": 0.0121,
+          "marked": {
+            "hits": 357,
+            "chars": 4520
+          },
+          "unmarked": {
+            "hits": 164,
+            "chars": 1514
+          },
+          "unmarked_distinct": {
+            "hits": 122,
+            "chars": 1145
+          },
+          "ge_40": 7
+        },
+        "10": {
+          "hits": 238,
+          "matched_chars": 3735,
+          "coverage": 0.0075,
+          "marked": {
+            "hits": 195,
+            "chars": 3215
+          },
+          "unmarked": {
+            "hits": 43,
+            "chars": 520
+          },
+          "unmarked_distinct": {
+            "hits": 40,
+            "chars": 486
+          },
+          "ge_40": 7
+        },
+        "12": {
+          "hits": 136,
+          "matched_chars": 2704,
+          "coverage": 0.0054,
+          "marked": {
+            "hits": 121,
+            "chars": 2474
+          },
+          "unmarked": {
+            "hits": 15,
+            "chars": 230
+          },
+          "unmarked_distinct": {
+            "hits": 13,
+            "chars": 206
+          },
+          "ge_40": 7
+        },
+        "16": {
+          "hits": 65,
+          "matched_chars": 1758,
+          "coverage": 0.0035,
+          "marked": {
+            "hits": 60,
+            "chars": 1659
+          },
+          "unmarked": {
+            "hits": 5,
+            "chars": 99
+          },
+          "unmarked_distinct": {
+            "hits": 5,
+            "chars": 99
+          },
+          "ge_40": 7
+        }
+      },
+      "examples_marked": [
+        {
+          "text": "等世界悉以毛端周遍度量一一毛端處於念念中化不可說不可說佛剎微塵等身乃至盡未來際劫一一化佛身有不可說不可說佛剎微塵等頭一一頭有不可說不可說佛剎微塵等舌一一舌出不可說不可說佛剎微塵等音聲一一音聲說不可說不可說佛剎微塵等修多羅一一修多羅說不可說不可說佛剎微塵等法一一法中說不可說不可說佛剎微塵等句身味身復不可說不可說佛剎微塵等劫說異句身味身音聲充滿法界一切眾生無不聞者盡一切未來際劫常轉法輪如來音聲無異無斷不可窮盡",
+          "length": 204,
+          "c_line": "0107c16",
+          "s_line": "0598c12",
+          "ctx": "，無停無息盡窮未來際。是故\n下文〈不思議品〉云「一切法界虛空"
+        },
+        {
+          "text": "如來應供等正覺亦復如是成就無量無邊法界智慧日輪常放無量無礙智慧光明先照菩薩摩訶薩等諸大山王次照緣覺次照聲聞次照決定善根眾生隨應受化然後悉照一切眾生乃至邪定為作未來饒益因緣",
+          "length": 85,
+          "c_line": "0115a11",
+          "s_line": "0616b18",
+          "ctx": "切諸大山王，次照一切大山，次照\n金剛寶山，然後普照一切大地。"
+        },
+        {
+          "text": "佛身充滿諸法界普現一切眾生前應受化器悉充滿佛故處此菩提樹一切佛剎微塵等爾所佛坐一毛孔皆有無量菩薩眾各為具說普賢行",
+          "length": 56,
+          "c_line": "0108b14",
+          "s_line": "0408a13",
+          "ctx": "法。」三通上二義有無\n無礙，以稱法界無障礙故。〈舍那品〉云「"
+        }
+      ],
+      "examples_unmarked": [
+        {
+          "text": "我等佛所亦說十住大眾眷屬名味句身等無有異是故",
+          "length": 22,
+          "c_line": "0119c24",
+          "s_line": "0446c05",
+          "ctx": "。初同類者，如說十住，十方各有十剎塵\n數菩薩來證，同名法慧。"
+        },
+        {
+          "text": "出生不可思議淨妙音聲無量世界無不普聞方便智明",
+          "length": 22,
+          "c_line": "0380a28",
+          "s_line": "0639c05",
+          "ctx": "間品〉十明相攝\n者，彼文約所知明了，非約業用自在。唯彼\n第四"
+        },
+        {
+          "text": "驟迅踰疾風致遠不疲乘者安豫巡遊四方不失主意",
+          "length": 21,
+          "c_line": "0257b21",
+          "s_line": "0504c22",
+          "ctx": "其上，一念之頃周四天下。三馬\n寶，其色紺炎、髦尾金色，行不𩣺"
+        }
+      ],
+      "examples_unmarked_any": [
+        {
+          "text": "我等佛所亦說十住大眾眷屬名味句身等無有異是故",
+          "length": 22,
+          "c_line": "0119c24",
+          "s_line": "0446c05",
+          "ctx": "。初同類者，如說十住，十方各有十剎塵\n數菩薩來證，同名法慧。"
+        },
+        {
+          "text": "出生不可思議淨妙音聲無量世界無不普聞方便智明",
+          "length": 22,
+          "c_line": "0380a28",
+          "s_line": "0639c05",
+          "ctx": "間品〉十明相攝\n者，彼文約所知明了，非約業用自在。唯彼\n第四"
+        }
+      ]
+    }
+  }
+}
