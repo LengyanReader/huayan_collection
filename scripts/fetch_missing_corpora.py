@@ -84,6 +84,31 @@ TARGETS = [
         "check": ["Gaṇḍavyūhasūtra", "P.L. Vaidya", "samantabhadra"],
         "note": "GRETIL（哥廷根）· 底本 P.L. Vaidya 1960 · Gaṇḍavyūha（〈入法界品〉梵本·印本电子转录）",
     },
+    # --- 卍續藏：華嚴部注疏三線（合論／疏注／綱要），X 部取自 CBETA xml-p5 ---
+    {
+        "id": "X04n0223", "dir": "cbeta_x", "path": "X04n0223.xml",
+        "url": f"{CBETA}/X/X04/X04n0223.xml",
+        "check": ["華嚴經合論", "李通玄"],
+        "note": "CBETA xml-p5 · 卍續藏 X223 · 華嚴經合論（唐李通玄造論・志寧釐經合論）",
+    },
+    {
+        "id": "X07n0234", "dir": "cbeta_x", "path": "X07n0234.xml",
+        "url": f"{CBETA}/X/X07/X07n0234.xml",
+        "check": ["華嚴經疏注", "淨源"],
+        "note": "CBETA xml-p5 · 卍續藏 X234 · 華嚴經疏注（唐澄觀述・宋淨源錄疏注經）",
+    },
+    {
+        "id": "X08n0240", "dir": "cbeta_x", "path": "X08n0240.xml",
+        "url": f"{CBETA}/X/X08/X08n0240.xml",
+        "check": ["華嚴綱要", "德清"],
+        "note": "CBETA xml-p5 · 卍續藏 X240 · 華嚴綱要 卷1–44（唐澄觀疏義・明德清提挈）",
+    },
+    {
+        "id": "X09n0240", "dir": "cbeta_x", "path": "X09n0240.xml",
+        "url": f"{CBETA}/X/X09/X09n0240.xml",
+        "check": ["華嚴綱要", "德清"],
+        "note": "CBETA xml-p5 · 卍續藏 X240 · 華嚴綱要 卷45–80（唐澄觀疏義・明德清提挈）",
+    },
 ]
 
 # The Daozang text is split one file per juan; expand into 61 targets.

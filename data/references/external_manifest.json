@@ -556,6 +556,38 @@
       "sha256": "83c5fb33d8bc599c4a662d1264cb7796367443fcc728a8b6cc93a38a96adb6ec",
       "retrieved": "2026-11-13",
       "note": "GRETIL（哥廷根）· 底本 P.L. Vaidya 1960 · Gaṇḍavyūha（〈入法界品〉梵本·印本电子转录）"
+    },
+    "X04n0223": {
+      "path": "data/references/cbeta_x/X04n0223.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/X/X04/X04n0223.xml",
+      "bytes": 9049045,
+      "sha256": "c8923e289207502e823f319e6be6eeb3315928592a76bf8791b89fd9469f7d6a",
+      "retrieved": "2026-11-13",
+      "note": "CBETA xml-p5 · 卍續藏 X223 · 華嚴經合論（唐李通玄造論・志寧釐經合論）"
+    },
+    "X07n0234": {
+      "path": "data/references/cbeta_x/X07n0234.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/X/X07/X07n0234.xml",
+      "bytes": 4147226,
+      "sha256": "53362854246154ede1f7db48e030c902f2d4257a9badefb644127991ead1cbd7",
+      "retrieved": "2026-11-13",
+      "note": "CBETA xml-p5 · 卍續藏 X234 · 華嚴經疏注（唐澄觀述・宋淨源錄疏注經）"
+    },
+    "X08n0240": {
+      "path": "data/references/cbeta_x/X08n0240.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/X/X08/X08n0240.xml",
+      "bytes": 4230935,
+      "sha256": "e93ce8cf10abb0647e8a98bc97a777a14a160e141a29c32c4e5e57d753d404f4",
+      "retrieved": "2026-11-13",
+      "note": "CBETA xml-p5 · 卍續藏 X240 · 華嚴綱要 卷1–44（唐澄觀疏義・明德清提挈）"
+    },
+    "X09n0240": {
+      "path": "data/references/cbeta_x/X09n0240.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/X/X09/X09n0240.xml",
+      "bytes": 3235435,
+      "sha256": "da1c032cc671cdca2cd268bea2a38639784835aee26eaf916dd85c1544c94fc8",
+      "retrieved": "2026-11-13",
+      "note": "CBETA xml-p5 · 卍續藏 X240 · 華嚴綱要 卷45–80（唐澄觀疏義・明德清提挈）"
     }
   }
 }
