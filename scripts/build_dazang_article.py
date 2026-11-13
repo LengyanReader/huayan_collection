@@ -580,7 +580,7 @@ def table_t6(implicit):
 
 def table_t7(probe):
     pairs = probe["pairs"]
-    order = ["A", "B"]
+    order = ["A", "B", "C"]
     out = ["| 对 | 注释 | 所注经 | 品数 | 经文字 | 注疏字 | 长比 | 引文字 | 引用率（中位／最高） | 单条最长 | 链最长 |",
            "|---|---|---|---:|---:|---:|---:|---:|---|---:|---:|"]
     for pid in order:
@@ -632,14 +632,18 @@ def table_t7(probe):
         for e in p["examples"]:
             out.append(f"- {pid} `{p['commentary']}` {e['lb']}〔{esc(e['type'])}〕：…{esc(e['ctx'])}…")
     out.append("")
-    a, b = pairs["A"]["stats"], pairs["B"]["stats"]
+    a, b, c = pairs["A"]["stats"], pairs["B"]["stats"], pairs["C"]["stats"]
     out.append(
-        f"**判断**：两疏对经文既不压缩也不逐句转述——注疏比经文长 {(a['length_ratio'] - 1) * 100:.1f}%（A）"
+        f"**判断**：唐疏唐钞对经文既不压缩也不逐句转述——注疏比经文长 {(a['length_ratio'] - 1) * 100:.1f}%（A）"
         f"与 {(b['length_ratio'] - 1) * 100:.1f}%（B），逐品引用率中位 {a['quoted_share_median']:.2%}／"
         f"{b['quoted_share_median']:.2%}，引文点状；多锚点链最长 {a['chain_max_span']}／"
         f"{b['chain_max_span']} 字，无一跨 120 字，注释从不沿经文连续推进。"
         f"可复验的「节略」只有明标的那 {a['markers_total']}／{b['markers_total']} 处"
         f"（略不釋／頌、準前、例類知）——是点状声明，不是整体行为。"
+        f"宋注（C，仅 18 品）是另一种体例：长比 {c['length_ratio']:.2f}、引用率中位 "
+        f"{c['quoted_share_median']:.2%}、链最长 {c['chain_max_span']} 字——"
+        "链沿经推进的是嵌进注层的经文正文，不是注释转述；T7 的「转述／节略」问题对它不成立，"
+        "它是 §17.16 之六「逐段嵌入」的另一面。"
     )
     return "\n".join(out)
 

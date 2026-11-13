@@ -1,6 +1,6 @@
 {
   "meta": {
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "hit_n": 12,
     "chain": {
       "n": 6,
@@ -14,21 +14,25 @@
     ],
     "method": "①长度比：按品对齐，注疏字数÷经文字数；②逐品引用率：取 ≥12 字极大公共串，按其在经文中的位置归品后累加；③锚点链：6 字锚点，经文间隔≤40、注疏间隔≤20 者并链记跨度；④节略标记：3 类用语计数并附行号；只收「略不釋／頌」「準前」「例類知」，多义的「不具」「故略」「文略」「此略」不收。",
     "sources": {
+      "T278": {
+        "path": "data/references/cbeta/T09n0278.xml",
+        "sha256": "a2bfcee6213f9a02012d8c6227ab125e2924a97619b7a3a89d6cf515410077b5"
+      },
       "T1735": {
         "path": "data/references/cbeta/T35n1735.xml",
         "sha256": "53b69ce2d66853d62019893e74fefe207013235185373fa1d9af9abad57cd253"
-      },
-      "T279": {
-        "path": "data/references/cbeta/T10n0279.xml",
-        "sha256": "9d3de2c63a3eca5665352d12fb3a291e99a898cf470e1c0c71491731aa998d07"
       },
       "T1733": {
         "path": "data/references/cbeta/T35n1733.xml",
         "sha256": "08ca180c805376b96c97d9e51c6df4b25a95f4ba9ed6436a4d0c0b96b45065e5"
       },
-      "T278": {
-        "path": "data/references/cbeta/T09n0278.xml",
-        "sha256": "a2bfcee6213f9a02012d8c6227ab125e2924a97619b7a3a89d6cf515410077b5"
+      "X234": {
+        "path": "data/references/cbeta_x/X07n0234.xml",
+        "sha256": "53362854246154ede1f7db48e030c902f2d4257a9badefb644127991ead1cbd7"
+      },
+      "T279": {
+        "path": "data/references/cbeta/T10n0279.xml",
+        "sha256": "9d3de2c63a3eca5665352d12fb3a291e99a898cf470e1c0c71491731aa998d07"
       }
     }
   },
@@ -47,6 +51,7 @@
         "quoted_share_median": 0.00692,
         "quoted_share_max": 0.07617,
         "hits": 215,
+        "hits_unattributed": 0,
         "max_hit": 65,
         "max_hit_c_lb": "0504c24",
         "max_hit_s_lb": "0277c15",
@@ -639,6 +644,7 @@
         "quoted_share_median": 0.00326,
         "quoted_share_max": 0.03887,
         "hits": 143,
+        "hits_unattributed": 0,
         "max_hit": 204,
         "max_hit_c_lb": "0107c16",
         "max_hit_s_lb": "0598c12",
@@ -1159,6 +1165,368 @@
           "type": "略不X",
           "lb": "0140b16",
           "ctx": "頌種種功德智慧體、後半正頌福智及結， 餘略不頌。結中淨知見既是淨光勝天，何故 名如來者"
+        }
+      ]
+    },
+    "C": {
+      "label": "淨源《華嚴經疏注》 vs 八十華嚴（僅收 18 品，玄談在外）",
+      "commentary": "X234",
+      "sutra": "T279",
+      "stats": {
+        "pins": 18,
+        "sutra_chars": 198036,
+        "com_chars": 301369,
+        "length_ratio": 1.522,
+        "quoted_chars": 22188,
+        "quoted_share": 0.11204,
+        "quoted_share_median": 0.12555,
+        "quoted_share_max": 0.17116,
+        "hits": 1443,
+        "hits_unattributed": 484,
+        "max_hit": 128,
+        "max_hit_c_lb": "0091b09",
+        "max_hit_s_lb": "0001b07",
+        "max_hit_head": "空寺，親受筆削，敬譯斯經。遂得甘露流津，預夢庚申之夕；膏雨灑潤，後覃壬戌之辰。式開實相之門，還符一味之澤。以聖曆二年",
+        "markers_total": 25,
+        "markers_by_type": {
+          "例類知": 3,
+          "準前": 10,
+          "略不X": 12
+        },
+        "chains": 1264,
+        "chain_max_span": 698,
+        "chain_spans_ge_60": 38,
+        "chain_spans_ge_120": 2
+      },
+      "pins": [
+        {
+          "no": 1,
+          "title": "1 世主妙嚴品",
+          "sutra_chars": 31958,
+          "com_chars": 58957,
+          "ratio": 1.845,
+          "quoted_chars": 4082,
+          "quoted_hits": 250,
+          "quoted_share": 0.12773,
+          "marked": 3
+        },
+        {
+          "no": 2,
+          "title": "2 如來現相品",
+          "sutra_chars": 8120,
+          "com_chars": 20286,
+          "ratio": 2.498,
+          "quoted_chars": 1270,
+          "quoted_hits": 81,
+          "quoted_share": 0.1564,
+          "marked": 2
+        },
+        {
+          "no": 4,
+          "title": "4 世界成就品",
+          "sutra_chars": 5922,
+          "com_chars": 9599,
+          "ratio": 1.621,
+          "quoted_chars": 979,
+          "quoted_hits": 61,
+          "quoted_share": 0.16532,
+          "marked": 1
+        },
+        {
+          "no": 5,
+          "title": "5 華藏世界品",
+          "sutra_chars": 19207,
+          "com_chars": 14233,
+          "ratio": 0.741,
+          "quoted_chars": 1072,
+          "quoted_hits": 74,
+          "quoted_share": 0.05581,
+          "marked": 1
+        },
+        {
+          "no": 6,
+          "title": "6 毘盧遮那品",
+          "sutra_chars": 4987,
+          "com_chars": 6203,
+          "ratio": 1.244,
+          "quoted_chars": 776,
+          "quoted_hits": 50,
+          "quoted_share": 0.1556,
+          "marked": 0
+        },
+        {
+          "no": 7,
+          "title": "7 如來名號品",
+          "sutra_chars": 3233,
+          "com_chars": 8073,
+          "ratio": 2.497,
+          "quoted_chars": 267,
+          "quoted_hits": 17,
+          "quoted_share": 0.08259,
+          "marked": 3
+        },
+        {
+          "no": 8,
+          "title": "8 四聖諦品",
+          "sutra_chars": 3272,
+          "com_chars": 8841,
+          "ratio": 2.702,
+          "quoted_chars": 295,
+          "quoted_hits": 19,
+          "quoted_share": 0.09016,
+          "marked": 0
+        },
+        {
+          "no": 28,
+          "title": "28 十通品",
+          "sutra_chars": 3648,
+          "com_chars": 4302,
+          "ratio": 1.179,
+          "quoted_chars": 458,
+          "quoted_hits": 29,
+          "quoted_share": 0.12555,
+          "marked": 2
+        },
+        {
+          "no": 29,
+          "title": "29 十忍品",
+          "sutra_chars": 5743,
+          "com_chars": 10165,
+          "ratio": 1.77,
+          "quoted_chars": 983,
+          "quoted_hits": 66,
+          "quoted_share": 0.17116,
+          "marked": 2
+        },
+        {
+          "no": 30,
+          "title": "30 阿僧祇品",
+          "sutra_chars": 4835,
+          "com_chars": 2063,
+          "ratio": 0.427,
+          "quoted_chars": 55,
+          "quoted_hits": 4,
+          "quoted_share": 0.01138,
+          "marked": 1
+        },
+        {
+          "no": 31,
+          "title": "31 壽量品",
+          "sutra_chars": 307,
+          "com_chars": 419,
+          "ratio": 1.365,
+          "quoted_chars": 52,
+          "quoted_hits": 3,
+          "quoted_share": 0.16938,
+          "marked": 0
+        },
+        {
+          "no": 32,
+          "title": "32 諸菩薩住處品",
+          "sutra_chars": 838,
+          "com_chars": 2690,
+          "ratio": 3.21,
+          "quoted_chars": 74,
+          "quoted_hits": 6,
+          "quoted_share": 0.08831,
+          "marked": 0
+        },
+        {
+          "no": 33,
+          "title": "33 佛不思議法品",
+          "sutra_chars": 13830,
+          "com_chars": 10054,
+          "ratio": 0.727,
+          "quoted_chars": 1542,
+          "quoted_hits": 101,
+          "quoted_share": 0.1115,
+          "marked": 0
+        },
+        {
+          "no": 34,
+          "title": "34 如來十身相海品",
+          "sutra_chars": 6154,
+          "com_chars": 3392,
+          "ratio": 0.551,
+          "quoted_chars": 254,
+          "quoted_hits": 17,
+          "quoted_share": 0.04127,
+          "marked": 1
+        },
+        {
+          "no": 35,
+          "title": "35 如來隨好光明功德品",
+          "sutra_chars": 2817,
+          "com_chars": 5103,
+          "ratio": 1.812,
+          "quoted_chars": 481,
+          "quoted_hits": 31,
+          "quoted_share": 0.17075,
+          "marked": 0
+        },
+        {
+          "no": 36,
+          "title": "36 普賢行品",
+          "sutra_chars": 4710,
+          "com_chars": 4178,
+          "ratio": 0.887,
+          "quoted_chars": 280,
+          "quoted_hits": 17,
+          "quoted_share": 0.05945,
+          "marked": 0
+        },
+        {
+          "no": 37,
+          "title": "37 如來出現品",
+          "sutra_chars": 23234,
+          "com_chars": 31895,
+          "ratio": 1.373,
+          "quoted_chars": 3724,
+          "quoted_hits": 226,
+          "quoted_share": 0.16028,
+          "marked": 2
+        },
+        {
+          "no": 38,
+          "title": "38 離世間品",
+          "sutra_chars": 55221,
+          "com_chars": 100916,
+          "ratio": 1.827,
+          "quoted_chars": 5544,
+          "quoted_hits": 391,
+          "quoted_share": 0.1004,
+          "marked": 2
+        }
+      ],
+      "top": [
+        {
+          "no": 29,
+          "title": "29 十忍品",
+          "sutra_chars": 5743,
+          "com_chars": 10165,
+          "ratio": 1.77,
+          "quoted_chars": 983,
+          "quoted_hits": 66,
+          "quoted_share": 0.17116,
+          "marked": 2
+        },
+        {
+          "no": 35,
+          "title": "35 如來隨好光明功德品",
+          "sutra_chars": 2817,
+          "com_chars": 5103,
+          "ratio": 1.812,
+          "quoted_chars": 481,
+          "quoted_hits": 31,
+          "quoted_share": 0.17075,
+          "marked": 0
+        },
+        {
+          "no": 31,
+          "title": "31 壽量品",
+          "sutra_chars": 307,
+          "com_chars": 419,
+          "ratio": 1.365,
+          "quoted_chars": 52,
+          "quoted_hits": 3,
+          "quoted_share": 0.16938,
+          "marked": 0
+        },
+        {
+          "no": 4,
+          "title": "4 世界成就品",
+          "sutra_chars": 5922,
+          "com_chars": 9599,
+          "ratio": 1.621,
+          "quoted_chars": 979,
+          "quoted_hits": 61,
+          "quoted_share": 0.16532,
+          "marked": 1
+        },
+        {
+          "no": 37,
+          "title": "37 如來出現品",
+          "sutra_chars": 23234,
+          "com_chars": 31895,
+          "ratio": 1.373,
+          "quoted_chars": 3724,
+          "quoted_hits": 226,
+          "quoted_share": 0.16028,
+          "marked": 2
+        }
+      ],
+      "bottom": [
+        {
+          "no": 30,
+          "title": "30 阿僧祇品",
+          "sutra_chars": 4835,
+          "com_chars": 2063,
+          "ratio": 0.427,
+          "quoted_chars": 55,
+          "quoted_hits": 4,
+          "quoted_share": 0.01138,
+          "marked": 1
+        },
+        {
+          "no": 34,
+          "title": "34 如來十身相海品",
+          "sutra_chars": 6154,
+          "com_chars": 3392,
+          "ratio": 0.551,
+          "quoted_chars": 254,
+          "quoted_hits": 17,
+          "quoted_share": 0.04127,
+          "marked": 1
+        },
+        {
+          "no": 5,
+          "title": "5 華藏世界品",
+          "sutra_chars": 19207,
+          "com_chars": 14233,
+          "ratio": 0.741,
+          "quoted_chars": 1072,
+          "quoted_hits": 74,
+          "quoted_share": 0.05581,
+          "marked": 1
+        },
+        {
+          "no": 36,
+          "title": "36 普賢行品",
+          "sutra_chars": 4710,
+          "com_chars": 4178,
+          "ratio": 0.887,
+          "quoted_chars": 280,
+          "quoted_hits": 17,
+          "quoted_share": 0.05945,
+          "marked": 0
+        },
+        {
+          "no": 7,
+          "title": "7 如來名號品",
+          "sutra_chars": 3233,
+          "com_chars": 8073,
+          "ratio": 2.497,
+          "quoted_chars": 267,
+          "quoted_hits": 17,
+          "quoted_share": 0.08259,
+          "marked": 3
+        }
+      ],
+      "examples": [
+        {
+          "type": "例類知",
+          "lb": "0053b04",
+          "ctx": "，雖加不定猶有妨 難。略顯五時之妨，餘可例知。初明十二年前為有  相者，自違《成論》"
+        },
+        {
+          "type": "準前",
+          "lb": "0069b14",
+          "ctx": "一。一入、多攝，反上 應知。餘義、餘句，準前思之。八、同體相即義。謂前一 緣所具多一"
+        },
+        {
+          "type": "準前",
+          "lb": "0069b18",
+          "ctx": "多空既爾，多有、一空亦然。餘 義、餘句，準前思之。九、俱融無礙義。謂亦同前體、用 雙"
         }
       ]
     }

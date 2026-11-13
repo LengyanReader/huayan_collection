@@ -62,7 +62,34 @@ FILES = {
     "T278": "T09n0278.xml",
 }
 
+# 卍續藏庫外檔（§17.8 入庫）
+XFILES = {
+    "X234": "data/references/cbeta_x/X07n0234.xml",
+}
+
 PIN_RE = re.compile(r'<cb:mulu level="1"[^>]*type="品">([^<]+)</cb:mulu>')
+PIN_RE_L2 = re.compile(r'<cb:mulu level="2"[^>]*type="品">([^<]+)</cb:mulu>')
+CN_DIGIT = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5,
+            "六": 6, "七": 7, "八": 8, "九": 9}
+
+
+def cn2num(s: str) -> int:
+    """中文數位（一~三十九足用）：二十八→28、三十→30、十→10。"""
+    if "十" not in s:
+        return CN_DIGIT.get(s, 0)
+    a, _, b = s.partition("十")
+    tens = CN_DIGIT.get(a, 1) if a else 1
+    ones = CN_DIGIT.get(b, 0) if b else 0
+    return tens * 10 + ones
+
+
+def pin_num(title: str) -> int | None:
+    """品題→品號：T279 式「1 世主妙嚴品」取前綴；X 部式「世主妙嚴品第一」取「第N」。"""
+    m = re.match(r"\s*(\d+)", title)
+    if m:
+        return int(m.group(1))
+    m = re.search(r"第([一二三四五六七八九十]+)", title)
+    return cn2num(m.group(1)) if m else None
 
 
 def sha256(b: bytes) -> str:
@@ -70,11 +97,19 @@ def sha256(b: bytes) -> str:
 
 
 def pin_spans(doc: Doc) -> list[tuple[int, str, int, int]]:
-    """(品号, 标题, raw 起, raw 止)；若首品无标记，则卷首至次品标记算首品。"""
+    """(品号, 标题, raw 起, raw 止)；若首品无标记，则卷首至次品标记算首品。
+    X 部品題在 level 2 且用中文數位（世主妙嚴品第一），無 level 1 品時退而取之。"""
     hits = []
     for m in PIN_RE.finditer(doc.raw):
-        num = int(re.match(r"(\d+)", m.group(1)).group(1))
-        hits.append((num, m.group(1).strip(), m.start()))
+        num = pin_num(m.group(1))
+        if num is not None:
+            hits.append((num, m.group(1).strip(), m.start()))
+    if not hits:
+        for m in PIN_RE_L2.finditer(doc.raw):
+            num = pin_num(m.group(1))
+            if num is not None:
+                hits.append((num, m.group(1).strip(), m.start()))
+    hits.sort(key=lambda x: x[2])
     spans = []
     for i, (num, title, start) in enumerate(hits):
         end = hits[i + 1][2] if i + 1 < len(hits) else len(doc.raw)
@@ -179,8 +214,12 @@ def main() -> int:
     pairs = [
         ("A", "T1735", "T279", "澄觀《華嚴經疏》 vs 八十華嚴"),
         ("B", "T1733", "T278", "法藏《探玄記》 vs 六十華嚴"),
+        ("C", "X234", "T279", "淨源《華嚴經疏注》 vs 八十華嚴（僅收 18 品，玄談在外）"),
     ]
-    docs = {k: Doc(k, CBETA / f) for k, f in FILES.items()}
+    docs = {}
+    for k in set(f for _, c, s, _ in pairs for f in (c, s)):
+        p = (ROOT / XFILES[k]) if k in XFILES else (CBETA / FILES[k])
+        docs[k] = Doc(k, p)
     nbounds = {k: raw_to_norm(d) for k, d in docs.items()}
     spins = {k: pin_spans(d) for k, d in docs.items()}
 
@@ -265,7 +304,8 @@ def main() -> int:
                 "quoted_share": round(q_chars / s_chars, 5) if s_chars else 0.0,
                 "quoted_share_median": round(med, 5),
                 "quoted_share_max": round(shares[-1], 5) if shares else 0.0,
-                "hits": len(hs),
+                "hits": sum(r["quoted_hits"] for r in rows),
+                "hits_unattributed": len(hs) - sum(r["quoted_hits"] for r in rows),
                 "max_hit": longest[1] - longest[0],
                 "max_hit_c_lb": com.lb_at(com.raw_index(longest[0])) if hs else "",
                 "max_hit_s_lb": sutra.lb_at(sutra.raw_index(longest[2])) if hs else "",

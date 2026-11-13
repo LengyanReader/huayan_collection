@@ -401,7 +401,7 @@ def main() -> int:
     for key, meta in t7["meta"]["sources"].items():
         if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
             fail(f"T7 source hash changed: {key}")
-    for pid in ("A", "B"):
+    for pid in t7["pairs"]:
         p = t7["pairs"][pid]
         st = p["stats"]
         if sum(st["markers_by_type"].values()) != st["markers_total"]:
@@ -431,17 +431,23 @@ def main() -> int:
         fail("T7: article should state that no chain spans 120")
     if f"{a['chain_max_span']}／{b['chain_max_span']} 字" not in md:
         fail("T7: chain span sentence out of sync")
+    c = t7["pairs"]["C"]["stats"]
+    for frag in (f"长比 {c['length_ratio']:.2f}、引用率中位 {c['quoted_share_median']:.2%}",
+                 f"链最长 {c['chain_max_span']} 字"):
+        if frag not in md:
+            fail(f"T7: C judgement figure missing: {frag}")
     t7_block = grab("t7")
     t7_tables = [ln for ln in t7_block.splitlines() if ln.startswith("| 对 |")]
     if len(t7_tables) != 3:
         fail("§17.15 should print three tables with a 对 column")
     star = [ln for ln in t7_block.splitlines() if ln.startswith("| **合** |")]
-    if len(star) != 1 or f"**{a['markers_total']}**" not in star[0]:
+    if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
+                             for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
     if "### 17.15 T7" not in md or "### 17.18 未竟" not in md:
         fail("§17.15–17.16 headings missing")
-    ok(f"§17.15 T7: {a['markers_total']}+{b['markers_total']} 节略用语, "
-       f"{len(t7['pairs']['A']['examples']) + len(t7['pairs']['B']['examples'])} 例 re-verified")
+    ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
+       f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
 
     # --- §17.16 T4: screen / partition / controls must be reproduced by the article ---
     t4_path = ROOT / "data" / "research" / "conflation_probe.json"
