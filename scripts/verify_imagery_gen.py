@@ -24,7 +24,7 @@ def main():
                      "boundary": bm.group(1).strip() if bm else "",
                      "category": cm.group(1).strip() if cm else ""}
 
-    figs = re.findall(r'<img class="doc-img" src="([^"]+)"[^>]*alt="([^"]*)"[^>]*>\s*<figcaption[^>]*>\s*图 ([\d\-]+)', doc)
+    figs = re.findall(r'<img class="doc-img" src="([^"]+)"[^>]*alt="([^"]*)"[^>]*>\s*<figcaption[^>]*>\s*图 ([\w\-]+)', doc)
     fig_nos = set()
     for src, alt, no in figs:
         fig_nos.add(no)
@@ -37,7 +37,7 @@ def main():
                 errs.append("图 %s 缺边界" % no)
             if not items[no]["category"]:
                 errs.append("图 %s 缺分类" % no)
-            after = doc.split("图 " + no)[1][:600] if ("图 " + no) in doc else ""
+            after = doc.split(src)[1][:600] if src in doc else ""
             if "边界" not in after:
                 errs.append("图 %s 图注无边界声明" % no)
     for no in set(items.keys()) - fig_nos:

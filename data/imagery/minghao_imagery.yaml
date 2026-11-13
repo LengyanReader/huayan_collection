@@ -1,0 +1,35 @@
+article: auto
+title_zh: 鹿野苑·阿育王狮子柱头·文化资产参证登记册
+purpose: 唯一权威著录源（体例沿 P1/P39/P3/P24）。
+license_policy: Commons 可核验授权·extmetadata 回源。
+verification_note: HEAD 200 于 2026-11-13；授权与作者经 extmetadata 回源。
+boundary_principle: A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。
+items:
+- img_no: 7-C1
+  title_zh: 鹿野苑·阿育王狮子柱头
+  title_en: Lion Capital of Ashoka, Sarnath
+  era_zh: 约公元前 3 世纪（阿育王时代·〔待核〕）
+  site_zh: 印度·鹿野苑博物馆藏（原件）
+  commons_file: File:Lion Capital of Ashoka 3.jpg
+  license: CC0
+  license_url: （见 Commons 条目）
+  author_zh: Apurv013
+  ref: 鹿野苑法轮发端——佛名号随缘而立之名号题域参证（四狮柱头下即法轮雕带）
+  boundary: C：名胜古迹实况·阿育王柱为法轮圣地标志·非本经图像；名号品以佛名遍周为宗·借鹿野苑发端之名号场域参证。
+  category: C 类：名胜古迹实况
+  thumb_url: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Lion_Capital_of_Ashoka_3.jpg/960px-Lion_Capital_of_Ashoka_3.jpg
+  verified: HEAD 200 于 2026-11-13
+- img_no: 7-C2
+  title_zh: 云冈石窟·第20窟大佛（昙曜五窟）
+  title_en: Yungang Cave 20 colossal Buddha
+  era_zh: 北魏·约 460–470 年间开凿（〔待核〕）
+  site_zh: 山西大同·云冈石窟（世界遗产）
+  commons_file: File:Yungang Grottoes 03.jpg
+  license: CC BY-SA 2.0
+  license_url: （见 Commons 条目）
+  author_zh: Steve Cadman from London, U.K.
+  ref: 大佛即名号之身——如来名号周遍之造像题域参证（昙曜五窟为皇帝即如来之像教传统〔待核〕）
+  boundary: B：大佛造像题域·非本经专像；名号品言佛名遍法界·大佛为名号之具身传统。
+  category: B 类：大佛造像题域
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Yungang_Grottoes_03.jpg/960px-Yungang_Grottoes_03.jpg
+  verified: HEAD 200 于 2026-11-13
