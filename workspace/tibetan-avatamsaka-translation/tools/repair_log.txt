@@ -117,3 +117,37 @@ I shall here explain to the sons of the Victors the various modes of conduct of 
 [12:01:47] seg5 en: window=1 raw=90 cleaned=90 complete=True (ok)
 [12:01:47] --- cleaned ---
 Now, tell the sons of the Conquerors whatever qualities and modes of conduct there may be.
+[09:51:46] model ready 5.2s
+[10:07:46] seg6 zh: window=2 raw=43 cleaned=43 complete=True (ok)
+[10:07:46] --- cleaned ---
+善吉祥言：佛子請聽。
+彼等無量功德，僅就其功德中，
+如從大海取一滴水，我當略述其少分。
+[10:08:31] model ready 3.6s
+[10:27:27] seg6 en: window=2 raw=197 cleaned=195 complete=True (ok)
+[10:27:27] --- cleaned ---
+Bhadraśrī said: "Listen, O Son of the Conqueror!From among those infinite qualities, I shall describe a mere fraction, just as a single drop from an ocean, merely to provide a brief introduction.
+[10:27:52] seg6 zh: raw=43 cleaned=43 complete=True trimmed=False (ok)
+[10:27:52] seg6 en: raw=197 cleaned=194 complete=True trimmed=True (ok)
+[10:39:30] seg1 title-block: bam po 19 -> 《大方廣佛華嚴經》第十九包 / The Mahāvaipulya Sūtra, Buddhāvataṃsaka, bam po 19.
+[10:42:36] model ready 3.5s
+[10:53:00] seg1 zh: window=1 raw=44 cleaned=44 complete=True (ok)
+[10:53:00] --- cleaned ---
+隨後，藉著佛陀的神力，東方的一切世界，以及南方、西方、北方、東北方等各個方位，皆悉顯現。
+[10:54:26] model ready 3.2s
+[11:07:38] seg1 en: window=1 raw=230 cleaned=230 complete=True (ok)
+[11:07:38] --- cleaned ---
+Then, through the power of the Buddha, all the world systems of the eastern direction, and likewise those of the southern, western, and northern directions, as well as the intermediate direction of the northeast, [became visible].
+[11:08:16] model ready 3.3s
+[11:24:18] seg2 zh: window=1 raw=54 cleaned=54 complete=True (ok)
+[11:24:18] --- cleaned ---
+在東南方、西南方、西北方、下方及上方等一切世界之中，於此四大洲以及其餘每一處四大洲，皆悉顯現有如來如彼安住。
+[11:24:55] model ready 3.2s
+[11:46:51] seg2 en: window=1 raw=306 cleaned=306 complete=True (ok)
+[11:46:51] --- cleaned ---
+In the southeastern direction, the southwestern direction, the northwestern direction, the downward direction, and the upward direction—in all the world systems of these intermediate directions—within each of these four-continent worlds, such as this one, those Tathāgatas likewise appeared to be residing.
+[09:32:02] model ready 9.3s
+[10:44:40] model ready 5.9s
+[10:59:44] seg3 zh: window=1 raw=4 cleaned=0 complete=False (empty)
+[10:59:44] --- cleaned ---
+

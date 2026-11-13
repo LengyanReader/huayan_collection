@@ -345,11 +345,76 @@
    "folio": "[220a.1]",
    "char_off": 402,
    "bo": "བཟང་པོའི་དཔལ་གྱིས་སྨྲས་པ་རྒྱལ་སྲས་ཉོན། །ཡོན་ཏན་མཐའ་ཡས་དེ་དག་ཡོན་ཏན་ལས། །",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "善吉祥言：佛子請聽。\n彼等無量功德，僅就其功德中，\n如從大海取一滴水，我當略述其少分。",
+   "en": "Bhadraśrī said: Listen, O Son of the Conqueror! From among those infinite qualities, I shall describe a mere fraction, just as a single drop from an ocean, merely to provide a brief introduction.",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "window": [
+    6,
+    7
+   ],
+   "bo_merged": "བཟང་པོའི་དཔལ་གྱིས་སྨྲས་པ་རྒྱལ་སྲས་ཉོན། །ཡོན་ཏན་མཐའ་ཡས་དེ་དག་ཡོན་ཏན་ལས། །\nམཚོ་ལས་ཐིགས་པ་ཇི་བཞིན་ཉུང་ཤས་ཤིག །མགོ་སྨོས་ཙམ་དུ་ཅུང་ཟད་བརྗོད་པར་བྱ། །",
+   "zh_raw": "善吉祥言：佛子請聽。\n彼等無量功德，僅就其功德中，\n如從大海取一滴水，我當略述其少分。",
+   "zh_raw2": "善吉祥言：佛子請聽。\n彼等無量功德，僅就其功德中，\n如從大海取一滴水，我當略述其少分。",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 959.6,
+    "out_tokens": 39,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-12T10:07:46"
+   },
+   "zh_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "frame": false,
+    "coverage": {
+     "bo_chars": 70,
+     "out_chars": 41,
+     "ratio": 0.586,
+     "bo_shad_units": 4,
+     "out_sentence_units": 2
+    },
+    "needs_review": false,
+    "ts": "2026-11-12T10:27:52"
+   },
+   "en_raw": "Bhadraśrī said: \"Listen, O Son of the Conqueror! From among those infinite qualities, I shall describe a mere fraction, just as a single drop from an ocean, merely to provide a brief introduction.\"",
+   "en_raw2": "Bhadraśrī said: \"Listen, O Son of the Conqueror! From among those infinite qualities, I shall describe a mere fraction, just as a single drop from an ocean, merely to provide a brief introduction.\"",
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 1135.5,
+    "out_tokens": 49,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-12T10:27:27"
+   },
+   "en_clean": {
+    "method": "meta+residue+sentence-trim-v1",
+    "complete": true,
+    "trimmed": true,
+    "validation": "ok",
+    "frame": false,
+    "coverage": {
+     "bo_chars": 70,
+     "out_chars": 163,
+     "ratio": 2.329,
+     "bo_shad_units": 4,
+     "out_sentence_units": 2
+    },
+    "needs_review": false,
+    "ts": "2026-11-12T10:27:52"
+   }
   },
   {
    "no": 7,
@@ -359,11 +424,24 @@
    "folio": "[220a.1]",
    "char_off": 474,
    "bo": "མཚོ་ལས་ཐིགས་པ་ཇི་བཞིན་ཉུང་ཤས་ཤིག །མགོ་སྨོས་ཙམ་དུ་ཅུང་ཟད་བརྗོད་པར་བྱ། །",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "",
+   "en": "",
+   "status": "done",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "merged_into": 6,
+   "zh_clean": {
+    "method": "merged-into",
+    "complete": true,
+    "merged_into": 6,
+    "needs_review": false
+   },
+   "en_clean": {
+    "method": "merged-into",
+    "complete": true,
+    "merged_into": 6,
+    "needs_review": false
+   }
   },
   {
    "no": 8,

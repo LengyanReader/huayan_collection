@@ -3156,3 +3156,12 @@ done(
 - **边界**：插值给位置不给语义；无链≠对方无；语族窄义≠参数；异名≠异参。
 - **三关**：check ✓ · `verify_dazang_article.py` ALL PASS · `verify_demo.py` ✅ · build 85 files／38,459,361 B；`shanhe.html` 已还原。
 - **状态**：T9 仍 `partial`，覆盖 **16/34（47%）** 不变；下一步 C 覆盖面批（11 个 none 取 1–2 个，需新一手源）。
+
+
+## 三语线·ch18 2/6（2026-11-13）
+
+- **ch18**：33 段 / 4,968 字符；seg1「题名＋正文」done（规范题名《大方廣佛華嚴經》第十九包 + 模型正文）、seg2 十方世界 done；**2/6**。
+- **seg3 阻塞**：325 字符源，模型生成触发 **900 秒墙钟上限**，raw=4（空）→ `needs_retry`，不发布残句；已停止进程，无 repair/mitra python 残留。
+- **防跑飞**：`StoppingCriteria` 900s＋`max_new` 上限 400；题名+正文拆分（题名 canonical、正文 model）；ch18 首段〔订正〕登记。
+- **门禁**：G2.2/G2.3/G2.5 PASS；G2.1 FAIL=1（18 2/6＋19–31）；G2.4 manual；`verify_demo` 绿。
+- **next**：seg3 拆成 2 个短子段（约 150 字符）再译，或换 prompt 重试；然后 seg4–6。

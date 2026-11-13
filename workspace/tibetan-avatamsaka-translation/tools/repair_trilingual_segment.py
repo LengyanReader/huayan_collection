@@ -92,8 +92,17 @@ def cn_num(n):
     return str(n)
 
 
+TITLE_RE = re.compile(r'^(.*?བམ་པོ་[^།]*།)\s*(.*)$', re.S)
+
+
+def split_title(bo):
+    m = TITLE_RE.match(bo or '')
+    return (m.group(1), m.group(2)) if m else ('', bo or '')
+
+
 def is_title_block(bo):
-    return ('བམ་པོ་' in (bo or '')) and ('མདོ།' in (bo or ''))
+    title, body = split_title(bo)
+    return bool(title and not body.strip())
 
 
 def title_block_translation(bo):
@@ -119,6 +128,9 @@ def clean(text, lang, frame=False):
     t = re.sub(r'^["“”\']+|["“”\']+$', '', t).strip()
     if lang == 'en':
         t = re.sub(r';\s*', '; ', t)
+        t = re.sub(r'([!?])(?=[A-Z])', r'\1 ', t)
+        if t.count('"') % 2 == 1:
+            t = t.replace('"', '')
     if not t:
         return '', False, bool(raw)
 
@@ -236,6 +248,15 @@ def clean_only(path, doc, seg_no):
     return s
 
 
+def compose_title(s):
+    title, _ = split_title(s.get('bo') or '')
+    tzh, ten, n = title_block_translation(title)
+    s['zh'] = tzh + ((' ' + s['body_zh']) if s.get('body_zh') else '')
+    s['en'] = ten + ((' ' + s['body_en']) if s.get('body_en') else '')
+    s['kind'] = 'title'
+    s['bam_po'] = n
+
+
 def retranslate(path, doc, seg_no, lang, max_new, window=1):
     s = next((x for x in doc['segments'] if int(x['no']) == seg_no), None)
     if not s:
@@ -245,6 +266,8 @@ def retranslate(path, doc, seg_no, lang, max_new, window=1):
     bo = '\n'.join(x['bo'] for x in win) if len(win) > 1 else s['bo']
     s['window'] = [seg_no, win[-1]['no']]
     s['bo_merged'] = bo
+    title_prefix, body_text = split_title(bo)
+    source = body_text if title_prefix else bo
     if len(win) == 1 and is_title_block(bo):
         zh, en, n = title_block_translation(bo)
         s['kind'] = 'title'
@@ -266,29 +289,45 @@ def retranslate(path, doc, seg_no, lang, max_new, window=1):
         log('seg%d title-block: bam po %s -> %s / %s' % (seg_no, n, zh, en))
         return
     import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
+    from transformers import AutoModelForCausalLM, AutoTokenizer, StoppingCriteria, StoppingCriteriaList
     t0 = time.time()
     tok = AutoTokenizer.from_pretrained(MODEL, local_files_only=True)
     torch.set_num_threads(os.cpu_count() or 8)
     model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16, device_map='cpu', local_files_only=True)
     model.eval()
     log('model ready %.1fs' % (time.time() - t0))
-    prompt = build_prompt(bo, 'Modern Chinese' if lang == 'zh' else 'English')
+    prompt = build_prompt(source, 'Modern Chinese' if lang == 'zh' else 'English')
     msgs = [{'role': 'user', 'content': prompt}]
     inputs = tok.apply_chat_template(msgs, add_generation_prompt=True, return_dict=True,
                                      return_tensors='pt', enable_thinking=False)
     t1 = time.time()
+
+    class _TimeLimit(StoppingCriteria):
+        def __init__(self, start, limit):
+            self.start, self.limit = start, limit
+
+        def __call__(self, input_ids, scores, **kwargs):
+            return (time.time() - self.start) > self.limit
+
+    max_new = min(max_new, 400)
+    criteria = StoppingCriteriaList([_TimeLimit(t1, 900)])
     with torch.no_grad():
         out = model.generate(**inputs, max_new_tokens=max_new, do_sample=False,
-                             no_repeat_ngram_size=8, pad_token_id=tok.eos_token_id)
+                             no_repeat_ngram_size=8, pad_token_id=tok.eos_token_id,
+                             stopping_criteria=criteria)
     raw = tok.decode(out[0][inputs['input_ids'].shape[1]:], skip_special_tokens=True)
-    frame = is_frame(bo)
+    frame = is_frame(source)
     cleaned, complete, trimmed = clean(raw, lang, frame=frame)
     ok, why = validate(cleaned, lang, frame=frame)
     if lang not in s or not s.get(lang + '_raw'):
         s[lang + '_raw'] = s.get(lang) or ''
     s[lang + '_raw2'] = raw
-    s[lang] = cleaned
+    if title_prefix:
+        s['body_' + lang] = cleaned
+        if cleaned:
+            compose_title(s)
+    else:
+        s[lang] = cleaned
     s[lang + '_meta'] = {
         'model': MODEL, 'engine': 'mitra-qwen35-translate 9B bf16 CPU',
         'revisions': 1, 'schooling': '未校订',
@@ -298,17 +337,17 @@ def retranslate(path, doc, seg_no, lang, max_new, window=1):
         'max_new': max_new, 'clipped_repeat': False,
         'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
     }
-    bo_chars = len(re.sub(r'\s', '', bo))
+    bo_chars = len(re.sub(r'\s', '', source))
     out_chars = len(re.sub(r'\s', '', cleaned))
     ratio = round(out_chars / max(bo_chars, 1), 3)
-    bo_units = bo.count('།')
+    bo_units = source.count('།')
     out_units = len(re.findall(r'[。！？；]' if lang == 'zh' else r'[.!?;]', cleaned))
     coverage = {
         'bo_chars': bo_chars, 'out_chars': out_chars, 'ratio': ratio,
         'bo_shad_units': bo_units, 'out_sentence_units': out_units,
     }
     merged = len(win) > 1
-    verse = ('། །' in bo)
+    verse = ('། །' in source)
     review = (not (complete and ok)) or (not frame and (out_chars < 8 or ratio < 0.12 or ((not merged and not verse) and out_units < max(1, bo_units // 2))))
     s[lang + '_clean'] = {
         'method': 'official-mitra-prompt+meta/residue/sentence-trim-v1',
@@ -322,11 +361,19 @@ def retranslate(path, doc, seg_no, lang, max_new, window=1):
     }
     if not (complete and ok):
         s['status'] = 'needs_retry'
-        s[lang] = ''
+        if title_prefix:
+            s['body_' + lang] = ''
+            compose_title(s)
+        else:
+            s[lang] = ''
     elif review:
         s['status'] = 'needs_review'
     else:
-        s['status'] = 'done'
+        zh_src = s.get('body_zh') if title_prefix else s.get('zh')
+        en_src = s.get('body_en') if title_prefix else s.get('en')
+        zh_ok = bool(zh_src) and (s.get('zh_clean') or {}).get('complete')
+        en_ok = bool(en_src) and (s.get('en_clean') or {}).get('complete')
+        s['status'] = 'done' if (zh_ok and en_ok) else 'partial'
 
     if len(win) > 1:
         for x in win[1:]:
