@@ -652,6 +652,59 @@ def _pair_cells(blk, s1, s2):
     return (f"{blk[s1]:.1%}／{blk[s2]:.1%}")
 
 
+def table_source_map(data, enrich):
+    """§4.6 来源拼图总表：39 品 × {六十·藏章·单品别译·梵本·增长痕迹}。
+
+    数据源：mapping_60_80.rows（品名/六十/别译 branch）、tib45（藏章反查）、
+    catalog_32 xref（单品反查校验用）；梵本存佚与增长痕迹取自 §6.1 与 84000
+    导言（已分别在正文落格，此处仅收拢）。
+    """
+    # 梵本单品存世（§6.1 表，A/B 级）；增长痕迹（§2.5 藏译拆章、§5.7 参访数）
+    SANSKRIT = {
+        26: "Daśabhūmika 存",
+        31: "寿量梵本存（新发现·B）",
+        36: "Bhadracaryā 存（品末偈）",
+        39: "Gaṇḍavyūha 存",
+    }
+    GROWTH = {
+        5: "藏译拆为章 5–9（＋新料）",
+        39: "聖堅本 25 参→彌勒自数 110",
+    }
+    tib_by_pin: dict[str, list[int]] = {}
+    for r in enrich.get("tib45", []):
+        tib_by_pin.setdefault(str(r["pin"]), []).append(r["no"])
+
+    rows = data["mapping_60_80"]["rows"]
+    out = []
+    out.append("| 品 | 品名（八十） | 六十 | 藏章 | 单品别译（异译） | 梵本 | 增长痕迹 |")
+    out.append("|---:|---|---|---|---|---|---|")
+    for i, r in enumerate(rows, 1):
+        p80 = r["p80"]
+        p60 = r["p60"] if r["p60"] and r["p60"] != p80 else "同"
+        chapters = tib_by_pin.get(str(i))
+        tib = "、".join(str(n) for n in chapters) if chapters else "—"
+        branch = r["branch"].strip() if r["branch"] else "—"
+        sans = SANSKRIT.get(i, "佚")
+        growth = GROWTH.get(i, "—")
+        out.append(f"| {i} | {esc(p80)} | {esc(p60)} | {esc(tib)} | "
+                   f"{esc(branch)} | {esc(sans)} | {esc(growth)} |")
+    out.append("")
+    n_branch = sum(1 for r in rows if r["branch"].strip())
+    tib_rows = enrich.get("tib45", [])
+    hanwu = [r["no"] for r in tib_rows if str(r["pin"]) == "汉无"]
+    covered = {str(r["pin"]) for r in tib_rows if str(r["pin"]).isdigit()}
+    out.append(f"**拼图完成度**：39 品中 {n_branch} 品有单品别译（§3.2 全表）；"
+               f"藏 45 章覆盖 {len(covered)} 品，另有 {len(hanwu)} 章汉无"
+               f"（章 {'、'.join(str(n) for n in hanwu)}）；"
+               f"梵本单品存 {len(SANSKRIT)} 种（§6.1）；增长痕迹有记者 {len(GROWTH)} 品。"
+               "空格＝「无据」，不等于「无来源」。")
+    out.append("")
+    out.append("**空白登记**（拼图未完处，见 §17.18）：各品的印度前身谱系"
+               "（Nattier 原始华严层：兜沙／本业一类最早译）未判；丹珠尔论典"
+               "（印度论师怎么读华严）题录全空；东亚传播（新罗·日本）零题录。")
+    return "\n".join(out)
+
+
 def table_t4(probe):
     meta = probe["meta"]
     thr = meta["thresholds"]
@@ -941,6 +994,7 @@ def main():
         "t4": table_t4(conflation),
         "endgame": table_endgame(endgame),
         "bhumi": table_bhumi(enrich),
+        "source_map": table_source_map(data, enrich),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),

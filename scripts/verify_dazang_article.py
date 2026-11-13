@@ -393,6 +393,37 @@ def main() -> int:
         fail("§17.14 sweep table rows != meta.sweep")
     ok(f"§17.14 T6: {sum(len(p['examples_unmarked']) for p in imp['pairs'].values())} examples re-verified in both texts")
 
+    # --- §4.6 source map: 39-品 master table must match the underlying JSONs ---
+    sm_block = grab("source_map")
+    sm_rows = [ln for ln in sm_block.splitlines() if re.match(r"^\| \d+ \|", ln)]
+    mapping_rows = data["mapping_60_80"]["rows"]
+    if len(sm_rows) != len(mapping_rows):
+        fail(f"§4.6 source map rows {len(sm_rows)} != mapping rows {len(mapping_rows)}")
+    tib_rows = json.loads((ROOT / "data" / "research" / "dazang_enrichment.json")
+                          .read_text(encoding="utf-8"))["tib45"]
+    tib_by_pin: dict[str, list[int]] = {}
+    for r in tib_rows:
+        tib_by_pin.setdefault(str(r["pin"]), []).append(r["no"])
+    for i, row_ln in enumerate(sm_rows, 1):
+        cells = [c.strip() for c in row_ln.split("|")]
+        if cells[1] != str(i):
+            fail(f"§4.6 row {i} numbering broken")
+        if cells[2] != mapping_rows[i - 1]["p80"]:
+            fail(f"§4.6 row {i} 品名 out of sync: {cells[2]}")
+        want_tib = "、".join(str(n) for n in tib_by_pin.get(str(i), [])) or "—"
+        if cells[4] != want_tib:
+            fail(f"§4.6 row {i} 藏章 out of sync: {cells[4]} != {want_tib}")
+        if mapping_rows[i - 1]["branch"].strip() and cells[5] == "—":
+            fail(f"§4.6 row {i} 别译 dropped")
+    if "藏译拆为章 5–9" not in sm_block or "聖堅本 25 参→彌勒自数 110" not in sm_block:
+        fail("§4.6 growth marks missing")
+    if "Daśabhūmika 存" not in sm_block or "Gaṇḍavyūha 存" not in sm_block:
+        fail("§4.6 Sanskrit marks missing")
+    hanwu = [r["no"] for r in tib_rows if str(r["pin"]) == "汉无"]
+    if f"{len(hanwu)} 章汉无" not in sm_block:
+        fail("§4.6 completion line out of sync")
+    ok(f"§4.6 source map: {len(sm_rows)} 品 rows synced (藏章/别译/梵本/增长)")
+
     # --- §17.15 T7: 品级长度比、引用率、节略用语、锚点链 ---
     t7_path = ROOT / "data" / "research" / "paraphrase_probe.json"
     if not t7_path.exists():
