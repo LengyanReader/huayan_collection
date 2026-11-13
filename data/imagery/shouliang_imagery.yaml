@@ -1,0 +1,21 @@
+article: auto
+title_zh: 无量寿佛坐像（Rietberg 博物馆藏）·文化资产参证登记册
+purpose: 唯一权威著录源（体例沿 P1/P39/P3/P24）。
+license_policy: Commons 可核验授权·extmetadata 回源。
+verification_note: HEAD 200 于 2026-11-13；授权与作者经 extmetadata 回源。
+boundary_principle: A 依本经而作 0 件；本批 1 件（B 类：无量寿题域）。
+items:
+- img_no: 31-C1
+  title_zh: 无量寿佛坐像（Rietberg 博物馆藏）
+  title_en: Buddha Amitayus, Rietberg Museum
+  era_zh: 〔待核：Commons 未著录年代〕（西藏或汉地风格）
+  site_zh: 瑞士·里特贝格博物馆（Rietberg）
+  commons_file: File:Buddha Amitayus Museum Rietberg BA.jpg
+  license: CC0
+  license_url: （见 Commons 条目）
+  author_zh: Andreas Praefcke
+  ref: 无量寿（Amitāyus）——本品「壽量」之同义题域（佛寿无量·疏云顯窮來際無限為趣）
+  boundary: B：无量寿佛题域·非本经专像；Amitāyus 与本品「寿量」同义互参。
+  category: B 类：无量寿题域
+  thumb_url: https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Buddha_Amitayus_Museum_Rietberg_BA.jpg/960px-Buddha_Amitayus_Museum_Rietberg_BA.jpg
+  verified: HEAD 200 于 2026-11-13
