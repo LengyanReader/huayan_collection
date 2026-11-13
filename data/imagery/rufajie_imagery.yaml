@@ -1,0 +1,67 @@
+article: huayan-rufajie-pin
+title_zh: 入法界品·文化资产参证登记册（名胜古迹·造像·浮雕·图绘）
+title_en: Cultural-asset register for the Chapter on Entering the Dharma Realm
+purpose: 本文件为《华严经细读·第三十九部》正文插图与名胜参证的**唯一权威著录源**。凡正文引用之图像/遗址，须在此登记：所应之经句或叙事、图像本身之名称/时代/现址、**授权类型与授权链接**、以及「图像与经文之关系边界」（凡非依本经而作者，必须如实标注，不得混同）。
+license_policy: 一律取自 Wikimedia Commons 之可核验授权文件，按 extmetadata 逐条核验（LicenseShortName/Artist/DateTimeOriginal）。优先级：① PD／CC0；② CC BY 4.0（须署名）；③ CC BY-SA（须署名并同授权）。署名义务：凡 CC BY／CC BY-SA 必填 author_zh，不得留白、不得臆造。
+verification_note: 全量核验于 2026-11-13 完成：4 项 thumb_url 逐条 HTTP HEAD 实测（见 verification_log）；授权与作者经 Commons extmetadata 回源，凡未载者如实标〔待核〕。缩略图 URL 去查询参数。
+boundary_principle: >
+  (A) 依本经而作者——0 件（本批无「专为本品而作」之考得图像）。
+  (B) 同题域之他像——2 件：婆罗浮屠善财巡礼浮雕（学界以婆罗浮屠回廊浮雕叙事与《入法界品》五十三参对应·通说引为华严题域·〔待核〕个案断代与教义归属）、明代木雕善财童子像（依善财形象传统）。
+  (C) 名胜古迹实况——2 件：莫高窟第61窟五台山图（文殊道场图·善财巡礼终点区之题域参证·非本经变）、祇园精舍香室遗址（本品「逝多林·给孤独园」说处之今日实存·遗址非经文图像）。
+items:
+- img_no: 39-1
+  title_zh: 莫高窟第61窟·五台山图（局部）
+  title_en: Mount Wutai panorama, Mogao Cave 61
+  era_zh: 10 世纪（敦煌归义军期·Commons 著录 10th century）
+  site_zh: 敦煌莫高窟第61窟
+  commons_file: File:Mogao Cave 61, painting of Mount Wutai monasteries.jpg
+  license: Public domain
+  license_url: （PD 无独立页）
+  author_zh: 中国 10 世纪画工（Commons 著录）
+  ref: 善财经文殊指授后南行巡礼——终点区为文殊道场；本品 §〇之二 图〇-1 行程图之题域参证
+  boundary: B/C：非本经变，乃五台山文殊道场图——不作本品图像化，仅作文殊道场题域参证（善财巡礼终点）。
+  category: B 类：同题域（文殊信仰·五台山）
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Mogao_Cave_61%2C_painting_of_Mount_Wutai_monasteries.jpg/960px-Mogao_Cave_61%2C_painting_of_Mount_Wutai_monasteries.jpg
+  verified: HEAD 200 于 2026-11-13
+- img_no: 39-2
+  title_zh: 婆罗浮屠浮雕·善财行脚（Sudhana travels on Foot·034）
+  title_en: Borobudur relief: Sudhana travels on foot
+  era_zh: 约 8–9 世纪（婆罗浮屠·〔待核〕）
+  site_zh: 印度尼西亚·中爪哇婆罗浮屠
+  commons_file: File:034 S Sudhana travels on Foot (28965525205).jpg
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  author_zh: Photo Dharma from Sadao, Thailand（CC BY 2.0 署名义务）
+  ref: 善财「漸次南行」行脚巡礼（本品核心叙事·以行入证）
+  boundary: B（偏 A）：婆罗浮屠回廊浮雕叙事学界通说与《入法界品》五十三参对应〔待核〕；非中国华严造像系统，不作本品图像化。
+  category: B 类偏 A：浮雕叙事与本品巡礼对应〔学界通说·待核〕
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/034_S_Sudhana_travels_on_Foot_%2828965525205%29.jpg/960px-034_S_Sudhana_travels_on_Foot_%2828965525205%29.jpg
+  verified: HEAD 200 于 2026-11-13
+- img_no: 39-3
+  title_zh: 明·彩绘木雕善财童子像
+  title_en: Pilgrim Sudhana (Shancai tongzi), painted wood, Ming
+  era_zh: 15 世纪末–17 世纪初（MET 著录 late 15th–early 17th century）
+  site_zh: 美国·大都会艺术博物馆（MET DP164010）
+  commons_file: File:明 彩繪木雕善財童子像（椴木胎）-Pilgrim Sudhana (Shancai tongzi) MET DP164010.jpg
+  license: CC0
+  license_url: https://creativecommons.org/publicdomain/zero/1.0/
+  author_zh: MET Open Access（CC0·无署名义务）
+  ref: 善财童子形象传统——本品主角之造像传统参证
+  boundary: B：善财形象造像传统·非专为本品某句而作；合掌童子形与本品「禮足…合掌」到会式呼应。
+  category: B 类：善财形象传统
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%E6%98%8E_%E5%BD%A9%E7%B9%AA%E6%9C%A8%E9%9B%95%E5%96%84%E8%B2%A1%E7%AB%A5%E5%AD%90%E5%83%8F%EF%BC%88%E6%A4%B4%E6%9C%A8%E8%83%8E%EF%BC%89-Pilgrim_Sudhana_%28Shancai_tongzi%29_MET_DP164010.jpg/960px-%E6%98%8E_%E5%BD%A9%E7%B9%AA%E6%9C%A8%E9%9B%95%E5%96%84%E8%B2%A1%E7%AB%A5%E5%AD%90%E5%83%8F%EF%BC%88%E6%A4%B4%E6%9C%A8%E8%83%8E%EF%BC%89-Pilgrim_Sudhana_%28Shancai_tongzi%29_MET_DP164010.jpg
+  verified: HEAD 200 于 2026-11-13
+- img_no: 39-4
+  title_zh: 祇园精舍·香室（Gandhakuti）遗址
+  title_en: Jetavana Gandhakuti ruins, Sravasti
+  era_zh: 遗址主体为 5–6 世纪复建基址（〔待核〕）
+  site_zh: 印度·北方邦舍卫城（Sravasti）Sahet-Mahet
+  commons_file: File:Jetavana Monastery - Gandhakuti.JPG
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  author_zh: Ayepee99（CC BY-SA 3.0 署名义务·同授权）
+  ref: 本品说处「逝多林給孤獨園大莊嚴重閣」之今日实存——疏云林名战胜（逝多）表依人·园名给孤表悲厚
+  boundary: C：名胜古迹实况·非经文图像；祇园为佛陀常说处而非本品专有，作说处名胜参证。
+  category: C 类：名胜古迹实况
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Jetavana_Monastery_-_Gandhakuti.JPG/960px-Jetavana_Monastery_-_Gandhakuti.JPG
+  verified: HEAD 200 于 2026-11-13
