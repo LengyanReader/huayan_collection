@@ -3065,3 +3065,12 @@ done(
 - **核验**：extmetadata 回源＋HEAD 3/3 200。
 - **新工具**：`verify_imagery_gen.py`（参数化三不变量）——P3/P39 双检 ALL PASS；`verify_imagery_p39.py` 同步保留。
 - **门禁**：check ✓ · build ✓ · diff-check ✓。
+
+## L.438 · 2026-11-13 · 文化资产第三批（P24 兜率宫中偈赞·2 图）
+
+- **P24**：新建 `data/imagery/doushuai_jizan_imagery.yaml`（2 项）＋§〇之二.7「文化资产参证」节：
+  1. 图 24-1 乐山大佛弥勒坐像（CC BY 2.0·Bernt Rostad 署名·C 类名胜——兜率净土主佛系）
+  2. 图 24-2 犍陀罗弥勒菩萨像 Loriyan Tangai（CC BY 2.0·Photo Dharma from Penang 署名·B 类弥勒造像传统）
+- **核验**：extmetadata 回源＋HEAD 2/2 200＋参数化门禁 ALL PASS。
+- **文化资产层累计**：3 品 9 图（P39×4·P3×3·P24×2）。
+- **门禁**：check ✓ · build ✓ · diff-check ✓。

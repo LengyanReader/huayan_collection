@@ -1,0 +1,37 @@
+article: doushuaigongzhongjizan
+title_zh: 兜率宫中偈赞品·文化资产参证登记册
+title_en: Cultural-asset register for the Praise chapter of the Tushita palace
+purpose: 本文件为《华严经细读·第二十四部》正文插图与名胜参证的**唯一权威著录源**。
+license_policy: 一律取自 Wikimedia Commons 之可核验授权文件，按 extmetadata 逐条核验。署名义务：凡 CC BY／CC BY-SA 必填 author_zh。
+verification_note: 核验于 2026-11-13：2 项 thumb_url 逐条 HTTP HEAD 实测 200；授权与作者经 extmetadata 回源。
+boundary_principle: >
+  (A) 依本经而作——0 件。(B) 同题域之他像——1 件：犍陀罗弥勒菩萨像（兜率天弥勒造像传统）。(C) 名胜古迹实况——1 件：乐山大佛（弥勒坐像·与兜率净土主尊同题域之名胜）。
+items:
+- img_no: 24-1
+  title_zh: 乐山大佛（弥勒坐像）
+  title_en: Leshan Giant Buddha (Maitreya)
+  era_zh: 唐·开元至贞元间开凿（713–803·通行断代〔待核〕）
+  site_zh: 四川乐山·凌云山（世界遗产）
+  commons_file: File:Leshan Giant Buddha.jpg
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  author_zh: Bernt Rostad from Oslo, Norway; Modified by Rbmk（CC BY 2.0 署名义务）
+  ref: 兜率天为弥勒菩萨净土——本品偈赞会处主佛系之名胜实况（弥勒坐像）
+  boundary: C：名胜古迹实况·乐山大佛为弥勒坐像非本品专像；兜率净土题域参证。
+  category: C 类：名胜古迹实况
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Leshan_Giant_Buddha.jpg/960px-Leshan_Giant_Buddha.jpg
+  verified: HEAD 200 于 2026-11-13
+- img_no: 24-2
+  title_zh: 犍陀罗·弥勒菩萨像（Loriyan Tangai 出土）
+  title_en: Bodhisattva Maitreya, Loriyan Tangai, Gandhara
+  era_zh: 约 2–3 世纪（犍陀罗·〔待核〕）
+  site_zh: 印度博物馆（加尔各答）藏
+  commons_file: File:Indian Museum Sculpture - Bodhisattva Maitreya, Loriyan Tangai (9220955230).jpg
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  author_zh: Photo Dharma from Penang, Malaysia（CC BY 2.0 署名义务）
+  ref: 兜率天弥勒造像传统——本品会处主佛系之造像参证
+  boundary: B：弥勒造像传统·非专为本品而作。
+  category: B 类：弥勒造像传统
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Indian_Museum_Sculpture_-_Bodhisattva_Maitreya%2C_Loriyan_Tangai_%289220955230%29.jpg/960px-Indian_Museum_Sculpture_-_Bodhisattva_Maitreya%2C_Loriyan_Tangai_%289220955230%29.jpg
+  verified: HEAD 200 于 2026-11-13
