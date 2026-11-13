@@ -1,0 +1,51 @@
+article: puxian-sanmei
+title_zh: 普贤三昧品·文化资产参证登记册
+title_en: Cultural-asset register for the Samantabhadra-samadhi chapter
+purpose: 本文件为《华严经细读·第三部》正文插图与名胜参证的**唯一权威著录源**。凡正文引用之图像/古迹，须在此登记：所应之经句或义理、图像本身之名称/时代/现址、**授权类型与授权链接**、以及「图像与经文之关系边界」。
+license_policy: 一律取自 Wikimedia Commons 之可核验授权文件，按 extmetadata 逐条核验。优先级：① PD／CC0；② CC BY（须署名）；③ CC BY-SA（须署名并同授权）。
+verification_note: 核验于 2026-11-13：3 项 thumb_url 逐条 HTTP HEAD 实测 200（含 429 重试）；授权与作者经 Commons extmetadata 回源。
+boundary_principle: >
+  (A) 依本经而作——0 件。(B) 同题域之他像——2 件：榆林窟第3窟普贤菩萨赴会图（西夏·普贤变题域）、唐代普贤石像（造像传统）。(C) 名胜古迹实况——1 件：峨眉山十方普贤（普贤道场·与 P1 登记册同源文件独立登记）。
+items:
+- img_no: 3-1
+  title_zh: 榆林窟第3窟·普贤菩萨赴会图（西壁）
+  title_en: Samantabhadra assembly, Yulin Cave 3
+  era_zh: 西夏（榆林窟第3窟通行断代〔待核〕）
+  site_zh: 甘肃·榆林窟第3窟主室西壁
+  commons_file: File:2021.07.07 500pcs 璀璨敦煌系列：榆林窟第3窟-普賢菩薩赴會圖 Yulin Grottoes Cave 003 Main chamber West Wall (1) (51296797245).jpg
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  author_zh: Grace Hwu from Taiwan（CC BY 2.0 署名义务）
+  ref: 普贤菩萨赴会——本品「普賢三昧」之主菩萨题域参证（普贤为说普法之法主）
+  boundary: B：普贤变题域·非本经专像；与文殊赴会图（榆林窟3窟西壁对幅）成对，作题域对读。
+  category: B 类：普贤变题域
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2021.07.07_500pcs_%E7%92%80%E7%92%A8%E6%95%A6%E7%85%8C%E7%B3%BB%E5%88%97%EF%BC%9A%E6%A6%86%E6%9E%97%E7%AA%9F%E7%AC%AC3%E7%AA%9F-%E6%99%AE%E8%B3%A2%E8%8F%A9%E8%96%A9%E8%B5%B4%E6%9C%83%E5%9C%96_Yulin_Grottoes_Cave_003_Main_chamber_West_Wall_%281%29_%2851296797245%29.jpg/960px-2021.07.07_500pcs_%E7%92%80%E7%92%A8%E6%95%A6%E7%85%8C%E7%B3%BB%E5%88%97%EF%BC%9A%E6%A6%86%E6%9E%97%E7%AA%9F%E7%AC%AC3%E7%AA%9F-%E6%99%AE%E8%B3%A2%E8%8F%A9%E8%96%A9%E8%B5%B4%E6%9C%83%E5%9C%96_Yulin_Grottoes_Cave_003_Main_chamber_West_Wall_%281%29_%2851296797245%29.jpg
+  verified: HEAD 200 于 2026-11-13
+- img_no: 3-2
+  title_zh: 唐·普贤石像
+  title_en: Tang stone statue of Samantabhadra
+  era_zh: 唐代（Commons 著录 Tang·〔待核〕出处馆）
+  site_zh: 博物馆藏（Commons 著录·Gary Todd 摄）
+  commons_file: File:Tang Stone Statue of Samantabhadra (15884648639).jpg
+  license: CC0
+  license_url: https://creativecommons.org/publicdomain/zero/1.0/
+  author_zh: Gary Todd from Xinzheng, China（CC0·无署名义务）
+  ref: 普贤造像传统——本品法主之造像参证
+  boundary: B：普贤造像传统·非专为本品某句而作。
+  category: B 类：普贤造像传统
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Tang_Stone_Statue_of_Samantabhadra_%2815884648639%29.jpg/960px-Tang_Stone_Statue_of_Samantabhadra_%2815884648639%29.jpg
+  verified: HEAD 200 于 2026-11-13
+- img_no: 3-3
+  title_zh: 峨眉山十方普贤像（骑六牙白象）
+  title_en: Ten-faced Samantabhadra on six-tusked elephant, Mount Emei
+  era_zh: 〔待核：Commons 未著录造像年代〕
+  site_zh: 四川峨眉山（普贤道场）
+  commons_file: File:China - Mount Emei - EmeiShan - Sichuan 08.jpg
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  author_zh: Vanvelthem Cédric（摄影 2010-07-20·CC BY-SA 4.0 署名义务·同授权）
+  ref: 普贤道场峨眉之名胜实况——骑六牙白象形与本品法主题域参证（与 P1 登记册同源文件·独立登记）
+  boundary: C/B：名胜实况＋普贤道场题域；六牙白象形为普贤像传统·非专为本品而作。
+  category: C 类：名胜古迹实况
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/d/de/China_-_Mount_Emei_-_EmeiShan_-_Sichuan_08.jpg
+  verified: HEAD 200 于 2026-11-13

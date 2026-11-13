@@ -3055,3 +3055,13 @@ done(
 - **核验**：Commons extmetadata 逐条回源＋thumb HEAD 4/4 200＋浏览器 lazy 加载 4/4（960px）。
 - **新门禁**：`verify_imagery_p39.py` 三不变量（文中图在册/在册在文/分类与边界齐）ALL PASS。
 - **门禁**：check ✓ · build ✓ · diff-check ✓。
+
+## L.437 · 2026-11-13 · 文化资产参证第二批（P3 普贤三昧·3 图）
+
+- **P3**：新建 `data/imagery/puxian_sanmei_imagery.yaml`（3 项）＋§〇之二.7「文化资产参证」节：
+  1. 图 3-1 榆林窟第3窟普贤菩萨赴会图（CC BY 2.0·Grace Hwu 署名·西夏·普贤变题域）
+  2. 图 3-2 唐代普贤石像（CC0·Gary Todd）
+  3. 图 3-3 峨眉山十方普贤（CC BY-SA 4.0·Vanvelthem Cédric 署名·普贤道场名胜·与 P1 册同源文件独立登记）
+- **核验**：extmetadata 回源＋HEAD 3/3 200。
+- **新工具**：`verify_imagery_gen.py`（参数化三不变量）——P3/P39 双检 ALL PASS；`verify_imagery_p39.py` 同步保留。
+- **门禁**：check ✓ · build ✓ · diff-check ✓。
