@@ -27,6 +27,8 @@ IMPLICIT = ROOT / "data" / "research" / "implicit_quotes.json"
 PARAPHRASE = ROOT / "data" / "research" / "paraphrase_probe.json"
 CONFLATION = ROOT / "data" / "research" / "conflation_probe.json"
 ENDGAME = ROOT / "data" / "research" / "endgame_probe.json"
+PAIR60 = ROOT / "data" / "research" / "huayan_80_60_pairwise.json"
+PAIR40 = ROOT / "data" / "research" / "huayan_80_40_pairwise.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -859,11 +861,67 @@ def table_endgame(probe):
                 out.append(f"| {direction} | `{r['lb']}` | `{r['mapped_lb']}` | {r['dist']} | "
                            f"{r['anchor']} | {esc(r['ctx'][-18:])} |")
     out.append("")
+    out.append("**四、链式对齐（8-gram 唯一锚 → 最长单调链 → 分段插值）**："
+               "字面锚要求整段 40 字原样重现，跨异译几乎必然落空；改取 8 字窗，"
+               "在对方**恰出现一次**者为候选，再取两侧位置同增的最长链（LIS），"
+               "相邻链点之间线性插值定位。这量的是**位置对应**，不是字面对应——"
+               "插值只给位置，不给语义；链未覆盖处记「无链」，不外推。")
+    out.append("")
+    out.append("| 方向 | 标记 | 同一处 | 邻近 | 漂移 | 无链 | 中位距 | 链点 |")
+    out.append("|---|---:|---:|---:|---:|---:|---:|---:|")
+    for name, key in (("八十→六十（链）", "to_60"), ("八十→四十（链）", "to_40"),
+                      ("四十→八十（链）", "rev_40_80")):
+        c = s["chain"][key]
+        t = c["tally"]
+        out.append(f"| {name} | {len(probe['chain'][key]['rows'])} | {t.get('同一处', 0)} | "
+                   f"{t.get('邻近', 0)} | {t.get('漂移', 0)} | {t.get('无链', 0)} | "
+                   f"{c['median'] if c['median'] is not None else '—'} | "
+                   f"{c['anchors']:,} |")
+    out.append("")
+    out.append("链点相邻窗重叠，故数目稠密（是覆盖密度，不是独立锚数）。")
+    out.append("")
+    out.append("**五、离群点：差异在收束语**：下列各处的链落点与对方最近标记相隔百余至千余字，"
+               "「距」即链落点与该本最近标记的距离，乙 `lb` 为收束语所在行。"
+               "逐条读两侧原文，可指认的差异都在**收束语的用词**（不涉及参访增减；"
+               "师名异写另见七、八两节）：")
+    out.append("")
+    out.append("| 方向 | 甲 `lb`（标记） | 乙 `lb`（收束语） | 距 | 甲处（收束语） | 乙处（收束语） |")
+    out.append("|---|---|---|---:|---|---|")
+    dirlbl = {"to_60": "八十→六十（链）", "to_40": "八十→四十（链）",
+              "rev_40_80": "四十→八十（链）"}
+    for o in probe["chain_outliers"]:
+        out.append(f"| {dirlbl[o['dir']]} | `{o['a']['lb']}` | `{o['b']['lb']}` | "
+                   f"{o['dist']:,} | …{esc(o['a']['text'][-13:])} | …{esc(o['b']['text'][-13:])} |")
+    out.append("")
+    gap = next(g for g in probe["chain_gap"]["to_60"] if g["dist"] > 3000)
+    out.append(f"另有一处不入表：八十 `{gap['lb']}` 的链落点距六十最近标记 "
+               f"{gap['dist']:,} 字——六十本这一段没有对应标记，是分段详略不同，"
+               "不是收束语问题。")
+    out.append("")
+    fam = probe["family"]
+    out.append("**六、收束语族（窄义）**：把「辭退」放宽到同义收束语"
+               "（辭退／辭去／而退／遶（繞、匝）…而去），三本计 53／51／54。"
+               "但**数目不等于参数**：")
+    out.append("")
+    out.append("| 本 | 辭退 | 辭去 | 而退 | 匝…而去 | 合计 | 其中非善財 | 非善財处 `lb` |")
+    out.append("|---|---:|---:|---:|---:|---:|---:|---|")
+    for key, nm in (("T279", "八十"), ("T278", "六十"), ("T293", "四十")):
+        f = fam[key]
+        k = f["kinds"]
+        out.append(f"| {nm} | {k.get('辭退', 0)} | {k.get('辭去', 0)} | {k.get('而退', 0)} | "
+                   f"{k.get('匝…而去', 0)} | {f['total']} | "
+                   f"{f['total'] - f['before_shancai']} | "
+                   f"{esc('、'.join('`' + x + '`' for x in f['not_before_lb']))} |")
+    out.append("")
+    out.append("八十的 53 里，文殊、舍利弗二处的会众散退，以及本生故事中太子「辭退還宮」，"
+               "都不是善財参访——**53 不可用作「五十三参」的证成**。"
+               "这是本节最该记住的一条：数目对上了，也不能当证据。")
+    out.append("")
     np60, np40 = s["name_pairs_60"], s["name_pairs_40"]
     p60n = [p["name"] for p in probe["name_pairs"]["T278"] if not p["generic"]]
     p40n = [p["name"] for p in probe["name_pairs"]["T293"] if not p["generic"]]
     g40n = [p["name"] for p in probe["name_pairs"]["T293"] if p["generic"]]
-    out.append("**四、同名锚**：参末套语直书师名（禮X足，去尾衔、去虚指），两侧同名且次序单调者配对。"
+    out.append("**七、同名锚**：参末套语直书师名（禮X足，去尾衔、去虚指），两侧同名且次序单调者配对。"
                "正名对可锚一参；通名对（王、夜）只说明次序相合，不作人名认定。")
     out.append("")
     out.append("| 对 | 正名对 | 通名对 | 正名 |")
@@ -879,12 +937,42 @@ def table_endgame(probe):
                "「见其于虚空中经行」，情节与八十本〈善住比丘〉章相合；supra- 兼有善／妙二义，"
                "**「善住」与「妙住」为同一梵名之两译**〔本文判断，梵本一手旁证〕。")
     out.append("")
-    out.append(f"**判断**：①三本的辭退刻度接近（参末 {s['kinds']['T279']['参末']}／"
+    p60 = json.loads(PAIR60.read_text(encoding="utf-8"))
+    p40 = json.loads(PAIR40.read_text(encoding="utf-8"))
+    nc = p60["stats"]["name_counter"]
+    out.append("**八、师名谱系（五十参逐参比对）**：以参末套语直书的师名逐参比对，"
+               "判「全同／义近／基同增衔／异」（`huayan_80_60_pairwise.json`）：")
+    out.append("")
+    out.append("| 对 | 逐参 | 全同 | 义近 | 基同增衔 | 异 |")
+    out.append("|---|---:|---:|---:|---:|---:|")
+    out.append(f"| 八十↔六十 | {p60['stats']['total']} | {nc.get('全同', 0)} | "
+               f"{nc.get('义近', 0)} | {nc.get('基同增衔', 0)} | {nc.get('异', 0)} |")
+    out.append("")
+    out.append(f"八十↔四十 的全同为 {p40['stats']['name_same']}/{p40['stats']['total']}，"
+               "其余分散在义近、增衔、异名各类，不逐类罗列。"
+               "异名不等于异参——如善住／妙住为同一梵名之两译（上表）；"
+               "故师名只作谱系刻度，不作「参访增减」的证据。")
+    out.append("")
+    p60n = p60["stats"]["name_same"] if "name_same" in p60["stats"] else nc.get("全同", 0)
+    out.append(f"**判断**：①三本的辭退刻度接近（{s['marks']['T279']}／{s['marks']['T278']}／"
+               f"{s['marks']['T293']}；参末 {s['kinds']['T279']['参末']}／"
                f"{s['kinds']['T278']['参末']}／{s['kinds']['T293']['参末']}），"
-               "同一段旅程被切成大体相同数目的参——分段是文本自带的刻度，不是编者后加；"
-               "②但参界措辞亲缘两极：八十→六十 48 处仅 2 处可锚（恰是直书师名的賢勝、堅固二参），"
-               "八十→四十 8 处、反向 4 处——四十華嚴在参界大量沿用八十本文字，六十本措辞独立重译；"
-               "③参名是跨译本最稳的刻度，但同名锚只覆盖少数直书师名的参。")
+               "同一段旅程被切成大体相同数目的参——分段是文本自带的刻度，不是编者后加。"
+               "②但「字面锚」是弱仪器：八十→六十 48 处仅 2 处可锚，不足以判「六十本措辞独立重译」；"
+               "链式对齐 44／48 落在 60 字内（中位 10 字），说明两本的分段几乎逐参对应，"
+               "可指认的漂移多在收束语用词（六十「戀仰辭去」「辭詣彼城」）。"
+               "③四十本在参界大量沿用八十本文字（字面锚 8 处、链式 46／48），"
+               "但收束语也各有着笔（八十作「戀仰而去」处，四十作「辭退而去」）——"
+               "同源分叙，不是逐字互抄。"
+               f"④收束语族 {fam['T279']['total']}／{fam['T278']['total']}／{fam['T293']['total']} "
+               "不能反推参数：八十的 53 中 3 处非善財参访（文殊、舍利弗、本生太子）。"
+               f"⑤师名：八十↔六十 {p60['stats']['total']} 参中全同 {p60n}、义近 "
+               f"{nc.get('义近', 0)}、基同增衔 {nc.get('基同增衔', 0)}、异 {nc.get('异', 0)}——"
+               "师名可作谱系刻度，异名不等于异参。")
+    out.append("")
+    out.append("**限度**：链式对齐给的是位置，不是语义——插值落点只说明「这一段大致对应到那一段」，"
+               "不证明字句相袭；「无链」只说明链未覆盖，不证明该参为对方所无；"
+               "收束语族是窄义计数（四种收束语），不等于「参」的数目。")
     return "\n".join(out)
 
 

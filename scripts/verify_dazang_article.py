@@ -693,7 +693,8 @@ def main() -> int:
             fail(f"endgame tally row out of sync: {name}")
     ok("endgame tally rows match JSON (incl. 复见 tier)")
 
-    npr = [ln for ln in eg_block.splitlines() if ln.startswith("| 八十↔")]
+    npr = [ln for ln in eg_block.splitlines()
+           if ln.startswith("| 八十↔") and ln.count("|") == 5]
     if len(npr) != 2:
         fail("endgame name-pair rows missing")
     for ln, key in zip(npr, ("name_pairs_60", "name_pairs_40")):
@@ -716,6 +717,95 @@ def main() -> int:
         if " ".join(q["text"].split()) not in gv_flat:
             fail(f"endgame Sanskrit quote not in source: {q['text'][:40]}")
     ok(f"endgame name pairs + {n_q} variant quotes + {len(gv['quotes'])} Sanskrit quotes re-verified")
+
+    # --- §17.17 链式对齐：表行 ↔ JSON 逐格对账；离群引文回源；语族计数与「非善財」断言 ---
+    ch_lbl = {"八十→六十": "to_60", "八十→四十": "to_40", "四十→八十": "rev_40_80"}
+    ch_rows = {}
+    for ln in eg_block.splitlines():
+        m = re.match(r"^\| (八十→六十|八十→四十|四十→八十)（链） \| (\d+) \| (\d+) \| (\d+) "
+                     r"\| (\d+) \| (\d+) \| ([\d,—]+) \| ([\d,]+) \|$", ln)
+        if m:
+            ch_rows[m.group(1)] = [m.group(i) for i in range(2, 9)]
+    if len(ch_rows) != 3:
+        fail(f"endgame chain table rows {len(ch_rows)} != 3")
+    n_ch = 0
+    for label, key in ch_lbl.items():
+        cells = ch_rows[label]
+        c, rows_ = eg["summary"]["chain"][key], eg["chain"][key]["rows"]
+        t = c["tally"]
+        want = [len(rows_), t.get("同一处", 0), t.get("邻近", 0), t.get("漂移", 0),
+                t.get("无链", 0)]
+        if [int(x) for x in cells[:5]] != want:
+            fail(f"endgame chain row out of sync: {label} {cells[:5]} != {want}")
+        if cells[5] not in (str(c["median"]), "—"):
+            fail(f"endgame chain median out of sync: {label}")
+        if int(cells[6].replace(",", "")) != c["anchors"]:
+            fail(f"endgame chain anchor count out of sync: {label}")
+        if sum(want[1:]) != want[0]:
+            fail(f"endgame chain tiers do not sum to marks: {label}")
+        n_ch += 1
+    # 离群点表：方向/两侧 lb/距 与 JSON 同序同值，引文（去标点）回源
+    out_rows = []
+    for ln in eg_block.splitlines():
+        m = re.match(r"^\| (八十→六十|八十→四十|四十→八十)（链） \| `([0-9a-z]+)` "
+                     r"\| `([0-9a-z]+)` \| ([\d,]+) \|", ln)
+        if m:
+            out_rows.append((m.group(1), m.group(2), m.group(3),
+                             int(m.group(4).replace(",", ""))))
+    if len(out_rows) != len(eg["chain_outliers"]):
+        fail(f"endgame outlier rows {len(out_rows)} != JSON {len(eg['chain_outliers'])}")
+    n_oq = 0
+    for (label, alb, blb, dist), o in zip(out_rows, eg["chain_outliers"]):
+        if (label != {v: k for k, v in ch_lbl.items()}[o["dir"]]
+                or alb != o["a"]["lb"] or blb != o["b"]["lb"] or dist != o["dist"]):
+            fail(f"endgame outlier row out of sync: {alb}")
+        for side in ("a", "b"):
+            q = cjk(o[side]["text"])
+            if not q or q not in eg_src[o[side]["key"]]:
+                fail(f"endgame outlier quote not in source: {o[side]['key']} {alb}")
+            n_oq += 1
+    # 语族表：三项计数与非善財数
+    fam_rows = {}
+    for ln in eg_block.splitlines():
+        m = re.match(r"^\| (八十|六十|四十) \| (\d+) \| (\d+) \| (\d+) \| (\d+) "
+                     r"\| (\d+) \| (\d+) \|", ln)
+        if m:
+            fam_rows[m.group(1)] = [int(m.group(i)) for i in range(2, 8)]
+    if len(fam_rows) != 3:
+        fail(f"endgame family table rows {len(fam_rows)} != 3")
+    for nm, key in (("八十", "T279"), ("六十", "T278"), ("四十", "T293")):
+        f = eg["family"][key]
+        k = f["kinds"]
+        want = [k.get("辭退", 0), k.get("辭去", 0), k.get("而退", 0),
+                k.get("匝…而去", 0), f["total"], f["total"] - f["before_shancai"]]
+        if fam_rows[nm] != want:
+            fail(f"endgame family row out of sync: {nm} {fam_rows[nm]} != {want}")
+        if sum(fam_rows[nm][:4]) != fam_rows[nm][4]:
+            fail(f"endgame family kinds do not sum: {nm}")
+        if len(f["not_before_lb"]) != f["total"] - f["before_shancai"]:
+            fail(f"endgame family non-Shancai lb count mismatch: {nm}")
+    if eg["family"]["T279"]["total"] == 53:
+        if set(eg["family"]["T279"]["not_before_lb"]) != {"0330c19", "0330c26", "0411a13"}:
+            fail("endgame family T279: 非善財三处 lb 与断言不符")
+        if "53 不可用作「五十三参」的证成" not in eg_block:
+            fail("endgame family: 53→五十三参 boundary statement missing")
+    ok(f"endgame chain: {n_ch} directions / {n_oq} outlier quotes re-verified; "
+       f"family 53/51/54 with 3 non-Shancai marks asserted")
+
+    # 师名谱系：八十↔六十 五十参分类计数
+    pair60 = json.loads((ROOT / "data/research/huayan_80_60_pairwise.json")
+                        .read_text(encoding="utf-8"))
+    npc = pair60["stats"]["name_counter"]
+    m = re.search(r"^\| 八十↔六十 \| (\d+) \| (\d+) \| (\d+) \| (\d+) \| (\d+) \|$",
+                  eg_block, re.M)
+    if not m:
+        fail("endgame name-genealogy row missing")
+    got = [int(x) for x in m.groups()]
+    want = [pair60["stats"]["total"], npc.get("全同", 0), npc.get("义近", 0),
+            npc.get("基同增衔", 0), npc.get("异", 0)]
+    if got != want:
+        fail(f"endgame name-genealogy row out of sync: {got} != {want}")
+    ok(f"endgame name genealogy: 80↔60 {want} (全同/义近/基同增衔/异)")
 
     # --- §17.8 external witnesses: every manifest file must exist with the recorded hash ---
     mf = ROOT / "data" / "references" / "external_manifest.json"

@@ -44,6 +44,7 @@ import hashlib
 import json
 import re
 import sys
+from bisect import bisect_left
 from datetime import date
 from pathlib import Path
 
@@ -59,6 +60,7 @@ ANCHORS = (40, 32, 24, 16)      # 锚窗长度，逐级降
 SAME = 60                        # 同一处
 NEAR = 300                       # 邻近
 CTX = 24                         # 标记上下文（clean 字）
+CHAIN_N = 8                      # 链式对齐的字窗
 NAME_WIN = 120                   # 参末套语窗口（标记前 clean 字）
 SHUCAI_WIN = 200                 # 参末/会众散判定窗（标记前 clean 字）
 
@@ -131,10 +133,106 @@ def classify(dist: int | None) -> str:
     return "漂移"
 
 
+def uniq_index(doc: Doc, n: int) -> dict[str, int]:
+    """n-gram → 唯一起点；出现一次以上记 -1（不复用首见，避免假锚）。"""
+    idx: dict[str, int] = {}
+    s = doc.norm
+    for i in range(len(s) - n + 1):
+        g = s[i:i + n]
+        idx[g] = -1 if g in idx else i
+    return idx
+
+
+def chain_of(src: Doc, dst: Doc, n: int) -> list[tuple[int, int]]:
+    """src 的 n-gram 唯一命中 dst 者为候选，取两侧位置同增的最长链（LIS）。"""
+    idx = uniq_index(dst, n)
+    s = src.norm
+    cand = []
+    for i in range(len(s) - n + 1):
+        j = idx.get(s[i:i + n])
+        if j is not None and j >= 0:
+            cand.append((i, j))
+    tails: list[int] = []
+    tail_at: list[int] = []
+    prev = [-1] * len(cand)
+    for k, (_, j) in enumerate(cand):
+        p = bisect_left(tails, j)
+        if p == len(tails):
+            tails.append(j)
+            tail_at.append(k)
+        else:
+            tails[p] = j
+            tail_at[p] = k
+        prev[k] = tail_at[p - 1] if p else -1
+    if not tail_at:
+        return []
+    out, k = [], tail_at[-1]
+    while k >= 0:
+        out.append(cand[k])
+        k = prev[k]
+    out.reverse()
+    return out
+
+
+def map_pos(xs: list[int], ys: list[int], p: int, limit: int) -> int | None:
+    """按链分段线性插值；链覆盖范围之外不给位置（不外推）。"""
+    if not xs or p < xs[0] or p > xs[-1]:
+        return None
+    k = bisect_left(xs, p)
+    if k < len(xs) and xs[k] == p:
+        return max(0, min(limit - 1, ys[k]))
+    x0, x1, y0, y1 = xs[k - 1], xs[k], ys[k - 1], ys[k]
+    q = y0 + (p - x0) * (y1 - y0) / (x1 - x0)
+    return max(0, min(limit - 1, int(round(q))))
+
+
+def family_marks(doc: Doc, a: int, b: int) -> list[tuple[int, str]]:
+    """收束语族：辭退／辭去／而退／「遶（繞、匝）…而去」。
+
+    先取动词性收束语（辭退／辭去／而退）；「匝…而去」只在与前三者
+    不重叠时计入——否则「遶…辭退而去」里的 匝 会吞掉真正的 辭退。
+    """
+    s = doc.norm
+    strong: list[tuple[int, int, str]] = []
+    for pat in ("辭退", "辭去", "而退"):
+        start = a
+        while True:
+            p = s.find(pat, start, b)
+            if p < 0:
+                break
+            strong.append((p, len(pat), pat))
+            start = p + 1
+    strong.sort()
+    accepted: list[tuple[int, int, str]] = []
+    last_end = -1
+    for p, ln, kind in strong:
+        if p < last_end:
+            continue
+        accepted.append((p, ln, kind))
+        last_end = p + ln
+    for m in re.finditer(r"[遶繞匝]", s[a:b]):
+        p = a + m.start()
+        q = s.find("而去", p + 1, min(b, p + 12))
+        if q <= 0:
+            continue
+        ln = q + 2 - p
+        if any(p < st + ln0 and p + ln > st for st, ln0, _ in accepted):
+            continue
+        accepted.append((p, ln, "匝…而去"))
+    accepted.sort()
+    return [(p, kind) for p, _, kind in accepted]
+
+
 def clean_ctx(doc: Doc, pos: int, n: int, before: bool = True) -> str:
     ci = doc.clean_of_norm[pos]
     return (doc.clean[max(0, ci - n):ci] if before
             else doc.clean[ci:ci + n]).replace("\n", "").strip()
+
+
+def slice_at(doc: Doc, pos: int, before: int = 18, after: int = 6) -> str:
+    """以 norm 位置为心取 clean 片段（含标记本身），供引文回源。"""
+    ci = doc.clean_of_norm[pos]
+    return doc.clean[max(0, ci - before):ci + after].replace("\n", "").strip()
 
 
 def extract_name(doc: Doc, pos: int) -> tuple[str | None, str]:
@@ -208,7 +306,13 @@ def main() -> int:
                        f"这量的是参界措辞亲缘，无锚只说明原样窗不存在，不证明该参为对方所无。"
                        f"③同名锚：取各标记前 {NAME_WIN} 字内「禮X足」对象（去尾衔、"
                        f"去虚指），两侧同名且次序单调者配对；正名与通名（王、夜天等）分计，"
-                       f"通名对只说明次序相合，不作人名认定。④参长：相邻标记间净字数。"),
+                       f"通名对只说明次序相合，不作人名认定。④参长：相邻标记间净字数。"
+                       f"⑤链式对齐：取 {CHAIN_N}-gram 在对方**恰出现一次**者为候选，"
+                       f"以两侧位置同增求最长链（LIS），再按相邻链点分段线性插值定位；"
+                       f"链覆盖范围外不推位置（记无链），插值只给位置、不给语义。"
+                       f"⑥收束语族：辭退／辭去／而退／「遶（繞、匝）…而去」四种收束语，"
+                       f"重叠取先出现者；另记标记前 {SHUCAI_WIN} 字内有无「善財」，"
+                       f"无语者即非善財参访（如开初会众散退）。"),
             "sources": {},
         },
         "texts": {},
@@ -327,6 +431,86 @@ def main() -> int:
         xs = sorted(xs)
         return xs[len(xs) // 2]
 
+    # --- ④ 链式对齐：8-gram 唯一锚 → LIS 单调链 → 分段线性插值 ---
+    chain = {}
+    qmap = {}
+    for name, sk, dk in (("to_60", "T279", "T278"), ("to_40", "T279", "T293"),
+                         ("rev_40_80", "T293", "T279")):
+        src, dst = docs[sk], docs[dk]
+        ch = chain_of(src, dst, CHAIN_N)
+        xs, ys = [c[0] for c in ch], [c[1] for c in ch]
+        rows = []
+        qmap[name] = {}
+        for p in marks[sk]:
+            q = map_pos(xs, ys, p, len(dst.norm))
+            base = {"lb": src.lb_at(src.raw_index(p)), "ctx": ctx(src, p),
+                    "mark_ctx": slice_at(src, p)}
+            if q is None:
+                rows.append(dict(base, mapped_lb=None, dist=None, cls="无链"))
+                continue
+            qmap[name][base["lb"]] = q
+            near = min(marks[dk], key=lambda x: abs(x - q))
+            dist = abs(near - q)
+            rows.append(dict(base, mapped_lb=dst.lb_at(dst.raw_index(near)),
+                             mapped_at=dst.lb_at(dst.raw_index(q)),
+                             dist=dist, cls=classify(dist)))
+        ds = [r["dist"] for r in rows if r["dist"] is not None]
+        chain[name] = {"from": sk, "to": dk, "n": CHAIN_N, "anchors": len(ch),
+                       "rows": rows, "tally": tally(rows),
+                       "median": med(ds) if ds else None,
+                       "max": max(ds) if ds else None}
+    result["chain"] = chain
+
+    # --- ⑤ 收束语族：辭退／辭去／而退／匝…而去（窄义；逐处记类） ---
+    fam = {}
+    for k, d in docs.items():
+        fm = family_marks(d, scopes[k]["start"], scopes[k]["end"])
+        kinds_f, before, not_before = {}, 0, []
+        for p, kind in fm:
+            kinds_f[kind] = kinds_f.get(kind, 0) + 1
+            if "善財" in clean_ctx(d, p, SHUCAI_WIN):
+                before += 1
+            else:
+                not_before.append(d.lb_at(d.raw_index(p)))
+        fam[k] = {"total": len(fm), "kinds": kinds_f,
+                  "before_shancai": before, "not_before_lb": not_before}
+    result["family"] = fam
+
+    # --- ⑥ 离群点举例：链定位处的收束语用词不同（位置由链给，引文按位置截取） ---
+    def phrase_near(doc: Doc, pos: int, phrase: str, win: int = 200) -> int:
+        a, b = max(0, pos - win), min(len(doc.norm), pos + win)
+        idx = [m.start() for m in re.finditer(re.escape(phrase), doc.norm[a:b])]
+        if not idx:
+            raise SystemExit(f"outlier phrase not found near {pos}: {phrase}")
+        return a + min(idx, key=lambda x: abs(a + x - pos))
+
+    out_cases = (
+        ("to_60", "0369a14", "辭詣彼城", "八十「辭退而去」／六十「辭詣彼城」"),
+        ("to_60", "0417c25", "戀仰辭去", "八十「辭退而去」／六十「戀仰辭去」"),
+        ("to_40", "0335a03", "戀慕而去", "八十「辭退而去」／四十「戀慕而去」"),
+        ("rev_40_80", "0807a17", "戀仰辭去", "四十「辭退而去」／八十「戀仰辭去」"),
+        ("rev_40_80", "0809a17", "戀仰而去", "四十「辭退而去」／八十「戀仰而去」"),
+    )
+    outs = []
+    for name, lb, phrase, why in out_cases:
+        v = chain[name]
+        row = next((r for r in v["rows"] if r["lb"] == lb), None)
+        if row is None or row.get("cls") == "同一处":
+            raise SystemExit(f"outlier case lost: {name} {lb}")
+        dst = docs[v["to"]]
+        tp = phrase_near(dst, qmap[name][lb], phrase)
+        outs.append({"dir": name, "lb": lb, "cls": row["cls"],
+                     "dist": row["dist"],
+                     "a": {"key": v["from"], "lb": lb, "text": row["mark_ctx"]},
+                     "b": {"key": v["to"], "lb": dst.lb_at(dst.raw_index(tp)),
+                           "text": slice_at(dst, tp, 14, 6)},
+                     "why": why})
+    result["chain_outliers"] = outs
+    result["chain_gap"] = {
+        name: [{"lb": r["lb"], "mapped_lb": r["mapped_lb"], "dist": r["dist"]}
+               for r in v["rows"] if r["cls"] in ("漂移", "邻近")]
+        for name, v in chain.items()}
+
     p60, p40 = pivot["T278"], pivot["T293"]
     kinds = {k: {kk: sum(1 for r in result["marks_detail"][k]
                          if r["kind"] == kk) for kk in ("参末", "会众散")}
@@ -352,6 +536,13 @@ def main() -> int:
         "median_visit_chars": {k: med(v) for k, v in result["lengths"].items()},
         "max_visit": {k: {"chars": max(v), "lb": result["marks_detail"][k][v.index(max(v))]["lb"]}
                       for k, v in result["lengths"].items()},
+        "chain": {k: {"tally": v["tally"], "median": v["median"], "max": v["max"],
+                      "anchors": v["anchors"]} for k, v in chain.items()},
+        "chain_median": {k: v["median"] for k, v in chain.items()},
+        "chain_anchors": {k: v["anchors"] for k, v in chain.items()},
+        "family": {k: v["total"] for k, v in fam.items()},
+        "family_kinds": {k: v["kinds"] for k, v in fam.items()},
+        "family_before_shancai": {k: v["before_shancai"] for k, v in fam.items()},
     }
 
     # --- 示例：各分类各取两条（同一处／邻近／漂移／无锚），带两侧行号 ---
@@ -398,6 +589,9 @@ def main() -> int:
           f"→40 {s['pivot_to_40']} (med {s['median_dist_40']})  "
           f"40↔80 {s['reverse_40_to_80']} unanchored {s['reverse_40_unanchored']}")
     print(f"name pairs 60 {s['name_pairs_60']}  40 {s['name_pairs_40']}")
+    print(f"chain {[(k, v['tally'], v['median'], v['anchors']) for k, v in s['chain'].items()]}")
+    print(f"family {s['family']} kinds {s['family_kinds']} "
+          f"before_shancai {s['family_before_shancai']}")
     print(f"median visit chars {s['median_visit_chars']}")
     print("written", OUT)
     return 0
