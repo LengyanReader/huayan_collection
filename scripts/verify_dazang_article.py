@@ -445,6 +445,93 @@ def main() -> int:
     ok(f"§17.19 S1 workshop: {len(ws['quotes'])} quotes re-sliced / "
        f"{n_att} roster entries attested by their quote / {len(roles)}-role matrix in sync")
 
+    # --- §17.20 S2 royal patronage: quotes re-sliced; events/kinds/scan in sync ---
+    rp_path = ROOT / "data" / "research" / "royal_patronage.json"
+    if not rp_path.exists():
+        fail("royal_patronage.json missing")
+    rp = json.loads(rp_path.read_text(encoding="utf-8"))
+
+    def royal_flat(key: str) -> str:
+        meta = rp["meta"]["sources"][key]
+        p = ROOT / meta["path"]
+        if hashlib.sha256(p.read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"royal source hash changed: {key}")
+        raw = p.read_text(encoding="utf-8")
+        m1 = raw.find("<body")
+        m2 = raw.rfind("</body>")
+        if m1 >= 0 and m2 > m1:
+            raw = raw[m1:m2]
+        raw = re.sub(r"<[^>]*>", "", raw)
+        return re.sub(r"\s+", "", raw)
+
+    rflat = {k: royal_flat(k) for k in rp["meta"]["sources"]}
+    rblock = grab("royal")
+    for qid, q in rp["quotes"].items():
+        if q["text"] not in rflat[q["source"]]:
+            fail(f"royal quote not in source: {qid} {q['text'][:24]}")
+        if q["text"] not in rblock:
+            fail(f"royal quote not printed in §17.20: {qid}")
+        if f'`{q["lb"]}`' not in rblock:
+            fail(f"royal quote lb not printed: {qid}")
+
+    events = rp["events"]
+    if len(events) != 10:
+        fail(f"royal events {len(events)} != 10")
+    kinds = {}
+    for e in events:
+        kinds[e["kind"]] = kinds.get(e["kind"], 0) + 1
+        if e["kind"] not in rblock:
+            fail(f"royal event kind missing in table: {e['kind']}")
+        if e["act"] not in rblock:
+            fail(f"royal event act missing: {e['kind']} {e['when']}")
+        for qid in e["quotes"]:
+            if qid not in rp["quotes"]:
+                fail(f"royal event cites unknown quote: {qid}")
+    if kinds != rp["kinds"] or kinds != rp["summary"]["kinds_count"]:
+        fail("royal kinds != event-derived kinds")
+    if len(kinds) != rp["summary"]["kinds"]:
+        fail("royal summary.kinds != derived")
+    parts = "、".join(f"{k} {v}" for k, v in kinds.items())
+    if f"十事八类：{parts}" not in rblock:
+        fail("§17.20 kinds-count sentence out of sync")
+    if rp["summary"]["events"] != len(events) or rp["summary"]["quotes"] != len(rp["quotes"]):
+        fail("royal summary counts out of sync")
+
+    scan = rp["ritual_scan"]
+    if len(scan["rows"]) != scan["files"]:
+        fail("ritual_scan rows != files")
+    if sum(r["total"] for r in scan["rows"].values()) != scan["occurrences"]:
+        fail("ritual_scan total != sum of rows")
+    scan_tbl = rblock.split("**祀典词检索**", 1)[-1]
+    got = 0
+    for fn, row in scan["rows"].items():
+        want_sum = sum(row["counts"].values())
+        for ln in scan_tbl.splitlines():
+            cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+            if len(cells) == 9 and cells[-1] == str(want_sum) and \
+                    cells[1:8] == [str(row["counts"][k]) for k in scan["keywords"]]:
+                got += 1
+                break
+    if got != scan["files"]:
+        fail(f"§17.20 ritual-scan rows {got} != {scan['files']}")
+    if f'| **合** |  |  |  |  |  |  |  | **{scan["occurrences"]}** |' not in scan_tbl:
+        fail("§17.20 ritual-scan total row out of sync")
+    if (f'在库 {scan["files"]} 部全文检索' not in rblock
+            or f'共 {scan["occurrences"]} 处' not in rblock
+            or f'相邻者 {len(scan["near_huayan"])} 处' not in rblock):
+        fail("§17.20 ritual-absence sentence out of sync")
+    for b in rp["boundaries"]:
+        if b not in rblock:
+            fail(f"§17.20 boundary line missing: {b[:20]}")
+    s2 = next(o for o in ops if o["id"] == "S2")
+    if s2["status"] != "partial" or "17.20" not in (s2.get("refs") or ""):
+        fail("ontology S2 not marked partial / §17.20")
+    if "### 17.20 S2" not in md:
+        fail("§17.20 heading missing")
+    ok(f"§17.20 S2 royal: {len(rp['quotes'])} quotes re-sliced / "
+       f"{len(events)} events in {len(kinds)} kinds / ritual scan "
+       f"{scan['files']} files {scan['occurrences']} hits, {len(scan['near_huayan'])} near 華嚴")
+
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
     if not imp_path.exists():
@@ -476,8 +563,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.20 未竟" not in md:
-        fail("§17.14–17.20 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.21 未竟" not in md:
+        fail("§17.14–17.21 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -645,7 +732,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.20 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.21 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -781,8 +868,8 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.20 未竟" not in md:
-        fail("§17.16–17.20 headings missing")
+    if "### 17.16 T4" not in md or "### 17.21 未竟" not in md:
+        fail("§17.16–17.21 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
 

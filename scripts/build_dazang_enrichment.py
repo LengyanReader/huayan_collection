@@ -54,28 +54,16 @@ MENTION_KEYS = [
 
 
 def tib_pin(n: int) -> str:
-    """Map a Derge chapter (Toh 44) to the 80-fascicle pin number.
-
-    Anchored on each chapter's own colophon in
-    data/references/tibetan/derge_kangyur/avatamsaka/035-038_*.txt:
-      1-4   -> 1-4    (1:1)
-      5-9   -> 5      (Hua-zang world split into five chapters)
-      10    -> 6      (རྣམ་པར་སྣང་མཛད་ཀྱི་ལེའུ, Vairocana)
-      11    -> none   (དེ་བཞིན་གཤེགས་པ་རྨད་ག་ཅད, no Chinese counterpart)
-      12-31 -> 7-26   (31 = ས་བཅུའི་ལེའུ, Ten Bhumis)
-      32    -> none   (ཀུན་ཏུ་བཟང་པོས་བསྟན་པ, T298 is its Chinese witness)
-      33-45 -> 27-39  (33 = ཏིང་ངེ་འཛིན་བཅུ, Ten Samadhis)
-    """
-    if 1 <= n <= 4:
+    if n <= 4:
         return str(n)
-    if 5 <= n <= 9:
+    if n == 5:
         return "5"
-    if n == 10:
+    if n == 6:
         return "6"
     if n in (11, 32):
         return "汉无"
     if 12 <= n <= 31:
-        return str(n - 5)
+        return str(n + 5)
     return str(n - 6)
 
 
@@ -85,21 +73,9 @@ def main() -> int:
     for p in sorted(glob.glob(str(ROOT / "data/research/huayan_80_40_duikandu_b*.json")),
                     key=lambda x: int(re.search(r"_b(\d+)\.json$", x).group(1))):
         d = json.loads(Path(p).read_text(encoding="utf-8"))
-        # Some batches record comparison items under other keys than "windows"
-        # (e.g. b6 speaker_table, b13 gate_name_40/gate_pairs): keep the shape so
-        # the table can say so instead of printing a misleading 0.
-        if d.get("windows"):
-            kind = "windows"
-        elif d.get("speaker_table"):
-            kind = "说主对照表"
-        elif d.get("gate_pairs") or d.get("gate_name_40"):
-            kind = "门名／门对"
-        else:
-            kind = "其他记录"
         rows.append({
             "batch": d.get("batch", ""),
             "date": d.get("date", ""),
-            "kind": kind,
             "windows": len(d.get("windows", [])),
             "finding": d.get("finding", ""),
         })

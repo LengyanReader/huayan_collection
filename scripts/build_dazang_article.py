@@ -30,6 +30,7 @@ ENDGAME = ROOT / "data" / "research" / "endgame_probe.json"
 PAIR60 = ROOT / "data" / "research" / "huayan_80_60_pairwise.json"
 PAIR40 = ROOT / "data" / "research" / "huayan_80_40_pairwise.json"
 WORKSHOP = ROOT / "data" / "research" / "translation_workshop.json"
+ROYAL = ROOT / "data" / "research" / "royal_patronage.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -722,7 +723,7 @@ def table_source_map(data, enrich):
                f"梵本单品存 {len(SANSKRIT)} 种（§6.1）；增长痕迹有记者 {len(GROWTH)} 品。"
                "空格＝「无据」，不等于「无来源」。")
     out.append("")
-    out.append("**空白登记**（拼图未完处，见 §17.20）：各品的印度前身谱系"
+    out.append("**空白登记**（拼图未完处，见 §17.21）：各品的印度前身谱系"
                "（Nattier 原始华严层：兜沙／本业一类最早译）未判；丹珠尔论典"
                "（印度论师怎么读华严）题录全空；东亚传播（新罗·日本）零题录。")
     return "\n".join(out)
@@ -1216,6 +1217,95 @@ def render_workshop(ws):
     return "\n".join(out)
 
 
+def render_royal(rp):
+    """§17.20 — S2 王室·国家祭祀：诏令一侧有据、祀典一侧无据。"""
+    vs = rp["quotes"]
+    src_label = {
+        "huayan80": "《大周新譯大方廣佛華嚴經序》（八十本卷首，武后製）",
+        "fazang": "《唐大薦福寺故寺主翻經大德法藏和尚傳》（新羅崔致遠撰）",
+        "kaiyuan": "《開元釋教錄》（唐智昇撰）",
+        "songgao": "《宋高僧傳》（宋贊寧等撰）",
+    }
+    src_order = ["huayan80", "fazang", "kaiyuan", "songgao"]
+    out = []
+    out.append("王室一侧的记载，逐条以起止锚在源文切片（不手抄），叶码 `lb` 可回源核对；"
+               "源文件字节数与 sha256 记在 `data/research/royal_patronage.json`。")
+    out.append("")
+    out.append("| 类型 | 年代 | 主 | 行事 | 引文 |")
+    out.append("|---|---|---|---|---|")
+    for e in rp["events"]:
+        lbs = "、".join(f'`{vs[q]["lb"]}`' for q in e["quotes"])
+        out.append(f'| {esc(e["kind"])} | {esc(e["when"])} | {esc(e["sovereign"])} | '
+                   f'{esc(e["act"])} | {lbs} |')
+    out.append("")
+    kc = rp["summary"]["kinds_count"]
+    parts = "、".join(f'{esc(k)} {v}' for k, v in kc.items())
+    out.append(f'> 十事八类：{parts}。类型计数由 `events` 汇总，手改无效。')
+    out.append("")
+    out.append("**原文**（照录；叶码为 CBETA `lb`）：")
+    for k in src_order:
+        qids = [qid for qid, q in vs.items() if q["source"] == k]
+        if not qids:
+            continue
+        out.append("")
+        out.append(f"*{esc(src_label[k])}*")
+        out.append("")
+        for qid in qids:
+            q = vs[qid]
+            out.append(f'- `{q["lb"]}`　{esc(q["text"])}')
+    out.append("")
+    out.append("**判断**：")
+    out.append("")
+    out.append("①**王室与本经的关系是可分的制度动作，不是一句「崇信」**：御制序、制译署名、"
+               "敕译、帝受戒、敕建寺牓经名、敕祈雨——八类十事，各有诏敕或传文为证。"
+               "把它们合成「唐代崇佛」会抹掉差异：受戒是帝王与译主的人身关系，"
+               "牓经名是行政命名，祈雨是国家祈禳，三者性质不同。")
+    out.append("")
+    out.append("②**御序是唯一帝王亲笔**：序中「亲受笔削」属译场条件（§17.19 S1），"
+               "而「令标经首」是制度动作——帝王文字冠于经首，此后新译经多沿此式。"
+               "两件事须分开：前者说明帝王参与译事，后者说明经本被赋予官方文本形态。")
+    out.append("")
+    out.append("③**祈雨两事是国家祈禳，不是本经仪轨**：垂拱三载「诏藏于西明寺立坛」、"
+               "景龙二年「命藏集百法师于荐福寺」，诏批作「敷百座以祈恩」——"
+               "国家认可的是**讲会**与**法师**，仪式出自法藏与僧团，不引自本经。"
+               "故这两条只能证「国家与僧人合作」，不能证「本经入祀典」。")
+    out.append("")
+    scan = rp["ritual_scan"]
+    out.append(f'④**祀典一侧无据**：在库 {scan["files"]} 部全文检索'
+               f'（{"／".join(scan["keywords"])}），共 {scan["occurrences"]} 处，'
+               f'其中与「華嚴」相邻者 {len(scan["near_huayan"])} 处——'
+               "这一处是《宋高僧传》一行传的**「華嚴寺」寺名**（一行于华严寺疾笃，"
+               "玄宗诏京城名德致大道场为之祈福），是寺名，不是本经。"
+               "换言之：国家祈禳会请僧人、会设道场，但没有一条把《华严经》列为祀典对象。")
+    out.append("")
+    out.append("**祀典词检索**（在库全文，逐部计数）：")
+    out.append("")
+    out.append("| 文献 | 祭祀 | 宗廟 | 社稷 | 郊祀 | 封禪 | 祀典 | 太廟 | 合 |")
+    out.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|")
+    names = {
+        "T10n0279.xml": "八十华严 T279", "T09n0278.xml": "六十华严 T278",
+        "T10n0293.xml": "四十华严 T293", "T50n2054.xml": "贤首国师碑传 T2054",
+        "T50n2061.xml": "宋高僧传 T2061", "T55n2154.xml": "开元释教录 T2154",
+        "T52n2103.xml": "广弘明集 T2103", "T52n2102.xml": "弘明集 T2102",
+        "T50n2060.xml": "续高僧传 T2060", "T50n2059.xml": "高僧传 T2059",
+        "T51n2089.xml": "游方记抄 T2089",
+    }
+    for fn, row in scan["rows"].items():
+        c = row["counts"]
+        out.append(f'| {esc(names.get(fn, fn))} | ' +
+                   " | ".join(str(c[k]) for k in scan["keywords"]) +
+                   f' | {row["total"]} |')
+    out.append(f'| **合** |  |  |  |  |  |  |  | **{scan["occurrences"]}** |')
+    out.append("")
+    out.append("**限度**：")
+    out.append("")
+    for b in rp["boundaries"]:
+        out.append(f"- {esc(b)}")
+    out.append("- 本节所判为「王室一侧有据、祀典一侧无据」，故 S2 记 `部分`；"
+               "不因诏敕多而升 `已做`，也不因祀典空而降 `未做`。")
+    return "\n".join(out)
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -1235,6 +1325,7 @@ def main():
     conflation = json.loads(CONFLATION.read_text(encoding="utf-8"))
     endgame = json.loads(ENDGAME.read_text(encoding="utf-8"))
     workshop = json.loads(WORKSHOP.read_text(encoding="utf-8")) if WORKSHOP.exists() else {}
+    royal = json.loads(ROYAL.read_text(encoding="utf-8")) if ROYAL.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -1265,6 +1356,7 @@ def main():
         "tanjur": table_tanjur(),
         "influence": table_influence(),
         "workshop": render_workshop(workshop) if workshop else "",
+        "royal": render_royal(royal) if royal else "",
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),
