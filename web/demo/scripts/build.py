@@ -2414,7 +2414,7 @@ LIN_DEEPLINK_JS_TMPL = '''<script>
       if(after) frag.appendChild(document.createTextNode(after));
       e.node.parentNode.replaceChild(frag, e.node);
     }
-    if(edits.length) console.log('[lin-deeplink] linked %d mentions' % edits.length);
+    if(edits.length) console.log('[lin-deeplink] linked ' + edits.length + ' mentions');
   }
   if(document.readyState==='complete') setTimeout(linkify,100);
   else window.addEventListener('load', function(){ setTimeout(linkify,100); });
@@ -2666,6 +2666,8 @@ def build_articles(articles):
                 sutra_panel_block = (
                     '<script>var SUTRA_PANEL_PIN = %d;</script>\n'
                     '<script src="../js/sutra_panel.js"></script>' % _pin)
+        # 阅读位置记忆（所有文章页·localStorage·非 cookie）
+        sutra_panel_block = '<script src="../js/reading_pos.js"></script>' + chr(10) + sutra_panel_block
         html = html.replace('{SUTRA_PANEL}', sutra_panel_block)
         with open(path, 'w', encoding='utf-8') as f:
             f.write(html)

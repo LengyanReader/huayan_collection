@@ -106,7 +106,7 @@ function copyPageLink(){
       if(after) frag.appendChild(document.createTextNode(after));
       e.node.parentNode.replaceChild(frag, e.node);
     }
-    if(edits.length) console.log('[lin-deeplink] linked %d mentions' % edits.length);
+    if(edits.length) console.log('[lin-deeplink] linked ' + edits.length + ' mentions');
   }
   if(document.readyState==='complete') setTimeout(linkify,100);
   else window.addEventListener('load', function(){ setTimeout(linkify,100); });
@@ -299,6 +299,7 @@ function renderDynTopics(data, mode) {
 
 document.getElementById("article-root").innerHTML = renderDynTopics(GAP_DATA[ARTICLE.data_source], 'doors');
 </script>
+<script src="../js/reading_pos.js"></script>
 
 </body>
 </html>

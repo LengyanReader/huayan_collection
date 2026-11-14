@@ -28,6 +28,21 @@
   }
 
   var panel = null, state = { trans: '80', vol: null, loaded: {} };
+  var SKEY = 'sp:' + PIN;
+  function loadPos() { try { return JSON.parse(localStorage.getItem(SKEY) || 'null'); } catch (e) { return null; } }
+  function savePos() {
+    try {
+      var rec = loadPos() || { scroll: {} };
+      rec.trans = state.trans; rec.vol = state.vol;
+      rec.scroll = rec.scroll || {};
+      if (state.vol != null) {
+        var box = panel && panel.querySelector('.sp-body');
+        rec.scroll[state.trans + '/' + state.vol] = box ? Math.round(box.scrollTop) : 0;
+      }
+      rec.ts = Date.now();
+      localStorage.setItem(SKEY, JSON.stringify(rec));
+    } catch (e) {}
+  }
 
   function ensurePanel() {
     if (panel) return panel;
@@ -55,13 +70,20 @@
       b.addEventListener('click', function () { switchTab(b.getAttribute('data-t')); });
     });
     panel.querySelector('.sp-vol').addEventListener('change', function (e) {
+      savePos();
       state.vol = parseInt(e.target.value, 10);
       loadVol();
     });
+    var st = panel.querySelector('.sp-body'), stTimer = null;
+    if (st) st.addEventListener('scroll', function () {
+      if (stTimer) return;
+      stTimer = setTimeout(function () { stTimer = null; savePos(); }, 500);
+    }, { passive: true });
     return panel;
   }
 
   function switchTab(trans) {
+    savePos();
     state.trans = trans;
     renderTabs();
     fillVols();
@@ -122,6 +144,9 @@
       .then(function (d) {
         state.loaded[key] = d.paras;
         renderParas(d.paras);
+        var rec = loadPos();
+        var top = rec && rec.scroll ? rec.scroll[key] : 0;
+        if (top) setTimeout(function () { var sb = panel.querySelector('.sp-body'); if (sb) sb.scrollTop = top; }, 60);
       })
       .catch(function () { box.textContent = '加载失败（data/sutra 卷文件缺失）'; });
   }
@@ -139,11 +164,14 @@
 
   function toggle() {
     if (panel && panel.style.display === 'flex') {
+      savePos();
       panel.style.display = 'none';
       if (window.localStorage) localStorage.setItem('sp-open', '0');
       return;
     }
     ensurePanel();
+    var rec = loadPos();
+    if (rec) { if (rec.trans) state.trans = rec.trans; if (rec.vol) state.vol = rec.vol; }
     panel.style.display = 'flex';
     if (window.localStorage) localStorage.setItem('sp-open', '1');
     renderTabs();

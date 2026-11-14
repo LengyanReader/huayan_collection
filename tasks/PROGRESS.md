@@ -3343,3 +3343,16 @@ done(
 - **修复 v6**：① **经本优先**（80/60/40 命中则只用经本·疏钞降级）；② **多源同文校验**（各候选源汉文须全同才替换·否则跳过）；③ 模糊全源收集（不早停）＋尾部一致守门；④ 占位符/部首区护栏保留。
 - **结果**：**459 条**以经本优先源串回填；`verify_shizhu`／`verify_ru_lai` 双专书门禁 **ALL PASS**（C1 miss 132→0）；审计 0。
 - **门禁**：check ✓ · audit 0 ✓ · build ✓ · diff-check ✓ · 专书×2 ✓；verify_demo 后台复核。
+
+## L.466 · 2026-11-14 · 阅读位置记忆（新功能·localStorage）
+
+- **方案评估**：cookie ❌（随请求上行/4KB）· sessionStorage ❌（关浏览器即丢）· IndexedDB ❌（过重）→ **localStorage** ✅（同源持久·纯客户端·无个人信息）。
+- **文章页**（`js/reading_pos.js`·全 85 页注入）：
+  - 记：最近可见标题锚点 id（`mdh-N`）＋相对偏移＋**已展开章节集合**（折叠感知·≤500 id）·滚动节流 600ms＋pagehide/visibilitychange 落盘。
+  - 恢复：轮询等渲染完成 → 先重放展开集合 → `_reveal` 展开祖先 → 滚动到锚点+偏移 → 底部 toast「已回到上次阅读位置」＋清除记录按钮。
+  - 规则：深链 `#hash` 优先不抢锚点·90 天过期·锚点缺失回退 y。
+- **原文阅读窗**（`js/sutra_panel.js` 扩展）：每品记 `{trans, vol, scroll{译/卷: top}}`——打开自动回到上次 tab/卷/滚动；切 tab/卷/关闭即存（500ms 节流）。
+- **实测**：文章页离开 y=26000 → 重开 y=26000（精确·40 展开节复现·toast 显示）；阅读窗六十卷10 滚动 1200 → 新页面重开 1200（tab/卷同复）。
+- **顺修**：build.py 第二处 `[lin-deeplink] linked %d` JS `%` 误用（NaN 日志）。
+- **安全**：零 cookie·零上传·零 PII·可一键清除。
+- **门禁**：check ✓ · build ✓ · diff-check ✓；verify_demo 后台。

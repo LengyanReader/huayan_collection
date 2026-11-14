@@ -106,7 +106,7 @@ function copyPageLink(){
       if(after) frag.appendChild(document.createTextNode(after));
       e.node.parentNode.replaceChild(frag, e.node);
     }
-    if(edits.length) console.log('[lin-deeplink] linked %d mentions' % edits.length);
+    if(edits.length) console.log('[lin-deeplink] linked ' + edits.length + ' mentions');
   }
   if(document.readyState==='complete') setTimeout(linkify,100);
   else window.addEventListener('load', function(){ setTimeout(linkify,100); });
@@ -958,6 +958,7 @@ function renderArticleBI(){
 }
 
 </script>
+<script src="../js/reading_pos.js"></script>
 <script>var SUTRA_PANEL_PIN = 28;</script>
 <script src="../js/sutra_panel.js"></script>
 </body>
