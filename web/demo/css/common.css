@@ -1572,3 +1572,72 @@ details.ovw>.section>section:first-child>h2{font-size:1.14em}
 /* 独立文章页·最后更新时间带（内容取自 YAML updated_at，未登记则不显） */
 #header .art-updated{font-size:.66em;color:var(--text2);opacity:.85;white-space:nowrap;align-self:center;letter-spacing:.02em}
 #header .art-updated:empty{display:none}
+
+/* ═══ L.470 · 手机阅读适配＋iReader 式阅读设置 ═══ */
+
+/* ── 正文段落/列表：字号与行距走变量（默认维持原版式；手机默认放大；偏好可再调）── */
+.md-p{font-size:calc(var(--read-scale,1) * 0.8em);line-height:var(--read-lh,1.9);margin:6px 0}
+.md-list{margin:6px 0 6px 18px;font-size:calc(var(--read-scale,1) * 0.8em);line-height:var(--read-lh,1.85)}
+@media (max-width:768px){
+  .md-p{font-size:calc(var(--read-scale,1) * 1em)}
+  .md-list{font-size:calc(var(--read-scale,1) * 0.92em)}
+}
+
+/* ── 品页顶栏手机版：允许换行、标题独占一行正常横排、按钮不溢出 ── */
+@media (max-width:768px){
+  #header{flex-wrap:wrap;row-gap:4px;padding:6px 10px}
+  #header h1{order:9;flex:1 1 100%;font-size:1.02em;line-height:1.5;white-space:normal;min-width:0}
+  #header .art-updated{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  #header .lang-btn,#header .share-btn,#header .back-link{flex:0 0 auto}
+  #header > span[style*="margin-left:auto"]{display:none}
+}
+
+/* ── 阅读设置组件（Aa 面板 · 全站可用）── */
+#rp-pref-btn{position:fixed;left:14px;bottom:70px;z-index:1240;width:44px;height:44px;border-radius:22px;
+  border:1px solid rgba(184,134,60,.75);background:rgba(31,36,42,.95);color:#e8c877;font-size:15px;
+  font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.32);font-family:inherit}
+#rp-pref-btn:hover{background:rgba(52,58,66,.97)}
+#rp-pref{position:fixed;left:14px;bottom:122px;z-index:1241;display:none;flex-direction:column;gap:10px;
+  width:236px;padding:12px 14px;border-radius:12px;background:rgba(31,36,42,.97);color:#e8c877;
+  border:1px solid rgba(184,134,60,.5);box-shadow:0 8px 26px rgba(0,0,0,.4);font-size:13px}
+#rp-pref.open{display:flex}
+#rp-pref .rp-row{display:flex;align-items:center;gap:8px}
+#rp-pref .rp-lab{flex:0 0 44px;color:#9fb4c8;font-size:.85em}
+#rp-pref .rp-chip{flex:1;padding:5px 0;text-align:center;border:1px solid rgba(184,134,60,.4);border-radius:8px;
+  background:rgba(255,255,255,.04);color:#cfc6b4;cursor:pointer;font-size:.92em;user-select:none}
+#rp-pref .rp-chip:hover{background:rgba(255,255,255,.09)}
+#rp-pref .rp-chip.on{background:rgba(232,200,119,.18);color:#e8c877;border-color:rgba(232,200,119,.7);font-weight:700}
+@media (max-width:640px){#rp-pref-btn{bottom:64px}#rp-pref{bottom:116px}}
+
+/* ── 夜间模式（html.night）：变量整体换肤＋高频硬编码面色定向覆盖 ── */
+html.night{--bg:#14161b;--panel:#1a1d23;--card:#1e222a;--gold:#c9a45c;--blue:#7ea8c9;--green:#8aa678;
+  --red:#c9756a;--text:#d6d2c6;--text2:#a49d8f;--line:#2e323b}
+html.night body{background:var(--bg);color:var(--text)}
+html.night #header{background:rgba(20,22,27,.94)}
+html.night #header h1{color:var(--gold)}
+html.night #page-top > div{background:#171a20 !important;color:var(--text2)}
+html.night .content-article, html.night #article-full{color:var(--text)}
+html.night table th, html.night table td{background:transparent;border-color:var(--line)}
+html.night table th{background:#23262e}
+html.night details.fold, html.night details.ovw, html.night details.table-fold, html.night details.figure-fold{background:var(--card)}
+html.night details.fold > summary, html.night details.ovw > summary{color:var(--gold)}
+html.night .secfold-bar, html.night .secfold-bar.pagefold-bar{background:#1d2129;color:var(--text2)}
+html.night .secfold-bar button{background:#23262e;color:var(--text);border-color:var(--line)}
+html.night .mf-bar, html.night .mf-stat, html.night .mf-q{background:#23262e;color:var(--text)}
+html.night .mk-chip{background:#23262e;color:var(--text)}
+html.night .floating-toc{background:var(--card)}
+html.night .floating-toc .ftoc-bar{background:#1d2129;color:var(--text)}
+html.night .floating-toc a{color:var(--text)}
+html.night .floating-toc a.is-active{color:var(--gold)}
+html.night .topic-card, html.night .article-chip{background:var(--card);color:var(--text)}
+html.night code{background:#23262e;color:#cfc6b4}
+html.night .en-line{color:var(--text2)}
+html.night blockquote{background:#1d2129;color:var(--text)}
+html.night .sp-panel{background:#1e222a;color:#d6d2c6}
+html.night .sp-panel .sp-tabs, html.night .sp-panel .sp-bar, html.night .sp-panel .sp-body{background:#1a1d23}
+html.night .sp-panel .sp-tabs button{background:#23262e;color:var(--text);border-color:var(--line)}
+html.night .sp-panel .sp-tabs button.sp-on{background:#2c313b;color:var(--gold)}
+html.night .sp-panel .sp-text .sp-volh{background:#23262e;color:var(--gold)}
+html.night .sp-panel .sp-meta{background:#1d2129;color:var(--text2)}
+html.night .sp-panel .sp-head .sp-title{color:#e8c877}
+html.night img{filter:brightness(.88) contrast(.96)}
