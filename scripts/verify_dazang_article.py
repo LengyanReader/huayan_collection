@@ -184,7 +184,7 @@ def main() -> int:
             fail(f"§17 grade B with no witness and no bibliographic record: {r['canon']}")
     if "相似不是证据，见证才是证据" not in md:
         fail("§17 red-line sentence missing")
-    if "跨典藏登记册：17 行" not in md:
+    if "跨典藏登记册：18 行" not in md:
         fail("§16 data table lacks canon_registry.json row")
     ok(f"§17 registry: {len(rows_json)} rows, grades consistent with witnesses")
 
@@ -291,9 +291,14 @@ def main() -> int:
         probe_src[key] = norm((ROOT / "data" / "references" / "cbeta" / fn).read_text(encoding="utf-8"))
     dz_dir = ROOT / "data" / "references" / "daozang"
     probe_src["DZ0001"] = norm("".join(p.read_text(encoding="utf-8") for p in sorted(dz_dir.glob("KR5a0001_*.txt"))))
+    probe_src["KR5e0031"] = norm("".join(p.read_text(encoding="utf-8") for p in sorted(dz_dir.glob("KR5e0031_*.txt"))))
     for key, meta in probes["meta"]["sources"].items():
-        raw = (b"".join(p.read_bytes() for p in sorted(dz_dir.glob("KR5a0001_*.txt")))
-               if key == "DZ0001" else (ROOT / meta["path"]).read_bytes())
+        if key == "DZ0001":
+            raw = b"".join(p.read_bytes() for p in sorted(dz_dir.glob("KR5a0001_*.txt")))
+        elif key == "KR5e0031":
+            raw = b"".join(p.read_bytes() for p in sorted(dz_dir.glob("KR5e0031_*.txt")))
+        else:
+            raw = (ROOT / meta["path"]).read_bytes()
         if hashlib.sha256(raw).hexdigest() != meta["sha256"]:
             fail(f"probe source hash changed: {key}")
     t9_cases = probes["t9"]["cases"]

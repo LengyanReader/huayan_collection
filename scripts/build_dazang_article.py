@@ -529,6 +529,26 @@ def table_p1(probes):
     for q in p["quotes"]:
         out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
     out.append("")
+    dj = p.get("daojiao")
+    if dj:
+        st = dj["stage_system"]
+        out.append("**道教半边**（《道教義樞·位業義第四》，唐孟安排——一手文本，四条引文已回源）：")
+        out.append("")
+        out.append("| 阶梯 | 内容 |")
+        out.append("|---|---|")
+        out.append(f"| 七号 | {esc('、'.join(st['七号']))}（灵人为鬼仙得道之称） |")
+        out.append(f"| 三阶 | {esc('、'.join(st['三阶']))} |")
+        out.append(f"| 五心四位 | {esc('、'.join(st['五心']))} → {esc('、'.join(st['四位']))} |")
+        out.append(f"| 九宫 | {esc(st['九宫'][0])}／{esc(st['九宫'][1])}／{esc(st['九宫'][2])} |")
+        out.append(f"| 三清二十七品 | {esc(st['三清二十七品'])} |")
+        out.append(f"| 禀生位 | {esc(st['禀生位'])} |")
+        out.append("")
+        out.append(f'> 道教阶梯与十住十地的名目交集：{len(dj["name_overlap_with_buddhist"])} 个（七号层面）；'
+                   '但两地皆以「發心」为入阶之首（道教五心之一／佛教初發心住）。')
+        out.append("")
+        for q in dj["quotes"]:
+            out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
+        out.append("")
     out.append(f'**判断**：{esc(p["finding"])}')
     out.append("")
     out.append(f'**边界**：{esc(p["limits"])}')

@@ -26,6 +26,7 @@ SRC = {
     "T1733": ROOT / "data" / "references" / "cbeta" / "T35n1733.xml",
     "T279": ROOT / "data" / "references" / "cbeta" / "T10n0279.xml",
     "DZ0001": ROOT / "data" / "references" / "daozang",
+    "KR5e0031": ROOT / "data" / "references" / "daozang",
 }
 
 
@@ -55,6 +56,13 @@ def load() -> dict[str, str]:
     for key in ("T1735", "T1733", "T279"):
         texts[key] = cbeta_plain(SRC[key].read_text(encoding="utf-8"))
     texts["DZ0001"] = daozang_plain()
+    parts = []
+    for p in sorted(SRC["KR5e0031"].glob("KR5e0031_*.txt")):
+        t = p.read_text(encoding="utf-8")
+        t = re.sub(r"<pb:[^>]*>", "", t)
+        t = t.replace("¶", "")
+        parts.append(t)
+    texts["KR5e0031"] = "".join(parts)
     return texts
 
 
@@ -211,13 +219,45 @@ def main() -> int:
     ]
     for src, _, q in p1_quotes:
         need(texts, src, q)
+
+    # ---- 道教半边：《道教義樞·位業義》（KR5e0031 卷一，一手文本） ----
+    dj_quotes = [
+        ("KR5e0031", "P1",
+         "位業者登仙學道階業不同證果成真高卑有别三乘七號從此可明十轉九宫因兹用辯"),
+        ("KR5e0031", "P1",
+         "名乃有七位乃有三一者仙位二者真位三者聖位神道賢靈更無别位名號雖異猶附三階"),
+        ("KR5e0031", "P1",
+         "證位品者始自發心終乎極道大有五位一者發心二者伏道三者知真四者出離五者無上道"),
+        ("KR5e0031", "P1",
+         "太清仙九品上清真九品玉清聖九品三九二十七品同脩平等俱入一乘"),
+    ]
+    for src, _, q in dj_quotes:
+        need(texts, src, q)
+    dj_stage_names = ["神人", "真人", "仙人", "道人", "聖人", "賢人", "靈人"]
+    dj_overlap = sorted(set(dj_stage_names) & (set(shizhu) | set(shidi)))
+    p1_daogiao = {
+        "source": "道教義樞·位業義第四（唐孟安排，KR5e0031 卷一，Kanripo）",
+        "stage_system": {
+            "七号": dj_stage_names,
+            "三阶": ["仙位", "真位", "聖位"],
+            "五心": ["發心", "伏道", "知真", "出離", "無上道"],
+            "四位": ["十轉位", "九宫位", "三清位", "極果位"],
+            "九宫": ["地仙三品（下三宫）", "天仙三品（中三宫）", "飛仙三品（上三宫）"],
+            "三清二十七品": "太清仙九品・上清真九品・玉清聖九品（三九同用上高大神仙玄真天靈至九名）",
+            "禀生位": "界内三十二品（三界四民）＋界外二十七品（三清一乘）",
+        },
+        "quotes": [{"src": s, "id": i, "text": q} for s, i, q in dj_quotes],
+        "name_overlap_with_buddhist": dj_overlap,
+    }
+
     p1 = {
         "title": "十住與十地：同一階位還是兩套階位",
         "rows": [(i + 1, shizhu[i], shidi[i]) for i in range(10)],
         "name_overlap": sorted(set(shizhu) & set(shidi)),
         "quotes": [{"src": s, "id": i, "text": q} for s, i, q in p1_quotes],
+        "daojiao": p1_daogiao,
         "finding": "十住十名與十地十名無一重合；兩套階位各自成組。但《疏》《記》都指出別行譯本題作《十住經》，理由是「住是地中一義」——題名重疊來自義訓，不來自同一階位。",
-        "limits": "只做佛教內部（華嚴自宗）兩套階位；道教階次無一手文本，跨傳統一半仍缺。",
+        "limits": "道教半邊已得一手（《道教義樞·位業義》）：三阶七号、五心四位、十轉九宫、三清二十七品皆可回源；與十住十地名目交集唯「發心」一節（兩地皆以發心爲入階之首）。位業義全文義疏未逐句對讀。",
     }
     if p1["name_overlap"]:
         raise SystemExit(f"十住/十地 name overlap unexpected: {p1['name_overlap']}")
@@ -226,6 +266,8 @@ def main() -> int:
     for k in SRC:
         if k == "DZ0001":
             raw = b"".join(p.read_bytes() for p in sorted(SRC[k].glob("KR5a0001_*.txt")))
+        elif k == "KR5e0031":
+            raw = b"".join(p.read_bytes() for p in sorted(SRC[k].glob("KR5e0031_*.txt")))
         else:
             raw = SRC[k].read_bytes()
         sources[k] = {
