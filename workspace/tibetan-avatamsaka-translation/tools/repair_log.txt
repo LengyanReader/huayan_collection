@@ -151,3 +151,27 @@ In the southeastern direction, the southwestern direction, the northwestern dire
 [10:59:44] seg3 zh: window=1 raw=4 cleaned=0 complete=False (empty)
 [10:59:44] --- cleaned ---
 
+[14:25:03] seg3 part1 zh: raw=36 cleaned=36 complete=True (ok); composed=False
+[14:25:03] --- cleaned ---
+那些菩薩們也承蒙如來的加持而宣說正法，並且各自覺知自己正安住在如來足下。
+[14:33:22] seg3 part1 en: raw=160 cleaned=160 complete=True (ok); composed=False
+[14:33:22] --- cleaned ---
+Those bodhisattvas also, through the blessings of the Tathāgata, taught the Dharma and each perceived themselves to be sitting in the presence of the Tathāgata.
+[14:44:23] seg3 part2 zh: raw=46 cleaned=46 complete=True (ok); composed=False
+[14:44:23] --- cleaned ---
+世尊亦未收攝其所顯現的神變，便顯現出正往菩提樹下、位於須彌山頂帝釋天宮「最勝殿」的方向而去。
+[14:55:48] seg3 part2 en: raw=207 cleaned=207 complete=True (ok); composed=True
+[14:55:48] --- cleaned ---
+Without retracting that miraculous manifestation, the Blessed One appeared to proceed from the foot of the Bodhi tree to the Vaijayanta palace of Śakra, the lord of the gods, atop the summit of Mount Sumeru.
+[14:56:40] model ready 4.3s
+[15:11:24] seg4 zh: window=1 raw=71 cleaned=71 complete=True (ok)
+[15:11:24] --- cleaned ---
+正如世尊在此四洲世界中，顯現於須彌山頂；同樣地，在所有世界系的各個四洲世界中，也皆顯現於須彌山頂。且其往昔所賜予的加持，亦悉數顯現而未曾損減。
+[15:12:13] model ready 4.3s
+[15:27:29] seg4 en: window=1 raw=196 cleaned=0 complete=False (empty)
+[15:27:29] --- cleaned ---
+
+[12:06:56] model ready 13.4s
+[12:32:46] seg4 en: window=1 raw=97 cleaned=0 complete=False (empty)
+[12:32:46] --- cleaned ---
+

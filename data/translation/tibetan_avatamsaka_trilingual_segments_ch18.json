@@ -189,9 +189,9 @@
    "folio": "[238b.1]",
    "char_off": 492,
    "bo": "བྱང་ཆུབ་སེམས་དཔའ་དེ་དག་ཀྱང་དེ་བཞིན་གཤེགས་པའི་བྱིན་གྱི་རླབས་ཀྱིས་ཆོས་སྟོན་ཅིང་། དེ་བཞིན་གཤེགས་པའི་ཞབས་ཀྱི་དྲུང་ན་འཁོད་པར་ཡང་སོ་སོ་ནས་ཤེས་ ཏེ། བཅོམ་ལྡན་འདས་ཀྱིས་ཀྱང་རྫུ་འཕྲུལ་མངོན་པར་འདུ་མཛད་པ་དེ་མ་བརྟུལ་བར་བྱང་ཆུབ་ཀྱི་ཤིང་གི་དྲུང་དུ་རི་རབ་ཀྱི་རྩེ་མོའི་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱི་ཁང་པ་རྣམ་པར་རྒྱལ་བ་ག་ལ་བ་དེར་གཤེགས་པར་སྣང་ངོ་། །",
-   "zh": "",
-   "en": null,
-   "status": "needs_retry",
+   "zh": "那些菩薩們也承蒙如來的加持而宣說正法，並且各自覺知自己正安住在如來足下。\n世尊亦未收攝其所顯現的神變，便顯現出正往菩提樹下、位於須彌山頂帝釋天宮「最勝殿」的方向而去。",
+   "en": "Those bodhisattvas also, through the blessings of the Tathāgata, taught the Dharma and each perceived themselves to be sitting in the presence of the Tathāgata. Without retracting that miraculous manifestation, the Blessed One appeared to proceed from the foot of the Bodhi tree to the Vaijayanta palace of Śakra, the lord of the gods, atop the summit of Mount Sumeru.",
+   "status": "done",
    "verified": true,
    "boundary": "final",
    "window": [
@@ -228,7 +228,51 @@
     "frame": false,
     "needs_review": true,
     "ts": "2026-11-13T10:59:44"
-   }
+   },
+   "subunits": [
+    {
+     "bo": "བྱང་ཆུབ་སེམས་དཔའ་དེ་དག་ཀྱང་དེ་བཞིན་གཤེགས་པའི་བྱིན་གྱི་རླབས་ཀྱིས་ཆོས་སྟོན་ཅིང་། དེ་བཞིན་གཤེགས་པའི་ཞབས་ཀྱི་དྲུང་ན་འཁོད་པར་ཡང་སོ་སོ་ནས་ཤེས་ ཏེ།",
+     "zh": "那些菩薩們也承蒙如來的加持而宣說正法，並且各自覺知自己正安住在如來足下。",
+     "zh_raw": "那些菩薩們也承蒙如來的加持而宣說正法，並且各自覺知自己正安住在如來足下。",
+     "zh_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-13T14:25:03"
+     },
+     "en": "Those bodhisattvas also, through the blessings of the Tathāgata, taught the Dharma and each perceived themselves to be sitting in the presence of the Tathāgata.",
+     "en_raw": "Those bodhisattvas also, through the blessings of the Tathāgata, taught the Dharma and each perceived themselves to be sitting in the presence of the Tathāgata.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-13T14:33:22"
+     }
+    },
+    {
+     "bo": "བཅོམ་ལྡན་འདས་ཀྱིས་ཀྱང་རྫུ་འཕྲུལ་མངོན་པར་འདུ་མཛད་པ་དེ་མ་བརྟུལ་བར་བྱང་ཆུབ་ཀྱི་ཤིང་གི་དྲུང་དུ་རི་རབ་ཀྱི་རྩེ་མོའི་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱི་ཁང་པ་རྣམ་པར་རྒྱལ་བ་ག་ལ་བ་དེར་གཤེགས་པར་སྣང་ངོ་། །",
+     "zh": "世尊亦未收攝其所顯現的神變，便顯現出正往菩提樹下、位於須彌山頂帝釋天宮「最勝殿」的方向而去。",
+     "zh_raw": "世尊亦未收攝其所顯現的神變，便顯現出正往菩提樹下、位於須彌山頂帝釋天宮「最勝殿」的方向而去。",
+     "zh_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-13T14:44:23"
+     },
+     "en": "Without retracting that miraculous manifestation, the Blessed One appeared to proceed from the foot of the Bodhi tree to the Vaijayanta palace of Śakra, the lord of the gods, atop the summit of Mount Sumeru.",
+     "en_raw": "Without retracting that miraculous manifestation, the Blessed One appeared to proceed from the foot of the Bodhi tree to the Vaijayanta palace of Śakra, the lord of the gods, atop the summit of Mount Sumeru.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-13T14:55:48"
+     }
+    }
+   ]
   },
   {
    "no": 4,
@@ -238,11 +282,76 @@
    "folio": "[238b.2]",
    "char_off": 825,
    "bo": "ཇི་ལྟར་བཅོམ་ལྡན་འདས་གླིང་བཞི་པ་འདིའི། རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་བ། དེ་བཞིན་དུ་འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་ཀྱི་གླིང་བཞི་པ་དག་གི་རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་སྟེ། བྱིན་གྱི་རླབས་སྔ་མ་དག་ཀྱང་མ་ཉམས་པར་སྣང་ངོ་། །",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "正如世尊在此四洲世界中，顯現於須彌山頂；同樣地，在所有世界系的各個四洲世界中，也皆顯現於須彌山頂。且其往昔所賜予的加持，亦悉數顯現而未曾損減。",
+   "en": "",
+   "status": "needs_retry",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "window": [
+    4,
+    4
+   ],
+   "bo_merged": "ཇི་ལྟར་བཅོམ་ལྡན་འདས་གླིང་བཞི་པ་འདིའི། རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་བ། དེ་བཞིན་དུ་འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་ཀྱི་གླིང་བཞི་པ་དག་གི་རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་སྟེ། བྱིན་གྱི་རླབས་སྔ་མ་དག་ཀྱང་མ་ཉམས་པར་སྣང་ངོ་། །",
+   "zh_raw": "",
+   "zh_raw2": "正如世尊在此四洲世界中，顯現於須彌山頂；同樣地，在所有世界系的各個四洲世界中，也皆顯現於須彌山頂。且其往昔所賜予的加持，亦悉數顯現而未曾損減。",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 884.2,
+    "out_tokens": 57,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-13T15:11:24"
+   },
+   "zh_clean": {
+    "method": "official-mitra-prompt+meta/residue/sentence-trim-v1",
+    "complete": true,
+    "trimmed": false,
+    "validation": "ok",
+    "coverage": {
+     "bo_chars": 206,
+     "out_chars": 71,
+     "ratio": 0.345,
+     "bo_shad_units": 5,
+     "out_sentence_units": 3
+    },
+    "frame": false,
+    "needs_review": false,
+    "ts": "2026-11-13T15:11:24"
+   },
+   "en_raw": "",
+   "en_raw2": "Just as the Blessed One appeared to have ascended to the summit of Mount Sumeru in this four-cont",
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 1550.2,
+    "out_tokens": 22,
+    "max_new": 250,
+    "clipped_repeat": false,
+    "ts": "2026-11-14T12:32:46"
+   },
+   "en_clean": {
+    "method": "official-mitra-prompt+meta/residue/sentence-trim-v1",
+    "complete": false,
+    "trimmed": true,
+    "validation": "empty",
+    "coverage": {
+     "bo_chars": 206,
+     "out_chars": 0,
+     "ratio": 0.0,
+     "bo_shad_units": 5,
+     "out_sentence_units": 0
+    },
+    "frame": false,
+    "needs_review": true,
+    "ts": "2026-11-14T12:32:46"
+   }
   },
   {
    "no": 5,

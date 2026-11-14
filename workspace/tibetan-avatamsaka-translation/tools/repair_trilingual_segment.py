@@ -100,6 +100,16 @@ def split_title(bo):
     return (m.group(1), m.group(2)) if m else ('', bo or '')
 
 
+def split_subunits(bo, n=2):
+    pos = [i + 1 for i, c in enumerate(bo or '') if c == '།']
+    if not pos:
+        return [bo or '']
+    mid = len(bo) // 2
+    idx = min(pos, key=lambda p: abs(p - mid))
+    parts = [(bo or '')[:idx].strip(), (bo or '')[idx:].strip()]
+    return [p for p in parts if p]
+
+
 def is_title_block(bo):
     title, body = split_title(bo)
     return bool(title and not body.strip())
@@ -257,7 +267,7 @@ def compose_title(s):
     s['bam_po'] = n
 
 
-def retranslate(path, doc, seg_no, lang, max_new, window=1):
+def retranslate(path, doc, seg_no, lang, max_new, window=1, time_limit=900):
     s = next((x for x in doc['segments'] if int(x['no']) == seg_no), None)
     if not s:
         sys.exit('segment %d not found' % seg_no)
@@ -310,7 +320,7 @@ def retranslate(path, doc, seg_no, lang, max_new, window=1):
             return (time.time() - self.start) > self.limit
 
     max_new = min(max_new, 400)
-    criteria = StoppingCriteriaList([_TimeLimit(t1, 900)])
+    criteria = StoppingCriteriaList([_TimeLimit(t1, time_limit)])
     with torch.no_grad():
         out = model.generate(**inputs, max_new_tokens=max_new, do_sample=False,
                              no_repeat_ngram_size=8, pad_token_id=tok.eos_token_id,
@@ -399,6 +409,7 @@ def main():
     ap.add_argument('--clean-only', action='store_true')
     ap.add_argument('--max-new', type=int, default=800)
     ap.add_argument('--window', type=int, default=1, help='合并 1–N 段为一个译句单元（偈颂跨行）')
+    ap.add_argument('--time-limit', type=int, default=900, help='单次生成墙钟上限（秒）')
     args = ap.parse_args()
     path, doc = load_doc(args.chapter)
     if args.clean_only:
@@ -406,7 +417,7 @@ def main():
     else:
         if not args.lang:
             sys.exit('--lang required unless --clean-only')
-        retranslate(path, doc, args.seg, args.lang, args.max_new, args.window)
+        retranslate(path, doc, args.seg, args.lang, args.max_new, args.window, args.time_limit)
 
 
 if __name__ == '__main__':
