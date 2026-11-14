@@ -48,8 +48,8 @@ items:
     tier: 一级
     topic_zh: 离世间品（勘玄记04·44MB 版）
     pages: 370
-    extraction_status: 待OCR（文字层 0）
-    cited_in: []
+    extraction_status: 已OCR→data/references/huayan_daodu/堪玄记04_离世间品_OCR提取本.txt（370 页·133,469 CJK·2026-11-14 L.474·pypdfium2 300DPI＋tesseract 5.4.0 chi_tra·残误如实保留约 90-95% 字准·引前须对原书核·讲记实引已入第三十八部 §5.2）
+    cited_in: ["第三十八部"]
   - id: kanxuanji-4-big
     path: "C:/华严/经典著作/《勘玄记04》（离世间品）--.pdf"
     tier: 一级（高清重复件）

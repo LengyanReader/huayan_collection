@@ -72,12 +72,14 @@ if APPLY:
     end = i52 + (mnext.start() if mnext else len(md) - i52)
     blocks = []
     for i, p in enumerate(passages, 1):
+        pclean = re.sub(r'\s+', '', p)   # OCR 件字符间空格清洗（引文体例·无空格块）
         blocks.append('**海云继梦《勘玄記04》（離世間品講記·OCR 提取本）·段%d**（%d 字·程序抽取·'
                       '源勘玄记04 PDF 页 %d-%d·OCR 字准约 90-95%%·引前须对原书核）：\n\n> %s' % (
-                          i, han(p), pages_span[0], pages_span[1], p))
+                          i, han(pclean), pages_span[0], pages_span[1], pclean))
     md = md[:end] + '\n\n' + '\n\n'.join(blocks) + '\n' + md[end:]
     io.open(fp, 'w', encoding='utf-8', newline='').write(md)
     print('已写入 P38 5.2：', len(passages), '段')
 else:
     for i, p in enumerate(passages, 1):
-        print('段%d（%d 字）: %s' % (i, han(p), p[:80]))
+        pclean = re.sub(r'\s+', '', p)
+        print('段%d（%d 字）: %s' % (i, han(pclean), pclean[:80]))
