@@ -31,14 +31,14 @@ VOL_NOS = list(range(113, 123))          # mdo-sde section, 10 volumes
 API = ("https://api.github.com/repos/Esukhia/derge-tengyur/contents/"
        "text?per_page=100")
 
-# 华严相关题名关键词（藏文转写）
+# 华严相关题名关键词（藏文正字——卷内题名是藏文，Wylie 检索无效）
 KEYS = {
-    "sdong po bkod": "华严·树严（入法界/华严）",
-    "phal po chen": "华严（phal po che）",
-    "phal chen": "华严（phal chen）",
-    "sa bcu": "十地",
-    "bzang po smon lam": "行愿",
-    "bzang spyod smon lam": "行愿",
+    "སྡོང་པོ་བཀོད": "华严·树严（入法界/华严）",
+    "ཕལ་ཆེན": "华严（phal chen）",
+    "ཕལ་པོ་ཆེ": "华严（phal po che）",
+    "ས་བཅུ": "十地",
+    "བཟང་པོ་སྤྱོད": "行愿（bzang po spyod）",
+    "སྨོན་ལམ": "愿（smon lam）",
 }
 
 WORK_RE = re.compile(r"\[([0-9]+[ab](?:\.\d+)?)\]\{D(\d+)\}([^\n]+)")
@@ -163,13 +163,14 @@ def main() -> int:
             "dkarchag": dkarchag,
         },
         "works_total": len(works),
+        "works": works,
         "huayan": huayan,
     }
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
                    encoding="utf-8")
     print(f"works={len(works)}  huayan-related={len(huayan)}")
     for w in huayan:
-        print(f"  D{w['D']} vol{w['vol']} {w['topic']}: {w['title'][:70]}")
+        print(f"  D{w['D']} vol{w['vol']} {w['topic']}: {w['title_tib'][:70]}")
     print("written", OUT)
     return 0
 

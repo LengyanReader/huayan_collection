@@ -446,16 +446,36 @@ def main() -> int:
     dk_norm = re.sub(r"\[[0-9]+[xab](?:\.\d+)?\]|#|\{[^}]*\}", "",
                      dk_path.read_text(encoding="utf-8").replace("\n", " "))
     dk_nospace = re.sub(r"\s+", "", dk_norm)
-    tanjur_titles = re.findall(r"^\| (འཕགས་པ[^\n]*?|ཀུན་དུ[^\n]*?) \|", tanjur_block, re.M)
+    tanjur_titles = re.findall(r"^\| Toh \d+ \| (འཕགས་པ[^\n]*?|ཀུན་དུ[^\n]*?) \|", tanjur_block, re.M)
     if len(tanjur_titles) < 5:
         fail(f"§6.3 tanjur rows {len(tanjur_titles)} < 5")
-    for t in tanjur_titles:
+    for t in tanjur_titles[:5]:          # 行愿表（5 列）：题名回源 dkar chag
         if re.sub(r"\s+", "", t) not in dk_nospace:
             fail(f"§6.3 tanjur title not verbatim in dkar chag: {t[:40]}")
+    for t in tanjur_titles[5:]:          # 十地表（3 列）：题名回源卷文件
+        tt = re.sub(r"\s+", "", t)
+        if not any(tt in re.sub(r"\s+", "", re.sub(r"\[[^\]]*\]|#", "",
+                (ROOT / "data" / "references" / "tibetan" / "derge_tengyur" / f"vol{v}.txt")
+                .read_text(encoding="utf-8")))
+                for v in ("113", "116")):
+            fail(f"§6.3 十地 title not verbatim in volumes: {t[:40]}")
     for frag in ("ཀླུ་སྒྲུབ", "ཕྱོགས་ཀྱི་གླང་པོ", "དབྱིག་གཉེན", "443b"):
         if frag not in tanjur_block:
             fail(f"§6.3 tanjur column missing: {frag}")
     ok(f"§6.3 tanjur: {len(tanjur_titles)} 行愿讚释 entries verbatim in dkar chag")
+
+    # --- §6.6 Toh numbers: eTengyur vol117 must carry {D4011}–{D4015} ---
+    v117 = (ROOT / "data" / "references" / "tibetan" / "derge_tengyur" / "vol117.txt")
+    if not v117.exists():
+        fail("eTengyur vol117 missing")
+    v117t = v117.read_text(encoding="utf-8")
+    for no in range(4011, 4016):
+        if f"{{D{no}}}" not in v117t:
+            fail(f"vol117 missing {{D{no}}} mark")
+    for no in ("Toh 4011", "Toh 4012", "Toh 4013", "Toh 4014", "Toh 4015"):
+        if no not in md:
+            fail(f"§6.6 Toh number missing in article: {no}")
+    ok("§6.6 tanjur: Toh 4011–4015 double-sourced (vol117 {D} marks + dkar chag order)")
 
     # --- §17.15 T7: 品级长度比、引用率、节略用语、锚点链 ---
     t7_path = ROOT / "data" / "research" / "paraphrase_probe.json"
