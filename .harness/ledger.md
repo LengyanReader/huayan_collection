@@ -617,3 +617,4 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - next：C 覆盖面批（11 个 none 取 1–2 个，须新一手源）。
 
 - **三语线·ch18**（2026-11-13）：ch18 33段；seg1 题名+正文 done、seg2 十方世界 done（2/6）；seg3 325字符触发900s墙钟上限 raw=4空→needs_retry；已停进程；新增900s StoppingCriteria+400 cap、题名+正文拆分、ch18订正；G2.2/G2.3/G2.5 PASS，G2.1 FAIL=1（18 2/6+19–31）；verify_demo绿。next=seg3拆短子段再译→seg4-6。
+- **三语线·ch18 3/6**（2026-11-13）：seg3 两子段（140/184）zh+en 完成并 compose；seg1/2/3 done → 3/6；seg4 zh 完成、en 900s 截断被拒留空→needs_retry（CPU 争用，未重跑）；G2.2/G2.3/G2.5 PASS，G2.1 FAIL=1（18 3/6+19–31），verify_demo 绿；无模型进程。next=seg4 en 长上限/拆段→seg5/6。

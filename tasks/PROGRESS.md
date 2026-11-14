@@ -3165,3 +3165,11 @@ done(
 - **防跑飞**：`StoppingCriteria` 900s＋`max_new` 上限 400；题名+正文拆分（题名 canonical、正文 model）；ch18 首段〔订正〕登记。
 - **门禁**：G2.2/G2.3/G2.5 PASS；G2.1 FAIL=1（18 2/6＋19–31）；G2.4 manual；`verify_demo` 绿。
 - **next**：seg3 拆成 2 个短子段（约 150 字符）再译，或换 prompt 重试；然后 seg4–6。
+
+## 三语线·ch18 3/6（2026-11-13）
+
+- **ch18 进度**：seg1 题名+正文、seg2 十方世界、seg3 两个子段（140/184 字符，zh+en 均 complete，composed）→ **3/6**。
+- **seg3 解法**：`repair_subunit.py` 按中点 shad 无损拆 2 段，逐段译，全部齐备后才 compose；页面显示完整两段。
+- **seg4 阻塞**：zh 完整；en 在 900s 墙钟上限处截断（“…in all the”），被完整性门禁拒绝并留空，`needs_retry`；当前 CPU 受并行会话争用，未重复重跑。
+- **门禁**：G2.2/G2.3/G2.5 PASS；G2.1 FAIL=1（18 3/6＋19–31）；G2.4 manual；`verify_demo` 绿；无 repair/subunit python 进程。
+- **next**：seg4 en 在 CPU 空闲时用更长上限（1200–1500s）或拆 2 子段重译；然后 seg5（414 字符，预计拆段）、seg6。
