@@ -8,6 +8,7 @@ Usage (from project root):
 """
 import json
 import re
+import time
 import html as _html
 import yaml
 import os
@@ -30,6 +31,9 @@ ARTICLES_OUT = OUT / 'articles'
 # SQLite data reader (single source of truth for graph data)
 sys.path.insert(0, str(ROOT / 'scripts'))
 import db_reader
+
+# ── 静态资源缓存戳（L.471）：css/js 任何更新自动失效浏览器/CDN 缓存 ──
+ASSET_V = 'v=' + time.strftime('%Y%m%d%H%M')
 
 # ── 阅读偏好 boot 脚本（L.470）：首屏绘制前套用夜间模式/字号/行距，防闪 ──
 BOOT_READ_PREFS = ('<script>try{var P=JSON.parse(localStorage.getItem(\'read-prefs\')||\'{}\'),'
@@ -350,7 +354,7 @@ PAGE_TOP = '''<!DOCTYPE html>
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · {title}</title>
-{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css?{ASSET_V}">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">
@@ -372,7 +376,7 @@ PAGE_TOP = '''<!DOCTYPE html>
   </main>
 </div>
 <div class="comment-box" id="cmt-{tab_id}"></div>
-<script src="../js/common.js"></script>
+<script src="../js/common.js?{ASSET_V}"></script>
 <script>
 // ═══ EMBEDDED DATA ═══
 var GRAPH = {graph_json};
@@ -451,6 +455,7 @@ def build_page(title, tab_id, sidebar_links, tab_js_name, init_call):
         title=title,
         tab_id=tab_id,
         BOOT_READ_PREFS=BOOT_READ_PREFS,
+        ASSET_V=ASSET_V,
         sidebar_links=sidebar_links,
         graph_json=json.dumps(graph, ensure_ascii=False),
         gap_json=json.dumps(gap, ensure_ascii=False),
@@ -505,7 +510,7 @@ def build_famai_shell():
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>法脉传承 · 视角模块</title>
-<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/common.css?{ASSET_V}">
 <style>
 .wrap{{max-width:1080px;margin:0 auto;padding:24px 20px}}
 .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:18px}}
@@ -1061,7 +1066,7 @@ def build_shanhe_page():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>山河法脉 · 断代山河上的法脉流传</title>
-<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/common.css?{ASSET_V}">
 <style>
 .wrap{max-width:1200px;margin:0 auto;padding:18px 20px}
 #ctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
@@ -1273,7 +1278,8 @@ body{background:
 <script>__SHANHE_JS__</script>
 </body>
 </html>'''
-    html = (tmpl.replace('__YEAR_BUTTONS__', year_buttons)
+    html = (tmpl.replace('{ASSET_V}', ASSET_V)
+                .replace('__YEAR_BUTTONS__', year_buttons)
                 .replace('__YMIN__', str(_ymin)).replace('__YMAX__', str(_ymax)).replace('__Y0__', str(_y0))
                 .replace('__N_PLACES__', str(len(places)))
                 .replace('__N_TEMPLES__', str(len(temples_out)))
@@ -1318,7 +1324,7 @@ def build_famai_license_page():
     html = '''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>层源与许可 · 法脉传承模块</title><link rel="stylesheet" href="../css/common.css">
+<title>层源与许可 · 法脉传承模块</title><link rel="stylesheet" href="../css/common.css?{ASSET_V}">
 <style>body{max-width:1000px;margin:0 auto;padding:26px 22px}
 table{border-collapse:collapse;width:100%;font-size:0.8em}td,th{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
 .note{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:0.88em;margin:16px 0}</style></head>
@@ -1337,7 +1343,7 @@ table{border-collapse:collapse;width:100%;font-size:0.8em}td,th{border:1px solid
 <table><tr><th>文件</th><th>来源域</th><th>许可</th><th>访问日期</th><th>字节</th><th>sha256 前16</th></tr>
 __ROWS__</table>
 <p style="font-size:0.75em;color:var(--text2)">溯源 SSOT：<code>data/geo/manifest.yaml</code>（受控下载器 <code>scripts/f2_fetch_geo.py</code> 生成·幂等可复核）·本批裁定见 <code>.harness/decisions.md</code> #12</p>
-</body></html>'''.replace('__ROWS__', rows)
+</body></html>'''.replace('{ASSET_V}', ASSET_V).replace('__ROWS__', rows)
     path = OUT / 'famai' / 'license.html'
     path.write_text(html, encoding='utf-8')
     size = len(html.encode('utf-8'))
@@ -1398,7 +1404,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>华严宗 · 法脉传承</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/common.css?{ASSET_V}">
 <style>
 #search-bar{{display:flex;gap:6px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);align-items:center;position:relative}}
 #search-bar input{{border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:0.8em;background:var(--card);color:var(--text);width:220px;outline:none}}
@@ -1533,7 +1539,7 @@ var tl = {{canvas:null, ctx:null, W:0, H:0, ox:0, oy:0, scale:1,
 <div class="comment-box" id="cmt-lineage"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="../js/common.js"></script>
+<script src="../js/common.js?{ASSET_V}"></script>
 <script>
 {data_js_content}
 {events_js}
@@ -1628,7 +1634,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · {title}</title>
-{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css?{ASSET_V}">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">
@@ -1653,7 +1659,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 <div class="comment-box" id="cmt-{tab_id}"></div>
 <button class="back-to-top" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" title="回到顶部">&uarr;</button>
 
-<script src="../js/common.js"></script>
+<script src="../js/common.js?{ASSET_V}"></script>
 <script>
 {data_script}
 </script>
@@ -2622,7 +2628,7 @@ def build_articles(articles):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · {title} · 独立文章</title>
-{BOOT_READ_PREFS}<link rel="stylesheet" href="{common_css_rel}">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="{common_css_rel}?{ASSET_V}">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">
@@ -2647,7 +2653,7 @@ def build_articles(articles):
 <main class="content content-article" id="article-root"></main>
 <div id="share-toast" style="position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(31,36,42,0.96);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82em;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.3)"></div>
 
-<script src="../js/common.js"></script>
+<script src="../js/common.js?{ASSET_V}"></script>
 {SHARE_JS}
 {LIN_DEEPLINK_JS}
 {scripts}
@@ -2675,11 +2681,11 @@ def build_articles(articles):
                 _pin = _cn2n(_pm.group(1))
         if 1 <= _pin <= 39:
             sutra_panel_block = (
-                '<script src="../data/sutra/mapping.js"></script>\n'
+                '<script src="../data/sutra/mapping.js?' + ASSET_V + '"></script>\n'
                 '<script>var SUTRA_PANEL_PIN = %d;</script>\n'
-                '<script src="../js/sutra_panel.js"></script>' % _pin)
+                '<script src="../js/sutra_panel.js?' + ASSET_V + '"></script>') % _pin
         # 阅读位置记忆（所有文章页·localStorage·非 cookie）
-        sutra_panel_block = '<script src="../js/reading_pos.js"></script>' + chr(10) + sutra_panel_block
+        sutra_panel_block = '<script src="../js/reading_pos.js?' + ASSET_V + '"></script>' + chr(10) + sutra_panel_block
         html = html.replace('{SUTRA_PANEL}', sutra_panel_block)
         with open(path, 'w', encoding='utf-8') as f:
             f.write(html)
@@ -2839,7 +2845,7 @@ def build_articles(articles):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · 独立文章目录</title>
-{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css?{ASSET_V}">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">

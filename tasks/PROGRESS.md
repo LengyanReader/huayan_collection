@@ -3403,3 +3403,12 @@ done(
 - **P2 设置**：`common.js` 偏好模块＋左下角 Aa 面板（字号 默认/大/特大 ×1/1.25/1.5 · 行距 标准/宽松 · 主题 日间/夜间）；`html.night` 变量换肤＋高频硬编码面色定向覆盖（表/折叠条/阅读窗/悬浮目录等）；`read-prefs` localStorage 持久化；**boot 脚本注入四类页头**（品页/tabs/文章目录/主页）绘制前套用防闪。实测特大+夜间 24px/52.8 全屏暗色、跨页保持、复位回删。
 - **门禁**：node --check ×4 ✓ · build 86 files ✓ · verify_demo ALL PASSED ✓ · check ✓ · diff-check ✓；桌面回归默认版式 0 变化。
 - **如实**：夜间皮肤覆盖高频面（变量化组件＋十余类硬编码），个别角落（famai 子页、部分 JS 内联色）仍偏亮——后续按需增补。
+
+## L.471 · 2026-11-14 · 静态资源缓存戳（修「页面格式原始粗糙」）
+
+- **用户反馈**：部分页面（如品33 义理要点区）格式变得特别原始粗糙。
+- **诊断**：源 md 规整（h2＋有序列表＋加粗）；本地渲染正常（ol margin 18px/12.8px）；线上症状＝HTML 已是新结构（L.470 起 `md-p`/`md-list` 类化）而浏览器缓存的 **common.css 是旧版**（无对应规则）→ 段落/列表字号·行距·缩进全丢。**根因：全站 css/js 引用自始无缓存戳**，任何样式更新对老访客不生效。
+- **修复**：`build.py` 增 `ASSET_V = 'v=' + time.strftime('%Y%m%d%H%M')`，注入全部静态资源引用——PAGE_TOP（format kwarg）·tab f-string·品页 f-string（css/common_css_rel·common.js）·articles/index·famai license/shanhe（`.replace('{ASSET_V}',…)` 因模板含裸花括号不可 format）·阅读窗注入三件（mapping.js/sutra_panel.js/reading_pos.js）。读窗 pin 注入的 `% _pin` 移出括号避免优先级绑错。
+- **实测**：86 生成页全带 `?v=202611141813`；品33 义理要点区 ol 18px 缩进/12.8px/加粗全正常；任一 css/js 更新后 URL 变化即自动失效缓存。
+- **门禁**：py_compile ✓ · verify_demo ALL PASSED ✓ · check ✓ · diff-check ✓。
+- **教训**：类化改造（内联样式→类）必须与缓存策略同步——没有资源戳的静态站，样式更新对老访客等于没更新。
