@@ -3431,3 +3431,10 @@ done(
 - **注入**：48 篇 huayan_xidu 族页（build 循环）＋4 篇特殊构建页手工补打（journey/80-60矩阵/两篇藏译）＋3 篇 ext（dazang/haiyun/collation）＝**50 页全覆盖**。
 - **故障两记**：①底栏初版挂在 main 内被文章渲染器 innerHTML 重写抹除→改挂 main 之后兄弟位；②底栏品号『undefined』——九字表只够个位（`'一二三四五六七八九'[13]` 越界）→补 cnN 进位函数。
 - **门禁**：node --check ✓ · build 87 files ✓ · verify_demo ALL PASSED ✓ · check ✓ · diff-check ✓；桌面实测跳转/高亮/前后品 ✓·大藏对应页出发导航 ✓。
+
+## L.432 · 2026-11-14 · R2 图像化接层＋P1 跨传统扩读（儒印对读）
+
+- **R2 图像化接层**：`build_imagery_stats.py` 聚合 culture 线登记册（data/imagery 38 册、36 册机读、2 册格式待一）——**条目 39 件、覆盖 35 品**，逐册 Commons extmetadata 授权回源；R2 none→partial（题域相关为主、A 类直绘待判），影响面表图像行动态化，未竟 R 条更新。覆盖 18→**18.5/34（54.4%）**，R 面 20%→30%。
+- **P1 跨传统扩读**（§17.13 第三块）：儒家八条目（格物致知誠意正心脩身齊家治國平天下——《大學》KR1h0015 逐字，含 inline pb 标记剥离）＋瑜伽八支（yama…samādhi，YS 2.29/2.32，GRETIL Maas 本逐字）——四地阶梯名目交集 0、皆以升进序列为形＝**C1 同构**。probe_src/哈希分支扩展至 KR1h0015/yogasutra。
+- **门禁**：quote 组泛化（daojiao/kuax 块）＋imagery/registry 对账；31 项全绿。教训：门禁分支的目录写错（rujia 文件误从 daozang 取）→ 空串哈希假差异，报错即查目录指向。
+- **next**：丹珠尔全目判读（三源）；影响面各通道证据表；T9 逐参名。

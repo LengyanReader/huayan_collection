@@ -406,8 +406,9 @@
       "verdict": "类型",
       "min_evidence": "题记、榜题、图本",
       "forbidden": "以题材相似当据本经绘制",
-      "status": "none",
-      "refs": ""
+      "status": "partial",
+      "refs": "§17.18",
+      "note": "文化资产线的图像登记册接入（imagery_stats）：38 册、条目 39 件、覆盖 35 品，逐册 Commons extmetadata 授权回源；以题域相关（B 类）为主，A 类直绘待逐件判读。"
     },
     {
       "id": "R3",

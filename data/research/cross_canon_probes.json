@@ -22,6 +22,14 @@
       "KR5e0031": {
         "path": "data/references/daozang",
         "sha256": "20d81b42a349aa983c74b4db66a33a4bbf2eaef1bc4bdddae17201518cb88fc7"
+      },
+      "KR1h0015": {
+        "path": "data/references/rujia",
+        "sha256": "aea36ede7d693c82b1c40db2abc4fb935d23b1464e9a275604860a93bf4d2c13"
+      },
+      "yogasutra": {
+        "path": "data/references/sanskrit/yogasutra_with_bhashya.txt",
+        "sha256": "2c4cc34c455123a1f8ef86cd628211047542a933ee4b669659b799d6b9dfd94e"
       }
     }
   },
@@ -451,6 +459,54 @@
         }
       ],
       "name_overlap_with_buddhist": []
+    },
+    "kuax": {
+      "source_rujia": "大學（宋朱熹章句，KR1h0015，Kanripo）",
+      "source_yoga": "Patañjali Yogasūtra with Bhāṣya（GRETIL，Maas 校订本）",
+      "badia": [
+        "格物",
+        "致知",
+        "誠意",
+        "正心",
+        "脩身",
+        "齊家",
+        "治國",
+        "平天下"
+      ],
+      "bazhi": [
+        "yama",
+        "niyama",
+        "āsana",
+        "prāṇāyāma",
+        "pratyāhāra",
+        "dhāraṇā",
+        "dhyāna",
+        "samādhi"
+      ],
+      "quotes": [
+        {
+          "src": "KR1h0015",
+          "id": "P1",
+          "text": "欲治其國者先齊其家欲齊其家者先脩其身"
+        },
+        {
+          "src": "KR1h0015",
+          "id": "P1",
+          "text": "致知在格物"
+        },
+        {
+          "src": "yogasutra",
+          "id": "P1",
+          "text": "yogāṅgāny avadhāryante --- yamaniyamāsanaprāṇāyāmapratyāhāradhāraṇādhyānasamādhayo 'ṣṭāv aṅgāni"
+        },
+        {
+          "src": "yogasutra",
+          "id": "P1",
+          "text": "śaucasaṃtoṣatapaḥsvādhyāyeśvarapraṇidhānāni niyamāḥ"
+        }
+      ],
+      "name_overlap_with_buddhist": [],
+      "finding": "四地階梯（佛教十住十地／道教三阶七号五心／儒家八条目／瑜伽八支）皆以序列升进为形，名目互不重合；唯佛道两地以「發心」为入阶之首。是 C1 同构（皆设升进之阶、皆以终极位为归），不是同源。"
     },
     "finding": "十住十名與十地十名無一重合；兩套階位各自成組。但《疏》《記》都指出別行譯本題作《十住經》，理由是「住是地中一義」——題名重疊來自義訓，不來自同一階位。",
     "limits": "道教半邊已得一手（《道教義樞·位業義》）：三阶七号、五心四位、十轉九宫、三清二十七品皆可回源；與十住十地名目交集唯「發心」一節（兩地皆以發心爲入階之首）。位業義全文義疏未逐句對讀。"

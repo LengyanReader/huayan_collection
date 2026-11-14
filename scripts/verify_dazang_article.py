@@ -292,11 +292,18 @@ def main() -> int:
     dz_dir = ROOT / "data" / "references" / "daozang"
     probe_src["DZ0001"] = norm("".join(p.read_text(encoding="utf-8") for p in sorted(dz_dir.glob("KR5a0001_*.txt"))))
     probe_src["KR5e0031"] = norm("".join(p.read_text(encoding="utf-8") for p in sorted(dz_dir.glob("KR5e0031_*.txt"))))
+    rj_dir = ROOT / "data" / "references" / "rujia"
+    probe_src["KR1h0015"] = norm("".join(p.read_text(encoding="utf-8") for p in sorted(rj_dir.glob("KR1h0015_*.txt"))))
+    probe_src["yogasutra"] = norm((ROOT / "data" / "references" / "sanskrit" / "yogasutra_with_bhashya.txt").read_text(encoding="utf-8"))
     for key, meta in probes["meta"]["sources"].items():
         if key == "DZ0001":
             raw = b"".join(p.read_bytes() for p in sorted(dz_dir.glob("KR5a0001_*.txt")))
         elif key == "KR5e0031":
             raw = b"".join(p.read_bytes() for p in sorted(dz_dir.glob("KR5e0031_*.txt")))
+        elif key == "KR1h0015":
+            raw = b"".join(p.read_bytes() for p in sorted(rj_dir.glob("KR1h0015_*.txt")))
+        elif key == "yogasutra":
+            raw = (ROOT / "data" / "references" / "sanskrit" / "yogasutra_with_bhashya.txt").read_bytes()
         else:
             raw = (ROOT / meta["path"]).read_bytes()
         if hashlib.sha256(raw).hexdigest() != meta["sha256"]:
@@ -309,11 +316,16 @@ def main() -> int:
             if q["text"] not in md:
                 fail(f"t9 quote not printed in article: {q['text'][:24]}")
     for section in ("d5", "p1"):
-        for q in probes[section]["quotes"]:
-            if norm(q["text"]) not in probe_src[q["src"]]:
-                fail(f"{section} quote missing from {q['src']}: {q['text'][:24]}")
-            if q["text"] not in md:
-                fail(f"{section} quote not printed in article: {q['text'][:24]}")
+        qgroups = [probes[section]["quotes"]]
+        for extra in ("daojiao", "kuax"):
+            if extra in probes[section]:
+                qgroups.append(probes[section][extra]["quotes"])
+        for qgroup in qgroups:
+            for q in qgroup:
+                if norm(q["text"]) not in probe_src[q["src"]]:
+                    fail(f"{section} quote missing from {q['src']}: {q['text'][:24]}")
+                if q["text"] not in md:
+                    fail(f"{section} quote not printed in article: {q['text'][:24]}")
     if "### 17.11 T9" not in md or "### 17.12 D5" not in md or "### 17.13 P1" not in md:
         fail("§17.11–17.13 probe headings missing")
 

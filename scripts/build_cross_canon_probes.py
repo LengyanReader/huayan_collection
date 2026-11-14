@@ -27,6 +27,8 @@ SRC = {
     "T279": ROOT / "data" / "references" / "cbeta" / "T10n0279.xml",
     "DZ0001": ROOT / "data" / "references" / "daozang",
     "KR5e0031": ROOT / "data" / "references" / "daozang",
+    "KR1h0015": ROOT / "data" / "references" / "rujia",
+    "yogasutra": ROOT / "data" / "references" / "sanskrit" / "yogasutra_with_bhashya.txt",
 }
 
 
@@ -63,6 +65,15 @@ def load() -> dict[str, str]:
         t = t.replace("¶", "")
         parts.append(t)
     texts["KR5e0031"] = "".join(parts)
+    dx = SRC["KR1h0015"]
+    parts = []
+    for p2 in sorted(dx.glob("KR1h0015_*.txt")):
+        t2 = p2.read_text(encoding="utf-8")
+        t2 = re.sub(r"<pb:[^>]*>", "", t2)
+        t2 = t2.replace("¶", "")
+        parts.append(t2)
+    texts["KR1h0015"] = "".join(parts)
+    texts["yogasutra"] = SRC["yogasutra"].read_text(encoding="utf-8")
     return texts
 
 
@@ -250,12 +261,36 @@ def main() -> int:
         "name_overlap_with_buddhist": dj_overlap,
     }
 
+    # ---- 跨传统扩读：儒家八条目（大學）＋瑜伽八支 ----
+    kx_quotes = [
+        ("KR1h0015", "P1", "欲治其國者先齊其家欲齊其家者先脩其身"),
+        ("KR1h0015", "P1", "致知在格物"),
+        ("yogasutra", "P1",
+         "yogāṅgāny avadhāryante --- yamaniyamāsanaprāṇāyāmapratyāhāradhāraṇādhyānasamādhayo 'ṣṭāv aṅgāni"),
+        ("yogasutra", "P1", "śaucasaṃtoṣatapaḥsvādhyāyeśvarapraṇidhānāni niyamāḥ"),
+    ]
+    for src, _, q in kx_quotes:
+        need(texts, src, q)
+    p1_kuax = {
+        "source_rujia": "大學（宋朱熹章句，KR1h0015，Kanripo）",
+        "source_yoga": "Patañjali Yogasūtra with Bhāṣya（GRETIL，Maas 校订本）",
+        "badia": ["格物", "致知", "誠意", "正心", "脩身", "齊家", "治國", "平天下"],
+        "bazhi": ["yama", "niyama", "āsana", "prāṇāyāma", "pratyāhāra",
+                  "dhāraṇā", "dhyāna", "samādhi"],
+        "quotes": [{"src": s, "id": i, "text": q} for s, i, q in kx_quotes],
+        "name_overlap_with_buddhist": [],
+        "finding": "四地階梯（佛教十住十地／道教三阶七号五心／儒家八条目／瑜伽八支）皆以序列升进为形，"
+                   "名目互不重合；唯佛道两地以「發心」为入阶之首。是 C1 同构（皆设升进之阶、皆以终极位为归），"
+                   "不是同源。",
+    }
+
     p1 = {
         "title": "十住與十地：同一階位還是兩套階位",
         "rows": [(i + 1, shizhu[i], shidi[i]) for i in range(10)],
         "name_overlap": sorted(set(shizhu) & set(shidi)),
         "quotes": [{"src": s, "id": i, "text": q} for s, i, q in p1_quotes],
         "daojiao": p1_daogiao,
+        "kuax": p1_kuax,
         "finding": "十住十名與十地十名無一重合；兩套階位各自成組。但《疏》《記》都指出別行譯本題作《十住經》，理由是「住是地中一義」——題名重疊來自義訓，不來自同一階位。",
         "limits": "道教半邊已得一手（《道教義樞·位業義》）：三阶七号、五心四位、十轉九宫、三清二十七品皆可回源；與十住十地名目交集唯「發心」一節（兩地皆以發心爲入階之首）。位業義全文義疏未逐句對讀。",
     }
@@ -268,6 +303,8 @@ def main() -> int:
             raw = b"".join(p.read_bytes() for p in sorted(SRC[k].glob("KR5a0001_*.txt")))
         elif k == "KR5e0031":
             raw = b"".join(p.read_bytes() for p in sorted(SRC[k].glob("KR5e0031_*.txt")))
+        elif k == "KR1h0015":
+            raw = b"".join(p.read_bytes() for p in sorted(SRC[k].glob("KR1h0015_*.txt")))
         else:
             raw = SRC[k].read_bytes()
         sources[k] = {

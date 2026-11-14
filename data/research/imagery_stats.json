@@ -1,0 +1,345 @@
+{
+  "meta": {
+    "date": "2026-11-14",
+    "source": "data/imagery/*_imagery.yaml（文化资产线登记册）",
+    "note": "聚合口径：files=登记册文件数，items=登记条目数；品覆盖取 img_no 前缀（册按品组织）；格式不统一的文件如实计入 unparseable。"
+  },
+  "files_total": 38,
+  "parsed": 36,
+  "unparseable": [
+    {
+      "file": "puxianxing_imagery.yaml",
+      "error": "mapping values are not allowed here\n  in \"<unicode string>\", line 10, column 29:\n      title_en: Borobudur relief: Saman"
+    },
+    {
+      "file": "rufajie_imagery.yaml",
+      "error": "mapping values are not allowed here\n  in \"<unicode string>\", line 28, column 29:\n      title_en: Borobudur relief: Sudha"
+    }
+  ],
+  "items_total": 39,
+  "pins_covered": 35,
+  "per_file": [
+    {
+      "file": "chufaxin_imagery.yaml",
+      "title": "菩提伽耶·大觉寺（Mahabodhi Temple）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "17": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "chuxian_imagery.yaml",
+      "title": "菩提伽耶大塔内·主尊佛像·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "37": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "doushuai_jizan_imagery.yaml",
+      "title": "兜率宫中偈赞品·文化资产参证登记册",
+      "items": 2,
+      "class": {
+        "24": 2
+      },
+      "boundary": "(A) 依本经而作——0 件。(B) 同题域之他像——1 件：犍陀罗弥勒菩萨像（兜率天弥勒造像传统）。(C) 名胜古迹实况——1 件：乐山大佛（弥勒坐像·与兜率净土主尊同题域之名胜）。\n"
+    },
+    {
+      "file": "fanxing_imagery.yaml",
+      "title": "清乾隆·青玉钵（MET 14886）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "16": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：钵器题域）。"
+    },
+    {
+      "file": "fobusiyi_imagery.yaml",
+      "title": "鎏金 Cintamani 宝珠形舍利容器（镰仓·东京国立博物馆）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "33": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：不思议宝珠题域）。"
+    },
+    {
+      "file": "guangmingjue_imagery.yaml",
+      "title": "灯明供（酥油灯·尼泊尔 Patan）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "9": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：灯明题域）。"
+    },
+    {
+      "file": "huazang_imagery.yaml",
+      "title": "东大寺·华严海会知识曼荼罗（Kegon Kai-e）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "5": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：华严题域曼荼罗）。"
+    },
+    {
+      "file": "jingxing_imagery.yaml",
+      "title": "净水碗与灯（寺院供水供养）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "11": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：净水供养题域）。"
+    },
+    {
+      "file": "lishijian_imagery.yaml",
+      "title": "莲华（出淤泥而不染）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "38": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：莲华题域）。"
+    },
+    {
+      "file": "mingfa_imagery.yaml",
+      "title": "文殊菩萨持剑像（尼泊尔·克利夫兰艺术博物馆 1964.370）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "18": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：慧剑题域）。"
+    },
+    {
+      "file": "minghao_imagery.yaml",
+      "title": "鹿野苑·阿育王狮子柱头·文化资产参证登记册",
+      "items": 2,
+      "class": {
+        "7": 2
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "pilu_zhana_imagery.yaml",
+      "title": "大同华严寺（薄伽教藏殿·辽金建筑群）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "6": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "puxian_sanmei_imagery.yaml",
+      "title": "普贤三昧品·文化资产参证登记册",
+      "items": 3,
+      "class": {
+        "3": 3
+      },
+      "boundary": "(A) 依本经而作——0 件。(B) 同题域之他像——2 件：榆林窟第3窟普贤菩萨赴会图（西夏·普贤变题域）、唐代普贤石像（造像传统）。(C) 名胜古迹实况——1 件：峨眉山十方普贤（普贤道场·与 P1 登记册同源文件独立登记）。\n"
+    },
+    {
+      "file": "shengdoushuai_imagery.yaml",
+      "title": "韩国国宝 83 号·金铜弥勒半跏思维像·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "23": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：弥勒造像传统）。"
+    },
+    {
+      "file": "shengxumi_imagery.yaml",
+      "title": "桑奇大塔（Sanchi Stupa 1）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "13": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "shengyemo_imagery.yaml",
+      "title": "恒山·悬空寺（Xuankong Si）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "19": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "shidi_imagery.yaml",
+      "title": "菩提伽耶·金刚座（Vajrasana）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "26": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "shiding_imagery.yaml",
+      "title": "北宋·金漆木雕禅定僧像（吉美博物馆 MA 6997）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "27": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：禅定造像题域）。"
+    },
+    {
+      "file": "shihuiuxiang_imagery.yaml",
+      "title": "石经幢（Dharani Sutra Pillar）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "25": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：经幢实物参证）。"
+    },
+    {
+      "file": "shijie_chengjiu_imagery.yaml",
+      "title": "元·缂丝须弥山曼荼罗（MET DT836）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "4": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：宇宙曼荼罗题域）。"
+    },
+    {
+      "file": "shiren_imagery.yaml",
+      "title": "高丽·水月观音图（MET DT5289）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "29": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：水月空观题域）。"
+    },
+    {
+      "file": "shitong_imagery.yaml",
+      "title": "敦煌壁画·飞天·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "28": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：飞天题域）。"
+    },
+    {
+      "file": "shiwujincang_imagery.yaml",
+      "title": "平安时代·铁钵（Cleveland 1949.156）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "22": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：蕴积器题域）。"
+    },
+    {
+      "file": "shixing_imagery.yaml",
+      "title": "菩提树（Bodh Gaya）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "21": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "shizhu_imagery.yaml",
+      "title": "犍陀罗·菩萨禅定像（Dhyana mudra·拉合尔博物馆）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "15": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：禅定造像题域）。"
+    },
+    {
+      "file": "shizhu_miaoyan_imagery.yaml",
+      "title": "世主妙严品·会众意象图像登记册",
+      "items": 0,
+      "class": {},
+      "boundary": "本品（T279《世主妙严品》）之图像**皆无同时代「依本经」之专像**，故三类须严格区分，不得混为一谈：\n(A) **依本经之造像／壁画**——专为《世主妙严品》而作者。**本批 0 件**（见 scope_note）。\n(B) **同佛名／同题域之他像**——非本经之变，然同属华严／毗卢遮那／文殊等题域，或于他处为**同一佛名**所作之像，可作图像学对读，但**其教义归属与造像系统不可与本品相混**。本批 **9 件**：榆林窟第25窟毗卢遮那、飞来峰第5龛（卢舍那佛会）、龙门奉先寺卢舍那大佛龛、大足宝顶山华严三圣（以上四件属华严／毗卢遮那题域）、莫高窟第172窟《观无量寿经变》之楼阁（净土经变）、莫高窟第61窟五台山图（文殊／五台信仰）、榆林窟第25窟八大菩萨曼荼罗（同窟会众）、峨眉山十方普贤与长沙密印寺普贤（同一佛名「普贤」之他像）。\n(C) **他经图像·实物·类型或制度参照**——「意象之实物」（菩提树、佛殿、须弥座、摩尼宝珠、佛殿遗址）、**他经造像或壁画**（阿旃陀、占城、犍陀罗、真觉寺等）、**类型样本**（泰国素可泰之夜叉与迦楼罗头部）、**制度或器物参照**（日本密教五钴金刚杵）或后世 rendition（1921 年须弥山宇宙图），属意象之参照或**反面对照**，非经文之图像化。本批 **17 件**。\n每一登记项以 kind 字段标明其属 A／B／C；**B／C 类之正文图注必须含「边界」二字**（由 scripts/verify_imagery.py 强制校验），明示其不可等同之处。\n**判准**：是否**为本经而作**（A），抑或仅**同题域**（B）／**意象之实物或后世**（C）——宁可归 B、C 而不冒称 A（凡例九「严禁假信息·考证优先」）。"
+    },
+    {
+      "file": "shouliang_imagery.yaml",
+      "title": "无量寿佛坐像（Rietberg 博物馆藏）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "31": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：无量寿题域）。"
+    },
+    {
+      "file": "sidi_imagery.yaml",
+      "title": "鹿野苑·答枚克塔（Sarnath）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "8": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "suihao_imagery.yaml",
+      "title": "铜像细部（手印·Auckland Museum）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "35": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：佛身细部题域）。"
+    },
+    {
+      "file": "wenming_imagery.yaml",
+      "title": "敦煌·文殊菩萨骑狮像（新德里国立博物馆藏）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "10": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：文殊题域）。"
+    },
+    {
+      "file": "xianghai_imagery.yaml",
+      "title": "犍陀罗·佛坐像（三十二相传统）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "34": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：相好造像传统）。"
+    },
+    {
+      "file": "xianshou_imagery.yaml",
+      "title": "法藏贤首国师像（13 世纪日本绘）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "12": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：人物画像（品名同源））。"
+    },
+    {
+      "file": "xianxiang_imagery.yaml",
+      "title": "斯里兰卡·阿伏卡纳立佛（Avukana）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "2": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（B 类：佛相庄严题域）。"
+    },
+    {
+      "file": "xumiding_jizan_imagery.yaml",
+      "title": "毗舍离·阿育王狮子柱·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "14": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "yemo_jizan_imagery.yaml",
+      "title": "菩提树（Bodh Gaya·panoramio 摄）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "20": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    },
+    {
+      "file": "zhuchu_imagery.yaml",
+      "title": "蓬莱阁（山东·海畔仙阁）·文化资产参证登记册",
+      "items": 1,
+      "class": {
+        "32": 1
+      },
+      "boundary": "A 依本经而作 0 件；本批 1 件（C 类：名胜古迹实况）。"
+    }
+  ]
+}

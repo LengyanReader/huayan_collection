@@ -551,6 +551,21 @@ def table_p1(probes):
         for q in dj["quotes"]:
             out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
         out.append("")
+    kx = p.get("kuax")
+    if kx:
+        out.append("**跨传统扩读**（儒家八条目／瑜伽八支——题名录，引文已回源）：")
+        out.append("")
+        out.append("| 传统 | 阶梯（原文序列） | 来源 |")
+        out.append("|---|---|---|")
+        out.append(f"| 儒 | {esc('、'.join(kx['badia']))}（八条目） | 大學章句（KR1h0015） |")
+        out.append(f"| 印度·瑜伽 | {esc('、'.join(kx['bazhi']))}（八支，YS 2.29） | Yogasūtra with Bhāṣya（GRETIL/Maas） |")
+        out.append("")
+        out.append(f'> 名目与十住十地交集：{len(kx["name_overlap_with_buddhist"])} 个。'
+                   f'{esc(kx["finding"])}')
+        out.append("")
+        for q in kx["quotes"]:
+            out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
+        out.append("")
     out.append(f'**判断**：{esc(p["finding"])}')
     out.append("")
     out.append(f'**边界**：{esc(p["limits"])}')
@@ -794,7 +809,8 @@ def table_influence():
         ("西藏接受", "行願讚释 Toh 4011–4015、十地释 Toh 3993/3998/3999",
          "§6.3/§6.6 题录（eTengyur＋dkar chag 双源）", "B（题录级）", "全文未入库，未对读"),
         ("图像文物", "婆罗浮屠善财浮雕、五台山图、造像、缂丝曼荼罗",
-         "文化资产线并行推进中（本仓另线，已入库多件 A 级见证）", "跨线", "R 面与本文的 L3/L4 接口待立"),
+         "文化资产线登记册接入：38 册、条目 39 件、覆盖 35 品，逐册 Commons extmetadata 授权回源（imagery_stats）",
+         "B（题录级）", "A 类直绘逐件判读待做；R2 已接层"),
         ("儒道论衡", "护教／判教中华严对儒道的指认（宗密《原人论》一类）",
          "样本入库：《大學》章句（KR1h0015）＋《道教義樞》位業義（KR5e0031）＋瑜伽经（GRETIL）", "B（样本）", "对读未做"),
     ]
