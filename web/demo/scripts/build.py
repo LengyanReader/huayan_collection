@@ -35,6 +35,9 @@ import db_reader
 # ── 静态资源缓存戳（L.471）：css/js 任何更新自动失效浏览器/CDN 缓存 ──
 ASSET_V = 'v=' + time.strftime('%Y%m%d%H%M')
 
+# ── 经学延伸篇（L.473）：华严经学相关、但不属 huayan_xidu 家族——纳入品目导航 ──
+EXTRA_NAV_IDS = ['huayan-dazang-mapping', 'haiyun-lectures', 'jj-huayan-collation']
+
 # ── 阅读偏好 boot 脚本（L.470）：首屏绘制前套用夜间模式/字号/行距，防闪 ──
 BOOT_READ_PREFS = ('<script>try{var P=JSON.parse(localStorage.getItem(\'read-prefs\')||\'{}\'),'
                    'D=document.documentElement;if(P.night)D.classList.add(\'night\');'
@@ -2686,6 +2689,12 @@ def build_articles(articles):
                 '<script src="../js/sutra_panel.js?' + ASSET_V + '"></script>') % _pin
         # 阅读位置记忆（所有文章页·localStorage·非 cookie）
         sutra_panel_block = '<script src="../js/reading_pos.js?' + ASSET_V + '"></script>' + chr(10) + sutra_panel_block
+        # 品目导航（L.473）：华严经学系列页注入（FAB＋抽屉＋前后品底栏由 pin_nav.js 渲染）
+        if (a.get('family') or '') == 'huayan_xidu' or a['id'] in EXTRA_NAV_IDS:
+            sutra_panel_block += (
+                '\n<script>window.NAV_CURRENT="' + a['id'] + '";</script>\n'
+                '<script src="../data/huayan_nav.js?' + ASSET_V + '"></script>\n'
+                '<script src="../js/pin_nav.js?' + ASSET_V + '"></script>')
         html = html.replace('{SUTRA_PANEL}', sutra_panel_block)
         with open(path, 'w', encoding='utf-8') as f:
             f.write(html)
@@ -3053,6 +3062,56 @@ def main():
         total_size += size
         file_count += 1
         print(f'OK  {mp_js} ({size:,} bytes)')
+
+    # ── 华严经学系列·品目导航树（L.473）：九会分组＋配套专文（数据驱动自 doc 路径）──
+    def _n_cn(s):
+        _C = {'一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9}
+        if '十' in s:
+            a_, _, b_ = s.partition('十')
+            v = (_C[a_] * 10) if a_ else 10
+            if b_:
+                v += _C.get(b_, 0)
+            return v
+        return _C.get(s, 0)
+
+    _nav_pins, _nav_comps, _nav_ext = [], [], []
+    for a in articles:
+        if (a.get('family') or '') != 'huayan_xidu':
+            if a['id'] not in EXTRA_NAV_IDS:
+                continue
+            _nav_ext.append({'id': a['id'], 'icon': a.get('icon', '📖'),
+                             'title': a.get('title', '')})
+            continue
+        _mh = re.search(r'第([一二三四五六七八九十]+)会_([^/]+)/', (a.get('doc') or '').replace('\\', '/'))
+        _mp = re.search(r'第([一二三四五六七八九十]{1,3})品', a.get('title') or '')
+        _item = {'id': a['id'], 'icon': a.get('icon', '📖'), 'title': a.get('title', '')}
+        if _mh and _mp:
+            _item['no'] = _n_cn(_mp.group(1))
+            _item['hui'] = _n_cn(_mh.group(1))
+            _item['hui_label'] = _mh.group(2).replace('_', ' · ')
+            _nav_pins.append(_item)
+        else:
+            _nav_comps.append(_item)
+    _nav_pins.sort(key=lambda x: x['no'])
+    _hui_map = {}
+    for _p in _nav_pins:
+        _hui_map.setdefault((_p['hui'], _p['hui_label']), []).append(_p)
+    _nav_tree = {
+        'hui': [{'no': h, 'label': lb,
+                 'items': sorted(items, key=lambda x: x['no'])}
+                for (h, lb), items in sorted(_hui_map.items(), key=lambda kv: kv[0][0])],
+        'comp': _nav_comps,
+        'ext': _nav_ext,
+        'pin_ids': [p['id'] for p in _nav_pins],
+    }
+    nav_js_path = OUT / 'data' / 'huayan_nav.js'
+    with open(nav_js_path, 'w', encoding='utf-8') as f:
+        f.write('window.HUAYAN_NAV = ' + json.dumps(_nav_tree, ensure_ascii=False,
+                                                   separators=(',', ':')) + ';\n')
+    size = nav_js_path.stat().st_size
+    total_size += size
+    file_count += 1
+    print(f'OK  {nav_js_path} ({size:,} bytes | {len(_nav_pins)} pins · {len(_nav_comps)} comp)')
 
     # ── Build index.html with dynamic stats ──
     graph = load_graph()
