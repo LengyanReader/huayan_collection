@@ -6,6 +6,10 @@
 <title>华严宗部文献与修行资料</title>
 <style>
 :root{--bg:#f6f2e8;--panel:#fdfaf3;--card:#fefdf9;--gold:#b8863c;--blue:#5e8b9e;--green:#7d9a6e;--red:#c46b5d;--text:#3d3427;--text2:#7a7262;--line:#e5ddd0}
+html.night{--bg:#14161b;--panel:#1a1d23;--card:#1e222a;--gold:#c9a45c;--blue:#7ea8c9;--green:#8aa678;--red:#c9756a;--text:#d6d2c6;--text2:#a49d8f;--line:#2e323b}
+html.night body{background:var(--bg);color:var(--text)}
+html.night .card{background:var(--card)}
+html.night footer{border-color:var(--line)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center}
 header{width:100%;background:linear-gradient(135deg,#e8e0d2,#efe6d8);padding:28px 20px 18px;text-align:center;border-bottom:1px solid var(--line)}
@@ -27,6 +31,7 @@ main{max-width:1000px;width:100%;padding:32px 20px 48px}
 footer{text-align:center;padding:20px;color:var(--text2);font-size:0.72em;border-top:1px solid var(--line);width:100%}
 footer a{color:var(--blue)}
 </style>
+<script>try{var P=JSON.parse(localStorage.getItem('read-prefs')||'{}'),D=document.documentElement;if(P.night)D.classList.add('night');if(P.scale&&P.scale!==1)D.style.setProperty('--read-scale',String(P.scale));if(P.lh&&P.lh!==1.9)D.style.setProperty('--read-lh',String(P.lh));}catch(e){}</script>
 </head>
 <body>
 <div style="position:sticky;top:0;z-index:100;width:100%">

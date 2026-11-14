@@ -802,7 +802,7 @@ function _mdFullToHTML(text) {
     // ordered list
     var mo = l.match(/^\s*\d+\.\s+(.*)$/);
     if (mo) {
-      out.push('<ol style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
+      out.push('<ol class="md-list">');
       while (i < lines.length && /^\s*\d+\.\s/.test(lines[i])) {
         out.push('<li>' + _mdInline(lines[i].replace(/^\s*\d+\.\s/, '')) + '</li>');
         i++;
@@ -813,7 +813,7 @@ function _mdFullToHTML(text) {
     // unordered list
     var mu = l.match(/^\s*[-•·]\s+(.*)$/);
     if (mu) {
-      out.push('<ul style="margin:6px 0 6px 18px;font-size:0.8em;line-height:1.8">');
+      out.push('<ul class="md-list">');
       while (i < lines.length && /^\s*[-•·]\s/.test(lines[i])) {
         var item = lines[i].replace(/^\s*[-•·]\s/, '');
         out.push('<li>' + _mdInline(item) + '</li>');
@@ -884,7 +884,7 @@ function _mdFullToHTML(text) {
     while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|---+$|>\s|\||\s*\d+\.\s|\s*[-•·]\s|\s*<\/?(details|figure|svg|div|picture|section|aside)\b)/.test(lines[i].trim())) {
       para.push(lines[i]); i++;
     }
-    out.push('<p style="font-size:0.8em;line-height:1.9;margin:6px 0">' + _mdInline(para.join('<br>')) + '</p>');
+    out.push('<p class="md-p">' + _mdInline(para.join('<br>')) + '</p>');
   }
   return out.join('');
 }
@@ -2439,3 +2439,82 @@ window._reveal = function (el) {
 // ④ 初始
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _fitSvgsSoon);
 else _fitSvgsSoon();
+
+// ═══ 阅读偏好（L.470 · iReader 式）：字号/行距/夜间模式 · localStorage 持久化 ═══
+// 变量链：--read-scale（字号倍率·默认 1）与 --read-lh（行距·默认 1.9）作用于 md-p/md-list；
+// html.night 类切换夜皮肤。boot 脚本在各页 <head> 提前套用防闪，此处负责 UI 与持久化。
+(function () {
+  'use strict';
+  var PKEY = 'read-prefs';
+  function load() { try { return JSON.parse(localStorage.getItem(PKEY) || '{}'); } catch (e) { return {}; } }
+  function save(p) { try { localStorage.setItem(PKEY, JSON.stringify(p)); } catch (e) {} }
+  var prefs = load();
+  function apply() {
+    var st = document.documentElement.style, cl = document.documentElement.classList;
+    cl.toggle('night', !!prefs.night);
+    if (prefs.scale && prefs.scale !== 1) st.setProperty('--read-scale', String(prefs.scale));
+    else st.removeProperty('--read-scale');
+    if (prefs.lh && prefs.lh !== 1.9) st.setProperty('--read-lh', String(prefs.lh));
+    else st.removeProperty('--read-lh');
+  }
+  apply();
+  window.__readPrefs = function () { return prefs; };
+  window.__setPref = function (k, v) {
+    if (v === null || (k === 'scale' && v === 1) || (k === 'lh' && v === 1.9)) delete prefs[k];
+    else prefs[k] = v;
+    save(prefs); apply(); markActive();
+  };
+
+  function chipRow(label, key, opts) {
+    return '<div class="rp-row"><span class="rp-lab">' + label + '</span>' +
+      opts.map(function (o) {
+        return '<span class="rp-chip" data-k="' + key + '" data-v="' + o.v + '">' + o.t + '</span>';
+      }).join('') + '</div>';
+  }
+  function build() {
+    if (document.getElementById('rp-pref-btn')) return;
+    var btn = document.createElement('button');
+    btn.id = 'rp-pref-btn'; btn.type = 'button'; btn.title = '阅读设置（字号 · 行距 · 夜间模式）';
+    btn.setAttribute('aria-label', '阅读设置'); btn.textContent = 'Aa';
+    var pan = document.createElement('div');
+    pan.id = 'rp-pref';
+    pan.innerHTML =
+      chipRow('字号', 'scale', [{ v: '1', t: '默认' }, { v: '1.25', t: '大' }, { v: '1.5', t: '特大' }]) +
+      chipRow('行距', 'lh', [{ v: '1.9', t: '标准' }, { v: '2.2', t: '宽松' }]) +
+      chipRow('主题', 'night', [{ v: '0', t: '☀ 日间' }, { v: '1', t: '🌙 夜间' }]);
+    document.body.appendChild(btn);
+    document.body.appendChild(pan);
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      pan.classList.toggle('open');
+      markActive();
+    });
+    pan.addEventListener('click', function (e) {
+      var c = e.target && e.target.closest ? e.target.closest('.rp-chip') : null;
+      if (!c) return;
+      var k = c.getAttribute('data-k'), v = c.getAttribute('data-v');
+      if (k === 'scale') window.__setPref('scale', parseFloat(v));
+      else if (k === 'lh') window.__setPref('lh', parseFloat(v));
+      else window.__setPref('night', v === '1' ? 1 : 0);
+    });
+    pan.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+    document.addEventListener('pointerdown', function (e) {
+      if (!pan.classList.contains('open')) return;
+      var t = e.target;
+      if (t && t.closest && (t.closest('#rp-pref') || t.closest('#rp-pref-btn'))) return;
+      pan.classList.remove('open');
+    });
+    markActive();
+  }
+  function markActive() {
+    var pan = document.getElementById('rp-pref');
+    if (!pan) return;
+    pan.querySelectorAll('.rp-chip').forEach(function (c) {
+      var k = c.getAttribute('data-k'), v = c.getAttribute('data-v');
+      var cur = (k === 'scale') ? (prefs.scale || 1) : (k === 'lh') ? (prefs.lh || 1.9) : (prefs.night ? 1 : 0);
+      c.classList.toggle('on', parseFloat(v) === cur);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
+  else build();
+})();

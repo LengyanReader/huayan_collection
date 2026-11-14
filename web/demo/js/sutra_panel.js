@@ -136,6 +136,14 @@
     panel.style.bottom = '';
   }
   function applyWin() {
+    if (isMobileWin()) {
+      // 手机：媒体查询接管（width:100vw 全宽），清内联宽以免覆盖
+      panel.style.width = '';
+      panel.classList.remove('is-float');
+      panel.style.left = ''; panel.style.top = ''; panel.style.height = '';
+      panel.style.right = ''; panel.style.bottom = '';
+      return;
+    }
     var rec = loadWin();
     var w = (rec && rec.w) ? clamp(rec.w, 300, Math.min(1100, window.innerWidth - 40)) : defaultW();
     panel.style.width = w + 'px';
@@ -146,6 +154,15 @@
       dockPanel();
     }
   }
+  // 桌面↔窄屏跨越时同步内联宽（窄屏交还媒体查询）
+  window.addEventListener('resize', function () {
+    if (!panel) return;
+    if (isMobileWin()) {
+      if (panel.style.width) { panel.style.width = ''; dockPanel(); }
+    } else {
+      applyWin();
+    }
+  });
 
   function ensurePanel() {
     if (panel) return panel;

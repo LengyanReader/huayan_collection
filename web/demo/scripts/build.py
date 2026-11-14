@@ -31,6 +31,12 @@ ARTICLES_OUT = OUT / 'articles'
 sys.path.insert(0, str(ROOT / 'scripts'))
 import db_reader
 
+# ── 阅读偏好 boot 脚本（L.470）：首屏绘制前套用夜间模式/字号/行距，防闪 ──
+BOOT_READ_PREFS = ('<script>try{var P=JSON.parse(localStorage.getItem(\'read-prefs\')||\'{}\'),'
+                   'D=document.documentElement;if(P.night)D.classList.add(\'night\');'
+                   'if(P.scale&&P.scale!==1)D.style.setProperty(\'--read-scale\',String(P.scale));'
+                   'if(P.lh&&P.lh!==1.9)D.style.setProperty(\'--read-lh\',String(P.lh));}catch(e){}</script>\n')
+
 
 def read_src(name):
     """Read a source file from src/ directory."""
@@ -344,7 +350,7 @@ PAGE_TOP = '''<!DOCTYPE html>
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · {title}</title>
-<link rel="stylesheet" href="../css/common.css">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">
@@ -444,6 +450,7 @@ def build_page(title, tab_id, sidebar_links, tab_js_name, init_call):
     html = PAGE_TOP.format(
         title=title,
         tab_id=tab_id,
+        BOOT_READ_PREFS=BOOT_READ_PREFS,
         sidebar_links=sidebar_links,
         graph_json=json.dumps(graph, ensure_ascii=False),
         gap_json=json.dumps(gap, ensure_ascii=False),
@@ -1621,7 +1628,7 @@ if(DATA && DATA.nodes) DATA.nodes.forEach(function(n){{nodeMap[n.id]=n;}});
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · {title}</title>
-<link rel="stylesheet" href="../css/common.css">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">
@@ -2615,7 +2622,7 @@ def build_articles(articles):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · {title} · 独立文章</title>
-<link rel="stylesheet" href="{common_css_rel}">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="{common_css_rel}">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">
@@ -2832,7 +2839,7 @@ def build_articles(articles):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>华严宗 · 独立文章目录</title>
-<link rel="stylesheet" href="../css/common.css">
+{BOOT_READ_PREFS}<link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
 <div id="page-top" style="position:sticky;top:0;z-index:100">
