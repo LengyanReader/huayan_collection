@@ -371,8 +371,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.18 未竟" not in md:
-        fail("§17.14–17.18 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.19 未竟" not in md:
+        fail("§17.14–17.19 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -477,6 +477,18 @@ def main() -> int:
             fail(f"§6.6 Toh number missing in article: {no}")
     ok("§6.6 tanjur: Toh 4011–4015 double-sourced (vol117 {D} marks + dkar chag order)")
 
+    # --- §17.18 influence: five-channel skeleton ---
+    inf_block = grab("influence")
+    inf_rows = [ln for ln in inf_block.splitlines() if ln.startswith("| ") and "通道" not in ln and "---" not in ln]
+    if len(inf_rows) != 5:
+        fail(f"§17.18 influence rows {len(inf_rows)} != 5")
+    for frag in ("宗派传承", "注疏传统", "西藏接受", "图像文物", "儒道论衡", "Toh 4011–4015"):
+        if frag not in inf_block:
+            fail(f"§17.18 influence channel missing: {frag}")
+    if "见证先行，逐格充实" not in md:
+        fail("§17.18 influence discipline sentence missing")
+    ok("§17.18 influence: 5-channel skeleton present")
+
     # --- §17.15 T7: 品级长度比、引用率、节略用语、锚点链 ---
     t7_path = ROOT / "data" / "research" / "paraphrase_probe.json"
     if not t7_path.exists():
@@ -528,7 +540,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.18 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.19 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -664,8 +676,8 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.18 未竟" not in md:
-        fail("§17.16–17.18 headings missing")
+    if "### 17.16 T4" not in md or "### 17.19 未竟" not in md:
+        fail("§17.16–17.19 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
 

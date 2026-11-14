@@ -762,6 +762,26 @@ def table_tanjur():
     return "\n".join(out)
 
 
+def table_influence():
+    """§17.18 影响面开题：四条通道的骨架清单（在库资产与缺口）。"""
+    rows = [
+        ("宗派传承", "中国五祖→高丽→日本→华严莲社的祖脉谱系",
+         "《华严宗脉》专篇（shanhe）＋谱系数据在库", "A（本仓专篇）", "会通到本文的五层坐标待做"),
+        ("注疏传统", "智俨→法藏→澄观→净源→德清的释经史（华严塑造中国佛教）",
+         "T1732/1733/1735/1736/1739＋X223/234/240 在库；T6/T7 三对已量", "A/B", "后出二线的逐品对读进行中"),
+        ("西藏接受", "行願讚释 Toh 4011–4015、十地释 Toh 3993/3998/3999",
+         "§6.3/§6.6 题录（eTengyur＋dkar chag 双源）", "B（题录级）", "全文未入库，未对读"),
+        ("图像文物", "婆罗浮屠善财浮雕、五台山图、造像、缂丝曼荼罗",
+         "文化资产线并行推进中（本仓另线，已入库多件 A 级见证）", "跨线", "R 面与本文的 L3/L4 接口待立"),
+        ("儒道论衡", "护教／判教中华严对儒道的指认（宗密《原人论》一类）",
+         "未取一手", "C", "待取文本"),
+    ]
+    out = ["| 通道 | 载体 | 在库资产 | 级 | 缺口 |", "|---|---|---|---|---|"]
+    for a, b, c, d, e in rows:
+        out.append(f"| {esc(a)} | {esc(b)} | {esc(c)} | {esc(d)} | {esc(e)} |")
+    return "\n".join(out)
+
+
 def table_t4(probe):
     meta = probe["meta"]
     thr = meta["thresholds"]
@@ -1140,6 +1160,7 @@ def main():
         "source_map": table_source_map(data, enrich),
         "growth": table_growth(),
         "tanjur": table_tanjur(),
+        "influence": table_influence(),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),
