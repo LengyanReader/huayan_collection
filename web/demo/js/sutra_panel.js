@@ -1,5 +1,6 @@
 /* sutra_panel.js — 三译对照悬浮阅读窗（六十/八十/四十·品目对照＋品内按卷全文）
- * L.467：改为「按品取全文」；八十↔六十↔四十 依跨译品目表取对应品，不再按品号硬套。
+ * L.467：按品取全文；八十↔六十↔四十 依跨译品目表取对应品，不再按品号硬套。
+ * L.468：窗口可缩放（左缘拖宽）·可移动（拖标题浮窗·双击回停靠）·随点随现（点面板外即收）。
  */
 (function () {
   'use strict';
@@ -44,6 +45,10 @@
       ? ('卷' + ch.vols[0] + '–' + ch.vols[ch.vols.length - 1])
       : ('卷' + ch.vols[0]);
   }
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function isMobileWin() { return window.innerWidth <= 900; }
+  function defaultW() { return Math.round(Math.min(window.innerWidth * 0.46, 700)); }
 
   /* ── 入口按钮 ── */
   var fabEl = null;
@@ -96,12 +101,59 @@
     } catch (e) {}
   }
 
+  /* ── 窗口形态：宽 / 浮窗位置（跨页共用 'sp-win'）── */
+  var WINKEY = 'sp-win';
+  function loadWin() { try { return JSON.parse(localStorage.getItem(WINKEY) || 'null'); } catch (e) { return null; } }
+  function saveWin() {
+    if (!panel) return;
+    try {
+      var r = panel.getBoundingClientRect();
+      var rec = {
+        w: Math.round(panel.offsetWidth),
+        float: panel.classList.contains('is-float'),
+        x: Math.round(r.left), y: Math.round(r.top),
+        ts: Date.now()
+      };
+      localStorage.setItem(WINKEY, JSON.stringify(rec));
+    } catch (e) {}
+  }
+  function enterFloatAt(left, top) {
+    panel.classList.add('is-float');
+    panel.style.right = 'auto';
+    panel.style.bottom = 'auto';
+    left = clamp(left, 8, Math.max(8, window.innerWidth - 220));
+    top = clamp(top, 0, Math.max(0, window.innerHeight - 160));
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.height = (window.innerHeight - top) + 'px';
+  }
+  function dockPanel() {
+    panel.classList.remove('is-float');
+    panel.style.left = '';
+    panel.style.top = '';
+    panel.style.height = '';
+    panel.style.right = '';
+    panel.style.bottom = '';
+  }
+  function applyWin() {
+    var rec = loadWin();
+    var w = (rec && rec.w) ? clamp(rec.w, 300, Math.min(1100, window.innerWidth - 40)) : defaultW();
+    panel.style.width = w + 'px';
+    if (rec && rec.float && isFinite(rec.x) && isFinite(rec.y)
+        && rec.x > -40 && rec.x < window.innerWidth && rec.y > -40 && rec.y < window.innerHeight) {
+      enterFloatAt(rec.x, rec.y);
+    } else {
+      dockPanel();
+    }
+  }
+
   function ensurePanel() {
     if (panel) return panel;
     panel = document.createElement('div');
     panel.id = 'sp-panel';
     panel.innerHTML =
-      '<div class="sp-head">' +
+      '<div class="sp-resize" title="拖动调宽；双击恢复默认宽"></div>' +
+      '<div class="sp-head" title="拖动标题可移动窗口；双击回到右侧停靠">' +
       '  <span class="sp-title">三译对照 · 本品经文全文</span>' +
       '  <a class="sp-cbeta" target="_blank" rel="noopener" title="在 CBETA 线上阅读">CBETA ↗</a>' +
       '  <button class="sp-close" title="关闭">✕</button>' +
@@ -137,6 +189,65 @@
         savePos();
       }, 500);
     }, { passive: true });
+
+    /* ── L.468 窗口化：拖标题移动 / 拖左缘调宽 / 双击回停靠 ── */
+    var head = panel.querySelector('.sp-head');
+    var rz = panel.querySelector('.sp-resize');
+    var drag = null;
+    head.addEventListener('pointerdown', function (e) {
+      if (isMobileWin() || drag) return;
+      if (e.target.closest && e.target.closest('a,button')) return;   // CBETA/关闭保持原生
+      var r = panel.getBoundingClientRect();
+      if (!panel.classList.contains('is-float')) enterFloatAt(r.left, r.top);
+      var r2 = panel.getBoundingClientRect();
+      drag = { mode: 'move', id: e.pointerId, dx: e.clientX - r2.left, dy: e.clientY - r2.top };
+      try { head.setPointerCapture(e.pointerId); } catch (_) {}
+      e.preventDefault();
+    });
+    rz.addEventListener('pointerdown', function (e) {
+      if (isMobileWin() || drag) return;
+      drag = { mode: 'size', id: e.pointerId, right: panel.getBoundingClientRect().right };
+      try { rz.setPointerCapture(e.pointerId); } catch (_) {}
+      e.preventDefault();
+    });
+    panel.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (drag.mode === 'move') {
+        var top = clamp(e.clientY - drag.dy, 0, Math.max(0, window.innerHeight - 160));
+        var left = clamp(e.clientX - drag.dx, 8, Math.max(8, window.innerWidth - 220));
+        panel.style.left = left + 'px';
+        panel.style.top = top + 'px';
+        panel.style.height = (window.innerHeight - top) + 'px';
+      } else {
+        var w = clamp(drag.right - e.clientX, 300, Math.min(1100, window.innerWidth - 40));
+        panel.style.width = w + 'px';
+      }
+    });
+    panel.addEventListener('pointerup', function (e) {
+      if (drag && e.pointerId === drag.id) { drag = null; saveWin(); }
+    });
+    panel.addEventListener('pointercancel', function () { drag = null; });
+    head.addEventListener('dblclick', function (e) {
+      if (e.target.closest && e.target.closest('a,button')) return;
+      dockPanel();
+      saveWin();
+    });
+    rz.addEventListener('dblclick', function (e) {
+      e.preventDefault();
+      panel.style.width = defaultW() + 'px';
+      saveWin();
+    });
+
+    /* ── 随点随现：点面板外（正文／空白处）即收起；面板内与入口钮除外 ── */
+    document.addEventListener('pointerdown', function (e) {
+      if (!(panel && panel.style.display === 'flex')) return;
+      if (drag) return;
+      var t = e.target;
+      if (t.closest && (t.closest('#sp-panel') || t.closest('#sp-fab') || t.closest('#sp-hint'))) return;
+      toggle();
+    });
+
+    applyWin();
     return panel;
   }
 
@@ -319,6 +430,7 @@
   function toggle() {
     if (panel && panel.style.display === 'flex') {
       savePos();
+      saveWin();
       panel.style.display = 'none';
       if (window.localStorage) localStorage.setItem('sp-open', '0');
       return;
@@ -354,7 +466,12 @@
     '#sp-panel{position:fixed;right:0;top:0;bottom:0;width:min(46vw,700px);z-index:1300;display:none;' +
     'flex-direction:column;background:#faf6ee;color:#2f2a22;border-left:2px solid #b8863c;' +
     'box-shadow:-6px 0 24px rgba(0,0,0,.25)}' +
-    '#sp-panel .sp-head{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#2c2620;color:#e8c877}' +
+    '#sp-panel.is-float{box-shadow:0 10px 38px rgba(0,0,0,.4);border:1px solid #b8863c}' +
+    '.sp-resize{position:absolute;left:0;top:0;bottom:0;width:9px;cursor:col-resize;z-index:3;touch-action:none}' +
+    '.sp-resize:hover{background:rgba(184,134,60,.3)}' +
+    '#sp-panel .sp-head{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#2c2620;color:#e8c877;' +
+    'cursor:move;user-select:none;-webkit-user-select:none;touch-action:none}' +
+    '#sp-panel .sp-head a,#sp-panel .sp-head button{cursor:pointer}' +
     '#sp-panel .sp-head .sp-title{flex:1;font-size:.95em}' +
     '#sp-panel .sp-head .sp-cbeta{color:#8fb8de;font-size:.8em;text-decoration:none}' +
     '#sp-panel .sp-head .sp-close{background:none;border:none;color:#e8c877;font-size:16px;cursor:pointer}' +
@@ -373,7 +490,7 @@
     '#sp-panel .sp-text{padding:12px 18px;line-height:2.05;font-size:.95em;font-family:serif;white-space:pre-wrap;text-align:justify}' +
     '#sp-panel .sp-text .sp-volh{margin:18px 0 6px;padding:4px 0 4px 10px;border-left:3px solid #b8863c;' +
     'font-family:inherit;font-size:.9em;font-weight:bold;color:#7a5a28;background:#f3ecdd;position:sticky;top:0;z-index:1}' +
-    '@media(max-width:900px){#sp-panel{width:100vw}}';
+    '@media(max-width:900px){#sp-panel{width:100vw}.sp-resize{display:none}#sp-panel .sp-head{cursor:default}}';
   document.head.appendChild(css);
 
   // 置末启动：确保 state/函数均已初始化（sp-open=1 时会立即 toggle）
