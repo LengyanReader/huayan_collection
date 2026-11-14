@@ -345,6 +345,106 @@ def main() -> int:
     nq = sum(len(c['quotes']) for c in t9_cases) + len(probes['d5']['quotes']) + len(probes['p1']['quotes'])
     ok(f"§17.11–17.13 probes: {nq} quotes re-verified ({len(t9_cases)} 品 for T9)")
 
+    # --- §17.19 S1 workshop: quotes re-sliced from sources; roster ↔ quote ↔ matrix ---
+    ws_path = ROOT / "data" / "research" / "translation_workshop.json"
+    if not ws_path.exists():
+        fail("translation_workshop.json missing")
+    ws = json.loads(ws_path.read_text(encoding="utf-8"))
+
+    def flat_source(key: str) -> str:
+        meta = ws["meta"]["sources"][key]
+        p = ROOT / meta["path"]
+        if hashlib.sha256(p.read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"workshop source hash changed: {key}")
+        raw = p.read_text(encoding="utf-8")
+        if key == "derge":
+            raw = re.sub(r"\[\d{3}[ab]\.\d\]", "", raw)
+        else:
+            m1 = raw.find("<body")
+            m2 = raw.rfind("</body>")
+            if m1 >= 0 and m2 > m1:
+                raw = raw[m1:m2]
+            raw = re.sub(r"<[^>]*>", "", raw)
+        return re.sub(r"\s+", "", raw)
+
+    ws_flat = {k: flat_source(k) for k in ws["meta"]["sources"]}
+    for qid, q in ws["quotes"].items():
+        if q["text"] not in ws_flat[q["source"]]:
+            fail(f"workshop quote not in source: {qid} {q['text'][:24]}")
+        if q["text"] not in md:
+            fail(f"workshop quote not printed in article: {qid}")
+        if f'`{q["lb"]}`' not in md:
+            fail(f"workshop quote lb not printed: {qid}")
+
+    def tr_norm(s: str) -> str:
+        return re.sub(r"[།་\s]", "", s)
+
+    n_att = 0
+    for vk, v in ws["versions"].items():
+        for item in v["roster"]:
+            q = ws["quotes"][item["quote"]]
+            if item.get("person_bo"):
+                attested = tr_norm(item["person_bo"]) in tr_norm(q["text"])
+            elif item["person"] == "武后":
+                attested = "天后" in q["text"]
+            else:
+                attested = all(part in q["text"] for part in item["person"].split("、"))
+            if not attested:
+                fail(f"workshop roster not attested by its quote: {vk} "
+                     f"{item['role']} {item['person']}")
+            n_att += 1
+    if n_att != ws["summary"]["roster_total"]:
+        fail("workshop summary.roster_total != roster entries")
+
+    roles = ws["roles"]
+    order = ["T278", "T279", "T293", "TOH44"]
+    want_matrix = {r: [k for k, v in ws["versions"].items()
+                       if any(x["role"] == r for x in v["roster"])] for r in roles}
+    if want_matrix != ws["matrix"]:
+        fail("workshop matrix != roster-derived matrix")
+
+    wblock = grab("workshop")
+    if first_table_rows(wblock) != len(order):
+        fail("§17.19 version table rows != 4")
+    got_roles = []
+    for ln in wblock.splitlines():
+        cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+        if len(cells) != 5 or cells[0] not in roles:
+            continue
+        got_roles.append(cells[0])
+        for i, k in enumerate(order):
+            people = [x["person"] for x in ws["versions"][k]["roster"]
+                      if x["role"] == cells[0]]
+            want_cell = "、".join(people) if people else "—"
+            if cells[i + 1] != want_cell:
+                fail(f"§17.19 matrix cell out of sync: {cells[0]}/{k} "
+                     f"{cells[i + 1]!r} != {want_cell!r}")
+    if got_roles != roles:
+        fail(f"§17.19 matrix rows {len(got_roles)} != roles {len(roles)}")
+    counts = {k: len(ws["versions"][k]["roster"]) for k in order}
+    if (f"六十 {counts['T278']}、八十 {counts['T279']}、四十 {counts['T293']}、"
+            f"藏译 {counts['TOH44']}") not in wblock:
+        fail("§17.19 roster-count sentence out of sync")
+    if f"合计 {sum(counts.values())} 条、{len(roles)} 类职衔" not in wblock:
+        fail("§17.19 roster total out of sync")
+    if len(ws["typology"]) != 4:
+        fail(f"workshop typology {len(ws['typology'])} != 4")
+    for t in ws["typology"]:
+        if t["quote"] not in ws["quotes"]:
+            fail(f"workshop typology cites unknown quote: {t['quote']}")
+        if t["why"] not in wblock:
+            fail(f"§17.19 typology line missing: {t['kind']}")
+    for b in ws["boundaries"]:
+        if b not in wblock:
+            fail(f"§17.19 boundary line missing: {b[:20]}")
+    s1 = next(o for o in ops if o["id"] == "S1")
+    if s1["status"] != "done" or "17.19" not in (s1.get("refs") or ""):
+        fail("ontology S1 not marked done / §17.19")
+    if "### 17.19 S1" not in md:
+        fail("§17.19 heading missing")
+    ok(f"§17.19 S1 workshop: {len(ws['quotes'])} quotes re-sliced / "
+       f"{n_att} roster entries attested by their quote / {len(roles)}-role matrix in sync")
+
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
     if not imp_path.exists():
@@ -376,8 +476,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.19 未竟" not in md:
-        fail("§17.14–17.19 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.20 未竟" not in md:
+        fail("§17.14–17.20 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -545,7 +645,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.19 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.20 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -681,8 +781,8 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.19 未竟" not in md:
-        fail("§17.16–17.19 headings missing")
+    if "### 17.16 T4" not in md or "### 17.20 未竟" not in md:
+        fail("§17.16–17.20 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
 

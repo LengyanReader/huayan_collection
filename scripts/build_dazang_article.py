@@ -29,6 +29,7 @@ CONFLATION = ROOT / "data" / "research" / "conflation_probe.json"
 ENDGAME = ROOT / "data" / "research" / "endgame_probe.json"
 PAIR60 = ROOT / "data" / "research" / "huayan_80_60_pairwise.json"
 PAIR40 = ROOT / "data" / "research" / "huayan_80_40_pairwise.json"
+WORKSHOP = ROOT / "data" / "research" / "translation_workshop.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -721,7 +722,7 @@ def table_source_map(data, enrich):
                f"梵本单品存 {len(SANSKRIT)} 种（§6.1）；增长痕迹有记者 {len(GROWTH)} 品。"
                "空格＝「无据」，不等于「无来源」。")
     out.append("")
-    out.append("**空白登记**（拼图未完处，见 §17.18）：各品的印度前身谱系"
+    out.append("**空白登记**（拼图未完处，见 §17.20）：各品的印度前身谱系"
                "（Nattier 原始华严层：兜沙／本业一类最早译）未判；丹珠尔论典"
                "（印度论师怎么读华严）题录全空；东亚传播（新罗·日本）零题录。")
     return "\n".join(out)
@@ -1134,6 +1135,87 @@ def table_p0(data):
     return "\n".join(out)
 
 
+def render_workshop(ws):
+    vs = ws["versions"]
+    order = ["T278", "T279", "T293", "TOH44"]
+    out = []
+    out.append("四本《华严》的译场记录，逐条以起止锚在源文切片（不手抄），叶码 `lb` 可回源核对；"
+               "源文件字节数与 sha256 记在 `data/research/translation_workshop.json`。")
+    out.append("")
+    out.append("| 本 | 译主 | 年月 | 地点 | 发起／护持 | 底本 | 在场规模 |")
+    out.append("|---|---|---|---|---|---|---|")
+    for k in order:
+        v = vs[k]
+        out.append(f'| {esc(v["label"])}（{esc(v["taisho"])}） | {esc(v["translator"])} | '
+                   f'{esc(v["date"])} | {esc(v["place"])} | {esc(v["patron"])} | '
+                   f'{esc(v["base"])} | {esc(v["scale"])} |')
+    out.append("")
+    out.append("**职衔矩阵**：单元格记该本记载中的人名，`—` 表示记载无此职——"
+               "不是「当时无此职」，只是「此文未记」。")
+    out.append("")
+    out.append("| 职衔 | 六十 T278 | 八十 T279 | 四十 T293 | 藏译 Toh44 |")
+    out.append("|---|---|---|---|---|")
+    for role in ws["roles"]:
+        cells = []
+        for k in order:
+            people = [x["person"] for x in vs[k]["roster"] if x["role"] == role]
+            cells.append("、".join(people) if people else "—")
+        out.append(f'| {esc(role)} | ' + " | ".join(esc(c) for c in cells) + " |")
+    out.append("")
+    counts = {k: len(vs[k]["roster"]) for k in order}
+    out.append(f'> 可考职衔条数：六十 {counts['T278']}、八十 {counts['T279']}、'
+               f"四十 {counts['T293']}、藏译 {counts['TOH44']}，"
+               f"合计 {sum(counts.values())} 条、{len(ws['roles'])} 类职衔。"
+               "每条均指向下面的一条引文（`quote` 字段），矩阵由名单汇总，手改无效。")
+    out.append("")
+    out.append("**四种制度形态**：")
+    out.append("")
+    for t in ws["typology"]:
+        v = vs[t["key"]]
+        out.append(f'- **{esc(t["kind"])}**（{esc(v["label"])}）：{esc(t["why"])}（`{t["quote"]}`）')
+    out.append("")
+    out.append("**原文**（照录；汉文叶码为 CBETA `lb`，藏文为德格叶码）：")
+    for k in order:
+        v = vs[k]
+        out.append("")
+        out.append(f'*{esc(v["label"])}*（{esc(v["taisho"])}，{esc(v["translator"])}）')
+        out.append("")
+        for qid in v["quotes"]:
+            q = ws["quotes"][qid]
+            src = ("T55n2154" if q["source"] == "kaiyuan"
+                   else "T50n2061" if q["source"] == "songgao" else "德格 Toh 44")
+            out.append(f'- `{q["lb"]}`（{src}）　{esc(q["text"])}')
+    out.append("")
+    out.append("**判断**：")
+    out.append("")
+    out.append(f'①汉式三本的职衔越往后越繁：六十 {counts["T278"]} 条、八十 {counts["T279"]} 条、'
+               f'四十 {counts["T293"]} 条——从「译主＋笔受」到「宣梵·译语·笔受·缀文·润文·'
+               "证义·详定·写进」八职并列（合译主为九条），是**制度累积**，"
+               "不是四本各有一套天生分工。")
+    out.append("")
+    out.append('②监督者层层外移：六十本无监护记载；八十本作「太子中舍贾膺福监护」，'
+               "是东宫官；四十本作「神策军护军中尉霍仙鸣、左街功德使窦文场写进」，"
+               "是**使职与禁军**——译场从寺内事务变成须由宦官系统进呈的官方工程。")
+    out.append("")
+    out.append('③帝王亲预只见于八十本：「天后亲临法座焕发序文，自运仙毫首题名品」，'
+               "「天后亲受笔削」又见于条目（`0565c15`）。这是译场条件，"
+               "**不据此判 S2 王室信仰**——S2 问的是本经是否进入国家祭祀，"
+               "此处只有译事，无仪注。")
+    out.append("")
+    out.append('④藏译是另一套：题记只记「印度堪布 Jinamitra、Surendrabodhi，大校译师 Bande Ye shes sde 等，'
+               "译而校、校而定」（`362a.5`）——两员堪布＋校译师，「译·校·定」三序，"
+               "无汉式「笔受／缀文／证义」名目。同一部经在两套译场制度里被生产，"
+               "职衔不可直接对译。")
+    out.append("")
+    out.append("**限度**：")
+    out.append("")
+    for b in ws["boundaries"]:
+        out.append(f"- {esc(b)}")
+    out.append("- 四本之外未取：西夏译、于阗文残卷、四十本之后的宋元续译皆无译场记录入库；"
+               "本节的「四种」是**已取四本**的四种，不是历史上的全部形态。")
+    return "\n".join(out)
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -1152,6 +1234,7 @@ def main():
     paraphrase = json.loads(PARAPHRASE.read_text(encoding="utf-8"))
     conflation = json.loads(CONFLATION.read_text(encoding="utf-8"))
     endgame = json.loads(ENDGAME.read_text(encoding="utf-8"))
+    workshop = json.loads(WORKSHOP.read_text(encoding="utf-8")) if WORKSHOP.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -1181,6 +1264,7 @@ def main():
         "growth": table_growth(),
         "tanjur": table_tanjur(),
         "influence": table_influence(),
+        "workshop": render_workshop(workshop) if workshop else "",
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),
