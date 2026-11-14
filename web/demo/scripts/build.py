@@ -2659,13 +2659,18 @@ def build_articles(articles):
                     v += _CN[b]
                 return v
             return _CN.get(s, 0)
-        _pm = re.search(r'第([一二三四五六七八九十]{1,3})品', title)
-        if _pm:
-            _pin = _cn2n(_pm.group(1))
-            if 1 <= _pin <= 39:
-                sutra_panel_block = (
-                    '<script>var SUTRA_PANEL_PIN = %d;</script>\n'
-                    '<script src="../js/sutra_panel.js"></script>' % _pin)
+        # 专题页标题无「第X品」时按文章 id 指定对应品（入法界品专题＝第39品）
+        _SPECIAL_PIN = {'huayan-rufajie-journey': 39}
+        _pin = _SPECIAL_PIN.get(a['id'], 0)
+        if not _pin:
+            _pm = re.search(r'第([一二三四五六七八九十]{1,3})品', title)
+            if _pm:
+                _pin = _cn2n(_pm.group(1))
+        if 1 <= _pin <= 39:
+            sutra_panel_block = (
+                '<script src="../data/sutra/mapping.js"></script>\n'
+                '<script>var SUTRA_PANEL_PIN = %d;</script>\n'
+                '<script src="../js/sutra_panel.js"></script>' % _pin)
         # 阅读位置记忆（所有文章页·localStorage·非 cookie）
         sutra_panel_block = '<script src="../js/reading_pos.js"></script>' + chr(10) + sutra_panel_block
         html = html.replace('{SUTRA_PANEL}', sutra_panel_block)
@@ -2953,6 +2958,20 @@ def main():
     total_size += size
     file_count += 1
     print(f'OK  {js_path} ({size:,} bytes)')
+
+    # ── 品目索引 JS 镜像（<script> 直载；file:// 下 fetch 被禁时的兜底）──
+    mp_json = OUT / 'data' / 'sutra' / 'mapping.json'
+    if mp_json.exists():
+        with open(mp_json, encoding='utf-8') as f:
+            _mapping = json.load(f)
+        mp_js = mp_json.with_suffix('.js')
+        with open(mp_js, 'w', encoding='utf-8') as f:
+            f.write('window.SUTRA_MAPPING = ' +
+                    json.dumps(_mapping, ensure_ascii=False, separators=(',', ':')) + ';\n')
+        size = mp_js.stat().st_size
+        total_size += size
+        file_count += 1
+        print(f'OK  {mp_js} ({size:,} bytes)')
 
     # ── Build index.html with dynamic stats ──
     graph = load_graph()
