@@ -109,7 +109,30 @@ TARGETS = [
         "check": ["華嚴綱要", "德清"],
         "note": "CBETA xml-p5 · 卍續藏 X240 · 華嚴綱要 卷45–80（唐澄觀疏義・明德清提挈）",
     },
+    # --- 儒家樣本：《大學》（朱熹章句，Kanripo KR1h0015，17 檔）---
+    # --- 道教階位品：《道教義樞》（孟安排，Kanripo KR5e0031，10 檔；位業義為 P1 缺口）---
 ]
+
+for _n in range(0, 17):
+    TARGETS.append({
+        "id": f"KR1h0015_{_n:03d}", "dir": "rujia", "path": f"KR1h0015_{_n:03d}.txt",
+        "url": f"{KR}/KR1h0015/master/KR1h0015_{_n:03d}.txt",
+        "check": ["大學"],
+        "note": f"Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 {_n:03d}",
+    })
+for _n in range(0, 10):
+    TARGETS.append({
+        "id": f"KR5e0031_{_n:03d}", "dir": "daozang", "path": f"KR5e0031_{_n:03d}.txt",
+        "url": f"{KR}/KR5e0031/master/KR5e0031_{_n:03d}.txt",
+        "check": ["道教義樞", "位業"],
+        "note": f"Kanripo KR5e0031 · 道教義樞（唐 孟安排）· 檔 {_n:03d}（位業義＝P1 道教階位缺口）",
+    })
+TARGETS.append({
+    "id": "yogasutra", "dir": "sanskrit", "path": "yogasutra_with_bhashya.txt",
+    "url": f"{GRETIL}/sa_pataJjali-yogasUtra-with-bhASya.txt",
+    "check": ["yoga", "Pata"],
+    "note": "GRETIL（哥廷根）· Patañjali Yogasūtra with Bhāṣya（八支階位＝P 面對位樣本）",
+})
 
 # The Daozang text is split one file per juan; expand into 61 targets.
 for _n in range(1, 62):

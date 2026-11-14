@@ -676,6 +676,166 @@
       "sha256": "c708b84751f755128d8f68efc031fd66bdaaefc9ce24bd890f95c39aa5bd8675",
       "retrieved": "2026-11-14",
       "note": "Esukhia eTengyur - Derge Tanjur 目录卷 213（dkar chag）"
+    },
+    "KR1h0015_000": {
+      "path": "data/references/rujia/KR1h0015_000.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_000.txt",
+      "bytes": 30431,
+      "sha256": "080a3f844966ca9964995b2fda123df3dad664a019d449af2716d44589da247c",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 000"
+    },
+    "KR1h0015_001": {
+      "path": "data/references/rujia/KR1h0015_001.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_001.txt",
+      "bytes": 24694,
+      "sha256": "69f422a5d94c1001a690b2d19bab7f858925f8c5a6eae53abef1516f6a8996a5",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 001"
+    },
+    "KR1h0015_002": {
+      "path": "data/references/rujia/KR1h0015_002.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_002.txt",
+      "bytes": 25096,
+      "sha256": "ac21c00165cf4bc0f07f46d9e3553b947839be9d80c7611b9ead773666f74ba2",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 002"
+    },
+    "KR1h0015_003": {
+      "path": "data/references/rujia/KR1h0015_003.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_003.txt",
+      "bytes": 32438,
+      "sha256": "baec5a960771aeb0f094bd8abf94aaeba971b1589d1c0239ae455f07108b5999",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 003"
+    },
+    "KR1h0015_004": {
+      "path": "data/references/rujia/KR1h0015_004.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_004.txt",
+      "bytes": 28126,
+      "sha256": "57e51eedc5d2fc98745394c3c4116daa4811276917b0f6553ea080fb4f03c323",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 004"
+    },
+    "KR1h0015_005": {
+      "path": "data/references/rujia/KR1h0015_005.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_005.txt",
+      "bytes": 25383,
+      "sha256": "29c39147d522f15b091741ee6ee3c7280c88fb4da605aefc61c0348078582010",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 005"
+    },
+    "KR1h0015_006": {
+      "path": "data/references/rujia/KR1h0015_006.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_006.txt",
+      "bytes": 66491,
+      "sha256": "a90b24c93c3ca8a7b32c886f8e56d155a9a572e57266f70f1c00d50a500f0520",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 006"
+    },
+    "KR1h0015_007": {
+      "path": "data/references/rujia/KR1h0015_007.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_007.txt",
+      "bytes": 22959,
+      "sha256": "2a1c26faef0d7b3d8d8c3b4428dca42f114d1c8914573ce105247d8c3f74d4b4",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 007"
+    },
+    "KR1h0015_008": {
+      "path": "data/references/rujia/KR1h0015_008.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_008.txt",
+      "bytes": 22098,
+      "sha256": "3a91d0d38e5d0fd8411f90927dbae92f0ceecd3ce1e37cc11cf3aa7750ccb05b",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 008"
+    },
+    "KR1h0015_009": {
+      "path": "data/references/rujia/KR1h0015_009.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_009.txt",
+      "bytes": 17804,
+      "sha256": "e8d72643e0a8d6605c10ea6099bbf4a70ef6828f94fa9b1a7c30289ab6e51624",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 009"
+    },
+    "KR1h0015_010": {
+      "path": "data/references/rujia/KR1h0015_010.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_010.txt",
+      "bytes": 47419,
+      "sha256": "a94946c6f42ce96a1e6b06eb92266e9be83d4e5e0d9dac39e9602ca9555e23e6",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 010"
+    },
+    "KR1h0015_011": {
+      "path": "data/references/rujia/KR1h0015_011.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_011.txt",
+      "bytes": 44854,
+      "sha256": "d21d99c233fcbe82e48f8cbb067e84dfe8dbc663706cac4fe7bcab72329a047e",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 011"
+    },
+    "KR1h0015_012": {
+      "path": "data/references/rujia/KR1h0015_012.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_012.txt",
+      "bytes": 44852,
+      "sha256": "5ca1474b921be6b2ef81246e757503d54abc736d56c29ccb14c37447863ea2b7",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 012"
+    },
+    "KR1h0015_013": {
+      "path": "data/references/rujia/KR1h0015_013.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_013.txt",
+      "bytes": 47705,
+      "sha256": "ddca3bfd9972080c518a1c50c75b672136dc7c67e9020b38003ef0dc93b0db64",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 013"
+    },
+    "KR1h0015_014": {
+      "path": "data/references/rujia/KR1h0015_014.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_014.txt",
+      "bytes": 41363,
+      "sha256": "4bf20fc4b461e1861ab483b8ac5f9f3b141436724be58e5342295b956fb07c62",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 014"
+    },
+    "KR1h0015_015": {
+      "path": "data/references/rujia/KR1h0015_015.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_015.txt",
+      "bytes": 43670,
+      "sha256": "f6fb0ef1fabd0560c2cff3b58ebcf8bc8d3df932f3a6e76b60f8fa3a3a4f6bd0",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 015"
+    },
+    "KR1h0015_016": {
+      "path": "data/references/rujia/KR1h0015_016.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR1h0015/master/KR1h0015_016.txt",
+      "bytes": 99628,
+      "sha256": "e25e2a129ed0df24a8cc4dce23e23946c0ce3f2f734066695d90461848b14d65",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR1h0015 · 大學（宋 朱熹章句）· 檔 016"
+    },
+    "KR5e0031_000": {
+      "path": "data/references/daozang/KR5e0031_000.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_000.txt",
+      "bytes": 5355,
+      "sha256": "eb6594e16b1dc387515fbecf13d3ffb4ace1c5fb477b0c93283ed62c538c9fdf",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR5e0031 · 道教義樞（唐 孟安排）· 檔 000（位業義＝P1 道教階位缺口）"
+    },
+    "KR5e0031_001": {
+      "path": "data/references/daozang/KR5e0031_001.txt",
+      "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_001.txt",
+      "bytes": 24634,
+      "sha256": "77daf75528438f167573c7be92851aa2090220436ce16e76845301d74a14edcd",
+      "retrieved": "2026-11-14",
+      "note": "Kanripo KR5e0031 · 道教義樞（唐 孟安排）· 檔 001（位業義＝P1 道教階位缺口）"
+    },
+    "yogasutra": {
+      "path": "data/references/sanskrit/yogasutra_with_bhashya.txt",
+      "url": "https://gretil.sub.uni-goettingen.de/gretil/corpustei/transformations/plaintext/sa_pataJjali-yogasUtra-with-bhASya.txt",
+      "bytes": 145716,
+      "sha256": "2c4cc34c455123a1f8ef86cd628211047542a933ee4b669659b799d6b9dfd94e",
+      "retrieved": "2026-11-14",
+      "note": "GRETIL（哥廷根）· Patañjali Yogasūtra with Bhāṣya（八支階位＝P 面對位樣本）"
     }
   }
 }

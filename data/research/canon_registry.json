@@ -155,14 +155,14 @@
       "canon": "正統道藏＋萬曆續道藏",
       "carrier": "明刻本；涵芬樓影印；三家本",
       "organization": "三洞四輔十二類，千字文帙號",
-      "witness_local": "無（僅 1 部樣本：度人經 61 卷，見次行）",
+      "witness_local": "有（2 部樣本：度人經 61 卷、道教義樞 10 檔；2026-11-11/14 入庫）",
       "layers": [
         "L1",
         "L3",
         "L4"
       ],
       "grade": "C",
-      "note": "與佛教的關係主要在論衡層（化胡、笑道）與類型層（齋儀、階次），非譜系。"
+      "note": "道教義樞含「位業義」——P1 道教階位缺口的一手文本；對讀未做。"
     },
     {
       "domain": "道教",
@@ -195,14 +195,14 @@
       "canon": "十三經注疏",
       "carrier": "刻本／排印本",
       "organization": "經＋注＋疏三層",
-      "witness_local": "無",
+      "witness_local": "有（樣本：《大學》宋朱熹章句 17 檔，Kanripo KR1h0015；2026-11-14 入庫）",
       "layers": [
         "L1",
         "L3",
         "L4"
       ],
-      "grade": "C",
-      "note": "共享語彙（如「華嚴」「法界」）多屬語詞偶合或轉義，不可作依賴證據。"
+      "grade": "B",
+      "note": "樣本入庫（八條目＝階位序列的儒家對位樣本）；僅此一種，餘經同 C。"
     },
     {
       "domain": "儒家",
@@ -241,6 +241,19 @@
       ],
       "grade": "B",
       "note": "電子印本在手、可逐字對讀（已用於 §17.17 參名旁證：Supratiṣṭhita）；存世最早寫本為 Hodgson 2(A)（1166 CE，289 葉，84000 Toh 44-45 導言 i.14），寫本級見證仍是 C。"
+    },
+    {
+      "domain": "印度教·瑜伽",
+      "canon": "Patañjali Yogasūtra（with Bhāṣya＝Pātañjalayogaśāstra）",
+      "carrier": "寫本傳承；Maas 校訂本為 GRETIL 數位版底本",
+      "organization": "四品 194 節，八支（aṣṭāṅga）階位序列",
+      "witness_local": "有（GRETIL 電子文本，Maas 校訂本；2026-11-14 入庫）",
+      "layers": [
+        "L1",
+        "L3"
+      ],
+      "grade": "B",
+      "note": "P 面跨傳統對位樣本（八支 vs 十住十地）；對讀未做，故 B。"
     }
   ]
 }
