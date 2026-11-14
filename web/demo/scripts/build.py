@@ -2731,6 +2731,72 @@ def build_articles(articles):
             order.append(k)
     order = [k for k in order if buckets.get(k)]
 
+    # ── 三十九品拼读速取专区（L.469）：按九会折叠 · 品→会映射自 doc 路径，不硬编码会名 ──
+    _CN_IDX = {'一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9}
+    def _cn2n_idx(s):
+        if '十' in s:
+            a_, _, b_ = s.partition('十')
+            v = (_CN_IDX[a_] * 10) if a_ else 10
+            if b_:
+                v += _CN_IDX.get(b_, 0)
+            return v
+        return _CN_IDX.get(s, 0)
+
+    def _pin_name(title, pin_no):
+        """「九九华严第十五品 十住品之拼读」→「十住品」；解不出则退回整题"""
+        t = re.sub(r'^九九华严第[一二三四五六七八九十百]+品\s*', '', title or '')
+        t = re.sub(r'之拼读$', '', t)
+        return t or title
+
+    _pins, _companions = [], []
+    for a in articles:
+        if (a.get('family') or '') != 'huayan_xidu':
+            continue
+        mh = re.search(r'第([一二三四五六七八九十]+)会_([^/]+)/', (a.get('doc') or '').replace('\\', '/'))
+        mp = re.search(r'第([一二三四五六七八九十]{1,3})品', a.get('title') or '')
+        if mh and mp:
+            _pins.append({'no': _cn2n_idx(mp.group(1)), 'hui': _cn2n_idx(mh.group(1)),
+                          'hui_label': mh.group(2).replace('_', ' · '), 'a': a})
+        else:
+            _companions.append(a)
+
+    _hui_buckets = {}
+    for p in _pins:
+        _hui_buckets.setdefault((p['hui'], p['hui_label']), []).append(p)
+    _hui_sorted = sorted(_hui_buckets.items(), key=lambda kv: kv[0][0])
+    _hui_details = []
+    for hi, ((hno, hlabel), items) in enumerate(_hui_sorted):
+        chips = ''.join(
+            '<a href="%s.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--card);'
+            'border:1px solid var(--line);border-radius:16px;padding:5px 12px;color:var(--text1);'
+            'text-decoration:none;font-size:0.8em">'
+            '<b style="color:var(--gold)">%d</b><span>%s %s</span></a>'
+            % (p['a']['id'], p['no'], p['a'].get('icon', '📖'), _pin_name(p['a'].get('title', ''), p['no']))
+            for p in sorted(items, key=lambda x: x['no']))
+        _hui_details.append(
+            '<details class="fold"%s><summary><b>第%s会</b> · %s'
+            '<span style="font-weight:400;color:var(--text2)">（%d 品）</span></summary>'
+            '<div class="fold-body" style="display:flex;flex-wrap:wrap;gap:8px;padding:8px 2px 4px">%s</div></details>'
+            % (' open' if hi == 0 else '', '一二三四五六七八九'[hno - 1], hlabel, len(items), chips))
+    _comp_chips = ''.join(
+        '<a href="%s.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--card);'
+        'border:1px solid var(--line);border-radius:16px;padding:5px 12px;color:var(--text1);'
+        'text-decoration:none;font-size:0.8em"><span>%s %s</span></a>'
+        % (a['id'], a.get('icon', '📄'), a.get('title', ''))
+        for a in _companions)
+    pindu_section = ''
+    if _pins:
+        pindu_section = f'''<section id="pindu" style="margin-top:8px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:12px 16px">
+<div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap">
+<span style="font-size:1.12em;font-weight:700;color:var(--gold)">📖 九九华严 · 三十九品拼读速取</span>
+<span style="font-size:0.74em;color:var(--text3,var(--text2))">{len(_pins)} 品 · 按 {len(_hui_sorted)} 会折叠 · 点会名展开品目</span>
+</div>
+{''.join(_hui_details)}
+<details class="fold"><summary>🧭 拼读配套专文<span style="font-weight:400;color:var(--text2)">（{len(_companions)} 篇 · 总纲/专题/对照矩阵等）</span></summary>
+<div class="fold-body" style="display:flex;flex-wrap:wrap;gap:8px;padding:8px 2px 4px">{_comp_chips}</div></details>
+</section>'''
+
+
     sections = []
     for gi, key in enumerate(order):
         items = buckets[key]
@@ -2750,7 +2816,8 @@ def build_articles(articles):
 </div>
 </section>''')
 
-    nav = ' · '.join(
+    nav = ('<a href="#pindu" style="color:var(--blue);text-decoration:none">📖 三十九品拼读速取(%d)</a> · '
+           % len(_pins) if _pins else '') + ' · '.join(
         '<a href="#grp-%d" style="color:var(--blue);text-decoration:none">%s %s(%d)</a>'
         % (gi, gicons.get(k) or gspec.get(k, {}).get('icon') or '📂', k, len(buckets[k]))
         for gi, k in enumerate(order))
@@ -2784,6 +2851,7 @@ def build_articles(articles):
 </div>
 </div>
 <main class="content" id="article-root">
+{pindu_section}
 {''.join(sections)}
 <div style="margin-top:26px;text-align:center">
 <a href="../index.html" style="color:var(--blue);font-size:0.8em">← 返回导航主页</a> ·

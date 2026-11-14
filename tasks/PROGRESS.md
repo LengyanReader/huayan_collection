@@ -3385,3 +3385,11 @@ done(
 - **实测**（CUA 真实拖拽）：调宽 589→435 ✓ 存盘；拖标题浮窗 (370,222) h=720-222 ✓；点外收起 ✓；重开恢复 435+浮位 ✓；双击回停靠 right 贴边 ✓；ESC ✓；品33 文本与阅读位置记忆不受影响 ✓。
 - **事故与教训**：把手初版样式写成 `#sp-resize` 而元素是 class → 选择器失配 0 高，事件穿透到 `.sp-text`（事件探针定位）；**凡新增元素先验证 hit-test**。另：面板 fixed 定位的 right:0 以布局视口（扣滚动条）为准，CUA 坐标以全窗为准——实测坐标须按 `getBoundingClientRect` 对齐。
 - **门禁**：node --check ✓ · verify_demo ALL PASSED ✓ · check ✓ · diff-check ✓。
+
+## L.469 · 2026-11-14 · SVG 防裁切适配＋目录页拼读专区
+
+- **用户反馈**：①阿僧祇品/入法界品等页有些图显示不完整；②articles/index.html 需梳理，39 品拼读与经学文章宜聚合/折叠/专题页。
+- **T1 图裁切**：浏览器 getBBox×viewBox 全量扫查 39 页 → **12 页 14 图溢出**（右溢 10：asamkhya +202/+42、rufajie +130、piluzhena +165、ru-lai +117、rlchuxian +78、shouliang +74、puxian-sanmei +50、suihao +40、xianshou×2；下溢 4：shizhu-pin +45、shiding +13、fobusiyi +12、zhuchu +10）。
+- **修法**：`common.js` 增 `_fitSvgs`——渲染后量测内容 bbox 与 viewBox 取并集（只扩不缩·留 6 单位边距）动态改写 viewBox；只调几何不动文字。触发四路：MutationObserver（渲染）· 点击钩子（折叠展开）· `_reveal` 包装（深链/恢复）· 初始。**复扫 39 页全部 0 溢出**；目检 asamkhya 两图、rufajie 行程图右端完整。
+- **T2 目录页**：`build.py` 生成 index 顶部「📖 九九华严·三十九品拼读速取」专区——**品→会映射自 doc 路径 `第N会_*/`（数据驱动·不硬编码会名）**，九会 details 折叠（首会默认开）＋「拼读配套专文」9 篇折叠＋导航锚点；品芯片=品号+图标+品名。实测 39 品分布 6/6/6/4/3/1/11/1/1。
+- **门禁**：node --check ×2 ✓ · build 86 files ✓ · verify_demo ALL PASSED ✓ · check ✓ · diff-check ✓。

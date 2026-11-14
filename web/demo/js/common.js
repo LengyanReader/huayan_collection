@@ -2375,3 +2375,67 @@ window._foldShellHtml = function (innerId, label) {
     + '</details>';
 };
 
+
+// ═══ SVG 视窗自适应（L.469 · 防裁切）═══
+// 背景：部分信息图（静态 md 内嵌与 JS 渲染皆有）的内容 bbox 超出 viewBox——
+// 右缘/下缘被浏览器按 viewBox 裁切，图「显示不完整」（如阿僧祇品 +202px、入法界品 +130px）。
+// 方案：渲染后量测 getBBox 与 viewBox 取并集（只扩不缩、留 6 单位边距），动态改写 viewBox。
+// 只调几何映射，不动任何文字/数据内容；折叠体量测不准时跳过，待展开后重测。
+// 触发点：DOM 渲染（MutationObserver）、章节展开（点击钩子＋_reveal）、初始载入。
+window._fitSvgs = function (scope) {
+  var rootEl = (scope && scope.querySelectorAll) ? scope : document;
+  var list = rootEl.querySelectorAll('svg');
+  for (var i = 0; i < list.length; i++) {
+    var el = list[i];
+    // 折叠体内（display:none）量测不准：跳过不标记，展开后会再 fit
+    var cs = window.getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+    var bb;
+    try { bb = el.getBBox(); } catch (e) { continue; }
+    if (!bb || (bb.width === 0 && bb.height === 0)) continue;
+    var vb = (el.viewBox && el.viewBox.baseVal && el.viewBox.baseVal.width) ? el.viewBox.baseVal : null;
+    if (!vb) {
+      // 无 viewBox：以 width/height 属性建基线坐标系，再参与 fit（等比缩放行为不变）
+      var w = parseFloat(el.getAttribute('width')), h = parseFloat(el.getAttribute('height'));
+      if (!isFinite(w) || !isFinite(h) || w <= 0 || h <= 0) continue;
+      el.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      vb = el.viewBox.baseVal;
+      if (!vb || !vb.width) continue;
+    }
+    var PAD = 6;
+    var nx = Math.min(vb.x, bb.x - PAD), ny = Math.min(vb.y, bb.y - PAD);
+    var nx2 = Math.max(vb.x + vb.width, bb.x + bb.width + PAD);
+    var ny2 = Math.max(vb.y + vb.height, bb.y + bb.height + PAD);
+    if (nx2 - nx > vb.width + 0.5 || ny2 - ny > vb.height + 0.5 || nx < vb.x - 0.5 || ny < vb.y - 0.5) {
+      el.setAttribute('viewBox', nx + ' ' + ny + ' ' + (nx2 - nx) + ' ' + (ny2 - ny));
+    }
+  }
+};
+var _fitTimer = null;
+function _fitSvgsSoon() {
+  if (_fitTimer) return;
+  _fitTimer = setTimeout(function () { _fitTimer = null; try { window._fitSvgs(document); } catch (e) {} }, 320);
+}
+// ① 渲染触发：正文/图表注入 DOM 后统一重测（doc、data-science、story-comic、flow 等全部路径）
+if (typeof MutationObserver === 'function') {
+  new MutationObserver(function (muts) {
+    for (var i = 0; i < muts.length; i++) {
+      if (muts[i].addedNodes && muts[i].addedNodes.length) { _fitSvgsSoon(); return; }
+    }
+  }).observe(document.body, { childList: true, subtree: true });
+}
+// ② 折叠展开触发：is-folded 切换只改 attribute 不加节点，须点击钩子
+document.addEventListener('click', function (e) {
+  var t = e.target && e.target.closest ? e.target.closest('.secfold, .pagefold-bar, .secfold-bar') : null;
+  if (t) _fitSvgsSoon();
+}, true);
+// ③ 深链/目录跳转的祖先展开（reading_pos 恢复亦走 _reveal）
+var _origReveal = window._reveal;
+window._reveal = function (el) {
+  var r = _origReveal ? _origReveal.apply(this, arguments) : undefined;
+  _fitSvgsSoon();
+  return r;
+};
+// ④ 初始
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _fitSvgsSoon);
+else _fitSvgsSoon();
