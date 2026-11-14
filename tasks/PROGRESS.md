@@ -3194,3 +3194,12 @@ done(
 - **登记册修复**：lishijian yaml artist 换行断行（Hong Zhang 名片带括号换行）→ 一行归位——门禁恢复全绿。
 - **文化资产层累计**：29 品 37 图。
 - **门禁**：check ✓ · build ✓ · diff-check ✓。
+
+## L.427 · 2026-11-14 · §6.3 丹珠尔题录首批：行愿讚释线五部（批 C 开题）
+
+- **渠道定案**：Esukhia《Digital Derge Tengyur》（GitHub 开源全文）——经释部（མདོ་སྡེ）vol.113–122 十卷＋**目录卷 vol.213（dkar chag）**入库，manifest 73→**84** files；`build_tanjur_catalog.py`（幂等下载＋{D####} 题录头提取＋dkar chag 条目检索）。格式考据：README 载明 {DX}＝Tohoku 号，转写不完整故稀疏（卷内锚点 113:D3981–3993、116:D3998–4009 等）。
+- **首批题录**（dkar chag 443b，题名逐字回源）：《行願讚》注释线**五部**——龙树《疏合释》（Tilakabumba/Lo-dön Sherab 译）、陈那《摄义》、Śākyabhadra?《广释》（Śākyasiṃha/Peltseg 译）、Alaṃkāraśrī?《广释》（Jñānagarbha/Kawa Paltsek 译）、世親《释》（Ānanda/Bhadrapāla 译）。**判**：华严的行愿末梢在丹珠尔有成线注疏传统；而华严经/入法界/十地题名论典在目录卷关键词检索下**未见**——记「未检得」不记「不存在」（转写缺、变体未穷举），全目逐条判读待三源（Tohoku 1934/BDRC/Adarshah）。
+- **registry**：丹珠尔行 C→B（有书未读）。
+- **工程沉淀**：藏文关键词须用藏文正字（首跑用 Wylie 全军覆没）；{DX} 稀疏导致跨卷序列不可自证；题名与语法词粘连（བསྡུས་ཏེ）时题录取目录原样子串；folio 标记切断题名→门禁去标记＋去空白比对。
+- **门禁**：§6.3 组（5 条题名去标记去空白子串回源＋作者列在文）＝31 项全绿；阴性测试（题名注入垃圾后缀）doc_md 一致性如期 FAIL。
+- **next**：丹珠尔全目逐条判读（三源对勘补 Toh 号）；批 D 影响面开题。

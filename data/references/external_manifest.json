@@ -1,7 +1,7 @@
 {
   "meta": {
     "purpose": "§17 跨典藏登記冊的一手見證清單",
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "notes": []
   },
   "files": {
@@ -588,6 +588,94 @@
       "sha256": "da1c032cc671cdca2cd268bea2a38639784835aee26eaf916dd85c1544c94fc8",
       "retrieved": "2026-11-13",
       "note": "CBETA xml-p5 · 卍續藏 X240 · 華嚴綱要 卷45–80（唐澄觀疏義・明德清提挈）"
+    },
+    "ET113": {
+      "path": "data/references/tibetan/derge_tengyur/vol113.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2605810,
+      "sha256": "b7a5f8665c3fc65e60a3158b7108b165e007994b4c4889798ba9a8581f80a62a",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.113（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET114": {
+      "path": "data/references/tibetan/derge_tengyur/vol114.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2580714,
+      "sha256": "3339fb8bd7fb7758290673f5f66ebc5fdcdaccba0e542ea9a7c4339db5b1c7b5",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.114（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET115": {
+      "path": "data/references/tibetan/derge_tengyur/vol115.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2751946,
+      "sha256": "0a4b2709b06aee0d2a81ff4ac5d45525226937b002870e39c0a0ef6d86139958",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.115（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET116": {
+      "path": "data/references/tibetan/derge_tengyur/vol116.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2727636,
+      "sha256": "23c81369d0132b43488e5b8915e6f3f9f53ab3db777181b81eec0cdc549a7455",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.116（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET117": {
+      "path": "data/references/tibetan/derge_tengyur/vol117.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2584937,
+      "sha256": "b1fc04070eb0a974aac326cac43da67ee57bfa387cbb5cbacbcac8b95575b6fd",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.117（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET118": {
+      "path": "data/references/tibetan/derge_tengyur/vol118.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2673825,
+      "sha256": "8682f1bdfa3d2b435183b5570c329edc267462f8c0bdd0ba131f59cf1a6135b9",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.118（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET119": {
+      "path": "data/references/tibetan/derge_tengyur/vol119.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2656262,
+      "sha256": "9e17e96590d798c9f7584bb1b0cbcf08049686c19728d670d9a814837438e552",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.119（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET120": {
+      "path": "data/references/tibetan/derge_tengyur/vol120.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2951175,
+      "sha256": "2e81d09595ceaa3bae8df086716bf5e4219f4433878b701ebd1293f62a671f2e",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.120（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET121": {
+      "path": "data/references/tibetan/derge_tengyur/vol121.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2427469,
+      "sha256": "9da0f07a8c1f1291ab7cd3c2c442d524e73c3791df643963a20bfa96ac49dd2a",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.121（经释部，Tohoku 号标记稀疏）"
+    },
+    "ET122": {
+      "path": "data/references/tibetan/derge_tengyur/vol122.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/",
+      "bytes": 2977185,
+      "sha256": "ee981c04aa6cbc1a4ba2e7de9f2518d3aa3e0d53c6868b44ede1aa25d4644015",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur vol.122（经释部，Tohoku 号标记稀疏）"
+    },
+    "ETdkarchag": {
+      "path": "data/references/tibetan/derge_tengyur/vol213_dkarchag.txt",
+      "url": "https://raw.githubusercontent.com/Esukhia/derge-tengyur/master/text/213_དཀར་ཆག.txt",
+      "bytes": 4836467,
+      "sha256": "c708b84751f755128d8f68efc031fd66bdaaefc9ce24bd890f95c39aa5bd8675",
+      "retrieved": "2026-11-14",
+      "note": "Esukhia eTengyur - Derge Tanjur 目录卷 213（dkar chag）"
     }
   }
 }

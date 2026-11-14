@@ -728,6 +728,31 @@ def table_growth():
     return "\n".join(out)
 
 
+def table_tanjur():
+    """§6.3 丹珠尔题录（首批）：《行願讚》注释线，德格丹珠尔目录卷 443b。
+
+    题名/作者/译者逐字取自 dkar chag（Esukhia eTengyur vol.213，situ dkar chag），
+    门禁按「去 folio 标记后子串」回源校验。Toh 号未列——{D} 标记稀疏，
+    待 Tohoku/BDRC/Adarshah 三源对勘后补。
+    """
+    rows = [
+        ("འཕགས་པ་བཟང་པོ་སྤྱོད་པའི་སྨོན་ལམ་གྱི་རྒྱལ་པོ་ཆེན་པོའི་བཤད་སྦྱར",
+         "ཀླུ་སྒྲུབ（龍樹）", "ཐིག་ལེ་བུམ་པ・བློ་ལྡན་ཤེས་རབ"),
+        ("ཀུན་དུ་བཟང་པོའི་སྤྱོད་པའི་སྨོན་ལམ་གྱི་དོན་ཀུན་བསྡུས",
+         "ཕྱོགས་ཀྱི་གླང་པོ（陳那）", "—"),
+        ("འཕགས་པ་བཟང་པོ་སྤྱོད་པའི་སྨོན་ལམ་གྱི་རྒྱལ་པོའི་རྒྱ་ཆེར་འགྲེལ་པ",
+         "ཤཱཀྱའི་བཤེས་གཉེན", "ཤཱཀྱ་སིངྷ・དཔལ་བརྩེགས"),
+        ("འཕགས་པ་བཟང་པོ་སྤྱོད་པའི་སྨོན་ལམ་གྱི་རྒྱལ་པོའི་རྒྱ་ཆེར་འགྲེལ་པ",
+         "རྒྱན་བཟང་པོ", "ཛྙཱ་ན་གརྦྷ・སྐ་བ་དཔལ་བརྩེགས"),
+        ("འཕགས་པ་བཟང་པོ་སྤྱོད་པའི་སྨོན་ལམ་གྱི་འགྲེལ་པ",
+         "དབྱིག་གཉེན（世親）", "ཨཱ་ནནྡ・བྷ་དྲ་པཱ་ལ"),
+    ]
+    out = ["| 题名（藏文原录） | 造者 | 译者 | 目录页 |", "|---|---|---|---|"]
+    for t, a, tr in rows:
+        out.append(f"| {esc(t)} | {esc(a)} | {esc(tr)} | 443b |")
+    return "\n".join(out)
+
+
 def table_t4(probe):
     meta = probe["meta"]
     thr = meta["thresholds"]
@@ -1105,6 +1130,7 @@ def main():
         "bhumi": table_bhumi(enrich),
         "source_map": table_source_map(data, enrich),
         "growth": table_growth(),
+        "tanjur": table_tanjur(),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),

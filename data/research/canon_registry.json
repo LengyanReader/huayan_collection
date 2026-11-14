@@ -91,12 +91,13 @@
       "canon": "德格版丹珠爾",
       "carrier": "木刻，函／葉",
       "organization": "Toh 編號",
-      "witness_local": "無",
+      "witness_local": "有（Esukhia eTengyur：經釋部 vol.113–122 十卷＋目錄卷 vol.213；2026-11-14 入庫）",
       "layers": [
-        "L1"
+        "L1",
+        "L2"
       ],
-      "grade": "C",
-      "note": "印度論師對《華嚴》的注釋多在此藏，是本課題最直接的空白。"
+      "grade": "B",
+      "note": "目錄卷檢得《行願讚》釋五部（§6.3）；華嚴題名論典未檢得（轉寫有缺，全目判讀待三源對勘）；有書未讀，故 B。"
     },
     {
       "domain": "藏传佛教",
