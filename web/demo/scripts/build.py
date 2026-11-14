@@ -7,6 +7,7 @@ Usage (from project root):
   python web/demo/scripts/build.py
 """
 import json
+import re
 import html as _html
 import yaml
 import os
@@ -2413,7 +2414,7 @@ LIN_DEEPLINK_JS_TMPL = '''<script>
       if(after) frag.appendChild(document.createTextNode(after));
       e.node.parentNode.replaceChild(frag, e.node);
     }
-    if(edits.length) console.log('[lin-deeplink] linked ' + edits.length + ' mentions');
+    if(edits.length) console.log('[lin-deeplink] linked %d mentions' % edits.length);
   }
   if(document.readyState==='complete') setTimeout(linkify,100);
   else window.addEventListener('load', function(){ setTimeout(linkify,100); });
@@ -2643,9 +2644,29 @@ def build_articles(articles):
 {SHARE_JS}
 {LIN_DEEPLINK_JS}
 {scripts}
+{{SUTRA_PANEL}}
 </body>
 </html>'''
         path = ARTICLES_OUT / (a['id'] + '.html')
+        # ── 三译对照悬浮阅读窗：华严 39 品页注入（品号由 title「第X品」提取）──
+        sutra_panel_block = ''
+        _CN = {'一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9}
+        def _cn2n(s):
+            if '十' in s:
+                a, _, b = s.partition('十')
+                v = (_CN[a] * 10) if a else 10
+                if b:
+                    v += _CN[b]
+                return v
+            return _CN.get(s, 0)
+        _pm = re.search(r'第([一二三四五六七八九十]{1,3})品', title)
+        if _pm:
+            _pin = _cn2n(_pm.group(1))
+            if 1 <= _pin <= 39:
+                sutra_panel_block = (
+                    '<script>var SUTRA_PANEL_PIN = %d;</script>\n'
+                    '<script src="../js/sutra_panel.js"></script>' % _pin)
+        html = html.replace('{SUTRA_PANEL}', sutra_panel_block)
         with open(path, 'w', encoding='utf-8') as f:
             f.write(html)
         size = len(html.encode('utf-8'))
