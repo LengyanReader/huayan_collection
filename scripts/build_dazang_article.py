@@ -707,6 +707,27 @@ def table_source_map(data, enrich):
     return "\n".join(out)
 
 
+def table_growth():
+    """§2.8 演变专节：译本时间轴（四貌＝四个时间切片）。
+
+    年代与规模：§2.1/§2.2 已核（CBETA byline、84000 导言 i.11–i.25）；
+    聖堅本 25 参、行愿偈 44→62、乌荼王本：84000 Toh 44-45 导言（A，访问 2026-11-13）。
+    """
+    rows = [
+        ("聖堅〈入法界〉单品", "388–408 间", "25 参", "最早的华严汉译是单品；先九参与三十四参后皆缺"),
+        ("佛馱跋陀羅 全经", "420", "34 品·60 卷", "全经首次整体着陆；入法界为末品；行愿偈 44 颂"),
+        ("實叉難陀 全经", "695–699", "39 品·80 卷", "盧舍那品拆为品 2–6、增十定品（+5）"),
+        ("般若〈入法界〉新本", "798", "40 卷", "乌荼王本（795 献唐）；本会前增文；行愿偈 62 颂"),
+        ("藏译全经", "约 800–836〔存疑〕", "45 章·115 包", "華藏拆章 5–9、增藏 11/32（+6）；章题定 Gaṇḍavyūha"),
+    ]
+    out = ["| 译本 | 年代 | 规模 | 相对前貌的增长点 |", "|---|---|---|---|"]
+    for a, b, c, d in rows:
+        out.append(f"| {esc(a)} | {esc(b)} | {esc(c)} | {esc(d)} |")
+    out.append("")
+    out.append("（单品先行的时间线见下文；结构算术的拆分定位见 §2.2；参访计数见 §5.7。）")
+    return "\n".join(out)
+
+
 def table_t4(probe):
     meta = probe["meta"]
     thr = meta["thresholds"]
@@ -1083,6 +1104,7 @@ def main():
         "endgame": table_endgame(endgame),
         "bhumi": table_bhumi(enrich),
         "source_map": table_source_map(data, enrich),
+        "growth": table_growth(),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),

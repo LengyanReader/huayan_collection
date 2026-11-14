@@ -424,6 +424,20 @@ def main() -> int:
         fail("§4.6 completion line out of sync")
     ok(f"§4.6 source map: {len(sm_rows)} 品 rows synced (藏章/别译/梵本/增长)")
 
+    # --- §2.8 growth: timeline table and growth markers ---
+    gr_block = grab("growth")
+    gr_rows = [ln for ln in gr_block.splitlines()
+               if ln.startswith("| ") and "译本" not in ln and "---" not in ln]
+    if len(gr_rows) != 5:
+        fail(f"§2.8 growth timeline rows {len(gr_rows)} != 5")
+    for frag in ("聖堅〈入法界〉单品", "388–408", "420", "695–699", "798", "25 参",
+                 "62 颂", "乌荼王本", "45 章·115 包"):
+        if frag not in gr_block and frag not in md:
+            fail(f"§2.8 growth figure missing: {frag}")
+    if "单品先行" not in md or "判读纪律" not in md or "演變線" not in md and "演变线" not in md:
+        fail("§2.8 growth prose missing")
+    ok("§2.8 growth: 5-row timeline + 单品先行/入法界个案/判读纪律 present")
+
     # --- §17.15 T7: 品级长度比、引用率、节略用语、锚点链 ---
     t7_path = ROOT / "data" / "research" / "paraphrase_probe.json"
     if not t7_path.exists():
