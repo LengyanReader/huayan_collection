@@ -1,0 +1,21 @@
+article: auto
+title_zh: 敦煌壁画·飞天·文化资产参证登记册
+purpose: 唯一权威著录源（体例沿 P1/P39/P3/P24）。
+license_policy: Commons 可核验授权·extmetadata 回源。
+verification_note: HEAD 200 于 2026-11-14；授权与作者经 extmetadata 回源。
+boundary_principle: A 依本经而作 0 件；本批 1 件（B 类：飞天题域）。
+items:
+- img_no: 28-C1
+  title_zh: 敦煌壁画·飞天
+  title_en: Flying apsara, Dunhuang mural
+  era_zh: 〔待核：Commons 未著录窟与年代〕
+  site_zh: 敦煌莫高窟（Commons 著录）
+  commons_file: File:Dunhuang mural flying apsarasa.jpg
+  license: Public domain
+  license_url: （见 Commons 条目）
+  author_zh: Unknown authorUnknown author
+  ref: 飞行之相——本品「無體性無動作往一切佛剎」神足通之题域参证（往诣佛剎如鸟飞空）
+  boundary: B：飞天是佛教艺术通用母题·非本经专像；作神足通飞行之题域参证。
+  category: B 类：飞天题域
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/f/f8/Dunhuang_mural_flying_apsarasa.jpg
+  verified: HEAD 200 于 2026-11-14
