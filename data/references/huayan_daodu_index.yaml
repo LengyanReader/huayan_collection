@@ -115,6 +115,16 @@ items:
     topic_zh: 华严经疏钞会本（L1557·与 Kanripo KR6e0021 异版）
     extraction_status: 免提取备查（库内已有 KR6e0021 会本 12 卷·L.84 取得）
 
+  # ── 宣化上人《大方廣佛華嚴經淺釋》（L.477 新增·在线 HTML 全量扫取）──
+  - id: drba-xianshi
+    path: "https://www.drbachinese.org/online_reading/sutra_explanation/Ava/contents.htm（95 卷页·在线 HTML）"
+    tier: 一级（宣化浅释·逐句白话讲·现代法师）
+    topic_zh: 宣化上人华严经浅释·全经 39 品逐卷（Vol1-Vol39 之 95 分页）
+    extraction_status: 已提取→data/references/huayan_daodu/宣化淺釋/*.txt（94 文件·2,675,372 CJK·2026-11-15 L.477·cp950 直读·文字层完整无 OCR·每文件含卷题与来源头）
+    extraction_tool: curl＋cp950 显式解码（WebFetch 乱码规避·L.475 先例）
+    cited_in: ["第三十八部（限量 2 段·L.475）"]
+    note: "全品覆盖——薄弱章现代讲记层主源；引用限量标来源"
+
 # ── CBETA 复本类（库内已有电子底本·免提取清单）──
 cbeta_duplicates_free:
   note: "以下外库 PDF/mobi 为库内已有 CBETA 电子底本之复本，引用一律以库内 cbeta_txt/ 底本为准，不复录外库件"
