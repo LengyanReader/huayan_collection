@@ -3495,3 +3495,11 @@ done(
 - **版本**：文首 v3.8→**v3.9**；`standalone_articles.yaml` 卡片同步。
 - **注意**：`web/demo/articles/index.html` 与各细读篇 html 含他线未提交字数变动，本批只提交 dazang 文章页。
 - **next**：逐参名的**语义判**（字面异者是否同指）与梵本逐参对勘；S2 祀典半边；S3 护法半边；丹珠尔全目。
+
+## L.477 · 2026-11-15 · 新加坡白话浅释全站 50 册下载＋按品归档（836K CJK）
+
+- **下载**：`scripts/download_hgs_baihua.py`——50 PDF 全取 49 成功＋chapter_11 补取成功＝**50/50 全到手**（hgs.sg 本机 DNS 坏→curl --resolve 钉 IP 101.100.211.131·服务器传输停滞→speed-guard 30s/2KB＋断点续传×5 重试·pypdfium 逐册验证）。
+- **提取**：`extract_hgs_baihua.py` 按品归档 `huayan_daodu/hgs_baihua/品NN.txt`（38 品·**836,014 CJK**·十地 172.9K·十回向 143.5K·十定 55.6K·离世间 56.6K·出现 41K…品39 未覆盖·站点无）。
+- **登记**：`huayan_daodu_index.yaml` 新增 hgs-baihua 条目（釋法欣 整理·二级整理可引用标来源·PDF 留存 hgs_baihua_pdf/ 未入 git）。
+- **意义**：**全部 38 品的现代白话讲记层到位**（配宣化 2.67M 全品覆盖）——后续各品充实批可直接按品抽取。
+- **门禁**：build ✓ · verify_demo ALL PASSED ✓ · check ✓ · diff-check ✓ · 临时件清理 ✓。

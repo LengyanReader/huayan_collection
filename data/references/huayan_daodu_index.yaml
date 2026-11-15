@@ -125,6 +125,16 @@ items:
     cited_in: ["第三十八部（限量 2 段·L.475）"]
     note: "全品覆盖——薄弱章现代讲记层主源；引用限量标来源"
 
+  # ── 新加坡華嚴禪寺《網路白話華嚴經淺釋》（L.477 新增·在线 PDF 全量扫取）──
+  - id: hgs-baihua
+    path: "http://hgs.sg/hgs/05_buddha/buddha_03/（50 PDF·品1-38·本机 DNS 坏需 curl --resolve 钉 IP 101.100.211.131）"
+    tier: 一级（新加坡白话浅释·釋法欣 整理·现代法师/居士整理·二级整理可引用标来源）
+    topic_zh: 网络白话华严经浅释·品1-38 全品（十地 10 分册·十回向/离世间 4 分册）
+    extraction_status: 已提取→data/references/huayan_daodu/hgs_baihua/品NN.txt（38 品·836,014 CJK·2026-11-15 L.477·PDF 文字层直读无 OCR·每文件含来源头与页码标记）
+    extraction_tool: pypdfium2 文字层直读（下载器 scripts/download_hgs_baihua.py·断点续传＋pypdfium 验证×5 重试）
+    cited_in: []
+    note: "品39 入法界未覆盖（站点无）·原 PDF 留存 huayan_daodu/hgs_baihua_pdf/（未入 git）"
+
 # ── CBETA 复本类（库内已有电子底本·免提取清单）──
 cbeta_duplicates_free:
   note: "以下外库 PDF/mobi 为库内已有 CBETA 电子底本之复本，引用一律以库内 cbeta_txt/ 底本为准，不复录外库件"
