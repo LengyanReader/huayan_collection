@@ -283,8 +283,8 @@
    "char_off": 825,
    "bo": "ཇི་ལྟར་བཅོམ་ལྡན་འདས་གླིང་བཞི་པ་འདིའི། རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་བ། དེ་བཞིན་དུ་འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་ཀྱི་གླིང་བཞི་པ་དག་གི་རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་སྟེ། བྱིན་གྱི་རླབས་སྔ་མ་དག་ཀྱང་མ་ཉམས་པར་སྣང་ངོ་། །",
    "zh": "正如世尊在此四洲世界中，顯現於須彌山頂；同樣地，在所有世界系的各個四洲世界中，也皆顯現於須彌山頂。且其往昔所賜予的加持，亦悉數顯現而未曾損減。",
-   "en": "",
-   "status": "needs_retry",
+   "en": "Just as the Blessed One appeared to have ascended to the summit of Mount Sumeru in this four-continent world system, so too did he appear to others. Likewise, he appeared to proceed to the summit of Mount Sumeru in every four-continent world system of all the world realms. The previous blessings also appear without having diminished.",
+   "status": "done",
    "verified": true,
    "boundary": "final",
    "window": [
@@ -351,7 +351,45 @@
     "frame": false,
     "needs_review": true,
     "ts": "2026-11-14T12:32:46"
-   }
+   },
+   "en_parts": [
+    {
+     "bo": "ཇི་ལྟར་བཅོམ་ལྡན་འདས་གླིང་བཞི་པ་འདིའི། རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་བ།",
+     "en": "Just as the Blessed One appeared to have ascended to the summit of Mount Sumeru in this four-continent world system, so too did he appear to others.",
+     "en_raw": "Just as the Blessed One appeared to have ascended to the summit of Mount Sumeru in this four-continent world system, so too did he appear to others.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-15T15:11:23"
+     }
+    },
+    {
+     "bo": "དེ་བཞིན་དུ་འཇིག་རྟེན་གྱི་ཁམས་ཐམས་ཅད་ཀྱི་གླིང་བཞི་པ་དག་གི་རི་རབ་ཀྱི་རྩེ་མོར་གཤེགས་པར་སྣང་སྟེ།",
+     "en": "Likewise, he appeared to proceed to the summit of Mount Sumeru in every four-continent world system of all the world realms.",
+     "en_raw": "Likewise, he appeared to proceed to the summit of Mount Sumeru in every four-continent world system of all the world realms.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-15T15:25:23"
+     }
+    },
+    {
+     "bo": "བྱིན་གྱི་རླབས་སྔ་མ་དག་ཀྱང་མ་ཉམས་པར་སྣང་ངོ་། །",
+     "en": "The previous blessings also appear without having diminished.",
+     "en_raw": "The previous blessings also appear without having diminished.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-15T15:33:13"
+     }
+    }
+   ]
   },
   {
    "no": 5,
@@ -361,11 +399,30 @@
    "folio": "[238b.3]",
    "char_off": 1044,
    "bo": "དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒྱལ་བའི་ཁང་པ་ལོགས་སུ་མངོན་པར་གཤེགས་པ་རྒྱང་རིང་པོ་ནས་མཐོང་ནས་རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ་གྱི་རང་བཞིན་སེང་གེའི་གདན་ཕྱོགས་རྣམ་པར་སྣང་བའི་སྙིང་པོ་ཅན་པོག་རེ་སྟོང་ཕྲག་བཅུས་བརྒྱན་པ། གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ། གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ། གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་བཅུ་རབ་ཏུ་སྤྱངས་པ། ",
-   "zh": null,
-   "en": null,
-   "status": "pending",
+   "zh": "",
+   "en": "",
+   "status": "needs_review",
    "verified": true,
-   "boundary": "soft"
+   "boundary": "soft",
+   "subunits": [
+    {
+     "bo": "དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒྱལ་བའི་ཁང་པ་ལོགས་སུ་མངོན་པར་གཤེགས་པ་རྒྱང་རིང་པོ་ནས་མཐོང་ནས་རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ་གྱི་རང་བཞིན་སེང་གེའི་གདན་ཕྱོགས་རྣམ་པར་སྣང་བའི་སྙིང་པོ་ཅན་པོག་རེ་སྟོང་ཕྲག་བཅུས་བརྒྱན་པ།",
+     "zh": "爾時，天主帝釋遙見世尊正趨向勝殿，便以神通力於勝殿之中，化現出一座獅子座。其座名為「遍照藏」，周圍裝飾著一萬個香爐，顯得極其莊嚴。帝釋隨即以迅疾的身相，進入勝殿之中。",
+     "zh_raw": "爾時，天主帝釋遙見世尊正趨向勝殿，便以神通力於勝殿之中，化現出一座獅子座。其座名為「遍照藏」，周圍裝飾著一萬個香爐，顯得極其莊嚴。帝釋隨即以迅疾的身相，進入勝殿之中。",
+     "zh_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-15T16:16:30",
+      "needs_review": true,
+      "note": "coverage 83/258; offering-list term/fidelity unverified"
+     }
+    },
+    {
+     "bo": "གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ། གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ། གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་བཅུ་རབ་ཏུ་སྤྱངས་པ།"
+    }
+   ]
   },
   {
    "no": 6,
@@ -375,11 +432,46 @@
    "folio": "[238b.5]",
    "char_off": 1474,
    "bo": "མུ་ཏིག་གི་སེ་མོ་དོ་སྟོང་ཕྲག་བཅུ་དགའ་དགའ་ལྟར་བྱས་པ། གོས་སྟོང་ཕྲག་བཅུས་མངོན་པར་བཀབ་ པ། ལྷའི་བུ་མོ་སྟོང་ཕྲག་བཅུས་མདུན་དུ་བྱས་པ། ཚངས་པ་སྟོང་ཕྲག་བཅུས་ཀུན་ནས་བསྐོར་བ། འོད་ཟེར་སྟོང་ཕྲག་བཅུས་ཤིན་ཏུ་སྣང་བར་གྱུར་པ། བཅོམ་ལྡན་འདས་ཀྱི་གདན་དུ་བཤམས་སོ། །",
-   "zh": null,
+   "zh": "",
    "en": null,
-   "status": "pending",
+   "status": "needs_retry",
    "verified": true,
-   "boundary": "final"
+   "boundary": "final",
+   "window": [
+    6,
+    6
+   ],
+   "bo_merged": "མུ་ཏིག་གི་སེ་མོ་དོ་སྟོང་ཕྲག་བཅུ་དགའ་དགའ་ལྟར་བྱས་པ། གོས་སྟོང་ཕྲག་བཅུས་མངོན་པར་བཀབ་ པ། ལྷའི་བུ་མོ་སྟོང་ཕྲག་བཅུས་མདུན་དུ་བྱས་པ། ཚངས་པ་སྟོང་ཕྲག་བཅུས་ཀུན་ནས་བསྐོར་བ། འོད་ཟེར་སྟོང་ཕྲག་བཅུས་ཤིན་ཏུ་སྣང་བར་གྱུར་པ། བཅོམ་ལྡན་འདས་ཀྱི་གདན་དུ་བཤམས་སོ། །",
+   "zh_raw": "",
+   "zh_raw2": "以十千串珍珠瓔珞莊嚴，覆蓋十千件妙衣，由十千天女在前引導，十千梵天周匝圍繞，並有十千道光芒極其輝耀，以此佈置成世尊",
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "revisions": 1,
+    "schooling": "未校订",
+    "prompt_version": "mitra-official-user-turn-v1",
+    "gen_s": 1812.2,
+    "out_tokens": 52,
+    "max_new": 300,
+    "clipped_repeat": false,
+    "ts": "2026-11-15T16:52:47"
+   },
+   "zh_clean": {
+    "method": "official-mitra-prompt+meta/residue/sentence-trim-v1",
+    "complete": false,
+    "trimmed": true,
+    "validation": "empty",
+    "coverage": {
+     "bo_chars": 232,
+     "out_chars": 0,
+     "ratio": 0.0,
+     "bo_shad_units": 7,
+     "out_sentence_units": 0
+    },
+    "frame": false,
+    "needs_review": true,
+    "ts": "2026-11-15T16:52:47"
+   }
   },
   {
    "no": 7,
