@@ -1,0 +1,8 @@
+# -*- mode: mandoku-view; -*-
+#+TITLE: 唐大詔令集
+#+DATE: 2015-08-24 22:31:28.383574
+#+PROPERTY: ID KR2f0010
+#+PROPERTY: BASEEDITION WYG    
+#+PROPERTY: JUAN 卷十四之卷二十四並闕文
+<pb:KR2f0010_WYG_014-1a>¶
+　唐大詔令集巻十四之巻二十四並闕文¶

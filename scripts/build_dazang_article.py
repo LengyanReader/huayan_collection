@@ -32,6 +32,7 @@ PAIR40 = ROOT / "data" / "research" / "huayan_80_40_pairwise.json"
 WORKSHOP = ROOT / "data" / "research" / "translation_workshop.json"
 ROYAL = ROOT / "data" / "research" / "royal_patronage.json"
 PERSECUTION = ROOT / "data" / "research" / "persecution.json"
+S2SIDIAN = ROOT / "data" / "research" / "s2_sidian.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
@@ -1235,7 +1236,7 @@ def render_workshop(ws):
     return "\n".join(out)
 
 
-def render_royal(rp):
+def render_royal(rp, sd=None):
     """§17.20 — S2 王室·国家祭祀：诏令一侧有据、祀典一侧无据。"""
     vs = rp["quotes"]
     src_label = {
@@ -1315,10 +1316,39 @@ def render_royal(rp):
                    f' | {row["total"]} |')
     out.append(f'| **合** |  |  |  |  |  |  |  | **{scan["occurrences"]}** |')
     out.append("")
+    if sd:
+        out.append("**史部与诏令检索**（新取三书，逐档 sha256 记 `data/research/s2_sidian.json`）：")
+        out.append("")
+        out.append("| 文献 | 档 | 字 | 「華嚴」 | 其中祀典邻域 |")
+        out.append("|---|---:|---:|---:|---:|")
+        label = {"jiutangshu": "《舊唐書》KR2a0026（後晉劉昫）",
+                 "tanghuiyao": "《唐會要》KR2m0002（宋王溥）",
+                 "tangdazhaoling": "《唐大詔令集》KR2f0010（宋宋敏求）"}
+        for repo, info in sd["meta"]["corpora"].items():
+            hs = [h for h in sd["hits"] if h["corpus"] == info["slug"]]
+            nbytes = sum(f["bytes"] for fn, f in sd["files"].items()
+                         if fn.startswith(repo + "_"))
+            out.append(f"| {esc(label[info['slug']])} | {info['files']} | "
+                       f"{nbytes // 1000:,}K | {len(hs)} | "
+                       f"{sum(1 for h in hs if h['near'])} |")
+        out.append("")
+        out.append("三书「華嚴」只见 **2 处，皆为寺名**：")
+        out.append("")
+        for h in sd["hits"]:
+            out.append(f"- 〔{esc(h['corpus'])}〕`{esc(h['file'])}`：…{esc(h['ctx'])}…")
+        out.append("")
+        out.append("一条是僖宗广明乱中「憇於華嚴寺」（《舊唐書·僖宗紀》），"
+                   "一条是长安景行坊「華嚴寺，景雲三年立為寺，開元二十一年改為同德寺」（《唐會要》卷四八）——"
+                   "**寺名为经名所出，非本经入祀典**。国家祭祀文献里找不到《華嚴經》作为祭祀对象的任何记载；"
+                   "这与④的结论相互印证，且把「无据」从在库 11 部扩到史部诏令 399 档。")
+        out.append("")
     out.append("**限度**：")
     out.append("")
     for b in rp["boundaries"]:
         out.append(f"- {esc(b)}")
+    out.append("- 史部三书已取（舊唐書／唐會要／唐大詔令集，399 档），"
+               "「華嚴」2 见皆寺名；《通典》《大唐開元禮》与金石（造像题记、敕牒）仍未取——"
+               "「祀典无据」是「史部诏令无据」，不是「唐代必无」。")
     out.append("- 本节所判为「王室一侧有据、祀典一侧无据」，故 S2 记 `部分`；"
                "不因诏敕多而升 `已做`，也不因祀典空而降 `未做`。")
     return "\n".join(out)
@@ -1517,6 +1547,7 @@ def main():
     workshop = json.loads(WORKSHOP.read_text(encoding="utf-8")) if WORKSHOP.exists() else {}
     royal = json.loads(ROYAL.read_text(encoding="utf-8")) if ROYAL.exists() else {}
     persecution = json.loads(PERSECUTION.read_text(encoding="utf-8")) if PERSECUTION.exists() else {}
+    s2sidian = json.loads(S2SIDIAN.read_text(encoding="utf-8")) if S2SIDIAN.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
@@ -1548,7 +1579,7 @@ def main():
         "tanjur": table_tanjur(),
         "influence": table_influence(),
         "workshop": render_workshop(workshop) if workshop else "",
-        "royal": render_royal(royal) if royal else "",
+        "royal": render_royal(royal, s2sidian) if royal else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "visits": render_visits(visits) if visits else "",
         "tib45": table_tib45(enrich, name_by_pin),

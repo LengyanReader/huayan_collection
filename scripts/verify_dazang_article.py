@@ -535,6 +535,27 @@ def main() -> int:
     for b in rp["boundaries"]:
         if b not in rblock:
             fail(f"§17.20 boundary line missing: {b[:20]}")
+    # --- §17.20 祀典半边：史部三书扫描（s2_sidian.json）---
+    sd_path = ROOT / "data" / "research" / "s2_sidian.json"
+    if not sd_path.exists():
+        fail("s2_sidian.json missing")
+    sd = json.loads(sd_path.read_text(encoding="utf-8"))
+    if len(sd["meta"]["corpora"]) != 3:
+        fail(f"S2 sibu corpora {len(sd['meta']['corpora'])} != 3")
+    if sd["summary"]["hits"] != len(sd["hits"]):
+        fail("S2 sibu hit count out of sync")
+    for h in sd["hits"]:
+        if not h["near"]:
+            fail(f"S2 sibu hit unclassified: {h['file']}")
+        if h["ctx"] not in rblock:
+            fail(f"S2 sibu hit ctx not printed: {h['file']}")
+    for repo, info in sd["meta"]["corpora"].items():
+        if f"{info['files']} |" not in rblock:
+            fail(f"S2 sibu row missing: {repo}")
+    if "皆为寺名" not in rblock:
+        fail("S2 sibu 寺名 judgement sentence missing")
+    if "399 档" not in rblock:
+        fail("S2 sibu file-count sentence missing")
     s2 = next(o for o in ops if o["id"] == "S2")
     if s2["status"] != "partial" or "17.20" not in (s2.get("refs") or ""):
         fail("ontology S2 not marked partial / §17.20")

@@ -1,0 +1,8 @@
+# -*- mode: mandoku-view; -*-
+#+TITLE: 唐大詔令集
+#+DATE: 2015-08-24 22:31:29.631033
+#+PROPERTY: ID KR2f0010
+#+PROPERTY: BASEEDITION WYG    
+#+PROPERTY: JUAN 卷八十七之卷九十八並闕文
+<pb:KR2f0010_WYG_077-1a>¶
+　唐大詔令集巻八十七之巻九十八並闕文¶
