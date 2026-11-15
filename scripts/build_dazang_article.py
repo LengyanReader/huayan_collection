@@ -31,6 +31,7 @@ PAIR60 = ROOT / "data" / "research" / "huayan_80_60_pairwise.json"
 PAIR40 = ROOT / "data" / "research" / "huayan_80_40_pairwise.json"
 WORKSHOP = ROOT / "data" / "research" / "translation_workshop.json"
 ROYAL = ROOT / "data" / "research" / "royal_patronage.json"
+PERSECUTION = ROOT / "data" / "research" / "persecution.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -738,7 +739,7 @@ def table_source_map(data, enrich):
                f"梵本单品存 {len(SANSKRIT)} 种（§6.1）；增长痕迹有记者 {len(GROWTH)} 品。"
                "空格＝「无据」，不等于「无来源」。")
     out.append("")
-    out.append("**空白登记**（拼图未完处，见 §17.21）：各品的印度前身谱系"
+    out.append("**空白登记**（拼图未完处，见 §17.22）：各品的印度前身谱系"
                "（Nattier 原始华严层：兜沙／本业一类最早译）未判；丹珠尔论典"
                "（印度论师怎么读华严）题录全空；东亚传播（新罗·日本）零题录。")
     return "\n".join(out)
@@ -1322,6 +1323,102 @@ def render_royal(rp):
     return "\n".join(out)
 
 
+def render_persecution(pc):
+    """§17.21 — S3 法难·护法：法难一侧有藏护之迹、护法一侧无据。"""
+    vs = pc["quotes"]
+    src_label = {
+        "songgao": "《宋高僧傳》（宋贊寧等撰）",
+        "guanghong": "《廣弘明集》（唐道宣撰）",
+    }
+    src_order = ["songgao", "guanghong"]
+    out = []
+    out.append("法难一侧的记载，逐条以起止锚在源文切片（不手抄），叶码 `lb` 可回源核对；"
+               "源文件字节数与 sha256 记在 `data/research/persecution.json`。")
+    out.append("")
+    out.append("| 类型 | 年代 | 主 | 行事 | 引文 |")
+    out.append("|---|---|---|---|---|")
+    for e in pc["events"]:
+        lbs = "、".join(f'`{vs[q]["lb"]}`' for q in e["quotes"])
+        out.append(f'| {esc(e["kind"])} | {esc(e["when"])} | {esc(e["who"])} | '
+                   f'{esc(e["act"])} | {lbs} |')
+    out.append("")
+    kc = pc["summary"]["kinds_count"]
+    parts = "、".join(f'{esc(k)} {v}' for k, v in kc.items())
+    out.append(f'> 九事八类：{parts}。类型计数由 `events` 汇总，手改无效。')
+    out.append("")
+    out.append("**原文**（照录；叶码为 CBETA `lb`）：")
+    for k in src_order:
+        qids = [qid for qid, q in vs.items() if q["source"] == k]
+        if not qids:
+            continue
+        out.append("")
+        out.append(f"*{esc(src_label[k])}*")
+        out.append("")
+        for qid in qids:
+            q = vs[qid]
+            out.append(f'- `{q["lb"]}`　{esc(q["text"])}')
+    out.append("")
+    out.append("**判断**：")
+    out.append("")
+    out.append("①**法难一侧证到的是「经的保存」与「人的隐遁」，不是「经被禁毁」**："
+               "元表以華櫚木函盛经藏石室、僧质遇搜简而隐山，都是僧人护经护己，"
+               "没有一条说朝廷以本经为罪。把「会昌搜毁」读成「本经被查禁」是越界——"
+               "诏令所毁是寺、是像、是僧籍，经只是被藏起来的对象。")
+    out.append("")
+    out.append("②**法难之后的礼忏转向是可量的事实**：赞宁记会昌年内玄畅修加《一萬五千佛名经》，"
+               "两京礼经「口唱低头，檛磬一声」，谓之「小礼」；同段又记四众"
+               "「逐字礼《華嚴》、《法華》經」，字上安「南無」、字下安「佛」。"
+               "本经在法难后进入忏法实践，此条只能作事实登记（与 P2 仪轨化交叉，本节不判 P2）。")
+    out.append("")
+    out.append("③**护法一侧仍无据**：以本经为论据的护法文本（护法论、破斥书、上表）在库未见；"
+               "《廣弘明集》「華嚴」仅 2 见，一为襄州峴山華嚴寺盧舍那瑞像的灵异，"
+               "一为梁武帝讲《般若》三慧时「迺出華嚴之品」的旁及，皆非护法论辩。"
+               "护法与法难是两件事：有法难不等于有以本经为据的护法。")
+    out.append("")
+    scan = pc["scan"]
+    short = {"T50n2061.xml": "宋高僧传", "T50n2060.xml": "续高僧传"}
+    notes = "；".join(
+        f'{n["note"]}（{short.get(n["file"], n["file"])}）'
+        for n in scan["near_huayan"])
+    out.append(f'④**词频检索的结果与它的限度**：在库 {scan["files"]} 部全文检索'
+               f'（{"／".join(scan["keywords"])}），共 {scan["occurrences"]} 处，'
+               f'其中与「華嚴」相邻者 {len(scan["near_huayan"])} 处，'
+               f'三处全是寺名——{notes}。'
+               "真正记「经」的三条（元表藏经、僧质隐遁、逐字礼）反而不在词窗内："
+               "元表条「會昌搜毀」与「華嚴」相隔四十余字。"
+               "可见词频邻近只能作筛查，不能作证据；本节引文靠逐条读传，不靠词频。"
+               "「法難」一词也未作检索词：经中「法難思」「法難遇」为常用搭配，计入只会制造假阳性。")
+    out.append("")
+    out.append("**法难词检索**（在库全文，逐部计数）：")
+    out.append("")
+    head = "| 文献 | " + " | ".join(scan["keywords"]) + " | 合 |"
+    out.append(head)
+    out.append("|---|" + "---:|" * len(scan["keywords"]) + "---:|")
+    names = {
+        "T10n0279.xml": "八十华严 T279", "T09n0278.xml": "六十华严 T278",
+        "T10n0293.xml": "四十华严 T293", "T50n2054.xml": "贤首国师碑传 T2054",
+        "T50n2061.xml": "宋高僧传 T2061", "T55n2154.xml": "开元释教录 T2154",
+        "T52n2103.xml": "广弘明集 T2103", "T52n2102.xml": "弘明集 T2102",
+        "T50n2060.xml": "续高僧传 T2060", "T50n2059.xml": "高僧传 T2059",
+        "T51n2089.xml": "游方记抄 T2089",
+    }
+    for fn, row in scan["rows"].items():
+        c = row["counts"]
+        out.append(f'| {esc(names.get(fn, fn))} | ' +
+                   " | ".join(str(c[k]) for k in scan["keywords"]) +
+                   f' | {row["total"]} |')
+    out.append(f'| **合** | ' + " | ".join("" for _ in scan["keywords"]) +
+               f' | **{scan["occurrences"]}** |')
+    out.append("")
+    out.append("**限度**：")
+    out.append("")
+    for b in pc["boundaries"]:
+        out.append(f"- {esc(b)}")
+    out.append("- 本节所判为「法难一侧有据、护法一侧无据」，故 S3 记 `部分`；"
+               "不因法难记载多而升 `已做`，也不因护法空而降 `未做`。")
+    return "\n".join(out)
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -1342,6 +1439,7 @@ def main():
     endgame = json.loads(ENDGAME.read_text(encoding="utf-8"))
     workshop = json.loads(WORKSHOP.read_text(encoding="utf-8")) if WORKSHOP.exists() else {}
     royal = json.loads(ROYAL.read_text(encoding="utf-8")) if ROYAL.exists() else {}
+    persecution = json.loads(PERSECUTION.read_text(encoding="utf-8")) if PERSECUTION.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -1373,6 +1471,7 @@ def main():
         "influence": table_influence(),
         "workshop": render_workshop(workshop) if workshop else "",
         "royal": render_royal(royal) if royal else "",
+        "persecution": render_persecution(persecution) if persecution else "",
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),

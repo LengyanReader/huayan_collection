@@ -544,6 +544,100 @@ def main() -> int:
        f"{len(events)} events in {len(kinds)} kinds / ritual scan "
        f"{scan['files']} files {scan['occurrences']} hits, {len(scan['near_huayan'])} near 華嚴")
 
+    # --- §17.21 S3 persecution: quotes re-sliced; events/kinds/scan/near-notes in sync ---
+    pc_path = ROOT / "data" / "research" / "persecution.json"
+    if not pc_path.exists():
+        fail("persecution.json missing")
+    pc = json.loads(pc_path.read_text(encoding="utf-8"))
+
+    def pc_flat(key: str) -> str:
+        meta = pc["meta"]["sources"][key]
+        p = ROOT / meta["path"]
+        if hashlib.sha256(p.read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"persecution source hash changed: {key}")
+        raw = p.read_text(encoding="utf-8")
+        m1 = raw.find("<body")
+        m2 = raw.rfind("</body>")
+        if m1 >= 0 and m2 > m1:
+            raw = raw[m1:m2]
+        raw = re.sub(r"<[^>]*>", "", raw)
+        return re.sub(r"\s+", "", raw)
+
+    pflat = {k: pc_flat(k) for k in pc["meta"]["sources"]}
+    pblock = grab("persecution")
+    for qid, q in pc["quotes"].items():
+        if q["text"] not in pflat[q["source"]]:
+            fail(f"persecution quote not in source: {qid} {q['text'][:24]}")
+        if q["text"] not in pblock:
+            fail(f"persecution quote not printed in §17.21: {qid}")
+        if f'`{q["lb"]}`' not in pblock:
+            fail(f"persecution quote lb not printed: {qid}")
+
+    pevents = pc["events"]
+    if len(pevents) != 9:
+        fail(f"persecution events {len(pevents)} != 9")
+    pkinds = {}
+    for e in pevents:
+        pkinds[e["kind"]] = pkinds.get(e["kind"], 0) + 1
+        if e["kind"] not in pblock:
+            fail(f"persecution event kind missing in table: {e['kind']}")
+        if e["act"] not in pblock:
+            fail(f"persecution event act missing: {e['kind']} {e['when']}")
+        for qid in e["quotes"]:
+            if qid not in pc["quotes"]:
+                fail(f"persecution event cites unknown quote: {qid}")
+    if pkinds != pc["kinds"] or pkinds != pc["summary"]["kinds_count"]:
+        fail("persecution kinds != event-derived kinds")
+    pparts = "、".join(f"{k} {v}" for k, v in pkinds.items())
+    if f"九事八类：{pparts}" not in pblock:
+        fail("§17.21 kinds-count sentence out of sync")
+    if pc["summary"]["events"] != len(pevents) or pc["summary"]["quotes"] != len(pc["quotes"]):
+        fail("persecution summary counts out of sync")
+
+    pscan = pc["scan"]
+    if len(pscan["rows"]) != pscan["files"]:
+        fail("persecution scan rows != files")
+    if sum(r["total"] for r in pscan["rows"].values()) != pscan["occurrences"]:
+        fail("persecution scan total != sum of rows")
+    ptail = pblock.split("**法难词检索**", 1)[-1]
+    pgot = 0
+    for fn, row in pscan["rows"].items():
+        want_sum = sum(row["counts"].values())
+        for ln in ptail.splitlines():
+            cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+            if len(cells) == len(pscan["keywords"]) + 2 and cells[-1] == str(want_sum) and \
+                    cells[1:-1] == [str(row["counts"][k]) for k in pscan["keywords"]]:
+                pgot += 1
+                break
+    if pgot != pscan["files"]:
+        fail(f"§17.21 scan rows {pgot} != {pscan['files']}")
+    if f'| **合** | ' + " | ".join("" for _ in pscan["keywords"]) + \
+            f' | **{pscan["occurrences"]}** |' not in ptail:
+        fail("§17.21 scan total row out of sync")
+    if (f'在库 {pscan["files"]} 部全文检索' not in pblock
+            or f'共 {pscan["occurrences"]} 处' not in pblock
+            or f'相邻者 {len(pscan["near_huayan"])} 处' not in pblock):
+        fail("§17.21 scan sentence out of sync")
+    for n in pscan["near_huayan"]:
+        if n["note"] == "待分类":
+            fail(f"§17.21 near-hit unclassified: {n['file']} {n['ctx'][:40]}")
+        if n["note"] not in pblock:
+            fail(f"§17.21 near-hit note not printed: {n['note']}")
+    if "三处全是寺名" not in pblock:
+        fail("§17.21 near-hit conclusion missing")
+    for b in pc["boundaries"]:
+        if b not in pblock:
+            fail(f"§17.21 boundary line missing: {b[:20]}")
+    s3 = next(o for o in ops if o["id"] == "S3")
+    if s3["status"] != "partial" or "17.21" not in (s3.get("refs") or ""):
+        fail("ontology S3 not marked partial / §17.21")
+    if "### 17.21 S3" not in md:
+        fail("§17.21 heading missing")
+    ok(f"§17.21 S3 persecution: {len(pc['quotes'])} quotes re-sliced / "
+       f"{len(pevents)} events in {len(pkinds)} kinds / scan "
+       f"{pscan['files']} files {pscan['occurrences']} hits, "
+       f"{len(pscan['near_huayan'])} near 華嚴 all classified")
+
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
     if not imp_path.exists():
@@ -575,8 +669,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.21 未竟" not in md:
-        fail("§17.14–17.21 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.22 未竟" not in md:
+        fail("§17.14–17.22 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -744,7 +838,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.21 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.22 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -880,8 +974,8 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.21 未竟" not in md:
-        fail("§17.16–17.21 headings missing")
+    if "### 17.16 T4" not in md or "### 17.22 未竟" not in md:
+        fail("§17.16–17.22 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
 
