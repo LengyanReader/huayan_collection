@@ -77,3 +77,17 @@ _brave_profile/
 data/references/tibetan/**/*.jpg
 data/references/tibetan/**/*.zip
 
+
+# 〔L.479〕资料安置区补全：原始下载件（HTML 原始页/PDF 原件）不入 git——只入清洗后 UTF-8 提取本
+data/references/huayan_daodu/hgs_baihua_pdf/
+data/references/huayan_daodu/宣化淺釋_html/
+
+# 〔L.479〕可视化检查截图（门禁人工核验用·一次性产物）
+web/demo/_vis/
+
+# 〔L.479〕临时探针/中间件扩展（此前 .tmp_*.json/.txt/.yaml/.frag 已列，补 html/bin/xml）
+.tmp_*.html
+.tmp_*.bin
+.tmp_*.xml
+.tmp_*.png
+/_probe_*.json
