@@ -3594,3 +3594,10 @@ done(
 - **落文**：§17.23 intro（两形态）、判断①、边界講解条；ontology R5 note 更新；数据表 7→12 条。
 - **门禁**：R5 组硬化（4 组断言＋講解在文＋慧光判语在文）；阴性测试（篡改圆教引文）doc_md 一致性如期 FAIL。31 项全绿。
 - **next**：三源核（Toh）；R3/R4；《通典》补。
+
+## L.479 · 2026-11-15 · 资料安置区补全＋薄章宣化限量取件
+
+- **资料安置**：`.gitignore` 补全——原始下载件（hgs_baihua_pdf/ 23MB·宣化淺釋_html/ 8.2MB）、可视化检查截图（web/demo/_vis/）、临时探针扩展（.tmp_*.html/.bin/.xml/.png·/_probe_*.json）一律不入 git；**只入清洗后 UTF-8 提取本**（宣化淺釋/ 9.3MB·hgs_baihua/ 3.1MB 已在仓）。
+- **薄章宣化限量取件**：`scripts/enrich_xuanhua_thin.py`——P19/21/22/23/24 各 1–2 段（400–845 字·限量引用标来源）；版头两轮修复（「願解如來真實義」开经偈末句切头＋纯版头段过滤）＋HTML 实体清理 6 文件。
+- **工作区收敛**：并行线未推提交（dazang v4.4/v4.5·三语线 ch18 台账）全部随本批发布；远端同步 0/0；工作区仅剩三语线 workspace 工具（对方会话工作区·不动）。
+- **门禁**：verify_dazang_article ALL PASSED ✓ · test_pipeline ALL PASSED ✓ · build 87 ✓ · verify_demo ALL PASSED ✓ · check ✓ · diff-check ✓。
