@@ -3647,3 +3647,21 @@ done(
 - **切法**：按原书小节整段取（來意、釋名两节全取，六位段截至「其餘都是等覺位。」），不用句数截断；页眉页码（【页N】＋独立数字）先清洗。
 - **意义**：与宣化（禅宗式讲解）互补——新加坡本为华严宗式科判（四分五周·六位·等妙），正补 P38 品题解义与位次判摄的二手参照。
 - **门禁**：build 87 files / 39,134,251 bytes ✓ · check ✓ · diff-check ✓。
+
+## L.486 · 2026-11-15 · 九九華嚴 Ep16–17 下載/OCR 入册（进行中）
+
+- **播放列表重扫**：Ep16 `Wud3U-JZOn4`（10518s·#9月）· Ep17 `_Z9Kpu5U0ag`（10551s·#9月）；旧 `_playlist_scan` 仅至 Ep15。
+- **下载**：hy_py312 内建 yt-dlp 遇 googlevideo SSL EOF（10 retries 后失败）；改基座 `python -m yt_dlp --force-ipv4 --downloader native` 成功，720p `136+140` 合并 mp4（Ep16 1.07GB / Ep17 1.18GB）。
+- **抽帧/去重**：Ep16 frames 10518·runs 2928（含字幕 2909）；Ep17 frames 10551·runs 2854（2848）。两 lane 并行 OCR（PP-OCRv6_medium·chinese_cht·线程钉定），实测约 8–10 reps/min/lane。
+- **页面构建器去硬编码**：`build_jj_collation_page.py` 改由 collation YAML 驱动 tab/panel（`__TABS__`/`__PANELS__`）；15 集重生成验证 0 残留 token、17 tab/17 section。
+- **新增核验工具**：`scripts/jj_cbeta_match.py`（OCR×T10n0279 精确 n-gram 命中，Ep15 复现 53 段已知引文）·`scripts/build_jj_ep_doc.py`（首轮 OCR 整理稿生成器，Ep15 试跑 9 段/4 品候选）。
+- **next**：OCR 完成 → 校验 delivery 三产物 → `jj_ocr_audit`+`_jj_build_lib` 重建实测台账 → collation 增 Ep16/17（待校）→ 生成 episodes 稿 → 重生成页面 → `verify_jj_lectures`+`check` → 开页目检。
+
+## L.486 · 2026-11-15 · 问数统一：200→201（编者叙述层）＋两层制入凡例
+
+- **排查范围**：P38 md 全页 40 处「200/二百问」命中逐条分类；另及系列总纲、华严经学文（YAML→独立页＋五页签同源）、P38 图注与英文对应、旧图版生成脚本。
+- **订正（编者叙述层，5 处）**：①〇之二.0 读法之序「200问与200组」→「201 问与 200 组」；②〇之二.4 形式特征表「200问／200组×10」→「201 问／200 组×10」；③义理要点 1 补注「二百为传统成句；八十本实测 201 问」；④义理要点 2「实测 200 问句」→「实测 201 问句」；⑤英文对应两处 Puzhi→Puhui 并注「a traditional count; 201 in the 80-fascicle text」。
+- **两层制入凡例**（§〇 凡例五）：「二百问」为传统成句（英公偈、古注、讲记引文照录不改）；八十本 `T10n0279` 实测 201 问、六十本 `T09n0278` 200 问——编者叙述、表格、图注一律用实测数。
+- **同源页订正**：系列总纲「普慧200问」→「普慧201问〔传统称二百问〕」；`avatamsaka_studies.yaml` 内容行与 39 品表补「传统成句；八十本实测 201」并加〔编者按〕（独立页＋五页签同步）；旧图版生成脚本 `p23_p37_atlas_b3.py` 六处 200 问串一并改正，防再生成回潮。
+- **不动项**：古注引文（智俨/法藏/澄观/演义钞/李通玄/道霈/海云）与英公偈、勘玄记04 引文、讲记实录（`jj-huayan-collation`，已有〔待核〕）一律照录；`docs/tabs/` 为陈旧副本（治理待续⑨），不改。
+- **门禁**：build 87 files / 39,136,957 bytes ✓ · verify_demo ALL CHECKS PASSED ✓ · check ✓ · diff-check ✓；字面「200问」全站构建产物 0 处（余「200 问」皆「六十本 200 问」）。

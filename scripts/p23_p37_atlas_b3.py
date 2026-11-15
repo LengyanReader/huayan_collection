@@ -305,8 +305,8 @@ P36 = {
     "yiju": "**普慧云兴二百问，普贤瓶泻二千酬——行门如瓶泻，离世间不离世间而离。**",
     "sanwen": "①二百问如何读？②二千行门如何检索？③「离世间」离的是什么？",
     "tiyao": "本品占**卷第五十三～五十九**，剥校勘 **CJK 54,872 字**。**长行 331 段＋偈组 1（结偈 5,238 字）**；结构：**序分（莲华藏师子座）→ 普贤入佛华庄严三昧 → 普慧二百问 → 200组十答 → 如来赞（品名句）→ 结偈**。",
-    "xufa": "先观图 〇-1 以得其问（200问与200组），次观图 〇-2 以得其式（行门三段式），次用 §2.4 总表检索（52卡全引），次读 §4 义理，末以 §7 核量。",
-    "en_map": "Puzhi asks two hundred questions; Samantabhadra answers each with ten — two thousand gates of practice — sealed as the gateway of world-transcending dharma and a closing verse urging the diamond mind.",
+    "xufa": "先观图 〇-1 以得其问（201 问与 200 组），次观图 〇-2 以得其式（行门三段式），次用 §2.4 总表检索（52卡全引），次读 §4 义理，末以 §7 核量。",
+    "en_map": "Puhui asks two hundred questions (201 in the 80-fascicle text); Samantabhadra answers each with ten — two thousand gates of practice — sealed as the gateway of world-transcending dharma and a closing verse urging the diamond mind.",
     "figs": [
         {
             "n": 1,
@@ -317,7 +317,7 @@ P36 = {
 <text x="500" y="26" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#7a5a28">普慧云兴二百问·普贤瓶泻二千酬（§2.3-2.4 实测）</text>
 <rect x="80" y="56" width="260" height="120" rx="10" fill="#f6efe1" stroke="#b8863c"/>
 <text x="210" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5a28">普慧菩薩</text>
-<text x="210" y="116" text-anchor="middle" font-size="11" fill="#5a5147">二百问（200 问句实测）</text>
+<text x="210" y="116" text-anchor="middle" font-size="11" fill="#5a5147">二百问（八十本 201 问句实测）</text>
 <text x="210" y="140" text-anchor="middle" font-size="10" fill="#8a7a5e">「何等為X？云何X？何故X？」杂发</text>
 <rect x="660" y="56" width="260" height="120" rx="10" fill="none" stroke="#d4a03c" stroke-dasharray="5,3"/>
 <text x="790" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5a28">普賢菩薩</text>
@@ -326,8 +326,8 @@ P36 = {
 <text x="500" y="120" text-anchor="middle" font-size="15" fill="#7a5a28">⇒</text>
 <text x="500" y="204" text-anchor="middle" font-size="12" fill="#5a5147">问可以散，行必有则——如来赞「功德行處．決定義華．普入一切佛法．出世間法門品」</text>
 </svg>""",
-            "cap": "问酬结构：200问→200组二千行门（§2.3-2.4）。",
-            "en": "Two hundred questions, two thousand answers.",
+            "cap": "问酬结构：八十本 201 问→200 组二千行门（§2.3-2.4）。",
+            "en": "Two hundred questions (201 in the 80-fascicle text), two thousand answers.",
             "dufa": [
                 "问式读法：杂陈之问。",
                 "组式读法：十数成组。",
@@ -371,7 +371,7 @@ for i in range(2)) + f"""
     "teshe_note": "本品以体量与工具性为特征。",
     "teshe": [
         ["篇幅", "54,872 CJK／331 `<p>`＋1 `<lg>`（结偈 5,238）（§7）", "品35 的 23,117", "跨七卷"],
-        ["问酬", "200问／200组×10＝2,000", "品31 34节", "行法辞典"],
+        ["问酬", "201 问／200 组×10＝2,000", "品31 34节", "行法辞典"],
         ["体例", "条件—行相—成效", "同构二千条", "工具书读法"],
         ["示现段", "「以十事故示現八相」", "八相成道重述", "调伏之示范"],
     ],
