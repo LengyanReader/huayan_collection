@@ -32,6 +32,7 @@ PAIR40 = ROOT / "data" / "research" / "huayan_80_40_pairwise.json"
 WORKSHOP = ROOT / "data" / "research" / "translation_workshop.json"
 ROYAL = ROOT / "data" / "research" / "royal_patronage.json"
 PERSECUTION = ROOT / "data" / "research" / "persecution.json"
+VISITS = ROOT / "data" / "research" / "visits_names.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -739,7 +740,7 @@ def table_source_map(data, enrich):
                f"梵本单品存 {len(SANSKRIT)} 种（§6.1）；增长痕迹有记者 {len(GROWTH)} 品。"
                "空格＝「无据」，不等于「无来源」。")
     out.append("")
-    out.append("**空白登记**（拼图未完处，见 §17.22）：各品的印度前身谱系"
+    out.append("**空白登记**（拼图未完处，见 §17.23）：各品的印度前身谱系"
                "（Nattier 原始华严层：兜沙／本业一类最早译）未判；丹珠尔论典"
                "（印度论师怎么读华严）题录全空；东亚传播（新罗·日本）零题录。")
     return "\n".join(out)
@@ -1419,6 +1420,73 @@ def render_persecution(pc):
     return "\n".join(out)
 
 
+def render_visits(vn):
+    """§17.22 — T9 逐参名：八十／六十／四十的字面对照（卡 2–51）。"""
+    rows = vn["rows"]
+    st = vn["stats"]
+    sym = {"全同": "＝", "基同": "≈", "异": "≠"}
+    out = []
+    out.append("名字是译文的一部分，不是经文本身。同一个善知识，三本各给一个译名；"
+               "译名同字不等于所指同一，译名异形也不等于两位善知识。"
+               "所以本节只做**字面判**：`＝` 同字、`≈` 一方为另一方子串（多为增衔）、`≠` 字面不同。")
+    out.append("")
+    out.append("| 参 | 八十 T279 | 六十 T278 | 四十 T293 | 八十＝六十 | 八十＝四十 |")
+    out.append("|---|---|---|---|:-:|:-:|")
+    for r in rows:
+        out.append(f'| {r["no"]} | {esc(r["n80"])} `{r["lb80"]}` | '
+                   f'{esc(r["n60"])} `{r["lb60"]}` | {esc(r["n40"])} `{r["lb40"]}` | '
+                   f'{sym[r["rel80_60"]]} | {sym[r["rel80_40"]]} |')
+    out.append("")
+    out.append(f'> 五十参：三本同字 **{st["all_same"]}** 处；八十与六十同字 {st["rel80_60"]["全同"]} 处、'
+               f'与四十同字 {st["rel80_40"]["全同"]} 处；六十与四十同字 {st["rel60_40"]["全同"]} 处。'
+               '表由 `data/research/visits_names.json` 生成，手改无效。')
+    out.append("")
+
+    def pairs(field_a, field_b, cond):
+        return "、".join(f'{esc(r["n80"])}／{esc(r[field_b])}'
+                        for r in rows if cond(r))
+
+    only40 = [r for r in rows if r["n80"] == r["n60"] != r["n40"]]
+    only60 = [r for r in rows if r["n80"] == r["n40"] != r["n60"]]
+    tri = [r for r in rows if len({r["n80"], r["n60"], r["n40"]}) == 3]
+
+    out.append("①**字面不是「新译一边、旧译一边」的整齐二分**：八十与六十同字 "
+               f'{st["rel80_60"]["全同"]} 处，与四十同字 {st["rel80_40"]["全同"]} 处，'
+               f'而六十与四十只同字 {st["rel60_40"]["全同"]} 处。'
+               "八十（实叉难陀）并不是站在六十（佛陀跋陀罗）一边反对四十（般若）——"
+               "它在五十参里两边各同其半，另有 "
+               f'{st["all_diff"]} 处三本全异。')
+    out.append("")
+    out.append(f'②**八十与六十同、四十独异者 {len(only40)} 处**：'
+               f'{pairs("n80", "n40", lambda r: r["n80"] == r["n60"] != r["n40"])}。'
+               "四十的改写在这一组里最整齐：善住改妙住（Supratiṣṭhita 一名两译，§17.17 已记）、"
+               "休捨改伊舍那、正趣改正性無異行、安住改自性不動——"
+               "都是般若一系的重译取向〔本文判断〕。")
+    out.append("")
+    out.append(f'③**八十与四十同、六十独异者 {len(only60)} 处**：'
+               f'{pairs("n80", "n60", lambda r: r["n80"] == r["n40"] != r["n60"])}。'
+               "这一组里六十的旧译反而更「意译」：方便命对勝熱、彌多羅尼对慈行、"
+               "觀世音对觀自在、瞿夷对瞿波——旧译取义、新译取音或取本校名，方向并不统一〔本文判断〕。")
+    out.append("")
+    tri_show = "、".join(f'{esc(r["n80"])}／{esc(r["n60"])}／{esc(r["n40"])}' for r in tri[:4])
+    out.append(f'④**三本全异者 {len(tri)} 处**：如 {tri_show} 等。'
+               "其中「毘目瞿沙／毘目多羅／大威猛聲」一组可见音写与义译并存："
+               "前两者是两种音写，第三者更像译义——但三者是否同出一名，须核梵本，"
+               "本表只记字面，不作断言。"
+               "这正是「字面异」不能读成「参异」的直接证据。"
+               "夜神一类的名字最长（如「大願精進力救護一切眾生」对「願勇光明守護眾生」对"
+               "「守護一切眾生大願精進力光明」），字序与繁简各不相同，须逐个核梵名才能定所指。")
+    out.append("")
+    out.append("**限度**：")
+    out.append("")
+    for b in vn["boundaries"]:
+        out.append(f"- {esc(b)}")
+    out.append("- 本节只加深末会，不改 T9 的覆盖：T9 的问题仍是「是否按同一科段切割文本」，"
+               "科判只做了〈十地〉〈如來出現〉〈入法界〉三品，其余三十六品未做，"
+               "故 T9 仍记 `部分`，不因逐参名齐而升 `已做`。")
+    return "\n".join(out)
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -1440,6 +1508,7 @@ def main():
     workshop = json.loads(WORKSHOP.read_text(encoding="utf-8")) if WORKSHOP.exists() else {}
     royal = json.loads(ROYAL.read_text(encoding="utf-8")) if ROYAL.exists() else {}
     persecution = json.loads(PERSECUTION.read_text(encoding="utf-8")) if PERSECUTION.exists() else {}
+    visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -1472,6 +1541,7 @@ def main():
         "workshop": render_workshop(workshop) if workshop else "",
         "royal": render_royal(royal) if royal else "",
         "persecution": render_persecution(persecution) if persecution else "",
+        "visits": render_visits(visits) if visits else "",
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),

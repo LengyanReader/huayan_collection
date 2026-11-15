@@ -638,6 +638,86 @@ def main() -> int:
        f"{pscan['files']} files {pscan['occurrences']} hits, "
        f"{len(pscan['near_huayan'])} near 華嚴 all classified")
 
+    # --- §17.22 T9 visit names: every name re-located in its own recension at the cited lb ---
+    vn_path = ROOT / "data" / "research" / "visits_names.json"
+    if not vn_path.exists():
+        fail("visits_names.json missing")
+    vn = json.loads(vn_path.read_text(encoding="utf-8"))
+    vn_rows = vn["rows"]
+    if len(vn_rows) != 50 or [r["no"] for r in vn_rows] != list(range(2, 52)):
+        fail("visits_names rows not 50 or 参号 not 2..51")
+
+    def vn_flat(key: str) -> str:
+        meta = vn["meta"]["sources"][key]
+        p = ROOT / meta["path"]
+        if hashlib.sha256(p.read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"visit-names source hash changed: {key}")
+        raw = p.read_text(encoding="utf-8")
+        m1 = raw.find("<body")
+        m2 = raw.rfind("</body>")
+        if m1 >= 0 and m2 > m1:
+            raw = raw[m1:m2]
+        return re.sub(r"\s+", "", re.sub(r"<[^>]*>", "", raw))
+
+    f80, f60, f40 = (vn_flat(k) for k in ("80", "60", "40"))
+    for r in vn_rows:
+        # 八十：名在指授句之前 500 字内（成对名如「德生·有德」按两部分各查）
+        win80 = f80[max(0, r["pos80"] - 500):r["pos80"]]
+        if not all(part in win80 for part in r["n80"].split("·")):
+            fail(f"visit name80 not found at lb: {r['no']} {r['n80']}")
+        # 六十／四十：名起于 pos
+        probe60 = r["n60"].split("·")[0]
+        if not f60.startswith(probe60, r["pos60"]):
+            fail(f"visit name60 not at pos: {r['no']} {r['n60']}")
+        if not f40.startswith(r["n40probe"], r["pos40"]):
+            fail(f"visit name40 not at pos: {r['no']} {r['n40']}")
+
+    def recount(field, val):
+        return sum(1 for r in vn_rows if r[field] == val)
+
+    want_stats = {
+        "rows": 50,
+        "rel80_40": {"全同": recount("rel80_40", "全同"), "基同": recount("rel80_40", "基同"),
+                     "异": recount("rel80_40", "异")},
+        "rel80_60": {"全同": recount("rel80_60", "全同"), "基同": recount("rel80_60", "基同"),
+                     "异": recount("rel80_60", "异")},
+        "rel60_40": {"全同": recount("rel60_40", "全同"), "基同": recount("rel60_40", "基同"),
+                     "异": recount("rel60_40", "异")},
+        "all_same": sum(1 for r in vn_rows if r["n80"] == r["n60"] == r["n40"]),
+        "80eq60_ne40": sum(1 for r in vn_rows if r["n80"] == r["n60"] != r["n40"]),
+        "80eq40_ne60": sum(1 for r in vn_rows if r["n80"] == r["n40"] != r["n60"]),
+        "all_diff": sum(1 for r in vn_rows if len({r["n80"], r["n60"], r["n40"]}) == 3),
+    }
+    if vn["stats"] != want_stats:
+        fail("visits_names stats out of sync with rows")
+    if vn["stats"]["all_same"] + vn["stats"]["80eq60_ne40"] + \
+            vn["stats"]["80eq40_ne60"] + vn["stats"]["all_diff"] != 50:
+        fail("visits_names partition does not sum to 50")
+
+    vblock = grab("visits")
+    for r in vn_rows:
+        row = (f'| {r["no"]} | {r["n80"]} `{r["lb80"]}` | {r["n60"]} `{r["lb60"]}` | '
+               f'{r["n40"]} `{r["lb40"]}` |')
+        if row not in vblock:
+            fail(f"§17.22 table row missing/mismatched: 参 {r['no']} {r['n80']}")
+    st = vn["stats"]
+    if (f'> 五十参：三本同字 **{st["all_same"]}** 处；'
+            f'八十与六十同字 {st["rel80_60"]["全同"]} 处、'
+            f'与四十同字 {st["rel80_40"]["全同"]} 处；'
+            f'六十与四十同字 {st["rel60_40"]["全同"]} 处。') not in vblock:
+        fail("§17.22 counts sentence out of sync")
+    for b in vn["boundaries"]:
+        if b not in vblock:
+            fail(f"§17.22 boundary line missing: {b[:20]}")
+    t9 = next(o for o in ops if o["id"] == "T9")
+    if "17.22" not in (t9.get("refs") or ""):
+        fail("ontology T9 refs do not cite §17.22")
+    if "### 17.22 T9" not in md:
+        fail("§17.22 heading missing")
+    ok(f"§17.22 T9 visits: {len(vn_rows)} names re-located in 80/60/40 at lb / "
+       f"all_same {st['all_same']}, 80=60 {st['rel80_60']['全同']}, "
+       f"80=40 {st['rel80_40']['全同']}, all-diff {st['all_diff']}")
+
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
     if not imp_path.exists():
@@ -669,8 +749,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.22 未竟" not in md:
-        fail("§17.14–17.22 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.23 未竟" not in md:
+        fail("§17.14–17.23 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -838,7 +918,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.22 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.23 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -974,8 +1054,8 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.22 未竟" not in md:
-        fail("§17.16–17.22 headings missing")
+    if "### 17.16 T4" not in md or "### 17.23 未竟" not in md:
+        fail("§17.16–17.23 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
 
