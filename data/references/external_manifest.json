@@ -852,6 +852,14 @@
       "sha256": "9ef28746038da375603f77f38250a796d3050b4606c60f660ea5f9a3d8c1255c",
       "retrieved": "2026-11-15",
       "note": "CBETA xml-p5 · 大正藏 T52 · 鐔津文集（宋 契嵩）——S3 護法半邊（輔教編）"
+    },
+    "T51n2073": {
+      "path": "data/references/cbeta/T51n2073.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T51/T51n2073.xml",
+      "bytes": 280925,
+      "sha256": "49a4fd614e6e731bdd9858a79b84f3ed213b5287a4650498c4f7733314285e7a",
+      "retrieved": "2026-11-15",
+      "note": "CBETA xml-p5 · 大正藏 T51 · 華嚴經傳記（唐法藏集）——R5 灵验/讽诵/书写接受史一手文本"
     }
   }
 }

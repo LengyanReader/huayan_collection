@@ -33,6 +33,7 @@ WORKSHOP = ROOT / "data" / "research" / "translation_workshop.json"
 ROYAL = ROOT / "data" / "research" / "royal_patronage.json"
 PERSECUTION = ROOT / "data" / "research" / "persecution.json"
 S2SIDIAN = ROOT / "data" / "research" / "s2_sidian.json"
+R5LY = ROOT / "data" / "research" / "r5_lingyan.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
@@ -816,6 +817,8 @@ def table_influence():
          "B（题录级）", "A 类直绘逐件判读待做；R2 已接层"),
         ("儒道论衡", "护教／判教中华严对儒道的指认（宗密《原人论》一类）",
          "样本入库：《大學》章句（KR1h0015）＋《道教義樞》位業義（KR5e0031）＋瑜伽经（GRETIL）", "B（样本）", "对读未做"),
+        ("灵验叙事", "诵经、转读、书写、顶戴诸灵验（六朝隋唐僧传体）",
+         "《華嚴經傳記》一手入库（T51n2073 十篇目），諷誦/轉讀/書寫三篇七引文回源（§17.23）", "B", "講解篇未取；故事史实性不判"),
     ]
     out = ["| 通道 | 载体 | 在库资产 | 级 | 缺口 |", "|---|---|---|---|---|"]
     for a, b, c, d, e in rows:
@@ -1354,6 +1357,52 @@ def render_royal(rp, sd=None):
     return "\n".join(out)
 
 
+def render_r5(ly):
+    """§17.23 — R5 灵验叙事：本经自己的接受史（華嚴經傳記）。"""
+    vs = ly["quotes"]
+    out = []
+    out.append("七条引文逐条以起止锚在源文切片（不手抄），叶码 `lb` 可回源核对；"
+               "源文件字节数与 sha256 记在 `data/research/r5_lingyan.json`。"
+               "本传十篇目（部類、隱顯、傳譯、支流、論釋、講解、諷誦、轉讀、書寫、雜述），"
+               "本节取接受最直接的諷誦、轉讀、書寫三篇。")
+    out.append("")
+    out.append("| 篇 | 主 | 事 | 引文 |")
+    out.append("|---|---|---|---|")
+    gq = {g["kind"]: g for g in ly["groups"]}
+    for g in ly["groups"]:
+        for qid in g["quotes"]:
+            q = vs[qid]
+            who = q["note"].split("：")[1].split("，")[0] if "：" in q["note"] else ""
+            out.append(f'| {esc(g["kind"])} | {esc(who)} | '
+                       f'{esc(q["note"].split("：", 1)[1])} | `{q["lb"]}` |')
+    out.append("")
+    out.append("**原文**（照录；叶码为 CBETA `lb`）：")
+    for g in ly["groups"]:
+        out.append("")
+        out.append(f"*{esc(g['kind'])}*（{esc(g['what'])}）")
+        out.append("")
+        for qid in g["quotes"]:
+            q = vs[qid]
+            out.append(f'- `{q["lb"]}`　{esc(q["text"])}')
+    out.append("")
+    out.append("**判断**：")
+    out.append("")
+    out.append("①**接受史的密度集中在「持诵」一端**：諷誦、轉讀、書寫三篇几乎全是个人修行式接受"
+               "（诵、顶戴、转读、净写），而不是讲主式或朝廷式接受——与 §17.19–17.20 的译场/王室"
+               "形成互补：本经的经典地位，一半由制度（御序、敕译）确立，一半由**修行者的身体实践**"
+               "（顶戴、血书、放光）确立。两条线索不能互相化约。")
+    out.append("")
+    out.append("②**两处交叉只记不判**：普安条「受持華嚴力」是**北周滅法**（非會昌）语境的脱难自证，"
+               "与 §17.21 的法难线不同代，只记 S3 交叉；法诚条「圖畫七處八會之像」是 R2（图像化）"
+               "的一手例证——经变图像不晚于唐初有本门文献为证，但在库仅此一见，不能据此立"
+               "「经变流行」的定量结论。")
+    out.append("")
+    b0 = ly["boundaries"][0]
+    out.append(f'③**来源性质**：{esc(b0.split("——")[0])}——采选有宗派立场，'
+               "本节只登记「有这类记载」，不判其史实性。")
+    return "\n".join(out)
+
+
 def render_persecution(pc):
     """§17.21 — S3 法难·护法：法难一侧有藏护之迹、护法一侧有引经之实。"""
     vs = pc["quotes"]
@@ -1548,6 +1597,7 @@ def main():
     royal = json.loads(ROYAL.read_text(encoding="utf-8")) if ROYAL.exists() else {}
     persecution = json.loads(PERSECUTION.read_text(encoding="utf-8")) if PERSECUTION.exists() else {}
     s2sidian = json.loads(S2SIDIAN.read_text(encoding="utf-8")) if S2SIDIAN.exists() else None
+    r5ly = json.loads(R5LY.read_text(encoding="utf-8")) if R5LY.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
@@ -1581,6 +1631,7 @@ def main():
         "workshop": render_workshop(workshop) if workshop else "",
         "royal": render_royal(royal, s2sidian) if royal else "",
         "persecution": render_persecution(persecution) if persecution else "",
+        "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
