@@ -574,8 +574,8 @@ def main() -> int:
             fail(f"persecution quote lb not printed: {qid}")
 
     pevents = pc["events"]
-    if len(pevents) != 9:
-        fail(f"persecution events {len(pevents)} != 9")
+    if len(pevents) != pc["summary"]["events"]:
+        fail(f"persecution events {len(pevents)} != summary {pc['summary']['events']}")
     pkinds = {}
     for e in pevents:
         pkinds[e["kind"]] = pkinds.get(e["kind"], 0) + 1
@@ -589,10 +589,24 @@ def main() -> int:
     if pkinds != pc["kinds"] or pkinds != pc["summary"]["kinds_count"]:
         fail("persecution kinds != event-derived kinds")
     pparts = "、".join(f"{k} {v}" for k, v in pkinds.items())
-    if f"九事八类：{pparts}" not in pblock:
+    if f"{len(pevents)} 事 {len(pkinds)} 类：{pparts}" not in pblock:
         fail("§17.21 kinds-count sentence out of sync")
     if pc["summary"]["events"] != len(pevents) or pc["summary"]["quotes"] != len(pc["quotes"]):
         fail("persecution summary counts out of sync")
+
+    # 护法半边：引经须双源——護法論引「佛以法為身，清淨如虛空」须见于本经 T279
+    apol = sum(1 for e in pevents if e["kind"].startswith("护法"))
+    if apol < 4:
+        fail(f"persecution apologetics events {apol} < 4")
+    if "护法引经" not in pblock or "护法判教" not in pblock:
+        fail("§17.21 apologetics event kinds missing")
+    t279 = re.sub(r"\s+", "", re.sub(r"<[^>]+>", "",
+         (ROOT / "data" / "references" / "cbeta" / "T10n0279.xml").read_text(encoding="utf-8")))
+    for frag in ("佛以法為身", "清淨如虛空"):
+        if frag not in t279:
+            fail(f"§17.21 apologetics verse fragment not in T279: {frag}")
+    if "引经证法" not in pblock or "判教骨架" not in pblock:
+        fail("§17.21 apologetics form sentence missing")
 
     pscan = pc["scan"]
     if len(pscan["rows"]) != pscan["files"]:

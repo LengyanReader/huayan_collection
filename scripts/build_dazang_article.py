@@ -1325,15 +1325,17 @@ def render_royal(rp):
 
 
 def render_persecution(pc):
-    """§17.21 — S3 法难·护法：法难一侧有藏护之迹、护法一侧无据。"""
+    """§17.21 — S3 法难·护法：法难一侧有藏护之迹、护法一侧有引经之实。"""
     vs = pc["quotes"]
     src_label = {
         "songgao": "《宋高僧傳》（宋贊寧等撰）",
         "guanghong": "《廣弘明集》（唐道宣撰）",
+        "hufa": "《護法論》（宋張商英撰）",
+        "tanjin": "《鐔津文集》（宋契嵩撰）",
     }
-    src_order = ["songgao", "guanghong"]
+    src_order = ["songgao", "guanghong", "hufa", "tanjin"]
     out = []
-    out.append("法难一侧的记载，逐条以起止锚在源文切片（不手抄），叶码 `lb` 可回源核对；"
+    out.append("两问的记载，逐条以起止锚在源文切片（不手抄），叶码 `lb` 可回源核对；"
                "源文件字节数与 sha256 记在 `data/research/persecution.json`。")
     out.append("")
     out.append("| 类型 | 年代 | 主 | 行事 | 引文 |")
@@ -1345,7 +1347,7 @@ def render_persecution(pc):
     out.append("")
     kc = pc["summary"]["kinds_count"]
     parts = "、".join(f'{esc(k)} {v}' for k, v in kc.items())
-    out.append(f'> 九事八类：{parts}。类型计数由 `events` 汇总，手改无效。')
+    out.append(f'> {pc["summary"]["events"]} 事 {len(kc)} 类：{parts}。类型计数由 `events` 汇总，手改无效。')
     out.append("")
     out.append("**原文**（照录；叶码为 CBETA `lb`）：")
     for k in src_order:
@@ -1371,17 +1373,24 @@ def render_persecution(pc):
                "「逐字礼《華嚴》、《法華》經」，字上安「南無」、字下安「佛」。"
                "本经在法难后进入忏法实践，此条只能作事实登记（与 P2 仪轨化交叉，本节不判 P2）。")
     out.append("")
-    out.append("③**护法一侧仍无据**：以本经为论据的护法文本（护法论、破斥书、上表）在库未见；"
-               "《廣弘明集》「華嚴」仅 2 见，一为襄州峴山華嚴寺盧舍那瑞像的灵异，"
-               "一为梁武帝讲《般若》三慧时「迺出華嚴之品」的旁及，皆非护法论辩。"
-               "护法与法难是两件事：有法难不等于有以本经为据的护法。")
+    out.append("③**护法一侧有据，形态是「引经证法」与「判教骨架」，不是「以本经对抗诏令」**："
+               "张商英《護法論》引裴休《華嚴法界觀》序（「世尊初成正覺…於是稱法界性，說華嚴經」）"
+               "以本经为佛说之证，又答供养形像之问引「華嚴亦云：佛以法為身，清淨如虛空」，"
+               "并以李長者、龐居士、孫思邈寫《華嚴經》为「圣人之徒／神仙」之证；"
+               "契嵩《鐔津文集·原教》自述取华严判教为骨架（「依本起末門」／「攝末歸本門」）。"
+               "两书皆未逐条回应會昌诏令——护法与法难仍是两件事：护法是在**教理层**以本经为据，"
+               "不是在**政策层**为本经辩护。")
+    out.append("")
+    out.append("④**时代错置的边界**：两书皆在會昌之后近两百年（張商英 1084 前后、契嵩 1050 前后），"
+               "是「后世的护法」，不是「当时的抗议」。护法文本以本经为据，证明的是本经在护教论辩中的"
+               "**经典地位**，不是它在法难当时被援引。二者不可混读。")
     out.append("")
     scan = pc["scan"]
     short = {"T50n2061.xml": "宋高僧传", "T50n2060.xml": "续高僧传"}
     notes = "；".join(
         f'{n["note"]}（{short.get(n["file"], n["file"])}）'
         for n in scan["near_huayan"])
-    out.append(f'④**词频检索的结果与它的限度**：在库 {scan["files"]} 部全文检索'
+    out.append(f'⑤**词频检索的结果与它的限度**：在库 {scan["files"]} 部全文检索'
                f'（{"／".join(scan["keywords"])}），共 {scan["occurrences"]} 处，'
                f'其中与「華嚴」相邻者 {len(scan["near_huayan"])} 处，'
                f'三处全是寺名——{notes}。'
