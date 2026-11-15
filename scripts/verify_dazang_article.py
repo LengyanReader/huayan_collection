@@ -915,7 +915,14 @@ def main() -> int:
     r5 = next(o for o in ops if o["id"] == "R5")
     if r5["status"] not in ("partial", "done"):
         fail(f"ontology R5 not partial/done: {r5['status']}")
-    ok(f"§17.23 R5: {len(ly['quotes'])} quotes in 3 groups re-verified (諷誦/轉讀/書寫)")
+    if len(ly["groups"]) != 4:
+        fail(f"R5 groups {len(ly['groups'])} != 4 (諷誦/轉讀/書寫/講解)")
+    if "講解" not in r5_block:
+        fail("R5 講解 group missing")
+    if "以華嚴為圓教" not in md:
+        fail("R5 慧光判教 quote missing")
+    ok(f"§17.23 R5: {len(ly['quotes'])} quotes in {len(ly['groups'])} groups re-verified "
+       f"({('/').join(g['kind'] for g in ly['groups'])})")
 
     # --- §17.18 influence: five-channel skeleton ---
     inf_block = grab("influence")
