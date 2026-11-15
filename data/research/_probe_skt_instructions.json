@@ -1,0 +1,522 @@
+[
+ {
+  "ord": 1,
+  "gv": "gv 50",
+  "place": [],
+  "skt": "sāgaramegho",
+  "role_skt": "bhikṣuḥ",
+  "role_zh": "比丘",
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe sāgaramukho nāma dikpratyuddeśaḥ / tatra sāgaramegho nāma bhikṣuḥ prativasati / tamupasaṃkramya paripṛccha, kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam / sa te kulaputra kalyāṇamitraṃ paridīpayiṣyati / kuśalamūlasaṃbhārahetuṃ "
+ },
+ {
+  "ord": 2,
+  "gv": null,
+  "place": [
+   "sāgaratīraṃ"
+  ],
+  "skt": "supratisthito",
+  "role_skt": "bhikṣuḥ",
+  "role_zh": "比丘",
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe itaḥ ṣaṣṭiyojanaiḥ sāgaratīraṃ nāma laṅkāpatham / tatra supratisthito nāma bhikṣuḥ prativasati / tamupasaṃkramya paripṛccha kathaṃ bodhisattvena mahāsattvena bodhisattvacaryā pariśodhayitavyā // atha khalu sudhanaḥ śreṣṭhidārakaḥ sāgarameghasya bhikṣoḥ pādau"
+ },
+ {
+  "ord": 3,
+  "gv": "gv 58",
+  "place": [],
+  "skt": "megho",
+  "role_skt": "dramiḍaḥ",
+  "role_zh": "人",
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe vajrapuraṃ nāma dramiḍapaṭṭanam / tatra megho nāma dramiḍaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena mahāsattvena bodhisattvacaryāyāṃ śikṣitavyam, katham pratipattavyam // atha khalu sudhanaḥ śreiṣṭhidārakaḥ supratiṣṭhitasya bhikṣoḥ pādau "
+ },
+ {
+  "ord": 4,
+  "gv": null,
+  "place": [
+   "vanavāsī"
+  ],
+  "skt": "muktako",
+  "role_skt": "śreṣṭhī",
+  "role_zh": "長者",
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe vanavāsī nāma janapadaḥ / tatra muktako nāma śreṣṭhī prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāmabhiyoktavyam, katham niryātavyam, kathaṃ cittaṃ nidhyātavyam / atha khalu sudhanaḥ śreṣṭhidārako meghasya dramiḍasya pāda"
+ },
+ {
+  "ord": 5,
+  "gv": "gv 67",
+  "place": [
+   "milaspharaṇaṃ"
+  ],
+  "skt": "sāradhvajo",
+  "role_skt": "bhikṣuḥ",
+  "role_zh": "比丘",
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe milaspharaṇaṃ nāma jambūdvīpaśīrṣam / tatra sāradhvajo nāma bhikṣuḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ prayoktavyam // atha khalu sudhanaḥ śreṣṭhidārako muktakasya śreṣṭhinaḥ pādau śirasābhivan"
+ },
+ {
+  "ord": 6,
+  "gv": "gv 78",
+  "place": [
+   "samudravetāḍī"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra ihaiva dakṣiṇāpathe samudravetāḍī nāma pratyuddeśaḥ / tatra samantavyūhaṃ nāmodyānaṃ mahāprabhasya nagarasya pūrveṇa / tatra āśā nāmopāsikā prativasati suprabhasya manujendrasya bhāryā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ prayok"
+ },
+ {
+  "ord": 7,
+  "gv": null,
+  "place": [],
+  "skt": "bhīṣmottaranirghoṣo",
+  "role_skt": "ṛṣiḥ",
+  "role_zh": "仙人",
+  "win": "gaccha kulaputra ayamihaiva dakṣiṇāpathe samudravetālyāṃ nālayurnāma janapadaḥ / tatra bhīṣmottaranirghoṣo nāma ṛṣiḥ prativasati / tamupasaṃkramya paripṛccha / sa te kulaputra bodhisattvacaryāmupadekṣyati // atha khalu sudhanaḥ śreṣṭhidāraka āśāyā upāsikāyāḥ pādau śirasābhivandya āśāmupāsikāmanekaśa"
+ },
+ {
+  "ord": 8,
+  "gv": null,
+  "place": [
+   "īṣāṇo"
+  ],
+  "skt": "jayoṣmāyatano",
+  "role_skt": "brāhmaṇaḥ",
+  "role_zh": "婆羅門",
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe īṣāṇo nāma janapadaḥ / tatra jayoṣmāyatano nāma brāhmaṇaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakastuṣṭa udagra āttamanāḥ pramuditaḥ prītisauma"
+ },
+ {
+  "ord": 9,
+  "gv": null,
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, etaṃ kṣuradhāramārgaṃ parvatamabhiruhya atra agnikhadāyāṃ prapata / evaṃ te bodhisattvacaryā pariśuddhiṃ gamiṣyati // atha khalu sudhanasya śreṣṭhidārakasya etadabhavat - durlabhā aṣṭākṣaṇavinivṛttiḥ / durlabho mānuṣyapratilābhaḥ / durlabhā kṣaṇasaṃpadviśuddhiḥ / durlabho buddhotpā"
+ },
+ {
+  "ord": 10,
+  "gv": "gv 95",
+  "place": [
+   "siṃhavijṛmbhitaṃ"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, idamihaiva dakṣiṇāpathe siṃhavijṛmbhitaṃ nāma nagaram / tatra maitrāyaṇī nāma kanyā, rājñaḥ siṃhaketorduhitā, pañcakanyāśataparivārā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako jayoṣ"
+ },
+ {
+  "ord": 11,
+  "gv": "gv 98",
+  "place": [
+   "trinayano"
+  ],
+  "skt": "sudarśano",
+  "role_skt": "bhikṣuḥ",
+  "role_zh": "比丘",
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe trinayano nāma janapadaḥ / tatra sudarśano nāma bhikṣuḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako maitrāyaṇyāḥ kanyāyāḥ pādau śirasābhivandya ma"
+ },
+ {
+  "ord": 12,
+  "gv": "gv 101",
+  "place": [
+   "sumukhaṃ"
+  ],
+  "skt": "indriyeśvaro",
+  "role_skt": "dārakaḥ",
+  "role_zh": "童子",
+  "win": "gaccha kulaputra, idamihaiva dakṣiṇāpathe śramaṇamaṇḍale janapade sumukhaṃ nāma nagaram / tatra indriyeśvaro nāma dārakaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako bodhisattvavikramaprat"
+ },
+ {
+  "ord": 13,
+  "gv": null,
+  "place": [
+   "samudrapratiṣṭhānaṃ"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe samudrapratiṣṭhānaṃ nāma nagaram / tatra prabhūtā nāmopāsikā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ kalyāṇamitravacanaṃ śrutvā saṃharṣitatan"
+ },
+ {
+  "ord": 14,
+  "gv": null,
+  "place": [
+   "mahāsaṃbhavaṃ"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe mahāsaṃbhavaṃ nāma nagaram / tatra vidvānnāṃ gṛhapatiḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ prabhūtāyā upāsikāyāḥ pādau śirasābhivandya prabhū"
+ },
+ {
+  "ord": 15,
+  "gv": null,
+  "place": [
+   "siṃhapotaṃ"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe siṃhapotaṃ nāma nagaram / tatra ratnacūḍo nāma dharmaśreṣṭhī prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakastuṣṭa udagra āttamanāḥ pramudit"
+ },
+ {
+  "ord": 16,
+  "gv": "gv 116",
+  "place": [
+   "vetramūlako"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe vetramūlako nāma janapadaḥ / tatra samantamukhe nagare samantanetro nāma gāndhikaḥ śreṣṭhī prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako ratnacūḍasy"
+ },
+ {
+  "ord": 17,
+  "gv": "gv 119",
+  "place": [
+   "tāladhvajaṃ"
+  ],
+  "skt": "analo",
+  "role_skt": "rājā",
+  "role_zh": "王",
+  "win": "gaccha kulaputra, idamihaiva dakṣiṇāpathe tāladhvajaṃ nāma nagaram / tatra analo nāma rājā prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ samantanetrasya gāndhikaśreṣṭhinaḥ pādau śirasābhiva"
+ },
+ {
+  "ord": 18,
+  "gv": "gv 122",
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, paripṛccha enaṃ bodhisattvacaryāmiti // atha sudhanaḥ śreṣṭhidārako devatāvacanamupaśrutya yena analo rājā tenopajagāma / upetya analasya rājñaḥ pādau śirasābhivandya analaṃ rājānamanekaśatasahasrakṛtvaḥ pradakṣiṇīkṛtya purataḥ prāñjaliḥ sthitvā evamāha - mayā ārya, anuttarāyāṃ sam"
+ },
+ {
+  "ord": 19,
+  "gv": null,
+  "place": [
+   "suprabhaṃ"
+  ],
+  "skt": "mahāprabho",
+  "role_skt": "rājā",
+  "role_zh": "王",
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe suprabhaṃ nāma nagaram / tatra mahāprabho nāma rājā prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ analasya rājñaḥ pādau śirasābhivandya analaṃ rājānama"
+ },
+ {
+  "ord": 20,
+  "gv": "gv 130",
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, iyamihaiva dakṣiṇāpathe sthirā nāma rājadhānī / tatra acalā nāmopāsikā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako mahāprabhasya rājñaḥ pādau śirasābhivandya mahāprabhaṃ "
+ },
+ {
+  "ord": 21,
+  "gv": null,
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, yena sthirāyāṃ rājadhānyāmacalopāsikā / tataḥ śroṣyasi bodhisattvacaryām / atha khalu sudhanaḥ śreṣṭhidārakastataḥ samādhijñānālokād vyutthāya anupūrveṇa yena sthirā rājadhānī tenopasaṃkramya acalāmupāsikāṃ parimārgati parigaveṣate / tasya (gv 132) mahājanakāya upadarśayati - eṣā k"
+ },
+ {
+  "ord": 22,
+  "gv": null,
+  "place": [
+   "tosalaṃ"
+  ],
+  "skt": "sarvagāmī",
+  "role_skt": "parivrājakaḥ",
+  "role_zh": "外道",
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe 'mitatosale janapade tosalaṃ nāma nagaram / tatra sarvagāmī nāma parivrājakaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sughanaḥ śreṣṭhidārako 'calāyā upāsikāyāḥ pādau śir"
+ },
+ {
+  "ord": 23,
+  "gv": "gv 139",
+  "place": [
+   "pṛthurāṣṭraṃ"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe pṛthurāṣṭraṃ nāma janapadaḥ / tatrotpalabhūtirnāma gāndhikaśreṣṭhī prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvānāṃ bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ sarvagāminaḥ parivrājakasya pādau śir"
+ },
+ {
+  "ord": 24,
+  "gv": "gv 142",
+  "place": [
+   "kūṭāgāraṃ"
+  ],
+  "skt": "vairo",
+  "role_skt": "dāśaḥ",
+  "role_zh": "船師",
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe kūṭāgāraṃ nāma nagaram / tatra vairo nāma dāśaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidāraka utpalabhūtergāndhikaśreṣṭhinaḥ pādau śirasābhivandya utpal"
+ },
+ {
+  "ord": 25,
+  "gv": null,
+  "place": [
+   "nandihāraṃ"
+  ],
+  "skt": "jayottamo",
+  "role_skt": "śreṣṭhī",
+  "role_zh": "長者",
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe nandihāraṃ nāma nagaram / tatra jayottamo nāma śreṣṭhī prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako vairasya dāśasya pādau śirasābhivandya vairaṃ dāśam"
+ },
+ {
+  "ord": 26,
+  "gv": "gv 147",
+  "place": [
+   "kaliṅgavanaṃ"
+  ],
+  "skt": "siṃhavijṛmbhitā",
+  "role_skt": "bhikṣuṇī",
+  "role_zh": "比丘尼",
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe śroṇāparānteṣu janapadeṣu kaliṅgavanaṃ nāma nagaram / tatra siṃhavijṛmbhitā nāma bhikṣuṇī prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako jayottamasya śre"
+ },
+ {
+  "ord": 27,
+  "gv": "gv 153",
+  "place": [
+   "ratnavyūhaṃ"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe durge janapade ratnavyūhaṃ nāma nagaram / tatra vasumitrā nāma bhāgavatī prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ siṃhavijṛmbhitāyā bhikṣuṇyāḥ pād"
+ },
+ {
+  "ord": 28,
+  "gv": "gv 156",
+  "place": [
+   "śubhapāraṃgamaṃ"
+  ],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe śubhapāraṃgamaṃ nāma nagaram / tatra veṣṭhilo nāma gṛhapatiścandanapīṭhaṃ tathāgatacaityaṃ pūjayati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako vasumitrāyā bhāgav"
+ },
+ {
+  "ord": 29,
+  "gv": null,
+  "place": [
+   "potalako"
+  ],
+  "skt": "avalokiteśvaro",
+  "role_skt": "bodhisattvaḥ",
+  "role_zh": "菩薩",
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe potalako nāma parvataḥ / tatra avalokiteśvaro nāma bodhisattvaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam / tasyāṃ velāyāmime gāthe abhāṣata - gaccho hi sūdhana śirījalarājamadhye g"
+ },
+ {
+  "ord": 30,
+  "gv": "gv 166",
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ihaiva dakṣiṇāpathe dvāravatī nāma nagarī / tatra mahādevo devaḥ prativasati / tamupasaṃkramya paripṛccha kathaṃ - bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako 'nanyagāmino bodhisattvasya pādau śirasābhivandya ananyagāmin"
+ },
+ {
+  "ord": 31,
+  "gv": "gv 168",
+  "place": [],
+  "skt": "sthāvarā",
+  "role_skt": "pṛthvīdevatā",
+  "role_zh": "地神",
+  "win": "gaccha kulaputra, iyamihaiva jambudvīpe magadhaviṣaye bodhimaṇḍe sthāvarā nāma pṛthvīdevatā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako mahādevasya pādau śirasābhivandya mahādevaṃ devamane"
+ },
+ {
+  "ord": 32,
+  "gv": "gv 170",
+  "place": [
+   "kapilavastu"
+  ],
+  "skt": "vāsantī",
+  "role_skt": "rātridevatā",
+  "role_zh": "夜神",
+  "win": "gaccha kulaputra, idamihaiva jambudvīpe magadhaviṣaye kapilavastu nāma nagaram / tatra vāsantī nāma rātridevatā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ sthāvarāyāḥ pṛthivīdevatāyāḥ pā"
+ },
+ {
+  "ord": 33,
+  "gv": null,
+  "place": [],
+  "skt": "samantagambhīraśrīvimalaprabhā",
+  "role_skt": "rātridevatā",
+  "role_zh": "夜神",
+  "win": "gaccha kulaputra, iyamihaiva magadhaviṣaye bodhimaṇḍe samantagambhīraśrīvimalaprabhā nāma rātridevatā prativasati, yayā ahamanuttarāyāṃ samyaksaṃbodhau cittamutpāditā, punaḥ punaśca saṃcoditā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam /"
+ },
+ {
+  "ord": 34,
+  "gv": "gv 185",
+  "place": [],
+  "skt": "pramuditanayanajagadvirocanā",
+  "role_skt": "rātridevatā",
+  "role_zh": "夜神",
+  "win": "gaccha kulaputra, iyamihaiva mamānantaraṃ vairocanabodhimaṇḍe pradakṣiṇena pramuditanayanajagadvirocanā nāma rātridevatā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvakarmasu prayoktavyam // atha khalu samantagambhīraśrīvimalaprabhā rātridevatā tasyāṃ velāyāmetameva śānt"
+ },
+ {
+  "ord": 35,
+  "gv": "gv 202",
+  "place": [],
+  "skt": "samantasattvatrāṇojaḥśrī",
+  "role_skt": "rātridevatā",
+  "role_zh": "夜神",
+  "win": "gaccha kulaputra, iyamihaiva tathāgataparṣanmaṇḍalasamanantaraṃ samantasattvatrāṇojaḥśrī nāma rātridevatā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāmaṇḍalamavataritavyam, kathaṃ pariśodhayitavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ pramuditanayanajagadvirocanā"
+ },
+ {
+  "ord": 36,
+  "gv": null,
+  "place": [],
+  "skt": "praśāntarutasāgaravatī",
+  "role_skt": "rātridevatā",
+  "role_zh": "夜神",
+  "win": "gaccha kulaputra, iyamihaiva bodhimaṇḍe praśāntarutasāgaravatī nāma rātridevatā, yā mamānantaraṃ jyotirdhvajamaṇirājapratimaṇḍitagarbhe padmāsane niṣaṇṇā daśarātridevatāsaṃkhyeyaśatasahasraparivārā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipatta"
+ },
+ {
+  "ord": 37,
+  "gv": null,
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, iyamihaiva bodhimaṇḍe bhagavato vairocanasya parṣanmaṇḍale sarvanagararakṣāsaṃbhavatejaḥśrīrnāma rātridevatā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ praśāntarutasāgaravatīṃ rātr"
+ },
+ {
+  "ord": 38,
+  "gv": null,
+  "place": [],
+  "skt": "sarvavṛkṣapraphullanasukhasaṃvāsā",
+  "role_skt": "rātridevatā",
+  "role_zh": "夜神",
+  "win": "gaccha kulaputra, iyamihaiva bhagavato vairocanasya pādamūle sarvavṛkṣapraphullanasukhasaṃvāsā nāma rātridevatā saṃnipatitā, yā mamānantaraṃ saṃniṣaṇṇā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvāḥ sarvajñatāyāṃ śikṣante, kathaṃ ca pratipadyamānāḥ sarvasattvān sarvajñatāyāṃ pratiṣṭhāpayanti // "
+ },
+ {
+  "ord": 39,
+  "gv": null,
+  "place": [],
+  "skt": "sarvajagadrakṣāpraṇidhānavīryaprabhā",
+  "role_skt": "rātridevatā",
+  "role_zh": "夜神",
+  "win": "gaccha kulaputra, iyamihaiva bodhimaṇḍe sarvajagadrakṣāpraṇidhānavīryaprabhā nāma rātridevatā bhagavataḥ sakāśamupasaṃkrāntā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena anuttarāyāṃ samyaksaṃbodhau sattvāḥ paripācayitavyāḥ, kathaṃ sarvabuddhakṣetrāṇi pariśodhitavyāni, kathaṃ sarvatathāgatā ār"
+ },
+ {
+  "ord": 40,
+  "gv": "gv 284",
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, iyamihaiva jambudvīpe lumbinīvane sutejomaṇḍalaratiśrīrnāma lumbinīvanadevatā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvā jātā bhavanti tathāgatakule? kathamālokakarā bhavanti lokānām? kathamaparāntakoṭīgatān kalpān bodhisattvasaṃcārikāṃ caranto na parikhidyante? "
+ },
+ {
+  "ord": 41,
+  "gv": null,
+  "place": [],
+  "skt": "gopā",
+  "role_skt": "śākyakanyā",
+  "role_zh": "釋女",
+  "win": "gaccha kulaputra, iyamihaiva kapilavastuni mahānagare gopā nāma śākyakanyā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvaparipākāya saṃsāre saṃsaritavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ sutejomaṇḍalaratiśriyo lumbinīvanadevatāyāḥ pādau śirasābhivandya sutejomaṇḍala"
+ },
+ {
+  "ord": 42,
+  "gv": "gv 334",
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ihaiva bhagavato vairocanasya pādamūle vividharatnavyūhamahāmaṇirājapadmagarbhāsananiṣaṇṇā bodhisattvajanetrī māyā nāma devī / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvā bodhisattvacaryāṃ caranto 'nupaliptā bhavanti sarvalokadharmamalaiḥ / apratiprasrabdhā bhavanti tathāgatapū"
+ },
+ {
+  "ord": 43,
+  "gv": null,
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, iyamihaiva tridaśendrabhavane surendrābhā nāma devakanyā smṛtimato devaputrasya duhitā / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipatavyam // atha khalu sudhanaḥ śreṣṭhidārako māyāyā devyāḥ pādau śirasābhivandya māyādevīmanekaśa"
+ },
+ {
+  "ord": 44,
+  "gv": "gv 351",
+  "place": [],
+  "skt": "viśvāmitro",
+  "role_skt": "dārakācāryaḥ",
+  "role_zh": "童子師",
+  "win": "gaccha kulaputra, kapilavastuni mahānagare viśvāmitro nāma dārakācāryaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ tuṣṭa udagra āttamanāḥ prītisaumanasyajāto 'cintyakuśalamūlavegasaṃvard"
+ },
+ {
+  "ord": 45,
+  "gv": null,
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, iyamihaiva magadhaviṣaye kevalake janapade vartanake nagare bhadrottamā nāmopāsikā prativasati / tāmupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ śilpābhijñasya śreṣṭhidārakasya pādau śira"
+ },
+ {
+  "ord": 46,
+  "gv": null,
+  "place": [
+   "bharukacchaṃ"
+  ],
+  "skt": "muktāsāro",
+  "role_skt": "hairaṇyakaḥ",
+  "role_zh": "長者",
+  "win": "gaccha kulaputra dakṣiṇāpathe / tatra bharukacchaṃ nāma nagaram / tatra muktāsāro nāma hairaṇyakaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako bhadrottamāyā upāsikāyāḥ pādau śirasābhivandy"
+ },
+ {
+  "ord": 47,
+  "gv": null,
+  "place": [],
+  "skt": "sucandro",
+  "role_skt": "gṛhapatiḥ",
+  "role_zh": "居士",
+  "win": "gaccha kulaputra, ayamihaiva bharukacche nagare sucandro nāma gṛhapatiḥ prativasati / tadavabhāsitamasya gṛham / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako muktāsārasya hairaṇyakasya pādau śirasābhivan"
+ },
+ {
+  "ord": 48,
+  "gv": null,
+  "place": [
+   "rorukaṃ"
+  ],
+  "skt": "ajitaseno",
+  "role_skt": "gṛhapatiḥ",
+  "role_zh": "居士",
+  "win": "gaccha kulaputra, idamihaiva dakṣiṇāpathe rorukaṃ nāma nagaram / tatra ajitaseno nāma gṛhapatiḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārakaḥ sucandrasya gṛhapateḥ pādua śirasābhivandya suc"
+ },
+ {
+  "ord": 49,
+  "gv": null,
+  "place": [],
+  "skt": "śivarāgro",
+  "role_skt": "brāhmaṇaḥ",
+  "role_zh": "婆羅門",
+  "win": "gaccha kulaputra iyamihaiva dakṣiṇāpathe dharmagrāme śivarāgro nāma brāhmaṇaḥ prativasati / tamupasaṃkramya paripṛccha - kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako 'jitasenasya gṛhapateḥ pādau śirasābhivandya ajitasenaṃ gṛhapatima"
+ },
+ {
+  "ord": 50,
+  "gv": null,
+  "place": [
+   "sumanāmukhaṃ"
+  ],
+  "skt": "śrīsaṃbhavo",
+  "role_skt": "dārakaḥ",
+  "role_zh": "童子",
+  "win": "gaccha kulaputra, iyamihaiva dakṣiṇāpathe sumanāmukhaṃ nāma nagaram / tatra śrīsaṃbhavo nāma dārakaḥ prativasati, śrīmatiśca nāma dārikā / tāvupasaṃkramya paripṛccha kathaṃ bodhisattvena bodhisattvacaryāyāṃ śikṣitavyam, kathaṃ pratipattavyam // atha khalu sudhanaḥ śreṣṭhidārako mahādharmagauravamutp"
+ },
+ {
+  "ord": 51,
+  "gv": null,
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, ayamihaiva dakṣiṇāpathe samudrakaccho nāma digmukhapratyuddeśaḥ / tatra mahāvyūhaṃ nāmodyānam / tatra vairocanavyūhālaṃkāragarbho nāma mahākūṭāgāro bodhisattvakuśalamūlavipākābhinirvṛto bodhisattvacetanāmanasikārasaṃbhūto bodhisattvapraṇidhānasamudgato bodhisattvavaśitāsamutthito b"
+ },
+ {
+  "ord": 52,
+  "gv": "gv 407",
+  "place": [],
+  "skt": null,
+  "role_skt": null,
+  "role_zh": null,
+  "win": "gaccha kulaputra, asya vairocanavyūhālaṃkāragarbhasya mahākūṭāgārasya abhyantaraṃ praviśya vyavalokaya / atra jñāsyasi yathā bodhisattvacaryāyāṃ śikṣitavyam, śikṣamāṇasya ca yādṛśī guṇapariniṣpattirbhavati // atha khalu sudhanaḥ śreṣṭhidārako maitreyaṃ bodhisattvaṃ pradakṣiṇīkṛtvā evamāha - vivṛṇu ā"
+ }
+]
