@@ -74,10 +74,18 @@ def main() -> int:
     args = ap.parse_args()
 
     TDIR.mkdir(parents=True, exist_ok=True)
-    urls = volume_urls()
-    if len(urls) != len(VOL_NOS):
-        print(f"x 预期 {len(VOL_NOS)} 卷，API 只见 {len(urls)} 卷")
-        return 1
+    try:
+        urls = volume_urls()
+        if len(urls) != len(VOL_NOS):
+            print(f"x 预期 {len(VOL_NOS)} 卷，API 只见 {len(urls)} 卷")
+            return 1
+    except Exception as e:  # API 限流时走本地卷
+        missing = [no for no in VOL_NOS if not (TDIR / f"vol{no:03d}.txt").exists()]
+        if missing:
+            print(f"x API 失败（{e}）且本地缺卷 {missing}")
+            return 1
+        urls = {}
+        print("· API 限流，全部使用本地卷")
 
     volumes = {}
     for no in VOL_NOS:
@@ -137,19 +145,31 @@ def main() -> int:
         entries = []
         for kw, zh in (("བཟང་པོ་སྤྱོད་པ", "行愿讚释"),
                        ("སྡོང་པོ་བཀོད་པ", "华严·树严"),
-                       ("ཕལ་ཆེན", "phal chen")):
+                       ("སྡོང་པོས་བརྒྱན", "华严·树饰"),
+                       ("ཕལ་ཆེན", "phal chen"),
+                       ("ཕལ་པོ་ཆེ", "phal po che"),
+                       ("ཀུན་དུ་བཟང་པོ", "普贤（ gun tu bzang po）"),
+                       ("ས་བཅུ", "十地")):
             for m in re.finditer(kw, raw):
                 s, e = max(0, m.start() - 60), m.start() + 320
                 ctx = raw[s:e]
-                if "མཛད་པ" not in ctx and "འགྱུར" not in ctx:
-                    continue
-                if not ctx.rstrip().endswith("།") and "འགྱུར" not in ctx:
-                    continue
-                entries.append({"kw": kw, "topic": zh, "folio": folio_of(m.start()),
-                                "text": re.sub(r"\[[0-9xab.]+\]|\{[^}]*\}", "", ctx).strip()})
+                # 引证形态：关键词后紧跟 ལས།（「从某经」引出偈颂/文句）
+                after = raw[m.end():m.end() + 12]
+                is_cite = after.startswith("ལས") or "ལས།" in after
+                is_entry = ("མཛད་པ" in ctx or "འགྱུར" in ctx) and not is_cite
+                rec = {"kw": kw, "topic": zh, "folio": folio_of(m.start()),
+                       "kind": "引证" if is_cite else ("条目" if is_entry else "待判"),
+                       "text": re.sub(r"\[[0-9xab.]+\]|\{[^}]*\}", "", ctx).strip()}
+                if is_entry or is_cite:
+                    entries.append(rec)
+        cites = [x for x in entries if x["kind"] == "引证"]
+        ent = [x for x in entries if x["kind"] == "条目"]
         dkarchag = {"source": str(DK.relative_to(ROOT)).replace("\\", "/"),
                     "sha256": sha256(DK.read_bytes()),
-                    "entries": entries}
+                    "entries": ent,
+                    "citations": cites,
+                    "scan_note": "全目扫描：全部关键词命中二分为「条目」（题名＋造者/译者结构）"
+                                 "与「引证」（关键词后接 ལས། 的引文式用法）；其余记待判。"}
 
     result = {
         "meta": {
