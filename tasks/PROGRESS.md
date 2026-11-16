@@ -3676,3 +3676,27 @@ done(
 - **全页计数同步**：定位/提要/读法/图 〇-1 SVG 与图注/形式特征表/第八会总纲/义理要点/§7 台账——「200 组×10＝2,000」改为「201 条名目（含子目）」或标「成句」；凡例增第六条（条序规则）。
 - **同源页同步**：系列总纲、`avatamsaka_studies.yaml` 编者按、旧图版脚本 `p23_p37_atlas_b3.py` 六处。
 - **门禁**：build 87 files / 39,136,000+ bytes ✓ · check ✓ · diff-check ✓；构建产物 `200／200`＝0、`条 201／201`＝1、`条 139／201`＝1；目检表 139 眼、140 耳及条序标题正常。
+
+## L.488 · 2026-11-16 · §17.24 T9 十八组异名·梵本同指判（v4.5）
+
+- **口径订正（先于结论）**：§17.22 的「字面有异」实为 **35 组**——①恰有一对同名、第三本独异 **18 组**（80=60≠40 九组＋80=40≠60 九组）；②三本全异 **17 组**；③三本同字 **15 组**。本节只判①，「字面异者已尽判」为误读；②③名单与参号写入 `visits_sanskrit.json` 的 `stats.remain_all_*` 与 boundaries（§17.24 限度）。
+- **对位法**：不靠音写猜，取角色＋处所＋次序三锚；梵本指授句「gaccha kulaputra … tatra X nāma Y prativasati」共 52 处，十八组落 ord 2–49 且**不降**（唯一相等处即正趣空缺位，沿用观自在之序；脚本自检「相等对数＝空缺案数」）。
+- **判**：同指 16（义译 10／音义并存 3／对音 3）、待核 2。待核二例各有其所以：参 8 休捨／伊舍那 vs `āśā`（suprabha 王之妻，住普莊嚴園）——两汉名皆非直接对音，疑所据异本；参 29 正趣——觀自在（gv 158）至大天（gv 166）间 15,602 字无第三位指授句，Vaidya 本无此位（只记「该本无」，不推「梵本原无」）。
+- **关键梵名（可复检）**：`supratisthita`(53) 善住／妙住 · `jayoṣmāyatana`(89) 勝熱（六十「方便命」名源待核）· `maitrāyaṇī`(95) 慈行／彌多羅尼 · `samantanetra`(116) 普眼／普眼妙香 · `sarvagāmin`(135) 遍行 · `vaira`(142) 婆施羅（六十「自在」名源待核）· `jayottama`(144) 無上勝／最勝 · `siṃhavijṛmbhitā`(147) 師子頻申／奮迅 · `vasumitrā`(153) 婆須蜜多／伐蘇蜜多 · `sthāvarā`(168) 安住／自性不動 · `pramuditanayanajagadvirocanā`(185) · `sutejomaṇḍalaratiśrī`(284) · `gopā`(296) 瞿波／瞿夷 · `bhadrottamā`(354) 賢勝 · `śivarāgra`(354) 最寂靜／尸毘最勝。
+- **附见**：参 51 德生·有德在梵本是一句两名（`śrīsaṃbhavo nāma dārakaḥ … śrīmatiśca nāma dārikā`，gv 354）——汉本并列一处非编者合并，§17.22 当「一处两参」处理是对的。
+- **落地**：新增 `scripts/build_visits_sanskrit.py` → `data/research/visits_sanskrit.json`（18 cases＋byproducts＋stats＋5 boundaries＋源 sha256）；`build_dazang_article.py` 增 `render_visits_skt()`（blocks 46/46）；md 新增 §17.24、未竟顺延 §17.25、两处旧 ref 改指（空白登记→17.25、参名异文→17.24）；relation_ontology T9 refs 补 §17.24；卡片升 v4.5 并加「T9 十八组梵本同指判」。
+- **门禁**：`verify_dazang_article` ALL PASS（§17.24 组：参号升序、probe 唯一与 pos/ord/gv 复定位、次序单调、正趣空缺判据、byproduct 复定位、与 `visits_names.json` 三名零漂移、stats 与 byproduct 重算、表行逐行、计数句、限度逐句、口径「cases＝恰一对同名 18 组」、`remain_all_diff` 17 与名单、`remain_all_same` 15 与参号、T9 refs、标题）；阴性测试 6/6 如期 FAIL（梵名改字／ord 改格／gv 改格／stats 改格／正趣空白区间跨过一位指授／把全异组塞进 18 组）。
+- **清理**：删 `data/research/_probe_skt_instructions.json`（L.479 批量提交时误入的探针，A 线自订「探针不入 git」；本批正式件替代）。
+- **顺带修正（构建确定性）**：`web/demo/scripts/build.py` 的 `HUAYAN_FOCUS_LINEAGES` 原为 `set`，字符串哈希序致每次重建 `famai/shanhe.html` 的 S5 图例与兜底表乱序（纯噪声 diff）；改为有序元组（序同已提交页），重建不再漂。
+- **未竟**：17 组三本全异未核梵；15 组三本同字亦未核（字面同可能两本各依不同梵名而偶合）；四十本诸参异本问题未判；T9 仍 `partial`（科判只三品）。
+
+## L.486.1 · 2026-11-16 · 九九華嚴 Ep16–17 入册完成（待校首轮）
+
+- **下载**：Ep16 `Wud3U-JZOn4` · Ep17 `_Z9Kpu5U0ag`（均 #9月·≈2h55m）；googlevideo SSL EOF 后改基座 `yt-dlp --force-ipv4 --downloader native`，720p `136+140` 合 mp4（1.07/1.18GB）。
+- **OCR 实测**：Ep16 2498 cues／24,020 漢字／99.84%；Ep17 2419 cues／21,285 漢字／99.31%；md/srt/html 三产物 **17/17 集逐集条数相符**（Ep16 2498=2498=2498；Ep17 2419=2419=2419）。
+- **入册**：`jj_ocr_audit.py --json` + `_jj_build_lib.py` 重建 lectures YAML（17 集 · 463,940 漢字）；`jj_huayan_collation.yaml` 增 ep16/17（正行·待校·卷12–13·品 7–10·九月播客待核）。
+- **CBETA 精确命中**：Ep16 54 段（如來名號/四聖諦/光明覺·含跨品 stock 句式）；Ep17 18 段（菩薩問明品为主）；`scripts/jj_cbeta_match.py` 去 note/app/标签后逐字命中，**非手抄**。
+- **首轮稿**：`episodes/ep16.md`（2498 cues·9 时间单元·3 品候选）· `ep17.md`（2419 cues·9 单元·4 品候选）；`scripts/build_jj_ep_doc.py` 生成，标〔待校〕·未逐段按语·未三源互证。
+- **页面**：`build_jj_collation_page.py` 去硬编码（YAML→tab/panel），17 集 **19 tab/19 panel**；hero/filter 改子串计数＝**15 已校 / 2 待校**；status class 归并（已校·信息无损→stag-已校）；inline JS `node --check` 通过。
+- **门禁**：`verify_jj_lectures.py` ALL PASSED（17 集/463,940 漢字/17 条可点出处/月份 4–9 月）；`_verify_jj_reverse.py` **8/8**（修正 month_drift 变异：`#7月→#1月`，因 9 月已合法）；`verify_demo.py` **✅ ALL CHECKS PASSED（rc=0）**；`.harness/check.py` OK。
+- **未竟**：Ep16/17 仅首轮 OCR 整理；K3d 逐段按语·术语表·CBETA 逐字校订·三源互证未做；播客分条对映〔待核〕；讲章边界〔待校〕。

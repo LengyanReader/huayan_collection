@@ -753,6 +753,163 @@ def main() -> int:
        f"all_same {st['all_same']}, 80=60 {st['rel80_60']['全同']}, "
        f"80=40 {st['rel80_40']['全同']}, all-diff {st['all_diff']}")
 
+    # --- §17.24 T9 梵本对照: 18 组同指判，指令定位与次序单调逐条复核 ---
+    vs_path = ROOT / "data" / "research" / "visits_sanskrit.json"
+    if not vs_path.exists():
+        fail("visits_sanskrit.json missing")
+    vs = json.loads(vs_path.read_text(encoding="utf-8"))
+    vcases = vs["cases"]
+    if len(vcases) != 18:
+        fail(f"visits_sanskrit cases {len(vcases)} != 18")
+    nos = [c["no"] for c in vcases]
+    if nos != sorted(nos) or len(set(nos)) != 18:
+        fail("visits_sanskrit 参号 not ascending/unique")
+
+    # 口径：cases 必等于 §17.22 中「恰有一对同名」的十八组；
+    # 另十七组三本全异、十五组三本同字未判，其数与名单须与 visits_names 一致
+    vrows = {r["no"]: r for r in vn_rows}
+    vtri = {n: {r["n80"], r["n60"], r["n40"]} for n, r in vrows.items()}
+    v_one = sorted(n for n, s in vtri.items() if len(s) == 2)
+    v_diff = sorted(n for n, s in vtri.items() if len(s) == 3)
+    v_same = sorted(n for n, s in vtri.items() if len(s) == 1)
+    if nos != v_one:
+        fail(f"visits_sanskrit cases != 「恰一对同名」18 组: {nos} vs {v_one}")
+    if (vs["stats"].get("remain_all_diff"), vs["stats"].get("remain_all_diff_nos")) != (len(v_diff), v_diff):
+        fail(f"visits_sanskrit remain_all_diff out of sync ({len(v_diff)} groups)")
+    if (vs["stats"].get("remain_all_same"), vs["stats"].get("remain_all_same_nos")) != (len(v_same), v_same):
+        fail(f"visits_sanskrit remain_all_same out of sync ({len(v_same)} groups)")
+    vbound = next((b for b in vs["boundaries"] if b.startswith("未判者")), None)
+    def cn_num(n):
+        cn = "零一二三四五六七八九"
+        if n < 10:
+            return cn[n]
+        return cn[n // 10] + "十" + (cn[n % 10] if n % 10 else "")
+    if not vbound:
+        fail("visits_sanskrit undecided-groups boundary missing")
+    else:
+        if not vbound.startswith(f"未判者{cn_num(len(v_diff) + len(v_same))}组"):
+            fail("visits_sanskrit undecided count in boundary text wrong")
+        want_names = "、".join(
+            f'{vrows[n]["n80"]}／{vrows[n]["n60"]}／{vrows[n]["n40"]}' for n in v_diff)
+        if want_names not in vbound:
+            fail("visits_sanskrit all-diff name list out of sync")
+        if "、".join(str(n) for n in v_same) not in vbound:
+            fail("visits_sanskrit all-same 参号 list out of sync")
+
+    # 源文：与 build 同一规范化（空白折叠），逐条复定位
+    smeta = vs["meta"]["source"]
+    sp = ROOT / smeta["path"]
+    if hashlib.sha256(sp.read_bytes()).hexdigest() != smeta["sha256"]:
+        fail("visits_sanskrit source hash changed")
+    sraw = sp.read_text(encoding="utf-8", errors="replace")
+    schars = []
+    for ch in sraw:
+        if ch.isspace():
+            if schars and schars[-1] == " ":
+                continue
+            schars.append(" ")
+        else:
+            schars.append(ch)
+    sflat = "".join(schars)
+    gstarts = [m.start() for m in re.finditer(r"gaccha kulaputra", sflat)]
+    gpages = [(m.start(), int(m.group(1))) for m in re.finditer(r"\(gv (\d+)\)", sflat)]
+
+    def s_gv(pos):
+        best = None
+        for p, n in gpages:
+            if p <= pos:
+                best = n
+            else:
+                break
+        return f"gv {best}" if best else None
+
+    def s_ord(pos):
+        k = 0
+        for i, s in enumerate(gstarts):
+            if s <= pos:
+                k = i + 1
+            else:
+                break
+        return k or None
+
+    vn_by_no = {r["no"]: r for r in vn_rows}
+    for c in vcases:
+        src = vn_by_no.get(c["no"])
+        if not src:
+            fail(f"visit-sanskrit 参 {c['no']} not in visits_names")
+            continue
+        for k in ("n80", "n60", "n40"):
+            if c[k] != src[k]:
+                fail(f"visit-sanskrit name drift vs visits_names: 参 {c['no']} {k} "
+                     f"{c[k]} != {src[k]}")
+        if c.get("probe"):
+            hits = [m.start() for m in re.finditer(re.escape(c["probe"]), sflat)]
+            if len(hits) != 1:
+                fail(f"visit-sanskrit probe not unique: 参 {c['no']} ({len(hits)})")
+                continue
+            if hits[0] != c["pos"]:
+                fail(f"visit-sanskrit pos moved: 参 {c['no']}")
+            if s_ord(hits[0]) != c["ord"]:
+                fail(f"visit-sanskrit ord mismatch: 参 {c['no']} {s_ord(hits[0])} != {c['ord']}")
+            if s_gv(hits[0]) != c["gv"]:
+                fail(f"visit-sanskrit gv mismatch: 参 {c['no']} {s_gv(hits[0])} != {c['gv']}")
+        else:
+            a = sflat.find(c["gap_between"][0])
+            b = sflat.find(c["gap_between"][1])
+            if a < 0 or b < 0 or b < a:
+                fail(f"visit-sanskrit gap anchors missing: 参 {c['no']}")
+                continue
+            own = max([s for s in gstarts if s < b], default=None)
+            inner = [s for s in gstarts if a < s < b and s != own]
+            if inner:
+                fail(f"visit-sanskrit gap not empty: 参 {c['no']} ({len(inner)})")
+    vords = [c["ord"] for c in vcases if c["ord"]]
+    if vords != sorted(vords):
+        fail("visit-sanskrit ordinals decrease")
+    vdup = sum(1 for a, b in zip(vords, vords[1:]) if a == b)
+    vgaps = sum(1 for c in vcases if not c.get("probe"))
+    if vdup != vgaps:
+        fail(f"visit-sanskrit equal ordinals {vdup} != gap cases {vgaps}")
+
+    bps = vs.get("byproducts") or []
+    if len(bps) != 1:
+        fail(f"visit-sanskrit byproducts {len(bps)} != 1")
+    for b in bps:
+        hits = [m.start() for m in re.finditer(re.escape(b["probe"]), sflat)]
+        if len(hits) != 1 or b["also"] not in sflat[hits[0]:hits[0] + 200]:
+            fail(f"visit-sanskrit byproduct not re-located: 参 {b['no']}")
+
+    vsame = sum(1 for c in vcases if c["verdict"].startswith("同指"))
+    vpend = sum(1 for c in vcases if c["verdict"].startswith("待核"))
+    vbv = {}
+    for c in vcases:
+        vbv[c["verdict"]] = vbv.get(c["verdict"], 0) + 1
+    if (vs["stats"]["same"], vs["stats"]["pending"], vs["stats"]["by_verdict"]) != (vsame, vpend, vbv):
+        fail("visit-sanskrit stats out of sync with cases")
+
+    sblock = grab("visits_skt")
+    for c in vcases:
+        tri = f'{c["n80"]}／{c["n60"]}／{c["n40"]}'
+        if c["verdict"].startswith("待核·梵本无对应"):
+            row = (f'| {c["no"]} | {tri} | — | —（觀自在→大天之間無第三位） | '
+                   f'{c["gv"]}→{c["gv_to"].replace("gv ", "")} | {c["verdict"]} |')
+        else:
+            row = (f'| {c["no"]} | {tri} | `{c["skt"]}` | '
+                   f'{c["skt_role"]}·{c["skt_place"]} | {c["gv"]} | {c["verdict"]} |')
+        if row not in sblock:
+            fail(f"§17.24 table row missing/mismatched: 参 {c['no']} {c['n80']}")
+    if (f'> 十八组：同指 **{vsame}**、待核 **{vpend}**。') not in sblock:
+        fail("§17.24 counts sentence out of sync")
+    for b in vs["boundaries"]:
+        if b not in sblock:
+            fail(f"§17.24 boundary line missing: {b[:20]}")
+    if "17.24" not in (t9.get("refs") or ""):
+        fail("ontology T9 refs do not cite §17.24")
+    if "### 17.24 T9" not in md:
+        fail("§17.24 heading missing")
+    ok(f"§17.24 T9 Sanskrit: {len(vcases)} cases re-located (ord {vords[0]}–{vords[-1]} monotonic) / "
+       f"same {vsame}, pending {vpend}, byproduct 参 {bps[0]['no']}")
+
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
     if not imp_path.exists():
@@ -784,8 +941,8 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.24 未竟" not in md:
-        fail("§17.14–17.23 headings missing")
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.25 未竟" not in md:
+        fail("§17.14–17.24 headings missing")
 
     def rows_in(block: str) -> list[str]:
         lines = block.splitlines()
@@ -987,7 +1144,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.24 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.25 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -1123,8 +1280,8 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.24 未竟" not in md:
-        fail("§17.16–17.23 headings missing")
+    if "### 17.16 T4" not in md or "### 17.25 未竟" not in md:
+        fail("§17.16–17.24 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
 

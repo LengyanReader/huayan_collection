@@ -35,6 +35,7 @@ PERSECUTION = ROOT / "data" / "research" / "persecution.json"
 S2SIDIAN = ROOT / "data" / "research" / "s2_sidian.json"
 R5LY = ROOT / "data" / "research" / "r5_lingyan.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
+VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
 
 INK = "#2b2b2b"
@@ -1577,6 +1578,74 @@ def render_visits(vn):
     return "\n".join(out)
 
 
+def render_visits_skt(vs):
+    """§17.24 — 梵本对照：十八组异名的同指判。"""
+    cs = vs["cases"]
+    byp = vs["byproducts"][0]
+    st = vs["stats"]
+    bv = st["by_verdict"]
+    out = []
+    out.append("§17.22 只判字面。字面异不等于所指异，但要说「所指同」，须有第三方 witness。"
+               "梵本《入法界品》在库（Vaidya 1960 校本之 GRETIL 转写），其指授句"
+               "「gaccha kulaputra … tatra X nāma Y prativasati」与汉本逐参对应，可作独立锚。"
+               "字面有异者共 35 组，本节只取其中「恰有一对同名、第三本独异」的十八组"
+               "（80=60≠40 九组 ＋ 80=40≠60 九组），逐组读出梵名，判同指与否。")
+    out.append("")
+    out.append("对位不靠音写猜，靠三重锚：**角色**（比丘／長者／優婆夷／夜神…）、"
+               "**处所**（`īṣāṇo`＝伊沙那、`siṃhavijṛmbhitaṃ`＝師子頻申、`potalaka`＝補怛洛迦）、"
+               "**次序**（十八组梵本指令序须不降，脚本自检，今为 "
+               f'{st["ord_first"]}–{st["ord_last"]} 段；唯一相等处即正趣空缺位，沿用观自在之序）。'
+               "`gv` 页为 GRETIL 依 Vaidya 书页所加。")
+    out.append("")
+    out.append("| 参 | 八十／六十／四十 | 梵名（IAST） | 角色·处所 | gv | 判 |")
+    out.append("|---|---|---|---|:-:|---|")
+    for c in cs:
+        tri = f'{esc(c["n80"])}／{esc(c["n60"])}／{esc(c["n40"])}'
+        if c["verdict"].startswith("待核·梵本无对应"):
+            skt = "—"
+            anchor = "—（觀自在→大天之間無第三位）"
+            gv = f'{c["gv"]}→{c.get("gv_to", "?").replace("gv ", "")}'
+        else:
+            skt = f'`{esc(c["skt"])}`'
+            anchor = f'{esc(c["skt_role"])}·{esc(c["skt_place"])}'
+            gv = c["gv"]
+        out.append(f'| {c["no"]} | {tri} | {skt} | {anchor} | {gv} | {esc(c["verdict"])} |')
+    out.append("")
+    out.append(f'> 十八组：同指 **{st["same"]}**、待核 **{st["pending"]}**。'
+               f'同指中音写异形 {bv.get("同指·对音", 0)}、音义并存 {bv.get("同指·音义并存", 0)}、'
+               f'义译异词 {bv.get("同指·义译", 0)}。表由 `data/research/visits_sanskrit.json` 生成，手改无效。')
+    out.append("")
+    out.append("①**同指的三种情形**：音写异形者，如婆須蜜多／伐蘇蜜多皆 `vasumitrā`、"
+               "瞿波／瞿夷皆 `gopā`；音义并存者，如六十「彌多羅尼」是 `maitrāyaṇī` 的音写、"
+               "四十「慈行」取 `maitrī`＝慈之义；义译异词者最多——善住／妙住＝`supratisthita`、"
+               "無上勝／最勝＝`jayottama`、安住／自性不動＝`sthāvarā`、普眼／普眼妙香＝`samantanetra`"
+               "（六十把 `gāndhika`「香師」也译进名里）。"
+               "可见字面异者多是**同一名的不同取径**，不是两位善知识。")
+    out.append("")
+    out.append("②**两组待核，各有其所以**：休捨／伊舍那——梵本作 `āśā`（suprabha 王之妻，住普莊嚴園），"
+               "两汉名皆非其直接对音，疑所据异本；正趣／正性無異行——观自在指授之后直入大天，"
+               "其间一万五千余字无第三位指授句，Vaidya 本无此位。"
+               "后者只可记作「Vaidya 本无」，不可推为「梵本原无」：四十既另给一名，所据或为别本。")
+    out.append("")
+    out.append(f'③**两组「段位可定、名源待核」**：参 ' +
+               "、参 ".join(str(n) for n in st["flagged"]) + "。"
+               "勝熱对 `jayoṣmāyatana`（jaya＝勝、uṣma＝熱）本无问题，而六十作「方便命」与梵名无对音关系；"
+               "婆施羅对 `vaira` 亦是，而六十作「自在」。"
+               "两处段位（角色＋处所＋次序）都吻合，唯六十的译名来源待核——"
+               "这正说明「同段」与「同名源」是两件事，不可混判。")
+    out.append("")
+    out.append(f'④**附见：一句两名是梵本如此**。参 {byp["no"]} 在梵本作'
+               f'「`{esc(byp["probe"])}` prativasati, `{esc(byp["also"])}`」（{byp["gv"]}），'
+               "一人一句、并举两名；汉本作「德生·有德」并列一处，并非编者合并，"
+               "故 §17.22 把它当「一处两参」处理是对的。")
+    out.append("")
+    out.append("**限度**：")
+    out.append("")
+    for b in vs["boundaries"]:
+        out.append(f"- {esc(b)}")
+    return "\n".join(out)
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -1601,6 +1670,7 @@ def main():
     s2sidian = json.loads(S2SIDIAN.read_text(encoding="utf-8")) if S2SIDIAN.exists() else None
     r5ly = json.loads(R5LY.read_text(encoding="utf-8")) if R5LY.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
+    visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
         "graph_spine": render_spine(graph),
         "graph_radial": render_radial(graph),
@@ -1635,6 +1705,7 @@ def main():
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",
+        "visits_skt": render_visits_skt(visits_skt) if visits_skt else "",
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),
