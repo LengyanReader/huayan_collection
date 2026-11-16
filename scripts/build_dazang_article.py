@@ -522,6 +522,20 @@ def table_d5(probes):
     out.append("")
     out.append(f'**判断**：{esc(p["finding"])}')
     out.append("")
+    dj = p.get("daojiao")
+    if dj:
+        out.append("**道教内核第二证**（《道教義樞·法身義第二》，唐孟安排——一手文本，三条引文已回源）：")
+        out.append("")
+        out.append("| 佛教内核 | 道教義樞对应 |")
+        out.append("|---|---|")
+        out.append(f"| 三身（法/報/應） | {esc('、'.join(dj['kernel']['三身（本三稱）']))}（本三稱）＋{esc('、'.join(dj['kernel']['三身（跡三名）']))}（跡三名） |")
+        out.append(f"| 四德（常樂我淨） | {esc('、'.join(dj['kernel']['四德']))} |")
+        out.append("")
+        for q in dj["quotes"]:
+            out.append(f'- `{q["src"]}` {q["id"]}：「{esc(q["text"])}」')
+        out.append("")
+        out.append(f'> {esc(dj["finding"])}')
+        out.append("")
     out.append(f'**边界**：{esc(p["limits"])}')
     return "\n".join(out)
 

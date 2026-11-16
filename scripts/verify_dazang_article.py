@@ -354,7 +354,11 @@ def main() -> int:
         fail("§17.13 table rows != probes JSON")
     if len(probes["p1"]["rows"]) != 10:
         fail("P1 must have ten stages")
-    nq = sum(len(c['quotes']) for c in t9_cases) + len(probes['d5']['quotes']) + len(probes['p1']['quotes'])
+    nq = (sum(len(c['quotes']) for c in t9_cases) + len(probes['d5']['quotes'])
+          + len(probes['d5'].get('daojiao', {}).get('quotes', []))
+          + len(probes['p1']['quotes'])
+          + len(probes['p1'].get('daojiao', {}).get('quotes', []))
+          + len(probes['p1'].get('kuax', {}).get('quotes', [])))
     ok(f"§17.11–17.13 probes: {nq} quotes re-verified ({len(t9_cases)} 品 for T9)")
 
     # --- §17.19 S1 workshop: quotes re-sliced from sources; roster ↔ quote ↔ matrix ---
