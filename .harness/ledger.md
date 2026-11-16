@@ -1004,3 +1004,7 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - can_panel.js：fetch md→_mdDocEmbed 六层内容入浮窗；三接入点（页内链接/行历 postMessage/FAB）；「主页§参」回滚不离开页。
 - build 发射 data/rufajie_can 55 md＋meta.js；index 页分区去重（103 速取＋24 分组＝127 不重不漏）＋分组折叠＋全部展开/收起。
 - 教训：doc_md 内嵌 script 不执行（承 L.492）→ 数据走独立 md＋fetch；iframe 跨页通信用 postMessage 且 embed 侧须 preventDefault。
+
+### L.497 修订（2026-11-17）FAB open 遮蔽
+- `var open` 遮蔽同名函数 `open(key)` → TypeError·面板空白；改 `isOpen`。
+- 教训：JS 内同名局部变量遮蔽函数是高发坑；交互组件命名 `open*/isOpen` 前缀区分。

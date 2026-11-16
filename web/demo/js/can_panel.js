@@ -72,10 +72,13 @@
   function close() { panel.style.display = 'none'; }
   fab.addEventListener('click', function (e) {
     e.stopPropagation();
-    var open = panel.style.display === 'flex';
-    if (open) { close(); return; }
+    var isOpen = panel.style.display === 'flex';
+    if (isOpen) { close(); return; }
     panel.style.display = 'flex';
-    try { var last = localStorage.getItem('canp-last'); if (last) { open(last); return; } } catch (e2) {}
+    try {
+      var last = localStorage.getItem('canp-last');
+      if (last) { open(last); return; }
+    } catch (e2) {}
     open('index');
   });
   panel.querySelector('#cp-close').addEventListener('click', close);
