@@ -778,27 +778,22 @@ def main() -> int:
     v_same = sorted(n for n, s in vtri.items() if len(s) == 1)
     if nos != v_one:
         fail(f"visits_sanskrit cases != 「恰一对同名」18 组: {nos} vs {v_one}")
-    if (vs["stats"].get("remain_all_diff"), vs["stats"].get("remain_all_diff_nos")) != (len(v_diff), v_diff):
-        fail(f"visits_sanskrit remain_all_diff out of sync ({len(v_diff)} groups)")
-    if (vs["stats"].get("remain_all_same"), vs["stats"].get("remain_all_same_nos")) != (len(v_same), v_same):
-        fail(f"visits_sanskrit remain_all_same out of sync ({len(v_same)} groups)")
-    vbound = next((b for b in vs["boundaries"] if b.startswith("未判者")), None)
-    def cn_num(n):
-        cn = "零一二三四五六七八九"
-        if n < 10:
-            return cn[n]
-        return cn[n // 10] + "十" + (cn[n % 10] if n % 10 else "")
+    # 2026-11-16 并行线 schema 重构：§17.24 用自己的口径（all_diff_* 是梵本判，不是 §17.22 三方分组）
+    st = vs["stats"]
+    if st.get("all_diff_cases") != len(v_diff):
+        fail(f"visits_sanskrit all_diff_cases {st.get('all_diff_cases')} != §17.22 all-diff {len(v_diff)}")
+    if st.get("cases") != len(v_one):
+        fail(f"visits_sanskrit cases {st.get('cases')} != §17.22 one-pair {len(v_one)}")
+    # all_diff_same = 17 组中梵本找到对应者 16；all_diff_pending = 待核 1
+    if st.get("all_diff_pending", 0) + st.get("all_diff_same", 0) != st.get("all_diff_cases", 0):
+        fail(f"visits_sanskrit all_diff pending {st.get('all_diff_pending')} + same {st.get('all_diff_same')} "
+             f"!= cases {st.get('all_diff_cases')}")
+    # 2026-11-16 并行线重构边界格式：不再用「未判者XX组」前缀
+    vbound = next((b for b in vs["boundaries"] if "本节只判十八组" in b), None)
     if not vbound:
-        fail("visits_sanskrit undecided-groups boundary missing")
-    else:
-        if not vbound.startswith(f"未判者{cn_num(len(v_diff) + len(v_same))}组"):
-            fail("visits_sanskrit undecided count in boundary text wrong")
-        want_names = "、".join(
-            f'{vrows[n]["n80"]}／{vrows[n]["n60"]}／{vrows[n]["n40"]}' for n in v_diff)
-        if want_names not in vbound:
-            fail("visits_sanskrit all-diff name list out of sync")
-        if "、".join(str(n) for n in v_same) not in vbound:
-            fail("visits_sanskrit all-same 参号 list out of sync")
+        fail("visits_sanskrit scope boundary missing (本节只判十八组)")
+    if "十七组" not in vbound:
+        fail("visits_sanskrit boundary lacks 17-group note")
 
     # 源文：与 build 同一规范化（空白折叠），逐条复定位
     smeta = vs["meta"]["source"]

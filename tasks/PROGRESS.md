@@ -3832,3 +3832,10 @@ done(
 - **六层口径统一**：总目/子页 title_sub、行历图提示行、主页导读均更新为「数据卡/主页照录/三译四件套/古注取窗/EN/指针台账」六层。
 - **外部依赖留档**（不属本页可闭项）：Ep18+ 字幕（待外部交付）·ASR 管线（`C:/华严/hy/` mp3 转写待决策）·经教苑 .doc（需 LibreOffice）·旧 `data/sutra/` 5.2MB 删除（待授权）·并行线 workspace 工具（对方会话）。
 - **门禁**：build 142 files / 44,057,665 bytes ✓ · verify_demo ALL CHECKS PASSED ✓ · check ✓ · diff-check ✓。
+
+## L.446 · 2026-11-17 · 门禁对齐并行线 §17.24 schema 重构
+
+- **背景**：并行线重构了 `build_visits_sanskrit.py` 与 `visits_sanskrit.json`（stats 键名 remain_all_diff→all_diff_cases 等；边界格式去「未判者XX组」前缀；新增 all_diff_by_verdict/flagged 等字段），但门禁未同步——全门禁唯一红灯。
+- **对齐**：门禁 §17.24 组改用新 schema（all_diff_cases/cases＋all_diff_pending+same=cases 自洽断言；边界检查改「本节只判十八组」句）；删旧 remain_* 键与「未判者」前缀断言。
+- **残余**：`visit-sanskrit ord mismatch: 参 4 2 != 3`——并行线梵本定位算法在途，非门禁可修，待其落批。
+- **next**：并行线落批后复跑。

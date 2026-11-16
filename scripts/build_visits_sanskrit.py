@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""T9 逐参名·梵本对照：十八组「两本同字、一本独异」名的「同指」判。
+"""T9 逐参名·梵本对照：字面有异者的「同指」判（§17.24 十八组 ＋ §17.25 十七组）。
 
 §17.22 只判字面：`＝`/`≈`/`≠`。字面异不等于所指异，但要说「所指同」，
 须有第三方 witness。梵本《入法界品》（Vaidya 1960，GRETIL 电子转写）在库，
@@ -7,15 +7,18 @@
 可作独立锚。
 
 口径（要紧）：§17.22 中字面有异者共 35 组——
-  ① 恰有一对同名、第三本独异：18 组（本节所判：80=60≠40 九组 ＋ 80=40≠60 九组）
-  ② 三本全异：17 组（未判，名单写入 boundaries 与 stats.remain_all_diff）
-  ③ 三本同字：15 组（未核梵）
-本节只判①，不得因此读作「字面异者已尽判」。
+  ① 恰有一对同名、第三本独异：18 组（§17.24 所判：80=60≠40 九组 ＋ 80=40≠60 九组）
+  ② 三本全异：17 组（§17.25 所判）
+  ③ 三本同字：15 组（未逐条核梵；其中参45 已核为梵本空缺，余 14 组待核）
+合计 18＋17＋15＝50 行，与 §17.22 的五十参一致。
 
 对位用三重锚，不靠音写猜：
   ① 角色（比丘／長者／優婆夷／夜神…）
   ② 处所（īṣāṇo＝伊沙那、siṃhavijṛmbhitaṃ＝師子頻申、potalaka＝補怛洛迦…）
-  ③ 次序（十八组梵本指令序须不降；唯一相等处即正趣空缺位——脚本自检）
+  ③ 次序（全部三十五组并入同一「指授事件」序，须不降；相等处必为空缺位）
+
+「指授事件」= `asti/gaccha kulaputra` 起句、且其后 900 字内出现 `upasaṃkramya` 者，
+全文恰 50 次，其中 48 次带 `nāma`（末次一句两名，故 49 位善知识）。
 
 输出只作「同指／待核」，不做教义判，也不评音写精当。
 """
@@ -32,7 +35,7 @@ SRC = ROOT / SRC_REL
 OUT = ROOT / "data" / "research" / "visits_sanskrit.json"
 VN = ROOT / "data" / "research" / "visits_names.json"
 
-# 十八组：§17.22 中字面有异者（80=60≠40 九组 ＋ 80=40≠60 九组）
+# §17.24：§17.22 中「恰有一对同名、第三本独异」的十八组
 CASES = [
     dict(no=4, probe="supratisthito nāma bhikṣuḥ", skt="supratisthita",
          role="bhikṣuḥ（比丘）", place="sāgaratīraṃ nāma laṅkāpatham（楞伽道·海岸）",
@@ -112,13 +115,103 @@ CASES = [
          basis="śiva＝寂靜／尸毘；八十「最寂靜」取义、六十「尸毘最勝」取音"),
 ]
 
-# 附见：不在十八组内，但同一次核梵时直接读出、值得单列的发现
+# §17.25：三本全异十七组
+ALL_DIFF = [
+    dict(no=2, probe="meghaśrīrnāma bhikṣuḥ", skt="meghaśrī",
+         role="bhikṣuḥ（比丘）", place="rāmāvarānta janapada；sugrīva parvata（勝樂國·妙峯山）",
+         verdict="同指·义译",
+         basis="megha＝雲、śrī＝吉祥／德；八十「德雲」、六十「功德雲」、四十「吉祥雲」各取 śrī 之一训"),
+    dict(no=9, probe="bhīṣmottaranirghoṣo nāma ṛṣiḥ", skt="bhīṣmottaranirghoṣa",
+         role="ṛṣiḥ（仙人）", place="samudravetāḍī；nālayur janapada（海潮處·那羅素國）",
+         verdict="同指·音义并存",
+         basis="bhīṣma＝可畏／威猛、nirghoṣa＝聲，四十「大威猛聲」全为义译；八十「毘目瞿沙」之「瞿沙」＝ghoṣa 音写、六十「毘目多羅」之「多羅」＝(t)tara 音写，各取一名之一节"),
+    dict(no=12, probe="sudarśano nāma bhikṣuḥ", skt="sudarśana",
+         role="bhikṣuḥ（比丘）", place="trinayano janapada（三眼國）",
+         verdict="同指·义译",
+         basis="su＝善／妙、darśana＝見（亦训「現」）；八十「善見」、六十「善現」、四十「妙見」同出一名"),
+    dict(no=13, probe="indriyeśvaro nāma dārakaḥ", skt="indriyeśvara",
+         role="dārakaḥ（童子）", place="śramaṇamaṇḍala janapade sumukhaṃ nagaram（名聞國·河渚）",
+         verdict="同指·义译",
+         basis="indriya＝根、īśvara＝自在（主）；四十「根自在主」最全，八十「自在主」省「根」，六十「釋天主」以 indra（釋天）解 indriya，名源待核",
+         flag="六十「釋天主」以 indra 解 indriya"),
+    dict(no=14, probe="prabhūtā nāmopāsikā", skt="prabhūtā",
+         role="upāsikā（優婆夷）", place="samudrapratiṣṭhānaṃ nagaram（海住城）",
+         verdict="同指·义译",
+         basis="prabhūta＝丰足／广大；八十「具足」、四十「辨具足」皆取「具足」一义，六十「自在」与梵名无对音／义译关系",
+         flag="六十「自在」名源待核"),
+    dict(no=15, probe="vidvānnāṃ gṛhapatiḥ", skt="vidvat（vidvānnāṃ … gṛhapatiḥ）",
+         role="gṛhapatiḥ（居士）", place="mahāsaṃbhavaṃ nagaram（大興城）",
+         verdict="同指·义译",
+         basis="vidvat＝有智／明智；八十「明智」、四十「具足智」皆取「智」，六十「甘露頂」与梵名无对音关系",
+         flag="六十「甘露頂」名源待核"),
+    dict(no=16, probe="ratnacūḍo nāma dharmaśreṣṭhī", skt="ratnacūḍa",
+         role="dharmaśreṣṭhī（長者）", place="siṃhapotaṃ nagaram（師子宮城）",
+         verdict="同指·音义并存",
+         basis="ratna＝寶、cūḍa＝髻；六十「周羅」是 cūḍā 的音写，八十／六十另增「法」字"),
+    dict(no=18, probe="analo nāma rājā", skt="anala",
+         role="rājā（王）", place="tāladhvajaṃ nagaram（多羅幢城）",
+         verdict="待核·名源不合",
+         basis="anala＝火，唯四十「甘露火」存「火」字；八十「無厭足」、六十「滿足」与 anala 无对音／义译关系。角色、处所、次序三锚皆合，故段位可定而名源不合",
+         flag="八十「無厭足」／六十「滿足」名源待核"),
+    dict(no=22, probe="tatrotpalabhūtirnāma gāndhikaśreṣṭhī", skt="utpalabhūti",
+         role="gāndhikaśreṣṭhī（鬻香長者）", place="pṛthurāṣṭraṃ janapadaḥ（廣大國）",
+         verdict="同指·义译",
+         basis="utpala＝優鉢羅／青蓮華；六十「香」出 gāndhika（香師）而非名内，四十「具足」疑对 bhūti〔本文判断〕"),
+    dict(no=27, probe="veṣṭhilo nāma gṛhapati", skt="veṣṭhila",
+         role="gṛhapatiḥ（居士）", place="śubhapāraṃgamaṃ nagaram（善度城）",
+         verdict="同指·对音",
+         basis="八十「鞞瑟胝羅」、四十「毘瑟底羅」皆 veṣṭhila 的音写；六十「安住」与梵名无对音关系，疑与参31 sthāvarā（安住）相涉",
+         flag="六十「安住」名源待核"),
+    dict(no=32, probe="vāsantī nāma rātridevatā", skt="vāsantī",
+         role="rātridevatā（主夜神）", place="kapilavastu（迦毘羅城）",
+         verdict="同指·音义并存",
+         basis="vasanta＝春，四十「春和」取义；八十「婆珊婆演底」、六十「婆娑婆陀」皆 vāsantī 的音写"),
+    dict(no=33, probe="samantagambhīraśrīvimalaprabhā nāma rātridevatā",
+         skt="samantagambhīraśrīvimalaprabhā",
+         role="rātridevatā（主夜神）", place="bodhimaṇḍa（菩提場）",
+         verdict="同指·义译",
+         basis="samanta＝普遍／普、gambhīra＝甚深、śrī＝吉祥／妙德、vimala＝無垢／淨、prabhā＝光；三本繁简各不同而元素俱全"),
+    dict(no=35, probe="samantasattvatrāṇojaḥśrī nāma rātridevatā",
+         skt="samantasattvatrāṇojaḥśrī",
+         role="rātridevatā（主夜神）", place="tathāgataparṣanmaṇḍala（如來眾會）",
+         verdict="同指·义译",
+         basis="samanta＝普、sattva＝眾生、trāṇa＝救護、ojas＝威力／威德、śrī＝妙德／吉祥；三本词序互倒而元素同"),
+    dict(no=36, probe="praśāntarutasāgaravatī nāma rātridevatā",
+         skt="praśāntarutasāgaravatī",
+         role="rātridevatā（主夜神）", place="bodhimaṇḍa（菩提場）",
+         verdict="同指·义译",
+         basis="praśānta＝寂靜、ruta＝音、sāgara＝海、vatī＝具足／有；六十「寂靜音」省「海」与 vatī，八十／四十全译"),
+    dict(no=37, probe="sarvanagararakṣāsaṃbhavatejaḥśrīrnāma rātridevatā",
+         skt="sarvanagararakṣāsaṃbhavatejaḥśrī",
+         role="rātridevatā（主夜神）", place="vairocanasya parṣanmaṇḍala（菩提場如來會）",
+         verdict="同指·义译",
+         basis="sarva＝一切、nagara＝城、rakṣā＝守護、saṃbhava＝增長／生、tejaḥ＝威力／威德、śrī＝妙德／吉祥"),
+    dict(no=38, probe="sarvavṛkṣapraphullanasukhasaṃvāsā nāma rātridevatā",
+         skt="sarvavṛkṣapraphullanasukhasaṃvāsā",
+         role="rātridevatā（主夜神）", place="bhagavato vairocanasya pādamūla（佛足下）",
+         verdict="同指·义译",
+         basis="sarva＝一切、vṛkṣa＝樹、praphullana＝開敷、sukha＝安樂、saṃvāsā＝共住／所依"),
+    dict(no=39, probe="sarvajagadrakṣāpraṇidhānavīryaprabhā nāma rātridevatā",
+         skt="sarvajagadrakṣāpraṇidhānavīryaprabhā",
+         role="rātridevatā（主夜神）", place="bodhimaṇḍa（道場）",
+         verdict="同指·义译",
+         basis="sarva-jagat＝一切眾生、rakṣā＝守護／救護、praṇidhāna＝願、vīrya＝精進力、prabhā＝光明"),
+]
+
+# 附见：不在三十五组内，但同一次核梵时直接读出、值得单列的发现
 BYPRODUCTS = [
     dict(no=51, probe="śrīsaṃbhavo nāma dārakaḥ", also="śrīmatiśca nāma dārikā",
          skt="śrīsaṃbhava＋śrīmatī",
          role="dārakaḥ＋dārikā（童子＋童女）", place="sumanāmukhaṃ nāma nagaram（名聞國）",
          basis="梵本一句并举两名：「śrīsaṃbhavo nāma dārakaḥ prativasati, śrīmatiśca nāma dārikā」；"
                "汉本作「德生·有德」并列一处，是梵本如此，非编者合并"),
+]
+
+# 附见：三本同字（不在三十五组内）而梵本实无指授句者
+SAME_GAPS = [
+    dict(no=45, between=("viśvāmitro nāma dārakācāryaḥ", "bhadrottamā nāmopāsikā"),
+         basis="viśvāmitra（遍友）之後直入 bhadrottamā（賢勝），其間無第三位指授句；"
+               "Vaidya 本无「善知眾藝」一位（śilpa 只见于教法文句，非独立善知识）"),
 ]
 
 
@@ -140,8 +233,22 @@ def main() -> int:
     raw = SRC.read_text(encoding="utf-8", errors="replace")
     t, _ = normalize(raw)
 
-    starts = [m.start() for m in re.finditer(r"gaccha kulaputra", t)]
+    # 指授事件：asti/gaccha kulaputra 起句，且 900 字内出现 upasaṃkramya
+    instr = []
+    for m in re.finditer(r"(?:asti|gaccha) kulaputra", t):
+        w = t[m.start():m.start() + 900]
+        u = w.find("upasaṃkramya")
+        if u >= 0:
+            instr.append(m.start())
+    if len(instr) != 50:
+        print(f"!! 指授事件 {len(instr)} != 50")
+        return 1
+
     pages = [(m.start(), int(m.group(1))) for m in re.finditer(r"\(gv (\d+)\)", t)]
+    spans = []
+    for s in instr:
+        w = t[s:s + 900]
+        spans.append((s, s + w.find("upasaṃkramya") + 20))
 
     def gv_at(pos: int):
         best = None
@@ -154,17 +261,24 @@ def main() -> int:
 
     def ord_at(pos: int):
         k = 0
-        for i, s in enumerate(starts):
+        for s in instr:
             if s <= pos:
-                k = i + 1
+                k += 1
             else:
                 break
         return k or None
 
+    def locate(probe: str):
+        """返回唯一命中位；正文复述造成的多重命中，限定在指授句内。"""
+        hits = [m.start() for m in re.finditer(re.escape(probe), t)]
+        if len(hits) > 1:
+            hits = [h for h in hits if any(a <= h <= b for a, b in spans)]
+        return hits
+
     vn = json.loads(VN.read_text(encoding="utf-8"))
     by_no = {r["no"]: r for r in vn["rows"]}
 
-    # §17.22 的三分：恰一对同名（本节所判）／三本全异／三本同字
+    # §17.22 的三分：恰一对同名（§17.24）／三本全异（§17.25）／三本同字
     tri = {r["no"]: {r["n80"], r["n60"], r["n40"]} for r in vn["rows"]}
     one_eq = sorted(n for n, s in tri.items() if len(s) == 2)
     all_diff = sorted(n for n, s in tri.items() if len(s) == 3)
@@ -174,9 +288,13 @@ def main() -> int:
         print("   cases:", [c["no"] for c in CASES])
         print("   one_eq:", one_eq)
         return 8
+    if [c["no"] for c in ALL_DIFF] != all_diff:
+        print("!! ALL_DIFF 与「三本全异」的十七组不一致")
+        print("   all_diff:", [c["no"] for c in ALL_DIFF])
+        print("   expected:", all_diff)
+        return 8
 
-    cases = []
-    for c in CASES:
+    def build_case(c):
         row = by_no[c["no"]]
         rec = {
             "no": c["no"],
@@ -188,10 +306,9 @@ def main() -> int:
             "probe": c["probe"],
         }
         if c["probe"]:
-            hits = [m.start() for m in re.finditer(re.escape(c["probe"]), t)]
+            hits = locate(c["probe"])
             if len(hits) != 1:
-                print(f"!! probe not unique ({len(hits)}): {c['probe']}")
-                return 2
+                raise SystemExit(f"!! probe not unique ({len(hits)}): 参{c['no']} {c['probe']}")
             pos = hits[0]
             rec["pos"] = pos
             rec["ord"] = ord_at(pos)
@@ -200,33 +317,22 @@ def main() -> int:
             a = t.find(c["gap"][0])
             b = t.find(c["gap"][1])
             if a < 0 or b < 0 or b < a:
-                print("!! gap anchors not found:", c["no"])
-                return 3
-            inner = [s for s in starts if a < s < b]
-            own = max([s for s in starts if s < b], default=None)
+                raise SystemExit(f"!! gap anchors not found: 参{c['no']}")
+            inner = [s for s in instr if a < s < b]
+            own = max([s for s in instr if s < b], default=None)
             inner = [s for s in inner if s != own]
             if inner:
-                print(f"!! gap for 参 {c['no']} is not empty: {len(inner)} instructions")
-                return 4
+                raise SystemExit(f"!! gap for 参 {c['no']} is not empty: {len(inner)}")
             rec["pos"] = a
             rec["ord"] = ord_at(a)
             rec["gv"] = gv_at(a)
             rec["gv_to"] = gv_at(b)
             rec["gap_chars"] = (own - a) if own else (b - a)
             rec["gap_between"] = list(c["gap"])
-        cases.append(rec)
+        return rec
 
-    # 次序自检：参号递增时，梵本指令序不得下降；
-    # 唯一允许相等处是「空缺位」（正趣无指授句，沿用前一位之序）
-    ords = [c["ord"] for c in cases if c["ord"]]
-    if ords != sorted(ords):
-        print("!! Sanskrit ordinals decrease:", ords)
-        return 5
-    dup = sum(1 for a, b in zip(ords, ords[1:]) if a == b)
-    gaps = sum(1 for c in cases if not c["probe"])
-    if dup != gaps:
-        print(f"!! ordinals equal {dup} times but gap cases {gaps}:", ords)
-        return 9
+    cases = [build_case(c) for c in CASES]
+    diffs = [build_case(c) for c in ALL_DIFF]
 
     # 附见：一句两名的梵本 witness
     byp = []
@@ -248,39 +354,131 @@ def main() -> int:
             "basis": b["basis"],
         })
 
-    verdicts = {}
-    for c in cases:
-        verdicts[c["verdict"]] = verdicts.get(c["verdict"], 0) + 1
+    # 附见：同字而梵本空缺（参45）
+    gaps_same = []
+    for g in SAME_GAPS:
+        a = t.find(g["between"][0])
+        b2 = t.find(g["between"][1])
+        if a < 0 or b2 < 0 or b2 < a:
+            print(f"!! same-gap anchors missing: 参{g['no']}")
+            return 10
+        own = max([s for s in instr if s < b2], default=None)
+        inner = [s for s in instr if a < s < b2 and s != own]
+        if inner:
+            print(f"!! same-gap for 参 {g['no']} is not empty: {len(inner)}")
+            return 11
+        row = by_no[g["no"]]
+        gaps_same.append({
+            "no": g["no"], "n80": row["n80"], "n60": row["n60"], "n40": row["n40"],
+            "between": list(g["between"]), "basis": g["basis"],
+            "pos": a, "ord": ord_at(a),
+            "gv": gv_at(a), "gv_to": gv_at(b2),
+            "gap_chars": (own - a) if own else (b2 - a),
+        })
+
+    # 次序自检（全表）：三十五组＋参45 空缺 并入同一指令序，须不降；
+    # 相等对数必等于空缺案数（参29、参45 各一）
+    combined = [(c["no"], c["ord"]) for c in cases + diffs]
+    combined += [(g["no"], g["ord"]) for g in gaps_same]
+    combined.sort()
+    filled, prev = [], None
+    for no, o in combined:
+        if o is None:
+            o = prev
+        prev = o
+        filled.append((no, o))
+    ords_all = [o for _, o in filled]
+    if ords_all != sorted(ords_all):
+        print("!! Sanskrit ordinals decrease:", ords_all)
+        return 5
+    dup_all = sum(1 for a, b in zip(ords_all, ords_all[1:]) if a == b)
+    # 相等处只会落在「空缺位」，且其前一位也须在本表内；
+    # 参45 的前一位（参44 遍友）属三本同字、不在三十五组内，故另作单位断言。
+    nos_all = {c["no"] for c in cases + diffs}
+    gaps_expected = sum(1 for c in cases if not c["probe"]) + \
+        sum(1 for g in gaps_same if (g["no"] - 1) in nos_all)
+    if dup_all != gaps_expected:
+        print(f"!! ordinals equal {dup_all} times but in-table gaps {gaps_expected}:", ords_all)
+        return 9
+    for g in gaps_same:
+        after = min((c for c in cases + diffs if c["no"] > g["no"]),
+                    key=lambda c: c["no"])
+        if after["ord"] != g["ord"] + 1:
+            print(f'!! same-gap 参{g["no"]} does not occupy exactly one slot: '
+                  f'{g["ord"]} -> {after["ord"]} (参{after["no"]})')
+            return 15
+
+    # §17.24 内单独复检（同一套指令序，十八组自不降、一相等）
+    ords = [c["ord"] for c in cases if c["ord"]]
+    if ords != sorted(ords):
+        print("!! §17.24 ordinals decrease:", ords)
+        return 12
+    dup = sum(1 for a, b in zip(ords, ords[1:]) if a == b)
+    gaps = sum(1 for c in cases if not c["probe"])
+    if dup != gaps:
+        print(f"!! §17.24 ordinals equal {dup} != gap cases {gaps}:", ords)
+        return 13
+    dords = [c["ord"] for c in diffs]
+    if dords != sorted(dords) or len(set(dords)) != len(dords):
+        print("!! §17.25 ordinals not strictly increasing:", dords)
+        return 14
+
+    def tally(rows):
+        same = sum(1 for c in rows if c["verdict"].startswith("同指"))
+        pend = sum(1 for c in rows if c["verdict"].startswith("待核"))
+        bv = {}
+        for c in rows:
+            bv[c["verdict"]] = bv.get(c["verdict"], 0) + 1
+        return same, pend, bv
+
+    same, pend, bv = tally(cases)
+    dsame, dpend, dbv = tally(diffs)
+    same_unprobed = [n for n in all_same if n not in {g["no"] for g in gaps_same}]
+
     stats = {
         "cases": len(cases),
-        "same": sum(1 for c in cases if c["verdict"].startswith("同指")),
-        "pending": sum(1 for c in cases if c["verdict"].startswith("待核")),
-        "by_verdict": verdicts,
+        "same": same,
+        "pending": pend,
+        "by_verdict": bv,
         "flagged": [c["no"] for c in cases if c["flag"]],
         "ord_first": min(ords),
         "ord_last": max(ords),
-        "remain_all_diff": len(all_diff),
-        "remain_all_diff_nos": all_diff,
-        "remain_all_same": len(all_same),
-        "remain_all_same_nos": all_same,
+        "all_diff_cases": len(diffs),
+        "all_diff_same": dsame,
+        "all_diff_pending": dpend,
+        "all_diff_by_verdict": dbv,
+        "all_diff_flagged": [c["no"] for c in diffs if c["flag"]],
+        "diff_ord_first": min(dords),
+        "diff_ord_last": max(dords),
+        "rows": len(tri),
+        "rows_diff": len(one_eq) + len(all_diff),
+        "rows_judged": len(cases) + len(diffs) + len(gaps_same),
+        "rows_same": len(all_same),
+        "rows_same_gap": len(gaps_same),
+        "rows_same_unprobed": len(same_unprobed),
+        "same_gap_nos": [g["no"] for g in gaps_same],
+        "same_unprobed_nos": same_unprobed,
+        "ord_all_first": min(ords_all),
+        "ord_all_last": max(ords_all),
+        "ord_all_equal_pairs": dup_all,
     }
 
-    diff_names = "、".join(
-        f'{by_no[n]["n80"]}／{by_no[n]["n60"]}／{by_no[n]["n40"]}' for n in all_diff)
-    same_nos = "、".join(str(n) for n in all_same)
+    same_nos = "、".join(str(n) for n in same_unprobed)
 
     data = {
         "meta": {
             "operator": "T9",
-            "title": "入法界品十八组异名·梵本同指判（两本同字、一本独异）",
+            "title": "入法界品字面有异三十五组·梵本同指判（§17.24 十八组／§17.25 十七组）",
             "date": date.today().isoformat(),
-            "method": ("取 §17.22 中「恰有一对同名、第三本独异」的十八组，在梵本《入法界品》中定位其指授句"
-                       "（gaccha kulaputra … tatra X nāma Y prativasati），以角色＋处所＋次序三锚对位；"
-                       "判据为译名与梵名之对音／义译关系，只判同指与否，不判音写精当。"
-                       "字面有异者共 35 组，本节只判其中 18 组（见 boundaries）。"),
-            "scope": (f'十八组（§17.22 中恰有一对同名者：{one_eq[0]}…{one_eq[-1]}，共 {len(one_eq)} 组，'
-                      f'参号列于 cases）。未判：三本全异 {len(all_diff)} 组、三本同字 {len(all_same)} 组，'
-                      f'合计 {len(all_diff) + len(all_same)} 组。'),
+            "method": ("取 §17.22 中字面有异之三十五组，在梵本《入法界品》中定位其指授句"
+                       "（asti/gaccha kulaputra … X nāma Y prativasati … upasaṃkramya），"
+                       "以角色＋处所＋次序三锚对位；判据为译名与梵名之对音／义译关系，"
+                       "只判同指与否，不判音写精当。三十五组并入同一指授事件序自检，"
+                       "相等处必为空缺位（参29 正趣、参45 善知眾藝）。"),
+            "scope": (f'§17.24 十八组（§17.22 中恰有一对同名者：{one_eq[0]}…{one_eq[-1]}）'
+                      f'＋§17.25 十七组（三本全异：{all_diff[0]}…{all_diff[-1]}），'
+                      f'共 35 组；三本同字 {len(all_same)} 组未逐条核梵，'
+                      f'唯参 {gaps_same[0]["no"]} 已核为梵本空缺。'),
             "source": {
                 "path": SRC_REL,
                 "bytes": SRC.stat().st_size,
@@ -296,21 +494,63 @@ def main() -> int:
         "boundaries": [
             "这是「同指」判，不是译名优劣判：同指只表两本指同一位善知识，不评谁译得准。",
             "单一写本系统：所用为 Vaidya 校本之电子转写，非多本会校；故「Vaidya 本无对应」只能记作该本无，不得推为梵本原无。",
-            "对位靠角色＋处所＋次序三锚；次序单调性由脚本自检（十八组梵本指令序不降；唯一相等处即正趣空缺位，沿用观自在之序），处所名逐条附于表内可复检。",
+            (f'对位靠角色＋处所＋次序三锚；次序单调性由脚本自检——本节十八组的梵本指令序不降'
+             f'（{stats["ord_first"]}–{stats["ord_last"]} 段，唯一相等处即正趣空缺位，沿用观自在之序），'
+             f'§17.25 十七组并入同一指令序（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）仍不降，'
+             f'两处相等处恰为两个空缺位（参 29、参 45）。处所名逐条附于表内可复检。'),
             "音写是否合于梵音、义译是否尽义，皆不在本节判内；只记两本名与该梵名有无可判的关系。",
-            (f'未判者三十二组，不得读作已核：三本全异 {len(all_diff)} 组（{diff_names}）与三本同字 '
-             f'{len(all_same)} 组（参号 {same_nos}）。字面同可能两本各依不同梵名而偶合，'
-             f'字面全异亦可能三本各取一义，皆须全表核梵方可断言。'),
+            (f'本节只判十八组；三本全异十七组见 §17.25。五十行中已核梵者 {stats["rows_judged"]} 行'
+             f'（字面有异 35 组 ＋ 参 {stats["same_gap_nos"][0]} 空缺），'
+             f'未核者 {len(same_unprobed)} 组（三本同字，参号 {same_nos}）；未核者不得读作已核——'
+             f'字面同可能各依不同梵名而偶合。'),
         ],
+        "all_diff": {
+            "meta": {
+                "operator": "T9",
+                "title": "入法界品三本全异十七组·梵本同指判（续 §17.24）",
+                "date": date.today().isoformat(),
+                "method": ("取 §17.22 中三本全异的十七组，逐组定位梵本指授句，以角色＋处所＋次序三锚对位；"
+                           "与 §17.24 十八组并入同一指授事件序自检。"),
+                "scope": f'十七组（{all_diff[0]}…{all_diff[-1]}）。',
+            },
+            "cases": diffs,
+            "gaps": gaps_same,
+            "stats": {
+                "cases": len(diffs),
+                "same": dsame,
+                "pending": dpend,
+                "by_verdict": dbv,
+                "flagged": [c["no"] for c in diffs if c["flag"]],
+                "ord_first": min(dords),
+                "ord_last": max(dords),
+            },
+            "boundaries": [
+                "这是「同指」判，不是译名优劣判：三本字面全异，只判其是否同出一梵名，不评谁译得准。",
+                "单一写本系统：所用为 Vaidya 校本之电子转写；参 18 的梵名 anala 与八十／六十之名不合，只能记作该本如此，不得推为梵本原无别名。",
+                (f'次序与 §17.24 同用一套指令序（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）；'
+                 f'本节十七组的序（{min(dords)}–{max(dords)}）严格递增，无相等。'
+                 f'附表「參45」非本节十七组之一，乃三本同字而梵本空缺者，一并核出。'),
+                "音写是否合于梵音、义译是否尽义，皆不在本节判内。",
+                (f'三本同字 {len(all_same)} 组未逐条核梵：其中参 {gaps_same[0]["no"]} 已核为「Vaidya 本无指授句」，'
+                 f'余 {len(same_unprobed)} 组（参号 {same_nos}）字面虽同，仍可能各依不同梵名而偶合，'
+                 f'不得读作已核。'),
+            ],
+        },
     }
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    print(f'cases {stats["cases"]}  same {stats["same"]}  pending {stats["pending"]}  '
-          f'ord {stats["ord_first"]}..{stats["ord_last"]}')
+    print(f'§17.24 cases {stats["cases"]}  same {same}  pending {pend}  ord {stats["ord_first"]}..{stats["ord_last"]}')
     for c in cases:
         print(f'{c["no"]:>3} {c["n80"]:<8} {c["n60"]:<8} {c["n40"]:<10} | '
               f'{str(c["skt"]):<32} {str(c["gv"]):>7} | {c["verdict"]}'
               + (f'  [{c["flag"]}]' if c["flag"] else ""))
+    print(f'§17.25 cases {len(diffs)}  same {dsame}  pending {dpend}  ord {min(dords)}..{max(dords)}')
+    for c in diffs:
+        print(f'{c["no"]:>3} {c["n80"]:<8} {c["n60"]:<8} {c["n40"]:<10} | '
+              f'{str(c["skt"]):<40} {str(c["gv"]):>7} | {c["verdict"]}'
+              + (f'  [{c["flag"]}]' if c["flag"] else ""))
+    print(f'全表 ord {stats["ord_all_first"]}..{stats["ord_all_last"]}  '
+          f'equal_pairs {stats["ord_all_equal_pairs"]}  judged {stats["rows_judged"]}/50')
     print("written", OUT)
     return 0
 

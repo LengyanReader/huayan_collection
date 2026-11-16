@@ -1,10 +1,10 @@
 {
   "meta": {
     "operator": "T9",
-    "title": "入法界品十八组异名·梵本同指判（两本同字、一本独异）",
-    "date": "2026-11-16",
-    "method": "取 §17.22 中「恰有一对同名、第三本独异」的十八组，在梵本《入法界品》中定位其指授句（gaccha kulaputra … tatra X nāma Y prativasati），以角色＋处所＋次序三锚对位；判据为译名与梵名之对音／义译关系，只判同指与否，不判音写精当。字面有异者共 35 组，本节只判其中 18 组（见 boundaries）。",
-    "scope": "十八组（§17.22 中恰有一对同名者：4…50，共 18 组，参号列于 cases）。未判：三本全异 17 组、三本同字 15 组，合计 32 组。",
+    "title": "入法界品字面有异三十五组·梵本同指判（§17.24 十八组／§17.25 十七组）",
+    "date": "2026-11-17",
+    "method": "取 §17.22 中字面有异之三十五组，在梵本《入法界品》中定位其指授句（asti/gaccha kulaputra … X nāma Y prativasati … upasaṃkramya），以角色＋处所＋次序三锚对位；判据为译名与梵名之对音／义译关系，只判同指与否，不判音写精当。三十五组并入同一指授事件序自检，相等处必为空缺位（参29 正趣、参45 善知眾藝）。",
+    "scope": "§17.24 十八组（§17.22 中恰有一对同名者：4…50）＋§17.25 十七组（三本全异：2…39），共 35 组；三本同字 15 组未逐条核梵，唯参 45 已核为梵本空缺。",
     "source": {
       "path": "data/references/sanskrit/gandavyuha_vaidya.txt",
       "bytes": 1233056,
@@ -30,7 +30,7 @@
       "flag": null,
       "probe": "supratisthito nāma bhikṣuḥ",
       "pos": 125438,
-      "ord": 2,
+      "ord": 3,
       "gv": "gv 53"
     },
     {
@@ -48,7 +48,7 @@
       "flag": null,
       "probe": "āśā nāmopāsikā",
       "pos": 188682,
-      "ord": 6,
+      "ord": 7,
       "gv": "gv 78"
     },
     {
@@ -66,7 +66,7 @@
       "flag": "六十「方便命」名源待核",
       "probe": "jayoṣmāyatano nāma brāhmaṇaḥ",
       "pos": 219247,
-      "ord": 8,
+      "ord": 9,
       "gv": "gv 89"
     },
     {
@@ -120,7 +120,7 @@
       "flag": null,
       "probe": "sarvagāmī nāma parivrājakaḥ",
       "pos": 343958,
-      "ord": 22,
+      "ord": 20,
       "gv": "gv 135"
     },
     {
@@ -138,7 +138,7 @@
       "flag": "六十「自在」名源待核",
       "probe": "vairo nāma dāśaḥ",
       "pos": 357421,
-      "ord": 24,
+      "ord": 23,
       "gv": "gv 142"
     },
     {
@@ -156,7 +156,7 @@
       "flag": null,
       "probe": "jayottamo nāma śreṣṭhī",
       "pos": 363474,
-      "ord": 25,
+      "ord": 24,
       "gv": "gv 144"
     },
     {
@@ -174,7 +174,7 @@
       "flag": null,
       "probe": "siṃhavijṛmbhitā nāma bhikṣuṇī",
       "pos": 370288,
-      "ord": 26,
+      "ord": 25,
       "gv": "gv 147"
     },
     {
@@ -192,7 +192,7 @@
       "flag": null,
       "probe": "vasumitrā nāma bhāgavatī",
       "pos": 387556,
-      "ord": 27,
+      "ord": 26,
       "gv": "gv 153"
     },
     {
@@ -210,7 +210,7 @@
       "flag": null,
       "probe": "avalokiteśvaro nāma bodhisattvaḥ",
       "pos": 401005,
-      "ord": 29,
+      "ord": 28,
       "gv": "gv 158"
     },
     {
@@ -228,7 +228,7 @@
       "flag": null,
       "probe": null,
       "pos": 401005,
-      "ord": 29,
+      "ord": 28,
       "gv": "gv 158",
       "gv_to": "gv 166",
       "gap_chars": 15602,
@@ -252,7 +252,7 @@
       "flag": null,
       "probe": "sthāvarā nāma",
       "pos": 421311,
-      "ord": 31,
+      "ord": 30,
       "gv": "gv 168"
     },
     {
@@ -270,7 +270,7 @@
       "flag": null,
       "probe": "pradakṣiṇena pramuditanayanajagadvirocanā nāma rātridevatā",
       "pos": 458172,
-      "ord": 34,
+      "ord": 33,
       "gv": "gv 185"
     },
     {
@@ -288,7 +288,7 @@
       "flag": null,
       "probe": "sutejomaṇḍalaratiśrīrnāma lumbinīvanadevatā",
       "pos": 689664,
-      "ord": 40,
+      "ord": 39,
       "gv": "gv 284"
     },
     {
@@ -306,7 +306,7 @@
       "flag": null,
       "probe": "gopā nāma",
       "pos": 726287,
-      "ord": 41,
+      "ord": 40,
       "gv": "gv 296"
     },
     {
@@ -324,7 +324,7 @@
       "flag": null,
       "probe": "bhadrottamā nāmopāsikā",
       "pos": 850317,
-      "ord": 45,
+      "ord": 44,
       "gv": "gv 354"
     },
     {
@@ -342,7 +342,7 @@
       "flag": null,
       "probe": "śivarāgro nāma brāhmaṇaḥ",
       "pos": 855526,
-      "ord": 49,
+      "ord": 48,
       "gv": "gv 354"
     }
   ],
@@ -358,7 +358,7 @@
       "probe": "śrīsaṃbhavo nāma dārakaḥ",
       "also": "śrīmatiśca nāma dārikā",
       "pos": 856964,
-      "ord": 50,
+      "ord": 49,
       "gv": "gv 354",
       "basis": "梵本一句并举两名：「śrīsaṃbhavo nāma dārakaḥ prativasati, śrīmatiśca nāma dārikā」；汉本作「德生·有德」并列一处，是梵本如此，非编者合并"
     }
@@ -378,30 +378,36 @@
       10,
       23
     ],
-    "ord_first": 2,
-    "ord_last": 49,
-    "remain_all_diff": 17,
-    "remain_all_diff_nos": [
-      2,
-      9,
-      12,
+    "ord_first": 3,
+    "ord_last": 48,
+    "all_diff_cases": 17,
+    "all_diff_same": 16,
+    "all_diff_pending": 1,
+    "all_diff_by_verdict": {
+      "同指·义译": 12,
+      "同指·音义并存": 3,
+      "待核·名源不合": 1,
+      "同指·对音": 1
+    },
+    "all_diff_flagged": [
       13,
       14,
       15,
-      16,
       18,
-      22,
-      27,
-      32,
-      33,
-      35,
-      36,
-      37,
-      38,
-      39
+      27
     ],
-    "remain_all_same": 15,
-    "remain_all_same_nos": [
+    "diff_ord_first": 1,
+    "diff_ord_last": 38,
+    "rows": 50,
+    "rows_diff": 35,
+    "rows_judged": 36,
+    "rows_same": 15,
+    "rows_same_gap": 1,
+    "rows_same_unprobed": 14,
+    "same_gap_nos": [
+      45
+    ],
+    "same_unprobed_nos": [
       3,
       5,
       6,
@@ -412,18 +418,382 @@
       42,
       43,
       44,
-      45,
       47,
       48,
       49,
       51
-    ]
+    ],
+    "ord_all_first": 1,
+    "ord_all_last": 48,
+    "ord_all_equal_pairs": 1
   },
   "boundaries": [
     "这是「同指」判，不是译名优劣判：同指只表两本指同一位善知识，不评谁译得准。",
     "单一写本系统：所用为 Vaidya 校本之电子转写，非多本会校；故「Vaidya 本无对应」只能记作该本无，不得推为梵本原无。",
-    "对位靠角色＋处所＋次序三锚；次序单调性由脚本自检（十八组梵本指令序不降；唯一相等处即正趣空缺位，沿用观自在之序），处所名逐条附于表内可复检。",
+    "对位靠角色＋处所＋次序三锚；次序单调性由脚本自检——本节十八组的梵本指令序不降（3–48 段，唯一相等处即正趣空缺位，沿用观自在之序），§17.25 十七组并入同一指令序（1–48 段）仍不降，两处相等处恰为两个空缺位（参 29、参 45）。处所名逐条附于表内可复检。",
     "音写是否合于梵音、义译是否尽义，皆不在本节判内；只记两本名与该梵名有无可判的关系。",
-    "未判者三十二组，不得读作已核：三本全异 17 组（德雲／功德雲／吉祥雲、毘目瞿沙／毘目多羅／大威猛聲、善見／善現／妙見、自在主／釋天主／根自在主、具足／自在／辨具足、明智／甘露頂／具足智、法寶髻／法寶周羅／寶髻、無厭足／滿足／甘露火、優鉢羅華／青蓮華香／具足優鉢羅華、鞞瑟胝羅／安住／毘瑟底羅、婆珊婆演底／婆娑婆陀／春和、普德淨光／甚深妙德離垢光明／普遍吉祥無垢光、普救眾生妙德／妙德救護眾生／普救護一切眾生威德吉祥、寂靜音海／寂靜音／具足功德寂靜音海、守護一切城增長威力／妙德守護諸城／守護一切城增長威德、開敷一切樹華／開敷樹華／能開敷一切樹華安樂、大願精進力救護一切眾生／願勇光明守護眾生／守護一切眾生大願精進力光明）与三本同字 15 组（参号 3、5、6、7、19、20、30、42、43、44、45、47、48、49、51）。字面同可能两本各依不同梵名而偶合，字面全异亦可能三本各取一义，皆须全表核梵方可断言。"
-  ]
+    "本节只判十八组；三本全异十七组见 §17.25。五十行中已核梵者 36 行（字面有异 35 组 ＋ 参 45 空缺），未核者 14 组（三本同字，参号 3、5、6、7、19、20、30、42、43、44、47、48、49、51）；未核者不得读作已核——字面同可能各依不同梵名而偶合。"
+  ],
+  "all_diff": {
+    "meta": {
+      "operator": "T9",
+      "title": "入法界品三本全异十七组·梵本同指判（续 §17.24）",
+      "date": "2026-11-17",
+      "method": "取 §17.22 中三本全异的十七组，逐组定位梵本指授句，以角色＋处所＋次序三锚对位；与 §17.24 十八组并入同一指授事件序自检。",
+      "scope": "十七组（2…39）。"
+    },
+    "cases": [
+      {
+        "no": 2,
+        "n80": "德雲",
+        "n60": "功德雲",
+        "n40": "吉祥雲",
+        "rel80_60": "基同",
+        "rel80_40": "异",
+        "skt": "meghaśrī",
+        "skt_role": "bhikṣuḥ（比丘）",
+        "skt_place": "rāmāvarānta janapada；sugrīva parvata（勝樂國·妙峯山）",
+        "verdict": "同指·义译",
+        "basis": "megha＝雲、śrī＝吉祥／德；八十「德雲」、六十「功德雲」、四十「吉祥雲」各取 śrī 之一训",
+        "flag": null,
+        "probe": "meghaśrīrnāma bhikṣuḥ",
+        "pos": 107313,
+        "ord": 1,
+        "gv": "gv 41"
+      },
+      {
+        "no": 9,
+        "n80": "毘目瞿沙",
+        "n60": "毘目多羅",
+        "n40": "大威猛聲",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "bhīṣmottaranirghoṣa",
+        "skt_role": "ṛṣiḥ（仙人）",
+        "skt_place": "samudravetāḍī；nālayur janapada（海潮處·那羅素國）",
+        "verdict": "同指·音义并存",
+        "basis": "bhīṣma＝可畏／威猛、nirghoṣa＝聲，四十「大威猛聲」全为义译；八十「毘目瞿沙」之「瞿沙」＝ghoṣa 音写、六十「毘目多羅」之「多羅」＝(t)tara 音写，各取一名之一节",
+        "flag": null,
+        "probe": "bhīṣmottaranirghoṣo nāma ṛṣiḥ",
+        "pos": 210363,
+        "ord": 8,
+        "gv": "gv 85"
+      },
+      {
+        "no": 12,
+        "n80": "善見",
+        "n60": "善現",
+        "n40": "妙見",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "sudarśana",
+        "skt_role": "bhikṣuḥ（比丘）",
+        "skt_place": "trinayano janapada（三眼國）",
+        "verdict": "同指·义译",
+        "basis": "su＝善／妙、darśana＝見（亦训「現」）；八十「善見」、六十「善現」、四十「妙見」同出一名",
+        "flag": null,
+        "probe": "sudarśano nāma bhikṣuḥ",
+        "pos": 242133,
+        "ord": 11,
+        "gv": "gv 98"
+      },
+      {
+        "no": 13,
+        "n80": "自在主",
+        "n60": "釋天主",
+        "n40": "根自在主",
+        "rel80_60": "异",
+        "rel80_40": "基同",
+        "skt": "indriyeśvara",
+        "skt_role": "dārakaḥ（童子）",
+        "skt_place": "śramaṇamaṇḍala janapade sumukhaṃ nagaram（名聞國·河渚）",
+        "verdict": "同指·义译",
+        "basis": "indriya＝根、īśvara＝自在（主）；四十「根自在主」最全，八十「自在主」省「根」，六十「釋天主」以 indra（釋天）解 indriya，名源待核",
+        "flag": "六十「釋天主」以 indra 解 indriya",
+        "probe": "indriyeśvaro nāma dārakaḥ",
+        "pos": 250200,
+        "ord": 12,
+        "gv": "gv 101"
+      },
+      {
+        "no": 14,
+        "n80": "具足",
+        "n60": "自在",
+        "n40": "辨具足",
+        "rel80_60": "异",
+        "rel80_40": "基同",
+        "skt": "prabhūtā",
+        "skt_role": "upāsikā（優婆夷）",
+        "skt_place": "samudrapratiṣṭhānaṃ nagaram（海住城）",
+        "verdict": "同指·义译",
+        "basis": "prabhūta＝丰足／广大；八十「具足」、四十「辨具足」皆取「具足」一义，六十「自在」与梵名无对音／义译关系",
+        "flag": "六十「自在」名源待核",
+        "probe": "prabhūtā nāmopāsikā",
+        "pos": 259242,
+        "ord": 13,
+        "gv": "gv 104"
+      },
+      {
+        "no": 15,
+        "n80": "明智",
+        "n60": "甘露頂",
+        "n40": "具足智",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "vidvat（vidvānnāṃ … gṛhapatiḥ）",
+        "skt_role": "gṛhapatiḥ（居士）",
+        "skt_place": "mahāsaṃbhavaṃ nagaram（大興城）",
+        "verdict": "同指·义译",
+        "basis": "vidvat＝有智／明智；八十「明智」、四十「具足智」皆取「智」，六十「甘露頂」与梵名无对音关系",
+        "flag": "六十「甘露頂」名源待核",
+        "probe": "vidvānnāṃ gṛhapatiḥ",
+        "pos": 272203,
+        "ord": 14,
+        "gv": "gv 108"
+      },
+      {
+        "no": 16,
+        "n80": "法寶髻",
+        "n60": "法寶周羅",
+        "n40": "寶髻",
+        "rel80_60": "异",
+        "rel80_40": "基同",
+        "skt": "ratnacūḍa",
+        "skt_role": "dharmaśreṣṭhī（長者）",
+        "skt_place": "siṃhapotaṃ nagaram（師子宮城）",
+        "verdict": "同指·音义并存",
+        "basis": "ratna＝寶、cūḍa＝髻；六十「周羅」是 cūḍā 的音写，八十／六十另增「法」字",
+        "flag": null,
+        "probe": "ratnacūḍo nāma dharmaśreṣṭhī",
+        "pos": 282311,
+        "ord": 15,
+        "gv": "gv 112"
+      },
+      {
+        "no": 18,
+        "n80": "無厭足",
+        "n60": "滿足",
+        "n40": "甘露火",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "anala",
+        "skt_role": "rājā（王）",
+        "skt_place": "tāladhvajaṃ nagaram（多羅幢城）",
+        "verdict": "待核·名源不合",
+        "basis": "anala＝火，唯四十「甘露火」存「火」字；八十「無厭足」、六十「滿足」与 anala 无对音／义译关系。角色、处所、次序三锚皆合，故段位可定而名源不合",
+        "flag": "八十「無厭足」／六十「滿足」名源待核",
+        "probe": "analo nāma rājā",
+        "pos": 296722,
+        "ord": 17,
+        "gv": "gv 119"
+      },
+      {
+        "no": 22,
+        "n80": "優鉢羅華",
+        "n60": "青蓮華香",
+        "n40": "具足優鉢羅華",
+        "rel80_60": "异",
+        "rel80_40": "基同",
+        "skt": "utpalabhūti",
+        "skt_role": "gāndhikaśreṣṭhī（鬻香長者）",
+        "skt_place": "pṛthurāṣṭraṃ janapadaḥ（廣大國）",
+        "verdict": "同指·义译",
+        "basis": "utpala＝優鉢羅／青蓮華；六十「香」出 gāndhika（香師）而非名内，四十「具足」疑对 bhūti〔本文判断〕",
+        "flag": null,
+        "probe": "tatrotpalabhūtirnāma gāndhikaśreṣṭhī",
+        "pos": 350604,
+        "ord": 21,
+        "gv": "gv 139"
+      },
+      {
+        "no": 27,
+        "n80": "鞞瑟胝羅",
+        "n60": "安住",
+        "n40": "毘瑟底羅",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "veṣṭhila",
+        "skt_role": "gṛhapatiḥ（居士）",
+        "skt_place": "śubhapāraṃgamaṃ nagaram（善度城）",
+        "verdict": "同指·对音",
+        "basis": "八十「鞞瑟胝羅」、四十「毘瑟底羅」皆 veṣṭhila 的音写；六十「安住」与梵名无对音关系，疑与参31 sthāvarā（安住）相涉",
+        "flag": "六十「安住」名源待核",
+        "probe": "veṣṭhilo nāma gṛhapati",
+        "pos": 395706,
+        "ord": 27,
+        "gv": "gv 156"
+      },
+      {
+        "no": 32,
+        "n80": "婆珊婆演底",
+        "n60": "婆娑婆陀",
+        "n40": "春和",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "vāsantī",
+        "skt_role": "rātridevatā（主夜神）",
+        "skt_place": "kapilavastu（迦毘羅城）",
+        "verdict": "同指·音义并存",
+        "basis": "vasanta＝春，四十「春和」取义；八十「婆珊婆演底」、六十「婆娑婆陀」皆 vāsantī 的音写",
+        "flag": null,
+        "probe": "vāsantī nāma rātridevatā",
+        "pos": 425689,
+        "ord": 31,
+        "gv": "gv 170"
+      },
+      {
+        "no": 33,
+        "n80": "普德淨光",
+        "n60": "甚深妙德離垢光明",
+        "n40": "普遍吉祥無垢光",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "samantagambhīraśrīvimalaprabhā",
+        "skt_role": "rātridevatā（主夜神）",
+        "skt_place": "bodhimaṇḍa（菩提場）",
+        "verdict": "同指·义译",
+        "basis": "samanta＝普遍／普、gambhīra＝甚深、śrī＝吉祥／妙德、vimala＝無垢／淨、prabhā＝光；三本繁简各不同而元素俱全",
+        "flag": null,
+        "probe": "samantagambhīraśrīvimalaprabhā nāma rātridevatā",
+        "pos": 449308,
+        "ord": 32,
+        "gv": "gv 180"
+      },
+      {
+        "no": 35,
+        "n80": "普救眾生妙德",
+        "n60": "妙德救護眾生",
+        "n40": "普救護一切眾生威德吉祥",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "samantasattvatrāṇojaḥśrī",
+        "skt_role": "rātridevatā（主夜神）",
+        "skt_place": "tathāgataparṣanmaṇḍala（如來眾會）",
+        "verdict": "同指·义译",
+        "basis": "samanta＝普、sattva＝眾生、trāṇa＝救護、ojas＝威力／威德、śrī＝妙德／吉祥；三本词序互倒而元素同",
+        "flag": null,
+        "probe": "samantasattvatrāṇojaḥśrī nāma rātridevatā",
+        "pos": 495980,
+        "ord": 34,
+        "gv": "gv 202"
+      },
+      {
+        "no": 36,
+        "n80": "寂靜音海",
+        "n60": "寂靜音",
+        "n40": "具足功德寂靜音海",
+        "rel80_60": "基同",
+        "rel80_40": "基同",
+        "skt": "praśāntarutasāgaravatī",
+        "skt_role": "rātridevatā（主夜神）",
+        "skt_place": "bodhimaṇḍa（菩提場）",
+        "verdict": "同指·义译",
+        "basis": "praśānta＝寂靜、ruta＝音、sāgara＝海、vatī＝具足／有；六十「寂靜音」省「海」与 vatī，八十／四十全译",
+        "flag": null,
+        "probe": "praśāntarutasāgaravatī nāma rātridevatā",
+        "pos": 541478,
+        "ord": 35,
+        "gv": "gv 217"
+      },
+      {
+        "no": 37,
+        "n80": "守護一切城增長威力",
+        "n60": "妙德守護諸城",
+        "n40": "守護一切城增長威德",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "sarvanagararakṣāsaṃbhavatejaḥśrī",
+        "skt_role": "rātridevatā（主夜神）",
+        "skt_place": "vairocanasya parṣanmaṇḍala（菩提場如來會）",
+        "verdict": "同指·义译",
+        "basis": "sarva＝一切、nagara＝城、rakṣā＝守護、saṃbhava＝增長／生、tejaḥ＝威力／威德、śrī＝妙德／吉祥",
+        "flag": null,
+        "probe": "sarvanagararakṣāsaṃbhavatejaḥśrīrnāma rātridevatā",
+        "pos": 571231,
+        "ord": 36,
+        "gv": "gv 229"
+      },
+      {
+        "no": 38,
+        "n80": "開敷一切樹華",
+        "n60": "開敷樹華",
+        "n40": "能開敷一切樹華安樂",
+        "rel80_60": "异",
+        "rel80_40": "基同",
+        "skt": "sarvavṛkṣapraphullanasukhasaṃvāsā",
+        "skt_role": "rātridevatā（主夜神）",
+        "skt_place": "bhagavato vairocanasya pādamūla（佛足下）",
+        "verdict": "同指·义译",
+        "basis": "sarva＝一切、vṛkṣa＝樹、praphullana＝開敷、sukha＝安樂、saṃvāsā＝共住／所依",
+        "flag": null,
+        "probe": "sarvavṛkṣapraphullanasukhasaṃvāsā nāma rātridevatā",
+        "pos": 593806,
+        "ord": 37,
+        "gv": "gv 239"
+      },
+      {
+        "no": 39,
+        "n80": "大願精進力救護一切眾生",
+        "n60": "願勇光明守護眾生",
+        "n40": "守護一切眾生大願精進力光明",
+        "rel80_60": "异",
+        "rel80_40": "异",
+        "skt": "sarvajagadrakṣāpraṇidhānavīryaprabhā",
+        "skt_role": "rātridevatā（主夜神）",
+        "skt_place": "bodhimaṇḍa（道場）",
+        "verdict": "同指·义译",
+        "basis": "sarva-jagat＝一切眾生、rakṣā＝守護／救護、praṇidhāna＝願、vīrya＝精進力、prabhā＝光明",
+        "flag": null,
+        "probe": "sarvajagadrakṣāpraṇidhānavīryaprabhā nāma rātridevatā",
+        "pos": 643365,
+        "ord": 38,
+        "gv": "gv 263"
+      }
+    ],
+    "gaps": [
+      {
+        "no": 45,
+        "n80": "善知眾藝",
+        "n60": "善知眾藝",
+        "n40": "善知眾藝",
+        "between": [
+          "viśvāmitro nāma dārakācāryaḥ",
+          "bhadrottamā nāmopāsikā"
+        ],
+        "basis": "viśvāmitra（遍友）之後直入 bhadrottamā（賢勝），其間無第三位指授句；Vaidya 本无「善知眾藝」一位（śilpa 只见于教法文句，非独立善知识）",
+        "pos": 843289,
+        "ord": 43,
+        "gv": "gv 351",
+        "gv_to": "gv 354",
+        "gap_chars": 6950
+      }
+    ],
+    "stats": {
+      "cases": 17,
+      "same": 16,
+      "pending": 1,
+      "by_verdict": {
+        "同指·义译": 12,
+        "同指·音义并存": 3,
+        "待核·名源不合": 1,
+        "同指·对音": 1
+      },
+      "flagged": [
+        13,
+        14,
+        15,
+        18,
+        27
+      ],
+      "ord_first": 1,
+      "ord_last": 38
+    },
+    "boundaries": [
+      "这是「同指」判，不是译名优劣判：三本字面全异，只判其是否同出一梵名，不评谁译得准。",
+      "单一写本系统：所用为 Vaidya 校本之电子转写；参 18 的梵名 anala 与八十／六十之名不合，只能记作该本如此，不得推为梵本原无别名。",
+      "次序与 §17.24 同用一套指令序（1–48 段）；本节十七组的序（1–38）严格递增，无相等。附表「參45」非本节十七组之一，乃三本同字而梵本空缺者，一并核出。",
+      "音写是否合于梵音、义译是否尽义，皆不在本节判内。",
+      "三本同字 15 组未逐条核梵：其中参 45 已核为「Vaidya 本无指授句」，余 14 组（参号 3、5、6、7、19、20、30、42、43、44、47、48、49、51）字面虽同，仍可能各依不同梵名而偶合，不得读作已核。"
+    ]
+  }
 }
