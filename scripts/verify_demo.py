@@ -482,6 +482,16 @@ _ts = _yaml.safe_load(open(os.path.join(ROOT, 'data', 'translation', 'topic_stud
 for _a in (_ts.get('articles') or []):
     if _a.get('id') and _a.get('updated_at'):
         _decl[_a['id']] = str(_a['updated_at'])
+# L.491：五十三参子页为运行时程序汇编（不入 YAML others）——声明源＝rufajie_can_lib 生成清单
+try:
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(ROOT, 'web', 'demo', 'scripts'))
+    import rufajie_can_lib as _rcl
+    for _a in _rcl.load_articles(ROOT):
+        if _a.get('updated_at'):
+            _decl[_a['id']] = str(_a['updated_at'])
+except Exception as _e:
+    print('  (can pages updated_at 读取失败：%s)' % _e)
 _badfmt = {k: v for k, v in _decl.items() if not _re.fullmatch(r'\d{4}-\d{2}-\d{2}', v)}
 if _badfmt:
     fail(f'articles updated_at: 非 ISO 日期 {sorted(_badfmt)}')

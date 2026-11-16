@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华严宗 · 入法界品 · 参34·喜目觀察一切眾生 · 独立文章</title>
+<script>try{var P=JSON.parse(localStorage.getItem('read-prefs')||'{}'),D=document.documentElement;if(P.night)D.classList.add('night');if(P.scale&&P.scale!==1)D.style.setProperty('--read-scale',String(P.scale));if(P.lh&&P.lh!==1.9)D.style.setProperty('--read-lh',String(P.lh));}catch(e){}</script>
+<link rel="stylesheet" href="../css/common.css?v=202611162349">
+</head>
+<body>
+<div id="page-top" style="position:sticky;top:0;z-index:100">
+<header id="header">
+  <a href="../index.html" class="back-link">&larr; Home</a>
+  <h1>入法界品 · 参34·喜目觀察一切眾生</h1>
+  <span class="art-updated">📝 最后更新：2026-11-16</span>
+  <button id="share-link" class="share-btn" onclick="copyPageLink();return false" title="复制本页独立地址，点击即可直达">🔗 分享地址</button>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleSiteLang();return false" title="阅读语言：中英对照 ⇄ 仅中文">🌐 中·EN</button>
+  <span style="margin-left:auto;font-size:0.7em;color:var(--text2);text-decoration:none">📄 独立文章页</span>
+</header>
+<div style="background:rgba(196,107,93,0.08);border-bottom:1px solid rgba(196,107,93,0.25);padding:6px 16px;font-size:0.72em;color:var(--red);text-align:center">
+⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
+</div>
+<div style="padding:5px 16px;border-bottom:1px solid var(--line);font-size:0.76em;display:flex;gap:16px;align-items:center;background:rgba(94,139,158,0.06);flex-wrap:wrap">
+  <a href="javascript:history.back()" style="color:var(--blue);text-decoration:none;font-weight:600">← 返回上一步</a>
+  <span style="opacity:0.45">|</span>
+  <a href="../tabs/gap.html" style="color:var(--blue);text-decoration:none">返回到：文献页 · 华严经学 ›</a>
+  <span style="margin-left:auto;opacity:0.75;color:var(--text2)"><a href="../index.html" style="color:var(--text2);text-decoration:none">首页 ›</a></span>
+</div>
+</div>
+<main class="content content-article" id="article-root"></main>
+<div id="share-toast" style="position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(31,36,42,0.96);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82em;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.3)"></div>
+
+<script src="../js/common.js?v=202611162349"></script>
+<script>
+function copyPageLink(){
+  var url = window.location.href;
+  var toast = document.getElementById('share-toast');
+  function done(msg, ok){
+    if(toast){ toast.textContent = msg; toast.style.display='block'; setTimeout(function(){ toast.style.display='none'; }, 2600); }
+    return ok;
+  }
+  function fallback(u){
+    var ta = document.createElement('textarea'); ta.value = u; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done('✅ 本页独立地址已复制：' + u, true); }
+    catch(e){ done('📋 请手动复制地址：' + u, false); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(function(){ done('✅ 本页独立地址已复制：' + url, true); },
+      function(){ fallback(url); });
+  } else {
+    fallback(url);
+  }
+}
+</script>
+
+<script>
+(function(){
+  var MAP = {"法显西行": "person_110", "鸠摩罗什": "person_103", "佛驮跋陀罗": "person_006", "杜顺": "person_001", "智俨": "person_002", "法藏": "person_003", "澄观": "person_004", "宗密": "person_005", "实叉难陀": "person_007", "般若": "person_008", "义天": "person_010", "净源": "person_011", "月霞": "person_012", "海云继梦": "person_042", "南亭": "person_015", "成一": "person_016", "贤度": "person_017", "智光": "person_018", "应慈": "person_031", "常惺": "person_013", "支娄迦谶": "person_007b", "审祥": "person_050", "钦因": "person_041", "真禅": "person_044", "慧光": "person_090", "元晓": "person_060", "义湘": "person_061", "慧苑": "person_070", "子璿": "person_091", "均如": "person_062", "续法": "person_080", "良弁": "person_j01", "实忠": "person_j02", "等定": "person_j03", "圣宝": "person_j04", "观贤": "person_j05", "明惠": "person_j06", "凝然": "person_j07", "思元慧三": "person_f01", "成观法师": "person_126", "体化性果": "person_f02", "了中": "person_032", "賢首": "person_003", "康藏法藏": "person_003", "雲華": "person_002", "澄觀": "person_004", "清涼": "person_004", "義天": "person_010", "義湘": "person_061", "元曉": "person_060", "審祥": "person_050", "實叉難陀": "person_007", "佛陀跋陀罗": "person_006", "應慈": "person_031", "續法": "person_080", "淨源": "person_011"};
+  var NAMES = Object.keys(MAP).sort(function(a,b){return b.length-a.length;});
+  var BASE = '../famai/shanhe.html';
+  function skip(node){
+    var p = node.parentElement;
+    while(p && p !== document.body){
+      var tag = p.tagName;
+      if(tag==='A'||tag==='CODE'||tag==='PRE'||tag==='BLOCKQUOTE') return true;
+      var cls = p.getAttribute ? (p.getAttribute('class')||'') : '';
+      if(/\b(q|quote|cite-card|lic)\b/.test(cls)) return true;
+      p = p.parentElement;
+    }
+    return false;
+  }
+  function linkify(){
+    var root = document.getElementById('article-root');
+    if(!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var edits = [];
+    var tn;
+    while((tn = walker.nextNode())){
+      if(skip(tn)) continue;
+      var text = tn.textContent;
+      for(var i=0;i<NAMES.length;i++){
+        var nm = NAMES[i], pos = text.indexOf(nm);
+        if(pos < 0) continue;
+        edits.push({node:tn, name:nm, pid:MAP[nm], pos:pos});
+        break;
+      }
+    }
+    for(var j=edits.length-1;j>=0;j--){
+      var e = edits[j];
+      var t = e.node.textContent;
+      var idx = t.indexOf(e.name);
+      if(idx < 0) continue;
+      var before = t.slice(0, idx), after = t.slice(idx + e.name.length);
+      var a = document.createElement('a');
+      a.href = BASE + '?master=' + e.pid;
+      a.className = 'lin-deeplink';
+      a.title = '在山河法脉地图中展开 ' + e.name;
+      a.textContent = e.name;
+      var frag = document.createDocumentFragment();
+      if(before) frag.appendChild(document.createTextNode(before));
+      frag.appendChild(a);
+      if(after) frag.appendChild(document.createTextNode(after));
+      e.node.parentNode.replaceChild(frag, e.node);
+    }
+    if(edits.length) console.log('[lin-deeplink] linked ' + edits.length + ' mentions');
+  }
+  if(document.readyState==='complete') setTimeout(linkify,100);
+  else window.addEventListener('load', function(){ setTimeout(linkify,100); });
+})();
+</script>
+<style>
+.lin-deeplink{color:var(--gold,#b8863c);text-decoration:none;border-bottom:1px dashed var(--gold,#b8863c);cursor:pointer;font-weight:600}
+.lin-deeplink:hover{color:var(--red,#a83a24);border-bottom-color:var(--red,#a83a24)}
+</style>
+
+<script>
+var ARTICLE = {"id": "huayan-rufajie-can-34", "file": "articles/huayan-rufajie-can-34.html", "title": "入法界品 · 参34·喜目觀察一切眾生", "title_sub": "夜神｜〔核订〕｜大速疾力普喜幢無垢解脫 ｜ 7,790 CJK · 主页参节全文照录＋三译四件套", "icon": "🧭", "version": "v1.0", "meta": "", "doc": "", "doc_md": "# 参34·喜目觀察眾生夜神（T0293指授作星宿光大喜目） —— 入法界品·五十三参子页\n\n> **体例与来源**：底本四十华严 `T10n0293`（般若译·善财历参）；对读八十 `T10n0279`、六十 `T09n0278`（引文各照底本）。本页由程序汇编（L.491）：§一 照录自主页《华严经细读·第三十九部》§参34 全文（参题解·要点·阐释·对照启发·三译深释表·经文全引——人工核订内容·原样保留，含其中〔本文判断〕〔待核〕标注）；§二 自四件套语料库（L.421/L.456）程序汇编；数据卡自行历图数据（L.407/L.413/L.415）。**阐释性文字之性质以原文标注为准；本页不新增判断。**\n\n> ← [参33·普遍吉祥無垢光](huayan-rufajie-can-33.html) ｜ 📘 [子页总目](huayan-rufajie-can-index.html) ｜ 🗺 [行历图](huayan-rufajie-journey.html) ｜ 📄 [主页 §参34](huayan-rufajie-pin.html) ｜ [参35·普救護一切眾生威德吉祥 →](huayan-rufajie-can-35.html)\n\n## 〇、本参数据卡（程序汇编·L.491）\n\n| 项 | 值 |\n|---|---|\n| 参号 | 第34参（54 卡号系·L.327/L.407 重排）｜第34参（经文层计数）\n| 善知识·四十 | **喜目觀察一切眾生**（`T10n0293`）\n| ·八十 | 喜目觀察眾生（`T10n0279`）\n| ·六十 | 喜目觀察眾生（`T09n0278`）\n| 三译名判 | 四十多「一切」\n| 身份 | 夜神\n| 处所 | 〔核订〕\n| 法门自陈（「我唯得/知此」） | 大速疾力普喜幢無垢解脫\n| 本参经文 | 7,790 CJK（T0293 span 131,749–140,797）\n| 前参 | 参33·普遍吉祥無垢光（法门：菩薩寂靜禪定樂普遊步勇猛解脫門）\n| 后参 | 参35·普救護一切眾生威德吉祥（法门：菩薩普現一切世間調伏眾生解脫）\n\n## 一、主页参节全文（照录·零删改）\n\n**参题解**：喜目觀察一切眾生夜神（T0293指授亦作星宿光大喜目〔名异存核〕）。法门：**大速疾力普喜幢無垢解脫**（实测）。\n\n**【要点提炼】**\n\n1. **加被十一能**：喜目神先以威神力加被善财，「令知親近善知識能修助道具／能起勇猛心／能作難壞業／能得堅固力／能入無邊方／能久遠修行／……能不離本處遍至十方」——**把参学的价值清单直接灌进学生心里**再开课。\n2. **善财自应十一由**：「由親近善知識，能勇猛勤修一切智道……能為利樂一切眾生盡未來劫受無邊苦」——加被与自应，一授一受同构。\n3. **世界海现观**：入其境界见一切世界地轮任持——杂秽·清净·杂秽清净·覆住·侧住，种种差别「不相雜亂，靡不知見」。\n\n**【阐释】**（〔本文判断〕）参33的方法论独特：**先灌价值再传法**——善知识以神力令善财「知」亲近善知识之能，等于把参学的意义论先安装好；善财随之自应十一由，师徒两份清单重叠处即共识。世界海现观（杂秽清净相杂、覆住侧住）把「众生世界多形态」给参学者看全——法门名「普喜幢無垢」：喜是对世界之喜，无垢是对杂秽之不染。\n\n**【对照/启发】**：与〈世界成就品〉对读——世界结构之学在参学中实地用上。启发：十一能自测——亲近善知识至今，自己长了哪几能？\n\n**80/40 深释·夜神八连参总论（参34–40）**\n\n到会式两译一律〔詣X夜神所〕（师名异形已见三译对读表）——到会模板之稳至此为全历参之最；法门自陈句两译俱在而句长甚巨（语料窗内不截——门名以 §批八校订数据为准）。八连参逐位判：\n\n| 参 | 八十门名 | 四十门名 | 判 |\n|---|---|---|---|\n| 34 | 大勢力普喜幢解脫門 | 大速疾力普喜幢無垢解脫門 | 义近（普喜幢同·勢力/速疾·四十多「無垢」） |\n| 35 | 菩薩普現一切世間調伏眾生解脫 | 菩薩普現一切世間調伏眾生解脫門 | **全同**（L.377 已证近全同段·最长平行） |\n| 36 | 念念生廣大喜莊嚴解脫 | 念念速疾出生廣大歡喜莊嚴解脫門 | 基同增衔（四十多「速疾」「歡喜」） |\n| 37 | 甚深自在妙音解脫 | 甚深自在可愛妙音解脫 | 义近（四十多「可愛」） |\n| 38 | 菩薩出生廣大喜光明解脫門 | 菩薩出生廣大歡喜調伏眾生藏普光明解脫門 | 义近（出生广大喜同系·四十全衔） |\n| 39 | 教化眾生令生善根解脫門 | 菩薩普化眾生令生善根解脫門 | 基同增衔（教化/普化） |\n| 40 | 菩薩於無量劫遍一切處示現受生自在解脫 | 菩薩於無量劫遍一切處示現受生自在神變解脫法門 | 基同增衔（四十多「神變」） |\n\n判：夜神段门名两译**无一处判「异」**（全同 1＋基同 4＋义近 2）——历参段中同构度最高；喜（34/36/38）·音（37）·行（35/39）·受生（40）四系门名两译皆平行。〔本文判断：夜神段为两译同源最近处〕\n\n**60/40 深释·参34（六十喜目觀察眾生／四十喜目觀察一切眾生）**\n\n| 件 | 六十 | 四十 | 同构 |\n|---|---|---|---|\n| 到会 | 至十方一切佛所 | 詣喜目觀察一切眾生夜神所 | 0/12 |\n| 法门 | — | — | — |\n| 指授 | 汝詣彼問云何菩薩學菩薩行、修菩薩道 | 汝詣彼問菩薩云何學菩薩行、修菩薩道 | 10/14 |\n| 辞退 | 禮彼夜天足，遶無數匝，眷仰辭退 | 禮夜天足，遶無數匝，慇懃瞻仰，辭退 | 1/14 |\n\n判：师名〔义近〕·门名〔待比〕。\n\n**三译对读（L.415·据 §批七/批八 总表）**\n\n| 译 | 师名 | 门名 |\n|---|---|---|\n| 八十 | 喜目觀察眾生 | 大勢力普喜幢解脫門 |\n| 六十 | 喜目觀察眾生 | —（未具名/纯转介） |\n| 四十 | 喜目觀察一切眾生 | 大速疾力普喜幢無垢解脫 |\n\n判：师名〔四十多「一切」〕·门名〔待比〕。\n\n**本参经文全引**（T0293·7,790 CJK·0 手抄）：\n\n> 詣喜目觀察一切眾生夜神所。時，喜目神以威神力加善財童子，令知親近善知識能生善根，增長成熟；所謂：令知親近善知識，能修助道具；令知親近善知識，能起勇猛心；令知親近善知識，能作難壞業；令知親近善知識，能得堅固力；令知親近善知識，能入無邊方；\n>\n> 令知親近善知識，能久遠修行；令知親近善知識，能辨無邊業；令知親近善知識，能行無量道；令知親近善知識，能得速疾力，普詣諸剎；令知親近善知識，能不離本處，遍至十方。時，善財童子遽發是念：「由親近善知識，能勇猛勤修一切智道；由親近善知識，能速疾出生諸大願海；\n>\n> 由親近善知識，能為利樂一切眾生，盡未來劫受無邊苦；由親近善知識，能被勇猛精進甲，於一極微中，說法聲遍法界；由親近善知識，能速往詣遍十方海；由親近善知識，於一毛道盡未來劫，修菩薩行；由親近善知識，於念念中，行菩薩行，究竟安住一切智地；\n>\n> 由親近善知識，能入三世一切如來自在神力諸莊嚴道；由親近善知識，常緣法界，未曾動出，而能遍往無邊國土；由親近善知識，能常遍入淨法界門，離去來想，遍往十方。」爾時，善財童子發是念已，即詣喜目夜神所，見彼夜神在於如來眾會道場，坐蓮華藏師子之座，入大速疾普喜幢無垢解脫門，於其身上一一毛孔，出無量種變化身雲；\n>\n> 隨其所應，以妙言音而為說法，普攝無量一切眾生，皆令歡喜，而得利益。所謂：出無量化身雲，充滿十方一切世界，說諸菩薩行檀波羅蜜，於一切事皆無戀著，於一切眾生普皆施與，法界一相，其心平等，供養承事，無有輕慢，內外悉施難捨能捨。\n>\n> 又從一一毛孔，出等眾生數無量化身雲，充滿法界，普現一切諸眾生前，說持淨戒無有缺犯，修諸苦行，皆悉圓滿，於諸世間，無有所依，於諸境界，無所愛著；說在生死輪迴往返，說諸人天盛衰苦樂，說諸境界皆是不淨，說有為法皆是無常，說諸有漏悉苦無味，說一切法空無有我；\n>\n> 令諸眾生，捨離想心、妄見、顛倒，住如來境，了不思議常樂我淨，究竟真實持如來戒，如是演說種種戒行，戒香普熏，令諸眾生悉得成熟。又從一一毛孔，出等眾生數種種身雲，說能忍受一切眾苦。所謂：割截捶楚、訶罵輕辱，其心泰然，無有忿恚，安受諦思，不動不亂，於一切行不卑不高，於諸眾生不起我慢，於諸法性審諦觀察；\n>\n> 說菩提心無有窮盡，心無盡故，智亦無盡，普斷一切眾生煩惱；說諸眾生，卑賤醜陋，形相鄙惡，不具足身，令生厭離。方便除滅如是等因，讚諸如來清淨妙色無上之身，令生欣樂，如是方便，成熟眾生。又從一一毛孔，出等眾生數種種身雲，隨諸眾生心之所樂，說勇猛精進，修一切智助道之法：勇猛精進，摧伏魔怨；\n>\n> 勇猛精進，發菩提心，不動不退；勇猛精進，度諸眾生出生死海；勇猛精進，除滅一切惡道諸難；勇猛精進，以智慧力壞無智山；勇猛精進，供養承事一切如來，心無疲厭；勇猛精進，受持一切諸佛法輪，常不忘失；勇猛精進，壞散一切諸重煩惱大障礙山；\n>\n> 勇猛精進，教化成熟一切眾生；勇猛精進，嚴淨一切諸佛剎土；如是方便，成熟眾生。又從一一毛孔，出等眾生數無量身雲，以種種方便，令諸眾生除滅愁歎、憂悲、苦惱，心生歡喜，捨離惡意，厭一切欲；為說慚愧，令諸眾生藏護諸根；為說無上清淨梵行、為說諸欲是魔境界，令生恐怖；\n>\n> 為現不樂世間欲樂，住法園苑，受諸法樂，隨其次第，入深禪定諸三昧樂，令思惟觀察，除滅一切所有煩惱，讚歎心性，顯示無生；又為演說一切菩薩諸三昧海，神力變現自在遊戲，令諸眾生，歡喜適悅，離諸惑怖，其心清淨，心性調柔，堪任受用，諸根明利，愛重於法，修習增長；\n>\n> 以是方便，成熟眾生。又從一一毛孔，出等眾生數種種身雲，為說往詣一切佛剎，親近承事供養諸佛，及以師長真善知識，受持一切諸佛法輪，精勤不懈；又為演說，稱讚一切諸如來海，觀察一切諸法門海，顯示一切諸法性相，開闡一切諸三昧門，照智慧境界，枯竭一切眾生疑海，示金剛智，壞邪見山，昇慧日輪，破諸癡暗，皆令歡喜，成一切智。\n>\n> 又從一一毛孔，出等眾生數種種身雲，現種種色相、種種形貌不思議身，普詣一切諸眾生前，隨其所應，以種種言辭辯才訓釋，而為說法，或說世間神通福力、或說三界皆是可怖，令其不作世間業行，離三界處，出見稠林。或為稱讚一切智道，令其超越一切聲聞、辟支佛地；\n>\n> 或為演說，不住生死，不住涅槃，令其不著有為、無為，於敬、於慢，心無憂喜；或為演說，住於天宮，乃至道場，成等正覺，令其欣樂，發菩提意，顯示如是方便善巧波羅蜜門，教化成熟一切眾生，皆令究竟得一切智。又從一一毛孔，出一切世界極微塵數種種身雲，普現一切諸眾生前，於念念中，示普賢菩薩一切行願；\n>\n> 於念念中，示清淨大願，充滿法界；於念念中，示嚴淨一切世界海；於念念中，示供養一切如來海；於念念中，示入一切法門海；於念念中，示入一切剎海極微塵數諸世界海；於念念中，示於一切剎，盡未來劫，清淨修行一切智道；於念念中，示入十方一切如來力；\n>\n> 於念念中，示入三世一切方便海；於念念中，示往一切剎，現種種神通變化自在；於念念中，示一切菩薩種種行願，顯示如是願波羅蜜，令諸眾生，住一切智，如是所作，恒無休息。又從一一毛孔，出等一切眾生種種心數變化身雲，普詣一切諸眾生前，說諸菩薩集一切智助道之法：無邊際力；\n>\n> 不破壞力；無窮盡力；修無上行不退轉力；無間斷力；於生死法無染著力；能破一切諸魔軍力；遠離一切煩惱垢力；能破一切業障山力；住一切劫，修大悲行無疲倦力；震動一切諸佛剎土，令諸眾生生歡喜力；普於世間轉法輪力；以如是等力波羅蜜，方便成熟，令諸眾生至一切智。\n>\n> 又從一一毛孔，出等一切眾生種種心數種種色相變化身雲，普詣十方無量世界，隨眾生心，演說一切菩薩智行，所謂：說入一切眾生界海智；說入一切眾生心海智；說入一切眾生根海智；說入一切眾生行海智；說度一切眾生成熟調伏，未曾失時智；說出一切法界音聲智；\n>\n> 說念念遍一切法界海智；說念念知一切世界海滅壞智；說念念知一切世界海成住莊嚴形相差別智；說念念神通自在，親近供養一切如來，聽受法輪智；顯示如是智波羅蜜，令諸眾生，皆大歡喜，調暢適悅，其心寂靜，生決定解，求一切智，無有退轉，如說菩薩諸波羅蜜，種種調伏，成熟眾生，於種種時，隨種種心，知種種根，令其明利有所堪任，能生愛樂，深信解力，於一切智，究竟圓滿，如是宣說一切菩薩種種行法，而為利益成熟眾生，亦復如是。\n>\n> 又於一一毛孔，現彼夜神，從初發心所集功德。所謂：承事諸善知識，親近諸佛，修習善法，行施波羅蜜，難捨能捨；行戒波羅蜜，棄捨王位、富貴自在、宮殿眷屬，以增勝心，出家學道；行忍波羅蜜，能忍世間一切難行、種種苦事，及以菩薩圓滿清淨所修苦行，所持正法，皆悉堅牢，其心不動；\n>\n> 亦能忍受一切眾生，於己身心惡作惡說；忍一切業，皆不失壞；忍一切法深信決定、生正解心；忍諸法性，能諦思惟，無有分別；行精進波羅蜜，起一切智行，成一切佛法，普遍成熟而無退轉；行禪波羅蜜，滿足清淨，其禪波羅蜜所有資具、所有勤求、所有修行、所有成就、所有清淨、所有圓滿、所起三昧神通、所入三昧海門，皆悉顯示；\n>\n> 行般若波羅蜜，心無取著，其般若波羅蜜所有資具、所有清淨、大智慧日、大智慧雲、大智慧藏、大智慧海、大智慧行、大智慧門，皆悉顯示。復示修行方便善巧波羅蜜門，其方便波羅蜜所有資具、所有修行、所有體性、所有理趣、所有清淨、所有相應事，皆悉顯示；\n>\n> 行願波羅蜜，其願波羅蜜所有體性、所有成就、所有修習、所有相應事，皆悉顯示；行力波羅蜜，其力波羅蜜所有資具、所有因緣、所有理趣、所有演說、所有相應事，皆悉顯示；行智波羅蜜，其智波羅蜜所有資具、所有體性、所有修行、所有成就、所有出生、所有清淨、所有處所、所有增長、所有深入、所有光明、所有顯示、所有理趣、所有相應事、所有能揀擇、所有諸行相、所有相應法、所有所攝法、所知法、所知業、所知剎、所知劫、所知世、所知佛出現、所知佛、所知菩薩、所知菩薩心、菩薩位、菩薩資具、菩薩發趣、菩薩迴向、菩薩所行、菩薩大願、菩薩法輪、菩薩揀擇、菩薩法海、菩薩法門海、菩薩法漩流、菩薩法伏藏、菩薩法理趣，如是等智波羅蜜相應境界，皆悉顯示；\n>\n> 從彼夜神一一毛孔，皆悉具足，顯現如是十波羅蜜，教化成熟一切眾生。爾時，善財童子見喜目觀察一切眾生主夜神，復於一一諸毛孔中，出興無量眾生形相相似身雲，所謂：出興色究竟天、善現天、善見天、無熱天、無煩天相似身雲，如是出興廣果福生無雲天相似身雲；\n>\n> 出興遍淨、無量淨、少淨天相似身雲；出興極光、淨無量光、少光天相似身雲；出興大梵、梵輔、梵眾天相似身雲；出興他化自在天、化樂天、兜率陀天、須夜摩天、忉利天，如是天王，及天采女、諸天子眾相似身雲；出興提頭賴吒乾闥婆王、乾闥婆子、乾闥婆女相似身雲；\n>\n> 出興毘樓勒叉鳩槃茶王、鳩槃茶子、鳩槃茶女相似身雲；出興毘樓博叉龍王、龍子、龍女相似身雲；出興毘沙門夜叉王、夜叉子、夜叉女相似身雲；出興大樹緊那羅王、緊那羅子、緊那羅女相似身雲；出興妙智摩睺羅伽王、摩睺羅伽子、摩睺羅伽女相似身雲；\n>\n> 出興大勢速疾力迦樓羅王、迦樓羅子、迦樓羅女相似身雲；出興羅睺阿脩羅王、阿脩羅子、阿脩羅女相似身雲；出興閻羅法王、閻羅王子、閻羅王女相似身雲；出興世間一切人王，及王夫人、王子、王女相似身雲；出如是等一切種類諸趣身雲。出興一切聲聞、獨覺、一切菩薩，及諸佛眾相似身雲；\n>\n> 出興一切地神、水神、火神、風神、河神、海神、山神、林神、主稼神、主藥神、主樹神、主地神、主城神、主晝神、主夜神、主空神、主方神、身眾神、足行神、主道場神，乃至執金剛神等相似身雲；周遍十方，充滿法界，於彼一切諸眾生前，現種種聲。\n>\n> 所謂：風輪聲、水輪聲、火焰聲、海潮聲、地震聲、大山相擊聲、天城震動聲、摩尼相擊聲、天王聲、龍王聲、夜叉王聲、乾闥婆王聲、阿脩羅王聲、迦樓羅王聲、緊那羅王聲、摩睺羅伽王聲、人王聲、梵王聲、天女歌詠聲、諸天音樂聲、摩尼寶王聲、聲聞聲、獨覺聲、菩薩聲，以如是等種種音聲，宣說喜目觀察眾生主夜神從初發心所集功德，相續次第；\n>\n> 所習善根，相續次第；發菩提心，相續次第；所修無量諸波羅蜜，相續次第；死此生彼，及其名號，相續次第；親近善友，承事諸佛，相續次第；聽諸如來種種法輪，相續次第；受持正法，相續次第；修菩薩行，相續次第；入諸三昧，相續次第；以三昧力普見諸佛，相續次第；\n>\n> 普見諸剎，相續次第；普知諸劫，相續次第；深入法界，相續次第；觀察眾生，相續次第；入法教海，相續次第；知諸眾生死此生彼，相續次第；得淨天耳，聞一切聲，種種辯才，隨順思惟，相續次第；得淨天眼，見一切色，種種形相，善巧觀察，相續次第；\n>\n> 得他心智，知眾生心，相續次第；得宿住智，知前際事，相續次第；得不思議無依無作神足智通自在遊行遍十方剎，相續次第；得菩薩差別解脫，入菩薩不可思議解脫教海，住菩薩三昧神通，得菩薩勇猛遊步，住菩薩心想，為菩薩眷屬，入菩薩道場，如是一切所有功德，相續次第，皆悉演說，分別顯示，成熟眾生。\n>\n> 如是說時，於念念中，十方各嚴淨不可說不可說諸佛剎土，度脫無量惡趣眾生，令無量眾生，生天人中，富貴自在；令無量眾生，出生死海；令無量眾生，安住聲聞、辟支佛地；令無量眾生，得菩薩法門；令無量眾生，住如來智地。大方廣佛華嚴經卷\n>\n> 第十八大方廣佛華嚴經大方廣佛華嚴經卷\n>\n> 第十九罽賓國三藏般若奉詔譯入不思議解脫境界普賢行願品爾時，善財童子見聞如上所現一切諸希有事，念念觀察，思惟解了，隨順修行，深入安住，平等成就；承佛威力及解脫力，得菩薩不可思議大速疾力普喜幢無垢解脫門。何以故？與彼夜神於往昔時同修行故，如來威力所加持故，不思議善根所祐助故，得菩薩諸根故，生如來種中故，得善友力所攝受故，受諸如來所護念故，毘盧遮那如來曾所化故，彼分善根已成熟故，堪修普賢菩薩行故。\n>\n> 爾時，善財童子得此解脫已，心生歡喜，十方如來威神力故，合掌向喜目觀察夜神，以偈讚曰：「天於無量大劫中，善學諸佛甚深法，普隨一切眾生類，顯現色身無所著。了知沈溺諸眾生，無主無親嬰妄想，為現神通種種身，宣示正法令調伏。法身寂靜恒無二，無依無著無分別，為化眾生普現身，演說正法令調伏。\n>\n> 仁於諸蘊及界處，了法皆空無所著，示現色相莊嚴身，演說正法令調伏。不著內外一切法，已出無邊生死海，欲拔眾生離有無，現同類身無不遍。仁心能於一切境，永離諸欲及分別，普為癡暗諸眾生，顯自覺法令調伏。仁心能住於三昧，經於多劫恒不動，於身毛孔出化雲，為供十方諸善逝。\n>\n> 汝入如來十力門，念念方便無邊際，隨應化現各不同，普攝一切諸群品。汝審諦觀諸有海，種種業力具莊嚴，於無障礙道法中，為說令心得清淨。汝身色相如普賢，清淨莊嚴妙無比，隨諸眾生種種欲，普能顯示於世間。」爾時，善財童子以此妙偈讚夜神已，白言：「聖天！\n>\n> 汝發阿耨多羅三藐三菩提心其已久如？得此解脫為幾時耶？」爾時，夜天以偈答曰：「我念過去經多劫，過於佛剎微塵數，剎號摩尼安樂光，劫名寂靜大音聲。剎中所有四天下，百千俱胝那由他，其中有一四天下，名摩尼山眾色光。其中所有廣大城，百千萬億那由他，於中有一王都城，名眾香光摩尼幢，具足妙寶所莊嚴，人天見者皆欣悅。\n>\n> 彼時有一轉輪王，名廣大身為世主，三十二相皆圓滿，種種隨好以嚴身。真金妙色光明聚，清淨蓮華之所生，騰空自在放身光，其光普及閻浮界。其轉輪王有千子，威勢勇猛相端嚴，良臣輔佐一俱胝，智慧多聞咸具足。后妃嬪御有十億，皆如天女悅人心，能隨王意性調柔，恒起慈心而給侍。\n>\n> 時王以法利群生，正法宣流四天下，鐵圍大地皆臣屬，富樂豐饒人庶歡。我時與王為寶女，言辭具足梵音聲，身光照及千由旬，光如無垢真金色。有時日光既已沒，所奏音樂咸寂然，大王及我諸妃嬪，一切無不皆安寢。彼時有佛出世間，號曰吉祥功德海，顯現無量神通力，普遍十方諸世界。\n>\n> 復出無量光明海，等一切剎微塵數，示現種種自在身，遍滿十方無有盡。大地諸山皆震動，發聲普告佛出興，天人龍眾阿脩羅，聞佛出世皆歡喜。復從一一毛孔中，出佛化身神變海，十方世界皆充滿，隨眾生心說妙法。我時於彼夜夢中，見佛種種諸神變，亦聞演說甚深法，愛樂喜歎未曾有。\n>\n> 時有十千主夜神，在王宮上空中住，同時讚佛諸功德，以妙言音覺悟我。勝智賢后汝應起，佛已出興於汝國，百千劫海難值遇，見者利樂皆清淨。我時寢寤心欣敬，即覩清淨妙光明，觀此光相從何來，見佛坐於樹王下。三十二相莊嚴體，妙色出過寶山王，復於一切毛孔中，普放廣大光明海。\n>\n> 我時見已生歡喜，即發廣大希有心，願我亦當如世尊，具足廣大神通力。我於是時尋覺悟，大王妃嬪諸眷屬，咸令見佛大光明，一切身心皆慶悅。我時與彼轉輪王，四兵千億同圍遶，及與無量諸眾生，俱行共詣如來所。我時經於二萬歲，一心供養彼如來，七寶大地四天下，敬心奉施曾無倦。\n>\n> 時彼如來為我說，修多羅海功德雲，以佛威力應群心，發起莊嚴諸願海。彼時夜神覺悟我，令我見佛心增益，我時願得如是身，覺悟一切諸放逸。我從於此初發心，願趣無上菩提道，往來生死諸有海，能滅眾苦心無失。此後常以深信心，供佛十億那由他，恒受人天安隱樂，饒益一切諸群生。\n>\n> 初佛號名吉祥海，二名功德無盡燈，\n>\n> 第三佛號妙寶幢，\n>\n> 第四佛號虛空慧，\n>\n> 第五佛號拘蘇摩，\n>\n> 第六智月無所著，\n>\n> 第七法月光明王，\n>\n> 第八智輪光普照，\n>\n> 第九如來兩足尊，號為寶焰山燈光，\n>\n> 第十調御天人師，名曰三世大光音。如是十億那由他，我皆供養心歡喜，然猶未得智慧眼，入此甚深解脫海。從此次第復有剎，名一切佛寶光明，其劫名為天吉祥，五百如來出興世。初佛月輪圓滿光，\n>\n> 第二佛名為日燈，\n>\n> 第三佛號星宿幢，\n>\n> 第四佛名妙寶峯，五華焰光六海燈，七焰吉祥八天德，\n>\n> 第九法王號光幢，\n>\n> 第十普智光明王。如是五百諸如來，一一我皆曾供養，尚於我愛阿賴耶，不知無依計為有。從此次第復有劫，名眾妙色梵光明，世界具足寶莊嚴，名勝吉祥華燈雲。彼中無量佛出興，一一我皆曾供養，亦供如來大眾會，恭敬聽法心歡喜。初佛號曰寶須彌，二名光明功德海，三名法界妙音幢，四號法海大聲王，五法幢佛六威嚴，七法力光八空智，\n>\n> 第九法焰須彌光，\n>\n> 第十佛名雲吉祥。如是上首等諸佛，一一我皆親供養，未能明了深法性，而得入於諸佛海。此後次第復有劫，其劫名為月吉祥，當於彼時有佛剎，號曰日燈吉祥幢。彼時有佛出於世，其數八十那由他，廣陳一切莊嚴具，皆以深心而敬奉。最初甘露味王佛，\n>\n> 第二佛名大樹王，三名功德須彌峯，四名平等妙寶眼，五光遍照六光嚴，七法海佛八勝力，九名世主威力賢，\n>\n> 第十一切法光王。如是上首等諸佛，我悉供養咸親近，然猶未獲深妙智，能入甚深諸法海。此後無間復有劫，名為寂靜智威力，其剎名曰普光雲，金剛堅固摩尼寶。無數莊嚴具眾色，於中千佛出興世，眾生多淨少煩惱，離垢眾會具莊嚴。最初佛號金剛臍，\n>\n> 第二受持無著力，\n>\n> 第三法界影像佛，四普光照十方王，\n>\n> 第五大悲威德佛，\n>\n> 第六名為苦行海，\n>\n> 第七忍辱圓滿燈，\n>\n> 第八覺法圓滿光，\n>\n> 第九佛號海莊嚴，最後寂靜光王佛。如是上首等千佛，我悉一一曾供養，然於法性未深悟，平等如空性清淨，及遍遊行一切剎，而於彼剎修諸行。次第無間復有劫，其劫名為妙出生，剎號香燈雲吉祥，於中淨穢恒相雜。於中億佛出興世，彼剎及劫妙莊嚴，彼佛所說妙法輪，我以念力皆能受。\n>\n> 初無垢稱二法海，\n>\n> 第三佛號雲吉祥，四名法主五德雲，六名法山須彌冠，\n>\n> 第七智焰威德佛，\n>\n> 第八虛空大聲佛，\n>\n> 第九復有兩足尊，名普出生殊勝燈，最後\n>\n> 第十無上士，號眉間光智吉祥。供彼一切人中尊，未能淨治無礙道，次第無間復有劫，名集堅固妙高王。剎號寶峯勝頂幢，上妙雜寶為嚴飾。有五百佛於中現，色身遍滿勝莊嚴。供彼一切自覺尊，求此甚深真解脫。\n>\n> 第一功德圓滿佛，二寂靜音三海山，四威德佛五山王，六須彌相大雲聲，七法自在八功德，九福須彌十寂光。此等上首五百佛，我皆次第興供養，彼佛所有真淨道，我皆普入盡無餘，然未能於佛法中，成就甚深平等忍。次第無間復有劫，名為安樂莊嚴光，剎號寂音瓔珞智，眾生清淨少煩惱。\n>\n> 於中所有諸佛現，其數八十那由他，我悉供彼人中尊，修佛最勝清淨道。初佛華聚拘蘇摩，二海藏佛三德生，\n>\n> 第四佛號天王髻，\n>\n> 第五摩尼勝藏王，\n>\n> 第六佛名真金山，\n>\n> 第七佛號寶聚尊，\n>\n> 第八法幢九財勝，最後名為智慧王。如是上首天人主，我皆供養無不盡。此後次第復有劫，其劫名為千吉祥，剎號妙燈變化幢，億那由他佛出現。最初佛名寂靜幢，\n>\n> 第二佛號奢摩他，\n>\n> 第三寂靜百燈雲，\n>\n> 第四世尊吉祥王，\n>\n> 第五佛號最勝王，\n>\n> 第六佛名如雲行，\n>\n> 第七如來日威德，\n>\n> 第八勝法須彌燈，九名天焰妙吉祥，十師子吼智慧燈。如是上首諸善逝，我悉供養無空過，然猶未得清淨忍，入彼甚深諸法海。此後次第復有劫，名為無著遍莊嚴，當於彼時有世界，名無邊光普吉祥，其中諸佛出興世，三十六億那由他。初佛名普功德雲，\n>\n> 第二無間虛空心，三佛妙生具莊嚴，四名法海大吼聲，\n>\n> 第五法界大音聲，六妙變化功德山，\n>\n> 第七普方威德尊，\n>\n> 第八出生法海聲，\n>\n> 第九海燈功德山，\n>\n> 第十隨順智日王。彼所出現諸如來，我皆供養心歡喜。最後有佛出興世，名寶吉祥功德幢，我為天后名月面，供養於彼人中尊。時佛為我說契經，名無依著莊嚴門，成就出生諸願海，我以念力皆受持。獲得廣大清淨眼，寂靜總持三昧力，恒於相續念念中，悉見十方諸佛海。\n>\n> 得彼諸佛大悲藏，及普方便大慈門，增長如空大智心，成就無量如來力。見諸眾生顛倒心，堅執常樂我淨想，黑暗愚癡雲所迷，惑亂妄起諸煩惱。行止恒遊邪見林，來往入於貪欲海，積集種種輪迴業，墮落種種諸苦趣。一切眾生諸趣中，各隨其業而受身，生老病死所逼迫，身心恒受無邊苦。\n>\n> 為欲安樂彼眾生，發起最勝菩提志，願如十方一切剎，所有出現十力尊。為求成佛利眾生，起大願雲周法界，從是具修功德聚，趣入佛道總持門。發起廣大行願雲，速疾普入無生道，具足廣大波羅蜜，法界出生無不遍。速疾普入於諸地，亦入三世方便海，一念普修一切佛，所有地度無礙行。\n>\n> 我時得為佛長子，得入普賢深行願，了十法界差別門，通達甚深諸佛教。「善男子！於汝意云何？彼時轉輪聖王名十方主，能建正法，紹繼佛種使不斷者，豈異人乎？文殊師利童子是也。爾時，夜神覺悟我者，普賢菩薩之所化耳。善男子！我於彼時為王寶女，蒙彼夜神覺悟於我，令我見佛，發阿耨多羅三藐三菩提心。\n>\n> 從是以來，經佛剎極微塵數劫，未曾生於惡道之中；常生人天，恒得自在，於一切處不捨見佛，其心堅固。乃至於功德幢寶吉祥燈佛所，得此菩薩大速疾力普喜幢無垢解脫，以此解脫，能得如是功德嚴身，種種供養，親近諸佛及善知識，成熟調伏利益眾生，令修妙行。\n>\n> 善男子！我唯知此大速疾力普喜幢無垢解脫門，如諸菩薩摩訶薩於念念中普詣一切諸如來所，速疾趣入一切智海；於念念中以發趣門，入於一切諸大願海；於念念中以願海門，盡未來劫念念出生一切諸行；一一行中變化出生一切佛剎極微塵數身；一一身遍入一切法界門；\n>\n> 一一法界門一切佛剎中，應眾生心說諸妙行；一切佛剎一一塵中，悉見無邊諸如來海；一一如來所悉見遍法界諸佛神通遊戲自在；一一如來所悉見往劫修諸菩薩種種妙行；一一如來所受持守護所有法輪，常不忘失，悉見三世一切如來種種神變方便教海，而我云何能知、能說彼功德行？\n>\n> 善男子！於此如來大眾會中，有主夜神名普救護一切眾生威德吉祥，汝詣彼問菩薩云何入菩薩行，圓滿清淨諸菩薩道。」時，善財童子禮夜神足，遶無數匝，慇懃瞻仰，一心戀慕，辭退而去。爾時，善財童子從喜目夜神所聞普喜幢解脫，深信趣入，隨順觀察；\n>\n> 念善知識所有教誨，心無暫捨，作意思惟，諸根不散，一心願得遇善知識，普於十方勤求匪懈，願常親近諸善知識，生諸功德；於善知識承事供養，常令歡喜，與善知識所有善根同一體性，得善知識巧方便行，無能破壞；依善知識速疾增長，入精進海；\n>\n> 與善知識隨順共住，常不遠離。作是願已，往詣普救眾生威德神所。時，彼夜神即為善財示現菩薩調伏眾生解脫神力，以諸相好莊嚴其身，即於眉間放大光明，名普智焰無垢星宿幢，無量光明以為眷屬。其光普照一切世間，照世間已，入善財頂，充滿其身。\n>\n> 善財即時得極清淨圓滿三昧，得三昧已，悉見喜目、普救二神兩處中間所有一切地塵、水塵、及以火塵、金剛摩尼眾寶微塵，華香瓔珞諸莊嚴具，如是一切所有極微一一塵中，各見佛剎極微塵數世界成壞，及見一切地、水、火、風諸大積聚，亦見一切世界連接，皆以地輪任持而住，種種形像、種種眷屬、種種山海、種種河池、種種樹林、種種宮殿。\n>\n> 所謂：天宮殿、龍宮殿、夜叉宮殿、乾闥婆、阿修羅、迦樓羅、緊那羅、摩睺羅伽、人、非人等宮殿屋宅，種種莊嚴，地獄、畜生、閻羅王界一切住處，諸趣輪轉，生死往來，隨業受報，各各差別；普遍出生，不相雜亂，靡不知見。善財又見一切世界種種差別；\n>\n> 所謂：或有世界雜穢，或有世界清淨，或有世界趣雜穢，或有世界趣清淨，或有世界雜穢清淨，或有世界清淨雜穢，或有世界其形平正，或有世界隨心想住，或有覆住，或有側住。如是世界一切趣類，一切生中，皆悉\n\n## 二、三译四件套对读（语料库·程序汇编）\n\n> 语料库行口径：到会（到达·顶礼·请法）／法门自陈／指授（转介后参）／辞退。引文各照底本；本表为程序抽取节引（句界截断），全文见各参经文。\n\n### 2.1 八十／四十（`T10n0279` ／ `T10n0293`）\n\n| 件 | 八十 原文（节引·逾 260 字句界截断） |\n|---|---|\n| 到会 | 詣喜目觀察眾生夜神所 |\n| 指授（→后参） | 汝詣彼問：菩薩云何學菩薩行、修菩薩道？ |\n| 辞退 | 禮其足，遶無數匝，慇懃瞻仰，辭退 |\n\n### 2.2 六十／四十（`T09n0278` ／ `T10n0293`）\n\n| 件 | 六十 原文（节引·逾 260 字句界截断） |\n|---|---|\n| 到会 | 至十方一切佛所 |\n| 到会 | 詣充滿法界善知識所 |\n| 指授（→后参） | 汝詣彼問云何菩薩學菩薩行、修菩薩道 |\n| 辞退 | 禮彼夜天足，遶無數匝，眷仰辭退 |\n\n## 三、评注与延伸指针（只指不代·不生成无据内容）\n\n- **古注诸家**：主页 §6.2 李通玄《新华严经论》窗、§五之B 计数诸说辨析；澄观《华严经疏》总纲见主页 §2.0′。\n- **今人讲记**：海云继梦《华藏妙海》对读见主页 §6.2（〔OCR 待校〕）；九九华严讲记线见〈海云法师·九九华严讲记校勘工作台〉。\n- **平行线**：藏译 Toh 44 对应章见主页「藏译对读窗」；〈五十三参行历〉交互图可按身份/篇幅回看全程。\n\n## 四、台账\n\n- L.491（2026-11-16）：子页建立——程序汇编（主页 §参34 照录＋行历数据卡＋四件套语料）；内容源批次 L.289–L.304（参批1-16）·L.316（参33 补卡）·L.407/L.413/L.415（行历·三译师名）·L.421/L.456（四件套语料库）。\n- 主页各参节后续修订后重跑 build 即自动同步本页 §一（运行时组装·无中间文件）。\n", "data_source": null, "data_pool": null, "back": {"tab": "gap", "view": "avatamsaka-studies", "label": "文献页 · 华严经学"}, "updated_at": "2026-11-16"};
+</script>
+<script>
+// ═══ 独立文章页渲染器 (articles/<id>.html) ═══
+// ARTICLE 已由 build.py 内嵌；依赖 common.js 中的 _mdFullToHTML/_mdInline/_mdDocEmbed。
+function renderArticle(){
+  var a=(typeof ARTICLE!=='undefined')?ARTICLE:null;
+  var root=document.getElementById('article-root');
+  if(!root){return;}
+  if(!a){root.innerHTML='<p style=font-size:0.85em;color:var(--red)>文章数据缺失（ARTICLE 未定义）。</p>';return;}
+
+  var embed=(typeof _mdDocEmbed==='function')?_mdDocEmbed(a.doc_md||''):{html:'',toc:[]};
+  var h='';
+
+  // ── 面包屑 ──
+  h+='<div style="font-size:0.74em;color:var(--text2);margin-bottom:12px;">';
+  h+='<a href="../index.html" style="color:var(--blue);text-decoration:none">主页</a> › ';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' › <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  // ── 页头横幅 ──
+  h+='<div style="background:linear-gradient(120deg,rgba(184,134,60,0.12),rgba(94,139,158,0.08));border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;">';
+  h+='  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页</div>';
+  h+='  <h2 data-skip-toc="1" style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
+  if(a.title_sub)h+='  <div style="font-size:0.85em;color:var(--text2)">'+a.title_sub+'</div>';
+  if(a.version)h+='  <div style="font-size:0.78em;color:var(--text2);margin-top:6px">'+a.version+'</div>';
+  if(a.back && a.back.tab){
+    h+='  <a href="../tabs/'+a.back.tab+'.html" style="font-size:0.75em;color:var(--blue);margin-top:10px;display:inline-block">← 返回 '+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  // ── 导览 ──
+  if(a.meta){
+    h+='<div class="section" style="border-left:4px solid var(--gold)" data-chrome="1"><h2>📌 导览</h2>';
+    h+='<p style="font-size:0.8em;line-height:1.9;white-space:pre-line">'+_mdInline(a.meta)+'</p></div>';
+  }
+
+  // ── 自动目录 ──
+  if(embed.toc.length){
+    h+='<div class="section" data-chrome="1"><h2>🧭 本文目录</h2>';
+    h+='<div style="column-width:250px;column-gap:26px;font-size:0.8em;line-height:1.75">';
+    embed.toc.forEach(function(t){
+      var pad=(t.lv>2?'padding-left:'+((t.lv-2)*16)+'px;':'');
+      h+='<div style="'+pad+'"><a href="#'+t.id+'" style="color:'+(t.lv===2?'var(--gold)':'var(--text2)')+';text-decoration:none">'+t.text+'</a></div>';
+    });
+    h+='</div></div>';
+  }
+
+  // ── 会众全景流程图（MiaoyanFlow；简明结构流程图；置于目录之后、全文之前）──
+  if((typeof renderMiaoyanFlow==='function')&&(typeof ARTICLE_ASSEMBLY!=='undefined')&&ARTICLE_ASSEMBLY&&(ARTICLE_ASSEMBLY.classes||[]).length){
+    h+='<div class="section" data-chrome="1" id="article-flow" style="border-left:4px solid var(--gold)"></div>';
+  }
+
+  // ── 全文 ──
+  h+='<div class="section" style="border-left:4px solid var(--gold)" id="article-full">';
+  h+='<h2 data-skip-toc="1" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>📄 '+a.title+' · 全文</span>';
+  h+='<span style="display:flex;gap:6px;flex-wrap:wrap">';
+  // 名相会处知识图谱：仅当 build.py 内嵌了 ARTICLE_GRAPH（即 SQLite 中有本文名相表）时出现
+  if((typeof ARTICLE_GRAPH!=='undefined')&&ARTICLE_GRAPH&&(ARTICLE_GRAPH.terms||[]).length){
+    var _n=(ARTICLE_GRAPH.terms||[]).length,_e=(ARTICLE_GRAPH.links||[]).length;
+    h+='<button class="f-nav-btn" onclick="openGraphPanel()" title="查看本文名相节点、边与信度分级">🕸 名相会处（'+_n+' 节点／'+_e+' 边）</button>';
+  }
+  // 会众名号数据剖面：仅当 build.py 内嵌了 ARTICLE_EDA（SQLite 中有本文 EDA 表）时出现
+  if((typeof ARTICLE_EDA!=='undefined')&&ARTICLE_EDA&&ARTICLE_EDA.payload){
+    var _m=ARTICLE_EDA.metrics||{};
+    h+='<button class="f-nav-btn" onclick="edaGo()" title="查看会众名号的词素切分、语义域、群组剖面与共现网络">🔬 会众名号剖面（'+(_m.tokens_total||0)+' 词素位／'+(_m.distinct_tokens||0)+' 词素）</button>';
+  }
+  // 数据科学层：仅当 build.py 内嵌 ARTICLE_BI（本文有 miaoyan_bi.yaml 分析）时出现
+  if((typeof ARTICLE_BI!=='undefined')&&ARTICLE_BI&&(typeof renderArticleBI==='function')){
+    var _b=(ARTICLE_BI.scorecard&&ARTICLE_BI.scorecard.items)||[];
+    h+='<button class="f-nav-btn" onclick="biGo()" title="跳至数据科学分析层：漏斗、语义域、交叉表、相似度、聚类、PCA、网络与稳健性">📊 数据科学（'+_b.length+' 项）</button>';
+  }
+  // 数据科学层（四视角）：仅当 build.py 内嵌 ARTICLE_DS（本文有 *_studies.yaml）时出现
+  if((typeof ARTICLE_DS!=='undefined')&&ARTICLE_DS&&ARTICLE_DS.linguistic){
+    h+='<button class="f-nav-btn" onclick="dsGo()" title="跳至数据科学层：语言统计·代数组合·拓扑·几何（同调·谱几何）四视角">📐 数据科学（四视角）</button>';
+  }
+  // 连环画 · 分镜信息图：仅当 build.py 内嵌 MIAOYAN_NARR / MIAOYAN_SB 任一时出现
+  // （静态版面 + 维度信息图，取代原两套 Canvas 播放器）
+  if((typeof renderStoryComic==='function')&&
+     (((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length)||
+      ((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length))){
+    var _parts=[];
+    if((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length){
+      var _sbn=0;(MIAOYAN_SB.acts||[]).forEach(function(x){_sbn+=((x.shots)||[]).length;});
+      _parts.push(MIAOYAN_SB.acts.length+' 幕 '+_sbn+' 镜');
+    }
+    if((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length){
+      _parts.push(MIAOYAN_NARR.beats.length+' 拍');
+    }
+    h+='<button class="f-nav-btn" onclick="comicGo()" title="跳至连环画式分镜总览与各维度信息图（静态·可检索可打印）">🎞 连环画·信息图（'+_parts.join(' · ')+'）</button>';
+  }
+  // 会众全景流程：仅当 build.py 内嵌了 ARTICLE_ASSEMBLY 且已加载 renderMiaoyanFlow 时出现
+  if((typeof renderMiaoyanFlow==='function')&&(typeof ARTICLE_ASSEMBLY!=='undefined')&&ARTICLE_ASSEMBLY&&(ARTICLE_ASSEMBLY.classes||[]).length){
+    var _afc=(ARTICLE_ASSEMBLY.classes||[]),_afn=0;_afc.forEach(function(c){_afn+=(c.members||[]).length;});
+    h+='<button class="f-nav-btn" onclick="flowGo()" title="跳至会众全景流程图：依经文列次四十类五环之结构流程图">🗺️ 全景流程（'+_afc.length+' 类／'+_afn+' 名）</button>';
+  }
+  h+='<button id="article-en-toggle" class="f-nav-btn" onclick="toggleArticleEN()" title="在「含英文批注」与「仅中文正文」之间切换显示">🌐 英文批注：显示</button>';
+  h+='</span></h2>';
+  h+=embed.html;
+  h+='</div>';
+
+  // ── 会众名号数据剖面（EDA；仅当 build.py 内嵌 ARTICLE_EDA 时出现，由 common.js renderArticleEDA 填充）──
+  // 交互面板一律纳入默认折叠壳（panel-fold），点开方显；内容渲染入壳内 #article-eda-inner。
+  if((typeof ARTICLE_EDA!=='undefined')&&ARTICLE_EDA&&ARTICLE_EDA.payload){
+    h+='<div class="section" data-chrome="1" id="article-eda" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('article-eda-inner','🔬 会众名号 · 数据剖面（交互）'):'';
+    h+='</div>';
+  }
+
+  // ── 相关艺术品 · 文物 · 壁画 · 考古（renderArticleArtifacts 自带 <details> 折叠，无需再包）──
+  if((typeof ARTICLE_ARTIFACTS!=='undefined')&&ARTICLE_ARTIFACTS&&(ARTICLE_ARTIFACTS.items||[]).length){
+    h+='<div class="section" data-chrome="1" id="article-artifacts" style="border-left:4px solid var(--gold)"></div>';
+  }
+
+  // ── 数据科学层（miaoyan_bi.yaml 解释层；置于页脚之前）──
+  // 面板自带 h2，恒展开会成附录十一后之独立一节；今包进折叠壳，内容渲染入 #bi-report-inner。
+  if(typeof renderArticleBI==='function'){
+    try{
+      var _biHtml=renderArticleBI();
+      if(_biHtml){
+        h+='<div class="section" data-chrome="1" style="border-left:4px solid var(--gold);padding:0">';
+        h+=(typeof _foldShellHtml==='function')?_foldShellHtml('bi-report-inner','📊 数据科学（解释·交互）'):_biHtml;
+        h+='</div>';
+      }
+    }catch(e){}
+  }
+
+  // ── 数据科学层（四视角）面板：仅当内嵌 ARTICLE_DS 时出现（内容渲染入壳内 #ds-inner）──
+  if((typeof ARTICLE_DS!=='undefined')&&ARTICLE_DS&&ARTICLE_DS.linguistic){
+    h+='<div class="section" data-chrome="1" id="article-ds" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('ds-inner','📐 数据科学 · 四视角（语言统计·代数组合·拓扑·几何（同调·谱））'):'';
+    h+='</div>';
+  }
+
+  // ── 连环画式分镜总览 + 维度信息图（story_comic.js；静态零 Canvas）──
+  // 仅当内嵌 MIAOYAN_NARR 或 MIAOYAN_SB 时出现；内容渲染入壳内 #story-comic-inner。
+  if((typeof renderStoryComic==='function')&&
+     (((typeof MIAOYAN_NARR!=='undefined')&&MIAOYAN_NARR&&(MIAOYAN_NARR.beats||[]).length)||
+      ((typeof MIAOYAN_SB!=='undefined')&&MIAOYAN_SB&&(MIAOYAN_SB.acts||[]).length))){
+    h+='<div class="section" data-chrome="1" id="story-comic" style="border-left:4px solid var(--gold);padding:0">';
+    h+=(typeof _foldShellHtml==='function')?_foldShellHtml('story-comic-inner','🎞 连环画 · 分镜信息图'):'';
+    h+='</div>';
+  }
+
+  // ── 页脚 ──
+  h+='<div style="margin-top:18px;padding-top:10px;border-top:1px solid var(--line);font-size:0.74em;color:var(--text2)">';
+  h+='<a href="index.html" style="color:var(--blue);text-decoration:none">📚 返回独立文章目录</a>';
+  if(a.back && a.back.tab){
+    h+=' · <a href="../tabs/'+a.back.tab+'.html" style="color:var(--blue);text-decoration:none">'+a.back.label+'</a>';
+  }
+  h+='</div>';
+
+  root.innerHTML=h;
+
+  // ── 命中文档名相（自动扫描＋显式标记）──
+  if(typeof _markTermRefs==='function' && document.getElementById('article-full')){
+    _markTermRefs('#article-full');
+  }
+  // ── 正文配图收为缩略图，点击看原图 ──
+  if(typeof initDocImages==='function' && document.getElementById('article-full')){
+    initDocImages('#article-full');
+  }
+  // ── 相关艺术品/文物/壁画/考古（默认折叠）──
+  if(typeof renderArticleArtifacts==='function' && document.getElementById('article-artifacts')){
+    renderArticleArtifacts('#article-artifacts');
+  }
+  // ── 会众名号数据剖面（EDA）：渲染入折叠壳内 ──
+  if(typeof renderArticleEDA==='function' && document.getElementById('article-eda-inner')){
+    renderArticleEDA('#article-eda-inner');
+  }
+  // ── 数据科学层（BI）：渲染入折叠壳内 #bi-report-inner（此前只发空壳，面板恒为空，2026-10-08 修复）──
+  if(typeof renderArticleBI==='function' && document.getElementById('bi-report-inner')){
+    try{ document.getElementById('bi-report-inner').innerHTML=renderArticleBI(); }catch(e){ console.warn('bi', e); }
+  }
+  // ── 数据科学层（四视角）：渲染入折叠壳内 #ds-inner ──
+  if(typeof renderDataScience==='function' && document.getElementById('ds-inner')){
+    try{ renderDataScience('#ds-inner'); }catch(e){ console.warn('ds', e); }
+  }
+
+  // ── 会众全景流程图（MiaoyanFlow；简明结构流程图）──
+  if(typeof renderMiaoyanFlow==='function' && document.getElementById('article-flow')){
+    try{ renderMiaoyanFlow('#article-flow'); }catch(e){ console.warn('flow', e); }
+  }
+
+  // ── 连环画 · 分镜信息图（静态）：渲染入折叠壳内 #story-comic-inner ──
+  if(typeof renderStoryComic==='function' && document.getElementById('story-comic-inner')){
+    try{ renderStoryComic('#story-comic-inner'); }catch(e){ console.warn('story-comic', e); }
+  }
+
+  // ── 阅读模式：识别「英文/术语批注」块，支持仅中文正文切换 ──
+  _initArticleENMode();
+
+  // ── 章节级折叠：h2/h3/h4/h5 分级折叠（默认全部折叠；标题 ▾ 号点击可单独收展）──
+  // 依站点设置：正文（含附录）所有标题层次默认折叠。
+  // 惟 EDA/数据科学/连环画·信息图 三面板已各自纳入 <details class="panel-fold"> 折叠壳，
+  // 若再施 _foldDoc 便会「壳折叠＋内层节折叠」双重套叠，点开壳仍见其内复折——故此处不再对
+  // 该三者施折叠；仅正文 #article-full 与页首会众流程 #article-flow 仍按 h2–h5 分级折叠。
+  // 各节工具栏一概不生成（noBar），改由页首「一套」页面级控件统管全页折叠/展开。
+  if(typeof _foldDoc==='function'){
+    try{ _foldDoc('#article-full', {noBar:true}); }catch(e){}
+    try{ _foldDoc('#article-flow .miaoyan-flow', {label:'会众全景流程', noBar:true}); }catch(e){}
+  }
+  // ── 页面级统一控件：整页仅此一对「全部折叠／全部展开」，兼管章节折叠与 <details>（表·图）──
+  if(typeof _installPageBar==='function'){
+    try{ _installPageBar({mountSel:'#article-full', rootSel:'#article-root'}); }catch(e){}
+  }
+
+  // ── 支持 #锚点 直达（目录跳转用真实 id 锚点；先展开折叠祖先节）──
+  if(location.hash){
+    setTimeout(function(){
+      var el=document.getElementById(location.hash.slice(1));
+      if(el){
+        if(typeof _reveal==='function')window._reveal(el);
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    },80);
+  }
+  // ── Mermaid 图表渲染（已禁用，使用 HTML/CSS 可视化） ──
+}
+
+if(document.readyState!=='loading'){renderArticle();}
+else{document.addEventListener('DOMContentLoaded',renderArticle);}
+
+// 会众名号数据剖面：自页头按钮跳至该节。三面板（EDA/数据科学/叙事）现默认折叠，
+// 故须经 _scrollReveal 先展开其折叠壳再滚动，否则滚至一处空白折叠条。
+function edaGo(){
+  if(typeof _scrollReveal==='function' && _scrollReveal('article-eda')) return;
+  var el=document.getElementById('article-eda'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function biGo(){ // scroll to data-science layer
+  if(typeof _scrollReveal==='function' && _scrollReveal('bi-report')){ if(history.replaceState) history.replaceState(null,'','#bi-report'); return; }
+  var el=document.getElementById('bi-report');
+  if(!el)return;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(history.replaceState) history.replaceState(null,'','#bi-report');
+}
+
+function comicGo(){ // scroll to storyboard-strip + information graphics panel
+  if(typeof _scrollReveal==='function' && _scrollReveal('story-comic')){ if(history.replaceState) history.replaceState(null,'','#story-comic'); return; }
+  var el=document.getElementById('story-comic');
+  if(!el)return;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(history.replaceState) history.replaceState(null,'','#story-comic');
+}
+
+function flowGo(){ // scroll to assembly panorama flow diagram
+  var el=document.getElementById('article-flow');
+  if(!el)return;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(history.replaceState) history.replaceState(null,'','#article-flow');
+}
+
+function dsGo(){ // scroll to data-science (four lenses) panel
+  if(typeof _scrollReveal==='function' && _scrollReveal('article-ds')){ if(history.replaceState) history.replaceState(null,'','#article-ds'); return; }
+  var el=document.getElementById('article-ds');
+  if(!el)return;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(history.replaceState) history.replaceState(null,'','#article-ds');
+}
+
+// ═══ 多语对读阅读模式：折叠/展开英文批注块 ═══
+// 批注块特征：以「英译对读 / 节级英译要义 / 术语格义 / 主题对读注 / 卷末批注」开头的 blockquote 视作「外文批注」，
+// 可一键切换「仅中文正文」阅读；页头「源文本/对读体例」等研究说明块不受影响。
+function _initArticleENMode(){
+  var s=document.getElementById('article-en-style');
+  if(!s){
+    s=document.createElement('style');
+    s.id='article-en-style';
+    s.textContent='#article-full.en-hidden blockquote.en-block{display:none}';
+    document.head.appendChild(s);
+  }
+  var full=document.getElementById('article-full');
+  if(full&&!full.dataset.enMarked){
+    full.dataset.enMarked='1';
+    full.querySelectorAll('blockquote').forEach(function(bq){
+      var txt=(bq.textContent||'').replace(/\s+/g,' ').trim();
+      if(/^(英译对读|EN对应|EN\s*corresponding|EN\s*note|EN\s*register|EN\s*block|🔑|术语格义|主题对读注|卷末批注)/i.test(txt)) bq.classList.add('en-block');
+    });
+  }
+  _applyArticleENMode();
+}
+function toggleArticleEN(){
+  var cur=(sessionStorage.getItem('article_en_hide')||'')==='1';
+  sessionStorage.setItem('article_en_hide', cur?'0':'1');
+  localStorage.removeItem('article_en_hide');
+  _applyArticleENMode();
+  var block=document.getElementById('article-full');
+  if(block){
+    block.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(function(){window.scrollBy(0,-140);},200);
+  }
+}
+function _applyArticleENMode(){
+  var full=document.getElementById('article-full');
+  var btn=document.getElementById('article-en-toggle');
+  var hide=(sessionStorage.getItem('article_en_hide')||'')==='1';
+  if(full) full.classList.toggle('en-hidden', hide);
+  if(btn) btn.textContent=hide?'🌐 英文批注：展开':'🌐 英文批注：显示';
+}/* ============================================================================
+ * renderArticleBI —— 世主妙严品数据科学层渲染
+ *
+ * 守「严禁假信息」四条：
+ *  1. 一切数字与文字皆来自注入的 ARTICLE_BI（源自 data/translation/miaoyan_bi.yaml），
+ *     前端零硬编码数值；无数据即不渲染该节，绝不补空猜测。
+ *  2. 方法（method）、口径（note）、限制（caveat）与网络截断（truncation）原样呈现，
+ *     不得省略改写——省了限制，结论就会被误读为「经文事实」。
+ *  3. 三层不得混同：经文事实(assembly) → 编辑析构(EDA) → 解释判断(数据科学层)。
+ *     故本层各节标题皆标 [数据科学]，且 scorecard 刻意不给综合总分。
+ *  4. 图表仅绘制既有矩阵，不外推、不插值、不跨轴比较（归一后尤忌）。
+ * ==========================================================================*/
+function renderArticleBI(){
+  var bi = (typeof ARTICLE_BI !== 'undefined') ? ARTICLE_BI : null;
+  if(!bi) return '';
+
+  /* ---------- 小工具 ---------- */
+  function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function md(t){return esc(t).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');}
+  function zhEn(zh,en){var s='';if(zh)s+='<div>'+md(zh)+'</div>';if(en)s+='<div class="en-line" style="color:var(--text2)">📖 '+md(en)+'</div>';return s;}
+  function num(v,d){
+    if(v===null||v===undefined||v==='')return '—';
+    var x=Number(v); if(!isFinite(x))return '—';
+    if(Math.abs(x)>=10000)return x.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+    if(Number.isInteger(x))return String(x);
+    return x.toFixed(d===undefined?4:d).replace(/0+$/,'').replace(/\.$/,'');
+  }
+  function pct(v,d){return (v===null||v===undefined)?'—':(num(v*100,d===undefined?2:d)+'%');}
+  function tbl(head,rows){
+    var s='<table class="bi-tbl">';
+    if(head)s+='<tr>'+head.map(function(x){return '<th>'+esc(x)+'</th>';}).join('')+'</tr>';
+    rows.forEach(function(r){s+='<tr>'+r.map(function(c){return '<td>'+(c==null?'':c)+'</td>';}).join('')+'</tr>';});
+    return s+'</table>';
+  }
+  function kv(k,v){return tbl(null,[[esc(k),'<span style="text-align:right;font-family:var(--mono,monospace)">'+v+'</span>']]);}
+  function note(zh,en){return '<div class="bi-note">'+zhEn(zh,en)+'</div>';}
+  function caveat(zh,en){
+    if(!zh&&!en)return '';
+    return '<div class="bi-caveat">⚠️ '+zhEn(zh,en)+'</div>';
+  }
+  /* 分节：折叠门，首节默认展开 */
+  var secState={};
+  function sec(id,icon,title,titleEn,body,openByDefault){
+    var open = secState[id]!==undefined ? secState[id] : !!openByDefault;
+    return '<div class="wu-door'+(open?' open':'')+'" id="'+id+'" onclick="this.classList.toggle(\'open\')">'
+      +'<span class="arrow">▶</span><span class="ttl">'+icon+' '+esc(title)+'</span>'
+      +(titleEn?'<div class="en-line" style="font-size:0.62em;color:var(--text2);margin-left:18px;margin-bottom:4px">📖 '+esc(titleEn)+'</div>':'')
+      +'<div class="body">'+body+'</div></div>';
+  }
+
+  var h='';
+  h+='<section id="bi-report">';
+  h+='<h2>📊 数据科学</h2>';
+  h+='<div class="en-line" style="font-size:0.66em;color:var(--text2);margin:-6px 0 10px">📖 Data Science</div>';
+
+  /* ---------- 0. 分层声明与总则 ---------- */
+  var head='';
+  if(bi.disclaimer&&(bi.disclaimer.zh||bi.disclaimer.en)) head+=note(bi.disclaimer.zh,bi.disclaimer.en);
+  var m=bi.method||{};
+  if(m.pipeline_zh)    head+='<div class="bi-li"><b>三层分源</b>：'+zhEn(m.pipeline_zh,m.pipeline_en)+'</div>';
+  if(m.determinism_zh) head+='<div class="bi-li"><b>可复现</b>：'+zhEn(m.determinism_zh,m.determinism_en)+'</div>';
+  if(m.deps_zh)        head+='<div class="bi-li"><b>零新增依赖</b>：'+zhEn(m.deps_zh,m.deps_en)+'</div>';
+  if(m.integrity_zh)   head+='<div class="bi-li"><b>不改动 EDA</b>：'+zhEn(m.integrity_zh,m.integrity_en)+'</div>';
+  h+=sec('bi-method','🔬','读法总则（分层 · 可复现 · 不改动上游）','How to Read This Report (Layers · Reproducibility)',head,true);
+
+  /* ---------- 1. 网络截断声明（置于一切中心性结论之前）---------- */
+  var nw=bi.network||{};
+  var tr=nw.truncation;
+  if(tr){
+    var tb='';
+    tb+='<div class="bi-caveat bi-caveat-warn">🔻 '+zhEn(tr.zh,tr.en)+'</div>';
+    tb+=tbl(['共现对之计量','数值'],[
+      ['全部相邻共现对',num(tr.n_all_pairs)],
+      ['实际入网之边（权重最高前 N）',num(tr.n_used_edges)],
+      ['被截断之对',num(tr.n_dropped_pairs)],
+      ['截断比例',pct(tr.dropped_pct,2)]
+    ]);
+    if(tr.pair_counting_zh) tb+=note(tr.pair_counting_zh,tr.pair_counting_en);
+    h+=sec('bi-truncation','🔻','网络截断声明（中心性之适用范围）','Network Truncation: Scope of Centrality Claims',tb,true);
+  }
+
+  /* ---------- 2. 记分卡 ---------- */
+  var sc=bi.scorecard;
+  if(sc&&sc.items&&sc.items.length){
+    var b='';
+    b+=note(sc.note,sc.note_en);
+    b+='<div class="bi-kpis">';
+    sc.items.forEach(function(it){
+      b+='<div class="bi-kpi"><div class="bi-kpi-v">'+esc(it.display!==undefined?it.display:num(it.value))+'</div>'
+        +'<div class="bi-kpi-k">'+esc(it.zh)+'</div>'
+        +(it.definition?'<div class="bi-kpi-d">'+esc(it.definition)+'</div>':'')
+        +(it.en?'<div class="en-line bi-kpi-d">📖 '+esc(it.en)+'</div>':'')+'</div>';
+    });
+    b+='</div>';
+    h+=sec('bi-scorecard','🪧','记分卡（分项列示 · 刻意不给综合总分）','Scorecard (Components Only — No Composite Score)',b,true);
+  }
+
+  /* ---------- 3. 漏斗（两轨不可连读）---------- */
+  var fn=bi.funnel;
+  if(fn){
+    var b=note(fn.note,fn.note_en);
+    function track(title,zh,en){
+      var s='<h4>'+esc(zh)+(en?'<span class="en-line" style="font-size:0.7em;color:var(--text2)"> 📖 '+esc(en)+'</span>':'')+'</h4>';
+      var st=zh&&zh.stages||[];
+      var mx=0; st.forEach(function(x){if(Number(x.n)>mx)mx=Number(x.n);});
+      st.forEach(function(x){
+        var w=mx?Number(x.n)/mx*100:0;
+        s+='<div class="bi-stage"><div class="bi-stage-h">'
+          +'<span class="bi-stage-zh">'+esc(x.zh)+'</span>'
+          +'<span class="bi-stage-n">'+num(x.n)+'　<span style="color:var(--text2)">'+pct(x.pct_of_track,1)+'</span></span></div>'
+          +'<div class="bi-bar"><span style="width:'+w.toFixed(1)+'%"></span></div>'
+          +(x.definition?'<div class="bi-stage-d">'+esc(x.definition)+(x.en?'<div class="en-line">📖 '+esc(x.en)+'</div>':'')+'</div>':'')
+          +'</div>';
+      });
+      return s;
+    }
+    if(fn.track_names)  b+=track('names',fn.track_names.zh,fn.track_names.en);
+    if(fn.track_tokens) b+=track('tokens',fn.track_tokens.zh,fn.track_tokens.en);
+    if(fn.conversion){
+      b+='<table class="bi-tbl" style="margin-top:8px"><tr><th>换算</th><th>值</th></tr>'
+        +'<tr><td>每名平均析为几位词素</td><td style="text-align:right">'+num(fn.conversion.tokens_per_name,4)+'</td></tr>'
+        +'<tr><td>无核名（记 ∅）</td><td style="text-align:right">'+num(fn.conversion.no_core)+'</td></tr></table>';
+    }
+    var g=fn.grades||{};
+    if(Object.keys(g).length){
+      var grows=[];
+      ['high','medium','low'].forEach(function(k){
+        var x=g[k]; if(!x)return;
+        grows.push([esc(k),num(x.n),pct(x.pct,2),esc(x.zh)+(x.duty?'<div style="font-size:0.85em;color:var(--text2)">'+esc(x.duty)+'</div>':'')
+          +(x.en?'<div class="en-line" style="font-size:0.9em;color:var(--text2)">📖 '+esc(x.en)+(x.duty_en?' · '+esc(x.duty_en):'')+'</div>':'')]);
+      });
+      b+=tbl(['判读等级','词素位','占比','说明 · 义务'],grows);
+    }
+    if(fn.reconciliation){
+      b+=note(fn.reconciliation.zh,fn.reconciliation.en);
+      b+=caveat(fn.reconciliation.caveat_zh,fn.reconciliation.caveat_en);
+    }
+    h+=sec('bi-funnel','📉','转换漏斗（一名析为多位 · 属扩张非流失）','Conversion Funnel (Expansion, Not Attrition)',b,false);
+  }
+
+  /* ---------- 4. 语义域景观 ---------- */
+  var dl=bi.domain_landscape;
+  if(dl&&dl.rows&&dl.rows.length){
+    var b=note(dl.note,dl.note_en);
+    var mx=0; dl.rows.forEach(function(r){if(Number(r.n)>mx)mx=Number(r.n);});
+    var rows=dl.rows.map(function(r){
+      var w=mx?Number(r.n)/mx*100:0;
+      return [ '<span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:'+esc(r.color||'var(--gold)')+';margin-right:5px"></span>'+esc(r.zh||r.key),
+        String(r.rank),num(r.n),pct(r.pct,2),pct(r.cum_pct,2),
+        '<div class="bi-bar" style="min-width:70px"><span style="width:'+w.toFixed(1)+'%;background:'+esc(r.color||'var(--gold)')+'"></span></div>' ];
+    });
+    b+=tbl(['语义域','#','词素位','占比','累计','分布'],rows);
+    var c=dl.concentration||{};
+    if(c.hhi!==undefined){
+      b+=tbl(['集中度量','值','读法'],[
+        ['HHI（Σp²）',num(c.hhi,6),c.hhi_note+(c.hhi_note_en?'<div class="en-line" style="font-size:0.9em;color:var(--text2)">📖 '+esc(c.hhi_note_en)+'</div>':'')],
+        ['归一化熵',num(c.normalized_entropy,4),'0＝全聚于一项，1＝完全均布'],
+        ['有效域数 e^H',num(c.effective_domains,3),c.effective_note+(c.effective_note_en?'<div class="en-line" style="font-size:0.9em;color:var(--text2)">📖 '+esc(c.effective_note_en)+'</div>':'')]
+      ]);
+    }
+    h+=sec('bi-domain','🧭','语义域景观（构词层面貌 · 非教义权重）','Semantic-Domain Landscape (Morphemic Surface, Not Doctrinal Weight)',b,false);
+  }
+
+  /* ---------- 5. 群组 × 域 交叉表 ---------- */
+  var ct=bi.crosstab;
+  if(ct&&ct.matrix&&ct.groups&&ct.domains){
+    var b=note(ct.note,ct.note_en);
+    /* 行为语义域(17)，列为群组(5) */
+    var G=ct.groups,D=ct.domains;
+    var CW=Math.max(52,Math.min(74,Math.floor(820/Math.max(1,G.length))));
+    var LW=Math.max(92,Math.min(150,Math.floor(260/Math.max(1,D.length))*3));
+    var W=LW+G.length*CW+16, H=D.length*19+40;
+    var mx=0; ct.matrix.forEach(function(r){r.forEach(function(v){if(Number(v)>mx)mx=Number(v);});});
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;min-width:'+Math.min(W,900)+'px;height:auto" role="img" aria-label="group by domain heatmap">';
+    svg+='<text x="4" y="12" font-size="10" fill="currentColor">域 ＼ 群</text>';
+    G.forEach(function(g,j){
+      var cx=LW+j*CW+CW/2;
+      svg+='<text x="'+cx+'" y="12" font-size="9.5" fill="currentColor" text-anchor="end" transform="rotate(-42 '+cx+' 12)">'+esc(g.zh)+'</text>';
+    });
+    D.forEach(function(dm,i){
+      var y=22+i*19;
+      svg+='<text x="'+(LW-6)+'" y="'+(y+12)+'" font-size="9.5" text-anchor="end" fill="currentColor">'+esc(dm.zh||dm.key)+'</text>';
+      for(var j=0;j<G.length;j++){
+        var v=Number(ct.matrix[i][j]||0), t=mx?v/mx:0;
+        svg+='<rect x="'+(LW+j*CW)+'" y="'+y+'" width="'+(CW-2)+'" height="17" fill="var(--gold)" opacity="'+(0.05+0.62*t).toFixed(3)+'"><title>'+esc(dm.zh)+' / '+esc(G[j].zh)+': '+v+'</title></rect>';
+        if(v>0) svg+='<text x="'+(LW+j*CW+CW/2-1)+'" y="'+(y+12)+'" font-size="9" text-anchor="middle" fill="'+(t>0.55?'#1a1410':'currentColor')+'">'+v+'</text>';
+      }
+    });
+    svg+='</svg>';
+    b+='<div style="overflow-x:auto">'+svg+'</div>';
+    if(ct.chi2!==undefined){
+      b+=tbl(['统计量','值'],[
+        ['χ²',num(ct.chi2,4)],
+        ['自由度 df',num(ct.df)],
+        ['Cramér’s V',num(ct.cramers_v,4)],
+        ['p 值',esc(ct.p_approx_txt||num(ct.p_approx))+(ct.p_approx_txt_en?'<div class="en-line" style="font-size:0.9em;color:var(--text2)">📖 '+esc(ct.p_approx_txt_en)+'</div>':'')],
+        ['Wilson–Hilferty z',num(ct.p_wh_z,4)]
+      ]);
+    }
+    if(ct.df_note_zh)    b+=note(ct.df_note_zh,ct.df_note_en);
+    if(ct.v_strength_zh) b+=note(ct.v_strength_zh,ct.v_strength_en);
+    if(ct.p_note)        b+=note(ct.p_note,ct.p_note_en);
+    function liftTable(title,arr,color){
+      if(!arr||!arr.length)return '';
+      var s='<h4>'+esc(title)+'</h4>';
+      s+=tbl(['语义域','群组','观测','期望','lift'],arr.slice(0,12).map(function(r){
+        var hi=Number(r.lift)>1;
+        return [esc(r.domain_zh),esc(r.group_zh),num(r.obs),num(r.exp,2),
+          '<b style="color:'+(hi?'var(--gold)':'var(--text2)')+'">'+num(r.lift,3)+'</b>'];
+      }));
+      return s;
+    }
+    b+=liftTable('偏好此域之组合（lift > 1）· 前 12',ct.top_over);
+    b+=liftTable('回避此域之组合（lift < 1）· 前 12',ct.top_under);
+    h+=sec('bi-crosstab','🧮','群组 × 语义域 交叉表与独立性检验','Group × Domain Crosstab & Test of Independence',b,false);
+  }
+
+  /* ---------- 6. 相似度 ---------- */
+  var sm=bi.similarity;
+  if(sm){
+    var b=note((sm.space_zh||'')+'<br>'+(sm.caveat_zh||''),'');
+    if(sm.space_en) b+='<div class="en-line" style="color:var(--text2);font-size:0.9em">📖 '+esc(sm.space_en)+(sm.caveat_en?'<br>'+esc(sm.caveat_en):'')+'</div>';
+    if(sm.matrix&&sm.names&&sm.names.length){
+      var N=Math.min(sm.names.length,30);
+      var SZ=Math.max(360,Math.min(600,N*17));
+      var cell=SZ/N, LW2=Math.max(70,Math.min(130,SZ*0.22));
+      var W2=LW2+SZ+8, H2=22+SZ+8;
+      var mx3=0; for(var i=0;i<N;i++)for(var j=0;j<N;j++){var vv=Number(sm.matrix[i][j]||0);if(vv>mx3)mx3=vv;}
+      var svg2='<svg viewBox="0 0 '+W2+' '+H2+'" style="width:100%;max-width:780px;height:auto" role="img" aria-label="similarity heatmap">';
+      for(var i=0;i<N;i++)for(var j=0;j<N;j++){
+        var v=Number(sm.matrix[i][j]||0), t=mx3?v/mx3:0;
+        svg2+='<rect x="'+(LW2+j*cell)+'" y="'+(22+i*cell)+'" width="'+Math.max(1,cell-1)+'" height="'+Math.max(1,cell-1)+'" fill="var(--gold)" opacity="'+(0.05+0.6*t).toFixed(3)+'"><title>'+esc(sm.names[i])+' ↔ '+esc(sm.names[j])+': '+num(v,4)+'</title></rect>';
+      }
+      for(var i=0;i<N;i++){
+        svg2+='<text x="'+(LW2-4)+'" y="'+(28+i*cell)+'" font-size="8.5" text-anchor="end" fill="currentColor">'+esc(sm.names[i])+'</text>';
+        svg2+='<text x="'+(LW2+i*cell+2)+'" y="17" font-size="8.5" fill="currentColor" transform="rotate(-60 '+(LW2+i*cell+2)+' 17)">'+esc(sm.names[i])+'</text>';
+      }
+      svg2+='</svg>';
+      b+='<div style="overflow-x:auto">'+svg2+'</div>';
+      b+='<div style="font-size:0.74em;color:var(--text2);margin-top:4px">'+N+' / '+sm.names.length+' 类（按相似度矩阵前 '+N+' 类绘制；完整 40×40 见 YAML）</div>';
+    }
+    if(sm.within_mean!==undefined){
+      b+=tbl(['平均相似度','值','n'],[
+        ['同群组内',num(sm.within_mean,4),num(sm.within_n)],
+        ['跨群组',num(sm.across_mean,4),num(sm.across_n)]
+      ]);
+    }
+    if(sm.verdict_zh) b+=note(sm.verdict_zh,sm.verdict_en);
+    var cf=sm.confound;
+    if(cf){
+      if(cf.adj_same_template_mean!==undefined){
+        b+=tbl(['去混淆（同为类尾同字者 vs 不同）','值'],[
+          ['相邻且同类尾',num(cf.adj_same_template_mean,4)],
+          ['相邻但类尾不同',num(cf.adj_diff_template_mean,4)],
+          ['差（同−异）',num(cf.same_minus_diff,4)]
+        ]);
+      }
+      if(cf.tail_of_class) b+=note('类尾（模板代理）为：'+(cf.tail_of_class||[]).slice(0,12).map(function(t){return esc(t.cat)+'→'+esc(t.tail);}).join('、')+' …（共 '+(cf.tail_of_class||[]).length+' 类）','');
+    }
+    h+=sec('bi-sim','🔗','类间相似度（构词层语汇 · 非词义向量）','Inter-Class Similarity (Lexical Composition, Not Semantic Embedding)',b,false);
+  }
+
+  /* ---------- 7. 聚类 ---------- */
+  var cl=bi.clustering;
+  if(cl){
+    var b='';
+    b+=caveat(cl.caveat_zh,cl.caveat_en);
+    if(cl.method_zh) b+=note(cl.method_zh,cl.method_en);
+    if(cl.stability_method_zh) b+=note(cl.stability_method_zh,cl.stability_method_en);
+    b+=tbl(['选定项','值'],[
+      ['最佳簇数 k',num(cl.best_k)],
+      ['平均轮廓系数',num(cl.best_silhouette,4)],
+      ['扫描区间','k = '+(cl.k_range||[]).join(' … ')],
+      ['共形相关系数',num(cl.cophenetic_corr,4)]
+    ]);
+    if(cl.k_boundary_note_zh) b+=note(cl.k_boundary_note_zh,cl.k_boundary_note_en);
+    if(cl.weak_structure_zh)   b+=note(cl.weak_structure_zh,cl.weak_structure_en);
+    if(cl.cophenetic_note_zh)  b+=note(cl.cophenetic_note_zh,cl.cophenetic_note_en);
+    /* k–轮廓曲线 */
+    if(cl.curve&&cl.curve.length){
+      var W4=560,H4=200,P4=38;
+      var xs=cl.curve.map(function(c){return Number(c.k);});
+      var ys=cl.curve.map(function(c){return Number(c.silhouette);});
+      var x0=Math.min.apply(null,xs),x1=Math.max.apply(null,xs);
+      var y0=Math.min.apply(null,ys),y1=Math.max.apply(null,ys);
+      var sx=function(v){return P4+(x1===x0?0:(v-x0)/(x1-x0)*(W4-2*P4));};
+      var sy=function(v){return H4-P4-(y1===y0?0:(v-y0)/(y1-y0)*(H4-2*P4));};
+      var pts=cl.curve.map(function(c){return sx(Number(c.k)).toFixed(1)+','+sy(Number(c.silhouette)).toFixed(1);}).join(' ');
+      var svg4='<svg viewBox="0 0 '+W4+' '+H4+'" style="width:100%;max-width:600px;height:auto" role="img" aria-label="silhouette curve">';
+      svg4+='<line x1="'+P4+'" y1="'+(H4-P4)+'" x2="'+(W4-P4)+'" y2="'+(H4-P4)+'" stroke="currentColor" opacity="0.35"/>';
+      svg4+='<polyline points="'+pts+'" fill="none" stroke="var(--gold)" stroke-width="1.6"/>';
+      cl.curve.forEach(function(c){
+        var bk=Number(c.k)===Number(cl.best_k);
+        svg4+='<circle cx="'+sx(Number(c.k)).toFixed(1)+'" cy="'+sy(Number(c.silhouette)).toFixed(1)+'" r="'+(bk?4.5:2.4)+'" fill="'+(bk?'var(--gold)':'currentColor')+'" opacity="'+(bk?1:0.6)+'"><title>k='+c.k+': '+num(c.silhouette,4)+'</title></circle>';
+        svg4+='<text x="'+sx(Number(c.k)).toFixed(1)+'" y="'+(H4-P4+12)+'" font-size="8.5" text-anchor="middle" fill="currentColor">'+c.k+'</text>';
+      });
+      svg4+='<text x="4" y="12" font-size="9.5" fill="currentColor">轮廓系数</text><text x="'+(W4-4)+'" y="'+(H4-6)+'" font-size="9.5" text-anchor="end" fill="currentColor">k</text>';
+      svg4+='</svg>';
+      b+='<div style="overflow-x:auto">'+svg4+'</div>';
+    }
+    /* 簇成员 */
+    if(cl.clusters&&cl.clusters.length){
+      var rows=cl.clusters.map(function(c,ci){
+        var mem=c.members||[];
+        var gmap={}; mem.forEach(function(m){gmap[m.group_zh||m.group]=(gmap[m.group_zh||m.group]||0)+1;});
+        var memTxt=mem.map(function(m){return esc(m.cat);}).join('、');
+        return ['C'+(ci+1),String(mem.length),
+          mem.length?esc(Object.keys(gmap).map(function(k){return k+'×'+gmap[k];}).join('　')):'—',
+          '<span style="font-size:0.86em">'+memTxt+'</span>'];
+      });
+      b+=tbl(['簇','规模','群组构成','成员类'],rows);
+    }
+    h+=sec('bi-cluster','🌿','聚类结构（探索性切分 · 非经文自有类别）','Cluster Structure (Exploratory Partition, Not Sutra-given)',b,false);
+  }
+
+  /* ---------- 8. PCA ---------- */
+  var pc=bi.pca;
+  if(pc){
+    var b=caveat(pc.caveat_zh,pc.caveat_en);
+    if(pc.method_zh) b+=note(pc.method_zh,pc.method_en);
+    if(pc.explained&&pc.explained.length){
+      var W5=560,H5=170,P5=36;
+      var mx5=0; pc.explained.forEach(function(e){if(Number(e.pct)>mx5)mx5=Number(e.pct);});
+      var svg5='<svg viewBox="0 0 '+W5+' '+H5+'" style="width:100%;max-width:600px;height:auto" role="img" aria-label="explained variance">';
+      var bw=W5/(pc.explained.length*1.7);
+      pc.explained.forEach(function(e,i){
+        var v=Number(e.pct), hgt=mx5?v/mx5*(H5-2*P5):0;
+        var x=P5+i*bw*1.7,y=H5-P5-hgt;
+        svg5+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+hgt.toFixed(1)+'" fill="var(--gold)" opacity="0.75"><title>PC'+e.pc+': '+pct(v,2)+'</title></rect>';
+        svg5+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(y-4).toFixed(1)+'" font-size="9" text-anchor="middle" fill="currentColor">'+pct(v,1)+'</text>';
+        svg5+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(H5-P5+12)+'" font-size="9" text-anchor="middle" fill="currentColor">PC'+e.pc+'</text>';
+      });
+      svg5+='<line x1="'+P5+'" y1="'+(H5-P5)+'" x2="'+(W5-P5)+'" y2="'+(H5-P5)+'" stroke="currentColor" opacity="0.35"/>';
+      svg5+='</svg>';
+      b+='<div style="overflow-x:auto">'+svg5+'</div>';
+    }
+    if(pc.points&&pc.points.length){
+      var xs=pc.points.map(function(p){return Number(p.x);});
+      var ys=pc.points.map(function(p){return Number(p.y);});
+      var xa=Math.min.apply(null,xs),xb=Math.max.apply(null,xs);
+      var ya=Math.min.apply(null,ys),yb=Math.max.apply(null,ys);
+      var W6=640,H6=440,P6=46;
+      var sx=function(v){return P6+(xb===xa?0:(v-xa)/(xb-xa)*(W6-2*P6));};
+      var sy=function(v){return H6-P6-(yb===ya?0:(v-ya)/(yb-ya)*(H6-2*P6));};
+      var gc=pc.group_centroids||{};
+      var gcol={}; var pal=['#b8863c','#5e8b9e','#8b5e8b','#6b8b3c','#a05e3c'];
+      Object.keys(gc||{}).forEach(function(g,i){gcol[g]=pal[i%pal.length];});
+      var svg6='<svg viewBox="0 0 '+W6+' '+H6+'" style="width:100%;max-width:660px;height:auto" role="img" aria-label="PCA scatter">';
+      svg6+='<line x1="'+P6+'" y1="'+(H6-P6)+'" x2="'+(W6-P6)+'" y2="'+(H6-P6)+'" stroke="currentColor" opacity="0.35"/>';
+      svg6+='<line x1="'+P6+'" y1="'+P6+'" x2="'+P6+'" y2="'+(H6-P6)+'" stroke="currentColor" opacity="0.35"/>';
+      svg6+='<line x1="'+P6+'" y1="'+(sy(0).toFixed(1))+'" x2="'+(W6-P6)+'" y2="'+(sy(0).toFixed(1))+'" stroke="currentColor" opacity="0.16" stroke-dasharray="3 3"/>';
+      svg6+='<line x1="'+sx(0).toFixed(1)+'" y1="'+P6+'" x2="'+sx(0).toFixed(1)+'" y2="'+(H6-P6)+'" stroke="currentColor" opacity="0.16" stroke-dasharray="3 3"/>';
+      pc.points.forEach(function(p){
+        var cx=sx(Number(p.x)),cy=sy(Number(p.y));
+        var r=Math.max(3,Math.min(9,Math.sqrt(Number(p.n_named||1))*1.5));
+        svg6+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="'+r.toFixed(1)+'" fill="'+(gcol[p.group]||'var(--gold)')+'" opacity="0.8"><title>'+esc(p.cat)+' ('+esc(p.group_zh)+'): n_named='+num(p.n_named)+'</title></circle>';
+      });
+      Object.keys(gc||{}).forEach(function(g){
+        var c0=gc[g]; if(!c0)return;
+        var cx=sx(Number(c0.x!==undefined?c0.x:c0.cx)),cy=sy(Number(c0.y!==undefined?c0.y:c0.cy));
+        svg6+='<path d="M'+(cx-6)+','+cy+'L'+(cx+6)+','+cy+'M'+cx+','+(cy-6)+'L'+cx+','+(cy+6)+'" stroke="'+(gcol[g]||'currentColor')+'" stroke-width="1.8"/>';
+      });
+      svg6+='<text x="'+(W6/2)+'" y="'+(H6-8)+'" font-size="10" text-anchor="middle" fill="currentColor">PC1</text>';
+      svg6+='<text x="12" y="'+(H6/2)+'" font-size="10" text-anchor="middle" fill="currentColor" transform="rotate(-90 12 '+(H6/2)+')">PC2</text>';
+      svg6+='</svg>';
+      b+='<div style="overflow-x:auto">'+svg6+'</div>';
+      var leg='<div class="bi-legend">';
+      Object.keys(gc||{}).forEach(function(g){
+        leg+='<span class="bi-lg"><i style="background:'+(gcol[g]||'var(--gold)')+'"></i>'+esc((gc[g]&&(gc[g].zh||gc[g].group_zh))||g)+'</span>';
+      });
+      b+=leg+'</div>';
+      b+='<div style="font-size:0.74em;color:var(--text2)">气泡大小＝该类名号数；十字＝群组重心（40 类逐类实点，未作任何外推）</div>';
+    }
+    h+=sec('bi-pca','📐','主成分分析（降维观察 · 投影有损）','PCA (Dimension Reduction; Projection Is Lossy)',b,false);
+  }
+
+  /* ---------- 9. 帕累托 ---------- */
+  var pa=bi.pareto;
+  if(pa&&pa.series&&pa.series.length){
+    var b=note(pa.note_zh,pa.note_en);
+    var rows=pa.series.map(function(s){
+      return [esc(s.label)+(s.label_en?'<div class="en-line" style="font-size:0.9em;color:var(--text2)">📖 '+esc(s.label_en)+'</div>':''),
+        num(s.total),num(s.n_items),num(s.k80),pct(s.k80_pct_items,2)];
+    });
+    b+=tbl(['量度','总频次','项数','k80','k80 占项数比'],rows);
+    /* 首项累计曲线（取第一组之 points） */
+    var s0=pa.series[0];
+    if(s0&&s0.points&&s0.points.length){
+      var pts=s0.points.slice(0,40);
+      var W7=600,H7=220,P7=40;
+      var xs7=pts.map(function(p){return Number(p.rank);});
+      var ys7=pts.map(function(p){return Number(p.cum_pct);});
+      var x7a=Math.min.apply(null,xs7),x7b=Math.max.apply(null,xs7);
+      var y7a=Math.min.apply(null,ys7),y7b=Math.max.apply(null,ys7);
+      var sx7=function(v){return P7+(x7b===x7a?0:(v-x7a)/(x7b-x7a)*(W7-2*P7));};
+      var sy7=function(v){return H7-P7-(y7b===y7a?0:(v-y7a)/(y7b-y7a)*(H7-2*P7));};
+      var svg7='<svg viewBox="0 0 '+W7+' '+H7+'" style="width:100%;max-width:640px;height:auto" role="img" aria-label="cumulative curve">';
+      /* 80% 参考线 */
+      var y80=sy7(0.8);
+      svg7+='<line x1="'+P7+'" y1="'+y80.toFixed(1)+'" x2="'+(W7-P7)+'" y2="'+y80.toFixed(1)+'" stroke="var(--red)" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>';
+      svg7+='<text x="'+(W7-P7)+'" y="'+(y80-4).toFixed(1)+'" font-size="9" text-anchor="end" fill="var(--red)">80% 线</text>';
+      svg7+='<line x1="'+P7+'" y1="'+(H7-P7)+'" x2="'+(W7-P7)+'" y2="'+(H7-P7)+'" stroke="currentColor" opacity="0.35"/>';
+      svg7+='<polyline points="'+pts.map(function(p){return sx7(Number(p.rank)).toFixed(1)+','+sy7(Number(p.cum_pct)).toFixed(1);}).join(' ')+'" fill="none" stroke="var(--gold)" stroke-width="1.8"/>';
+      pts.forEach(function(p){
+        svg7+='<circle cx="'+sx7(Number(p.rank)).toFixed(1)+'" cy="'+sy7(Number(p.cum_pct)).toFixed(1)+'" r="2.2" fill="var(--gold)"><title>#'+p.rank+' '+esc(p.key)+' n='+num(p.n)+' 累计 '+pct(p.cum_pct,2)+'</title></circle>';
+      });
+      svg7+='<text x="4" y="12" font-size="9.5" fill="currentColor">'+esc(s0.label)+' · 累计占比（前 '+pts.length+' 项）</text>';
+      svg7+='<text x="'+(W7/2)+'" y="'+(H7-6)+'" font-size="9.5" text-anchor="middle" fill="currentColor">位次 rank</text>';
+      svg7+='</svg>';
+      b+='<div style="overflow-x:auto">'+svg7+'</div>';
+    }
+    h+=sec('bi-pareto','📊','帕累托与集中度（语汇集中于少数词素）','Pareto & Concentration',b,false);
+  }
+
+  /* ---------- 10. 网络中心性（必置于截断声明之后）---------- */
+  if(nw&&(nw.n_nodes!==undefined)){
+    var b=note(nw.note_zh,nw.note_en);
+    b+=caveat('本页以下中心性数值仅为**强共现子图**上之中心性，'+num(tr?tr.n_used_edges:0)+' 边（自全部 '+num(tr?tr.n_all_pairs:0)+' 对截断而来），**非全网之中心性**。','All centrality figures below are computed on the strong-co-occurrence subgraph, not on the full network.');
+    b+=tbl(['网络规模','值'],[
+      ['节点数（不同词素）',num(nw.n_nodes)],
+      ['入网边数',num(nw.n_edges)],
+      ['活跃节点（入网者）',num(nw.n_active)],
+      ['孤立节点（零共现）',num(nw.isolated)]
+    ]);
+    if(nw.isolated_note_zh) b+=note(nw.isolated_note_zh,nw.isolated_note_en);
+    if(nw.top_pagerank&&nw.top_pagerank.length){
+      b+='<h4>PageRank（前 12）</h4>';
+      b+=tbl(['词素','语义域','出现次数','PageRank','度'],[
+        nw.top_pagerank.slice(0,12).map(function(r){
+          return [esc(r.zh||r.id),esc(r.domain||''),num(r.n),num(r.pagerank,6),num(r.degree)];
+        })
+      ]);
+    }
+    if(nw.top_betweenness&&nw.top_betweenness.length){
+      b+='<h4>介数中心性（前 10）</h4>';
+      b+=tbl(['词素','语义域','介数'],[
+        nw.top_betweenness.slice(0,10).map(function(r){
+          return [esc(r.zh||r.id),esc(r.domain||''),num(r.betweenness!==undefined?r.betweenness:r.value,6)];
+        })
+      ]);
+    }
+    if(nw.communities&&nw.communities.length){
+      b+='<h4>社群（'+(nw.communities||[]).length+' 个 · 覆盖 '+pct(nw.community_coverage,1)+'）</h4>';
+      b+=tbl(['社群','规模','代表词素（前 8）'],[
+        nw.communities.slice(0,12).map(function(c,i){
+          var mem=c.members||[];
+          return ['G'+(i+1),num(c.size!==undefined?c.size:mem.length),
+            '<span style="font-size:0.86em">'+mem.slice(0,8).map(function(m){return esc(m.zh||m.id);}).join('、')+'</span>'];
+        })
+      ]);
+    }
+    if(nw.method_zh) b+=note(nw.method_zh,nw.method_en);
+    h+=sec('bi-network','🕸️','词素共现网络中心性（限强共现子图）','Morpheme Co-occurrence Centrality (Strong Subgraph Only)',b,false);
+  }
+
+  /* ---------- 11. 序位置换检验 ---------- */
+  var od=bi.ordinal;
+  if(od){
+    var b=note(od.note_zh,od.note_en);
+    if(od.method_zh) b+=note(od.method_zh,od.method_en);
+    b+=tbl(['观测量','值'],[
+      ['相邻类平均相似度（观测）',num(od.adjacent_mean,4)],
+      ['零分布均值（随机置换）',num(od.null_mean,4)],
+      ['零分布标准差',num(od.null_sd,4)],
+      ['z 值',num(od.z,4)],
+      ['p 值（正态近似）',od.p===0?'< 1e-9':num(od.p,6)],
+      ['全部两两平均相似度',num(od.all_pairs_mean,4)],
+      ['同群组相邻对',num(od.same_group_adjacent,4)],
+      ['跨群组相邻对',num(od.cross_group_adjacent,4)]
+    ]);
+    var cf2=od.confound;
+    if(cf2&&cf2.adj_same_template_mean!==undefined){
+      b+=tbl(['去混淆（模板代理＝类尾）','值'],[
+        ['相邻且同类尾',num(cf2.adj_same_template_mean,4)],
+        ['相邻但类尾不同',num(cf2.adj_diff_template_mean,4)],
+        ['差（同−异）',num(cf2.same_minus_diff,4)]
+      ]);
+      b+=caveat('模板标签为**类首名末字之代理**（如「主城神」「主地神」皆以「神」为类尾），系分析层之代理变量，非经文所定之语义类。','Template labels are a proxy derived from the last character of each class name, not a sutra-given semantic class.');
+    }
+    if(od.segments&&od.segments.length){
+      b+=tbl(['分段','类次范围','类数','段内相邻平均相似度'],[
+        od.segments.map(function(s){
+          return [esc(s.zh||s.group),(s.from_idx!==undefined?(s.from_idx+'–'+s.to_idx):'—'),num(s.n_classes),num(s.mean_sim_internal,4)];
+        })
+      ]);
+    }
+    if(od.conclusion_zh) b+='<div class="bi-find">'+zhEn(od.conclusion_zh,od.conclusion_en)+'</div>';
+    h+=sec('bi-ordinal','🔢','序位结构检验（类次编排含语义梯度？）','Ordinal Structure Test: Is Sutra Order Semantic?',b,false);
+  }
+
+  /* ---------- 12. 质量与稳健性 ---------- */
+  var q=bi.quality;
+  if(q){
+    var b=note(q.note_zh,q.note_en);
+    if(q.grade_policy_zh) b+='<div class="bi-caveat">'+zhEn(q.grade_policy_zh,q.grade_policy_en)+'</div>';
+    if(q.robustness&&q.robustness.length){
+      var rows=q.robustness.map(function(r){
+        return [esc(r.id||''),'<b>'+md(r.claim_zh||r.zh||'')+'</b>'+(r.claim_en?'<div class="en-line" style="font-size:0.9em;color:var(--text2)">📖 '+esc(r.claim_en||r.en)+'</div>':'')
+          ,md(r.finding_zh||r.result_zh||r.result||'')+(r.finding_en||r.result_en?'<div class="en-line" style="font-size:0.9em;color:var(--text2)">📖 '+esc(r.finding_en||r.result_en)+'</div>':'')];
+      });
+      b+=tbl(['#','稳健性检验','结果'],rows);
+    }
+    if(q.worst_classes&&q.worst_classes.length){
+      b+='<h4>判读存疑率最高之群</h4>';
+      b+=tbl(['群组','判读存疑率'],[
+        q.worst_classes.slice(0,8).map(function(r){
+          return [esc(r.zh||r.key||r.group_zh),pct(r.rate!==undefined?r.rate:r.pct,2)];
+        })
+      ]);
+    }
+    if(q.outliers&&q.outliers.length){
+      b+='<h4>离群类（语汇面貌与他类皆不相近）</h4>';
+      b+=tbl(['类','群组','与他类平均相似度'],[
+        q.outliers.map(function(r){return [esc(r.cat),esc(r.group_zh),num(r.mean_sim,4)];})
+      ]);
+      if(q.outlier_note_zh) b+=note(q.outlier_note_zh,q.outlier_note_en);
+    }
+    h+=sec('bi-quality','✅','数据质量与稳健性（度量分析自身之可信度）','Data Quality & Robustness (Reliability of This Analysis)',b,false);
+  }
+
+  /* ---------- 13. 结论摘要 ---------- */
+  var ex=bi.executive;
+  if(ex&&ex.findings&&ex.findings.length){
+    var b=note(ex.note_zh,ex.note_en);
+    b+='<ol class="bi-findings">';
+    ex.findings.forEach(function(f){
+      b+='<li>'+(f.id?'<b>'+esc(f.id)+'</b>　':'')+md(f.zh||f.text_zh||'')
+        +(f.en||f.text_en?'<div class="en-line" style="color:var(--text2);font-size:0.94em">📖 '+md(f.en||f.text_en)+'</div>':'')
+        +(f.evidence?'<div style="font-size:0.78em;color:var(--text2);margin-top:2px">🔎 证据：'+esc(f.evidence)+'</div>':'')+'</li>';
+    });
+    b+='</ol>';
+    h+=sec('bi-exec','📌','分析结论（解释层 · 非经文）','Findings (Interpretive Layer, Not Sutra Text)',b,false);
+  }
+
+  h+='</section>';
+  return h;
+}
+
+</script>
+<script src="../js/reading_pos.js?v=202611162349"></script>
+<script src="../data/sutra/mapping.js?v=202611162349"></script>
+<script>var SUTRA_PANEL_PIN = 39;</script>
+<script src="../js/sutra_panel.js?v=202611162349"></script>
+<script>window.NAV_CURRENT="huayan-rufajie-can-34";</script>
+<script src="../data/huayan_nav.js?v=202611162349"></script>
+<script src="../js/pin_nav.js?v=202611162349"></script>
+</body>
+</html>

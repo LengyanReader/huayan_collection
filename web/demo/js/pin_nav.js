@@ -90,6 +90,17 @@
       '<span style="opacity:.6">（' + h.items.length + ' 品）</span></summary>' +
       '<div class="nv-grid">' + chips + '</div></details>';
   });
+  // L.491：入法界品·五十三参子页组（总目＋54 卡·折叠列出·当前页高亮）
+  if (NAV.can53 && NAV.can53.length) {
+    var hasCur53 = NAV.can53.some(function (p) { return p.id === CUR; });
+    var chips53 = NAV.can53.map(function (p) {
+      var cur = p.id === CUR ? ' is-cur' : '';
+      var lab = p.no ? ('参' + p.no + '·' + p.name) : p.name;
+      return '<a class="nv-chip' + cur + '" href="' + p.id + '.html">' + p.icon + ' ' + lab + '</a>';
+    }).join('');
+    body += '<details' + (hasCur53 ? ' open' : '') + '><summary>🌈 入法界·五十三参子页<span style="opacity:.6">（' +
+      NAV.can53.length + ' 页 · 每参一页深读）</span></summary><div class="nv-grid">' + chips53 + '</div></details>';
+  }
   var comps = (NAV.comp || []).map(function (c) {
     var cur = c.id === CUR ? ' is-cur' : '';
     return '<a class="nv-chip' + cur + '" href="' + c.id + '.html">' + c.icon + ' ' + c.title + '</a>';

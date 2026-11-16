@@ -32,6 +32,9 @@ ARTICLES_OUT = OUT / 'articles'
 sys.path.insert(0, str(ROOT / 'scripts'))
 import db_reader
 
+# 入法界品·五十三参子页汇编库（L.491·本目录模块）
+import rufajie_can_lib
+
 # ── 静态资源缓存戳（L.471）：css/js 任何更新自动失效浏览器/CDN 缓存 ──
 ASSET_V = 'v=' + time.strftime('%Y%m%d%H%M')
 
@@ -1794,6 +1797,12 @@ def load_standalone_articles():
                     a['doc_md'] = f.read()
             else:
                 print(f'  ! standalone article {a["id"]}: doc not found: {a["doc"]}')
+
+    # ④ 入法界品·五十三参子页（L.491）：总目＋54 卡——doc_md 运行时程序汇编。
+    # 单一事实源＝P39 主页各参节（### 参N·名）＋行历图内嵌数据（L.407/L.413/L.415）＋
+    # 四件套语料库（L.421/L.456）；不产中间文件，主页修订后重跑 build 即自动同步。
+    # 家族 huayan_can：不入九会 pin 链（子页前后翻页用页内导航行），pin_nav 抽屉单列 can53 组。
+    articles += rufajie_can_lib.load_articles(ROOT)
     return articles
 
 
@@ -2677,8 +2686,8 @@ def build_articles(articles):
                 return v
             return _CN.get(s, 0)
         # 专题页标题无「第X品」时按文章 id 指定对应品（入法界品专题＝第39品）
-        _SPECIAL_PIN = {'huayan-rufajie-journey': 39}
-        _pin = _SPECIAL_PIN.get(a['id'], 0)
+        # L.491：五十三参子页（huayan-rufajie-can-*）同属第 39 品——原文窗按品取全文
+        _pin = 39 if (a['id'] == 'huayan-rufajie-journey' or a['id'].startswith('huayan-rufajie-can-')) else 0
         if not _pin:
             _pm = re.search(r'第([一二三四五六七八九十]{1,3})品', title)
             if _pm:
@@ -2691,7 +2700,8 @@ def build_articles(articles):
         # 阅读位置记忆（所有文章页·localStorage·非 cookie）
         sutra_panel_block = '<script src="../js/reading_pos.js?' + ASSET_V + '"></script>' + chr(10) + sutra_panel_block
         # 品目导航（L.473）：华严经学系列页注入（FAB＋抽屉＋前后品底栏由 pin_nav.js 渲染）
-        if (a.get('family') or '') == 'huayan_xidu' or a['id'] in EXTRA_NAV_IDS:
+        # L.491：五十三参子页（家族 huayan_can）同注入——抽屉单列「入法界·五十三参」组（can53）
+        if (a.get('family') or '') in ('huayan_xidu', 'huayan_can') or a['id'] in EXTRA_NAV_IDS:
             sutra_panel_block += (
                 '\n<script>window.NAV_CURRENT="' + a['id'] + '";</script>\n'
                 '<script src="../data/huayan_nav.js?' + ASSET_V + '"></script>\n'
@@ -2722,12 +2732,13 @@ def build_articles(articles):
         if a.get('back', {}).get('tab'):
             back_link = ('<a href="../tabs/%s.html" style="color:var(--text2);font-size:0.78em">返回 %s</a>'
                          % (a['back']['tab'], a['back'].get('label', a['back']['tab'])))
+        _dlbl = a.get('doc_label') or _doc_label(a.get('doc', ''))
         if a.get('data_source'):
             meta_desc = (f'数据驱动页 · 全 YAML 渲染 · <code>{a["data_source"]}.yaml</code>'
                          if a.get('data_source') and not a.get('doc') else
-                         f'全文 {len(a.get("doc_md","")):,} 字 · <code>{_doc_label(a.get("doc",""))}</code>')
+                         f'全文 {len(a.get("doc_md","")):,} 字 · <code>{_dlbl}</code>')
         else:
-            meta_desc = f'全文 {len(a.get("doc_md","") ):,} 字 · <code>{_doc_label(a.get("doc",""))}</code>'
+            meta_desc = f'全文 {len(a.get("doc_md","") ):,} 字 · <code>{_dlbl}</code>'
         return f'''<div style="display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px">
 <div><a href="{a['id'] + '.html'}" style="color:var(--gold);font-weight:700;font-size:1.02em;text-decoration:none">{a.get('icon','📄')} {a.get('title','')} ↗</a></div>
 {"<div style='font-size:0.75em;color:var(--text2)'>" + a.get('title_sub','') + "</div>" if a.get('title_sub') else ''}
@@ -3103,6 +3114,8 @@ def main():
                 for (h, lb), items in sorted(_hui_map.items(), key=lambda kv: kv[0][0])],
         'comp': _nav_comps,
         'ext': _nav_ext,
+        # L.491：入法界品·五十三参子页（总目＋54 卡·家族 huayan_can·不入九会 pin 链）
+        'can53': rufajie_can_lib.nav_items(articles),
         'pin_ids': [p['id'] for p in _nav_pins],
     }
     nav_js_path = OUT / 'data' / 'huayan_nav.js'
