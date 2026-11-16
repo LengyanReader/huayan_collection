@@ -945,7 +945,7 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.25 未竟" not in md:
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.26 未竟" not in md:
         fail("§17.14–17.24 headings missing")
 
     def rows_in(block: str) -> list[str]:
@@ -1115,6 +1115,40 @@ def main() -> int:
     ok(f"§17.23 R5: {len(ly['quotes'])} quotes in {len(ly['groups'])} groups re-verified "
        f"({('/').join(g['kind'] for g in ly['groups'])})")
 
+    # --- §17.25 waizi matrix: 9 corpora, 14 verbatim anchors, Buddhist anchors all zero ---
+    wz_path = ROOT / "data" / "research" / "waizi_matrix.json"
+    if not wz_path.exists():
+        fail("waizi_matrix.json missing")
+    wz = json.loads(wz_path.read_text(encoding="utf-8"))
+    allc = list(wz["corpora"].values()) + list(wz["gretil"].values())
+    if len(allc) != 9:
+        fail(f"waizi corpora {len(allc)} != 9")
+    nverbatim = 0
+    for c in allc:
+        for f, meta in c.get("files", {}).items():
+            p_local = ROOT / c["dir"] / f
+            if hashlib.sha256(p_local.read_bytes()).hexdigest() != meta["sha256"]:
+                fail(f"waizi file hash changed: {f}")
+        for s in c["struct"]:
+            if s.get("verbatim"):
+                nverbatim += 1
+                if s["quote"] not in md:
+                    fail(f"waizi struct quote not printed: {s['quote'][:20]}")
+            else:
+                fail(f"waizi struct anchor not verbatim: {s['quote'][:20]}")
+    if nverbatim < 14:
+        fail(f"waizi verbatim anchors {nverbatim} < 14")
+    for anchor_w in ("法界", "華嚴", "圓融", "涅槃"):
+        for c in allc:
+            if c["matrix"].get(anchor_w, 0) != 0:
+                fail(f"waizi Buddhist anchor nonzero in {c['slug']}: {anchor_w}")
+    w_block = grab("waizi")
+    if "皆为 0" not in w_block.replace(" ", "") and "全部为 0" not in w_block:
+        fail("§17.25 zero-anchor sentence missing")
+    if "### 17.25 诸子" not in md:
+        fail("§17.25 heading missing")
+    ok(f"§17.25 waizi matrix: 9 corpora / {nverbatim} verbatim anchors / Buddhist anchors all zero")
+
     # --- R4 仪式·课诵: quotes re-sliced from T19n1019 + T279 cross ---
     lt_path = ROOT / "data" / "research" / "r4_liturgical.json"
     if not lt_path.exists():
@@ -1206,7 +1240,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.25 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.26 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -1342,7 +1376,7 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.25 未竟" not in md:
+    if "### 17.16 T4" not in md or "### 17.26 未竟" not in md:
         fail("§17.16–17.24 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")

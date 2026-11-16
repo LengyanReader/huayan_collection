@@ -35,6 +35,7 @@ PERSECUTION = ROOT / "data" / "research" / "persecution.json"
 S2SIDIAN = ROOT / "data" / "research" / "s2_sidian.json"
 R5LY = ROOT / "data" / "research" / "r5_lingyan.json"
 R4LT = ROOT / "data" / "research" / "r4_liturgical.json"
+WAIZI = ROOT / "data" / "research" / "waizi_matrix.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1257,6 +1258,51 @@ def render_workshop(ws):
     return "\n".join(out)
 
 
+def render_waizi(wz):
+    """诸子·儒家·道家·印度：语汇与结构矩阵（C3/C1 接层）。"""
+    out = []
+    cs = wz["meta"]["concepts"]
+    allc = list(wz["corpora"].items()) + list(wz["gretil"].items())
+    short = {"laozi": "老子", "zhuangzi": "莊子", "lunyu": "論語", "mengzi": "孟子",
+             "zhongyong": "中庸", "xunzi": "荀子", "huainanzi": "淮南",
+             "bhagavadgita": "薄伽梵歌", "ishaupanisad": "Īśā奥义书"}
+    names = {cid: short.get(cid, cid) for cid, _ in allc}
+    out.append("**一、语汇矩阵**（C3：去标记全文计数，只作量级参考；佛藏锚词计入以显接触面）：")
+    out.append("")
+    out.append("| 概念 | " + " | ".join(names[cid] for cid, _ in allc) + " |")
+    out.append("|---|" + "---:|" * len(allc))
+    for k in cs:
+        vals = [c["matrix"].get(k, 0) for _, c in allc]
+        out.append(f"| {esc(k)} | " + " | ".join(str(v) for v in vals) + " |")
+    out.append("")
+    out.append("**二、结构层**（C1：代表性阶梯/本体原文，起止锚逐字回源；十四条全部 verbatim）：")
+    out.append("")
+    out.append("| 典 | 原文（照录） | 结构 |")
+    out.append("|---|---|---|")
+    for cid, c in allc:
+        for s in c["struct"]:
+            if s.get("verbatim"):
+                out.append(f"| {esc(names[cid])} | {esc(s['quote'])} | {esc(s['note'])} |")
+    out.append("")
+    out.append("**判断**：")
+    out.append("")
+    out.append("①**道家居首，儒家居次，诸子各有其枢**：「道」在淮南 877／莊子 598／孟子 618／中庸 807；"
+               "「誠」在中庸 409；「禮」在荀子 771；「自然」在莊子 170——各家的概念重心清晰可数。")
+    out.append("")
+    out.append("②**佛藏锚词（法界／華嚴／圓融／涅槃）在九典全部为 0**——这不是缺陷，是本表最有信息量的行："
+               "诸子百家与印度诸奥义书同华严**没有文本层面的直接接触**；华严的所有跨传统对应都是"
+               "**结构平行**（阶梯、升进、终极位），不是**语汇借用**。这把 §17.9 的「反例：共享语汇不等于依赖」"
+               "倒转过来坐实：不共享，恰恰说明各自的独立性。")
+    out.append("")
+    out.append("③**四地阶梯的同构**（§17.13 已立）在结构层得到旁证：老子「道生一…三生萬物」的生成序列、"
+               "孔子自述生命阶梯、孟子六阶人格、荀子士→圣、瑜伽八支——都是「从凡 to 圣」的有序升进，"
+               "但名目、终点、动力各不相同。同构判（C1），非同源。")
+    out.append("")
+    out.append("**状态**：C3/C1 的非佛藏接层记 `partial`——九典矩阵与十四条结构锚已立；"
+               "逐概念的语义史、每典的全文精读、更多典籍（墨／名／法／阴阳）未做。")
+    return "\n".join(out)
+
+
 def render_r4(lt):
     """R4 仪式·课诵：四十二字觀門（掛 §17.18 影响面内，沿 R2 接层先例）。"""
     vs = lt["quotes"]
@@ -1726,6 +1772,7 @@ def main():
     s2sidian = json.loads(S2SIDIAN.read_text(encoding="utf-8")) if S2SIDIAN.exists() else None
     r5ly = json.loads(R5LY.read_text(encoding="utf-8")) if R5LY.exists() else None
     r4lt = json.loads(R4LT.read_text(encoding="utf-8")) if R4LT.exists() else None
+    waizi = json.loads(WAIZI.read_text(encoding="utf-8")) if WAIZI.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -1760,6 +1807,7 @@ def main():
         "workshop": render_workshop(workshop) if workshop else "",
         "royal": render_royal(royal, s2sidian) if royal else "",
         "r4": render_r4(r4lt) if r4lt else "",
+        "waizi": render_waizi(waizi) if waizi else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",

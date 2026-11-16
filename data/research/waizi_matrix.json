@@ -1,0 +1,785 @@
+{
+  "meta": {
+    "date": "2026-11-17",
+    "purpose": "诸子百家·儒家·道家·印度诸典：C3 语汇矩阵＋C1 结构层（类型判专用）",
+    "method": "全文本去标记后做概念词频矩阵（只作量级参考）；结构层取代表性原文，起止锚逐字回源（verbatim=true 才算实据）；佛藏锚词（法界/華嚴/圓融/涅槃）计入以显接触面之有无。",
+    "concepts": [
+      "道",
+      "德",
+      "聖人",
+      "心",
+      "性",
+      "命",
+      "天",
+      "氣",
+      "神",
+      "靜",
+      "虛",
+      "自然",
+      "誠",
+      "聖",
+      "智",
+      "仁",
+      "義",
+      "禮",
+      "法界",
+      "華嚴",
+      "圓融",
+      "涅槃"
+    ],
+    "discipline": "非佛藏文本一律类型判；负向计数如实；不判历史接触。"
+  },
+  "corpora": {
+    "laozi": {
+      "slug": "daojia_laozi",
+      "edition": "《道德真經》，戰國老子，Kanripo KR5c0045",
+      "dir": "data\\references\\daojia_laozi",
+      "files": {
+        "KR5c0045_000.txt": {
+          "bytes": 253,
+          "sha256": "084c9356b2316b3140a5e2e6c5efee380c1b8984a8cfefa84cfb0e15ab1e6871"
+        },
+        "KR5c0045_001.txt": {
+          "bytes": 10099,
+          "sha256": "548c0dee3c6853a70d1f1b00246605677919cf16c083f31d9f7dd2b25890a187"
+        },
+        "KR5c0045_002.txt": {
+          "bytes": 12043,
+          "sha256": "c56c7e52e8befb3f870758be670731969ec1ff5cd0b0cbc1d3e4bf41efef1954"
+        }
+      },
+      "flat_chars": 6641,
+      "matrix": {
+        "道": 90,
+        "德": 58,
+        "聖人": 31,
+        "心": 11,
+        "性": 1,
+        "命": 2,
+        "天": 98,
+        "氣": 3,
+        "神": 12,
+        "靜": 10,
+        "虛": 2,
+        "自然": 5,
+        "誠": 1,
+        "聖": 33,
+        "智": 7,
+        "仁": 8,
+        "義": 6,
+        "禮": 5,
+        "法界": 0,
+        "華嚴": 0,
+        "圓融": 0,
+        "涅槃": 0
+      },
+      "struct": [
+        {
+          "quote": "道生一一生二二生三三生萬物",
+          "note": "本体生成序列（四十二章）",
+          "pos": 3820,
+          "verbatim": true
+        },
+        {
+          "quote": "人法地地法天天法道道法自然",
+          "note": "终极依止序列（二十五章）",
+          "pos": 2133,
+          "verbatim": true
+        }
+      ]
+    },
+    "zhuangzi": {
+      "slug": "daojia_zhuangzi",
+      "edition": "《莊子》郭象注，晉郭象，Kanripo KR5c0138",
+      "dir": "data\\references\\daojia_zhuangzi",
+      "files": {
+        "KR5c0138_000.txt": {
+          "bytes": 5010,
+          "sha256": "4088c9b7ff97196f343b17b830bf7f801f4f53e2b54fd3b53edb50809a023323"
+        },
+        "KR5c0138_001.txt": {
+          "bytes": 53051,
+          "sha256": "f3da300dada745a52a3f8bf35008bdb88a6a929b5bcddabdfd4d91d4022f78c0"
+        },
+        "KR5c0138_002.txt": {
+          "bytes": 48037,
+          "sha256": "8f0e360846e1abdbb1fe3fa469a2f9d2d1b81279b8f98292ead21e476b2df152"
+        },
+        "KR5c0138_003.txt": {
+          "bytes": 38844,
+          "sha256": "b83d62e56243e67cbfba4bed9c6e29a15ad74103395a775a70e4bc384de724c7"
+        },
+        "KR5c0138_004.txt": {
+          "bytes": 40863,
+          "sha256": "00d63ebfbe8cc8ad8f2a5e8c0a46c9e0e900bc9c2b91ca3eae1e5953328b28f4"
+        },
+        "KR5c0138_005.txt": {
+          "bytes": 51633,
+          "sha256": "99e60838f938a90402e5621e7ef8edf81444559f43c4682cacb9895a4b6d9885"
+        },
+        "KR5c0138_006.txt": {
+          "bytes": 37416,
+          "sha256": "ad498d6e537f31ce5bbb46f4e0a439ae1cbd4a152d85a3e2af6799f85ec10cb4"
+        },
+        "KR5c0138_007.txt": {
+          "bytes": 55844,
+          "sha256": "9152b221858d588eb94b508d66fed9f06a904418c3853acd7fea3e40022d26fa"
+        },
+        "KR5c0138_008.txt": {
+          "bytes": 64493,
+          "sha256": "96f10b334ac1a37bfa238318ead3bdcdfc516206fc0d46566c362296b20d724b"
+        },
+        "KR5c0138_009.txt": {
+          "bytes": 44631,
+          "sha256": "2e1fda23540ed43eec1503f6e25c3e21f83927e2f0ecd4715d0d56e7ffb46b07"
+        },
+        "KR5c0138_010.txt": {
+          "bytes": 43688,
+          "sha256": "91011b4df95a11da312fdc682357cbfe3017f527c33f2002f54b8111326b8ae7"
+        }
+      },
+      "flat_chars": 159980,
+      "matrix": {
+        "道": 598,
+        "德": 210,
+        "聖人": 194,
+        "心": 437,
+        "性": 363,
+        "命": 184,
+        "天": 1225,
+        "氣": 119,
+        "神": 232,
+        "靜": 62,
+        "虛": 48,
+        "自然": 170,
+        "誠": 38,
+        "聖": 299,
+        "智": 50,
+        "仁": 199,
+        "義": 195,
+        "禮": 81,
+        "法界": 0,
+        "華嚴": 0,
+        "圓融": 0,
+        "涅槃": 0
+      },
+      "struct": [
+        {
+          "quote": "至人無已",
+          "note": "三无境界之一（逍遥游，郭象注本作「已」）",
+          "pos": 4479,
+          "verbatim": true
+        },
+        {
+          "quote": "天地與我並生而萬物與我為一",
+          "note": "齐物一元（齐物论）",
+          "pos": 13478,
+          "verbatim": true
+        }
+      ]
+    },
+    "lunyu": {
+      "slug": "rujia_lunyu",
+      "edition": "《論語》正文，Kanripo KR1h0004",
+      "dir": "data\\references\\rujia_lunyu",
+      "files": {
+        "KR1h0004_001.txt": {
+          "bytes": 3619,
+          "sha256": "e5fb5c36103322d7896badb041e42feaa4319d9fa21017fba15c97846041e1dc"
+        },
+        "KR1h0004_002.txt": {
+          "bytes": 4610,
+          "sha256": "e589385d59f9a7cf8c205b706c5a76477d44991e9ec8160278ebe98e750c0364"
+        },
+        "KR1h0004_003.txt": {
+          "bytes": 5332,
+          "sha256": "3f579e96abb31773e0eacd6644a7b32e560754446e8b8628148eac7763285540"
+        },
+        "KR1h0004_004.txt": {
+          "bytes": 4288,
+          "sha256": "5b8f03b3aa5361acdda21b14fea5c59a15e55a0cdb404b9a85749ae7bf1a7691"
+        },
+        "KR1h0004_005.txt": {
+          "bytes": 6438,
+          "sha256": "4d4604071379b44d72f4699f13faa19a728a250af2c4b3bb6ff3f1604760d93c"
+        },
+        "KR1h0004_006.txt": {
+          "bytes": 6183,
+          "sha256": "f8f2b3eb963c3f7ac58ab077a36b22585336eb3fdf1e7cf1acc215e1e79ddd0f"
+        },
+        "KR1h0004_007.txt": {
+          "bytes": 7036,
+          "sha256": "e5de9952b63f3295df512d6c5b2f90c5b17d35c59aa75c7866e5af5a830ff3ea"
+        },
+        "KR1h0004_008.txt": {
+          "bytes": 4474,
+          "sha256": "071cd452136e3a35bb7b730ecdad2e543b49c7983a9d614042bb8409817ca60f"
+        },
+        "KR1h0004_009.txt": {
+          "bytes": 6081,
+          "sha256": "a3445c1ca8a47c5a0e720b8346411aaa1885f6f7575e84d9b491c7dab8b34985"
+        },
+        "KR1h0004_010.txt": {
+          "bytes": 5788,
+          "sha256": "1ca88f148d4adc040ba143cc138d631e08c43871ce6142fba8e7a58dacc80473"
+        },
+        "KR1h0004_011.txt": {
+          "bytes": 8046,
+          "sha256": "954adcdec702d0ba1000844a8b4fc36b670861671b8e62496c31ece37260f0d2"
+        },
+        "KR1h0004_012.txt": {
+          "bytes": 7246,
+          "sha256": "0c0ea54de004120466b24cee7c2481ded7b1b45425ae797f20679b77b1f2760b"
+        },
+        "KR1h0004_013.txt": {
+          "bytes": 7754,
+          "sha256": "6c24bea259101e03afbd14e266c91e0534eae4d92765ac48f5c1e31bf885c2e0"
+        },
+        "KR1h0004_014.txt": {
+          "bytes": 9964,
+          "sha256": "adffa5c50a4434ee7c2c3ce2b8b1b81bac9a701eeb26d6dbb784e3659d3d21df"
+        },
+        "KR1h0004_015.txt": {
+          "bytes": 7195,
+          "sha256": "b45bb5c24b0cf56bb81293845a07149f4227fcf6d21c608f363599db7537a620"
+        },
+        "KR1h0004_016.txt": {
+          "bytes": 5536,
+          "sha256": "6e68434c798ff797290b854ff69875711336db18c3b6b22bf850c13f55396ff2"
+        },
+        "KR1h0004_017.txt": {
+          "bytes": 7520,
+          "sha256": "fe7546ae3d398c6766e7f239d097e1c7d72bc6373f4cfccf1c84e65378d13c12"
+        },
+        "KR1h0004_018.txt": {
+          "bytes": 4665,
+          "sha256": "ef5fdee59211c8f6c5ae5b219b7548f37cddab4b0e3c47285336bb26d486ebe8"
+        },
+        "KR1h0004_019.txt": {
+          "bytes": 5876,
+          "sha256": "10702014080536b31848296a2ebdbf65f179b4e48616e9e3718ed950f08b05f9"
+        }
+      },
+      "flat_chars": 40202,
+      "matrix": {
+        "道": 90,
+        "德": 39,
+        "聖人": 4,
+        "心": 4,
+        "性": 2,
+        "命": 22,
+        "天": 46,
+        "氣": 6,
+        "神": 7,
+        "靜": 1,
+        "虛": 2,
+        "自然": 0,
+        "誠": 2,
+        "聖": 8,
+        "智": 0,
+        "仁": 104,
+        "義": 24,
+        "禮": 74,
+        "法界": 0,
+        "華嚴": 0,
+        "圓融": 0,
+        "涅槃": 0
+      },
+      "struct": [
+        {
+          "quote": "三十而立，四十而不惑，五十而知天命，六十而耳順",
+          "note": "自述生命阶梯（为政）",
+          "pos": 1780,
+          "verbatim": true
+        }
+      ]
+    },
+    "mengzi": {
+      "slug": "rujia_mengzi",
+      "edition": "《孟子》，漢趙岐注本，Kanripo KR1h0002",
+      "dir": "data\\references\\rujia_mengzi",
+      "files": {
+        "KR1h0002_000.txt": {
+          "bytes": 4260,
+          "sha256": "c89a8e004fac8d94e3163fdd0b03d243e9ad169ef62b108e6bbd2c9abbed1a28"
+        },
+        "KR1h0002_001.txt": {
+          "bytes": 20198,
+          "sha256": "2c6976da4f17839de6bc5054a342be3159d0fc052ba57afb338474e8d92be4b5"
+        },
+        "KR1h0002_002.txt": {
+          "bytes": 24956,
+          "sha256": "e101f11a18931ee2b215c3171e5b34010db69d51ad31b62138bbe4a460fb4233"
+        },
+        "KR1h0002_003.txt": {
+          "bytes": 24823,
+          "sha256": "97cd58227b02876ae42dd9cab8618a0c1a8ca366cffda1234a4385098a5814b1"
+        },
+        "KR1h0002_004.txt": {
+          "bytes": 21371,
+          "sha256": "a99bd4356c1607162ebb97853a4513a3c5f0e0fb544a4b1ff9ee00fbe006cf8b"
+        },
+        "KR1h0002_005.txt": {
+          "bytes": 23676,
+          "sha256": "3453e72b905bd29768e187bccbb70784157a297ea351113c7c8a87cbc471942e"
+        },
+        "KR1h0002_006.txt": {
+          "bytes": 20960,
+          "sha256": "f10388b2961e797078160a02462f1f26bd6e8495603b4bdae91cd4c650eeadb4"
+        },
+        "KR1h0002_007.txt": {
+          "bytes": 22226,
+          "sha256": "6f69d29c7a88e10b67a98b918329a500447be6b8aeaa5d89c2ebaa3d3981e1bd"
+        },
+        "KR1h0002_008.txt": {
+          "bytes": 20972,
+          "sha256": "8fc69a9be89140fe863d60cdfa9cb6f4c24c22e9a37d5c8cbbfc7f7e6e1f2860"
+        },
+        "KR1h0002_009.txt": {
+          "bytes": 21267,
+          "sha256": "77b70e8ebbeac3c6801a86f5add1e0f109f814bda39c4b9620b31353cc9d2e40"
+        },
+        "KR1h0002_010.txt": {
+          "bytes": 20390,
+          "sha256": "7a7010a5f2353bb43ee89caf068db2adf397d831b9d9268423385e43884bc350"
+        },
+        "KR1h0002_011.txt": {
+          "bytes": 21700,
+          "sha256": "4d1f422cb044b9bd52b024853638c1a1329a263de1f103f9ba84ba51121d998f"
+        },
+        "KR1h0002_012.txt": {
+          "bytes": 22712,
+          "sha256": "368d5872bd1df9c1915d40fff96cb2f437c007fd543f1ecc9d7e36652afce3e5"
+        },
+        "KR1h0002_013.txt": {
+          "bytes": 25811,
+          "sha256": "f2fb240245d012fa9956140b1f178596262c39f3f78cfffada9e77a3002e9bc5"
+        },
+        "KR1h0002_014.txt": {
+          "bytes": 27527,
+          "sha256": "3e18c6c6917ffd8717afe6cb7ceeafb2d66a8e7fd32a9c1a722f03b2a3c282af"
+        }
+      },
+      "flat_chars": 106344,
+      "matrix": {
+        "道": 618,
+        "德": 182,
+        "聖人": 109,
+        "心": 360,
+        "性": 140,
+        "命": 144,
+        "天": 629,
+        "氣": 64,
+        "神": 23,
+        "靜": 1,
+        "虛": 0,
+        "自然": 6,
+        "誠": 62,
+        "聖": 191,
+        "智": 70,
+        "仁": 433,
+        "義": 383,
+        "禮": 269,
+        "法界": 0,
+        "華嚴": 0,
+        "圓融": 0,
+        "涅槃": 0
+      },
+      "struct": [
+        {
+          "quote": "充實之謂美充實而有光輝之謂大大而化之之謂聖聖而不可知之謂神",
+          "note": "六阶人格序列（尽心下）",
+          "pos": 101132,
+          "verbatim": true
+        }
+      ]
+    },
+    "zhongyong": {
+      "slug": "rujia_zhongyong",
+      "edition": "《中庸》（大學中庸集說啟蒙内），元景星，Kanripo KR1h0041",
+      "dir": "data\\references\\rujia_zhongyong",
+      "files": {
+        "KR1h0041_000.txt": {
+          "bytes": 103059,
+          "sha256": "90276bd4b2053b2147765c20c1aaf66842b81a8fc9634eb6baca9bc30903a157"
+        },
+        "KR1h0041_001.txt": {
+          "bytes": 72494,
+          "sha256": "fb45a1aeeb912a9c3b6fbf2287ebcbc7f4808fe720f28ec7781b10c5ca69f356"
+        },
+        "KR1h0041_002.txt": {
+          "bytes": 85026,
+          "sha256": "a1285ba88d85bb4f19a37e20c39a64e88c3ec320d8a14a6d08a4caa5759f8afb"
+        }
+      },
+      "flat_chars": 76439,
+      "matrix": {
+        "道": 807,
+        "德": 30,
+        "聖人": 162,
+        "心": 414,
+        "性": 252,
+        "命": 114,
+        "天": 694,
+        "氣": 136,
+        "神": 78,
+        "靜": 22,
+        "虛": 2,
+        "自然": 48,
+        "誠": 409,
+        "聖": 255,
+        "智": 14,
+        "仁": 227,
+        "義": 119,
+        "禮": 155,
+        "法界": 0,
+        "華嚴": 0,
+        "圓融": 0,
+        "涅槃": 0
+      },
+      "struct": [
+        {
+          "quote": "天命之謂性率性之謂道修道之謂教",
+          "note": "开篇三句（性→道→教）",
+          "pos": 31025,
+          "verbatim": true
+        },
+        {
+          "quote": "誠者天之道思誠者人之道",
+          "note": "诚为本体-功夫两轮",
+          "pos": 29455,
+          "verbatim": true
+        }
+      ]
+    },
+    "xunzi": {
+      "slug": "zhuzi_xunzi",
+      "edition": "《荀子》，周荀况，Kanripo KR3a0002",
+      "dir": "data\\references\\zhuzi_xunzi",
+      "files": {
+        "KR3a0002_000.txt": {
+          "bytes": 3981,
+          "sha256": "7214d5a266e6d539220787de238564c5f7afadbef4055f7651ca98f355c2883c"
+        },
+        "KR3a0002_001.txt": {
+          "bytes": 25317,
+          "sha256": "85e39731dd04ba56520b2c17438958be2cdbd6a7c3d27684bc43d1bea1e68f48"
+        },
+        "KR3a0002_002.txt": {
+          "bytes": 28490,
+          "sha256": "ebf6d3da0dc12629dc8aab13d2ecd3d1ada68d1fb35f4267065dcfd7f6d8fe5a"
+        },
+        "KR3a0002_003.txt": {
+          "bytes": 36652,
+          "sha256": "738fe92cdae77e09dabb87281abc28a903d374af4c2f0da88bad6c2d52c51868"
+        },
+        "KR3a0002_004.txt": {
+          "bytes": 27910,
+          "sha256": "b854fa26d26c773031f95946c4e26c81839a4c3c68ae746e3abb2cdaf6797639"
+        },
+        "KR3a0002_005.txt": {
+          "bytes": 25739,
+          "sha256": "3c3a67ecdee5308782f5efd41f26045f48035eff8a52d31b0c17bfe88a57dbed"
+        },
+        "KR3a0002_006.txt": {
+          "bytes": 27480,
+          "sha256": "44da5fa8d12e21a31226a87b992c6cd67abd77bb93b32219908f124d2ffefab6"
+        },
+        "KR3a0002_007.txt": {
+          "bytes": 30187,
+          "sha256": "7c960e7f59638254f5142c69a67b9d0827fbe865855cea9b0e4ee287d79494a5"
+        },
+        "KR3a0002_008.txt": {
+          "bytes": 12947,
+          "sha256": "9afa06d3df9076970c624ce71bd5d73354deeee7cc86aefabd04c4e10aafdb80"
+        },
+        "KR3a0002_009.txt": {
+          "bytes": 16601,
+          "sha256": "8b1b064a4ba538d11fb0fb35974970e258413d83838398077837ba6cebf71fb7"
+        },
+        "KR3a0002_010.txt": {
+          "bytes": 27379,
+          "sha256": "e839a958f059376cf9c06f379abd039b86daa1ad0bfe3eb626a1b8bdded5af68"
+        },
+        "KR3a0002_011.txt": {
+          "bytes": 31630,
+          "sha256": "c276b2949bb6969181910c124ab62db3eb88ece4b408decbe82272a64d435140"
+        },
+        "KR3a0002_012.txt": {
+          "bytes": 29860,
+          "sha256": "13bf138ef98598f34011a1837f6e405cc805b306c9b8d5ccf3df70a972b7ab65"
+        },
+        "KR3a0002_013.txt": {
+          "bytes": 36087,
+          "sha256": "f1e161863c77200f2c94544615974c45652cfdc3a959ec51960a5582b8c70c47"
+        },
+        "KR3a0002_014.txt": {
+          "bytes": 5892,
+          "sha256": "2eccfc1c82756396d680d1b76f59d77c7f93e74b5e5dfe767e9b70fd99dfc2d8"
+        },
+        "KR3a0002_015.txt": {
+          "bytes": 23673,
+          "sha256": "9b4e2b6f587c6a23092937b916c99bd8530bcbf1f6724cac39d98484cec1d749"
+        },
+        "KR3a0002_016.txt": {
+          "bytes": 26741,
+          "sha256": "3e5ed40b0e88ea305bfd3f9074c4d76775144a7095da34e6a960c7707d634463"
+        },
+        "KR3a0002_017.txt": {
+          "bytes": 24040,
+          "sha256": "3bc9c014a5a0354160448a4cca8a952d51bea4c2fa1d5a30ba840042ce9896b8"
+        },
+        "KR3a0002_018.txt": {
+          "bytes": 23051,
+          "sha256": "be1fe319902227477ccac2b515bd940b5297f214a3ebd7e4182d71d60deddde2"
+        },
+        "KR3a0002_019.txt": {
+          "bytes": 35735,
+          "sha256": "3dae9be513b213b97487c1f21e8e978bd12a62498edb28d2c19d30318c05eb3d"
+        },
+        "KR3a0002_020.txt": {
+          "bytes": 39465,
+          "sha256": "d9edd74dc0c9b7c630e4600bafffb6e92b0ec2a8f14a409fb5f6da921b510df0"
+        },
+        "KR3a0002_021.txt": {
+          "bytes": 4221,
+          "sha256": "9591c4d5ef11e097fe666b55c975e7166be1030220c5999c35aee3d89647a4c9"
+        },
+        "KR3a0002_022.txt": {
+          "bytes": 3923,
+          "sha256": "7cd2853faced1d96a9218322331791a8a07e13fd2176aa03a38ca1dcca8e3346"
+        }
+      },
+      "flat_chars": 179095,
+      "matrix": {
+        "道": 758,
+        "德": 166,
+        "聖人": 139,
+        "心": 317,
+        "性": 247,
+        "命": 139,
+        "天": 952,
+        "氣": 65,
+        "神": 88,
+        "靜": 36,
+        "虛": 9,
+        "自然": 5,
+        "誠": 133,
+        "聖": 264,
+        "智": 68,
+        "仁": 200,
+        "義": 558,
+        "禮": 771,
+        "法界": 0,
+        "華嚴": 0,
+        "圓融": 0,
+        "涅槃": 0
+      },
+      "struct": [
+        {
+          "quote": "其數則始乎誦經終乎讀禮",
+          "note": "为学之数（劝学）",
+          "pos": 3316,
+          "verbatim": true
+        },
+        {
+          "quote": "其義則始乎爲士終乎爲聖人",
+          "note": "为学之义：士→圣人阶梯",
+          "pos": 3344,
+          "verbatim": true
+        }
+      ]
+    },
+    "huainanzi": {
+      "slug": "zhuzi_huainanzi",
+      "edition": "《淮南鴻烈解》，漢高誘注，Kanripo KR3j0010",
+      "dir": "data\\references\\zhuzi_huainanzi",
+      "files": {
+        "KR3j0010_000.txt": {
+          "bytes": 4847,
+          "sha256": "b2e959233174a4425717b5377be21014e2a1e5c82acc6d9be5ae624f6d1c6a50"
+        },
+        "KR3j0010_001.txt": {
+          "bytes": 30075,
+          "sha256": "1ee953188fd23bdf4d840a7203ca814866d3748fd41986af83152f7f1897ed1c"
+        },
+        "KR3j0010_002.txt": {
+          "bytes": 26627,
+          "sha256": "cbdeeeb7bc0affbe7c9c36984c984827a7313e6aaf41390d03d3f3aff9c75448"
+        },
+        "KR3j0010_003.txt": {
+          "bytes": 32995,
+          "sha256": "598857a3c94bb89f955384ed9e7b259cf00acb2727a4fe197f39f6235b59c90d"
+        },
+        "KR3j0010_004.txt": {
+          "bytes": 25431,
+          "sha256": "0c31258423cc46674d49be6677c1284013fc9d2c2c2aa0af4ae7362424f58f23"
+        },
+        "KR3j0010_005.txt": {
+          "bytes": 40929,
+          "sha256": "fd4b14c2712425cf71d5f32412a6c65ff9f562b0a799eefee5455eba092f623b"
+        },
+        "KR3j0010_006.txt": {
+          "bytes": 21319,
+          "sha256": "401cd1dd17f4d60f93b75fad62481e4ccd3158c364f58eccabb8fc026665b503"
+        },
+        "KR3j0010_007.txt": {
+          "bytes": 24252,
+          "sha256": "ae65418217b5e592a1b890d51cb98b99ed2ac3577b168267d09ca65a26c62d65"
+        },
+        "KR3j0010_008.txt": {
+          "bytes": 23622,
+          "sha256": "1bef302e1e23a0a591712715a1e85826a9d34bc04934b1cc44f48f1a8d3dd66b"
+        },
+        "KR3j0010_009.txt": {
+          "bytes": 43199,
+          "sha256": "7e370c8f040f27c932ac949f0fb3ec90a571bb0e317e57309eb0acece164e3cd"
+        },
+        "KR3j0010_010.txt": {
+          "bytes": 25426,
+          "sha256": "74659199db3a20b65f19bb4df3145f41b064aae2640ac936685f09967a9bf782"
+        },
+        "KR3j0010_011.txt": {
+          "bytes": 30137,
+          "sha256": "18a212ff4cc131c468ec877a4f66c086d2a9eec0770db29fa14bfb9c1c2a129e"
+        },
+        "KR3j0010_012.txt": {
+          "bytes": 35665,
+          "sha256": "a2928a070cdb2907ee2f3f63665ee3d2a91deeedac303515106a5f50af32545f"
+        },
+        "KR3j0010_013.txt": {
+          "bytes": 42035,
+          "sha256": "10c68c9d3e62854ce00423e9bb47f69b21ce5f74f5f8bc0d1e4ea550de63f5b8"
+        },
+        "KR3j0010_014.txt": {
+          "bytes": 23988,
+          "sha256": "f09184d79c522d75a094a9712f2cbc753d7c1e36f093cc85632998a3199c0ce4"
+        },
+        "KR3j0010_015.txt": {
+          "bytes": 30509,
+          "sha256": "c376adfe0684737d1fbf70829b861d78e6f7fabcfe889097ab81cbdda0bfb2c1"
+        },
+        "KR3j0010_016.txt": {
+          "bytes": 33933,
+          "sha256": "5058fc615c4c873ff5fd4c611e0e4a514a91f48472c67a459a22b31b48ff5206"
+        },
+        "KR3j0010_017.txt": {
+          "bytes": 27965,
+          "sha256": "da7d69cf51ffe4f2bab4b7b922b282d924e8d1d29f78dd26fe907ca71296a9d5"
+        },
+        "KR3j0010_018.txt": {
+          "bytes": 38731,
+          "sha256": "6bdb83f7c74d0de75faffa52429e834b5b79d955bb1468fdca16f4a4a1b0682a"
+        },
+        "KR3j0010_019.txt": {
+          "bytes": 27436,
+          "sha256": "74b17e92827e1c8cd5f15b50866ac82315cded2034c858985e745cd0375ba4cd"
+        },
+        "KR3j0010_020.txt": {
+          "bytes": 33843,
+          "sha256": "be26f65ace376b32a2451ae615e986c9c4f3da0f84b7971cd08c531e2a17dcba"
+        },
+        "KR3j0010_021.txt": {
+          "bytes": 13398,
+          "sha256": "874c4fe6e830cfae384cd8c0ac0d1f99a3965913b4809f10325de90fff030a56"
+        }
+      },
+      "flat_chars": 207608,
+      "matrix": {
+        "道": 877,
+        "德": 137,
+        "聖人": 230,
+        "心": 382,
+        "性": 243,
+        "命": 142,
+        "天": 1048,
+        "氣": 419,
+        "神": 404,
+        "靜": 36,
+        "虛": 18,
+        "自然": 26,
+        "誠": 64,
+        "聖": 300,
+        "智": 214,
+        "仁": 182,
+        "義": 266,
+        "禮": 189,
+        "法界": 0,
+        "華嚴": 0,
+        "圓融": 0,
+        "涅槃": 0
+      },
+      "struct": [
+        {
+          "quote": "聖人内修其本而不外飾其末",
+          "note": "内本外末（原道训，作「内」）",
+          "pos": 5685,
+          "verbatim": true
+        }
+      ]
+    }
+  },
+  "gretil": {
+    "bhagavadgita": {
+      "slug": "yindu_bhagavadgita",
+      "edition": "《薄伽梵歌》，Mahābhārata 北本，GRETIL bhagvg_u（Unicode）",
+      "dir": "data\\references\\yindu_bhagavadgita",
+      "flat_chars": 63168,
+      "matrix": {
+        "ātman": 45,
+        "brahman": 7,
+        "dharma": 17,
+        "yoga": 74,
+        "mokṣa": 6,
+        "karma": 126,
+        "jñāna": 73,
+        "bhakti": 8,
+        "dhyāna": 2,
+        "tapas": 12
+      },
+      "struct": [
+        {
+          "quote": "kūrmo",
+          "note": "收摄诸根如龟（2.58，龟喻）",
+          "verbatim": true,
+          "pos": 10093
+        },
+        {
+          "quote": "sthitaprajñasya",
+          "note": "立ち于智慧安定者之问（2.54 章首）",
+          "verbatim": true,
+          "pos": 9710
+        }
+      ]
+    },
+    "ishaupanisad": {
+      "slug": "yindu_ishaupanisad",
+      "edition": "《Īśā Upaniṣad》，GRETIL isup___u（Unicode）",
+      "dir": "data\\references\\yindu_ishaupanisad",
+      "flat_chars": 3222,
+      "matrix": {
+        "ātman": 1,
+        "brahman": 0,
+        "dharma": 0,
+        "yoga": 0,
+        "mokṣa": 0,
+        "karma": 1,
+        "jñāna": 0,
+        "bhakti": 0,
+        "dhyāna": 0,
+        "tapas": 0
+      },
+      "struct": [
+        {
+          "quote": "ātman",
+          "note": "梵我关键词（全文 18 颂）",
+          "verbatim": true,
+          "pos": 1976
+        }
+      ]
+    }
+  },
+  "summary": {
+    "corpora": 9
+  }
+}
