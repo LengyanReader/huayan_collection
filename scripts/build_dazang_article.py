@@ -36,6 +36,7 @@ S2SIDIAN = ROOT / "data" / "research" / "s2_sidian.json"
 R5LY = ROOT / "data" / "research" / "r5_lingyan.json"
 R4LT = ROOT / "data" / "research" / "r4_liturgical.json"
 WAIZI = ROOT / "data" / "research" / "waizi_matrix.json"
+SUBST = ROOT / "data" / "research" / "substantive_correspondence.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1298,8 +1299,35 @@ def render_waizi(wz):
                "孔子自述生命阶梯、孟子六阶人格、荀子士→圣、瑜伽八支——都是「从凡 to 圣」的有序升进，"
                "但名目、终点、动力各不相同。同构判（C1），非同源。")
     out.append("")
-    out.append("**状态**：C3/C1 的非佛藏接层记 `partial`——九典矩阵与十四条结构锚已立；"
-               "逐概念的语义史、每典的全文精读、更多典籍（墨／名／法／阴阳）未做。")
+    out.append("**状态**：C3/C1 的非佛藏接层见 §17.26（实质对应四组·双侧引文＋分析）——"
+               "九典矩阵与结构锚已立；逐概念的语义史、每典的全文精读、更多典籍（墨／名／法／阴阳）未做。")
+    return "\n".join(out)
+
+
+def render_substantive(sc):
+    """§17.26 — 实质对应：四组双侧引文＋分析（不是计数，是对读）。"""
+    out = []
+    out.append("四组对应，每组双侧引文逐条以起止锚在源文切片（不手抄），"
+               "lb/位置可回源；源文件记 sha256（`substantive_correspondence.json`）。"
+               "每组三栏：**同构层级**（概念/结构/功能）、**方向**（影响/平行/共同来源）、"
+               "**分析**（同在哪、异在哪、不在场的那半是什么）。")
+    out.append("")
+    for g in sc["groups"]:
+        out.append(f"**{esc(g['title'])}**〔{esc(g['level'])}〕")
+        out.append("")
+        out.append(f"*非佛侧*（{esc(g['tradition'])}）：")
+        for q in g["non_buddhist"]:
+            pos = f"`{q['lb']}`" if q.get("lb") else f"@{q.get('pos', '?')}"
+            out.append(f"- {pos}　{esc(q['text'])}")
+        out.append("")
+        out.append(f"*佛侧*（T279）：")
+        for q in g["buddhist"]:
+            out.append(f"- `{q['lb']}`　{esc(q['text'])}")
+        out.append("")
+        out.append(f'**分析**：{esc(g["analysis"])}')
+        out.append("")
+        out.append(f'**方向**：{esc(g["direction"])}')
+        out.append("")
     return "\n".join(out)
 
 
@@ -1773,6 +1801,7 @@ def main():
     r5ly = json.loads(R5LY.read_text(encoding="utf-8")) if R5LY.exists() else None
     r4lt = json.loads(R4LT.read_text(encoding="utf-8")) if R4LT.exists() else None
     waizi = json.loads(WAIZI.read_text(encoding="utf-8")) if WAIZI.exists() else None
+    subst = json.loads(SUBST.read_text(encoding="utf-8")) if SUBST.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -1808,6 +1837,7 @@ def main():
         "royal": render_royal(royal, s2sidian) if royal else "",
         "r4": render_r4(r4lt) if r4lt else "",
         "waizi": render_waizi(waizi) if waizi else "",
+        "substantive": render_substantive(subst) if subst else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",
