@@ -940,7 +940,7 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.26 未竟" not in md:
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.27 未竟" not in md:
         fail("§17.14–17.24 headings missing")
 
     def rows_in(block: str) -> list[str]:
@@ -1144,6 +1144,34 @@ def main() -> int:
         fail("§17.25 heading missing")
     ok(f"§17.25 waizi matrix: 9 corpora / {nverbatim} verbatim anchors / Buddhist anchors all zero")
 
+    # --- §17.26 substantive: 4 groups, bilateral quotes, analysis present ---
+    sc_path = ROOT / "data" / "research" / "substantive_correspondence.json"
+    if not sc_path.exists():
+        fail("substantive_correspondence.json missing")
+    sc = json.loads(sc_path.read_text(encoding="utf-8"))
+    for key, meta in sc["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"substantive source hash changed: {key}")
+    sc_block = grab("substantive")
+    if len(sc["groups"]) != 4:
+        fail(f"substantive groups {len(sc['groups'])} != 4")
+    for g in sc["groups"]:
+        if g["title"] not in sc_block:
+            fail(f"substantive group title missing: {g['title'][:30]}")
+        if g["level"] not in sc_block:
+            fail(f"substantive level missing: {g['level']}")
+        if g["analysis"][:30] not in sc_block:
+            fail(f"substantive analysis missing: {g['id']}")
+        for side in ("non_buddhist", "buddhist"):
+            for q in g[side]:
+                if q["text"][:20] not in sc_block:
+                    fail(f"substantive quote not printed: {g['id']} {side}")
+    for frag in ("同构层级", "方向", "不在场的那半"):
+        if frag not in sc_block:
+            fail(f"substantive discipline sentence missing: {frag}")
+    ok(f"§17.26 substantive: {len(sc['groups'])} groups / "
+       f"{sc['summary']['quotes_total']} bilateral quotes / 4 levels + directions")
+
     # --- R4 仪式·课诵: quotes re-sliced from T19n1019 + T279 cross ---
     lt_path = ROOT / "data" / "research" / "r4_liturgical.json"
     if not lt_path.exists():
@@ -1235,7 +1263,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.26 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.27 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -1371,7 +1399,7 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.26 未竟" not in md:
+    if "### 17.16 T4" not in md or "### 17.27 未竟" not in md:
         fail("§17.16–17.24 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")
