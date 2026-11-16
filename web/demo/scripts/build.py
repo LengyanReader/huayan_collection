@@ -635,9 +635,10 @@ def _geo_feature_bbox_hits_view(geom):
 # person_trajectories），本层仅**只读投影**、不改任一 SSOT。客观传承守卫：反向边剔除。
 import collections as _collections
 
-HUAYAN_FOCUS_LINEAGES = {'lineage_hw5', 'lineage_japan', 'lineage_goryeo',
-                         'lineage_huayen_lotus', 'lineage_yuexia',
-                         'lineage_xianshou_gaoyuan', 'lineage_贤首宗高原法系'}
+HUAYAN_FOCUS_LINEAGES = ('lineage_hw5', 'lineage_huayen_lotus', 'lineage_yuexia',
+                         'lineage_goryeo', 'lineage_xianshou_gaoyuan',
+                         'lineage_贤首宗高原法系', 'lineage_japan')
+# 有序元组：图例与兜底表序须可复现（原为 set，哈希序致逐次重建乱序）
 HUAYAN_BRANCH_CN = {'lineage_hw5': '华严五祖', 'lineage_japan': '日本华严',
                     'lineage_goryeo': '高丽华严', 'lineage_huayen_lotus': '华严莲社',
                     'lineage_yuexia': '月霞系', 'lineage_xianshou_gaoyuan': '高原法系',
