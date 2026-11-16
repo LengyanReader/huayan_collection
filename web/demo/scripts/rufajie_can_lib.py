@@ -17,6 +17,7 @@ P39_MD = 'docs/经学文献/华严经细读/第九会_逝多林_证入法界/华
 JOURNEY_HTML = 'web/demo/articles/huayan-rufajie-journey.html'
 CORPUS_8040 = 'data/research/huayan_80_40_deep_corpus.json'
 CORPUS_6040 = 'data/research/huayan_60_40_deep_corpus.json'
+GUZHU = 'data/research/rufajie_can_guzhu.json'
 
 _HEAD_RE = re.compile(r'^### 参(\d+)·([^\n]+)$', re.M)
 
@@ -111,7 +112,75 @@ def _can_no_label(card):
     return str(cn or '—')
 
 
-# ── 行程阶段（总目/速查分组·54 卡号系）──
+# ── L.494 EN 对应（编者试译·门名与身份）──
+_ROLE_EN = {'比丘': 'bhikṣu (monk)', '比丘尼': 'bhikṣuṇī (nun)', '菩薩': 'bodhisattva', '佛母': 'the Buddha\'s mother',
+            '長者': 'elder (lay magnate)', '居士': 'householder', '優婆夷': 'upāsikā (laywoman)',
+            '童女': 'maiden', '童子': 'youth', '釋女': 'Śākya maiden', '女': 'woman', '王': 'king',
+            '婆羅門': 'brāhmaṇa', '仙人': 'ṛṣi (seer)', '外道': 'tīrthika (non-Buddhist ascetic)',
+            '船師': 'shipmaster', '童子師': 'teacher of youths', '童子童女': 'youth & maiden',
+            '夜神': 'night devī', '天神': 'deva', '地神': 'earth devī', '天女': 'devī', '林神': 'forest deva',
+            '人': 'layman'}
+_STAGE_EN = {1: 'Stage I — Aspiration & Instruction (Mañjuśrī\'s assembly)',
+             52: 'Stage III — Maitreya\'s Tower (the Adamantine treasury of adornments)',
+             53: 'Stage IV — Return & Consummation (Mañjuśrī\'s distant pointing)',
+             54: 'Stage IV — Return & Consummation (Samantabhadra\'s Great Vows)'}
+_STAGE_EN2 = 'Stage II — the Fifty Teachers (the pilgrimage through good counselors)'
+_GATE_EN = {
+    1: 'Instruction in seeking good teachers; the Sūtra "Universal Illumination of the Realm of Dharma"',
+    2: 'The liberation of unobstructed wisdom, universally seeing the equal realm of mindful recollection of all Buddhas',
+    3: 'The Dharma gateway of the Universal Eye',
+    4: 'The liberation of universal, swift, heroic and unfailed offering to all Buddhas and ripening of beings',
+    5: 'The Dharma gateway of wondrous-sound dhāraṇī radiance',
+    6: 'The Tathāgata\'s profound and unobstructed adornment liberation',
+    7: 'The samādhi of pure radiance of prajñā-pāramitā',
+    8: 'A liberation gateway (name not given in the text)',
+    9: 'The bodhisattva liberation of the Unsurpassed Banner',
+    10: 'The bodhisattva liberation of the universally complete inexhaustible wheel',
+    11: 'The gateway of prajñā-pāramitā universal adornment',
+    12: 'The bodhisattva liberation of following along with inexhaustible lamps',
+    13: 'The Dharma gateway of the wisdom-radiance of all arts and crafts and great powers',
+    14: 'The bodhisattva liberation of the treasury of inexhaustible merit and adornment',
+    15: 'The liberation of the treasury of merit arising at will',
+    16: 'The bodhisattva liberation of unobstructed vows universally adorning the treasury of merit',
+    17: 'The Dharma gateway of delight in universally seeing, serving and honoring the Buddhas with all beings',
+    18: 'The Dharma gateway of illusion-like liberation and transformation',
+    19: 'The bodhisattva samādhi of the Great Compassion Banner conduct in accord with the world',
+    20: 'The bodhisattva liberation of the treasury of wisdom hard to crush',
+    21: 'The prajñā-pāramitā of the universal gateway and the bounds of the Dharma realm',
+    22: 'The Dharma of incense (discerning all fragrances; name not marked)',
+    23: 'Purifying the bodhisattva conduct of the Great Compassion Banner',
+    24: 'The Dharma gateway of adornment of pure bodhisattva conduct reaching everywhere',
+    25: 'The liberation of extinguishing all subtle discrimination and accomplishing omniscient wisdom',
+    26: 'The bodhisattva liberation of the realm of freedom from lust',
+    27: 'The bodhisattva liberation of the realm of not passing into nirvāṇa (samādhi of the inexhaustible seed of Buddhas)',
+    28: 'The bodhisattva liberation of swift conduct of great compassion',
+    29: 'The bodhisattva liberation of the universal gateway of unshaken swift conduct',
+    30: 'The bodhisattva liberation of the net of clouds',
+    31: 'The liberation of the treasury of wisdom hard to crush',
+    32: 'The liberation of light that teaches and tames, dispelling the darkness of delusion of all beings',
+    33: 'The liberation of the heroic walking everywhere in the joy of tranquil samādhi',
+    34: 'The stainless liberation of the banner of great swiftness and universal joy',
+    35: 'The bodhisattva liberation of universally manifesting in all worlds to tame beings',
+    36: 'The bodhisattva liberation of vast joy and adornment being born mind after mind',
+    37: 'The liberation of profound freedom and lovely wondrous sound',
+    38: 'The bodhisattva liberation of the light of vast joy newly arising',
+    39: 'The bodhisattva liberation of universally transforming beings to give rise to good roots',
+    40: 'The liberation of the psychic transformation of freely manifesting birth everywhere over immeasurable kalpas',
+    41: 'Contemplation of all bodhisattva samādhis',
+    42: 'The bodhisattva adornment liberation of great-vow wisdom and illusion',
+    43: 'The bodhisattva liberation of unobstructed mindfulness and pure adornment',
+    44: 'Pure referral (no self-declared gateway)',
+    45: 'The liberation of complete mastery of all arts — the Forty-two Syllabaries',
+    46: 'The liberation of the inexhaustible wheel of no abiding place',
+    47: 'The liberation of unattached mindfulness and pure adornment',
+    48: 'The bodhisattva liberation of the stainless light of wisdom',
+    49: 'The liberation of inexhaustible characteristics',
+    50: 'The liberation of the word of sincere vow',
+    51: 'The liberation of illusion-like abiding',
+    52: 'The gateway is the Tower itself — the adamantine treasury of adornments, surveying all',
+    53: 'The distant pointing — referring all to Samantabhadra',
+    54: 'The Ten Great Vows of Samantabhadra',
+}
 def _stage_of(n):
     if n == 1:
         return '壹·发心与指授（文殊会）'
@@ -157,7 +226,7 @@ def quick_nav_html(root):
     return html
 
 
-def _assemble_card(root, card, sec, prev_card, next_card, corpora, special):
+def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzhu):
     n = card['card_no']
     n40, n80, n60 = card.get('n40', ''), card.get('n80', ''), card.get('n60', '')
     span = card.get('span') or [0, 0]
@@ -185,6 +254,7 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special):
              '数据卡自行历图数据（L.407/L.413/L.415）。**阐释性文字之性质以原文标注为准；本页不新增判断。**' % n)
     L.append('')
     L.append('> ' + ' ｜ '.join(nav))
+    L.append('> **古注取窗（L.493）**：§三 收澄观《华严经疏》（`T1735`·八十）与李通玄《新华严经论》（`T1739`·八十）逐参疏论节引（程序取窗·单调锚定·句界截断·页码留痕；《探玄记》入法界品疏残存·有则录）。程序抽取本字准待校，引前须对 CBETA 原书核。')
     L.append('')
     L.append('## 〇、本参数据卡（程序汇编·L.491）')
     L.append('')
@@ -249,17 +319,44 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special):
                  ('序参（文殊指授）' if n == 1 else '摄归参' if n >= 52 else '非历参位'))
         L.append('')
 
-    # ── §三 评注与延伸指针 ──
-    L.append('## 三、评注与延伸指针（只指不代·不生成无据内容）')
+    # ── §三 古注取窗（L.493·三源）──
+    L.append('## 三、古注取窗（疏·论·探玄记·程序取窗照录）')
     L.append('')
-    L.append('- **古注诸家**：主页 §6.2 李通玄《新华严经论》窗、§五之B 计数诸说辨析；澄观《华严经疏》总纲见主页 §2.0′。')
+    gz = (guzhu or {}).get('cards', {}).get(str(card['card_no']), {})
+    _src_label = {'shu': '澄观《华严经疏》`T1735`（八十·寄位释）', 'lun': '李通玄《新华严经论》`T1739`（八十）',
+                  'tan': '法藏《探玄记》`T1733`（六十·残存）'}
+    for k in ('shu', 'lun', 'tan'):
+        w = gz.get(k) or {}
+        if w.get('miss') or not w.get('text'):
+            L.append('**%s**：（未取窗——该疏论于此参无独立名锚或残存未及，如实留空。）' % _src_label[k])
+            L.append('')
+            continue
+        L.append('**%s**（锚「%s」·%s · %d 字·程序取窗·句界截断·引前须对原书核）：' % (
+            _src_label[k], w.get('anchor', ''), w.get('page_ref', '') or '页码未录', w.get('cjk', 0)))
+        L.append('')
+        L.append('> ' + w['text'])
+        L.append('')
+
+    # ── §四 评注与延伸指针 ──
+    L.append('## 四、评注与延伸指针（只指不代·不生成无据内容）')
+    L.append('')
+    L.append('- **古注诸家**：本参取窗见 §三；更完整释文见主页 §6.2 李通玄《新华严经论》窗、§五之B 计数诸说辨析；澄观《华严经疏》总纲见主页 §2.0′。')
     L.append('- **今人讲记**：海云继梦《华藏妙海》对读见主页 §6.2（〔OCR 待校〕）；九九华严讲记线见〈海云法师·九九华严讲记校勘工作台〉。')
     L.append('- **平行线**：藏译 Toh 44 对应章见主页「藏译对读窗」；〈五十三参行历〉交互图可按身份/篇幅回看全程。')
     if star:
         L.append('- **本参标记**：★%s（行历图八处特殊标记之一）。' % star)
     L.append('')
-    L.append('## 四、台账')
+    L.append('> <span class="en-line">**EN corresponding · Visit %d — %s (%s).** A %s at %s; self-declared gateway: "%s" 〔编者试译〕. '
+             '%s. Three-translation parallels: 40-fascicle `T10n0293` (base), 80 `T10n0279`, 60 `T09n0278` — see §二; '
+             'classical commentary windows: Chengguan\'s *Huayan jing shu* `T1735` and Li Tongxuan\'s *Xin Huayan jing lun* `T1739` — see §三.</span>'
+             % (n, card.get('n40', ''), _ROLE_EN.get(card.get('role', ''), 'teacher'),
+                _ROLE_EN.get(card.get('role', ''), 'teacher'), card.get('city', ''),
+                _GATE_EN.get(n, card.get('gate', '')),
+                _STAGE_EN.get(n, _STAGE_EN2)))
     L.append('')
+    L.append('## 五、台账')
+    L.append('')
+    L.append('- L.493（2026-11-17）：古注取窗入 §三（疏/论 54/54 全覆盖·探玄记入法界品疏残存仅 13/54·未及者如实留空）；程序取窗·NFKC 归一·单调锚定·字准待校。')
     L.append('- L.491（2026-11-16）：子页建立——程序汇编（主页 §参%d 照录＋行历数据卡＋四件套语料）；内容源批次 L.289–L.304（参批1-16）·'
              'L.316（参33 补卡）·L.407/L.413/L.415（行历·三译师名）·L.421/L.456（四件套语料库）。' % n)
     L.append('- 主页各参节后续修订后重跑 build 即自动同步本页 §一（运行时组装·无中间文件）。')
@@ -273,6 +370,11 @@ def _assemble_index(root, cards, special, corpora):
     L.append('> **体例**：入法界品（第三十九品·第九会逝多林）善财历参逐参子页总目。底本四十华严 `T10n0293`；'
              '54 卡号系（L.327/L.407 重排：参33 普遍吉祥無垢光为勘出补卡·参5 彌伽补·参52-54 彌勒/文殊遥指/普賢摄归）。'
              '每参一页：数据卡＋主页参节全文照录＋三译四件套＋延伸指针。经文引文回源纪律同全站。')
+    L.append('')
+    L.append('<div class="en-line">EN · Index of the fifty-four sub-pages for the Gaṇḍavyūha chapter: each visit gets its own page — '
+             'data card (teacher in three translations, role, locale, self-declared gateway, span), the main-page section reproduced verbatim, '
+             'three-translation four-element parallels (arrival / gateway / referral / departure), classical commentary windows '
+             '(Chengguan\'s *Shu* `T1735` & Li Tongxuan\'s *Lun* `T1739`), and pointers. Gateway-name English renderings are editorial trial translations 〔编者试译〕.</div>')
     L.append('')
     L.append('🗺 [行历图（交互）](huayan-rufajie-journey.html) ｜ 📄 [主页·入法界品之拼读](huayan-rufajie-pin.html) ｜ '
              '★＝行历图八处特殊标记')
@@ -347,6 +449,11 @@ def load_articles(root):
     cards, special, _meta = _load_journey(root)
     secs = _load_md_sections(root)
     corpora = _load_corpora(root)
+    try:
+        guzhu = json.loads(_read(GUZHU, root))
+    except Exception as e:
+        print('  ! guzhu load:', e)
+        guzhu = {'cards': {}}
     articles = []
 
     # 总目
@@ -387,6 +494,6 @@ def load_articles(root):
             'back': {'tab': 'gap', 'view': 'avatamsaka-studies', 'label': '文献页 · 华严经学'},
             'views': ['avatamsaka-studies'],
             'can_no': n, 'can_name': n40,
-            'doc_md': _assemble_card(root, card, sec, prev_card, next_card, corpora, special),
+            'doc_md': _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzhu),
         })
     return articles
