@@ -540,8 +540,8 @@ def main() -> int:
     if not sd_path.exists():
         fail("s2_sidian.json missing")
     sd = json.loads(sd_path.read_text(encoding="utf-8"))
-    if len(sd["meta"]["corpora"]) != 3:
-        fail(f"S2 sibu corpora {len(sd['meta']['corpora'])} != 3")
+    if len(sd["meta"]["corpora"]) != 5:
+        fail(f"S2 sibu corpora {len(sd['meta']['corpora'])} != 5")
     if sd["summary"]["hits"] != len(sd["hits"]):
         fail("S2 sibu hit count out of sync")
     for h in sd["hits"]:

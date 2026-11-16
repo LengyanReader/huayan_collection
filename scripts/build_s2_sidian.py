@@ -33,6 +33,8 @@ CORPORA = {
     "KR2a0026": ("jiutangshu", "《舊唐書》，後晉劉昫等撰，Kanripo KR2a0026", 188),
     "KR2m0002": ("tanghuiyao", "《唐會要》，宋王溥撰，Kanripo KR2m0002", 101),
     "KR2f0010": ("tangdazhaoling", "《唐大詔令集》，宋宋敏求輯，Kanripo KR2f0010", 110),
+    "KR2m0001": ("tongdian", "《通典》，唐杜佑撰，Kanripo KR2m0001", 206),
+    "KR2m0021": ("kaiyuanli", "《大唐開元禮》，唐蕭嵩等撰，Kanripo KR2m0021", 151),
 }
 KW = "華嚴"
 NEAR = ["祀", "祭", "廟", "壇", "齋", "道場", "寺", "度僧", "功德"]
