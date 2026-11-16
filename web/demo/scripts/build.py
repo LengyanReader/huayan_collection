@@ -2707,6 +2707,10 @@ def build_articles(articles):
                 '<script src="../data/huayan_nav.js?' + ASSET_V + '"></script>\n'
                 '<script src="../js/pin_nav.js?' + ASSET_V + '"></script>')
 
+        # L.497：入法界品主页——参读浮窗（can_panel：速查芯片/参节链接/行历 postMessage → 不离页读参）
+        if a['id'] == 'huayan-rufajie-pin':
+            sutra_panel_block += ('\n<script>window.RUFAJIE_CAN_PAGE=true;</script>'
+                                  '\n<script src="../js/can_panel.js?' + ASSET_V + '"></script>')
         # L.492：入法界品主页——54 参速查网格（填充 doc_md 内 #can-quick-nav 占位·静态 HTML）
         if a['id'] == 'huayan-rufajie-pin':
             _cqn_js = ('<script>var CAN_QUICK_NAV_HTML=' + json.dumps(rufajie_can_lib.quick_nav_html(ROOT), ensure_ascii=False) + ';\n'
@@ -2840,33 +2844,98 @@ def build_articles(articles):
 <div class="fold-body" style="display:flex;flex-wrap:wrap;gap:8px;padding:8px 2px 4px">{_comp_chips}</div></details>
 </section>'''
 
+    # ── 入法界·五十三参子页速取专区（L.498·与品速取同构·四阶段折叠·分组卡区不再重复列出）──
+    _can_all = [a for a in articles if (a.get('family') or '') == 'huayan_can']
+    _can_index = [a for a in _can_all if a['id'] == 'huayan-rufajie-can-index']
+    _can_cards = [a for a in _can_all if a['id'] != 'huayan-rufajie-can-index']
+    _STAGES = [(1, '壹 · 发心与指授（文殊会）', lambda n: n == 1),
+               (2, '贰 · 历参五十（善知识五十位）', lambda n: 2 <= n <= 51),
+               (52, '叁 · 彌勒楼阁（一切庄严藏）', lambda n: n == 52),
+               (53, '肆 · 摄归（文殊遥指·普賢愿王）', lambda n: n >= 53)]
+    _can_details = []
+    if _can_index:
+        _can_details.append(
+            '<div style="display:flex;flex-wrap:wrap;gap:8px;padding:8px 2px 4px">'
+            '<a href="huayan-rufajie-can-index.html" style="display:inline-flex;align-items:center;gap:6px;'
+            'background:rgba(201,162,39,.12);border:1px solid #c9a45c;border-radius:16px;padding:5px 12px;'
+            'color:var(--text1);text-decoration:none;font-size:0.8em">📘 子页总目（五层检索）</a></div>')
+    for si, (sno, slabel, pred) in enumerate(_STAGES):
+        items = sorted([a for a in _can_cards if a.get('can_no') and pred(a['can_no'])],
+                       key=lambda x: x['can_no'])
+        if not items:
+            continue
+        chips = ''.join(
+            '<a href="%s.html" style="display:inline-flex;align-items:center;gap:5px;background:var(--card);'
+            'border:1px solid var(--line);border-radius:16px;padding:5px 11px;color:var(--text1);'
+            'text-decoration:none;font-size:0.78em"><b style="color:var(--gold)">%d</b><span>%s</span></a>'
+            % (a['id'], a['can_no'], (a.get('title', '').split('·')[-1] if '·' in a.get('title', '') else a.get('title', '')))
+            for a in items)
+        _can_details.append(
+            '<details class="fold"%s><summary><b>%s</b>'
+            '<span style="font-weight:400;color:var(--text2)">（%d 页）</span></summary>'
+            '<div class="fold-body" style="display:flex;flex-wrap:wrap;gap:7px;padding:8px 2px 4px">%s</div></details>'
+            % (' open' if si == 0 else '', slabel, len(items), chips))
+    _can_zone_section = ''
+    if _can_cards:
+        _can_zone_section = f'''<section id="can53" style="margin-top:8px;background:var(--card);border:1px solid var(--line);border-left:4px solid #c9a45c;border-radius:10px;padding:12px 16px">
+<div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap">
+<span style="font-size:1.12em;font-weight:700;color:var(--gold)">🌈 入法界 · 五十三参子页速取</span>
+<span style="font-size:0.74em;color:var(--text3,var(--text2))">{len(_can_all)} 页 · 每参一页六层深读（数据卡/主页照录/三译四件套/古注取窗/EN/指针） · 按 4 阶段折叠</span>
+</div>
+{''.join(_can_details)}
+</section>'''
+
 
     sections = []
+    # L.498 分区去重标记：39 品＋配套＋53 参子页已在两大速取专区，分组卡区不再重复列出
+    _zone_ids = set()
+    for _p in _pins:
+        _zone_ids.add(_p['a']['id'])
+    for _c in _companions:
+        _zone_ids.add(_c['id'])
+    for _a in _can_all:
+        _zone_ids.add(_a['id'])
+
+    sections = []
+    _nav_bits = []
+    _zone_total = len(_zone_ids)
     for gi, key in enumerate(order):
-        items = buckets[key]
+        items = [a for a in buckets[key] if a['id'] not in _zone_ids]
+        if not items:
+            continue
         icon = gicons.get(key) or (gspec.get(key, {}) or {}).get('icon') or '📂'
         summary = (gspec.get(key, {}) or {}).get('summary') or ''
         cards = ''.join(_card(a) for a in items)
         summary_html = (f'<div style="font-size:0.74em;color:var(--text2);margin-top:2px">{summary}</div>'
                         if summary else '')
-        sections.append(f'''<section id="grp-{gi}" style="margin-top:{8 if gi == 0 else 26}px">
-<div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:12px;flex-wrap:wrap">
+        _open = ' open' if len(items) <= 5 else ''
+        sections.append(f'''<details class="fold" id="grp-{gi}"{_open} style="margin-top:{8 if gi == 0 else 20}px;background:var(--bg1,transparent)">
+<summary style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding:8px 4px 6px;margin-bottom:4px;flex-wrap:wrap;list-style:none;cursor:pointer">
 <span style="font-size:1.12em;font-weight:700;color:var(--gold)">{icon} {key}</span>
 <span style="font-size:0.74em;color:var(--text3,var(--text2))">{len(items)} 篇</span>
 {summary_html}
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px">
+<span style="font-size:0.7em;color:var(--text3,var(--text2));margin-left:auto">▸ 展开/收起</span>
+</summary>
+<div class="fold-body" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding-top:10px">
 {cards}
 </div>
-</section>''')
+</details>''')
+        _nav_bits.append(
+            '<a href="#grp-%d" data-grp="%d" style="color:var(--blue);text-decoration:none">%s %s(%d)</a>'
+            % (gi, gi, gicons.get(key) or gspec.get(key, {}).get('icon') or '📂', key, len(items)))
 
     nav = ('<a href="#pindu" style="color:var(--blue);text-decoration:none">📖 三十九品拼读速取(%d)</a> · '
-           % len(_pins) if _pins else '') + ' · '.join(
-        '<a href="#grp-%d" style="color:var(--blue);text-decoration:none">%s %s(%d)</a>'
-        % (gi, gicons.get(k) or gspec.get(k, {}).get('icon') or '📂', k, len(buckets[k]))
-        for gi, k in enumerate(order))
+           '<a href="#can53" style="color:var(--blue);text-decoration:none">🌈 五十三参子页速取(%d)</a> · '
+           '<span style="color:var(--text3,var(--text2))">分类：</span> '
+           % (len(_pins), len(_can_all)))
+    nav += ' · '.join(_nav_bits)
+    nav += (' &nbsp;<button id="idx-fold-open" style="border:1px solid var(--line);background:var(--card);'
+            'border-radius:8px;padding:2px 8px;cursor:pointer;font-size:0.78em;color:var(--text1);font-family:inherit">全部展开</button>'
+            '&nbsp;<button id="idx-fold-close" style="border:1px solid var(--line);background:var(--card);'
+            'border-radius:8px;padding:2px 8px;cursor:pointer;font-size:0.78em;color:var(--text1);font-family:inherit">全部收起</button>')
 
-    n_groups = len(order)
+    _grp_total = sum(len([a for a in buckets[k] if a['id'] not in _zone_ids]) for k in order)
+    n_groups = len(_nav_bits)
     idx_html = f'''<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -2888,7 +2957,7 @@ def build_articles(articles):
 ⚠️ 声明：本站内容尚处于初始梳理阶段，在完整性、准确度、详实度、深度等方面均有不足，仅供参考；敬请多提建议，以助完善内容。
 </div>
 <div style="background:rgba(94,139,158,0.06);border-bottom:1px solid rgba(94,139,158,0.2);padding:5px 16px;font-size:0.7em;color:var(--blue);text-align:center">
-共 {count} 篇完整文章 · 分 {n_groups} 组 · 每篇均含整篇 doc 全文 · 由 build.py 依 data/translation/standalone_articles.yaml 生成
+共 {_zone_total + _grp_total} 篇完整文章（不重不漏）：速取专区 {_zone_total} 篇（39 品＋配套 {len(_companions)} ＋53 参子页 {len(_can_all)}）＋ 分组目录 {_grp_total} 篇 ／ {n_groups} 个分类组（折叠）· 由 build.py 依 data/translation/standalone_articles.yaml 生成
 </div>
 <div style="padding:7px 16px;font-size:0.78em;line-height:1.9;border-bottom:1px solid var(--line)">
 {nav}
@@ -2896,6 +2965,7 @@ def build_articles(articles):
 </div>
 <main class="content" id="article-root">
 {pindu_section}
+{_can_zone_section}
 {''.join(sections)}
 <div style="margin-top:26px;text-align:center">
 <a href="../index.html" style="color:var(--blue);font-size:0.8em">← 返回导航主页</a> ·
@@ -2903,6 +2973,21 @@ def build_articles(articles):
 <a href="../tabs/jiaoxing.html" style="color:var(--blue);font-size:0.8em">华严教行</a>
 </div>
 </main>
+<script>
+(function () {{
+  // 导航链 → 展开目标组并滚动；全部展开/收起
+  document.querySelectorAll('a[data-grp]').forEach(function (a) {{
+    a.addEventListener('click', function () {{
+      var d = document.getElementById('grp-' + a.getAttribute('data-grp'));
+      if (d) d.open = true;
+    }});
+  }});
+  var openBtn = document.getElementById('idx-fold-open'), closeBtn = document.getElementById('idx-fold-close');
+  function allGroups() {{ return document.querySelectorAll('main details.fold[id^="grp-"]'); }}
+  if (openBtn) openBtn.addEventListener('click', function () {{ allGroups().forEach(function (d) {{ d.open = true; }}); }});
+  if (closeBtn) closeBtn.addEventListener('click', function () {{ allGroups().forEach(function (d) {{ d.open = false; }}); }});
+}})();
+</script>
 </body>
 </html>'''
     idx_path = ARTICLES_OUT / 'index.html'
@@ -2930,6 +3015,24 @@ def main():
 
     # ── Build standalone article pages (每一篇完整文章的独立地址) ──
     articles = load_standalone_articles()
+
+    # ── L.497 参读窗数据发射：data/rufajie_can/{index,01..54}.md + meta.js ──
+    _candir = OUT / 'data' / 'rufajie_can'
+    _candir.mkdir(parents=True, exist_ok=True)
+    _can_meta = []
+    for _a in articles:
+        if (_a.get('family') or '') != 'huayan_can':
+            continue
+        _key = _a['id'].replace('huayan-rufajie-can-', '')
+        with open(_candir / ('%s.md' % _key), 'w', encoding='utf-8', newline='') as _f:
+            _f.write(_a.get('doc_md', ''))
+        _can_meta.append({'k': _key, 'no': _a.get('can_no') or 0, 't': _a.get('title', '')})
+    with open(_candir / 'meta.js', 'w', encoding='utf-8', newline='') as _f:
+        _f.write('window.RUFAJIE_CAN_META=' + json.dumps(_can_meta, ensure_ascii=False, separators=(',', ':')) + ';\n')
+    total_size += sum((_candir / n).stat().st_size for n in [p.name for p in _candir.iterdir()])
+    file_count += len(_can_meta) + 1
+    print(f'OK  {_candir} ({len(_can_meta)} md + meta.js)')
+
     total_size += build_articles(articles)
     file_count += len(articles) + 1
 
