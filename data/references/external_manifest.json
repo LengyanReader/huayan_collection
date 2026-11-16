@@ -868,6 +868,14 @@
       "sha256": "b898bfeeb0396a75e93fe46e45f7d52d904014f05a44b0d8d18f928c78568c39",
       "retrieved": "2026-11-16",
       "note": "ACIP-derge-tengyur 独立录制的作品划分索引（3364 条 work_id＋卷/字位）——丹珠尔 Toh 号三源核第三源"
+    },
+    "T19n1019": {
+      "path": "data/references/cbeta/T19n1019.xml",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T19/T19n1019.xml",
+      "bytes": 57131,
+      "sha256": "22b707bfedccfc5680914b6ec7efa3d679cb45a6b58e38f7041542689f3f61ce",
+      "retrieved": "2026-11-16",
+      "note": "CBETA xml-p5 · 大正藏 T19 · 大方廣佛華嚴經入法界品四十二字觀門（唐不空譯）——R4 仪式·课诵一手文本"
     }
   }
 }

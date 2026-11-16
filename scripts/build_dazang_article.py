@@ -34,6 +34,7 @@ ROYAL = ROOT / "data" / "research" / "royal_patronage.json"
 PERSECUTION = ROOT / "data" / "research" / "persecution.json"
 S2SIDIAN = ROOT / "data" / "research" / "s2_sidian.json"
 R5LY = ROOT / "data" / "research" / "r5_lingyan.json"
+R4LT = ROOT / "data" / "research" / "r4_liturgical.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -819,7 +820,9 @@ def table_influence():
         ("儒道论衡", "护教／判教中华严对儒道的指认（宗密《原人论》一类）",
          "样本入库：《大學》章句（KR1h0015）＋《道教義樞》位業義（KR5e0031）＋瑜伽经（GRETIL）", "B（样本）", "对读未做"),
         ("灵验叙事", "诵经、转读、书写、顶戴诸灵验（六朝隋唐僧传体）",
-         "《華嚴經傳記》一手入库（T51n2073 十篇目），諷誦/轉讀/書寫三篇七引文回源（§17.23）", "B", "講解篇未取；故事史实性不判"),
+         "《華嚴經傳記》一手入库（T51n2073 十篇目），四篇十二引文回源（§17.23）", "B", "故事史实性不判"),
+        ("仪式·课诵", "四十二字门观行、「华严字母」课诵（不空仪轨本）",
+         "《四十二字觀門》一手入库（T19n1019），六引文回源＋T279 同章对照", "B", "音乐化半边（明清唱仪）未取"),
     ]
     out = ["| 通道 | 载体 | 在库资产 | 级 | 缺口 |", "|---|---|---|---|---|"]
     for a, b, c, d, e in rows:
@@ -1237,6 +1240,40 @@ def render_workshop(ws):
         out.append(f"- {esc(b)}")
     out.append("- 四本之外未取：西夏译、于阗文残卷、四十本之后的宋元续译皆无译场记录入库；"
                "本节的「四种」是**已取四本**的四种，不是历史上的全部形态。")
+    return "\n".join(out)
+
+
+def render_r4(lt):
+    """R4 仪式·课诵：四十二字觀門（掛 §17.18 影响面内，沿 R2 接层先例）。"""
+    vs = lt["quotes"]
+    out = []
+    out.append("**R4 仪式·课诵接层**：《四十二字觀門》（唐不空奉詔譯，T19n1019）——"
+               "〈入法界品〉善知眾藝童子章的四十二字母观行仪轨本，后世「华严字母」课诵的源头。"
+               "全文仅 2,203 字符；六条引文逐条以起止锚切片，lb 可回源；"
+               "源文件字节数与 sha256 记在 `data/research/r4_liturgical.json`。")
+    out.append("")
+    out.append("| 组 | 事 | 引文 |")
+    out.append("|---|---|---|")
+    for g in lt["groups"]:
+        for qid in g["quotes"]:
+            q = vs[qid]
+            out.append(f'| {esc(g["kind"])} | {esc(q["note"])} | `{q["lb"]}` |')
+    out.append("")
+    out.append("**原文**（照录；叶码为 CBETA `lb`）：")
+    for g in lt["groups"]:
+        out.append("")
+        out.append(f"*{esc(g['kind'])}*（{esc(g['what'])}）")
+        out.append("")
+        for qid in g["quotes"]:
+            q = vs[qid]
+            src = "《四十二字觀門》" if q["source"] == "t1019" else "《八十華嚴》T279"
+            out.append(f'- `{q["lb"]}`　{esc(src)}：{esc(q["text"])}')
+    out.append("")
+    out.append("**判断**：字门章有两译流传（不空仪轨本 vs 實叉難陀 canonical 本）——"
+               "同一章被独立行用，本身即是「入法界品的字母段自成课诵单位」的证据；"
+               "「恒稱持」与二十种功德清单是经典的劝持套式，登记其存在。"
+               "R4 的「音乐化」半边（明清《華嚴字母贊》唱腔、丛林唱仪）未取一手，"
+               "故仍记 `partial`。")
     return "\n".join(out)
 
 
@@ -1669,6 +1706,7 @@ def main():
     persecution = json.loads(PERSECUTION.read_text(encoding="utf-8")) if PERSECUTION.exists() else {}
     s2sidian = json.loads(S2SIDIAN.read_text(encoding="utf-8")) if S2SIDIAN.exists() else None
     r5ly = json.loads(R5LY.read_text(encoding="utf-8")) if R5LY.exists() else None
+    r4lt = json.loads(R4LT.read_text(encoding="utf-8")) if R4LT.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -1702,6 +1740,7 @@ def main():
         "influence": table_influence(),
         "workshop": render_workshop(workshop) if workshop else "",
         "royal": render_royal(royal, s2sidian) if royal else "",
+        "r4": render_r4(r4lt) if r4lt else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",

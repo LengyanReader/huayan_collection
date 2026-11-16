@@ -1051,15 +1051,21 @@ def main() -> int:
     ai_path = ROOT / "data" / "references" / "tibetan" / "derge_tengyur" / "acip_index.yml"
     if not ai_path.exists():
         fail("acip_index.yml missing")
-    ai_txt = ai_path.read_text(encoding="utf-8")
+    import yaml as _yaml
+    aid = _yaml.safe_load(ai_path.read_text(encoding="utf-8"))
+    acip_rows = {}
+    for _k, _v in aid.get("annotations", {}).items():
+        _w = _v.get("work_id")
+        for _s in _v.get("span") or []:
+            acip_rows[_w] = _s.get("vol")
     for w, vol in (("D4011", 117), ("D4012", 117), ("D4013", 117),
                    ("D4014", 117), ("D4015", 117),
                    ("D3993", 113), ("D3998", 116), ("D3999", 116)):
-        m_w = re.search(rf"work_id: {w}\n\s+- vol: (\d+)", ai_txt)
-        if not m_w:
+        got = acip_rows.get(w)
+        if got is None:
             fail(f"ACIP index missing {w}")
-        if int(m_w.group(1)) != vol:
-            fail(f"ACIP {w} in vol {m_w.group(1)} != expected {vol}")
+        if got != vol:
+            fail(f"ACIP {w} in vol {got} != expected {vol}")
     if "三源一致" not in md or "acip_index.yml" not in md:
         fail("§6.6 third-source sentence missing")
     tanj = json.loads((ROOT / "data" / "research" / "tanjur_catalog.json").read_text(encoding="utf-8"))
@@ -1102,11 +1108,39 @@ def main() -> int:
     ok(f"§17.23 R5: {len(ly['quotes'])} quotes in {len(ly['groups'])} groups re-verified "
        f"({('/').join(g['kind'] for g in ly['groups'])})")
 
+    # --- R4 仪式·课诵: quotes re-sliced from T19n1019 + T279 cross ---
+    lt_path = ROOT / "data" / "research" / "r4_liturgical.json"
+    if not lt_path.exists():
+        fail("r4_liturgical.json missing")
+    lt = json.loads(lt_path.read_text(encoding="utf-8"))
+    for key, meta in lt["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"R4 source hash changed: {key}")
+    r4_block = grab("r4")
+    for qid, q in lt["quotes"].items():
+        if q["text"] not in md:
+            fail(f"R4 quote not printed: {qid}")
+        if f'`{q["lb"]}`' not in r4_block:
+            fail(f"R4 quote lb missing: {qid}")
+    for g in lt["groups"]:
+        if g["kind"] not in r4_block:
+            fail(f"R4 group missing: {g['kind']}")
+    t279_flat = re.sub(r"\s+", "", re.sub(r"<[^>]+>", "",
+        (ROOT / "data" / "references" / "cbeta" / "T10n0279.xml").read_text(encoding="utf-8")))
+    if "善知眾藝，學菩薩字智" not in t279_flat:
+        fail("R4 T279 chapter anchor not in T279")
+    r4 = next(o for o in ops if o["id"] == "R4")
+    if r4["status"] not in ("partial", "done"):
+        fail(f"ontology R4 not partial/done: {r4['status']}")
+    if "音乐化" not in r4_block:
+        fail("R4 boundary sentence missing")
+    ok(f"§17.18 R4: {len(lt['quotes'])} quotes in {len(lt['groups'])} groups re-verified")
+
     # --- §17.18 influence: five-channel skeleton ---
     inf_block = grab("influence")
     inf_rows = [ln for ln in inf_block.splitlines() if ln.startswith("| ") and "通道" not in ln and "---" not in ln]
-    if len(inf_rows) != 6:
-        fail(f"§17.18 influence rows {len(inf_rows)} != 6")
+    if len(inf_rows) != 7:
+        fail(f"§17.18 influence rows {len(inf_rows)} != 7")
     for frag in ("宗派传承", "注疏传统", "西藏接受", "图像文物", "儒道论衡", "Toh 4011–4015"):
         if frag not in inf_block:
             fail(f"§17.18 influence channel missing: {frag}")
