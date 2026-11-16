@@ -2706,6 +2706,16 @@ def build_articles(articles):
                 '\n<script>window.NAV_CURRENT="' + a['id'] + '";</script>\n'
                 '<script src="../data/huayan_nav.js?' + ASSET_V + '"></script>\n'
                 '<script src="../js/pin_nav.js?' + ASSET_V + '"></script>')
+
+        # L.492：入法界品主页——54 参速查网格（填充 doc_md 内 #can-quick-nav 占位·静态 HTML）
+        if a['id'] == 'huayan-rufajie-pin':
+            _cqn_js = ('<script>var CAN_QUICK_NAV_HTML=' + json.dumps(rufajie_can_lib.quick_nav_html(ROOT), ensure_ascii=False) + ';\n'
+                       '(function(){var n=0;function m(){var el=document.getElementById("can-quick-nav");'
+                       'if(!el){if(++n<12)setTimeout(m,350);return;}'
+                       'if(el.dataset.done)return;el.innerHTML=CAN_QUICK_NAV_HTML;el.dataset.done="1";}'
+                       'm();setTimeout(m,1500);})();</script>')
+            sutra_panel_block += '\n' + _cqn_js
+
         html = html.replace('{SUTRA_PANEL}', sutra_panel_block)
         with open(path, 'w', encoding='utf-8') as f:
             f.write(html)

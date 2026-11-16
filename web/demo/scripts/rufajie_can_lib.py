@@ -111,6 +111,52 @@ def _can_no_label(card):
     return str(cn or '—')
 
 
+# ── 行程阶段（总目/速查分组·54 卡号系）──
+def _stage_of(n):
+    if n == 1:
+        return '壹·发心与指授（文殊会）'
+    if n <= 51:
+        return '贰·历参五十（善知识五十位）'
+    if n == 52:
+        return '叁·彌勒楼阁（一切庄严藏）'
+    return '肆·摄归（文殊遥指·普賢愿王）'
+
+
+_ROLE_ICON = {'比丘': '🧒', '比丘尼': '🪷', '菩薩': '🪷', '佛母': '🌸', '長者': '🏛', '居士': '🏺',
+              '優婆夷': '🌿', '童女': '🌼', '童子': '🧒', '釋女': '🌼', '女': '🌼', '王': '👑',
+              '婆羅門': '🔥', '仙人': '⛰', '外道': '🜂', '船師': '⛵', '童子師': '📜', '童子童女': '🧒',
+              '夜神': '🌙', '天神': '🌌', '地神': '⛰', '天女': '🌙', '林神': '🌳'}
+
+
+def _role_icon(role):
+    return _ROLE_ICON.get(role, '🧭')
+
+
+def quick_nav_html(root):
+    """主页 §四 后 54 参速查网格（静态 HTML·JS 填充至 #can-quick-nav 占位）。"""
+    cards, special, _m = _load_journey(root)
+    chips = []
+    chips.append('<a class="cqn-chip cqn-idx" href="huayan-rufajie-can-index.html" '
+                 'style="background:rgba(201,162,39,.14);border-color:#c9a45c;color:#a3762a">📘 子页总目</a>')
+    for c in cards:
+        n = c['card_no']
+        star = special.get(str(n))
+        tip = '参%d·%s｜%s｜%s｜%s CJK%s' % (n, c.get('n40', ''), c.get('role', ''), c.get('city', ''),
+                                            '{:,}'.format(c.get('cjk', 0)), ('｜★' + star) if star else '')
+        chips.append(
+            '<a class="cqn-chip" href="huayan-rufajie-can-%02d.html" title="%s">%s参%d·%s%s</a>'
+            % (n, tip, _role_icon(c.get('role', '')), n, c.get('n40', ''), ('★' if star else '')))
+    html = (
+        '<details open>'
+        '<summary style="cursor:pointer;font-weight:700;color:#7a5a28">🧭 五十三参·速查（54 参子页·'
+        '<span style="font-weight:400">身份图标见悬浮提示；★＝特殊参；点参名出子页，页内连续阅读用本页目录</span>）</summary>'
+        '<div style="display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px">' + ''.join(chips) + '</div>'
+        '<div style="font-size:.74em;color:var(--text2,#7a7262);margin-top:2px">'
+        '四阶段：壹 发心指授（参1）→ 贰 历参五十（参2-51）→ 叁 彌勒楼阁（52）→ 肆 摄归（53-54）。</div>'
+        '</details>')
+    return html
+
+
 def _assemble_card(root, card, sec, prev_card, next_card, corpora, special):
     n = card['card_no']
     n40, n80, n60 = card.get('n40', ''), card.get('n80', ''), card.get('n60', '')
@@ -231,25 +277,58 @@ def _assemble_index(root, cards, special, corpora):
     L.append('🗺 [行历图（交互）](huayan-rufajie-journey.html) ｜ 📄 [主页·入法界品之拼读](huayan-rufajie-pin.html) ｜ '
              '★＝行历图八处特殊标记')
     L.append('')
-    L.append('| 参 | 四十（`T10n0293`） | 八十 | 六十 | 身份 | 处所 | 法门自陈 | 篇幅 CJK | 子页 |')
-    L.append('|---|---|---|---|---|---|---|---|---|')
+    # ── 按行程阶段分组的主表 ──
+    L.append('## 一、行程总目（四阶段）')
+    L.append('')
+    stage_of = _stage_of
+    cur_stage = None
     for c in cards:
         n = c['card_no']
+        st = stage_of(n)
+        if st != cur_stage:
+            cur_stage = st
+            L.append('')
+            L.append('### %s' % st)
+            L.append('')
+            L.append('| 参 | 四十（`T10n0293`） | 八十 | 六十 | 身份 | 处所 | 法门自陈 | 篇幅 CJK | 子页 |')
+            L.append('|---|---|---|---|---|---|---|---|---|')
         star = '★ ' if special.get(str(n)) else ''
         L.append('| %s%d | %s | %s | %s | %s | %s | %s | %s | [%s](huayan-rufajie-can-%02d.html) |' % (
             star, n, c.get('n40', ''), c.get('n80', ''), c.get('n60', ''), c.get('role', ''),
             c.get('city', ''), _short(c.get('gate', ''), 30), '{:,}'.format(c.get('cjk', 0)),
             '页↗', n))
     L.append('')
-    L.append('## 读法')
+    # ── 按身份检索 ──
+    L.append('## 二、按身份检索')
+    L.append('')
+    roles = {}
+    for c in cards:
+        roles.setdefault(c.get('role', '—'), []).append(c['card_no'])
+    role_rows = sorted(roles.items(), key=lambda kv: -len(kv[1]))
+    L.append('| 身份 | 参位数 | 参号（点入子页） |')
+    L.append('|---|---|---|')
+    for role, ns in role_rows:
+        links = ' · '.join('[%d](huayan-rufajie-can-%02d.html)' % (n, n) for n in ns)
+        L.append('| %s%s | %d | %s |' % (_role_icon(role), role, len(ns), links))
+    L.append('')
+    # ── 特殊参直达 ──
+    L.append('## 三、特殊参直达（★·行历图八标记）')
+    L.append('')
+    L.append(' ｜ '.join('★%s＝[参%d·%s](huayan-rufajie-can-%02d.html)' % (
+        special[str(n)], n, next(c for c in cards if c['card_no'] == n).get('n40', ''), n)
+        for n in sorted(int(k) for k in special)))
+    L.append('')
+    L.append('## 四、读法')
     L.append('')
     L.append('- **行程读**：自参1 文殊指授起沿「前参指授→本参法门→转介后参」顺序读；每页导航行可前后跳。')
     L.append('- **对读读**：任一页 §二 四件套并观三译（到会/法门/指授/辞退），观「同一行迹·异译门名」。')
     L.append('- **专题读**：特殊参（★疑一·刀山／疑二·治罚／险门·离欲／四十二字母／彌勒楼阁／文殊遥指／十愿王）直取。')
+    L.append('- **身份读**：§二 按身份检索——比丘沙门系／在家众系／天神夜神系／佛母圣众系，各成一条参学侧线。')
     L.append('')
-    L.append('## 台账')
+    L.append('## 五、台账')
     L.append('')
     L.append('- L.491（2026-11-16）：总目建立；54 卡自行历图数据（L.407/L.413/L.415），四件套语料 L.421/L.456（参2-51），主页参节 L.289-L.304/L.316。')
+    L.append('- L.492（2026-11-17）：总目重构——行程四阶段分组·按身份检索·特殊参直达三检索层（利于查阅）。')
     return '\n'.join(L) + '\n'
 
 
