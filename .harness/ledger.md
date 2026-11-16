@@ -991,3 +991,7 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 ### L.446（2026-11-17）门禁 §17.24 schema 对齐
 - 并行线重构 visits_sanskrit schema（all_diff_cases 等）＋边界格式；门禁已对齐。残余 ord mismatch＝其梵本定位算法在途。
 - 教训：门禁先于 build 改键名＝红灯；多线并行时门禁与 build 的 schema 要同步演进。
+
+### L.496（2026-11-17）主页整合中枢
+- 〇之二.95 中枢＝iframe 行历（embed=1）＋速查升级（chips/身份表/★）＋入口行；§四撤重；导读六路。
+- 教训：doc_md 内 iframe 可用（raw HTML 通过渲染器）；embed 模式须同时藏双 FAB＋条件载脚本＋链接 target=_top。

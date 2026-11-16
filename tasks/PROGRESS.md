@@ -3839,3 +3839,10 @@ done(
 - **对齐**：门禁 §17.24 组改用新 schema（all_diff_cases/cases＋all_diff_pending+same=cases 自洽断言；边界检查改「本节只判十八组」句）；删旧 remain_* 键与「未判者」前缀断言。
 - **残余**：`visit-sanskrit ord mismatch: 参 4 2 != 3`——并行线梵本定位算法在途，非门禁可修，待其落批。
 - **next**：并行线落批后复跑。
+
+## L.496 · 2026-11-17 · 入法界品主页「整合中枢」（用户指令：把行历/子页/速查等整合进文章页·设计结构与内容安置）
+
+- **设计**：主页新增 **〇之二.95 五十三参·整合中枢**（置于内容地图末·概述之前）——查阅层四件收拢首页：①**交互行历图内嵌**（iframe 载 `huayan-rufajie-journey.html?embed=1`·1150px·lazy）＋图下注（节点=篇幅·色=身份·★=特殊参·详情卡挂子页链接）；②`#can-quick-nav` 占位注入**速查网格升级版**（55 chips＋四阶段注）＋**按身份检索表**（24 类·参号全链接）＋**★特殊参直达**（八标记）＋EN 行；③总目/行历独立页/抽屉入口行。§四 原占位撤除（防重复），指针注改指中枢；导读「查阅五路」→「查阅六路」（中枢第一）。
+- **行历页 embed 模式**：`?embed=1` → `html.embed-mode`（隐藏 #nav-fab/#sp-fab·紧凑页头·去 sticky）；embed 时不注入 huayan_nav/pin_nav（条件 document.write）；详情卡与页头链接 `target="_top"`（内嵌点击跳整页不困 iframe）；顺修页头误标「第三十七部」→第三十九部。
+- **目检**：内嵌行历 54 节点蛇形全渲染（embed-mode 类生效·无 FAB·详情卡文案在）；速查网格 55 chips＋身份表（長者8·夜神8·菩薩6…）＋★行全渲染；hub 占位唯一。
+- **门禁**：build 142 files / 44,064,532 bytes ✓ · check ✓ · diff-check ✓ · verify_demo（后台）。

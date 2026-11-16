@@ -202,11 +202,12 @@ def _role_icon(role):
 
 
 def quick_nav_html(root):
-    """主页 §四 后 54 参速查网格（静态 HTML·JS 填充至 #can-quick-nav 占位）。"""
+    """主页整合中枢（L.496·静态 HTML·JS 填充至 #can-quick-nav 占位）：
+    速查网格＋按身份检索＋★特殊参直达＋EN 对应。"""
     cards, special, _m = _load_journey(root)
     chips = []
     chips.append('<a class="cqn-chip cqn-idx" href="huayan-rufajie-can-index.html" '
-                 'style="background:rgba(201,162,39,.14);border-color:#c9a45c;color:#a3762a">📘 子页总目</a>')
+                 'style="background:rgba(201,162,39,.14);border-color:#c9a45c;color:#a3762a">📘 子页总目（五层检索）</a>')
     for c in cards:
         n = c['card_no']
         star = special.get(str(n))
@@ -215,14 +216,39 @@ def quick_nav_html(root):
         chips.append(
             '<a class="cqn-chip" href="huayan-rufajie-can-%02d.html" title="%s">%s参%d·%s%s</a>'
             % (n, tip, _role_icon(c.get('role', '')), n, c.get('n40', ''), ('★' if star else '')))
+    # 按身份检索（承总目 §二）
+    roles = {}
+    for c in cards:
+        roles.setdefault(c.get('role', '—'), []).append(c['card_no'])
+    id_rows = []
+    for role, ns in sorted(roles.items(), key=lambda kv: -len(kv[1])):
+        links = ' · '.join('<a href="huayan-rufajie-can-%02d.html">%d</a>' % (n, n) for n in ns)
+        id_rows.append('<tr><td>%s%s</td><td>%d</td><td>%s</td></tr>' % (_role_icon(role), role, len(ns), links))
+    id_table = ('<table style="width:100%;border-collapse:collapse;font-size:.78em">'
+                '<tr><th style="text-align:left;padding:3px 6px">身份</th><th style="padding:3px 6px">参位</th>'
+                '<th style="text-align:left;padding:3px 6px">参号（点入子页）</th></tr>'
+                + ''.join(id_rows) + '</table>')
+    stars = ' ｜ '.join('★%s＝<a href="huayan-rufajie-can-%02d.html">参%d·%s</a>' % (
+        special[str(n)], n, n, next(c for c in cards if c['card_no'] == n).get('n40', ''))
+        for n in sorted(int(k) for k in special))
     html = (
         '<details open>'
-        '<summary style="cursor:pointer;font-weight:700;color:#7a5a28">🧭 五十三参·速查（54 参子页·'
-        '<span style="font-weight:400">身份图标见悬浮提示；★＝特殊参；点参名出子页，页内连续阅读用本页目录</span>）</summary>'
+        '<summary style="cursor:pointer;font-weight:700;color:#7a5a28">🧭 速查网格（54 参子页·'
+        '<span style="font-weight:400">点参名出子页；页内连续阅读用本页目录</span>）</summary>'
         '<div style="display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px">' + ''.join(chips) + '</div>'
         '<div style="font-size:.74em;color:var(--text2,#7a7262);margin-top:2px">'
         '四阶段：壹 发心指授（参1）→ 贰 历参五十（参2-51）→ 叁 彌勒楼阁（52）→ 肆 摄归（53-54）。</div>'
-        '</details>')
+        '</details>'
+        '<details>'
+        '<summary style="cursor:pointer;font-weight:600;color:#7a5a28">🔍 按身份检索（%d 类·承子页总目 §二）</summary>'
+        '<div style="margin:6px 0">%s</div></details>'
+        '<details open>'
+        '<summary style="cursor:pointer;font-weight:600;color:#7a5a28">★ 特殊参直达（八标记）</summary>'
+        '<div style="font-size:.82em;line-height:2;margin:6px 0">%s</div></details>'
+        '<div class="en-line" style="font-size:.76em;color:var(--text2,#7a7262);margin-top:6px">'
+        'EN · Hub of the fifty-four visit sub-pages: quick grid above (icons = role, ★ = special), '
+        'identity retrieval, and the embedded pilgrimage map above. Gateway-name renderings are editorial trial translations 〔编者试译〕.</div>'
+        % (len(id_rows), id_table, stars))
     return html
 
 
