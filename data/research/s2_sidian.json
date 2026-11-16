@@ -29,14 +29,21 @@
         "slug": "tongdian",
         "edition": "《通典》，唐杜佑撰，Kanripo KR2m0001",
         "files": 206,
-        "downloaded": 206,
+        "downloaded": 0,
         "failed": []
       },
       "KR2m0021": {
         "slug": "kaiyuanli",
         "edition": "《大唐開元禮》，唐蕭嵩等撰，Kanripo KR2m0021",
         "files": 151,
-        "downloaded": 151,
+        "downloaded": 0,
+        "failed": []
+      },
+      "KR2n0013": {
+        "slug": "jinshi",
+        "edition": "《金石錄》，宋趙明誠撰，Kanripo KR2n0013（金石樣本）",
+        "files": 32,
+        "downloaded": 32,
         "failed": []
       }
     }
@@ -3085,6 +3092,134 @@
     "KR2m0021_150.txt": {
       "bytes": 11151,
       "sha256": "65f64896044eb3f1e03227b01b0673fc78512017c640d3b60bb6b62786eec703"
+    },
+    "KR2n0013_000.txt": {
+      "bytes": 2004,
+      "sha256": "588701fdadde5a956944d52ca60fed1a6960ac0a09890e410bdfa6c3de007b6d"
+    },
+    "KR2n0013_001.txt": {
+      "bytes": 10468,
+      "sha256": "3851deef41fdd04d0e5e38baec0312c88b6ec6bcfd95d95915daffbbf882148e"
+    },
+    "KR2n0013_002.txt": {
+      "bytes": 11863,
+      "sha256": "0b714744f06f84c0186aa0d9d8408979419dee475a01d3db2716285071d6e9e0"
+    },
+    "KR2n0013_003.txt": {
+      "bytes": 14828,
+      "sha256": "f92758d81c8034b5ebf06743b359a0c240a1d1fcfb19a247ccf1895e273e0d1b"
+    },
+    "KR2n0013_004.txt": {
+      "bytes": 17179,
+      "sha256": "5378c260f35f1229dfd7f2eddd594fc010205a8c93eb4a512c0aac9f5b5cbb3d"
+    },
+    "KR2n0013_005.txt": {
+      "bytes": 16118,
+      "sha256": "c6da9e598c8f42593d6adc4d7f62318f3b61e6ea4f5e4808019bc8d92a6d5236"
+    },
+    "KR2n0013_006.txt": {
+      "bytes": 17772,
+      "sha256": "7fc8e5ef349e43e9281a1837f8affe4f250c8c8929d54cf53060450c23ab49c3"
+    },
+    "KR2n0013_007.txt": {
+      "bytes": 19366,
+      "sha256": "8c30f45eda86b80d597f7655c4742e5da340c3465130746dbeed6eef1fb19428"
+    },
+    "KR2n0013_008.txt": {
+      "bytes": 17749,
+      "sha256": "da342eed69bdeaed6ecc3862ba19237560dde3a287aeedf59c114b92201acc51"
+    },
+    "KR2n0013_009.txt": {
+      "bytes": 19723,
+      "sha256": "1693984125bc1b4c9bbba1dc7775128a7dc929a3c4a14f5cd4576571e44a01b1"
+    },
+    "KR2n0013_010.txt": {
+      "bytes": 17673,
+      "sha256": "c1fb5d5f2f6259faa40c89754152b44b6f6dc11e41c409dbf89d41414c05533c"
+    },
+    "KR2n0013_011.txt": {
+      "bytes": 7783,
+      "sha256": "30438a83bd61fccebf461f328ba0ee758a53bf7430e3081eb7b7d23b8fd98085"
+    },
+    "KR2n0013_012.txt": {
+      "bytes": 6544,
+      "sha256": "8ca2417f5064bb35477bd63a581d249e1cc773229f6f77fb6fc87e0ccf290dfd"
+    },
+    "KR2n0013_013.txt": {
+      "bytes": 7769,
+      "sha256": "98570cf95388a1786f6929bc91eee3ab1df786c8f2b0f41697f18837192e7a20"
+    },
+    "KR2n0013_014.txt": {
+      "bytes": 12693,
+      "sha256": "19712e5ef6b2532dc96bbfa9d56b29695c0d430a982f0513b627a33b268e4c28"
+    },
+    "KR2n0013_015.txt": {
+      "bytes": 12748,
+      "sha256": "c5da1d9064e134ccc3b6417d02b11cc155b9deff77dbd77483a90c870aaf2074"
+    },
+    "KR2n0013_016.txt": {
+      "bytes": 15330,
+      "sha256": "419bffcd75dadf5b00587d86dedfb9320c22953300b3a174b3f58e970f78bf8e"
+    },
+    "KR2n0013_017.txt": {
+      "bytes": 12695,
+      "sha256": "feb3e035b012101c832bc47690b7bcbf49a3cff3f95780b49f3a50c785fa3cb8"
+    },
+    "KR2n0013_018.txt": {
+      "bytes": 11674,
+      "sha256": "dfd92116bd1a3145c9e1a9b968e2b02e03d8792c85f408b93506cda88bf6a30a"
+    },
+    "KR2n0013_019.txt": {
+      "bytes": 10255,
+      "sha256": "1f60ecb85ff9b8ad0b0c0ddf73791ebb332729510c0b3148ac74fe06f8bcac4d"
+    },
+    "KR2n0013_020.txt": {
+      "bytes": 16872,
+      "sha256": "b67e96897cc7c19a4920363b28afe4a3ba9194d65d7d37889844cb3a9941ed90"
+    },
+    "KR2n0013_021.txt": {
+      "bytes": 11427,
+      "sha256": "dc21de926e8715d567cc1a3e615c6d5569f2354f446e2d3e0c4974045f01ebf3"
+    },
+    "KR2n0013_022.txt": {
+      "bytes": 14619,
+      "sha256": "37b3d9dc6339daf1a15b05afafd0b866dfd670fafa39e80ef2534ce344f0f878"
+    },
+    "KR2n0013_023.txt": {
+      "bytes": 13146,
+      "sha256": "d9927b56b479a59350418fd3138a9516324fe76ed3f1a5d7e72af0224ce373bd"
+    },
+    "KR2n0013_024.txt": {
+      "bytes": 10637,
+      "sha256": "c24b64222a08458d107f0e929a38bab1ec3eb1ee1c85bfe2094a260a5937cf21"
+    },
+    "KR2n0013_025.txt": {
+      "bytes": 11276,
+      "sha256": "624aeb607f595f799977bd3463684b7dfade14b21dad072933027871de0620b6"
+    },
+    "KR2n0013_026.txt": {
+      "bytes": 13146,
+      "sha256": "97e4fee45571546d0d750563a44f5cf6995cba036c662bdca7798298ccf912de"
+    },
+    "KR2n0013_027.txt": {
+      "bytes": 10768,
+      "sha256": "32ef4b68b2653ece6d2aa8546447a85a8bb8f0ace012a86d44cb384eee66e510"
+    },
+    "KR2n0013_028.txt": {
+      "bytes": 14336,
+      "sha256": "2dbffe6897dbd43763b33260a34f7c8ccdee901208da03801d29d1b5486b4a27"
+    },
+    "KR2n0013_029.txt": {
+      "bytes": 12996,
+      "sha256": "1a728d550bc165f2078c7f60ec84212921a299ab6b2640bc3b78b7eb3eef1587"
+    },
+    "KR2n0013_030.txt": {
+      "bytes": 11417,
+      "sha256": "dc9773bec7d52ac32ac4ab40716431d6c0cf515777329c9362fcab7a5ed5177f"
+    },
+    "KR2n0013_031.txt": {
+      "bytes": 8000,
+      "sha256": "7d63dbd2db41f9a6bbda5750ab7a8d6ed69461318b52fb183711589f0b5d8ee4"
     }
   },
   "summary": {
@@ -3094,7 +3229,8 @@
       "tanghuiyao": 1,
       "tangdazhaoling": 0,
       "tongdian": 0,
-      "kaiyuanli": 0
+      "kaiyuanli": 0,
+      "jinshi": 0
     },
     "with_ritual_near": 2
   }

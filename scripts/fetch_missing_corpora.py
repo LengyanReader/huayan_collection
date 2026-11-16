@@ -136,10 +136,18 @@ TARGETS = [
         "check": ["鐔津文集", "契嵩"],
         "note": "CBETA xml-p5 · 大正藏 T52 · 鐔津文集（宋 契嵩）——S3 護法半邊（輔教編）",
     },
+    # --- 金石樣本：《金石錄》（宋趙明誠，Kanripo KR2n0013，32 檔）——S2/R2 金石線
     # --- 儒家樣本：《大學》（朱熹章句，Kanripo KR1h0015，17 檔）---
     # --- 道教階位品：《道教義樞》（孟安排，Kanripo KR5e0031，10 檔；位業義為 P1 缺口）---
 ]
 
+for _n in range(0, 32):
+    TARGETS.append({
+        "id": f"KR2n0013_{_n:03d}", "dir": "jinshi", "path": f"KR2n0013_{_n:03d}.txt",
+        "url": f"{KR}/KR2n0013/master/KR2n0013_{_n:03d}.txt",
+        "check": ["金石"],
+        "note": f"Kanripo KR2n0013 · 金石錄（宋 趙明誠）· 檔 {_n:03d}——S2/R2 金石線",
+    })
 for _n in range(0, 17):
     TARGETS.append({
         "id": f"KR1h0015_{_n:03d}", "dir": "rujia", "path": f"KR1h0015_{_n:03d}.txt",

@@ -1364,7 +1364,10 @@ def render_royal(rp, sd=None):
         out.append("|---|---:|---:|---:|---:|")
         label = {"jiutangshu": "《舊唐書》KR2a0026（後晉劉昫）",
                  "tanghuiyao": "《唐會要》KR2m0002（宋王溥）",
-                 "tangdazhaoling": "《唐大詔令集》KR2f0010（宋宋敏求）"}
+                 "tangdazhaoling": "《唐大詔令集》KR2f0010（宋宋敏求）",
+                 "tongdian": "《通典》KR2m0001（唐杜佑）",
+                 "kaiyuanli": "《大唐開元禮》KR2m0021（唐蕭嵩等）",
+                 "jinshi": "《金石錄》KR2n0013（宋趙明誠，金石樣本）"}
         for repo, info in sd["meta"]["corpora"].items():
             hs = [h for h in sd["hits"] if h["corpus"] == info["slug"]]
             nbytes = sum(f["bytes"] for fn, f in sd["files"].items()
@@ -1381,7 +1384,8 @@ def render_royal(rp, sd=None):
         out.append("一条是僖宗广明乱中「憇於華嚴寺」（《舊唐書·僖宗紀》），"
                    "一条是长安景行坊「華嚴寺，景雲三年立為寺，開元二十一年改為同德寺」（《唐會要》卷四八）——"
                    "**寺名为经名所出，非本经入祀典**。国家祭祀文献里找不到《華嚴經》作为祭祀对象的任何记载；"
-                   "这与④的结论相互印证，且把「无据」从在库 11 部扩到史部诏令 399 档。")
+                   "这与④的结论相互印证，且把「无据」从在库 11 部扩到史部五书 756 档"
+                   "（《通典》礼典与《大唐開元禮》——唐代礼制的总汇——亦零命中）。")
         out.append("")
     out.append("**限度**：")
     out.append("")
