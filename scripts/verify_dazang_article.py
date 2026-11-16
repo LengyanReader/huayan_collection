@@ -1047,6 +1047,27 @@ def main() -> int:
             fail(f"§6.6 Toh number missing in article: {no}")
     ok("§6.6 tanjur: Toh 4011–4015 double-sourced (vol117 {D} marks + dkar chag order)")
 
+    # --- §6.6 third source: ACIP index must place D4011–4015 in vol 117 ---
+    ai_path = ROOT / "data" / "references" / "tibetan" / "derge_tengyur" / "acip_index.yml"
+    if not ai_path.exists():
+        fail("acip_index.yml missing")
+    ai_txt = ai_path.read_text(encoding="utf-8")
+    for w, vol in (("D4011", 117), ("D4012", 117), ("D4013", 117),
+                   ("D4014", 117), ("D4015", 117),
+                   ("D3993", 113), ("D3998", 116), ("D3999", 116)):
+        m_w = re.search(rf"work_id: {w}\n\s+- vol: (\d+)", ai_txt)
+        if not m_w:
+            fail(f"ACIP index missing {w}")
+        if int(m_w.group(1)) != vol:
+            fail(f"ACIP {w} in vol {m_w.group(1)} != expected {vol}")
+    if "三源一致" not in md or "acip_index.yml" not in md:
+        fail("§6.6 third-source sentence missing")
+    tanj = json.loads((ROOT / "data" / "research" / "tanjur_catalog.json").read_text(encoding="utf-8"))
+    acip = tanj["meta"]["dkarchag"].get("acip_third_source")
+    if not acip or not all(v["vol_matches"] for v in acip["checks"].values()):
+        fail("§6.6 ACIP checks in tanjur_catalog.json not all matching")
+    ok("§6.6 tanjur third source: ACIP index places D4010–4015 contiguous in vol 117")
+
     # --- §17.23 R5: 灵验叙事 quotes re-sliced from T51n2073 ---
     ly_path = ROOT / "data" / "research" / "r5_lingyan.json"
     if not ly_path.exists():

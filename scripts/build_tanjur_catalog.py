@@ -173,6 +173,33 @@ def main() -> int:
                     "scan_note": "全目扫描：全部关键词命中二分为「条目」（题名＋造者/译者结构）"
                                  "与「引证」（关键词后接 ལས། 的引文式用法）；其余记待判。"}
 
+        # --- 第三源：ACIP index（独立录制的 work 划分）---
+        AI = TDIR / "acip_index.yml"
+        if AI.exists():
+            import yaml
+            aid = yaml.safe_load(AI.read_text(encoding="utf-8"))
+            acip_rows = {}
+            for k, v in aid.get("annotations", {}).items():
+                w = v.get("work_id")
+                for s in v.get("span") or []:
+                    acip_rows[w] = {"vol": s.get("vol"), "start": s.get("start"),
+                                    "end": s.get("end")}
+            targets = {"D4011": 117, "D4012": 117, "D4013": 117, "D4014": 117,
+                       "D4015": 117, "D3993": 113, "D3998": 116, "D3999": 116,
+                       "D4010": 117, "D4016": 120}
+            acip = {"source": str(AI.relative_to(ROOT)).replace("\\", "/"),
+                    "sha256": sha256(AI.read_bytes()),
+                    "annotations": len(aid.get("annotations", {})),
+                    "checks": {}}
+            for w, want_vol in targets.items():
+                r = acip_rows.get(w)
+                acip["checks"][w] = {
+                    "in_index": r is not None,
+                    "vol": r["vol"] if r else None,
+                    "vol_matches": bool(r and r["vol"] == want_vol),
+                }
+            dkarchag["acip_third_source"] = acip
+
     result = {
         "meta": {
             "date": date.today().isoformat(),

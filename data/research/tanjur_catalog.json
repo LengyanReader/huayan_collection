@@ -1,6 +1,6 @@
 {
   "meta": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "source": "Esukhia/derge-tengyur（Digital Derge Tengyur）",
     "scope": "经释部（མདོ་སྡེ）Derge 卷 113–122＋目录卷 213",
     "keywords": {
@@ -246,7 +246,64 @@
           "text": "ེད་པ་ཡང་དག་པར་རྫོགས་པའི་བྱང་ཆུབ་ཏུ་བཀོད་དོ་ཞེས་དང༌། མདོ་སྡེ་ས་བཅུ་པ་ལས། ས་ དང་པོ་ལ་གནས་པའི་བྱང་ཆུབ་སེམས་དཔའ་རྣམས་ནི་ཕལ་ཆེར་ཛམྦུའི་གླིང་གི་དབང་པོར་འགྱུར་ཞིང༌། དབང་ཕྱུག་ཆེན་པོ་ལ་དབང་རབ་ཏུ་ཐོབ་པ་དང༌། ཆོས་རྗེས་སུ་བསྲུང་བ་དང༌། གཏོང་བ་ཆེན་པོས་སེམས་ཅན་རྣམས་སྡུད་པའི་གཙོ་བོར་གྱུར་ཅིང༌། སེམས་ཅན་རྣམས་ཀྱི་སེར་སྣའི་དྲི་མ་ བཟློག་པ་ལ་མཁས་པ་ཡིན། གཏོང་བ་ཆེན་པོ་རྩོམ་པ་ལ་ཡོངས་སུ་ད"
         }
       ],
-      "scan_note": "全目扫描：全部关键词命中二分为「条目」（题名＋造者/译者结构）与「引证」（关键词后接 ལས། 的引文式用法）；其余记待判。"
+      "scan_note": "全目扫描：全部关键词命中二分为「条目」（题名＋造者/译者结构）与「引证」（关键词后接 ལས། 的引文式用法）；其余记待判。",
+      "acip_third_source": {
+        "source": "data/references/tibetan/derge_tengyur/acip_index.yml",
+        "sha256": "b898bfeeb0396a75e93fe46e45f7d52d904014f05a44b0d8d18f928c78568c39",
+        "annotations": 3364,
+        "checks": {
+          "D4011": {
+            "in_index": true,
+            "vol": 117,
+            "vol_matches": true
+          },
+          "D4012": {
+            "in_index": true,
+            "vol": 117,
+            "vol_matches": true
+          },
+          "D4013": {
+            "in_index": true,
+            "vol": 117,
+            "vol_matches": true
+          },
+          "D4014": {
+            "in_index": true,
+            "vol": 117,
+            "vol_matches": true
+          },
+          "D4015": {
+            "in_index": true,
+            "vol": 117,
+            "vol_matches": true
+          },
+          "D3993": {
+            "in_index": true,
+            "vol": 113,
+            "vol_matches": true
+          },
+          "D3998": {
+            "in_index": true,
+            "vol": 116,
+            "vol_matches": true
+          },
+          "D3999": {
+            "in_index": true,
+            "vol": 116,
+            "vol_matches": true
+          },
+          "D4010": {
+            "in_index": true,
+            "vol": 117,
+            "vol_matches": true
+          },
+          "D4016": {
+            "in_index": true,
+            "vol": 120,
+            "vol_matches": true
+          }
+        }
+      }
     }
   },
   "works_total": 39,

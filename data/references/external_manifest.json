@@ -1,7 +1,7 @@
 {
   "meta": {
     "purpose": "§17 跨典藏登記冊的一手見證清單",
-    "updated": "2026-11-15",
+    "updated": "2026-11-16",
     "notes": []
   },
   "files": {
@@ -860,6 +860,14 @@
       "sha256": "49a4fd614e6e731bdd9858a79b84f3ed213b5287a4650498c4f7733314285e7a",
       "retrieved": "2026-11-15",
       "note": "CBETA xml-p5 · 大正藏 T51 · 華嚴經傳記（唐法藏集）——R5 灵验/讽诵/书写接受史一手文本"
+    },
+    "ACIPindex": {
+      "path": "data/references/tibetan/derge_tengyur/acip_index.yml",
+      "url": "https://raw.githubusercontent.com/Esukhia/acip-derge-tengyur/master/index.yml",
+      "bytes": 442108,
+      "sha256": "b898bfeeb0396a75e93fe46e45f7d52d904014f05a44b0d8d18f928c78568c39",
+      "retrieved": "2026-11-16",
+      "note": "ACIP-derge-tengyur 独立录制的作品划分索引（3364 条 work_id＋卷/字位）——丹珠尔 Toh 号三源核第三源"
     }
   }
 }

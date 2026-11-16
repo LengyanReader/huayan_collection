@@ -3741,3 +3741,12 @@ done(
 - **P32 諸菩薩住處品**（316 字）：來意釋名宗趣合錄（菩薩遍一切處）＋釋文初解（山表智·城邑表悲·二十二處结构；清涼山即五台山文殊道场）。
 - **薄章新加坡扩样至此收官**：P19/21/22/23（L.489）＋P31/32（本批）六品全部有华严宗式科判参照；宣化（禅讲）＋新加坡（科判）两线互补。
 - **门禁**：build 87 files ✓ · check ✓ · diff-check ✓。
+
+## L.439 · 2026-11-16 · 丹珠尔 Toh 号三源核闭合（ACIP 第三源）
+
+- **第三源到手**：Esukhia/acip-derge-tengyur 的 `index.yml`（442KB，3,364 条 work_id×卷/字位独立划分）——ACIP（Asian Classics Input Project）独立录制，与 Esukhia 转写、dkar chag 目录无共同来源；入库 manifest→**108** files。
+- **十项校验全过**：D4011–D4015 五部全部落在 vol.117 且字位依次衔接（521209→581047→640435→747042→806619→863053——连续六部含 D4010 序）；十地线 D3993（vol.113）、D3998/D3999（vol.116）同验；对照 D4016（vol.120）确认分卷边界。
+- **判**：行愿讚释线五部（Toh 4011–4015）与十地释线三部的 Toh 号**三源一致**（eTengyur {D} 标记×dkar chag 443b×ACIP 划分）——可作定论引用；§6.6 落「三源核」段。
+- **工程**：`build_tanjur_catalog.py` 加 acip_third_source 块（targets 表 10 项）；门禁 §6.6 组加 ACIP 断言（正则逐 work_id 验卷＋「三源一致」句＋tanjur_catalog 对账）。
+- **跨会话状态**：主树门禁当前唯一红灯＝并行线 §17.22/24 visits_sanskrit **未提交的进行中改动**（其 build 脚本与 json 均在途）；**HEAD 基线经禁用 autocrlf 的临时 worktree 验证为全绿**（先前 worktree 假红系 CRLF 行尾转换伪差异，教训入档）。本批不触碰其区域。
+- **next**：R3/R4；《通典》补；跨会话 §17.22/24 落定后再复跑全门禁。
