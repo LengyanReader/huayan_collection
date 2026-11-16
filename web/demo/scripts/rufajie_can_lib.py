@@ -461,7 +461,7 @@ def load_articles(root):
         'id': 'huayan-rufajie-can-index',
         'file': 'articles/huayan-rufajie-can-index.html',
         'title': '入法界品专题 · 五十三参子页·总目',
-        'title_sub': '54 卡号系 · 每参一页深读（数据卡＋主页参节照录＋三译四件套＋延伸指针） · 程序汇编自主页与语料库',
+        'title_sub': '54 卡号系 · 每参一页六层深读（数据卡/主页照录/三译四件套/古注取窗/EN/指针台账） · 程序汇编',
         'icon': '📘', 'group': CAN_GROUP, 'family': 'huayan_can', 'order_in_group': 0,
         'version': 'v1.0', 'meta': '', 'doc': '', 'doc_label': '汇编自 华严经细读_第三十九部_入法界品.md',
         'updated_at': '2026-11-16',
@@ -478,7 +478,7 @@ def load_articles(root):
         n40 = card.get('n40', '参%d' % n)
         md_no = sec['head'].split('·')[0].replace('参', '') if sec else str(n)
         star = special.get(str(n), '')
-        title_sub = '%s｜%s｜%s ｜ %s CJK · 主页参节全文照录＋三译四件套' % (
+        title_sub = '%s｜%s｜%s ｜ %s CJK · 六层：数据卡/主页照录/三译四件套/古注取窗疏论/EN/指针' % (
             card.get('role', ''), card.get('city', ''), _short(card.get('gate', ''), 42),
             '{:,}'.format(card.get('cjk', 0)))
         if star:
