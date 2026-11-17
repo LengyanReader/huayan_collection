@@ -1140,3 +1140,21 @@ P0 收尾：T300/T301↔Toh 187、T298↔藏 32、T281 三章、T309 归属；�
 - [x] 根目录安置：1,251 scratch→`_archive/session_scratch/`；`.tmp_*`→`.tmp/`；10 脚本路径同步；82 跟踪杂项按「_archive 不入库」约定解除；gitignore 补三行
 - [x] 门禁：verify 36 组全 PASS＋负向测试（篡改→FAIL→再生→PASS）；build 198 files；外部见证 146 档哈希全验
 - [ ] 下一步：T9 逐参异文人工判读；丹珠尔释论全文（内容层）；S2 余金石萃編；T9 科判 33 品续；R4 音乐化半边；T6 化用
+
+### L.505 独立文章《无明与般若》（2026-11-18，已完成）
+- **交付**：`docs/宗派研究/无明与般若.md`（中英对照·独立专文）＋`articles/wuming-prajna.html` 页面＋`standalone_articles.yaml` 登记（宗派与判教组）。
+- **门禁**：103 条引文回源全绿；build/test-pipeline/verify-sources(T0=0)/check/diff-check ✓；verify_demo 后台。
+- **遗留**：PLAN.md 本节随并行批次提交；[待核]「一念无明法性心」出处；verify_demo ALL CHECKS PASSED ✓（2026-11-18）。
+
+
+### L.505 大藏对应 v4.12·P 面三格＋D4＋T6 化用＋C 扩样＋丹珠尔题记（2026-11-18）
+
+- [x] 取文 76 档：T45n1866、T19n1020/1021、KR5e0040×68、KR5d0019、yoga_sutra（manifest 221）
+- [x] §17.37：P2 字轮仪轨（直证）/P3 心陀罗尼（浓缩等式）/P4 讲解篇——P 面 100%
+- [x] §17.38：D4 分齐章对立五引文——D 面 70%
+- [x] §17.39：T6 化用引号分型＋三定稿——T 面 90%
+- [x] §17.40：瑜伽经/参同契矩阵锚点＋無上祕要负向＋丹珠尔题记（D4012→陈那）
+- [x] ontology：P2/P3/P4/D4/T6→done——26/34＝76.5%，none 清零
+- [x] t7_paraphrase 瘦身修复（374MB→631KB，span 封顶）；D4 门禁组负向加固
+- [x] 门禁 40 组全绿＋负向测试×2；本地 commit 未 push
+- [ ] 下一步：丹珠尔内容层；T9 科判 33 品（并行线）；C 面逐典深化；R4 音乐化；S2 金石萃編（待通道）

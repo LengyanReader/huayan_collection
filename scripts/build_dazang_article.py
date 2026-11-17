@@ -41,6 +41,11 @@ T4CONF = ROOT / "data" / "research" / "t4_conflation_true.json"
 T7PARA = ROOT / "data" / "research" / "t7_paraphrase.json"
 TANJURQ = ROOT / "data" / "research" / "tanjur_qual.json"
 QINGLIANG = ROOT / "data" / "research" / "qingliang_probe.json"
+P4JJ = ROOT / "data" / "research" / "p4_jiangjie.json"
+P2P3 = ROOT / "data" / "research" / "p2p3_ritual.json"
+D4OPP = ROOT / "data" / "research" / "d4_opposition.json"
+T6HY = ROOT / "data" / "research" / "t6_huayong.json"
+CEXP = ROOT / "data" / "research" / "c_expand.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1512,6 +1517,133 @@ def render_qingliang(ql):
     return "\n".join(out)
 
 
+def render_pgrids(p4jj, p2p3):
+    """§17.37 — P 面三格：P4 讲解篇／P2 字轮仪轨／P3 心陀罗尼。"""
+    out = []
+    out.append("**P4 教学·课仪**——法藏《華嚴經傳記》**讲解第六**（T51n2073，在库一手）：")
+    out.append("")
+    for ex in p4jj["exhibits"]:
+        out.append(f"- **{esc(ex['title'])}** `{ex['lb']}`　{esc(ex['text'][:96])}…")
+    out.append("")
+    out.append(f"　讲解篇全章 {p4jj['chapter_span_chars']:,} 字、列東晉至隋十位讲主；"
+               "「讲解」与諷誦、轉讀、書寫并列立传——讲经制度化的自证。"
+               "〔本文判断〕（`data/research/p4_jiangjie.json`）")
+    out.append("")
+    out.append("**P2 仪轨化＋P3 陀罗尼化**——两份晚唐单行本（本批入库一手）：")
+    out.append("")
+    for ex in p2p3["exhibits"]:
+        out.append(f"- **{esc(ex['title'])}**〔{ex['facet']}〕`{ex['lb']}`　{esc(ex['text'][:100])}…")
+    out.append("")
+    out.append("　**判断**：T19n1020 把〈入法界品〉字门章改写为**观想程序**"
+               "（普贤行愿→三密加持→心月布四十二梵字→顿证法身）——P2 的"
+               "「经文编入仪轨」是直证而非推断；T19n1021 以「一咒当全经三遍」"
+               "的明文等价把整部经压缩为持诵单元——P3 的浓缩机制有原文等式。"
+               "两本的译者（不空、实叉难陀）恰是《華嚴》主译谱系内人——仪轨与"
+               "陀罗尼线从译场内部延伸出来。P 面 P1–P4 四格全落。〔本文判断〕"
+               "（`data/research/p2p3_ritual.json`）")
+    return "\n".join(out)
+
+
+def render_d4_oppo(d4):
+    """§17.38 — D4 教义对立：一乘与三乘的分齐。"""
+    out = []
+    out.append("五条引文（四条出《分齊章》，一条回 T279 经侧），锚点切片可回源"
+               "（`data/research/d4_opposition.json`）：")
+    out.append("")
+    for ex in d4["exhibits"]:
+        out.append(f"**{esc(ex['title'])}**〔{ex['doc']}〕`{ex['lb']}`")
+        out.append("")
+        out.append(f"> {esc(ex['text'])}")
+        out.append("")
+        out.append(f"　{esc(ex['analysis'])}")
+        out.append("")
+    out.append(
+        "**判断**：对立点不在教义内容的真假，在**教说位阶**——三乘被定性为"
+        "「臨門方便」，一乘自居「界外实授」且**教内不见说三乘**（互斥的明文）；"
+        "对立的根据是「性海果分不可说、不与教相应」。这是华严宗**自书的**"
+        "对立文档：D4 的证据不必外求，判教文献本身就是双方文本并置与"
+        "位阶判决的第一手现场。〔本文判断〕")
+    return "\n".join(out)
+
+
+def render_t6_huayong(t6):
+    """§17.39 — T6 化用判定：引号制度下的复用。"""
+    out = []
+    out.append("| 对 | 注释×底本 | 己语块 | 含 4–11 字共享串的块 |")
+    out.append("|---|---|---:|---:|")
+    for pid in ("A", "B"):
+        p = t6["pairs"][pid]
+        st = p["stats"]
+        out.append(f"| {pid} | {esc({'A': '澄觀《華嚴經疏》×T279', 'B': '法藏《探玄記》×T278'}[pid])} "
+                   f"| {st['own_windows']} | {st['huayong_blocks']} |")
+    out.append("")
+    out.append("短语级复用几乎遍布所有己语块——但**引号检测**改变判读：这些共享串"
+               "绝大多数落在「」之内（明引），无引号的残留是两类：**牒示式**"
+               "（经语四字头作科判坐标）与偶发的**复述**（留词换框）。"
+               "定稿三例（双侧锚点重切，〔本文判断〕）：")
+    out.append("")
+    for ex in t6.get("exhibits", []):
+        out.append(f"**{esc(ex['kind'])}**（{ex['key']}）`{ex['com_quote']['lb']}`")
+        out.append("")
+        out.append(f"- 注：{esc(ex['com_quote']['text'])}")
+        out.append(f"- 经：`{ex['sutra_quote']['lb']}`　{esc(ex['sutra_quote']['text'])}")
+        out.append("")
+        out.append(f"　{esc(ex['analysis'])}")
+        out.append("")
+    out.append(
+        "**限度与判断**：4 字串有巧合命中（如「眾生心下」恰合四諦品行文），"
+        "故化用判定以 ≥6 字串或牒示式复现为据。**T6 的结论**：唐疏的化用不是"
+        "隐藏的袭用——引号制度把经语复用几乎全部标出，化用表现为**经语被"
+        "制度化地征用为注疏自己的导航语言**（科判坐标、复述骨架）。宋注"
+        "（C 对）嵌经体不在此列。〔本文判断〕")
+    return "\n".join(out)
+
+
+def render_c_expand(cx):
+    """§17.40 — C 面扩样（瑜伽经/參同契）＋D5 补样（無上祕要）。"""
+    out = []
+    cq, yg, wu = cx["cantongqi"], cx["yogasutra"], cx["wushangmiyao"]
+    out.append("**印度·瑜伽**（Pātañjala-yoga-sūtra，GRETIL 明文，"
+               f"{yg['chars']:,} 字）：定义段 1.1–1.2「atha yogānuśāsanam｜"
+               "yogaś citta-vṛtti-nirodhaḥ」（瑜伽＝心作用之止息）；"
+               "词频：citta 18、vṛtti 13、yoga 10、samādhi 9、puruṣa 6、"
+               "kaivalya 5。与《華嚴》的对应是**修行技术层**的类型判——"
+               "止息心行 vs 三昧海印，方向平行、机制异质（有我论 vs 无我）。"
+               "〔本文判断〕")
+    out.append("")
+    out.append("**道教·丹道**（《周易參同契分章通真義》，彭曉註本，"
+               f"{cq['chars']:,} 字）：开篇锚点「乾坤者易之門户…坎離匡郭運轂正軸」"
+               "——以易卦框架立炉鼎结构；词频：鼎 101、丹 79、汞 51、乾坤 42、"
+               "龍虎 30、鉛 28、坎離 22；佛藏锚词（法界/圓融/涅槃）**全 0**——"
+               "丹道与华严的共享面在「以宇宙框架立修行结构」这一形式层，"
+               "概念系统零接触。〔本文判断〕")
+    out.append("")
+    out.append(f"**D5 补样·《無上祕要》**（北周敕编类书，存 68/100 卷，"
+               f"{wu['chars']:,} 字）：**负向结果如实记录**——现存卷为斋醮仪典"
+               "类书（齋×537、醮×16），义理内核章目不在现存卷（道性 0、"
+               "佛性 0、眾生 0）；与《華嚴》可对读的是**观行操作层**：")
+    out.append("")
+    if wu.get("quote"):
+        q = wu["quote"]
+        out.append(f"- 無上祕要（{q['file']}）：{esc(q['text'][:80])}…"
+                   f"（存思五方炁服食入身）")
+        tq = wu["t279_quote"]
+        out.append(f"- 華嚴（`{tq['lb']}`）：{esc(tq['text'][:70])}（定入微尘）")
+    out.append("")
+    out.append("　两侧都是「以观想通达无限」的操作技术，但存思以**神真**为对象、"
+               "华严以**法界**为对象——操作同构、对象异质，类型判、非影响判。"
+               "〔本文判断〕")
+    out.append("")
+    out.append("**丹珠尔题记扫描**（§17.35 的加深）：eTengyur 卷内部末译场记"
+               "已并入 `tanjur_qual.json`——六部有译场记（D3993 妙吉祥藏/般若"
+               "波羅蜜＋智军/吉祥积译、D3998 般若波羅蜜＋吉祥积护、D4013"
+               " 释迦狮子＋吉祥积、D4014 智藏＋吉祥积护、D4015 阿难达＋善慧贤译"
+               "等）、两部**仅有造者记**（D3999 释迦慧、D4012 陈那）。"
+               "**D4012 造者据此更正为陈那（ཕྱོགས་ཀྱི་གླང་པོ）**——卷内题记"
+               "直证压过 dkar chag 邻近条目的判读。〔本文判断〕")
+    return "\n".join(out)
+
+
 def render_r4(lt):
     """R4 仪式·课诵：四十二字觀門（掛 §17.18 影响面内，沿 R2 接层先例）。"""
     vs = lt["quotes"]
@@ -2139,6 +2271,11 @@ def main():
     t7para = json.loads(T7PARA.read_text(encoding="utf-8")) if T7PARA.exists() else None
     tanjurq = json.loads(TANJURQ.read_text(encoding="utf-8")) if TANJURQ.exists() else None
     qingliang = json.loads(QINGLIANG.read_text(encoding="utf-8")) if QINGLIANG.exists() else None
+    p4jj = json.loads(P4JJ.read_text(encoding="utf-8")) if P4JJ.exists() else None
+    p2p3 = json.loads(P2P3.read_text(encoding="utf-8")) if P2P3.exists() else None
+    d4opp = json.loads(D4OPP.read_text(encoding="utf-8")) if D4OPP.exists() else None
+    t6hy = json.loads(T6HY.read_text(encoding="utf-8")) if T6HY.exists() else None
+    cexp = json.loads(CEXP.read_text(encoding="utf-8")) if CEXP.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -2182,6 +2319,10 @@ def main():
         "t7para": render_t7_para(t7para) if t7para else "",
         "tanjurqual": render_tanjur_qual(tanjurq) if tanjurq else "",
         "qingliang": render_qingliang(qingliang) if qingliang else "",
+        "pgrids": render_pgrids(p4jj, p2p3) if p4jj and p2p3 else "",
+        "d4oppo": render_d4_oppo(d4opp) if d4opp else "",
+        "t6huayong": render_t6_huayong(t6hy) if t6hy else "",
+        "cexpand": render_c_expand(cexp) if cexp else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",

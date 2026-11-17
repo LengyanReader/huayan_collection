@@ -2173,6 +2173,114 @@ def main() -> int:
         fail("§17.36 music-half disclaimer missing")
     ok("§17.36 Qingliang: 6 exhibits (4×R4 + 2×R3) re-sliced + lb re-verified")
 
+    # --- §17.37 P grids: hashes + exhibits re-sliced ---
+    p4_path = ROOT / "data" / "research" / "p4_jiangjie.json"
+    r2p_path = ROOT / "data" / "research" / "p2p3_ritual.json"
+    for pp_ in (p4_path, r2p_path):
+        if not pp_.exists():
+            fail(f"{pp_.name} missing")
+    p4jj = json.loads(p4_path.read_text(encoding="utf-8"))
+    p2p3 = json.loads(r2p_path.read_text(encoding="utf-8"))
+    for meta in (p4jj["meta"]["sources"], p2p3["meta"]["sources"]):
+        for key, meta_i in meta.items():
+            if hashlib.sha256((ROOT / meta_i["path"]).read_bytes()).hexdigest() != meta_i["sha256"]:
+                fail(f"P-grid source hash changed: {key}")
+    pg_block = grab("pgrids")
+    _p_files = {"T2073": "cbeta/T51n2073.xml", "T19n1020": "cbeta/T19n1020.xml",
+                "T19n1021": "cbeta/T19n1021.xml"}
+    for ex in p4jj["exhibits"] + p2p3["exhibits"]:
+        docname = ex.get("doc", "T2073")
+        d = _vdoc(docname, "data/references/" + _p_files[docname])
+        frag = re.sub(r"[^\u4e00-\u9fff]", "", ex["text"])[:12]
+        i = d.norm.find(frag)
+        if i < 0:
+            fail(f"P-grid exhibit text not in source: {ex['key']}")
+        if ex["text"][:20] not in pg_block:
+            fail(f"P-grid exhibit not printed: {ex['key']}")
+    if "P 面 P1–P4 四格全落" not in pg_block:
+        fail("§17.37 P-face conclusion missing")
+    ok(f"§17.37 P grids: {len(p4jj['exhibits'])}+{len(p2p3['exhibits'])} exhibits verified")
+
+    # --- §17.38 D4 opposition: 5 exhibits re-sliced ---
+    d4_path = ROOT / "data" / "research" / "d4_opposition.json"
+    if not d4_path.exists():
+        fail("d4_opposition.json missing")
+    d4 = json.loads(d4_path.read_text(encoding="utf-8"))
+    for key, meta in d4["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"D4 source hash changed: {key}")
+    d4_block = grab("d4oppo")
+    if len(d4["exhibits"]) != 5:
+        fail(f"D4 exhibits {len(d4['exhibits'])} != 5")
+    _d4_files = {"T45n1866": "cbeta/T45n1866.xml", "T279": "cbeta/T10n0279.xml"}
+    for ex in d4["exhibits"]:
+        d = _vdoc(ex["doc"], "data/references/" + _d4_files[ex["doc"]])
+        frag = re.sub(r"[^\u4e00-\u9fff]", "", ex["text"])[:12]
+        i = d.norm.find(frag)
+        if i < 0:
+            fail(f"D4 exhibit text not in source: {ex['key']}")
+        elif d.lb_at(d.raw_index(i)) != ex["lb"]:
+            fail(f"D4 exhibit lb mismatch: {ex['key']}")
+        if ex["text"][:20] not in d4_block:
+            fail(f"D4 exhibit not printed: {ex['key']}")
+    for frag in ("教说位阶", "臨門三車俱是開方便門", "本末不見說三乘"):
+        if frag.replace("臨門三車俱是開方便門", "臨門三車俱是開方便門") not in md:
+            fail(f"§17.38 key phrase missing: {frag}")
+    ok("§17.38 D4 opposition: 5 exhibits / positions-level opposition asserted")
+
+    # --- §17.39 T6 huayong: 3 exhibits re-sliced + quote-flag logic ---
+    t6h_path = ROOT / "data" / "research" / "t6_huayong.json"
+    if not t6h_path.exists():
+        fail("t6_huayong.json missing")
+    t6h = json.loads(t6h_path.read_text(encoding="utf-8"))
+    t6_block = grab("t6huayong")
+    if len(t6h.get("exhibits", [])) != 3:
+        fail(f"T6 exhibits {len(t6h.get('exhibits', []))} != 3")
+    for ex in t6h["exhibits"]:
+        pid = ex["pair"]
+        com_name, sutra_name = {"A": ("T1735", "T279"), "B": ("T1733", "T278")}[pid]
+        com = _vdoc(com_name, "data/references/" + _t7_files[com_name])
+        sutra = _vdoc(ex.get("sutra_doc", sutra_name),
+                      "data/references/" + _t7_files[ex.get("sutra_doc", sutra_name)])
+        for side, doc in (("com_quote", com), ("sutra_quote", sutra)):
+            q = ex[side]
+            if q["text"][:20] not in t6_block:
+                fail(f"T6 exhibit {ex['key']} {side} not printed")
+            if doc.norm.find(q["text"].replace("。", "")[:10]) < 0 and \
+                    doc.norm.find(ex["c_anchor"][0] if side == "com_quote"
+                                  else ex["s_anchor"][0]) < 0:
+                fail(f"T6 exhibit {ex['key']} {side} anchor not in source")
+    for frag in ("引号检测", "牒示式", "眾生心下"):
+        if frag not in t6_block:
+            fail(f"§17.39 key phrase missing: {frag}")
+    ok("§17.39 T6 huayong: 3 exhibits / quote-flag typology asserted")
+
+    # --- §17.40 C expansion: matrices + anchors + negatives ---
+    ce_path = ROOT / "data" / "research" / "c_expand.json"
+    if not ce_path.exists():
+        fail("c_expand.json missing")
+    ce = json.loads(ce_path.read_text(encoding="utf-8"))
+    if hashlib.sha256((ROOT / ce["meta"]["sources"]["yogasutra"]["path"]).read_bytes()
+                      ).hexdigest() != ce["meta"]["sources"]["yogasutra"]["sha256"]:
+        fail("C-expand yoga hash changed")
+    ce_block = grab("cexpand")
+    if ce["cantongqi"]["matrix"].get("法界", 1) != 0 or \
+            ce["cantongqi"]["matrix"].get("涅槃", 1) != 0:
+        fail("C-expand cantongqi Buddhist anchors not zero")
+    if ce["wushangmiyao"]["matrix"].get("道性", 1) != 0:
+        fail("C-expand wushang daoxing should be 0")
+    for frag in ("atha yogānuśāsanam", "乾坤者易之門户", "负向结果", "陈那"):
+        if frag not in ce_block:
+            fail(f"§17.40 key content missing: {frag}")
+    tq2 = json.loads(tq_path.read_text(encoding="utf-8"))
+    n_col = sum(1 for w in tq2["works"] if w.get("in_text_colophon", {}).get("ok"))
+    if n_col != 6:
+        fail(f"Tanjur colophons {n_col} != 6")
+    w12 = next(w for w in tq2["works"] if w["D"] == 4012)
+    if "陈那" not in w12["author_dkarchag"]:
+        fail("D4012 author correction missing")
+    ok(f"§17.40 C expansion + Tanjur colophons: {n_col}/8 translator records, D4012=Dignāga")
+
     print("=" * 40)
     print("ALL Dazang article checks passed")
     return 0

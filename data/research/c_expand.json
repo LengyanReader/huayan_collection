@@ -1,0 +1,396 @@
+{
+ "meta": {
+  "date": "2026-11-18",
+  "title": "C 面扩样（瑜伽经/參同契）＋D5 补样（無上祕要）",
+  "method": "词频矩阵只作量级参考；结构锚点切片可回源；非佛藏文本一律类型判；佛藏锚词负向计数如实。",
+  "sources": {
+   "cantongqi": {
+    "dir": "data/references/daozang_cantongqi",
+    "files": {
+     "KR5d0019_000.txt": {
+      "bytes": 3956,
+      "sha256": "a5ed495db911f25f88e297711aa403583a5ee2fbbf4bdb46468961275b7afaee"
+     },
+     "KR5d0019_001.txt": {
+      "bytes": 34154,
+      "sha256": "b78ff482db8ada28f1011d932643aa688e24b9901a00a1514791648c07c36f05"
+     },
+     "KR5d0019_002.txt": {
+      "bytes": 31709,
+      "sha256": "c50452d32b582e13406daacaf55a0433d99b1bc69894e8ae0e568249b07ed854"
+     },
+     "KR5d0019_003.txt": {
+      "bytes": 12047,
+      "sha256": "a83bf2b64492ab1afa25805382aae52a02e7910f07e6ebcac24604ee94c04c27"
+     }
+    }
+   },
+   "yogasutra": {
+    "path": "data/references/sanskrit/yoga_sutra.txt",
+    "sha256": "5f44b6911b481cc3a0b1a56e2f2ca66859e006c5e2a24c690f1924474361d28e",
+    "bytes": 15410
+   },
+   "wushangmiyao": {
+    "dir": "data/references/daozang_wushang",
+    "files": {
+     "KR5e0040_000.txt": {
+      "bytes": 4922,
+      "sha256": "a4cbdac0716e3c14c8fad41462d7dcafe7137b7bfdf6a801bff246b80d764247"
+     },
+     "KR5e0040_001.txt": {
+      "bytes": 9970,
+      "sha256": "fe411000e4bb6eb70667ebf0427d841a2c942f2df517508fdb8417a55ae363b1"
+     },
+     "KR5e0040_002.txt": {
+      "bytes": 13400,
+      "sha256": "ff04dbaf0ba9f1e91c50eb0942649c15701d0d1cc0154133a6e7a8d4c8f6391c"
+     },
+     "KR5e0040_003.txt": {
+      "bytes": 15641,
+      "sha256": "ba967e8c5e7b7935250944b7d343df1268003541600eb982f49a8656d4b6311a"
+     },
+     "KR5e0040_004.txt": {
+      "bytes": 12047,
+      "sha256": "9ad33d716adf2600ccc29153a7975ff5b2b82fa816dd78464f085c84aa1508e2"
+     },
+     "KR5e0040_005.txt": {
+      "bytes": 10332,
+      "sha256": "9ddacad4cd83b8fd8bbd14605e3b3e448e68a0e9be5c603b121c9da57065e6a4"
+     },
+     "KR5e0040_006.txt": {
+      "bytes": 11257,
+      "sha256": "9124974c8b20d46b2296f47a0784a0da05ca58c0afcc5e0c72c6b46f0f6b6204"
+     },
+     "KR5e0040_007.txt": {
+      "bytes": 12520,
+      "sha256": "448475fdc355f784fc79b229b91b8ecb0032b9af2899ee7b8eec4c2798c1acaa"
+     },
+     "KR5e0040_008.txt": {
+      "bytes": 10166,
+      "sha256": "eca921306f5bfed468b4c85c533b0f307974eba138c8dc1eb91ba705628bb262"
+     },
+     "KR5e0040_009.txt": {
+      "bytes": 8621,
+      "sha256": "3b44d52596348521d1881656e476f7f967a4c4174b02a961115d80183a2b5df2"
+     },
+     "KR5e0040_010.txt": {
+      "bytes": 9243,
+      "sha256": "6529af197c9dd2469f7486b9cc10ff57bb8c200b70c0d58305b7dd2a8b6d7ae5"
+     },
+     "KR5e0040_011.txt": {
+      "bytes": 10068,
+      "sha256": "e0a26de906cb96465de1015f63f671989fd9c0f6de7cbda5e0e9639819774cb2"
+     },
+     "KR5e0040_012.txt": {
+      "bytes": 16569,
+      "sha256": "c6d7862d9ead7f8fa14a7225b8a87d3b69d5eb5b5b3e732949772828e01ccf5f"
+     },
+     "KR5e0040_013.txt": {
+      "bytes": 4218,
+      "sha256": "a53c0f322f0096d44fd054438e5338fbf1d09634068c80f41c0938650c364e9a"
+     },
+     "KR5e0040_014.txt": {
+      "bytes": 17146,
+      "sha256": "f9ec36c177fd06f4396a9295f2a3d30baacc9d7be573ebdf92ea04a0a1a78dd5"
+     },
+     "KR5e0040_015.txt": {
+      "bytes": 7311,
+      "sha256": "fa746e855eb14b59f8c23aaf6e7d32f240efa53e5a6d51e25cf0f4c46717c181"
+     },
+     "KR5e0040_016.txt": {
+      "bytes": 19393,
+      "sha256": "5c5d8eef61ab49bde58f2460595e57bc8f9eceaa9f3f3d9881b13dbf0752ef50"
+     },
+     "KR5e0040_017.txt": {
+      "bytes": 9417,
+      "sha256": "dc4bfa48c872357f307378785ae828da82ceaa3b0066cbc6df47e5c9d5664480"
+     },
+     "KR5e0040_018.txt": {
+      "bytes": 13822,
+      "sha256": "62b9cb9a8617a7a01721255553f49736325bbadff7ac44cb5a78877332597bd6"
+     },
+     "KR5e0040_019.txt": {
+      "bytes": 20143,
+      "sha256": "2149ff4dcb967a33955945d68e58a384f0a23f2680998c805b9d4f57af01e5d1"
+     },
+     "KR5e0040_020.txt": {
+      "bytes": 11211,
+      "sha256": "d079cc599e8cb5b228784cf26b32a259975642032237a483a6cc470cb206c712"
+     },
+     "KR5e0040_021.txt": {
+      "bytes": 11975,
+      "sha256": "6375a56e457e2859bf22597316368be8c728e1f1430f94686a466f7a512346e4"
+     },
+     "KR5e0040_022.txt": {
+      "bytes": 10552,
+      "sha256": "b8b20b77d81d7ceff776a1978a6659f45aa90af9756c61c9428ae3b8c73f6f36"
+     },
+     "KR5e0040_023.txt": {
+      "bytes": 13967,
+      "sha256": "69be0258eb51c871d0d6e6bc5ffaa71d02ff92aa9acc3e14fb02febb72584092"
+     },
+     "KR5e0040_024.txt": {
+      "bytes": 17725,
+      "sha256": "924b2f4a2049199d500a8a86960c1b8e105c03a246028f78a6886dde036fdf16"
+     },
+     "KR5e0040_025.txt": {
+      "bytes": 5387,
+      "sha256": "081a83598cfadce0155f50eeb135bf0edb7beb18280608be5becbf74e4696996"
+     },
+     "KR5e0040_026.txt": {
+      "bytes": 18004,
+      "sha256": "cca107b23d2587e0da0fa2ad6ba72247b4626e879260087b7d5278cbb84152cb"
+     },
+     "KR5e0040_027.txt": {
+      "bytes": 10452,
+      "sha256": "7e1f4019694ac8ff21c74af38a9729b9409a1c6834cd0555e9e3d74442e1a7da"
+     },
+     "KR5e0040_028.txt": {
+      "bytes": 6358,
+      "sha256": "77dbbd307d5071227754a971ba88c8703234a8b2fb88f61a71ee3c8a49cbe87a"
+     },
+     "KR5e0040_029.txt": {
+      "bytes": 4372,
+      "sha256": "d19adc0074d8cefb1c2eec94d70cefc927d5bb00f82d76f58a306307b730ce11"
+     },
+     "KR5e0040_030.txt": {
+      "bytes": 10756,
+      "sha256": "0d9a9dae7e1d3dae68a445c69db68c9ff86d32b678d8d83696a444f4e879bb48"
+     },
+     "KR5e0040_031.txt": {
+      "bytes": 6206,
+      "sha256": "9bafeea53f2c3c144879a36c3ca79dc2767276b6af927bce5139834fe6fdab7b"
+     },
+     "KR5e0040_032.txt": {
+      "bytes": 15491,
+      "sha256": "c8ff29fc70e979bad1e2898b3fdca6947ca2511ec09cd04e995856fc82b88718"
+     },
+     "KR5e0040_033.txt": {
+      "bytes": 13632,
+      "sha256": "5f6871ef94b6729d7dfe30b284f070807dc3fd07c0b5700d2159d6bda5bd8add"
+     },
+     "KR5e0040_034.txt": {
+      "bytes": 14777,
+      "sha256": "91c2e3dd1cca65dc99426f049843d72862b3a4812a058bc4cd2e40a76e315d02"
+     },
+     "KR5e0040_035.txt": {
+      "bytes": 8801,
+      "sha256": "8ae2a94494a457ce74e6155fa7a13686e825e1a056f50ef14cc6d8307ccd3b73"
+     },
+     "KR5e0040_036.txt": {
+      "bytes": 20681,
+      "sha256": "fefc53cbb63efe1195b8fc59a2d77c6fbd7a668985f84f322fb34baae3fe546d"
+     },
+     "KR5e0040_037.txt": {
+      "bytes": 15889,
+      "sha256": "60ffcbd15695f1a4cf4c975ee50950a9de3882dd4f1c68bc7aa1d7f09c570db7"
+     },
+     "KR5e0040_038.txt": {
+      "bytes": 10221,
+      "sha256": "f29f6878ca41c2292fb4674f6e952cc9c56da276d61d4c9c6614a2ffbceb5939"
+     },
+     "KR5e0040_039.txt": {
+      "bytes": 9636,
+      "sha256": "2fccde9db378ff86bc45a9ff5743654e3ccb0f02afe968812432a0fce0e148d3"
+     },
+     "KR5e0040_040.txt": {
+      "bytes": 19220,
+      "sha256": "64de84410d00a065c0725bf095b98964a9ed907ebdcaed08719319245dfca236"
+     },
+     "KR5e0040_041.txt": {
+      "bytes": 21546,
+      "sha256": "c80fd7566f02a3612e134b2019097c83a0f8540217dfec63b7319b59a39f50cc"
+     },
+     "KR5e0040_042.txt": {
+      "bytes": 5651,
+      "sha256": "e985a0b767dba022a0843a6d2df5b9003f46014dbc574e3cdbeaa05e2d917c18"
+     },
+     "KR5e0040_043.txt": {
+      "bytes": 12918,
+      "sha256": "8881dde8a158dd51190e488b247de4a982bf52bfc043c7fc3ba0b0fadeb4f54f"
+     },
+     "KR5e0040_044.txt": {
+      "bytes": 7993,
+      "sha256": "fe83d6a55555e528490f82827e504b6d5d9b3f3608af561076d0162a1431de37"
+     },
+     "KR5e0040_045.txt": {
+      "bytes": 18962,
+      "sha256": "959759338e52275a7a05fd10af24c62e92667ad07577fab648370a7500d45a36"
+     },
+     "KR5e0040_046.txt": {
+      "bytes": 13911,
+      "sha256": "af0670eb81cdfbe1399ec23f178b56cbc400fb449bc2de4975ddc466a36ff2ba"
+     },
+     "KR5e0040_047.txt": {
+      "bytes": 10701,
+      "sha256": "c3c9f81ff011a190775f5c2f5960f82fea8f416cce508b45b64f5fbd27f69281"
+     },
+     "KR5e0040_048.txt": {
+      "bytes": 10459,
+      "sha256": "95b54ed7b326e0e9afb6a2b5e7c057342db7f812f8f31ade4406eb383ab77c78"
+     },
+     "KR5e0040_049.txt": {
+      "bytes": 11750,
+      "sha256": "56237dd35e70f2e40cdfc5057b6ff3c4a2a80f29e193802a5f994d916470ba78"
+     },
+     "KR5e0040_050.txt": {
+      "bytes": 12314,
+      "sha256": "c3c99d2431197c48308c85561cdddebf5369dc7714dbd7085eaf87e1120a0254"
+     },
+     "KR5e0040_051.txt": {
+      "bytes": 13505,
+      "sha256": "2b4ba4ac8adff0a048df5f5aab08557853573c2b4e66e2fdef38e3a3a91f7f43"
+     },
+     "KR5e0040_052.txt": {
+      "bytes": 12362,
+      "sha256": "cfcb789ad385e6912a743dfa296df3099dcef33f7e0e95fef693a0e9801b5015"
+     },
+     "KR5e0040_053.txt": {
+      "bytes": 5387,
+      "sha256": "669f4102816c14acb0909a7917c80a1b29170cdf95a032fdbb579156e6dc278c"
+     },
+     "KR5e0040_054.txt": {
+      "bytes": 15253,
+      "sha256": "2ed750b3ab11b1e2dbedc26007afbf269ddd9c8ed6ab72f6d8603f811fdd4ac6"
+     },
+     "KR5e0040_055.txt": {
+      "bytes": 12004,
+      "sha256": "78005adb043ec054a2b7550daed99a7e53b227c381998a59be57a61c8c1ff9a6"
+     },
+     "KR5e0040_056.txt": {
+      "bytes": 12892,
+      "sha256": "283dd6729fb64d2cffddec23c8c1ab754d63dc0ccd5e0dae605924e2979fe18f"
+     },
+     "KR5e0040_057.txt": {
+      "bytes": 16000,
+      "sha256": "8afb8cb899e063ad211d8c9df51057d14ba4c5d7bf8473ca6eb0456656a03f85"
+     },
+     "KR5e0040_058.txt": {
+      "bytes": 8852,
+      "sha256": "f18db748b77d01ff4472ff0db07cd5afa31f404716586f69218b8c6936cdd64a"
+     },
+     "KR5e0040_059.txt": {
+      "bytes": 21347,
+      "sha256": "d79faf2be1825e6c66ce2d22548b018269203f2b46508cb2792e1a417fba1d5b"
+     },
+     "KR5e0040_060.txt": {
+      "bytes": 13722,
+      "sha256": "dade68b0a42f5acf398d870cf5566efc5e00ed6c7dc919358bee940f35e60970"
+     },
+     "KR5e0040_061.txt": {
+      "bytes": 8675,
+      "sha256": "e6e9b04d91426eadb0ddb5aabfb561d3716b8247b0369c9240ee0c86eeae3092"
+     },
+     "KR5e0040_062.txt": {
+      "bytes": 10570,
+      "sha256": "2def7e457b9a79c7dc664bb79c9ab181e3a3a7f6fd5e248485506d34a2695de4"
+     },
+     "KR5e0040_063.txt": {
+      "bytes": 9524,
+      "sha256": "77ba1b11fe04066ba24a519eb9dd9e5813204d573675a0c2892bbf556c3baf25"
+     },
+     "KR5e0040_064.txt": {
+      "bytes": 23000,
+      "sha256": "965cc50ef26c14d8306c1a4d65689d00ad4985a137f2edfbba099701c6ef5bd1"
+     },
+     "KR5e0040_065.txt": {
+      "bytes": 13582,
+      "sha256": "5eedc2372d57df3a60f8ca7e672560537cb7c8415b694557ff3eeab74f99b5a4"
+     },
+     "KR5e0040_066.txt": {
+      "bytes": 12821,
+      "sha256": "c0d3f96cc5225a5cd9279c2faaa751e3fd7e7271772cefd46ea33c8f23b3e98f"
+     },
+     "KR5e0040_067.txt": {
+      "bytes": 8874,
+      "sha256": "790d5d87ae98861a9c826b88a63df55ff940c8c2db47d96011e9c285179507c8"
+     }
+    }
+   },
+   "t279": {
+    "path": "data/references/cbeta/T10n0279.xml",
+    "sha256": "9d3de2c63a3eca5665352d12fb3a291e99a898cf470e1c0c71491731aa998d07"
+   }
+  }
+ },
+ "cantongqi": {
+  "matrix": {
+   "乾坤": 42,
+   "坎離": 22,
+   "鼎": 101,
+   "爐": 15,
+   "鉛": 28,
+   "汞": 51,
+   "龍虎": 30,
+   "火候": 14,
+   "周天": 1,
+   "性命": 0,
+   "丹": 79,
+   "藥": 38,
+   "虚無": 2,
+   "自然": 16,
+   "法界": 0,
+   "圓融": 0,
+   "涅槃": 0
+  },
+  "struct": {
+   "generation": {
+    "lb": "?",
+    "text": "乾坤者易之門户章第一¶乾坤者易之門户衆卦之父母坎離匡郭運¶轂正軸¶　太易太初之前雖含"
+   },
+   "note": "开篇章：乾坤门户→坎離匡郭——丹道以易卦框架立炉鼎结构〔本文判读〕"
+  },
+  "chars": 28111
+ },
+ "yogasutra": {
+  "matrix": {
+   "yoga": 10,
+   "citta": 18,
+   "vṛtti": 13,
+   "nirodha": 5,
+   "samādhi": 9,
+   "dhyāna": 4,
+   "abhyāsa": 1,
+   "vairāgya": 1,
+   "kaivalya": 5,
+   "puruṣa": 6,
+   "prakṛti": 1,
+   "īśvara": 3,
+   "kleśa": 5,
+   "dharma": 2,
+   "mokṣa": 0
+  },
+  "struct": {
+   "def_pos": 1851,
+   "text": "atha yogānuśāsanam ｜ yogaś citta-vṛtti-nirodhaḥ",
+   "note": "1.1–1.2 定义段：瑜伽＝心作用之止息〔GRETIL 明文无行号，位置可回源〕"
+  },
+  "chars": 11588
+ },
+ "wushangmiyao": {
+  "matrix": {
+   "齋": 537,
+   "醮": 16,
+   "觀": 118,
+   "存思": 34,
+   "服食": 18,
+   "道性": 0,
+   "佛性": 0,
+   "法身": 1,
+   "眾生": 0,
+   "三界": 63,
+   "大乘": 11
+  },
+  "quote": {
+   "file": "KR5e0040_018.txt",
+   "pos": 2955,
+   "text": "五老赤書玉篇經下東方赤書玉文十二字則九炁青天之名導引青帝九炁服食青牙皆朱書白紙上存思訖而頓服之則九炁不招而自降青帝應聲而見形五牙堅固於東嶽肝府玉芝而自生靈童齎眞",
+   "note": "五牙服食·存想五方炁入身（操作层，无 CBETA 式行号，卷档+位置可回源）"
+  },
+  "t279_quote": {
+   "lb": "0074a05",
+   "text": "一微塵中入三昧，成就一切微塵定，而彼微塵亦不增，於一普現難思剎。彼一塵內眾多剎"
+  },
+  "chars": 296387
+ }
+}

@@ -203,10 +203,9 @@ def analyse(pair_id: str, com_name: str, sutra_name: str) -> dict:
         sub0 = w["i0"] + k
         sub_terms = [t for t in terms if t["t"] in
                      com.norm[sub0:sub0 + SUB_LEN]]
-        # 经文侧：覆盖全部命中词首现位置的区间
-        ss = min(t["s_norm"] for t in sub_terms)
-        se = max(t["s_norm"] for t in sub_terms)
-        s_lo, s_hi = max(0, ss - 8), min(len(sutra.norm), se + 22)
+        # 经文侧：首个命中词小窗（封顶 80 字——跨品巨 span 曾致 JSON 374MB）
+        ss = sub_terms[0]["s_norm"]
+        s_lo, s_hi = max(0, ss - 8), min(len(sutra.norm), ss + 72)
         c0 = sutra.clean_of_norm[s_lo]
         c1 = sutra.clean_of_norm[s_hi - 1]
         cands.append({
