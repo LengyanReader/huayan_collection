@@ -810,7 +810,13 @@ def main() -> int:
         else:
             schars.append(ch)
     sflat = "".join(schars)
-    gstarts = [m.start() for m in re.finditer(r"gaccha kulaputra", sflat)]
+    # 与 build_visits_sanskrit.py 同口径：指授句 = (?:asti|gaccha) kulaputra 且 900 字内见 upasaṃkramya
+    gstarts = []
+    for m in re.finditer(r"(?:asti|gaccha) kulaputra", sflat):
+        if "upasaṃkramya" in sflat[m.start():m.start() + 900]:
+            gstarts.append(m.start())
+    if len(gstarts) != 50:
+        fail(f"visit-sanskrit instruction events {len(gstarts)} != 50")
     gpages = [(m.start(), int(m.group(1))) for m in re.finditer(r"\(gv (\d+)\)", sflat)]
 
     def s_gv(pos):

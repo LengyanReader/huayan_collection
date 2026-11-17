@@ -1,6 +1,6 @@
 {
   "meta": {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "purpose": "S2 祀典半边：史部三书中的華嚴邻域扫描",
     "method": "逐卷下载（并发 8）、逐档 sha256；扫描「華嚴」并取 ±120 字上下文；邻域词仅作归类的辅助，不作判据。",
     "corpora": {
@@ -43,7 +43,7 @@
         "slug": "jinshi",
         "edition": "《金石錄》，宋趙明誠撰，Kanripo KR2n0013（金石樣本）",
         "files": 32,
-        "downloaded": 32,
+        "downloaded": 0,
         "failed": []
       }
     }

@@ -63,7 +63,7 @@ def main() -> int:
                        "corpora": {}},
               "hits": [], "files": {}}
     for repo, (slug, edition, nfiles) in CORPORA.items():
-        d = ROOT / "data" / "references" / "shiji" / slug
+        d = ROOT / "data" / "references" / ("jinshi" if slug == "jinshi" else "shiji/" + slug)
         d.mkdir(parents=True, exist_ok=True)
         got, failed, meta = 0, [], {}
         todo = [n for n in range(0, nfiles)
