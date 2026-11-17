@@ -20,6 +20,7 @@ JOURNEY = 'web/demo/articles/huayan-rufajie-journey.html'
 OUT = 'data/research/rufajie_can_guzhu.json'
 SRC = {
     'shu': ('data/references/cbeta_txt/T1735_澄观_华严经疏.txt', '澄观《华严经疏》T1735（八十）'),
+    'yan': ('data/references/cbeta_txt/T1736_澄观_随疏演义钞.txt', '澄观《随疏演义钞》T1736（八十·疏之演义）'),
     'lun': ('data/references/cbeta_txt/T1739_李通玄_新华严经论.txt', '李通玄《新华严经论》T1739（八十）'),
     'tan': ('data/references/cbeta_txt/T1733_法藏_探玄记.txt', '法藏《探玄记》T1733（六十）'),
 }
@@ -102,9 +103,13 @@ EXTRA = {
 SOURCES = {}
 for key, (path, label) in SRC.items():
     txt, pages = load_norm(path)
-    starts = [m.start() for m in re.finditer('入法界品第', txt)]
-    band0 = max([p for p in starts if p > 400000] or [starts[-1]]) if key != 'shu' else \
-        max([p for p in starts if p > 600000] or [starts[-1]])
+    starts = [m.start() for m in re.finditer('入法界品', txt)]
+    if key == 'shu':
+        band0 = min([p for p in starts if p > 600000] or [starts[-1]])
+    elif key == 'yan':
+        band0 = min([p for p in starts if p > 1000000] or [starts[-1]])
+    else:
+        band0 = max([p for p in starts if p > 400000] or [starts[-1]])
     SOURCES[key] = {'label': label, 'txt': txt, 'pages': pages, 'band0': band0,
                     'cursor': band0}
     print('%s band0=%d（%s 之后）' % (key, band0, label))
@@ -115,7 +120,7 @@ def find_anchor(skey, card):
     S = SOURCES[skey]
     txt = S['txt']
     n = card['card_no']
-    if n == 54 and skey in ('shu', 'lun'):
+    if n == 54 and skey in ('shu', 'yan', 'lun'):
         # 普賢摄归章为疏/论末段——单调首现会误落彌勒段，改取带内最末「普賢」
         p = txt.rfind('普賢', S['band0'])
         if p > S['cursor']:
@@ -174,7 +179,7 @@ result = {'meta': {
 for card in cards:
     n = card['card_no']
     entry = {}
-    for skey in ('shu', 'lun', 'tan'):
+    for skey in ('shu', 'yan', 'lun', 'tan'):
         pos, used = find_anchor(skey, card)
         if pos is None:
             entry[skey] = {'miss': True}
@@ -184,9 +189,9 @@ for card in cards:
         SOURCES[skey]['cursor'] = pos + 1
     result['cards'][str(n)] = entry
 
-cov = {k: sum(1 for e in result['cards'].values() if not e.get(k, {}).get('miss')) for k in ('shu', 'lun', 'tan')}
-print('覆盖：疏 %d/54 · 论 %d/54 · 探 %d/54' % (cov['shu'], cov['lun'], cov['tan']))
-misses = {n: [k for k in ('shu', 'lun', 'tan') if e[k].get('miss')] for n, e in result['cards'].items() if any(e[k].get('miss') for k in ('shu', 'lun', 'tan'))}
+cov = {k: sum(1 for e in result['cards'].values() if not e.get(k, {}).get('miss')) for k in ('shu', 'yan', 'lun', 'tan')}
+print('覆盖：疏 %d/54 · 钞 %d/54 · 论 %d/54 · 探 %d/54' % (cov['shu'], cov['yan'], cov['lun'], cov['tan']))
+misses = {n: [k for k in ('shu', 'yan', 'lun', 'tan') if e[k].get('miss')] for n, e in result['cards'].items() if any(e[k].get('miss') for k in ('shu', 'yan', 'lun', 'tan'))}
 if misses:
     print('miss:', misses)
 
