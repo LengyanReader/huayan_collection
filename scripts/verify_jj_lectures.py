@@ -321,7 +321,9 @@ def mutate(text, kind):
     if kind == "month_drift":
         if "#7月" not in text:
             return text, False
-        return text.replace("#7月", "#9月", 1), True
+        if "#1月" in text:
+            return text, False
+        return text.replace("#7月", "#1月", 1), True
     return text, False
 
 

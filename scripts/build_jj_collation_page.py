@@ -49,6 +49,7 @@ for cm in C["episodes"]:
         "calibration": md.get("calibration"),
         # L.141 · 播客回看（与 haiyun_podcast_catalog.yaml S24 對映）
         "podcast_url": pod.get("url", ""),
+        "podcast_url_qa": pod.get("url_qa", ""),
         "podcast_label": pod.get("label", ""),
         "podcast_confidence": pod.get("confidence", ""),
         "podcast_basis": pod.get("match_basis", ""),
@@ -107,56 +108,22 @@ def md_to_html(md):
     return md
 
 
+EP_DIR = "docs/经学文献/海云讲记_九九华严/episodes"
 readme_md = io.open("docs/经学文献/海云讲记_九九华严/README.md", encoding="utf-8").read()
-ep01_md = io.open("docs/经学文献/海云讲记_九九华严/episodes/ep01.md", encoding="utf-8").read()
-ep02_path = "docs/经学文献/海云讲记_九九华严/episodes/ep02.md"
-ep02_md = io.open(ep02_path, encoding="utf-8").read() if os.path.exists(ep02_path) else ""
-ep03_path = "docs/经学文献/海云讲记_九九华严/episodes/ep03.md"
-ep03_md = io.open(ep03_path, encoding="utf-8").read() if os.path.exists(ep03_path) else ""
-ep04_path = "docs/经学文献/海云讲记_九九华严/episodes/ep04.md"
-ep04_md = io.open(ep04_path, encoding="utf-8").read() if os.path.exists(ep04_path) else ""
-ep05_path = "docs/经学文献/海云讲记_九九华严/episodes/ep05.md"
-ep05_md = io.open(ep05_path, encoding="utf-8").read() if os.path.exists(ep05_path) else ""
-ep06_path = "docs/经学文献/海云讲记_九九华严/episodes/ep06.md"
-ep06_md = io.open(ep06_path, encoding="utf-8").read() if os.path.exists(ep06_path) else ""
-ep07_path = "docs/经学文献/海云讲记_九九华严/episodes/ep07.md"
-ep07_md = io.open(ep07_path, encoding="utf-8").read() if os.path.exists(ep07_path) else ""
-ep08_path = "docs/经学文献/海云讲记_九九华严/episodes/ep08.md"
-ep08_md = io.open(ep08_path, encoding="utf-8").read() if os.path.exists(ep08_path) else ""
-ep09_path = "docs/经学文献/海云讲记_九九华严/episodes/ep09.md"
-ep09_md = io.open(ep09_path, encoding="utf-8").read() if os.path.exists(ep09_path) else ""
-ep10_path = "docs/经学文献/海云讲记_九九华严/episodes/ep10.md"
-ep10_md = io.open(ep10_path, encoding="utf-8").read() if os.path.exists(ep10_path) else ""
-ep11_path = "docs/经学文献/海云讲记_九九华严/episodes/ep11.md"
-ep11_md = io.open(ep11_path, encoding="utf-8").read() if os.path.exists(ep11_path) else ""
-ep12_path = "docs/经学文献/海云讲记_九九华严/episodes/ep12.md"
-ep12_md = io.open(ep12_path, encoding="utf-8").read() if os.path.exists(ep12_path) else ""
-ep13_path = "docs/经学文献/海云讲记_九九华严/episodes/ep13.md"
-ep13_md = io.open(ep13_path, encoding="utf-8").read() if os.path.exists(ep13_path) else ""
-ep14_path = "docs/经学文献/海云讲记_九九华严/episodes/ep14.md"
-ep14_md = io.open(ep14_path, encoding="utf-8").read() if os.path.exists(ep14_path) else ""
-ep15_path = "docs/经学文献/海云讲记_九九华严/episodes/ep15.md"
-ep15_md = io.open(ep15_path, encoding="utf-8").read() if os.path.exists(ep15_path) else ""
+
+# 逐集读校订稿（缺稿留空·不臆造）；集数由 collation YAML 驱动，新增集无需改模板
+ep_md_text = {}
+EP_HTML = {}
+for _e in episodes:
+    _p = os.path.join(EP_DIR, "ep%02d.md" % _e["ep"])
+    _md = io.open(_p, encoding="utf-8").read() if os.path.exists(_p) else ""
+    ep_md_text[_e["ep"]] = _md
+    EP_HTML[_e["ep"]] = md_to_html(_md) if _md else ""
 
 DATA_JSON = json.dumps(episodes, ensure_ascii=False)
 MEASURED_JSON = json.dumps(M.get("measured", {}), ensure_ascii=False)
 CHANNELS_JSON = json.dumps(CHANNELS, ensure_ascii=False)
 README_HTML = md_to_html(readme_md)
-EP01_HTML = md_to_html(ep01_md)
-EP02_HTML = md_to_html(ep02_md) if ep02_md else ""
-EP03_HTML = md_to_html(ep03_md) if ep03_md else ""
-EP04_HTML = md_to_html(ep04_md) if ep04_md else ""
-EP05_HTML = md_to_html(ep05_md) if ep05_md else ""
-EP06_HTML = md_to_html(ep06_md) if ep06_md else ""
-EP07_HTML = md_to_html(ep07_md) if ep07_md else ""
-EP08_HTML = md_to_html(ep08_md) if ep08_md else ""
-EP09_HTML = md_to_html(ep09_md) if ep09_md else ""
-EP10_HTML = md_to_html(ep10_md) if ep10_md else ""
-EP11_HTML = md_to_html(ep11_md) if ep11_md else ""
-EP12_HTML = md_to_html(ep12_md) if ep12_md else ""
-EP13_HTML = md_to_html(ep13_md) if ep13_md else ""
-EP14_HTML = md_to_html(ep14_md) if ep14_md else ""
-EP15_HTML = md_to_html(ep15_md) if ep15_md else ""
 
 
 # ── L.141 · 每集顶部回看媒体条（YouTube + Spotify 播客）───────────
@@ -187,10 +154,17 @@ def media_bar_html(ep_num):
             '<span class="mbt mbt-pod mbt-pod-pending" title="' + (basis or "") + '">'
             '🎧 播客 · ' + pod_label + '</span>'
         )
+    qa_url = e.get("podcast_url_qa") or ""
+    if qa_url:
+        parts.append(
+            '<a class="mbt mbt-pod" href="' + qa_url + '" target="_blank" rel="noopener" '
+            'title="' + (basis or "") + '">'
+            '🎧 Spotify 播客 · 會後問答</a>'
+        )
     if conf == "high":
         parts.append('<span class="mb-conf mb-conf-high" title="' + (basis or "") + '">高置信 · 時長+月份雙向核</span>')
     elif conf == "pending":
-        parts.append('<span class="mb-conf mb-conf-pending" title="' + (basis or "") + '">待核 · 八月場次拆正行/問答</span>')
+        parts.append('<span class="mb-conf mb-conf-pending" title="' + (basis or "") + '">待核 · 場次拆正行/問答</span>')
     if caveat:
         parts.append('<span class="mb-caveat" title="' + caveat + '">⚠ ' + caveat[:40] + ('…' if len(caveat) > 40 else '') + '</span>')
     if not parts:
@@ -199,21 +173,24 @@ def media_bar_html(ep_num):
             + ''.join(parts) + '</div>')
 
 
-EP01_HTML = media_bar_html(1) + EP01_HTML
-EP02_HTML = media_bar_html(2) + EP02_HTML
-EP03_HTML = media_bar_html(3) + EP03_HTML
-EP04_HTML = media_bar_html(4) + EP04_HTML
-EP05_HTML = media_bar_html(5) + EP05_HTML
-EP06_HTML = media_bar_html(6) + EP06_HTML
-EP07_HTML = media_bar_html(7) + EP07_HTML
-EP08_HTML = media_bar_html(8) + EP08_HTML
-EP09_HTML = media_bar_html(9) + EP09_HTML
-EP10_HTML = media_bar_html(10) + EP10_HTML
-EP11_HTML = media_bar_html(11) + EP11_HTML
-EP12_HTML = media_bar_html(12) + EP12_HTML
-EP13_HTML = media_bar_html(13) + EP13_HTML
-EP14_HTML = media_bar_html(14) + EP14_HTML
-EP15_HTML = media_bar_html(15) + EP15_HTML
+for _e in episodes:
+    EP_HTML[_e["ep"]] = media_bar_html(_e["ep"]) + EP_HTML[_e["ep"]]
+
+TABS_HTML = "".join(
+    '<button data-tab="%s">✒️ Ep %d %s</button>'
+    % (("pilot" if _e["ep"] == 1 else "ep%02d" % _e["ep"]), _e["ep"],
+       ("待校" if "待校" in (_e.get("collation_status") or "") else "精校"))
+    for _e in episodes)
+PANELS_HTML = "".join(
+    '<section id="tab-%s" class="tab-panel">\n'
+    '  <div class="doc-panel">\n'
+    '    <div id="%s-body">%s</div>\n'
+    '  </div>\n'
+    '</section>\n'
+    % (("pilot" if _e["ep"] == 1 else "ep%02d" % _e["ep"]),
+       "ep%02d" % _e["ep"], EP_HTML[_e["ep"]])
+    for _e in episodes)
+_MAX_EP = max(_e["ep"] for _e in episodes) if episodes else 0
 
 TEMPLATE = r"""<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -396,21 +373,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
 
 <div class="tabbar">
   <button class="active" data-tab="overview" id="overview-tab-btn">📊 概览·集目</button>
-  <button data-tab="pilot">✒️ Ep 1 精校</button>
-  <button data-tab="ep02">✒️ Ep 2 精校</button>
-  <button data-tab="ep03">✒️ Ep 3 精校</button>
-  <button data-tab="ep04">✒️ Ep 4 精校</button>
-  <button data-tab="ep05">✒️ Ep 5 精校</button>
-  <button data-tab="ep06">✒️ Ep 6 精校</button>
-  <button data-tab="ep07">✒️ Ep 7 精校</button>
-  <button data-tab="ep08">✒️ Ep 8 精校</button>
-  <button data-tab="ep09">✒️ Ep 9 精校</button>
-  <button data-tab="ep10">✒️ Ep 10 精校</button>
-  <button data-tab="ep11">✒️ Ep 11 精校</button>
-  <button data-tab="ep12">✒️ Ep 12 精校</button>
-  <button data-tab="ep13">✒️ Ep 13 精校</button>
-  <button data-tab="ep14">✒️ Ep 14 精校</button>
-  <button data-tab="ep15">✒️ Ep 15 精校</button>
+  __TABS__
   <button data-tab="protocol">📖 凡例·体例</button>
 </div>
 
@@ -423,7 +386,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
     <button class="fbtn" data-fseg="正行">正行</button>
     <span style="width:16px"></span>
     <button class="fbtn active" data-fstat="all">全状态</button>
-    <button class="fbtn" data-fstat="試點精校">試點精校</button>
+    <button class="fbtn" data-fstat="已校">已校</button>
     <button class="fbtn" data-fstat="待校">待校</button>
   </div>
   <div style="overflow-x:auto">
@@ -438,96 +401,7 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <div id="detail-holder"></div>
 </section>
 
-<section id="tab-pilot" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep01-body">__EP01_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep02" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep02-body">__EP02_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep03" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep03-body">__EP03_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep04" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep04-body">__EP04_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep05" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep05-body">__EP05_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep06" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep06-body">__EP06_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep07" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep07-body">__EP07_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep08" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep08-body">__EP08_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep09" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep09-body">__EP09_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep10" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep10-body">__EP10_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep11" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep11-body">__EP11_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep12" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep12-body">__EP12_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep13" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep13-body">__EP13_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep14" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep14-body">__EP14_HTML__</div>
-  </div>
-</section>
-
-<section id="tab-ep15" class="tab-panel">
-  <div class="doc-panel">
-    <div id="ep15-body">__EP15_HTML__</div>
-  </div>
-</section>
-
+__PANELS__
 <section id="tab-protocol" class="tab-panel">
   <div class="doc-panel">
     <div id="readme-body">__README_HTML__</div>
@@ -539,8 +413,8 @@ table.jj-eps tr:hover td { background: rgba(74,138,143,0.05); cursor: pointer; }
   <code>data/research/jj_huayan_lectures.yaml</code>（实测·自动生成）·
   <code>data/research/jj_huayan_collation.yaml</code>（编辑判断·人定）·
   <code>docs/经学文献/海云讲记_九九华严/episodes/ep01.md</code>（试点校订稿）·
-  <code>docs/hy_refs/sub_extract/delivery/ep01.md … ep15.md</code>（OCR 初稿·不入 git）。
-  <br><strong>批次</strong>：L.138 · 建立工作台骨架 + Ep 1 试点 · 后续 Ep 2–15 依 segment 分批。
+  <code>docs/hy_refs/sub_extract/delivery/ep01.md … ep__MAXEP__.md</code>（OCR 初稿·不入 git）。
+  <br><strong>批次</strong>：L.138 · 建立工作台骨架 + Ep 1 试点 · 后续依 segment 分批（现 __NEP__ 集）。
 </div>
 
 </main>
@@ -581,6 +455,9 @@ function mediaCellHtml(e){
   } else {
     out += '<span class="mbt-pod-mini" style="opacity:0.35">🎧</span>';
   }
+  if(e.podcast_url_qa){
+    out += '<a class="mbt-pod-mini" href="'+e.podcast_url_qa+'" target="_blank" rel="noopener" title="🎧 會後問答\n'+(e.podcast_basis||'')+'">🎧</a>';
+  }
   return out;
 }
 
@@ -594,6 +471,8 @@ function renderBadges(){
   const hong = EPISODES.filter(e=>e.segment==='宏觀華嚴經').length;
   const zheng = EPISODES.filter(e=>e.segment==='正行').length;
   const pilot = EPISODES.filter(e=>e.collation_status==='試點精校').length;
+  const done = EPISODES.filter(e=>(e.collation_status||'').indexOf('已校')>=0).length;
+  const pending = EPISODES.filter(e=>(e.collation_status||'').indexOf('待校')>=0).length;
   const cues = EPISODES.reduce((s,e)=>s+(e.cues||0),0);
   const han = MEASURED.total_han_chars || EPISODES.reduce((s,e)=>s+(e.han||0),0);
   b.innerHTML =
@@ -601,7 +480,8 @@ function renderBadges(){
     '<span class="badge" style="background:rgba(148,132,182,0.16);color:#7a5fa0;border-color:rgba(148,132,182,0.30)">玄談 '+xuan+'</span>'+
     '<span class="badge" style="background:rgba(212,164,80,0.16);color:#a07028;border-color:rgba(212,164,80,0.30)">宏觀 '+hong+'</span>'+
     '<span class="badge" style="background:rgba(92,141,92,0.16);color:#3d6d3d;border-color:rgba(92,141,92,0.30)">正行 '+zheng+'</span>'+
-    '<span class="badge badge-ok">試點精校 '+pilot+'</span>'+
+    '<span class="badge badge-ok">已校 '+done+'</span>'+
+    '<span class="badge badge-warn">待校 '+pending+'</span>'+
     '<span class="badge">'+cues.toLocaleString()+' cues · '+han.toLocaleString()+' 汉字</span>';
 }
 
@@ -610,11 +490,12 @@ function renderTable(){
   const tb = document.getElementById('eps-body');
   const rows = EPISODES.filter(e =>
     (curFseg==='all'||e.segment===curFseg) &&
-    (curFstat==='all'||e.collation_status===curFstat)
+    (curFstat==='all'||(e.collation_status||'').indexOf(curFstat)>=0)
   );
   tb.innerHTML = rows.map(e => {
     const segCls = 'seg-'+e.segment.replace(/\s/g,'');
-    const stagCls = 'stag-'+e.collation_status;
+    const _st = e.collation_status || '';
+    const stagCls = _st.indexOf('待校')>=0 ? 'stag-待校' : (_st.indexOf('已校')>=0 ? 'stag-已校' : (_st.indexOf('未啟')>=0 ? 'stag-未啟' : 'stag-試點精校'));
     const anchor = e.anchor_pin ? ('<br><span style="color:var(--jj-teal);font-size:0.85em">▸ '+e.anchor_pin+' · '+e.anchor_juan+'</span>') : '';
     return '<tr data-ep="'+e.ep+'">'+
       '<td><strong>Ep '+String(e.ep).padStart(2,'0')+'</strong></td>'+
@@ -645,9 +526,13 @@ function showDetail(ep){
   const podLink = e.podcast_url
     ? ' <a href="'+e.podcast_url+'" target="_blank" rel="noopener" style="color:#5a2fa0" title="'+(e.podcast_basis||"").replace(/"/g,'&quot;')+'">🎧 播客·'+(e.podcast_label||'')+'</a>'
     : (e.podcast_label ? ' <span style="color:var(--jj-warn)" title="'+(e.podcast_basis||"").replace(/"/g,'&quot;')+'">🎧 '+(e.podcast_label||'')+'</span>' : '');
-  const link = (ytLink || podLink) ? (' '+ytLink+podLink) : '';
+  const qaLink = e.podcast_url_qa
+    ? ' <a href="'+e.podcast_url_qa+'" target="_blank" rel="noopener" style="color:#5a2fa0" title="會後問答">🎧 會後問答</a>'
+    : '';
+  const link = (ytLink || podLink || qaLink) ? (' '+ytLink+podLink+qaLink) : '';
   const podKv = e.podcast_label
     ? ('<div class="k">播客對映</div><div class="v">'+(e.podcast_url?('<a href="'+e.podcast_url+'" target="_blank" rel="noopener" style="color:#5a2fa0">'+e.podcast_label+'</a>'):e.podcast_label)
+       +(e.podcast_url_qa?('<br><a href="'+e.podcast_url_qa+'" target="_blank" rel="noopener" style="color:#5a2fa0">🎧 會後問答（另条）</a>'):'')
        +(e.podcast_basis?('<br><span style="color:var(--text2);font-size:0.9em">匹配依据：'+e.podcast_basis+'</span>'):'')
        +(e.podcast_caveat?('<br><span style="color:var(--jj-warn);font-size:0.9em">⚠ '+e.podcast_caveat+'</span>'):'')
        +'</div>')
@@ -726,24 +611,14 @@ out = (TEMPLATE
        .replace("__DATA_JSON__", DATA_JSON)
        .replace("__MEASURED_JSON__", MEASURED_JSON)
        .replace("__CHANNELS_JSON__", CHANNELS_JSON)
-       .replace("__EP01_HTML__", EP01_HTML)
-       .replace("__EP02_HTML__", EP02_HTML)
-       .replace("__EP03_HTML__", EP03_HTML)
-       .replace("__EP04_HTML__", EP04_HTML)
-       .replace("__EP05_HTML__", EP05_HTML)
-       .replace("__EP06_HTML__", EP06_HTML)
-       .replace("__EP07_HTML__", EP07_HTML)
-       .replace("__EP08_HTML__", EP08_HTML)
-       .replace("__EP09_HTML__", EP09_HTML)
-       .replace("__EP10_HTML__", EP10_HTML)
-       .replace("__EP11_HTML__", EP11_HTML)
-              .replace("__EP12_HTML__", EP12_HTML)
-              .replace("__EP13_HTML__", EP13_HTML)
-              .replace("__EP14_HTML__", EP14_HTML)
-              .replace("__EP15_HTML__", EP15_HTML)
+       .replace("__TABS__", TABS_HTML)
+       .replace("__PANELS__", PANELS_HTML)
+       .replace("__MAXEP__", "%02d" % _MAX_EP)
+       .replace("__NEP__", str(len(episodes)))
        .replace("__README_HTML__", README_HTML))
 
 io.open("web/demo/articles/jj-huayan-collation.html", "w", encoding="utf-8", newline="\n").write(out)
 _cjk = lambda s: len(re.findall(r"[\u4e00-\u9fff]", s))
-print("已生成 web/demo/articles/jj-huayan-collation.html · %d bytes · %d 集 · Ep1 %d 漢字 · Ep2 %d 漢字 · Ep3 %d 漢字 · Ep4 %d 漢字 · README %d 漢字" % (
-    len(out.encode("utf-8")), len(episodes), _cjk(ep01_md), _cjk(ep02_md), _cjk(ep03_md), _cjk(ep04_md), _cjk(readme_md)))
+_ep_han = lambda n: _cjk(ep_md_text.get(n, ""))
+print("已生成 web/demo/articles/jj-huayan-collation.html · %d bytes · %d 集 · Ep1 %d 漢字 · Ep2 %d 漢字 · Ep%d %d 漢字 · README %d 漢字" % (
+    len(out.encode("utf-8")), len(episodes), _ep_han(1), _ep_han(2), _MAX_EP, _ep_han(_MAX_EP), _cjk(readme_md)))

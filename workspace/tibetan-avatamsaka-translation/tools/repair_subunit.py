@@ -30,6 +30,21 @@ def log(msg):
     print(line)
 
 
+def split_n(bo, n):
+    shads = [i + 1 for i, c in enumerate(bo or '') if c == '།']
+    if n < 2 or not shads:
+        return [bo or '']
+    bounds = []
+    for k in range(1, n):
+        t = len(bo) * k // n
+        b = min(shads, key=lambda p: abs(p - t))
+        if b not in bounds:
+            bounds.append(b)
+    bounds.sort()
+    cuts = [0] + bounds + [len(bo)]
+    return [bo[cuts[i]:cuts[i + 1]].strip() for i in range(len(cuts) - 1) if bo[cuts[i]:cuts[i + 1]].strip()]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--chapter', type=int, required=True)
@@ -37,16 +52,27 @@ def main():
     ap.add_argument('--part', type=int, required=True)
     ap.add_argument('--lang', choices=['zh', 'en'], required=True)
     ap.add_argument('--max-new', type=int, default=250)
+    ap.add_argument('--parts', type=int, default=0, help='分几段（0=沿用/2）')
+    ap.add_argument('--keep-zh', action='store_true', help='仅重译英文，保留已有中文')
+    ap.add_argument('--time-limit', type=int, default=900, help='单次生成墙钟上限（秒）')
     args = ap.parse_args()
 
     path, doc = R.load_doc(args.chapter)
     s = next((x for x in doc['segments'] if int(x['no']) == args.seg), None)
     if not s:
         sys.exit('segment not found')
-    parts = s.get('subunits')
-    if not parts:
-        parts = [{'bo': x} for x in R.split_subunits(s['bo'])]
-        s['subunits'] = parts
+    if args.keep_zh:
+        parts = s.get('en_parts')
+        if not parts:
+            parts = [{'bo': x} for x in split_n(s['bo'], args.parts or 3)]
+            s['en_parts'] = parts
+    else:
+        parts = s.get('subunits')
+        if not parts:
+            n = args.parts or 2
+            splitter = (lambda b: split_n(b, n)) if n > 2 else R.split_subunits
+            parts = [{'bo': x} for x in splitter(s['bo'])]
+            s['subunits'] = parts
     if args.part < 1 or args.part > len(parts):
         sys.exit('bad part')
     part = parts[args.part - 1]
@@ -64,7 +90,7 @@ def main():
 
     class _Limit(StoppingCriteria):
         def __call__(self, input_ids, scores, **kwargs):
-            return (time.time() - t0) > 900
+            return (time.time() - t0) > args.time_limit
 
     with torch.no_grad():
         out = model.generate(**inputs, max_new_tokens=min(args.max_new, 300), do_sample=False,
@@ -79,11 +105,20 @@ def main():
         'method': 'subunit-official-prompt', 'complete': bool(complete and ok),
         'trimmed': trimmed, 'validation': why, 'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
     }
-    all_ok = all(p.get('zh') and p.get('en') for p in parts)
-    s['zh'] = '\n'.join(p['zh'] for p in parts) if all_ok else ''
-    s['en'] = ' '.join(p['en'] for p in parts) if all_ok else ''
-    s['status'] = 'done' if all_ok else ('needs_retry' if not (complete and ok) else 'partial')
-    s['subunits'] = parts
+    if args.keep_zh:
+        all_ok = all(p.get('en') for p in parts)
+        s['en'] = ' '.join(p['en'] for p in parts) if all_ok else ''
+        if s.get('zh') and all_ok:
+            s['status'] = 'done'
+        else:
+            s['status'] = 'needs_retry' if not (complete and ok) else 'partial'
+        s['en_parts'] = parts
+    else:
+        all_ok = all(p.get('zh') and p.get('en') for p in parts)
+        s['zh'] = '\n'.join(p['zh'] for p in parts) if all_ok else ''
+        s['en'] = ' '.join(p['en'] for p in parts) if all_ok else ''
+        s['status'] = 'done' if all_ok else ('needs_retry' if not (complete and ok) else 'partial')
+        s['subunits'] = parts
     R.save_doc(path, doc)
     log('seg%d part%d %s: raw=%d cleaned=%d complete=%s (%s); composed=%s' %
         (args.seg, args.part, args.lang, len(raw), len(cleaned), complete and ok, why, all_ok))

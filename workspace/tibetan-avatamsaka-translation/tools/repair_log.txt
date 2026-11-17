@@ -175,3 +175,19 @@ Without retracting that miraculous manifestation, the Blessed One appeared to pr
 [12:32:46] seg4 en: window=1 raw=97 cleaned=0 complete=False (empty)
 [12:32:46] --- cleaned ---
 
+[15:11:23] seg4 part1 en: raw=148 cleaned=148 complete=True (ok); composed=False
+[15:11:23] --- cleaned ---
+Just as the Blessed One appeared to have ascended to the summit of Mount Sumeru in this four-continent world system, so too did he appear to others.
+[15:25:23] seg4 part2 en: raw=124 cleaned=124 complete=True (ok); composed=False
+[15:25:23] --- cleaned ---
+Likewise, he appeared to proceed to the summit of Mount Sumeru in every four-continent world system of all the world realms.
+[15:33:13] seg4 part3 en: raw=61 cleaned=61 complete=True (ok); composed=True
+[15:33:13] --- cleaned ---
+The previous blessings also appear without having diminished.
+[16:16:30] seg5 part1 zh: raw=83 cleaned=83 complete=True (ok); composed=False
+[16:16:30] --- cleaned ---
+爾時，天主帝釋遙見世尊正趨向勝殿，便以神通力於勝殿之中，化現出一座獅子座。其座名為「遍照藏」，周圍裝飾著一萬個香爐，顯得極其莊嚴。帝釋隨即以迅疾的身相，進入勝殿之中。
+[16:22:34] model ready 3.4s
+[16:52:47] seg6 zh: window=1 raw=57 cleaned=0 complete=False (empty)
+[16:52:47] --- cleaned ---
+
