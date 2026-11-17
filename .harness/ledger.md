@@ -1068,3 +1068,9 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - 33 章 × 1-2 段（15,748 字）入 §5.10；配卷改品号制（卷题解析·弃品名简繁匹配）。
 - 华藏妙海＝玄谈无逐参内容（善財/德雲 0 命中）——逐参第五源作罢如实记。
 - 至此全站两线：5.9 新加坡科判 37 品＋5.10 宣化限量 38 品。
+
+### L.505（2026-11-18）独立文章《无明与般若》发布（中英对照）
+- 草稿（39 万字节研问）→ `docs/宗派研究/无明与般若.md`（73.9KB·10 节＋三附录）；登记 `standalone_articles.yaml`（wuming-prajna·宗派与判教组 order 6）；页面 `articles/wuming-prajna.html` 133.7KB。
+- 引文回源 **103 条/15 部全绿**（CBETA xml-p5＋仓内底本；脚本 `workspace/wuming_prajna_quotes/`）；三处照实文改判（理事语序/鑛字/梵行品句）；起信四处归实叉难陀本分别标注。
+- 教训：①YAML 未引注日期被解析为 date 对象，炸 JSON 序列化——登记 `updated_at` 须加引号；②CBETA xml-p5 单文件即可逐字回源（剥标签＋标点无关匹配＋原文回映），multi-juan 大文件用 `curl -C -` 断点续传至 `</TEI>`；③并行批次共享工作区时，commit 只圈定本批文件（web/demo 整体重建按 demo-deploy 惯例整体入账；PLAN.md 跨批则不随批提交）。
+- 门禁：build 198 files ✓；test-pipeline/verify-sources(T0=0)/check/diff-check ✓；verify_demo ALL CHECKS PASSED ✓。
