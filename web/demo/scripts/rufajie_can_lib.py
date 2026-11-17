@@ -18,6 +18,7 @@ JOURNEY_HTML = 'web/demo/articles/huayan-rufajie-journey.html'
 CORPUS_8040 = 'data/research/huayan_80_40_deep_corpus.json'
 CORPUS_6040 = 'data/research/huayan_60_40_deep_corpus.json'
 GUZHU = 'data/research/rufajie_can_guzhu.json'
+T0293_TXT = 'data/references/cbeta_txt/T10n0293.txt'
 
 _HEAD_RE = re.compile(r'^### 参(\d+)·([^\n]+)$', re.M)
 
@@ -252,6 +253,30 @@ def quick_nav_html(root):
     return html
 
 
+_T0293_CACHE = {'key': None, 'txt': ''}
+
+
+def _skeleton(root, card, nseg=6):
+    """L.500 参1/52-54 经文骨架：T0293 span 按句界均分 nseg 段·每段记 CJK 与首句（程序切分·非科判）。"""
+    if _T0293_CACHE['key'] != root:
+        _T0293_CACHE['key'] = root
+        _T0293_CACHE['txt'] = _read(T0293_TXT, root)
+    txt = _T0293_CACHE['txt']
+    a, b = card.get('span') or [0, 0]
+    seg = txt[a:b]
+    sents = [s for s in re.split(r'(?<=[。！？」」])', seg) if s.strip()]
+    if not sents:
+        return None
+    per = max(1, (len(sents) + nseg - 1) // nseg)
+    rows = []
+    for i in range(0, len(sents), per):
+        chunk = sents[i:i + per]
+        cjk = _han(''.join(chunk))
+        head = chunk[0].strip()
+        rows.append((i // per + 1, len(chunk), cjk, head))
+    return rows
+
+
 def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzhu):
     n = card['card_no']
     n40, n80, n60 = card.get('n40', ''), card.get('n80', ''), card.get('n60', '')
@@ -344,9 +369,18 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
         L.append('（本参为%s，四件套语料库（参2-51 历参口径）未覆盖；三译对读见主页 §6.4-6.7 与 §五之B。）' %
                  ('序参（文殊指授）' if n == 1 else '摄归参' if n >= 52 else '非历参位'))
         L.append('')
+        # L.500 序参/摄归参补「经文骨架」：T0293 span 句界均分六段（程序切分·非科判）
+        if n in (1, 52, 53, 54):
+            rows = _skeleton(root, card)
+            if rows:
+                L.append('**经文骨架（L.500·T0293 span 程序切分·句界均分六段·非科判）**：')
+                L.append('')
+                for ri, nsent, cjk, head in rows:
+                    L.append('- **段%d**（%d 句 · 约 %d CJK）：%s……' % (ri, nsent, cjk, head[:36]))
+                L.append('')
 
-    # ── §三 古注取窗（L.493·三源）──
-    L.append('## 三、古注取窗（疏·论·探玄记·程序取窗照录）')
+    # ── §三 古注取窗（L.493→L.499·四源）──
+    L.append('## 三、古注取窗（疏·钞·论·探玄记·程序取窗照录）')
     L.append('')
     gz = (guzhu or {}).get('cards', {}).get(str(card['card_no']), {})
     _src_label = {'shu': '澄观《华严经疏》`T1735`（八十·寄位释）',
@@ -390,6 +424,33 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
              'L.316（参33 补卡）·L.407/L.413/L.415（行历·三译师名）·L.421/L.456（四件套语料库）。' % n)
     L.append('- 主页各参节后续修订后重跑 build 即自动同步本页 §一（运行时组装·无中间文件）。')
     return '\n'.join(L) + '\n'
+
+
+def _structure_observations(cards, special):
+    """L.501 结构观察：身份×阶段·门名自陈·篇幅分布·三译名判（全部程序实测·附口径）。"""
+    import statistics
+    n40s = [c.get('n40', '') for c in cards]
+    cjk = sorted(c.get('cjk', 0) for c in cards)
+    roles = {}
+    for c in cards:
+        roles.setdefault(c.get('role', '—'), []).append(c['card_no'])
+    pan = {}
+    for c in cards:
+        p = c.get('n_pan') or '—'
+        pan[p] = pan.get(p, 0) + 1
+    gate_named = sum(1 for c in cards if c.get('gate') and '未' not in c.get('gate', '') and '无自陈' not in c.get('gate', '') and '指授' not in c.get('gate', ''))
+    top5 = sorted(cards, key=lambda c: -c.get('cjk', 0))[:5]
+    low5 = sorted(cards, key=lambda c: c.get('cjk', 0))[:5]
+    L = []
+    L.append('- **身份分布**：' + ' · '.join('%s %d' % (r, len(ns)) for r, ns in sorted(roles.items(), key=lambda kv: -len(kv[1]))))
+    L.append('- **法门自陈**：%d/54 参有「我唯得/知此」句式（序参指授·参44 纯转介·参52-54 摄归无此句式）；' % gate_named +
+             '篇幅中位数 %d CJK · 最长五参 ' % int(statistics.median(cjk)) +
+             ' / '.join('参%d·%s（%s）' % (c['card_no'], c.get('n40', ''), '{:,}'.format(c.get('cjk', 0))) for c in top5) +
+             '；最短五参 ' + ' / '.join('参%d（%s）' % (c['card_no'], '{:,}'.format(c.get('cjk', 0))) for c in low5) + '。')
+    L.append('- **三译名判**（行历 L.409/413 口径）：' + ' · '.join('%s %d' % (k, v) for k, v in sorted(pan.items(), key=lambda kv: -kv[1])) +
+             '——师名分歧率高于门名（法门名三译义近为主）。')
+    L.append('- **特殊参八标记**（★）：' + ' · '.join('参%s %s' % (k, special[k]) for k in sorted(special, key=int)) + '。')
+    return '\n'.join(L)
 
 
 def _assemble_index(root, cards, special, corpora):
@@ -456,7 +517,11 @@ def _assemble_index(root, cards, special, corpora):
     L.append('- **专题读**：特殊参（★疑一·刀山／疑二·治罚／险门·离欲／四十二字母／彌勒楼阁／文殊遥指／十愿王）直取。')
     L.append('- **身份读**：§二 按身份检索——比丘沙门系／在家众系／天神夜神系／佛母圣众系，各成一条参学侧线。')
     L.append('')
-    L.append('## 五、台账')
+    L.append('## 五、结构与判读（L.501·程序实测）')
+    L.append('')
+    L.append(_structure_observations(cards, special))
+    L.append('')
+    L.append('## 六、台账')
     L.append('')
     L.append('- L.491（2026-11-16）：总目建立；54 卡自行历图数据（L.407/L.413/L.415），四件套语料 L.421/L.456（参2-51），主页参节 L.289-L.304/L.316。')
     L.append('- L.492（2026-11-17）：总目重构——行程四阶段分组·按身份检索·特殊参直达三检索层（利于查阅）。')
