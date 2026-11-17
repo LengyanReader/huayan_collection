@@ -1975,6 +1975,7 @@ def main():
         "t9": table_t9(probes["t9"]),
         "t9_pin": table_t9({"cases": probes["t9_pin"]["cases"][0:1]}),
         "t9_pin2": table_t9({"cases": probes["t9_pin"]["cases"][1:2]}),
+        "t9_pin3": table_t9({"cases": probes["t9_pin"]["cases"][2:3]}),
         "d5": table_d5(probes),
         "p1": table_p1(probes),
         "t6": table_t6(implicit),
