@@ -1157,6 +1157,51 @@ def main() -> int:
        f"pending 0 / gap 参 {g45s['no']} empty + 参 {b51['no']} 一句两名 / "
        f"50/50 rows witnessed")
 
+    # --- §17.30 T9 逐品科判：quotes re-located; 品次/科数/边界 assertions ---
+    t9p_cases = probes["t9_pin"]["cases"]
+    if not t9p_cases:
+        fail("§17.30 t9_pin has no cases")
+    for case in t9p_cases:
+        for q in case["quotes"]:
+            if norm(q["text"]) not in probe_src[q["src"]]:
+                fail(f"§17.30 quote missing from {q['src']}: {q['text'][:24]}")
+            if q["text"] not in md:
+                fail(f"§17.30 quote not printed in article: {q['text'][:24]}")
+    t9p_block = grab("t9_pin")
+    t9p_rows = sum(1 for ln in t9p_block.splitlines()
+                   if ln.startswith("| ") and not ln.startswith("|---"))
+    if t9p_rows != sum(len(c["rows"]) for c in t9p_cases) + len(t9p_cases):
+        fail("§17.30 tables != probes JSON rows")
+    for case in t9p_cases:
+        if "世主妙嚴品" not in case["pin"] or "世間淨眼品" not in case["pin"]:
+            fail("§17.30 case must name both 八十〈世主妙嚴品〉 and 六十〈世間淨眼品〉")
+        if "品1" not in case["pin"]:
+            fail("§17.30 case must state 品1 on both sides")
+        row_by_item = {item: (a, b) for item, a, b in case["rows"]}
+        if not row_by_item.get("品级科数", ("", ""))[0].startswith("10"):
+            fail("§17.30 澄观 品级科数 must be 10")
+        if "无品级定数" not in row_by_item.get("品级科数", ("", ""))[1]:
+            fail("§17.30 法藏 must be recorded as 无品级定数")
+        for want in ("一〈世間淨眼品〉", "即今〈世主品〉", "〈盧舍那品〉"):
+            if want not in case["quotes"][0]["text"]:
+                fail(f"§17.30 品次自述缺 {want}")
+        for want in ("一總顯已聞", "十「如此世界」下結通無盡"):
+            if want not in t9p_block:
+                fail(f"§17.30 澄观十分缺 {want}")
+        for want in ("五分", "十分", "不可互推", "科判异同不得写成文本异同"):
+            if want not in t9p_block:
+                fail(f"§17.30 block 缺关键判语：{want}")
+    if "17.30" not in (t9.get("refs") or ""):
+        fail("ontology T9 refs do not cite §17.30")
+    if "### 17.30 T9 科判逐品" not in md:
+        fail("§17.30 heading missing")
+    if "### 17.29 未竟" not in md:
+        fail("§17.29 未竟 heading missing (must stay last)")
+    ok(f"§17.30 T9 逐品科判: {len(t9p_cases)} 品 / "
+       f"{sum(len(c['quotes']) for c in t9p_cases)} quotes re-located / "
+       f"品次 1↔1 self-stated / 澄观 10 vs 法藏 無定數")
+
+
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
     if not imp_path.exists():

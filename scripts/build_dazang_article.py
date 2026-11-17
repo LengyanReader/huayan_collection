@@ -483,8 +483,7 @@ def table_edges(ont):
     return "\n".join(out)
 
 
-def table_t9(probes):
-    p = probes["t9"]
+def table_t9(p):
     out = [f"共 {len(p['cases'])} 品，逐品对照；引文逐条在底本中做过子串校验。"]
     for case in p["cases"]:
         out.append("")
@@ -1973,7 +1972,8 @@ def main():
         "operators": table_operators(ontology),
         "audit": table_audit(ontology),
         "edge_types": table_edges(ontology),
-        "t9": table_t9(probes),
+        "t9": table_t9(probes["t9"]),
+        "t9_pin": table_t9(probes["t9_pin"]),
         "d5": table_d5(probes),
         "p1": table_p1(probes),
         "t6": table_t6(implicit),
