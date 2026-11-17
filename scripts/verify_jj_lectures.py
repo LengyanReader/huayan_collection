@@ -8,7 +8,7 @@
 七道校验：
   A  结构：立册存在且可解析，必备顶层键齐备
   B  实测对账：**重跑** jj_ocr_audit 之实测函数，逐集与 YAML 数字比对
-            （**不信任** .tmp_jj_audit.json——临时产物不得成为事实来源）
+            （**不信任** .tmp/jj_audit.json——临时产物不得成为事实来源）
   C  出处可点：src 文件存在、video_id 非空 11 位、url 含该 id（编务总则七）
   D  校定状态诚实：calibration 非「待校定」时，**必须**带 calibration_evidence
             且证据文件存在——防无凭据摘除「待校」

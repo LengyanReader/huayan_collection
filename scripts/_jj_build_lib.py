@@ -18,7 +18,7 @@ for _s in (sys.stdout, sys.stderr):
     except (AttributeError, ValueError):
         pass
 
-SRC = ".tmp_jj_audit.json"
+SRC = ".tmp/jj_audit.json"
 OUT = "data/research/jj_huayan_lectures.yaml"
 
 HEADER = """# 《九九華嚴》華嚴經弘法講座（2026）· OCR 重建稿 —— 立册与质量实测

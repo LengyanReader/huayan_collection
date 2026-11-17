@@ -2017,6 +2017,162 @@ def main() -> int:
             fail(f"rendered artifact contains {bad}")
     ok("no undefined/NaN/None artifacts")
 
+    # --- §17.33 T4 true conflation: hashes, partition, splice, table rows ---
+    t4c_path = ROOT / "data" / "research" / "t4_conflation_true.json"
+    if not t4c_path.exists():
+        fail("t4_conflation_true.json missing")
+    t4c = json.loads(t4c_path.read_text(encoding="utf-8"))
+    for key, meta in t4c["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"T4 conflation source hash changed: {key}")
+    t4c_block = grab("t4conflation")
+    st = t4c["stats"]
+    if st["pins664"] != 24 or st["pins663"] != 19 or st["juans664"] != 8:
+        fail(f"T4 conflation counts {st['pins664']}/{st['pins663']}/{st['juans664']} != 24/19/8")
+    if st["by_src_counts"] != {"曇無讖": 18, "真諦": 4, "崛多": 2}:
+        fail(f"T4 by_src_counts {st['by_src_counts']} != 18/4/2")
+    if st["cov_median"]["曇無讖"] < 0.75:
+        fail("T4 讖品 median coverage < 0.75")
+    if st["cov_max_zhendi"] > 0.05:
+        fail("T4 真諦品 max coverage > 0.05")
+    sp = t4c["splice_split_pin2"]
+    if not (sp.get("ok") and sp["pre_cov"] > 0.85 and sp["post_cov"] < 0.05):
+        fail("T4 pin2 splice split missing or wrong")
+    if len(t4c["splice_marks"]) < 4:
+        fail("T4 splice marks < 4")
+    for frag in ("### 17.33 T4 真拼合", "品级多源合成", "同旨重译",
+                 "题下标注与文本实况出现张力"):
+        if frag not in md:
+            fail(f"§17.33 key sentence missing: {frag}")
+    n_rows = sum(1 for ln in t4c_block.splitlines()
+                 if re.match(r"\| \d+ \| .*\| \d\.\d{3} \| ", ln))
+    if n_rows != 24:
+        fail(f"§17.33 pin table rows {n_rows} != 24")
+    for j in t4c["juan_bases"]:
+        if j["byline"][:14] not in t4c_block:
+            fail(f"§17.33 juan byline missing: juan{j['juan']}")
+    ok(f"§17.33 T4 true conflation: 24 pins / 8 juans, partition "
+       f"18/4/2, 讖 median {st['cov_median']['曇無讖']:.3f}, 真諦 max "
+       f"{st['cov_max_zhendi']:.3f}, splice pre {sp['pre_cov']:.3f}/post {sp['post_cov']:.3f}")
+
+    # --- §17.34 T7 paraphrase: hashes, cluster stats, exhibits re-sliced ---
+    t7p_path = ROOT / "data" / "research" / "t7_paraphrase.json"
+    if not t7p_path.exists():
+        fail("t7_paraphrase.json missing")
+    t7p = json.loads(t7p_path.read_text(encoding="utf-8"))
+    for key, meta in t7p["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"T7 paraphrase source hash changed: {key}")
+    t7_block = grab("t7para")
+    for pid, want in (("A", 0.99), ("B", 0.97)):
+        stp = t7p["pairs"][pid]["stats"]
+        if stp["cluster_share"] < want:
+            fail(f"T7 {pid} cluster_share {stp['cluster_share']} < {want}")
+    if "### 17.34 T7" not in md:
+        fail("§17.34 heading missing")
+    exs = t7p.get("exhibits", [])
+    if len(exs) != 5:
+        fail(f"T7 exhibits {len(exs)} != 5")
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from build_implicit_quotes import Doc as VDoc  # noqa: E402
+    _vdocs: dict = {}
+
+    def _vdoc(name: str, rel: str) -> VDoc:
+        if name not in _vdocs:
+            _vdocs[name] = VDoc(name, ROOT / rel)
+        return _vdocs[name]
+
+    _t7_files = {"T1735": "cbeta/T35n1735.xml", "T279": "cbeta/T10n0279.xml",
+                 "T1733": "cbeta/T35n1733.xml", "T278": "cbeta/T09n0278.xml"}
+    for ex in exs:
+        pid = ex["key"].split(":")[0]
+        com_name, sutra_name = {"A": ("T1735", "T279"),
+                                "B": ("T1733", "T278")}[pid]
+        com = _vdoc(com_name, "data/references/" + _t7_files[com_name])
+        sutra = _vdoc(sutra_name, "data/references/" + _t7_files[sutra_name])
+        a, b = ex["c_anchor"]
+        i = com.norm.find(a)
+        if i < 0:
+            fail(f"T7 exhibit {ex['key']} com anchor not found")
+        else:
+            if com.lb_at(com.raw_index(i)) != ex["com_quote"]["lb"]:
+                fail(f"T7 exhibit {ex['key']} com lb mismatch")
+            if ex["com_quote"]["text"][:20] not in t7_block:
+                fail(f"T7 exhibit {ex['key']} com quote not printed")
+        for (sa, sb), q in zip(ex["s_quotes"], ex["sutra_quotes"]):
+            j = sutra.norm.find(sa)
+            if j < 0:
+                fail(f"T7 exhibit {ex['key']} sutra anchor not found")
+            elif sutra.lb_at(sutra.raw_index(j)) != q["lb"]:
+                fail(f"T7 exhibit {ex['key']} sutra lb mismatch")
+            if q["text"][:20] not in t7_block:
+                fail(f"T7 exhibit {ex['key']} sutra quote not printed")
+        if len(ex["terms"]) < 2:
+            fail(f"T7 exhibit {ex['key']} terms < 2")
+        if "〔本文判断〕" not in ex["analysis"]:
+            fail(f"T7 exhibit {ex['key']} judgment marker missing")
+    ok(f"§17.34 T7 paraphrase: clusters "
+       f"{t7p['pairs']['A']['stats']['cluster_share']:.1%}/"
+       f"{t7p['pairs']['B']['stats']['cluster_share']:.1%}, "
+       f"{len(exs)} exhibits re-sliced + lb re-verified")
+
+    # --- §17.35 Tanjur qualification: 8 works, dkar chag hash, table rows ---
+    tq_path = ROOT / "data" / "research" / "tanjur_qual.json"
+    if not tq_path.exists():
+        fail("tanjur_qual.json missing")
+    tq = json.loads(tq_path.read_text(encoding="utf-8"))
+    dkm = tq["meta"]["dkarchag"]
+    if hashlib.sha256((ROOT / dkm["path"]).read_bytes()).hexdigest() != dkm["sha256"]:
+        fail("Tanjur qual dkar chag hash changed")
+    tq_block = grab("tanjurqual")
+    if len(tq["works"]) != 8:
+        fail(f"Tanjur qual works {len(tq['works'])} != 8")
+    for w in tq["works"]:
+        if str(w["D"]) not in tq_block:
+            fail(f"Tanjur qual D{w['D']} missing in block")
+        if w["genre"] not in tq_block:
+            fail(f"Tanjur qual genre missing: D{w['D']}")
+        if w["han_correspond"][:8] not in tq_block:
+            fail(f"Tanjur qual han_correspond missing: D{w['D']}")
+    if "内容层仍空" not in tq_block and "内容层仍空" not in md:
+        fail("§17.35 content-layer disclaimer missing")
+    nq_rows = sum(1 for ln in tq_block.splitlines()
+                  if re.match(r"\| \d{4} \|", ln))
+    if nq_rows != 8:
+        fail(f"§17.35 qual table rows {nq_rows} != 8")
+    ok("§17.35 Tanjur qual: 8 works / dkar chag hash ok / T1522+T297 correspondences")
+
+    # --- §17.36 Qingliang zhuan: hashes, 6 exhibits re-sliced ---
+    ql_path = ROOT / "data" / "research" / "qingliang_probe.json"
+    if not ql_path.exists():
+        fail("qingliang_probe.json missing")
+    ql = json.loads(ql_path.read_text(encoding="utf-8"))
+    for key, meta in ql["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"Qingliang source hash changed: {key}")
+    ql_block = grab("qingliang")
+    if len(ql["exhibits"]) != 6:
+        fail(f"Qingliang exhibits {len(ql['exhibits'])} != 6")
+    _ql_files = {"T2098": "cbeta/T51n2098.xml", "T2099": "cbeta/T51n2099.xml",
+                 "T2100": "cbeta/T51n2100.xml"}
+    for ex in ql["exhibits"]:
+        d = _vdoc(ex["doc"], "data/references/" + _ql_files[ex["doc"]])
+        i = d.norm.find(ex["text"].replace("。", "")[:12])
+        if i < 0:
+            fail(f"Qingliang exhibit text not in source: {ex['key']}")
+        elif d.lb_at(d.raw_index(i)) != ex["lb"]:
+            fail(f"Qingliang exhibit lb mismatch: {ex['key']}")
+        if ex["text"][:20] not in ql_block:
+            fail(f"Qingliang exhibit not printed: {ex['key']}")
+        if "〔本文判断〕" not in ex["analysis"]:
+            fail(f"Qingliang exhibit judgment marker missing: {ex['key']}")
+    kinds = [ex["kind"] for ex in ql["exhibits"]]
+    if kinds.count("R4") != 4 or kinds.count("R3") != 2:
+        fail(f"Qingliang kinds {kinds} != 4×R4 + 2×R3")
+    if "音乐化半边" not in ql_block:
+        fail("§17.36 music-half disclaimer missing")
+    ok("§17.36 Qingliang: 6 exhibits (4×R4 + 2×R3) re-sliced + lb re-verified")
+
     print("=" * 40)
     print("ALL Dazang article checks passed")
     return 0

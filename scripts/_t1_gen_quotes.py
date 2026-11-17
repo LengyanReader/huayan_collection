@@ -10,7 +10,7 @@ PowerShell / cmd 会按 locale（cp1252）重编码 stdout，中文与繁体逐�
 故此处**由 Python 自己写文件**（显式 UTF-8 + newline）。
 
 用法：python scripts/_t1_gen_quotes.py [输出路径]
-     默认 .tmp_t1_quotes.frag
+     默认 .tmp/t1_quotes.frag
 """
 import io
 import os
@@ -58,7 +58,7 @@ SPEC = [
 
 
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else ".tmp_t1_quotes.frag"
+    path = sys.argv[1] if len(sys.argv) > 1 else ".tmp/t1_quotes.frag"
     buf = []
     for bid, sec, c, l, a, b in SPEC:
         q = Q.cut(c, l, a, b)

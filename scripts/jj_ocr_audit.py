@@ -269,9 +269,9 @@ def main():
 
     if "--json" in sys.argv:
         out = {"episodes": rows, "cross_source": xs, "totals": T}
-        io.open(".tmp_jj_audit.json", "w", encoding="utf-8", newline="\n").write(
+        io.open(".tmp/jj_audit.json", "w", encoding="utf-8", newline="\n").write(
             json.dumps(out, ensure_ascii=False, indent=1))
-        print("\n已写 .tmp_jj_audit.json（供立册生成器消费，避免手填）")
+        print("\n已写 .tmp/jj_audit.json（供立册生成器消费，避免手填）")
     return 0
 
 

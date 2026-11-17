@@ -91,3 +91,8 @@ web/demo/_vis/
 .tmp_*.xml
 .tmp_*.png
 /_probe_*.json
+
+# 〔根目录清理 2026-11-17〕临时目录归并：根级 .tmp_* 全部并入 /.tmp/；缓存目录不入库
+/.tmp/
+.pytest_cache/
+.ruff_cache/

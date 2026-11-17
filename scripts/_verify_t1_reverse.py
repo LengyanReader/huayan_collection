@@ -19,7 +19,7 @@ for _s in (sys.stdout, sys.stderr):
         pass
 
 LIB = "data/research/t1_bikan_evidence.yaml"
-TMP = ".tmp_t1_mut.yaml"
+TMP = ".tmp/t1_mut.yaml"
 
 # (名, 锚点, 替换, 应捕获此变异之门禁)
 # 〔L109·自纠〕初版要求「两道门禁皆须失败」，然二者**职责不同**：

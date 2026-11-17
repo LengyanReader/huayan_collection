@@ -1,0 +1,378 @@
+{
+  "meta": {
+    "date": "2026-11-18",
+    "title": "T4 真拼合实例：《合部金光明經》品级多源合成",
+    "method": "A 正文层＝卷头/品题译者 byline（CBETA 结构化元素；无 byline 品继承当前卷卷头基准，卷头重置）＋序自述；B 校本层＝随文注 splice 标记（传统自身的拼合标记，非隋正文）；C 计量层＝逐品 10-gram 重合率（对曇無讖本 T16n0663，argmax 落点）。三层分标，不互证混用。壽量品按校本注 splice 点切分前后段分计。",
+    "n": 10,
+    "sources": {
+      "t663": {
+        "path": "data/references/cbeta/T16n0663.xml",
+        "sha256": "a51b2ad9dc208e2fd81ecaa04cc44090d07f61e316c1b627e0865f047bc674ac",
+        "bytes": 423291
+      },
+      "t664": {
+        "path": "data/references/cbeta/T16n0664.xml",
+        "sha256": "622bea72159601897947176d9fd7d7349a7a85e78154004a8e7b06ecae9d8793",
+        "bytes": 821646
+      }
+    }
+  },
+  "juan_bases": [
+    {
+      "juan": 1,
+      "base": "曇無讖",
+      "byline": "隋沙門釋寶貴合北涼三藏曇無讖譯"
+    },
+    {
+      "juan": 2,
+      "base": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯"
+    },
+    {
+      "juan": 3,
+      "base": "真諦",
+      "byline": "隋大興善寺沙門釋寶貴合梁三藏真諦譯"
+    },
+    {
+      "juan": 4,
+      "base": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯"
+    },
+    {
+      "juan": 5,
+      "base": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯"
+    },
+    {
+      "juan": 6,
+      "base": "崛多",
+      "byline": "隋大興善寺沙門釋寶貴合隋闍那崛多譯"
+    },
+    {
+      "juan": 7,
+      "base": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼三藏曇無讖譯"
+    },
+    {
+      "juan": 8,
+      "base": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯"
+    }
+  ],
+  "preface_quote": {
+    "ok": true,
+    "lb": "0359b20",
+    "text": "而《金光明》見有三本：初在涼世有曇無讖譯，為四卷，止十八品；其次，周世闍那崛多譯，為五卷，成二十品；後逮梁世，真諦三藏於建康譯〈三身分別〉、〈業障滅〉、〈陀羅尼最淨地〉、〈依空滿願〉等四品，足前出沒為二十二品。其序果云：「曇無讖法師稱《金光明經》篇品闕漏。」每尋文揣義，謂此說有徵而讐校無指，永懷寤寐。寶貴每歎：「此經祕奧，後分云何竟無囑累？舊雖三譯，本疑未周，長想梵文，願言逢遇。」大隋馭㝢，新經即來，帝勅所司，相續飜譯。至開皇十七年，法席小間，因勸請北天竺揵陀羅國三藏法師——此云志德——重尋後本，果有〈囑累品〉，復得〈銀主陀羅尼品〉。故知法典源散，派別條分，承注末流，理難全具。賴三藏法師慧性冲明，學業優遠，內外經論多所博通，在京大興善寺即為飜譯，并前先出合二十四品，寫為八卷。學士成都"
+  },
+  "splice_split_pin2": {
+    "ok": true,
+    "anchor_lb": "0360c21",
+    "pre_chars": 789,
+    "post_chars": 2280,
+    "pre_cov": 0.9026,
+    "post_cov": 0.0
+  },
+  "splice_marks": [
+    {
+      "lb": "0360c17",
+      "text": "自下五行丹本無"
+    },
+    {
+      "lb": "0360c21",
+      "text": "下崛多譯補"
+    },
+    {
+      "lb": "0402a22",
+      "text": "自下五行丹本無"
+    },
+    {
+      "lb": "0402a22",
+      "text": "下崛多譯補"
+    }
+  ],
+  "pins": [
+    {
+      "no": 1,
+      "title": "序品",
+      "src": "曇無讖",
+      "byline": "隋沙門釋寶貴合北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 472,
+      "cov": 0.8985,
+      "argmax_pin": "1 序品",
+      "argmax_cov": 0.8985
+    },
+    {
+      "no": 2,
+      "title": "壽量品",
+      "src": "曇無讖",
+      "byline": "隋沙門釋寶貴合北涼三藏曇無讖譯",
+      "own_byline": false,
+      "chars": 3069,
+      "cov": 0.2301,
+      "argmax_pin": "2 壽量品",
+      "argmax_cov": 0.2297
+    },
+    {
+      "no": 3,
+      "title": "三身分別品",
+      "src": "真諦",
+      "byline": "梁三藏真諦譯",
+      "own_byline": true,
+      "chars": 3826,
+      "cov": 0.0013,
+      "argmax_pin": "18 讚佛品",
+      "argmax_cov": 0.0013
+    },
+    {
+      "no": 4,
+      "title": "懺悔品",
+      "src": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯",
+      "own_byline": false,
+      "chars": 2773,
+      "cov": 0.8759,
+      "argmax_pin": "3 懺悔品",
+      "argmax_cov": 0.8759
+    },
+    {
+      "no": 5,
+      "title": "業障滅品",
+      "src": "真諦",
+      "byline": "梁三藏真諦譯",
+      "own_byline": true,
+      "chars": 6299,
+      "cov": 0.0081,
+      "argmax_pin": "8 功德天品",
+      "argmax_cov": 0.003
+    },
+    {
+      "no": 6,
+      "title": "陀羅尼最淨地品",
+      "src": "真諦",
+      "byline": "隋大興善寺沙門釋寶貴合梁三藏真諦譯",
+      "own_byline": false,
+      "chars": 6882,
+      "cov": 0.0022,
+      "argmax_pin": "18 讚佛品",
+      "argmax_cov": 0.0017
+    },
+    {
+      "no": 7,
+      "title": "讚歎品",
+      "src": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯",
+      "own_byline": false,
+      "chars": 1031,
+      "cov": 0.8474,
+      "argmax_pin": "4 讚歎品",
+      "argmax_cov": 0.8474
+    },
+    {
+      "no": 8,
+      "title": "空品",
+      "src": "曇無讖",
+      "byline": "北涼天竺三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 797,
+      "cov": 0.7614,
+      "argmax_pin": "5 空品",
+      "argmax_cov": 0.7614
+    },
+    {
+      "no": 9,
+      "title": "依空滿願品",
+      "src": "真諦",
+      "byline": "梁三藏真諦譯",
+      "own_byline": true,
+      "chars": 2545,
+      "cov": 0.0071,
+      "argmax_pin": "18 讚佛品",
+      "argmax_cov": 0.0047
+    },
+    {
+      "no": 10,
+      "title": "四天王品",
+      "src": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯",
+      "own_byline": false,
+      "chars": 5456,
+      "cov": 0.8695,
+      "argmax_pin": "6 四天王品",
+      "argmax_cov": 0.8693
+    },
+    {
+      "no": 11,
+      "title": "銀主陀羅尼品",
+      "src": "崛多",
+      "byline": "隋大興善寺沙門釋寶貴合隋闍那崛多譯",
+      "own_byline": false,
+      "chars": 690,
+      "cov": 0.0059,
+      "argmax_pin": "6 四天王品",
+      "argmax_cov": 0.0059
+    },
+    {
+      "no": 12,
+      "title": "大辯天品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 1873,
+      "cov": 0.0832,
+      "argmax_pin": "7 大辯天神品",
+      "argmax_cov": 0.0724
+    },
+    {
+      "no": 13,
+      "title": "功德天品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 1106,
+      "cov": 0.7129,
+      "argmax_pin": "8 功德天品",
+      "argmax_cov": 0.7129
+    },
+    {
+      "no": 14,
+      "title": "堅牢地神品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 937,
+      "cov": 0.8696,
+      "argmax_pin": "9 堅牢地神品",
+      "argmax_cov": 0.8696
+    },
+    {
+      "no": 15,
+      "title": "散脂鬼神品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 581,
+      "cov": 0.8671,
+      "argmax_pin": "10 散脂鬼神品",
+      "argmax_cov": 0.8671
+    },
+    {
+      "no": 16,
+      "title": "正論品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 1456,
+      "cov": 0.8037,
+      "argmax_pin": "11 正論品",
+      "argmax_cov": 0.803
+    },
+    {
+      "no": 17,
+      "title": "善集品",
+      "src": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼三藏曇無讖譯",
+      "own_byline": false,
+      "chars": 1040,
+      "cov": 0.8613,
+      "argmax_pin": "12 善集品",
+      "argmax_cov": 0.8613
+    },
+    {
+      "no": 18,
+      "title": "鬼神品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 1737,
+      "cov": 0.7784,
+      "argmax_pin": "13 鬼神品",
+      "argmax_cov": 0.7784
+    },
+    {
+      "no": 19,
+      "title": "授記品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 823,
+      "cov": 0.8821,
+      "argmax_pin": "14 授記品",
+      "argmax_cov": 0.8821
+    },
+    {
+      "no": 20,
+      "title": "除病品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 1011,
+      "cov": 0.8483,
+      "argmax_pin": "15 除病品",
+      "argmax_cov": 0.8483
+    },
+    {
+      "no": 21,
+      "title": "流水長者子品",
+      "src": "曇無讖",
+      "byline": "北涼曇無讖譯",
+      "own_byline": true,
+      "chars": 1957,
+      "cov": 0.9374,
+      "argmax_pin": "16 流水長者子品",
+      "argmax_cov": 0.9369
+    },
+    {
+      "no": 22,
+      "title": "捨身品",
+      "src": "曇無讖",
+      "byline": "隋大興善寺沙門釋寶貴合北涼天竺三藏曇無讖譯",
+      "own_byline": false,
+      "chars": 3579,
+      "cov": 0.8891,
+      "argmax_pin": "17 捨身品",
+      "argmax_cov": 0.8891
+    },
+    {
+      "no": 23,
+      "title": "讚佛品",
+      "src": "曇無讖",
+      "byline": "北涼三藏曇無讖譯",
+      "own_byline": true,
+      "chars": 1128,
+      "cov": 0.8677,
+      "argmax_pin": "18 讚佛品",
+      "argmax_cov": 0.8677
+    },
+    {
+      "no": 24,
+      "title": "付囑品",
+      "src": "崛多",
+      "byline": "隋闍那崛多譯",
+      "own_byline": true,
+      "chars": 1303,
+      "cov": 0.2434,
+      "argmax_pin": "19 囑累品",
+      "argmax_cov": 0.2434
+    }
+  ],
+  "stats": {
+    "pins664": 24,
+    "pins663": 19,
+    "juans664": 8,
+    "by_src_counts": {
+      "曇無讖": 18,
+      "真諦": 4,
+      "崛多": 2
+    },
+    "cov_median": {
+      "曇無讖": 0.8671,
+      "真諦": 0.0071,
+      "崛多": 0.2434
+    },
+    "cov_min_di": 0.0832,
+    "cov_max_zhendi": 0.0081,
+    "splice_marks": 4,
+    "preface_lb": "0359b20"
+  }
+}

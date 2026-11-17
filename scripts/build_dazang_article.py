@@ -37,6 +37,10 @@ R5LY = ROOT / "data" / "research" / "r5_lingyan.json"
 R4LT = ROOT / "data" / "research" / "r4_liturgical.json"
 WAIZI = ROOT / "data" / "research" / "waizi_matrix.json"
 SUBST = ROOT / "data" / "research" / "substantive_correspondence.json"
+T4CONF = ROOT / "data" / "research" / "t4_conflation_true.json"
+T7PARA = ROOT / "data" / "research" / "t7_paraphrase.json"
+TANJURQ = ROOT / "data" / "research" / "tanjur_qual.json"
+QINGLIANG = ROOT / "data" / "research" / "qingliang_probe.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1330,6 +1334,184 @@ def render_substantive(sc):
     return "\n".join(out)
 
 
+def render_t4_conflation(ct):
+    """§17.33 — T4 真拼合：《合部金光明經》品级多源合成（三层分标）。"""
+    st = ct["stats"]
+    pins = ct["pins"]
+    sp = ct.get("splice_split_pin2", {})
+    out = []
+    out.append("证据三层，分标不混用：**A 正文层**（卷头/品题译者 byline＋序自述，"
+               "合成时的一手 provenance）、**B 校本层**（随文注 splice 标记，传统自身"
+               "的拼合标记，非隋正文）、**C 计量层**（逐品 10-gram 重合率，对曇無讖本"
+               " T16n0663，argmax 落点）。源文件 sha256 记在 "
+               "`data/research/t4_conflation_true.json`。")
+    out.append("")
+    out.append("**A 层·八卷基准**（卷头 byline，无品级 byline 者继承当前卷基准）：")
+    out.append("")
+    out.append("| 卷 | 卷头 byline（照录） | 基准 |")
+    out.append("|---:|---|---|")
+    for j in ct["juan_bases"]:
+        out.append(f"| {j['juan']} | {esc(j['byline'])} | {esc(j['base'])} |")
+    out.append("")
+    out.append(f"**A 层·品级 provenance＋C 层计量**（{st['pins664']} 品对 "
+               f"{st['pins663']} 品；`own`＝本品自带 byline）：")
+    out.append("")
+    out.append("| 品 | 品题 | 来源（byline） | own | 10-gram 重合率 | 讹本落点（argmax） |")
+    out.append("|---:|---|---|:-:|---:|---|")
+    for r in pins:
+        am = r["argmax_pin"] or "—"
+        out.append(f"| {r['no']} | {esc(r['title'])} | {esc(r['src'])} | "
+                   f"{'✓' if r['own_byline'] else ''} | {r['cov']:.3f} | {esc(am)} |")
+    out.append("")
+    pre = ct.get("preface_quote", {})
+    if pre.get("ok"):
+        out.append(f"**序自述**（`{pre['lb']}`，品数算术可验：崛多二十品＋真諦四品＝二十四品）：")
+        out.append("")
+        out.append(f"> {esc(pre['text'])}…")
+        out.append("")
+    marks = ct.get("splice_marks", [])
+    out.append("**B 层·随文注 splice 标记**（所承校本之注，非隋正文）：")
+    out.append("")
+    for m in marks:
+        out.append(f"- `{m['lb']}`　{esc(m['text'])}")
+    out.append("")
+    if sp.get("ok"):
+        out.append(f"**壽量品按 splice 点切分**（注 `{sp['anchor_lb']}`「下崛多譯補」处）："
+                   f"前段 {sp['pre_chars']} 字重合率 **{sp['pre_cov']:.3f}**（讖本正文），"
+                   f"后段 {sp['post_chars']} 字重合率 **{sp['post_cov']:.3f}**（崛多補文）"
+                   "——品内 splice 由计量层坐实。")
+        out.append("")
+    out.append(
+        f"**判断**：T4 从「实例为零」到「实例一」。寶貴合本是**品级多源合成**——"
+        f"比《合論》的逐段嵌入粗、比「两经各取半部」的卷级拼合细，是 T4 的第三种粒度。"
+        f"计量层与正文层吻合：讖品 {st['by_src_counts'].get('曇無讖', 0)} 品重合率中位 "
+        f"{st['cov_median'].get('曇無讖', 0):.3f}；真諦四品最高 "
+        f"{st['cov_max_zhendi']:.3f}≈0（全新文本）；崛多二品——銀主陀羅尼品 "
+        f"{[r['cov'] for r in pins if r['no'] == 11][0]:.3f}（全新），"
+        f"付囑品 {[r['cov'] for r in pins if r['no'] == 24][0]:.3f}"
+        "（对讖本〈囑累品〉**同旨重译**：非新增、亦非承袭）。"
+        "两段拼合（卷级）在本库仍为零。")
+    out.append("")
+    dp12 = next((r for r in pins if r["no"] == 12), None)
+    if dp12:
+        out.append(
+            f"**发现·品12 大辯天品**：题下 byline 标「北涼三藏曇無讖譯」，"
+            f"但重合率仅 {dp12['cov']:.3f}（讖本〈大辯天神品〉全品仅 184 字，"
+            f"合本品12 有 {dp12['chars']} 字）——文本主体非出讖本。"
+            "题下标注与文本实况出现张力：byline 标的是**品名所承之本**，"
+            "不保证**文本全同**。这正是三层分标、不互证混用的必要性所在。"
+            "〔本文判断〕")
+        out.append("")
+    return "\n".join(out)
+
+
+def render_t7_para(tp):
+    """§17.34 — T7「以己语重述」：稀有实词骨架对齐（语义比对）。"""
+    out = []
+    out.append("§17.15 量了引用率、锚点链与明标节略，留下的问题是：注疏**不用引文**时，"
+               "是否仍在追随经文？本节以「稀有实词骨架对齐」回答：")
+    out.append("")
+    out.append(f"- **己语块**：注疏侧去掉一切 ≥12 字字面引文后的极大无命中段"
+               f"（≥{tp['meta']['params']['WIN_MIN']} 字）；")
+    out.append(f"- **稀有实词**：经文全程 ≤{tp['meta']['params']['RARE_MAX']} 次且注疏全程"
+               f" ≤{tp['meta']['params']['RARE_MAX']} 次的二字组（波罗蜜／阿僧祇一类高频"
+               "术语被自动排除）；")
+    out.append(f"- **成簇**：己语块内滑窗（{tp['meta']['params']['SUB_LEN']} 字）含"
+               f" ≥{tp['meta']['params']['SUB_MIN']} 个不同稀有词，且这些词落在经文中。")
+    out.append("")
+    out.append("| 对 | 注释 | 底本 | 己语块 | 己语字数 | 成簇块 | 成簇率 |")
+    out.append("|---|---|---|---:|---:|---:|---:|")
+    for pid in ("A", "B"):
+        p = tp["pairs"][pid]
+        st = p["stats"]
+        out.append(f"| {pid} | {esc({'A': '澄觀《華嚴經疏》T1735', 'B': '法藏《探玄記》T1733'}[pid])} "
+                   f"| {esc({'A': 'T279 八十', 'B': 'T278 六十'}[pid])} "
+                   f"| {st['own_windows']} | {st['own_chars']:,} | {st['clusters']} "
+                   f"| {st['cluster_share']:.1%} |")
+    out.append("")
+    out.append("注疏不用引文的长段，九成以上仍以经文的稀有词汇为骨架行文——"
+               "「以己语重述」不是偶发，是注经的常态运行方式。")
+    out.append("")
+    out.append("定稿样例（首批探针头部候选的人工判读；双侧引文一律锚点重切，"
+               "lb 可回源；判读标〔本文判断〕；`data/research/t7_paraphrase.json`）：")
+    out.append("")
+    for ex in tp.get("exhibits", []):
+        out.append(f"**{esc(ex['title'])}**〔{esc(ex['kind'])}〕`{ex['com_quote']['lb']}`")
+        out.append("")
+        out.append(f"- 注：{esc(ex['com_quote']['text'])}")
+        for q in ex["sutra_quotes"]:
+            out.append(f"- 经：`{q['lb']}`　{esc(q['text'])}")
+        out.append(f"- 共现低频词：{esc('、'.join(ex['terms']))}")
+        out.append("")
+        out.append(f"　{esc(ex['analysis'])}")
+        out.append("")
+    out.append(
+        "**限度**：稀有词共现是追随的**必要征兆**，非充分证据——同经术语自带共现"
+        "（本探针已用双侧 ≤3 次的稀疏阈值压低，但排除不尽）；「同义改写／框架重整／"
+        "书证式重述」的分型是人工判读〔本文判断〕，样本五条，不外推为全量分布。"
+        "宋注（C 对）是嵌经体，不在此列（§17.15）。")
+    return "\n".join(out)
+
+
+def render_tanjur_qual(tq):
+    """§17.35 — 《丹珠尔》华严命中逐条定性（题录层加深，内容层仍空）。"""
+    out = []
+    out.append("§6.6 收窄后的八条命中，逐条定性如下。**体裁**由题名直译得出，标"
+               "〔本文判读〕；**造者/译场**照录 dkar chag 条目原文（藏文入 "
+               f"`data/research/tanjur_qual.json`，不转译作断言）；**汉译对应**有据者判 B，"
+               "查无者判负向。释论全文未读——内容层仍空，如实标注。")
+    out.append("")
+    out.append("| D | 题（直译） | 卷 | 体裁 | 造者（dkar chag 照录） | 汉译对应 |")
+    out.append("|---|---|---|---|---|---|")
+    for w in tq["works"]:
+        out.append(f"| {w['D']} | {esc(w['title_zh'])} | {w['vol']} | "
+                   f"{esc(w['genre'])} | {esc(w['author_dkarchag'])} | "
+                   f"{esc(w['han_correspond'])} |")
+    out.append("")
+    out.append(
+        "**判断**：八条命中构成两条释论线——**十地线**（3993 世親经释→3998 日成再释→"
+        "3999 释迦慧序品别释，逐层收窄的注解层级）与**行愿线**（4011 赞→4012 摄义→"
+        "4013/4014 广释→4015 释，赞与释并行）。汉译侧只有两端各一条有对应：世親经释＝"
+        "T1522《十地經論》、行愿赞＝T297——藏译链的中段（再释、别释、摄义、广释）"
+        "在汉译中**无对应**，负向如实。这是「汉藏注疏传统分流」的题录层证据；"
+        "内容层的判读（术语、义理、与汉疏的关系）待释论全文对读。")
+    return "\n".join(out)
+
+
+def render_qingliang(ql):
+    """§17.36 — 清凉传三书：R4 仪式半边＋R3 文学半边的一手取证。"""
+    out = []
+    out.append("R3（文学）、R4（仪式）此前未取一手。清凉传三书（古 T2098 慧祥／廣 T2099 "
+               "延一／續 T2100 張商英）是清凉山——即《華嚴》〈菩薩住處品〉之清凉山——"
+               "接受史的核心载体，本节一次补两格。术语计数只作量级参考；引文六条锚点"
+               f"切片，lb 可回源（`data/research/qingliang_probe.json`）。")
+    out.append("")
+    out.append("| 书 | 卷数 | 華嚴 | 齋 | 誦 | 詩 | 賦 |")
+    out.append("|---|---:|---:|---:|---:|---:|---:|")
+    names = {"T2098": "古清涼傳", "T2099": "廣清涼傳", "T2100": "續清涼傳"}
+    for name in ("T2098", "T2099", "T2100"):
+        s = ql["stats"][name]["terms"]
+        out.append(f"| {names[name]}（{name}） | — | {s['華嚴']} | {s['齋']} | "
+                   f"{s['誦']} | {s['詩']} | {s['賦']} |")
+    out.append("")
+    for ex in ql["exhibits"]:
+        out.append(f"**{esc(ex['title'])}**〔{ex['kind']}〕`{ex['lb']}`")
+        out.append("")
+        out.append(f"> {esc(ex['text'])}")
+        out.append("")
+        out.append(f"　{esc(ex['analysis'])}")
+        out.append("")
+    out.append(
+        "**判断**：R4 仪式半边落格——国家层面（显庆设斋供一萬菩薩）、制度层面"
+        "（每歲首大備齋會）、行仪层面（轉誦三七行道）、课诵层面（尼誦華嚴涅槃二部）"
+        "四层各有一手；R4 的**音乐化半边**（唱腔、梵呗谱）三书无载，仍缺，R4 记 `partial`。"
+        "R3 文学半边落格——卷末自附的张商英《清涼山賦》并诗与僧人诗颂，是文人＋僧人"
+        "两线文学接受的一手自证，R3 记 `partial`（样本限于本传卷末所附）。"
+        "清凉山线同时互证 §17.20（王室：五臺山造塔建碑設齋）——山、经、王三者"
+        "在仪式上的绑定，是《華嚴》接受史里 S 面与 R 面的交点。")
+    return "\n".join(out)
+
+
 def render_r4(lt):
     """R4 仪式·课诵：四十二字觀門（掛 §17.18 影响面内，沿 R2 接层先例）。"""
     vs = lt["quotes"]
@@ -1953,6 +2135,10 @@ def main():
     r4lt = json.loads(R4LT.read_text(encoding="utf-8")) if R4LT.exists() else None
     waizi = json.loads(WAIZI.read_text(encoding="utf-8")) if WAIZI.exists() else None
     subst = json.loads(SUBST.read_text(encoding="utf-8")) if SUBST.exists() else None
+    t4conf = json.loads(T4CONF.read_text(encoding="utf-8")) if T4CONF.exists() else None
+    t7para = json.loads(T7PARA.read_text(encoding="utf-8")) if T7PARA.exists() else None
+    tanjurq = json.loads(TANJURQ.read_text(encoding="utf-8")) if TANJURQ.exists() else None
+    qingliang = json.loads(QINGLIANG.read_text(encoding="utf-8")) if QINGLIANG.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -1992,6 +2178,10 @@ def main():
         "r4": render_r4(r4lt) if r4lt else "",
         "waizi": render_waizi(waizi) if waizi else "",
         "substantive": render_substantive(subst) if subst else "",
+        "t4conflation": render_t4_conflation(t4conf) if t4conf else "",
+        "t7para": render_t7_para(t7para) if t7para else "",
+        "tanjurqual": render_tanjur_qual(tanjurq) if tanjurq else "",
+        "qingliang": render_qingliang(qingliang) if qingliang else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",

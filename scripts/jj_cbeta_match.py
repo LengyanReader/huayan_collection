@@ -7,8 +7,8 @@
 供校订稿 §四「CBETA 回源」直接消费——**杜绝手抄转写漂移**。
 
 用法：
-  python scripts/jj_cbeta_match.py --ep 15 --json .tmp_ep15_cbeta.json
-  python scripts/jj_cbeta_match.py --md docs/hy_refs/sub_extract/delivery/ep16.md --json .tmp_ep16_cbeta.json
+  python scripts/jj_cbeta_match.py --ep 15 --json .tmp/ep15_cbeta.json
+  python scripts/jj_cbeta_match.py --md docs/hy_refs/sub_extract/delivery/ep16.md --json .tmp/ep16_cbeta.json
   python scripts/jj_cbeta_match.py --ep 15 --text      # 人读摘要
 
 判定口径（保守·宁缺毋造）：

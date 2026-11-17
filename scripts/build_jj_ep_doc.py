@@ -17,14 +17,14 @@
   docs/hy_refs/sub_extract/<vid>.info.json     视频元数据（可选）
   data/research/jj_huayan_lectures.yaml        实测台账（可选）
   data/research/jj_huayan_collation.yaml       编辑元数据（可选）
-  .tmp_epNN_cbeta.json                          CBETA 精确命中（jj_cbeta_match.py 产出）
+  .tmp/epNN_cbeta.json                          CBETA 精确命中（jj_cbeta_match.py 产出）
 
 输出：
   docs/经学文献/海云讲记_九九华严/episodes/epNN.md
 
 用法：
   python scripts/build_jj_ep_doc.py --ep 16 --pins 7,8,9
-  python scripts/build_jj_ep_doc.py --ep 15 --out .tmp_ep15_doc.md --pins 3,4,5,6
+  python scripts/build_jj_ep_doc.py --ep 15 --out .tmp/ep15_doc.md --pins 3,4,5,6
 """
 import argparse
 import importlib.util
@@ -230,7 +230,7 @@ def main():
     month_s = ("2026 年 %s 月" % month.group(1)) if month else "2026 年〔待核〕"
 
     cbeta = None
-    cj = a.cbeta_json or (".tmp_ep%02d_cbeta.json" % ep)
+    cj = a.cbeta_json or (".tmp/ep%02d_cbeta.json" % ep)
     if os.path.exists(cj):
         cbeta = json.load(io.open(cj, encoding="utf-8"))
     hits = (cbeta or {}).get("hits") or []
@@ -463,7 +463,7 @@ def main():
                 break
         total_groups = sum(len(group_hits(pin_hits.get(n, []))) for n in pins)
         if total_groups > a.max_slices:
-            L.append("> 切片上限 %d 组；余 %d 组见 `.tmp_ep%02d_cbeta.json`。\n\n"
+            L.append("> 切片上限 %d 组；余 %d 组见 `.tmp/ep%02d_cbeta.json`。\n\n"
                      % (a.max_slices, total_groups - a.max_slices, ep))
         L.append("> 切片只覆盖命中段前后 40 字；**加粗＝逐字命中段**，前后为底本上下文，"
                  "未证讲者已诵；品×卷边界由底本 `cb:mulu` 自动钳制。访问日期 2026-11-16。\n\n")
@@ -482,7 +482,7 @@ def main():
                 L.append("- `[OCR %s]` @%d · %d 字 · **%s**%s\n"
                          % (h["t"], h["pos"], h["len"], h["text"], also))
             if len(hs) > 60:
-                L.append("- … 余 %d 段（见 `.tmp_ep%02d_cbeta.json`）\n"
+                L.append("- … 余 %d 段（见 `.tmp/ep%02d_cbeta.json`）\n"
                          % (len(hs) - 60, ep))
             L.append("\n")
         L.append("> 底本 `T10n0279` 去 note/app/标签、压平空白后逐字比对。"

@@ -227,7 +227,7 @@ conclusions:
 
 
 def main():
-    frag = io.open(".tmp_t1_quotes.frag", encoding="utf-8").read()
+    frag = io.open(".tmp/t1_quotes.frag", encoding="utf-8").read()
     # 〔L109·坑〕frag 经 shell 重定向会成 CRLF，故须先归一行尾，
     # 否则按 "\n  - id: " 切分必然失配（且失配表现为「judgments 缺 C01」，
     # 误导为 judgments 不全——实为切分器之错）。

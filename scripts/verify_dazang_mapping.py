@@ -37,7 +37,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CBETA_LOCAL = ROOT / "data" / "references" / "cbeta"
 RESEARCH_DIR = ROOT / "data" / "research"
 DRAFT_DIR = ROOT / "docs" / "草稿"
-CACHE = ROOT / ".tmp_dazang"
+CACHE = ROOT / ".tmp" / "dazang"
 ACCESS_DATE = dt.date.today().isoformat()
 
 UA = {"User-Agent": "huayan-collection-verify/0.2 (digital humanities; contact: local)"}

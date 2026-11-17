@@ -1115,3 +1115,28 @@ P0 收尾：T300/T301↔Toh 187、T298↔藏 32、T281 三章、T309 归属；�
 - **吞吐**：当前 ≈2 字符/分钟（并行 IDE/会话争用），已非 5s/token 正常档；继续整段生成只会重复截断，停止模型调用。
 - **状态**：ch18 **4/6**；无 repair/subunit 进程。
 - **next（CPU 空闲后）**：seg5 术语表约束/条目切分；seg6 按 7 shad 切 2–3 段并逐段译；或 M5。
+
+### 三语线·ch18 4/6（模型加载失败）（2026-11-14）
+- **seg6 尝试**：按 7 shad 切 3 段（84/76/79）；part1 zh 启动时**模型加载失败**：`OSError: The paging file is too small for this operation to complete (os error 1455)`。
+- **内存实测**：物理 30.8GB（空闲 3.5GB）、虚拟 56.7GB（空闲 10.9GB）、pagefile 26.5GB（已用 1.0GB）——9B bf16 + 其他应用提交压力，当前无法安全加载。
+- **状态**：ch18 **4/6**（seg1–4 done；seg5 needs_review；seg6 needs_retry 留空）；无 repair/subunit 进程。
+- **门禁**：G2.2/G2.3/G2.5 PASS；G2.1 FAIL=1（18 4/6＋19–31）；G2.4 manual。
+- **next（不在此内存状态下重试）**：关闭重负载应用/提升 pagefile/重启后，seg6 3 段 zh+en；seg5 术语/条目级方案或 M5。
+
+### 三语线·ch18 5/6（2026-11-14）
+- **seg6 完成**：7 shad 切 3 段（84/76/79），zh/en 各 3 子段齐备后 compose；内容：十千珍珠瓔珞/十千妙衣、十千天女/大梵围绕、万道光芒/世尊座席。
+- **ch18 5/6**：seg1–4、seg6 done；seg5 仍 needs_review（供物术语压缩/误译，不发布）。
+- **吞吐恢复**：低内存加载（low_cpu_mem_usage）成功；本次各子段均在 1800s 内完成；无 repair/subunit 进程。
+- **门禁**：G2.2/G2.3/G2.5 PASS；G2.1 FAIL=1（18 5/6＋19–31）；G2.4 manual；`verify_demo` 绿。
+- **next**：seg5 术语/条目级方案或 M5；然后 ch19–31。
+### L.504 大藏对应 v4.11·T4 真拼合＋T7 语义比对＋丹珠尔定性＋清凉传 R3/R4＋根目录安置（2026-11-18）
+
+- [x] §17.33：T16n0663/0664 入库（manifest 146 档）；`build_t4_conflation_true.py` 三层分标（A byline 18/4/2、B splice 注、C 10-gram argmax 计量）；品2 splice 切分 0.903/0.000；品12 标注-文本张力发现
+- [x] §17.34：`build_t7_paraphrase.py` 稀有实词骨架对齐（成簇 99.4%/97.7%）；5 exhibit 定稿（锚点重切＋〔本文判断〕）
+- [x] §17.35：`build_tanjur_qual.py` 八命中定性（dkar chag 造者照录；T1522/T297 两端对应；内容层仍空如实）
+- [x] §17.36：T51n2098/99/2100 入库；`build_qingliang_probe.py` 六条引文（R4×4＋R3×2；音乐化半边仍缺）
+- [x] ontology：T4/T7→done、R3→partial——21.5/34＝63.2%（T 面 85%、R 面 60%）
+- [x] §17.29 未竟改写；版本行 v4.11；§17.4 读法一/二条同步
+- [x] 根目录安置：1,251 scratch→`_archive/session_scratch/`；`.tmp_*`→`.tmp/`；10 脚本路径同步；82 跟踪杂项按「_archive 不入库」约定解除；gitignore 补三行
+- [x] 门禁：verify 36 组全 PASS＋负向测试（篡改→FAIL→再生→PASS）；build 198 files；外部见证 146 档哈希全验
+- [ ] 下一步：T9 逐参异文人工判读；丹珠尔释论全文（内容层）；S2 余金石萃編；T9 科判 33 品续；R4 音乐化半边；T6 化用
