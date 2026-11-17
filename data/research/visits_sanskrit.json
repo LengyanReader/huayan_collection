@@ -1,10 +1,10 @@
 {
   "meta": {
     "operator": "T9",
-    "title": "入法界品字面有异三十五组·梵本同指判（§17.24 十八组／§17.27 十七组）",
+    "title": "入法界品五十参·梵本同指判（§17.24 十八组／§17.27 十七组／§17.28 十五组）",
     "date": "2026-11-17",
-    "method": "取 §17.22 中字面有异之三十五组，在梵本《入法界品》中定位其指授句（asti/gaccha kulaputra … X nāma Y prativasati … upasaṃkramya），以角色＋处所＋次序三锚对位；判据为译名与梵名之对音／义译关系，只判同指与否，不判音写精当。三十五组并入同一指授事件序自检，相等处必为空缺位（参29 正趣、参45 善知眾藝）。",
-    "scope": "§17.24 十八组（§17.22 中恰有一对同名者：4…50）＋§17.27 十七组（三本全异：2…39），共 35 组；三本同字 15 组未逐条核梵，唯参 45 已核为梵本空缺。",
+    "method": "取 §17.22 的五十参，先在梵本《入法界品》定位其指授句（asti/gaccha kulaputra … X nāma Y prativasati … upasaṃkramya），以角色＋处所＋次序三锚对位；判据为译名与梵名之对音／义译关系，只判同指与否，不判音写精当。五十行并入同一指授事件序自检，相等处必为空缺位（参29 正趣、参45 善知眾藝）。全篇此类事件 50 次，末次为弥勒场景、无教师名，故善知识对位至第 49 事件。",
+    "scope": "五十行全部核梵：§17.24 十八组（恰有一对同名：4…50）＋§17.27 十七组（三本全异：2…39）＋§17.28 十五组（三本同字：3…51；十三组直核、参 45 空缺、参 51 一句两名）。",
     "source": {
       "path": "data/references/sanskrit/gandavyuha_vaidya.txt",
       "bytes": 1233056,
@@ -398,41 +398,40 @@
     ],
     "diff_ord_first": 1,
     "diff_ord_last": 38,
+    "same_cases": 13,
+    "same_same": 13,
+    "same_pending": 0,
+    "same_by_verdict": {
+      "同指·义译": 11,
+      "同指·对音": 2
+    },
+    "same_flagged": [
+      7
+    ],
+    "same_ord_first": 2,
+    "same_ord_last": 47,
     "rows": 50,
     "rows_diff": 35,
-    "rows_judged": 36,
+    "rows_judged": 50,
     "rows_same": 15,
     "rows_same_gap": 1,
-    "rows_same_unprobed": 14,
+    "rows_same_probed": 13,
+    "rows_same_byproduct": 1,
+    "rows_same_unprobed": 0,
     "same_gap_nos": [
       45
     ],
-    "same_unprobed_nos": [
-      3,
-      5,
-      6,
-      7,
-      19,
-      20,
-      30,
-      42,
-      43,
-      44,
-      47,
-      48,
-      49,
-      51
-    ],
+    "same_unprobed_nos": [],
     "ord_all_first": 1,
-    "ord_all_last": 48,
-    "ord_all_equal_pairs": 1
+    "ord_all_last": 49,
+    "ord_all_equal_pairs": 2
   },
   "boundaries": [
     "这是「同指」判，不是译名优劣判：同指只表两本指同一位善知识，不评谁译得准。",
     "单一写本系统：所用为 Vaidya 校本之电子转写，非多本会校；故「Vaidya 本无对应」只能记作该本无，不得推为梵本原无。",
-    "对位靠角色＋处所＋次序三锚；次序单调性由脚本自检——本节十八组的梵本指令序不降（3–48 段，唯一相等处即正趣空缺位，沿用观自在之序），§17.27 十七组并入同一指令序（1–48 段）仍不降，两处相等处恰为两个空缺位（参 29、参 45）。处所名逐条附于表内可复检。",
+    "对位靠角色＋处所＋次序三锚；次序单调性由脚本自检——§17.24 十八组的梵本指令序不降（3–48 段，唯一相等处即正趣空缺位，沿用观自在之序），§17.27 十七组、§17.28 十三组与参45 空缺、参51 并入同一指令序（1–49 段）仍不降，两处相等处恰为两个空缺位（参 29、参 45）。处所名逐条附于表内可复检。",
     "音写是否合于梵音、义译是否尽义，皆不在本节判内；只记两本名与该梵名有无可判的关系。",
-    "本节只判十八组；三本全异十七组见 §17.27。五十行中已核梵者 36 行（字面有异 35 组 ＋ 参 45 空缺），未核者 14 组（三本同字，参号 3、5、6、7、19、20、30、42、43、44、47、48、49、51）；未核者不得读作已核——字面同可能各依不同梵名而偶合。"
+    "五十行至此全部核梵：字面有异 35 组（§17.24＋§17.27）＋三本同字 15 组（§17.28：十三组直核、参 45 空缺、参 51 一句两名），已核 50/50。「同指」不等于「同本」：字面同者亦已逐名核梵，非以字面偶合充数；same 组未核者 0。"
   ],
   "all_diff": {
     "meta": {
@@ -791,9 +790,317 @@
     "boundaries": [
       "这是「同指」判，不是译名优劣判：三本字面全异，只判其是否同出一梵名，不评谁译得准。",
       "单一写本系统：所用为 Vaidya 校本之电子转写；参 18 的梵名 anala 与八十／六十之名不合，只能记作该本如此，不得推为梵本原无别名。",
-      "次序与 §17.24 同用一套指令序（1–48 段）；本节十七组的序（1–38）严格递增，无相等。附表「參45」非本节十七组之一，乃三本同字而梵本空缺者，一并核出。",
+      "次序与 §17.24、§17.28 同用一套指令序（1–49 段）；本节十七组的序（1–38）严格递增，无相等。附表「參45」非本节十七组之一，乃三本同字而梵本空缺者，一并核出。",
       "音写是否合于梵音、义译是否尽义，皆不在本节判内。",
-      "三本同字 15 组未逐条核梵：其中参 45 已核为「Vaidya 本无指授句」，余 14 组（参号 3、5、6、7、19、20、30、42、43、44、47、48、49、51）字面虽同，仍可能各依不同梵名而偶合，不得读作已核。"
+      "三本同字十五组见 §17.28（十三组直核、参 45 空缺、参 51 一句两名）；至此五十行全部核梵，本节与 §17.24 的字面有异者不再是「判而未核」的悬案。"
+    ]
+  },
+  "same": {
+    "meta": {
+      "operator": "T9",
+      "title": "入法界品三本同字十五组·梵本逐名核（续 §17.27）",
+      "date": "2026-11-17",
+      "method": "取 §17.22 中三本字面全同的十五组，逐组在梵本《入法界品》定位指授句，核其梵名与汉名之对音／义译关系；十三组直核，参45 为「Vaidya 本无指授句」，参51 为一句两名（śrīsaṃbhava＋śrīmatī）。",
+      "scope": "十五组（3…51）：十三组直核＋参 45 空缺＋参 51 一句两名。"
+    },
+    "cases": [
+      {
+        "no": 3,
+        "n80": "海雲",
+        "n60": "海雲",
+        "n40": "海雲",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "sāgaramegha",
+        "skt_role": "bhikṣuḥ（比丘）",
+        "skt_place": "sāgaramukhaḥ dikpratyuddeśaḥ（海門·海岸）",
+        "verdict": "同指·义译",
+        "basis": "sāgara＝海、megha＝雲；三本皆作「海雲」，全为义译",
+        "flag": null,
+        "probe": "sāgaramegho nāma bhikṣuḥ",
+        "pos": 114971,
+        "ord": 2,
+        "gv": "gv 50"
+      },
+      {
+        "no": 5,
+        "n80": "彌伽",
+        "n60": "彌伽",
+        "n40": "彌伽",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "megha",
+        "skt_role": "dramiḍaḥ（達羅毗荼人）",
+        "skt_place": "vajrapuraṃ nāma dramiḍapaṭṭanam（金剛城·商埠）",
+        "verdict": "同指·对音",
+        "basis": "megha 音写作「彌伽」；三本同字同音写，非义译",
+        "flag": null,
+        "probe": "megho nāma dramiḍaḥ",
+        "pos": 135019,
+        "ord": 4,
+        "gv": "gv 58"
+      },
+      {
+        "no": 6,
+        "n80": "解脫",
+        "n60": "解脫",
+        "n40": "解脫",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "muktaka",
+        "skt_role": "śreṣṭhī（長者）",
+        "skt_place": "vanavāsī nāma janapadaḥ（住林聚落）",
+        "verdict": "同指·义译",
+        "basis": "mukta＝解脫；三本皆作「解脫」，取义不取音",
+        "flag": null,
+        "probe": "muktako nāma śreṣṭhī",
+        "pos": 143982,
+        "ord": 5,
+        "gv": "gv 61"
+      },
+      {
+        "no": 7,
+        "n80": "海幢",
+        "n60": "海幢",
+        "n40": "海幢",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "sāradhvaja",
+        "skt_role": "bhikṣuḥ（比丘）",
+        "skt_place": "milaspharaṇaṃ nāma jambūdvīpaśīrṣam（摩利聚落·閻浮頂）",
+        "verdict": "同指·义译",
+        "basis": "dhvaja＝幢，与三本「海幢」之「幢」合；sāra＝堅／實，非海，「海」字无对",
+        "flag": "「海」字无对（sāra＝堅／實），疑所据本作 sāgara-dhvaja〔本文判断〕",
+        "probe": "sāradhvajo nāma bhikṣuḥ",
+        "pos": 158240,
+        "ord": 6,
+        "gv": "gv 67"
+      },
+      {
+        "no": 19,
+        "n80": "大光",
+        "n60": "大光",
+        "n40": "大光",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "mahāprabha",
+        "skt_role": "rājā（王）",
+        "skt_place": "suprabhaṃ nāma nagaram（妙光城）",
+        "verdict": "同指·义译",
+        "basis": "mahā＝大、prabhā＝光；三本皆作「大光」",
+        "flag": null,
+        "probe": "mahāprabho nāma rājā",
+        "pos": 307738,
+        "ord": 18,
+        "gv": "gv 123"
+      },
+      {
+        "no": 20,
+        "n80": "不動",
+        "n60": "不動",
+        "n40": "不動",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "acalā",
+        "skt_role": "upāsikā（優婆夷）",
+        "skt_place": "sthirā nāma rājadhānī（安住王都）",
+        "verdict": "同指·义译",
+        "basis": "a-calā＝不動；三本皆作「不動」，取义",
+        "flag": null,
+        "probe": "acalā nāmopāsikā",
+        "pos": 327043,
+        "ord": 19,
+        "gv": "gv 130"
+      },
+      {
+        "no": 30,
+        "n80": "大天",
+        "n60": "大天",
+        "n40": "大天",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "mahādeva",
+        "skt_role": "devaḥ（天神）",
+        "skt_place": "dvāravatī nāma nagarī（多羅婆底城）",
+        "verdict": "同指·义译",
+        "basis": "mahā＝大、deva＝天；三本皆作「大天」",
+        "flag": null,
+        "probe": "mahādevo devaḥ",
+        "pos": 416675,
+        "ord": 29,
+        "gv": "gv 166"
+      },
+      {
+        "no": 42,
+        "n80": "摩耶",
+        "n60": "摩耶",
+        "n40": "摩耶",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "māyā",
+        "skt_role": "devī（佛母）",
+        "skt_place": "kapilavastu（迦毘羅城）；bhagavato vairocanasya pādamūle（佛足下）",
+        "verdict": "同指·对音",
+        "basis": "māyā 音写作「摩耶」；三本同字同音写",
+        "flag": null,
+        "probe": "māyā nāma devī",
+        "pos": 802109,
+        "ord": 41,
+        "gv": "gv 334"
+      },
+      {
+        "no": 43,
+        "n80": "天主光",
+        "n60": "天主光",
+        "n40": "天主光",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "surendrābhā",
+        "skt_role": "devakanyā（天女）",
+        "skt_place": "tridaśendrabhavana（三十三天）",
+        "verdict": "同指·义译",
+        "basis": "surendra＝天主（釋天）、ābhā＝光；三本皆作「天主光」",
+        "flag": null,
+        "probe": "surendrābhā nāma devakanyā",
+        "pos": 839841,
+        "ord": 42,
+        "gv": "gv 349"
+      },
+      {
+        "no": 44,
+        "n80": "遍友",
+        "n60": "遍友",
+        "n40": "遍友",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "viśvāmitra",
+        "skt_role": "dārakācāryaḥ（童子師）",
+        "skt_place": "kapilavastu mahānagara（迦毘羅城）",
+        "verdict": "同指·义译",
+        "basis": "viśva＝遍、mitra＝友；三本皆作「遍友」",
+        "flag": null,
+        "probe": "viśvāmitro nāma dārakācāryaḥ",
+        "pos": 843289,
+        "ord": 43,
+        "gv": "gv 351"
+      },
+      {
+        "no": 47,
+        "n80": "堅固解脫",
+        "n60": "堅固解脫",
+        "n40": "堅固解脫",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "muktāsāra",
+        "skt_role": "hairaṇyakaḥ（金師）",
+        "skt_place": "bharukacchaṃ nāma nagaram（婆羅吸摩城）",
+        "verdict": "同指·义译",
+        "basis": "mukta＝解脫、sāra＝堅固；梵名词序倒，三本皆作「堅固解脫」",
+        "flag": null,
+        "probe": "muktāsāro nāma hairaṇyakaḥ",
+        "pos": 851986,
+        "ord": 45,
+        "gv": "gv 354"
+      },
+      {
+        "no": 48,
+        "n80": "妙月",
+        "n60": "妙月",
+        "n40": "妙月",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "sucandra",
+        "skt_role": "gṛhapatiḥ（居士）",
+        "skt_place": "bharukacchaṃ nāma nagaram（婆羅吸摩城）",
+        "verdict": "同指·义译",
+        "basis": "su＝妙／善、candra＝月；三本皆作「妙月」",
+        "flag": null,
+        "probe": "sucandro nāma gṛhapatiḥ",
+        "pos": 853281,
+        "ord": 46,
+        "gv": "gv 354"
+      },
+      {
+        "no": 49,
+        "n80": "無勝軍",
+        "n60": "無勝軍",
+        "n40": "無勝軍",
+        "rel80_60": "全同",
+        "rel80_40": "全同",
+        "skt": "ajitasena",
+        "skt_role": "gṛhapatiḥ（居士）",
+        "skt_place": "rorukaṃ nāma nagaram（路羅城）",
+        "verdict": "同指·义译",
+        "basis": "a-jita＝無勝、senā＝軍；三本皆作「無勝軍」",
+        "flag": null,
+        "probe": "ajitaseno nāma gṛhapatiḥ",
+        "pos": 854459,
+        "ord": 47,
+        "gv": "gv 354"
+      }
+    ],
+    "gaps": [
+      {
+        "no": 45,
+        "n80": "善知眾藝",
+        "n60": "善知眾藝",
+        "n40": "善知眾藝",
+        "between": [
+          "viśvāmitro nāma dārakācāryaḥ",
+          "bhadrottamā nāmopāsikā"
+        ],
+        "basis": "viśvāmitra（遍友）之後直入 bhadrottamā（賢勝），其間無第三位指授句；Vaidya 本无「善知眾藝」一位（śilpa 只见于教法文句，非独立善知识）",
+        "pos": 843289,
+        "ord": 43,
+        "gv": "gv 351",
+        "gv_to": "gv 354",
+        "gap_chars": 6950
+      }
+    ],
+    "byproducts": [
+      {
+        "no": 51,
+        "n80": "德生·有德",
+        "n60": "德生·有德",
+        "n40": "德生·有德",
+        "skt": "śrīsaṃbhava＋śrīmatī",
+        "skt_role": "dārakaḥ＋dārikā（童子＋童女）",
+        "skt_place": "sumanāmukhaṃ nāma nagaram（名聞國）",
+        "probe": "śrīsaṃbhavo nāma dārakaḥ",
+        "also": "śrīmatiśca nāma dārikā",
+        "pos": 856964,
+        "ord": 49,
+        "gv": "gv 354",
+        "basis": "梵本一句并举两名：「śrīsaṃbhavo nāma dārakaḥ prativasati, śrīmatiśca nāma dārikā」；汉本作「德生·有德」并列一处，是梵本如此，非编者合并"
+      }
+    ],
+    "stats": {
+      "cases": 13,
+      "same": 13,
+      "pending": 0,
+      "by_verdict": {
+        "同指·义译": 11,
+        "同指·对音": 2
+      },
+      "flagged": [
+        7
+      ],
+      "ord_first": 2,
+      "ord_last": 47,
+      "gap_nos": [
+        45
+      ],
+      "byproduct_nos": [
+        51
+      ]
+    },
+    "boundaries": [
+      "这是「同指」判：三本字面相同，仍须核其梵名，不得以字面偶合径判已核。",
+      "单一写本系统：所用为 Vaidya 校本之电子转写；参 45 只记「该本无指授句」，不得推为梵本原无。",
+      "十三组直核＋参 45 空缺＋参 51 一句两名，合十五组；本节组的序（2–47）严格递增，无相等。",
+      "参 7「海幢」与 sāradhvaja：dhvaja＝幢合，sāra＝堅／實非海，「海」字无对，判同指·义译而附记此疑；不擅改汉名。",
+      "参 51 梵本一句两名（śrīsaṃbhava 童子＋śrīmatī 童女），汉本合为「德生·有德」一位；只记梵本如此，不作分合判。",
+      "音写是否合于梵音、义译是否尽义，皆不在本节判内。"
     ]
   }
 }

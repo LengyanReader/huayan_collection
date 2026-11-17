@@ -1851,6 +1851,83 @@ def render_visits_skt_diff(vs):
     return "\n".join(out)
 
 
+def render_visits_skt_same(vs):
+    """§17.28 — 梵本对照（三）：三本同字十五组的逐名核。"""
+    sm = vs["same"]
+    cs = sm["cases"]
+    gaps = sm["gaps"]
+    byp = sm["byproducts"]
+    st = sm["stats"]
+    bv = st["by_verdict"]
+    out = []
+    out.append("§17.24 判「恰有一对同名」十八组、§17.27 判三本全异十七组；"
+               "本节核最后十五组：三本字面全同者。字面同不等于梵名同——三本可能"
+               "各依同一梵名而偶合，也可能只是同取一义——故仍逐组放回梵本指授句，"
+               "以**角色＋处所＋次序**三锚复核。")
+    out.append("")
+    out.append(f'本组梵本指令序 {st["ord_first"]}–{st["ord_last"]} 段，严格递增，无相等；'
+               f'与 §17.24、§17.27 并入同一「指授事件」序'
+               f'（{vs["stats"]["ord_all_first"]}–{vs["stats"]["ord_all_last"]} 段）仍不降，'
+               f'两处相等恰为两个空缺位（参 29、参 45）。')
+    out.append("")
+    out.append("| 参 | 八十／六十／四十 | 梵名（IAST） | 角色·处所 | gv | 判 |")
+    out.append("|---|---|---|---|:-:|---|")
+    for c in cs:
+        tri = f'{esc(c["n80"])}／{esc(c["n60"])}／{esc(c["n40"])}'
+        out.append(f'| {c["no"]} | {tri} | `{esc(c["skt"])}` | '
+                   f'{esc(c["skt_role"])}·{esc(c["skt_place"])} | {c["gv"]} | {esc(c["verdict"])} |')
+    out.append("")
+    out.append(f'> 十三组：同指 **{st["same"]}**、待核 **{st["pending"]}**。'
+               f'同指中义译 {bv.get("同指·义译", 0)}、对音 {bv.get("同指·对音", 0)}。'
+               "另参 45 为梵本空缺、参 51 为一句两名，皆不在表内，附见下。"
+               "表由 `data/research/visits_sanskrit.json` 生成，手改无效。")
+    out.append("")
+    out.append("①**十三组三本同字，梵名亦可判**：义译十一组、对音二组。"
+               "义译者如参 3 海雲对 `sāgaramegha`（sāgara＝海、megha＝雲）、"
+               "参 6 解脫对 `muktaka`（mukta＝解脫）、参 43 天主光对 `surendrābhā`"
+               "（surendra＝天主、ābhā＝光）、参 47 堅固解脫对 `muktāsāra`"
+               "（mukta＝解脫、sāra＝堅固；梵名词序正与汉名相反）；"
+               "对音者如参 5 彌伽对 `megha`、参 42 摩耶对 `māyā`，"
+               "三本皆取音写而不译义。三本字面之所以全同，正因同出一梵名——"
+               "此层现在有 witness，不再只是「字面偶合」的假设。")
+    out.append("")
+    out.append("②**参 7「海幢」有一字无对**：梵本作 `sāradhvaja`，`dhvaja`＝幢，"
+               "与三本「幢」字合；而 `sāra`＝堅／實，非「海」。"
+               "故判同指·义译，同时记「『海』字无对」，疑所据本作 `sāgara-dhvaja`〔本文判断〕。"
+               "三本汉名既同，不擅改；只标此疑待后核。")
+    out.append("")
+    g = gaps[0] if gaps else None
+    if g:
+        out.append(f'③**参 {g["no"]} 「善知眾藝」是梵本空缺**：三本字面全同，'
+                   "但梵本 `viśvāmitra`（遍友）指授之后直入 `bhadrottamā`（賢勝），"
+                   "其间无第三位指授句（"
+                   f'{g["gv"]}→{g["gv_to"].replace("gv ", "")}，'
+                   f'{g["gap_chars"]:,} 字符无 `gaccha kulaputra`）；'
+                   "Vaidya 本 `śilpa` 只见于教法文句，非独立善知识。"
+                   "故此位只记「Vaidya 本无」，与参 29 正趣同例，不得推为「梵本原无」。")
+        out.append("")
+    b = byp[0] if byp else None
+    if b:
+        out.append(f'④**参 {b["no"]} 「德生·有德」是梵本一句两名**：'
+                   "`sumanāmukha` 城下，梵本作 `śrīsaṃbhavaḥ … dārakaḥ, "
+                   "śrīmatī ca nāma dārikā`——一位教师、一句两名（德生童子＋有德童女），"
+                   "汉本合为「德生·有德」一位。本节只记梵本如此，"
+                   "以 byproduct 计为已核，不作分合判；参界问题另待。")
+        out.append("")
+    out.append(f'**全表**：五十行至此全部核梵（{vs["stats"]["rows_judged"]}/50）——'
+               "字面有异 35 组（§17.24 十八＋§17.27 十七）＋三本同字 15 组"
+               f'（本节十三直核＋参 {gaps[0]["no"] if gaps else "—"} 空缺＋'
+               f'参 {byp[0]["no"] if byp else "—"} 一句两名）。'
+               "「同指」只表指同一位善知识，不等于「同本」；"
+               "各本所据梵本是否同一写本系统，仍非本节所能判。")
+    out.append("")
+    out.append("**限度**：")
+    out.append("")
+    for bd in sm["boundaries"]:
+        out.append(f"- {esc(bd)}")
+    return "\n".join(out)
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -1919,6 +1996,8 @@ def main():
         "visits_skt": render_visits_skt(visits_skt) if visits_skt else "",
         "visits_skt_diff": (render_visits_skt_diff(visits_skt)
                             if visits_skt and visits_skt.get("all_diff") else ""),
+        "visits_skt_same": (render_visits_skt_same(visits_skt)
+                            if visits_skt and visits_skt.get("same") else ""),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),

@@ -198,6 +198,63 @@ ALL_DIFF = [
          basis="sarva-jagat＝一切眾生、rakṣā＝守護／救護、praṇidhāna＝願、vīrya＝精進力、prabhā＝光明"),
 ]
 
+# §17.28：三本同字十五组中的十三组（参45 为梵本空缺、参51 为一句两名，另列）
+SAME_CASES = [
+    dict(no=3, probe="sāgaramegho nāma bhikṣuḥ", skt="sāgaramegha",
+         role="bhikṣuḥ（比丘）", place="sāgaramukhaḥ dikpratyuddeśaḥ（海門·海岸）",
+         verdict="同指·义译",
+         basis="sāgara＝海、megha＝雲；三本皆作「海雲」，全为义译"),
+    dict(no=5, probe="megho nāma dramiḍaḥ", skt="megha",
+         role="dramiḍaḥ（達羅毗荼人）", place="vajrapuraṃ nāma dramiḍapaṭṭanam（金剛城·商埠）",
+         verdict="同指·对音",
+         basis="megha 音写作「彌伽」；三本同字同音写，非义译"),
+    dict(no=6, probe="muktako nāma śreṣṭhī", skt="muktaka",
+         role="śreṣṭhī（長者）", place="vanavāsī nāma janapadaḥ（住林聚落）",
+         verdict="同指·义译",
+         basis="mukta＝解脫；三本皆作「解脫」，取义不取音"),
+    dict(no=7, probe="sāradhvajo nāma bhikṣuḥ", skt="sāradhvaja",
+         role="bhikṣuḥ（比丘）", place="milaspharaṇaṃ nāma jambūdvīpaśīrṣam（摩利聚落·閻浮頂）",
+         verdict="同指·义译",
+         basis="dhvaja＝幢，与三本「海幢」之「幢」合；sāra＝堅／實，非海，「海」字无对",
+         flag="「海」字无对（sāra＝堅／實），疑所据本作 sāgara-dhvaja〔本文判断〕"),
+    dict(no=19, probe="mahāprabho nāma rājā", skt="mahāprabha",
+         role="rājā（王）", place="suprabhaṃ nāma nagaram（妙光城）",
+         verdict="同指·义译",
+         basis="mahā＝大、prabhā＝光；三本皆作「大光」"),
+    dict(no=20, probe="acalā nāmopāsikā", skt="acalā",
+         role="upāsikā（優婆夷）", place="sthirā nāma rājadhānī（安住王都）",
+         verdict="同指·义译",
+         basis="a-calā＝不動；三本皆作「不動」，取义"),
+    dict(no=30, probe="mahādevo devaḥ", skt="mahādeva",
+         role="devaḥ（天神）", place="dvāravatī nāma nagarī（多羅婆底城）",
+         verdict="同指·义译",
+         basis="mahā＝大、deva＝天；三本皆作「大天」"),
+    dict(no=42, probe="māyā nāma devī", skt="māyā",
+         role="devī（佛母）", place="kapilavastu（迦毘羅城）；bhagavato vairocanasya pādamūle（佛足下）",
+         verdict="同指·对音",
+         basis="māyā 音写作「摩耶」；三本同字同音写"),
+    dict(no=43, probe="surendrābhā nāma devakanyā", skt="surendrābhā",
+         role="devakanyā（天女）", place="tridaśendrabhavana（三十三天）",
+         verdict="同指·义译",
+         basis="surendra＝天主（釋天）、ābhā＝光；三本皆作「天主光」"),
+    dict(no=44, probe="viśvāmitro nāma dārakācāryaḥ", skt="viśvāmitra",
+         role="dārakācāryaḥ（童子師）", place="kapilavastu mahānagara（迦毘羅城）",
+         verdict="同指·义译",
+         basis="viśva＝遍、mitra＝友；三本皆作「遍友」"),
+    dict(no=47, probe="muktāsāro nāma hairaṇyakaḥ", skt="muktāsāra",
+         role="hairaṇyakaḥ（金師）", place="bharukacchaṃ nāma nagaram（婆羅吸摩城）",
+         verdict="同指·义译",
+         basis="mukta＝解脫、sāra＝堅固；梵名词序倒，三本皆作「堅固解脫」"),
+    dict(no=48, probe="sucandro nāma gṛhapatiḥ", skt="sucandra",
+         role="gṛhapatiḥ（居士）", place="bharukacchaṃ nāma nagaram（婆羅吸摩城）",
+         verdict="同指·义译",
+         basis="su＝妙／善、candra＝月；三本皆作「妙月」"),
+    dict(no=49, probe="ajitaseno nāma gṛhapatiḥ", skt="ajitasena",
+         role="gṛhapatiḥ（居士）", place="rorukaṃ nāma nagaram（路羅城）",
+         verdict="同指·义译",
+         basis="a-jita＝無勝、senā＝軍；三本皆作「無勝軍」"),
+]
+
 # 附见：不在三十五组内，但同一次核梵时直接读出、值得单列的发现
 BYPRODUCTS = [
     dict(no=51, probe="śrīsaṃbhavo nāma dārakaḥ", also="śrīmatiśca nāma dārikā",
@@ -293,6 +350,14 @@ def main() -> int:
         print("   all_diff:", [c["no"] for c in ALL_DIFF])
         print("   expected:", all_diff)
         return 8
+    same_covered = sorted([c["no"] for c in SAME_CASES]
+                          + [g["no"] for g in SAME_GAPS]
+                          + [b["no"] for b in BYPRODUCTS])
+    if same_covered != all_same:
+        print("!! SAME_CASES／SAME_GAPS／BYPRODUCTS 与「三本同字」的十五组不一致")
+        print("   covered:", same_covered)
+        print("   expected:", all_same)
+        return 16
 
     def build_case(c):
         row = by_no[c["no"]]
@@ -333,6 +398,7 @@ def main() -> int:
 
     cases = [build_case(c) for c in CASES]
     diffs = [build_case(c) for c in ALL_DIFF]
+    sames = [build_case(c) for c in SAME_CASES]
 
     # 附见：一句两名的梵本 witness
     byp = []
@@ -376,10 +442,11 @@ def main() -> int:
             "gap_chars": (own - a) if own else (b2 - a),
         })
 
-    # 次序自检（全表）：三十五组＋参45 空缺 并入同一指令序，须不降；
-    # 相等对数必等于空缺案数（参29、参45 各一）
-    combined = [(c["no"], c["ord"]) for c in cases + diffs]
+    # 次序自检（全表）：三十五组＋三本同字十五组 并入同一指令序，须不降；
+    # 相等对数必等于已被前一位占据的空缺案数（参29 前有 28、参45 前有 44）
+    combined = [(c["no"], c["ord"]) for c in cases + diffs + sames]
     combined += [(g["no"], g["ord"]) for g in gaps_same]
+    combined += [(b["no"], b["ord"]) for b in byp]
     combined.sort()
     filled, prev = [], None
     for no, o in combined:
@@ -392,21 +459,24 @@ def main() -> int:
         print("!! Sanskrit ordinals decrease:", ords_all)
         return 5
     dup_all = sum(1 for a, b in zip(ords_all, ords_all[1:]) if a == b)
-    # 相等处只会落在「空缺位」，且其前一位也须在本表内；
-    # 参45 的前一位（参44 遍友）属三本同字、不在三十五组内，故另作单位断言。
-    nos_all = {c["no"] for c in cases + diffs}
+    # 相等处只会落在「空缺位」，且其前一位也须在本表内。
+    nos_all = {c["no"] for c in cases + diffs + sames} | {b["no"] for b in byp}
     gaps_expected = sum(1 for c in cases if not c["probe"]) + \
         sum(1 for g in gaps_same if (g["no"] - 1) in nos_all)
     if dup_all != gaps_expected:
         print(f"!! ordinals equal {dup_all} times but in-table gaps {gaps_expected}:", ords_all)
         return 9
     for g in gaps_same:
-        after = min((c for c in cases + diffs if c["no"] > g["no"]),
+        after = min((c for c in cases + diffs + sames if c["no"] > g["no"]),
                     key=lambda c: c["no"])
         if after["ord"] != g["ord"] + 1:
             print(f'!! same-gap 参{g["no"]} does not occupy exactly one slot: '
                   f'{g["ord"]} -> {after["ord"]} (参{after["no"]})')
             return 15
+    sords = [c["ord"] for c in sames]
+    if sords != sorted(sords) or len(set(sords)) != len(sords):
+        print("!! §17.28 ordinals not strictly increasing:", sords)
+        return 17
 
     # §17.24 内单独复检（同一套指令序，十八组自不降、一相等）
     ords = [c["ord"] for c in cases if c["ord"]]
@@ -433,7 +503,11 @@ def main() -> int:
 
     same, pend, bv = tally(cases)
     dsame, dpend, dbv = tally(diffs)
-    same_unprobed = [n for n in all_same if n not in {g["no"] for g in gaps_same}]
+    ssame, spend, sbv = tally(sames)
+    same_unprobed = [n for n in all_same
+                     if n not in {c["no"] for c in sames}
+                     and n not in {g["no"] for g in gaps_same}
+                     and n not in {b["no"] for b in byp}]
 
     stats = {
         "cases": len(cases),
@@ -450,11 +524,21 @@ def main() -> int:
         "all_diff_flagged": [c["no"] for c in diffs if c["flag"]],
         "diff_ord_first": min(dords),
         "diff_ord_last": max(dords),
+        "same_cases": len(sames),
+        "same_same": ssame,
+        "same_pending": spend,
+        "same_by_verdict": sbv,
+        "same_flagged": [c["no"] for c in sames if c["flag"]],
+        "same_ord_first": min(sords),
+        "same_ord_last": max(sords),
         "rows": len(tri),
         "rows_diff": len(one_eq) + len(all_diff),
-        "rows_judged": len(cases) + len(diffs) + len(gaps_same),
+        "rows_judged": (len(cases) + len(diffs) + len(sames)
+                        + len(gaps_same) + len(byp)),
         "rows_same": len(all_same),
         "rows_same_gap": len(gaps_same),
+        "rows_same_probed": len(sames),
+        "rows_same_byproduct": len(byp),
         "rows_same_unprobed": len(same_unprobed),
         "same_gap_nos": [g["no"] for g in gaps_same],
         "same_unprobed_nos": same_unprobed,
@@ -463,22 +547,22 @@ def main() -> int:
         "ord_all_equal_pairs": dup_all,
     }
 
-    same_nos = "、".join(str(n) for n in same_unprobed)
-
     data = {
         "meta": {
             "operator": "T9",
-            "title": "入法界品字面有异三十五组·梵本同指判（§17.24 十八组／§17.27 十七组）",
+            "title": "入法界品五十参·梵本同指判（§17.24 十八组／§17.27 十七组／§17.28 十五组）",
             "date": date.today().isoformat(),
-            "method": ("取 §17.22 中字面有异之三十五组，在梵本《入法界品》中定位其指授句"
+            "method": ("取 §17.22 的五十参，先在梵本《入法界品》定位其指授句"
                        "（asti/gaccha kulaputra … X nāma Y prativasati … upasaṃkramya），"
                        "以角色＋处所＋次序三锚对位；判据为译名与梵名之对音／义译关系，"
-                       "只判同指与否，不判音写精当。三十五组并入同一指授事件序自检，"
-                       "相等处必为空缺位（参29 正趣、参45 善知眾藝）。"),
-            "scope": (f'§17.24 十八组（§17.22 中恰有一对同名者：{one_eq[0]}…{one_eq[-1]}）'
-                      f'＋§17.27 十七组（三本全异：{all_diff[0]}…{all_diff[-1]}），'
-                      f'共 35 组；三本同字 {len(all_same)} 组未逐条核梵，'
-                      f'唯参 {gaps_same[0]["no"]} 已核为梵本空缺。'),
+                       "只判同指与否，不判音写精当。五十行并入同一指授事件序自检，"
+                       "相等处必为空缺位（参29 正趣、参45 善知眾藝）。"
+                       "全篇此类事件 50 次，末次为弥勒场景、无教师名，故善知识对位至第 49 事件。"),
+            "scope": (f'五十行全部核梵：§17.24 十八组（恰有一对同名：{one_eq[0]}…{one_eq[-1]}）'
+                      f'＋§17.27 十七组（三本全异：{all_diff[0]}…{all_diff[-1]}）'
+                      f'＋§17.28 十五组（三本同字：{all_same[0]}…{all_same[-1]}；'
+                      f'十三组直核、参 {gaps_same[0]["no"]} 空缺、'
+                      f'参 {byp[0]["no"]} 一句两名）。'),
             "source": {
                 "path": SRC_REL,
                 "bytes": SRC.stat().st_size,
@@ -494,15 +578,17 @@ def main() -> int:
         "boundaries": [
             "这是「同指」判，不是译名优劣判：同指只表两本指同一位善知识，不评谁译得准。",
             "单一写本系统：所用为 Vaidya 校本之电子转写，非多本会校；故「Vaidya 本无对应」只能记作该本无，不得推为梵本原无。",
-            (f'对位靠角色＋处所＋次序三锚；次序单调性由脚本自检——本节十八组的梵本指令序不降'
+            (f'对位靠角色＋处所＋次序三锚；次序单调性由脚本自检——§17.24 十八组的梵本指令序不降'
              f'（{stats["ord_first"]}–{stats["ord_last"]} 段，唯一相等处即正趣空缺位，沿用观自在之序），'
-             f'§17.27 十七组并入同一指令序（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）仍不降，'
+             f'§17.27 十七组、§17.28 十三组与参45 空缺、参51 并入同一指令序'
+             f'（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）仍不降，'
              f'两处相等处恰为两个空缺位（参 29、参 45）。处所名逐条附于表内可复检。'),
             "音写是否合于梵音、义译是否尽义，皆不在本节判内；只记两本名与该梵名有无可判的关系。",
-            (f'本节只判十八组；三本全异十七组见 §17.27。五十行中已核梵者 {stats["rows_judged"]} 行'
-             f'（字面有异 35 组 ＋ 参 {stats["same_gap_nos"][0]} 空缺），'
-             f'未核者 {len(same_unprobed)} 组（三本同字，参号 {same_nos}）；未核者不得读作已核——'
-             f'字面同可能各依不同梵名而偶合。'),
+            (f'五十行至此全部核梵：字面有异 35 组（§17.24＋§17.27）'
+             f'＋三本同字 15 组（§17.28：十三组直核、参 {stats["same_gap_nos"][0]} 空缺、'
+             f'参 {byp[0]["no"]} 一句两名），已核 {stats["rows_judged"]}/50。'
+             f'「同指」不等于「同本」：字面同者亦已逐名核梵，非以字面偶合充数；'
+             f'same 组未核者 {len(same_unprobed)}。'),
         ],
         "all_diff": {
             "meta": {
@@ -527,16 +613,52 @@ def main() -> int:
             "boundaries": [
                 "这是「同指」判，不是译名优劣判：三本字面全异，只判其是否同出一梵名，不评谁译得准。",
                 "单一写本系统：所用为 Vaidya 校本之电子转写；参 18 的梵名 anala 与八十／六十之名不合，只能记作该本如此，不得推为梵本原无别名。",
-                (f'次序与 §17.24 同用一套指令序（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）；'
+                (f'次序与 §17.24、§17.28 同用一套指令序（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）；'
                  f'本节十七组的序（{min(dords)}–{max(dords)}）严格递增，无相等。'
                  f'附表「參45」非本节十七组之一，乃三本同字而梵本空缺者，一并核出。'),
                 "音写是否合于梵音、义译是否尽义，皆不在本节判内。",
-                (f'三本同字 {len(all_same)} 组未逐条核梵：其中参 {gaps_same[0]["no"]} 已核为「Vaidya 本无指授句」，'
-                 f'余 {len(same_unprobed)} 组（参号 {same_nos}）字面虽同，仍可能各依不同梵名而偶合，'
-                 f'不得读作已核。'),
+                (f'三本同字十五组见 §17.28（十三组直核、参 {gaps_same[0]["no"]} 空缺、'
+                 f'参 {byp[0]["no"]} 一句两名）；至此五十行全部核梵，'
+                 f'本节与 §17.24 的字面有异者不再是「判而未核」的悬案。'),
+            ],
+        },
+        "same": {
+            "meta": {
+                "operator": "T9",
+                "title": "入法界品三本同字十五组·梵本逐名核（续 §17.27）",
+                "date": date.today().isoformat(),
+                "method": ("取 §17.22 中三本字面全同的十五组，逐组在梵本《入法界品》定位指授句，"
+                           "核其梵名与汉名之对音／义译关系；十三组直核，"
+                           "参45 为「Vaidya 本无指授句」，参51 为一句两名（śrīsaṃbhava＋śrīmatī）。"),
+                "scope": (f'十五组（{all_same[0]}…{all_same[-1]}）：'
+                          f'十三组直核＋参 {gaps_same[0]["no"]} 空缺＋参 {byp[0]["no"]} 一句两名。'),
+            },
+            "cases": sames,
+            "gaps": gaps_same,
+            "byproducts": byp,
+            "stats": {
+                "cases": len(sames),
+                "same": ssame,
+                "pending": spend,
+                "by_verdict": sbv,
+                "flagged": [c["no"] for c in sames if c["flag"]],
+                "ord_first": min(sords),
+                "ord_last": max(sords),
+                "gap_nos": [g["no"] for g in gaps_same],
+                "byproduct_nos": [b["no"] for b in byp],
+            },
+            "boundaries": [
+                "这是「同指」判：三本字面相同，仍须核其梵名，不得以字面偶合径判已核。",
+                "单一写本系统：所用为 Vaidya 校本之电子转写；参 45 只记「该本无指授句」，不得推为梵本原无。",
+                (f'十三组直核＋参 {gaps_same[0]["no"]} 空缺＋参 {byp[0]["no"]} 一句两名，合十五组；'
+                 f'本节组的序（{min(sords)}–{max(sords)}）严格递增，无相等。'),
+                "参 7「海幢」与 sāradhvaja：dhvaja＝幢合，sāra＝堅／實非海，「海」字无对，判同指·义译而附记此疑；不擅改汉名。",
+                "参 51 梵本一句两名（śrīsaṃbhava 童子＋śrīmatī 童女），汉本合为「德生·有德」一位；只记梵本如此，不作分合判。",
+                "音写是否合于梵音、义译是否尽义，皆不在本节判内。",
             ],
         },
     }
+
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(f'§17.24 cases {stats["cases"]}  same {same}  pending {pend}  ord {stats["ord_first"]}..{stats["ord_last"]}')
@@ -548,6 +670,13 @@ def main() -> int:
     for c in diffs:
         print(f'{c["no"]:>3} {c["n80"]:<8} {c["n60"]:<8} {c["n40"]:<10} | '
               f'{str(c["skt"]):<40} {str(c["gv"]):>7} | {c["verdict"]}'
+              + (f'  [{c["flag"]}]' if c["flag"] else ""))
+    print(f'§17.28 cases {len(sames)}  same {ssame}  pending {spend}  '
+          f'ord {min(sords)}..{max(sords)}  gap {stats["same_gap_nos"]}  '
+          f'byproduct {[b["no"] for b in byp]}')
+    for c in sames:
+        print(f'{c["no"]:>3} {c["n80"]:<10} {c["n60"]:<10} {c["n40"]:<12} | '
+              f'{str(c["skt"]):<14} {str(c["gv"]):>7} | {c["verdict"]}'
               + (f'  [{c["flag"]}]' if c["flag"] else ""))
     print(f'全表 ord {stats["ord_all_first"]}..{stats["ord_all_last"]}  '
           f'equal_pairs {stats["ord_all_equal_pairs"]}  judged {stats["rows_judged"]}/50')
