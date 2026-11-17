@@ -75,6 +75,9 @@ md = open('docs/经学文献/华严经细读/第九会_逝多林_证入法界/�
 md_alt = {}
 for m in re.finditer(r'^### 参(\d+)·[^\n]*?八十作([^·）\n]{2,14})', md, re.M):
     md_alt[int(m.group(1))] = m.group(2).strip()
+md_alt60 = {}
+for m in re.finditer(r'^### 参(\d+)·[^\n]*?六十作([^·）\n]{2,14})', md, re.M):
+    md_alt60[int(m.group(1))] = m.group(2).strip()
 
 ROLE_SUFX = {'比丘': '比丘', '比丘尼': '比丘尼', '長者': '長者', '居士': '居士', '優婆夷': '優婆夷',
              '王': '王', '婆羅門': '婆羅門', '仙人': '仙人', '外道': '外道', '船師': '船師',
@@ -127,6 +130,8 @@ def find_anchor(skey, card):
             return p, '普賢（末段）'
         return None, None
     names = []
+    if skey == 'tan' and n in md_alt60:
+        names.append(md_alt60[n])
     if n in md_alt:
         names.append(md_alt[n])
     suf = ROLE_SUFX.get(card.get('role', ''), '')
