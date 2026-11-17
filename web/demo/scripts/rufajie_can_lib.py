@@ -18,6 +18,7 @@ JOURNEY_HTML = 'web/demo/articles/huayan-rufajie-journey.html'
 CORPUS_8040 = 'data/research/huayan_80_40_deep_corpus.json'
 CORPUS_6040 = 'data/research/huayan_60_40_deep_corpus.json'
 GUZHU = 'data/research/rufajie_can_guzhu.json'
+MIAOHAI = 'data/references/huayan_daodu/华藏妙海_整理版_提取本.txt'
 T0293_TXT = 'data/references/cbeta_txt/T10n0293.txt'
 
 _HEAD_RE = re.compile(r'^### 参(\d+)·([^\n]+)$', re.M)
@@ -399,6 +400,29 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
         L.append('> ' + w['text'])
         L.append('')
 
+    # ── L.506 参2 专层：海云《华藏妙海》念佛法门四义＋德云与清凉对照 ──
+    if n == 2:
+        try:
+            _mh = re.sub(r'\s+', '', _read(MIAOHAI, root))
+            _mh = re.sub(r'【页\d+】\d*', '', _mh)
+            a1 = _mh.find('此法门名称，可分为四')
+            b1 = _mh.find('华严法门无量')
+            a2 = _mh.find('德云与清凉，总将念佛门归入')
+            b2 = _mh.find('三．具体的实相念佛')
+            if 0 < a1 < b1 and 0 < a2 < b2:
+                w1 = _mh[a1:b1]
+                w2 = _mh[a2:b2]
+                L.append('**海云继梦《華藏妙海》（華嚴玄談整理版）·念佛法門四義**（%d 字·整理版可引用·标来源 用户裁定 L.139.0）：' % _han(w1))
+                L.append('')
+                L.append('> ' + w1)
+                L.append('')
+                L.append('**海云继梦《華藏妙海》·能念心与所念境——德云与清凉对照**（%d 字·同上）：' % _han(w2))
+                L.append('')
+                L.append('> ' + w2)
+                L.append('')
+        except Exception as e:
+            print('  ! miaohai card2:', e)
+
     # ── §四 评注与延伸指针 ──
     L.append('## 四、评注与延伸指针（只指不代·不生成无据内容）')
     L.append('')
@@ -420,6 +444,8 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
     L.append('')
     L.append('- L.493（2026-11-17）：古注取窗入 §三（疏/论 54/54 全覆盖·探玄记入法界品疏残存仅 13/54·未及者如实留空）；程序取窗·NFKC 归一·单调锚定·字准待校。')
     L.append('- L.499（2026-11-17）：第四源《随疏演义钞》`T1736` 入 §三（40/54·钞于末会多总谈，部分窗为类聚引·已于源标签注明）。')
+    if n == 2:
+        L.append('- L.506（2026-11-18）：《华藏妙海》念佛法門四義＋德云与清凉对照入 §三（玄談整理版·海云对参2法门之专论）。')
     L.append('- L.491（2026-11-16）：子页建立——程序汇编（主页 §参%d 照录＋行历数据卡＋四件套语料）；内容源批次 L.289–L.304（参批1-16）·'
              'L.316（参33 补卡）·L.407/L.413/L.415（行历·三译师名）·L.421/L.456（四件套语料库）。' % n)
     L.append('- 主页各参节后续修订后重跑 build 即自动同步本页 §一（运行时组装·无中间文件）。')
