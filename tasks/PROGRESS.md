@@ -4011,3 +4011,4 @@ done(
 - **发布**：`data/translation/standalone_articles.yaml` 登记 others 条目（id=`wuming-prajna`·组「宗派与判教」·order_in_group 6·back 教行页）；demo build **198 files / 45,936,334 B**，`articles/wuming-prajna.html`（133,716 B）＋articles/index.html 卡片；页面可 🌐 切换英文批注。
 - **门禁**：build ✓ · test-pipeline ALL PASSED ✓ · verify-sources T0=0 ✓ · `.harness/check.py` OK ✓ · `git diff --check` ✓ · verify_demo ALL CHECKS PASSED ✓（后台跑毕 exit 0）。
 - **边界**：`tasks/PLAN.md` 含并行批次（三语线 ch18）未提交改动，本批条目已追加但不随本 commit 提交，避免跨批误归；巴利文献与注疏转述一律标〔大意〕；「一念无明法性心」T46 逐字检索未见〔待核〕，正文改用已核「無明即法性，法性即無明」。
+- **L.505 追记**：①三是偈英译表述照底本订正（「我說即是**無**」直书，fix commit e7acf393）；②浏览器真机渲染验收（http.server 8019）：顶部目录/折叠条/🇬🇧 英文批注开关/表格/梵文标注/英译对读块/成唯识论引文渲染全部正常；页面已标记 deliverable。

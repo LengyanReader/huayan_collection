@@ -1074,3 +1074,4 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - 引文回源 **103 条/15 部全绿**（CBETA xml-p5＋仓内底本；脚本 `workspace/wuming_prajna_quotes/`）；三处照实文改判（理事语序/鑛字/梵行品句）；起信四处归实叉难陀本分别标注。
 - 教训：①YAML 未引注日期被解析为 date 对象，炸 JSON 序列化——登记 `updated_at` 须加引号；②CBETA xml-p5 单文件即可逐字回源（剥标签＋标点无关匹配＋原文回映），multi-juan 大文件用 `curl -C -` 断点续传至 `</TEI>`；③并行批次共享工作区时，commit 只圈定本批文件（web/demo 整体重建按 demo-deploy 惯例整体入账；PLAN.md 跨批则不随批提交）。
 - 门禁：build 198 files ✓；test-pipeline/verify-sources(T0=0)/check/diff-check ✓；verify_demo ALL CHECKS PASSED ✓。
+- 追记：三是偈英译订正（e7acf393）；浏览器真机渲染验收通过（表格/英译块/折叠/开关正常）。
