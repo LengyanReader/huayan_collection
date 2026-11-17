@@ -1075,3 +1075,8 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - 教训：①YAML 未引注日期被解析为 date 对象，炸 JSON 序列化——登记 `updated_at` 须加引号；②CBETA xml-p5 单文件即可逐字回源（剥标签＋标点无关匹配＋原文回映），multi-juan 大文件用 `curl -C -` 断点续传至 `</TEI>`；③并行批次共享工作区时，commit 只圈定本批文件（web/demo 整体重建按 demo-deploy 惯例整体入账；PLAN.md 跨批则不随批提交）。
 - 门禁：build 198 files ✓；test-pipeline/verify-sources(T0=0)/check/diff-check ✓；verify_demo ALL CHECKS PASSED ✓。
 - 追记：三是偈英译订正（e7acf393）；浏览器真机渲染验收通过（表格/英译块/折叠/开关正常）。
+
+### push 堵塞事故（2026-11-18）
+- 并行 dazang 线把 374.6MB `data/research/t7_paraphrase.json`（T7 语义比对产物）提交进 5 个未推提交——GitHub 100MB 上限拒收，堵住所有人。
+- 处置：stash 并行未暂存改动→filter-branch 重写 origin/main..HEAD 剔该文件（磁盘保留·gitignore 追加）→pop 复原→push 成功。
+- 教训：大体积生成产物（>50MB）入库前必须查；共享工作区里 filter-branch 前须 stash 他线未暂存改动并在完成后立即 pop。
