@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated": "2026-11-09T17:50:42",
-    "access_date": "2026-11-09",
+    "generated": "2026-11-18T00:11:33",
+    "access_date": "2026-11-18",
     "script": "scripts/verify_dazang_mapping.py",
     "sources": {
       "local_tei": [
@@ -14,14 +14,6 @@
       "84000": "https://read.84000.co/translation/toh44-31.html",
       "tibetan_toc": "data/alignment/tibetan-derge-toc.json",
       "catalog": "data/catalog/complete_catalog.yaml"
-    },
-    "partial_refresh": {
-      "date": "2026-11-11",
-      "fields": [
-        "catalog_32[].pin_count",
-        "catalog_32[].xref"
-      ],
-      "reason": "品题口径（cb:mulu type=品 编号项，非 type=pin 字符串计数）与多段 docNumber 解析（T293 Fasc 1-39 不被 Fasc 40 覆盖）修正；离线重算，未重跑网络源"
     }
   },
   "versions": {
@@ -1454,7 +1446,7 @@
       "status": "verified",
       "evidence": "CBETA TEI cb:div type=pin / juan milestones",
       "source": "data/references/cbeta/T10n0279.xml",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V02",
@@ -1466,7 +1458,7 @@
       "status": "verified",
       "evidence": "CBETA TEI cb:div type=pin / juan milestones",
       "source": "data/references/cbeta/T09n0278.xml",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V03",
@@ -1475,7 +1467,7 @@
       "status": "corrected",
       "evidence": "T09n0278 品23 十明 opens '十種明' parallel to T279 品28 十通 '十種通'; zhwiki table pairs them",
       "source": "data/references/cbeta/T09n0278.xml; zh.wikipedia",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V04",
@@ -1487,7 +1479,7 @@
       "status": "verified",
       "evidence": "84000: 'chapter 31 in the 45-chapter Tibetan version'",
       "source": "https://read.84000.co/translation/toh44-31.html",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V05",
@@ -1499,7 +1491,7 @@
       "status": "verified",
       "evidence": "T278/T279 in T09/T10; T280–T309 fetched from CBETA GitHub",
       "source": "cbeta-org/xml-p5",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V06",
@@ -1513,7 +1505,7 @@
       "status": "verified",
       "evidence": "CBETA byline/docNumber parsed; local catalog is a secondary cross-check",
       "source": "cbeta-org/xml-p5",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V07",
@@ -1532,7 +1524,7 @@
       "status": "verified",
       "evidence": "zhwiki structure table first column",
       "source": "zh.wikipedia",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V08",
@@ -1543,7 +1535,7 @@
       "status": "verified",
       "evidence": "parsed from Template:Chinese Buddhist Canon navbox",
       "source": "en.wikipedia",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V09",
@@ -1552,7 +1544,7 @@
       "status": "B",
       "evidence": "English Wikipedia history section (secondary)",
       "source": "en.wikipedia",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V10",
@@ -1561,7 +1553,7 @@
       "status": "unverifiable",
       "evidence": "no companion files found under docs/data",
       "source": "local filesystem",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V11",
@@ -1574,7 +1566,7 @@
       "status": "corrected",
       "evidence": "12-char gram overlap; pair T300/T301 shares 86, each with C80.33 only 0/4",
       "source": "CBETA TEI",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V12",
@@ -1583,7 +1575,7 @@
       "status": "B",
       "evidence": "84000 chapter page title",
       "source": "https://read.84000.co/translation/toh44-32.html",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V13",
@@ -1599,7 +1591,7 @@
       "status": "corrected",
       "evidence": "T281 品3 opens at 忉利天 (十住处); Taishō docNumber still maps to 279(15)",
       "source": "data/references/cbeta/T10n0281.xml",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     },
     {
       "id": "V14",
@@ -1610,7 +1602,7 @@
       "status": "verified",
       "evidence": "zero 12-char gram overlap; 法藏判语 '非十住品亦非十地品' agrees",
       "source": "CBETA TEI; T1733",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-18"
     }
   ]
 }
