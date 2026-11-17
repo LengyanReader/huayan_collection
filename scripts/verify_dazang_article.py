@@ -915,6 +915,124 @@ def main() -> int:
     ok(f"§17.24 T9 Sanskrit: {len(vcases)} cases re-located (ord {vords[0]}–{vords[-1]} monotonic) / "
        f"same {vsame}, pending {vpend}, byproduct 参 {bps[0]['no']}")
 
+    # --- §17.27 T9 梵本对照（续）: 三本全异 17 组，逐行＋空缺参45＋全表口径 ---
+    ad = vs.get("all_diff") or {}
+    dcases = ad.get("cases") or []
+    dgaps = ad.get("gaps") or []
+    if len(dcases) != len(v_diff):
+        fail(f"§17.27 all_diff cases {len(dcases)} != §17.22 all-diff {len(v_diff)}")
+    if [c["no"] for c in dcases] != v_diff:
+        fail(f"§17.27 case numbers != all-diff set: {[c['no'] for c in dcases]} vs {v_diff}")
+    dst = ad.get("stats") or {}
+    if dst.get("cases") != len(dcases):
+        fail("§17.27 stats.cases mismatch")
+    # 全表口径：35 组 ＋ 参45 空缺 = 36 行已核
+    if vs["stats"].get("rows_judged") != len(v_one) + len(v_diff) + len(dgaps):
+        fail(f"§17.27 rows_judged {vs['stats'].get('rows_judged')} != "
+             f"{len(v_one)}＋{len(v_diff)}＋{len(dgaps)}")
+    if len(dgaps) != 1 or dgaps[0]["no"] != 45:
+        fail(f"§17.27 same-gap 参45 missing: {[g['no'] for g in dgaps]}")
+    if vs["stats"].get("same_gap_nos") != [g["no"] for g in dgaps]:
+        fail("§17.27 stats.same_gap_nos mismatch")
+    if vs["stats"].get("same_unprobed_nos") != [n for n in v_same if n != 45]:
+        fail("§17.27 same_unprobed_nos mismatch with §17.22 三本同字")
+    if vs["stats"].get("rows_same") != len(v_same) or \
+            vs["stats"].get("rows_same_gap") != len(dgaps) or \
+            vs["stats"].get("rows_same_unprobed") != len(v_same) - len(dgaps):
+        fail("§17.27 same-row counts out of sync")
+
+    # 逐条复定位（与 §17.24 同口径），ord 须严格递增、无相等
+    dord_seen = []
+    for c in dcases:
+        src = vn_by_no.get(c["no"])
+        if not src:
+            fail(f"§17.27 参 {c['no']} not in visits_names")
+            continue
+        for k in ("n80", "n60", "n40"):
+            if c[k] != src[k]:
+                fail(f"§17.27 name drift: 参 {c['no']} {k}")
+        hits = [m.start() for m in re.finditer(re.escape(c["probe"]), sflat)]
+        if len(hits) != 1:
+            scoped = [h for h in hits
+                      if any(s0 <= h <= s0 + 900 for s0 in gstarts)]
+            hits = scoped
+        if len(hits) != 1:
+            fail(f"§17.27 probe not unique: 参 {c['no']} ({len(hits)})")
+            continue
+        if hits[0] != c["pos"]:
+            fail(f"§17.27 pos moved: 参 {c['no']}")
+        if s_ord(hits[0]) != c["ord"]:
+            fail(f"§17.27 ord mismatch: 参 {c['no']} {s_ord(hits[0])} != {c['ord']}")
+        if s_gv(hits[0]) != c["gv"]:
+            fail(f"§17.27 gv mismatch: 参 {c['no']} {s_gv(hits[0])} != {c['gv']}")
+        dord_seen.append(c["ord"])
+    if dord_seen != sorted(dord_seen) or len(set(dord_seen)) != len(dord_seen):
+        fail(f"§17.27 ordinals not strictly increasing: {dord_seen}")
+    if (min(dord_seen), max(dord_seen)) != (dst.get("ord_first"), dst.get("ord_last")):
+        fail(f"§17.27 ord range {min(dord_seen)}–{max(dord_seen)} != stats "
+             f"{dst.get('ord_first')}–{dst.get('ord_last')}")
+
+    # 参45：空缺须真空、且「后一位之序 = 空缺之序 + 1」
+    g45 = dgaps[0]
+    a45 = sflat.find(g45["between"][0])
+    b45 = sflat.find(g45["between"][1])
+    if a45 < 0 or b45 < 0 or b45 < a45:
+        fail("§17.27 参45 gap anchors missing")
+    else:
+        own45 = max([s for s in gstarts if s < b45], default=None)
+        inner45 = [s for s in gstarts if a45 < s < b45 and s != own45]
+        if inner45:
+            fail(f"§17.27 参45 gap not empty ({len(inner45)} instruction events)")
+        if s_gv(a45) != g45["gv"] or s_gv(b45) != g45["gv_to"]:
+            fail("§17.27 参45 gv span mismatch")
+    after45 = min((c for c in dcases + vcases if c["no"] > 45), key=lambda c: c["no"])
+    if after45["ord"] != g45["ord"] + 1:
+        fail(f"§17.27 参45 does not occupy exactly one slot: "
+             f"{g45['ord']} -> {after45['ord']} (参{after45['no']})")
+    judged_nos = {c["no"] for c in dcases + vcases}
+    gap_nos = [c["no"] for c in vcases if not c.get("probe")] + [g["no"] for g in dgaps]
+    occupied_gaps = sum(1 for n in gap_nos if (n - 1) in judged_nos)
+    if vs["stats"].get("ord_all_equal_pairs") != occupied_gaps:
+        fail(f"§17.27 ord_all_equal_pairs {vs['stats'].get('ord_all_equal_pairs')} "
+             f"!= occupied gap slots {occupied_gaps}")
+    if (vs["stats"].get("ord_all_first"), vs["stats"].get("ord_all_last")) != (1, 48):
+        fail(f"§17.27 full-table ord range "
+             f"{vs['stats'].get('ord_all_first')}–{vs['stats'].get('ord_all_last')} != 1–48")
+
+    dsame = sum(1 for c in dcases if c["verdict"].startswith("同指"))
+    dpend = sum(1 for c in dcases if c["verdict"].startswith("待核"))
+    dbv = {}
+    for c in dcases:
+        dbv[c["verdict"]] = dbv.get(c["verdict"], 0) + 1
+    if (dst.get("same"), dst.get("pending"), dst.get("by_verdict")) != (dsame, dpend, dbv):
+        fail("§17.27 stats out of sync with cases")
+    if (vs["stats"].get("all_diff_same"), vs["stats"].get("all_diff_pending"),
+            vs["stats"].get("all_diff_by_verdict")) != (dsame, dpend, dbv):
+        fail("§17.27 top-level all_diff_* stats out of sync")
+
+    dblock = grab("visits_skt_diff")
+    for c in dcases:
+        tri = f'{c["n80"]}／{c["n60"]}／{c["n40"]}'
+        row = (f'| {c["no"]} | {tri} | `{c["skt"]}` | '
+               f'{c["skt_role"]}·{c["skt_place"]} | {c["gv"]} | {c["verdict"]} |')
+        if row not in dblock:
+            fail(f"§17.27 table row missing/mismatched: 参 {c['no']} {c['n80']}")
+    if (f'> 十七组：同指 **{dsame}**、待核 **{dpend}**。') not in dblock:
+        fail("§17.27 counts sentence out of sync")
+    if g45["basis"] not in dblock and f'参 {g45["no"]}' not in dblock:
+        fail("§17.27 same-gap 参45 note missing")
+    for b in ad.get("boundaries") or []:
+        if b not in dblock:
+            fail(f"§17.27 boundary line missing: {b[:20]}")
+    if "17.27" not in (t9.get("refs") or ""):
+        fail("ontology T9 refs do not cite §17.27")
+    if "### 17.27 T9" not in md:
+        fail("§17.27 heading missing")
+    ok(f"§17.27 T9 Sanskrit (all-diff): {len(dcases)} cases re-located "
+       f"(ord {min(dord_seen)}–{max(dord_seen)} strictly increasing) / same {dsame}, "
+       f"pending {dpend} / gap 参 {g45['no']} empty (slot {g45['ord']}→{after45['ord']})")
+
+
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
     imp_path = ROOT / "data" / "research" / "implicit_quotes.json"
     if not imp_path.exists():
@@ -946,7 +1064,7 @@ def main() -> int:
                 fail(f"T6 {pid}: example not printed in article: {e['text'][:20]}")
             if not imp_src[p["commentary"]].count(q):
                 fail(f"T6 {pid}: empty example")
-    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.27 未竟" not in md:
+    if "### 17.14 T6" not in md or "### 17.15 T7" not in md or "### 17.28 未竟" not in md:
         fail("§17.14–17.24 headings missing")
 
     def rows_in(block: str) -> list[str]:
@@ -1269,7 +1387,7 @@ def main() -> int:
     if len(star) != 1 or any(f"**{t7['pairs'][pid]['stats']['markers_total']}**" not in star[0]
                              for pid in t7["pairs"]):
         fail("§17.15 marker total row out of sync")
-    if "### 17.15 T7" not in md or "### 17.27 未竟" not in md:
+    if "### 17.15 T7" not in md or "### 17.28 未竟" not in md:
         fail("§17.15–17.16 headings missing")
     ok(f"§17.15 T7: {'+'.join(str(t7['pairs'][pid]['stats']['markers_total']) for pid in t7['pairs'])} 节略用语, "
        f"{sum(len(p['examples']) for p in t7['pairs'].values())} 例 re-verified")
@@ -1405,7 +1523,7 @@ def main() -> int:
     t293 = next(r for r in t4["targeted"] if r["a"] == "T293" and r["b"] == "T297")
     if f"{t293['coverage']:.2%}" not in md:
         fail("T4 targeted (卷40 vs 願讚) number missing")
-    if "### 17.16 T4" not in md or "### 17.27 未竟" not in md:
+    if "### 17.16 T4" not in md or "### 17.28 未竟" not in md:
         fail("§17.16–17.24 headings missing")
     ok(f"§17.16 T4: {len(t4['screen'])} screened / {len(t4['partition'])} partitioned / "
        f"{shown} exhibits re-verified; no candidate passes")

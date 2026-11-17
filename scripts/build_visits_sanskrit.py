@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""T9 逐参名·梵本对照：字面有异者的「同指」判（§17.24 十八组 ＋ §17.25 十七组）。
+"""T9 逐参名·梵本对照：字面有异者的「同指」判（§17.24 十八组 ＋ §17.27 十七组）。
 
 §17.22 只判字面：`＝`/`≈`/`≠`。字面异不等于所指异，但要说「所指同」，
 须有第三方 witness。梵本《入法界品》（Vaidya 1960，GRETIL 电子转写）在库，
@@ -8,7 +8,7 @@
 
 口径（要紧）：§17.22 中字面有异者共 35 组——
   ① 恰有一对同名、第三本独异：18 组（§17.24 所判：80=60≠40 九组 ＋ 80=40≠60 九组）
-  ② 三本全异：17 组（§17.25 所判）
+  ② 三本全异：17 组（§17.27 所判）
   ③ 三本同字：15 组（未逐条核梵；其中参45 已核为梵本空缺，余 14 组待核）
 合计 18＋17＋15＝50 行，与 §17.22 的五十参一致。
 
@@ -115,7 +115,7 @@ CASES = [
          basis="śiva＝寂靜／尸毘；八十「最寂靜」取义、六十「尸毘最勝」取音"),
 ]
 
-# §17.25：三本全异十七组
+# §17.27：三本全异十七组
 ALL_DIFF = [
     dict(no=2, probe="meghaśrīrnāma bhikṣuḥ", skt="meghaśrī",
          role="bhikṣuḥ（比丘）", place="rāmāvarānta janapada；sugrīva parvata（勝樂國·妙峯山）",
@@ -278,7 +278,7 @@ def main() -> int:
     vn = json.loads(VN.read_text(encoding="utf-8"))
     by_no = {r["no"]: r for r in vn["rows"]}
 
-    # §17.22 的三分：恰一对同名（§17.24）／三本全异（§17.25）／三本同字
+    # §17.22 的三分：恰一对同名（§17.24）／三本全异（§17.27）／三本同字
     tri = {r["no"]: {r["n80"], r["n60"], r["n40"]} for r in vn["rows"]}
     one_eq = sorted(n for n, s in tri.items() if len(s) == 2)
     all_diff = sorted(n for n, s in tri.items() if len(s) == 3)
@@ -420,7 +420,7 @@ def main() -> int:
         return 13
     dords = [c["ord"] for c in diffs]
     if dords != sorted(dords) or len(set(dords)) != len(dords):
-        print("!! §17.25 ordinals not strictly increasing:", dords)
+        print("!! §17.27 ordinals not strictly increasing:", dords)
         return 14
 
     def tally(rows):
@@ -468,7 +468,7 @@ def main() -> int:
     data = {
         "meta": {
             "operator": "T9",
-            "title": "入法界品字面有异三十五组·梵本同指判（§17.24 十八组／§17.25 十七组）",
+            "title": "入法界品字面有异三十五组·梵本同指判（§17.24 十八组／§17.27 十七组）",
             "date": date.today().isoformat(),
             "method": ("取 §17.22 中字面有异之三十五组，在梵本《入法界品》中定位其指授句"
                        "（asti/gaccha kulaputra … X nāma Y prativasati … upasaṃkramya），"
@@ -476,7 +476,7 @@ def main() -> int:
                        "只判同指与否，不判音写精当。三十五组并入同一指授事件序自检，"
                        "相等处必为空缺位（参29 正趣、参45 善知眾藝）。"),
             "scope": (f'§17.24 十八组（§17.22 中恰有一对同名者：{one_eq[0]}…{one_eq[-1]}）'
-                      f'＋§17.25 十七组（三本全异：{all_diff[0]}…{all_diff[-1]}），'
+                      f'＋§17.27 十七组（三本全异：{all_diff[0]}…{all_diff[-1]}），'
                       f'共 35 组；三本同字 {len(all_same)} 组未逐条核梵，'
                       f'唯参 {gaps_same[0]["no"]} 已核为梵本空缺。'),
             "source": {
@@ -496,10 +496,10 @@ def main() -> int:
             "单一写本系统：所用为 Vaidya 校本之电子转写，非多本会校；故「Vaidya 本无对应」只能记作该本无，不得推为梵本原无。",
             (f'对位靠角色＋处所＋次序三锚；次序单调性由脚本自检——本节十八组的梵本指令序不降'
              f'（{stats["ord_first"]}–{stats["ord_last"]} 段，唯一相等处即正趣空缺位，沿用观自在之序），'
-             f'§17.25 十七组并入同一指令序（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）仍不降，'
+             f'§17.27 十七组并入同一指令序（{stats["ord_all_first"]}–{stats["ord_all_last"]} 段）仍不降，'
              f'两处相等处恰为两个空缺位（参 29、参 45）。处所名逐条附于表内可复检。'),
             "音写是否合于梵音、义译是否尽义，皆不在本节判内；只记两本名与该梵名有无可判的关系。",
-            (f'本节只判十八组；三本全异十七组见 §17.25。五十行中已核梵者 {stats["rows_judged"]} 行'
+            (f'本节只判十八组；三本全异十七组见 §17.27。五十行中已核梵者 {stats["rows_judged"]} 行'
              f'（字面有异 35 组 ＋ 参 {stats["same_gap_nos"][0]} 空缺），'
              f'未核者 {len(same_unprobed)} 组（三本同字，参号 {same_nos}）；未核者不得读作已核——'
              f'字面同可能各依不同梵名而偶合。'),
@@ -544,7 +544,7 @@ def main() -> int:
         print(f'{c["no"]:>3} {c["n80"]:<8} {c["n60"]:<8} {c["n40"]:<10} | '
               f'{str(c["skt"]):<32} {str(c["gv"]):>7} | {c["verdict"]}'
               + (f'  [{c["flag"]}]' if c["flag"] else ""))
-    print(f'§17.25 cases {len(diffs)}  same {dsame}  pending {dpend}  ord {min(dords)}..{max(dords)}')
+    print(f'§17.27 cases {len(diffs)}  same {dsame}  pending {dpend}  ord {min(dords)}..{max(dords)}')
     for c in diffs:
         print(f'{c["no"]:>3} {c["n80"]:<8} {c["n60"]:<8} {c["n40"]:<10} | '
               f'{str(c["skt"]):<40} {str(c["gv"]):>7} | {c["verdict"]}'

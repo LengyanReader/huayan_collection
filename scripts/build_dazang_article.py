@@ -1692,8 +1692,8 @@ def render_visits(vn):
     tri_show = "、".join(f'{esc(r["n80"])}／{esc(r["n60"])}／{esc(r["n40"])}' for r in tri[:4])
     out.append(f'④**三本全异者 {len(tri)} 处**：如 {tri_show} 等。'
                "其中「毘目瞿沙／毘目多羅／大威猛聲」一组可见音写与义译并存："
-               "前两者是两种音写，第三者更像译义——但三者是否同出一名，须核梵本，"
-               "本表只记字面，不作断言。"
+               "前两者是两种音写，第三者更像译义——三者同出一名，已由梵本核定为"
+               "`bhīṣmottaranirghoṣa`（见 §17.27）；本节只记字面，判在彼处。"
                "这正是「字面异」不能读成「参异」的直接证据。"
                "夜神一类的名字最长（如「大願精進力救護一切眾生」对「願勇光明守護眾生」对"
                "「守護一切眾生大願精進力光明」），字序与繁简各不相同，须逐个核梵名才能定所指。")
@@ -1776,6 +1776,81 @@ def render_visits_skt(vs):
     return "\n".join(out)
 
 
+def render_visits_skt_diff(vs):
+    """§17.27 — 梵本对照（续）：三本全异十七组的同指判。"""
+    ad = vs["all_diff"]
+    cs = ad["cases"]
+    gaps = ad["gaps"]
+    st = ad["stats"]
+    bv = st["by_verdict"]
+    out = []
+    out.append("§17.24 判了「恰有一对同名」的十八组，本节续判剩下的十七组：三本各给一名，"
+               "两两皆不同字。同一套材料、同一套三重锚——**角色＋处所＋次序**——"
+               "把三本各自的名字一并放回梵本指授句里看。")
+    out.append("")
+    out.append("十七组与 §17.24 的十八组并入同一「指授事件」序，须不降；"
+               f'本节自 {st["ord_first"]} 至 {st["ord_last"]} 严格递增，无相等；'
+               f'全表（三十五组＋参45 空缺）为 {vs["stats"]["ord_all_first"]}–'
+               f'{vs["stats"]["ord_all_last"]} 段。'
+               "梵本指授句作「`gaccha kulaputra` … `tatra X nāma Y prativasati` … `tamupasaṃkramya`」，"
+               "全篇此类事件恰 50 次，其中 48 次带 `nāma`（末次一句两名，故 49 位善知识）。")
+    out.append("")
+    out.append("| 参 | 八十／六十／四十 | 梵名（IAST） | 角色·处所 | gv | 判 |")
+    out.append("|---|---|---|---|:-:|---|")
+    for c in cs:
+        tri = f'{esc(c["n80"])}／{esc(c["n60"])}／{esc(c["n40"])}'
+        out.append(f'| {c["no"]} | {tri} | `{esc(c["skt"])}` | '
+                   f'{esc(c["skt_role"])}·{esc(c["skt_place"])} | {c["gv"]} | {esc(c["verdict"])} |')
+    out.append("")
+    out.append(f'> 十七组：同指 **{st["same"]}**、待核 **{st["pending"]}**。'
+               f'同指中音写异形 {bv.get("同指·对音", 0)}、音义并存 {bv.get("同指·音义并存", 0)}、'
+               f'义译异词 {bv.get("同指·义译", 0)}。表由 `data/research/visits_sanskrit.json` 生成，手改无效。')
+    out.append("")
+
+    by_no = {c["no"]: c for c in cs}
+    ex = by_no.get(2)
+    out.append("①**三本全异，多半仍是「一名三译」**：十七组里义译异词 "
+               f'{bv.get("同指·义译", 0)} 组、音义并存 {bv.get("同指·音义并存", 0)} 组、'
+               f'纯音写 {bv.get("同指·对音", 0)} 组。如参 2 德雲／功德雲／吉祥雲同对 `meghaśrī`'
+               "（megha＝雲；śrī＝吉祥／德，三本各取一训）；参 12 善見／善現／妙見同对 `sudarśana`"
+               "（su＝善／妙、darśana＝見，亦训「現」）；夜神名最长者如参 35、参 39，"
+               "三本词序互倒、繁简各别，而 samanta／sattva／trāṇa／ojas／śrī 诸元素俱在。"
+               "字面三异并不等于三位善知识。")
+    out.append("")
+    c18 = by_no.get(18)
+    if c18:
+        out.append("②**一组待核，且待核的是名源、不是段位**：参 18 無厭足／滿足／甘露火，"
+                   "梵本作 `anala`（＝火），唯四十「甘露火」存「火」字，八十、六十之名与 `anala` "
+                   "无对音、亦无义译关系。角色（rājā，王）、处所（`tāladhvajaṃ nāma nagaram`，多羅幢城）、"
+                   "次序（第 17 事件）三锚皆合，故段位可定，名源不合——"
+                   "只能记作「Vaidya 本作 anala」，不得反推汉本所据。")
+        out.append("")
+    flagged = st["flagged"]
+    flagged60 = [n for n in flagged if n != 18]
+    out.append("③**段位可定、六十名待核者另有四处**：参 " +
+               "、参 ".join(str(n) for n in flagged60) + "。"
+               "如参 13 六十「釋天主」是把 `indriya` 读作 `indra`（釋天）、参 27 六十「安住」"
+               "与 `veṣṭhila` 无对音关系（疑与参 31 `sthāvarā`「安住」相涉）、"
+               "参 15 六十「甘露頂」与 `vidvat`（有智）无涉。"
+               "这些都不影响「同指」判——角色、处所、次序都在——只是六十的译名来源留待再核。")
+    out.append("")
+    g = gaps[0] if gaps else None
+    if g:
+        out.append(f'④**附见：三本同字而梵本空缺的一位**。参 {g["no"]} '
+                   f'{esc(g["n80"])}／{esc(g["n60"])}／{esc(g["n40"])} 不在十七组内（三本同字），'
+                   "但同一次核梵时读出：梵本 `viśvāmitra`（遍友）指授之后直入 "
+                   '`bhadrottamā`（賢勝），其间无第三位指授句（'
+                   f'{g["gv"]}→{g["gv_to"].replace("gv ", "")}，{g["gap_chars"]:,} 字符无 `gaccha kulaputra`）；'
+                   "Vaidya 本 `śilpa` 只见于教法文句，非独立善知识。"
+                   "故此位只记「Vaidya 本无」，与参 29 正趣同例，不得推为「梵本原无」。")
+        out.append("")
+    out.append("**限度**：")
+    out.append("")
+    for b in ad["boundaries"]:
+        out.append(f"- {esc(b)}")
+    return "\n".join(out)
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -1842,6 +1917,8 @@ def main():
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",
         "visits_skt": render_visits_skt(visits_skt) if visits_skt else "",
+        "visits_skt_diff": (render_visits_skt_diff(visits_skt)
+                            if visits_skt and visits_skt.get("all_diff") else ""),
         "tib45": table_tib45(enrich, name_by_pin),
         "mentions": table_mentions(enrich),
         "fig_layers": fig_layers(),
