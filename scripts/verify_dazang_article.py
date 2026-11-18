@@ -1157,11 +1157,11 @@ def main() -> int:
        f"pending 0 / gap 参 {g45s['no']} empty + 参 {b51['no']} 一句两名 / "
        f"50/50 rows witnessed")
 
-    # --- §17.30–17.32 T9 逐品科判：quotes re-located; 品次/科数/边界 assertions ---
+    # --- §17.30–17.32、§17.41 T9 逐品科判：quotes re-located; 品次/科数/边界 assertions ---
     t9p_cases = probes["t9_pin"]["cases"]
-    if len(t9p_cases) != 3:
-        fail(f"§17.30–§17.32 must have 3 cases, got {len(t9p_cases)}")
-    for tag, case in zip(("§17.30", "§17.31", "§17.32"), t9p_cases):
+    if len(t9p_cases) != 4:
+        fail(f"§17.30–§17.32、§17.41 must have 4 cases, got {len(t9p_cases)}")
+    for tag, case in zip(("§17.30", "§17.31", "§17.32", "§17.41"), t9p_cases):
         for q in case["quotes"]:
             if norm(q["text"]) not in probe_src[q["src"]]:
                 fail(f"{tag} quote missing from {q['src']}: {q['text'][:24]}")
@@ -1170,10 +1170,12 @@ def main() -> int:
     t9p_block = grab("t9_pin")
     t9p2_block = grab("t9_pin2")
     t9p3_block = grab("t9_pin3")
-    t9p_rows = sum(1 for blk in (t9p_block, t9p2_block, t9p3_block) for ln in blk.splitlines()
+    t9p4_block = grab("t9_pin4")
+    t9p_rows = sum(1 for blk in (t9p_block, t9p2_block, t9p3_block, t9p4_block)
+                   for ln in blk.splitlines()
                    if ln.startswith("| ") and not ln.startswith("|---"))
     if t9p_rows != sum(len(c["rows"]) for c in t9p_cases) + len(t9p_cases):
-        fail("§17.30–17.32 tables != probes JSON rows")
+        fail("§17.30–17.32、§17.41 tables != probes JSON rows")
     # 品1：品次自述、澄观品级十分、法藏无定数
     c1 = t9p_cases[0]
     if "世主妙嚴品" not in c1["pin"] or "世間淨眼品" not in c1["pin"] or "品1" not in c1["pin"]:
@@ -1244,18 +1246,49 @@ def main() -> int:
     for want in ("同请位置相反", "名称可对者五"):
         if want not in md:
             fail(f"§17.32 正文缺：{want}")
+    # 品4：十事名目同数异目、十名 vs 十门、本品二分
+    c4 = t9p_cases[3]
+    for want in ("世界成就品", "后段", "通論十世界"):
+        if want not in c4["pin"]:
+            fail(f"§17.41 case pin 缺 {want}")
+    if "品4" not in c4["pin"]:
+        fail("§17.41 case must state 品4")
+    r4 = {item: (a, b) for item, a, b in c4["rows"]}
+    if not r4.get("品级科数", ("", ""))[0].startswith("2"):
+        fail("§17.41 澄观 品级科数 must be 2")
+    if "无品级科" not in r4.get("品级科数", ("", ""))[1]:
+        fail("§17.41 法藏 must be recorded as 无品级科")
+    if "起具因缘" not in r4.get("十事名目", ("", ""))[0] or "无差别" not in r4.get("十事名目", ("", ""))[0]:
+        fail("§17.41 澄观 十事名目 must run 起具因缘→无差别")
+    if "說世界海" not in r4.get("十事名目", ("", ""))[1]:
+        fail("§17.41 法藏 十名 must start 說世界海")
+    for want in ("十事不同則為十段", "標、釋、結"):
+        if want not in c4["quotes"][2]["text"]:
+            fail(f"§17.41 P30 缺 {want}")
+    for want in ("一說世界海", "十壞方便世界海"):
+        if want not in c4["quotes"][5]["text"]:
+            fail(f"§17.41 P33 十名缺 {want}")
+    for want in ("一種類", "十無礙"):
+        if want not in c4["quotes"][6]["text"]:
+            fail(f"§17.41 P34 十门缺 {want}")
+    for want in ("三层不可混算", "十门不与十事逐段配", "本节不判"):
+        if want not in t9p4_block:
+            fail(f"§17.41 block 缺关键判语：{want}")
+    for want in ("同数不同层", "十事名目同数而异目", "不据此判文本异同"):
+        if want not in md:
+            fail(f"§17.41 正文缺：{want}")
     if "17.30" not in (t9.get("refs") or "") or "17.31" not in (t9.get("refs") or "") \
-            or "17.32" not in (t9.get("refs") or ""):
-        fail("ontology T9 refs must cite §17.30, §17.31 and §17.32")
+            or "17.32" not in (t9.get("refs") or "") or "17.41" not in (t9.get("refs") or ""):
+        fail("ontology T9 refs must cite §17.30, §17.31, §17.32 and §17.41")
     if "### 17.30 T9 科判逐品" not in md or "### 17.31 T9 科判逐品" not in md \
-            or "### 17.32 T9 科判逐品" not in md:
-        fail("§17.30／§17.31／§17.32 headings missing")
+            or "### 17.32 T9 科判逐品" not in md or "### 17.41 T9 科判逐品" not in md:
+        fail("§17.30／§17.31／§17.32／§17.41 headings missing")
     if "### 17.29 未竟" not in md:
         fail("§17.29 未竟 heading missing (must stay last)")
-    ok(f"§17.30–§17.32 T9 逐品科判: {len(t9p_cases)} 品 / "
+    ok(f"§17.30–§17.32、§17.41 T9 逐品科判: {len(t9p_cases)} 品 / "
        f"{sum(len(c['quotes']) for c in t9p_cases)} quotes re-located / "
        f"品1 澄观 10 vs 法藏 無定數 / 品2 澄观 6 vs 法藏品内 10（1:5 只对所在段） / "
-       f"品3 澄观 6 vs 法藏 3–9 段共 7")
+       f"品3 澄观 6 vs 法藏 3–9 段共 7 / 品4 澄观 2 分＋十段 vs 法藏十名＋十门")
 
 
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
