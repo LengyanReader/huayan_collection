@@ -83,6 +83,18 @@ EXHIBITS = [
                     "完整形态：双方都有文本、都自我证成、互不收录。〔本文判断〕"),
     },
     {
+        "key": "d4_tiantai",
+        "doc": "T33n1716",
+        "title": "第三方判教·天台：華嚴時如乳（顿而未普）",
+        "c_anchor": ["說華嚴時凡夫見思不轉故言如乳", "故言如酪"],
+        "analysis": ("法華玄義的五時判把華嚴列为第一时（乳味）但同时记「凡夫"
+                    "見思不轉」——天台承认华严最胜又指出其**当机无效**。"
+                    "第三方视角同时修正两边：对分齊章（别教自居）是一味之判，"
+                    "对解深密（三时自了）是不收华严之外再加一判——判教史"
+                    "本身就是 D4 的展开场：每一宗都以判摄对方为立宗动作。"
+                    "〔本文判断〕"),
+    },
+    {
         "key": "d4_haiyin_sutra",
         "doc": "T279",
         "title": "经侧对应：海印三昧威神力（T279 品3）",
@@ -104,6 +116,7 @@ def main() -> int:
         "T45n1866": Doc("T45n1866", ROOT / "data/references/cbeta/T45n1866.xml"),
         "T279": Doc("T279", ROOT / "data/references/cbeta/T10n0279.xml"),
         "T16n0676": Doc("T16n0676", ROOT / "data/references/cbeta/T16n0676.xml"),
+        "T33n1716": Doc("T33n1716", ROOT / "data/references/cbeta/T33n1716.xml"),
     }
     exhibits = []
     for ex in EXHIBITS:
@@ -140,6 +153,9 @@ def main() -> int:
                 "T16n0676": {"path": "data/references/cbeta/T16n0676.xml",
                              "sha256": sha256((ROOT / "data/references/cbeta/T16n0676.xml").read_bytes()),
                              "bytes": (ROOT / "data/references/cbeta/T16n0676.xml").stat().st_size},
+                "T33n1716": {"path": "data/references/cbeta/T33n1716.xml",
+                             "sha256": sha256((ROOT / "data/references/cbeta/T33n1716.xml").read_bytes()),
+                             "bytes": (ROOT / "data/references/cbeta/T33n1716.xml").stat().st_size},
             },
         },
         "exhibits": exhibits,

@@ -2512,10 +2512,10 @@ def main() -> int:
         if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
             fail(f"D4 source hash changed: {key}")
     d4_block = grab("d4oppo")
-    if len(d4["exhibits"]) != 7:
-        fail(f"D4 exhibits {len(d4['exhibits'])} != 7")
+    if len(d4["exhibits"]) != 8:
+        fail(f"D4 exhibits {len(d4['exhibits'])} != 8")
     _d4_files = {"T45n1866": "cbeta/T45n1866.xml", "T279": "cbeta/T10n0279.xml",
-                 "T16n0676": "cbeta/T16n0676.xml"}
+                 "T16n0676": "cbeta/T16n0676.xml", "T33n1716": "cbeta/T33n1716.xml"}
     for ex in d4["exhibits"]:
         d = _vdoc(ex["doc"], "data/references/" + _d4_files[ex["doc"]])
         frag = re.sub(r"[^\u4e00-\u9fff]", "", ex["text"])[:12]
@@ -2594,18 +2594,20 @@ def main() -> int:
             if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
                 fail(f"C-deepen source hash changed: {key}")
     cd_block = grab("cdeepen")
-    if len(cd["groups"]) != 7:
-        fail(f"C-deepen groups {len(cd['groups'])} != 7")
-    if cd["summary"]["quotes_total"] != 15:
-        fail(f"C-deepen quotes {cd['summary']['quotes_total']} != 15")
+    if len(cd["groups"]) != 8:
+        fail(f"C-deepen groups {len(cd['groups'])} != 8")
+    if cd["summary"]["quotes_total"] != 20:
+        fail(f"C-deepen quotes {cd['summary']['quotes_total']} != 20")
     _cd_files = {
         "t279": "cbeta/T10n0279.xml", "laozi": "daojia_laozi/KR5c0045_001.txt",
         "lunyu": "rujia_lunyu/KR1h0004_014.txt", "lunyu2": "rujia_lunyu/KR1h0004_002.txt",
         "zhongyong": "rujia_zhongyong/KR1h0041_002.txt",
         "xunzi": "zhuzi_xunzi/KR3a0002_015.txt",
         "huainanzi": "zhuzi_huainanzi/KR3j0010_020.txt",
+        "huainanzi2": "zhuzi_huainanzi/KR3j0010_011.txt",
         "isha": "yindu_ishaupanisad/ishaupanisad.txt",
         "yoga": "sanskrit/yoga_sutra.txt",
+        "jain": "prakrt_uttaradhyayana/uttaradhyayana.txt",
     }
     for g in cd["groups"]:
         if g["title"][:14] not in cd_block:
@@ -2614,7 +2616,7 @@ def main() -> int:
             fail(f"C-deepen discipline missing: {g['id']}")
         for side in ("non_buddhist", "buddhist"):
             for q in g[side]:
-                if q["text"][:18] not in cd_block:
+                if q["text"][:18].replace("|", "／") not in cd_block:
                     fail(f"C-deepen quote not printed: {g['id']} {side}")
                 d = _vdoc(q["source"], "data/references/" + _cd_files[q["source"]])
                 frag = re.sub(r"[^\u4e00-\u9fffA-Za-zāīūṃṛśṣṭḍṅñḥāĀĪŪ]", "", q["text"])[:12]
@@ -2625,6 +2627,36 @@ def main() -> int:
         if frag not in cd_block:
             fail(f"§17.48 key content missing: {frag}")
     ok(f"§17.48 C deepen: {len(cd['groups'])} groups / {cd['summary']['quotes_total']} quotes re-sliced")
+
+    # --- §17.49 D1 rerun: matrix + 3 pairs re-sliced ---
+    d1_path = ROOT / "data" / "research" / "d1_agama.json"
+    if not d1_path.exists():
+        fail("d1_agama.json missing")
+    d1 = json.loads(d1_path.read_text(encoding="utf-8"))
+    for key, meta in d1["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"D1 source hash changed: {key}")
+    d1_block = grab("d1agama")
+    if len(d1["pairs"]) != 3:
+        fail(f"D1 pairs {len(d1['pairs'])} != 3")
+    if len(d1["matrix"]) < 10:
+        fail(f"D1 matrix terms {len(d1['matrix'])} < 10")
+    _d1_files = {"t279": "cbeta/T10n0279.xml", "chang": "cbeta/T01n0001.xml",
+                 "zhong": "cbeta/T01n0026.xml", "za": "cbeta/T02n0099.xml",
+                 "zengyi": "cbeta/T02n0125.xml", "dapin": "cbeta/T08n0223.xml"}
+    for pair in d1["pairs"]:
+        for q in pair["non_buddhist"] + pair["buddhist"]:
+            if q["text"][:18] not in d1_block:
+                fail(f"D1 quote not printed: {pair['id']}")
+            d = _vdoc(q["source"], "data/references/" + _d1_files[q["source"]])
+            frag = re.sub(r"[^一-鿿]", "", q["text"])[:12]
+            if frag and re.sub(r"[^一-鿿]", "", d.clean).find(frag) < 0:
+                fail(f"D1 quote not in source: {pair['id']}")
+    if "異形詞分佈" not in d1_block and "异形词分布" not in d1_block:
+        fail("§17.49 key finding missing")
+    if "D1 從登記 B 升實測 A" not in d1_block.replace(" ", "") and             "登记 B 升实测 A" not in d1_block:
+        fail("§17.49 upgrade statement missing")
+    ok(f"§17.49 D1 rerun: matrix {len(d1['matrix'])} terms / 3 pairs re-sliced")
 
     print("=" * 40)
     print("ALL Dazang article checks passed")

@@ -1,7 +1,7 @@
 {
  "meta": {
   "purpose": "§17 跨典藏登記冊的一手見證清單",
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "notes": []
  },
  "files": {
@@ -1828,6 +1828,30 @@
    "sha256": "ad65917ee8cadd2e18a883df770acee7dda8786cef482e7177a575f0fe50e2d0",
    "retrieved": "2026-11-18",
    "note": "道教義樞卷三至九補取（道性義章）"
+  },
+  "uttaradhyayana": {
+   "path": "data/references/prakrt_uttaradhyayana/uttaradhyayana.txt",
+   "url": "https://gretil.sub.uni-goettingen.de/gretil/2_prakrt/uttaraju.htm",
+   "bytes": 254324,
+   "sha256": "56a6513876805c0b34e4364cf18413177df9d87ff39925630b93ee29ef67af36",
+   "retrieved": "2026-11-19",
+   "note": "耆那教《Uttarādhyayana-sūtra》（GRETIL Prakrit 明文）——印度沙门传统第二块"
+  },
+  "T08n0223": {
+   "path": "data/references/cbeta/T08n0223.xml",
+   "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T08/T08n0223.xml",
+   "bytes": 4240124,
+   "sha256": "d248be9f01d1494a2d096fcf51fb1ba81402e04ebb963cdbb2ec8824601ef5ca",
+   "retrieved": "2026-11-19",
+   "note": "大品般若（D1 复跑）"
+  },
+  "T33n1716": {
+   "path": "data/references/cbeta/T33n1716.xml",
+   "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T33/T33n1716.xml",
+   "bytes": 1128340,
+   "sha256": "9a0b1937f8c43e4a48ecb2eaa2fa3fe5f9e184d88219266d2517016e92d0b7af",
+   "retrieved": "2026-11-19",
+   "note": "法华玄义（D4 天台判）"
   }
  }
 }

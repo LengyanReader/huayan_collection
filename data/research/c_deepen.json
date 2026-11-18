@@ -1,6 +1,6 @@
 {
  "meta": {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "title": "C 面深化：七典实质对读",
   "method": "每典一组双侧引文，起止锚切片（mandoku 源剥 ¶ 后装载），lb/位置可回源；判读一律类型判＋「不在场的那半」。与 §17.26 四组合计 11 典、11 组实质对读。",
   "sources": {
@@ -30,6 +30,10 @@
    "yogasutra": {
     "path": "data/references/sanskrit/yoga_sutra.txt",
     "sha256": "5f44b6911b481cc3a0b1a56e2f2ca66859e006c5e2a24c690f1924474361d28e"
+   },
+   "jain": {
+    "path": "data/references/prakrt_uttaradhyayana/uttaradhyayana.txt",
+    "sha256": "56a6513876805c0b34e4364cf18413177df9d87ff39925630b93ee29ef67af36"
    }
   },
   "discipline": "非佛藏文本一律类型判；负向（不在场的那半）如实记录。"
@@ -44,6 +48,11 @@
      "source": "laozi",
      "lb": "—",
      "text": "人法地地法天天法道道法自然"
+    },
+    {
+     "source": "laozi",
+     "lb": "—",
+     "text": "有物混成先天地生寂兮寥兮獨立而不改周行而不殆可以爲天下母"
     }
    ],
    "buddhist": [
@@ -137,6 +146,11 @@
      "source": "huainanzi",
      "lb": "—",
      "text": "萬物有以相連精祲(浸/)有以相蕩也"
+    },
+    {
+     "source": "huainanzi2",
+     "lb": "—",
+     "text": "徃古來今謂之宙四方上下謂之宇道在其間而莫知其所"
     }
    ],
    "buddhist": [
@@ -159,6 +173,11 @@
      "source": "isha",
      "lb": "—",
      "text": "yastusarvāṇibhūtānyātmanyevānupaśyati|sarvabhūteṣucātmānaṃtatonavijugupsate"
+    },
+    {
+     "source": "isha",
+     "lb": "—",
+     "text": "īśāvāsyamidaṃsarvaṃyatkiñcajagatyāṃjagat"
     }
    ],
    "buddhist": [
@@ -193,10 +212,32 @@
    "level": "功能同构",
    "direction": "平行发展（佛教与数论-瑜伽传统同源于沙门外道生态，有对话但《華嚴》无直接引用证据）。",
    "analysis": "YS 1.2–1.3：瑜伽是心作用的止息，于是观者住于自身——止息之后**观者（draṣṭuḥ）**独立显现；華嚴〈淨行品〉：「正身端坐當願眾生坐菩提座，心無所著」——坐定而心无所住。两者都以「心的活动止息／无所著」为真容显现的条件。止息」为真容显现的条件。不在场的那半：瑜伽经的观者是**puruṣa**（神我——与prakṛti 对立的独立实在），華嚴的寂然者无我可得；止息在瑜伽经通往**独存（kaivalya）**，在華嚴通往**起用**（不动而遍现）——终点方向相反。"
+  },
+  {
+   "id": "jain_karma",
+   "title": "耆那教「業繫」× 華嚴「業力生剎」",
+   "tradition": "印度·耆那教",
+   "non_buddhist": [
+    {
+     "source": "jain",
+     "lb": "—",
+     "text": "yantidussīlaṃ|kammāṇibalavantihi"
+    }
+   ],
+   "buddhist": [
+    {
+     "source": "t279",
+     "lb": "0038b10",
+     "text": "一切諸國土，皆隨業力生，汝等應觀察，轉變相如是。染污諸眾生，業惑纏可怖，彼心令剎海，一切成染污"
+    }
+   ],
+   "level": "功能同构",
+   "direction": "平行发展（同沙门生态、针锋相对的教义对手；佛教文献记耆那为六大师之一，但《華嚴》无直接引用证据）。",
+   "analysis": "Uttarādhyayana 以业（kammāṇi）为系缚力量（邪戒者业势强）；華嚴〈華藏世界品〉言「一切諸國土皆隨業力生……彼心令剎海一切成染污」——两者都把**业**立为世界图景的动力。不在场的那半：耆那的业是**物质微粒**（粘着 jīva、须苦行剥除——业是实体），華嚴的业由**心**造（彼心令剎海染污——业是缘起心行，无实体可得）；于是耆那的解脱=业剥离的苦行技术，華嚴的解脱=心转则剎转的观行——同题异构的两个业力宇宙论。〔本文判断〕"
   }
  ],
  "summary": {
-  "groups": 7,
-  "quotes_total": 15
+  "groups": 8,
+  "quotes_total": 20
  }
 }

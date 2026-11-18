@@ -1,0 +1,191 @@
+{
+ "meta": {
+  "date": "2026-11-19",
+  "title": "D1 复跑：阿含/般若 × 華嚴 共享名目（实测 A）",
+  "method": "四阿含＋大品般若全部在库逐词计数（含异形覺支/七菩提分）；三组双侧引文锚点切片。§7 的「登记 B」由此升「实测 A」。",
+  "sources": {
+   "t279": {
+    "path": "data/references/cbeta/T10n0279.xml",
+    "sha256": "9d3de2c63a3eca5665352d12fb3a291e99a898cf470e1c0c71491731aa998d07",
+    "bytes": 4579678
+   },
+   "chang": {
+    "path": "data/references/cbeta/T01n0001.xml",
+    "sha256": "3f051c62f20b08c33f42dbe7511e0bc7f25ddb2087f4c3f98e3d26d2678e1f6d",
+    "bytes": 3093389
+   },
+   "zhong": {
+    "path": "data/references/cbeta/T01n0026.xml",
+    "sha256": "011d05d5c42dcf9ecabbd3414d9b05315cb4512627b43c92ff887f6700c906e9",
+    "bytes": 6909438
+   },
+   "za": {
+    "path": "data/references/cbeta/T02n0099.xml",
+    "sha256": "6cb6d3371943705c712909ea66d48cccec0ec42a1380aab55cc15e0b4750ab73",
+    "bytes": 6349589
+   },
+   "zengyi": {
+    "path": "data/references/cbeta/T02n0125.xml",
+    "sha256": "686f15376460ffcdcf2cb0909744249a824159dd1224baa35a5923f2015ce1c0",
+    "bytes": 7464214
+   },
+   "dapin": {
+    "path": "data/references/cbeta/T08n0223.xml",
+    "sha256": "d248be9f01d1494a2d096fcf51fb1ba81402e04ebb963cdbb2ec8824601ef5ca",
+    "bytes": 4240124
+   }
+  }
+ },
+ "matrix": {
+  "四念處": {
+   "t279": 2,
+   "chang": 15,
+   "zhong": 61,
+   "za": 139,
+   "zengyi": 0,
+   "dapin": 365
+  },
+  "四正勤": {
+   "t279": 2,
+   "chang": 1,
+   "zhong": 4,
+   "za": 3,
+   "zengyi": 0,
+   "dapin": 25
+  },
+  "四如意足": {
+   "t279": 0,
+   "chang": 0,
+   "zhong": 23,
+   "za": 13,
+   "zengyi": 0,
+   "dapin": 32
+  },
+  "五根": {
+   "t279": 5,
+   "chang": 9,
+   "zhong": 26,
+   "za": 39,
+   "zengyi": 24,
+   "dapin": 37
+  },
+  "五力": {
+   "t279": 2,
+   "chang": 6,
+   "zhong": 20,
+   "za": 11,
+   "zengyi": 7,
+   "dapin": 33
+  },
+  "覺支": {
+   "t279": 0,
+   "chang": 0,
+   "zhong": 79,
+   "za": 65,
+   "zengyi": 0,
+   "dapin": 0
+  },
+  "七菩提分": {
+   "t279": 3,
+   "chang": 0,
+   "zhong": 0,
+   "za": 0,
+   "zengyi": 0,
+   "dapin": 0
+  },
+  "八正道": {
+   "t279": 1,
+   "chang": 0,
+   "zhong": 3,
+   "za": 47,
+   "zengyi": 2,
+   "dapin": 0
+  },
+  "四聖諦": {
+   "t279": 17,
+   "chang": 2,
+   "zhong": 26,
+   "za": 105,
+   "zengyi": 0,
+   "dapin": 12
+  },
+  "十八空": {
+   "t279": 0,
+   "chang": 0,
+   "zhong": 0,
+   "za": 0,
+   "zengyi": 0,
+   "dapin": 10
+  },
+  "六波羅蜜": {
+   "t279": 8,
+   "chang": 0,
+   "zhong": 0,
+   "za": 0,
+   "zengyi": 2,
+   "dapin": 271
+  }
+ },
+ "pairs": [
+  {
+   "id": "qijuezhi",
+   "title": "七觉支：禅法机制 × 法性悟入",
+   "non_buddhist_side": "za",
+   "non_buddhist": [
+    {
+     "source": "za",
+     "lb": "0189b14",
+     "text": "未起念覺支不起，已起念覺支則退；未起擇法、精進、猗、喜、定、捨覺支不起，已起擇法、精進、猗、喜、定、捨覺支則退。「若比丘正思"
+    }
+   ],
+   "buddhist": [
+    {
+     "source": "t279",
+     "lb": "0066a18",
+     "text": "如來所轉妙法輪，一切皆是菩提分，若能聞已悟法性，如是之人常見佛。不見十力空如幻"
+    }
+   ],
+   "analysis": "同一套觉支名目（念→擇法→精進→猗→喜→定→捨），雜阿含把它编入**起灭机制**（未起不起、已起则退——对治五盖的操作手册）；華嚴說「如來所轉妙法輪，一切皆是菩提分，若能聞已悟法性」——菩提分从禅修清单升为**法性论断**（闻即悟性）。共享清单、功能重置：这是 D1「共享清单」判的最干净标本。"
+  },
+  {
+   "id": "nianchu",
+   "title": "四念处：观身如身 × 华严念处段",
+   "non_buddhist_side": "zhong",
+   "non_buddhist": [
+    {
+     "source": "zhong",
+     "lb": "0563a06",
+     "text": "我本為汝說四念處，觀身如身，觀覺、心、法如法。阿難！此四念"
+    }
+   ],
+   "buddhist": [
+    {
+     "source": "t279",
+     "lb": "0112b12",
+     "text": "四念處、四正勤"
+    }
+   ],
+   "analysis": "中阿含的四念处是**身受心法的如实观**（觀身如身的重复强调）；華嚴中「四念處」出现两次，被纳入菩萨行门清单——名目保留、位置改变：从出世道的核心操作变成无尽行门之一。"
+  },
+  {
+   "id": "liudu_shidu",
+   "title": "六波罗蜜 → 十波罗蜜：名相扩容",
+   "non_buddhist_side": "dapin",
+   "non_buddhist": [
+    {
+     "source": "dapin",
+     "lb": "0217c02",
+     "text": "結跏趺坐說六波羅蜜。眾生聞者必得阿耨多羅三藐三菩提。復至十方如恒河沙等諸佛"
+    }
+   ],
+   "buddhist": [
+    {
+     "source": "t279",
+     "lb": "0183a20",
+     "text": "十波羅蜜中，檀波羅蜜增上；餘波羅蜜非不修行，但隨力隨分。是菩薩隨所"
+    }
+   ],
+   "analysis": "大品般若以六波罗蜜为纲（化佛宣说）；華嚴十地位中扩为**十波罗蜜**且逐地配属（檀增上→余随力随分）——同一 波罗蜜清单的**扩容与配位**：般若给了清单，华严给了位次分配表。这是 D1 里「继承并扩容」而非仅「共享」的一例。"
+  }
+ ]
+}

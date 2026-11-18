@@ -47,6 +47,7 @@ D4OPP = ROOT / "data" / "research" / "d4_opposition.json"
 T6HY = ROOT / "data" / "research" / "t6_huayong.json"
 CEXP = ROOT / "data" / "research" / "c_expand.json"
 CDEEP = ROOT / "data" / "research" / "c_deepen.json"
+D1AG = ROOT / "data" / "research" / "d1_agama.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1673,6 +1674,43 @@ def render_c_deepen(cd):
     return "\n".join(out)
 
 
+def render_d1_agama(d1):
+    """§17.49 — D1 复跑：阿含/般若 × 華嚴 共享名目（实测 A）。"""
+    out = []
+    out.append("§7 的「阿含／般若：登记 B」由此升为实测：四阿含＋大品般若（"
+               "T08n0223，本批入库）全部在库，三十七道品系名目逐词计数"
+               "（含异形：覺支／七菩提分），另有三组双侧引文。计数为量级参考"
+               "（`data/research/d1_agama.json`）。")
+    out.append("")
+    names = {"t279": "華嚴", "chang": "長阿含", "zhong": "中阿含",
+             "za": "雜阿含", "zengyi": "增一", "dapin": "大品般若"}
+    keys = list(d1["meta"]["sources"])
+    out.append("| 名目 | " + " | ".join(names[k] for k in keys) + " |")
+    out.append("|---|" + "---:|" * len(keys))
+    for tkw, row in d1["matrix"].items():
+        out.append(f"| {tkw} | " + " | ".join(str(row[k]) for k in keys) + " |")
+    out.append("")
+    for pair in d1["pairs"]:
+        out.append(f"**{esc(pair['title'])}** "
+                   f"`{pair['non_buddhist'][0]['lb']}` ↔ `{pair['buddhist'][0]['lb']}`")
+        out.append("")
+        for q in pair["non_buddhist"]:
+            out.append(f"- {esc(names[q['source']])}：{esc(q['text'])}")
+        for q in pair["buddhist"]:
+            out.append(f"- 華嚴：{esc(q['text'])}")
+        out.append("")
+        out.append(f"　{esc(pair['analysis'])}")
+        out.append("")
+    out.append(
+        "**判断**：名目计数给出两个分布事实——①「覺支」在四阿含近 150 见而"
+        "華嚴为 0（華嚴改用「菩提分」系词，七菩提分 ×3）：**异形词分布本身"
+        "就是继承与改写的证据**；②「六波羅蜜」大品 271 见、華嚴 8 见且扩为"
+        "十度配位——般若给清单、华严给位次分配表。三组对读确立 D1 的三种"
+        "形态：**功能重置**（觉支）、**位置改变**（念处）、**继承扩容**"
+        "（六→十度）。D1 从登记 B 升实测 A。〔本文判断〕")
+    return "\n".join(out)
+
+
 def render_r4(lt):
     """R4 仪式·课诵：四十二字觀門（掛 §17.18 影响面内，沿 R2 接层先例）。"""
     vs = lt["quotes"]
@@ -2306,6 +2344,7 @@ def main():
     t6hy = json.loads(T6HY.read_text(encoding="utf-8")) if T6HY.exists() else None
     cexp = json.loads(CEXP.read_text(encoding="utf-8")) if CEXP.exists() else None
     cdeep = json.loads(CDEEP.read_text(encoding="utf-8")) if CDEEP.exists() else None
+    d1ag = json.loads(D1AG.read_text(encoding="utf-8")) if D1AG.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -2361,6 +2400,7 @@ def main():
         "t6huayong": render_t6_huayong(t6hy) if t6hy else "",
         "cexpand": render_c_expand(cexp) if cexp else "",
         "cdeepen": render_c_deepen(cdeep) if cdeep else "",
+        "d1agama": render_d1_agama(d1ag) if d1ag else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",

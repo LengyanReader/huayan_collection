@@ -74,6 +74,7 @@ def main() -> int:
         "zhongyong": load_mandoku("KR1h0041", "data/references/rujia_zhongyong/KR1h0041_002.txt"),
         "xunzi": load_mandoku("KR3a0002", "data/references/zhuzi_xunzi/KR3a0002_015.txt"),
         "huainanzi": load_mandoku("KR3j0010", "data/references/zhuzi_huainanzi/KR3j0010_020.txt"),
+        "huainanzi2": load_mandoku("KR3j0010_11", "data/references/zhuzi_huainanzi/KR3j0010_011.txt"),
         "isha": Doc("īśā", ROOT / "data/references/yindu_ishaupanisad/ishaupanisad.txt"),
         "yoga": Doc("YS", ROOT / "data/references/sanskrit/yoga_sutra.txt"),
     }
@@ -90,6 +91,7 @@ def main() -> int:
             "tradition": "道家",
             "non_buddhist": [
                 slice_("laozi", "人法地地法天天法道道法自然", "道法自然"),
+                slice_("laozi", "有物混成先天地生", "可以爲天下母"),
             ],
             "buddhist": [
                 slice_("t279", "一切諸佛法如是悉坐菩提樹王下", "住於道"),
@@ -168,6 +170,7 @@ def main() -> int:
             "tradition": "诸子",
             "non_buddhist": [
                 slice_("huainanzi", "萬物有以相連精祲", "有以相蕩也"),
+                slice_("huainanzi2", "徃古來今謂之宙四方上下謂之宇", "莫知其所"),
             ],
             "buddhist": [
                 slice_("t279", "一微塵中入三昧成就一切微塵定", "於一普現難思剎"),
@@ -188,6 +191,7 @@ def main() -> int:
             "non_buddhist": [
                 slice_("isha", "yastusarvāṇibhūtānyātmanyevānupaśyati",
                        "tatonavijugupsate"),
+                slice_("isha", "īśāvāsyamidaṃsarvaṃ", "jagatyāṃjagat"),
             ],
             "buddhist": [
                 slice_("t279", "佛身充滿於法界普現一切眾生前", "而恒處此菩提座"),
@@ -227,6 +231,30 @@ def main() -> int:
         },
     ]
 
+    docs["jain"] = Doc("Utt", ROOT / "data/references/prakrt_uttaradhyayana/uttaradhyayana.txt")
+    groups.append({
+        "id": "jain_karma",
+        "title": "耆那教「業繫」× 華嚴「業力生剎」",
+        "tradition": "印度·耆那教",
+        "non_buddhist": [
+            slice_("jain", "yantidussīlaṃ", "kammāṇibalavantihi"),
+        ],
+        "buddhist": [
+            slice_("t279", "一切諸國土皆隨業力生", "彼心令剎海一切成染污"),
+        ],
+        "level": "功能同构",
+        "direction": "平行发展（同沙门生态、针锋相对的教义对手；佛教文献记耆那"
+                    "为六大师之一，但《華嚴》无直接引用证据）。",
+        "analysis": ("Uttarādhyayana 以业（kammāṇi）为系缚力量（邪戒者业势强）；"
+                    "華嚴〈華藏世界品〉言「一切諸國土皆隨業力生……彼心令剎海"
+                    "一切成染污」——两者都把**业**立为世界图景的动力。"
+                    "不在场的那半：耆那的业是**物质微粒**（粘着 jīva、须苦行"
+                    "剥除——业是实体），華嚴的业由**心**造（彼心令剎海染污——"
+                    "业是缘起心行，无实体可得）；于是耆那的解脱=业剥离的"
+                    "苦行技术，華嚴的解脱=心转则剎转的观行——同题异构的"
+                    "两个业力宇宙论。〔本文判断〕"),
+    })
+
     data = {
         "meta": {
             "date": date.today().isoformat(),
@@ -246,6 +274,8 @@ def main() -> int:
                                  "sha256": sha256((ROOT / "data/references/yindu_ishaupanisad/ishaupanisad.txt").read_bytes())},
                 "yogasutra": {"path": "data/references/sanskrit/yoga_sutra.txt",
                               "sha256": sha256((ROOT / "data/references/sanskrit/yoga_sutra.txt").read_bytes())},
+                "jain": {"path": "data/references/prakrt_uttaradhyayana/uttaradhyayana.txt",
+                         "sha256": sha256((ROOT / "data/references/prakrt_uttaradhyayana/uttaradhyayana.txt").read_bytes())},
             },
             "discipline": "非佛藏文本一律类型判；负向（不在场的那半）如实记录。",
         },
