@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""现代研究文献对话层（§17.50）——书目经网络检索核实，本文标注接点。
+
+诚实纪律：这些条目只做**书目核实**（检索可证：出版社/年份/ISBN），
+本文未通读原文——每条标〔书目核实·未通读〕；「对话」仅指本文数据层
+与其主题的对应关系，不冒充已吸收其论点。
+"""
+from __future__ import annotations
+
+import json
+from datetime import date
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "data" / "research" / "scholarship.json"
+
+WORKS = [
+    {
+        "id": "kamada1965",
+        "work": "鎌田茂雄《中國華嚴思想史の研究》",
+        "pub": "東京大學出版會（東京大學東洋文化研究所報告），1965，A5·670 頁，ISBN 978-4-13-010007-6",
+        "verified": "检索核实（出版社页/Google Books/书目）",
+        "theme": "中国华严思想通史",
+        "touch": "本文 §2–§6 的版本史与 §9 教判数据可为其提供逐字回源的地基层",
+        "note": "〔书目核实·未通读〕",
+    },
+    {
+        "id": "kimura1979",
+        "work": "木村清孝《中國華嚴思想史》",
+        "pub": "東京大學出版會，1979；李惠英中译本行世",
+        "verified": "检索核实（BDK 访谈页/CiNii 目次/百度百科）",
+        "theme": "华严经典的成立与流布、华严经观展开",
+        "touch": "其目次第 1–2 章（经典成立/传译）与本文 §2 版本群、§3 三十二部题录直接同域",
+        "note": "〔书目核实·未通读〕",
+    },
+    {
+        "id": "hamar2007",
+        "work": "Imre Hamar (ed.), Reflecting Mirrors: Perspectives on Huayan Buddhism",
+        "pub": "Harrassowitz Verlag（Asiatische Forschungen），Wiesbaden, 2007，ISBN 978-3-447-05509-3",
+        "verified": "检索核实（出版社/Internet Archive/WorldCat）",
+        "theme": "西方语言首部华严宗综合研究（法藏/宗密/东亚流传）",
+        "touch": "其宗密、法藏章与本文 §9 教判、§17.38 D4 分齊章数据互补",
+        "note": "〔书目核实·未通读〕",
+    },
+    {
+        "id": "wei1998",
+        "work": "魏道儒《中國華嚴宗通史》",
+        "pub": "江蘇古籍出版社，1998（ISBN 7805199388）；鳳凰出版社 2008 修訂版",
+        "verified": "检索核实（WorldCat/南京大学 CSSRAC 书目页）",
+        "theme": "从华严经学到华严宗学再到禅宗中的华严学",
+        "touch": "其主线与本文 §10 先例与影响、§17.20 S2 王室面可对表",
+        "note": "〔书目核实·未通读〕",
+    },
+    {
+        "id": "kamada1998",
+        "work": "鎌田茂雄《華厳の思想》",
+        "pub": "講談社学術文庫，1998",
+        "verified": "检索核实（书目页）",
+        "theme": "华严思想通论（面向学界与公众）",
+        "touch": "其思想框架与本文 §17 的七面分类可对照",
+        "note": "〔书目核实·未通读〕",
+    },
+    {
+        "id": "suzuki1949",
+        "work": "鈴木大拙編《梵文華嚴經入法界品》",
+        "pub": "1949 年刊（非卖品）",
+        "verified": "检索核实（书目页）",
+        "theme": "入法界品梵本校订",
+        "touch": "本文 §17.24–17.28 的五十参梵本同指判使用 Vaidya 1960 本——铃木本为平行校本，待比勘",
+        "note": "〔书目核实·未通读〕",
+    },
+    {
+        "id": "gomez_gandavyuha",
+        "work": "Luis Gómez, Selected Verses from the Gaṇḍavyūha: Text, Critical Apparatus and Translation",
+        "pub": "博士论文（Yale）",
+        "verified": "检索核实（书目提及）",
+        "theme": "入法界品偈颂精校与英译",
+        "touch": "与本文 §17.17 末会链式对齐、§17.22 逐参对照同为偈颂层工作",
+        "note": "〔书目核实·未通读〕",
+    },
+]
+
+
+def main() -> int:
+    data = {
+        "meta": {
+            "date": date.today().isoformat(),
+            "title": "现代研究文献对话层（书目核实）",
+            "method": ("每条经网络检索核实书目信息（出版社/年份/ISBN 可证）；"
+                       "「对话」仅指本文数据层与其**主题**的对应关系——"
+                       "本文未通读原文，不冒充已吸收其论点。〔书目核实·未通读〕"
+                       "逐条标注于 note。"),
+            "n": len(WORKS),
+        },
+        "works": WORKS,
+    }
+    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n",
+                   encoding="utf-8")
+    print("written", OUT, f"({len(WORKS)} works)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

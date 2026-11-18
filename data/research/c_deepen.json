@@ -80,6 +80,11 @@
      "source": "lunyu2",
      "lb": "—",
      "text": "七十而從心所欲，不踰矩"
+    },
+    {
+     "source": "lunyu3",
+     "lb": "—",
+     "text": "吾道一以貫之"
     }
    ],
    "buddhist": [
@@ -87,6 +92,11 @@
      "source": "t279",
      "lb": "0133a15",
      "text": "三世諸佛從初發心、修菩薩行、成最正覺乃至示現入般涅槃"
+    },
+    {
+     "source": "t279",
+     "lb": "0133c23",
+     "text": "一身充滿一切法界；得大智慧，入一切智所行之境，善能分別無量無邊法界句義"
     }
    ],
    "level": "结构同构",
@@ -99,9 +109,14 @@
    "tradition": "儒家",
    "non_buddhist": [
     {
-     "source": "zhongyong",
+     "source": "zhongyong2",
      "lb": "—",
      "text": "誠者天之道也誠之者人之道也誠者不勉而中不思而得從容中道聖人也"
+    },
+    {
+     "source": "zhongyong",
+     "lb": "—",
+     "text": "致中和天地位焉萬物育焉"
     }
    ],
    "buddhist": [
@@ -124,6 +139,11 @@
      "source": "xunzi",
      "lb": "—",
      "text": "未得道而求道者謂之虚壹而靜"
+    },
+    {
+     "source": "xunzi",
+     "lb": "—",
+     "text": "凡觀物有疑中心不定則外物不淸"
     }
    ],
    "buddhist": [
@@ -151,6 +171,11 @@
      "source": "huainanzi2",
      "lb": "—",
      "text": "徃古來今謂之宙四方上下謂之宇道在其間而莫知其所"
+    },
+    {
+     "source": "huainanzi3",
+     "lb": "—",
+     "text": "天地宇宙一人之身也六合之内一人之制也"
     }
    ],
    "buddhist": [
@@ -158,6 +183,11 @@
      "source": "t279",
      "lb": "0074a05",
      "text": "一微塵中入三昧，成就一切微塵定，而彼微塵亦不增，於一普現難思剎"
+    },
+    {
+     "source": "t279",
+     "lb": "0036c17",
+     "text": "或從心海生，隨心所解住，如幻無處所，一切是分別"
     }
    ],
    "level": "功能同构",
@@ -222,6 +252,11 @@
      "source": "jain",
      "lb": "—",
      "text": "yantidussīlaṃ|kammāṇibalavantihi"
+    },
+    {
+     "source": "jain",
+     "lb": "—",
+     "text": "dhammosuddhassaciṭhaī/nivvāṇaṃparamaṃjāi"
     }
    ],
    "buddhist": [
@@ -229,6 +264,11 @@
      "source": "t279",
      "lb": "0038b10",
      "text": "一切諸國土，皆隨業力生，汝等應觀察，轉變相如是。染污諸眾生，業惑纏可怖，彼心令剎海，一切成染污"
+    },
+    {
+     "source": "t279",
+     "lb": "0084c05",
+     "text": "了知眾生、國土、世界、業行、果報、生死、涅槃。是為十。佛子！此菩薩應勸學十法"
     }
    ],
    "level": "功能同构",
@@ -238,6 +278,6 @@
  ],
  "summary": {
   "groups": 8,
-  "quotes_total": 20
+  "quotes_total": 28
  }
 }

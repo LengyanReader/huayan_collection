@@ -48,6 +48,7 @@ T6HY = ROOT / "data" / "research" / "t6_huayong.json"
 CEXP = ROOT / "data" / "research" / "c_expand.json"
 CDEEP = ROOT / "data" / "research" / "c_deepen.json"
 D1AG = ROOT / "data" / "research" / "d1_agama.json"
+SCHOL = ROOT / "data" / "research" / "scholarship.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1649,9 +1650,9 @@ def render_c_expand(cx):
 def render_c_deepen(cd):
     """§17.48 — C 面深化：七典实质对读（补齐 11 典每组对读）。"""
     out = []
-    out.append("§17.26 四组之后，老、論語、中庸、荀子、淮南、奧義書、瑜伽經七典"
-               "此前只有语汇矩阵与结构锚——本节每典补一组双侧引文＋分析，"
-               "十一典至此**每组皆有实质对读**。判读一律类型判＋方向，"
+    out.append("§17.26 四组之后，老、論語、中庸、荀子、淮南、奧義書、瑜伽經、"
+               "耆那教八典此前只有语汇矩阵与结构锚——本节每典补一组双侧引文＋分析，"
+               "十二典至此**每组皆有实质对读**。判读一律类型判＋方向，"
                "分析保留「不在场的那半」。引文起止锚切片，lb/位置可回源"
                "（`data/research/c_deepen.json`；mandoku 源剥 ¶ 后切片）。")
     out.append("")
@@ -1666,7 +1667,7 @@ def render_c_deepen(cd):
         out.append(f"　{esc(g['analysis'])}")
         out.append("")
     out.append(
-        "**合计**：C 面实质对读 **11 组**（§17.26 四组＋本节七组）**33 条双侧引文**；"
+        "**合计**：C 面实质对读 **12 组**（§17.26 四组＋本节八组）**35 条双侧引文**；"
         "八典从「登记层」全部进入「对读层」。每组的方向判均为**平行发展**（无接触"
         "证据），同构层级多在功能/概念层——与 §17.26 道教義樞组（移植，佛教→道教）"
         "方向相反：诸子与印度诸典对华严是**无影响的平行**，道教義樞是**有影响的接收**"
@@ -1708,6 +1709,31 @@ def render_d1_agama(d1):
         "十度配位——般若给清单、华严给位次分配表。三组对读确立 D1 的三种"
         "形态：**功能重置**（觉支）、**位置改变**（念处）、**继承扩容**"
         "（六→十度）。D1 从登记 B 升实测 A。〔本文判断〕")
+    return "\n".join(out)
+
+
+def render_scholarship(sc):
+    """§17.50 — 现代研究文献对话层（书目核实）。"""
+    out = []
+    out.append("此前本文引用的二手来源只有维基与 84000——学术位阶缺一层"
+               "**现代研究对话**。下表七种研究文献均经网络检索核实书目"
+               "（出版社/年份/ISBN 可证）；诚实纪律：「对话」仅指本文数据层"
+               "与其**主题**的对应关系，本文未通读原文，不冒充已吸收其论点——"
+               "每条标〔书目核实·未通读〕。")
+    out.append("")
+    out.append("| 研究文献 | 出版信息 | 主题 | 与本文数据的接点 |")
+    out.append("|---|---|---|---|")
+    for w in sc["works"]:
+        out.append(f"| {esc(w['work'])} | {esc(w['pub'])} | {esc(w['theme'])} | "
+                   f"{esc(w['touch'])} |")
+    out.append("")
+    out.append(
+        "**判断**：这层不是装饰——它画出本文的**对话面**：日本两套通史"
+        "（鎌田 1965/木村 1979）覆盖本文 §2–§6 的同域，西方综合卷（Hamar 2007）"
+        "与本文 §9/§17.38 互补，魏道儒通史与 §10/§17.20 可对表；梵本线"
+        "（鈴木 1949/Gómez）与本文 §17.24–17.28 的 Vaidya 本同题——"
+        "**铃木本与 Vaidya 本的比勘**是梵本层下一个可执行的深化点。"
+        "〔书目核实·未通读〕")
     return "\n".join(out)
 
 
@@ -2345,6 +2371,7 @@ def main():
     cexp = json.loads(CEXP.read_text(encoding="utf-8")) if CEXP.exists() else None
     cdeep = json.loads(CDEEP.read_text(encoding="utf-8")) if CDEEP.exists() else None
     d1ag = json.loads(D1AG.read_text(encoding="utf-8")) if D1AG.exists() else None
+    schol = json.loads(SCHOL.read_text(encoding="utf-8")) if SCHOL.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -2401,6 +2428,7 @@ def main():
         "cexpand": render_c_expand(cexp) if cexp else "",
         "cdeepen": render_c_deepen(cdeep) if cdeep else "",
         "d1agama": render_d1_agama(d1ag) if d1ag else "",
+        "scholarship": render_scholarship(schol) if schol else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",

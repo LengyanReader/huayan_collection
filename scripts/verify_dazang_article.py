@@ -2596,14 +2596,17 @@ def main() -> int:
     cd_block = grab("cdeepen")
     if len(cd["groups"]) != 8:
         fail(f"C-deepen groups {len(cd['groups'])} != 8")
-    if cd["summary"]["quotes_total"] != 20:
-        fail(f"C-deepen quotes {cd['summary']['quotes_total']} != 20")
+    if cd["summary"]["quotes_total"] != 28:
+        fail(f"C-deepen quotes {cd['summary']['quotes_total']} != 28")
     _cd_files = {
         "t279": "cbeta/T10n0279.xml", "laozi": "daojia_laozi/KR5c0045_001.txt",
         "lunyu": "rujia_lunyu/KR1h0004_014.txt", "lunyu2": "rujia_lunyu/KR1h0004_002.txt",
-        "zhongyong": "rujia_zhongyong/KR1h0041_002.txt",
+        "lunyu3": "rujia_lunyu/KR1h0004_004.txt",
+        "zhongyong": "rujia_zhongyong/KR1h0041_001.txt",
+        "zhongyong2": "rujia_zhongyong/KR1h0041_002.txt",
         "xunzi": "zhuzi_xunzi/KR3a0002_015.txt",
         "huainanzi": "zhuzi_huainanzi/KR3j0010_020.txt",
+        "huainanzi3": "zhuzi_huainanzi/KR3j0010_008.txt",
         "huainanzi2": "zhuzi_huainanzi/KR3j0010_011.txt",
         "isha": "yindu_ishaupanisad/ishaupanisad.txt",
         "yoga": "sanskrit/yoga_sutra.txt",
@@ -2657,6 +2660,39 @@ def main() -> int:
     if "D1 從登記 B 升實測 A" not in d1_block.replace(" ", "") and             "登记 B 升实测 A" not in d1_block:
         fail("§17.49 upgrade statement missing")
     ok(f"§17.49 D1 rerun: matrix {len(d1['matrix'])} terms / 3 pairs re-sliced")
+
+    # --- §17.50 scholarship: 7 verified works ---
+    sch_path = ROOT / "data" / "research" / "scholarship.json"
+    if not sch_path.exists():
+        fail("scholarship.json missing")
+    sc7 = json.loads(sch_path.read_text(encoding="utf-8"))
+    if len(sc7["works"]) != 7:
+        fail(f"scholarship works {len(sc7['works'])} != 7")
+    sch_block = grab("scholarship")
+    for w in sc7["works"]:
+        if w["work"][:16] not in sch_block:
+            fail(f"scholarship work missing: {w['id']}")
+        if "未通读" not in w["note"]:
+            fail(f"scholarship honesty marker missing: {w['id']}")
+    if "书目核实·未通读" not in sch_block:
+        fail("§17.50 honesty statement missing")
+    ok(f"§17.50 scholarship: {len(sc7['works'])} works verified bibliographically")
+
+    # --- 丹珠尔 content sample: 8/8 with sizes ---
+    tq3 = json.loads(tq_path.read_text(encoding="utf-8"))
+    n_sample = sum(1 for w in tq3["works"] if w.get("content_sample", {}).get("chars"))
+    if n_sample != 8:
+        fail(f"Tanjur content samples {n_sample} != 8")
+    w93 = next(w for w in tq3["works"] if w["D"] == 3993)
+    if w93["content_sample"]["chars"] < 500000:
+        fail("D3993 size assertion (>=500K) failed")
+    w99 = next(w for w in tq3["works"] if w["D"] == 3999)
+    if w99["content_sample"]["chars"] > 20000:
+        fail("D3999 size assertion (small) failed")
+    if "内容层抽样" not in md:
+        fail("§17.35 content-sample statement missing")
+    ok(f"§17.35+ content sampling: 8/8 works (D3993 {w93['content_sample']['chars']:,}字, "
+       f"D3999 {w99['content_sample']['chars']:,}字)")
 
     print("=" * 40)
     print("ALL Dazang article checks passed")

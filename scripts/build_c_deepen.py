@@ -71,10 +71,14 @@ def main() -> int:
         "laozi": load_mandoku("KR5c0045", "data/references/daojia_laozi/KR5c0045_001.txt"),
         "lunyu": load_mandoku("KR1h0004", "data/references/rujia_lunyu/KR1h0004_014.txt"),
         "lunyu2": load_mandoku("KR1h0004_2", "data/references/rujia_lunyu/KR1h0004_002.txt"),
-        "zhongyong": load_mandoku("KR1h0041", "data/references/rujia_zhongyong/KR1h0041_002.txt"),
+        "lunyu3": load_mandoku("KR1h0004_4", "data/references/rujia_lunyu/KR1h0004_004.txt"),
+        "zhongyong": load_mandoku("KR1h0041", "data/references/rujia_zhongyong/KR1h0041_001.txt"),
+        "zhongyong2": load_mandoku("KR1h0041_2", "data/references/rujia_zhongyong/KR1h0041_002.txt"),
         "xunzi": load_mandoku("KR3a0002", "data/references/zhuzi_xunzi/KR3a0002_015.txt"),
+        "zhongyong": load_mandoku("KR1h0041a", "data/references/rujia_zhongyong/KR1h0041_001.txt"),
         "huainanzi": load_mandoku("KR3j0010", "data/references/zhuzi_huainanzi/KR3j0010_020.txt"),
         "huainanzi2": load_mandoku("KR3j0010_11", "data/references/zhuzi_huainanzi/KR3j0010_011.txt"),
+        "huainanzi3": load_mandoku("KR3j0010_8", "data/references/zhuzi_huainanzi/KR3j0010_008.txt"),
         "isha": Doc("īśā", ROOT / "data/references/yindu_ishaupanisad/ishaupanisad.txt"),
         "yoga": Doc("YS", ROOT / "data/references/sanskrit/yoga_sutra.txt"),
     }
@@ -112,9 +116,11 @@ def main() -> int:
             "non_buddhist": [
                 slice_("lunyu", "不怨天不尤人下學而上達", "知我者其天乎"),
                 slice_("lunyu2", "七十而從心所欲不踰矩", "不踰矩"),
+                slice_("lunyu3", "吾道一以貫之", "一以貫之"),
             ],
             "buddhist": [
                 slice_("t279", "三世諸佛從初發心修菩薩行成最正覺", "乃至示現入般涅槃"),
+                slice_("t279", "一身充滿一切法界得大智慧", "無量無邊法界句義"),
             ],
             "level": "结构同构",
             "direction": "平行发展（无接触证据）。",
@@ -130,7 +136,8 @@ def main() -> int:
             "title": "中庸「誠者天之道」× 華嚴「寂然恒不動」",
             "tradition": "儒家",
             "non_buddhist": [
-                slice_("zhongyong", "誠者天之道也誠之者人之道也", "從容中道聖人也"),
+                slice_("zhongyong2", "誠者天之道也誠之者人之道也", "從容中道聖人也"),
+                slice_("zhongyong", "致中和天地位焉萬物育焉", "萬物育焉"),
             ],
             "buddhist": [
                 slice_("t279", "而佛寂然恒不動此", "寂靜解脫天人主"),
@@ -151,6 +158,7 @@ def main() -> int:
             "tradition": "诸子",
             "non_buddhist": [
                 slice_("xunzi", "未得道而求道者謂之", "虚壹而靜"),
+                slice_("xunzi", "凡觀物有疑中心不定", "則外物不淸"),
             ],
             "buddhist": [
                 slice_("t279", "何能令他心得清淨", "重自勸勵"),
@@ -171,9 +179,11 @@ def main() -> int:
             "non_buddhist": [
                 slice_("huainanzi", "萬物有以相連精祲", "有以相蕩也"),
                 slice_("huainanzi2", "徃古來今謂之宙四方上下謂之宇", "莫知其所"),
+                slice_("huainanzi3", "天地宇宙一人之身也", "一人之制也"),
             ],
             "buddhist": [
                 slice_("t279", "一微塵中入三昧成就一切微塵定", "於一普現難思剎"),
+                slice_("t279", "或從心海生隨心所解住如幻無處所", "一切是分別"),
             ],
             "level": "功能同构",
             "direction": "平行发展（无接触证据）。",
@@ -238,9 +248,11 @@ def main() -> int:
         "tradition": "印度·耆那教",
         "non_buddhist": [
             slice_("jain", "yantidussīlaṃ", "kammāṇibalavantihi"),
+            slice_("jain", "dhammosuddhassaciṭhaī", "nivvāṇaṃparamaṃjāi"),
         ],
         "buddhist": [
             slice_("t279", "一切諸國土皆隨業力生", "彼心令剎海一切成染污"),
+            slice_("t279", "了知眾生國土世界業行果報生死涅槃", "應勸學十法"),
         ],
         "level": "功能同构",
         "direction": "平行发展（同沙门生态、针锋相对的教义对手；佛教文献记耆那"
