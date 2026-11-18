@@ -2304,6 +2304,7 @@ def main():
         "t9_pin6": table_t9({"cases": probes["t9_pin"]["cases"][5:6]}),
         "t9_pin7": table_t9({"cases": probes["t9_pin"]["cases"][6:7]}),
         "t9_pin8": table_t9({"cases": probes["t9_pin"]["cases"][7:8]}),
+        "t9_pin9": table_t9({"cases": probes["t9_pin"]["cases"][8:9]}),
         "d5": table_d5(probes),
         "p1": table_p1(probes),
         "t6": table_t6(implicit),
