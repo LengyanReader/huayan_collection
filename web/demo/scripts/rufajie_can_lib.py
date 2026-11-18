@@ -394,8 +394,9 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
             L.append('**%s**：（未取窗——该疏论于此参无独立名锚或残存未及，如实留空。）' % _src_label[k])
             L.append('')
             continue
-        L.append('**%s**（锚「%s」·%s · %d 字·程序取窗·句界截断·引前须对原书核）：' % (
-            _src_label[k], w.get('anchor', ''), w.get('page_ref', '') or '页码未录', w.get('cjk', 0)))
+        _p2 = '·二遍扫（类聚引）' if w.get('pass2') else ''
+        L.append('**%s**（锚「%s」·%s · %d 字·程序取窗%s·句界截断·引前须对原书核）：' % (
+            _src_label[k], w.get('anchor', ''), w.get('page_ref', '') or '页码未录', w.get('cjk', 0), _p2))
         L.append('')
         L.append('> ' + w['text'])
         L.append('')
@@ -446,6 +447,7 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
     L.append('- L.499（2026-11-17）：第四源《随疏演义钞》`T1736` 入 §三（40/54·钞于末会多总谈，部分窗为类聚引·已于源标签注明）。')
     if n == 2:
         L.append('- L.506（2026-11-18）：《华藏妙海》念佛法門四義＋德云与清凉对照入 §三（玄談整理版·海云对参2法门之专论）。')
+    L.append('- L.507（2026-11-18）：二遍扫恢复——钞 52/54→**54/54**·探玄记 13→**46/54**（pass2 类聚引已标）；仍 miss 8 处为探玄记未及之参（5/15/16/22/26/33/35/49·残存上限）。')
     L.append('- L.491（2026-11-16）：子页建立——程序汇编（主页 §参%d 照录＋行历数据卡＋四件套语料）；内容源批次 L.289–L.304（参批1-16）·'
              'L.316（参33 补卡）·L.407/L.413/L.415（行历·三译师名）·L.421/L.456（四件套语料库）。' % n)
     L.append('- 主页各参节后续修订后重跑 build 即自动同步本页 §一（运行时组装·无中间文件）。')

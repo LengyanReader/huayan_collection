@@ -97,7 +97,8 @@ EXTRA = {
     37: ['守護一切城'],
     38: ['開敷一切樹花主夜神', '開敷一切樹花', '開敷'],
     39: ['大願精進', '大願精進力'],
-    40: ['妙德圓滿神', '妙德圓滿'],
+    9: ['無勝幢'],
+    40: ['妙德圓滿神', '妙德圓滿', '嵐毘尼'],
     44: ['天主光'],
     45: ['遍友'],
     51: ['德生童子', '德生'],
@@ -174,7 +175,7 @@ def window(skey, pos, name):
 
 
 result = {'meta': {
-    'date': '2026-11-17', 'batch': 'L.493',
+    'date': '2026-11-18', 'batch': 'L.493-L.507',
     'sources': {k: v['label'] for k, v in SOURCES.items()},
     'band0': {k: v['band0'] for k, v in SOURCES.items()},
     'method': '逐卡单调游标（行历 54 卡次序）·候选名形长→短·NFKC 归一·句界截断 380·页码留痕',
@@ -193,6 +194,40 @@ for card in cards:
         entry[skey] = w
         SOURCES[skey]['cursor'] = pos + 1
     result['cards'][str(n)] = entry
+
+# L.507 二遍扫：miss 卡从头带重搜（钞多类聚引·不受单调游标约束；标 pass2）
+for card in cards:
+    n = card['card_no']
+    entry = result['cards'][str(n)]
+    for skey in ('shu', 'yan', 'lun', 'tan'):
+        if not entry[skey].get('miss'):
+            continue
+        S = SOURCES[skey]
+        names = []
+        if skey == 'tan' and n in md_alt60:
+            names.append(md_alt60[n])
+        if skey != 'tan' and n in md_alt:
+            names.append(md_alt[n])
+        if n in EXTRA:
+            names += EXTRA[n]
+        suf = ROLE_SUFX.get(card.get('role', ''), '')
+        base = (card.get('n60') if skey == 'tan' else card.get('n80')) or ''
+        if suf and base + suf not in names:
+            names.append(base + suf)
+        if base and base not in names:
+            names.append(base)
+        found = None
+        for nm in names:
+            if not nm:
+                continue
+            p = S['txt'].find(nm, S['band0'])
+            if p >= 0:
+                found = (p, nm)
+                break
+        if found:
+            w = window(skey, found[0], found[1])
+            w['pass2'] = True
+            entry[skey] = w
 
 cov = {k: sum(1 for e in result['cards'].values() if not e.get(k, {}).get('miss')) for k in ('shu', 'yan', 'lun', 'tan')}
 print('覆盖：疏 %d/54 · 钞 %d/54 · 论 %d/54 · 探 %d/54' % (cov['shu'], cov['yan'], cov['lun'], cov['tan']))
