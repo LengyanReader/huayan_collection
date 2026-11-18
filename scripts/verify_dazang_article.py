@@ -1157,11 +1157,11 @@ def main() -> int:
        f"pending 0 / gap 参 {g45s['no']} empty + 参 {b51['no']} 一句两名 / "
        f"50/50 rows witnessed")
 
-    # --- §17.30–17.32、§17.41、§17.42 T9 逐品科判：quotes re-located; 品次/科数/边界 assertions ---
+    # --- §17.30–17.32、§17.41–§17.43 T9 逐品科判：quotes re-located; 品次/科数/边界 assertions ---
     t9p_cases = probes["t9_pin"]["cases"]
-    if len(t9p_cases) != 5:
-        fail(f"§17.30–§17.32、§17.41、§17.42 must have 5 cases, got {len(t9p_cases)}")
-    for tag, case in zip(("§17.30", "§17.31", "§17.32", "§17.41", "§17.42"), t9p_cases):
+    if len(t9p_cases) != 6:
+        fail(f"§17.30–§17.32、§17.41–§17.43 must have 6 cases, got {len(t9p_cases)}")
+    for tag, case in zip(("§17.30", "§17.31", "§17.32", "§17.41", "§17.42", "§17.43"), t9p_cases):
         for q in case["quotes"]:
             if norm(q["text"]) not in probe_src[q["src"]]:
                 fail(f"{tag} quote missing from {q['src']}: {q['text'][:24]}")
@@ -1172,11 +1172,12 @@ def main() -> int:
     t9p3_block = grab("t9_pin3")
     t9p4_block = grab("t9_pin4")
     t9p5_block = grab("t9_pin5")
-    t9p_rows = sum(1 for blk in (t9p_block, t9p2_block, t9p3_block, t9p4_block, t9p5_block)
+    t9p6_block = grab("t9_pin6")
+    t9p_rows = sum(1 for blk in (t9p_block, t9p2_block, t9p3_block, t9p4_block, t9p5_block, t9p6_block)
                    for ln in blk.splitlines()
                    if ln.startswith("| ") and not ln.startswith("|---"))
     if t9p_rows != sum(len(c["rows"]) for c in t9p_cases) + len(t9p_cases):
-        fail("§17.30–17.32、§17.41、§17.42 tables != probes JSON rows")
+        fail("§17.30–17.32、§17.41–§17.43 tables != probes JSON rows")
     # 品1：品次自述、澄观品级十分、法藏无定数
     c1 = t9p_cases[0]
     if "世主妙嚴品" not in c1["pin"] or "世間淨眼品" not in c1["pin"] or "品1" not in c1["pin"]:
@@ -1324,21 +1325,65 @@ def main() -> int:
     for want in ("同数而切点相反", "十事与六段不是同一层", "性／種之别是第一手改订", "不得写成文本异同"):
         if want not in md:
             fail(f"§17.42 正文缺：{want}")
-    if "17.30" not in (t9.get("refs") or "") or "17.31" not in (t9.get("refs") or "") \
-            or "17.32" not in (t9.get("refs") or "") or "17.41" not in (t9.get("refs") or "") \
-            or "17.42" not in (t9.get("refs") or ""):
-        fail("ontology T9 refs must cite §17.30, §17.31, §17.32, §17.41 and §17.42")
-    if "### 17.30 T9 科判逐品" not in md or "### 17.31 T9 科判逐品" not in md \
-            or "### 17.32 T9 科判逐品" not in md or "### 17.41 T9 科判逐品" not in md \
-            or "### 17.42 T9 科判逐品" not in md:
-        fail("§17.30／§17.31／§17.32／§17.41／§17.42 headings missing")
+    # 品6：1+1+1 对 1+3、經來不盡同记、名相全异、第一会收束
+    c6 = t9p_cases[5]
+    for want in ("毘盧遮那品", "品2 末", "答前因問"):
+        if want not in c6["pin"]:
+            fail(f"§17.43 case pin 缺 {want}")
+    if "品6" not in c6["pin"]:
+        fail("§17.43 case must state 品6")
+    r6 = {item: (a, b) for item, a, b in c6["rows"]}
+    if not r6.get("品级科数", ("", ""))[0].startswith("3"):
+        fail("§17.43 澄观 品级科数 must be 3")
+    if not r6.get("品级科数", ("", ""))[1].startswith("4"):
+        fail("§17.43 法藏 段数 must be 4")
+    if "1+1+1" not in r6.get("切点", ("", ""))[0]:
+        fail("§17.43 澄观 切点 must be 1+1+1")
+    if "1+3" not in r6.get("切点", ("", ""))[1]:
+        fail("§17.43 法藏 切点 must be 1+3")
+    for want in ("勝音世界", "大威光"):
+        if want not in r6.get("名相（人／城／世界）", ("", ""))[0]:
+            fail(f"§17.43 澄观 名相缺 {want}")
+    for want in ("炎光城", "普莊嚴童子"):
+        if want not in r6.get("名相（人／城／世界）", ("", ""))[1]:
+            fail(f"§17.43 法藏 名相缺 {want}")
+    if "經來不盡" not in c6["quotes"][3]["text"]:
+        fail("§17.43 P53 缺「經來不盡」")
+    for want in ("一切功德山須彌勝雲佛", "名稱普聞蓮華眼幢佛"):
+        if want not in c6["quotes"][4]["text"]:
+            fail(f"§17.43 P54 四佛缺 {want}")
+    for want in ("第一總標佛號", "第六廣演法門"):
+        if want not in c6["quotes"][5]["text"]:
+            fail(f"§17.43 P55 初佛六分缺 {want}")
+    if "普莊嚴童子" not in c6["quotes"][7]["text"]:
+        fail("§17.43 P57 缺「普莊嚴童子」")
+    for want in ("一舉往時", "四場上佛出"):
+        if want not in c6["quotes"][8]["text"]:
+            fail(f"§17.43 P58 段1 内四缺 {want}")
+    for want in ("海中取性", "眷屬城嚴"):
+        if want not in c6["quotes"][9]["text"]:
+            fail(f"§17.43 P59 往處四缺 {want}")
+    if "經來不盡，故未有也" not in c6["quotes"][12]["text"]:
+        fail("§17.43 P62 缺「經來不盡，故未有也」")
+    for want in ("1+1+1 对 1+3", "經來不盡", "不判文本依赖", "名相全异属译名层"):
+        if want not in t9p6_block:
+            fail(f"§17.43 block 缺关键判语：{want}")
+    for want in ("切点再次落在相反一侧", "「經來不盡」两家同记", "不判谁承谁",
+                 "名相全异属译名层", "第一会六品的逐品对照至此收束"):
+        if want not in md:
+            fail(f"§17.43 正文缺：{want}")
+    if "17.42" not in (t9.get("refs") or "") or "17.43" not in (t9.get("refs") or ""):
+        fail("ontology T9 refs must cite §17.42 and §17.43")
+    if "### 17.42 T9 科判逐品" not in md or "### 17.43 T9 科判逐品" not in md:
+        fail("§17.42／§17.43 headings missing")
     if "### 17.29 未竟" not in md:
         fail("§17.29 未竟 heading missing (must stay last)")
-    ok(f"§17.30–§17.32、§17.41、§17.42 T9 逐品科判: {len(t9p_cases)} 品 / "
+    ok(f"§17.30–§17.32、§17.41–§17.43 T9 逐品科判: {len(t9p_cases)} 品 / "
        f"{sum(len(c['quotes']) for c in t9p_cases)} quotes re-located / "
        f"品1 澄观 10 vs 法藏 無定數 / 品2 澄观 6 vs 法藏品内 10（1:5 只对所在段） / "
        f"品3 澄观 6 vs 法藏 3–9 段共 7 / 品4 澄观 2 分＋十段 vs 法藏十名＋十门 / "
-       f"品5 澄观 3 分（2:1）vs 法藏 3 分（1:2）＋十事对六段（4+6）")
+       f"品5 澄观 3 分（2:1）vs 法藏 3 分（1:2）＋十事对六段（4+6） / "
+       f"品6 澄观 3 分（1+1+1）vs 法藏 4 段（1+3）；第一会六品收束")
 
 
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
