@@ -1772,6 +1772,62 @@
    "sha256": "a83bf2b64492ab1afa25805382aae52a02e7910f07e6ebcac24604ee94c04c27",
    "retrieved": "2026-11-18",
    "note": "周易參同契分章通真義（漢彭曉，Kanripo KR5d0019）"
+  },
+  "KR5e0031_003": {
+   "path": "data/references/daozang/KR5e0031_003.txt",
+   "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_003.txt",
+   "bytes": 9618,
+   "sha256": "a1a9b8237f7c030b3c9817e16caefaad003b490a1184caf6666c1489f0c17eb1",
+   "retrieved": "2026-11-18",
+   "note": "道教義樞卷三至九補取（道性義章）"
+  },
+  "KR5e0031_004": {
+   "path": "data/references/daozang/KR5e0031_004.txt",
+   "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_004.txt",
+   "bytes": 8964,
+   "sha256": "e2905b1319d45eeb8a905a6fb53293467a344cb83117b058a6626709b12dc007",
+   "retrieved": "2026-11-18",
+   "note": "道教義樞卷三至九補取（道性義章）"
+  },
+  "KR5e0031_005": {
+   "path": "data/references/daozang/KR5e0031_005.txt",
+   "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_005.txt",
+   "bytes": 6743,
+   "sha256": "4e770ff834e635c05df41dc41fb63bb3ef7c2dfad1a99a37fe370a48849e9405",
+   "retrieved": "2026-11-18",
+   "note": "道教義樞卷三至九補取（道性義章）"
+  },
+  "KR5e0031_006": {
+   "path": "data/references/daozang/KR5e0031_006.txt",
+   "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_006.txt",
+   "bytes": 8693,
+   "sha256": "1a61ee7cbe4e36948da0ba7a39788759fe57deee30aa48a62cc5d21744b84504",
+   "retrieved": "2026-11-18",
+   "note": "道教義樞卷三至九補取（道性義章）"
+  },
+  "KR5e0031_007": {
+   "path": "data/references/daozang/KR5e0031_007.txt",
+   "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_007.txt",
+   "bytes": 7567,
+   "sha256": "5f41ce0c6d74fe0be8190bffc7056b2059820bcd1077a4e01ee9aa73cf2429ab",
+   "retrieved": "2026-11-18",
+   "note": "道教義樞卷三至九補取（道性義章）"
+  },
+  "KR5e0031_008": {
+   "path": "data/references/daozang/KR5e0031_008.txt",
+   "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_008.txt",
+   "bytes": 5375,
+   "sha256": "1d08e954a2a94b5ff02669803ace2c5e113da8a7f86ffe924b80daf572cdfb55",
+   "retrieved": "2026-11-18",
+   "note": "道教義樞卷三至九補取（道性義章）"
+  },
+  "KR5e0031_009": {
+   "path": "data/references/daozang/KR5e0031_009.txt",
+   "url": "https://raw.githubusercontent.com/kanripo/KR5e0031/master/KR5e0031_009.txt",
+   "bytes": 9816,
+   "sha256": "ad65917ee8cadd2e18a883df770acee7dda8786cef482e7177a575f0fe50e2d0",
+   "retrieved": "2026-11-18",
+   "note": "道教義樞卷三至九補取（道性義章）"
   }
  }
 }

@@ -1157,11 +1157,11 @@ def main() -> int:
        f"pending 0 / gap 参 {g45s['no']} empty + 参 {b51['no']} 一句两名 / "
        f"50/50 rows witnessed")
 
-    # --- §17.30–17.32、§17.41–§17.46 T9 逐品科判：quotes re-located; 品次/科数/边界 assertions ---
+    # --- §17.30–17.32、§17.41–§17.47 T9 逐品科判：quotes re-located; 品次/科数/边界 assertions ---
     t9p_cases = probes["t9_pin"]["cases"]
-    if len(t9p_cases) != 9:
-        fail(f"§17.30–§17.32、§17.41–§17.46 must have 9 cases, got {len(t9p_cases)}")
-    for tag, case in zip(("§17.30", "§17.31", "§17.32", "§17.41", "§17.42", "§17.43", "§17.44", "§17.45", "§17.46"), t9p_cases):
+    if len(t9p_cases) != 10:
+        fail(f"§17.30–§17.32、§17.41–§17.47 must have 10 cases, got {len(t9p_cases)}")
+    for tag, case in zip(("§17.30", "§17.31", "§17.32", "§17.41", "§17.42", "§17.43", "§17.44", "§17.45", "§17.46", "§17.47"), t9p_cases):
         for q in case["quotes"]:
             if norm(q["text"]) not in probe_src[q["src"]]:
                 fail(f"{tag} quote missing from {q['src']}: {q['text'][:24]}")
@@ -1176,8 +1176,9 @@ def main() -> int:
     t9p7_block = grab("t9_pin7")
     t9p8_block = grab("t9_pin8")
     t9p9_block = grab("t9_pin9")
+    t9p10_block = grab("t9_pin10")
     t9p_rows = sum(1 for blk in (t9p_block, t9p2_block, t9p3_block, t9p4_block, t9p5_block,
-                                 t9p6_block, t9p7_block, t9p8_block, t9p9_block)
+                                 t9p6_block, t9p7_block, t9p8_block, t9p9_block, t9p10_block)
                    for ln in blk.splitlines()
                    if ln.startswith("| ") and not ln.startswith("|---"))
     if t9p_rows != sum(len(c["rows"]) for c in t9p_cases) + len(t9p_cases):
@@ -1498,13 +1499,55 @@ def main() -> int:
     for want in ("总数差一", "十段之纲不同轴", "**不可按段序号对齐**", "**不判文本增减**"):
         if want not in md:
             fail(f"§17.46 正文缺：{want}")
-    if "17.45" not in (t9.get("refs") or "") or "17.46" not in (t9.get("refs") or ""):
-        fail("ontology T9 refs must cite §17.45 and §17.46")
-    if "### 17.45 T9 科判逐品" not in md or "### 17.46 T9 科判逐品" not in md:
-        fail("§17.45／§17.46 headings missing")
+    # 品10：品题颠倒（問明／明難）、门数 4 对 5 多料簡、十名四字小异、次第显隐、结通十对十／七组、澄观记唐阙晋具
+    c10 = t9p_cases[9]
+    for want in ("菩薩問明品", "六十 品6", "十甚深問答"):
+        if want not in c10["pin"]:
+            fail(f"§17.47 case pin 缺 {want}")
+    r10 = {item: (a, b) for item, a, b in c10["rows"]}
+    if "問明" not in r10.get("品题与释名", ("", ""))[0] or "不云答者" not in r10.get("品题与释名", ("", ""))[0]:
+        fail("§17.47 澄观 品题须作問明且释「不云答者」")
+    if "明難" not in r10.get("品题与释名", ("", ""))[1] or "四義" not in r10.get("品题与释名", ("", ""))[1]:
+        fail("§17.47 法藏 品题须作明難且立四義")
+    if "4（" not in r10.get("释论门数", ("", ""))[0]:
+        fail("§17.47 澄观 门数须为 4")
+    if "5（" not in r10.get("释论门数", ("", ""))[1] or "料簡" not in r10.get("释论门数", ("", ""))[1]:
+        fail("§17.47 法藏 门数须为 5 含料簡")
+    if "料簡" not in r10.get("料简门", ("", ""))[1]:
+        fail("§17.47 法藏 料簡门须立")
+    if "九一道" not in r10.get("十甚深名目", ("", ""))[0] or "十佛境" not in r10.get("十甚深名目", ("", ""))[0]:
+        fail("§17.47 澄观 十名须作九一道／十佛境")
+    if "九一乘" not in r10.get("十甚深名目", ("", ""))[1] or "十佛境界" not in r10.get("十甚深名目", ("", ""))[1]:
+        fail("§17.47 法藏 十名须作九一乘／十佛境界")
+    if "次第链" not in r10.get("十甚深次第", ("", ""))[0] or "遷禪師" not in r10.get("十甚深次第", ("", ""))[1]:
+        fail("§17.47 次第须为一显次第链／一标遷禪師")
+    if "十对十" not in r10.get("结通配属", ("", ""))[0] or "七组" not in r10.get("结通配属", ("", ""))[1]:
+        fail("§17.47 结通配属须为十对十／七组")
+    if "晉本具之" not in r10.get("译本阙文", ("", ""))[0]:
+        fail("§17.47 澄观 须记「晉本具之」")
+    if "菩薩問明品第十" not in c10["quotes"][0]["text"]:
+        fail("§17.47 P110 缺「菩薩問明品第十」")
+    if "明難品第六" not in c10["quotes"][10]["text"]:
+        fail("§17.47 P120 缺「明難品第六」")
+    if "直諮曰問" not in c10["quotes"][12]["text"]:
+        fail("§17.47 P122 缺「直諮曰問」")
+    if "九一乘甚深" not in c10["quotes"][17]["text"]:
+        fail("§17.47 P127 缺「九一乘甚深」")
+    if "六七八是覺首" not in c10["quotes"][19]["text"]:
+        fail("§17.47 P129 缺「六七八是覺首」")
+    for want in ("品题二字颠倒", "结通配属一细一合", "译本阙文一家明记", "不判经文异同"):
+        if want not in t9p10_block:
+            fail(f"§17.47 block 缺关键判语：{want}")
+    for want in ("**品题二字颠倒**", "**不判经文异同**", "结通配属一细一合", "译本阙文"):
+        if want not in md:
+            fail(f"§17.47 正文缺：{want}")
+    if "17.46" not in (t9.get("refs") or "") or "17.47" not in (t9.get("refs") or ""):
+        fail("ontology T9 refs must cite §17.46 and §17.47")
+    if "### 17.46 T9 科判逐品" not in md or "### 17.47 T9 科判逐品" not in md:
+        fail("§17.46／§17.47 headings missing")
     if "### 17.29 未竟" not in md:
         fail("§17.29 未竟 heading missing (must stay last)")
-    ok(f"§17.30–§17.32、§17.41–§17.46 T9 逐品科判: {len(t9p_cases)} 品 / "
+    ok(f"§17.30–§17.32、§17.41–§17.47 T9 逐品科判: {len(t9p_cases)} 品 / "
        f"{sum(len(c['quotes']) for c in t9p_cases)} quotes re-located / "
        f"品1 澄观 10 vs 法藏 無定數 / 品2 澄观 6 vs 法藏品内 10（1:5 只对所在段） / "
        f"品3 澄观 6 vs 法藏 3–9 段共 7 / 品4 澄观 2 分＋十段 vs 法藏十名＋十门 / "
@@ -1513,7 +1556,8 @@ def main() -> int:
        f"品7 会级三分同名而范围不同（此会 vs 通第六会）／说分 6 会对 5 会、切点 問明已下 vs 第三會下／"
        f"品界 卷12末 vs 對緣正說／门数 5 对 4 / "
        f"品8 品题增聖／正释 4 对 3 末段一拆一合／门数 5 对 4 而法藏多四諦義五门／详略悬殊 / "
-       f"品9 十段同而 26 節对 25 重／纲轴 答 对 重／来意 10 对 7／同记一放光顿照")
+       f"品9 十段同而 26 節对 25 重／纲轴 答 对 重／来意 10 对 7／同记一放光顿照 / "
+       f"品10 品题颠倒 問明对明難／门数 4 对 5 多料簡／十名四字小异／次第显隐／结通 十对十 对 七组／澄观记唐阙晋具")
 
 
     # --- §17.14 T6: every example must be a substring of BOTH texts, at the cited line ---
@@ -2468,9 +2512,10 @@ def main() -> int:
         if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
             fail(f"D4 source hash changed: {key}")
     d4_block = grab("d4oppo")
-    if len(d4["exhibits"]) != 5:
-        fail(f"D4 exhibits {len(d4['exhibits'])} != 5")
-    _d4_files = {"T45n1866": "cbeta/T45n1866.xml", "T279": "cbeta/T10n0279.xml"}
+    if len(d4["exhibits"]) != 7:
+        fail(f"D4 exhibits {len(d4['exhibits'])} != 7")
+    _d4_files = {"T45n1866": "cbeta/T45n1866.xml", "T279": "cbeta/T10n0279.xml",
+                 "T16n0676": "cbeta/T16n0676.xml"}
     for ex in d4["exhibits"]:
         d = _vdoc(ex["doc"], "data/references/" + _d4_files[ex["doc"]])
         frag = re.sub(r"[^\u4e00-\u9fff]", "", ex["text"])[:12]
@@ -2484,7 +2529,7 @@ def main() -> int:
     for frag in ("教说位阶", "臨門三車俱是開方便門", "本末不見說三乘"):
         if frag.replace("臨門三車俱是開方便門", "臨門三車俱是開方便門") not in md:
             fail(f"§17.38 key phrase missing: {frag}")
-    ok("§17.38 D4 opposition: 5 exhibits / positions-level opposition asserted")
+    ok("§17.38 D4 opposition: 7 exhibits (incl. 2 three-vehicle) / positions-level opposition")
 
     # --- §17.39 T6 huayong: 3 exhibits re-sliced + quote-flag logic ---
     t6h_path = ROOT / "data" / "research" / "t6_huayong.json"
@@ -2538,6 +2583,48 @@ def main() -> int:
     if "陈那" not in w12["author_dkarchag"]:
         fail("D4012 author correction missing")
     ok(f"§17.40 C expansion + Tanjur colophons: {n_col}/8 translator records, D4012=Dignāga")
+
+    # --- §17.48 C deepen: 7 groups / 15 quotes re-sliced ---
+    cd_path = ROOT / "data" / "research" / "c_deepen.json"
+    if not cd_path.exists():
+        fail("c_deepen.json missing")
+    cd = json.loads(cd_path.read_text(encoding="utf-8"))
+    for key, meta in cd["meta"]["sources"].items():
+        if "sha256" in meta:
+            if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+                fail(f"C-deepen source hash changed: {key}")
+    cd_block = grab("cdeepen")
+    if len(cd["groups"]) != 7:
+        fail(f"C-deepen groups {len(cd['groups'])} != 7")
+    if cd["summary"]["quotes_total"] != 15:
+        fail(f"C-deepen quotes {cd['summary']['quotes_total']} != 15")
+    _cd_files = {
+        "t279": "cbeta/T10n0279.xml", "laozi": "daojia_laozi/KR5c0045_001.txt",
+        "lunyu": "rujia_lunyu/KR1h0004_014.txt", "lunyu2": "rujia_lunyu/KR1h0004_002.txt",
+        "zhongyong": "rujia_zhongyong/KR1h0041_002.txt",
+        "xunzi": "zhuzi_xunzi/KR3a0002_015.txt",
+        "huainanzi": "zhuzi_huainanzi/KR3j0010_020.txt",
+        "isha": "yindu_ishaupanisad/ishaupanisad.txt",
+        "yoga": "sanskrit/yoga_sutra.txt",
+    }
+    for g in cd["groups"]:
+        if g["title"][:14] not in cd_block:
+            fail(f"C-deepen group title missing: {g['id']}")
+        if "不在场的那半" not in g["analysis"]:
+            fail(f"C-deepen discipline missing: {g['id']}")
+        for side in ("non_buddhist", "buddhist"):
+            for q in g[side]:
+                if q["text"][:18] not in cd_block:
+                    fail(f"C-deepen quote not printed: {g['id']} {side}")
+                d = _vdoc(q["source"], "data/references/" + _cd_files[q["source"]])
+                frag = re.sub(r"[^\u4e00-\u9fffA-Za-zāīūṃṛśṣṭḍṅñḥāĀĪŪ]", "", q["text"])[:12]
+                if frag and re.sub(r"[^\u4e00-\u9fffA-Za-zāīūṃṛśṣṭḍṅñḥāĀĪŪ]", "",
+                                   d.clean).find(frag) < 0:
+                    fail(f"C-deepen quote not in source: {g['id']}")
+    for frag in ("八典", "每组皆有实质对读", "平行发展"):
+        if frag not in cd_block:
+            fail(f"§17.48 key content missing: {frag}")
+    ok(f"§17.48 C deepen: {len(cd['groups'])} groups / {cd['summary']['quotes_total']} quotes re-sliced")
 
     print("=" * 40)
     print("ALL Dazang article checks passed")

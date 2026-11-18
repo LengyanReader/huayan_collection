@@ -27,12 +27,23 @@ OUT = ROOT / "data" / "research" / "substantive_correspondence.json"
 
 
 def main() -> int:
+    # mandoku 源先剥 ¶ 换行符再装载（换行符会切断锚点）
+    def load_mandoku(key, rel):
+        raw = (ROOT / rel).read_text(encoding="utf-8")
+        stripped = raw.replace("¶", "")
+        tmp = ROOT / ".tmp" / "subst"
+        tmp.mkdir(parents=True, exist_ok=True)
+        tmpf = tmp / Path(rel).name
+        tmpf.write_text(stripped, encoding="utf-8")
+        return Doc(key, tmpf)
+
     docs = {
         "t279": Doc("T279", ROOT / "data/references/cbeta/T10n0279.xml"),
-        "daojiao": Doc("KR5e0031", ROOT / "data/references/daozang/KR5e0031_001.txt"),
-        "zhongyong": Doc("KR1h0041", ROOT / "data/references/rujia_zhongyong/KR1h0041_001.txt"),
-        "mengzi": Doc("KR1h0002", ROOT / "data/references/rujia_mengzi/KR1h0002_013.txt"),
-        "zhuangzi": Doc("KR5c0138", ROOT / "data/references/daojia_zhuangzi/KR5c0138_001.txt"),
+        "daojiao": load_mandoku("KR5e0031", "data/references/daozang/KR5e0031_001.txt"),
+        "daojiao7": load_mandoku("KR5e0031_7", "data/references/daozang/KR5e0031_007.txt"),
+        "zhongyong": load_mandoku("KR1h0041", "data/references/rujia_zhongyong/KR1h0041_001.txt"),
+        "mengzi": load_mandoku("KR1h0002", "data/references/rujia_mengzi/KR1h0002_013.txt"),
+        "zhuangzi": load_mandoku("KR5c0138", "data/references/daojia_zhuangzi/KR5c0138_001.txt"),
         "bhagavadgita": Doc("BhG", ROOT / "data/references/yindu_bhagavadgita/bhagavadgita.txt"),
     }
     sources = {}
@@ -44,7 +55,8 @@ def main() -> int:
     # ---- 四组双侧引文 ----
     def slice_(key, start, end):
         q = docs[key].slice_quote(start, end)
-        return {"source": key, "lb": q["lb"], "text": q["text"].strip()}
+        return {"source": key, "lb": q["lb"],
+                "text": q["text"].replace("¶", "").strip()}
 
     groups = [
         {
@@ -55,10 +67,12 @@ def main() -> int:
                 slice_("daojiao", "三稱者一者道身二者真身三者報",
                        "度人經云唯道爲身"),
                 slice_("daojiao", "三者自在四者清淨", "不爲無常無常所動"),
+                slice_("daojiao7", "道性者理存真極義實圓通", "道性衆生皆與自然同也"),
             ],
             "buddhist": [
                 slice_("t279", "心如工畫師，能畫諸世間", "無法而不造。"),
                 slice_("t279", "三界唯心、三世唯心", "而了知其心無量無邊"),
+                slice_("t279", "無一眾生而不具有如來智慧", "無礙智則得現前"),
             ],
             "level": "结构同构",
             "direction": "道教義樞（唐初孟安排）移植佛教法身/三身/四德框架，以道教经典"
@@ -70,7 +84,14 @@ def main() -> int:
                         "报身引《本際經》「元始正身…報得此身」。框架是移植的，肉是道教的。"
                         "华严侧的对应文本「心如工畫師」强调心的创造性，「三界唯心」强调心的遍在——"
                         "与道教義樞的「法身」（本体论位格）不同层：华严讲的是心的变现力，"
-                        "道教讲的是道的实体化。同在「终极实在」这一概念层，但教义功能不同。"),
+                        "道教讲的是道的实体化。同在「终极实在」这一概念层，但教义功能不同。"
+                        "第三对（卷七〈道性義〉）是全书最强的一组：道性義云「煩惑所覆，"
+                        "暫滯凡因；障累若消，還登聖果」——与〈如來出現品〉「無一眾生而"
+                        "不具有如來智慧，但以妄想顛倒執著而不證得」四段完全对榫"
+                        "（本具→覆障→消障→证得）；「太玄經云：道性眾生皆與自然同」"
+                        "即佛性论的道教重述。注意：道性義自注引《太玄經》，"
+                        "其『非空不空亦非不空』的三句式带明显中观印记——"
+                        "移植痕迹比三身章更深。"),
         },
         {
             "id": "ru_mind",
@@ -78,6 +99,7 @@ def main() -> int:
             "tradition": "儒家",
             "non_buddhist": [
                 slice_("mengzi", "萬物皆備於我矣反身而誠樂莫", "強恕而行"),
+                slice_("mengzi", "盡其心者知其性也知其性", "則知天也"),
             ],
             "buddhist": [
                 slice_("t279", "心如工畫師，能畫諸世間", "無法而不造。"),
@@ -101,6 +123,7 @@ def main() -> int:
             "tradition": "道家·诸子",
             "non_buddhist": [
                 slice_("zhuangzi", "萬物與我為一", "萬物與我為一"),
+                slice_("zhuangzi", "樞始得其環中以應無窮", "以應無窮"),
             ],
             "buddhist": [
                 slice_("t279", "一一微塵中，能證一切法", "周行十方國。"),
@@ -128,6 +151,8 @@ def main() -> int:
                        "sarvatrasamadarśanaḥ"),
                 slice_("bhagavadgita", "matsthānisarvabhūtāninacāhaṃteṣvavasthitaḥ",
                        "matsthānisarvabhūtāninacāhaṃteṣvavasthitaḥ"),
+                slice_("bhagavadgita", "samaṃsarveṣubhūteṣutiṣṭhantaṃparameśvaram",
+                       "parameśvaram"),
             ],
             "buddhist": [
                 slice_("t279", "心如工畫師，能畫諸世間", "無法而不造。"),

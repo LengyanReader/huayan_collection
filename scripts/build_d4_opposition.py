@@ -61,6 +61,28 @@ EXHIBITS = [
                      "构成对立的两极。〔本文判断〕"),
     },
     {
+        "key": "d4_sjy_first",
+        "doc": "T16n0676",
+        "title": "三乘方自证·初转：惟为发趣声闻乘者以四谛相转正法轮",
+        "c_anchor": ["初於一時在婆羅痆斯仙人墮處", "以四諦相轉正法輪"],
+        "analysis": ("《解深密經》〈無自性相品〉的三时判是三乘框架的**自我证成**："
+                    "初转唯为声闻乘说四谛——三乘的分际在三乘方文本中同样是明文。"
+                    "分齊章与解深密各执一端：前者判三乘为权引（门外三车），"
+                    "后者立三时为佛说次第（初转虽未了义、亦是「甚奇甚为希有」）。"
+                    "〔本文判断〕"),
+    },
+    {
+        "key": "d4_sjy_third",
+        "doc": "T16n0676",
+        "title": "三乘方自证·三转：普为发趣一切乘者是真了义",
+        "c_anchor": ["於今第三時中普為發趣一切乘者", "無上無容是真了義"],
+        "analysis": ("三转「普為發趣一切乘者、無上無容、是真了義」——三乘方"
+                    "把判的最高位给了**普为一切乘**的了义教。分齊章承认此判"
+                    "而将华严置于别教（界外）；解深密的三时判自身不含华严位——"
+                    "两个判教体系在同一问题上各自成立，这正是 D4「对立」的"
+                    "完整形态：双方都有文本、都自我证成、互不收录。〔本文判断〕"),
+    },
+    {
         "key": "d4_haiyin_sutra",
         "doc": "T279",
         "title": "经侧对应：海印三昧威神力（T279 品3）",
@@ -81,6 +103,7 @@ def main() -> int:
     docs = {
         "T45n1866": Doc("T45n1866", ROOT / "data/references/cbeta/T45n1866.xml"),
         "T279": Doc("T279", ROOT / "data/references/cbeta/T10n0279.xml"),
+        "T16n0676": Doc("T16n0676", ROOT / "data/references/cbeta/T16n0676.xml"),
     }
     exhibits = []
     for ex in EXHIBITS:
@@ -114,6 +137,9 @@ def main() -> int:
                 "T279": {"path": "data/references/cbeta/T10n0279.xml",
                          "sha256": sha256((ROOT / "data/references/cbeta/T10n0279.xml").read_bytes()),
                          "bytes": (ROOT / "data/references/cbeta/T10n0279.xml").stat().st_size},
+                "T16n0676": {"path": "data/references/cbeta/T16n0676.xml",
+                             "sha256": sha256((ROOT / "data/references/cbeta/T16n0676.xml").read_bytes()),
+                             "bytes": (ROOT / "data/references/cbeta/T16n0676.xml").stat().st_size},
             },
         },
         "exhibits": exhibits,

@@ -46,6 +46,7 @@ P2P3 = ROOT / "data" / "research" / "p2p3_ritual.json"
 D4OPP = ROOT / "data" / "research" / "d4_opposition.json"
 T6HY = ROOT / "data" / "research" / "t6_huayong.json"
 CEXP = ROOT / "data" / "research" / "c_expand.json"
+CDEEP = ROOT / "data" / "research" / "c_deepen.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1644,6 +1645,34 @@ def render_c_expand(cx):
     return "\n".join(out)
 
 
+def render_c_deepen(cd):
+    """§17.48 — C 面深化：七典实质对读（补齐 11 典每组对读）。"""
+    out = []
+    out.append("§17.26 四组之后，老、論語、中庸、荀子、淮南、奧義書、瑜伽經七典"
+               "此前只有语汇矩阵与结构锚——本节每典补一组双侧引文＋分析，"
+               "十一典至此**每组皆有实质对读**。判读一律类型判＋方向，"
+               "分析保留「不在场的那半」。引文起止锚切片，lb/位置可回源"
+               "（`data/research/c_deepen.json`；mandoku 源剥 ¶ 后切片）。")
+    out.append("")
+    for g in cd["groups"]:
+        out.append(f"**{esc(g['title'])}**〔{esc(g['level'])}｜{esc(g['direction'][:24])}…〕")
+        out.append("")
+        for side, label in (("non_buddhist", "非佛侧"), ("buddhist", "華嚴側")):
+            for q in g[side]:
+                pos = f"`{q['lb']}`" if q.get("lb") else "@"
+                out.append(f"- {label} {pos}　{esc(q['text'])}")
+        out.append("")
+        out.append(f"　{esc(g['analysis'])}")
+        out.append("")
+    out.append(
+        "**合计**：C 面实质对读 **11 组**（§17.26 四组＋本节七组）**33 条双侧引文**；"
+        "八典从「登记层」全部进入「对读层」。每组的方向判均为**平行发展**（无接触"
+        "证据），同构层级多在功能/概念层——与 §17.26 道教義樞组（移植，佛教→道教）"
+        "方向相反：诸子与印度诸典对华严是**无影响的平行**，道教義樞是**有影响的接收**"
+        "——C 面的方向谱至此两种形态都有实证。〔本文判断〕")
+    return "\n".join(out)
+
+
 def render_r4(lt):
     """R4 仪式·课诵：四十二字觀門（掛 §17.18 影响面内，沿 R2 接层先例）。"""
     vs = lt["quotes"]
@@ -2276,6 +2305,7 @@ def main():
     d4opp = json.loads(D4OPP.read_text(encoding="utf-8")) if D4OPP.exists() else None
     t6hy = json.loads(T6HY.read_text(encoding="utf-8")) if T6HY.exists() else None
     cexp = json.loads(CEXP.read_text(encoding="utf-8")) if CEXP.exists() else None
+    cdeep = json.loads(CDEEP.read_text(encoding="utf-8")) if CDEEP.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -2305,6 +2335,7 @@ def main():
         "t9_pin7": table_t9({"cases": probes["t9_pin"]["cases"][6:7]}),
         "t9_pin8": table_t9({"cases": probes["t9_pin"]["cases"][7:8]}),
         "t9_pin9": table_t9({"cases": probes["t9_pin"]["cases"][8:9]}),
+        "t9_pin10": table_t9({"cases": probes["t9_pin"]["cases"][9:10]}),
         "d5": table_d5(probes),
         "p1": table_p1(probes),
         "t6": table_t6(implicit),
@@ -2329,6 +2360,7 @@ def main():
         "d4oppo": render_d4_oppo(d4opp) if d4opp else "",
         "t6huayong": render_t6_huayong(t6hy) if t6hy else "",
         "cexpand": render_c_expand(cexp) if cexp else "",
+        "cdeepen": render_c_deepen(cdeep) if cdeep else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",
