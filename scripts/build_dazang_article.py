@@ -508,7 +508,7 @@ def table_t9(p):
         out.append("")
         out.append(f'**判断**：{esc(case["finding"])}')
         out.append("")
-        out.append(f'**边界**：{esc(case["limits"])}')
+        out.append(f'**限度**：{esc(case["limits"])}')
     return "\n".join(out)
 
 
@@ -2300,6 +2300,7 @@ def main():
         "t9_pin2": table_t9({"cases": probes["t9_pin"]["cases"][1:2]}),
         "t9_pin3": table_t9({"cases": probes["t9_pin"]["cases"][2:3]}),
         "t9_pin4": table_t9({"cases": probes["t9_pin"]["cases"][3:4]}),
+        "t9_pin5": table_t9({"cases": probes["t9_pin"]["cases"][4:5]}),
         "d5": table_d5(probes),
         "p1": table_p1(probes),
         "t6": table_t6(implicit),
