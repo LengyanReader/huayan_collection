@@ -2678,6 +2678,32 @@ def main() -> int:
         fail("§17.50 honesty statement missing")
     ok(f"§17.50 scholarship: {len(sc7['works'])} works verified bibliographically")
 
+    # --- §17.51 Tanjur content: 2 pairs, quoted content in sources ---
+    tjc_path = ROOT / "data" / "research" / "tanjur_content.json"
+    if not tjc_path.exists():
+        fail("tanjur_content.json missing")
+    tjc = json.loads(tjc_path.read_text(encoding="utf-8"))
+    tjc_block = grab("tjcontent")
+    if len(tjc["pairs"]) != 2:
+        fail(f"Tanjur content pairs {len(tjc['pairs'])} != 2")
+    for pair in tjc["pairs"]:
+        if pair["title"][:10] not in tjc_block:
+            fail(f"Tanjur content title missing: {pair['id']}")
+        for q in pair["non_buddhist"]:
+            # 藏文侧：卷文件字符位置回源
+            t = (ROOT / f"data/references/tibetan/derge_tengyur/{q['vol']}.txt")                 .read_text(encoding="utf-8-sig", errors="replace")
+            frag = q["text"].replace(" ", "")[:12]
+            if t.replace(" ", "").find(frag) < 0:
+                fail(f"Tanjur content tibetan text not in source: {pair['id']}")
+            if q["text"][:18] not in tjc_block:
+                fail(f"Tanjur content tibetan not printed: {pair['id']}")
+        for q in pair["buddhist"]:
+            if q["text"][:18] not in tjc_block:
+                fail(f"Tanjur content chinese not printed: {pair['id']}")
+    if "开篇形态本身是第四列" not in tjc_block:
+        fail("§17.51 key judgment missing")
+    ok("§17.51 Tanjur content: 2 pairs (Bhadracari + Dashabhumika) verified")
+
     # --- 丹珠尔 content sample: 8/8 with sizes ---
     tq3 = json.loads(tq_path.read_text(encoding="utf-8"))
     n_sample = sum(1 for w in tq3["works"] if w.get("content_sample", {}).get("chars"))

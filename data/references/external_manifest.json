@@ -1852,6 +1852,22 @@
    "sha256": "9a0b1937f8c43e4a48ecb2eaa2fa3fe5f9e184d88219266d2517016e92d0b7af",
    "retrieved": "2026-11-19",
    "note": "法华玄义（D4 天台判）"
+  },
+  "T26n1522": {
+   "path": "data/references/cbeta/T26n1522.xml",
+   "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T26/T26n1522.xml",
+   "bytes": 1022061,
+   "sha256": "ae3687166f39bb086b13fecbc042f1ef9acbf0881ec20f74556968189a91682c",
+   "retrieved": "2026-11-19",
+   "note": "丹珠尔内容层对读配本（十地经论/普贤行愿赞）"
+  },
+  "T10n0297": {
+   "path": "data/references/cbeta/T10n0297.xml",
+   "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T10/T10n0297.xml",
+   "bytes": 37516,
+   "sha256": "22e817e49781d29ae2661427559ce3e8770a74881aa53672a6bfe84a85b8b81e",
+   "retrieved": "2026-11-19",
+   "note": "丹珠尔内容层对读配本（十地经论/普贤行愿赞）"
   }
  }
 }

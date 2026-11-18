@@ -49,6 +49,7 @@ CEXP = ROOT / "data" / "research" / "c_expand.json"
 CDEEP = ROOT / "data" / "research" / "c_deepen.json"
 D1AG = ROOT / "data" / "research" / "d1_agama.json"
 SCHOL = ROOT / "data" / "research" / "scholarship.json"
+TJCON = ROOT / "data" / "research" / "tanjur_content.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1737,6 +1738,41 @@ def render_scholarship(sc):
     return "\n".join(out)
 
 
+def render_tj_content(tc):
+    """§17.51 — 丹珠尔内容层·第一步：同论异译开篇对读。"""
+    out = []
+    out.append("内容层从抽样进入对读的第一步：取两部**汉藏同源**文本做开篇对读。"
+               "藏文侧以卷号＋字符位置回源（无 CBETA 式 lb）；汉文侧 lb 回源"
+               "（`data/research/tanjur_content.json`）。")
+    out.append("")
+    bp = tc["pairs"][0]
+    out.append(f"**{esc(bp['title'])}**（D4011 × T297）")
+    out.append("")
+    out.append(f"- 藏译（D4011，vol117）：{esc(bp['non_buddhist'][0]['text'])}…")
+    out.append(f"- 汉译（`{bp['buddhist'][0]['lb']}`）：{esc(bp['buddhist'][0]['text'])}")
+    out.append("")
+    out.append(f"　{esc(bp['analysis'])}")
+    out.append("")
+    dp = tc["pairs"][1]
+    out.append(f"**{esc(dp['title'])}**（D3993 × T1522）")
+    out.append("")
+    out.append(f"- 藏译（D3993，vol113）：{esc(dp['non_buddhist'][0]['text'])}…")
+    for q in dp["buddhist"]:
+        out.append(f"- 汉译（`{q['lb']}`）：{esc(q['text'])}")
+    out.append("")
+    out.append(f"　{esc(dp['analysis'])}")
+    out.append("")
+    out.append(
+        "**判断**：内容层的第一批数据就改变了 §17.35 的图景——题录层的"
+        "「体裁/造者/译场」三列之外，**开篇形态本身是第四列**：归敬谁、"
+        "有无解经框架、有无传承偈、序由谁制——这些是文本自带的"
+        "「身份证明」。同源异译的框架差异（藏译解经包装 vs 汉译纯颂）"
+        "与开篇形态差异（经院归敬 vs 朝廷序）为汉藏注疏分流"
+        "（§17.35 所记「中段无对应」）提供了**结构成因**的第一手观察。"
+        "〔本文判读〕逐部通读仍是长时程，如实标注。")
+    return "\n".join(out)
+
+
 def render_r4(lt):
     """R4 仪式·课诵：四十二字觀門（掛 §17.18 影响面内，沿 R2 接层先例）。"""
     vs = lt["quotes"]
@@ -2372,6 +2408,7 @@ def main():
     cdeep = json.loads(CDEEP.read_text(encoding="utf-8")) if CDEEP.exists() else None
     d1ag = json.loads(D1AG.read_text(encoding="utf-8")) if D1AG.exists() else None
     schol = json.loads(SCHOL.read_text(encoding="utf-8")) if SCHOL.exists() else None
+    tjcon = json.loads(TJCON.read_text(encoding="utf-8")) if TJCON.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -2429,6 +2466,7 @@ def main():
         "cdeepen": render_c_deepen(cdeep) if cdeep else "",
         "d1agama": render_d1_agama(d1ag) if d1ag else "",
         "scholarship": render_scholarship(schol) if schol else "",
+        "tjcontent": render_tj_content(tjcon) if tjcon else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",
