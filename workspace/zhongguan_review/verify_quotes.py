@@ -11,7 +11,7 @@ WS = os.path.join(HERE, 'xml')
 PUNCT = set('，。、；：？！「」『』（）《》〈〉……—－·“”‘’ \u3000\n\r\t()[]')
 
 def load(tid, canonical=False):
-    p = os.path.join(CAN if canonical else WS, tid + '.xml')
+    p = os.path.join(CAN, tid + '.xml')
     xml = open(p, encoding='utf-8').read()
     jp = [(m.start(), m.group(1)) for m in re.finditer(r'<cb:juan[^>]*n="(\d+)"', xml)]
     chars, pm, it = [], [], False
