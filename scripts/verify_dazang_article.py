@@ -2596,10 +2596,11 @@ def main() -> int:
     cd_block = grab("cdeepen")
     if len(cd["groups"]) != 8:
         fail(f"C-deepen groups {len(cd['groups'])} != 8")
-    if cd["summary"]["quotes_total"] != 28:
-        fail(f"C-deepen quotes {cd['summary']['quotes_total']} != 28")
+    if cd["summary"]["quotes_total"] != 29:
+        fail(f"C-deepen quotes {cd['summary']['quotes_total']} != 29")
     _cd_files = {
         "t279": "cbeta/T10n0279.xml", "laozi": "daojia_laozi/KR5c0045_001.txt",
+        "laozi2": "daojia_laozi/KR5c0045_002.txt",
         "lunyu": "rujia_lunyu/KR1h0004_014.txt", "lunyu2": "rujia_lunyu/KR1h0004_002.txt",
         "lunyu3": "rujia_lunyu/KR1h0004_004.txt",
         "zhongyong": "rujia_zhongyong/KR1h0041_001.txt",
@@ -2684,8 +2685,8 @@ def main() -> int:
         fail("tanjur_content.json missing")
     tjc = json.loads(tjc_path.read_text(encoding="utf-8"))
     tjc_block = grab("tjcontent")
-    if len(tjc["pairs"]) != 3:
-        fail(f"Tanjur content pairs {len(tjc['pairs'])} != 3")
+    if len(tjc["pairs"]) != 4:
+        fail(f"Tanjur content pairs {len(tjc['pairs'])} != 4")
     for pair in tjc["pairs"]:
         if pair["title"][:10] not in tjc_block:
             fail(f"Tanjur content title missing: {pair['id']}")

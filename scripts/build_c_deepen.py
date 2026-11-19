@@ -69,6 +69,7 @@ def main() -> int:
     docs = {
         "t279": Doc("T279", ROOT / "data/references/cbeta/T10n0279.xml"),
         "laozi": load_mandoku("KR5c0045", "data/references/daojia_laozi/KR5c0045_001.txt"),
+        "laozi2": load_mandoku("KR5c0045_2", "data/references/daojia_laozi/KR5c0045_002.txt"),
         "lunyu": load_mandoku("KR1h0004", "data/references/rujia_lunyu/KR1h0004_014.txt"),
         "lunyu2": load_mandoku("KR1h0004_2", "data/references/rujia_lunyu/KR1h0004_002.txt"),
         "lunyu3": load_mandoku("KR1h0004_4", "data/references/rujia_lunyu/KR1h0004_004.txt"),
@@ -96,6 +97,7 @@ def main() -> int:
             "non_buddhist": [
                 slice_("laozi", "人法地地法天天法道道法自然", "道法自然"),
                 slice_("laozi", "有物混成先天地生", "可以爲天下母"),
+                slice_("laozi2", "道生一一生二二生三三生萬物", "冲氣以爲和"),
             ],
             "buddhist": [
                 slice_("t279", "一切諸佛法如是悉坐菩提樹王下", "住於道"),
@@ -107,7 +109,12 @@ def main() -> int:
                         "这一点上同构。不在场的那半：老子的自然是**道**的属性"
                         "（道先天地、有物混成——仍有生成论骨架），華嚴的法如是是**缘起**"
                         "的如实（无一法自生——恰恰否定任何自性）；「自然」在老子是"
-                        "肯定词，在華嚴语境里「自然智」之「自然」已转指离造作的觉智。"),
+                        "肯定词，在華嚴语境里「自然智」之「自然」已转指离造作的觉智。"
+                        "第二对深化对照：「道生一，一生二，二生三，三生萬物，萬物負陰"
+                        "而抱陽，冲氣以爲和」是**线性派生链**（一生二是有次第的生成）；"
+                        "華嚴的同题是「一微塵中入三昧」式的一摄一切——**非线性摄入**；"
+                        "且派生的介质是氣（冲氣为和），缘起的介质是空（无气可得）。"
+                        "〔不在场的那半补记〕"),
         },
         {
             "id": "lunyu_ladder",
