@@ -2684,8 +2684,8 @@ def main() -> int:
         fail("tanjur_content.json missing")
     tjc = json.loads(tjc_path.read_text(encoding="utf-8"))
     tjc_block = grab("tjcontent")
-    if len(tjc["pairs"]) != 2:
-        fail(f"Tanjur content pairs {len(tjc['pairs'])} != 2")
+    if len(tjc["pairs"]) != 3:
+        fail(f"Tanjur content pairs {len(tjc['pairs'])} != 3")
     for pair in tjc["pairs"]:
         if pair["title"][:10] not in tjc_block:
             fail(f"Tanjur content title missing: {pair['id']}")
@@ -2700,9 +2700,32 @@ def main() -> int:
         for q in pair["buddhist"]:
             if q["text"][:18] not in tjc_block:
                 fail(f"Tanjur content chinese not printed: {pair['id']}")
+    if "分辨同题作品" not in tjc_block:
+        fail("§17.51 twin-tikas judgment missing")
     if "开篇形态本身是第四列" not in tjc_block:
         fail("§17.51 key judgment missing")
-    ok("§17.51 Tanjur content: 2 pairs (Bhadracari + Dashabhumika) verified")
+    ok("§17.51 Tanjur content: 3 pairs (twin-tikas + Bhadracari + Dashabhumika)")
+
+    # --- §17.52 P1 weiyi: 2 pairs re-sliced ---
+    p1_path = ROOT / "data" / "research" / "p1_weiyi.json"
+    if not p1_path.exists():
+        fail("p1_weiyi.json missing")
+    p1w = json.loads(p1_path.read_text(encoding="utf-8"))
+    for key, meta in p1w["meta"]["sources"].items():
+        if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
+            fail(f"P1 weiyi source hash changed: {key}")
+    p1_block = grab("p1weiyi")
+    if len(p1w["pairs"]) != 2:
+        fail(f"P1 weiyi pairs {len(p1w['pairs'])} != 2")
+    for pair in p1w["pairs"]:
+        if pair["title"][:10] not in p1_block:
+            fail(f"P1 weiyi title missing: {pair['id']}")
+        for q in pair["non_buddhist"] + pair["buddhist"]:
+            if q["text"][:18] not in p1_block:
+                fail(f"P1 weiyi quote not printed: {pair['id']}")
+    if "位位无碍" not in p1_block:
+        fail("§17.52 key judgment missing")
+    ok(f"§17.52 P1 weiyi: {len(p1w['pairs'])} pairs re-sliced")
 
     # --- 丹珠尔 content sample: 8/8 with sizes ---
     tq3 = json.loads(tq_path.read_text(encoding="utf-8"))

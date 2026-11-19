@@ -50,6 +50,7 @@ CDEEP = ROOT / "data" / "research" / "c_deepen.json"
 D1AG = ROOT / "data" / "research" / "d1_agama.json"
 SCHOL = ROOT / "data" / "research" / "scholarship.json"
 TJCON = ROOT / "data" / "research" / "tanjur_content.json"
+P1WY = ROOT / "data" / "research" / "p1_weiyi.json"
 VISITS = ROOT / "data" / "research" / "visits_names.json"
 VISITS_SKT = ROOT / "data" / "research" / "visits_sanskrit.json"
 ARTICLE = ROOT / "docs" / "经学文献" / "华严经与大藏经对应研究.md"
@@ -1745,23 +1746,19 @@ def render_tj_content(tc):
                "藏文侧以卷号＋字符位置回源（无 CBETA 式 lb）；汉文侧 lb 回源"
                "（`data/research/tanjur_content.json`）。")
     out.append("")
-    bp = tc["pairs"][0]
-    out.append(f"**{esc(bp['title'])}**（D4011 × T297）")
-    out.append("")
-    out.append(f"- 藏译（D4011，vol117）：{esc(bp['non_buddhist'][0]['text'])}…")
-    out.append(f"- 汉译（`{bp['buddhist'][0]['lb']}`）：{esc(bp['buddhist'][0]['text'])}")
-    out.append("")
-    out.append(f"　{esc(bp['analysis'])}")
-    out.append("")
-    dp = tc["pairs"][1]
-    out.append(f"**{esc(dp['title'])}**（D3993 × T1522）")
-    out.append("")
-    out.append(f"- 藏译（D3993，vol113）：{esc(dp['non_buddhist'][0]['text'])}…")
-    for q in dp["buddhist"]:
-        out.append(f"- 汉译（`{q['lb']}`）：{esc(q['text'])}")
-    out.append("")
-    out.append(f"　{esc(dp['analysis'])}")
-    out.append("")
+    for pair in tc["pairs"]:
+        vol = pair["non_buddhist"][0].get("vol", "")
+        out.append(f"**{esc(pair['title'])}**（{esc(pair['non_buddhist'][0]['source'] if pair['non_buddhist'][0].get('source') else 'D')}）"
+                   if False else f"**{esc(pair['title'])}**")
+        out.append("")
+        for q in pair["non_buddhist"]:
+            v = q.get("vol", "")
+            out.append(f"- 藏文（{v or '—'}）：{esc(q['text'])}…")
+        for q in pair["buddhist"]:
+            out.append(f"- 汉译（`{q['lb']}`）：{esc(q['text'])}")
+        out.append("")
+        out.append(f"　{esc(pair['analysis'])}")
+        out.append("")
     out.append(
         "**判断**：内容层的第一批数据就改变了 §17.35 的图景——题录层的"
         "「体裁/造者/译场」三列之外，**开篇形态本身是第四列**：归敬谁、"
@@ -1769,7 +1766,33 @@ def render_tj_content(tc):
         "「身份证明」。同源异译的框架差异（藏译解经包装 vs 汉译纯颂）"
         "与开篇形态差异（经院归敬 vs 朝廷序）为汉藏注疏分流"
         "（§17.35 所记「中段无对应」）提供了**结构成因**的第一手观察。"
-        "〔本文判读〕逐部通读仍是长时程，如实标注。")
+        "〔本文判读〕逐部通读仍是长时程，如实标注。"
+        "同题两部广释（D4013/D4014）的归敬对象不同（文殊／一切佛菩萨）——"
+        "开篇形态反过来成为**分辨同题作品的工具**：第四列题录不仅定性，还能"
+        "辨伪存真。〔本文判读〕")
+    return "\n".join(out)
+
+
+def render_p1_weiyi(pw):
+    """§17.52 — P1 补完（第一批）：位業義五阶 × 華嚴十地。"""
+    out = []
+    out.append("mandoku 源剥 ¶ 后切片；華嚴侧 norm 锚切片，lb 可回源"
+               "（`data/research/p1_weiyi.json`）。")
+    out.append("")
+    for pair in pw["pairs"]:
+        out.append(f"**{esc(pair['title'])}**")
+        out.append("")
+        for q in pair["non_buddhist"]:
+            out.append(f"- 道教義樞：{esc(q['text'])}")
+        for q in pair["buddhist"]:
+            out.append(f"- 華嚴（`{q['lb']}`）：{esc(q['text'])}")
+        out.append("")
+        out.append(f"　{esc(pair['analysis'])}")
+        out.append("")
+    out.append(
+        "**判断**：P1 的体系层对读成立——同是「分段化的成道阶梯」，"
+        "转折位（仙真之化／七地入八地）与终点性质（位业实有／位位无碍）"
+        "各成对照。位業義全疏逐句对读仍长时程，如实标注。〔本文判断〕")
     return "\n".join(out)
 
 
@@ -2409,6 +2432,7 @@ def main():
     d1ag = json.loads(D1AG.read_text(encoding="utf-8")) if D1AG.exists() else None
     schol = json.loads(SCHOL.read_text(encoding="utf-8")) if SCHOL.exists() else None
     tjcon = json.loads(TJCON.read_text(encoding="utf-8")) if TJCON.exists() else None
+    p1wy = json.loads(P1WY.read_text(encoding="utf-8")) if P1WY.exists() else None
     visits = json.loads(VISITS.read_text(encoding="utf-8")) if VISITS.exists() else {}
     visits_skt = json.loads(VISITS_SKT.read_text(encoding="utf-8")) if VISITS_SKT.exists() else {}
     blocks = {
@@ -2467,6 +2491,7 @@ def main():
         "d1agama": render_d1_agama(d1ag) if d1ag else "",
         "scholarship": render_scholarship(schol) if schol else "",
         "tjcontent": render_tj_content(tjcon) if tjcon else "",
+        "p1weiyi": render_p1_weiyi(p1wy) if p1wy else "",
         "persecution": render_persecution(persecution) if persecution else "",
         "r5": render_r5(r5ly) if r5ly else "",
         "visits": render_visits(visits) if visits else "",
