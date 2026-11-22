@@ -31,8 +31,31 @@ def add_marks(t):
     return MARK_RE.sub(f, t)
 
 
+
+
+def soft_split(sent, limit=200):
+    """超长句在 ，、 处软切；全无标点的 OCR 联句则定距硬切（纯断行·守恒）。"""
+    if len(HAN.findall(sent)) <= limit:
+        return [sent]
+    if not re.search(r'[，、]', sent):
+        return [sent[i:i+120] for i in range(0, len(sent), 120)]
+    parts = re.findall(r'[^，、]*[，、]|[^，、]+$', sent)
+    out = []
+    cur = ''
+    for p in parts:
+        if cur and len(HAN.findall(cur)) >= limit:
+            out.append(cur)
+            cur = ''
+        cur += p
+    if cur:
+        out.append(cur)
+    return out
+
+
 def para_split(t, limit=LIMIT):
-    sents = SENT_RE.findall(t)
+    sents = []
+    for s in SENT_RE.findall(t):
+        sents.extend(soft_split(s, limit=LIMIT))
     paras = []
     cur = ''
     for s in sents:
@@ -80,7 +103,7 @@ if __name__ == '__main__':
     import sys, glob
     sys.stdout.reconfigure(encoding='utf-8')
     apply = '--apply' in sys.argv
-    pats = sys.argv[1:] or ['docs/经学文献/华严经细读/*/华严经细读_第*部_*.md']
+    pats = [a for a in sys.argv[1:] if a != '--apply'] or ['docs/经学文献/华严经细读/*/华严经细读_第*部_*.md']
     tot_l = tot_m = 0
     for pat in pats:
         for fp in sorted(glob.glob(pat, recursive=True)):

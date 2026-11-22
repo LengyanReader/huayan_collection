@@ -12,6 +12,64 @@ import json
 import os
 import re
 
+
+# ── 窗体规范 v2（L.529·与 scripts/window_fmt.py 同逻辑——can 页生成时直接套用）──
+_WF_CAT = {'釋名': '【釋名】', '來意': '【來意】', '宗趣': '【宗趣】', '釋文': '【釋文】'}
+_WF_MARK = re.compile(r'(?<=[。；！？」』])([初二三四五六七八九十]{1,2}?)(釋名|來意|宗趣|釋文)')
+_WF_SENT = re.compile(r'[^。；！？」』]*[。；！？」』]|[^。；！？」』]+$')
+_WF_HAN = re.compile(r'[㐀-鿿]')
+
+
+def _wf_canon(s):
+    s = re.sub(r'【[^】]*】', '', s)
+    return re.sub(r'[\s>]', '', s)
+
+
+
+
+def _wf_soft(sent, limit=200):
+    if len(_WF_HAN.findall(sent)) <= limit:
+        return [sent]
+    if not re.search(r'[，、]', sent):
+        return [sent[i:i+120] for i in range(0, len(sent), 120)]
+    parts = re.findall(r'[^，、]*[，、]|[^，、]+$', sent)
+    out = []
+    cur = ''
+    for p in parts:
+        if cur and len(_WF_HAN.findall(cur)) >= limit:
+            out.append(cur)
+            cur = ''
+        cur += p
+    if cur:
+        out.append(cur)
+    return out
+
+
+def _fmt_quote(text):
+    """长引文（>200 汉字）→ 界标＋分段（硬校验不改一字·失败则原样返回）。"""
+    if len(_WF_HAN.findall(text)) < 200:
+        return text
+    try:
+        marked = _WF_MARK.sub(lambda m: _WF_CAT[m.group(2)] + m.group(0), text)
+        sents = []
+        for s in _WF_SENT.findall(marked):
+            sents.extend(_wf_soft(s, limit=150))
+        paras = []
+        cur = ''
+        for s in sents:
+            if cur and (len(_WF_HAN.findall(cur)) >= 150 or s.startswith('【')):
+                paras.append(cur)
+                cur = ''
+            cur += s
+        if cur.strip():
+            paras.append(cur)
+        joined = '\n'.join(paras)
+        assert _wf_canon(text) == _wf_canon(joined)
+        return joined
+    except Exception:
+        return text
+
+
 CAN_GROUP = '入法界·五十三参'
 P39_MD = 'docs/经学文献/华严经细读/第九会_逝多林_证入法界/华严经细读_第三十九部_入法界品.md'
 JOURNEY_HTML = 'web/demo/articles/huayan-rufajie-journey.html'
@@ -399,7 +457,7 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
         L.append('**%s**（锚「%s」·%s · %d 字·程序取窗%s·句界截断·引前须对原书核）：' % (
             _src_label[k], w.get('anchor', ''), w.get('page_ref', '') or '页码未录', w.get('cjk', 0), _p2))
         L.append('')
-        L.append('> ' + w['text'])
+        L.append('> ' + _fmt_quote(w['text']))
         L.append('')
 
     # ── L.506 参2 专层：海云《华藏妙海》念佛法门四义＋德云与清凉对照 ──
