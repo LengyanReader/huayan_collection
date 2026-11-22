@@ -23,6 +23,7 @@ SRC = {
     'yan': ('data/references/cbeta_txt/T1736_澄观_随疏演义钞.txt', '澄观《随疏演义钞》T1736（八十·疏之演义）'),
     'lun': ('data/references/cbeta_txt/T1739_李通玄_新华严经论.txt', '李通玄《新华严经论》T1739（八十）'),
     'tan': ('data/references/cbeta_txt/T1733_法藏_探玄记.txt', '法藏《探玄记》T1733（六十）'),
+    'dao': ('data/references/cbeta_txt/B0002_疏论纂要_epub提取本.txt', '道霈《華嚴經疏論纂要》B0002（八十·疏论纂·L.527 五源扩）'),
 }
 HAN = re.compile(r'[\u3400-\u9fff]')
 PAGE = re.compile(r'<<<PAGE (\d+)>>>')
@@ -112,6 +113,8 @@ for key, (path, label) in SRC.items():
         band0 = min([p for p in starts if p > 600000] or [starts[-1]])
     elif key == 'yan':
         band0 = min([p for p in starts if p > 1000000] or [starts[-1]])
+    elif key == 'dao':
+        band0 = min([p for p in starts if p > 1500000] or [starts[-1]])
     else:
         band0 = max([p for p in starts if p > 400000] or [starts[-1]])
     SOURCES[key] = {'label': label, 'txt': txt, 'pages': pages, 'band0': band0,
@@ -124,7 +127,7 @@ def find_anchor(skey, card):
     S = SOURCES[skey]
     txt = S['txt']
     n = card['card_no']
-    if n == 54 and skey in ('shu', 'yan', 'lun'):
+    if n == 54 and skey in ('shu', 'yan', 'lun', 'dao'):
         # 普賢摄归章为疏/论末段——单调首现会误落彌勒段，改取带内最末「普賢」
         p = txt.rfind('普賢', S['band0'])
         if p > S['cursor']:
@@ -175,7 +178,7 @@ def window(skey, pos, name):
 
 
 result = {'meta': {
-    'date': '2026-11-18', 'batch': 'L.493-L.507',
+    'date': '2026-11-22', 'batch': 'L.493-L.527',
     'sources': {k: v['label'] for k, v in SOURCES.items()},
     'band0': {k: v['band0'] for k, v in SOURCES.items()},
     'method': '逐卡单调游标（行历 54 卡次序）·候选名形长→短·NFKC 归一·句界截断 380·页码留痕',
@@ -185,7 +188,7 @@ result = {'meta': {
 for card in cards:
     n = card['card_no']
     entry = {}
-    for skey in ('shu', 'yan', 'lun', 'tan'):
+    for skey in ('shu', 'yan', 'lun', 'tan', 'dao'):
         pos, used = find_anchor(skey, card)
         if pos is None:
             entry[skey] = {'miss': True}
@@ -199,7 +202,7 @@ for card in cards:
 for card in cards:
     n = card['card_no']
     entry = result['cards'][str(n)]
-    for skey in ('shu', 'yan', 'lun', 'tan'):
+    for skey in ('shu', 'yan', 'lun', 'tan', 'dao'):
         if not entry[skey].get('miss'):
             continue
         S = SOURCES[skey]
@@ -229,9 +232,9 @@ for card in cards:
             w['pass2'] = True
             entry[skey] = w
 
-cov = {k: sum(1 for e in result['cards'].values() if not e.get(k, {}).get('miss')) for k in ('shu', 'yan', 'lun', 'tan')}
+cov = {k: sum(1 for e in result['cards'].values() if not e.get(k, {}).get('miss')) for k in ('shu', 'yan', 'lun', 'tan', 'dao')}
 print('覆盖：疏 %d/54 · 钞 %d/54 · 论 %d/54 · 探 %d/54' % (cov['shu'], cov['yan'], cov['lun'], cov['tan']))
-misses = {n: [k for k in ('shu', 'yan', 'lun', 'tan') if e[k].get('miss')] for n, e in result['cards'].items() if any(e[k].get('miss') for k in ('shu', 'yan', 'lun', 'tan'))}
+misses = {n: [k for k in ('shu', 'yan', 'lun', 'tan', 'dao') if e[k].get('miss')] for n, e in result['cards'].items() if any(e[k].get('miss') for k in ('shu', 'yan', 'lun', 'tan'))}
 if misses:
     print('miss:', misses)
 
