@@ -82,6 +82,18 @@ others:
     tab: jiaoxing
     label: 教行页 · 宗派与判教
   updated_at: '2026-11-19'
+- id: huayan-zong
+  group: 宗派与判教
+  family: sect_panjiiao
+  order_in_group: 8
+  icon: 🪷
+  title: 华严宗全方位研究
+  title_sub: 法界缘起 · 结集史·五祖法脉·五教十宗·十玄古今
+  doc: docs/宗派研究/华严宗全方位研究.md
+  back:
+    tab: jiaoxing
+    label: 教行页 · 宗派与判教
+  updated_at: '2026-11-22'
 - id: sanshiqi
   group: 修学与禅门
   family: practice_zen
