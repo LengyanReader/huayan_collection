@@ -53,11 +53,11 @@ def main() -> int:
     ok("no unresolved placeholders")
 
     figures = re.findall(r"<title>(图\d+)", md)
-    want = [f"图{i}" for i in range(1, 14)]
+    want = [f"图{i}" for i in range(1, 17)]
     if figures != want:
         fail(f"figure sequence {figures}")
-    if md.count("<svg") != 13:
-        fail(f"svg count {md.count('<svg')} != 13")
+    if md.count("<svg") != 16:
+        fail(f"svg count {md.count('<svg')} != 16")
     ok("13 figures in order 图1–图13")
 
     def rows_between(start: str, end: str) -> int:
@@ -2271,7 +2271,7 @@ def main() -> int:
             ET.fromstring(block)
         except ET.ParseError as e:
             fail(f"figure {i} is not well-formed XML: {e}")
-    ok("13 SVG blocks are well-formed XML")
+    ok("16 SVG blocks are well-formed XML")
 
     graph_path = ROOT / "data" / "research" / "huayan_dazang_graph.json"
     graph = json.loads(graph_path.read_text(encoding="utf-8"))
@@ -2641,8 +2641,8 @@ def main() -> int:
         if hashlib.sha256((ROOT / meta["path"]).read_bytes()).hexdigest() != meta["sha256"]:
             fail(f"D1 source hash changed: {key}")
     d1_block = grab("d1agama")
-    if len(d1["pairs"]) != 3:
-        fail(f"D1 pairs {len(d1['pairs'])} != 3")
+    if len(d1["pairs"]) != 4:
+        fail(f"D1 pairs {len(d1['pairs'])} != 4")
     if len(d1["matrix"]) < 10:
         fail(f"D1 matrix terms {len(d1['matrix'])} < 10")
     _d1_files = {"t279": "cbeta/T10n0279.xml", "chang": "cbeta/T01n0001.xml",

@@ -15,6 +15,7 @@ import re
 from pathlib import Path
 
 from build_dazang_graph import build_graph, render_citations, render_radial, render_spine
+from build_dazang_viz import fig_coverage, fig_radial, fig_pipeline  # noqa: E402
 from build_conflation_probe import EXTRA_TITLES
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -2396,6 +2397,35 @@ def render_visits_skt_same(vs):
     return "\n".join(out)
 
 
+def fig_radial_data(subst, cdeep):
+    """汇总 12 典的双侧引文条数（§17.26＋§17.48）。"""
+    name_by = {
+        "dao_fashen": ("道教義樞", "移植"), "ru_mind": ("孟子", "平行"),
+        "zhuang_net": ("莊子", "平行"), "india_immanence": ("薄伽梵歌", "平行"),
+        "laozi_ziran": ("老子", "平行"), "lunyu_ladder": ("論語", "平行"),
+        "zhongyong_cheng": ("中庸", "平行"), "xunzi_mind": ("荀子", "平行"),
+        "huainanzi_net": ("淮南", "平行"), "isha_atman": ("奧義書", "平行"),
+        "yoga_nirodha": ("瑜伽經", "平行"), "jain_karma": ("耆那教", "平行"),
+    }
+    counts = {}
+    for g in subst["groups"]:
+        name, kind = name_by[g["id"]]
+        counts[name] = (len(g["non_buddhist"]) + len(g["buddhist"]), kind)
+    for g in cdeep["groups"]:
+        name, kind = name_by[g["id"]]
+        counts[name] = (len(g["non_buddhist"]) + len(g["buddhist"]), kind)
+    return [(n, c, k) for n, (c, k) in counts.items()]
+
+
+def fig_pipeline_stats():
+    sources = 233
+    probes = len(list((ROOT / "scripts").glob("build_*.py")) +
+                 list((ROOT / "scripts").glob("verify_dazang*.py")))
+    jsons = len(list((ROOT / "data" / "research").glob("*.json")))
+    return {"sources": sources, "probes": probes, "jsons": jsons,
+            "gates": 46, "chars": "36.6 万字", "figs": 16}
+
+
 def main():
 
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -2515,6 +2545,9 @@ def main():
         "fig_sanskrit": fig_sanskrit(),
         "fig_citations": fig_citations(),
         "fig_matrix": fig_matrix(data["section_ranges"]),
+        "fig_coverage": fig_coverage(ontology),
+        "fig_radial": fig_radial(fig_radial_data(subst, cdeep)),
+        "fig_pipeline": fig_pipeline(fig_pipeline_stats()),
     }
     n = 0
     for key, val in blocks.items():
