@@ -2685,7 +2685,7 @@ def main() -> int:
         fail("tanjur_content.json missing")
     tjc = json.loads(tjc_path.read_text(encoding="utf-8"))
     tjc_block = grab("tjcontent")
-    if len(tjc["pairs"]) != 4:
+    if len(tjc["pairs"]) != 6:
         fail(f"Tanjur content pairs {len(tjc['pairs'])} != 4")
     for pair in tjc["pairs"]:
         if pair["title"][:10] not in tjc_block:
@@ -2705,7 +2705,7 @@ def main() -> int:
         fail("§17.51 twin-tikas judgment missing")
     if "开篇形态本身是第四列" not in tjc_block:
         fail("§17.51 key judgment missing")
-    ok("§17.51 Tanjur content: 3 pairs (twin-tikas + Bhadracari + Dashabhumika)")
+    ok("§17.51 Tanjur content: 6 pairs (word-level mangala + chapter + twins)")
 
     # --- §17.52 P1 weiyi: 2 pairs re-sliced ---
     p1_path = ROOT / "data" / "research" / "p1_weiyi.json"
