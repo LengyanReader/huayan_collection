@@ -401,28 +401,77 @@
    "bo": "དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒྱལ་བའི་ཁང་པ་ལོགས་སུ་མངོན་པར་གཤེགས་པ་རྒྱང་རིང་པོ་ནས་མཐོང་ནས་རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ་གྱི་རང་བཞིན་སེང་གེའི་གདན་ཕྱོགས་རྣམ་པར་སྣང་བའི་སྙིང་པོ་ཅན་པོག་རེ་སྟོང་ཕྲག་བཅུས་བརྒྱན་པ། གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ། གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ། གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་བཅུ་རབ་ཏུ་སྤྱངས་པ། ",
    "zh": "",
    "en": "",
-   "status": "needs_review",
+   "status": "needs_retry",
    "verified": true,
    "boundary": "soft",
    "subunits": [
     {
      "bo": "དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒྱལ་བའི་ཁང་པ་ལོགས་སུ་མངོན་པར་གཤེགས་པ་རྒྱང་རིང་པོ་ནས་མཐོང་ནས་རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ་གྱི་རང་བཞིན་སེང་གེའི་གདན་ཕྱོགས་རྣམ་པར་སྣང་བའི་སྙིང་པོ་ཅན་པོག་རེ་སྟོང་ཕྲག་བཅུས་བརྒྱན་པ།",
-     "zh": "爾時，天主帝釋遙見世尊正趨向勝殿，便以神通力於勝殿之中，化現出一座獅子座。其座名為「遍照藏」，周圍裝飾著一萬個香爐，顯得極其莊嚴。帝釋隨即以迅疾的身相，進入勝殿之中。",
-     "zh_raw": "爾時，天主帝釋遙見世尊正趨向勝殿，便以神通力於勝殿之中，化現出一座獅子座。其座名為「遍照藏」，周圍裝飾著一萬個香爐，顯得極其莊嚴。帝釋隨即以迅疾的身相，進入勝殿之中。",
+     "zh": "",
+     "zh_raw": "爾時，天帝釋從遠處見世尊",
      "zh_clean": {
       "method": "subunit-official-prompt",
-      "complete": true,
-      "trimmed": false,
-      "validation": "ok",
-      "ts": "2026-11-15T16:16:30",
-      "needs_review": true,
-      "note": "coverage 83/258; offering-list term/fidelity unverified"
-     }
+      "complete": false,
+      "trimmed": true,
+      "validation": "empty",
+      "ts": "2026-11-21T10:08:27"
+     },
+     "items": [
+      {
+       "bo": "དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒྱལ་བའི་ཁང་པ་ལོགས་སུ་མངོན་པར་གཤེགས་པ་རྒྱང་རིང་པོ་ནས་མཐོང་ནས"
+      },
+      {
+       "bo": "རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ་གྱི་རང་བཞིན་སེང་གེའི་གདན་ཕྱོགས་རྣམ་པར་སྣང་བའི་སྙིང་པོ་ཅན་པོག་རེ་སྟོང་ཕྲག་བཅུས་བརྒྱན་པ།"
+      }
+     ]
     },
     {
-     "bo": "གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ། གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ། གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་བཅུ་རབ་ཏུ་སྤྱངས་པ།"
+     "bo": "གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ། གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ། གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་བཅུ་རབ་ཏུ་སྤྱངས་པ།",
+     "items": [
+      {
+       "bo": "གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ།"
+      },
+      {
+       "bo": "གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ།",
+       "zh": "",
+       "zh_raw": "以",
+       "zh_clean": {
+        "method": "item-level-official-prompt",
+        "complete": false,
+        "trimmed": true,
+        "validation": "empty",
+        "gen_s": 392.6,
+        "decode": "sample t=0.8",
+        "ts": "2026-11-22T10:33:03"
+       }
+      },
+      {
+       "bo": "གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་བཅུ་རབ་ཏུ་སྤྱངས་པ།"
+      }
+     ],
+     "zh_clean": {
+      "method": "item-level-official-prompt",
+      "items": 3,
+      "ts": "2026-11-22T10:33:03"
+     }
     }
-   ]
+   ],
+   "zh_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "method": "item-level-official-prompt",
+    "glossary_src": "L.354a术语表+11-14供物表",
+    "gen_s_total": 392.6,
+    "ts": "2026-11-22T10:33:03"
+   },
+   "en_meta": {
+    "model": "buddhist-nlp/mitra-qwen35-translate",
+    "engine": "mitra-qwen35-translate 9B bf16 CPU",
+    "method": "item-level-official-prompt",
+    "glossary_src": "L.354a术语表+11-14供物表",
+    "gen_s_total": 392.6,
+    "ts": "2026-11-22T10:33:03"
+   }
   },
   {
    "no": 6,
@@ -432,9 +481,9 @@
    "folio": "[238b.5]",
    "char_off": 1474,
    "bo": "མུ་ཏིག་གི་སེ་མོ་དོ་སྟོང་ཕྲག་བཅུ་དགའ་དགའ་ལྟར་བྱས་པ། གོས་སྟོང་ཕྲག་བཅུས་མངོན་པར་བཀབ་ པ། ལྷའི་བུ་མོ་སྟོང་ཕྲག་བཅུས་མདུན་དུ་བྱས་པ། ཚངས་པ་སྟོང་ཕྲག་བཅུས་ཀུན་ནས་བསྐོར་བ། འོད་ཟེར་སྟོང་ཕྲག་བཅུས་ཤིན་ཏུ་སྣང་བར་གྱུར་པ། བཅོམ་ལྡན་འདས་ཀྱི་གདན་དུ་བཤམས་སོ། །",
-   "zh": "",
-   "en": null,
-   "status": "needs_retry",
+   "zh": "以十千串珍珠瓔珞令其歡喜，並以十千件衣服覆蓋其上。\n由一萬名天女簇擁於前，並有一萬名大梵天眾環繞其側。\n以萬道光芒映照得極其明亮，並為世尊敷設了座席。",
+   "en": "Adorned with ten thousand pearl necklaces as if in a state of great joy, and completely covered with ten thousand garments. He was preceded by ten thousand celestial maidens and surrounded on all sides by ten thousand Brahmās. A seat for the Blessed One was prepared, brilliantly illuminated by ten thousand rays of light.",
+   "status": "done",
    "verified": true,
    "boundary": "final",
    "window": [
@@ -471,7 +520,72 @@
     "frame": false,
     "needs_review": true,
     "ts": "2026-11-15T16:52:47"
-   }
+   },
+   "subunits": [
+    {
+     "bo": "མུ་ཏིག་གི་སེ་མོ་དོ་སྟོང་ཕྲག་བཅུ་དགའ་དགའ་ལྟར་བྱས་པ། གོས་སྟོང་ཕྲག་བཅུས་མངོན་པར་བཀབ་ པ།",
+     "zh": "以十千串珍珠瓔珞令其歡喜，並以十千件衣服覆蓋其上。",
+     "zh_raw": "以十千串珍珠瓔珞令其歡喜，並以十千件衣服覆蓋其上。",
+     "zh_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-17T09:44:24"
+     },
+     "en": "Adorned with ten thousand pearl necklaces as if in a state of great joy, and completely covered with ten thousand garments.",
+     "en_raw": "Adorned with ten thousand pearl necklaces as if in a state of great joy, and completely covered with ten thousand garments.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-17T09:58:45"
+     }
+    },
+    {
+     "bo": "ལྷའི་བུ་མོ་སྟོང་ཕྲག་བཅུས་མདུན་དུ་བྱས་པ། ཚངས་པ་སྟོང་ཕྲག་བཅུས་ཀུན་ནས་བསྐོར་བ།",
+     "zh": "由一萬名天女簇擁於前，並有一萬名大梵天眾環繞其側。",
+     "zh_raw": "由一萬名天女簇擁於前，並有一萬名大梵天眾環繞其側。",
+     "zh_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-17T09:49:20"
+     },
+     "en": "He was preceded by ten thousand celestial maidens and surrounded on all sides by ten thousand Brahmās.",
+     "en_raw": "He was preceded by ten thousand celestial maidens and surrounded on all sides by ten thousand Brahmās.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-17T10:03:20"
+     }
+    },
+    {
+     "bo": "འོད་ཟེར་སྟོང་ཕྲག་བཅུས་ཤིན་ཏུ་སྣང་བར་གྱུར་པ། བཅོམ་ལྡན་འདས་ཀྱི་གདན་དུ་བཤམས་སོ། །",
+     "zh": "以萬道光芒映照得極其明亮，並為世尊敷設了座席。",
+     "zh_raw": "以萬道光芒映照得極其明亮，並為世尊敷設了座席。",
+     "zh_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-17T09:53:48"
+     },
+     "en": "A seat for the Blessed One was prepared, brilliantly illuminated by ten thousand rays of light.",
+     "en_raw": "A seat for the Blessed One was prepared, brilliantly illuminated by ten thousand rays of light.",
+     "en_clean": {
+      "method": "subunit-official-prompt",
+      "complete": true,
+      "trimmed": false,
+      "validation": "ok",
+      "ts": "2026-11-17T10:09:23"
+     }
+    }
+   ]
   },
   {
    "no": 7,

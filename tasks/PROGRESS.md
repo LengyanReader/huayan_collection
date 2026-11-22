@@ -4361,3 +4361,13 @@ done(
 - **指针与附录**：L.184「俟 Ep13+ 正行段」待核注、§5.3 系列清点各补 L.519 追记；附录讲记条目加 ep18。
 - **纪律**：五窗逐段子串回核 episodes 稿 ✓；K3d-v1 未精校·引前须对录音/影像核；講者判攝照錄不改。
 - **门禁**：build 200 files · verify_demo ALL CHECKS PASSED。
+
+## 三语线·L.519 质量层建设批 · 2026-11-22（用户批准七项评估建议）
+
+- **三语体例 v1 落盘**（用户 R4 两拍板：偈颂＝**祖本为主＋白话为注**·语域＝**术语古·句法白**）→ `workspace/tibetan-avatamsaka-translation/docs/STYLE-GUIDE-v1.md`：专名/数词/套语照 T10n0279 繁体·句法现代白话·偈颂分平行/无平行两制·三级拼装留痕规则·段级信度四轴 schema·prompt 目标态。约束三处：模型 prompt／M5 校订／页面呈现。
+- **章级术语预提取器**（`build_term_candidates.py`·M6 提前开工）：tsheg 音节切＋三/双/单层高频候选＋种子覆盖检查（glossary.yaml＋L.354a）；**实测发现 glossary.yaml 50 条仅 13 条带 bo_unicode——缺 37 条藏文字形**，M6 缺口如实登记；候选表落 `tibetan_avatamsaka_term_candidates_L519.json`（trigram 实词有效：བཅོམ་ལྡན་འདས／བྱང་ཆུབ་སེམས／སྟོང་ཕྲག་བཅུ 等）。
+- **祖本对照勘验器 MVP**（`verify_ancestor_crosscheck.py`·M4.10 独立互证落地）：31 章汉祖本＝同经异译独立 rendering；b 文件锚句（两级回退：全锚→「爾時」正文锚）定位 c80 分品祖本→近似窗（已译 CJK×1.5）→三面机器初筛（数词多集差／名目密度／专名差集），**只列分歧不作裁决**（M0.4）；**首轮即抓三条真信号**：①ch18 数词术语漂移——新译「十千×2＋一萬×2」混用·祖本窗一致「十千×10」（体例数词层照祖本的实证）②ch14 祖本「一一」分配结构新译全缺（0↔5）③ch14 清单密度差（顿号 20↔54）。落 `ancestor_crosscheck_L519.json`，裁决〔待人工〕。
+- **章翻译简报生成器**（`build_chapter_dossier.py`·L2 层）：6 章全装配（品配对+rule+证据+进度+L.354a 人工试译锚+L379 漂移标+章术语候选+祖本勘验状态+品专篇路径），落 `dossier_L519.json`——M5 校订者（或获授权强模型）一包在手。
+- **seg5 条目级重译——机器路径穷尽（定谳）**：新器 `repair_item_level.py`（子单元→条目粒度·shad/句法接点切分·逐条目 gen_s+decode 留痕·prev_attempt 不覆盖历史）。实测：sub1 两条目 zh/en 4 次 greedy 全瞬停（raw 1–6 字符·544–1323s）→ sub2 item1 zh 瞬停（1225s）→ **采样探针（t=0.8·最短条目 36 字符）仍瞬停（393s）**。11-14 以来累计：整段×2／子单元×1／条目 greedy×6／采样×1，输出全部 ≤12 字符——坐实**内容触发 EOS 早停**，非粒度/术语/prompt 措辞问题。机器路径关闭，seg5 交 **M5 人工条目级**（简报+术语候选+祖本窗三件套已备）；数据层状态不变（needs_retry·失败留痕全在 repair_log＋item zh_clean）。
+- **门禁**：trilingual gates M0/M1 全 PASS（G0.1 六章 2,946 段·结构段 3 豁免；G1.1 两批对账差 0.16%/1.61%＋圈外备案）；G2.2/G2.3/G2.5 PASS；G2.1 FAIL＝预期（13 章未启动＋ch18 5/6）；`verify_demo` **ALL PASSED**；`.harness/check.py` OK。
+- **未竟/下批**：①seg5 人工条目译（M5·简报就绪）②ch19–31 推进（保留缺口口径）③术语候选人工确认批（M6.3·glossary bo_unicode 补 37 条）④子单元机制接批量线（清单段自动条目化）⑤祖本勘验扩 seg2+（窗对齐需句级映射）⑥解码时限 StoppingCriteria 本机未生效待查（gen 超时由 max_new 兜底）。

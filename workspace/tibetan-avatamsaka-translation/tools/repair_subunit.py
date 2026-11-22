@@ -55,6 +55,7 @@ def main():
     ap.add_argument('--parts', type=int, default=0, help='分几段（0=沿用/2）')
     ap.add_argument('--keep-zh', action='store_true', help='仅重译英文，保留已有中文')
     ap.add_argument('--time-limit', type=int, default=900, help='单次生成墙钟上限（秒）')
+    ap.add_argument('--glossary', default='', help='术语表（插入 prompt）')
     args = ap.parse_args()
 
     path, doc = R.load_doc(args.chapter)
@@ -79,9 +80,11 @@ def main():
     source = part['bo']
 
     tok = AutoTokenizer.from_pretrained(MODEL, local_files_only=True)
-    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16, device_map='cpu', local_files_only=True)
+    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16, device_map='cpu', local_files_only=True, low_cpu_mem_usage=True)
     model.eval()
     prompt = R.build_prompt(source, 'Modern Chinese' if args.lang == 'zh' else 'English')
+    if args.glossary:
+        prompt = prompt.replace('Provide only the translation', 'Use this terminology consistently: ' + args.glossary + ' Provide only the translation')
     inputs = tok.apply_chat_template([{'role': 'user', 'content': prompt}],
                                      add_generation_prompt=True, return_dict=True,
                                      return_tensors='pt', enable_thinking=False)

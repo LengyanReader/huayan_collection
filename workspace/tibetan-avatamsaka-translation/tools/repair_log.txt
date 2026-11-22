@@ -191,3 +191,61 @@ The previous blessings also appear without having diminished.
 [16:52:47] seg6 zh: window=1 raw=57 cleaned=0 complete=False (empty)
 [16:52:47] --- cleaned ---
 
+[09:44:24] seg6 part1 zh: raw=25 cleaned=25 complete=True (ok); composed=False
+[09:44:24] --- cleaned ---
+以十千串珍珠瓔珞令其歡喜，並以十千件衣服覆蓋其上。
+[09:49:20] seg6 part2 zh: raw=25 cleaned=25 complete=True (ok); composed=False
+[09:49:20] --- cleaned ---
+由一萬名天女簇擁於前，並有一萬名大梵天眾環繞其側。
+[09:53:48] seg6 part3 zh: raw=23 cleaned=23 complete=True (ok); composed=False
+[09:53:48] --- cleaned ---
+以萬道光芒映照得極其明亮，並為世尊敷設了座席。
+[09:58:45] seg6 part1 en: raw=123 cleaned=123 complete=True (ok); composed=False
+[09:58:45] --- cleaned ---
+Adorned with ten thousand pearl necklaces as if in a state of great joy, and completely covered with ten thousand garments.
+[10:03:20] seg6 part2 en: raw=102 cleaned=102 complete=True (ok); composed=False
+[10:03:20] --- cleaned ---
+He was preceded by ten thousand celestial maidens and surrounded on all sides by ten thousand Brahmās.
+[10:09:23] seg6 part3 en: raw=95 cleaned=95 complete=True (ok); composed=True
+[10:09:23] --- cleaned ---
+A seat for the Blessed One was prepared, brilliantly illuminated by ten thousand rays of light.
+[10:08:27] seg5 part1 zh: raw=12 cleaned=0 complete=False (empty); composed=False
+[10:08:27] --- cleaned ---
+
+[09:02:28] 切分计划 sub1 (joint:མཐོང་ནས): 2 条目
+[09:02:28]    item1 (114 chars): དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒ
+[09:02:28]    item2 (144 chars): ་རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུ
+[09:02:28] 切分计划 sub2 (shad): 3 条目
+[09:02:28]    item1 (42 chars): གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ།
+[09:02:28]    item2 (36 chars): གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ།
+[09:02:28]    item3 (74 chars): གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་
+[09:03:06] 切分计划 sub1 (joint:མཐོང་ནས): 2 条目
+[09:03:06]    item1 (114 chars): དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒ
+[09:03:06]    item2 (143 chars): རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ
+[09:03:06] 切分计划 sub2 (shad): 3 条目
+[09:03:06]    item1 (42 chars): གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ།
+[09:03:06]    item2 (36 chars): གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ།
+[09:03:06]    item3 (74 chars): གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་
+[09:03:31] 切分计划 sub1 (joint:མཐོང་ནས): 2 条目
+[09:03:31]    item1 (114 chars): དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒ
+[09:03:31]    item2 (143 chars): རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ
+[09:03:31] 切分计划 sub2 (shad): 3 条目
+[09:03:31]    item1 (42 chars): གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ།
+[09:03:31]    item2 (36 chars): གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ།
+[09:03:31]    item3 (74 chars): གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་
+[09:03:35] 模型装载完成 (3s)，开始条目生成
+[09:12:38] sub1 item zh: raw=2 cleaned=0 complete=False (empty) gen=544s ::
+[09:26:57] sub1 item en: raw=4 cleaned=0 complete=False (empty) gen=859s ::
+[09:42:03] sub1 item zh: raw=1 cleaned=0 complete=False (empty) gen=906s ::
+[10:04:07] sub1 item en: raw=6 cleaned=0 complete=False (empty) gen=1323s ::
+[10:24:32] sub2 item zh: raw=1 cleaned=0 complete=False (empty) gen=1225s ::
+[10:26:22] 切分计划 sub1 (joint:མཐོང་ནས): 2 条目
+[10:26:22]    item1 (114 chars): དེ་ནས་ལྷའི་དབང་པོ་བརྒྱ་བྱིན་གྱིས་བཅོམ་ལྡན་འདས་རྣམ་ པར་རྒ
+[10:26:22]    item2 (143 chars): རྣམ་པར་རྒྱལ་བའི་ཁང་པའི་ནང་དུ་རིངས་པའི་གཟུགས་སུ་རྫུ་འཕྲུལ
+[10:26:22] 切分计划 sub2 (shad): 3 条目
+[10:26:22]    item1 (42 chars): གསེར་གྱི་དྲ་བ་སྟོང་ ཕྲག་བཅུ་ཀུན་ཏུ་བྲེས་པ།
+[10:26:22]    item2 (36 chars): གནམ་ཡོལ་སྟོང་ཕྲག་བཅུས་བླ་རེར་བྲེས་པ།
+[10:26:22]    item3 (74 chars): གདུགས་སྟོང་ཕྲག་བཅུ་ཤིན་ཏུ་བཟུང་བ་དར་གྱི་ལྡ་ལྡི་སྟོང་ཕྲག་
+[10:26:30] 模型装载完成 (8s)，开始条目生成
+[10:33:03] sub2 item zh: raw=1 cleaned=0 complete=False (empty) gen=393s ::
+[10:33:03] seg5 条目级完成：status=needs_retry gen_s_total=392.6s

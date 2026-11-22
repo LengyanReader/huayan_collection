@@ -61,17 +61,41 @@ CTX = {}
 
 # ── machine 谓词：返回 (status, info) ──
 def p_segments_all_verified():
+    """M0 G0.1：segments 逐字复验＋双语/status 一致。
+
+    L.519 豁免两类结构段（不产译文/非模型生成，无双语言语是合法态）：
+    - merged-into：内容已并入他段（zh_clean.method='merged-into'）——若反而带
+      zh/en 内容视为泄漏，仍 FAIL；
+    - 题名块（zh_meta.engine='canonical-title-block'）：公式拼装、自带文本，
+      只豁免一致性检查，不豁免泄漏。
+    段号跨章重复，信息一律以「章:段」表示。
+    """
     sb = CTX['segs']
     if not sb:
         return 'PENDING', '尚无 segments 数据层'
     allseg = [s for v in sb.values() for s in v]
-    unver = [s['no'] for s in allseg if not s.get('verified')]
-    broken = [s['no'] for s in allseg
-              if bool(s.get('zh') and s.get('en')) != (s.get('status') == 'done')]
+    unver, broken, structural = [], [], []
+    for c, v in sorted(sb.items()):
+        for s in v:
+            tag = '%s:%s' % (c, s['no'])
+            if not s.get('verified'):
+                unver.append(tag)
+            zc = s.get('zh_clean') or {}
+            zm = s.get('zh_meta') or {}
+            merged = zc.get('method') == 'merged-into'
+            title = zm.get('engine') == 'canonical-title-block'
+            if merged or title:
+                structural.append(tag)
+                if merged and (s.get('zh') or s.get('en')):
+                    broken.append(tag + '(合并段泄漏)')
+                continue
+            if bool(s.get('zh') and s.get('en')) != (s.get('status') == 'done'):
+                broken.append(tag)
     if unver or broken:
         return 'FAIL', '未复验段=%s；双语/status 不一致段=%s' % (unver, broken)
     done = sum(1 for s in allseg if s.get('status') == 'done')
-    return 'PASS', '章=%d 段=%d（已译 %d）全部逐字复验通过·双语与状态一致' % (len(sb), len(allseg), done)
+    return 'PASS', ('章=%d 段=%d（已译 %d·结构段 %d 豁免）全部逐字复验通过·双语与状态一致'
+                    % (len(sb), len(allseg), done, len(structural)))
 
 
 def p_plan_totals_closed():
@@ -262,11 +286,40 @@ def p_cost_table_grounded():
     done = [s for s in allseg if s.get('status') == 'done']
     if not done:
         return 'PENDING', '无已译段可标定'
-    nomet = [s['no'] for s in done
-             if not ((s.get('zh_meta') or {}).get('gen_s')
-                     and (s.get('en_meta') or {}).get('gen_s'))]
-    if nomet:
-        return 'FAIL', '已译段缺 *_meta.gen_s（数字无来源可指）：%s' % nomet
+    # L.519 口径收窄：G1.1 的声明对象是「标定表数字」，故 gen_s 硬门只查
+    # batch_final_* 圈定段；结构段（merged-into／题名块公式拼装）无机时属
+    # 合法态，豁免；圈外段缺 gen_s 只备案可见，不计阻塞（其机时留痕在
+    # zh_meta.model/revisions＋zh_clean.ts，非估算冒充）。
+    scopes0 = mc.get('batch_scopes') or {}
+    scoped = set()
+    for k in [k for k in mc if k.startswith('batch_final_')]:
+        sc = scopes0.get(k) or {}
+        ch = sc.get('chapter')
+        if ch is None or ch not in CTX['segs']:
+            continue
+        nos = sc.get('segs')
+        for s in CTX['segs'][ch]:
+            if s.get('status') == 'done' and (nos is None or s['no'] in nos):
+                scoped.add((ch, s['no']))
+
+    def structural(s):
+        zc = s.get('zh_clean') or {}
+        zm = s.get('zh_meta') or {}
+        return (zc.get('method') == 'merged-into'
+                or zm.get('engine') == 'canonical-title-block')
+
+    def lacks_gen(s):
+        return not ((s.get('zh_meta') or {}).get('gen_s')
+                    and (s.get('en_meta') or {}).get('gen_s'))
+
+    done_pairs = [(c, s) for c, v in CTX['segs'].items()
+                  for s in v if s.get('status') == 'done']
+    miss_scoped = ['%s:%s' % (c, s['no']) for c, s in done_pairs
+                   if (c, s['no']) in scoped and not structural(s) and lacks_gen(s)]
+    miss_rest = ['%s:%s' % (c, s['no']) for c, s in done_pairs
+                 if (c, s['no']) not in scoped and not structural(s) and lacks_gen(s)]
+    if miss_scoped:
+        return 'FAIL', '标定圈定已译段缺 *_meta.gen_s（数字无来源可指）：%s' % miss_scoped
     # 逐批对账：每个 batch_final_* 声明键按 batch_scopes 圈定段集，
     # 总量只与同批 Σmeta 比对（多章落盘后全局求和会拿 W1总量对全部段，口径错误）。
     scopes = mc.get('batch_scopes') or {}
@@ -293,8 +346,9 @@ def p_cost_table_grounded():
             return 'FAIL', '%s 总机时 %.1fs 与圈定 Σmeta %.1fs 偏差>5%%' % (k, stated, ssum)
         msgs.append('%s %.1f vs Σmeta %.1f s（差 %.2f%%）' % (k, stated, ssum,
                                                           100 * (stated - ssum) / stated))
-    return 'PASS', ('标定表键齐·%d 段 meta 逐数可指·逐批对账：%s'
-                    % (len(done), '；'.join(msgs)))
+    note = ('；圈外段缺 gen_s（备案不阻塞）：%s' % miss_rest) if miss_rest else ''
+    return 'PASS', ('标定表键齐·圈定段 meta 逐数可指·逐批对账：%s%s'
+                    % ('；'.join(msgs), note))
 
 
 def p_ab_translation_recorded():

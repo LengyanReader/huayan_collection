@@ -303,7 +303,7 @@ def retranslate(path, doc, seg_no, lang, max_new, window=1, time_limit=900):
     t0 = time.time()
     tok = AutoTokenizer.from_pretrained(MODEL, local_files_only=True)
     torch.set_num_threads(os.cpu_count() or 8)
-    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16, device_map='cpu', local_files_only=True)
+    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16, device_map='cpu', local_files_only=True, low_cpu_mem_usage=True)
     model.eval()
     log('model ready %.1fs' % (time.time() - t0))
     prompt = build_prompt(source, 'Modern Chinese' if lang == 'zh' else 'English')

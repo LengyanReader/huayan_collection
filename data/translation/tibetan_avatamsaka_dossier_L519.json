@@ -1,0 +1,808 @@
+{
+ "id": "tibetan_avatamsaka_dossier_L519",
+ "date": "2026-11-22",
+ "batch": "L.519",
+ "nature": "〔机器装配〕全部字段回指权威层；空缺如实标〔缺〕，不造内容",
+ "style_guide": "workspace/tibetan-avatamsaka-translation/docs/STYLE-GUIDE-v1.md",
+ "chapters": {
+  "1": {
+   "tibetan_ch": 1,
+   "pin": null,
+   "pin_title": "〔缺〕",
+   "rule": "前段不平行",
+   "pairing_evidence": "藏1-10/12-13 与品1-8 章界不平行（L.352 finding：不平行限于前段）〔待核〕",
+   "derge_vol_folio": "035 1b.1",
+   "progress": {
+    "total": 1552,
+    "done": 6,
+    "needs_retry": 0,
+    "pending": 1546,
+    "done_seg_nos": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "trilingual_status": "开篇6段已试译",
+   "human_trial_L354a": "〔缺〕",
+   "drift_flags_L379": [],
+   "term_candidates": [
+    {
+     "bo": "བྱང་ཆུབ་སེམས",
+     "count": 8
+    },
+    {
+     "bo": "ཆུབ་སེམས་དཔའ",
+     "count": 8
+    },
+    {
+     "bo": "བཅོམ་ལྡན་འདས",
+     "count": 5
+    },
+    {
+     "bo": "ཤིན་རྒྱས་ཆེན",
+     "count": 4
+    },
+    {
+     "bo": "རྒྱས་ཆེན་པོའི",
+     "count": 4
+    },
+    {
+     "bo": "ཆེན་པོའི་མདོ",
+     "count": 4
+    },
+    {
+     "bo": "སྤྱོད་ཡུལ་ཡོངས",
+     "count": 3
+    },
+    {
+     "bo": "ཡུལ་ཡོངས་དག",
+     "count": 3
+    },
+    {
+     "bo": "པར་སངས་རྒྱས",
+     "count": 2
+    },
+    {
+     "bo": "སངས་རྒྱས་ཐམས",
+     "count": 2
+    },
+    {
+     "bo": "རྒྱས་ཐམས་ཅད",
+     "count": 2
+    },
+    {
+     "bo": "པར་སྣང་ཐམས",
+     "count": 2
+    },
+    {
+     "bo": "སྣང་ཐམས་ཅད",
+     "count": 2
+    },
+    {
+     "bo": "ཐམས་ཅད",
+     "count": 14
+    },
+    {
+     "bo": "སངས་རྒྱས",
+     "count": 11
+    },
+    {
+     "bo": "བྱང་ཆུབ",
+     "count": 11
+    },
+    {
+     "bo": "རྣམ་པར",
+     "count": 10
+    },
+    {
+     "bo": "ཆུབ་སེམས",
+     "count": 8
+    },
+    {
+     "bo": "སེམས་དཔའ",
+     "count": 8
+    },
+    {
+     "bo": "པར་སྣང",
+     "count": 6
+    }
+   ],
+   "ancestor": {
+    "note": "前段不平行——归 M8 定界后配对"
+   },
+   "pin_article": null,
+   "pin_article_note": "品旨/来意/宗趣取窗〔待取窗·下批〕"
+  },
+  "14": {
+   "tibetan_ch": 14,
+   "pin": 9,
+   "pin_title": "光明覺品",
+   "rule": "差5",
+   "pairing_evidence": "alignment\\tibetan_zhuhuju_b2.json 章条目",
+   "derge_vol_folio": "035 191a.7",
+   "progress": {
+    "total": 278,
+    "done": 6,
+    "needs_retry": 0,
+    "pending": 272,
+    "done_seg_nos": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "trilingual_status": "开篇6段已试译",
+   "human_trial_L354a": "尔时，世尊从两足底放出百千俱胝光明，照亮此三千大千世界，显现百亿阎浮提；又显现百亿身胜洲（东毗提诃·ལུས་འཕགས）、百亿牛行洲（西瞿耶尼·བན་ལང་སྤྱོད）、百亿妙声不行洲（北郁单越·སྒྲ་མི་སྙན）、百亿大海、百亿轮围金刚山（ཁོར་ཡུག་རྡོ་རྗེའི་རི）、百亿菩萨受生……",
+   "drift_flags_L379": [
+    {
+     "seg": 1,
+     "flaw_types": [
+      "residue"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    },
+    {
+     "seg": 2,
+     "flaw_types": [
+      "drift",
+      "para_loop"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    },
+    {
+     "seg": 3,
+     "flaw_types": [
+      "residue"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    },
+    {
+     "seg": 4,
+     "flaw_types": [
+      "drift",
+      "para_loop"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    },
+    {
+     "seg": 5,
+     "flaw_types": [
+      "drift",
+      "residue"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    },
+    {
+     "seg": 6,
+     "flaw_types": [
+      "drift",
+      "residue"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    }
+   ],
+   "term_candidates": [
+    {
+     "bo": "བྱེ་ཕྲག་བརྒྱ",
+     "count": 15
+    },
+    {
+     "bo": "ཕྲག་བརྒྱ་བསྟན",
+     "count": 11
+    },
+    {
+     "bo": "བརྒྱ་བསྟན་ཏོ",
+     "count": 11
+    },
+    {
+     "bo": "བྱང་ཆུབ་སེམས",
+     "count": 8
+    },
+    {
+     "bo": "ཆུབ་སེམས་དཔའ",
+     "count": 8
+    },
+    {
+     "bo": "བཅོམ་ལྡན་འདས",
+     "count": 5
+    },
+    {
+     "bo": "པོ་བྱེ་ཕྲག",
+     "count": 2
+    },
+    {
+     "bo": "ལྷའི་རིས་བྱེ",
+     "count": 2
+    },
+    {
+     "bo": "རིས་བྱེ་ཕྲག",
+     "count": 2
+    },
+    {
+     "bo": "བྱེ་ཕྲག",
+     "count": 15
+    },
+    {
+     "bo": "ཕྲག་བརྒྱ",
+     "count": 15
+    },
+    {
+     "bo": "བྱང་ཆུབ",
+     "count": 11
+    },
+    {
+     "bo": "བརྒྱ་བསྟན",
+     "count": 11
+    },
+    {
+     "bo": "བསྟན་ཏོ",
+     "count": 11
+    },
+    {
+     "bo": "རྣམ་པར",
+     "count": 10
+    },
+    {
+     "bo": "ཆུབ་སེམས",
+     "count": 8
+    },
+    {
+     "bo": "སེམས་དཔའ",
+     "count": 8
+    },
+    {
+     "bo": "ཆེན་པོའི",
+     "count": 5
+    },
+    {
+     "bo": "བཅོམ་ལྡན",
+     "count": 5
+    },
+    {
+     "bo": "ལྡན་འདས",
+     "count": 5
+    }
+   ],
+   "ancestor": {
+    "source": "八十 T10n0279 分品文本 c80/p009.json",
+    "crosscheck_status": "screened",
+    "crosscheck_flags": {
+     "num_token_diffs": 17,
+     "names_new_only": 6,
+     "list_density": {
+      "new_dun": 20,
+      "anc_dun": 54,
+      "new_semi": 15,
+      "anc_semi": 7
+     }
+    }
+   },
+   "pin_article": "docs\\经学文献\\华严经细读\\第二会_普光明殿_差别因果周\\华严经细读_第九部_光明觉品.md",
+   "pin_article_note": "品旨/来意/宗趣取窗〔待取窗·下批〕"
+  },
+  "15": {
+   "tibetan_ch": 15,
+   "pin": 10,
+   "pin_title": "菩薩問明品",
+   "rule": "差5",
+   "pairing_evidence": "alignment\\tibetan_zhuhuju_b2.json 章条目",
+   "derge_vol_folio": "035 203b.2",
+   "progress": {
+    "total": 170,
+    "done": 6,
+    "needs_retry": 0,
+    "pending": 164,
+    "done_seg_nos": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "trilingual_status": "开篇6段已试译",
+   "human_trial_L354a": "〔bam po 17〕尔时，文殊师利菩萨告佛德菩萨（སངས་རྒྱས་དཔལ）言：「佛子！同一自性之心，而有如是种种差别之相——往善趣者、往恶趣者、诸根具足者、诸根不具足者、受生同类者……」",
+   "drift_flags_L379": [
+    {
+     "seg": 1,
+     "flaw_types": [
+      "drift",
+      "residue"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    },
+    {
+     "seg": 2,
+     "flaw_types": [
+      "drift",
+      "para_loop"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    },
+    {
+     "seg": 3,
+     "flaw_types": [
+      "drift",
+      "para_loop"
+     ],
+     "m5_action": "首句（合底本部）可资校订参考；尾段须人工重译〔本文判断〕·双轨保留原译"
+    }
+   ],
+   "term_candidates": [
+    {
+     "bo": "བྱང་ཆུབ་སེམས",
+     "count": 8
+    },
+    {
+     "bo": "ཆུབ་སེམས་དཔའ",
+     "count": 8
+    },
+    {
+     "bo": "ཤིན་རྒྱས་ཆེན",
+     "count": 4
+    },
+    {
+     "bo": "རྒྱས་ཆེན་པོའི",
+     "count": 4
+    },
+    {
+     "bo": "ཆེན་པོའི་མདོ",
+     "count": 4
+    },
+    {
+     "bo": "སངས་རྒྱས་རྨད",
+     "count": 3
+    },
+    {
+     "bo": "རྒྱས་རྨད་ཅད",
+     "count": 3
+    },
+    {
+     "bo": "རྨད་ཅད་ཤིན",
+     "count": 3
+    },
+    {
+     "bo": "ཅད་ཤིན་རྒྱས",
+     "count": 3
+    },
+    {
+     "bo": "པོའི་མདོ་བམ",
+     "count": 3
+    },
+    {
+     "bo": "མདོ་བམ་པོ",
+     "count": 3
+    },
+    {
+     "bo": "བམ་པོ་བཅུ",
+     "count": 2
+    },
+    {
+     "bo": "སེམས་དཔའ་འཇམ",
+     "count": 2
+    },
+    {
+     "bo": "དཔའ་འཇམ་དཔལ",
+     "count": 2
+    },
+    {
+     "bo": "དཔལ་བྱང་ཆུབ",
+     "count": 2
+    },
+    {
+     "bo": "དཔལ་འདི་སྐད",
+     "count": 2
+    },
+    {
+     "bo": "འདི་སྐད་ཀྱེ",
+     "count": 2
+    },
+    {
+     "bo": "སྐད་ཀྱེ་རྒྱལ",
+     "count": 2
+    },
+    {
+     "bo": "ཀྱེ་རྒྱལ་བའི",
+     "count": 2
+    },
+    {
+     "bo": "རྒྱལ་བའི་སྲས",
+     "count": 2
+    }
+   ],
+   "ancestor": {
+    "source": "八十 T10n0279 分品文本 c80/p010.json",
+    "crosscheck_status": "screened",
+    "crosscheck_flags": {
+     "num_token_diffs": 11,
+     "names_new_only": 20,
+     "list_density": {
+      "new_dun": 10,
+      "anc_dun": 26,
+      "new_semi": 4,
+      "anc_semi": 9
+     }
+    }
+   },
+   "pin_article": "docs\\经学文献\\华严经细读\\第二会_普光明殿_差别因果周\\华严经细读_第十部_菩萨问明品.md",
+   "pin_article_note": "品旨/来意/宗趣取窗〔待取窗·下批〕"
+  },
+  "16": {
+   "tibetan_ch": 16,
+   "pin": 11,
+   "pin_title": "淨行品",
+   "rule": "差5",
+   "pairing_evidence": "alignment\\tibetan_zhuhuju_b2.json 章条目",
+   "derge_vol_folio": "035 210b.2",
+   "progress": {
+    "total": 201,
+    "done": 6,
+    "needs_retry": 0,
+    "pending": 195,
+    "done_seg_nos": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "trilingual_status": "开篇6段已试译",
+   "human_trial_L354a": "尔时，智首菩萨（ཡེ་ཤེས་དཔལ）告文殊师利菩萨言：「佛子！诸菩萨如何具足无过失（ཁ་ན་མ་ཐོ་བ་མེད་པ）之身业？如何具足无过失之语业？如何具足无过失之意业？如何身业不失坏（མ་ཉམས་པ）？如何语业不失坏？如何意业不失坏？如何身业无可讥嫌（མ་སྨད་པ）？如何语业无可讥嫌？……」",
+   "drift_flags_L379": [],
+   "term_candidates": [
+    {
+     "bo": "བྱང་ཆུབ་སེམས",
+     "count": 8
+    },
+    {
+     "bo": "ཆུབ་སེམས་དཔའ",
+     "count": 8
+    },
+    {
+     "bo": "ཁ་ན་ཐོ",
+     "count": 3
+    },
+    {
+     "bo": "ན་ཐོ་མེད",
+     "count": 3
+    },
+    {
+     "bo": "ཐོ་མེད་པའི",
+     "count": 3
+    },
+    {
+     "bo": "རྣམ་པར་ཉམས",
+     "count": 3
+    },
+    {
+     "bo": "པར་ཉམས་ཡིན",
+     "count": 3
+    },
+    {
+     "bo": "ཡིན་ངག་གི",
+     "count": 3
+    },
+    {
+     "bo": "སེམས་དཔའ་འཇམ",
+     "count": 2
+    },
+    {
+     "bo": "དཔའ་འཇམ་དཔལ",
+     "count": 2
+    },
+    {
+     "bo": "དཔལ་བྱང་ཆུབ",
+     "count": 2
+    },
+    {
+     "bo": "དཔལ་འདི་སྐད",
+     "count": 2
+    },
+    {
+     "bo": "འདི་སྐད་ཀྱེ",
+     "count": 2
+    },
+    {
+     "bo": "སྐད་ཀྱེ་རྒྱལ",
+     "count": 2
+    },
+    {
+     "bo": "ཀྱེ་རྒྱལ་བའི",
+     "count": 2
+    },
+    {
+     "bo": "རྒྱལ་བའི་སྲས",
+     "count": 2
+    },
+    {
+     "bo": "ལྡན་ཡིན་ཁ",
+     "count": 2
+    },
+    {
+     "bo": "ཡིན་ཁ་ན",
+     "count": 2
+    },
+    {
+     "bo": "བྱང་ཆུབ",
+     "count": 11
+    },
+    {
+     "bo": "རྣམ་པར",
+     "count": 10
+    }
+   ],
+   "ancestor": {
+    "source": "八十 T10n0279 分品文本 c80/p011.json",
+    "crosscheck_status": "screened",
+    "crosscheck_flags": {
+     "num_token_diffs": 2,
+     "names_new_only": 2,
+     "list_density": {
+      "new_dun": 0,
+      "anc_dun": 50,
+      "new_semi": 0,
+      "anc_semi": 0
+     }
+    }
+   },
+   "pin_article": "docs\\经学文献\\华严经细读\\第二会_普光明殿_差别因果周\\华严经细读_第十一部_净行品.md",
+   "pin_article_note": "品旨/来意/宗趣取窗〔待取窗·下批〕"
+  },
+  "17": {
+   "tibetan_ch": 17,
+   "pin": 12,
+   "pin_title": "賢首品",
+   "rule": "差5",
+   "pairing_evidence": "alignment\\tibetan_zhuhuju_b2.json 章条目",
+   "derge_vol_folio": "035 219b.6",
+   "progress": {
+    "total": 712,
+    "done": 7,
+    "needs_retry": 0,
+    "pending": 705,
+    "done_seg_nos": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   "trilingual_status": "开篇6段已试译（段7合译）",
+   "human_trial_L354a": "〔bam po 18〕（文殊结偈）「功德广大之行境清净」——作是说已，于无垢众生，（文殊师利）问殊胜佛子贤德（བཟང་པོའི་དཔལ·贤首）以菩提功德：「行境清净之诸佛行，我今于此为诸佛子宣说；所有功德之行，佛子！今当由汝宣说。」贤德答言：「佛子谛听……」",
+   "drift_flags_L379": [],
+   "term_candidates": [
+    {
+     "bo": "ཤིན་རྒྱས་ཆེན",
+     "count": 4
+    },
+    {
+     "bo": "རྒྱས་ཆེན་པོའི",
+     "count": 4
+    },
+    {
+     "bo": "ཆེན་པོའི་མདོ",
+     "count": 4
+    },
+    {
+     "bo": "སྤྱོད་ཡུལ་ཡོངས",
+     "count": 3
+    },
+    {
+     "bo": "ཡུལ་ཡོངས་དག",
+     "count": 3
+    },
+    {
+     "bo": "སངས་རྒྱས་རྨད",
+     "count": 3
+    },
+    {
+     "bo": "རྒྱས་རྨད་ཅད",
+     "count": 3
+    },
+    {
+     "bo": "རྨད་ཅད་ཤིན",
+     "count": 3
+    },
+    {
+     "bo": "ཅད་ཤིན་རྒྱས",
+     "count": 3
+    },
+    {
+     "bo": "པོའི་མདོ་བམ",
+     "count": 3
+    },
+    {
+     "bo": "མདོ་བམ་པོ",
+     "count": 3
+    },
+    {
+     "bo": "བཟང་པོའི་དཔལ",
+     "count": 2
+    },
+    {
+     "bo": "སངས་རྒྱས",
+     "count": 11
+    },
+    {
+     "bo": "བྱང་ཆུབ",
+     "count": 11
+    },
+    {
+     "bo": "ཆེན་པོའི",
+     "count": 5
+    },
+    {
+     "bo": "ཡོན་ཏན",
+     "count": 5
+    },
+    {
+     "bo": "ཤིན་རྒྱས",
+     "count": 4
+    },
+    {
+     "bo": "རྒྱས་ཆེན",
+     "count": 4
+    },
+    {
+     "bo": "པོའི་མདོ",
+     "count": 4
+    },
+    {
+     "bo": "ཅད་ཤིན",
+     "count": 4
+    }
+   ],
+   "ancestor": {
+    "source": "八十 T10n0279 分品文本 c80/p012.json",
+    "crosscheck_status": "screened",
+    "crosscheck_flags": {
+     "num_token_diffs": 4,
+     "names_new_only": 4,
+     "list_density": {
+      "new_dun": 0,
+      "anc_dun": 0,
+      "new_semi": 0,
+      "anc_semi": 0
+     }
+    }
+   },
+   "pin_article": "docs\\经学文献\\华严经细读\\第二会_普光明殿_差别因果周\\华严经细读_第十二部_贤首品.md",
+   "pin_article_note": "品旨/来意/宗趣取窗〔待取窗·下批〕"
+  },
+  "18": {
+   "tibetan_ch": 18,
+   "pin": 13,
+   "pin_title": "昇須彌山頂品",
+   "rule": "差5",
+   "pairing_evidence": "alignment\\tibetan_zhuhuju_b3.json 章条目",
+   "derge_vol_folio": "035 238a.6",
+   "progress": {
+    "total": 33,
+    "done": 5,
+    "needs_retry": 1,
+    "pending": 27,
+    "done_seg_nos": [
+     1,
+     2,
+     3,
+     4,
+     6
+    ]
+   },
+   "trilingual_status": "开篇5段已试译（seg5待校）",
+   "human_trial_L354a": "〔《佛不思议法性广博广大经》·bam po 19〕尔时，以佛神力，东方一切世界，如是南方、西方、北方、东北隅、东南隅、西南隅、西北隅、下方、上方——一切世界中，如此四洲世界等，每一四洲，如来皆如是安住（显现）……",
+   "drift_flags_L379": [],
+   "term_candidates": [
+    {
+     "bo": "བྱང་ཆུབ་སེམས",
+     "count": 8
+    },
+    {
+     "bo": "ཆུབ་སེམས་དཔའ",
+     "count": 8
+    },
+    {
+     "bo": "བཅོམ་ལྡན་འདས",
+     "count": 5
+    },
+    {
+     "bo": "ཤིན་རྒྱས་ཆེན",
+     "count": 4
+    },
+    {
+     "bo": "རྒྱས་ཆེན་པོའི",
+     "count": 4
+    },
+    {
+     "bo": "ཆེན་པོའི་མདོ",
+     "count": 4
+    },
+    {
+     "bo": "སྟོང་ཕྲག་བཅུས",
+     "count": 4
+    },
+    {
+     "bo": "སངས་རྒྱས་རྨད",
+     "count": 3
+    },
+    {
+     "bo": "རྒྱས་རྨད་ཅད",
+     "count": 3
+    },
+    {
+     "bo": "རྨད་ཅད་ཤིན",
+     "count": 3
+    },
+    {
+     "bo": "ཅད་ཤིན་རྒྱས",
+     "count": 3
+    },
+    {
+     "bo": "པོའི་མདོ་བམ",
+     "count": 3
+    },
+    {
+     "bo": "མདོ་བམ་པོ",
+     "count": 3
+    },
+    {
+     "bo": "པར་སྣང་ངོ",
+     "count": 3
+    },
+    {
+     "bo": "པར་སྣང་ཐམས",
+     "count": 2
+    },
+    {
+     "bo": "སྣང་ཐམས་ཅད",
+     "count": 2
+    },
+    {
+     "bo": "བམ་པོ་བཅུ",
+     "count": 2
+    },
+    {
+     "bo": "ཕྱོགས་ཐམས་ཅད",
+     "count": 2
+    },
+    {
+     "bo": "ཐམས་ཅད་གླིང",
+     "count": 2
+    },
+    {
+     "bo": "ཅད་གླིང་བཞི",
+     "count": 2
+    }
+   ],
+   "ancestor": {
+    "source": "八十 T10n0279 分品文本 c80/p013.json",
+    "crosscheck_status": "screened",
+    "crosscheck_flags": {
+     "num_token_diffs": 8,
+     "names_new_only": 7,
+     "list_density": {
+      "new_dun": 7,
+      "anc_dun": 4,
+      "new_semi": 1,
+      "anc_semi": 1
+     }
+    }
+   },
+   "pin_article": "docs\\经学文献\\华严经细读\\第三会_忉利天宫_差别因果周\\华严经细读_第十三部_升须弥山顶品.md",
+   "pin_article_note": "品旨/来意/宗趣取窗〔待取窗·下批〕"
+  }
+ }
+}
