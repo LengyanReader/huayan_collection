@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
-"""为《瑜伽师地论导读与重点阐释》生成 8 幅信息图，并原位替换 md 中的 <figure> 块。
+"""为《瑜伽师地论导读与重点阐释》生成 9 幅信息图，并原位替换 md 中的 <figure> 块。
 
 用法（项目根目录）：
-    python workspace/yogacara_guide/figures.py       # 重建全部 8 幅
+    python workspace/yogacara_guide/figures.py       # 重建全部 9 幅
     python web/demo/scripts/build.py                # 重新渲染站点
 
 约定：
   · 每幅图对应一个 md 中已存在的 figcaption（以「图 N｜」定位），脚本只替换其 <figure>；
   · 所有数字（卷界、品数、法数）来自 data/references/cbeta/T30n1579.xml 的实测解析；
   · 文字位置按 900×H 的 viewBox 排布，正文渲染时按容器宽度等比缩放；
-  · 图内不画未经底本支持的对应线（如「五法→三自性」逐项配属）。
+  · 图内不画未经底本支持的对应线（如「五法→三自性」逐项配属）；
+  · 图 9 的节号是 <a href="#mdh-N"> 直链，N 由 common.js _mdDocEmbed 按正文 h2–h4
+    顺序赋号（mdh-1 起）——增删正文标题会整体移位，须同步 fig9() 的 rows 表。
 """
 import pathlib
 import sys
@@ -339,7 +341,170 @@ def fig8():
     return wrap('\n'.join(g), '图 8｜十二菩萨住＋如来住：偈摄其纲，长行开其目；读时以长行为准。初二住为地前，极欢喜住起配初地，末住为佛地。')
 
 
-FIGS = {1: fig1, 2: fig2, 3: fig3, 4: fig4, 5: fig5, 6: fig6, 7: fig7, 8: fig8}
+# ══ 图9 全书内容地图 ═════════════════════════════════════════
+def fig9():
+    x0, x1, W = 176, 872, 900
+    u = (x1 - x0) / 100.0
+    X = lambda j: x0 + (j - 1) * u
+
+    def col_of(a):
+        if a <= 50: return FG, GOLD
+        if a <= 80: return FB, BLUE
+        if a <= 84: return FGN, GREEN
+        return FR, RED
+
+    def split(a, b):
+        """按五分边界切段：(83,100) → (83,84)绿 + (85,100)红。"""
+        out, cur = [], a
+        for bd in (50, 80, 84):
+            if cur <= bd < b:
+                out.append((cur, bd)); cur = bd + 1
+        out.append((cur, b))
+        return [(p, q) + col_of(p) for p, q in out]
+
+    def tw(s, fs):
+        w = 0.0
+        for ch in s:
+            o = ord(ch)
+            if o < 128:
+                w += fs * (0.56 if ch.isdigit() else 0.32 if ch in '.,/' else 0.55)
+            elif ch in '–—':
+                w += fs * 0.5
+            else:
+                w += fs
+        return w
+
+    def place(a, b, ranges, txt, fs):
+        """段内标签定位：够宽居中，否则右贴、左贴，皆不容则不标。"""
+        w = (b - a + 1) * u
+        lw = tw(txt, fs)
+        if w >= lw + 6:
+            return (X(a) + w / 2, 'middle')
+        nx = min([p for p, q in ranges if p > b], default=None)
+        gap_r = ((X(nx) - (X(a) + w)) if nx else ((W - 4) - (X(a) + w)))
+        if gap_r >= lw + 7:
+            return (X(a) + w + 4, 'start')
+        pv = max([q for p, q in ranges if q < a], default=None)
+        gap_l = X(a) - (X(pv + 1) if pv is not None else x0)
+        if gap_l >= lw + 7:
+            return (X(a) - 4, 'end')
+        return None
+
+    def link(n, x, y, s, size=9, anchor='start', fill=GOLD, weight='400', op=None):
+        a = f' text-anchor="{anchor}"' if anchor != 'start' else ''
+        o = f' opacity="{op}"' if op else ''
+        return (f'<a href="#mdh-{n}" onclick="window._reveal&&_reveal(document.getElementById(\'mdh-{n}\'))">'
+                f'<text x="{x}" y="{y}" font-size="{size}"{a} fill="{fill}" font-weight="{weight}"{o}>{s}</text></a>')
+
+    # 覆盖行：(节号标签, mdh 锚点, 显式卷段, 实色与否)
+    rows = [
+        ('§四 本地分逐地导读', 6, [(1, 50)], True),
+        ('§5.1 五识身相应地', 10, [(1, 1)], True),
+        ('§5.2 意地', 11, [(1, 1)], True),
+        ('§5.3 阿赖耶识·八证', 12, [(1, 1), (51, 52)], True),
+        ('§5.4 摄决择分地图', 13, [(51, 80)], False),
+        ('§6.1 五法', 15, [(72, 72)], True),
+        ('§6.2 三自性', 16, [(73, 73)], True),
+        ('§6.3 真实义品', 17, [(36, 36)], True),
+        ('§6.4 转依与涅槃', 18, [(73, 73)], True),
+        ('§7.1 四种所缘', 20, [(26, 26)], True),
+        ('§7.2 九住心·六力', 21, [(30, 30)], True),
+        ('§7.3 三摩呬多地', 22, [(11, 11)], True),
+        ('§八 菩萨地十法四持', 23, [(35, 50)], True),
+        ('§9.1 有余依·无余依', 25, [(50, 50), (80, 80)], True),
+        ('§9.2 摄释分', 26, [(81, 82)], True),
+        ('§9.3 摄异门·摄事', 27, [(64, 64), (83, 100)], True),
+        ('§10 七条专题线', 29, [(1, 1), (51, 52), (63, 63), (77, 77), (100, 100)], True),
+        ('§12 五阶段读法', 31, [(1, 13), (20, 20), (21, 34), (35, 50), (51, 57), (72, 80), (81, 100)], False),
+    ]
+    yc0, yrh = 262, 17
+    H = 634
+    g = [open_(W, H, '全书内容地图：五分百卷、分内科判与本文覆盖叠层')]
+
+    # ── 标题 ──
+    g.append(T(12, 24, '全书内容地图 · 五分百卷 × 本文覆盖', 13.5, weight='600'))
+    g.append(T(12, 42, '上条＝五分（等比）｜中条＝分内科判｜下＝本文各节覆盖（色带＝该节讲到的卷）', 9.6, op='0.55'))
+
+    # ── 上条：五分条带（摄释/摄异门窄段用引线上标）──
+    yA, hA = 76, 36
+    g.append(T(12, 98, '五分百卷', 9.6, weight='600', op='0.8'))
+    for a, b, nm, cnt in [(1, 50, '本地分', '50 卷'), (51, 80, '摄抉择分', '30 卷'), (85, 100, '摄事分', '16 卷')]:
+        w = (b - a + 1) * u
+        fl, st = col_of(a)
+        g.append(R(X(a), yA, w, hA, fl, st))
+        g.append(T(X(a) + w / 2, yA + 18, nm, 12, 'middle', weight='600'))
+        g.append(T(X(a) + w / 2, yA + 32, cnt, 9, 'middle', op='0.6'))
+    for a, b in ((81, 82), (83, 84)):
+        fl, st = col_of(a)
+        g.append(R(X(a), yA, (b - a + 1) * u, hA, fl, st))
+    c1, c2 = X(81) + u, X(83) + u
+    g.append(T(c1 - 5, 64, '摄释分 2 卷', 9.2, 'end', GOLD, weight='600'))
+    g.append(T(c2 + 5, 64, '摄异门分 2 卷', 9.2, 'start', GOLD, weight='600'))
+    g.append(LN(c1, 67, c1, 74, GOLD, '3 3', '0.55'))
+    g.append(LN(c2, 67, c2, 74, GOLD, '3 3', '0.55'))
+
+    # ── 中条：分内科判（细目见下四行注）──
+    yB, hB = 126, 16
+    blocks = [(1, 3), (4, 10), (11, 15), (16, 20), (21, 34), (35, 50),
+              (51, 57), (58, 61), (62, 67), (68, 71), (72, 80),
+              (81, 82), (83, 84), (85, 88), (89, 92), (93, 96), (97, 98), (99, 99), (100, 100)]
+    g.append(T(12, 138, '分内科判', 9.6, weight='600', op='0.8'))
+    for a, b in blocks:
+        fl, st = col_of(a)
+        g.append(R(X(a), yB, (b - a + 1) * u, hB, fl, st))
+        txt = f'{a}–{b}' if a != b else f'{a}'
+        pl = place(a, b, blocks, txt, 7.6)
+        if pl:
+            g.append(T(pl[0], yB + 11.5, txt, 7.6, pl[1], op='0.9'))
+
+    # ── 轴（上）──
+    for j in (1, 20, 40, 60, 80, 100):
+        g.append(LN(X(j), yB + hB, X(j), yB + hB + 5, INK, None, '0.3'))
+        g.append(T(X(j), yB + hB + 20, str(j), 9, 'middle', op='0.5'))
+    g.append(T(x1 + 4, yB + hB + 20, '卷', 9, 'start', op='0.45'))
+
+    # ── 科判四行注（行首色即所属分）──
+    legend = [
+        (GOLD, '本地分：1–3 五识身·意地｜4–10 三地｜11–13 三摩呬多等｜13–15 闻｜16–19 思｜20 修｜21–34 声闻·独觉｜35–50 菩萨·二涅槃'),
+        (BLUE, '摄抉择分：51–57 五识身/意地（八证）·58–61 三地·62–63 定学三地·64 闻·65–66 思·67 修·68–71 声闻·72–80 菩萨·80 有余/无余依'),
+        (GREEN, '摄释分 81–82 释经仪则（上·下）｜摄异门分 83–84 契经名义差别（上·下）'),
+        (RED, '摄事分 85–100：85–88 行择·89–92 处择·93–96 缘起食谛界择·97–98 菩提分法择·99 毘奈耶事·100 本母事'),
+    ]
+    for k, (cl, s) in enumerate(legend):
+        g.append(T(12, 180 + k * 16, s, 8.6, fill=cl, op='0.95'))
+
+    # ── 下条：本文覆盖叠层 ──
+    g.append(T(12, 250, '本文覆盖', 9.6, weight='600'))
+    g.append(T(x1, 250, '每行一节 · 色带＝该节讲到的卷 · 点节号跳转', 8.6, 'end', op='0.55'))
+    for j in (1, 20, 40, 60, 80, 100):
+        g.append(LN(X(j), 256, X(j), yc0 + len(rows) * yrh - 3, INK, None, '0.07' if j not in (1, 100) else '0.12'))
+    for i, (lab, nid, ranges, solid) in enumerate(rows):
+        y = yc0 + i * yrh
+        g.append(link(nid, 12, y + 11, lab))
+        for a, b in ranges:
+            for p, q, fl, st in split(a, b):
+                w = (q - p + 1) * u
+                if solid:
+                    g.append(R(X(p), y + 2, w, 12, fl, st))
+                else:
+                    g.append(R(X(p), y + 2, w, 12, 'none', st, 3, '3 2', 1.2))
+            txt = f'{a}–{b}' if a != b else f'{a}'
+            pl = place(a, b, ranges, txt, 7.6)
+            if pl:
+                g.append(T(pl[0], y + 11, txt, 7.6, pl[1], op='0.85'))
+
+    # ── 轴（下）与图例 ──
+    ay = yc0 + len(rows) * yrh - 3
+    for j in (1, 20, 40, 60, 80, 100):
+        g.append(LN(X(j), ay + 5, X(j), ay + 10, INK, None, '0.3'))
+        g.append(T(X(j), ay + 24, str(j), 9, 'middle', op='0.5'))
+    g.append(T(12, ay + 44, '实色带＝正文引申；虚线带＝仅作地图或读法带过（§5.4、§12）；行首金色＝可点击的节号', 8.4, op='0.7'))
+    g.append(T(12, ay + 58, '卷界与科判据 CBETA T30n1579 逐卷解析；覆盖依附录 A「关键卷索引」与本文各节显式卷次', 8.4, op='0.55'))
+    g.append('</svg>')
+    return wrap('\n'.join(g), '图 9｜全书内容地图：上条为五分百卷（等比），中条为分内科判（细目见图内四行注），下为本文覆盖叠层——每行一节，色带即该节讲到的卷，点节号跳转至对应小节。实色＝正文引申，虚线＝仅作地图或读法带过（§5.4、§12）。卷界与科判据 T30n1579 逐卷解析；覆盖依附录 A 关键卷索引与本文各节显式卷次。')
+
+
+FIGS = {1: fig1, 2: fig2, 3: fig3, 4: fig4, 5: fig5, 6: fig6, 7: fig7, 8: fig8, 9: fig9}
 
 if __name__ == '__main__':
     root = pathlib.Path(__file__).resolve().parents[2]

@@ -37,4 +37,4 @@ with sync_playwright() as pw:
               'over', r['over'], 'overlaps', r['overlaps'])
     print('figures', len(res), 'bad', bad)
     b.close()
-    sys.exit(0 if bad == 0 and len(res) == 8 else 1)
+    sys.exit(0 if bad == 0 and len(res) == 9 else 1)
