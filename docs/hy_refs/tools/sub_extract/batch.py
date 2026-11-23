@@ -73,7 +73,7 @@ def run_one(vid):
         stages.append("dedup")
     stages += ["ocr", "merge"]
     for stage in stages:
-        if not sh([PY, TOOL_DIR / "pipeline.py", stage, vid], vid):
+        if not sh([PY, TOOL_DIR / "pipeline.py", stage, "--", vid], vid):
             log(f"[FAIL] {vid} {stage}"); return False
     sh([PY, TOOL_DIR / "report.py", vid], vid)
     log(f"[DONE] {vid} 全部完成")

@@ -362,12 +362,12 @@ episodes:
     topic_zh: "承毘盧遮那品·佛教史與經學史回顧（民國百年·環境變遷）·修行即轉（千磨萬擊）·如來名號品第七（四十問·十方佛號·文殊師利）·四聖諦品第八·光明覺品第九（引及）〔待核〕"
     anchor_pin: "如來名號品 / 四聖諦品 / 光明覺品"
     anchor_juan: "卷 12 / 卷 13"
-    anchor_cbeta: "T10n0279_卷12–13 · 品目次第第 7–9 品 · §四 程序精确命中 54 段"
-    collation_status: "待校"
+    anchor_cbeta: "T10n0279_卷12–13 · 品目次第第 7–9 品 · §四 程序精确命中 54 段（去重 22 语串·7 切片）"
+    collation_status: "待校 · K3d-v1 机械校"
     collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep16.md"
-    collation_coverage: "K2 结构整理·实测 2498 cues · 24,020 漢字 · 覆盖 99.84% · 10518s ≈ 2h55m · 程序证据层（时间轴/术语/CBETA 切片/播客）·未逐段按语"
+    collation_coverage: "K3d-v1 机械校·9 講章/128 言說段·正文 23,987 漢字·重複 24·noise 9·slide 0·信息無損 diff 0·CBETA 54 段（去重 22 语串·7 切片）·未義理按語/未三源"
     collation_time_units: 9
-    collation_paragraphs: 0  # 未逐段按语
+    collation_paragraphs: 128
     cross_ref_series:
       - "docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第七部_如来名号品.md"
       - "docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第八部_四圣谛品.md"
@@ -379,19 +379,19 @@ episodes:
       confidence: "high"
       match_basis: "月份 2026-09 + 正行112m/問答61m 合計173m ≈ YouTube 175m；依上架序定為第1場"
       caveat: "場次序按上架序推定；podcast 內容未逐句比對"
-    notes: "L.486 K2 结构整理（待校）：720p 硬字幕 OCR 全文照录 + 程序证据层（品目时间轴/术语候选/CBETA 切片/问答边界/播客）。CBETA §四 原始 54 段命中·去重 22 条语串·7 组切片（加粗＝逐字命中，前后为上下文）。播客 S24-06-01 正行+问答双条（high·月份+时长；内容未逐句比对）。品目/问答边界〔待核〕·逐段按语与三源互证未作·不得逐字引证"
+    notes: "L.486/K3d-v1 机械校（待校）：9 讲章/128 言说段·正文 23,987 汉字（+slide 0+重複 24+noise 9=24,020·diff 0）·段末〔校〕CBETA/slide/重複/noise/问答/garble·术语文体/单字异形表·CBETA 54→22 语串/7 切片·播客 S24-06-01 high（内容未比对）·未义理按语/未三源互证·不得逐字引证"
 
   - ep: 17
     segment: "正行"
     topic_zh: "如來名號品第七（承前）·四聖諦品第八·光明覺品第九（一中解無量）·菩薩問明品第十（十問百門·能信法門·七菩提分排序·文殊師利答）·下集轉淨行品〔待核〕"
     anchor_pin: "如來名號品 / 四聖諦品 / 光明覺品 / 菩薩問明品"
     anchor_juan: "卷 12 / 卷 13"
-    anchor_cbeta: "T10n0279_卷12–13 · 品目次第第 7–10 品 · §四 程序精确命中 18 段"
-    collation_status: "待校"
+    anchor_cbeta: "T10n0279_卷12–13 · 品目次第第 7–10 品 · §四 程序精确命中 18 段（去重 16 语串·5 切片）"
+    collation_status: "待校 · K3d-v1 机械校"
     collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep17.md"
-    collation_coverage: "K2 结构整理·实测 2419 cues · 21,285 漢字 · 覆盖 99.31% · 10551s ≈ 2h56m · 程序证据层（时间轴/术语/CBETA 切片/播客）·未逐段按语"
+    collation_coverage: "K3d-v1 机械校·9 講章/124 言說段·正文 21,276 漢字·重複 0·noise 9·slide 0·信息無損 diff 0·CBETA 18 段（去重 16 语串·5 切片）·未義理按語/未三源"
     collation_time_units: 9
-    collation_paragraphs: 0  # 未逐段按语
+    collation_paragraphs: 124
     cross_ref_series:
       - "docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第七部_如来名号品.md"
       - "docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第八部_四圣谛品.md"
@@ -404,4 +404,26 @@ episodes:
       confidence: "high"
       match_basis: "月份 2026-09 + 正行109m/問答66m 合計175m ≈ YouTube 176m；依上架序定為第2場"
       caveat: "場次序按上架序推定；podcast 內容未逐句比對"
-    notes: "L.486 K2 结构整理（待校）：720p 硬字幕 OCR 全文照录 + 程序证据层（品目时间轴/术语候选/CBETA 切片/问答边界/播客）。CBETA §四 原始 18 段命中·去重 16 条语串·5 组切片（加粗＝逐字命中，前后为上下文）。播客 S24-06-02 正行+问答双条（high·月份+时长；内容未逐句比对）。『明天開始要講淨行品』為下集錨〔待核〕·逐段按语与三源互证未作·不得逐字引证"
+    notes: "L.486/K3d-v1 机械校（待校）：9 讲章/124 言说段·正文 21,276 汉字（+slide 0+重複 0+noise 9=21,285·diff 0）·段末〔校〕CBETA/slide/重複/noise/问答/garble·术语/单字异形表·CBETA 18→16 语串/5 切片·播客 S24-06-02 high（内容未比对）·『明天開始要講淨行品』為下集錨〔待核〕·未义理按语/未三源互证"
+
+  - ep: 18
+    segment: "正行"
+    topic_zh: "淨行品第十一（智首菩薩問·文殊師利答·修行總綱領）〔待核〕"
+    anchor_pin: "淨行品"
+    anchor_juan: "卷 14"
+    anchor_cbeta: "T10n0279_卷14 · 品目次第第 11 品 · §四 程序精确命中 13 段（去重 9 条语串·1 切片）"
+    collation_status: "待校 · K3d-v1 机械校"
+    collation_doc: "docs/经学文献/海云讲记_九九华严/episodes/ep18.md"
+    collation_coverage: "K3d-v1 机械校·9 講章/166 言說段·正文 33,810 漢字·重複 4·noise 8·slide 121 漢字·信息無損 diff 0·CBETA 13 段（去重 9 语串·1 切片）·未義理按語/未三源"
+    collation_time_units: 9
+    collation_paragraphs: 166
+    cross_ref_series:
+      - "docs/经学文献/华严经细读/第二会_普光明殿_差别因果周/华严经细读_第十一部_净行品.md"
+    podcast:
+      url: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-03-202693-e3os2mr"
+      url_qa: "https://podcasters.spotify.com/pod/show/haiyun-jimeng/episodes/S24-06-03-202693-e3os2om"
+      label: "S24-06-03【講經正行】2026年9月第3場（102m·問答另条 65m）"
+      confidence: "high"
+      match_basis: "月份 2026-09 + 正行102m/問答65m 合計167m ≈ YouTube 170m；依上架序第3場"
+      caveat: "場次序按上架序推定；podcast 內容未逐句比對"
+    notes: "L.490/K3d-v1 机械校（待校）：9 讲章/166 言说段·正文 33,810 汉字（+slide 121+重複 4+noise 8=33,943·diff 0）·段末〔校〕CBETA/slide/重複/noise/问答/garble·术语/单字异形表（華廠×26 garble 候選）·CBETA 13→9 语串/1 切片·播客 S24-06-03 high（内容未比对）·未义理按语/未三源互证"
