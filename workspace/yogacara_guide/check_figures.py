@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """信息图几何自检：文字越界、文字互压、SVG 是否渲染出尺寸。"""
+import os
 import sys
 from playwright.sync_api import sync_playwright
 
-URL = 'http://127.0.0.1:8765/web/demo/articles/yogacarabhumi-guide.html'
+URL = os.environ.get('YG_URL', 'http://127.0.0.1:8765/web/demo/articles/yogacarabhumi-guide.html')
 with sync_playwright() as pw:
     b = pw.chromium.launch(channel='chrome')
     pg = b.new_page(viewport={'width': 1180, 'height': 900})
