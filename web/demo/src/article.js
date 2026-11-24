@@ -23,6 +23,7 @@ function renderArticle(){
   h+='  <div style="font-size:0.76em;color:var(--text2);letter-spacing:0.5px">📄 独立文章页</div>';
   h+='  <h2 data-skip-toc="1" style="color:var(--gold);margin:6px 0 4px">'+(a.icon?a.icon+' ':'')+a.title+'</h2>';
   if(a.title_sub)h+='  <div style="font-size:0.85em;color:var(--text2)">'+a.title_sub+'</div>';
+  if(a.title_en)h+='  <div class="en-line" style="font-size:0.8em;color:var(--text2);font-style:italic">'+a.title_en+'</div>';
   if(a.version)h+='  <div style="font-size:0.78em;color:var(--text2);margin-top:6px">'+a.version+'</div>';
   if(a.back && a.back.tab){
     h+='  <a href="../tabs/'+a.back.tab+'.html" style="font-size:0.75em;color:var(--blue);margin-top:10px;display:inline-block">← 返回 '+a.back.label+'</a>';

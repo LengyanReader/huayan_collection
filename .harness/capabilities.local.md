@@ -92,3 +92,13 @@ Files in this harness: - `.harness/PROVENANCE.md`
 - **Direction 2 (distill):** generalisable patterns go out **only** as proposals in `updates/` — a human reviews them before anything reaches `data/`, `core/`, `domains/`, or `templates/` (M0.4/M0.8).
 - **Path convention:** `SKILL.md`, `reference/*.md`, `core/*.md`, `data/*`, `updates/` above refer to the
   **harness-factory that generated this harness** — not this project.
+
+## 2026-11-24 · L.536 人物线（楼宇烈纪念综述）— 本次触发与落地
+
+| capability | 本次落地（concretisation） | evidence |
+|---|---|---|
+| source-criticism（史源批判） | 追忆文事实分层：官方讣告/机构官网=A、权威媒体通讯=B、有名回忆=C、孤证网文=D；两说并存 5 组如实登记；网络讹传（连襟说/票友说/「12 年劳改」说）判误留痕不采 | 文档附录 C 24 条＋附录 D 来源表 18 条带链接 |
+| traceable-sources | 承重引文两路后台调研＋主笔逐字回源（周口日报楼氏自述、国务院参事室欧阳中石口述均 curl 实测命中）；全文引语标媒体＋日期 | `.tmp/lou_research/` 原文存档（不入库） |
+| verification-gate | 完成=门禁实测：build/verify_demo/test_pipeline/node --check ＋ **Playwright 真机渲染 16/16**（补历批「浏览器实测缺位」之账） | `tasks/PROGRESS.md` L.536 |
+| cross-language | EN 逐节全译依「重实质不逐字」＋固定人名表（Lou Yulie/Feng Youlan/…）；9 块 `> **EN对应**` 全部经 `_markEnBlocks` 打标、zh-only 实测隐藏 | 渲染实测 en-block=9/hidden=9 |
+| expression-design | 追忆体谋篇：生平/人格/师道/艺道/著作/身后/结语＋附录四件；趣事（拆表/朱砂/粉蝶儿）不害考证体例 | 文档 §一–§七 |

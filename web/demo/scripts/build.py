@@ -1764,6 +1764,7 @@ def load_standalone_articles():
             'file': 'articles/%s.html' % o['id'],
             'title': o.get('title', o['id']),
             'title_sub': o.get('title_sub', ''),
+            'title_en': o.get('title_en', ''),
             'icon': o.get('icon', '📄'),
             'group': o.get('group', ''),
             'family': o.get('family', ''),
@@ -2512,7 +2513,7 @@ def build_articles(articles):
         if a.get('skip_html'):
             # HTML 由专项脚本生成，build.py 只在 index 登记卡片入口，跳过页面写入
             continue
-        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'data_pool', 'back', 'updated_at')}
+        payload = {k: a.get(k) for k in ('id', 'file', 'title', 'title_sub', 'title_en', 'icon', 'version', 'meta', 'doc', 'doc_md', 'data_source', 'data_pool', 'back', 'updated_at')}
         title = a.get('title', a['id'])
         ds = a.get('data_source', '')
         pool = a.get('data_pool', 'practice')

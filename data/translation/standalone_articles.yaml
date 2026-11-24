@@ -951,6 +951,19 @@ others:
   back: {tab: gap, view: avatamsaka-studies, label: 文献页·华严经学}
   views: [avatamsaka-studies]
 
+- id: lou-yulie
+  group: 人物与学人
+  family: figures
+  order_in_group: 1
+  icon: 🕯
+  title: 不苟为，唯贵当
+  title_sub: 楼宇烈先生的学问、戏缘与身后的北大中国哲学
+  title_en: 'Never Act Carelessly; Act Only as Is Fitting — Lou Yulie: Scholarship, Opera Ties, and the Fate of PKU Chinese Philosophy'
+  doc: docs/人物与学人/不苟为唯贵当_楼宇烈先生纪念综述.md
+  updated_at: '2026-11-24'
+  back: {tab: gap, view: figures, label: 文献页·人物与学人}
+  views: [lou-yulie]
+
 group_order:
 - key: 经论茶歇
   icon: 📖
@@ -973,6 +986,9 @@ group_order:
 - key: 前沿议题
   icon: 💻
   summary: AI 对齐 · 专题研究 · 随笔
+- key: 人物与学人
+  icon: 👤
+  summary: 师友小传 · 学脉与身世
 - key: 其他
   icon: 📂
 group_icons:
@@ -983,4 +999,5 @@ group_icons:
   修学与禅门: 🧘
   跨学科对读: 🌐
   前沿议题: 💻
+  人物与学人: 👤
   其他: 📂

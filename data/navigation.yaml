@@ -163,6 +163,11 @@ navigation:
         action: {type: call, fn: switchGapView, args: [topic_studies]}
       - label: 🕵️ 佛门真伪问题
         action: {type: link, href: ../articles/zhenwei.html}
+    - label: 👤 人物与学人
+      action: {type: link, href: ../articles/lou-yulie.html}
+      subs:
+      - label: 🕯 楼宇烈先生纪念综述
+        action: {type: link, href: ../articles/lou-yulie.html}
     - label: 📚 文献目录
       action: {type: call, fn: switchGapView, args: [catalog]}
       subs:
