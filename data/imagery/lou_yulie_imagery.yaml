@@ -1,0 +1,285 @@
+article: lou-yulie
+title_zh: 楼宇烈纪念综述·图像登记册
+title_en: Imagery register for the memorial survey on Lou Yulie
+purpose: 本文正文插图之**唯一权威著录源**。凡正文引用之图像，须在此登记：名称／年代／现址／作者、**授权类型与授权链接**、以及「图像与所述人物之关系边界」。图块、图注、图源署名与文末著录总表皆由 scripts/gen_louyl_imagery.py 由此登记源生成，杜绝手工转录 URL 与著录笔误。
+license_policy: 一律取自 Wikimedia Commons 可核验授权文件，按 Commons 结构化元数据（extmetadata：LicenseShortName／LicenseUrl／Artist／DateTimeOriginal）逐条核验。优先级：① Public domain／CC0；② CC BY；③ CC BY-SA。一律不用 NC／ND／Fair use／授权不明者。CC BY／CC BY-SA 必填 author_zh；无著录作者者如实标〔待核〕，不得臆造。核验于 2026-11-24（Commons API 抽验＋全量 HEAD 200 复检）。
+boundary_principle: 本文为纪念性综述。经全量检索，**楼宇烈本人、奚啸伯、欧阳中石在 Wikimedia Commons 均无自由授权照片**（见 negative_findings），故本册**零 A 类（本人影像）**，所收皆为：交游人物本人影像（B 类：俞平伯、张允和、张伯驹——图中确系其人，但**图中无楼宇烈**）、场景／类型样本与器物／古籍参照（C 类：昆曲演出、京剧舞台、古琴、未名湖、马王堆帛书、荀子像）。**每一图注必须含「边界」二字**，明示「图中无楼宇烈本人」「非演出实景」等不可等同之处（由 scripts/verify_imagery_gen.py 强制校验）。
+negative_findings:
+  - id: neg-lou-portrait
+    claim: 楼宇烈本人照片
+    result: 未检得
+    detail: Commons 全文检索（Lou Yulie／楼宇烈）无人物照命中；命中共 CADAL 丛书扫描噪音。正文因此**不设楼氏肖像**；文首场景图（未名湖）为燕园环境参照。新闻媒体所载楼氏照片均属版权作品，本项目不用。
+  - id: neg-xi-xiaobo
+    claim: 奚啸伯照片
+    result: 未检得
+    detail: 'Xi Xiaobo／奚啸伯 检索命中皆无关文件或古籍扫描噪音。§4.4 之「京剧老生」图以民国老生名家刘鸿声戏装照作**类型样本**充位，图注已明标「非奚啸伯本人」。'
+  - id: neg-ouyang-zhongshi
+    claim: 欧阳中石照片
+    result: 未检得
+    detail: 仅一段 2020 年追忆视频（.webm·授权未核·非照片），按宁缺毋滥排除；余为以其题字命名之建筑照，不录用。
+imagery:
+- img_no: 1-1
+  id: weiming-lake-cc0
+  category: C·场所参照
+  section: 1.2
+  title_zh: 北京大学未名湖（2011 年春景）
+  title_en: Weiming Lake, Peking University (spring 2011)
+  alt: 北京大学未名湖湖景
+  desc_zh: 湖面与岸树春景，即楼先生求学、执教、办曲会七十年之燕园
+  desc_en: the lake and its spring shoreline — the Yan Garden where Lou studied, taught and held qu gatherings for seventy years
+  era_zh: 2011-04-22 摄
+  location_zh: 北京大学未名湖
+  boundary: 此为未名湖环境照，**图中无楼宇烈本人**，亦非其曲会或课堂实景；仅作燕园场所参照。
+  boundary_en: A scene of the lake itself — Lou Yulie does not appear in the image; environmental reference only.
+  file: File:Weiming Lake, Peking University, 2011042205.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Weiming_Lake%2C_Peking_University%2C_2011042205.jpg/960px-Weiming_Lake%2C_Peking_University%2C_2011042205.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Weiming_Lake,_Peking_University,_2011042205.jpg
+  license_zh: CC0 1.0
+  license_en: CC0 1.0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.zh
+  author_zh: Huangdan2060
+  relevance_zh: §一「九十二载：从杭州到燕园」之场所底图——他的一生以这座园子为坐标。
+  relevance_en: The setting of Part One — the campus that anchors the whole biography.
+- img_no: 4-1
+  id: yu-pingbo-1932
+  category: B·交游人物本人影像
+  section: 4.1
+  title_zh: 俞平伯（1932 年燕京大学国文系教授时期肖像）
+  title_en: Yu Pingbo, professor of Chinese at Yenching University (1932)
+  alt: 俞平伯 1932 年半身肖像
+  desc_zh: 楼先生 1961 年加入之北京昆曲研习社的创办人，红学家、昆曲名家
+  desc_en: founder of the Beijing Kunqu Research Society which Lou joined in 1961
+  era_zh: 1932 年
+  location_zh: 燕京大学
+  boundary: 此系**俞平伯本人**影像，**图中无楼宇烈**；楼先生 1979 年曾与曲社社员在俞宅聚会（本文所据合影另有著录），此照摄于 1932 年，非该次聚会。
+  boundary_en: A portrait of Yu Pingbo himself; Lou does not appear. Taken in 1932, not at the 1979 gathering.
+  file: File:國文系教授 俞平伯先生 (cropped).jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/%E5%9C%8B%E6%96%87%E7%B3%BB%E6%95%99%E6%8E%88_%E4%BF%9E%E5%B9%B3%E4%BC%AF%E5%85%88%E7%94%9F_%28cropped%29.jpg/960px-%E5%9C%8B%E6%96%87%E7%B3%BB%E6%95%99%E6%8E%88_%E4%BF%9E%E5%B9%B3%E4%BC%AF%E5%85%88%E7%94%9F_%28cropped%29.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:國文系教授_俞平伯先生_(cropped).jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕摄影者（档案数据编号 Z027-KW-005136）
+  relevance_zh: §4.1 曲社源流——楼宇烈「接了红学大家的班」之那位「红学大家」。
+  relevance_en: The "great Redologist" whose role at the qu society Lou eventually took over.
+- img_no: 4-2
+  id: zhang-yunhe-1930
+  category: B·交游人物本人影像
+  section: 4.1
+  title_zh: 张允和（1930 年摄于上海南翔）
+  title_en: Zhang Yunhe (1930, Nanxiang, Shanghai)
+  alt: 张允和 1930 年单人照
+  desc_zh: 昆曲名家、周有光夫人，1979 年俞宅曲社合影前排右一即其人
+  desc_en: kunqu devotee (Mrs Zhou Youguang), seated front row in the 1979 Yu-home gathering photo
+  era_zh: 1930 年
+  location_zh: 上海南翔
+  boundary: 此系**张允和本人**影像（1930 年），**图中无楼宇烈**；与本文所述 1979 年曲社合影非同一影像。
+  boundary_en: A 1930 portrait of Zhang Yunhe herself; Lou does not appear; not the 1979 group photo.
+  file: File:Zhang Yunhe 1930.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/0/09/Zhang_Yunhe_1930.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Zhang_Yunhe_1930.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕摄影者
+  relevance_zh: §4.1「与张允和这样的曲友同座」之张允和其人。
+  relevance_en: The qu friend named in Part 4.1 alongside whom the young Lou sat.
+- img_no: 4-3
+  id: mudanting-pku-2014
+  category: C·场景参照
+  section: 4.2
+  title_zh: 昆曲《牡丹亭》演出剧照（2014 年·北京大学百周年纪念讲堂）
+  title_en: Kunqu *Peony Pavilion* on stage, Peking University Centennial Hall (2014)
+  alt: 昆曲旦角舞台特写（北大百年讲堂《牡丹亭》演出）
+  desc_zh: 旦角侧脸含笑，点翠头面粉色戏衣——即楼先生数十年倡导之昆曲舞台
+  desc_en: a dan-role close-up on stage — the art Lou championed for decades
+  era_zh: 2014 年
+  location_zh: 北京大学百周年纪念讲堂
+  boundary: 此为 **2014 年**北大百年讲堂《牡丹亭》演出照，**非 2005 年白先勇青春版**那次一票难求的演出（本文 §4.2 所述者），**图中无楼宇烈本人**；仅作「北大舞台上的牡丹亭」之场景参照。
+  boundary_en: A 2014 campus production — not Bai Xianyong's 2005 staging, and Lou does not appear.
+  file: File:牡丹亭 北大百年讲堂 2.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/e/ed/%E7%89%A1%E4%B8%B9%E4%BA%AD_%E5%8C%97%E5%A4%A7%E7%99%BE%E5%B9%B4%E8%AE%B2%E5%A0%82_2.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:牡丹亭_北大百年讲堂_2.jpg
+  license_zh: CC BY 2.5
+  license_en: CC BY 2.5
+  license_url: https://creativecommons.org/licenses/by/2.5
+  author_zh: gcd0318
+  relevance_zh: §4.2 昆曲线——《牡丹亭》正是他九十二岁受访时清唱的那一出。
+  relevance_en: The very play he sang from at ninety-two.
+- img_no: 4-4
+  id: mudanting-ming-woodcut
+  category: C·名相参照
+  section: 4.2
+  title_zh: 明刻本《牡丹亭》「游园惊梦」木刻版画（1618 年臧懋循改本《还魂记》插图）
+  title_en: Ming woodcut of the "dream" scene, *Peony Pavilion* (1618 abridgement)
+  alt: 明刻本牡丹亭游园惊梦木刻版画
+  desc_zh: 园林中入梦场景的线刻版画——「原来姹紫嫣红开遍」的图像化
+  desc_en: a line-cut of the garden dream scene — the imagery of "flowers bloom in splendour"
+  era_zh: 1618 年（明万历末）
+  location_zh: 中国
+  boundary: 此为**明刻本书籍插图**，非演出照、**图中无楼宇烈本人**；其版刻年代远早于今之昆曲舞台，仅作「游园惊梦」意象之名相参照。
+  boundary_en: A book illustration of 1618, not a stage photo; imagery reference only.
+  file: File:Peony Pavilion - dream scene.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/3/35/Peony_Pavilion_-_dream_scene.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Peony_Pavilion_-_dream_scene.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕刻工（原书未署）
+  relevance_zh: §4.2 九十二岁唱《游园惊梦》一段之「姹紫嫣红」图像注脚。
+  relevance_en: A visual footnote to the aria he sang at ninety-two.
+- img_no: 4-5
+  id: tingqintu-song
+  category: C·名相参照
+  section: 4.3
+  title_zh: 传宋徽宗赵佶《听琴图》（局部）
+  title_en: '"Listening to the Qin", attributed to Emperor Huizong of Song (detail)'
+  alt: 听琴图：松下抚琴与听琴人物
+  desc_zh: 松下抚琴、二人听琴的绢本设色画——「琴道」在中国画中的经典图式
+  desc_en: a player under pines with two listeners — the canonical image of qin culture
+  era_zh: 12 世纪（北宋）
+  location_zh: 中国
+  boundary: 此为**宋画名迹**，非国艺苑琴课实景、**图中无楼宇烈本人**；仅作琴道之名相参照。
+  boundary_en: A Song-dynasty painting, not a scene of the Guoyi Yuan lessons; symbolic reference only.
+  file: File:Songhuizong cropped 赵佶听琴图轴.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Songhuizong_cropped_%E8%B5%B5%E4%BD%B6%E5%90%AC%E7%90%B4%E5%9B%BE%E8%BD%B4.jpg/960px-Songhuizong_cropped_%E8%B5%B5%E4%BD%B6%E5%90%AC%E7%90%B4%E5%9B%BE%E8%BD%B4.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Songhuizong_cropped_赵佶听琴图轴.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 传 宋徽宗赵佶
+  relevance_zh: §4.3 国艺苑古琴教学之「琴」的文化意象背景。
+  relevance_en: Cultural backdrop for the qin teaching of Part 4.3.
+- img_no: 4-6
+  id: guqin-zhongni
+  category: C·器物参照
+  section: 4.3
+  title_zh: 仲尼式古琴「灵峰神韵」（器物照）
+  title_en: A zhongni-form guqin, "Lingfeng Shenyun"
+  alt: 仲尼式古琴琴面全景
+  desc_zh: 平置琴面全景，可见十三徽与断纹——国艺苑每期六琴所教之器
+  desc_en: full view of the instrument — the kind taught six at a time at the Guoyi Yuan
+  era_zh: 〔待核〕制琴年代（照片 2006 年上传）
+  location_zh: 〔待核〕藏所
+  boundary: 此为**一张具体古琴的器物照**，非国艺苑之琴、**图中无楼宇烈本人**；仅作器物参照。
+  boundary_en: A particular instrument, not one of the Guoyi Yuan qin; object reference only.
+  file: File:ZhongNiShi.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/ZhongNiShi.jpg/960px-ZhongNiShi.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:ZhongNiShi.jpg
+  license_zh: CC BY-SA 3.0
+  license_en: CC BY-SA 3.0
+  license_url: http://creativecommons.org/licenses/by-sa/3.0/
+  author_zh: CharlieHuang
+  relevance_zh: §4.3「六张桌、六张琴」之器物实感。
+  relevance_en: The instrument itself — tactile counterpart to "six tables, six qin".
+- img_no: 4-7
+  id: changban-jingju
+  category: C·场景参照
+  section: 4.4
+  title_zh: 京剧《长坂坡》舞台照（2015 年·上海京剧院于天蟾逸夫舞台演出）
+  title_en: Peking opera *Battle of Changban* on stage, Tianchan Theatre, Shanghai (2015)
+  alt: 京剧长坂坡演出舞台照
+  desc_zh: 京剧舞台上的群戏一瞬——楼先生「国艺」中「京」之一目的当代舞台
+  desc_en: a moment on the modern jingju stage — the "opera" strand of his guoyi
+  era_zh: '2015-05-03'
+  location_zh: 上海天蟾逸夫舞台
+  boundary: 此为**当代京剧舞台照**，非奚派剧目、非奚啸伯或其传人演出、**图中无楼宇烈本人**；仅作京剧舞台之场景参照。
+  boundary_en: A contemporary jingju stage photo — not an Xi-school production; scene reference only.
+  file: File:Battle of Changban Peking Opera 3.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Battle_of_Changban_Peking_Opera_3.jpg/960px-Battle_of_Changban_Peking_Opera_3.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Battle_of_Changban_Peking_Opera_3.jpg
+  license_zh: CC BY 2.0
+  license_en: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  author_zh: 陈文（Flickr univers-finder）
+  relevance_zh: §4.4 京剧一线的舞台氛围。
+  relevance_en: Stage atmosphere for the Peking-opera thread.
+- img_no: 4-8
+  id: liu-hongsheng-laosheng
+  category: C·类型样本
+  section: 4.4
+  title_zh: 民国京剧老生名家刘鸿声《李陵碑》饰杨继业戏装照
+  title_en: The laosheng singer Liu Hongsheng as Yang Jiye in *The Stele of Li Ling* (Republican era)
+  alt: 刘鸿声京剧老生戏装照
+  desc_zh: 早期老生扮相史料：髯口、靠旗与身段之旧影——奚啸伯所承老生行当之时代底色
+  desc_en: an early laosheng costume photograph — the period background of the role-type Xi Xiaobo inherited
+  era_zh: 不晚于 1920 年
+  location_zh: 中国
+  boundary: 此系**民国老生名家刘鸿声**戏装照，**不是奚啸伯本人**（奚啸伯照片无自由授权，见「未检得」记录）；**图中无楼宇烈**。仅作老生行当之类型样本。
+  boundary_en: Liu Hongsheng, NOT Xi Xiaobo (no free image of Xi exists) — a role-type sample only.
+  file: File:Liu Hongsheng as Yang Jiye.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/0/0d/Liu_Hongsheng_as_Yang_Jiye.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Liu_Hongsheng_as_Yang_Jiye.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕摄影者
+  max_width: 300
+  relevance_zh: §4.4 奚派老生行当的时代参照（原图 169×318，小幅展示以存其真）。
+  relevance_en: Period reference for the laosheng role-type (original 169×318 px, shown small).
+- img_no: 4-9
+  id: zhang-boju-1931
+  category: B·交游人物本人影像
+  section: 4.4
+  title_zh: 张伯驹（1931—1933 年间旧照，题「张监察伯驹」）
+  title_en: Zhang Boju (c. 1931–1933)
+  alt: 张伯驹青年时期半身照
+  desc_zh: 收藏家、民国四公子之一——楼先生长兄楼宇栋之岳父，姻亲网络之枢纽
+  desc_en: the collector — father-in-law of Lou's elder brother, hub of the kinship web
+  era_zh: 1931—1933 年（《河南中原煤矿公司汇刊》）
+  location_zh: 河南焦作（出版地）
+  boundary: 此系**张伯驹本人**影像，**图中无楼宇烈**；摄于 1930 年代初，与楼张两家联姻年代无涉，仅作其人之证。
+  boundary_en: A portrait of Zhang Boju himself; Lou does not appear.
+  file: File:張伯駒.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/f/f8/%E5%BC%B5%E4%BC%AF%E9%A7%92.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:張伯駒.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 河南中原煤矿公司汇刊编辑室
+  relevance_zh: §4.4「楼-张-奚三家戚谊」中的张伯驹其人（「我哥哥是张伯驹的女婿」所指之张伯驹）。
+  relevance_en: The "Zhang Boju" of "my elder brother is Zhang Boju's son-in-law".
+- img_no: 5-1
+  id: mawangdui-laozi
+  category: C·古籍实物参照
+  section: 5.1
+  title_zh: 马王堆三号汉墓帛书《老子》残片
+  title_en: Silk manuscript of the *Laozi*, Mawangdui tomb 3
+  alt: 马王堆帛书老子残片
+  desc_zh: 帛本墨书残片（湖南省博物馆藏）——《老子道德经注校释》所采对校本之实物
+  desc_en: ink on silk — the physical witness of the manuscript against which his 2008 Laozi was collated
+  era_zh: 前 2 世纪（西汉）
+  location_zh: 湖南长沙马王堆·湖南省博物馆藏
+  boundary: 此为**帛书残片实物照**，非王弼注本、非楼氏校释书影；**图中无楼宇烈本人**。仅作「帛书对校」所依版本之实物参照。
+  boundary_en: The silk manuscript itself, not Wang Bi's commentary nor Lou''s book; object reference only.
+  file: File:Mawangdui LaoTsu Ms2.JPG
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/e/ed/Mawangdui_LaoTsu_Ms2.JPG
+  source_page: https://commons.wikimedia.org/wiki/File:Mawangdui_LaoTsu_Ms2.JPG
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕摄影者（湖南省博物馆藏品照）
+  relevance_zh: §5.1「2008 年《老子道德经注校释》采用马王堆帛书对校」之对校本实物。
+  relevance_en: The manuscript used in the 2008 collation.
+- img_no: 5-2
+  id: xunzi-portrait
+  category: C·名相参照
+  section: 5.1
+  title_zh: 荀子传统工笔画像
+  title_en: Traditional portrait of Xunzi
+  alt: 荀子传统画像
+  desc_zh: 戴幞头蓄须的半身像——《荀子新注》其书之传统形象
+  desc_en: the traditional image of the philosopher annotated in the 1979 *Xunzi*
+  era_zh: 〔待核〕画作年代（传统样式）
+  location_zh: 中国
+  boundary: 此为**后世传统画像**，非写真、画作年代不详；**图中无楼宇烈本人**。仅作荀子之名相参照。
+  boundary_en: A traditional later portrait, not from life; symbolic reference only.
+  file: File:Portrait of Xun Zi.jpg
+  thumb_url: https://upload.wikimedia.org/wikipedia/commons/5/56/Portrait_of_Xun_Zi.jpg
+  source_page: https://commons.wikimedia.org/wiki/File:Portrait_of_Xun_Zi.jpg
+  license_zh: 公有领域
+  license_en: Public domain
+  license_url: ''
+  author_zh: 〔待核〕画者
+  relevance_zh: §5.1《荀子新注》（署名「楼宇烈主撰」）之名相参照。
+  relevance_en: The Xunzi of the 1979 *New Annotations*.
