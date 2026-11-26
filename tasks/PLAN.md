@@ -1256,14 +1256,20 @@ P0 收尾：T300/T301↔Toh 187、T298↔藏 32、T281 三章、T309 归属；�
 - **R5 范围**：正文约 1.2–1.8 万汉字；至少含概念辨析、四阿含逐部专节、汉传四阿含与巴利四尼柯耶对照表、代表经典地图、阅读路径、来源与未竟边界；依全站 `.en-line`／`EN对应` 机制提供逐节英文对应与 `title_en`。
 
 #### 验收口径
-- [ ] 概念边界：说明「小乘」的汉语论辩语境，以及「南传佛教」「上座部」「巴利三藏」「尼柯耶」不是同义替换。
-- [ ] 四部完整：长阿含、中阿含、杂阿含、增壹阿含均有汉译源流、现存本结构、代表经典、核心主题与阅读建议。
-- [ ] 对照有界：不把汉传四阿含与巴利四尼柯耶说成四部一一同构；逐项标「近缘对应」「局部对应」「不能直接对应」。
-- [ ] 引文可核：所有直接引文回源到 CBETA、巴利文本或权威学术文献，注明卷次／篇名／章节；无法逐字核验者不冒充引文。
-- [ ] 中英必配：`title_en`、导览及逐节 `EN corresponding` 块齐备；英文不超出中文事实范围，中文引文不冒充官方英译。
-- [ ] 文章注册并生成 `web/demo/articles/` 独立页，索引入口可见，导航可用。
-- [ ] build／test_pipeline／verify_demo／verify_sources／verify_dazang_article／node --check／git diff --check 与 `.harness/check.py` 全绿；浏览器检查正文、目录、引用、表格、窄屏及英文批注显隐。
-- [ ] PROGRESS／心跳／ledger 登记；审阅 diff 后本地 commit，不 push。
+- [x] 概念边界：说明「小乘」的汉语论辩语境，以及「南传佛教」「上座部」「巴利三藏」「尼柯耶」不是同义替换。
+- [x] 四部完整：长阿含、中阿含、杂阿含、增壹阿含均有汉译源流、现存本结构、代表经典、核心主题与阅读建议。
+- [x] 对照有界：不把汉传四阿含与巴利四尼柯耶说成四部一一同构；逐项标「近缘对应」「局部对应」「不能直接对应」。**（落地方式：第八节以「对应程度」列为分级，并在「不能忽略的限制」列逐条写明不能推出的结论；未强套三个固定标签。）**
+- [x] 引文可核：所有直接引文回源到 CBETA、巴利文本或权威学术文献，注明卷次／篇名／章节；无法逐字核验者不冒充引文。
+- [x] 中英必配：`title_en`、导览及逐节 `EN corresponding` 块齐备；英文不超出中文事实范围，中文引文不冒充官方英译。
+- [x] 文章注册并生成 `web/demo/articles/` 独立页，索引入口可见，导航可用。
+- [x] build／test_pipeline／verify_demo／verify_sources／verify_dazang_article／node --check／git diff --check 与 `.harness/check.py` 全绿；浏览器检查正文、目录、引用、表格、窄屏及英文批注显隐。
+- [x] PROGRESS／心跳／ledger 登记；审阅 diff 后本地 commit，不 push。
+
+#### 收束（2026-11-26）
+- 成篇 103,704 字元（CJK 14,720），H2 12／H3 46／EN 块 14；build 203 files｜47,597,790 B。
+- 门禁：verify_quotes 全绿（21 条引文、45 链接、0 缺锚）· verify_demo ALL CHECKS PASSED · test_pipeline ALL TESTS PASSED · verify_sources exit 0 · verify_dazang_article 全绿 · node --check · harness OK · Playwright 1440/390 无横向溢出、0 JS 异常。
+- 本地 commit `8fb0fc0d`，未 push。
+- 未竟：完整南传佛教史、杂阿含经数对账、增壹译者与品目校勘、逐篇平行文本表——均见正文第十节与研究笔记第六节。
 
 #### First move
 启动一手来源调研 agent：四阿含汉译与部类结构、南传巴利 Nikāya、汉译目录与可靠学术研究；调研笔记写入仓库既有研究笔记目录。外部补充检索最终未形成可采信笔记，本轮改以实际逐字核验的本地 CBETA XML、平行注与正文权威书目收口，未把未返回结果计入证据。
