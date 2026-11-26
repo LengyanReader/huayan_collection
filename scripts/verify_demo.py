@@ -569,6 +569,13 @@ for obj in sorted(os.listdir(ARTICLES)):
         ('common.css', '../css/common.css' in html),
     ]
     bad = [c[0] for c in checks if not c[1]]
+    if 'function renderArticle' in html and '// ARTICLE 已由 build.py 内嵌' in html:
+        for label, token in (
+            ('目录/引用锚点展开', 'function revealArticleTarget'),
+            ('同页锚点点击处理', "root.addEventListener('click'"),
+        ):
+            if token not in html:
+                bad.append(label)
     # 会众名号 EDA 页：数据与调用在页面内，渲染器本体在 js/common.js（外链共享），故分处检查。
     # 分源之要：经文事实（ARTICLE_ASSEMBLY）须与编辑性析构（ARTICLE_EDA）并存且页面明言之。
     if 'var ARTICLE_EDA' in html:

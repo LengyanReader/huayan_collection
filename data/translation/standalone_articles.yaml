@@ -94,6 +94,18 @@ others:
     tab: jiaoxing
     label: 教行页 · 宗派与判教
   updated_at: '2026-11-22'
+- id: four-agamas-southern-buddhism
+  group: 宗派与判教
+  family: sect_panjiiao
+  order_in_group: 9
+  title: 何谓“小乘”：南传佛教与四阿含
+  title_en: 'What Is Meant by “Hīnayāna”? Southern Buddhism and the Four Āgamas'
+  title_sub: 从论辩标签到汉译经藏 · 四部结构 · 代表经典 · 汉巴对读
+  doc: docs/宗派研究/四阿含与南传佛教.md
+  back:
+    tab: jiaoxing
+    label: 教行页 · 宗派与判教
+  updated_at: '2026-11-26'
 - id: sanshiqi
   group: 修学与禅门
   family: practice_zen

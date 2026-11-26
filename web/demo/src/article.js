@@ -153,6 +153,30 @@ function renderArticle(){
 
   root.innerHTML=h;
 
+  function revealArticleTarget(el) {
+    if (window._reveal) window._reveal(el);
+    if (el.classList && el.classList.contains('secfold')) {
+      el.classList.remove('is-folded');
+      el.setAttribute('aria-expanded', 'true');
+    }
+    return el;
+  }
+
+  // 目录和文内引用须先展开折叠祖先，再避开顶部 sticky 页头。
+  root.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (!el) return;
+    e.preventDefault();
+    revealArticleTarget(el);
+    var sticky = document.getElementById('page-top');
+    var gap = sticky ? sticky.getBoundingClientRect().height + 8 : 0;
+    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - gap), behavior: 'smooth' });
+    if (history.replaceState) history.replaceState(null, '', '#' + el.id);
+  });
+
   // ── 命中文档名相（自动扫描＋显式标记）──
   if(typeof _markTermRefs==='function' && document.getElementById('article-full')){
     _markTermRefs('#article-full');
@@ -210,8 +234,8 @@ function renderArticle(){
   if(location.hash){
     setTimeout(function(){
       var el=document.getElementById(location.hash.slice(1));
-      if(el){
-        if(typeof _reveal==='function')window._reveal(el);
+      if (el) {
+        revealArticleTarget(el);
         el.scrollIntoView({behavior:'smooth',block:'start'});
       }
     },80);
