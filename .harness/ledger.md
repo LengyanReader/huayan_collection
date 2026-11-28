@@ -1361,3 +1361,8 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - can 子页行法眼全量上线（54 项 data file＋rufajie_can_lib 接入 §四′′ 卡）——行法指导维度全站完整：主站 37 卡＋子页 54 卡＝**91 卡**。
 - 教训：①54 项 authoring 一次性完成可行（gate 名 verbatim 兜底·hint 逐项短句）；②can lib 消费 data file 走 _read(root) 路径——与既有 GUZHU 同管道。
 - 门禁：build 203 files · verify_demo ALL PASSED · push。
+
+### L.548（2026-11-28）拼读系列·总纲刷新＋铁律入规
+- 系列总纲品19-39 状态翻转 21 行＋§二′ 全站维度层登记（六维度表＋勘正六例）；harness/rules.md 增判无前异题检索铁律。
+- 教训：①系列总纲是导航中枢——大增量批次后必须回写（本次滞后 21 行状态＋七种新维度未登记）；②正则含全角空格/填充空格时用 \s* 容错。
+- 门禁：build 203 files · verify_demo ALL PASSED · push。
