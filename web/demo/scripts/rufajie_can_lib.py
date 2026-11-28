@@ -76,6 +76,7 @@ JOURNEY_HTML = 'web/demo/articles/huayan-rufajie-journey.html'
 CORPUS_8040 = 'data/research/huayan_80_40_deep_corpus.json'
 CORPUS_6040 = 'data/research/huayan_60_40_deep_corpus.json'
 GUZHU = 'data/research/rufajie_can_guzhu.json'
+XINGFA = 'data/research/rufajie_can_xingfa.json'
 MIAOHAI = 'data/references/huayan_daodu/华藏妙海_整理版_提取本.txt'
 T0293_TXT = 'data/references/cbeta_txt/T10n0293.txt'
 
@@ -438,6 +439,21 @@ def _assemble_card(root, card, sec, prev_card, next_card, corpora, special, guzh
                     L.append('- **段%d**（%d 句 · 约 %d CJK）：%s……' % (ri, nsent, cjk, head[:36]))
                 L.append('')
 
+    # ── 行法眼卡（L.547·行法层批六——据 gate 名 verbatim＋L.547 行法总持〔本文判断〕）──
+    try:
+        _xf = json.loads(_read(XINGFA, root))
+        _xc = (_xf or {}).get('cards', {}).get(str(card['card_no']), {})
+        if _xc and _xc.get('hint'):
+            L.append('### 四′′ 行法眼（L.547）')
+            L.append('')
+            L.append('> **体例**：行法卡＝本参修行操作摘要——法门名照录行历图实测；总持〔本文判断〕据法门名与寄位线（`B0002` 寄十住/十行/十回向/十地窗）。')
+            L.append('')
+            L.append('- **法门名**（行历图实测）：「%s」' % _xc.get('gate', ''))
+            L.append('- **寄位**：参 %d·%s' % (card['card_no'], _xc.get('role', '')))
+            L.append('- **总持**〔本文判断〕：%s' % _xc.get('hint', ''))
+            L.append('')
+    except Exception:
+        pass
     # ── §三 古注取窗（L.493→L.499·四源）──
     L.append('## 三、古注取窗（疏·钞·论·探玄记·程序取窗照录）')
     L.append('')

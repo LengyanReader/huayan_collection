@@ -1356,3 +1356,8 @@ L.194 · P14《须弥顶上偈赞品》充实批 成篇（2026-10-26）：附品
 - P25-P38 十四卡——**行法眼层全站收官 37 卡（P2-P38）**；P1 逐卷结构另议。
 - 教训：glob 键误加目录前缀致空匹配断言——glob 用纯文件名（** 已递归）。
 - 门禁：build 203 files · verify_demo ALL PASSED · push。
+
+### L.547（2026-11-28）拼读系列·行法眼批六（55 参子页·行法层收官）
+- can 子页行法眼全量上线（54 项 data file＋rufajie_can_lib 接入 §四′′ 卡）——行法指导维度全站完整：主站 37 卡＋子页 54 卡＝**91 卡**。
+- 教训：①54 项 authoring 一次性完成可行（gate 名 verbatim 兜底·hint 逐项短句）；②can lib 消费 data file 走 _read(root) 路径——与既有 GUZHU 同管道。
+- 门禁：build 203 files · verify_demo ALL PASSED · push。
